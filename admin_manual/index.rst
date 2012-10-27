@@ -10,6 +10,8 @@ Contents
    :maxdepth: 2
 
    introduction
+   installation 
+   update 
 .. add more chapters 
 
 
