@@ -1,5 +1,5 @@
-ownCloud Administrators Manual 
-******************************
+ownCloud User Manual 
+********************
 
 Short synopsis of the manual goes here.
 
