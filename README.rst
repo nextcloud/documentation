@@ -25,5 +25,5 @@ The ``master`` branch is always the development branch. If a new server version 
 Building
 --------
 
-Enter any manual directory, then run ``make html``. The result can be found in the ``_build/html`` subdirectory.
+Make sure that Sphinx is installed (e.g. sudo yum install python-sphinx), then enter any manual directory, then run ``make html``. The result can be found in the ``_build/html`` subdirectory.
 
