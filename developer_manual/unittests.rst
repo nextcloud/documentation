@@ -1,10 +1,8 @@
-===============================
 How To Do Unittests In Owncloud
 ===============================
-.. contents::
 
 Getting PHPUnit
-===============
+---------------
 
 Owncloud uses PHPUnit for tests. To install it, either get it via your packagemanager::
 
@@ -18,7 +16,8 @@ or install it via PEAR::
 After the installation the ''phpunit'' command is available.
 
 Writing unittests
-=================
+-----------------
+
 To get started, do the following:
  - Create a directory called ``tests`` in the top level of your application
  - Create a php file in the directory and ``require_once`` your class which you want to test.
