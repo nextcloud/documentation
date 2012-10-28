@@ -29,26 +29,20 @@ Suppose your ownCloud is installed at ``https://www.yourserver.com/owncloud``,
 that is, entering this URL in your webbrowser will bring up the login screen.
 Running
 
-::
-
-   net use Z: https://www.yourserver.com/owncloud/remote.php/webdav /user:youruser yourpassword
+  net use Z: https://www.yourserver.com/owncloud/remote.php/webdav /user:youruser yourpassword
 
 will map the files of your ownCloud account to the drive letter Z:. An alternative
 syntax is: 
 
-::
-
-   net use Z: \\www.yourserver.com@ssl\owncloud\remote.php\webdav /user:youruser yourpassword
+  net use Z: \\www.yourserver.com@ssl\owncloud\remote.php\webdav /user:youruser yourpassword
 
 Appending ``/persistent`` makes the connection persistent across reboots.
 
 You can also mount your ownCloud via HTTP, leaving the connection unencrypted.
-Use either of the following syntaxes:
+Use either of the following syntaxes::
 
-::
-
-   net use Z: http://www.yourserver.com/owncloud/remote.php/webdav /user:youruser yourpassword
-   net use Z: \\www.yourserver.com\owncloud\remote.php\webdav /user:youruser yourpassword
+  net use Z: http://www.yourserver.com/owncloud/remote.php/webdav /user:youruser yourpassword
+  net use Z: \\www.yourserver.com\owncloud\remote.php\webdav /user:youruser yourpassword
 
 Please note that this allows anyone to sniff your ownCloud data with ease, especially
 on public WiFi hotspots. Plain HTTP should therefore only be used in conjunction
@@ -59,11 +53,9 @@ Using Windows Explorer
 
 Right-click on ``Computer`` entry and select ``Map network drive...``. Choose a local network
 drive to map ownCloud to. Finally, enter the address to your ownCloud instance, followed by
-``/remote.php/webdav``, e.g. 
+``/remote.php/webdav``, e.g. :: 
 
-::
-
-    https://www.yourserver.com/owncloud/remote.php/webdav
+  https://www.yourserver.com/owncloud/remote.php/webdav
 
 for an SSL protected server. Check ``Reconnect at logon`` to make this mapping persistent 
 across reboots. If you want to connect as another user, check ``Connect using different credentials``.
@@ -111,9 +103,7 @@ Assuming your owncloud instance is installed at ``https://www.yourserver.com/own
 
 In the Finder, choose ``Go > Connect to Server,`` type the address of the server in the
 ``Server Address`` field, and click ``Connect``.  The server address should be in a form
-similar to this: ``ADDRESS/files/webdav.php``. For our example, it would be
-
-::
+similar to this: ``ADDRESS/files/webdav.php``. For our example, it would be::
 
   https://www.yourserver.com/owncloud/files/webdav.php 
 
