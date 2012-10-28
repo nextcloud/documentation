@@ -1,0 +1,189 @@
+{% extends "basic/layout.html" %}
+{% set script_files = script_files + ['_static/bootstrap.js'] %}
+{% set css_files = [ '_static/style.css', '_static/bootstrap-sphinx.css'] + css_files %}
+
+{# Sidebar: Rework into our Boostrap nav section. #}
+{% macro navBar() %}
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner" style="margin:0;">
+      <div class="container">
+        <a class="brand" href="http://owncloud.org/" title="ownCloud.org" rel=
+        "home"><img src=
+        "http://owncloud.org//wp-content/themes/owncloudorg2/images/logo.png" alt=
+        "ownCloud Logo" /></a>
+
+        <div class="nav-collapse">
+          <div class="menu-header-container">
+            <ul id="menu-header" class="nav">
+              <li id="menu-item-1444" class=
+              "menu-item menu-item-type-post_type menu-item-object-page menu-item-1444">
+              <a href="http://owncloud.org/news/">News</a></li>
+
+              <li id="menu-item-2299" class=
+              "menu-item menu-item-type-post_type menu-item-object-page menu-item-2299">
+              <a href="http://owncloud.org/features/">Features</a></li>
+
+              <li id="menu-item-3417" class=
+              "menu-item menu-item-type-post_type menu-item-object-page menu-item-3417">
+              <a href="http://owncloud.org/about/">About</a></li>
+
+              <li id="menu-item-732" class=
+              "menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-14 current_page_item menu-item-732">
+              <a href="http://owncloud.org/support/">Documentation</a></li>
+
+              <li id="menu-item-731" class=
+              "menu-item menu-item-type-post_type menu-item-object-page menu-item-731">
+              <a href="http://owncloud.org/dev/">Developer</a></li>
+
+              <li id="menu-item-6" class=
+              "menu-item menu-item-type-custom menu-item-object-custom menu-item-6">
+              <a target="_blank" href="http://owncloud.com">Commercial &#8594;</a></li>
+            </ul>
+          </div><a href="http://owncloud.org/install" class=
+          "btn btn-success nav-btn">Install</a> <a href="http://demo.owncloud.org" id=
+          "demoheaderbtn" target="_blank" class="btn btn-info nav-btn">Try it!</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {#
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container-fluid">
+        <a class="brand" href="{{ pathto(master_doc) }}">{{ project|e }}</a>
+        <span class="navbar-text pull-left"><b>{{ version|e }}</b></span>
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            {% block sidebartoc %}
+              {% include "globaltoc.html" %}
+              {% include "localtoc.html" %}
+            {% endblock %}
+            {% block sidebarrel %}
+              {% include "relations.html" %}
+            {% endblock %}
+            {% block sidebarsourcelink %}
+              {% include "sourcelink.html" %}
+            {% endblock %}
+          </ul>
+          {% block sidebarsearch %}
+            {% include "searchbox.html" %}
+          {% endblock %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  #}
+{% endmacro %}
+
+{%- block extrahead %}
+<script type="text/javascript">
+(function () {
+  /**
+   * Patch TOC list.
+   *
+   * Will mutate the underlying span to have a correct ul for nav.
+   *
+   * @param $span: Span containing nested UL's to mutate.
+   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
+   */
+  var patchToc = function ($ul, minLevel) {
+    var findA;
+
+    // Find all a "internal" tags, traversing recursively.
+    findA = function ($elem, level) {
+      var level = level || 0,
+        $items = $elem.find("> li > a.internal, > ul, > li > ul");
+
+      // Iterate everything in order.
+      $items.each(function (index, item) {
+        var $item = $(item),
+          tag = item.tagName.toLowerCase(),
+          pad = 15 + ((level - minLevel) * 10);
+
+        if (tag === 'a' && level >= minLevel) {
+          // Add to existing padding.
+          $item.css('padding-left', pad + "px");
+          console.log(level, $item, 'padding-left', pad + "px");
+        } else if (tag === 'ul') {
+          // Recurse.
+          findA($item, level + 1);
+        }
+      });
+    };
+
+    console.log("HERE");
+    findA($ul);
+  };
+
+  $(document).ready(function () {
+    // Add styling, structure to TOC's.
+    $(".dropdown-menu").each(function () {
+      $(this).find("ul").each(function (index, item){
+        var $item = $(item);
+        $item.addClass('unstyled');
+      });
+      $(this).find("li").each(function () {
+        $(this).parent().append(this);
+      });
+    });
+
+    // Patch in level.
+    patchToc($("ul.globaltoc"), 2);
+    patchToc($("ul.localtoc"), 2);
+
+    // Enable dropdown.
+    $('.dropdown-toggle').dropdown();
+  });
+}());
+</script>
+{% endblock %}
+
+{% block header %}{{ navBar() }}{% endblock %}
+
+{# Silence the sidebar's, relbar's #}
+{% block sidebar1 %}{% endblock %}
+{% block sidebar2 %}{% endblock %}
+{% block relbar1 %}{% endblock %}
+{% block relbar2 %}{% endblock %}
+
+{%- block content %}
+<div class="container">
+  <div class="content">
+    <div class="page-header">
+      <h1><a href="#">Documentation Centre</a></h1>
+
+      <form role="search" method="get" class="headersearch" id="searchform" action=
+      "#">
+        <input type="text" value="" name="s" id="s" /> <input type="submit" id=
+        "searchsubmit" class="btn" value="Search" />
+      </form>
+    </div>
+    {% block body %}{% endblock %}
+  </div>
+</div>
+{%- endblock %}
+
+{%- block footer %}
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right"><a href="#">Back to top</a></p>
+    <p>
+    {%- if show_copyright %}
+      {%- if hasdoc('copyright') %}
+        {% trans path=pathto('copyright'), copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}<br/>
+      {%- else %}
+        {% trans copyright=copyright|e %}&copy; Copyright {{ copyright }}.{% endtrans %}<br/>
+      {%- endif %}
+    {%- endif %}
+    {%- if last_updated %}
+      {% trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}<br/>
+    {%- endif %}
+    {%- if show_sphinx %}
+      {% trans sphinx_version=sphinx_version|e %}Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> {{ sphinx_version }}.{% endtrans %}<br/>
+    {%- endif %}
+    </p>
+  </div>
+</footer>
+{%- endblock %}
+

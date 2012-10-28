@@ -2,14 +2,15 @@ Mounting ownCloud via WebDAV
 =============================
 
 All major operating systems allow for mounting a users ownCloud via WebDAV,
-a HTTP extension as specified in :rfc:`2518`. This chapter describes how to setup
-WebDAV on different operating systems.
+a HTTP extension as specified in :rfc:`2518`. This chapter describes how to 
+setup WebDAV on different operating systems.
 
 Windows
 -------
 
-On Windows, you can assign ownCloud a drive letter, which allows browsing
-files stored on ownCloud like a local hard drive. 
+On Windows, you can assign ownCloud a drive letter.  This allows you to 
+browse files stored on an ownCloudserver the way you would files stored in a 
+mapped network drive. 
 
 Using this feature requires network connectivity. If you want to store
 your files offline, use the ownCloud Client to sync all files on your
@@ -20,7 +21,8 @@ ownCloud to one or more directories of your local hard drive.
           Basic Authentication in the Windows Registry. The procedure is
           documented in KB841215_ and differs between Windows XP/Server 2003
           and Windows Vista/7. Please follow the Knowledge Base article
-          before proceeding. 
+          before proceeding, and follow the Vista instructions if you run 
+          Windows 7. 
 
 Mapping via the command line
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
