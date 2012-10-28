@@ -9,7 +9,7 @@ Windows
 -------
 
 On Windows, you can assign ownCloud a drive letter, which allows browsing
-files stored on ownCloud like a local hard drive. 
+files stored on ownCloud as you would files stored a mapped network drive. 
 
 Using this feature requires network connectivity. If you want to store
 your files offline, use the ownCloud Client to sync all files on your
