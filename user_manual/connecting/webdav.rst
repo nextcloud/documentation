@@ -20,7 +20,8 @@ ownCloud to one or more directories of your local hard drive.
           Basic Authentication in the Windows Registry. The procedure is
           documented in KB841215_ and differs between Windows XP/Server 2003
           and Windows Vista/7. Please follow the Knowledge Base article
-          before proceeding. 
+          before proceeding, and follow the Vista instructions if you run 
+          Windows 7. 
 
 Mapping via the command line
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
