@@ -11,7 +11,8 @@ Contents
 
    introduction
    installation 
-   update 
+   update
+   auth_ldap 
 .. add more chapters 
 
 
