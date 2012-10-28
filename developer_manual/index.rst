@@ -10,7 +10,8 @@ Contents
    :maxdepth: 2
 
    introduction
-.. add more chapters 
+   unittests
+
 
 
 Indices and tables
