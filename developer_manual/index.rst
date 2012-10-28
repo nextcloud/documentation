@@ -1,7 +1,7 @@
 ownCloud Developers Manual
 **************************
 
-Short synopsis of the manual goes here.
+This is the ownCloud documentation. More information and source code is at the `Git repository <https://github.com/owncloud/documentation>`_.
 
 Contents
 ========
@@ -10,6 +10,8 @@ Contents
    :maxdepth: 2
 
    introduction
+   debugging
+   configfile
    unittests
 
 
