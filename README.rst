@@ -24,6 +24,10 @@ The ``master`` branch is always the development branch. If a new server version 
 
 Building
 --------
+First make sure that these things are installed
+ - Python 2
+ - Sphinx (e.g. sudo yum install python-sphinx)
+ - Sphinx PHPDomain (e.g. easy_install -U sphinxcontrib-phpdomain)
 
-Make sure that Sphinx is installed (e.g. sudo yum install python-sphinx), then enter any manual directory, then run ``make html``. The result can be found in the ``_build/html`` subdirectory.
+then enter any manual directory, then run ``make html``. The result can be found in the ``_build/html`` subdirectory.
 

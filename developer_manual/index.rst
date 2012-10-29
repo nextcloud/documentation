@@ -12,6 +12,7 @@ Contents
    introduction
    debugging
    configfile
+   templates
    unittests
 
 
