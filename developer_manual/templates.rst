@@ -1,7 +1,7 @@
 Templates
 =========
 
-Owncloud uses its own templating system. 
+ownCloud uses its own templating system. 
 
 
 TODO: Security: disallow print(), echo, <?=, error_log()
@@ -18,7 +18,7 @@ Template syntax
   :param $data: the variable/array/object that should be printed
 
 
-This is the print statement which prints out XSS escaped values. Owncloud does not allow the direct usage of echo or print but enforces wrapper functions to prevent unwanted XSS vulnerabilities. If you want to print unescaped data, look at print_unescaped
+This is the print statement which prints out XSS escaped values. ownCloud does not allow the direct usage of echo or print but enforces wrapper functions to prevent unwanted XSS vulnerabilities. If you want to print unescaped data, look at print_unescaped
 
 **Example:**
 
@@ -52,7 +52,7 @@ This function does not escape the content for XSS. This would typically be used 
 
 .. php:function:: link_to($app, $file, [$args])
 
-  :param string $app: the name of your app as a string. If the string is empty, owncloud asumes that the file is in /core/
+  :param string $app: the name of your app as a string. If the string is empty, ownCloud asumes that the file is in /core/
   :param string $file: the relative path from your apps root to the file you want to access
   :param array $args: the GET parameters that you want set in the URL in form key => value. The value will be run through urlencode() 
   :returns: the absolute URL to the file 
@@ -80,7 +80,7 @@ This function is used to produce generate clean and absolute links to your files
 
 .. php:function:: image_path($app, $image)
 
-  :param string $app: the name of your app as a string. If the string is empty, owncloud looks for the image in core
+  :param string $app: the name of your app as a string. If the string is empty, ownCloud looks for the image in core
   :param array $image: the filename of the image
   :returns: the absolute URL to the image as a string
 
