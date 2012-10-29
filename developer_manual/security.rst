@@ -16,7 +16,13 @@ Blacklisted PHP functionality
 
 CSRF protection
 -----------------------------
-Please add OC_Util::isCallRegistered() or OC_JSON::callCheck() at the top of your file to prevent Cross-site request forgery.
+Please add:: 
+
+  OC_Util::isCallRegistered() 
+
+or::
+
+  OC_JSON::callCheck() at the top of your file to prevent Cross-site request forgery.
 
 See http://en.wikipedia.org/wiki/Cross-site_request_forgery
 
