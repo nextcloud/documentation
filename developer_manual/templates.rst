@@ -3,9 +3,6 @@ Templates
 
 ownCloud uses its own templating system. 
 
-
-TODO: Security: disallow print(), echo, <?=, error_log()
-
 Template class
 --------------
 
@@ -110,7 +107,69 @@ When you pass an empty string for $app, the following directories will be search
   :param array $mimetype: the mimetype for which we want to look up the icon
   :returns: the absolute URL to the icon 
 
-TBD
+A shortcut for getting a mimetype icon.
+
+**Example:**
+
+.. code-block:: php
+
+  <img src="<?php $this->print_unescaped(
+    $this->mimetype_icon('application/xml');
+  ); ?>" />
+
+
+.. php:function:: human_file_size($bytes)
+
+  :param int $bytes: the bytes that we want to convert to a more readable format
+  :returns: the human readable size as string
+
+Turns bytes into human readable formats, for instance 1024 bytes get turned into 1kb, 1024*1024 bytes get turned into 1mb
+
+.. code-block:: php
+
+  <?php
+  // this would print <li>2kB</li>
+  ?>
+  <li><?php $this->p($this->human_file_size('2048'); ?></li>
+
+
+.. php:function::  simple_file_size($bytes)
+
+  :param int $bytes: the bytes that we want to convert to a more readable format in megabytes
+  :returns: the human readable size as string
+
+A more simpler function that only turns bytes into megabytes. If its smaller than 0.1 megabytes, < 0.1 is being returned. If its bigger than 1000 megabytes, > 1000 is being returned.
+
+.. code-block:: php
+
+  <?php
+  // this would print <li>&lt 0.1</li>
+  ?>
+  <li><?php $this->p($this->simple_file_size('2048'); ?></li>
+
+
+.. php:function::  relative_modified_date($timestamp)
+
+  :param int $timestamp: the timestamp from whom we compute the time span until now
+  :returns: a relative date as string
+
+Instead of displaying a date, it is often better to give a relative date like: "2 days ago" or "3 hours ago". This function turns a timestamp into a relative date.
+
+.. code-block:: php
+
+  <?php
+  // this would print <span>5 minutes ago</span>
+  ?>
+  <span><?php $this->p($this->relative_modified_date('29393992912'); ?></span>
+
+.. php:function::  html_select_options($options, $selected[, $params])
+
+  :param array $options: an array of the form value => label
+  :param string/array $selected: an array containing strings or a simple string which sets a value as selected
+  :param array $params: optional parameters that are done in key => value
+  :returns: the html as string of preset <option> tags
+
+FIXME: explain parameters
 
 
 Further reading

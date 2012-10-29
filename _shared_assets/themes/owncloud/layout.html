@@ -151,18 +151,41 @@
 <div class="container">
   <div class="content">
     <div class="page-header">
-      <h1><a href="#">Documentation Centre</a></h1>
+      <h1><a href="{{ pathto(master_doc) }}">Documentation Centre</a></h1>
 
-      <form role="search" method="get" class="headersearch" id="searchform" action=
-      "#">
-        <input type="text" value="" name="s" id="s" /> <input type="submit" id=
+      <form class="headersearch" style="margin-bottom:-3px;" action="{{ pathto('search') }}" method="get">
+        <input type="text" value="" name="q" id="q" /> <input type="submit" id=
         "searchsubmit" class="btn" value="Search" />
       </form>
     </div>
-    {% block body %}{% endblock %}
+    {% block sidebartoc %}
+			<div class="row">
+				<div class="span3">
+					<div class="sidebar">
+						<div class="well">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+                  {{ toctree(maxdepth=2) }}
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+        {% endblock %}
+
+				<div class="span9">
+					<div class="page-content">
+						{% block body %}{% endblock %}
+					</div>
+				</div>
+			</div>
+    
   </div>
 </div>
 {%- endblock %}
+
+
+
 
 {%- block footer %}
 <footer class="footer">
@@ -186,4 +209,5 @@
   </div>
 </footer>
 {%- endblock %}
+
 
