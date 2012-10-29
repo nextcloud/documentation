@@ -6,7 +6,7 @@ ownCloud uses its own templating system. The templating system basically works b
 .. note::
   Templates must not contain database queries! All data should be passed to the template as a variable.
 
-It's actually pretty simple. Lets assume we got these two templates
+It's actually pretty simple. For instance take a look at this example:
 
 **index.php**
 
