@@ -17,6 +17,14 @@ Template class
    :param string $renderas: If $renderas is set, OC_Template will try to produce a full page in the according layout. For now, renderas can be set to "guest", "user" or "admin"
    :returns: OC_Template object
 
+   **Example:**
+
+   .. code-block:: php
+
+     <?php 
+     $mainTemplate = new OC_Template('news', 'main.inc', 'user'); 
+     ?>
+
 
   .. php:method:: addHeader($tag, $attributes[, $text=''])
 
@@ -26,6 +34,14 @@ Template class
 
    Add a custom element to the html <head>
 
+   **Example:**
+
+   .. code-block:: php
+
+     <?php 
+     $mainTemplate = new OC_Template('news', 'main.inc', 'user'); 
+     $mainTemplate->addHeader('title', array(), 'My new Page');
+     ?>
 
   .. php:method:: append($key, $value)
 
@@ -34,6 +50,18 @@ Template class
    :returns: bool
 
    This function assigns a variable in an array context. If the key already exists, the value will be appended. It can be accessed via $_[$key][$position] in the template.
+
+   **Example:**
+
+   .. code-block:: php
+
+     <?php 
+     $customers = array("john", "frank");
+
+     $mainTemplate = new OC_Template('news', 'main.inc', 'user'); 
+     $mainTemplate->assign('customers', $customers);
+     $mainTemplate->append('customers', 'hanna');
+     ?>
 
 
   .. php:method:: assign($key, $value[, $sanitizeHTML=true])
@@ -45,11 +73,30 @@ Template class
 
    This function assigns a variable. It can be accessed via $_[$key] in the template. If the key existed before, it will be overwritten
 
+   **Example:**
+
+   .. code-block:: php
+
+     <?php 
+     $customers = array("john", "frank");
+
+     $mainTemplate = new OC_Template('news', 'main.inc', 'user'); 
+     $mainTemplate->assign('customers', $customers);
+     ?>
+
 
   .. php:method:: detectFormfactor()
 
    :returns: The mode of the client as a string. **default** -> the normal desktop browser interface, **mobile** -> interface for smartphones, **tablet** -> interface for tablets, **standalone** -> the default interface but without header, footer and sidebar, just the application. Useful to use just a specific app on the desktop in a standalone window.
 
+   **Example:**
+
+   .. code-block:: php
+
+     <?php 
+     $mainTemplate = new OC_Template('news', 'main.inc', 'user'); 
+     $formFactor = $mainTemplate->detectFormfactor();
+     ?>
 
 
   .. php:method:: fetchPage()
@@ -58,10 +105,28 @@ Template class
 
    This function proceeds the template and but prints no output.
 
+   **Example:**
+
+   .. code-block:: php
+
+     <?php 
+     // FIXME: provide an example please
+     ?>
+
 
   .. php:method:: getFormFactorExtension()
    
    :returns: Returns the formfactor extension for current formfactor (like .mobile or .tablet)
+
+
+   **Example:**
+
+   .. code-block:: php
+
+     <?php 
+     $mainTemplate = new OC_Template('news', 'main.inc', 'user'); 
+     $formFactorExtension = $mainTemplate->detectFormfactorExtension();
+     ?>
 
 
   .. php:method:: inc($file[, $additionalparams])
@@ -72,6 +137,14 @@ Template class
 
    Includes another template. use <?php echo $this->inc('template'); ?> to do this.
 
+   **Example:**
+
+   .. code-block:: php
+
+     <div>
+         <?php print_unescaped($this->inc('nav.inc', array('active' => 'nav_entry_1')); ?>
+     </div>
+
 
   .. php:method:: printPage()
 
@@ -79,6 +152,15 @@ Template class
 
    This function proceeds the template and prints its output.
 
+   **Example:**
+
+   .. code-block:: php
+
+     <?php 
+     $mainTemplate = new OC_Template('news', 'main.inc', 'user'); 
+     $mainTemplate->assign('test', array("test", "test2"));
+     $mainTemplate->printPage();    
+     ?>
 
   .. php:method:: printAdminPage($application, $name[, $parameters])
 
@@ -86,6 +168,14 @@ Template class
    :param string $name: Name of the template
    :param array $parameters: Parameters for the template
    :returns: bool
+
+   **Example:**
+
+   .. code-block:: php
+
+     <?php 
+     // FIXME: provide an example please
+     ?>
 
    Shortcut to print a simple page for admin
 
@@ -96,6 +186,14 @@ Template class
    :param string $name: Name of the template
    :param array $parameters: Parameters for the template
    :returns: bool
+
+   **Example:**
+
+   .. code-block:: php
+
+     <?php 
+     // FIXME: provide an example please
+     ?>
 
    Shortcut to print a simple page for guests
 
@@ -108,6 +206,14 @@ Template class
    :returns: bool
 
    Shortcut to print a simple page for users
+
+   **Example:**
+
+   .. code-block:: php
+
+     <?php 
+     // FIXME: provide an example please
+     ?>
 
 
 Template syntax
