@@ -6,6 +6,64 @@ ownCloud uses its own templating system.
 Template class
 --------------
 
+.. php:class:: OC_Template
+
+  This class provides the templates for owncloud. It is used for loading template files, assign variables to it and render the whole template.
+
+  .. php:method:: __construct($app, $name[, $renderas])
+
+   :param string $app: the name of the app
+   :param string $file: name of the template file (without suffix)
+   :param string $renderas: If $renderas is set, OC_Template will try to produce a full page in the according layout. For now, renderas can be set to "guest", "user" or "admin"
+   :returns: OC_Template object
+
+
+  .. php:method:: detectFormfactor()
+
+   :returns: The mode of the client as a string. **default** -> the normal desktop browser interface, **mobile** -> interface for smartphones, **tablet** -> interface for tablets, **standalone** -> the default interface but without header, footer and sidebar, just the application. Useful to use just a specific app on the desktop in a standalone window.
+
+  .. php:method:: getFormFactorExtension()
+   
+   :returns: Returns the formfactor extension for current formfactor (like .mobile or .tablet)
+
+  .. php:method:: assign($key, $value[, $sanitizeHTML=true])
+
+   :param string $key: the key under which the variable can be accessed in the template
+   :param $value: the value that we want to pass
+   :param bool $sanitizeHTML: false, if data shouldn't get passed through htmlentities
+   :returns: bool
+
+   This function assigns a variable. It can be accessed via $_[$key] in the template. If the key existed before, it will be overwritten
+
+
+  .. php:method:: getFormFactorExtension()
+   
+   :returns: Returns the formfactor extension for current formfactor (like .mobile or .tablet)
+
+  .. php:method:: append($key, $value)
+
+   :param string $key: the key under which the variable can be accessed in the template
+   :param $value: the value that we want to pass
+   :returns: bool
+
+   This function assigns a variable in an array context. If the key already exists, the value will be appended. It can be accessed via $_[$key][$position] in the template.
+
+  .. php:method:: addHeader($tag, $attributes[, $text=''])
+
+   :param string $tag: tag name of the element
+   :param array $attributes: array of attrobutes for the element
+   :param string $text: the text content for the element
+
+   Add a custom element to the html <head>
+
+
+  .. php:method:: printPage()
+
+   :returns: bool
+
+   This function proceeds the template and prints its output.
+
+
 
 Template syntax
 ---------------
@@ -25,7 +83,7 @@ This is the print statement which prints out XSS escaped values. ownCloud does n
   <div>
     <ul>
       <?php foreach($names as $name){ ?>
-        <li><?php $this->p($name); ?></li>
+        <li><?php p($name); ?></li>
       <?php } ?>
     </ul>
   </div>
@@ -44,7 +102,7 @@ This function does not escape the content for XSS. This would typically be used 
 
   <?php $html = "<div>Some HTML</div>"; ?>
   <div>
-    <?php $this->print_unescaped($html); ?>
+    <?php print_unescaped($html); ?>
   </div>
 
 .. php:function:: link_to($app, $file, [$args])
@@ -67,9 +125,8 @@ This function is used to produce generate clean and absolute links to your files
   ?>
   <ul>
     <li><a href="<?php 
-            $this->print_unescaped(
-                $this->link_to('news', 'pages/weather.php',
-                               array("show" => "berlin")); 
+            print_unescaped(
+                link_to('news', 'pages/weather.php', array("show" => "berlin")); 
             );
          ?>">Show Weather for Berlin</a></li>
   </ul>
@@ -97,8 +154,8 @@ When you pass an empty string for $app, the following directories will be search
 
 .. code-block:: php
 
-  <img src="<?php $this->print_unescaped(
-    $this->image_path('news', 'starred.svg');
+  <img src="<?php print_unescaped(
+    image_path('news', 'starred.svg');
   ); ?>" />
 
 
@@ -113,8 +170,8 @@ A shortcut for getting a mimetype icon.
 
 .. code-block:: php
 
-  <img src="<?php $this->print_unescaped(
-    $this->mimetype_icon('application/xml');
+  <img src="<?php print_unescaped(
+    mimetype_icon('application/xml');
   ); ?>" />
 
 
@@ -130,7 +187,7 @@ Turns bytes into human readable formats, for instance 1024 bytes get turned into
   <?php
   // this would print <li>2kB</li>
   ?>
-  <li><?php $this->p($this->human_file_size('2048'); ?></li>
+  <li><?php p($this->human_file_size('2048')); ?></li>
 
 
 .. php:function::  simple_file_size($bytes)
@@ -145,7 +202,7 @@ A more simpler function that only turns bytes into megabytes. If its smaller tha
   <?php
   // this would print <li>&lt 0.1</li>
   ?>
-  <li><?php $this->p($this->simple_file_size('2048'); ?></li>
+  <li><?php p(simple_file_size('2048')); ?></li>
 
 
 .. php:function::  relative_modified_date($timestamp)
@@ -160,7 +217,7 @@ Instead of displaying a date, it is often better to give a relative date like: "
   <?php
   // this would print <span>5 minutes ago</span>
   ?>
-  <span><?php $this->p($this->relative_modified_date('29393992912'); ?></span>
+  <span><?php p(relative_modified_date('29393992912')); ?></span>
 
 .. php:function::  html_select_options($options, $selected[, $params])
 
