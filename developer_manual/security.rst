@@ -12,7 +12,7 @@ Blacklisted PHP functionality
 **!=** 
  Use !== instead
 **rand(), srand(), mt_rand()**
- If you need a cryptographical secure random number use OC_Util::generate_random_bytes() instead
+ If you need a cryptographical secure random string use OC_Util::generate_random_bytes() instead, the PHP provided functions are `not secure <http://www.suspekt.org/2008/08/17/mt_srand-and-not-so-random-numbers/>`_.
 
 CSRF protection
 -----------------------------
@@ -28,5 +28,9 @@ OC_Util::checkAdminUser() or OC_JSON::checkAdminUser()
  Checks if the user has admin rights
 OC_Util::checkSubAdminUser() or OC_JSON::checkSubAdminUser()
  Checks if the user has subadmin rights
+
+Recommended reading
+-----------------------------
+The `OWASP Top Ten Project <https://www.owasp.org/index.php/Top_10_2010-Main>`_ provides good informations about the 10 most common security vulnerabilities in web applications.
 
 TBD
