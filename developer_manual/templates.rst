@@ -115,6 +115,6 @@ TBD
 
 Further reading
 ---------------
-http://en.wikipedia.org/wiki/Cross-site_scripting
-https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet
-https://www.owasp.org/index.php/Cross-site_Scripting_%28XSS%29
+- http://en.wikipedia.org/wiki/Cross-site_scripting
+- https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet
+- https://www.owasp.org/index.php/Cross-site_Scripting_%28XSS%29
