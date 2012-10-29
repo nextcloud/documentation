@@ -4,7 +4,7 @@ Templates
 Owncloud uses its own templating system. 
 
 
-TODO: disallow print(), echo, and php template printing, check not using filesystem traversal in link_to and image_path, check for accuracy, easy_install -U sphinxcontrib-phpdomain
+TODO: Security: disallow print(), echo, <?=, error_log()
 
 Template class
 --------------
@@ -115,4 +115,6 @@ TBD
 
 Further reading
 ---------------
-TODO: XSS links
+http://en.wikipedia.org/wiki/Cross-site_scripting
+https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet
+https://www.owasp.org/index.php/Cross-site_Scripting_%28XSS%29
