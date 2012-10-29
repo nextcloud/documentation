@@ -14,6 +14,7 @@ Contents
    configfile
    templates
    unittests
+   security
 
 
 
