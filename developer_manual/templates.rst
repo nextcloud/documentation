@@ -1,7 +1,49 @@
 Templates
 =========
 
-ownCloud uses its own templating system. 
+ownCloud uses its own templating system. The templating system basically works by defining main template files. Those template files then include their own templates. 
+
+.. note::
+  Templates must not contain database queries! All data should be passed to the template as a variable.
+
+It's actually pretty simple. Lets assume we got these two templates
+
+**index.php**
+
+.. code-block:: php
+
+  <?php 
+  $allEntries = array('entry1', 'entry2');
+  $mainTemplate = new OC_Template('news', 'main.inc', 'user'); 
+  $mainTemplate->assign('entries', $allEntries);
+  $mainTemplate->assign('name', "john doe");
+  $mainTemplate->printPage();
+  ?>
+
+
+**templates/main.inc.php**
+
+.. code-block:: php
+
+  <?php 
+  $allEntries = $_['entries'];
+  foreach($allEntries as $entry){
+  ?>
+    <p><?php p($entry); ?></p>
+  <?php
+  }
+  $this->inc('sub.inc.php');
+  ?>
+
+
+**templates/sub.inc.php**
+
+.. code-block:: php
+
+  <div>I am included but i can still access the parents variables!</div>
+  <?php p($_['name']); ?>
+
+
 
 Template class
 --------------
@@ -135,7 +177,7 @@ Template class
    :param array $additionalparams: an array with additional variables which should be used for the included template
    :returns: returns content of included template as a string
 
-   Includes another template. use <?php echo $this->inc('template'); ?> to do this.
+   Includes another template. use <?php echo $this->inc('template'); ?> to do this. The included template has access to all parent template variables!
 
    **Example:**
 
