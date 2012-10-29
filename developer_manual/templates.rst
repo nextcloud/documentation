@@ -59,10 +59,55 @@ Template class
 
   .. php:method:: printPage()
 
-   :returns: bool
+   :returns: true when there is content to print
 
    This function proceeds the template and prints its output.
 
+
+  .. php:method:: fetchPage()
+
+   :returns: the HTML of the template as string
+
+   This function proceeds the template and but prints no output.
+
+
+  .. php:method:: inc($file[, $additionalparams])
+
+   :param string $file: the name of the template
+   :param array $additionalparams: an array with additional variables which should be used for the included template
+   :returns: returns content of included template as a string
+
+   Includes another template. use <?php echo $this->inc('template'); ?> to do this.
+
+
+  .. php:method:: printUserPage($application, $name[, $parameters])
+
+   :param string $application: The application we render the template for
+   :param string $name: Name of the template
+   :param array $parameters: Parameters for the template
+   :returns: bool
+
+   Shortcut to print a simple page for users
+
+
+  .. php:method:: printAdminPage($application, $name[, $parameters])
+
+   :param string $application: The application we render the template for
+   :param string $name: Name of the template
+   :param array $parameters: Parameters for the template
+   :returns: bool
+
+   Shortcut to print a simple page for admin
+
+
+  .. php:method:: printGuestPage($application, $name[, $parameters])
+
+   :param string $application: The application we render the template for
+   :param string $name: Name of the template
+   :param array $parameters: Parameters for the template
+   :returns: bool
+
+   Shortcut to print a simple page for guests
 
 
 Template syntax
