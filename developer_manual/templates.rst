@@ -170,7 +170,6 @@ When you pass an empty string for $app, the following directories will be search
   :param array $args: the GET parameters that you want set in the URL in form key => value. The value will be run through urlencode() 
   :returns: the absolute URL to the file 
 
-
 This function is used to produce generate clean and absolute links to your files or pages. 
 
 **Example:**
@@ -191,7 +190,7 @@ This function is used to produce generate clean and absolute links to your files
 
 
 
-.. php:function mimetype_icon($mimetype)
+.. php:function:: mimetype_icon($mimetype)
 
   :param array $mimetype: the mimetype for which we want to look up the icon
   :returns: the absolute URL to the icon 
