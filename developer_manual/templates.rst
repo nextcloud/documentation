@@ -32,7 +32,7 @@ It's actually pretty simple. For instance take a look at this example:
     <p><?php p($entry); ?></p>
   <?php
   }
-  $this->inc('sub.inc.php');
+  $this->inc('sub.inc');
   ?>
 
 
