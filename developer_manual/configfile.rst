@@ -1,5 +1,5 @@
-Config file
-===========
+App config
+==========
 
 Using alternative app directories
 ---------------------------------
