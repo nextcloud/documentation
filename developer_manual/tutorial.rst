@@ -1,2 +1,2 @@
-Introduction
+App Tutorial
 ============

@@ -9,7 +9,7 @@ Contents
 .. toctree::
    :maxdepth: 2
 
-   introduction
+   tutorial
    debugging
    configfile
    templates
