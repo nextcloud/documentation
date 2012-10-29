@@ -1,4 +1,4 @@
-Owncloud Documentation
+ownCloud Documentation
 ======================
 
 This is the ownCloud documentation. It currently focuses on the server, client manuals are in the respective git repositories. Because of the complexity of the server and the split into the core and apps modules, the manuals are in this separate directory.
