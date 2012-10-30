@@ -8,7 +8,10 @@ Templates
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
 .. warning::
+  .. versionchanged:: 5.0 
+
   To prevent XSS the following PHP **functions for printing are forbidden: echo, print() and <?=**. Instead use ``p($data)`` for printing your values. Should you require unescaped printing, **double check for XSS** and use: ``print_unescaped($data)``.
+
 
 .. warning::
   Templates **must not contain database queries**! All data should be passed to the template via ``$template->assign($key, $value)``.
