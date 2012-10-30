@@ -163,11 +163,7 @@ OC_Template
 
    **Example:**
 
-   .. code-block:: php
-
-     <?php 
-     // FIXME: provide an example please
-     ?>
+   .. todo:: provide example
 
 
   .. php:method:: getFormFactorExtension()
@@ -225,16 +221,12 @@ OC_Template
    :param array $parameters: Parameters for the template
    :returns: bool
 
+   Shortcut to print a simple page for admin
+	
    **Example:**
 
-   .. code-block:: php
-
-     <?php 
-     // FIXME: provide an example please
-     ?>
-
-   Shortcut to print a simple page for admin
-
+   .. todo:: provide example
+	
 
   .. php:method:: printGuestPage($application, $name[, $parameters])
 
@@ -243,15 +235,11 @@ OC_Template
    :param array $parameters: Parameters for the template
    :returns: bool
 
+   Shortcut to print a simple page for guests
+
    **Example:**
 
-   .. code-block:: php
-
-     <?php 
-     // FIXME: provide an example please
-     ?>
-
-   Shortcut to print a simple page for guests
+   .. todo:: provide example
 
 
   .. php:method:: printUserPage($application, $name[, $parameters])
@@ -265,11 +253,7 @@ OC_Template
 
    **Example:**
 
-   .. code-block:: php
-
-     <?php 
-     // FIXME: provide an example please
-     ?>
+   .. todo:: provide example
 
 
 
@@ -287,7 +271,7 @@ html_select_options
   :param array $params: optional parameters that are done in key => value
   :returns: the html as string of preset <option> tags
 
-FIXME: explain parameters
+.. todo:: Fix parameters and add example
 
 
 
