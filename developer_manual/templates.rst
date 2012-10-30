@@ -1,12 +1,17 @@
 Templates
 =========
 
-ownCloud uses its own templating system. The templating system basically works by defining main template files. Those template files then include their own templates. 
+.. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
-.. note::
-  Templates must not contain database queries! All data should be passed to the template via $template->assign($key, $value).
+.. warning::
+  To prevent XSS the following PHP **functions for printing are forbidden: echo, print() and <?=**. Instead use ``p($data)`` for printing your values. Should you require unescaped printing, **double check for XSS** and use: ``print_unescaped($data)``.
 
-It's actually pretty simple. For instance take a look at this example:
+.. warning::
+  Templates **must not contain database queries**! All data should be passed to the template via ``$template->assign($key, $value)``.
+
+
+ownCloud uses its own templating system. Templates reside in the ``template/`` folder. To use them you'll need to instantiate the ``OC_Template`` class with the name of the template. If you want to pass values to it, use the ``assign`` method.
+
 
 **index.php**
 
@@ -14,27 +19,28 @@ It's actually pretty simple. For instance take a look at this example:
 
   <?php 
   $allEntries = array('entry1', 'entry2');
-  $mainTemplate = new OC_Template('news', 'main.inc', 'user'); 
+  $mainTemplate = new OC_Template('news', 'main', 'user'); 
   $mainTemplate->assign('entries', $allEntries);
   $mainTemplate->assign('name', "john doe");
   $mainTemplate->printPage();
   ?>
 
+To access the assigned variables in the template, use the $_[] array. The variable will be availabe under the key that you defined (e.g. $_['key']). 
 
-**templates/main.inc.php**
+**templates/main.php**
 
 .. code-block:: php
 
-  <?php 
-  $allEntries = $_['entries'];
-  foreach($allEntries as $entry){
-  ?>
+  <?php foreach($_['entries'] as $entry){ ?>
     <p><?php p($entry); ?></p>
   <?php
   }
-  $this->inc('sub.inc');
+
+  print_unescaped($this->inc('sub.inc'));
+
   ?>
 
+Templates can also include other templates by using the $this->inc('templateName') method. Use this if you find yourself repeating a lot of the same HTML constructs. The parent variables will also be available in the included templates, but should you require it, you can also pass new variables to it by using the second optional parameter for $this->inc.
 
 **templates/sub.inc.php**
 
@@ -64,7 +70,7 @@ Template class
    .. code-block:: php
 
      <?php 
-     $mainTemplate = new OC_Template('news', 'main.inc', 'user'); 
+     $mainTemplate = new OC_Template('news', 'main', 'user'); 
      ?>
 
 
@@ -81,7 +87,7 @@ Template class
    .. code-block:: php
 
      <?php 
-     $mainTemplate = new OC_Template('news', 'main.inc', 'user'); 
+     $mainTemplate = new OC_Template('news', 'main', 'user'); 
      $mainTemplate->addHeader('title', array(), 'My new Page');
      ?>
 
@@ -100,7 +106,7 @@ Template class
      <?php 
      $customers = array("john", "frank");
 
-     $mainTemplate = new OC_Template('news', 'main.inc', 'user'); 
+     $mainTemplate = new OC_Template('news', 'main', 'user'); 
      $mainTemplate->assign('customers', $customers);
      $mainTemplate->append('customers', 'hanna');
      ?>
@@ -122,7 +128,7 @@ Template class
      <?php 
      $customers = array("john", "frank");
 
-     $mainTemplate = new OC_Template('news', 'main.inc', 'user'); 
+     $mainTemplate = new OC_Template('news', 'main', 'user'); 
      $mainTemplate->assign('customers', $customers);
      ?>
 
@@ -136,7 +142,7 @@ Template class
    .. code-block:: php
 
      <?php 
-     $mainTemplate = new OC_Template('news', 'main.inc', 'user'); 
+     $mainTemplate = new OC_Template('news', 'main', 'user'); 
      $formFactor = $mainTemplate->detectFormfactor();
      ?>
 
@@ -166,7 +172,7 @@ Template class
    .. code-block:: php
 
      <?php 
-     $mainTemplate = new OC_Template('news', 'main.inc', 'user'); 
+     $mainTemplate = new OC_Template('news', 'main', 'user'); 
      $formFactorExtension = $mainTemplate->detectFormfactorExtension();
      ?>
 
@@ -177,7 +183,7 @@ Template class
    :param array $additionalparams: an array with additional variables which should be used for the included template
    :returns: returns content of included template as a string
 
-   Includes another template. use <?php echo $this->inc('template'); ?> to do this. The included template has access to all parent template variables!
+   Includes another template. use <?php print_unescaped($this->inc('template')); ?> to do this. The included template has access to all parent template variables!
 
    **Example:**
 
@@ -199,7 +205,7 @@ Template class
    .. code-block:: php
 
      <?php 
-     $mainTemplate = new OC_Template('news', 'main.inc', 'user'); 
+     $mainTemplate = new OC_Template('news', 'main', 'user'); 
      $mainTemplate->assign('test', array("test", "test2"));
      $mainTemplate->printPage();    
      ?>
