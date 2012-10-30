@@ -20,7 +20,7 @@ Templates
 ownCloud uses its own templating system. Templates reside in the ``template/`` folder. To use them you'll need to instantiate the ``OC_Template`` class with the name of the template. If you want to pass values to it, use the ``assign`` method.
 
 
-**index.php**
+:file:`index.php`
 
 .. code-block:: php
 
@@ -34,7 +34,7 @@ ownCloud uses its own templating system. Templates reside in the ``template/`` f
 
 To access the assigned variables in the template, use the $_[] array. The variable will be availabe under the key that you defined (e.g. $_['key']). 
 
-**templates/main.php**
+:file:`templates/main.php`
 
 .. code-block:: php
 
@@ -49,7 +49,7 @@ To access the assigned variables in the template, use the $_[] array. The variab
 
 Templates can also include other templates by using the $this->inc('templateName') method. Use this if you find yourself repeating a lot of the same HTML constructs. The parent variables will also be available in the included templates, but should you require it, you can also pass new variables to it by using the second optional parameter for $this->inc.
 
-**templates/sub.inc.php**
+:file:`templates/sub.inc.php`
 
 .. code-block:: php
 
