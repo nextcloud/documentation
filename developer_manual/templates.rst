@@ -58,10 +58,11 @@ Templates can also include other templates by using the $this->inc('templateName
 
 
 
-Template class
---------------
+OC_Template
+-----------
 
 .. php:class:: OC_Template
+
 
   This class provides the templates for owncloud. It is used for loading template files, assign variables to it and render the whole template.
 
@@ -274,6 +275,9 @@ Template class
 
 Template syntax
 ---------------
+html_select_options
+~~~~~~~~~~~~~~~~~~~
+
 .. php:function::  html_select_options($options, $selected[, $params])
 
   :param array $options: an array of the form value => label
