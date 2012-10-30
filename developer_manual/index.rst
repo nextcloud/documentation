@@ -10,10 +10,10 @@ Contents
    :maxdepth: 2
 
    tutorial
-   debugging
-   configfile
    templates
    unittests
+   debugging
+   configfile
    security
 
 

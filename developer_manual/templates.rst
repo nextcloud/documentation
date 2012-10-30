@@ -273,11 +273,13 @@ OC_Template
 
 
 
-Template syntax
----------------
+Template functions
+------------------
+
+These functions are automatically available in all templates.
+
 html_select_options
 ~~~~~~~~~~~~~~~~~~~
-
 .. php:function::  html_select_options($options, $selected[, $params])
 
   :param array $options: an array of the form value => label
@@ -288,6 +290,9 @@ html_select_options
 FIXME: explain parameters
 
 
+
+human_file_size
+~~~~~~~~~~~~~~~
 .. php:function:: human_file_size($bytes)
 
   :param int $bytes: the bytes that we want to convert to a more readable format
@@ -304,6 +309,8 @@ Turns bytes into human readable formats, for instance 1024 bytes get turned into
 
 
 
+image_path
+~~~~~~~~~~
 .. php:function:: image_path($app, $image)
 
   :param string $app: the name of your app as a string. If the string is empty, ownCloud looks for the image in core
@@ -332,6 +339,9 @@ When you pass an empty string for $app, the following directories will be search
 
 
 
+
+link_to
+~~~~~~~
 .. php:function:: link_to($app, $file, [$args])
 
   :param string $app: the name of your app as a string. If the string is empty, ownCloud asumes that the file is in /core/
@@ -359,6 +369,8 @@ This function is used to produce generate clean and absolute links to your files
 
 
 
+mimetype_icon
+~~~~~~~~~~~~~
 .. php:function:: mimetype_icon($mimetype)
 
   :param array $mimetype: the mimetype for which we want to look up the icon
@@ -376,6 +388,8 @@ A shortcut for getting a mimetype icon.
 
 
 
+p
+~
 .. php:function:: p($data)
 
   :param $data: the variable/array/object that should be printed
@@ -399,6 +413,8 @@ This is the print statement which prints out XSS escaped values. ownCloud does n
 
 
 
+print_unescaped
+~~~~~~~~~~~~~~~
 .. php:function:: print_unescaped($data)
 
   :param $data: the variable/array/object that should be printed
@@ -419,6 +435,8 @@ This function does not escape the content for XSS. This would typically be used 
 
 
 
+relative_modified_date
+~~~~~~~~~~~~~~~~~~~~~~
 .. php:function::  relative_modified_date($timestamp)
 
   :param int $timestamp: the timestamp from whom we compute the time span until now
@@ -434,6 +452,9 @@ Instead of displaying a date, it is often better to give a relative date like: "
   <span><?php p(relative_modified_date('29393992912')); ?></span>
 
 
+
+simple_file_size
+~~~~~~~~~~~~~~~~
 .. php:function::  simple_file_size($bytes)
 
   :param int $bytes: the bytes that we want to convert to a more readable format in megabytes
@@ -447,6 +468,8 @@ A more simpler function that only turns bytes into megabytes. If its smaller tha
   // this would print <li>&lt 0.1</li>
   ?>
   <li><?php p(simple_file_size('2048')); ?></li>
+
+
 
 Further reading
 ---------------

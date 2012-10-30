@@ -1,5 +1,5 @@
-How To Do Unittests In Owncloud
-===============================
+Unittests
+=========
 
 Getting PHPUnit
 ---------------
