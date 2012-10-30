@@ -1,10 +1,5 @@
 Templates
 =========
-
-.. index::
-   single: execution; context
-
-
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
 .. warning::
