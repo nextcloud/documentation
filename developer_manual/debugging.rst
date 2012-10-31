@@ -4,7 +4,7 @@ Debugging
 Debug mode
 ----------
 
-When debug mode is enabled ownCloud, a variety of debugging features are enabled - see debugging documentation. Add the following to the very end of /config/config.php to enable it::
+When debug mode is enabled ownCloud, a variety of debugging features are enabled - see debugging documentation. Add the following to the very end of :file:`/config/config.php` to enable it::
 
   define( "DEBUG", 1);
 
@@ -12,7 +12,7 @@ When debug mode is enabled ownCloud, a variety of debugging features are enabled
 Identifying errors
 ------------------
 
-ownCloud uses custom error PHP handling that prevents errors being printed to webserver log files or command line output. Instead, errors are generally stored in ownCloud's own log file, located at: **/data/owncloud.log**
+ownCloud uses custom error PHP handling that prevents errors being printed to webserver log files or command line output. Instead, errors are generally stored in ownCloud's own log file, located at: :file:`/data/owncloud.log`
 
 
 Debugging variables

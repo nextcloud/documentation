@@ -1,5 +1,5 @@
-How To Do Unittests In Owncloud
-===============================
+Unittests
+=========
 
 Getting PHPUnit
 ---------------
@@ -30,7 +30,7 @@ Then you can simply run the created test with phpunit.
 
 An example for a simple test would be:
 
-**/srv/http/owncloud/apps/myapp/tests/testsuite.php**
+:file:`/srv/http/owncloud/apps/myapp/tests/testsuite.php`
 
 .. code-block:: php
 
@@ -46,7 +46,7 @@ An example for a simple test would be:
   }
   ?>
 
-**/srv/http/owncloud/apps/myapp/tests/testsuite.php**
+:file:`/srv/http/owncloud/apps/myapp/tests/testsuite.php`
 
 .. code-block:: php
 
@@ -56,7 +56,7 @@ An example for a simple test would be:
   }
   ?>
 
-In **/srv/http/owncloud/apps/myapp/** you run the test with::
+In :file:`/srv/http/owncloud/apps/myapp/` you run the test with::
 
   phpunit tests/testsuite.php
 
@@ -69,18 +69,18 @@ If you use Owncloud functions or classes in your code, you'll need to make them 
 
 To do this, you'll need to provide the ``--bootstrap`` argument when running PHPUnit
 
-**/srv/http/owncloud**::
+:file:`/srv/http/owncloud`::
 
   phpunit --bootstrap tests/bootstrap.php apps/myapp/tests/testsuite.php
 
 If you run the test under a different user than your webserver, you'll have to
 adjust your php.ini and file rights.
 
-**/etc/php/php.ini**::
+:file:`/etc/php/php.ini`::
 
   open_basedir = none
 
-**/srv/http/owncloud**::
+:file:`/srv/http/owncloud`::
 
   su -c "chmod a+r config/config.php"
   su -c "chmod a+rx data/"

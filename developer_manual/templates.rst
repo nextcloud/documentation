@@ -1,42 +1,50 @@
 Templates
 =========
+.. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
-ownCloud uses its own templating system. The templating system basically works by defining main template files. Those template files then include their own templates. 
+.. warning::
+  .. versionchanged:: 5.0 
 
-.. note::
-  Templates must not contain database queries! All data should be passed to the template via $template->assign($key, $value).
+  To prevent XSS the following PHP **functions for printing are forbidden: echo, print() and <?=**. Instead use ``p($data)`` for printing your values. Should you require unescaped printing, **double check for XSS** and use: ``print_unescaped($data)``.
 
-It's actually pretty simple. For instance take a look at this example:
 
-**index.php**
+.. warning::
+  Templates **must not contain database queries**! All data should be passed to the template via ``$template->assign($key, $value)``.
+
+
+ownCloud uses its own templating system. Templates reside in the ``template/`` folder. To use them you'll need to instantiate the ``OC_Template`` class with the name of the template. If you want to pass values to it, use the ``assign`` method.
+
+
+:file:`index.php`
 
 .. code-block:: php
 
   <?php 
   $allEntries = array('entry1', 'entry2');
-  $mainTemplate = new OC_Template('news', 'main.inc', 'user'); 
+  $mainTemplate = new OC_Template('news', 'main', 'user'); 
   $mainTemplate->assign('entries', $allEntries);
   $mainTemplate->assign('name', "john doe");
   $mainTemplate->printPage();
   ?>
 
+To access the assigned variables in the template, use the $_[] array. The variable will be availabe under the key that you defined (e.g. $_['key']). 
 
-**templates/main.inc.php**
+:file:`templates/main.php`
 
 .. code-block:: php
 
-  <?php 
-  $allEntries = $_['entries'];
-  foreach($allEntries as $entry){
-  ?>
+  <?php foreach($_['entries'] as $entry){ ?>
     <p><?php p($entry); ?></p>
   <?php
   }
-  $this->inc('sub.inc');
+
+  print_unescaped($this->inc('sub.inc'));
+
   ?>
 
+Templates can also include other templates by using the $this->inc('templateName') method. Use this if you find yourself repeating a lot of the same HTML constructs. The parent variables will also be available in the included templates, but should you require it, you can also pass new variables to it by using the second optional parameter for $this->inc.
 
-**templates/sub.inc.php**
+:file:`templates/sub.inc.php`
 
 .. code-block:: php
 
@@ -45,10 +53,11 @@ It's actually pretty simple. For instance take a look at this example:
 
 
 
-Template class
---------------
+OC_Template
+-----------
 
 .. php:class:: OC_Template
+
 
   This class provides the templates for owncloud. It is used for loading template files, assign variables to it and render the whole template.
 
@@ -64,7 +73,7 @@ Template class
    .. code-block:: php
 
      <?php 
-     $mainTemplate = new OC_Template('news', 'main.inc', 'user'); 
+     $mainTemplate = new OC_Template('news', 'main', 'user'); 
      ?>
 
 
@@ -81,7 +90,7 @@ Template class
    .. code-block:: php
 
      <?php 
-     $mainTemplate = new OC_Template('news', 'main.inc', 'user'); 
+     $mainTemplate = new OC_Template('news', 'main', 'user'); 
      $mainTemplate->addHeader('title', array(), 'My new Page');
      ?>
 
@@ -100,7 +109,7 @@ Template class
      <?php 
      $customers = array("john", "frank");
 
-     $mainTemplate = new OC_Template('news', 'main.inc', 'user'); 
+     $mainTemplate = new OC_Template('news', 'main', 'user'); 
      $mainTemplate->assign('customers', $customers);
      $mainTemplate->append('customers', 'hanna');
      ?>
@@ -122,7 +131,7 @@ Template class
      <?php 
      $customers = array("john", "frank");
 
-     $mainTemplate = new OC_Template('news', 'main.inc', 'user'); 
+     $mainTemplate = new OC_Template('news', 'main', 'user'); 
      $mainTemplate->assign('customers', $customers);
      ?>
 
@@ -136,7 +145,7 @@ Template class
    .. code-block:: php
 
      <?php 
-     $mainTemplate = new OC_Template('news', 'main.inc', 'user'); 
+     $mainTemplate = new OC_Template('news', 'main', 'user'); 
      $formFactor = $mainTemplate->detectFormfactor();
      ?>
 
@@ -149,11 +158,7 @@ Template class
 
    **Example:**
 
-   .. code-block:: php
-
-     <?php 
-     // FIXME: provide an example please
-     ?>
+   .. todo:: provide example
 
 
   .. php:method:: getFormFactorExtension()
@@ -166,7 +171,7 @@ Template class
    .. code-block:: php
 
      <?php 
-     $mainTemplate = new OC_Template('news', 'main.inc', 'user'); 
+     $mainTemplate = new OC_Template('news', 'main', 'user'); 
      $formFactorExtension = $mainTemplate->detectFormfactorExtension();
      ?>
 
@@ -177,7 +182,7 @@ Template class
    :param array $additionalparams: an array with additional variables which should be used for the included template
    :returns: returns content of included template as a string
 
-   Includes another template. use <?php echo $this->inc('template'); ?> to do this. The included template has access to all parent template variables!
+   Includes another template. use <?php print_unescaped($this->inc('template')); ?> to do this. The included template has access to all parent template variables!
 
    **Example:**
 
@@ -199,7 +204,7 @@ Template class
    .. code-block:: php
 
      <?php 
-     $mainTemplate = new OC_Template('news', 'main.inc', 'user'); 
+     $mainTemplate = new OC_Template('news', 'main', 'user'); 
      $mainTemplate->assign('test', array("test", "test2"));
      $mainTemplate->printPage();    
      ?>
@@ -211,16 +216,12 @@ Template class
    :param array $parameters: Parameters for the template
    :returns: bool
 
+   Shortcut to print a simple page for admin
+	
    **Example:**
 
-   .. code-block:: php
-
-     <?php 
-     // FIXME: provide an example please
-     ?>
-
-   Shortcut to print a simple page for admin
-
+   .. todo:: provide example
+	
 
   .. php:method:: printGuestPage($application, $name[, $parameters])
 
@@ -229,15 +230,11 @@ Template class
    :param array $parameters: Parameters for the template
    :returns: bool
 
+   Shortcut to print a simple page for guests
+
    **Example:**
 
-   .. code-block:: php
-
-     <?php 
-     // FIXME: provide an example please
-     ?>
-
-   Shortcut to print a simple page for guests
+   .. todo:: provide example
 
 
   .. php:method:: printUserPage($application, $name[, $parameters])
@@ -251,15 +248,17 @@ Template class
 
    **Example:**
 
-   .. code-block:: php
-
-     <?php 
-     // FIXME: provide an example please
-     ?>
+   .. todo:: provide example
 
 
-Template syntax
----------------
+
+Template functions
+------------------
+
+These functions are automatically available in all templates.
+
+html_select_options
+~~~~~~~~~~~~~~~~~~~
 .. php:function::  html_select_options($options, $selected[, $params])
 
   :param array $options: an array of the form value => label
@@ -267,9 +266,12 @@ Template syntax
   :param array $params: optional parameters that are done in key => value
   :returns: the html as string of preset <option> tags
 
-FIXME: explain parameters
+.. todo:: Fix parameters and add example
 
 
+
+human_file_size
+~~~~~~~~~~~~~~~
 .. php:function:: human_file_size($bytes)
 
   :param int $bytes: the bytes that we want to convert to a more readable format
@@ -285,6 +287,9 @@ Turns bytes into human readable formats, for instance 1024 bytes get turned into
   <li><?php p($this->human_file_size('2048')); ?></li>
 
 
+
+image_path
+~~~~~~~~~~
 .. php:function:: image_path($app, $image)
 
   :param string $app: the name of your app as a string. If the string is empty, ownCloud looks for the image in core
@@ -311,6 +316,11 @@ When you pass an empty string for $app, the following directories will be search
     image_path('news', 'starred.svg');
   ); ?>" />
 
+
+
+
+link_to
+~~~~~~~
 .. php:function:: link_to($app, $file, [$args])
 
   :param string $app: the name of your app as a string. If the string is empty, ownCloud asumes that the file is in /core/
@@ -338,6 +348,8 @@ This function is used to produce generate clean and absolute links to your files
 
 
 
+mimetype_icon
+~~~~~~~~~~~~~
 .. php:function:: mimetype_icon($mimetype)
 
   :param array $mimetype: the mimetype for which we want to look up the icon
@@ -354,10 +366,14 @@ A shortcut for getting a mimetype icon.
   ); ?>" />
 
 
+
+p
+~
 .. php:function:: p($data)
 
   :param $data: the variable/array/object that should be printed
 
+.. versionadded:: 5.0
 
 This is the print statement which prints out XSS escaped values. ownCloud does not allow the direct usage of echo or print but enforces wrapper functions to prevent unwanted XSS vulnerabilities. If you want to print unescaped data, look at print_unescaped
 
@@ -375,9 +391,14 @@ This is the print statement which prints out XSS escaped values. ownCloud does n
   </div>
 
 
+
+print_unescaped
+~~~~~~~~~~~~~~~
 .. php:function:: print_unescaped($data)
 
   :param $data: the variable/array/object that should be printed
+
+.. versionadded:: 5.0
 
 This function does not escape the content for XSS. This would typically be used to print HTML or JavaScript that is generated by the server and **checked for XSS** vulnerabilities.
 
@@ -393,6 +414,8 @@ This function does not escape the content for XSS. This would typically be used 
 
 
 
+relative_modified_date
+~~~~~~~~~~~~~~~~~~~~~~
 .. php:function::  relative_modified_date($timestamp)
 
   :param int $timestamp: the timestamp from whom we compute the time span until now
@@ -408,6 +431,9 @@ Instead of displaying a date, it is often better to give a relative date like: "
   <span><?php p(relative_modified_date('29393992912')); ?></span>
 
 
+
+simple_file_size
+~~~~~~~~~~~~~~~~
 .. php:function::  simple_file_size($bytes)
 
   :param int $bytes: the bytes that we want to convert to a more readable format in megabytes
@@ -421,6 +447,8 @@ A more simpler function that only turns bytes into megabytes. If its smaller tha
   // this would print <li>&lt 0.1</li>
   ?>
   <li><?php p(simple_file_size('2048')); ?></li>
+
+
 
 Further reading
 ---------------
