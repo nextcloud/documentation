@@ -1,5 +1,6 @@
 Categories API
 ==============
+
 Introduction
 ------------
 
@@ -27,6 +28,7 @@ First check if any categories have been saved for `contact` objects, if not scan
 
 .. code-block:: php
 
+  <?php
   if(\OC_VCategories::isEmpty('contact')) {
     $categorymgr = new \OC_VCategories('contact');
     $cards = array();
@@ -35,6 +37,7 @@ First check if any categories have been saved for `contact` objects, if not scan
     }
     $categorymgr->rescan($cards, true);
   }
+  ?>
 
 
 Here we first create an instance of OC_VCategories and tell it to store categories identified by ``contact`` type. Then we fetch all the contacts and create and array holding arrays of id/carddata [1]_ pairs. The OC_VCategories object is then told to scan all the vCards ``CATEGORIES`` property and save the result when done. If it finds any categories it doesn't know already, they will be added to the database (category names are NOT case-sensitive). Additionally it will create relations between the category and the contact object to be used by the contacts app. The ``rescan`` method also takes a third boolean argument ``reset`` which will purge any categories and relations for the current user.
@@ -57,17 +60,23 @@ The second argument being null will use the current user id. After instantiating
 
 For acting on user input the following methods, which should be mostly self-explanatory, are available:
 
-.. code-block:: php
+.. php:class:: OC_VCategories
 
-    public function add($name);
+.. php:method:: add($name)
 
-Returns the integer id of the new category or **false** if it already exists.
+   :param string $name: 
+   :returns: the integer id of the new category or **false** if it already exists.
 
-.. code-block:: php
 
-    public function delete($names, array &$objects=null);
+.. php:method:: delete($names, array &$objects=null)
 
-This deletes the categories in the array `$names` and any object/category/user relations saved. If `$objects` is not null it is assumed to be an array of id/data pairs passed by reference. The data is parsed into an OC_VObject and if found the categories will be removed from the CATEGORIES property and the OC_VObject will be serialized back to a string again. It is up to the app to store the data afterwards.
+   :param string $names: deletes the categories in the array `$names` and any object/category/user relations saved.
+   :param array $objects: If `$objects` is not null it is assumed to be an array of id/data pairs passed by reference.
+   :returns: the integer id of the new category or **false** if it already exists.
+
+   The data is parsed into an OC_VObject and if found the categories will be removed from the CATEGORIES property and the OC_VObject will be serialized back to a string again. It is up to the app to store the data afterwards.
+
+
 
 .. code-block:: php
 

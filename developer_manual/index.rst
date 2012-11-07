@@ -15,6 +15,8 @@ Contents
    debugging
    configfile
    security
+   vcategories
+   apps
 
 
 
