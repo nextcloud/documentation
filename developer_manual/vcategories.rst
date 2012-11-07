@@ -62,19 +62,23 @@ For acting on user input the following methods, which should be mostly self-expl
 
 .. php:class:: OC_VCategories
 
-.. php:method:: add($name)
+  .. php:method:: __construct()
+  
+     .. todo:: add constructor doc
 
-   :param string $name: 
-   :returns: the integer id of the new category or **false** if it already exists.
+  .. php:method:: add($name)
+
+     :param string $name: 
+     :returns: the integer id of the new category or **false** if it already exists.
 
 
-.. php:method:: delete($names, array &$objects=null)
+  .. php:method:: delete($names, array &$objects=null)
 
-   :param string $names: deletes the categories in the array `$names` and any object/category/user relations saved.
-   :param array $objects: If `$objects` is not null it is assumed to be an array of id/data pairs passed by reference.
-   :returns: the integer id of the new category or **false** if it already exists.
+     :param string $names: deletes the categories in the array `$names` and any object/category/user relations saved.
+     :param array $objects: If `$objects` is not null it is assumed to be an array of id/data pairs passed by reference.
+     :returns: the integer id of the new category or **false** if it already exists.
 
-   The data is parsed into an OC_VObject and if found the categories will be removed from the CATEGORIES property and the OC_VObject will be serialized back to a string again. It is up to the app to store the data afterwards.
+     The data is parsed into an OC_VObject and if found the categories will be removed from the CATEGORIES property and the OC_VObject will be serialized back to a string again. It is up to the app to store the data afterwards.
 
 
 
