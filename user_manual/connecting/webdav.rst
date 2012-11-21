@@ -70,6 +70,25 @@ across reboots. If you want to connect as another user, check ``Connect using di
 After pressing ``Finish``, Windows Explorer will map the network drive and your ownCloud instance
 should be available
 
+Using Cyberduck (4.2.1)
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Specify a server without any leading protocol information. e.g.:
+
+Server
+  owncloudhost.com
+
+The port depends on whether your ownCloud server supports SSL or not. Cyberduck requires that you select a different connection type depending on whethr SSL is to be used ('WebDAV' or 'WebDAV (HTTPS/SSL)'):
+
+Port
+  80 (for WebDAV)
+  443 (for WebDAV (HTTPS/SSL))
+  
+Use the 'More Options' drop-down menu to add the rest of your webdav URL into the 'Path' field. e.g.:
+
+Path
+  remote.php/webdav
+
 Known Problems
 ~~~~~~~~~~~~~~
 
@@ -156,7 +175,7 @@ Then, as each user who wants to mount the folder:
 3. Ensure the file is only writable by you either through the file manager, or via ``chmod 600 ~/.davfs2/secrets``
 4. Run the command: ``mount ~/owncloud``
 5. To automatically mount the folder on login, add the command you used in step 4 to ``~/.bashrc``
-
+	
 Known Issues
 ++++++++++++
 
