@@ -40,7 +40,7 @@ An example for a simple test would be:
   class TestAddTwo extends PHPUnit_Framework_TestCase {
   
       public function testAddTwo(){
-          $this->assertEquals(addTwo(3), 5);
+          $this->assertEquals(5, addTwo(3));
       }
   
   }
