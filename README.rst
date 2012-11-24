@@ -3,6 +3,13 @@ ownCloud Documentation
 
 This is the ownCloud documentation. It currently focuses on the server, client manuals are in the respective git repositories. Because of the complexity of the server and the split into the core and apps modules, the manuals are in this separate directory.
 
+License
+-------
+
+All documentation in this repository is licensed under the Creative Commons Attribution 3.0 Unported license (`CC BY 3.0`_).
+
+.. _CC BY 3.0: http://creativecommons.org/licenses/by/3.0/deed.en_US
+
 Style
 -------
 
@@ -23,6 +30,7 @@ Versioning
 ----------
 
 The ``master`` branch is always the development branch. If a new server version is being released, the documentation is branched.
+
 
 Building
 --------
