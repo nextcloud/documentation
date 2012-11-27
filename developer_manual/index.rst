@@ -16,6 +16,7 @@ Contents
    configfile
    security
    vcategories
+   routing
    apps
 
 

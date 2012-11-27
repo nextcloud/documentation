@@ -23,10 +23,13 @@ Creating a route
 Application routes are defined in the file routes.php in the appinfo directory.
 
 .. code-block:: php
+
+   <?php
    $this->create('app_script', '/apps/{app}/{file}')
 	->defaults(array('file' => 'index.php'))
 	->requirements(array('file' => '.*.php'))
 	->action('OC', 'loadAppScriptFile');
+   ?>
 
 The first parameter is a friendly name for the route, this can later be used to
 create a url with this route.
@@ -51,7 +54,11 @@ linkToRoute
 Using a route in php is very simple, just use the linkToRoute.
 
 .. code-block:: php
+
+   <?php
    $url = OC_Helper::linkToRoute( 'download', array('file' => $path));
+   ?>
+
 
 Where 'download' is the route name, and the array are the parameters for the
 route. If a parameter is not used in the pattern, it will be appended in the
@@ -63,7 +70,9 @@ OC.Router.generate
 In javascript it works the same way:
 
 .. code-block:: javascript
+
    OC.Router.generate( 'download', { file: path } );
+
 
 actionInclude
 -------------
