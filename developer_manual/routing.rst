@@ -1,5 +1,5 @@
-Why use routing
-===============
+Routing
+=======
 
 With routing the request url doesn't need to be matched with a physical file.
 Instead the url is mapped to a function that handles the request. This way be
@@ -10,7 +10,7 @@ Last but not least, using routing you only have one place to define the url. So
 changing the is pretty easy.
 
 Routing in ownCloud
-===================
+-------------------
 
 ownCloud uses Symfony Routing Component as its base, look at
 http://symfony.com/doc/current/book/routing.html for more information.

@@ -1,6 +1,8 @@
 App Tutorial
 ============
 
+.. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
+
 This will teach you how to get develop your own owncloud app.
 
 Before you start, please check if there already is a `similar app <http://apps.owncloud.com>`_ you could contribute to. Also, feel free to communicate your idea and plans to the `mailing list <https://mail.kde.org/mailman/listinfo/owncloud>`_ so other contributors might join in.
@@ -427,3 +429,8 @@ If you have to include an image in your CSS, use %appswebroot% and %webroot% for
   .folder > .title {
       background-image: url('%webroot%/core/img/places/folder.svg');
   }
+
+
+Publish your app
+----------------
+At `apps.owncloud.com <https://apps.owncloud.com>`_ for other ownCloud users
