@@ -8,7 +8,7 @@ Introduction
 
 The Categories API is as the name says used for categorizing objects. The visual representation can be different for each app and is totally up to the developer/designer: you can add tags like for example used in `github issues <https://github.com/owncloud/core/issues/>`_ , you can show your objects in a (one-level) hierarchy or you can simply use comma-separated strings.
 
-The API is mainly designed for objects using `vCard <https://en.wikipedia.org/wiki/Vcard>`_ or `iCalendar <https://en.wikipedia.org/wiki/ICalendar>`_ as storage, as they all have a CATEGORIES property from which the categories are extracted, and were they will be saved so that client apps like Apples `iCal <https://en.wikipedia.org/wiki/ICal>`_ and `KDEs Kontact <http://userbase.kde.org/Kontact>`_ can use them as well. Currently the API is used in the Calendar, Task and Contacts apps, plus recently the 3rd party Journal app.
+The API is mainly designed for objects using `vCard`_ or `iCalendar <https://en.wikipedia.org/wiki/ICalendar>`_ as storage, as they all have a CATEGORIES property from which the categories are extracted, and were they will be saved so that client apps like Apples `iCal <https://en.wikipedia.org/wiki/ICal>`_ and `KDEs Kontact <http://userbase.kde.org/Kontact>`_ can use them as well. Currently the API is used in the Calendar, Task and Contacts apps, plus recently the 3rd party Journal app.
 
 Internally the categories and the object/category relations are stored using the category, the user ID, the object ID and a type identifier to be able uniquely identify where a category "belongs to". The types are similar to the types used in the `Share API <http://owncloud.org/dev/apps/share-api/>`_ for example `contact`, `event` or `task`.
 
