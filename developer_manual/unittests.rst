@@ -86,10 +86,6 @@ adjust your php.ini and file rights.
   su -c "chmod a+rx data/"
   su -c "chmod a+w data/owncloud.log"
 
-Dependency Injection
---------------------
-Yet to be decided
-
 Further Reading
 ---------------
 - http://googletesting.blogspot.de/2008/08/by-miko-hevery-so-you-decided-to.html
