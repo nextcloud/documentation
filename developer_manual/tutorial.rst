@@ -89,7 +89,7 @@ You will want to set certain metainformation for your application. To do that op
     'id' => 'yourappname',
   
     // sorting weight for the navigation. The higher the number, the higher
-    // will it be listed in the navigation
+    // it will be listed in the navigation
     'order' => 74,
   
     // the route that will be shown on startup
@@ -370,6 +370,30 @@ That way you can easily create unittests with a simple API class mock if you don
 
 This will eventually be replaced with an internal Owncloud API layer.
 
+
+Templates
+---------
+Templates reside in the **template/** folder. To use them in your controller, use the TemplateResponse class, for instance
+
+.. code-block:: php
+
+  <?php
+  // in your controller
+
+  public function index($urlParams=array()){
+
+    // main is the template name. Owncloud will look for template/main.php
+    $response = new TemplateResponse($this->appName, 'main');
+
+    $params = array('templateVar' => 1);
+    $response->setParams($params);
+
+    return $response;
+  }
+  ?>
+
+
+**For more info, see** :doc:`templates`
 
 JavaScript and CSS
 ------------------
