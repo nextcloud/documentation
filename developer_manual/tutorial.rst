@@ -30,14 +30,14 @@ To disable JavaScript and CSS caching you'll have to turn on debugging in :file:
 
 Create your app
 ---------------
-The best way to create your application is to simply modify the apptemplate app.
+The best way to create your application is to simply modify the apptemplate_advanced app.
 
 To do that execute:
 
 .. code-block:: bash
 
   cd /var/www/apps
-  sudo cp -r apptemplate yourappname
+  sudo cp -r apptemplate_advanced yourappname
   sudo chown -R youruser:yourgroup yourappname
 
 To enable your app, simply link it into the apps directory:
@@ -67,8 +67,8 @@ Certain things are still apptemplate specific and you will have to convert them 
 The following things will need to be changed:
 
 * AGPL Header: author and copyright
-* **\\OC_App::getAppPath('apptemplate')** to **\\OC_App::getAppPath('yourappname')**
-* **namespace OCA\\AppTemplate** to **namespace OCA\\YourAppName**
+* **\\OC_App::getAppPath('apptemplate_advanced')** to **\\OC_App::getAppPath('yourappname')**
+* **namespace OCA\\AppTemplateAdvanced** to **namespace OCA\\YourAppName**
 * The Classpaths in :file:`appinfo/bootstrap.php`
 
 
@@ -431,6 +431,82 @@ If you have to include an image in your CSS, use %appswebroot% and %webroot% for
       background-image: url('%webroot%/core/img/places/folder.svg');
   }
 
+
+Unittests
+---------
+Unittests go into your **tests/** directory. Create the same folder structure in the tests directory like on your app to make it easier to find tests for certain classes.
+
+Owncloud uses `PHPUnit <http://www.phpunit.de/manual/current/en/>`_
+
+Because of Dependency Injection, unittesting has become very easy: you can easily substitute complex classes with mocks by simply passing a different object to the constructor.
+
+Also using a container like Pimple frees us from doing complex instantiation and object passing in our application by hand.
+
+
+A simple test for a controller would look like this
+
+.. code-block:: php
+
+  <?php
+  require_once("../../lib/controller.php");
+  require_once("../../lib/response.php");
+  require_once("../../lib/request.php");
+
+  require_once("../mocks/api.mock.php");
+
+  require_once("../../controllers/ajax.controller.php");
+
+  class AjaxControllerTest extends PHPUnit_Framework_TestCase {
+
+
+    public function testSetSystemValue(){
+      $post = array('somesetting' => 'this is a test');
+      $request = new \OCA\AppTemplateAdvanced\Request(null, $post);
+      $api = new APIMock();
+
+      $controller = new \OCA\AppTemplateAdvanced\AjaxController($api, $request);
+      $controller->setSystemValue();
+
+      $this->assertEquals($post['somesetting'], $api->setSystemValueData['somesetting']);
+    }
+
+
+  }
+
+
+This test uses a mock of the API class. You can define the behaviour of the class in an own file
+
+.. code-block:: php
+
+  <?php
+  class APIMock {
+
+    public $setSystemValueData;
+
+    public function __construct(){
+      $this->setSystemValueData = array();
+    }
+
+
+    public function getAppName(){
+      return 'apptemplate_advanced';
+    }
+
+
+    public function setSystemValue($key, $value){
+      $this->setSystemValueData[$key] = $value;
+    }
+
+
+  }
+
+You can now execute the test by chaning into its directory and calling phpunit on it::
+
+  cd tests/controllers/
+  phpunit ajax.controller.test.php
+
+
+**See also** :doc:`unittests`
 
 Publish your app
 ----------------
