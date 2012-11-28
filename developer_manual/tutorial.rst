@@ -3,7 +3,7 @@ App Tutorial
 
 This will teach you how to get develop your own owncloud app.
 
-Before you start, please check if there already is a similar app you could contribute to. Also, feel free to communicate your idea and plans to the `mailing list <https://mail.kde.org/mailman/listinfo/owncloud>`_ so other contributors might join in.
+Before you start, please check if there already is a `similar app <http://apps.owncloud.com>`_ you could contribute to. Also, feel free to communicate your idea and plans to the `mailing list <https://mail.kde.org/mailman/listinfo/owncloud>`_ so other contributors might join in.
 
 
 Getting Started
@@ -369,3 +369,28 @@ If you find yourself in need to use an Owncloud internal static method, add it t
 That way you can easily create unittests with a simple API class mock if you dont want to call Owncloud internal stuff.
 
 This will eventually be replaced with an internal Owncloud API layer.
+
+
+JavaScript and CSS
+------------------
+JavaScript files go to the **js/** directory, CSS files to the **css/** directory. They are both minified in production and must therefore be declared in your controller method.
+
+To add a script in your controller method, use the controller's **addScript** and **addStyle** methods.
+
+.. code-block:: php
+
+  <?php
+
+  // in your controller
+  public function index($urlParams=array()){
+  		
+  	// adds the js/admin.js file
+	$this->api->addScript('admin');
+
+	// adds the css/admin.css file
+	$this->api->addStyle('admin');
+
+	// etc
+  }
+
+  ?>
