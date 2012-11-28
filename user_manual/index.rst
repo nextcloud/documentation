@@ -1,7 +1,4 @@
-ownCloud User Manual 
-********************
-
-Short synopsis of the manual goes here.
+.. _contents:
 
 Contents
 ========
