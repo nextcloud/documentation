@@ -66,7 +66,7 @@ Certain things are still apptemplate specific that you will have to replace for 
 
 The following things will need to be changed:
 
-* AGPL Headers and copyright
+* AGPL Header: author and copyright
 * **\\OC_App::getAppPath('apptemplate')** to **\\OC_App::getAppPath('yourappname')**
 * **namespace OCA\\AppTemplate** to **namespace OCA\\YourAppName**
 * The Classpaths in :file:`appinfo/bootstrap.php`
@@ -218,8 +218,56 @@ TBD
 
 Routes
 ------
+Routing connects your URL with your controller methods and allows you to create constant and nice URLs. Its also easy to extract values from the URL.
 
-See also :doc:`routing`
+Owncloud uses `Symphony Routing <http://symfony.com/doc/2.0/book/routing.html>`_
+
+Routes are declared in :file:`appinfo/routes.php`
+
+A simple route would look like this:
+
+.. code-block:: php
+
+  <?php
+  $this->create('yourappname_routename', '/myurl/{value}')->action(
+	function($params){		
+		callController('MyController', 'methodName', $params);
+	}
+  );
+  ?>
+
+The first argument is the name of your route. This is used to get url of the route in your Javascript for instance. 
+
+The second parameter is the URL which should be matched. You can extract values from the url by using **{KEY}** in the section that you want to get. That value is than present under **$params['KEY']**, for the above example it would be **$params['value']**. 
+
+The $params array is passed to your controllermethod as $urlParams.
+
+You can also limit the route to GET or POST requests by simply appending ->post() or ->get() before the action method like:
+
+.. code-block:: php
+
+  <?php
+  $this->create('yourappname_routename', '/myurl/{value}')->post()->action(
+	function($params){		
+		callAjaxController('MyController', 'methodName', $params);
+	}
+  );
+  ?>
+
+**Dont forget to use callAjaxController() for Ajax requests!**
+
+In JavaScript you can call the routes like this:
+
+.. code-block:: javascript
+
+  var params = {value: 'hi'};
+  var url = OC.Router.generate('yourappname_routename', params);
+
+You can also omit the second generate parameter if you dont extract any values from the URL.
+
+
+**See also:** :doc:`routing`
+
 
 API abstraction layer
 ---------------------
@@ -239,3 +287,5 @@ If you find yourself in need to use an Owncloud internal static method, add it t
   ?>
 
 That way you can easily create unittests with a simple API class mock if you dont want to call Owncloud internal stuff.
+
+This will eventually be replaced with an internal Owncloud API layer.
