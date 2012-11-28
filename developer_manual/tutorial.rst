@@ -106,7 +106,7 @@ You will want to set certain metainformation for your application. To do that op
 
   ?>
 
-The second place where app specifc information is stored is in :file:`info.xml`
+The second place where app specifc information is stored is in :file:`appinfo/info.xml`
 
 .. code-block:: xml
 
