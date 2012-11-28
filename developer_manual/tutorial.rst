@@ -394,3 +394,12 @@ To add a script in your controller method, use the controller's **addScript** an
   }
 
   ?>
+
+If you have to include an image in your CSS, use %appswebroot% and %webroot% for creating absolute paths to your image, for instance:
+
+
+.. code-block:: css
+
+  .folder > .title {
+      background-image: url('%webroot%/core/img/places/folder.svg');
+  }
