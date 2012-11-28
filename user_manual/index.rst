@@ -9,6 +9,7 @@ Contents
    introduction
    connecting/index 
    connecting/webdav
+   bookmarks
 .. add more chapters 
 
 
