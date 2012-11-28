@@ -9,14 +9,7 @@ Contents
 .. toctree::
    :maxdepth: 2
 
-   tutorial
-   templates
-   unittests
    debugging
-   configfile
-   security
-   vcategories
-   routing
    apps
 
 
