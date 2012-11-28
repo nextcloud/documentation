@@ -376,7 +376,44 @@ This will allow you to easily mock the API in your unittests.
 
 Templates
 ---------
-Templates reside in the **template/** folder. To use them in your controller, use the TemplateResponse class, for instance
+ownCloud uses its own templating system. Templates reside in the **template/** folder. In every template file you can easily access the template functions listed in :doc:`templates`
+
+.. note::
+  Templates **must not contain database queries**! All data should be passed to the template via ``$template->assign($key, $value)``.
+
+
+To access the assigned variables in the template, use the **$_[]** array. The variable will be availabe under the key that you defined (e.g. $_['key']). 
+
+:file:`templates/main.php`
+
+.. code-block:: php
+
+  <?php foreach($_['entries'] as $entry){ ?>
+    <p><?php p($entry); ?></p>
+  <?php
+  }
+
+  print_unescaped($this->inc('sub.inc'));
+
+  ?>
+
+.. warning::
+  .. versionchanged:: 5.0 
+
+  To prevent XSS the following PHP **functions for printing are forbidden: echo, print() and <?=**. Instead use ``p($data)`` for printing your values. Should you require unescaped printing, **double check for XSS** and use: ``print_unescaped($data)``.
+
+Templates can also include other templates by using the **$this->inc('templateName')** method. Use this if you find yourself repeating a lot of the same HTML constructs. The parent variables will also be available in the included templates, but should you require it, you can also pass new variables to it by using the second optional parameter for $this->inc.
+
+
+
+:file:`templates/sub.inc.php`
+
+.. code-block:: php
+
+  <div>I am included but i can still access the parents variables!</div>
+  <?php p($_['name']); ?>
+
+To access the Template files in your controller, use the TemplateResponse class:
 
 .. code-block:: php
 
@@ -395,6 +432,7 @@ Templates reside in the **template/** folder. To use them in your controller, us
   }
   ?>
 
+Should you require more template functions, simply modify the TemplateResponse in :file:`lib/response.php`
 
 **For more info, see** :doc:`templates`
 

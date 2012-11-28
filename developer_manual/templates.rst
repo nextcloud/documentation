@@ -2,57 +2,6 @@ Templates
 =========
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
-.. warning::
-  .. versionchanged:: 5.0 
-
-  To prevent XSS the following PHP **functions for printing are forbidden: echo, print() and <?=**. Instead use ``p($data)`` for printing your values. Should you require unescaped printing, **double check for XSS** and use: ``print_unescaped($data)``.
-
-
-.. warning::
-  Templates **must not contain database queries**! All data should be passed to the template via ``$template->assign($key, $value)``.
-
-
-ownCloud uses its own templating system. Templates reside in the ``template/`` folder. To use them you'll need to instantiate the ``OC_Template`` class with the name of the template. If you want to pass values to it, use the ``assign`` method.
-
-
-:file:`index.php`
-
-.. code-block:: php
-
-  <?php 
-  $allEntries = array('entry1', 'entry2');
-  $mainTemplate = new OC_Template('news', 'main', 'user'); 
-  $mainTemplate->assign('entries', $allEntries);
-  $mainTemplate->assign('name', "john doe");
-  $mainTemplate->printPage();
-  ?>
-
-To access the assigned variables in the template, use the $_[] array. The variable will be availabe under the key that you defined (e.g. $_['key']). 
-
-:file:`templates/main.php`
-
-.. code-block:: php
-
-  <?php foreach($_['entries'] as $entry){ ?>
-    <p><?php p($entry); ?></p>
-  <?php
-  }
-
-  print_unescaped($this->inc('sub.inc'));
-
-  ?>
-
-Templates can also include other templates by using the $this->inc('templateName') method. Use this if you find yourself repeating a lot of the same HTML constructs. The parent variables will also be available in the included templates, but should you require it, you can also pass new variables to it by using the second optional parameter for $this->inc.
-
-:file:`templates/sub.inc.php`
-
-.. code-block:: php
-
-  <div>I am included but i can still access the parents variables!</div>
-  <?php p($_['name']); ?>
-
-
-
 OC_Template
 -----------
 
