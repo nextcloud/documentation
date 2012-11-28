@@ -342,6 +342,7 @@ In JavaScript you can call the routes like this:
 
   var params = {value: 'hi'};
   var url = OC.Router.generate('yourappname_routename', params);
+  console.log(url); // prints /index.php//yourappname/myurl/hi
 
 .. note:: Be sure to only use the routes generator after the routes are loaded. This can be done by registering a callback with OC.Router.registerLoadedCallback(callback)
 
