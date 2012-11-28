@@ -93,7 +93,7 @@ You will want to set certain metainformation for your application. To do that op
     'order' => 74,
   
     // the route that will be shown on startup
-    'href' => \OC_Helper::linkToRoute('apptemplate_index'),
+    'href' => \OC_Helper::linkToRoute('yourappname_index'),
   
     // the icon that will be shown in the navigation
     'icon' => \OCP\Util::imagePath('yourappname', 'example.png' ),
@@ -105,6 +105,21 @@ You will want to set certain metainformation for your application. To do that op
   ));
 
   ?>
+
+The second place where app specifc information is stored is in :file:`info.xml`
+
+.. code-block:: xml
+
+  <?xml version="1.0"?>
+  <info>
+	<id>yourappname</id>
+	<name>Your App</name>
+	<description>Your App description</description>
+	<version>1.0</version>
+	<licence>AGPL</licence>
+	<author>Your Name</author>
+	<require>4</require>
+  </info>
 
 
 Classloader
@@ -214,7 +229,72 @@ and to the classloader
 
 Database Access
 ---------------
-TBD
+ownCloud uses a database abstraction layer on top of either MDB2 or PDO, depending on the availability of PDO on the server.
+
+Apps should always use prepared statements when accessing the database as seen in the following example:
+
+.. code-block:: php
+
+  <?php
+  $userId = 'tom';
+  $query = \OC_DB::prepare("SELECT * FROM *PREFIX*mytable WHERE user = ?");
+  $result = $query->execute(array($userId));
+  $data = $result->fetchAll();
+  ?>
+
+
+‘*PREFIX*’ in the query string will be replaced by the configured database table prefix while preparing the query. Arguments for the prepared statement are denoted by a ‘?’ in the query string and passed during execution in an array.
+
+For more information about MDB2 style prepared statements, please see the `official MDB2 documentation <http://pear.php.net/package/MDB2/docs>`_
+
+If an app requires additional tables in the database they can be automatically created and updated by specifying them inside :file:`appinfo/database.xml` using MDB2′s xml scheme notation where the placeholders ‘*dbprefix*’ and ‘*dbname*’ can be used for the configured database table prefix and database name. 
+
+An example database XML file would look like this:
+
+.. code-block:: xml
+
+  <?xml version="1.0" encoding="ISO-8859-1" ?>
+  <database>
+	 <name>*dbname*</name>
+	 <create>true</create>
+	 <overwrite>false</overwrite>
+	 <charset>utf8</charset>
+	 <table>
+		<name>*dbprefix*yourapp_items</name>
+		<declaration>
+			<field>
+				<name>item_id</name>
+				<type>integer</type>
+				<default>0</default>
+				<notnull>true</notnull>
+    				<autoincrement>1</autoincrement>
+				<length>4</length>
+			</field>
+			<field>
+				<name>uid_owner</name>
+				<type>text</type>
+				<notnull>true</notnull>
+				<length>64</length>
+			</field>
+			<field>
+				<name>item_name</name>
+				<type>text</type>
+				<notnull>true</notnull>
+				<length>100</length>
+			</field>
+			<field>
+				<name>item_path</name>
+				<type>clob</type>
+				<notnull>true</notnull>
+			</field>
+		</declaration>
+	</table>
+  </database>
+
+
+To update the tables used by the app, simply adjust the database.xml file and increase the app version number in :file:`appinfo/version` to trigger an update.
+
+
 
 Routes
 ------
