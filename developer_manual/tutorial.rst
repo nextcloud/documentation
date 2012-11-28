@@ -3,8 +3,6 @@ App Tutorial
 
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
-This will teach you how to get develop your own owncloud app.
-
 Before you start, please check if there already is a `similar app <http://apps.owncloud.com>`_ you could contribute to. Also, feel free to communicate your idea and plans to the `mailing list <https://mail.kde.org/mailman/listinfo/owncloud>`_ so other contributors might join in.
 
 
@@ -25,14 +23,14 @@ Now restart your apache server and get ready to set up owncloud at http://localh
 
 Enable debugging mode
 ---------------------
-To disable caching of JavaScript and CSS you'll have to turn on debugging in the :file:`/var/www/owncloud/config/config.php` by adding this to the end of the file::
+To disable JavaScript and CSS caching you'll have to turn on debugging in :file:`/var/www/owncloud/config/config.php` by adding this to the end of the file::
 
   DEFINE('DEBUG', true);
 
 
 Create your app
 ---------------
-The best way to create your application is to simply use and modify the app template.
+The best way to create your application is to simply modify the apptemplate app.
 
 To do that execute:
 
@@ -49,7 +47,7 @@ To enable your app, simply link it into the apps directory:
 
   ln -s /var/www/apps/yourappname /var/www/owncloud/apps/yourappname
 
-or set the apps directory in your :file:`/var/www/owncloud/config.php` (see :doc:`configfile`)
+or create a second apps directory in your :file:`/var/www/owncloud/config/config.php` (see :doc:`configfile`)
 
 **Don't forget to enable it on the apps settings page!**
 
@@ -58,9 +56,9 @@ Now change into your app directory::
   cd /var/www/apps/yourappname
 
 
-Remove/Replace apptemplate specific things
+Adjust apptemplate
 ------------------------------------------
-Certain things are still apptemplate specific that you will have to replace for your app.
+Certain things are still apptemplate specific and you will have to convert them to match your app.
 
 .. todo::
 
@@ -76,7 +74,7 @@ The following things will need to be changed:
 
 App information
 ---------------
-You will want to set certain metainformation for your application. To do that open the :file:`appinfo/app.php` and adjust it to look like this
+You'll need to give some information on your app for instance the name. To do that open the :file:`appinfo/app.php` and adjust it like this
 
 .. code-block:: php
 
@@ -126,7 +124,7 @@ The second place where app specifc information is stored is in :file:`appinfo/in
 
 Classloader
 -----------
-The classloader is configured in :file:`appinfo/bootstrap.php`. The classloader frees you from requiring your classes when you use them. If a class is used and its not yet available, the loader will automatically require the given file.
+The classloader is configured in :file:`appinfo/bootstrap.php`. The classloader frees you from requiring your classes when you use them. If a class is used and its not yet available, the loader will automatically include the needed file.
 
 To add a class to the classloader, simply use something like this:
 
@@ -140,7 +138,7 @@ To add a class to the classloader, simply use something like this:
 
 Dependency Injection
 --------------------
-Dependency Injection helps you to create testable code. A good overview how it works and what the benefits are can be seen on `Google's Clean Code Talks <http://www.youtube.com/watch?v=RlfLCWKxHJ0>`_
+Dependency Injection helps you to create testable code. A good overview over how it works and what the benefits are can be seen on `Google's Clean Code Talks <http://www.youtube.com/watch?v=RlfLCWKxHJ0>`_
 
 The container is configured in :file:`appinfo/bootstrap.php`. We use Pimple for the container. The documentation on how to use it can be seen on the `Pimple Homepage <http://pimple.sensiolabs.org/>`_
 
@@ -160,9 +158,9 @@ To add your own class simply add a new line inside the **createDIContainer** fun
 
 Controllers
 -----------
-The App Template provides a simple baseclass for adding controllers. Controllers connect your view (templates) with your database and is connected to one or more routes.
+The App Template provides a simple baseclass for adding controllers. Controllers connect your view (templates) with your database. Controllers themselves are connected to one or more routes.
 
-The apptemplate comes with several different Controllers. A simple controller would look like:
+The apptemplate comes with several different controllers. A simple controller would look like:
 
 .. code-block:: php
 
@@ -200,9 +198,9 @@ The apptemplate comes with several different Controllers. A simple controller wo
 
   ?>
 
-An instance of the api is passed via dependency injection, the same goes for a request instance. POST and GET parameters are abstracted by the Request class and can be accessed via **$this->params('myPostOrGetKey')** in the controller. This has been done to make the app better testable.
+An instance of the api is passed via dependency injection, the same goes for a Request instance. POST and GET parameters are abstracted by the Request class and can be accessed via **$this->params('myPostOrGetKey')** inside the controller. This has been done to make the app better testable.
 
-If a POST and GET value exist with the same key, the POST value is preferred. You should avoid to have both values with the same key though.
+.. note:: If a POST and GET value exist with the same key, the POST value is preferred. You should avoid to have both values with the same key though.
 
 Every controller method has to return a response. All possible reponses can be found in :file:`lib/response.php`. The file contains wrappers for Ownclouds internal template engine and JSON response and is used to create a uniform response object which is testable.
 
@@ -318,13 +316,13 @@ A simple route would look like this:
   );
   ?>
 
-The first argument is the name of your route. This is used to get url of the route in your Javascript for instance. 
+The first argument is the name of your route. This is used to get the URL of the route, for instance in your Javascript code. 
 
-The second parameter is the URL which should be matched. You can extract values from the url by using **{KEY}** in the section that you want to get. That value is than present under **$params['KEY']**, for the above example it would be **$params['value']**. 
+The second parameter is the URL which should be matched. You can extract values from the URL by using **{KEY}** in the section that you want to get. That value is then available under **$params['KEY']**, for the above example it would be **$params['value']**. 
 
-The $params array is passed to your controllermethod as $urlParams.
+The $params array is always passed to your controllermethod as the only parameter.
 
-You can also limit the route to GET or POST requests by simply appending ->post() or ->get() before the action method like:
+You can also limit the route to GET or POST requests by simply adding ->post() or ->get() before the action method like:
 
 .. code-block:: php
 
@@ -336,7 +334,7 @@ You can also limit the route to GET or POST requests by simply appending ->post(
   );
   ?>
 
-**Dont forget to use callAjaxController() for Ajax requests!**
+.. warning:: Dont forget to use callAjaxController() for Ajax requests!
 
 In JavaScript you can call the routes like this:
 
@@ -345,7 +343,9 @@ In JavaScript you can call the routes like this:
   var params = {value: 'hi'};
   var url = OC.Router.generate('yourappname_routename', params);
 
-You can also omit the second generate parameter if you dont extract any values from the URL.
+.. note:: Be sure to only use the routes generator after the routes are loaded. This can be done by registering a callback with OC.Router.registerLoadedCallback(callback)
+
+You can also omit the second generate function parameter if you dont extract any values from the URL at all.
 
 
 **See also:** :doc:`routing`
@@ -355,7 +355,7 @@ API abstraction layer
 ---------------------
 Owncloud currently has a ton of static methods which is a very bad thing concerning testability. Therefore the app template comes with an api abstraction layer which is located at :file:`lib/api.php`. 
 
-If you find yourself in need to use an Owncloud internal static method, add it to the api layer by simply creating a new method like:
+If you find yourself in need to use more Owncloud internal static methods, add them to the api layer by simply creating a new method for each of them, like:
 
 .. code-block:: php
 
@@ -368,9 +368,9 @@ If you find yourself in need to use an Owncloud internal static method, add it t
       }
   ?>
 
-That way you can easily create unittests with a simple API class mock if you dont want to call Owncloud internal stuff.
+This will allow you to easily mock the API in your unittests.
 
-This will eventually be replaced with an internal Owncloud API layer.
+.. note:: This will eventually be replaced with an internal Owncloud API layer.
 
 
 Templates
