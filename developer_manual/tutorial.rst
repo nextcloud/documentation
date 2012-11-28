@@ -243,11 +243,11 @@ Apps should always use prepared statements when accessing the database as seen i
   ?>
 
 
-‘*PREFIX*’ in the query string will be replaced by the configured database table prefix while preparing the query. Arguments for the prepared statement are denoted by a ‘?’ in the query string and passed during execution in an array.
+'*PREFIX*' in the query string will be replaced by the configured database table prefix while preparing the query. Arguments for the prepared statement are denoted by a '?' in the query string and passed during execution in an array.
 
 For more information about MDB2 style prepared statements, please see the `official MDB2 documentation <http://pear.php.net/package/MDB2/docs>`_
 
-If an app requires additional tables in the database they can be automatically created and updated by specifying them inside :file:`appinfo/database.xml` using MDB2′s xml scheme notation where the placeholders ‘*dbprefix*’ and ‘*dbname*’ can be used for the configured database table prefix and database name. 
+If an app requires additional tables in the database they can be automatically created and updated by specifying them inside :file:`appinfo/database.xml` using MDB2's xml scheme notation where the placeholders '*dbprefix*' and '*dbname*' can be used for the configured database table prefix and database name. 
 
 An example database XML file would look like this:
 
