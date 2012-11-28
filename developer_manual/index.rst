@@ -1,7 +1,4 @@
-ownCloud Developers Manual
-**************************
-
-This is the ownCloud documentation. More information and source code is at the `Git repository <https://github.com/owncloud/documentation>`_.
+.. _contents:
 
 Contents
 ========
