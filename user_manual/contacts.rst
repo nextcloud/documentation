@@ -94,7 +94,7 @@ Hover your cursor on every icon to see what they mean.
 Keeping your address book in sync
 ---------------------------------
 One of the most important thing in any contact app is to keep it in Sync.
-You can sync this contact app to your phone which has the following OSs- Android and IOS
+You can sync this contact app to your phone which has the following OS's- Android and IOS
 
 
 Syncing with Android
@@ -103,7 +103,7 @@ Syncing with Android
 2) This app supports auto- configuration which is a Boon- after installing visit this link- carddavs://owncloud.example.net/remote.php/carddav/  to auto configure the app.
 3) Enter your login details 
 4) After the app has checked your login details you may just select- Sync server to phone option
-5) Thats it there is nothing else to do for Android :)
+5) That's it there is nothing else to do for Android :)
 
 .. figure:: images/contact_syncopt.jpg
 
