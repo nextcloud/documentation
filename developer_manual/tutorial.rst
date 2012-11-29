@@ -198,11 +198,38 @@ The apptemplate comes with several different controllers. A simple controller wo
 
   ?>
 
-An instance of the api is passed via dependency injection, the same goes for a Request instance. POST and GET parameters are abstracted by the Request class and can be accessed via **$this->params('myPostOrGetKey')** inside the controller. This has been done to make the app better testable.
+An instance of the api is passed via dependency injection, the same goes for a Request instance. POST and GET, and FILES parameters are abstracted by the Request class and can be accessed via **$this->params('myPostOrGetKey')** and **$this->getUploadedFile($key)** inside the controller. This has been done to make the app better testable.
 
 .. note:: If a POST and GET value exist with the same key, the POST value is preferred. You should avoid to have both values with the same key though.
 
-Every controller method has to return a response. All possible reponses can be found in :file:`lib/response.php`. The file contains wrappers for Ownclouds internal template engine and JSON response and is used to create a uniform response object which is testable.
+Every controller method has to return a Response object. All possible reponses can be found in :file:`lib/response.php`. Should you require to set additional headers, you can use the **addHeader()** method that every Reponse has.
+
+Because TemplateResponse and JSONResponse is so common, the controller provides a shortcut method for both of those, named **$this->render** and **$this->renderJSON**.
+
+.. code-block:: php
+
+  <?
+  // using render()
+  public function index($urlParams=array()){
+      $templateName = 'main';
+      $params = array(
+          'somesetting' => 'How long will it take'
+      );
+
+      return $this->render($templateName, $params);
+  }
+
+
+  // using renderJSON
+  public function getMeJSON($urlParams=array()){
+      $params = array(
+          'somesetting' => 'enough of this already'
+      );
+
+      return $this->renderJSON($params);
+  }
+
+
 
 Don't forget to add your controller to the dependency container in :file:`appinfo/bootstrap.php` 
 
@@ -230,6 +257,8 @@ and to the classloader
 Database Access
 ---------------
 ownCloud uses a database abstraction layer on top of either MDB2 or PDO, depending on the availability of PDO on the server.
+
+.. note:: The apptemplate_advance is still missing a recommended way and utils to do database queries.
 
 Apps should always use prepared statements when accessing the database as seen in the following example:
 
