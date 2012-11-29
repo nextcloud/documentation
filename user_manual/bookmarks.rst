@@ -4,8 +4,11 @@ Using the Bookmarks App
 If you want to add a bookmark to the Bookmarks application, 
 you can either use the main interface or the bookmarklet.
 
-Add a bookmark
+The main interface
 --------------------
+
+Add a bookmark
+~~~~~~~
 
 The main ownCloud interface contains 3 fields at the top where
 you can enter the website address (or URL), the title of your bookmark and
