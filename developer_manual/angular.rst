@@ -139,6 +139,11 @@ The following folderstructure is recommended::
 
 For a simple example, take a look at the `apptemplate_advanced <https://github.com/owncloud/apps/tree/master/apptemplate_advanced>`_ app.
 
+Create your app
+---------------
+
+.. note:: For the sake of syntax highlightning, this tutorial will use JavaScript instead of CoffeeScript
+
 Your app initialization will be in::
 
   coffee/app.coffee
