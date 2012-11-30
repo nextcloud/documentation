@@ -7,6 +7,7 @@ Contents
    :maxdepth: 2
 
    tutorial
+   angular
    templates
    unittests
    debugging

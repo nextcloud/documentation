@@ -481,9 +481,10 @@ To access the Template files in your controller, use the TemplateResponse class:
   }
   ?>
 
-Should you require more template functions, simply modify the TemplateResponse in :file:`lib/response.php`
+Should you require more template functions, simply modify the TemplateResponse in :file:`lib/response.php`. 
 
 **For more info, see** :doc:`templates`
+
 
 JavaScript and CSS
 ------------------
