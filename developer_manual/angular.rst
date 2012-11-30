@@ -67,7 +67,7 @@ Another problem is the dynamic generation of DOM elements. Basically you'd choos
 
 All of the above split the html from the original HTML and its a pain to bind event listeners (yes, there's $.on(), but its slow). You are also in need of updating the DOM by hand.
 
-Here's where AngularJS comes in: Angular uses XML attributes to define the template logic, so your templates are written in using standard HTML. Every value that is written into the HTML is escaped to prevent XSS.
+In contrast to the above solutions, Angular uses XML attributes to define the template logic, so your templates are written in using standard HTML. Every value that is written into the HTML is escaped to prevent XSS.
 
 Angular uses Dependency Injection to glue the code together and is built to make testing easy (look at the examples in the official docs);
 
@@ -94,7 +94,7 @@ The button controller handles the complete logic. It would look something like t
       }
   );
 
-All of a sudden your logic can be changed really easily and the template logic is where you would expect it to be: in the HTML.
+Now your logic can be changed really easily and the template logic is where you would expect it to be: in the HTML.
 
 One of the awesome things of Angular is that it knows when your data has changed. The moment we add a new element to the **$scope.buttons** array, our view will update automatically. It also updates when i update an existing element in the array changes a value.
 
@@ -125,7 +125,7 @@ Place the Cakefile in your app directory. When executing::
 
   cake watch
 
-the Cakefile will automatically watch the coffe folder for changes and compile anew when it finds a change.
+the Cakefile will automatically watch the coffee folder for changes and compile the files when it finds a change.
 
 The following folderstructure is recommended::
 
