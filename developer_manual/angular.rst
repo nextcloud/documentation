@@ -101,7 +101,7 @@ One of the awesome things of Angular is that it knows when your data has changed
 Drawbacks of AngularJS
 ----------------------
 
-That brings us also to the biggest problem of AngularJS: Because browsers don't support (not yet) a native way to tell the JavaScript that something has changed, so Angular has to do "dirt checking" on a change. 
+That brings us also to the biggest problem of AngularJS: Because browsers don't support (not yet) a native way to tell the JavaScript that something has changed, so Angular has to do `dirt checking <http://docs.angularjs.org/guide/concepts>`_ on a change. 
 
 Should you somehow require to show more thant 3000 complex elements at once (like 3000 buttons with lots of wiring inside the code and a ton of attributes) there will defenitely be performance problems (To be fair: normal JavaScript would also run into performance problems).
 
