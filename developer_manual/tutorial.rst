@@ -155,6 +155,104 @@ To add your own class simply add a new line inside the **createDIContainer** fun
   ?>
 
 
+API abstraction layer
+---------------------
+Owncloud currently has a ton of static methods which is a very bad thing concerning testability. Therefore the app template comes with an api abstraction layer which is located at :file:`lib/api.php`.
+
+If you find yourself in need to use more Owncloud internal static methods, add them to the api layer by simply creating a new method for each of them, like:
+
+.. code-block:: php
+
+  <?php
+
+      // inside the API class
+
+      public function methodName($someParam){
+         \OCP\Util::methodName($this->appName, $someParam);
+      }
+  ?>
+
+This will allow you to easily mock the API in your unittests.
+
+.. note:: This will eventually be replaced with an internal Owncloud API layer.
+
+
+
+Routes
+------
+Routing connects your URL with your controller methods and allows you to create constant and nice URLs. Its also easy to extract values from the URL.
+
+Owncloud uses `Symphony Routing <http://symfony.com/doc/2.0/book/routing.html>`_
+
+Routes are declared in :file:`appinfo/routes.php`
+
+A simple route would look like this:
+
+.. code-block:: php
+
+  <?php
+  $this->create('yourappname_routename', '/myurl/{value}')->action(
+  function($params){
+    callController('MyController', 'methodName', $params);
+  }
+  );
+  ?>
+
+The first argument is the name of your route. This is used to get the URL of the route, for instance in your Javascript code.
+
+The second parameter is the URL which should be matched. You can extract values from the URL by using **{KEY}** in the section that you want to get. That value is then available under **$params['KEY']**, for the above example it would be **$params['value']**.
+
+The $params array is always passed to your controllermethod as the only parameter.
+
+You can also limit the route to GET or POST requests by simply adding **->post()** or **->get()** before the action method like:
+
+.. code-block:: php
+
+  <?php
+  $this->create('yourappname_routename', '/myurl/{value}')->post()->action(
+  function($params){
+    callAjaxController('MyController', 'methodName', $params);
+  }
+  );
+  ?>
+
+.. warning:: Dont forget to use callAjaxController() for Ajax requests!
+
+In JavaScript you can call the routes like this:
+
+.. code-block:: javascript
+
+  var params = {value: 'hi'};
+  var url = OC.Router.generate('yourappname_routename', params);
+  console.log(url); // prints /index.php//yourappname/myurl/hi
+
+.. note:: Be sure to only use the routes generator after the routes are loaded. This can be done by registering a callback with OC.Router.registerLoadedCallback(callback)
+
+You can also omit the second generate function parameter if you dont extract any values from the URL at all.
+
+If you want to disable/enable security checks or simply swap stuff in the container, you can do it by passing a container as the fourth parameter of **callController** or callAjaxController.
+
+The following example turns off the CSRF check for callAjaxController
+
+.. code-block:: php
+
+  <?php
+  $this->create('yourappname_routename', '/myurl/{value}')->post()->action(
+    function($params){
+      $container = createDIContainer();
+      $container['Security']->setCSRFCheck(false);
+      callAjaxController('MyController', 'methodName', $params, $container);
+    }
+  );
+  ?>
+
+This works because the Security class is set as shared in the DI container. Non shared classes in the container return a new instance everytime they're called and would make this approach useless.
+
+To still get the desired function, you'll have to overwrite the value by setting a new class with the same index which is set as shared.
+
+
+**See also:** :doc:`routing`
+
 
 Controllers
 -----------
@@ -256,6 +354,9 @@ and to the classloader
 
 Database Access
 ---------------
+
+.. note:: The advanced apptemplate doesn't feature a recommended way of doing database queries. We hope this will change with the introduction of the Doctrine ORM.
+
 ownCloud uses a database abstraction layer on top of either MDB2 or PDO, depending on the availability of PDO on the server.
 
 .. note:: The apptemplate_advance is still missing a recommended way and utils to do database queries.
@@ -322,85 +423,6 @@ An example database XML file would look like this:
 
 
 To update the tables used by the app, simply adjust the database.xml file and increase the app version number in :file:`appinfo/version` to trigger an update.
-
-
-
-Routes
-------
-Routing connects your URL with your controller methods and allows you to create constant and nice URLs. Its also easy to extract values from the URL.
-
-Owncloud uses `Symphony Routing <http://symfony.com/doc/2.0/book/routing.html>`_
-
-Routes are declared in :file:`appinfo/routes.php`
-
-A simple route would look like this:
-
-.. code-block:: php
-
-  <?php
-  $this->create('yourappname_routename', '/myurl/{value}')->action(
-	function($params){		
-		callController('MyController', 'methodName', $params);
-	}
-  );
-  ?>
-
-The first argument is the name of your route. This is used to get the URL of the route, for instance in your Javascript code. 
-
-The second parameter is the URL which should be matched. You can extract values from the URL by using **{KEY}** in the section that you want to get. That value is then available under **$params['KEY']**, for the above example it would be **$params['value']**. 
-
-The $params array is always passed to your controllermethod as the only parameter.
-
-You can also limit the route to GET or POST requests by simply adding ->post() or ->get() before the action method like:
-
-.. code-block:: php
-
-  <?php
-  $this->create('yourappname_routename', '/myurl/{value}')->post()->action(
-	function($params){		
-		callAjaxController('MyController', 'methodName', $params);
-	}
-  );
-  ?>
-
-.. warning:: Dont forget to use callAjaxController() for Ajax requests!
-
-In JavaScript you can call the routes like this:
-
-.. code-block:: javascript
-
-  var params = {value: 'hi'};
-  var url = OC.Router.generate('yourappname_routename', params);
-  console.log(url); // prints /index.php//yourappname/myurl/hi
-
-.. note:: Be sure to only use the routes generator after the routes are loaded. This can be done by registering a callback with OC.Router.registerLoadedCallback(callback)
-
-You can also omit the second generate function parameter if you dont extract any values from the URL at all.
-
-
-**See also:** :doc:`routing`
-
-
-API abstraction layer
----------------------
-Owncloud currently has a ton of static methods which is a very bad thing concerning testability. Therefore the app template comes with an api abstraction layer which is located at :file:`lib/api.php`. 
-
-If you find yourself in need to use more Owncloud internal static methods, add them to the api layer by simply creating a new method for each of them, like:
-
-.. code-block:: php
-
-  <?php
-      
-      // inside the API class
-
-      public function methodName($someParam){
-         \OCP\Util::methodName($this->appName, $someParam);
-      }
-  ?>
-
-This will allow you to easily mock the API in your unittests.
-
-.. note:: This will eventually be replaced with an internal Owncloud API layer.
 
 
 Templates
