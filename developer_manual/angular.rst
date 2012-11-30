@@ -14,7 +14,7 @@ Documentation is available at these sources:
 
 What problem does it solve
 --------------------------
-jQuery is a nice library but when it comes to building webapplications one will soon reach a point where its becoming increasingly impossible to change templates from logic.
+jQuery is a nice library but when it comes to building webapplications, one will soon reach a point where its becoming increasingly impossible to split view and logic.
 
 That problem is caused by jQueries habit to operate directly on dom elements. Most jQuery code looks like this:
 
@@ -136,3 +136,4 @@ The following folderstructure is recommended::
   coffee/services/
 
 For a simple example, take a look at the `apptemplate_advanced <https://github.com/owncloud/apps/tree/master/apptemplate_advanced>`_ app.
+
