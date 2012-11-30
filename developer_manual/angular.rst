@@ -135,4 +135,4 @@ The following folderstructure is recommended::
   coffee/controllers/
   coffee/services/
 
-For a simple example, take a look at the **apptemplate_advanced** app.
+For a simple example, take a look at the `apptemplate_advanced <https://github.com/owncloud/apps/tree/master/apptemplate_advanced>`_ app.
