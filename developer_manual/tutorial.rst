@@ -210,13 +210,13 @@ You can also limit the route to GET or POST requests by simply adding **->post()
 
   <?php
   $this->create('yourappname_routename', '/myurl/{value}')->post()->action(
-  function($params){
-    callAjaxController('MyController', 'methodName', $params);
-  }
+      function($params){
+          callAjaxController('MyController', 'methodName', $params);
+      }
   );
   ?>
 
-.. warning:: Dont forget to use callAjaxController() for Ajax requests!
+.. warning:: Dont forget to use callAjaxController() for Ajax requests! The function turns on CSRF checks by default
 
 In JavaScript you can call the routes like this:
 
@@ -238,11 +238,11 @@ The following example turns off the CSRF check for callAjaxController
 
   <?php
   $this->create('yourappname_routename', '/myurl/{value}')->post()->action(
-    function($params){
-      $container = createDIContainer();
-      $container['Security']->setCSRFCheck(false);
-      callAjaxController('MyController', 'methodName', $params, $container);
-    }
+      function($params){
+          $container = createDIContainer();
+          $container['Security']->setCSRFCheck(false);
+          callAjaxController('MyController', 'methodName', $params, $container);
+      }
   );
   ?>
 
