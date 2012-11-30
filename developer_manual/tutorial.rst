@@ -359,8 +359,6 @@ Database Access
 
 ownCloud uses a database abstraction layer on top of either MDB2 or PDO, depending on the availability of PDO on the server.
 
-.. note:: The apptemplate_advance is still missing a recommended way and utils to do database queries.
-
 Apps should always use prepared statements when accessing the database as seen in the following example:
 
 .. code-block:: php
