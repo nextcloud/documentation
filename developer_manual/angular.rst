@@ -115,7 +115,7 @@ All in all, before transitioning completely one should try to build an optimized
 Using AngularJS in your project
 -------------------------------
 
-Since you'll have lots of files, a buildscript is recommended to merge the JavaScript into a single file. For that `CoffeeScript <http://coffeescript.org/>`_ and a Cakefile is recommended.
+Since you'll have lots of files, a buildscript is recommended to merge the JavaScript into a single file. For that `CoffeeScript <http://coffeescript.org/>`_ and a `Cakefile <http://k20e.com/blog/2011/05/02/a-piece-of-cakefile/>`_ is recommended.
 
 You can install CoffeeScript via NPM (nodejs package manager)::
 
