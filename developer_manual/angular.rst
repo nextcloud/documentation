@@ -23,9 +23,9 @@ That problem is caused by jQueries habit to operate directly on dom elements. Mo
   $('.someElement').doSomething();
 
 
-That makes it incredible hard to refactor your view (HTML in this case) because your whole JavaScript code is tightly coupled to the structure and classes on that page.
+That makes it incredible hard to refactor your view because your whole JavaScript code is tightly coupled to the structure and classes in your HTML.
 
-Another problem is the dynamic generation of DOM elements. Basically you'd choose one of these three choices:
+Another problem is the dynamic generation of DOM elements. You'd normally go with one of these three approaches:
 
 
 **1**) Create new element, bind event listeners and append it to the dom:
@@ -65,11 +65,11 @@ Another problem is the dynamic generation of DOM elements. Basically you'd choos
   // and bind the click listener
 
 
-All of the above split the html from the original HTML and its a pain to bind event listeners (yes, there's $.on(), but its slow). You are also in need of updating the DOM by hand.
+All of the above split the HTML from the original HTML and its hard to bind event listeners (yes, there's $.on(), but its slow). You are also in need of updating the DOM by hand.
 
-In contrast to the above solutions, Angular uses XML attributes to define the template logic, so your templates are written in using standard HTML. Every value that is written into the HTML is escaped to prevent XSS.
+In contrast to the above solutions, Angular uses XML attributes to define the template logic. This approach does not only good for your editor, but you're also less likely to create HTML errors. You can even validate the HTML. Furthermore, every value that is written into the HTML is escaped to prevent XSS.
 
-Angular uses Dependency Injection to glue the code together and is built to make testing easy (look at the examples in the official docs);
+Concerning testability: Angular uses Dependency Injection to glue the code together and it's easy to run your unittests(look at the examples in the official docs). Angular also ships with mocks for common areas like HTTP requests or logging.
 
 Thats how the code would look with Angular:
 
@@ -83,7 +83,9 @@ The button controller handles the complete logic. It would look something like t
 
 .. code-block:: javascript
 
-  angular.module('MyApp').controller('ButtonController', ['$scope', 
+  var app = angular.module('MyApp', []);  
+
+  app.controller('ButtonController', ['$scope', 
       function($scope){
           $scope.buttons = [
               {text: 'A new button'}
@@ -94,22 +96,22 @@ The button controller handles the complete logic. It would look something like t
       }
   );
 
-Now your logic can be changed really easily and the template logic is where you would expect it to be: in the HTML.
+Now your logic is nicely decoupled from your view and the template logic is where you would expect it to be: in the HTML markup.
 
-One of the awesome things of Angular is that it knows when your data has changed. The moment we add a new element to the **$scope.buttons** array, our view will update automatically. It also updates when i update an existing element in the array changes a value.
+Angular also knows when your data has changed: when a new element is added to the **$scope.buttons** array, the view will automatically update. It also updates the view when an existing element in the array changes.
+
 
 Drawbacks of AngularJS
 ----------------------
+That brings us also to the biggest problem of AngularJS: It can be slow at times. This is caused by `the way Angular works <http://docs.angularjs.org/guide/concepts>`_
 
-That brings us also to the biggest problem of AngularJS: Because browsers don't support (not yet) a native way to tell the JavaScript that something has changed, so Angular has to do `dirt checking <http://docs.angularjs.org/guide/concepts>`_ on a change. 
+Should you somehow require to show more than around 1000 complex elements at once (like 1000 buttons with lots of wiring inside the code and a ton of attributes) there will defenitely be performance problems (To be fair: normal JavaScript would also run into performance problems).
 
-Should you somehow require to show more thant 3000 complex elements at once (like 3000 buttons with lots of wiring inside the code and a ton of attributes) there will defenitely be performance problems (To be fair: normal JavaScript would also run into performance problems).
+One way to tackle this is to use autopaging (progressive loading) that only renders X elements and loads the next batch when the user scrolls down for instance. This also reduces the traffic. Software that successfully uses this approach is Google Reader for instance.
 
-One way to tackle this is to use autopaging (progressive loading) that only renders X elements and loads the next batch when the user scrolled down for instance. This also reduces the traffic. Software that successfully uses this approach is Google Reader for instance.
+When porting the News app to AngularJS we found that the benefits outweighed the drawbacks and that we could optimize the Code well enough to offer a good user experience.
 
-When porting the News app to AngularJS we found that the benefits outweighed the drawbacks and that we could optimize the Code enough for people to note the difference.
-
-All in all, before transitioning completely one should try to build an optimized prototype and see for himself how it compares to pure jQuery.
+But all in all you should build an optimized prototype and compare it to a non angular app to make sure that the user experience is good.
 
 
 Using AngularJS in your project
@@ -136,4 +138,40 @@ The following folderstructure is recommended::
   coffee/services/
 
 For a simple example, take a look at the `apptemplate_advanced <https://github.com/owncloud/apps/tree/master/apptemplate_advanced>`_ app.
+
+Your app initialization will be in::
+
+  coffee/app.coffee
+
+and will look like this:
+
+.. code-block:: javascript
+
+  angular.module('YourApp', []).
+    config(['$provide', function($provide){
+
+      // Use this for configuration values
+      var Config = {
+        // your config values here
+      };
+
+      // declare your routes here
+      Config.routes = {
+        saveNameRoute: 'apptemplate_advanced_ajax_setsystemvalue'
+      };
+      
+      return $provide.value('Config', Config);
+    }
+  ]);
+
+.. note:: It is important that this file is at the beginning of the compiled JavaScript! The square brackets [] create a new app. If you only use **angular.module('YourApp')** it will retrieve the app instance.
+
+The next move is to add the **ng-app="YourApp"** attribute to the root element of your application. Everything inside of it will be processed by Angular.
+
+
+Controllers
+-----------
+Controllers are the mediators between your view and your data. Assign controllers to different parts of your page. **Don't nest controllers!** Every controller should have one specific area of your page.
+
+TBD
 
