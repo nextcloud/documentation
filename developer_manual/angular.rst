@@ -492,4 +492,4 @@ For simple post or get requests, Angular offers the **$http** object. It's very 
 
 Closing remarks
 ---------------
-This was a minimal fraction of Angular but it should give you a good idea about how Angular works. More directives and objects are available on the `official API Page <http://docs.angularjs.org/api/>`_
+This was a minimal fraction of Angular but it should give you a good idea about how Angular works (If not, please help to improve the documentation ;) ). More directives and objects are available on the `official API Page <http://docs.angularjs.org/api/>`_
