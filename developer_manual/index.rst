@@ -11,6 +11,7 @@ Contents
    angular
    templates
    unittests
+   translation
    debugging
    configfile
    security
