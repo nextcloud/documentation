@@ -10,6 +10,7 @@ Contents
    installation 
    update
    auth_ldap 
+   xsendfile
 .. add more chapters 
 
 
