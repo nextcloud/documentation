@@ -270,6 +270,10 @@ This is a little example how you could encapsulate data for a Button Model. Most
           return this.buttonHashMap[buttonId];
       };
 
+      ButtonModel.prototype.getItems = function(){
+          return this.buttons;
+      };
+
       return new ButtonModel();
     }
   ]);
