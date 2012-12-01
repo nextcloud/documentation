@@ -18,13 +18,13 @@ The ownCloud coding style guide is based on `PEAR Coding Standards <http://pear.
 
 Always use::
 
-  <?php ?>
+  <?php
 
-to delimit your code. .The final closing::
+at the start of your php code. The final closing::
 
   ?> 
 
-is prohibited due to the possible issue of sending white spaces.
+should not be used at the end of the file due to the `possible issue of sending white spaces <http://stackoverflow.com/questions/4410704/php-closing-tag>`_.
 
 Objects, Functions, Arrays & Variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
