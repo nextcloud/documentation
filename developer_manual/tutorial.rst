@@ -192,9 +192,9 @@ A simple route would look like this:
 
   <?php
   $this->create('yourappname_routename', '/myurl/{value}')->action(
-  function($params){
-    callController('MyController', 'methodName', $params);
-  }
+      function($params){
+          callController('MyController', 'methodName', $params);
+      }
   );
   ?>
 
@@ -232,7 +232,7 @@ You can also omit the second generate function parameter if you dont extract any
 
 If you want to disable/enable security checks or simply swap stuff in the container, you can do it by passing a container as the fourth parameter of **callController** or callAjaxController.
 
-The following example turns off the CSRF check for callAjaxController
+The following example turns off the CSRF check for callAjaxController (but runs all the other checks, see :file:`lib/security.php`)
 
 .. code-block:: php
 
