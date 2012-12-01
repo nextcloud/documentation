@@ -1,10 +1,11 @@
-Coding Guidelines
-=================
+Coding Style Guidelines
+=======================
 General
 -------
 
 * Maximum line-length of 80 characters
 * Use tabs to indent
+* A tab is 4 spaces wide
 * Opening braces of blocks are on the same line as the definition
 * Quotes: ' for everything, " for HTML attributes (<p class="my_class">)
 
