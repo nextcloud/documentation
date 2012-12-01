@@ -7,13 +7,13 @@ and resume downloads).
 
 Notice that currently this feature:
 
-* can be activated only for local files, i.e. files inside data directory and local mounts
-* controlled file serving does not work for generated zip files. This is due to how temporary files are created
-* has never been tested under lighttpd but its configuration should be the same as Apache
+.. note:: can be activated only for local files, i.e. files inside data directory and local mounts
+.. note:: controlled file serving does not work for generated zip files. This is due to how temporary files are created
+.. note:: has never been tested under lighttpd but its configuration should be the same as Apache
 
 Apache2 (X-Sendfile)
 --------------------
-It is possible to let Apache handle static file serving via mod_xsendfile (https://tn123.org/mod_xsendfile/).
+It is possible to let Apache handle static file serving via `mod_xsendfile <https://tn123.org/mod_xsendfile/>`_.
 
 **Installation:**
 
@@ -58,7 +58,7 @@ For versions >=0.10 (e.g. Ubuntu 12.10)
 
 Nginx (X-Accel-Redirect)
 ------------------------
-Nginx supports handling of static files differently from Apache. Refer to http://wiki.nginx.org/XSendfile and http://wiki.nginx.org/X-accel for documentation. The header used by Nginx is X-Accel-Redirect.
+Nginx supports handling of static files differently from Apache. Documentation can be found `here <http://wiki.nginx.org/XSendfile>`_ and `here <http://wiki.nginx.org/X-accel>`_. The header used by Nginx is X-Accel-Redirect.
 
 **Intsallation:**
 
