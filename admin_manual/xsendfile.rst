@@ -5,11 +5,7 @@ This should generally improve performance of static files serving (web servers a
 optimized for this) and in some cases permits controlled file serving (i.e. pause
 and resume downloads).
 
-Notice that currently this feature:
-
-.. note:: can be activated only for local files, i.e. files inside data directory and local mounts
-.. note:: controlled file serving does not work for generated zip files. This is due to how temporary files are created
-.. note:: has never been tested under lighttpd but its configuration should be the same as Apache
+.. note :: Notice that currently this feature can be activated only for local files, i.e. files inside data directory and local mounts. Controlled file serving does not work for generated zip files. This is due to how temporary files are created. Also it has **never been tested under lighttpd** but its configuration should be the same as Apache
 
 Apache2 (X-Sendfile)
 --------------------
@@ -58,7 +54,7 @@ For versions >=0.10 (e.g. Ubuntu 12.10)
 
 Nginx (X-Accel-Redirect)
 ------------------------
-Nginx supports handling of static files differently from Apache. Documentation can be found `here <http://wiki.nginx.org/XSendfile>`_ and `here <http://wiki.nginx.org/X-accel>`_. The header used by Nginx is X-Accel-Redirect.
+Nginx supports handling of static files differently from Apache. Documentation can be found `here`__ and `here`__. The header used by Nginx is X-Accel-Redirect.
 
 **Intsallation:**
 
@@ -96,3 +92,6 @@ Configuration is similar to Apache
 How do I know it's working?
 ---------------------------
 You are still able to download stuff via the web interface and single, local file downloads can be paused and resumed :-).
+
+__ http://wiki.nginx.org/XSendfile
+__ http://wiki.nginx.org/X-accel
