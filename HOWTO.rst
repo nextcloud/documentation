@@ -91,8 +91,8 @@ Target Audiences
 Writing Style
 -------------
 
-Documentation should be concise and to the point, maintaing a consistent style.
-Here is some advise on what to watch out for when contributing.
+Documentation should be concise and to the point, maintaining a consistent
+style. Here is some advise on what to watch out for when contributing.
 
 **Know what you are writing about**
   While this sounds obvious, this poses a challenge to both novice and
@@ -148,20 +148,21 @@ Here is some advise on what to watch out for when contributing.
     You should know how to configure Apache ;-)
 
   They can also be an attempt to inappropriately bond with the user (remember,
-  they seek information, not entertainment. You are not a novelist either [1]_!)
+  they seek information, not entertainment. You are not a novelist either
+  [1]_!)
 
     We are all too familiar with problems like these ;-)
 
-  If you are guiding the user through a scenario, the use of "we" is ok
-  ("Next, we have to pick an appropriate caching strategy"), but should
-  not be overused.
+  If you are guiding the user through a scenario, the use of "we" is
+  acceptable.  ("Next, we have to pick an appropriate caching strategy"), but
+  should not be overused.
 
 **Do not use "don't"**
-  For native speakers this should go without saying: Giving the books formal
+  For native speakers this should go without saying: Given the books formal
   nature, informal wording should not be used. This also includes other
-  abbreviations such as "haven't", "shouldn't", etc.  Instead, use "do not",
-  "have not", "should not", etc. Similarly, avoid street style language,
-  i.e. do not write "u" but "you".
+  abbreviations such as "haven't", "shouldn't", "it's", "that's", etc.
+  Instead, use "do not", "have not", "should not", "it is " "that is" etc.
+  Similarly, avoid street style language, i.e. do not write "u" but "you".
 
 **Try to address the reader directly, but do not try to bond too strongly**
   Indirection, while sometimes elegant, makes a text harder to read:
@@ -179,13 +180,13 @@ Here is some advise on what to watch out for when contributing.
     I have not installed the ``php5-intl`` extension. You might want to install it.
 
   This creates a subjective perspective, and - more importantly - disguises
-  exactly *why* the reader might want to install it even though you did.
+  exactly *why* the reader might want to install it even though you did not.
 
 **Know your reader**
   Provide documentation with a user story in mind. Try to picture situations
   in which people might most frequently consult your documentation. This has
-  immediate consequences on the way how you describe things. Picture most
-  Installation scenarios: in a datacenter, on a home NAS or in an ISP-rented
+  immediate consequences on the way you are describing things. Picture most
+  Installation scenarios: in a data center, on a home NAS or in an ISP-rented
   virtual server, advising the user to check the installation by typing
   ``http://localhost/owncloud`` makes no sense. They will most likely not
   be sitting in front of the server, but test remotely, even though your
@@ -236,7 +237,7 @@ Here is some advise on what to watch out for when contributing.
 
     ... for the Apache web server, you should use a ``.htaccess`` file.
     In case you are not using apache, the section :ref: `Web Server Notes`
-    will explain how to implement alternatives to this Apache-propritary
+    will explain how to implement alternatives to this Apache-proprietary
     way of securing your data directory.
 
 **Do not overuse headings**
@@ -266,10 +267,10 @@ Here is some advise on what to watch out for when contributing.
   to the following rules [3]_:
 
 1. Capitalize the first word of the title/heading and of any
-   subtitle/subheading
+   subtitle/subheading.
 2. Capitalize all "major" words (nouns, verbs,
    adjectives, adverbs, and pronouns) in the title/heading, including the
-   second part of hyphenated major words (e.g., Self-Report not Self-report);
+   second part of hyphenated major words (e.g., Self-Report not Self-report).
 3. Capitalize all words of four letters or more.
 
   Consider the following heading:
@@ -281,10 +282,11 @@ Here is some advise on what to watch out for when contributing.
     *Hardening ownCloud for Secure Deployment*
 
 **Check your spelling**
-  Always. No exceptions, no excuses. It's 2012 - everything has a built-in spell checker.
+  Always. No exceptions, no excuses. Everything has a built-in spell checker
+  these days.
 
-**Check for stray and trailing spaces**
-  A git diff will reveal them, as will most editors, if set up correctly. This
+  **Check for stray and trailing spaces**
+  A ``git diff`` will reveal them, as will most editors, if set up correctly. This
   page describes how to `set up vim to spot unwanted spaces`_.
 
 **Find a human reviewer**
@@ -300,7 +302,7 @@ Here is some advise on what to watch out for when contributing.
   to make sure that at least the style is consistent. This is especially
   important when you are adding content to existing documentation.
 
-That's it. If you are looking for further inspiration on good writing style,
+That is it. If you are looking for further inspiration on good writing style,
 check the FAQ in the next section. Thank you for improving the ownCloud
 documentation.
 
@@ -309,7 +311,7 @@ Frequently Asked Questions
 
 **What should I look at as a reference for good documentation style?**
   The `Sphinx documentation`_ itself is
-  very good.  Every page has a "Show source" section that shows how it was typset.
+  very good.  Every page has a "Show source" section that shows how it was typeset.
   Another great example is the `Subversion Book`_.
 
 **I need to create a new chapter, should I create chapter.rst or chapter/index.rst?**
@@ -328,15 +330,15 @@ Frequently Asked Questions
   simple tables + text anyway. Remember, people might read this on their eBook
   reader! Everything with multiline columns is something that the LaTeX generator
   frowns upon. In general though, the LaTeX generator is just a lot more picky
-  over a broken ascii table art misplacement than the HTML equivalent is.
+  over a broken ASCII table art misplacement than the HTML equivalent is.
   Double-check your markup. If you really need complex tables, consider CSV
   tables.
 
 **I have pushed changes to the documentation repo, what now?**
-  `Mr Jenkins`_ will try to build HTML and PDF versions and put them online
-  at the `ownCloud doc server`_. If he fails to build your version, you will
-  receive a mail, please fix it or ask for help on IRC (irc.freenode.net , #owncloud-dev)
-  or the `ownCloud mailinglist`_.
+  `Mr Jenkins`_ will try to build HTML and PDF versions and put them online at
+  the `ownCloud doc server`_. If he fails to build your version, you will
+  receive a mail, please fix it or ask for help on IRC (irc.freenode.net,
+  #owncloud-dev) or the `ownCloud mailinglist`_.
 
 .. [1] For the purpose of editing this documentation anyway.
 .. [2] Actual real-life example. Slightly modified to protect the innocent.
