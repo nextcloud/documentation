@@ -36,7 +36,7 @@ Use Camelcase for Objects, Pascal case for functions and variables. If you set a
       
   }
 
-  function myFunction($default=null){
+  function myFunction($default=null) {
 
   }
 
@@ -79,7 +79,7 @@ Control Structures
   <?php
 
   // single line if
-  if($myVar === 'hi'){
+  if($myVar === 'hi') {
       $myVar = 'ho';
   }
 
@@ -87,16 +87,16 @@ Control Structures
   if(    $something === 'something'
       || $condition2
       && $condition3
-  ){
+  ) {
     // your code
   }
 
   // for loop
-  for($i=0; $i<4; $i++){
+  for($i=0; $i<4; $i++) {
       // your code
   }
 
-  switch($condition){
+  switch($condition) {
       case 1:
           // action1
           break;
