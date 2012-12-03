@@ -20,10 +20,10 @@ following storage backends are available for use:
 -  FTP
 -  WebDAV
 -  `OpenStack Swift`_
--  SMB (not available in 4.0)
+-  SMB
 
-Example:
-~~~~~~~~
+Example
+~~~~~~~
 
 .. code-block:: php
 
@@ -56,8 +56,8 @@ Example:
 Backends:
 ---------
 
-Local Filesystem:
-~~~~~~~~~~~~~~~~~
+Local Filesystem
+~~~~~~~~~~~~~~~~
 
 The local filesystem backend mounts a folder on the server into the
 virtual filesystem, the class to be used is ``OC_Filestorage_Local`` and
@@ -65,19 +65,21 @@ takes the following options:
 
 -  ``datadir`` : the path to the local directory to be mounted.
 
-Ensure that the web server has sufficient permissions on the mounted folder
 
-Example:
-~~~~~~~~
+Example
+^^^^^^^
 
 .. code-block:: php
 
     array( 'class'=>'OC_Filestorage_Local',
-           'options'=>array( 'datadir'=>'/home/someuser/Music' )
+           'options'=>array( 'datadir'=>'/mnt/additional_storage' )
            )``
 
-FTP:
-~~~~
+.. note:: You must ensure that the web server has sufficient permissions on the
+          folder.
+
+FTP
+~~~
 
 The FTP backend mounts a folder on a remote FTP server into the virtual
 filesystem and is part of the ‘External storage support’ app, the class
@@ -91,13 +93,8 @@ to be used is ``OC_Filestorage_FTP`` and takes the following options:
 -  ``root``: the folder inside the ftp server to mount (optional, defaults
    to ‘/’)
 
-
-
-PHP needs to be build with FTP support for this backend to work.
-
-
-Example:
-~~~~~~~~
+Example
+^^^^^^^
 
 .. code-block:: php
 
@@ -109,8 +106,10 @@ Example:
                       'root'=>'/Videos')
          )
 
-WebDAV:
-~~~~~~~
+.. note: PHP needs to be build with FTP support for this backend to work.
+
+WebDAV
+~~~~~~
 
 The WebDAV backend mounts a folder on a remote WebDAV server into the
 virtual filesystem and is part of the ‘External storage support’ app,
@@ -125,8 +124,8 @@ options:
 -  ``root``: the folder inside the webdav server to mount (optional,
    defaults to ‘/’)
 
-Example:
-~~~~~~~~
+Example
+^^^^^^^
 
 .. code-block:: php
 
@@ -138,8 +137,8 @@ Example:
                       'secure'=>true)
           )
 
-OpenStack Swift:
-~~~~~~~~~~~~~~~~
+OpenStack Swift
+~~~~~~~~~~~~~~~
 
 The Swift backend mounts a container on an OpenStack Object Storage
 server into the virtual filesystem and is part of the ‘External storage
@@ -155,8 +154,8 @@ takes the following options:
 -  ``root``: the container inside the swift server to mount (optional,
    defaults to ‘/’)
 
-Example:
-~~~~~~~~
+Example
+^^^^^^^
 
 .. code-block:: php
 
@@ -169,13 +168,13 @@ Example:
                      'secure'=>true )
          )
 
-SMB:
-~~~~
+SMB
+~~~
 
-The SMB backend mounts a folder on a remote Samba server into the
-virtual filesystem and is part of the ‘External storage support’ app,
-the class to be used is ``OC_Filestorage_SMB``\  and takes the following
-options:
+The SMB backend mounts a folder on a remote Samba server, a NAS appliance or a
+Windows machine into the virtual file system.  It is part of the ‘External
+storage support’ app, the class to be used is ``OC_Filestorage_SMB``\  and
+takes the following options:
 
 -  ``host``: the host name of the samba server.
 -  ``user``: the user name used to login on the samba server
@@ -184,11 +183,10 @@ options:
 -  ``root``: the folder inside the samba share to mount (optional, defaults
    to ‘/’)
 
-The SMB backend requires ``smbclient`` to be installed on the server and
-is currently only available in git
+.. note:: The SMB backend requires ``smbclient`` to be installed on the server.
 
-Example:
-~~~~~~~~
+Example
+^^^^^^^
 
 .. code-block:: php
 
