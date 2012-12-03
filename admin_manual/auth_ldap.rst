@@ -6,7 +6,7 @@ logging in with LDAP credentials including:
 
 * LDAP group support
 * File sharing with users and groups
-* Access via WebDAV and of course ownCloud Desktop Clien
+* Access via WebDAV and of course ownCloud Desktop Client
 * Versioning, external Storages and all other ownCloud Goodies
 
 To connect to an LDAP server the configuration needs to be set up properly.
@@ -26,7 +26,7 @@ LDAP server and use it with ownCloud.
 
    LDAP Basic Settings
 
-Note that a hint will be shown on the right handside, when hovering with the
+Note that a hint will be shown on the right hand side, when hovering with the
 mouse over an input field. This gives you more context information while
 filling out the settings.
 
@@ -34,14 +34,14 @@ Settings Details
 ~~~~~~~~~~~~~~~~
 
 Host:
-  The hostname of the LDAP server. It can also be a ``ldaps://`` URI, for
+  The host name of the LDAP server. It can also be a ``ldaps://`` URI, for
   instance. 
 
   * *Example: directory.my-company.com*
 
 Base DN:
   The base DN of LDAP, from where all users and groups can be reached.
-  Seperated Base DNs for users and groups can be set in the Advanced
+  Separated Base DNs for users and groups can be set in the Advanced
   tab. Nevertheless, this field is mandatory.
 
   * *Example: dc=my-company,dc=com*
@@ -59,10 +59,10 @@ Password:
 
 User Login Filter:
   The filter to use when a users tries to login. Use ``%uid`` as placeholder
-  for the username. Note, that login applies this filter only, but not User
+  for the user name. Note, that login applies this filter only, but not User
   List Filter. This may change in future. 
 
-  * Example (allows login with username and email adress): ``(|(uid=%uid)(email=$uid))``
+  * Example (allows login with user name and email address): ``(|(uid=%uid)(email=$uid))``
 
 User List Filter:
   The filter to use when a search for users will be executed.
@@ -81,7 +81,7 @@ Advanced Settings
 In the LDAP Advanced settings section you can define options, that are less
 common to set. They are not needed for a working connection, unless you use a
 non-standard Port, e.g. It can also have a positive effect on the performance
-to specifiy distinguished bases for user and group searches.
+to specify distinguished bases for user and group searches.
 
 .. figure:: images/ldap-advanced-settings-oc451.png
 
@@ -111,13 +111,13 @@ Group Member association:
   * Example: uniquemember
 
 Use TLS:
-  Wether to use TLS encrypted connection to the LDAP server.
-  In case you use SSL connections (via ldaps) do not check it, it will fail.
+  Wether to use TLS encrypted connection to the LDAP server.  In case you use
+  SSL connections (via the ldaps scheme) do not check it, it will fail.
 
   * Example: [ ]
 
 Case insensitive LDAP server (Windows): 
-  Wether theLDAP server is running on a Windows Host
+  Wether the LDAP server is running on a Windows Host
 
   * Example: [ ]
 
@@ -128,9 +128,9 @@ Turn off SSL certificate validation:
   * Example: [ ]
 
 User Display Name Field: 
-  The attribute that should be used as ownCloud username. ownCloud allows
+  The attribute that should be used as ownCloud user name. ownCloud allows
   a limited set of characters ``(a-zA-Z0-9.-_@)``, every other character 
-  will be replaced in ownCloud. Once a username is assigned, it will not be
+  will be replaced in ownCloud. Once a user name is assigned, it will not be
   changed, i.e. changing this value will only have effect to new LDAP users.
   The default, uid, does not exist in AD, switch to ``cn``, for example,
   otherwise you will not see any users.
@@ -138,11 +138,10 @@ User Display Name Field:
   *  Example: displayName
 
 Group Display Name Field: 
-  The attribute that should be used as ownCloud
-  groupname. ownCloud allows a limited set of characters (a-zA-Z0-9.-_@), every
-  other character will be replaced in ownCloud. Once a groupname is assigned, it
-  will not be changed, i.e. changing this value will only have effect to new
-  LDAP groups.
+  The attribute that should be used as ownCloud group name. ownCloud allows a
+  limited set of characters (a-zA-Z0-9.-_@), every other character will be
+  replaced in ownCloud. Once a group name is assigned, it will not be changed,
+  i.e. changing this value will only have effect to new LDAP groups.
 
   * Example: ``cn`` 
 
@@ -151,7 +150,7 @@ Quota Attribute:
   there from. Specify the attribute here, otherwise keep it empty.
 
   * Example: ownCloudQuota
-  * formerly Quota Field in oC 4.0 
+  * formerly Quota Field in ownCloud 4.0
 
 Quota Default: 
   Override ownCloud default quota for LDAP users who do not 
@@ -167,7 +166,7 @@ Email Attribute:
 
 Cache Time-To-Live:
   We introduced a cache to avoid unnecessary LDAP traffic,
-  for example lookups check wether the users exists on every page request or
+  for example lookups check whether the users exists on every page request or
   WebDAV interaction. It is also supposed to speed up the Admin → User page or
   list of users to share with, once it is populated. Changing this setting
   empties the Cache. The time is given in seconds. 
@@ -177,7 +176,7 @@ Cache Time-To-Live:
 User Home Folder Naming Rule:
   By default, the ownCloud creates the user
   directory, where all files and meta data are kept, according to the ownCloud
-  username. You may want to override this setting and name it after an
+  user name. You may want to override this setting and name it after an
   attribute’s value. Once set for a user, the user name folder will not change,
   i.e. changing this value will only have effect to new LDAP users. Leave it
   empty to default behaviour
@@ -198,7 +197,7 @@ Testing the configuration
 
 In this version we introduced the ``Test Configuration`` button on the bottom
 of the LDAP settings section. It will always check the values as currently
-given in the input fields. You do not need to save before testíng. By clicking
+given in the input fields. You do not need to save before testing. By clicking
 on the button, ownCloud will try to bind to the ownCloud server with the
 settings currently given in the input fields. The response will look like this:
 
@@ -206,7 +205,7 @@ settings currently given in the input fields. The response will look like this:
 
    Failure
 
-In case the configuration fails, you can see details in ownCloud’s log, which
+In case the configuration fails, you can see details in ownCloud's log, which
 is in the data directory and called ``owncloud.log`` or on the bottom the
 ``Settings →  Admin page``. Unfortunately it requires a reload – sorry for the
 inconvenience.
@@ -226,15 +225,15 @@ Some parts of how the LDAP backend works are described here. May it be helpful.
 User and Group Mapping
 ----------------------
 
-In ownCloud, the username is automatically the user ID, same applies for
+In ownCloud, the user name is automatically the user ID, same applies for
 groups. That’s why we map the DN and UUID of the LDAP object to an ownCloud
 name. Those mappings are done in the database table ldap_user_mapping and
-ldap_group_mapping. The username is also used for the user’s folder, which
+ldap_group_mapping. The user name is also used for the user’s folder, which
 contains files and meta data. Most ownCloud applications, like Sharing, use the
-username to refer to a user. Renaming a user (or a group) is not supported.
+user name to refer to a user. Renaming a user (or a group) is not supported.
 That means that your LDAP configuration should be good and ready before putting
 it into production. The mapping tables are filled early, but as long as you are
-testing, you empty the tables any time. Don’t do this in production. If you
+testing, you empty the tables any time. Do not do this in production. If you
 want to rename a user or a group, be very careful.
 
 Caching
@@ -242,7 +241,7 @@ Caching
 
 For performance reasons a cache has been introduced to ownCloud. He we store
 all users and groups, group memberships or internal userExists-requests. Since
-ownCloud is written in PHP and each and every page rerquest (also done by Ajax)
+ownCloud is written in PHP and each and every page request (also done by Ajax)
 loads ownCloud and would execute one or more LDAP queries again, you do want to
 have some of those queries cached and save those requests and traffic. It is
 highly recommended to have the cache filled for a small amount of time, which

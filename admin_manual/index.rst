@@ -7,9 +7,11 @@ Contents
    :maxdepth: 2
 
    introduction
-   installation 
+   installation
    update
    auth_ldap 
+   custom_mount_config
+   custom_user_backend
 .. add more chapters 
 
 
