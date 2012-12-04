@@ -129,7 +129,7 @@ In general take a look at `JSLint <http://www.jslint.com/lint.html>`_ without th
 
 .. code-block:: javascript
 
-  // set up namespace for sharing across multpile files 
+  // set up namespace for sharing across multiple files
   var MyApp = MyApp || {};
 
   (function(window, $, exports){

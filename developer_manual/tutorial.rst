@@ -198,9 +198,25 @@ A simple route would look like this:
   );
   ?>
 
-The first argument is the name of your route. This is used to get the URL of the route, for instance in your Javascript code.
+The first argument is the name of your route. This is used to get the URL of the route. This is a nice way to generate the URL in your templates or JavaScript for certain links since it does not force you to hardcode your URLs. To use it in templates, use:
 
-The second parameter is the URL which should be matched. You can extract values from the URL by using **{KEY}** in the section that you want to get. That value is then available under **$params['KEY']**, for the above example it would be **$params['value']**.
+.. code-block:: php
+
+  <?
+  print_unescaped(\OC_Helper::linkToRoute( 'yourappname_routename', array('value' => 1)));
+  ?>
+
+In JavaScript you can get the URL for a route like this:
+
+.. code-block:: javascript
+
+  var params = {value: 1};
+  var url = OC.Router.generate('yourappname_routename', params);
+  console.log(url); // prints /index.php//yourappname/myurl/hi
+
+.. note:: Be sure to only use the routes generator after the routes are loaded. This can be done by registering a callback with **OC.Router.registerLoadedCallback(callback)**
+
+The second parameter is the URL which should be matched. You can extract values from the URL by using **{KEY}** in the section that you want to get. That value is then available under **$params['KEY']**, for the above example it would be **$params['value']**. You can omit the parameter if you dont extract any values from the URL at all.
 
 The $params array is always passed to your controllermethod as the only parameter.
 
@@ -217,18 +233,6 @@ You can also limit the route to GET or POST requests by simply adding **->post()
   ?>
 
 .. warning:: Dont forget to use callAjaxController() for Ajax requests! The function turns on CSRF checks by default
-
-In JavaScript you can call the routes like this:
-
-.. code-block:: javascript
-
-  var params = {value: 'hi'};
-  var url = OC.Router.generate('yourappname_routename', params);
-  console.log(url); // prints /index.php//yourappname/myurl/hi
-
-.. note:: Be sure to only use the routes generator after the routes are loaded. This can be done by registering a callback with OC.Router.registerLoadedCallback(callback)
-
-You can also omit the second generate function parameter if you dont extract any values from the URL at all.
 
 If you want to disable/enable security checks or simply swap stuff in the container, you can do it by passing a container as the fourth parameter of **callController** or callAjaxController.
 
@@ -447,7 +451,7 @@ To access the assigned variables in the template, use the **$_[]** array. The va
   ?>
 
 .. warning::
-  .. versionchanged:: 5.0 
+ . . versionchanged:: 5.0
 
   To prevent XSS the following PHP **functions for printing are forbidden: echo, print() and <?=**. Instead use ``p($data)`` for printing your values. Should you require unescaped printing, **double check for XSS** and use: ``print_unescaped($data)``.
 
