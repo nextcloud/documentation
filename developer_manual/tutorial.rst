@@ -526,7 +526,9 @@ If you have to include an image in your CSS, use %appswebroot% and %webroot% for
 
 Unittests
 ---------
-.. note:: App Unittests should **not depend on a running ownCloud instance**! They should be able to run in isolation. To achieve that, abstract the ownCloud core functions in the :file:`lib/api.php` and use a mock for testing
+.. note:: App Unittests should **not depend on a running ownCloud instance**! They should be able to run in isolation. To achieve that, abstract the ownCloud core functions in the :file:`lib/api.php` and use a mock for testing. 
+
+.. note:: Also use your app's namespace in your test classes to avoid possible conflicts when the test is run on the buildserver
 
 Unittests go into your **tests/** directory. Create the same folder structure in the tests directory like on your app to make it easier to find tests for certain classes.
 
