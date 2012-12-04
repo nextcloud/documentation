@@ -526,6 +526,8 @@ If you have to include an image in your CSS, use %appswebroot% and %webroot% for
 
 Unittests
 ---------
+.. note:: App Unittests should **not depend on a running ownCloud instance**! They should be able to run in isolation. To achieve that, abstract the ownCloud core functions in the :file:`lib/api.php` and use a mock for testing
+
 Unittests go into your **tests/** directory. Create the same folder structure in the tests directory like on your app to make it easier to find tests for certain classes.
 
 Owncloud uses `PHPUnit <http://www.phpunit.de/manual/current/en/>`_
@@ -535,67 +537,80 @@ Because of Dependency Injection, unittesting has become very easy: you can easil
 Also using a container like Pimple frees us from doing complex instantiation and object passing in our application by hand.
 
 
-A simple test for a controller would look like this
+A simple test for a controller would look like this:
+
+
+:file:`tests/controllers/AjaxControllerTest.php`
 
 .. code-block:: php
 
   <?php
-  require_once("../../lib/controller.php");
-  require_once("../../lib/response.php");
-  require_once("../../lib/request.php");
+  namespace OCA\AppTemplateAdvanced;
 
-  require_once("../mocks/api.mock.php");
+  // get abspath of file directory
+  $path = realpath( dirname( __FILE__ ) ) . '/';
 
-  require_once("../../controllers/ajax.controller.php");
+  require_once($path . "../../lib/request.php");
+  require_once($path . "../../lib/response.php");
+  require_once($path . "../../lib/controller.php");
+  require_once($path . "../../controllers/ajax.controller.php");
 
-  class AjaxControllerTest extends PHPUnit_Framework_TestCase {
+  require_once($path . "../mocks/api.mock.php");
 
 
-    public function testSetSystemValue(){
-      $post = array('somesetting' => 'this is a test');
-      $request = new \OCA\AppTemplateAdvanced\Request(null, $post);
-      $api = new APIMock();
+  class AjaxControllerTest extends \PHPUnit_Framework_TestCase {
 
-      $controller = new \OCA\AppTemplateAdvanced\AjaxController($api, $request);
-      $controller->setSystemValue();
 
-      $this->assertEquals($post['somesetting'], $api->setSystemValueData['somesetting']);
-    }
+      public function testSetSystemValue(){
+          $post = array('somesetting' => 'this is a test');
+          $request = new Request(null, $post);
+          $api = new APIMock();
+
+          $controller = new AjaxController($api, $request);
+          $controller->setSystemValue();
+
+          $this->assertEquals($post['somesetting'], $api->setSystemValueData['somesetting']);
+      }
 
 
   }
 
 
-This test uses a mock of the API class. You can define the behaviour of the class in an own file
+This test uses a mock of the API class. You can define the behaviour of the class in an own file:
+
+:file:`tests/mocks/api.mock.php`
 
 .. code-block:: php
 
   <?php
+  namespace OCA\AppTemplateAdvanced;
+
+
   class APIMock {
 
-    public $setSystemValueData;
+      public $setSystemValueData;
 
-    public function __construct(){
-      $this->setSystemValueData = array();
-    }
-
-
-    public function getAppName(){
-      return 'apptemplate_advanced';
-    }
+      public function __construct(){
+          $this->setSystemValueData = array();
+      }
 
 
-    public function setSystemValue($key, $value){
-      $this->setSystemValueData[$key] = $value;
-    }
+      public function getAppName(){
+          return 'apptemplate_advanced';
+      }
 
+
+      public function setSystemValue($key, $value){
+          $this->setSystemValueData[$key] = $value;
+      }
 
   }
 
-You can now execute the test by chaning into its directory and calling phpunit on it::
+You can now execute the test by running this in your app directory::
 
-  cd tests/controllers/
-  phpunit ajax.controller.test.php
+  phpunit tests/
+
+.. note:: PHPUnit executes all PHP Files that end with **Test.php**. Be sure to consider that in your file naming. Also use **relative require paths** like in the example to include the correct files independent for your current path
 
 
 **See also** :doc:`unittests`
