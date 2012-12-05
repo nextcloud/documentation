@@ -8,7 +8,7 @@ Before you start, please check if there already is a `similar app <http://apps.o
 
 Getting Started
 ---------------
-To get started you'll need to clone the basic git repositories into your web directory. Depending on your distro this will either be :file:`/var/www or` :file:`/srv/http`
+To get started you'll need to clone the basic git repositories into your web directory. Depending on your distro this will either be **/var/www** or **/srv/http**
 
 .. code-block:: bash
   
@@ -30,7 +30,7 @@ To disable JavaScript and CSS caching you'll have to turn on debugging in :file:
 
 Create your app
 ---------------
-The best way to create your application is to simply modify the apptemplate_advanced app.
+The best way to create your application is to simply modify the `apptemplate_advanced app <https://github.com/owncloud/apps/tree/master/apptemplate_advanced>`_.
 
 To do that execute:
 
