@@ -363,7 +363,7 @@ Database Access
 
 ownCloud uses a database abstraction layer on top of either MDB2 or PDO, depending on the availability of PDO on the server.
 
-Your database schema will be inside :file:`appinfo/database.xml` in MDB2's XML scheme notation where the placeholders '*dbprefix*' and '*dbname*' can be used for the configured database table prefix and database name. 
+Your database schema will be inside :file:`appinfo/database.xml` in MDB2's XML scheme notation where the placeholders \*dbprefix* (\*PREFIX* in your SQL) and \*dbname* can be used for the configured database table prefix and database name. 
 
 An example database XML file would look like this:
 
@@ -477,7 +477,7 @@ Your database layer should go into the **database/** folder. It's recommended to
 
 All database queries for that object should be put into a wrapper class. The wrapper class could look like this (more method examples are in the advanced_apptemplate):
 
-:file:`item.wrapper.php`
+:file:`database/item.wrapper.php`
 
 .. code-block:: php
 
