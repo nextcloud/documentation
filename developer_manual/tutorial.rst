@@ -12,11 +12,12 @@ To get started you'll need to clone the basic git repositories into your web dir
 
 .. code-block:: bash
   
-  sudo chmod a+rw /var/www  # only do this on your dev machine!
+  sudo chmod o+rw /var/www
   cd /var/www
   git clone https://github.com/owncloud/core.git owncloud
   git clone https://github.com/owncloud/apps.git apps
   git clone https://github.com/owncloud/3rdparty.git 3rdparty
+  sudo chmod o-rw /var/www
 
 Now restart your apache server and get ready to set up owncloud at http://localhost/owncloud
 
@@ -45,7 +46,7 @@ To enable your app, simply link it into the apps directory:
 
 .. code-block:: bash
 
-  ln -s /var/www/apps/yourappname /var/www/owncloud/apps/yourappname
+  sudo ln -s /var/www/apps/yourappname /var/www/owncloud/apps/yourappname
 
 or create a second apps directory in your :file:`/var/www/owncloud/config/config.php` (see :doc:`configfile`)
 
