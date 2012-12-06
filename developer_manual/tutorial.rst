@@ -133,7 +133,7 @@ To add a class to the classloader, simply use something like this:
 
   <?php
   // loads the class MyClass from the file folder/myclass.php
-  \OC::$CLASSPATH['OCA\YourAppName\MyClass'] = 'apps/yourappname/folder/myclass.php';
+  \OC::$CLASSPATH['OCA\YourAppName\MyClass'] = 'yourappname/folder/myclass.php';
   ?>
 
 
