@@ -228,16 +228,13 @@ You can also limit the route to GET or POST requests by simply adding **->post()
   <?php
   $this->create('yourappname_routename', '/myurl/{value}')->post()->action(
       function($params){
-          callAjaxController('MyController', 'methodName', $params);
+          callController('MyController', 'methodName', $params);
       }
   );
   ?>
 
-.. warning:: Dont forget to use callAjaxController() for Ajax requests! The function turns on CSRF checks by default
 
-If you want to disable/enable security checks or simply swap stuff in the container, you can do it by passing a container as the fourth parameter of **callController** or callAjaxController.
-
-The following example turns off the CSRF check for callAjaxController (but runs all the other checks, see :file:`lib/security.php`)
+If you want to replace values in the container, you can do it by passing a container as the fourth parameter of **callController**.
 
 .. code-block:: php
 
@@ -245,15 +242,13 @@ The following example turns off the CSRF check for callAjaxController (but runs 
   $this->create('yourappname_routename', '/myurl/{value}')->post()->action(
       function($params){
           $container = createDIContainer();
-          $container['Security']->setCSRFCheck(false);
-          callAjaxController('MyController', 'methodName', $params, $container);
+          $container['SomeClass'] = function($c){
+             return new SomeClass('different');
+          }
+          callController('MyController', 'methodName', $params, $container);
       }
   );
   ?>
-
-This works because the Security class is set as shared in the DI container. Non shared classes in the container return a new instance everytime they're called and would make this approach useless.
-
-To still get the desired function, you'll have to overwrite the value by setting a new class with the same index which is set as shared.
 
 
 **See also:** :doc:`routing`
@@ -262,6 +257,17 @@ To still get the desired function, you'll have to overwrite the value by setting
 Controllers
 -----------
 The App Template provides a simple baseclass for adding controllers. Controllers connect your view (templates) with your database. Controllers themselves are connected to one or more routes.
+
+A controller should be created for each resource. Think of it as an URL scheme::
+
+  /controller/method/params
+
+for instance::
+
+  /file/delete/1
+
+In this case we would create a controller named **FileController** and the method would be called **delete()**.
+
 
 The apptemplate comes with several different controllers. A simple controller would look like:
 
@@ -273,29 +279,31 @@ The apptemplate comes with several different controllers. A simple controller wo
 
 
   class MyController extends Controller {
-	
-
-	/**
-	 * @param Request $request: an instance of the request
-	 * @param API $api: an api wrapper instance
-	 */
-	public function __construct($api, $request){
-		parent::__construct($api, $request);
-	}
 
 
-	/**
-	 * @brief sets a global system value 
-	 * @param array $urlParams: an array with the values, which were matched in 
-	 *                          the routes file
-	 */
-	public function myControllerMethod($urlParams=array()){
-		$value = $this->params('somesetting');
-		
-		$response = new JSONResponse($this->appName);
-		$response->setParams(array('value' => $value));
-		return $response;
-	}
+      /**
+       * @param Request $request: an instance of the request
+       * @param API $api: an api wrapper instance
+       */
+      public function __construct($api, $request){
+          parent::__construct($api, $request);
+      }
+
+
+      /**
+       * @Ajax
+       *
+       * @brief sets a global system value 
+       * @param array $urlParams: an array with the values, which were matched in 
+       *                          the routes file
+       */
+      public function myControllerMethod($urlParams=array()){
+          $value = $this->params('somesetting');
+
+          $response = new JSONResponse($this->appName);
+          $response->setParams(array('value' => $value));
+          return $response;
+      }
 
   }
 
@@ -305,14 +313,17 @@ An instance of the api is passed via dependency injection, the same goes for a R
 
 .. note:: If a POST and GET value exist with the same key, the POST value is preferred. You should avoid to have both values with the same key though.
 
-Every controller method has to return a Response object. All possible reponses can be found in :file:`lib/response.php`. Should you require to set additional headers, you can use the **addHeader()** method that every Reponse has.
+Every controller method has to return a Response object. All possible reponses can be found in **lib/responses**. Should you require to set additional headers, you can use the **addHeader()** method that every Response has.
 
 Because TemplateResponse and JSONResponse is so common, the controller provides a shortcut method for both of those, named **$this->render** and **$this->renderJSON**.
 
 .. code-block:: php
 
   <?
-  // using render()
+
+  /**
+   * @CSRFExcemption
+   */
   public function index($urlParams=array()){
       $templateName = 'main';
       $params = array(
@@ -323,7 +334,9 @@ Because TemplateResponse and JSONResponse is so common, the controller provides 
   }
 
 
-  // using renderJSON
+  /**
+   * @Ajax
+   */
   public function getMeJSON($urlParams=array()){
       $params = array(
           'somesetting' => 'enough of this already'
@@ -333,6 +346,43 @@ Because TemplateResponse and JSONResponse is so common, the controller provides 
   }
 
 
+For security reasons, all security checks for controller methods are turned on by default. To explicitely turn off checks, you must use exemption annotations above the desired method.
+
+In this example, all security checks would be disabled (**not recommended**):
+
+
+.. code-block:: php
+
+  <?php
+  /**
+   * @CSRFExcemption
+   * @IsAdminExcemption
+   * @AppEnabledExcemption
+   * @IsLoggedInExcemption
+   * @IsSubAdminExcemption
+   */
+  public function index($urlParams=array()){
+      $templateName = 'main';
+      $params = array(
+          'somesetting' => 'How long will it take'
+      );
+
+      return $this->render($templateName, $params);
+  }
+
+Possible Annotations contain:
+
+* **@CSRFExcemption**: This checks for the `CSRF <http://en.wikipedia.org/wiki/Cross-site_request_forgery>`_ token. Turn this off when you render a normal page and not an Ajax Request
+
+* **@IsAdminExcemption**: Checks if the user is an admin
+
+* **@AppEnabledExcemption**: Checks if the app is enabled
+
+* **@IsLoggedInExcemption**: Checks if the user is logged in
+
+* **@IsSubAdminExcemption**: Checks if the user is in the sub admin group
+
+* **@Ajax**: Use this for Ajax Requests. It prevents the unneeded rendering of the apps navigation
 
 Don't forget to add your controller to the dependency container in :file:`appinfo/bootstrap.php` 
 
@@ -714,7 +764,7 @@ Unittests go into your **tests/** directory. Create the same folder structure in
 
 Owncloud uses `PHPUnit <http://www.phpunit.de/manual/current/en/>`_
 
-Because of Dependency Injection, unittesting has become very easy: you can easily substitute complex classes with mocks by simply passing a different object to the constructor.
+Because of Dependency Injection, unittesting has become very easy: you can easily substitute complex classes with `mocks <http://www.phpunit.de/manual/3.0/en/mock-objects.html>`_ by simply passing a different object to the constructor.
 
 Also using a container like Pimple frees us from doing complex instantiation and object passing in our application by hand.
 
@@ -733,58 +783,41 @@ A simple test for a controller would look like this:
   $path = realpath( dirname( __FILE__ ) ) . '/';
 
   require_once($path . "../../lib/request.php");
-  require_once($path . "../../lib/response.php");
+  require_once($path . "../../lib/responses/response.php");
+  require_once($path . "../../lib/responses/json.response.php");
   require_once($path . "../../lib/controller.php");
-  require_once($path . "../../controllers/ajax.controller.php");
-
-  require_once($path . "../mocks/api.mock.php");
+  require_once($path . "../../controllers/item.controller.php");
 
 
-  class AjaxControllerTest extends \PHPUnit_Framework_TestCase {
+  class ItemControllerTest extends \PHPUnit_Framework_TestCase {
 
 
       public function testSetSystemValue(){
           $post = array('somesetting' => 'this is a test');
           $request = new Request(null, $post);
-          $api = new APIMock();
 
-          $controller = new AjaxController($api, $request);
-          $controller->setSystemValue();
+          // create an api mock object
+          $api = $this->getMock('API', array('setSystemValue', 'getAppName'));
 
-          $this->assertEquals($post['somesetting'], $api->setSystemValueData['somesetting']);
+          // expects to be called once with the method
+          // setSystemValue('somesetting', 'this is a test')
+          $api->expects($this->once())
+                ->method('setSystemValue')
+                ->with( $this->equalTo('somesetting'),
+                    $this->equalTo('this is a test'));
+
+          // we want to return the appname apptemplate_advanced when this method
+          // is being called
+          $api->expects($this->any())
+                ->method('getAppName')
+                ->will($this->returnValue('apptemplate_advanced'));
+
+          $controller = new ItemController($api, $request, null);
+          $controller->setSystemValue(null);
+
+
       }
 
-
-  }
-
-
-This test uses a mock of the API class. You can define the behaviour of the class in an own file:
-
-:file:`tests/mocks/api.mock.php`
-
-.. code-block:: php
-
-  <?php
-  namespace OCA\AppTemplateAdvanced;
-
-
-  class APIMock {
-
-      public $setSystemValueData;
-
-      public function __construct(){
-          $this->setSystemValueData = array();
-      }
-
-
-      public function getAppName(){
-          return 'apptemplate_advanced';
-      }
-
-
-      public function setSystemValue($key, $value){
-          $this->setSystemValueData[$key] = $value;
-      }
 
   }
 
