@@ -772,7 +772,7 @@ Also using a container like Pimple frees us from doing complex instantiation and
 A simple test for a controller would look like this:
 
 
-:file:`tests/controllers/AjaxControllerTest.php`
+:file:`tests/controllers/ItemControllerTest.php`
 
 .. code-block:: php
 
@@ -815,6 +815,10 @@ A simple test for a controller would look like this:
           $controller = new ItemController($api, $request, null);
           $controller->setSystemValue(null);
 
+          $response = $controller->setSystemValue(null);
+
+          // check if the correct parameters of the json response are set
+          $this->assertEquals($post, $response->getParams());
 
       }
 
@@ -827,6 +831,7 @@ You can now execute the test by running this in your app directory::
 
 .. note:: PHPUnit executes all PHP Files that end with **Test.php**. Be sure to consider that in your file naming. Also use **relative require paths** like in the example to include the correct files independent for your current path
 
+More examples for testing controllers are in the :file:`tests/controllers/ItemControllerTest.php`
 
 **See also** :doc:`unittests`
 
