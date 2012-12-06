@@ -83,6 +83,10 @@ You'll need to give some information on your app for instance the name. To do th
 
   require_once \OC_App::getAppPath('yourappname') . '/appinfo/bootstrap.php';
 
+  // if you dont want to register settings for the admin, delete the following
+  // line
+  \OCP\App::registerAdmin('yourappname', 'admin/settings');
+
   \OCP\App::addNavigationEntry( array(
 
     // the string under which your app will be referenced
@@ -348,6 +352,8 @@ Because TemplateResponse and JSONResponse is so common, the controller provides 
 
 For security reasons, all security checks for controller methods are turned on by default. To explicitely turn off checks, you must use exemption annotations above the desired method.
 
+.. note:: The **annotations are only checked for the method that is directly called** in the routes. If that method accesses a second method internally, make sure that the security checks for the first one match the second or use a **RedirectResponse**!
+
 In this example, all security checks would be disabled (**not recommended**):
 
 
@@ -462,7 +468,7 @@ An example database XML file would look like this:
 To update the tables used by the app, simply adjust the database.xml file and increase the app version number in :file:`appinfo/version` to trigger an update.
 
 
-Your database layer should go into the **database/** folder. It's recommended to split your data entities from your database queries. You can do that by creating a very simple PHP object with getters and setters:
+Your database layer should go into the **database/** folder. It's recommended to split your data entities from your database queries. You can do that by creating a very simple PHP object with getters and setters. This object will hold your data.
 
 :file:`database/item.php`
 
@@ -681,7 +687,7 @@ To access the assigned variables in the template, use the **$_[]** array. The va
   ?>
 
 .. warning::
- . . versionchanged:: 5.0
+  .. versionchanged:: 5.0
 
   To prevent XSS the following PHP **functions for printing are forbidden: echo, print() and <?=**. Instead use ``p($data)`` for printing your values. Should you require unescaped printing, **double check for XSS** and use: ``print_unescaped($data)``.
 
