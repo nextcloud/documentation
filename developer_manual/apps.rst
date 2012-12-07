@@ -9,6 +9,9 @@ type doesn't have to be specified if the app doesn't match any of them.
 
 Currently supported "types":
 
+**prelogin**
+apps which needs to load on the login page
+
 **filesystem**
 apps which provides filesystem functionality (e.g. files sharing app)
 
