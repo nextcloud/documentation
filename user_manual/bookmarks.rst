@@ -8,7 +8,7 @@ The main interface
 --------------------
 
 Add a bookmark
-~~~~~~~
+~~~~~~~~~~~~~~
 
 The main ownCloud interface contains 3 fields at the top where
 you can enter the website address (or URL), the title of your bookmark and
@@ -20,7 +20,7 @@ In this example, we have added the page : http://wikipedia.org with the title "W
 and some tags describing what wikipedia is (for an easier search later on).
 
 Edit/delete a bookmark
-~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
 
 You also have the possibility to edit or delete your bookmark.
 For that, just hover on the bookmark and click on the little pencil if you wish to edit the bookmark
@@ -30,7 +30,7 @@ The bookmark will then be filled into the 3 fields at the top of the screen.
 Modify your bookmark to your need then hit the save button to persist the change.
 
 Search
-~~~~~~~
+~~~~~~
 
 If you click on a tag, ownCloud will only display the bookmarks that
 are described with this tag.
