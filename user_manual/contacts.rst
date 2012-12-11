@@ -16,10 +16,10 @@ Importing
 ~~~~~~~~~
 
 So first well check out how to import all the VCF files as they are a lot
-more faster way of creating contacts.
+more faster way of creating contacts in this wonderful app.
 Just below the contact list, 3 buttons: The middle one let you upload files.
 
-.. image:: images/contact_bottombar.jpg
+.. figure:: images/contact_bottombar.jpg
 
 
 Once you've clicked it, the upload window let you choose your files.
@@ -27,17 +27,17 @@ We can upload the files one by one or upload all of them at one go.
 
 Let me demonstrate.
 Open the directory in which you store all the files and then do the following
-Keep pressing CTRL and select the files to upload.
+Keep pressing ctrl and select the files to upload.
 After you are done just click on the open button
 After the upload it should look something like this in which all the names and contacts will be sorted alphabetically
 
-.. image:: images/contact_vcfpick.jpg
+.. figure:: images/contact_vcfpick.jpg
 
 Then, the interface ask you where to put your imported contacts.
 You have the ability to choose an existing addressbook or to create a new one.
-Then click on "OK" and that's all for the import of contacts.
+Then click on "Ok" and that's all for the import of contacts.
 
-.. image:: images/contact_import.jpg
+.. figure:: images/contact_import.jpg
 
 Create contacts manually
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -50,7 +50,7 @@ the name, the address, the e-mail, the telephone nr, ...
 Just click on a field and start typing the information.
 You can use the "Add Field" button to add another types of information for this contact.
 
-.. image:: images/contact_emptycontact.jpg
+.. figure:: images/contact_emptycontact.jpg
 
 When you want to remove an information of your contact, just click on little delete icon
 at the right of the field you want to remove.
@@ -61,7 +61,7 @@ Adding picture to the contact
 
 There are two methods in which you can give a picture id to the specific contact
 
-.. image:: images/contact_picture.jpg
+.. figure:: images/contact_picture.jpg
 
 1) **Direct upload**
 2) **Select pics already uploaded in ownCloud files.**
@@ -69,7 +69,7 @@ There are two methods in which you can give a picture id to the specific contact
 After you have selected the picture for the contact you get
 an option to crop the picture to suit your requirements
 
-.. image:: images/contact_crop.jpg
+.. figure:: images/contact_crop.jpg
 
 You can crop the picture however you wish and then press OK.
 
@@ -85,7 +85,7 @@ When you click on the third button of the bottom bar,
 you will have access to the application's settings.
 Then, press on the "More button" to access the options of your Addressbooks.
 
-.. image:: images/contact_del_ab.jpg
+.. figure:: images/contact_del_ab.jpg
 
 You have there the ability to add, delete, download or share your addressbooks.
 Hover your cursor on every icon to see what they mean.
@@ -105,7 +105,7 @@ Syncing with Android
 4) After the app has checked your login details you may just select- Sync server to phone option
 5) That's it there is nothing else to do for Android :)
 
-.. image:: images/contact_syncopt.jpg
+.. figure:: images/contact_syncopt.jpg
 
 Syncing your IOS device
 ~~~~~~~~~~~~~~~~~~~~~~~
