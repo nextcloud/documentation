@@ -7,10 +7,17 @@ Contents
    :maxdepth: 2
 
    introduction
-   connecting/index 
-   connecting/webdav
+   connecting_browser
+   connecting_webdav
+   files
    contacts
    bookmarks
+   sync
+   sync_kde
+   sync_osx
+   sync_ios
+   mediaplayer
+   versioncontrol
 .. add more chapters 
 
 
