@@ -7,10 +7,12 @@ Contents
    :maxdepth: 2
 
    introduction
-   installation 
+   installation
    update
    auth_ldap 
    xsendfile
+   custom_mount_config
+   custom_user_backend
 .. add more chapters 
 
 

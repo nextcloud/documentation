@@ -2,27 +2,27 @@ Mounting ownCloud via WebDAV
 =============================
 
 All major operating systems allow for mounting a users ownCloud via WebDAV,
-a HTTP extension as specified in :rfc:`2518`. This chapter describes how to 
+a HTTP extension as specified in :rfc:`2518`. This chapter describes how to
 setup WebDAV on different operating systems.
 
 Windows
 -------
 
-On Windows, you can assign ownCloud a drive letter.  This allows you to 
-browse files stored on an ownCloudserver the way you would files stored in a 
-mapped network drive. 
+On Windows, you can assign ownCloud a drive letter.  This allows you to
+browse files stored on an ownCloudserver the way you would files stored in a
+mapped network drive.
 
 Using this feature requires network connectivity. If you want to store
 your files offline, use the ownCloud Client to sync all files on your
-ownCloud to one or more directories of your local hard drive. 
+ownCloud to one or more directories of your local hard drive.
 
 
-.. note:: Prior to mapping your drive, you will need to permit the use of 
+.. note:: Prior to mapping your drive, you will need to permit the use of
           Basic Authentication in the Windows Registry. The procedure is
           documented in KB841215_ and differs between Windows XP/Server 2003
           and Windows Vista/7. Please follow the Knowledge Base article
-          before proceeding, and follow the Vista instructions if you run 
-          Windows 7. 
+          before proceeding, and follow the Vista instructions if you run
+          Windows 7.
 
 Mapping via the command line
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -34,7 +34,7 @@ Running
   net use Z: https://www.yourserver.com/owncloud/remote.php/webdav /user:youruser yourpassword
 
 will map the files of your ownCloud account to the drive letter Z:. An alternative
-syntax is: 
+syntax is:
 
   net use Z: \\www.yourserver.com@ssl\owncloud\remote.php\webdav /user:youruser yourpassword
 
@@ -48,24 +48,24 @@ Use either of the following syntaxes::
 
 Please note that this allows anyone to sniff your ownCloud data with ease, especially
 on public WiFi hotspots. Plain HTTP should therefore only be used in conjunction
-with a VPN tunnel when used on Laptops. 
+with a VPN tunnel when used on Laptops.
 
 Using Windows Explorer
 ~~~~~~~~~~~~~~~~~~~~~~
 
 Right-click on ``Computer`` entry and select ``Map network drive...``. Choose a local network
 drive to map ownCloud to. Finally, enter the address to your ownCloud instance, followed by
-``/remote.php/webdav``, e.g. :: 
+``/remote.php/webdav``, e.g. ::
 
   https://www.yourserver.com/owncloud/remote.php/webdav
 
-for an SSL protected server. Check ``Reconnect at logon`` to make this mapping persistent 
+for an SSL protected server. Check ``Reconnect at logon`` to make this mapping persistent
 across reboots. If you want to connect as another user, check ``Connect using different credentials``.
 
-.. figure:: images/explorer_webdav.png 
+.. figure:: images/explorer_webdav.png
    :scale: 80%
-   
-   Mapping WebDAV on Windows Explorer. 
+
+   Mapping WebDAV on Windows Explorer.
 
 After pressing ``Finish``, Windows Explorer will map the network drive and your ownCloud instance
 should be available
@@ -83,7 +83,7 @@ The port depends on whether your ownCloud server supports SSL or not. Cyberduck 
 Port
   80 (for WebDAV)
   443 (for WebDAV (HTTPS/SSL))
-  
+
 Use the 'More Options' drop-down menu to add the rest of your webdav URL into the 'Path' field. e.g.:
 
 Path
@@ -101,7 +101,7 @@ Solution
   encrypted connections. If you encounter an error mounting an SSL-encrypted
   ownCloud instance, please contact your provider about assigning a dedicated
   IP address for your SSL-based server.
-          
+
 Problem
   I receive the error ``Error 0x800700DF: The file size exceeds the limit allowed and cannot be saved.``
 
@@ -112,10 +112,10 @@ Solution
   by clicking on ``Modify``. In order to increase the limit to the maximum
   value of 4GB, pick ``Decimal`` and enter ``4294967295`` as value. Afterwards,
   reboot Windows or restart the ``WebClient`` service.
- 
+
 .. todo::
 
-   document registry keys on file size limit and not complaining in no network cases 
+   document registry keys on file size limit and not complaining in no network cases
 
 Mac OS X
 --------
@@ -126,7 +126,7 @@ In the Finder, choose ``Go > Connect to Server,`` type the address of the server
 ``Server Address`` field, and click ``Connect``.  The server address should be in a form
 similar to this: ``ADDRESS/files/webdav.php``. For our example, it would be::
 
-  https://www.yourserver.com/owncloud/files/webdav.php 
+  https://www.yourserver.com/owncloud/files/webdav.php
 
 For details, check the respective `vendor documentation`_ at the Apple website.
 
@@ -155,8 +155,8 @@ Assuming your owncloud instance is installed at ``http://www.yourserver.com/ownc
 Ubuntu/Gnome (Nautilus)
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-.. figure:: images/nautilus_webdav.png 
-   
+.. figure:: images/nautilus_webdav.png
+
    Nautilus WebDAV mounting dialog
 
 Mounting from command line
