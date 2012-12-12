@@ -8,6 +8,7 @@ Contents
 
    debugging
    apps
+   guidelines
 
 
 
