@@ -64,7 +64,7 @@ Version 1.1
 
 * New Plugin system
 * User management
-* ownCloud can now be installed in a DB shared with other applications since ownCloud tables has a prefix (default is “oc_” but can choose it)
+* ownCloud can now be installed in a DB shared with other applications since ownCloud tables has a prefix (default is ï¿½oc_ï¿½ but can choose it)
 * Experimental PostgreSQL support
 * Text viewer with syntax highlighting
 * Support for OCS private attribute storage and activity
@@ -82,5 +82,5 @@ Version 1.0
 
 .. _May 22nd 2012, Release Announcement: http://blog.karlitschek.de/2012/05/owncloud-4-released.html
 .. _January 31st 2012, Release Announcement: http://owncloud.org/owncloud-3-release/
-.. _ November 23rd, 2010, Release Anouncement: http://blog.karlitschek.de/2010/11/owncloud-11-released.html
+.. _November 23rd, 2010, Release Anouncement: http://blog.karlitschek.de/2010/11/owncloud-11-released.html
 .. _June 24th 2010, Release Announcement: http://blog.karlitschek.de/2010/06/owncloud-10-is-here.html
