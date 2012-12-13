@@ -47,30 +47,37 @@ Tell owncloud of our app: appinfo/
 
 In appinfo are three files. Each app must have app.php and info.xml, database.xml is only needed when the app creates its own tables.app.php is called by owncloud each time it runs. Let us examine this file line by line.
 
-
-``OC::$CLASSPATH['OC_Contacts_Addressbook'] = 'apps/contacts/lib/addressbook.php';
-OC::$CLASSPATH['OC_Contacts_Hooks'] = 'apps/contacts/lib/hooks.php';
-OC::$CLASSPATH['OC_Connector_Sabre_CardDAV'] = 'apps/contacts/lib/connector_sabre.php';``
+.. code-block:: php
+  
+  OC::$CLASSPATH['OC_Contacts_Addressbook'] = 'apps/contacts/lib/addressbook.php';
+  OC::$CLASSPATH['OC_Contacts_Hooks'] = 'apps/contacts/lib/hooks.php';
+  OC::$CLASSPATH['OC_Connector_Sabre_CardDAV'] = 'apps/contacts/lib/connector_sabre.php';
 
 This adds some entries to the OC::$CLASSPATH. This helps the ownCloud autoload function to load classes that are not in /lib. The cool thing about this is that you do not need to include anything else than /lib/base.php.
 
-``OC_HOOK::connect('OC_User', 'post_createUser', 'OC_Contacts_Hooks', 'deleteUser');``
+.. code-block:: php
+  
+  OC_HOOK::connect('OC_User', 'post_createUser', 'OC_Contacts_Hooks', 'deleteUser');
 
 We do not need addressbooks of deleted people. But how do we know when a user is being deleted? For this, we use hooks. As soon as someone deletes a user the OC_Uer class emits the signal post_createUser. We use this signal and connect it with the slot deleteUser in the class OC_Contact_Hooks. For more details, have a look at the documentation of OC_Hook.
 
-``OC_App::register( array(
-'order' => 10,
-'id' => 'contacts',
-'name' => 'Contacts' ));``
+.. code-block:: php
+  
+  OC_App::register( array(
+    'order' => 10,
+    'id' => 'contacts',
+    'name' => 'Contacts' ));
 
 Registers the app in ownCloud.
 
-``OC_App::addNavigationEntry( array(
-'id' => 'contacts_index',
-'order' => 10,
-'href' => OC_Helper::linkTo( 'contacts', 'index.php' ),
-'icon' => OC_Helper::imagePath( 'contacts', 'icon.png' ),
-'name' => 'Contacts' ));``
+.. code-block:: php
+  
+  OC_App::addNavigationEntry( array(
+    'id' => 'contacts_index',
+    'order' => 10,
+    'href' => OC_Helper::linkTo( 'contacts', 'index.php' ),
+    'icon' => OC_Helper::imagePath( 'contacts', 'icon.png' ),
+    'name' => 'Contacts' ));
 
 This adds the entry to the navigation.info.xml is self-explanatory.database.xml describes the database as required by MDB2. Note that the database name is *dbname* and that each table name needs a *dbprefix* in front of it.
 
