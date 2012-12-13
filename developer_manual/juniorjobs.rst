@@ -5,6 +5,7 @@ Everybody can help to make ownCloud better. Here is a list of jobs for beginners
 `Junior Jobs in the core repository`_
 `Junior Jobs in the apps repository`_
 Junior developer jobs:
+
 * eBook reader app
    Show all the pdf files on a nice overview page ideally with the first page as a thumbnail. The pdf opens with the integrated pdf viewer based on pdf.js for reading. The scanning and indexing of the files should be similar to the Gallery app. Future extension can be downloading of new ebooks from open stores like Project Gutenberg or other repositories and sending of files to ereaders like kindles
 * Dolphin Context Menu.
