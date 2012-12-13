@@ -18,18 +18,28 @@ Set up your development environment
 
 #. Install git, for example by: ``sudo apt-get install git``
 #. The following folder structure is suggested:
-   ``/path/to/webserver/owncloud - core repo``
-   ``/path/to/webserver/apps - apps repo``
-   ``/path/to/webserver/3rdparty - 3rdparty repo``
+
+   .. code-block:: bash
+  
+      /path/to/webserver/owncloud - core repo
+      /path/to/webserver/apps - apps repo
+      /path/to/webserver/3rdparty - 3rdparty repo
 
    - Open a terminal and:
-     ``cd /path/to/webserver``
-     ``git clone https://github.com/owncloud/core ./owncloud``
-     ``git clone https://github.com/owncloud/apps``
-     ``git clone https://github.com/owncloud/3rdparty``
+
+   .. code-block:: bash
+
+      cd /path/to/webserver
+      git clone https://github.com/owncloud/core ./owncloud
+      git clone https://github.com/owncloud/apps
+      git clone https://github.com/owncloud/3rdparty
+
    - ownCloud will automatically detect the 3rdparty folder if it's either in /path/to/webserver/owncloud or in /path/to/webserver/.
 #. If you want to use an app from the app repository, you have to `setup multiple app directories`_ or symlink each app like e.g.
-   ``ln -s /path/to/webserver/apps/news /path/to/webserver/owncloud/apps/news``
+   
+   .. code-block:: bash
+     
+      ln -s /path/to/webserver/apps/news /path/to/webserver/owncloud/apps/news
 #. `Install ownCloud`_
 #. Dive into the code!
 
