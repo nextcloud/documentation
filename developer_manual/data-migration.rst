@@ -42,7 +42,7 @@ To make exporting database data really easy, the class OC_Migration_Content has 
   	}	
   }
 
-The bookmarks app stores all of its data in the database, in two tables: *PREFIX*bookmarks and *PREFIX*bookmarks_tags so to export this, we need to run copyRows() twice. Here is an explanation of the options passed to OC_Migration_Content::copyRows():
+The bookmarks app stores all of its data in the database, in two tables: *PREFIX* bookmarks and *PREFIX* bookmarks_tags so to export this, we need to run copyRows() twice. Here is an explanation of the options passed to OC_Migration_Content::copyRows(): 
 
 * ‘table’ => string name of the table to export (without any prefix)
 * ‘matchcol’ => (optional) string name of the column that will be matched with the value in ‘matchval’ (Basically the column used in the WHERE sql query)
