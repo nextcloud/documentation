@@ -48,15 +48,21 @@ The interface for shared items that are collections of another shared item e.g. 
 
 Register a backend with the Share API in ``appinfo/app.php``:
 
-``OCP\Share::registerBackend('contact', 'OC_Share_Backend_Contact');``
+.. code-block:: php
+
+  OCP\Share::registerBackend('contact', 'OC_Share_Backend_Contact');
 
 Register a file dependent backend by specifying file extensions within an array in the fourth parameter:
 
-``OCP\Share::registerBackend('photo', 'OC_Share_Backend_Photo', null, array('gif', 'jpeg', 'jpg', 'png'));``
+.. code-block:: php
+
+  OCP\Share::registerBackend('photo', 'OC_Share_Backend_Photo', null, array('gif', 'jpeg', 'jpg', 'png'));
 
 Register a collection backend by specifying the children item in the third parameter:
 
-``OCP\Share::registerBackend('addressbook', 'OC_Share_Backend_Addressbook', 'contact');``
+.. code-block:: php
+
+  OCP\Share::registerBackend('addressbook', 'OC_Share_Backend_Addressbook', 'contact');
 
 Apps should not make any explicit calls to a share backend.
 
@@ -65,7 +71,9 @@ Sharing dropdown
 
 The sharing dropdown is the user interface for sharing content. It handles sharing, unsharing, and setting permissions. Attach the sharing dropdown to the app user interface using an anchor tag:
 
-``<a class="share" data-item-type="addressbook" data-item="<?php echo $addressbook['id'] ?>" title="<?php echo $l->t("Share"); ?>" />``
+.. code-block:: php
+
+  <a class="share" data-item-type="addressbook" data-item="<?php echo $addressbook['id'] ?>" title="<?php echo $l->t("Share"); ?>" />
 
 Specify the item type with ``data-item-type`` and the item source with ``data-item``. Shared items that don’t offer private link support should set ``data-private-link`` to false. At this time any shared item that isn’t file dependent is not supported for private links.
 
@@ -76,27 +84,39 @@ Items shared with the current user and shared items owned by the current user ca
 
 Get the items of item type shared with the current user:
 
-``OCP\Share::getItemsSharedWith('addressbook');``
+.. code-block:: php
+
+  OCP\Share::getItemsSharedWith('addressbook');
 
 Get the item of item type shared with the current user:
 
-``OCP\Share::getItemSharedWith('addressbook', "Michael's Addressbook");``
+.. code-block:: php
+
+  OCP\Share::getItemSharedWith('addressbook', "Michael's Addressbook");
 
 Get the item of item type shared with the current user by item source:
 
-``OCP\Share::getItemSharedWith('addressbook', 1);``
+.. code-block:: php
+
+  OCP\Share::getItemSharedWith('addressbook', 1);
 
 Get the shared items of item type owned by the current user:
 
-``OCP\Share::getItemsShared('addressbook');``
+.. code-block:: php
+
+  OCP\Share::getItemsShared('addressbook');
 
 Get the shared item of item type owned by the current user:
 
-``OCP\Share::getItemsShared('addressbook', 1);``
+.. code-block:: php
+
+  OCP\Share::getItemsShared('addressbook', 1);
 
 All of the above functions allow you to pass a ``$format`` and an additional ``$parameters`` argument for formatting the items. The ``$format`` argument should be an integer defined as a constant in the backend. There are no restrictions on what the ``$parameters`` argument is. The handling of the function returns will be passed to the formatItems() function in the backend, along with the ``$format`` and ``$parameters`` arguments. Passing a format is useful for keeping the logic in the backend and quickly integrating shared items into the existing app:
 
-``$addressbooks = array_merge($addressbooks, OCP\Share::getItemsSharedWith('addressbook', OC_Share_Backend_Addressbook::FORMAT_ADDRESSBOOKS));``
+.. code-block:: php
+
+  $addressbooks = array_merge($addressbooks, OCP\Share::getItemsSharedWith('addressbook', OC_Share_Backend_Addressbook::FORMAT_ADDRESSBOOKS));
 
 Collections of item types can be included when retrieving shared items. Setting ``$includeCollections`` to true will also return the children of collections of the item type. If the app requires a different format for the item type and the collection, separate calls should be made instead.
 
@@ -113,4 +133,6 @@ The Share API is capable of storing permissions associated with an item and the 
 
 Apps should check if permissions are granted when a user with access to a shared item attempts to manipulate the item. Check granted permissions using bitwise operators:
 
-``if ($permissions & OCP\Share::PERMISSION_UPDATE)``
+.. code-block:: php
+
+  if ($permissions & OCP\Share::PERMISSION_UPDATE)
