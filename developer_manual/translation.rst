@@ -25,9 +25,9 @@ Translators will translate:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * Select file from
 * local filesystem
-* ‘ or ‘
+* ' or "
 * cloud
-By translating these individual strings for sure the case will be lost of “local filesystem” and “cloud”. The two white spaces with the or will get lost while translating as well.
+By translating these individual strings for sure the case will be lost of local filesystem and cloud. The two white spaces with the or will get lost while translating as well.
 
 Html on translation string:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -43,20 +43,20 @@ In case you need to add variables to the translation strings do it like that:
 Automated synchronization of translations
 -----------------------------------------
 
-Multiple nightly jobs have been setup in order to synchronize translations – it’s a multi-step process:
-‘perl l10n.pl read’ will rescan all php and javascript files and generate the templates.
+Multiple nightly jobs have been setup in order to synchronize translations - it's a multi-step process:
+``perl l10n.pl read`` will rescan all php and javascript files and generate the templates.
 The templates are pushed to `Transifex`_ (tx push -s).
 All translations are pulled from `Transifex`_ (tx pull -a).
-‘perl l10n.pl write’ will write the php files containing the translations.
+``perl l10n.pl write`` will write the php files containing the translations.
 Finally the changes are pushed to git.
 
 Please follow the steps below to add translation support to your app:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Create a folder ‘l10n’.
-Create the file ‘ignorelist’ which can contain files which shall not be scanned during step 4.
-Edit ‘l10n/.tx/config’ and copy/past a config section and adopt it by changing the app/folder name.
-Run ‘perl l10n.pl read’ with l10n
+Create a folder ``l10n``.
+Create the file ``ignorelist`` which can contain files which shall not be scanned during step 4.
+Edit ``l10n/.tx/config`` and copy/past a config section and adopt it by changing the app/folder name.
+Run ``perl l10n.pl read`` with l10n
 Add the newly created translation template (l10n/Templates/<appname>.pot) to git and commit the changes above.
 After the next nightly sync job a new resource will appear on Transifex and from now on every night the latest translations will arrive.
 
