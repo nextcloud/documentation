@@ -41,6 +41,6 @@ If you want to know how to use them, you should take a look `here`_.
 New public API
 ~~~~~~~~~~~~~~
 
-We also introduced our new public api. The documentation for this api can be found at api.ownCloud.org.
+We also introduced our new public api. The documentation for this api can be found at http://api.ownCloud.org.
 
 .. _here: http://owncloud.org/dev/apps/public-php-and-remote-php/
