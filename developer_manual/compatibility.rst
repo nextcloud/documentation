@@ -16,11 +16,15 @@ Paths:
 
 For generating a path in PHP use our new public API:
 
-``OCP\Util::linkTo``
+.. code-block:: php
+  
+  OCP\Util::linkTo
 
 and for generating a path in Js use the function:
 
-``OC.filePath``
+.. code-block:: php
+  
+  OC.filePath
 
 CSS:
 ~~~~
@@ -29,7 +33,9 @@ You have to use the placeholders ``%appswebroot%`` and ``%webroot%``, if your CS
 
 Example from our source code:
 
-``#contacts_deletecard {position:relative; float:left; background:url('%webroot%/core/img/actions/delete.svg') no-repeat center; }``
+.. code-block:: css
+  
+  #contacts_deletecard {position:relative; float:left; background:url('%webroot%/core/img/actions/delete.svg') no-repeat center; }
 
 public.php and remote.php
 ~~~~~~~~~~~~~~~~~~~~~~~~~
