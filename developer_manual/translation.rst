@@ -25,10 +25,12 @@ Example:
 
 Translators will translate:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * Select file from
 * local filesystem
 * ' or "
 * cloud
+
 By translating these individual strings for sure the case will be lost of local filesystem and cloud. The two white spaces with the or will get lost while translating as well.
 
 Html on translation string:
