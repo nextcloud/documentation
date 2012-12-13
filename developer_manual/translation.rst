@@ -19,7 +19,9 @@ Translators loose the context and they have no chance to possible re-arrange wor
 Example:
 ~~~~~~~~
 
-``<?php echo $l->t('Select file from') . ' '; ?><a href='#' id="browselink"><?php echo $l->t('local filesystem');?></a><?php echo $l->t(' or '); ?><a href='#' id="cloudlink"><?php echo $l->t('cloud');?></a>``
+.. code-block:: php
+
+  <?php echo $l->t('Select file from') . ' '; ?><a href='#' id="browselink"><?php echo $l->t('local filesystem');?></a><?php echo $l->t(' or '); ?><a href='#' id="cloudlink"><?php echo $l->t('cloud');?></a>
 
 Translators will translate:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -38,7 +40,10 @@ What about variable in the strings?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In case you need to add variables to the translation strings do it like that:
-`` $l->t('%s is available. Get <a href="%s">more information</a>',array($data['versionstring'], $data['web']));``
+
+.. code-block:: php
+
+  $l->t('%s is available. Get <a href="%s">more information</a>',array($data['versionstring'], $data['web']));
 
 Automated synchronization of translations
 -----------------------------------------
@@ -72,19 +77,23 @@ http://ci.tmit.eu/job/ownCloud-Mirall-tx/
 Manual quick translation update:
 --------------------------------
 
-``cd l10n/ && perl l10n.pl read && tx push -s && tx pull -a && perl l10n.pl write && cd ..``
+.. code-block:: bash
+
+  cd l10n/ && perl l10n.pl read && tx push -s && tx pull -a && perl l10n.pl write && cd ..
 
 The translation script requires Locale::PO, installable via ``apt-get install liblocale-po-perl``
 
 Configure transifex
 -------------------
 
-``tx init
- 
-for resource in calendar contacts core files media gallery settings
-do
-tx set --auto-local -r owncloud.$resource "<lang>/$resource.po" --source-language=en \
- --source-file "templates/$resource.pot" --execute
-done``
+.. code-block:: bash
+
+  tx init
+  
+  for resource in calendar contacts core files media gallery settings
+  do
+  tx set --auto-local -r owncloud.$resource "<lang>/$resource.po" --source-language=en \
+   --source-file "templates/$resource.pot" --execute
+  done
 
 .. _Transifex: https://www.transifex.net/projects/p/owncloud/
