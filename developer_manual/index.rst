@@ -23,10 +23,10 @@ Contents
    theming
    formfactors
    dialogs
-   share_api
-   data_migration
+   share-api
+   data-migration
    access
-   unit_testing
+   unit-testing
    compatibility
 
 
