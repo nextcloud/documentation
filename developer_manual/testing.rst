@@ -11,12 +11,12 @@ Anyone can get involved in the formal testing process. No programming experience
 Release Schedule
 ----------------
 
-* 20.08.12 – Soft feature freeze (Alpha 1)
-* 28.08.12 – Hard feature freeze (Beta 1)
-* 03.09.12 – Beta 2 Only bugfixes are allowed from now on
-* 10.09.12 – RC 1 Only showstopper bugfixes are allowed from now on
-* 17.09.12 – RC 2
-* 26.09.12 – Announcement of ownCloud 4.5
+* 20.08.12 ï¿½ Soft feature freeze (Alpha 1)
+* 28.08.12 ï¿½ Hard feature freeze (Beta 1)
+* 03.09.12 ï¿½ Beta 2 Only bugfixes are allowed from now on
+* 10.09.12 ï¿½ RC 1 Only showstopper bugfixes are allowed from now on
+* 17.09.12 ï¿½ RC 2
+* 26.09.12 ï¿½ Announcement of ownCloud 4.5
 
 Testing guidelines
 ------------------
@@ -33,6 +33,7 @@ Tests
 -----
 
 Test tasks are categorized by apps, those at the top of the list have priority for testing during this release. While 3rd party apps are not supported by ownCloud, app developers may also request for testing of their apps here.
+
 * `Files`_
 * `Sharing`_
 * Settings
