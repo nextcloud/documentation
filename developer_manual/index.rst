@@ -13,8 +13,6 @@ Contents
    codereviews
    kanban
    translation
-   roadmap
-   juniorjobs
    testing
    database
    getting_started
