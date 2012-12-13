@@ -13,6 +13,9 @@ Contents
    codereviews
    kanban
    translation
+   roadmap
+   juniorjobs
+   testing
 
 
 Indices and tables
