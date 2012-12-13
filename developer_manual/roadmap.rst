@@ -64,7 +64,7 @@ Version 1.1
 
 * New Plugin system
 * User management
-* ownCloud can now be installed in a DB shared with other applications since ownCloud tables has a prefix (default is �oc_� but can choose it)
+* ownCloud can now be installed in a DB shared with other applications since ownCloud tables has a prefix (default is oc_ but can choose it)
 * Experimental PostgreSQL support
 * Text viewer with syntax highlighting
 * Support for OCS private attribute storage and activity
