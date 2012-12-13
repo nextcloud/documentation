@@ -5,9 +5,11 @@ ownCloud uses a database abstraction layer on top of either MDB2 or PDO, dependi
 
 Apps should always use prepared statements when accessing the database as seen in the following example:
 
-``$query=OC_DB::prepare('SELECT foo,bar FROM *PREFIX*mytable' WHERE user=?');
-$result=$query->execute(array($userId));
-$data=$result->fetchAll();``
+.. code-block:: php
+  
+  $query=OC_DB::prepare('SELECT foo,bar FROM *PREFIX*mytable' WHERE user=?');
+  $result=$query->execute(array($userId));
+  $data=$result->fetchAll();
 
 *'PREFIX'* in the query string will be replaced by the configured database table prefix while preparing the query. Arguments for the prepared statement are denoted by a '?' in the query string and passed during execution in an array.
 For more information about MDB2 style prepared statements, please see the official MDB2 documentation `here`_
