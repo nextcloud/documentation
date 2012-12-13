@@ -9,7 +9,10 @@ Contents
    debugging
    apps
    guidelines
-
+   styleguide
+   codereviews
+   kanban
+   translation
 
 
 Indices and tables
