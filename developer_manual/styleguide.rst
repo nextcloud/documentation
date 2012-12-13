@@ -1,6 +1,6 @@
 Coding Style Guide
 ==================
 
-*Note: this is work-in-progress! We are currently building up this style guide and it’s topic of discussion.*
+See `Coding Style Guidelines`_.
 
-See http://owncloud.org/dev/coding-style-guide/
+.. _Coding Style Guidelines: http://doc.owncloud.com/server/5.0/developer_manual/codingguidelines.html
