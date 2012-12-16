@@ -18,6 +18,7 @@ Contents
    sync_ios
    mediaplayer
    versioncontrol
+   migration
 .. add more chapters 
 
 
