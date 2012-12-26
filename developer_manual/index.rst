@@ -19,7 +19,6 @@ Contents
    routing
    apps
    guidelines
-   styleguide
    codereviews
    kanban
    translation
