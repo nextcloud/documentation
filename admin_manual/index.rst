@@ -13,6 +13,7 @@ Contents
    xsendfile
    custom_mount_config
    custom_user_backend
+   migrating
 .. add more chapters 
 
 
