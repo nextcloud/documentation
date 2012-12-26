@@ -5,17 +5,23 @@ External API
 
 Introduction
 ------------
-The external API inside ownCloud allows third party developers to access data provided by ownCloud apps. ownCloud version 5.0 will follow the OCS V1.7 specification `found here (draft) <http://www.freedesktop.org/wiki/Specifications/open-collaboration-services-1.7>`_.
+The external API inside ownCloud allows third party developers to access data
+provided by ownCloud apps. ownCloud version 5.0 will follow the `OCS v1.7
+specification`_ (draft).
+
+.. _OCS v1.7 specification: http://www.freedesktop.org/wiki/Specifications/open-collaboration-services-1.7
 
 Usage
 ------------
-To make use of the external api as an app developer, there are just three things to do.
+To make use of the external api as an app developer, there are just three things
+to do.
 
 #. Add your API routes inside $app/appinfo/routes.php
 #. Code your API methods in $app/lib/*
 #. Update the OCS spec with your call
 
-To register your API routes, we make use of the OCP\API::register() method as defined below:
+To register your API routes, we make use of the OCP\API::register() method as
+defined below:
 
 .. php:class:: OCP\\API
 
@@ -35,8 +41,12 @@ To register your API routes, we make use of the OCP\API::register() method as de
       
 Routing URLs
 ~~~~~~~~~~~~~
-The API uses the new routing features inside ownCloud to make it easy to attach api methods to urls which include variables. To register an API method including a variable, simple place the variable name in curly brackets {}. For example:
+The API uses the new routing features inside ownCloud to make it easy to attach
+api methods to urls which include variables. To register an API method including
+a variable, simple place the variable name in curly brackets {}. For example:
 
    /cloud/users/{userid}
 
-If the URL /cloud/users/Tom is requested, the api function registered with this url would be called, and passed the parameter 'userid' with the value: 'Tom'. The parameters are passed to the API methods inside an array.
+If the URL /cloud/users/Tom is requested, the api function registered with this
+url would be called, and passed the parameter 'userid' with the value: 'Tom'.
+The parameters are passed to the API methods inside an array.

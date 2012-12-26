@@ -36,7 +36,7 @@ Contents
    access
    unit-testing
    compatibility
-
+   externalapi
 
 Indices and tables
 ==================
