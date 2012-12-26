@@ -44,7 +44,7 @@ refresh interval.
 Now you should see the Akonadi resource doing the first
 synchronization.
 
-..  missing...
+..  missing
 ..  .. image:: /images/kdes8.png
 
 You can find the Contacts and Calendars in Kontact (or
