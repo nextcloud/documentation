@@ -25,7 +25,7 @@ defined below:
 
 .. php:class:: OCP\\API
 
-  OCP\\API class
+  Manages the backend of the external API
 
   .. php:method:: register($method, $url, $action, $app, $authlevel, $defaults, $requirements)
 
@@ -50,3 +50,35 @@ a variable, simple place the variable name in curly brackets {}. For example:
 If the URL /cloud/users/Tom is requested, the api function registered with this
 url would be called, and passed the parameter 'userid' with the value: 'Tom'.
 The parameters are passed to the API methods inside an array.
+
+Returning Data
+~~~~~~~~~~~~~~
+Once the API backend has matched your url, your callable function as defined in
+$action will be executed. This method is passed as array of parameters that you
+defined in $url. To return data back the the client, you should return an
+instance of OC_OCS_Result. The API backend will then use this to construct the
+xml or json response. 
+
+.. php:class:: OC_OCS_Result
+
+  Holds data on the result of the API method.
+
+  .. php:method:: __construct($data=null, $code=100, $message=null)
+
+      Creates an OC_OCS_Result object
+
+      :param mixed $data: The data you wish to return, this may be a string, integer or array
+      :param int $code: The response code you wish to return, defaults to success (100)
+      :param string $message: An optional message to return with the response (explaining the result)
+      
+  .. php:method:: setTotalItems($items)
+
+      Sets the <totalitems> value in the response. Use this to inform the client of the range of data available.
+
+      :param int $items: The number of items in the full data set
+      
+  .. php:method:: setItemsPerPage($items)
+
+      Sets the <itemsperpage> value in the response. Use this to inform the client of the number of pieces of data per page.
+
+      :param int $items: The number of items per page of data.
