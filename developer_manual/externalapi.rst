@@ -13,6 +13,9 @@ specification`_ (draft).
 
 Usage
 ------------
+
+Registering Methods
+~~~~~~~~~~~~~~
 To make use of the external api as an app developer, there are just three things
 to do.
 
