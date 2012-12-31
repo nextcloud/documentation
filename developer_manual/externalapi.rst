@@ -20,7 +20,7 @@ to do.
 #. Code your API methods in $app/lib/*
 #. Update the OCS spec with your call
 
-To register your API routes, we make use of the OCP\API::register() method as
+To register your API routes, we make use of the OCP\\\\API::register() method as
 defined below:
 
 .. php:class:: OCP\\API
