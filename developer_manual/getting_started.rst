@@ -1,19 +1,16 @@
 .. _getting_started:
 
-Getting Started
-===============
+Getting Started with App Development
+====================================
 
 Before you start, please check if there already is a similar app you could
 contribute to. `On our planning page`_ there are also some app ideas. Also, feel
 free to communicate your idea and plans to the `mailing list`_ so other
 contributors might join in.
 
-Develop an app
---------------
+We will use the contacts app as an example, you find it under ``apps/contacts``.
 
-We will use the contacts app as an example, you find it under apps/contacts.
-
-Folder structure
+Folder Structure
 ----------------
 
 * ajax/
@@ -41,8 +38,11 @@ ownCloud does not force you to use this folder but it is recommended to use
 it. If you write a library for your app you can put it into lib. As with the
 ajax folder this is not a must, but it is recommended.
 
+Folders in Detail
+-----------------
+
 The Model: lib/
----------------
+~~~~~~~~~~~~~~~
 
 ownCloud uses the `MVC_` (Model-View-Controller) principle. The libraries
 represent the model. Basically all data should be handled here so the PHP files
@@ -60,7 +60,7 @@ file with all SQL queries.
 .. _MVC: http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller
 
 The View: templates/
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 ownCloud has its own template system. The templates are php files that are
 included by ``OC_Template``. Having a look at two files basically shows you
@@ -68,25 +68,25 @@ everything you need to know. The variables are assigned by using
 ``$tmpl->assign(‘name’,'value’);``, have a look at the end of /index.php to see
 how it works.
 
-The controllers
+The Controllers
 ---------------
 
 In contacts, you find the controllers in the root directory and in ``ajax/``.
 Controllers are meant to be lean.
 
-Javascripts
------------
+JavaScript
+----------
 
-The javascript libraries we use are jQuery and Torch. You can add scripts to
-your pages using::
+ownCloud uses the jQuery_ library. In addtion, you can add JavaScript to your
+pages using::
 
-  _UTIL::addScript(‘[app name]‘, ‘[script name]‘);
+  OC_Util::addScript(‘[app name]‘, ‘[script name]‘);
 
 Scripts can be added this way in either ``appinfo/app.php`` or in your app’s
 individual PHP scripts.
 
-Tell owncloud of our app: appinfo/
-----------------------------------
+Telling ownCloud about Your App
+-------------------------------
 
 In appinfo are three files. Each app must have ``app.php`` and ``info.xml``,
 ``database.xml`` is only needed when the app creates its own ``tables.app.php``
@@ -134,19 +134,20 @@ This adds the entry to the navigation. info.xml is self-explanatory.
 database.xml describes the database as required by MDB2. Note that the database
 name is *dbname* and that each table name needs a *dbprefix* in front of it.
 
-App Template
-------------
+Starting Your First App
+-----------------------
 
 A template for writing new apps can be found here:
 https://github.com/owncloud/apps/tree/master/apptemplate
 
-Publish your app
-----------------
+Publishing Your Apps
+--------------------
 
-You can publish your app at the `apps.owncloud.com`_. People with an
+You can publish your apps at the `apps.owncloud.com`_. People with an
 unrestricted ownCloud installation will then be able to directly download and
 install your app from the admin interface.
 
+.. _jQuery: http://jquery.com
 .. _apps.owncloud.com: http://apps.owncloud.com
 .. _On our planning page: http://gitorious.org/owncloud/pages/Home
 .. _mailing list: http://mail.kde.org/mailman/listinfo/owncloud
