@@ -1,3 +1,5 @@
+.. _granting_access:
+
 Granting Access to your App
 ===========================
 
