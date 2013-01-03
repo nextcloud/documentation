@@ -6,6 +6,7 @@ Contents
 .. toctree::
    :maxdepth: 2
 
+   getting_started
    debugging
    apps
    guidelines
@@ -15,7 +16,6 @@ Contents
    translation
    testing
    database
-   getting_started
    filesystem
    hooks
    theming
