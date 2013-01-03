@@ -7,11 +7,11 @@ Contents
    :maxdepth: 2
 
    codingguidelines
+   getting_started
    tutorial
    angular
    templates
    unittests
-   translation
    debugging
    configfile
    security
@@ -24,7 +24,6 @@ Contents
    translation
    testing
    database
-   getting_started
    filesystem
    hooks
    theming
