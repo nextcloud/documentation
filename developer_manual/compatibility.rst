@@ -40,13 +40,13 @@ Example from our source code:
 public.php and remote.php
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We introduced the files public.php and remote.php in ownCloud 4.
+We introduced the files ``public.php`` and ``remote.php`` in ownCloud 4.
 
-If you want to know how to use them, you should take a look `here`_.
+If you want to know how to use them, you should take a look as the
+:ref:`granting_access` section. 
 
 New public API
 ~~~~~~~~~~~~~~
 
 We also introduced our new public api. The documentation for this api can be found at http://api.ownCloud.org.
 
-.. _here: http://owncloud.org/dev/apps/public-php-and-remote-php/

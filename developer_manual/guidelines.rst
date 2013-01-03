@@ -5,10 +5,11 @@ How you can contribute:
 -----------------------
 
 * `Report an issue on our bug tracker`_
-* `Translate ownCloud to your language`_
+* :ref:`Translate ownCloud to your language<translation>` 
 * Help coding (see below) and check the `Junior Jobs`_
-* `Develop Apps`_, if you're looking for ideas you can check what users reported at the `App Opportunities Page`_.
-* Help out with the website and write documentation (contact tpn or deryo in the irc channel)
+* :ref:`Develop Apps<getting_started>`, if you're looking for ideas you can
+  check what users reported at the `App Opportunities Page`_.  Help out with the
+  website and write documentation (contact tpn or deryo in the irc channel)
 * Spread the word, tell your friends about it, write a blog post!
 
 If you have any questions, `we are happy to help you`_.
@@ -87,9 +88,7 @@ Coding guidelines
 
 
 .. _Report an issue on our bug tracker: https://github.com/owncloud/core/issues
-.. _Translate ownCloud to your language: http://owncloud.org/dev/translation/
 .. _Junior Jobs: http://owncloud.org/dev/junior-jobs/
-.. _Develop Apps: http://owncloud.org/dev/apps/getting-started/
 .. _App Opportunities Page: http://bugs.owncloud.org/thebuggenie/owncloud/issues/find/saved_search/4/search/1
 .. _we are happy to help you: http://owncloud.org/contact/
 .. _setup multiple app directories: https://github.com/owncloud/documentation/blob/master/developer_manual/configfile.rst
