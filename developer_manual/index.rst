@@ -14,7 +14,6 @@ Contents
    codereviews
    kanban
    translation
-   testing
    database
    filesystem
    hooks
