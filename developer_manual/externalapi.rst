@@ -12,10 +12,10 @@ specification`_ (draft).
 .. _OCS v1.7 specification: http://www.freedesktop.org/wiki/Specifications/open-collaboration-services-1.7
 
 Usage
-------------
+-----
 
 Registering Methods
-~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
 To make use of the external api as an app developer, there are just three things
 to do.
 
