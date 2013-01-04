@@ -10,6 +10,7 @@ Contents
    connecting_browser
    connecting_webdav
    files
+   calendars
    contacts
    bookmarks
    sync
