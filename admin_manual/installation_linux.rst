@@ -115,7 +115,14 @@ PCLinuxOS
 
 Follow the Tutorial `ownCloud, installation and setup`_ on the PCLinuxOS web site.
 
+Ubuntu / Debian
+~~~~~~~~~~~~~~~
+Go to the `linux package sources`_ page and execute the steps as described there
+for your distribution.
+
+
 .. _stable version: http://aur.archlinux.org/packages.php?ID=47585
 .. _development version: http://aur.archlinux.org/packages.php?ID=38767
 .. _ownCloud repository: http://software.opensuse.org/search?q=owncloud&baseproject=ALL&lang=de
 .. _ownCloud, installation and setup: http://pclinuxoshelp.com/index.php/Owncloud,_installation_and_setup
+.. _linux package sources: http://software.opensuse.org/download.html?project=isv:ownCloud:community&package=owncloud
