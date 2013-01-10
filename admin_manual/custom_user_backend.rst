@@ -14,8 +14,7 @@ syntax:
       )
     )
 
-Currently the “External user support” (user_external) app supports the
-provides the following user backends:
+Currently the “External user support” (user_external) app provides the following user backends:
 
 IMAP
 ~~~~
@@ -50,7 +49,7 @@ Provides authentication against Samba servers
 
     'user_backends'=>array(
       array(
-        'class'=>'OC_User_SMP',
+        'class'=>'OC_User_SMB',
         'arguments'=>array('localhost')
       )
     )
