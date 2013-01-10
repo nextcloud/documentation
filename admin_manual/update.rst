@@ -16,6 +16,18 @@ those steps:
 5. If you installed ownCloud from a repository, your package management
    should take care of it.
 
+Assuming your owncloud installation is at ``./p/`` and you wanto update to version 4.5.5, you could do:
+
+``rsync -a p/ p_bkp`date +"%Y%m%d"`/``
+
+``wget http://mirrors.owncloud.org/releases/owncloud-4.5.5.tar.bz2``
+
+``tar -xjf owncloud-4.5.5.tar.bz2``
+
+``rsync --inplace -rtv owncloud/ p/``
+
+``rm -rf owncloud-4.5.5.tar.bz2 owncloud/``
+
 Upgrade
 -------
 
