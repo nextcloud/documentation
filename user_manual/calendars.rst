@@ -39,7 +39,11 @@ Mozilla Lightning users need to this URL scheme::
 .. figure:: images/calendar_caldav.png
 
    Example for a simple calendar: The default calendar is always
-   called "default calendar", and the users' name here is "oc".
+   called "defaultcalendar", and the users' name here is "test".
+   The full URL (which on the picture can't be seen because of the
+   short edit field) is then::
+
+  https://localhost/owncloud/remote.php/caldav/calendars/test/defaultcalendar
 
 .. _URL-encoding: http://en.wikipedia.org/wiki/Percent-encoding
 
