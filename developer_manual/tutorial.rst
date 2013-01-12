@@ -223,7 +223,7 @@ In JavaScript you can get the URL for a route like this:
 
 The second parameter is the URL which should be matched. You can extract values from the URL by using **{KEY}** in the section that you want to get. That value is then available under **$params['KEY']**, for the above example it would be **$params['value']**. You can omit the parameter if you dont extract any values from the URL at all.
 
-The $params array is always passed to your controllermethod as the only parameter.
+The $params array is always passed to the controller and available by using **$this->params($KEY)** in the controller method. In the following example, the parameter in the URL would be accessible by using: **$this->params('value')**
 
 You can also limit the route to GET or POST requests by simply adding **->post()** or **->get()** before the action method like:
 
@@ -298,10 +298,8 @@ The apptemplate comes with several different controllers. A simple controller wo
        * @Ajax
        *
        * @brief sets a global system value 
-       * @param array $urlParams: an array with the values, which were matched in 
-       *                          the routes file
        */
-      public function myControllerMethod($urlParams=array()){
+      public function myControllerMethod(){
           $value = $this->params('somesetting');
 
           $response = new JSONResponse($this->appName);
@@ -313,9 +311,9 @@ The apptemplate comes with several different controllers. A simple controller wo
 
   ?>
 
-An instance of the api is passed via dependency injection, the same goes for a Request instance. POST and GET, and FILES parameters are abstracted by the Request class and can be accessed via **$this->params('myPostOrGetKey')** and **$this->getUploadedFile($key)** inside the controller. This has been done to make the app better testable.
+An instance of the API is passed via dependency injection, the same goes for a Request instance. URL Parameters, POST, GET and FILES parameters are partly  abstracted by the Request class and can be accessed via **$this->params('myURLParamOrPostOrGetKey')** and **$this->getUploadedFile($key)** inside the controller. This has been done to make the app better testable.
 
-.. note:: If a POST and GET value exist with the same key, the POST value is preferred. You should avoid to have both values with the same key though.
+.. note:: If an URL Parameter, POST or GET value exist with the same key, the URL Parameter is preferred over the POST parameter and the POST parameter is preferred over the GET parameter. You should avoid this scenario though.
 
 Every controller method has to return a Response object. All possible reponses can be found in **lib/responses**. Should you require to set additional headers, you can use the **addHeader()** method that every Response has.
 
@@ -328,7 +326,7 @@ Because TemplateResponse and JSONResponse is so common, the controller provides 
   /**
    * @CSRFExemption
    */
-  public function index($urlParams=array()){
+  public function index(){
       $templateName = 'main';
       $params = array(
           'somesetting' => 'How long will it take'
@@ -341,7 +339,7 @@ Because TemplateResponse and JSONResponse is so common, the controller provides 
   /**
    * @Ajax
    */
-  public function getMeJSON($urlParams=array()){
+  public function getMeJSON(){
       $params = array(
           'somesetting' => 'enough of this already'
       );
@@ -365,7 +363,7 @@ In this example, all security checks would be disabled (**not recommended**):
    * @IsLoggedInExemption
    * @IsSubAdminExemption
    */
-  public function index($urlParams=array()){
+  public function index(){
       $templateName = 'main';
       $params = array(
           'somesetting' => 'How long will it take'
@@ -707,7 +705,7 @@ To access the Template files in your controller, use the TemplateResponse class:
   <?php
   // in your controller
 
-  public function index($urlParams=array()){
+  public function index(){
 
     // main is the template name. Owncloud will look for template/main.php
     $response = new TemplateResponse($this->appName, 'main');
@@ -735,7 +733,7 @@ To add a script in your controller method, use the controller's **addScript** an
   <?php
 
   // in your controller
-  public function index($urlParams=array()){
+  public function index(){
   		
   	// adds the js/admin.js file
 	$this->api->addScript('admin');
