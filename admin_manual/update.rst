@@ -16,6 +16,29 @@ those steps:
 5. If you installed ownCloud from a repository, your package management
    should take care of it.
 
+Assuming your ownCloud installation is at ``./owncloud/`` and you want to update to the latest version, you could do the following:
+
+Use rsync in archive mode (this leaves file owner, permissions, and time stamps untouched) to recursively copy all content from ``./owncloud/`` to a backup directory which contains the current date:
+
+``rsync -a owncloud/ owncloud_bkp`date +"%Y%m%d"`/``
+
+Download the latest version to the working directory:
+
+``wget http://mirrors.owncloud.org/releases/owncloud-latest.tar.bz2``
+
+Extract content of archive to ``./owncloud_latest/``. 
+
+``mkdir owncloud_latest; tar -C owncloud_latest -xjf owncloud-latest.tar.bz2``
+
+Use rsync to recursivly copy extracted files (new) to ownCloud installation (old) using modification times of the new files, but preserving owner and permissions of the old files:
+**WARNING**: You should not use this [--inplace] option to update files that are being accessed by others *(from rysnc man page)*
+
+``rsync --inplace -rtv owncloud_latest/owncloud/ owncloud/``
+
+Clean up.
+
+``rm -rf owncloud-latest.tar.bz2 owncloud_latest/``
+
 Upgrade
 -------
 
