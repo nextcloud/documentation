@@ -326,7 +326,7 @@ Because TemplateResponse and JSONResponse is so common, the controller provides 
   <?
 
   /**
-   * @CSRFExcemption
+   * @CSRFExemption
    */
   public function index($urlParams=array()){
       $templateName = 'main';
@@ -352,8 +352,6 @@ Because TemplateResponse and JSONResponse is so common, the controller provides 
 
 For security reasons, all security checks for controller methods are turned on by default. To explicitely turn off checks, you must use exemption annotations above the desired method.
 
-.. note:: The **annotations are only checked for the method that is directly called** in the routes. If that method accesses a second method internally, make sure that the security checks for the first one match the second or use a **RedirectResponse**!
-
 In this example, all security checks would be disabled (**not recommended**):
 
 
@@ -361,11 +359,11 @@ In this example, all security checks would be disabled (**not recommended**):
 
   <?php
   /**
-   * @CSRFExcemption
-   * @IsAdminExcemption
-   * @AppEnabledExcemption
-   * @IsLoggedInExcemption
-   * @IsSubAdminExcemption
+   * @CSRFExemption
+   * @IsAdminExemption
+   * @AppEnabledExemption
+   * @IsLoggedInExemption
+   * @IsSubAdminExemption
    */
   public function index($urlParams=array()){
       $templateName = 'main';
@@ -378,15 +376,15 @@ In this example, all security checks would be disabled (**not recommended**):
 
 Possible Annotations contain:
 
-* **@CSRFExcemption**: This checks for the `CSRF <http://en.wikipedia.org/wiki/Cross-site_request_forgery>`_ token. Turn this off when you render a normal page and not an Ajax Request
+* **@CSRFExemption**: This checks for the `CSRF <http://en.wikipedia.org/wiki/Cross-site_request_forgery>`_ token. Turn this off when you render a normal page and not an Ajax Request
 
-* **@IsAdminExcemption**: Checks if the user is an admin
+* **@IsAdminExemption**: Checks if the user is an admin
 
-* **@AppEnabledExcemption**: Checks if the app is enabled
+* **@AppEnabledExemption**: Checks if the app is enabled
 
-* **@IsLoggedInExcemption**: Checks if the user is logged in
+* **@IsLoggedInExemption**: Checks if the user is logged in
 
-* **@IsSubAdminExcemption**: Checks if the user is in the sub admin group
+* **@IsSubAdminExemption**: Checks if the user is in the sub admin group
 
 * **@Ajax**: Use this for Ajax Requests. It prevents the unneeded rendering of the apps navigation
 
