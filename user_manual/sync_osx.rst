@@ -32,8 +32,8 @@ work. A user contributed the following:
 
  ``<key>servername</key> <string>http://:0(null)</string> <key>username</key> <string>Whatever_you_entered_before</string>``
 
-8. Make it look like this. Please note the :80 after **YOUR_DOMAIN**
-   it is important:
+8. Make it look like this. Please note that the :80 after **YOUR_DOMAIN**
+   is important:
 
 
   ``<key>servername</key <string>http://YOUR_DOMAIN:80/owncloud/remote.php/carddav/principals/username</string> <key>username</key <string>username</string>``
