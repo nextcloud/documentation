@@ -56,7 +56,7 @@ Nginx (X-Accel-Redirect)
 ------------------------
 Nginx supports handling of static files differently from Apache. Documentation can be found `here`__ and `here`__. The header used by Nginx is X-Accel-Redirect.
 
-**Intsallation:**
+**Installation:**
 
 X-Accel-Redirect is supported by default in Nginx and no additional operation should be needed to install it.
 
