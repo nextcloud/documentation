@@ -5,6 +5,8 @@ App Tutorial
 
 Before you start, please check if there already is a `similar app <http://apps.owncloud.com>`_ you could contribute to. Also, feel free to communicate your idea and plans to the `mailing list <https://mail.kde.org/mailman/listinfo/owncloud>`_ so other contributors might join in.
 
+This tutorial uses the appframework app, a small framework that makes developing apps easier. To use it, it has to be enabled on the apps settings page.
+
 
 Getting Started
 ---------------
@@ -50,7 +52,7 @@ To enable your app, simply link it into the apps directory:
 
 or create a second apps directory in your :file:`/var/www/owncloud/config/config.php` (see :doc:`configfile`)
 
-**Don't forget to enable it on the apps settings page!**
+.. note:: Don't forget to enable your app and the appframework app on the apps settings page!
 
 Now change into your app directory::
 
@@ -71,7 +73,7 @@ The following things will need to be changed:
 * **\\OC_App::getAppPath('apptemplate_advanced')** to **\\OC_App::getAppPath('yourappname')**
 * **namespace OCA\\AppTemplateAdvanced** to **namespace OCA\\YourAppName**
 * The Classpaths in :file:`appinfo/classpath.php`
-
+* The **parent::__construct('apptemplate_advanced')** to **parent::__construct('yourappname')** to in the :file:`appinfo/dicontainer`
 
 App information
 ---------------
@@ -147,7 +149,7 @@ Dependency Injection helps you to create testable code. A good overview over how
 
 The container is configured in :file:`appinfo/dicontainer.php`. We use Pimple for the container. The documentation on how to use it can be seen on the `Pimple Homepage <http://pimple.sensiolabs.org/>`_
 
-To add your own classes simply open the :file:`appinfo/dicontainer` and add a line like this to the constructor:
+To add your own classes simply open the :file:`appinfo/dicontainer.php` and add a line like this to the constructor:
 
 .. code-block:: php
 
@@ -161,12 +163,13 @@ To add your own classes simply open the :file:`appinfo/dicontainer` and add a li
 
   ?>
 
+You can also overwrite already exsting items from the appframework simply by redefining it.
 
 API abstraction layer
 ---------------------
-Owncloud currently has a ton of static methods which is a very bad thing concerning testability. Therefore the app template comes with an api abstraction layer which is located at :file:`lib/api.php`.
+Owncloud currently has a ton of static methods which is a very bad thing concerning testability. Therefore the appframework comes with an API abstraction layer which is located in the appframework app at :file:`lib/api.php`.
 
-If you find yourself in need to use more Owncloud internal static methods, add them to the api layer by simply creating a new method for each of them, like:
+If you find yourself in need to use more ownCloud internal static methods, add them to the API class in the appframework directory, like:
 
 .. code-block:: php
 
@@ -174,10 +177,26 @@ If you find yourself in need to use more Owncloud internal static methods, add t
 
       // inside the API class
 
+
       public function methodName($someParam){
          \OCP\Util::methodName($this->appName, $someParam);
       }
+
+    }
   ?>
+
+.. note:: Please send a pull request and cc **Raydiation** so the method can be added to the API class.
+
+You could of course also simply inherit from the API class and overwrite the API in the dependency injection container in :file:`appinfo/dicontainer.php` by using:
+
+.. code-block:: php
+
+  <?php
+
+  // inside the constructor
+  $this['API'] = $this->share(function($c){
+      return new MyExtendedAPI($c['AppName']);
+  });
 
 This will allow you to easily mock the API in your unittests.
 
@@ -200,7 +219,7 @@ A simple route would look like this:
   <?php
   $this->create('yourappname_routename', '/myurl/{value}')->action(
       function($params){
-          App::main('MyController', 'methodName', $params);
+          App::main('MyController', 'methodName', $params, new DIContainer());
       }
   );
   ?>
@@ -225,7 +244,7 @@ In JavaScript you can get the URL for a route like this:
 
 The second parameter is the URL which should be matched. You can extract values from the URL by using **{KEY}** in the section that you want to get. That value is then available under **$params['KEY']**, for the above example it would be **$params['value']**. You can omit the parameter if you dont extract any values from the URL at all.
 
-The $params array is always passed to the controller and available by using **$this->params($KEY)** in the controller method. In the following example, the parameter in the URL would be accessible by using: **$this->params('value')**
+The third parameter is the $params array which is passed to the controller and available by using **$this->params($KEY)** in the controller method. In the following example, the parameter in the URL would be accessible by using: **$this->params('value')**
 
 You can also limit the route to GET or POST requests by simply adding **->post()** or **->get()** before the action method like:
 
@@ -234,13 +253,12 @@ You can also limit the route to GET or POST requests by simply adding **->post()
   <?php
   $this->create('yourappname_routename', '/myurl/{value}')->post()->action(
       function($params){
-          App::main('MyController', 'methodName', $params);
+          App::main('MyController', 'methodName', $params, new DIContainer());
       }
   );
   ?>
 
-
-If you want to replace values in the container, you can do it by passing a container as the fourth parameter of **App::main**.
+The fourth parameter is an instance of the **DIContaier**. If you want to replace values in the container only for a certain request, you can do it like this:
 
 .. code-block:: php
 
@@ -262,7 +280,7 @@ If you want to replace values in the container, you can do it by passing a conta
 
 Controllers
 -----------
-The App Template provides a simple baseclass for adding controllers. Controllers connect your view (templates) with your database. Controllers themselves are connected to one or more routes.
+The appframework app provides a simple baseclass for adding controllers. Controllers connect your view (templates) with your database. Controllers themselves are connected to one or more routes.
 
 A controller should be created for each resource. Think of it as an URL scheme::
 
@@ -283,8 +301,10 @@ The apptemplate comes with several different controllers. A simple controller wo
   
   namespace OCA\YourApp;
 
+  use \OCA\AppFramework\JSONResponse as JSONResponse;
 
-  class MyController extends Controller {
+
+  class MyController extends \OCA\AppFramework\Controller {
 
 
       /**
@@ -317,7 +337,16 @@ An instance of the API is passed via dependency injection, the same goes for a R
 
 .. note:: If an URL Parameter, POST or GET value exist with the same key, the URL Parameter is preferred over the POST parameter and the POST parameter is preferred over the GET parameter. You should avoid this scenario though.
 
-Every controller method has to return a Response object. All possible reponses can be found in **lib/responses**. Should you require to set additional headers, you can use the **addHeader()** method that every Response has.
+Every controller method has to return a Response object. The currently available Responses from the appframework include:
+
+* **\\OCA\\AppFramework\\JSONResponse**: sends JSON to the client
+* **\\OCA\\AppFramework\\TemplateResponse**: renders a template
+* **\\OCA\\AppFramework\\RedirectResponse**: redirects to a new URL
+* **\\OCA\\AppFramework\\TextDownloadResponse**: prompts the user to download a text file containing a passed string
+
+.. note:: For more responses, please look into the appframework :file:`lib/responses/`. If you create an additional response, be sure to create a pull request so that more people can profit from it!
+
+Should you require to set additional headers, you can use the **addHeader()** method that every Response has.
 
 Because TemplateResponse and JSONResponse is so common, the controller provides a shortcut method for both of those, named **$this->render** and **$this->renderJSON**.
 
@@ -394,7 +423,7 @@ Don't forget to add your controller to the dependency container in :file:`appinf
 
   <?php
 
-  // in the createDIContainer function
+  // in the constructor function
 
   $container['MyController'] = function($c){
       return new MyController($c['API'], $c['Request']);
@@ -530,14 +559,14 @@ Your database layer should go into the **database/** folder. It's recommended to
   }
 
 
-All database queries for that object should be put into a wrapper class. The wrapper class could look like this (more method examples are in the advanced_apptemplate):
+All database queries for that object should be put into a mapper class. The mapper class could look like this (more method examples are in the advanced_apptemplate):
 
-:file:`database/item.wrapper.php`
+:file:`database/item.mapper.php`
 
 .. code-block:: php
 
   <?php
-  class ItemMapper extends Mapper {
+  class ItemMapper extends \OCA\AppFramework\Mapper {
 
 
       private $tableName;
@@ -576,7 +605,7 @@ All database queries for that object should be put into a wrapper class. The wra
           if($result){
               return new Item($result);
           } else {
-              throw new DoesNotExistException('Item with user id ' . $userId . ' does not exist!');
+              throw new \OCA\AppFramework\DoesNotExistException('Item with user id ' . $userId . ' does not exist!');
           }
       }
 
@@ -705,6 +734,10 @@ To access the Template files in your controller, use the TemplateResponse class:
 .. code-block:: php
 
   <?php
+  use \OCA\AppFramework\TemplateResponse as TemplateResponse
+
+  // ...
+
   // in your controller
 
   public function index(){
@@ -719,7 +752,6 @@ To access the Template files in your controller, use the TemplateResponse class:
   }
   ?>
 
-Should you require more template functions, simply modify the TemplateResponse in :file:`lib/response.php`. 
 
 **For more info, see** :doc:`templates`
 
@@ -783,13 +815,14 @@ A simple test for a controller would look like this:
   <?php
   namespace OCA\AppTemplateAdvanced;
 
+  use OCA\AppFramework\Request as Request;
+
   // get abspath of file directory
   $path = realpath( dirname( __FILE__ ) ) . '/';
 
-  require_once($path . "../../lib/request.php");
-  require_once($path . "../../lib/responses/response.php");
-  require_once($path . "../../lib/responses/json.response.php");
-  require_once($path . "../../lib/controller.php");
+  require_once($path . "../../../appframework/lib/request.php");
+  require_once($path . "../../../appframework/lib/controller.php");
+
   require_once($path . "../../controllers/item.controller.php");
 
 
@@ -851,73 +884,38 @@ Middleware is logic that is run before and after each request. It offers the fol
 
 To generate your own middleware, simply inherit from the Middleware class and overwrite the methods that you want to use.
 
-.. note:: Some hooks need to return a result, for instance the beforeOutput hook needs to return the text that is printed to the page. Check the Middleware class documentation in the :file:`lib/middleware/middleware.php` for more information
+.. note:: Some hooks need to return a result, for instance the beforeOutput hook needs to return the text that is printed to the page. Check the Middleware class documentation in the appframework :file:`lib/middleware/middleware.php` for more information
 
-The following example is the security middleware that reads out the annotations from the controllermethod and runs the checks before the controller logic is executed:
+
 
 .. code-block:: php
 
   <?php
 
-  class SecurityMiddleware extends Middleware {
+  class CensorMiddleware extends \OCA\AppFramework\Middleware {
 
-    private $security;
     private $api;
 
     /**
      * @param API $api: an instance of the api
-     * @param Security $security: an instance of the security check object
      */
-    public function __construct(API $api, Security $security){
+    public function __construct($api){
       $this->api = $api;
-      $this->security = $security;
     }
 
 
     /**
-     * @brief this runs all the security checks before a method call. The
-     * security checks are determined by inspecting the controller method
-     * annotations
+     * @brief this replaces "fuck" with "****"" in the output
      */
-    public function beforeController($controller, $methodName){
-
-      // get annotations from comments
-      $annotationReader = new MethodAnnotationReader($controller, $methodName);
-
-      // this will set the current navigation entry of the app, use this only
-      // for normal HTML requests and not for AJAX requests
-      if(!$annotationReader->hasAnnotation('Ajax')){
-        $this->api->activateNavigationEntry();
-      }
-
-      // security checks
-      if($annotationReader->hasAnnotation('CSRFExemption')){
-        $this->security->setCSRFCheck(false);
-      }
-
-      if($annotationReader->hasAnnotation('IsAdminExemption')){
-        $this->security->setIsAdminCheck(false);
-      }
-
-      if($annotationReader->hasAnnotation('AppEnabledExemption')){
-        $this->security->setAppEnabledCheck(false);
-      }
-
-      if($annotationReader->hasAnnotation('IsLoggedInExemption')){
-        $this->security->setLoggedInCheck(false);
-      }
-
-      if($annotationReader->hasAnnotation('IsSubAdminExemption')){
-        $this->security->setIsSubAdminCheck(false);
-      }
-
-      $this->security->runChecks();
-
+    public function beforeOutput($controller, $methodName, $output){
+      return str_replace($output, 'fuck', '****');
     }
 
   }
 
-To activate the middleware, you have to wire it into the DIContainer constructor where the MiddlewareDispatcher is being created:
+To activate the middleware, you have to overwrite the parent MiddlewareDispatcher and wire your middleware into the DIContainer constructor:
+
+.. note:: If you ship your own middleware, be sure to also enable the existing ones if you overwrite the MiddlewareDispatcher in the Dependency Injection Container!
 
 .. code-block:: php
 
@@ -925,19 +923,20 @@ To activate the middleware, you have to wire it into the DIContainer constructor
 
     // in the constructor
 
-    $this['SecurityMiddleware'] = function($c){
-      return new SecurityMiddleware($c['API'], $c['Security']);
+    $this['CensorMiddleware'] = function($c){
+      return new CensorMiddleware($c['API']);
     };
 
     $this['MiddlewareDispatcher'] = function($c){
-      $dispatcher = new MiddlewareDispatcher();
+      $dispatcher = new \OCA\AppFramework\MiddlewareDispatcher();
       $dispatcher->registerMiddleware($c['SecurityMiddleware']);
+      $dispatcher->registerMiddleware($c['CensorMiddleware']);
       return $dispatcher;
     };
 
 .. note::
 
-  The order is important! The middleware that is registered first gets run first in the beforeController method. For all other hooks, the order is bein reversed, meaning: if something is defined first, it gets run last.
+  The order is important! The middleware that is registered first gets run first in the beforeController method. For all other hooks, the order is being reversed, meaning: if something is defined first, it gets run last.
 
 Publish your app
 ----------------
