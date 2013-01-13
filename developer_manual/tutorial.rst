@@ -70,7 +70,7 @@ The following things will need to be changed:
 * AGPL Header: author and copyright
 * **\\OC_App::getAppPath('apptemplate_advanced')** to **\\OC_App::getAppPath('yourappname')**
 * **namespace OCA\\AppTemplateAdvanced** to **namespace OCA\\YourAppName**
-* The Classpaths in :file:`appinfo/bootstrap.php`
+* The Classpaths in :file:`appinfo/classpath.php`
 
 
 App information
@@ -81,7 +81,7 @@ You'll need to give some information on your app for instance the name. To do th
 
   <?php
 
-  require_once \OC_App::getAppPath('yourappname') . '/appinfo/bootstrap.php';
+  require_once \OC_App::getAppPath('yourappname') . '/appinfo/classpath.php';
 
   // if you dont want to register settings for the admin, delete the following
   // line
@@ -129,7 +129,7 @@ The second place where app specifc information is stored is in :file:`appinfo/in
 
 Classloader
 -----------
-The classloader is configured in :file:`appinfo/bootstrap.php`. The classloader frees you from requiring your classes when you use them. If a class is used and its not yet available, the loader will automatically include the needed file.
+The classloader is configured in :file:`appinfo/classpath.php`. The classloader frees you from requiring your classes when you use them. If a class is used and its not yet available, the loader will automatically include the needed file.
 
 To add a class to the classloader, simply use something like this:
 
@@ -145,15 +145,17 @@ Dependency Injection
 --------------------
 Dependency Injection helps you to create testable code. A good overview over how it works and what the benefits are can be seen on `Google's Clean Code Talks <http://www.youtube.com/watch?v=RlfLCWKxHJ0>`_
 
-The container is configured in :file:`appinfo/bootstrap.php`. We use Pimple for the container. The documentation on how to use it can be seen on the `Pimple Homepage <http://pimple.sensiolabs.org/>`_
+The container is configured in :file:`appinfo/dicontainer.php`. We use Pimple for the container. The documentation on how to use it can be seen on the `Pimple Homepage <http://pimple.sensiolabs.org/>`_
 
-To add your own class simply add a new line inside the **createDIContainer** function:
+To add your own classes simply open the :file:`appinfo/dicontainer` and add a line like this to the constructor:
 
 .. code-block:: php
 
   <?php
+
+  // in the constructor
   
-  $container['MyClass'] = function($c){
+  $this['MyClass'] = function($c){
       return new MyClass($c['SomeOtherClass']);
   };
 
@@ -198,7 +200,7 @@ A simple route would look like this:
   <?php
   $this->create('yourappname_routename', '/myurl/{value}')->action(
       function($params){
-          callController('MyController', 'methodName', $params);
+          App::main('MyController', 'methodName', $params);
       }
   );
   ?>
@@ -232,24 +234,24 @@ You can also limit the route to GET or POST requests by simply adding **->post()
   <?php
   $this->create('yourappname_routename', '/myurl/{value}')->post()->action(
       function($params){
-          callController('MyController', 'methodName', $params);
+          App::main('MyController', 'methodName', $params);
       }
   );
   ?>
 
 
-If you want to replace values in the container, you can do it by passing a container as the fourth parameter of **callController**.
+If you want to replace values in the container, you can do it by passing a container as the fourth parameter of **App::main**.
 
 .. code-block:: php
 
   <?php
   $this->create('yourappname_routename', '/myurl/{value}')->post()->action(
       function($params){
-          $container = createDIContainer();
+          $container = new DIContainer();
           $container['SomeClass'] = function($c){
              return new SomeClass('different');
           }
-          callController('MyController', 'methodName', $params, $container);
+          App::main('MyController', 'methodName', $params, $container);
       }
   );
   ?>
@@ -386,7 +388,7 @@ Possible Annotations contain:
 
 * **@Ajax**: Use this for Ajax Requests. It prevents the unneeded rendering of the apps navigation
 
-Don't forget to add your controller to the dependency container in :file:`appinfo/bootstrap.php` 
+Don't forget to add your controller to the dependency container in :file:`appinfo/dicontainer.php`
 
 .. code-block:: php
 
@@ -836,6 +838,106 @@ You can now execute the test by running this in your app directory::
 More examples for testing controllers are in the :file:`tests/controllers/ItemControllerTest.php`
 
 **See also** :doc:`unittests`
+
+
+Middleware
+----------
+Middleware is logic that is run before and after each request. It offers the following hooks:
+
+* **beforeController**: This is executed before a controller method is being executed. This allows you to plug additional checks or logic before that method, like for instance security checks
+* **afterException**: This is being run when either the beforeController method or the controller method itself is throwing an exception. The middleware is asked in reverse order to handle the exception and to return a response. If the response is null, it is assumed that the exception could not be handled and the error will be thrown again
+* **afterController**: This is being run after a successful controllermethod call and allows the manipulation of a Response object. The middleware is run in reverse order
+* **beforeOutput**: This is being run after the response object has been rendered and allows the manipulation of the outputted text. The middleware is run in reverse order
+
+To generate your own middleware, simply inherit from the Middleware class and overwrite the methods that you want to use.
+
+.. note:: Some hooks need to return a result, for instance the beforeOutput hook needs to return the text that is printed to the page. Check the Middleware class documentation in the :file:`lib/middleware/middleware.php` for more information
+
+The following example is the security middleware that reads out the annotations from the controllermethod and runs the checks before the controller logic is executed:
+
+.. code-block:: php
+
+  <?php
+
+  class SecurityMiddleware extends Middleware {
+
+    private $security;
+    private $api;
+
+    /**
+     * @param API $api: an instance of the api
+     * @param Security $security: an instance of the security check object
+     */
+    public function __construct(API $api, Security $security){
+      $this->api = $api;
+      $this->security = $security;
+    }
+
+
+    /**
+     * @brief this runs all the security checks before a method call. The
+     * security checks are determined by inspecting the controller method
+     * annotations
+     */
+    public function beforeController($controller, $methodName){
+
+      // get annotations from comments
+      $annotationReader = new MethodAnnotationReader($controller, $methodName);
+
+      // this will set the current navigation entry of the app, use this only
+      // for normal HTML requests and not for AJAX requests
+      if(!$annotationReader->hasAnnotation('Ajax')){
+        $this->api->activateNavigationEntry();
+      }
+
+      // security checks
+      if($annotationReader->hasAnnotation('CSRFExemption')){
+        $this->security->setCSRFCheck(false);
+      }
+
+      if($annotationReader->hasAnnotation('IsAdminExemption')){
+        $this->security->setIsAdminCheck(false);
+      }
+
+      if($annotationReader->hasAnnotation('AppEnabledExemption')){
+        $this->security->setAppEnabledCheck(false);
+      }
+
+      if($annotationReader->hasAnnotation('IsLoggedInExemption')){
+        $this->security->setLoggedInCheck(false);
+      }
+
+      if($annotationReader->hasAnnotation('IsSubAdminExemption')){
+        $this->security->setIsSubAdminCheck(false);
+      }
+
+      $this->security->runChecks();
+
+    }
+
+  }
+
+To activate the middleware, you have to wire it into the DIContainer constructor where the MiddlewareDispatcher is being created:
+
+.. code-block:: php
+
+  <?php
+
+    // in the constructor
+
+    $this['SecurityMiddleware'] = function($c){
+      return new SecurityMiddleware($c['API'], $c['Security']);
+    };
+
+    $this['MiddlewareDispatcher'] = function($c){
+      $dispatcher = new MiddlewareDispatcher();
+      $dispatcher->registerMiddleware($c['SecurityMiddleware']);
+      return $dispatcher;
+    };
+
+.. note::
+
+  The order is important! The middleware that is registered first gets run first in the beforeController method. For all other hooks, the order is bein reversed, meaning: if something is defined first, it gets run last.
 
 Publish your app
 ----------------
