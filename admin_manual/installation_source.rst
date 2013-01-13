@@ -26,7 +26,7 @@ And as *optional* dependencies:
 You have to install at least one of php5-sqlite or php5-mysql, depending
 on which of the two database systems you want to use.
 
-smbclient is only used if you want to mount SMB shares to your owncloud.
+smbclient is only used if you want to mount SMB shares to your ownCloud.
 The curl packages are needed for some apps (e.g. http user authentication)
 
 
@@ -42,8 +42,8 @@ Commands for Ubuntu and Debian (run as root):
 You don’t need any WebDAV support of your webserver (i.e. apache’s mod_webdav)
 to access your ownCloud data via WebDAV, ownCloud has a WebDAV server built in.
 In fact, you should make sure that any built-in WebDAV module of your webserver
-is disabled (at least for the owncloud directory), as it can interfere with
-owncloud's built-in WebDAV support.
+is disabled (at least for the ownCloud directory), as it can interfere with
+ownCloud's built-in WebDAV support.
 
 Extract ownCloud and Copy to Your Webserver
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -81,7 +81,7 @@ your virtual host file. This is usually in
 ``/etc/apache2/sites-enabled/000-default``.  You should also run ``a2enmod
 rewrite`` and ``a2enmod headers``. Then restart apache: service apache2 restart
 (for Ubuntu systems). In order for the maximum upload size to be configurable,
-the .htaccess file in the owncloud folder needs to be made writable by the
+the .htaccess file in the ownCloud folder needs to be made writable by the
 server.
 
 Follow the Install Wizard
