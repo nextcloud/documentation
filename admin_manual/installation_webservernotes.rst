@@ -57,7 +57,7 @@ Nginx Configuration
 
       # enable php
       location ~ \.php$ {
-        try_files $uri = 404
+        try_files $uri = 404;
         fastcgi_pass 127.0.0.1:9000; # or use php-fpm with: "unix:/var/run/php-fpm/php-fpm.sock;"
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         fastcgi_param HTTPS on;
