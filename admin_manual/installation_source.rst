@@ -10,33 +10,40 @@ Prerequisites
 To run ownCloud, your webserver must have the following installed:
 
 * php5 (>= 5.3)
-* php5-json
-* php-xml
-* php-mbstring
-* php5-zip
 * php5-gd
+* php-xml-parser
+* php5-intl
 
 And as *optional* dependencies:
 
 * php5-sqlite (>= 3)
+* php5-mysql
+* smbclient
 * curl
 * libcurl3
-* libcurl3-dev
 * php5-curl
-* php5-intl
-* php-pdo
 
-Commands for Ubuntu and Debian:
+You have to install at least one of php5-sqlite or php5-mysql, depending
+on which of the two database systems you want to use.
+
+smbclient is only used if you want to mount SMB shares to your ownCloud.
+The curl packages are needed for some apps (e.g. http user authentication)
+
+
+Commands for Ubuntu and Debian (run as root):
 
 ::
 
-  apt-get install apache2 php5 php5-json php-xml php-mbstring php5-zip php5-gd
-  apt-get install php5-sqlite curl libcurl3 libcurl3-dev php5-curl php-pdo
+  apt-get install apache2 php5 php5-gd php-xml-parser php5-intl
+  apt-get install php5-sqlite php5-mysql smbclient curl libcurl3 php5-curl
 
 .. todo:: Document other distributions.
 
 You don’t need any WebDAV support of your webserver (i.e. apache’s mod_webdav)
 to access your ownCloud data via WebDAV, ownCloud has a WebDAV server built in.
+In fact, you should make sure that any built-in WebDAV module of your webserver
+is disabled (at least for the ownCloud directory), as it can interfere with
+ownCloud's built-in WebDAV support.
 
 Extract ownCloud and Copy to Your Webserver
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -74,7 +81,7 @@ your virtual host file. This is usually in
 ``/etc/apache2/sites-enabled/000-default``.  You should also run ``a2enmod
 rewrite`` and ``a2enmod headers``. Then restart apache: service apache2 restart
 (for Ubuntu systems). In order for the maximum upload size to be configurable,
-the .htaccess file in the owncloud folder needs to be made writable by the
+the .htaccess file in the ownCloud folder needs to be made writable by the
 server.
 
 Follow the Install Wizard
