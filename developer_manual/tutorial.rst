@@ -324,7 +324,7 @@ The apptemplate comes with several different controllers. A simple controller wo
       public function myControllerMethod(){
           $value = $this->params('somesetting');
 
-          $response = new JSONResponse($this->appName);
+          $response = new JSONResponse($this->api->getAppName());
           $response->setParams(array('value' => $value));
           return $response;
       }
@@ -743,7 +743,7 @@ To access the Template files in your controller, use the TemplateResponse class:
   public function index(){
 
     // main is the template name. Owncloud will look for template/main.php
-    $response = new TemplateResponse($this->appName, 'main');
+    $response = new TemplateResponse($this->api->getAppName(), 'main');
 
     $params = array('templateVar' => 1);
     $response->setParams($params);
