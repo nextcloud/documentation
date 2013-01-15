@@ -36,8 +36,8 @@ Building
 --------
 First make sure that these things are installed
  - Python 2
- - Sphinx (e.g. sudo yum install python-sphinx)
- - Sphinx PHPDomain (e.g. easy_install -U sphinxcontrib-phpdomain)
+ - Sphinx (e.g. sudo yum install python-sphinx), on Mac: ``sudo easy_install Sphinx``
+ - Sphinx PHPDomain (e.g. ``sudo easy_install -U sphinxcontrib-phpdomain``)
 
 then enter any manual directory, then run ``make html``. The result can be found in the ``_build/html`` subdirectory.
 
