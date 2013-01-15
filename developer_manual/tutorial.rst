@@ -343,6 +343,8 @@ Every controller method has to return a Response object. The currently available
 * **\\OCA\\AppFramework\\TemplateResponse**: renders a template
 * **\\OCA\\AppFramework\\RedirectResponse**: redirects to a new URL
 * **\\OCA\\AppFramework\\TextDownloadResponse**: prompts the user to download a text file containing a passed string
+* **\\OCA\\AppFramework\\TextResponse**: for printing text like XML
+
 
 .. note:: For more responses, please look into the appframework :file:`lib/responses/`. If you create an additional response, be sure to create a pull request so that more people can profit from it!
 
@@ -390,7 +392,6 @@ In this example, all security checks would be disabled (**not recommended**):
   /**
    * @CSRFExemption
    * @IsAdminExemption
-   * @AppEnabledExemption
    * @IsLoggedInExemption
    * @IsSubAdminExemption
    */
@@ -405,17 +406,15 @@ In this example, all security checks would be disabled (**not recommended**):
 
 Possible Annotations contain:
 
-* **@CSRFExemption**: This checks for the `CSRF <http://en.wikipedia.org/wiki/Cross-site_request_forgery>`_ token. Turn this off when you render a normal page and not an Ajax Request
+* **@CSRFExemption**: Turns off the check for the `CSRF <http://en.wikipedia.org/wiki/Cross-site_request_forgery>`_ token. **Only use this for the index page**!
 
-* **@IsAdminExemption**: Checks if the user is an admin
+* **@IsAdminExemption**: Turns off the check if the user is an admin
 
-* **@AppEnabledExemption**: Checks if the app is enabled
+* **@IsLoggedInExemption**: Turns off the check if the user is logged in
 
-* **@IsLoggedInExemption**: Checks if the user is logged in
+* **@IsSubAdminExemption**: Turns off the check if the user is a subadmin
 
-* **@IsSubAdminExemption**: Checks if the user is in the sub admin group
-
-* **@Ajax**: Use this for Ajax Requests. It prevents the unneeded rendering of the apps navigation
+* **@Ajax**: Use this for Ajax Requests. It prevents the unneeded rendering of the apps navigation and returns error messages in JSON format
 
 Don't forget to add your controller to the dependency container in :file:`appinfo/dicontainer.php`
 
