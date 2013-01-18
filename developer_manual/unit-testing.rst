@@ -1,17 +1,94 @@
-Unit Testing
-============
+Unittests
+=========
 
-ownCloud uses the `SimpleTest`_ PHP unit testing framework for monitoring code stability. As much of ownCloud as possible should be covered by unit tests, including 3rd party apps.
+Getting PHPUnit
+---------------
 
-View unit test results in a web browser by accessing the ``/tests`` directory. The current results for the public dev demo ownCloud server (running about 5 mins behind git master) can be viewed at http://demo.owncloud.org/dev/tests/. In development versions of ownCloud tests can also be run from the command-line. To do so execute ``php -f index.php`` from within the ``/tests`` directory, with appropriate permissions.
+Owncloud uses PHPUnit for tests. To install it, either get it via your packagemanager::
 
-SimpleTest has been configured for easy unit testing of ownCloud apps. The ``tests`` folder within an app root directory should be used to store unit tests and any data that they use. These tests will be run automatically when ``/tests`` is accessed.
+  sudo apt-get install phpunit
 
-You can run only a selected number of tests by passing a parameter as prefix-filter for the tests. When running from the browser, the ``test`` GET variable is used, when running from command-line it is passed as command line argument. For example, the tests from the ``files_archive`` app can be viewed at http://demo.owncloud.org/tests/?test=/apps/files_archive or by executing ``php -f index.php /apps/files_archive`` from the command-line.
+or install it via PEAR::
 
-Apps which modify core ownCloud functionality can extend test cases which already exist within ``/tests/lib``. For an example of an app unit test which extends an existing unit test, see ``/apps/files_archive/tests/storage.php``. Apps which make use of public ownCloud functions, for getting logged-in user information for example, can use dummy classes which have been provided for this purpose, such as ``/lib/user/dummy.php``.
+  pear config-set auto_discover 1
+  pear install pear.phpunit.de/PHPUnit
 
-For information about writing tests, see `SimpleTest documentation`_.
+After the installation the ''phpunit'' command is available.
 
-.. _SimpleTest: http://simpletest.org/
-.. _SimpleTest documentation: http://simpletest.org/en/start-testing.html
+Writing unittests
+-----------------
+
+To get started, do the following:
+ - Create a directory called ``tests`` in the top level of your application
+ - Create a php file in the directory and ``require_once`` your class which you want to test.
+
+Then you can simply run the created test with phpunit.
+
+.. note:: If you use owncloud functions in your class under test (i.e: OC::getUser()) you'll need to bootstrap owncloud or use dependency injection.
+
+.. note:: You'll most likely run your tests under a different user than the webserver. This might cause problems with your PHP settings (i.e: open_basedir) and requires you to adjust your configuration.
+
+An example for a simple test would be:
+
+:file:`/srv/http/owncloud/apps/myapp/tests/testsuite.php`
+
+.. code-block:: php
+
+  <?php
+  require_once("../myfolder/myfunction.php");
+  
+  class TestAddTwo extends PHPUnit_Framework_TestCase {
+  
+      public function testAddTwo(){
+          $this->assertEquals(5, addTwo(3));
+      }
+  
+  }
+  ?>
+
+:file:`/srv/http/owncloud/apps/myapp/tests/testsuite.php`
+
+.. code-block:: php
+
+  <?php
+  function addTwo($number){
+      return $number + 2;
+  }
+  ?>
+
+In :file:`/srv/http/owncloud/apps/myapp/` you run the test with::
+
+  phpunit tests/testsuite.php
+
+
+For more resources on PHPUnit visit: http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html
+
+Bootstrapping Owncloud
+----------------------
+If you use Owncloud functions or classes in your code, you'll need to make them available to your test by bootstrapping Owncloud. 
+
+To do this, you'll need to provide the ``--bootstrap`` argument when running PHPUnit
+
+:file:`/srv/http/owncloud`::
+
+  phpunit --bootstrap tests/bootstrap.php apps/myapp/tests/testsuite.php
+
+If you run the test under a different user than your webserver, you'll have to
+adjust your php.ini and file rights.
+
+:file:`/etc/php/php.ini`::
+
+  open_basedir = none
+
+:file:`/srv/http/owncloud`::
+
+  su -c "chmod a+r config/config.php"
+  su -c "chmod a+rx data/"
+  su -c "chmod a+w data/owncloud.log"
+
+Further Reading
+---------------
+- http://googletesting.blogspot.de/2008/08/by-miko-hevery-so-you-decided-to.html
+- http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html
+- http://www.youtube.com/watch?v=4E4672CS58Q&feature=bf_prev&list=PLBDAB2BA83BB6588E
+- Clean Code: A Handbook of Agile Software Craftsmanship (Robert C. Martin)
