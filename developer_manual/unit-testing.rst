@@ -1,5 +1,5 @@
-Unittests
-=========
+Unit-Testing
+============
 
 Getting PHPUnit
 ---------------
