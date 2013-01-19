@@ -72,7 +72,7 @@ Control Structures
 * Always use { } for one line ifs
 * Split long ifs into multiple lines
 * Always use break in switch statements and prevent a default block with warnings if it shouldn't be accessed
-* Dont put spaces between variable and assignments in for loops
+* Do not put spaces between variable and assignments in for loops
 
 .. code-block:: php
 
@@ -243,7 +243,7 @@ Control Structures
 * Always use { } for one line ifs
 * Split long ifs into multiple lines
 * Always use break in switch statements and prevent a default block with warnings if it shouldn't be accessed
-* Dont put spaces between variable and assignments in for loops
+* Do not put spaces between variable and assignments in for loops
 
 **DO**:
 
@@ -284,7 +284,7 @@ CSS
 ---
 Take a look at the `Writing Tactical CSS & HTML <http://www.youtube.com/watch?v=hou2wJCh3XE&feature=plcp>`_ video on YouTube. 
 
-Don't bind your CSS to much to your HTML structure and try to avoid IDs. Also try to make your CSS reusable by grouping common attritubes into classes.
+Don't bind your CSS too much to your HTML structure and try to avoid IDs. Also try to make your CSS reusable by grouping common attributes into classes.
 
 **DO**:
 
@@ -302,7 +302,7 @@ Don't bind your CSS to much to your HTML structure and try to avoid IDs. Also tr
       color: red;
   }
 
-**DONT**:
+**DON'T**:
 
 .. code-block:: css
 
