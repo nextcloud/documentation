@@ -70,7 +70,6 @@ Certain things are still apptemplate specific and you will have to convert them 
 The following things will need to be changed:
 
 * AGPL Header: author and copyright
-* **\\OC_App::getAppPath('apptemplate_advanced')** to **\\OC_App::getAppPath('yourappname')**
 * **namespace OCA\\AppTemplateAdvanced** to **namespace OCA\\YourAppName**
 * The Classpaths in :file:`appinfo/classpath.php`
 * The **parent::__construct('apptemplate_advanced')** to **parent::__construct('yourappname')** to in the :file:`appinfo/dicontainer`
@@ -82,8 +81,6 @@ You'll need to give some information on your app for instance the name. To do th
 .. code-block:: php
 
   <?php
-
-  require_once \OC_App::getAppPath('yourappname') . '/appinfo/classpath.php';
 
   // if you dont want to register settings for the admin, delete the following
   // line
@@ -167,7 +164,7 @@ You can also overwrite already exsting items from the appframework simply by red
 
 API abstraction layer
 ---------------------
-Owncloud currently has a ton of static methods which is a very bad thing concerning testability. Therefore the appframework comes with an API abstraction layer which is located in the appframework app at :file:`lib/api.php`.
+Owncloud currently has a ton of static methods which is a very bad thing concerning testability. Therefore the appframework comes with an API abstraction layer (basically a `facade <http://en.wikipedia.org/wiki/Facade_pattern>`_) which is located in the appframework app at :file:`lib/api.php`.
 
 If you find yourself in need to use more ownCloud internal static methods, add them to the API class in the appframework directory, like:
 
@@ -217,6 +214,8 @@ A simple route would look like this:
 .. code-block:: php
 
   <?php
+  use \OCA\AppFramework\App as App;
+
   $this->create('yourappname_routename', '/myurl/{value}')->action(
       function($params){
           App::main('MyController', 'methodName', $params, new DIContainer());
@@ -224,7 +223,7 @@ A simple route would look like this:
   );
   ?>
 
-The first argument is the name of your route. This is used to get the URL of the route. This is a nice way to generate the URL in your templates or JavaScript for certain links since it does not force you to hardcode your URLs. To use it in templates, use:
+The first argument is the name of your route. This is used as an identifier to get the URL of the route. This is a nice way to generate the URL in your templates or JavaScript for certain links since it does not force you to hardcode your URLs. To use it in templates, use:
 
 .. code-block:: php
 
@@ -339,6 +338,7 @@ An instance of the API is passed via dependency injection, the same goes for a R
 
 Every controller method has to return a Response object. The currently available Responses from the appframework include:
 
+* **\\OCA\\AppFramework\\Response**: response for sending headers only
 * **\\OCA\\AppFramework\\JSONResponse**: sends JSON to the client
 * **\\OCA\\AppFramework\\TemplateResponse**: renders a template
 * **\\OCA\\AppFramework\\RedirectResponse**: redirects to a new URL
@@ -424,7 +424,7 @@ Don't forget to add your controller to the dependency container in :file:`appinf
 
   // in the constructor function
 
-  $container['MyController'] = function($c){
+  $this['MyController'] = function($c){
       return new MyController($c['API'], $c['Request']);
   };
 
@@ -791,7 +791,7 @@ If you have to include an image in your CSS, use %appswebroot% and %webroot% for
 
 Unittests
 ---------
-.. note:: App Unittests should **not depend on a running ownCloud instance**! They should be able to run in isolation. To achieve that, abstract the ownCloud core functions in the :file:`lib/api.php` and use a mock for testing. 
+.. note:: App Unittests should **not depend on a running ownCloud instance**! They should be able to run in isolation. To achieve that, abstract the ownCloud core functions and static methods in the appframework :file:`lib/api.php` and use a mock for testing. If a class is not static, you can simply add it in the :file:`appinfo/dicontainer.php`
 
 .. note:: Also use your app's namespace in your test classes to avoid possible conflicts when the test is run on the buildserver
 
@@ -815,48 +815,42 @@ A simple test for a controller would look like this:
   namespace OCA\AppTemplateAdvanced;
 
   use OCA\AppFramework\Request as Request;
-
-  // get abspath of file directory
-  $path = realpath( dirname( __FILE__ ) ) . '/';
-
-  require_once($path . "../../../appframework/lib/request.php");
-  require_once($path . "../../../appframework/lib/controller.php");
-
-  require_once($path . "../../controllers/item.controller.php");
+  use OCA\AppFramework\DoesNotExistException as DoesNotExistException;
+  use OCA\AppFramework\ControllerTestUtility as ControllerTestUtility;
 
 
-  class ItemControllerTest extends \PHPUnit_Framework_TestCase {
+  require_once(__DIR__ . "/../classloader.php");
 
 
-      public function testSetSystemValue(){
-          $post = array('somesetting' => 'this is a test');
-          $request = new Request(null, $post);
+  class ItemControllerTest extends ControllerTestUtility {
 
-          // create an api mock object
-          $api = $this->getMock('API', array('setSystemValue', 'getAppName'));
 
-          // expects to be called once with the method
-          // setSystemValue('somesetting', 'this is a test')
-          $api->expects($this->once())
-                ->method('setSystemValue')
-                ->with( $this->equalTo('somesetting'),
-                    $this->equalTo('this is a test'));
+    public function testSetSystemValue(){
+      $post = array('somesetting' => 'this is a test');
+      $request = new Request(array(), $post);
 
-          // we want to return the appname apptemplate_advanced when this method
-          // is being called
-          $api->expects($this->any())
-                ->method('getAppName')
-                ->will($this->returnValue('apptemplate_advanced'));
+      // create an api mock object
+      $api = $this->getAPIMock();
 
-          $controller = new ItemController($api, $request, null);
-          $controller->setSystemValue(null);
+      // expects to be called once with the method
+      // setSystemValue('somesetting', 'this is a test')
+      $api->expects($this->once())
+            ->method('setSystemValue')
+            ->with( $this->equalTo('somesetting'),
+                $this->equalTo('this is a test'));
 
-          $response = $controller->setSystemValue(null);
+      // we want to return the appname apptemplate_advanced when this method
+      // is being called
+      $api->expects($this->any())
+            ->method('getAppName')
+            ->will($this->returnValue('apptemplate_advanced'));
 
-          // check if the correct parameters of the json response are set
-          $this->assertEquals($post, $response->getParams());
+      $controller = new ItemController($api, $request, null);
+      $response = $controller->setSystemValue(null);
 
-      }
+      // check if the correct parameters of the json response are set
+      $this->assertEquals($post, $response->getParams());
+    }
 
 
   }
@@ -865,7 +859,9 @@ You can now execute the test by running this in your app directory::
 
   phpunit tests/
 
-.. note:: PHPUnit executes all PHP Files that end with **Test.php**. Be sure to consider that in your file naming. Also use **relative require paths** like in the example to include the correct files independent for your current path
+.. note:: PHPUnit executes all PHP Files that end with **Test.php**. Be sure to consider that in your file naming.
+
+The apptemplate_advanced provides an own classloader :file:`tests/classloader.php` that loads the the classes in :file:`appinfo/classpath.php` and from the appframework. Should you require to include more classes, adjust the file accordingly.
 
 More examples for testing controllers are in the :file:`tests/controllers/ItemControllerTest.php`
 
