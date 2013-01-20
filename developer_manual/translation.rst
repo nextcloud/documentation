@@ -16,7 +16,7 @@ You shall never split sentences!
 Reason:
 ~~~~~~~
 
-Translators loose the context and they have no chance to possible re-arrange words.
+Translators lose the context and they have no chance to possible re-arrange words.
 
 Example:
 ~~~~~~~~
