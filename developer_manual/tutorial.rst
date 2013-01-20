@@ -162,6 +162,8 @@ To add your own classes simply open the :file:`appinfo/dicontainer.php` and add 
 
 You can also overwrite already exsting items from the appframework simply by redefining it.
 
+**See also** :doc:`dependencyinjection`
+
 API abstraction layer
 ---------------------
 Owncloud currently has a ton of static methods which is a very bad thing concerning testability. Therefore the appframework comes with an API abstraction layer (basically a `facade <http://en.wikipedia.org/wiki/Facade_pattern>`_) which is located in the appframework app at :file:`lib/api.php`.
@@ -865,7 +867,7 @@ The apptemplate_advanced provides an own classloader :file:`tests/classloader.ph
 
 More examples for testing controllers are in the :file:`tests/controllers/ItemControllerTest.php`
 
-**See also** :doc:`unittests`
+**See also** :doc:`unit-testing`
 
 
 Middleware
