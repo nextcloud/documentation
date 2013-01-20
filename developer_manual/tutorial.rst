@@ -144,7 +144,7 @@ Dependency Injection
 --------------------
 Dependency Injection helps you to create testable code. A good overview over how it works and what the benefits are can be seen on `Google's Clean Code Talks <http://www.youtube.com/watch?v=RlfLCWKxHJ0>`_
 
-The container is configured in :file:`appinfo/dicontainer.php`. We use Pimple for the container. The documentation on how to use it can be seen on the `Pimple Homepage <http://pimple.sensiolabs.org/>`_
+The container is configured in :file:`appinfo/dicontainer.php`. We use Pimple for the container. The documentation on how to use it can be read on the `Pimple Homepage <http://pimple.sensiolabs.org/>`_
 
 To add your own classes simply open the :file:`appinfo/dicontainer.php` and add a line like this to the constructor:
 
