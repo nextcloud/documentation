@@ -49,13 +49,13 @@ If you are new to git, do the `git crash course`_.
 Contribution guidelines
 -----------------------
 
-* We use `Github`_, get an account there and clone the ownCloud repository
-* Please check `our planning page`_ and ideally communicate your ideas to the `mailing list`_
-* fixes go directly to master, nevertheless they need to be tested thoroughly
-* new features are always developed in a branch and only merged to master once they are fully done
-* when you are finished, use the merge request function on Gitorious. The other developers will look at it and give you feedback. Ideally also post your merge request to the mailing list to let people know.
-* when you ``git pull``, always git ``pull --rebase`` to not generate extra commits like: *merged master into master*
-* We need a signed contributor agreement from you to commit into the core repository. But no worries. It' a nice one.  All the information is `here`_
+* We use `Github`_, get an account there and clone the ownCloud repository.
+* Please check `our planning page`_ and ideally communicate your ideas to the `mailing list`_.
+* Fixes go directly to master, nevertheless they need to be tested thoroughly.
+* New features are always developed in a branch and only merged to master once they are fully done.
+* When you are finished, use the Pull request function on Github. The other developers will look at it and give you feedback. Ideally also post your merge request to the mailing list to let people know.
+* When you ``git pull``, always ``git pull --rebase`` to avoid generating extra commits like: *merged master into master*
+* We need a signed contributor agreement from you to commit into the core repository. But no worries; it's a nice one. All the information is in our `Contributor agreement FAQ`_.
 
 Design guidelines
 -----------------
@@ -96,7 +96,7 @@ Coding guidelines
 .. _Github: https://github.com/owncloud
 .. _our planning page: http://gitorious.org/owncloud/pages/Home
 .. _mailing list: https://mail.kde.org/mailman/listinfo/owncloud
-.. _here: http://owncloud.org/about/contributor-agreement/
+.. _Contributor agreement FAQ: http://owncloud.org/about/contributor-agreement/
 .. _which might be dismissed: http://www.alistapart.com/articles/neveruseawarning/
 .. _usability testing: http://jancborchardt.net/usability-in-free-software
 .. _Alex Faaborg from Mozilla: http://uxmag.com/articles/quantifying-usability
