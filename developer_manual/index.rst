@@ -7,7 +7,6 @@ Contents
    :maxdepth: 2
 
    codingguidelines
-   getting_started
    tutorial
    angular
    dependencyinjection

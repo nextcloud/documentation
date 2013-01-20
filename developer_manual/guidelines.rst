@@ -7,7 +7,7 @@ How you can contribute:
 * `Report an issue on our bug tracker`_
 * :ref:`Translate ownCloud to your language<translation>` 
 * Help coding (see below) and check the `Junior Jobs`_
-* :ref:`Develop Apps<getting_started>`, if you're looking for ideas you can
+* :ref:`Develop Apps <tutorial>`, if you're looking for ideas you can
   check what users reported at the `App Opportunities Page`_.  Help out with the
   website and write documentation (contact tpn or deryo in the irc channel)
 * Spread the word, tell your friends about it, write a blog post!
