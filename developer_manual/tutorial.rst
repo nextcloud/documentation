@@ -69,9 +69,13 @@ Certain things are still apptemplate specific and you will have to convert them 
 
 The following things will need to be changed:
 
-* AGPL Header: author and copyright
-* **namespace OCA\\AppTemplateAdvanced** to **namespace OCA\\YourAppName**
-* The **parent::__construct('apptemplateadvanced')** to **parent::__construct('yourappname')** to in the :file:`dependencyinjection/dicontainer.php`
+* In every file: AGPL Headers
+* In every file: **namespace OCA\\AppTemplateAdvanced** to **namespace OCA\\YourAppName**
+* :file:`dependencyinjection/dicontainer.php`: The **parent::__construct('apptemplateadvanced')** to **parent::__construct('yourappname')**
+* :file:`appinfo/info.xml`: Your data
+* :file:`appinfo/app.php`: the correct navigation settings
+* :file:`appinfo/routes.php`: the name of the routes
+* :file:`coffee/app.coffee`: the route names
 
 App information
 ---------------
@@ -115,13 +119,13 @@ The second place where app specifc information is stored is in :file:`appinfo/in
 
   <?xml version="1.0"?>
   <info>
-         <id>yourappname</id>
-         <name>Your App</name>
-         <description>Your App description</description>
-         <version>1.0</version>
-         <licence>AGPL</licence>
-         <author>Your Name</author>
-           <require>4</require>
+        <id>yourappname</id>
+        <name>Your App</name>
+        <description>Your App description</description>
+        <version>1.0</version>
+        <licence>AGPL</licence>
+        <author>Your Name</author>
+        <require>4</require>
   </info>
 
 
