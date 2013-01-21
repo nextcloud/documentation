@@ -33,7 +33,8 @@ This class prints out all prenames of a person and is called by using:
 .. code-block:: php
 
   <?php
-  PersonController::listNames();
+  $controller = new PersonController();
+  $controller->listNames();
 
 
 This looks like clean code until the first tests are written. **Tests are absolutely necessary in every application! Do not think that your app is too small to require them.** The code will eventuell grow bigger and will have to be refactored. 
