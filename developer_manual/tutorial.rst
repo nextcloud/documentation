@@ -903,7 +903,7 @@ Middleware is logic that is run before and after each request. It offers the fol
 
 To generate your own middleware, simply inherit from the Middleware class and overwrite the methods that you want to use.
 
-.. note:: Some hooks need to return a result, for instance the beforeOutput hook needs to return the text that is printed to the page. Check the Middleware class documentation in the appframework :file:`lib/middleware/middleware.php` for more information
+.. note:: Some hooks need to return a result, for instance the beforeOutput hook needs to return the text that is printed to the page. Check the Middleware class documentation in the appframework :file:`middleware/middleware.php` for more information
 
 
 
