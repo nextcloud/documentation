@@ -33,14 +33,14 @@ To disable JavaScript and CSS caching you'll have to turn on debugging in :file:
 
 Create your app
 ---------------
-The best way to create your application is to simply modify the `apptemplate_advanced app <https://github.com/owncloud/apps/tree/master/apptemplate_advanced>`_.
+The best way to create your application is to simply modify the `apptemplateadvanced app <https://github.com/owncloud/apps/tree/master/apptemplateadvanced>`_.
 
 To do that execute:
 
 .. code-block:: bash
 
   cd /var/www/apps
-  sudo cp -r apptemplate_advanced yourappname
+  sudo cp -r apptemplateadvanced yourappname
   sudo chown -R youruser:yourgroup yourappname
 
 To enable your app, simply link it into the apps directory:
@@ -71,8 +71,7 @@ The following things will need to be changed:
 
 * AGPL Header: author and copyright
 * **namespace OCA\\AppTemplateAdvanced** to **namespace OCA\\YourAppName**
-* The Classpaths in :file:`appinfo/classpath.php`
-* The **parent::__construct('apptemplate_advanced')** to **parent::__construct('yourappname')** to in the :file:`appinfo/dicontainer`
+* The **parent::__construct('apptemplateadvanced')** to **parent::__construct('yourappname')** to in the :file:`dependencyinjection/dicontainer.php`
 
 App information
 ---------------
@@ -116,37 +115,54 @@ The second place where app specifc information is stored is in :file:`appinfo/in
 
   <?xml version="1.0"?>
   <info>
-	<id>yourappname</id>
-	<name>Your App</name>
-	<description>Your App description</description>
-	<version>1.0</version>
-	<licence>AGPL</licence>
-	<author>Your Name</author>
-	<require>4</require>
+         <id>yourappname</id>
+         <name>Your App</name>
+         <description>Your App description</description>
+         <version>1.0</version>
+         <licence>AGPL</licence>
+         <author>Your Name</author>
+           <require>4</require>
   </info>
 
 
 Classloader
 -----------
-The classloader is configured in :file:`appinfo/classpath.php`. The classloader frees you from requiring your classes when you use them. If a class is used and its not yet available, the loader will automatically include the needed file.
+The classloader is provided by ownCloud and loads all your classes automatically. The only thing left to include by yourself are 3rdparty libraries.
 
-To add a class to the classloader, simply use something like this:
+The classloader works like this:
 
-.. code-block:: php
+* Take the full qualifier of a class::
 
-  <?php
-  // loads the class MyClass from the file folder/myclass.php
-  \OC::$CLASSPATH['OCA\YourAppName\MyClass'] = 'yourappname/folder/myclass.php';
-  ?>
+    \OCA\AppTemplateAdvanced\Db\ItemMapper
 
+* If it starts with \\OCA include file from the apps directory
+* Cut off \\OCA::
+
+    \AppTemplateAdvanced\Db\ItemMapper
+
+* Convert all charactes to lowercase::
+
+    \apptemplateadvanced\db\itemmapper
+
+* Replace \\ with /::
+
+    /apptemplateadvanced/db/itemmapper
+
+* Append .php::
+
+    /apptemplateadvanced/db/itemmapper.php
+
+* Include the file::
+
+    require '/apps/apptemplateadvanced/db/itemmapper.php';
 
 Dependency Injection
 --------------------
 Dependency Injection helps you to create testable code. A good overview over how it works and what the benefits are can be seen on `Google's Clean Code Talks <http://www.youtube.com/watch?v=RlfLCWKxHJ0>`_
 
-The container is configured in :file:`appinfo/dicontainer.php`. We use Pimple for the container. The documentation on how to use it can be read on the `Pimple Homepage <http://pimple.sensiolabs.org/>`_
+The container is configured in :file:`dependencyinjection/dicontainer.php`. By default Pimple is used as dependency injection container. The documentation on how to use it can be read on the `Pimple Homepage <http://pimple.sensiolabs.org/>`_
 
-To add your own classes simply open the :file:`appinfo/dicontainer.php` and add a line like this to the constructor:
+To add your own classes simply open the :file:`dependencyinjection/dicontainer.php` and add a line like this to the constructor:
 
 .. code-block:: php
 
@@ -166,7 +182,7 @@ You can also overwrite already existing items from the appframework simply by re
 
 API abstraction layer
 ---------------------
-Owncloud currently has a ton of static methods which is a very bad thing concerning testability. Therefore the appframework comes with an API abstraction layer (basically a `facade <http://en.wikipedia.org/wiki/Facade_pattern>`_) which is located in the appframework app at :file:`lib/api.php`.
+Owncloud currently has a ton of static methods which is a very bad thing concerning testability. Therefore the appframework comes with an API abstraction layer (basically a `facade <http://en.wikipedia.org/wiki/Facade_pattern>`_) which is located in the appframework app at :file:`core/api.php`.
 
 If you find yourself in need to use more ownCloud internal static methods, add them to the API class in the appframework directory, like:
 
@@ -186,7 +202,7 @@ If you find yourself in need to use more ownCloud internal static methods, add t
 
 .. note:: Please send a pull request and cc **Raydiation** so the method can be added to the API class.
 
-You could of course also simply inherit from the API class and overwrite the API in the dependency injection container in :file:`appinfo/dicontainer.php` by using:
+You could of course also simply inherit from the API class and overwrite the API in the dependency injection container in :file:`dependencyinjection/dicontainer.php` by using:
 
 .. code-block:: php
 
@@ -281,7 +297,7 @@ The fourth parameter is an instance of the **DIContaier**. If you want to replac
 
 Controllers
 -----------
-The appframework app provides a simple baseclass for adding controllers. Controllers connect your view (templates) with your database. Controllers themselves are connected to one or more routes.
+The appframework app provides a simple baseclass for adding controllers. Controllers connect your view (templates) with your database. Controllers themselves are connected to one or more routes. Controllers go into the :file:`controller` directory.
 
 A controller should be created for each resource. Think of it as an URL scheme::
 
@@ -300,12 +316,13 @@ The apptemplate comes with several different controllers. A simple controller wo
 
   <?php
   
-  namespace OCA\YourApp;
+  namespace OCA\YourApp\Controller;
 
-  use \OCA\AppFramework\JSONResponse as JSONResponse;
+  use \OCA\AppFramework\Controller\Controller as Controller;
+  use \OCA\AppFramework\Http\JSONResponse as JSONResponse;
 
 
-  class MyController extends \OCA\AppFramework\Controller {
+  class MyController extends Controller {
 
 
       /**
@@ -340,15 +357,15 @@ An instance of the API is passed via dependency injection, the same goes for a R
 
 Every controller method has to return a Response object. The currently available Responses from the appframework include:
 
-* **\\OCA\\AppFramework\\Response**: response for sending headers only
-* **\\OCA\\AppFramework\\JSONResponse**: sends JSON to the client
-* **\\OCA\\AppFramework\\TemplateResponse**: renders a template
-* **\\OCA\\AppFramework\\RedirectResponse**: redirects to a new URL
-* **\\OCA\\AppFramework\\TextDownloadResponse**: prompts the user to download a text file containing a passed string
-* **\\OCA\\AppFramework\\TextResponse**: for printing text like XML
+* **\\OCA\\AppFramework\\Http\\Response**: response for sending headers only
+* **\\OCA\\AppFramework\\Http\\JSONResponse**: sends JSON to the client
+* **\\OCA\\AppFramework\\Http\\TemplateResponse**: renders a template
+* **\\OCA\\AppFramework\\Http\\RedirectResponse**: redirects to a new URL
+* **\\OCA\\AppFramework\\Http\\TextDownloadResponse**: prompts the user to download a text file containing a passed string
+* **\\OCA\\AppFramework\\Http\\TextResponse**: for printing text like XML
 
 
-.. note:: For more responses, please look into the appframework :file:`lib/responses/`. If you create an additional response, be sure to create a pull request so that more people can profit from it!
+.. note:: For more responses, please look into the appframework :file:`http/`. If you create an additional response, be sure to create a pull request so that more people can profit from it!
 
 Should you require to set additional headers, you can use the **addHeader()** method that every Response has.
 
@@ -418,7 +435,7 @@ Possible Annotations contain:
 
 * **@Ajax**: Use this for Ajax Requests. It prevents the unneeded rendering of the apps navigation and returns error messages in JSON format
 
-Don't forget to add your controller to the dependency container in :file:`appinfo/dicontainer.php`
+Don't forget to add your controller to the dependency injection container in :file:`dependencyinjection/dicontainer.php`
 
 .. code-block:: php
 
@@ -432,13 +449,6 @@ Don't forget to add your controller to the dependency container in :file:`appinf
 
   ?>
 
-and to the classloader
-
-.. code-block:: php
-
-  <?php
-  \OC::$CLASSPATH['OCA\YourAppName\MyController'] = 'apps/yourappname/controllers/my.controller.php';
-  ?>
 
 
 Database Access
@@ -496,13 +506,15 @@ An example database XML file would look like this:
 To update the tables used by the app, simply adjust the database.xml file and increase the app version number in :file:`appinfo/version` to trigger an update.
 
 
-Your database layer should go into the **database/** folder. It's recommended to split your data entities from your database queries. You can do that by creating a very simple PHP object with getters and setters. This object will hold your data.
+Your database layer should go into the **db/** folder. It's recommended to split your data entities from your database queries. You can do that by creating a very simple PHP object with getters and setters. This object will hold your data.
 
-:file:`database/item.php`
+:file:`db/item.php`
 
 .. code-block:: php
 
   <?php
+  namespace \OCA\YourApp\Db;
+
   class Item {
 
       private $id;
@@ -562,12 +574,18 @@ Your database layer should go into the **database/** folder. It's recommended to
 
 All database queries for that object should be put into a mapper class. This follows the `data mapper pattern <http://www.martinfowler.com/eaaCatalog/dataMapper.html>`_. The mapper class could look like this (more method examples are in the advanced_apptemplate):
 
-:file:`database/item.mapper.php`
+:file:`db/itemmapper.php`
 
 .. code-block:: php
 
   <?php
-  class ItemMapper extends \OCA\AppFramework\Mapper {
+  namespace \OCA\YourApp\Db;
+
+  use \OCA\AppFramework\Db\DoesNotExistException as DoesNotExistException;
+  use \OCA\AppFramework\Db\Mapper as Mapper;
+
+
+  class ItemMapper extends Mapper {
 
 
       private $tableName;
@@ -577,7 +595,7 @@ All database queries for that object should be put into a mapper class. This fol
        */
       public function __construct($api){
           parent::__construct($api);
-          $this->tableName = '*PREFIX*apptemplate_advanced_items';
+          $this->tableName = '*PREFIX*apptemplateadvanced_items';
       }
 
 
@@ -606,7 +624,7 @@ All database queries for that object should be put into a mapper class. This fol
           if($result){
               return new Item($result);
           } else {
-              throw new \OCA\AppFramework\DoesNotExistException('Item with user id ' . $userId . ' does not exist!');
+              throw new DoesNotExistException('Item with user id ' . $userId . ' does not exist!');
           }
       }
 
@@ -735,7 +753,7 @@ To access the Template files in your controller, use the TemplateResponse class:
 .. code-block:: php
 
   <?php
-  use \OCA\AppFramework\TemplateResponse as TemplateResponse
+  use \OCA\AppFramework\Http\TemplateResponse as TemplateResponse
 
   // ...
 
@@ -793,7 +811,7 @@ If you have to include an image in your CSS, use %appswebroot% and %webroot% for
 
 Unittests
 ---------
-.. note:: App Unittests should **not depend on a running ownCloud instance**! They should be able to run in isolation. To achieve that, abstract the ownCloud core functions and static methods in the appframework :file:`lib/api.php` and use a mock for testing. If a class is not static, you can simply add it in the :file:`appinfo/dicontainer.php`
+.. note:: App Unittests should **not depend on a running ownCloud instance**! They should be able to run in isolation. To achieve that, abstract the ownCloud core functions and static methods in the appframework :file:`core/api.php` and use a mock for testing. If a class is not static, you can simply add it in the :file:`dependencyinjection/dicontainer.php`
 
 .. note:: Also use your app's namespace in your test classes to avoid possible conflicts when the test is run on the buildserver
 
@@ -816,9 +834,9 @@ A simple test for a controller would look like this:
   <?php
   namespace OCA\AppTemplateAdvanced;
 
-  use OCA\AppFramework\Request as Request;
-  use OCA\AppFramework\DoesNotExistException as DoesNotExistException;
-  use OCA\AppFramework\ControllerTestUtility as ControllerTestUtility;
+  use OCA\AppFramework\Http\Request as Request;
+  use OCA\AppFramework\Db\DoesNotExistException as DoesNotExistException;
+  use OCA\AppFramework\Utility\ControllerTestUtility as ControllerTestUtility;
 
 
   require_once(__DIR__ . "/../classloader.php");
@@ -841,11 +859,11 @@ A simple test for a controller would look like this:
             ->with( $this->equalTo('somesetting'),
                 $this->equalTo('this is a test'));
 
-      // we want to return the appname apptemplate_advanced when this method
+      // we want to return the appname apptemplateadvanced when this method
       // is being called
       $api->expects($this->any())
             ->method('getAppName')
-            ->will($this->returnValue('apptemplate_advanced'));
+            ->will($this->returnValue('apptemplateadvanced'));
 
       $controller = new ItemController($api, $request, null);
       $response = $controller->setSystemValue(null);
@@ -863,9 +881,9 @@ You can now execute the test by running this in your app directory::
 
 .. note:: PHPUnit executes all PHP Files that end with **Test.php**. Be sure to consider that in your file naming.
 
-The apptemplate_advanced provides an own classloader :file:`tests/classloader.php` that loads the the classes in :file:`appinfo/classpath.php` and from the appframework. Should you require to include more classes, adjust the file accordingly.
+The apptemplateadvanced provides an own classloader :file:`tests/classloader.php` that loads the the classes.
 
-More examples for testing controllers are in the :file:`tests/controllers/ItemControllerTest.php`
+More examples for testing controllers are in the :file:`tests/controller/ItemControllerTest.php`
 
 **See also** :doc:`unit-testing`
 
@@ -889,7 +907,10 @@ To generate your own middleware, simply inherit from the Middleware class and ov
 
   <?php
 
-  class CensorMiddleware extends \OCA\AppFramework\Middleware {
+  use \OCA\AppFramework\Middleware\Middleware as Middleware;
+
+
+  class CensorMiddleware extends Middleware {
 
     private $api;
 
@@ -925,7 +946,7 @@ To activate the middleware, you have to overwrite the parent MiddlewareDispatche
     };
 
     $this['MiddlewareDispatcher'] = function($c){
-      $dispatcher = new \OCA\AppFramework\MiddlewareDispatcher();
+      $dispatcher = new \OCA\AppFramework\Middleware\MiddlewareDispatcher();
       $dispatcher->registerMiddleware($c['SecurityMiddleware']);
       $dispatcher->registerMiddleware($c['CensorMiddleware']);
       return $dispatcher;
