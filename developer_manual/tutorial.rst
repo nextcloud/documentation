@@ -160,7 +160,7 @@ To add your own classes simply open the :file:`appinfo/dicontainer.php` and add 
 
   ?>
 
-You can also overwrite already exsting items from the appframework simply by redefining it.
+You can also overwrite already existing items from the appframework simply by redefining them.
 
 **See also** :doc:`dependencyinjection`
 
@@ -205,7 +205,7 @@ This will allow you to easily mock the API in your unittests.
 
 Routes
 ------
-Routing connects your URL with your controller methods and allows you to create constant and nice URLs. Its also easy to extract values from the URL.
+Routing connects your URLs with your controller methods and allows you to create constant and nice URLs. It also makes easy to extract values from the URLs.
 
 Owncloud uses `Symphony Routing <http://symfony.com/doc/2.0/book/routing.html>`_
 
@@ -287,7 +287,7 @@ A controller should be created for each resource. Think of it as an URL scheme::
 
   /controller/method/params
 
-for instance::
+For instance::
 
   /file/delete/1
 
@@ -352,7 +352,7 @@ Every controller method has to return a Response object. The currently available
 
 Should you require to set additional headers, you can use the **addHeader()** method that every Response has.
 
-Because TemplateResponse and JSONResponse is so common, the controller provides a shortcut method for both of those, named **$this->render** and **$this->renderJSON**.
+Because TemplateResponse and JSONResponse are so common, the controller provides a shortcut method for both of them, namely **$this->render** and **$this->renderJSON**.
 
 .. code-block:: php
 
@@ -560,7 +560,7 @@ Your database layer should go into the **database/** folder. It's recommended to
   }
 
 
-All database queries for that object should be put into a mapper class. The mapper class could look like this (more method examples are in the advanced_apptemplate):
+All database queries for that object should be put into a mapper class. This follows the `data mapper pattern <http://www.martinfowler.com/eaaCatalog/dataMapper.html>`_. The mapper class could look like this (more method examples are in the advanced_apptemplate):
 
 :file:`database/item.mapper.php`
 
