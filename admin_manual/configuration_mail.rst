@@ -1,4 +1,4 @@
-Mail configuration
+Mail Configuration
 ==================
 
 ownCloud does not contain a full email program but contains some parameters to
@@ -17,10 +17,10 @@ SMTP, PHP mail, Sendmail and qmail.
 Parameters
 ----------
 
-* SMTP (Simple Mail Tranfer Protocol)
+* **SMTP (Simple Mail Tranfer Protocol)**
 
   If you want to send email using a local or remote SMTP server it is necessary
-  to enter the name or ip address of the server, optionally followed by a collon
+  to enter the name or ip address of the server, optionally followed by a colon
   separated port number, e.g. ``:425``. If this value is not given the default
   port 25/tcp will be used unless you will change that by modifying the
   ``mail_smtpport`` parameter. Multiple server can be entered separated by
@@ -49,16 +49,14 @@ Parameters
   If the SMTP server only accepts secure connections you can choose between the
   following two variants:
 
-  :ssl -
-    A secure connection will be initiated using the outdated SMTPS protocol
-   which uses the port 465/tcp.
+  ssl: A secure connection will be initiated using the outdated SMTPS protocol
+          which uses the port 465/tcp.
 
     "mail_smtphost"     => "smtp.server.dom:465",
     "mail_smtpsecure"   => 'ssl',
 
-  :tls -
-    A secure connection will be initiated using the STARTTLS protocol which
-    uses the default port 25/tcp.
+  tls - A secure connection will be initiated using the STARTTLS protocol which
+        uses the default port 25/tcp.
 
     "mail_smtphost"     => "smtp.server.dom",
     "mail_smtpsecure"   => 'tls',
@@ -77,7 +75,7 @@ Parameters
     "mail_smtpname"     => "username",
     "mail_smtppassword" => "password",
 
-* PHP mail
+* **PHP mail**
 
   If you want to use PHP mail it is necessary to have an installed and working
   email system on your server. Which program in detail is used to send email is
@@ -94,7 +92,7 @@ Parameters
     "mail_smtpname"     => "",
     "mail_smtppassword" => "",
 
-* Sendmail
+* **Sendmail**
 
   If you want to use the well known Sendmail program to send email, it is
   necessary to have an installed and working email system on your *nix server.
@@ -110,7 +108,7 @@ Parameters
     "mail_smtpname"     => "",
     "mail_smtppassword" => "",
 
-*  qmail (http://www.qmail.org/)
+* **qmail (http://www.qmail.org/)**
 
   If you want to use the qmail program to send email, it is necessary to have an
   installed and working qmail email system on your server. The sendmail binary
@@ -126,7 +124,7 @@ Parameters
     "mail_smtpname"     => "",
     "mail_smtppassword" => "",
 
-Send a test email
+Send a Test Email
 -----------------
 
 The only way to test your email configuration is, to force a login failure,
