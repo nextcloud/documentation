@@ -738,14 +738,27 @@ Templates
 ---------
 ownCloud uses its own templating system. Templates reside in the **template/** folder. In every template file you can easily access the template functions listed in :doc:`templates`
 
-Templates are abstracted by the TemplateResponse object. Variables can be assigned to the Template by using the **setParams()** method:
+Templates are abstracted by the TemplateResponse object and used and returned inside the controller method. Variables can be assigned to the Template by using the **setParams()** method:
 
 .. code-block:: php
 
   <?php
-  $params = array('entries' => array('this', 'is', 'your', 'father', 'speaking'))
-  $response = new TemplateResponse($this->api, 'main');
-  $response->setParams($params);
+  use \OCA\AppFramework\Http\TemplateResponse as TemplateResponse
+
+  // ...
+
+  // in your controller
+
+  public function index(){
+
+    // main is the template name. Owncloud will look for template/main.php
+    $response = new TemplateResponse($this->api, 'main');
+
+    $params = array('entries' => array('this', 'is', 'your', 'father', 'speaking')
+    $response->setParams($params);
+
+    return $response;
+  }
 
 
 To access the assigned variables in the template, use the **$_[]** array. The variable will be availabe under the key that you defined (e.g. $_['key']). 
@@ -778,29 +791,6 @@ Templates can also include other templates by using the **$this->inc('templateNa
 
   <div>I am included but i can still access the parents variables!</div>
   <?php p($_['name']); ?>
-
-To access the Template files in your controller, use the TemplateResponse class:
-
-.. code-block:: php
-
-  <?php
-  use \OCA\AppFramework\Http\TemplateResponse as TemplateResponse
-
-  // ...
-
-  // in your controller
-
-  public function index(){
-
-    // main is the template name. Owncloud will look for template/main.php
-    $response = new TemplateResponse($this->api, 'main');
-
-    $params = array('templateVar' => 1);
-    $response->setParams($params);
-
-    return $response;
-  }
-  ?>
 
 
 **For more info, see** :doc:`templates`
