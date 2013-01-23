@@ -738,8 +738,14 @@ Templates
 ---------
 ownCloud uses its own templating system. Templates reside in the **template/** folder. In every template file you can easily access the template functions listed in :doc:`templates`
 
-.. note::
-  Templates **must not contain database queries**! All data should be passed to the template via ``$template->assign($key, $value)``.
+Templates are abstracted by the TemplateResponse object. Variables can be assigned to the Template by using the **setParams()** method:
+
+.. code-block:: php
+
+  <?php
+  $params = array('entries' => array('this', 'is', 'your', 'father', 'speaking'))
+  $response = new TemplateResponse($this->api, 'main');
+  $response->setParams($params);
 
 
 To access the assigned variables in the template, use the **$_[]** array. The variable will be availabe under the key that you defined (e.g. $_['key']). 
