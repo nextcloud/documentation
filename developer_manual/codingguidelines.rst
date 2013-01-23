@@ -11,6 +11,7 @@ General
 * A tab is 4 spaces wide
 * Opening braces of blocks are on the same line as the definition
 * Quotes: ' for everything, " for HTML attributes (<p class="my_class">)
+* End of Lines : Unix style (LF / '\n') only
 
 PHP
 ---
