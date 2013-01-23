@@ -132,7 +132,7 @@ The second place where app specifc information is stored is in :file:`appinfo/in
 Classloader
 -----------
 The classloader is provided by ownCloud and loads all your classes automatically. The only thing left to include by yourself are 3rdparty libraries.
-Please note that this means that the classes need to be named and organized in folders according to their full qualifier.
+Note that this means that the classes need to be named and organized in folders according to their full qualifier.
 
 The classloader works like this:
 
@@ -161,7 +161,7 @@ The classloader works like this:
 
     require '/apps/apptemplateadvanced/db/itemmapper.php';
 
-Remember : for it to be autoloaded, the itemmapper.php file needs to be stored in the /apps/apptemplateadvanced/db/ folder.
+Remember : for it to be autoloaded, the itemmapper.php file needs to either be stored in the /apps/apptemplateadvanced/db/ folder, or adjust its namespace according to the folder it's stored in.
 
 Dependency Injection
 --------------------
