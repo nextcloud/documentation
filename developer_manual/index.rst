@@ -16,7 +16,6 @@ Contents
    security
    vcategories
    routing
-   apps
    guidelines
    codereviews
    kanban

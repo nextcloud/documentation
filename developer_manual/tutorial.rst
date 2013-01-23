@@ -126,8 +126,26 @@ The second place where app specifc information is stored is in :file:`appinfo/in
         <licence>AGPL</licence>
         <author>Your Name</author>
         <require>4</require>
+        <standalone/>
+        <types>
+            <filesystem/>
+        </types>
+	    <shipped>true</shipped>
+        <default_enable/>
   </info>
 
+ownCloud allows to specify four kind of "types" in the file:`appinfo/info.xml` of a app. The
+type doesn't have to be specified if the app doesn't match any of them.
+
+Currently supported "types":
+
+* **prelogin**: apps which needs to load on the login page
+
+* **filesystem**: apps which provides filesystem functionality (e.g. files sharing app)
+
+* **authentication**: apps which provided authentication backends
+
+* **logging**: apps which implement a logging system
 
 Classloader
 -----------
