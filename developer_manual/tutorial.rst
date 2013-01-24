@@ -791,6 +791,17 @@ Twig can also cache templates as simple PHP files. To make use of this, create a
 
 A full reference can be found on the `Twig Template Reference <http://twig.sensiolabs.org/doc/templates.html>`_.
 
+If you want to use Twig together with AngularJS the variable print characters **{{}}** of Angular will have to be adjusted. You can do that by setting a different $interpolateProvider in the app config:
+
+.. code-block:: js
+
+  app.config(['$interpolateProvider', function($interpolateProvider) {
+      $interpolateProvider.startSymbol('[[');
+      $interpolateProvider.endSymbol(']]');
+  }]);
+
+After adding the above lines, Angular will use **[[]]** for evaluation variables.
+
 ownCloud Templates
 ~~~~~~~~~~~~~~~~~~
 In every template file you can easily access the template functions listed in :doc:`templates`. To access the assigned variables in the template, use the **$_[]** array. The variable will be availabe under the key that you defined (e.g. $_['key']).
