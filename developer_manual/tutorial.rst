@@ -736,7 +736,7 @@ For more information about MDB2 style prepared statements, please see the `offic
 
 Templates
 ---------
-ownCloud uses its own templating system. Templates reside in the **template/** folder. In every template file you can easily access the template functions listed in :doc:`templates`
+ownCloud provides its own templating system. The appframework also provides the option of using `Twig Templates <http://twig.sensiolabs.org/>`_ which can optionally be enabled. Templates reside in the **templates/** folder.
 
 Templates are abstracted by the TemplateResponse object and used and returned inside the controller method. Variables can be assigned to the Template by using the **setParams()** method:
 
@@ -760,8 +760,40 @@ Templates are abstracted by the TemplateResponse object and used and returned in
     return $response;
   }
 
+Twig Templates (recommended)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ownCloud templates do a bad job at preventing `XSS <http://en.wikipedia.org/wiki/Cross-site_scripting>`_. Therefore the apptemplate comes with a second option: the `Twig Templating Language <http://twig.sensiolabs.org/>`_.
 
-To access the assigned variables in the template, use the **$_[]** array. The variable will be availabe under the key that you defined (e.g. $_['key']). 
+Twig Templates are enabled by using the Twig Middleware. If a Twig template directory is set in the :file:`dependencyinjection/dicontainer.php`, the middleware gets loaded automatically. If no directory is set, theres no additional overhead.
+
+To enable them in the :file:`dependencyinjection/dicontainer.php`, add the following line to the constructor:
+
+.. code-block:: php
+
+  <?php
+
+    // in the constructor
+
+    // use this to specify the template directory
+    $this['TwigTemplateDirectory'] = __DIR__ . '/../templates';
+
+Twig can also cache templates as simple PHP files. To make use of this, create a **cache/** directory in your app and add the following line to the :file:`dependencyinjection/dicontainer.php`:
+
+.. code-block:: php
+
+  <?php
+
+    // in the constructor
+
+    // if you want to cache the template directory, add this path
+    $this['TwigTemplateCacheDirectory'] = __DIR__ . '/../cache';
+
+
+A full reference can be found on the `Twig Template Reference <http://twig.sensiolabs.org/doc/templates.html>`_.
+
+ownCloud Templates
+~~~~~~~~~~~~~~~~~~
+In every template file you can easily access the template functions listed in :doc:`templates`. To access the assigned variables in the template, use the **$_[]** array. The variable will be availabe under the key that you defined (e.g. $_['key']).
 
 :file:`templates/main.php`
 
