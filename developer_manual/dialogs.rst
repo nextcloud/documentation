@@ -1,4 +1,0 @@
-Dialogs
-=======
-
-*Coming Soon*

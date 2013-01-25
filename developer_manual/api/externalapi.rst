@@ -41,7 +41,7 @@ defined below:
       :param int $authlevel: The required level of authentication to access the API method (use constants `defined in OC_API <https://github.com/owncloud/core/blob/ocs_api/lib/api.php#L32>`_)
       :param array $defaults: associative array of defaults for the URL parameters. Keys are the parameter names as defined in the url
       :param array $requirements: associative array of requirements for the url parameters (See the `Symfony Documentation <http://symfony.com/doc/2.0/book/routing.html#adding-requirements>`_)
-      
+
 Routing URLs
 ~~~~~~~~~~~~~
 The API uses the new routing features inside ownCloud to make it easy to attach
@@ -60,7 +60,7 @@ Once the API backend has matched your url, your callable function as defined in
 $action will be executed. This method is passed as array of parameters that you
 defined in $url. To return data back the the client, you should return an
 instance of OC_OCS_Result. The API backend will then use this to construct the
-xml or json response. 
+xml or json response.
 
 .. php:class:: OC_OCS_Result
 
@@ -73,13 +73,13 @@ xml or json response.
       :param mixed $data: The data you wish to return, this may be a string, integer or array
       :param int $code: The response code you wish to return, defaults to success (100)
       :param string $message: An optional message to return with the response (explaining the result)
-      
+
   .. php:method:: setTotalItems($items)
 
       Sets the <totalitems> value in the response. Use this to inform the client of the range of data available.
 
       :param int $items: The number of items in the full data set
-      
+
   .. php:method:: setItemsPerPage($items)
 
       Sets the <itemsperpage> value in the response. Use this to inform the client of the number of pieces of data per page.

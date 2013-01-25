@@ -11,22 +11,22 @@ Kanban Board = github issues + huboard
 --------------------------------------
 
 We are using http://huboard.com to visualize ownCloud github issues as a `kanban
-board`_ (see: `core`_, `apps`_, `mirall`_): 
+board`_ (see: `core`_, `apps`_, `mirall`_):
 
-.. figure:: images/kanbanexample.png
+.. figure:: ../images/kanbanexample.png
    :scale: 70
 
 As you may have noticed, the columns of the kanban board represent the
 life-cycle of an issue (be it a Bug or an Enhancement). An issue flows from the
 1 - Backlog on the left to the 7 - To release column on the right and is not
 closed until it has been released. Instead we pull an issue to the next column
-by changing the label. 
+by changing the label.
 
 The Labels
 ----------
 
 The following list shows what the labels mean in the life-cycle and will
-hopefully help you decide how to label an issue. 
+hopefully help you decide how to label an issue.
 
 Backlog
 ~~~~~~~
@@ -51,7 +51,7 @@ Who is Assigned?
   Either a maintainer feels directly responsible for the issue and assigns
   himself or the gatekeeper (the guys having a look at unassigned bugs) will try
   to determine the responsible developer.
- 
+
 Concept
 ~~~~~~~
 
@@ -128,7 +128,7 @@ When can I pull?
   * Unit tests for the changed and added code.
 
 Who is Assigned?
-  The most active developer should assign himself. 
+  The most active developer should assign himself.
 
 To Review
 ~~~~~~~~~
@@ -175,7 +175,7 @@ When can I pull?
   implemented but also no other functionality has been broken.
 
 Who is Assigned?
-  The most active reviewer should assign himself. 
+  The most active reviewer should assign himself.
 
 To Release
 ~~~~~~~~~~

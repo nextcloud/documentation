@@ -3,7 +3,7 @@ Share API
 
 **Warning: The Share API is still under heavy development and testing. Report issues to Michael Gapczynski.**
 
-The Share API was introduced in ownCloud 5 as a public API for apps to share content. It is a revision of the original file sharing app with enhancements to increase stability, reduce conflicts, and operate in a generic fashion. At this time it is possible to share content with local ownCloud users, groups, contacts, and email via link. This document is a guide for using the Share API in apps. The Share API is made up of a public class OCP\Share in ``/lib/public/share.php``, an AJAX file ``/core/ajax/share.php``, and a JavaScript file ``/core/js/share.js``. Javadoc style documentation is included in OCP\Share. 
+The Share API was introduced in ownCloud 5 as a public API for apps to share content. It is a revision of the original file sharing app with enhancements to increase stability, reduce conflicts, and operate in a generic fashion. At this time it is possible to share content with local ownCloud users, groups, contacts, and email via link. This document is a guide for using the Share API in apps. The Share API is made up of a public class OCP\Share in ``/lib/public/share.php``, an AJAX file ``/core/ajax/share.php``, and a JavaScript file ``/core/js/share.js``. Javadoc style documentation is included in OCP\Share.
 
 Share backends
 --------------

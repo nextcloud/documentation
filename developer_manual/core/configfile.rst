@@ -112,10 +112,10 @@ App config
    applications paths. 'writable' indicate if the user can install apps in this folder.
    You must have at least 1 app folder writable or you must set the parameter : appstoreenabled to false
   */
-	  array(
-		  'path'=> '/var/www/owncloud/apps',
-		  'url' => '/apps',
-		  'writable' => true,
+          array(
+                  'path'=> '/var/www/owncloud/apps',
+                  'url' => '/apps',
+                  'writable' => true,
     ),
    ),
   );
@@ -129,19 +129,19 @@ ownCloud can be set to use a custom app directory in /config/config.php. Customi
 .. code-block:: php
 
   'apps_paths' =>
-  	array (
-  		0 =>
-  		array (
-  			'path' => OC::$SERVERROOT.'/apps',
-  			'url' => '/apps',
-  			'writable' => true,
-  		),
-  		1 =>
-  		array (
-  			'path' => OC::$SERVERROOT.'/apps2',
-  			'url' => '/apps2',
-  			'writable' => false,
-  		),
-  	),
-	
+	array (
+		0 =>
+		array (
+			'path' => OC::$SERVERROOT.'/apps',
+			'url' => '/apps',
+			'writable' => true,
+		),
+		1 =>
+		array (
+			'path' => OC::$SERVERROOT.'/apps2',
+			'url' => '/apps2',
+			'writable' => false,
+		),
+	),
+
 ownCloud will use the first app directory which it finds in the array with 'writable' set to true.

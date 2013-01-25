@@ -14,35 +14,35 @@ Database Data
 To make exporting database data really easy, the class OC_Migration_Content has a method called copyRows() which will save these rows for you given some options. Take a look at the export function for the bookmarks app:
 
 .. code-block:: php
-  
+
   function export( ){
     OC_Log::write('migration','starting export for bookmarks',OC_Log::INFO);
-  	$options = array(
-  		'table'=>'bookmarks',
-  		'matchcol'=>'user_id',
-  		'matchval'=>$this->uid,
-  		'idcol'=>'id'
-  	);
-  	$ids = $this->content->copyRows( $options );
-  	$options = array(
-  		'table'=>'bookmarks_tags',
-  		'matchcol'=>'bookmark_id',
-  		'matchval'=>$ids
-  	);
-  	
-  	// Export tags
-  	$ids2 = $this->content->copyRows( $options );
-  	
-  	// If both returned some ids then they worked
-  	if( is_array( $ids ) && is_array( $ids2 ) )
-  	{
-  		return true;	
-  	} else {
-  		return false;
-  	}	
+	$options = array(
+		'table'=>'bookmarks',
+		'matchcol'=>'user_id',
+		'matchval'=>$this->uid,
+		'idcol'=>'id'
+	);
+	$ids = $this->content->copyRows( $options );
+	$options = array(
+		'table'=>'bookmarks_tags',
+		'matchcol'=>'bookmark_id',
+		'matchval'=>$ids
+	);
+
+	// Export tags
+	$ids2 = $this->content->copyRows( $options );
+
+	// If both returned some ids then they worked
+	if( is_array( $ids ) && is_array( $ids2 ) )
+	{
+		return true;
+	} else {
+		return false;
+	}
   }
 
-The bookmarks app stores all of its data in the database, in two tables: *PREFIX* bookmarks and *PREFIX* bookmarks_tags so to export this, we need to run copyRows() twice. Here is an explanation of the options passed to OC_Migration_Content::copyRows(): 
+The bookmarks app stores all of its data in the database, in two tables: *PREFIX* bookmarks and *PREFIX* bookmarks_tags so to export this, we need to run copyRows() twice. Here is an explanation of the options passed to OC_Migration_Content::copyRows():
 
 * ‘table’ => string name of the table to export (without any prefix)
 * ‘matchcol’ => (optional) string name of the column that will be matched with the value in ‘matchval’ (Basically the column used in the WHERE sql query)
@@ -62,35 +62,35 @@ Import
 Import is a little more tricky as we have to take into account data from different versions of your app, and also handle changing primary keys. Here is the import function for the bookmarks app which imports bookmarks and tags:
 
 .. code-block:: php
-  
+
   function import(){
     switch( $this->appinfo->version ){
-  		default:
-  		// All versions of the app have had the same db structure
-  		// so all can use the same import function
-  		$query = $this->content->prepare( "SELECT * FROM bookmarks WHERE user_id LIKE ?" );
-  		$results = $query->execute( array( $this->olduid ) );
-  		$idmap = array();
-  		while( $row = $results->fetchRow() ){
-  			// Import each bookmark, saving its id into the map	
-  			$query = OC_DB::prepare( "INSERT INTO *PREFIX*bookmarks(url, title, user_id, public, added, lastmodified) VALUES (?, ?, ?, ?, ?, ?)" );
-  			$query->execute( array( $row['url'], $row['title'], $this->uid, $row['public'], $row['added'], $row['lastmodified'] ) );
-  			// Map the id
-  			$idmap[$row['id']] = OC_DB::insertid();
-  		}
-  		// Now tags
-  		foreach($idmap as $oldid => $newid){
-  			$query = $this->content->prepare( "SELECT * FROM bookmarks_tags WHERE user_id LIKE ?" );
-  			$results = $query->execute( array( $oldid ) );
-  			while( $row = $data->fetchRow() ){
-  				// Import the tags for this bookmark, using the new bookmark id
-  				$query = OC_DB::prepare( "INSERT INTO *PREFIX*bookmarks_tags(bookmark_id, tag) VALUES (?, ?)" );
-  				$query->execute( array( $newid, $row['tag'] ) );	
-  			}		
-  		}
-  		// All done!
-  		break;
-  	}
+		default:
+		// All versions of the app have had the same db structure
+		// so all can use the same import function
+		$query = $this->content->prepare( "SELECT * FROM bookmarks WHERE user_id LIKE ?" );
+		$results = $query->execute( array( $this->olduid ) );
+		$idmap = array();
+		while( $row = $results->fetchRow() ){
+			// Import each bookmark, saving its id into the map
+			$query = OC_DB::prepare( "INSERT INTO *PREFIX*bookmarks(url, title, user_id, public, added, lastmodified) VALUES (?, ?, ?, ?, ?, ?)" );
+			$query->execute( array( $row['url'], $row['title'], $this->uid, $row['public'], $row['added'], $row['lastmodified'] ) );
+			// Map the id
+			$idmap[$row['id']] = OC_DB::insertid();
+		}
+		// Now tags
+		foreach($idmap as $oldid => $newid){
+			$query = $this->content->prepare( "SELECT * FROM bookmarks_tags WHERE user_id LIKE ?" );
+			$results = $query->execute( array( $oldid ) );
+			while( $row = $data->fetchRow() ){
+				// Import the tags for this bookmark, using the new bookmark id
+				$query = OC_DB::prepare( "INSERT INTO *PREFIX*bookmarks_tags(bookmark_id, tag) VALUES (?, ?)" );
+				$query->execute( array( $newid, $row['tag'] ) );
+			}
+		}
+		// All done!
+		break;
+	}
   return true;
   }
 

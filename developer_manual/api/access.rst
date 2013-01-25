@@ -14,7 +14,7 @@ The file ``public.php`` is used for *public sharing* like public file sharing,
 public gallery sharing and public calendar sharing.
 
 To register an app for ``public.php`` you just have to put the following lines
-into your app’s ``appinfo/info.xml``. 
+into your app’s ``appinfo/info.xml``.
 
 Example from our source code::
 
@@ -44,7 +44,7 @@ web browser itself. Such services can be exposed via the ``remote.php``
 interface.
 
 To register an app for ``remote.php`` you just have use your app's
-``appinfo/info.xml``, along the lines of the ``public.php`` syntax:: 
+``appinfo/info.xml``, along the lines of the ``public.php`` syntax::
 
   <remote>
     <calendar>appinfo/remote.php</calendar>

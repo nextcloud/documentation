@@ -48,7 +48,7 @@ OC_Filesystem must be initiated before it can be used using the OC_Filesystem::i
 Example:
 
 .. code-block:: php
-  
+
   OC_Filesystem::init( '/' . $user . '/' . $root );
   OC_Filesystem::mkdir( 'test' );
   if ( OC_Filesystem::is_dir('test') ) { echo 'OC_Filesystem is being used correctly'; }``

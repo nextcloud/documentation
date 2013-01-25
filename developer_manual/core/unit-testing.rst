@@ -36,13 +36,13 @@ An example for a simple test would be:
 
   <?php
   require_once("../myfolder/myfunction.php");
-  
+
   class TestAddTwo extends PHPUnit_Framework_TestCase {
-  
+
       public function testAddTwo(){
           $this->assertEquals(5, addTwo(3));
       }
-  
+
   }
   ?>
 
@@ -65,7 +65,7 @@ For more resources on PHPUnit visit: http://www.phpunit.de/manual/current/en/wri
 
 Bootstrapping Owncloud
 ----------------------
-If you use Owncloud functions or classes in your code, you'll need to make them available to your test by bootstrapping Owncloud. 
+If you use Owncloud functions or classes in your code, you'll need to make them available to your test by bootstrapping Owncloud.
 
 To do this, you'll need to provide the ``--bootstrap`` argument when running PHPUnit
 

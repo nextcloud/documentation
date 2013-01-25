@@ -1,5 +1,3 @@
-.. _translation:
-
 Translation
 ===========
 
@@ -75,7 +73,7 @@ Translation sync jobs:
 http://ci.tmit.eu/job/ownCloud-core-tx/
 http://ci.tmit.eu/job/ownCloud-apps-tx/
 http://ci.tmit.eu/job/ownCloud-Mirall-tx/
- 
+
 **Caution: information below is in general not needed!**
 
 Manual quick translation update:
@@ -93,7 +91,7 @@ Configure transifex
 .. code-block:: bash
 
   tx init
-  
+
   for resource in calendar contacts core files media gallery settings
   do
   tx set --auto-local -r owncloud.$resource "<lang>/$resource.po" --source-language=en \

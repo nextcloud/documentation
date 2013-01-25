@@ -3,7 +3,7 @@ Code Reviews on GitHub
 
   Given enough eyeballs, all bugs are shallow
 
-  -- Linus' Law 
+  -- Linus' Law
 
 Introduction
 ------------
@@ -41,7 +41,7 @@ Examples
 --------
 
 These are two examples that are considered to be good examples of how pull
-requests should be handled 
+requests should be handled
 
 * https://github.com/owncloud/core/pull/121
 * https://github.com/owncloud/core/pull/146

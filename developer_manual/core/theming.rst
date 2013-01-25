@@ -71,7 +71,7 @@ like this:
   background: -ms-linear-gradient(top, #33537a 0%,#1d2d42 100%); /* IE10+ */
   background: linear-gradient(top, #33537a 0%,#1d2d42 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33537a', endColorstr='#1d2d42',GradientType=0 ); /* IE6-9 */ }
-  
+
   #owncloud { float:left; }
 
 This handles the headers for a lot of different browser types. What we want to

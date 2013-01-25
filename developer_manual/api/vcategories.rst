@@ -63,12 +63,12 @@ For acting on user input the following methods, which should be mostly self-expl
 .. php:class:: OC_VCategories
 
   .. php:method:: __construct()
-  
+
      .. todo:: add constructor doc
 
   .. php:method:: add($name)
 
-     :param string $name: 
+     :param string $name:
      :returns: the integer id of the new category or **false** if it already exists.
 
 

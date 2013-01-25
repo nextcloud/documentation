@@ -23,13 +23,13 @@ You should use exceptions if you need to debug variable values manually, and not
 e.g.:
 
 .. code-block:: php
-  
+
   <?php throw new \Exception( "\$user = $user" ); // should be logged in ownCloud ?>
 
 not:
 
 .. code-block:: php
-  
+
   <?php trigger_error( "\$user = $user" ); // may not be logged anywhere ?>
 
 To disable custom error handling in ownCloud (and have PHP and your webserver handle errors instead), see Debug mode.

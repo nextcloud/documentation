@@ -1,5 +1,5 @@
-Coding Style Guidelines
-=======================
+Coding Style & General Guidelines
+=================================
 
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
@@ -12,6 +12,22 @@ General
 * Opening braces of blocks are on the same line as the definition
 * Quotes: ' for everything, " for HTML attributes (<p class="my_class">)
 * End of Lines : Unix style (LF / '\n') only
+* No global variables or functions
+* Unittests
+* Software should work. Only put features into master when they are complete. It's better to not have a feature instead of having one that works poorly.
+* Regularly reset your installation to see how the first-run experience is like. And improve it.
+* When you ``git pull``, always ``git pull --rebase`` to avoid generating extra commits like: *merged master into master*
+* We need a signed contributor agreement from you to commit into the core repository. But no worries; it's a nice one. All the information is in our `Contributor agreement FAQ <http://owncloud.org/about/contributor-agreement>`_.
+
+Userinterface
+-------------
+* Software should get out of the way. Do things automatically instead of offering configuration options.
+* Software should be easy to use. Show only the most important elements. Secondary elements only on hover or via Advanced function.
+* User data is sacred. Provide undo instead of asking for confirmation
+* The state of the application should be clear. If something loads, provide feedback.
+* Do not adapt broken concepts (for example design of desktop apps) just for the sake of consistency. We provide a better interface.
+* Ideally do `usability testing <http://jancborchardt.net/usability-in-free-software>`_ to know how people use the software.
+* For further UX principles, read `Alex Faaborg from Mozilla <http://uxmag.com/articles/quantifying-usability>`_.
 
 PHP
 ---
@@ -23,9 +39,29 @@ Always use::
 
 at the start of your php code. The final closing::
 
-  ?> 
+  ?>
 
 should not be used at the end of the file due to the `possible issue of sending white spaces <http://stackoverflow.com/questions/4410704/php-closing-tag>`_.
+
+Comments
+^^^^^^^^
+All API methods need to be marked with `PHPDoc <http://en.wikipedia.org/wiki/PHPDoc>`_ markup. An example would be:
+
+.. code-block:: php
+
+  <?php
+
+  /**
+   * Description what method does
+   * @param Controller $controller the controller that will be transformed
+   * @param API $api an instance of the API class
+   * @throws APIException if the api is broken
+   * @since 4.5
+   * @return string a name of a user
+   */
+  public function myMethod(Controller $controller, API $api){
+    // ...
+  }
 
 Objects, Functions, Arrays & Variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -34,7 +70,7 @@ Use Camelcase for Objects, Pascal case for functions and variables. If you set a
 .. code-block:: javascript
 
   class MyClass {
-      
+
   }
 
   function myFunction($default=null) {
@@ -148,7 +184,7 @@ In general take a look at `JSLint <http://www.jslint.com/lint.html>`_ without th
 
 .. code-block:: javascript
 
-  // This does not only make everything global but you're programming 
+  // This does not only make everything global but you're programming
   // JavaScript like C functions with namespaces
   MyApp = {
       myFunction:function(params){
@@ -283,7 +319,7 @@ Control Structures
 
 CSS
 ---
-Take a look at the `Writing Tactical CSS & HTML <http://www.youtube.com/watch?v=hou2wJCh3XE&feature=plcp>`_ video on YouTube. 
+Take a look at the `Writing Tactical CSS & HTML <http://www.youtube.com/watch?v=hou2wJCh3XE&feature=plcp>`_ video on YouTube.
 
 Don't bind your CSS too much to your HTML structure and try to avoid IDs. Also try to make your CSS reusable by grouping common attributes into classes.
 

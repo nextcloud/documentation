@@ -6,7 +6,7 @@ and called by ownCloud core hooks, are generally stored in
 apps/appname/lib/hooks.php.Hooks are a way of implementing the `observer
 pattern`_, and are commonly used by web platform applications to provide clean
 interfaces to third party applications which need to modify core application
-functionality. 
+functionality.
 
 In ownCloud, a hook is a function whose name can be used by developers of
 plug-ins to ensure that additional code is executed at a precise place during
@@ -14,7 +14,7 @@ the execution of other parts of ownCloud code. For example, when an ownCloud
 user is deleted, the ownCloud core hook ``post_deleteUser`` is executed.
 In the calendar app's ``appinfo/app.php``, this hook is connected to the app's
 own event handler ``deleteUser`` (``user`` here refers to an ownCloud user;
-``deleteUser`` deletes all addressbooks for that a given ownCloud user). 
+``deleteUser`` deletes all addressbooks for that a given ownCloud user).
 
 When ``post_deleteUser`` calls the calender app's ``deleteUser`` event handler,
 it supplies it with an argument, which is an array containing the user ID of the

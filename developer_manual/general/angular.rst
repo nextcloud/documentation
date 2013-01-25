@@ -3,7 +3,7 @@ AngularJS
 
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
-`AngularJS <http://angularjs.org/>`_ is an MV* JavaScript framework by Google. 
+`AngularJS <http://angularjs.org/>`_ is an MV* JavaScript framework by Google.
 
 Documentation is available at these sources:
 
@@ -19,7 +19,7 @@ jQuery is a nice library but when it comes to building webapplications, one will
 That problem is caused by jQueries habit to operate directly on dom elements. Most jQuery code looks like this:
 
 .. code-block:: javascript
-  
+
   $('.someElement').doSomething();
 
 
@@ -31,7 +31,7 @@ Another problem is the dynamic generation of DOM elements. You'd normally go wit
 **1**) Create new element, bind event listeners and append it to the dom:
 
 .. code-block:: javascript
-  
+
   var $newButton = $('<button>').text('A new button');
   $newButton.click(function(){
       alert('I was clicked!');
@@ -44,11 +44,11 @@ Another problem is the dynamic generation of DOM elements. You'd normally go wit
 .. code-block:: javascript
 
   $.post('/some/url', function(data){
-  	  $newButton = $(data);
-  	  $newButton.click(function(){
+	  $newButton = $(data);
+	  $newButton.click(function(){
           alert('I was clicked!');
       });
-      $('.someElement').append($newButton);  	  
+      $('.someElement').append($newButton);
   });
 
 **3**) Use jquery templates:
@@ -83,9 +83,9 @@ The button controller handles the complete logic. It would look something like t
 
 .. code-block:: javascript
 
-  var app = angular.module('MyApp', []);  
+  var app = angular.module('MyApp', []);
 
-  app.controller('ButtonController', ['$scope', 
+  app.controller('ButtonController', ['$scope',
       function($scope){
           $scope.buttons = [
               {text: 'A new button'}
@@ -164,7 +164,7 @@ and will look like this:
       Config.routes = {
         saveNameRoute: 'apptemplate_advanced_ajax_setsystemvalue'
       };
-      
+
       return $provide.value('Config', Config);
     }
   ]);
@@ -201,7 +201,7 @@ A controller could look like this:
 .. code-block:: javascript
 
   angular.module('YourApp').
-    factory('ExampleController', ['$scope', 'Config', 'Request', 
+    factory('ExampleController', ['$scope', 'Config', 'Request',
       function($scope, Config, Request){
 
       var Controller = function($scope, Config, Request){
@@ -242,7 +242,7 @@ A controller is bound to an HTML element with the **ng-controller** attribute. E
   <ul ng-controller="ExampleController">
       <li ng-click="saveName('john')"></li>
   </ul>
-  
+
 
 
 Models & Services
@@ -343,7 +343,7 @@ This is an example that uses a directive to bind jQuery draggable and dropable t
 
 
 .. code-block:: javascript
-  
+
   angular.module('YourApp').directive('draggable', function(){
 
     return function(scope, elm, attr){
@@ -367,14 +367,14 @@ This is an example that uses a directive to bind jQuery draggable and dropable t
             greedy: true,
             drop: function(event, ui){
                 console.log('this was dropped on me');
-                console.log(ui.draggable); 
+                console.log(ui.draggable);
                 scope.$apply(attr.droppable);
             }
         };
 
         $(elm).droppable(details);
 
-        
+
     };
   });
 

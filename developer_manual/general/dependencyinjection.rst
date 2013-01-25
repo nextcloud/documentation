@@ -37,13 +37,13 @@ This class prints out all prenames of a person and is called by using:
   $controller->listNames();
 
 
-This looks like clean code until the first tests are written. **Tests are absolutely necessary in every application! Do not think that your app is too small to require them.** The code will eventuell grow bigger and will have to be refactored. 
+This looks like clean code until the first tests are written. **Tests are absolutely necessary in every application! Do not think that your app is too small to require them.** The code will eventuell grow bigger and will have to be refactored.
 
 If code is refactored code will be written. If code is being written there will be bugs. If there will be bugs then every possible failure must be tested. This is tiresome and must be automated.
 
 If the code already comes with tests, this is not a problem. The unittests ensure that the changes did not introduce regressions.
 
-**Back to the above example**: How would a test for the SQL query look like? 
+**Back to the above example**: How would a test for the SQL query look like?
 
 * ``\OCP\DB`` needs to be `Monkey Patched <http://en.wikipedia.org/wiki/Monkey_patch>`_ to make the query accessible
 * The monkey patching must not conflict with other tests which use the same class
@@ -181,7 +181,7 @@ The output test can now be implemented as a simple string comparison.
 
 Use a container
 ---------------
-The above example works fine in small cases, but if the class depends on four other classes that each depend on two other classes there will be **eight** instantiations. Also if one constructor parameter changes, every line that instantiates the class will have to change too. 
+The above example works fine in small cases, but if the class depends on four other classes that each depend on two other classes there will be **eight** instantiations. Also if one constructor parameter changes, every line that instantiates the class will have to change too.
 
 The solution is to define the injected classes as dependencies and let the system handle the rest.
 
@@ -196,7 +196,7 @@ The dependencies can now be defined like this:
   class DIContainer extends \Pimple {
 
     public function __construct(){
-      
+
       $this['API'] = $this->share(function($c){
         return new API();
       });
