@@ -67,7 +67,8 @@ Static Content (JavaScript & CSS)
 
 Testing
 -------
-* :doc:`app/unittesting` | `PHPUnit`_
+* :doc:`app/unittesting`
+* `PHPUnit`_
 
 Translation
 -----------

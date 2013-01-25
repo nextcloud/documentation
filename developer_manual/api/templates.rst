@@ -1,5 +1,5 @@
-Templates
-=========
+OC Templates
+============
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
 OC_Template
