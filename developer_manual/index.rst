@@ -5,7 +5,7 @@ Developer Documentation
 =======================
 
 
-How to contribute
+How to Contribute
 =================
 If you want to contribute please read the `Contributor agreement FAQ`_
 
@@ -18,7 +18,7 @@ If you want to contribute please read the `Contributor agreement FAQ`_
 * Develop apps
 * Spread the word, tell your friends about it, write a blog post!
 
-Getting help
+Getting Help
 ============
 
 * Ask a question on the `mailing list`_
@@ -26,8 +26,8 @@ Getting help
 * `Contact`_ a maintainer of a certain app or division
 
 
-Develop apps
-============
+Apps Developement
+=================
 
 * :doc:`general/codingguidelines`
 * :doc:`app/gettingstarted`
