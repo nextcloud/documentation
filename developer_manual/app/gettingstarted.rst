@@ -1,5 +1,5 @@
-Setup ownCloud for developement
-===============================
+Getting Started
+===============
 
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
