@@ -25,7 +25,7 @@ To get started you'll need to clone the basic git repositories into your web dir
   git clone https://github.com/owncloud/3rdparty.git 3rdparty
   sudo chmod o-rw /var/www
 
-Now restart your apache server and get ready to set up owncloud at http://localhost/owncloud
+Now restart your apache server and get ready to set up ownCloud at http://localhost/owncloud
 
 Enable debugging mode
 ---------------------
