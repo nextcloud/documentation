@@ -1,5 +1,5 @@
-Static content
-==============
+JavaScript and CSS
+==================
 
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 

@@ -60,8 +60,8 @@ Middlware
 * :doc:`app/middleware`
 
 
-Static Content (JavaScript & CSS)
----------------------------------
+JavaScript & CSS
+----------------
 
 * :doc:`app/static`
 
