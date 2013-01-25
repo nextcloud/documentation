@@ -2,18 +2,17 @@ Routing
 =======
 
 With routing the request url doesn't need to be matched with a physical file.
-Instead the url is mapped to a function that handles the request. This way be
-almost any structure. It can even map different urls to the same function,
-which is usefull for backward compatibility.
+Instead, the url is mapped to a function that handles the request. 
+It can even map different urls to the same function,
+which is useful for backward compatibility.
 
-Last but not least, using routing you only have one place to define the url. So
-changing the is pretty easy.
+By using routing, you only have one place to define the url, 
+which makes it easier in case the url needs to be changed.
 
 Routing in ownCloud
 -------------------
 
-ownCloud uses Symfony Routing Component as its base, look at
-http://symfony.com/doc/current/book/routing.html for more information.
+Routing in ownCloud is based on `Symfony Routing Component <http://symfony.com/doc/current/book/routing.html>`_.
 
 Look at the API docs for OC_Router and OC_Route for more information.
 
