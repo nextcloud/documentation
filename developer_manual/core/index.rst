@@ -6,5 +6,6 @@ Core
    :maxdepth: 1
 
    configfile
+   translation
    theming
    unit-testing

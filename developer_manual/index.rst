@@ -70,12 +70,9 @@ Testing
 * :doc:`app/unittesting`
 * `PHPUnit`_
 
-Translation
------------
-* :doc:`app/translation`
 
 ownCloud APIs
--------------
+=============
 
 * :doc:`api/access`
 * :doc:`api/externalapi`
@@ -88,9 +85,7 @@ ownCloud APIs
 
 Core
 ====
-
-Testing
--------
+* :doc:`core/translation`
 * :doc:`core/unit-testing`
 * :doc:`core/theming`
 * :doc:`core/configfile`

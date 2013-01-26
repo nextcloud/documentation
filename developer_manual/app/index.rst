@@ -17,5 +17,4 @@ Apps Developement
    static
    formfactors
    unittesting
-   translation
    middleware
