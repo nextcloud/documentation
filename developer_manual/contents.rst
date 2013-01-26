@@ -14,7 +14,6 @@ ownCloud documentation contents
 
     general/index
     app/index
-    api/index
     core/index
     classes/index
 

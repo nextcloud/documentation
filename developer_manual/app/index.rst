@@ -1,6 +1,6 @@
-=================
-Apps Developement
-=================
+================
+App Developement
+================
 
 .. toctree::
    :maxdepth: 1
@@ -18,3 +18,9 @@ Apps Developement
    formfactors
    unittesting
    middleware
+   access
+   externalapi
+   filesystem
+   hooks
+   share-api
+   vcategories

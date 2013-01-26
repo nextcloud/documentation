@@ -1,6 +1,6 @@
-====
-Core
-====
+=================
+Core Developement
+=================
 
 .. toctree::
    :maxdepth: 1

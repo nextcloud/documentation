@@ -35,8 +35,8 @@ General
 * :doc:`general/angular` | `AngularJS Documentation <http://angularjs.org/>`_
 * :doc:`general/dependencyinjection` | `Pimple`_
 
-Apps Developement
-=================
+App Developement
+================
 
 * :doc:`app/gettingstarted`
 * :doc:`app/settings` | `Pimple`_
@@ -79,26 +79,26 @@ Middleware
 * :php:class:`OCA\\AppFramework\\Middleware\\Security\\SecurityMiddleware`
 * :php:class:`OCA\\AppFramework\\Middleware\\Twig\\TwigMiddleware`
 
-ownCloud APIs
-=============
+ownCloud Interfaces
+-------------------
 
-* :doc:`api/access`
-* :doc:`api/externalapi`
-* :doc:`api/filesystem`
-* :doc:`api/hooks`
-* :doc:`api/share-api`
-* :doc:`api/vcategories`
+* :doc:`app/access`
+* :doc:`app/externalapi`
+* :doc:`app/filesystem`
+* :doc:`app/hooks`
+* :doc:`app/share-api`
+* :doc:`app/vcategories`
 
 
-Core
-====
+Core Developement
+=================
 * :doc:`core/translation`
 * :doc:`core/unit-testing`
 * :doc:`core/theming`
 * :doc:`core/configfile`
 
-Sourcecode Documentation
-========================
+API Documentation
+=================
 * :doc:`classes/appframework/index`
 * :doc:`classes/core/index`
 

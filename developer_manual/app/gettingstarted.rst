@@ -1,5 +1,5 @@
-Getting Started
-===============
+Getting Started With App Development
+====================================
 
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
