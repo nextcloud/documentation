@@ -1,7 +1,5 @@
 Data Migration
 ==============
-Migrations happen when the database layout changes. They are used to transform the existing data to fit the new layout.
-
 As of OC4, user migration is supported. To include migration support in your app (which is highly recommended and does not take long) you must provide a :file:`appinfo/migrate.php`. The function of the migrate.php file is to provide an import and export functions for app data. To assist in this, we set the user id of the user being exported / user being imported in **$this->uid**. There is also an instance of the **OC_Migration_Content** class stored in **$this->content**. The **OC_Migration_Content** class helps to make importing and exporting data easy for app developers.
 
 Export
