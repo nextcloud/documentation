@@ -32,6 +32,7 @@ Apps Developement
 * :doc:`general/codingguidelines`
 * :doc:`app/gettingstarted`
 * :doc:`app/settings`
+* `Pimple`_
 * :doc:`app/classloader`
 * :doc:`app/api`
 
