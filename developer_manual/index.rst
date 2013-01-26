@@ -26,10 +26,18 @@ Getting Help
 * `Contact`_ a maintainer of a certain app or division
 
 
+General
+=======
+* :doc:`general/codingguidelines`
+* :doc:`general/codereviews`
+* :doc:`general/debugging`
+* :doc:`general/kanban`
+* :doc:`general/angular`
+* :doc:`general/dependencyinjection`
+
 Apps Developement
 =================
 
-* :doc:`general/codingguidelines`
 * :doc:`app/gettingstarted`
 * :doc:`app/settings`
 * `Pimple`_
