@@ -122,7 +122,7 @@ Your database layer should go into the **db/** folder. It's recommended to split
   }
 
 
-All database queries for that object should be put into a mapper class. This follows the `data mapper pattern <http://www.martinfowler.com/eaaCatalog/dataMapper.html>`_. The mapper class could look like this (more method examples are in the advanced_apptemplate):
+All database queries for that object should be put into a mapper class. This follows the `data mapper pattern <http://www.martinfowler.com/eaaCatalog/dataMapper.html>`_. The mapper class could look like this (more method examples are in the **advancedapptemplate** app):
 
 :file:`db/itemmapper.php`
 

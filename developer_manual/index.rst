@@ -32,51 +32,52 @@ General
 * :doc:`general/codereviews`
 * :doc:`general/debugging`
 * :doc:`general/kanban`
-* :doc:`general/angular`
-* :doc:`general/dependencyinjection`
+* :doc:`general/angular` | `AngularJS Documentation <http://angularjs.org/>`_
+* :doc:`general/dependencyinjection` | `Pimple`_
 
 Apps Developement
 =================
 
 * :doc:`app/gettingstarted`
-* :doc:`app/settings`
-* `Pimple`_
+* :doc:`app/settings` | `Pimple`_
 * :doc:`app/classloader`
-* :doc:`app/api`
+* :doc:`app/api` | :php:class:`OCA\\AppFramework\\Core\\API`
 
 Routing
 -------
-* :doc:`app/routes`
-* `Symfony Routing`_
+* :doc:`app/routes` | `Symfony Routing`_
+* :php:class:`OCA\\AppFramework\\App`
 
 Controllers
 -----------
-* :doc:`app/controllers`
+* :doc:`app/controllers` | :php:class:`OCA\\AppFramework\\Controller\\Controller`
 
 Database Access
 ---------------
-* :doc:`app/database`
+* :doc:`app/database` | :php:class:`OCA\\AppFramework\\Db\\Mapper`
 * :doc:`app/data-migration`
 
 Templates
 ---------
-* :doc:`app/templates`
-* `Twig Templates`_
+* :doc:`app/templates` | `Twig Templates`_ | :php:class:`OC_Template`
+* :php:class:`OCA\\AppFramework\\Http\\TemplateResponse`
+
 
 
 JavaScript & CSS
 ----------------
-
 * :doc:`app/static`
 
 Testing
 -------
-* :doc:`app/unittesting`
-* `PHPUnit`_
+* :doc:`app/unittesting` | `PHPUnit`_
+* :php:class:`OCA\\AppFramework\\Utility\\ControllerTestUtility`
 
-Middlware
----------
-* :doc:`app/middleware`
+Middleware
+----------
+* :doc:`app/middleware` | :php:class:`OCA\\AppFramework\\Middleware\\Middleware`
+* :php:class:`OCA\\AppFramework\\Middleware\\Security\\SecurityMiddleware`
+* :php:class:`OCA\\AppFramework\\Middleware\\Twig\\TwigMiddleware`
 
 ownCloud APIs
 =============
@@ -96,6 +97,10 @@ Core
 * :doc:`core/theming`
 * :doc:`core/configfile`
 
+Sourcecode Documentation
+========================
+* :doc:`classes/appframework/index`
+* :doc:`classes/core/index`
 
 Index and Tables
 ================
