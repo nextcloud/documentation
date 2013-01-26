@@ -55,10 +55,6 @@ Templates
 * `Twig Templates`_
 * :doc:`api/templates`
 
-Middlware
----------
-* :doc:`app/middleware`
-
 
 JavaScript & CSS
 ----------------
@@ -70,6 +66,9 @@ Testing
 * :doc:`app/unittesting`
 * `PHPUnit`_
 
+Middlware
+---------
+* :doc:`app/middleware`
 
 ownCloud APIs
 =============
