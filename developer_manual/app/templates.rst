@@ -3,9 +3,9 @@ Templates
 
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
-ownCloud provides its own templating system. The appframework also provides the option of using `Twig Templates <http://twig.sensiolabs.org/>`_ which can optionally be enabled. Templates reside in the **templates/** folder.
+ownCloud provides its own templating system. The App Framework also provides the option of using `Twig Templates <http://twig.sensiolabs.org/>`_ which can optionally be enabled. Templates reside in the **templates/** folder.
 
-Templates are abstracted by the TemplateResponse object and used and returned inside the controller method. Variables can be assigned to the Template by using the **setParams()** method:
+Templates are abstracted by the TemplateResponse object and used and returned inside the controller method. Variables can be assigned to the Template by using the :php:class:`OCA\\AppFramework\\Http\\TemplateResponse::setParams` method:
 
 .. code-block:: php
 
@@ -29,7 +29,7 @@ Templates are abstracted by the TemplateResponse object and used and returned in
 
 Twig Templates (recommended)
 ----------------------------
-ownCloud templates do a bad job at preventing `XSS <http://en.wikipedia.org/wiki/Cross-site_scripting>`_. Therefore the apptemplate comes with a second option: the `Twig Templating Language <http://twig.sensiolabs.org/>`_.
+ownCloud templates do a bad job at preventing `XSS <http://en.wikipedia.org/wiki/Cross-site_scripting>`_. Therefore the App Framework comes with a second option: the `Twig Templating Language <http://twig.sensiolabs.org/>`_.
 
 Twig Templates are enabled by using the Twig Middleware. If a Twig template directory is set in the :file:`dependencyinjection/dicontainer.php`, the middleware gets loaded automatically. If no directory is set, theres no additional overhead.
 
@@ -71,7 +71,7 @@ After adding the above lines, Angular will use **[[]]** for evaluation variables
 
 ownCloud Templates
 ------------------
-In every template file you can easily access the template functions listed in :doc:`templates`. To access the assigned variables in the template, use the **$_[]** array. The variable will be availabe under the key that you defined (e.g. $_['key']).
+In every template file you can easily access the template functions listed in :doc:`../classes/core/templates`. To access the assigned variables in the template, use the **$_[]** array. The variable will be availabe under the key that you defined (e.g. $_['key']).
 
 :file:`templates/main.php`
 
@@ -89,7 +89,7 @@ In every template file you can easily access the template functions listed in :d
 .. warning::
   .. versionchanged:: 5.0
 
-  To prevent XSS the following PHP **functions for printing are forbidden: echo, print() and <?=**. Instead use ``p($data)`` for printing your values. Should you require unescaped printing, **double check for XSS** and use: ``print_unescaped($data)``.
+  To prevent XSS the following PHP **functions for printing are forbidden: echo, print() and <?=**. Instead use the **p()** function for printing your values. Should you require unescaped printing, **double check for XSS** and use: :php:func:`print_unescaped`.
 
 Templates can also include other templates by using the **$this->inc('templateName')** method. Use this if you find yourself repeating a lot of the same HTML constructs. The parent variables will also be available in the included templates, but should you require it, you can also pass new variables to it by using the second optional parameter for $this->inc.
 
@@ -103,4 +103,4 @@ Templates can also include other templates by using the **$this->inc('templateNa
   <?php p($_['name']); ?>
 
 
-**For more info, see** :doc:`templates`
+**For more info, see** :doc:`../classes/core/templates`

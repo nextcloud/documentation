@@ -93,6 +93,6 @@ To add your own classes simply open the :file:`dependencyinjection/dicontainer.p
 
   ?>
 
-You can also overwrite already existing items from the appframework simply by redefining them.
+You can also overwrite already existing items from the App Framework simply by redefining them.
 
 **See also** :doc:`../general/dependencyinjection`

@@ -25,7 +25,6 @@ A simple route would look like this:
   );
 
 
-:php:class:`OCA\\AppFramework\\App`
 
 The first argument is the name of your route. This is used as an identifier to get the URL of the route and is a nice way to generate the URL in your templates or JavaScript for certain links since it does not force you to hardcode your URLs. To use it in OC templates, use:
 
@@ -62,6 +61,12 @@ If a default value should be used for an URL parameter, it can be set via the **
       }
   )->defaults('value' => 'john');
 
+
+To call your controllers the App Framework provides a main method: :php:class:`OCA\\AppFramework\\App`.
+
+The first parameter is the name under which the controller was defined in the :file:`dependencyinjection/dicontainer.php`.
+
+The second parameter is the name of the method that should be called on the controller.
 
 The third parameter is the $params array which is passed to the controller and available by using **$this->params($KEY)** in the controller method. In the following example, the parameter in the URL would be accessible by using: **$this->params('value')**
 

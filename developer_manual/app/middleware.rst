@@ -11,10 +11,7 @@ Middleware is logic that is run before and after each request. It offers the fol
 * **afterController**: This is being run after a successful controllermethod call and allows the manipulation of a Response object. The middleware is run in reverse order
 * **beforeOutput**: This is being run after the response object has been rendered and allows the manipulation of the outputted text. The middleware is run in reverse order
 
-To generate your own middleware, simply inherit from the Middleware class and overwrite the methods that you want to use.
-
-.. note:: Some hooks need to return a result, for instance the beforeOutput hook needs to return the text that is printed to the page. Check the Middleware class documentation in the appframework :file:`middleware/middleware.php` for more information
-
+To generate your own middleware, simply inherit from the Middleware class :php:class:`OCA\\AppFramework\\Middleware\\Middleware`: and overwrite the methods that you want to use.
 
 
 .. code-block:: php
@@ -45,7 +42,7 @@ To generate your own middleware, simply inherit from the Middleware class and ov
 
   }
 
-To activate the middleware, you have to overwrite the parent MiddlewareDispatcher and wire your middleware into the DIContainer constructor:
+To activate the middleware, you have to overwrite the :php:class:`OCA\\AppFramework\\Middleware\\MiddlewareDispatcher`: in the DIContainer constructor:
 
 .. note:: If you ship your own middleware, be sure to also enable the existing ones if you overwrite the MiddlewareDispatcher in the Dependency Injection Container!
 

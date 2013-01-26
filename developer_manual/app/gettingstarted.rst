@@ -5,7 +5,7 @@ Getting Started
 
 Before you start, please check if there already is a `similar app <http://apps.owncloud.com>`_ you could contribute to. Also, feel free to communicate your idea and plans to the `mailing list <https://mail.kde.org/mailman/listinfo/owncloud>`_ so other contributors might join in.
 
-This tutorial uses the appframework app, a small framework that makes developing apps easier. To use it, it has to be enabled on the apps settings page.
+This tutorial uses the App Framework app, a small framework that makes developing apps easier. To use it, it has to be enabled on the apps settings page.
 
 
 Getting Started
@@ -59,7 +59,7 @@ To enable your app, simply link it into the apps directory:
 
 or create a second apps directory in your :file:`/var/www/owncloud/config/config.php` (see :doc:`../core/configfile`)
 
-.. note:: Don't forget to enable your app and the appframework app on the apps settings page!
+.. note:: Don't forget to enable your app and the App Framework app on the apps settings page!
 
 Now change into your app directory::
 

@@ -33,4 +33,4 @@ The classloader works like this:
 
     require '/apps/apptemplateadvanced/db/itemmapper.php';
 
-Remember : for it to be autoloaded, the itemmapper.php file needs to either be stored in the /apps/apptemplateadvanced/db/ folder, or adjust its namespace according to the folder it's stored in.
+Remember : for it to be autoloaded, the :file:`itemmapper.php` needs to either be stored in the **/apps/apptemplateadvanced/db/** folder, or adjust its namespace according to the folder it's stored in.

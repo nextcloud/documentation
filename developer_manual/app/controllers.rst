@@ -3,7 +3,7 @@ Controllers
 
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
-The appframework app provides a simple baseclass for adding controllers: :php:class:`OCA\\AppFramework\\Controller\\Controller`. Controllers connect your view (templates) with your database. Controllers themselves are connected to one or more routes. Controllers go into the :file:`controller` directory.
+The App Framework provides a simple baseclass for adding controllers: :php:class:`OCA\\AppFramework\\Controller\\Controller`. Controllers connect your view (templates) with your database. Controllers themselves are connected to one or more routes. Controllers go into the **controller/** directory.
 
 A controller should be created for each resource. Think of it as an URL scheme::
 
@@ -61,19 +61,17 @@ An instance of the API is passed via dependency injection, the same goes for a R
 
 .. note:: If an URL Parameter, POST or GET value exist with the same key, the URL Parameter is preferred over the POST parameter and the POST parameter is preferred over the GET parameter. You should avoid this scenario though.
 
-Every controller method has to return a Response object. The currently available Responses from the appframework include:
+Every controller method has to return a Response object. The currently available Responses from the App Framework include:
 
-* **\\OCA\\AppFramework\\Http\\Response**: response for sending headers only
-* **\\OCA\\AppFramework\\Http\\JSONResponse**: sends JSON to the client
-* **\\OCA\\AppFramework\\Http\\TemplateResponse**: renders a template
-* **\\OCA\\AppFramework\\Http\\RedirectResponse**: redirects to a new URL
-* **\\OCA\\AppFramework\\Http\\TextDownloadResponse**: prompts the user to download a text file containing a passed string
-* **\\OCA\\AppFramework\\Http\\TextResponse**: for printing text like XML
+* :php:class:`OCA\\AppFramework\\Http\\Response`: response for sending headers only
+* :php:class:`OCA\\AppFramework\\Http\\JSONResponse`: sends JSON to the client
+* :php:class:`OCA\\AppFramework\\Http\\TemplateResponse`: renders a template
+* :php:class:`OCA\\AppFramework\\Http\\RedirectResponse`: redirects to a new URL
+* :php:class:`OCA\\AppFramework\\Http\\TextDownloadResponse`: prompts the user to download a text file containing a passed string
+* :php:class:`OCA\\AppFramework\\Http\\TextResponse`: for printing text like XML
 
 
-.. note:: For more responses, please look into the appframework :file:`http/`. If you create an additional response, be sure to create a pull request so that more people can profit from it!
-
-Should you require to set additional headers, you can use the **addHeader()** method that every Response has.
+Should you require to set additional headers, you can use the :php:meth:`OCA\\AppFramework\\Http\\Response::addHeader` method that every Response has.
 
 Because TemplateResponse and JSONResponse are so common, the controller provides a shortcut method for both of them, namely **$this->render** and **$this->renderJSON**.
 
