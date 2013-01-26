@@ -10,10 +10,10 @@ How to Contribute
 If you want to contribute please read the `Contributor agreement FAQ`_
 
 * Fix and triage bugs: `Report an issue on our bug tracker`_
-* Translate ownCloud to your language
+* `Translate <https://www.transifex.com/projects/p/owncloud/>`_ ownCloud to your language 
 * Support users on the `mailing list`_ and on the `IRC channel`_
 * Take a job from our `Junior Jobs`_
-* Write and generate documentation
+* Write and generate `documentation <https://github.com/owncloud/documentation>`_
 * Conduct `usability testing`_
 * Develop apps
 * Spread the word, tell your friends about it, write a blog post!
