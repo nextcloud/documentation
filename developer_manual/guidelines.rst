@@ -100,4 +100,4 @@ Coding guidelines
 .. _which might be dismissed: http://www.alistapart.com/articles/neveruseawarning/
 .. _usability testing: http://jancborchardt.net/usability-in-free-software
 .. _Alex Faaborg from Mozilla: http://uxmag.com/articles/quantifying-usability
-.. _Install ownCloud: https://github.com/owncloud/core/issues
+.. _Install ownCloud: http://doc.owncloud.org/server/4.5/admin_manual/installation.html 
