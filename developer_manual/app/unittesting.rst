@@ -75,4 +75,7 @@ You can now execute the test by running this in your app directory::
 
 The apptemplateadvanced provides an own classloader :file:`tests/classloader.php` that loads the the classes.
 
+.. note:: The classloader in the **tests/** directory assumes that the appframework folder is in the same directory as the yourapp. If you run your app in a different apps folder, you will need to link the appframework into the same folder where your app folder resides.
+
+
 More examples for testing controllers are in the :file:`tests/controller/ItemControllerTest.php`
