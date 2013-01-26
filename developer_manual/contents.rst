@@ -12,8 +12,8 @@ ownCloud documentation contents
 .. toctree::
     :maxdepth: 3
 
-    api/index
     app/index
+    api/index
     core/index
     general/index
 
