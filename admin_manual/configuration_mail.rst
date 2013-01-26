@@ -77,11 +77,13 @@ Parameters
     "mail_smtpname"     => "",
     "mail_smtppassword" => "",
 
-  If SMTP authentication is required the configuration may be changed as
-  followed:
+  If SMTP authentication is required you have to set the required username
+  and password and can optionally choose between the authentication types
+  ``LOGIN`` (default) or ``PLAIN``.
   ::
 
     "mail_smtpauth"     => true,
+    "mail_smtpauthtype" => "LOGIN",
     "mail_smtpname"     => "username",
     "mail_smtppassword" => "password",
 
@@ -100,6 +102,7 @@ Parameters
     "mail_smtptimeout"  => 10,
     "mail_smtpsecure"   => "",
     "mail_smtpauth"     => false,
+    "mail_smtpauthtype" => "LOGIN",
     "mail_smtpname"     => "",
     "mail_smtppassword" => "",
 
@@ -117,6 +120,7 @@ Parameters
     "mail_smtptimeout"  => 10,
     "mail_smtpsecure"   => "",
     "mail_smtpauth"     => false,
+    "mail_smtpauthtype" => "LOGIN",
     "mail_smtpname"     => "",
     "mail_smtppassword" => "",
 
@@ -134,6 +138,7 @@ Parameters
     "mail_smtptimeout"  => 10,
     "mail_smtpsecure"   => "",
     "mail_smtpauth"     => false,
+    "mail_smtpauthtype" => "LOGIN",
     "mail_smtpname"     => "",
     "mail_smtppassword" => "",
 
@@ -211,7 +216,33 @@ Trouble shooting
     221 smtp.domain.dom closing connection
     Connection closed by foreign host.
 
-5. **Enable Debug Mode**
+5. **How can I find out which authentication types/methods a SMTP server supports?**
+
+   A SMTP server usually announces the available authentication types/methods
+   right after a connection has been established. This can easily been checked
+   with the telnet command. You need to enter the marked lines to get the
+   information displayed:
+   ::
+
+    # telnet smtp.domain.dom 25
+    Trying 192.168.1.10...
+    Connected to smtp.domain.dom.
+    Escape character is '^]'.
+    220 smtp.domain.dom ESMTP Exim 4.80.1 Tue, 22 Jan 2013 22:39:55 +0100
+    EHLO your-server.local.lan                                             # <<< enter this command
+    250-smtp.domain.dom Hello your-server.local.lan [ip-address]
+    250-SIZE 52428800
+    250-8BITMIME
+    250-PIPELINING
+    250-AUTH PLAIN LOGIN CRAM-MD5                                          # <<< available Authentication types
+    250-STARTTLS
+    250 HELP
+    QUIT                                                                   # <<< enter this command
+    221 smtp.domain.dom closing connection
+    Connection closed by foreign host.
+
+
+6. **Enable Debug Mode**
 
    If you are still not able to send email it might be useful to activate
    further debug messages by setting the following parameter. Right after
