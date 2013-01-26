@@ -59,6 +59,8 @@ To enable your app, simply link it into the apps directory:
 
 or create a second apps directory in your :file:`/var/www/owncloud/config/config.php` (see :doc:`../core/configfile`)
 
+.. note:: The classloader in the **tests/** directory assumes that the appframework folder is in the same directory as the yourapp. If you run your app in a different apps folder, you will need to link the appframework into the same folder where your app folder resides.
+
 .. note:: Don't forget to enable your app and the appframework app on the apps settings page!
 
 Now change into your app directory::
