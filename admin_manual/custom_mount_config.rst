@@ -98,7 +98,7 @@ Example
 
 .. code-block:: php
 
-    array( 'class'=>'OC_Filestorage_FTP,
+    array( 'class'=>'OC_Filestorage_FTP',
            'options'=>array (
                       'host'=>'ftp.myhost.com',
                       'user'=>'johndoe',
@@ -129,7 +129,7 @@ Example
 
 .. code-block:: php
 
-    array( 'class'=>'OC_Filestorage_DAV,
+    array( 'class'=>'OC_Filestorage_DAV',
            'options'=>array(
                       'host'=>'myhost.com/webdav.php',
                       'user'=>'johndoe',
@@ -159,7 +159,7 @@ Example
 
 .. code-block:: php
 
-    array( 'class'=>'OC_Filestorage_SWIFT,
+    array( 'class'=>'OC_Filestorage_SWIFT',
            'options'=>array(
                      'host'=>'swift.myhost.com/auth',
                      'user'=>'johndoe',
@@ -190,7 +190,7 @@ Example
 
 .. code-block:: php
 
-    array( 'class'=>'OC_Filestorage_SMB,
+    array( 'class'=>'OC_Filestorage_SMB',
            'options'=>array (
                       'host'=>'myhost.com',
                       'user'=>'johndoe',
