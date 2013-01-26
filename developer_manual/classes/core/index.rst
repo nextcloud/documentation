@@ -1,6 +1,6 @@
-==========================
-ownCloud API Documentation
-==========================
+============
+ownCloud API
+============
 
 .. toctree::
    :maxdepth: 1
