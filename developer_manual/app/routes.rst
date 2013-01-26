@@ -25,6 +25,8 @@ A simple route would look like this:
   );
 
 
+:php:class:`OCA\\AppFramework\\App`
+
 The first argument is the name of your route. This is used as an identifier to get the URL of the route and is a nice way to generate the URL in your templates or JavaScript for certain links since it does not force you to hardcode your URLs. To use it in OC templates, use:
 
 .. code-block:: php

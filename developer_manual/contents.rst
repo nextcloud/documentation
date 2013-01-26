@@ -16,6 +16,7 @@ ownCloud documentation contents
     app/index
     api/index
     core/index
+    classes/index
 
 Indices, glossary and tables
 ============================

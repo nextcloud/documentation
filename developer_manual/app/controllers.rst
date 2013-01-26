@@ -3,7 +3,7 @@ Controllers
 
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
-The appframework app provides a simple baseclass for adding controllers. Controllers connect your view (templates) with your database. Controllers themselves are connected to one or more routes. Controllers go into the :file:`controller` directory.
+The appframework app provides a simple baseclass for adding controllers: :php:class:`OCA\\AppFramework\\Controller\\Controller`. Controllers connect your view (templates) with your database. Controllers themselves are connected to one or more routes. Controllers go into the :file:`controller` directory.
 
 A controller should be created for each resource. Think of it as an URL scheme::
 

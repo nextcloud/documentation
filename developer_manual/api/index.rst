@@ -10,5 +10,4 @@ ownCloud API
    filesystem
    hooks
    share-api
-   templates
    vcategories

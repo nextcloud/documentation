@@ -62,7 +62,6 @@ Templates
 ---------
 * :doc:`app/templates`
 * `Twig Templates`_
-* :doc:`api/templates`
 
 
 JavaScript & CSS
@@ -87,7 +86,6 @@ ownCloud APIs
 * :doc:`api/filesystem`
 * :doc:`api/hooks`
 * :doc:`api/share-api`
-* :doc:`api/templates`
 * :doc:`api/vcategories`
 
 
