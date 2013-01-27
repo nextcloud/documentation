@@ -34,6 +34,8 @@ To disable JavaScript and CSS caching you'll have to turn on debugging in :file:
   DEFINE('DEBUG', true);
 
 
+.. note:: This is often overwritten after a **git pull** from core. Always check your :file:`owncloud/config/config.php` afterwards.
+
 .. _GitHub: https://github.com/owncloud
 .. _GitHub Help Page: https://help.github.com/
 

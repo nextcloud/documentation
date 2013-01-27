@@ -58,7 +58,7 @@ Twig can also cache templates as simple PHP files. To make use of this, create a
 
 A full reference can be found on the `Twig Template Reference <http://twig.sensiolabs.org/doc/templates.html>`_.
 
-If you want to use Twig together with AngularJS the variable print characters **{{}}** of Angular will have to be adjusted. You can do that by setting a different $interpolateProvider in the app config:
+If you want to use Twig together with AngularJS the variable print characters **{{}}** of Angular will have to be adjusted. You can do that by setting a different $interpolateProvider in the :file:`coffee/app.coffee` config section:
 
 .. code-block:: js
 
