@@ -2,29 +2,29 @@ Automatic Configuration
 =======================
 
 If you need to install ownCloud on multiple servers you normally do not want
-to set-up each instance separately as described in the `Database Configuration`
+to set-up each instance separately as described in the `Database Configuration`_
 chapter. For this reason the automatic configuration feature has been introduced.
 
 To take advance of this feature you need to create a configuration file, called
 ``../owncloud/config/autoconfig.php`` and set the parameters as required. The
-file will automatically been removed after the initial configuration has been
+file will automatically be removed after the initial configuration has been
 applied.
 
 Parameters
 ----------
 
-  You need to keep in mind that two parameters are named differently in this
-  configuration file compared to the normal ``config.php``file.
-  ::
-    +----------------+---------------+
-    | autoconfig.php | config.php    |
-    +================+===============+
-    | directory      | datadirectory |
-    | dbpass         | dbpassword    |
-    +----------------+---------------+
+You need to keep in mind that two parameters are named differently in this
+configuration file compared to the normal ``config.php`` file.
+
++----------------+---------------+
+| autoconfig.php | config.php    |
++================+===============+
+| directory      | datadirectory |
++----------------+---------------+
+| dbpass         | dbpassword    |
++----------------+---------------+
 
 * **SQLite Database**
-
   ::
     <?php
     $AUTOCONFIG = array(
@@ -38,8 +38,8 @@ Parameters
 * **MySQL Database**
 
   Keep in mind that the automatic configuration does not unburden you from
-  creating the database user and database itself in advance, as described
-  in the `Database Configuration` chapter.
+  creating the database user and database in advance, as described in the
+  `Database Configuration`_ chapter.
   ::
     <?php
     $AUTOCONFIG = array(
@@ -58,8 +58,8 @@ Parameters
 * **PostgreSQL Database**
 
   Keep in mind that the automatic configuration does not unburden you from
-  creating the database user and database itself in advance, as described
-  in the `Database Configuration` chapter.
+  creating the database user and database in advance, as described in the
+  `Database Configuration`_ chapter.
   ::
     <?php
     $AUTOCONFIG = array(
