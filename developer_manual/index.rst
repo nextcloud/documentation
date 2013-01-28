@@ -38,6 +38,8 @@ General
 App Developement
 ================
 
+* `Publish your app <http://apps.owncloud.com/>`_
+
 * :doc:`app/gettingstarted`
 * :doc:`app/settings` | `Pimple`_
 * :doc:`app/classloader`
