@@ -1,4 +1,3 @@
-
 Database Configuration
 ======================
 
@@ -17,10 +16,11 @@ database first. These steps will not be covered by this description.
 Parameters
 ----------
 
-* **SQLite database**
+* **SQLite Database**
 
   If you decide to use a SQLite database make sure that you have installed and
-  enabled the SQLite extension in PHP. The PHP configuration could look like this:
+  enabled the SQLite extension in PHP. The PHP configuration could look like
+  this:
   ::
 
     cat /etc/php5/conf.d/sqlite3.ini
@@ -28,8 +28,9 @@ Parameters
     extension=pdo_sqlite.so
     extension=sqlite3.so
 
-  It is not necessary to create a database and a database user in advance because
-  this will automatically be done by ownCloud when you login for the first time. 
+  It is not necessary to create a database and a database user in advance
+  because this will automatically be done by ownCloud when you login for the
+  first time. 
 
   In the ownCloud counfiguration you need to set at least the ``datadirectory``
   parameter to the directory where your data and database should be stored.
@@ -45,11 +46,11 @@ Parameters
     "dbtableprefix" => "",
     "datadirectory" => "/www/htdocs/owncloud/data",
 
-* **MySQL database**
+* **MySQL Database**
 
   If you decide to use a MySQL database make sure that you have installed and
   enabled the MySQL extension in PHP and that the ``mysql.default_socket``
-  points to the correct socket, if the database runs on same server as ownCloud.
+  points to the correct socket (if the database runs on same server as ownCloud).
   The PHP configuration could look like this:
   ::
 
@@ -72,9 +73,9 @@ Parameters
     mysql.connect_timeout=60
     mysql.trace_mode=Off
 
-  Now you need to create a database user and the database itself by using the MySQL
-  command line interface. The database tables will be created by ownCloud when you
-  login for the first time. 
+  Now you need to create a database user and the database itself by using the
+  MySQL command line interface. The database tables will be created by ownCloud
+  when you login for the first time. 
   ::
 
     # mysql -hlocalhost -uroot -proot-password
@@ -83,7 +84,7 @@ Parameters
     mysql> GRANT ALL PRIVILEGES ON owncloud.* TO 'username'@'localhost' IDENTIFIED BY 'password';
     mysql> QUIT
 
-  In the ownCloud counfiguration you need to set the hostname on which the
+  In the ownCloud configuration you need to set the hostname on which the
   database is running and a valid username and password to access it.
   ::
 
@@ -94,7 +95,7 @@ Parameters
     "dbhost"        => "localhost",
     "dbtableprefix" => "",
 
-* **PostgreSQL database**
+* **PostgreSQL Database**
 
   If you decide to use a PostgreSQL database make sure that you have installed
   and enabled the PostgreSQL extension in PHP. The PHP configuration could look
@@ -114,9 +115,9 @@ Parameters
     pgsql.ignore_notice = 0
     pgsql.log_notice = 0
 
-  Now you need to create a database user and the database itself by using the PostgreSQL
-  command line interface. The database tables will be created by ownCloud when you login
-  for the first time. 
+  Now you need to create a database user and the database itself by using the
+  PostgreSQL command line interface. The database tables will be created by
+  ownCloud when you login for the first time. 
   ::
 
     # psql -hlocalhost -Upostgres 
@@ -126,10 +127,10 @@ Parameters
     postgres=# GRANT ALL PRIVILEGES ON DATABASE owncloud TO username;
     postgres=# \q
 
-  In the ownCloud counfiguration you need to set the hostname on which the database
-  is running and a valid username (and password) to access it. If the database has
-  been installed on the same server as ownCloud a password is very often not required
-  to access the database.
+  In the ownCloud configuration you need to set the hostname on which the
+  database is running and a valid username (and sometimes a password) to
+  access it. If the database has been installed on the same server as
+  ownCloud a password is very often not required to access the database.
   ::
 
     "dbtype"        => "pgsql",
@@ -146,7 +147,6 @@ Trouble Shooting
 
    Use the ping command to check the server availability:
    ::
-
     # ping db.server.dom
     PING db.server.dom (ip-address) 56(84) bytes of data.
     64 bytes from your-server.local.lan (192.168.1.10): icmp_req=1 ttl=64 time=3.64 ms
@@ -155,60 +155,60 @@ Trouble Shooting
 
 2. **How can I find out if a created user can access a database?**
 
-   The easiet way to test if a database can be accessed is by starting the command line
-   interface:
+   The easiet way to test if a database can be accessed is by starting the
+   command line interface:
 
-   SQLite
+   **SQLite**
+   ::
+    # sqlite3 /www/htdocs/owncloud/data/owncloud.db
+    sqlite> .version
+    SQLite 3.7.15.1 2012-12-19 20:39:10 6b85b767d0ff7975146156a99ad673f2c1a23318
+    sqlite> .quit
 
-   # sqlite3 /www/htdocs/owncloud/data/owncloud.db
-   sqlite> .version
-   SQLite 3.7.15.1 2012-12-19 20:39:10 6b85b767d0ff7975146156a99ad673f2c1a23318
-   sqlite> .quit
+   **MySQL**
+   ::
+    # mysql -hlocalhost -uusername -ppassword
+    mysql> SHOW VARIABLES LIKE "version";
+    +---------------+--------+
+    | Variable_name | Value  |
+    +---------------+--------+
+    | version       | 5.1.67 |
+    +---------------+--------+
+    1 row in set (0.00 sec)
+    mysql> quit
 
-   MySQL
-
-   # mysql -hlocalhost -uusername -ppassword
-   mysql> SHOW VARIABLES LIKE "version";
-   +---------------+--------+
-   | Variable_name | Value  |
-   +---------------+--------+
-   | version       | 5.1.67 |
-   +---------------+--------+
-   1 row in set (0.00 sec)
-   mysql> quit
-
-   PostgreSQL
-
-   # ./psql -hlocalhost -Uusername -downcloud
-   postgres=# SELECT version();
-                                                   version
-   -----------------------------------------------------------------------------------------------------
-   PostgreSQL 8.4.12 on i686-pc-linux-gnu, compiled by GCC gcc (GCC) 4.1.3 20080704 (prerelease), 32-bit
-   (1 row)
-   postgres=# \q
+   **PostgreSQL**
+   ::
+    # ./psql -hlocalhost -Uusername -downcloud
+    postgres=# SELECT version();
+                                                    version
+    -----------------------------------------------------------------------------------------------------
+    PostgreSQL 8.4.12 on i686-pc-linux-gnu, compiled by GCC gcc (GCC) 4.1.3 20080704 (prerelease), 32-bit
+    (1 row)
+    postgres=# \q
 
 3. **Are there any other useful SQL commands which are worse to know?**
 
-   Show database users
+   **Show Database Users**
+   ::
+    SQLite    : No database user is required.
+    MySQL     : SELECT User,Host FROM mysql.user;
+    PostgreSQL: SELECT * from pg_user;
 
-   SQLite    : No database user is required.
-   MySQL     : SELECT User,Host FROM mysql.user;
-   PostgreSQL: SELECT * from pg_user;
+   **Show available Databases**
+   ::
+    SQLite    : .databases (normally one database per file!)
+    MySQL     : SHOW DATABASES;
+    PostgreSQL: \l
 
-   Show available databases
+   **Show ownCloud Tables in Database**
+   ::
+    SQLite    : .tables
+    MySQL     : USE owncloud; SHOW TABLES;
+    PostgreSQL: \c owncloud; \d
 
-   SQLite    : .databases (normally one database per file!)
-   MySQL     : SHOW DATABASES;
-   PostgreSQL: \l
-
-   Show ownCloud tables in database
-
-   SQLite    : .tables
-   MySQL     : USE owncloud; SHOW TABLES;
-   PostgreSQL: \c owncloud; \d
-
-   Quit database
-
-   SQLite    : .quit
-   MySQL     : quit
-   PostgreSQL: \q
+   **Quit Database**
+   ::
+    SQLite    : .quit
+    MySQL     : quit
+    PostgreSQL: \q
