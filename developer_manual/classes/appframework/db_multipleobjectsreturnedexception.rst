@@ -14,4 +14,5 @@ row
 
   .. php:method:: __construct($msg)
 
-    :param mixed $msg:
+    :param mixed $msg: 
+

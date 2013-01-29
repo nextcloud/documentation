@@ -151,6 +151,15 @@ class and add your methods
     Returns the URL for a route
 
 
+  .. php:method:: getAbsoluteURL($url)
+
+    :param string $url: the url
+    :returns string: the absolute url
+
+
+    Makes an URL absolute
+
+
   .. php:method:: linkToAbsolute($file, $appName=null)
 
     :param string $file: the name of the file

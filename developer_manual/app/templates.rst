@@ -88,6 +88,20 @@ The App Framework comes with additional template functions for Twig to better in
     {{ url('apptemplate_advanced_params', {value: 'hi'}) }}
 
 
+.. js:function:: abs_url(route, params=null)
+  
+  :param string route: the name of the route
+  :param string params: the params written like a JavaScript object
+
+  Same as :js:func:`url` but prints an absolute URL
+
+  An example would be:
+
+  .. code-block:: js
+
+    {{ abs_url('apptemplate_advanced_params', {value: 'hi'}) }}
+
+
 .. js:function:: t(toTranslate, params=null)
   
   :param string toTranslate: the string which should be translated
