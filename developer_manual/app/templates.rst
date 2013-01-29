@@ -69,6 +69,39 @@ If you want to use Twig together with AngularJS the variable print characters **
 
 After adding the above lines, Angular will use **[[]]** for evaluation variables.
 
+Additional Twig Extensions
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+The App Framework comes with additional template functions for Twig to better integrate with ownCloud. The following additional functions are provided:
+
+
+.. js:function:: url(route, params=null)
+  
+  :param string route: the name of the route
+  :param string params: the params written like a JavaScript object
+
+  Prints the URL for a route.
+
+  An example would be:
+
+  .. code-block:: js
+
+    {{ url('apptemplate_advanced_params', {value: 'hi'}) }}
+
+
+.. js:function:: t(toTranslate, params=null)
+  
+  :param string toTranslate: the string which should be translated
+  :param string params: the params that should be replaced in the string
+
+  Enables translation in the templates
+
+  An example would be:
+
+  .. code-block:: js
+
+    {{ t('Translate %s %s', 'this', 'and this') }}
+
+
 ownCloud Templates
 ------------------
 In every template file you can easily access the template functions listed in :doc:`../classes/core/templates`. To access the assigned variables in the template, use the **$_[]** array. The variable will be availabe under the key that you defined (e.g. $_['key']).
