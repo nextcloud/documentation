@@ -44,6 +44,14 @@ Baseclass to inherit your controllers from
     Lets you access post and get parameters by the index
 
 
+  .. php:method:: getParams()
+
+    :returns array: the array with all parameters
+
+
+    Returns all params that were received, be it from the request(as GET or POST) or throuh the URL by the route
+
+
   .. php:method:: getUploadedFile($key)
 
     :param string $key: the key that will be taken from the $_FILES array

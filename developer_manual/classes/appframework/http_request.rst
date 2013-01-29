@@ -19,6 +19,14 @@ Encapsulates $_GET, $_FILES and $_POST arrays for better testability
 
 
 
+  .. php:method:: getGETAndPOST()
+
+    :returns array: the merged array
+
+
+    Returns the merged GET and POST array
+
+
   .. php:method:: getGET($key, $default=null)
 
     :param string $key: the array key that should be looked up

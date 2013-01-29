@@ -9,6 +9,7 @@ AppFramework API
    controller_controller
    core_api
    db_doesnotexistexception
+   db_multipleobjectsreturnedexception
    db_mapper
    dependencyinjection_dicontainer
    http_response
