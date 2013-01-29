@@ -113,7 +113,7 @@ The App Framework comes with additional template functions for Twig to better in
 
   .. code-block:: js
 
-    {{ t('Translate %s %s', 'this', 'and this') }}
+    {{ trans('Translate %s %s', 'this', 'and this') }}
 
 
 ownCloud Templates
