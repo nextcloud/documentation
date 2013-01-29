@@ -2,7 +2,7 @@ Automatic Configuration
 =======================
 
 If you need to install ownCloud on multiple servers you normally do not want
-to set-up each instance separately as described in the `Database Configuration`
+to set-up each instance separately as described in the ``Database Configuration``
 chapter (:doc:`./configuration_database`). For this reason the automatic
 configuration feature has been introduced.
 
@@ -40,7 +40,7 @@ configuration file compared to the normal ``config.php`` file.
 
   Keep in mind that the automatic configuration does not unburden you from
   creating the database user and database in advance, as described in the
-  `Database Configuration` chapter (:doc:`./configuration_database`).
+  ``Database Configuration`` chapter (:doc:`./configuration_database`).
   ::
     <?php
     $AUTOCONFIG = array(
@@ -60,7 +60,7 @@ configuration file compared to the normal ``config.php`` file.
 
   Keep in mind that the automatic configuration does not unburden you from
   creating the database user and database in advance, as described in the
-  `Database Configuration` chapter (:doc:`./configuration_database`).
+  ``Database Configuration`` chapter (:doc:`./configuration_database`).
   ::
     <?php
     $AUTOCONFIG = array(
