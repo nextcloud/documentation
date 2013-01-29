@@ -102,7 +102,7 @@ The App Framework comes with additional template functions for Twig to better in
     {{ abs_url('apptemplate_advanced_params', {value: 'hi'}) }}
 
 
-.. js:function:: t(toTranslate, params=null)
+.. js:function:: trans(toTranslate, params=null)
   
   :param string toTranslate: the string which should be translated
   :param string params: the params that should be replaced in the string
