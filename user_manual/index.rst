@@ -7,7 +7,7 @@ Contents
    :maxdepth: 2
 
    introduction
-   connecting_browser
+   webinterface
    connecting_webdav
    files
    calendars
