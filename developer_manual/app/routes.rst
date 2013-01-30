@@ -33,7 +33,11 @@ The first argument is the name of your route. This is used as an identifier to g
   <?
   print_unescaped(\OC_Helper::linkToRoute( 'yourappname_routename', array('value' => 1)));
 
-If Twig templates are used, the linkToRoute method has to be evaluated in the controller and passed as a parameter. In the future there will be an own filter for generating the URL in Twig templates.
+In Twig templates you can use the :js:func:`url` function:
+
+.. code-block:: js
+  
+  {{ url('yourappname_routename', {value: '1'}) }}
 
 
 In JavaScript you can get the URL for a route like this:
