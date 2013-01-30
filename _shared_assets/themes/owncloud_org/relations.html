@@ -1,3 +1,5 @@
+{% if parents|length != 0 %}
+<ul class="nav_links" >
 {%- if prev %}
   <li><a href="{{ prev.link|e }}"
          title="{{ _('previous chapter') }}">{{ "&laquo;"|safe }} {{ prev.title }}</a></li>
@@ -5,4 +7,6 @@
 {%- if next %}
   <li><a href="{{ next.link|e }}"
          title="{{ _('next chapter') }}">{{ next.title }} {{ "&raquo;"|safe }}</a></li>
+{%- endif %}
+</ul>
 {%- endif %}
