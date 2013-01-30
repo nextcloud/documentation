@@ -16,7 +16,7 @@ A simple route would look like this:
 .. code-block:: php
 
   <?php
-  use \OCA\AppFramework\App as App;
+  use \OCA\AppFramework\App;
 
   $this->create('yourappname_routename', '/myurl/{value}')->action(
       function($params){
@@ -53,7 +53,7 @@ If a default value should be used for an URL parameter, it can be set via the **
 .. code-block:: php
 
   <?php
-  use \OCA\AppFramework\App as App;
+  use \OCA\AppFramework\App;
 
   $this->create('yourappname_routename', '/myurl/{value}')->action(
       function($params){

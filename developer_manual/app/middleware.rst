@@ -18,7 +18,7 @@ To generate your own middleware, simply inherit from the Middleware class :php:c
 
   <?php
 
-  use \OCA\AppFramework\Middleware\Middleware as Middleware;
+  use \OCA\AppFramework\Middleware\Middleware;
 
 
   class CensorMiddleware extends Middleware {

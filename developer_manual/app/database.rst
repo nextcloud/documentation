@@ -131,8 +131,8 @@ All database queries for that object should be put into a mapper class. This fol
   <?php
   namespace \OCA\YourApp\Db;
 
-  use \OCA\AppFramework\Db\DoesNotExistException as DoesNotExistException;
-  use \OCA\AppFramework\Db\Mapper as Mapper;
+  use \OCA\AppFramework\Db\DoesNotExistException;
+  use \OCA\AppFramework\Db\Mapper;
 
 
   class ItemMapper extends Mapper {

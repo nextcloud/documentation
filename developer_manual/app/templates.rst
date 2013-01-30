@@ -10,7 +10,7 @@ Templates are abstracted by the TemplateResponse object and used and returned in
 .. code-block:: php
 
   <?php
-  use \OCA\AppFramework\Http\TemplateResponse as TemplateResponse
+  use \OCA\AppFramework\Http\TemplateResponse;
 
   // ...
 

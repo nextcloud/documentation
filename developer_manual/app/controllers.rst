@@ -24,8 +24,8 @@ The apptemplate comes with several different controllers. A simple controller wo
 
   namespace OCA\YourApp\Controller;
 
-  use \OCA\AppFramework\Controller\Controller as Controller;
-  use \OCA\AppFramework\Http\JSONResponse as JSONResponse;
+  use \OCA\AppFramework\Controller\Controller;
+  use \OCA\AppFramework\Http\JSONResponse;
 
 
   class MyController extends Controller {
