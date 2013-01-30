@@ -1,5 +1,5 @@
-Web server Notes
-----------------
+Other Web Servers
+-----------------
 
 The most popular server choice for ownCloud is Apache, which is why
 it is also the combinations tested best. However, it is also possible

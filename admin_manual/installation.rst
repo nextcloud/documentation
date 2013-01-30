@@ -9,7 +9,7 @@ skip ahead to the appliance section, where you will find ready-to-use images.
 
 .. include:: installation_source.rst
 .. include:: installation_linux.rst
-.. include:: installation_webservernotes.rst
+.. include:: installation_others.rst
 .. include:: installation_macos.rst
 .. include:: installation_windows.rst
 .. include:: installation_ucs.rst
