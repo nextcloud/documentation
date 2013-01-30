@@ -14,5 +14,7 @@ row
 
   .. php:method:: __construct($msg)
 
-    :param mixed $msg: 
+    :param string $msg: the error message
 
+
+    Constructor
