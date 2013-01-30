@@ -43,7 +43,7 @@ Mozilla Lightning users need to this URL scheme::
    The full URL (which on the picture can't be seen because of the
    short edit field) is then::
 
-  https://localhost/owncloud/remote.php/caldav/calendars/test/defaultcalendar
+       https://localhost/owncloud/remote.php/caldav/calendars/test/defaultcalendar
 
 .. _URL-encoding: http://en.wikipedia.org/wiki/Percent-encoding
 
