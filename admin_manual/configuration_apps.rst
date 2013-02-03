@@ -29,12 +29,17 @@ web root. The key ``writable`` indicates if a user can install apps in that
 folder.
 ::
     "apps_paths" => array (
-                      0 => array (
-                             "path"     => "/var/www/owncloud/apps",
-                             "url"      => "/apps",
-                             "writable" => true,
-                           ),
-                    ),
+        0 => array (
+                "path"     => OC::$SERVERROOT."/apps",
+                "url"      => "/apps",
+                "writable" => true,
+        ),
+        1 => array (
+                "path"     => OC::$SERVERROOT."/apps2",
+                "url"      => "/apps2",
+                "writable" => false,
+        ),
+    ),
 
 Finally you can enable checks for malicious code fragments of 3rd-party apps
 by setting the ``appcodechecker`` parameter.
