@@ -27,17 +27,22 @@ for available apps and/or where user specific apps should be installed.The key
 ``url`` defines the http web path to that folder, starting at the ownCloud 
 web root. The key ``writable`` indicates if a user can install apps in that
 folder.
+
+**Hint:**
+If you want to make sure that the default ``/apps`` folder only contains apps
+shipped with ownCloud, you should follow the example and set-up a ``/apps2``
+folder which will be used to store all apps downloaded by users.
 ::
     "apps_paths" => array (
         0 => array (
                 "path"     => OC::$SERVERROOT."/apps",
                 "url"      => "/apps",
-                "writable" => true,
+                "writable" => false,
         ),
         1 => array (
                 "path"     => OC::$SERVERROOT."/apps2",
                 "url"      => "/apps2",
-                "writable" => false,
+                "writable" => true,
         ),
     ),
 
