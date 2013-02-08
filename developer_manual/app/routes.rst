@@ -5,7 +5,7 @@ Routes
 
 PHP usually treats the URL like a filepath. This is easy for beginners but gets more complicated if a good architecture is required. For instance if an URL should call a certain function/method or if values should be extracted from the URL.
 
-Routing connects your URLs with your controller methods and allows you to create constant and nice URLs. It also makes easy to extract values from the URLs.
+Routing connects your URLs with your controller methods and allows you to create constant and nice URLs. Its also easy to extract values from the URLs.
 
 ownCloud uses `Symphony Routing <http://symfony.com/doc/2.0/book/routing.html>`_
 
@@ -17,7 +17,9 @@ A simple route would look like this:
 
   <?php
   use \OCA\AppFramework\App;
+  use \OCA\YourApp\DependencyInjection\DIContainer;
 
+  // this route matches /index.php/yourapp/myurl/SOMEVALUE
   $this->create('yourappname_routename', '/myurl/{value}')->action(
       function($params){
           App::main('MyController', 'methodName', $params, new DIContainer());
@@ -26,7 +28,11 @@ A simple route would look like this:
 
 
 
-The first argument is the name of your route. This is used as an identifier to get the URL of the route and is a nice way to generate the URL in your templates or JavaScript for certain links since it does not force you to hardcode your URLs. To use it in OC templates, use:
+The first argument is the name of your route. This is used as an identifier to get the URL of the route and is a nice way to generate the URL in your templates or JavaScript for certain links since it does not force you to hardcode your URLs. 
+
+.. note:: The identifier should always start with the appid since they are global and you could overwrite a route of a different app
+
+To use it in OC templates, use:
 
 .. code-block:: php
 
@@ -46,7 +52,7 @@ In JavaScript you can get the URL for a route like this:
 
   var params = {value: 1};
   var url = OC.Router.generate('yourappname_routename', params);
-  console.log(url); // prints /index.php//yourappname/myurl/hi
+  console.log(url); // prints /index.php//yourappname/myurl/1
 
 .. note:: Be sure to only use the routes generator after the routes are loaded. This can be done by registering a callback with **OC.Router.registerLoadedCallback(callback)**
 
@@ -58,6 +64,7 @@ If a default value should be used for an URL parameter, it can be set via the **
 
   <?php
   use \OCA\AppFramework\App;
+  use \OCA\YourApp\DependencyInjection\DIContainer;
 
   $this->create('yourappname_routename', '/myurl/{value}')->action(
       function($params){

@@ -29,7 +29,7 @@ The classloader works like this:
 
     /apptemplateadvanced/db/itemmapper.php
 
-* Include the file::
+* Prepend /apps because of the OCA namespace and include the file::
 
     require '/apps/apptemplateadvanced/db/itemmapper.php';
 

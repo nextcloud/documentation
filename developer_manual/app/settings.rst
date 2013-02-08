@@ -28,6 +28,7 @@ You'll need to give some information on your app for instance the name. To do th
     'href' => \OC_Helper::linkToRoute('yourappname_index'),
 
     // the icon that will be shown in the navigation
+    // the icon must be stored inside the app's img/ folder
     'icon' => \OCP\Util::imagePath('yourappname', 'example.png' ),
 
     // the title of your application. This will be used in the
@@ -52,14 +53,13 @@ The second place where app specifc information is stored is in :file:`appinfo/in
         <version>1.0</version>
         <licence>AGPL</licence>
         <author>Your Name</author>
-        <require>4</require>
+        <require>5</require>
         <types>
             <filesystem/>
         </types>
   </info>
 
-ownCloud allows to specify four kind of "types" in the file:`appinfo/info.xml` of a app. The
-type doesn't have to be specified if the app doesn't match any of them.
+ownCloud allows to specify four kind of "types" in the file:`appinfo/info.xml` of a app. The type doesn't have to be specified if the app doesn't match any of them.
 
 Currently supported "types":
 

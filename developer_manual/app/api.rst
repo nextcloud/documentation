@@ -5,6 +5,8 @@ API abstraction layer
 
 ownCloud currently has a ton of static methods which is a very bad thing concerning testability. Therefore the App Framework comes with an :php:class:`OCA\\AppFramework\\Core\\API` abstraction layer (basically a `facade <http://en.wikipedia.org/wiki/Facade_pattern>`_) which is located in the App Framework app at :file:`core/api.php`.
 
+This will allow you to easily mock the API in your unittests.
+
 If you find yourself in need to use more ownCloud internal static methods, add them to the API class in the **appframework/** directory, like:
 
 .. code-block:: php
@@ -23,7 +25,7 @@ If you find yourself in need to use more ownCloud internal static methods, add t
 
 .. note:: Please send a pull request and cc **Raydiation** so the method can be added to the API class.
 
-You could of course also simply inherit from the API class and overwrite the API in the dependency injection container in :file:`dependencyinjection/dicontainer.php` by using:
+A temporary solution would be to to simply inherit from the API class and overwrite the API in the dependency injection container in :file:`dependencyinjection/dicontainer.php` by using:
 
 .. code-block:: php
 
@@ -34,5 +36,4 @@ You could of course also simply inherit from the API class and overwrite the API
       return new MyExtendedAPI($c['AppName']);
   });
 
-This will allow you to easily mock the API in your unittests.
 
