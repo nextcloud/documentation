@@ -26,7 +26,7 @@ Download the latest version to the working directory:
 
 ``wget http://mirrors.owncloud.org/releases/owncloud-latest.tar.bz2``
 
-Extract content of archive to ``./owncloud_latest/``. 
+Extract content of archive to ``./owncloud_latest/``.
 
 ``mkdir owncloud_latest; tar -C owncloud_latest -xjf owncloud-latest.tar.bz2``
 
@@ -65,4 +65,3 @@ If so, install and enable them, update procedures will run if needed.  9. If
 you installed ownCloud from a repository, your package management should take
 care of it. Probably you will need to look for compatible third party
 applications yourself. Always do backups anyway.
-

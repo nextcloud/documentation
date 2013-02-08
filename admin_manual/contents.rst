@@ -14,14 +14,7 @@ ownCloud documentation contents
 
     installation/index
     configuration/index
-    custom_mount_config
-    custom_user_backend
-    migrating
-    update
-    xsendfile
-    auth_ldap
-    
-
+    maintenance/index
 
 Indices and tables
 ==================

@@ -22,7 +22,7 @@ custom requirements you want to have a look on the advanced settings
 afterwards. The basic part allows you to set up a working connection to your
 LDAP server and use it with ownCloud.
 
-.. figure:: images/ldap-basic-settings-oc451.png
+.. figure:: ../images/ldap-basic-settings-oc451.png
 
    LDAP Basic Settings
 
@@ -35,7 +35,7 @@ Settings Details
 
 Host:
   The host name of the LDAP server. It can also be a ``ldaps://`` URI, for
-  instance. 
+  instance.
 
   * *Example: directory.my-company.com*
 
@@ -60,7 +60,7 @@ Password:
 User Login Filter:
   The filter to use when a users tries to login. Use ``%uid`` as placeholder
   for the user name. Note, that login applies this filter only, but not User
-  List Filter. This may change in future. 
+  List Filter. This may change in future.
 
   * Example (allows login with user name and email address): ``(|(uid=%uid)(email=$uid))``
 
@@ -83,7 +83,7 @@ common to set. They are not needed for a working connection, unless you use a
 non-standard Port, e.g. It can also have a positive effect on the performance
 to specify distinguished bases for user and group searches.
 
-.. figure:: images/ldap-advanced-settings-oc451.png
+.. figure:: ../images/ldap-advanced-settings-oc451.png
 
    LDAP Advanced Settings
 
@@ -116,7 +116,7 @@ Use TLS:
 
   * Example: [ ]
 
-Case insensitive LDAP server (Windows): 
+Case insensitive LDAP server (Windows):
   Wether the LDAP server is running on a Windows Host
 
   * Example: [ ]
@@ -127,9 +127,9 @@ Turn off SSL certificate validation:
 
   * Example: [ ]
 
-User Display Name Field: 
+User Display Name Field:
   The attribute that should be used as ownCloud user name. ownCloud allows
-  a limited set of characters ``(a-zA-Z0-9.-_@)``, every other character 
+  a limited set of characters ``(a-zA-Z0-9.-_@)``, every other character
   will be replaced in ownCloud. Once a user name is assigned, it will not be
   changed, i.e. changing this value will only have effect to new LDAP users.
   The default, uid, does not exist in AD, switch to ``cn``, for example,
@@ -137,24 +137,24 @@ User Display Name Field:
 
   *  Example: displayName
 
-Group Display Name Field: 
+Group Display Name Field:
   The attribute that should be used as ownCloud group name. ownCloud allows a
   limited set of characters (a-zA-Z0-9.-_@), every other character will be
   replaced in ownCloud. Once a group name is assigned, it will not be changed,
   i.e. changing this value will only have effect to new LDAP groups.
 
-  * Example: ``cn`` 
+  * Example: ``cn``
 
-Quota Attribute: 
+Quota Attribute:
   ownCloud can read an LDAP attribute and set the user quota
   there from. Specify the attribute here, otherwise keep it empty.
 
   * Example: ownCloudQuota
   * formerly Quota Field in ownCloud 4.0
 
-Quota Default: 
-  Override ownCloud default quota for LDAP users who do not 
-  have a quota set in the attribute given above.  
+Quota Default:
+  Override ownCloud default quota for LDAP users who do not
+  have a quota set in the attribute given above.
 
   * Example: 15 GB
 
@@ -169,7 +169,7 @@ Cache Time-To-Live:
   for example lookups check whether the users exists on every page request or
   WebDAV interaction. It is also supposed to speed up the Admin → User page or
   list of users to share with, once it is populated. Changing this setting
-  empties the Cache. The time is given in seconds. 
+  empties the Cache. The time is given in seconds.
 
   * Example (10 min): 600
 
@@ -181,7 +181,7 @@ User Home Folder Naming Rule:
   i.e. changing this value will only have effect to new LDAP users. Leave it
   empty to default behaviour
 
-  * Example: cn 
+  * Example: cn
 
 Microsoft Active Directory
 --------------------------
@@ -201,7 +201,7 @@ given in the input fields. You do not need to save before testing. By clicking
 on the button, ownCloud will try to bind to the ownCloud server with the
 settings currently given in the input fields. The response will look like this:
 
-.. figure:: images/ldap-settings-invalid-oc45.png
+.. figure:: ../images/ldap-settings-invalid-oc45.png
 
    Failure
 
@@ -210,9 +210,9 @@ is in the data directory and called ``owncloud.log`` or on the bottom the
 ``Settings →  Admin page``. Unfortunately it requires a reload – sorry for the
 inconvenience.
 
-.. figure:: images/ldap-settings-valid-oc45.png
+.. figure:: ../images/ldap-settings-valid-oc45.png
 
-   Success 
+   Success
 
 In this case, Save the settings. You can check if the users and groups are
 fetched correctly on the Settings → Users page.

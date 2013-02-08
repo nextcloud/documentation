@@ -48,6 +48,26 @@ If you want to just try ownCloud in a virtual machine without any configuration,
 * :doc:`installation/installation_source`
 * :doc:`installation/installation_others`
 
+Configuration
+=============
+* :doc:`configuration/configuration_3rdparty`
+* :doc:`configuration/configuration_apps`
+* :doc:`configuration/configuration_automation`
+* :doc:`configuration/configuration_database`
+* :doc:`configuration/configuration_knowledgebase`
+* :doc:`configuration/configuration_logging`
+* :doc:`configuration/configuration_mail`
+* :doc:`configuration/custom_mount_config`
+* :doc:`configuration/custom_user_backend`
+* :doc:`configuration/auth_ldap`
+* :doc:`configuration/xsendfile`
+
+Maintenance
+===========
+* :doc:`maintenance/migrating`
+* :doc:`maintenance/update`
+
+
 Indices and tables
 ==================
 

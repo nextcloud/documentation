@@ -1,31 +1,30 @@
 Serving static files via web server
 ===================================
 Since ownCloud 5 it is possible to let web servers handle static file serving.
-This should generally improve performance of static files serving (web servers are
-optimized for this) and in some cases permits controlled file serving (i.e. pause
+This should generally improve performance (web servers are optimized for this) and in some cases permits controlled file serving (i.e. pause
 and resume downloads).
 
-.. note :: Notice that currently this feature can be activated only for local files, i.e. files inside data directory and local mounts. Controlled file serving does not work for generated zip files. This is due to how temporary files are created. Also it has **never been tested under lighttpd** but its configuration should be the same as Apache
+.. note :: This feature can currently only be activated for local files, i.e. files inside the **data/** directory and local mounts. Controlled file serving **does not work for generated zip files**. This is due to how temporary files are created. Also it has **never been tested under lighttpd** but its configuration should be the same as Apache
 
 Apache2 (X-Sendfile)
 --------------------
 It is possible to let Apache handle static file serving via `mod_xsendfile <https://tn123.org/mod_xsendfile/>`_.
 
-**Installation:**
+Installation
+~~~~~~~~~~~~
+On Debian and Ubuntu systems use:
 
-On Debian and Ubuntu systems that is
+.. code-block:: bash
 
-::
-    
    apt-get install libapache2-mod-xsendfile
 
 
-**Configuration:**
-
-Configuration of mod_xsendfile for ownCloud depends on its version. 
+Configuration
+~~~~~~~~~~~~~
+Configuration of mod_xsendfile for ownCloud depends on its version.
 For versions below 0.10 (Debian squeeze ships with 0.9)
 
-::
+.. code-block:: xml
 
     <Directory /var/www/owncloud>
         ...
@@ -36,7 +35,7 @@ For versions below 0.10 (Debian squeeze ships with 0.9)
 
 For versions >=0.10 (e.g. Ubuntu 12.10)
 
-::
+.. code-block:: xml
 
     <Directory /var/www/owncloud>
         ...
@@ -54,17 +53,15 @@ For versions >=0.10 (e.g. Ubuntu 12.10)
 
 Nginx (X-Accel-Redirect)
 ------------------------
-Nginx supports handling of static files differently from Apache. Documentation can be found `here`__ and `here`__. The header used by Nginx is X-Accel-Redirect.
+Nginx supports handling of static files differently from Apache. Documentation can be found in the Nginx Wiki section `Mod X-Sendfile <http://wiki.nginx.org/XSendfile>`_ and section `X-Accell <http://wiki.nginx.org/X-accel>`_. The header used by Nginx is X-Accel-Redirect.
 
-**Installation:**
-
+Installation
+~~~~~~~~~~~~
 X-Accel-Redirect is supported by default in Nginx and no additional operation should be needed to install it.
 
-**Configuration:**
-
-Configuration is similar to Apache
-
-::
+Configuration
+~~~~~~~~~~~~~
+Configuration is similar to Apache::
 
     location ~ \.php$ {
         ...
@@ -83,15 +80,13 @@ Configuration is similar to Apache
 
 
 * **fastcgi_param MOD_X_ACCEL_REDIRECT_ENABLED:** tells ownCloud scripts that they should add the X-Accel-Redirect header when serving files
-* **internal location:** each directory that contains local user data should correspond to an internal location. In the example I have data inside:
 
-    #. /home/valerio/owncloud/data: ownCloud data directory
-    #. /home/valerio/data: a local mount
-    #. /tmp/oc-noclean: PHP temporary directory concatenated with *oc-noclean*. Temporary zip files will be created inside this directory when using X-Accel-Redirect
+* **internal location:** each directory that contains local user data should correspond to an internal location. In the example uses the following directories:
 
-How do I know it's working?
----------------------------
-You are still able to download stuff via the web interface and single, local file downloads can be paused and resumed :-).
+  * **/home/valerio/owncloud/data**: ownCloud data directory
+  * **/home/valerio/data**: a local mount
+  * **/tmp/oc-noclean**: PHP temporary directory concatenated with *oc-noclean*. Temporary zip files will be created inside this directory when using X-Accel-Redirect
 
-__ http://wiki.nginx.org/XSendfile
-__ http://wiki.nginx.org/X-accel
+How to check if it's working?
+-----------------------------
+You are still able to download stuff via the web interface and single, local file downloads can be paused and resumed.
