@@ -13,36 +13,54 @@ Whether using a mobile device, a workstation, or a web client, ownCloud provides
 
 Webinterface
 ============
+This chapter contains a general overview how you access ownCloud from a Browser like Firefox, Chrome or Internet Explorer
+
 * :doc:`webinterface`
 
 Files & Synchronization
 =======================
+This chapter contains information about accessing your files.
+
 * :doc:`files/files`
 * :doc:`files/versioncontrol`
+* :doc:`files/connecting_webdav`
+
+Instructions on how to sync your files with your devices
+
 * :doc:`files/sync`
 * :doc:`files/sync_ios`
 * :doc:`files/sync_kde`
 * :doc:`files/sync_osx`
-* :doc:`files/connecting_webdav`
+
 
 Calendar
 ========
+Calendar web interface, export, import and synchronization.
+
 * :doc:`calendars`
 
 Contacts
 ========
+Contacts web interface, import and synchronization.
+
 * :doc:`contacts`
 
 Bookmarks
-========= 
+=========
+Web interface for managing your bookmarks.
+
 * :doc:`bookmarks`
 
 Mediaplayer
 ===========
+Web interface for playing music in your browser.
+
 * :doc:`mediaplayer`
 
-Export
+Backup
 ======
+Import and export your user account settings.
+
 * :doc:`migration`
 
 Indices and tables

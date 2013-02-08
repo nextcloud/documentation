@@ -7,8 +7,8 @@ Files & Synchronization
 
    files
    versioncontrol
+   connecting_webdav
    sync
    sync_ios
    sync_kde
    sync_osx
-   connecting_webdav

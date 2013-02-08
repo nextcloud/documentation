@@ -1,20 +1,30 @@
 Accessing your Files
 ====================
 
+Desktop (PC)
+------------
+Your ownCloud instance can be accessed on every platform via the web interface. There are also options to integrate it with your desktop.
 
-Desktop
--------
 
-Your ownCloud instance can be accessed on every platform via the web interface. There are also options to integrate it with your desktop:
 
-In most cases, accessing ownCloud using your file manager will be
-sufficient:
+Linux
+~~~~~
+The URL that you have to use to connect to the owncloud installation in nautilus is::
 
--  *Connect to Server...* `in your file manager`_:
-   ``webdav://ADDRESS/files/webdav.php``
+  dav://youraddress.com/files/webdav.php
 
--  Change the protocol to ``dav://`` in Nautilus or ``http://`` in
-      Finder
+.. image:: ../images/gnome3_nautilus_webdav.png
+
+MacOS
+~~~~~
+The URL that you have to use to connect to the owncloud installation in finder is::
+
+  http://youraddress.com/files/webdav.php
+
+Windows
+~~~~~~~
+For Windows a seperate webdav client is recommended to access the files from your server. Choose one from the `WebDav Project page <http://www.webdav.org/projects/>`_
+
 
 However, some applications only allow you to save to a local folder. To
 get around this issue, you can:
@@ -23,8 +33,7 @@ get around this issue, you can:
 
 + `Mount ownCloud to a local folder without sync`_
 
-The
-Desktop Syncing Client called Mirall is now released for Linux and
+The Desktop Syncing Client called Mirall is now released for Linux and
 Windows. You can follow the current changes at the `ownCloud Mirall
 repository`_. We work on porting this to Mac OS and packaging for all
 major linux distributions.
@@ -39,7 +48,7 @@ good (proprietary) app for `Android App`_ , `iPhone`_ & `BlackBerry`_.
 
 
 
-.. _in your file manager: http://en.wikipedia.org/wiki/Webdav#Implementations
+.. _in your file manager: http://en.wikipedia.org/wiki/Webdav#WebDAV_client_applications
 .. _Sync your ownCloud folders and local folders: http://owncloud.org/documentation/sync-clients/
 .. _Mount ownCloud to a local folder without sync: http://owncloud.org/use/webdav/
 .. _ownCloud Mirall repository: https://gitorious.org/owncloud/mirall
