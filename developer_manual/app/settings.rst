@@ -37,6 +37,8 @@ You'll need to give some information on your app for instance the name. To do th
 
   ?>
 
+.. _xml:
+
 The second place where app specifc information is stored is in :file:`appinfo/info.xml`
 
 .. code-block:: xml
@@ -50,7 +52,6 @@ The second place where app specifc information is stored is in :file:`appinfo/in
         <licence>AGPL</licence>
         <author>Your Name</author>
         <require>4</require>
-        <standalone/>
         <types>
             <filesystem/>
         </types>

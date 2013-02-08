@@ -85,18 +85,18 @@ Now change into your app directory::
 
 Modfiy Advanced Apptemplate
 ---------------------------
-Certain things are still apptemplate specific and you will have to convert them to match your app.
-
-.. todo::
-
-  Provide some sed commands for simple transformation
+You will want to replace the boilerplate code in the Apptemplate.
 
 The following things will need to be changed:
 
 * In every file: AGPL Headers
 * In every file: **namespace OCA\\AppTemplateAdvanced** to **namespace OCA\\YourAppName**
 * :file:`dependencyinjection/dicontainer.php`: The **parent::__construct('apptemplateadvanced')** to **parent::__construct('yourappname')**
-* :file:`appinfo/info.xml`: Your data
+* :file:`appinfo/info.xml`: :ref:`your personal settings <xml>`
 * :file:`appinfo/app.php`: the correct navigation settings
 * :file:`appinfo/routes.php`: the name of the routes
 * :file:`coffee/app.coffee`: the route names
+
+.. todo::
+
+  Provide some sed commands for simple transformation
