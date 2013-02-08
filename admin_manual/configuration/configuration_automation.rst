@@ -2,18 +2,12 @@ Automatic Configuration
 =======================
 
 If you need to install ownCloud on multiple servers you normally do not want
-to set-up each instance separately as described in the **Database Configuration**
-chapter (:doc:`./configuration_database`). For this reason the automatic
-configuration feature has been introduced.
+to set-up each instance separately as described in the :doc:`configuration_database`. For this reason the automatic configuration feature has been introduced.
 
-To take advance of this feature you need to create a configuration file, called
-:file:`../owncloud/config/autoconfig.php` and set the parameters as required. The
-file will automatically be removed after the initial configuration has been
-applied.
+To take advantage of this feature you need to create a configuration file, called :file:`../owncloud/config/autoconfig.php` and set the parameters as required. The file will automatically be removed after the initial configuration has been applied.
 
 Parameters
 ----------
-
 You need to keep in mind that two parameters are named differently in this
 configuration file compared to the normal :file:`config.php`.
 
@@ -27,7 +21,6 @@ configuration file compared to the normal :file:`config.php`.
 
 SQLite Database
 ~~~~~~~~~~~~~~~
-
 .. code-block:: php
 
     <?php
@@ -37,12 +30,10 @@ SQLite Database
       "dbtableprefix" => "",
       "directory"     => "/www/htdocs/owncloud/data",
     );
-    ?>
 
 MySQL Database
 ~~~~~~~~~~~~~~
-
-Keep in mind that the automatic configuration does not unburden you from creating the database user and database in advance, as described in the **Database Configuration** chapter (:doc:`./configuration_database`).
+Keep in mind that the automatic configuration does not unburden you from creating the database user and database in advance, as described in :doc:`configuration_database`.
 
 .. code-block:: php
 
@@ -58,11 +49,10 @@ Keep in mind that the automatic configuration does not unburden you from creatin
       "adminpass"     => "root-password",
       "directory"     => "/www/htdocs/owncloud/data",
     );
-    ?>
 
 PostgreSQL Database
 ~~~~~~~~~~~~~~~~~~~
-Keep in mind that the automatic configuration does not unburden you from  creating the database user and database in advance, as described in the **Database Configuration** chapter (:doc:`./configuration_database`).
+Keep in mind that the automatic configuration does not unburden you from creating the database user and database in advance, as described in :doc:`configuration_database`.
 
 .. code-block:: php
 
@@ -78,4 +68,3 @@ Keep in mind that the automatic configuration does not unburden you from  creati
       "adminpass"     => "root-password",
       "directory"     => "/www/htdocs/owncloud/data",
     );
-    ?>
