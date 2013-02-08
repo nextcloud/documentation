@@ -44,7 +44,7 @@ General instructions how to build your apps using the AppFramework app.
 If the app is finished, it can be published in the `ownCloud app store <http://apps.owncloud.com/>`_
 
 * :doc:`app/gettingstarted`
-* :doc:`app/settings` | `Pimple`_
+* :doc:`app/settings`
 * :doc:`app/classloader`
 * :doc:`app/api` | :php:class:`OCA\\AppFramework\\Core\\API`
 
@@ -52,7 +52,7 @@ Routing
 -------
 Routing connects URLs with the controller methods. 
 
-* :doc:`app/routes` | `Symfony Routing`_
+* :doc:`app/routes`
 * :php:class:`OCA\\AppFramework\\App`
 
 Controllers
@@ -72,7 +72,7 @@ Templates
 ---------
 Use templates for managing HTML code.
 
-* :doc:`app/templates` | `Twig Templates`_ | :php:class:`OC_Template`
+* :doc:`app/templates` | :php:class:`OC_Template`
 * :php:class:`OCA\\AppFramework\\Http\\TemplateResponse`
 
 
@@ -85,7 +85,7 @@ Testing
 -------
 Automatically run unittests to prevent regressions.
 
-* :doc:`app/unittesting` | `PHPUnit`_
+* :doc:`app/unittesting`
 * :php:class:`OCA\\AppFramework\\Utility\\ControllerTestUtility`
 
 Middleware

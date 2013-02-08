@@ -54,8 +54,6 @@ The second place where app specifc information is stored is in :file:`appinfo/in
         <types>
             <filesystem/>
         </types>
-        <shipped>true</shipped>
-        <default_enable/>
   </info>
 
 ownCloud allows to specify four kind of "types" in the file:`appinfo/info.xml` of a app. The
