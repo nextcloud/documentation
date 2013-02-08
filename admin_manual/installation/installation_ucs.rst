@@ -14,9 +14,9 @@ multi-user installations, MySQL is the only way first of all. As of UCS
 install it first and probably deactivate the unmaintained repository
 eventually::
 
-    # ucr set repository/online/unmaintained="yes"
-    # univention-install mysql-server
-    # ucr set repository/online/unmaintained="no"
+  ucr set repository/online/unmaintained="yes"
+  univention-install mysql-server
+  ucr set repository/online/unmaintained="no"
 
 .. note:: If MySQL is already installed and/or a password for the user root is set, please make sure it is saved in /etc/mysql.secret, otherwise you will experience problems.
 
@@ -25,9 +25,9 @@ to enable the unmaintained repository for MySQL. You can skip the rest of this
 section and read on at :ref:`preconfig`. ownCloud has further dependencies,
 which all belong to the maintained repository. Install them as well::
 
-    # univention-install php5-mysql php5-ldap php5-gd
+  univention-install php5-mysql php5-ldap php5-gd
 
-The package manager is going to remove ``libgd2-noxpm``, which is not a problem
+The package manager is going to remove **libgd2-noxpm**, which is not a problem
 and nothing to worry about.
 
 .. _preconfig:
@@ -72,8 +72,11 @@ and assign your required value.
 
 
 If you want to override the default settings, simply create the key in
-question in the UCR and assign your required value, for example
-``ucr set owncloud/user/enabled=1`` or via UMC:
+question in the UCR and assign your required value, for example::
+
+  ucr set owncloud/user/enabled=1
+
+or via UMC:
 
 .. image:: /images/ucsint2.png
 
@@ -104,14 +107,14 @@ owncloud-schema as well.
 
 ::
 
-    # univention-install owncloud
+  univention-install owncloud
 
 If you want to make use of commercially unsupported packages, install
 the unsupported package:
 
 ::
 
-    # univention-install owncloud-unsupported
+  univention-install owncloud-unsupported
 
 Manually by download
 """"""""""""""""""""
@@ -122,31 +125,25 @@ package owncloud-unsupported is optional):
 
 ::
 
-    # wget http://download.owncloud.com/download/ucs/owncloud_2012.0.1-0_all.deb
-    # wget http://download.owncloud.com/download/ucs/owncloud-schema_2012.0.3-0_all.deb
-    # wget http://download.owncloud.com/download/ucs/owncloud-unsupported_2012.0.3-0_all.deb
-    # dpkg -i owncloud*.deb
+    wget http://download.owncloud.com/download/ucs/owncloud_2012.0.1-0_all.deb
+    wget http://download.owncloud.com/download/ucs/owncloud-schema_2012.0.3-0_all.deb
+    wget http://download.owncloud.com/download/ucs/owncloud-unsupported_2012.0.3-0_all.deb
+    dpkg -i owncloud*.deb
 
 ownCloud will be configured to fully work with LDAP. There is only one
-local admin user “owncloudadmin”, you can find his password in
-``/etc/owncloudadmin.secret``. Use this account, if you want to change basic
+local admin user “owncloudadmin”, you can find his password in :file:`/etc/owncloudadmin.secret`. Use this account, if you want to change basic
 ownCloud settings.
 
 Postconfiguration (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In the installation process a virtual host is set up (Apache is required
-therefore). If you want to modify the settings, edit
-``/etc/apache2/sites-available/owncloud`` and restart the web server. You
-might want to do it to enable HTTPS connections.Besides that, you can
-edit the ``.htaccess-File in /var/www/owncloud/``. In the latter file there
-are also the PHP limits for file transfer specified.
+therefore). If you want to modify the settings, edit :file:`/etc/apache2/sites-available/owncloud` and restart the web server. You might want to do it to enable HTTPS connections.Besides that, you can edit the **.htaccess-File in /var/www/owncloud/**. In the latter file there are also the PHP limits for file transfer specified.
 
 Using ownCloud
 ^^^^^^^^^^^^^^
-
 If you decided to enable every user by default to use ownCloud, simply
-open up ``http://myserver.com/owncloud/`` and log in with your LDAP
+open up http://myserver.com/owncloud/ and log in with your LDAP
 credentials and enjoy.
 
 If you did not, go to the UMC and enable the users who shall have access
@@ -155,11 +152,7 @@ your LDAP credentials.
 
 .. image:: /images/ucsint1.png
 
-Updating users can also be done by the script
-``/usr/share/owncloud/update-users.sh`` . It takes the following UCR variables
-as parameters: ``owncloud/user/enabled`` for enabling or disabling,
-``owncloud/user/quota`` as the Quota value and ``owncloud/join/users/filter`` as
-LDAP filter to select the users to update.
+Updating users can also be done by the script :file:`/usr/share/owncloud/update-users.sh` . It takes the following UCR variables as parameters: **owncloud/user/enabled** for enabling or disabling, **owncloud/user/quota** as the Quota value and **owncloud/join/users/filter** as LDAP filter to select the users to update.
 
 Groups 2012.4.0.4
 """""""""""""""""
@@ -172,10 +165,8 @@ enabled and disabled via UCM as shown in the screen shot below.
 
 .. image:: /images/ucsint.png
 
-Another way to enable or disable groups is to use the script
-``/usr/share/owncloud/update-groups.sh``. Currently, it takes an argument
-which can be 1=enable groups or 0=disable groups. The filter applied is
-being taken from the UCR variable ``owncloud/join/groups/filter``. In case it is empty , a message will be displayed.
+Another way to enable or disable groups is to use the script :file:`/usr/share/owncloud/update-groups.sh`. Currently, it takes an argument
+which can be 1=enable groups or 0=disable groups. The filter applied is being taken from the UCR variable **owncloud/join/groups/filter**. In case it is empty , a message will be displayed.
 
 
 .. _from our website: https://owncloud.com/download

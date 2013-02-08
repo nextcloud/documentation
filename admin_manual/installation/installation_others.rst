@@ -10,13 +10,11 @@ Nginx Configuration
 -------------------
 
 -  You need to insert the following code into
-   ``your nginx config file.``
--  Adjust ``server_name``, ``root``, ``ssl_certificate`` and
-   ``ssl_certificate_key`` to suit your needs.
--  Make sure your SSL certificates are readable by the server (see
-   `http://wiki.nginx.org/HttpSslModule`_).
+   **your nginx config file.**
+-  Adjust **server_name**, **root**, **ssl_certificate** and **ssl_certificate_key** to suit your needs.
+-  Make sure your SSL certificates are readable by the server (see `http://wiki.nginx.org/HttpSslModule`_).
 
-::
+.. code-block:: python
 
     # redirect http to https.
     server {
@@ -64,18 +62,17 @@ Nginx Configuration
       }
     }
 
-.. note:: You can use Owncloud without SSL/TLS support, but we strongly
-          encourage you not to do that:
+.. note:: You can use Owncloud without SSL/TLS support, but we strongly encourage you not to do that:
 
 -  Remove the server block containing the redirect
--  Change ``listen 443 ssl`` to ``listen 80;``
--  Remove ``ssl_certificate`` and ``ssl_certificate_key``.
--  Remove ``fastcgi_params HTTPS on;``
+-  Change **listen 443 ssl** to **listen 80;**
+-  Remove **ssl_certificate** and **ssl_certificate_key**.
+-  Remove **fastcgi_params HTTPS on;**
 
 .. note:: If you want to effectively increase maximum upload size you will also
-          have to modify your ``php-fpm configuration`` (``usually at
-          /etc/php5/fpm/php.ini``) and increase ``upload_max_filesize`` and
-          ``post_max_size`` values. You’ll need to restart php5-fpm and nginx
+          have to modify your **php-fpm configuration** (**usually at
+          /etc/php5/fpm/php.ini**) and increase **upload_max_filesize** and
+          **post_max_size** values. You’ll need to restart php5-fpm and nginx
 	  services in order these changes to be applied.
 
 Lighttpd Configuration
@@ -84,11 +81,7 @@ Lighttpd Configuration
 This assumes that you are familiar with installing PHP application on
 lighttpd.
 
-It is important to note that the ``.htaccess`` files used by ownCloud to protect
-the ``data`` folder are ignored by lighttpd, so you have to secure it by yourself,
-otherwise your ``owncloud.db``` database and user data are publicly readable even if
-directory listing is off. You need to add two snippets to your lighttpd configuration
-file:
+It is important to note that the **.htaccess** files used by ownCloud to protect the **data** folder are ignored by lighttpd, so you have to secure it by yourself, otherwise your **owncloud.db** database and user data are publicly readable even if directory listing is off. You need to add two snippets to your lighttpd configuration file:
 
 Disable access to data folder::
 
@@ -105,11 +98,13 @@ Disable directory listing::
 Yaws Configuration
 ------------------
 
-This should be in your ``yaws_server.conf``. In the configuration file, the
-``dir_listings = false`` is important and also the redirect from ``/data``
+This should be in your **yaws_server.conf**. In the configuration file, the
+**dir_listings = false** is important and also the redirect from **/data**
 to somewhere else, because files will be saved in this directory and it
 should not be accessible from the outside. A configuration file would look
-like this::
+like this
+
+.. code-block:: xml
 
     <server owncloud.myserver.com/>
             port = 80
@@ -125,7 +120,7 @@ like this::
             </redirect>
     </server>
 
-The apache ``.htaccess`` file that comes with ownCloud is configured to
+The apache **.htaccess** file that comes with ownCloud is configured to
 redirect requests to nonexistent pages. To emulate that behaviour, you
 need a custom error handler for yaws. See this `github gist for further
 instructions`_ on how to create and compile that error handler.
@@ -133,8 +128,8 @@ instructions`_ on how to create and compile that error handler.
 Hiawatha Configuration
 ----------------------
 
-Add ``WebDAVapp = yes`` to the ownCloud virtual host. Users accessing
-WebDAV from MacOS will also need to add ``AllowDotFiles = yes``.
+Add **WebDAVapp = yes** to the ownCloud virtual host. Users accessing
+WebDAV from MacOS will also need to add **AllowDotFiles = yes**.
 
 Disable access to data folder::
 
