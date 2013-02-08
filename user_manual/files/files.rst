@@ -91,9 +91,13 @@ MacOS
 -----
 In the Finder, choose **Go > Connect to Server,** type the address of the server in the **Server Address** field, and click **Connect**.
 
+.. image:: ../images/osx_webdav1.png
+
 The URL that you have to use to connect to the owncloud installation in finder is::
 
   http://youraddress.com/files/webdav.php
+
+.. image:: ../images/osx_webdav2.png
 
 For details, check the respective `vendor documentation`_ at the Apple website.
 
