@@ -1,11 +1,8 @@
 iOS - Synchronize iPhone/iPad
 =============================
 
-
-
-
-Synchronizing the Calendar
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Calendar
+--------
 
 #. Open the settings application.
 #. Select Mail, Contacts, Calendars.
@@ -28,8 +25,9 @@ Synchronizing the Calendar
 
 Your calendar should now be visible in the Calendar application
 
-Synchronizing the Address book
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Address book
+------------
 
 #. Open the settings application.
 #. Select Mail, Contacts, Calendars.
@@ -52,8 +50,4 @@ Synchronizing the Address book
 
 Now should now find your contacts in the address book of your
 iPhone.Problems have been reported for iOS 4.X. A possible solution is
-at the `forum`_. 
-
-
-
-.. _forum: http://forum.owncloud.org/viewtopic.php?f=3&t=71&p=2211#p2197
+at the `forum <http://forum.owncloud.org/viewtopic.php?f=3&t=71&p=2211#p2197>`_.

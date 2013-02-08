@@ -14,8 +14,7 @@ ownCloud documentation contents
 
     webinterface
     files/index
-    calendars
-    contacts
+    pim/index
     bookmarks
     mediaplayer
     migration

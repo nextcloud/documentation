@@ -19,7 +19,7 @@ So first well check out how to import all the VCF files as they are a lot
 more faster way of creating contacts.
 Just below the contact list, 3 buttons: The middle one let you upload files.
 
-.. image:: images/contact_bottombar.jpg
+.. image:: ../images/contact_bottombar.jpg
 
 
 Once you've clicked it, the upload window let you choose your files.
@@ -31,13 +31,13 @@ Keep pressing CTRL and select the files to upload.
 After you are done just click on the open button
 After the upload it should look something like this in which all the names and contacts will be sorted alphabetically
 
-.. image:: images/contact_vcfpick.jpg
+.. image:: ../images/contact_vcfpick.jpg
 
 Then, the interface ask you where to put your imported contacts.
 You have the ability to choose an existing addressbook or to create a new one.
 Then click on "OK" and that's all for the import of contacts.
 
-.. image:: images/contact_import.jpg
+.. image:: ../images/contact_import.jpg
 
 Create contacts manually
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -50,7 +50,7 @@ the name, the address, the e-mail, the telephone nr, ...
 Just click on a field and start typing the information.
 You can use the "Add Field" button to add another types of information for this contact.
 
-.. image:: images/contact_emptycontact.jpg
+.. image:: ../images/contact_emptycontact.jpg
 
 When you want to remove an information of your contact, just click on little delete icon
 at the right of the field you want to remove.
@@ -61,7 +61,7 @@ Adding picture to the contact
 
 There are two methods in which you can give a picture id to the specific contact
 
-.. image:: images/contact_picture.jpg
+.. image:: ../images/contact_picture.jpg
 
 1) **Direct upload**
 2) **Select pics already uploaded in ownCloud files.**
@@ -69,7 +69,7 @@ There are two methods in which you can give a picture id to the specific contact
 After you have selected the picture for the contact you get
 an option to crop the picture to suit your requirements
 
-.. image:: images/contact_crop.jpg
+.. image:: ../images/contact_crop.jpg
 
 You can crop the picture however you wish and then press OK.
 
@@ -85,7 +85,7 @@ When you click on the third button of the bottom bar,
 you will have access to the application's settings.
 Then, press on the "More button" to access the options of your Addressbooks.
 
-.. image:: images/contact_del_ab.jpg
+.. image:: ../images/contact_del_ab.jpg
 
 You have there the ability to add, delete, download or share your addressbooks.
 Hover your cursor on every icon to see what they mean.
@@ -101,11 +101,11 @@ Syncing with Android
 ~~~~~~~~~~~~~~~~~~~~
 1) Install cardDav- Sync free from Google play store by visiting this link-  https://play.google.com/store/apps/details?id=org.dmfs.carddav.sync
 2) This app supports auto- configuration which is a Boon- after installing visit this link- carddavs://owncloud.example.net/remote.php/carddav/  to auto configure the app.
-3) Enter your login details 
+3) Enter your login details
 4) After the app has checked your login details you may just select- Sync server to phone option
 5) That's it there is nothing else to do for Android :)
 
-.. image:: images/contact_syncopt.jpg
+.. image:: ../images/contact_syncopt.jpg
 
 Syncing your IOS device
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -137,5 +137,3 @@ Other Syncing options provided by ownCloud
 1. For android you may use their official android app-  https://owncloud.com/overview/mobileapps
 
 2. And for IOS(Iphone and Ipad) use their app - https://owncloud.com/overview/mobileapps
-
-

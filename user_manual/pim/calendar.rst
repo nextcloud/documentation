@@ -1,10 +1,10 @@
-Calendars
-=========
+Using the Calendar App
+======================
 
 Creating a calendar
 -------------------
 
-.. figure:: images/calendar_manage-calendars.png
+.. figure:: ../images/calendar_manage-calendars.png
    :scale: 30
 
 If you use the calendar the first time, there will be already a calendar called
@@ -28,7 +28,7 @@ Kontact, Evolution, Thunderbird using the following URL::
 To use the ownCloud calendar with Apple iCal you will need to use the following
 URL, including the trailing slash::
 
-  http://ADDRESS/remote.php/caldav/principals/username/ 
+  http://ADDRESS/remote.php/caldav/principals/username/
 
 Mozilla Lightning users need to this URL scheme::
 
@@ -36,7 +36,7 @@ Mozilla Lightning users need to this URL scheme::
 
 .. note:: The calendar name must alway be specified in URL-encoding_.
 
-.. figure:: images/calendar_caldav.png
+.. figure:: ../images/calendar_caldav.png
 
    Example for a simple calendar: The default calendar is always
    called "defaultcalendar", and the users' name here is "test".
@@ -54,7 +54,7 @@ To create an event just click on the date in the month view or choose the
 timeframe in the weekview. In the dialog which will appear you can enter your
 information like title, category, etc.
 
-.. figure:: images/calendar_createevent.png
+.. figure:: ../images/calendar_createevent.png
    :scale: 50
 
 With the advanced options you can set the
@@ -70,7 +70,7 @@ Exporting / Importing events
 Export
 ~~~~~~
 
-.. figure:: images/calendar_export.png
+.. figure:: ../images/calendar_export.png
    :scale: 50
 
 You can export either a single event or a whole calendar. If you want to export
@@ -81,7 +81,7 @@ described in the chapter "Creating a calendar".
 Import
 ~~~~~~
 
-.. figure:: images/calendar_import.png
+.. figure:: ../images/calendar_import.png
    :scale: 50
 
 Import your calendar as ical file using the files app. Just click on the
@@ -89,12 +89,12 @@ calendar file to open the import dialog. You can import the calendar into a new
 calendar or into an already existing calendar.
 
 .. note:: If the progressbar does not work properly, the folder
-          ``apps/calendar/import_tmp/`` has probably no write permission. 
+          ``apps/calendar/import_tmp/`` has probably no write permission.
 
 Why is the calendar app asking for my current location?
 -------------------------------------------------------
 
-.. figure:: images/calendar_newtimezone1.png
+.. figure:: ../images/calendar_newtimezone1.png
    :scale: 50
 
 The calendar needs your current position in order to detect your timezone.

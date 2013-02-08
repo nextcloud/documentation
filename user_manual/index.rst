@@ -22,28 +22,18 @@ Files & Synchronization
 This chapter contains information about accessing your files.
 
 * :doc:`files/files`
-* :doc:`files/versioncontrol`
-* :doc:`files/connecting_webdav`
-
-Instructions on how to sync your files with your devices
-
 * :doc:`files/sync`
-* :doc:`files/sync_ios`
-* :doc:`files/sync_kde`
-* :doc:`files/sync_osx`
+* :doc:`files/versioncontrol`
 
+Calendar & Calendar
+===================
+Contacts & Calendar web interface, export, import and synchronization.
 
-Calendar
-========
-Calendar web interface, export, import and synchronization.
-
-* :doc:`calendars`
-
-Contacts
-========
-Contacts web interface, import and synchronization.
-
-* :doc:`contacts`
+* :doc:`pim/calendar`
+* :doc:`pim/contacts`
+* :doc:`pim/sync_ios`
+* :doc:`pim/sync_kde`
+* :doc:`pim/sync_osx`
 
 Bookmarks
 =========
