@@ -24,6 +24,7 @@ You'll need to give some information on your app for instance the name. To do th
     'order' => 74,
 
     // the route that will be shown on startup
+    // the routes have to be defined inside the appinfo/routes.php file
     'href' => \OC_Helper::linkToRoute('yourappname_index'),
 
     // the icon that will be shown in the navigation
