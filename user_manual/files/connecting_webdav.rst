@@ -62,7 +62,7 @@ drive to map ownCloud to. Finally, enter the address to your ownCloud instance, 
 for an SSL protected server. Check ``Reconnect at logon`` to make this mapping persistent
 across reboots. If you want to connect as another user, check ``Connect using different credentials``.
 
-.. figure:: images/explorer_webdav.png
+.. figure:: ../images/explorer_webdav.png
    :scale: 80%
 
    Mapping WebDAV on Windows Explorer.
@@ -155,7 +155,7 @@ Assuming your owncloud instance is installed at ``http://www.yourserver.com/ownc
 Ubuntu/Gnome (Nautilus)
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-.. figure:: images/nautilus_webdav.png
+.. figure:: ../images/nautilus_webdav.png
 
    Nautilus WebDAV mounting dialog
 
