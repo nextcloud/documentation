@@ -58,14 +58,19 @@ Set the Directory Permissions
 
 The owner of your webserver must own the apps/, data/ and config/ directories
 in your ownCloud install. You can do this by running the following command for
-the apps, data and config directories:
+the apps, data and config directories.
 
-::
+For debian based distros like Ubuntu, Debian or Linux Mint and Gentoo use::
 
   chown -R www-data:www-data /path/to/your/owncloud/install/data
 
-Replace **www-data:www-data** with the user and group of the owner of your
-webserver.
+For ArchLinux use::
+
+  chown -R http:http /path/to/your/owncloud/install/data
+
+Fedora users should use::
+
+  chown -R apache:apache /path/to/your/owncloud/install/data
 
 .. note:: The **data/** directory will only be created after setup has run (see below) and is not present by default in the tarballs.
 
@@ -76,13 +81,11 @@ If you are running the apache webserver, it is recommended that you enable
 **.htaccess** files as ownCloud uses them to enhance security and allows you to
 use webfinger. To enable .htaccess files you need to ensure that
 **AllowOverride** is set to **All** in the **Directory /var/www/** section of
-your virtual host file. This is usually in :file:`/etc/apache2/sites-enabled/000-default`.  You should also run::
+your virtual host file. This is usually in :file:`/etc/apache2/sites-enabled/000-default`.  If your distro supports **a2enmod** run the following commands::
 
 	a2enmod rewrite
 
-and::
-
-	a2enmod headers
+In distros that do not come with a2enmod the :file:`/etc/httpd/httpd.conf` needs to be changed to enable **mod_rewrite**
 
 Then restart apache. For Ubuntu systems (or distros using updstart) use::
 
