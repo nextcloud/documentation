@@ -17,7 +17,7 @@ ownCloud documentation contents
     core/index
     classes/index
 
-Indices, glossary and tables
-============================
+Indices and tables
+==================
 
 * :ref:`genindex`

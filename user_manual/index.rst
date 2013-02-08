@@ -34,7 +34,7 @@ Contacts
 * :doc:`contacts`
 
 Bookmarks
-=========
+========= 
 * :doc:`bookmarks`
 
 Mediaplayer
@@ -45,3 +45,7 @@ Export
 ======
 * :doc:`migration`
 
+Indices and tables
+==================
+
+* :ref:`genindex`
