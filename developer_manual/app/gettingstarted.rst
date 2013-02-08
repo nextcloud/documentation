@@ -10,6 +10,18 @@ This tutorial uses the App Framework app, a small framework that makes developin
 
 Getting Started
 ---------------
+There are two ways to obtain ownCloud: 
+
+* Using the stable version
+* Using the developement version from `GitHub`_
+
+Using ownCloud stable
+~~~~~~~~~~~~~~~~~~~~~
+`Install the current version of ownCloud <http://doc.owncloud.org/server/5.0/admin_manual/installation.html>`_ and create a new directory in the **apps/** folder.  
+
+Using ownCloud developement version
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 ownCloud uses `GitHub`_ for developing its code. To be able to participate or check out the code You will have to sign up on `GitHub`_ and install Git.
 
 If you need help with Git, contact the `GitHub Help Page`_.
@@ -29,7 +41,7 @@ Now restart your apache server and get ready to `set up ownCloud`_ at http://loc
 
 Enable debugging mode
 ---------------------
-To disable JavaScript and CSS caching you'll have to turn on debugging in :file:`/var/www/owncloud/config/config.php` by adding this to the end of the file::
+To disable JavaScript and CSS caching you'll have to turn on debugging in :file:`owncloud/config/config.php` by adding this to the end of the file::
 
   DEFINE('DEBUG', true);
 
@@ -43,9 +55,9 @@ To disable JavaScript and CSS caching you'll have to turn on debugging in :file:
 
 Create your app
 ---------------
-The best way to create your application is to simply modify the `apptemplateadvanced app <https://github.com/owncloud/apps/tree/master/apptemplateadvanced>`_.
+The best way to create your application is to simply modify the `Advanced Apptemplate <https://github.com/owncloud/apps/tree/master/apptemplateadvanced>`_.
 
-To do that execute:
+To do that simply make a copy and :ref:`modify <modify>` the Advanced Apptemplate:
 
 .. code-block:: bash
 
@@ -60,7 +72,7 @@ To enable your app, simply link it into the apps directory:
 
   sudo ln -s /var/www/apps/yourappname /var/www/owncloud/apps/yourappname
 
-or create a second apps directory in your :file:`/var/www/owncloud/config/config.php` (see :doc:`../core/configfile`)
+or create a second apps directory in your :file:`owncloud/config/config.php` (see :doc:`../core/configfile`)
 
 .. note:: Don't forget to enable your app and the App Framework app on the apps settings page!
 
@@ -69,8 +81,10 @@ Now change into your app directory::
   cd /var/www/apps/yourappname
 
 
-Adjust apptemplate
-------------------
+.. _modify:
+
+Modfiy Advanced Apptemplate
+---------------------------
 Certain things are still apptemplate specific and you will have to convert them to match your app.
 
 .. todo::
