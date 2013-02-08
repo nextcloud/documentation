@@ -28,6 +28,8 @@ Getting Help
 
 General
 =======
+This chapter contains general guidelines and tutorials about
+
 * :doc:`general/codingguidelines`
 * :doc:`general/codereviews`
 * :doc:`general/debugging`
@@ -37,8 +39,9 @@ General
 
 App Developement
 ================
+General instructions how to build your apps using the AppFramework app. 
 
-* `Publish your app <http://apps.owncloud.com/>`_
+If the app is finished, it can be published in the `ownCloud app store <http://apps.owncloud.com/>`_
 
 * :doc:`app/gettingstarted`
 * :doc:`app/settings` | `Pimple`_
@@ -47,20 +50,28 @@ App Developement
 
 Routing
 -------
+Routing connects URLs with the controller methods. 
+
 * :doc:`app/routes` | `Symfony Routing`_
 * :php:class:`OCA\\AppFramework\\App`
 
 Controllers
 -----------
+Controllers run the database queries, pass variables to templates and return responses like JSON or templates.
+
 * :doc:`app/controllers` | :php:class:`OCA\\AppFramework\\Controller\\Controller`
 
 Database Access
 ---------------
+Encapsulate SQL queries into objects to be able to change them easily.
+
 * :doc:`app/database` | :php:class:`OCA\\AppFramework\\Db\\Mapper`
 * :doc:`app/data-migration`
 
 Templates
 ---------
+Use templates for managing HTML code.
+
 * :doc:`app/templates` | `Twig Templates`_ | :php:class:`OC_Template`
 * :php:class:`OCA\\AppFramework\\Http\\TemplateResponse`
 
@@ -72,17 +83,22 @@ JavaScript & CSS
 
 Testing
 -------
+Automatically run unittests to prevent regressions.
+
 * :doc:`app/unittesting` | `PHPUnit`_
 * :php:class:`OCA\\AppFramework\\Utility\\ControllerTestUtility`
 
 Middleware
 ----------
+Execute code before or after the controller like Security checks.
+
 * :doc:`app/middleware` | :php:class:`OCA\\AppFramework\\Middleware\\Middleware`
 * :php:class:`OCA\\AppFramework\\Middleware\\Security\\SecurityMiddleware`
 * :php:class:`OCA\\AppFramework\\Middleware\\Twig\\TwigMiddleware`
 
 ownCloud Interfaces
 -------------------
+ownCloud APIs that are ready to be built into the app
 
 * :doc:`app/access`
 * :doc:`app/externalapi`
@@ -94,6 +110,8 @@ ownCloud Interfaces
 
 Core Developement
 =================
+Core related docs
+
 * :doc:`core/translation`
 * :doc:`core/unit-testing`
 * :doc:`core/theming`
