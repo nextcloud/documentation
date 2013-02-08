@@ -10,8 +10,8 @@ logging in with LDAP credentials including:
 * Versioning, external Storages and all other ownCloud Goodies
 
 To connect to an LDAP server the configuration needs to be set up properly.
-Once the LDAP backend is activated (Settings→Apps, choose ``LDAP user and group
-backend``, click on ``Enable``) the configuration can be found on
+Once the LDAP backend is activated (Settings→Apps, choose **LDAP user and group
+backend**, click on **Enable**) the configuration can be found on
 Settings→Admin. Read on for a detailed description of the configuration fields.
 
 Basic Settings
@@ -34,7 +34,7 @@ Settings Details
 ~~~~~~~~~~~~~~~~
 
 Host:
-  The host name of the LDAP server. It can also be a ``ldaps://`` URI, for
+  The host name of the LDAP server. It can also be a **ldaps://** URI, for
   instance.
 
   * *Example: directory.my-company.com*
@@ -52,28 +52,28 @@ User DN:
   special system user for ownCloud.
 
   * *Example: uid=owncloudsystemuser,cn=sysusers,dc=my-company,dc=com*
-  * formerly ``Name`` in oC 4.0
+  * formerly **Name** in oC 4.0
 
 Password:
   The password for the user given above. Empty for anonymous access.
 
 User Login Filter:
-  The filter to use when a users tries to login. Use ``%uid`` as placeholder
+  The filter to use when a users tries to login. Use **%uid** as placeholder
   for the user name. Note, that login applies this filter only, but not User
   List Filter. This may change in future.
 
-  * Example (allows login with user name and email address): ``(|(uid=%uid)(email=$uid))``
+  * Example (allows login with user name and email address): **(|(uid=%uid)(email=$uid))**
 
 User List Filter:
   The filter to use when a search for users will be executed.
 
-  * Example: ``objectClass=posixAccount``
+  * Example: **objectClass=posixAccount**
 
 Group Filter:
   The filter to use when a search for groups will be executed. In
   case you do not want to use LDAP groups in ownCloud, leave it empty.
 
-  * Example: ``objectClass=posixGroup``
+  * Example: **objectClass=posixGroup**
 
 Advanced Settings
 -----------------
@@ -95,14 +95,14 @@ Port:
   from where all users can be reached. It needs to be given completely despite
   to the Base DN from the Basic settings.
 
-  * Example: ``cn=users,dc=my-company,dc=com``
+  * Example: **cn=users,dc=my-company,dc=com**
 
 Base Group Tree:
   The base DN of LDAP, from where all groups can be reached.
   It needs to be given completely despite to the Base DN from the Basic
   settings.
 
-  * Example: ``cn=groups,dc=my-company,dc=com``
+  * Example: **cn=groups,dc=my-company,dc=com**
 
 Group Member association:
   The attribute that is used to indicate group memberships, i.e. the attribute
@@ -129,10 +129,10 @@ Turn off SSL certificate validation:
 
 User Display Name Field:
   The attribute that should be used as ownCloud user name. ownCloud allows
-  a limited set of characters ``(a-zA-Z0-9.-_@)``, every other character
+  a limited set of characters **(a-zA-Z0-9.-_@)**, every other character
   will be replaced in ownCloud. Once a user name is assigned, it will not be
   changed, i.e. changing this value will only have effect to new LDAP users.
-  The default, uid, does not exist in AD, switch to ``cn``, for example,
+  The default, uid, does not exist in AD, switch to **cn**, for example,
   otherwise you will not see any users.
 
   *  Example: displayName
@@ -143,7 +143,7 @@ Group Display Name Field:
   replaced in ownCloud. Once a group name is assigned, it will not be changed,
   i.e. changing this value will only have effect to new LDAP groups.
 
-  * Example: ``cn``
+  * Example: **cn**
 
 Quota Attribute:
   ownCloud can read an LDAP attribute and set the user quota
@@ -195,7 +195,7 @@ In case you want to connect to a Windows AD, you must change some values in the 
 Testing the configuration
 -------------------------
 
-In this version we introduced the ``Test Configuration`` button on the bottom
+In this version we introduced the **Test Configuration** button on the bottom
 of the LDAP settings section. It will always check the values as currently
 given in the input fields. You do not need to save before testing. By clicking
 on the button, ownCloud will try to bind to the ownCloud server with the
@@ -206,8 +206,8 @@ settings currently given in the input fields. The response will look like this:
    Failure
 
 In case the configuration fails, you can see details in ownCloud's log, which
-is in the data directory and called ``owncloud.log`` or on the bottom the
-``Settings →  Admin page``. Unfortunately it requires a reload – sorry for the
+is in the data directory and called **owncloud.log** or on the bottom the
+**Settings →  Admin page**. Unfortunately it requires a reload – sorry for the
 inconvenience.
 
 .. figure:: ../images/ldap-settings-valid-oc45.png
