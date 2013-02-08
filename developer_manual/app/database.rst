@@ -122,7 +122,7 @@ Your database layer should go into the **db/** folder. It's recommended to split
   }
 
 
-All database queries for that object should be put into a mapper class. This follows the `data mapper pattern <http://www.martinfowler.com/eaaCatalog/dataMapper.html>`_. The mapper class could look like this (more method examples are in the **advancedapptemplate** app):
+All database queries for that object should be put into a mapper class. This follows the `data mapper pattern <http://www.martinfowler.com/eaaCatalog/dataMapper.html>`_. The mapper class could look like this (more method examples are in the **Apptemplate Advanced** app):
 
 :file:`db/itemmapper.php`
 
@@ -141,7 +141,7 @@ All database queries for that object should be put into a mapper class. This fol
       private $tableName;
 
       /**
-       * @param API $api: Instance of the API abstraction layer
+       * @param API $api Instance of the API abstraction layer
        */
       public function __construct($api){
           parent::__construct($api);
@@ -151,8 +151,9 @@ All database queries for that object should be put into a mapper class. This fol
 
       /**
        * Finds an item by id
-       * @throws DoesNotExistException: if the item does not exist
-       * @return the item
+       * @throws DoesNotExistException if the item does not exists
+       * @throws MultipleObjectsReturnedException if more than one item exists
+       * @return Item the item
        */
       public function find($id){
           $row = $this->findQuery($this->tableName, $id);
@@ -162,9 +163,9 @@ All database queries for that object should be put into a mapper class. This fol
 
       /**
        * Finds an item by user id
-       * @param string $userId: the id of the user that we want to find
-       * @throws DoesNotExistException: if the item does not exist
-       * @return the item
+       * @param string $userId the id of the user that we want to find
+       * @throws DoesNotExistException if the item does not exist
+       * @return Item the item
        */
       public function findByUserId($userId){
           $sql = 'SELECT * FROM ' . $this->tableName . ' WHERE user = ?';
@@ -181,8 +182,8 @@ All database queries for that object should be put into a mapper class. This fol
 
       /**
        * Saves an item into the database
-       * @param Item $item: the item to be saved
-       * @return the item with the filled in id
+       * @param Item $item the item to be saved
+       * @return Item the item with the filled in id
        */
       public function save($item){
           $sql = 'INSERT INTO '. $this->tableName . '(name, user, path)'.
@@ -225,7 +226,7 @@ All database queries for that object should be put into a mapper class. This fol
 
       /**
        * Deletes an item
-       * @param int $id: the id of the item
+       * @param int $id the id of the item
        */
       public function delete($id){
           $this->deleteQuery($this->tableName, $id);

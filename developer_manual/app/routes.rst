@@ -79,7 +79,7 @@ The first parameter is the name under which the controller was defined in the :f
 
 The second parameter is the name of the method that should be called on the controller.
 
-The third parameter is the $params array which is passed to the controller and available by using **$this->params($KEY)** in the controller method. In the following example, the parameter in the URL would be accessible by using: **$this->params('key')**
+The third parameter is the $params array which is passed to the controller and available by using **$this->params($key)** in the controller method. In the following example, the parameter in the URL would be accessible by using: **$this->params('key')**
 
 You can also limit the route to GET or POST requests by simply adding **->post()** or **->get()** before the action method like:
 
@@ -96,7 +96,7 @@ You can also limit the route to GET or POST requests by simply adding **->post()
   );
   ?>
 
-The fourth parameter is an instance of the **DIContaier**. If you want to replace objects in the container only for a certain request, you can do it like this:
+The fourth parameter is an instance of the **DIContaier** (see :doc:`../general/dependencyinjection`). If you want to replace objects in the container only for a certain request, you can do it like this:
 
 .. code-block:: php
 

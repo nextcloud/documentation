@@ -19,8 +19,8 @@ Using ownCloud stable
 ~~~~~~~~~~~~~~~~~~~~~
 `Install the current version of ownCloud <http://doc.owncloud.org/server/5.0/admin_manual/installation.html>`_ and create a new directory in the **apps/** folder.  
 
-Using ownCloud developement version
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Using ownCloud development version
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ownCloud uses `GitHub`_ for developing its code. To be able to participate or check out the code You will have to sign up on `GitHub`_ and install Git.
 

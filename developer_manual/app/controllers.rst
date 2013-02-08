@@ -32,8 +32,8 @@ The apptemplate comes with several different controllers. A simple controller wo
 
 
       /**
-       * @param Request $request: an instance of the request
-       * @param API $api: an api wrapper instance
+       * @param Request $request an instance of the request
+       * @param API $api an api wrapper instance
        */
       public function __construct($api, $request){
           parent::__construct($api, $request);
@@ -43,7 +43,7 @@ The apptemplate comes with several different controllers. A simple controller wo
       /**
        * @Ajax
        *
-       * @brief sets a global system value
+       * sets a global system value
        */
       public function myControllerMethod(){
           $value = $this->params('somesetting');
@@ -57,7 +57,7 @@ The apptemplate comes with several different controllers. A simple controller wo
 
   ?>
 
-An instance of the API is passed via dependency injection, the same goes for a :php:class:`OCA\\AppFramework\\Http\\Request` instance. URL Parameters, POST, GET and FILES parameters are partly  abstracted by the Request class and can be accessed via **$this->params('myURLParamOrPostOrGetKey')** and **$this->getUploadedFile($key)** inside the controller. This has been done to make the app better testable.
+An instance of the API is passed via :doc:`../general/dependencyinjection`, the same goes for a :php:class:`OCA\\AppFramework\\Http\\Request` instance. URL Parameters, POST, GET and FILES parameters are partly  abstracted by the Request class and can be accessed via **$this->params('myURLParamOrPostOrGetKey')** and **$this->getUploadedFile($key)** inside the controller. This has been done to make the app better testable.
 
 .. note:: If an URL Parameter, POST or GET value exist with the same key, the URL Parameter is preferred over the POST parameter and the POST parameter is preferred over the GET parameter. You should avoid this scenario though.
 
