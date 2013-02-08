@@ -20,7 +20,7 @@ A simple route would look like this:
   use \OCA\YourApp\DependencyInjection\DIContainer;
 
   // this route matches /index.php/yourapp/myurl/SOMEVALUE
-  $this->create('yourappname_routename', '/myurl/{value}')->action(
+  $this->create('yourappname_routename', '/myurl/{key}')->action(
       function($params){
           App::main('MyController', 'methodName', $params, new DIContainer());
       }
@@ -37,26 +37,26 @@ To use it in OC templates, use:
 .. code-block:: php
 
   <?
-  print_unescaped(\OC_Helper::linkToRoute( 'yourappname_routename', array('value' => 1)));
+  print_unescaped(\OC_Helper::linkToRoute( 'yourappname_routename', array('key' => 1)));
 
 In Twig templates you can use the :js:func:`url` function:
 
 .. code-block:: js
   
-  {{ url('yourappname_routename', {value: '1'}) }}
+  {{ url('yourappname_routename', {key: '1'}) }}
 
 
 In JavaScript you can get the URL for a route like this:
 
 .. code-block:: javascript
 
-  var params = {value: 1};
+  var params = {key: 1};
   var url = OC.Router.generate('yourappname_routename', params);
   console.log(url); // prints /index.php//yourappname/myurl/1
 
 .. note:: Be sure to only use the routes generator after the routes are loaded. This can be done by registering a callback with **OC.Router.registerLoadedCallback(callback)**
 
-The second parameter is the URL which should be matched. You can extract values from the URL by using **{KEY}** in the section that you want to get. That value is then available under **$params['KEY']**, for the above example it would be **$params['value']**. You can omit the parameter if you dont extract any values from the URL at all.
+The second parameter is the URL which should be matched. You can extract values from the URL by using **{key}** in the section that you want to get. That value is then available under **$params['key']**, for the above example it would be **$params['key']**. You can omit the parameter if you dont extract any values from the URL at all.
 
 If a default value should be used for an URL parameter, it can be set via the **defaults** method:
 
@@ -66,11 +66,11 @@ If a default value should be used for an URL parameter, it can be set via the **
   use \OCA\AppFramework\App;
   use \OCA\YourApp\DependencyInjection\DIContainer;
 
-  $this->create('yourappname_routename', '/myurl/{value}')->action(
+  $this->create('yourappname_routename', '/myurl/{key}')->action(
       function($params){
           App::main('MyController', 'methodName', $params, new DIContainer());
       }
-  )->defaults('value' => 'john');
+  )->defaults('key' => 'john');
 
 
 To call your controllers the App Framework provides a main method: :php:class:`OCA\\AppFramework\\App`.
@@ -79,26 +79,32 @@ The first parameter is the name under which the controller was defined in the :f
 
 The second parameter is the name of the method that should be called on the controller.
 
-The third parameter is the $params array which is passed to the controller and available by using **$this->params($KEY)** in the controller method. In the following example, the parameter in the URL would be accessible by using: **$this->params('value')**
+The third parameter is the $params array which is passed to the controller and available by using **$this->params($KEY)** in the controller method. In the following example, the parameter in the URL would be accessible by using: **$this->params('key')**
 
 You can also limit the route to GET or POST requests by simply adding **->post()** or **->get()** before the action method like:
 
 .. code-block:: php
 
   <?php
-  $this->create('yourappname_routename', '/myurl/{value}')->post()->action(
+  use \OCA\AppFramework\App;
+  use \OCA\YourApp\DependencyInjection\DIContainer;
+
+  $this->create('yourappname_routename', '/myurl/{key}')->post()->action(
       function($params){
           App::main('MyController', 'methodName', $params, new DIContainer());
       }
   );
   ?>
 
-The fourth parameter is an instance of the **DIContaier**. If you want to replace values in the container only for a certain request, you can do it like this:
+The fourth parameter is an instance of the **DIContaier**. If you want to replace objects in the container only for a certain request, you can do it like this:
 
 .. code-block:: php
 
   <?php
-  $this->create('yourappname_routename', '/myurl/{value}')->post()->action(
+  use \OCA\AppFramework\App;
+  use \OCA\YourApp\DependencyInjection\DIContainer;
+
+  $this->create('yourappname_routename', '/myurl/{key}')->post()->action(
       function($params){
           $container = new DIContainer();
           $container['SomeClass'] = function($c){
