@@ -2,12 +2,12 @@ Automatic Configuration
 =======================
 
 If you need to install ownCloud on multiple servers you normally do not want
-to set-up each instance separately as described in the ``Database Configuration``
+to set-up each instance separately as described in the **Database Configuration**
 chapter (:doc:`./configuration_database`). For this reason the automatic
 configuration feature has been introduced.
 
 To take advance of this feature you need to create a configuration file, called
-``../owncloud/config/autoconfig.php`` and set the parameters as required. The
+:file:`../owncloud/config/autoconfig.php` and set the parameters as required. The
 file will automatically be removed after the initial configuration has been
 applied.
 
@@ -15,7 +15,7 @@ Parameters
 ----------
 
 You need to keep in mind that two parameters are named differently in this
-configuration file compared to the normal ``config.php`` file.
+configuration file compared to the normal :file:`config.php`.
 
 +----------------+---------------+
 | autoconfig.php | config.php    |
@@ -25,8 +25,11 @@ configuration file compared to the normal ``config.php`` file.
 | dbpass         | dbpassword    |
 +----------------+---------------+
 
-* **SQLite Database**
-  ::
+SQLite Database
+~~~~~~~~~~~~~~~
+
+.. code-block:: php
+
     <?php
     $AUTOCONFIG = array(
       "dbtype"        => "sqlite",
@@ -36,12 +39,13 @@ configuration file compared to the normal ``config.php`` file.
     );
     ?>
 
-* **MySQL Database**
+MySQL Database
+~~~~~~~~~~~~~~
 
-  Keep in mind that the automatic configuration does not unburden you from
-  creating the database user and database in advance, as described in the
-  ``Database Configuration`` chapter (:doc:`./configuration_database`).
-  ::
+Keep in mind that the automatic configuration does not unburden you from creating the database user and database in advance, as described in the **Database Configuration** chapter (:doc:`./configuration_database`).
+
+.. code-block:: php
+
     <?php
     $AUTOCONFIG = array(
       "dbtype"        => "mysql",
@@ -56,12 +60,12 @@ configuration file compared to the normal ``config.php`` file.
     );
     ?>
 
-* **PostgreSQL Database**
+PostgreSQL Database
+~~~~~~~~~~~~~~~~~~~
+Keep in mind that the automatic configuration does not unburden you from  creating the database user and database in advance, as described in the **Database Configuration** chapter (:doc:`./configuration_database`).
 
-  Keep in mind that the automatic configuration does not unburden you from
-  creating the database user and database in advance, as described in the
-  ``Database Configuration`` chapter (:doc:`./configuration_database`).
-  ::
+.. code-block:: php
+
     <?php
     $AUTOCONFIG = array(
       "dbtype"        => "pgsql",

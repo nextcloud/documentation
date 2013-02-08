@@ -56,7 +56,7 @@ Windows 7
 5. Select the folders as illustrated in the picture below to get your IIS
    server up and running.
 
-.. figure:: images/win7features.jpg
+.. figure:: ../images/win7features.jpg
     :width: 250px
     :align: center
     :alt: Windows features required for ownCloud on Windows 7
@@ -102,7 +102,7 @@ Windows Server 2008
 
 5. Use the :guilabel:`Add Roles Wizard` to add the web server role.
 
-.. figure:: images/winserverroles.jpg
+.. figure:: ../images/winserverroles.jpg
     :width: 300px
     :align: center
     :alt: server roles required for owncloud

@@ -24,30 +24,25 @@ Parameters
   separated port number, e.g. ``:425``. If this value is not given the default
   port 25/tcp will be used unless you will change that by modifying the
   ``mail_smtpport`` parameter. Multiple server can be entered separated by
-  semicolon.
-  ::
+  semicolon::
 
     "mail_smtpmode"     => "smtp",
     "mail_smtphost"     => "smtp-1.server.dom;smtp-2.server.dom:425",
     "mail_smtpport"     => 25,
 
-  or
-
-  ::
+  or::
 
     "mail_smtpmode"     => "smtp",
     "mail_smtphost"     => "smtp.server.dom",
     "mail_smtpport"     => 425,
 
   If a malware or SPAM scanner is running on the SMTP server it might be
-  necessary that you increase the SMTP timeout to e.g. 30s.
-  ::
+  necessary that you increase the SMTP timeout to e.g. 30s::
 
     "mail_smtptimeout"  => 30,
 
   If the SMTP server accepts unsecure connections, the default setting can be
-  used:
-  ::
+  used::
 
     "mail_smtpsecure"   => '',
 
@@ -56,15 +51,14 @@ Parameters
 
   **ssl**
   - A secure connection will be initiated using the outdated SMTPS protocol
-  which uses the port 465/tcp.
-  ::
+  which uses the port 465/tcp::
+
     "mail_smtphost"     => "smtp.server.dom:465",
     "mail_smtpsecure"   => 'ssl',
 
   **tls**
   - A secure connection will be initiated using the STARTTLS protocol which
-  uses the default port 25/tcp.
-  ::
+  uses the default port 25/tcp::
 
     "mail_smtphost"     => "smtp.server.dom",
     "mail_smtpsecure"   => 'tls',
@@ -130,6 +124,7 @@ Parameters
   installed and working qmail email system on your server. The sendmail binary
   (``/var/qmail/bin/sendmail``) will then be used to send email. ownCloud should
   be able to send email out of the box.
+
   ::
 
     "mail_smtpmode"     => "qmail",

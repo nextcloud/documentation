@@ -1,14 +1,13 @@
 Other Web Servers
------------------
-
+=================
 The most popular server choice for ownCloud is Apache, which is why
 it is also the combinations tested best. However, it is also possible
 to run ownCloud on other web servers. This section does not cover
 Microsoft Internet Information Services (IIS), it is covered
-in the `Windows 7 and Windows Server 2008`_ section.
+in the :doc:`installation_windows` section.
 
 Nginx Configuration
-~~~~~~~~~~~~~~~~~~~
+-------------------
 
 -  You need to insert the following code into
    ``your nginx config file.``
@@ -80,7 +79,7 @@ Nginx Configuration
 	  services in order these changes to be applied.
 
 Lighttpd Configuration
-~~~~~~~~~~~~~~~~~~~~~~
+----------------------
 
 This assumes that you are familiar with installing PHP application on
 lighttpd.
@@ -104,7 +103,7 @@ Disable directory listing::
        }
 
 Yaws Configuration
-~~~~~~~~~~~~~~~~~~
+------------------
 
 This should be in your ``yaws_server.conf``. In the configuration file, the
 ``dir_listings = false`` is important and also the redirect from ``/data``
@@ -132,7 +131,7 @@ need a custom error handler for yaws. See this `github gist for further
 instructions`_ on how to create and compile that error handler.
 
 Hiawatha Configuration
-~~~~~~~~~~~~~~~~~~~~~~
+----------------------
 
 Add ``WebDAVapp = yes`` to the ownCloud virtual host. Users accessing
 WebDAV from MacOS will also need to add ``AllowDotFiles = yes``.
@@ -146,7 +145,7 @@ Disable access to data folder::
 
 
 PageKite Configuration
-~~~~~~~~~~~~~~~~~~~~~~
+----------------------
 
 You can use this `PageKite how to`_ to make your local ownCloud accessible from the
 internet using PageKite.

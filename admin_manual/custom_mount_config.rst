@@ -23,7 +23,7 @@ following storage backends are available for use:
 -  SMB
 
 Example
-~~~~~~~
+-------
 
 .. code-block:: php
 
@@ -53,8 +53,8 @@ Example
         )
     );
 
-Backends:
----------
+Backends
+--------
 
 Local Filesystem
 ~~~~~~~~~~~~~~~~

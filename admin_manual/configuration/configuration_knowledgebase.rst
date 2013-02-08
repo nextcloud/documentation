@@ -16,7 +16,7 @@ to set the http path to the ownCloud help page. (The server should understand OC
 
 **Hint:**
 Keep in mind that disabling the help menu item might increase the number of
-support request you have to answer in the future.
-::
+support request you have to answer in the future::
+
     "knowledgebaseenabled" => true,
     "knowledgebaseurl"     => "http://api.apps.owncloud.com/v1",

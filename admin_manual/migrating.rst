@@ -1,5 +1,5 @@
-Migrating ownCloud Installs
-==============
+Migrating ownCloud Installations
+================================
 
 To migrate an ownCloud install there are three things you need to retain:
 
