@@ -8,3 +8,4 @@ ownCloud API
    templates
    filesystem
    vcategories
+   share
