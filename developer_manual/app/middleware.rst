@@ -4,7 +4,7 @@ Middleware
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
 
-Middleware is logic that is run before and after each request. It offers the following hooks:
+Middleware is logic that is run before and after each request and is modelled after `Django's Middleware system <https://docs.djangoproject.com/en/dev/topics/http/middleware/>`_. It offers the following hooks:
 
 * **beforeController**: This is executed before a controller method is being executed. This allows you to plug additional checks or logic before that method, like for instance security checks
 * **afterException**: This is being run when either the beforeController method or the controller method itself is throwing an exception. The middleware is asked in reverse order to handle the exception and to return a response. If the response is null, it is assumed that the exception could not be handled and the error will be thrown again
@@ -26,7 +26,7 @@ To generate your own middleware, simply inherit from the Middleware class :php:c
     private $api;
 
     /**
-     * @param API $api: an instance of the api
+     * @param API $api an instance of the api
      */
     public function __construct($api){
       $this->api = $api;
@@ -34,7 +34,7 @@ To generate your own middleware, simply inherit from the Middleware class :php:c
 
 
     /**
-     * @brief this replaces "fuck" with "****"" in the output
+     * this replaces "fuck" with "****"" in the output
      */
     public function beforeOutput($controller, $methodName, $output){
       return str_replace($output, 'fuck', '****');
@@ -44,7 +44,7 @@ To generate your own middleware, simply inherit from the Middleware class :php:c
 
 To activate the middleware, you have to overwrite the :php:class:`OCA\\AppFramework\\Middleware\\MiddlewareDispatcher`: in the DIContainer constructor:
 
-.. note:: If you ship your own middleware, be sure to also enable the existing ones if you overwrite the MiddlewareDispatcher in the Dependency Injection Container!
+.. note:: If you ship your own middleware, be sure to also enable the existing ones like the **SecurityMiddleware** if you overwrite the MiddlewareDispatcher in the Dependency Injection Container! **If this is forgotten, there will be security issues**!
 
 .. code-block:: php
 
@@ -65,4 +65,4 @@ To activate the middleware, you have to overwrite the :php:class:`OCA\\AppFramew
 
 .. note::
 
-  The order is important! The middleware that is registered first gets run first in the beforeController method. For all other hooks, the order is being reversed, meaning: if something is defined first, it gets run last.
+  The order is important! The middleware that is registered first gets run first in the **beforeController** method. For all other hooks, the order is being reversed, meaning: if a middleware is registered first, it gets run last.

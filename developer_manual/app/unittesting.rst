@@ -73,9 +73,9 @@ You can now execute the test by running this in your app directory::
 
 .. note:: PHPUnit executes all PHP Files that end with **Test.php**. Be sure to consider that in your file naming.
 
-The apptemplateadvanced provides an own classloader :file:`tests/classloader.php` that loads the the classes.
+The Advanced Apptemplate provides an extra classloader :file:`tests/classloader.php` that loads the the classes. Require this file at the top of your tests.
 
-.. note:: The classloader in the **tests/** directory assumes that the **appframework/** folder is in the same directory as the yourapp. If you run your app in a different apps folder, you will need to link the App Framework into the same folder where your app folder resides.
+.. note:: The classloader in the **tests/** directory assumes that the **appframework/** folder is in the same directory as the your app. If you run your app in a different apps folder, you will need to link the App Framework into the same folder where your app folder resides.
 
 
 More examples for testing controllers are in the :file:`tests/controller/ItemControllerTest.php`

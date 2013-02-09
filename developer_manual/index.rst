@@ -100,7 +100,6 @@ ownCloud Interfaces
 -------------------
 ownCloud APIs that are ready to be built into the app
 
-* :doc:`app/access`
 * :doc:`app/externalapi`
 * :doc:`app/filesystem`
 * :doc:`app/hooks`
