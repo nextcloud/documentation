@@ -14,13 +14,19 @@ Usage
 
 Registering Methods
 ~~~~~~~~~~~~~~~~~~~
-Methods are registered inside the :file:`appinfo/routes.php` using the OCP\\API class:
+Methods are registered inside the :file:`appinfo/routes.php` using the **OCP\\API** class:
 
 .. code-block:: php
 
   <?php
 
-  OCP\API::register('get', '/cloud/users', array('OC_Provisioning_API_Users', 'getUsers'), 'provisioning_api', OC_API::ADMIN_AUTH);
+  OCP\API::register(
+      'get', 
+      '/cloud/users', 
+      array('OC_Provisioning_API_Users', 'getUsers'), 
+      'provisioning_api', 
+      OC_API::ADMIN_AUTH
+  );
 
 
 .. php:class:: OCP\\API
@@ -37,7 +43,7 @@ Methods are registered inside the :file:`appinfo/routes.php` using the OCP\\API 
       :param string $app: The app id
       :param int $authlevel: The required level of authentication to access the API method. The following constants can be passed: OC_API::ADMIN_AUTH, OC_API::SUBADMIN_AUTH, OC_API::USER_AUTH, OC_API::GUEST_AUTH
       :param array $defaults: associative array of defaults for the URL parameters. Keys are the parameter names as defined in the url
-      :param array $requirements: associative array of requirements for the url parameters (See the `Symfony Documentation <http://symfony.com/doc/2.0/book/routing.html#adding-requirements>`_)
+      :param array $requirements: associative array of requirements for the url parameters (See the `Symfony Documentation: Adding Requirements <http://symfony.com/doc/2.0/book/routing.html#adding-requirements>`_)
 
 Returning Data
 ~~~~~~~~~~~~~~
