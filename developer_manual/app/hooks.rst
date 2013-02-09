@@ -1,6 +1,8 @@
 Hooks
 =====
 
+.. todo:: Needs to be reworked
+
 In ownCloud apps, function or methods (event handlers) which are used by the app
 and called by ownCloud core hooks, are generally stored in
 apps/appname/lib/hooks.php.Hooks are a way of implementing the `observer

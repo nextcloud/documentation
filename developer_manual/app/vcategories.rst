@@ -8,9 +8,9 @@ Introduction
 
 The Categories API is as the name says used for categorizing objects. The visual representation can be different for each app and is totally up to the developer/designer: you can add tags like for example used in `github issues <https://github.com/owncloud/core/issues/>`_ , you can show your objects in a (one-level) hierarchy or you can simply use comma-separated strings.
 
-The API is mainly designed for objects using `vCard`_ or `iCalendar <https://en.wikipedia.org/wiki/ICalendar>`_ as storage, as they all have a CATEGORIES property from which the categories are extracted, and were they will be saved so that client apps like Apples `iCal <https://en.wikipedia.org/wiki/ICal>`_ and `KDEs Kontact <http://userbase.kde.org/Kontact>`_ can use them as well. Currently the API is used in the Calendar, Task and Contacts apps, plus recently the 3rd party Journal app.
+The API is mainly designed for objects using `vCard`_ or `iCalendar <https://en.wikipedia.org/wiki/ICalendar>`_ as storage, as they all have a **CATEGORIES** property from which the categories are extracted, and were they will be saved so that client apps like Apples `iCal <https://en.wikipedia.org/wiki/ICal>`_ and `KDEs Kontact <http://userbase.kde.org/Kontact>`_ can use them as well. Currently the API is used in the Calendar, Task and Contacts apps, plus recently the 3rd party Journal app.
 
-Internally the categories and the object/category relations are stored using the category, the user ID, the object ID and a type identifier to be able uniquely identify where a category "belongs to". The types are similar to the types used in the `Share API <http://owncloud.org/dev/apps/share-api/>`_ for example `contact`, `event` or `task`.
+Internally the categories and the object/category relations are stored using the category, the user ID, the object ID and a type identifier to be able uniquely identify where a category "belongs to". The types are similar to the types used in the :doc:`share-api` for example `contact`, `event` or `task`.
 
 Besides being used for categories, the API also supports setting objects as favorites. Favorites are simply a separate category internally, but convenience methods for getting/setting objects as favorites are available.
 
@@ -22,9 +22,13 @@ The API can be used both from PHP and via a simple Javascript object.
 PHP
 ---
 
+.. todo:: Provide an easier example with less text
+
 As example I will use a very simplified version of how it is used in the Contacts app. The real implementation is optimized for speed and low memory consumption, but there's no need to show that here.
 
 First check if any categories have been saved for `contact` objects, if not scan all vCards for categories:
+
+.. todo:: use comments inside the php source to explain the functionality
 
 .. code-block:: php
 
@@ -60,6 +64,7 @@ The second argument being null will use the current user id. After instantiating
 
 For acting on user input the following methods, which should be mostly self-explanatory, are available:
 
+
 .. php:class:: OC_VCategories
 
   .. php:method:: __construct()
@@ -78,9 +83,10 @@ For acting on user input the following methods, which should be mostly self-expl
      :param array $objects: If `$objects` is not null it is assumed to be an array of id/data pairs passed by reference.
      :returns: the integer id of the new category or **false** if it already exists.
 
-     The data is parsed into an OC_VObject and if found the categories will be removed from the CATEGORIES property and the OC_VObject will be serialized back to a string again. It is up to the app to store the data afterwards.
+     The data is parsed into an **OC_VObject** and if found the categories will be removed from the **CATEGORIES** property and the **OC_VObject** will be serialized back to a string again. It is up to the app to store the data afterwards.
 
 
+.. todo:: use a proper rst syntax for class definitions
 
 .. code-block:: php
 
@@ -91,11 +97,15 @@ For acting on user input the following methods, which should be mostly self-expl
 
 `addToCategory()` creates an user/category/object relation. `$category` can be either an integer category id or a string with the category name. If `$type` is null the type provided in the constructor will be used.
 
+.. todo:: use a proper rst syntax for class definitions
+
 .. code-block:: php
 
     public function categories($format = null);
 
 Per default this returns an array of the category names, but given the `$format` argument `OC_VCategories::FORMAT_MAP`, it will return an array of `array('id' => $id, 'name' => $name)` maps.
+
+.. todo:: use a proper rst syntax for class definitions
 
 .. code-block:: php
 
@@ -105,8 +115,11 @@ Returns an array of integer object ids. `$category` can again be either the inte
 
 Favorites
 ---------
+.. todo:: use a proper rst syntax for class definitions
 
 .. code-block:: php
+
+  <?php
 
     public function addToFavorites($objid, $type = null);
     public function removeFromFavorites($objid, $type = null);
@@ -115,6 +128,6 @@ Favorites
 Javascript
 ----------
 
-To be written...
+.. todo:: needs to be written
 
 .. [1] An example of a `vCard <https://en.wikipedia.org/wiki/Vcard#vCard_3.0>`_ version 3.0
