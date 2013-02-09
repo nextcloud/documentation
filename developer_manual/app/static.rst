@@ -30,11 +30,37 @@ To add a script in your controller method, use the controller's **addScript** an
 
   ?>
 
-If you have to include an image in your CSS, use %appswebroot% and %webroot% for creating absolute paths to your image, for instance:
+If you have to include an image or css file in your CSS, prepend the following to your path: 
 
+* **%appswebroot%**: gets the absolute path to your app
+* **%webroot%**: gets the absolute path to owncloud
+
+For example:
 
 .. code-block:: css
 
   .folder > .title {
       background-image: url('%webroot%/core/img/places/folder.svg');
   }
+
+Formfactors
+-----------
+ownCloud automatically detects what kind of form factor you are using.
+
+Currently supported are:
+
+* **mobile**: works well on mobiles
+* **tablet**: optimized for devices like iPads or Android Tablets
+* **standalone**: mode where only the content are an App is shown. The header, footer and side navigation is not visible. This is useful if ownCloud is embedded in other applications.
+
+The auto detection can be overwritten by using the “formfactor” GET variable in the url::
+
+  index.php/myapp?formfactor=mobile
+
+If you want to provide a different stylesheet or javascript file for mobile devices just suffix the formfactor in the filename, like::
+
+  style.mobile.css
+
+or::
+  
+  script.tablet.css

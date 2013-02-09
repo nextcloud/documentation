@@ -15,7 +15,6 @@ App Developement
    data-migration
    templates
    static
-   formfactors
    unittesting
    middleware
    access

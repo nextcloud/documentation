@@ -123,4 +123,4 @@ After all this, we must return a boolean value to indicate the success or failur
 Conclusion
 ----------
 
-To fully support user migration for your app you must provide a import and export function under an instance of **OC_Migration_Provider** and put this code in the file :file:`appinfo/migrate.php`
+To fully support user migration for your app you must provide an import and export function under an instance of **OC_Migration_Provider** and put this code in the file :file:`appinfo/migrate.php`

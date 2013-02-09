@@ -7,14 +7,14 @@ ownCloud provides its own templating system. The App Framework also provides the
 
 Templates are abstracted by the TemplateResponse object and used and returned inside the controller method. Variables can be assigned to the Template by using the :php:class:`OCA\\AppFramework\\Http\\TemplateResponse::setParams` method:
 
+:file:`controllers/yourcontroller.php`
+
 .. code-block:: php
 
   <?php
   use \OCA\AppFramework\Http\TemplateResponse;
 
-  // ...
-
-  // in your controller
+  // inside the controller
 
   public function index(){
 
@@ -58,7 +58,7 @@ Twig can also cache templates as simple PHP files. To make use of this, create a
 
 A full reference can be found on the `Twig Template Reference <http://twig.sensiolabs.org/doc/templates.html>`_.
 
-If you want to use Twig together with AngularJS the variable print characters **{{}}** of Angular will have to be adjusted. You can do that by setting a different $interpolateProvider in the :file:`coffee/app.coffee` config section:
+If you want to use Twig together with AngularJS the variable print characters **{{}}** of Angular will have to be adjusted. You can do that by setting a different **$interpolateProvider** in the :file:`coffee/app.coffee` config section:
 
 .. code-block:: js
 
@@ -138,7 +138,9 @@ In every template file you can easily access the template functions listed in :d
 
   To prevent XSS the following PHP **functions for printing are forbidden: echo, print() and <?=**. Instead use the **p()** function for printing your values. Should you require unescaped printing, **double check for XSS** and use: :php:func:`print_unescaped`.
 
-Templates can also include other templates by using the **$this->inc('templateName')** method. Use this if you find yourself repeating a lot of the same HTML constructs. The parent variables will also be available in the included templates, but should you require it, you can also pass new variables to it by using the second optional parameter for $this->inc.
+Templates can also include other templates by using the **$this->inc('templateName')** method. Use this if you find yourself repeating a lot of the same HTML constructs.
+
+The parent variables will also be available in the included templates, but should you require it, you can also pass new variables to it by using the second optional parameter as array for **$this->inc**.
 
 
 
@@ -148,6 +150,8 @@ Templates can also include other templates by using the **$this->inc('templateNa
 
   <div>I am included but i can still access the parents variables!</div>
   <?php p($_['name']); ?>
+  
+  <?php print_unescaped($this->inc('other_template', array('variable' => 'value'))); ?>
 
 
 **For more info, see** :doc:`../classes/core/templates`
