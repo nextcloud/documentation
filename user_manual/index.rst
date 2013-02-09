@@ -19,7 +19,7 @@ This chapter contains a general overview how you access ownCloud from a Browser 
 
 Files & Synchronization
 =======================
-This chapter contains information about accessing your files.
+This chapter contains information about accessing your files via WebDav and Synchronization.
 
 * :doc:`files/files`
 * :doc:`files/sync`

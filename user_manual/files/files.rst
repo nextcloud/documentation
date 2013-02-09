@@ -1,5 +1,5 @@
-Accessing your Files
-====================
+Accessing your Files (WebDav)
+=============================
 
 Your ownCloud instance can be accessed on every platform via the web interface. There are also options to integrate it with your desktop.
 
