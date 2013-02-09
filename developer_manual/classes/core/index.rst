@@ -7,3 +7,4 @@ ownCloud API
 
    templates
    filesystem
+   vcategories
