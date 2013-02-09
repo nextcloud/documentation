@@ -43,7 +43,7 @@ To make exporting database data really easy, the class **OC_Migration_Content** 
 	}
   }
 
-The bookmarks app stores all of its data in the database, in two tables: *PREFIX* bookmarks and *PREFIX* bookmarks_tags so to export this, we need to run **copyRows()** twice. Here is an explanation of the options passed to it:
+The bookmarks app stores all of its data in the database, in two tables: \*PREFIX*bookmarks and \*PREFIX*bookmarks_tags so to export this, we need to run **copyRows()** twice. Here is an explanation of the options passed to it:
 
 * **table**: string name of the table to export (without any prefix)
 * **matchcol**: (optional) string name of the column that will be matched with the value in **matchval** (Basically the column used in the WHERE sql query)
@@ -76,7 +76,9 @@ Import is a little more tricky as we have to take into account data from differe
 		$idmap = array();
 		while( $row = $results->fetchRow() ){
 			// Import each bookmark, saving its id into the map
-			$sql = "INSERT INTO *PREFIX*bookmarks(url, title, user_id, public, added, lastmodified) VALUES (?, ?, ?, ?, ?, ?)";
+			$sql = "INSERT INTO *PREFIX*bookmarks" . 
+					"(url, title, user_id, public, added, lastmodified)" .
+					" VALUES (?, ?, ?, ?, ?, ?)";
 			$query = OC_DB::prepare($sql);
 			$query->execute( array( 
 				$row['url'], 
@@ -91,18 +93,21 @@ Import is a little more tricky as we have to take into account data from differe
 		}
 		// Now tags
 		foreach($idmap as $oldid => $newid){
-			$query = $this->content->prepare( "SELECT * FROM bookmarks_tags WHERE user_id LIKE ?" );
+			$sql = "SELECT * FROM bookmarks_tags WHERE user_id LIKE ?";
+			$query = $this->content->prepare($sql);
 			$results = $query->execute( array( $oldid ) );
 			while( $row = $data->fetchRow() ){
 				// Import the tags for this bookmark, using the new bookmark id
-				$query = OC_DB::prepare( "INSERT INTO *PREFIX*bookmarks_tags(bookmark_id, tag) VALUES (?, ?)" );
+				$sql = "INSERT INTO *PREFIX*bookmarks_tags(bookmark_id, tag)".
+						" VALUES (?, ?)";
+				$query = OC_DB::prepare($sql);
 				$query->execute( array( $newid, $row['tag'] ) );
 			}
 		}
 		// All done!
 		break;
 	}
-  return true;
+  	return true;
   }
 
 We start off by using a switch to run different import code for different versions of your app. **$this->appinfo->version** contains the version string from the :file:`appinfo/info.xml` of your app. In the case of the bookmarks app the db structure has not changed, so only one version of import code is needed.
@@ -113,17 +118,9 @@ Remember this part of the import code may be a good place to emit some hooks dep
 
 After importing the bookmarks, we must import the tags. It is a very similar process to importing the bookmarks, except we have to take into account the changes in primary keys. This is done by using a foreach key in the **$idmap** array, and then inserting the tags using the new id.
 
-After all this, we must return a boolean value to indicate the success or failure of the import. Again, app data files stored in **data/userid/appname** will be automatically copied over before the apps import function is executed, this allows you to manipulate the imported files if necessary.
+After all this, we must return a boolean value to indicate the success or failure of the import. Again, app data files stored in **data/userid/appname/** will be automatically copied over before the apps import function is executed, this allows you to manipulate the imported files if necessary.
 
 Conclusion
 ----------
 
 To fully support user migration for your app you must provide a import and export function under an instance of **OC_Migration_Provider** and put this code in the file :file:`appinfo/migrate.php`
-
-You can view other migration providers here:
-
-* `Bookmarks migration provider`_
-* `Contact migration provider`_
-
-.. _Bookmarks migration provider: http://gitorious.org/owncloud/owncloud/blobs/migration/apps/bookmarks/appinfo/migrate.php
-.. _Contact migration provider: http://gitorious.org/owncloud/owncloud/blobs/migration/apps/contacts/appinfo/migrate.php
