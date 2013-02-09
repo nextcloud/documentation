@@ -20,7 +20,13 @@ The URL that you have to use to connect to the owncloud installation in nautilus
 
 KDE/Dolphin
 ~~~~~~~~~~~
-Assuming your owncloud instance is installed at http://www.yourserver.com/owncloud:
+Click in the adress area and enter::
+
+    dav://youraddress.com/files/webdav.php
+
+.. image:: ../images/dolphin_webdav.png
+
+or:
 
 1. Open Dolphin and click on where it says Network in the left hand Places column.
 2. Click on the icon labeled **Add a Network Folder**.
@@ -29,7 +35,7 @@ Assuming your owncloud instance is installed at http://www.yourserver.com/ownclo
 
 * Name: The name you’ll see in the **Places** bookmark, for example ownCloud
 * User: Your ownCloud username you use to log in, for example admin
-* Server: Your ownCloud domain name, for example **www.yourserver.com** (without **http://** before or directories afterwards).
+* Server: Your ownCloud domain name, for example **youraddress.com** (without **http://** before or directories afterwards).
 * Folder: Enter::
 
         owncloud/files/webdav.php
