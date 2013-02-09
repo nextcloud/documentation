@@ -7,24 +7,21 @@ Introduction
 ------------
 The external API inside ownCloud allows third party developers to access data
 provided by ownCloud apps. ownCloud version 5.0 will follow the `OCS v1.7
-specification`_ (draft).
-
-.. _OCS v1.7 specification: http://www.freedesktop.org/wiki/Specifications/open-collaboration-services-1.7
+specification <specification: http://www.freedesktop.org/wiki/Specifications/open-collaboration-services-1.7>`_ (draft).
 
 Usage
 -----
 
 Registering Methods
 ~~~~~~~~~~~~~~~~~~~
-To make use of the external api as an app developer, there are just three things
-to do.
+Methods are registered inside the :file:`appinfo/routes.php` using the OCP\\API class:
 
-#. Add your API routes inside $app/appinfo/routes.php
-#. Code your API methods in $app/lib/*
-#. Update the OCS spec with your call
+.. code-block:: php
 
-To register your API routes, we make use of the OCP\\\\API::register() method as
-defined below:
+  <?php
+
+  OCP\API::register('get', '/cloud/users', array('OC_Provisioning_API_Users', 'getUsers'), 'provisioning_api', OC_API::ADMIN_AUTH);
+
 
 .. php:class:: OCP\\API
 
@@ -35,32 +32,17 @@ defined below:
       Registers an API route with the backend.
 
       :param string $method: The HTTP method (get, post, put or delete)
-      :param string $url: The url that defines the API route (see 'Routing URLs' section below)
+      :param string $url: The URL that defines the API route which can also include params (See the `Symfony Documentation <http://symfony.com/doc/2.0/book/routing.html>`_)
       :param callable $action: The function to call
       :param string $app: The app id
-      :param int $authlevel: The required level of authentication to access the API method (use constants `defined in OC_API <https://github.com/owncloud/core/blob/ocs_api/lib/api.php#L32>`_)
+      :param int $authlevel: The required level of authentication to access the API method. The following constants can be passed: OC_API::ADMIN_AUTH, OC_API::SUBADMIN_AUTH, OC_API::USER_AUTH, OC_API::GUEST_AUTH
       :param array $defaults: associative array of defaults for the URL parameters. Keys are the parameter names as defined in the url
       :param array $requirements: associative array of requirements for the url parameters (See the `Symfony Documentation <http://symfony.com/doc/2.0/book/routing.html#adding-requirements>`_)
 
-Routing URLs
-~~~~~~~~~~~~~
-The API uses the new routing features inside ownCloud to make it easy to attach
-api methods to urls which include variables. To register an API method including
-a variable, simple place the variable name in curly brackets {}. For example:
-
-   /cloud/users/{userid}
-
-If the URL /cloud/users/Tom is requested, the api function registered with this
-url would be called, and passed the parameter 'userid' with the value: 'Tom'.
-The parameters are passed to the API methods inside an array.
-
 Returning Data
 ~~~~~~~~~~~~~~
-Once the API backend has matched your url, your callable function as defined in
-$action will be executed. This method is passed as array of parameters that you
-defined in $url. To return data back the the client, you should return an
-instance of OC_OCS_Result. The API backend will then use this to construct the
-xml or json response.
+Once the API backend has matched your URL, your callable function as defined in
+**$action** will be executed. This method is passed as array of parameters that you defined in **$url**. To return data back the the client, you should return an instance of **OC_OCS_Result**. The API backend will then use this to construct the XML or JSON response.
 
 .. php:class:: OC_OCS_Result
 
