@@ -25,7 +25,7 @@ This chapter contains information about accessing your files via WebDav and Sync
 * :doc:`files/sync`
 * :doc:`files/versioncontrol`
 
-Calendar & Calendar
+Contacts & Calendar
 ===================
 Contacts & Calendar web interface, export, import and synchronization.
 
