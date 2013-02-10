@@ -83,7 +83,7 @@ Now change into your app directory::
 
 .. _modify:
 
-Modfiy Advanced Apptemplate
+Modify Advanced Apptemplate
 ---------------------------
 You will want to replace the boilerplate code in the Apptemplate.
 
