@@ -6,6 +6,6 @@ ownCloud API
    :maxdepth: 1
 
    templates
-   filesystem
+   files
    vcategories
    share
