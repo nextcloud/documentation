@@ -26,14 +26,12 @@ As example I will use a very simplified version of how it is used in the Contact
 
 First check if any categories have been saved for `contact` objects, if not scan all vCards for categories:
 
-.. todo:: use comments inside the php source to explain the functionality
-
 .. code-block:: php
 
   <?php
   // Test if any categories are saved for this object type
   if(\OC_VCategories::isEmpty('contact')) {
-	// If not, instantiate an OC_VCategories object
+    // If not, instantiate an OC_VCategories object
     $categorymgr = new \OC_VCategories('contact');
     $cards = array();
     // Loop through all the users contacts and save key/value pairs
