@@ -22,8 +22,6 @@ The API can be used both from PHP and via a simple Javascript object.
 PHP
 ---
 
-.. todo:: Provide an easier example with less text
-
 As example I will use a very simplified version of how it is used in the Contacts app. The real implementation is optimized for speed and low memory consumption, but there's no need to show that here.
 
 First check if any categories have been saved for `contact` objects, if not scan all vCards for categories:
@@ -33,12 +31,18 @@ First check if any categories have been saved for `contact` objects, if not scan
 .. code-block:: php
 
   <?php
+  // Test if any categories are saved for this object type
   if(\OC_VCategories::isEmpty('contact')) {
+	// If not, instantiate an OC_VCategories object
     $categorymgr = new \OC_VCategories('contact');
     $cards = array();
+    // Loop through all the users contacts and save key/value pairs
+    // containing the id and the vCard data in an array
     foreach(VCard::all() as $contact) {
         $cards[] = array($contact['id'], $contact['carddata']);
     }
+    // Let the OC_VCategories object extract all categories
+    // and save them to the database (indicated by the second argument being true)
     $categorymgr->rescan($cards, true);
   }
   ?>
@@ -62,72 +66,6 @@ Default values can be given in the constructor:
 
 The second argument being null will use the current user id. After instantiating this way the database will be pre-filled with the default categories for the current user, and any ``isEmpty()`` calls will of course return **false** ;)
 
-For acting on user input the following methods, which should be mostly self-explanatory, are available:
-
-
-.. php:class:: OC_VCategories
-
-  .. php:method:: __construct()
-
-     .. todo:: add constructor doc
-
-  .. php:method:: add($name)
-
-     :param string $name:
-     :returns: the integer id of the new category or **false** if it already exists.
-
-
-  .. php:method:: delete($names, array &$objects=null)
-
-     :param string $names: deletes the categories in the array `$names` and any object/category/user relations saved.
-     :param array $objects: If `$objects` is not null it is assumed to be an array of id/data pairs passed by reference.
-     :returns: the integer id of the new category or **false** if it already exists.
-
-     The data is parsed into an **OC_VObject** and if found the categories will be removed from the **CATEGORIES** property and the **OC_VObject** will be serialized back to a string again. It is up to the app to store the data afterwards.
-
-
-.. todo:: use a proper rst syntax for class definitions
-
-.. code-block:: php
-
-    public function hasCategory($name); //boolean
-
-    public function addToCategory($objid, $category, $type = null);
-    public function removeFromCategory($objid, $category, $type = null);
-
-`addToCategory()` creates an user/category/object relation. `$category` can be either an integer category id or a string with the category name. If `$type` is null the type provided in the constructor will be used.
-
-.. todo:: use a proper rst syntax for class definitions
-
-.. code-block:: php
-
-    public function categories($format = null);
-
-Per default this returns an array of the category names, but given the `$format` argument `OC_VCategories::FORMAT_MAP`, it will return an array of `array('id' => $id, 'name' => $name)` maps.
-
-.. todo:: use a proper rst syntax for class definitions
-
-.. code-block:: php
-
-    public function idsForCategory($category);
-
-Returns an array of integer object ids. `$category` can again be either the integer category id or a string with the name.
-
-Favorites
----------
-.. todo:: use a proper rst syntax for class definitions
-
-.. code-block:: php
-
-  <?php
-
-    public function addToFavorites($objid, $type = null);
-    public function removeFromFavorites($objid, $type = null);
-    public function getFavorites($type = null);
-
-Javascript
-----------
-
-.. todo:: needs to be written
+For acting on user input the following methods, which should be mostly self-explanatory, are available in the API documentation.
 
 .. [1] An example of a `vCard <https://en.wikipedia.org/wiki/Vcard#vCard_3.0>`_ version 3.0
