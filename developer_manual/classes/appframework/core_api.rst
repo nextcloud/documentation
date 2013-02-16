@@ -44,17 +44,19 @@ class and add your methods
     Sets the current navigation entry to the currently running app
 
 
-  .. php:method:: addScript($scriptName)
+  .. php:method:: addScript($scriptName, $appName=null)
 
     :param string $scriptName: the name of the javascript in js/ without the suffix
+    :param string $appName: the name of the app, defaults to the current one
 
 
     Adds a new javascript file
 
 
-  .. php:method:: addStyle($styleName)
+  .. php:method:: addStyle($styleName, $appName=null)
 
     :param string $styleName: the name of the css file in css/without the suffix
+    :param string $appName: the name of the app, defaults to the current one
 
 
     Adds a new css file
@@ -82,7 +84,7 @@ class and add your methods
     :returns string: the saved value
 
 
-    Looks up a systemwide defined value
+    Looks up a systemwide defined value from the config/config.php
 
 
   .. php:method:: setSystemValue($key, $value)
@@ -91,7 +93,27 @@ class and add your methods
     :param string $value: the value that should be stored
 
 
-    Sets a new systemwide value
+    Writes a new systemwide value into the config/config.php
+
+
+  .. php:method:: getAppValue($key, $appName=null)
+
+    :param string $key: the key of the value, under which it was saved
+    :param mixed $appName: 
+    :returns string: the saved value
+
+
+    Looks up an appwide defined value
+
+
+  .. php:method:: setAppValue($key, $value, $appName=null)
+
+    :param string $key: the key of the value, under which will be saved
+    :param string $value: the value that should be stored
+    :param mixed $appName: 
+
+
+    Writes a new appwide value
 
 
   .. php:method:: setUserValue($key, $value, $userId=null)
