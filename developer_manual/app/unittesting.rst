@@ -45,9 +45,9 @@ A simple test for a controller would look like this:
       $api = $this->getAPIMock();
 
       // expects to be called once with the method
-      // setSystemValue('somesetting', 'this is a test')
+      // setAppValue('somesetting', 'this is a test')
       $api->expects($this->once())
-            ->method('setSystemValue')
+            ->method('setAppValue')
             ->with( $this->equalTo('somesetting'),
                 $this->equalTo('this is a test'));
 
@@ -58,7 +58,7 @@ A simple test for a controller would look like this:
             ->will($this->returnValue('apptemplateadvanced'));
 
       $controller = new ItemController($api, $request, null);
-      $response = $controller->setSystemValue(null);
+      $response = $controller->setAppValue(null);
 
       // check if the correct parameters of the json response are set
       $this->assertEquals($post, $response->getParams());
