@@ -9,12 +9,14 @@ syntax:
 
   <?php
 
-    'user_backends'=>array(
-      array(
-        'class'=>...,
-        'arguments'=>array(...)
-      )
-    )
+  "user_backends" => array (
+      0 => array (
+              "class"     => ...,
+              "arguments" => array (
+                                0 => ...
+                                ),
+      ),
+  ),
 
 Currently the “External user support” (user_external) app provides the following user backends:
 
@@ -30,14 +32,14 @@ Provides authentication against IMAP servers
 
   <?php
 
-    'user_backends'=>array(
-      array(
-        'class'=>'OC_User_IMAP',
-        'arguments'=>array('{imap.gmail.com:993/imap/ssl}INBOX')
-      )
-    )
-
-
+  "user_backends" => array (
+      0 => array (
+              "class"     => "OC_User_IMAP",
+              "arguments" => array (
+                                0 => '{imap.gmail.com:993/imap/ssl}'
+                                ),
+      ),
+  ),
 
 SMB
 ---
@@ -51,12 +53,14 @@ Provides authentication against Samba servers
 
   <?php
 
-    'user_backends'=>array(
-      array(
-        'class'=>'OC_User_SMB',
-        'arguments'=>array('localhost')
-      )
-    )
+  "user_backends" => array (
+      0 => array (
+              "class"     => "OC_User_SMB",
+              "arguments" => array (
+                                0 => 'localhost'
+                                ),
+      ),
+  ),
 
 FTP
 ~~~
@@ -71,10 +75,11 @@ Provides authentication against FTP servers
 
   <?php
 
-    'user_backends'=>array(
-      array(
-        'class'=>'OC_User_FTP',
-        'arguments'=>array('localhost')
-      )
-    )
-
+  "user_backends" => array (
+      0 => array (
+              "class"     => "OC_User_FTP",
+              "arguments" => array (
+                                0 => 'localhost'
+                                ),
+      ),
+  ),
