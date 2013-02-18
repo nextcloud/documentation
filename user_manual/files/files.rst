@@ -96,7 +96,7 @@ Known Issues
 MacOS
 -----
 
-.. note:: Finder suffers from a `series of implementation problems <http://code.google.com/p/sabredav/wiki/Finder>`_ and should only be used with **Apache** and **mod_php**
+.. note:: Finder suffers from a `series of implementation problems <http://code.google.com/p/sabredav/wiki/Finder>`_ and should only be used if the ownCloud server runs on **Apache** and **mod_php**
 
 In the Finder, choose **Go > Connect to Server,** type the address of the server in the **Server Address** field, and click **Connect**.
 
