@@ -22,7 +22,7 @@ custom requirements or need to connect to Active Directory (AD) you want to have
 a look on the advanced settings afterwards. The basic part allows you to set up
 a working connection to your LDAP server and use it with ownCloud.
 
-.. figure:: ../images/ldap-basic-settings-oc451.png
+.. figure:: ../images/ldap-basic-settings-oc5.png
 
    LDAP Basic Settings
 
