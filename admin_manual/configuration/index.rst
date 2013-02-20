@@ -16,3 +16,4 @@ Configuration
    custom_user_backend
    auth_ldap
    xsendfile
+   background_jobs
