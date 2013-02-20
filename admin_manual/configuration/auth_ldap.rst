@@ -17,10 +17,10 @@ Settings→Admin. Read on for a detailed description of the configuration fields
 Basic Settings
 --------------
 
-The basic settings are all you need. However, if you have a larger directory or
-custom requirements you want to have a look on the advanced settings
-afterwards. The basic part allows you to set up a working connection to your
-LDAP server and use it with ownCloud.
+The basic settings are all you need. However, if you have a larger directory,
+custom requirements or need to connect to Active Directory (AD) you want to have
+a look on the advanced settings afterwards. The basic part allows you to set up
+a working connection to your LDAP server and use it with ownCloud.
 
 .. figure:: ../images/ldap-basic-settings-oc451.png
 
@@ -177,9 +177,8 @@ User Home Folder Naming Rule:
   By default, the ownCloud creates the user
   directory, where all files and meta data are kept, according to the ownCloud
   user name. You may want to override this setting and name it after an
-  attribute’s value. Once set for a user, the user name folder will not change,
-  i.e. changing this value will only have effect to new LDAP users. Leave it
-  empty to default behaviour
+  attribute’s value. The attribute given can also return an absolute path, e.g.
+  ``/mnt/storage43/alice`` . Leave it empty for default behaviour.
 
   * Example: cn
 
@@ -189,8 +188,8 @@ Microsoft Active Directory
 In case you want to connect to a Windows AD, you must change some values in the Advanced tab.
 
 * The default in User Display Name Field will not work with Active Directory.
-* The Group Member association must be set to “member (AD)” Check Case insensitive
-* LDAP server (Windows)
+* The Group Member association must be set to “member (AD)”
+* Check Case insensitive LDAP server (Windows)
 
 Testing the configuration
 -------------------------
