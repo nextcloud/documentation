@@ -177,9 +177,8 @@ User Home Folder Naming Rule:
   By default, the ownCloud creates the user
   directory, where all files and meta data are kept, according to the ownCloud
   user name. You may want to override this setting and name it after an
-  attribute’s value. Once set for a user, the user name folder will not change,
-  i.e. changing this value will only have effect to new LDAP users. Leave it
-  empty to default behaviour
+  attribute’s value. The attribute given can also return an absolute path, e.g.
+  ``/mnt/storage43/alice`` . Leave it empty for default behaviour.
 
   * Example: cn
 
