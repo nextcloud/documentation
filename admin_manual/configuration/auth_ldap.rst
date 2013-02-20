@@ -33,6 +33,13 @@ filling out the settings.
 Settings Details
 ~~~~~~~~~~~~~~~~
 
+Server configuration:
+  ownCloud can be configured to connect to multiple LDAP servers. Using this
+  control you can pick a configuration you want to edit or add a new one. The
+  button **Delete Configuration** deletes the current configuration.
+
+  * *Example: 1. Server*
+
 Host:
   The host name of the LDAP server. It can also be a **ldaps://** URI, for
   instance.
@@ -52,7 +59,6 @@ User DN:
   special system user for ownCloud.
 
   * *Example: uid=owncloudsystemuser,cn=sysusers,dc=my-company,dc=com*
-  * formerly **Name** in oC 4.0
 
 Password:
   The password for the user given above. Empty for anonymous access.
