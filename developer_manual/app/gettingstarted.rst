@@ -26,7 +26,7 @@ ownCloud uses `GitHub`_ for developing its code. To be able to participate or ch
 
 If you need help with Git, contact the `GitHub Help Page`_.
 
-To get started you'll need to clone the basic git repositories into your web directory. Depending on your distro this will either be **/var/www** or **/srv/http** and the apache user and group for the chown command will either be **http** or **apache**
+To get started you'll need to clone the basic git repositories into your web directory. Depending on your distro this will either be **/var/www** or **/srv/http** and the apache user and group for the chown command will either be **http**, **www-data** or **apache**
 
 .. code-block:: bash
 
