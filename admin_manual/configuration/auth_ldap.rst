@@ -348,16 +348,23 @@ Some parts of how the LDAP backend works are described here. May it be helpful.
 User and Group Mapping
 ----------------------
 
-In ownCloud, the user name is automatically the user ID, same applies for
-groups. That’s why we map the DN and UUID of the LDAP object to an ownCloud
-name. Those mappings are done in the database table ldap_user_mapping and
-ldap_group_mapping. The user name is also used for the user’s folder, which
-contains files and meta data. Most ownCloud applications, like Sharing, use the
-user name to refer to a user. Renaming a user (or a group) is not supported.
+In ownCloud the user or group name is used to have all relevant information in
+the database assigned. To work reliably a permanent internal user name and
+group name is created and mapped to the LDAP DN and UUID. If the DN changes in
+LDAP it will be detected, there will be no conflicts.
+
+Those mappings are done in the database table ldap_user_mapping and
+ldap_group_mapping. The user name is also used for the user's folder (except
+something else is specified in *User Home Folder Naming Rule*), which
+contains files and meta data.
+
+As of ownCloud 5 internal user name and a visible display name are separated.
+This is not the case for group names, yet, i.e. group cannot be altered.
+
 That means that your LDAP configuration should be good and ready before putting
 it into production. The mapping tables are filled early, but as long as you are
-testing, you empty the tables any time. Do not do this in production. If you
-want to rename a user or a group, be very careful.
+testing, you can empty the tables any time. Do not do this in production. If you
+want to rename a group, be very careful. Do not rename the user's internal name.
 
 Caching
 -------
