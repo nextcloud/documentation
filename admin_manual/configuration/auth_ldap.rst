@@ -44,21 +44,21 @@ Host:
   The host name of the LDAP server. It can also be a **ldaps://** URI, for
   instance.
 
-  * *Example: directory.my-company.com*
+  * Example: *directory.my-company.com*
 
 Base DN:
   The base DN of LDAP, from where all users and groups can be reached.
   Separated Base DNs for users and groups can be set in the Advanced
   tab. Nevertheless, this field is mandatory.
 
-  * *Example: dc=my-company,dc=com*
+  * Example: *dc=my-company,dc=com*
 
 User DN:
   The name as DN of a user who is able to do searches in the LDAP
   directory. Let it empty for anonymous access. It is recommended to have a
   special system user for ownCloud.
 
-  * *Example: uid=owncloudsystemuser,cn=sysusers,dc=my-company,dc=com*
+  * Example: *uid=owncloudsystemuser,cn=sysusers,dc=my-company,dc=com*
 
 Password:
   The password for the user given above. Empty for anonymous access.
@@ -68,18 +68,18 @@ User Login Filter:
   for the user name. Note, that login applies this filter only, but not User
   List Filter. This may change in future.
 
-  * Example (allows login with user name and email address): **(|(uid=%uid)(email=$uid))**
+  * Example (allows login with user name and email address): *(|(uid=%uid)(email=$uid))*
 
 User List Filter:
   The filter to use when a search for users will be executed.
 
-  * Example: **objectClass=posixAccount**
+  * Example: *objectClass=posixAccount*
 
 Group Filter:
   The filter to use when a search for groups will be executed. In
   case you do not want to use LDAP groups in ownCloud, leave it empty.
 
-  * Example: **objectClass=posixGroup**
+  * Example: *objectClass=posixGroup*
 
 Advanced Settings
 -----------------
@@ -89,59 +89,125 @@ common to set. They are not needed for a working connection, unless you use a
 non-standard Port, e.g. It can also have a positive effect on the performance
 to specify distinguished bases for user and group searches.
 
-.. figure:: ../images/ldap-advanced-settings-oc451.png
+The Advanced Settings are structured into three parts:
+* Connection Settings
+* Directory Settings
+* Special Attributes
+
+.. figure:: ../images/ldap-advanced-settings-oc5.png
 
    LDAP Advanced Settings
 
-Settings Details
-~~~~~~~~~~~~~~~~
+Connection Settings
+~~~~~~~~~~~~~~~~~~~
+
+.. figure:: ../images/ldap-advanced-settings-connection-settings-oc5.png
+
+   LDAP Advanced Settings, section Connection Settings
+
+Configuration Active:
+  Enables or Disables the current configuration. Disabled configuration will not
+  connect to the LDAP server.
+
+  * Example: *[X]*
 
 Port:
-  The port LDAP server Example: 389 Base User Tree: The base DN of LDAP,
-  from where all users can be reached. It needs to be given completely despite
-  to the Base DN from the Basic settings.
+  The port on which to connect to the LDAP server.
 
-  * Example: **cn=users,dc=my-company,dc=com**
+  * Example: *389*
 
-Base Group Tree:
-  The base DN of LDAP, from where all groups can be reached.
-  It needs to be given completely despite to the Base DN from the Basic
-  settings.
+Backup (Replica) Host:
+  A backup server can be defined here. ownCloud tries to connect to the backup
+  server automatically, when the main host (as specified in basic settings)
+  cannot be reached. It is import that the backup server is a replica of the
+  main server, because the object UUIDs must match.
 
-  * Example: **cn=groups,dc=my-company,dc=com**
+  * Example: *directory2.my-company.com*
 
-Group Member association:
-  The attribute that is used to indicate group memberships, i.e. the attribute
-  used by LDAP groups to refer to their users.
+Backup (Replica) Port:
+  The port on which to connect to the backup LDAP server. If no port is given,
+  but a host, then the main port (as specified above) will be used.
 
-  * Example: uniquemember
+  * Example: *389*
+
+Disable Main Server:
+  You can manually override the main server and make ownCloud only connect to
+  the backup server. It may be handy for planned downtimes.
+
+  * Example: *[ ]*
 
 Use TLS:
-  Wether to use TLS encrypted connection to the LDAP server.  In case you use
-  SSL connections (via the ldaps scheme) do not check it, it will fail.
+  Whether to use TLS encrypted connection to the LDAP server.  This will be
+  ignored when "ldaps://" protocol is specified in the host entries.
 
-  * Example: [ ]
+  * Example: *[ ]*
 
 Case insensitive LDAP server (Windows):
-  Wether the LDAP server is running on a Windows Host
+  Whether the LDAP server is running on a Windows Host
 
-  * Example: [ ]
+  * Example: *[ ]*
 
 Turn off SSL certificate validation:
   Turns of check of valid SSL certificates. Use it – if needed –
   for testing, only!
+  A common mistake with SSL certificates is that they may not be known to PHP.
+  If you have trouble with certificate validation make sure that you have the
+  certificate of the server installed. If it still fails, make sure that in the
+  system's LDAP configuration file (usually  **/etc/ldap/ldap.conf** on Linux)
+  the certificate is announced using a **TLS_CACERT /path/to/cert** line.
 
-  * Example: [ ]
+  * Example: *[ ]*
+
+Cache Time-To-Live:
+  A cache is introduced to avoid unnecessary LDAP traffic,
+  for example lookups check whether the users exists on every page request or
+  WebDAV interaction. It is also supposed to speed up the Admin → User page or
+  list of users to share with, once it is populated. Saving the configuration
+  empties the cache (changes are not necessary). The time is given in seconds.
+
+  Note that almost every PHP request would require to build up a new connection
+  to the LDAP server. If you require a most up-to-dateness it is recommended not
+  to totally switch off the cache, but define a minimum life time of 15s.
+
+  * Example (10 min): *600*
+
+Directory Settings
+~~~~~~~~~~~~~~~~~~~
+
+.. figure:: ../images/ldap-advanced-settings-connection-settings-oc5.png
+
+   LDAP Advanced Settings, section Directory Settings
 
 User Display Name Field:
-  The attribute that should be used as ownCloud user name. ownCloud allows
-  a limited set of characters **(a-zA-Z0-9.-_@)**, every other character
-  will be replaced in ownCloud. Once a user name is assigned, it will not be
-  changed, i.e. changing this value will only have effect to new LDAP users.
-  The default, uid, does not exist in AD, switch to **cn**, for example,
-  otherwise you will not see any users.
+  The attribute that should be used as display name in ownCloud. Prior to
+  ownCloud 5 it was used as internal user name. This is not the case anymore.
+  It also means that display names are not permanent in ownCloud, i.e. if the
+  attribute's value changes in LDAP, it changes in ownCloud too. Display names
+  to not need to be unique, but you rather want to specify a more or less unique
+  attribute here to avoid confusion.
 
-  *  Example: displayName
+  *  Example: *displayName*
+
+Base User Tree:
+  The base DN of LDAP, from where all users can be reached. It needs to be given
+  completely despite to the Base DN from the Basic settings. You can specifiy
+  multiple base trees, one in each line.
+
+  * Example:
+
+    | *cn=programmers,dc=my-company,dc=com*
+    | *cn=designers,dc=my-company,dc=com*
+
+User Search Attributes:
+  These attributes are used when a search for users with a search string is
+  done. This happens, for instance, in the share dialogue. By default the user
+  display name attribute as specified above is being used. Multiple attributes
+  can be given, one in each line.
+
+  * Example:
+
+    | *displayName*
+    | *mail*
 
 Group Display Name Field:
   The attribute that should be used as ownCloud group name. ownCloud allows a
@@ -149,44 +215,69 @@ Group Display Name Field:
   replaced in ownCloud. Once a group name is assigned, it will not be changed,
   i.e. changing this value will only have effect to new LDAP groups.
 
-  * Example: **cn**
+  * Example: *cn*
 
-Quota Attribute:
-  ownCloud can read an LDAP attribute and set the user quota
-  there from. Specify the attribute here, otherwise keep it empty.
+Base Group Tree:
+  The base DN of LDAP, from where all groups can be reached.
+  It needs to be given completely despite to the Base DN from the Basic
+  settings. You can specifiy multiple base trees, one in each line.
 
-  * Example: ownCloudQuota
-  * formerly Quota Field in ownCloud 4.0
+  * Example:
+
+    | *cn=barcelona,dc=my-company,dc=com*
+    | *cn=madrid,dc=my-company,dc=com*
+
+Group Search Attributes:
+  These attributes are used when a search for groups with a search string is
+  done. This happens, for instance, in the share dialogue. By default the group
+  display name attribute as specified above is being used. Multiple attributes
+  can be given, one in each line.
+
+  * Example:
+
+    | *cn*
+    | *description*
+
+Group Member association:
+  The attribute that is used to indicate group memberships, i.e. the attribute
+  used by LDAP groups to refer to their users.
+
+  * Example: *uniquemember*
+
+Special Attributes
+~~~~~~~~~~~~~~~~~~
+
+.. figure:: ../images/ldap-advanced-settings-special-attributes-oc5.png
+
+   LDAP Advanced Settings, section Special Attributes
+
+Quota Field:
+  ownCloud can read an LDAP attribute and set the user quota according to its
+  value. Specify the attribute here, otherwise keep it empty. The attribute
+  shall return human readable values, e.g. "2 GB".
+
+  * Example: *ownCloudQuota*
 
 Quota Default:
   Override ownCloud default quota for LDAP users who do not
   have a quota set in the attribute given above.
 
-  * Example: 15 GB
+  * Example: *15 GB*
 
-Email Attribute:
+Email Field:
   ownCloud can read an LDAP attribute and set the user email
   there from. Specify the attribute here, otherwise keep it empty.
 
-  * Example: email
-
-Cache Time-To-Live:
-  We introduced a cache to avoid unnecessary LDAP traffic,
-  for example lookups check whether the users exists on every page request or
-  WebDAV interaction. It is also supposed to speed up the Admin → User page or
-  list of users to share with, once it is populated. Changing this setting
-  empties the Cache. The time is given in seconds.
-
-  * Example (10 min): 600
+  * Example: *mail*
 
 User Home Folder Naming Rule:
   By default, the ownCloud creates the user
   directory, where all files and meta data are kept, according to the ownCloud
   user name. You may want to override this setting and name it after an
-  attribute’s value. The attribute given can also return an absolute path, e.g.
-  ``/mnt/storage43/alice`` . Leave it empty for default behaviour.
+  attribute's value. The attribute given can also return an absolute path, e.g.
+  ``/mnt/storage43/alice``. Leave it empty for default behavior.
 
-  * Example: cn
+  * Example: *cn*
 
 Microsoft Active Directory
 --------------------------
