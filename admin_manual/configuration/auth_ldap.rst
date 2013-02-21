@@ -150,11 +150,6 @@ Case insensitive LDAP server (Windows):
 Turn off SSL certificate validation:
   Turns of check of valid SSL certificates. Use it – if needed –
   for testing, only!
-  A common mistake with SSL certificates is that they may not be known to PHP.
-  If you have trouble with certificate validation make sure that you have the
-  certificate of the server installed. If it still fails, make sure that in the
-  system's LDAP configuration file (usually  **/etc/ldap/ldap.conf** on Linux)
-  the certificate is announced using a **TLS_CACERT /path/to/cert** line.
 
   * Example: *[ ]*
 
@@ -279,15 +274,6 @@ User Home Folder Naming Rule:
 
   * Example: *cn*
 
-Microsoft Active Directory
---------------------------
-
-In case you want to connect to a Windows AD, you must change some values in the Advanced tab.
-
-* The default in User Display Name Field will not work with Active Directory.
-* The Group Member association must be set to “member (AD)”
-* Check Case insensitive LDAP server (Windows)
-
 Testing the configuration
 -------------------------
 
@@ -312,6 +298,47 @@ inconvenience.
 
 In this case, Save the settings. You can check if the users and groups are
 fetched correctly on the Settings → Users page.
+
+Troubleshooting, Tips and Tricks
+--------------------------------
+
+SSL Certificate Verification (LDAPS, TLS)
+-----------------------------------------
+
+A common mistake with SSL certificates is that they may not be known to PHP.
+If you have trouble with certificate validation make sure that
+
+* you have the certificate of the server installed on the ownCloud server
+* the certificate is announced in the system's LDAP configuration file (usually
+  */etc/ldap/ldap.conf* on Linux, *C:\\openldap\\sysconf\\ldap.conf* or
+  *C:\\ldap.conf* on Windows) using a **TLS_CACERT /path/to/cert** line.
+* Using LDAPS, also make sure that the port is correctly configured (by default
+  686)
+
+Microsoft Active Directory
+--------------------------
+
+In case you want to connect to a Windows AD, you must change some values in the Advanced tab.
+
+* The default in User Display Name Field will not work with Active Directory.
+* The Group Member association must be set to “member (AD)”
+* Check Case insensitive LDAP server (Windows)
+
+Duplicating Server Configurations
+---------------------------------
+
+In case you have a working configuration and want to create a similar one or
+"snapshot" configurations before modifying them you can do the following:
+
+#. Go to the **LDAP Basic** tab
+#. On **Server Configuration** choose *Add Server Configuration*
+#. Answer the question *Take over settings from recent server configuration?*
+   with *yes*.
+#. (optional) Switch to **Advanced** tab and uncheck **Configuration Active**
+   in the *Connection Settings*, so the new configuration is not used on Save
+#. Click on **Save**
+
+Now you can modify the configuration and enable it if you wish.
 
 ownCloud LDAP Internals
 -----------------------
@@ -343,3 +370,12 @@ have some of those queries cached and save those requests and traffic. It is
 highly recommended to have the cache filled for a small amount of time, which
 comes also very handy when using the sync client, as it is yet another request
 for PHP.
+
+Handling with Backup Server
+---------------------------
+
+When ownCloud is not able to contact the main server, he will be treated as
+offline and no connection attempts will be done for the time specified in
+**Cache Time-To-Live**. If a backup server is configured, it will be connected
+instead. If you plan a maintained downtime, check **Disable Main Server** for
+the time being to avoid unnecessary connection attempts every now and then.
