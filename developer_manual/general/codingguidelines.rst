@@ -59,7 +59,7 @@ All API methods need to be marked with `PHPDoc <http://en.wikipedia.org/wiki/PHP
    * @since 4.5
    * @return string a name of a user
    */
-  public function myMethod(Controller $controller, API $api){
+  public function myMethod(Controller $controller, API $api) {
     // ...
   }
 
