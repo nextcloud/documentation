@@ -59,6 +59,7 @@ This chapter covers ownCloud and Webserver configuration.
 * :doc:`configuration/configuration_knowledgebase`
 * :doc:`configuration/configuration_logging`
 * :doc:`configuration/configuration_mail`
+* :doc:`configuration/configuration_overwrite`
 * :doc:`configuration/custom_mount_config`
 * :doc:`configuration/custom_user_backend`
 * :doc:`configuration/auth_ldap`
