@@ -1,5 +1,5 @@
-Overwrite Configuration
-=======================
+Reverse Proxy Configuration
+===========================
 
 The automatic hostname, protocol or webroot detection of ownCloud can fail in certain reverse proxy situations. This configuration allows to manually override the automatic detection.
 
