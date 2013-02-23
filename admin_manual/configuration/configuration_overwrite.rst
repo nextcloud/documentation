@@ -19,8 +19,11 @@ If you want to access your ownCloud installation **http://domain.tld/owncloud** 
 .. code-block:: php
 
   <?php
-
+  $CONFIG = array (
     "overwritehost"     => "ssl-proxy.tld",
     "overwriteprotocol" => "https",
     "overwritewebroot"  => "/domain.tld/owncloud",
     "overwritecondaddr" => "^10\.0\.0\.1$",
+  );
+
+.. note:: If you want to use the SSL proxy during installation you have to create the :file:`config/config.php` otherwise you have to extend to existing **$CONFIG** array.
