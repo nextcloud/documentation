@@ -12,6 +12,7 @@ Configuration
    configuration_knowledgebase
    configuration_logging
    configuration_mail
+   configuration_overwrite
    custom_mount_config
    custom_user_backend
    auth_ldap
