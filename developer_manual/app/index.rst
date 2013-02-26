@@ -20,5 +20,3 @@ App Developement
    externalapi
    filesystem
    hooks
-   share-api
-   vcategories

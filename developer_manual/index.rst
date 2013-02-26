@@ -103,8 +103,6 @@ ownCloud APIs that are ready to be built into the app
 * :doc:`app/externalapi`
 * :doc:`app/filesystem`
 * :doc:`app/hooks`
-* :doc:`app/share-api`
-* :doc:`app/vcategories`
 
 
 Core Developement

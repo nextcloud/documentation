@@ -6,6 +6,4 @@ ownCloud API
    :maxdepth: 1
 
    templates
-   vcategories
    view
-   share
