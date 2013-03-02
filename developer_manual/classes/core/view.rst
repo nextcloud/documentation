@@ -55,7 +55,7 @@ View
     :returns string:
 
 
-    get the mountpoint of the storage object for a path( note: because a storage is not always mounted inside the fakeroot, the returned mountpoint is relative to the absolute root of the filesystem and doesn't take the chroot into account
+    get the mountpoint of the storage object for a path( note: because a storage is not always mounted inside the fakeroot, thereturned mountpoint is relative to the absolute root of the filesystemand doesn't take the chroot into account )
 
 
   .. php:method:: resolvePath($path)
@@ -73,7 +73,7 @@ View
     :returns string:
 
 
-    return the path to a local version of the filewe need this because we can't know if a file is stored local or not from outside the filestorage and for some purposes a local file is needed
+    return the path to a local version of the filewe need this because we can't know if a file is stored local or not fromoutside the filestorage and for some purposes a local file is needed
 
 
   .. php:method:: getLocalFolder($path)

@@ -19,7 +19,7 @@ Handles all the dependency injection, controllers and output flow
     :param string $controllerName: the name of the controller under which it is                              stored in the DI container
     :param string $methodName: the method that you want to call
     :param array $urlParams: an array with variables extracted from the routes
-    :param \\Pimple $container: an instance of a pimple container. if not passed, a                         new one will be instantiated. This can be used to                         swap or overwrite objects in the container.
+    :param \\Pimple $container: an instance of a pimple container.
 
 
     Shortcut for calling a controller method and printing the result

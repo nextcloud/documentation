@@ -2,7 +2,7 @@ DownloadResponse
 ================
 
 
-Prompts the user to download the a textfile
+Prompts the user to download the a file
 
 
 .. php:namespace:: OCA\AppFramework\Http

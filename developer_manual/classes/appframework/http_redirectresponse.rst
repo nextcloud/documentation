@@ -2,7 +2,7 @@ RedirectResponse
 ================
 
 
-Prompts the user to download the a textfile
+Redirects to a different URL
 
 
 .. php:namespace:: OCA\AppFramework\Http
