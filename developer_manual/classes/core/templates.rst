@@ -64,11 +64,10 @@ OC_Template
      ?>
 
 
-  .. php:method:: assign($key, $value[, $sanitizeHTML=true])
+  .. php:method:: assign($key, $value)
 
    :param string $key: the key under which the variable can be accessed in the template
    :param $value: the value that we want to pass
-   :param bool $sanitizeHTML: false, if data shouldn't get passed through htmlentities
    :returns: bool
 
    This function assigns a variable. It can be accessed via $_[$key] in the template. If the key existed before, it will be overwritten
