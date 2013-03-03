@@ -22,8 +22,10 @@ Using ownCloud stable
 Using ownCloud development version
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-ownCloud uses `GitHub`_ for developing its code. To be able to participate or check out the code You will have to sign up on `GitHub`_ and install Git.
+First `set up your webserver and database <http://doc.owncloud.org/server/5.0/admin_manual/installation.html>`_ (Section: Prerequisites).
 
+ownCloud uses `GitHub`_ for developing its code. To be able to participate or check out the code You will have to sign up on `GitHub`_ and install Git.
+>
 If you need help with Git, contact the `GitHub Help Page`_.
 
 To get started you'll need to clone the basic git repositories into your web directory. Depending on your distro this will either be **/var/www** or **/srv/http** and the apache user and group for the chown command will either be **http**, **www-data** or **apache**
