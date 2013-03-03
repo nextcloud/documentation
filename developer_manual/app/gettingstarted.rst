@@ -45,6 +45,8 @@ Now restart your apache server and get ready to `set up ownCloud`_ at http://loc
 
 Enable debugging mode
 ---------------------
+.. note:: Do not enable this for production! Only for developement!
+
 To disable JavaScript and CSS caching you'll have to turn on debugging in :file:`owncloud/config/config.php` by adding this to the end of the file::
 
   DEFINE('DEBUG', true);
