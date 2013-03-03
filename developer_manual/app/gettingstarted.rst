@@ -37,7 +37,7 @@ To get started you'll need to clone the basic git repositories into your web dir
   git clone https://github.com/owncloud/core.git owncloud
   git clone https://github.com/owncloud/apps.git apps
   git clone https://github.com/owncloud/3rdparty.git 3rdparty
-  sudo mkdir owncloud/data
+  mkdir owncloud/data
   sudo chown -R http:http owncloud/config
   sudo chown -R http:http owncloud/data
   sudo chown -R http:http owncloud/apps
