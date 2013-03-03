@@ -1,5 +1,8 @@
 Custom Mount Configuration
 ==========================
+
+   .. todo:: This is outdated - since ownCloud 5.0 the data is stored in a JSON format and not anylonger as PHP array.
+
 Since ownCloud 4.0 it is possible to configure the filesystem to mount external
 storage providers into ownCloud's virtual file system. You can configure the
 file system by creating and editing :file:`config/mount.php`, the configuration
