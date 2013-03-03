@@ -22,7 +22,7 @@ Using ownCloud stable
 Using ownCloud development version
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-First `set up your webserver and database <http://doc.owncloud.org/server/5.0/admin_manual/installation.html>`_ (Section: Prerequisites).
+First `set up your webserver and database <http://doc.owncloud.org/server/5.0/admin_manual/installation.html>`_ (**Section**: Manual Installation - Prerequisites).
 
 ownCloud uses `GitHub`_ for developing its code. To be able to participate or check out the code You will have to sign up on `GitHub`_ and install Git.
 >
