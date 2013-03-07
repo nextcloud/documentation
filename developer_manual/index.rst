@@ -66,7 +66,6 @@ Database Access
 Encapsulate SQL queries into objects to be able to change them easily.
 
 * :doc:`app/database` | :php:class:`OCA\\AppFramework\\Db\\Mapper`
-* :doc:`app/data-migration`
 
 Templates
 ---------
@@ -103,6 +102,7 @@ ownCloud APIs that are ready to be built into the app
 * :doc:`app/externalapi`
 * :doc:`app/filesystem`
 * :doc:`app/hooks`
+* :doc:`app/data-migration`
 
 
 Core Developement
