@@ -12,7 +12,6 @@ App Developement
    routes
    controllers
    database
-   data-migration
    templates
    static
    unittesting
@@ -20,3 +19,4 @@ App Developement
    externalapi
    filesystem
    hooks
+   data-migration
