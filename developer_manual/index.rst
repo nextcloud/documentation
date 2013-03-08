@@ -44,7 +44,17 @@ General instructions how to build your apps using the AppFramework app.
 
 If the app is finished, it can be published in the `ownCloud app store <http://apps.owncloud.com/>`_
 
+Tutorial
+--------
+
 * :doc:`app/gettingstarted`
+
+You can choose between the traditional and MVC style (App Framework) approach. In case of the App Framework, the App Framework app has to be installed and enabled.
+
+* :doc:`app/apptutorial` | :doc:`app/appframeworktutorial`
+
+Basics
+------
 * :doc:`app/settings`
 * :doc:`app/classloader`
 * :doc:`app/api` | :php:class:`OCA\\AppFramework\\Core\\API`
@@ -142,3 +152,4 @@ Index and Tables
 .. _Symfony Routing: http://symfony.com/doc/current/components/routing/introduction.html
 .. _Pimple: http://pimple.sensiolabs.org/
 .. _PHPUnit: http://www.phpunit.de/manual/current/en/
+

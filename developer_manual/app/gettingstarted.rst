@@ -1,5 +1,5 @@
-Getting Started With App Development
-====================================
+Getting Started
+===============
 
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
@@ -8,19 +8,19 @@ Before you start, please check if there already is a `similar app <http://apps.o
 This tutorial uses the App Framework app, a small framework that makes developing apps easier. To use it, it has to be enabled on the apps settings page.
 
 
-Getting Started
+Get the sources
 ---------------
 There are two ways to obtain ownCloud: 
 
 * Using the stable version
 * Using the developement version from `GitHub`_
 
-Using ownCloud stable
-~~~~~~~~~~~~~~~~~~~~~
+Using stable
+~~~~~~~~~~~~
 `Install the current version of ownCloud <http://doc.owncloud.org/server/5.0/admin_manual/installation.html>`_ and create a new directory in the **apps/** folder.  
 
-Using ownCloud development version
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Using development version (recommended)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 First `set up your webserver and database <http://doc.owncloud.org/server/5.0/admin_manual/installation.html>`_ (**Section**: Manual Installation - Prerequisites).
 
@@ -61,50 +61,3 @@ To disable JavaScript and CSS caching you'll have to turn on debugging in :file:
 .. _set up ownCloud: http://doc.owncloud.org/server/5.0/admin_manual/installation.html
 
 
-Create your app
----------------
-The best way to create your application is to simply modify the `Advanced Apptemplate <https://github.com/owncloud/apps/tree/master/apptemplateadvanced>`_.
-
-To do that simply make a copy and :ref:`modify <modify>` the Advanced Apptemplate:
-
-.. code-block:: bash
-
-  cd /var/www/apps
-  sudo cp -r apptemplateadvanced yourappname
-  sudo chown -R youruser:yourgroup yourappname
-
-To enable your app, simply link it into the apps directory:
-
-
-.. code-block:: bash
-
-  sudo ln -s /var/www/apps/yourappname /var/www/owncloud/apps/yourappname
-
-or create a second apps directory in your :file:`owncloud/config/config.php` (see :doc:`../core/configfile`)
-
-.. note:: Don't forget to enable your app and the App Framework app on the apps settings page!
-
-Now change into your app directory::
-
-  cd /var/www/apps/yourappname
-
-
-.. _modify:
-
-Modify Advanced Apptemplate
----------------------------
-You will want to replace the boilerplate code in the Apptemplate.
-
-The following things will need to be changed:
-
-* In every file: AGPL Headers
-* In every file: **namespace OCA\\AppTemplateAdvanced** to **namespace OCA\\YourAppName**
-* :file:`dependencyinjection/dicontainer.php`: The **parent::__construct('apptemplateadvanced')** to **parent::__construct('yourappname')**
-* :file:`appinfo/info.xml`: :ref:`your personal settings <xml>`
-* :file:`appinfo/app.php`: the correct navigation settings
-* :file:`appinfo/routes.php`: the name of the routes
-* :file:`coffee/app.coffee`: the route names
-
-.. todo::
-
-  Provide some sed commands for simple transformation

@@ -6,6 +6,8 @@ App Developement
    :maxdepth: 1
 
    gettingstarted
+   apptutorial
+   appframeworktutorial
    settings
    classloader
    api
