@@ -6,6 +6,7 @@ General
    :maxdepth: 1
 
    debugging
+   security
    codereviews
    codingguidelines
    kanban

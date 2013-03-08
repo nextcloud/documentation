@@ -30,6 +30,7 @@ General
 =======
 This chapter contains general guidelines and tutorials about
 
+* :doc:`general/security`
 * :doc:`general/codingguidelines`
 * :doc:`general/codereviews`
 * :doc:`general/debugging`
