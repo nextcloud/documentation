@@ -71,13 +71,13 @@ Avoid manipulating the HTML directly via JavaScript, this often leads to XSS sin
 
 .. code-block:: js
 
-    var html = '<li>' + username + '</li>"';
+  var html = '<li>' + username + '</li>"';
 
 If you **really** want to use JavaScript for something like this use `escapeHTML` to sanitize the variables:
 
 .. code-block:: js
 
-    var html = '<li>' + escapeHTML(username) + '</li>';
+  var html = '<li>' + escapeHTML(username) + '</li>';
 
 An even better way to make your app safer is to use the jQuery builtin function **$.text()** instead of **$.html()**.
 
@@ -152,15 +152,15 @@ PHP offers the following functions to escape user input:
 
 .. code-block:: php
 
-   <?php
-   system('ls '.$_GET['dir']);
+  <?php
+  system('ls '.$_GET['dir']);
 
 **DO**
 
 .. code-block:: php
 
-   <?php
-   system('ls '.escapeshellarg($_GET['dir']));
+  <?php
+  system('ls '.escapeshellarg($_GET['dir']));
 
 Auth bypass / Privilege escalations
 -----------------------------------
@@ -193,7 +193,6 @@ To prevent CSRF in an app, be sure to call the following method at the top of al
 .. code-block:: php
 
   <?php
-  
   OCP\JSON::callCheck();
 
 If you are using the App Framework, every controller method is automatically checked for CSRF unless you explicitely exclude it by setting the @CSRFExemption annotation before the controller method, see :doc:`../app/controllers`
@@ -208,15 +207,15 @@ Always validate the URL before redirecting if the requested URL is on the same d
 
 .. code-block:: php
 
-   <?php
-   header('Location:'. $_GET['redirectURL']);
+  <?php
+  header('Location:'. $_GET['redirectURL']);
 
 **DO**
 
 .. code-block:: php
 
-   <?php
-   header('Location: http://www.example.com'. $_GET['redirectURL']);
+  <?php
+  header('Location: http://www.example.com'. $_GET['redirectURL']);
 
 Getting help
 ------------
