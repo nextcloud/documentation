@@ -1,5 +1,5 @@
-Security Guideline
-==================
+Security Guidelines
+===================
 
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>, Lukas Reschke <lukas@statuscode.ch>
 
