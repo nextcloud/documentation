@@ -9,6 +9,6 @@ This tutorial contains the traditional approach to write an app. The benefits of
 The disadvantages of this approach are:
 
 * No automatic security checks: privilege checks have to be included at the top of each file
-* No automatic XSS escaping: :class:`OC_Template` does require manual escaping of output
+* No automatic XSS escaping: :php:class:`OC_Template` does require manual escaping of output
 * Hard to unittest: Using files instead of Controllers makes it hard to write unittests for the whole application
 
