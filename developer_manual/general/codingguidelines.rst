@@ -116,14 +116,14 @@ Control Structures
   <?php
 
   // single line if
-  if($myVar === 'hi') {
+  if ($myVar === 'hi') {
       $myVar = 'ho';
   } else {     
       $myVar = 'bye';
   }
 
   // long ifs
-  if(    $something === 'something'
+  if (   $something === 'something'
       || $condition2
       && $condition3
   ) {
@@ -131,11 +131,11 @@ Control Structures
   }
 
   // for loop
-  for($i=0; $i<4; $i++) {
+  for ($i=0; $i<4; $i++) {
       // your code
   }
 
-  switch($condition) {
+  switch ($condition) {
       case 1:
           // action1
           break;
@@ -289,14 +289,14 @@ Control Structures
 .. code-block:: javascript
 
   // single line if
-  if(myVar === 'hi') {
+  if (myVar === 'hi') {
       myVar = 'ho';
   } else {     
       myVar = 'bye';
   }
 
   // long ifs
-  if(    something === 'something'
+  if (   something === 'something'
       || condition2
       && condition3
   ) {
@@ -304,12 +304,12 @@ Control Structures
   }
 
   // for loop
-  for(var i=0; i<4; i++) {
+  for (var i=0; i<4; i++) {
       // your code
   }
 
   // switch
-  switch(value) {
+  switch (value) {
 
       case 'hi':
           // yourcode
