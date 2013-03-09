@@ -109,7 +109,6 @@ Control Structures
 * Always use { } for one line ifs
 * Split long ifs into multiple lines
 * Always use break in switch statements and prevent a default block with warnings if it shouldn't be accessed
-* Do not put spaces between variable and assignments in for loops
 
 .. code-block:: php
 
@@ -131,7 +130,7 @@ Control Structures
   }
 
   // for loop
-  for ($i=0; $i<4; $i++) {
+  for ($i = 0; $i < 4; $i++) {
       // your code
   }
 
@@ -282,7 +281,6 @@ Control Structures
 * Always use { } for one line ifs
 * Split long ifs into multiple lines
 * Always use break in switch statements and prevent a default block with warnings if it shouldn't be accessed
-* Do not put spaces between variable and assignments in for loops
 
 **DO**:
 
@@ -304,7 +302,7 @@ Control Structures
   }
 
   // for loop
-  for (var i=0; i<4; i++) {
+  for (var i = 0; i < 4; i++) {
       // your code
   }
 
