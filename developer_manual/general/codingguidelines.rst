@@ -118,6 +118,8 @@ Control Structures
   // single line if
   if($myVar === 'hi') {
       $myVar = 'ho';
+  } else {     
+      $myVar = 'bye';
   }
 
   // long ifs
@@ -289,6 +291,8 @@ Control Structures
   // single line if
   if(myVar === 'hi'){
       myVar = 'ho';
+  } else {     
+      myVar = 'bye';
   }
 
   // long ifs
