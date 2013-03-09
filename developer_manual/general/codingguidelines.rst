@@ -65,7 +65,7 @@ All API methods need to be marked with `PHPDoc <http://en.wikipedia.org/wiki/PHP
 
 Objects, Functions, Arrays & Variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Use Camelcase for Objects, Pascal case for functions and variables. If you set a default function/method parameter, dont use spaces
+Use Pascal case for Objects, Camel case for functions and variables. If you set a default function/method parameter, dont use spaces
 
 .. code-block:: javascript
 
@@ -109,19 +109,20 @@ Control Structures
 * Always use { } for one line ifs
 * Split long ifs into multiple lines
 * Always use break in switch statements and prevent a default block with warnings if it shouldn't be accessed
-* Do not put spaces between variable and assignments in for loops
 
 .. code-block:: php
 
   <?php
 
   // single line if
-  if($myVar === 'hi') {
+  if ($myVar === 'hi') {
       $myVar = 'ho';
+  } else {     
+      $myVar = 'bye';
   }
 
   // long ifs
-  if(    $something === 'something'
+  if (   $something === 'something'
       || $condition2
       && $condition3
   ) {
@@ -129,11 +130,11 @@ Control Structures
   }
 
   // for loop
-  for($i=0; $i<4; $i++) {
+  for ($i = 0; $i < 4; $i++) {
       // your code
   }
 
-  switch($condition) {
+  switch ($condition) {
       case 1:
           // action1
           break;
@@ -169,11 +170,11 @@ In general take a look at `JSLint <http://www.jslint.com/lint.html>`_ without th
   // set up namespace for sharing across multiple files
   var MyApp = MyApp || {};
 
-  (function(window, $, exports){
+  (function(window, $, exports) {
       'use strict';
 
       // if this function or object should be global, attach it to the namespace
-      exports.myGlobalFunction = function(params){
+      exports.myGlobalFunction = function(params) {
           return params;
       };
 
@@ -187,7 +188,7 @@ In general take a look at `JSLint <http://www.jslint.com/lint.html>`_ without th
   // This does not only make everything global but you're programming
   // JavaScript like C functions with namespaces
   MyApp = {
-      myFunction:function(params){
+      myFunction:function(params) {
           return params;
       },
       ...
@@ -202,17 +203,17 @@ This is how you'd do inheritance in JavaScript:
 .. code-block:: javascript
 
   // create parent object and bind methods to it
-  var ParentObject = function(name){
+  var ParentObject = function(name) {
       this.name = name;
   };
 
-  ParentObject.prototype.sayHello = function(){
+  ParentObject.prototype.sayHello = function() {
       console.log(this.name);
   }
 
 
   // create childobject, call parents constructor and inherit methods
-  var ChildObject = function(name, age){
+  var ChildObject = function(name, age) {
       ParentObject.call(this, name);
       this.age = age;
   };
@@ -220,7 +221,7 @@ This is how you'd do inheritance in JavaScript:
   ChildObject.prototype = Object.create(ParentObject.prototype);
 
   // overwrite parent method
-  ChildObject.prototype.sayHello = function(){
+  ChildObject.prototype.sayHello = function() {
       // call parent method if you want to
       ParentObject.prototype.sayHello.call(this);
       console.log('childobject');
@@ -235,15 +236,15 @@ This is how you'd do inheritance in JavaScript:
 
 Objects, Functions & Variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Use Camelcase for Objects, Pascal case for functions and variables.
+Use Pascal case for Objects, Camel case for functions and variables.
 
 .. code-block:: javascript
 
-  var MyObject = function(){
+  var MyObject = function() {
       this.attr = "hi";
   };
 
-  var myFunction = function(){
+  var myFunction = function() {
       return true;
   };
 
@@ -280,32 +281,33 @@ Control Structures
 * Always use { } for one line ifs
 * Split long ifs into multiple lines
 * Always use break in switch statements and prevent a default block with warnings if it shouldn't be accessed
-* Do not put spaces between variable and assignments in for loops
 
 **DO**:
 
 .. code-block:: javascript
 
   // single line if
-  if(myVar === 'hi'){
+  if (myVar === 'hi') {
       myVar = 'ho';
+  } else {     
+      myVar = 'bye';
   }
 
   // long ifs
-  if(    something === 'something'
+  if (   something === 'something'
       || condition2
       && condition3
-  ){
+  ) {
     // your code
   }
 
   // for loop
-  for(var i=0; i<4; i++){
+  for (var i = 0; i < 4; i++) {
       // your code
   }
 
   // switch
-  switch(value){
+  switch (value) {
 
       case 'hi':
           // yourcode
