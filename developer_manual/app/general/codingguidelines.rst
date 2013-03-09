@@ -65,7 +65,7 @@ All API methods need to be marked with `PHPDoc <http://en.wikipedia.org/wiki/PHP
 
 Objects, Functions, Arrays & Variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Use Camelcase for Objects, Pascal case for functions and variables. If you set a default function/method parameter, dont use spaces
+Use Pascal case for Objects, Camel case for functions and variables. If you set a default function/method parameter, dont use spaces
 
 .. code-block:: javascript
 
@@ -237,7 +237,7 @@ This is how you'd do inheritance in JavaScript:
 
 Objects, Functions & Variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Use Camelcase for Objects, Pascal case for functions and variables.
+Use Pascal case for Objects, Camel case for functions and variables.
 
 .. code-block:: javascript
 
