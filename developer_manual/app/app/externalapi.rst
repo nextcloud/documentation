@@ -7,7 +7,7 @@ Introduction
 ------------
 The external API inside ownCloud allows third party developers to access data
 provided by ownCloud apps. ownCloud version 5.0 will follow the `OCS v1.7
-specification <specification: http://www.freedesktop.org/wiki/Specifications/open-collaboration-services-1.7>`_ (draft).
+specification <http://www.freedesktop.org/wiki/Specifications/open-collaboration-services-1.7>`_ (draft).
 
 Usage
 -----
