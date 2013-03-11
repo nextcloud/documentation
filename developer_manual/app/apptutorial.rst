@@ -5,10 +5,11 @@ This tutorial contains the traditional approach to write an app. The benefits of
 
 * Not dependant on the App Framework app
 * Easy and fast to create an app
+* Typical PHP style like
 
 The disadvantages of this approach are:
 
 * No automatic security checks: privilege checks have to be included at the top of each file
 * No automatic XSS escaping: :php:class:`OC_Template` does require manual escaping of output
 * Hard to unittest: Using files instead of Controllers makes it hard to write unittests for the whole application
-
+* Hard to maintain: Using files instead of functions makes the design inflexible
