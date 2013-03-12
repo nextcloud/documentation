@@ -6,19 +6,20 @@ App Developement Using the App Framework
    :maxdepth: 1
 
    tutorial
+   ../app/info
    ../app/classloader
    container
-   api
    routes
    controllers
+   ../app/schema
    database
    templates
-   javascript
    ../app/css
+   ../app/javascript
+   angular
    unittesting
    middleware
-   ../app/info
-   externalapi
-   filesystem
-   hooks
-   data-migration
+   ../app/externalapi
+   ../app/filesystem
+   ../app/hooks
+   ../app/data-migration

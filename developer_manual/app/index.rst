@@ -1,14 +1,49 @@
+.. _index:
+
 ================
 App Developement
 ================
 
-.. toctree::
-   :maxdepth: 1
+.. _Junior Jobs: http://owncloud.org/dev/junior-jobs/
 
-   tutorial
-   classloader
-   info
-   externalapi
-   filesystem
-   hooks
-   data-migration
+
+.. _git crash course: http://git-scm.com/course/svn.html
+
+.. _Twig Templates: http://twig.sensiolabs.org/
+.. _Symfony Routing: http://symfony.com/doc/current/components/routing/introduction.html
+.. _Pimple: http://pimple.sensiolabs.org/
+.. _PHPUnit: http://www.phpunit.de/manual/current/en/
+
+* Take a job from our `Junior Jobs`_
+
+* :doc:`general/security`
+* :doc:`general/codingguidelines`
+* :doc:`general/codereviews`
+* :doc:`general/debugging`
+* :doc:`general/kanban`
+* :doc:`general/angular` | `AngularJS Documentation <http://angularjs.org/>`_
+* :doc:`general/dependencyinjection` | `Pimple`_
+
+App Developement
+================
+
+* :doc:`appintro/gettingstarted`
+* :doc:`appintro/createapp`
+
+Tutorial
+--------
+You can choose between the traditional and MVC style (App Framework) approach. 
+
+* :doc:`app/tutorial`
+
+* :doc:`appframework/tutorial`
+
+App Framework
+-------------
+
+
+
+API Documentation
+=================
+* :doc:`classes/appframework/index`
+* :doc:`classes/core/index`

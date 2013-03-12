@@ -1,5 +1,5 @@
-Create An App
-=============
+Creating An App
+===============
 
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
@@ -71,8 +71,12 @@ Start coding
 ------------
 The basic files are now in place and the app is enabled. There are two ways to create the app:
 
-* :doc:`Use ownClouds app API <tutorial>`
-* :doc:`Use the App Framework app <../appframework/tutorial>`
+* Use the :doc:`ownCloud app API <../app/tutorial>`
+* Use the :doc:`App Framework app <../appframework/tutorial>`
+
+If you are new to programming and want to create an app fast you migth want to use the ownCloud app API, if you are an advanced programmer or used to frameworks you might want to use the App Framework App.
+
+To simplify the decision see this comparison chart:
 
 +-----------------+-------------------------+--------------------------------+
 | Criteria        | ownCloud app API        | App Framework                  |
@@ -85,7 +89,7 @@ The basic files are now in place and the app is enabled. There are two ways to c
 |                 |                         | ../general/dependencyinjection`|
 |                 |                         | and `TDD`_ tools               |
 +-----------------+-------------------------+--------------------------------+
-| Maintainability | hard                    | medium                         |
+| Maintainability | hard                    | easy                           |
 +-----------------+-------------------------+--------------------------------+
 | Templates       | :php:class:`OC_Template`| :php:class:`OC_Template`       |
 |                 |                         | and `Twig`_                    |

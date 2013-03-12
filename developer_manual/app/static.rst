@@ -1,9 +1,17 @@
-JavaScript and CSS
-==================
+Static content
+==============
 
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
-Static content is compressed by ownCloud and therefore needs to be added in the controller. If the CSS or JavaScript does not seem to get updated, check if the debug mode is enabled. To enable it see :doc:`gettingstarted`
+Static content consists of:
+
+* **img/**: all images
+* **js/**: all JavaScript files
+* **css/**: all CSS files
+
+.. note:: CSS and JavaScript are compressed by ownCloud so if the CSS or JavaScript do not seem to get updated, check if the debug mode is enabled. To enable it see :doc:`../appintro/gettingstarted`
+
+
 
 JavaScript and CSS
 ------------------
