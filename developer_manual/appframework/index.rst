@@ -5,8 +5,6 @@ App Developement Using the App Framework
 .. toctree::
    :maxdepth: 1
 
-   ../app/gettingstarted
-   ../app/createapp
    tutorial
    ../app/classloader
    container
