@@ -1,27 +1,13 @@
 App Tutorial (App Framework)
 ============================
-This tutorial contains the MVC approach to write an app. The benefits of this approach are:
 
-* Highest authentication level and security checks are enforced by default and have to explicitely be turned off
-* Possiblity to use Twig templates which escape XSS by default
-* Easy to test: The App Framework allows to unittest the whole app by using :doc:`../general/dependencyinjection` 
-* Comes with AngularJS JavaScript code
-* MVC style 
+.. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
-The disadvantages of this approach are:
+This tutorial contains the MVC approach to write an app. The goal of this tutorial is a simple notes app. 
 
-* App Framework app has to be installed
-* Requires to read more documentation
-
-Goal
-----
-The goal of this tutorial is a simple notes app. 
-
-Create basic files
-------------------
-First create a new folder inside your apps directry and name it **mynotes**. The name of the folder is important because it will be used for the :doc:`classloader` to include your classes.
-
-Next create the :file:`appinfo/app.php`. This file will always loaded for every app and can for instance be used to load additional JavaScript for the files app:
+Create an app entry
+-------------------
+Depending on the . This file will always loaded for every app and can for instance be used to load additional JavaScript for the files app:
 
 :file:`appinfo/app.php`
 
@@ -34,43 +20,25 @@ Next create the :file:`appinfo/app.php`. This file will always loaded for every 
   $api = new \OCA\AppFramework\Core\API('mynotes');
 
   $api->addNavigationEntry(array(
-  	
-  	// the string under which your app will be referenced in owncloud
-  	'id' => $api->getAppName(),
+    
+    // the string under which your app will be referenced in owncloud
+    'id' => $api->getAppName(),
 
-  	// sorting weight for the navigation. The higher the number, the higher
-  	// will it be listed in the navigation
-  	'order' => 10,
-  	
-  	// the route that will be shown on startup
-  	'href' => $api->linkToRoute('mynotes_index'),
-  	
-  	// the icon that will be shown in the navigation
-  	'icon' => $api->imagePath('example.png' ),
-  	
-  	// the title of your application. This will be used in the
-  	// navigation or on the settings page of your app
-  	'name' => $api->getTrans()->t('My notes app') 
-  	
+    // sorting weight for the navigation. The higher the number, the higher
+    // will it be listed in the navigation
+    'order' => 10,
+    
+    // the route that will be shown on startup
+    'href' => $api->linkToRoute('mynotes_index'),
+    
+    // the icon that will be shown in the navigation
+    'icon' => $api->imagePath('example.png' ),
+    
+    // the title of your application. This will be used in the
+    // navigation or on the settings page of your app
+    'name' => $api->getTrans()->t('My notes app') 
+    
   ));
-
-
-Next up is the :file:`appinfo/info.xml` where metadata for the app is stored. This will be used to check if the app is compatible with ownCloud (require tag) and to display text on the app info page:
-
-:file:`appinfo/info.xml`
-
-.. code-block:: xml
-
-  <?xml version="1.0"?>
-  <info>
-    <id>mynotes</id>
-    <name>My notes app</name>
-    <description>Simple notes app</description>
-    <version>1.0</version>
-    <licence>AGPL</licence>
-    <author>Your Name</author>
-    <require>6</require>
-  </info>
 
 
 First Page

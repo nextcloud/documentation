@@ -6,18 +6,10 @@ App Developement
    :maxdepth: 1
 
    gettingstarted
-   apptutorial
-   appframeworktutorial
-   settings
+   createapp
+   tutorial
    classloader
-   api
-   routes
-   controllers
-   database
-   templates
-   static
-   unittesting
-   middleware
+   info
    externalapi
    filesystem
    hooks

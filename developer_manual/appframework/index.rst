@@ -5,9 +5,9 @@ App Developement Using the App Framework
 .. toctree::
    :maxdepth: 1
 
-   gettingstarted
-   appframeworktutorial
-   ../app/info
+   ../app/gettingstarted
+   ../app/createapp
+   tutorial
    ../app/classloader
    container
    api
@@ -19,6 +19,7 @@ App Developement Using the App Framework
    ../app/css
    unittesting
    middleware
+   ../app/info
    externalapi
    filesystem
    hooks

@@ -17,18 +17,26 @@ There are two ways to obtain ownCloud:
 
 Using stable
 ~~~~~~~~~~~~
-`Install the current version of ownCloud <http://doc.owncloud.org/server/5.0/admin_manual/installation.html>`_ and create a new directory in the **apps/** folder.  
+`Install the current version of ownCloud <http://doc.owncloud.org/server/5.0/admin_manual/installation.html>`_.
 
 Using development version (recommended)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 First `set up your webserver and database <http://doc.owncloud.org/server/5.0/admin_manual/installation.html>`_ (**Section**: Manual Installation - Prerequisites).
 
-ownCloud uses `GitHub`_ for developing its code. To be able to participate or check out the code You will have to sign up on `GitHub`_ and install Git.
->
-If you need help with Git, contact the `GitHub Help Page`_.
+ownCloud's source is hosted on `GitHub`_. To be able to participate or check out the code You will have to sign up on `GitHub`_ and install Git. For help on git, contact the `GitHub Help Page`_.
 
-To get started you'll need to clone the basic git repositories into your web directory. Depending on your distro this will either be **/var/www** or **/srv/http** and the apache user and group for the chown command will either be **http**, **www-data** or **apache**
+To get started the basic git repositories need to cloned into the webserver's directory. Depending on the distro this will either be 
+
+* **/var/www**
+* **/var/www/html** 
+* **/srv/http** 
+
+and the apache user and group for the **chown** command will either be 
+
+* **http**
+* **www-data** 
+* **apache**
 
 .. code-block:: bash
 
@@ -38,23 +46,23 @@ To get started you'll need to clone the basic git repositories into your web dir
   git clone https://github.com/owncloud/apps.git apps
   git clone https://github.com/owncloud/3rdparty.git 3rdparty
   mkdir owncloud/data
-  sudo chown -R http:http owncloud/config
-  sudo chown -R http:http owncloud/data
-  sudo chown -R http:http owncloud/apps
+  sudo chown -R www-data:www-data owncloud/config
+  sudo chown -R www-data:www-data owncloud/data
+  sudo chown -R www-data:www-data owncloud/apps
   sudo chmod -R o-rw /var/www
 
-Now restart your apache server and get ready to `set up ownCloud`_ at http://localhost/owncloud. 
+Now restart the apache server and get ready to `set up ownCloud`_ at http://localhost/owncloud. 
 
 Enable debugging mode
 ---------------------
-.. note:: Do not enable this for production! Only for developement!
+.. note:: Do not enable this for production! This can create security problems and is only meant for debugging and development!
 
-To disable JavaScript and CSS caching you'll have to turn on debugging in :file:`owncloud/config/config.php` by adding this to the end of the file::
+To disable JavaScript and CSS caching debugging has to be enabled in :file:`owncloud/config/config.php` by adding this to the end of the file::
 
   DEFINE('DEBUG', true);
 
 
-.. note:: This is often overwritten after a **git pull** from core. Always check your :file:`owncloud/config/config.php` afterwards.
+This is often overwritten after a **git pull** from core. Always check :file:`owncloud/config/config.php` afterwards.
 
 .. _GitHub: https://github.com/owncloud
 .. _GitHub Help Page: https://help.github.com/
