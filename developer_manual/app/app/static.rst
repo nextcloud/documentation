@@ -9,7 +9,7 @@ Static content consists of:
 * **js/**: all JavaScript files
 * **css/**: all CSS files
 
-.. note:: CSS and JavaScript are compressed by ownCloud so if the CSS or JavaScript do not seem to get updated, check if the debug mode is enabled. To enable it see :doc:`../appintro/gettingstarted`
+.. note:: CSS and JavaScript are compressed by ownCloud so if the CSS or JavaScript do not seem to get updated, check if the debug mode is enabled. To enable it see :doc:`../intro/gettingstarted`
 
 
 

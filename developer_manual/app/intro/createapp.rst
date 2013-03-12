@@ -53,7 +53,7 @@ ownCloud has to know what your app is. This information is located inside the :f
       <require>6</require>
   </info>
 
-For more information on the content of :file:`appinfo/info.xml` and what can be set, see: :doc:`info`
+For more information on the content of :file:`appinfo/info.xml` and what can be set, see: :doc:`../app/info`
 
 Enable the app
 --------------
@@ -61,7 +61,7 @@ The easiest way to enable is to symlink it into the **owncloud/apps** directory:
 
     ln -s /var/www/apps/YOUR_APP /var/www/owncloud/apps/
 
-This is also how other apps from the **apps** directory have to be enabled. A second way is to tell ownCloud about the directory. Use :doc:`../core/configfile` to set up multiple app directories.
+This is also how other apps from the **apps** directory have to be enabled. A second way is to tell ownCloud about the directory. Use :doc:`../../core/configfile` to set up multiple app directories.
 
 The app can now be enabled on the ownCloud apps page.
 

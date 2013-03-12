@@ -173,7 +173,7 @@ ownCloud offers three simple checks:
 * **OCP\JSON::checkAdminUser()**: Checks if the logged in user has admin privileges
 * **OCP\JSON::checkSubAdminUser()**: Checks if the logged in user has group admin privileges
 
-Using the App Framework, these checks are already automatically performed for each request and have to be explicitely turned off by using annotations above your controller method,  see :doc:`../app/controllers`.
+Using the App Framework, these checks are already automatically performed for each request and have to be explicitely turned off by using annotations above your controller method,  see :doc:`../appframework/controllers`.
 
 Additionally always check if the user has the right to perform that action. (e.g. a user should not be able to delete other users' bookmarks).
 
@@ -195,7 +195,7 @@ To prevent CSRF in an app, be sure to call the following method at the top of al
   <?php
   OCP\JSON::callCheck();
 
-If you are using the App Framework, every controller method is automatically checked for CSRF unless you explicitely exclude it by setting the @CSRFExemption annotation before the controller method, see :doc:`../app/controllers`
+If you are using the App Framework, every controller method is automatically checked for CSRF unless you explicitely exclude it by setting the @CSRFExemption annotation before the controller method, see :doc:`../appframework/controllers`
 
 Unvalidated redirects
 ---------------------
