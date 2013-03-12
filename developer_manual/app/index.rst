@@ -1,8 +1,18 @@
-.. _index:
+.. _appindex:
 
 ================
 App Developement
 ================
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   general/index
+   intro/index
+   app/index
+   appframework/index
+   classes/index
 
 .. _Junior Jobs: http://owncloud.org/dev/junior-jobs/
 
@@ -27,8 +37,8 @@ App Developement
 App Developement
 ================
 
-* :doc:`appintro/gettingstarted`
-* :doc:`appintro/createapp`
+* :doc:`intro/gettingstarted`
+* :doc:`intro/createapp`
 
 Tutorial
 --------
