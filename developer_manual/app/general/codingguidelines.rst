@@ -289,7 +289,7 @@ Control Structures
   // single line if
   if (myVar === 'hi') {
       myVar = 'ho';
-  } else {
+  } else {     
       myVar = 'bye';
   }
 
