@@ -114,6 +114,3 @@ When porting the News app to AngularJS we found that the benefits outweighed the
 But all in all you should build an optimized prototype and compare it to a non angular app to make sure that the user experience is good.
 
 
-Closing remarks
----------------
-This was a minimal fraction of Angular but it should give you a good idea about how Angular works (If not, please help to improve the documentation ;) ). More directives and objects are available on the `official API Page <http://docs.angularjs.org/api/>`_

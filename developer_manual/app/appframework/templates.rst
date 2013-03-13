@@ -116,6 +116,74 @@ The App Framework comes with additional template functions for Twig to better in
     {{ trans('Translate %s %s', 'this', 'and this') }}
 
 
+.. js:function:: script(path, appName=null)
+  
+  :param string path: path to the JavaScript file in the **js/** folder in the app. The **.js** extension is automatically added.
+  :param string appName: name of the app. If no value is given, the current app will be used.
+
+  .. versionadded:: 6.0
+
+  Adds a JavaScript file inside the template
+
+  An example would be:
+
+  .. code-block:: js
+
+    // to include the js/public/app.js in your app use
+    {{ script('public/app') }}
+
+
+.. js:function:: style(path, appName=null)
+  
+  :param string path: path to the CSS file in the **css/** folder in the app. The **.css** extension is automatically added.
+  :param string appName: name of the app. If no value is given, the current app will be used.
+
+  .. versionadded:: 6.0
+
+  Adds a CSS file inside the template
+
+  An example would be:
+
+  .. code-block:: js
+
+    // to include the css/style.css in your app use
+    {{ style('style') }}
+
+
+.. js:function:: image_path(path, appName=null)
+  
+  :param string path: path to an image file in the **img/** folder in the app.
+  :param string appName: name of the app. If no value is given, the current app will be used.
+
+  .. versionadded:: 6.0
+
+  Returns the link to an image
+
+  An example would be:
+
+  .. code-block:: js
+
+    // to include the img/icon.png in your app use
+    <img src="{{ image_path('icon.png') }}" />
+
+
+.. js:function:: link_to(path, appName=null)
+  
+  :param string path: path to a file
+  :param string appName: name of the app. If no value is given, the current app will be used.
+
+  .. versionadded:: 6.0
+
+  Returns the link to a file
+
+  An example would be:
+
+  .. code-block:: js
+
+    // to include the files/my.pdf in your app use
+    <a href="{{ link_to('files/my.pdf') }}" />
+
+
 ownCloud Templates
 ------------------
 In every template file you can easily access the template functions listed in :doc:`../classes/core/templates`. To access the assigned variables in the template, use the **$_[]** array. The variable will be availabe under the key that you defined (e.g. $_['key']).
