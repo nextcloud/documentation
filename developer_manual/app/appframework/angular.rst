@@ -341,7 +341,6 @@ An example file would look like:
 
 Include script files
 --------------------
-
 To make use of the the tools include them in your templates.
 
 Using ownCloud Templates:
@@ -364,3 +363,103 @@ Using Twig Templates:
 After the script has been included the modules can be used inside the angular module by injecting them:
 
 :file:`js/app/app.js`
+
+.. code-block:: js
+  
+  // create your application and inject OC
+  angular.module('YourApp', ['OC'])
+
+
+Features
+--------
+Now that the library is loaded and set up they can be used inside the module container. The App Framework follows the convention of marking class names with a leading underscore and object instances without it.
+
+.. note:: The App Framework uses CoffeeScript so if JavaScript objects should extend the provided objects, you need to implement the inheritance like CoffeeScript does it.
+
+The App Framework provides the following services:
+
+* **_Reqest**: Used to make AJAX requests
+* **_Model**: Used as a model parent class. Provides CRUD and caching logic for the JSON data
+* **_Publisher**: Used to automatically distribute JSON from AJAX Requests to the models
+* **Loading**: Simple object that can be used for displaying loading notifcations
+* **Router**: the **OC.Router** object
+* **Notification**: the **OC.Notification** object
+* **Utils**: the **OC** object
+
+
+
+The App Framework provides the following directives:
+
+
+Models
+------
+
+
+Queries
+~~~~~~~
+Because AngularJS getters have to be fast (Angular checks for changed objects after each digest) the App Framework provides cachable queries. The following queries are available:
+
+* **_BiggerThanQuery**
+* **_BiggerThanEqualQuery**
+* **_LessThanQuery**
+* **_LessThanEqualQuery**
+* **_EuqalQuery**
+* **_NotEuqalQuery**
+* **_ContainsQuery**
+* **_DoesNotContainQuery**
+* **_MinimumQuery** 
+* **_MaximumQuery**
+
+To query an object with a **_BiggerThanQuery** use its **get** method:
+
+.. code-block:: python
+
+  valuesBiggerThan4 = myModel.get(new _BiggerThanQuery('id', 4))
+
+This query is cached until a new entry is added, removed or updated.
+
+.. note:: Do not update the objects by hand only. Always use the model's update method to tell it that a model has changed. Otherwise you run into an invalid cache!
+
+Writing your own queries
+~~~~~~~~~~~~~~~~~~~~~~~~
+For more complex queries the **_Query** object can be extended. Each query object has a **hashCode** and **exec** method. The **hashCode** method is used to generate a unique hash for the query and its arguments so that it can be cached. The built in method works like this:
+
+* Take all the arguments values
+* replace _ with __ in the argument value
+* Construct the hash by: QUERYNAME_ARG1Value_ARG2Value etc.
+
+You can override this method if you need to. The **exec** method is used to run the query. It receives an array with all objects and returns the filtered content.
+
+A query that would select only ids between a range of numbers would look like this:
+
+.. code-block:: python
+
+  angular.module('YourApp').factory '_LessThanQuery', ['_Query', (_Query) ->
+
+    class RangeQuery extends _Query
+
+      # @_field is the attribute name of the object
+      constructor: (@_field, @_lowerBound, @_upperBound) ->
+        name = 'range'
+        super(name, [@_field, @_lowerBound, @_upperBound])
+
+      exec: (data) ->
+        filtered = []
+        for entry in data
+          if entry[@_field] < @_upperBound and entry[@_field] > @_lowerBound
+            filtered.push(entry)
+
+        return filtered
+
+
+    return RangeQuery
+  ]
+
+If **hashCode** is not overwritten it would produce the following output:
+
+.. code-block:: python
+  
+  query = new _RangeQuery('id', 3, 6)
+  query.hashCode() # prints range_id_3_6
+
+
