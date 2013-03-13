@@ -7,6 +7,7 @@ App Developement (ownCloud App API)
 
    tutorial
    info
+   classloader
    schema
    database
    static

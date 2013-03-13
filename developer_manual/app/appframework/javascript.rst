@@ -1,0 +1,1 @@
+.. include:: ../app/javascript.rst
