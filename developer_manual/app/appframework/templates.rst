@@ -161,7 +161,7 @@ The App Framework comes with additional template functions for Twig to better in
 
   An example would be:
 
-  .. code-block:: js
+  .. code-block:: html
 
     // to include the img/icon.png in your app use
     <img src="{{ image_path('icon.png') }}" />
@@ -178,10 +178,10 @@ The App Framework comes with additional template functions for Twig to better in
 
   An example would be:
 
-  .. code-block:: js
+  .. code-block:: html
 
     // to include the files/my.pdf in your app use
-    <a href="{{ link_to('files/my.pdf') }}" />
+    <a href="{{ link_to('files/my.pdf') }}">my pdf</a>
 
 
 ownCloud Templates
