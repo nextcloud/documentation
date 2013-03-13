@@ -34,6 +34,12 @@ You can choose between the traditional and MVC style (App Framework) approach. T
 
 General
 ~~~~~~~
+Inner parts of an app
+
+* :doc:`app/classloader`
+* :doc:`app/routes`
+* :doc:`app/info`
+* :doc:`general/debugging`
 
 Database
 ~~~~~~~~

@@ -8,6 +8,7 @@ App Developement (ownCloud App API)
    tutorial
    info
    classloader
+   routes
    schema
    database
    templates
