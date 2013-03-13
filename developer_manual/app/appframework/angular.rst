@@ -386,14 +386,19 @@ The App Framework provides the following services:
 * **Notification**: the **OC.Notification** object
 * **Utils**: the **OC** object
 
-
-
 The App Framework provides the following directives:
 
+* **ocClickSlideToggle**: Used for the settings slideup. Can be used to slide up any area and hide it on focus lost
+* **ocDraggable**: Shortcut for using jquery-ui draggable
+* **ocForwardClick**: Used to forward a click. Useful to trigger a hidden file upload field by clicking a visible button
+
+Requests
+--------
+TBD
 
 Models
 ------
-
+TBD
 
 Queries
 ~~~~~~~
@@ -425,7 +430,7 @@ Writing your own queries
 For more complex queries the **_Query** object can be extended. Each query object has a **hashCode** and **exec** method. The **hashCode** method is used to generate a unique hash for the query and its arguments so that it can be cached. The built in method works like this:
 
 * Take all the arguments values
-* replace _ with __ in the argument value
+* replace _ with __ in the argument values
 * Construct the hash by: QUERYNAME_ARG1Value_ARG2Value etc.
 
 You can override this method if you need to. The **exec** method is used to run the query. It receives an array with all objects and returns the filtered content.
