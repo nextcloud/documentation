@@ -86,7 +86,9 @@ The **OC** object
 
 _Request
 ~~~~~~~~
-Used to make AJAX requests
+Used to make AJAX requests. 
+
+TBD
 
 _Publisher
 ~~~~~~~~~~
@@ -135,7 +137,55 @@ The default **handle()** method of the model only adds/updates the new object. T
 
 _Model
 ~~~~~~
-Used as a model parent class. Provides CRUD and caching logic for the JSON data
+Used as a model parent class and provides CRUD and caching logic for the JSON data.
+
+
+.. js:class:: _Model
+
+  .. js:function:: add(data)
+
+    :param object data: The object that should be added
+
+    Adds a new item. If the item id is already present, it will be updated
+
+  .. js:function:: update(data)
+
+    :param object data: The object that should be updated
+
+    Updates an existing object by copying the attributes to the old one
+
+  .. js:function:: add(data)
+
+    :param object data: The object that should be added
+
+
+  .. js:function:: getById(id)
+
+    :param int id: The id of the object
+    :returns object: a data object by its id
+
+
+  .. js:function:: getAll()
+
+    :returns array: an array with all stored objects
+
+
+  .. js:function:: clear()
+
+    Deletes all stored data objects
+
+
+  .. js:function:: size()
+
+    :returns int: the count of all stored data objects
+
+  .. js:function:: get(Query query)
+
+    :param Query query: an instance of a Query class or subclass
+    :returns mixed: the returnvalue of the query
+
+    Runs a query over all stored objects and returns the result which is calculated in the query. This is cached by params and query. The cache is deleted after a new add/update/remove method was called.
+
 
 Queries
 ^^^^^^^
