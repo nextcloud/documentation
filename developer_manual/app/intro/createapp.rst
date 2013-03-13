@@ -53,7 +53,7 @@ ownCloud has to know what your app is. This information is located inside the :f
       <require>6</require>
   </info>
 
-For more information on the content of :file:`appinfo/info.xml` and what can be set, see: :doc:`../app/info`
+For more information on the content of :file:`appinfo/info.xml` see: :doc:`../app/info`
 
 Enable the app
 --------------
@@ -94,11 +94,10 @@ To simplify the decision see this comparison chart:
 | Templates       | :php:class:`OC_Template`| :php:class:`OC_Template`       |
 |                 |                         | and `Twig`_                    |
 +-----------------+-------------------------+--------------------------------+
-| Security        | manual checks           | enforces XSS, CSRF and         |
-|                 |                         | Authentication checks by       |
+| Security        | manual checks           | enforces XSS (Twig only), CSRF |
+|                 |                         | and Authentication checks by   |
 |                 |                         | default                        |
 +-----------------+-------------------------+--------------------------------+
 
 .. _Twig: http://twig.sensiolabs.org
 .. _TDD: http://en.wikipedia.org/wiki/Test-driven_development
-.. _Dependency Injection: 
