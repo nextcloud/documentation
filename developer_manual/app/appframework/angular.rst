@@ -362,11 +362,11 @@ Using Twig Templates:
 
 After the script has been included the modules can be used inside the angular module by injecting them:
 
-:file:`js/app/app.js`
+:file:`js/app/app.coffee`
 
-.. code-block:: js
+.. code-block:: python
   
-  // create your application and inject OC
+  # create your application and inject OC
   angular.module('YourApp', ['OC'])
 
 
