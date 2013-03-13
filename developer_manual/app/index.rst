@@ -46,12 +46,7 @@ General
 Inner parts of an app
 
 * :doc:`appframework/classloader`
-* :doc:`appframework/container`
-
-Routes
-~~~~~~
-Match an URL and call a controller
-
+* :doc:`appframework/container` | :doc:`general/dependencyinjection`
 * :doc:`appframework/routes`
 
 Controllers
@@ -68,19 +63,37 @@ Database access
 
 Templates
 ~~~~~~~~~
+HTML and inclusion of JavaScript and CSS
 
+* :doc:`appframework/templates`
+
+JavaScript & CSS
+~~~~~~~~~~~~~~~~
+* :doc:`appframework/javascript`
+* :doc:`general/angular` | :doc:`appframework/angularsetup` | :doc:`appframework/angular`
+* :doc:`appframework/css`
+
+Middleware
+~~~~~~~~~~
+Hook before or after controller execution
+
+* :doc:`appframework/middleware`
+
+Testing
+~~~~~~~
+* :doc:`appframework/unittesting` | :doc:`general/debugging`
 
 API Documentation
 ~~~~~~~~~~~~~~~~~
 * :doc:`appframework/api/index`
 * `ownCloud App API <http://api.owncloud.org/namespaces/OCP.html>`_
 
-Further Information
--------------------
-General useful information
+Additional APIs
+---------------
+Can be used with and without App Framework
 
-* `git crash course <http://git-scm.com/course/svn.html>`_
-* :doc:`general/debugging`
-* :doc:`general/angular` | `AngularJS Documentation <http://angularjs.org/>`_
-* :doc:`general/dependencyinjection` | `Pimple <http://pimple.sensiolabs.org/>`_
+* :doc:`appframework/data-migration`
+* :doc:`appframework/externalapi`
+* :doc:`appframework/hooks`
+* :doc:`appframework/filesystem`
 
