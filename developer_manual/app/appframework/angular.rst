@@ -239,6 +239,105 @@ To give people a well known environment a Makefile is recommended to start the v
     rm -rf $(CURDIR)/build
     rm -rf $(CURDIR)/test-results.xml
 
+The above makefile can be used to watch and compile the changes with::
+
+    make watch
+
+The unittests can be automatically run on change in a second terminal window::
+
+    make testacular
+
+
+Set up Testacular
+-----------------
+Testacular is able to run unittests when a JavaScript file changes. On the continues integration server these tests can be run with **PhantomJS** (or if a graphical environment is installed also with other browsers). A **JUnit** compatible testresult can be configured.
+
+.. note:: The config values can be overwritten in the Gruntfile
+
+An example file would look like:
+
+:file:`js/config/testacular_conf.js`
+
+.. code-block:: js
+
+  // base path, that will be used to resolve files and exclude
+  // since this is in the config/ folder we have to go one directory higher
+  basePath = '../';
+
+
+  // list of files / patterns to load in the browser
+  files = [
+
+    // your favorite test library, needs to have an adapter
+    JASMINE,
+    JASMINE_ADAPTER,
+
+    // commonly included libraries that are provided by owncloud need to be
+    // loaded because we dont have access to those in the test environment
+    'tests/vendor/jquery-1.9.1/jquery-1.9.1.js',
+    'tests/vendor/jquery-ui-1.10.0/jquery-ui-1.10.0.custom.js',
+    'tests/vendor/angular-1.0.4/angular.js',
+    'tests/vendor/angular-1.0.4/angular-mocks.js',
+
+    // you want to use the ngMocks container thats why you have to redefine the
+    // main js file
+    'tests/stubs/app.js',
+
+    // these are your js and testfiles that you want to use
+    'build/app/directives/*.js',
+    'build/app/filters/*.js',
+    'build/app/services/**/*.js',
+    'build/tests/**/*Spec.js'
+  ];
+
+
+  // list of files to exclude
+  // reason: see the files array
+  exclude = [
+    'build/app/app.js'
+  ];
+
+  // test results reporter to use
+  // possible values: 'dots', 'progress', 'junit'
+  reporters = ['progress'];
+
+  // web server port
+  port = 8080;
+
+  // cli runner port
+  runnerPort = 9100;
+
+  // enable / disable colors in the output (reporters and logs)
+  colors = true;
+
+  // level of logging
+  // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
+  logLevel = LOG_INFO;
+
+
+  // enable / disable watching file and executing tests whenever any file changes
+  autoWatch = true;
+
+
+  // Start these browsers, currently available:
+  // - Chrome
+  // - ChromeCanary
+  // - Firefox
+  // - Opera
+  // - Safari (only Mac)
+  // - PhantomJS
+  // - IE (only Windows)
+  browsers = ['Chrome'];
+
+
+  // If browser does not capture in given timeout [ms], kill it
+  captureTimeout = 5000;
+
+
+  // Continuous Integration mode
+  // if true, it capture browsers, run tests and exit
+  singleRun = false;
+
 
 Include script files
 --------------------
