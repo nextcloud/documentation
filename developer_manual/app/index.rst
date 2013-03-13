@@ -27,7 +27,7 @@ After this you can start to write your app:
 
 App Development using ownCloud App API
 --------------------------------------
-You can choose between the traditional and MVC style (App Framework) approach. This approach uses the basic ownCloud libraries and provides no classes to use for MVC development and testing. 
+You can choose between the traditional and MVC style (App Framework) approach. For a comparison see :ref:`appframework-compare`. This approach uses the basic ownCloud libraries and provides no classes to use for MVC development and testing. 
 
 * :doc:`app/tutorial`
 

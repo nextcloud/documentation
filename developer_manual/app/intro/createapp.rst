@@ -76,6 +76,11 @@ The basic files are now in place and the app is enabled. There are two ways to c
 
 If you are new to programming and want to create an app fast you migth want to use the ownCloud app API, if you are an advanced programmer or used to frameworks you might want to use the App Framework App.
 
+.. _appframework-compare:
+
+App Framework Comparison
+^^^^^^^^^^^^^^^^^^^^^^^^
+
 To simplify the decision see this comparison chart:
 
 +-----------------+-------------------------+--------------------------------+
