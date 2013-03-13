@@ -386,11 +386,6 @@ The App Framework provides the following services:
 * **Notification**: the **OC.Notification** object
 * **Utils**: the **OC** object
 
-The App Framework provides the following directives:
-
-* **ocClickSlideToggle**: Used for the settings slideup. Can be used to slide up any area and hide it on focus lost
-* **ocDraggable**: Shortcut for using jquery-ui draggable
-* **ocForwardClick**: Used to forward a click. Useful to trigger a hidden file upload field by clicking a visible button
 
 Requests
 --------
@@ -468,3 +463,64 @@ If **hashCode** is not overwritten it would produce the following output:
   query.hashCode() # prints range_id_3_6
 
 
+Directives
+----------
+The App Framework provides the following directives:
+
+ocClickSlideToggle
+~~~~~~~~~~~~~~~~~~
+Can be used for the settings slideup or to slide up any area and hide it on focus lost.
+
+Can be enhanced by passing an expression:
+
+.. code-block:: js
+  
+  {
+    selector: '#jquery .selector' 
+    hideOnFocusLost: true
+  }
+
+* **selector**: if defined, a different area is slid up on click
+* **hideOnFocusLost**: if defined, the slid up area will hide when the focus is lost
+
+Example:
+
+.. code-block:: html
+
+  <button oc-click-slide-toggle="{selector: '#settings', hideOnFocusLost: true}" />
+  <div id="settings"></div>
+
+ocDraggable
+~~~~~~~~~~~
+Shortcut for using jquery-ui draggable. The expression is passed to $.draggable.
+
+These two are equivalent:
+
+.. code-block:: js
+
+  $('#settings').draggable({ cursor: "move", cursorAt: { top: 56, left: 56 } });
+
+.. code-block:: html
+
+  <div id="settings" oc-draggable="{ cursor: 'move', cursorAt: { top: 56, left: 56 } }"></div>
+
+ocForwardClick
+~~~~~~~~~~~~~~
+Used to forward a click. Useful to trigger a hidden file upload field by clicking a visible button.
+
+Needs an expression:
+
+.. code-block:: js
+  
+  {
+    selector: '#jquery .selector' 
+  }
+
+* **selector**: the are where the click needs to redirected to
+
+Example:
+
+.. code-block:: html
+
+  <button oc-forward-click="{selector: '#upload'}" />
+  <input type="file" id="upload" />
