@@ -12,48 +12,46 @@ App Developement
    intro/index
    app/index
    appframework/index
-   classes/index
 
-.. _Junior Jobs: http://owncloud.org/dev/junior-jobs/
-
-
-.. _git crash course: http://git-scm.com/course/svn.html
-
-.. _Twig Templates: http://twig.sensiolabs.org/
-.. _Symfony Routing: http://symfony.com/doc/current/components/routing/introduction.html
-.. _Pimple: http://pimple.sensiolabs.org/
-.. _PHPUnit: http://www.phpunit.de/manual/current/en/
-
-* Take a job from our `Junior Jobs`_
+Intro
+-----
+Before starting to write an app please read the security and coding guidelines:
 
 * :doc:`general/security`
 * :doc:`general/codingguidelines`
-* :doc:`general/codereviews`
-* :doc:`general/debugging`
-* :doc:`general/kanban`
-* :doc:`general/angular` | `AngularJS Documentation <http://angularjs.org/>`_
-* :doc:`general/dependencyinjection` | `Pimple`_
 
-App Developement
-================
+After this you can start to write your app:
 
 * :doc:`intro/gettingstarted`
 * :doc:`intro/createapp`
 
-Tutorial
---------
-You can choose between the traditional and MVC style (App Framework) approach. 
+App Development using ownCloud App API
+--------------------------------------
+You can choose between the traditional and MVC style (App Framework) approach. This approach uses the basic ownCloud libraries and provides no classes to use for MVC development and testing. 
 
 * :doc:`app/tutorial`
 
+API Documentation
+~~~~~~~~~~~~~~~~~
+* `ownCloud App API <http://api.owncloud.org/namespaces/OCP.html>`_
+
+App Development using the App Framework App
+-------------------------------------------
+Develop an app using an MVC Framework. The App Framework provides enhanced Security, MVC classes and testing tools but you need to read more until you can produce the first output.
+
 * :doc:`appframework/tutorial`
 
-App Framework
--------------
-
-
-
 API Documentation
-=================
-* :doc:`classes/appframework/index`
-* :doc:`classes/core/index`
+~~~~~~~~~~~~~~~~~
+* :doc:`appframework/api/index`
+* `ownCloud App API <http://api.owncloud.org/namespaces/OCP.html>`_
+
+Further Information
+-------------------
+General useful information
+
+* `git crash course <http://git-scm.com/course/svn.html>`_
+* :doc:`general/debugging`
+* :doc:`general/angular` | `AngularJS Documentation <http://angularjs.org/>`_
+* :doc:`general/dependencyinjection` | `Pimple <http://pimple.sensiolabs.org/>`_
+

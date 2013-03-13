@@ -1,5 +1,5 @@
-App Tutorial (App Framework)
-============================
+App Tutorial
+============
 
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 

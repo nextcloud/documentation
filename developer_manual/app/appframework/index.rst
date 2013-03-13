@@ -1,6 +1,6 @@
-========================================
-App Developement Using the App Framework
-========================================
+================================
+App Developement (App Framework)
+================================
 
 .. toctree::
    :maxdepth: 1
@@ -24,3 +24,4 @@ App Developement Using the App Framework
    ../app/filesystem
    ../app/hooks
    ../app/data-migration
+   api/index

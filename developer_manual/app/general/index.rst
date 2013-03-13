@@ -5,10 +5,8 @@ General
 .. toctree::
    :maxdepth: 1
 
-   debugging
    security
-   codereviews
    codingguidelines
-   kanban
+   debugging
    angular
    dependencyinjection

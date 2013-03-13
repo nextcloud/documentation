@@ -186,7 +186,7 @@ The App Framework comes with additional template functions for Twig to better in
 
 ownCloud Templates
 ------------------
-In every template file you can easily access the template functions listed in :doc:`../classes/core/templates`. To access the assigned variables in the template, use the **$_[]** array. The variable will be availabe under the key that you defined (e.g. $_['key']).
+In every template file you can easily access the template functions listed in :doc:`../app/api/templates`. To access the assigned variables in the template, use the **$_[]** array. The variable will be availabe under the key that you defined (e.g. $_['key']).
 
 :file:`templates/main.php`
 
@@ -222,4 +222,4 @@ The parent variables will also be available in the included templates, but shoul
   <?php print_unescaped($this->inc('other_template', array('variable' => 'value'))); ?>
 
 
-**For more info, see** :doc:`../classes/core/templates`
+**For more info, see** :doc:`../app/api/templates`

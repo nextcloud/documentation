@@ -1,6 +1,6 @@
-===========================================
-App Developement Using the ownCloud App API
-===========================================
+===================================
+App Developement (ownCloud App API)
+===================================
 
 .. toctree::
    :maxdepth: 1
@@ -16,3 +16,4 @@ App Developement Using the ownCloud App API
    filesystem
    hooks
    data-migration
+   api/index

@@ -13,7 +13,7 @@ Kanban Board = github issues + huboard
 We are using http://huboard.com to visualize ownCloud github issues as a `kanban
 board`_ (see: `core`_, `apps`_, `mirall`_):
 
-.. figure:: ../../images/kanbanexample.png
+.. figure:: ../images/kanbanexample.png
    :scale: 70
 
 As you may have noticed, the columns of the kanban board represent the
