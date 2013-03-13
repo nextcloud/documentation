@@ -16,6 +16,7 @@ App Developement Using the App Framework
    templates
    ../app/css
    ../app/javascript
+   angularsetup
    angular
    unittesting
    middleware
