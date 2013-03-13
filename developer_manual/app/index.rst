@@ -31,6 +31,28 @@ You can choose between the traditional and MVC style (App Framework) approach. T
 
 * :doc:`app/tutorial`
 
+
+General
+~~~~~~~
+
+Database
+~~~~~~~~
+Database access
+
+* :doc:`app/schema` | :doc:`app/database`
+
+Templates
+~~~~~~~~~
+HTML and inclusion of JavaScript and CSS
+
+* :doc:`app/templates`
+
+JavaScript & CSS
+~~~~~~~~~~~~~~~~
+* :doc:`app/static`
+* :doc:`app/javascript`
+* :doc:`app/css`
+
 API Documentation
 ~~~~~~~~~~~~~~~~~
 * `ownCloud App API <http://api.owncloud.org/namespaces/OCP.html>`_
@@ -48,6 +70,8 @@ Inner parts of an app
 * :doc:`appframework/classloader`
 * :doc:`appframework/container` | :doc:`general/dependencyinjection`
 * :doc:`appframework/routes`
+* :doc:`appframework/info`
+* :doc:`general/debugging`
 
 Controllers
 ~~~~~~~~~~~
@@ -69,6 +93,7 @@ HTML and inclusion of JavaScript and CSS
 
 JavaScript & CSS
 ~~~~~~~~~~~~~~~~
+* :doc:`appframework/static`
 * :doc:`appframework/javascript`
 * :doc:`general/angular` | :doc:`appframework/angularsetup` | :doc:`appframework/angular`
 * :doc:`appframework/css`
@@ -81,7 +106,7 @@ Hook before or after controller execution
 
 Testing
 ~~~~~~~
-* :doc:`appframework/unittesting` | :doc:`general/debugging`
+* :doc:`appframework/unittesting`
 
 API Documentation
 ~~~~~~~~~~~~~~~~~

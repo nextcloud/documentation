@@ -14,6 +14,7 @@ App Developement (App Framework)
    schema
    database
    templates
+   static
    css
    javascript
    angularsetup

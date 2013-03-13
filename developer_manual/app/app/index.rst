@@ -10,6 +10,7 @@ App Developement (ownCloud App API)
    classloader
    schema
    database
+   templates
    static
    css
    javascript
