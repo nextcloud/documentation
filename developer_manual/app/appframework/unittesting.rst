@@ -3,13 +3,18 @@ Unittests
 
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
+The App Framework ships with several useful tools to do unittesting
+
+PHP
+---
+
 .. note:: App Unittests should **not depend on a running ownCloud instance**! They should be able to run in isolation. To achieve that, abstract the ownCloud core functions and static methods in the App Framework :file:`core/api.php` and use a mock for testing. If a class is not static, you can simply add it in the :file:`dependencyinjection/dicontainer.php`
 
 .. note:: Also use your app's namespace in your test classes to avoid possible conflicts when the test is run on the buildserver
 
 Unittests go into your **tests/** directory. Create the same folder structure in the tests directory like on your app to make it easier to find tests for certain classes.
 
-Owncloud uses `PHPUnit <http://www.phpunit.de/manual/current/en/>`_
+ownCloud uses `PHPUnit <http://www.phpunit.de/manual/current/en/>`_
 
 Because of Dependency Injection, unittesting has become very easy: you can easily substitute complex classes with `mocks <http://www.phpunit.de/manual/3.0/en/mock-objects.html>`_ by simply passing a different object to the constructor.
 
@@ -73,9 +78,35 @@ You can now execute the test by running this in your app directory::
 
 .. note:: PHPUnit executes all PHP Files that end with **Test.php**. Be sure to consider that in your file naming.
 
+TDD can also be used if the :doc:`angularsetup` is performed and grunt is used. To automatically run all PHP unittests on change simply use:
+
+  cd js/
+  make phpunit
+
+Classloader
+~~~~~~~~~~~
 The Advanced Apptemplate provides an extra classloader :file:`tests/classloader.php` that loads the the classes. Require this file at the top of your tests.
 
 .. note:: The classloader in the **tests/** directory assumes that the **appframework/** folder is in the same directory as the your app. If you run your app in a different apps folder, you will need to link the App Framework into the same folder where your app folder resides.
 
 
-More examples for testing controllers are in the :file:`tests/controller/ItemControllerTest.php`
+JavaScript
+~~~~~~~~~~
+If the :doc:`angularsetup` was performed `Testacular <http://testacular.github.com/0.6.0/index.html>`_ was already successfully set up and can be started with:
+
+  cd js/
+  make testacular
+
+Testacular now watches for changes and executes all tests if a JavaScript file is changed.
+
+To run the tests once use:
+
+  cd js/
+  make test
+
+A JUnit compatible result file will be generated for the continous integration server.
+
+Like stated in :doc:`angularsetup` tests go into the folder **js/tests/**. The default setup uses `Jasmine <http://pivotal.github.com/jasmine/>`_ but also other test frameworks like `Mocha <http://visionmedia.github.com/mocha/>`_ or `QUnit <http://qunitjs.com/>`_ can be used but `have to be configured first <http://testacular.github.com/0.6.0/config/files.html>`_. 
+
+AngularJS
+~~~~~~~~~

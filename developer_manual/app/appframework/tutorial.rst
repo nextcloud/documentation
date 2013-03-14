@@ -136,3 +136,5 @@ The last thing that is left is to tell the application how the controller needs 
       }
 
   }
+
+.. todo:: Docs on templates and further stuff

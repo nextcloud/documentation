@@ -16,7 +16,11 @@ For example:
       background-image: url('%webroot%/core/img/places/folder.svg');
   }
 
+CSS for apps
+------------
+ownCloud comes with special CSS rules for apps to make app development easier.
 
+.. todo:: document this
 
 Formfactors
 -----------
