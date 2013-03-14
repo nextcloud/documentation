@@ -29,4 +29,18 @@ If a new element is saved to the database the inserted id can be accessed by usi
   $id = \OCP\DB::insertid();
 
 
-It is also possible to use transactions. To start a transaction use **
+It is also possible to use transactions:
+
+.. code-block:: php
+
+  <?php
+
+  \OCP\DB::beginTransaction();
+
+  $sql = 'SELECT * FROM `*PREFIX*myusers` WHERE id = ?';
+  $args = array(1);
+
+  $query = \OCP\DB::prepare($sql);
+  $result = $query->execute($args);
+
+  \OCP\DB::commit();
