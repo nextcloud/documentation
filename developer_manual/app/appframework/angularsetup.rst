@@ -28,7 +28,7 @@ Tests go into:
 
 Configuration files go into:
 
-* **js/config/testacular_conf.js**: Testacular (used for unittests) configuration
+* **js/config/testacular_conf.js**: `Testacular <http://testacular.github.com/0.6.0/index.html>`_ (used for unittests) configuration
 
 The compiled files go into:
 
@@ -247,7 +247,7 @@ The unittests can be automatically run on change in a second terminal window::
 
 Set up Testacular
 -----------------
-Testacular is able to run unittests when a JavaScript file changes. On the continues integration server these tests can be run with **PhantomJS** (or if a graphical environment is installed also with other browsers). A **JUnit** compatible testresult can be configured.
+`Testacular <http://testacular.github.com/0.6.0/index.html>`_ is able to run unittests when a JavaScript file changes. On the continues integration server these tests can be run with **PhantomJS** (or if a graphical environment is installed also with other browsers). A **JUnit** compatible testresult can be configured.
 
 .. note:: The config values can be overwritten in the Gruntfile
 
