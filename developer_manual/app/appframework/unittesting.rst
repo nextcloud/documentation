@@ -78,10 +78,12 @@ You can now execute the test by running this in your app directory::
 
 .. note:: PHPUnit executes all PHP Files that end with **Test.php**. Be sure to consider that in your file naming.
 
-TDD can also be used if the :doc:`angularsetup` is performed and grunt is used. To automatically run all PHP unittests on change simply use:
+.. versionadded:: 6.0
 
-  cd js/
-  make phpunit
+TDD can also be used if the :doc:`angularsetup` is performed and grunt is used. To automatically run all PHP unittests on change simply use::
+
+    cd js/
+    make phpunit
 
 Classloader
 ~~~~~~~~~~~
@@ -92,14 +94,16 @@ The Advanced Apptemplate provides an extra classloader :file:`tests/classloader.
 
 JavaScript
 ~~~~~~~~~~
-If the :doc:`angularsetup` was performed `Testacular <http://testacular.github.com/0.6.0/index.html>`_ was already successfully set up and can be started with:
+.. versionadded:: 6.0
 
-  cd js/
-  make testacular
+If the :doc:`angularsetup` was performed `Testacular <http://testacular.github.com/0.6.0/index.html>`_ was already successfully set up and can be started with::
+
+    cd js/
+    make testacular
 
 Testacular now watches for changes and executes all tests if a JavaScript file is changed.
 
-To run the tests once use:
+To run the tests once use::
 
   cd js/
   make test
@@ -110,3 +114,44 @@ Like stated in :doc:`angularsetup` tests go into the folder **js/tests/**. The d
 
 AngularJS
 ~~~~~~~~~
+To include mocks the main container creation has to be overwritten with another file.
+
+:file:`js/tests/stubs/app.js`
+
+.. code-block:: js
+
+  angular.module('YourApp', ['ngMock']);
+
+This file should be included in the testfiles in :file:`js/config/testacular_conf.js` instead of :file:`js/app/app.js`
+
+Create a testfile for each JavaScript/CoffeeScript file in the **tests/** folder.
+
+Example:
+
+.. code-block:: python
+
+  describe '_Request', ->
+
+    # tell inject to ready the app container
+    beforeEach module 'YourApp'
+
+    # get _Request and _Publisher from the container
+    beforeEach inject (_Request, _Publisher) =>
+      @router =
+        generate: (route, values) ->
+          return 'url'
+        registerLoadedCallback: (callback) ->
+          callback()
+      @publisher = new _Publisher()
+      @request = _Request
+
+
+    it 'should not send requests if not initialized', =>
+      # create a mock
+      http = jasmine.createSpy('http')
+      @router.registerLoadedCallback = ->
+      req = new @request(http, @publisher, @router)
+
+      req.request('route')
+
+      expect(http).not.toHaveBeenCalled()
