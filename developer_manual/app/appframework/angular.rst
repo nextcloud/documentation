@@ -86,9 +86,60 @@ The **OC** object
 
 _Request
 ~~~~~~~~
-Used to make AJAX requests. 
+Used to perform AJAX requests. 
 
-TBD
+Example: 
+
+.. code-block:: js
+
+  // simple GET request
+  req = new _Request($http, new _Publisher(), Router)
+  req.get('mail_index')
+
+
+.. js:class:: _Request($http http, _Publisher publisher, Router router)
+
+  .. js:function:: request(route[, data])
+
+    :param object route: The name of the route that should be used
+    :param object data: an object containing optional parameters
+
+    Creates an AJAX request. The following data attributes can be set:
+
+    * **routeParams**: object with parameters for the route
+    * **data**: ajax data objec which is passed to PHP
+    * **onSuccess**: callback for successful requests
+    * **onFailure**: callback for failed requests
+    * **config**: a config which should be passed to $http
+
+  .. js:function:: get(route[, data])
+
+    :param object route: The name of the route that should be used
+    :param object data: an object containing optional parameters
+
+    Shortcut for doing a GET request, for data attributes see :js:func:`_Request.request`
+
+  .. js:function:: post(route[, data])
+
+    :param object route: The name of the route that should be used
+    :param object data: an object containing optional parameters
+
+    Shortcut for doing a POST request, for data attributes see :js:func:`_Request.request`
+
+  .. js:function:: put(route[, data])
+
+    :param object route: The name of the route that should be used
+    :param object data: an object containing optional parameters
+
+    Shortcut for doing a PUT request, for data attributes see :js:func:`_Request.request`
+
+  .. js:function:: delete(route[, data])
+
+    :param object route: The name of the route that should be used
+    :param object data: an object containing optional parameters
+
+    Shortcut for doing a DELETE request, for data attributes see :js:func:`_Request.request`
+
 
 _Publisher
 ~~~~~~~~~~
