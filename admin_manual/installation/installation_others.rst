@@ -19,7 +19,7 @@ Nginx Configuration
     server {
             listen 80;
             server_name cloud.example.com;
-            rewrite ^ https://$server_name$request_uri? permanent;  # enforce https
+            return 301 https://$server_name$request_uri;  # enforce https
     }
 
     server {
