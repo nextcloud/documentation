@@ -123,9 +123,33 @@ Code executions and file inclusions can be easily prevented by **never** allowin
 .. code-block:: php
 
   <?php
-  require("/includes/" . $_GET['file]);
+  require("/includes/" . $_GET['file']);
 
 .. note:: If you have to pass user input to a potential dangerous, double check to be sure that there is no other way. If it is not possible otherwise sanitize every user parameter and ask people to audit your sanitize function.
+
+Directory Traversal
+-------------------
+Very often developers forget about sanitizing the file path (removing all \ and /), this allows an attacker to traversal through directories on the server which opens several potential attack vendors including privilege escalations, code executions or file disclosures.
+
+**DON'T**
+
+.. code-block:: php
+
+  <?php
+  $username = OC_User::getUser();
+  fopen("/data/" . $username . "/" . $_GET['file'] . ".txt");
+
+**DO**
+
+.. code-block:: php
+
+  <?php
+  $username = OC_User::getUser();
+  $file = str_replace(array('/', '\\'), '',  $_GET['file']);
+  fopen("/data/" . $username . "/" . $file . ".txt");
+
+.. note:: PHP also interprets the backslash (\) in paths, don't forget to replace it too!
+
 
 Shell Injection
 ---------------
@@ -173,7 +197,7 @@ ownCloud offers three simple checks:
 * **OCP\JSON::checkAdminUser()**: Checks if the logged in user has admin privileges
 * **OCP\JSON::checkSubAdminUser()**: Checks if the logged in user has group admin privileges
 
-Using the App Framework, these checks are already automatically performed for each request and have to be explicitely turned off by using annotations above your controller method,  see :doc:`../appframework/controllers`.
+Using the App Framework, these checks are already automatically performed for each request and have to be explicitely turned off by using annotations above your controller method,  see :doc:`../app/controllers`.
 
 Additionally always check if the user has the right to perform that action. (e.g. a user should not be able to delete other users' bookmarks).
 
@@ -195,7 +219,7 @@ To prevent CSRF in an app, be sure to call the following method at the top of al
   <?php
   OCP\JSON::callCheck();
 
-If you are using the App Framework, every controller method is automatically checked for CSRF unless you explicitely exclude it by setting the @CSRFExemption annotation before the controller method, see :doc:`../appframework/controllers`
+If you are using the App Framework, every controller method is automatically checked for CSRF unless you explicitely exclude it by setting the @CSRFExemption annotation before the controller method, see :doc:`../app/controllers`
 
 Unvalidated redirects
 ---------------------
