@@ -66,7 +66,7 @@ The PHP configuration in :file:`/etc/php5/conf.d/mysql.ini` could look like this
   mysql.max_persistent=-1
   mysql.max_links=-1
   mysql.default_port=
-  mysql.default_socket=/var/lib/mysql/mysql.sock
+  mysql.default_socket=/var/lib/mysql/mysql.sock  # debian squeeze: /var/run/mysqld/mysqld.sock
   mysql.default_host=
   mysql.default_user=
   mysql.default_password=
