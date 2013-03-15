@@ -25,7 +25,6 @@ To add your own classes simply open the :file:`dependencyinjection/dicontainer.p
           };
       }
   }
-  ?>
 
 You can also inject and overwrite already existing items from the App Framework.
 
@@ -45,37 +44,55 @@ API abstraction layer
 
 ownCloud currently has a ton of static methods which is a very bad thing concerning testability. Therefore the App Framework comes with an :php:class:`OCA\\AppFramework\\Core\\API` abstraction layer (basically a `facade <http://en.wikipedia.org/wiki/Facade_pattern>`_) which is located in the App Framework app at :file:`core/api.php`. 
 
-This is a temporary solution until ownCloud offers a proper API with normal classes that can be used in the DIContainer.
+.. note:: This is a temporary solution until ownCloud offers a proper API with normal classes that can be used in the DIContainer.
 
 This will allow you to easily mock the API in your unittests.
 
-If you find yourself in need to use more ownCloud internal static methods, add them to the API class in the **appframework/** directory, like:
+Extend the API
+--------------
+If you find yourself in need to use more ownCloud internal static methods simply inherit from the API class:
+
+:file:`core/api.php`
 
 .. code-block:: php
 
   <?php
 
-      // inside the API class
+  namespace MyApp\Core;
+
+  class API extends \OCA\AppFramework\Core\API {
+
+      public function __construct($appName){
+          parent::__construct($appName);
+      }
 
 
       public function methodName($someParam){
          \OCP\Util::methodName($this->appName, $someParam);
       }
 
-    }
-  ?>
+  }
+  
+and wire it up in the container:
 
-.. note:: Please send a pull request and cc **Raydiation** so the method can be added to the API class.
-
-A temporary solution would be to to simply inherit from the API class and overwrite the API in the dependency injection container in :file:`dependencyinjection/dicontainer.php` by using:
+:file:`dependencyinjection/dicontainer.php`
 
 .. code-block:: php
 
   <?php
 
-  // inside the constructor
-  $this['API'] = $this->share(function($c){
-      return new MyExtendedAPI($c['AppName']);
-  });
+  use \OCA\MyApp\Core\API;
 
+  class DIContainer extends OCA\AppFramework\DependencyInjection\DIContainer {
+
+      public function __construct(){
+          // tell parent container about the app name
+          parent::__construct('myapp');
+
+          $this['API'] = $this->share(function($c){
+              return new API($c['AppName']);
+          });
+      }
+  }
+  ?>
 
