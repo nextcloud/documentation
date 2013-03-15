@@ -42,7 +42,7 @@ API abstraction layer
 
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
-ownCloud currently has a ton of static methods which is a very bad thing concerning testability. Therefore the App Framework comes with an :php:class:`OCA\\AppFramework\\Core\\API` abstraction layer (basically a `facade <http://en.wikipedia.org/wiki/Facade_pattern>`_) which is located in the App Framework app at :file:`core/api.php`. 
+ownCloud currently has a ton of static methods which is a very bad thing concerning testability. Therefore the App Framework comes with an :php:class:`OCA\\AppFramework\\Core\\API` abstraction layer (basically a `facade <http://en.wikipedia.org/wiki/Facade_pattern>`_) which wraps the static method calls inside an object. 
 
 .. note:: This is a temporary solution until ownCloud offers a proper API with normal classes that can be used in the DIContainer.
 
