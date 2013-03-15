@@ -127,6 +127,30 @@ Code executions and file inclusions can be easily prevented by **never** allowin
 
 .. note:: If you have to pass user input to a potential dangerous, double check to be sure that there is no other way. If it is not possible otherwise sanitize every user parameter and ask people to audit your sanitize function.
 
+Directory Traversal
+-------------------
+Very often developers forget about sanitizing the file path (removing all \ and /), this allows an attacker to traversal through directories on the server which opens several potential attack vendors including privilege escalations, code executions or file disclosures.
+
+**DON'T**
+
+.. code-block:: php
+
+  <?php
+  $username = OC_User::getUser();
+  fopen("/data/" . $username . "/" . $_GET['file] . ".txt");
+
+**DO**
+
+.. code-block:: php
+
+  <?php
+  $username = OC_User::getUser();
+  $file = str_replace(array('/', '\\'), '',  $_GET['file']);
+  fopen("/data/" . $username . "/" . $file . ".txt");
+
+.. note:: PHP also interprets the backslash (\) in paths, don't forget to replace it too!
+
+
 Shell Injection
 ---------------
 
