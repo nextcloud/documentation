@@ -32,7 +32,8 @@ You can also inject and overwrite already existing items from the App Framework.
 The App Framework lets you inject/overwrite the following items:
 
 * **API**: The API layer. Overwrite this if you use an API layer that inherited from the App Framework API layer and provides additional methods.
-* **Request**: The Request object which holds the $_POST, $_GET, etc. variables.* **TwigTemplateDirectory**: If set to the template directory, Twig templates can be used.
+* **Request**: The Request object which holds the $_POST, $_GET, etc. variables
+* **TwigTemplateDirectory**: If set to the template directory, Twig templates can be used.
 * **TwigTemplateCacheDirectory**: Set this to enable caching for Twig templates
 * **MiddlewareDispatcher**: Can be used to :doc:`add aditional middleware <middleware>`
 
