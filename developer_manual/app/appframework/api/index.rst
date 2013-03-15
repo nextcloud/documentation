@@ -22,6 +22,8 @@ AppFramework API
    http_textdownloadresponse
    http_twigresponse
    http_request
+   http_notfoundresponse
+   http_forbiddenresponse
    middleware_middleware
    middleware_middlewaredispatcher
    middleware_security_securitymiddleware
