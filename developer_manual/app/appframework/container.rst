@@ -3,9 +3,7 @@ Runtime configuration
 
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
-
-
-Dependency Injection helps you to create testable code. A good overview over how it works and what the benefits are can be seen on `Google's Clean Code Talks <http://www.youtube.com/watch?v=RlfLCWKxHJ0>`_
+The App Framework assembles the application by using an Inversion of Control container which does :doc:`../general/dependencyinjection`. Dependency Injection helps you to create testable code. A good overview over how it works and what the benefits are can be seen on `Google's Clean Code Talks <http://www.youtube.com/watch?v=RlfLCWKxHJ0>`_
 
 The container is configured in :file:`dependencyinjection/dicontainer.php`. By default `Pimple <http://pimple.sensiolabs.org/>`_ is used as dependency injection container. A `tutorial can be found here <http://jtreminio.com/2012/10/an-introduction-to-pimple-and-service-containers/>`_ 
 
@@ -16,17 +14,28 @@ To add your own classes simply open the :file:`dependencyinjection/dicontainer.p
 
   <?php
 
-  // in the constructor
+  class DIContainer extends OCA\AppFramework\DependencyInjection\DIContainer {
 
-  $this['MyClass'] = function($c){
-      return new MyClass($c['SomeOtherClass']);
-  };
+      public function __construct(){
+          // tell parent container about the app name
+          parent::__construct('myapp');
 
+          $this['MyClass'] = function($c){
+              return new MyClass($c['SomeOtherClass']);
+          };
+      }
+  }
   ?>
 
-You can also overwrite already existing items from the App Framework simply by redefining them.
+You can also inject and overwrite already existing items from the App Framework.
 
-**See also** :doc:`../general/dependencyinjection`
+The App Framework lets you inject/overwrite the following items:
+
+* **API**: The API layer. Overwrite this if you use an API layer that inherited from the App Framework API layer and provides additional methods.
+* **Request**: The Request object which holds the $_POST, $_GET, etc. variables.* **TwigTemplateDirectory**: If set to the template directory, Twig templates can be used.
+* **TwigTemplateCacheDirectory**: Set this to enable caching for Twig templates
+* **MiddlewareDispatcher**: Can be used to :doc:`add aditional middleware <middleware>`
+
 
 API abstraction layer
 =====================
