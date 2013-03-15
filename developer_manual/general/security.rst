@@ -123,7 +123,7 @@ Code executions and file inclusions can be easily prevented by **never** allowin
 .. code-block:: php
 
   <?php
-  require("/includes/" . $_GET['file]);
+  require("/includes/" . $_GET['file']);
 
 .. note:: If you have to pass user input to a potential dangerous, double check to be sure that there is no other way. If it is not possible otherwise sanitize every user parameter and ask people to audit your sanitize function.
 
@@ -137,7 +137,7 @@ Very often developers forget about sanitizing the file path (removing all \ and 
 
   <?php
   $username = OC_User::getUser();
-  fopen("/data/" . $username . "/" . $_GET['file] . ".txt");
+  fopen("/data/" . $username . "/" . $_GET['file'] . ".txt");
 
 **DO**
 
