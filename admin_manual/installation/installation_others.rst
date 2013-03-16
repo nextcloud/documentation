@@ -64,9 +64,11 @@ Nginx Configuration
             # regexp required pcre installed, otherwise try: ^(.+?\.php)(/.*)?$
             location ~ ^(?<script_name>.+?\.php)(?<path_info>/.*)?$ {
                     try_files $script_name = 404;
+		    #Or try_files $1 = 404; if you use ^(.+?\.php)(/.*)?$
 
                     include fastcgi.conf;
                     fastcgi_param PATH_INFO $path_info;
+		    #Or fastcgi_param PATH_INFO $2; if you use ^(.+?\.php)(/.*)?$
                     fastcgi_param HTTPS on;
                     fastcgi_pass 127.0.0.1:9000;
             }
