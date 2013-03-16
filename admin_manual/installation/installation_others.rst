@@ -33,7 +33,7 @@ Nginx Configuration
             error_log /var/log/nginx/cloud.example.com.error_log info;
 
             # Path to the root of your installation
-            root /var/www/$server_name/htdocs;
+            root /var/www;
 
             client_max_body_size 10G; # set max upload size
             fastcgi_buffers 64 4K;
@@ -66,11 +66,10 @@ Nginx Configuration
                     try_files $script_name = 404;
 		    #Or try_files $1 = 404; if you use ^(.+?\.php)(/.*)?$
 
-                    include fastcgi.conf;
-                    fastcgi_param PATH_INFO $path_info;
-		    #Or fastcgi_param PATH_INFO $2; if you use ^(.+?\.php)(/.*)?$
+                    include fastcgi_params;
+                    fastcgi_param PATH_INFO $path_info; # Or 'fastcgi_param PATH_INFO $2;' if you use ^(.+?\.php)(/.*)?$
                     fastcgi_param HTTPS on;
-                    fastcgi_pass 127.0.0.1:9000;
+                    fastcgi_pass 127.0.0.1:9000; # Or use unix-socket with 'fastcgi_pass unix:/var/run/php5-fpm.sock;'
             }
 
             # Optional: set long EXPIRES header on static assets
