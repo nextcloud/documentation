@@ -61,7 +61,12 @@ An instance of the API is passed via :doc:`../general/dependencyinjection`, the 
 
 .. note:: If an URL Parameter, POST or GET value exist with the same key, the URL Parameter is preferred over the POST parameter and the POST parameter is preferred over the GET parameter. You should avoid this scenario though.
 
-If you want to get variables from env variables, use **$this->env($key)** and for session variables, use **$this->session($key)**.
+If you want to access environment variables($_ENV), use **$this->env($key)**.
+Session and cookie variables can be accessed via **session** and **cookie**
+methods. For example, to get a value of a variable from session:
+**$this->cookie($key_name)**. Not like cookie, which is read only, session
+variables can also be changed using: **$this->session($key_name,
+$value_name)**.
 
 Every controller method has to return a Response object. The currently available Responses from the App Framework include:
 
