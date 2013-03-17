@@ -148,7 +148,7 @@ The last thing that is left is to tell the application how the controller needs 
 
   use OCA\AppFramework\DependencyInjection\DIContainer as BaseContainer;
 
-  use OCA\MyApp\Controller\ItemController;
+  use OCA\MyApp\Controller\PageController;
 
   class DIContainer extends BaseContainer {
 
