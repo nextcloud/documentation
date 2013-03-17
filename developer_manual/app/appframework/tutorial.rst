@@ -15,6 +15,8 @@ Create an navigation entry
 --------------------------
 The **app.php** will always loaded for every app and can for instance be used to load additional JavaScript for the files app. Therefore the navigation entry has to be registered in this file.
 
+.. note:: The icon **img/example.png** needs to exist or the navigation will throw an error
+
 :file:`appinfo/app.php`
 
 .. code-block:: php
