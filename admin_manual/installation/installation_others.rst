@@ -29,11 +29,8 @@ Nginx Configuration
             ssl_certificate /etc/ssl/nginx/cloud.example.com.crt;
             ssl_certificate_key /etc/ssl/nginx/cloud.example.com.key;
 
-            access_log /var/log/nginx/cloud.example.com.access_log main;
-            error_log /var/log/nginx/cloud.example.com.error_log info;
-
             # Path to the root of your installation
-            root /var/www;
+            root /var/www/;
 
             client_max_body_size 10G; # set max upload size
             fastcgi_buffers 64 4K;
@@ -61,13 +58,11 @@ Nginx Configuration
                     try_files $uri $uri/ index.php;
             }
 
-            # regexp required pcre installed, otherwise try: ^(.+?\.php)(/.*)?$
-            location ~ ^(?<script_name>.+?\.php)(?<path_info>/.*)?$ {
-                    try_files $script_name = 404;
-		    #Or try_files $1 = 404; if you use ^(.+?\.php)(/.*)?$
+            location ~ ^(?<script_name>.+?\.php)(?<path_info>/.*)?$ { # regexp required pcre installed, otherwise try 'location ~ ^(.+?\.php)(/.*)?$ {'
+                    try_files $script_name = 404; # Or 'try_files $1 = 404;' if you don't have pcre installed
 
                     include fastcgi_params;
-                    fastcgi_param PATH_INFO $path_info; # Or 'fastcgi_param PATH_INFO $2;' if you use ^(.+?\.php)(/.*)?$
+                    fastcgi_param PATH_INFO $path_info; # Or 'fastcgi_param PATH_INFO $2;' if you don't have pcre installed
                     fastcgi_param HTTPS on;
                     fastcgi_pass 127.0.0.1:9000; # Or use unix-socket with 'fastcgi_pass unix:/var/run/php5-fpm.sock;'
             }
