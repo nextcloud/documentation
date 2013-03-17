@@ -5,6 +5,12 @@ App Tutorial
 
 This tutorial contains the MVC approach to write an app and continues where :doc:`../intro/createapp` left off. The result will be a simple "Hello World" app.
 
+To make use of the App Framwork app it must be activated first by linking it into the app directory::
+
+    sudo ln -s /var/www/apps/appframework /var/www/owncloud/apps
+
+After that activate it on the apps page.
+
 Create an navigation entry
 --------------------------
 The **app.php** will always loaded for every app and can for instance be used to load additional JavaScript for the files app. Therefore the navigation entry has to be registered in this file.
