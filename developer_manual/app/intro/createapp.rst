@@ -99,9 +99,9 @@ To simplify the decision see this comparison chart:
 | Templates       | :php:class:`OC_Template`| :php:class:`OC_Template`       |
 |                 |                         | and `Twig`_                    |
 +-----------------+-------------------------+--------------------------------+
-| Security        | manual checks           | enforces XSS (Twig only), CSRF |
-|                 |                         | and Authentication checks by   |
-|                 |                         | default                        |
+| Security        | manual checks           | escapse XSS (Twig only), does  |
+|                 |                         | CSRF and Authentication checks |
+|                 |                         | by default                     |
 +-----------------+-------------------------+--------------------------------+
 
 .. _Twig: http://twig.sensiolabs.org
