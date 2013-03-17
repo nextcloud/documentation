@@ -77,7 +77,7 @@ Every controller method has to return a Response object. The currently available
 * :php:class:`OCA\\AppFramework\\Http\\TextDownloadResponse`: prompts the user to download a text file containing a passed string
 * :php:class:`OCA\\AppFramework\\Http\\TextResponse`: for printing text like XML
 
-.. versionchanged:: 6.0
+.. versionadded:: 6.0
 
 * :php:class:`OCA\\AppFramework\\Http\\ForbiddenResponse`: returns 403 Forbidden HTTP status
 * :php:class:`OCA\\AppFramework\\Http\\NotFoundResponse`: returns 404 Not Found HTTP status
