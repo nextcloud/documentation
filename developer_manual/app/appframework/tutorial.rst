@@ -86,7 +86,7 @@ Write the logic (Controller)
 ----------------------------
 The :doc:`controllers` to which the route links does not exist yet and it has to be created:
 
-:file:`controllers/pagecontroller.php`
+:file:`controller/pagecontroller.php`
 
 .. code-block:: php
 
@@ -144,7 +144,11 @@ The last thing that is left is to tell the application how the controller needs 
 
   <?php
 
+  namespace OCA\MyApp\DependencyInjection;
+
   use OCA\AppFramework\DependencyInjection\DIContainer as BaseContainer;
+
+  use OCA\MyApp\Controller\ItemController;
 
   class DIContainer extends BaseContainer {
 
