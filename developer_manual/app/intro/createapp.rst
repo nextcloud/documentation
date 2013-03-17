@@ -88,7 +88,7 @@ To simplify the decision see this comparison chart:
 +=================+=========================+================================+
 | Difficulty      | easy                    | medium                         |
 +-----------------+-------------------------+--------------------------------+
-| Architecture    | none                    | MVC                            |
+| Architecture    | routes and templates    | routes and MVC                 |
 +-----------------+-------------------------+--------------------------------+
 | Testability     | hard                    | easy: built-in :doc:`\         |
 |                 |                         | ../general/dependencyinjection`|
