@@ -142,6 +142,8 @@ The last thing that is left is to tell the application how the controller needs 
 
   <?php
 
+  use OCA\AppFramework\DependencyInjection\DIContainer as BaseContainer;
+
   class DIContainer extends BaseContainer {
 
       public function __construct(){
