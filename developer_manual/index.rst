@@ -11,7 +11,7 @@ If you want to contribute please read the `Contributor agreement FAQ`_
 
 * Fix and triage bugs: `Report an issue on our bug tracker`_
 * `Translate <https://www.transifex.com/projects/p/owncloud/>`_ ownCloud to your language 
-* Support users on the `mailing list`_ and on the `IRC channel`_
+* Support users on the `mailing list`_ and on the IRC channel #owncloud at irc.freenode.net
 * Take a job from our `Junior Jobs`_
 * Write and generate `documentation <https://github.com/owncloud/documentation>`_
 * Conduct `usability testing`_
@@ -22,7 +22,7 @@ Getting Help
 ============
 
 * Ask a question on the `mailing list`_
-* Join the `IRC channel`_ #owncloud-dev on irc.freenode.net
+* Join the IRC channel #owncloud-dev on irc.freenode.net
 * `Contact`_ a maintainer of a certain app or division
 
 
@@ -129,7 +129,6 @@ Index and Tables
 .. _Contributor agreement FAQ: http://owncloud.org/about/contributor-agreement/
 
 .. _mailing list: https://mail.kde.org/mailman/listinfo/owncloud
-.. _IRC channel: irc://#owncloud-dev@irc.freenode.net
 .. _Contact: http://owncloud.org/contact/
 
 .. _Report an issue on our bug tracker: https://github.com/owncloud/core/issues
