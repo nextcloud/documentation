@@ -37,6 +37,15 @@ Commands for Ubuntu and Debian (run as root):
   apt-get install apache2 php5 php5-gd php-xml-parser php5-intl
   apt-get install php5-sqlite php5-mysql smbclient curl libcurl3 php5-curl
 
+If you are running Ubuntu 10.04 LTS you will need to update your PHP from
+this `PHP PPA`_:
+
+::
+
+  sudo add-apt-repository ppa:ondrej/php5
+  sudo apt-get update
+  sudo apt-get install php5
+
 .. todo:: Document other distributions.
 
 You don’t need any WebDAV support of your webserver (i.e. apache’s mod_webdav)
@@ -101,7 +110,7 @@ Follow the Install Wizard
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Open your web browser and navigate to your ownCloud instance. If you are
 installing ownCloud on the same machine as you will access the install wizard
-from, the url will be: http://localhost/ (or http://localhost/owncloud). 
+from, the url will be: http://localhost/ (or http://localhost/owncloud).
 
 For basic installs we recommend SQLite as it is easy to setup (ownCloud will do it for you). For larger installs you should use MySQL or PostgreSQL. Click on the Advanced options to show the configuration options. You may enter admin
 credentials and let ownCloud create its own database user, or enter a preconfigured user.  If you are not using apache as the webserver, please set the data directory to a location outside of the document root. See the advanced
@@ -117,3 +126,5 @@ configuration.
 If you plan on using the Webfinger app and
 your ownCloud installation is not in the webroot then you’ll have to manually
 link :file:`/var/www/.well-known` to :file:`/path/to/your/owncloud/.well-known`.
+
+.. _PHP PPA: https://launchpad.net/~ondrej/+archive/php5
