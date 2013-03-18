@@ -5,9 +5,16 @@ App Tutorial
 
 This tutorial contains the MVC approach to write an app and continues where :doc:`../intro/createapp` left off. The result will be a simple "Hello World" app.
 
-To make use of the App Framwork app it must be activated first by linking it into the app directory::
+To make use of the App Framwork app it must be cloned and activated first by linking it into the app directory:
 
-    sudo ln -s /var/www/apps/appframework /var/www/owncloud/apps
+.. code-block:: bash
+
+    cd /var/www
+    sudo git clone https://github.com/owncloud/appframework.git
+    sudo chown -R user:group /var/www/appframework
+    sudo ln -s /var/www/appframework /var/www/owncloud/apps
+
+.. note:: This is **only recommended for development**! If a normal installation is used, place it inside the apps directory!
 
 After that activate it on the apps page.
 
