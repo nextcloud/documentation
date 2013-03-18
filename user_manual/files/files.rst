@@ -22,7 +22,7 @@ KDE/Dolphin
 ~~~~~~~~~~~
 Click in the adress area and enter::
 
-    dav://youraddress.com/files/webdav.php
+    webdav://youraddress.com/files/webdav.php
 
 .. image:: ../images/dolphin_webdav.png
 
