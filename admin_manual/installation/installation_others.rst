@@ -35,9 +35,9 @@ Nginx Configuration
             client_max_body_size 10G; # set max upload size
             fastcgi_buffers 64 4K;
 
-            rewrite ^/caldav((/|$).*)$ /remote.php/caldav$1 last;
-            rewrite ^/carddav((/|$).*)$ /remote.php/carddav$1 last;
-            rewrite ^/webdav((/|$).*)$ /remote.php/webdav$1 last;
+            rewrite ^/caldav(.*)$ /remote.php/caldav$1 redirect;
+            rewrite ^/carddav(.*)$ /remote.php/carddav$1 redirect;
+            rewrite ^/webdav(.*)$ /remote.php/webdav$1 redirect;
 
             index index.php;
             error_page 403 = /core/templates/403.php;
@@ -48,8 +48,10 @@ Nginx Configuration
             }
 
             location / {
+                    # The following 2 rules are only needed with webfinger
                     rewrite ^/.well-known/host-meta /public.php?service=host-meta last;
                     rewrite ^/.well-known/host-meta.json /public.php?service=host-meta-json last;
+
                     rewrite ^/.well-known/carddav /remote.php/carddav/ redirect;
                     rewrite ^/.well-known/caldav /remote.php/caldav/ redirect;
 
@@ -58,17 +60,18 @@ Nginx Configuration
                     try_files $uri $uri/ index.php;
             }
 
-            location ~ ^(?<script_name>.+?\.php)(?<path_info>/.*)?$ { # regexp required pcre installed, otherwise try 'location ~ ^(.+?\.php)(/.*)?$ {'
-                    try_files $script_name = 404; # Or 'try_files $1 = 404;' if you don't have pcre installed
+            location ~ ^(.+?\.php)(/.*)?$ {
+                    try_files $1 = 404;
 
                     include fastcgi_params;
-                    fastcgi_param PATH_INFO $path_info; # Or 'fastcgi_param PATH_INFO $2;' if you don't have pcre installed
+                    fastcgi_param PATH_INFO $2;
                     fastcgi_param HTTPS on;
-                    fastcgi_pass 127.0.0.1:9000; # Or use unix-socket with 'fastcgi_pass unix:/var/run/php5-fpm.sock;'
+                    fastcgi_pass 127.0.0.1:9000;
+                    # Or use unix-socket with 'fastcgi_pass unix:/var/run/php5-fpm.sock;'
             }
 
             # Optional: set long EXPIRES header on static assets
-            location ~* ^.+.(jpg|jpeg|gif|bmp|ico|png|css|js|swf)$ {
+            location ~* ^.+\.(jpg|jpeg|gif|bmp|ico|png|css|js|swf)$ {
                     expires 30d;
                     # Optional: Don't log access to assets
                     access_log off;
