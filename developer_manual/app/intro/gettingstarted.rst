@@ -44,11 +44,13 @@ and the apache user and group for the **chown** command will either be
   cd /var/www
   git clone https://github.com/owncloud/core.git owncloud
   git clone https://github.com/owncloud/apps.git apps
-  git clone https://github.com/owncloud/3rdparty.git 3rdparty
-  mkdir owncloud/data
-  sudo chown -R www-data:www-data owncloud/config
-  sudo chown -R www-data:www-data owncloud/data
-  sudo chown -R www-data:www-data owncloud/apps
+  cd owncloud/
+  git submodule init
+  git submodule update
+  mkdir data
+  sudo chown -R www-data:www-data config/
+  sudo chown -R www-data:www-data data/
+  sudo chown -R www-data:www-data apps/
   sudo chmod -R o-rw /var/www
 
 Now restart the apache server and get ready to `set up ownCloud`_ at http://localhost/owncloud. 
