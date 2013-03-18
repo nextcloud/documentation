@@ -16,50 +16,67 @@ Nginx Configuration
 
 .. code-block:: python
 
-    # redirect http to https.
     server {
       listen 80;
-      server_name owncloud.example.org;
-      return 301 https://$server_name$request_uri;  # enforce https
+      server_name cloud.example.com;
+      return  https://$server_name$request_uri;  # enforce https
     }
 
-    # owncloud (ssl/tls)
     server {
       listen 443 ssl;
-      ssl_certificate /etc/nginx/certs/server.crt;
-      ssl_certificate_key /etc/nginx/certs/server.key;
-      server_name owncloud.example.org;
-      root /path/to/owncloud;
-      index index.php;
-      client_max_body_size 1000M; # set maximum upload size
+      server_name cloud.example.com;
 
-      # deny direct access
+      ssl_certificate /etc/ssl/nginx/cloud.example.com.crt;
+      ssl_certificate_key /etc/ssl/nginx/cloud.example.com.key;
+
+      # Path to the root of your installation
+      root /var/www/;
+
+      client_max_body_size 10G; # set max upload size
+      fastcgi_buffers 64 4K;
+
+      rewrite ^/caldav(.*)$ /remote.php/caldav$1 redirect;
+      rewrite ^/carddav(.*)$ /remote.php/carddav$1 redirect;
+      rewrite ^/webdav(.*)$ /remote.php/webdav$1 redirect;
+
+      index index.php;
+      error_page 403 = /core/templates/403.php;
+      error_page 404 = /core/templates/404.php;
+
       location ~ ^/(data|config|\.ht|db_structure\.xml|README) {
         deny all;
       }
 
-      # default try order
       location / {
-        try_files $uri $uri/ @webdav;
+        # The following 2 rules are only needed with webfinger
+        rewrite ^/.well-known/host-meta /public.php?service=host-meta last;
+        rewrite ^/.well-known/host-meta.json /public.php?service=host-meta-json last;
+
+        rewrite ^/.well-known/carddav /remote.php/carddav/ redirect;
+        rewrite ^/.well-known/caldav /remote.php/caldav/ redirect;
+
+        rewrite ^(/core/doc/[^\/]+/)$ $1/index.html;
+
+        try_files $uri $uri/ index.php;
       }
 
-      # owncloud WebDAV
-      location @webdav {
-        fastcgi_split_path_info ^(.+\.php)(/.*)$;
-        fastcgi_pass 127.0.0.1:9000; # or use php-fpm with: "unix:/var/run/php-fpm/php-fpm.sock;"
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_param HTTPS on;
+      location ~ ^(.+?\.php)(/.*)?$ {
+        try_files $1 = 404;
+
         include fastcgi_params;
+        fastcgi_param PATH_INFO $2;
+        fastcgi_param HTTPS on;
+        fastcgi_pass 127.0.0.1:9000;
+        # Or use unix-socket with 'fastcgi_pass unix:/var/run/php5-fpm.sock;'
       }
 
-      # enable php
-      location ~ \.php$ {
-        try_files $uri = 404;
-        fastcgi_pass 127.0.0.1:9000; # or use php-fpm with: "unix:/var/run/php-fpm/php-fpm.sock;"
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_param HTTPS on;
-        include fastcgi_params;
+      # Optional: set long EXPIRES header on static assets
+      location ~* ^.+\.(jpg|jpeg|gif|bmp|ico|png|css|js|swf)$ {
+        expires 30d;
+        # Optional: Don't log access to assets
+        access_log off;
       }
+
     }
 
 .. note:: You can use Owncloud without SSL/TLS support, but we strongly encourage you not to do that:
