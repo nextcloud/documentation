@@ -199,20 +199,30 @@ Used as a model parent class and provides CRUD and caching logic for the JSON da
 
     Adds a new item. If the item id is already present, it will be updated
 
-  .. js:function:: update(data)
+  .. js:function:: update(data[, clearCache=true])
 
     :param object data: The object that should be updated
+    :param boolean clearCache: clears the existing queries cache. Set this to false if the update does not affect the queries on the model to improve performance
 
-    Updates an existing object by copying the attributes to the old one
+    Updates an existing object by copying the provided attributes to the old one. That means that if you want to update only one field simply pass an object with the correct id and the fields that should be overwritten.
 
-  .. js:function:: add(data)
+    Example: 
+
+    .. code-block:: js
+
+      // udpate name and email
+      itemModel.update({id: 3, name: 'newName', email: 'newEmail'})
+
+  .. js:function:: add(data[, clearCache=true])
 
     :param object data: The object that should be added
+    :param boolean clearCache: clears the existing queries cache. Set this to false if the update does not affect the queries on the model to improve performance
 
 
-  .. js:function:: getById(id)
+  .. js:function:: getById(id[, clearCache=true])
 
     :param int id: The id of the object
+    :param boolean clearCache: clears the existing queries cache. Set this to false if the update does not affect the queries on the model to improve performance
     :returns object: a data object by its id
 
 
