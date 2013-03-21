@@ -50,7 +50,7 @@ ownCloud has to know what your app is. This information is located inside the :f
       <version>1.0</version>
       <licence>AGPL</licence>
       <author>Your Name</author>
-      <require>6</require>
+      <require>5</require>
   </info>
 
 For more information on the content of :file:`appinfo/info.xml` see: :doc:`../app/info`
