@@ -73,7 +73,6 @@ This example contains additional dependencies for CoffeeScript. Adjust this to y
       "grunt-contrib-watch": "~0.2.0",
       "grunt-coffeelint": "0.0.6",
       "grunt-wrap": "~0.2.0",
-      "testacular": "~0.4.0",
       "phantomjs": "~1.8.1-3",
       "grunt-phpunit": "0.2.0",
       "gruntacular": "~0.3.0"
