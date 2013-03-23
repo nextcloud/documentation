@@ -24,3 +24,5 @@ Thrown when the security middleware encounters a security problem
 
 
     Used to check if a security exception occured in an ajax request
+
+

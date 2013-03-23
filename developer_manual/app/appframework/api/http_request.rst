@@ -126,3 +126,5 @@ Encapsulates $_GET, $_FILES and $_POST arrays for better testability
 
 
     Sets a session variable
+
+

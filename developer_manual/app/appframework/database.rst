@@ -7,6 +7,8 @@ Your database layer should go into the **db/** folder. It's recommended to split
 
 Getters and setters will automatically be created for all public attributes. Should it be required to use special setter or getters, simply create the method. Make sure to mark the field as updated though if it was set by passing the fieldname to the **markFieldUpdated()** method.
 
+.. versionchanged:: 6.0 Instead of manually creating and mapping all the entities, this is is now done by extending a parent class.
+
 :file:`db/item.php`
 
 .. code-block:: php
@@ -32,7 +34,9 @@ Getters and setters will automatically be created for all public attributes. Sho
   }
 
 
-All database queries for that object should be put into a mapper class. This follows the `data mapper pattern <http://www.martinfowler.com/eaaCatalog/dataMapper.html>`_.
+All database queries for that object should be put into a mapper class. This follows the `data mapper pattern <http://www.martinfowler.com/eaaCatalog/dataMapper.html>`_. Simply inherit the :php:class:`\\OCA\\AppFramework\\Db\\Mapper`
+
+.. versionchanged:: 6.0: Methods from the old mapper have been removed and deprecated to allow a small ORM.
 
 :file:`db/itemmapper.php`
 

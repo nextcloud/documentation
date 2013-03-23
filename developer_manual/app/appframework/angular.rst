@@ -50,8 +50,20 @@ Services
 
 The App Framework provides the following services:
 
-Loading
-~~~~~~~
+Router
+~~~~~~
+The **OC.Router** object
+
+Notification
+~~~~~~~~~~~~
+The **OC.Notification** object
+
+Utils
+~~~~~
+The **OC** object
+
+_Loading
+~~~~~~~~
 Simple object that can be used for displaying loading notifcations. It has an internal counter that starts at 0 and can be increased and decreased. If the counter is bigger than 0 isLoading is true.
 
 Example:
@@ -70,19 +82,6 @@ Example:
   loading.decrease()
   loading.decrease()
   loading.isLoading() # false
-
-
-Router
-~~~~~~
-The **OC.Router** object
-
-Notification
-~~~~~~~~~~~~
-The **OC.Notification** object
-
-Utils
-~~~~~
-The **OC** object
 
 _Request
 ~~~~~~~~

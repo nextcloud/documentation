@@ -298,3 +298,5 @@ class and add your methods
 
 
     used to return and open a new eventsource
+
+

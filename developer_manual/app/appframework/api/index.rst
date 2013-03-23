@@ -12,6 +12,7 @@ AppFramework API
    db_doesnotexistexception
    db_multipleobjectsreturnedexception
    db_mapper
+   db_entity
    dependencyinjection_dicontainer
    http_response
    http_downloadresponse
@@ -30,6 +31,8 @@ AppFramework API
    middleware_security_securityexception
    middleware_twig_twigmiddleware
    utility_controllertestutility
+   utility_mappertestutility
+   utility_testutility
    utility_methodannotationreader
 
 Main

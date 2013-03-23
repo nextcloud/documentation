@@ -58,3 +58,5 @@ https://docs.djangoproject.com/en/dev/topics/http/middleware/
 
     This is being run after the response object has been rendered andallows the manipulation of the output.
     The middleware is run in reverse order
+
+

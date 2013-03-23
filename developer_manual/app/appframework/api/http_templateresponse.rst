@@ -95,3 +95,5 @@ Response for a normal template
 
 
     Returns the rendered html
+
+

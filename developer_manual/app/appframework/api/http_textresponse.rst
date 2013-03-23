@@ -26,3 +26,5 @@ Just outputs text to the browser
 
 
     Simply sets the headers and returns the file contents
+
+
