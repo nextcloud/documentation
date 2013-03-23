@@ -29,6 +29,14 @@ class and add your methods
     used to return the appname of the set application
 
 
+  .. php:method:: addNavigationEntry($entry)
+
+    :param array $entry: containing: id, name, order, icon and href key
+
+
+    Creates a new navigation entry
+
+
   .. php:method:: getUserId()
 
     :returns string: the user id of the current user
@@ -84,7 +92,7 @@ class and add your methods
     :returns string: the saved value
 
 
-    Looks up a systemwide defined value from the config/config.php
+    Looks up a systemwide defined value
 
 
   .. php:method:: setSystemValue($key, $value)
@@ -93,7 +101,7 @@ class and add your methods
     :param string $value: the value that should be stored
 
 
-    Writes a new systemwide value into the config/config.php
+    Sets a new systemwide value
 
 
   .. php:method:: getAppValue($key, $appName=null)
@@ -171,6 +179,24 @@ class and add your methods
 
 
     Returns the URL for a route
+
+
+  .. php:method:: linkTo($file, $appName=null)
+
+    :param string $file: the name of the file
+    :param string $appName: the name of the app, defaults to the current one
+
+
+    Returns an URL for an image or file
+
+
+  .. php:method:: imagePath($file, $appName=null)
+
+    :param string $file: the name of the file
+    :param string $appName: the name of the app, defaults to the current one
+
+
+    Returns the link to an image, like link to but only with prepending img/
 
 
   .. php:method:: getAbsoluteURL($url)

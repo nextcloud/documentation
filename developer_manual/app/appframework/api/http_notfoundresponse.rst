@@ -2,11 +2,7 @@ NotFoundResponse
 ================
 
 
-Returns 404 Not Found status to user.
-
-This Class renders response with HTTP/1.1 404 Not Found header and empty
-content. If you want to return specified content, please extend it with your
-own class.
+Pure hader response, Just return 404 status to the browser
 
 
 .. php:namespace:: OCA\AppFramework\Http
@@ -14,6 +10,9 @@ own class.
 
 
 
+
   .. php:method:: __construct()
 
-    Creates a response that returns HTTP 404 Not Found status.
+
+
+    Creates a response that just returns 404 status

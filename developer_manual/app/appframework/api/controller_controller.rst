@@ -26,14 +26,6 @@ Baseclass to inherit your controllers from
 
 
 
-  .. php:method:: setURLParams($urlParams=array())
-
-    :param array $urlParams: 
-
-
-    URL params are passed to this method from the routes dispatcher to be available via the $this->params
-
-
   .. php:method:: params($key, $default=null)
 
     :param string $key: the key which you want to access in the URL Parameter                    placeholder, $_POST or $_GET array.                    The priority how they're returned is the following:                    1. URL parameters                    2. POST parameters                    3. GET parameters
@@ -52,6 +44,14 @@ Baseclass to inherit your controllers from
     Returns all params that were received, be it from the request(as GET or POST) or throuh the URL by the route
 
 
+  .. php:method:: method()
+
+    :returns string: the method of the request (POST, GET, etc)
+
+
+    Returns the method of the request
+
+
   .. php:method:: getUploadedFile($key)
 
     :param string $key: the key that will be taken from the $_FILES array
@@ -59,6 +59,34 @@ Baseclass to inherit your controllers from
 
 
     Shortcut for accessing an uploaded file through the $_FILES array
+
+
+  .. php:method:: env($key)
+
+    :param string $key: the key that will be taken from the $_ENV array
+    :returns array: the value in the $_ENV element
+
+
+    Shortcut for getting env variables
+
+
+  .. php:method:: session($key, $value=null)
+
+    :param string $key: the key that will be taken from the $_SESSION array
+    :param string $value: if given sets a new session variable
+    :returns array: the value in the $_SESSION element
+
+
+    Shortcut for getting and setting session variables
+
+
+  .. php:method:: cookie($key)
+
+    :param string $key: the key that will be taken from the $_COOKIE array
+    :returns array: the value in the $_COOKIE element
+
+
+    Shortcut for getting and setting cookie variables
 
 
   .. php:method:: render($templateName, $params=array(), $renderAs='user', $headers=array())
@@ -73,9 +101,9 @@ Baseclass to inherit your controllers from
     Shortcut for rendering a template
 
 
-  .. php:method:: renderJSON($data, $errorMsg=null)
+  .. php:method:: renderJSON($data=array(), $errorMsg=null)
 
-    :param array $data: the PHP array that will be put into the JSON data index
+    :param array $data: the PHP array that will be put into the JSON data indexempty by default
     :param string $errorMsg: If you want to return an error message, pass one
     :returns \\OCA\\AppFramework\\Http\\JSONResponse: containing the values
 

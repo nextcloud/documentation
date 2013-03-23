@@ -13,17 +13,6 @@ Simple utility class for testing controllers
 
 
 
-  .. php:method:: getAPIMock($apiClass='OCA\AppFramework\Core\API', $constructor=array('appname'))
-
-    :param string $apiClass: the class inclusive namespace of the api that we                         want to use
-    :param array $constructor: constructor parameters of the api class
-
-    * **Protected**
-
-
-    Boilerplate function for getting an API Mock class
-
-
   .. php:method:: assertAnnotations($controller, $method, $expected, $valid=array())
 
     :param \\OCA\\AppFramework\\Utility\\Controller/string $controller: name or instance of the controller
@@ -46,3 +35,14 @@ Simple utility class for testing controllers
 
 
     Shortcut for testing expected headers of a response
+
+
+  .. php:method:: getRequest($params)
+
+    :param array $params: a hashmap with the parameters for request
+    :returns \\OCA\\AppFramework\\Http\\Request: a request instance
+
+    * **Protected**
+
+
+    Instead of using positional parameters this function instantiatesa request by using a hashmap so its easier to only set specific params

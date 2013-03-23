@@ -14,45 +14,55 @@ may be subject to change in the future
 
 
 
-  .. php:method:: __construct($api)
+  .. php:method:: __construct($api, $tableName)
 
     :param \\OCA\\AppFramework\\Core\\API $api: Instance of the API abstraction layer
+    :param string $tableName: the name of the table. set this to allow entity queries without using sql
 
 
 
-  .. php:method:: findQuery($tableName, $id)
+  .. php:method:: getTableName()
 
-    :param string $tableName: the name of the table to query
-    :param int $id: the id of the item
+    :returns string: the table name
+
+
+
+  .. php:method:: delete($entity)
+
+    :param \\OCA\\AppFramework\\Db\\Entity $entity: 
+
+
+    Deletes an entity from the table
+
+
+  .. php:method:: insert($entity)
+
+    :param \\OCA\\AppFramework\\Db\\Entity $entity: 
+    :returns \\OCA\\AppFramework\\Db\\the: saved entity with the set id
+
+
+    Creates a new entry in the db from an entity
+
+
+  .. php:method:: update($entity)
+
+    :param \\OCA\\AppFramework\\Db\\Entity $entity: 
+
+
+    Updates an entry in the db from an entity
+
+
+  .. php:method:: findOneQuery($sql, $params)
+
+    :param string $sql: the sql query
+    :param array $params: the parameters of the sql query
     :throws \\OCA\\AppFramework\\Db\\DoesNotExistException: if the item does not exist
     :returns array: the result as row
 
     * **Protected**
 
 
-    Returns an db result by id
-
-
-  .. php:method:: findAllQuery($tableName)
-
-    :param string $tableName: the name of the table to query
-    :returns \\PDOStatement: the result
-
-    * **Protected**
-
-
-    Returns all entries of a table
-
-
-  .. php:method:: deleteQuery($tableName, $id)
-
-    :param string $tableName: the name of the table to query
-    :param int $id: the id of the item
-
-    * **Protected**
-
-
-    Deletes a row in a table by id
+    Returns an db result and throws exceptions when there are more or lessresults
 
 
   .. php:method:: execute($sql, $params=array(), $limit=null, $offset=null)
