@@ -3,7 +3,9 @@ Database Access
 
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
-Your database layer should go into the **db/** folder. It's recommended to split your data entities from your database queries. You can do that by creating a very simple PHP object with getters and setters. This object will hold your data.
+Your database layer should go into the **db/** folder. It's recommended to split the data entities from the database queries. You can do that by creating a very simple PHP object which extends the class :php:class:`\\OCA\\AppFramework\\Db\\Entity`. This object will hold the data. 
+
+Getters and setters will automatically be created for all public attributes. Should it be required to use special setter or getters, simply create the method. Make sure to mark the field as updated though if it was set by passing the fieldname to the **markFieldUpdated()** method.
 
 :file:`db/item.php`
 
@@ -12,64 +14,25 @@ Your database layer should go into the **db/** folder. It's recommended to split
   <?php
   namespace \OCA\YourApp\Db;
 
+  use \OCA\AppFramework\Db\Entity
+
   class Item {
 
-      private $id;
-      private $name;
-      private $path;
-      private $user;
+      public $id;
+      public $name;
+      public $path;
+      public $user;
 
-      public function __construct($fromRow=null){
-          if($fromRow){
-             $this->fromRow($fromRow);
-          }
-      }
-
-      public function fromRow($row){
-          $this->id = $row['id'];
-          $this->name = $row['name'];
-          $this->path = $row['path'];
-          $this->user = $row['user'];
-      }
-
-
-      public function getId(){
-          return $this->id;
-      }
-
-      public function getName(){
-          return $this->name;
-      }
-
-      public function getUser(){
-          return $this->user;
-      }
-
-      public function getPath(){
-          return $this->path;
-      }
-
-
-      public function setId($id){
-          $this->id = $id;
-      }
-
-      public function setName($name){
-          $this->name = $name;
-      }
-
-      public function setUser($user){
-          $this->user = $user;
-      }
-
-      public function setPath($path){
-          $this->path = $path;
+      // transform username to lower case
+      public function function setName($name){
+          $this->markFieldUpdated('name');
+          $this->name = strtolower($name);
       }
 
   }
 
 
-All database queries for that object should be put into a mapper class. This follows the `data mapper pattern <http://www.martinfowler.com/eaaCatalog/dataMapper.html>`_. The mapper class could look like this (more method examples are in the **Apptemplate Advanced** app):
+All database queries for that object should be put into a mapper class. This follows the `data mapper pattern <http://www.martinfowler.com/eaaCatalog/dataMapper.html>`_.
 
 :file:`db/itemmapper.php`
 
@@ -78,105 +41,27 @@ All database queries for that object should be put into a mapper class. This fol
   <?php
   namespace \OCA\YourApp\Db;
 
-  use \OCA\AppFramework\Db\DoesNotExistException;
   use \OCA\AppFramework\Db\Mapper;
 
 
-  class ItemMapper extends Mapper {
+      class ItemMapper extends Mapper {
 
 
-      private $tableName;
-
-      /**
-       * @param API $api Instance of the API abstraction layer
-       */
-      public function __construct($api){
-          parent::__construct($api);
-          $this->tableName = '*PREFIX*apptemplateadvanced_items';
+      public function __construct(API $api) {
+        parent::__construct($api, 'news_feeds');
       }
 
 
-      /**
-       * Finds an item by id
-       * @throws DoesNotExistException if the item does not exists
-       * @throws MultipleObjectsReturnedException if more than one item exists
-       * @return Item the item
-       */
-      public function find($id){
-          $row = $this->findQuery($this->tableName, $id);
-          return new Item($row);
-      }
+      public function find($id, $userId){
+        $sql = 'SELECT * FROM `' . $this->getTableName() . '` ' .
+          'WHERE `id` = ? ' .
+          'AND `user_id` = ?';
 
+        $row = $this->findOneQuery($sql, array($id, $userId));
+        $feed = new Item();
+        $feed->fromRow($row);
 
-      /**
-       * Finds an item by user id
-       * @param string $userId the id of the user that we want to find
-       * @throws DoesNotExistException if the item does not exist
-       * @return Item the item
-       */
-      public function findByUserId($userId){
-          $sql = 'SELECT * FROM ' . $this->tableName . ' WHERE user = ?';
-          $params = array($userId);
-
-          $result = $this->execute($sql, $params)->fetchRow();
-          if($result){
-              return new Item($result);
-          } else {
-              throw new DoesNotExistException('Item with user id ' . $userId . ' does not exist!');
-          }
-      }
-
-
-      /**
-       * Saves an item into the database
-       * @param Item $item the item to be saved
-       * @return Item the item with the filled in id
-       */
-      public function save($item){
-          $sql = 'INSERT INTO '. $this->tableName . '(name, user, path)'.
-              ' VALUES(?, ?, ?)';
-
-          $params = array(
-              $item->getName(),
-              $item->getUser(),
-              $item->getPath()
-          );
-
-          $this->execute($sql, $params);
-
-          $item->setId($this->api->getInsertId());
-          return $item;
-      }
-
-
-      /**
-       * Updates an item
-       * @param Item $item: the item to be updated
-       */
-      public function update($item){
-          $sql = 'UPDATE '. $this->tableName . ' SET
-              name = ?,
-              user = ?,
-              path = ?
-              WHERE id = ?';
-
-          $params = array(
-              $item->getName(),
-              $item->getUser(),
-              $item->getPath(),
-              $item->getId()
-          );
-
-          $this->execute($sql, $params);
-      }
-
-
-      /**
-       * Deletes an item
-       * @param int $id the id of the item
-       */
-      public function delete($id){
-          $this->deleteQuery($this->tableName, $id);
+        return $feed;
       }
 
 
@@ -189,7 +74,7 @@ All database queries for that object should be put into a mapper class. This fol
 .. code-block:: php
 
   <?php
-  $sql = 'SELECT * FROM ' . $this->tableName . ' WHERE user = ' . $user;
+  $sql = 'SELECT * FROM `' . $this->getTableName() . '` WHERE `user` = ' . $user;
   $result = $this->execute($sql);
 
 
@@ -198,7 +83,7 @@ All database queries for that object should be put into a mapper class. This fol
 .. code-block:: php
 
   <?php
-  $sql = 'SELECT * FROM ' . $this->tableName . ' WHERE user = ?';
+  $sql = 'SELECT * FROM `' . $this->getTableName() . '` WHERE `user` = ?';
   $params = array($userId);
 
   $result = $this->execute($sql, $params);
