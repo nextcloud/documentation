@@ -60,7 +60,7 @@ All database queries for that object should be put into a mapper class. This fol
 
 
       public function __construct(API $api) {
-        parent::__construct($api, 'news_feeds');
+        parent::__construct($api, 'news_feeds'); // tablename is news_feeds
       }
 
 
