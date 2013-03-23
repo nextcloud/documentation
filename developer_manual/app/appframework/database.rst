@@ -25,7 +25,7 @@ Getters and setters will automatically be created for all public attributes. Sho
 
   use \OCA\AppFramework\Db\Entity
 
-  class Item {
+  class Item extends Entity {
 
       public $id;
       public $name;
