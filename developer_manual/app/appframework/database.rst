@@ -11,8 +11,8 @@ Getters and setters will automatically be created for all public attributes. Sho
 
 :php:meth:`OCA\\AppFramework\\Db\\Entity::fromRow` maps the database columns to attributes. The conversion works like the this:
 
-* database field **my_name** gets transformed to attribute myName.
-* the attribute myAwesomeProperty gets transformed to the column my_awesome_property
+* database column **my_name** gets transformed to attribute **myName**.
+* the attribute **myAwesomeProperty** gets transformed to the database column **my_awesome_property**
 
 .. versionchanged:: 6.0 Instead of manually creating and mapping all the entities, this is is now done by extending a parent class.
 
