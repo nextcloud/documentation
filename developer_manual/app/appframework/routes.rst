@@ -40,7 +40,7 @@ You can also limit the route to GET or POST requests by simply adding **->post()
   );
   ?>
 
-The fourth parameter is an instance of the **DIContaier** (see :doc:`../general/dependencyinjection`). If you want to replace objects in the container only for a certain request, you can do it like this:
+The fourth parameter is an instance of the **DIContainer** (see :doc:`../general/dependencyinjection`). If you want to replace objects in the container only for a certain request, you can do it like this:
 
 .. code-block:: php
 
