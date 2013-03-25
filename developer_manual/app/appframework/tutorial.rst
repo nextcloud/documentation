@@ -101,7 +101,7 @@ The :doc:`controllers` to which the route links does not exist yet and it has to
 
   namespace OCA\MyApp\Controller;
 
-  use OCA\AppFramework\Controller\Controller;
+  use \OCA\AppFramework\Controller\Controller;
 
 
   class PageController extends Controller {
@@ -153,9 +153,9 @@ The last thing that is left is to tell the application how the controller needs 
 
   namespace OCA\MyApp\DependencyInjection;
 
-  use OCA\AppFramework\DependencyInjection\DIContainer as BaseContainer;
+  use \OCA\AppFramework\DependencyInjection\DIContainer as BaseContainer;
 
-  use OCA\MyApp\Controller\PageController;
+  use \OCA\MyApp\Controller\PageController;
 
   class DIContainer extends BaseContainer {
 
