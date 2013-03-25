@@ -63,7 +63,7 @@ An instance of the API is passed via :doc:`../general/dependencyinjection`, the 
 
 If you want to access environment variables($_ENV), use **$this->env($key)**.
 Session and cookie variables can be accessed via **session** and **cookie**
-methods. For example, to get a value of a variable from session:
+methods. For example, to get a value of a variable from cookie:
 **$this->cookie($key_name)**. Not like cookie, which is read only, session
 variables can also be changed using: **$this->session($key_name,
 $value_name)**.
