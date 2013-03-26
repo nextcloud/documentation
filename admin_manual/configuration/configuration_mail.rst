@@ -199,6 +199,22 @@ press the login button the login mask reappears and a **I’ve forgotten my pass
 Trouble shooting
 ----------------
 
+My web domain is different from my mail domain?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The default domain name used for the sender address is the hostname where your ownCloud installation is served.
+If you have a different mail domain name you can override this behavior by setting the following configuration parameter:
+
+.. code-block:: php
+
+  <?php
+
+    "mail_domain" => "example.com",
+
+Now every mail send by ownCloud e.g. password reset email, will have the domain part of the sender address look like::
+  
+  no-reply@example.com
+
 How can I find out if a SMTP server is reachable?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
