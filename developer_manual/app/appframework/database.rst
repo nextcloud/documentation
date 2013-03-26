@@ -114,7 +114,7 @@ All database queries for that object should be put into a mapper class. This fol
   $result = $this->execute($sql, $params);
 
 
-The mapper class comes with simple methods for deleting, updating and finding items. To delete a database entry, simply pass an entity with a set id to the :php:meth:`OCA\\AppFramework\\Db\\Mapper::delete` method.
+The mapper class comes with simple methods for deleting, updating and finding items. To delete a database entry, simply pass an entity with an id to the :php:meth:`OCA\\AppFramework\\Db\\Mapper::delete` method.
 
 Example:
 
