@@ -30,7 +30,7 @@ Currently supported are:
 
 * **mobile**: works well on mobiles
 * **tablet**: optimized for devices like iPads or Android Tablets
-* **standalone**: mode where only the content are an App is shown. The header, footer and side navigation is not visible. This is useful if ownCloud is embedded in other applications.
+* **standalone**: mode where only the content of an App is shown. The header, footer and side navigation is not visible. This is useful if ownCloud is embedded in other applications.
 
 The auto detection can be overwritten by using the “formfactor” GET variable in the url::
 
