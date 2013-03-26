@@ -64,6 +64,10 @@ author
 ------
 **Required**: The name of the app author or authors.
 
+require
+-------
+**Required**: The minimal version of ownCloud.
+
 types
 -----
 ownCloud allows to specify four kind of "types". Currently supported "types":
