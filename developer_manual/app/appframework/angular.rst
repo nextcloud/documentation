@@ -68,7 +68,7 @@ Simple object that can be used for displaying loading notifcations. It has an in
 
 Example:
 
-.. code-block:: python
+.. code-block:: js
   
   loading = new Loading()
   loading.isLoading() # false
@@ -264,7 +264,7 @@ Because AngularJS getters have to be fast (Angular checks for changed objects af
 
 To query an object with a **_BiggerThanQuery** use its **get** method:
 
-.. code-block:: python
+.. code-block:: js
 
   valuesBiggerThan4 = myModel.get(new _BiggerThanQuery('id', 4))
 
@@ -284,7 +284,7 @@ You can override this method if you need to. The **exec** method is used to run 
 
 A query that would select only ids between a range of numbers would look like this:
 
-.. code-block:: python
+.. code-block:: ruby
 
   angular.module('YourApp').factory '_LessThanQuery', ['_Query', (_Query) ->
 
@@ -309,7 +309,7 @@ A query that would select only ids between a range of numbers would look like th
 
 If **hashCode** is not overwritten it would produce the following output:
 
-.. code-block:: python
+.. code-block:: ruby
   
   query = new _RangeQuery('id', 3, 6)
   query.hashCode() # prints range_id_3_6
@@ -330,10 +330,12 @@ Can be enhanced by passing an expression:
   {
     selector: '#jquery .selector' 
     hideOnFocusLost: true
+    cssClass: 'opened'
   }
 
 * **selector**: if defined, a different area is slid up on click
 * **hideOnFocusLost**: if defined, the slid up area will hide when the focus is lost
+* **cssClass**: if defined, the class which should be toggled on the element where the directive is bound to
 
 Example:
 
@@ -341,6 +343,28 @@ Example:
 
   <button oc-click-slide-toggle="{selector: '#settings', hideOnFocusLost: true}" />
   <div id="settings"></div>
+
+
+ocClickFocus
+~~~~~~~~~~~~
+Can be used to focus a different element when the element is being clicked that has this directive
+
+Must pass an expression:
+
+.. code-block:: js
+  
+  {
+    selector: '#jquery .selector' 
+  }
+
+* **selector**: the area that should be focused
+
+Example:
+
+.. code-block:: html
+
+  <button oc-click-focus="{selector: '#settings'}" />
+  <input id="settings" type="text" />
 
 ocDraggable
 ~~~~~~~~~~~

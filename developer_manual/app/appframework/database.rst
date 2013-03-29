@@ -27,10 +27,19 @@ Getters and setters will automatically be created for all public attributes. Sho
 
   class Item extends Entity {
 
-      public $id;
+      // Note: a field id is set automatically by the parent class
       public $name;
       public $path;
       public $user;
+      public $timestamp;
+
+      public function __construct(){
+          // cast timestamp to an int when fromRow is being called
+          // the second parameter is the argument that is passed to
+          // the php function settype()
+          $this->addType('timestamp', 'int')
+      }
+
 
       // transform username to lower case
       public function function setName($name){

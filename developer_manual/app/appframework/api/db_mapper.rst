@@ -47,6 +47,7 @@ may be subject to change in the future
   .. php:method:: update($entity)
 
     :param \\OCA\\AppFramework\\Db\\Entity $entity: 
+    :throws \\InvalidArgumentException: if entity has no id
 
 
     Updates an entry in the db from an entity

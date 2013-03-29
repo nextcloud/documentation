@@ -17,11 +17,6 @@ Entity
 
 
 
-  .. php:method:: __construct()
-
-
-
-
   .. php:method:: resetUpdatedFields()
 
 
@@ -70,6 +65,17 @@ Entity
 
     :returns array: array of updated fields for update query
 
+
+
+  .. php:method:: addType($fieldName, $type)
+
+    :param string $fieldName: the name of the attribute
+    :param string $type: the type which will be used to call settype()
+
+    * **Protected**
+
+
+    Adds type information for a field so that its automatically casted tothat value once its being returned from the database
 
 
   .. php:method:: fromRow($row)

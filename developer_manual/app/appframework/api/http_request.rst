@@ -11,10 +11,9 @@ Encapsulates $_GET, $_FILES and $_POST arrays for better testability
 
 
 
-  .. php:method:: __construct($get=array(), $post=array(), $files=array(), $server=array(), $env=array(), $session=array(), $cookie=array(), $urlParams=array())
+  .. php:method:: __construct($params=array(), $files=array(), $server=array(), $env=array(), $session=array(), $cookie=array(), $urlParams=array())
 
-    :param array $get: the $_GET array
-    :param array $post: the $_POST array
+    :param array $params: the parsed json array
     :param array $files: the $_FILES array
     :param array $server: the $_SERVER array
     :param array $env: the $_ENV array
@@ -32,24 +31,14 @@ Encapsulates $_GET, $_FILES and $_POST arrays for better testability
     Returns the merged urlParams, GET and POST array
 
 
-  .. php:method:: getGET($key, $default=null)
+  .. php:method:: getParams($key, $default=null)
 
     :param string $key: the array key that should be looked up
     :param string $default: if the key is not found, return this value
     :returns mixed: the value of the stored array or the default
 
 
-    Returns the get value or the default if not found
-
-
-  .. php:method:: getPOST($key, $default=null)
-
-    :param string $key: the array key that should be looked up
-    :param string $default: if the key is not found, return this value
-    :returns mixed: the value of the stored array or the default
-
-
-    Returns the get value or the default if not found
+    Returns the request params value or the default if not found
 
 
   .. php:method:: getFILES($key)
