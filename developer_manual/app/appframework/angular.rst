@@ -366,6 +366,18 @@ Example:
   <button oc-click-focus="{selector: '#settings'}" />
   <input id="settings" type="text" />
 
+
+ocReadFile
+~~~~~~~~~~~~
+Can be used to pass the contents of a file input field to a function. The directive binds to the **change** event of the input. The read content will be assigned to the scope as $fileContent variable and the given function will be called.
+
+Example:
+
+.. code-block:: html
+
+  <input type="file" name="import" oc-read-file="import($fileContent)"/>
+
+
 ocDraggable
 ~~~~~~~~~~~
 Shortcut for using jquery-ui draggable. The expression is passed to $.draggable.
