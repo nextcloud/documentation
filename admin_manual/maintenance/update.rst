@@ -20,7 +20,7 @@ Use rsync in archive mode (this leaves file owner, permissions, and time stamps 
 
 Download the latest version to the working directory::
 
-  wget http://mirrors.owncloud.org/releases/owncloud-latest.tar.bz2
+  wget http://download.owncloud.org/community/owncloud-latest.tar.bz2
 
 Extract content of archive to **./owncloud_latest/**::
 
