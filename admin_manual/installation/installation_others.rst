@@ -112,6 +112,17 @@ Disable directory listing::
          dir-listing.activate = "disable"
        }
 
+.. note:: The **check-local** option of lighttpd's fastcgi_  must be enabled.
+          It is sometimes disabled for security reasons. For example, 
+          the PHP process can run as a different user than lighttpd. 
+          Then, lighttpd might not be able to read/check the PHP files 
+          which the PHP process is able to read. Disabling 
+          **check-local** results in an incorrect **PATH_INFO** 
+          in PHP which produces a strange behavior of owncloud (such as 
+          incompletely loaded pages).
+
+.. _fastcgi: http://redmine.lighttpd.net/projects/1/wiki/Docs_ModFastCGI
+
 Yaws Configuration
 ------------------
 
