@@ -43,6 +43,12 @@ Nginx Configuration
             error_page 403 = /core/templates/403.php;
             error_page 404 = /core/templates/404.php;
 
+            location = /robots.txt {
+                allow all;
+                log_not_found off;
+                access_log off;
+            }
+
             location ~ ^/(data|config|\.ht|db_structure\.xml|README) {
                     deny all;
             }
@@ -64,6 +70,7 @@ Nginx Configuration
                     try_files $1 = 404;
 
                     include fastcgi_params;
+                    fastcgi_param SCRIPT_FILENAME $document_root$1;
                     fastcgi_param PATH_INFO $2;
                     fastcgi_param HTTPS on;
                     fastcgi_pass 127.0.0.1:9000;
