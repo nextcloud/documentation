@@ -222,10 +222,20 @@ get around this issue, you can use the :doc:`ownCloud sync clients <../files/ind
 
 Mobile
 -------
+To connect to your ownCloud server with the **ownCloud** mobile apps, use the base URL and folder only::
+
+    example.com/owncloud
+
+No need to add remote.php/webdav as you do for any other WebDAV client.
+
 There are apps in development for both `Android`_ and `webOS`_. Feel
 free to `contribute, if you can`_! Right now you can use other apps to
 connect to ownCloud from your phone via WebDAV. `WebDAV Navigator`_ is a
 good (proprietary) app for `Android App`_ , `iPhone`_ & `BlackBerry`_.
+
+The URL for these is::
+
+    example.com/owncloud/remote.php/webdav
 
 .. _in your file manager: http://en.wikipedia.org/wiki/Webdav#WebDAV_client_applications
 .. _Sync your ownCloud folders and local folders: http://owncloud.org/documentation/sync-clients/
