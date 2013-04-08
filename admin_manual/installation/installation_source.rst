@@ -9,7 +9,7 @@ Prerequisites
 
 To run ownCloud, your webserver must have the following installed:
 
-* php5 (>= 5.3)
+* php5 (>= 5.3.4)
 * php5-gd
 * php-xml-parser
 * php5-intl
