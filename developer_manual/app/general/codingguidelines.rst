@@ -170,7 +170,7 @@ In general take a look at `JSLint <http://www.jslint.com/lint.html>`_ without th
   // set up namespace for sharing across multiple files
   var MyApp = MyApp || {};
 
-  (function(window, $, exports) {
+  (function(window, $, exports, undefined) {
       'use strict';
 
       // if this function or object should be global, attach it to the namespace
