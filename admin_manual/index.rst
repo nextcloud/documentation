@@ -1,4 +1,3 @@
-.. _index:
 
 ===================
 Admin Documentation

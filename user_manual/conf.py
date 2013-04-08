@@ -185,7 +185,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'ownCloudUserManual.tex', u'ownCloud User Manual',
+  ('contents', 'ownCloudUserManual.tex', u'ownCloud User Manual',
    u'The ownCloud developers', 'manual'),
 ]
 
@@ -215,7 +215,7 @@ latex_logo = '../_shared_assets/static/logo-blue.pdf'
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'owncloudadminmanual', u'ownCloud User Manual',
+    ('contents', 'owncloudadminmanual', u'ownCloud User Manual',
      [u'The ownCloud developers'], 1)
 ]
 
@@ -229,7 +229,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'ownCloudUserManual', u'ownCloud User Manual',
+  ('contents', 'ownCloudUserManual', u'ownCloud User Manual',
    u'The ownCloud developers', 'ownCloud', 'The ownCloud User Manual.',
    'Miscellaneous'),
 ]
