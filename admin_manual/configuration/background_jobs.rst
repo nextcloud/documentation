@@ -51,7 +51,9 @@ may have.
 
 **Example**
 
-To run a cron job on a *nix system, e.g. every 15min, under the default webserver user, e.g. **www-data**, you need to set-up the following cron job to call the **cron.php** script. Please check the crontab man page for the exact command syntax.
+To run a cron job on a *nix system, e.g. every 15min, under the default webserver
+user, e.g. 'www-data', you need to set-up the following cron job to call the
+`cron.php`` script. Please check the crontab man page for the exact command syntax.
 
 ::
 
