@@ -41,6 +41,8 @@ Clean up::
 Upgrade
 -------
 
+.. note:: The update to 5.0 is currently discouraged for users of the encryption app. A rewrite of the encryption will be released in a few weeks. If you have already upgraded to 5.0 you will not be able to decrypt your files. The solution to this is to downgrade to the old version again. **Also make a backup before you downgrade!**
+
 Upgrade is to bring an ownCloud instance to a new *major release*, e.g.
 ownCloud 4.0.7 → 4.5.0. Always do backups anyway.
 
@@ -49,7 +51,7 @@ To upgrade ownCloud, follow those steps:
 #. Make sure that you ran the latest point release of the major ownCloud
    version, e.g. 4.0.7 in the 4.0 series. If not, update to that version first
    (see above).
-#. Make a backup of the ownCloud folder and the database.
+#. **Make a backup of the ownCloud folder and the database**
 #. Deactivate all third party applications.
 #. Delete everything from your ownCloud installation directory, except data and
    config.
