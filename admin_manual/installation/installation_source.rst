@@ -12,10 +12,10 @@ To run ownCloud, your webserver must have the following installed:
 * php5 (>= 5.3)
 * php5-gd
 * php-xml-parser
-* php5-intl
 
 And as *optional* dependencies:
 
+* php5-intl
 * php5-sqlite (>= 3)
 * php5-mysql
 * smbclient
