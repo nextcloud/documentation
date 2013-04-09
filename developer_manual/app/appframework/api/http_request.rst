@@ -2,118 +2,101 @@ Request
 =======
 
 
-Encapsulates $_GET, $_FILES and $_POST arrays for better testability
-
+Class for accessing variables in the request.
+This class provides an immutable object with request variables.
 
 .. php:namespace:: OCA\AppFramework\Http
 .. php:class:: Request
 
 
+  .. php:attr:: $items
+    
+    * **Protected**
+    
+    
+
+  .. php:attr:: $allowedKeys
+    
+    * **Protected**
+    
+    
 
 
-  .. php:method:: __construct($params=array(), $files=array(), $server=array(), $env=array(), $session=array(), $cookie=array(), $urlParams=array())
 
-    :param array $params: the parsed json array
-    :param array $files: the $_FILES array
-    :param array $server: the $_SERVER array
-    :param array $env: the $_ENV array
-    :param array $session: the $_SESSION array
-    :param array $cookie: the $_COOKIE array
-    :param array $urlParams: the parameters which were matched from the URL
+  .. php:method:: __construct($vars=array())
+
+    :param array $vars: An associative array with the following optional values:
 
 
-
-  .. php:method:: getRequestParams()
-
-    :returns array: the merged array
+    .. note:: \OCA\AppFramework\Http\http://www.php.net/manual/en/reserved.variables.php
 
 
-    Returns the merged urlParams, GET and POST array
+  .. php:method:: count()
 
 
-  .. php:method:: getParams($key, $default=null)
-
-    :param string $key: the array key that should be looked up
-    :param string $default: if the key is not found, return this value
-    :returns mixed: the value of the stored array or the default
 
 
-    Returns the request params value or the default if not found
+  .. php:method:: offsetExists($offset)
+
+    :param string $offset: offset The key to lookup
+    :returns string|null: 
 
 
-  .. php:method:: getFILES($key)
-
-    :param string $key: the array key that should be looked up
-    :returns mixed: the value of the stored array or the default
+    ArrayAccess methods
+    Gives access to the combined GET, POST and urlParams arraysExamples:$var = $request['myvar'];orif(!isset($request['myvar']) {    // Do something}$request['myvar'] = 'something'; // This throws an exception.
 
 
-    Returns the get value of the files array
+  .. php:method:: offsetGet($offset)
+
+    :param mixed $offset: 
 
 
-  .. php:method:: getSERVER($key, $default=null)
-
-    :param string $key: the array key that should be looked up
-    :param string $default: if the key is not found, return this value
-    :returns mixed: the value of the stored array or the default
+    .. note:: \OCA\AppFramework\Http\offsetExists
 
 
-    Returns the get value of the server array
+  .. php:method:: offsetSet($offset, $value)
+
+    :param mixed $offset: 
+    :param mixed $value: 
 
 
-  .. php:method:: getENV($key, $default=null)
-
-    :param string $key: the array key that should be looked up
-    :param string $default: if the key is not found, return this value
-    :returns mixed: the value of the stored array or the default
+    .. note:: \OCA\AppFramework\Http\offsetExists
 
 
-    Returns the get value of the env array
+  .. php:method:: offsetUnset($offset)
+
+    :param mixed $offset: 
 
 
-  .. php:method:: getSESSION($key, $default=null)
-
-    :param string $key: the array key that should be looked up
-    :param string $default: if the key is not found, return this value
-    :returns mixed: the value of the stored array or the default
+    .. note:: \OCA\AppFramework\Http\offsetExists
 
 
-    Returns the get value of the session array
+  .. php:method:: __set($name, $value)
+
+    :param mixed $name: 
+    :param mixed $value: 
 
 
-  .. php:method:: getCOOKIE($key, $default=null)
 
-    :param string $key: the array key that should be looked up
-    :param string $default: if the key is not found, return this value
-    :returns mixed: the value of the stored array or the default
+  .. php:method:: __get($name)
 
-
-    Returns the get value of the cookie array
+    :param string $name: The key to look for.
+    :returns mixed|null: 
 
 
-  .. php:method:: getURLParams($key, $default=null)
-
-    :param string $key: the array key that should be looked up
-    :param string $default: if the key is not found, return this value
-    :returns mixed: the value of the stored array or the default
+    Access request variables by method and name.
+    Examples:$request->post['myvar']; // Only look for POST variables$request->myvar; or $request->{'myvar'}; or $request->{$myvar}Looks in the combined GET, POST and urlParams array.if($request->method !== 'POST') {    throw new Exception('This function can only be invoked using POST');}
 
 
-    Returns the get value of the urlParams array
+  .. php:method:: __isset($name)
+
+    :param mixed $name: 
 
 
-  .. php:method:: getMethod()
 
-    :returns string: request method of the server array
+  .. php:method:: __unset($id)
 
+    :param mixed $id: 
 
-    Returns the request method
-
-
-  .. php:method:: setSESSION($key, $value)
-
-    :param string $key: the key of the session variable
-    :param string $value: the value of the session variable
-
-
-    Sets a session variable
 
 

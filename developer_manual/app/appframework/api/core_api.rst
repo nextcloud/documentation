@@ -300,3 +300,62 @@ class and add your methods
     used to return and open a new eventsource
 
 
+  .. php:method:: connectHook($signalClass, $signalName, $slotClass, $slotName)
+
+    :param string $signalClass: class name of emitter
+    :param string $signalName: name of signal
+    :param string $slotClass: class name of slot
+    :param string $slotName: name of slot, in another word, this is the              name of the method that will be called when registered              signal is emitted.
+    :returns \\OCA\\AppFramework\\Core\\bool,: always true
+
+
+    connects a function to a hook
+
+
+  .. php:method:: emitHook($signalClass, $signalName, $params=array())
+
+    :param string $signalClass: class name of emitter
+    :param string $signalName: name of signal
+    :param array $params: defautl: array() array with additional data
+    :returns \\OCA\\AppFramework\\Core\\bool,: true if slots exists or false if not
+
+
+    Emits a signal. To get data from the slot use references!
+
+
+  .. php:method:: clearHook($signalClass=false, $signalName=false)
+
+    :param string $signalClass: 
+    :param string $signalName: 
+
+
+    clear hooks
+
+
+  .. php:method:: getUrlContent($url)
+
+    :param string $url: the url that should be fetched
+    :returns string: the content of the webpage
+
+
+    Gets the content of an URL by using CURL or a fallback if it is notinstalled
+
+
+  .. php:method:: addRegularTask($className, $methodName)
+
+    :param string $className: full namespace and class name of the class
+    :param string $methodName: the name of the static method that should becalled
+
+
+    Register a backgroundjob task
+
+
+  .. php:method:: registerAdmin($mainPath, $appName=null)
+
+    :param string $mainPath: the path to the main php file without the phpsuffix, relative to your apps directory! not the template directory
+    :param string $appName: the name of the app, defaults to the current one
+
+
+    Tells ownCloud to include a template in the admin overview
+
+

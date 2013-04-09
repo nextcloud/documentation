@@ -70,14 +70,13 @@ Baseclass to inherit your controllers from
     Shortcut for getting env variables
 
 
-  .. php:method:: session($key, $value=null)
+  .. php:method:: session($key)
 
     :param string $key: the key that will be taken from the $_SESSION array
-    :param string $value: if given sets a new session variable
     :returns array: the value in the $_SESSION element
 
 
-    Shortcut for getting and setting session variables
+    Shortcut for getting session variables
 
 
   .. php:method:: cookie($key)
@@ -86,7 +85,7 @@ Baseclass to inherit your controllers from
     :returns array: the value in the $_COOKIE element
 
 
-    Shortcut for getting and setting cookie variables
+    Shortcut for getting cookie variables
 
 
   .. php:method:: render($templateName, $params=array(), $renderAs='user', $headers=array())
