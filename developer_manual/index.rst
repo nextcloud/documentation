@@ -13,11 +13,11 @@ If you want to contribute please read the `Contributor agreement <http://ownclou
 | the `ownCloud appstore`_|                         |                          |
 +-------------------------+-------------------------+--------------------------+
 |:doc:`testing/index`     |:doc:`bugtracker/index`  |:doc:`translation/index`  |
-| Help to create unit-,   | Report, triage or fix   | Translate ownCloud into  |
-| acceptance- and         | bugs to improve quality | your language            |
-| usability tests or      |                         |                          |
-| test experimental       |                         |                          |
-| ownCloud versions       |                         |                          |
+| Help us to test         | Report, triage or fix   | Translate ownCloud into  |
+| ownCloud by joining the | bugs to improve quality | your language            |
+| testing team            |                         |                          |
+|                         |                         |                          |
+|                         |                         |                          |
 +-------------------------+-------------------------+--------------------------+
 |:doc:`commun/index`      |                         |                          |
 | Help on IRC, the        |                         |                          |
