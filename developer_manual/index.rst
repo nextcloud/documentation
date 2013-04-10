@@ -7,7 +7,7 @@ Developer Documentation
 If you want to contribute please read the `Contributor agreement <http://owncloud.org/about/contributor-agreement/>`_
 
 +-------------------------+-------------------------+--------------------------+
-|:doc:`app/index`         |:doc:`core/index`        |:doc:`documentation/index`|
+|:doc:`app/index`         |:doc:`core/index`        |`Documentation`_          |
 | Develop apps for        | Develop on the ownCloud | Create and enhance       |
 | ownCloud and publish on | internals               | documentation            |
 | the `ownCloud appstore`_|                         |                          |
@@ -26,6 +26,7 @@ If you want to contribute please read the `Contributor agreement <http://ownclou
 
 .. _ownCloud appstore: http://apps.owncloud.com/
 .. _Translation: https://www.transifex.com/projects/p/owncloud/
+.. _Documentation: https://github.com/owncloud/documentation#owncloud-documentation
 
 Index and Tables
 ================

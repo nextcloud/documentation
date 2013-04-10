@@ -14,7 +14,6 @@ ownCloud documentation contents
 
     app/index
     core/index
-    documentation/index
     testing/index
     bugtracker/index
     commun/index
