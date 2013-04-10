@@ -12,7 +12,7 @@ If you want to contribute please read the `Contributor agreement <http://ownclou
 | ownCloud and publish on | internals               | documentation            |
 | the `ownCloud appstore`_|                         |                          |
 +-------------------------+-------------------------+--------------------------+
-|:doc:`testing/index`     |:doc:`bugtracker/index`  |:doc:`translation/index`  |
+|:doc:`testing/index`     |:doc:`bugtracker/index`  |`Translation`_            |
 | Help us to test         | Report, triage or fix   | Translate ownCloud into  |
 | ownCloud by joining the | bugs to improve quality | your language            |
 | testing team            |                         |                          |
@@ -25,6 +25,7 @@ If you want to contribute please read the `Contributor agreement <http://ownclou
 +-------------------------+-------------------------+--------------------------+
 
 .. _ownCloud appstore: http://apps.owncloud.com/
+.. _Translation: https://www.transifex.com/projects/p/owncloud/
 
 Index and Tables
 ================

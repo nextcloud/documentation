@@ -17,7 +17,6 @@ ownCloud documentation contents
     documentation/index
     testing/index
     bugtracker/index
-    translation/index
     commun/index
 
 Indices and tables
