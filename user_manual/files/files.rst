@@ -59,7 +59,7 @@ Mounting from command line
 
 4. Edit :file:`/etc/fstab` and add the following line for each user who wants to mount the folder (with your details where appropriate)::
 
-        youradress.com/files/webdav.php /home/<username>/owncloud davfs user,rw,noauto 0 0**.
+        youradress.com/files/webdav.php /home/<username>/owncloud davfs user,rw,noauto 0 0
 
 Then, as each user who wants to mount the folder:
 
