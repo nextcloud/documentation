@@ -9,6 +9,6 @@ time a new files gets moved to the deleted files and remove all files oder than
 180 days. The user can adjust this value in the config.php by setting the
 ***"trashbin_retention_obligation"*** value.
 
-Beside that the delted files app take care to never use more that 50% of your
+Beside that the deleted files app take care to never use more that 50% of your
 currently available free space. If your deleted files exceed this limit ownCloud
 deletes the oldest versions until it meets the memory usage limit again.
