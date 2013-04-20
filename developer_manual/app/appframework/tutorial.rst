@@ -58,6 +58,9 @@ The **app.php** will always loaded for every app and can for instance be used to
         'name' => $api->getTrans()->t('My notes app') 
         
       ));
+  } else {
+    $msg = 'Can not enable the Notes app because the App Framework App is disabled';
+    \OCP\Util::writeLog('news', $msg, \OCP\Util::ERROR);
   }
 
 First Page

@@ -1,6 +1,6 @@
-============
-Testing Team
-============
+====================
+ownCloud Test Pilots
+====================
 
 .. toctree::
    :maxdepth: 1
