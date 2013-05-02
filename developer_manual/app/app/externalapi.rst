@@ -84,3 +84,12 @@ Output from the application is wrapped inside a **data** element:
       }
     }
 
+Statuscodes
+~~~~~~~~~~~
+The statuscode can be any of the following numbers:
+
+* **100** - successfull
+* **996** - server error
+* **997** - not authorized
+* **998** - not found
+* **999** - unknown error
