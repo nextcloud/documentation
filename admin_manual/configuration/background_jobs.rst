@@ -58,6 +58,6 @@ user, e.g. **www-data**, you need to set-up the following cron job to call the
 ::
 
   # crontab -u www-data -e
-  */15  *  *  *  * php -f /var/www/htdocs/owncloud/cron.php
+  */15  *  *  *  * php -f /var/www/owncloud/cron.php
 
 .. _easyCron: http://www.easycron.com/  
