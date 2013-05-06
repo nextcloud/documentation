@@ -16,7 +16,6 @@ App Developement (App Framework)
    templates
    static
    css
-   javascript
    angularsetup
    angular
    unittesting

@@ -14,7 +14,6 @@ App Developement (ownCloud App API)
    templates
    static
    css
-   javascript
    externalapi
    filesystem
    hooks
