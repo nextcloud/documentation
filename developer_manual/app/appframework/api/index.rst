@@ -14,6 +14,8 @@ AppFramework API
    db_mapper
    db_entity
    dependencyinjection_dicontainer
+   http_dispatcher
+   http_http
    http_response
    http_downloadresponse
    http_jsonresponse
@@ -34,6 +36,11 @@ AppFramework API
    utility_mappertestutility
    utility_testutility
    utility_methodannotationreader
+   utility_faviconfetcher
+   utility_simplepieapifactory
+   utility_timefactory
+
+
 
 Main
 ----
@@ -46,6 +53,8 @@ API Layer
 
 Request
 -------
+* :doc:`http_dispatcher`
+* :doc:`http_http`
 * :doc:`http_request`
 
 Controllers
@@ -84,7 +93,14 @@ Twig Templates
 * :doc:`middleware_twig_twigmiddleware`
 * :doc:`http_twigresponse`
 
+Utilities
+---------
+* :doc:`utility_faviconfetcher`
+* :doc:`utility_simplepieapifactory`
+* :doc:`utility_timefactory`
 
 Testing
 -------
 * :doc:`utility_controllertestutility`
+* :doc:`utility_mappertestutility`
+* :doc:`utility_testutility`

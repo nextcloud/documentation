@@ -17,6 +17,23 @@ Entity
 
 
 
+  .. php:staticmethod:: Entity::fromParams($params)
+
+    :param array $params: the array which was obtained via $this->params('key')in the controller
+    :returns \\OCA\\AppFramework\\Db\\Entity: 
+
+
+    Simple alternative constructor for building entities from a request
+
+
+  .. php:method:: fromRow($row)
+
+    :param array $row: the row to map onto the entity
+
+
+    Maps the keys of the row array to the attributes
+
+
   .. php:method:: resetUpdatedFields()
 
 
@@ -76,13 +93,5 @@ Entity
 
 
     Adds type information for a field so that its automatically casted tothat value once its being returned from the database
-
-
-  .. php:method:: fromRow($row)
-
-    :param array $row: the row to map onto the entity
-
-
-    Maps the keys of the row array to the attributes
 
 

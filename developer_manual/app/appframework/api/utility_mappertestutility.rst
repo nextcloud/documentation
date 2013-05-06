@@ -29,17 +29,17 @@ Simple utility class for testing mappers
     After this the api can be accessed by using $this->api
 
 
-  .. php:method:: setMapperResult($sql, $arguments=array(), $returnRows=array())
+  .. php:method:: setMapperResult($sql, $arguments=array(), $returnRows=array(), $limit=null, $offset=null)
 
     :param string $sql: the sql query that you expect to receive
     :param array $arguments: the expected arguments for the prepare querymethod
     :param array $returnRows: the rows that should be returned for the resultof the database query. If not provided, it wont be assumed that fetchRowwill be called on the result
+    :param mixed $limit: 
+    :param mixed $offset: 
 
     * **Protected**
 
 
     Create mocks and set expected results for database queries
-
-
 
 

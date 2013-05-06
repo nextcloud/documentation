@@ -49,7 +49,7 @@ description
 
 version
 -------
-Contains the version of your app. Please the :file:`appinfo/version` which contains the version.
+Contains the version of your app. Please also provide the same version in the :file:`appinfo/version`.
 
 licence
 -------

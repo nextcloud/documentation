@@ -9,6 +9,18 @@ A renderer for JSON calls
 .. php:class:: JSONResponse
 
 
+  .. php:attr:: $error
+    
+    * **Protected**
+    
+    
+
+  .. php:attr:: $data
+    
+    * **Protected**
+    
+    
+
 
 
   .. php:method:: __construct()

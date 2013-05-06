@@ -354,10 +354,12 @@ Must pass an expression:
 .. code-block:: js
   
   {
-    selector: '#jquery .selector' 
+    selector: '#jquery .selector',
+    timeout: 300
   }
 
 * **selector**: the area that should be focused
+* **timeout**: optional, if the focus should be done after a timeout
 
 Example:
 
@@ -392,6 +394,7 @@ These two are equivalent:
 
   <div id="settings" oc-draggable="{ cursor: 'move', cursorAt: { top: 56, left: 56 } }"></div>
 
+
 ocForwardClick
 ~~~~~~~~~~~~~~
 Used to forward a click. Useful to trigger a hidden file upload field by clicking a visible button.
@@ -412,3 +415,50 @@ Example:
 
   <button oc-forward-click="{selector: '#upload'}" />
   <input type="file" id="upload" />
+
+
+ocTooltip
+~~~~~~~~~
+Binds a bootstrap tooltip on the item.
+
+Example:
+
+.. code-block:: html
+
+  <button oc-tooltip title="tooltip text" />
+
+
+Filters
+----------
+The App Framework provides the following filters:
+
+ocRemoveTags
+~~~~~~~~~~~~
+Used to remove certain HTML tags from a string.
+
+You can pass in a string or an array of strings which HTML tags which will be removed.
+
+Example:
+
+.. code-block:: html
+  
+  <!-- remove all em tags -->
+  <h1>{{ title|ocRemoveTags:'em' }}</h1>
+
+  <!-- remove all em,b and i tags -->
+  <h1>{{ title|ocRemoveTags:['em', 'i', 'b'] }}</h1>
+  
+
+
+ocSanitizeURL
+~~~~~~~~~~~~~
+Used to sanitize an URL to prevent XSS in **src** and **href** attributes (e.g. <a href="javascript:alert(1)">).
+
+
+Example:
+
+.. code-block:: html
+  
+  <a href="{{ link|ocSanitizeURL }}">My link</a>
+
+
