@@ -19,12 +19,12 @@ And as *optional* dependencies:
 * php5-sqlite (>= 3)
 * php5-mysql
 * smbclient
+* php5-curl
 * curl
 * libcurl3
-* php5-curl
 
 You have to install at least one of php5-sqlite or php5-mysql, depending
-on which of the two database systems you want to use.
+on which of the two database systems you want to use and activate its PDO module in the **php.ini**.
 
 smbclient is only used if you want to mount SMB shares to your ownCloud.
 The curl packages are needed for some apps (e.g. http user authentication)
