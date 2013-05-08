@@ -56,8 +56,11 @@ HTML and inclusion of JavaScript and CSS
 JavaScript & CSS
 ~~~~~~~~~~~~~~~~
 * :doc:`app/static`
-* :doc:`app/javascript`
 * :doc:`app/css`
+
+Testing
+~~~~~~~
+* :doc:`app/acceptancetesting`
 
 API Documentation
 ~~~~~~~~~~~~~~~~~
@@ -100,7 +103,6 @@ HTML and inclusion of JavaScript and CSS
 JavaScript & CSS
 ~~~~~~~~~~~~~~~~
 * :doc:`appframework/static`
-* :doc:`appframework/javascript`
 * :doc:`general/angular` | :doc:`appframework/angularsetup` | :doc:`appframework/angular`
 * :doc:`appframework/css`
 
@@ -113,6 +115,7 @@ Hook before or after controller execution
 Testing
 ~~~~~~~
 * :doc:`appframework/unittesting`
+* :doc:`app/acceptancetesting`
 
 API Documentation
 ~~~~~~~~~~~~~~~~~

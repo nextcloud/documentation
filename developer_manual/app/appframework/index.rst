@@ -18,6 +18,7 @@ App Developement (App Framework)
    css
    angularsetup
    angular
+   ../app/acceptancetesting
    unittesting
    middleware
    externalapi
