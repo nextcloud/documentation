@@ -34,7 +34,8 @@ sure you log out before leaving the computer.
 Recover Your Password
 ~~~~~~~~~~~~~~~~~~~~~
 
-Note: To make use of this feature, you have set a recovery email address.
+Note: You can use this feature only if you have set a recovery email address in
+advance.
 
 To reset your password:
 
