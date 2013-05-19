@@ -15,7 +15,7 @@ There are two ways in which you can add contacts
 Importing
 ~~~~~~~~~
 
-So first well check out how to import all the VCF files as they are a lot
+So first we'll check out how to import all the VCF files as they are a lot
 more faster way of creating contacts.
 Just below the contact list, 3 buttons: The middle one let you upload files.
 
