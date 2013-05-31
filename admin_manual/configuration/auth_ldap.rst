@@ -274,6 +274,81 @@ User Home Folder Naming Rule:
 
   * Example: *cn*
 
+Expert Settings (>= ownCloud 5.0.7)
+---------------------------------------
+
+.. figure:: ../images/ldap-expert-settings-oc5.png
+
+In the Expert Settings fundamental behavior can be adjusted to your needs. The
+configuration should be done before starting production use or when testing the
+installation.
+
+Internal Username:
+  The internal username is the identifier in ownCloud for LDAP users. By default
+  it will be created from the UUID attribute. By using the UUID attribute it is
+  made sure that the username is unique and characters do not need to be
+  converted. The internal username has the restriction that only these
+  characters are allowed: [\a-\zA-\Z0-\9_.@-]. Other characters are replaced with
+  their ASCII correspondence or are simply omitted.
+
+  The LDAP backend ensures that there are no duplicate internal usernames in
+  ownCloud, i.e. that it is checking all other activated user backends
+  (including local ownCloud users). On collisions a random number (between 1000
+  and 9999) will be attached to the retrieved value. For example, if "alice"
+  exists, the next username may be "alice_1337".
+
+  The internal username is also the default name for the user home folder in
+  ownCloud. It is also a part of remote URLs, for instance for all \*DAV services.
+  With this setting the default behaviour can be overriden. To achieve a similar
+  behaviour as before ownCloud 5 enter the user display name attribute in the
+  following field.
+
+  Leave it empty for default behaviour. Changes will have effect only on newly
+  mapped (added) LDAP users.
+
+  * Example: *uid*
+
+Override UUID detection
+  By default, ownCloud autodetects the UUID attribute. The UUID attribute is
+  used to doubtlessly identify LDAP users and groups. Also, the internal
+  username will be created based on the UUID, if not specified otherwise above.
+
+  You can override the setting and pass an attribute of your choice. You must
+  make sure that the attribute of your choice can be fetched for both users and
+  groups and it is unique. Leave it empty for default behaviour. Changes will
+  have effect only on newly mapped (added) LDAP users and groups. It also will
+  have effect when a user's or group's DN changes and an old UUID was cached: It
+  will result in a new user. Because of this, the setting should be applied
+  before putting ownCloud in production use and cleaning the bindings
+  (see below).
+
+  The default behaviour does not differ from ownCloud 4.5. You do not want to
+  change this after upgrading from ownCloud 4.5 unless you update the mapping
+  tables yourself.
+
+  * Example: *cn*
+
+Username-LDAP User Mapping
+  ownCloud uses the usernames as key to store and assign data. In order to
+  precisely identify and recognize users, each LDAP user will have a internal
+  username in ownCloud. This requires a mapping from ownCloud username to LDAP
+  user. The created username is mapped to the UUID of the LDAP user.
+  Additionally the DN is cached as well to reduce LDAP interaction, but it is
+  not used for identification. If the DN changes, the change will be detected by
+  ownCloud by checking the UUID value.
+
+  The same is valid for groups.
+
+  The internal ownCloud name is used all over in ownCloud. Clearing the Mappings
+  will have leftovers everywhere. Do never clear the mappings
+  in a production environment. Only clear mappings in a testing or experimental
+  stage.
+
+  **Clearing the Mappings is not configuration sensitive, it affects all LDAP
+  configurations!**
+
+
+
 Testing the configuration
 -------------------------
 
