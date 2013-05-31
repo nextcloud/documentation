@@ -169,7 +169,7 @@ Cache Time-To-Live:
 Directory Settings
 ~~~~~~~~~~~~~~~~~~~
 
-.. figure:: ../images/ldap-advanced-settings-connection-settings-oc5.png
+.. figure:: ../images/ldap-advanced-settings-directory-settings-oc5.png
 
    LDAP Advanced Settings, section Directory Settings
 
