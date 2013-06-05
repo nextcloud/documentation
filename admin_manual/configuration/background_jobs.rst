@@ -4,7 +4,7 @@ A system like ownCloud sometimes requires tasks to be done on a regular
 base without blocking the user interface. For that purpose you, as a system
 administrator, can define background jobs which make it possible to execute
 tasks without any need of user interaction, e.g. database clean-ups etc.
-For the sake of completeness it is worse to know that additionally background
+For the sake of completeness it is worth to know that additionally background
 jobs can also be defined by installed apps.
 
 Parameters
@@ -58,6 +58,6 @@ user, e.g. **www-data**, you need to set-up the following cron job to call the
 ::
 
   # crontab -u www-data -e
-  */15  *  *  *  * php -f /var/www/htdocs/owncloud/cron.php
+  */15  *  *  *  * php -f /var/www/owncloud/cron.php
 
 .. _easyCron: http://www.easycron.com/  

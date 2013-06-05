@@ -17,65 +17,72 @@ Nginx Configuration
 .. code-block:: python
 
     server {
-      listen 80;
-      server_name cloud.example.com;
-      return  https://$server_name$request_uri;  # enforce https
+            listen 80;
+            server_name cloud.example.com;
+            return 301 https://$server_name$request_uri;  # enforce https
     }
 
     server {
-      listen 443 ssl;
-      server_name cloud.example.com;
+            listen 443 ssl;
+            server_name cloud.example.com;
 
-      ssl_certificate /etc/ssl/nginx/cloud.example.com.crt;
-      ssl_certificate_key /etc/ssl/nginx/cloud.example.com.key;
+            ssl_certificate /etc/ssl/nginx/cloud.example.com.crt;
+            ssl_certificate_key /etc/ssl/nginx/cloud.example.com.key;
 
-      # Path to the root of your installation
-      root /var/www/;
+            # Path to the root of your installation
+            root /var/www/;
 
-      client_max_body_size 10G; # set max upload size
-      fastcgi_buffers 64 4K;
+            client_max_body_size 10G; # set max upload size
+            fastcgi_buffers 64 4K;
 
-      rewrite ^/caldav(.*)$ /remote.php/caldav$1 redirect;
-      rewrite ^/carddav(.*)$ /remote.php/carddav$1 redirect;
-      rewrite ^/webdav(.*)$ /remote.php/webdav$1 redirect;
+            rewrite ^/caldav(.*)$ /remote.php/caldav$1 redirect;
+            rewrite ^/carddav(.*)$ /remote.php/carddav$1 redirect;
+            rewrite ^/webdav(.*)$ /remote.php/webdav$1 redirect;
 
-      index index.php;
-      error_page 403 = /core/templates/403.php;
-      error_page 404 = /core/templates/404.php;
+            index index.php;
+            error_page 403 = /core/templates/403.php;
+            error_page 404 = /core/templates/404.php;
 
-      location ~ ^/(data|config|\.ht|db_structure\.xml|README) {
-        deny all;
-      }
+            location = /robots.txt {
+                allow all;
+                log_not_found off;
+                access_log off;
+            }
 
-      location / {
-        # The following 2 rules are only needed with webfinger
-        rewrite ^/.well-known/host-meta /public.php?service=host-meta last;
-        rewrite ^/.well-known/host-meta.json /public.php?service=host-meta-json last;
+            location ~ ^/(data|config|\.ht|db_structure\.xml|README) {
+                    deny all;
+            }
 
-        rewrite ^/.well-known/carddav /remote.php/carddav/ redirect;
-        rewrite ^/.well-known/caldav /remote.php/caldav/ redirect;
+            location / {
+                    # The following 2 rules are only needed with webfinger
+                    rewrite ^/.well-known/host-meta /public.php?service=host-meta last;
+                    rewrite ^/.well-known/host-meta.json /public.php?service=host-meta-json last;
 
-        rewrite ^(/core/doc/[^\/]+/)$ $1/index.html;
+                    rewrite ^/.well-known/carddav /remote.php/carddav/ redirect;
+                    rewrite ^/.well-known/caldav /remote.php/caldav/ redirect;
 
-        try_files $uri $uri/ index.php;
-      }
+                    rewrite ^(/core/doc/[^\/]+/)$ $1/index.html;
 
-      location ~ ^(.+?\.php)(/.*)?$ {
-        try_files $1 = 404;
+                    try_files $uri $uri/ index.php;
+            }
 
-        include fastcgi_params;
-        fastcgi_param PATH_INFO $2;
-        fastcgi_param HTTPS on;
-        fastcgi_pass 127.0.0.1:9000;
-        # Or use unix-socket with 'fastcgi_pass unix:/var/run/php5-fpm.sock;'
-      }
+            location ~ ^(.+?\.php)(/.*)?$ {
+                    try_files $1 = 404;
 
-      # Optional: set long EXPIRES header on static assets
-      location ~* ^.+\.(jpg|jpeg|gif|bmp|ico|png|css|js|swf)$ {
-        expires 30d;
-        # Optional: Don't log access to assets
-        access_log off;
-      }
+                    include fastcgi_params;
+                    fastcgi_param SCRIPT_FILENAME $document_root$1;
+                    fastcgi_param PATH_INFO $2;
+                    fastcgi_param HTTPS on;
+                    fastcgi_pass 127.0.0.1:9000;
+                    # Or use unix-socket with 'fastcgi_pass unix:/var/run/php5-fpm.sock;'
+            }
+
+            # Optional: set long EXPIRES header on static assets
+            location ~* ^.+\.(jpg|jpeg|gif|bmp|ico|png|css|js|swf)$ {
+                    expires 30d;
+                    # Optional: Don't log access to assets
+                    access_log off;
+            }
 
     }
 
@@ -111,17 +118,6 @@ Disable directory listing::
     $HTTP["url"] =^ "^/owncloud($|/)" {
          dir-listing.activate = "disable"
        }
-
-.. note:: The **check-local** option of lighttpd's fastcgi_  must be enabled.
-          It is sometimes disabled for security reasons. For example, 
-          the PHP process can run as a different user than lighttpd. 
-          Then, lighttpd might not be able to read/check the PHP files 
-          which the PHP process is able to read. Disabling 
-          **check-local** results in an incorrect **PATH_INFO** 
-          in PHP which produces a strange behavior of owncloud (such as 
-          incompletely loaded pages).
-
-.. _fastcgi: http://redmine.lighttpd.net/projects/1/wiki/Docs_ModFastCGI
 
 Yaws Configuration
 ------------------

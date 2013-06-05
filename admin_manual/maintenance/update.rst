@@ -46,14 +46,12 @@ Upgrade
 Upgrade is to bring an ownCloud instance to a new *major release*, e.g.
 ownCloud 4.0.7 → 4.5.0. Always do backups anyway.
 
-.. note:: ownCloud 5.0.0 does not yet include the encryption app and an update would result in unreadable data. If you use the encryption app in 4.5 please wait until the app is available in 5.0
-
 To upgrade ownCloud, follow those steps:
 
 #. Make sure that you ran the latest point release of the major ownCloud
    version, e.g. 4.0.7 in the 4.0 series. If not, update to that version first
    (see above).
-#. **Make a backup**
+#. **Make a backup of the ownCloud folder and the database**
 #. Deactivate all third party applications.
 #. Delete everything from your ownCloud installation directory, except data and
    config.

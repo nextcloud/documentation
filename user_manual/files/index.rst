@@ -7,4 +7,5 @@ Files & Synchronization
 
    files
    versioncontrol
+   deletedfiles
    sync

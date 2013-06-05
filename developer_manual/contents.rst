@@ -12,10 +12,11 @@ ownCloud documentation contents
 .. toctree::
     :maxdepth: 3
 
-    general/index
     app/index
     core/index
-    classes/index
+    testing/index
+    bugtracker/index
+    commun/index
 
 Indices and tables
 ==================

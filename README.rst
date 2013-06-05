@@ -37,7 +37,10 @@ Building
 First make sure that these things are installed
  - Python 2
  - Sphinx (e.g. sudo yum install python-sphinx), on Mac: ``sudo easy_install Sphinx``
- - Sphinx PHPDomain (e.g. ``sudo easy_install -U sphinxcontrib-phpdomain``)
+ - Sphinx PHPDomain (e.g. ``sudo pip install sphinxcontrib-phpdomain``)
+ - If you're on Arch Linux, the build script is called sphinx-build2 which will fail. Therefore you have to provide a link::
+
+     sudo ln -s /usr/bin/sphinx-build2 /usr/bin/sphinx-build
 
 then enter any manual directory, then run ``make html``. The result can be found in the ``_build/html`` subdirectory.
 
