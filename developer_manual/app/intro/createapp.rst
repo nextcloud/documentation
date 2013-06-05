@@ -3,17 +3,35 @@ Creating An App
 
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
-After the apps were cloned into either 
+After the apps were cloned into either
 
 * **/var/www**
 * **/var/www/html**
-* **/srv/http** 
+* **/srv/http**
 
 Depending on the used distribution change into that directory inside a terminal::
 
     cd /var/www/
 
-Next create a directory for the app and make it writable::
+Using the scaffolding tool
+--------------------------
+The scaffolding script provides an easy way to generate boilerplate code for an app. To install the tool, install **Python 3** and **python-pip**, then run::
+
+    sudo pip install owncloud_scaffolding
+
+To create an app using the **App Framework** run::
+
+    owncloud.py startapp myapp
+
+To create a standard ownCloud app run::
+
+    owncloud.py startapp --classic myapp
+
+This will create all the needed files in the current directory. For more information on how to customize the generated app, see the `GitHub page <https://github.com/Raydiation/owncloud_scaffolding>`_
+
+Manual file creation
+--------------------
+If you dont want to use the scaffolding tool, heres how you create all the needed files: create a directory for the app and make it writable::
 
     mkdir apps/YOUR_APP
     sudo chown -R YOUR_USER:users apps/YOUR_APP
@@ -23,7 +41,7 @@ If you are unsure about your user **whoami** to find out your user::
     whoami
 
 Create basic files
-------------------
+~~~~~~~~~~~~~~~~~~
 The following files need to be created: :file:`appinfo/info.xml`, :file:`appinfo/version` and :file:`appinfo/app.php`. To do that change into the directory of your app::
 
     cd apps/YOUR_APP
@@ -31,13 +49,13 @@ The following files need to be created: :file:`appinfo/info.xml`, :file:`appinfo
     touch appinfo/version appinfo/app.php appinfo/info.xml
 
 Set app version
----------------
+~~~~~~~~~~~~~~~
 To set the version of the app, simply write the following into :file:`appinfo/version`::
 
     0.1
 
 Create metadata
----------------
+~~~~~~~~~~~~~~~
 ownCloud has to know what your app is. This information is located inside the :file:`appinfo/info.xml`:
 
 .. code-block:: xml
@@ -79,7 +97,7 @@ If you are new to programming and want to create an app fast you migth want to u
 .. _appframework-compare:
 
 App Framework Comparison
-^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 To simplify the decision see this comparison chart:
 
