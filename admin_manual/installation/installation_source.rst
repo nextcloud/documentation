@@ -18,13 +18,15 @@ And as *optional* dependencies:
 * php5-intl
 * php5-sqlite (>= 3)
 * php5-mysql
+* php5-pgsql (or php-pgsql depending on your distro)
 * smbclient
 * php5-curl
 * curl
 * libcurl3
 
-You have to install at least one of php5-sqlite or php5-mysql, depending
-on which of the two database systems you want to use and activate its PDO module in the **php.ini**.
+You have to install at least one of php5-sqlite, php5-pgsql or php5-mysql, depending
+on which of the three database systems (SQLite, PostgreSQL or MySQL) you want to use
+and activate its PDO module in the **php.ini**.
 
 smbclient is only used if you want to mount SMB shares to your ownCloud.
 The curl packages are needed for some apps (e.g. http user authentication)
@@ -35,7 +37,7 @@ Commands for Ubuntu and Debian (run as root):
 ::
 
   apt-get install apache2 php5 php5-gd php-xml-parser php5-intl
-  apt-get install php5-sqlite php5-mysql smbclient curl libcurl3 php5-curl
+  apt-get install php5-sqlite php5-mysql php5-pgsql smbclient curl libcurl3 php5-curl
 
 If you are running Ubuntu 10.04 LTS you will need to update your PHP from
 this `PHP PPA`_:
