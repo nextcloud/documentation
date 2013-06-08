@@ -11,6 +11,8 @@ Documentation is available at these sources:
 * `Developer guide <http://docs.angularjs.org/guide/>`_
 * `API reference <http://docs.angularjs.org/api/>`_
 * `Screencasts on Youtube <http://www.youtube.com/user/angularjs>`_
+* `More screencasts <http://www.egghead.io/>`_
+* `Collection of resources <https://github.com/jmcunningham/AngularJS-Learning>`_
 
 What problem does it solve
 --------------------------
