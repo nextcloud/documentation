@@ -74,7 +74,7 @@ The App Framework comes with additional template functions for Twig to better in
 
 
 .. js:function:: url(route, params=null)
-  
+
   :param string route: the name of the route
   :param string params: the params written like a JavaScript object
 
@@ -84,11 +84,11 @@ The App Framework comes with additional template functions for Twig to better in
 
   .. code-block:: js
 
-    {{ url('apptemplate_advanced_params', {value: 'hi'}) }}
+    {{ url('yourapp_route_name', {value: 'hi'}) }}
 
 
 .. js:function:: abs_url(route, params=null)
-  
+
   :param string route: the name of the route
   :param string params: the params written like a JavaScript object
 
@@ -98,11 +98,11 @@ The App Framework comes with additional template functions for Twig to better in
 
   .. code-block:: js
 
-    {{ abs_url('apptemplate_advanced_params', {value: 'hi'}) }}
+    {{ abs_url('yourapp_route_name', {value: 'hi'}) }}
 
 
 .. js:function:: trans(toTranslate, params=null)
-  
+
   :param string toTranslate: the string which should be translated
   :param string params: the params that should be replaced in the string
 
@@ -116,7 +116,7 @@ The App Framework comes with additional template functions for Twig to better in
 
 
 .. js:function:: script(path, appName=null)
-  
+
   :param string path: path to the JavaScript file in the **js/** folder in the app. The **.js** extension is automatically added.
   :param string appName: name of the app. If no value is given, the current app will be used.
 
@@ -133,7 +133,7 @@ The App Framework comes with additional template functions for Twig to better in
 
 
 .. js:function:: style(path, appName=null)
-  
+
   :param string path: path to the CSS file in the **css/** folder in the app. The **.css** extension is automatically added.
   :param string appName: name of the app. If no value is given, the current app will be used.
 
@@ -150,7 +150,7 @@ The App Framework comes with additional template functions for Twig to better in
 
 
 .. js:function:: image_path(path, appName=null)
-  
+
   :param string path: path to an image file in the **img/** folder in the app.
   :param string appName: name of the app. If no value is given, the current app will be used.
 
@@ -167,7 +167,7 @@ The App Framework comes with additional template functions for Twig to better in
 
 
 .. js:function:: link_to(path, appName=null)
-  
+
   :param string path: path to a file
   :param string appName: name of the app. If no value is given, the current app will be used.
 

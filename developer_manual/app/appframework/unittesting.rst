@@ -29,7 +29,7 @@ A simple test for a controller would look like this:
 .. code-block:: php
 
   <?php
-  namespace OCA\AppTemplateAdvanced;
+  namespace OCA\YourApp;
 
   use OCA\AppFramework\Http\Request;
   use OCA\AppFramework\Db\DoesNotExistException;
@@ -56,11 +56,11 @@ A simple test for a controller would look like this:
             ->with( $this->equalTo('somesetting'),
                 $this->equalTo('this is a test'));
 
-      // we want to return the appname apptemplateadvanced when this method
+      // we want to return the appname yourapp when this method
       // is being called
       $api->expects($this->any())
             ->method('getAppName')
-            ->will($this->returnValue('apptemplateadvanced'));
+            ->will($this->returnValue('yourapp'));
 
       $controller = new ItemController($api, $request, null);
       $response = $controller->setAppValue(null);
@@ -87,7 +87,7 @@ TDD can also be used if the :doc:`angularsetup` is performed and grunt is used. 
 
 Classloader
 ~~~~~~~~~~~
-The Advanced Apptemplate provides an extra classloader :file:`tests/classloader.php` that loads the the classes. Require this file at the top of your tests.
+The generated app has an extra classloader :file:`tests/classloader.php` that loads the the classes. Require this file at the top of your tests.
 
 .. note:: The classloader in the **tests/** directory assumes that the **appframework/** folder is in the same directory as the your app. If you run your app in a different apps folder, you will need to link the App Framework into the same folder where your app folder resides.
 
@@ -110,7 +110,7 @@ To run the tests once use::
 
 A JUnit compatible result file will be generated for the continous integration server.
 
-Like stated in :doc:`angularsetup` tests go into the folder **js/tests/**. The default setup uses `Jasmine <http://pivotal.github.com/jasmine/>`_ but also other test frameworks like `Mocha <http://visionmedia.github.com/mocha/>`_ or `QUnit <http://qunitjs.com/>`_ can be used but `have to be configured first <http://testacular.github.com/0.6.0/config/files.html>`_. 
+Like stated in :doc:`angularsetup` tests go into the folder **js/tests/**. The default setup uses `Jasmine <http://pivotal.github.com/jasmine/>`_ but also other test frameworks like `Mocha <http://visionmedia.github.com/mocha/>`_ or `QUnit <http://qunitjs.com/>`_ can be used but `have to be configured first <http://testacular.github.com/0.6.0/config/files.html>`_.
 
 AngularJS
 ~~~~~~~~~
