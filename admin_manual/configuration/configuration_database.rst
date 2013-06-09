@@ -1,56 +1,28 @@
 Database Configuration
 ======================
 
-To get ownCloud up-an-running it is necessary to choose a database in which all
-administrative data should be held. Three different database type are currently
-supported, `SQLite <http://www.sqlite.org/>`_, `MySQL <http://www.mysql.com/>`_ and `PostgreSQL <http://www.postgresql.org/>`_. By default SQLite is choosen because it is a file based database with the least administrative overhead.
+Owncloud requires a database where administrative data will be held. Four different database types are currently
+supported, `MySQL <http://www.mysql.com/>`_, `MariaDB <https://mariadb.org/>`_, `SQLite <http://www.sqlite.org/>`_, and `PostgreSQL <http://www.postgresql.org/>`_. MySQL or MariaDB are the recommended database engines. By default SQLite is choosen because it is a file based database with the least administrative overhead.
 
-.. note:: Because SQLite handles multiple users not very well sqlite is only recommended for single user ownCloud installations
+.. note:: Because SQLite handles multiple users very badly SQLite is only recommended for single user ownCloud installations
 
 Requirements
 ------------
 
-If you decide to use MySQL or PostgreSQL you need to install and set-up the
-database first. These steps will not be covered by this description.
+If you decide to use MySQL, MariaDB, or PostgreSQL you need to install and set-up the
+database first. These steps will not be covered by this description as they are easy to find elsewhere.
 
 Parameters
 ----------
 
-SQLite Database
-~~~~~~~~~~~~~~~
-
-If you decide to use a SQLite database make sure that you have installed and
-enabled the SQLite extension in PHP. The PHP configuration in :file:`/etc/php5/conf.d/sqlite3.ini` could look like this:
-
-.. code-block:: ini
-
-  # configuration for PHP SQLite3 module
-  extension=pdo_sqlite.so
-  extension=sqlite3.so
-
-It is not necessary to create a database and a database user in advance
-because this will automatically be done by ownCloud when you login for the
-first time. 
-
-In the ownCloud counfiguration in :file:`config/config.php` you need to set at least the **datadirectory** parameter to the directory where your data and database should be stored. No authentication is required to access the database therefore most of the default parameters could be taken as it:
-
-.. code-block:: php
-
-  <?php
-
-    "dbtype"        => "sqlite",
-    "dbname"        => "owncloud",
-    "dbuser"        => "",
-    "dbpassword"    => "",
-    "dbhost"        => "",
-    "dbtableprefix" => "",
-    "datadirectory" => "/www/htdocs/owncloud/data",
-
-MySQL Database
+MySQL/MariaDB Database
 ~~~~~~~~~~~~~~
-If you decide to use a MySQL database make sure that you have installed and
+If you decide to use a MySQL or MariaDB database make sure that you have installed and
 enabled the MySQL extension in PHP and that the **mysql.default_socket**
 points to the correct socket (if the database runs on same server as ownCloud).
+
+Please note that MariaDB is backwards compatible with MySQL, so all instructions will work for both. You will not need to replace mysql with anything.
+
 The PHP configuration in :file:`/etc/php5/conf.d/mysql.ini` could look like this:
 
 .. code-block:: ini
@@ -77,11 +49,11 @@ Now you need to create a database user and the database itself by using the
 MySQL command line interface. The database tables will be created by ownCloud
 when you login for the first time.
 
-To start the get into the mysql command line mode use::
+To start the get into the MySQL command line mode use::
 
   mysql -uroot -p
 
-Then a **mysql>** prompt will appear. Now enter the following lines and confirm them with the enter key:
+Then a **mysql>** or **MariaDB [root]>** prompt will appear. Now enter the following lines and confirm them with the enter key:
 
 .. code-block:: sql
 
@@ -106,6 +78,36 @@ database is running and a valid username and password to access it.
     "dbpassword"    => "password",
     "dbhost"        => "localhost",
     "dbtableprefix" => "",
+
+SQLite Database
+~~~~~~~~~~~~~~~
+
+If you decide to use a SQLite database make sure that you have installed and
+enabled the SQLite extension in PHP. The PHP configuration in :file:`/etc/php5/conf.d/sqlite3.ini` could look like this:
+
+.. code-block:: ini
+
+  # configuration for PHP SQLite3 module
+  extension=pdo_sqlite.so
+  extension=sqlite3.so
+
+It is not necessary to create a database and a database user in advance
+because this will automatically be done by ownCloud when you login for the
+first time.
+
+In the ownCloud counfiguration in :file:`config/config.php` you need to set at least the **datadirectory** parameter to the directory where your data and database should be stored. No authentication is required to access the database therefore most of the default parameters could be taken as it:
+
+.. code-block:: php
+
+  <?php
+
+    "dbtype"        => "sqlite",
+    "dbname"        => "owncloud",
+    "dbuser"        => "",
+    "dbpassword"    => "",
+    "dbhost"        => "",
+    "dbtableprefix" => "",
+    "datadirectory" => "/www/htdocs/owncloud/data",
 
 PostgreSQL Database
 ~~~~~~~~~~~~~~~~~~~
