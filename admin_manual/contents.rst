@@ -15,6 +15,7 @@ ownCloud documentation contents
     installation/index
     configuration/index
     maintenance/index
+    issues/index
 
 Indices and tables
 ==================
