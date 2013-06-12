@@ -147,7 +147,7 @@ Example
                'user'=>'johndoe',
                'password'=> 'secret',
                'share'=>'/test',
-               '/Pictures'
+               'root'=>'/Pictures'
           )
    );
 
