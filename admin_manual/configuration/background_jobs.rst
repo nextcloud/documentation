@@ -19,6 +19,8 @@ You can choose between the following options:
 Cron-Jobs
 ---------
 
+OwnCloud requires various automated background jobs to be run. There are three methods to achieve this. The default way is AJAX and the recommended way is cron.
+
 AJAX
 ~~~~
 

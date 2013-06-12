@@ -34,18 +34,14 @@ Mozilla Lightning users need to this URL scheme::
 
   https://ADDRESS/remote.php/caldav/calendars/USERNAME/CALENDARNAME
 
-.. note:: The calendar name must alway be specified in URL-encoding_.
-
-.. figure:: ../images/calendar_caldav.png
-
-   Example for a simple calendar: The default calendar is always
-   called "defaultcalendar", and the users' name here is "test".
+   Example for a simple calendar: The "Default calendar" is referred to as "defaultcalendar", 
+   and the users' name here is "test".
    The full URL (which on the picture can't be seen because of the
    short edit field) is then::
 
        https://localhost/owncloud/remote.php/caldav/calendars/test/defaultcalendar
 
-.. _URL-encoding: http://en.wikipedia.org/wiki/Percent-encoding
+.. Note: the calendar names are lowercased and the spaces removed. They are not to be URL-encoded anymore.
 
 Creating events
 ---------------
