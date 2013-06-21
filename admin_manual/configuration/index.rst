@@ -13,6 +13,7 @@ Configuration
    configuration_logging
    configuration_mail
    configuration_reverseproxy
+   configuration_encryption
    custom_mount_config
    custom_user_backend
    auth_ldap
