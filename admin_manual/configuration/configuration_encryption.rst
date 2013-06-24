@@ -44,3 +44,14 @@ the same procedure to recover users files. The only difference is that
 you need to change the log-in password additionally at your back-end. In this
 case make sure to use both times the same password.
 
+LDAP and other external user back-ends
+--------------------------------------
+
+if you configure a external user back-end you will be able to change the users log-in password
+at the back-end. Since the encryption password must be the same as the users log-in password
+this will result in a non-functional encryption system. If the recovery feature was enabled,
+the administrator will be able to recover the users files directly over the recovery feature.
+See the description above. Otherwise the user will be informed that his log-in password and
+his encryption password no longer matchs after his next log-in. In this case the user will be
+able to adjust his encryption password in the personal settings by providing both, his old and
+his new log-in password.
