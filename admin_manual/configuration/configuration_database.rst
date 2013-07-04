@@ -16,7 +16,8 @@ Parameters
 ----------
 
 MySQL/MariaDB Database
-~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+
 If you decide to use a MySQL or MariaDB database make sure that you have installed and
 enabled the MySQL extension in PHP and that the **mysql.default_socket**
 points to the correct socket (if the database runs on same server as ownCloud).
@@ -49,7 +50,7 @@ Now you need to create a database user and the database itself by using the
 MySQL command line interface. The database tables will be created by ownCloud
 when you login for the first time.
 
-To start the get into the MySQL command line mode use::
+To start the MySQL command line mode use::
 
   mysql -uroot -p
 
@@ -111,6 +112,7 @@ In the ownCloud counfiguration in :file:`config/config.php` you need to set at l
 
 PostgreSQL Database
 ~~~~~~~~~~~~~~~~~~~
+
 If you decide to use a PostgreSQL database make sure that you have installed
 and enabled the PostgreSQL extension in PHP. The PHP configuration in :file:`/etc/php5/conf.d/pgsql.ini` could look
 like this:
@@ -133,7 +135,7 @@ Now you need to create a database user and the database itself by using the
 PostgreSQL command line interface. The database tables will be created by
 ownCloud when you login for the first time.
 
-To start the get into the postgres command line mode use::
+To start the postgres command line mode use::
 
   psql -hlocalhost -Upostgres
 
@@ -189,9 +191,9 @@ Installing and configuring Oracle support for PHP is way out of scope for this d
 Creating a database user for ownCloud can be done by using the sqlplus command line
 interface or the Oracle Application Express web interface. The database tables will be created by ownCloud when you login for the first time.
 
-On the command line connect to Oracle with a DBA account::
+To start the Oracle command line mode with a DBA account use::
 
-  sqlplus system@localhost/XE
+  sqlplus system AS SYSDBA
 
 After entering the password a **SQL>** prompt will appear. Now enter the following lines and confirm them with the enter key:
 
