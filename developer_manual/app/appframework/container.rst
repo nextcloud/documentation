@@ -3,9 +3,9 @@ Runtime configuration
 
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
-The App Framework assembles the application by using an Inversion of Control container which does :doc:`../general/dependencyinjection`. Dependency Injection helps you to create testable code. A good overview over how it works and what the benefits are can be seen on `Google's Clean Code Talks <http://www.youtube.com/watch?v=RlfLCWKxHJ0>`_
+The App Framework assembles the application by using an Inversion of Control container which does :doc:`../general/dependencyinjection`. Dependency Injection helps you to create testable code. For a very simple and good Tutorial, watch the `Dependency Injection and the art of Services and Containers Tutorial on YouTube<http://www.youtube.com/watch?v=DcNtg4_i-2w>`_ A broader overview over how it works and what the benefits are can be seen on `Google's Clean Code Talks <http://www.youtube.com/watch?v=RlfLCWKxHJ0>`_
 
-The container is configured in :file:`dependencyinjection/dicontainer.php`. By default `Pimple <http://pimple.sensiolabs.org/>`_ is used as dependency injection container. A `tutorial can be found here <http://jtreminio.com/2012/10/an-introduction-to-pimple-and-service-containers/>`_ 
+The container is configured in :file:`dependencyinjection/dicontainer.php`. By default `Pimple <http://pimple.sensiolabs.org/>`_ is used as dependency injection container. A `tutorial can be found here <http://jtreminio.com/2012/10/an-introduction-to-pimple-and-service-containers/>`_
 
 
 To add your own classes simply open the :file:`dependencyinjection/dicontainer.php` and add a line like this to the constructor:
@@ -42,7 +42,7 @@ API abstraction layer
 
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
-ownCloud currently has a ton of static methods which is a very bad thing concerning testability. Therefore the App Framework comes with an :php:class:`OCA\\AppFramework\\Core\\API` abstraction layer (basically a `facade <http://en.wikipedia.org/wiki/Facade_pattern>`_) which wraps the static method calls inside an object. 
+ownCloud currently has a ton of static methods which is a very bad thing concerning testability. Therefore the App Framework comes with an :php:class:`OCA\\AppFramework\\Core\\API` abstraction layer (basically a `facade <http://en.wikipedia.org/wiki/Facade_pattern>`_) which wraps the static method calls inside an object.
 
 .. note:: This is a temporary solution until ownCloud offers a proper API with normal classes that can be used in the DIContainer.
 
@@ -72,7 +72,7 @@ If you find yourself in need to use more ownCloud internal static methods simply
       }
 
   }
-  
+
 and wire it up in the container:
 
 :file:`dependencyinjection/dicontainer.php`
