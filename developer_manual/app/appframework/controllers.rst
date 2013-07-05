@@ -16,7 +16,7 @@ For instance::
 In this case we would create a controller named **FileController** and the method would be called **delete()**.
 
 
-The apptemplate comes with several different controllers. A simple controller would look like:
+A simple controller would look like:
 
 .. code-block:: php
 
@@ -48,9 +48,7 @@ The apptemplate comes with several different controllers. A simple controller wo
       public function myControllerMethod(){
           $value = $this->params('somesetting');
 
-          $response = new JSONResponse();
-          $response->setParams(array('value' => $value));
-          return $response;
+          return new JSONResponse(array('value' => $value));
       }
 
   }
@@ -58,8 +56,6 @@ The apptemplate comes with several different controllers. A simple controller wo
   ?>
 
 An instance of the API is passed via :doc:`../general/dependencyinjection`, the same goes for a :php:class:`OCA\\AppFramework\\Http\\Request` instance. URL Parameters, POST, GET and FILES parameters are partly  abstracted by the Request class and can be accessed via **$this->params('myURLParamOrPostOrGetKey')** and **$this->getUploadedFile($key)** inside the controller. This has been done to make the app better testable.
-
-.. note:: If an URL Parameter, POST or GET value exist with the same key, the URL Parameter is preferred over the POST parameter and the POST parameter is preferred over the GET parameter. You should avoid this scenario though.
 
 If you want to access environment variables($_ENV), use **$this->env($key)**.
 Session and cookie variables can be accessed via **session** and **cookie**
@@ -79,12 +75,12 @@ Every controller method has to return a Response object. The currently available
 
 .. versionadded:: 6.0
 
-* :php:class:`OCA\\AppFramework\\Http\\ForbiddenResponse`: returns 403 Forbidden HTTP status
-* :php:class:`OCA\\AppFramework\\Http\\NotFoundResponse`: returns 404 Not Found HTTP status
+* :php:class:`OCA\\AppFramework\\Http\\ForbiddenResponse`: returns 403 Forbidden HTTP status. If you want to transport content, use a different response and set the HTTP status code in there
+* :php:class:`OCA\\AppFramework\\Http\\NotFoundResponse`: returns 404 Not Found HTTP status. If you want to transport content, use a different response and set the HTTP status code in there
 
 Should you require to set additional headers, you can use the :php:meth:`OCA\\AppFramework\\Http\\Response::addHeader` method that every Response has.
 
-Because TemplateResponse and JSONResponse are so common, the controller provides a shortcut method for both of them, namely **$this->render** and **$this->renderJSON**.
+Because TemplateResponse is quite common, the controller provides a shortcut method for both of them, namely **$this->render**:
 
 .. code-block:: php
 
@@ -102,17 +98,6 @@ Because TemplateResponse and JSONResponse are so common, the controller provides
       return $this->render($templateName, $params);
   }
 
-
-  /**
-   * @Ajax
-   */
-  public function getMeJSON(){
-      $params = array(
-          'somesetting' => 'enough of this already'
-      );
-
-      return $this->renderJSON($params);
-  }
 
 
 For security reasons, all security checks for controller methods are turned on by default. To explicitely turn off checks, you must use exemption annotations above the desired method.
