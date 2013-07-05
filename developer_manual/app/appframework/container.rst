@@ -3,7 +3,7 @@ Runtime configuration
 
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
-The App Framework assembles the application by using an Inversion of Control container which does :doc:`../general/dependencyinjection`. Dependency Injection helps you to create testable code. For a very simple and good Tutorial, watch the `Dependency Injection and the art of Services and Containers Tutorial on YouTube<http://www.youtube.com/watch?v=DcNtg4_i-2w>`_ A broader overview over how it works and what the benefits are can be seen on `Google's Clean Code Talks <http://www.youtube.com/watch?v=RlfLCWKxHJ0>`_
+The App Framework assembles the application by using an Inversion of Control container which does :doc:`../general/dependencyinjection`. Dependency Injection helps you to create testable code. For a very simple and good Tutorial, watch the `Dependency Injection and the art of Services and Containers Tutorial on YouTube <http://www.youtube.com/watch?v=DcNtg4_i-2w>`_ A broader overview over how it works and what the benefits are can be seen on `Google's Clean Code Talks <http://www.youtube.com/watch?v=RlfLCWKxHJ0>`_
 
 The container is configured in :file:`dependencyinjection/dicontainer.php`. By default `Pimple <http://pimple.sensiolabs.org/>`_ is used as dependency injection container. A `tutorial can be found here <http://jtreminio.com/2012/10/an-introduction-to-pimple-and-service-containers/>`_
 
