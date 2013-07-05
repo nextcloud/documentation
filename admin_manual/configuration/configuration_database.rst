@@ -16,7 +16,8 @@ Parameters
 ----------
 
 MySQL/MariaDB Database
-~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+
 If you decide to use a MySQL or MariaDB database make sure that you have installed and
 enabled the MySQL extension in PHP and that the **mysql.default_socket**
 points to the correct socket (if the database runs on same server as ownCloud).
@@ -49,7 +50,7 @@ Now you need to create a database user and the database itself by using the
 MySQL command line interface. The database tables will be created by ownCloud
 when you login for the first time.
 
-To start the get into the MySQL command line mode use::
+To start the MySQL command line mode use::
 
   mysql -uroot -p
 
@@ -111,6 +112,7 @@ In the ownCloud counfiguration in :file:`config/config.php` you need to set at l
 
 PostgreSQL Database
 ~~~~~~~~~~~~~~~~~~~
+
 If you decide to use a PostgreSQL database make sure that you have installed
 and enabled the PostgreSQL extension in PHP. The PHP configuration in :file:`/etc/php5/conf.d/pgsql.ini` could look
 like this:
@@ -133,7 +135,7 @@ Now you need to create a database user and the database itself by using the
 PostgreSQL command line interface. The database tables will be created by
 ownCloud when you login for the first time.
 
-To start the get into the postgres command line mode use::
+To start the postgres command line mode use::
 
   psql -hlocalhost -Upostgres
 
@@ -165,6 +167,74 @@ ownCloud a password is very often not required to access the database.
     "dbpassword"    => "password",
     "dbhost"        => "localhost",
     "dbtableprefix" => "",
+
+Oracle Database
+~~~~~~~~~~~~~~~
+
+If you are deploying to an Oracle database make sure that you have installed
+and enabled the `Oracle extension <http://php.net/manual/en/book.oci8.php>`_ in PHP. The PHP configuration in :file:`/etc/php5/conf.d/oci8.ini` could look like this:
+
+.. code-block:: ini
+
+  # configuration for PHP Oracle extension
+  extension=oci8.so
+
+Make sure that the Oracle environment has been set up for the process trying to use the Oracle extension. For a local Oracle XE installation this can be done by exporting the following environment variables (eg. in :file:`/etc/apache2/envvars` for Apache)
+
+.. code-block:: bash
+
+  export ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe
+  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME/lib
+
+Installing and configuring Oracle support for PHP is way out of scope for this document. The official Oracle documentation called `The Underground PHP and Oracle Manual <http://www.oracle.com/technetwork/topics/php/underground-php-oracle-manual-098250.html>`_ should help you through the process.
+
+Creating a database user for ownCloud can be done by using the sqlplus command line
+interface or the Oracle Application Express web interface. The database tables will be created by ownCloud when you login for the first time.
+
+To start the Oracle command line mode with a DBA account use::
+
+  sqlplus system AS SYSDBA
+
+After entering the password a **SQL>** prompt will appear. Now enter the following lines and confirm them with the enter key:
+
+.. code-block:: sql
+
+  CREATE USER owncloud IDENTIFIED BY password;
+  ALTER USER owncloud DEFAULT TABLESPACE users
+                      TEMPORARY TABLESPACE temp
+                      QUOTA unlimited ON users;
+  GRANT create session
+      , create table
+      , create procedure
+      , create sequence
+      , create trigger
+      , create view
+      , create synonym
+      , alter session
+     TO owncloud;
+
+.. note:: In Oracle creating a user is the same as creating a database in other RDBMs, so no ``CREATE DATABASE`` statement is necessary.
+
+You can quit the prompt by entering::
+
+  exit
+
+In the ownCloud configuration you need to set the hostname on which the
+database is running and a valid username and password to
+access it. If the database has been installed on the same server as
+ownCloud to config file could look like this:
+
+.. code-block:: php
+
+  <?php
+
+    "dbtype"        => "oci",
+    "dbname"        => "XE",
+    "dbuser"        => "owncloud",
+    "dbpassword"    => "password",
+    "dbhost"        => "localhost",
+
+.. note:: This example assumes you are running an Oracle Express Edition on ``localhost``. The ``dbname`` is the name of the Oracle instance. For Oracle Express Edition it is always ``XE``. 
 
 Trouble Shooting
 ----------------
@@ -225,6 +295,24 @@ command line interface:
   (1 row)
   postgres=# \q
 
+**Oracle**::
+
+  sqlplus username
+
+::
+
+  SQL> select * from v$version;
+
+  BANNER
+  --------------------------------------------------------------------------------
+  Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+  PL/SQL Release 11.2.0.2.0 - Production
+  CORE	11.2.0.2.0	Production
+  TNS for Linux: Version 11.2.0.2.0 - Production
+  NLSRTL Version 11.2.0.2.0 - Production
+
+  SQL> exit
+
 Useful SQL commands
 ~~~~~~~~~~~~~~~~~~~
 
@@ -232,22 +320,26 @@ Useful SQL commands
 
   SQLite    : No database user is required.
   MySQL     : SELECT User,Host FROM mysql.user;
-  PostgreSQL: SELECT * from pg_user;
+  PostgreSQL: SELECT * FROM pg_user;
+  Oracle    : SELECT * FROM all_users;
 
 **Show available Databases**::
 
   SQLite    : .databases (normally one database per file!)
   MySQL     : SHOW DATABASES;
   PostgreSQL: \l
+  Oracle    : SELECT name FROM v$database; (requires DBA privileges)
 
 **Show ownCloud Tables in Database**::
 
   SQLite    : .tables
   MySQL     : USE owncloud; SHOW TABLES;
   PostgreSQL: \c owncloud; \d
+  Oracle    : SELECT table_name FROM user_tables;
 
 **Quit Database**::
 
   SQLite    : .quit
   MySQL     : quit
   PostgreSQL: \q
+  Oracle    : quit

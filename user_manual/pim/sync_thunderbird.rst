@@ -18,6 +18,7 @@ As someone who is new to OwnCloud, New to SoGo Connector, and new to Thunderbird
    -  "**URL:**" is found in your OwnCloud Contacts area, that little Gear symbol 
 .. image:: ../images/contact_thunderbird-Symbol_Gear.jpg
 in the -bottom left- of the Contacts View (same symbol as found in the -top right- in the Calendar view). Then look for a little impeller symbol
+
 .. image:: ../images/contact_thunderbird-Symbol_Impeller.jpg
 which will display the URL you need for your installation to work. 
 

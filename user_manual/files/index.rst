@@ -9,3 +9,4 @@ Files & Synchronization
    versioncontrol
    deletedfiles
    sync
+   encryption
