@@ -26,12 +26,6 @@ At this point, this repository hosts three manuals:
 * **Administrators Manual:** Setup, Deployment, Best Practices, etc.
 * **Developers Manual:** Developing Apps for ownCloud & understanding the core Architecture.
 
-Versioning
-----------
-
-The ``master`` branch is always the development branch. If a new server version is being released, the documentation is branched.
-
-
 Building
 --------
 First make sure that these things are installed
