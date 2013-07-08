@@ -16,6 +16,20 @@ you loss your log-in pasword. If you want to protect yourself against password
 loss store your log-in password on a secure place or enable the recovery key
 as described below.
 
+What gets encrypted
+-------------------
+
+The current version encrypts all your files stored in ownCloud.
+
+At the moment we don't encrypt:
+
+- old versions (versions after the encryption app was enabled are encrypted)
+- image thumbnails from the gallery app
+- search index from the full text search app
+
+All this data is stored directly on your ownCloud server, so you don't have to worry to expose
+your data to a third party storage provider.
+
 Settings
 --------
 
@@ -27,7 +41,7 @@ Recovery Key
 
 If the admin enabled the recovery-key you can decide by your own if you
 want to use this feature for your account. If you enable "Password recovery"
-the admin will be able to read your data with a special password. Which allows
+the admin will be able to read your data with a special password. This allows
 him to recover your files in case of password loss. If the recovery-key is not
 enabled than there is no way to restore your files if you loss your log-in
 password.
