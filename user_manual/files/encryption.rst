@@ -35,8 +35,8 @@ Decrypt your data again
 
 Corrently there is no way to decrypt your files directly on the server if you decide to stop
 using the encryption app. The only way to get a comlete copy of your unencrypted data is
-to download/sync all files as long as the encryption app is enabled. After the app was disabled
-you can upload your unencrypted data again.
+to download/sync all files as long as the encryption app is enabled. After the encryption
+app was disabled you can upload your unencrypted data again.
 
 It is already planned to add a option to switch from encrypted to unencrypted files
 directly on the server.
