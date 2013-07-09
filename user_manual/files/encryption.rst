@@ -23,7 +23,7 @@ The current version encrypts all your files stored in ownCloud.
 
 At the moment we don't encrypt:
 
-- old versions (versions after the encryption app was enabled are encrypted)
+- old versions (versions created before the encryption app was enabled)
 - old files in the trash bin (files which were deleted before the encryption app was enabled)
 - image thumbnails from the gallery app
 - search index from the full text search app
