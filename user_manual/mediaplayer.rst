@@ -8,7 +8,7 @@ Ampache-compatible media player. You can find the URL for your specific
 ownCloud installation in your personal settings, or replace ADDRESS with
 the URL of your ownCloud installation yourself.
 
-``Ampache-URL: http://ADDRESS/apps/media/``
+``Ampache-URL: http://ADDRESS/remote.php/ampache/``
 
 Ampache-compatible players that work with ownCloud include:
 
