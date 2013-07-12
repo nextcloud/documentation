@@ -24,6 +24,9 @@ This chapter contains information about accessing your files via WebDav and Sync
 * :doc:`files/files`
 * :doc:`files/sync`
 * :doc:`files/versioncontrol`
+* :doc:`files/deletedfiles`
+* :doc:`files/encryption`
+
 
 Contacts & Calendar
 ===================
