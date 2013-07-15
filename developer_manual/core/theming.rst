@@ -90,3 +90,33 @@ affect.
 
 .. _GitHub themes repository: https://github.com/owncloud/themes
 .. _here: https://github.com/owncloud/themes/tree/master/example
+
+Notes for Updates
+-----------------
+
+In case of theming it is recommended to the user,
+not to perform these adaptions inside the folder /themes/default.
+
+Please perform the following steps, to avoid conflicts with other upcoming updates:
+
+* create a new folder inside /themes: for example: /themes/MyTheme
+* Copy the folders /themes/default/core and /themes/default/settings to /themes/MyTheme
+* edit the file /config/config.php
+* Insert:  'theme' => 'MyTheme',   into this file
+
+Within the folder /themes/MyTheme all files, which are needed for theming
+are save from coming updates.
+All company theming must be done exclusively here from now on.
+
+In case, that one of the following files is affected due to an an upgrade,
+
+* /themes/default/settings/templates/apps.php
+*	/themes/default/defaults.php
+
+the files listed below, have to be replaced by those listed above:
+
+*	/themes/MyTheme/settings/templates/apps.php
+*	/themes/MyTheme/defaults.php
+
+But this is unlikely at least in the upcoming updates (5.0.x).
+ownCloud aims to give further information in this case.
