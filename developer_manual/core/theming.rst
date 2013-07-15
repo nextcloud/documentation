@@ -108,7 +108,7 @@ Within the folder /themes/MyTheme all files, which are needed for theming
 are save from coming updates.
 All company theming must be done exclusively here from now on.
 
-In case, that one of the following files is affected due to an an upgrade,
+In case, that one of the following files is affected due to an upgrade,
 
 * /themes/default/settings/templates/apps.php
 *	/themes/default/defaults.php
