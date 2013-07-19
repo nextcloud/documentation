@@ -36,9 +36,7 @@ locally, follow these steps:
 5. Commit your work, if you have write access to ownCloud, or create a pull
    request otherwise.
 6. If you have committed the work yourself, please merge the result
-   into the master branch:
-
-  ::
+   into the master branch::
 
     git fetch origin
     git checkout master
