@@ -32,8 +32,8 @@ Please keep in mind that some formatting has been applied and carriage returns
 have been added for better readability. In the :file:`data/mount.json` all
 values need to be concatenated and written in a row without these modifications!
 
-It is recommended to use the WebGUI in the administrator panel to add, remove
-or modify mount options to prevent any problems!
+It is recommended to use the :doc:`Web-GUI <custom_mount_config_gui>` in the
+administrator panel to add, remove or modify mount options to prevent any problems!
 
 Example
 -------
