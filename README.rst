@@ -13,7 +13,7 @@ All documentation in this repository is licensed under the Creative Commons Attr
 Style
 -------
 
-It's using the `Sphinx Documentation Generator <http://sphinx.pocoo.org/>`_. The syntax follows the `reStructuredText <http://docutils.sourceforge.net/rst.html>`_ style, and can also be edited from GitHub.
+It is using the `Sphinx Documentation Generator <http://sphinx.pocoo.org/>`_. The syntax follows the `reStructuredText <http://docutils.sourceforge.net/rst.html>`_ style, and can also be edited from GitHub.
 
 For PHP documentation you'll need to get the according language domain package. The documenation for PHP source is located at http://packages.python.org/sphinxcontrib-phpdomain/reference.html
 
