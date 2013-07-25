@@ -40,9 +40,6 @@ Clean up::
 
 Upgrade
 -------
-
-.. note:: The update to 5.0 is currently discouraged for users of the encryption app. A rewrite of the encryption will be released in a few weeks. If you have already upgraded to 5.0 you will not be able to decrypt your files. The solution to this is to downgrade to the old version again. **Also make a backup before you downgrade!**
-
 Upgrade is to bring an ownCloud instance to a new *major release*, e.g.
 ownCloud 4.0.7 → 4.5.0. Always do backups anyway.
 
