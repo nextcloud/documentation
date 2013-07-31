@@ -63,61 +63,41 @@ or via UMC:
 Installation
 ^^^^^^^^^^^^
 
-Now, we are ready to install ownCloud. This can be either done through the ownCloud UCS repository or by downloading the packages.
+Now, we are ready to install ownCloud. This can be either done through the UCS
+App Center (recommended) or by downloading the packages.
 
-Repository
-""""""""""
+UCS App Center
+""""""""""""""
 
-To include the ownCloud UCS repository, you need to configure it using
-the UCR. To do so, just use the following command:
-
-::
-
-    ucr set update/secure_apt="no" \
-     repository/online/component/owncloud/description="ownCloud" \
-     repository/online/component/owncloud/server=download.owncloud.com \
-     repository/online/component/owncloud/prefix=ucs \
-     repository/online/component/owncloud/defaultpackages=owncloud \
-     repository/online/component/owncloud/version=current \
-     repository/online/component/owncloud=enabled
-
-Subsequently, install the ownCloud package. It will auto-install
-owncloud-schema as well.
-
-::
-
-  univention-install owncloud
-
-If you want to make use of commercially unsupported packages, install
-the unsupported package:
-
-::
-
-  univention-install owncloud-unsupported
+Open the Univention Management Console and choose the App Center module. You
+will see a variety of available applications, including ownCloud. Click on it
+and follow the instructions.
 
 Manually by download
 """"""""""""""""""""
 
-Download the integration packages (`from our website`_ or with wget as
-below) and install them from within your download folder (note: the
-package owncloud-unsupported is optional):
+Download the integration packages `from our website`_ and install them from
+within your download folder (note: the package owncloud-unsupported is
+optional) via command line:
 
 ::
+	dpkg -i owncloud*.deb
 
-    wget http://download.owncloud.com/download/ucs/owncloud_2012.0.1-0_all.deb
-    wget http://download.owncloud.com/download/ucs/owncloud-schema_2012.0.3-0_all.deb
-    wget http://download.owncloud.com/download/ucs/owncloud-unsupported_2012.0.3-0_all.deb
-    dpkg -i owncloud*.deb
-
-ownCloud will be configured to fully work with LDAP. There is only one
-local admin user “owncloudadmin”, you can find his password in :file:`/etc/owncloudadmin.secret`. Use this account, if you want to change basic
-ownCloud settings.
+ownCloud will be configured to fully work with LDAP.
 
 Postconfiguration (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+There is only one local admin user “owncloudadmin”, you can find his password in
+:file:`/etc/owncloudadmin.secret`. Use this account, if you want to change basic
+ownCloud settings.
+
 In the installation process a virtual host is set up (Apache is required
-therefore). If you want to modify the settings, edit :file:`/etc/apache2/sites-available/owncloud` and restart the web server. You might want to do it to enable HTTPS connections.Besides that, you can edit the **.htaccess-File in /var/www/owncloud/**. In the latter file there are also the PHP limits for file transfer specified.
+therefore). If you want to modify the settings, edit
+:file:`/etc/apache2/sites-available/owncloud` and restart the web server. You
+might want to do it to enable HTTPS connections. Besides that, you can edit the
+**.htaccess-File in /var/www/owncloud/**. In the latter file there are also the
+PHP limits for file transfer specified.
 
 Using ownCloud
 ^^^^^^^^^^^^^^
@@ -131,7 +111,11 @@ your LDAP credentials.
 
 .. image:: /images/ucsint1.png
 
-Updating users can also be done by the script :file:`/usr/share/owncloud/update-users.sh` . It takes the following UCR variables as parameters: **owncloud/user/enabled** for enabling or disabling, **owncloud/user/quota** as the Quota value and **owncloud/join/users/filter** as LDAP filter to select the users to update.
+Updating users can also be done by the script
+:file:`/usr/share/owncloud/update-users.sh` . It takes the following UCR
+variables as parameters: **owncloud/user/enabled** for enabling or disabling,
+**owncloud/user/quota** as the Quota value and **owncloud/join/users/filter** as
+LDAP filter to select the users to update.
 
 Groups 2012.4.0.4
 """""""""""""""""
@@ -144,8 +128,11 @@ enabled and disabled via UCM as shown in the screen shot below.
 
 .. image:: /images/ucsint.png
 
-Another way to enable or disable groups is to use the script :file:`/usr/share/owncloud/update-groups.sh`. Currently, it takes an argument
-which can be 1=enable groups or 0=disable groups. The filter applied is being taken from the UCR variable **owncloud/join/groups/filter**. In case it is empty , a message will be displayed.
+Another way to enable or disable groups is to use the script
+:file:`/usr/share/owncloud/update-groups.sh`. Currently, it takes an argument
+which can be 1=enable groups or 0=disable groups. The filter applied is being
+taken from the UCR variable **owncloud/join/groups/filter**. In case it is
+empty, a message will be displayed.
 
 
 .. _from our website: https://owncloud.com/download
