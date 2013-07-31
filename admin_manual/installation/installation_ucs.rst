@@ -4,32 +4,6 @@ Univention Corporate Server
 Subscribers to the ownCloud Enterprise edition can also integrate with
 :abbr:`UCS (Univention Corporate Server)`.
 
-Prerequisites
-~~~~~~~~~~~~~
-
-The ownCloud integration relies on the MySQL database. Since "PostresSQL"
-is more in a experimental state and "SQLite" is not very well suited for
-multi-user installations, MySQL is the only way first of all. As of UCS
-3.0 MySQL is not part of the maintained repository. Hence you you should
-install it first and probably deactivate the unmaintained repository
-eventually::
-
-  ucr set repository/online/unmaintained="yes"
-  univention-install mysql-server
-  ucr set repository/online/unmaintained="no"
-
-.. note:: If MySQL is already installed and/or a password for the user root is set, please make sure it is saved in /etc/mysql.secret, otherwise you will experience problems.
-
-In case you want to install ownCloud from the repository, it is already enough
-to enable the unmaintained repository for MySQL. You can skip the rest of this
-section and read on at :ref:`preconfig`. ownCloud has further dependencies,
-which all belong to the maintained repository. Install them as well::
-
-  univention-install php5-mysql php5-ldap php5-gd
-
-The package manager is going to remove **libgd2-noxpm**, which is not a problem
-and nothing to worry about.
-
 .. _preconfig:
 
 Pre configuration
