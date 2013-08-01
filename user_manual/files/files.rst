@@ -14,9 +14,12 @@ Gnome 3/Nautilus
 
 The URL that you have to use to connect to the owncloud installation in nautilus is::
 
-  dav://youraddress.com/files/webdav.php
+  davs://youraddress.com/files/webdav.php
+
 
 .. image:: ../images/gnome3_nautilus_webdav.png
+
+If your server connection is not HTTPS-secured, use `dav://` instead of `davs://` .
 
 KDE/Dolphin
 ~~~~~~~~~~~
