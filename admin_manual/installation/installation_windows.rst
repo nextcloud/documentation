@@ -194,6 +194,28 @@ Installing ownCloud
 
 11. Click next, and ownCloud should have you logged in as the admin user, and you can get started exploring ownCloud, creating other users and more!
 
+Ensure Proper HTTP-Verb handling
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+IIS must pass all HTTP and WebDAV verbs to the PHP/CGI handler, and must not try
+to handle them by itself. If it does, syncing with the Desktop and Mobile
+Clients will fail. Here is how to ensure your configuration is correct:
+
+#. Open IIS Manager7.
+#. In the `Connections` bar, pick your site below `Sites`, or choose the top
+   level entry if you want to modify the machine-wide settings.
+#. Choose the `Handler Mappings` feature click `PHP_via_fastCGI`.
+#. Choose `Request Restrictions` and find the `Verbs` tab.
+#. Ensure `All Verbs` is checked.
+#. Click `OK`.
+#. Next, choose `Request Filtering` feature from IIS Manager.
+#. Ensure that all verbs are permitted (or none are forbidden) in the `Verbs`
+   tab.
+
+Also, ensure that you did not enable the WebDAV authoring module, since ownCloud
+needs to be able to handle WebDAV on the application level.
+
+
 Configuring ownCloud, PHP and IIS for Large File Uploads
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
