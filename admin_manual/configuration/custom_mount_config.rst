@@ -275,13 +275,15 @@ Google Drive
 
 The Google Drive backend mounts a share in the Google cloud into the virtual
 filesystem and is part of the ‘External storage support’ app, the class to
-be used is **\\OC\\Files\\Storage\\Google**\  and is done via an OAuth request
-and takes the following options:
+be used is **\\OC\\Files\\Storage\\Google**\  and is done via an OAuth2.0 request.
+That means that the App must be registered through the Google APIs Console.
+The result of the registration process is a set of values (incl. client_id, client_secret).
+It takes the following options:
 
 -  **configured**: whether the drive has been configured or not (true or false)
--  **token**: the OAuth token to login to the Google drive
--  **token_secret**: the OAuth secret to login to the Google drive
-
+-  **client_id**: the client id to login to the Google drive
+-  **client_secret**: the client secret to login to the Google drive
+-  **token**: a compound value including access and refresh tokens
 
 Example
 ^^^^^^^
@@ -291,8 +293,9 @@ Example
     {   "class":"\\OC\\Files\\Storage\\Google",
         "options":{
             "configured":"#configured",
-            "token":"#token",
-            "token_secret":"#token secret"
+            "client_id":"#client_id",
+            "client_secret":"#client_secret",
+            "token":"#token"
         }
     }
 
