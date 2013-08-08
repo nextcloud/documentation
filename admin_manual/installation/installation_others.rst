@@ -171,7 +171,7 @@ internet using PageKite.
 
 Open Wrt
 --------
-Here you can find a `tuorial for open Wrt`_
+Here you can find a `tutorial for open Wrt`_
 
 .. _github gist for further instructions: https://gist.github.com/2200407
 .. _PageKite how to: https://pagekite.net/wiki/Howto/GNULinux/OwnCloud/
