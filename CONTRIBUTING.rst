@@ -344,7 +344,7 @@ Frequently Asked Questions
 
 .. _this stackoverflow question: http://stackoverflow.com/questions/3033423/vim-command-to-restructure-force-text-to-80-columns
 .. _directly on github: https://github.com/owncloud/documentation
-.. _Mr Jenkins: http://ci.tmit.eu
+.. _Mr Jenkins: http://ci.owncloud.org
 .. _ownCloud doc server: http://doc.owncloud.com
 .. _RST Cheat Sheet: http://github.com/ralsina/rst-cheatsheet/raw/master/rst-cheatsheet.pdf
 .. _reStructuredText Primer: http://sphinx-doc.org/rest.html
