@@ -169,7 +169,12 @@ PageKite Configuration
 You can use this `PageKite how to`_ to make your local ownCloud accessible from the
 internet using PageKite.
 
+Open Wrt
+--------
+Here you can find a `tuorial for open Wrt`_
+
 .. _github gist for further instructions: https://gist.github.com/2200407
 .. _PageKite how to: https://pagekite.net/wiki/Howto/GNULinux/OwnCloud/
 
 .. _`http://wiki.nginx.org/HttpSslModule`: http://wiki.nginx.org/HttpSslModule
+.. _`tuorial for open Wrt`: http://wiki.openwrt.org/doc/howto/owncloud
