@@ -81,6 +81,7 @@ within your download folder (note: the package owncloud-unsupported is
 optional) via command line:
 
 ::
+
 	dpkg -i owncloud*.deb
 
 ownCloud will be configured to fully work with LDAP.
