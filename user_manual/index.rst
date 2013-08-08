@@ -26,7 +26,7 @@ This chapter contains information about accessing your files via WebDav and Sync
 * :doc:`files/versioncontrol`
 * :doc:`files/deletedfiles`
 * :doc:`files/encryption`
-* :doc:`files/bigfiles`
+* :doc:`files/configuring_big_file_upload`
 
 
 Contacts & Calendar
