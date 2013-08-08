@@ -2,6 +2,7 @@ Big Files
 =========
 
 There are a few default configuration settings that you will want to change to enable ownCloud to operate more effectively as a self hosted file sync and share server. When uploading through the web client, ownCloud is governed by PHP and Apache. As a default, PHP is configured for only 2 MB uploads. This is not entirely useful, so it is important to increase these variables to the sizes you want to support on your server. Point your favorite text editor over to your php.ini file. On different server operating systems this is located in different places. On openSUSE and Ubuntu, for example, this is located in /etc/php5/apache2/php.ini Note: the commend ‘find / -name php.ini’ can help you locate your php.ini on Linux. On Windows, you can find this file within C:/Program Files (x86)/PHP/PHP.ini Edit the php.ini file, looking for: 
+
 - upload_max_filesize = 500 MB
 - post_max_size = 600 MB
 
