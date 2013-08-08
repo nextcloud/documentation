@@ -1,5 +1,5 @@
-überschrift 1
-=============
+Big Files
+=========
 
 There are a few default configuration settings that you will want to change to enable ownCloud to operate 
 more effectively as a self hosted file sync and share server. 
