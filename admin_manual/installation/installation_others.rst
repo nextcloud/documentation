@@ -177,4 +177,4 @@ Here you can find a `tutorial for open Wrt`_
 .. _PageKite how to: https://pagekite.net/wiki/Howto/GNULinux/OwnCloud/
 
 .. _`http://wiki.nginx.org/HttpSslModule`: http://wiki.nginx.org/HttpSslModule
-.. _`tuorial for open Wrt`: http://wiki.openwrt.org/doc/howto/owncloud
+.. _tuorial for open Wrt: http://wiki.openwrt.org/doc/howto/owncloud
