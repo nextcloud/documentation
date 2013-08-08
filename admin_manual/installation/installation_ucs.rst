@@ -70,8 +70,17 @@ UCS App Center
 """"""""""""""
 
 Open the Univention Management Console and choose the App Center module. You
-will see a variety of available applications, including ownCloud. Click on it
-and follow the instructions.
+will see a variety of available applications, including ownCloud.
+
+.. image:: /images/ucs-app-center-module.png
+
+Click on ownCloud 5 and follow the instructions.
+
+.. image:: /images/ucs-app-center-install.png
+
+In the UCS App Center, you can also upgrade from ownCloud 4.5 by installing
+ownCloud 5.0. They are provided as seperate apps. It is only possible to have
+one version of ownCloud installed.
 
 Manually by download
 """"""""""""""""""""
