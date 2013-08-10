@@ -11,7 +11,7 @@ by default the user will loss access to his files if he loss his log-in
 password.
 
 It might be a good idea to make regular backups of all encryption keys. The
-encryption keys are sored in following folders:
+encryption keys are stored in following folders:
 
 * data/owncloud_private_key (recovery key, if enabled and public share key)
 * data/public-keys (public keys from all users)
