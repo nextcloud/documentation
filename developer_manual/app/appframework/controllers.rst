@@ -3,7 +3,7 @@ Controllers
 
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
-The App Framework provides a simple baseclass for adding controllers: :php:class:`OCA\\AppFramework\\Controller\\Controller`. Controllers connect your view (templates) with your database. Controllers themselves are connected to one or more routes. Controllers go into the **controller/** directory.
+The App Framework provides a simple baseclass for adding controllers: :php:class:`OCA\\AppFramework\\Controller\\Controller`. Controllers connect your view (templates) with your database and contain the logic of your app. Controllers themselves are connected to one or more routes. Controllers go into the **controller/** directory.
 
 A controller should be created for each resource. Think of it as an URL scheme::
 
@@ -11,9 +11,9 @@ A controller should be created for each resource. Think of it as an URL scheme::
 
 For instance::
 
-  /file/delete/1
+  /file/1
 
-In this case we would create a controller named **FileController** and the method would be called **delete()**.
+In this case we would create a controller named **FileController** and the method would be called **get()**.
 
 
 A simple controller would look like:
@@ -46,9 +46,7 @@ A simple controller would look like:
        * sets a global system value
        */
       public function myControllerMethod(){
-          $value = $this->params('somesetting');
-
-          return new JSONResponse(array('value' => $value));
+          return new JSONResponse(array('value' => $this->params('somesetting')));
       }
 
   }
