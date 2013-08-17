@@ -11,7 +11,7 @@ This guideline highlights some of the most common security problems and how to p
 
 SQL Injection
 -------------
-`SQL Injection <http://en.wikipedia.org/wiki/SQL_injection>`_ occurs when SQL query strings are concatenated with variables. 
+`SQL Injection <http://en.wikipedia.org/wiki/SQL_injection>`_ occurs when SQL query strings are concatenated with variables.
 
 To prevent this, always use prepared queries:
 
@@ -22,7 +22,7 @@ To prevent this, always use prepared queries:
   $query = \OCP\DB::prepare($sql);
   $params = array(1);
   $result = $query->execute($params);
-  
+
 If the App Framework is used, write SQL queries like this in the a class that extends the Mapper:
 
 .. code-block:: php
@@ -58,7 +58,12 @@ An attacker might now easily send the user a link to::
 
 to overtake the user account. The same problem occurs when outputting content from the database or any other location that is writeable by users.
 
-To prevent XSS in your app, **never use echo, print() or <\%=** - use **p()** instead which will sanitize the input.
+Another attack vector that is often overlooked is XSS in **href** attributes. HTML allows to execute javascript in href attributes like this::
+
+    <a href="javascript:alert('xss')">
+
+
+To prevent XSS in your app, **never use echo, print() or <\%=** - use **p()** instead which will sanitize the input. Also **validate urls to start with the expected protocol** (starts with http for instance)!
 
 .. note:: Should you ever require to print something unescaped, double check if it is really needed. If there is no other way (e.g. when including of subtemplates) use `print_unescaped`  with care.
 
