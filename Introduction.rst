@@ -41,7 +41,7 @@ From left to right:
 
 The next section highlights why many of our customers use the ownCloud solution.
 
-4 The „Dropbox Problem“
+The „Dropbox Problem“
 =======================
 Employees are using cloud-based services to share sensitive company data with vendors, customers and partners. They are syncing data to their personal devices and home computers, all in an effort to get their job done faster and easier, and all without IT‘s permission. Consumer cloud-based file sharing services have your sensitive company data stored on servers outside of your control, outside of your policy and regulatory guidelines – maybe even outside your country – and not managed by you. The potential for data leakage, security breeches and harm to the business is enormous.
 Figure3 shows a typical dropbox-constellation, that leads to the anomalies, mentioned in the picture and described below.
