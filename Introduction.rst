@@ -51,3 +51,5 @@ Figure3 shows a typical dropbox-constellation, that leads to the anomalies, ment
   Figure3
   
 1.  **No IT control:** Data is no longer under your control
+1.1.  **Security:** The fact, that you see a file or  a directory at one place does not mean, that it physically resides at this one place. It can be spread over different storage, even over different machines, which are owned by anyone else.
+
