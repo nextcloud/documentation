@@ -4,7 +4,7 @@ If you are new to ownCloud, then this document is a good place to start. This do
 
 ::
 
-Figure1.
+  Figure1.
 
 There are three roles associated with ownCloud:
 
