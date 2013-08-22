@@ -48,4 +48,6 @@ Figure3 shows a typical dropbox-constellation, that leads to the anomalies, ment
 
 ::
 
-  Figure2
+  Figure3
+  
+1.  **No IT control:** Data is no longer under your control
