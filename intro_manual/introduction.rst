@@ -138,3 +138,39 @@ For nearly all deployment scenarios, connecting ownCloud to back-end storage is 
 In larger installations, it may be necessary to create more than one storage location for an ownCloud instance. Perhaps policy requires high performance, fully redundant storage for one group, and less expensive storage for another group. In this situation, it is possible to leverage ownCloud‘s built in integration with LDAP or Active Directory servers to dynamically assign a storage path to each user. The LDAP/AD plug-in is further described below, but once connected, the storage path attribute can be inherited, and users can be directed to two or more different storage paths based on these entries. Simply mount the storage devices on the server in the desired mount point, such as /data/high-endstorage1 and /data/lowendstorage2, and user files and versions will be saved to the specified path. 
 Occasionally ownCloud needs to connect to REST API-based storage. In some cases, this API accessed storage replaces the mounted file system described above, and in some cases it augments the storage. ownCloud can handle either scenario through the use of plug-in applications. In one instance, ownCloud was deployed leveraging a custom REST-based storage system similar to many Content Management Systems. When enabled, the custom-developed plug-in application redirected POSIX commands to the REST API. While ownCloud did retain a file system mount, it was primarily retained for log storage purposes on the server. In other instances, the out-of-the-box External Fileystem plug-in leverages a mix of APIs, providing the admins the flexibility to connect openStack SWIFT, CIFS, FTPs, WebDAV and other storage systems in addition to the existing file system storage. 
 Ultimately it is the administrator‘s decision on which storage system to use, how to configure user access, and whether or not to mix and match the storage based on existing infrastructure, security policies, and end-user requirements. ownCloud provides the mechanisms to enable the administrator to leverage the right mixture of on-site storage, and put them back in control of corporate data, while still providing the capabilities that users demand.
+
+Infrastructure Integration
+==========================
+The most common infrastructure request is to integrate with the corporate directory, or other standard authentication mechanisms. ownCloud provides out-of-the-box integration with AD, LDAP and OAuth 2.0. Administrators simply enable the ownCloud AD / LDAP plug-in application, configure the server addresses, protocols and filters, and users are authenticated against the corporate directory. With the appropriate settings, user group memberships, quotas and even, as outlined above, storage paths can be centrally managed and applied to ownCloud. The first time a user logs into ownCloud with the corporate directory user name and password, ownCloud provisions the user and they are off and running. Administrators can also enable custom attributes, such as custom display names, to make it easier for users to find each other when sharing documents. All corporate policies governing the account, such as failed login account lockout, are still managed out of the corporate directory, with ownCloud enforcing the result. 
+Beyond AD / LDAP integration, ownCloud offers a wide range of other integration capabilities with other tools. For example, it is possible to leverage the user provisioning API to use an automation solution to provision a new ownCloud user. In some very large deployment scenarios, it is far more efficient to provision new users in this manner than to use a corporate directory. The provisioning API can also be used to report on user activity, shared file information, and to disable an account if needed. The WebDAV API can also be used to provide authenticated access to ownCloud files and folder based on user account information, something many tablet users like to do, and something that desktop users often choose as way to access ownCloud from a file explorer. While most deployed customers limit themselves to AD / LDAP integration and WebDAV access, these other ownCloud APIs exist to provide flexibility to integrate as needed into an existing environment. 
+Beyond the existing integration points, ownCloud also provides mechanisms for creating plug-in applications to integrate with existing systems. One use case that is often delivered is the custom authentication mechanism. While ownCloud supports AD and LDAP integration and OAuth2.0 out of the box, several custom user authentication and authorization plug-ins have been created, from token to user name and password-based plug-ins. Others integrations have included log managers, Data Loss Prevention tools, and anti-virus mechanisms, to name a few. 
+As an n-Tier web application, ownCloud integrates into most corporate web farms. Intrusion detection systems work, network management tools work, and firewalls simply leverage existing ports and SSL certificates. Backup systems take a server and database backup as with any other web application, and user experience systems wrap around the existing ownCloud application. For unique requirements, the ownCloud APIs provide extensive flexibility. All of this gets managed with enterprise tools, in an enterprise data center, to enterprise policies, to put IT back in control of corporate data, and still provide end users the capabilities they demand. 
+
+Available types of client access
+================================
+Direct Server Acess
+-------------------
+1.  **Via Web Browser:** actually you must not have installed any kind of special client software on your accessing computer.  All access can be done via a normal webserver. The access via the webinterface provides additional features for each user. Its recommended to use Mozilla Firefox, Google Chrome, Safari or Microsoft Internet Explorer.
+2.  **Via WebDAV:** WebDAV is an enhancement of the HTTP-protokoll and provides in this context a method to mount your server-storage directly, so that no redundand data on the connected client is generated. It is  not yet generally possible with any client but we are working on this. This is possible via Unix/Linux or MacOS.
+
+File-Syncing with the „ownCloud Desktop Client“
+-----------------------------------------------
+The most common way of accessing shared data is via the desktop client, which is installed normally on the computer you are working with. If one member of a group of users makes any change within the shared data, all other connected desktop clients will be synchronized with the new data. This means also, that changes that are done on a laptop computer for example while it is offline will be updated as soon as it goes online again to all other file sharing users.
+
+This client is available for:
+* Linux
+* Windows
+* Mac
+
+Mobile access with „ownCloud mobile apps“
+-----------------------------------------
+For certain mobile devices (i.e. Smartphones or tablets) a mobile app is available. Therfore file synchronization (sometimes called filesynch or just synch) is also possible for these devices. 
+* Android
+* iOS
+
+A closer look to the storage you are going to provide
+=====================================================
+Possible providing methods are:
+* Providing storage out of your own filesystem
+* Mounting storage from your local network (further machines/NAS)
+* Mounting storage from any location, which you may access
