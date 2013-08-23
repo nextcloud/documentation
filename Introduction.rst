@@ -50,6 +50,22 @@ Figure3 shows a typical dropbox-constellation, that leads to the anomalies, ment
 
   Figure3
   
-1.  **No IT control:** Data is no longer under your control
-2.  **Security:** The fact, that you see a file or  a directory at one place does not mean, that it physically resides at this one place. It can be spread over different storage, even over different machines, which are owned by anyone else.
-3.  **2. Governance/User provisioning:** Anyone may establish a piece of storage anywhere and use it for company-purposes. Due to this no administrator has an overview, what data exists at all and can therefore not decide, wich general rights shall be given to whom, to make the data  effective  useable.
+1.  **No IT control:** data is no longer under your control
+2.  **Security:** the fact, that you see a file or  a directory at one place does not mean, that it physically resides at this one place. It can be spread over different storage, even over different machines, which are owned by anyone else.
+3.  **Governance/User provisioning:** anyone may establish a piece of storage anywhere and use it for company-purposes. Due to this no administrator has an overview, what data exists at all and can therefore not decide, wich general rights shall be given to whom, to make the data  effectively  useable.
+4.  **Sensitive data/ data loss:** the data may be no longer accessible for a company, if the employee, which created the dropbox-space, quits the company. It is very likely, that this data is never deleted later on. So your data persists at places anywhere inside the internet-cloud and you have no access any longer.
+
+ownCloud in Action 
+==================
+Figure4 shows how ownCloud prevents this problems:
+
+::
+
+  Figure4
+  
+1.    **Protection and management:** sensitive data remains on-site: This means, that for storage purposes you use your own hardware, your own servers and mange it to your policies.
+2.    **Integration:** integrate data-accsess seamlessly into existing infrastructure.**
+3.    **Extension:** extend functionality through extensive APIs.
+4.    **Easy to use access:** still consumer-grade services are implemented.
+
+
