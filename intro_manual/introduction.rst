@@ -100,9 +100,11 @@ Inclusion of a variety of open APIs for integrating with other systems
 External provisioning
 ~~~~~~~~~~~~~~~~~~~~~
 Provides the ability to add and remove users remotely, and enables admins to query metering information about ownCloud storage usage and quota. 
+
 **Applications:**
 
 the most powerful API, enabling customers to expand ownCloud out of the box, to integrate with existing infrastructure and systems, and to create new plug-in applications. Examples of this API in use include the custom authentication back ends, music and video streaming applications, a bit.ly inspired app called shorty, and an image preview application.
+
 **Capability:**
 
 Offers information about the installed ownCloud capabilities, so that ownCloud and third party applications can query for the enabled features and plug-in applications.
