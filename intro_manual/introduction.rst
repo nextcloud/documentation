@@ -30,7 +30,7 @@ A quick overview over the ownCloud setting
 ==========================================
 In Figure2 you can see a very abstract scheme of ownCloud:
 
-.. image:: images/name.png
+.. image:: images/Figure2.png
 
 From left to right:
 * Users connect to the system with mobile devices, web browsers, desktop sync clients and also standard WebDAV clients.  These connections show a user's files, and the files shared with the user in one convenient interface.
