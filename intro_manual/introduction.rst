@@ -66,4 +66,17 @@ Figure4 shows how ownCloud prevents this problems:
 3.    **Extension:** extend functionality through extensive APIs.
 4.    **Easy to use access:** still consumer-grade services are implemented.
 
+Basic Requirements
+==================
+Software, that you need to have at least on your sever before you can install/use ownCloud:
+* A Server-computer, running a common operation system
+* A Database Server (e.g. MySQL)
+* a webserver (e.g apache). 
+* PHP
+
+Solution Architecture Overview 
+==============================
+The core of the ownCloud solution is the ownCloud server. Unlike consumer cloud-based services and other applications with third-party storage, ownCloud‘s server enables IT to protect and manage every element associated with ownCloud on-site – from file storage to user provisioning and data processing. ownCloud monitors every activity that occurs, and logs these activities into a file for later auditing and analysis. The server provides a secure web portal through which the entire system is controlled by the administrator, providing the ability to enable and disable features, set policies, create backups and manage users. The server also manages and secures API access to ownCloud, while providing the internal processing engine needed to deliver file sync and share. 
+The ownCloud server stores user files in standard file system formats, and can use most file systems. With ownCloud, if you can mount storage on your server, ownCloud can use it. Practically, this means just about any standard file system and storage device combination can be used – ownCloud is file system and storage agnostic. The storage can be physically located in your data center (or be “mounted” to third-party storage), enabling you to protect your files as you would any other element of your infrastructure, from standard backups and intrusion detection, to log managers and Data Loss Prevention (DLP) solutions. 
+It is simple to Integrate ownCloud with existing IT infrastructure through the use of plug-in applications. These plug-ins can be enabled through the server control panel, provide functionality such as Active Directory (AD) and Lightweight Directory Access Protocol (LDAP) integration for user account provisioning and authentication. If an integration is not included out of the box, it is simple to extend ownCloud through open APIs and plug-in applications. Features such as the online text editor, virus scanner, and file versioning are included in ownCloud and other applications, such as the enhanced logging and audit plug-ins, are available to our customers. ownCloud customers have integrated a wide variety of new functionality into ownCloud, from training video streaming to contact and calendar syncing, custom authentication mechanisms, automated Optical Character Recognition back ends, and API-based storage. In short, unlike our competitors, ownCloud can be easily extended to do far more than basic file sync and share.
 
