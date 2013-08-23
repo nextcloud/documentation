@@ -103,10 +103,38 @@ Provides the ability to add and remove users remotely, and enables admins to que
 
 **Applications:**
 
-the most powerful API, enabling customers to expand ownCloud out of the box, to integrate with existing infrastructure and systems, and to create new plug-in applications. Examples of this API in use include the custom authentication back ends, music and video streaming applications, a bit.ly inspired app called shorty, and an image preview application.
+The most powerful API, enabling customers to expand ownCloud out of the box, to integrate with existing infrastructure and systems, and to create new plug-in applications. Examples of this API in use include the custom authentication back ends, music and video streaming applications, a bit.ly inspired app called shorty, and an image preview application.
 
 **Capability:**
 
 Offers information about the installed ownCloud capabilities, so that ownCloud and third party applications can query for the enabled features and plug-in applications.
 
+**Sharing:**
 
+Enables external systems to initiate the sharing of files or folders between users without using the web interface.
+
+**Themeing:**
+
+A simplified mechanism for branding the ownCloud server to match your corporate look and feel, enabling colors and logos to be updated with style sheets.
+
+In addition to delivering the core of ownCloud, the ownCloud server also includes the ownCloud web portal, which provides a central location for administrative control and configuration of the system, and also a central point for users to control access to files and folders. Employees are set up in the system as users, administrators, or both. Administrators can add, enable, and disable features within ownCloud through the settings menu, can add and remove users and groups, and can also manage various ownCloud settings and administrative tasks, such as migration and backup. Users access the web portal to browse and manage their files, and to set granular permissions on files and folders shared with others on the system. Users can also access enabled applications through the web portal, such as text and image previews, file and folder sharing, previous versions roll back, and much more. The ownCloud web portal is compatible with Firefox, Safari, Chrome and Internet Explorer on Windows, Mac OS and Linux machines.
+
+Deployment Scenario
+===================
+
+LOAD BALANCER APP SERVERS DATABASE CLUSTER STORAGE
+--------------------------------------------------
+With the ownCloud solution and server architectures outlined above, this paper now looks at how ownCloud is deployed on site, how it is integrated with storage back ends and existing infrastructure tools, and the flexibility provided by the APIs. To understand how all that works, it is important first to understand how ownCloud is deployed in production environments.segregation and basic multi-tenancy.
+
+::
+
+  Figure6
+  
+In production, ownCloud is most often deployed as an highly scaled, load balanced web application running in an on-site data center. ownCloud can be deployed to physical, virtual, or private cloud servers, as required. There is always a load balancer out front of the entire deployment connected to at least two app servers. The ownCloud application servers host the PHP code, and are most often deployed on Apache over Linux, though IIS and Apache on Windows are also supported. All of the app servers are then connected to a database, most often a MySQL instance in a redundant configuration for storing user information, including the virtualized file cache, user and group information, shared file lists, and storage required by enabled ownCloud apps (Oracle and Postgres are also supported). The app servers are also all connected to the same back-end storage. With this configuration, ownCloud can be scaled up easily to meet load requirements, while providing the minimum redundancy required for an installation.
+
+On-Site Storage
+---------------
+For nearly all deployment scenarios, connecting ownCloud to back-end storage is as simple as mounting on-site storage on the server, such as mount point /data/ storagedevice. Nearly all storage devices and file systems – from direct attached NTFS to cluster systems like Gluster – have well tested, high-performance Linux drivers that make this easy. Once the storage device is mounted in the desired location, the ownCloud configuration file is edited with the storage device path, and all ownCloud storage is immediately changed to that path. Each user gets a directory, and all versions, folders and files are stored in that location. 
+In larger installations, it may be necessary to create more than one storage location for an ownCloud instance. Perhaps policy requires high performance, fully redundant storage for one group, and less expensive storage for another group. In this situation, it is possible to leverage ownCloud‘s built in integration with LDAP or Active Directory servers to dynamically assign a storage path to each user. The LDAP/AD plug-in is further described below, but once connected, the storage path attribute can be inherited, and users can be directed to two or more different storage paths based on these entries. Simply mount the storage devices on the server in the desired mount point, such as /data/high-endstorage1 and /data/lowendstorage2, and user files and versions will be saved to the specified path. 
+Occasionally ownCloud needs to connect to REST API-based storage. In some cases, this API accessed storage replaces the mounted file system described above, and in some cases it augments the storage. ownCloud can handle either scenario through the use of plug-in applications. In one instance, ownCloud was deployed leveraging a custom REST-based storage system similar to many Content Management Systems. When enabled, the custom-developed plug-in application redirected POSIX commands to the REST API. While ownCloud did retain a file system mount, it was primarily retained for log storage purposes on the server. In other instances, the out-of-the-box External Fileystem plug-in leverages a mix of APIs, providing the admins the flexibility to connect openStack SWIFT, CIFS, FTPs, WebDAV and other storage systems in addition to the existing file system storage. 
+Ultimately it is the administrator‘s decision on which storage system to use, how to configure user access, and whether or not to mix and match the storage based on existing infrastructure, security policies, and end-user requirements. ownCloud provides the mechanisms to enable the administrator to leverage the right mixture of on-site storage, and put them back in control of corporate data, while still providing the capabilities that users demand.
