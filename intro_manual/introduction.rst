@@ -2,7 +2,9 @@ Welcome to ownCloud
 ===================
 If you are new to ownCloud, then this document is a good place to start. This document describes the core features and architecture of the ownCloud solution at a very high level. As depicted below, this is simply an introduction, that provides the basic knowledge you need before digging into the more complex technical documentation:
 
-.. image:: images/Figure2.png
+::
+
+  Figure1
 
 There are three roles associated with ownCloud:
 
@@ -28,9 +30,7 @@ A quick overview over the ownCloud setting
 ==========================================
 In Figure2 you can see a very abstract scheme of ownCloud:
 
-::
-
-  Figure2
+.. image:: images/name.png
 
 From left to right:
 * Users connect to the system with mobile devices, web browsers, desktop sync clients and also standard WebDAV clients.  These connections show a user's files, and the files shared with the user in one convenient interface.
