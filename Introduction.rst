@@ -51,5 +51,5 @@ Figure3 shows a typical dropbox-constellation, that leads to the anomalies, ment
   Figure3
   
 1.  **No IT control:** Data is no longer under your control
-1.1.  **Security:** The fact, that you see a file or  a directory at one place does not mean, that it physically resides at this one place. It can be spread over different storage, even over different machines, which are owned by anyone else.
-
+2.  **Security:** The fact, that you see a file or  a directory at one place does not mean, that it physically resides at this one place. It can be spread over different storage, even over different machines, which are owned by anyone else.
+3.  **2. Governance/User provisioning:** Anyone may establish a piece of storage anywhere and use it for company-purposes. Due to this no administrator has an overview, what data exists at all and can therefore not decide, wich general rights shall be given to whom, to make the data  effective  useable.
