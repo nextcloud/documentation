@@ -171,6 +171,7 @@ For certain mobile devices (i.e. Smartphones or tablets) a mobile app is availab
 A closer look to the storage you are going to provide
 =====================================================
 Possible providing methods are:
+
 * Providing storage out of your own filesystem
 * Mounting storage from your local network (further machines/NAS)
 * Mounting storage from any location, which you may access
