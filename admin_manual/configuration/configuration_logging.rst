@@ -43,7 +43,7 @@ format in the example the date/time format will be written in the format
     "log_type" => "owncloud",
     "logfile" => "owncloud.log",
     "loglevel" => "3",
-    "logdateformat" => "F d, Y H:i:s"
+    "logdateformat" => "F d, Y H:i:s",
 
 syslog
 ~~~~~~
