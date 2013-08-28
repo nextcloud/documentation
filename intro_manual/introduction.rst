@@ -19,7 +19,7 @@ The most common use case for ownCloud is as a replacement for consumer cloud bas
 
 * Share files with a group, other uses on the system and / or third parties
 * Syncing defined files from the local filesystem to a server automatically
-* Sync defined files from a mobile device to a server automatically
+* Syncing defined files from a mobile device to a server automatically
 * access files from any machine with any browser any time
 Users may also want to specify certain groups of users, which have different authorization to see or share different parts of this online storage. 
 By hosting ownCloud, the users of the system own their data.
