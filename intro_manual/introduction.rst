@@ -17,6 +17,7 @@ You may want to supply all three mentioned as one person, which is yourself. Of 
 Motivation
 ==========
 The most common use case for ownCloud is as a replacement for consumer cloud based sync and share services, such as DropBox and Google Drive. This means that a user wants to:
+
 * Share files with a group, other uses on the system and / or third parties
 * Syncing defined files from the local filesystem to a server automatically
 * Sync defined files from a mobile device to a server automatically
