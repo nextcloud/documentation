@@ -33,6 +33,7 @@ In Figure2 you can see a very abstract scheme of ownCloud:
 .. image:: images/Figure2.png
 
 From left to right:
+
 * Users connect to the system with mobile devices, web browsers, desktop sync clients and also standard WebDAV clients.  These connections show a user's files, and the files shared with the user in one convenient interface.
 * Server host the ownCloud application, manage files actions and provide processing for ...The storage and the access-control is provided by our webserver, having ownCloud software installed, to the internet. All data can be found at a specified point of your webadress (e.g. http://yourserver.org/yourstorage).
 * A variety of storage systems can be used by the server to store user files.  This can be everything from an object store or cloud storage system to locally attached storage and SANs.
