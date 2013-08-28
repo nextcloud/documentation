@@ -2,8 +2,6 @@ Welcome to ownCloud
 ===================
 If you are new to ownCloud, then this document is a good place to start. This document describes the core features and architecture of the ownCloud solution at a very high level. As depicted below, this is simply an introduction, that provides the basic knowledge you need before digging into the more complex technical documentation:
 
-::
-
 .. image:: images/Figure1.png
 
 There are three roles associated with ownCloud:
@@ -45,8 +43,6 @@ The „Dropbox Problem“
 Employees are using cloud-based services to share sensitive company data with vendors, customers and partners. They are syncing data to their personal devices and home computers, all in an effort to get their job done faster and easier, and all without IT‘s permission. Consumer cloud-based file sharing services have your sensitive company data stored on servers outside of your control, outside of your policy and regulatory guidelines – maybe even outside your country – and not managed by you. The potential for data leakage, security breeches and harm to the business is enormous.
 Figure3 shows a typical dropbox-constellation, that leads to the anomalies, mentioned in the picture and described below.
 
-::
-
 .. image:: images/Figure3.png
   
 1.  **No IT control:** data is no longer under your control
@@ -57,8 +53,6 @@ Figure3 shows a typical dropbox-constellation, that leads to the anomalies, ment
 ownCloud in Action 
 ==================
 Figure4 shows how ownCloud prevents this problems:
-
-::
 
 .. image:: images/Figure4.png
   
