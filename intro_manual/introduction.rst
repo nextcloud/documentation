@@ -4,7 +4,7 @@ If you are new to ownCloud, then this document is a good place to start. This do
 
 ::
 
-  Figure1
+.. image:: images/Figure1.png
 
 There are three roles associated with ownCloud:
 
@@ -47,7 +47,7 @@ Figure3 shows a typical dropbox-constellation, that leads to the anomalies, ment
 
 ::
 
-  Figure3
+.. image:: images/Figure3.png
   
 1.  **No IT control:** data is no longer under your control
 2.  **Security:** the fact, that you see a file or  a directory at one place does not mean, that it physically resides at this one place. It can be spread over different storage, even over different machines, which are owned by anyone else.
@@ -60,7 +60,7 @@ Figure4 shows how ownCloud prevents this problems:
 
 ::
 
-  Figure4
+.. image:: images/Figure4.png
   
 1.    **Protection and management:** sensitive data remains on-site: This means, that for storage purposes you use your own hardware, your own servers and mange it to your policies.
 2.    **Integration:** integrate data-accsess seamlessly into existing infrastructure.**
@@ -83,7 +83,7 @@ It is simple to Integrate ownCloud with existing IT infrastructure through the u
 
 ::
 
-  Figure5
+.. image:: images/Figure5.png
   
 While ownCloud provides the ability to manage and protect, integrate and extend file sync and share in the enterprise, ownCloud still provides the core file sync and share functionality that users demand. Simple, web-based access through a standard browser to access, share, rollback and manage files is critical to satisfy users and remain in control of sensitive data. ownCloud also offers access to browse, download, edit, and upload files while on a mobile device or tablet, and the desktop client, which automatically syncs the latest files with the server. ownCloud also provides the ability for standard WebDAV clients to access ownCloud files, enabling users to continue to use standards-based productivity tools to access their files in addition to the standard ownCloud access tools.
 
