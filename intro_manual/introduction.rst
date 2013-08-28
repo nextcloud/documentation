@@ -86,9 +86,7 @@ Server Architecture Overview
 At its core, ownCloud is a web application, written in PHP, running on top of a webserver such as IIS, if on Windows or Apache, if on Linux. This PHP application manages every other aspect of ownCloud, from user management to plug-ins, file sharing and storage. Attached to the PHP-application is a database, where ownCloud stores users, user-shared file details, plug-in application states, and the ownCloud file cache to accelerate access to files. As ownCloud accesses the database through an abstraction layer, support is provided for Oracle, MySQL, MS-SQL Server, Postgres and SQLite. Complete webserver logging is provided via the webserver logs, and user and system logs are provided in a separate ownCloud log, or can be configured to a syslog log file.
 To make it possible to access and use many different types of storage, ownCloud has a built-in storage abstraction layer. As a result, ownCloud can leverage just about any storage protocol that can be mounted on your ownCloud server – from CIFS, NFS and GFS2, to cluster file systems like Gluster. Other optional storage can also be mounted on the system using an optional external file system application, enabling admins and users to mount FTPs, WebDAV, CIFS and even external cloud storage services S3, Swift, Google Drive and Dropbox if desired. Individual users can also be configured to have dynamically allocated storage locations, depending on their user directory entries – enabling data segregation and basic multi-tenancy.
 
-::
-
-  Figure6
+.. image:: images/Figure6.png
   
 Inclusion of a variety of open APIs for integrating with other systems
 ----------------------------------------------------------------------
@@ -121,9 +119,7 @@ LOAD BALANCER APP SERVERS DATABASE CLUSTER STORAGE
 --------------------------------------------------
 With the ownCloud solution and server architectures outlined above, this paper now looks at how ownCloud is deployed on site, how it is integrated with storage back ends and existing infrastructure tools, and the flexibility provided by the APIs. To understand how all that works, it is important first to understand how ownCloud is deployed in production environments.segregation and basic multi-tenancy.
 
-::
-
-  Figure6
+.. image:: images/Figure7.png
   
 In production, ownCloud is most often deployed as an highly scaled, load balanced web application running in an on-site data center. ownCloud can be deployed to physical, virtual, or private cloud servers, as required. There is always a load balancer out front of the entire deployment connected to at least two app servers. The ownCloud application servers host the PHP code, and are most often deployed on Apache over Linux, though IIS and Apache on Windows are also supported. All of the app servers are then connected to a database, most often a MySQL instance in a redundant configuration for storing user information, including the virtualized file cache, user and group information, shared file lists, and storage required by enabled ownCloud apps (Oracle and Postgres are also supported). The app servers are also all connected to the same back-end storage. With this configuration, ownCloud can be scaled up easily to meet load requirements, while providing the minimum redundancy required for an installation.
 
