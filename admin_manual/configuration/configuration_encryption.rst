@@ -7,7 +7,7 @@ enables the user to continue to use all the other apps to view and edit his
 data.
 
 The app uses the users log-in password as encryption-password. This means that
-by default the user will loss access to his files if he loss his log-in
+by default the user will loose access to his files if he looses his log-in
 password.
 
 It might be a good idea to make regular backups of all encryption keys. The
@@ -25,7 +25,7 @@ The admin can offer the user some kind of protection against password
 loss. Therefore you have to enable the recovery key in the admin settings and
 provide a strong recovery key password. The admin settings also enables you to
 change the recovery key password if you wish. But you should make sure to never
-loss this password, because that's the only way to recover users files.
+loose this password, because that's the only way to recover users files.
 
 Once the recovery key was enabled every user can choose in his personal
 settings to enable this feature or not.
