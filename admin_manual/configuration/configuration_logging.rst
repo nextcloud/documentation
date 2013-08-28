@@ -30,6 +30,12 @@ viewed using the log menu in the admin menu of ownCloud. By default a log
 file named **owncloud.log** will be created in the directory which has
 been configured by the **datadirectory** parameter.
 
+The desired date format can optionally be defined using the **logdateformat**.
+By default the `PHP date function`_ parameter "*c*" is used and therefore the
+date/time is written in the format "*2013-01-10T15:20:25+02:00*". By using the
+date format in the example the date/time format will be written in the format
+"*January 10, 2013 15:20:25*".
+
 .. code-block:: php
 
   <?php
@@ -37,6 +43,7 @@ been configured by the **datadirectory** parameter.
     "log_type" => "owncloud",
     "logfile" => "owncloud.log",
     "loglevel" => "3",
+    "logdateformat" => "F d, Y H:i:s",
 
 syslog
 ~~~~~~
@@ -49,4 +56,7 @@ All log information will be send to the default syslog deamon of a system.
     "log_type" => "syslog",
     "logfile" => "",
     "loglevel" => "3",
+
+
+.. _PHP date function: http://www.php.net/manual/en/function.date.php
 
