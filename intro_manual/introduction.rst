@@ -67,7 +67,7 @@ Software, that you need to have at least on your sever before you can install/us
 
 * A Server-computer, running a common operation system
 * A Database Server (e.g. MySQL)
-* a webserver (e.g apache). 
+* a webserver (e.g. apache)
 * PHP
 
 Solution Architecture Overview 
