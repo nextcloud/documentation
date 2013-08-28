@@ -64,6 +64,7 @@ Figure4 shows how ownCloud prevents this problems:
 Basic Requirements
 ==================
 Software, that you need to have at least on your sever before you can install/use ownCloud:
+
 * A Server-computer, running a common operation system
 * A Database Server (e.g. MySQL)
 * a webserver (e.g apache). 
