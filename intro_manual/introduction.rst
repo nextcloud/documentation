@@ -70,7 +70,7 @@ Software, that you need to have at least on your sever before you can install/us
 * a webserver (e.g. apache)
 * PHP
 
-Solution Architecture Overview 
+A closer look to Solution Architecture Overview 
 ==============================
 The core of the ownCloud solution is the ownCloud server. Unlike consumer cloud-based services and other applications with third-party storage, ownCloud‘s server enables IT to protect and manage every element associated with ownCloud on-site from file storage to user provisioning and data processing. ownCloud monitors every activity that occurs, and logs these activities into a file for later auditing and analysis. The server provides a secure web portal through which the entire system is controlled by the administrator, providing the ability to enable and disable features, set policies, create backups and manage users. The server also manages and secures API access to ownCloud, while providing the internal processing engine needed to deliver file sync and share. 
 The ownCloud server stores user files in standard file system formats, and can use most file systems. With ownCloud, if you can mount storage on your server, ownCloud can use it. Practically, this means just about any standard file system and storage device combination can be used – ownCloud is file system and storage agnostic. The storage can be physically located in your data center (or be “mounted” to third-party storage), enabling you to protect your files as you would any other element of your infrastructure, from standard backups and intrusion detection, to log managers and Data Loss Prevention (DLP) solutions. 
