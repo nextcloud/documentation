@@ -146,7 +146,7 @@ Direct Server Acess
 
 File-Syncing with the „ownCloud Desktop Client“
 -----------------------------------------------
-The most common way of accessing shared data is via the desktop client, which is installed normally on the computer you are working with. If one member of a group of users makes any change within the shared data, all other connected desktop clients will be synchronized with the new data. This means also, that changes that are done on a laptop computer for example while it is offline will be updated as soon as it goes online again to all other file sharing users.
+Another common way of accessing shared data is via the desktop client, which is installed normally on the computer you are working with. If one member of a group of users makes any change within the shared data, all other connected desktop clients will be synchronized with the new data. This means also, that changes that are done on a laptop computer for example while it is offline will be updated as soon as it goes online again to all other file sharing users.
 
 This client is available for:
 
