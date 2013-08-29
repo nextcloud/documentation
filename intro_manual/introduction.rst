@@ -114,8 +114,6 @@ In addition to delivering the core of ownCloud, the ownCloud server also include
 Deployment Scenario
 ===================
 
-LOAD BALANCER APP SERVERS DATABASE CLUSTER STORAGE
---------------------------------------------------
 With the ownCloud solution and server architectures outlined above, this paper now looks at how ownCloud is deployed on site, how it is integrated with storage back ends and existing infrastructure tools, and the flexibility provided by the APIs. To understand how all that works, it is important first to understand how ownCloud is deployed in production environments.segregation and basic multi-tenancy.
 
 .. image:: images/Figure7.png
