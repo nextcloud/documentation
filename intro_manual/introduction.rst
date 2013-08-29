@@ -156,7 +156,7 @@ This client is available for:
 
 Mobile access with „ownCloud mobile apps“
 -----------------------------------------
-For certain mobile devices (i.e. Smartphones or tablets) a mobile app is available. Therfore file synchronization (sometimes called filesynch or just synch) is also possible for these devices. 
+For certain mobile devices (i.e. Smartphones or tablets) a mobile app is available. Therefore file synchronization (sometimes called filesynch or just synch) is also possible for these devices. 
 
 * Android
 * iOS
