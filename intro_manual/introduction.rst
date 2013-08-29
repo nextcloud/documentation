@@ -90,7 +90,7 @@ To make it possible to access and use many different types of storage, ownCloud 
 Integration of other systems or components
 ==========================================
   
-** ownCloud includes also a variety of open APIs for integrating with other systems such as:**
+**ownCloud includes also a variety of open APIs for integrating with other systems such as:**
 
 **External provisioning:**
 
