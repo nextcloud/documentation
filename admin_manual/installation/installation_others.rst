@@ -109,13 +109,13 @@ It is important to note that the **.htaccess** files used by ownCloud to protect
 
 Disable access to data folder::
 
-    $HTTP["url"] =^ "^/owncloud/data/" {
+    $HTTP["url"] =~ "^/owncloud/data/" {
          url.access-deny = ("")
        }
 
 Disable directory listing::
 
-    $HTTP["url"] =^ "^/owncloud($|/)" {
+    $HTTP["url"] =~ "^/owncloud($|/)" {
          dir-listing.activate = "disable"
        }
 
