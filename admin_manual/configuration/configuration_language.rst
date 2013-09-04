@@ -1,15 +1,13 @@
-Language Configuration
-======================
+uploading big files > 512MB (as set by default)
+===============================================
+It's usefull to know limiting factors, that make it impossible to exceed the values given to the ownCloud-system:
+Non ownCloud cuased upload limits:
+----------------------------------
+< 2GB on 32Bit OS-architecture
+< 2GB with IE6 - IE8
+< 2GB with Server Version 4.5 or older
+< 4GB with IE9 - IE10
 
-In normal cases ownCloud will automatically detect the language of the Web-GUI.
-If this doesn't work properly or you want to make sure that ownCloud always
-starts with a given language, you can use the **default_language** parameter.
-
-Please keep in mind, that this will not effect a users language preference,
-which has been configured under "personal -> language" once he has logged in.
-
-Please check :file:`settings/languageCodes.php` for the list of supported language
-codes. 
 
 
 Parameters
