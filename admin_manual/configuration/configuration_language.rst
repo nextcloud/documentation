@@ -5,8 +5,8 @@ It's usefull to know limiting factors, that make it impossible to exceed the val
 Not outnumberable upload limits:
 ----------------------------------
 * < 2GB on 32Bit OS-architecture
-* < 2GB with IE6 - IE8
 * < 2GB with Server Version 4.5 or older
+* < 2GB with IE6 - IE8
 * < 4GB with IE9 - IE10
 
 Other recommendable preconditions:
