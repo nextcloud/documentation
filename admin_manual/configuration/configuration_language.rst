@@ -34,6 +34,6 @@ Note: The order of the following steps is important! If you swap steps or subste
 * post_max_size = 16G   (e.g.)
 * output_buffering = 16384
 
-whereas the "output_buffering" has to be given in Megabytes but as a plain figure (without size-units as 'M' or 'G')
+whereas the "output_buffering" has to be given in MegaBytes but as a plain figure (without size-units as 'M' or 'G')
 
-This configurations have been prooven by test up to filesizes of 16 GigaBytes.
+These configurations have been prooven by test up to filesizes of 16 GigaBytes.
