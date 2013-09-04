@@ -29,7 +29,7 @@ Note: The order of the following steps is important! If you swap steps or subste
 
 **Do the following:**
 
-* Set the following three parameters to the same value as choosen inside the admin-section one step before:
+* Set the following three parameters inside th php.ini to the same value as choosen inside the admin-section one step before:
 * upload_max_filesize = 16G   (e.g.)
 * post_max_size = 16G   (e.g.)
 * output_buffering = 16384
