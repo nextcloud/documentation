@@ -18,6 +18,17 @@ Enabling uploading big files
 ============================
 Note: The order of the following steps is important! If you swap steps or substeps described below, the settings may fail.
 
-Go to the Admin section in the ownCloud-WebUI and do the following:
--------------------------------------------------------------------
+**Go to the admin section in the ownCloud-WebUI and do the following:**
 * Under "File handling" set the Maximum upload size to the desired value (e.g. 16GB)
+* Klick the "save"-Button
+
+**Open the php.ini - file**
+* Under Debian and derivates this file lies at /etc/php5/apache2/php.ini
+
+**Do the following:**
+* Set the following three parameters to the same value as choosen inside the admin-section one step before:
+* upload_max_filesize = 16G   (e.g.)
+* post_max_size = 16G   (e.g.)
+* output_buffering = 16384
+
+whereas the "output_buffering" has to be given in Megabytes but as a plain figure (without size-units as 'M' or 'G')
