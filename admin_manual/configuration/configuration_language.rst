@@ -1,7 +1,8 @@
 uploading big files > 512MB (as set by default)
 ===============================================
 It's usefull to know limiting factors, that make it impossible to exceed the values given to the ownCloud-system:
-Non ownCloud cuased upload limits:
+
+Non ownCloud caused upload limits:
 ----------------------------------
 < 2GB on 32Bit OS-architecture
 < 2GB with IE6 - IE8
