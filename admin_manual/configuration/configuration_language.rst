@@ -1,4 +1,4 @@
-uploading big files > 512MB (as set by default)
+Uploading big files > 512MB (as set by default)
 ===============================================
 It's usefull to know limiting factors, that make it impossible to exceed the values given to the ownCloud-system:
 
@@ -18,5 +18,6 @@ Enabling uploading big files
 ============================
 Note: The order of the following steps is important! If you swap steps or substeps described below, the settings may fail.
 
-
-
+Go to the Admin section in the ownCloud-WebUI and do the following:
+-------------------------------------------------------------------
+* Under "File handling" set the Maximum upload size to the desired value (e.g. 16GB)
