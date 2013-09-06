@@ -3,6 +3,8 @@ CSS
 
 .. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
 
+Stylesheets have to be included in your templates, see :doc:`static`
+
 If you have to include an image or css file in your CSS, prepend the following to your path: 
 
 * **%appswebroot%**: gets the absolute path to your app
