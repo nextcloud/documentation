@@ -1,4 +1,3 @@
-
 ===================
 Admin Documentation
 ===================
@@ -63,6 +62,13 @@ This chapter covers ownCloud and Webserver configuration.
 * :doc:`configuration/custom_user_backend`
 * :doc:`configuration/auth_ldap`
 * :doc:`configuration/xsendfile`
+* :doc:`configuration/background_jobs`
+* :doc:`configuration/configuration_custom_clients`
+* :doc:`configuration/configuration_encryption`
+* :doc:`configuration/configuration_language`
+* :doc:`configuration/configuration_maintenance`
+* :doc:`configuration/configuring_big_file_upload`
+* :doc:`configuration/configuring_big_file_upload`
 
 Maintenance
 ===========
