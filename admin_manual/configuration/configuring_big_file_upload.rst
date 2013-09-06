@@ -32,9 +32,9 @@ Note: The order of the following steps is important! If you swap steps or subste
 **Do the following:**
 
 * Set the following three parameters inside th php.ini to the same value as choosen inside the admin-section one step before:
-* upload_max_filesize = 16G   (e.g.)
-* post_max_size = 16G   (e.g.)
-* output_buffering = 16384
+* upload_max_filesize = 16G   (e.g., to stay consistent with the example value above)
+* post_max_size = 16G   (e.g., to stay consistent with the example value above)
+* output_buffering = 16384	(e.g., to stay consistent with the example value above)
 
 whereas the "output_buffering" has to be given in MegaBytes but as a plain figure (without size-units as 'M' or 'G')
 
