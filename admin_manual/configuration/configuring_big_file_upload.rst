@@ -1,6 +1,6 @@
 Uploading big files > 512MB (as set by default)
 ===============================================
-It's usefull to know limiting factors, that make it impossible to exceed the values given to the ownCloud-system:
+It's usefull to know limiting factors, that make it impossible to exceed the values given by the ownCloud-system:
 
 Not outnumberable upload limits:
 --------------------------------
