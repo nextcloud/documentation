@@ -127,7 +127,6 @@ Additional APIs
 Can be used with and without App Framework
 
 * :doc:`appframework/data-migration`
-* :doc:`appframework/externalapi`
 * :doc:`appframework/hooks`
 * :doc:`appframework/filesystem`
 

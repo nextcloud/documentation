@@ -38,28 +38,28 @@ The **app.php** will always loaded for every app and can for instance be used to
       $api = new \OCA\AppFramework\Core\API('myapp');
 
       $api->addNavigationEntry(array(
-        
+
         // the string under which your app will be referenced in owncloud
         'id' => $api->getAppName(),
 
         // sorting weight for the navigation. The higher the number, the higher
         // will it be listed in the navigation
         'order' => 10,
-        
+
         // the route that will be shown on startup
         'href' => $api->linkToRoute('myapp_index'),
-        
+
         // the icon that will be shown in the navigation
         // this file needs to exist in img/example.png
-        'icon' => $api->imagePath('example.png'), 
-        
+        'icon' => $api->imagePath('example.png'),
+
         // the title of your application. This will be used in the
         // navigation or on the settings page of your app
-        'name' => $api->getTrans()->t('My notes app') 
-        
+        'name' => $api->getTrans()->t('My notes app')
+
       ));
   } else {
-    $msg = 'Can not enable the Notes app because the App Framework App is disabled';
+    $msg = 'Can not enable the MyApp app because the App Framework App is disabled';
     \OCP\Util::writeLog('myapp', $msg, \OCP\Util::ERROR);
   }
 
@@ -111,7 +111,7 @@ The :doc:`controllers` to which the route links does not exist yet and it has to
 
 
   class PageController extends Controller {
-    
+
 
       public function __construct($api, $request){
           parent::__construct($api, $request);
@@ -149,7 +149,7 @@ Now create the :doc:`templates` which contains the HTML
 
 Wire everything together
 ------------------------
-The last thing that is left is to tell the application how the controller needs to be created. The App Framework makes heavy use of :doc:`../general/dependencyinjection` and provides an :doc:`IOC Container <container>`. Inside this container, the controller needs to be created:
+The last thing that is left is to tell the application how the controller needs to be created. The App Framework makes heavy use of :doc:`../general/dependencyinjection` and provides an :doc:`IoC Container <container>`. Inside this container, the controller needs to be created:
 
 :file:`dependencyinjection/dicontainer.php`
 

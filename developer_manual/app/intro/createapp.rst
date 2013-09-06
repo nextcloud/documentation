@@ -13,8 +13,8 @@ Depending on the used distribution change into that directory inside a terminal:
 
     cd /var/www/
 
-Using the scaffolding tool
---------------------------
+Create the app automatically
+----------------------------
 The scaffolding script provides an easy way to generate boilerplate code for an app. To install the tool, install **Python 3** and **python-pip**, then run::
 
     sudo pip install owncloud_scaffolding
@@ -29,8 +29,8 @@ To create a standard ownCloud app run::
 
 This will create all the needed files in the current directory. For more information on how to customize the generated app, see the `GitHub page <https://github.com/Raydiation/owncloud_scaffolding>`_
 
-Manual file creation
---------------------
+Create the app manually
+-----------------------
 If you dont want to use the scaffolding tool, heres how you create all the needed files: create a directory for the app and make it writable::
 
     mkdir apps/YOUR_APP

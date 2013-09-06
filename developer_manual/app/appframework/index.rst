@@ -21,7 +21,6 @@ App Developement (App Framework)
    ../app/acceptancetesting
    unittesting
    middleware
-   externalapi
    filesystem
    hooks
    data-migration
