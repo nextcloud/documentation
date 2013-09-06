@@ -12,8 +12,8 @@ Not outnumberable upload limits:
 Other recommendable preconditions:
 ----------------------------------
 
-* make sure, that the latest version of php (at least 5.4.9) is installed
-* disable user quota. This means set the User quota of the account, you are currently logged in, to "unlimited". This is important, because you could not watch otherwise, whether the desired changes take effect.
+* Make sure, that the latest version of php (at least 5.4.9) is installed
+* Disable user quota. This means set the User quota of the account, you are currently logged in, to "unlimited". This is important, because you could not watch otherwise, whether the desired changes take effect.
 
 Enabling uploading big files
 ============================
