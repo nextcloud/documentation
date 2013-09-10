@@ -38,7 +38,7 @@ Note: The order of the following steps is important! If you swap steps or subste
 
 whereas the "output_buffering" has to be given in MegaBytes but as a plain figure (without size-units as 'M' or 'G')
 
-These Client configurations have been prooven by test up to filesizes of 16 GigaBytes:
+These client configurations have been prooven by test up to filesizes of 16 GigaBytes:
 
 * Linux 32 Bit: Ubuntu, Firefox => 16GB 
 * Windows 8  64 Bit: Google Chrome => 8GB
