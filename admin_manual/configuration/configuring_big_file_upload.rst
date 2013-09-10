@@ -40,5 +40,6 @@ whereas the "output_buffering" has to be given in MegaBytes but as a plain figur
 
 These configurations have been prooven by test up to filesizes of 16 GigaBytes.
 The following Clients have been proven:
+
 * Linux 32 Bit: Ubuntu, Firefox => 16GB 
 * Windows 8  64 Bit: Google Chrome => 8GB
