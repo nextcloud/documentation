@@ -22,7 +22,7 @@ Manuals
 
 At this point, this repository hosts three manuals:
 
-* **Users Manual:** Covers topics from an end users Point of View
+* **Users Manual:** Covers topics from an end user's Point of View
 * **Administrators Manual:** Setup, Deployment, Best Practices, etc.
 * **Developers Manual:** Developing Apps for ownCloud & understanding the core Architecture.
 
