@@ -8,4 +8,4 @@ As a default, PHP is configured for only 2 MB uploads.
 This is not entirely useful, so it is important to increase these variables to the sizes you want to
 support on your server.
 Ask your administrator to increase these variables for you or read the section in concern `within the
-Admin Documentation. <http://doc.owncloud.com/server/5.0EE/admin_manual/configuration/configuring_big_file_upload.rst>`_
+Admin Documentation. <http://doc.owncloud.com/server/5.0EE/admin_manual/configuration/configuring_big_file_upload.html>`_
