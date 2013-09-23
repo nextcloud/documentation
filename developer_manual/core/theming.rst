@@ -1,37 +1,73 @@
-Theming owncloud
+1. Theming owncloud
 =======
 
 Themes can be used to customize the look and feel of ownCloud.
 Themes can relate to the following topics of owncloud:
+
 * Theming the web-frontend
 * Theming the owncloud Desktop client
 This documentation contains only the Web-frontend adaptions so far.
 
 1.1 Preparations
+----------------
+Basically its a good idea to have a developement/test server (e.g. a virualized) independent form your productive system, to
 
-Activate
---------
+* keep adaptions and debugging away from normal services
+* influence no other processes
+* influence not other server settings
 
-Themes can be placed in the theme folder ``/themes`` with the name of the theme
-as foldername. The theme can be activated by putting ``"theme" => ‘themename’``,
-into the ``config.php`` file.
+1.2 Preconditions
+-----------------
+For successfull theming a webapplication such as ownCloud, one needs to have basic knowledge in the following topics:
+
+* Website Structure with HTML: --> Links: selfhtml, w3schools, achims links
+* Programming Dynamic Websites (HTML) with PHP, php.net
+* Desinging your webside with CSS: see HTML
+* Creating or adapting simple graphics or photos
+Because ownCloud is written in PHP there are no static HTML-files found but only CSS files that match the HTML output that comes from PHP.
+
+1.3 Getting started
+-------------------
+The best idea getting starting with a dynamically created website is to inspect it with webdeveloper tools, that are found in almost any browser. They show the generated HTML and the CSS Code, that the client/browser is recieving:
+With this facts you can easyly determine, where the following object-related attributes for the phenomenons are settled:
+
+* place
+* colour
+* links
+* graphics
+
+In owncloud standard theme everything is held very simple. This allows you quick adpating. In the standard CSS-file and the standard pictures, that comes with the unchanged new version, reside in /owncloud/themes/default
+The next thing you should do, before starting any changes is:
+Make a backup of your current theme(s) e.g.:
+
+* Goto …/owncloud/themes
+* cp -r default default.old
+
+2 Creating and activating a new theme
+===========
+
+There are two basic ways of creating new themings:
+
+* Doing all new from scratch
+* Starting from an existing theme and doing everything step by step and more experimentally
+
+Depending on how you created your new theme it will be necessary to
+
+* put a new theme into the /themes -folder. The theme can be activated by putting "theme" => ‘themename’, into the config.php file.
+* make all changes in the /themes/default -file
 
 Structure
----------
+=========
 
 The folder structure of a theme is exactly the same as the main ownCloud
 structure. You can override js files, images and templates with own versions.
 css files are loaded additionally to the default files so you can override css
 properties.
 
-Development
------------
 
-Themes should be developed in the `GitHub themes repository`_.
-You can find a simple example `here`_.
 
 How to change images and the logo
----------------------------------
+=================================
 
 The easiest picture to change in ownCloud is the logo. When you open your
 browser and point to ownCloud, you will see an ownCloud logo by default. That
@@ -55,7 +91,7 @@ To change either of these logos, simply create your own logo file with these
 characteristics, and put it in you themes folder in ``core/img/``.
 
 How to change colors
---------------------
+====================
 
 Just put a new ``style.css`` into the ``core/css`` folder in your themes
 directory.  Changing the header bar colours on the Login and Main Navigation
@@ -97,7 +133,7 @@ affect.
 .. _here: https://github.com/owncloud/themes/tree/master/example
 
 Notes for Updates
------------------
+=================
 
 In case of theming it is recommended to the user,
 not to perform these adaptions inside the folder /themes/default.
