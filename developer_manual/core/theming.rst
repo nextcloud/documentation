@@ -20,7 +20,7 @@ Basically its a good idea to have a developement/test server (e.g. a virualized)
 -----------------
 For successfull theming a webapplication such as ownCloud, one needs to have basic knowledge in the following topics:
 
-* Website Structure with HTML: -
+* Website Structure with HTML:
 * Programming Dynamic Websites
 * Desinging your webside with CSS
 * Creating or adapting simple graphics or photos
