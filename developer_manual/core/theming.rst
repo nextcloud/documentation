@@ -1,8 +1,13 @@
-Theming
+Theming owncloud
 =======
 
-Themes can be used to customise the look and feel of ownCloud without the need
-to patch the source code.
+Themes can be used to customize the look and feel of ownCloud.
+Themes can relate to the following topics of owncloud:
+* Theming the web-frontend
+* Theming the owncloud Desktop client
+This documentation contains only the Web-frontend adaptions so far.
+
+1.1 Preparations
 
 Activate
 --------
