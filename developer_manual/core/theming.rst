@@ -131,6 +131,15 @@ The other major color scheme is the blue header bar on the main navigation page 
 This color we will change with the above as well. 
 Save the file and refresh the browser for the changes to take effect.
 
+5 Testing the new theme out
+===========================
+
+There are different options for doing so:
+
+* If you're using a tool like the Inspector tools inside Mozilla, you can test out the CSS-Styles immediately inside the css-attributes, while looking at them.
+* If you have a developing/testing server as desciribed in 1. you can test out the effects in a real environment permanently.
+
+
 .. _GitHub themes repository: https://github.com/owncloud/themes
 .. _here: https://github.com/owncloud/themes/tree/master/example
 
