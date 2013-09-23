@@ -1,5 +1,5 @@
 1. Theming owncloud
-=======
+===================
 
 Themes can be used to customize the look and feel of ownCloud.
 Themes can relate to the following topics of owncloud:
@@ -44,7 +44,7 @@ Make a backup of your current theme(s) e.g.:
 * cp -r default default.old
 
 2 Creating and activating a new theme
-===========
+=====================================
 
 There are two basic ways of creating new themings:
 
@@ -63,7 +63,6 @@ The folder structure of a theme is exactly the same as the main ownCloud
 structure. You can override js files, images and templates with own versions.
 css files are loaded additionally to the default files so you can override css
 properties.
-
 
 
 4 How to change images and the logo
@@ -104,6 +103,8 @@ Just insert the new created picture by using the unchanged name of the old pictu
 With a web-developer tool like Mozilla-Inspector, you also get easyly displayed the color of the background you klicked on.
 On the top of the login page you can see a case- destinguished setting for different browsers:
 
+.. code-block::
+
   /* HEADERS */
  ...
   background: #1d2d42; /* Old browsers */
@@ -115,19 +116,20 @@ On the top of the login page you can see a case- destinguished setting for diffe
   background: linear-gradient(top, #33537a 0%,#1d2d42 100%); /* W3C */
 
 
-This handles the headers for a lot of different browser types. What we want to
-do is change the ``#35537a`` (lighter blue) and ``#ld2d42`` (dark blue) color to
-the colours of our choice. In some older and other browsers, there is just one
-color, but in the rest there are gradients.The login page background is a
-horizontal gradient. The first hex number, ``#35537a``, is the top color of the
-gradient at the login screen. The second hex number, ``#ld2d42`` is the botton
-color of the gradient at the login screen.
+The different backround-assignements indicate the headers for a lot of different browser types. What you most likely want to do is change the #35537a (lighter blue) and #ld2d42 (dark blue) color to the colours of our choice. In some older and other browsers, there is just one color, but in the rest showing gradients is possible.
+The login page background is a horizontal gradient. The first hex number, #35537a, is the top color of the gradient at the login screen. The second hex number, #ld2d42 is the bottom color of the gradient at the login screen.
+The gradient in top of the normal view after login is also defined by these css-settings, so that they take effect in logged in situation as well.
+Change these colors to the hex color of your choice:
+As usual:
 
-Change these colors to the hex color of your choice, save, and refresh to see
-the new login screen. The other major color scheme is the blue header bar on the
-main navigation page once you log in to ownCloud. This color we will change with
-the above as well. Save the file and refresh the browser for the changes to take
-affect.
+* the first two figures give the intensity of the red channel,
+* the second two give the green intensity and the
+* tird pair gives the blue value.
+
+Save your css-file and refresh to see the new login screen. 
+The other major color scheme is the blue header bar on the main navigation page once you log in to ownCloud. 
+This color we will change with the above as well. 
+Save the file and refresh the browser for the changes to take effect.
 
 .. _GitHub themes repository: https://github.com/owncloud/themes
 .. _here: https://github.com/owncloud/themes/tree/master/example
