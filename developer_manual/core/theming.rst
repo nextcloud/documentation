@@ -105,9 +105,7 @@ With a web-developer tool like Mozilla-Inspector, you also get easyly displayed 
 On the top of the login page you can see a case- destinguished setting for different browsers:
 
   /* HEADERS */
- 
  ...
-
   background: #1d2d42; /* Old browsers */
   background: -moz-linear-gradient(top, #33537a 0%, #1d2d42  100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F1B3A4), color-stop(100%,#1d2d42)); /* Chrome,Safari4+ */
