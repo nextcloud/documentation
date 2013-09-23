@@ -20,15 +20,15 @@ Basically its a good idea to have a developement/test server (e.g. a virualized)
 -----------------
 For successfull theming a webapplication such as ownCloud, one needs to have basic knowledge in the following topics:
 
-* Website Structure with HTML:
-* Programming Dynamic Websites
-* Desinging your webside with CSS
-* Creating or adapting simple graphics or photos
+* Website structure with HTML
+* Programming dynamic websites
+* Designing a website with CSS
+* Creating or adapting graphics or photos
 Because ownCloud is written in PHP there are no static HTML-files found but only CSS files that match the HTML output that comes from PHP.
 
 1.3 Getting started
 -------------------
-The best idea getting starting with a dynamically created website is to inspect it with webdeveloper tools, that are found in almost any browser. They show the generated HTML and the CSS Code, that the client/browser is recieving:
+A good idea getting starting with a dynamically created website is to inspect it with **webdeveloper tools**, that are found in almost any browser. They show the generated HTML and the CSS Code, that the client/browser is recieving:
 With this facts you can easyly determine, where the following object-related attributes for the phenomenons are settled:
 
 * place
@@ -36,7 +36,7 @@ With this facts you can easyly determine, where the following object-related att
 * links
 * graphics
 
-In owncloud standard theme everything is held very simple. This allows you quick adpating. In the standard CSS-file and the standard pictures, that comes with the unchanged new version, reside in /owncloud/themes/default
+In owncloud standard theme everything is held very simple. This allows you quick adpating. In an unchanged ownCloud version css files and the standard pictures reside in /owncloud/themes/default folder.
 The next thing you should do, before starting any changes is:
 Make a backup of your current theme(s) e.g.:
 
@@ -143,8 +143,8 @@ There are different options for doing so:
 .. _GitHub themes repository: https://github.com/owncloud/themes
 .. _here: https://github.com/owncloud/themes/tree/master/example
 
-Notes for Updates
-=================
+6 Notes for Updates
+===================
 
 In case of theming it is recommended to the user,
 not to perform these adaptions inside the folder /themes/default.
