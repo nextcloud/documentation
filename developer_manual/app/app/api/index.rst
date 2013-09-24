@@ -9,3 +9,4 @@ ownCloud API
    ocs_result
    templates
    view
+   provisioning_api
