@@ -15,19 +15,18 @@ Just klick on the enable button inside apps in the admin backend
 =================
 
 3.1 users / adduser
----------------
+-------------------
 
 Create a new user on the cloud server. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a basic HTTP authentication header.
-
 * syntax: /v1/cloud/users
 * HTTP method: POST
 * POST argument: userid - string, the required username for the new user
 * POST argument: password - string, the required password for the new user
 * Statuscodes:
-** 100 - successful
-** 101 - invalid input data
-** 102 - username already in user
-** 103 - unknown error occurred whilst adding the user
+* 100 - successful
+* 101 - invalid input data
+* 102 - username already in user
+* 103 - unknown error occurred whilst adding the user
 
 ::
 
@@ -39,8 +38,7 @@ Create a new user on the cloud server. Only authenticated administrator users ar
 
 .. code-block::
 
-	**XML-Output:**
-	
+	XML-Output:
 	<?xml version="1.0"?>
 	<ocs>
 		<meta>
@@ -53,17 +51,16 @@ Create a new user on the cloud server. Only authenticated administrator users ar
 
 
 3.2 users / getusers
-----------------
+--------------------
 
 Retrives a list of users from the cloud server. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
-
 * syntax: /v1/cloud/users
 * HTTP method: GET
 * url arguments: search - string, optional search string
 * url arguments: limit - int, optional limit value
 * url arguments: offset - int, optional offset value
 * Statuscodes:
-** 100 - successful
+* 100 - successful
 
 ::
 
@@ -73,7 +70,7 @@ Retrives a list of users from the cloud server. Only authenticated administrator
 
 .. code-block::
 
-	**XML-Output:**
+	*XML-Output:*
 	<?xml version="1.0"?>
 	<ocs>
 		<meta>
@@ -88,15 +85,14 @@ Retrives a list of users from the cloud server. Only authenticated administrator
 </ocs>
 
 3.3 users / getuser
----------------
+-------------------
 
 Retrives information about a single user. Only authenticated administrator users, or the user itself can access this method. Authentication is done by sending a Basic HTTP Authorisation header.
-
 * syntax: /v1/cloud/users/{userid}
 * HTTP method: GET
 * Statuscodes:
-** 100 - successful
-** 101 - user not found
+* 100 - successful
+* 101 - user not found
 
 ::
 
@@ -106,7 +102,7 @@ Retrives information about a single user. Only authenticated administrator users
 
 .. code-block::
 
-	**XML-Output:** 
+	XML-Output: 
 
 	<?xml version="1.0"?>
 	<ocs>
@@ -122,19 +118,18 @@ Retrives information about a single user. Only authenticated administrator users
 	</ocs>
 
 3.4 users / edituser
-----------------
+--------------------
 
 Edits attributes related to a user. Only authenticated administrator users, or the user itself can access this method. Authentication is done by sending a Basic HTTP Authorisation header.
-
 * syntax: /v1/cloud/users/{userid}
 * HTTP method: PUT
 * PUT argument: email, string the new email
 * PUT argument: quota, int the new quota in bytes
 * PUT argument: enabled, int (0 or 1)
 * Statuscodes:
-** 100 - successful
-** 101 - user not found
-** 102 - invalid input data
+* 100 - successful
+* 101 - user not found
+* 102 - invalid input data
 
 ::
 
@@ -144,7 +139,7 @@ Edits attributes related to a user. Only authenticated administrator users, or t
 
 .. code-block::
 
-	**XML-Output:**
+	XML-Output:
 	<?xml version="1.0"?>
 	<ocs>
 		<meta>
@@ -155,15 +150,14 @@ Edits attributes related to a user. Only authenticated administrator users, or t
 	</ocs>
 
 3.5 users / deleteuser
-------------------
+----------------------
 
 Deletes a user from the cloud server. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
-
 * syntax: /v1/cloud/users/{userid}
 * HTTP method: DELETE
 * Statuscodes:
-** 100 - successful
-** 101 - failure
+* 100 - successful
+* 101 - failure
 
 ::
 
@@ -173,7 +167,7 @@ Deletes a user from the cloud server. Only authenticated administrator users are
 
 .. code-block::
 
-	**XML-Output:**
+	XML-Output:
 	<?xml version="1.0"?>
 	<ocs>
 		<meta>
@@ -184,14 +178,13 @@ Deletes a user from the cloud server. Only authenticated administrator users are
 	</ocs>
 
 3.6 users / getgroups
------------------
+---------------------
 
 Retrives a list of groups the specified user is a member of. Only authenticated administrator users and the specified user can access this method. Authentication is done by sending a Basic HTTP Authorisation header.
-
 * syntax: /v1/cloud/users/{userid}/groups
 * HTTP method: GET
 * Statuscodes:
-** 100 - successful
+* 100 - successful
 
 ::
 
@@ -201,7 +194,7 @@ Retrives a list of groups the specified user is a member of. Only authenticated 
 
 .. code-block::
 
-	**XML-Output:**
+	XML-Output:
 	<?xml version="1.0"?>
 	<ocs>
 		<meta>
@@ -217,20 +210,19 @@ Retrives a list of groups the specified user is a member of. Only authenticated 
 	</ocs>
 
 3.7 users / addtogroup
-------------------
+----------------------
 
 Adds the specified user to the specified group. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
-
 * syntax: /v1/cloud/users/{userid}/groups
 * HTTP method: POST
 * POST argument: groupid, string - the group to add the user to
 * Statuscodes:
-** 100 - successful
-** 101 - no group specified
-** 102 - group doesnt exist
-** 103 - user doesn't exist
-** 104 - insufficient priveleges
-** 105 - failed to add user to group
+* 100 - successful
+* 101 - no group specified
+* 102 - group doesnt exist
+* 103 - user doesn't exist
+* 104 - insufficient priveleges
+* 105 - failed to add user to group
 
 ::
 
@@ -240,7 +232,7 @@ Adds the specified user to the specified group. Only authenticated administrator
 
 .. code-block::
 
-	**XML-Output:**
+	XML-Output:
 	<?xml version="1.0"?>
 	<ocs>
 		<meta>
@@ -251,20 +243,19 @@ Adds the specified user to the specified group. Only authenticated administrator
 	</ocs>
 
 3.8 users / removefromgroup
------------------------
+---------------------------
 
 Removes the specified user from the specified group. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
-
 * syntax: /v1/cloud/users/{userid}/groups
 * HTTP method: DELETE
 * POST argument: groupid, string - the group to remove the user from
 * Statuscodes:
-** 100 - successful
-** 101 - no group specified
-** 102 - group doesnt exist
-** 103 - user doesn't exist
-** 104 - insufficient privileges
-** 105 - failed to remove user from group
+* 100 - successful
+* 101 - no group specified
+* 102 - group doesnt exist
+* 103 - user doesn't exist
+* 104 - insufficient privileges
+* 105 - failed to remove user from group
 
 ::
 
@@ -274,7 +265,7 @@ Removes the specified user from the specified group. Only authenticated administ
 
 .. code-block::
 
-	**XML-Output:**
+	XML-Output:
 
 	<?xml version="1.0"?>
 	<ocs>
@@ -286,17 +277,16 @@ Removes the specified user from the specified group. Only authenticated administ
 	</ocs>
 
 3.9 groups / getgroups
-------------------
+----------------------
 
 Retrives a list of groups from the cloud server. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
-
 * syntax: /v1/cloud/groups
 * HTTP method: GET
 * url arguments: search - string, optional search string
 * url arguments: limit - int, optional limit value
 * url arguments: offset - int, optional offset value
 * Statuscodes:
-** 100 - successful
+* 100 - successful
 
 ::
 
@@ -306,7 +296,7 @@ Retrives a list of groups from the cloud server. Only authenticated administrato
 
 .. code-block::
 
-	**XML-Output:**
+	XML-Output:
 	<?xml version="1.0"?>
 	<ocs>
 		<meta>
@@ -321,18 +311,17 @@ Retrives a list of groups from the cloud server. Only authenticated administrato
 	</ocs>
 
 3.10 groups / addgroup
------------------
+----------------------
 
 Adds a new group. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
-
 * syntax: /v1/cloud/groups
 * HTTP method: POST
 * POST argument: groupid, string - the new groups name
 * Statuscodes:
-** 100 - successful
-** 101 - invalid input data
-** 102 - group already exists
-** 103 - failed to add the group
+* 100 - successful
+* 101 - invalid input data
+* 102 - group already exists
+* 103 - failed to add the group
 
 ::
 
@@ -342,7 +331,7 @@ Adds a new group. Only authenticated administrator users are allowed to access t
 
 .. code-block::
 
-	**XML-Output:**
+	XML-Output:
 	<?xml version="1.0"?>
 	<ocs>
 		<meta>
@@ -353,15 +342,14 @@ Adds a new group. Only authenticated administrator users are allowed to access t
 	</ocs>
 
 3.11 groups / getgroup
------------------
+----------------------
 
 Retrives a list of group members. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
-
 * syntax: /v1/cloud/groups/{groupid}
 * HTTP method: GET
 * Statuscodes:
-** 100 - successful
-** 101 - group doesn't exist
+* 100 - successful
+* 101 - group doesn't exist
 
 ::
 
@@ -371,7 +359,7 @@ Retrives a list of group members. Only authenticated administrator users are all
 
 .. code-block::
 
-	**XML-Output:**
+	XML-Output:
 	<?xml version="1.0"?>
 	<ocs>
 		<meta>
@@ -386,16 +374,15 @@ Retrives a list of group members. Only authenticated administrator users are all
 	</ocs>
 
 3.12 groups / deletegroup
---------------------
+-------------------------
 
 Removes a group. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
-
 * syntax: /v1/cloud/groups/{groupid}
 * HTTP method: DELETE
 * Statuscodes:
-** 100 - successful
-** 101 - group doesn't exist
-** 102 - failed to delete group
+* 100 - successful
+* 101 - group doesn't exist
+* 102 - failed to delete group
 
 ::
 
@@ -405,7 +392,7 @@ Removes a group. Only authenticated administrator users are allowed to access th
 
 .. code-block::
 
-	**XML-Output:**
+	XML-Output:
 	<?xml version="1.0"?>
 	<ocs>
 		<meta>
@@ -419,13 +406,12 @@ Removes a group. Only authenticated administrator users are allowed to access th
 -------------------
 
 Returns a list of apps installed on the cloud server. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
-
 * syntax: /v1/cloud/apps/
 * HTTP method: GET
 * url argument: filter, string - optional ('enabled' or 'disabled')
 * Statuscodes:
-** 100 - successful
-** 101 - invalid input data
+* 100 - successful
+* 101 - invalid input data
 
 ::
 
@@ -435,7 +421,7 @@ Returns a list of apps installed on the cloud server. Only authenticated adminis
 
 .. code-block::
 
-	**XML-Output:**
+	XML-Output:
 	<?xml version="1.0"?>
 	<ocs>
 		<meta>
@@ -451,14 +437,13 @@ Returns a list of apps installed on the cloud server. Only authenticated adminis
 	</ocs>
 
 3.14 apps / getappinfo
------------------
+----------------------
 
 Provides information on a specific application. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
-
 * syntax: /v1/cloud/apps/{appid}
 * HTTP method: GET
 * Statuscodes:
-** 100 - successful
+* 100 - successful
 
 ::
 
@@ -468,7 +453,7 @@ Provides information on a specific application. Only authenticated administrator
 
 .. code-block::
 
-	**XML-Output:**
+	XML-Output:
 	<?xml version="1.0"?>
 	<ocs>
 		<meta>
@@ -499,10 +484,9 @@ Provides information on a specific application. Only authenticated administrator
 	</ocs>
 
 3.15 apps / enable
--------------
+------------------
 
 Enable an app. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
-
 * syntax: /v1/cloud/apps/{appid}
 * HTTP method: POST
 * Statuscodes:
@@ -516,7 +500,7 @@ Enable an app. Only authenticated administrator users are allowed to access this
 
 .. code-block::
 
-	**XML-Output:**
+	XML-Output:
 
 	<?xml version="1.0"?>
 	<ocs>
@@ -527,14 +511,13 @@ Enable an app. Only authenticated administrator users are allowed to access this
 	</ocs>
 
 3.16 apps / disable
---------------
+-------------------
 
 Disables the specified app. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
-
 * syntax: /v1/cloud/apps/{appid}
 * HTTP method: DELETE
 * Statuscodes:
-** 100 - successful
+* 100 - successful
 
 ::
 
@@ -544,7 +527,7 @@ Disables the specified app. Only authenticated administrator users are allowed t
 
 .. code-block::
 
-	**XML-Output:**
+	XML-Output:
 	<?xml version="1.0"?>
 	<ocs>
 		<meta>
@@ -554,14 +537,13 @@ Disables the specified app. Only authenticated administrator users are allowed t
 	</ocs>
 
 3.17 capabilities
-------------
+-----------------
 
 Returns information on the capability of the ownCloud server. Authenticated users only. Authentication is done by sending a Basic HTTP Authorisation header.
-
 * syntax: /v1/cloud/capabilities
 * HTTP method: GET
 * Statuscodes:
-** 100 - successful
+* 100 - successful
 
 ::
 
@@ -571,7 +553,7 @@ Returns information on the capability of the ownCloud server. Authenticated user
 
 .. code-block::
 
-	**XML-Output:**
+	XML-Output:
 
 	<?xml version="1.0"?>
 	<ocs>
