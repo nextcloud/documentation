@@ -4,7 +4,7 @@ Provisioning API
 1 Installation
 --------------
 To install the Provisioning API do the following:
-Unpack the tar-file your downloaded as superuser with:
+Unpack the tar-file you downloaded as superuser with:
 
 * tar zxvf file.tar.gz	or
 * tar jxvf file.tar.bz2
@@ -12,7 +12,7 @@ Unpack the tar-file your downloaded as superuser with:
 
 2 Startup
 ---------
-Just klick on the enable button inside apps in the admin backend
+Just klick on the enable button inside apps in the admin backend.
 
 3 Instruction set
 -----------------
