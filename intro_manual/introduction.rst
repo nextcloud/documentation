@@ -168,3 +168,40 @@ Possible providing methods are:
 * Providing storage out of your own filesystem
 * Mounting storage from your local network (further machines/NAS)
 * Mounting storage from any location, which you may access
+
+
+users / adduser
+===============
+
+Create a new user on the cloud server. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a basic HTTP authentication header.
+* syntax: /v1/cloud/users
+* HTTP method: POST
+* POST argument: userid - string, the required username for the new user
+* POST argument: password - string, the required password for the new user
+* Statuscodes:
+** 100 - successful
+** 101 - invalid input data
+** 102 - username already in user
+** 103 - unknown error occurred whilst adding the user
+
+::
+
+Example: 
+
+* POST http://frank:password@myowncloud.org/ocs/v1.php/cloud/users -d user="Frank" -d password="frankspassword"
+* Creates the user 'Frank' with password 'frankspassword'
+* And the following XML-output
+
+::
+
+**XML-Output:**
+<?xml version="1.0"?>
+<ocs>
+ <meta>
+  <status>ok</status>
+  <statuscode>100</statuscode>
+  <message></message>
+ </meta>
+ <data/>
+</ocs>
+
