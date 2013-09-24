@@ -195,13 +195,13 @@ Example:
 
 .. code-block:: XML
 
-<?xml version="1.0"?>
-<ocs>
- <meta>
-  <status>ok</status>
-  <statuscode>100</statuscode>
-  <message></message>
- </meta>
- <data/>
-</ocs>
+  <?xml version="1.0"?>
+    <ocs>
+      <meta>
+        <status>ok</status>
+        <statuscode>100</statuscode>
+        <message></message>
+      </meta>
+      <data/>
+    </ocs>
 
