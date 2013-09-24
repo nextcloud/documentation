@@ -2,9 +2,9 @@
 
 	Example: 
 
-* POST http://frank:password@myowncloud.org/ocs/v1.php/cloud/users -d user="Frank" -d password="frankspassword"
-* Creates the user 'Frank' with password 'frankspassword'
-* And the following XML-output
+	* POST http://frank:password@myowncloud.org/ocs/v1.php/cloud/users -d user="Frank" -d password="frankspassword"
+	* Creates the user 'Frank' with password 'frankspassword'
+	* And the following XML-output
 
 Welcome to ownCloud
 ===================
