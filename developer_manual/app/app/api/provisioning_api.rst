@@ -1,5 +1,8 @@
+Provisioning API
+================
+
 1 Installation
-==============
+--------------
 To install the Provisioning API do the following:
 Unpack the tar-file your downloaded as superuser with:
 
@@ -8,14 +11,14 @@ Unpack the tar-file your downloaded as superuser with:
 * copy the files into /owncloud/apps
 
 2 Startup
-=========
+---------
 Just klick on the enable button inside apps in the admin backend
 
 3 Instruction set
-=================
+-----------------
 
 3.1 users / adduser
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 Create a new user on the cloud server. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a basic HTTP authentication header.
 
@@ -52,7 +55,7 @@ Create a new user on the cloud server. Only authenticated administrator users ar
 
 
 3.2 users / getusers
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 Retrives a list of users from the cloud server. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
 
@@ -87,7 +90,7 @@ Retrives a list of users from the cloud server. Only authenticated administrator
 </ocs>
 
 3.3 users / getuser
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 Retrives information about a single user. Only authenticated administrator users, or the user itself can access this method. Authentication is done by sending a Basic HTTP Authorisation header.
 
@@ -121,7 +124,7 @@ Retrives information about a single user. Only authenticated administrator users
 	</ocs>
 
 3.4 users / edituser
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 Edits attributes related to a user. Only authenticated administrator users, or the user itself can access this method. Authentication is done by sending a Basic HTTP Authorisation header.
 
@@ -154,7 +157,7 @@ Edits attributes related to a user. Only authenticated administrator users, or t
 	</ocs>
 
 3.5 users / deleteuser
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 Deletes a user from the cloud server. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
 
@@ -183,7 +186,7 @@ Deletes a user from the cloud server. Only authenticated administrator users are
 	</ocs>
 
 3.6 users / getgroups
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 Retrives a list of groups the specified user is a member of. Only authenticated administrator users and the specified user can access this method. Authentication is done by sending a Basic HTTP Authorisation header.
 
@@ -216,7 +219,7 @@ Retrives a list of groups the specified user is a member of. Only authenticated 
 	</ocs>
 
 3.7 users / addtogroup
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 Adds the specified user to the specified group. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
 
@@ -250,7 +253,7 @@ Adds the specified user to the specified group. Only authenticated administrator
 	</ocs>
 
 3.8 users / removefromgroup
----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Removes the specified user from the specified group. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
 
@@ -285,7 +288,7 @@ Removes the specified user from the specified group. Only authenticated administ
 	</ocs>
 
 3.9 groups / getgroups
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 Retrives a list of groups from the cloud server. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
 
@@ -320,7 +323,7 @@ Retrives a list of groups from the cloud server. Only authenticated administrato
 	</ocs>
 
 3.10 groups / addgroup
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 Adds a new group. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
 
@@ -352,7 +355,7 @@ Adds a new group. Only authenticated administrator users are allowed to access t
 	</ocs>
 
 3.11 groups / getgroup
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 Retrives a list of group members. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
 
@@ -385,7 +388,7 @@ Retrives a list of group members. Only authenticated administrator users are all
 	</ocs>
 
 3.12 groups / deletegroup
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Removes a group. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
 
@@ -415,7 +418,7 @@ Removes a group. Only authenticated administrator users are allowed to access th
 	</ocs>
 
 3.13 apps / getapps
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 Returns a list of apps installed on the cloud server. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
 
@@ -450,7 +453,7 @@ Returns a list of apps installed on the cloud server. Only authenticated adminis
 	</ocs>
 
 3.14 apps / getappinfo
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 Provides information on a specific application. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
 
@@ -498,7 +501,7 @@ Provides information on a specific application. Only authenticated administrator
 	</ocs>
 
 3.15 apps / enable
-------------------
+~~~~~~~~~~~~~~~~~~
 
 Enable an app. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
 
@@ -526,7 +529,7 @@ Enable an app. Only authenticated administrator users are allowed to access this
 	</ocs>
 
 3.16 apps / disable
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 Disables the specified app. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
 
@@ -553,7 +556,7 @@ Disables the specified app. Only authenticated administrator users are allowed t
 	</ocs>
 
 3.17 capabilities
------------------
+~~~~~~~~~~~~~~~~~
 
 Returns information on the capability of the ownCloud server. Authenticated users only. Authentication is done by sending a Basic HTTP Authorisation header.
 
