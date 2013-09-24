@@ -193,9 +193,8 @@ Example:
 * Creates the user 'Frank' with password 'frankspassword'
 * And the following XML-output
 
-.. code-block::
+.. code-block:: XML
 
-**XML-Output**
 <?xml version="1.0"?>
 <ocs>
  <meta>
