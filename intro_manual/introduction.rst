@@ -174,6 +174,7 @@ users / adduser
 ===============
 
 Create a new user on the cloud server. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a basic HTTP authentication header.
+
 * syntax: /v1/cloud/users
 * HTTP method: POST
 * POST argument: userid - string, the required username for the new user
@@ -192,7 +193,7 @@ Example:
 * Creates the user 'Frank' with password 'frankspassword'
 * And the following XML-output
 
-
+.. code-block::
 
 **XML-Output**
 <?xml version="1.0"?>
