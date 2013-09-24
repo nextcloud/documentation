@@ -18,6 +18,7 @@ Just klick on the enable button inside apps in the admin backend
 ---------------
 
 Create a new user on the cloud server. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a basic HTTP authentication header.
+
 * syntax: /v1/cloud/users
 * HTTP method: POST
 * POST argument: userid - string, the required username for the new user
@@ -39,6 +40,7 @@ Create a new user on the cloud server. Only authenticated administrator users ar
 .. code-block::
 
 	**XML-Output:**
+	
 	<?xml version="1.0"?>
 	<ocs>
 		<meta>
@@ -54,6 +56,7 @@ Create a new user on the cloud server. Only authenticated administrator users ar
 ----------------
 
 Retrives a list of users from the cloud server. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
+
 * syntax: /v1/cloud/users
 * HTTP method: GET
 * url arguments: search - string, optional search string
@@ -88,6 +91,7 @@ Retrives a list of users from the cloud server. Only authenticated administrator
 ---------------
 
 Retrives information about a single user. Only authenticated administrator users, or the user itself can access this method. Authentication is done by sending a Basic HTTP Authorisation header.
+
 * syntax: /v1/cloud/users/{userid}
 * HTTP method: GET
 * Statuscodes:
@@ -121,6 +125,7 @@ Retrives information about a single user. Only authenticated administrator users
 ----------------
 
 Edits attributes related to a user. Only authenticated administrator users, or the user itself can access this method. Authentication is done by sending a Basic HTTP Authorisation header.
+
 * syntax: /v1/cloud/users/{userid}
 * HTTP method: PUT
 * PUT argument: email, string the new email
@@ -153,6 +158,7 @@ Edits attributes related to a user. Only authenticated administrator users, or t
 ------------------
 
 Deletes a user from the cloud server. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
+
 * syntax: /v1/cloud/users/{userid}
 * HTTP method: DELETE
 * Statuscodes:
@@ -181,6 +187,7 @@ Deletes a user from the cloud server. Only authenticated administrator users are
 -----------------
 
 Retrives a list of groups the specified user is a member of. Only authenticated administrator users and the specified user can access this method. Authentication is done by sending a Basic HTTP Authorisation header.
+
 * syntax: /v1/cloud/users/{userid}/groups
 * HTTP method: GET
 * Statuscodes:
@@ -213,6 +220,7 @@ Retrives a list of groups the specified user is a member of. Only authenticated 
 ------------------
 
 Adds the specified user to the specified group. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
+
 * syntax: /v1/cloud/users/{userid}/groups
 * HTTP method: POST
 * POST argument: groupid, string - the group to add the user to
@@ -246,6 +254,7 @@ Adds the specified user to the specified group. Only authenticated administrator
 -----------------------
 
 Removes the specified user from the specified group. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
+
 * syntax: /v1/cloud/users/{userid}/groups
 * HTTP method: DELETE
 * POST argument: groupid, string - the group to remove the user from
@@ -280,6 +289,7 @@ Removes the specified user from the specified group. Only authenticated administ
 ------------------
 
 Retrives a list of groups from the cloud server. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
+
 * syntax: /v1/cloud/groups
 * HTTP method: GET
 * url arguments: search - string, optional search string
@@ -314,6 +324,7 @@ Retrives a list of groups from the cloud server. Only authenticated administrato
 -----------------
 
 Adds a new group. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
+
 * syntax: /v1/cloud/groups
 * HTTP method: POST
 * POST argument: groupid, string - the new groups name
@@ -345,6 +356,7 @@ Adds a new group. Only authenticated administrator users are allowed to access t
 -----------------
 
 Retrives a list of group members. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
+
 * syntax: /v1/cloud/groups/{groupid}
 * HTTP method: GET
 * Statuscodes:
@@ -377,6 +389,7 @@ Retrives a list of group members. Only authenticated administrator users are all
 --------------------
 
 Removes a group. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
+
 * syntax: /v1/cloud/groups/{groupid}
 * HTTP method: DELETE
 * Statuscodes:
@@ -406,6 +419,7 @@ Removes a group. Only authenticated administrator users are allowed to access th
 -------------------
 
 Returns a list of apps installed on the cloud server. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
+
 * syntax: /v1/cloud/apps/
 * HTTP method: GET
 * url argument: filter, string - optional ('enabled' or 'disabled')
@@ -440,6 +454,7 @@ Returns a list of apps installed on the cloud server. Only authenticated adminis
 -----------------
 
 Provides information on a specific application. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
+
 * syntax: /v1/cloud/apps/{appid}
 * HTTP method: GET
 * Statuscodes:
@@ -487,6 +502,7 @@ Provides information on a specific application. Only authenticated administrator
 -------------
 
 Enable an app. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
+
 * syntax: /v1/cloud/apps/{appid}
 * HTTP method: POST
 * Statuscodes:
@@ -514,6 +530,7 @@ Enable an app. Only authenticated administrator users are allowed to access this
 --------------
 
 Disables the specified app. Only authenticated administrator users are allowed to access this method. Authentication is done by sending a Basic HTTP Authorisation header.
+
 * syntax: /v1/cloud/apps/{appid}
 * HTTP method: DELETE
 * Statuscodes:
@@ -540,6 +557,7 @@ Disables the specified app. Only authenticated administrator users are allowed t
 ------------
 
 Returns information on the capability of the ownCloud server. Authenticated users only. Authentication is done by sending a Basic HTTP Authorisation header.
+
 * syntax: /v1/cloud/capabilities
 * HTTP method: GET
 * Statuscodes:
