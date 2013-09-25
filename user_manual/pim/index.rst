@@ -11,4 +11,5 @@ Contacts & Calendar
    sync_osx
    sync_thunderbird
    sync_kde
+   troubleshooting
 
