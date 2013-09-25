@@ -162,7 +162,7 @@ This part installs MySQL on your Windows machine.
 .. You can make some pretty good educated guesses on the type of install needed for ownCloud. %% That's not really useful, clarify!
 
 Take particular note of your MySQL password, as the user name **root**
-and the password you select will be necessary alter on in the ownCloud
+and the password you select will be necessary later on in the ownCloud
 installation. As an aside, this link is an excellent resource for questions on
 how to configure your MySQL instance, and also to configure PHP to work with
 MySQL. This, however, is not strictly necessary as much of this is handled when
