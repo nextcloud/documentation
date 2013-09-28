@@ -49,5 +49,5 @@ Address book
    -  Go back to account information and hit Save.
 
 Now should now find your contacts in the address book of your
-iPhone.Problems have been reported for iOS 4.X. A possible solution is
-at the `forum <http://forum.owncloud.org/viewtopic.php?f=3&t=71&p=2211#p2197>`_.
+iPhone.
+If it's still not working, have a look at the :doc:`troubleshooting` guide.
