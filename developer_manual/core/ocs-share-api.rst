@@ -16,8 +16,10 @@ Get all shares from the user.
 * Method: GET
 
 * Result: XML with all shares
-* Statuscodes:
-  * 100 - successfull
+
+Statuscodes:
+
+* 100 - successfull
 
 Get Shares from a specific File
 -------------------------------
@@ -28,16 +30,17 @@ Get all shares from a given file.
 * Method: GET
 
 * URL Arguments: path - path to file/folder
-* URL Arguments: reshares - returns not only the shares from the current user
-   but all shares from the given file.
+* URL Arguments: reshares - returns not only the shares from the current user but all shares from the given file.
 * URL Arguments: subfiles - returns all shares within a folder, given that
   *path* defines a folder
 * Mandatory fields: path
 
 * Result: XML with the shares
-* Statuscodes:
-  * 100 - successfull
-  * 404 - file doesn't exists
+
+Statuscodes
+
+* 100 - successfull
+* 404 - file doesn't exists
 
 Get information about a known Share
 -----------------------------------
@@ -50,9 +53,11 @@ Get informations about a given share.
 * Arguments: share_id - share ID
 
 * Result: XML with the share informations
-* Statuscodes:
-  * 100 - successfull
-  * 404 - share doesn't exists
+
+Statuscodes:
+
+* 100 - successfull
+* 404 - share doesn't exists
 
 
 Create a new Share
@@ -73,9 +78,11 @@ Share a file/folder with a user/group or as public link.
 * Mandatory fields: shareType, path and shareWith for shareType 0 or 1.
 
 * Result: XML containing the share ID of the newly created share
-* Statuscodes:
-  * 100 - successfull
-  * 404 - file couldn't be shared
+
+Statuscodes:
+
+* 100 - successfull
+* 404 - file couldn't be shared
 
 Delete Share
 ------------
@@ -87,9 +94,10 @@ Remove the given share.
 
 * Arguments: share_id - share ID
 
-* Statuscodes:
-  * 100 - successfull
-  * 404 - file couldn't be deleted
+Statuscodes:
+
+* 100 - successfull
+* 404 - file couldn't be deleted
 
 
 Update Share
@@ -105,6 +113,7 @@ Update a given share. Only one value can be updated per request.
 * PUT Arguments: password - update password for public link Share
 * PUT Arguments: publicUpload - enable (true) /disable (false) public upload for public shares
 
-* Statuscodes:
-  * 100 - successfull
-  * 404 - couldn't update share
+Statuscodes:
+
+* 100 - successfull
+* 404 - couldn't update share
