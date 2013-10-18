@@ -11,6 +11,7 @@ Core Developement
    translation
    theming
    unit-testing
+   ocs-share-api
 
 Core related docs
 
@@ -18,3 +19,4 @@ Core related docs
 * :doc:`unit-testing`
 * :doc:`theming`
 * :doc:`configfile`
+* :doc:`ocs-share-api`
