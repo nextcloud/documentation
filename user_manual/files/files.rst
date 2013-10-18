@@ -14,7 +14,7 @@ Gnome 3/Nautilus
 
 The URL that you have to use to connect to the owncloud installation in nautilus is::
 
-  davs://youraddress.com/files/webdav.php
+  davs://youraddress.com/owncloud/remote.php/webdav
 
 
 .. image:: ../images/gnome3_nautilus_webdav.png
@@ -25,7 +25,7 @@ KDE/Dolphin
 ~~~~~~~~~~~
 Click in the adress area and enter::
 
-    webdav://youraddress.com/files/webdav.php
+    webdav://youraddress.com/owncloud/remote.php/webdav
 
 .. image:: ../images/dolphin_webdav.png
 
@@ -41,7 +41,7 @@ or:
 * Server: Your ownCloud domain name, for example **youraddress.com** (without **http://** before or directories afterwards).
 * Folder: Enter::
 
-        owncloud/files/webdav.php
+        owncloud/remote.php/webdav
 
 5. Create icon checkbox: Tick to get a bookmark in the Places column
 6. Port & Encrypted checkbox: Leave as it is unless you have special settings or an SSL certificate.
@@ -62,14 +62,14 @@ Mounting from command line
 
 4. Edit :file:`/etc/fstab` and add the following line for each user who wants to mount the folder (with your details where appropriate)::
 
-        youradress.com/files/webdav.php /home/<username>/owncloud davfs user,rw,noauto 0 0
+        youradress.com/owncloud/remote.php/webdav /home/<username>/owncloud davfs user,rw,noauto 0 0
 
 Then, as each user who wants to mount the folder:
 
 1. Create the folders **owncloud/** and **.davfs2/** in your home directory
 2. Create the file secrets inside **.davfs2/**, fill it with the following (with your credentials where appropriate)::
 
-        youradress.com/files/webdav.php <username> <password>
+        youradress.com/owncloud/remote.php/webdav <username> <password>
 
 3. Ensure the file is only writable by you either through the file manager, or via::
 
@@ -107,7 +107,7 @@ In the Finder, choose **Go > Connect to Server,** type the address of the server
 
 The URL that you have to use to connect to the owncloud installation in finder is::
 
-  http://youraddress.com/files/webdav.php
+  http://youraddress.com/owncloud/remote.php/webdav
 
 .. image:: ../images/osx_webdav2.png
 
@@ -133,24 +133,24 @@ ownCloud to one or more directories of your local hard drive.
 Mapping via the command line
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Suppose your ownCloud is installed at **https://www.yourserver.com/owncloud**,
+Suppose your ownCloud is installed at **https://youradress.com/owncloud**,
 that is, entering this URL in your webbrowser will bring up the login screen.
 Running::
 
-  net use Z: https://www.yourserver.com/owncloud/remote.php/webdav /user:youruser yourpassword
+  net use Z: https://youradress.com/owncloud/remote.php/webdav /user:youruser yourpassword
 
 will map the files of your ownCloud account to the drive letter Z:. An alternative
 syntax is::
 
-  net use Z: \\www.yourserver.com@ssl\owncloud\remote.php\webdav /user:youruser yourpassword
+  net use Z: \\youradress.com@ssl\owncloud\remote.php\webdav /user:youruser yourpassword
 
 Appending **/persistent** makes the connection persistent across reboots.
 
 You can also mount your ownCloud via HTTP, leaving the connection unencrypted.
 Use either of the following syntaxes::
 
-  net use Z: http://www.yourserver.com/owncloud/remote.php/webdav /user:youruser yourpassword
-  net use Z: \\www.yourserver.com\owncloud\remote.php\webdav /user:youruser yourpassword
+  net use Z: http://youradress.com/owncloud/remote.php/webdav /user:youruser yourpassword
+  net use Z: \\youradress.com\owncloud\remote.php\webdav /user:youruser yourpassword
 
 Please note that this allows anyone to sniff your ownCloud data with ease, especially on public WiFi hotspots. Plain HTTP should therefore only be used in conjunction with a VPN tunnel when used on Laptops.
 
@@ -159,7 +159,7 @@ Using Windows Explorer
 
 Right-click on **Computer** entry and select **Map network drive...**. Choose a local network drive to map ownCloud to. Finally, enter the address to your ownCloud instance, followed by **/remote.php/webdav**, e.g. ::
 
-  https://www.yourserver.com/owncloud/remote.php/webdav
+  https://youradress.com/owncloud/remote.php/webdav
 
 for an SSL protected server. Check **Reconnect at logon** to make this mapping persistent across reboots. If you want to connect as another user, check **Connect using different credentials**.
 
@@ -176,7 +176,7 @@ Using Cyberduck (4.2.1)
 Specify a server without any leading protocol information. e.g.:
 
 Server
-  owncloudhost.com
+  youradress.com
 
 The port depends on whether your ownCloud server supports SSL or not. Cyberduck requires that you select a different connection type depending on whethr SSL is to be used ('WebDAV' or 'WebDAV (HTTPS/SSL)'):
 
@@ -227,7 +227,7 @@ Mobile
 -------
 To connect to your ownCloud server with the **ownCloud** mobile apps, use the base URL and folder only::
 
-    example.com/owncloud
+    youradress.com/owncloud
 
 No need to add remote.php/webdav as you do for any other WebDAV client.
 
@@ -238,7 +238,7 @@ good (proprietary) app for `Android App`_ , `iPhone`_ & `BlackBerry`_.
 
 The URL for these is::
 
-    example.com/owncloud/remote.php/webdav
+    youradress.com/owncloud/remote.php/webdav
 
 .. _in your file manager: http://en.wikipedia.org/wiki/Webdav#WebDAV_client_applications
 .. _Sync your ownCloud folders and local folders: http://owncloud.org/documentation/sync-clients/
