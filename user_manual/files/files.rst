@@ -3,7 +3,7 @@ Accessing your Files (WebDav)
 
 Your ownCloud instance can be accessed on every platform via the web interface. There are also options to integrate it with your desktop.
 
-.. note:: You will have to adjust **youradress.com/** to the URL of your ownCloud server installation
+.. note:: You will have to adjust **youraddress.com/** to the URL of your ownCloud server installation
 
 
 Linux
@@ -62,14 +62,14 @@ Mounting from command line
 
 4. Edit :file:`/etc/fstab` and add the following line for each user who wants to mount the folder (with your details where appropriate)::
 
-        youradress.com/owncloud/remote.php/webdav /home/<username>/owncloud davfs user,rw,noauto 0 0
+        youraddress.com/owncloud/remote.php/webdav /home/<username>/owncloud davfs user,rw,noauto 0 0
 
 Then, as each user who wants to mount the folder:
 
 1. Create the folders **owncloud/** and **.davfs2/** in your home directory
 2. Create the file secrets inside **.davfs2/**, fill it with the following (with your credentials where appropriate)::
 
-        youradress.com/owncloud/remote.php/webdav <username> <password>
+        youraddress.com/owncloud/remote.php/webdav <username> <password>
 
 3. Ensure the file is only writable by you either through the file manager, or via::
 
@@ -133,24 +133,24 @@ ownCloud to one or more directories of your local hard drive.
 Mapping via the command line
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Suppose your ownCloud is installed at **https://youradress.com/owncloud**,
+Suppose your ownCloud is installed at **https://youraddress.com/owncloud**,
 that is, entering this URL in your webbrowser will bring up the login screen.
 Running::
 
-  net use Z: https://youradress.com/owncloud/remote.php/webdav /user:youruser yourpassword
+  net use Z: https://youraddress.com/owncloud/remote.php/webdav /user:youruser yourpassword
 
 will map the files of your ownCloud account to the drive letter Z:. An alternative
 syntax is::
 
-  net use Z: \\youradress.com@ssl\owncloud\remote.php\webdav /user:youruser yourpassword
+  net use Z: \\youraddress.com@ssl\owncloud\remote.php\webdav /user:youruser yourpassword
 
 Appending **/persistent** makes the connection persistent across reboots.
 
 You can also mount your ownCloud via HTTP, leaving the connection unencrypted.
 Use either of the following syntaxes::
 
-  net use Z: http://youradress.com/owncloud/remote.php/webdav /user:youruser yourpassword
-  net use Z: \\youradress.com\owncloud\remote.php\webdav /user:youruser yourpassword
+  net use Z: http://youraddress.com/owncloud/remote.php/webdav /user:youruser yourpassword
+  net use Z: \\youraddress.com\owncloud\remote.php\webdav /user:youruser yourpassword
 
 Please note that this allows anyone to sniff your ownCloud data with ease, especially on public WiFi hotspots. Plain HTTP should therefore only be used in conjunction with a VPN tunnel when used on Laptops.
 
@@ -159,7 +159,7 @@ Using Windows Explorer
 
 Right-click on **Computer** entry and select **Map network drive...**. Choose a local network drive to map ownCloud to. Finally, enter the address to your ownCloud instance, followed by **/remote.php/webdav**, e.g. ::
 
-  https://youradress.com/owncloud/remote.php/webdav
+  https://youraddress.com/owncloud/remote.php/webdav
 
 for an SSL protected server. Check **Reconnect at logon** to make this mapping persistent across reboots. If you want to connect as another user, check **Connect using different credentials**.
 
@@ -176,7 +176,7 @@ Using Cyberduck (4.2.1)
 Specify a server without any leading protocol information. e.g.:
 
 Server
-  youradress.com
+  youraddress.com
 
 The port depends on whether your ownCloud server supports SSL or not. Cyberduck requires that you select a different connection type depending on whethr SSL is to be used ('WebDAV' or 'WebDAV (HTTPS/SSL)'):
 
@@ -227,7 +227,7 @@ Mobile
 -------
 To connect to your ownCloud server with the **ownCloud** mobile apps, use the base URL and folder only::
 
-    youradress.com/owncloud
+    youraddress.com/owncloud
 
 No need to add remote.php/webdav as you do for any other WebDAV client.
 
@@ -238,7 +238,7 @@ good (proprietary) app for `Android App`_ , `iPhone`_ & `BlackBerry`_.
 
 The URL for these is::
 
-    youradress.com/owncloud/remote.php/webdav
+    youraddress.com/owncloud/remote.php/webdav
 
 .. _in your file manager: http://en.wikipedia.org/wiki/Webdav#WebDAV_client_applications
 .. _Sync your ownCloud folders and local folders: http://owncloud.org/documentation/sync-clients/
