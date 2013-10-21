@@ -4,10 +4,12 @@
 ############## Adjust when editing docs ##################
 
 $mapping = array(
-               'ldap'              => '/admin_manual/auth_ldap.html',
-               'dir_permissions'   => '/admin_manual/installation/installation_source.html#set-the-directory-permissions',
-               'source_install'    => '/admin_manual/installation/installation_source.html',
-               'install'           => '/admin_manual/installation.html',
+               'admin-ldap'              => '/admin_manual/auth_ldap.html',
+               'admin-dir_permissions'   => '/admin_manual/installation/installation_source.html#set-the-directory-permissions',
+               'admin-source_install'    => '/admin_manual/installation/installation_source.html',
+               'admin-install'           => '/admin_manual/installation.html',
+               
+               'user-webdav'             => '/user_manual/files/files.html',
            );
 
 ############# Do not edit below this line #################
