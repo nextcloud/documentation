@@ -96,7 +96,7 @@ It is not necessary to create a database and a database user in advance
 because this will automatically be done by ownCloud when you login for the
 first time.
 
-In the ownCloud counfiguration in :file:`config/config.php` you need to set at least the **datadirectory** parameter to the directory where your data and database should be stored. No authentication is required to access the database therefore most of the default parameters could be taken as it:
+In the ownCloud counfiguration in :file:`config/config.php` you need to set at least the **datadirectory** parameter to the directory where your data and database should be stored. Note that for the PDO SQLite driver this directory must be writable (this is recommended for ownCloud anyway).  No authentication is required to access the database therefore most of the default parameters could be taken as is:
 
 .. code-block:: php
 
