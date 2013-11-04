@@ -36,11 +36,11 @@ locally, follow these steps:
 5. Commit your work, if you have write access to ownCloud, or create a pull
    request otherwise.
 6. If you have committed the work yourself, please merge the result
-   into the master branch::
+   into the latest branch (in this example: stable6)::
 
     git fetch origin
-    git checkout master
-    git merge origin/stable45 master
+    git checkout stable6 
+    git merge origin/stable5 master
     <resolve possible conflicts>
     git add <resolved conflict files>
     git commit
