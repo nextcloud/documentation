@@ -10,6 +10,7 @@ $mapping = array(
                'admin-install'           => '/admin_manual/installation.html',
                
                'user-webdav'             => '/user_manual/files/files.html',
+               'user-manual'             => '/user_manual',
            );
 
 ############# Do not edit below this line #################
