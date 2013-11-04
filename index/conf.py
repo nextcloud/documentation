@@ -25,7 +25,7 @@ import sys, os
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinxcontrib.phpdomain', 'sphinx.ext.todo']
+extensions = ['sphinx.ext.todo']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['../_shared_assets/templates']
@@ -37,11 +37,11 @@ source_suffix = '.rst'
 #source_encoding = 'utf-8-sig'
 
 # The master toctree document.
-master_doc = 'contents'
+master_doc = 'index'
 
 # General information about the project.
-project = u'ownCloud Developer Manual'
-copyright = u'2012-2013, The ownCloud developers'
+project = u'ownCloud User Manual'
+copyright = u'2012, The ownCloud developers'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -108,7 +108,7 @@ html_theme_options = {
 #html_title = None
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
-html_short_title = "Developer Manual"
+html_short_title = "User Manual"
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
@@ -166,7 +166,7 @@ html_show_sphinx = False
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'ownCloudDeveloperManual'
+htmlhelp_basename = 'ownCloudUserManual'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -185,7 +185,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('contents', 'ownCloudDeveloperManual.tex', u'ownCloud Developer Manual',
+  ('index', 'ownCloudUserManual.tex', u'ownCloud User Manual',
    u'The ownCloud developers', 'manual'),
 ]
 
@@ -215,7 +215,7 @@ latex_logo = '../_shared_assets/static/logo-blue.pdf'
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('contents', 'owncloudadminmanual', u'ownCloud Developer Manual',
+    ('index', 'owncloudadminmanual', u'ownCloud User Manual',
      [u'The ownCloud developers'], 1)
 ]
 
@@ -229,8 +229,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('contents', 'ownCloudDeveloperManual', u'ownCloud Developer Manual',
-   u'The ownCloud developers', 'ownCloud', 'The ownCloud Developer Manual.',
+  ('index', 'ownCloudUserManual', u'ownCloud User Manual',
+   u'The ownCloud developers', 'ownCloud', 'The ownCloud User Manual.',
    'Miscellaneous'),
 ]
 
@@ -247,10 +247,10 @@ texinfo_documents = [
 # -- Options for Epub output ---------------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'ownCloud Developer Manual'
+epub_title = u'ownCloud User Manual'
 epub_author = u'The ownCloud developers'
 epub_publisher = u'The ownCloud developers'
-epub_copyright = u'2012-2013, The ownCloud developers'
+epub_copyright = u'2012, The ownCloud developers'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.
