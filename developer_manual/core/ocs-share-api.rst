@@ -70,7 +70,7 @@ Share a file/folder with a user/group or as public link.
 
 * POST Arguments: path - (string) path to the file/folder which should be shared
 * POST Arguments: shareType - (int) '0' = user; '1' = group; '3' = public link
-* POST Arguments: shareWith - (int) user / group id with which the file should be shared
+* POST Arguments: shareWith - (string) user / group id with which the file should be shared
 * POST Arguments: publicUpload - (boolean) allow public upload to a public shared folder (true/false)
 * POST Arguments: password - (string) password to protect public link Share with
 * POST Arguments: permissions - (int) 1 = read; 2 = update; 4 = create; 8 = delete;
