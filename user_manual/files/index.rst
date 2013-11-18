@@ -10,3 +10,4 @@ Files & Synchronization
    deletedfiles
    sync
    encryption
+   quota
