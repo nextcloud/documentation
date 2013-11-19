@@ -11,3 +11,4 @@ Files & Synchronization
    sync
    encryption
    quota
+   configuring_big_file_upload

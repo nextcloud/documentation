@@ -52,6 +52,12 @@ Import and export your user account settings.
 
 * :doc:`migration`
 
+External storage
+================
+Mount external storages into ownCloud.
+
+* :doc:`external_storage/google_drive`
+
 Indices and tables
 ==================
 
