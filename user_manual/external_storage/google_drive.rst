@@ -40,8 +40,8 @@ Google Drive
 
 ::
 
-  http://your-internet-domain/owncloud/index.php/settings/personal
-  http://your-internet-domain/owncloud/index.php/settings/admin
+  https://your-internet-domain/owncloud/index.php/settings/personal
+  https://your-internet-domain/owncloud/index.php/settings/admin
 
 **Attention:** Make sure that the URLs contain a valid Internet domain name and that this domain name is also used to access ownCloud, otherwise these URLs will not be accepted. This does not mean that ownCloud need to be accessible from the Internet, but that the domain name is send to Google to verify if the redirect URIs are valid.
 
