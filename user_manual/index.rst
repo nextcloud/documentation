@@ -46,12 +46,6 @@ Web interface for managing your bookmarks.
 
 * :doc:`bookmarks`
 
-Mediaplayer
-===========
-Web interface for playing music in your browser.
-
-* :doc:`mediaplayer`
-
 Backup
 ======
 Import and export your user account settings.
