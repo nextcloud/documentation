@@ -18,7 +18,8 @@ ownCloud documentation contents
     bookmarks
     mediaplayer
     migration
-    
+    external_storage/google_drive
+
 
 
 Indices and tables
