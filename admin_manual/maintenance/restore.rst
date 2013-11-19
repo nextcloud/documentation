@@ -26,7 +26,7 @@ MySQL
 
 MySQL is the recommended database engine. To backup MySQL:
 
-    mysql -h [server] -u [username] < owncloud-sqlbkp.bak
+    mysql -h [server] -u [username] -p [password] < owncloud-sqlbkp.bak
 
 SQLite
 ^^^^^
@@ -36,4 +36,4 @@ SQLite
 PostgreSQL
 ^^^^^
 
-    pg_restore -c -d owncloud -h [server] -U [username] owncloud-sqlbkp.bak
+    PGPASSWORD="password" pg_restore -c -d owncloud -h [server] -U [username] owncloud-sqlbkp.bak
