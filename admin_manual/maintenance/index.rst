@@ -5,6 +5,8 @@ Maintenance
 .. toctree::
    :maxdepth: 1
 
-   migrating
-   update
    backup
+   update
+   restore
+   migrating
+
