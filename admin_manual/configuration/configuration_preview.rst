@@ -100,6 +100,13 @@ If you want to disable scaling at all, you can set the config value to '1':
   <?php
     'preview_max_scale_factor' => 1,
 
+If you want to disable the maximum scaling factor, you can set the config value to 'null':
+
+.. code-block:: php
+
+  <?php
+    'preview_max_scale_factor' => null,
+
 LibreOffice / OpenOffice:
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 You can set a custom path for the LibreOffice binary. If LibreOffice is not yet
