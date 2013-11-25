@@ -16,7 +16,6 @@ ownCloud documentation contents
     files/index
     pim/index
     bookmarks
-    mediaplayer
     migration
     external_storage/google_drive
 
