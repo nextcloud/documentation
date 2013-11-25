@@ -42,9 +42,10 @@ Fedora
 
 .. note:: ready-to-use RPM packages are available in the openSUSE Build Service `ownCloud repository`_.
 
-Make sure `SELinux is disabled <https://fedoraproject.org/wiki/SELinux_FAQ#How_do_I_enable_or_disable_SELinux_.3F>`_ or else the installation process will fail with the following message::
+Make sure `SELinux is disabled <https://fedoraproject.org/wiki/SELinux_FAQ#How_do_I_enable_or_disable_SELinux_.3F>`_
+or else the installation process will fail with the following message::
 
-  Config file (config/config.php) is not writable for the webserver
+  Config file (config/config.php) is not writable for the web server
 
 Configure Apache:
 

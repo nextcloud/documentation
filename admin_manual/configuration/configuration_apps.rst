@@ -3,7 +3,8 @@ Apps Configuration
 After you have installed ownCloud you might realize that it would be nice to
 provide an additional function on top of the core functionality in your ownCloud installation.
 
-The first step should be to check out the `ownCloud apps store <http://apps.owncloud.com/>`_. There you will find a lot of ready-to-use apps provided by the ownCloud community.
+The first step should be to check out the `ownCloud apps store <http://apps.owncloud.com/>`_. There you will find a
+lot of ready-to-use apps provided by the ownCloud community.
 
 Parameters
 ----------
@@ -18,7 +19,8 @@ for available apps and/or where user specific apps should be installed.The key
 web root. The key **writable** indicates if a user can install apps in that
 folder.
 
-.. note:: If you want to make sure that the default **/apps/** folder only contains apps shipped with ownCloud, you should follow the example and set-up a **/apps2/** folder which will be used to store all apps downloaded by users
+.. note:: If you want to make sure that the default **/apps/** folder only contains apps shipped with ownCloud, you
+ should follow the example and set-up a **/apps2/** folder which will be used to store all apps downloaded by users
 
 .. code-block:: php
 
@@ -42,7 +44,7 @@ Use your own appstore
 ~~~~~~~~~~~~~~~~~~~~~
 If you want to allow the installation of apps from the apps store you have to
 set **appstoreenabled** parameter, but this can only be done if at least one
-of the configured apps directories is writeable. 
+of the configured apps directories is writable.
 
 The **appstoreurl** is used to set the http path to the ownCloud apps store. The appstore server has to use :abbr:`OCS (Open Collaboration Services)`.
 

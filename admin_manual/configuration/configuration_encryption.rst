@@ -52,6 +52,6 @@ at the back-end. Since the encryption password must be the same as the user's lo
 this will result in a non-functional encryption system. If the recovery feature was enabled,
 the administrator will be able to recover the user's files directly over the recovery feature.
 See the description above. Otherwise the user will be informed that his log-in password and
-his encryption password no longer matchs after his next log-in. In this case the user will be
+his encryption password no longer matches after his next log-in. In this case the user will be
 able to adjust his encryption password in the personal settings by providing both, his old and
 his new log-in password.

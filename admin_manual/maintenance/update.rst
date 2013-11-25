@@ -1,11 +1,13 @@
 Updating ownCloud
 =================
 
-.. note:: If you have installed ownCloud from a repository, your package management should take care of it. Probably you will need to look for compatible third party applications yourself. **Always do backups anyway.**
+.. note:: If you have installed ownCloud from a repository, your package management should take care of it. Probably
+you will need to look for compatible third party applications yourself. **Always do backups anyway.**
 
 Update
 ------
-Updating means updating ownCloud to the latest *point release*, e.g. ownCloud 4.0.6 → 4.0.7. This procedure uses the ownCloud updater plugin called "Updater": it's an internal application already present in your ownCloud installation.
+Updating means updating ownCloud to the latest *point release*, e.g. ownCloud 4.0.6 → 4.0.7. This procedure uses the
+ownCloud updater plugin called "Updater": it's an internal application already present in your ownCloud installation.
 
 To update ownCloud, follow those steps:
 
@@ -15,7 +17,8 @@ To update ownCloud, follow those steps:
 #. Click 'Update'.
 #. Refresh the page with Ctrl+F5.
 
-If this procedure doesn't work (for example, ownCloud 5.0.10 doesn't show new any new version) you could try to perform a full upgrade to update to the lastest point release (see below).
+If this procedure doesn't work (for example, ownCloud 5.0.10 doesn't show new any new version) you could try to perform
+a full upgrade to update to the latest point release (see below).
 
 Upgrade
 -------
@@ -38,8 +41,9 @@ To upgrade ownCloud, follow those steps:
     
     ls | grep -v '\(data\)\|\(config\)' | xargs rm -r
 
-#. Unpack the release tarball in the owncloud directory (or copy the
-   files thereto). Assuming that your installation directory is called 'owncloud' and that it's inside your working directory, you could execute this command:
+#. Unpack the release tarball in the ownCloud directory (or copy the
+   files thereto). Assuming that your installation directory is called 'owncloud' and that it's inside your working
+   directory, you could execute this command:
    
     tar xfj owncloud-latest.tar.bz2
    

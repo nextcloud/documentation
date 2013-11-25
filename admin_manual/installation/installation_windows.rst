@@ -205,7 +205,7 @@ the www root, or something else.
    password and desired instance name – use the user name and password you setup
    for MySQL earlier in step 3, and pick any name for the database instance.
 
-.. note:: The owncloud admin password and the MySQL password CANNOT be the same
+.. note:: The ownCloud admin password and the MySQL password CANNOT be the same
           in any way.
 
 11. Click next, and ownCloud should have you logged in as the admin user, and

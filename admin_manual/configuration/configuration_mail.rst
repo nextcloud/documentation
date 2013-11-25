@@ -53,7 +53,7 @@ necessary that you increase the SMTP timeout to e.g. 30s:
 
     "mail_smtptimeout"  => 30,
 
-If the SMTP server accepts unsecure connections, the default setting can be
+If the SMTP server accepts insecure connections, the default setting can be
 used:
 
 .. code-block:: php
@@ -139,7 +139,7 @@ Sendmail
 ~~~~~~~~
 If you want to use the well known Sendmail program to send email, it is
 necessary to have an installed and working email system on your \*nix server.
-The sendmail binary (**/usr/sbin/sendmail**) is ususally part of that system.
+The sendmail binary (**/usr/sbin/sendmail**) is usually part of that system.
 ownCloud should be able to send email out of the box.
 
 .. code-block:: php
@@ -194,7 +194,8 @@ email sender address, e.g.::
   john@domain.dom
 
 Next you need to enter your login and an *invalid* password. As soon as you
-press the login button the login mask reappears and a **I’ve forgotten my password** link will be shown above the login field. Click on that link, re-enter your login and press the **Reset password** button - that's all.
+press the login button the login mask reappears and a **I’ve forgotten my password** link will be shown above the login
+field. Click on that link, re-enter your login and press the **Reset password** button - that's all.
 
 Trouble shooting
 ----------------

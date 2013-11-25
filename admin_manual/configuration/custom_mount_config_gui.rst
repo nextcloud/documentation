@@ -54,14 +54,19 @@ to be entered:
 
 Dropbox
 ~~~~~~
-Mounting a Dropbox account requires that you create an app with Dropbox and then provide the app key and secret to the external storage configuration user interface. Go to My apps at Dropbox and create an app. Select *Full Dropbox* access level. Copy the app key and app secret and paste them into the corresponding fields for the Dropbox storage.
+Mounting a Dropbox account requires that you create an app with Dropbox and then provide the app key and secret to the
+external storage configuration user interface. Go to My apps at Dropbox and create an app. Select *Full Dropbox* access
+level. Copy the app key and app secret and paste them into the corresponding fields for the Dropbox storage.
 
 Click the *Grant access* button and you will be redirected to a Dropbox website to give ownCloud permission to access your account.
 
 
 Google Drive
 ~~~~~~~~~~~
-Mounting a Google Drive account requires that you create an API project in the Google APIs Console. Select `Services` and enable both `Drive API` and `Drive SDK`. Next select `API Access` and click `Create an OAuth 2.0 client ID`. Fill out the Branding Information as you see fit and click Next. In Client Id Settings select `Web application` for the  Application type. Next to `Your site or hostname` click  more options) and add the following to the Authorized Redirect URIs:
+Mounting a Google Drive account requires that you create an API project in the Google APIs Console. Select `Services`
+and enable both `Drive API` and `Drive SDK`. Next select `API Access` and click `Create an OAuth 2.0 client ID`. Fill
+out the Branding Information as you see fit and click Next. In Client Id Settings select `Web application` for the
+Application type. Next to `Your site or hostname` click  more options) and add the following to the Authorized Redirect URIs:
 
 - http://yourowncloud/index.php/settings/personal
 - http://yourowncloud/index.php/settings/admin

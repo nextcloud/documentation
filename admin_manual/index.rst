@@ -36,7 +36,8 @@ Installation
 This chapter will introduce you to the installation of ownCloud in different
 scenarios.
 
-If you want to just try ownCloud in a virtual machine without any configuration, check the section :doc:`installation/installation_appliance`, where you will find ready-to-use images.
+If you want to just try ownCloud in a virtual machine without any configuration, check the section
+:doc:`installation/installation_appliance`, where you will find ready-to-use images.
 
 * :doc:`installation/installation_appliance`
 * :doc:`installation/installation_linux`
@@ -48,7 +49,7 @@ If you want to just try ownCloud in a virtual machine without any configuration,
 
 Configuration
 =============
-This chapter covers ownCloud and Webserver configuration.
+This chapter covers ownCloud and web server configuration.
 
 * :doc:`configuration/configuration_3rdparty`
 * :doc:`configuration/configuration_apps`
