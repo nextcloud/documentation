@@ -20,7 +20,7 @@ imagick:
 ownCloud needs the imagick php extension to generate previews from office, pdf
 and svg files. For further information on how to install the imagick php
 extension on your system take a look at the `PHP documentation <http://www.php.net/manual/en/imagick.installation.php>`_.
-If imagick is not installed, ownCloud will show filetype icons instead of previews.
+If imagick is not installed, ownCloud will show file type icons instead of previews.
 
 LibreOffice / OpenOffice:
 ~~~~~~~~~~~~~~~~~~~~~~~~~
