@@ -19,7 +19,8 @@ You can choose between the following options:
 Cron-Jobs
 ---------
 
-OwnCloud requires various automated background jobs to be run. There are three methods to achieve this. The default way is AJAX and the recommended way is cron.
+OwnCloud requires various automated background jobs to be run. There are three methods to achieve this.
+The default way is AJAX and the recommended way is cron.
 
 AJAX
 ~~~~
@@ -53,7 +54,7 @@ may have.
 
 **Example**
 
-To run a cron job on a *nix system, e.g. every 15min, under the default webserver
+To run a cron job on a *nix system, e.g. every 15min, under the default web server
 user, e.g. **www-data**, you need to set-up the following cron job to call the
 **cron.php** script. Please check the crontab man page for the exact command syntax.
 

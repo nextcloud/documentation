@@ -20,7 +20,7 @@ imagick:
 ownCloud needs the imagick php extension to generate previews from office, pdf
 and svg files. For further information on how to install the imagick php
 extension on your system take a look at the `PHP documentation <http://www.php.net/manual/en/imagick.installation.php>`_.
-If imagick is not installed, ownCloud will show filetype icons instead of previews.
+If imagick is not installed, ownCloud will show file type icons instead of previews.
 
 LibreOffice / OpenOffice:
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -41,7 +41,7 @@ Parameters
 ----------
 Disabling previews:
 ~~~~~~~~~~~~~~~~~~~
-Under certian circumstances like a big userbase or limited ressources you might
+Under certain circumstances like a big user base or limited resources you might
 want to consider disabling previews.
 
 .. code-block:: php
@@ -110,14 +110,14 @@ If you want to disable the maximum scaling factor, you can set the config value 
 LibreOffice / OpenOffice:
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 You can set a custom path for the LibreOffice binary. If LibreOffice is not yet
-available on your systen, you can also use OpenOffice instead.
+available on your system, you can also use OpenOffice instead.
 
 .. code-block:: php
 
   <?php
     'preview_libreoffice_path' => '/usr/bin/libreoffice',
 
-You can set custom LibreOffice / OpenOffice command line paramters by setting
+You can set custom LibreOffice / OpenOffice command line parameters by setting
 the preview_office_cl_parameters option.
 
 .. code-block:: php

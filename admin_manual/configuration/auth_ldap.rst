@@ -177,7 +177,7 @@ User Display Name Field:
   The attribute that should be used as display name in ownCloud. Prior to
   ownCloud 5 it was used as internal user name. This is not the case anymore.
   It also means that display names are not permanent in ownCloud, i.e. if the
-  attribute's value changes in LDAP, it changes in ownCloud too. Display names
+  attribute value changes in LDAP, it changes in ownCloud too. Display names
   to not need to be unique, but you rather want to specify a more or less unique
   attribute here to avoid confusion.
 
@@ -185,7 +185,7 @@ User Display Name Field:
 
 Base User Tree:
   The base DN of LDAP, from where all users can be reached. It needs to be given
-  completely despite to the Base DN from the Basic settings. You can specifiy
+  completely despite to the Base DN from the Basic settings. You can specify
   multiple base trees, one in each line.
 
   * Example:
@@ -215,7 +215,7 @@ Group Display Name Field:
 Base Group Tree:
   The base DN of LDAP, from where all groups can be reached.
   It needs to be given completely despite to the Base DN from the Basic
-  settings. You can specifiy multiple base trees, one in each line.
+  settings. You can specify multiple base trees, one in each line.
 
   * Example:
 
@@ -269,7 +269,7 @@ User Home Folder Naming Rule:
   By default, the ownCloud creates the user
   directory, where all files and meta data are kept, according to the ownCloud
   user name. You may want to override this setting and name it after an
-  attribute's value. The attribute given can also return an absolute path, e.g.
+  attribute value. The attribute given can also return an absolute path, e.g.
   ``/mnt/storage43/alice``. Leave it empty for default behavior.
 
   * Example: *cn*
@@ -299,7 +299,7 @@ Internal Username:
 
   The internal username is also the default name for the user home folder in
   ownCloud. It is also a part of remote URLs, for instance for all \*DAV services.
-  With this setting the default behaviour can be overriden. To achieve a similar
+  With this setting the default behaviour can be overridden. To achieve a similar
   behaviour as before ownCloud 5 enter the user display name attribute in the
   following field.
 
@@ -309,7 +309,7 @@ Internal Username:
   * Example: *uid*
 
 Override UUID detection
-  By default, ownCloud autodetects the UUID attribute. The UUID attribute is
+  By default, ownCloud auto-detects the UUID attribute. The UUID attribute is
   used to doubtlessly identify LDAP users and groups. Also, the internal
   username will be created based on the UUID, if not specified otherwise above.
 
