@@ -19,8 +19,8 @@ Microsoft SQL Server is not yet support.
 Enabling SSL is not yet covered by this section.
 
 .. note:: If you make your desktop machine or server available outside of your
-LAN, you must maintain it. Monitor the logs, manage the access, apply patches to
-avoid compromising the system at large.
+          LAN, you must maintain it. Monitor the logs, manage the access, apply patches to
+          avoid compromising the system at large.
 
 There are 4 primary steps to the installation, and then a 5th step
 required for configuring everything to allow files larger than the
@@ -183,11 +183,11 @@ Installing ownCloud
    your wwwroot directory (probably **C:\\inetpub\\wwwroot**).
 
 .. note:: You cannot install directly into the directory **wwwroot** from jzip,
-as only the administrator can unzip into the **wwwroot** directory. If you save
-it in a different folder, and then move the files into **wwwroot** in windows
-explorer, it works. This will install ownCloud locally in your root web
-directory. You can use a subdirectory called owncloud, or whatever you want –
-the www root, or something else.
+          as only the administrator can unzip into the **wwwroot** directory. If you save
+          it in a different folder, and then move the files into **wwwroot** in windows
+          explorer, it works. This will install ownCloud locally in your root web
+          directory. You can use a subdirectory called owncloud, or whatever you want –
+          the www root, or something else.
 
 4. It is now time to give write access to the ownCloud directory to the ownCloud
    server: Navigate your windows explorer over to  **inetpub/wwwroot/owncloud** (or
@@ -202,8 +202,8 @@ the www root, or something else.
 9. At this page, you enter your desired ownCloud user name and password for the
    administrator, and expand the little arrow.
 10. Select MySQL as the database, and enter your MySQL database user name,
-   password and desired instance name – use the user name and password you setup
-   for MySQL earlier in step 3, and pick any name for the database instance.
+    password and desired instance name – use the user name and password you setup
+    for MySQL earlier in step 3, and pick any name for the database instance.
 
 .. note:: The ownCloud admin password and the MySQL password CANNOT be the same
           in any way.
