@@ -1,8 +1,10 @@
 Database Configuration
 ======================
 
-Owncloud requires a database where administrative data will be held. Four different database types are currently
-supported, `MySQL <http://www.mysql.com/>`_, `MariaDB <https://mariadb.org/>`_, `SQLite <http://www.sqlite.org/>`_, and `PostgreSQL <http://www.postgresql.org/>`_. MySQL or MariaDB are the recommended database engines. By default SQLite is choosen because it is a file based database with the least administrative overhead.
+ownCloud requires a database where administrative data will be held. Four different database types are currently
+supported, `MySQL <http://www.mysql.com/>`_, `MariaDB <https://mariadb.org/>`_, `SQLite <http://www.sqlite.org/>`_,
+and `PostgreSQL <http://www.postgresql.org/>`_. MySQL or MariaDB are the recommended database engines. By default
+SQLite is chosen because it is a file based database with the least administrative overhead.
 
 .. note:: Because SQLite handles multiple users very badly SQLite is only recommended for single user ownCloud installations
 
@@ -22,7 +24,8 @@ If you decide to use a MySQL or MariaDB database make sure that you have install
 enabled the MySQL extension in PHP and that the **mysql.default_socket**
 points to the correct socket (if the database runs on same server as ownCloud).
 
-Please note that MariaDB is backwards compatible with MySQL, so all instructions will work for both. You will not need to replace mysql with anything.
+Please note that MariaDB is backwards compatible with MySQL, so all instructions will work for both.
+You will not need to replace mysql with anything.
 
 The PHP configuration in :file:`/etc/php5/conf.d/mysql.ini` could look like this:
 
@@ -39,7 +42,7 @@ The PHP configuration in :file:`/etc/php5/conf.d/mysql.ini` could look like this
   mysql.max_persistent=-1
   mysql.max_links=-1
   mysql.default_port=
-  mysql.default_socket=/var/lib/mysql/mysql.sock  # debian squeeze: /var/run/mysqld/mysqld.sock
+  mysql.default_socket=/var/lib/mysql/mysql.sock  # Debian squeeze: /var/run/mysqld/mysqld.sock
   mysql.default_host=
   mysql.default_user=
   mysql.default_password=
@@ -96,7 +99,10 @@ It is not necessary to create a database and a database user in advance
 because this will automatically be done by ownCloud when you login for the
 first time.
 
-In the ownCloud counfiguration in :file:`config/config.php` you need to set at least the **datadirectory** parameter to the directory where your data and database should be stored. Note that for the PDO SQLite driver this directory must be writable (this is recommended for ownCloud anyway).  No authentication is required to access the database therefore most of the default parameters could be taken as is:
+In the ownCloud configuration in :file:`config/config.php` you need to set at least the **datadirectory** parameter to
+the directory where your data and database should be stored. Note that for the PDO SQLite driver this directory must
+be writable (this is recommended for ownCloud anyway).  No authentication is required to access the database therefore
+most of the default parameters could be taken as is:
 
 .. code-block:: php
 
@@ -172,24 +178,30 @@ Oracle Database
 ~~~~~~~~~~~~~~~
 
 If you are deploying to an Oracle database make sure that you have installed
-and enabled the `Oracle extension <http://php.net/manual/en/book.oci8.php>`_ in PHP. The PHP configuration in :file:`/etc/php5/conf.d/oci8.ini` could look like this:
+and enabled the `Oracle extension <http://php.net/manual/en/book.oci8.php>`_ in PHP. The PHP configuration in
+:file:`/etc/php5/conf.d/oci8.ini` could look like this:
 
 .. code-block:: ini
 
   # configuration for PHP Oracle extension
   extension=oci8.so
 
-Make sure that the Oracle environment has been set up for the process trying to use the Oracle extension. For a local Oracle XE installation this can be done by exporting the following environment variables (eg. in :file:`/etc/apache2/envvars` for Apache)
+Make sure that the Oracle environment has been set up for the process trying to use the Oracle extension.
+For a local Oracle XE installation this can be done by exporting the following environment variables
+(eg. in :file:`/etc/apache2/envvars` for Apache)
 
 .. code-block:: bash
 
   export ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe
   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME/lib
 
-Installing and configuring Oracle support for PHP is way out of scope for this document. The official Oracle documentation called `The Underground PHP and Oracle Manual <http://www.oracle.com/technetwork/topics/php/underground-php-oracle-manual-098250.html>`_ should help you through the process.
+Installing and configuring Oracle support for PHP is way out of scope for this document.
+The official Oracle documentation called `The Underground PHP and Oracle Manual <http://www.oracle.com/technetwork/topics/php/underground-php-oracle-manual-098250.html>`_
+should help you through the process.
 
-Creating a database user for ownCloud can be done by using the sqlplus command line
-interface or the Oracle Application Express web interface. The database tables will be created by ownCloud when you login for the first time.
+Creating a database user for ownCloud can be done by using the sqlplus command line interface
+or the Oracle Application Express web interface.
+The database tables will be created by ownCloud when you login for the first time.
 
 To start the Oracle command line mode with a DBA account use::
 
@@ -234,7 +246,8 @@ ownCloud to config file could look like this:
     "dbpassword"    => "password",
     "dbhost"        => "localhost",
 
-.. note:: This example assumes you are running an Oracle Express Edition on ``localhost``. The ``dbname`` is the name of the Oracle instance. For Oracle Express Edition it is always ``XE``. 
+.. note:: This example assumes you are running an Oracle Express Edition on ``localhost``. The ``dbname`` is the name
+of the Oracle instance. For Oracle Express Edition it is always ``XE``.
 
 Trouble Shooting
 ----------------
@@ -256,7 +269,7 @@ Use the ping command to check the server availability::
 How can I find out if a created user can access a database?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The easiet way to test if a database can be accessed is by starting the
+The easiest way to test if a database can be accessed is by starting the
 command line interface:
 
 **SQLite**::
@@ -343,3 +356,4 @@ Useful SQL commands
   MySQL     : quit
   PostgreSQL: \q
   Oracle    : quit
+
