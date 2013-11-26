@@ -68,8 +68,6 @@ There are two config options to set the maximum size of a preview.
     'preview_max_x' => null,
     'preview_max_y' => null,
 
-.. code-block:: php
-
 By default, both config options are set to null. 'Null' is equal to no limit.
 Numeric values represent the size in pixel. The following code limits previews
 to a maximum size of 100px by 100px:
@@ -79,8 +77,6 @@ to a maximum size of 100px by 100px:
   <?php
     'preview_max_x' => 100,
     'preview_max_y' => 100,
-
-.. code-block:: php
 
 'preview_max_x' represents the x-axis and 'preview_max_y' represents the y-axis.
 
