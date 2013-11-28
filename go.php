@@ -7,7 +7,7 @@ $mapping = array(
                'admin-ldap'              => '/admin_manual/auth_ldap.html',
                'admin-dir_permissions'   => '/admin_manual/installation/installation_source.html#set-the-directory-permissions',
                'admin-source_install'    => '/admin_manual/installation/installation_source.html',
-               'admin-install'           => '/admin_manual/installation.html',
+               'admin-install'           => '/admin_manual/installation/index.html',
                
                'user-webdav'             => '/user_manual/files/files.html',
                'user-manual'             => '/user_manual',
