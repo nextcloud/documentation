@@ -33,8 +33,8 @@ your data to a third party storage provider.
 Decrypt your data again
 -----------------------
 
-If the encryption app was disabled every user can decrypt his files again in
-his personal settings. After this was done he can continue to use his ownCloud
+If the encryption app was disabled users can decrypt their files again in their
+personal settings. After this was done they can continue to use their ownCloud
 without encryption.
 
 
