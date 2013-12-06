@@ -23,9 +23,8 @@ The current version encrypts all your files stored in ownCloud.
 
 At the moment we don't encrypt:
 
-- old versions (versions created before the encryption app was enabled)
 - old files in the trash bin (files which were deleted before the encryption app was enabled)
-- image thumbnails from the gallery app
+- image thumbnails from the gallery app and previews from the files app
 - search index from the full text search app
 
 All this data is stored directly on your ownCloud server, so you don't have to worry to expose
@@ -34,13 +33,10 @@ your data to a third party storage provider.
 Decrypt your data again
 -----------------------
 
-Corrently there is no way to decrypt your files directly on the server if you decide to stop
-using the encryption app. The only way to get a comlete copy of your unencrypted data is
-to download/sync all files as long as the encryption app is enabled. After the encryption
-app was disabled you can upload your unencrypted data again.
+If the encryption app was disabled every user can decrypt his files again in
+his personal settings. After this was done he can continue to use his ownCloud
+without encryption.
 
-It is already planned to add a option to switch from encrypted to unencrypted files
-directly on the server.
 
 Settings
 --------
