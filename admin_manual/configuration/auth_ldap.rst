@@ -10,8 +10,8 @@ logging in with LDAP credentials including:
 * Versioning, external Storages and all other ownCloud goodies
 
 To connect to an LDAP server the configuration needs to be set up properly.
-Once the LDAP backend is activated (Settings→Apps, choose **LDAP user and group
-backend**, click on **Enable**) the configuration can be found on
+Once the LDAP backend is activated (Apps Sidebar→Apps, choose **LDAP user and
+group backend**, click on **Enable**) the configuration can be found on
 Settings→Admin. Read on for a detailed description of the configuration fields.
 
 Basic Settings
