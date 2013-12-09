@@ -7,7 +7,7 @@ logging in with LDAP credentials including:
 * LDAP group support
 * File sharing with users and groups
 * Access via WebDAV and of course ownCloud Desktop Client
-* Versioning, external Storages and all other ownCloud Goodies
+* Versioning, external Storages and all other ownCloud goodies
 
 To connect to an LDAP server the configuration needs to be set up properly.
 Once the LDAP backend is activated (Settings→Apps, choose **LDAP user and group
