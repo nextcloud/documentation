@@ -14,54 +14,88 @@ Once the LDAP backend is activated (Apps Sidebar→Apps, choose **LDAP user and
 group backend**, click on **Enable**) the configuration can be found on
 Settings→Admin. Read on for a detailed description of the configuration fields.
 
-Basic Settings
---------------
+Configuration
+-------------
 
-The basic settings are all you need. However, if you have a larger directory,
-custom requirements or need to connect to Active Directory (AD) you want to have
-a look on the advanced settings afterwards. The basic part allows you to set up
-a working connection to your LDAP server and use it with ownCloud.
+The LDAP backend follows a wizard-like approach, splitted into four tabs. A
+correctly completed first tab ("Server") is mandatory to access the other tabs.
+Also, the other tabs need to be reviewed by the admin, however the necessary
+settings are detected automatically. An indicator will show whether the
+configuration is incomplete, incorrect or OK.
 
-.. figure:: ../images/ldap-basic-settings-oc5.png
+The other tabs can be navigated by clicking the tabs or by using the *Continue*
+and *Back* buttons. They are located on the lower right, next to the status
+indicator.
 
-   LDAP Basic Settings
+Server
+~~~~~~
 
-Note that a hint will be shown on the right hand side, when hovering with the
-mouse over an input field. This gives you more context information while
-filling out the settings.
+The server tab contains the basic information on the LDAP server. They make sure
+that ownCloud will be able to connect to LDAP and be able to read data from
+there. The admin at least needs to provide a hostname. If anonymous access is
+not possible he will need to provide an account DN and a password, too. ownCloud
+attempts to auto-detect the port and the base DN.
 
-Settings Details
-~~~~~~~~~~~~~~~~
+.. figure:: ../images/ldap-wizard-1-server.png
 
 Server configuration:
   ownCloud can be configured to connect to multiple LDAP servers. Using this
   control you can pick a configuration you want to edit or add a new one. The
   button **Delete Configuration** deletes the current configuration.
 
-  * *Example: 1. Server*
-
 Host:
   The host name of the LDAP server. It can also be a **ldaps://** URI, for
   instance.
 
-  * Example: *directory.my-company.com*
+  It is also possible to pass a port number, which speeds up port detection. It
+  is especially useful, if a custom port is used. ownCloud will move the value
+  to the port field subsequently.
 
-Base DN:
-  The base DN of LDAP, from where all users and groups can be reached.
-  Separated Base DNs for users and groups can be set in the Advanced
-  tab. Nevertheless, this field is mandatory.
+  Examples:
 
-  * Example: *dc=my-company,dc=com*
+  * *directory.my-company.com*
+  * *ldaps://directory.my-company.com*
+  * *directory.my-company.com:9876*
+
+Port:
+  The port on which to connect to the LDAP server. The field is disabled in the
+  beginning of a new configuration. The port will be detected automatically,
+  if the LDAP server is running on a standard port. After ownCloud attempted to
+  determine the port, the field will be enabled for user input. A successfully
+  found port will be inserted by ownCloud, of course.
+
+  Example:
+
+  * *389*
 
 User DN:
   The name as DN of a user who is able to do searches in the LDAP
-  directory. Let it empty for anonymous access. It is recommended to have a
+  directory. Leave it empty for anonymous access. It is recommended to have a
   special system user for ownCloud.
 
-  * Example: *uid=owncloudsystemuser,cn=sysusers,dc=my-company,dc=com*
+  Example:
+
+  * *uid=owncloudsystemuser,cn=sysusers,dc=my-company,dc=com*
 
 Password:
   The password for the user given above. Empty for anonymous access.
+
+Base DN:
+  The base DN of LDAP, from where all users and groups can be reached. Separated
+  Base DNs for users and groups can be set in the Advanced tab. Nevertheless,
+  this field is mandatory. ownCloud attempts to determine the Base DN according
+  to the provided User DN or the provided Host.
+
+  Example:
+
+  * *dc=my-company,dc=com*
+
+
+Basic Settings
+--------------
+
+Settings Details
+~~~~~~~~~~~~~~~~
 
 User Login Filter:
   The filter to use when a users tries to login. Use **%uid** as placeholder
@@ -111,10 +145,7 @@ Configuration Active:
 
   * Example: *[X]*
 
-Port:
-  The port on which to connect to the LDAP server.
 
-  * Example: *389*
 
 Backup (Replica) Host:
   A backup server can be defined here. ownCloud tries to connect to the backup
