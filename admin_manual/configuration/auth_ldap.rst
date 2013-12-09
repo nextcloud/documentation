@@ -23,6 +23,10 @@ Also, the other tabs need to be reviewed by the admin, however the necessary
 settings are detected automatically. An indicator will show whether the
 configuration is incomplete, incorrect or OK.
 
+The settings are changed automatically, as soon as a input element looses the
+focus, i.e. the cursor is taken away by clicking somewhere else or pressing the
+tabulator key.
+
 The other tabs can be navigated by clicking the tabs or by using the *Continue*
 and *Back* buttons. They are located on the lower right, next to the status
 indicator.
@@ -90,6 +94,42 @@ Base DN:
 
   * *dc=my-company,dc=com*
 
+User Filter
+~~~~~~~~~~~
+
+The settings in the user filter tab determine which LDAP users will appear in
+and are allowed to log in into ownCloud. It is also possible to enter a raw LDAP
+filter.
+
+.. figure:: ../images/ldap-wizard-2-user.png
+
+only those object classes:
+  ownCloud will determine the object classes that are typically availalble for
+  (ideally only user) objects in your LDAP. ownCloud will automatically select
+  the object class that returns the highest amount of users. You can select
+  multiple object classes.
+
+only from those groups:
+  If your LDAP server supports the member-of-overlay in LDAP filters, you can
+  define that only users from one or more certain groups are allowed to
+  appear and log in into ownCloud. By default, no value will be selected. You
+  can select multiple groups.
+
+  If your LDAP server does not support the member-of-overlay in LDAP filters,
+  the input field is disabled. Please contact your LDAP administrator.
+
+Edit raw filter instead:
+  Clicking on this text will toggle the filter mode. Instead of the assisted
+  approach, you can enter the raw LDAP filter directly in the appearing field.
+
+  Example:
+
+  * *objectClass=inetOrgPerson*
+
+x Users found:
+  This is an indicator that tells you approximately how many users will be
+  allowed to access ownCloud. The number will update after any change you do.
+
 
 Basic Settings
 --------------
@@ -107,7 +147,7 @@ User Login Filter:
 User List Filter:
   The filter to use when a search for users will be executed.
 
-  * Example: *objectClass=posixAccount*
+
 
 Group Filter:
   The filter to use when a search for groups will be executed. In
