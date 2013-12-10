@@ -545,7 +545,7 @@ Duplicating Server Configurations
 In case you have a working configuration and want to create a similar one or
 "snapshot" configurations before modifying them you can do the following:
 
-#. Go to the **LDAP Basic** tab
+#. Go to the **Server** tab
 #. On **Server Configuration** choose *Add Server Configuration*
 #. Answer the question *Take over settings from recent server configuration?*
    with *yes*.
