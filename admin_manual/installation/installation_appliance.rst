@@ -24,7 +24,7 @@ These are tutorials provided by the user communities of the respective appliance
 -  `QNAP Guide`_ for QNAP NAS appliances
 -  `OpenWrt Guide`_ for the popular embedded distribution for routers and NAS devices.
 
-.. todo:: Tutorials for running owncloud on Synology and Dreamplug.
+.. todo:: Tutorials for running ownCloud on Synology and Dreamplug.
 
 .. _OpenWrt Guide: http://wiki.openwrt.org/doc/howto/owncloud
 .. _SUSE Studio, ownCloud on openSuSE: http://susestudio.com/a/TadMax/owncloud-in-a-box

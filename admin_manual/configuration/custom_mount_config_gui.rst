@@ -54,7 +54,9 @@ to be entered:
 
 Dropbox
 ~~~~~~~
-Mounting a Dropbox account requires that you create an app with Dropbox and then provide the app key and secret to the external storage configuration user interface. Go to My apps at Dropbox and create an app. Select *Full Dropbox* access level. Copy the app key and app secret and paste them into the corresponding fields for the Dropbox storage.
+Mounting a Dropbox account requires that you create an app with Dropbox and then provide the app key and secret to the
+external storage configuration user interface. Go to My apps at Dropbox and create an app. Select *Full Dropbox* access
+level. Copy the app key and app secret and paste them into the corresponding fields for the Dropbox storage.
 
 Click the *Grant access* button and you will be redirected to a Dropbox website to give ownCloud permission to access your account.
 

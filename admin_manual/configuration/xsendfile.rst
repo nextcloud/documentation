@@ -1,10 +1,11 @@
 Serving static files via web server
 ===================================
 Since ownCloud 5 it is possible to let web servers handle static file serving.
-This should generally improve performance (web servers are optimized for this) and in some cases permits controlled file serving (i.e. pause
-and resume downloads).
+This should generally improve performance (web servers are optimized for this) and in some cases permits controlled
+file serving (i.e. pause and resume downloads).
 
-.. note :: This feature can currently only be activated for local files, i.e. files inside the **data/** directory and local mounts. Controlled file serving **does not work for generated zip files**. This is due to how temporary files are created.
+.. note :: This feature can currently only be activated for local files, i.e. files inside the **data/** directory
+and local mounts. Controlled file serving **does not work for generated zip files**. This is due to how temporary files are created.
 
 Apache2 (X-Sendfile)
 --------------------
@@ -48,12 +49,13 @@ For versions >=0.10 (e.g. Ubuntu 12.10)
 * **SetEnv MOD_X_SENDFILE_ENABLED**: tells ownCloud scripts that they should add the X-Sendfile header when serving files
 * **XSendFile**: enables web server handling of X-Sendfile headers (and therefore file serving) for the specified Directory
 * **XSendFileAllowAbove (<0.10)**: enables file serving through web server on path outside the specified Directory. This is needed for PHP temporary directory where zip files are created and for configured local mounts which may reside outside data directory
-* **XSendFilePath (>=0.10)**: a white list of paths that the web server is allowed to serve outside of the specified Directory. At least PHP temporary directory concatenated with *oc-noclean* must be configured. Temporary zip files will be created inside this directory when using mod_xsendfile. Other paths which correspond to local mounts should be configured here aswell. For a more in-dept documentation of this directive refer to mod_xsendfile website linked above
+* **XSendFilePath (>=0.10)**: a white list of paths that the web server is allowed to serve outside of the specified Directory. At least PHP temporary directory concatenated with *oc-noclean* must be configured. Temporary zip files will be created inside this directory when using mod_xsendfile. Other paths which correspond to local mounts should be configured here as well. For a more in-dept documentation of this directive refer to mod_xsendfile website linked above
 
 
 LigHTTPd (X-Sendfile2)
 ----------------------
-LigHTTPd uses similar headers to Apache2, apart from the fact that it does not handle partial downloads in the same way Apache2 does. For this reason, a different method is used for LigHTTPd.
+LigHTTPd uses similar headers to Apache2, apart from the fact that it does not handle partial downloads in the same way
+Apache2 does. For this reason, a different method is used for LigHTTPd.
 
 Installation
 ~~~~~~~~~~~~
@@ -77,7 +79,9 @@ Your server configuration should include the following statements::
 
 Nginx (X-Accel-Redirect)
 ------------------------
-Nginx supports handling of static files differently from Apache. Documentation can be found in the Nginx Wiki section `Mod X-Sendfile <http://wiki.nginx.org/XSendfile>`_ and section `X-Accell <http://wiki.nginx.org/X-accel>`_. The header used by Nginx is X-Accel-Redirect.
+Nginx supports handling of static files differently from Apache. Documentation can be found in the Nginx Wiki
+section `Mod X-Sendfile <http://wiki.nginx.org/XSendfile>`_ and section `X-Accell <http://wiki.nginx.org/X-accel>`_.
+The header used by Nginx is X-Accel-Redirect.
 
 Installation
 ~~~~~~~~~~~~

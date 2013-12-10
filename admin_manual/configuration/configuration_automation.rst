@@ -2,9 +2,13 @@ Automatic Configuration
 =======================
 
 If you need to install ownCloud on multiple servers you normally do not want
-to set-up each instance separately as described in the :doc:`configuration_database`. For this reason the automatic configuration feature has been introduced.
+to set-up each instance separately as described in the :doc:`configuration_database`.
+For this reason the automatic configuration feature has been introduced.
 
-To take advantage of this feature you need to create a configuration file, called :file:`../owncloud/config/autoconfig.php` and set the parameters as required. You can provide all parameters or just part of them - parameters which haven't been provided (if any) will be asked at "Finish setup" screen at first run of ownCloud.
+To take advantage of this feature you need to create a configuration file, called
+:file:`../owncloud/config/autoconfig.php` and set the parameters as required.
+You can provide all parameters or just part of them - parameters which haven't been provided (if any) will be asked
+at "Finish setup" screen at first run of ownCloud.
 
 The :file:`../owncloud/config/autoconfig.php` will be automatically removed after the initial configuration has been applied.
 
@@ -51,7 +55,8 @@ With the configuration below the "Finish setup" screen still will ask for data d
 
 MySQL Database
 ~~~~~~~~~~~~~~
-Keep in mind that the automatic configuration does not unburden you from creating the database user and database in advance, as described in :doc:`configuration_database`.
+Keep in mind that the automatic configuration does not unburden you from creating the database user and database
+in advance, as described in :doc:`configuration_database`.
 
 With the configuration below the "Finish setup" screen still will ask for data directory and admin credentials settings.
 
@@ -69,7 +74,8 @@ With the configuration below the "Finish setup" screen still will ask for data d
 
 PostgreSQL Database
 ~~~~~~~~~~~~~~~~~~~
-Keep in mind that the automatic configuration does not unburden you from creating the database user and database in advance, as described in :doc:`configuration_database`.
+Keep in mind that the automatic configuration does not unburden you from creating the database user and database
+in advance, as described in :doc:`configuration_database`.
 
 With the configuration below the "Finish setup" screen still will ask for data directory and admin credentials settings.
 
@@ -87,7 +93,8 @@ With the configuration below the "Finish setup" screen still will ask for data d
     
 All Parameters
 ~~~~~~~~~~~~~~
-Keep in mind that the automatic configuration does not unburden you from creating the database user and database in advance, as described in :doc:`configuration_database`.
+Keep in mind that the automatic configuration does not unburden you from creating the database user and database
+in advance, as described in :doc:`configuration_database`.
 
 With the configuration below "Finish setup" will be skipped at first ownCloud run since all parameters are already preconfigured.
 

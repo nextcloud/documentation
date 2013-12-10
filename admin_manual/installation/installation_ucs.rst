@@ -79,7 +79,7 @@ Click on ownCloud 5 and follow the instructions.
 .. image:: /images/ucs-app-center-install.png
 
 In the UCS App Center, you can also upgrade from ownCloud 4.5 by installing
-ownCloud 5.0. They are provided as seperate apps. It is only possible to have
+ownCloud 5.0. They are provided as separate apps. It is only possible to have
 one version of ownCloud installed.
 
 Manually by download
@@ -120,7 +120,7 @@ Postconfiguration (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There is only one local admin user “owncloudadmin”, you can find his password in
-:file:`/etc/owncloudadmin.secret`. Use this account, if you want to change basic
+`/etc/owncloudadmin.secret`. Use this account, if you want to change basic
 ownCloud settings.
 
 In the installation process a virtual host is set up (Apache is required

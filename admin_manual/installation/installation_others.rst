@@ -86,7 +86,7 @@ Nginx Configuration
 
     }
 
-.. note:: You can use Owncloud without SSL/TLS support, but we strongly encourage you not to do that:
+.. note:: You can use ownCloud without SSL/TLS support, but we strongly encourage you not to do that:
 
 -  Remove the server block containing the redirect
 -  Change **listen 443 ssl** to **listen 80;**
@@ -105,7 +105,9 @@ Lighttpd Configuration
 This assumes that you are familiar with installing PHP application on
 lighttpd.
 
-It is important to note that the **.htaccess** files used by ownCloud to protect the **data** folder are ignored by lighttpd, so you have to secure it by yourself, otherwise your **owncloud.db** database and user data are publicly readable even if directory listing is off. You need to add two snippets to your lighttpd configuration file:
+It is important to note that the **.htaccess** files used by ownCloud to protect the **data** folder are ignored by
+lighttpd, so you have to secure it by yourself, otherwise your **owncloud.db** database and user data are publicly
+readable even if directory listing is off. You need to add two snippets to your lighttpd configuration file:
 
 Disable access to data folder::
 
@@ -177,4 +179,4 @@ Here you can find a `tutorial for open Wrt`_
 .. _PageKite how to: https://pagekite.net/wiki/Howto/GNULinux/OwnCloud/
 
 .. _`http://wiki.nginx.org/HttpSslModule`: http://wiki.nginx.org/HttpSslModule
-.. _tuorial for open Wrt: http://wiki.openwrt.org/doc/howto/owncloud
+.. _tutorial for open Wrt: http://wiki.openwrt.org/doc/howto/owncloud

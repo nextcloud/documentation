@@ -10,7 +10,8 @@ To backup an ownCloud installation there are three main things you need to retai
 Backup Folders
 --------------
 
-Simply copy your config and data folder (or even your whole ownCloud install and data folder) to a place outside of your ownCloud environment. You could use this command::
+Simply copy your config and data folder (or even your whole ownCloud install and data folder) to a place outside of
+your ownCloud environment. You could use this command::
 
     rsync -Aax owncloud/ owncloud-dirbkp_`date +"%Y%m%d"`/
 
@@ -35,3 +36,4 @@ PostgreSQL
 ::
 
     PGPASSWORD="password" pg_dump owncloud -h [server] -U [username] -f owncloud-sqlbkp_`date +"%Y%m%d"`.bak
+

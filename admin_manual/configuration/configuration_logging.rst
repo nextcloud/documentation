@@ -47,7 +47,7 @@ date format in the example the date/time format will be written in the format
 
 syslog
 ~~~~~~
-All log information will be send to the default syslog deamon of a system.
+All log information will be send to the default syslog daemon of a system.
 
 .. code-block:: php
 
