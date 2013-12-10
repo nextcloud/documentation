@@ -285,17 +285,12 @@ Cache Time-To-Live:
 Directory Settings
 ~~~~~~~~~~~~~~~~~~~
 
-.. figure:: ../images/ldap-advanced-settings-directory-settings-oc5.png
+.. figure:: ../images/ldap-advanced-2-directory.png
 
    LDAP Advanced Settings, section Directory Settings
 
 User Display Name Field:
-  The attribute that should be used as display name in ownCloud. Prior to
-  ownCloud 5 it was used as internal user name. This is not the case anymore.
-  It also means that display names are not permanent in ownCloud, i.e. if the
-  attribute value changes in LDAP, it changes in ownCloud too. Display names
-  to not need to be unique, but you rather want to specify a more or less unique
-  attribute here to avoid confusion.
+  The attribute that should be used as display name in ownCloud.
 
   *  Example: *displayName*
 
@@ -310,10 +305,16 @@ Base User Tree:
     | *cn=designers,dc=my-company,dc=com*
 
 User Search Attributes:
-  These attributes are used when a search for users with a search string is
-  done. This happens, for instance, in the share dialogue. By default the user
-  display name attribute as specified above is being used. Multiple attributes
-  can be given, one in each line.
+  These attributes are used when a search for users is done. This happens, for
+  instance, in the share dialogue. By default the user display name attribute as
+  specified above is being used. Multiple attributes can be given, one in each
+  line.
+
+  Beware that if an attribute is not available on a user object, the user will
+  neither be listed (e.g. in the share dialogue) nor be able to login. This also
+  affects the display name attribute as specified above. If you override the
+  default, the display name attribute will not be taken into account, unless you
+  specify it as well.
 
   * Example:
 
@@ -339,10 +340,13 @@ Base Group Tree:
     | *cn=madrid,dc=my-company,dc=com*
 
 Group Search Attributes:
-  These attributes are used when a search for groups with a search string is
-  done. This happens, for instance, in the share dialogue. By default the group
-  display name attribute as specified above is being used. Multiple attributes
-  can be given, one in each line.
+  These attributes are used when a search for groups is done. This happens, for
+  instance, in the share dialogue. By default the group display name attribute
+  as specified above is being used. Multiple attributes can be given, one in
+  each line.
+
+  If you override the default, the group display name attribute will not be
+  taken into account, unless you specify it as well.
 
   * Example:
 
@@ -352,6 +356,9 @@ Group Search Attributes:
 Group Member association:
   The attribute that is used to indicate group memberships, i.e. the attribute
   used by LDAP groups to refer to their users.
+
+  ownCloud detects the value automatically, you should only change it, if you
+  have a very valid reason and know what you are doing.
 
   * Example: *uniquemember*
 
