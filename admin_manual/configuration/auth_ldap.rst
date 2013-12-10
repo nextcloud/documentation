@@ -365,7 +365,7 @@ Group Member association:
 Special Attributes
 ~~~~~~~~~~~~~~~~~~
 
-.. figure:: ../images/ldap-advanced-settings-special-attributes-oc5.png
+.. figure:: ../images/ldap-advanced-3-attributes.png
 
    LDAP Advanced Settings, section Special Attributes
 
@@ -385,6 +385,9 @@ Quota Default:
 Email Field:
   ownCloud can read an LDAP attribute and set the user email
   there from. Specify the attribute here, otherwise keep it empty.
+
+  Although the wizard offers you to check login by email, the correct email
+  attribute is not detected and you need to specify it manually.
 
   * Example: *mail*
 
