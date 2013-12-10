@@ -500,6 +500,10 @@ has a photo stored in the *jpegPhoto* attribute, it will be used as Avatar. The
 user then is not able to change his avatar in the personal settings. It must be
 done within LDAP.
 
+.. figure:: ../images/ldap-fetched-avatar.png
+
+   Profile picture fetched from LDAP, Personal Settings
+
 If the *jpegPhoto* attribute is not set or empty, the default ownCloud behaviour
 is active, i.e. the user will be able to set and change his profile picture in
 the personal settings. If the user sets a profile picture within ownCloud it
