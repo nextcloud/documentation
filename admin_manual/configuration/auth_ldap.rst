@@ -492,6 +492,30 @@ inconvenience.
 In this case, Save the settings. You can check if the users and groups are
 fetched correctly on the Settings → Users page.
 
+ownCloud Avatar integration
+---------------------------
+
+ownCloud 6 incorporates a user profile picture feature, called Avatar. If a user
+has a photo stored in the *jpegPhoto* attribute, it will be used as Avatar. The
+user then is not able to change his avatar in the personal settings. It must be
+done within LDAP.
+
+If the *jpegPhoto* attribute is not set or empty, the default ownCloud behaviour
+is active, i.e. the user will be able to set and change his profile picture in
+the personal settings. If the user sets a profile picture within ownCloud it
+will _not_ be stored in LDAP.
+
+The *jpegPhoto* attribute will be fetched once a day to make sure the current
+photo from LDAP is used in ownCloud. If a picture is added later, a possibly set
+profile picture will be overridden with the LDAP one. If a photo stored in the
+*jpegPhoto* attribute is deleted later, the last profile picture in ownCloud
+will still be used.
+
+The photo taken from LDAP will be adjusted to the requirements of the ownCloud
+avatar automatically. I.e. it will be transformed into a square. If the photo
+needs to be cut, it will be done equally from both affected sides. The original
+photo stored in LDAP will stay the same, of course.
+
 Troubleshooting, Tips and Tricks
 --------------------------------
 
