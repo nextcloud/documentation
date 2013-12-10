@@ -4,11 +4,11 @@
 ############## Adjust when editing docs ##################
 
 $mapping = array(
-               'admin-ldap'              => '/admin_manual/auth_ldap.html',
+               'admin-ldap'              => '/admin_manual/configuration/auth_ldap.html',
                'admin-dir_permissions'   => '/admin_manual/installation/installation_source.html#set-the-directory-permissions',
                'admin-source_install'    => '/admin_manual/installation/installation_source.html',
                'admin-install'           => '/admin_manual/installation/index.html',
-               
+
                'user-webdav'             => '/user_manual/files/files.html',
                'user-manual'             => '/user_manual',
                'user-sync-calendars'     => '/user_manual/calendars.html#synchronising-calendars-with-caldav',
