@@ -97,8 +97,8 @@ Base DN:
 User Filter
 ~~~~~~~~~~~
 
-The settings in the user filter tab determine which LDAP users will appear in
-and are allowed to log in into ownCloud. It is also possible to enter a raw LDAP
+The settings in the user filter tab determine which LDAP users will appear and
+are allowed to log in into ownCloud. It is also possible to enter a raw LDAP
 filter.
 
 .. figure:: ../images/ldap-wizard-2-user.png
@@ -130,24 +130,50 @@ x Users found:
   This is an indicator that tells you approximately how many users will be
   allowed to access ownCloud. The number will update after any change you do.
 
+Login Filter
+~~~~~~~~~~~~
+
+The settings in the login filter tab determine which user detail will be
+compared to the login value entered by the user. It is possible to allow
+multiple user details It is also possible to enter a raw LDAP filter.
+
+The user limitation as set up in the previous tab is in effect, unless you
+manually configure the filter in raw mode.
+
+.. figure:: ../images/ldap-wizard-3-login.png
+
+LDAP Username:
+  If this value is checked, the login value will be compared to the username in
+  the LDAP directory. The corresponding attribute, usually *uid* or
+  *samaccountname* will be detected automatically by ownCloud.
+
+LDAP Email Address:
+  If this value is checked, the login value will be compared to an email address
+  in the LDAP directory. The email address will be looked for in the
+  *mailPrimaryAddress* and *mail* attributes.
+
+Other Attributes:
+  This multiselect box allows you to select other attributes for the comparison.
+  The list is generated automatically based on the attributes that a user object
+  contains in your LDAP server.
+
+Edit raw filter instead:
+  Clicking on this text will toggle the filter mode. Instead of the assisted
+  approach, you can enter the raw LDAP filter directly in the appearing field.
+
+  The **%uid** placeholder will be replaced with the login name entered by the user
+  upon login. When you enter the filter manually.
+
+  Examples:
+
+  * only username: *uid=%uid*
+  * username or email address: *(|(uid=%uid)(mail=$uid))*
 
 Basic Settings
 --------------
 
 Settings Details
 ~~~~~~~~~~~~~~~~
-
-User Login Filter:
-  The filter to use when a users tries to login. Use **%uid** as placeholder
-  for the user name. Note, that login applies this filter only, but not User
-  List Filter. This may change in future.
-
-  * Example (allows login with user name and email address): *(|(uid=%uid)(email=$uid))*
-
-User List Filter:
-  The filter to use when a search for users will be executed.
-
-
 
 Group Filter:
   The filter to use when a search for groups will be executed. In
