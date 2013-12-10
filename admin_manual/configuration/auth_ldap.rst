@@ -511,12 +511,9 @@ If you have trouble with certificate validation make sure that
 Microsoft Active Directory
 --------------------------
 
-In case you want to connect to a Windows AD, you must change some values in the Advanced tab.
-
-* The default login filter will not work with AD. Use “samaccountname=%uid” instead.
-* The default in User Display Name Field will not work with Active Directory.
-* The Group Member association must be set to “member (AD)”
-* Check Case insensitive LDAP server (Windows)
+Compared to earlier ownCloud versions, no further tweaks need to be done to
+make ownCloud work with Active Directory. ownCloud will automatically find the
+correct configuration in the wizard-like set up process.
 
 Duplicating Server Configurations
 ---------------------------------
