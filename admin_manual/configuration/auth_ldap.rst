@@ -425,9 +425,7 @@ Internal Username:
 
   The internal username is also the default name for the user home folder in
   ownCloud. It is also a part of remote URLs, for instance for all \*DAV services.
-  With this setting the default behaviour can be overridden. To achieve a similar
-  behaviour as before ownCloud 5 enter the user display name attribute in the
-  following field.
+  With this setting the default behaviour can be overridden.
 
   Leave it empty for default behaviour. Changes will have effect only on newly
   mapped (added) LDAP users.
@@ -447,10 +445,6 @@ Override UUID detection
   will result in a new user. Because of this, the setting should be applied
   before putting ownCloud in production use and cleaning the bindings
   (see below).
-
-  The default behaviour does not differ from ownCloud 4.5. You do not want to
-  change this after upgrading from ownCloud 4.5 unless you update the mapping
-  tables yourself.
 
   * Example: *cn*
 
@@ -472,8 +466,6 @@ Username-LDAP User Mapping
 
   **Clearing the Mappings is not configuration sensitive, it affects all LDAP
   configurations!**
-
-
 
 Testing the configuration
 -------------------------
