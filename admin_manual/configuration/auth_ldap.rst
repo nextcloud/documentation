@@ -400,10 +400,10 @@ User Home Folder Naming Rule:
 
   * Example: *cn*
 
-Expert Settings (>= ownCloud 5.0.7)
----------------------------------------
+Expert Settings
+---------------
 
-.. figure:: ../images/ldap-expert-settings-oc5.png
+.. figure:: ../images/ldap-expert.png
 
 In the Expert Settings fundamental behavior can be adjusted to your needs. The
 configuration should be done before starting production use or when testing the
