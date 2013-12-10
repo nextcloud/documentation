@@ -105,7 +105,7 @@ filter.
 
 only those object classes:
   ownCloud will determine the object classes that are typically availalble for
-  (ideally only user) objects in your LDAP. ownCloud will automatically select
+  (ideally only) user objects in your LDAP. ownCloud will automatically select
   the object class that returns the highest amount of users. You can select
   multiple object classes.
 
@@ -126,7 +126,7 @@ Edit raw filter instead:
 
   * *objectClass=inetOrgPerson*
 
-x Users found:
+x users found:
   This is an indicator that tells you approximately how many users will be
   allowed to access ownCloud. The number will update after any change you do.
 
@@ -135,7 +135,7 @@ Login Filter
 
 The settings in the login filter tab determine which user detail will be
 compared to the login value entered by the user. It is possible to allow
-multiple user details It is also possible to enter a raw LDAP filter.
+multiple user details. It is also possible to enter a raw LDAP filter.
 
 The user limitation as set up in the previous tab is in effect, unless you
 manually configure the filter in raw mode.
@@ -169,39 +169,63 @@ Edit raw filter instead:
   * only username: *uid=%uid*
   * username or email address: *(|(uid=%uid)(mail=$uid))*
 
-Basic Settings
---------------
+Group Filter
+~~~~~~~~~~~~
 
-Settings Details
-~~~~~~~~~~~~~~~~
+The settings in the group filter tab determine which groups will be availalble
+in ownCloud. It does not have any restrictions on logins, this has been dealed
+with in the prior tabs.  It is also possible to enter a raw LDAP
+filter.
 
-Group Filter:
-  The filter to use when a search for groups will be executed. In
-  case you do not want to use LDAP groups in ownCloud, leave it empty.
+By default, no groups will be availalble in ownCloud. You actively need to
+enable groups.
 
-  * Example: *objectClass=posixGroup*
+.. figure:: ../images/ldap-wizard-4-group.png
+
+only those object classes:
+  ownCloud will determine the object classes that are typically availalble for
+  (ideally only) group objects in your LDAP. ownCloud will only list object
+  classes that return at least one group object. You can select multiple
+  object classes. A typical object class is "group", or "posixGroup".
+
+only from those groups:
+  This setting lets you pick certain groups that shall be availalble in
+  ownCloud. This field follows a whitelist approach. ownCloud will generate a
+  list of available groups found in your LDAP server. You can select multiple
+  groups.
+
+Edit raw filter instead:
+  Clicking on this text will toggle the filter mode. Instead of the assisted
+  approach, you can enter the raw LDAP filter directly in the appearing field.
+
+  Example:
+
+  * *objectClass=group*
+  * *objectClass=posixGroup*
+
+y groups found:
+  This is an indicator that tells you approximately how many groups will be
+  available in  ownCloud. The number will update after any change you do.
+
 
 Advanced Settings
 -----------------
 
 In the LDAP Advanced settings section you can define options, that are less
-common to set. They are not needed for a working connection, unless you use a
-non-standard Port, e.g. It can also have a positive effect on the performance
-to specify distinguished bases for user and group searches.
+common to set. They are not needed for a working connection. It can also have a
+positive effect on the performance to specify distinguished bases for user and
+group searches.
 
 The Advanced Settings are structured into three parts:
+
 * Connection Settings
 * Directory Settings
 * Special Attributes
 
-.. figure:: ../images/ldap-advanced-settings-oc5.png
-
-   LDAP Advanced Settings
-
 Connection Settings
 ~~~~~~~~~~~~~~~~~~~
 
-.. figure:: ../images/ldap-advanced-settings-connection-settings-oc5.png
+.. figure:: ../images/ldap-advanced-1-connection.png
 
    LDAP Advanced Settings, section Connection Settings
 
@@ -209,9 +233,8 @@ Configuration Active:
   Enables or Disables the current configuration. Disabled configuration will not
   connect to the LDAP server.
 
-  * Example: *[X]*
-
-
+  By default, it is turned off. It will be automatically turned on, when using
+  the wizard and the configuration is OK and a test connection successful.
 
 Backup (Replica) Host:
   A backup server can be defined here. ownCloud tries to connect to the backup
@@ -219,36 +242,29 @@ Backup (Replica) Host:
   cannot be reached. It is import that the backup server is a replica of the
   main server, because the object UUIDs must match.
 
-  * Example: *directory2.my-company.com*
+  Example:
+
+  * *directory2.my-company.com*
 
 Backup (Replica) Port:
   The port on which to connect to the backup LDAP server. If no port is given,
   but a host, then the main port (as specified above) will be used.
 
-  * Example: *389*
+  Example:
+
+  * *389*
 
 Disable Main Server:
   You can manually override the main server and make ownCloud only connect to
   the backup server. It may be handy for planned downtimes.
 
-  * Example: *[ ]*
-
-Use TLS:
-  Whether to use TLS encrypted connection to the LDAP server.  This will be
-  ignored when "ldaps://" protocol is specified in the host entries.
-
-  * Example: *[ ]*
-
 Case insensitive LDAP server (Windows):
-  Whether the LDAP server is running on a Windows Host
-
-  * Example: *[ ]*
+  Whether the LDAP server is running on a Windows Host. Usually, it is not
+  necessary to check it, however.
 
 Turn off SSL certificate validation:
   Turns of check of valid SSL certificates. Use it – if needed –
   for testing, only!
-
-  * Example: *[ ]*
 
 Cache Time-To-Live:
   A cache is introduced to avoid unnecessary LDAP traffic,
@@ -261,7 +277,10 @@ Cache Time-To-Live:
   to the LDAP server. If you require a most up-to-dateness it is recommended not
   to totally switch off the cache, but define a minimum life time of 15s.
 
-  * Example (10 min): *600*
+  Examples:
+
+  * ten minutes: *600*
+  * one hour: *3600*
 
 Directory Settings
 ~~~~~~~~~~~~~~~~~~~
