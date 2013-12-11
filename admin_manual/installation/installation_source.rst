@@ -9,7 +9,7 @@ Prerequisites
 
 To run ownCloud, your web server must have the following installed:
 
-* php5 (>= 5.3)
+* php5 (>= 5.3.3, minimum recommended 5.4)
 * php5-gd
 * php-xml-parser
 
@@ -19,16 +19,20 @@ And as *optional* dependencies:
 * php5-sqlite (>= 3)
 * php5-mysql
 * php5-pgsql (or php-pgsql depending on your distribution)
-* smbclient
+* php5-exif (for image rotation in pictures app)
 * php5-curl
 * curl
 * libcurl3
+
+For external storage (*optional*):
+
+* smbclient (for SMB storage)
+* php5-ftp (for FTP storage)
 
 You have to install at least one of php5-sqlite, php5-pgsql or php5-mysql, depending
 on which of the three database systems (SQLite, PostgreSQL or MySQL) you want to use
 and activate its PDO module in the **php.ini**.
 
-smbclient is only used if you want to mount SMB shares to your ownCloud.
 The curl packages are needed for some apps (e.g. http user authentication)
 
 
@@ -92,7 +96,7 @@ If you are running the apache web server, it is recommended that you enable
 **.htaccess** files as ownCloud uses them to enhance security and allows you to
 use webfinger. To enable .htaccess files you need to ensure that
 **AllowOverride** is set to **All** in the **Directory /var/www/** section of
-your virtual host file. This is usually in :file:`/etc/apache2/sites-enabled/000-default`.
+your virtual host file. This is usually in `/etc/apache2/sites-enabled/000-default`.
 If your distribution supports **a2enmod** run the following commands::
 
 	a2enmod rewrite
