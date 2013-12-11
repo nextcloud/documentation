@@ -45,7 +45,7 @@ For performance increase (*optional* / select one of the following):
 For preview generation (*optional*):
 
 * PHP module imagick
-* avconv or ffgmeg
+* avconv or ffmpeg
 * OpenOffice or libreOffice
 
 For external storage (*optional*):
