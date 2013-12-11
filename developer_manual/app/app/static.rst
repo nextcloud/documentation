@@ -14,5 +14,5 @@ Because ownCloud templates do not support template inheritance it is not possibl
 If you use Twig Templates, there is the **script** and **style** function, see :doc:`../appframework/templates`.
 
 
-CSS and JavaScript are compressed by ownCloud so if the CSS or JavaScript do not seem to get updated, check if the debug mode is enabled. To enable it see :doc:`../intro/gettingstarted`
+CSS and JavaScript are compressed by ownCloud so if the CSS or JavaScript do not seem to get updated, check if the debug mode is enabled. To enable it see :ref:`debugmode`
 

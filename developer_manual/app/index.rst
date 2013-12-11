@@ -15,6 +15,13 @@ App Developement
 
 Intro
 -----
+
+Before you start, please check if there already is a `similar app <http://apps.owncloud.com>`_ you could contribute to. Also, feel free to communicate your idea and plans to the `mailing list <https://mail.kde.org/mailman/listinfo/owncloud>`_ so other contributors might join in.
+
+Then, please make sure you have set up a development environment:
+
+* :ref:`devenv`
+
 Before starting to write an app please read the security and coding guidelines:
 
 * :doc:`general/security`
@@ -22,7 +29,6 @@ Before starting to write an app please read the security and coding guidelines:
 
 After this you can start to write your app:
 
-* :doc:`intro/gettingstarted`
 * :doc:`intro/createapp`
 
 App Development using ownCloud App API
