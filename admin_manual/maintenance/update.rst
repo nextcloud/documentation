@@ -2,7 +2,7 @@ Updating ownCloud
 =================
 
 .. note:: If you have installed ownCloud from a repository, your package management should take care of it. Probably
-you will need to look for compatible third party applications yourself. **Always do backups anyway.**
+   you will need to look for compatible third party applications yourself. **Always do backups anyway.**
 
 Update
 ------
