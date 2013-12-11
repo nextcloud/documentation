@@ -33,43 +33,42 @@ environment, e.g. how to setup LDAP or how to mount your storage.
 
 Installation
 ============
-This chapter will introduce you to the installation of ownCloud in different
-scenarios.
+This chapter will introduce you to the installation of ownCloud in different scenarios.
 
 If you want to just try ownCloud in a virtual machine without any configuration, check the section
 :doc:`installation/installation_appliance`, where you will find ready-to-use images.
 
-* :doc:`installation/installation_appliance`
-* :doc:`installation/installation_linux`
-* :doc:`installation/installation_macos`
+* :doc:`installation/installation_linux` (recommended)
 * :doc:`installation/installation_windows`
-* :doc:`installation/installation_ucs`
 * :doc:`installation/installation_source`
 * :doc:`installation/installation_others`
+* :doc:`installation/installation_ucs`
+* :doc:`installation/installation_macos` (not supported)
+* :doc:`installation/installation_appliance`
 
 Configuration
 =============
 This chapter covers ownCloud and web server configuration.
 
-* :doc:`configuration/configuration_3rdparty`
-* :doc:`configuration/configuration_apps`
-* :doc:`configuration/configuration_automation`
 * :doc:`configuration/configuration_database`
+* :doc:`configuration/auth_ldap`
+* :doc:`configuration/custom_mount_config_gui`
+* :doc:`configuration/custom_mount_config`
+* :doc:`configuration/background_jobs`
+* :doc:`configuration/configuration_mail`
+* :doc:`configuration/configuration_automation`
+* :doc:`configuration/configuration_encryption`
+* :doc:`configuration/configuring_big_file_upload`
+* :doc:`configuration/configuration_apps`
+* :doc:`configuration/configuration_reverseproxy`
+* :doc:`configuration/xsendfile`
+* :doc:`configuration/configuration_3rdparty`
+* :doc:`configuration/custom_user_backend`
+* :doc:`configuration/configuration_custom_clients`
+* :doc:`configuration/configuration_maintenance`
 * :doc:`configuration/configuration_knowledgebase`
 * :doc:`configuration/configuration_logging`
-* :doc:`configuration/configuration_mail`
-* :doc:`configuration/configuration_reverseproxy`
-* :doc:`configuration/custom_mount_config`
-* :doc:`configuration/custom_mount_config_gui` 	
-* :doc:`configuration/custom_user_backend`
-* :doc:`configuration/auth_ldap`
-* :doc:`configuration/xsendfile`
-* :doc:`configuration/background_jobs`
-* :doc:`configuration/configuration_custom_clients`
-* :doc:`configuration/configuration_encryption`
 * :doc:`configuration/configuration_language`
-* :doc:`configuration/configuration_maintenance`
-* :doc:`configuration/configuring_big_file_upload`
 
 Maintenance
 ===========
@@ -79,7 +78,3 @@ This chapter covers maintenance tasks such as updating or migrating to a new ver
 * :doc:`maintenance/update`
 
 
-Indices and tables
-==================
-
-* :ref:`genindex`
