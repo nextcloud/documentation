@@ -10,38 +10,53 @@ Prerequisites
 To run ownCloud, your web server must have the following installed:
 
 * php5 (>= 5.3.3, minimum recommended 5.4)
-* php5-gd
-* php-xml-parser
+* PHP module zip
+* PHP module dom
+* PHP module libxml
+* PHP module mb multibyte
+* PHP module ctype
+* PHP module JSON
+* PHP module GD
+* PHP module zlib
+* PHP module iconv
+* PHP module SimpleXML
 
 And as *optional* dependencies:
 
-* php5-intl
-* php5-sqlite (>= 3)
-* php5-mysql
-* php5-pgsql (or php-pgsql depending on your distribution)
-* php5-exif (for image rotation in pictures app)
-* php5-curl
+* PHP module intl
+* PHP module mcrypt
+* PHP module bz2
+* PHP module openssl
+* PHP module sqlite (>= 3)
+* PHP module mysql
+* PHP module pgsql
+* PHP module exif (for image rotation in pictures app)
+* PHP module ldap (for ldap integration)
+* PHP module curl
 * curl
 * libcurl3
+
+For performance increase (*optional* / select one of the following):
+
+* PHP module apc
+* PHP module apcu
+* PHP module xcache
+
+For preview generation (*optional*):
+
+* PHP module imagick
+* avconv or ffgmeg
+* OpenOffice or libreOffice
 
 For external storage (*optional*):
 
 * smbclient (for SMB storage)
 * php5-ftp (for FTP storage)
 
-You have to install at least one of php5-sqlite, php5-pgsql or php5-mysql, depending
-on which of the three database systems (SQLite, PostgreSQL or MySQL) you want to use
-and activate its PDO module in the **php.ini**.
+Please check your distribution, operating system or hosting partner documentation on how to install/enable
+these modules.
 
 The curl packages are needed for some apps (e.g. http user authentication)
-
-
-Commands for Ubuntu and Debian (run as root):
-
-::
-
-  apt-get install apache2 php5 php5-gd php-xml-parser php5-intl
-  apt-get install php5-sqlite php5-mysql php5-pgsql smbclient curl libcurl3 php5-curl
 
 If you are running Ubuntu 10.04 LTS you will need to update your PHP from
 this `PHP PPA`_:
@@ -52,7 +67,6 @@ this `PHP PPA`_:
   sudo apt-get update
   sudo apt-get install php5
 
-.. todo:: Document other distributions.
 
 You don’t need any WebDAV support of your web server (i.e. apache’s mod_webdav)
 to access your ownCloud data via WebDAV, ownCloud has a WebDAV server built in.
@@ -60,8 +74,8 @@ In fact, you should make sure that any built-in WebDAV module of your web server
 is disabled (at least for the ownCloud directory), as it can interfere with
 ownCloud's built-in WebDAV support.
 
-Extract ownCloud and Copy to Your Webserver
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Extract ownCloud and Copy to Your Web Server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
@@ -89,15 +103,39 @@ Fedora users should use::
 
 .. note:: The **data/** directory will only be created after setup has run (see below) and is not present by default in the tarballs.
 
-Enable .htaccess and mod_rewrite if Running Apache
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Web Server Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you are running the apache web server, it is recommended that you enable
-**.htaccess** files as ownCloud uses them to enhance security and allows you to
-use webfinger. To enable .htaccess files you need to ensure that
-**AllowOverride** is set to **All** in the **Directory /var/www/** section of
-your virtual host file. This is usually in `/etc/apache2/sites-enabled/000-default`.
-If your distribution supports **a2enmod** run the following commands::
+Apache is the recommended web server.
+
+Apache Configuration
+********************
+
+Example Apache 2.2:
+
+.. code-block:: xml
+
+    <Directory /path/to/your/owncloud/install>
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride All
+        Order allow,deny
+        allow from all
+    </Directory>
+
+
+Example Apache 2.4:
+
+.. code-block:: xml
+
+    <Directory /path/to/your/owncloud/install>
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride All
+        Order allow,deny
+        Require all granted
+    </Directory>
+
+
+Enable mod_rewrite::
 
 	a2enmod rewrite
 
@@ -113,6 +151,171 @@ For systemd systems (Fedora, ArchLinux, OpenSUSE) use::
 
 In order for the maximum upload size to be configurable, the .htaccess file in the ownCloud folder needs to be made writable by the server.
 
+
+
+Nginx Configuration
+*******************
+
+-  You need to insert the following code into **your nginx config file.**
+-  Adjust **server_name**, **root**, **ssl_certificate** and **ssl_certificate_key** to suit your needs.
+-  Make sure your SSL certificates are readable by the server (see `http://wiki.nginx.org/HttpSslModule`_).
+
+.. code-block:: python
+
+    server {
+            listen 80;
+            server_name cloud.example.com;
+            return 301 https://$server_name$request_uri;  # enforce https
+    }
+
+    server {
+            listen 443 ssl;
+            server_name cloud.example.com;
+
+            ssl_certificate /etc/ssl/nginx/cloud.example.com.crt;
+            ssl_certificate_key /etc/ssl/nginx/cloud.example.com.key;
+
+            # Path to the root of your installation
+            root /var/www/;
+
+            client_max_body_size 10G; # set max upload size
+            fastcgi_buffers 64 4K;
+
+            rewrite ^/caldav(.*)$ /remote.php/caldav$1 redirect;
+            rewrite ^/carddav(.*)$ /remote.php/carddav$1 redirect;
+            rewrite ^/webdav(.*)$ /remote.php/webdav$1 redirect;
+
+            index index.php;
+            error_page 403 /core/templates/403.php;
+            error_page 404 /core/templates/404.php;
+
+            location = /robots.txt {
+                allow all;
+                log_not_found off;
+                access_log off;
+            }
+
+            location ~ ^/(data|config|\.ht|db_structure\.xml|README) {
+                    deny all;
+            }
+
+            location / {
+                    # The following 2 rules are only needed with webfinger
+                    rewrite ^/.well-known/host-meta /public.php?service=host-meta last;
+                    rewrite ^/.well-known/host-meta.json /public.php?service=host-meta-json last;
+
+                    rewrite ^/.well-known/carddav /remote.php/carddav/ redirect;
+                    rewrite ^/.well-known/caldav /remote.php/caldav/ redirect;
+
+                    rewrite ^(/core/doc/[^\/]+/)$ $1/index.html;
+
+                    try_files $uri $uri/ index.php;
+            }
+
+            location ~ ^(.+?\.php)(/.*)?$ {
+                    try_files $1 = 404;
+
+                    include fastcgi_params;
+                    fastcgi_param SCRIPT_FILENAME $document_root$1;
+                    fastcgi_param PATH_INFO $2;
+                    fastcgi_param HTTPS on;
+                    fastcgi_pass 127.0.0.1:9000;
+                    # Or use unix-socket with 'fastcgi_pass unix:/var/run/php5-fpm.sock;'
+            }
+
+            # Optional: set long EXPIRES header on static assets
+            location ~* ^.+\.(jpg|jpeg|gif|bmp|ico|png|css|js|swf)$ {
+                    expires 30d;
+                    # Optional: Don't log access to assets
+                    access_log off;
+            }
+
+    }
+
+.. note:: You can use ownCloud without SSL/TLS support, but we strongly encourage you not to do that:
+
+-  Remove the server block containing the redirect
+-  Change **listen 443 ssl** to **listen 80;**
+-  Remove **ssl_certificate** and **ssl_certificate_key**.
+-  Remove **fastcgi_params HTTPS on;**
+
+.. note:: If you want to effectively increase maximum upload size you will also have to modify your **php-fpm configuration** (**usually at
+          /etc/php5/fpm/php.ini**) and increase **upload_max_filesize** and
+          **post_max_size** values. You’ll need to restart php5-fpm and nginx
+	  services in order these changes to be applied.
+
+Lighttpd Configuration
+**********************
+
+This assumes that you are familiar with installing PHP application on
+lighttpd.
+
+It is important to note that the **.htaccess** files used by ownCloud to protect the **data** folder are ignored by
+lighttpd, so you have to secure it by yourself, otherwise your **owncloud.db** database and user data are publicly
+readable even if directory listing is off. You need to add two snippets to your lighttpd configuration file:
+
+Disable access to data folder::
+
+    $HTTP["url"] =~ "^/owncloud/data/" {
+         url.access-deny = ("")
+       }
+
+Disable directory listing::
+
+    $HTTP["url"] =~ "^/owncloud($|/)" {
+         dir-listing.activate = "disable"
+       }
+
+Yaws Configuration
+******************
+
+This should be in your **yaws_server.conf**. In the configuration file, the
+**dir_listings = false** is important and also the redirect from **/data**
+to somewhere else, because files will be saved in this directory and it
+should not be accessible from the outside. A configuration file would look
+like this
+
+.. code-block:: xml
+
+    <server owncloud.myserver.com/>
+            port = 80
+            listen = 0.0.0.0
+            docroot = /var/www/owncloud/src
+            allowed_scripts = php
+            php_handler = <cgi, /usr/local/bin/php-cgi>
+            errormod_404 = yaws_404_to_index_php
+            access_log = false
+            dir_listings = false
+            <redirect>
+                    /data == /
+            </redirect>
+    </server>
+
+
+The apache **.htaccess** file that comes with ownCloud is configured to
+redirect requests to nonexistent pages. To emulate that behaviour, you
+need a custom error handler for yaws. See this `github gist for further instructions`_ on how to create and compile that error handler.
+
+Hiawatha Configuration
+**********************
+
+Add **WebDAVapp = yes** to the ownCloud virtual host. Users accessing
+WebDAV from MacOS will also need to add **AllowDotFiles = yes**.
+
+Disable access to data folder::
+
+    UrlToolkit {
+        ToolkitID = denyData
+        Match ^/data DenyAccess
+    }
+
+
+
+Microsoft Internet Information Server (IIS)
+*******************************************
+
+See :doc:`installation_windows` for further instructions.
+
 Follow the Install Wizard
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Open your web browser and navigate to your ownCloud instance. If you are
@@ -125,15 +328,7 @@ credentials and let ownCloud create its own database user, or enter a preconfigu
 as the web server, please set the data directory to a location outside of the document root. See the advanced
 install settings.
 
-Test your Installation
-~~~~~~~~~~~~~~~~~~~~~~
-
-Login and start using ownCloud. Check your web servers errror log. If it shows
-error, you might have missed a dependency or hit a bug with your particular
-configuration.
-
-If you plan on using the Webfinger app and
-your ownCloud installation is not in the webroot then you’ll have to manually
-link :file:`/var/www/.well-known` to :file:`/path/to/your/owncloud/.well-known`.
 
 .. _PHP PPA: https://launchpad.net/~ondrej/+archive/php5
+.. _github gist for further instructions: https://gist.github.com/2200407
+.. _`http://wiki.nginx.org/HttpSslModule`: http://wiki.nginx.org/HttpSslModule
