@@ -12,9 +12,8 @@ Software Appliances
 There are number of pre-made virtual machine-based appliances:
 
 -  `SUSE Studio, ownCloud on openSuSE`_, runnable directly from an USB stick.
--  `Ubuntu charm, ownCloud 4.5`_
--  `PCLinuxOS based appliance`_
--  `Fedora based appliance`_
+-  `Ubuntu charm, ownCloud`_
+
 
 ownCloud on Hardware Appliances
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -23,12 +22,12 @@ These are tutorials provided by the user communities of the respective appliance
 
 -  `QNAP Guide`_ for QNAP NAS appliances
 -  `OpenWrt Guide`_ for the popular embedded distribution for routers and NAS devices.
+-  `Synology Package`_ for Synology NAS products
 
-.. todo:: Tutorials for running ownCloud on Synology and Dreamplug.
+.. todo:: Tutorials for running ownCloud on Dreamplug.
 
 .. _OpenWrt Guide: http://wiki.openwrt.org/doc/howto/owncloud
 .. _SUSE Studio, ownCloud on openSuSE: http://susestudio.com/a/TadMax/owncloud-in-a-box
-.. _Ubuntu charm, ownCloud 4.5: http://jujucharms.com/charms/precise/owncloud
-.. _PCLinuxOS based appliance: http://www.pclinuxos.com/forum/index.php/topic,100875.0.html
-.. _Fedora based appliance: http://echorand.me/2012/02/26/owncloud-boxgrinder-pagekite-owncloud-appliance/
+.. _Ubuntu charm, ownCloud: http://jujucharms.com/charms/precise/owncloud
 .. _QNAP Guide: http://wiki.qnap.com/wiki/Category:OwnCloud
+.. _Synology Package: http://www.cphub.net/index.php?id=40&pid=213
