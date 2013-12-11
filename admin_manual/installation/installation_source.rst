@@ -107,7 +107,7 @@ Then restart apache. For Ubuntu systems (or distributions using upstartd) use::
 
 	service apache2 restart
 
-For systemd systems (fedora, ArchLinux, Fedora, OpenSUSE) use::
+For systemd systems (Fedora, ArchLinux, OpenSUSE) use::
 
 	systemctl restart httpd.service
 
