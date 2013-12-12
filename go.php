@@ -11,7 +11,7 @@ $mapping = array(
 
                'user-webdav'             => '/user_manual/files/files.html',
                'user-manual'             => '/user_manual',
-               'user-sync-calendars'     => '/user_manual/pim/calendars.html#synchronising-calendars-with-caldav',
+               'user-sync-calendars'     => '/user_manual/pim/calendar.html#synchronising-calendars-with-caldav',
                'user-sync-contacts'      => '/user_manual/pim/contacts.html#keeping-your-address-book-in-sync',
            );
 
