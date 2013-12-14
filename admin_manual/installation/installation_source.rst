@@ -162,6 +162,11 @@ Nginx Configuration
 
 .. code-block:: python
 
+    upstream php-handler {
+            server 127.0.0.1:9000; 
+            #server unix:/var/run/php5-fpm.sock;
+    }
+
     server {
             listen 80;
             server_name cloud.example.com;
@@ -219,8 +224,7 @@ Nginx Configuration
                     fastcgi_param SCRIPT_FILENAME $document_root$1;
                     fastcgi_param PATH_INFO $2;
                     fastcgi_param HTTPS on;
-                    fastcgi_pass 127.0.0.1:9000;
-                    # Or use unix-socket with 'fastcgi_pass unix:/var/run/php5-fpm.sock;'
+                    fastcgi_pass php-handler;
             }
 
             # Optional: set long EXPIRES header on static assets
