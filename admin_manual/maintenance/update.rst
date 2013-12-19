@@ -31,19 +31,19 @@ To upgrade ownCloud, follow those steps:
    version, e.g. 4.0.7 in the 4.0 series. If not, update to that version first
    (see above).
 #. Make a backup of the ownCloud folder and the database.
-#. Download the latest version to the working directory:
+#. Download the latest version to the working directory::
     
     wget http://download.owncloud.org/community/owncloud-latest.tar.bz2
 
 #. Deactivate all third party applications.
 #. Delete everything from your ownCloud installation directory, except data and
-   config. Assuming that it's your working directory, you could execute this command:
+   config. Assuming that it's your working directory, you could execute this command::
     
     ls | grep -v 'data\\|config' | xargs rm -r
 
 #. Unpack the release tarball in the ownCloud directory (or copy the
    files thereto). Assuming that your installation directory is called 'owncloud' and that it's inside your working
-   directory, you could execute this command:
+   directory, you could execute this command::
    
     tar xfj owncloud-latest.tar.bz2
    
