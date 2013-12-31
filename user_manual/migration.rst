@@ -1,7 +1,7 @@
 User Account Migration
 ======================
 
-User account migration support is provided by the user_migrate app. It is important to note that only data from apps that support migration will be migrated. While we encoruage all apps to support migration, it is not a requirement and it the responsibility of the app developer.
+User account migration support is provided by the user_migrate app. It is important to note that only data from apps that support migration will be migrated. While we encourage all apps to support migration, it is not a requirement and it the responsibility of the app developer.
 
 Export
 ------

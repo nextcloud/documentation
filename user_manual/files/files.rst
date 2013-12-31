@@ -12,7 +12,7 @@ Linux
 Gnome 3/Nautilus
 ~~~~~~~~~~~~~~~~
 
-The URL that you have to use to connect to the owncloud installation in nautilus is::
+The URL that you have to use to connect to the ownCloud installation in nautilus is::
 
   davs://youraddress.com/owncloud/remote.php/webdav
 
@@ -23,7 +23,7 @@ If your server connection is not HTTPS-secured, use `dav://` instead of `davs://
 
 KDE/Dolphin
 ~~~~~~~~~~~
-Click in the adress area and enter::
+Click in the address area and enter::
 
     webdav://youraddress.com/owncloud/remote.php/webdav
 
@@ -105,7 +105,7 @@ In the Finder, choose **Go > Connect to Server,** type the address of the server
 
 .. image:: ../images/osx_webdav1.png
 
-The URL that you have to use to connect to the owncloud installation in finder is::
+The URL that you have to use to connect to the ownCloud installation in finder is::
 
   http://youraddress.com/owncloud/remote.php/webdav
 
@@ -117,9 +117,9 @@ For details, check the respective `vendor documentation`_ at the Apple website.
 
 Windows
 -------
-For Windows a seperate webdav client is recommended to access the files from your server. Choose one from the `WebDav Project page <http://www.webdav.org/projects/>`_
+For Windows a seperate WebDAV client is recommended to access the files from your server. Choose one from the `WebDav Project page <http://www.webdav.org/projects/>`_
 
-Should you have to use the native implementation then you can assign ownCloud a drive letter.  This allows you to browse files stored on an ownCloudserver the way you would files stored in a mapped network drive.
+Should you have to use the native implementation then you can assign ownCloud a drive letter. This allows you to browse files stored on an ownCloudserver the way you would files stored in a mapped network drive.
 
 Using this feature requires network connectivity. If you want to store
 your files offline, use the ownCloud Client to sync all files on your
@@ -134,7 +134,7 @@ Mapping via the command line
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Suppose your ownCloud is installed at **https://youraddress.com/owncloud**,
-that is, entering this URL in your webbrowser will bring up the login screen.
+that is, entering this URL in your web browser will bring up the login screen.
 Running::
 
   net use Z: https://youraddress.com/owncloud/remote.php/webdav /user:youruser yourpassword
@@ -184,7 +184,7 @@ Port
   80 (for WebDAV)
   443 (for WebDAV (HTTPS/SSL))
 
-Use the 'More Options' drop-down menu to add the rest of your webdav URL into the 'Path' field. e.g.:
+Use the 'More Options' drop-down menu to add the rest of your WebDAV URL into the 'Path' field. e.g.:
 
 Path
   remote.php/webdav
