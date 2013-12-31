@@ -58,7 +58,7 @@ description, the location and the repetition rate of an event. If the repeating
 should end you can choose between setting the end by date or by occurrences. If
 you choose in the weekview all days from Monday to Friday it will automatically
 set the repeat rule to "every weekday". If the interval of the weekview can be
-devided by two it automatically set the repeat rule to "Bi-Weekly".
+divided by two it automatically set the repeat rule to "Bi-Weekly".
 
 Exporting / Importing events
 ----------------------------
@@ -80,11 +80,11 @@ Import
 .. figure:: ../images/calendar_import.png
    :scale: 50
 
-Import your calendar as ical file using the files app. Just click on the
+Import your calendar as iCal file using the files app. Just click on the
 calendar file to open the import dialog. You can import the calendar into a new
 calendar or into an already existing calendar.
 
-.. note:: If the progressbar does not work properly, the folder
+.. note:: If the progress bar does not work properly, the folder
           ``apps/calendar/import_tmp/`` has probably no write permission.
 
 Why is the calendar app asking for my current location?

@@ -17,7 +17,7 @@ a set of tags separated from each other by a space.
 .. figure:: images/bookmark_addurl.jpg
 
 In this example, we have added the page : http://wikipedia.org with the title "Wikipedia"
-and some tags describing what wikipedia is (for an easier search later on).
+and some tags describing what Wikipedia is (for an easier search later on).
 
 Edit/delete a bookmark
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -35,7 +35,7 @@ Search
 If you click on a tag, ownCloud will only display the bookmarks that
 are described with this tag.
 
-You can also use the search bar of owncloud in the top right of your screen.
+You can also use the search bar of ownCloud in the top right of your screen.
 
 Simply click on the "Bookmarks" menu in the sidebar to come back to
 the default view.
@@ -54,7 +54,7 @@ A bookmarklet is small button that you can drag and drop in your bookmarks.
 The next time you see a cool new site, press on this special bookmark,
 it will add the site to your ownCloud bookmarks.
 
-To find this bookmark go to your personnal preference and search for
+To find this bookmark go to your personal preferences and search for
 the "Bookmarklet" item.
 
 

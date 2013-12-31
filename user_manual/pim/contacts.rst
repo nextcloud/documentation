@@ -75,7 +75,7 @@ You can crop the picture however you wish and then press OK.
 
 
 As you can see it is really easy to set things right in this app.
-It automatically pics up the First name, Middle name (if any) and the last name
+It automatically picks up the First name, Middle name (if any) and the last name
 You may add or delete any section you want for your own convenience.
 
 Creating new address books
@@ -83,7 +83,7 @@ Creating new address books
 
 When you click on the third button of the bottom bar,
 you will have access to the application's settings.
-Then, press on the "More button" to access the options of your Addressbooks.
+Then, press on the "More button" to access the options of your addressbooks.
 
 .. image:: ../images/contact_del_ab.jpg
 
@@ -94,7 +94,7 @@ Hover your cursor on every icon to see what they mean.
 Keeping your address book in sync
 ---------------------------------
 One of the most important thing in any contact app is to keep it in Sync.
-You can sync this contact app to your phone which has the following OS's- Android and IOS
+You can sync this contact app to your phone which has the following OS's- Android and iOS
 
 
 Syncing with Android
@@ -107,7 +107,7 @@ Syncing with Android
 
 .. image:: ../images/contact_syncopt.jpg
 
-Syncing your IOS device
+Syncing your iOS device
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Synchronizing the Address book
@@ -136,4 +136,4 @@ Other Syncing options provided by ownCloud
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 1. For android you may use their official android app-  https://owncloud.com/overview/mobileapps
 
-2. And for IOS(Iphone and Ipad) use their app - https://owncloud.com/overview/mobileapps
+2. And for iOS (iPhone and iPad) use their app - https://owncloud.com/overview/mobileapps

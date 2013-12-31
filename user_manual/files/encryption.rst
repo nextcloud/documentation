@@ -12,7 +12,7 @@ not able to read your data.
 
 Please remember. Once the encryption app is enabled you need your log-in
 password to decrypt and access your data. By default your data will be lost if
-you loss your log-in pasword. If you want to protect yourself against password
+you loss your log-in password. If you want to protect yourself against password
 loss store your log-in password on a secure place or enable the recovery key
 as described below.
 
