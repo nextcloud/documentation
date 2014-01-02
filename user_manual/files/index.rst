@@ -5,6 +5,7 @@ Files & Synchronization
 .. toctree::
    :maxdepth: 1
 
+   filesweb
    files
    versioncontrol
    deletedfiles

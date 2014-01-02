@@ -40,6 +40,11 @@ Contacts & Calendar web interface, export, import and synchronization.
 * :doc:`pim/sync_kde`
 * :doc:`pim/sync_osx`
 
+Documents
+=========
+Documents allows users collaboratively edit rich-text documents at the same time.
+* :doc:`documents`
+
 Bookmarks
 =========
 Web interface for managing your bookmarks.

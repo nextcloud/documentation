@@ -221,7 +221,7 @@ Solution
 Sync Client
 -----------
 However, some applications only allow you to save to a local folder. To
-get around this issue, you can use the :doc:`ownCloud sync clients <../files/index>`
+get around this issue, you can use the `ownCloud sync clients`_
 
 Mobile
 -------
@@ -241,13 +241,13 @@ The URL for these is::
     youraddress.com/owncloud/remote.php/webdav
 
 .. _in your file manager: http://en.wikipedia.org/wiki/Webdav#WebDAV_client_applications
-.. _Sync your ownCloud folders and local folders: http://owncloud.org/documentation/sync-clients/
+.. _ownCloud sync clients: http://owncloud.org/documentation/sync-clients/
 .. _Mount ownCloud to a local folder without sync: http://owncloud.org/use/webdav/
-.. _ownCloud Mirall repository: https://gitorious.org/owncloud/mirall
-.. _Android: http://gitorious.org/owncloud/android
-.. _webOS: http://gitorious.org/owncloud/webos
+.. _ownCloud Mirall repository: https://github.com/owncloud/mirall
+.. _Android: http://github.com/owncloud/android
+.. _webOS: http://github.com/owncloud/webos
 .. _contribute, if you can: /contribute/
 .. _WebDAV Navigator: http://seanashton.net/webdav/
-.. _Android App: http://market.android.com/details?id=com.schimera.webdavnavlite
-.. _iPhone: http://itunes.apple.com/app/webdav-navigator/id382551345
-.. _BlackBerry: http://appworld.blackberry.com/webstore/content/46279
+.. _Android App: https://play.google.com/store/apps/details?id=com.schimera.webdavnavlite
+.. _iPhone: https://itunes.apple.com/app/webdav-navigator/id382551345
+.. _BlackBerry: http://appworld.blackberry.com/webstore/content/46816

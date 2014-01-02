@@ -1,13 +1,13 @@
-Thunderbird - Synchronize Address Book
+Thunderbird - Synchronize Addressbook
 ======================================
 
-Address book
+Addressbook
 ------------
 
-As someone who is new to ownCloud, New to SoGo Connector, and new to Thunderbird Addressbook... here is what you need in excruciating pithy detail I needed to make this work (for all the other lost souls out there).
+As someone who is new to ownCloud, New to SoGo Connector, and new to Thunderbird Addressbook... here is what you need in excruciating pithy detail you need to make this work (for all the other lost souls out there):
 
-1. `<http://www.mozilla.org/en-US/thunderbird/>`__ **Thunderbird** for your OS unless it comes with your OS distribution (Linux) 
-#. `<http://www.sogo.nu/english/downloads/frontends.html>`__ **Sogo Connector** (latest release)
+#. `Thunderbird <http://www.mozilla.org/en-US/thunderbird/>`_ for your OS unless it comes with your OS distribution (Linux)
+#. `Sogo Connector <http://www.sogo.nu/english/downloads/frontends.html>`_ (latest release)
 
  With an installed Thunderbird mailtool, and installed SoGo Connector:
 #. Thunderbird Addressbook is in the Thunderbird "Tools" Menu
@@ -15,7 +15,8 @@ As someone who is new to ownCloud, New to SoGo Connector, and new to Thunderbird
 
    -  "File > New > **Remote Addressbook**" (SoGo Connector added this)
    -  "**Name:**" is the name you want to give your Addressbook in the Thunderbird addressbook bar area
-   -  "**URL:**" is found in your OwnCloud Contacts area, that little Gear symbol 
+   -  "**URL:**" is found in your OwnCloud Contacts area, that little Gear symbol
+
 .. image:: ../images/contact_thunderbird-Symbol_Gear.jpg
 in the -bottom left- of the Contacts View (same symbol as found in the -top right- in the Calendar view). Then look for a little impeller symbol
 
@@ -23,7 +24,6 @@ in the -bottom left- of the Contacts View (same symbol as found in the -top righ
 which will display the URL you need for your installation to work. 
 
 .. image:: ../images/contact_thunderbird-URL_config.jpg
-   
 
 Once installed, synchronize (right click on your newly made remote addressbook and select "Synchronize"). You'll see your addressbook populate from ownCloud! Don't click "read only" above unless you don't want to modify your ownCloud server addressbook, like it contains a listing of corporate contacts and is shared with lots of people, and you don't want a new user dragging it somewhere unintended.
 

@@ -1,4 +1,4 @@
-Desktop Synchronisation
+Desktop Synchronization
 ========================
 
 For synchronizing files with your desktop computer, we recommend using the
@@ -19,4 +19,4 @@ mount your ownCloud storage via WebDAV, which is also documented in the next cha
 
 
 .. _ownCloud Client: http://owncloud.org/sync-client/
-.. _ownCloud Desktop Client Manual:  http://doc.owncloud.com/desktop/1.2/
+.. _ownCloud Desktop Client Manual:  http://doc.owncloud.com/desktop

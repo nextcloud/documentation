@@ -1,13 +1,23 @@
 Version Control
 ===============
 
-ownCloud supports simple version control for files. Versioning is
-enabled by default, and creates backups of files which are accessible
-via the history tab. This tab also links to the history page, where you
-can roll back a file to any previous version. Changes made at intervals
-greater than two minutes are saved in data/[user]/versions, and made
-accessible using the above pages.
+ownCloud supports simple version control for files. Versioning creates backups
+of files which are accessible via the Versions link. This link contains the
+history of the file where you can roll back a file to any previous version. Changes
+made at intervals greater than two minutes are saved in data/[user]/versions,
+and made accessible using the above pages.
 
+Versioning is **not** enabled by default and needs to be enabled by administrator
+using App management page.
+
+To restore a specific version of a file, hover your cursor on a file and click
+*Versions* link. If any version is available, you should see a list like the image
+below:
+
+.. figure:: ../images/files_versioning.png
+
+Clicking on *Restore* next to any version will revert the file to that
+version back.
 
 The versioning app expires old versions automatically to make sure that
 the user doesn't run out of space. Following pattern is used to delete
