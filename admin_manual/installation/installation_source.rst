@@ -130,7 +130,6 @@ Example Apache 2.4:
     <Directory /path/to/your/owncloud/install>
         Options Indexes FollowSymLinks MultiViews
         AllowOverride All
-        Order allow,deny
         Require all granted
     </Directory>
 
