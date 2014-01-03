@@ -106,4 +106,6 @@ default_enable
 
 shipped
 -------
-**Core apps only**: Used to tell ownCloud that the app is in the standard release
+**Core apps only**: Used to tell ownCloud that the app is in the standard release.
+
+Please note that if this attribute is set to *FALSE* or not set at all, every time you disable the application, all the files of the application itself will be *REMOVED* from the server!
