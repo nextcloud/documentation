@@ -8,6 +8,9 @@ use more that 50% of your currently available free space. If your deleted files
 exceed this limit ownCloud deletes the oldest versions until it meets the memory
 usage limit again.
 
+Deleted files can be found by clicking on *Deleted files* button on files app of web interface.
+You can either restore or permanently delete using appropriate buttons.
+
 Beside that ownCloud checks the age of the files every time a new files gets moved
 to the deleted files. By default deleted files stay in the trash bin for 180 days.
 The Administrator can adjust this value in the config.php by setting the

@@ -9,17 +9,18 @@ The main interface
 
 Add a bookmark
 ~~~~~~~~~~~~~~
-
-The main ownCloud interface contains 3 fields at the top where
+In bookmark application, enter a URL into the top-left area of the content section. After adding an address, you can click on pencil button to edit fields for the given address.
+The main ownCloud bookmark interface contains 3 fields at the top where
 you can enter the website address (or URL), the title of your bookmark and
 a set of tags separated from each other by a space.
 
-.. figure:: images/bookmark_addurl.jpg
+.. figure:: images/bookmark_addurl.png
+Adding a bookmark manually
 
-In this example, we have added the page : http://wikipedia.org with the title "Wikipedia"
+In this example, we have added the page: `http://wikipedia.org` with the title "Wikipedia"
 and some tags describing what Wikipedia is (for an easier search later on).
 
-Edit/delete a bookmark
+Edit/Delete a bookmark
 ~~~~~~~~~~~~~~~~~~~~~~
 
 You also have the possibility to edit or delete your bookmark.
@@ -44,7 +45,8 @@ the default view.
 The bookmarklet
 ---------------
 
-.. figure:: images/bookmark_setting.jpg
+.. figure:: images/bookmark_setting.png
+Bookmarklet link
 
 The creator of this app understand that people won't come,
 open the ownCloud page to add the bookmark when the see a cool site.
@@ -54,7 +56,6 @@ A bookmarklet is small button that you can drag and drop in your bookmarks.
 The next time you see a cool new site, press on this special bookmark,
 it will add the site to your ownCloud bookmarks.
 
-To find this bookmark go to your personal preferences and search for
-the "Bookmarklet" item.
+To find this bookmark click on gear button on the bottom area of bookmarks app.
 
 

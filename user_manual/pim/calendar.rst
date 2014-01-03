@@ -5,15 +5,15 @@ Creating a calendar
 -------------------
 
 .. figure:: ../images/calendar_manage-calendars.png
-   :scale: 30
+Calendar view
 
 If you use the calendar the first time, there will be already a calendar called
 "Default calendar". You can manage your calendars with a click on the "Calendar"
 button in the top right corner. In the dialog, which will appear, you can add,
 edit, export, enable, disable and delete your calendars. There will be also a
-link for CalDav access.
+link for CalDAV access.
 
-Synchronising Calendars with CalDav
+Synchronising Calendars with CalDAV
 -----------------------------------
 
 Assuming you access your web interface via an address like this::
@@ -51,7 +51,7 @@ timeframe in the weekview. In the dialog which will appear you can enter your
 information like title, category, etc.
 
 .. figure:: ../images/calendar_createevent.png
-   :scale: 50
+New event window
 
 With the advanced options you can set the
 description, the location and the repetition rate of an event. If the repeating
@@ -67,7 +67,7 @@ Export
 ~~~~~~
 
 .. figure:: ../images/calendar_export.png
-   :scale: 50
+Exporting an event
 
 You can export either a single event or a whole calendar. If you want to export
 a single event click on it and press the export button in the bottom right
@@ -78,7 +78,7 @@ Import
 ~~~~~~
 
 .. figure:: ../images/calendar_import.png
-   :scale: 50
+Importing events
 
 Import your calendar as iCal file using the files app. Just click on the
 calendar file to open the import dialog. You can import the calendar into a new
@@ -91,7 +91,7 @@ Why is the calendar app asking for my current location?
 -------------------------------------------------------
 
 .. figure:: ../images/calendar_newtimezone1.png
-   :scale: 50
+Timezone set notification
 
 The calendar needs your current position in order to detect your timezone.
 Without the correct timezone there will be a time offset between the events in
