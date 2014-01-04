@@ -12,13 +12,38 @@ With ownCloud 6, you can now see file thumbnails next to the filenames. By hover
 will be provided with some file operations. You can use rename, download, share buttons to perform those actions
 or click on the cross icon at the rightmost location to remove the hovered file.
 
+Navigating inside your ownCloud
+-------------------------------
+
+To navigate through folders in your ownCloud, you can simply click on a folder name. The navigation bar
+will show your current directory:
+
+.. figure:: ../images/oc_filesweb_navigate.png
+Navigation bar
+
+You can click on one of the upper directories to navigate up or use home icon to navigate into your root
+folder.
+
+
+Creating/uploading files
+------------------------
+
+You can create files by simply clicking on *New* button on files app. The *New* button will provide three
+options to choose from:
+
+.. figure:: ../images/oc_filesweb_new.png
+New button options
+
+* *Text file* will create a simple text file and add into the current folder in your ownCloud.
+* *Folder* will create a folder in current folder.
+* *From link* will download the file from the provided link and place in the current folder.
 
 
 Selecting files
 ---------------
 
 You can select one or more files by clicking on small thumbnails or icons of the files. To select all files in
-the current directory, use the checkbox under New button.
+the current directory, use the checkbox just above the first file/folder on the list.
 
 If you select multiple files, selected files can be deleted or downloaded as ZIP by using the buttons just above of the file list.
 If download button is not visible, this means that administrator had disabled this feature.
