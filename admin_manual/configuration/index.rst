@@ -5,10 +5,11 @@ Configuration
 .. toctree::
    :maxdepth: 1
 
+   configuration_apps
+   configuration_users
    auth_ldap
    background_jobs
    configuration_3rdparty
-   configuration_apps
    configuration_automation
    configuration_custom_clients
    configuration_database
