@@ -48,3 +48,7 @@ Share dialog
   the provided link. This is very useful to collect files from multiple users into same place easily.
 * If your server is configured with a mail server, you can type e-mail addresses seperated with space to send the link to multiple users.
 * Finally, setting an expiration date will expiry the share after the specified date.
+
+If you type a user and/or group to the *share with* field, you will be given extra sharing options such as informing via e-mail,
+letting users edit (create, update, delete, re-share) the share. To revoke permissions from users, simply click on cross icon
+on the same line with the users.
