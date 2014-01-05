@@ -2,7 +2,7 @@ Accessing your Files (Web Interface)
 ====================================
 
 Your ownCloud files can be accessed from anywhere by using your ownCloud web interface. In files app,
-you can view (if a common type), rename, download, share and delete your files easily. If versioning app is
+you can view (if a common type), move, rename, download, share and delete your files easily. If versioning app is
 enabled, you can also revert a file to specific version. See :doc:`versioncontrol` for details.
 
 .. figure:: ../images/oc_filesweb.png
@@ -53,6 +53,11 @@ Viewing files
 
 ownCloud can display uncompressed text files, OpenDocument files, PDFs, and image files by simply clicking on
 the file name. If displaying of a file is not possible, a download process will start.
+
+Moving files
+------------
+
+In ownCloud web interface, file(s) can be moved by dragging and dropping them into a sub-directory. If you would like move a directory to an upper directory, drag the file(s) into one of the folders shown in navigation bar.
 
 Sharing files
 -------------
