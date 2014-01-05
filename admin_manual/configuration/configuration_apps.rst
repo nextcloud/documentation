@@ -3,8 +3,22 @@ Apps Configuration
 After you have installed ownCloud you might realize that it would be nice to
 provide an additional function on top of the core functionality in your ownCloud installation.
 
-The first step should be to check out the `ownCloud apps store <http://apps.owncloud.com/>`_. There you will find a
-lot of ready-to-use apps provided by the ownCloud community.
+With ownCloud installation, you will find some apps enabled by default. To see which applications
+are enabled, click on Apps button on web interface navigation to go into applications page:
+
+.. figure:: ../images/oc_admin_app_page.png
+Administrator application page
+
+In this page, you can enable or disable applications simply by clicking on their names.
+Enabled applications will be shown in **bold**, while disabled ones will be shown in normal font.
+If the app is not developed by ownCloud, it will have the *3rd party* notice next to it. To see what an
+application does, clicking on its name will show a description on the right side of the same page.
+
+To install new apps, you can use *More apps* button or check out the `ownCloud apps store <http://apps.owncloud.com/>`_.
+There you will find a lot of ready-to-use apps provided by the ownCloud community.
+
+If you would like to add your own app, please use *Add your App...* button on the same page. This will redirect you to
+our `Developer Center <http://owncloud.org/dev>`_.
 
 Parameters
 ----------

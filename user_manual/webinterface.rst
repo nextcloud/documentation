@@ -41,7 +41,8 @@ The web interface comprises of the following items:
 3. **New/Upload button**: This allows you to create new files or upload
    existing ones from your device. Note that you can also drop files from
    Explorer or Finder onto the ownCloud file view and they will get uploaded to
-   ownCloud.
+   ownCloud. With *New* button, you can create a text file, folder or download
+   a file from the provided URL.
 4. **Search/Settings**: Search allows you to look for files and
    directories. Currently, ownCloud provides a full text search. If full text seach does
    not work, administrators need to enable this app from app settings.

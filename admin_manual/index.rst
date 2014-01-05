@@ -50,6 +50,8 @@ Configuration
 =============
 This chapter covers ownCloud and web server configuration.
 
+* :doc:`configuration/configuration_apps`
+* :doc:`configuration/configuration_users`
 * :doc:`configuration/configuration_database`
 * :doc:`configuration/auth_ldap`
 * :doc:`configuration/custom_mount_config_gui`
@@ -59,7 +61,6 @@ This chapter covers ownCloud and web server configuration.
 * :doc:`configuration/configuration_automation`
 * :doc:`configuration/configuration_encryption`
 * :doc:`configuration/configuring_big_file_upload`
-* :doc:`configuration/configuration_apps`
 * :doc:`configuration/configuration_reverseproxy`
 * :doc:`configuration/xsendfile`
 * :doc:`configuration/configuration_3rdparty`

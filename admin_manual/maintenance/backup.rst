@@ -1,4 +1,4 @@
-Backing Up ownCloud
+Backing up ownCloud
 ===================
 
 To backup an ownCloud installation there are three main things you need to retain:
