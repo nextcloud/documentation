@@ -1,16 +1,16 @@
 Apps Configuration
 ==================
-After you have installed ownCloud you might realize that it would be nice to
+After you have installed ownCloud, you might realize that it would be nice to
 provide an additional function on top of the core functionality in your ownCloud installation.
 
 With ownCloud installation, you will find some apps enabled by default. To see which applications
-are enabled, click on Apps button on web interface navigation to go into applications page:
+are enabled, click on Apps button on the web interface navigation to go into applications page:
 
 .. figure:: ../images/oc_admin_app_page.png
 Administrator application page
 
 In this page, you can enable or disable applications simply by clicking on their names.
-Enabled applications will be shown in **bold**, while disabled ones will be shown in normal font.
+Enabled applications will be shown in **bold** while disabled ones will be shown in normal font.
 If the app is not developed by ownCloud, it will have the *3rd party* notice next to it. To see what an
 application does, clicking on its name will show a description on the right side of the same page.
 

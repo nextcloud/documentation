@@ -1,8 +1,8 @@
 User Management
 ===============
 
-ownCloud administrators can easily manage users via web interface. To go into
-user management page, click your username on web interface and select *Users*.
+ownCloud administrators can easily manage users via the web interface. To go into
+user management page, click your username on the web interface and select *Users*.
 A page similar to the image below will be shown:
 
 .. figure:: ../images/oc_admin_user_manage.png

@@ -21,6 +21,7 @@ Files & Synchronization
 =======================
 This chapter contains information about accessing your files via WebDAV and Synchronization.
 
+* :doc:`files/filesweb`
 * :doc:`files/files`
 * :doc:`files/sync`
 * :doc:`files/versioncontrol`
@@ -43,6 +44,7 @@ Contacts & Calendar web interface, export, import and synchronization.
 Documents
 =========
 Documents allows users collaboratively edit rich-text documents at the same time.
+
 * :doc:`documents`
 
 Bookmarks
