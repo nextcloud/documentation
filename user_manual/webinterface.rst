@@ -51,5 +51,5 @@ The web interface comprises of the following items:
    password. You can also retrieve the WebDAV URL (see next chapter) and show
    your quota. Administrators will also get access to user management
    (:guilabel:`Users`), the apps settings (:guilabel:`Apps`) and administrative settings (:guilabel:`Admin`) including access to ownCloud's log. You will also find logout button in this menu.
-5. **Apps**: This button is only visible to administrators. Using this  	   button allows administrators to enable/disable apps.
+5. **Apps**: This button is only visible to administrators. Using this button allows administrators to enable/disable apps.
 
