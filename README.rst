@@ -28,13 +28,28 @@ At this point, this repository hosts three manuals:
 
 Building
 --------
+
+Linux / OS X
+^^^^^^^^^^^^
+
 First make sure that these things are installed
- - Python 2
+ - Python 2 (2.6.0 or better, Python 3 is not yet supported!)
  - Sphinx (e.g. sudo yum install python-sphinx), on Mac: ``sudo easy_install Sphinx``
- - Sphinx PHPDomain (e.g. ``sudo pip install sphinxcontrib-phpdomain``)
+ - Sphinx PHPDomain (e.g. ``sudo easy_install sphinxcontrib-phpdomain``)
+ - rst2pdf (e.g. ``sudo easy_install rst2pdf``)
  - If you're on Arch Linux, the build script is called sphinx-build2 which will fail. Therefore you have to provide a link::
 
      sudo ln -s /usr/bin/sphinx-build2 /usr/bin/sphinx-build
 
 then enter any manual directory, then run ``make html``. The result can be found in the ``_build/html`` subdirectory.
+PDFs can be build with the ``make latexpdf`` command and found 
+
+Windows
+^^^^^^^
+
+Running ``setup.cmd`` will install Python 2.7 and install all dependencies.
+
+Enter any manual and clicking the "Build HTML" shortcut will create a HTML build. Likewise, "Build PDF" will build the
+PDF using the more lightweight, but feature-incomplete RST2PDF tool. The results are in ``_build/html`` and  ``_build/pdf``
+respectively.
 
