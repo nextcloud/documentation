@@ -25,7 +25,7 @@ import sys, os
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinxcontrib.phpdomain', 'sphinx.ext.todo']
+extensions = ['sphinxcontrib.phpdomain', 'sphinx.ext.todo', 'rst2pdf.pdfbuilder']
 
 
 # Add any paths that contain templates here, relative to this directory.
@@ -210,6 +210,10 @@ latex_logo = '../_shared_assets/static/logo-blue.pdf'
 # If false, no module index is generated.
 #latex_domain_indices = True
 
+# -- Options for pdf page output -----------------------------------------------
+
+pdf_documents = [('index', u'owncloudAdminManual', u'ownCloud Admin Manual',
+                  u'The ownCloud developers'),]
 
 # -- Options for manual page output --------------------------------------------
 

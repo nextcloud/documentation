@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # ownCloud Documentation documentation build configuration file, created by
-# sphinx-quickstart on Mon Oct 22 23:16:40 2012.
+# sphinx-quickstart on Mon Oct 22 23:16:40 2012-2014.
 #
 # This file is execfile()d with the current directory set to its containing dir.
 #
@@ -25,7 +25,7 @@ import sys, os
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinxcontrib.phpdomain', 'sphinx.ext.todo']
+extensions = ['sphinxcontrib.phpdomain', 'sphinx.ext.todo', 'rst2pdf.pdfbuilder']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['../_shared_assets/templates']
@@ -41,7 +41,7 @@ master_doc = 'contents'
 
 # General information about the project.
 project = u'ownCloud Developer Manual'
-copyright = u'2012-2013, The ownCloud developers'
+copyright = u'2012-2014, The ownCloud developers'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -166,7 +166,7 @@ html_show_sphinx = False
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'ownCloudDeveloperManual'
+htmlhelp_basename = '2012-2014'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -209,6 +209,10 @@ latex_logo = '../_shared_assets/static/logo-blue.pdf'
 # If false, no module index is generated.
 #latex_domain_indices = True
 
+# -- Options for pdf page output -----------------------------------------------
+
+pdf_documents = [('index', u'2012-2014', u'ownCloud Developer Manual',
+                  u'The ownCloud developers'),]
 
 # -- Options for manual page output --------------------------------------------
 
@@ -250,7 +254,7 @@ texinfo_documents = [
 epub_title = u'ownCloud Developer Manual'
 epub_author = u'The ownCloud developers'
 epub_publisher = u'The ownCloud developers'
-epub_copyright = u'2012-2013, The ownCloud developers'
+epub_copyright = u'2012-2014, The ownCloud developers'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.
