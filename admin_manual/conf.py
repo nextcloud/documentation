@@ -212,7 +212,7 @@ latex_logo = '../_shared_assets/static/logo-blue.pdf'
 
 # -- Options for pdf page output -----------------------------------------------
 
-pdf_documents = [('index', u'owncloudAdminManual', u'ownCloud Admin Manual',
+pdf_documents = [('contents', u'owncloudAdminManual', u'ownCloud Admin Manual',
                   u'The ownCloud developers'),]
 
 # -- Options for manual page output --------------------------------------------

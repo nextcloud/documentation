@@ -166,7 +166,7 @@ html_show_sphinx = False
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = '2012-2014'
+htmlhelp_basename = 'owncloudDeveloperManual'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -211,7 +211,7 @@ latex_logo = '../_shared_assets/static/logo-blue.pdf'
 
 # -- Options for pdf page output -----------------------------------------------
 
-pdf_documents = [('index', u'2012-2014', u'ownCloud Developer Manual',
+pdf_documents = [('contents', u'owncloudDeveloperManual', u'ownCloud Developer Manual',
                   u'The ownCloud developers'),]
 
 # -- Options for manual page output --------------------------------------------
@@ -219,7 +219,7 @@ pdf_documents = [('index', u'2012-2014', u'ownCloud Developer Manual',
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('contents', 'owncloudadminmanual', u'ownCloud Developer Manual',
+    ('contents', 'owncloudDeveloperManual', u'ownCloud Developer Manual',
      [u'The ownCloud developers'], 1)
 ]
 
