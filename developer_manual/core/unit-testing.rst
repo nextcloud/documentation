@@ -4,7 +4,9 @@ Unit-Testing
 Getting PHPUnit
 ---------------
 
-Owncloud uses PHPUnit for tests. To install it, either get it via your packagemanager::
+ownCloud uses PHPUnit >= 3.7 for unit testing.
+
+To install it, either get it via your packagemanager::
 
   sudo apt-get install phpunit
 
@@ -15,8 +17,8 @@ or install it via PEAR::
 
 After the installation the ''phpunit'' command is available.
 
-Writing unittests
------------------
+Writing unit tests
+------------------
 
 To get started, do the following:
  - Create a directory called ``tests`` in the top level of your application
@@ -63,9 +65,9 @@ In :file:`/srv/http/owncloud/apps/myapp/` you run the test with::
 
 For more resources on PHPUnit visit: http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html
 
-Bootstrapping Owncloud
+Bootstrapping ownCloud
 ----------------------
-If you use Owncloud functions or classes in your code, you'll need to make them available to your test by bootstrapping Owncloud.
+If you use ownCloud functions or classes in your code, you'll need to make them available to your test by bootstrapping ownCloud.
 
 To do this, you'll need to provide the ``--bootstrap`` argument when running PHPUnit
 
@@ -85,6 +87,20 @@ adjust your php.ini and file rights.
   su -c "chmod a+r config/config.php"
   su -c "chmod a+rx data/"
   su -c "chmod a+w data/owncloud.log"
+
+Running unit tests for the ownCloud core project
+------------------------------------------------
+The core project provides a script that runs all the core unit tests using different database backends like sqlite, mysql, pgsql, oci (for Oracle)::
+
+  ./autotest.sh
+
+To run tests only for sqlite::
+
+  ./autotest.sh sqlite
+
+To run a specific test suite (note that the test file path is relative to the "tests" directory)::
+
+  ./autotest.sh sqlite lib/share/share.php
 
 Further Reading
 ---------------
