@@ -90,7 +90,7 @@ adjust your php.ini and file rights.
 
 Running unit tests for the ownCloud core project
 ------------------------------------------------
-The core project provides a script that runs all the core unit tests using different database backends like sqlite, mysql, oracle::
+The core project provides a script that runs all the core unit tests using different database backends like sqlite, mysql, pgsql, oci (for Oracle)::
 
   ./autotest.sh
 
@@ -100,7 +100,7 @@ To run tests only for sqlite::
 
 To run a specific test suite (note that the test file path is relative to the "tests" directory)::
 
-  ./autotest sqlite lib/share/share.php
+  ./autotest.sh sqlite lib/share/share.php
 
 Further Reading
 ---------------
