@@ -82,8 +82,8 @@ Open http://localhost/owncloud (or the corresponding URL) in your web browser to
 Start developing
 ~~~~~~~~~~~~~~~~
 
-* :doc:`App Development<app/index>`
-* :doc:`Core Development<core/index>`
+* :doc:`App Development<../app/index>`
+* :doc:`Core Development<../core/index>`
 
 
 .. _debugmode:
