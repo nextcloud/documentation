@@ -10,29 +10,32 @@ Prerequisites
 To run ownCloud, your web server must have the following installed:
 
 * php5 (>= 5.3.3, minimum recommended 5.4)
-* PHP module zip
+* PHP module ctype
 * PHP module dom
+* PHP module GD
+* PHP module iconv
+* PHP module JSON
 * PHP module libxml
 * PHP module mb multibyte
-* PHP module ctype
-* PHP module JSON
-* PHP module GD
-* PHP module zlib
-* PHP module iconv
 * PHP module SimpleXML
+* PHP module zip
+* PHP module zlib
 
-And as *optional* dependencies:
+Database connectors (pick at least one):
 
-* PHP module intl
-* PHP module mcrypt
-* PHP module bz2
-* PHP module openssl
 * PHP module sqlite (>= 3)
 * PHP module mysql
 * PHP module pgsql
-* PHP module exif (for image rotation in pictures app)
-* PHP module ldap (for ldap integration)
+
+And as *optional* dependencies:
+
+* PHP module bz2
 * PHP module curl
+* PHP module exif (for image rotation in pictures app)
+* PHP module intl
+* PHP module ldap (for ldap integration)
+* PHP module mcrypt
+* PHP module openssl
 * curl
 * libcurl3
 
