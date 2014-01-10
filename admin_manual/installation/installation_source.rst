@@ -25,7 +25,7 @@ Database connectors (pick at least one):
 
 * PHP module sqlite (>= 3)
 * PHP module mysql
-* PHP module pgsql
+* PHP module pgsql (requires PostgreSQL >= 9.0)
 
 And as *optional* dependencies:
 
