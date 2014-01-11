@@ -64,8 +64,5 @@ Document sharing has the same options as when sharing other files. While editing
 
 By default, you can enter local users or groups to share with. Checking *Share link* will enable sharing via a public link, for which you can set a password to prevent editing by unwanted users. Shares can also have an expiration date that will expire the link after a given date. ownCloud will send the public link to users by email by typing each email address into the email field.  Separate multiple email addresses with a space.
 
-To see all of the features of the ownCloud document app, watch the video below:
-
-.. raw:: html
-
-        <iframe width="420" height="315" src="http://www.youtube.com/embed/70pCBnNPdew" frameborder="0" allowfullscreen></iframe>
+To see all of the features of the ownCloud document app, watch the
+`video on YouTube <https://www.youtube.com/watch?v=70pCBnNPdew>`_.
