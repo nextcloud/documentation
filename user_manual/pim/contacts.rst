@@ -107,7 +107,7 @@ Syncing with Android
 ~~~~~~~~~~~~~~~~~~~~
 
 1) Install CardDAV- Sync free from Google play store by visiting `this link <https://play.google.com/store/apps/details?id=org.dmfs.carddav.sync>`_.
-2) This app supports auto- configuration which is a Boon- after installing visit this link - carddavs://youraddress.com/remote.php/carddav/ to auto-configure the app.
+2) This app supports auto- configuration which is a Boon- after installing visit this link - carddavs://example.org/remote.php/carddav/ to auto-configure the app.
 3) Enter your login details
 4) After the app has checked your login details you may just select- Sync server to phone option
 5) That's it there is nothing else to do for Android :)
@@ -124,7 +124,7 @@ Synchronizing the Address book
 3. Select Add Account.
 4. Select other as account type.
 5. Select Add CardDAV account.
-6. For server, type http://youraddress.com/remote.php/carddav/principals/username
+6. For server, type http://example.org/remote.php/carddav/principals/username
 7. Enter your user name and password.
 8. Select Next.
 9. If your server does not support SSL, a warning will be displayed. Select Continue.
