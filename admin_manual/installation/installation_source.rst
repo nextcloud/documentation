@@ -509,7 +509,7 @@ Disable directory listing::
        
 **Note for Lighttpd users on Debian stable (wheezy):**
 
-Recent versions of Owncloud make use of the **HTTP PATCH** feature, which was added to Lighttpd at version 1.4.32 while Debian stable only ships 1.4.31. The patch is simple, however, and easy to integrate if you're willing to build your own package.
+Recent versions of ownCloud make use of the **HTTP PATCH** feature, which was added to Lighttpd at version 1.4.32 while Debian stable only ships 1.4.31. The patch is simple, however, and easy to integrate if you're willing to build your own package.
 
 Download the patch from http://redmine.lighttpd.net/attachments/download/1370/patch.patch
 
