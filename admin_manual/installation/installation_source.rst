@@ -36,8 +36,6 @@ And as *optional* dependencies:
 * PHP module ldap (for ldap integration)
 * PHP module mcrypt
 * PHP module openssl
-* curl
-* libcurl3
 
 For performance increase (*optional* / select one of the following):
 
@@ -59,7 +57,7 @@ For external storage (*optional*):
 Please check your distribution, operating system or hosting partner documentation on how to install/enable
 these modules.
 
-The curl packages are needed for some apps (e.g. http user authentication)
+The curl PHP module is required for some apps (e.g. http user authentication).
 
 If you are running Ubuntu 10.04 LTS you will need to update your PHP from
 this `PHP PPA`_:
