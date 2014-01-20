@@ -7,9 +7,6 @@ history of the file where you can roll back a file to any previous version. Chan
 made at intervals greater than two minutes are saved in data/[user]/versions,
 and made accessible using the above pages.
 
-Versioning is **not** enabled by default and needs to be enabled by administrator
-using App management page.
-
 To restore a specific version of a file, hover your cursor on a file and click
 *Versions* link. If any version is available, you should see a list like the image
 below:
