@@ -25,6 +25,13 @@ The :file:`appinfo/info.xml` contains metadata about the app:
           <file id="caldav">appinfo/caldav.php</file>
       </remote>
 
+      <documentation>
+          <user>http://doc.owncloud.org</user>
+          <admin>http://doc.owncloud.org</admin>
+      </documentation>
+
+      <website>http://www.owncloud.org</website>
+
       <public>
           <file id="caldav">appinfo/caldav.php</file>
       </public>      
@@ -95,6 +102,14 @@ Same as public but requires login. The id is appended to the URL **/owncloud/ind
     /owncloud/index.php/remote/calendar
 
 Also take a look at :doc:`externalapi`.
+
+documentation
+-------------
+link to 'admin' and 'user' documentation
+
+website
+-------
+link to project webpage
 
 standalone
 ----------
