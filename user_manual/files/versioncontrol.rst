@@ -7,9 +7,6 @@ history of the file where you can roll back a file to any previous version. Chan
 made at intervals greater than two minutes are saved in data/[user]/versions,
 and made accessible using the above pages.
 
-Versioning is **not** enabled by default and needs to be enabled by administrator
-using App management page.
-
 To restore a specific version of a file, hover your cursor on a file and click
 *Versions* link. If any version is available, you should see a list like the image
 below:
@@ -24,6 +21,7 @@ the user doesn't run out of space. Following pattern is used to delete
 old versions:
 
 * For the first 10 seconds ownCloud keeps one version every 2 seconds
+* For the first minute ownCloud keeps one version every 10 seconds
 * For the first hour ownCloud keeps one version every minute
 * For the first 24 hours ownCloud keeps one version every hour
 * For the first 30 days ownCloud keeps one version every day
