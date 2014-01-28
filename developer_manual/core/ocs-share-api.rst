@@ -20,6 +20,7 @@ Get all shares from the user.
 Statuscodes:
 
 * 100 - successful
+* 404 - couldn't fetch shares
 
 Get Shares from a specific file or folder
 -----------------------------------------
@@ -40,6 +41,7 @@ Get all shares from a given file/folder.
 Statuscodes
 
 * 100 - successful
+* 400 - not a directory (if the 'subfile' argument was used)
 * 404 - file doesn't exist
 
 Get information about a known Share
@@ -82,6 +84,8 @@ Share a file/folder with a user/group or as public link.
 Statuscodes:
 
 * 100 - successful
+* 400 - unknown share type
+* 403 - public upload was disabled by the admin
 * 404 - file couldn't be shared
 
 Delete Share
@@ -117,4 +121,6 @@ Note that only one of "password" or "publicUpload" can be specified at once.
 Statuscodes:
 
 * 100 - successful
+* 400 - wrong or no update parameter given
+* 403 - public upload disabled by the admin
 * 404 - couldn't update share
