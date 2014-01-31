@@ -70,9 +70,9 @@ For example for the calendar, contact and notes apps:
 .. code-block:: bash
 
   cd /var/www
-  git clone http://github.com/owncloud/calendar.git calendar
-  git clone http://github.com/owncloud/contacts.git contacts
-  git clone http://github.com/owncloud/notes.git notes
+  git clone https://github.com/owncloud/calendar.git calendar
+  git clone https://github.com/owncloud/contacts.git contacts
+  git clone https://github.com/owncloud/notes.git notes
 
 Set up ownCloud
 ~~~~~~~~~~~~~~~
