@@ -49,7 +49,7 @@ The following commands are using "/var/www" as the web server's directory and "w
   sudo chmod o+rw /var/www
   cd /var/www
   git clone https://github.com/owncloud/core.git owncloud
-  git clone https://github.com/owncloud/apps.git apps
+  git clone https://github.com/owncloud/apps.git
   cd owncloud/
   git submodule init
   git submodule update
@@ -70,9 +70,9 @@ For example for the calendar, contact and notes apps:
 .. code-block:: bash
 
   cd /var/www
-  git clone https://github.com/owncloud/calendar.git calendar
-  git clone https://github.com/owncloud/contacts.git contacts
-  git clone https://github.com/owncloud/notes.git notes
+  git clone https://github.com/owncloud/calendar.git
+  git clone https://github.com/owncloud/contacts.git
+  git clone https://github.com/owncloud/notes.git
 
 Set up ownCloud
 ~~~~~~~~~~~~~~~
