@@ -71,7 +71,7 @@ For example for the calendar, contact and notes apps:
 
   cd /var/www
   git clone http://github.com/owncloud/calendar.git calendar
-  git clone http://github.com/owncloud/contact.git contact
+  git clone http://github.com/owncloud/contacts.git contacts
   git clone http://github.com/owncloud/notes.git notes
 
 Set up ownCloud
