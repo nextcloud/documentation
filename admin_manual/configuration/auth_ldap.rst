@@ -564,6 +564,14 @@ ownCloud LDAP Internals
 
 Some parts of how the LDAP backend works are described here. May it be helpful.
 
+Groups
+------
+
+At the moment, only secondary groups are read. That means that only the groups
+are retrieved, which are returned by the attribute auto-detected (or manually
+chosen) in Group-Member association. Primary groups are not being taken into
+account.
+
 User and Group Mapping
 ----------------------
 
