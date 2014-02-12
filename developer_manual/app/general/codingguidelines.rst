@@ -65,7 +65,9 @@ All API methods need to be marked with `PHPDoc <http://en.wikipedia.org/wiki/PHP
 
 Objects, Functions, Arrays & Variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Use Pascal case for Objects, Camel case for functions and variables. If you set a default function/method parameter, dont use spaces
+Use Pascal case for Objects, Camel case for functions and variables. If you set
+a default function/method parameter, do not use spaces. Do not prepend private
+class members with underscores.
 
 .. code-block:: javascript
 
@@ -289,7 +291,7 @@ Control Structures
   // single line if
   if (myVar === 'hi') {
       myVar = 'ho';
-  } else {     
+  } else {
       myVar = 'bye';
   }
 
