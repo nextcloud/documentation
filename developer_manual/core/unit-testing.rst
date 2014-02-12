@@ -1,8 +1,11 @@
 Unit-Testing
 ============
 
+PHP unit testing
+----------------
+
 Getting PHPUnit
----------------
+~~~~~~~~~~~~~~~
 
 ownCloud uses PHPUnit >= 3.7 for unit testing.
 
@@ -17,8 +20,8 @@ or install it via PEAR::
 
 After the installation the ''phpunit'' command is available.
 
-Writing unit tests
-------------------
+Writing PHP unit tests
+~~~~~~~~~~~~~~~~~~~~~~
 
 To get started, do the following:
  - Create a directory called ``tests`` in the top level of your application
@@ -66,7 +69,7 @@ In :file:`/srv/http/owncloud/apps/myapp/` you run the test with::
 For more resources on PHPUnit visit: http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html
 
 Bootstrapping ownCloud
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 If you use ownCloud functions or classes in your code, you'll need to make them available to your test by bootstrapping ownCloud.
 
 To do this, you'll need to provide the ``--bootstrap`` argument when running PHPUnit
@@ -89,7 +92,7 @@ adjust your php.ini and file rights.
   su -c "chmod a+w data/owncloud.log"
 
 Running unit tests for the ownCloud core project
-------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The core project provides a script that runs all the core unit tests using different database backends like sqlite, mysql, pgsql, oci (for Oracle)::
 
   ./autotest.sh
@@ -103,8 +106,64 @@ To run a specific test suite (note that the test file path is relative to the "t
   ./autotest.sh sqlite lib/share/share.php
 
 Further Reading
----------------
+~~~~~~~~~~~~~~~
 - http://googletesting.blogspot.de/2008/08/by-miko-hevery-so-you-decided-to.html
 - http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html
 - http://www.youtube.com/watch?v=4E4672CS58Q&feature=bf_prev&list=PLBDAB2BA83BB6588E
 - Clean Code: A Handbook of Agile Software Craftsmanship (Robert C. Martin)
+
+JavaScript unit testing for core
+--------------------------------
+
+JavaScript Unit testing for **core** and **core apps** is done using the `Karma <http://karma-runner.github.io>`_ test runner with `Jasmine <http://pivotal.github.io/jasmine/>`_.
+
+Installing Node JS
+~~~~~~~~~~~~~~~~~~
+
+To run the JavaScript unit tests you will need to install **Node JS**.
+
+You can get it here: http://nodejs.org/
+
+After that you will need to setup the **Karma** test environment.
+The easiest way to do this is to run the automatic test script first, see next section.
+
+Running all tests
+~~~~~~~~~~~~~~~~~
+
+To run all tests, just run::
+
+  ./autotest-js.sh
+
+This will also automatically set up your test environment.
+
+Debugging tests in the browser
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To debug tests in the browser, you need to run **Karma** in browser mode::
+
+  karma start tests/karma.config.js
+
+From there, open the URL http://localhost:9876 in a web browser.
+
+On that page, click on the "Debug" button.
+
+An empty page will appear, from which you must open the browser console (F12 in Firefox/Chrome).
+
+Every time you reload the page, the unit tests will be relaunched and will output the results in the browser console.
+
+Unit test paths
+~~~~~~~~~~~~~~~
+
+JavaScript unit test examples can be found in :file:`apps/files/tests/js/`
+
+Unit tests for the core app JavaScript code can be found in :file:`core/js/tests/specs`
+
+Documentation
+~~~~~~~~~~~~~
+
+Here are some useful links about how to write unit tests with Jasmine and Sinon:
+
+- Karma test runner: http://karma-runner.github.io 
+- Jasmine: http://pivotal.github.io/jasmine
+- Sinon (for mocking and stubbing): http://sinonjs.org/ 
+
