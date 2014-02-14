@@ -17,7 +17,7 @@ Templates are abstracted by the TemplateResponse object and used and returned in
     // main is the template name. Owncloud will look for template/main.php
     $response = new TemplateResponse($this->api, 'main');
 
-    $params = array('entries' => array('this', 'is', 'your', 'father', 'speaking')
+    $params = array('entries' => array('this', 'is', 'your', 'father', 'speaking'));
     $response->setParams($params);
 
     return $response;
