@@ -12,6 +12,11 @@ webservers and database systems.
 Prerequisites
 ~~~~~~~~~~~~~
 
+.. note:: This tutorial assumes you have terminal access to the machine you want
+          to install owncloud on. Although this is not an absolute requirement,
+          installation without it is highly likely to require contacting your
+          hoster (e.g. for installing required modules).
+
 To run ownCloud, your web server must have the following installed:
 
 * php5 (>= 5.3.3, minimum recommended 5.4)
@@ -51,15 +56,9 @@ package):
 
 Recommended for specific apps (*optional*):
 
-* PHP module bz2
-* PHP module curl
 * PHP module exif (for image rotation in pictures app)
-* PHP module intl
-* PHP module ldap (for ldap integration)
-* PHP module mcrypt
-* PHP module openssl
 
-For performance increase (*optional* / select one of the following):
+For enhanced performance (*optional* / select only one of the following):
 
 * PHP module apc
 * PHP module apcu
@@ -113,11 +112,7 @@ Apache and MySQL by issuing the following commands in a terminal::
   Be sure to remember the password you enter there for later use (you will need it
   during ownCloud database setup).
 
-You don’t need any WebDAV support of your web server (i.e. apache’s mod_webdav)
-to access your ownCloud data via WebDAV, ownCloud has a WebDAV server built in.
-In fact, you should make sure that any built-in WebDAV module of your web server
-is disabled (at least for the ownCloud directory), as it can interfere with
-ownCloud's built-in WebDAV support.
+First, download the archive of the latest ownCloud version:
 
 * Navigate to the `ownCloud Installation Page`_
 * Click "Tar or Zip file"
@@ -479,7 +474,8 @@ To enable SSL support:
 -  Remove **ssl_certificate** and **ssl_certificate_key**.
 -  Remove **fastcgi_params HTTPS on;**
 
-.. note:: If you want to effectively increase maximum upload size you will also have to modify your **php-fpm configuration** (**usually at
+.. note:: If you want to effectively increase maximum upload size you will also
+          have to modify your **php-fpm configuration** (**usually at
           /etc/php5/fpm/php.ini**) and increase **upload_max_filesize** and
           **post_max_size** values. You’ll need to restart php5-fpm and nginx
 	  services in order these changes to be applied.
