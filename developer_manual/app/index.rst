@@ -1,8 +1,8 @@
 .. _appindex:
 
-================
-App Developement
-================
+===============
+App Development
+===============
 
 .. toctree::
    :maxdepth: 1
