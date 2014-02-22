@@ -103,19 +103,17 @@ Apache and MySQL by issuing the following commands in a terminal:
 
 **Remarks:**
 
-* If you want to use any other combination of distribution, webserver or database,
-  please consult the respective documentation.
+* This installs the packages for the ownCloud core system. If you are planning on
+  running additional apps, keep in mind that they might require additional packages.
+  See the list above for details.
 
 * At the execution of each of the above commands you might be prompted whether you
   want to continue; press "Y" for Yes (that is if your system language is English.
   You might have to press a different key if you have a different system language).
 
 * At the installation of the MySQL server, you will be prompted for a root password.
-  Be sure to remember that password for later use.
-
-* This installs the packages for the ownCloud core system. If you are planning on
-  running additional apps, keep in mind that they might require additional packages.
-  See the list above for details.
+  Be sure to remember the password you enter there for later use (you will need it
+  during ownCloud database setup).
 
 You don’t need any WebDAV support of your web server (i.e. apache’s mod_webdav)
 to access your ownCloud data via WebDAV, ownCloud has a WebDAV server built in.
@@ -506,7 +504,7 @@ Disable directory listing::
     $HTTP["url"] =~ "^/owncloud($|/)" {
          dir-listing.activate = "disable"
        }
-       
+
 **Note for Lighttpd users on Debian stable (wheezy):**
 
 Recent versions of ownCloud make use of the **HTTP PATCH** feature, which was added to Lighttpd at version 1.4.32 while Debian stable only ships 1.4.31. The patch is simple, however, and easy to integrate if you're willing to build your own package.
@@ -517,7 +515,7 @@ Make sure you have the build tools you need::
 
     apt-get build-dep lighttpd
     apt-get install quilt patch devscripts
-    
+
 Patch the package source::
 
     apt-get source lighttpd
@@ -584,17 +582,56 @@ See :doc:`installation_windows` for further instructions.
 
 Follow the Install Wizard
 ~~~~~~~~~~~~~~~~~~~~~~~~~
-Open your web browser and navigate to your ownCloud instance. If you are
-installing ownCloud on the same machine as you will access the install wizard
-from, the url will be: http://localhost/ (or http://localhost/owncloud).
 
-For basic installs we recommend SQLite as it is easy to setup (ownCloud will do it for you). For larger installs you
-should use MySQL or PostgreSQL. Click on the Advanced options to show the configuration options. You may enter admin
-credentials and let ownCloud create its own database user, or enter a preconfigured user.  If you are not using Apache
-as the web server, please set the data directory to a location outside of the document root. See the advanced
-install settings.
+* Open your web browser
+* Navigate to your ownCloud instance.
+  * If you are installing ownCloud on the same machine as you are accessing the
+    install wizard from, the url will be: https://localhost/owncloud
+  * If you are installing ownCloud on a different machine, you'll have to access
+    it by its hostname or IP address, e.g. https://example.com/owncloud
+  * If you are using a self-signed certificate, you will be presented with a
+    security warning about the issuer of the certificate not being trusted which
+    you can ignore.
 
+* You will be presented with the setup screen
+* Enter username and password for the administrative user account
+* Expand Advanced options to choose a data folder and the database system
+
+* If you are not using apache as the web server, please set the data directory
+  to a location outside of the document root.
+
+* If following the Ubuntu-Apache-Mysql walk-through:
+  * choose mysql as Database backend (you might not be presented with any other
+    choice, if only mysql is available anyway).
+  * As Database host, enter ``localhost``.
+  * As Database user enter ``root``.
+  * As Database password, enter the password you entered during installation of
+    the mysql server package.
+  * As Database name, enter an arbitrary name as you see fit (but beware that
+    there are restrictions as to what characters a database name may or may not
+    contain, see the `MySQL Schema Object Names documentation`_ for details).
+  * ownCloud will use the provided credentials and create its own user with
+    permissions only on its own database.
+
+* In general, you have the following choices regarding the database:
+  * For basic installs we recommend SQLite as it is easy to setup (ownCloud will do
+    it for you). The performance when using sqlite is however inferior to the two
+    other options.
+  * For larger installs you should use MySQL or PostgreSQL.
+  * Note that you will only be able to choose among the php database connectors
+    which are actually installed on the system (see package requirements above).
+  * Regarding the database name and user account you have two options:
+    * You can specify either an admin/root user, and the name of a database
+      which does not yet exist. This lets ownCloud create its own database and
+      database user account.
+    * You can enter a preconfigured user and an existing database.
+
+* Press "Finish Setup"
+* ownCloud will set up your cloud according to the given settings
+* When its finished, it will log you in as administrative user and present the
+  "Welcome to ownCloud" screen.
 
 .. _PHP PPA: https://launchpad.net/~ondrej/+archive/php5
 .. _github gist for further instructions: https://gist.github.com/2200407
-.. _`http://wiki.nginx.org/HttpSslModule`: http://wiki.nginx.org/HttpSslModule
+.. _Nginx HTTP SSL Module documentation: http://wiki.nginx.org/HttpSslModule
+.. _MySQL Schema Object Names documentation: http://dev.mysql.com/doc/refman/5.5/en/identifiers.html
