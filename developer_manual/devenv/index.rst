@@ -33,7 +33,7 @@ To get started the basic git repositories need to cloned into the webserver's di
 Identify the user and group the web server is running as
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-and the apache user and group for the **chown** command will either be 
+and the Apache user and group for the **chown** command will either be
 
 * **http**
 * **www-data** 

@@ -234,7 +234,7 @@ style. Here is some advise on what to watch out for when contributing.
   this is better written as:
 
     ... for the Apache web server, you should use a ``.htaccess`` file.
-    In case you are not using apache, the section :ref: `Web Server Notes`
+    In case you are not using Apache, the section :ref: `Web Server Notes`
     will explain how to implement alternatives to this Apache-proprietary
     way of securing your data directory.
 

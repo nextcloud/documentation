@@ -5,7 +5,7 @@ If you do not want to use packages, here is how you setup ownCloud from
 scratch using a classic :abbr:`LAMP (Linux, Apache, MySQL, PHP)` setup:
 
 This document provides a complete walk-through for installing ownCloud
-on Ubuntu 12.04 LTS Server with apache and mysql.
+on Ubuntu 12.04 LTS Server with Apache and MySQL.
 It also provides guidelines for installing it on other distributions,
 webservers and database systems.
 
@@ -86,15 +86,15 @@ For preview generation (*optional*):
 	sudo apt-get update
 	sudo apt-get install php5
 
-* You don’t need any WebDAV support module for your web server (i.e. apache’s
+* You don’t need any WebDAV support module for your web server (i.e. Apache’s
   mod_webdav) to access your ownCloud data via WebDAV. ownCloud has a built-in
   WebDAV server of its own.
 
 Example installation on Ubuntu 12.04.4 LTS Server
 *************************************************
 On a machine running a pristine Ubuntu 12.04.4 LTS server, you would install the
-required and recommended modules for a typical owncloud installation, using
-apache and mysql by issuing the following commands in a terminal:
+required and recommended modules for a typical ownCloud installation, using
+Apache and MySQL by issuing the following commands in a terminal:
 ::
 
 	sudo apt-get install apache2 mysql-server libapache2-mod-php5
@@ -107,10 +107,10 @@ apache and mysql by issuing the following commands in a terminal:
   please consult the respective documentation.
 
 * At the execution of each of the above commands you might be prompted whether you
-  want to continue; press "Y" for Yes (that is if your system language is english.
+  want to continue; press "Y" for Yes (that is if your system language is English.
   You might have to press a different key if you have a different system language).
 
-* At the installation of the mysql server, you will be prompted for a root password.
+* At the installation of the MySQL server, you will be prompted for a root password.
   Be sure to remember that password for later use.
 
 * This installs the packages for the ownCloud core system. If you are planning on
@@ -133,7 +133,7 @@ ownCloud's built-in WebDAV support.
   e.g. FTP to transfer the downloaded archive file there.
 * Note down the directory where you put the file.
 * Extract the archive contents. Open a terminal on the machine
-  you plan to run owncloud on, and run:
+  you plan to run ownCloud on, and run:
   ::
 
 	cd path/to/downloaded/archive
@@ -152,7 +152,7 @@ ownCloud's built-in WebDAV support.
 
 
   * If you don't know where your webserver's document root is located, consult its
-    documentation. For apache on Ubuntu 12.04 LTS for example, this would usually be
+    documentation. For Apache on Ubuntu 12.04 LTS for example, this would usually be
     :code:`/var/www`. So above command should look like this:
     ::
 
@@ -212,7 +212,7 @@ Apache Configuration
 Enabling SSL
 ............
 
-An apache installed under Ubuntu comes already set-up with a simple
+An Apache installed under Ubuntu comes already set-up with a simple
 self-signed certificate. All you have to do is to enable the ssl module and
 the according site. Open a terminal and run
 ::
@@ -225,7 +225,7 @@ If you are using a different distribution, check their documentation on how to
 enable SSL.
 
 .. note:: Self-signed certificates have their drawbacks - especially when you
-          plan to make your owncloud server publicly accessible. You might want
+          plan to make your ownCloud server publicly accessible. You might want
           to consider getting a certificate signed by an official signing
           authority. If you're looking for a free certificate, you can consult
           e.g. this article:
@@ -235,7 +235,7 @@ Configuring ownCloud
 ....................
 
 Since there was a change in the way versions 2.2 and 2.4 are configured,
-you'll have to find out which apache version you are using.
+you'll have to find out which Apache version you are using.
 
 Usually you can do this by running one of the following commands:
 ::
@@ -249,7 +249,7 @@ Example output:
 	Server version: Apache/2.2.22 (Ubuntu)
 	Server built:   Jul 12 2013 13:37:10
 
-This indicates an apache of the 2.2 version branch (as e.g. you will find on
+This indicates an Apache of the 2.2 version branch (as e.g. you will find on
 Ubuntu 12.04 LTS).
 
 Example config for Apache 2.2:
@@ -292,15 +292,15 @@ Example config for Apache 2.4:
 
   (this should be one of the last lines in the file).
 
-* For owncloud to work correctly, we need the module mod_rewrite. Enable it by running::
+* For ownCloud to work correctly, we need the module mod_rewrite. Enable it by running::
 
 	sudo a2enmod rewrite
 
 * In distributions that do not come with a2enmod the module needs to be enabled
-  manually by editing the config apache files, usually :file:`/etc/httpd/httpd.conf`.
-  consult the apache documentation or your distributions documentation.
+  manually by editing the config Apache files, usually :file:`/etc/httpd/httpd.conf`.
+  consult the Apache documentation or your distributions documentation.
 
-* Then restart apache.
+* Then restart Apache.
 
   * For Ubuntu systems (or distributions using upstartd), run::
 
@@ -326,7 +326,7 @@ Example config for Apache 2.4:
 
 	Dav Off
 
-* Furthermore, you need to disable any server-configured authentication for owncloud, as
+* Furthermore, you need to disable any server-configured authentication for ownCloud, as
   it's internally using Basic authentication for its *DAV services.
   If you have turned on authentication on a parent folder (via e.g. an "AuthType Basic"
   directive), you can turn off the authentication specifically for the ownCloud entry;
@@ -384,8 +384,8 @@ A minimal site configuration on Ubuntu 12.04 might look like this:
 
 When using ssl, take special note on the ServerName. You should specify one in the
 server configuration, as well as in the CommonName field of the certificate. If you want
-your owncloud to be reachable via the internet, then set both these to the domain you
-want to reach your owncloud under.
+your ownCloud to be reachable via the internet, then set both these to the domain you
+want to reach your ownCloud under.
 
 .. note:: By default, the certificates' CommonName will get set to the host name at the time
           when the ssl-cert package was installed.
@@ -532,7 +532,7 @@ like this
     </server>
 
 
-The apache **.htaccess** file that comes with ownCloud is configured to
+The Apache **.htaccess** file that comes with ownCloud is configured to
 redirect requests to nonexistent pages. To emulate that behaviour, you
 need a custom error handler for yaws. See this `github gist for further instructions`_ on how to create and compile that error handler.
 
@@ -564,7 +564,7 @@ from, the url will be: http://localhost/ (or http://localhost/owncloud).
 
 For basic installs we recommend SQLite as it is easy to setup (ownCloud will do it for you). For larger installs you
 should use MySQL or PostgreSQL. Click on the Advanced options to show the configuration options. You may enter admin
-credentials and let ownCloud create its own database user, or enter a preconfigured user.  If you are not using apache
+credentials and let ownCloud create its own database user, or enter a preconfigured user.  If you are not using Apache
 as the web server, please set the data directory to a location outside of the document root. See the advanced
 install settings.
 

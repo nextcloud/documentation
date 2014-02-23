@@ -94,7 +94,7 @@ Windows Server 2008
 .. figure:: ../images/winserverroles.jpg
     :width: 300px
     :align: center
-    :alt: server roles required for owncloud
+    :alt: server roles required for ownCloud
     :figclass: align-center
 
     Server roles required for ownCloud
