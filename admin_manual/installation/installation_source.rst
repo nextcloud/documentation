@@ -327,7 +327,7 @@ Example config for Apache 2.4:
 	Dav Off
 
 * Furthermore, you need to disable any server-configured authentication for ownCloud, as
-  it's internally using Basic authentication for its *DAV services.
+  it's internally using Basic authentication for its \*DAV services.
   If you have turned on authentication on a parent folder (via e.g. an "AuthType Basic"
   directive), you can turn off the authentication specifically for the ownCloud entry;
   to do so, in above "<Directory ..." code, add the following line directly after the
