@@ -339,6 +339,7 @@ Example config for Apache 2.4:
 A minimal site configuration on Ubuntu 12.04 might look like this:
 
 .. code-block:: xml
+
 	<IfModule mod_ssl.c>
 	<VirtualHost _default_:443>
 		ServerName YourServerName
