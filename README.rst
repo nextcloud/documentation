@@ -34,7 +34,7 @@ Linux / OS X
 
 First make sure that these things are installed
  - Python 2 (2.6.0 or better, Python 3 is not yet supported!)
- - Sphinx (e.g. sudo yum install python-sphinx), on Mac: ``sudo easy_install Sphinx``
+ - Sphinx (e.g. ``sudo yum install python-sphinx``), on Mac: ``sudo easy_install Sphinx``
  - Sphinx PHPDomain (e.g. ``sudo easy_install sphinxcontrib-phpdomain``)
  - rst2pdf (e.g. ``sudo easy_install rst2pdf``)
  - If you're on Arch Linux, the build script is called sphinx-build2 which will fail. Therefore you have to provide a link::
