@@ -496,24 +496,25 @@ ownCloud Avatar integration
 ---------------------------
 
 ownCloud 6 incorporates a user profile picture feature, called Avatar. If a user
-has a photo stored in the *jpegPhoto* attribute, it will be used as Avatar. The
-user then is not able to change his avatar in the personal settings. It must be
-done within LDAP.
+has a photo stored in the *jpegPhoto* or, since 6.0.2, *thumbnailPhoto*
+attribute, it will be used as Avatar. The user then is not able to change his
+avatar in the personal settings. It must be done within LDAP. *jpegPhoto* is
+preferred over *thumbnailPhoto*.
 
 .. figure:: ../images/ldap-fetched-avatar.png
 
    Profile picture fetched from LDAP, Personal Settings
 
-If the *jpegPhoto* attribute is not set or empty, the default ownCloud behaviour
-is active, i.e. the user will be able to set and change his profile picture in
-the personal settings. If the user sets a profile picture within ownCloud it
-will _not_ be stored in LDAP.
+If the *jpegPhoto* or *thumbnailPhoto* attribute is not set or empty, the
+default ownCloud behaviour is active, i.e. the user will be able to set and
+change his profile picture in the personal settings. If the user sets a profile
+picture within ownCloud it will _not_ be stored in LDAP.
 
-The *jpegPhoto* attribute will be fetched once a day to make sure the current
-photo from LDAP is used in ownCloud. If a picture is added later, a possibly set
-profile picture will be overridden with the LDAP one. If a photo stored in the
-*jpegPhoto* attribute is deleted later, the last profile picture in ownCloud
-will still be used.
+The *jpegPhoto* or *thumbnailPhoto* attribute will be fetched once a day to make
+sure the current photo from LDAP is used in ownCloud. If a picture is added
+later, a possibly set profile picture will be overridden with the LDAP one. If a
+photo stored in the *jpegPhoto* and/or *thumbnailPhoto* attribute is deleted
+later, the last profile picture in ownCloud will still be used.
 
 The photo taken from LDAP will be adjusted to the requirements of the ownCloud
 avatar automatically. I.e. it will be transformed into a square. If the photo
