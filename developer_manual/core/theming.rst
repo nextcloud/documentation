@@ -1,5 +1,5 @@
-1. Theming owncloud
-===================
+Theming owncloud
+================
 
 Themes can be used to customize the look and feel of ownCloud.
 Themes can relate to the following topics of owncloud:
@@ -8,26 +8,8 @@ Themes can relate to the following topics of owncloud:
 * Theming the owncloud Desktop client
 This documentation contains only the Web-frontend adaptions so far.
 
-1.1 Preparations
-----------------
-Basically its a good idea to have a developement/test server (e.g. a virualized) independent form your productive system, to
-
-* keep adaptions and debugging away from normal services
-* influence no other processes
-* influence not other server settings
-
-1.2 Preconditions
------------------
-For successfull theming a webapplication such as ownCloud, one needs to have basic knowledge in the following topics:
-
-* Website structure with HTML
-* Programming dynamic websites
-* Designing a website with CSS
-* Creating or adapting graphics or photos
-Because ownCloud is written in PHP there are no static HTML-files found but only CSS files that match the HTML output that comes from PHP.
-
-1.3 Getting started
--------------------
+Getting started
+---------------
 A good idea getting starting with a dynamically created website is to inspect it with **webdeveloper tools**, that are found in almost any browser. They show the generated HTML and the CSS Code, that the client/browser is recieving:
 With this facts you can easyly determine, where the following object-related attributes for the phenomenons are settled:
 
@@ -43,8 +25,8 @@ Make a backup of your current theme(s) e.g.:
 * Goto …/owncloud/themes
 * cp -r default default.old
 
-2 Creating and activating a new theme
-=====================================
+Creating and activating a new theme
+===================================
 
 There are two basic ways of creating new themings:
 
@@ -56,8 +38,8 @@ Depending on how you created your new theme it will be necessary to
 * put a new theme into the /themes -folder. The theme can be activated by putting "theme" => ‘themename’, into the config.php file.
 * make all changes in the /themes/default -file
 
-3 Structure
-===========
+Structure
+=========
 
 The folder structure of a theme is exactly the same as the main ownCloud
 structure. You can override js files, images and templates with own versions.
@@ -65,16 +47,18 @@ css files are loaded additionally to the default files so you can override css
 properties.
 
 
-4 How to change images and the logo
-===================================
+How to change images and the logo
+=================================
+
 A new logo which you may want to insert can be added as follows:
 
-4.1 Figure out the path of the old logo
----------------------------------------
+Figure out the path of the old logo
+-----------------------------------
+
 Replace the old pictue, which postition you found out as described under 1.3. by adding an extension in case you want to re-use it later.
 
-4.2 Creating an own logo
-------------------------
+Creating an own logo
+--------------------
 
 If you want to do a quick exchange like (1) it's important to know the size of the picture before you start creating an own logo:
 
@@ -87,18 +71,14 @@ The (main) pictures, that can be found inside ownCloud standard theming are the 
 * The logo at the login-page above the credentials-box: 	        …/owncloud/themes/default/core/img/logo.svg
 * The logo, that's always in the left upper corner after login:   …/owncloud/themes/default/core/img/logo-wide.svg
 
-
-
-4.3 Inserting your new logo
----------------------------
+Inserting your new logo
+-----------------------
 Inserting a new logo into an existing theme is as simple as replacing the old logo with the new (genreated) one.
 You can use: scalable vector graphics (.svg) or common graphics formats for the internet such as portable network graphics (.png) or .jepg
 Just insert the new created picture by using the unchanged name of the old picture.
 
-
-
-4.4 changing the default colours
---------------------------------
+changing the default colours
+----------------------------
 
 With a web-developer tool like Mozilla-Inspector, you also get easyly displayed the color of the background you klicked on.
 On the top of the login page you can see a case- destinguished setting for different browsers:
@@ -126,13 +106,13 @@ As usual:
 * the second two give the green intensity and the
 * tird pair gives the blue value.
 
-Save your css-file and refresh to see the new login screen. 
-The other major color scheme is the blue header bar on the main navigation page once you log in to ownCloud. 
-This color we will change with the above as well. 
+Save your css-file and refresh to see the new login screen.
+The other major color scheme is the blue header bar on the main navigation page once you log in to ownCloud.
+This color we will change with the above as well.
 Save the file and refresh the browser for the changes to take effect.
 
-5 Testing the new theme out
-===========================
+Testing the new theme out
+=========================
 
 There are different options for doing so:
 
@@ -143,8 +123,8 @@ There are different options for doing so:
 .. _GitHub themes repository: https://github.com/owncloud/themes
 .. _here: https://github.com/owncloud/themes/tree/master/example
 
-6 Notes for Updates
-===================
+Notes for Updates
+=================
 
 In case of theming it is recommended to the user,
 not to perform these adaptions inside the folder /themes/default.
@@ -163,12 +143,12 @@ All company theming must be done exclusively here from now on.
 In case, that one of the following files is affected due to an upgrade,
 
 * /themes/default/settings/templates/apps.php
-*	/themes/default/defaults.php
+* /themes/default/defaults.php
 
 the files listed below, have to be replaced by those listed above:
 
-*	/themes/MyTheme/settings/templates/apps.php
-*	/themes/MyTheme/defaults.php
+* /themes/MyTheme/settings/templates/apps.php
+* /themes/MyTheme/defaults.php
 
 But this is unlikely at least in the upcoming updates (5.0.x).
 ownCloud aims to give further information in this case.
