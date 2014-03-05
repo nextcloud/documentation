@@ -225,9 +225,8 @@ enable SSL.
 .. note:: Self-signed certificates have their drawbacks - especially when you
           plan to make your ownCloud server publicly accessible. You might want
           to consider getting a certificate signed by an official signing
-          authority. If you're looking for a free certificate, you can consult
-          e.g. this article:
-          `https://www.sslshopper.com/article-free-ssl-certificates-from-a-free-certificate-authority.html`
+          authority. SSLShopper for example has an article on your
+          `options for free SSL certificates`_.
 
 Configuring ownCloud
 ....................
@@ -272,8 +271,8 @@ Example config for Apache 2.4:
 
 * This config entry needs to go into the configuration file of the "site" you want
   to use.
-* On a Ubuntu system, this typically is the "default-ssl" site (to be found at
-  :code:`/etc/apache2/sites-available/default-ssl`).
+* On a Ubuntu system, this typically is the "default-ssl" site (to be found in
+  the :file:`/etc/apache2/sites-available/default-ssl`).
 * Edit the site file with your favorite editor (note that you'll need root
   permissions to modify that file). For Ubuntu 12.04 LTS, you could for example run
   the following command in a Terminal::
@@ -286,7 +285,7 @@ Example config for Apache 2.4:
 
   (this should be one of the last lines in the file).
 
-* A minimal site configuration on Ubuntu 12.04 might look like this:
+* A minimal site configuration file on Ubuntu 12.04 might look like this:
 
 .. code-block:: xml
 
