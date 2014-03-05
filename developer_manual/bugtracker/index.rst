@@ -9,4 +9,6 @@ Bugtracker
    codereviews
    kanban
 
+Bugs should be enter into the `Bugtracker`_.
+
 .. _Bugtracker: https://github.com/owncloud/core/issues
