@@ -174,7 +174,7 @@ The following command will change the ownership of the whole folder to that user
   extracted ownCloud files are located.
 
 * For Ubuntu 12.04 LTS server, where the ``owncloud`` folder was copied into the
-  apache document root at ``/var/www``, and the user running apache and php
+  Apache document root at ``/var/www``, and the user running Apache and php
   scripts is called ``www-data``, this would mean you need to run::
 
 	sudo chown -R www-data:www-data /var/www/owncloud
@@ -342,7 +342,7 @@ Example config for Apache 2.4:
   consult the Apache documentation or your distributions documentation.
 
 * In order for the maximum upload size to be configurable, the
-  :file:`.htaccess` file in the ownCloud folder needs to be made writable by the
+  :file:`.htaccess` in the ownCloud folder needs to be made writable by the
   server (this should already be done, see section `Set the Directory Permissions`_).
 
 * You should make sure that any built-in WebDAV module of your web server is disabled
@@ -373,7 +373,7 @@ Example config for Apache 2.4:
 .. note:: By default, the certificates' CommonName will get set to the host name at the time
           when the ssl-cert package was installed.
 
-* Then restart Apache.
+* Finally, restart Apache.
 
   * For Ubuntu systems (or distributions using upstartd), run::
 
@@ -483,7 +483,7 @@ Lighttpd Configuration
 This assumes that you are familiar with installing PHP application on
 lighttpd.
 
-It is important to note that the :file:`.htaccess` files used by ownCloud to
+It is important to note that the :file:`.htaccess` used by ownCloud to
 protect the :file:`data` folder are ignored by lighttpd, so you have to secure
 it by yourself, otherwise your :file:`owncloud.db` database and user data are
 publicly readable even if directory listing is off. You need to add two
@@ -551,7 +551,7 @@ like this
             </redirect>
     </server>
 
-The Apache :file:`.htaccess` file that comes with ownCloud is configured to
+The Apache :file:`.htaccess` that comes with ownCloud is configured to
 redirect requests to nonexistent pages. To emulate that behaviour, you
 need a custom error handler for yaws. See this
 `github gist for further instructions`_ on how to create and compile that error
@@ -595,20 +595,23 @@ Follow the Install Wizard
 * Enter username and password for the administrative user account
 * Expand Advanced options to choose a data folder and the database system
 
-* If you are not using apache as the web server, please set the data directory
+* If you are not using Apache as the web server, please set the data directory
   to a location outside of the document root.
 
-* If following the Ubuntu-Apache-Mysql walk-through:
+* If following the Ubuntu-Apache-MySQL walk-through:
 
-  * choose mysql as Database backend (you might not be presented with any other
-    choice, if only mysql is available anyway).
+  * choose MySQL as Database backend (you might not be presented with any other
+    choice if you haven't installed any other database systems).
   * As Database host, enter ``localhost``.
   * As Database user enter ``root``.
   * As Database password, enter the password you entered during installation of
-    the mysql server package.
-  * As Database name, enter an arbitrary name as you see fit (but beware that
-    there are restrictions as to what characters a database name may or may not
-    contain, see the `MySQL Schema Object Names documentation`_ for details).
+    the MySQL server package.
+  * As Database name, enter an arbitrary name as you see fit
+
+    * Beware that there are restrictions as to what characters a database name
+      may or may not contain, see the
+      `MySQL Schema Object Names documentation`_ for details);
+    * Make sure to choose a name under which no database exists yet
   * ownCloud will use the provided credentials and create its own user with
     permissions only on its own database.
 
