@@ -1,4 +1,4 @@
-Theming owncloud
+Theming ownCloud
 ================
 
 Themes can be used to customize the look and feel of ownCloud.
