@@ -169,11 +169,11 @@ The following command will change the ownership of the whole folder to that user
 
 	sudo chown -R <php-user>:<php-user> /path/to/your/webservers/document-root/owncloud
 
-* Continuing the example from above, for Ubuntu 12.04 LTS, where the install location
-  was :code:`/var/www`, you would run:
-  ::
+  where ``<php-user>`` is to be replaced by the user running php scripts, and
+  ``/path/to/your/webservers/document-root/owncloud`` by the folder where the
+  extracted ownCloud files are located.
 
-* For Ubuntu 12.04 LTS server, where the owncloud folder was copied into the
+* For Ubuntu 12.04 LTS server, where the ``owncloud`` folder was copied into the
   apache document root at ``/var/www``, and the user running apache and php
   scripts is called ``www-data``, this would mean you need to run::
 
@@ -341,9 +341,9 @@ Example config for Apache 2.4:
   enabled manually by editing the Apache config files, usually :file:`/etc/httpd/httpd.conf`.
   consult the Apache documentation or your distributions documentation.
 
-* In order for the maximum upload size to be configurable, the .htaccess file in the
-  ownCloud folder needs to be made writable by the server (this should already be done,
-  see section `Set the Directory Permissions`_).
+* In order for the maximum upload size to be configurable, the
+  :file:`.htaccess` file in the ownCloud folder needs to be made writable by the
+  server (this should already be done, see section `Set the Directory Permissions`_).
 
 * You should make sure that any built-in WebDAV module of your web server is disabled
   (at least for the ownCloud directory), as it will interfere with ownCloud's
@@ -483,21 +483,23 @@ Lighttpd Configuration
 This assumes that you are familiar with installing PHP application on
 lighttpd.
 
-It is important to note that the **.htaccess** files used by ownCloud to protect the **data** folder are ignored by
-lighttpd, so you have to secure it by yourself, otherwise your **owncloud.db** database and user data are publicly
-readable even if directory listing is off. You need to add two snippets to your lighttpd configuration file:
+It is important to note that the :file:`.htaccess` files used by ownCloud to
+protect the :file:`data` folder are ignored by lighttpd, so you have to secure
+it by yourself, otherwise your :file:`owncloud.db` database and user data are
+publicly readable even if directory listing is off. You need to add two
+snippets to your lighttpd configuration file:
 
 Disable access to data folder::
 
-    $HTTP["url"] =~ "^/owncloud/data/" {
-         url.access-deny = ("")
-       }
+	$HTTP["url"] =~ "^/owncloud/data/" {
+		url.access-deny = ("")
+	}
 
 Disable directory listing::
 
-    $HTTP["url"] =~ "^/owncloud($|/)" {
-         dir-listing.activate = "disable"
-       }
+	$HTTP["url"] =~ "^/owncloud($|/)" {
+		dir-listing.activate = "disable"
+	}
 
 **Note for Lighttpd users on Debian stable (wheezy):**
 
@@ -549,16 +551,17 @@ like this
             </redirect>
     </server>
 
-
-The Apache **.htaccess** file that comes with ownCloud is configured to
+The Apache :file:`.htaccess` file that comes with ownCloud is configured to
 redirect requests to nonexistent pages. To emulate that behaviour, you
-need a custom error handler for yaws. See this `github gist for further instructions`_ on how to create and compile that error handler.
+need a custom error handler for yaws. See this
+`github gist for further instructions`_ on how to create and compile that error
+handler.
 
 Hiawatha Configuration
 **********************
 
-Add **WebDAVapp = yes** to the ownCloud virtual host. Users accessing
-WebDAV from MacOS will also need to add **AllowDotFiles = yes**.
+Add ``WebDAVapp = yes`` to the ownCloud virtual host. Users accessing
+WebDAV from MacOS will also need to add ``AllowDotFiles = yes``.
 
 Disable access to data folder::
 
@@ -617,12 +620,24 @@ Follow the Install Wizard
   * For larger installs you should use MySQL or PostgreSQL.
   * Note that you will only be able to choose among the php database connectors
     which are actually installed on the system (see package requirements above).
-  * Regarding the database name and user account you have two options:
+  * Further, it is not easily possible to migrate to another database system
+    once you have set up your ownCloud to use a specific one. So make sure to
+    carefully consider which database system to use.
+  * When using MySQL or PostgreSQL you have two options  regarding the database
+    name and user account you specify:
 
     * You can specify either an admin/root user, and the name of a database
-      which does not yet exist. This lets ownCloud create its own database and
-      database user account.
-    * You can enter a preconfigured user and an existing database.
+      which does not yet exist. This lets ownCloud create its own database; it
+      will also create a database user account with restricted rights (with the
+      same username as you specified for the administrative user, plus an
+      ``oc_`` prefix) and will use that for all subsequent database access.
+    * You can enter the name of an existing database and the username/password
+      of a user with restricted permissions
+
+      * You can create such a user yourself e.g. via phpmyadmin.
+      * This user shouldn't have permission to create a database.
+      * It should have full permissions on the (existing) database with the
+        name you specify.
 
 * Press "Finish Setup"
 * ownCloud will set up your cloud according to the given settings
