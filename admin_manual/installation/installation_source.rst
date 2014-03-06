@@ -93,7 +93,7 @@ Example installation on Ubuntu 12.04.4 LTS Server
 *************************************************
 On a machine running a pristine Ubuntu 12.04.4 LTS server, you would install the
 required and recommended modules for a typical ownCloud installation, using
-Apache and MySQL by issuing the following commands in a terminal:::
+Apache and MySQL by issuing the following commands in a terminal::
 
 	sudo apt-get install apache2 mysql-server libapache2-mod-php5
 	sudo apt-get install php5-gd php5-json php5-mysql php5-curl
