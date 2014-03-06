@@ -158,9 +158,17 @@ ownCloud's built-in WebDAV support.
 Set the Directory Permissions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The user running your web server must own at least the apps/, data/ and config/
-directories in your ownCloud installation folder.
-The following command will change the ownership of the whole folder to that user.
+The user running your web server must own at least the config/, data/ and apps/
+directories in your ownCloud installation folder so that you can configure ownCloud,
+create/modify and delete your data files through ownCloud and install apps through
+the web interface. If you are planning on also using the automatic updater app for
+updating, the whole ``owncloud`` folder must be owned by (or at least be writable to)
+the user running php on your system.
+
+.. note:: When using an NFS mount for the data directory, do not change ownership as above.
+          The simple act of mounting the drive will set proper permissions for ownCloud to
+          write to the directory. Changing ownership as above could result in some issues
+          if the NFS mount is lost.
 
 * For Debian-based distributions (like Ubuntu, Debian or Linux Mint) and Gentoo, run:
   ::
@@ -239,7 +247,7 @@ Usually you can do this by running one of the following commands::
 	sudo apachectl -v
 	apache2 -v
 
-Example output: ::
+Example output::
 
 	Server version: Apache/2.2.22 (Ubuntu)
 	Server built:   Jul 12 2013 13:37:10
