@@ -37,9 +37,7 @@ To upgrade ownCloud, follow those steps:
 
 #. Deactivate all third party applications.
 #. Delete everything from your ownCloud installation directory, except data and
-   config. Assuming that it's your working directory, you could execute this command::
-    
-    find . -mindepth 1 -maxdepth 1 ! -path data ! -path config -exec rm -rf {} \;
+   config.
 
 #. Unpack the release tarball in the ownCloud directory (or copy the
    files thereto). Assuming that your installation directory is called 'owncloud' and that it's inside your working
