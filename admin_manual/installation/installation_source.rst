@@ -447,7 +447,7 @@ Nginx Configuration
             }
 
             location ~ ^(.+?\.php)(/.*)?$ {
-                    try_files $1 = 404;
+                    try_files $1 =404;
 
                     include fastcgi_params;
                     fastcgi_param SCRIPT_FILENAME $document_root$1;
