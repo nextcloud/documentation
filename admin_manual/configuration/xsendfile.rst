@@ -89,23 +89,36 @@ Configuration
 ~~~~~~~~~~~~~
 Configuration is similar to Apache::
 
-    location ~ \.php$ {
+    location ~ \.php(?:$|/) {
         ...
         fastcgi_param MOD_X_ACCEL_REDIRECT_ENABLED on;
     }
 
-    location ~ ^/home/valerio/(owncloud/)?data {
+    location ^~ /data {
         internal;
-        root /;
+        #alias /path/to/non-default/datadirectory;
+
+    #    location /data/USER/files/LOCAL-FS-MOUNT-NAME {
+    #        alias /path/to/local-mountpoint;
+    #    }
+
+    #    location ~ ^/data/(?:USER1|USER2)/files/LOCAL-FS-MOUNT-NAME/(.+)$ {
+    #        alias /path/to/local-mountpoint/$1;
+    #    }
+
     }
 
 
-* **fastcgi_param MOD_X_ACCEL_REDIRECT_ENABLED:** tells ownCloud scripts that they should add the X-Accel-Redirect header when serving files
+* **fastcgi_param MOD_X_ACCEL_REDIRECT_ENABLED** ~ Tells ownCloud scripts that they should add the X-Accel-Redirect header when serving files.
+* **/data** ~ The ownCloud datadirectory.  Any Local File System External Storage Mounts must also have nested locations here.
 
-* **internal location:** each directory that contains local user data should correspond to an internal location. In the example uses the following directories:
+  * set alias if you are using a non-default datadirectory
 
-  * **/home/valerio/owncloud/data**: ownCloud data directory
-  * **/home/valerio/data**: a local mount
+  * **/data/USER/files/LOCAL-FS-MOUNT-NAME** ~ a local fs external storage mount available to a single user
+
+  * **~ ^/data/(?:USER1|USER2)/files/LOCAL-FS-MOUNT-NAME/(.+)$** ~ a local fs external storage mount available to multiple users
+
+    * Replace **(?:USER1|USER2)** with **[^/]+** for storage available to all users
 
 How to check if it's working?
 -----------------------------
