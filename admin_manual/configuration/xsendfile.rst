@@ -4,8 +4,8 @@ Since ownCloud 5 it is possible to let web servers handle static file serving.
 This should generally improve performance (web servers are optimized for this) and in some cases permits controlled
 file serving (i.e. pause and resume downloads).
 
-.. note :: This feature can currently only be activated for local files, i.e. files inside the **data/** directory and local mounts.  It also does not work with the Encryption App enabled.
-Controlled file serving **does not work for generated zip files**. This is due to how temporary files are created.
+.. note :: This feature can currently only be activated for local files, i.e. files inside the **data/** directory
+and local mounts. Controlled file serving **does not work for generated zip files**. This is due to how temporary files are created.
 
 Apache2 (X-Sendfile)
 --------------------
@@ -42,13 +42,14 @@ For versions >=0.10 (e.g. Ubuntu 12.10)
         ...
         SetEnv MOD_X_SENDFILE_ENABLED 1
         XSendFile On
+        XSendFilePath /tmp/oc-noclean
         XSendFilePath /home/valerio
     </Directory>
 
 * **SetEnv MOD_X_SENDFILE_ENABLED**: tells ownCloud scripts that they should add the X-Sendfile header when serving files
 * **XSendFile**: enables web server handling of X-Sendfile headers (and therefore file serving) for the specified Directory
-* **XSendFileAllowAbove (<0.10)**: enables file serving through web server on path outside the specified Directory. This is needed for PHP for configured local mounts which may reside outside data directory
-* **XSendFilePath (>=0.10)**: a white list of paths that the web server is allowed to serve outside of the specified Directory. Other paths which correspond to local mounts should be configured here as well. For a more in-dept documentation of this directive refer to mod_xsendfile website linked above
+* **XSendFileAllowAbove (<0.10)**: enables file serving through web server on path outside the specified Directory. This is needed for PHP temporary directory where zip files are created and for configured local mounts which may reside outside data directory
+* **XSendFilePath (>=0.10)**: a white list of paths that the web server is allowed to serve outside of the specified Directory. At least PHP temporary directory concatenated with *oc-noclean* must be configured. Temporary zip files will be created inside this directory when using mod_xsendfile. Other paths which correspond to local mounts should be configured here as well. For a more in-dept documentation of this directive refer to mod_xsendfile website linked above
 
 
 LigHTTPd (X-Sendfile2)
@@ -100,6 +101,11 @@ Configuration is similar to Apache::
         root /;
     }
 
+    location ~ ^/tmp/oc-noclean/.+$ {
+        internal;
+        root /;
+    }
+
 
 * **fastcgi_param MOD_X_ACCEL_REDIRECT_ENABLED:** tells ownCloud scripts that they should add the X-Accel-Redirect header when serving files
 
@@ -107,6 +113,7 @@ Configuration is similar to Apache::
 
   * **/home/valerio/owncloud/data**: ownCloud data directory
   * **/home/valerio/data**: a local mount
+  * **/tmp/oc-noclean**: PHP temporary directory concatenated with *oc-noclean*. Temporary zip files will be created inside this directory when using X-Accel-Redirect
 
 How to check if it's working?
 -----------------------------
