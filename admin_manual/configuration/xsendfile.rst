@@ -90,41 +90,23 @@ Configuration
 ~~~~~~~~~~~~~
 Configuration is similar to Apache::
 
-    location ~ ^/(?:\.|config|db_structure\.xml|README) {
-        deny all;
-    }
-    
-    location ~ \.php(?:$|/) {
+    location ~ \.php$ {
         ...
         fastcgi_param MOD_X_ACCEL_REDIRECT_ENABLED on;
     }
 
-    location ^~ /data {
+    location ~ ^/home/valerio/(owncloud/)?data {
         internal;
-        #alias /path/to/non-default/datadirectory;
-    
-    #    location ^~ /data/USER/files/local-mountpoint-foldername {
-    #        internal;
-    #        alias /path/to/local-mountpoint;
-    #    }
+        root /;
     }
 
 
-* **deny all:** The '/data' folder must be removed from any deny blocks. This does not pose a security threat because '/data' can only be accessed by internal redirects.
+* **fastcgi_param MOD_X_ACCEL_REDIRECT_ENABLED:** tells ownCloud scripts that they should add the X-Accel-Redirect header when serving files
 
-* **fastcgi_param MOD_X_ACCEL_REDIRECT_ENABLED:** Tells ownCloud scripts that they should add the X-Accel-Redirect header when serving files.
+* **internal location:** each directory that contains local user data should correspond to an internal location. In the example uses the following directories:
 
-* **internal location:** The data directory and any Local External Storage mounts must be added here.
-
-  * **/data:** ownCloud data directory
-  
-    * Set alias if you are using a non-default datadirectory.
-      
-  * **/data/USER/files/local-mountpoint-foldername:** a local external storage mount
-  
-    * Replace 'USER' with '(?:USER1|USER2)' for local mounts available to multiple users.
-    * Replace 'USER' with '[^/]+' for local mounts available to all users.
-
+  * **/home/valerio/owncloud/data**: ownCloud data directory
+  * **/home/valerio/data**: a local mount
 
 How to check if it's working?
 -----------------------------
