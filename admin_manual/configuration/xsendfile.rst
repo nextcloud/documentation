@@ -5,7 +5,7 @@ This should generally improve performance (web servers are optimized for this) a
 file serving (i.e. pause and resume downloads).
 
 .. note :: This feature can currently only be activated for local files, i.e. files inside the **data/** directory and local mounts.  It also does not work with the Encryption App enabled.
-Controlled file serving **does not work for generated zip files**. This is due to how temporary files are created.
+Controlled file serving **does not work for generated zip files**. This is due to zip files being generated and streamed back directly to the client.
 
 Apache2 (X-Sendfile)
 --------------------
