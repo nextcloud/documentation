@@ -96,13 +96,22 @@ Configuration is similar to Apache::
 
     location ^~ /data {
         internal;
+        # Set 'alias' if not using the default 'datadirectory'
         #alias /path/to/non-default/datadirectory;
 
+    #    LOCAL-MOUNT-NAME should match "Folder name" and 'alias' value should match "Configuration"
+    #    A 'Local' External Storage Mountpoint available to a single user
     #    location /data/USER/files/LOCAL-FS-MOUNT-NAME {
     #        alias /path/to/local-mountpoint;
     #    }
 
+    #    A 'Local' External Storage Mountpoint available to mulitple users
     #    location ~ ^/data/(?:USER1|USER2)/files/LOCAL-FS-MOUNT-NAME/(.+)$ {
+    #        alias /path/to/local-mountpoint/$1;
+    #    }
+
+    #    A 'Local' External Storage Mountpoint available to all users
+    #    location ~ ^/data/[^/]+/files/LOCAL-FS-MOUNT-NAME/(.+)$ {
     #        alias /path/to/local-mountpoint/$1;
     #    }
 
@@ -110,15 +119,15 @@ Configuration is similar to Apache::
 
 
 * **fastcgi_param MOD_X_ACCEL_REDIRECT_ENABLED** ~ Tells ownCloud scripts that they should add the X-Accel-Redirect header when serving files.
-* **/data** ~ The ownCloud datadirectory.  Any Local File System External Storage Mounts must also have nested locations here.
+* **/data** ~ The ownCloud datadirectory.  Any 'Local' External Storage Mounts must also have nested locations here.
 
   * set alias if you are using a non-default datadirectory
 
-  * **/data/USER/files/LOCAL-FS-MOUNT-NAME** ~ a local fs external storage mount available to a single user
+  * **/data/USER/files/LOCAL-MOUNT-NAME** ~ a local external storage mount available to a single user
 
-  * **~ ^/data/(?:USER1|USER2)/files/LOCAL-FS-MOUNT-NAME/(.+)$** ~ a local fs external storage mount available to multiple users
+  * **~ ^/data/(?:USER1|USER2)/files/LOCAL-MOUNT-NAME/(.+)$** ~ a local external storage mount available to multiple users
 
-    * Replace **(?:USER1|USER2)** with **[^/]+** for storage available to all users
+  * **~ ^/data/[^/]+/files/LOCAL-MOUNT-NAME/(.+)$** ~ a local external storage mount available to all users
 
 How to check if it's working?
 -----------------------------
