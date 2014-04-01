@@ -48,7 +48,7 @@ For versions >=0.10 (e.g. Ubuntu 12.10)
 * **SetEnv MOD_X_SENDFILE_ENABLED**: tells ownCloud scripts that they should add the X-Sendfile header when serving files
 * **XSendFile**: enables web server handling of X-Sendfile headers (and therefore file serving) for the specified Directory
 * **XSendFileAllowAbove (<0.10)**: enables file serving through web server on path outside the specified Directory. This is needed for configured local mounts which may reside outside data directory
-* **XSendFilePath (>=0.10)**: a white list of paths that the web server is allowed to serve outside of the specified Directory. Other paths which correspond to local mounts should be configured here as well. For a more in-dept documentation of this directive refer to mod_xsendfile website linked above
+* **XSendFilePath (>=0.10)**: a white list of paths that the web server is allowed to serve outside of the specified Directory. Other paths which correspond to local mounts should be configured here as well. For a more in-depth documentation of this directive refer to mod_xsendfile website linked above
 
 LigHTTPd (X-Sendfile2)
 ----------------------
