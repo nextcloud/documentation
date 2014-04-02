@@ -58,7 +58,7 @@ the file name. If displaying of a file is not possible, a download process will 
 Moving files
 ------------
 
-In ownCloud web interface, file(s) can be moved by dragging and dropping them into a sub-directory. If you would like move a directory to an upper directory, drag the file(s) into one of the folders shown in navigation bar.
+In ownCloud web interface, file(s) can be moved by dragging and dropping them into a sub-directory. If you would like to move a directory to an upper directory, drag the file(s) into one of the folders shown in navigation bar (depicted above).
 
 Sharing files
 -------------
