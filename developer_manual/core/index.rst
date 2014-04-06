@@ -1,7 +1,7 @@
 .. _coreindex:
 
 =================
-Core Developement
+Core Development
 =================
 
 .. toctree::
