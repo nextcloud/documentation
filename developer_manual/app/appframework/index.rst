@@ -1,5 +1,5 @@
 ================================
-App Developement (App Framework)
+App Development (App Framework)
 ================================
 
 .. toctree::
