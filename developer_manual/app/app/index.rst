@@ -1,5 +1,5 @@
 ===================================
-App Developement (ownCloud App API)
+App Development (ownCloud App API)
 ===================================
 
 .. toctree::
