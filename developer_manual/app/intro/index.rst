@@ -1,5 +1,5 @@
 ======================
-App Developement Intro
+App Development Intro
 ======================
 
 .. toctree::
