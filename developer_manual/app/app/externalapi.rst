@@ -25,9 +25,9 @@ Methods are registered inside the :file:`appinfo/routes.php` using :php:class:`O
       '/apps/yourapp/url', 
       function($urlParameters) {
       	return new \OC_OCS_Result($data);
-      }
+      },
       'yourapp', 
-      OC_API::ADMIN_AUTH
+      \OC_API::ADMIN_AUTH
   );
 
 Returning Data
