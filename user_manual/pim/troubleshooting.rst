@@ -8,7 +8,7 @@ Some clients - especially iOS - have problems finding the proper sync URL, even 
 configured to use it.
 
 There are several techniques to remedy this, which are described extensively at the
-`Sabre DAV website <http://code.google.com/p/sabredav/wiki/ServiceDiscovery>`_.
+`Sabre DAV website <http://sabre.io/dav/service-discovery/>`_.
 
 Below is what have proven to work with iOS including iOS 7.
 
