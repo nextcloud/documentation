@@ -12,7 +12,7 @@ Not outnumberable upload limits:
 Other recommendable preconditions:
 ----------------------------------
 
-* Make sure, that the latest version of php (at least 5.4.9) is installed
+* Make sure, that the latest version of PHP (at least 5.4.9) is installed
 * Disable user quota. This means: set the user quota of the account, you are currently logged in, to "unlimited".
 This is important, because you possibly could not watch otherwise, whether the desired changes take effect.
 
