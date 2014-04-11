@@ -45,13 +45,13 @@ After upload, the interface will automatically place your contacts into ownCloud
 Create contacts manually
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-On the left side of contacts app, you could see the new contact button (first one).
-Click on it. You can now see an empty contact in the main part of the interface.
-You have the ability to add all your informations about the contact:
-the name, the address, the e-mail, the telephone nr, etc.
+On the left side of contacts app, you could see the *New Contact* button.
+After clicking on it you can now see an empty contact in the main part of the interface.
+You have the ability to add all your information about the contact:
+the name, the address, the e-mail, the telephone number, etc.
 
 Just click on a field and start typing the information.
-You can use the "Add Field" button to add another types of information for this contact.
+You can use the "Add field..." button to add another types of information for this contact.
 
 .. image:: ../images/contact_emptycontact.png
 Empty contact view
@@ -68,7 +68,7 @@ There are two methods in which you can give a picture id to the specific contact
 Contact picture options
 
 1) **Direct upload**
-2) **Select pics already uploaded in ownCloud files.**
+2) **Select photos already uploaded in ownCloud files.**
 
 After you have selected the picture for the contact you get
 an option to crop the picture to suit your requirements
@@ -76,7 +76,7 @@ an option to crop the picture to suit your requirements
 .. image:: ../images/contact_crop.jpg
 Cropping contact picture
 
-You can crop the picture however you wish and then press OK.
+You can crop the picture however you wish and then press *Crop photo*.
 
 As you can see it is really easy to set things right in this app.
 It automatically picks up the First name, Middle name (if any) and the last name
