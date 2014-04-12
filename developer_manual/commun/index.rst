@@ -7,7 +7,7 @@ Help and Communication
 
 Mailing lists
 -------------
-Communicate via mail on our `mailing list <https://mail.kde.org/mailman/listinfo/owncloud>`_. 
+Communicate via mail on our `mailing lists <http://mailman.owncloud.org>`_.
 
 IRC channels
 ------------
