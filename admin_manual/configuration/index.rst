@@ -9,6 +9,7 @@ Configuration
    configuration_users
    auth_ldap
    background_jobs
+   configuration_assets
    configuration_3rdparty
    configuration_automation
    configuration_custom_clients
