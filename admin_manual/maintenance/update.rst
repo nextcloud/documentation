@@ -35,6 +35,10 @@ To upgrade ownCloud, follow those steps:
     
     wget http://download.owncloud.org/community/owncloud-latest.tar.bz2
 
+#. Enable maintenance mode in config/config.php
+
+	"maintenance" => true
+
 #. Deactivate all third party applications.
 #. Delete everything from your ownCloud installation directory, except data and
    config.
