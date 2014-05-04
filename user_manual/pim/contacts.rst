@@ -56,7 +56,7 @@ You can use the "Add field..." button to add another types of information for th
 .. image:: ../images/contact_emptycontact.png
 Empty contact view
 
-When you want to remove an information of your contact, just click on little delete icon
+When you want to remove an information of your contact, just click on little trash icon
 at the right of the field you want to remove.
 
 Adding picture to the contact

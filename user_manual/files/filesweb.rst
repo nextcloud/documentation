@@ -81,5 +81,5 @@ Share dialog
 * Finally, setting an expiration date will expiry the share after the specified date.
 
 If you type a user and/or group to the *share with* field, you will be given extra sharing options such as informing via e-mail,
-letting users edit (create, update, delete, re-share) the share. To revoke permissions from users, simply click on cross icon
+letting users edit (create, update, delete, re-share) the share. To revoke permissions from users, simply click on trash icon
 on the same line with the users.
