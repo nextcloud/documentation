@@ -20,6 +20,7 @@ The versioning app expires old versions automatically to make sure that
 the user doesn't run out of space. Following pattern is used to delete
 old versions:
 
+* For the first second we keep one version
 * For the first 10 seconds ownCloud keeps one version every 2 seconds
 * For the first minute ownCloud keeps one version every 10 seconds
 * For the first hour ownCloud keeps one version every minute
