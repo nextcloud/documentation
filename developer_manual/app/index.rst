@@ -13,10 +13,10 @@ App Development
    ../general/index
    tutorial
    main
-   classloader
    container
    routes
    info
+   classloader
    controllers
    schema
    database
@@ -26,7 +26,12 @@ App Development
    middleware
    hooks
    backgroundjobs
+   filesystem
+   users
+   l10n
    api
+   userbackend
+   filesystembackend
    testing
 
 
@@ -53,10 +58,10 @@ App development
 Inner parts of an app:
 
 * :doc:`main`
-* :doc:`classloader`
 * :doc:`container`
 * :doc:`routes`
 * :doc:`info`
+* :doc:`classloader`
 
 Controllers
 -----------
@@ -73,7 +78,7 @@ Create database tables and run Sql queries:
 
 Templates
 ---------
-HTML and inclusion of JavaScript and CSS
+Create the basic HTML markup of your app:
 
 * :doc:`templates`
 
@@ -99,14 +104,24 @@ Listen on events like user creation and execute code:
 Background Jobs
 ---------------
 Periodically run code in the background:
-* :doc:`:`backgroundjobs`
 
+* :doc:`backgroundjobs`
 
-Testing
--------
-Write automated tests to ensure stability and ease maintenance:
+Filesystem
+----------
+Accessing the filesystem:
 
-* :doc:`testing`
+* :doc:`filesystem`
+
+Users
+-----
+Creating, deleting, updating, searching, login and logout:
+
+* :doc:`users`
+
+Translation
+-----------
+* :doc:`l10n`
 
 Creating a RESTful API
 ----------------------
@@ -114,8 +129,21 @@ How to create an API that other apps can connect to:
 
 * :doc:`api`
 
-API Documentation
------------------
+Backends
+--------
+Plug into ownCloud user management or filesystem:
+
+* :doc:`userbackend`
+* :doc:`filesystembackend`
+
+Testing
+-------
+Write automated tests to ensure stability and ease maintenance:
+
+* :doc:`testing`
+
+PHPDoc Class Documentation
+--------------------------
 ownCloud class and function documentation:
 
 * `ownCloud App API <http://api.owncloud.org/namespaces/OCP.html>`_

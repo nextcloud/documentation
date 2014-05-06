@@ -1,9 +1,9 @@
-Main
-====
+Navigation and Pre-App configuration
+====================================
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-The file :file:`appinfo/app.php` is the first file that is loaded and executed in ownCloud. Depending on the purpose of the app it usually just contains the ;:doc:`navigation` setup, :doc:`backgroundjobs` and :doc:`hooks` registration. This is how an example :file:`appinfo/app.php` could look like:
+The :file:`appinfo/app.php` is the first file that is loaded and executed in ownCloud. Depending on the purpose of the app it usually just contains the navigation setup, and maybe :doc:`backgroundjobs` and :doc:`hooks` registrations. This is how an example :file:`appinfo/app.php` could look like:
 
 .. code-block:: php
     
@@ -37,7 +37,7 @@ The file :file:`appinfo/app.php` is the first file that is loaded and executed i
     \OCP\Util::connectHook('OC_User', 'pre_deleteUser', 'OCA\MyApp\Hooks\User', 'deleteUser');
 
 
-It is also possible to include :doc:`javascript` or :doc:`css` for other apps by placing the **loadScript** or **loadStyle** functions inside this file.
+It is also possible to include :doc:`javascript` or :doc:`css` for other apps by placing the **addScript** or **addStyle** functions inside this file.
 
 .. code-block:: php
     
