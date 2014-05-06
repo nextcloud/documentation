@@ -1,7 +1,7 @@
 Dependency Injection
 ====================
 
-.. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
+.. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
 `Dependency Injection <http://en.wikipedia.org/wiki/Dependency_injection>`_ is a programming pattern that helps you decouple dependencies between classes. The result is cleaner and more testable code. A good overview over how it works and what the benefits are can be read on `Google's Clean Code Talks <http://www.youtube.com/watch?v=RlfLCWKxHJ0>`_
 

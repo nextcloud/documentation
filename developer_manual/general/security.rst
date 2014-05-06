@@ -1,7 +1,7 @@
 Security Guidelines
 ===================
 
-.. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>, Lukas Reschke <lukas@statuscode.ch>
+.. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>, Lukas Reschke <lukas@statuscode.ch>
 
 This guideline highlights some of the most common security problems and how to prevent them. Please review your app if it contains any of the following security holes.
 
@@ -202,7 +202,7 @@ ownCloud offers three simple checks:
 * **OCP\JSON::checkAdminUser()**: Checks if the logged in user has admin privileges
 * **OCP\JSON::checkSubAdminUser()**: Checks if the logged in user has group admin privileges
 
-Using the App Framework, these checks are already automatically performed for each request and have to be explicitely turned off by using annotations above your controller method,  see :doc:`../appframework/controllers`.
+Using the App Framework, these checks are already automatically performed for each request and have to be explicitely turned off by using annotations above your controller method,  see :doc:`../app/controllers`.
 
 Additionally always check if the user has the right to perform that action. (e.g. a user should not be able to delete other users' bookmarks).
 
@@ -224,7 +224,7 @@ To prevent CSRF in an app, be sure to call the following method at the top of al
   <?php
   OCP\JSON::callCheck();
 
-If you are using the App Framework, every controller method is automatically checked for CSRF unless you explicitely exclude it by setting the @CSRFExemption annotation before the controller method, see :doc:`../appframework/controllers`
+If you are using the App Framework, every controller method is automatically checked for CSRF unless you explicitely exclude it by setting the @NoCSRFRequired annotation before the controller method, see :doc:`../app/controllers`
 
 Unvalidated redirects
 ---------------------
@@ -248,4 +248,4 @@ Always validate the URL before redirecting if the requested URL is on the same d
 
 Getting help
 ------------
-If you need help to ensure that a function is secure please ask on our `mailing list <https://mail.kde.org/mailman/listinfo/owncloud>`_ or on our IRC channel #owncloud-dev on Freenode.
+If you need help to ensure that a function is secure please ask on our `mailing list <http://mailman.owncloud.org/mailman/listinfo/devel>`_ or on our IRC channel **#owncloud-dev** on **irc.freenode.net**.

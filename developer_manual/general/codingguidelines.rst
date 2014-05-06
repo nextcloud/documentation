@@ -1,7 +1,7 @@
 Coding Style & General Guidelines
 =================================
 
-.. sectionauthor:: Bernhard Posselt <nukeawhale@gmail.com>
+.. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
 General
 -------
