@@ -11,25 +11,24 @@ App Development
    :hidden:
 
    ../general/index
-   tutorial
    main
    container
    routes
    info
    classloader
    controllers
-   schema
-   database
+   api
    templates
    js
    css
+   l10n
+   schema
+   database
    middleware
-   hooks
-   backgroundjobs
    filesystem
    users
-   l10n
-   api
+   hooks
+   backgroundjobs
    userbackend
    filesystembackend
    testing
@@ -65,29 +64,26 @@ Inner parts of an app:
 
 Controllers
 -----------
-Contain the logic for each request
+Contain the logic for each request:
 
 * :doc:`controllers`
+* :doc:`api`
 
-Database
---------
+View
+----
+The app's presentation layer:
+
+* :doc:`templates`
+* :doc:`js`
+* :doc:`css`
+* :doc:`l10n`
+
+Model (Database access)
+-----------------------
 Create database tables and run Sql queries:
 
 * :doc:`schema`
 * :doc:`database`
-
-Templates
----------
-Create the basic HTML markup of your app:
-
-* :doc:`templates`
-
-JavaScript & CSS
-----------------
-Add JavaScript and CSS to your app:
-
-* :doc:`js`
-* :doc:`css`
 
 Middleware
 ----------
@@ -95,17 +91,6 @@ Hook before or after controller execution and exceptions:
 
 * :doc:`middleware`
 
-Hooks
------
-Listen on events like user creation and execute code:
-
-* :doc:`hooks`
-
-Background Jobs
----------------
-Periodically run code in the background:
-
-* :doc:`backgroundjobs`
 
 Filesystem
 ----------
@@ -119,15 +104,17 @@ Creating, deleting, updating, searching, login and logout:
 
 * :doc:`users`
 
-Translation
------------
-* :doc:`l10n`
+Hooks
+-----
+Listen on events like user creation and execute code:
 
-Creating a RESTful API
-----------------------
-How to create an API that other apps can connect to:
+* :doc:`hooks`
 
-* :doc:`api`
+Background Jobs
+---------------
+Periodically run code in the background:
+
+* :doc:`backgroundjobs`
 
 Backends
 --------
