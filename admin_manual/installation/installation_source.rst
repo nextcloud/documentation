@@ -432,7 +432,7 @@ Nginx Configuration
                 access_log off;
             }
 
-            location ~ ^/(data|config|\.ht|db_structure\.xml|README) {
+            location ~ ^/(?:\.|data|config|db_structure\.xml|README) {
                     deny all;
             }
 
@@ -449,18 +449,19 @@ Nginx Configuration
                     try_files $uri $uri/ index.php;
             }
 
-            location ~ ^(.+?\.php)(/.*)?$ {
-                    try_files $1 =404;
+            location ~ \.php(?:$|/) {
+                    fastcgi_split_path_info ^(.+\.php)(/.+)$;
+                    try_files $fastcgi_script_name =404;
 
                     include fastcgi_params;
-                    fastcgi_param SCRIPT_FILENAME $document_root$1;
-                    fastcgi_param PATH_INFO $2;
+                    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                    fastcgi_param PATH_INFO $fastcgi_path_info;
                     fastcgi_param HTTPS on;
                     fastcgi_pass php-handler;
             }
 
             # Optional: set long EXPIRES header on static assets
-            location ~* ^.+\.(jpg|jpeg|gif|bmp|ico|png|css|js|swf)$ {
+            location ~* \.(?:jpg|jpeg|gif|bmp|ico|png|css|js|swf)$ {
                     expires 30d;
                     # Optional: Don't log access to assets
                     access_log off;
