@@ -12,10 +12,11 @@ App Development
 
    ../general/index
    main
-   container
-   routes
    info
    classloader
+   routes
+   middleware
+   container
    controllers
    api
    templates
@@ -24,7 +25,6 @@ App Development
    l10n
    schema
    database
-   middleware
    filesystem
    users
    hooks
@@ -58,17 +58,18 @@ App development
 Inner parts of an app:
 
 * :doc:`main`
-* :doc:`container`
-* :doc:`routes`
 * :doc:`info`
 * :doc:`classloader`
 
-Controllers
------------
-Contain the logic for each request:
+Requests
+--------
+How a request is being processed:
 
-* :doc:`controllers`
-* :doc:`api`
+* :doc:`request`
+* :doc:`routes`
+* :doc:`middleware`
+* :doc:`container`
+* :doc:`controllers` | :doc:`api`
 
 View
 ----
@@ -85,12 +86,6 @@ Create database tables and run Sql queries:
 
 * :doc:`schema`
 * :doc:`database`
-
-Middleware
-----------
-Hook before or after controller execution and exceptions:
-
-* :doc:`middleware`
 
 
 Filesystem

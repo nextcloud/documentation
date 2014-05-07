@@ -1,5 +1,5 @@
-App configuration
-=================
+Container
+=========
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
