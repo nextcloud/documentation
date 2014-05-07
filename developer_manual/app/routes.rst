@@ -1,4 +1,151 @@
+=======
 Routing
 =======
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
+
+Routes map an URL and a method to a controller method. Routes are defined inside :file:`appinfo/routes.php` by passing a configuration array to the registerRoutes method. An example route would look like this:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\AppInfo;
+
+    $application = new Application();
+    $application->registerRoutes($this, array(
+        'routes' => array(
+            array('name' => 'page#index', 'url' => '/', 'verb' => 'GET'),
+        )
+    ));
+
+
+The route array contains the following parts:
+
+* **url**: The url that is matched after */index.php/apps/myapp*
+* **name**: The controller and the method to call; *page#index* is being mapped to *PageController->index()*, *articles_api#drop_latest* would be mapped to *ArticlesApiController->dropLatest()*. The controller that matches the page#index name would have to be registered in the following way inside :file:`appinfo/application.php`:
+
+  .. code-block:: php
+
+        <?php
+        namespace OCA\MyApp\AppInfo;
+
+        use \OCP\AppFramework\App;
+
+        use \OCA\MyApp\Controller\PageController;
+
+
+        class Application extends App {
+
+            public function __construct(array $urlParams=array()){
+                parent::__construct('myapp', $urlParams);
+
+                $container = $this->getContainer();
+
+                /**
+                 * Controllers
+                 */
+                $container->registerService('PageController', function($c) {
+                    return new PageController(
+                        $c->query('AppName'), 
+                        $c->query('Request')
+                    );
+                });
+            }
+
+        }
+* **method** (Optional, defaults to GET): The HTTP method that should be matched, (e.g. GET, POST, PUT, DELETE, HEAD, OPTIONS, PATCH)
+* **requirements** (Optional): lets you match and extract urls that have slashes in them (see **Matching suburls**)
+
+Extracting values from the URL
+==============================
+
+It is possible to extract values from the URL to allow RESTful url design. To extract a value, you have to wrap it inside curly braces:
+
+.. code-block:: php
+
+    <?php
+
+    // Request: GET /index.php/apps/myapp/authors/3
+
+    // appinfo/routes.php
+    array('name' => 'author#show', 'url' => '/authors/{id}', 'verb' => 'GET'),
+
+    // controller/authorcontroller.php
+    class AuthorController {
+
+        public function show($id) {
+            // $id is '3'
+        }
+
+    }
+
+The identifier used inside the route is being passed into controller method by reflecting the method parameters. So basially if you want to get the value **{id}** in your method, you need to add **$id** to your method parameters.
+
+Matching suburls
+================
+Sometimes its needed to match more than one URL fragment. An example would be to match a request for all urls that start with **OPTIONS /index.php/apps/myapp/api**. To do this, use the **requirements** parameter in your route which is an array containing pairs of **'key' => 'regex'**:
+
+.. code-block:: php
+    
+    <?php
+
+    // Request: OPTIONS /index.php/apps/myapp/api/my/route
+
+    // appinfo/routes.php
+    array('name' => 'author_api#cors', 'url' => '/api/{path}', 'verb' => 'OPTIONS'), 
+          'requirements' => array('path' => '.+')),
+
+    // controller/authorapicontroller.php
+    class AuthorApiController {
+
+        public function cors($path) {
+            // $path will be 'my/route'
+        }
+
+    }
+
+Registering resources
+=====================
+When dealing with resources, writing routes can become quite repetitive since most of the time routes for the following tasks are needed:
+
+* Get all entries
+* Get one entry by id
+* Create an entry
+* Update an entry
+* Delete an entry
+
+To prevent reptition, it's possible define resources. The following routes:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\AppInfo;
+
+    $application = new Application();
+    $application->registerRoutes($this, array(
+        'routes' => array(
+            array('name' => 'author#index', 'url' => '/authors', 'verb' => 'GET'),
+            array('name' => 'author#show', 'url' => '/authors/{authorId}', 'verb' => 'GET'),
+            array('name' => 'author#create', 'url' => '/authors', 'verb' => 'POST'),
+            array('name' => 'author#update', 'url' => '/authors/{authorId}', 'verb' => 'PUT'),
+            array('name' => 'author#destroy', 'url' => '/authors/{authorId}', 'verb' => 'DELETE'),
+            // your other routes here
+        )
+    ));
+
+can be abbreviated by using the **resources** key:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\AppInfo;
+
+    $application = new Application();
+    $application->registerRoutes($this, array(
+        'resources' => array(
+            array('authors' => array('url' => '/authors'))
+        ), 
+        'routes' => array(
+            // your other routes here
+        )
+    ));
