@@ -15,7 +15,7 @@ The following sections will present an overview over how that request is being p
 Front controller
 ----------------
 In the beginning, all requests are sent to ownCloud's :file:`index.php` which in turn executes :file:`lib/base.php`. This file inspects the HTTP headers and abstracts away differences between different webservers and initializes the basic classes. Afterwards the basic apps are being loaded in the following order:
-    
+
 * Authentication backends
 * Filesystem
 * Logging
@@ -36,7 +36,7 @@ The router parses the :doc:`apps routing files <routes>` (:file:`appinfo/routes.
 Middleware
 ----------
 A :doc:`Middleware <middleware>` is a convenient way to execute common tasks such as custom authentication before or after a :doc:`controller method <controllers>` is being run. You can execute code at the following locations:
-    
+
 * before the call of the controller method
 * after the call of the controller method
 * after an exception is thrown (also if it is thrown from a middleware, e.g. if an authentication fails)
@@ -44,7 +44,7 @@ A :doc:`Middleware <middleware>` is a convenient way to execute common tasks suc
 
 Container
 ---------
-The :doc:`container` is the place where you define all of your classes and in particular all your of controllers. The container is responsible for assembling all of your objects (newing your classes) that should only have one single instance without relying on globals or singletons. If you want to know more about why you should use it and what the benefits are, read up on the topic :doc:`../general/dependencyinjection`
+The :doc:`container` is the place where you define all of your classes and in particular all of your controllers. The container is responsible for assembling all of your objects (newing your classes) that should only have one single instance without relying on globals or singletons. If you want to know more about why you should use it and what the benefits are, read up on the topic :doc:`../general/dependencyinjection`
 
 Controller
 ----------
