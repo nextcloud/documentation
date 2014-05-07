@@ -152,7 +152,7 @@ can be abbreviated by using the **resources** key:
 
 Using the URLGenerator
 ========================
-Sometimes its useful to turn a route into a URL to make the code independent from the url design or generate an URL for an image in **img/**. For that specific usecase the ServerContainer provides a service that can be used in your container:
+Sometimes its useful to turn a route into a URL to make the code independent from the url design or to generate an URL for an image in **img/**. For that specific usecase the ServerContainer provides a service that can be used in your container:
 
 .. code-block:: php
 
