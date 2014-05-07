@@ -24,18 +24,18 @@ The type of the app is determined by inspecting the app's :doc:`configuration fi
 
 Afterwards the following steps are performed:
 
-* Try to `authenticate the user <userbackend>`
+* Try to :doc:`authenticate the user <userbackend>`
 * Load and execute all the remaining apps' :doc:`main` files
 * Load and run all the routes in the apps' :file:`appinfo/routes.php`
 * Execute the router
 
 Router
 ------
-The router parses the :doc:`apps routing files <routes>` (:file:`appinfo/routes.php), inspects the request's **method** and **url**, queries the controller from the :doc:`container` and then passes control to the dispatcher. The dispatcher is responsible for running the hooks (called Middleware) before and after the controller, executing the controller method and rendering the output.
+The router parses the :doc:`apps routing files <routes>` (:file:`appinfo/routes.php`), inspects the request's **method** and **url**, queries the controller from the :doc:`container` and then passes control to the dispatcher. The dispatcher is responsible for running the hooks (called Middleware) before and after the controller, executing the controller method and rendering the output.
 
 Middleware
 ----------
-A :doc:`Middleware <middleware>` is a convenient way to execute common tasks such as custom authentication before or after a :doc:`controller method <controller>` is being run. You can execute code at the following locations:
+A :doc:`Middleware <middleware>` is a convenient way to execute common tasks such as custom authentication before or after a :doc:`controller method <controllers>` is being run. You can execute code at the following locations:
     
 * before the call of the controller method
 * after the call of the controller method
