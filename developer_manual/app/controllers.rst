@@ -6,8 +6,81 @@ Controllers
 
 Controllers are used to connect :doc:`routes <routes>` with app logic. Think of it as callbacks that are executed once a request has come in. Controllers are defined inside the **controllers/** directory.
 
+To create a controller, simply extend the Controller class and create a method that should be executed on a request:
+
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use \OCP\AppFramework\Controller;
+
+    class AuthorController extends Controller {
+
+        public function index() {
+
+        }
+
+    }
+
+
 Connecting a controller with a route
 ====================================
+To connect a controller with a route the controller has to be registered in the :doc:`container` like this:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\AppInfo;
+
+    use \OCP\AppFramework\App;
+
+    use \OCA\MyApp\Controller\AuthorApiController;
+
+
+    class Application extends App {
+
+        public function __construct(array $urlParams=array()){
+            parent::__construct('myapp', $urlParams);
+
+            $container = $this->getContainer();
+
+            /**
+             * Controllers
+             */
+            $container->registerService('AuthorApiController', function($c) {
+                return new AuthorApiController(
+                    $c->query('AppName'), 
+                    $c->query('Request')
+                );
+            });
+        }
+    }
+
+Every controller needs the app name and the request object passed into their parent constructor, which can easily be injected like shown in the example code above. The important name is not the class name but rather the string passed in as the first parameter of the **registerService** method. 
+
+The next important part is the route name. The route name is written like::
+
+    author_api#some_method
+
+This name is processed in the following way:
+
+* Remove the underscore and uppercase the next character::
+
+    authorApi#someMethod
+
+* Split at the # and uppercase the first letter of the left part::
+
+    AuthorApi 
+    someMethod
+
+* Append Controller to the first part::
+
+    AuthorApiController
+    someMethod
+
+* Now retrieve the service listed under **AuthorApiController** from the container, look up the parameters of the **someMethod** method in the request, cast them if there are PHPDoc type annotations and execute the **someMethod** method on the controller with those parameters.
 
 Getting request parameters
 ==========================
@@ -39,7 +112,14 @@ All those parameters can easily be accessed by adding them to the controller met
 
 Casting parameters
 ------------------
-URL, GET and application/x-www-form-urlencoded have the problem that every parameter is a string, meaning that *?doMore=false* would be passed in as the string *'false'* which is not what one would expect. To cast these to the correct types, simply add PHPDoc to hint the types:
+URL, GET and application/x-www-form-urlencoded have the problem that every parameter is a string, meaning that::
+
+    ?doMore=false
+
+would be passed in as the string *'false'* which is not what one would expect. To cast these to the correct types, simply add PHPDoc in the form of::
+
+    @param type $name
+
 
 .. code-block:: php
 
@@ -66,7 +146,7 @@ URL, GET and application/x-www-form-urlencoded have the problem that every param
 
 The following types will be casted:
 
-* **bool** or **bolean**
+* **bool** or **boolean**
 * **float**
 * **int** or **integer**
 
@@ -76,6 +156,7 @@ JSON parameters
 It is possible to pass JSON using a POST, PUT or PATCH request. To do that the **Content-Type** header has to be set to **application/json**. The JSON is being parsed as an array and the first level keys will be used to pass in the arguments, e.g.::
 
     POST /index.php/apps/myapp/authors
+    Content-Type: application/json
     {
         "name": "test",
         "number": 3,
