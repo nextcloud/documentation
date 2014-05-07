@@ -10,7 +10,7 @@ A typical HTTP request consists of the following:
 * **A Method**: e.g. GET
 * **Request headers**: e.g. Accept: application/json
 
-The following sections will present an overview over how that request is being processed to provide an in depth view over how ownCloud works. If you are not interested in the internals or don't want to execute anything before and after your controller, feel free to skip this section and continue directly with defining :doc:`your app's routes <routing>`.
+The following sections will present an overview over how that request is being processed to provide an in depth view over how ownCloud works. If you are not interested in the internals or don't want to execute anything before and after your controller, feel free to skip this section and continue directly with defining :doc:`your app's routes <routes>`.
 
 Front controller
 ----------------
@@ -31,7 +31,7 @@ Afterwards the following steps are performed:
 
 Router
 ------
-The router parses the :doc:`apps routing files <routing>` (:file:`appinfo/routes.php), inspects the request's **method** and **url**, queries the controller from the :doc:`container` and then passes control to the dispatcher. The dispatcher is responsible for running the hooks (called Middleware) before and after the controller, executing the controller method and rendering the output.
+The router parses the :doc:`apps routing files <routes>` (:file:`appinfo/routes.php), inspects the request's **method** and **url**, queries the controller from the :doc:`container` and then passes control to the dispatcher. The dispatcher is responsible for running the hooks (called Middleware) before and after the controller, executing the controller method and rendering the output.
 
 Middleware
 ----------
