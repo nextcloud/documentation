@@ -29,6 +29,7 @@ App Development
    users
    hooks
    backgroundjobs
+   logging
    userbackend
    filesystembackend
    testing
@@ -115,6 +116,12 @@ Background Jobs
 Periodically run code in the background:
 
 * :doc:`backgroundjobs`
+
+Logging
+-------
+Log to the :file:`data/owncloud.log`:
+
+* :doc:`logging`
 
 Backends
 --------
