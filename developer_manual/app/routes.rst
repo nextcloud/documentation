@@ -149,3 +149,81 @@ can be abbreviated by using the **resources** key:
             // your other routes here
         )
     ));
+
+Using the URLGenerator
+========================
+Sometimes its useful to turn a route into a URL to make the code independent from the url design or generate an URL for an image in **img/**. For that specific usecase the ServerContainer provides a service that can be used in your container:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\AppInfo;
+
+    use \OCP\AppFramework\App;
+
+    use \OCA\MyApp\Controller\PageController;
+
+
+    class Application extends App {
+
+        public function __construct(array $urlParams=array()){
+            parent::__construct('myapp', $urlParams);
+
+            $container = $this->getContainer();
+
+            /**
+             * Controllers
+             */
+            $container->registerService('PageController', function($c) {
+                return new PageController(
+                    $c->query('AppName'), 
+                    $c->query('Request'),
+
+                    // inject the URLGenerator into the page controller
+                    $c->query('ServerContainer')->getURLGenerator()
+                );
+            });
+        }
+
+    }
+
+Inside the PageController the URL generator can now be used to generate an URL for a redirect:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use \OCP\IRequest;
+    use \OCP\IURLGenerator;
+    use \OCP\AppFramework\Controller;
+    use \OCP\AppFramework\Http\RedirectResponse;
+
+    class PageController extends Controller {
+
+        private $urlGenerator;
+
+        public function __construct($appName, IRequest $request, 
+                                    IURLGenerator $urlGenerator) {
+            parent::__construct($appName, $request);
+            $this->urlGenerator = $urlGenerator;
+        }
+
+        /**
+         * redirect to /apps/news/myapp/authors/3
+         */
+        public function redirect() {
+            // route name: author_api#do_something route
+            // route url: /apps/news/myapp/authors/{id}
+
+            // # need to be replaced with a . due to limitations and prefix
+            // with your app id
+            $route = 'myapp.author_api.do_something';
+            $parameters = array('id' => 3);
+
+            $url = $this->urlGenerator->linkToRoute($route, $parameters);
+
+            return new RedirectResponse($url);
+        }
+
+    }

@@ -31,7 +31,7 @@ Afterwards the following steps are performed:
 
 Router
 ------
-The router parses the :doc:`apps routing files <routes>` (:file:`appinfo/routes.php`), inspects the request's **method** and **url**, queries the controller from the :doc:`container` and then passes control to the dispatcher. The dispatcher is responsible for running the hooks (called Middleware) before and after the controller, executing the controller method and rendering the output.
+The router parses the :doc:`app's routing files <routes>` (:file:`appinfo/routes.php`), inspects the request's **method** and **url**, queries the controller from the :doc:`container` and then passes control to the dispatcher. The dispatcher is responsible for running the hooks (called Middleware) before and after the controller, executing the controller method and rendering the output.
 
 Middleware
 ----------
