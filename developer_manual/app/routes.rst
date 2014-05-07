@@ -213,7 +213,7 @@ Inside the PageController the URL generator can now be used to generate an URL f
          * redirect to /apps/news/myapp/authors/3
          */
         public function redirect() {
-            // route name: author_api#do_something route
+            // route name: author_api#do_something
             // route url: /apps/news/myapp/authors/{id}
 
             // # need to be replaced with a . due to limitations and prefix
