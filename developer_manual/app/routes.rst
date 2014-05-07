@@ -216,7 +216,7 @@ Inside the PageController the URL generator can now be used to generate an URL f
             // route name: author_api#do_something
             // route url: /apps/news/myapp/authors/{id}
 
-            // # need to be replaced with a . due to limitations and prefix
+            // # needs to be replaced with a . due to limitations and prefixed
             // with your app id
             $route = 'myapp.author_api.do_something';
             $parameters = array('id' => 3);
