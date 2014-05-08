@@ -46,9 +46,9 @@ The following commands are using **/var/www** as the web server's directory and 
 
 .. note:: Python 3.4 includes pip by default
 
-Install the development tool (**depends on Python 3 and pip**)::
+Install the development tool (**depends on Python 3 and python3-pip**)::
 
-  sudo pip install ocdev
+  sudo pip3 install ocdev
 
 Make the directory writable::
 
@@ -64,10 +64,13 @@ Adjust rights::
   sudo chmod o-rw /var/www
 
 
-Finally restart the web server (this might vary depending on your installation)::
+Finally restart the web server (this might vary depending on your distribution)::
 
   sudo systemctl restart httpd.service
 
+or::
+
+  sudo /etc/init.d/apache2 restart
 
 After the clone Open http://localhost/core (or the corresponding URL) in your web browser to set up your instance.
 
