@@ -185,32 +185,321 @@ It is possible to pass JSON using a POST, PUT or PATCH request. To do that the *
 
     }
 
-Headers, files, cookies and session information
------------------------------------------------
+Headers, files, cookies and environment variables
+-------------------------------------------------
+Headers, files, cookies and environment variables can be accessed directly from the request object. Every controller depends on the app name and the request object and sets both on protected attributes:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use \OCP\AppFramework\Controller;
+    use \OCP\IRequest;
+
+    class PageController extends Controller {
+
+        public function __construct($appName, IRequest $request) {
+            parent::__construct($appName, $request);
+        }
+
+        
+        public function someMethod() {
+
+            $type = $this->request->getHeader('Content-Type');  // $_SERVER['HTTP_CONTENT_TYPE']
+            $cookie = $this->request->getCookie('myCookie');  // $_COOKIES['myCookie']
+            $file = $this->request->getUploadedFile('myfile');  // $_FILES['myfile']
+            $env = $this->request->getEnv('SOME_VAR');  // $_ENV['SOME_VAR']
+
+            // access the app name
+            $name = $this->appName;
+        }
+
+    }
+
+Why should those values be accessed from the request object and not from the global array like $_FILES? Simple: `because it's bad practice <http://c2.com/cgi/wiki?GlobalVariablesAreBad>`_
 
 Responses
 =========
+Similar to how every controller receives a request object, every controller method has to to return a Response. This can be in the form of a Response subclass or in the form of a value that can be handled by a registered responder.
 
 JSON
 ----
+Returning JSON is simple, just pass an array to a JSONResponse:
 
-Templates
----------
+.. code-block:: php
 
-Redirects
----------
+    <?php
+    namespace OCA\MyApp\Controller;
 
-Downloads
----------
+    use \OCP\AppFramework\Controller;
+    use \OCP\AppFramework\Http\JSONResponse;
 
-Creating custom responses
--------------------------
+    class PageController extends Controller {
+        
+        public function returnJSON() {
+            $params = array('test' => 'hi');
+            return new JSONResponse($params);
+        }
+
+    }
+
+Because returning JSON is such an incredibly common task, theres even a shorter way how to do this:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use \OCP\AppFramework\Controller;
+
+    class PageController extends Controller {
+        
+        public function returnJSON() {
+            return array('test' => 'hi');
+        }
+
+    }
+
+Why does this work? That's because the dispatcher sees that the controller did not return a subclass of a Response and asks the controller to turn the value into a Response. That's where responders come in.
 
 Responders
 ----------
+Responders are short functions that take a value and return a response. They are used to return different kinds of responses based on a **format** parameter. Think of an API that is able to return both XML and JSON depending on if you call the URL with::
+
+    ?format=xml
+
+or::
+    
+    ?format=json
+
+The appropriate responder is being chosen by the following criteria:
+
+* First the dispatcher checks the Request if theres a **format** parameter, e.g. ?format=xml or /index.php/apps/myapp/authors.{format}
+* If there is none, look at the **Accept** header, take the first mimetype, cut off the application/ and take that. In the following example the format would be *xml*::
+
+    Accept: application/xml, application/json
+
+* If there is no Accept header or the responder does not exist, format defaults to **json**.
+ 
+
+By default there is only a responder for JSON but more can be added easily:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use \OCP\AppFramework\Controller;
+
+    class PageController extends Controller {
+        
+        public function returnHi() {
+
+            // XMLResponse has to be implemented
+            $this->registerResponder('xml', function($value) {
+                return new XMLResponse($value);
+            });
+
+            return array('test' => 'hi');
+        }
+
+    }
+
+.. note:: The above example would only return XML if the **format** parameter was *xml*. If you want to return an XMLResponse in any case, extend the Response class and return a new instance of it from the controller method instead.
 
 Serializers
 -----------
+If responders are used it is sometimes useful to add another step before the returned value is being run through a responder. An example for that would be that all methods should wrap the returned value inside an array. First create a seperate serializer class that implements IResponseSerializer:
+
+.. code-block:: php
+
+    <?php
+
+    namespace \OCA\MyApp\Http;
+
+    use \OCP\AppFramework\Http\IResponseSerializer;
+
+
+    class WrapInArraySerializer implements IResponseSerializer {
+
+        public function serialize($value) {
+            $result = array('values' => array());
+            
+            if(is_array($value)) {
+                $result['values'] = $value;
+            } else {
+                $result['values'] = array($value);
+            }
+
+            return $result;
+        }
+
+    }
+
+The serializer can now be registered inside the controller:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use \OCP\AppFramework\Controller;
+
+    use \OCA\MyApp\Http\WrapInArraySerializer;
+
+    class AuthorController extends Controller {
+        
+        public function __construct($appName, IRequest $request) {
+            parent::__construct($appName, $request);
+
+            // wrap every response in an array
+            $this->registerSerializer(new WrapInArraySerializer());
+        }
+
+        public function show($id) {
+            return $id;
+        }
+
+    }
+
+Templates
+---------
+A :doc:`template <templates>` can be rendered by returning a TemplateResponse. A TemplateResponse takes the following parameters:
+
+* **appName**: tells the template engine in which app the template should be located
+* **templateName**: the name of the template inside the template/ folder without the .php extension
+* **parameters**: optional array parameters that can is available in the template through $_, e.g.::
+
+    array('key' => 'something')
+
+  can be accessed through::
+
+    $_['key']
+
+* **renderAs**: defaults to *user*, tells ownCloud if it should include it in the webinterface, or in case *blank* is passed solely render the template
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use \OCP\AppFramework\Controller;
+    use \OCP\AppFramework\Http\TemplateResponse;
+
+    class PageController extends Controller {
+        
+        public function index() {
+            $templateName = 'main';  // will use templates/main.php
+            $parameters = array('key' => 'hi'); 
+            return new TemplateResponse($this->appName, $templateName, $parameters);
+        }
+
+    }
+
+Redirects
+---------
+A redirect can be achieved by returning a RedirectResponse:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use \OCP\AppFramework\Controller;
+    use \OCP\AppFramework\Http\RedirectResponse;
+
+    class PageController extends Controller {
+        
+        public function toGoogle() { 
+            return new RedirectResponse('https://google.com');
+        }
+
+    }
+
+Downloads
+---------
+A file download can be triggeredby returning a DownloadResponse:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use \OCP\AppFramework\Controller;
+    use \OCP\AppFramework\Http\DownloadResponse;
+
+    class PageController extends Controller {
+        
+        public function downloadXMLFile() { 
+            $path = '/some/path/to/file.xml';
+            $contentType = 'application/xml';
+
+            return new DownloadResponse($path, $contentType);
+        }
+
+    }
+
+Creating custom responses
+-------------------------
+If no premade Response fits the needed usecase, its possible to extend the Response baseclass and custom Response. The only thing that needs to be implemented is the **render** method which returns the result as string.
+
+Creating a custom XMLResponse class could look like this:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Http;
+
+    use \OCP\AppFramework\Http\Response;
+
+    class XMLResponse extends Response {
+        
+        private $xml;
+
+        public function construct(array $xml) { 
+            $this->addHeader('Content-Type', 'application/xml');
+            $this->xml = $xml;
+        }
+
+        public function render() {
+            $root = new SimpleXMLElement('<root/>');
+            array_walk_recursive($this->xml, array ($root, 'addChild'));
+            return $xml->asXML();
+        }
+
+    }
+
+
+Handling errors
+---------------
+Sometimes a request should fail, for instance if an author with id 1 is requested but does not exist. In that case use an appropriate `HTTP error code <https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error>`_ to signal the client that an error occured. 
+
+Each response subclass has access to the **setStatus** method which lets you set an HTTP status code. To return a JSONResponse signaling that the author with id 1 has not been found, use the following code:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use \OCP\AppFramework\Controller;
+    use \OCP\AppFramework\Http;
+    use \OCP\AppFramework\Http\JSONResponse;
+
+    class AuthorController extends Controller {
+        
+        public function show($id) {
+            try {
+                // try to get author with $id
+
+            } catch (NotFoundException $ex) {
+                return new JSONResponse()->setStatus(Http::STATUS_NOT_FOUND);
+            }
+        }
+
+    }
+
+
 
 
 Authentication
