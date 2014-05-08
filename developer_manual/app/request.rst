@@ -49,4 +49,6 @@ The :doc:`container` is the place where you define all of your classes and in pa
 Controller
 ----------
 
-The :doc:`controller <controllers>` contains the code that you actually want to run after a request has come in. Think of it like a callback that is executed if everything before went fine.
+The :doc:`controller <controllers>` contains the code that you actually want to run after a request has come in. Think of it like a callback that is executed if everything before went fine. 
+
+The controller returns a response which is then run through the middleware again (afterController and beforeOutput hooks are being run), HTTP headers are being set and the response's render method is being called and printed.
