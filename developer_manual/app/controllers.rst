@@ -25,9 +25,9 @@ To create a controller, simply extend the Controller class and create a method t
     }
 
 
-Connecting a controller with a route
+Connecting a controller and a route
 ====================================
-To connect a controller with a route the controller has to be registered in the :doc:`container` like this:
+To connect a controller and a route the controller has to be registered in the :doc:`container` like this:
 
 .. code-block:: php
 
@@ -58,9 +58,9 @@ To connect a controller with a route the controller has to be registered in the 
         }
     }
 
-Every controller needs the app name and the request object passed into their parent constructor, which can easily be injected like shown in the example code above. The important name is not the class name but rather the string passed in as the first parameter of the **registerService** method. 
+Every controller needs the app name and the request object passed into their parent constructor, which can easily be injected like shown in the example code above. The important part is not the class name but rather the string which is passed in as the first parameter of the **registerService** method. 
 
-The next important part is the route name. The route name is written like::
+The other part is the route name. An example route name would look like this::
 
     author_api#some_method
 
@@ -244,7 +244,7 @@ Returning JSON is simple, just pass an array to a JSONResponse:
 
     }
 
-Because returning JSON is such an incredibly common task, theres even a shorter way how to do this:
+Because returning JSON is such an common task, there's even a shorter way how to do this:
 
 .. code-block:: php
 
@@ -261,11 +261,11 @@ Because returning JSON is such an incredibly common task, theres even a shorter 
 
     }
 
-Why does this work? That's because the dispatcher sees that the controller did not return a subclass of a Response and asks the controller to turn the value into a Response. That's where responders come in.
+Why does this work? Because the dispatcher sees that the controller did not return a subclass of a Response and asks the controller to turn the value into a Response. That's where responders come in.
 
 Responders
 ----------
-Responders are short functions that take a value and return a response. They are used to return different kinds of responses based on a **format** parameter. Think of an API that is able to return both XML and JSON depending on if you call the URL with::
+Responders are short functions that take a value and return a response. They are used to return different kinds of responses based on a **format** parameter which is supplied by the client. Think of an API that is able to return both XML and JSON depending on if you call the URL with::
 
     ?format=xml
 
@@ -275,8 +275,15 @@ or::
 
 The appropriate responder is being chosen by the following criteria:
 
-* First the dispatcher checks the Request if theres a **format** parameter, e.g. ?format=xml or /index.php/apps/myapp/authors.{format}
-* If there is none, look at the **Accept** header, take the first mimetype, cut off the application/ and take that. In the following example the format would be *xml*::
+* First the dispatcher checks the Request if there is a **format** parameter, e.g.::
+
+    ?format=xml 
+
+  or::
+
+    /index.php/apps/myapp/authors.{format}
+
+* If there is none, take the **Accept** header, use the first mimetype and cut off *application/*. In the following example the format would be *xml*::
 
     Accept: application/xml, application/json
 
@@ -306,7 +313,7 @@ By default there is only a responder for JSON but more can be added easily:
 
     }
 
-.. note:: The above example would only return XML if the **format** parameter was *xml*. If you want to return an XMLResponse in any case, extend the Response class and return a new instance of it from the controller method instead.
+.. note:: The above example would only return XML if the **format** parameter was *xml*. If you want to return an XMLResponse regardless of the format parameter, extend the Response class and return a new instance of it from the controller method instead.
 
 Serializers
 -----------
