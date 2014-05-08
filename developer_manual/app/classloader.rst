@@ -32,4 +32,4 @@ The classloader works like this:
 
     require_once '/apps/myapp/controller/pagecontroller.php';
 
-**In other words**: In order for the PageController class to be autoloaded, the class **\\OCA\MyApp\\Controller\\PageController** needs to either be stored in the :file:`/apps/myapp/controller/pagecontroller.php` 
+**In other words**: In order for the PageController class to be autoloaded, the class **\\OCA\\MyApp\\Controller\\PageController** needs to be stored in the :file:`/apps/myapp/controller/pagecontroller.php` 
