@@ -9,4 +9,3 @@ General
    security
    codingguidelines
    debugging
-   dependencyinjection

@@ -47,7 +47,7 @@ The route array contains the following parts:
                 $container->registerService('PageController', function($c) {
                     return new PageController(
                         $c->query('AppName'), 
-                        $c->query('Request')
+                        $c->query('ServerContainer')->getRequest()
                     );
                 });
             }
@@ -177,7 +177,7 @@ Sometimes its useful to turn a route into a URL to make the code independent fro
             $container->registerService('PageController', function($c) {
                 return new PageController(
                     $c->query('AppName'), 
-                    $c->query('Request'),
+                    $c->query('ServerContainer')->getRequest(),
 
                     // inject the URLGenerator into the page controller
                     $c->query('ServerContainer')->getURLGenerator()
