@@ -27,7 +27,7 @@ The basic way to run a database query is to inject the **Db** service.
              * Database Layer
              */
             $container->registerService('AuthorDAO', function($c) {
-                return new AuthorDAO($c->query('Db'));
+                return new AuthorDAO($c->query('ServerContainer')->getDb());
             });
         }
     }
@@ -158,7 +158,7 @@ Mappers should be registered in the constructor to reuse them inside the applica
              * Database Layer
              */
             $container->registerService('AuthorMapper', function($c) {
-                return new AuthorMapper($c->query('Db'));
+                return new AuthorMapper($c->query('ServerContainer')->getDb());
             });
         }
     }
