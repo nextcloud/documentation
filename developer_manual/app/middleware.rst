@@ -48,7 +48,6 @@ The middleware can be registered in the :doc:`container` and added using the **r
 
   class MyApp extends App {
 
-
       /**
        * Define your dependencies in here
        */
