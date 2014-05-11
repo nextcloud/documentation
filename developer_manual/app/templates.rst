@@ -1,11 +1,21 @@
+=========
 Templates
 =========
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-ownCloud provides its own templating system.
+ownCloud provides its own templating system which is basically plain PHP with some additional functions and preset variables. All the parameters which have been passed from the :doc:`controller <controllers>` are available in an array called **$_[]**, e.g.::
+    
+    array('key' => 'something')
 
-In every template file you can easily access the template functions listed in :doc:`../app/api/templates`. To access the assigned variables in the template, use the **$_[]** array. The variable will be availabe under the key that you defined (e.g. $_['key']).
+can be accessed through::
+
+    $_['key']
+
+
+.. note:: To prevent XSS the following PHP **functions for printing are forbidden: echo, print() and <?=**. Instead use the **p()** function for printing your values. Should you require unescaped printing, **double check for XSS** and use: :php:func:`print_unescaped`.
+
+Printing values is done by using the **p()** function, printing HTML is done by using **print_unescaped()**
 
 :file:`templates/main.php`
 
@@ -16,20 +26,17 @@ In every template file you can easily access the template functions listed in :d
   <?php
   }
 
-  print_unescaped($this->inc('sub.inc'));
+  
+Including templates
+===================
 
-  ?>
+Templates can also include other templates by using the **$this->inc('templateName')** method. 
 
-.. warning::
-  .. versionchanged:: 5.0
+.. code-block:: php
 
-  To prevent XSS the following PHP **functions for printing are forbidden: echo, print() and <?=**. Instead use the **p()** function for printing your values. Should you require unescaped printing, **double check for XSS** and use: :php:func:`print_unescaped`.
-
-Templates can also include other templates by using the **$this->inc('templateName')** method. Use this if you find yourself repeating a lot of the same HTML constructs.
+  <?php print_unescaped($this->inc('sub.inc')); ?>
 
 The parent variables will also be available in the included templates, but should you require it, you can also pass new variables to it by using the second optional parameter as array for **$this->inc**.
-
-
 
 :file:`templates/sub.inc.php`
 
@@ -40,5 +47,22 @@ The parent variables will also be available in the included templates, but shoul
   
   <?php print_unescaped($this->inc('other_template', array('variable' => 'value'))); ?>
 
+Including CSS and JavaScript
+============================
+To include CSS or JavaScript use the **addStyle** and **addScript** functions:
 
-**For more info, see** :doc:`../app/api/templates`
+.. code-block:: php
+
+  <?php
+  \OCP\Util::addScript('myapp', 'script');  // add js/script.js
+  \OCP\Util::addStyle('myapp', 'style');  // add css/style.css
+
+
+Including images
+================
+To generate links to images use the **imagePath** function:
+
+.. code-block:: php
+ 
+  <img src="<?php\OCP\Util::imagePath('myapp', 'app.png'); // img/app.pnp?> />
+
