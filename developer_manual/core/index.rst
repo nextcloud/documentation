@@ -12,6 +12,7 @@ Core Development
    unit-testing
    theming
    configfile
+   externalapi
    ocs-share-api
 
 Intro
@@ -29,3 +30,4 @@ Core related docs
 * :doc:`theming`
 * :doc:`configfile`
 * :doc:`ocs-share-api`
+* :doc:`externalapi`
