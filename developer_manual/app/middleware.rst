@@ -143,3 +143,5 @@ Now adjust the container to inject the reflector:
       }
 
   }
+
+.. note:: An annotation always starts with an uppercase letter
