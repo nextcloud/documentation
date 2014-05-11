@@ -33,8 +33,6 @@ App Development
    hooks
    backgroundjobs
    logging
-   userbackend
-   filesystembackend
    testing
 
 
@@ -121,13 +119,6 @@ Logging
 Log to the :file:`data/owncloud.log`:
 
 * :doc:`logging`
-
-Backends
---------
-Plug into ownCloud user management or filesystem:
-
-* :doc:`userbackend`
-* :doc:`filesystembackend`
 
 Testing
 -------
