@@ -27,6 +27,7 @@ App Development
    l10n
    schema
    database
+   settings
    filesystem
    users
    hooks
@@ -88,6 +89,7 @@ Create database tables and run Sql queries:
 
 * :doc:`schema`
 * :doc:`database`
+* :doc:`settings`
 
 
 Filesystem
