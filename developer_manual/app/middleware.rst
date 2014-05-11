@@ -49,23 +49,26 @@ The middleware can be registered in the :doc:`container` and added using the **r
   class MyApp extends App {
 
 
-    /**
-     * Define your dependencies in here
-     */
-    public function __construct(array $urlParams=array()){
-      parent::__construct('myapp', $urlParams);
-
-      $container = $this->getContainer();
-
       /**
-       * Middleware
+       * Define your dependencies in here
        */
-      $container->registerService('CensorMiddleware', function($c){
-          return new CensorMiddleware();
-      });
-
-      // executed in the order that it is registered
-      $this->registerMiddleware('CensorMiddleware');
+      public function __construct(array $urlParams=array()){
+          parent::__construct('myapp', $urlParams);
+  
+          $container = $this->getContainer();
+  
+          /**
+           * Middleware
+           */
+          $container->registerService('CensorMiddleware', function($c){
+              return new CensorMiddleware();
+          });
+      
+          // executed in the order that it is registered
+          $this->registerMiddleware('CensorMiddleware');
+  
+      }
+  }
 
 
 .. note::
@@ -121,21 +124,23 @@ Now adjust the container to inject the reflector:
 
   class MyApp extends App {
 
-
-    /**
-     * Define your dependencies in here
-     */
-    public function __construct(array $urlParams=array()){
-      parent::__construct('myapp', $urlParams);
-
-      $container = $this->getContainer();
-
       /**
-       * Middleware
+       * Define your dependencies in here
        */
-      $container->registerService('HeaderMiddleware', function($c){
-          return new HeaderMiddleware($c->query('ControllerMethodReflector'));
-      });
+      public function __construct(array $urlParams=array()){
+          parent::__construct('myapp', $urlParams);
+  
+          $container = $this->getContainer();
+  
+          /**
+           * Middleware
+           */
+          $container->registerService('HeaderMiddleware', function($c){
+              return new HeaderMiddleware($c->query('ControllerMethodReflector'));
+          });
 
-      // executed in the order that it is registered
-      $this->registerMiddleware('HeaderMiddleware');
+          // executed in the order that it is registered
+          $this->registerMiddleware('HeaderMiddleware');
+      }
+
+  }
