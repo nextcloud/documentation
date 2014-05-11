@@ -30,7 +30,7 @@ The :file:`appinfo/info.xml` contains metadata about the app:
 
       <website>http://www.owncloud.org</website>
 
-      <!-- deprecated -->
+      <!-- deprecated, just for reference -->
       <public>
           <file id="caldav">appinfo/caldav.php</file>
       </public>      
