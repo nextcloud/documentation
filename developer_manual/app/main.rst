@@ -1,3 +1,4 @@
+====================================
 Navigation and Pre-App configuration
 ====================================
 
@@ -37,7 +38,7 @@ The :file:`appinfo/app.php` is the first file that is loaded and executed in own
     \OCP\Util::connectHook('OC_User', 'pre_deleteUser', 'OCA\MyApp\Hooks\User', 'deleteUser');
 
 
-It is also possible to include :doc:`javascript` or :doc:`css` for other apps by placing the **addScript** or **addStyle** functions inside this file.
+It is also possible to include :doc:`js` or :doc:`css` for other apps by placing the **addScript** or **addStyle** functions inside this file.
 
 .. code-block:: php
     
