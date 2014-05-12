@@ -134,7 +134,7 @@ To login, logout or getting the currently logged in user, the Session has to be 
             });
 
             $container->registerService('Session', function($c) {
-                return $c->query('ServerContainer')->getSession();
+                return $c->query('ServerContainer')->getUserSession();
             });
 
             // currently logged in user, userId can be gotten by calling the

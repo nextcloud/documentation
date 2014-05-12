@@ -4,91 +4,90 @@ Hooks
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-In ownCloud apps, function or methods (event handlers) which are used by the app and called by ownCloud core hooks, are generally stored in :file:`apps/appname/lib/hooks.php`. Hooks are a way of implementing the `observer
-pattern`_, and are commonly used by web platform applications to provide clean
-interfaces to third party applications which need to modify core application
-functionality.
-
-In ownCloud, a hook is a function whose name can be used by developers of
-plug-ins to ensure that additional code is executed at a precise place during
-the execution of other parts of ownCloud code. For example, when an ownCloud
-user is deleted, the ownCloud core hook **post_deleteUser** is executed.
-In the calendar app's :file:`appinfo/app.php`, this hook is connected to the app's
-own event handler **deleteUser** (**user** here refers to an ownCloud user;
-**deleteUser** deletes all addressbooks for that a given ownCloud user).
-
-When **post_deleteUser** calls the calender app's **deleteUser** event handler,
-it supplies it with an argument, which is an array containing the user ID of the
-user that has just been deleted. This user ID is then used by the event handler
-to specify which address books to delete. There are three components to the use
-of hooks in this example:
-
-#. The ownCloud core hook **post_deleteUser**, (see what arguments / data it
-   will provide in :file:`lib/user.php`, where it is defined)
-#. The event handler **deleteUser**, defined in :file:`apps/contacts/lib/hooks.php`.
-#. The connection of the hook to the event handler, in
-   :file:`apps/contacts/appinfo/app.php`.
-
-Hook Terminology
-----------------
-
-* **Signal class  / emitter class:** the class that contains the method which
-  contains the creation of the hook (and a call to the **emit()** method)
-  e.g. OC_User
-* **Signal  / signal name:** the name of the hook, e.g. **post_deleteUser**
-* **Slot class**: class housing the event handling method, e.g.
-  **OC_Contacts_Hooks**
-* **Slot name**: event handler method, e.g. deleteUser (function that deletes
-  all contact address books for a user)
+Hooks are used to execute code before or after an event has occured. This is for instance useful to run cleanup code after users, groups or files have been deleted.
 
 Available hooks
----------------
+===============
+The scope is the first parameter that is passed to the **listen** method, the second parameter is the method and the third one the callback that should be executed once the hook is being called, e.g.:
 
-File: **apps/calendar/ajax/events.php**, Class: OC_Calendar
+.. code-block:: php
 
-* Hook: getEvents
+    <?php
+    
+    // listen on user predelete
+    $userManager->listen('\OC\User', 'preDelete', function($user) {
+        // your code that executes before $user is deleted
+    });
 
-File: **apps/calendar/index.php**, Class: OC_Calendar
 
-* Hook: getSources
+Hooks can also be removed by using the **removeListener** method on the object.
 
-File: **dav.php**, Class: OC_DAV
+The following hooks are available:
 
-* Hook: initialize
+Session
+-------
+Injectable from the ServerContainer by calling the method **getUserSession**. 
 
-File: **lib/migrate.php**, Class: OC_User
+Hooks available in scope **\\OC\\User**:
+ 
+* **preSetPassword** (\\OC\\User\\User $user, string $password, string $recoverPassword)
+* **postSetPassword** (\\OC\\User\\User $user, string $password, string $recoverPassword)
+* **preDelete** (\\OC\\User\\User $user)
+* **postDelete** (\\OC\\User\\User $user)
+* **preCreateUser** (string $uid, string $password)
+* **postCreateUser** (\\OC\\User\\User $user)
+* **preLogin** (string $user, string $password)
+* **postLogin** (\\OC\\User\\User $user)
+* **logout** ()
 
-* Hook: pre_createUser
-* Hook: post_createUser
+UserManager
+-----------
+Injectable from the ServerContainer by calling the method **getUserManager**. 
 
-File: **lib/filecache.php**, Class: OC_Filesystem
+Hooks available in scope **\\OC\\User**:
 
-* Hook: post_write
-* Hook: post_write
-* Hook: post_delete
-* Hook: post_write
+* **preSetPassword** (\\OC\\User\\User $user, string $password, string $recoverPassword)
+* **postSetPassword** (\\OC\\User\\User $user, string $password, string $recoverPassword)
+* **preDelete** (\\OC\\User\\User $user)
+* **postDelete** (\\OC\\User\\User $user)
+* **preCreateUser** (string $uid, string $password)
+* **postCreateUser** (\\OC\\User\\User $user, string $password)
 
-File: **lib/user.php**, Class: OC_User
+GroupManager
+------------
+Hooks available in scope **\\OC\\Group**:
 
-* Hook: pre_createUser
-* Hook: post_createUser
-* Hook: pre_deleteUser
-* Hook: post_deleteUser
-* Hook: pre_login
-* Hook: post_login
-* Hook: logout
-* Hook: pre_setPassword
-* Hook: post_setPassword
+* **preAddUser** (\\OC\\Group\\Group $group, \\OC\\User\\User $user)
+* **postAddUser** (\\OC\\Group\\Group $group, \\OC\\User\\User $user)
+* **preRemoveUser** (\\OC\\Group\\Group $group, \\OC\\User\\User $user)
+* **postRemoveUser** (\\OC\\Group\\Group $group, \\OC\\User\\User $user)
+* **preDelete** (\\OC\\Group\\Group $group)
+* **postDelete** (\\OC\\Group\\Group $group)
+* **preCreate** (string $groupId)
+* **postCreate** (\\OC\\Group\\Group $group)
 
-File: **lib/group.php**, Class: OC_Group
+Root
+----
+Injectable from the ServerContainer by calling the method **getRootFolder**, **getUserFolder** or **getAppFolder**.
 
-* Hook: pre_createGroup
-* Hook: post_createGroup
-* Hook: pre_deleteGroup
-* Hook: post_deleteGroup
-* Hook: pre_addToGroup
-* Hook: post_addToGroup
-* Hook: pre_removeFromGroup
-* Hook: post_removeFromGroup
+Filesystem hooks available in scope **\\OC\\Files**:
 
-.. _observer pattern: https://en.wikipedia.org/wiki/Observer_pattern
+* **preWrite** (\\OCP\\Files\\Node $node)
+* **postWrite** (\\OCP\\Files\\Node $node)
+* **preCreate** (\\OCP\\Files\\Node $node)
+* **postCreate** (\\OCP\\Files\\Node $node)
+* **preDelete** (\\OCP\\Files\\Node $node)
+* **postDelete** (\\OCP\\Files\\Node $node)
+* **preTouch** (\\OC\\FilesP\\Node $node, int $mtime)
+* **postTouch** (\\OCP\\Files\\Node $node)
+* **preCopy** (\\OCP\\Files\\Node $source, \\OCP\\Files\\Node $target)
+* **postCopy** (\\OCP\\Files\\Node $source, \\OCP\\Files\\Node $target)
+* **preRename** (\\OCP\\Files\\Node $source, \\OCP\\Files\\Node $target)
+* **postRename** (\\OCP\\Files\\Node $source, \\OCP\\Files\\Node $target)
+
+Scanner
+-------
+Filesystem scanner hooks available in scope **\\OC\\Utils\\Scanner**:
+
+* **scanFile** (string $absolutePath)
+* **scanFolder** (string $absolutePath)
