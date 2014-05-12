@@ -26,7 +26,7 @@ The following hooks are available:
 
 Session
 -------
-Injectable from the ServerContainer by calling the method **getUserSession**. 
+Injectable from the ServerContainer by calling the method **getUserSession()**. 
 
 Hooks available in scope **\\OC\\User**:
  
@@ -42,7 +42,7 @@ Hooks available in scope **\\OC\\User**:
 
 UserManager
 -----------
-Injectable from the ServerContainer by calling the method **getUserManager**. 
+Injectable from the ServerContainer by calling the method **getUserManager()**. 
 
 Hooks available in scope **\\OC\\User**:
 
@@ -68,7 +68,7 @@ Hooks available in scope **\\OC\\Group**:
 
 Filesystem Root
 ---------------
-Injectable from the ServerContainer by calling the method **getRootFolder**, **getUserFolder** or **getAppFolder**.
+Injectable from the ServerContainer by calling the method **getRootFolder()**, **getUserFolder()** or **getAppFolder()**.
 
 Filesystem hooks available in scope **\\OC\\Files**:
 
