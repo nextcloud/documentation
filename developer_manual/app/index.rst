@@ -27,7 +27,7 @@ App Development
    l10n
    schema
    database
-   settings
+   configuration
    filesystem
    users
    hooks
@@ -81,23 +81,17 @@ The app's presentation layer:
 * :doc:`css`
 * :doc:`l10n`
 
-Model (Database access)
------------------------
-Create database tables and run Sql queries:
+Storage
+-------
+Create database tables, run Sql queries, store/retrieve configuration information and access the filesystem:
 
 * :doc:`schema`
 * :doc:`database`
-* :doc:`settings`
-
-
-Filesystem
-----------
-Accessing the filesystem:
-
+* :doc:`configuration`
 * :doc:`filesystem`
 
-Users
------
+Authentication & Users
+----------------------
 Creating, deleting, updating, searching, login and logout:
 
 * :doc:`users`
