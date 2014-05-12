@@ -66,8 +66,8 @@ Hooks available in scope **\\OC\\Group**:
 * **preCreate** (string $groupId)
 * **postCreate** (\\OC\\Group\\Group $group)
 
-Root
-----
+Filesystem Root
+---------------
 Injectable from the ServerContainer by calling the method **getRootFolder**, **getUserFolder** or **getAppFolder**.
 
 Filesystem hooks available in scope **\\OC\\Files**:
@@ -85,8 +85,8 @@ Filesystem hooks available in scope **\\OC\\Files**:
 * **preRename** (\\OCP\\Files\\Node $source, \\OCP\\Files\\Node $target)
 * **postRename** (\\OCP\\Files\\Node $source, \\OCP\\Files\\Node $target)
 
-Scanner
--------
+Filesystem Scanner
+------------------
 Filesystem scanner hooks available in scope **\\OC\\Utils\\Scanner**:
 
 * **scanFile** (string $absolutePath)
