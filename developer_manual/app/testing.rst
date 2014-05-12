@@ -57,25 +57,28 @@ would look like this:
     class AuthorStorageTest extends \PHPUnit_Framework_TestCase {
 
         private $container;
+        private $storage;
 
         protected function setUp() {
             $app = new \OCA\MyApp\AppInfo\Application();
             $this->container = $notes->getContainer();
-            $this->container['RootStorage'] = $this->
-                getMockBuilder('\OCP\Files\Folder')->
-                disableOriginalConstructor()->
-                getMock();
+            $this->storage = $storage = $this->getMockBuilder('\OCP\Files\Folder')
+                ->disableOriginalConstructor()
+                ->getMock();
+
+            $this->container->registerService('RootStorage', function($c) use ($storage) {
+                return $storage;
+            });
         }
 
         /**
          * @expectedException \OCA\MyApp\Storage\StorageException
          */
         public function testFileNotFound() {
-            $this->container['RootStorage']->
-                expects($this->once())->
-                method('get')->
-                with($this->equalTo(3))->
-                will($this->throwException(new \OCP\Files\NotFoundException()));
+            $this->storage->expects($this->once())
+                ->method('get')
+                ->with($this->equalTo(3))
+                ->will($this->throwException(new \OCP\Files\NotFoundException()));
 
             $this->container['AuthorStorage']->getContent(3);
         }
