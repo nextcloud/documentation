@@ -1,1 +1,0 @@
-.. include:: ../app/hooks.rst

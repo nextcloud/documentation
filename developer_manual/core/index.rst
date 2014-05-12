@@ -1,8 +1,5 @@
 .. _coreindex:
 
-=================
-Core Development
-=================
 
 .. toctree::
    :maxdepth: 1
@@ -12,14 +9,19 @@ Core Development
    unit-testing
    theming
    configfile
+   externalapi
    ocs-share-api
+
+=================
+Core Development
+=================
 
 Intro
 -----
 
 Please make sure you have set up a development environment:
 
-* :ref:`devenv`
+* :doc:`../general/devenv`
 
 Core related docs
 -----------------
@@ -29,3 +31,4 @@ Core related docs
 * :doc:`theming`
 * :doc:`configfile`
 * :doc:`ocs-share-api`
+* :doc:`externalapi`

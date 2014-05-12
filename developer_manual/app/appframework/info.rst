@@ -1,1 +1,0 @@
-.. include:: ../app/info.rst

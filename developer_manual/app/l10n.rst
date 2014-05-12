@@ -1,0 +1,122 @@
+===========
+Translation
+===========
+
+.. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
+
+ownCloud's translation system is powered by `Transifex <https://www.transifex.com/projects/p/owncloud/>`_. To start translating sign up and enter a group. If your community app should be added to Transifex contact someone of the `core developers <http://owncloud.org/about/contact/>`_ to set it up for you.
+
+PHP
+===
+Should it ever be needed to use localized strings on the serverside simply inject the L10N service from the ServerContainer into the needed constructor
+
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\AppInfo;
+
+    use \OCP\AppFramework\App;
+
+    use \OCA\MyApp\Service\AuthorService;
+
+
+    class Application extends App {
+
+        public function __construct(array $urlParams=array()){
+            parent::__construct('myapp', $urlParams);
+
+            $container = $this->getContainer();
+
+            /**
+             * Controllers
+             */
+            $container->registerService('AuthorService', function($c) {
+                return new AuthorService(
+                    $c->query('L10N')
+                );
+            });
+
+            $container->registerService('L10N', function($c) {
+                return $c->query('ServerContainer')->getL10N($c->query('AppName'));
+            });
+        }
+    }
+
+Strings can then be translated in the following way:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Service;
+
+    use \OCP\IL10N;
+
+
+    class AuthorService {
+
+        private $trans;
+
+        public function __construct(IL10N $trans){
+            $this->trans = $trans;
+        }
+
+        public function getLanguageCode() {
+            return $this->trans->getLanguage();
+        }
+
+        public sayHello() {
+            return $this->trans->t('Hello');
+        }
+
+        public function getAuthorName($name) {
+            return $this->trans->t('Getting author %s', array($name));
+        }
+
+        public function getAuthors($count, $city) {
+            return $this->trans->n(
+                '%n author is currently in the city %s',  // singular string
+                '%n authors are currently in the city %s',  // plural string
+                $count,
+                array($city)
+            );
+        }
+    }
+
+
+
+Templates
+=========
+In every template the global variable **$l** can be used to translate the strings using its methods **t()** and **n()**:
+
+.. code-block:: php
+
+    <div><?php p($l->t('Showing %s files', $_['count'])); ?></div>
+
+    <button><?php p($l->t('Hide')); ?></button>
+
+JavaScript
+==========
+There is currently no good way to translate JavaScript strings. One way to still use translated strings in the scripts is to create an invisble HTML element with all the translations in it which can be parsed in the JavaScript code:
+
+.. code-block:: php
+
+    <ul id="translations">
+        <li id="add-new"><?php p($l->t('Add new file')); ?></li>
+    </ul>
+
+.. code-block:: js
+
+    var addNewTranslation = $('#add-new').text();
+
+Creating your own translatable files
+====================================
+If Transifex is not the right choice or the app is not accepted for translation, generate the gettext strings by yourself by creating an **l10n/** directory in the app folder and executing::
+
+
+    cd /srv/http/owncloud/l10n
+    perl l10n.pl myapp read 
+
+The translation script requires **Locale::PO** and **gettext**, installable via::
+
+    apt-get install liblocale-po-perl gettext
