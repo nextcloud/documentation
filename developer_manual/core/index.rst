@@ -1,8 +1,5 @@
 .. _coreindex:
 
-=================
-Core Development
-=================
 
 .. toctree::
    :maxdepth: 1
@@ -15,12 +12,16 @@ Core Development
    externalapi
    ocs-share-api
 
+=================
+Core Development
+=================
+
 Intro
 -----
 
 Please make sure you have set up a development environment:
 
-* :ref:`devenv`
+* :doc:`../general/devenv`
 
 Core related docs
 -----------------
