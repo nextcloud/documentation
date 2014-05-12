@@ -8,7 +8,7 @@
    :hidden:
 
    ../general/index
-   tutorial
+   startapp
    init
    info
    classloader
@@ -53,7 +53,7 @@ Before starting to write an app please read the security and coding guidelines:
 
 After this you can start to write your first app:
 
-* :doc:`tutorial`
+* :doc:`startapp`
 
 App development
 ===============

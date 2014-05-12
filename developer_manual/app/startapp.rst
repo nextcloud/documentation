@@ -1,6 +1,6 @@
-========
-Tutorial
-========
+=============
+Create an app
+=============
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
