@@ -4,7 +4,67 @@ Hooks
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-Hooks are used to execute code before or after an event has occured. This is for instance useful to run cleanup code after users, groups or files have been deleted.
+Hooks are used to execute code before or after an event has occured. This is for instance useful to run cleanup code after users, groups or files have been deleted. Hooks should be registered in the :doc:`app.php <init>`:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\AppInfo;
+
+    $app = new Application();
+    $app->getContainer()->query('UserHooks')->register();
+
+The hook logic should be in a seperate class that is being registered in the :doc:`container`
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\AppInfo;
+
+    use \OCP\AppFramework\App;
+
+    use \OCA\MyApp\Hooks\UserHooks;
+
+
+    class Application extends App {
+
+        public function __construct(array $urlParams=array()){
+            parent::__construct('myapp', $urlParams);
+
+            $container = $this->getContainer();
+
+            /**
+             * Controllers
+             */
+            $container->registerService('UserHooks', function($c) {
+                return new UserHooks(
+                    $c->query('ServerContainer')->getUserManager()
+                );
+            });
+        }
+    }
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Hooks;
+
+    class UserHooks {
+
+        private $userManager;
+
+        public function __construct($userManager){
+            $this->userManager = $userManager;
+        }
+
+        public function register() {
+            $callback = function($user) {
+                // your code that executes before $user is deleted
+            };
+            $userManager->listen('\OC\User', 'preDelete', $callback);
+        }
+
+    }
 
 Available hooks
 ===============
@@ -15,12 +75,21 @@ The scope is the first parameter that is passed to the **listen** method, the se
     <?php
     
     // listen on user predelete
-    $userManager->listen('\OC\User', 'preDelete', function($user) {
+    $callback = function($user) {
         // your code that executes before $user is deleted
-    });
+    };
+    $userManager->listen('\OC\User', 'preDelete', $callback);
 
 
-Hooks can also be removed by using the **removeListener** method on the object.
+Hooks can also be removed by using the **removeListener** method on the object:
+
+.. code-block:: php
+
+    <?php
+    
+    // delete previous callback
+    $userManager->removeListener(null, null, $callback);
+
 
 The following hooks are available:
 

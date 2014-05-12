@@ -21,12 +21,12 @@ In the beginning, all requests are sent to ownCloud's :file:`index.php` which in
 * Filesystem
 * Logging
 
-The type of the app is determined by inspecting the app's :doc:`configuration file <info>` (:file:`appinfo/info.xml`). Loading apps means that the :doc:`main file <main>` (:file:`appinfo/app.php`) of each installed app is being loaded and executed. That means that if you want to execute code before a specific app is being run, you can place code in your app's :doc:`main` file.
+The type of the app is determined by inspecting the app's :doc:`configuration file <info>` (:file:`appinfo/info.xml`). Loading apps means that the :doc:`main file <init>` (:file:`appinfo/app.php`) of each installed app is being loaded and executed. That means that if you want to execute code before a specific app is being run, you can place code in your app's :doc:`init` file.
 
 Afterwards the following steps are performed:
 
-* Try to :doc:`authenticate the user <userbackend>`
-* Load and execute all the remaining apps' :doc:`main` files
+* Try to authenticate the user
+* Load and execute all the remaining apps' :doc:`init` files
 * Load and run all the routes in the apps' :file:`appinfo/routes.php`
 * Execute the router
 
