@@ -3,3 +3,81 @@ Testing
 =======
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
+
+All PHP classes can be tested with `PHPUnit <http://phpunit.de/>`_, JavaScript can be tested by using `Karma <http://karma-runner.github.io/0.12/index.html>`_. 
+
+
+
+PHP
+===
+The PHP tests go into the **tests/** directory. Unfortunately the classloader in core requires a running server (as in fully configured and setup up with a database connection). This is unfortunately too complicated and slow so a seperate classloader has to be provided. If the app has been generated with the **ocdev startapp** command, the classloader is already present in the the **tests/** directory and PHPUnit can be run with::
+
+    phpunit tests/
+
+PHP classes should be tested by accessing them from the container to ensure that the container is wired up properly. Services that should be mocked can be replaced directly in the container.
+
+A test for the **AuthorStorage** class in :doc:`filesystem`:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Storage;
+
+    class AuthorStorage {
+
+        private $storage;
+
+        public function __construct($storage){
+            $this->storage = $storage;
+        }
+
+        public function getContent($id) {
+            // check if file exists and write to it if possible
+            try {
+                $file = $this->storage->getById($id);
+                if($file instanceof \OCP\Files\File) {
+                    return $file->getContent();
+                } else {
+                    throw new StorageException('Can not read from folder');
+                }
+            } catch(\OCP\Files\NotFoundException $e) {
+                throw new StorageException('File does not exist');
+            }
+        }
+    }
+
+would look like this:
+
+.. code-block:: php
+
+    <?php
+    // tests/unit/storage/AuthorStorageTest.php
+    namespace OCA\MyApp\Storage;
+    
+    class AuthorStorageTest extends \PHPUnit_Framework_TestCase {
+
+        private $container;
+
+        protected function setUp() {
+            $app = new \OCA\MyApp\AppInfo\Application();
+            $this->container = $notes->getContainer();
+            $this->container['RootStorage'] = $this->
+                getMockBuilder('\OCP\Files\Folder')->
+                disableOriginalConstructor()->
+                getMock();
+        }
+
+        /**
+         * @expectedException \OCA\MyApp\Storage\StorageException
+         */
+        public function testFileNotFound() {
+            $this->container['RootStorage']->
+                expects($this->once())->
+                method('get')->
+                with($this->equalTo(3))->
+                will($this->throwException(new \OCP\Files\NotFoundException()));
+
+            $this->container['AuthorStorage']->getContent(3);
+        }
+
+    }

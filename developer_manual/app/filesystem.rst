@@ -26,11 +26,16 @@ Filesystem classes can be injected from the ServerContainer by calling the metho
             $container = $this->getContainer();
 
             /**
-             * Database Layer
+             * Storage Layer
              */
             $container->registerService('AuthorStorage', function($c) {
-                return new AuthorStorage($c->query('ServerContainer')->getRootFolder());
+                return new AuthorStorage($c->query('RootStorage'));
             });
+
+            $container->registerService('RootStorage', function($c) {
+                return $c->query('ServerContainer')->getRootFolder();
+            });
+
         }
     }
 
@@ -62,6 +67,7 @@ All methods return a Folder object on which files and folders can be accessed, o
                     $file = $this->storage->get('/myfile.txt');
                 }
 
+                // the id can be accessed by $file->getId(); 
                 $file->putContent($content);
         
             } catch(\OCP\Files\NotPermittedException $e) {
