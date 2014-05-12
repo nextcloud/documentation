@@ -2,9 +2,6 @@
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-===============
-App Development
-===============
 
 .. toctree::
    :maxdepth: 1
@@ -12,7 +9,7 @@ App Development
 
    ../general/index
    tutorial
-   main
+   init
    info
    classloader
    request
@@ -35,6 +32,10 @@ App Development
    logging
    testing
 
+===============
+App Development
+===============
+.. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
 Intro
 =====
@@ -58,7 +59,7 @@ App development
 ===============
 Inner parts of an app:
 
-* :doc:`main`
+* :doc:`init`
 * :doc:`info`
 * :doc:`classloader`
 
