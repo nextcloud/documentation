@@ -110,6 +110,30 @@ All those parameters can easily be accessed by adding them to the controller met
 
     }
 
+It is also possible to set default parameter values by using PHP default method values so common values can be ommited:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use \OCP\AppFramework\Controller;
+
+    class PageController extends Controller {
+
+        /**
+         * @param int $id
+         */
+        public function doSomething($id, $name='john', $job='author') {
+            // GET ?id=3&job=killer
+            // $id = 3
+            // $name = 'john'
+            // $job = 'killer'
+        }
+
+    }
+
+
 Casting parameters
 ------------------
 URL, GET and application/x-www-form-urlencoded have the problem that every parameter is a string, meaning that::
