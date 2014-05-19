@@ -3,9 +3,9 @@ Synchronizing with KDE SC
 
 .. image:: /images/kdes1.png
 
-From KDE SC 4.8 and forward setting up ownCloud is very easy. From System
-Settings Personal Information/Akonadi Resources Configuration select DAV
-Groupware resource.
+From KDE SC 4.8 and forward setting up ownCloud is very easy. From
+:menuselection:`System Settings --> Personal Information`, click on *Add*
+and choose *DAV groupware resource* in *Akonadi Resources Configuration* window.
 
 
 .. image:: ../images/kdes2.png
