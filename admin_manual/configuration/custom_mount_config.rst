@@ -73,12 +73,13 @@ Priorities
 An advanced feature is available, only configurable directly in
 :file:`data/mount.json`, which allows mount configurations to have an associated
 priority. This priority is compared when two or more valid mount configurations
-with the same mount point are considered. A higher priority will 'win', and
-become the active mount for the user.
+with the same mount point are considered. A higher priority (defined by a larger
+number) will 'win', and become the active mount for the user.
 
 Each backend has a default priority, assigned when a mount configuration with that
 backend is created. The default priority will be shown in the example section for
-each backend below.
+each backend below. Should a backend not provide a default priority, a value of 100
+will be used.
 
 There is also a concept of priority types, to preserve compatibility with
 previous mount configuration parsing. Mount configurations are evaluated in the
