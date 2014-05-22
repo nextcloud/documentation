@@ -67,8 +67,6 @@ To prevent XSS in your app, **never use echo, print() or <\%=** - use **p()** in
 
 .. note:: Should you ever require to print something unescaped, double check if it is really needed. If there is no other way (e.g. when including of subtemplates) use `print_unescaped`  with care.
 
-If you use the App Framework with Twig templates everything is already escaped by default.
-
 JavaScript
 ~~~~~~~~~~
 
@@ -107,7 +105,7 @@ Clickjacking
 
 To prevent such attacks ownCloud sends the `X-Frame-Options` header to all template responses. Don't remove this header if you don't really need it!
 
-This is already built into ownCloud if :php:class:`OC_Template` or Twig Templatse are used.
+This is already built into ownCloud if :php:class:`OC_Template`.
 
 Code executions / File inclusions
 ---------------------------------
@@ -198,9 +196,9 @@ Auth bypass/privilege escalations happens when a user is able to perform not aut
 
 ownCloud offers three simple checks:
 
-* **OCP\JSON::checkLoggedIn()**: Checks if the logged in user is logged in
-* **OCP\JSON::checkAdminUser()**: Checks if the logged in user has admin privileges
-* **OCP\JSON::checkSubAdminUser()**: Checks if the logged in user has group admin privileges
+* **OCP\\JSON::checkLoggedIn()**: Checks if the logged in user is logged in
+* **OCP\\JSON::checkAdminUser()**: Checks if the logged in user has admin privileges
+* **OCP\\JSON::checkSubAdminUser()**: Checks if the logged in user has group admin privileges
 
 Using the App Framework, these checks are already automatically performed for each request and have to be explicitely turned off by using annotations above your controller method,  see :doc:`../app/controllers`.
 
