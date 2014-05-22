@@ -44,7 +44,8 @@ Example
         "admin":{
             "\/$user\/files\/Admin_Stuff":{
                 "class":"\\OC\\Files\\Storage\\Local",
-                "options":{ ... }
+                "options":{ ... },
+                "priority":150
                 }
             }
         }
@@ -52,17 +53,42 @@ Example
         "all":{
             "\/$user\/files\/Pictures":{
                 "class":"\\OC\\Files\\Storage\\DAV",
-                "options":{ ... }
+                "options":{ ... },
+                "priority":100
                 }
             }
         "someuser":{
             "\/someuser\/files\/Music":{
                 "class":"\\OC\\Files\\Storage\\FTP",
-                "options":{ ... }
+                "options":{ ... },
+                "priority":100
                 }
             }
         }
     }
+
+Priorities
+----------
+
+An advanced feature is available, only configurable directly in
+:file:`data/mount.json`, which allows mount configurations to have an associated
+priority. When two or more valid mount configurations exist for the same mount point,
+the one with the highest priority (defined by the largest number) will take precedence
+and become the active mount for the user.
+
+Each backend has a default priority, assigned when a mount configuration with that
+backend is created. The default priority will be shown in the example section for
+each backend below. Should a backend not provide a default priority, a value of 100
+will be used.
+
+There is also a concept of priority types, to preserve compatibility with
+previous mount configuration parsing. Mount configurations are evaluated in the
+following order, with later mount types always overriding a previous mount type:
+
+-  user -> all : global mount configurations
+-  group : group mount configurations
+-  user (not all) : per-user mount configurations
+-  :file:`data/$user/mount.json` : personal mount configurations
 
 Backends
 --------
@@ -83,7 +109,8 @@ Example
 .. code-block:: json
 
     { "class":"\\OC\\Files\\Storage\\Local",
-      "options":{ "datadir":"\/mnt\/additional_storage" }
+      "options":{ "datadir":"\/mnt\/additional_storage" },
+      "priority":150
     }
 
 .. note:: You must ensure that the web server has sufficient permissions on the folder.
@@ -117,7 +144,8 @@ Example
             "password":"secret",
             "root":"\/Videos",
             "secure":"false"
-        }
+        },
+        "priority":100
     }
 
 .. note:: PHP needs to be build with FTP support for this backend to work.
@@ -148,7 +176,8 @@ Example
             "user":"johndoe",
             "password":"secret",
             "root":"\/Books"
-        }
+        },
+        "priority":100
     }
 
 .. note:: PHP needs to be build with SFTP support for this backend to work.
@@ -181,7 +210,8 @@ Example
             "password":"secret",
             "share":"\/test",
             "root":"\/Pictures"
-        }
+        },
+        "priority":100
     }
 
 WebDAV
@@ -212,7 +242,8 @@ Example
             "user":"johndoe",
             "password":"secret",
             "secure":"true"
-        }
+        },
+        "priority":100
     }
 
 Amazon S3
@@ -238,7 +269,8 @@ Example
             "key":"key",
             "secret":"secret",
             "bucket":"bucket"
-        }
+        },
+        "priority":100
     }
 
 Dropbox
@@ -267,7 +299,8 @@ Example
             "app_secret":"secret",
             "token":"#token",
             "token_secret":"#token_secret"
-        }
+        },
+        "priority":100
     }
 
 Google Drive
@@ -296,7 +329,8 @@ Example
             "client_id":"#client_id",
             "client_secret":"#client_secret",
             "token":"#token"
-        }
+        },
+        "priority":100
     }
 
 OpenStack Swift
@@ -328,7 +362,8 @@ Example
             "token":"secret",
             "root":"\/Videos",
             "secure":"true"
-        }
+        },
+        "priority":100
     }
 
 
