@@ -60,176 +60,176 @@ To use icons which are shipped in core, special class to apply the background im
     .. image:: ../img/7/noise.png
 
 * **icon-add**:
-    .. image:: ../img/7/actions/add.svg
+    .. image:: ../img/7/actions/add.png
 
 * **icon-caret**:
-    .. image:: ../img/7/actions/caret.svg
+    .. image:: ../img/7/actions/caret.png
 
 * **icon-caret-dark**:
-    .. image:: ../img/7/actions/caret-dark.svg
+    .. image:: ../img/7/actions/caret-dark.png
 
 * **icon-checkmark**:
-    .. image:: ../img/7/actions/checkmark.svg
+    .. image:: ../img/7/actions/checkmark.png
 
 * **icon-checkmark-white**:
-    .. image:: ../img/7/actions/checkmark-white.svg
+    .. image:: ../img/7/actions/checkmark-white.png
 
 * **icon-clock**:
-    .. image:: ../img/7/actions/clock.svg
+    .. image:: ../img/7/actions/clock.png
 
 * **icon-close**:
-    .. image:: ../img/7/actions/close.svg
+    .. image:: ../img/7/actions/close.png
 
 * **icon-confirm**:
-    .. image:: ../img/7/actions/confirm.svg
+    .. image:: ../img/7/actions/confirm.png
 
 * **icon-delete**:
-    .. image:: ../img/7/actions/delete.svg
+    .. image:: ../img/7/actions/delete.png
 
 * **icon-download**:
-    .. image:: ../img/7/actions/download.svg
+    .. image:: ../img/7/actions/download.png
 
 * **icon-history**:
-    .. image:: ../img/7/actions/history.svg
+    .. image:: ../img/7/actions/history.png
 
 * **icon-info**:
-    .. image:: ../img/7/actions/info.svg
+    .. image:: ../img/7/actions/info.png
 
 * **icon-lock**:
-    .. image:: ../img/7/actions/lock.svg
+    .. image:: ../img/7/actions/lock.png
 
 * **icon-logout**:
-    .. image:: ../img/7/actions/logout.svg
+    .. image:: ../img/7/actions/logout.png
 
 * **icon-mail**:
-    .. image:: ../img/7/actions/mail.svg
+    .. image:: ../img/7/actions/mail.png
 
 * **icon-more**:
-    .. image:: ../img/7/actions/more.svg
+    .. image:: ../img/7/actions/more.png
 
 * **icon-password**:
-    .. image:: ../img/7/actions/password.svg
+    .. image:: ../img/7/actions/password.png
 
 * **icon-pause**:
-    .. image:: ../img/7/actions/pause.svg
+    .. image:: ../img/7/actions/pause.png
 
 * **icon-pause-big**:
-    .. image:: ../img/7/actions/pause-big.svg
+    .. image:: ../img/7/actions/pause-big.png
 
 * **icon-play**:
-    .. image:: ../img/7/actions/play.svg
+    .. image:: ../img/7/actions/play.png
 
 * **icon-play-add**:
-    .. image:: ../img/7/actions/play-add.svg
+    .. image:: ../img/7/actions/play-add.png
 
 * **icon-play-big**:
-    .. image:: ../img/7/actions/play-big.svg
+    .. image:: ../img/7/actions/play-big.png
 
 * **icon-play-next**:
-    .. image:: ../img/7/actions/play-next.svg
+    .. image:: ../img/7/actions/play-next.png
 
 * **icon-play-previous**:
-    .. image:: ../img/7/actions/play-previous.svg
+    .. image:: ../img/7/actions/play-previous.png
 
 * **icon-public**:
-    .. image:: ../img/7/actions/public.svg
+    .. image:: ../img/7/actions/public.png
 
 * **icon-rename**:
-    .. image:: ../img/7/actions/rename.svg
+    .. image:: ../img/7/actions/rename.png
 
 * **icon-search**:
-    .. image:: ../img/7/actions/search.svg
+    .. image:: ../img/7/actions/search.png
 
 * **icon-settings**:
-    .. image:: ../img/7/actions/settings.svg
+    .. image:: ../img/7/actions/settings.png
 
 
 * **icon-share**:
-    .. image:: ../img/7/actions/share.svg
+    .. image:: ../img/7/actions/share.png
 
 * **icon-shared**:
-    .. image:: ../img/7/actions/shared.svg
+    .. image:: ../img/7/actions/shared.png
 
 * **icon-sound**:
-    .. image:: ../img/7/actions/sound.svg
+    .. image:: ../img/7/actions/sound.png
 
 * **icon-sound-off**:
-    .. image:: ../img/7/actions/sound-off.svg
+    .. image:: ../img/7/actions/sound-off.png
 
 * **icon-star**:
-    .. image:: ../img/7/actions/star.svg
+    .. image:: ../img/7/actions/star.png
 
 * **icon-starred**:
-    .. image:: ../img/7/actions/starred.svg
+    .. image:: ../img/7/actions/starred.png
 
 * **icon-toggle**:
-    .. image:: ../img/7/actions/toggle.svg
+    .. image:: ../img/7/actions/toggle.png
 
 
 * **icon-triangle-e**:
-    .. image:: ../img/7/actions/triangle-e.svg
+    .. image:: ../img/7/actions/triangle-e.png
 
 * **icon-triangle-n**:
-    .. image:: ../img/7/actions/triangle-n.svg
+    .. image:: ../img/7/actions/triangle-n.png
 
 * **icon-triangle-s**:
-    .. image:: ../img/7/actions/triangle-s.svg
+    .. image:: ../img/7/actions/triangle-s.png
 
 
 * **icon-upload**:
-    .. image:: ../img/7/actions/upload.svg
+    .. image:: ../img/7/actions/upload.png
 
 * **icon-upload-white**:
-    .. image:: ../img/7/actions/upload-white.svg
+    .. image:: ../img/7/actions/upload-white.png
 
 
 * **icon-user**:
-    .. image:: ../img/7/actions/user.svg
+    .. image:: ../img/7/actions/user.png
 
 * **icon-view-close**:
-    .. image:: ../img/7/actions/view-close.svg
+    .. image:: ../img/7/actions/view-close.png
 
 * **icon-view-next**:
-    .. image:: ../img/7/actions/view-next.svg
+    .. image:: ../img/7/actions/view-next.png
 
 * **icon-view-pause**:
-    .. image:: ../img/7/actions/view-pause.svg
+    .. image:: ../img/7/actions/view-pause.png
 
 * **icon-view-play**:
-    .. image:: ../img/7/actions/view-play.svg
+    .. image:: ../img/7/actions/view-play.png
 
 * **icon-view-previous**:
-    .. image:: ../img/7/actions/view-previous.svg
+    .. image:: ../img/7/actions/view-previous.png
 
 * **icon-calendar-dark**:
-    .. image:: ../img/7/places/calendar-dark.svg
+    .. image:: ../img/7/places/calendar-dark.png
 
 * **icon-contacts-dark**:
-    .. image:: ../img/7/places/contacts-dark.svg
+    .. image:: ../img/7/places/contacts-dark.png
 
 * **icon-file**:
-    .. image:: ../img/7/places/file.svg
+    .. image:: ../img/7/places/file.png
 
 * **icon-files**:
-    .. image:: ../img/7/places/files.svg
+    .. image:: ../img/7/places/files.png
 
 * **icon-folder**:
-    .. image:: ../img/7/places/folder.svg
+    .. image:: ../img/7/places/folder.png
 
 * **icon-filetype-text**:
-    .. image:: ../img/7/filetypes/text.svg
+    .. image:: ../img/7/filetypes/text.png
 
 * **icon-filetype-folder**:
-    .. image:: ../img/7/filetypes/folder.svg
+    .. image:: ../img/7/filetypes/folder.png
 
 * **icon-home**:
-    .. image:: ../img/7/places/home.svg
+    .. image:: ../img/7/places/home.png
 
 * **icon-link**:
-    .. image:: ../img/7/places/link.svg
+    .. image:: ../img/7/places/link.png
 
 * **icon-music**:
-    .. image:: ../img/7/places/music.svg
+    .. image:: ../img/7/places/music.png
 
 * **icon-picture**:
-    .. image:: ../img/7/places/picture.svg
+    .. image:: ../img/7/places/picture.png
