@@ -48,13 +48,13 @@ To use icons which are shipped in core, special class to apply the background im
     .. image:: ../img/7/breadcrumb.png
 
 * **icon-loading**:
-    .. image:: ../img/7/loading.gif
+    .. image:: ../img/7/loading.png
 
 * **icon-loading-dark**:
-    .. image:: ../img/7/loading-dark.gif
+    .. image:: ../img/7/loading-dark.png
 
 * **icon-loading-small**:
-    .. image:: ../img/7/loading-small.gif
+    .. image:: ../img/7/loading-small.png
 
 * **icon-noise**:
     .. image:: ../img/7/noise.png
