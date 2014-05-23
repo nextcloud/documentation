@@ -54,7 +54,9 @@ To create a settings area create a div with the id **app-settings** inside the *
 
             <div id="app-settings">
                 <div id="app-settings-header">
-                    <button class="settings-button" data-apps-slide-toggle="#app-settings-content"></button>
+                    <button class="settings-button"
+                            data-apps-slide-toggle="#app-settings-content"
+                    ></button>
                 </div>
                 <div id="app-settings-content">
                     <!-- Your settings in here -->
@@ -62,6 +64,8 @@ To create a settings area create a div with the id **app-settings** inside the *
             </div>
         </div>
     </div>
+
+The data attribute **data-apps-slide-toggle** slides up a taret area using a jQuery selector and hides the area if the user clicks outside of it.
 
 Icons
 =====
