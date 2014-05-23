@@ -42,7 +42,7 @@ ownCloud provides a default CSS navigation layout. If list entries should have 1
 
 Icons
 =====
-To use icons which are shipped in core, special class to apply the background image are supplied:
+To use icons which are shipped in core, special class to apply the background image are supplied. All of these classes use **background-position: center** and **background-repeat: no-repeat**.
 
 * **icon-breadcrumb**:
     .. image:: ../img/7/breadcrumb.png
