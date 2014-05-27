@@ -1,8 +1,8 @@
 Use Server-Side Encryption
 ==========================
 
-ownCloud ships a encryption app, which allows to encrypt all files stored in
-your ownCloud. Encryption and decryption always happens server-side. This
+ownCloud ships an encryption app, which allows to encrypt all files stored in
+your ownCloud. Encryption and decryption always happen on the server-side. This
 enables the user to continue to use all the other apps to view and edit his
 data.
 
@@ -22,18 +22,18 @@ Enable File Recovery Feature
 ----------------------------
 
 The admin can offer the user some kind of protection against password
-loss. Therefore you have to enable the recovery key in the admin settings and
-provide a strong recovery key password. The admin settings also enables you to
+loss. Therefore, you have to enable the recovery key in the admin settings and
+provide a strong recovery key password. The admin settings also enable you to
 change the recovery key password if you wish. But you should make sure to never
-lose this password, because that's the only way to recover users' files.
+lose this password because that's the only way to recover users' files.
 
-Once the recovery key was enabled every user can choose in his personal
+Once the recovery key was enabled, every user can choose in his personal
 settings to enable this feature or not.
 
 Recover User Files
 ------------------
 
-If the recovery feature was enabled the admin will see a additional input field
+If the recovery feature was enabled, the admin will see an additional input field
 at the top of the user management settings. After entering the recovery-key
 password the admin can change the user's log-in password which will
 automatically recover the user's file.
@@ -47,11 +47,11 @@ case make sure to use both times the same password.
 LDAP and other external user back-ends
 --------------------------------------
 
-if you configure a external user back-end you will be able to change the user's log-in password
+If you configure an external user back-end you will be able to change the user's log-in password
 at the back-end. Since the encryption password must be the same as the user's log-in password
 this will result in a non-functional encryption system. If the recovery feature was enabled,
 the administrator will be able to recover the user's files directly over the recovery feature.
-See the description above. Otherwise the user will be informed that his log-in password and
-his encryption password no longer matches after his next log-in. In this case the user will be
+See the description above. Otherwise, the user will be informed that his log-in password and
+his encryption password no longer matches after his next log-in. In this case, the user will be
 able to adjust his encryption password in the personal settings by providing both, his old and
 his new log-in password.
