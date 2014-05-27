@@ -469,7 +469,7 @@ Nginx Configuration
 
     }
 
-To enable SSL support:
+To disable SSL support:
 -  Remove the server block containing the redirect
 -  Change **listen 443 ssl** to **listen 80;**
 -  Remove **ssl_certificate** and **ssl_certificate_key**.
