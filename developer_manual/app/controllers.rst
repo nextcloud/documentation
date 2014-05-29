@@ -51,14 +51,14 @@ To connect a controller and a route the controller has to be registered in the :
              */
             $container->registerService('AuthorApiController', function($c) {
                 return new AuthorApiController(
-                    $c->query('AppName'), 
+                    $c->query('AppName'),
                     $c->query('ServerContainer')->getRequest()
                 );
             });
         }
     }
 
-Every controller needs the app name and the request object passed into their parent constructor, which can easily be injected like shown in the example code above. The important part is not the class name but rather the string which is passed in as the first parameter of the **registerService** method. 
+Every controller needs the app name and the request object passed into their parent constructor, which can easily be injected like shown in the example code above. The important part is not the class name but rather the string which is passed in as the first parameter of the **registerService** method.
 
 The other part is the route name. An example route name would look like this::
 
@@ -72,7 +72,7 @@ This name is processed in the following way:
 
 * Split at the # and uppercase the first letter of the left part::
 
-    AuthorApi 
+    AuthorApi
     someMethod
 
 * Append Controller to the first part::
@@ -227,7 +227,7 @@ Headers, files, cookies and environment variables can be accessed directly from 
             parent::__construct($appName, $request);
         }
 
-        
+
         public function someMethod() {
 
             $type = $this->request->getHeader('Content-Type');  // $_SERVER['HTTP_CONTENT_TYPE']
@@ -260,7 +260,7 @@ Returning JSON is simple, just pass an array to a JSONResponse:
     use \OCP\AppFramework\Http\JSONResponse;
 
     class PageController extends Controller {
-        
+
         public function returnJSON() {
             $params = array('test' => 'hi');
             return new JSONResponse($params);
@@ -278,7 +278,7 @@ Because returning JSON is such an common task, there's even a shorter way how to
     use \OCP\AppFramework\Controller;
 
     class PageController extends Controller {
-        
+
         public function returnJSON() {
             return array('test' => 'hi');
         }
@@ -294,14 +294,14 @@ Responders are short functions that take a value and return a response. They are
     ?format=xml
 
 or::
-    
+
     ?format=json
 
 The appropriate responder is being chosen by the following criteria:
 
 * First the dispatcher checks the Request if there is a **format** parameter, e.g.::
 
-    ?format=xml 
+    ?format=xml
 
   or::
 
@@ -312,7 +312,7 @@ The appropriate responder is being chosen by the following criteria:
     Accept: application/xml, application/json
 
 * If there is no Accept header or the responder does not exist, format defaults to **json**.
- 
+
 
 By default there is only a responder for JSON but more can be added easily:
 
@@ -324,7 +324,7 @@ By default there is only a responder for JSON but more can be added easily:
     use \OCP\AppFramework\Controller;
 
     class PageController extends Controller {
-        
+
         public function returnHi() {
 
             // XMLResponse has to be implemented
@@ -338,61 +338,6 @@ By default there is only a responder for JSON but more can be added easily:
     }
 
 .. note:: The above example would only return XML if the **format** parameter was *xml*. If you want to return an XMLResponse regardless of the format parameter, extend the Response class and return a new instance of it from the controller method instead.
-
-Serializers
------------
-If responders are used it is sometimes useful to add another step before the returned value is being run through a responder. An example for that would be that all methods should wrap the returned value inside an array. First create a seperate serializer class that implements IResponseSerializer:
-
-.. code-block:: php
-
-    <?php
-
-    namespace \OCA\MyApp\Http;
-
-    use \OCP\AppFramework\Http\IResponseSerializer;
-
-
-    class WrapInArraySerializer implements IResponseSerializer {
-
-        public function serialize($value) {
-            $result = array('values' => array());
-            
-            if(is_array($value)) {
-                $result['values'] = $value;
-            } else {
-                $result['values'] = array($value);
-            }
-
-            return $result;
-        }
-
-    }
-
-The serializer can now be registered inside the controller:
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\Controller;
-
-    use \OCP\AppFramework\Controller;
-
-    use \OCA\MyApp\Http\WrapInArraySerializer;
-
-    class AuthorController extends Controller {
-        
-        public function __construct($appName, IRequest $request) {
-            parent::__construct($appName, $request);
-
-            // wrap every response in an array
-            $this->registerSerializer(new WrapInArraySerializer());
-        }
-
-        public function show($id) {
-            return $id;
-        }
-
-    }
 
 Templates
 ---------
@@ -419,10 +364,10 @@ A :doc:`template <templates>` can be rendered by returning a TemplateResponse. A
     use \OCP\AppFramework\Http\TemplateResponse;
 
     class PageController extends Controller {
-        
+
         public function index() {
             $templateName = 'main';  // will use templates/main.php
-            $parameters = array('key' => 'hi'); 
+            $parameters = array('key' => 'hi');
             return new TemplateResponse($this->appName, $templateName, $parameters);
         }
 
@@ -441,8 +386,8 @@ A redirect can be achieved by returning a RedirectResponse:
     use \OCP\AppFramework\Http\RedirectResponse;
 
     class PageController extends Controller {
-        
-        public function toGoogle() { 
+
+        public function toGoogle() {
             return new RedirectResponse('https://google.com');
         }
 
@@ -461,8 +406,8 @@ A file download can be triggeredby returning a DownloadResponse:
     use \OCP\AppFramework\Http\DownloadResponse;
 
     class PageController extends Controller {
-        
-        public function downloadXMLFile() { 
+
+        public function downloadXMLFile() {
             $path = '/some/path/to/file.xml';
             $contentType = 'application/xml';
 
@@ -485,10 +430,10 @@ Creating a custom XMLResponse class could look like this:
     use \OCP\AppFramework\Http\Response;
 
     class XMLResponse extends Response {
-        
+
         private $xml;
 
-        public function construct(array $xml) { 
+        public function construct(array $xml) {
             $this->addHeader('Content-Type', 'application/xml');
             $this->xml = $xml;
         }
@@ -504,7 +449,7 @@ Creating a custom XMLResponse class could look like this:
 
 Handling errors
 ---------------
-Sometimes a request should fail, for instance if an author with id 1 is requested but does not exist. In that case use an appropriate `HTTP error code <https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error>`_ to signal the client that an error occured. 
+Sometimes a request should fail, for instance if an author with id 1 is requested but does not exist. In that case use an appropriate `HTTP error code <https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error>`_ to signal the client that an error occured.
 
 Each response subclass has access to the **setStatus** method which lets you set an HTTP status code. To return a JSONResponse signaling that the author with id 1 has not been found, use the following code:
 
@@ -518,7 +463,7 @@ Each response subclass has access to the **setStatus** method which lets you set
     use \OCP\AppFramework\Http\JSONResponse;
 
     class AuthorController extends Controller {
-        
+
         public function show($id) {
             try {
                 // try to get author with $id
