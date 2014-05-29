@@ -66,7 +66,6 @@ This chapter covers ownCloud and web server configuration.
 * :doc:`configuration/configuration_3rdparty`
 * :doc:`configuration/custom_user_backend`
 * :doc:`configuration/configuration_custom_clients`
-* :doc:`configuration/configuration_maintenance`
 * :doc:`configuration/configuration_knowledgebase`
 * :doc:`configuration/configuration_logging`
 * :doc:`configuration/configuration_language`
@@ -75,6 +74,8 @@ Maintenance
 ===========
 This chapter covers maintenance tasks such as updating or migrating to a new version.
 
+
+* :doc:`maintenance/enable_maintenance`
 * :doc:`maintenance/migrating`
 * :doc:`maintenance/update`
 

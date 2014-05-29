@@ -20,15 +20,21 @@ Enabling uploading big files
 ============================
 Note: The order of the following steps is important! If you swap steps described below, the settings may fail.
 
-**Go to the admin section in the ownCloud-WebUI and do the following:**
+**Go to the admin section in the ownCloud Web Interface and do the following:**
 
 * Under "File handling" set the Maximum upload size to the desired value (e.g. 16GB)
 * Click the "save"-Button
 
 **Open the php.ini - file**
 
+You can easily learn the loaded configuration file by saving ``<?php phpinfo(); ?>`` code piece
+into a php file and calling it with your browser. Then look for the **Loaded Configuration File** value.
+
+Alternatively:
+
 * Under Debian or SUSE and their derivatives this file lies at /etc/php5/apache2/php.ini
 * On Windows, you can find this file within C:/Program Files (x86)/PHP/PHP.ini 
+
 
 **Do the following:**
 

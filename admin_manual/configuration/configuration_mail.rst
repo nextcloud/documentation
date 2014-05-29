@@ -2,7 +2,7 @@ Mail Configuration
 ==================
 ownCloud does not contain a full email program but contains some parameters to
 allow to send e.g. password reset email to the users. This function relies on
-the `PHPMailer library <http://sourceforge.net/projects/phpmailer/>`_. To
+the `PHPMailer library <https://github.com/PHPMailer/PHPMailer>`_. To
 take advantage of this function it needs to be configured properly.
 
 
@@ -181,23 +181,12 @@ be able to send email out of the box.
 Send a Test Email
 -----------------
 
-The only way to test your email configuration is, to force a login failure,
-because a function to send a test email has not be implemented yet.
+To test your email configuration, save your email address in your personal
+settings and then use the **Send email** button in *Email Server* section
+of the Admin settings page.
 
-First make sure that you are using a full qualified domain and not an ip address in the ownCloud URL, like::
 
-  http://my-owncloud-server.domain.dom/owncloud/
-
-The password reset function fetches the domain name from that URL to build the
-email sender address, e.g.::
-
-  john@domain.dom
-
-Next you need to enter your login and an *invalid* password. As soon as you
-press the login button the login mask reappears and a **I’ve forgotten my password** link will be shown above the login
-field. Click on that link, re-enter your login and press the **Reset password** button - that's all.
-
-Trouble shooting
+Troubleshooting
 ----------------
 
 My web domain is different from my mail domain?
@@ -310,7 +299,7 @@ Enable Debug Mode
 
 If you are still not able to send email it might be useful to activate
 further debug messages by setting the following parameter. Right after
-you have pressed the **Reset password** button, as described before, a
+you have pressed the **Send email** button, as described before, a
 lot of **SMTP -> get_lines(): ...** messages will be written on the
 screen.
 
