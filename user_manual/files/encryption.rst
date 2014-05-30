@@ -32,7 +32,7 @@ Decrypt your data again
 -----------------------
 
 If the encryption app is disabled after users have already stored encrypted data, users
-will be promted to decrypt their files again in their personal settings. After this is
+will be prompted to decrypt their files again in their personal settings. After this is
 done, they can continue to use their ownCloud without encryption.
 
 Settings
