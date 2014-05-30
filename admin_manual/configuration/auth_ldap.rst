@@ -17,13 +17,13 @@ Settings→Admin. Read on for a detailed description of the configuration fields
 Configuration
 -------------
 
-The LDAP backend follows a wizard-like approach, splitted into four tabs. A
+The LDAP backend follows a wizard-like approach, split into four tabs. A
 correctly completed first tab ("Server") is mandatory to access the other tabs.
 Also, the other tabs need to be reviewed by the admin, however the necessary
 settings are detected automatically. An indicator will show whether the
 configuration is incomplete, incorrect or OK.
 
-The settings are changed automatically, as soon as a input element looses the
+The settings are changed automatically, as soon as a input element loses the
 focus, i.e. the cursor is taken away by clicking somewhere else or pressing the
 tabulator key.
 
@@ -63,8 +63,8 @@ Host:
 
 Port:
   The port on which to connect to the LDAP server. The field is disabled in the
-  beginning of a new configuration. The port will be detected automatically,
-  if the LDAP server is running on a standard port. After ownCloud attempted to
+  beginning of a new configuration. If the LDAP server is running on a standard port,
+  the port will be detected automatically. After ownCloud attempted to
   determine the port, the field will be enabled for user input. A successfully
   found port will be inserted by ownCloud, of course.
 
@@ -104,7 +104,7 @@ filter.
 .. figure:: ../images/ldap-wizard-2-user.png
 
 only those object classes:
-  ownCloud will determine the object classes that are typically availalble for
+  ownCloud will determine the object classes that are typically available for
   (ideally only) user objects in your LDAP. ownCloud will automatically select
   the object class that returns the highest amount of users. You can select
   multiple object classes.
@@ -172,24 +172,24 @@ Edit raw filter instead:
 Group Filter
 ~~~~~~~~~~~~
 
-The settings in the group filter tab determine which groups will be availalble
-in ownCloud. It does not have any restrictions on logins, this has been dealed
+The settings in the group filter tab determine which groups will be available
+in ownCloud. It does not have any restrictions on logins, this has been dealt
 with in the prior tabs.  It is also possible to enter a raw LDAP
 filter.
 
-By default, no groups will be availalble in ownCloud. You actively need to
+By default, no groups will be available in ownCloud. You actively need to
 enable groups.
 
 .. figure:: ../images/ldap-wizard-4-group.png
 
 only those object classes:
-  ownCloud will determine the object classes that are typically availalble for
+  ownCloud will determine the object classes that are typically available for
   (ideally only) group objects in your LDAP. ownCloud will only list object
   classes that return at least one group object. You can select multiple
   object classes. A typical object class is "group", or "posixGroup".
 
 only from those groups:
-  This setting lets you pick certain groups that shall be availalble in
+  This setting lets you pick certain groups that shall be available in
   ownCloud. This field follows a whitelist approach. ownCloud will generate a
   list of available groups found in your LDAP server. You can select multiple
   groups.
