@@ -6,7 +6,7 @@ and different client sync applications. Download links which point to these
 applications are shown at the top of the personal menu. The following sync
 applications are currently available out of the box:
 
-* Desktop sync clients for Windows, Max and Linux OS
+* Desktop sync clients for Windows, MAC and Linux OS
 * Mobile sync client for Android devices
 * Mobile sync client for iOS devices
 
