@@ -2,7 +2,7 @@ Language Configuration
 ======================
 
 In normal cases ownCloud will automatically detect the language of the Web-GUI.
-If this doesn't work properly or you want to make sure that ownCloud always
+If this does not work properly or you want to make sure that ownCloud always
 starts with a given language, you can use the **default_language** parameter.
 
 Please keep in mind, that this will not effect a users language preference,
