@@ -48,7 +48,7 @@ or:
 
 Mounting from command line
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-1. Install the WebDAV support using the davfs package. On Debian/Ubuntu, you can use::
+1. Install the WebDAV support using the *davfs* package. On Debian/Ubuntu, you can use::
 
 	sudo apt-get install davfs2
 
@@ -56,7 +56,7 @@ Mounting from command line
 
         sudo dpkg-reconfigure davfs2
 
-3. Add the users you want to be able to mount the share to the davfs2 group::
+3. Add the users you want to be able to mount the share to the *davfs2* group::
 
         sudo usermod -aG davfs2 <user>
 
@@ -117,9 +117,10 @@ For details, check the respective `vendor documentation`_ at the Apple website.
 
 Windows
 -------
-For Windows a seperate WebDAV client is recommended to access the files from your server. Choose one from the `WebDav Project page <http://www.webdav.org/projects/>`_
+For Windows a seperate WebDAV client is recommended to access the files from your server. Choose one from the `WebDAV Project page <http://www.webdav.org/projects/>`_
 
-Should you have to use the native implementation then you can assign ownCloud a drive letter. This allows you to browse files stored on an ownCloudserver the way you would files stored in a mapped network drive.
+Should you have to use the native implementation, you can assign ownCloud a drive letter. This allows you to
+browse files stored on an ownCloud server the way you would files stored in a mapped network drive.
 
 Using this feature requires network connectivity. If you want to store
 your files offline, use the ownCloud Client to sync all files on your
