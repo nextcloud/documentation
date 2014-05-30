@@ -7,7 +7,7 @@ scratch using a classic :abbr:`LAMP (Linux, Apache, MySQL, PHP)` setup:
 This document provides a complete walk-through for installing ownCloud
 on Ubuntu 12.04 LTS Server with Apache and MySQL.
 It also provides guidelines for installing it on other distributions,
-webservers and database systems.
+web servers and database systems.
 
 Prerequisites
 ~~~~~~~~~~~~~
@@ -132,22 +132,22 @@ First, download the archive of the latest ownCloud version:
   version number as in the file you have downloaded.
 
 * Copy the ownCloud files to their final destination in the document root of your
-  webserver (you can skip this step if you already downloaded and extracted the
+  web server (you can skip this step if you already downloaded and extracted the
   files there)::
 
-	sudo cp -r owncloud /path/to/your/webservers/document-root
+	sudo cp -r owncloud /path/to/your/web servers/document-root
 
-  where ``/path/to/your/webservers/document-root``, needs to be replaced by the
-  actual path where the document root of your webserver is configured to be.
+  where ``/path/to/your/web servers/document-root``, needs to be replaced by the
+  actual path where the document root of your web server is configured to be.
 
-  * If you don't know where your webserver's document root is located, consult
+  * If you don't know where your web server's document root is located, consult
     its documentation. For Apache on Ubuntu 12.04 LTS for example, this would
     usually be ``/var/www``. So the concrete command to run would be::
 
 	sudo cp -r owncloud /var/www
 
   * The above assumes you want to install ownCloud into a subdirectory "owncloud"
-    on your webserver. For installing it anywhere else, you'll have to adapt the
+    on your web server. For installing it anywhere else, you'll have to adapt the
     above command accordingly.
 
 Set the Directory Permissions
@@ -170,10 +170,10 @@ the user running php on your system.
 
 * The generic command to run is::
 
-	sudo chown -R <php-user>:<php-user> /path/to/your/webservers/document-root/owncloud
+	sudo chown -R <php-user>:<php-user> /path/to/your/web servers/document-root/owncloud
 
   where ``<php-user>`` is to be replaced by the user running php scripts, and
-  ``/path/to/your/webservers/document-root/owncloud`` by the folder where the
+  ``/path/to/your/web servers/document-root/owncloud`` by the folder where the
   extracted ownCloud files are located.
 
 * For Ubuntu 12.04 LTS server, where the ``owncloud`` folder was copied into the
@@ -182,7 +182,7 @@ the user running php on your system.
 
 	sudo chown -R www-data:www-data /var/www/owncloud
 
-* For ArchLinux should run (as root):
+* For Arch Linux should run (as root):
   ::
 
 	chown -R http:http /path/to/your/owncloud
@@ -556,7 +556,7 @@ like this
     </server>
 
 The Apache :file:`.htaccess` that comes with ownCloud is configured to
-redirect requests to nonexistent pages. To emulate that behaviour, you
+redirect requests to non-existent pages. To emulate that behaviour, you
 need a custom error handler for yaws. See this
 `github gist for further instructions`_ on how to create and compile that error
 handler.
@@ -588,7 +588,7 @@ Follow the Install Wizard
 * Navigate to your ownCloud instance.
 
   * If you are installing ownCloud on the same machine as you are accessing the
-    install wizard from, the url will be https://localhost/owncloud
+    install wizard from, the URL will be https://localhost/owncloud
   * If you are installing ownCloud on a different machine, you'll have to access
     it by its hostname or IP address, e.g. https://example.com/owncloud
   * If you are using a self-signed certificate, you will be presented with a
