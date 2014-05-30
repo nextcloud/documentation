@@ -71,13 +71,13 @@ To share a file/folder, hover your cursor on an item in the files app and click 
 Share dialog
 
 * The first field is to share this file/folder with local users/groups. This is very useful
-  if you are in a company and want to create a quick share with a collegue.
+  if you are in a company and want to create a quick share with a colleague.
 * If you click on *Share link*, the other options will be visible. Since this link allows everyone
   to download this file/folder, you may want to protect this share with a password. To do that,
   click on *Password protect* and set a password.
 * If this share is a folder, you will also have an option to enable uploads into this folder using
   the provided link. This is very useful to collect files from multiple users into same place easily.
-* If your server is configured with a mail server, you can type e-mail addresses seperated with space to send the link to multiple users.
+* If your server is configured with a mail server, you can type e-mail addresses separated with space to send the link to multiple users.
 * Finally, setting an expiration date will expiry the share after the specified date.
 
 If you type a user and/or group to the *share with* field, you will be given extra sharing options such as informing via e-mail,
