@@ -135,9 +135,9 @@ First, download the archive of the latest ownCloud version:
   web server (you can skip this step if you already downloaded and extracted the
   files there)::
 
-	sudo cp -r owncloud /path/to/your/web servers/document-root
+	sudo cp -r owncloud /path/to/your/webservers/document-root
 
-  where ``/path/to/your/web servers/document-root``, needs to be replaced by the
+  where ``/path/to/your/webservers/document-root``, needs to be replaced by the
   actual path where the document root of your web server is configured to be.
 
   * If you don't know where your web server's document root is located, consult
@@ -170,10 +170,10 @@ the user running php on your system.
 
 * The generic command to run is::
 
-	sudo chown -R <php-user>:<php-user> /path/to/your/web servers/document-root/owncloud
+	sudo chown -R <php-user>:<php-user> /path/to/your/webservers/document-root/owncloud
 
   where ``<php-user>`` is to be replaced by the user running php scripts, and
-  ``/path/to/your/web servers/document-root/owncloud`` by the folder where the
+  ``/path/to/your/webservers/document-root/owncloud`` by the folder where the
   extracted ownCloud files are located.
 
 * For Ubuntu 12.04 LTS server, where the ``owncloud`` folder was copied into the
