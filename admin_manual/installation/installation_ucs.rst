@@ -26,8 +26,8 @@ assign your required value.
   "owncloud/directory/data", "/var/lib/owncloud", "Specifies where the file storage will be placed", "2012.0.1"
   "owncloud/db/name",   "owncloud",	"Name of the MySQL database. ownCloud will create an own user for it.",	2012.0.1
   "owncloud/user/quota",	"(empty)",	"The default quota, when a user is being added. Assign values in human readable strings, e.g. “2 GB”. Unlimited if empty.",	2012.0.1
-  "owncloud/user/enabled",	0,	"Wether a new user is allowed to use ownCloud by default.",	2012.0.1
-  "owncloud/group/enabled",	"0",	"Wether a new group is allowed to be used in ownCloud by default.",	2012.4.0.4
+  "owncloud/user/enabled",	0,	"Whether a new user is allowed to use ownCloud by default.",	2012.0.1
+  "owncloud/group/enabled",	"0",	"Whether a new group is allowed to be used in ownCloud by default.",	2012.4.0.4
   "owncloud/ldap/base/users",	"cn=users,$ldap_base",	"The users-subtree in the LDAP directory. If left blank it will fall back to the LDAP base.",	2012.4.0.4
   "owncloud/ldap/base/groups",	"cn=groups,$ldap_base",	"The groups-subtree in the LDAP directory. If left blank it will fall back to the LDAP base.",	2012.4.0.4
   "owncloud/ldap/groupMemberAssoc",	"uniqueMember",	"The LDAP attribute showing the group-member relationship. Possible values: uniqueMember, memberUid and member",	2012.4.0.4
