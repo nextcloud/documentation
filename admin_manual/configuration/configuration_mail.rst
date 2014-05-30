@@ -20,7 +20,7 @@ All parameters need to be set in :file:`config/config.php`
 SMTP
 ~~~~
 If you want to send email using a local or remote SMTP server it is necessary
-to enter the name or ip address of the server, optionally followed by a colon
+to enter the name or IP address of the server, optionally followed by a colon
 separated port number, e.g. **:425**. If this value is not given the default
 port 25/tcp will be used unless you will change that by modifying the
 **mail_smtpport** parameter. Multiple server can be entered separated by
