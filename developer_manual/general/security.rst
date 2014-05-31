@@ -56,14 +56,14 @@ An attacker might now easily send the user a link to::
 
     app.php?username=<script src="attacker.tld"></script>
 
-to overtake the user account. The same problem occurs when outputting content from the database or any other location that is writeable by users.
+to overtake the user account. The same problem occurs when outputting content from the database or any other location that is writable by users.
 
 Another attack vector that is often overlooked is XSS in **href** attributes. HTML allows to execute javascript in href attributes like this::
 
     <a href="javascript:alert('xss')">
 
 
-To prevent XSS in your app, **never use echo, print() or <\%=** - use **p()** instead which will sanitize the input. Also **validate urls to start with the expected protocol** (starts with http for instance)!
+To prevent XSS in your app, **never use echo, print() or <\%=** - use **p()** instead which will sanitize the input. Also **validate URLs to start with the expected protocol** (starts with http for instance)!
 
 .. note:: Should you ever require to print something unescaped, double check if it is really needed. If there is no other way (e.g. when including of subtemplates) use `print_unescaped`  with care.
 
@@ -82,7 +82,7 @@ If you **really** want to use JavaScript for something like this use `escapeHTML
 
   var html = '<li>' + escapeHTML(username) + '</li>';
 
-An even better way to make your app safer is to use the jQuery builtin function **$.text()** instead of **$.html()**.
+An even better way to make your app safer is to use the jQuery built-in function **$.text()** instead of **$.html()**.
 
 **DON'T**
 
@@ -109,7 +109,7 @@ This is already built into ownCloud if :php:class:`OC_Template`.
 
 Code executions / File inclusions
 ---------------------------------
-Code Execution means that an attacker is able to include an arbitrary PHP file. This PHP file runs with all the privileges granted to the normal application and can do an enourmous amount of damage.
+Code Execution means that an attacker is able to include an arbitrary PHP file. This PHP file runs with all the privileges granted to the normal application and can do an enormous amount of damage.
 
 Code executions and file inclusions can be easily prevented by **never** allowing user-input to run through the following functions:
 
@@ -168,7 +168,7 @@ Shell Injection
 
 .. note:: Please require/request additional programmers to audit your escape function.
 
-Without escaping the user input this will allow an attacker to execute arbitary shell commands on your server.
+Without escaping the user input this will allow an attacker to execute arbitrary shell commands on your server.
 
 PHP offers the following functions to escape user input:
 
@@ -200,14 +200,14 @@ ownCloud offers three simple checks:
 * **OCP\\JSON::checkAdminUser()**: Checks if the logged in user has admin privileges
 * **OCP\\JSON::checkSubAdminUser()**: Checks if the logged in user has group admin privileges
 
-Using the App Framework, these checks are already automatically performed for each request and have to be explicitely turned off by using annotations above your controller method,  see :doc:`../app/controllers`.
+Using the App Framework, these checks are already automatically performed for each request and have to be explicitly turned off by using annotations above your controller method,  see :doc:`../app/controllers`.
 
 Additionally always check if the user has the right to perform that action. (e.g. a user should not be able to delete other users' bookmarks).
 
 Sensitive data exposure
 -----------------------
 
-Always store user data or configuration files in safe locations, e.g. **owncloud/data/** and not in the webroot where they can be accessed by anyone using a webbrowser.
+Always store user data or configuration files in safe locations, e.g. **owncloud/data/** and not in the webroot where they can be accessed by anyone using a web browser.
 
 Cross site request forgery
 --------------------------
@@ -222,11 +222,11 @@ To prevent CSRF in an app, be sure to call the following method at the top of al
   <?php
   OCP\JSON::callCheck();
 
-If you are using the App Framework, every controller method is automatically checked for CSRF unless you explicitely exclude it by setting the @NoCSRFRequired annotation before the controller method, see :doc:`../app/controllers`
+If you are using the App Framework, every controller method is automatically checked for CSRF unless you explicitly exclude it by setting the @NoCSRFRequired annotation before the controller method, see :doc:`../app/controllers`
 
 Unvalidated redirects
 ---------------------
-This is more of an annoyance than a critical security vulnerability since it may be used for social engineering or phising.
+This is more of an annoyance than a critical security vulnerability since it may be used for social engineering or phishing.
 
 Always validate the URL before redirecting if the requested URL is on the same domain or an allowed ressource.
 
