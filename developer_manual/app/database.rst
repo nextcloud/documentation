@@ -165,7 +165,7 @@ Mappers should be registered in the constructor to reuse them inside the applica
 
 Entities
 ========
-Entities are data objects that carry all the table's information for one row. Every Entity has an **id** field by default that is set to the integer type. Table rows are mapped from lower case and underscore seperated names to pascal case attributes:
+Entities are data objects that carry all the table's information for one row. Every Entity has an **id** field by default that is set to the integer type. Table rows are mapped from lower case and underscore separated names to pascal case attributes:
 
 * **Table column name**: phone_number
 * **Property name**: phoneNumber
@@ -225,7 +225,7 @@ Since all attributes should be private, getters and setters are automatically ge
 
 Slugs
 -----
-Slugs are used to identify resources in the URL by a string rather than integer id. Since the url allows only certain values, the entity baseclass provides a slugify method for it:
+Slugs are used to identify resources in the URL by a string rather than integer id. Since the URL allows only certain values, the entity baseclass provides a slugify method for it:
 
 .. code-block:: php
 

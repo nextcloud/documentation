@@ -11,7 +11,7 @@ Please follow the steps on this page to set up your development environment.
 Set up web server and database
 ==============================
 
-First `set up your webserver and database <http://doc.owncloud.org/server/7.0/admin_manual/installation.html>`_ (**Section**: Manual Installation - Prerequisites).
+First `set up your web server and database <http://doc.owncloud.org/server/7.0/admin_manual/installation.html>`_ (**Section**: Manual Installation - Prerequisites).
 
 Get the source
 ==============
@@ -19,14 +19,14 @@ Get the source
 There are two ways to obtain ownCloud sources: 
 
 * Using the `stable version <http://doc.owncloud.org/server/7.0/admin_manual/installation.html>`_
-* Using the developement version from `GitHub`_ which will be explained below.
+* Using the development version from `GitHub`_ which will be explained below.
 
 To check out the source from `GitHub`_ you will need to install git (see `Setting up git <https://help.github.com/articles/set-up-git>`_ from the GitHub help)
 
 Gather information about server setup
 -------------------------------------
 
-To get started the basic git repositories need to cloned into the webserver's directory. Depending on the distro this will either be 
+To get started the basic git repositories need to cloned into the web server's directory. Depending on the distribution this will either be
 
 * **/var/www**
 * **/var/www/html** 

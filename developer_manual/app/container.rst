@@ -155,7 +155,7 @@ Which classes should be added
 In general all of the app's controllers need to be registered inside the container. Then following question is: What goes into the constructor of the controller? Pass everything into the controller constructor that is responsible matches one of the following criteria:
 
 * It does I/O (database, write/read to files)
-* It is a global (eg. $_POST, etc. This is in the request class btw)
+* It is a global (e.g. $_POST, etc. This is in the request class by the way)
 * The output does not depend on the input variables (also called `impure function <http://en.wikipedia.org/wiki/Pure_function>`_), e.g. time, random number generator
 * It is a service, basically it would make sense to swap it out for a different object
 

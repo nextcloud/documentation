@@ -34,7 +34,7 @@ How will it work?
 #. Before a pull request will be merged into master or the corresponding
    branch at least 2 reviewers need to give :+1 score.
 #. Our `continuous integration server`_ will give an additional indicator for
-   the quality of the pull rquest.
+   the quality of the pull request.
 
 Examples
 --------

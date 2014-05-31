@@ -110,7 +110,7 @@ All those parameters can easily be accessed by adding them to the controller met
 
     }
 
-It is also possible to set default parameter values by using PHP default method values so common values can be ommited:
+It is also possible to set default parameter values by using PHP default method values so common values can be omitted:
 
 .. code-block:: php
 
@@ -353,7 +353,7 @@ A :doc:`template <templates>` can be rendered by returning a TemplateResponse. A
 
     $_['key']
 
-* **renderAs**: defaults to *user*, tells ownCloud if it should include it in the webinterface, or in case *blank* is passed solely render the template
+* **renderAs**: defaults to *user*, tells ownCloud if it should include it in the web interface, or in case *blank* is passed solely render the template
 
 .. code-block:: php
 
@@ -395,7 +395,7 @@ A redirect can be achieved by returning a RedirectResponse:
 
 Downloads
 ---------
-A file download can be triggeredby returning a DownloadResponse:
+A file download can be triggered by returning a DownloadResponse:
 
 .. code-block:: php
 
@@ -449,7 +449,7 @@ Creating a custom XMLResponse class could look like this:
 
 Handling errors
 ---------------
-Sometimes a request should fail, for instance if an author with id 1 is requested but does not exist. In that case use an appropriate `HTTP error code <https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error>`_ to signal the client that an error occured.
+Sometimes a request should fail, for instance if an author with id 1 is requested but does not exist. In that case use an appropriate `HTTP error code <https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error>`_ to signal the client that an error occurred.
 
 Each response subclass has access to the **setStatus** method which lets you set an HTTP status code. To return a JSONResponse signaling that the author with id 1 has not been found, use the following code:
 

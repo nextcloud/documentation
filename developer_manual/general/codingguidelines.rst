@@ -13,14 +13,14 @@ General
 * Quotes: ' for everything, " for HTML attributes (<p class="my_class">)
 * End of Lines : Unix style (LF / '\n') only
 * No global variables or functions
-* Unittests
+* Unit tests
 * Software should work. Only put features into master when they are complete. It's better to not have a feature instead of having one that works poorly.
 * Regularly reset your installation to see how the first-run experience is like. And improve it.
 * When you ``git pull``, always ``git pull --rebase`` to avoid generating extra commits like: *merged master into master*
 * We need a signed contributor agreement from you to commit into the core repository. But no worries; it's a nice one. All the information is in our `Contributor agreement FAQ <http://owncloud.org/about/contributor-agreement>`_.
 
-Userinterface
--------------
+User interface
+--------------
 * Software should get out of the way. Do things automatically instead of offering configuration options.
 * Software should be easy to use. Show only the most important elements. Secondary elements only on hover or via Advanced function.
 * User data is sacred. Provide undo instead of asking for confirmation

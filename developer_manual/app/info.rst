@@ -16,7 +16,7 @@ The :file:`appinfo/info.xml` contains metadata about the app:
       <version>1.0</version>
       <licence>AGPL</licence>
       <author>Your Name</author>
-      <require>5</require>
+      <requiremin>5</requiremin>
 
       <types>
           <type>filesystem</type>
@@ -47,7 +47,7 @@ The :file:`appinfo/info.xml` contains metadata about the app:
 
 id
 --
-**Required**: This field contains the internal app name, and has to be the same as the foldername of the app. This id needs to be unique in ownCloud, meaning no other app should have this id.
+**Required**: This field contains the internal app name, and has to be the same as the folder name of the app. This id needs to be unique in ownCloud, meaning no other app should have this id.
 
 name
 ----
@@ -74,7 +74,7 @@ author
 ------
 **Required**: The name of the app author or authors.
 
-require
+requiremin
 -------
 **Required**: The minimal version of ownCloud.
 
@@ -98,10 +98,10 @@ website
 -------
 link to project webpage
 
-Depcrecated
+Deprecated
 ===========
 
-The following sections are just listed for reference and should not be use because
+The following sections are just listed for reference and should not be used because
 
 * **public/remote**: Use :doc:`api` instead because you'll have to use :doc:`../core/externalapi` which is known to be buggy (works only properly with GET/POST)
 * **standalone/default_enable**: They tell core what do on setup, you will not be able to even activate your app if it has those entries. This should be replaced by a config file inside core.

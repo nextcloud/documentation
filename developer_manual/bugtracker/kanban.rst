@@ -141,7 +141,7 @@ Why do we have it?
 What does a developer think?
   "I’ll check the Scenario described earlier works as expected. If necessary
   I’ll update the related Gherkin Scenarios. `Jenkins`_ will test the scenario
-  on all kinds of platforms, webserver and database combinations with
+  on all kinds of platforms, web server and database combinations with
   `cucumber`_."
 
 When can I pull?
@@ -159,13 +159,13 @@ Why do we have it?
   With the Gherkin Scenario from the Concept Phase reviewers have a checklist to
   test if a Bug has been solved and if an Enhancement works as expected. **The
   most eager reviewer we have is Jenkins**. When it comes to testing he soldiers
-  on going through the different combinations of platform, webserver and
+  on going through the different combinations of platform, web server and
   database.
 
 What does a developer think?
   "Damn! If I had written the Gherkin Scenarios and Cucumber Step Definitions I
   could leave the task of testing this on the different combinations of platform,
-  webserver and database to Jenkins. I’ll miss something when doing this
+  web server and database to Jenkins. I’ll miss something when doing this
   manually.*
 
 When can I pull?

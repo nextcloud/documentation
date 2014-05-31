@@ -4,7 +4,7 @@ RESTful API
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-Offering a RESTful API is not different from creating a :doc:`route <routes>` and :doc:`controllers <controllers>` for the webinterface. It is recommended though to inherit from ApiController and add **@CORS** annotations to the methods so that `also web applications will be able to access the API <https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS>`_.
+Offering a RESTful API is not different from creating a :doc:`route <routes>` and :doc:`controllers <controllers>` for the web interface. It is recommended though to inherit from ApiController and add **@CORS** annotations to the methods so that `also web applications will be able to access the API <https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS>`_.
 
 .. code-block:: php
 
@@ -29,7 +29,7 @@ Offering a RESTful API is not different from creating a :doc:`route <routes>` an
 
     }
 
-CORS also needs a seperate url for the preflighted **OPTIONS** request that easily be added by adding the following route:
+CORS also needs a separate URL for the preflighted **OPTIONS** request that easily be added by adding the following route:
 
 .. code-block:: php
 

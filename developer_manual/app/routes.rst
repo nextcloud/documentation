@@ -54,12 +54,12 @@ The route array contains the following parts:
 
         }
 * **method** (Optional, defaults to GET): The HTTP method that should be matched, (e.g. GET, POST, PUT, DELETE, HEAD, OPTIONS, PATCH)
-* **requirements** (Optional): lets you match and extract urls that have slashes in them (see **Matching suburls**)
+* **requirements** (Optional): lets you match and extract URLs that have slashes in them (see **Matching suburls**)
 
 Extracting values from the URL
 ==============================
 
-It is possible to extract values from the URL to allow RESTful url design. To extract a value, you have to wrap it inside curly braces:
+It is possible to extract values from the URL to allow RESTful URL design. To extract a value, you have to wrap it inside curly braces:
 
 .. code-block:: php
 
@@ -79,11 +79,11 @@ It is possible to extract values from the URL to allow RESTful url design. To ex
 
     }
 
-The identifier used inside the route is being passed into controller method by reflecting the method parameters. So basially if you want to get the value **{id}** in your method, you need to add **$id** to your method parameters.
+The identifier used inside the route is being passed into controller method by reflecting the method parameters. So basically if you want to get the value **{id}** in your method, you need to add **$id** to your method parameters.
 
 Matching suburls
 ================
-Sometimes its needed to match more than one URL fragment. An example would be to match a request for all urls that start with **OPTIONS /index.php/apps/myapp/api**. To do this, use the **requirements** parameter in your route which is an array containing pairs of **'key' => 'regex'**:
+Sometimes its needed to match more than one URL fragment. An example would be to match a request for all URLs that start with **OPTIONS /index.php/apps/myapp/api**. To do this, use the **requirements** parameter in your route which is an array containing pairs of **'key' => 'regex'**:
 
 .. code-block:: php
     
@@ -114,7 +114,7 @@ When dealing with resources, writing routes can become quite repetitive since mo
 * Update an entry
 * Delete an entry
 
-To prevent reptition, it's possible define resources. The following routes:
+To prevent repetition, it's possible define resources. The following routes:
 
 .. code-block:: php
 
@@ -152,7 +152,7 @@ can be abbreviated by using the **resources** key:
 
 Using the URLGenerator
 ========================
-Sometimes its useful to turn a route into a URL to make the code independent from the url design or to generate an URL for an image in **img/**. For that specific usecase the ServerContainer provides a service that can be used in your container:
+Sometimes its useful to turn a route into a URL to make the code independent from the URL design or to generate an URL for an image in **img/**. For that specific use case, the ServerContainer provides a service that can be used in your container:
 
 .. code-block:: php
 

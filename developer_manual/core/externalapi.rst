@@ -88,7 +88,7 @@ Statuscodes
 ~~~~~~~~~~~
 The statuscode can be any of the following numbers:
 
-* **100** - successfull
+* **100** - successful
 * **996** - server error
 * **997** - not authorized
 * **998** - not found
