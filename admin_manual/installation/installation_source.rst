@@ -581,6 +581,8 @@ Microsoft Internet Information Server (IIS)
 
 See :doc:`installation_windows` for further instructions.
 
+.. _install-wizard:
+
 Follow the Install Wizard
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 

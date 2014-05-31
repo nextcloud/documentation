@@ -26,3 +26,8 @@ or else the installation process might fail.
 **PCLinuxOS:** Follow the Tutorial `ownCloud, installation and setup`_ on the PCLinuxOS web site.
 
 .. _ownCloud, installation and setup: http://pclinuxoshelp.com/index.php/Owncloud,_installation_and_setup
+
+Follow the wizard to complete your installation
+***********************************************
+
+For setting up your ownCloud instance after installation, please refer to the :ref:`install-wizard` section.
