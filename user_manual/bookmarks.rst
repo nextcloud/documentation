@@ -50,7 +50,7 @@ The Bookmarklet
 Bookmarklet link
 
 The creator of this app understands that people won't want to
-open the ownCloud boorkmarks page to add a bookmark every time they see a cool site.
+open the ownCloud bookmarks page to add a bookmark every time they see a cool site.
 This is why they have made this cool "bookmarklet".
 
 A bookmarklet is small button that you can drag and drop in your bookmarks.

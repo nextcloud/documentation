@@ -106,7 +106,7 @@ You can sync this contact app to your phone which has the following OS's- Androi
 Syncing with Android
 ~~~~~~~~~~~~~~~~~~~~
 
-1) Install CardDAV- Sync free from Google play store by visiting `this link <https://play.google.com/store/apps/details?id=org.dmfs.carddav.sync>`_.
+1) Install CardDAV - Sync free from Google play store by visiting `this link <https://play.google.com/store/apps/details?id=org.dmfs.carddav.sync>`_.
 2) This app supports auto- configuration which is a Boon- after installing visit this link - carddavs://example.org/remote.php/carddav/ to auto-configure the app.
 3) Enter your login details
 4) After the app has checked your login details you may just select- Sync server to phone option
