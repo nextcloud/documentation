@@ -65,7 +65,7 @@ To create a settings area create a div with the id **app-settings** inside the *
         </div>
     </div>
 
-The data attribute **data-apps-slide-toggle** slides up a taret area using a jQuery selector and hides the area if the user clicks outside of it.
+The data attribute **data-apps-slide-toggle** slides up a target area using a jQuery selector and hides the area if the user clicks outside of it.
 
 Icons
 =====

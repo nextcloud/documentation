@@ -42,7 +42,7 @@ The parent variables will also be available in the included templates, but shoul
 
 .. code-block:: php
 
-  <div>I am included but i can still access the parents variables!</div>
+  <div>I am included, but I can still access the parents variables!</div>
   <?php p($_['name']); ?>
   
   <?php print_unescaped($this->inc('other_template', array('variable' => 'value'))); ?>

@@ -15,7 +15,7 @@ The following sections will present an overview over how that request is being p
 
 Front controller
 ================
-In the beginning, all requests are sent to ownCloud's :file:`index.php` which in turn executes :file:`lib/base.php`. This file inspects the HTTP headers and abstracts away differences between different webservers and initializes the basic classes. Afterwards the basic apps are being loaded in the following order:
+In the beginning, all requests are sent to ownCloud's :file:`index.php` which in turn executes :file:`lib/base.php`. This file inspects the HTTP headers and abstracts away differences between different web servers and initializes the basic classes. Afterwards the basic apps are being loaded in the following order:
 
 * Authentication backends
 * Filesystem

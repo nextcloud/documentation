@@ -34,6 +34,6 @@ Dont forget to configure the cron service on the server by executing::
 
     sudo crontab -u http -e
 
-where **http** is your webserver user, and add::
+where **http** is your web server user, and add::
 
     */15  *  *  *  * php -f /srv/http/owncloud/cron.php
