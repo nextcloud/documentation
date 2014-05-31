@@ -242,7 +242,7 @@ The URL for these is::
     example.org/owncloud/remote.php/webdav
 
 .. _in your file manager: http://en.wikipedia.org/wiki/Webdav#WebDAV_client_applications
-.. _ownCloud sync clients: http://owncloud.org/documentation/sync-clients/
+.. _ownCloud sync clients: http://owncloud.org/sync-clients/
 .. _Mount ownCloud to a local folder without sync: http://owncloud.org/use/webdav/
 .. _ownCloud Mirall repository: https://github.com/owncloud/mirall
 .. _Android: http://github.com/owncloud/android
