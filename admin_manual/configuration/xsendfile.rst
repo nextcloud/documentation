@@ -119,9 +119,9 @@ Configuration is similar to Apache::
 
 
 * **fastcgi_param MOD_X_ACCEL_REDIRECT_ENABLED** ~ Tells ownCloud scripts that they should add the X-Accel-Redirect header when serving files.
-* **/data** ~ The ownCloud datadirectory.  Any 'Local' External Storage Mounts must also have nested locations here.
+* **/data** ~ The ownCloud data directory.  Any 'Local' External Storage Mounts must also have nested locations here.
 
-  * set alias if you are using a non-default datadirectory
+  * set alias if you are using a non-default data directory
 
   * **/data/USER/files/LOCAL-MOUNT-NAME** ~ a local external storage mount available to a single user
 

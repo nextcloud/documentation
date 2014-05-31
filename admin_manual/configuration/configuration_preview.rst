@@ -17,8 +17,8 @@ Soft dependencies:
 
 imagick:
 ~~~~~~~~
-ownCloud needs the imagick php extension to generate previews from office, pdf
-and svg files. For further information on how to install the imagick php
+ownCloud needs the imagick PHP extension to generate previews from office, PDF
+and SVG files. For further information on how to install the imagick PHP
 extension on your system take a look at the `PHP documentation <http://www.php.net/manual/en/imagick.installation.php>`_.
 If imagick is not installed, ownCloud will show file type icons instead of previews.
 

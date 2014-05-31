@@ -25,7 +25,7 @@ IMAP
 Provides authentication against IMAP servers
 
 - **Class:** OC_User_IMAP
-- **Arguments:**  a mailbox string as defined `in the PHP documention <http://www.php.net/manual/en/function.imap-open.php>`_
+- **Arguments:**  a mailbox string as defined `in the PHP documentation <http://www.php.net/manual/en/function.imap-open.php>`_
 - **Example:**
 
 .. code-block:: php

@@ -7,6 +7,7 @@ With ownCloud installation, you will find some apps enabled by default. To see w
 are enabled, click on Apps button on the web interface navigation to go into applications page:
 
 .. figure:: ../images/oc_admin_app_page.png
+
 Administrator application page
 
 In this page, you can enable or disable applications simply by clicking on their names.

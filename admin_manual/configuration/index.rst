@@ -19,7 +19,6 @@ Configuration
    configuration_language
    configuration_logging
    configuration_mail
-   configuration_maintenance
    configuration_preview
    configuration_reverseproxy
    configuring_big_file_upload

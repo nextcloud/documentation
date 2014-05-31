@@ -246,11 +246,12 @@ ownCloud to config file could look like this:
     "dbpassword"    => "password",
     "dbhost"        => "localhost",
 
-.. note:: This example assumes you are running an Oracle Express Edition on ``localhost``. The ``dbname`` is the name
-of the Oracle instance. For Oracle Express Edition it is always ``XE``.
+.. note:: This example assumes you are running an Oracle Express Edition on ``localhost``.
+	  The ``dbname`` is the name of the Oracle instance. For Oracle Express Edition it
+	  is always ``XE``.
 
-Trouble Shooting
-----------------
+Troubleshooting
+---------------
 
 How can I find out if my MySQL/PostgreSQL  server is reachable?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

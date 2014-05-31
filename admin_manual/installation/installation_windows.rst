@@ -24,7 +24,7 @@ Enabling SSL is not yet covered by this section.
 
 There are 4 primary steps to the installation, and then a 5th step
 required for configuring everything to allow files larger than the
-default 2MB.
+default 2 MB.
 
 #. Install IIS with CGI support – enable IIS on your Windows machine.
 #. Install PHP – Grab, download and install PHP.
@@ -255,7 +255,7 @@ There are other changes you can make, such as the timeout duration for
 uploads, but for now you should be all set in the **PHP.ini** file.
 
 Now you have to go back to IIS manager and make one last change to enable file
-uploads on the web server larger than 30MB.
+uploads on the web server larger than 30 MB.
 
 1. Go to the start menu, and type **iis manager**.
 2. Open IIS Manager Select the website you want enable to accept large file
