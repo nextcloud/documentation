@@ -4,7 +4,7 @@ Testing
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-All PHP classes can be tested with `PHPUnit <http://phpunit.de/>`_, JavaScript can be tested by using `Karma <http://karma-runner.github.io/0.12/index.html>`_. 
+All PHP classes can be tested with `PHPUnit <http://phpunit.de/>`_, JavaScript can be tested by using `Karma <http://karma-runner.github.io/0.12/index.html>`_.
 
 
 
@@ -53,7 +53,7 @@ would look like this:
     <?php
     // tests/unit/storage/AuthorStorageTest.php
     namespace OCA\MyApp\Storage;
-    
+
     class AuthorStorageTest extends \PHPUnit_Framework_TestCase {
 
         private $container;
@@ -61,7 +61,7 @@ would look like this:
 
         protected function setUp() {
             $app = new \OCA\MyApp\AppInfo\Application();
-            $this->container = $notes->getContainer();
+            $this->container = $app->getContainer();
             $this->storage = $storage = $this->getMockBuilder('\OCP\Files\Folder')
                 ->disableOriginalConstructor()
                 ->getMock();
