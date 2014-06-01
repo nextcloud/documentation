@@ -81,8 +81,8 @@ You can quit the prompt by entering::
 
   quit
 
-An ownCloud configured with MySQL would contain the hostname on which the
-database is running, a valid username and password to access it, and the
+An ownCloud instance configured with MySQL would contain the hostname on which
+the database is running, a valid username and password to access it, and the
 name of the database. The :file:`config/config.php` as created by the
 :doc:`installation/installation_wizard` would therefore contain entries like
 this:
@@ -114,11 +114,11 @@ It is not necessary to create a database and a database user in advance
 because this will automatically be done by ownCloud when you login for the
 first time.
 
-An ownCloud configured to use sqlite only needs to contain the reference to a
-writable data directory (which is required for the rest of ownCloud's operation
-as well anyway). The :file:`config/config.php` as created by the
-:doc:`installation/installation_wizard` could therefore contain entries like
-this:
+An ownCloud instance configured to use sqlite only needs to contain the
+reference to a writable data directory (which is required for successful
+operation of ownCloud in general anyway). The :file:`config/config.php` as
+created by the :doc:`installation/installation_wizard` could therefore contain
+entries like this:
 
 
 .. code-block:: php
@@ -175,9 +175,9 @@ You can quit the prompt by entering::
 
   \q
 
-An ownCloud configured with PostgreSQL would contain the hostname on which the
-database is running, a valid username and password to access it, and the
-name of the database. The :file:`config/config.php` as created by the
+An ownCloud instance configured with PostgreSQL would contain the hostname on
+which the database is running, a valid username and password to access it, and
+the name of the database. The :file:`config/config.php` as created by the
 :doc:`installation/installation_wizard` would therefore contain entries like
 this:
 
@@ -249,8 +249,8 @@ You can quit the prompt by entering::
 
   exit
 
-An ownCloud configured with Oracle would contain the hostname on which the
-database is running, a valid username and password to access it, and the
+An ownCloud instance configured with Oracle would contain the hostname on which
+the database is running, a valid username and password to access it, and the
 name of the database. The :file:`config/config.php` as created by the
 :doc:`installation/installation_wizard` would therefore contain entries like
 this:

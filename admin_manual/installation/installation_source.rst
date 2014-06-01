@@ -583,7 +583,7 @@ Microsoft Internet Information Server (IIS)
 See :doc:`installation_windows` for further instructions.
 
 Install Wizard
-~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
 
 The last thing to do is to click through the installation wizard.
 
