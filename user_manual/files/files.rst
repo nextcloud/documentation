@@ -18,6 +18,7 @@ The URL that you have to use to connect to the ownCloud installation in nautilus
 
 
 .. image:: ../images/gnome3_nautilus_webdav.png
+   :scale: 75%
 
 If your server connection is not HTTPS-secured, use `dav://` instead of `davs://` .
 
@@ -104,12 +105,14 @@ MacOS
 In the Finder, choose **Go > Connect to Server,** type the address of the server in the **Server Address** field, and click **Connect**.
 
 .. image:: ../images/osx_webdav1.png
+   :scale: 75%
 
 The URL that you have to use to connect to the ownCloud installation in finder is::
 
   http://example.org/owncloud/remote.php/webdav
 
 .. image:: ../images/osx_webdav2.png
+   :scale: 75%
 
 For details, check the respective `vendor documentation`_ at the Apple website.
 

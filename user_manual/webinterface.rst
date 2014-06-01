@@ -10,6 +10,7 @@ When you enter the URL, you will receive a page that is similar
 to the one depicted below:
 
 .. figure:: images/oc_connect.png
+   :scale: 75%
 
    The ownCloud login screen
 
