@@ -30,4 +30,5 @@ or else the installation process might fail.
 Follow the wizard to complete your installation
 ***********************************************
 
-For setting up your ownCloud instance after installation, please refer to the :ref:`install-wizard` section.
+For setting up your ownCloud instance after installation, please refer to the
+:doc:`installation_wizard` section.

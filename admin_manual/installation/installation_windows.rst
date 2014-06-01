@@ -155,7 +155,7 @@ This part installs MySQL on your Windows machine.
 #. Select the modify security settings box on the next page, and enter a
    password you will remember. You will need this password when you configure
    ownCloud.
-#. Uncheck **enable** root access from remote machines” for security reasons.
+#. Uncheck “enable root access from remote machines” for security reasons.
 #. Click execute, and wait while the instance is created and launched.
 #. Click Finish when this is all complete.
 
@@ -196,20 +196,11 @@ Installing ownCloud
    button “to change permissions, click edit”.
 6. Select the “users” user from the list, and check the box “write”.
 7. Apply these settings and close out.
-8. Now open your browser and go to http://localhost/owncloud (or localhost if it
-   is installed in the root www directory). This should bring up the ownCloud
-   configuration page.
-9. At this page, you enter your desired ownCloud user name and password for the
-   administrator, and expand the little arrow.
-10. Select MySQL as the database, and enter your MySQL database user name,
-    password and desired instance name – use the user name and password you setup
-    for MySQL earlier in step 3, and pick any name for the database instance.
 
-.. note:: The ownCloud admin password and the MySQL password CANNOT be the same
-          in any way.
-
-11. Click next, and ownCloud should have you logged in as the admin user, and
-    you can get started exploring ownCloud, creating other users and more!
+Continue by following the :doc:`installation_wizard`.
+Select MySQL as the database, and enter your MySQL database user name,
+password and desired instance name – use the user name and password you setup
+during MySQL installation, and pick any name for the database instance.
 
 Ensure Proper HTTP-Verb handling
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

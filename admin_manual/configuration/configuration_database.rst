@@ -1,21 +1,33 @@
 Database Configuration
 ======================
 
-ownCloud requires a database where administrative data will be held. Four different database types are currently
-supported, `MySQL <http://www.mysql.com/>`_, `MariaDB <https://mariadb.org/>`_, `SQLite <http://www.sqlite.org/>`_,
-and `PostgreSQL <http://www.postgresql.org/>`_. MySQL or MariaDB are the recommended database engines. By default
-SQLite is chosen because it is a file based database with the least administrative overhead.
+ownCloud requires a database where administrative data will be held. Four
+different database types are currently supported,
+`MySQL <http://www.mysql.com/>`_ / `MariaDB <https://mariadb.org/>`_,
+`SQLite <http://www.sqlite.org/>`_, `PostgreSQL <http://www.postgresql.org/>`_
+and `Oracle <http://www.oracle.com/>`_. MySQL or MariaDB are the recommended
+database engines. By default SQLite is chosen because it is a file based
+database with the least administrative overhead.
 
-.. note:: Because SQLite handles multiple users very badly SQLite is only recommended for single user ownCloud installations
+.. note:: Because SQLite handles multiple users very badly SQLite is only
+          recommended for single user ownCloud installations.
 
 Requirements
 ------------
 
-If you decide to use MySQL, MariaDB, or PostgreSQL you need to install and set-up the
-database first. These steps will not be covered by this description as they are easy to find elsewhere.
+If you decide to use MySQL / MariaDB, PostgreSQL or Oracle, you need to install
+and set up the server software first. These steps will not be covered by this
+description as they are easy to find elsewhere.
 
 Parameters
 ----------
+
+.. note:: For setting up ownCloud to use any of these databases, use the
+          :doc:`../installation/installation_wizard`.
+          You usually don't need to edit the respective values in the
+          :file:`config/config.php`, just in special cases e.g. if you want to
+          connect your ownCloud instance to a database created by a previous
+          installation of ownCloud.
 
 MySQL/MariaDB Database
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -69,8 +81,11 @@ You can quit the prompt by entering::
 
   quit
 
-In the ownCloud configuration you need to set the hostname on which the
-database is running and a valid username and password to access it.
+An ownCloud configured with MySQL would contain the hostname on which the
+database is running, a valid username and password to access it, and the
+name of the database. The :file:`config/config.php` as created by the
+:doc:`installation/installation_wizard` would therefore contain entries like
+this:
 
 .. code-block:: php
 
@@ -81,7 +96,7 @@ database is running and a valid username and password to access it.
     "dbuser"        => "username",
     "dbpassword"    => "password",
     "dbhost"        => "localhost",
-    "dbtableprefix" => "",
+    "dbtableprefix" => "oc_",
 
 SQLite Database
 ~~~~~~~~~~~~~~~
@@ -99,10 +114,12 @@ It is not necessary to create a database and a database user in advance
 because this will automatically be done by ownCloud when you login for the
 first time.
 
-In the ownCloud configuration in :file:`config/config.php` you need to set at least the **datadirectory** parameter to
-the directory where your data and database should be stored. Note that for the PDO SQLite driver this directory must
-be writable (this is recommended for ownCloud anyway).  No authentication is required to access the database therefore
-most of the default parameters could be taken as is:
+An ownCloud configured to use sqlite only needs to contain the reference to a
+writable data directory (which is required for the rest of ownCloud's operation
+as well anyway). The :file:`config/config.php` as created by the
+:doc:`installation/installation_wizard` could therefore contain entries like
+this:
+
 
 .. code-block:: php
 
@@ -114,7 +131,7 @@ most of the default parameters could be taken as is:
     "dbpassword"    => "",
     "dbhost"        => "",
     "dbtableprefix" => "",
-    "datadirectory" => "/www/htdocs/owncloud/data",
+    "datadirectory" => "/var/www/html/owncloud/data",
 
 PostgreSQL Database
 ~~~~~~~~~~~~~~~~~~~
@@ -158,10 +175,11 @@ You can quit the prompt by entering::
 
   \q
 
-In the ownCloud configuration you need to set the hostname on which the
-database is running and a valid username (and sometimes a password) to
-access it. If the database has been installed on the same server as
-ownCloud a password is very often not required to access the database.
+An ownCloud configured with PostgreSQL would contain the hostname on which the
+database is running, a valid username and password to access it, and the
+name of the database. The :file:`config/config.php` as created by the
+:doc:`installation/installation_wizard` would therefore contain entries like
+this:
 
 .. code-block:: php
 
@@ -172,7 +190,7 @@ ownCloud a password is very often not required to access the database.
     "dbuser"        => "username",
     "dbpassword"    => "password",
     "dbhost"        => "localhost",
-    "dbtableprefix" => "",
+    "dbtableprefix" => "oc_",
 
 Oracle Database
 ~~~~~~~~~~~~~~~
@@ -231,10 +249,11 @@ You can quit the prompt by entering::
 
   exit
 
-In the ownCloud configuration you need to set the hostname on which the
-database is running and a valid username and password to
-access it. If the database has been installed on the same server as
-ownCloud to config file could look like this:
+An ownCloud configured with Oracle would contain the hostname on which the
+database is running, a valid username and password to access it, and the
+name of the database. The :file:`config/config.php` as created by the
+:doc:`installation/installation_wizard` would therefore contain entries like
+this:
 
 .. code-block:: php
 
@@ -246,17 +265,18 @@ ownCloud to config file could look like this:
     "dbpassword"    => "password",
     "dbhost"        => "localhost",
 
-.. note:: This example assumes you are running an Oracle Express Edition on ``localhost``.
-	  The ``dbname`` is the name of the Oracle instance. For Oracle Express Edition it
-	  is always ``XE``.
+.. note:: This example assumes you are running an Oracle Express Edition on
+          ``localhost``. The ``dbname`` is the name of the Oracle instance.
+          For Oracle Express Edition it is always ``XE``.
 
 Troubleshooting
 ---------------
 
-How can I find out if my MySQL/PostgreSQL  server is reachable?
+How can I find out if my MySQL/PostgreSQL server is reachable?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Use the ping command to check the server availability::
+To check the server's network availability, use the ping command on
+the server's host name (db.server.com in this example)::
 
   ping db.server.dom
 
@@ -266,6 +286,9 @@ Use the ping command to check the server availability::
   64 bytes from your-server.local.lan (192.168.1.10): icmp_req=1 ttl=64 time=3.64 ms
   64 bytes from your-server.local.lan (192.168.1.10): icmp_req=2 ttl=64 time=0.055 ms
   64 bytes from your-server.local.lan (192.168.1.10): icmp_req=3 ttl=64 time=0.062 ms
+
+For a more detailed check whether the access to the database server software
+itself works correctly, see the next question.
 
 How can I find out if a created user can access a database?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -285,7 +308,15 @@ command line interface:
 
 **MySQL**::
 
+Assuming the database server is installed on the same sytem you're running,
+the command from, use:
+
   mysql -uUSERNAME -p
+
+To acess a MySQL installation on a different machine, add the -h option with
+the respective host name:
+
+  mysql -uUSERNAME -p -h HOSTNAME
 
 ::
 
@@ -300,7 +331,15 @@ command line interface:
 
 **PostgreSQL**::
 
+Assuming the database server is installed on the same sytem you're running
+the command from, use:
+
   psql -Uusername -downcloud
+
+To acess a MySQL installation on a different machine, add the -h option with
+the respective host name:
+
+  psql -Uusername -downcloud -h HOSTNAME
 
 ::
 
@@ -310,6 +349,8 @@ command line interface:
   postgres=# \q
 
 **Oracle**::
+
+On the machine where your Oracle database is installed, type
 
   sqlplus username
 
