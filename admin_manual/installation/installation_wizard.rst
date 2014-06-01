@@ -12,6 +12,10 @@ running the Installation Wizard.
     install wizard from, the url will be https://localhost/owncloud
   * If you are installing ownCloud on a different machine, you'll have to access
     it by its hostname or IP address, e.g. https://example.com/owncloud
+  * Please take notice of the note at the end of the site if you're accessing
+    your ownCloud instance via a different IP address or host name during setup
+    than your users are going to use later on (or if your ownCloud instance
+    should be accessible via more than one host name or IP address).
   * If you are using a self-signed certificate, you will be presented with a
     security warning about the issuer of the certificate not being trusted which
     you can ignore.

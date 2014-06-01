@@ -12,3 +12,4 @@ Installation
    installation_ucs
    installation_source
    installation_others
+   installation_wizard
