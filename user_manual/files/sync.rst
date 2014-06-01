@@ -19,4 +19,4 @@ mount your ownCloud storage via WebDAV, which is also documented in the next cha
 
 
 .. _ownCloud Client: http://owncloud.org/sync-client/
-.. _ownCloud Desktop Client Manual:  http://doc.owncloud.org/desktop/1.5/
+.. _ownCloud Desktop Client Manual:  http://doc.owncloud.org/desktop/
