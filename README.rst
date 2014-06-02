@@ -59,6 +59,19 @@ First, make sure that the following are installed:
 be found in the ``_build/html`` subdirectory.  PDFs can be build with the
 ``make latexpdf`` command and found
 
+The openSUSE way
+~~~~~~~~~~~~~~~~
+ sudo zypper in pyhton-Sphinx
+ sudo zypper in pyhton-rst2pdf
+ sudo zypper in pdfjam   # pull in latexpdf and all of texlive
+ sudo zypper in texlive-threeparttable
+ sudo zypper in texlive-wrapfig
+ sudo zypper in texlive-multirow
+ cd user_manual
+ make latexpdf
+ okular _build/latex/ownCloudUserManual.pdf
+
+
 Windows
 ^^^^^^^
 
