@@ -45,6 +45,7 @@ Linux / OS X
 First, make sure that the following are installed:
 
 * Python 2 (2.6.0 or better, Python 3 is not yet supported!)
+* Python Image Library (PIL) - (the package is called something like ``python-pillow``)
 * Sphinx (e.g. ``sudo yum install python-sphinx``),
   on Mac: ``sudo easy_install Sphinx``
 * Sphinx PHPDomain (e.g. ``sudo easy_install sphinxcontrib-phpdomain``)
