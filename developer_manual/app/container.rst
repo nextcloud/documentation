@@ -23,7 +23,7 @@ Dependency Injection sounds pretty complicated but it just means: Don't new depe
   class AuthorMapper {
 
     private $db;
-  
+
     public function __construct() {
       $this->db = new Db();
     }
@@ -40,7 +40,7 @@ would turn into this by using Dependency Injection:
   class AuthorMapper {
 
     private $db;
-  
+
     public function __construct($db) {
       $this->db = $db;
     }
@@ -50,7 +50,7 @@ would turn into this by using Dependency Injection:
 
 Using a container
 =================
-Passing dependencies into the constructor rather than newing them in the constructor has the following drawback: Every line in the source code where **new AuthorMapper** is being used has to be changed, once a new constructor argument is being added to it. 
+Passing dependencies into the constructor rather than newing them in the constructor has the following drawback: Every line in the source code where **new AuthorMapper** is being used has to be changed, once a new constructor argument is being added to it.
 
 The solution for this particular problem is to limit the **new AuthorMapper** to one file, the container. The container contains all the factories for creating these objects and is configured in :file:`appinfo/application.php`.
 
@@ -86,7 +86,7 @@ To add the app's classes simply open the :file:`appinfo/application.php` use the
       $container->registerService('AuthorController', function($c){
         return new AuthorController(
           $c->query('AppName'),
-          $c->query('ServerContainer')->getRequest(),
+          $c->query('Request'),
           $c->query('AuthorService')
         );
       });
@@ -118,10 +118,10 @@ The container works in the following way:
 
 * :doc:`A request comes in and is matched against a route <request>` (for the AuthorController in this case)
 * The matched route queries **AuthorController** service form the container::
-        
+
     return new AuthorController(
       $c->query('AppName'),
-      $c->query('ServerContainer')->getRequest(),
+      $c->query('Request'),
       $c->query('AuthorService')
     );
 

@@ -5,7 +5,7 @@ The OCS Share API allows you to access the sharing API from outside over
 pre-defined OCS calls.
 
 The base URL for all calls to the share API is: *<owncloud_base_url>/ocs/v1.php/apps/files_sharing/api/v1*
- 
+
 
 Get All Shares
 --------------
@@ -68,7 +68,7 @@ Create a new Share
 Share a file/folder with a user/group or as public link.
 
 * Syntax: /shares
-* Method: POST 
+* Method: POST
 
 * POST Arguments: path - (string) path to the file/folder which should be shared
 * POST Arguments: shareType - (int) '0' = user; '1' = group; '3' = public link
@@ -115,8 +115,9 @@ Update a given share. Only one value can be updated per request.
 * Arguments: share_id - (int) share ID
 * PUT Arguments: permissions - (int) update permissions (see "Create share" above)
 * PUT Arguments: password - (string) updated password for public link Share
-* PUT Arguments: publicUpload - (boolean) enable (true) /disable (false) public upload for public shares
-Note that only one of "password" or "publicUpload" can be specified at once.
+* PUT Arguments: publicUpload - (boolean) enable (true) /disable (false) public upload for public shares.
+
+.. note:: Only one of "password" or "publicUpload" can be specified at once.
 
 Statuscodes:
 

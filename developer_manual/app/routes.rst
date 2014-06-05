@@ -46,8 +46,8 @@ The route array contains the following parts:
                  */
                 $container->registerService('PageController', function($c) {
                     return new PageController(
-                        $c->query('AppName'), 
-                        $c->query('ServerContainer')->getRequest()
+                        $c->query('AppName'),
+                        $c->query('Request')
                     );
                 });
             }
@@ -86,13 +86,13 @@ Matching suburls
 Sometimes its needed to match more than one URL fragment. An example would be to match a request for all URLs that start with **OPTIONS /index.php/apps/myapp/api**. To do this, use the **requirements** parameter in your route which is an array containing pairs of **'key' => 'regex'**:
 
 .. code-block:: php
-    
+
     <?php
 
     // Request: OPTIONS /index.php/apps/myapp/api/my/route
 
     // appinfo/routes.php
-    array('name' => 'author_api#cors', 'url' => '/api/{path}', 'verb' => 'OPTIONS'), 
+    array('name' => 'author_api#cors', 'url' => '/api/{path}', 'verb' => 'OPTIONS'),
           'requirements' => array('path' => '.+')),
 
     // controller/authorapicontroller.php
@@ -144,7 +144,7 @@ can be abbreviated by using the **resources** key:
     $application->registerRoutes($this, array(
         'resources' => array(
             array('authors' => array('url' => '/authors'))
-        ), 
+        ),
         'routes' => array(
             // your other routes here
         )
@@ -176,8 +176,8 @@ Sometimes its useful to turn a route into a URL to make the code independent fro
              */
             $container->registerService('PageController', function($c) {
                 return new PageController(
-                    $c->query('AppName'), 
-                    $c->query('ServerContainer')->getRequest(),
+                    $c->query('AppName'),
+                    $c->query('Request'),
 
                     // inject the URLGenerator into the page controller
                     $c->query('ServerContainer')->getURLGenerator()
@@ -203,7 +203,7 @@ Inside the PageController the URL generator can now be used to generate an URL f
 
         private $urlGenerator;
 
-        public function __construct($appName, IRequest $request, 
+        public function __construct($appName, IRequest $request,
                                     IURLGenerator $urlGenerator) {
             parent::__construct($appName, $request);
             $this->urlGenerator = $urlGenerator;

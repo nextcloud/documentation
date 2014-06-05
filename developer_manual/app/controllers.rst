@@ -52,7 +52,7 @@ To connect a controller and a route the controller has to be registered in the :
             $container->registerService('AuthorApiController', function($c) {
                 return new AuthorApiController(
                     $c->query('AppName'),
-                    $c->query('ServerContainer')->getRequest()
+                    $c->query('Request')
                 );
             });
         }

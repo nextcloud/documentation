@@ -6,6 +6,7 @@ Themes can relate to the following topics of owncloud:
 
 * Theming the web-frontend
 * Theming the owncloud Desktop client
+
 This documentation contains only the Web-frontend adaptations so far.
 
 Getting started
@@ -83,10 +84,10 @@ changing the default colours
 With a web-developer tool like Mozilla-Inspector, you also get easily displayed the color of the background you clicked on.
 On the top of the login page you can see a case- distinguished setting for different browsers:
 
-.. code-block::
+.. code-block:: css
 
   /* HEADERS */
- ...
+  ...
   background: #1d2d42; /* Old browsers */
   background: -moz-linear-gradient(top, #33537a 0%, #1d2d42  100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F1B3A4), color-stop(100%,#1d2d42)); /* Chrome,Safari4+ */

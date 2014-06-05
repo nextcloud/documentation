@@ -33,12 +33,12 @@ The :file:`appinfo/info.xml` contains metadata about the app:
       <!-- deprecated, just for reference -->
       <public>
           <file id="caldav">appinfo/caldav.php</file>
-      </public>      
+      </public>
 
       <remote>
           <file id="caldav">appinfo/caldav.php</file>
       </remote>
-      
+
       <standalone />
 
       <default_enable />
@@ -75,7 +75,7 @@ author
 **Required**: The name of the app author or authors.
 
 requiremin
--------
+----------
 **Required**: The minimal version of ownCloud.
 
 types
@@ -99,7 +99,7 @@ website
 link to project webpage
 
 Deprecated
-===========
+==========
 
 The following sections are just listed for reference and should not be used because
 
