@@ -97,16 +97,20 @@ Note
 ~~~~
 ownCloud will take the URL used to access the Installation Wizard and insert
 that into the config.php file for the ‘trusted_domains’ setting.
+All needed domain names of the owncloud server go into the 
+'trusted_domains' setting. No domain names of clients go there. 
 
-Users will only be able to log into ownCloud when they are using a domain name
-listed in the ‘trusted_domans’ setting.
+Users will only be able to log into ownCloud when they point their browsers to a
+domain name listed in the ‘trusted_domains’ setting. An IPv4 address can be
+specified instead of a domain name.
 
 In the event that a load balancer is in place, there will be no issues, as long
 as it sends the correct X-Forwarded-Host header.
 
-It should be noted that the loopback address, 127.0.0.1, is whitelisted and
+It should be noted that the loopback address, '127.0.0.1', is whitelisted and
 therefore users on the ownCloud server who access ownCloud with the loopback
-will successfully login. In the event that an improper URL is used, the
+interface will be able to successfully login. 
+In the event that an improper URL is used, the
 following error will appear:
 
 .. image:: images/untrusted-domain.png
