@@ -11,7 +11,7 @@ are enabled, click on Apps button on the web interface navigation to go into app
 Administrator application page
 
 In this page, you can enable or disable applications simply by clicking on their names.
-Enabled applications will be shown in **bold** while disabled ones will be shown in normal font.
+Enabled applications will be shown highlighed while disabled ones will be shown in normal background.
 If the app is not developed by ownCloud, it will have the *3rd party* notice next to it. To see what an
 application does, clicking on its name will show a description on the right side of the same page.
 

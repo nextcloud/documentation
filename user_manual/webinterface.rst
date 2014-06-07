@@ -51,9 +51,9 @@ The web interface comprises of the following items:
    password. You can also retrieve the WebDAV URL (see next chapter) and show
    your quota. Administrators will also get access to user management
    (:guilabel:`Users`), the apps settings (:guilabel:`Apps`) and administrative settings (:guilabel:`Admin`)
-   including access to ownCloud's log. You will also find logout button in this menu.
+   including access to ownCloud's log. You will also find a logout button in this menu.
 5. **App Settings** field will contain various sections to access different views of the app. For example,
-   files app will allow you to see the files *Shared with you* or *Shared with others*.
+   the files app allows you to see the files *Shared with you* or *Shared with others*.
    This field may also include a |gear| icon to access to various options provided by the app.
 
 
