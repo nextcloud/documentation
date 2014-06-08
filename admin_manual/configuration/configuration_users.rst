@@ -49,7 +49,7 @@ core properties are listed.
   This is a list of security groups the user has administration privileges for.
   By default the user is not registered as group admin for any user group.
 
-*Storage*
+*Quota*
   This is the maximum disk space that may be used by the user. If the user
   reaches this limit he/she is not able to upload or sync further data. The
   storage quota is specified in the format *Number Unit* (e.g. 100 B (byte),
@@ -163,7 +163,7 @@ Limit a user's storage
 
 To limit a user's storage quota:
 
-Find the user and select an item from the **Storage** drop-down list.
+Find the user and select an item from the **Quota** drop-down list.
 
    * If you select *Default*, the default storage limit, specified in the
      action bar at the top, is applied.
@@ -172,8 +172,8 @@ Find the user and select an item from the **Storage** drop-down list.
    * If you want to enter a custom limit, select *Other...*, enter the storage
      quota of your choice and hit the **Enter** key of your keyboard.
 
-If you edit the value of the **Default Storage** field in the action bar, all
-users with storage *Default* are affected by this change, i.e. changing the
+If you edit the value of the **Default Quota** field by clicking on the **gear** icon,
+all users with storage *Default* are affected by this change, i.e. changing the
 default storage from *Unlimited* to *1 GB* will cause all users with *Default*
 storage being limited to 1 GB storage each.
 
@@ -205,8 +205,7 @@ Create Group
 
 To create a user group:
 
-#. Open the **Groups** drop-down list in the action bar.
-#. Click **add group**.
+#. Click on **Add Group** button on the left side of the user management page.
 #. Enter the name of the new group and then hit the **Enter** key of your
    keyboard.
 
@@ -217,8 +216,10 @@ group drop-down list.
 Edit/Delete Group
 ~~~~~~~~~~~~~~~~~
 
-Currently, groups cannot be edited (e.g. renamed) or removed. This feature
-will be available in a future version of ownCloud.
+Currently, groups cannot be renamed. This feature will be available in a future version
+of ownCloud. To delete a group, unassign all users of out of it and click on the
+trash icon next to the group name on the left pane.
 
-.. note:: If you have direct access to the database, you can manually delete the group
+
+.. note:: If you have direct access to the database, you can manually rename the group
           from database tables oc_groups and oc_group_user.

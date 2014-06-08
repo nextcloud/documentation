@@ -8,7 +8,8 @@ use more that 50% of your currently available free space. If your deleted files
 exceed this limit, ownCloud deletes the oldest versions until it meets the memory
 usage limit again.
 
-Deleted files can be found by clicking on the *Deleted files* button on files app of web interface.
+Deleted files can be found by clicking on the *Deleted files* link on the left of
+files app section of the web interface.
 You can either restore or permanently delete using appropriate buttons.
 
 ownCloud also checks the age of deleted files every time new files are added
