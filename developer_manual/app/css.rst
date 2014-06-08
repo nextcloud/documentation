@@ -83,9 +83,6 @@ To use icons which are shipped in core, special class to apply the background im
 * **icon-loading-small**:
     .. image:: ../img/7/loading-small.png
 
-* **icon-noise**:
-    .. image:: ../img/7/noise.png
-
 * **icon-add**:
     .. image:: ../img/7/actions/add.png
 
