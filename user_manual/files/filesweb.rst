@@ -6,7 +6,8 @@ you can view (if a common type), move, rename, download, share and delete your f
 enabled, you can also revert a file to specific version. See :doc:`versioncontrol` for details.
 
 .. figure:: ../images/oc_filesweb.png
-Files app on ownCloud web interface
+
+	Files app on ownCloud web interface
 
 With ownCloud 6, you can now see file thumbnails next to the filenames. By hovering your cursor on a file, you
 will be provided with some file operations. You can use rename, download, share buttons to perform those actions
@@ -20,7 +21,8 @@ To navigate through folders in your ownCloud, you can simply click on a folder n
 will show your current directory:
 
 .. figure:: ../images/oc_filesweb_navigate.png
-Navigation bar
+
+	Navigation bar
 
 You can click on one of the upper directories to navigate up or use home icon to navigate back into your root
 folder.
@@ -33,7 +35,8 @@ You can create files by simply clicking on *New* button on files app. The *New* 
 options to choose from:
 
 .. figure:: ../images/oc_filesweb_new.png
-New button options
+
+	New button options
 
 * *Text file* will create a simple text file and add into the current folder in your ownCloud.
 * *Folder* will create a folder in current folder.
@@ -68,7 +71,8 @@ Any file/folder on ownCloud can be shared to download with a local user, group o
 To share a file/folder, hover your cursor on an item in the files app and click *Share*. You will be provided with some options:
 
 .. figure:: ../images/oc_files_share.png
-Share dialog
+
+	Share dialog
 
 * The first field is to share this file/folder with local users/groups. This is very useful
   if you are in a company and want to create a quick share with a colleague.

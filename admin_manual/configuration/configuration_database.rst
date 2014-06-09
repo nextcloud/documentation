@@ -84,7 +84,7 @@ You can quit the prompt by entering::
 An ownCloud instance configured with MySQL would contain the hostname on which
 the database is running, a valid username and password to access it, and the
 name of the database. The :file:`config/config.php` as created by the
-:doc:`installation/installation_wizard` would therefore contain entries like
+:doc:`../installation/installation_wizard` would therefore contain entries like
 this:
 
 .. code-block:: php
@@ -117,7 +117,7 @@ first time.
 An ownCloud instance configured to use sqlite only needs to contain the
 reference to a writable data directory (which is required for successful
 operation of ownCloud in general anyway). The :file:`config/config.php` as
-created by the :doc:`installation/installation_wizard` could therefore contain
+created by the :doc:`../installation/installation_wizard` could therefore contain
 entries like this:
 
 
@@ -178,7 +178,7 @@ You can quit the prompt by entering::
 An ownCloud instance configured with PostgreSQL would contain the hostname on
 which the database is running, a valid username and password to access it, and
 the name of the database. The :file:`config/config.php` as created by the
-:doc:`installation/installation_wizard` would therefore contain entries like
+:doc:`../installation/installation_wizard` would therefore contain entries like
 this:
 
 .. code-block:: php
@@ -252,7 +252,7 @@ You can quit the prompt by entering::
 An ownCloud instance configured with Oracle would contain the hostname on which
 the database is running, a valid username and password to access it, and the
 name of the database. The :file:`config/config.php` as created by the
-:doc:`installation/installation_wizard` would therefore contain entries like
+:doc:`../installation/installation_wizard` would therefore contain entries like
 this:
 
 .. code-block:: php
@@ -306,15 +306,15 @@ command line interface:
   SQLite 3.7.15.1 2012-12-19 20:39:10 6b85b767d0ff7975146156a99ad673f2c1a23318
   sqlite> .quit
 
-**MySQL**::
+**MySQL**:
 
 Assuming the database server is installed on the same sytem you're running,
-the command from, use:
+the command from, use::
 
   mysql -uUSERNAME -p
 
 To acess a MySQL installation on a different machine, add the -h option with
-the respective host name:
+the respective host name::
 
   mysql -uUSERNAME -p -h HOSTNAME
 
@@ -329,15 +329,15 @@ the respective host name:
   1 row in set (0.00 sec)
   mysql> quit
 
-**PostgreSQL**::
+**PostgreSQL**:
 
 Assuming the database server is installed on the same sytem you're running
-the command from, use:
+the command from, use::
 
   psql -Uusername -downcloud
 
 To acess a MySQL installation on a different machine, add the -h option with
-the respective host name:
+the respective host name::
 
   psql -Uusername -downcloud -h HOSTNAME
 
@@ -348,9 +348,9 @@ the respective host name:
   (1 row)
   postgres=# \q
 
-**Oracle**::
+**Oracle**:
 
-On the machine where your Oracle database is installed, type
+On the machine where your Oracle database is installed, type::
 
   sqlplus username
 

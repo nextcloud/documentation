@@ -165,12 +165,9 @@ the user running php on your system.
           write to the directory. Changing ownership as above could result in some issues
           if the NFS mount is lost.
 
-* For Debian-based distributions (like Ubuntu, Debian or Linux Mint) and Gentoo, run:
-  ::
-
 * The generic command to run is::
 
-	sudo chown -R <php-user>:<php-user> /path/to/your/webservers/document-root/owncloud
+    sudo chown -R <php-user>:<php-user> /path/to/your/webservers/document-root/owncloud
 
   where ``<php-user>`` is to be replaced by the user running php scripts, and
   ``/path/to/your/webservers/document-root/owncloud`` by the folder where the
@@ -390,7 +387,7 @@ Nginx Configuration
 
 -  You need to insert the following code into **your nginx config file.**
 -  Adjust **server_name**, **root**, **ssl_certificate** and **ssl_certificate_key** to suit your needs.
--  Make sure your SSL certificates are readable by the server (see `http://wiki.nginx.org/HttpSslModule`_).
+-  Make sure your SSL certificates are readable by the server (see `Nginx HTTP SSL Module documentation`_).
 
 .. code-block:: python
 
@@ -593,11 +590,11 @@ Ubuntu-Apache-MySQL walk-through:
 * Make sure to click the "Advanced" Button to see the database settings
 
 * Choose MySQL as Database backend (you might not be presented with any other
-choice if you haven't installed any other database systems).
+  choice if you haven't installed any other database systems).
 * As Database host, enter ``localhost``.
 * As Database user enter ``root``.
-* As Database password, enter the password you entered during installation of
-the MySQL server package.
+* As Database password, enter the password you entered during installation of the
+  MySQL server package.
 * As Database name, enter an arbitrary name as you see fit
 
 Continue by following the :doc:`installation_wizard`.

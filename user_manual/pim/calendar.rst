@@ -2,7 +2,8 @@ Using the Calendar App
 ======================
 
 .. figure:: ../images/calendar_manage-calendars.png
-Calendar view with global settings pane is open
+
+  Calendar view with global settings pane is open
 
 .. _managing-calendars:
 
@@ -64,7 +65,8 @@ Import
 ~~~~~~
 
 .. figure:: ../images/calendar_import.png
-Importing calendar
+
+  Importing calendar
 
 Importing your calendar as iCal file is done by using the files app. Upload the iCal file
 and just click on the calendar file to open the import dialog. You can import the calendar
@@ -85,7 +87,8 @@ next to your calendar in the calendar list.
 .. |download| image:: ../images/download.png
 
 .. figure:: ../images/calendar_export.png
-Exporting calendar
+
+  Exporting calendar
 
 Managing events
 ---------------
@@ -99,7 +102,8 @@ information such as title, category, etc. If there is more than one calendar, yo
 be given an option to choose the calendar in which you would like to create the event.
 
 .. figure:: ../images/calendar_createevent.png
-New event window
+
+  New event window
 
 With the advanced options you can set the description, the location, categories etc.
 
@@ -155,7 +159,7 @@ with the software you like.
 To get the global link of your calendars, click on the |gear| icon on the bottom
 left of the calendar app and copy the relevant address.
 
-To manually get those addresses, please follow the following steps::
+To manually get those addresses, please follow the following steps.
 
 Assuming you access your web interface via an address like this::
 
@@ -189,7 +193,8 @@ Why is the calendar app asking for my current location?
 -------------------------------------------------------
 
 .. figure:: ../images/calendar_newtimezone1.png
-Timezone set notification
+
+  Timezone set notification
 
 The calendar needs your current position in order to detect your timezone.
 Without the correct timezone there will be a time offset between the events in
