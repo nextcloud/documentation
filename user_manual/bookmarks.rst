@@ -15,7 +15,8 @@ you can enter the website address (or URL), the title of your bookmark, and
 a set of tags separated from each other by a space.
 
 .. figure:: images/bookmark_addurl.png
-Adding a bookmark manually
+
+	Adding a bookmark manually
 
 In this example, we have added the page `http://wikipedia.org` with the title "Wikipedia"
 and some tags describing what Wikipedia is for an easier search later on.
@@ -47,7 +48,8 @@ The Bookmarklet
 ---------------
 
 .. figure:: images/bookmark_setting.png
-Bookmarklet link
+
+	Bookmarklet link
 
 The creator of this app understands that people won't want to
 open the ownCloud bookmarks page to add a bookmark every time they see a cool site.

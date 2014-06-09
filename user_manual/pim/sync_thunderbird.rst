@@ -9,7 +9,8 @@ As someone who is new to ownCloud, New to SoGo Connector, and new to Thunderbird
 #. `Thunderbird <http://www.mozilla.org/en-US/thunderbird/>`_ for your OS unless it comes with your OS distribution (Linux)
 #. `Sogo Connector <http://www.sogo.nu/english/downloads/frontends.html>`_ (latest release)
 
- With an installed Thunderbird mailtool, and installed SoGo Connector:
+With an installed Thunderbird mailtool, and installed SoGo Connector:
+
 #. Thunderbird Addressbook is in the Thunderbird "Tools" Menu
 #. In the Thunderbird Addressbook application:
 
@@ -18,10 +19,12 @@ As someone who is new to ownCloud, New to SoGo Connector, and new to Thunderbird
    -  "**URL:**" is found in your OwnCloud Contacts area, that little Gear symbol
 
 .. image:: ../images/contact_thunderbird-Symbol_Gear.jpg
+
 in the -bottom left- of the Contacts View (same symbol as found in the -top right- in the Calendar view). Then look for a little impeller symbol
 
 .. image:: ../images/contact_thunderbird-Symbol_Impeller.jpg
-which will display the URL you need for your installation to work. 
+
+which will display the URL you need for your installation to work.
 
 .. image:: ../images/contact_thunderbird-URL_config.jpg
 

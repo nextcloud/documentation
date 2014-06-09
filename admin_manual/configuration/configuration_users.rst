@@ -6,7 +6,8 @@ user management page, click your username on the web interface and select *Users
 A page similar to the image below will be shown:
 
 .. figure:: ../images/oc_admin_user_manage.png
-Users management page
+
+  Users management page
 
 A fictive use case will help you understand the concept of users, user groups
 and group admins.

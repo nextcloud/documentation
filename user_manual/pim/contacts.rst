@@ -20,11 +20,13 @@ more faster way of creating contacts.
 Just below the contact list, click on the gear button:
 
 .. image:: ../images/contact_bottombar.png
+
 Contact settings icon
 
 Once you've clicked it, an up arrow button which lets you upload files will be shown:
 
 .. image:: ../images/contact_uploadbutton.png
+
 Contact file upload icon
 
 After choosing an addressbook to import into, click on the arrow. The upload window will be opened and let you choose your files.
@@ -37,6 +39,7 @@ After you are done just click on the open button
 After the upload it should look something like this in which all the names and contacts will be sorted alphabetically
 
 .. image:: ../images/contact_vcfpick.jpg
+
 Picking VCF files
 
 After upload, the interface will automatically place your contacts into ownCloud.
@@ -54,6 +57,7 @@ Just click on a field and start typing the information.
 You can use the "Add field..." button to add another types of information for this contact.
 
 .. image:: ../images/contact_emptycontact.png
+
 Empty contact view
 
 When you want to remove an information of your contact, just click on little trash icon
@@ -65,6 +69,7 @@ Adding picture to the contact
 There are two methods in which you can give a picture id to the specific contact
 
 .. image:: ../images/contact_picture.jpg
+
 Contact picture options
 
 1) **Direct upload**
@@ -74,6 +79,7 @@ After you have selected the picture for the contact you get
 an option to crop the picture to suit your requirements
 
 .. image:: ../images/contact_crop.jpg
+
 Cropping contact picture
 
 You can crop the picture however you wish and then press *Crop photo*.
@@ -90,6 +96,7 @@ you will have access to the application's settings.
 Then, you will be shown all available addressbooks to access the options.
 
 .. image:: ../images/contact_del_ab.png
+
 Addressbook options
 
 There, you have the ability to add, delete, download or share your addressbooks.

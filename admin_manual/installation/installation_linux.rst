@@ -19,6 +19,7 @@ or else the installation process might fail.
 
 
 **Archlinux:** The are two packages for ownCloud: `stable version`_ in the official community repository and `development version`_ in AUR.
+
 .. _stable version: https://www.archlinux.org/packages/community/any/owncloud
 .. _development version: http://aur.archlinux.org/packages.php?ID=38767
 
