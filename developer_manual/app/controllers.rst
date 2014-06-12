@@ -4,7 +4,7 @@ Controllers
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-Controllers are used to connect :doc:`routes <routes>` with app logic. Think of it as callbacks that are executed once a request has come in. Controllers are defined inside the **controllers/** directory.
+Controllers are used to connect :doc:`routes <routes>` with app logic. Think of it as callbacks that are executed once a request has come in. Controllers are defined inside the **controller/** directory.
 
 To create a controller, simply extend the Controller class and create a method that should be executed on a request:
 
