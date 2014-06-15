@@ -135,5 +135,4 @@ To share a file or folder:
 
 		.. figure:: ../images/oc_share_expiration_calendar.png
 
-		Expiration Date Calendar
-
+		   Expiration Date Calendar

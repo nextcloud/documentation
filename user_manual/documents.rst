@@ -11,7 +11,7 @@ sent be email. The editing works on top of normal ODF files that are stored in o
 The main interface
 ------------------
 
-.. figure:: images/oc_documents.png
+.. image:: images/oc_documents.png
 
 Create/Upload a Document
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -27,7 +27,7 @@ If ownCloud contains at least one ODT file, you can immediately start editing by
 the file within the documents app. Clicking on documents in files app will only display it. Below, you
 can see editing a newly created document file:
 
-.. figure:: images/oc_documents_edit.png
+.. image:: images/oc_documents_edit.png
 
 Here is the explanation of each field in the image shown above:
 
