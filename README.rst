@@ -36,6 +36,20 @@ At this point, this repository hosts three manuals:
 * **Developers Manual:** Developing Apps for ownCloud & understanding the
   core Architecture.
 
+Editing
+-------
+Contributing to the documentation requires a github account.
+
+To edit a document, either do a checkout of the repository and edit the rst
+files from there, or work directly on github. The latter is only really
+suitable for small fixes and improvements because substantial editing efforts
+can better be controlled in an editor.
+
+To edit on github, fork the repository (see top-right of the screen, under
+your username). You will then be able to make changes easily. Once done, 
+you can create a pull request and get the changes reviewed and back into
+the official repository.
+
 Building
 --------
 
