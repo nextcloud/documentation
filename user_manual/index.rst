@@ -74,14 +74,14 @@ simultaneously.
 
 Bookmarks
 =========
-The following topic describes how to use the ownCloud **Bookmarks** appliction
+The following topic describes how to use the ownCloud **Bookmarks** application
 to manage your bookmarks:
 
 * :doc:`bookmarks`
 
 Backup
 ======
-The following topic describes the ownCloud **User_Migrate** appliction used to
+The following topic describes the ownCloud **User_Migrate** application used to
 import and export user account settings:
 
 * :doc:`migration`
