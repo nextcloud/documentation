@@ -291,3 +291,6 @@ epub_copyright = u'2012-2014, The ownCloud developers'
 
 # Include todos?
 todo_include_todos = True
+
+# substitutions go here
+rst_epilog =  '.. |version| replace:: %s' % version

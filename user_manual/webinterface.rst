@@ -1,60 +1,118 @@
-The ownCloud Web Interface 
+The ownCloud Web Interface
 ==========================
 
-You can connect to ownCloud with your web browser by pointing
-it to the address that you have received from your service
-provider. In case you are administering the server yourself,
-have a look at `ownCloud Administrators Manual <http://doc.owncloud.org/server/7.0/admin_manual/>`_.
+You can connect to your ownCloud server using any web browser. To access the ownCloud server using a web browser, specify the uniform resource link (URL) address of the server in the browser navigation bar.  This can be the URL address of your personal ownCloud setup or a URL address that you have received from your company or your service provider.
 
-When you enter the URL, you will receive a page that is similar
-to the one depicted below:
+.. note:: If you are administering the server yourself, we recommend that you read the `ownCloud Administrators Guide <http://doc.owncloud.org/server/6.0/admin_manual/>`_.
+
+Accessing the ownCloud Web Interface
+------------------------------------
+
+To access the ownCloud web interface:
+
+1. Enter the URL address of the ownCloud server into your browser navigation bar.
+
+   The ownCloud login window opens.
 
 .. figure:: images/oc_connect.png
 
-   The ownCloud login screen
+   **ownCloud login window**
 
-Login with the user name and password with you have received from
-your service provider. If you have set up the server yourself,
-log in with the user name which you have created during the
-setup process. You can add further users through the settings,
-or by hooking up a user backend, such as LDAP.
+2. Enter your valid username and password.
 
-Overview
---------
+   The username and password combination can be those that you set up yourself
+   when creating your ownCloud server setup or those provided by your company or
+   your service provider.
 
-After clicking the :guilabel:`Log in` button, you will be redirected
-to ownCloud's main web interface:
+   If you have set up the server yourself, or are administering the server, you
+   can add additional users by configuring a user backend (for example, LDAP).
 
-.. figure:: images/oc_ui.png
-   :align: center
+3. Click the :guilabel:`Log in` button.
 
-   The ownCloud main interface with the essential elements numbered
+   The ownCloud main interface opens.
 
-The web interface comprises of the following items:
+   .. figure:: images/oc_main_web.png
+      :scale: 75%
 
-1. **Apps menu**: Allows navigation between different parts of ownCloud,
-   provided by apps. Administrators will also see a button called **Apps**.
-   Using this button allows administrators to enable/disable apps.
-2. **Application view**: This is where apps show their content. By default, this
-   will show the files and directory (file view) of your user on the ownCloud
-   installation.
-3. **New/Upload button**: This allows you to create new files or upload
-   existing ones from your device. Note that you can also drop files from
-   Explorer or Finder onto the ownCloud file view and they will get uploaded to
-   ownCloud. With *New* button, you can create a text file, folder or download
-   a file from the provided URL.
-4. **Search/Settings**: *Search* allows you to look for files and
-   directories. Currently, ownCloud provides a full text search. If full text seach does
-   not work, administrators need to enable this app from app settings.
-   *Settings* menu provides access to the settings menu, where you can
-   change your personal settings, such as the interface language or your
-   password. You can also retrieve the WebDAV URL (see next chapter) and show
-   your quota. Administrators will also get access to user management
-   (:guilabel:`Users`), the apps settings (:guilabel:`Apps`) and administrative settings (:guilabel:`Admin`)
-   including access to ownCloud's log. You will also find a logout button in this menu.
-5. **App Settings** field will contain various sections to access different views of the app. For example,
-   the files app allows you to see the files *Shared with you* or *Shared with others*.
-   This field may also include a |gear| icon to access to various options provided by the app.
+   **ownCloud main user interface**
 
 
-.. |gear| image:: images/gear.png
+Navigating the Main User Interface
+------------------------------------
+
+Once you have accessed the ownCloud Server main web interface you can add
+files, remove files, and make changes based on the access privileges set by you
+(if you are administering the server) or by your server administrator.
+
+.. figure:: images/oc_main_web_labelled.png
+   :scale: 75%
+
+The ownCloud Maine User Interface contains the following fields and functions:
+
+* **Apps Selection Menu**: Located in the upper left corner of the user
+  interface, this bar contains apps that are configured on the ownCloud server.
+  The icons in this bar enable you to launch the different apps available and
+  navigate between them within the ownCloud user interface.
+
+.. note:: ownCloud supports a number of apps that can be installed and used for
+   various features and functions.  Not all apps are installed and enabled by
+   default.  For example, the :guilabel:`Apps` button is visible only to
+   administrators.  This button allows administrators to enable or disable
+   installed applications.
+
+* **Apps Information** field: Located in the left side bar, this field provides
+  filters and tasks associated with the chosen app.  For example, using the
+  Files app, you can use the filters in the apps information field to view only
+  files that have been shared with you, files that you have shared with others,
+  files that you have shared through the use of a link, or an option to delete
+  files.  Other app-specific information fields might provide tasks for creating
+  new documents or modifying calendar entries.
+
+* **Application View**: The main, central field in the ownCloud user interface.
+  This field displays the contents or user features of the app selected in the
+  Navigation Bar.  By default, this field shows the files and directory
+  ("Files" view) of your user account.
+
+* **Navigation Bar**: Located over the main viewing window (the Application
+  View), this bar provides a type of breadcrumbs navigation that enables you to
+  migrate to higher levels of the folder hierarchy up to the root level (home) of
+  your ownCloud instance.
+
+* **New** button: Located in the Navigation Bar, the :guilabel:`New` button
+  ebables you to create new files, new folders, or upload existing files from a
+  specified link.
+
+.. note:: You can also drag and drop files from Windows Explorer or your MAC
+   OSX Finder into the ownCloud Files Application View to upload them to ownCloud.
+
+* **Upload** button: Located next to the :guilabel:`New` button in the
+  Navigation Bar, the :guilabel:`Upload` button enables you to upload files
+  from your system to the ownCloud server.  Clicking this button launches a
+  Windows Explorer or MAC OSX Finder window with which you can choose files for
+  uploading.
+
+* **Search** field: Residing in the upper right hand corner of the Main User
+  Interface window, the Search field enables you to search for files and
+  folders stored in ownCloud. The ownCloud search function provides a full text
+  search. However, for searching to function, administrators must enable the app
+  in the search app settings.
+
+* **Personal Settings** menu: Located to the right of the Search field, the
+  Personal Settings dropdown menu provides access to your personal settings
+  page and the ability to log out of your ownCloud user session.  The personal
+  settings page provides access to the following:
+
+  * Server usage and space availability
+  * Password management
+  * Name, email, and profile picture settings
+  * Interface language settings
+  * WebDAV URL for receiving files using WebDAV (see next chapter).
+  * Mozilla Sync information for creating a synchronization to a Mozilla (Firefox) account.
+  * ownCloud Version information
+
+In addition to these standard settings, administrators have access to user
+management (:guilabel:`Users`), apps settings (:guilabel:`Apps`), and
+administrative settings (:guilabel:`Admin`) including access to the ownCloud
+log files.
+
+

@@ -1,89 +1,139 @@
-Accessing your Files (Web Interface)
-====================================
+Accessing your Files Using the Web Interface
+============================================
 
-Your ownCloud files can be accessed from anywhere by using your ownCloud's web interface. In the files app,
-you can view (if a common type), move, rename, download, share and delete your files easily. If versioning app is
-enabled, you can also revert a file to specific version. See :doc:`versioncontrol` for details.
+You can access your ownCloud files from anywhere using the ownCloud web
+interface. Once accessed, using the files app you can view (if a common type),
+move, rename, download, share, and delete your files easily.
 
 .. figure:: ../images/oc_filesweb.png
 
-	Files app on ownCloud web interface
+	**ownCloud web interface Files app**
 
-With ownCloud 6, you can now see file thumbnails next to the filenames. By hovering your cursor on a file, you
-will be provided with some file operations. You can use rename, download, share buttons to perform those actions
-or click on the cross icon at the rightmost location to remove the hovered file. If the file is an editable
-office file, it will also show *Edit* button to open the file in documents app (if this app is enabled).
+ownCloud versio 7 enables you to see file thumbnails next to the filenames.
+Hovering over a file or folder provides the following highlighted list of
+operations:
+
+* :guilabel:`Rename` -- Enables you to rename a file or folder.
+* :guilabel:`Download` -- Downloads a file to your system.
+* :guilabel:`Versions` (when enabled; See :doc:`versioncontrol` for details) -- Enables you to revert the file or folder to any available older versions.
+* :guilabel:`Share` -- Enables you to share the file or folder with a group or a specific user.  Also enables you to share using a specified link.
+* :guilabel:`Edit` -- When a file is editable, enables you to open the file in the document application as long as that application is enabled for use from the ownCloud server.
+* :guilabel:`Delete` -- Deletes the selected file or folder.
+
 
 Navigating inside your ownCloud
 -------------------------------
 
-To navigate through folders in your ownCloud, you can simply click on a folder name. The navigation bar
-will show your current directory:
+Navigating through folders in ownCloud is as simple as clicking on a folder to
+open it and using the back button on your browser to move to a previous level.
+For added convenience, ownCloud also provides a navigation bar at the top of
+the Files field for quick navigation.
 
 .. figure:: ../images/oc_filesweb_navigate.png
 
-	Navigation bar
+   Navigation bar
 
-You can click on one of the upper directories to navigate up or use home icon to navigate back into your root
-folder.
+The navigation bar functions as a "breadcrumb" locator.  It indicates your
+current directory and enables you to migrate back to one of the upper
+directories or, using the home icon, to navigate back into your root folder.
 
 
-Creating/uploading files
-------------------------
+Creating or Uploading Files and Directories
+-------------------------------------------
 
-You can create files by simply clicking on *New* button on files app. The *New* button will provide three
-options to choose from:
+ownCloud enables you to create new files or folders directly in an ownCloud
+folder by clicking on the *New* button in the Files app.
 
 .. figure:: ../images/oc_filesweb_new.png
 
-	New button options
+   New button options
 
-* *Text file* will create a simple text file and add into the current folder in your ownCloud.
-* *Folder* will create a folder in current folder.
-* *From link* will download the file from the provided link and place it into the current folder.
+The *New* button provides the following three options from which to choose:
+
+* *Text file* -- Creates a simple text file and adds the file to the current folder in your ownCloud.
+* *Folder* -- Creates a new folder in the current folder.
+* *From link* -- Downloads a file from a provided link path and places it into the current folder.
 
 
-Selecting files
----------------
+Selecting Files or Folders
+--------------------------
 
-You can select one or more files by clicking on small thumbnails or icons of the files. To select all files in
-the current directory, use the checkbox just above the first file/folder on the list.
+You can select one or more files or folders by clicking on the small thumbnails
+or icons that represent them. When you select a file or folder, a small
+checkbox is populated with a check to indicate that it is selected.  To select
+all files in the current directory, you can click on the checkbox located at
+the top of the Files app field, above the first file or folder on the list.
 
-If you select multiple files, selected files can be deleted or downloaded as ZIP by using the buttons just above of the file list.
-If download button is not visible, this means that administrator had disabled this feature.
+If you select multiple files, you can deleted all of the selected files or
+download them as a ZIP file by using the ``Delete`` or ``Download`` buttons at
+the top right side of the Files app field.
 
-Viewing files
+.. note:: If the ``Download`` button is not visible, the administrator has
+   disabled this feature.  Contact your administrator for further guidance.
+
+Viewing Files
 -------------
 
-ownCloud can display uncompressed text files, OpenDocument files, PDFs, and image files by simply clicking on
-the file name. If displaying of a file is not possible, a download process will start.
+You can display uncompressed text files, OpenDocument files, PDFs, and image
+files from the ownCloud server by clicking on the file name. If ownCloud cannot
+display a file, a download process starts and the file is downloaded to your
+system.
 
 Moving files
 ------------
 
-In ownCloud web interface, file(s) can be moved by dragging and dropping them into a sub-directory. If you would like to move a directory to an upper directory, drag the file(s) into one of the folders shown in navigation bar (depicted above).
+Using the ownCloud web interface, you can move files and folders by dragging
+and dropping them into any directory. If you want to move a file or folder to
+an upper directory, click and drag them to one of the folders shown in the
+navigation bar.
 
 Sharing files
 -------------
 
-Any file/folder on ownCloud can be shared to download with a local user, group or any person online with a public link. Shared files/folders will show a *Shared* text next to their names.
+You can share any file or folder on ownCloud with a local user, group, or any
+person online with a public link. By sharing a file or folder, the user or
+group can download the information directly to their system. Shared files and
+folders depict a globe icon and the status *Shared* in the file or folder row.
 
-To share a file/folder, hover your cursor on an item in the files app and click *Share*. You will be provided with some options:
+To share a file or folder:
 
-.. figure:: ../images/oc_files_share.png
+1. Using your cursor, hover over on an item in the Files app field.
 
-	Share dialog
+2. Locate the **Share** icon in the file or folder row.
 
-* The first field is to share this file/folder with local users/groups. This is very useful
-  if you are in a company and want to create a quick share with a colleague.
-* If you click on *Share link*, the other options will be visible. Since this link allows everyone
-  to download this file/folder, you may want to protect this share with a password. To do that,
-  click on *Password protect* and set a password.
-* If this share is a folder, you will also have an option to enable uploads into this folder using
-  the provided link. This is very useful to collect files from multiple users into same place easily.
-* If your server is configured with a mail server, you can type e-mail addresses separated with space to send the link to multiple users.
-* Finally, setting an expiration date will expiry the share after the specified date.
+3. Click *Share*.
 
-If you type a user and/or group to the *share with* field, you will be given extra sharing options such as informing via e-mail,
-letting users edit (create, update, delete, re-share) the share. To revoke permissions from users, simply click on trash icon
-on the same line with the users.
+	The Share dialog box opens to show the following options:
+
+	.. figure:: ../images/oc_files_share.png
+
+           Share dialog box
+
+4. Choose the desired share option:
+
+        * User/Group Share field: Enables you to specify to whom you want to
+          share the file or folder. Once you specify a user or group, a dialog
+          appears providing added sharing options.
+
+		.. figure:: ../images/oc_share_with_options.png
+ 
+		   Sharing options dialog
+
+	* **Share link** checkbox: When enabled (checked), provides the following additional share options:
+
+		- **File/Folder URL** field: Specifies the URL to the folder or file that you want to share.
+
+		- **Password Protect** checkbox: When enabled (checked), provides the option of protecting access to the file of folder through the use of a simple alphanumeric password.
+
+		- **Allow Public Upload** checkbox: When enabled (checked), provides the ability for shared users to upload files using the provided link.
+
+		- **Email Link** field: Enables you to alert users of the shared folder by email.  You can specify one or more email addresses in this field (separated by spaces) and then click the "Send" button to send emails of the share.
+
+			.. note:: The server must be configured with a mail server or mail server access.
+
+		- **Set expiration date** checkbox: When enabled (checked), you can specify a date for which the share expires.  You specify the expiration date in the format MM/DD/YYYY.  For added convenience, clicking in the "Expiration date" field opens a calendar from which you can specify the date.
+
+		.. figure:: ../images/oc_share_expiration_calendar.png
+
+		Expiration Date Calendar
+

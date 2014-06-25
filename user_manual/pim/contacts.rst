@@ -1,9 +1,11 @@
 Using the Contacts App
 ======================
 
-The contacts app of ownCloud is like any other mobile contact app but with more functionality.
-Just as you open your account you will get the a default addressbook available.
-We will see later that Of course you can always add and remove addressbooks in here.
+The contacts app of ownCloud is like any other mobile contact app but with more
+functionality.  Just as you open your account you will get the a default
+addressbook available.
+We will see later that Of course you can always add and remove addressbooks in
+here.
 
 Adding contacts
 ---------------
@@ -21,26 +23,28 @@ Just below the contact list, click on the gear button:
 
 .. image:: ../images/contact_bottombar.png
 
-Contact settings icon
+   Contact settings icon
 
 Once you've clicked it, an up arrow button which lets you upload files will be shown:
 
 .. image:: ../images/contact_uploadbutton.png
 
-Contact file upload icon
+   Contact file upload icon
 
-After choosing an addressbook to import into, click on the arrow. The upload window will be opened and let you choose your files.
-You can upload the files one by one or upload all of them at one go.
+After choosing an addressbook to import into, click on the arrow. The upload
+window will be opened and let you choose your files.  You can upload the files
+one by one or upload all of them at one go.
 
 Let us demonstrate.
 Open the directory in which you store all the files and then do the following
 Keep pressing CTRL and select the files to upload.
-After you are done just click on the open button
-After the upload it should look something like this in which all the names and contacts will be sorted alphabetically
+After you are done just click on the ``Open`` button.
+After the upload it should look something like this in which all the names and
+contacts will be sorted alphabetically
 
 .. image:: ../images/contact_vcfpick.jpg
 
-Picking VCF files
+   Picking VCF files
 
 After upload, the interface will automatically place your contacts into ownCloud.
 
@@ -48,19 +52,19 @@ After upload, the interface will automatically place your contacts into ownCloud
 Create contacts manually
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-On the left side of contacts app, you could see the *New Contact* button.
-After clicking on it you can now see an empty contact in the main part of the interface.
-You have the ability to add all your information about the contact:
-the name, the address, the e-mail, the telephone number, etc.
+On the left side of contacts app, you could see the new contact button (first one).
+Click on it. You can now see an empty contact in the main part of the interface.
+You have the ability to add all your informations about the contact:
+the name, the address, the e-mail, the telephone nr, etc.
 
 Just click on a field and start typing the information.
-You can use the "Add field..." button to add another types of information for this contact.
+You can use the "Add Field" button to add another types of information for this contact.
 
 .. image:: ../images/contact_emptycontact.png
 
 Empty contact view
 
-When you want to remove an information of your contact, just click on little trash icon
+When you want to remove an information of your contact, just click on little delete icon
 at the right of the field you want to remove.
 
 Adding picture to the contact
@@ -70,19 +74,19 @@ There are two methods in which you can give a picture id to the specific contact
 
 .. image:: ../images/contact_picture.jpg
 
-Contact picture options
+   Contact picture options
 
 1) **Direct upload**
-2) **Select photos already uploaded in ownCloud files.**
+2) **Select pics already uploaded in ownCloud files.**
 
 After you have selected the picture for the contact you get
 an option to crop the picture to suit your requirements
 
 .. image:: ../images/contact_crop.jpg
 
-Cropping contact picture
+   Cropping contact picture
 
-You can crop the picture however you wish and then press *Crop photo*.
+You can crop the picture however you wish and then press OK.
 
 As you can see it is really easy to set things right in this app.
 It automatically picks up the First name, Middle name (if any) and the last name
@@ -97,7 +101,7 @@ Then, you will be shown all available addressbooks to access the options.
 
 .. image:: ../images/contact_del_ab.png
 
-Addressbook options
+   Addressbook options
 
 There, you have the ability to add, delete, download or share your addressbooks.
 Hover your cursor on every icon to see what they mean.
@@ -113,7 +117,7 @@ You can sync this contact app to your phone which has the following OS's- Androi
 Syncing with Android
 ~~~~~~~~~~~~~~~~~~~~
 
-1) Install CardDAV - Sync free from Google play store by visiting `this link <https://play.google.com/store/apps/details?id=org.dmfs.carddav.sync>`_.
+1) Install CardDAV- Sync free from Google play store by visiting `this link <https://play.google.com/store/apps/details?id=org.dmfs.carddav.sync>`_.
 2) This app supports auto- configuration which is a Boon- after installing visit this link - carddavs://example.org/remote.php/carddav/ to auto-configure the app.
 3) Enter your login details
 4) After the app has checked your login details you may just select- Sync server to phone option
@@ -151,3 +155,9 @@ Other Syncing options provided by ownCloud
 
 1. For Android you may use official Android app which can be found `here <https://owncloud.org/install/>`_.
 2. And for iOS (iPhone and iPad) use their app which can be found `here <https://owncloud.org/install/>`_.
+
+Troubleshooting
+---------------
+
+Are you having problems using the app? Have a look at the :doc:`troubleshooting` guide.
+
