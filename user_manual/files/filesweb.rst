@@ -9,7 +9,7 @@ move, rename, download, share, and delete your files easily.
 
 	**ownCloud web interface Files app**
 
-ownCloud versio 7 enables you to see file thumbnails next to the filenames.
+ownCloud version 7 enables you to see file thumbnails next to the filenames.
 Hovering over a file or folder provides the following highlighted list of
 operations:
 
