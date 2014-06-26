@@ -18,12 +18,12 @@ access your personal settings:
 
 1. Click the Personal Settings dropdown menu to the right of the Search field
    in the ownCloud Main User Interface.
-	.. figure:: images/oc_personal_settings_dropdown.png
+	.. figure:: ../images/oc_personal_settings_dropdown.png
 
 	Personal Settings menu
 
 2. Select "Personal" from the menu. The Personal Settings window opens.
-	.. figure:: images/oc_personal_settings_window.png
+	.. figure:: ../images/oc_personal_settings_window.png
 
 The available space of a given user is calculated using the following formula::
 
