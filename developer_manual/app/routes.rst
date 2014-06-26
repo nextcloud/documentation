@@ -143,7 +143,7 @@ can be abbreviated by using the **resources** key:
     $application = new Application();
     $application->registerRoutes($this, array(
         'resources' => array(
-            array('authors' => array('url' => '/authors'))
+            array('author' => array('url' => '/authors'))
         ),
         'routes' => array(
             // your other routes here
