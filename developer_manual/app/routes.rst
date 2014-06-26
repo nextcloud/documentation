@@ -125,10 +125,10 @@ To prevent repetition, it's possible define resources. The following routes:
     $application->registerRoutes($this, array(
         'routes' => array(
             array('name' => 'author#index', 'url' => '/authors', 'verb' => 'GET'),
-            array('name' => 'author#show', 'url' => '/authors/{authorId}', 'verb' => 'GET'),
+            array('name' => 'author#show', 'url' => '/authors/{id}', 'verb' => 'GET'),
             array('name' => 'author#create', 'url' => '/authors', 'verb' => 'POST'),
-            array('name' => 'author#update', 'url' => '/authors/{authorId}', 'verb' => 'PUT'),
-            array('name' => 'author#destroy', 'url' => '/authors/{authorId}', 'verb' => 'DELETE'),
+            array('name' => 'author#update', 'url' => '/authors/{id}', 'verb' => 'PUT'),
+            array('name' => 'author#destroy', 'url' => '/authors/{id}', 'verb' => 'DELETE'),
             // your other routes here
         )
     ));
