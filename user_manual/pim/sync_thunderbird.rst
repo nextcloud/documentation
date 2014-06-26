@@ -16,7 +16,7 @@ With an installed Thunderbird mailtool, and installed SoGo Connector:
 
    -  "File > New > **Remote Addressbook**" (SoGo Connector added this)
    -  "**Name:**" is the name you want to give your Addressbook in the Thunderbird addressbook bar area
-   -  "**URL:**" is found in your OwnCloud Contacts area, that little Gear symbol
+   -  "**URL:**" is found in your ownCloud Contacts area, that little Gear symbol
 
 .. image:: ../images/contact_thunderbird-Symbol_Gear.jpg
 
