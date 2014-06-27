@@ -131,9 +131,9 @@ To upgrade your ownCloud Server:
 
 #. Replace the old version of ownCloud Server with the new version of ownCloud Server:
 
-  Assuming that your installation directory is called ‘owncloud’, and that it resides in your working directory, the command to unpack the release tarball into the directory would be as follows:
+  Assuming that your installation directory is called ‘owncloud’, and that it resides in your working directory, the command to unpack the release tarball into the directory would be as follows::
 
-  ``tar xjf owncloud-latest.tar.bz2``
+    tar xjf owncloud-latest.tar.bz2
 
   In Microsoft Windows environments, you can unpack the release tarball using WinZip or a similar tool (for example, Peazip).
 
