@@ -15,6 +15,7 @@ will be logged. You can choose between:
 * **1**: INFO
 * **2**: WARN
 * **3**: ERROR
+* **4**: FATAL
 
 The most detailed information will be written if **0** (DEBUG) is set, the
 least information will be written if **3** (ERROR) is set. Keep in mind that
