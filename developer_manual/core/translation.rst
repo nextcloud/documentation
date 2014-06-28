@@ -4,9 +4,12 @@ Translation
 Make text translatable
 ----------------------
 
-In HTML or PHP wrap it like this <?php echo $l->t('This is some text');?>
-For the right date format use <?php echo $l->l('date', time());?>.  Change the way dates are shown by editing /core/l10n/l10n-[lang].php
-To translate text in javascript use:  t('appname','text to translate');
+In HTML or PHP wrap it like this ``<?php p($l->t('This is some text'));?>`` or this ``<?php print_unescaped($l->t('This is some text'));?>``
+For the right date format use ``<?php p($l->l('date', time()));?>``. Change the way dates are shown by editing /core/l10n/l10n-[lang].php
+To translate text in javascript use: ``t('appname','text to translate');``
+
+
+.. note:: ``print_unescaped()`` should be preferred only if you would like to display HTML code. Otherwise, using ``p()`` is strongly preferred to escape HTML characters against XSS attacks.
 
 You shall never split sentences!
 --------------------------------
@@ -21,7 +24,7 @@ Example:
 
 .. code-block:: php
 
-  <?php echo $l->t('Select file from') . ' '; ?><a href='#' id="browselink"><?php echo $l->t('local filesystem');?></a><?php echo $l->t(' or '); ?><a href='#' id="cloudlink"><?php echo $l->t('cloud');?></a>
+  <?php p($l->t('Select file from')) . ' '; ?><a href='#' id="browselink"><?php p($l->t('local filesystem'));?></a><?php p($l->t(' or ')); ?><a href='#' id="cloudlink"><?php p($l->t('cloud'));?></a>
 
 Translators will translate:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -45,7 +48,7 @@ In case you need to add variables to the translation strings do it like that:
 
 .. code-block:: php
 
-  $l->t('%s is available. Get <a href="%s">more information</a>',array($data['versionstring'], $data['web']));
+  $l->t('%s is available. Get <a href="%s">more information</a>', array($data['versionstring'], $data['web']));
 
 Automated synchronization of translations
 -----------------------------------------
@@ -70,9 +73,7 @@ After the next nightly sync job a new resource will appear on Transifex and from
 Translation sync jobs:
 ~~~~~~~~~~~~~~~~~~~~~~
 
-http://ci.tmit.eu/job/ownCloud-core-tx/
-http://ci.tmit.eu/job/ownCloud-apps-tx/
-http://ci.tmit.eu/job/ownCloud-Mirall-tx/
+https://ci.owncloud.org/view/translation-sync/
 
 **Caution: information below is in general not needed!**
 
