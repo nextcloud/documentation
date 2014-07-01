@@ -1,16 +1,16 @@
 Files Encryption
 ================
 
-ownCloud ships a encryption app, which enables encryption of all files stored in
+ownCloud ships an encryption app, which enables encryption of all files stored in
 your ownCloud. Once the encryption app is enabled by the admin, all your files
-will be encrypted automatically. Encryption and decryption always happens
+will be encrypted automatically. Encryption and decryption always happen on the
 server-side. This enables the user to continue to use all the other apps to
 view and edit their data. But this also means that the server administrator could
 intercept your data. Server-Side encryption is especially useful if you
 use external storages. This way you can make sure that the storage provider is
 not able to read your data.
 
-Please remember. Once the encryption app is enabled your log-in password is required
+Please remember. Once the encryption app is enabled, your log-in password is required
 to decrypt and access your data. By default your data will be lost if
 you lose your log-in password. If you want to protect yourself against password
 loss, store your log-in password in a secure place or enable the recovery-key
