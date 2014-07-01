@@ -7,7 +7,7 @@ move, rename, download, share, and delete your files easily.
 
 .. figure:: ../images/oc_filesweb.png
 
-	**ownCloud web interface Files app**
+**ownCloud web interface Files app**
 
 ownCloud version 7 enables you to see file thumbnails next to the filenames.
 Hovering over a file or folder provides the following highlighted list of
@@ -21,7 +21,7 @@ operations:
 * :guilabel:`Delete` -- Deletes the selected file or folder.
 
 
-Navigating inside your ownCloud
+Navigating Inside Your ownCloud
 -------------------------------
 
 Navigating through folders in ownCloud is as simple as clicking on a folder to
@@ -31,7 +31,7 @@ the Files field for quick navigation.
 
 .. figure:: ../images/oc_filesweb_navigate.png
 
-   Navigation bar
+**Navigation bar**
 
 The navigation bar functions as a "breadcrumb" locator.  It indicates your
 current directory and enables you to migrate back to one of the upper
@@ -46,7 +46,7 @@ folder by clicking on the *New* button in the Files app.
 
 .. figure:: ../images/oc_filesweb_new.png
 
-   New button options
+**New button options**
 
 The *New* button provides the following three options from which to choose:
 
@@ -79,7 +79,7 @@ files from the ownCloud server by clicking on the file name. If ownCloud cannot
 display a file, a download process starts and the file is downloaded to your
 system.
 
-Moving files
+Moving Files
 ------------
 
 Using the ownCloud web interface, you can move files and folders by dragging
@@ -87,7 +87,7 @@ and dropping them into any directory. If you want to move a file or folder to
 an upper directory, click and drag them to one of the folders shown in the
 navigation bar.
 
-Sharing files
+Sharing Files
 -------------
 
 You can share any file or folder on ownCloud with a local user, group, or any
@@ -103,36 +103,34 @@ To share a file or folder:
 
 3. Click *Share*.
 
-	The Share dialog box opens to show the following options:
+  The Share dialog box opens to show the following options:
 
-	.. figure:: ../images/oc_files_share.png
+  .. figure:: ../images/oc_files_share.png
 
-           Share dialog box
+    **Share dialog box**
 
 4. Choose the desired share option:
 
-        * User/Group Share field: Enables you to specify to whom you want to
-          share the file or folder. Once you specify a user or group, a dialog
-          appears providing added sharing options.
+  * **User/Group Share** field: Enables you to specify to whom you want to share the file or folder. Once you specify a user or group, a dialog appears providing added sharing options.
 
-		.. figure:: ../images/oc_share_with_options.png
- 
-		   Sharing options dialog
+	  .. figure:: ../images/oc_share_with_options.png
+	      
+		**Sharing options dialog**
 
-	* **Share link** checkbox: When enabled (checked), provides the following additional share options:
+  * **Share link** checkbox: When enabled (checked), provides the following additional share options:
 
-		- **File/Folder URL** field: Specifies the URL to the folder or file that you want to share.
+	- **File/Folder URL** field: Specifies the URL to the folder or file that you want to share.
 
-		- **Password Protect** checkbox: When enabled (checked), provides the option of protecting access to the file of folder through the use of a simple alphanumeric password.
+	- **Password Protect** checkbox: When enabled (checked), provides the option of protecting access to the file of folder through the use of a simple alphanumeric password.
 
-		- **Allow Public Upload** checkbox: When enabled (checked), provides the ability for shared users to upload files using the provided link.
+	- **Allow Public Upload** checkbox: When enabled (checked), provides the ability for shared users to upload files using the provided link.
 
-		- **Email Link** field: Enables you to alert users of the shared folder by email.  You can specify one or more email addresses in this field (separated by spaces) and then click the "Send" button to send emails of the share.
+	- **Email Link** field: Enables you to alert users of the shared folder by email.  You can specify one or more email addresses in this field (separated by spaces) and then click the "Send" button to send emails of the share.
 
-			.. note:: The server must be configured with a mail server or mail server access.
+		.. note:: The server must be configured with a mail server or mail server access.
 
-		- **Set expiration date** checkbox: When enabled (checked), you can specify a date for which the share expires.  You specify the expiration date in the format MM/DD/YYYY.  For added convenience, clicking in the "Expiration date" field opens a calendar from which you can specify the date.
+  * **Set expiration date** checkbox: When enabled (checked), you can specify a date for which the share expires.  You specify the expiration date in the format MM/DD/YYYY.  For added convenience, clicking in the "Expiration date" field opens a calendar from which you can specify the date.
 
-		.. figure:: ../images/oc_share_expiration_calendar.png
+	  .. figure:: ../images/oc_share_expiration_calendar.png
 
-		   Expiration Date Calendar
+		**Expiration Date Calendar**
