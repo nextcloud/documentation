@@ -1,38 +1,31 @@
 Windows 7 and Windows Server 2008
 ---------------------------------
+.. _installationserverwindows:
 
-.. note:: You must move the data directory outside of your public root (See
-          advanced install settings)
+.. note:: You must move the data directory outside of your public root (See advanced install settings)
 
-This section describes how to install ownCloud on Windows with :abbr:`IIS
-(Internet Information Services)`.
+This section describes how to install ownCloud on Windows with :abbr:`IIS (Internet Information Services)`.
 
-It assumes that you have a vanilla, non-IIS enabled Windows
-machine – Windows 7 or Server 2008. After enabling IIS, the steps are
-essentially identical for Windows 7 and Windows Server 2008.
+These instructions assume that you have a standard, non-IIS enabled Windows machine using Windows 7 or Server 2008. After enabling IIS, the procedures are essentially identical for both Windows 7 and Windows Server 2008.
 
-For installing ownCloud physical access or a remote desktop connection is
-required. You should leverage MySQL as the backend database for ownCloud. If you
-do not want to use MySQL, it is possible to use Postgres or SQLite instead.
-Microsoft SQL Server is not yet support.
+For installation, ownCloud physical access or a remote desktop connection is required. We recommend that you leverage MySQL as the backend database for ownCloud. If you do not want to use MySQL, you can use Postgres or SQLite instead.  However, Microsoft SQL Server is not yet support.
 
 Enabling SSL is not yet covered by this section.
 
-.. note:: If you make your desktop machine or server available outside of your
-          LAN, you must maintain it. Monitor the logs, manage the access, apply patches to
-          avoid compromising the system at large.
+.. note:: If you make your desktop machine or server available outside of your LAN, you must maintain it. Make sure to monitor the logs, manage the access, and apply patches to avoid compromising the system as a whole.
 
-There are 4 primary steps to the installation, and then a 5th step
-required for configuring everything to allow files larger than the
-default 2 MB.
+There are four primary steps to the installation, and then an added fifth step required for configuring everything to allow files larger than the
+default 2 MB size.
 
-#. Install IIS with CGI support – enable IIS on your Windows machine.
-#. Install PHP – Grab, download and install PHP.
-#. Install MySQL – Setup the MySQL server manager and enable ownCloud to create
-   an instance.
-#. Install ownCloud – The whole reason we are here!
-#. Configure upload sizes and timeouts to enable large file uploads – So that
-   you can upload larger files.
+1. Install IIS with CGI support – enable IIS on your Windows machine.
+
+2. Install PHP – Grab, download and install PHP.
+
+3. Install MySQL – Setup the MySQL server manager and enable ownCloud to create an instance.
+
+4. Install ownCloud – The whole reason we are here!
+
+5. Configure upload sizes and timeouts to enable large file uploads – So that you can upload larger files.
 
 Activate IIS with CGI Support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -40,13 +33,18 @@ Activate IIS with CGI Support
 Windows 7
 ^^^^^^^^^
 
-#. Go to :guilabel:`Start --> Control Panel --> Programs`.
-#. Under Programs and Features, there is link titled :guilabel:`Turn Windows Features on
-   and Off`. Click on it.
-#. There is a box labeled Internet Information Services, expand it.
-#. Expand World Wide Web Services and all the folders underneath.
-#. Select the folders as illustrated in the picture below to get your IIS
-   server up and running.
+To activate IIS on Microsoft Windows 7:
+
+1. Navigate to :guilabel:`Start --> Control Panel --> Programs`.
+
+2. Under Programs and Features, click on the link entitled :guilabel:`Turn Windows Features on
+   and Off`.
+
+3. Expand the box labeled :guilabel:`Internet Information Services`.
+
+4. Expand ``World Wide Web Services`` and all of the folders beneath it.
+
+5. Select the folders as shown in the image below to launch the IIS server.
 
 .. figure:: ../images/win7features.jpg
     :width: 250px
@@ -54,42 +52,50 @@ Windows 7
     :alt: Windows features required for ownCloud on Windows 7
     :figclass: align-center
 
-    Windows Features required for ownCloud on Windows 7
+    **Windows Features required for ownCloud on Windows 7**
 
-You do not need an FTP server running, so you should tune
-that feature off for your server. You definitely need the IIS Management
-Console, as that is the easiest way to start, stop, restart you server,
-as well as where you change certificate options and manage items like
-file upload size. You must check the CGI box under Application
-Development Features, because CGI is how you enable PHP on IIS.
+6. Because a running FTP server is not required, turn off that feature for your server. 
 
-You have to turn off WebDAV publishing or the Windows WebDAV
-conflicts with the ownCloud WebDAV interface. This might already be
-turned off for you, just make sure it stays that way. The common HTTP
+7. Ensure that you have the IIS Management Console.
+
+    An IIS management console is the easiest way to start, stop, and restart you server.  This console also enables you to change certificate options and manage items like file upload size.
+
+8. Check the CGI checkbox under ``Application Development Features`` in order to enable PHP on IIS.
+
+9. Turn off WebDAV publishing to avoid conflicts between the Windows WebDAV and the ownCloud WebDAV interface. 
+
+    .. note:: This feature might already be turned off for you.  However, we recommend that you ensure that it remains off. The common HTTP
 features are the features you would expect from a web server.
-With the selections on this page, IIS will now serve up a web page for you.
 
-Restart IIS by going to the IIS manager (:guilabel:`Start --> IIS Manager`).
+    After implementing the selections on this page, IIS serves up a web page.
 
-Select your website, and on the far right side is a section titled
-:guilabel:`Manage Server`. Make sure that the service is started, or click
-:guilabel:`Start` to start the services selected. Once this is complete, you
-should be able to go to a web browser and navigate to http://localhost.
+10. Restart IIS by going to the IIS manager (:guilabel:`Start --> IIS Manager`).
 
-This should open the standard IIS 7 splash page, which is just a static image
-that says your web server is running. Assuming you were able to get the
-splash page, it is safe to say your web server is now up and running.
+11. Select your website.
+
+    On the far right side of the opening page you will see a section titled :guilabel:`Manage Server`. 
+
+12. Make sure that the service is started, or click :guilabel:`Start` to start the services selected. 
+
+13. Go to a web browser and navigate to http://localhost.
+
+    The standard IIS 7 splash page opens.  This page displays a static image that indicates that your web server is running. Assuming you were able to reach splash page, your web server is now up and running.
 
 
 Windows Server 2008
 ^^^^^^^^^^^^^^^^^^^
 
-#. Go to :guilabel:`Start --> Control Panel --> Programs`.
-#. Under Programs and Features, there is link titled
-   :guilabel:`Turn Windows Features on and Off`. Click on it.
-#. This will bring up the Server Manager.
-#. In the server manager, Click on Roles, and then click Add Roles.
-#. Use the :guilabel:`Add Roles Wizard` to add the web server role.
+1. Navigate to :guilabel:`Start --> Control Panel --> Programs`.
+
+2. Under Programs and Features, click the link titled :guilabel:`Turn Windows Features on and Off`.
+
+    The Server Manager starts.
+
+3. In the Server Manager, click ``Roles``
+
+4. Click ``Add Roles``.
+
+5. Use the :guilabel:`Add Roles Wizard` to add the web server role.
 
 .. figure:: ../images/winserverroles.jpg
     :width: 300px
@@ -97,76 +103,87 @@ Windows Server 2008
     :alt: server roles required for ownCloud
     :figclass: align-center
 
-    Server roles required for ownCloud
+    **Server roles required for ownCloud**
 
-6. Make sure that, at a minimum, the same boxes are checked in this wizard that
-   are checked in the Windows 7 Section. For example, make sure that the CGI box
-   is checked under Application Development Features, and that WebDAV Publishing
-   is turned off. With Remote Desktop Sharing turned on, the detailed role
-   service list looks like the figure “Role Services”.
-7. Restart IIS by going to the IIS manager (:guilabel:`Start --> IIS Manager`).
-8. Select your website, and on the far right side is a section titled Manage
-   server. Make sure that the service is started, or click “Start” to start the
-   services selected.
+6. Make sure that, at a minimum, the same boxes are checked in this wizard that are checked in the Windows 7 Section. For example, make sure that the CGI box is checked under Application Development Features, and that WebDAV Publishing is turned off. With Remote Desktop Sharing turned on, the detailed role service list looks like the figure “Role Services”.
 
-9. Once this is complete, you should be able to go to a web browser and type
-   `localhost`. This should open the standard IIS 7 splash page, which is just a
-   static image that says your web server is running.Assuming you were able to get
-   the splash page, it is safe to say your web server is now up and running. The
-   next part of this “how to” installs PHP on the server.
+7. Go to the IIS manager (:guilabel:`Start --> IIS Manager`) and restart IIS.
+
+8. Select your website
+
+    On the far right side of the opening page you will see a section titled :guilabel:`Manage Server`. 
+
+9. Make sure that the service is started, or click “Start” to start the services selected.
+
+9. Go to a web browser and type `localhost`. 
+
+    The standard IIS 7 splash page opens to display a static image that says your web server is running. Accessing this splash page indicates that your web server is now functioning. 
+
+Proceed to the next section to install PHP on the server.
 
 Installing PHP
 ~~~~~~~~~~~~~~
 
-This part is also straightforward, but it is necessary to remind you that this
-is for IIS only.
+This part is also straightforward, but it is necessary to remind you that this is for IIS only.
 
-1. Go to the following link and grab the `PHP installer
-   <http://windows.php.net/download/>`_ for version "VC9 Non Thread Safe" 32 or
+To install PHP:
+
+1. Go to the following link and download the `PHP installer <http://windows.php.net/download/>`_ for version "VC9 Non Thread Safe" 32 or
    64 bit based on your system.
 
-.. note:: If you are using Apache, make sure you grab VC6 instead, lower on the page.
+    .. note:: If you are using Apache, make sure you download version VC6 instead.  You can locate this version lower on the page.
 
-2. Once through that login, select the location that is closest to you
-   geographically.
-3. Run that install wizard once it is downloaded. Read the license agreement,
-   agree, select an install directory.
-4. Then select IIS FastCGI as the install server. 
-5. Take the default selections for the items to install, and click next.
-   Then click `install`.
-6. After a few minutes, PHP will be installed. On to MySQL.
+2. Once you have logged in, select the location that is closest to you geographically.
+
+3. Run the install wizard once it downloads. 
+
+4. Read the license agreement, agree, and select an install directory.
+
+4. Select IIS FastCGI as the install server. 
+
+5. Click next, accepting the default selections for the items to install.
+
+6. Click `install`.
+
+    PHP installs on your system. 
+
+Proceed to the next section to install MySQL.
 
 Installing MySQL
 ~~~~~~~~~~~~~~~~
 
-This part installs MySQL on your Windows machine.
+To install MySQL on your Windows machine:
 
-#. Point your browser to http://dev.mysql.com/downloads/ and download the latest
-   community edition for your OS – the 32 or 64 bit version. Please download the
-   **MSI Installer** as it will make life easier.
-#. Once downloaded, install MySQL (5.5 at the time of writing). Select the
-   Typical installation.
-#. When that finishes, check the box to launch the MySQL Instance Configuration
-   Wizard and click Finish.
-#. Select a standard configuration, as this will be the only version of MySQL on
-   this machine.
-#. Select to install as a windows service, and Check the Launch the MySQL Server
-   Automatically button.
-#. Select the modify security settings box on the next page, and enter a
-   password you will remember. You will need this password when you configure
-   ownCloud.
-#. Uncheck “enable root access from remote machines” for security reasons.
-#. Click execute, and wait while the instance is created and launched.
-#. Click Finish when this is all complete.
+1. Use your browser to migrate to http://dev.mysql.com/downloads/.
+
+2. Download the latest community edition for your operating system, choosing either the 32 or 64 bit version as applicable. 
+
+3. Download the **MSI Installer** to assist with the install.
+
+4. Once the download completes, install MySQL (5.5 at the time of writing), selecting the typical installation.
+
+5. Once the installation completes, check the checkbox to launch the MySQL Instance Configuration Wizard and click ``Finish``.
+
+6. Select a standard configuration, as this will be the only version of MySQL on this machine.
+
+7. Select the option to install as a windows service, and Check the ``Launch the MySQL Server Automatically`` button.
+
+8. Select the modify security settings checkbox on the next page, and enter a password.
+
+    .. note:: Make sure to note your chosen password.  You will need this password when you configure ownCloud.
+
+9. Uncheck ``enable root access from remote machines`` for security reasons.
+
+10. Click execute.
+
+    The instance is created and launched.
+
+11. Once the instance launches, click Finish.
 
 .. You can make some pretty good educated guesses on the type of install needed for ownCloud. %% That's not really useful, clarify!
 
-Take particular note of your MySQL password, as the user name **root**
-and the password you select will be necessary later on in the ownCloud
-installation. As an aside, this link is an excellent resource for questions on
-how to configure your MySQL instance, and also to configure PHP to work with
-MySQL. This, however, is not strictly necessary as much of this is handled when
-you download ownCloud.
+Take particular note of your MySQL password, as the user name **root** and the password you select will be necessary later on in the ownCloud
+installation. As an aside, this link is an excellent resource for questions on how to configure your MySQL instance, and also to configure PHP to work with MySQL. This, however, is not strictly necessary as much of this is handled when you download ownCloud.
 
 More information in this topic can be found in a `tutorial on the IIS web site`_.
 
@@ -177,90 +194,89 @@ Installing ownCloud
 ~~~~~~~~~~~~~~~~~~~
 
 1. Download the latest version of ownCloud from http://owncloud.org/download.
-2. It will arrive as a tar.bz2 file, and I recommend something like jZip for a
-   free utility to unzip it.
-3. Once you have the ownCloud directory unzipped and saved locally, copy it into
-   your wwwroot directory (probably **C:\\inetpub\\wwwroot**).
 
-.. note:: You cannot install directly into the directory **wwwroot** from jzip,
-          as only the administrator can unzip into the **wwwroot** directory. If you save
-          it in a different folder, and then move the files into **wwwroot** in windows
-          explorer, it works. This will install ownCloud locally in your root web
-          directory. You can use a subdirectory called owncloud, or whatever you want –
-          the www root, or something else.
+    The file is downloaded in tar.bz2 format.
 
-4. It is now time to give write access to the ownCloud directory to the ownCloud
-   server: Navigate your windows explorer over to  **inetpub/wwwroot/owncloud** (or
-   your installation directory if you selected something different).
-5. Right click and select properties. Click on the security tab, and click the
-   button “to change permissions, click edit”.
-6. Select the “users” user from the list, and check the box “write”.
-7. Apply these settings and close out.
+2. Unzip the file and save it locally.
 
-Continue by following the :doc:`installation_wizard`.
-Select MySQL as the database, and enter your MySQL database user name,
-password and desired instance name – use the user name and password you setup
-during MySQL installation, and pick any name for the database instance.
+    .. note:: You can use jZip for a free utility (like Peazip) to unzip the file.
 
-Ensure Proper HTTP-Verb handling
+3. Copy the file to your wwwroot directory (for example, **C:\\inetpub\\wwwroot**).
+
+    .. note:: Only the administrator can install directly into the directory **wwwroot** from an unzipping application. However, you can save the file in a different folder and then move the files into **wwwroot** in windows explorer. This process installs ownCloud locally in your root web directory. You can use a subdirectory called owncloud (or whatever name you choose).
+
+4. To enable write access to the ownCloud directory to the ownCloud server, navigate your windows explorer to  **inetpub/wwwroot/owncloud** (or the installation directory you selected).
+
+5. Right click and select properties. 
+
+6. Click the security tab, and select the button “to change permissions, click edit”.
+
+7. Select the “users” user from the list, and check the box “write”.
+
+8. Apply these settings and close the window.
+
+Continue by following the :doc:`installation_wizard`. Select MySQL as the database, and enter your MySQL database user name, password and desired instance name – use the user name and password you setup during MySQL installation, and pick any name for the database instance.
+
+Ensure Proper HTTP-Verb Handling
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-IIS must pass all HTTP and WebDAV verbs to the PHP/CGI handler, and must not try
-to handle them by itself. If it does, syncing with the Desktop and Mobile
-Clients will fail. Here is how to ensure your configuration is correct:
+IIS must pass all HTTP and WebDAV verbs to the PHP/CGI handler, and must not attempt to handle them by itself or syncrhonizing with the Desktop and Mobile Clients will fail. 
 
-#. Open IIS Manager7.
-#. In the `Connections` bar, pick your site below `Sites`, or choose the top
-   level entry if you want to modify the machine-wide settings.
-#. Choose the `Handler Mappings` feature click `PHP_via_fastCGI`.
-#. Choose `Request Restrictions` and find the `Verbs` tab.
-#. Ensure `All Verbs` is checked.
-#. Click `OK`.
-#. Next, choose `Request Filtering` feature from IIS Manager.
-#. Ensure that all verbs are permitted (or none are forbidden) in the `Verbs`
-   tab.
+To ensure your configuration is correct:
 
-Also, ensure that you did not enable the WebDAV authoring module, since ownCloud
-needs to be able to handle WebDAV on the application level.
+1. Open IIS Manager7.
+
+2. In the `Connections` bar, select your site below `Sites`, or choose the top level entry if you want to modify the machine-wide settings.
+
+3. Choose the `Handler Mappings` feature.
+
+4. Click `PHP_via_fastCGI`.
+
+5. Choose `Request Restrictions` and locate the `Verbs` tab.
+
+6. Ensure `All Verbs` is checked.
+
+7. Click `OK`.
+
+7. Choose the `Request Filtering` feature from the IIS Manager.
+
+8. Ensure that all verbs are permitted (or none are forbidden) in the `Verbs` tab.
+
+    .. note:: Because ownCloud must be able to use WebDAV on the application level, you must also ensure that you do not enable the WebDAV authoring module.
 
 
 Configuring ownCloud, PHP and IIS for Large File Uploads
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Before going too nuts on ownCloud, it is important to do a couple of
-configuration changes to make this a useful service for you. You will probably
-want to increase the **max upload size**, for example. The default upload is
-set to **2MB**, which is too small for even most MP3 files.
+Before you begin to use ownCloud heavily, it is important to make a few configuration changes to enhance the service and make it more useful.  For example, you might want to increase the **max upload size**. The default upload is set to **2MB**, which is too small for many files (for example, most MP3 files).
 
-To do that, simply go into your **PHP.ini** file, which can be found in your
-**C:\\Program Files (x86)\\PHP** folder. In here, you will find a **PHP.ini**
-file. Open this in a text editor, and look for a few key attributes to
-change:
+To adjust the maximum upload size, you must access your ``PHP.ini`` file.  You can locate this file in your **C:\\Program Files (x86)\\PHP** folder.
 
-+ **upload_max_filesize** – change this to something good, like 1G, and you
-  will get to upload much larger files.
-+ **post_max_size** – also change this size, and make it larger than the max
-  upload size you chose, like 1G.
+To adjust the maximum upload size, open the ``PHP.ini`` file in a text editor, find the following key attributes, and change them to what you want to use:
 
-There are other changes you can make, such as the timeout duration for
-uploads, but for now you should be all set in the **PHP.ini** file.
++ **upload_max_filesize** – Changing this value to something like 1G will enable you to upload much larger files.
++ **post_max_size** – Change this value to be larger than your max upload size you chose.
 
-Now you have to go back to IIS manager and make one last change to enable file
-uploads on the web server larger than 30 MB.
+You can make other changes in the ``PHP.ini`` file (for example, the timeout duration for uploads).  However, most default settings in the **PHP.ini** file should function appropriately.
+
+To enable file uploads on the web server larger than 30 MB, you must also change some settings in the IIS manager.  
+
+To modify the IIS Manager:
 
 1. Go to the start menu, and type **iis manager**.
-2. Open IIS Manager Select the website you want enable to accept large file
-   uploads.
-3. In the main window in the middle double click on the icon **Request
-   filtering**.
-4. Once the window is opened you will see a bunch of tabs across the top of the
-   far right,
 
-   Select :guilabel:`Edit Feature Settings` and modify the :guilabel:`Maximum
-   allowed content length (bytes)`
+    IIS manager launches.
 
-5. In here, you can change this to up to 4.1 GB.
+2. Select the website that you want to accept large file uploads.
 
-.. note:: This entry is in BYTES, not KB.
+3. In the main (middle) window, double click the icon **Request filtering**.
 
-You should now have ownCloud configured and ready for use.
+    A window opens displaying a number of tabs across the top.
+
+4. Select :guilabel:`Edit Feature Settings` 
+
+5. Modify the :guilabel:`Maximum allowed content length (bytes)` value to 4.1 GB.
+
+    .. note:: This entry is in bytes, not kilobytes.
+
+    Congratulations!  ownCloud is now configured and ready for use.

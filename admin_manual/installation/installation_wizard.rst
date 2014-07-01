@@ -33,6 +33,7 @@ whenever you want to configure something for your ownCloud instance.
 
 Advanced Options
 ~~~~~~~~~~~~~~~~
+.. _advancedoptions:
 
 * Advanced settings are available for configuring a different database or data
   directory than the default ones.
