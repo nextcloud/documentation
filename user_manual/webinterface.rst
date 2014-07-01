@@ -15,6 +15,7 @@ To access the ownCloud web interface:
    The ownCloud login window opens.
 
    .. figure:: images/oc_connect.png
+      :scale: 75%
 
    **ownCloud login window**
 
@@ -32,7 +33,7 @@ To access the ownCloud web interface:
    The ownCloud main interface opens.
 
    .. figure:: images/oc_main_web.png
-      :scale: 80%
+      :scale: 60%
 
    **ownCloud main user interface**
 
@@ -44,7 +45,7 @@ Once you have accessed the ownCloud Server main web interface you can add files,
 (if you are administering the server) or by your server administrator.
 
 .. figure:: images/oc_main_web_labelled.png
-   :scale: 80%
+   :scale: 60%
 **Navigating the main user interface**
 
 The ownCloud Maine User Interface contains the following fields and functions:
