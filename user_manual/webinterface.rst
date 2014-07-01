@@ -14,7 +14,7 @@ To access the ownCloud web interface:
 
    The ownCloud login window opens.
 
-.. figure:: images/oc_connect.png
+   .. figure:: images/oc_connect.png
 
    **ownCloud login window**
 
@@ -32,7 +32,7 @@ To access the ownCloud web interface:
    The ownCloud main interface opens.
 
    .. figure:: images/oc_main_web.png
-      :scale: 75%
+      :scale: 80%
 
    **ownCloud main user interface**
 
@@ -40,12 +40,12 @@ To access the ownCloud web interface:
 Navigating the Main User Interface
 ------------------------------------
 
-Once you have accessed the ownCloud Server main web interface you can add
-files, remove files, and make changes based on the access privileges set by you
+Once you have accessed the ownCloud Server main web interface you can add files, remove files, and make changes based on the access privileges set by you
 (if you are administering the server) or by your server administrator.
 
 .. figure:: images/oc_main_web_labelled.png
-   :scale: 75%
+   :scale: 80%
+**Navigating the main user interface**
 
 The ownCloud Maine User Interface contains the following fields and functions:
 
@@ -75,8 +75,7 @@ The ownCloud Maine User Interface contains the following fields and functions:
 
 * **Navigation Bar**: Located over the main viewing window (the Application
   View), this bar provides a type of breadcrumbs navigation that enables you to
-  migrate to higher levels of the folder hierarchy up to the root level (home) of
-  your ownCloud instance.
+  migrate to higher levels of the folder hierarchy up to the root level (home) of your ownCloud instance.
 
 * **New** button: Located in the Navigation Bar, the :guilabel:`New` button
   ebables you to create new files, new folders, or upload existing files from a
