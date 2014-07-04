@@ -81,6 +81,8 @@ features are the features you would expect from a web server.
 
     The standard IIS 7 splash page opens.  This page displays a static image that indicates that your web server is running. Assuming you were able to reach splash page, your web server is now up and running.
 
+Continue by `installing PHP`_.
+
 
 Windows Server 2008
 ^^^^^^^^^^^^^^^^^^^
@@ -111,43 +113,32 @@ Windows Server 2008
 
 8. Select your website
 
-    On the far right side of the opening page you will see a section titled :guilabel:`Manage Server`. 
+9. Once this is complete, you should be able to go to a web browser and type
+   `localhost`. This should open the standard IIS 7 splash page, which is just a
+   static image that says your web server is running. Assuming you were able to get
+   the splash page, it is safe to say your web server is now up and running.
 
-9. Make sure that the service is started, or click “Start” to start the services selected.
-
-9. Go to a web browser and type `localhost`. 
-
-    The standard IIS 7 splash page opens to display a static image that says your web server is running. Accessing this splash page indicates that your web server is now functioning. 
-
-Proceed to the next section to install PHP on the server.
+Continue by `installing PHP`_.
 
 Installing PHP
 ~~~~~~~~~~~~~~
 
-This part is also straightforward, but it is necessary to remind you that this is for IIS only.
+1. Go to the `PHP for Windows`_ download page.
 
-To install PHP:
+.. note:: The instructions below are for IIS only. If using a different server
+          software, make sure to follow the hints on "Which version do I
+          choose" on the left hand side of the page linked above.
 
-1. Go to the following link and download the `PHP installer <http://windows.php.net/download/>`_ for version "VC9 Non Thread Safe" 32 or
-   64 bit based on your system.
+2. Download the Installer for PHP 5.3, the "VC9 Non Thread Safe" version,
+   either 32 or 64 bit, depending on your system.
+3. Run the downloaded installation executable.
+4. Read the license agreement, agree, select an install directory.
+5. Then select IIS FastCGI as the install server.
+6. Take the default selections for the items to install, and click next.
+   Then click `install`.
+7. Once the installer is finished, PHP is installed.
 
-    .. note:: If you are using Apache, make sure you download version VC6 instead.  You can locate this version lower on the page.
-
-2. Once you have logged in, select the location that is closest to you geographically.
-
-3. Run the install wizard once it downloads. 
-
-4. Read the license agreement, agree, and select an install directory.
-
-4. Select IIS FastCGI as the install server. 
-
-5. Click next, accepting the default selections for the items to install.
-
-6. Click `install`.
-
-    PHP installs on your system. 
-
-Proceed to the next section to install MySQL.
+Continue by `installing MySQL`_.
 
 Installing MySQL
 ~~~~~~~~~~~~~~~~
@@ -279,4 +270,7 @@ To modify the IIS Manager:
 
     .. note:: This entry is in bytes, not kilobytes.
 
-    Congratulations!  ownCloud is now configured and ready for use.
+You should now have ownCloud configured and ready for use.
+
+
+.. _PHP For Windows: http://windows.php.net/download/
