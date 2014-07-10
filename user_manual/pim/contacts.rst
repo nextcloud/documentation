@@ -49,7 +49,7 @@ checkbox next to the address book.
 include the following:
 
   - Automatic format -- Any VCF file. ownCloud determines the file format and 
-    imports accordingly (?? Is this correct?  I'm guessing here.??)
+    imports accordingly.
 	
   - Gmail CSV -- The comma-separated values file from your Gmail account.
   
@@ -64,8 +64,7 @@ include the following:
   
   - Gmail VCard -- The VCard files from your Gmail account.
   
-  - Standard VCard -- The VCard files from your Standard account. (??What is a
-    "Standard" VCard??)
+  - Standard VCard -- The VCard files from your Standard account.
 	
   - Yahoo VCard  -- The VCard files from your Yahoo account.
    
