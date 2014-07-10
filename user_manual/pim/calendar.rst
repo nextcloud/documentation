@@ -62,7 +62,14 @@ To create a new calendar:
 Managing Calendar Settings
 --------------------------
   
-The Calendar app settings enable you to modify the following:
+The Calendar app settings provides global configuration that applies to all 
+calendars that you have created in the Calendar app. 
+
+  .. figure:: ../images/calendar_settings.png
+  
+  **Calendar app settings**
+
+In the Calendar app settings, you can modify the following:
 
 - Timezone -- Provides an alphabetical listing of all available countries 
   categorized by continent.
@@ -78,8 +85,6 @@ The Calendar app settings enable you to modify the following:
 
 - iOS/OS X CalDAV address -- Provides the iOS/OS X CalDAV link URL.
 
-.. note:: The Calendar app settings are global and apply to all calendars that 
-  you have created.
 
 Synchronizing Calendars Using CalDAV
 ------------------------------------
@@ -123,57 +128,170 @@ The following is an example showing the completed URL where the calendar name is
 .. Note: Calendar names are lower case and any spaces are removed. They are not
   URL-encoded.
 
-Creating events
+Creating Events
 ---------------
 
-To create an event just click on the date in the month view or choose the
-timeframe in the weekview. In the dialog which will appear you can enter your
-information like title, category, etc.
+The Calendar app enables you to create new events.
 
-.. figure:: ../images/calendar_createevent.png
-New event window
+To create a new event:
 
-With the advanced options you can set the
-description, the location and the repetition rate of an event. If the repeating
-should end you can choose between setting the end by date or by occurrences. If
-you choose in the weekview all days from Monday to Friday it will automatically
-set the repeat rule to "every weekday". If the interval of the weekview can be
-divided by two it automatically set the repeat rule to "Bi-Weekly".
+1. Click a date in the month view or a time in either the week or day views.
 
-Exporting / Importing events
-----------------------------
+   The ``Create a new event`` dialog box opens.
 
-Export
-~~~~~~
+   .. figure:: ../images/calendar_create_event.png
+
+   **Create a new event dialog box**
+
+2. Specify a title for the event.
+
+3. Specify a date and time duration for the event.
+
+4. (Optional) Provide advanced option details.  These details can include the
+   event location, the event category, and an event description.
+   
+   .. figure:: ../images/calendar_create_event.png
+
+   **Create a new event dialog box**
+   
+5. (Optional) Click the Repeating tab to define any repeat settings for the event.
+
+   .. figure:: ../images/calendar_create_event_repeat.png
+   
+   **Even Repeating tab**
+   
+   The Repeating tab provides the option of not repeating the event(default) or 
+   repeating the event daily, weekly, every weekday, biweekly, monthly, or yearly.
+   In addition, by selecting the ``Advanced`` button in the Repeating tab, each 
+   repeat option provides different levels of customization to better define your
+   repeat requirements for the event.
+   
+   The following table helps to define the options for each repeat rule:
+   
+   +-----------------+------------------------------------------------------------------------------------+ 
+   | Repeat Rule     | Options                                                                            | 
+   +=================+====================================================================================+ 
+   | Does not repeat | n/a                                                                                | 
+   +-----------------+------------------------------------------------------------------------------------+ 
+   | Daily           | Interval - Interval at which the event is repeated                                 | 
+   |                 | End - never, by occurrences, by date                                               |
+   +-----------------+------------------------------------------------------------------------------------+ 
+   | Weekly          | Select weekdays - Weekday(s) on which the event is repeated                        | 
+   |                 | Interval - Interval at which the event is repeated                                 |
+   |                 | End - never, by occurrences, by date                                               |
+   +-----------------+------------------------------------------------------------------------------------+ 
+   | Every Weekday   | Interval - Interval at which the event is repeated                                 | 
+   |                 | End - never, by occurrences, by date                                               |
+   +-----------------+------------------------------------------------------------------------------------+
+   | Bi-Weekly       | Interval - Interval at which the event is repeated                                 | 
+   |                 | End - never, by occurrences, by date                                               |
+   +-----------------+------------------------------------------------------------------------------------+
+   | Monthly         | Day choice -- by monthday or by weekday                                            | 
+   |                 | Events week of month - Weekday selection only; week of month on which event occurs |
+   |                 | Select weekdays - Weekday(s) on which the event is repeated                        |
+   |                 | Interval - Interval at which the event is repeated                                 |
+   |                 | End - never, by occurrences, by date                                               |
+   +-----------------+------------------------------------------------------------------------------------+
+   | Yearly          | Date option - by event's date, by year days, by week number, by day and month      |
+   |                 | Interval - Interval at which the event is repeated                                 |
+   |                 | End - never, by occurrences, by date                                               |   
+   +-----------------+------------------------------------------------------------------------------------+
+
+
+.. note:: If you choose all days (Monday through Friday) in the weekview menu, 
+  the repeating option automatically sets the repeat rule to "every weekday." If
+  you can divide the interval of the weekview by two, the repeating option 
+  automatically sets the repeat rule to "Bi-Weekly".
+
+Sharing Events
+--------------
+
+Once an event has been saved, a new tab appears for the event that enables you 
+to share it.
+
+.. figure:: ../images/calendar_create_event_share.png
+
+The options available in the Share tab include the following:
+
+- ``Share with user or group`` field -- Enables you to specify users or groups with whom you want to
+  share the event.
+  
+- Share visibility pulldown menu -- Enables you to specify the level of 
+  information that is shared.  The possible levels include:
+    * Show full event -- Displays full event details to those with whom the
+	  event is shared.
+	* Show only busy -- Displays only that you are busy during this event; no
+	  event details are provided.
+	* Hide event -- Hides the event from the users or groups specified.
+  
+To share an event:
+
+1. Specify the users or groups with whom you want to share (or hide) the event. 
+
+2. Define the level of visibility that you want the users or groups to have.
+
+3. (Optional) Click the ``Send Email`` button to share the event details using an email.
+
+4. Click the ``Save event`` button to save your changes.
+
+   The Calendar app saves and closes the event window. 
+  
+Exporting and Importing Events
+------------------------------
+
+The Calendar app enables you to export and import event or entire calendars to 
+or from other calendars.
+
+Exporting Events
+~~~~~~~~~~~~~~~~
 
 .. figure:: ../images/calendar_export.png
 Exporting an event
 
-You can export either a single event or a whole calendar. If you want to export
-a single event click on it and press the export button in the bottom right
-corner. If you want to export a whole calendar use the "Calendar" button as
-described in the chapter "Creating a calendar".
+You can export either a single event or an entire calendar. If you want to export
+a single event, click the event and press the export button in the bottom right
+corner. If you want to export an entire calendar, use the "Calendar" button as
+described in "Creating a calendar".
 
-Import
-~~~~~~
+Importing Events
+~~~~~~~~~~~~~~~~
 
 .. figure:: ../images/calendar_import.png
 Importing events
 
-Import your calendar as iCal file using the files app. Just click on the
-calendar file to open the import dialog. You can import the calendar into a new
-calendar or into an already existing calendar.
+You can import your calendar as an iCal file using the Files app. The Calendar app
+enables you to import the calendar into a new calendar or into an already existing calendar.
+
+To import your calendar, click the calendar file to open the import dialog. 
 
 .. note:: If the progress bar does not work properly, the folder
-          ``apps/calendar/import_tmp/`` has probably no write permission.
+          ``apps/calendar/import_tmp/`` might not have write permission.
 
-Why is the calendar app asking for my current location?
--------------------------------------------------------
+Deleting an Event
+-----------------
+
+The Calendar app enables you to delete any event that you create.  To delete a
+calendar event:
+
+1. Click the event in the Calendar app.
+
+   The Edit event dialog box opens.
+   
+   .. figure:: ../images/calendar_edit_event.png
+   
+2. Click the ``Delete event`` button.
+
+   The Calendar app deletes the event.
+		  
+Calendar App FAQ
+----------------
+
+**Question:** Why does the Calendar app request my current location?
 
 .. figure:: ../images/calendar_newtimezone1.png
 Timezone set notification
 
-The calendar needs your current position in order to detect your timezone.
-Without the correct timezone there will be a time offset between the events in
-ownCloud and your desktop calendar you synchronise with ownCloud. You can also
-set the timezone manually in the personal settings.
+**Answer:** The calendar needs your current position to detect your timezone.
+Without the correct timezone, a time offset exists between the events in the
+ownCloud calendar and the desktop calendar to which you are synchronizing. You 
+can also set the timezone manually in the personal settings.
