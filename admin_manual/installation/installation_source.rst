@@ -57,6 +57,7 @@ package):
 Recommended for specific apps (*optional*):
 
 * PHP module exif (for image rotation in pictures app)
+* PHP module gmp (for SFTP storage)
 
 For enhanced performance (*optional* / select only one of the following):
 
