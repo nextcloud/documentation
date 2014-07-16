@@ -1,17 +1,17 @@
 Using the Calendar App
 ======================
 
-The ownCloud Calendar app enables you to create and edit events, synchronize to 
+The ownCloud Calendar app enables you to create and edit events, synchronize to
 other calendars you might use, and create new, personalized calendars.
 
-By default, when you access the Calendar app for the first time, you get a 
+By default, when you access the Calendar app for the first time, you get a
 "Personal" calendar that you can use or modify as you like.
 
 .. figure:: ../images/calendar_default.png
   :scale: 75%
 
   **Calendar app (default)**
-  
+
 The Calendar app contains the following fields and controls:
 
 - Calendar Date Field -- Provides the current date or enables you to select a
@@ -20,13 +20,13 @@ The Calendar app contains the following fields and controls:
 - Calendar View Options -- Enables you to choose between a day, week, or month
   view for the main Calendar app window.  Also provides a quick jump button to
   access the current day (Today).
-  
+
 - Calendar Selection -- Enables you to choose the calendar that you want to view.
 
 - Calendar Controls -- Provides controls for each individual calendar.  These
   controls include sharing, obtaining an external URL link to the calendar, an
   export function, an edit function, and a delete (trash) button.
-  
+
 - Calendar Settings -- Provides access to the calendar-specific settings.  These
   settings include the calendar timezone selection, time format selection, week
   start day, cache setting, primary CalDAV address, and iOS/OS X CalDAV address
@@ -46,11 +46,11 @@ To create a new calendar:
 2. Click the ``+ New Calendar`` field.
 
   A dialog opens to enable you to create a new calendar.
-  
+
   .. figure:: ../images/calendar_create_new.png
-  
+
   **New calendar**
-  
+
 3. Specify a name for the new calendar.
 
 4. (Optional) Specify a color for the new calendar.
@@ -61,17 +61,17 @@ To create a new calendar:
 
 Managing Calendar Settings
 --------------------------
-  
-The Calendar app settings provides global configuration that applies to all 
-calendars that you have created in the Calendar app. 
+
+The Calendar app settings provides global configuration that applies to all
+calendars that you have created in the Calendar app.
 
   .. figure:: ../images/calendar_settings.png
-  
+
   **Calendar app settings**
 
 In the Calendar app settings, you can modify the following:
 
-- Timezone -- Provides an alphabetical listing of all available countries 
+- Timezone -- Provides an alphabetical listing of all available countries
   categorized by continent.
 
 - Time format -- Provides the option of using 24 hour or 12 hour time format.
@@ -89,13 +89,13 @@ In the Calendar app settings, you can modify the following:
 Synchronizing Calendars Using CalDAV
 ------------------------------------
 *Calendaring Extensions to WebDAV*, referred to as *CalDAV*, enables clients to
-access scheduling information on remote servers. As an extension to WebDAV, 
-CalDAV (defined by RFC 4791) uses the iCalendar format to manage calendar data. 
-CalDAV enables multiple clients to access the same information for use in 
+access scheduling information on remote servers. As an extension to WebDAV,
+CalDAV (defined by RFC 4791) uses the iCalendar format to manage calendar data.
+CalDAV enables multiple clients to access the same information for use in
 cooperative planning and information sharing.
 
 The Calendar app provides both the Primary CalDAV address and the iOS/OSX CalDAV
-address.  Using these addresses, you can use CalDAV-compatible programs (for 
+address.  Using these addresses, you can use CalDAV-compatible programs (for
 example, Kontact, Evolution, or Thunderbird) using the address provided.
 
 To better understand the URL creation, consider the following examples:
@@ -114,14 +114,13 @@ URL, making sure to include the final slash::
 
   http://ADDRESS/remote.php/caldav/principals/username/
 
-To access your ownCloud calendars using Mozilla Lightning you would use the 
+To access your ownCloud calendars using Mozilla Lightning you would use the
 following URL::
 
   https://ADDRESS/remote.php/caldav/calendars/USERNAME/CALENDARNAME
 
 The following is an example showing the completed URL where the calendar name is
 ``defaultcalendar`` and the username is ``test``::
-   and the users' name here is "test".
 
        https://localhost/owncloud/remote.php/caldav/calendars/test/defaultcalendar
 
@@ -149,44 +148,44 @@ To create a new event:
 
 4. (Optional) Provide advanced option details.  These details can include the
    event location, the event category, and an event description.
-   
+
    .. figure:: ../images/calendar_create_event.png
 
    **Create a new event dialog box**
-   
+
 5. (Optional) Click the Repeating tab to define any repeat settings for the event.
 
    .. figure:: ../images/calendar_create_event_repeat.png
-   
+
    **Even Repeating tab**
-   
-   The Repeating tab provides the option of not repeating the event(default) or 
+
+   The Repeating tab provides the option of not repeating the event(default) or
    repeating the event daily, weekly, every weekday, biweekly, monthly, or yearly.
-   In addition, by selecting the ``Advanced`` button in the Repeating tab, each 
+   In addition, by selecting the ``Advanced`` button in the Repeating tab, each
    repeat option provides different levels of customization to better define your
    repeat requirements for the event.
-   
+
    The following table helps to define the options for each repeat rule:
-   
-   +-----------------+------------------------------------------------------------------------------------+ 
-   | Repeat Rule     | Options                                                                            | 
-   +=================+====================================================================================+ 
-   | Does not repeat | n/a                                                                                | 
-   +-----------------+------------------------------------------------------------------------------------+ 
-   | Daily           | Interval - Interval at which the event is repeated                                 | 
+
+   +-----------------+------------------------------------------------------------------------------------+
+   | Repeat Rule     | Options                                                                            |
+   +=================+====================================================================================+
+   | Does not repeat | n/a                                                                                |
+   +-----------------+------------------------------------------------------------------------------------+
+   | Daily           | Interval - Interval at which the event is repeated                                 |
    |                 | End - never, by occurrences, by date                                               |
-   +-----------------+------------------------------------------------------------------------------------+ 
-   | Weekly          | Select weekdays - Weekday(s) on which the event is repeated                        | 
+   +-----------------+------------------------------------------------------------------------------------+
+   | Weekly          | Select weekdays - Weekday(s) on which the event is repeated                        |
    |                 | Interval - Interval at which the event is repeated                                 |
    |                 | End - never, by occurrences, by date                                               |
-   +-----------------+------------------------------------------------------------------------------------+ 
-   | Every Weekday   | Interval - Interval at which the event is repeated                                 | 
+   +-----------------+------------------------------------------------------------------------------------+
+   | Every Weekday   | Interval - Interval at which the event is repeated                                 |
    |                 | End - never, by occurrences, by date                                               |
    +-----------------+------------------------------------------------------------------------------------+
-   | Bi-Weekly       | Interval - Interval at which the event is repeated                                 | 
+   | Bi-Weekly       | Interval - Interval at which the event is repeated                                 |
    |                 | End - never, by occurrences, by date                                               |
    +-----------------+------------------------------------------------------------------------------------+
-   | Monthly         | Day choice -- by monthday or by weekday                                            | 
+   | Monthly         | Day choice -- by monthday or by weekday                                            |
    |                 | Events week of month - Weekday selection only; week of month on which event occurs |
    |                 | Select weekdays - Weekday(s) on which the event is repeated                        |
    |                 | Interval - Interval at which the event is repeated                                 |
@@ -194,19 +193,19 @@ To create a new event:
    +-----------------+------------------------------------------------------------------------------------+
    | Yearly          | Date option - by event's date, by year days, by week number, by day and month      |
    |                 | Interval - Interval at which the event is repeated                                 |
-   |                 | End - never, by occurrences, by date                                               |   
+   |                 | End - never, by occurrences, by date                                               |
    +-----------------+------------------------------------------------------------------------------------+
 
 
-.. note:: If you choose all days (Monday through Friday) in the weekview menu, 
+.. note:: If you choose all days (Monday through Friday) in the weekview menu,
   the repeating option automatically sets the repeat rule to "every weekday." If
-  you can divide the interval of the weekview by two, the repeating option 
+  you can divide the interval of the weekview by two, the repeating option
   automatically sets the repeat rule to "Bi-Weekly".
 
 Sharing Events
 --------------
 
-Once an event has been saved, a new tab appears for the event that enables you 
+Once an event has been saved, a new tab appears for the event that enables you
 to share it.
 
 .. figure:: ../images/calendar_create_event_share.png
@@ -215,18 +214,19 @@ The options available in the Share tab include the following:
 
 - ``Share with user or group`` field -- Enables you to specify users or groups with whom you want to
   share the event.
-  
-- Share visibility pulldown menu -- Enables you to specify the level of 
+
+- Share visibility pulldown menu -- Enables you to specify the level of
   information that is shared.  The possible levels include:
-    * Show full event -- Displays full event details to those with whom the
-	  event is shared.
-	* Show only busy -- Displays only that you are busy during this event; no
-	  event details are provided.
-	* Hide event -- Hides the event from the users or groups specified.
-  
+
+  * Show full event -- Displays full event details to those with whom the
+    event is shared.
+  * Show only busy -- Displays only that you are busy during this event; no
+    event details are provided.
+  * Hide event -- Hides the event from the users or groups specified.
+
 To share an event:
 
-1. Specify the users or groups with whom you want to share (or hide) the event. 
+1. Specify the users or groups with whom you want to share (or hide) the event.
 
 2. Define the level of visibility that you want the users or groups to have.
 
@@ -234,19 +234,20 @@ To share an event:
 
 4. Click the ``Save event`` button to save your changes.
 
-   The Calendar app saves and closes the event window. 
-  
+   The Calendar app saves and closes the event window.
+
 Exporting and Importing Events
 ------------------------------
 
-The Calendar app enables you to export and import event or entire calendars to 
+The Calendar app enables you to export and import event or entire calendars to
 or from other calendars.
 
 Exporting Events
 ~~~~~~~~~~~~~~~~
 
 .. figure:: ../images/calendar_export.png
-Exporting an event
+
+  Exporting an event
 
 You can export either a single event or an entire calendar. If you want to export
 a single event, click the event and press the export button in the bottom right
@@ -257,12 +258,13 @@ Importing Events
 ~~~~~~~~~~~~~~~~
 
 .. figure:: ../images/calendar_import.png
-Importing events
+
+  Importing events
 
 You can import your calendar as an iCal file using the Files app. The Calendar app
 enables you to import the calendar into a new calendar or into an already existing calendar.
 
-To import your calendar, click the calendar file to open the import dialog. 
+To import your calendar, click the calendar file to open the import dialog.
 
 .. note:: If the progress bar does not work properly, the folder
           ``apps/calendar/import_tmp/`` might not have write permission.
@@ -276,22 +278,23 @@ calendar event:
 1. Click the event in the Calendar app.
 
    The Edit event dialog box opens.
-   
+
    .. figure:: ../images/calendar_edit_event.png
-   
+
 2. Click the ``Delete event`` button.
 
    The Calendar app deletes the event.
-		  
+
 Calendar App FAQ
 ----------------
 
 **Question:** Why does the Calendar app request my current location?
 
 .. figure:: ../images/calendar_newtimezone1.png
-Timezone set notification
+
+  Timezone set notification
 
 **Answer:** The calendar needs your current position to detect your timezone.
 Without the correct timezone, a time offset exists between the events in the
-ownCloud calendar and the desktop calendar to which you are synchronizing. You 
+ownCloud calendar and the desktop calendar to which you are synchronizing. You
 can also set the timezone manually in the personal settings.
