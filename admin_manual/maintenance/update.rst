@@ -29,7 +29,7 @@ However, to verify that the Updater is enabled in your ownCloud instance:
 
 1. Select the "Admin" option from the "Personal Settings" dropdown menu.
 
-.. figure::  images/oc_personal_settings_dropdown_admin.png
+.. figure::  ../images/oc_personal_settings_dropdown_admin.png
 
 2. Scroll down the resulting web page.  If the Updater app appears in this window, the app is enabled.  If not, then you must enable it.  See enablingupdaterapp_.
 
@@ -44,19 +44,19 @@ The Updater app is enabled in your ownCloud instance by default when you install
 
   The "Select an App" window opens.
 
-  .. figure:: images/oc_select_an_app_window.png
+  .. figure:: ../images/oc_select_an_app_window.png
 
   **Select an App window**
 
 2. Scroll down the list of apps on the left side of the web page and select the Update app.
 
-  .. figure:: images/oc_updater_select.png
+  .. figure:: ../images/oc_updater_select.png
 
   **Selecting the Updater app**
 
 3. In the App View window, click "Enable." 
 
-  .. figure:: images/oc_updater_enable.png
+  .. figure:: ../images/oc_updater_enable.png
 
   **Enabling the Updater app**
 
