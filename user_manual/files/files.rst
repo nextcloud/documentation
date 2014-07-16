@@ -63,19 +63,19 @@ To mount the file system and access files using a command line:
 
 1. Install the WebDAV support using the davfs package. For example, on Debian/Ubuntu, you can use::
 
-  sudo apt-get install davfs2
+    sudo apt-get install davfs2
 
 2. Reconfigure davfs2 to allow access to normal users (select Yes when prompted)::
 
-  sudo dpkg-reconfigure davfs2
+    sudo dpkg-reconfigure davfs2
 
 3. Specify any users that you want to have mount and share privileges in the davfs2 group::
 
-  sudo usermod -aG davfs2 <user>
+    sudo usermod -aG davfs2 <user>
 
 4. Edit the :file:`/etc/fstab` file and add the following line for each user for whom you want to give mount privileges for the folder::
 
-  example.org/owncloud/remote.php/webdav /home/<username>/owncloud davfs user,rw,noauto 0 0
+    example.org/owncloud/remote.php/webdav /home/<username>/owncloud davfs user,rw,noauto 0 0
 
   For each user for whom you wants to give mount privileges:
 
@@ -83,15 +83,15 @@ To mount the file system and access files using a command line:
 
   2. Create the file ``secrets`` inside the ``.davfs2/`` folder and populate it with the following::
 
-    example.org/owncloud/remote.php/webdav <username> <password>
+      example.org/owncloud/remote.php/webdav <username> <password>
 
 4. Ensure that the file is writable by only you by using the file manager or by issuing the following command::
 
-  ``chmod 600 ~/.davfs2/secrets``
+    ``chmod 600 ~/.davfs2/secrets``
 
 5. Run the following command::
 
-  ``mount ~/owncloud``
+    ``mount ~/owncloud``
 
 6. To automatically mount the folder on login, add the ``mount ~/owncloud`` command to the :file:`./.bashrc` file.
 
@@ -127,7 +127,7 @@ To access files through the MAC OSX Finder:
 
   For example, the URL address used to connect to the ownCloud installation from the MAC OSX Finder is::
 
-  http://example.org/owncloud/remote.php/webdav
+    http://example.org/owncloud/remote.php/webdav
 
   .. image:: ../images/osx_webdav2.png
 
@@ -171,7 +171,7 @@ The following example shows how to map a drive using the command line.  To map t
 1. Open a command prompt in Windows.
 2. Enter the following line in the command prompt to map to the computer Z drive::
 
-  net use Z: https://<drive_path>/remote.php/webdav /user:youruser yourpassword
+    net use Z: https://<drive_path>/remote.php/webdav /user:youruser yourpassword
 
   where <drive_path> is **example.org/owncloud**
 
@@ -204,7 +204,7 @@ To map a drive using the Microsoft Windows Explorer:
 
   For example::
 
-  https://example.org/owncloud/remote.php/webdav
+    https://example.org/owncloud/remote.php/webdav
 
   .. note:: For SSL protected servers, check **Reconnect at logon** to ensure
      that the mapping is persistent upon subsequent reboots. If you want to connect
@@ -291,10 +291,10 @@ To connect to your ownCloud server with any **ownCloud** mobile apps, use the ba
 
 .. note:: There is no need to add remote.php/webdav as you do for other WebDAV clients.
 
-Mobiel apps currently exist for both `Android`_ and `webOS`_. Feel free to `contribute, if you can`_!
+Mobile apps currently exist for both `Android`_ and `webOS`_. Feel free to `contribute, if you can`_!
 
 In addition to the mobile apps provided by ownCloud, you can use other apps to connect to ownCloud from your mobile device using WebDAV. `WebDAV Navigator`_ is a
-good (proprietary) app for `Android`_ devices, `iPhones`_, and `BlackBerry`_ devices.
+good (proprietary) app for `Android devices`_, `iPhones`_, and `BlackBerry devices`_.
 
 The URL for these is::
 
@@ -308,6 +308,6 @@ The URL for these is::
 .. _webOS: http://github.com/owncloud/webos
 .. _contribute, if you can: /contribute/
 .. _WebDAV Navigator: http://seanashton.net/webdav/
-.. _Android: https://play.google.com/store/apps/details?id=com.schimera.webdavnavlite
+.. _Android devices: https://play.google.com/store/apps/details?id=com.schimera.webdavnavlite
 .. _iPhones: https://itunes.apple.com/app/webdav-navigator/id382551345
-.. _BlackBerry: http://appworld.blackberry.com/webstore/content/46816
+.. _BlackBerry devices: http://appworld.blackberry.com/webstore/content/46816

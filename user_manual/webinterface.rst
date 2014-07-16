@@ -46,6 +46,7 @@ Once you have accessed the ownCloud Server main web interface you can add files,
 
 .. figure:: images/oc_main_web_labelled.png
    :scale: 60%
+
 **Navigating the main user interface**
 
 The ownCloud Maine User Interface contains the following fields and functions:

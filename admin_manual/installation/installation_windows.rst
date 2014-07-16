@@ -1,6 +1,5 @@
 Windows 7 and Windows Server 2008
 ---------------------------------
-.. _installationserverwindows:
 
 .. note:: You must move the data directory outside of your public root (See advanced install settings)
 
@@ -54,7 +53,7 @@ To activate IIS on Microsoft Windows 7:
 
     **Windows Features required for ownCloud on Windows 7**
 
-6. Because a running FTP server is not required, turn off that feature for your server. 
+6. Because a running FTP server is not required, turn off that feature for your server.
 
 7. Ensure that you have the IIS Management Console.
 
@@ -62,10 +61,9 @@ To activate IIS on Microsoft Windows 7:
 
 8. Check the CGI checkbox under ``Application Development Features`` in order to enable PHP on IIS.
 
-9. Turn off WebDAV publishing to avoid conflicts between the Windows WebDAV and the ownCloud WebDAV interface. 
+9. Turn off WebDAV publishing to avoid conflicts between the Windows WebDAV and the ownCloud WebDAV interface.
 
-    .. note:: This feature might already be turned off for you.  However, we recommend that you ensure that it remains off. The common HTTP
-features are the features you would expect from a web server.
+    .. note:: This feature might already be turned off for you.  However, we recommend that you ensure that it remains off. The common HTTP features are the features you would expect from a web server.
 
     After implementing the selections on this page, IIS serves up a web page.
 
@@ -73,9 +71,9 @@ features are the features you would expect from a web server.
 
 11. Select your website.
 
-    On the far right side of the opening page you will see a section titled :guilabel:`Manage Server`. 
+    On the far right side of the opening page you will see a section titled :guilabel:`Manage Server`.
 
-12. Make sure that the service is started, or click :guilabel:`Start` to start the services selected. 
+12. Make sure that the service is started, or click :guilabel:`Start` to start the services selected.
 
 13. Go to a web browser and navigate to http://localhost.
 
@@ -147,7 +145,7 @@ To install MySQL on your Windows machine:
 
 1. Use your browser to migrate to http://dev.mysql.com/downloads/.
 
-2. Download the latest community edition for your operating system, choosing either the 32 or 64 bit version as applicable. 
+2. Download the latest community edition for your operating system, choosing either the 32 or 64 bit version as applicable.
 
 3. Download the **MSI Installer** to assist with the install.
 
@@ -198,7 +196,7 @@ Installing ownCloud
 
 4. To enable write access to the ownCloud directory to the ownCloud server, navigate your windows explorer to  **inetpub/wwwroot/owncloud** (or the installation directory you selected).
 
-5. Right click and select properties. 
+5. Right click and select properties.
 
 6. Click the security tab, and select the button “to change permissions, click edit”.
 
@@ -211,7 +209,7 @@ Continue by following the :doc:`installation_wizard`. Select MySQL as the databa
 Ensure Proper HTTP-Verb Handling
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-IIS must pass all HTTP and WebDAV verbs to the PHP/CGI handler, and must not attempt to handle them by itself or syncrhonizing with the Desktop and Mobile Clients will fail. 
+IIS must pass all HTTP and WebDAV verbs to the PHP/CGI handler, and must not attempt to handle them by itself or syncrhonizing with the Desktop and Mobile Clients will fail.
 
 To ensure your configuration is correct:
 
@@ -250,7 +248,7 @@ To adjust the maximum upload size, open the ``PHP.ini`` file in a text editor, f
 
 You can make other changes in the ``PHP.ini`` file (for example, the timeout duration for uploads).  However, most default settings in the **PHP.ini** file should function appropriately.
 
-To enable file uploads on the web server larger than 30 MB, you must also change some settings in the IIS manager.  
+To enable file uploads on the web server larger than 30 MB, you must also change some settings in the IIS manager.
 
 To modify the IIS Manager:
 
@@ -264,7 +262,7 @@ To modify the IIS Manager:
 
     A window opens displaying a number of tabs across the top.
 
-4. Select :guilabel:`Edit Feature Settings` 
+4. Select :guilabel:`Edit Feature Settings`
 
 5. Modify the :guilabel:`Maximum allowed content length (bytes)` value to 4.1 GB.
 
