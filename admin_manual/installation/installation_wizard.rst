@@ -33,8 +33,6 @@ whenever you want to configure something for your ownCloud instance.
 
 Advanced Options
 ~~~~~~~~~~~~~~~~
-.. _advancedoptions:
-
 * Advanced settings are available for configuring a different database or data
   directory than the default ones.
 
@@ -42,7 +40,7 @@ Advanced Options
   recommended to configure the data directory to a location outside of
   the document root. Otherwise all user data is potentially publicly
   visible!
-  
+
 * Show these additional options by clicking on "Advanced":
 
 .. image:: images/install-wizard-advanced.png
@@ -98,8 +96,8 @@ Note
 ~~~~
 ownCloud will take the URL used to access the Installation Wizard and insert
 that into the config.php file for the ‘trusted_domains’ setting.
-All needed domain names of the owncloud server go into the 
-'trusted_domains' setting. No domain names of clients go there. 
+All needed domain names of the owncloud server go into the
+'trusted_domains' setting. No domain names of clients go there.
 
 Users will only be able to log into ownCloud when they point their browsers to a
 domain name listed in the ‘trusted_domains’ setting. An IPv4 address can be
@@ -110,7 +108,7 @@ as it sends the correct X-Forwarded-Host header.
 
 It should be noted that the loopback address, '127.0.0.1', is whitelisted and
 therefore users on the ownCloud server who access ownCloud with the loopback
-interface will be able to successfully login. 
+interface will be able to successfully login.
 In the event that an improper URL is used, the
 following error will appear:
 
