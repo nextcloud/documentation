@@ -1,7 +1,18 @@
 Windows 7 and Windows Server 2008
 ---------------------------------
 
-.. note:: You must move the data directory outside of your public root (See advanced install settings)
+.. note:: While ownCloud will run in any standard PHP environment,
+          including IIS or Apache on Windows, there are known issues.
+          For the basic sync and share capabilities of ownCloud, Windows
+          web servers (Apache and IIS) will function properly. However,
+          as apps like external storage are added, particularly SMB mounts,
+          and non-english characters are used in filenames, some of the known
+          Windows and IIS/Apache challenges start to appear as bugs. For this
+          reason, while ownCloud server will run on Windows, is not
+          recommended at this time.
+
+.. note:: You must move the data directory outside of your public root (See
+          advanced install settings)
 
 This section describes how to install ownCloud on Windows with :abbr:`IIS (Internet Information Services)`.
 
