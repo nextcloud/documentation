@@ -25,7 +25,7 @@ To configure Google Drive for external storage:
 
 3. Enter your verification code.
 
-   .. figure:: The verification code was sent to you by SMS or the Authenticator App.
+   The verification code was sent to you by SMS or the Authenticator App.
 
 # ?? Where do I find this??
 
