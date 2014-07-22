@@ -9,7 +9,7 @@ Please keep in mind, that this will not effect a users language preference,
 which has been configured under "personal -> language" once he has logged in.
 
 Please check :file:`settings/languageCodes.php` for the list of supported language
-codes. 
+codes.
 
 
 Parameters

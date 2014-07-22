@@ -20,7 +20,7 @@ set it. The **overwritecondaddr** parameter is used to overwrite the values
 dependent on the remote address. The value must be a **regular expression** of
 the IP addresses of the proxy. This is useful when you use a reverse SSL proxy
 only for https access and you want to use the automatic detection for http
-access. 
+access.
 
 Example
 -------

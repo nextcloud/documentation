@@ -1,21 +1,19 @@
-Automatic Configuration
-=======================
+Defining Automatic Configuration
+================================
 
-If you need to install ownCloud on multiple servers you normally do not want
-to set-up each instance separately as described in the :doc:`configuration_database`.
-For this reason the automatic configuration feature has been introduced.
+If you need to install ownCloud on multiple servers, you normally do not want
+to set up each instance separately as described in the :doc:`configuration_database`.
+For this reason, ownCloud provides an automatic configuration feature.
 
-To take advantage of this feature you need to create a configuration file, called
-:file:`../owncloud/config/autoconfig.php` and set the parameters as required.
-You can provide all parameters or just part of them - parameters which haven't been provided (if any) will be asked
-at "Finish setup" screen at first run of ownCloud.
+To take advantage of this feature, you must create a configuration file, called
+:file:`../owncloud/config/autoconfig.php`, and set the file parameters as required.
+You can specify any number of parameters in this file.  Any unspecified parameters appear on the "Finish setup" screen when you first launch ownCloud.
 
-The :file:`../owncloud/config/autoconfig.php` will be automatically removed after the initial configuration has been applied.
+The :file:`../owncloud/config/autoconfig.php` is automatically removed after the initial configuration has been applied.
 
 Parameters
 ----------
-You need to keep in mind that two parameters are named differently in this
-configuration file compared to the normal :file:`config.php`.
+When configuring parameters, you must understand that two parameters are named differently in this configuration file when compared to the standard :file:`config.php` file.
 
 +----------------+---------------+
 | autoconfig.php | config.php    |
@@ -25,12 +23,14 @@ configuration file compared to the normal :file:`config.php`.
 | dbpass         | dbpassword    |
 +----------------+---------------+
 
-Sample Automatic Configurations
--------------------------------
+Automatic Configurations Examples
+---------------------------------
+
+The following sections provide sample automatic configuration examples and what information is requested at the end of the configuration.
 
 Data Directory
 ~~~~~~~~~~~~~~
-With the configuration below the "Finish setup" screen still will ask for database and admin credentials settings.
+Using the following parameter settings, the "Finish setup" screen requests database and admin credentials settings.
 
 .. code-block:: php
 
@@ -42,7 +42,7 @@ With the configuration below the "Finish setup" screen still will ask for databa
 
 SQLite Database
 ~~~~~~~~~~~~~~~
-With the configuration below the "Finish setup" screen still will ask for data directory and admin credentials settings.
+Using the following parameter settings, the "Finish setup" screen requests data directory and admin credentials settings.
 
 .. code-block:: php
 
@@ -55,10 +55,7 @@ With the configuration below the "Finish setup" screen still will ask for data d
 
 MySQL Database
 ~~~~~~~~~~~~~~
-Keep in mind that the automatic configuration does not unburden you from creating the database user and database
-in advance, as described in :doc:`configuration_database`.
-
-With the configuration below the "Finish setup" screen still will ask for data directory and admin credentials settings.
+Using the following parameter settings, the "Finish setup" screen requests data directory and admin credentials settings.
 
 .. code-block:: php
 
@@ -72,12 +69,11 @@ With the configuration below the "Finish setup" screen still will ask for data d
       "dbtableprefix" => "",
     );
 
+.. note:: Keep in mind that the automatic configuration does not eliminate the need for creating the database user and database in advance, as described in :doc:`configuration_database`.
+
 PostgreSQL Database
 ~~~~~~~~~~~~~~~~~~~
-Keep in mind that the automatic configuration does not unburden you from creating the database user and database
-in advance, as described in :doc:`configuration_database`.
-
-With the configuration below the "Finish setup" screen still will ask for data directory and admin credentials settings.
+Using the following parameter settings, the "Finish setup" screen requests data directory and admin credentials settings.
 
 .. code-block:: php
 
@@ -90,13 +86,13 @@ With the configuration below the "Finish setup" screen still will ask for data d
       "dbhost"        => "localhost",
       "dbtableprefix" => "",
     );
-    
+
+.. note:: Keep in mind that the automatic configuration does not eliminate the need for creating the database user and database in advance, as described in :doc:`configuration_database`.
+
 All Parameters
 ~~~~~~~~~~~~~~
-Keep in mind that the automatic configuration does not unburden you from creating the database user and database
-in advance, as described in :doc:`configuration_database`.
 
-With the configuration below "Finish setup" will be skipped at first ownCloud run since all parameters are already preconfigured.
+Using the following parameter settings, because all parameters are already configured in the file, the ownCloud installation skips the "Finish setup" screen.
 
 .. code-block:: php
 
@@ -112,4 +108,6 @@ With the configuration below "Finish setup" will be skipped at first ownCloud ru
       "adminpass"     => "root-password",
       "directory"     => "/www/htdocs/owncloud/data",
     );
+
+.. note:: Keep in mind that the automatic configuration does not eliminate the need for creating the database user and database in advance, as described in :doc:`configuration_database`.
 

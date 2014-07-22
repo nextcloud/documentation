@@ -1,16 +1,16 @@
 Preview Configuration
 =====================
 ownCloud 6 introduced the new thumbnail system. It is used to generate
-thumbnails from various file types. 
+thumbnails from various file types.
 By default, it can generate previews for:
 
 * Images
 * Movies
-* Cover from mp3 files 
-* various office files 
-* Pdf 
-* Svg 
-* Text 
+* Cover from mp3 files
+* various office files
+* Pdf
+* Svg
+* Text
 
 Soft dependencies:
 ------------------

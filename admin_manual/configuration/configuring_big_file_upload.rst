@@ -41,7 +41,7 @@ into a php file and calling it with your browser. Then look for the **Loaded Con
 Alternatively:
 
 * Under Debian or SUSE and their derivatives this file lies at /etc/php5/apache2/php.ini
-* On Windows, you can find this file within C:/Program Files (x86)/PHP/PHP.ini 
+* On Windows, you can find this file within C:/Program Files (x86)/PHP/PHP.ini
 
 Set the following two parameters inside the php.ini to the same value as chosen inside the admin-section one step before:
 
@@ -56,10 +56,10 @@ As you can see, the "output_buffering" has to be given in MegaBytes but as a pla
 
 **These client configurations have been proven by testing maximum file sizes of 16 GB:**
 
-* Linux 32 Bit: Ubuntu, Firefox => 16GB 
+* Linux 32 Bit: Ubuntu, Firefox => 16GB
 * Windows 8  64 Bit: Google Chrome => 8GB
 
 **Note:**
-You will need a minimum of 16GB (e.g, to stay consistent with the example value above), in your upload_tmp_dir. 
-Normally this points to /tmp. If your /tmp has not enough space, 
+You will need a minimum of 16GB (e.g, to stay consistent with the example value above), in your upload_tmp_dir.
+Normally this points to /tmp. If your /tmp has not enough space,
 you can change the value of upload_tmp_dir in your php.ini

@@ -2,9 +2,11 @@ Custom Client Configuration
 ===========================
 
 If you want to access your ownCloud, you can choose between the standard Web-GUI
-and different client sync applications. Download links which point to these
-applications are shown at the top of the personal menu. The following sync
-applications are currently available out of the box:
+and various client synchronization applications.
+
+.. note:: Download links that point to these applications are shown at the top of the Personal Settings Menu.
+
+The following sync applications are currently available by default:
 
 * Desktop sync clients for Windows, MAC and Linux OS
 * Mobile sync client for Android devices
@@ -13,8 +15,7 @@ applications are currently available out of the box:
 
 Parameters
 ----------
-If you want to customize the download links for the sync clients the following
-parameters need to be modified to fulfil your requirements:
+You can customize the download links to meet your specific requirements for any of the synchronization clients in the :file:`config/config.php` file:
 
 .. code-block:: php
 
@@ -24,4 +25,3 @@ parameters need to be modified to fulfil your requirements:
     "customclient_android" => "https://play.google.com/store/apps/details?id=com.owncloud.android",
     "customclient_ios"     => "https://itunes.apple.com/us/app/owncloud/id543672169?mt=8",
 
-This parameters can be set in the :file:`config/config.php`

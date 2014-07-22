@@ -1,28 +1,62 @@
 Apps Configuration
 ==================
-After you have installed ownCloud, you might realize that it would be nice to
-provide an additional function on top of the core functionality in your ownCloud installation.
+After installing ownCloud, you might want to provide added functionality on top of the core functionality that is installed by default.  ownCloud enables you to enhance your experience and your user's experiences by installing various *apps*.
 
-With ownCloud installation, you will find some apps enabled by default. To see which applications
-are enabled, click on Apps button on the web interface navigation to go into applications page:
+Viewing Enabled Apps
+--------------------
 
-.. figure:: ../images/oc_admin_app_page.png
+During the ownCloud installation, some apps are enabled by default. To see which apps are enabled:
 
-Administrator application page
+1. Click ``Apps`` in the Apps Selection Menu.
 
-In this page, you can enable or disable applications simply by clicking on their names.
-Enabled applications will be shown highlighed while disabled ones will be shown in normal background.
-If the app is not developed by ownCloud, it will have the *3rd party* notice next to it. To see what an
-application does, clicking on its name will show a description on the right side of the same page.
+   The apps available for use with ownCloud appear in the Apps Information Field.
 
-To install new apps, you can use *More apps* button or check out the `ownCloud apps store <http://apps.owncloud.com/>`_.
-There you will find a lot of ready-to-use apps provided by the ownCloud community.
+   .. figure:: ../images/oc_admin_app_page.png
 
-If you would like to add your own app, please use *Add your App...* button on the same page. This will redirect you to
-our `Developer Center <http://owncloud.org/dev>`_.
+   **Administrator application page**
 
-Parameters
-----------
+2. Scroll down the Apps Information Field to view the enabled apps.
+
+   Apps that are enabled appear at he top of the list of apps.
+
+Managing Apps
+-------------
+
+In the Apps page, you can enable or disable applications, as well as modify any app settings, by clicking the app name.  If an app is already enabled, it appears highlighted in the list.  In addition, enabled apps appear at the top of the app list in the Apps Information Field.  In contrast, disabled apps appear below any enabled apps in the list and are not highlighted.
+
+To modify an app:
+
+1. Click the app that you want to modify.
+
+   The app is highlighted and any available settings for the app appear in the Application View window.
+
+2. Make any desired changes to the app.
+
+   All app changes are applied dynamically as soon as you select the change.  As there are many apps available for use with ownCloud, we do not list all apps or apps settings that are available to you.  However, we have documented several standard apps (for example, the Contacts and Calendar apps) that are directly supported.
+
+Adding Third Party Apps
+-----------------------
+
+As mentioned earlier, ownCloud supports a number of different apps.  Some apps are developed and supported by ownCloud directly, while other apps are created by third parties and either included in or available for your ownCloud server installation.  Any apps that are not developed by ownCloud show a *3rd party* designation.
+
+To understand what an application does, you can click the app name to view a description of the app and any of the app settings in the Application View field.
+
+Though ownCloud provides many apps in the server installation, you can view many more apps at the `ownCloud apps store <http://apps.owncloud.com/>`_.
+
+To view or install apps from the ownCloud apps store:
+
+1. Scroll to the bottom of the Apps Information Field.
+
+2. Click *More apps*.
+
+   The ownCloud apps store launches.
+
+3. Read about any of the apps in the ownCloud app store and install any that you like.
+
+.. note:: If you would like to create or add your own ownCloud app, please use the *Add your App...* button on the same page. This button redirects you to our `Developer Center <http://owncloud.org/dev>`_ where you can find information about creating and adding your own apps.
+
+Setting App Parameters
+----------------------
 Parameters are set in the :file:`config/config.php` inside the **$CONFIG** array.
 
 Use custom app directories
@@ -30,7 +64,7 @@ Use custom app directories
 Use the **apps_paths** array to set the apps folders which should be scanned
 for available apps and/or where user specific apps should be installed.The key
 **path** defines the absolute file system path to the app folder. The key
-**url** defines the http web path to that folder, starting at the ownCloud 
+**url** defines the http web path to that folder, starting at the ownCloud
 web root. The key **writable** indicates if a user can install apps in that
 folder.
 
@@ -55,13 +89,19 @@ folder.
     ),
 
 
-Use your own appstore
-~~~~~~~~~~~~~~~~~~~~~
-If you want to allow the installation of apps from the apps store you have to
-set **appstoreenabled** parameter, but this can only be done if at least one
-of the configured apps directories is writable.
+Using Your Own Appstore
+~~~~~~~~~~~~~~~~~~~~~~~
+You can enable the installation of apps from your own apps store.  However, this requires that you can write to at least one of the configured apps directories.
 
-The **appstoreurl** is used to set the http path to the ownCloud apps store. The appstore server has to use :abbr:`OCS (Open Collaboration Services)`.
+To enable installation from your own apps store:
+
+1. Set the **appstoreenabled** parameter to "true".
+
+   This parameter is used to enable your apps store in ownCloud.
+
+2. Set the **appstoreurl** to the URL of your ownCloud apps store.
+
+   This parameter is used to set the http path to the ownCloud apps store. The appstore server must use :abbr:`OCS (Open Collaboration Services)`.
 
 .. code-block:: php
 
@@ -70,9 +110,10 @@ The **appstoreurl** is used to set the http path to the ownCloud apps store. The
     "appstoreenabled" => true,
     "appstoreurl" => "http://api.apps.owncloud.com/v1",
 
-Guard against malicious 3rdparty code
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Finally you can enable checks for malicious code fragments of 3rd-party apps
+Guarding Against Malicious Code
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can enable checks for malicious code fragments in third party apps
 by setting the **appcodechecker** parameter.
 
 .. code-block:: php

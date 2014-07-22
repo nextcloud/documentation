@@ -1,66 +1,50 @@
-Background Jobs
-===============
-A system like ownCloud sometimes requires tasks to be done on a regular
-base without blocking the user interface. For that purpose you, as a system
-administrator, can define background jobs which make it possible to execute
-tasks without any need of user interaction, e.g. database clean-ups etc.
-For the sake of completeness it is worth to know that additionally background
-jobs can also be defined by installed apps.
+Defining Background Jobs
+========================
+A system like ownCloud sometimes requires tasks to be done on a regular basis without the need for user interaction or hindering ownCloud performance. For that purpose, as a system administrator, you can define background jobs (for example, database clean-ups) which make it possible to execute tasks without any need for user interaction.
+
+.. note:: For the sake of completeness, it is worth noting that you can define additional background jobs using installed apps.
 
 Parameters
 ----------
-In the admin settings menu you can configure how cron-jobs should be executed. 
+In the admin settings menu you can configure how cron-jobs should be executed.
 You can choose between the following options:
 
 -   AJAX
 -   Webcron
 -   Cron
 
-Cron-Jobs
+Cron Jobs
 ---------
 
-ownCloud requires various automated background jobs to be run. There are three methods to achieve this.
-The default way is AJAX and the recommended way is cron.
+ownCloud requires the running of various automated background jobs. These jobs are typically referred to as *cron jobs*.  Cron jobs are commands or shell-based scripts that are scheduled to run periodically at fixed times, dates, or intervals.  You can schedule cron jobs in three ways -- using AJAX, Webcron, or cron. The default method is to use AJAX.  However, the recommended method is to use cron.  The following sections describe the differences between each method.
 
 AJAX
 ~~~~
 
-This option is the default option, although it is the least reliable. Every
-time a user visits the ownCloud page a single background job will be executed.
-The advantage of this mechanism is, that is does not require access to the
-system nor registration at a third party service.
-The disadvantage of this solution compared to the Webcron service is, that it
-requires regular visits of the page to get triggered.
+The AJAX scheduling method is the default option.  Unfortunately, however, it is also the least reliable. Each time a user visits the ownCloud page, a single background job is executed. The advantage of this mechanism is that is does not require access to the system nor registration with a third party service. The disadvantage of this mechanism, when compared to the Webcron service, is that it requires regular visits to the page for it to be triggered.
 
 Webcron
 ~~~~~~~
 
 By registering your ownCloud ``cron.php`` script address at an external webcron
-service, like e.g. easyCron_, you ensure that background jobs will be executed
-regularly. To use such a service your server need to be reachable via the Internet.
-
-**Example**
-
-::
+service (for example, easyCron_), you ensure that background jobs are executed
+regularly. To use this type of service, your server you must be able to access
+your server using the Internet. For example::
 
   URL to call: http[s]://<domain-of-your-server>/owncloud/cron.php
 
 Cron
 ~~~~
 
-Using the systems cron feature is the preferred way to run regular tasks,
-because it allows to execute jobs without the limitations which a web server
-may have.
+Using the ownCloud system cron feature is the preferred method for executing regular tasks.  This method enables the execution of scheduled jobs without the inherent limitations the web server might have.  For example:
 
-**Example**
-
-To run a cron job on a \*nix system, e.g. every 15 min., under the default web server
-user, e.g. **www-data**, you need to set-up the following cron job to call the
-**cron.php** script. Please check the crontab man page for the exact command syntax.
+To run a cron job on a \*nix system, every 15 minutes, under the default web server user (that is, ``www-data``), you must set up the following cron job to call the **cron.php** script::
 
 ::
 
   # crontab -u www-data -e
   */15  *  *  *  * php -f /var/www/owncloud/cron.php
 
-.. _easyCron: http://www.easycron.com/  
+.. note:: Please refer to the crontab man page for the exact command syntax.
+
+.. _easyCron: http://www.easycron.com/

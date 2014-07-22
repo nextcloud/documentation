@@ -1,16 +1,18 @@
-3rd-Party Configuration
-=======================
+Using Third Party Components
+============================
 
-ownCloud resorts to some 3rd-party PHP components to provide its functionality.
-These components are part of the software package and are usually shipped in
-the **/3rdparty** folder.
+ownCloud uses some third party PHP components to provide some of its functionality. These components are part of the software package and are contained in the **/3rdparty** folder.
 
-Parameters
-----------
+Managing Third Party Parameters
+-------------------------------
 
-If you want to change the default location of the 3rd-party folder you can use the **3rdpartyroot** parameter to define
-the absolute file system path to the folder. The **3rdpartyurl** parameter is used to define the http web path to that
-folder, starting at the ownCloud web root.
+When using third party components, keep the following parameters in mind:
+
+* **3rdpartyroot** -- Specifies the location of the 3rd-party folder. To change the default location of this folder, you can use this parameter to define the absolute file system path to the folder location.
+
+* **3rdpartyurl** -- Specifies the http web path to the 3rdpartyroot folder, starting at the ownCloud web root.
+
+An example of what these parameters might look like is as follows:
 
 .. code-block:: php
 

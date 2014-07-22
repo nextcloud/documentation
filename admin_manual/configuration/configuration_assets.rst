@@ -1,10 +1,11 @@
 Asset Management
 ================
 
-In productive environments JavaScript and CSS files shall be delivered concatenated and minified.
+In production environments, JavaScript and CSS files are delivered in a concatenated and compressed format.
 
-ownCloud will create individual JavaScript and CSS files in a folder names 'assets' in the web root. This
-folder has to be owned by the web server user and will be used for static delivery of these files.
+# Original sentence: "In productive environments JavaScript and CSS files shall be delivered concatenated and minified."
+
+ownCloud creates individual JavaScript and CSS files and saves them in a folder called 'assets' in the web root. This folder must be owned by the web server user and is used for static delivery of these files.
 
 
 Parameters
@@ -17,4 +18,4 @@ Parameters
     'asset-pipeline.enabled' => true,
 
 
-This parameters can be set in the :file:`config/config.php`
+You can set this parameters in the :file:`config/config.php`

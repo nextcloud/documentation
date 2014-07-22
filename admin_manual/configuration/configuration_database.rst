@@ -1,43 +1,38 @@
 Database Configuration
 ======================
 
-ownCloud requires a database where administrative data will be held. Four
-different database types are currently supported,
-`MySQL <http://www.mysql.com/>`_ / `MariaDB <https://mariadb.org/>`_,
-`SQLite <http://www.sqlite.org/>`_, `PostgreSQL <http://www.postgresql.org/>`_
-and `Oracle <http://www.oracle.com/>`_. MySQL or MariaDB are the recommended
-database engines. By default SQLite is chosen because it is a file based
-database with the least administrative overhead.
+ownCloud requires a database in which administrative data is stored. The following databases are currently supported:
 
-.. note:: Because SQLite handles multiple users very badly SQLite is only
-          recommended for single user ownCloud installations.
+* `MySQL <http://www.mysql.com/>`_ / MariaDB <https://mariadb.org/>`
+* `SQLite <http://www.sqlite.org/>`
+* `PostgreSQL <http://www.postgresql.org/>`_
+* `Oracle <http://www.oracle.com/>`_
+
+The MySQL or MariaDB databases are the recommended database engines. However, because it is a file based database with the least administrative overhead, SQLite is chosen by default.
+
+.. note:: Because SQLite has some difficulties handling multiple users, we recommend that it be used only for single user ownCloud installatins.
 
 Requirements
 ------------
 
-If you decide to use MySQL / MariaDB, PostgreSQL or Oracle, you need to install
-and set up the server software first. These steps will not be covered by this
-description as they are easy to find elsewhere.
+Choosing to use MySQL / MariaDB, PostgreSQL, or Oracle as your database requires that you install and set up the server software first.
+
+.. note:: The steps for configuring a third party database are beyond the scope of this document.  Please refer to the documentation for your specific database choice for instructions.
 
 Parameters
 ----------
+For setting up ownCloud to use any database, use the instructions in :doc:`../installation/installation_wizard`. You should not have to edit the respective values in the :file:`config/config.php`.  However, in special cases (for example, if you want to connect your ownCloud instance to a database created by a previous installation of ownCloud), some modification might be required.
 
-.. note:: For setting up ownCloud to use any of these databases, use the
-          :doc:`../installation/installation_wizard`.
-          You usually don't need to edit the respective values in the
-          :file:`config/config.php`, just in special cases e.g. if you want to
-          connect your ownCloud instance to a database created by a previous
-          installation of ownCloud.
+Configuring a MySQL or MariaDB Database
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-MySQL/MariaDB Database
-~~~~~~~~~~~~~~~~~~~~~~
+If you decide to use a MySQL or MariaDB database, ensure the following:
 
-If you decide to use a MySQL or MariaDB database make sure that you have installed and
-enabled the MySQL extension in PHP and that the **mysql.default_socket**
-points to the correct socket (if the database runs on same server as ownCloud).
+* That you have installed and enabled the MySQL extension in PHP
 
-Please note that MariaDB is backwards compatible with MySQL, so all instructions will work for both.
-You will not need to replace mysql with anything.
+* That the **mysql.default_socket** points to the correct socket (if the database runs on same server as ownCloud).
+
+.. note:: MariaDB is backwards compatible with MySQL.  All instructions work for both. You will not need to replace mysql with anything.
 
 The PHP configuration in :file:`/etc/php5/conf.d/mysql.ini` could look like this:
 
