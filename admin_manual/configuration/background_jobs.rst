@@ -40,8 +40,6 @@ Using the ownCloud system cron feature is the preferred method for executing reg
 
 To run a cron job on a \*nix system, every 15 minutes, under the default web server user (that is, ``www-data``), you must set up the following cron job to call the **cron.php** script::
 
-::
-
   # crontab -u www-data -e
   */15  *  *  *  * php -f /var/www/owncloud/cron.php
 

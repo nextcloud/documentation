@@ -190,7 +190,7 @@ Using Email Templates
 
 As an added convenience to administrators, ownCloud provides several Email templates that you can use for sending messages to users.
 
-.. figure:: ../images/remote_shares.png
+#.. figure:: ../images/remote_shares.png
 
 Found on the Admin page, you can choose from the following templates:
 
