@@ -1,7 +1,7 @@
 Mac OS X
 --------
 
-.. note:: Due to an issue_ with Mac OS Unicode support, installing ownCloud Server 6.0 on
+.. note:: Due to an issue_ with Mac OS Unicode support, installing ownCloud Server 7.0 on
           Mac OS is currently not supported.
 
 .. _issue: https://github.com/owncloud/core/issues/2377
