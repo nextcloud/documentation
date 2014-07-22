@@ -1,22 +1,65 @@
-Deleted Files
-=============
+Managing Deleted Files
+======================
 
 ownCloud maintains a copy of deleted files in case you need them again. To
-ensure that the user does not run out of memory, the deleted files app manages
-the size of the deleted files for the user. The app takes care to never use
-more that 50% of your currently available free space. If your deleted files
-exceed this limit, ownCloud deletes the oldest versions until it meets the
-memory usage limit again.
+ensure that individual users do not run out of memory, the Files app manages
+the total memory size of deleted files for each user. When it comes to managing
+deleted files, keep the following in mind:
 
-Deleted files can be found by clicking on the :guilabel:`Deleted files` button
-on files app of web interface. You can either restore or permanently delete
-using appropriate buttons.
+* The total memory allocation for deleted files can never exceed more that 50%
+  of the currently available free space for each user.
 
-ownCloud also checks the age of deleted files every time new files are added to
-the deleted files. By default, deleted files stay in the trash bin for 180
-days. The Administrator can adjust this value in the config.php by setting the
-``trashbin_retention_obligation`` value. Files older than the
-``trashbin_retention_obligation`` will be deleted permanently.  Additionally,
-ownCloud calculates the maximum available space every time a new file is added.
-If the deleted files exceed the new maximum allowed space ownCloud will expire
-old deleted files until the limit is met once again.
+* Once the 50% maximum is reached for deleted files, ownCloud begins to delete files,
+  starting with the oldest versions, until it reaches the memory usage limit again.
+
+You can view all of the deleted files by clicking on the :guilabel:`Deleted
+files` button in Files app on the web interface.
+
+Restoring Files
+---------------
+
+To restore a deleted file:
+
+1. In the Files app, click the :guilabel:`Deleted files` button.
+
+   The Files app shows all deleted files.
+
+   .. figure:: ../images/deleted_files.png
+
+   **Deleted files**
+
+2. Hover the cursor over the file that you want to restore.
+
+   Task options appear for the file.
+
+3. Click the :guilabel:`Restore` button.
+
+   The Files app restores the file to its original location on the server.
+
+Deleting Files
+--------------
+
+To permanently delete a file:
+
+1. In the Files app, click the :guilabel:`Deleted files` button.
+
+   See the **Deleted files** image above.
+
+2. Hover the cursor over the file that you want to delete.
+
+   Task options appear for the file.
+
+3. Click the :guilabel:`Trash can` button.
+
+   The Files app permanently removes the file from the server.
+
+Modifying the Deleted File Age-Out Value
+----------------------------------------
+
+Each time a file is added to the deleted files directory, ownCloud checks the
+age of the deleted files. By default, deleted files remain in the deleted files
+directory for 180 days.
+
+The administrator can adjust the age-out value in the config.php by setting the
+``trashbin_retention_obligation`` value. Files with ages that exceed this value
+are deleted permanently.

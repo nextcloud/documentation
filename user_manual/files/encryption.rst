@@ -1,62 +1,88 @@
-Files Encryption
+Encrypting Files
 ================
 
-ownCloud ships an encryption app, which enables encryption of all files stored in
-your ownCloud. Once the encryption app is enabled by the admin, all your files
-will be encrypted automatically. Encryption and decryption always happen on the
-server-side. This enables the user to continue to use all the other apps to
-view and edit their data. But this also means that the server administrator could
-intercept your data. Server-Side encryption is especially useful if you
-use external storages. This way you can make sure that the storage provider is
-not able to read your data.
+By default, ownCloud provides an Encryption app.  This app enables encryption
+of all files stored in your ownCloud. Once enabled by the administrator, all of
+your files are encrypted automatically.
 
-Please remember. Once the encryption app is enabled, your log-in password is required
-to decrypt and access your data. By default your data will be lost if
-you lose your log-in password. If you want to protect yourself against password
-loss, store your log-in password in a secure place or enable the recovery-key
-feature as described below.
+Encryption and decryption always occurs on the server side. This enables you to
+continue to use all other apps to view and edit data. However, this method of
+encryption also means that the server administrator can intercept your data.
+Server-side encryption is especially useful if you use external storage. It
+ensures that the external storage provider is not able to read your data.
 
-What gets encrypted
--------------------
+.. note:: Once the Encryption app is enabled, your log-in password is required
+   to decrypt and access your data. By default, your data will be lost if you
+   cannot use your log-in password to retrieve it. If you want to protect yourself
+   against password loss, store your log-in password in a secure place or enable
+   the recovery-key feature as described below.
 
-The current version encrypts all your files stored in ownCloud except the following:
+The current version of the Encryption app encrypts all files stored in ownCloud except the following:
 
-- old files in the trash bin (files which were deleted before the encryption app was enabled)
-- image thumbnails from the gallery app and previews from the files app
-- search index from the full text search app
+- Old files in the trash bin (files that were deleted prior to the encryption app being enabled).
+- Image thumbnails from the Gallery app.
+- Previews from the Files app.
+- The search index from the full text search app.
 
-All this data is stored directly on your ownCloud server, so you don't have to worry about exposing
-your data to a third party storage provider.
+.. note:: All data is stored directly on the ownCloud server, eliminating
+   exposure of  your data to third party storage providers.
 
-Decrypt your data again
------------------------
+Enabling the Encryption App
+---------------------------
 
-If the encryption app is disabled after users have already stored encrypted data, users
-will be prompted to decrypt their files again in their personal settings. After this is
-done, they can continue to use their ownCloud without encryption.
+Though ownCloud provides the Encryption app in the server download, it is
+disabled by default.  To enable the Encryption app:
+
+1. Access the ownCloud server as administrator.
+
+2. In the Apps Selection Menu, click "+".
+
+   All apps appear in the Apps Information field.
+
+3. Scroll down the apps list and click the Encryption app.
+
+   .. figure:: ../images/encryption_enabling.png
+
+   **Encryption app (Enabling)**
+
+4. Click the :guilabel:`Enable` button.
+
+   The Encryption app is enabled.
+
+Decrypting Encrypted Files
+--------------------------
+
+If the Encryption app is disabled after users have already stored encrypted
+data, users are prompted to decrypt their files again in their personal
+settings. Once done, users can continue to use their ownCloud without
+encryption.
 
 Settings
 --------
 
-Once the encryption app is enabled, you will find some additional settings on
-your personal settings page.
+Once the encryption app is enabled, additional settings appear on the Admin
+settings page.  These settings include the ability to:
 
-Recovery Key
-~~~~~~~~~~~~
+* Set a recovery key password.
+* Enable or disable the use of the recovery key password.
 
-If the admin enabled the recovery-key feature you can decide for yourself if
-you want to use this feature for your account. If you enable "Password recovery"
-the admin will be able to read your data with a special password. This allows
-him to recover your files in the event you lose your password. If the recovery-key
-is not enabled than there is no way to restore your files if you lose your log-in
-password.
+Recovery Key Password
+~~~~~~~~~~~~~~~~~~~~~
+
+If the administrator enabled the recovery key feature, you can choose to use
+this feature for your account. If you enable "Password recovery" the
+administrator can read your data with a special password. This feature enables
+the administrator to recover your files in the event you lose your password. If
+the recovery key is not enabled, then there is no way to restore your files if
+you lose your login password.
 
 Change Private Key Password
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This option will be only available if your log-in password but not your
-encryption password was changed by your admin. This can happen if your ownCloud
-provider uses a external user back-end, e.g. LDAP, and changed your log-in
-password there. In this case you can set your encryption password to your new
-log-in password by providing your old and new log-in password. The encryption
-app only works if log-in password and encryption password is identical.
+This option is only available if your log-in password, but not your encryption
+password, was changed by your administrator. This can occur if your ownCloud
+provider uses a external user back-end (for example, LDAP) and changed your
+login password using that back-end configuration. In this case, you can set
+your encryption password to your new login password by providing your old and
+new login password. The Encryption app works only if your login password and
+your encryption password are identical.

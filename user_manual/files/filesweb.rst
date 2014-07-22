@@ -2,7 +2,7 @@ Accessing your Files Using the Web Interface
 ============================================
 
 You can access your ownCloud files from anywhere using the ownCloud web
-interface. Once accessed, using the files app you can view (if a common type),
+interface. Once accessed, using the Files app you can view (if a common type),
 move, rename, download, share, and delete your files easily.
 
 .. figure:: ../images/oc_filesweb.png
@@ -71,8 +71,24 @@ the top right side of the Files app field.
 .. note:: If the ``Download`` button is not visible, the administrator has
    disabled this feature.  Contact your administrator for further guidance.
 
-Viewing Files
--------------
+
+Filtering the File Application View
+-----------------------------------
+
+ownCloud enables you to view files in the File Application View using filter options located in the Apps Information Field. This feature enables you to quickly and easily view and manage files based on their share status.
+
+You can click on any of the filter options to view the files as follows:
+
+* ``All files`` -- The default view; displays all files in the Application View window.
+
+* ``Shared with you`` -- Displays all files shared with you by another user or group.
+
+* ``Shared with others`` -- Displays all files that you have shared with other users or groups.
+
+* ``Shared by link`` -- Displays all files that are shared by you through the use of a link.
+
+Previewing Files
+----------------
 
 You can display uncompressed text files, OpenDocument files, PDFs, and image
 files from the ownCloud server by clicking on the file name. If ownCloud cannot
@@ -90,14 +106,15 @@ navigation bar.
 Sharing Files
 -------------
 
-You can share any file or folder on ownCloud with a local user, group, or any
-person online with a public link. By sharing a file or folder, the user or
-group can download the information directly to their system. Shared files and
-folders depict a globe icon and the status *Shared* in the file or folder row.
+When enabled by the administrator, you can share any file or folder on ownCloud
+ with a local user, group, or any person online with a public link. By sharing a
+ file or folder, the user or group can download the information directly to their
+ system. Shared files and folders depict a globe icon and the status *Shared* in
+ the file or folder row.
 
 To share a file or folder:
 
-1. Using your cursor, hover over on an item in the Files app field.
+1. Using your cursor, hover over an item in the Files Application View.
 
 2. Locate the **Share** icon in the file or folder row.
 
@@ -114,7 +131,7 @@ To share a file or folder:
   * **User/Group Share** field: Enables you to specify to whom you want to share the file or folder. Once you specify a user or group, a dialog appears providing added sharing options.
 
 	  .. figure:: ../images/oc_share_with_options.png
-	      
+
 		**Sharing options dialog**
 
   * **Share link** checkbox: When enabled (checked), provides the following additional share options:

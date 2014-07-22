@@ -1,31 +1,65 @@
 Changing Preferences
 ====================
 
-.. figure:: images/oc_user_preferences.png
+As a user, you can manage your personal settings.
 
-As a user, you can change your personal settings by clicking on your username
-on the top-right of ownCloud instance and choosing *Personal*.
+To access your personal settings:
 
-If you are an administrator, you can also manage users and administer the server
-by using the related links. Those links will not be shown to a normal user.
+1. Clicking on your username in the top, right corner of your ownCloud instance.
 
-This document will explain the default items on this page. Depending on the enabled
-applications, you may have more options listed.
+   The Personal Settings Menu opens.
 
-* In the beginning of the page, you will see your usage and available quota.
+   .. figure:: images/oc_user_preferences.png
 
-* You can change your password. For that, you need to enter your current and new password in the field
-  named *Password*. If you would like to able to recover your password via e-mail, fill the e-mail field
-  with the one that you currently using.
+   **Personal Settings Menu**
 
-* By default, your image will have the initial of your username. This image is currently used in editing documents.
-  You can either upload a new image or choose one from the existing images on your ownCloud to set.
+2. Choose *Personal* from the drop down menu.
 
-* In this page, you can also change your web interface language if you want to override the browser settings.
+   The Personal Settings Page opens in the main viewing window.
 
-* WebDAV link will allow you to only view and download your ownCloud files using a browser. You will still need
-  your username and password to access this page.
+   .. figure:: images/personal_settings.png
 
-* Documents app will have an option to specify the folder for newly created documents. You can set the folder here.
+.. note:: If you are an administrator, you can also manage users and administer the server by using the related links in the Personal Settings Menu. However, these links do not appear to a normal user.
 
-* This page will have more options if you have e.g. external storage app enabled.
+The options listed in the Personal Settings Page depend on the applications that are enabled by the administrator.  However, some of the default settings for this page include the following:
+
+* Usage and available quota -- Appearing at the top of the page, this information provides the amount of space used and available for the user (in Megabytes).
+
+   .. figure:: images/usage_indicator.png
+
+* Password -- Enables you to change your password.  To change your password, you must provide your current password along with your new password.  When creating a new password, ownCloud provides a dynamic password strength indicator for your assistance.
+
+  .. figure:: images/password_change.png
+
+  .. note:: If you would like the ability to recover your password through e-mail, specify your email address in the Email field (see below).
+
+* Full Name -- Enables you to specify your full name.  This name appears at the top of the Personal Settings Menu.
+
+   .. figure:: images/full_name.png
+
+* Email -- Enables you to specify an email address for use by the ownCloud server and administrator in sending you notifications.  For information about setting email notifications, see "Notifications" below.
+
+   .. figure:: images/email_address_personal_settings.png
+
+ * Profile picture -- Enables you to specify a new avatar (profile image) that identifies you on the ownCloud server.  By default, the profile picture is the first initial of your username.  You can choose to keep the letter designation, upload a new image from an external source, or select an image from any existing images in your ownCloud folders.
+
+   .. figure:: images/profile_picture_personal_settings.png
+
+* Language -- Enables you to change your web interface language, if you want to override the browser settings.
+
+   .. figure:: images/language_personal_settings.png
+
+* Notifications -- Enables you to specify what notifications you receive for activities on your ownCloud instance.  You can choose to receive messages through an email notification or online stream notification.  In addition, the Notifications settings enable you to exclude changes that you make yourself and obtain only changes made by others on your account.  You can obtain notifications hourly, daily, or weekly.
+
+   .. figure:: images/notifications_personal_settings.png
+
+* Documents -- Enables you to specify a location (folder) to which newly created documents are saved.
+
+   .. figure:: images/documents_personal_settings.png
+
+
+* WebDAV link will allow you to only view and download your ownCloud files using a browser. You will still need your username and password to access this page.
+
+# ??Is this no longer visible??
+
+* Version -- Specifies the ownCloud software version that you are using along with links to the ownCloud community, source code, and licensing information.
