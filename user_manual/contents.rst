@@ -12,6 +12,7 @@ ownCloud documentation contents
 .. toctree::
     :maxdepth: 3
 
+    whats_new
     webinterface
     files/index
     pim/index
