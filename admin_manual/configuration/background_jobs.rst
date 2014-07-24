@@ -1,8 +1,10 @@
 Defining Background Jobs
 ========================
-A system like ownCloud sometimes requires tasks to be done on a regular basis without the need for user interaction or hindering ownCloud performance. For that purpose, as a system administrator, you can define background jobs (for example, database clean-ups) which make it possible to execute tasks without any need for user interaction.
+A system like ownCloud sometimes requires tasks to be done on a regular basis without the need for user interaction or hindering ownCloud performance. For that purpose, as a system administrator, you can define background jobs (for example, database clean-ups) which executed without any need for user interaction.
 
-.. note:: For the sake of completeness, it is worth noting that you can define additional background jobs using installed apps.
+These jobs are typically referred to as *cron jobs*.  Cron jobs are commands or shell-based scripts that are scheduled to run periodically at fixed times, dates, or intervals.   ``cron.php`` is an ownCloud internal process that runs such background jobs on demand.
+
+ownCloud plug-in applications register actions with ``cron.php`` automatically to take care of typical housekeeping operations, such as garbage collecting of temporary files or checking for newly updated files using ``filescan()`` for externally mounted file systems.
 
 Parameters
 ----------
@@ -16,7 +18,7 @@ You can choose between the following options:
 Cron Jobs
 ---------
 
-ownCloud requires the running of various automated background jobs. These jobs are typically referred to as *cron jobs*.  Cron jobs are commands or shell-based scripts that are scheduled to run periodically at fixed times, dates, or intervals.  You can schedule cron jobs in three ways -- using AJAX, Webcron, or cron. The default method is to use AJAX.  However, the recommended method is to use cron.  The following sections describe the differences between each method.
+You can schedule cron jobs in three ways -- using AJAX, Webcron, or cron. The default method is to use AJAX.  However, the recommended method is to use cron.  The following sections describe the differences between each method.
 
 AJAX
 ~~~~
@@ -36,11 +38,16 @@ your server using the Internet. For example::
 Cron
 ~~~~
 
-Using the ownCloud system cron feature is the preferred method for executing regular tasks.  This method enables the execution of scheduled jobs without the inherent limitations the web server might have.  For example:
+Using the operating system cron feature is the preferred method for executing regular tasks.  This method enables the execution of scheduled jobs without the inherent limitations the web server might have.  For example:
 
-To run a cron job on a \*nix system, every 15 minutes, under the default web server user (that is, ``www-data``), you must set up the following cron job to call the **cron.php** script::
+To run a cron job on a \*nix system, every 15 minutes, under the default web server user (often, ``www-data`` or ``wwwrun``), you must set up the following cron job to call the **cron.php** script::
 
   # crontab -u www-data -e
+  */15  *  *  *  * php -f /var/www/owncloud/cron.php
+
+You can verify if the cron job has been added and scheduled by executing::
+
+  # crontab -u www-data -l
   */15  *  *  *  * php -f /var/www/owncloud/cron.php
 
 .. note:: Please refer to the crontab man page for the exact command syntax.
