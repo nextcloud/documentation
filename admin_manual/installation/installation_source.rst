@@ -190,11 +190,6 @@ the user running php on your system.
 
 	chown -R apache:apache /path/to/your/owncloud
 
-When using an NFS mount for the data directory, do not change ownership as above.
-The simple act of mounting the drive will set proper permissions for ownCloud to
-write to the directory. Changing ownership as above could result in some issues
-if the NFS mount is lost.
-
 Web Server Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
