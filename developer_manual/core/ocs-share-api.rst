@@ -113,11 +113,15 @@ Update a given share. Only one value can be updated per request.
 * Method: PUT
 
 * Arguments: share_id - (int) share ID
-* PUT Arguments: permissions - (int) update permissions (see "Create share" above)
+* PUT Arguments: permissions - (int) update permissions (see "Create share"
+  above)
 * PUT Arguments: password - (string) updated password for public link Share
-* PUT Arguments: publicUpload - (boolean) enable (true) /disable (false) public upload for public shares.
+* PUT Arguments: publicUpload - (boolean) enable (true) /disable (false) public
+  upload for public shares.
+* PUT Arguments: expireDate - (string) set a expire date for public link
+  shares. This argument expects a well formated date string, e.g. 'YYYY-MM-DD'
 
-.. note:: Only one of "password" or "publicUpload" can be specified at once.
+.. note:: Only one of the update parameters can be specified at once.
 
 Statuscodes:
 
