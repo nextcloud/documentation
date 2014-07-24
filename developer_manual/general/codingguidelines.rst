@@ -14,18 +14,20 @@ General
 * End of Lines : Unix style (LF / '\n') only
 * No global variables or functions
 * Unit tests
+* HTML should be HTML5 compliant
+* Check these `database performance tips <http://mailman.owncloud.org/pipermail/devel/2014-June/000262.html>`_
 * Software should work. Only put features into master when they are complete. It's better to not have a feature instead of having one that works poorly.
 * Regularly reset your installation to see how the first-run experience is like. And improve it.
 * When you ``git pull``, always ``git pull --rebase`` to avoid generating extra commits like: *merged master into master*
-* We need a signed contributor agreement from you to commit into the core repository. But no worries; it's a nice one. All the information is in our `Contributor agreement FAQ <http://owncloud.org/about/contributor-agreement>`_.
+* We need a signed contributor agreement from you to commit into the core repository (apps don't need that). All the information is in our `Contributor agreement FAQ <http://owncloud.org/about/contributor-agreement>`_.
 
 User interface
 --------------
 * Software should get out of the way. Do things automatically instead of offering configuration options.
 * Software should be easy to use. Show only the most important elements. Secondary elements only on hover or via Advanced function.
-* User data is sacred. Provide undo instead of asking for confirmation
+* User data is sacred. Provide undo instead of asking for confirmation - `which might be dismissed <http://www.alistapart.com/articles/neveruseawarning/>`_
 * The state of the application should be clear. If something loads, provide feedback.
-* Do not adapt broken concepts (for example design of desktop apps) just for the sake of consistency. We provide a better interface.
+* Do not adapt broken concepts (for example design of desktop apps) just for the sake of consistency. We aim to provide a better interface, so let's find out how to do that!
 * Ideally do `usability testing <http://jancborchardt.net/usability-in-free-software>`_ to know how people use the software.
 * For further UX principles, read `Alex Faaborg from Mozilla <http://uxmag.com/articles/quantifying-usability>`_.
 
