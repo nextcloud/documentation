@@ -1,6 +1,6 @@
 Defining Background Jobs
 ========================
-A system like ownCloud sometimes requires tasks to be done on a regular basis without the need for user interaction or hindering ownCloud performance. For that purpose, as a system administrator, you can define background jobs (for example, database clean-ups) which executed without any need for user interaction.
+A system like ownCloud sometimes requires tasks to be done on a regular basis without the need for user interaction or hindering ownCloud performance. For that purpose, as a system administrator, you can define background jobs (for example, database clean-ups) which are executed without any need for user interaction.
 
 These jobs are typically referred to as *cron jobs*.  Cron jobs are commands or shell-based scripts that are scheduled to run periodically at fixed times, dates, or intervals.   ``cron.php`` is an ownCloud internal process that runs such background jobs on demand.
 
