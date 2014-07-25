@@ -13,7 +13,7 @@ General
 * Software should work. Only put features into master when they are complete. It's better to not have a feature instead of having one that works poorly.
 * When you are finished, use the merge request function on Github. The other developers will look at it and give you feedback. You can also post your merge request to the mailing list to let people know. See `the code review page for more information <../bugtracker/codereviews.html>`_
 * Decisions are made by consensus. We strive for making the best technical decisions and as nobody can know everything, we collaborate. That means a first negative comment might not be the final word, neither is positive feedback an immediate GO. ownCloud is built out of modular pieces (apps) and maintainers have a strong influence. In case of disagreement we consult other seasoned contributors.
-* We need a signed contributor agreement from you to commit into the core repository (apps don't need that). All the information is in our `Contributor agreement FAQ <http://owncloud.org/about/contributor-agreement>`_.
+* We need a signed contributor agreement from you to commit into the core repository (apps don't need that). All the information is in our `Contributor agreement FAQ <http://owncloud.org/contribute/agreement/>`_.
 
 
 Coding
