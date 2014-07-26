@@ -425,7 +425,7 @@ Nginx Configuration
                 access_log off;
             }
 
-            location ~ ^/(?:\.|data|config|db_structure\.xml|README) {
+            location ~ ^/(?:\.htaccess|data|config|db_structure\.xml|README) {
                     deny all;
             }
 
