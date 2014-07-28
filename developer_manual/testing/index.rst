@@ -41,4 +41,42 @@ You will receive mails from the mailinglist and also from the bug tracker if dev
 
 We are looking forward to working with you :)
 
+How do you test
+---------------
+Testing follows these steps:
+
+* Set up your testing environment
+* Pick something to test
+* Test it
+* Back to 2 until something unexpected/bad happens
+* Check if what you found is really a bug
+* File the bug
+
+Installing ownCloud
+-------------------
+Testing starts with setting up a testing environment. We urge you to not put your production data on testing
+releases unless you have a backup somewhere!
+
+Start by installing ownCloud, either on real hardware or in a VM.
+
+You can find instructions for installation in the `admin documentation <../../admin_manual/#installation>`.
+
+Please note that we are still working on the documentation and if you bump into a problem, you can
+`help us fix it <https://github.com/owncloud/documentation>`_. Small things can be edited straight on github.
+
+The Real Testing
+----------------
+Testing is a matter of trying out some scenarios you decide or were asked to test, for example, sharing a folder
+and mounting it on another ownCloud instance. If it works – awesome, move on. If it doesn't, find out
+as much as you can about why it doesn't and use that for a bug report.
+
+This is the stage where you should see if your issue is already reported by checking the issue
+tracker. It might even be fixed, sometimes! It can also be fruitful to contact the
+`developers on irc <irc://freenode/#owncloud-dev>`_. Tell them you're testing ownCloud
+and share what problem you bumped into. Or just ask on the test-pilots mailing list.
+
+Finally, if the issue you bump into is a clear bug and the developers are not aware of it, file it as a new issue. See :doc:`../bugtracker`
+
+
+
 
