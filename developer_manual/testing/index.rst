@@ -59,7 +59,7 @@ releases unless you have a backup somewhere!
 
 Start by installing ownCloud, either on real hardware or in a VM.
 
-You can find instructions for installation in the `admin documentation <../../admin_manual/#installation>`.
+You can find instructions for installation in the `admin documentation <../../admin_manual/#installation>`_.
 
 Please note that we are still working on the documentation and if you bump into a problem, you can
 `help us fix it <https://github.com/owncloud/documentation>`_. Small things can be edited straight on github.
