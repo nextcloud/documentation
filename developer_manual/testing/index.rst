@@ -7,15 +7,15 @@ ownCloud Test Pilots
    :hidden:
 
 
-The ownCloud Test Pilots take care of helping to test and improve different server setups with ownCloud. 
+The ownCloud Test Pilots help to test and improve different server and client setups with ownCloud. 
 
 Why do you want to join
 -----------------------
-There are many different setups and people have different interests. If you want ownCloud to run well on NginX for instance someone has to test this configuration.
+There are many different setups and people have different interests. If we want ownCloud to run well on NginX for instance someone has to test this configuration.
 
-Furthermore, during bug fixing the ownCloud developers often do not have the possibility to reproduce the bug in a given environment nor they are able confirm that it was fixed. As a member of the Test Pilot Team you could act as a contact person for a specific area to help developers **fix the bugs you care about**.
+Furthermore, during bug fixing the ownCloud developers often do not have the possibility to reproduce the bug in a given environment nor they are able confirm that it was fixed. As a member of the Test Pilot Team you could act as a contact person for a specific area to help developers **fix the bugs you care about**. Testing ownCloud before it is released is the best way of making sure it does what you need it to!
 
-Another benefit is a more efficient relationship to the developers: **You know what people are responsible for which parts** and it is easier to get help. 
+Another benefit is a closer relationship to the developers: **You know what people are responsible for which parts** and it is easier to get help.
 
 If you want you will be listed as an active contributor on the `owncloud.org <http://owncloud.org>`_ page.
 
