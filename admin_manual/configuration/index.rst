@@ -8,6 +8,7 @@ Configuration
    configuration_apps
    configuration_users
    auth_ldap
+   server_to_server_managing
    background_jobs
    configuration_assets
    configuration_3rdparty

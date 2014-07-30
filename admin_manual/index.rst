@@ -1,42 +1,39 @@
-===================
-Admin Documentation
-===================
-
+============
 Introduction
 ============
 
-This is the administrators manual for ownCloud, a flexible, open source file
-sync and share solution. It comprises of the ownCloud server, as well as client
-applications for Microsoft Windows, Mac OS X and Linux (Desktop Client) and
-mobile clients for the Android and Apple iOS operating system.
+Welcome to the ownCloud Administrator Guide.  This guide describes
+administrator tasks for ownCloud; a flexible, open source, file synchronization
+and sharing solution. ownCloud is comprised of a server running on either a
+Linux or Microsoft Word platform as well as client applications for Microsoft
+Windows, Mac OS X and Linux (Desktop Client) and mobile clients for both the
+Android and Apple iOS operating system.
 
-Target audience
+Target Audience
 ---------------
 
-This guide is targeted towards people who want to install, administer and
-optimize ownCloud Server. If you want to learn how to use the Web UI, or how to
-install clients on the server, please refer to the `User Manual`_ or the `Desktop
-Client Manual`_ respectively.
+This guide is targeted towards people who want to install, administer, and
+optimize the ownCloud server. If you want to learn more about the ownCloud Web
+user interface or how to install clients on the server, refer to the following:
+
+* `User Manual`_
+* `Desktop Client Manual`_
 
 .. _`User Manual`: http://doc.owncloud.com/
 .. _`Desktop Client Manual`: http://doc.owncloud.com/
 
-Structure of this document
---------------------------
+Document Structure
+------------------
 
-The next chapters describes how to set up ownCloud Server on different platforms
-and operating systems, as well as how to update existing installations.
-
-Further chapters will then detail on integrating ownCloud into your existing
-environment, e.g. how to setup LDAP or how to mount your storage.
+This document is broken out into three major sections -- Installation,
+Configuration, and Maintenance.  The following sections provide detailed
+information about various tasks associated with each of these sections.
 
 
 Installation
 ============
-This chapter will introduce you to the installation of ownCloud in different scenarios.
-
-If you want to just try ownCloud in a virtual machine without any configuration, check the section
-:doc:`installation/installation_appliance`, where you will find ready-to-use images.
+This section provides detailed instructions on how to install ownCloud in
+different scenarios.  It contains the following topics:
 
 * :doc:`installation/installation_linux` (recommended)
 * :doc:`installation/installation_windows`
@@ -46,14 +43,20 @@ If you want to just try ownCloud in a virtual machine without any configuration,
 * :doc:`installation/installation_macos` (not supported)
 * :doc:`installation/installation_appliance`
 
+.. note:: If you just want to try out ownCloud in a virtual machine, without
+   any configuration, refer to :doc:`installation/installation_appliance`.  For
+   your convenience, this topic contains ready-to-use images.
+
 Configuration
 =============
-This chapter covers ownCloud and web server configuration.
+This section describes how to configure ownCloud and your web server.  It
+contains the following topics:
 
 * :doc:`configuration/configuration_apps`
 * :doc:`configuration/configuration_users`
 * :doc:`configuration/configuration_database`
 * :doc:`configuration/auth_ldap`
+* :doc:`configuration/server_to_server_managing`
 * :doc:`configuration/custom_mount_config_gui`
 * :doc:`configuration/custom_mount_config`
 * :doc:`configuration/background_jobs`
@@ -72,8 +75,10 @@ This chapter covers ownCloud and web server configuration.
 
 Maintenance
 ===========
-This chapter covers maintenance tasks such as updating or migrating to a new version.
 
+This sections describes the maintenance tasks associated with the ownCloud
+server (for example, updating or migrating to a new version of ownCloud).  It
+contains the following topics:
 
 * :doc:`maintenance/enable_maintenance`
 * :doc:`maintenance/migrating`

@@ -27,12 +27,6 @@ provides the ability to put the right files in the right hands at the right
 time on any device with one simple-to-use, secure, private and controlled
 solution. After all, with ownCloud, it’s Your Cloud, Your Data, Your Way.
 
-What's new
-==========
-The following topic contains information about important changes in the current release:
-
-* :doc:`whats_new`
-
 Web Interface
 =============
 The following topic contains a general overview how to access ownCloud from a
@@ -50,6 +44,7 @@ interface or through the use of WebDAV shares (Linux or Mac OSX) or web folders
 * :doc:`files/filesweb`
 * :doc:`files/files`
 * :doc:`files/sync`
+* :doc:`files/server_to_server_using`
 * :doc:`files/versioncontrol`
 * :doc:`files/deletedfiles`
 * :doc:`files/encryption`
