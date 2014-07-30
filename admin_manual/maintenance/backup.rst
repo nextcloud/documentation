@@ -23,7 +23,7 @@ MySQL
 
 MySQL is the recommended database engine. To backup MySQL::
 
-    mysqldump --lock-tables -h [server] -u [username] -p[password] > owncloud-sqlbkp_`date +"%Y%m%d"`.bak
+    mysqldump --lock-tables -h [server] -u [username] -p[password] [db_name] > owncloud-sqlbkp_`date +"%Y%m%d"`.bak
 
 SQLite
 ^^^^^^
