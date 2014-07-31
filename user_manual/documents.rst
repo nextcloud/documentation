@@ -1,7 +1,7 @@
 Documents
 =========
 
-Document editing is one of the new features in ownCloud 6. With this app, multiple users
+Document editing is an ownCloud app introduced in version 6. With this app, multiple users
 can edit rich-text simultaneously. The documents can be created from within the
 web-interface or existing documents can be uploaded. Sharing and editing can be done
 securely in the browser and be shared inside ownCloud or via a public link. User that
