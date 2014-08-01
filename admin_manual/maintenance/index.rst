@@ -10,4 +10,5 @@ Maintenance
    update
    restore
    migrating
+   convert_db
 
