@@ -95,7 +95,7 @@ then, e.g. to pull all changes in all repositories, you only need this::
 
   find . -maxdepth 3 -type d -name .git -exec sh -c 'cd "{}"/../ && pwd && git pull' \;
 
-or to prune all merged branched, you would execute this::
+or to prune all merged branches, you would execute this::
 
   find . -maxdepth 3 -type d -name .git -exec sh -c 'cd "{}"/../ && pwd && git remote prune origin' \;
 
