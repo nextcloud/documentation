@@ -52,7 +52,7 @@ Database choice
   set them up for being available for php/ownCloud, see
   :doc:`../configuration/configuration_database`
 
-* Note that you will only be able to choose among the php database connectors
+* Note that you will only be able to choose among the PHP database connectors
   which are actually installed on the system.
 
 * It is not easily possible to migrate to another database system once you have
