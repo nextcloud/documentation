@@ -122,7 +122,7 @@ To upgrade your ownCloud Server:
 
   .. note:: For specific instructions on how to stop, start, or manage your server, please refer to instructions for the server on your specific operating environment.
 
-6. Copy, move, or rename your current owncloud directory (named ``/owncloud`` if installed using defaults) to another location for use in your new version of ownCloud.
+6. Move, or rename your current owncloud directory (named ``/owncloud`` if installed using defaults) to another location for use in your new version of ownCloud.
 
   .. note:: This step ensures that you have a version of ownCloud available for backup purposes.
 
@@ -134,9 +134,9 @@ To upgrade your ownCloud Server:
 
   In Microsoft Windows environments, you can unpack the release tarball using WinZip or a similar tool (for example, Peazip).
 
-  Though you can upack the server code into an existing, populated directory, best practice is to unpack server code into an empty directory.
+  Always unpack server code into an empty directory. Unpacking the server code into an existing, populated directory, is not supported.
 
-  .. note:: If you copied the installation directory, instead of moving or renaming, this step overwrites the old ownCloud Server version in the current location.
+  .. note:: If you unpack into an existing installation, the autoloader might pick up classes twice because the files have been moved, resulting in a ``Cannot redeclare class`` error.
 
 8. Copy and paste the ``/config/config.php`` file from the saved version of ownCloud to the ``/config`` directory of your new ownCloud version.
 
