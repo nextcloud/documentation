@@ -93,7 +93,7 @@ If you have more than one repository cloned, it can be time consuming to do the 
 
 then, e.g. to pull all changes in all repositories, you only need this::
 
-  find . -maxdepth 3 -type d -name .git -exec sh -c 'cd "{}"/../ && pwd && git pull' \;
+  find . -maxdepth 3 -type d -name .git -exec sh -c 'cd "{}"/../ && pwd && git pull --rebase' \;
 
 or to prune all merged branches, you would execute this::
 
