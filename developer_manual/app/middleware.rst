@@ -29,7 +29,7 @@ To generate your own middleware, simply inherit from the Middleware class and ov
        * this replaces "fuck" with "****"" in the output
        */
       public function beforeOutput($controller, $methodName, $output){
-          return str_replace($output, 'fuck', '****');
+          return str_replace('fuck', '****', $output);
       }
 
   }
@@ -64,7 +64,7 @@ The middleware can be registered in the :doc:`container` and added using the **r
           });
       
           // executed in the order that it is registered
-          $this->registerMiddleware('CensorMiddleware');
+          $container->registerMiddleware('CensorMiddleware');
   
       }
   }
@@ -139,7 +139,7 @@ Now adjust the container to inject the reflector:
           });
 
           // executed in the order that it is registered
-          $this->registerMiddleware('HeaderMiddleware');
+          $container->registerMiddleware('HeaderMiddleware');
       }
 
   }
