@@ -1,7 +1,7 @@
 Converting Database Type
 ========================
 
-You can convert a sqlite database to a more performant mysql or pgsql database with the ownCloud command line tool.
+You can convert a sqlite database to a more performing MySql, MariaDB or PostgreSQL database with the ownCloud command line tool.
 Available since ownCloud version 7.0.0. To convert former ownCloud installations, first update to at least version 7.0.0.
 
 
@@ -31,9 +31,9 @@ For example
   php occ db:convert-type --all-apps mysql oc_mysql_user 127.0.0.1 new_db_name
 
 
-On success the converter will automaticly configure the new database in your ownCloud config ``config.php``
+On success the converter will automatically configure the new database in your ownCloud config ``config.php``
 
-Unconvertable Tables
+Unconvertible Tables
 --------------------
 
 If you updated your ownCloud installation there might exist old tables, which are not used anymore. The converter will tell you 
