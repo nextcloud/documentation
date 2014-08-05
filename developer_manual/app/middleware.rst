@@ -26,10 +26,10 @@ To generate your own middleware, simply inherit from the Middleware class and ov
   class CensorMiddleware extends Middleware {
 
       /**
-       * this replaces "fuck" with "****"" in the output
+       * this replaces "bad words" with "********" in the output
        */
       public function beforeOutput($controller, $methodName, $output){
-          return str_replace('fuck', '****', $output);
+          return str_replace('bad words', '********', $output);
       }
 
   }
