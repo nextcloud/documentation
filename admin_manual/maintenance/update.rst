@@ -187,6 +187,8 @@ To upgrade your ownCloud Server:
 
   This step is required.  Accessing the server using a browser connection launches the server upgrade.
 
+  .. note:: To avoid webserver timeouts on slow or overloaded systems you can also update your ownCloud on the command line if you have SSH access to your server. This also avoid other users accessing the server during the process. Before starting the server (step 10), run the command ``php occ upgrade`` in the ownCloud folder. 
+
 12. If third party applications were running on your system, ensure that they provide versions compatible with the new ownCloud release. If compatible, you can reinstall and enable these applications.
 
   .. note:: Update procedures should run when necessary.
