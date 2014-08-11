@@ -13,7 +13,7 @@ ownCloud instance, this feature enables you to:
    versions of ownCloud that support this feature.
 
 For information about managing server-to-server sharing functions for internal
-and external users and groups see `Managing Server-to-Server Sharing Access`_.
+and external users and groups see the following section.
 
 Sharing Files and Folders Across Servers
 ----------------------------------------

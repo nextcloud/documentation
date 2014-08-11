@@ -9,7 +9,7 @@ To access your personal settings:
 
    The Personal Settings Menu opens.
 
-   .. figure:: images/oc_user_preferences.png
+   .. figure:: images/oc_personal_settings_dropdown.png
 
    **Personal Settings Menu**
 
