@@ -12,4 +12,4 @@ If a manual app install fails, this could be due to the fact that
 
     you have downloaded a version incompatible with the ownCloud version in use
     the app contains malicious code
-    there is a genuine bug in the app that prevents it from running Please refer to the comment section in apps.owncloud.com to check if others have raised similar problems. Note that the score and download numbers of an app are a helpful, but not a sufficient measure of the quality and security of an app.
+    there is a genuine bug in the app that prevents it from running. Please refer to the comment section in apps.owncloud.com to check if others have raised similar problems. Note that the score and download numbers of an app are a helpful, but not a sufficient measure of the quality and security of an app.
