@@ -1,6 +1,7 @@
 Configuring Server-to-Server Sharing
 ========================================
 
+<<<<<<< HEAD
 ownCloud 7 introduces a powerful new feature, server-to-server sharing. With 
 just a few clicks you can easily and securely create public shares for sharing 
 files and directories with other ownCloud 7 servers. You can automatically send 
@@ -58,3 +59,4 @@ LAN. This also applies to using the server name; for access outside of your LAN
 you need to use a fully-qualified domain name such as 
 ``http://myserver.example.com``, rather than ``http://myserver``.
 
+>>>>>>> d8d985742fbb0bbaeb7fec43457f0a77816c973e
