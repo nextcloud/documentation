@@ -1,10 +1,10 @@
 Use Server-Side Encryption
 ==========================
 
-ownCloud ships an encryption app, which allows to encrypt all files stored in
+ownCloud ships En encryption app, which allows to encrypt all files stored in
 your ownCloud. Encryption and decryption always happen on the server-side. This
 enables the user to continue to use all the other apps to view and edit his
-data.
+data. The Encryption app is meant to protect user data on external storage.
 
 The app uses the user's log-in password as encryption-password. This means that
 by default the user will lose access to his files if he loses his log-in
@@ -17,6 +17,13 @@ encryption keys are stored in following folders:
 * data/public-keys (public keys from all users)
 * data/<user>/files_encryption (users' private keys and all other keys necessary to
   decrypt the users' files)
+
+.. note:: Encryption keys are stored only on the ownCloud server, eliminating
+   exposure of your data to third party storage providers. The encryption app does **not** 
+   protect your data if your ownCloud server is compromised. This would require client side encryption,
+   which this app does not provide. Read 
+   `this blog post <https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your-data/>`_
+   for more details.
 
 Enable File Recovery Feature
 ----------------------------
