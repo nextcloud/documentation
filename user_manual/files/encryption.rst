@@ -6,9 +6,9 @@ of all files stored in your ownCloud. Once enabled by the administrator, all of
 your files are encrypted automatically.
 
 Encryption and decryption always occurs on the server side. This enables you to
-continue to use all other apps to view and edit data. However, this method of
-encryption also means that the server administrator can intercept your data.
-Server-side encryption is especially useful if you use external storage. It
+continue to use all other apps to view and edit data. However, **this method of
+encryption also means that the server administrator can intercept your data**.
+Server-side encryption is thus useful if you use *external storage*. It
 ensures that the external storage provider is not able to read your data.
 
 .. note:: Once the Encryption app is enabled, your log-in password is required
@@ -24,8 +24,12 @@ The current version of the Encryption app encrypts all files stored in ownCloud 
 - Previews from the Files app.
 - The search index from the full text search app.
 
-.. note:: All data is stored directly on the ownCloud server, eliminating
-   exposure of  your data to third party storage providers.
+.. note:: Encryption keys are stored only on the ownCloud server, eliminating
+   exposure of your data to third party storage providers. The encryption app does **not** 
+   protect your data if your ownCloud server is compromised. This would require client side encryption,
+   which this app does not provide. Read 
+   `this blog post <https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your-data/>`_
+   for more details.
 
 Enabling the Encryption App
 ---------------------------
