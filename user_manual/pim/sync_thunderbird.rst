@@ -8,8 +8,9 @@ As someone who is new to ownCloud, New to SoGo Connector, and new to Thunderbird
 
 #. `Thunderbird <http://www.mozilla.org/en-US/thunderbird/>`_ for your OS unless it comes with your OS distribution (Linux)
 #. `Sogo Connector <http://www.sogo.nu/english/downloads/frontends.html>`_ (latest release)
+#. `Lightning <https://addons.mozilla.org/en-US/thunderbird/addon/lightning/>`_ (a Thunderbird calendar add-on. At the time (Aug 14), syncing your contacts only works with this add-on installed.)
 
-With an installed Thunderbird mailtool, and installed SoGo Connector:
+With an installed Thunderbird mailtool, an installed SoGo Connector, and an installed Lightning add-on:
 
 #. Thunderbird Addressbook is in the Thunderbird "Tools" Menu
 #. In the Thunderbird Addressbook application:
