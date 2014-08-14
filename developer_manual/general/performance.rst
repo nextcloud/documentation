@@ -26,29 +26,29 @@ With MySQL is is very easy with just a bit of configuration:
 
 1. Slow query log.
 
-If you put this into your my.cnf file than every query that takes longer than one second is logged to a logfile. 
+If you put this into your my.cnf file than every query that takes longer than one second is logged to a logfile::
 
-  log_slow_queries = 1
-  log_slow_queries        = /var/log/mysql/mysql-slow.log
-  long_query_time=1
+  log_slow_queries = 1 
+  log_slow_queries = /var/log/mysql/mysql-slow.log 
+  long_query_time=1 
 
 If a query takes over one second than we have a serious problem of course. You can watch it with `tail -f /var/log/mysql/mysql-slow.log` while using ownCloud.
 
 2. log all queries.
 
-If you reduce the long_query_time to zero than every statement is logged. This is super helpful to see what is going on. Just do a `tail -f` on the logfile and click around in the interface or access the WebDAV interface.
+If you reduce the long_query_time to zero than every statement is logged. This is super helpful to see what is going on. Just do a `tail -f` on the logfile and click around in the interface or access the WebDAV interface::
 
   log_slow_queries = 1
-  log_slow_queries        = /var/log/mysql/mysql-slow.log
+  log_slow_queries = /var/log/mysql/mysql-slow.log
   long_query_time=0
 
 3. log queries without an index.
 
-If you increase the long_query_time to 100 and add log-queries-not-using-indexes than all the queries that are not using an index are logged. Every query should always use an index. So ideally there should be no output.
+If you increase the long_query_time to 100 and add log-queries-not-using-indexes than all the queries that are not using an index are logged. Every query should always use an index. So ideally there should be no output::
 
   log-queries-not-using-indexes
   log_slow_queries = 1
-  log_slow_queries        = /var/log/mysql/mysql-slow.log
+  log_slow_queries = /var/log/mysql/mysql-slow.log
   long_query_time=100
 
 Measuring performance
