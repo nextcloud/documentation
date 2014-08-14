@@ -9,4 +9,5 @@ General
    devenv
    security
    codingguidelines
+   performance
    debugging
