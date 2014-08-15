@@ -165,10 +165,10 @@ You can quit the prompt by entering::
 
   \q
 
-An ownCloud instance configured with PostgreSQL would contain the hostname on
-which the database is running, a valid username and password to access it, and
-the name of the database. The :file:`config/config.php` as created by the
-:doc:`../installation/installation_wizard` would therefore contain entries like
+An ownCloud instance configured with PostgreSQL would contain the path to the socket on
+which the database is running as the hostname, the system username the php process is using,
+and an empty password to access it, and the name of the database. The :file:`config/config.php` as 
+created by the :doc:`../installation/installation_wizard` would therefore contain entries like
 this:
 
 .. code-block:: php
