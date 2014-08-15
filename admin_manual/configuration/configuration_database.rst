@@ -149,6 +149,42 @@ like this:
   pgsql.ignore_notice = 0
   pgsql.log_notice = 0
 
+The default configuration for PostgreSQL (at least in Ubuntu 14.04) is to use the peer authentication method. Check :file:`/etc/postgresql/9.3/main/pg_hba.conf` to find out which authentication method is used in your setup.
+To start the postgres command line mode use::
+
+  sudo -u postgres psql -d template1
+
+Then a **template1=#** prompt will appear. Now enter the following lines and confirm them with the enter key:
+
+.. code-block:: sql
+
+  CREATE USER username CREATEDB;
+  CREATE DATABASE owncloud OWNER username;
+
+You can quit the prompt by entering::
+
+  \q
+
+An ownCloud instance configured with PostgreSQL would contain the hostname on
+which the database is running, a valid username and password to access it, and
+the name of the database. The :file:`config/config.php` as created by the
+:doc:`../installation/installation_wizard` would therefore contain entries like
+this:
+
+.. code-block:: php
+
+  <?php
+
+    "dbtype"        => "pgsql",
+    "dbname"        => "owncloud",
+    "dbuser"        => "username",
+    "dbpassword"    => "",
+    "dbhost"        => "/var/run/postgresql",
+    "dbtableprefix" => "oc_",
+
+IMPORTANT: The host actually points to the socket that is used to connect to the database. Using localhost here will not work if postgreSQL is configured to use peer authentication. Also note, that no password is specified, because this authentication method doesn't use a password.
+
+If you use another authentication method (not peer), you'll need to use the following steps to get the database setup:
 Now you need to create a database user and the database itself by using the
 PostgreSQL command line interface. The database tables will be created by
 ownCloud when you login for the first time.
