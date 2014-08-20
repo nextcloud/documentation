@@ -182,7 +182,7 @@ this:
     "dbhost"        => "/var/run/postgresql",
     "dbtableprefix" => "oc_",
 
-IMPORTANT: The host actually points to the socket that is used to connect to the database. Using localhost here will not work if postgreSQL is configured to use peer authentication. Also note, that no password is specified, because this authentication method doesn't use a password.
+.. note:: The host actually points to the socket that is used to connect to the database. Using localhost here will not work if postgreSQL is configured to use peer authentication. Also note, that no password is specified, because this authentication method doesn't use a password.
 
 If you use another authentication method (not peer), you'll need to use the following steps to get the database setup:
 Now you need to create a database user and the database itself by using the
