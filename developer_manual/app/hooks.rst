@@ -147,7 +147,7 @@ Filesystem hooks available in scope **\\OC\\Files**:
 * **postCreate** (\\OCP\\Files\\Node $node)
 * **preDelete** (\\OCP\\Files\\Node $node)
 * **postDelete** (\\OCP\\Files\\Node $node)
-* **preTouch** (\\OC\\FilesP\\Node $node, int $mtime)
+* **preTouch** (\\OC\\Files\\Node $node, int $mtime)
 * **postTouch** (\\OCP\\Files\\Node $node)
 * **preCopy** (\\OCP\\Files\\Node $source, \\OCP\\Files\\Node $target)
 * **postCopy** (\\OCP\\Files\\Node $source, \\OCP\\Files\\Node $target)
