@@ -38,7 +38,7 @@ To share a file or folder across servers as an originator:
 
    .. figure:: ../images/share_link.png
 
-   **Sharing a link**
+      **Sharing a link**
 
 3. (Optional) Specify an alphanumeric password that you want others to use in order to accessing this share.
 

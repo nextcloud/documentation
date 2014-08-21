@@ -7,18 +7,18 @@ move, rename, download, share, and delete your files easily.
 
 .. figure:: ../images/oc_filesweb.png
 
-**ownCloud web interface Files app**
+    **ownCloud web interface Files app**
 
 ownCloud version 7 enables you to see file thumbnails next to the filenames.
 Hovering over a file or folder provides the following highlighted list of
 operations:
 
-* :guilabel:`Rename` -- Enables you to rename a file or folder.
+* :guilabel:`Pencil icon` -- Enables you to rename a file or folder.
 * :guilabel:`Download` -- Downloads a file to your system.
 * :guilabel:`Versions` (when enabled; See :doc:`versioncontrol` for details) -- Enables you to revert the file or folder to any available older versions.
 * :guilabel:`Share` -- Enables you to share the file or folder with a group or a specific user.  Also enables you to share using a specified link.
 * :guilabel:`Edit` -- When a file is editable, enables you to open the file in the document application as long as that application is enabled for use from the ownCloud server.
-* :guilabel:`Delete` -- Deletes the selected file or folder.
+* :guilabel:`Trash icon` -- Deletes the selected file or folder.
 
 
 Navigating Inside Your ownCloud
@@ -31,7 +31,7 @@ the Files field for quick navigation.
 
 .. figure:: ../images/oc_filesweb_navigate.png
 
-**Navigation bar**
+    **Navigation bar**
 
 The navigation bar functions as a "breadcrumb" locator.  It indicates your
 current directory and enables you to migrate back to one of the upper
@@ -46,7 +46,7 @@ folder by clicking on the *New* button in the Files app.
 
 .. figure:: ../images/oc_filesweb_new.png
 
-**New button options**
+    **New button options**
 
 The *New* button provides the following three options from which to choose:
 
@@ -146,8 +146,8 @@ To share a file or folder:
 
 		.. note:: The server must be configured with a mail server or mail server access.
 
-  * **Set expiration date** checkbox: When enabled (checked), you can specify a date for which the share expires.  You specify the expiration date in the format MM/DD/YYYY.  For added convenience, clicking in the "Expiration date" field opens a calendar from which you can specify the date.
+  * **Set expiration date** checkbox: When enabled (checked), you can specify a date for which the share expires. You specify the expiration date in the format MM/DD/YYYY. For added convenience, clicking in the "Expiration date" field opens a calendar from which you can specify the date.
 
-	  .. figure:: ../images/oc_share_expiration_calendar.png
+    .. figure:: ../images/oc_share_expiration_calendar.png
 
-		**Expiration Date Calendar**
+	**Expiration Date Calendar**

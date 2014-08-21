@@ -26,7 +26,7 @@ To restore a deleted file:
 
    .. figure:: ../images/deleted_files.png
 
-   **Deleted files**
+       **Deleted files**
 
 2. Hover the cursor over the file that you want to restore.
 
