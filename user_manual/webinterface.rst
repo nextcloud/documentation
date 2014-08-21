@@ -25,7 +25,7 @@ To access the ownCloud web interface:
    when creating your ownCloud server setup or those provided by your company or
    your service provider.
 
-   If you have set up the server yourself, or are administering the server, you
+   If you have set up the server yourself or are administering the server, you
    can add additional users by configuring a user backend (for example, LDAP).
 
 3. Click the :guilabel:`Log in` button.
@@ -33,7 +33,7 @@ To access the ownCloud web interface:
    The ownCloud main interface opens.
 
    .. figure:: images/oc_main_web.png
-      :scale: 60%
+      :scale: 90%
 
    **ownCloud main user interface**
 
@@ -45,11 +45,11 @@ Once you have accessed the ownCloud Server main web interface you can add files,
 (if you are administering the server) or by your server administrator.
 
 .. figure:: images/oc_main_web_labelled.png
-   :scale: 60%
+   :scale: 90%
 
 **Navigating the main user interface**
 
-The ownCloud Maine User Interface contains the following fields and functions:
+The ownCloud Main User Interface contains the following fields and functions:
 
 * **Apps Selection Menu**: Located in the upper left corner of the user
   interface, this bar contains apps that are configured on the ownCloud server.
@@ -80,17 +80,17 @@ The ownCloud Maine User Interface contains the following fields and functions:
   migrate to higher levels of the folder hierarchy up to the root level (home) of your ownCloud instance.
 
 * **New** button: Located in the Navigation Bar, the :guilabel:`New` button
-  ebables you to create new files, new folders, or upload existing files from a
+  enables you to create new files, new folders, or upload existing files from a
   specified link.
 
-.. note:: You can also drag and drop files from Windows Explorer or your MAC
-   OSX Finder into the ownCloud Files Application View to upload them to ownCloud.
+.. note:: You can also drag and drop files from your file manager (e.g. Windows Explorer
+   or your Mac OS X Finder) into the ownCloud Files Application View to upload them to ownCloud.
 
 * **Upload** button: Located next to the :guilabel:`New` button in the
   Navigation Bar, the :guilabel:`Upload` button enables you to upload files
   from your system to the ownCloud server.  Clicking this button launches a
-  Windows Explorer or MAC OSX Finder window with which you can choose files for
-  uploading.
+  file picker (e.g. Windows Explorer or Mac OS X Finder) window with which you
+  can choose files for uploading.
 
 * **Search** field: Residing in the upper right hand corner of the Main User
   Interface window, the Search field enables you to search for files and
@@ -110,6 +110,8 @@ The ownCloud Maine User Interface contains the following fields and functions:
   * WebDAV URL for receiving files using WebDAV (see next chapter).
   * Mozilla Sync information for creating a synchronization to a Mozilla (Firefox) account.
   * ownCloud Version information
+
+  You can see :doc:`userpreferences` section to learn more about those settings.
 
 In addition to these standard settings, administrators have access to user
 management (:guilabel:`Users`), apps settings (:guilabel:`Apps`), and

@@ -6,8 +6,8 @@ ownCloud enables you to specify a storage quota for users which is the
 individual home storage.
 
 .. note:: Quota settings **only apply to actual files**, not application
-   metadata. Application metadate consumes an added 10% of space for any given
-   user.  When allocating quotas, you must ensure that there is at least 10% more
+   metadata. Application metadata consumes an added 10% of space for any given
+   user. When allocating quotas, you must ensure that there is at least 10% more
    space available for each user.
 
 Checking Available Space
@@ -88,7 +88,7 @@ like the :doc:`calendar <../pim/calendar>` and :doc:`contacts
 <../pim/contacts>` apps. This data is also excluded from the total used space.
 
 
-Deleted files
+Deleted Files
 ~~~~~~~~~~~~~
 
 When deleting files, these are moved/copied to the :doc:`trashbin
