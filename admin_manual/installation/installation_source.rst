@@ -189,6 +189,12 @@ the user running php on your system.
   ::
 
 	chown -R apache:apache /path/to/your/owncloud
+	
+* openSUSE users should run (as root):
+  ::
+
+	chown -R wwwrun:www /path/to/your/owncloud
+
 
 Web Server Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -374,7 +380,7 @@ Example config for Apache 2.4:
 
 	sudo service apache2 restart
 
-  * For systemd systems (Fedora, ArchLinux, OpenSUSE), run::
+  * For systemd systems (Fedora, Arch Linux, OpenSUSE), run::
 
 	systemctl restart httpd.service
 
