@@ -92,7 +92,7 @@ Sometimes its needed to match more than one URL fragment. An example would be to
     // Request: OPTIONS /index.php/apps/myapp/api/my/route
 
     // appinfo/routes.php
-    array('name' => 'author_api#cors', 'url' => '/api/{path}', 'verb' => 'OPTIONS'),
+    array('name' => 'author_api#cors', 'url' => '/api/{path}', 'verb' => 'OPTIONS',
           'requirements' => array('path' => '.+')),
 
     // controller/authorapicontroller.php
