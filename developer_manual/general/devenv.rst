@@ -45,7 +45,7 @@ Check out the code
 
 The following commands are using **/var/www** as the web server's directory and **www-data** as user name and group.
 
-Install the `development tool <https://github.com/Raydiation/ocdev#owncloud-developer-tools>`_
+Install the `development tool <https://github.com/Raydiation/ocdev/blob/master/README.rst#installation>`_
 
 After the development tool installation make the directory writable::
 
