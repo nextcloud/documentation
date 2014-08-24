@@ -45,18 +45,9 @@ Check out the code
 
 The following commands are using **/var/www** as the web server's directory and **www-data** as user name and group.
 
-.. note:: Python 3.4 includes pip by default
+Install the `development tool <https://github.com/Raydiation/ocdev#owncloud-developer-tools>`_
 
-Install the `development tool <https://github.com/Raydiation/ocdev#owncloud-developer-tools>`_ (**depends on Python >=3.3 and python3-pip**)
-
-.. note:: If you are using a Linux distribution which only provides a smaller Python version than 3.3, for example **Ubuntu 12.04**, you need to install **python3-jinja2** from your package manager first since the newest Jinja version is incompatible with Python 3.2!
-
-::
-
-  sudo pip3 install ocdev
-
-
-Make the directory writable::
+After the development tool installation make the directory writable::
 
   sudo chmod o+rw /var/www
   
