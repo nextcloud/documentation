@@ -108,7 +108,7 @@ cannot change the login name of any user.
 
 To set a user's display name:
 
-#. Hover the line of the user.
+#. Hover your cursor over the line of the user.
 #. Click on the **pencil icon** next to the display name field.
 #. Enter the user's new display name in the corresponding field and then hit
    the **Enter** key of your keyboard.
