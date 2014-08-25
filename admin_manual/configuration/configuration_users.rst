@@ -187,6 +187,7 @@ Delete User
 * You cannot revert the deletion or restore a deleted account.
 
 .. note:: If this user had a share with a group or user, the share also will
+<<<<<<< HEAD
           be deleted permanently. If you need to preserve the share, copy it to 
 the account of a user that won't be deleted, for example the admin user, or a 
 special permanent user account created for persistent shares. You can copy the 
@@ -204,6 +205,17 @@ To delete a user account:
           notification bar at the top of the page, which will remain until you 
 leave or refresh the page. After refreshing the page, the undo button disappears 
 and you cannot recover the user account.
+=======
+          be deleted permanently. If you need to preserve the share, copy it to the account of a user that won't be deleted, for example the admin user, or create a special permanent user for creating persistent shares.
+
+To delete a user account:
+
+#. Hover the line of the user you want to delete.
+#. Click the **trashcan icon** at the end of the line.
+
+.. note:: If you accidentally delete a user, you can use undo button shown on
+          notification bar at the top of the page, which will remain until you leave or refresh the page. After refreshing the page, the undo button disappears and you cannot recover the user account.
+>>>>>>> 23456c8... Corrections and updates re deleting users and groups, and how to create persistent shares that survive when users are deleted
 
 
 User Groups
@@ -225,11 +237,15 @@ group drop-down list.
 Edit/Delete Group
 ~~~~~~~~~~~~~~~~~
 
+<<<<<<< HEAD
 Currently, groups cannot be renamed. This feature will be available in a future 
 version of ownCloud. To delete a group, click on the trash icon next to the 
 group name on the left pane. The group assignment will be automatically removed 
 from all group members.
 
+=======
+Currently, groups cannot be renamed. This feature will be available in a future version of ownCloud. To delete a group, click on the trash icon next to the group name on the left pane. The group assignment will be automatically removed from all group users.
+>>>>>>> 23456c8... Corrections and updates re deleting users and groups, and how to create persistent shares that survive when users are deleted
 
 .. note:: If you have direct access to the database, you can manually rename 
 the group from database tables oc_groups and oc_group_user.
