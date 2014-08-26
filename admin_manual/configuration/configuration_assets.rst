@@ -3,8 +3,6 @@ Asset Management
 
 In production environments, JavaScript and CSS files are delivered in a concatenated and compressed format.
 
-# Original sentence: "In productive environments JavaScript and CSS files shall be delivered concatenated and minified."
-
 ownCloud creates individual JavaScript and CSS files and saves them in a folder called 'assets' in the web root. This folder must be owned by the web server user and is used for static delivery of these files.
 
 
