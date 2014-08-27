@@ -142,7 +142,7 @@ For added details about how to connect to an external server using MAC OSX, chec
 Accessing Files Using Microsoft Windows
 ---------------------------------------
 
-When using Microsoft Windows, a seperate WebDAV client is recommended to access
+When using Microsoft Windows, a separate WebDAV client is recommended to access
 the files from your server.You can choose a suitable WebDav client from the
 `WebDav Project page <http://www.webdav.org/projects/>`_ .
 
