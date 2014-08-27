@@ -180,9 +180,9 @@ Entities are data objects that carry all the table's information for one row. Ev
 
     class Author extends Entity {
 
-        private $stars;
-        private $name;
-        private $phoneNumber;
+        protected $stars;
+        protected $name;
+        protected $phoneNumber;
 
         public function __construct() {
             // add types in constructor
@@ -202,7 +202,7 @@ The following types can be added for a field:
 
 Accessing attributes
 --------------------
-Since all attributes should be private, getters and setters are automatically generated for you:
+Since all attributes should be protected, getters and setters are automatically generated for you:
 
 
 .. code-block:: php
@@ -214,9 +214,9 @@ Since all attributes should be private, getters and setters are automatically ge
     use \OCP\AppFramework\Db\Entity;
 
     class Author extends Entity {
-        private $stars;
-        private $name;
-        private $phoneNumber;
+        protected $stars;
+        protected $name;
+        protected $phoneNumber;
     }
 
     $author = new Author();
