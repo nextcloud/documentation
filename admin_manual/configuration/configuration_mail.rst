@@ -367,11 +367,11 @@ listening on localhost port 25.
 
 ::
 
-Active Internet connections (servers and established)
-Proto Recv-Q Send-Q Local Address   Foreign Address  State  ID/Program name
-tcp    0      0    0.0.0.0:631     0.0.0.0:*        LISTEN   4418/cupsd
-tcp    0      0    127.0.0.1:25    0.0.0.0:*        LISTEN   2245/exim4
-tcp    0      0    127.0.0.1:3306  0.0.0.0:*        LISTEN   1524/mysqld
+ Active Internet connections (servers and established)
+ Proto Recv-Q Send-Q Local Address   Foreign Address  State  ID/Program name
+ tcp    0      0    0.0.0.0:631     0.0.0.0:*        LISTEN   4418/cupsd
+ tcp    0      0    127.0.0.1:25    0.0.0.0:*        LISTEN   2245/exim4
+ tcp    0      0    127.0.0.1:3306  0.0.0.0:*        LISTEN   1524/mysqld
 
 *  25/tcp is unencrypted smtp 
 
