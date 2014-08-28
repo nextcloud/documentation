@@ -19,8 +19,14 @@ To use the commonly used layout consisting of sidebar navigation and content the
 
     <div id="app">
         <div id="app-navigation">Your navigation</div>
-        <div id="app-content">Your content</div>
+        <div id="app-content">
+            <div id="app-content-wrapper">
+                Your content in here
+            </div>
+        </div>
     </div>
+
+For built in mobile support your content has to be wrapped inside another div with the id **app-content-wrapper**.
 
 Navigation
 ==========
@@ -84,6 +90,102 @@ The class which should be applied to a first level element (**li**) that hosts o
         </ul>
     </div>
 
+Menus
+-----
+To add actions that affect the current list element you can add a menu for second and/or first level elements by adding the button and menu inside the corresponding **li** element:
+
+.. code-block:: html
+
+    <div id="app-navigation">
+        <ul class="with-icon">
+            <li class="has-counter">
+                <a href="#">First level entry</a>
+
+                <div class="app-navigation-entry-utils">
+                    <ul>
+                        <li class="app-navigation-entry-utils-counter">15</li>
+                        <li class="app-navigation-entry-utils-menu-button"><button></button></li>
+                    </ul>
+                </div>
+
+                <div class="app-navigation-entry-menu open">
+                    <ul>
+                        <li><button class="icon-rename" title="rename"></button></li>
+                        <li><button class="icon-delete" title="delete"></button></li>
+                    </ul>
+                </div>
+
+            </li>
+    </div>
+
+The div with the class **app-navigation-entry-utils** contains only the button (class: **app-navigation-entry-utils-menu-button**) to display the menu but in many cases another entry is needed to display some sort of count (mails count, unread feed count, etc.). In that case add the **has-counter** class to the list entry to adjust the correct padding and text-oveflow of the entry's title.
+
+The menu is hidden by default (**display: none**) and has to be triggered by adding the **open** class to the **app-navigation-entry-menu** div.
+
+In case of AngularJS the following small directive can be added to handle all the display and click logic out of the box:
+
+.. code-block:: js
+
+    app.run(function ($document, $rootScope) {
+        'use strict';
+        $document.click(function (event) {
+            $rootScope.$broadcast('documentClicked', event);
+        });
+    });
+
+    app.directive('appNavigationEntryUtils', function () {
+        'use strict';
+        return {
+            restrict: 'C',
+            link: function (scope, elm) {
+                var menu = elm.siblings('.app-navigation-entry-menu');
+                var button = $(elm)
+                    .find('.app-navigation-entry-utils-menu-button button');
+
+                button.click(function () {
+                    menu.toggleClass('open');
+                });
+
+                scope.$on('documentClicked', function (scope, event) {
+                    if (event.target !== button[0]) {
+                        menu.removeClass('open');
+                    }
+                });
+            }
+        };
+    });
+
+Editing
+-------
+Often an edit option is needed an entry. To add one for a given entry simply hide the title and add the following div inside the entry:
+
+.. code-block:: html
+
+    <div id="app-navigation">
+        <ul class="with-icon">
+            <li>
+                <a href="#" class="hidden">First level entry</a>
+
+                <div class="app-navigation-entry-edit">
+                    <input type="text" value="First level entry" autofocus-on-insert>
+                    <button class="action icon-checkmark"></button>
+                </div>
+
+            </li>
+    </div>
+
+If AngularJS is used you want to autofocus the input box. This can be achieved by placing the show condition inside an **ng-if** on the **app-navigation-entry-edit** div and adding the following directive:
+
+.. code-block:: js
+
+    app.directive('autofocusOnInsert', function () {
+        'use strict';
+        return function (scope, elm) {
+            elm.focus();
+        };
+    });
+
+**ng-if** is required because it removes/inserts the element into the DOM dynamically instead of just adding a **display: none** to it like **ng-show** and **ng-hide**.
 
 Settings Area
 =============
