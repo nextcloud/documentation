@@ -359,13 +359,13 @@ TCP port?
 server admin. If you are the mail server admin, or need information in a 
 hurry, you can use the ``netstat`` command. This example shows all active 
 servers on your system, and the ports they are listening on. The SMTP server is 
-listening on localhost port 25:
+listening on localhost port 25.
 
-.. code-block::
+::
 
 # netstat -pant
 
-.. code-block::
+::
 
 Active Internet connections (servers and established)
 Proto Recv-Q Send-Q Local Address   Foreign Address  State  ID/Program name
