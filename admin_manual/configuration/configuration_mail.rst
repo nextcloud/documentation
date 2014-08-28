@@ -133,7 +133,7 @@ paste them back to the template text box for use when you are done.
 Setting Mail Server Parameters in config.php
 ----------
 
-If you prefer, you may set your mail server parameters in ``config/config.php''. 
+If you prefer, you may set your mail server parameters in ``config/config.php``. 
 The following examples are for SMTP, PHP, Sendmail, and Qmail.
 
 SMTP
