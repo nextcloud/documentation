@@ -1,5 +1,6 @@
 Mail Configuration
 ==================
+
 ownCloud is capable of sending password reset emails, notifying users of new 
 file shares, changes in files, and activity notifications. Your users configure 
 which notifications they want to receive on their Personal pages. 
