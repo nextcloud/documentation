@@ -3,16 +3,16 @@ Configuring Server-to-Server Sharing
 
 ownCloud 7 introduces a powerful new feature, server-to-server sharing. With 
 just a few clicks you can easily and securely create public shares for sharing 
-files and directories with other ownCloud 7 servers. You can automatically send 
-an email notification when you create the share, add password protection, allow 
-users to upload files, and set an expiration date.
+files and directories with other ownCloud 7 servers. (Currently, this works only 
+with OC7 and not older versions.)  You can automatically send an email 
+notification when you create the share, add password protection, allow users to 
+upload files, and set an expiration date.
 
 Follow these steps to create a new public share:
 
-1. Go to ``admin > Admin`` in your ownCloud Web control panel, and scroll to 
-the Remote Shares section.
+1. Go to the Admin page and scroll to the Remote Shares section.
 
-   .. figure:: ../images/remote_shares.png
+.. figure:: ../images/remote_shares.png
    
 2. To enable server-to-server sharing, and to allow remote users to mount your 
 shares in their ownCloud 7 accounts, check ``Allow other instances to mount 
@@ -27,7 +27,7 @@ this unchecked disables user-created public shares.
 you want to share to expose the administration options. Check the ``Share 
 Link`` checkbox to create the share, and to expose all of your sharing options.
 
-   .. figure:: ../images/create_public_share.png
+.. figure:: ../images/create_public_share.png
    
 Your new public share is labeled with a chain link. If you do not protect it 
 with a password, it is visible to anyone who has the URL. Users on other 
