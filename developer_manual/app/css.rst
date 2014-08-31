@@ -97,21 +97,21 @@ To add actions that affect the current list element you can add a menu for secon
 .. code-block:: html
 
     <div id="app-navigation">
-        <ul class="with-icon">
+        <ul>
             <li class="with-counter with-menu">
                 <a href="#">First level entry</a>
 
                 <div class="app-navigation-entry-utils">
                     <ul>
                         <li class="app-navigation-entry-utils-counter">15</li>
-                        <li class="app-navigation-entry-utils-menu-button"><button></button></li>
+                        <li class="app-navigation-entry-utils-menu-button svg"><button></button></li>
                     </ul>
                 </div>
 
                 <div class="app-navigation-entry-menu open">
                     <ul>
-                        <li><button class="icon-rename" title="rename"></button></li>
-                        <li><button class="icon-delete" title="delete"></button></li>
+                        <li><button class="icon-rename svg" title="rename"></button></li>
+                        <li><button class="icon-delete svg" title="delete"></button></li>
                     </ul>
                 </div>
 
