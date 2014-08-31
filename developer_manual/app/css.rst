@@ -92,13 +92,13 @@ The class which should be applied to a first level element (**li**) that hosts o
 
 Menus
 -----
-To add actions that affect the current list element you can add a menu for second and/or first level elements by adding the button and menu inside the corresponding **li** element and adding the **has-menu** css class:
+To add actions that affect the current list element you can add a menu for second and/or first level elements by adding the button and menu inside the corresponding **li** element and adding the **with-menu** css class:
 
 .. code-block:: html
 
     <div id="app-navigation">
         <ul class="with-icon">
-            <li class="has-counter has-menu">
+            <li class="with-counter with-menu">
                 <a href="#">First level entry</a>
 
                 <div class="app-navigation-entry-utils">
@@ -118,7 +118,7 @@ To add actions that affect the current list element you can add a menu for secon
             </li>
     </div>
 
-The div with the class **app-navigation-entry-utils** contains only the button (class: **app-navigation-entry-utils-menu-button**) to display the menu but in many cases another entry is needed to display some sort of count (mails count, unread feed count, etc.). In that case add the **has-counter** class to the list entry to adjust the correct padding and text-oveflow of the entry's title.
+The div with the class **app-navigation-entry-utils** contains only the button (class: **app-navigation-entry-utils-menu-button**) to display the menu but in many cases another entry is needed to display some sort of count (mails count, unread feed count, etc.). In that case add the **with-counter** class to the list entry to adjust the correct padding and text-oveflow of the entry's title.
 
 The menu is hidden by default (**display: none**) and has to be triggered by adding the **open** class to the **app-navigation-entry-menu** div.
 
