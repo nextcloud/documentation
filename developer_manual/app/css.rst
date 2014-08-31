@@ -92,13 +92,13 @@ The class which should be applied to a first level element (**li**) that hosts o
 
 Menus
 -----
-To add actions that affect the current list element you can add a menu for second and/or first level elements by adding the button and menu inside the corresponding **li** element:
+To add actions that affect the current list element you can add a menu for second and/or first level elements by adding the button and menu inside the corresponding **li** element and adding the **has-menu** css class:
 
 .. code-block:: html
 
     <div id="app-navigation">
         <ul class="with-icon">
-            <li class="has-counter">
+            <li class="has-counter has-menu">
                 <a href="#">First level entry</a>
 
                 <div class="app-navigation-entry-utils">
