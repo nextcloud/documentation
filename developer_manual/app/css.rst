@@ -120,6 +120,26 @@ To add actions that affect the current list element you can add a menu for secon
 
 The div with the class **app-navigation-entry-utils** contains only the button (class: **app-navigation-entry-utils-menu-button**) to display the menu but in many cases another entry is needed to display some sort of count (mails count, unread feed count, etc.). In that case add the **with-counter** class to the list entry to adjust the correct padding and text-oveflow of the entry's title.
 
+The count should be limitted to 999 and turn to 999+ if any higher number is given. If AngularJS is used the following filter can be used to get the correct behaviour:
+
+.. code-block:: js
+
+    app.filter('countFormatter', function () {
+        'use strict';
+        return function (count) {
+            if (count > 999) {
+                return '999+';
+            }
+            return count;
+        };
+    });
+
+Use it like this:
+
+.. code-block:: html
+
+    <li class="app-navigation-entry-utils-counter">{{ count | countFormatter }}</li>
+
 The menu is hidden by default (**display: none**) and has to be triggered by adding the **open** class to the **app-navigation-entry-menu** div.
 
 In case of AngularJS the following small directive can be added to handle all the display and click logic out of the box:
