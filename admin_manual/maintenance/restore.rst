@@ -12,7 +12,7 @@ Restore Folders
 
 .. note:: This guide assumes that your previous backup is called "owncloud-dirbkp"
 
-Simply copy your config and data folder (or even your whole ownCloud install and data folder) to a place outside of
+Simply copy your config and data folder (or even your whole ownCloud install and data folder) to 
 your ownCloud environment. You could use this command::
 
     rsync -Aax owncloud-dirbkp/ owncloud/
