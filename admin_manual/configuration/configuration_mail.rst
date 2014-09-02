@@ -23,8 +23,8 @@ PHP, and Sendmail. Use the SMTP configurator for a remote server, and PHP or
 Sendmail when your mail server is on the same machine as ownCloud. 
 
 .. note:: The Sendmail option refers to the Sendmail SMTP server, and any 
-drop-in Sendmail replacement such as Postfix, Exim, or Courier. All of these 
-include a ``sendmail`` binary, and are freely-interchangeable.
+   drop-in Sendmail replacement such as Postfix, Exim, or Courier. All of these 
+   include a ``sendmail`` binary, and are freely-interchangeable.
 
 Configuring an SMTP Server
 -------------------------
@@ -127,8 +127,8 @@ Again, be very careful to change nothing but the message text, because the
 tiniest coding error will break the template.
 
 .. note:: You can edit the templates directly in the template text box, or you 
-can copy and paste them to a text editor for modification and then copy and 
-paste them back to the template text box for use when you are done.
+   can copy and paste them to a text editor for modification and then copy and 
+   paste them back to the template text box for use when you are done.
 
 Setting Mail Server Parameters in config.php
 ----------
@@ -318,8 +318,8 @@ the ``mail_smtpdebug parameter`` in ``config/config.php``.
     "mail_smtpdebug" => true;
 
 .. note:: Immediately after pressing the **Send email** button, as described 
-before, several **SMTP -> get_lines(): ...** messages appear on the screen.  
-This is expected behavior and can be ignored.
+   before, several **SMTP -> get_lines(): ...** messages appear on the screen.  
+   This is expected behavior and can be ignored.
 
 **Question**: Why is my web domain different from my mail domain?
 
@@ -439,4 +439,3 @@ messages by enabling the mail_smtpdebug parameter:
 .. note:: Immediately after pressing the **Send email** button, as described
    before, several **SMTP -> get_lines(): ...** messages appear on the screen.
    This is expected behavior and can be ignored.
-
