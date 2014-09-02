@@ -24,21 +24,66 @@ To use the commonly used layout consisting of sidebar navigation and content the
 
 Navigation
 ==========
-ownCloud provides a default CSS navigation layout. If list entries should have 16x16 px icons, the **with-icon** class can be added to the base **ul**:
+ownCloud provides a default CSS navigation layout. If list entries should have 16x16 px icons, the **with-icon** class can be added to the base **ul**. The maximum supported indention level is two, further indentions are not recommended.
 
 .. code-block:: html
 
     <div id="app-navigation">
         <ul class="with-icon">
-            <li><a href="#">First level</a></li>
+            <li><a href="#">First level entry</a></li>
             <li>
+                <a href="#">First level container</a>
                 <ul>
-                    <li><a href="#">Second level</a></li>
-                    <li><a href="#">Second level</a></li>
+                    <li><a href="#">Second level entry</a></li>
+                    <li><a href="#">Second level entry</a></li>
                 </ul>
             </li>
         </ul>
     </div>
+
+Folders
+-------
+
+Folders are like normal entries and are only supported for the first level. In contrast to normal entries, the links which show the title of the folder need to have the **folder-icon** css class.
+
+If the folder should be collapsible, the **collapsible** class and a button with the class **collapse** are needed. After adding the collapsible class the folder's child entries can be toggled by adding the **open** class to the list element:
+
+.. code-block:: html
+
+    <div id="app-navigation">
+        <ul class="with-icon">
+            <li><a href="#">First level entry</a></li>
+            <li class="collapsible open">
+                <button class="collapse"></button>
+                <a href="#" class="folder-icon">Folder name</a>
+                <ul>
+                    <li><a href="#">Folder contents</a></li>
+                    <li><a href="#">Folder contents</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+
+Drag and drop
+-------------
+The class which should be applied to a first level element (**li**) that hosts or can host a second level is **drag-and-drop**. This will cause the hovered entry to slide down giving a visual hint that it can accept the dragged element. In case of jQuery UI's droppable feature, the **hoverClass** option should be set to the **drag-and-drop** class.
+
+.. code-block:: html
+
+    <div id="app-navigation">
+        <ul class="with-icon">
+            <li><a href="#">First level entry</a></li>
+            <li class="drag-and-drop">
+                <a href="#" class="folder-icon">Folder name</a>
+                <ul>
+                    <li><a href="#">Folder contents</a></li>
+                    <li><a href="#">Folder contents</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
 
 Settings Area
 =============

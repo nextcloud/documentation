@@ -423,3 +423,20 @@ using the ``telnet`` command.
   221 smtp.domain.dom closing connection
   Connection closed by foreign host.
 
+=======
+Enabling Debug Mode
+-------------------
+
+If you are unable to send email, it might be useful to activate further debug
+messages by enabling the mail_smtpdebug parameter:
+
+.. code-block:: php
+
+  <?php
+
+    "mail_smtpdebug" => true,
+
+.. note:: Immediately after pressing the **Send email** button, as described
+   before, several **SMTP -> get_lines(): ...** messages appear on the screen.
+   This is expected behavior and can be ignored.
+

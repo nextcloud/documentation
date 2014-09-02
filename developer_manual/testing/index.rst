@@ -7,7 +7,7 @@ ownCloud Test Pilots
    :hidden:
 
 
-The ownCloud Test Pilots help to test and improve different server and client setups with ownCloud. 
+The ownCloud Test Pilots help to test and improve different server and client setups with ownCloud.
 
 Why do you want to join
 -----------------------
@@ -75,7 +75,7 @@ tracker. It might even be fixed, sometimes! It can also be fruitful to contact t
 `developers on irc <irc://freenode/#owncloud-dev>`_. Tell them you're testing ownCloud
 and share what problem you bumped into. Or just ask on the test-pilots mailing list.
 
-Finally, if the issue you bump into is a clear bug and the developers are not aware of it, file it as a new issue. See :doc:`../bugtracker`
+Finally, if the issue you bump into is a clear bug and the developers are not aware of it, file it as a new issue. See :doc:`../bugtracker/index`
 
 
 
