@@ -124,7 +124,7 @@ The count should be limitted to 999 and turn to 999+ if any higher number is giv
 
 .. code-block:: js
 
-    app.filter('countFormatter', function () {
+    app.filter('counterFormatter', function () {
         'use strict';
         return function (count) {
             if (count > 999) {
@@ -138,7 +138,7 @@ Use it like this:
 
 .. code-block:: html
 
-    <li class="app-navigation-entry-utils-counter">{{ count | countFormatter }}</li>
+    <li class="app-navigation-entry-utils-counter">{{ count | counterFormatter }}</li>
 
 The menu is hidden by default (**display: none**) and has to be triggered by adding the **open** class to the **app-navigation-entry-menu** div.
 
@@ -187,8 +187,10 @@ Often an edit option is needed an entry. To add one for a given entry simply hid
                 <a href="#" class="hidden">First level entry</a>
 
                 <div class="app-navigation-entry-edit">
-                    <input type="text" value="First level entry" autofocus-on-insert>
-                    <button class="action icon-checkmark"></button>
+                    <form>
+                        <input type="text" value="First level entry" autofocus-on-insert>
+                        <input type="submit" value="" class="action icon-checkmark"></button>
+                    </form>
                 </div>
 
             </li>
