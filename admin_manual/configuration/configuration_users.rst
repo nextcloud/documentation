@@ -143,5 +143,5 @@ All of the files owned by the user are deleted as well, including all files they
 have shared. If you need to preserve the user's files and shares, you must first 
 download them from your ownCloud Files page, which compresses them into a zip 
 file, or use a sync client to copy them to your local computer. See the "File 
-Sharing" section to learn how to create persistent file shares that survive user 
-deletions.
+Sharing" section of the Admin Manual to learn how to create persistent file 
+shares that survive user deletions.
