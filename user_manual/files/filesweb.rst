@@ -2,25 +2,24 @@ Accessing your Files Using the Web Interface
 ============================================
 
 You can access your ownCloud files with the ownCloud web interface and create, 
-preview, edit, delete, share, and re-share files.
+preview, edit, delete, share, and re-share files. Your ownCloud administrator 
+has the option to disable these features, so if any of them are missing on your 
+system ask your server administrator.
 
 .. figure:: ../images/users-files.png
 
     **ownCloud web interface Files app**
 
 ownCloud version 7 enables you to see file thumbnails next to the filenames.
-Hovering over a file or folder provides the following highlighted list of
-operations:
+Hovering over a file or folder provides the following operations:
 
 * :guilabel:`Pencil icon` -- Enables you to rename a file or folder.
 * :guilabel:`Download` -- Downloads a file to your system.
-* :guilabel:`Versions` (when enabled; See :doc:`versioncontrol` for details) -- 
-   Enables you to revert the file or folder to any available older versions.
+* :guilabel:`Versions` -- Enables you to revert the file or folder to any 
+   available older versions.
 * :guilabel:`Share` -- Enables you to share the file or folder with a group or a 
-   specific user.  Also enables you to share using a specified link.
-* :guilabel:`Edit` -- When a file is editable, enables you to open the file in 
-   the document application as long as that application is enabled for use from 
-   the ownCloud server.
+   specific user.  Also enables you to create a public share with a hyperlink.
+* :guilabel:`Edit` -- Edit the file in ownCloud.
 * :guilabel:`Trash icon` -- Deletes the selected file or folder.
 
 .. Note:: The Shared folder has been removed from ownCloud 7. If you are 
@@ -149,7 +148,7 @@ email notification.
 Your new share appears on user's Files pages marked with a Share icon, and the 
 name of the file owner.
 
-.. figure:: ../images/users-share-local1.png
+.. figure:: ../images/users-share-local2.png
     
 When you want to revoke a share, simply click the Trashcan icon next to the 
 name of the appropriate user or group in the Shared dialog.    
@@ -164,5 +163,6 @@ and check Share Link.
 .. figure:: ../images/users-share-public.png
     
 This creates a public URL that anyone can use to access the share. You have the 
-options to send an email notification, protect it with a password and put an 
-expiration date on it.   
+options to send an email notification, protect it with a password, and put an 
+expiration date on it. Your ownCloud administrator has the option to require 
+passwords and expiration dates.  
