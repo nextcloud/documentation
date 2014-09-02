@@ -1,235 +1,147 @@
 User Management
 ===============
 
-ownCloud administrators can easily manage users via the web interface. To go 
-into user management page, click your username on the web interface and select 
-*Users*. A page similar to the image below will be shown:
+In ownCloud 7, the Users management page has been streamlined and improved. You 
+can create new users, view all of your users in a single scrolling window, 
+filter users by group, see what groups they belong to, edit their full names and 
+passwords, see their data storage locations, view and set quotas, and, if you so 
+desire, delete them with a single click.
 
-.. figure:: ../images/oc_admin_user_manage.png
+.. figure:: ../images/users-config.png
 
-  Users management page
+User accounts have the following properties:
 
-A fictive use case will help you understand the concept of users, user groups 
-and group admins.
-
-Think of a small, 25-member staff company, named "Cloud Lovers", that is lead by 
-its founder Richard. In this company Bob acts as IT operator and recently set up 
-ownCloud. Being the installing user, Bob is member of the so called "admin" user 
-group of ownCloud. His colleague Tom, who provides support if Bob is on holiday, 
-is member of the "admin" user group as well. All employees, including Bob and 
-Tom, are members of the user group "Internal", that is used to share data across 
-the company. Mostly for operational data, that should not be accessible to all 
-employees, Bob created the "Administration" user group having two members: 
-Richard and his assistant Susan. Richard is group admin of this user group, so 
-he can manage the members of the "Administration" user group on his own.
-
-
-Users
------
-
-A user represents an account of the ownCloud installation. In this section the 
-core properties are listed.
-
-*Login name (Username)*
-  This is the unique ID of a ownCloud user (e.g. test, jon.doe).
+*Login Name (Username)*
+  This is the unique ID of an ownCloud user, and it cannot be changed.
 
 *Full Name*
-  This is the name that is used all over the user interface to identify the 
-user 
-  i.e. when sharing data or sending mails. If no display name is set, it 
-  defaults to the login name.
+  The user's display name that appears on file shares, the ownCloud Web 
+  interface, and emails. Admins and users may change the Full Name anytime. If 
+  the Full Name is not set it defaults to the login name.
 
 *Password*
-  This is the password the user uses to login to ownCloud.
+  The admin sets the new user's first password. Both the user and the admin can 
+  change the user's password at anytime.
 
 *Groups*
-  This is a list of security groups the user is assigned to. By default the
-  user is not member of any user group.
+  You may create groups, and assign group memberships to users. By default new 
+  users are not assigned to any groups.
 
 *Group Admin*
-  This is a list of security groups the user has administration privileges for.
-  By default the user is not registered as group admin for any user group.
+  Group admins are granted administrative privileges on specific groups, and 
+  can add and remove users from their groups.
 
 *Quota*
-  This is the maximum disk space that may be used by the user. If the user
-  reaches this limit he/she is not able to upload or sync further data. The
-  storage quota is specified in the format *Number Unit* (e.g. 100 B (byte),
-  50 KB (kilobyte), 20 MB (megabyte), 5 GB (gigabyte)). If no unit is given,
-  the number is interpreted as bytes.
+  The maximum disk space assigned to each user. Any user that exceeds the quota 
+  cannot upload or sync data. ownCloud 7 introduces a new feature, and that is 
+  the option to include external storage in user quotas.
 
-Each user is able to change its display name and password.
-
-
-Create a user
+Creating a New User
 ~~~~~~~~~~~~~
-
-Before users can sign in and share data, they need ownCloud user accounts.
 
 To create a user account:
 
-#. Enter the new user's **Login Name** and its initial **Password** in the
-   appropriate fields.
-#. (Optional) Select the **Groups** to which you want to assign the new user.
-#. Click **Create**.
-#. (Optional) Edit additional user settings.
+* Enter the new user's **Login Name** and their initial **Password** 
+* Optionally, assign **Groups** memberships
+* Click the **Create** button
 
-   To set other user settings, such as setting a display name or limiting the
-   user's storage, see instructions as follows.
-
-Created users will have the storage specified on *Default Storage* setting on 
-the same page.
+.. figure:: ../images/users-create.png
 
 Login names may contain letters (a-z, A-Z), numbers (0-9), dashes (-), 
-underscores (_), periods (.) and at signs (@).
+underscores (_), periods (.) and ampersands (@). After creating the user, you 
+may fill in their **Full Name** if it is different than the login name, or 
+leave it for the user to complete.
 
+Remember to give your new users their logins and passwords.
 
-
-Reset a user's password
+Reset a User's Password
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-To reset a user's password:
+You cannot recover a user's password, but you can set a new one:
 
-#. Hover your cursor over the line of the user.
-#. Click on the **pencil icon** next to the password field.
-#. Enter the user's new password in the password field and then hit the
-   **Enter** key of your keyboard.
+* Hover your cursor over the user's **Password** field
+* Click on the **pencil icon** 
+* Enter the user's new password in the password field, and remember to provide 
+  the user with their password
 
-Remember to provide the user with the new login information after you have
-reset the password.
-
-
-Rename a user
+Renaming a User
 ~~~~~~~~~~~~~
 
-Each ownCloud user has two names: an unique *login name* used for 
-authentication, and a *display name* (e.g. the user's first name and last name) 
-used in the user interface. You can edit the display name of a user, but you 
-cannot change the login name of any user.
+Each ownCloud user has two names: a unique **Login Name** used for 
+authentication, and a **Full Name**, which is their display name. You can edit 
+the display name of a user, but you cannot change the login name of any user.
 
-To set a user's display name:
+To set or change a user's display name:
 
-#. Hover your cursor over the line of the user.
-#. Click on the **pencil icon** next to the display name field.
-#. Enter the user's new display name in the corresponding field and then hit
-   the **Enter** key of your keyboard.
+* Hover your cursor over the user's **Full Name** field
+* Click on the **Pencil icon** 
+* Enter the user's new display name
 
 
-Grant administrator privileges to a user
+Granting Administrator Privileges to a User
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If a user has administrator privileges, the user has the right to manage other 
-users. Within ownCloud there are two types of administrators: *Super 
-Administrators* and *Group Administrators*.
+ownCloud has two types of administrators: **Super Administrators** and **Group 
+Administrators**. Group administrators have the rights to create, edit and 
+delete users in their assigned groups. Group administrators cannot access 
+system settings, or add or modify users in the groups that they are not **Group 
+Administrators** for. Use the dropdown menus in the **Group Admin** column to 
+assign group admin privileges.
 
-Group administrators have the management rights to:
+.. figure:: ../images/users-groups.png
 
-* Create new users and assign them to the group of the group administrator
-* Edit and delete users that are assigned to the group of the group
-  administrator
-
-Group administrators cannot access system settings or modify installation-wide
-configuration like the default storage.
-
-To assign the *super administrator* role to a user:
-
-#. Use the drop-down list in *Groups* column of the user
-#. Assign the user to the "admin" user group
-
-To assign the *group administrator* role to a user:
-
-Find the user and select the user groups from the **Group Admin** drop-down
-list you want the user become group administrator for.
+**Super Administrators** have full rights on your ownCloud server, and can 
+access and modify all settings. To assign the **Super Administrators** role to 
+a user, simply add them to the ``admin`` group.
 
 
-Assign a user to a user group
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To assign a user to a user group:
-
-Find the user and select the user groups from the **Groups** drop-down list you 
-want to assign the user to. You can use *add group* link to create a new group 
-to assign the user to. You can assign the user more than one group by checking 
-multiple groups.
-
-
-.. note:: If a file/folder is shared with a group, newly created users will 
-immediately have access to the share.
-
-.. note:: If you assign a user to the *admin* user group, the user will become a
-          *Super Administrator* with unlimited privileges.
-
-
-Limit a user's storage
-~~~~~~~~~~~~~~~~~~~~~~
-
-To limit a user's storage quota:
-
-Find the user and select an item from the **Quota** drop-down list.
-
-   * If you select *Default*, the default storage limit, specified in the
-     action bar at the top, is applied.
-   * If you select *Unlimited*, the user is not limited until the total disk
-     space is consumed.
-   * If you want to enter a custom limit, select *Other...*, enter the storage
-     quota of your choice and hit the **Enter** key of your keyboard.
-
-If you edit the value of the **Default Quota** field by clicking on the **gear** 
-icon, all users with storage *Default* are affected by this change, i.e. 
-changing the default storage from *Unlimited* to *1 GB* will cause all users 
-with *Default* storage being limited to 1 GB storage each.
-
-Delete User
-~~~~~~~~~~~
-
-**Important considerations before deleting a user:**
-
-* The user will no longer be able to sign in to your ownCloud installation.
-* You cannot revert the deletion or restore a deleted account.
-
-.. note:: If this user had a share with a group or user, the share also will be 
-deleted permanently. If you need to preserve the share, copy it to the account 
-of a user that won't be deleted, for example the admin user, or a special 
-permanent user account created for persistent shares. You can copy the share 
-using your normal file management tools: the Web GUI, via WebDAV, or sync 
-client. Then you'll need to re-share it. The quickest way to find out which 
-groups and users it was originally shared with is to log in to the user's 
-account and click the Shared button of the share. 
-
-To delete a user account:
-
-#. Hover your cursor over line of the user you want to delete.
-#. Click the **trashcan icon** at the end of the line.
-
-.. note:: If you accidentally delete a user, you can use undo button shown on 
-notification bar at the top of the page, which will remain until you leave or 
-refresh the page. After refreshing the page, the undo button disappears and you 
-cannot recover the user account.
-
-
-User Groups
------------
-
-Create Group
-~~~~~~~~~~~~
-
-To create a user group:
-
-#. Click on **Add Group** button on the left side of the user management page.
-#. Enter the name of the new group and then hit the **Enter** key of your
-   keyboard.
-
-You can *assign users* to the newly created user groups anytime by using users'
-group drop-down list.
-
-
-Edit/Delete Group
+Managing Groups
 ~~~~~~~~~~~~~~~~~
 
-Currently, groups cannot be renamed. This feature will be available in a future 
-version of ownCloud. To delete a group, click on the trash icon next to the 
-group name on the left pane. The group assignment will be automatically removed 
-from all group members.
+You can assign new users to groups when you create them, and create new groups 
+when you create new users. You may also use the **Add Group** button at the top 
+of the left pane to create new groups. New group members will immediately 
+have access to file shares that belong to their new groups.
+
+Setting Storage Quotas
+~~~~~~~~~~~~~~~~~~~~~~
+
+Click the gear on the lower left pane to set a default storage quota. This is 
+automatically applied to new users. You may assign a different quota to any user 
+by selecting from the **Quota** dropdown, selecting either a preset value or 
+entering a custom value. When you create custom quotas, use the normal 
+abbreviations for your storage values such as 500 MB, 5 GB, 5 TB, and so on.
+
+You now have a configurable option in ``config.php`` that controls whether 
+external storage is counted against user's quotas. The default is to not count 
+external storage as part of user storage quotas. If you prefer to include it, 
+then change the default ``false`` to ``true``.::
+
+   'quota_include_external_storage' => false,
+
+Metadata takes up about 10% of disk space, but is not counted against user 
+quotas. Users can check their used and available space on their Personal pages.
+Only files that originate with users count against their quotas, and not files
+shared by other users. Deleted files that are still in the trash bin do not
+count against quotas. The trash bin is set at 50% of quota in the 
+``lib/trashbin.php`` file. Deleted file aging is set with 
+``trashbin_retention_obligation`` in ``config.php``, with a default of 30 days.
+When deleted files exceed 50% of quota then the oldest files are removed until
+the total  is below 50%. 
 
 
-.. note:: If you have direct access to the database, you can manually rename 
-the group from database tables oc_groups and oc_group_user.
+Deleting users
+~~~~~~~~~~~
+
+Deleting a user is easy: hover your cursor over their name on the **Users** page 
+until a trashcan icon appears at the far right. Click the trashcan, and they're 
+gone. You'll see an undo button at the top of the page, which remains until you 
+refresh the page. When the undo button is gone you cannot recover the deleted 
+user.
+
+All of the files owned by the user are deleted as well, including all files they 
+have shared. If you need to preserve the user's files and shares, you must first 
+download them from your ownCloud Files page, which compresses them into a zip 
+file, or use a sync client to copy them to your local computer. See the "File 
+Sharing" section to learn how to create persistent file shares that survive user 
+deletions.
