@@ -189,7 +189,7 @@ Often an edit option is needed an entry. To add one for a given entry simply hid
                 <div class="app-navigation-entry-edit">
                     <form>
                         <input type="text" value="First level entry" autofocus-on-insert>
-                        <input type="submit" value="" class="action icon-checkmark"></button>
+                        <input type="submit" value="" class="action icon-checkmark">
                     </form>
                 </div>
 
