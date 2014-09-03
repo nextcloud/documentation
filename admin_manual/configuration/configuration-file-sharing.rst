@@ -18,7 +18,7 @@ ownCloud users. You have control of a number of user permissions on file shares:
 You may also allow users to create server-to-server shares (see "Configuring 
 Server-to-Server Sharing" in the Admin manual).
 
-.. note::The Shared folder has been removed from ownCloud 7. If you are 
+.. note:: The Shared folder has been removed from ownCloud 7. If you are 
    upgrading from older ownCloud versions you will still have your old Shared 
    folder, but new shares will appear in the top-level of your Files page, and 
    the Shared folder is no longer required. You can now create your own folders 
