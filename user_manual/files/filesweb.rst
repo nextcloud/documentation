@@ -26,16 +26,7 @@ Hovering over a file or folder provides the following operations:
    Shares now appear in the top level of your file tree on your Files page. If you
    are upgrading from older ownCloud versions you will still have your old Shared 
    folder. Your server administrator has the option to change this in the server's
-   ``config.php`` file.
-
-
-The Shared folder has been removed from ownCloud 7. If you are 
-   upgrading from older ownCloud versions you will still have your old Shared 
-   folder, but new shares will appear in the top-level of your Files page, and 
-   the Shared folder is no longer required. You can now create your own folders 
-   for storing shared files, and organize and move them around like any other 
-   files. You may rename folders shared with you without changing the original
-   folder name.
+   ``config.php`` file with the ``'share_folder' =>`` directive.
 
 Navigating Inside Your ownCloud
 --------------------------------
