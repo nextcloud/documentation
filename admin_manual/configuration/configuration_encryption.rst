@@ -25,6 +25,46 @@ encryption keys are stored in following folders:
    `this blog post <https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your-data/>`_
    for more details.
 
+Enabling the Encryption App
+---------------------------
+
+Though ownCloud provides the Encryption app in the server download, it is
+disabled by default.  To enable the Encryption app:
+
+1. Access the ownCloud server as administrator.
+
+2. In the Apps Selection Menu, click "+".
+
+   All apps appear in the Apps Information field.
+
+3. Scroll down the apps list and click the Encryption app.
+
+   .. figure:: ../images/encryption_enabling.png
+
+   **Encryption app (Enabling)**
+
+4. Click the :guilabel:`Enable` button.
+
+   The Encryption app is enabled.
+
+Decrypting Encrypted Files
+--------------------------
+
+If the Encryption app is disabled after users have already stored encrypted
+data, users are prompted to decrypt their files again in their personal
+settings. Once done, users can continue to use their ownCloud without
+encryption.
+
+Settings
+--------
+
+Once the encryption app is enabled, additional settings appear on the Admin
+settings page.  These settings include the ability to:
+
+* Set a recovery key password.
+* Enable or disable the use of the recovery key password.
+
+
 Enable File Recovery Feature
 ----------------------------
 
@@ -45,10 +85,10 @@ at the top of the user management settings. After entering the recovery-key
 password the admin can change the user's log-in password which will
 automatically recover the user's file.
 
-If you use a user back-end which doesn't allow you to change the log-in
+If you use a user backend which does not allow you to change the log-in
 password directly within ownCloud, e.g. the LDAP back-end, than you can follow
 the same procedure to recover a user's files. The only difference is that
-you need to change the log-in password additionally at your back-end. In this
+you need to change the log-in password additionally at your backend. In this
 case make sure to use both times the same password.
 
 LDAP and other external user back-ends
