@@ -127,7 +127,7 @@ count against quotas. The trash bin is set at 50% of quota in the
 ``lib/trashbin.php`` file. Deleted file aging is set with 
 ``trashbin_retention_obligation`` in ``config.php``, with a default of 30 days.
 When deleted files exceed 50% of quota then the oldest files are removed until
-the total  is below 50%. 
+the total is below 50%. 
 
 
 Deleting users
