@@ -1,5 +1,5 @@
 File Sharing
-=======
+=============
 
 ownCloud users can share files with their ownCloud groups and other users on 
 the same ownCloud server, and create public shares for people who are not 
@@ -62,7 +62,7 @@ re-sharing, editing, updating, and deletion privileges:
 .. figure:: ../images/sharing-user-local.png
 
 Creating Persistent File Shares
------------------------
+--------------------------------
 
 When a user is deleted, their files are also deleted. As you can imagine, this 
 is a problem if they created file shares that need to be preserved, because 
