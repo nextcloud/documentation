@@ -1,5 +1,5 @@
 Accessing your Files Using the Web Interface
-============================================
+=============================================
 
 You can access your ownCloud files with the ownCloud web interface and create, 
 preview, edit, delete, share, and re-share files. Your ownCloud administrator 
@@ -31,7 +31,7 @@ Hovering over a file or folder provides the following operations:
    folder name.
 
 Navigating Inside Your ownCloud
--------------------------------
+--------------------------------
 
 Navigating through folders in ownCloud is as simple as clicking on a folder to
 open it and using the back button on your browser to move to a previous level.
@@ -48,7 +48,7 @@ directories or, using the home icon, to navigate back into your root folder.
 
 
 Creating or Uploading Files and Directories
--------------------------------------------
+--------------------------------------------
 
 ownCloud enables you to create new files or folders directly in an ownCloud
 folder by clicking on the *New* button in the Files app.
@@ -67,7 +67,7 @@ The *New* button provides the following three options from which to choose:
 
 
 Selecting Files or Folders
---------------------------
+---------------------------
 
 You can select one or more files or folders by clicking on the small thumbnails
 or icons that represent them. When you select a file or folder, a small
@@ -84,7 +84,7 @@ the top right side of the Files app field.
 
 
 Filtering the File Application View
------------------------------------
+------------------------------------
 
 ownCloud enables you to view files in the File Application View using filter 
 options located in the Apps Information Field. This feature enables you to 
@@ -105,7 +105,7 @@ You can click on any of the filter options to view the files as follows:
     use of a link.
 
 Previewing Files
-----------------
+-----------------
 
 You can display uncompressed text files, OpenDocument files, PDFs, and image
 files from the ownCloud server by clicking on the file name. If ownCloud cannot
@@ -113,7 +113,7 @@ display a file, a download process starts and the file is downloaded to your
 system.
 
 Moving Files
-------------
+--------------
 
 Using the ownCloud web interface, you can move files and folders by dragging
 and dropping them into any directory. If you want to move a file or folder to
@@ -121,7 +121,7 @@ an upper directory, click and drag them to one of the folders shown in the
 navigation bar.
 
 Sharing Files Locally
--------------
+----------------------
 
 When enabled by your administrator, you can share files or folders on ownCloud 
 with a local user, group, or any person online with a public link. Shared files 
@@ -154,7 +154,7 @@ When you want to revoke a share, simply click the Trashcan icon next to the
 name of the appropriate user or group in the Shared dialog.    
     
 Creating a Public Share
-----------------------
+------------------------
 
 You can share files outside of your organization with people who are not users 
 on your ownCloud server by creating a public share link. Open the Share dialog 
