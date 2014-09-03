@@ -22,7 +22,14 @@ Hovering over a file or folder provides the following operations:
 * :guilabel:`Edit` -- Edit the file in ownCloud.
 * :guilabel:`Trash icon` -- Deletes the selected file or folder.
 
-.. Note:: The Shared folder has been removed from ownCloud 7. If you are 
+.. Note:: The Shared folder has been removed from new installations of ownCloud 7.
+   Shares now appear in the top level of your file tree on your Files page. If you
+   are upgrading from older ownCloud versions you will still have your old Shared 
+   folder. Your server administrator has the option to change this in the server's
+   ``config.php`` file.
+
+
+The Shared folder has been removed from ownCloud 7. If you are 
    upgrading from older ownCloud versions you will still have your old Shared 
    folder, but new shares will appear in the top-level of your Files page, and 
    the Shared folder is no longer required. You can now create your own folders 
