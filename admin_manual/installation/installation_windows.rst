@@ -240,11 +240,9 @@ To ensure your configuration is correct:
 
 7. Choose the `Request Filtering` feature from the IIS Manager.
 
-8. Ensure that all verbs are permitted (or none are forbidden) in the `Verbs` tab.
+8. Ensure that all verbs are permitted (or none are forbidden) in the `Verbs` tab. You need to allow the verbs ``GET``, ``HEAD``, ``POST``, ``OPTIONS``, ``PROPFIND``, ``PUT``, ``MKCOL``, ``MKCALENDAR``, ``DELETE``, ``COPY`` and MOVE``.
 
     .. note:: Because ownCloud must be able to use WebDAV on the application level, you must also ensure that you do not enable the WebDAV authoring module.
-    ...note:: if All Verbs dose not work then you have to manully add manual verbs to insure webdav will work fine , verbs to be used : " GET, HEAD, POST, OPTIONS, REPORT, PROPFIND, PUT, MKCOL, MKCALENDAR, DELETE, TRACE, COPY, MOVE,PULL"
-
 
 Configuring ownCloud, PHP and IIS for Large File Uploads
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
