@@ -597,14 +597,47 @@ want to rename a group, be very careful. Do not rename the user's internal name.
 Caching
 -------
 
-For performance reasons a cache has been introduced to ownCloud. He we store
-all users and groups, group memberships or internal userExists-requests. Since
-ownCloud is written in PHP and each and every page request (also done by Ajax)
-loads ownCloud and would execute one or more LDAP queries again, you do want to
-have some of those queries cached and save those requests and traffic. It is
-highly recommended to have the cache filled for a small amount of time, which
-comes also very handy when using the sync client, as it is yet another request
-for PHP.
+Above we introduced the concept of **Cache Time-To-Live**. This cache provides
+high performance when processing user and group requests in ownCloud. All LDAP
+requests will be cached for 10 minutes by default unless you configure a
+differnt **Cache Time-To-Live**. That means that each request that is identical
+to one that has been answered before will be answered by using the cached
+requests.
+
+This means that the **Cache Time-To-Live** is related to each single request.
+After its livetime there is no automatic trigger for populating the information.
+This only happens upon request.
+
+Such requests are typically triggered by actions related to users and groups,
+like opening the user administration site or searching in the sharing dialog.
+
+Despite that the cache is not use upon login. This request is always 
+transferred to the LDAP-Server. To improve performance for those requests 
+you can create a LDAP-Slave on the oC-Server for example.
+
+Having said that,there actually is one trigger which will be automatically
+triggered by a certain background job which keeps the user-group-mappings up to
+date. This update-process takes  account for the user -group-mappings in the
+sharing. This information will also be cached.
+
+Under normal circumstances, the users are never loaded at the same time. 
+Typically the loading of users happens while page results are generated, namely
+in steps of 30 until the limit is reached or no results are left. For this to 
+work on an oC-Server and LDAP-Server, the page result search must be supported, 
+which presumes PHP >= 5.4. The AD-Server supports this by default.
+
+ownCloud remembers which user belongs to which LDAP-configuration.That means
+each request will always be directed to the right server unless a user is
+defunct, due to a server migration for example. In this case the other servers 
+will also receive a request.
+
+Overall you can say the **Cache** helps to speed up user interactions and
+sharing. It is populated not on demand and is populated until the 
+**Cache Time-To-Live** is valid. For the best performance results you can adjust
+the **Cache Time-To-Live** to the execution time of the **Background Job**. 
+Remember that the **Cache** does not affect the user login. If you have a great 
+number of users and high request time for the logins you can prevent this by 
+setting up a ldapslave for example.
 
 Handling with Backup Server
 ---------------------------
