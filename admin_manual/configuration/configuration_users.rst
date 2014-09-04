@@ -1,5 +1,5 @@
 User Management
-================
+===============
 
 In ownCloud 7, the Users management page has been streamlined and improved. You 
 can create new users, view all of your users in a single scrolling window, 
@@ -37,7 +37,7 @@ User accounts have the following properties:
   the option to include external storage in user quotas.
 
 Creating a New User
-~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
 
 To create a user account:
 
@@ -55,7 +55,7 @@ leave it for the user to complete.
 Remember to give your new users their logins and passwords.
 
 Reset a User's Password
-~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
 
 You cannot recover a user's password, but you can set a new one:
 
@@ -65,7 +65,7 @@ You cannot recover a user's password, but you can set a new one:
   the user with their password
 
 Renaming a User
-~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
 
 Each ownCloud user has two names: a unique **Login Name** used for 
 authentication, and a **Full Name**, which is their display name. You can edit 
@@ -96,7 +96,7 @@ a user, simply add them to the ``admin`` group.
 
 
 Managing Groups
-~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
 
 You can assign new users to groups when you create them, and create new groups 
 when you create new users. You may also use the **Add Group** button at the top 
@@ -104,7 +104,7 @@ of the left pane to create new groups. New group members will immediately
 have access to file shares that belong to their new groups.
 
 Setting Storage Quotas
-~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
 
 Click the gear on the lower left pane to set a default storage quota. This is 
 automatically applied to new users. You may assign a different quota to any user 
@@ -131,7 +131,7 @@ the total is below 50%.
 
 
 Deleting users
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
 
 Deleting a user is easy: hover your cursor over their name on the **Users** page 
 until a trashcan icon appears at the far right. Click the trashcan, and they're 
