@@ -27,7 +27,7 @@ Sendmail when your mail server is on the same machine as ownCloud.
    include a ``sendmail`` binary, and are freely-interchangeable.
 
 Configuring an SMTP Server
--------------------------
+--------------------------
 
 You need the following information from your mailserver administrator to 
 connect ownCloud to a remote SMTP server:
@@ -57,7 +57,7 @@ configured on your Personal page. The test message says::
   web services under your control
 
 Configuring PHP and Sendmail
--------------------------
+----------------------------
 
 Configuring PHP or Sendmail requires only that you select one of them, and then 
 enter your desired return address.
@@ -131,7 +131,7 @@ tiniest coding error will break the template.
    paste them back to the template text box for use when you are done.
 
 Setting Mail Server Parameters in config.php
-----------
+--------------------------------------------
 
 If you prefer, you may set your mail server parameters in ``config/config.php``. 
 The following examples are for SMTP, PHP, Sendmail, and Qmail.
@@ -423,7 +423,6 @@ using the ``telnet`` command.
   221 smtp.domain.dom closing connection
   Connection closed by foreign host.
 
-=======
 Enabling Debug Mode
 -------------------
 
