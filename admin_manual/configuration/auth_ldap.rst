@@ -611,7 +611,7 @@ This only happens upon request.
 Such requests are typically triggered by actions related to users and groups,
 like opening the user administration site or searching in the sharing dialog.
 
-Despite that the cache is not use upon login. This request is always 
+Despite that the cache is not used upon login. This request is always 
 transferred to the LDAP-Server. To improve performance for those requests 
 you can create a LDAP-Slave on the oC-Server for example.
 
@@ -623,8 +623,8 @@ sharing. This information will also be cached.
 Under normal circumstances, the users are never loaded at the same time. 
 Typically the loading of users happens while page results are generated, namely
 in steps of 30 until the limit is reached or no results are left. For this to 
-work on an oC-Server and LDAP-Server, the page result search must be supported, 
-which presumes PHP >= 5.4. The AD-Server supports this by default.
+work on an oC-Server and LDAP-Server, the **Paged Results** must be supported, 
+which presumes PHP >= 5.4.
 
 ownCloud remembers which user belongs to which LDAP-configuration.That means
 each request will always be directed to the right server unless a user is
@@ -632,12 +632,10 @@ defunct, due to a server migration for example. In this case the other servers
 will also receive a request.
 
 Overall you can say the **Cache** helps to speed up user interactions and
-sharing. It is populated not on demand and is populated until the 
-**Cache Time-To-Live** is valid. For the best performance results you can adjust
-the **Cache Time-To-Live** to the execution time of the **Background Job**. 
-Remember that the **Cache** does not affect the user login. If you have a great 
-number of users and high request time for the logins you can prevent this by 
-setting up a ldapslave for example.
+sharing. It is populated on demand and is populated until the 
+**Cache Time-To-Live** is valid. Remember that the **Cache** does not affect 
+the user login. If you have a great number of users and high request time 
+for the logins you can prevent this by setting up a ldapslave for example.
 
 Handling with Backup Server
 ---------------------------
