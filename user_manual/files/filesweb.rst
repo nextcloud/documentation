@@ -1,25 +1,32 @@
 Accessing your Files Using the Web Interface
 ============================================
 
-You can access your ownCloud files from anywhere using the ownCloud web
-interface. Once accessed, using the Files app you can view (if a common type),
-move, rename, download, share, and delete your files easily.
+You can access your ownCloud files with the ownCloud web interface and create, 
+preview, edit, delete, share, and re-share files. Your ownCloud administrator 
+has the option to disable these features, so if any of them are missing on your 
+system ask your server administrator.
 
-.. figure:: ../images/oc_filesweb.png
+.. figure:: ../images/users-files.png
 
     **ownCloud web interface Files app**
 
 ownCloud version 7 enables you to see file thumbnails next to the filenames.
-Hovering over a file or folder provides the following highlighted list of
-operations:
+Hovering over a file or folder provides the following operations:
 
 * :guilabel:`Pencil icon` -- Enables you to rename a file or folder.
 * :guilabel:`Download` -- Downloads a file to your system.
-* :guilabel:`Versions` (when enabled; See :doc:`versioncontrol` for details) -- Enables you to revert the file or folder to any available older versions.
-* :guilabel:`Share` -- Enables you to share the file or folder with a group or a specific user.  Also enables you to share using a specified link.
-* :guilabel:`Edit` -- When a file is editable, enables you to open the file in the document application as long as that application is enabled for use from the ownCloud server.
+* :guilabel:`Versions` -- Enables you to revert the file or folder to any 
+   available older versions.
+* :guilabel:`Share` -- Enables you to share the file or folder with a group or a 
+   specific user.  Also enables you to create a public share with a hyperlink.
+* :guilabel:`Edit` -- Edit the file in ownCloud.
 * :guilabel:`Trash icon` -- Deletes the selected file or folder.
 
+.. Note:: The Shared folder has been removed from new installations of ownCloud 7.
+   Shares now appear in the top level of your file tree on your Files page. If you
+   are upgrading from older ownCloud versions you will still have your old Shared 
+   folder. Your server administrator has the option to change this in the server's
+   ``config.php`` file with the ``'share_folder' =>`` directive.
 
 Navigating Inside Your ownCloud
 -------------------------------
@@ -50,9 +57,11 @@ folder by clicking on the *New* button in the Files app.
 
 The *New* button provides the following three options from which to choose:
 
-* *Text file* -- Creates a simple text file and adds the file to the current folder in your ownCloud.
+* *Text file* -- Creates a simple text file and adds the file to the current 
+   folder in your ownCloud.
 * *Folder* -- Creates a new folder in the current folder.
-* *From link* -- Downloads a file from a provided link path and places it into the current folder.
+* *From link* -- Downloads a file from a provided link path and places it into 
+   the current folder.
 
 
 Selecting Files or Folders
@@ -75,17 +84,23 @@ the top right side of the Files app field.
 Filtering the File Application View
 -----------------------------------
 
-ownCloud enables you to view files in the File Application View using filter options located in the Apps Information Field. This feature enables you to quickly and easily view and manage files based on their share status.
+ownCloud enables you to view files in the File Application View using filter 
+options located in the Apps Information Field. This feature enables you to 
+quickly and easily view and manage files based on their share status.
 
 You can click on any of the filter options to view the files as follows:
 
-* ``All files`` -- The default view; displays all files in the Application View window.
+* ``All files`` -- The default view; displays all files in the Application View 
+   window.
 
-* ``Shared with you`` -- Displays all files shared with you by another user or group.
+* ``Shared with you`` -- Displays all files shared with you by another user or 
+   group.
 
-* ``Shared with others`` -- Displays all files that you have shared with other users or groups.
+* ``Shared with others`` -- Displays all files that you have shared with other 
+    users or groups.
 
-* ``Shared by link`` -- Displays all files that are shared by you through the use of a link.
+* ``Shared by link`` -- Displays all files that are shared by you through the 
+    use of a link.
 
 Previewing Files
 ----------------
@@ -103,51 +118,49 @@ and dropping them into any directory. If you want to move a file or folder to
 an upper directory, click and drag them to one of the folders shown in the
 navigation bar.
 
-Sharing Files
--------------
+Sharing Files Locally
+---------------------
 
-When enabled by the administrator, you can share any file or folder on ownCloud
- with a local user, group, or any person online with a public link. By sharing a
- file or folder, the user or group can download the information directly to their
- system. Shared files and folders depict a globe icon and the status *Shared* in
- the file or folder row.
+When enabled by your administrator, you can share files or folders on ownCloud 
+with a local user, group, or any person online with a public link. Shared files 
+and folders are labeled with the triangular share icon, and the status *Shared* 
+in the file or folder row.
 
-To share a file or folder:
+To create a local share with other users or groups on your ownCloud server:
 
-1. Using your cursor, hover over an item in the Files Application View.
+1. Hover your cursor over an item on the Files page
+2. Click the **Share** icon
 
-2. Locate the **Share** icon in the file or folder row.
+The Share dialog box opens to show the following options:
 
-3. Click *Share*.
+.. figure:: ../images/users-share-local.png
+  
+Type the name of the user or group that you want to share with. If you want to 
+share with more than one, you have to create each share separately. Check the 
+permissions you want the user or group to have, and optionally send them an 
+email notification. 
 
-  The Share dialog box opens to show the following options:
+.. note:: Users must enter their email addresses on their Personal pages for 
+   email notifications to work
+   
+Your new share appears on user's Files pages marked with a Share icon, and the 
+name of the file owner.
 
-  .. figure:: ../images/oc_files_share.png
+.. figure:: ../images/users-share-local2.png
+    
+When you want to revoke a share, simply click the Trashcan icon next to the 
+name of the appropriate user or group in the Shared dialog.    
+    
+Creating a Public Share
+-----------------------
 
-    **Share dialog box**
+You can share files outside of your organization with people who are not users 
+on your ownCloud server by creating a public share link. Open the Share dialog 
+and check Share Link.
 
-4. Choose the desired share option:
-
-  * **User/Group Share** field: Enables you to specify to whom you want to share the file or folder. Once you specify a user or group, a dialog appears providing added sharing options.
-
-	  .. figure:: ../images/oc_share_with_options.png
-
-		**Sharing options dialog**
-
-  * **Share link** checkbox: When enabled (checked), provides the following additional share options:
-
-	- **File/Folder URL** field: Specifies the URL to the folder or file that you want to share.
-
-	- **Password Protect** checkbox: When enabled (checked), provides the option of protecting access to the file of folder through the use of a simple alphanumeric password.
-
-	- **Allow Public Upload** checkbox: When enabled (checked), provides the ability for shared users to upload files using the provided link.
-
-	- **Email Link** field: Enables you to alert users of the shared folder by email.  You can specify one or more email addresses in this field (separated by spaces) and then click the "Send" button to send emails of the share.
-
-		.. note:: The server must be configured with a mail server or mail server access.
-
-  * **Set expiration date** checkbox: When enabled (checked), you can specify a date for which the share expires. You specify the expiration date in the format MM/DD/YYYY. For added convenience, clicking in the "Expiration date" field opens a calendar from which you can specify the date.
-
-    .. figure:: ../images/oc_share_expiration_calendar.png
-
-	**Expiration Date Calendar**
+.. figure:: ../images/users-share-public.png
+    
+This creates a public URL that anyone can use to access the share. You have the 
+options to send an email notification, protect it with a password, and put an 
+expiration date on it. Your ownCloud administrator has the option to require 
+passwords and expiration dates.  
