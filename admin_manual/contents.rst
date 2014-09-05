@@ -12,6 +12,7 @@ ownCloud documentation contents
 .. toctree::
     :maxdepth: 3
 
+    whats_new_admin
     installation/index
     configuration/index
     maintenance/index
