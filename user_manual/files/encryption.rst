@@ -31,44 +31,11 @@ The current version of the Encryption app encrypts all files stored in ownCloud 
    `this blog post <https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your-data/>`_
    for more details.
 
-Enabling the Encryption App
----------------------------
-
-Though ownCloud provides the Encryption app in the server download, it is
-disabled by default.  To enable the Encryption app:
-
-1. Access the ownCloud server as administrator.
-
-2. In the Apps Selection Menu, click "+".
-
-   All apps appear in the Apps Information field.
-
-3. Scroll down the apps list and click the Encryption app.
-
-   .. figure:: ../images/encryption_enabling.png
-
-   **Encryption app (Enabling)**
-
-4. Click the :guilabel:`Enable` button.
-
-   The Encryption app is enabled.
-
-Decrypting Encrypted Files
---------------------------
-
-If the Encryption app is disabled after users have already stored encrypted
-data, users are prompted to decrypt their files again in their personal
-settings. Once done, users can continue to use their ownCloud without
-encryption.
-
 Settings
 --------
 
-Once the encryption app is enabled, additional settings appear on the Admin
-settings page.  These settings include the ability to:
-
-* Set a recovery key password.
-* Enable or disable the use of the recovery key password.
+If the administrator enabled Encryption app, one or all of the following settings will be
+visible in your personal settings page.
 
 Recovery Key Password
 ~~~~~~~~~~~~~~~~~~~~~
