@@ -22,9 +22,8 @@ Manual Upgrade Procedure
 ------------------------
 
 Start by putting your server in maintenance mode. Do this by entering your 
-``config.php`` file and changing `` "maintenance" => false,`` to `` 
-"maintenance" => true,``. This kicks out any logged-in users, and prevents new 
-logins.
+``config.php`` file and changing ``'maintenance' => false,`` to ``'maintenance' 
+=> true,``. This kicks out any logged-in users, and prevents new logins.
 
 1. Ensure that you are running the latest point release of your current major 
    ownCloud version.
@@ -109,7 +108,7 @@ or command line method as follows:
    ownCloud to your new ownCloud version.
 
 10. If you keep your ``data/`` directory in your ``owncloud/`` directory, copy 
-    it from your old version of ownCloud to the ``owncloud/``directory of your 
+    it from your old version of ownCloud to the ``owncloud/`` directory of your 
     new ownCloud version. If you keep it outside of ``owncloud/`` then you 
     don't have to do anything with it.
 

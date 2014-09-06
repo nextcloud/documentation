@@ -9,7 +9,7 @@ version number.)
 
 Major releases are indicated by the first and second digits. So 4.5.0, 5.0.0, 
 6.0.0, and 7.0.0 are major releases. The Updater app is not for upgrades; 
-please see foo for instructions on upgrading to a major release.
+please see :doc:`upgrade` for instructions on upgrading to a major release.
 
 .. note:: If you installed ownCloud from your Linux distribution repositories 
    using your package manager, then it is best to update/upgrade ownCloud using 
@@ -25,7 +25,8 @@ instance by default, which you can easily confirm by looking on your Apps page.
 The Updater app performs these operations:
 
 * Creates a ``backup`` directory under your ownCloud data directory
-* Extracts updated package content into the ``backup/packageVersion`` directory
+* Download and xtracts updated package content into the 
+  ``backup/packageVersion`` directory
 * Makes a copy of your current ownCloud instance, except for your data 
   directory, to  ``backup/currentVersion-randomstring``
 * Moves all directories except ``data``, ``config`` and ``themes`` from the 
@@ -71,13 +72,14 @@ steps:
 .. figure:: ../images/updater-6.png
 
 8. It works for a few minutes, and when it's finished displays a success 
-   message, which disappears after a short time. Refresh your Admin page to 
-   verify your new version number.
-
+   message, which disappears after a short time. 
+   
 .. figure:: ../images/updater-7.png
 
-If the Update app fails, then you must update manually. See foo doc to learn 
-how to upgrade manually. 
+Refresh your Admin page to verify your new version number.
+
+If the Update app fails, then you must update manually. See :doc:`upgrade` to 
+learn how to upgrade manually. 
 
 
 
