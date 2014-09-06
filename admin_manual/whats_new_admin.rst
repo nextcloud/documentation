@@ -19,6 +19,18 @@ the ownCloud instance. You can control which storage types your users can set up
 in their Personal tabs. Further performance improvements have made externally 
 mounted storage faster and more responsive.
 
+
+Object Stores as Primary Storage
+--------------------------------
+
+Primary storage in ownCloud is where all files and folders are stored by 
+default. In contrast to secondary storage, primary storage is completely managed 
+by the ownCloud application. With ownCloud 7, ownCloud can now leverage SWIFT 
+and S3 (S3 is enterprise only) object stores as primary storage for ownCloud 
+files. Now admins can choose the best option for their specific need, including 
+local storage, network file system mounts, software defined storage, and object 
+stores. 
+
 Server to Server Sharing
 ------------------------
 
