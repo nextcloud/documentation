@@ -1,194 +1,84 @@
-Updating ownCloud
------------------
+Updating ownCloud with the Updater App
+======================================
 
-.. _'Updating ownCloud':
+Updating and upgrading your ownCloud installation are two different tasks. 
+Updating means updating to the next point release, which is indicated 
+by third digit of the version number. For example, 4.5.1, 5.0.17, 6.0.4 and 
+7.0.1 are point releases. (Look at the bottom of your Admin page to see your 
+version number.)
 
-The Updater app provides a more automated method of updating ownCloud.  To use the Updater app, it must be enabled in your ownCloud instance.  The Updater is enabled in your ownCloud instance by default when you install.
+Major releases are indicated by the first and second digits. So 4.5.0, 5.0.0, 
+6.0.0, and 7.0.0 are major releases. The Updater app is not for upgrades; 
+please see foo for instructions on upgrading to a major release.
 
-To update ownCloud:
+.. note:: If you installed ownCloud from your Linux distribution repositories 
+   using your package manager, then it is best to update/upgrade ownCloud using 
+   your package manager and staying in sync with your distro updates, rather 
+   than using the Updater app or upgrading manually. You should still 
+   maintain regular backups (see :doc:`backup`), and make a backup before every 
+   update/upgrade. 
 
-.. note:: To update ownCloud, the Updater app must be enabled in your ownCloud instance. The Updater app is enabled in your ownCloud instance by default when you install.  However, to verify that it is enabled, or to enable the Updater app, see `Enabling the Updater App`_.
+The Updater app automates many of the steps of updating an ownCloud installation 
+to the next point release. The Updater app should be enabled in your ownCloud 
+instance by default, which you can easily confirm by looking on your Apps page.
 
-1. Make a backup of the ownCloud folder and the database. See :doc:`backup` for details.
+The Updater app performs these operations:
 
-2. Navigate to the 'Admin' page.
+* Creates a ``backup`` directory under your ownCloud data directory
+* Extracts updated package content into the ``backup/packageVersion`` directory
+* Makes a copy of your current ownCloud instance, except for your data 
+  directory, to  ``backup/currentVersion-randomstring``
+* Moves all directories except ``data``, ``config`` and ``themes`` from the 
+  current instance to ``backup/tmp``
+* Moves all directories from ``backup/packageVersion`` to the current version
+* Copies your old ``config.php`` to the new ``config/`` directory
 
-3. Click the 'Update' tab.
+Using the Updater app to upgrade your ownCloud installation is just a few 
+steps:
 
-4. Refresh the page using Ctrl+F5.
+1. You should see a notification at the top of any ownCloud page when there is 
+   a new update available:
+   
+.. figure:: ../images/updater-1.png
+   
+2. Even though the Update app backs up important directories, you should 
+   always have your own current backups (See :doc:`backup` for details.)
+3. Verify that the PHP user on your system can write to your whole ownCloud 
+   directory; usually this is the ``www-data`` or ``apache`` user 
+4. Navigate to your 'Admin' page and click the 'Update Center' button under 
+   Updater:
 
-If this procedure doesn't work (for example, ownCloud 5.0.10 doesn't show new any new version) you could try to perform
-a full upgrade to update to the latest point release (see below).
+.. figure:: ../images/updater-2.png
 
-Verifying the Updater App is Enabled
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-However, to verify that the Updater is enabled in your ownCloud instance:
+5. This takes you to the Updater control panel.
 
-1. Select the "Admin" option from the "Personal Settings" dropdown menu.
+.. figure:: ../images/updater-3.png
 
-.. figure::  ../images/oc_personal_settings_dropdown_admin.png
+6. Click Update, and carefully read the messages. If there are any problems it 
+   will tell you, otherwise you'll see a message about checking your 
+   installation, making a backup, and moving files:
 
-2. Scroll down the resulting web page.  If the Updater app appears in this window, the app is enabled.  If not, then you must enable it.  See `Enabling the Updater App`_.
+.. figure:: ../images/updater-4.png
 
+8. Click Proceed, and then it downloads the updates, which may take a few 
+   minutes:
 
-Enabling the Updater App
-^^^^^^^^^^^^^^^^^^^^^^^^
-.. _`Enabling the Updater App`:
+.. figure:: ../images/updater-5.png
 
-The Updater app is enabled in your ownCloud instance by default when you install.  However, it is possible that it was disabled at some point.   To enable the Updater app:
+7. The Update app wants you to very sure you want to update, and so you must 
+   click one more button, the Start Update button:
 
-1. Click the "+ App" function in the Apps Selection Menu.
+.. figure:: ../images/updater-6.png
 
-  The "Select an App" window opens.
+8. It works for a few minutes, and when it's finished displays a success 
+   message, which disappears after a short time. Refresh your Admin page to 
+   verify your new version number.
 
-  .. figure:: ../images/oc_select_an_app_window.png
+.. figure:: ../images/updater-7.png
 
-  **Select an App window**
+If the Update app fails, then you must update manually. See foo doc to learn 
+how to upgrade manually. 
 
-2. Scroll down the list of apps on the left side of the web page and select the Update app.
 
-  .. figure:: ../images/oc_updater_select.png
 
-  **Selecting the Updater app**
 
-3. In the App View window, click "Enable."
-
-  .. figure:: ../images/oc_updater_enable.png
-
-  **Enabling the Updater app**
-
-  ownCloud enables the Updater app.
-
-Upgrading the ownCloud Server
-=============================
-
-The process for upgrading the ownCloud Server is fairly straightforward but requires planning and proper file and folder management.
-
-To upgrade your ownCloud Server:
-
-1. Ensure that you are running the latest point release of your current major ownCloud version (for example, point release 5.0.14a in the version 5.0 series). To update to the latest point release see 'Updating ownCloud'_.
-
-2. Deactivate all third party applications.
-
-  .. note:: Not all third party applications are supported on all ownCloud Server versions.  Make sure to check version compatibility prior to upgrading your ownCloud server.
-
-3. Back up your existing ownCloud Server database.  You can find these procedures in :doc:`backup`.
-
-4. Download the latest ownCloud Server version to your working directory.
-
-  For Linux operating systems, use the following command:
-
-  ``wget http://download.owncloud.org/community/owncloud-latest.tar.bz2``
-
-  For Windows operating systems:
-
-  See the installation instruction in :doc:`../installation/installation_windows`.
-
-5. Stop your web server.
-
-  Depending on your environment, you will be running either an Apache server or a Windows IIS server.  In addition, when running your server in a Linux environment, the necessary commands for stopping the Apache server might differ from one Linux operating system to another.
-
-  To stop an Apache server, refer to the following table for specific commands to use in different Linux operating systems:
-
-  +------------------+----------------------------------------------+
-  | Operating System | Command (as root)                            |
-  +==================+==============================================+
-  | CentOS (Redhat)  | ``apachectl stop``                           |
-  +------------------+----------------------------------------------+
-  | Debian           |                                              |
-  | or               | ``/etc/init.d/apache2 stop``                 |
-  | Ubuntu           |                                              |
-  +------------------+----------------------------------------------+
-  | openSUSE         |                                              |
-  | or               | ``/usr/sbin/rcapache2 stop``                 |
-  | SUSE (SLE)       |                                              |
-  +------------------+----------------------------------------------+
-
-  To stop the Windows IIS web server, you can use either the user interface (UI) or command line method as follows:
-
-  +----------------------+-------------------------------------------------------------------------+
-  | Method               | Procedure                                                               |
-  +======================+=========================================================================+
-  | User Interface (UI)  | 1. Open IIS Manager and navigate to the Web server node in the tree.    |
-  |                      |                                                                         |
-  |                      | 2. In the **Actions** pane, click **Stop**.                             |
-  +----------------------+-------------------------------------------------------------------------+
-  | Command Line         | 1. Open a command line window as administrator.                         |
-  |                      |                                                                         |
-  |                      | 2. At the command prompt, type **net stop WAS** and press **ENTER**.    |
-  |                      |                                                                         |
-  |                      | 3. (Optional) To stop W3SVC, type **Y** and then press **ENTER**.       |
-  +----------------------+-------------------------------------------------------------------------+
-
-  .. note:: For specific instructions on how to stop, start, or manage your server, please refer to instructions for the server on your specific operating environment.
-
-6. Move, or rename your current owncloud directory (named ``/owncloud`` if installed using defaults) to another location for use in your new version of ownCloud.
-
-  .. note:: This step ensures that you have a version of ownCloud available for backup purposes.
-
-7. Replace the old version of ownCloud Server with the new version of ownCloud Server:
-
-  Assuming that your installation directory is called ‘owncloud’, and that it resides in your working directory, the command to unpack the release tarball into the directory would be as follows::
-
-    tar xjf owncloud-latest.tar.bz2
-
-  In Microsoft Windows environments, you can unpack the release tarball using WinZip or a similar tool (for example, Peazip).
-
-  Always unpack server code into an empty directory. Unpacking the server code into an existing, populated directory, is not supported.
-
-  .. note:: If you unpack into an existing installation, the autoloader might pick up classes twice because the files have been moved, resulting in a ``Cannot redeclare class`` error.
-
-8. Copy and paste the ``/config/config.php`` file from the saved version of ownCloud to the ``/config`` directory of your new ownCloud version.
-
-  .. note:: You must perform this step **before** restarting your web server.
-
-9. If you chose to keep your /data directory in your ``/owncloud`` directory, copy and paste it from the old version of ownCloud to the ``/owncloud`` directory of your new ownCloud version.
-
-  .. note:: We recommend storing your ``/data`` directory in a location other than your ``/owncloud`` directory.  If you have your ``/data`` directory already stored in another location, you can skip this step.  If you want to do so, now is a good time to change the location of your ``/data`` directory.  See "Advanved Options" chapter in :doc:`../installation/installation_wizard` for added details about changing the default database or data directory.
-
-10. Restart your web server.
-
-  Depending on your environment, you will be running either an Apache server or a Windows IIS server.  In addition, when running your server in a Linux environment, the necessary commands for stopping the Apache server might differ from one Linux operating system to another.
-
-  To restart an Apache server, refer to the following table for specific commands to use in different Linux operating systems:
-
-  +------------------+----------------------------------------------+
-  | Operating System | Command (as root)                            |
-  +==================+==============================================+
-  | CentOS (Redhat)  | ``apachectl start``                          |
-  +------------------+----------------------------------------------+
-  | Debian           |                                              |
-  | or               | ``/etc/init.d/apache2 start``                |
-  | Ubuntu           |                                              |
-  +------------------+----------------------------------------------+
-  | openSUSE         |                                              |
-  | or               | ``/usr/sbin/rcapache2 start``                |
-  | SUSE (SLE)       |                                              |
-  +------------------+----------------------------------------------+
-
-  To start the Windows IIS web server, you can use either the user interface (UI) or command line method as follows:
-
-  +----------------------+-------------------------------------------------------------------------+
-  | Method               | Procedure                                                               |
-  +======================+=========================================================================+
-  | User Interface (UI)  | 1. Open IIS Manager and navigate to the Web server node in the tree.    |
-  |                      |                                                                         |
-  |                      | 2. In the **Actions** pane, click **Start**.                            |
-  +----------------------+-------------------------------------------------------------------------+
-  | Command Line         | 1. Open an elevated command line window.                                |
-  |                      |                                                                         |
-  |                      | 2. At the command prompt, type **net start W3SVC** and press **ENTER**. |
-  |                      |    This command starts both WAS and W3SVC.                              |
-  +----------------------+-------------------------------------------------------------------------+
-
-  .. note:: For specific instructions on how to stop, start, or manage your server, please refer to instructions for the server on your specific operating environment.
-
-11. Use a browser to your ownCloud server.
-
-  This step is required.  Accessing the server using a browser connection launches the server upgrade.
-
-  .. note:: To avoid webserver timeouts on slow or overloaded systems you can also update your ownCloud on the command line if you have SSH access to your server. This also avoid other users accessing the server during the process. Before starting the server (step 10), run the command ``php occ upgrade`` in the ownCloud folder. 
-
-12. If third party applications were running on your system, ensure that they provide versions compatible with the new ownCloud release. If compatible, you can reinstall and enable these applications.
-
-  .. note:: Update procedures should run when necessary.
