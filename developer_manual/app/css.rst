@@ -18,6 +18,8 @@ Web Components go into the **component/** folder and can be imported like this:
   <?php
   component('myapp', 'tabs');  // adds component/tabs.html
   
+.. note:: Keep in mind that Web Components are still very new and you `might need to add polyfills using Polymer <http://www.polymer-project.org/resources/compatibility.html>`_
+  
 Standard layout
 ===============
 To use the commonly used layout consisting of sidebar navigation and content the **app-navigation** and **app-content** ids can be used:
