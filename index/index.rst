@@ -21,7 +21,7 @@ This documents the *previous* ownCloud release, suitable for production use.
 
 * `User Manual <http://doc.owncloud.org/server/6.0/user_manual/>`_ (`Download PDF <http://doc.owncloud.org/server/6.0/ownCloudUserManual.pdf>`_)
 * `Administrator Manual <http://doc.owncloud.org/server/6.0/admin_manual/>`_ (`Download PDF <http://doc.owncloud.org/server/6.0/ownCloudAdminManual.pdf>`_)
-* `Developer Manual <http://doc.owncloud.org/server/6.0/developer_manual/>`_ (`Download PDF <http://doc.owncloud.org/server/6.0/ownCloudDeveloperManual.pdf>`_)
+
 
 -------------------
 ownCloud Server 5.0
