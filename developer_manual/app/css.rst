@@ -9,8 +9,15 @@ The CSS files reside in the **css/** folder and should be included in the templa
 .. code-block:: php
 
   <?php
-  \OCP\Util::addStyle('myapp', 'style');  // adds js/style.css
+  style('myapp', 'style');  // adds js/style.css
+  
+Web Components go into the **component/** folder and can be imported like this:
 
+.. code-block:: php
+
+  <?php
+  component('myapp', 'tabs');  // adds component/tabs.html
+  
 Standard layout
 ===============
 To use the commonly used layout consisting of sidebar navigation and content the **app-navigation** and **app-content** ids can be used:
