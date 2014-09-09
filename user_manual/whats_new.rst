@@ -55,10 +55,4 @@ Viewing your Files page is faster now thanks to "lazy loading", which loads
 files as you scroll down the page instead of loading all of them when you open 
 the page.
 
-Object Stores as Primary Storage
---------------------------------
-
-ownCloud can now leverage SWIFT object stores as primary storage for ownCloud 
-files. Users can choose the best option for their specific needs: local 
-storage, network filesystem mounts, or SWIFT object stores.
 
