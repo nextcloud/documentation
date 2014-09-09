@@ -9,7 +9,11 @@ The JavaScript files reside in the **js/** folder and should be included in the 
 .. code-block:: php
 
   <?php
-  \OCP\Util::addScript('myapp', 'script');  // adds js/script.js
+  // add one file
+  script('myapp', 'script');  // adds js/script.js
+
+  // add multiple files in the same app
+  script('myapp', array('script', 'navigation'));  //  adds js/script.js js/navigation.js
 
 The recommended JavaScript framework to use is `AngularJS <https://angularjs.org/#>`_. A nice tutorial screencast collection can be found on `Egghead.io <https://egghead.io/technologies/angularjs>`_
 
