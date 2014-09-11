@@ -62,7 +62,7 @@ ownCloud provides a default CSS navigation layout. If list entries should have 1
 Folders
 -------
 
-Folders are like normal entries and are only supported for the first level. In contrast to normal entries, the links which show the title of the folder need to have the **folder-icon** css class.
+Folders are like normal entries and are only supported for the first level. In contrast to normal entries, the links which show the title of the folder need to have the **icon-folder** css class.
 
 If the folder should be collapsible, the **collapsible** class and a button with the class **collapse** are needed. After adding the collapsible class the folder's child entries can be toggled by adding the **open** class to the list element:
 
@@ -73,7 +73,7 @@ If the folder should be collapsible, the **collapsible** class and a button with
             <li><a href="#">First level entry</a></li>
             <li class="collapsible open">
                 <button class="collapse"></button>
-                <a href="#" class="folder-icon">Folder name</a>
+                <a href="#" class="icon-folder">Folder name</a>
                 <ul>
                     <li><a href="#">Folder contents</a></li>
                     <li><a href="#">Folder contents</a></li>
@@ -93,7 +93,7 @@ The class which should be applied to a first level element (**li**) that hosts o
         <ul class="with-icon">
             <li><a href="#">First level entry</a></li>
             <li class="drag-and-drop">
-                <a href="#" class="folder-icon">Folder name</a>
+                <a href="#" class="icon-folder">Folder name</a>
                 <ul>
                     <li><a href="#">Folder contents</a></li>
                     <li><a href="#">Folder contents</a></li>
