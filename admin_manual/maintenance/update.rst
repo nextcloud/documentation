@@ -51,9 +51,7 @@ steps:
    create a PHP page to find it for you. To do this, create a plain text file 
    with this single line in it:
 
-::
-
-      <?php echo exec('whoami'); ?>
+      ``<?php echo exec('whoami'); ?>``
    
    Name it ``whoami.php`` and place it in your ``/srv/var/www/html directory``, 
    and then open it in a Web browser, for example 
