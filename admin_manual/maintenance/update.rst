@@ -25,7 +25,7 @@ instance by default, which you can easily confirm by looking on your Apps page.
 The Updater app performs these operations:
 
 * Creates a ``backup`` directory under your ownCloud data directory
-* Download and xtracts updated package content into the 
+* Download and extracts updated package content into the 
   ``backup/packageVersion`` directory
 * Makes a copy of your current ownCloud instance, except for your data 
   directory, to  ``backup/currentVersion-randomstring``
@@ -44,8 +44,21 @@ steps:
    
 2. Even though the Update app backs up important directories, you should 
    always have your own current backups (See :doc:`backup` for details.)
-3. Verify that the PHP user on your system can write to your whole ownCloud 
-   directory; usually this is the ``www-data`` or ``apache`` user 
+3. Verify that the HTTP user on your system can write to your whole ownCloud 
+   directory; on a stock Linux installation this is the ``www-data`` or 
+   ``apache`` user on systems that are running the Apache HTTP server. You can 
+   find your HTTP user in your HTTP server configuration files. Or you can 
+   create a PHP page to find it for you. To do this, create a plain text file 
+   with this single line in it:
+
+::
+
+      <?php echo exec('whoami'); ?>
+   
+   Name it ``whoami.php`` and place it in your ``/srv/var/www/html directory``, 
+   and then open it in a Web browser, for example 
+   ``http://servername/whoami.php``. You should see a single line in your 
+   browser page with the HTTP user name.
 4. Navigate to your 'Admin' page and click the 'Update Center' button under 
    Updater:
 
@@ -56,7 +69,7 @@ steps:
 .. figure:: ../images/updater-3.png
 
 6. Click Update, and carefully read the messages. If there are any problems it 
-   will tell you, otherwise you'll see a message about checking your 
+   will tell you, otherwise you will see a message about checking your 
    installation, making a backup, and moving files:
 
 .. figure:: ../images/updater-4.png
@@ -66,12 +79,12 @@ steps:
 
 .. figure:: ../images/updater-5.png
 
-7. The Update app wants you to very sure you want to update, and so you must 
+7. The Update app wants you to be very sure you want to update, and so you must 
    click one more button, the Start Update button:
 
 .. figure:: ../images/updater-6.png
 
-8. It works for a few minutes, and when it's finished displays a success 
+8. It works for a few minutes, and when it is finished displays a success 
    message, which disappears after a short time. 
    
 .. figure:: ../images/updater-7.png
