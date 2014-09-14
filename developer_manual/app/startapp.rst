@@ -12,7 +12,7 @@ Then run::
 
     ocdev startapp MyApp --mail mail@example.com --author "Your Name" --description "My first app" --owncloud 7
 
-This will create all the needed files in the current directory. For more information on how to customize the generated app, see the `Project's GitHub page <https://github.com/Raydiation/ocdev>`_ or run::
+This will create all the needed files in the current directory. For more information on how to customize the generated app, see the `Project's GitHub page <https://github.com/owncloud/ocdev>`_ or run::
 
     ocdev startapp -h
 
