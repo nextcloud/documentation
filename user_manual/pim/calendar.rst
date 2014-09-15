@@ -8,7 +8,7 @@ By default, when you access the Calendar app for the first time, you get a
 "Personal" calendar that you can use or modify as you like.
 
 .. figure:: ../images/calendar_default.png
-  :scale: 75%
+  :scale: 60%
 
   **Calendar app (default)**
 
@@ -78,8 +78,6 @@ In the Calendar app settings, you can modify the following:
 
 - Start day -- Provides the option of starting the calendar week on Monday,
   Sunday, or Saturday.
-
-- Cache -- Enables you to clear the calendar cache for repeating events.
 
 - Primary CalDAV address -- Provides the primary CalDAV link URL.
 
@@ -242,17 +240,21 @@ Exporting and Importing Events
 The Calendar app enables you to export and import event or entire calendars to
 or from other calendars.
 
-Exporting Events
-~~~~~~~~~~~~~~~~
+Exporting Events and Calendar
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. figure:: ../images/calendar_export.png
+.. figure:: ../images/event_export.png
 
   Exporting an event
 
 You can export either a single event or an entire calendar. If you want to export
-a single event, click the event and press the export button in the bottom right
-corner. If you want to export an entire calendar, use the "Calendar" button as
-described in "Creating a calendar".
+a single event, click on the event, select "Advanced" and press the "Export Event" button in the bottom left
+corner. If you want to export an entire calendar, use the |download| icon next to the calendar name as
+shown in the figure below:
+
+.. figure:: ../images/calendar_export.png
+
+  Exporting calendar
 
 Importing Events
 ~~~~~~~~~~~~~~~~
@@ -298,3 +300,5 @@ Calendar App FAQ
 Without the correct timezone, a time offset exists between the events in the
 ownCloud calendar and the desktop calendar to which you are synchronizing. You
 can also set the timezone manually in the personal settings.
+
+.. |download| image:: ../images/download.png
