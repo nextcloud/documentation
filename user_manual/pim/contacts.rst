@@ -191,7 +191,7 @@ two following ways:
   and clicking ``Open``.
   
 - Select image from Files -- By selecting this option, ownCloud opens the Files
-  app on the ownCloud server.  You can choose an image by navigating to the image
+  dialog on the ownCloud server.  You can choose an image by navigating to the image
   in the ownCloud directory, selecting it, and clicking ``Choose.``
 
 Cropping an Avatar Image

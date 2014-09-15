@@ -15,7 +15,7 @@ Calendar
 #. If your server does not support SSL, a warning will be displayed.
    Select Continue.
 #. If the iPhone is unable to verify the account information perform the
-   following:
+   following steps:
 
    -  Select OK.
    -  Select advanced settings.
@@ -23,7 +23,7 @@ Calendar
    -  Change port to 80.
    -  Go back to account information and hit Save.
 
-Your calendar should now be visible in the Calendar application
+Your calendar will now be visible in the Calendar application
 
 
 Address book
