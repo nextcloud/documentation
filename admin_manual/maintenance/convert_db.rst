@@ -1,7 +1,7 @@
 Converting Database Type
 ========================
 
-You can convert a sqlite database to a more performing MySql, MariaDB or PostgreSQL database with the ownCloud command line tool.
+You can convert a sqlite database to a more performing MySQL, MariaDB or PostgreSQL database with the ownCloud command line tool.
 Available since ownCloud version 7.0.0. To convert former ownCloud installations, first update to at least version 7.0.0.
 
 
@@ -24,7 +24,7 @@ The Options
 
 *Note:* The converter searches for apps in your configured app folders and uses the schema definitions in the apps to create the new table. So tables of removed apps will not be converted even with option ``--all-apps``
 
-For example 
+For example
 
 .. code-block:: bash
 
@@ -36,7 +36,7 @@ On success the converter will automatically configure the new database in your o
 Unconvertible Tables
 --------------------
 
-If you updated your ownCloud installation there might exist old tables, which are not used anymore. The converter will tell you 
+If you updated your ownCloud installation there might exist old tables, which are not used anymore. The converter will tell you
 
 .. code-block:: bash
 
