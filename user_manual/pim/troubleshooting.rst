@@ -34,7 +34,7 @@ Apple iOS
 
 Below is what have proven to work with iOS including iOS 7.
 
-If your ownCloud instance is installed in a sub-folder under the web servers document root, and
+If your ownCloud instance is installed in a subfolder under the web server's document root and
 the client has difficulties finding the Cal- or CardDAV end-points, configure your web server to
 redirect from a "well-know" URL to the one used by ownCloud.
 When using the Apache web server this is easily achieved using a :file:`.htaccess` file in the document
@@ -61,7 +61,7 @@ This problem is being discussed in the `forum <http://forum.owncloud.org/viewtop
 BlackBerry OS 10.2
 ``````````````````
 
-BlackBerry OS up to 10.2.2102 doesn't accept a URL with protocol ``https://`` in front of the server address.
+BlackBerry OS up to 10.2.2102 does not accept a URL with protocol ``https://`` in front of the server address.
 It will always tell you, that it cannot login on your server. So instead of writing
 
     https://address/remote.php/carddav/principals/username

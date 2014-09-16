@@ -122,7 +122,7 @@ The following is an example showing the completed URL where the calendar name is
 
        https://localhost/owncloud/remote.php/caldav/calendars/test/defaultcalendar
 
-.. Note: Calendar names are lower case and any spaces are removed. They are not
+.. Note: Calendar names are lowercase and any spaces are removed. They are not
   URL-encoded.
 
 Creating Events

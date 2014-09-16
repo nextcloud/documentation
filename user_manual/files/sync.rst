@@ -13,7 +13,7 @@ have your latest files with you wherever you are.
 
 Its usage is documented separately in the `ownCloud Desktop Client Manual`_.
 
-Furthermore, It is possible to synchronize your ownCloud calendar and address book
+Furthermore, it is possible to synchronize your ownCloud calendar and your address book
 with a variety of different operating systems and devices. It is also possible to
 mount your ownCloud storage via WebDAV, which is also documented in the next chapters.
 
