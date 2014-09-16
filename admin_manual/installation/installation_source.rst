@@ -43,7 +43,7 @@ Database connectors (pick at least one):
   authentication, depends on this)
 * PHP module fileinfo (highly recommended, enhances file analysis performance)
 * PHP module bz2 (recommended, required for extraction of apps)
-* PHP module intl (increases language translation performance)
+* PHP module intl (increases language translation performance and fixes sorting of non-ASCII characters)
 * PHP module mcrypt (increases file encryption performance)
 * PHP module openssl (required for accessing HTTPS resources)
 
