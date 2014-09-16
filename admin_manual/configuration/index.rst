@@ -22,6 +22,7 @@ Configuration
    configuration_mail
    configuration_preview
    configuration_reverseproxy
+   configuration_file_sharing
    configuring_big_file_upload
    custom_mount_config_gui
    custom_mount_config

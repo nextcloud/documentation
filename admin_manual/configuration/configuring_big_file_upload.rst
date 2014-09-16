@@ -68,8 +68,7 @@ will return memory-related errors.
 
 * ``output_buffering = 0``
 
-**These client configurations have been proven by testing maximum file sizes of 
-  16 GB:**
+**These client configurations have been proven by testing maximum file sizes of 16 GB:**
 
 * Linux 32 Bit: Ubuntu, Firefox => 16GB
 * Windows 8  64 Bit: Google Chrome => 8GB
