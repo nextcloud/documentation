@@ -53,6 +53,7 @@ This section describes how to configure ownCloud and your web server.  It
 contains the following topics:
 
 * :doc:`configuration/configuration_apps`
+* :doc:`configuration/configuration_file_sharing`
 * :doc:`configuration/configuration_users`
 * :doc:`configuration/configuration_database`
 * :doc:`configuration/auth_ldap`
@@ -81,7 +82,9 @@ server (for example, updating or migrating to a new version of ownCloud).  It
 contains the following topics:
 
 * :doc:`maintenance/enable_maintenance`
-* :doc:`maintenance/migrating`
+* :doc:`maintenance/backup`
 * :doc:`maintenance/update`
-
-
+* :doc:`maintenance/upgrade`
+* :doc:`maintenance/restore`
+* :doc:`maintenance/migrating`
+* :doc:`maintenance/convert_db`
