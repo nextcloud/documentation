@@ -229,8 +229,7 @@ to create new address books.
 The Contacts settings enables you to share, export, edit, and delete address 
 books.
 
-.. note:: You can hover the cursor over each icon to view a brief pop-up
-  description for each.
+.. note:: Hover your cursor over each icon to see a brief pop-up description.
 
 Adding an Address Book
 ----------------------
