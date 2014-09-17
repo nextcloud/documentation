@@ -1,14 +1,19 @@
 User Authentication with LDAP
 =============================
 
-ownCloud ships with an LDAP app so that you may authenticate your existing LDAP 
-users in ownCloud, without creating separate ownCloud user accounts. The app 
-supports:
+ownCloud ships with an LDAP app so that your existing LDAP users may have 
+access to your ownCloud server without creating separate ownCloud user accounts. 
+The app supports:
 
 * LDAP group support
-* File sharing with users and groups
+* File sharing with ownCloud users and groups
 * Access via WebDAV and ownCloud Desktop Client
 * Versioning, external Storage and all other ownCloud features
+* Seamless connectivity to Active Directory, with no extra configuration 
+  required
+* Support for primary groups in Active Directory
+* Auto-detection of LDAP attributes such as base DN, email, and the LDAP server 
+  port number
 
 .. Note:: The LDAP app is not compatible with the ``WebDAV user backend`` app. 
    You cannot use both of them at the same time. 
@@ -528,14 +533,6 @@ ownCloud LDAP Internals
 -----------------------
 
 Some parts of how the LDAP backend works are described here.
-
-Groups
-------
-
-At the moment, only secondary groups are read. That means that only the groups
-are retrieved, which are returned by the attribute auto-detected (or manually
-chosen) in Group-Member association. Primary groups are not being taken into
-account.
 
 User and Group Mapping
 ----------------------
