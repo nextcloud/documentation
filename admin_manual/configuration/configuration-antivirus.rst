@@ -125,6 +125,7 @@ Daemon (Socket)
   run ``netstat`` to verify:
 
 ::
+
   netstat -a|grep clam
   unix 2 [ ACC ] STREAM LISTENING 15857 /var/run/clamav/clamd.ctl
   
