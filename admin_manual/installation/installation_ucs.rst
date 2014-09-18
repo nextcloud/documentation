@@ -57,7 +57,7 @@ question in the UCR and assign your required value, for example::
 
 or via UMC:
 
-.. image:: /images/ucsint2.png
+.. image:: ../images/ucsint2.png
 
 
 Installation
@@ -72,11 +72,11 @@ UCS App Center
 Open the Univention Management Console and choose the App Center module. You
 will see a variety of available applications, including ownCloud.
 
-.. image:: /images/ucs-app-center-module.png
+.. image:: ../images/ucs-app-center-module.png
 
 Click on ownCloud 5 and follow the instructions.
 
-.. image:: /images/ucs-app-center-install.png
+.. image:: ../images/ucs-app-center-install.png
 
 In the UCS App Center, you can also upgrade from ownCloud 4.5 by installing
 ownCloud 5.0. They are provided as separate apps. It is only possible to have
@@ -140,7 +140,7 @@ If you did not, go to the UMC and enable the users who shall have access
 (see picture below). Then, login at http://myserver.com/owncloud/ with
 your LDAP credentials.
 
-.. image:: /images/ucsint1.png
+.. image:: ../images/ucsint1.png
 
 Updating users can also be done by the script
 :file:`/usr/share/owncloud/update-users.sh` . It takes the following UCR
@@ -157,7 +157,7 @@ instead of single users, for example. It is also important to note, that
 users can only share within groups where they belong to. Groups can be
 enabled and disabled via UCM as shown in the screen shot below.
 
-.. image:: /images/ucsint.png
+.. image:: ../images/ucsint.png
 
 Another way to enable or disable groups is to use the script
 :file:`/usr/share/owncloud/update-groups.sh`. Currently, it takes an argument
