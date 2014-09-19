@@ -24,9 +24,7 @@ ClamAV in different ways.
 
 Debian, Ubuntu, Linux Mint
   On Debian and Ubuntu systems, and their many variants, install ClamAV with 
-  these commands:
-
-::
+  these commands::.
 
   apt-get install clamav clamav-daemon
   
@@ -38,9 +36,7 @@ it's a good idea to review the ClamAV documentation and your settings in
 
 Red Hat 7, CentOS 7
   On Red Hat 7 and related systems you must install the Extra Packages for 
-  Enterprise Linux (EPEL) repository, and then install ClamAV:
-  
-::
+  Enterprise Linux (EPEL) repository, and then install ClamAV::.
 
   yum install epel-release
   yum install clamav clamav-scanner clamav-scanner-systemd clamav-server 
@@ -55,9 +51,7 @@ freshclam.conf`` explain all the options.  Refer to ``/etc/passwd`` and
 First work through ``/etc/freshclam.conf`` and configure your options. 
 ``freshclam`` updates your malware database, so you want it to run frequently to 
 get updated malware signatures. Run it manually post-installation to download 
-your first set of malware signatures:
-
-::
+your first set of malware signatures::.
   
   freshclam
   
@@ -74,9 +68,7 @@ Please avoid any multiples of 10, because those are when the ClamAV servers are
 hit the hardest for updates.    
     
 Next, edit ``/etc/clamd.d/scan.conf``. When you're finished you must enable 
-the ``clamd`` service file and start ``clamd``:
-
-::
+the ``clamd`` service file and start ``clamd``::.
  
   systemctl enable clamd@scan.service
   systemctl start clamd@scan.service
@@ -124,9 +116,7 @@ ClamAV runs in one of three modes:
 Daemon (Socket)
   ownCloud should detect your ``clamd`` socket and fill in the ``Socket`` 
   field. This is the ``LocalSocket`` option in ``clamd.conf``. You can 
-  run ``netstat`` to verify:
-
-::
+  run ``netstat`` to verify::.
 
   netstat -a|grep clam
   unix 2 [ ACC ] STREAM LISTENING 15857 /var/run/clamav/clamd.ctl
