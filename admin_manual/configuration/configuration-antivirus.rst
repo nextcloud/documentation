@@ -57,9 +57,7 @@ your first set of malware signatures::.
   
 The EPEL packages do not include an init file for ``freshclam``, so the quick 
 and easy way to set it up for regular checks is with a cron job. This example 
-runs it every hour at 47 minutes past the hour:
-
-::
+runs it every hour at 47 minutes past the hour::.
 
   # m   h  dom mon dow  command
     47  *  *   *    *  /usr/bin/freshclam --quiet
