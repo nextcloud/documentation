@@ -194,6 +194,7 @@ Often an edit option is needed an entry. To add one for a given entry simply hid
                 </div>
 
             </li>
+        </ul>
     </div>
 
 If AngularJS is used you want to autofocus the input box. This can be achieved by placing the show condition inside an **ng-if** on the **app-navigation-entry-edit** div and adding the following directive:
@@ -208,6 +209,28 @@ If AngularJS is used you want to autofocus the input box. This can be achieved b
     });
 
 **ng-if** is required because it removes/inserts the element into the DOM dynamically instead of just adding a **display: none** to it like **ng-show** and **ng-hide**.
+
+Undo entry
+==========
+
+If you want to undo a performed action on a navigation entry such as deletion, you should show the undo directly in place of the entry and make it disappear after location change or 7 seconds:
+
+
+.. code-block:: html
+
+    <div id="app-navigation">
+        <ul class="with-icon">
+            <li>
+                <a href="#" class="hidden">First level entry</a>
+
+                <div class="app-navigation-entry-deleted">
+                    <div class="app-navigation-entry-deleted-description">Deleted X</div>
+                    <button class="app-navigation-entry-deleted-button icon-history" title="Undo"></button>
+                </div>
+            </li>
+        </ul>
+    </div>
+
 
 Settings Area
 =============
