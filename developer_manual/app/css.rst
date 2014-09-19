@@ -211,7 +211,7 @@ If AngularJS is used you want to autofocus the input box. This can be achieved b
 **ng-if** is required because it removes/inserts the element into the DOM dynamically instead of just adding a **display: none** to it like **ng-show** and **ng-hide**.
 
 Undo entry
-==========
+----------
 
 If you want to undo a performed action on a navigation entry such as deletion, you should show the undo directly in place of the entry and make it disappear after location change or 7 seconds:
 
