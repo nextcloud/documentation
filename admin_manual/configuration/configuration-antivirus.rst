@@ -26,7 +26,7 @@ Debian, Ubuntu, Linux Mint
   On Debian and Ubuntu systems, and their many variants, install ClamAV with 
   these commands::
 
-  apt-get install clamav clamav-daemon
+    apt-get install clamav clamav-daemon
   
 The installer automatically creates default configuration files and launches the 
 ``clamd`` and ``freshclam`` daemons. You don't have to do anything more, though 
@@ -38,9 +38,9 @@ Red Hat 7, CentOS 7
   On Red Hat 7 and related systems you must install the Extra Packages for 
   Enterprise Linux (EPEL) repository, and then install ClamAV::
 
-  yum install epel-release
-  yum install clamav clamav-scanner clamav-scanner-systemd clamav-server 
-  clamav-server-systemd clamav-update
+   yum install epel-release
+   yum install clamav clamav-scanner clamav-scanner-systemd clamav-server 
+   clamav-server-systemd clamav-update
   
 This installs two configuration files: ``/etc/freshclam.conf`` and 
 ``/etc/clamd.d/scan.conf``. You must edit both of these before you can run 
