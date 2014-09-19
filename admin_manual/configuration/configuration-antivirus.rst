@@ -24,7 +24,7 @@ ClamAV in different ways.
 
 Debian, Ubuntu, Linux Mint
   On Debian and Ubuntu systems, and their many variants, install ClamAV with 
-  these commands::.
+  these commands::
 
   apt-get install clamav clamav-daemon
   
