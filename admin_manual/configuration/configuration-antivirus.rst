@@ -109,15 +109,16 @@ Now find your Antivirus Configuration panel on your Admin page.
 ClamAV runs in one of three modes:
 
 * Daemon (Socket): ClamAV is running on the same server as ownCloud. The ClamAV 
-  daemon, ``clamd``, runs in the background. This is the best choice for a 
-  busy server with a lot of file uploads.
+  daemon, ``clamd``, runs in the background. When there is no activity ``clamd`` places
+  a minimal load on your system. If your users upload large volumes of files you will
+  see high CPU usage.
   
-* Executable: ClamAV is running on the same server as ownCloud, and the ClamAV 
-  process is started and stopped with each file upload. Use this if you are 
-  running a server without a lot of file uploads.
-
-* Daemon: ClamAV is running on a different server. This is the least favorable 
-  option, as you have to deal with network congestion and server outages.
+* Daemon: ClamAV is running on a different server. This is a good option for busy ownCloud 
+  servers with high volumes of file uploads.
+  
+* Executable: ClamAV is running on the same server as ownCloud, and the ``clamscan``
+  command is started and then stopped with each file upload. ``clamscan`` is slow and not 
+  always reliable for on-demand usage; it is better to use one of the daemon modes.
 
 Daemon (Socket)
   ownCloud should detect your ``clamd`` socket and fill in the ``Socket`` 
@@ -154,7 +155,7 @@ Daemon
 .. figure:: ../images/antivirus-daemon-socket.png
 
 When you are satisfied with how ClamAV is operating, you might want to go 
-back and change all of your logging to lower levels.
+back and change all of your logging to less verbose levels.
 
 
 
