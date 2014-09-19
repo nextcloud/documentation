@@ -30,21 +30,21 @@ Debian, Ubuntu, Linux Mint
 
   apt-get install clamav clamav-daemon
   
-The installer automatically creates default configuration files and launches 
-the ``clamd`` and ``freshclam`` daemons. You don't have to do anything more, 
-though it's a good idea to review the ClamAV documentation and your settings in 
-``/etc/clamav/``. Enable verbose logging for both ``clamd`` and ``freshclam`` 
-until you get any kinks worked out.
+The installer automatically creates default configuration files and launches the 
+``clamd`` and ``freshclam`` daemons. You don't have to do anything more, though 
+it's a good idea to review the ClamAV documentation and your settings in 
+``/etc/clamav/``. Enable verbose logging in both ``clamd.conf`` and 
+``freshclam.conf`` until you get any kinks worked out.
 
-Red Hat, CentOS 7
+Red Hat 7, CentOS 7
   On Red Hat 7 and related systems you must install the Extra Packages for 
   Enterprise Linux (EPEL) repository, and then install ClamAV:
   
 ::
 
   yum install epel-release
-  yum install clamav clamav-scanner clamav-scanner-systemd 
-  clamav-server clamav-server-systemd clamav-update
+  yum install clamav clamav-scanner clamav-scanner-systemd clamav-server 
+  clamav-server-systemd clamav-update
   
 This installs two configuration files: ``/etc/freshclam.conf`` and 
 ``/etc/clamd.d/scan.conf``. You must edit both of these before you can run 
@@ -74,15 +74,15 @@ Please avoid any multiples of 10, because those are when the ClamAV servers are
 hit the hardest for updates.    
     
 Next, edit ``/etc/clamd.d/scan.conf``. When you're finished you must enable 
-ClamAV's service file and launch the ``clamd`` daemon:
+the ``clamd`` service file and start ``clamd``:
 
 ::
  
   systemctl enable clamd@scan.service
   systemctl start clamd@scan.service
 
-That should take care of everything. Enable verbose logging for both ``clamd`` 
-and ``freshclam`` until it is running reliably.
+That should take care of everything. Enable verbose logging in ``scan.conf`` 
+and ``freshclam.conf`` until it is running the way you want.
 
 Installing the Antivirus App for Files
 ======================================
@@ -109,16 +109,17 @@ Now find your Antivirus Configuration panel on your Admin page.
 ClamAV runs in one of three modes:
 
 * Daemon (Socket): ClamAV is running on the same server as ownCloud. The ClamAV 
-  daemon, ``clamd``, runs in the background. When there is no activity ``clamd`` places
-  a minimal load on your system. If your users upload large volumes of files you will
-  see high CPU usage.
+  daemon, ``clamd``, runs in the background. When there is no activity ``clamd`` 
+  places a minimal load on your system. If your users upload large volumes of 
+  files you will see high CPU usage.
   
-* Daemon: ClamAV is running on a different server. This is a good option for busy ownCloud 
-  servers with high volumes of file uploads.
+* Daemon: ClamAV is running on a different server. This is a good option 
+  for ownCloud servers with high volumes of file uploads.
   
-* Executable: ClamAV is running on the same server as ownCloud, and the ``clamscan``
-  command is started and then stopped with each file upload. ``clamscan`` is slow and not 
-  always reliable for on-demand usage; it is better to use one of the daemon modes.
+* Executable: ClamAV is running on the same server as ownCloud, and the 
+  ``clamscan`` command is started and then stopped with each file upload. 
+  ``clamscan`` is slow and not  always reliable for on-demand usage; it is 
+  better to use one of the daemon modes.
 
 Daemon (Socket)
   ownCloud should detect your ``clamd`` socket and fill in the ``Socket`` 
@@ -141,22 +142,19 @@ Daemon (Socket)
   logging any alerts without deleting the files, or immediately deleting 
   infected files.
   
+Daemon
+  For the Daemon option you need the hostname or IP address of the remote 
+  server running ClamAV, and the server's port number.
+  
+.. figure:: ../images/antivirus-daemon-socket.png
+  
 Executable
   The Executable option requires the path to ``clamscan``, which is the 
   interactive ClamAV scanning command. ownCloud should find it automatically.
   
-  .. figure:: ../images/antivirus-executable.png
-  
-Daemon
-  For the Daemon option you need the hostname or IP address of the remote 
-  server running ClamAV, and the port number. The port number is the TCPSocket 
-  value in ``clamd.conf``.
-  
-.. figure:: ../images/antivirus-daemon-socket.png
+.. figure:: ../images/antivirus-executable.png
 
 When you are satisfied with how ClamAV is operating, you might want to go 
 back and change all of your logging to less verbose levels.
-
-
 
 
