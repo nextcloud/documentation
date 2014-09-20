@@ -72,6 +72,7 @@ contains the following topics:
 * :doc:`configuration/configuration_knowledgebase`
 * :doc:`configuration/configuration_logging`
 * :doc:`configuration/configuration_language`
+* :doc:`configuration/configuration-antivirus`
 
 Maintenance
 ===========

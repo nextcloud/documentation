@@ -12,6 +12,7 @@ Configuration
    background_jobs
    configuration_assets
    configuration_3rdparty
+   configuration-antivirus
    configuration_automation
    configuration_custom_clients
    configuration_database
