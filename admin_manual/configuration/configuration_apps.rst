@@ -13,7 +13,7 @@ During the ownCloud installation, some apps are enabled by default. To see which
 
    .. figure:: ../images/oc_admin_app_page.png
 
-   **Administrator application page**
+     **Administrator application page**
 
 2. Scroll down the Apps Information Field to view the enabled apps.
 
