@@ -78,7 +78,7 @@ Installing the Antivirus App for Files
 --------------------------------------
 
 Download the the Antivirus App for Files from the `ownCloud apps store
-<http://apps.owncloud.com/content/show.php/Antivirus?content=157439>`_ , and
+<http://apps.owncloud.com/content/show.php/Antivirus?content=157439>`_, and
 unpack it into your ``owncloud/apps/`` directory. Then go to your
 ownCloud Apps page to enable it.
 
@@ -119,7 +119,7 @@ Daemon (Socket)
   netstat -a|grep clam
   unix 2 [ ACC ] STREAM LISTENING 15857 /var/run/clamav/clamd.ctl
 
-.. figure:: ../images/antivirus-daemon-socket.png
+  .. figure:: ../images/antivirus-daemon-socket.png
 
   The ``Stream Length`` value limits the size of files to be scanned. 10485760
   bytes, or ten megabytes, is the default. Files larger than this will not be
@@ -134,13 +134,13 @@ Daemon
   For the Daemon option you need the hostname or IP address of the remote
   server running ClamAV, and the server's port number.
 
-.. figure:: ../images/antivirus-daemon-socket.png
+  .. figure:: ../images/antivirus-daemon-socket.png
 
 Executable
   The Executable option requires the path to ``clamscan``, which is the
   interactive ClamAV scanning command. ownCloud should find it automatically.
 
-.. figure:: ../images/antivirus-executable.png
+  .. figure:: ../images/antivirus-executable.png
 
 When you are satisfied with how ClamAV is operating, you might want to go
 back and change all of your logging to less verbose levels.
