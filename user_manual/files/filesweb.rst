@@ -134,6 +134,8 @@ To create a local share with other users or groups on your ownCloud server:
 The Share dialog box opens to show the following options:
 
 .. figure:: ../images/users-share-local.png
+
+  **Share dialog box**
   
 Type the name of the user or group that you want to share with. If you want to 
 share with more than one, you have to create each share separately. Check the 
@@ -147,7 +149,9 @@ Your new share appears on user's Files pages marked with a Share icon, and the
 name of the file owner.
 
 .. figure:: ../images/users-share-local2.png
-    
+
+  **Shared file**
+
 When you want to revoke a share, simply click the Trashcan icon next to the 
 name of the appropriate user or group in the Shared dialog.    
     
@@ -159,8 +163,10 @@ on your ownCloud server by creating a public share link. Open the Share dialog
 and check Share Link.
 
 .. figure:: ../images/users-share-public.png
-    
-This creates a public URL that anyone can use to access the share. You have the 
+
+  **Public share box**
+
+This creates a public URL that anyone can use to access the share. You have the
 options to send an email notification, protect it with a password, and put an 
 expiration date on it. Your ownCloud administrator has the option to require 
 passwords and expiration dates.  

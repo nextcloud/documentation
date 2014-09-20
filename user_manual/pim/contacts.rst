@@ -6,9 +6,8 @@ with more functionality.  When you first access the Contacts app, a default
 address book becomes available.
 
 .. figure:: ../images/contacts_empty.png
-  :scale: 75%
 
-**Contacts app (empty)**
+  **Contacts app (empty)**
 
 In the Apps Information field for the Contacts app, you can choose to create a
 new contact or a new group.  This field also enables you to filter your contacts
@@ -167,13 +166,13 @@ By default, new contacts receive a letter avatar (picture) of "U" (for "User").
 .. figure:: ../images/contact_picture_default.png
 
   **Contact picture (default)**
- 
-  When you specify the name of a contact, the avatar reflects the name by adopting
-  the first letter of the name you provide.  For example, if you were to specify 
-  the name of "Frederick," the avatar would dynamically change to "F" for that 
-  contact.  If you provide multiple contacts with the same name, or with names 
-  that start with the same first letter, the avatar uses the same letter but 
-  changes color to indicate the difference.
+
+When you specify the name of a contact, the avatar reflects the name by adopting
+the first letter of the name you provide.  For example, if you were to specify
+the name of "Frederick," the avatar would dynamically change to "F" for that
+contact.  If you provide multiple contacts with the same name, or with names
+that start with the same first letter, the avatar uses the same letter but
+changes color to indicate the difference.
  
 .. figure:: ../images/contact_picture.png
 
@@ -241,8 +240,9 @@ To add an address book:
   A field opens requesting you to enter a display name for the new address book.
   
   .. figure:: ../images/contact_address_book_add.png
-  
-  **Adding an address book**
+
+    **Adding an address book**
+
 
 2. Specify a display name for the address book.
 
