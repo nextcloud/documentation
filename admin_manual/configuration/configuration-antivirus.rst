@@ -17,7 +17,7 @@ are for Linux systems. You must first install ClamAV, and then install and
 configure the Antivirus App for Files on ownCloud.
 
 Installing ClamAV
-=================
+-----------------
 
 As always, the various Linux distributions manage installing and configuring 
 ClamAV in different ways.
@@ -75,7 +75,7 @@ That should take care of everything. Enable verbose logging in ``scan.conf``
 and ``freshclam.conf`` until it is running the way you want.
 
 Installing the Antivirus App for Files
-======================================
+--------------------------------------
 
 Download the the Antivirus App for Files from the `ownCloud apps store 
 <http://apps.owncloud.com/content/show.php/Antivirus?content=157439>`_ , and 
@@ -85,7 +85,7 @@ ownCloud Apps page to enable it.
 .. figure:: ../images/antivirus-app.png
 
 Configuring ClamAV on ownCloud
-==============================
+------------------------------
 
 Next, go to your ownCloud Admin page and set your ownCloud logging level to 
 Everything.
