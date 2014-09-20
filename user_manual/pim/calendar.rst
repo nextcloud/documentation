@@ -8,7 +8,6 @@ By default, when you access the Calendar app for the first time, you get a
 "Personal" calendar that you can use or modify as you like.
 
 .. figure:: ../images/calendar_default.png
-  :scale: 60%
 
   **Calendar app (default)**
 
@@ -47,7 +46,7 @@ To create a new calendar:
 
   A dialog opens to enable you to create a new calendar.
 
-  .. figure:: ../images/calendar_create_new.png
+.. figure:: ../images/calendar_create_new.png
 
   **New calendar**
 
@@ -67,7 +66,7 @@ calendars that you have created in the Calendar app.
 
   .. figure:: ../images/calendar_settings.png
 
-  **Calendar app settings**
+    **Calendar app settings**
 
 In the Calendar app settings, you can modify the following:
 
@@ -138,7 +137,7 @@ To create a new event:
 
    .. figure:: ../images/calendar_create_event.png
 
-   **Create a new event dialog box**
+     **Create a new event dialog box**
 
 2. Specify a title for the event.
 
@@ -149,13 +148,13 @@ To create a new event:
 
    .. figure:: ../images/calendar_create_event.png
 
-   **Create a new event dialog box**
+     **Create a new event dialog box**
 
 5. (Optional) Click the Repeating tab to define any repeat settings for the event.
 
    .. figure:: ../images/calendar_create_event_repeat.png
 
-   **Even Repeating tab**
+     **Event Repeating tab**
 
    The Repeating tab provides the option of not repeating the event(default) or
    repeating the event daily, weekly, every weekday, biweekly, monthly, or yearly.
@@ -208,6 +207,8 @@ to share it.
 
 .. figure:: ../images/calendar_create_event_share.png
 
+  **Event Share tab**
+
 The options available in the Share tab include the following:
 
 - ``Share with user or group`` field -- Enables you to specify users or groups with whom you want to
@@ -245,7 +246,7 @@ Exporting Events and Calendar
 
 .. figure:: ../images/event_export.png
 
-  Exporting an event
+  **Exporting an event**
 
 You can export either a single event or an entire calendar. If you want to export
 a single event, click on the event, select "Advanced" and press the "Export Event" button in the bottom left
@@ -254,14 +255,14 @@ shown in the figure below:
 
 .. figure:: ../images/calendar_export.png
 
-  Exporting calendar
+  **Exporting calendar**
 
 Importing Events
 ~~~~~~~~~~~~~~~~
 
 .. figure:: ../images/calendar_import.png
 
-  Importing events
+  **Importing events**
 
 You can import your calendar as an iCal file using the Files app. The Calendar app
 enables you to import the calendar into a new calendar or into an already existing calendar.
@@ -283,6 +284,8 @@ calendar event:
 
    .. figure:: ../images/calendar_edit_event.png
 
+     **Edit event dialog box**
+
 2. Click the ``Delete event`` button.
 
    The Calendar app deletes the event.
@@ -294,7 +297,7 @@ Calendar App FAQ
 
 .. figure:: ../images/calendar_newtimezone1.png
 
-  Timezone set notification
+  **Timezone set notification**
 
 **Answer:** The calendar needs your current position to detect your timezone.
 Without the correct timezone, a time offset exists between the events in the

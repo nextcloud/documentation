@@ -12,12 +12,12 @@ To access the ownCloud web interface:
 
 1. Enter the URL address of the ownCloud server into your browser navigation bar.
 
-   The ownCloud login window opens.
+  The ownCloud login window opens.
 
-   .. figure:: images/oc_connect.png
-      :scale: 75%
+  .. figure:: images/oc_connect.png
+    :scale: 75%
 
-   **ownCloud login window**
+    **ownCloud login window**
 
 2. Enter your valid username and password.
 
@@ -34,7 +34,7 @@ To access the ownCloud web interface:
 
    .. figure:: images/oc_main_web.png
 
-   **ownCloud main user interface**
+     **ownCloud main user interface**
 
 
 Navigating the Main User Interface
@@ -45,7 +45,7 @@ Once you have accessed the ownCloud Server main web interface you can add files,
 
 .. figure:: images/oc_main_web_labelled.png
 
-**Navigating the main user interface**
+  **Navigating the main user interface**
 
 The ownCloud Main User Interface contains the following fields and functions:
 
