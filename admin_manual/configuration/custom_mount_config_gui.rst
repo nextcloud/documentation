@@ -204,10 +204,12 @@ Create Project
 |1000000000000247000000A77440E4D3_png|
 
 Enter a Project name and either keep or enter a new Project ID
+
 |100000000000027B0000011D10F70F88_png|
 
 
 Select the project and choose the APIs & auth menu entry
+
 |10000000000000B600000120706C3C75_png|
 
 Enable ``Drive API`` and ``Drive SDK`` and then select the
