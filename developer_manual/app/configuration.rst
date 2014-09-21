@@ -127,12 +127,12 @@ User values are saved in the database per user and app and are good for saving u
             $this->appName = $appName;
         }
 
-        public function getSystemValue($key, $userId) {
-            return $this->config->getSystemValue($userId, $this->appName, $key);
+        public function getUserValue($key, $userId) {
+            return $this->config->getUserValue($userId, $this->appName, $key);
         }
 
-        public function setSystemValue($key, $userId, $value) {
-            $this->config->setSystemValue($userId, $this->appName, $key, $value);
+        public function setUserValue($key, $userId, $value) {
+            $this->config->setUserValue($userId, $this->appName, $key, $value);
         }
 
     }
