@@ -116,8 +116,8 @@ Daemon (Socket)
   field. This is the ``LocalSocket`` option in ``clamd.conf``. You can
   run ``netstat`` to verify::
 
-  netstat -a|grep clam
-  unix 2 [ ACC ] STREAM LISTENING 15857 /var/run/clamav/clamd.ctl
+   netstat -a|grep clam
+   unix 2 [ ACC ] STREAM LISTENING 15857 /var/run/clamav/clamd.ctl
 
   .. figure:: ../images/antivirus-daemon-socket.png
 
