@@ -30,8 +30,9 @@ For example
 
   php occ db:convert-type --all-apps mysql oc_mysql_user 127.0.0.1 new_db_name
 
+To successfully proceed with the conversion, you must type ``yes`` when prompted with the question ``Continue with the conversion?``
 
-On success the converter will automatically configure the new database in your ownCloud config ``config.php``
+On success the converter will automatically configure the new database in your ownCloud config ``config.php``.
 
 Unconvertible Tables
 --------------------
