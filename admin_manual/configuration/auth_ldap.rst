@@ -1,60 +1,53 @@
 User Authentication with LDAP
 =============================
 
-ownCloud ships an LDAP backend, which allows full use of ownCloud for user
-logging in with LDAP credentials including:
+ownCloud ships with an LDAP app so that your existing LDAP users may have 
+access to your ownCloud server without creating separate ownCloud user accounts. 
+The app supports:
 
 * LDAP group support
-* File sharing with users and groups
-* Access via WebDAV and of course ownCloud Desktop Client
-* Versioning, external Storages and all other ownCloud goodies
+* File sharing with ownCloud users and groups
+* Access via WebDAV and ownCloud Desktop Client
+* Versioning, external Storage and all other ownCloud features
+* Seamless connectivity to Active Directory, with no extra configuration 
+  required
+* Support for primary groups in Active Directory
+* Auto-detection of LDAP attributes such as base DN, email, and the LDAP server 
+  port number
 
-To connect to an LDAP server the configuration needs to be set up properly.
-Once the LDAP backend is activated (Apps Sidebar→Apps, choose **LDAP user and
-group backend**, click on **Enable**) the configuration can be found on
-Settings→Admin. Read on for a detailed description of the configuration fields.
+.. Note:: The LDAP app is not compatible with the ``WebDAV user backend`` app. 
+   You cannot use both of them at the same time. 
 
 Configuration
 -------------
 
-The LDAP backend follows a wizard-like approach, split into four tabs. A
-correctly completed first tab ("Server") is mandatory to access the other tabs.
-Also, the other tabs need to be reviewed by the admin, however the necessary
-settings are detected automatically. An indicator will show whether the
-configuration is incomplete, incorrect or OK.
+First enable the ``LDAP user and group backend`` app on the Apps page in 
+ownCloud. Then go to your Admin page to configure it.
 
-The settings are changed automatically, as soon as a input element loses the
-focus, i.e. the cursor is taken away by clicking somewhere else or pressing the
-tabulator key.
+The LDAP configuration panel has four tabs. A correctly completed first tab 
+("Server") is mandatory to access the other tabs. A green indicator lights when 
+the configuration is correct. Hover your cursor over the fields to see some 
+pop-up tooltips. 
 
-The other tabs can be navigated by clicking the tabs or by using the *Continue*
-and *Back* buttons. They are located on the lower right, next to the status
-indicator.
+Server Tab
+~~~~~~~~~~
 
-Server
-~~~~~~
-
-The server tab contains the basic information on the LDAP server. They make sure
-that ownCloud will be able to connect to LDAP and be able to read data from
-there. The admin at least needs to provide a hostname. If anonymous access is
-not possible he will need to provide an account DN and a password, too. ownCloud
-attempts to auto-detect the port and the base DN.
+Start with the Server tab. You may configure multiple servers if you have them. 
+At a minimum you must supply the LDAP server's hostname. If your server requires 
+authentication, enter your credentials on this tab. ownCloud will then attempt 
+to auto-detect the server's port and base DN. The base DN and port are 
+mandatory, so if ownCloud cannot detect them you must enter them manually.
 
 .. figure:: ../images/ldap-wizard-1-server.png
 
 Server configuration:
-  ownCloud can be configured to connect to multiple LDAP servers. Using this
-  control you can pick a configuration you want to edit or add a new one. The
-  button **Delete Configuration** deletes the current configuration.
+  Configure one or more LDAP servers. Click the **Delete Configuration** 
+  button to remove the active configuration.
 
 Host:
-  The host name of the LDAP server. It can also be a **ldaps://** URI, for
-  instance.
-
-  It is also possible to pass a port number, which speeds up port detection. It
-  is especially useful, if a custom port is used. ownCloud will move the value
-  to the port field subsequently.
-
+  The host name or IP address of the LDAP server. It can also be a **ldaps://** 
+  URI. If you enter the port number, it speeds up server detection.
+  
   Examples:
 
   * *directory.my-company.com*
@@ -63,19 +56,19 @@ Host:
 
 Port:
   The port on which to connect to the LDAP server. The field is disabled in the
-  beginning of a new configuration. If the LDAP server is running on a standard port,
-  the port will be detected automatically. After ownCloud attempted to
-  determine the port, the field will be enabled for user input. A successfully
-  found port will be inserted by ownCloud, of course.
+  beginning of a new configuration. If the LDAP server is running on a standard 
+  port, the port will be detected automatically. If you are using a 
+  non-standard port, ownCloud will attempt to detect it. If this fails you must 
+  enter the port number manually.
 
   Example:
 
   * *389*
 
 User DN:
-  The name as DN of a user who is able to do searches in the LDAP
-  directory. Leave it empty for anonymous access. It is recommended to have a
-  special system user for ownCloud.
+  The name as DN of a user who has permissions to do searches in the LDAP 
+  directory. Leave it empty for anonymous access. We recommend that you have a 
+  special LDAP system user for this.
 
   Example:
 
@@ -85,10 +78,11 @@ Password:
   The password for the user given above. Empty for anonymous access.
 
 Base DN:
-  The base DN of LDAP, from where all users and groups can be reached. Separated
-  Base DNs for users and groups can be set in the Advanced tab. Nevertheless,
-  this field is mandatory. ownCloud attempts to determine the Base DN according
-  to the provided User DN or the provided Host.
+  The base DN of LDAP, from where all users and groups can be reached. You may 
+  enter multiple base DNs, one per line. (Base DNs for users and groups can be 
+  set in the Advanced tab.) This field is mandatory. ownCloud attempts to 
+  determine the Base DN according to the provided User DN or the provided 
+  Host, and you must enter it manually if ownCloud does not detect it.
 
   Example:
 
@@ -97,48 +91,49 @@ Base DN:
 User Filter
 ~~~~~~~~~~~
 
-The settings in the user filter tab determine which LDAP users will appear and
-are allowed to log in into ownCloud. It is also possible to enter a raw LDAP
-filter.
+Use this to control which LDAP users have access to your ownCloud server. You 
+may bypass the form fields and enter a raw LDAP filter if you prefer.
 
 .. figure:: ../images/ldap-wizard-2-user.png
 
 only those object classes:
   ownCloud will determine the object classes that are typically available for
-  (ideally only) user objects in your LDAP. ownCloud will automatically select
-  the object class that returns the highest amount of users. You can select
-  multiple object classes.
+  user objects in your LDAP. ownCloud will automatically select the object 
+  class that returns the highest amount of users. You may select multiple 
+  object classes.
 
 only from those groups:
-  If your LDAP server supports the member-of-overlay in LDAP filters, you can
-  define that only users from one or more certain groups are allowed to
+  If your LDAP server supports the ``member-of-overlay`` in LDAP filters, you 
+  can define that only users from one or more certain groups are allowed to
   appear and log in into ownCloud. By default, no value will be selected. You
-  can select multiple groups.
+  may select multiple groups.
 
   If your LDAP server does not support the member-of-overlay in LDAP filters,
   the input field is disabled. Please contact your LDAP administrator.
 
 Edit raw filter instead:
-  Clicking on this text will toggle the filter mode. Instead of the assisted
-  approach, you can enter the raw LDAP filter directly in the appearing field.
-
+  Clicking on this text toggles the filter mode and you can enter the raw LDAP 
+  filter directly.
+  
   Example:
 
   * *objectClass=inetOrgPerson*
 
 x users found:
   This is an indicator that tells you approximately how many users will be
-  allowed to access ownCloud. The number will update after any change you do.
+  allowed to access ownCloud. The number updates automatically after any 
+  changes.
 
 Login Filter
 ~~~~~~~~~~~~
 
-The settings in the login filter tab determine which user detail will be
-compared to the login value entered by the user. It is possible to allow
-multiple user details. It is also possible to enter a raw LDAP filter.
+The settings in the Login Filter tab determine what the user's login will be, 
+for example an LDAP username, or an email address. You may select multiple user 
+details. (You may bypass the form fields and enter a raw LDAP filter if you 
+prefer.)
 
-The user limitation as set up in the previous tab is in effect, unless you
-manually configure the filter in raw mode.
+You may override your User Filter settings on the User Filter tab by using a raw 
+LDAP filter.
 
 .. figure:: ../images/ldap-wizard-3-login.png
 
@@ -149,20 +144,20 @@ LDAP Username:
 
 LDAP Email Address:
   If this value is checked, the login value will be compared to an email address
-  in the LDAP directory. The email address will be looked for in the
-  *mailPrimaryAddress* and *mail* attributes.
+  in the LDAP directory; specifically, the *mailPrimaryAddress* and *mail* 
+  attributes.
 
 Other Attributes:
-  This multiselect box allows you to select other attributes for the comparison.
-  The list is generated automatically based on the attributes that a user object
-  contains in your LDAP server.
+  This multi-select box allows you to select other attributes for the 
+  comparison. The list is generated automatically from the user object 
+  attributes in your LDAP server.
 
 Edit raw filter instead:
-  Clicking on this text will toggle the filter mode. Instead of the assisted
-  approach, you can enter the raw LDAP filter directly in the appearing field.
+  Clicking on this text toggles the filter mode and you can enter the raw LDAP 
+  filter directly.
 
-  The **%uid** placeholder will be replaced with the login name entered by the user
-  upon login. When you enter the filter manually.
+  The **%uid** placeholder is replaced with the login name entered by the 
+  user upon login.
 
   Examples:
 
@@ -172,31 +167,26 @@ Edit raw filter instead:
 Group Filter
 ~~~~~~~~~~~~
 
-The settings in the group filter tab determine which groups will be available
-in ownCloud. It does not have any restrictions on logins, this has been dealt
-with in the prior tabs.  It is also possible to enter a raw LDAP
-filter.
-
-By default, no groups will be available in ownCloud. You actively need to
-enable groups.
+By default, no groups will be available in ownCloud. The settings in the group 
+filter tab determine which groups will be available in ownCloud, as allowed by 
+your User Filter tab. You may also elect to enter a raw LDAP filter instead.
 
 .. figure:: ../images/ldap-wizard-4-group.png
 
 only those object classes:
   ownCloud will determine the object classes that are typically available for
-  (ideally only) group objects in your LDAP. ownCloud will only list object
+  group objects in your LDAP server. ownCloud will only list object
   classes that return at least one group object. You can select multiple
   object classes. A typical object class is "group", or "posixGroup".
 
 only from those groups:
-  This setting lets you pick certain groups that shall be available in
-  ownCloud. This field follows a whitelist approach. ownCloud will generate a
-  list of available groups found in your LDAP server. You can select multiple
-  groups.
+  ownCloud will generate a list of available groups found in your LDAP server. 
+  and then you select the group or groups that get access to your ownCloud 
+  server.
 
 Edit raw filter instead:
-  Clicking on this text will toggle the filter mode. Instead of the assisted
-  approach, you can enter the raw LDAP filter directly in the appearing field.
+  Clicking on this text toggles the filter mode and you can enter the raw LDAP 
+  filter directly.
 
   Example:
 
@@ -204,17 +194,16 @@ Edit raw filter instead:
   * *objectClass=posixGroup*
 
 y groups found:
-  This is an indicator that tells you approximately how many groups will be
-  available in  ownCloud. The number will update after any change you do.
+  This tells you approximately how many groups will be available in ownCloud. 
+  The number updates automatically after any changes.
 
 
 Advanced Settings
 -----------------
 
-In the LDAP Advanced settings section you can define options, that are less
-common to set. They are not needed for a working connection. It can also have a
-positive effect on the performance to specify distinguished bases for user and
-group searches.
+The LDAP Advanced settings section contains settings that are not needed for a 
+working connection. This contains options to disable the current configuration, 
+configure replica hosts, and various performance-enhancing options.
 
 The Advanced Settings are structured into three parts:
 
@@ -230,25 +219,23 @@ Connection Settings
    LDAP Advanced Settings, section Connection Settings
 
 Configuration Active:
-  Enables or Disables the current configuration. Disabled configuration will not
-  connect to the LDAP server.
-
-  By default, it is turned off. It will be automatically turned on, when using
-  the wizard and the configuration is OK and a test connection successful.
+  Enables or Disables the current configuration. By default, it is turned off. 
+  When ownCloud makes a successful test connection it is automatically turned 
+  on.
 
 Backup (Replica) Host:
-  A backup server can be defined here. ownCloud tries to connect to the backup
-  server automatically, when the main host (as specified in basic settings)
-  cannot be reached. It is import that the backup server is a replica of the
-  main server, because the object UUIDs must match.
+  If you have a backup LDAP server, enter the connection settings here. 
+  ownCloud will then automatically connect to the backup when the main server 
+  cannot be reached. The backup server must be a replica of the main server so 
+  that the object UUIDs match.
 
   Example:
 
   * *directory2.my-company.com*
 
 Backup (Replica) Port:
-  The port on which to connect to the backup LDAP server. If no port is given,
-  but a host, then the main port (as specified above) will be used.
+  The connection port of the backup LDAP server. If no port is given,
+  but only a host, then the main port (as specified above) will be used.
 
   Example:
 
@@ -256,31 +243,31 @@ Backup (Replica) Port:
 
 Disable Main Server:
   You can manually override the main server and make ownCloud only connect to
-  the backup server. It may be handy for planned downtimes.
+  the backup server. This is useful for planned downtimes.
 
 Case insensitive LDAP server (Windows):
-  Whether the LDAP server is running on a Windows Host. Usually, it is not
-  necessary to check it, however.
+  When the LDAP server is running on a Windows Host.
 
 Turn off SSL certificate validation:
-  Turns of check of valid SSL certificates. Use it – if needed –
-  for testing, only!
+  Turns off SSL certificate checking. Use it for testing only!
 
 Cache Time-To-Live:
-  A cache is introduced to avoid unnecessary LDAP traffic,
-  for example lookups check whether the users exists on every page request or
-  WebDAV interaction. It is also supposed to speed up the Admin → User page or
-  list of users to share with, once it is populated. Saving the configuration
-  empties the cache (changes are not necessary). The time is given in seconds.
+  A cache is introduced to avoid unnecessary LDAP traffic, for example caching 
+  usernames so they don't have to be looked up for every page, and speeding up 
+  loading of the Users page. Saving the configuration empties the cache. The 
+  time is given in seconds.
 
-  Note that almost every PHP request would require to build up a new connection
-  to the LDAP server. If you require a most up-to-dateness it is recommended not
-  to totally switch off the cache, but define a minimum life time of 15s.
+  Note that almost every PHP request requires a new connection to the LDAP 
+  server. If you require fresh PHP requests we recommend defining a minimum 
+  lifetime of 15s or so, rather than completely eliminating the cache.
 
   Examples:
 
   * ten minutes: *600*
   * one hour: *3600*
+  
+See the Caching section below for detailed information on how the cache 
+operates.
 
 Directory Settings
 ~~~~~~~~~~~~~~~~~~~
@@ -295,9 +282,8 @@ User Display Name Field:
   *  Example: *displayName*
 
 Base User Tree:
-  The base DN of LDAP, from where all users can be reached. It needs to be given
-  completely despite to the Base DN from the Basic settings. You can specify
-  multiple base trees, one in each line.
+  The base DN of LDAP, from where all users can be reached. You can specify
+  multiple base trees, one on each line.
 
   * Example:
 
@@ -305,16 +291,14 @@ Base User Tree:
     | *cn=designers,dc=my-company,dc=com*
 
 User Search Attributes:
-  These attributes are used when a search for users is done. This happens, for
-  instance, in the share dialogue. By default the user display name attribute as
-  specified above is being used. Multiple attributes can be given, one in each
-  line.
+  These attributes are used when searches for users are performed, for for 
+  example in the in the share dialogue. The user display name attribute is the 
+  default. You may list multiple attributes, one per line.
 
-  Beware that if an attribute is not available on a user object, the user will
-  neither be listed (e.g. in the share dialogue) nor be able to login. This also
-  affects the display name attribute as specified above. If you override the
-  default, the display name attribute will not be taken into account, unless you
-  specify it as well.
+  If an attribute is not available on a user object, the user will not be 
+  listed, and will be unable to login. This also affects the display name 
+  attribute. If you override the default you must specify the display name 
+  attribute here.
 
   * Example:
 
@@ -323,16 +307,14 @@ User Search Attributes:
 
 Group Display Name Field:
   The attribute that should be used as ownCloud group name. ownCloud allows a
-  limited set of characters (a-zA-Z0-9.-_@), every other character will be
-  replaced in ownCloud. Once a group name is assigned, it will not be changed,
-  i.e. changing this value will only have effect to new LDAP groups.
+  limited set of characters (a-zA-Z0-9.-_@). Once a group name is assigned it 
+  cannot be changed.
 
   * Example: *cn*
 
 Base Group Tree:
-  The base DN of LDAP, from where all groups can be reached.
-  It needs to be given completely despite to the Base DN from the Basic
-  settings. You can specify multiple base trees, one in each line.
+  The base DN of LDAP, from where all groups can be reached. You can specify 
+  multiple base trees, one in each line.
 
   * Example:
 
@@ -340,10 +322,9 @@ Base Group Tree:
     | *cn=madrid,dc=my-company,dc=com*
 
 Group Search Attributes:
-  These attributes are used when a search for groups is done. This happens, for
-  instance, in the share dialogue. By default the group display name attribute
-  as specified above is being used. Multiple attributes can be given, one in
-  each line.
+  These attributes are used when a search for groups is done, for example in 
+  the share dialogue. By default the group display name attribute as specified 
+  above is being used. Multiple attributes can be given, one in each line.
 
   If you override the default, the group display name attribute will not be
   taken into account, unless you specify it as well.
@@ -357,7 +338,7 @@ Group Member association:
   The attribute that is used to indicate group memberships, i.e. the attribute
   used by LDAP groups to refer to their users.
 
-  ownCloud detects the value automatically, you should only change it, if you
+  ownCloud detects the value automatically. You should only change it if you
   have a very valid reason and know what you are doing.
 
   * Example: *uniquemember*
@@ -371,32 +352,28 @@ Special Attributes
 
 Quota Field:
   ownCloud can read an LDAP attribute and set the user quota according to its
-  value. Specify the attribute here, otherwise keep it empty. The attribute
-  shall return human readable values, e.g. "2 GB".
+  value. Specify the attribute here, and it will return human-readable values, 
+  e.g. "2 GB".
 
   * Example: *ownCloudQuota*
 
 Quota Default:
-  Override ownCloud default quota for LDAP users who do not
-  have a quota set in the attribute given above.
+  Override ownCloud default quota for LDAP users who do not have a quota set in 
+  the Quota Field.
 
   * Example: *15 GB*
 
 Email Field:
-  ownCloud can read an LDAP attribute and set the user email
-  there from. Specify the attribute here, otherwise keep it empty.
-
-  Although the wizard offers you to check login by email, the correct email
-  attribute is not detected and you need to specify it manually.
+  Set the user's email from their LDAP attribute. Leave it empty for default 
+  behavior.
 
   * Example: *mail*
 
 User Home Folder Naming Rule:
-  By default, the ownCloud creates the user
-  directory, where all files and meta data are kept, according to the ownCloud
-  user name. You may want to override this setting and name it after an
-  attribute value. The attribute given can also return an absolute path, e.g.
-  ``/mnt/storage43/alice``. Leave it empty for default behavior.
+  By default, the ownCloud server creates the user directory in your ownCloud 
+  data directory. You may want to override this setting and name it after an 
+  attribute value. The attribute given can also return an absolute path, e.g. 
+``/mnt/storage43/alice``. Leave it empty for default behavior.
 
   * Example: *cn*
 
@@ -406,16 +383,14 @@ Expert Settings
 .. figure:: ../images/ldap-expert.png
 
 In the Expert Settings fundamental behavior can be adjusted to your needs. The
-configuration should be done before starting production use or when testing the
-installation.
+configuration should be well-tested before starting production use.
 
 Internal Username:
   The internal username is the identifier in ownCloud for LDAP users. By default
-  it will be created from the UUID attribute. By using the UUID attribute it is
-  made sure that the username is unique and characters do not need to be
-  converted. The internal username has the restriction that only these
-  characters are allowed: [\a-\zA-\Z0-\9_.@-]. Other characters are replaced with
-  their ASCII correspondence or are simply omitted.
+  it will be created from the UUID attribute. The UUID attribute ensures that 
+  the username is unique, and that characters do not need to be converted. Only 
+  these characters are allowed: [\a-\zA-\Z0-\9_.@-]. Other characters are 
+  replaced with their ASCII equivalents, or are simply omitted.
 
   The LDAP backend ensures that there are no duplicate internal usernames in
   ownCloud, i.e. that it is checking all other activated user backends
@@ -423,33 +398,33 @@ Internal Username:
   and 9999) will be attached to the retrieved value. For example, if "alice"
   exists, the next username may be "alice_1337".
 
-  The internal username is also the default name for the user home folder in
-  ownCloud. It is also a part of remote URLs, for instance for all \*DAV services.
-  With this setting the default behaviour can be overridden.
+  The internal username is the default name for the user home folder in 
+  ownCloud. It is also a part of remote URLs, for instance for all \*DAV 
+  services.
 
-  Leave it empty for default behaviour. Changes will have effect only on newly
-  mapped (added) LDAP users.
+  You can override all of this with the Internal Username setting. Leave it 
+  empty for default behaviour. Changes will affect only newly mapped LDAP users.
 
   * Example: *uid*
 
 Override UUID detection
   By default, ownCloud auto-detects the UUID attribute. The UUID attribute is
-  used to doubtlessly identify LDAP users and groups. Also, the internal
-  username will be created based on the UUID, if not specified otherwise above.
+  used to uniquely identify LDAP users and groups. The internal username will 
+  be created based on the UUID, if not specified otherwise.
 
   You can override the setting and pass an attribute of your choice. You must
   make sure that the attribute of your choice can be fetched for both users and
   groups and it is unique. Leave it empty for default behaviour. Changes will
-  have effect only on newly mapped (added) LDAP users and groups. It also will
-  have effect when a user's or group's DN changes and an old UUID was cached: It
-  will result in a new user. Because of this, the setting should be applied
-  before putting ownCloud in production use and cleaning the bindings
-  (see below).
+  have effect only on newly mapped LDAP users and groups. It also will
+  have effect when a user's or group's DN changes and an old UUID was cached, 
+  which will result in a new user. Because of this, the setting should be 
+  applied before putting ownCloud in production use and clearing the bindings
+  (see the ``User and Group Mapping`` section below).
 
   * Example: *cn*
 
 Username-LDAP User Mapping
-  ownCloud uses the usernames as key to store and assign data. In order to
+  ownCloud uses usernames as keys to store and assign data. In order to
   precisely identify and recognize users, each LDAP user will have a internal
   username in ownCloud. This requires a mapping from ownCloud username to LDAP
   user. The created username is mapped to the UUID of the LDAP user.
@@ -460,9 +435,8 @@ Username-LDAP User Mapping
   The same is valid for groups.
 
   The internal ownCloud name is used all over in ownCloud. Clearing the Mappings
-  will have leftovers everywhere. Do never clear the mappings
-  in a production environment. Only clear mappings in a testing or experimental
-  stage.
+  will have leftovers everywhere. Never clear the mappings in a production 
+  environment, but only in a testing or experimental server.
 
   **Clearing the Mappings is not configuration sensitive, it affects all LDAP
   configurations!**
@@ -470,10 +444,9 @@ Username-LDAP User Mapping
 Testing the configuration
 -------------------------
 
-In this version we introduced the **Test Configuration** button on the bottom
-of the LDAP settings section. It will always check the values as currently
-given in the input fields. You do not need to save before testing. By clicking
-on the button, ownCloud will try to bind to the ownCloud server with the
+The **Test Configuration** button checks the values as currently given in the 
+input fields. You do not need to save before testing. By clicking on the 
+button, ownCloud will try to bind to the ownCloud server using the
 settings currently given in the input fields. The response will look like this:
 
 .. figure:: ../images/ldap-settings-invalid-oc45.png
@@ -482,44 +455,40 @@ settings currently given in the input fields. The response will look like this:
 
 In case the configuration fails, you can see details in ownCloud's log, which
 is in the data directory and called **owncloud.log** or on the bottom the
-**Settings →  Admin page**. Unfortunately it requires a reload – sorry for the
-inconvenience.
+**Settings -- Admin page**. You must refresh the Admin page to see the new log 
+entries.
 
 .. figure:: ../images/ldap-settings-valid-oc45.png
 
    Success
 
 In this case, Save the settings. You can check if the users and groups are
-fetched correctly on the Settings → Users page.
+fetched correctly on the Users page.
 
 ownCloud Avatar integration
 ---------------------------
 
-ownCloud 6 incorporates a user profile picture feature, called Avatar. If a user
-has a photo stored in the *jpegPhoto* or, since 6.0.2, *thumbnailPhoto*
-attribute, it will be used as Avatar. The user then is not able to change his
-avatar in the personal settings. It must be done within LDAP. *jpegPhoto* is
-preferred over *thumbnailPhoto*.
+ownCloud has supported user profile pictures (avatars) since ownCloud 6. If a 
+user has a photo stored in the *jpegPhoto* or, since 6.0.2, *thumbnailPhoto* 
+attribute on your LDAP server, it will be used as their avatar. In this case the 
+user cannot their avatar (on their Personal page) as it must be changed in LDAP. 
+*jpegPhoto* is preferred over *thumbnailPhoto*.
 
 .. figure:: ../images/ldap-fetched-avatar.png
 
    Profile picture fetched from LDAP, Personal Settings
 
-If the *jpegPhoto* or *thumbnailPhoto* attribute is not set or empty, the
-default ownCloud behaviour is active, i.e. the user will be able to set and
-change his profile picture in the personal settings. If the user sets a profile
-picture within ownCloud it will _not_ be stored in LDAP.
+If the *jpegPhoto* or *thumbnailPhoto* attribute is not set or empty, then 
+users can upload and manage their avatars on their ownCloud Personal pages. 
+Avatars managed in ownCloud are not stored in LDAP.
 
-The *jpegPhoto* or *thumbnailPhoto* attribute will be fetched once a day to make
-sure the current photo from LDAP is used in ownCloud. If a picture is added
-later, a possibly set profile picture will be overridden with the LDAP one. If a
-photo stored in the *jpegPhoto* and/or *thumbnailPhoto* attribute is deleted
-later, the last profile picture in ownCloud will still be used.
+The *jpegPhoto* or *thumbnailPhoto* attribute is fetched once a day to make
+sure the current photo from LDAP is used in ownCloud. LDAP avatars override 
+ownCloud avatars, and when an LDAP avatar is deleted it the most recent 
+ownCloud avatar replaces it.
 
-The photo taken from LDAP will be adjusted to the requirements of the ownCloud
-avatar automatically. I.e. it will be transformed into a square. If the photo
-needs to be cut, it will be done equally from both affected sides. The original
-photo stored in LDAP will stay the same, of course.
+Photos served from LDAP are automatically cropped and resized in ownCloud. This 
+affects only the presentation, and the original image is not changed.
 
 Troubleshooting, Tips and Tricks
 --------------------------------
@@ -530,8 +499,8 @@ SSL Certificate Verification (LDAPS, TLS)
 A common mistake with SSL certificates is that they may not be known to PHP.
 If you have trouble with certificate validation make sure that
 
-* you have the certificate of the server installed on the ownCloud server
-* the certificate is announced in the system's LDAP configuration file (usually
+* You have the certificate of the server installed on the ownCloud server
+* The certificate is announced in the system's LDAP configuration file (usually
   */etc/ldap/ldap.conf* on Linux, *C:\\openldap\\sysconf\\ldap.conf* or
   *C:\\ldap.conf* on Windows) using a **TLS_CACERT /path/to/cert** line.
 * Using LDAPS, also make sure that the port is correctly configured (by default
@@ -542,7 +511,7 @@ Microsoft Active Directory
 
 Compared to earlier ownCloud versions, no further tweaks need to be done to
 make ownCloud work with Active Directory. ownCloud will automatically find the
-correct configuration in the wizard-like set up process.
+correct configuration in the set-up process.
 
 Duplicating Server Configurations
 ---------------------------------
@@ -558,20 +527,12 @@ In case you have a working configuration and want to create a similar one or
    in the *Connection Settings*, so the new configuration is not used on Save
 #. Click on **Save**
 
-Now you can modify the configuration and enable it if you wish.
+Now you can modify and enable the configuration.
 
 ownCloud LDAP Internals
 -----------------------
 
-Some parts of how the LDAP backend works are described here. May it be helpful.
-
-Groups
-------
-
-At the moment, only secondary groups are read. That means that only the groups
-are retrieved, which are returned by the attribute auto-detected (or manually
-chosen) in Group-Member association. Primary groups are not being taken into
-account.
+Some parts of how the LDAP backend works are described here.
 
 User and Group Mapping
 ----------------------
@@ -579,38 +540,64 @@ User and Group Mapping
 In ownCloud the user or group name is used to have all relevant information in
 the database assigned. To work reliably a permanent internal user name and
 group name is created and mapped to the LDAP DN and UUID. If the DN changes in
-LDAP it will be detected, there will be no conflicts.
+LDAP it will be detected, and there will be no conflicts.
 
-Those mappings are done in the database table ldap_user_mapping and
-ldap_group_mapping. The user name is also used for the user's folder (except
+Those mappings are done in the database table ``ldap_user_mapping`` and
+``ldap_group_mapping``. The user name is also used for the user's folder (except
 something else is specified in *User Home Folder Naming Rule*), which
 contains files and meta data.
 
 As of ownCloud 5 internal user name and a visible display name are separated.
-This is not the case for group names, yet, i.e. group cannot be altered.
+This is not the case for group names, yet, i.e. a group name cannot be altered.
 
 That means that your LDAP configuration should be good and ready before putting
 it into production. The mapping tables are filled early, but as long as you are
-testing, you can empty the tables any time. Do not do this in production. If you
-want to rename a group, be very careful. Do not rename the user's internal name.
+testing, you can empty the tables any time. Do not do this in production.
 
 Caching
 -------
 
-For performance reasons a cache has been introduced to ownCloud. He we store
-all users and groups, group memberships or internal userExists-requests. Since
-ownCloud is written in PHP and each and every page request (also done by Ajax)
-loads ownCloud and would execute one or more LDAP queries again, you do want to
-have some of those queries cached and save those requests and traffic. It is
-highly recommended to have the cache filled for a small amount of time, which
-comes also very handy when using the sync client, as it is yet another request
-for PHP.
+The ownCloud  **Cache** helps to speed up user interactions and sharing. It is 
+populated on demand, and remains populated until the **Cache Time-To-Live** for 
+each unique request expires. User logins are not cached, so if you need to
+improve login times set up a slave LDAP server to share the load.
+
+Another significant performance enhancement is to install the Alternative PHP 
+Cache (APC). APC is an OPcache, which is several times faster than a file 
+cache. APC improves PHP performance by storing precompiled script bytecode in 
+shared memory, which reduces the overhead of loading and parsing scripts on 
+each request. (See http://php.net/manual/en/book.apc.php for more information.)
+
+You can adjust the **Cache Time-To-Live** value to balance performance and 
+freshness of LDAP data. All LDAP requests will be cached for 10 minutes by 
+default, and you can alter this with the **Cache Time-To-Live** setting. The 
+cache answers each request that is identical to a previous request, within the 
+time-to-live of the original request, rather than hitting the LDAP server.
+
+The **Cache Time-To-Live** is related to each single request. After a cache 
+entry expires there is no automatic trigger for re-populating the information, 
+as the cache is populated only by new requests, for example by opening the 
+User administration page, or searching in a sharing dialog.
+
+There is one trigger which is automatically triggered by a certain background 
+job which keeps the ``user-group-mappings`` up-to-date, and always in cache.
+
+Under normal circumstances, all users are never loaded at the same time. 
+Typically the loading of users happens while page results are generated, in 
+steps of 30 until the limit is reached or no results are left. For this to 
+work on an oC-Server and LDAP-Server, **Paged Results** must be supported, 
+which presumes PHP >= 5.4.
+
+ownCloud remembers which user belongs to which LDAP-configuration. That means 
+each request will always be directed to the right server unless a user is 
+defunct, for example due to a server migration or unreachable server. In this 
+case the other servers will also receive the request.
 
 Handling with Backup Server
 ---------------------------
 
-When ownCloud is not able to contact the main server, he will be treated as
-offline and no connection attempts will be done for the time specified in
-**Cache Time-To-Live**. If a backup server is configured, it will be connected
-instead. If you plan a maintained downtime, check **Disable Main Server** for
-the time being to avoid unnecessary connection attempts every now and then.
+When ownCloud is not able to contact the main LDAP server, ownCloud assumes it 
+is offline and will not try to connect again for the time specified in **Cache 
+Time-To-Live**. If you have a backup server configured ownCloud will connect to 
+instead. When you have a scheduled downtime, check **Disable Main Server**  to 
+avoid unnecessary connection attempts.
