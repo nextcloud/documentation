@@ -375,7 +375,7 @@ User Home Folder Naming Rule:
   By default, the ownCloud server creates the user directory in your ownCloud 
   data directory. You may want to override this setting and name it after an 
   attribute value. The attribute given can also return an absolute path, e.g. 
-``/mnt/storage43/alice``. Leave it empty for default behavior.
+  ``/mnt/storage43/alice``. Leave it empty for default behavior.
 
   * Example: *cn*
 
@@ -478,7 +478,7 @@ preferred over *thumbnailPhoto*.
 
 .. figure:: ../images/ldap-fetched-avatar.png
 
-   Profile picture fetched from LDAP, Personal Settings
+   Profile picture fetched from LDAP
 
 If the *jpegPhoto* or *thumbnailPhoto* attribute is not set or empty, then 
 users can upload and manage their avatars on their ownCloud Personal pages. 
