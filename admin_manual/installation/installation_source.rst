@@ -13,7 +13,7 @@ Prerequisites
 ~~~~~~~~~~~~~
 
 .. note:: This tutorial assumes you have terminal access to the machine you want
-          to install owncloud on. Although this is not an absolute requirement,
+          to install ownCloud on. Although this is not an absolute requirement,
           installation without it is highly likely to require contacting your
           hoster (e.g. for installing required modules).
 
