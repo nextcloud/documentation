@@ -167,9 +167,9 @@ Edit raw filter instead:
 Group Filter
 ~~~~~~~~~~~~
 
-By default, no groups will be available in ownCloud. The settings in the group 
-filter tab determine which groups will be available in ownCloud, as allowed by 
-your User Filter tab. You may also elect to enter a raw LDAP filter instead.
+By default, no LDAP groups will be available in ownCloud. The settings in the 
+group filter tab determine which groups will be available in ownCloud. You may 
+also elect to enter a raw LDAP filter instead.
 
 .. figure:: ../images/ldap-wizard-4-group.png
 
@@ -195,14 +195,14 @@ Edit raw filter instead:
 
 y groups found:
   This tells you approximately how many groups will be available in ownCloud. 
-  The number updates automatically after any changes.
+  The number updates automatically after any change.
 
 
 Advanced Settings
 -----------------
 
-The LDAP Advanced settings section contains settings that are not needed for a 
-working connection. This contains options to disable the current configuration, 
+The LDAP Advanced Setting section contains options that are not needed for a 
+working connection. This provides controls to disable the current configuration, 
 configure replica hosts, and various performance-enhancing options.
 
 The Advanced Settings are structured into three parts:
@@ -282,8 +282,9 @@ User Display Name Field:
   *  Example: *displayName*
 
 Base User Tree:
-  The base DN of LDAP, from where all users can be reached. You can specify
-  multiple base trees, one on each line.
+  The base DN of LDAP, from where all users can be reached. This must be a 
+  complete DN, regardless of what you have entered for your Base DN in the 
+  Basic setting. You can specify multiple base trees, one on each line.
 
   * Example:
 
@@ -291,8 +292,8 @@ Base User Tree:
     | *cn=designers,dc=my-company,dc=com*
 
 User Search Attributes:
-  These attributes are used when searches for users are performed, for for 
-  example in the in the share dialogue. The user display name attribute is the 
+  These attributes are used when searches for users are performed, for example 
+  in the in the share dialogue. The user display name attribute is the 
   default. You may list multiple attributes, one per line.
 
   If an attribute is not available on a user object, the user will not be 
@@ -313,8 +314,9 @@ Group Display Name Field:
   * Example: *cn*
 
 Base Group Tree:
-  The base DN of LDAP, from where all groups can be reached. You can specify 
-  multiple base trees, one in each line.
+  The base DN of LDAP, from where all groups can be reached. This must be a 
+  complete DN, regardless of what you have entered for your Base DN in the 
+  Basic setting. You can specify multiple base trees, one in each line.
 
   * Example:
 
@@ -468,11 +470,11 @@ fetched correctly on the Users page.
 ownCloud Avatar integration
 ---------------------------
 
-ownCloud has supported user profile pictures (avatars) since ownCloud 6. If a 
-user has a photo stored in the *jpegPhoto* or, since 6.0.2, *thumbnailPhoto* 
-attribute on your LDAP server, it will be used as their avatar. In this case the 
-user cannot their avatar (on their Personal page) as it must be changed in LDAP. 
-*jpegPhoto* is preferred over *thumbnailPhoto*.
+ownCloud support user profile pictures, which are also called avatars. If a user 
+has a photo stored in the *jpegPhoto* or *thumbnailPhoto* attribute on your LDAP 
+server, it will be used as their avatar. In this case the user cannot their 
+avatar (on their Personal page) as it must be changed in LDAP. *jpegPhoto* is 
+preferred over *thumbnailPhoto*.
 
 .. figure:: ../images/ldap-fetched-avatar.png
 
