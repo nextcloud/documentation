@@ -1,5 +1,5 @@
 Manual Installation
--------------------
+===================
 
 If you do not want to use packages, here is how you setup ownCloud from
 scratch using a classic :abbr:`LAMP (Linux, Apache, MySQL, PHP)` setup:
