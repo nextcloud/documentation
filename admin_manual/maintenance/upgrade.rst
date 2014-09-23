@@ -54,7 +54,7 @@ specific commands to use in different Linux operating systems:
   +-----------------------+-----------------------------------------+
   | Operating System      | Command (as root)                       |
   +=======================+=========================================+
-  | CentOS/ RED Hat       |  ``apachectl stop``                     |         
+  | CentOS/ Red Hat       |  ``apachectl stop``                     |         
   +-----------------------+-----------------------------------------+
   | Debian                |                                         |
   | or                    | ``/etc/init.d/apache2 stop``            |
@@ -135,7 +135,7 @@ to use in different Linux operating systems:
   +-----------------------+-----------------------------------------+
   | Operating System      | Command (as root)                       |
   +=======================+=========================================+
-  | CentOS/ RED Hat       |  ``apachectl start``                    |         
+  | CentOS/ Red Hat       |  ``apachectl start``                    |         
   +-----------------------+-----------------------------------------+
   | Debian                |                                         |
   | or                    | ``/etc/init.d/apache2 start``           |
