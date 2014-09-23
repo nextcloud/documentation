@@ -26,5 +26,5 @@ like this
 The Apache :file:`.htaccess` that comes with ownCloud is configured to redirect 
 requests to non-existent pages. To emulate that behaviour, you need a custom 
 error handler for yaws. See this `github gist for further instructions 
-<https://gist.github.com/2200407`_ on how to create and compile that error 
+<https://gist.github.com/2200407>`_ on how to create and compile that error 
 handler.
