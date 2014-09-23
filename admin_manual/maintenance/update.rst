@@ -33,10 +33,10 @@ Updater app or upgrading manually. You should still maintain regular backups
    For large installations there is a higher risk of PHP timeouts. There are 
    two places where PHP timeouts are likely to happen: 
    1. When the updater app makes a backup, and you have a large number of files 
-    to backup. 
+   to backup. 
    2. After the Updater app is done and you click the "Start upgrade" button 
-    in the Web UI; the migration/repair process may take too long on large 
-    numbers of files.
+   in the Web UI; the migration/repair process may take too long on large 
+   numbers of files.
    
 The Updater app performs these operations:
 
