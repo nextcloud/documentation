@@ -53,8 +53,8 @@ specific commands to use in different Linux operating systems:
 
   +-----------------------+-----------------------------------------+
   | Operating System      | Command (as root)                       |
-  +==================+==============================================+
-  | CentOS/RHEL           |  ``apachectl stop``                     |            
+  +=======================+=========================================+
+  | CentOS/ RED Hat       |  ``apachectl stop``                     |         
   +-----------------------+-----------------------------------------+
   | Debian                |                                         |
   | or                    | ``/etc/init.d/apache2 stop``            |
