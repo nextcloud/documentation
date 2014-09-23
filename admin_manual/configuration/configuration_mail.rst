@@ -10,7 +10,7 @@ existing mail server. You must have a functioning mail server for ownCloud to be
 able to send emails. You may have a mail server on the same machine as ownCloud, 
 or it may be a remote server.
 
-ownCloud 7 introduces a new feature, the graphical SMTP Configuration Wizard.
+ownCloud 7 introduces a new feature, the graphical Email Configuration Wizard.
 
 .. figure:: ../images/smtp-config-wizard.png
    
@@ -18,13 +18,13 @@ With the new wizard, connecting ownCloud to your mail server is fast and easy.
 The wizard fills in the values in ``config/config.php``, so you may use either 
 or both as you prefer.
 
-The ownCloud SMTP wizard supports three types of mail server connections: SMTP, 
-PHP, and Sendmail. Use the SMTP configurator for a remote server, and PHP or 
-Sendmail when your mail server is on the same machine as ownCloud. 
+The ownCloud Email wizard supports three types of mail server connections: 
+SMTP, PHP, and Sendmail. Use the SMTP configurator for a remote server, and PHP 
+or Sendmail when your mail server is on the same machine as ownCloud. 
 
 .. note:: The Sendmail option refers to the Sendmail SMTP server, and any 
-   drop-in Sendmail replacement such as Postfix, Exim, or Courier. All of these 
-   include a ``sendmail`` binary, and are freely-interchangeable.
+   drop-in Sendmail replacement such as Postfix, Exim, or Courier. All of 
+   these include a ``sendmail`` binary, and are freely-interchangeable.
 
 Configuring an SMTP Server
 --------------------------
