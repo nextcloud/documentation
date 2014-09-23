@@ -8,7 +8,7 @@ This document provides a complete walk-through for installing ownCloud on Ubuntu
 14.04 LTS Server with Apache and MySQL.
 
 Prerequisites
-~~~~~~~~~~~~~
+-------------
 
 .. note:: This tutorial assumes you have terminal access to the machine you want
           to install ownCloud on. Although this is not an absolute requirement,
@@ -89,7 +89,7 @@ For preview generation (*optional*):
   WebDAV server of its own.
 
 Example installation on Ubuntu 14.04 LTS Server
-*************************************************
+-----------------------------------------------
 On a machine running a pristine Ubuntu 14.04 LTS server, you would install the
 required and recommended modules for a typical ownCloud installation, using
 Apache and MySQL by issuing the following commands in a terminal::
@@ -150,7 +150,7 @@ Now download the archive of the latest ownCloud version:
     cp -r owncloud /var/www/`
 
 Set the Directory Permissions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------
 
 Your HTTP user must own at least the ``config/``, ``data/`` 
 and ``apps/`` directories in your ownCloud directory so that you can 
@@ -199,14 +199,14 @@ should see a single line in your browser page with the HTTP user name.
 Apache is the recommended Web server.
 
 Apache Web Server Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------
 
 .. note:: You can use ownCloud over plain http, but we strongly encourage you to
           use SSL/TLS to encrypt all of your server traffic, and to protect 
           user's logins and data in transit.
 
 Enabling SSL
-............
+------------
 
 An Apache installed under Ubuntu comes already set-up with a simple
 self-signed certificate. All you have to do is to enable the ssl module and
@@ -226,7 +226,7 @@ enable SSL.
           if you're using one, for good deals on commercial certificates.
 
 Configuring ownCloud
-....................
+--------------------
 
 Since there was a change in the way versions 2.2 and 2.4 are configured,
 you'll have to find out which Apache version you are using.
@@ -375,35 +375,35 @@ Example config for Apache 2.4:
      
 
 Install Wizard
-~~~~~~~~~~~~~~
+--------------
 
 Finish setting up your ownCloud server by following 
 the :doc:`installation_wizard`.  
 
 Other Web Servers
-~~~~~~~~~~~~~~~~~
+-----------------
      
 Microsoft Internet Information Server (IIS)
-*******************************************
+-------------------------------------------
 
 See :doc:`installation_windows` for further instructions.
 
 Nginx Configuration
-*******************
+-------------------
 
 See :doc:`configuration_nginx`
 
 Lighttpd Configuration
-**********************
+----------------------
 
 See :doc:`configuration_lighttpd`
 
 Yaws Configuration
-******************
+------------------
 
 See :doc:`configuration_yaws`
 
 Hiawatha Configuration
-**********************
+----------------------
 
 See :doc:`configuration_hiawatha.rst`
