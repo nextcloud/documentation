@@ -61,7 +61,7 @@ specific commands to use in different Linux operating systems:
   | Ubuntu                |                                         |
   +-----------------------+-----------------------------------------+
   | SUSE Enterprise       |                                         |
-  |  Linux 11             | ``/usr/sbin/rcapache2 stop``            |       
+  | Linux 11              | ``/usr/sbin/rcapache2 stop``            |       
   |                       |                                         |
   | openSUSE 12.3 and up  | ``systemctl stop apache2``              |
   +-----------------------+-----------------------------------------+
@@ -134,15 +134,15 @@ to use in different Linux operating systems:
 
   +-----------------------+-----------------------------------------+
   | Operating System      | Command (as root)                       |
-  +==================+==============================================+
-  | CentOS/RHEL           | ``apachectl start``                     |        
+  +=======================+=========================================+
+  | CentOS/ RED Hat       |  ``apachectl start``                    |         
   +-----------------------+-----------------------------------------+
   | Debian                |                                         |
   | or                    | ``/etc/init.d/apache2 start``           |
   | Ubuntu                |                                         |
   +-----------------------+-----------------------------------------+
   | SUSE Enterprise       |                                         |
-  |  Linux 11             | ``/usr/sbin/rcapache2 start``           |       
+  | Linux 11              | ``/usr/sbin/rcapache2 start``           |       
   |                       |                                         |
   | openSUSE 12.3 and up  | ``systemctl start apache2``             |
   +-----------------------+-----------------------------------------+
