@@ -26,16 +26,17 @@ Updater app or upgrading manually. You should still maintain regular backups
    installations that have less data and fewer users, and for admins who do not 
    have shell access, for example on a hosted server. Larger installations 
    should update ownCloud with their Linux package managers or manually 
-   upgrade, and then complete the update with the ``occ`` command, which is 
-   in the ``owncloud`` directory. Run ``occ --help`` to see command options.
+   upgrade, and then complete the update with the ``occ --upgrade`` command, 
+   which is in the ``owncloud`` directory. Run ``occ --help`` to see 
+   complete command options.    
    
    For large installations there is a higher risk of PHP timeouts. There are 
    two places where PHP timeouts are likely to happen: 
    1. When the updater app makes a backup, and you have a large number of files 
-   to backup. 
+    to backup. 
    2. After the Updater app is done and you click the "Start upgrade" button 
-   in the Web UI; the migration/repair process may take too long on large 
-   numbers of files.
+    in the Web UI; the migration/repair process may take too long on large 
+    numbers of files.
    
 The Updater app performs these operations:
 
