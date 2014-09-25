@@ -23,7 +23,8 @@ Manual Upgrade Procedure
 
 Start by putting your server in maintenance mode. Do this by entering your 
 ``config.php`` file and changing ``'maintenance' => false,`` to ``'maintenance' 
-=> true,``. This kicks out any logged-in users, and prevents new logins.
+=> true,``. This prevents new logins, and logged-in users can't make any 
+further requests.
 
 1. Ensure that you are running the latest point release of your current major 
    ownCloud version.
@@ -52,16 +53,17 @@ specific commands to use in different Linux operating systems:
 
   +-----------------------+-----------------------------------------+
   | Operating System      | Command (as root)                       |
-  +==================+==============================================+
-  | CentOS (Redhat)       | ``apachectl stop``                      |
+  +=======================+=========================================+
+  | CentOS/ Red Hat       |  ``apachectl stop``                     |         
   +-----------------------+-----------------------------------------+
   | Debian                |                                         |
   | or                    | ``/etc/init.d/apache2 stop``            |
   | Ubuntu                |                                         |
   +-----------------------+-----------------------------------------+
-  | openSUSE              |                                         |
-  | or                    | ``/usr/sbin/rcapache2 stop``            |
-  | SUSE (SLE)            |                                         |
+  | SUSE Enterprise       |                                         |
+  | Linux 11              | ``/usr/sbin/rcapache2 stop``            |       
+  |                       |                                         |
+  | openSUSE 12.3 and up  | ``systemctl stop apache2``              |
   +-----------------------+-----------------------------------------+
 
 To stop the Windows IIS web server, you can use either the user interface (UI) 
@@ -73,7 +75,7 @@ or command line method as follows:
  |                      |                                                   |
  +======================+===================================================+
  | User Interface (UI)  | 1. Open IIS Manager and navigate to the           |
- |                      |    Web server node in the tree.                   |  
+ |                      |    web server node in the tree.                   |  
  |                      |                                                   |
  |                      | 2. In the **Actions** pane, click **Stop**.       |  
  +----------------------+---------------------------------------------------+
@@ -130,20 +132,20 @@ from one Linux operating system to another.
 To start an Apache server, refer to the following table for specific commands 
 to use in different Linux operating systems:
 
-  +------------------+----------------------------------------------+
-  | Operating System | Command (as root)                            |
-  +==================+==============================================+
-  | CentOS (Redhat)  | ``apachectl start``                          |
-  +------------------+----------------------------------------------+
-  | Debian           |                                              |
-  | or               | ``/etc/init.d/apache2 start``                |
-  | Ubuntu           |                                              |
-  +------------------+----------------------------------------------+
-  | openSUSE         |                                              |
-  | or               | ``/usr/sbin/rcapache2 start``                |
-  | SUSE (SLE)       |                                              |
-  +------------------+----------------------------------------------+
-
+  +-----------------------+-----------------------------------------+
+  | Operating System      | Command (as root)                       |
+  +=======================+=========================================+
+  | CentOS/ Red Hat       |  ``apachectl start``                    |         
+  +-----------------------+-----------------------------------------+
+  | Debian                |                                         |
+  | or                    | ``/etc/init.d/apache2 start``           |
+  | Ubuntu                |                                         |
+  +-----------------------+-----------------------------------------+
+  | SUSE Enterprise       |                                         |
+  | Linux 11              | ``/usr/sbin/rcapache2 start``           |       
+  |                       |                                         |
+  | openSUSE 12.3 and up  | ``systemctl start apache2``             |
+  +-----------------------+-----------------------------------------+
 To start the Windows IIS web server, you can use either the user interface 
 (UI) or command line method as follows:
   
@@ -152,7 +154,7 @@ To start the Windows IIS web server, you can use either the user interface
  |                      |                                                   |
  +======================+===================================================+
  | User Interface (UI)  | 1. Open IIS Manager and navigate to the           |
- |                      |    Web server node in the tree.                   |
+ |                      |    web server node in the tree.                   |
  |                      |                                                   |
  |                      | 2. In the **Actions** pane, click **Stop**.       |   
  +----------------------+---------------------------------------------------+
@@ -166,12 +168,26 @@ To start the Windows IIS web server, you can use either the user interface
  |                      |    then press **ENTER**.                          |
  +----------------------+---------------------------------------------------+
 
-Now you should be able to open a Web browser to your ownCloud server, log in 
-as usual, and see your nice upgraded server. Look at the bottom of the Admin 
-page to verify the version number. Check your other settings to make sure 
-they're correct.
+12. Now you should be able to open a web browser to your ownCloud server and 
+    log in as usual. You have a couple more steps to go: You should see a 
+    **Start Update** screen. Review the prequisites, and if you have followed 
+    all the steps click the **Start Update** button. 
+    
+    
+    If you are an enterprise customer, or are running a large installation with 
+    a lot of files and users, you should launch the update from the command 
+    line. The ``occ`` command is in your ``owncloud/`` directory, so on a 
+    typical Linux installation you could run this command:
+    
+     ``php /var/www/owncloud/occ upgrade``
+    
+13. The upgrade operation takes a few minutes, depending on the size of your 
+    installation. When it is finished you will see a success message, or an 
+    error message that will tell where it went wrong.   
 
-Go to the Apps page and review the core apps to make sure the right ones are 
-enabled.
+Assuming your upgrade succeeded, take a look at the bottom of the Admin page to 
+verify the version number. Check your other settings to make sure they're 
+correct. Go to the Apps page and review the core apps to make sure the right 
+ones are enabled.
 
 Now you can review your third-party apps, and upgrade and enable them.
