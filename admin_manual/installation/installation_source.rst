@@ -383,27 +383,22 @@ the :doc:`installation_wizard`.
 Other Web Servers
 -----------------
      
-Microsoft Internet Information Server (IIS)
--------------------------------------------
+**Microsoft Internet Information Server (IIS)**
 
 See :doc:`installation_windows` for further instructions.
 
-Nginx Configuration
--------------------
+**Nginx Configuration**
 
 See :doc:`configuration_nginx`
 
-Lighttpd Configuration
-----------------------
+**Lighttpd Configuration**
 
 See :doc:`configuration_lighttpd`
 
-Yaws Configuration
-------------------
+**Yaws Configuration**
 
 See :doc:`configuration_yaws`
 
-Hiawatha Configuration
-----------------------
+**Hiawatha Configuration**
 
 See :doc:`configuration_hiawatha`
