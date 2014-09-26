@@ -13,3 +13,7 @@ Installation
    installation_source
    installation_others
    installation_wizard
+   configuration_nginx
+   configuration_lighttpd
+   configuration_yaws
+   configuration_hiawatha.rst
