@@ -406,4 +406,4 @@ See :doc:`configuration_yaws`
 Hiawatha Configuration
 ----------------------
 
-See :doc:`configuration_hiawatha.rst`
+See :doc:`configuration_hiawatha`
