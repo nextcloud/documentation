@@ -27,7 +27,8 @@ Link`` checkbox to create the share, and to expose all of your sharing options.
 
 2. Set any options that you want to apply to your new share: send an email 
 notification, add password protection, allow users to upload files to the share, 
-or set an expiration date.
+or set an expiration date. If you check **Allow Public Upload** then other 
+users can overwrite, rename and delete files in the share.
 
    .. figure:: ../images/s2s-create_public_share.png
    
@@ -57,5 +58,6 @@ with a share icon, and the name of the share's owner and originating server.
 
    .. figure:: ../images/s2s-remote-share-labeled.png
 
-Remove your linked share anytime by clicking the trash can icon.   
+Remove your linked share anytime by clicking the trash can icon. This only 
+disables sharing and does not delete your files.  
 
