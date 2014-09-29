@@ -19,9 +19,10 @@ shares in their ownCloud 7 accounts, check ``Allow other instances to mount
 public links shared from this server.`` Leaving the checkbox blank disables 
 server-to-server sharing.
 
-3. You can enable the users on your local ownCloud server to create their own 
-public shares by checking ``Allow users to mount public link shares.`` Leaving 
-this unchecked disables user-created public shares.
+3. You can enable the users on your local ownCloud server to mount
+public link shares by checking ``Allow users to mount public link shares.`` 
+When this is not checked your users cannot mount public link shares, though 
+they can view and download them.
   
 4. Now go to your Files page and hover your cursor over the file or directory 
 you want to share to expose the administration options. Check the ``Share 
