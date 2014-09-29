@@ -59,5 +59,5 @@ with a share icon, and the name of the share's owner and originating server.
    .. figure:: ../images/s2s-remote-share-labeled.png
 
 Remove your linked share anytime by clicking the trash can icon. This only 
-disables sharing and does not delete your files.  
+unlinks the share, and does not delete any files.
 
