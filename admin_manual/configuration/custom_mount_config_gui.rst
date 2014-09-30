@@ -55,7 +55,8 @@ Local Storage
 -------------
 
 Use this to mount any directory on your ownCloud server that is outside of your 
-ownCloud ``data/`` directory. 
+ownCloud ``data/`` directory. This directory must be readable and writable by 
+your HTTP server user.
 
 In the ``Folder name`` field enter the folder name that you want to appear on 
 your ownCloud ``Files`` page. 
