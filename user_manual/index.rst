@@ -89,10 +89,12 @@ import and export user account settings:
 
 External storage
 ================
-The following topic describes how to mount external storage locations to the
-ownCloud server.
+Please see ``Configuring External Storage (GUI)`` in the ownCloud 
+Administrator's manual:
 
-* :doc:`external_storage/google_drive`
+`Configuring External Storage (GUI) 
+<http://doc.owncloud.org/server/7.0/admin_manual/configuration/
+custom_mount_config_gui.html>`_
 
 Indices and tables
 ==================

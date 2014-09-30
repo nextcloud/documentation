@@ -29,8 +29,9 @@ if your admin allows it.
 File and Activity Notifications
 -------------------------------
 
-In ownCloud 7 you can set up automatic notifications of tracked 
-activities such as new shares, and changed or deleted files.
+In ownCloud 7 you can set up automatic notifications on your ownCloud 
+Personal page of tracked activities such as new shares, and changed or deleted 
+files.
 
 ownCloud Documents with Word Conversion
 ---------------------------------------
