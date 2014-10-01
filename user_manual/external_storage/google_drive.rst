@@ -1,7 +1,7 @@
 Configuring External Storage
 ============================
 
-The External Storage app allows you to mount external storage services, such as Google 
+The External Storage application allows you to mount external storage services, such as Google 
 Drive, Dropbox, Amazon S3, SMB/CIFS fileservers, and FTP servers in ownCloud. Your 
 ownCloud server administrator controls which of these are available to you. Please see 
 ``Configuring External Storage (GUI)`` in the ownCloud Administrator's manual for 
