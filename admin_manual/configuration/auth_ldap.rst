@@ -5,7 +5,8 @@ ownCloud ships with an LDAP application so that your existing LDAP users may
 have access to your ownCloud server without creating separate ownCloud user 
 accounts.
 
-.. Note:: You must have PHP 5.4 or greater to use the LDAP application.
+.. Note:: For performance reasons you must have PHP 5.4 or greater to use the 
+   LDAP application with more than 500 users.
 
 The LDAP application supports:
 
