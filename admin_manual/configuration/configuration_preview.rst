@@ -34,7 +34,7 @@ Disabling previews:
 ~~~~~~~~~~~~~~~~~~~
 Under certain circumstances, for example if the server has only very limited 
 resources, you might want to consider disabling the generation of previews. 
-Set the configuration option 'enable_previews' in config.php to false:
+Set the configuration option ``enable_previews`` in config.php to ``false``:
 
 .. code-block:: php
 
