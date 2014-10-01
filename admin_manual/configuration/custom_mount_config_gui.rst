@@ -1,7 +1,7 @@
 Configuring External Storage (GUI)
 ==================================
 
-The External Storage Support app enables you to mount external storage services 
+The External Storage Support application enables you to mount external storage services 
 and devices as secondary ownCloud storage devices. You may also allow users to 
 mount their own external storage services.
 
@@ -31,11 +31,11 @@ storage.
 Enabling External Storage Support
 ---------------------------------
 
-The ``External storage support`` app is enabled on the ``Apps`` page.
+The ``External storage support`` application is enabled on the ``Apps`` page.
 
 .. figure:: ../images/external-storage-app-enable.png
 
-After enabling the app, go to your ``Admin`` page to set up your external 
+After enabling it, go to your ``Admin`` page to set up your external 
 storage mounts.
 
 .. figure:: ../images/external-storage-app-add.png
