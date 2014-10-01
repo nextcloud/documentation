@@ -1,16 +1,23 @@
 The ownCloud Web Interface
 ==========================
 
-You can connect to your ownCloud server using any web browser. To access the ownCloud server using a web browser, specify the uniform resource link (URL) address of the server in the browser navigation bar.  This can be the URL address of your personal ownCloud setup or a URL address that you have received from your company or your service provider.
+You can connect to your ownCloud server using any web browser. To access the 
+ownCloud server using a web browser, specify the uniform resource link (URL) 
+address of the server in the browser navigation bar.  This can be the URL 
+address of your personal ownCloud setup or a URL address that you have received 
+from your company or your service provider.
 
-.. note:: If you are administering the server yourself, we recommend that you read the `ownCloud Administrators Guide <http://doc.owncloud.org/server/6.0/admin_manual/>`_.
+.. note:: If you are administering the server yourself, we recommend that you 
+   read the `ownCloud Administrators Guide 
+   <http://doc.owncloud.org/server/7.0/admin_manual/>`_.
 
 Accessing the ownCloud Web Interface
 ------------------------------------
 
 To access the ownCloud web interface:
 
-1. Enter the URL address of the ownCloud server into your browser navigation bar.
+1. Enter the URL address of the ownCloud server into your browser navigation 
+bar.
 
   The ownCloud login window opens.
 
@@ -40,7 +47,8 @@ To access the ownCloud web interface:
 Navigating the Main User Interface
 ------------------------------------
 
-Once you have accessed the ownCloud Server main web interface you can add files, remove files, and make changes based on the access privileges set by you
+Once you have accessed the ownCloud Server main web interface you can add files, 
+remove files, and make changes based on the access privileges set by you
 (if you are administering the server) or by your server administrator.
 
 .. figure:: images/oc_main_web_labelled.png
@@ -75,14 +83,16 @@ The ownCloud Main User Interface contains the following fields and functions:
 
 * **Navigation Bar**: Located over the main viewing window (the Application
   View), this bar provides a type of breadcrumbs navigation that enables you to
-  migrate to higher levels of the folder hierarchy up to the root level (home) of your ownCloud instance.
+  migrate to higher levels of the folder hierarchy up to the root level (home) 
+  of your ownCloud instance.
 
 * **New** button: Located in the Navigation Bar, the :guilabel:`New` button
   enables you to create new files, new folders, or upload existing files from a
   specified link.
 
-.. note:: You can also drag and drop files from your file manager (e.g. Windows Explorer
-   or your Mac OS X Finder) into the ownCloud Files Application View to upload them to ownCloud.
+.. note:: You can also drag and drop files from your file manager (e.g. Windows 
+   Explorer or your Mac OS X Finder) into the ownCloud Files Application 
+   View to upload them to ownCloud.
 
 * **Upload** button: Located next to the :guilabel:`New` button in the
   Navigation Bar, the :guilabel:`Upload` button enables you to upload files
@@ -101,12 +111,14 @@ The ownCloud Main User Interface contains the following fields and functions:
   page and the ability to log out of your ownCloud user session.  The personal
   settings page provides access to the following:
 
+  * Activity notifications
   * Server usage and space availability
   * Password management
   * Name, email, and profile picture settings
   * Interface language settings
   * WebDAV URL for receiving files using WebDAV (see next chapter).
-  * Mozilla Sync information for creating a synchronization to a Mozilla (Firefox) account.
+  * Mozilla Sync information for creating a synchronization to a Mozilla 
+    (Firefox) account.
   * ownCloud Version information
 
   You can see :doc:`userpreferences` section to learn more about those settings.
