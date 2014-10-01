@@ -1,9 +1,14 @@
 User Authentication with LDAP
 =============================
 
-ownCloud ships with an LDAP app so that your existing LDAP users may have 
-access to your ownCloud server without creating separate ownCloud user accounts. 
-The app supports:
+ownCloud ships with an LDAP application so that your existing LDAP users may 
+have access to your ownCloud server without creating separate ownCloud user 
+accounts.
+
+.. Note:: For performance reasons, we recommend using PHP 5.4 or greater to use 
+   the LDAP application with more than 500 users.
+
+The LDAP application supports:
 
 * LDAP group support
 * File sharing with ownCloud users and groups
