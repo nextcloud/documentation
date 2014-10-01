@@ -1,14 +1,13 @@
 Preview Configuration
 =====================
 ownCloud 6 introduced a new thumbnail system. It is used to generate
-thumbnails from various file types. Which are then shown as thumbnail 
-in the files application of the web interface or as larger preview for
+thumbnails from various file types, which are then shown as thumbnails 
+in the Files application of the web interface, or as a larger preview for
 public shared links.
 
-In the following image can be seen a file (A) where the ownCloud server
-could generate a preview image and another file (B) where no preview 
-could be generated. In this case a generic icon depending on the filetype 
-is displayed.
+The following image shows a file (A) where the ownCloud server generates a 
+preview image, and another file (B) that it could not generate a preview for. In this 
+case a generic icon (depending on the filetype) is displayed.
 
 .. figure:: ../images/preview_images.png
 
@@ -22,22 +21,20 @@ By default, ownCloud can generate previews for the following filetypes:
           of other file types such as PDF, SVG or various office documents.
           Due to security concerns those providers have been disabled by
           default and are considered unsupported.
-          While those providers are still available, it is  discouraged to 
-          enable one of those providers. Therfore these providers are also
-          not documented.
+          While those providers are still available, we discourage enabling them, 
+          and they are not documented.
 
 Parameters
 ----------
 Please notice that the ownCloud preview system comes already with sensible 
-defaults and therefore it is usually unecessary to adjust those configuration 
+defaults, and therefore it is usually unecessary to adjust those configuration 
 values. 
 
 Disabling previews:
 ~~~~~~~~~~~~~~~~~~~
 Under certain circumstances, for example if the server has only very limited 
 resources, you might want to consider disabling the generation of previews. 
-This can be done by  setting the configuration option 'enable_previews' in 
-config.php to false:
+Set the configuration option 'enable_previews' in config.php to false:
 
 .. code-block:: php
 
@@ -47,7 +44,7 @@ config.php to false:
 Maximum preview size:
 ~~~~~~~~~~~~~~~~~~~~~
 
-There are two config options to set the maximum size of a preview.
+There are two configuration options to set the maximum size of a preview.
 
 .. code-block:: php
 
@@ -55,8 +52,8 @@ There are two config options to set the maximum size of a preview.
     'preview_max_x' => null,
     'preview_max_y' => null,
 
-By default, both config options are set to null. 'Null' is equal to no limit.
-Numeric values represent the size in pixel. The following code limits previews
+By default, both options are set to null. 'Null' is equal to no limit.
+Numeric values represent the size in pixels. The following code limits previews
 to a maximum size of 100×100px:
 
 .. code-block:: php
