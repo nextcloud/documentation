@@ -1,56 +1,40 @@
 Preview Configuration
 =====================
-ownCloud 6 introduced the new thumbnail system. It is used to generate
-thumbnails from various file types.
-By default, it can generate previews for:
+ownCloud 6 introduced a new thumbnail system. It is used to generate
+thumbnails from various file types, which are then shown as thumbnails 
+in the Files application of the web interface, or as a larger preview for
+public shared links.
 
-* Images
-* Movies
-* Cover from mp3 files
-* various office files
-* Pdf
-* Svg
-* Text
+The following image shows a file (A) where the ownCloud server generates a 
+preview image, and another file (B) that it could not generate a preview for. In this 
+case a generic icon (depending on the filetype) is displayed.
 
-Soft dependencies:
-------------------
+.. figure:: ../images/preview_images.png
 
-imagick:
-~~~~~~~~
-ownCloud needs the imagick PHP extension to generate previews from office, PDF
-and SVG files. For further information on how to install the imagick PHP
-extension on your system take a look at the `PHP documentation <http://www.php.net/manual/en/imagick.installation.php>`_.
-If imagick is not installed, ownCloud will show file type icons instead of previews.
+By default, ownCloud can generate previews for the following filetypes:
 
-LibreOffice / OpenOffice:
-~~~~~~~~~~~~~~~~~~~~~~~~~
-ownCloud comes with a php-only preview system for office files. But this
-preview system has limited capabilities and is only able to create previews
-from basic Microsoft Office files. If you need previews from advanced
-Microsoft Office files or OpenDocument files, you have to install LibreOffice
-or OpenOffice. To learn more about installing LibreOffice/OpenOffice consider
-your distribution's documentation.
+* Images files
+* Cover of MP3 files
+* Text documents
 
-avconv / ffmpeg:
-~~~~~~~~~~~~~~~~
-ownCloud requires avconv of ffmpeg to generate previews from movies. To learn
-more about installing avconv or ffmpeg consider your distribution's
-documentation.
+.. note:: Older versions of ownCloud also supported the preview generation
+          of other file types such as PDF, SVG or various office documents.
+          Due to security concerns those providers have been disabled by
+          default and are considered unsupported.
+          While those providers are still available, we discourage enabling them, 
+          and they are not documented.
 
 Parameters
 ----------
+Please notice that the ownCloud preview system comes already with sensible 
+defaults, and therefore it is usually unecessary to adjust those configuration 
+values. 
+
 Disabling previews:
 ~~~~~~~~~~~~~~~~~~~
-Under certain circumstances like a big user base or limited resources you might
-want to consider disabling previews.
-
-.. code-block:: php
-
-  <?php
-    'enable_previews' => true,
-
-There is a config option called 'enable_previews'. By default it's set to true.
-You can disable previews by setting this option to false:
+Under certain circumstances, for example if the server has only very limited 
+resources, you might want to consider disabling the generation of previews. 
+Set the configuration option ``enable_previews`` in config.php to ``false``:
 
 .. code-block:: php
 
@@ -60,7 +44,7 @@ You can disable previews by setting this option to false:
 Maximum preview size:
 ~~~~~~~~~~~~~~~~~~~~~
 
-There are two config options to set the maximum size of a preview.
+There are two configuration options to set the maximum size of a preview.
 
 .. code-block:: php
 
@@ -68,9 +52,9 @@ There are two config options to set the maximum size of a preview.
     'preview_max_x' => null,
     'preview_max_y' => null,
 
-By default, both config options are set to null. 'Null' is equal to no limit.
-Numeric values represent the size in pixel. The following code limits previews
-to a maximum size of 100px by 100px:
+By default, both options are set to null. 'Null' is equal to no limit.
+Numeric values represent the size in pixels. The following code limits previews
+to a maximum size of 100×100px:
 
 .. code-block:: php
 
@@ -82,9 +66,9 @@ to a maximum size of 100px by 100px:
 
 Maximum scale factor:
 ~~~~~~~~~~~~~~~~~~~~~
-If you have a lot of small pictures and the preview system generates blurry
-previews, you might want to consider setting a maximum scale factor. By default,
-ownCloud scales pictures up to 10 times the original size:
+If a lot of small pictures are stored on the ownCloud instance and the preview 
+system generates blurry previews, you might want to consider setting a maximum 
+scale factor. By default, pictures are upscaled to 10 times the original size:
 
 .. code-block:: php
 
@@ -104,21 +88,3 @@ If you want to disable the maximum scaling factor, you can set the config value 
 
   <?php
     'preview_max_scale_factor' => null,
-
-LibreOffice / OpenOffice:
-~~~~~~~~~~~~~~~~~~~~~~~~~
-You can set a custom path for the LibreOffice binary. If LibreOffice is not yet
-available on your system, you can also use OpenOffice instead.
-
-.. code-block:: php
-
-  <?php
-    'preview_libreoffice_path' => '/usr/bin/libreoffice',
-
-You can set custom LibreOffice / OpenOffice command line parameters by setting
-the preview_office_cl_parameters option.
-
-.. code-block:: php
-
-  <?php
-    'preview_office_cl_parameters' => ' ',
