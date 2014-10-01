@@ -1,292 +1,313 @@
-Custom Mount Configuration (GUI)
-================================
+Configuring External Storage (GUI)
+==================================
 
-ownCloud provides the ability to mount an external storage device.
-The external storage devices serves as a secondary storage device within ownCloud.
+The External Storage Support application enables you to mount external storage services 
+and devices as secondary ownCloud storage devices. You may also allow users to 
+mount their own external storage services.
 
-The ownCloud Admin has the ability to create such a mount.
-In addition, the ownCloud Admin may decide to provide the end user the ability to create the mount.
-The mounts may be created on a per-user, per group, or all user basis.
-
-.. note:: Using ``$user`` in any option gets replaced by the current user. This can be used e.g to
-	  specify users' own paths easily by just writing ``/home/$user/``.
+All of these connect to a LAN ownCloud server that is not publicly accessible, 
+with one exception: Google Drive requires an ownCloud server with a registered 
+domain name that is accessible over the Internet.
 
 Supported mounts
 ----------------
 
-The following lists the supported storage types.
+ownCloud admins may mount these external storage services and devices:
 
 *   Local
-*   Amazon S3
+*   Amazon S3 and S3 compliant
 *   Dropbox
-*   FTP
+*   FTP/SFTP
 *   Google Drive
 *   OpenStack Object Storage
 *   SMB/CIFS
-*   ownCloud/WebDAV
-*   SFTP
-*   iRODS
+*   SMB/CIFS using OC login
+*   ownCloud
+*   WebDAV
 
-Configuration
--------------
+ownCloud users can be given permission to mount any of these, except local 
+storage.
 
-Enable the app
---------------
+Enabling External Storage Support
+---------------------------------
 
-From the ``APPs`` Page within ownCloud, select ``External Storage Support`` and enable.
+The ``External storage support`` application is enabled on the ``Apps`` page.
 
-|10000000000001980000009271BE0D26_png|
+.. figure:: ../images/external-storage-app-enable.png
 
-Configure mounts
-----------------
+After enabling it, go to your ``Admin`` page to set up your external 
+storage mounts.
 
-As stated previously, the Admin has the ability to configure these mounts, as
-well as decide whether an end user can configure mounts for themselves.  For
-the Admin, the configuration is performed in the ``Admin`` page.  For end
-users, the configuration is performed in the ``Personal`` Page.  This document
-will discuss how the Admin configures the mounts, however, the configuration is
-the same for the end user.
+.. figure:: ../images/external-storage-app-add.png
 
-On the ``Admin`` page, scroll to External Storage:
+When your configuration is correct you'll see a green light at the left, and if 
+it isn't you'll see a red light.
 
-|1000000000000631000000E19D116AA0_png|
+Check ``Enable User External Storage`` to allow your users to mount their own 
+external storage services, and check the services you want to allow.
 
+.. figure:: ../images/external-storage-app-usermounts.png
 
-Enable users to mount their own devices
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-In order to allow end users to mount their own devices, select the radio button next to
-Enable User External Storage.
-
+After creating your external storage mounts, you can share them and control 
+permissions just like any other ownCloud share.
 
 Local Storage
-~~~~~~~~~~~~~
+-------------
 
-This is used to mount storage that is outside ownCloud’s data directory
+Use this to mount any directory on your ownCloud server that is outside of your 
+ownCloud ``data/`` directory. This directory must be readable and writable by 
+your HTTP server user.
 
-|10000000000006060000006A0106CA0C_png|
+In the ``Folder name`` field enter the folder name that you want to appear on 
+your ownCloud ``Files`` page. 
 
-*   Location – The directory to mount
-*   Applicable – A list users of who can see this mount
+In the ``Configuration`` field enter the full filepath of the directory you 
+want to mount.
 
-|10000000000003DF00000071A41D8A1F_png|
+In the ``Available for`` field enter the users or groups who have permission to 
+access the mount.
 
-Note: When configured correctly, a *Green Light* will appear next to the Folder Name.
-If misconfigured, a *Red Light* will appear.
-
-|10000000000004770000008AAF3CFFDB_png|
+.. figure:: ../images/external-storage-app-local.png
 
 Amazon S3
-~~~~~~~~~
+---------
 
-This is used to mount to an S3 server
+All you need to connect your Amazon S3 buckets to ownCloud is your S3 Access 
+Key, Secret Key, and your bucket name.
 
-|100000000000061D0000007047877972_png|
+In the ``Folder name`` field enter the folder name that you want to appear on 
+your ownCloud ``Files`` page. 
 
-*   Access Key – The access key provided by the S3 storage provider
-*   Secret Key – The secret key provided by the S3 storage provider
-*   Bucket – The bucket created within the S3 storage server
-*   Hostname (optional) – The host of the s3 storage server
-*   Port (optional) – The port to communicate to the host on
-*   Region (optional) – The region where the storage exists
-*   Applicable – A list of users who can see this mount
+In the ``Access Key`` field enter your S3 Access Key.
 
+In the ``Secret Key`` field enter your S3 Secret Key.
 
+In the ``Bucket`` field enter the name of your S3 bucket you want to share.
 
-|10000000000005BB0000007C1DF71FA7_png|
+In the ``Available for`` field enter the users or groups who have permission to 
+access your S3 mount.
 
-.. note:: When configured correctly, a Green Light will appear next to the Folder Name.
-          If misconfigured, a Red Light will appear.
+The hostname, port, and region of your S3 server are optional; you will need 
+to use these for non-Amazon S3-compatible servers.
 
-|100000000000063F00000090AAE1FA4A_png|
+.. figure:: ../images/external-storage-amazons3.png
 
 Dropbox
-~~~~~~~
+-------
+
+Connecting Dropbox is a little more work because you have to create a Dropbox 
+app. Log into the `Dropbox Developers page <http://www.dropbox.com/developers>`_ 
+and click ``App Console``:
+
+.. figure:: ../images/external-storage-dropbox.png
+
+If you have not already created any Dropbox apps it will ask you to accept 
+their terms and conditions. Then you are presented with the choice to create 
+either a Drop-ins App or a Dropbox API App. Click ``Dropbox API App``, and then 
+check:
 
-Mounts a dropbox in the Dropbox cloud into the virtual file system.
+* Files and datastores.
+* No -- My app needs access to files already on Dropbox.
+* All file types -- My app needs access to a user's full Dropbox. Only 
+  supported via the CoreAPI.
+  
+Then enter whatever name you want for your app.
 
-Configure DropBox
-^^^^^^^^^^^^^^^^^
+.. figure:: ../images/external-storage-dropbox-app.png
 
-Log onto the `Dropbox Developers page`_:
+Now click the ``Create App`` button. Under ``Status``, do not click 
+``Development (Apply for production status)`` because that is for apps that you 
+want to release publicly.
 
-.. _`Dropbox Developers page`: http://www.dropbox.com/developers
+Click ``Enable additional users`` to allow multiple oC users to use your new 
+Dropbox share.
 
+Note your App key and App secret, which you will enter in the External Storage 
+form on your ownCloud Admin page.
 
-Select App Console:
+.. figure:: ../images/external-storage-dropbox-configapp.png
 
-|10000000000000A800000073F49785A6_png|
+You need two ``Redirect URIs``. You may use ``localhost`` as the hostname for 
+testing because you don't need to use HTTPS, but this is not recommended for 
+production use because it sends all traffic in the clear::
 
-This will ask you to accept terms and conditions.
+  http://localhost/owncloud/index.php/settings/personal
+  http://localhost/owncloud/index.php/settings/admin
+  
+HTTPS is recommended for production use to encrypt your sessions::
 
-Select Dropbox API and configure down the page as follows:
+  https://localhost/owncloud/index.php/settings/personal
+  https://localhost/owncloud/index.php/settings/admin
+  
+  https://example.com/owncloud/index.php/settings/personal
+  https://example.com/owncloud/index.php/settings/admin
+  
+Your ownCloud configuration requires only the local mount name, the App Key and 
+the App Secret, and which users or groups have access to the share.
 
-|1000000000000372000002AF943ADDA0_png|
+.. figure:: ../images/external-storage-dropbox-oc.png
 
-The name can be any unique name desired.
+You must be logged into Dropbox, and when ownCloud successfully verifies your 
+connection Dropbox will ask for verification to connect to your Dropbox 
+account. Click ``Allow``, and you're done.
 
-Select Create App
+.. figure:: ../images/external-storage-dropbox-allowshare.png
 
-|10000000000000950000004412998BE7_png|
+FTP/FTPS/SFTP
+-------------
 
-Enter the OAuth redirect URI as follows::
+Connecting to an FTP server requires:
 
-  http://<ownCloud instance>/index.php/settings/personal
-  http://<ownCloud instance>/index.php/settings/admin
+* Whatever name you want for your local mountpoint.
+* The URL of your FTP server.
+* FTP server username and password.
+* The FTP directory to mount in ownCloud. ownCloud defaults to the root 
+  directory. When you specify a different directory you must leave off the 
+  leading slash. For example, if you want to connect your 
+  ``public_html/images`` directory, then type it exactly like that. 
+* Choose whether to connect in the clear with ``ftp://``, or to encrypt your 
+  FTP session with SSL/TLS over ``ftps://`` (Your FTP server must be 
+  configured to support ``ftps://``)
+* Enter the ownCloud users or groups who are allowed to access the share.  
+  
+.. figure:: ../images/external-storage-ftp.png
 
-|10000000000003A6000002A9C7A660BE_png|
+SFTP uses SSH rather than SSL, as FTPS does, so your SFTP sessions are always 
+safely tucked inside an SSH tunnel. To connect an SFTP server you need:
 
-Take note of the App Key and App Secret and enter into ownCloud.
+* Whatever name you want for your local mountpoint.
+* The URL of your SFTP server.
+* SFTP server username and password.
+* The SFTP directory to mount in ownCloud.
+* The ownCloud users or groups who are allowed to access the share. 
 
-ownCloud Configuration
-^^^^^^^^^^^^^^^^^^^^^^
+Google Drive
+------------
 
-|100000000000060300000065DF96536B_png|
+All applications that access a Google API must be registered through the 
+`Google Cloud Console <https://cloud.google.com>`_. Follow along carefully 
+because the Google is a bit of a maze and it's easy to get lost. 
 
-*   App key – The app key to login to your Dropbox
-*   App secret – The app secret to login to your Dropbox
-*   Applicable – A list users of who can see this mount
+.. note:: Your ownCloud server must have a registered domain name and be 
+   accessible over the Internet; Google Drive will not connect to a LAN-only 
+   server.
 
-|10000000000005EC00000073E678DFEC_png|
+If you already have a Google account, such as Groups, Drive, or Mail, you can 
+use your existing login to log into the Google Cloud Console. After logging in 
+click ``Go to my console``, and then click the ``Create Project`` button. It 
+takes a minute or two to create your new project.
 
-Select “Grant Access” and the following appears
+.. figure:: ../images/external-storage-google-drive.png
 
-|10000000000002950000021E245F6883_png|
+In the next screen give your project a name, accept the default ``Project ID`` 
+or create your own, click the Terms of Service box, and click the ``Create`` 
+button.
 
-Note if you are not logged into Dropbox, you will first be prompted to login.
-Select Allow.
+.. figure:: ../images/external-storage-google-drive1.png
 
-|10000000000005E6000000676902E040_png|
+The next screen is your ``Project Dashboard``. In the left sidebar click ``APIs 
+& Auth > APIs``, and then enable the ``Drive API`` and ``Drive SDK`` by 
+toggling the boxes in the far-right ``Status`` column to the green On buttons.
 
+.. figure:: ../images/external-storage-google-drive2.png
 
-.. note:: When configured correctly, a Green Light will appear next to the Folder Name.
-          If misconfigured, a Red Light will appear.
+This brings you to the ``Google Drive SDK`` screen. Click ``API Access``.
 
-|100000000000061A0000006FC014C3A4_png|
+.. figure:: ../images/external-storage-google-drive-sdk.png
 
-FTP
-~~~
+This opens the ``API Access`` screen. Click the ``Create a 0Auth 2.0 Client 
+ID`` button. 
 
-Mounts a folder on a remote FTP or FTPS server
+.. figure:: ../images/external-storage-google-drive-0auth.png
 
-|100000000000061E0000006BCF9ECC0B_png|
+The next screen that opens is ``Create Client ID: Branding Information``. Google 
+requires to you to fill this out. When you're finished move on to the ``Create 
+Client ID: Client ID Settings`` screen.
 
-*   URL – The hostname of the FTP/FTPS server
-*   Username – The username to login to the FTP/FTPS server
-*   Password – The password to login to the FTP/FTPS esrver
-*   Root – The folder inside the FTP/FTPS server to mount (optional – defaults to ‘/’)
-*   Secure ``ftps://`` -- Whether to use ftps:// to connect to the FTP server instead of ``ftp://``
-*   Applicable – A list users of who can see this mount
+.. figure:: ../images/external-storage-google-drive5.png
 
-|10000000000005AF00000074604B1A67_png|
+The ``Application Type`` is Web application.
 
-.. note:: When configured correctly, a Green Light will appear next to the
-          Folder Name.  If misconfigured, a Red Light will appear.
+Click ``Your site or hostname (more options)`` to expose  ``Authorized 
+Redirect URIs``. Enter two Redirect URIs like these examples, replacing 
+``https://example.com/owncloud/`` with your own ownCloud server 
+URL. You must use a registered domain name, and you cannot use the server's 
+IP address.
 
-|10000000000005D50000009458C5EE48_png|
+  https://example.com/owncloud/index.php/settings/personal
+  https://example.com/owncloud/index.php/settings/admin
+  
+Click ``Create client ID`` and you'll see a screen like this:
 
-GoogleDrive
-~~~~~~~~~~~
+.. figure:: ../images/external-storage-google-drive-9.png
 
-Mounts a share in the Google cloud.
+This contains your ``Client ID`` and ``Client Secret``, which you need to set up 
+your ownCloud connection. Go to your ``Admin`` page in ownCloud, create your new 
+folder name, enter the Client ID and Client Secret, select your users and 
+groups, and click ``Grant Access``.
 
-Configure GoogleDrive
-^^^^^^^^^^^^^^^^^^^^^
+.. figure:: ../images/external-storage-google-drive8.png
 
-All applications that access a Google API must be registered through the “Google Cloud Console”.
-This can be accessed at the following URL:
+Google will open a dialogue asking for permission to connect to ownCloud. Click 
+``Accept`` and you're finished.
 
-`https://cloud.google.com <https://cloud.google.com>`_
+.. figure:: ../images/external-storage-google-drive7.png
 
-Once logged into Google, create a project by selecting
-Create Project
+SMB/CIFS
+--------
 
-|1000000000000247000000A77440E4D3_png|
+You can mount SMB/CIFS file shares on ownCloud servers that run on Linux. This 
+only works on Linux ownCloud servers because you must have ``smbclient`` 
+installed. SMB/CIFS file servers include any Windows file share, Samba servers 
+on Linux and other Unix-type operating systems, and NAS appliances. 
 
-Enter a Project name and either keep or enter a new Project ID
+You need the following information:
 
-|100000000000027B0000011D10F70F88_png|
+*   Folder name -- Whatever name you want for your local mountpoint.
+*   Host -- The URL of the Samba server.
+*   Username -- The user name used to login to the Samba server.
+*   Password -- The password to login to the Samba server.
+*   Share -- The share on the Samba server to mount.
+*   Root -- The folder inside the Samba share to mount (optional, defaults to 
+    ``/``)
 
+And finally, the ownCloud users and groups who get access to the share.    
 
-Select the project and choose the APIs & auth menu entry
+.. figure:: ../images/external-storage-smb.png
 
-|10000000000000B600000120706C3C75_png|
+SMB/CIFS using OC login
+-------------------------
 
-Enable ``Drive API`` and ``Drive SDK`` and then select the
+This works the same way as setting up a SMB/CIFS mount, except you can use your 
+ownCloud logins intead of the SMB/CIFS server logins. To make this work, your 
+ownCloud users need the same login and password as on the SMB/CIFS server. 
 
-|100000000000003800000018D49F1CE7_png|
+.. note:: Shares set up with ``SMB/CIFS using OC login`` cannot be shared in 
+   ownCloud. If you need to share your SMB/CIFS mount, then use the SMB/CIFS 
+   mount without oC login.
 
-next to either ``Drive API`` or ``Drive SDK``
+ownCloud and WebDAV
+-------------------
 
-|10000000000004100000005657010336_png|
+Use these to mount a directory from any WebDAV server, or another 
+ownCloud server.
 
-Select ``API Access`` on the menu
+*   Folder name -- Whatever name you want for your local mountpoint.
+*   URL -- The URL of the WebDAV server.
+*   Username -- The username used to login to the WebDAV server.
+*   Password -- The password used to login to the WebDAV server.
+*   Root –-- The folder inside the WebDav server to mount (optional, defaults 
+    to ``/``)
+*   Secure ``https://`` - Whether to use ``https://`` to connect to the WebDav 
+    server instead of ``http://``
 
-|10000000000000CD000000ECA8DE7780_png|
-
-Select ``REGISTER APP``
-
-|10000000000001FD000000DF8D2D7546_png|
-
-Enter a name and select ``Web Application``
-
-|10000000000002840000016729388B7F_png|
-
-Expand ``OAuth 2.0 Client ID``
-Enter the following in the ``REDIRECT URI`` field::
-
-  http://<ownCloud instance>/index.php/settings/personal
-  http://<ownCloud instance>/index.php/settings/admin
-
-.. note:: The ``<ownCloud instance>`` must be a Fully Qualified Domain Name.  It cannot be an IP address!
-
-Select ``Generate``
-
-|10000000000003B30000021B5EE5D338_png|
-
-Verify that the required email addresses are in the Permissions tab
-
-|10000000000003A60000011E274A1A28_png|
-
-Configure ownCloud
-^^^^^^^^^^^^^^^^^^
-
-Prior to configuring the mount, an E-mail address needs to be configured in the ``Personal`` tab
-
-|10000000000001880000007EA4444400_png|
-
-|10000000000006000000005EDA7B96BE_png|
-
-*   Client ID – The client id to login to the Google Drive from ``OAuth 2.0 Client ID`` above
-*   Client secret – The client secret to login to the Google Drive from ``OAuth 2.0 Client ID`` above
-*   Applicable – A list users of who can see this mount
-
-Once the required fields are filled in, a ``Grant access`` button appears.  Select this button.
-
-|10000000000005F70000007E43DB8026_png|
-
-The following screen appears. Select ``Accept``
-
-|10000000000001D30000014DC251C948_png|
-
-|10000000000004C0000000795BB2C146_png|
-
-
-|1000000000000552000000BF22E90239_png|
-
-
-.. note:: When configured correctly, a Green Light will appear next to the
-          Folder Name.  If misconfigured, a Red Light will appear.
-
+.. figure:: ../images/external-storage-webdav.png
 
 OpenStack Object Storage
-~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------
 
-Mounts a container on an OpenStack Object Storage server.
-
-|100000000000053A00000067708C8F53_png|
-
-|10000000000002170000004A27056037_png|
+Use this to mount a container on an OpenStack Object Storage server. You need 
+the following information:
 
 *   Username
 *   Bucket
@@ -297,351 +318,25 @@ Mounts a container on an OpenStack Object Storage server.
 *   Service Name
 *   URL of identity Endpoint
 *   Timeout of HTTP request
-*   Applicable – A list users of who can see this mount
-
-.. note:: When configured correctly, a Green Light will appear next to the
-          Folder Name.  If misconfigured, a Red Light will appear.
-
-
-SMB/CIFS
-~~~~~~~~
-
-Mounts a folder on a remote Samba server, NAS appliance, or Windows machine.
-
-|10000000000005FA0000005CE8491B77_png|
-
-*   URL – The host name of the Samba server.
-*   Username – The user name used to login to the Samba server.
-*   Password – The password to login to the Samba server.
-*   Share – The share on the Samba server to mount.
-*   Root – The folder inside the Samba share to mount (optional, defaults to ‘/’)
-*   Applicable – A list users of who can see this mount
-
-|10000000000005C30000006CAFFAAD61_png|
-
-.. note:: When configured correctly, a Green Light will appear next to the
-          Folder Name.  If misconfigured, a Red Light will appear.
-
-.. note:: The SMB backend requires ``smbclient`` to be installed on the server.
-
-|10000000000005D00000003B29340A7A_png|
-
-ownCloud/WebDAV
-~~~~~~~~~~~~~~~
-
-Mounts a folder on a WebDAV server (or another ownCloud instance via WebDAV).
-
-|10000000000005F70000005F0912E904_png|
-
-*   URL – The hostname of the WebDAV server.
-*   Username – The username used to login to the WebDAV server.
-*   Password – The password used to login to the WebDAV server.
-*   Root – The folder inside the WebDav server to mount (optional, defaults to ‘/’)
-*   Secure ``https://`` - Whether to use ``https://`` to connect to the WebDav server instead of ``http://``
-*   Applicable – A list users of who can see this mount
-
-|10000000000005B90000007866D92D14_png|
-
-.. note:: When configured correctly, a Green Light will appear next to the
-          Folder Name.  If misconfigured, a Red Light will appear.
-
-|10000000000005E20000009B1BA5A8CF_png|
-
-SFTP
-~~~~
-
-Mounts a folder on a remote SSH server.
-
-|10000000000005FF0000005F35710398_png|
-
-*   URL – The hostname of the SSH server.
-*   Username – The username used to login to the SSH server.
-*   Password – The password used to login to the SSH server.
-*   Root – The folder inside the SSH server to mount (optional, defaults to ‘/’)
-*   Applicable – A list users of who can see this mount
-
-|10000000000005970000006AE23997C9_png|
-
-.. note:: When configured correctly, a Green Light will appear next to the
-          Folder Name.  If misconfigured, a Red Light will appear.
-
-|10000000000005EB000000A68BA73E2D_png|
-
-iRODS
-~~~~~
-
-Mounts a folder on a iRODS server.
-
-|100000000000062A0000005F61A18950_png|
-
-*   Host
-*   Port
-*   Use ownCloud login
-*   Username
-*   Password
-*   Authentication Mode
-*   Zone
-*   Applicable – A list users of who can see this mount
-
-
-.. note:: When configured correctly, a Green Light will appear next to the
-          Folder Name.  If misconfigured, a Red Light will appear.
-
 
 Configuration File
 ------------------
 
-The configuration of mounts created within the External Storage App are stored in the
-``data/mount.json`` file.
-This file contains all settings in JSON (JavaScript Object Notation) format.
-Two different types of entries exist:
-
-*   Group mounts -
-    Each entry configures a mount for each user in group
-*   User mount – Each entry configures a mount for a single user or all users.
-
-For each type, there is a JSON array with the user/group name as key and an array of configuration values as the value.
-Each entry consist of the class name of the storage backend and an array of backend specific options (described above) and will be replaced by the user login.
-
-Although configuration may be done by making modifications to the mount.json file, it is recommended to use the Web-GUI in the administrator panel (as described in the above section) to add, remove, or modify mount options in order to prevent any problems.
-
-
-.. |1000000000000552000000BF22E90239_png| image:: ../images/1000000000000552000000BF22E90239.png
-    :width: 6.5in
-    :height: 0.911in
-
-
-.. |10000000000005EC00000073E678DFEC_png| image:: ../images/10000000000005EC00000073E678DFEC.png
-    :width: 6.5in
-    :height: 0.4929in
-
-
-.. |100000000000062A0000005F61A18950_png| image:: ../images/100000000000062A0000005F61A18950.png
-    :width: 6.5in
-    :height: 0.3909in
-
-
-.. |10000000000001FD000000DF8D2D7546_png| image:: ../images/10000000000001FD000000DF8D2D7546.png
-    :width: 5.302in
-    :height: 2.3228in
-
-
-.. |10000000000001980000009271BE0D26_png| image:: ../images/10000000000001980000009271BE0D26.png
-    :width: 4.25in
-    :height: 1.5201in
-
-
-.. |10000000000005B90000007866D92D14_png| image:: ../images/10000000000005B90000007866D92D14.png
-    :width: 6.5in
-    :height: 0.5319in
-
-
-.. |10000000000005D50000009458C5EE48_png| image:: ../images/10000000000005D50000009458C5EE48.png
-    :width: 6.5in
-    :height: 0.6437in
-
-
-.. |10000000000002170000004A27056037_png| image:: ../images/10000000000002170000004A27056037.png
-    :width: 5.5728in
-    :height: 0.7701in
-
-
-.. |10000000000005C30000006CAFFAAD61_png| image:: ../images/10000000000005C30000006CAFFAAD61.png
-    :width: 6.5in
-    :height: 0.4756in
-
-
-.. |100000000000060300000065DF96536B_png| image:: ../images/100000000000060300000065DF96536B.png
-    :width: 6.5in
-    :height: 0.4264in
-
-
-.. |10000000000003A60000011E274A1A28_png| image:: ../images/10000000000003A60000011E274A1A28.png
-    :width: 6.5in
-    :height: 1.9902in
-
-
-.. |10000000000001880000007EA4444400_png| image:: ../images/10000000000001880000007EA4444400.png
-    :width: 4.0835in
-    :height: 1.3126in
-
-
-.. |10000000000005BB0000007C1DF71FA7_png| image:: ../images/10000000000005BB0000007C1DF71FA7.png
-    :width: 6.5in
-    :height: 0.5492in
-
-
-.. |10000000000005FF0000005F35710398_png| image:: ../images/10000000000005FF0000005F35710398.png
-    :width: 6.5in
-    :height: 0.402in
-
-
-.. |10000000000005E6000000676902E040_png| image:: ../images/10000000000005E6000000676902E040.png
-    :width: 6.5in
-    :height: 0.4429in
-
-
-.. |10000000000005F70000007E43DB8026_png| image:: ../images/10000000000005F70000007E43DB8026.png
-    :width: 6.5in
-    :height: 0.5362in
-
-
-.. |10000000000000950000004412998BE7_png| image:: ../images/10000000000000950000004412998BE7.png
-    :width: 1.552in
-    :height: 0.7083in
-
-
-.. |100000000000061E0000006BCF9ECC0B_png| image:: ../images/100000000000061E0000006BCF9ECC0B.png
-    :width: 6.5in
-    :height: 0.4437in
-
-
-.. |100000000000063F00000090AAE1FA4A_png| image:: ../images/100000000000063F00000090AAE1FA4A.png
-    :width: 6.5in
-    :height: 0.5846in
-
-
-.. |10000000000004C0000000795BB2C146_png| image:: ../images/10000000000004C0000000795BB2C146.png
-    :width: 6.5in
-    :height: 0.6465in
-
-
-.. |100000000000027B0000011D10F70F88_png| image:: ../images/100000000000027B0000011D10F70F88.png
-    :width: 6.5in
-    :height: 2.9173in
-
-
-.. |100000000000061A0000006FC014C3A4_png| image:: ../images/100000000000061A0000006FC014C3A4.png
-    :width: 6.5in
-    :height: 0.461in
-
-
-.. |10000000000005D00000003B29340A7A_png| image:: ../images/10000000000005D00000003B29340A7A.png
-    :width: 6.5in
-    :height: 0.2575in
-
-
-.. |10000000000006060000006A0106CA0C_png| image:: ../images/10000000000006060000006A0106CA0C.png
-    :width: 6.5in
-    :height: 0.4465in
-
-
-.. |10000000000000A800000073F49785A6_png| image:: ../images/10000000000000A800000073F49785A6.png
-    :width: 1.75in
-    :height: 1.198in
-
-
-.. |10000000000000B600000120706C3C75_png| image:: ../images/10000000000000B600000120706C3C75.png
-    :width: 1.8957in
-    :height: 3in
-
-
-.. |10000000000004770000008AAF3CFFDB_png| image:: ../images/10000000000004770000008AAF3CFFDB.png
-    :width: 6.5in
-    :height: 0.7846in
-
-
-.. |10000000000002840000016729388B7F_png| image:: ../images/10000000000002840000016729388B7F.png
-    :width: 6.5in
-    :height: 3.6228in
-
-
-.. |10000000000003B30000021B5EE5D338_png| image:: ../images/10000000000003B30000021B5EE5D338.png
-    :width: 6.5in
-    :height: 3.6992in
-
-
-.. |10000000000006000000005EDA7B96BE_png| image:: ../images/10000000000006000000005EDA7B96BE.png
-    :width: 6.5in
-    :height: 0.398in
-
-
-.. |1000000000000372000002AF943ADDA0_png| image:: ../images/1000000000000372000002AF943ADDA0.png
-    :width: 6.5in
-    :height: 5.0634in
-
-
-.. |100000000000061D0000007047877972_png| image:: ../images/100000000000061D0000007047877972.png
-    :width: 6.5in
-    :height: 0.4654in
-
-
-.. |10000000000003A6000002A9C7A660BE_png| image:: ../images/10000000000003A6000002A9C7A660BE.png
-    :width: 6.5in
-    :height: 4.7398in
-
-
-.. |10000000000000CD000000ECA8DE7780_png| image:: ../images/10000000000000CD000000ECA8DE7780.png
-    :width: 2.1346in
-    :height: 2.4583in
-
-
-.. |100000000000053A00000067708C8F53_png| image:: ../images/100000000000053A00000067708C8F53.png
-    :width: 6.5in
-    :height: 0.5008in
-
-
-.. |10000000000005970000006AE23997C9_png| image:: ../images/10000000000005970000006AE23997C9.png
-    :width: 6.5in
-    :height: 0.4811in
-
-
-.. |1000000000000247000000A77440E4D3_png| image:: ../images/1000000000000247000000A77440E4D3.png
-    :width: 6.0728in
-    :height: 1.7398in
-
-
-.. |10000000000003DF00000071A41D8A1F_png| image:: ../images/10000000000003DF00000071A41D8A1F.png
-    :width: 6.5in
-    :height: 0.7409in
-
-
-.. |10000000000001D30000014DC251C948_png| image:: ../images/10000000000001D30000014DC251C948.png
-    :width: 4.8646in
-    :height: 3.4689in
-
-
-.. |10000000000005EB000000A68BA73E2D_png| image:: ../images/10000000000005EB000000A68BA73E2D.png
-    :width: 6.5in
-    :height: 0.7126in
-
-
-.. |10000000000005E20000009B1BA5A8CF_png| image:: ../images/10000000000005E20000009B1BA5A8CF.png
-    :width: 6.5in
-    :height: 0.6689in
-
-
-.. |100000000000003800000018D49F1CE7_png| image:: ../images/100000000000003800000018D49F1CE7.png
-    :width: 0.5835in
-    :height: 0.25in
-
-
-.. |1000000000000631000000E19D116AA0_png| image:: ../images/1000000000000631000000E19D116AA0.png
-    :width: 6.5in
-    :height: 0.9228in
-
-
-.. |10000000000005AF00000074604B1A67_png| image:: ../images/10000000000005AF00000074604B1A67.png
-    :width: 6.5in
-    :height: 0.5181in
-
-
-.. |10000000000005F70000005F0912E904_png| image:: ../images/10000000000005F70000005F0912E904.png
-    :width: 6.5in
-    :height: 0.4043in
-
-
-.. |10000000000002950000021E245F6883_png| image:: ../images/10000000000002950000021E245F6883.png
-    :width: 6.5in
-    :height: 5.3299in
-
-
-.. |10000000000004100000005657010336_png| image:: ../images/10000000000004100000005657010336.png
-    :width: 6.5in
-    :height: 0.5374in
-
-
-.. |10000000000005FA0000005CE8491B77_png| image:: ../images/10000000000005FA0000005CE8491B77.png
-    :width: 6.5in
-    :height: 0.3909in
+The configuration of mounts created within the External Storage App are stored 
+in the ``data/mount.json`` file. This file contains all settings in JSON 
+(JavaScript Object Notation) format. Two different types of entries exist:
+
+*   Group mounts: Each entry configures a mount for each user in group.
+*   User mount: Each entry configures a mount for a single user or all users.
+
+For each type, there is a JSON array with the user/group name as key and an 
+array of configuration values as the value. Each entry consist of the class name 
+of the storage backend and an array of backend specific options (described 
+above) and will be replaced by the user login.
+
+Although configuration may be done by making modifications to the 
+``mount.json`` file, it is recommended to use the Web-GUI in the administrator 
+panel (as described in the above section) to add, remove, or modify mount 
+options to prevent any problems. See :doc:`custom_mount_config` for 
+configuration examples.
 

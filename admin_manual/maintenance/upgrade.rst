@@ -146,6 +146,7 @@ to use in different Linux operating systems:
   |                       |                                         |
   | openSUSE 12.3 and up  | ``systemctl start apache2``             |
   +-----------------------+-----------------------------------------+
+  
 To start the Windows IIS web server, you can use either the user interface 
 (UI) or command line method as follows:
   

@@ -1,5 +1,5 @@
-Custom Mount Configuration
-==========================
+Configuring External Storage (Configuration File)
+=================================================
 
 Since ownCloud 4.0 it is possible to configure the filesystem to mount external
 storage providers into ownCloud's virtual file system. You can configure these

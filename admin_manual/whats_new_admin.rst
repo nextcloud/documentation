@@ -14,7 +14,7 @@ External Storage
 ----------------
 
 Major improvements to the external storage app include support for FTP, Dropbox, 
-Google Drive, sFTP, Swift, S3, WebDAV, SMB/CIFS and more storage locations to 
+Google Drive, SFTP, Swift, S3, WebDAV, SMB/CIFS and more storage locations to 
 the ownCloud instance. You can control which storage types your users can set up 
 in their Personal tabs. Further performance improvements have made externally 
 mounted storage faster and more responsive.
@@ -81,14 +81,14 @@ faster and accessible. Improvements include:
    than the default ClamAV) in scanning files as they arrive on the server.
 
  
-SMTP Configuration Wizard
--------------------------
+Email Configuration Wizard
+--------------------------
 
-The new graphical SMTP configuration connects to your mail server in just a few 
-clicks, so that ownCloud can send automated messages to users. ownCloud 
-connects via PHP, Sendmail, or standard SMTP.
+The new graphical Email configuration wizard connects to your mail server in 
+just a few clicks, so that ownCloud can send automated messages to users. 
+ownCloud connects via PHP, Sendmail, or standard SMTP.
 
-Editable email Templates
+Editable Email Templates
 ------------------------
 
 ownCloud admins can now edit the email templates that ownCloud uses for 
