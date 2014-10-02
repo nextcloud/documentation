@@ -8,8 +8,8 @@ features:
 * Cooperative edit, with multiple users editing files simultaneously. 
 * Document creation within ownCloud.
 * Document upload.
-* Secure sharing and editing: Share and edit files securely in the. 
-  browser, and then share them inside ownCloud or through a public link.
+* Share and edit files in the browser, and then share them inside ownCloud or 
+  through a public link.
 
 Supported file formats are `.odt`, `.doc`, and `.docx`.
 
@@ -54,8 +54,8 @@ border color of their user picture.
 .. figure:: images/oc_documents_col_edit.png
 
 If a user is not a local user (e.g accessing the file using public link), they
-will be shown as guest in the user list, and they will have to type a nickname 
-before editing.
+will be shown as guest in the user list, automatically named Guest 1, Guest 2, 
+and so on. Guests can change their nicknames at any time.
 
 Delete a Document
 ~~~~~~~~~~~~~~~~~
