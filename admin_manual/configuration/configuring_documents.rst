@@ -1,7 +1,7 @@
 Configuring the Collaborative Documents App
 ===========================================
 
-The Documents application supports editing document within ownCloud, without the 
+The Documents application supports editing documents within ownCloud, without the 
 need to launch an external application. The Documents app supports these 
 features:
 
