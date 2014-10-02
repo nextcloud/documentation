@@ -24,5 +24,5 @@ available to all groups.
 
 .. image:: ../images/documents_app_enable.png
 
-See 'Collaborative Document Editing" in the User manual to learn how to create 
+See "Collaborative Document Editing" in the User manual to learn how to create 
 and share documents in the Documents application.
