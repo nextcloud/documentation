@@ -293,13 +293,13 @@ Use these to mount a directory from any WebDAV server, or another
 ownCloud server.
 
 *   Folder name -- Whatever name you want for your local mountpoint.
-*   URL -- The URL of the WebDAV server.
-*   Username -- The username used to login to the WebDAV server.
-*   Password -- The password used to login to the WebDAV server.
-*   Root –-- The folder inside the WebDav server to mount (optional, defaults 
+*   URL -- The URL of the WebDAV or ownCloud server.
+*   Username and password for the remote server
+*   Root -- The remote folder you want to mount (optional, defaults 
     to ``/``)
 *   Secure ``https://`` - Whether to use ``https://`` to connect to the WebDav 
-    server instead of ``http://``
+    server instead of ``http://`` (We always recommend ``https://`` for 
+    security)
 
 .. figure:: ../images/external-storage-webdav.png
 
