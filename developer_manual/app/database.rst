@@ -223,6 +223,48 @@ Since all attributes should be protected, getters and setters are automatically 
     $author->setId(3);
     $author->getPhoneNumber()  // null
 
+Custom attribute to database column mapping
+-------------------------------------------
+
+By default each attribute will be mapped to a database column by a certain convention, e.g. **phoneNumber** 
+will be mapped to the column **phone_number** and vice versa. Sometimes it is needed though to map attributes to
+different columns because of backwards compability. To define a custom 
+mapping, simply override the **columnToProperty** and **propertyToColumn** methods of the entity in question:
+
+.. code-block:: php
+
+
+    <?php
+    // db/author.php
+    namespace OCA\MyApp\Db;
+
+    use \OCP\AppFramework\Db\Entity;
+
+    class Author extends Entity {
+        protected $stars;
+        protected $name;
+        protected $phoneNumber;
+
+        // map attribute phoneNumber to the database column phonenumber
+        public function columnToProperty($column) {
+            if ($column === 'phonenumber') {
+                return 'phoneNumber';
+            } else {
+                return parent::columnToProperty($column);
+            }
+        }
+
+        public function propertyToColumn($property) {
+            if ($column === 'phoneNumber') {
+                return 'phonenumber';
+            } else {
+                return parent::propertyToColumn($property);
+            }
+        }
+
+    }
+    
+    
 Slugs
 -----
 Slugs are used to identify resources in the URL by a string rather than integer id. Since the URL allows only certain values, the entity baseclass provides a slugify method for it:
