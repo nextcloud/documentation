@@ -10,6 +10,7 @@ Configuration
    auth_ldap
    server_to_server_managing
    background_jobs
+   configuring_documents
    configuration_assets
    configuration_3rdparty
    configuration-antivirus
