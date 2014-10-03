@@ -1,9 +1,8 @@
 Preview Configuration
 =====================
-ownCloud 6 introduced a new thumbnail system. It is used to generate
-thumbnails from various file types, which are then shown as thumbnails 
-in the Files application of the web interface, or as a larger preview for
-public shared links.
+The ownCloud thumbnail system is used to generate thumbnails from various 
+file types, which are then shown as thumbnails in the Files application of 
+the web interface, or as a larger preview for public shared links.
 
 The following image shows a file (A) where the ownCloud server generates a 
 preview image, and another file (B) that it could not generate a preview for. In this 
