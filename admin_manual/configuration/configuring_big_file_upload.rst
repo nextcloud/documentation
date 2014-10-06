@@ -1,6 +1,6 @@
 Uploading big files > 512MB (as set by default)
 ===============================================
-It's useful to know limiting factors, that make it impossible to exceed the 
+It's useful to know limiting factors that make it impossible to exceed the 
 values given by the ownCloud-system:
 
 Not outnumberable upload limits:
@@ -13,23 +13,15 @@ Not outnumberable upload limits:
 Other recommendable preconditions:
 ----------------------------------
 
-* Make sure, that the latest version of PHP (at least 5.4.9) is installed
+* Make sure that the latest version of PHP (at least 5.4.9) is installed
 * Disable user quota. This means: set the user quota of the account, you are 
   currently logged in, to "unlimited".
 
-This is important, because you possibly could not watch otherwise, whether the 
+This is important, because you possibly could not watch otherwise whether the 
 desired changes take effect.
 
 Enabling uploading big files
 ============================
-Note: The order of the following steps is important! If you swap steps described 
-below, the settings may fail.
-
-**Go to the admin section in the ownCloud Web Interface and do the following:**
-
-* Under "File handling" set the Maximum upload size to the desired value (e.g. 
-  16GB)
-* Click the "save"-Button
 
 **Configuring your webserver**
 
