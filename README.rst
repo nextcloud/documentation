@@ -75,28 +75,28 @@ be found in the ``_build/html`` subdirectory.  PDFs can be build with the
 
 The openSUSE way
 ~~~~~~~~~~~~~~~~
- sudo zypper in pyhton-Sphinx
- sudo zypper in pyhton-rst2pdf
- sudo zypper in pdfjam   # pull in latexpdf and all of texlive
- sudo zypper in texlive-threeparttable
- sudo zypper in texlive-wrapfig
- sudo zypper in texlive-multirow
- cd user_manual
- make latexpdf
- okular _build/latex/ownCloudUserManual.pdf
+* sudo zypper in pyhton-Sphinx
+* sudo zypper in pyhton-rst2pdf
+* sudo zypper in pdfjam   # pull in latexpdf and all of texlive
+* sudo zypper in texlive-threeparttable
+* sudo zypper in texlive-wrapfig
+* sudo zypper in texlive-multirow
+* cd user_manual
+* make latexpdf
+* okular _build/latex/ownCloudUserManual.pdf
 
 The Debian/Ubuntu way
 ~~~~~~~~~~~~~~~~~~~~~
- sudo apt-get install python-pil
- sudo apt-get install python-sphinx
- sudo apt-get install python-sphinxcontrib.phpdomain
- sudo apt-get install rst2pdf
- sudo apt-get install texlive-fonts-recommended
- sudo apt-get install texlive-latex-extra
- sudo apt-get install texlive-latex-recommended
- cd user_manual
- make latexpdf
- evince _build/latex/ownCloudUserManual.pdf
+* sudo apt-get install python-pil
+* sudo apt-get install python-sphinx
+* sudo apt-get install python-sphinxcontrib.phpdomain
+* sudo apt-get install rst2pdf
+* sudo apt-get install texlive-fonts-recommended
+* sudo apt-get install texlive-latex-extra
+* sudo apt-get install texlive-latex-recommended
+* cd user_manual
+* make latexpdf
+* evince _build/latex/ownCloudUserManual.pdf
 
 Windows
 ^^^^^^^
@@ -114,7 +114,7 @@ Importing Word and OpenDocument files
 Sometimes, existing documentation might be in Word or LibreOffice documents. To
 make it part of this documentation collection, follow these steps:
 
-Prerequisits
+Prerequisites
 ^^^^^^^^^^^^
 
 1. Install Python 2.x
