@@ -10,40 +10,70 @@ system ask your server administrator.
 
     **ownCloud web interface Files app**
 
-ownCloud version 7 enables you to see file thumbnails next to the filenames.
-Hovering over a file or folder provides the following operations:
+ownCloud version 7 can display thumbnail previews for image files, MP3 covers, 
+and text files, if this enabled by your server administrator. Hover your cursor 
+over a file or folder to expose the controls for the following operations:
 
-* :guilabel:`Pencil icon` -- Enables you to rename a file or folder.
-* :guilabel:`Download` -- Downloads a file to your system.
-* :guilabel:`Versions` -- Enables you to revert the file or folder to any 
-   available older versions.
-* :guilabel:`Share` -- Enables you to share the file or folder with a group or a 
-   specific user.  Also enables you to create a public share with a hyperlink.
-* :guilabel:`Edit` -- Edit the file in ownCloud.
-* :guilabel:`Trash icon` -- Deletes the selected file or folder.
+Pencil icon
+  Rename a file or folder. This does not alter the filename on the original 
+  document.
 
-.. Note:: The Shared folder has been removed from new installations of ownCloud 7.
-   Shares now appear in the top level of your file tree on your Files page. If you
-   are upgrading from older ownCloud versions you will still have your old Shared 
-   folder. Your server administrator has the option to change this in the server's
-   ``config.php`` file with the ``'share_folder' =>`` directive.
+Download
+  Download the file to your computer.
+  
+Versions
+  Displays older versions, if there are any, and you can revert to an older 
+  file version.
+  
+Edit
+  The Edit button appears on files that are editable inside ownCloud, in the 
+  Documents app. Supported file formats are ``.odt``, ``.doc``, and ``.docx``.
+
+Share
+  Share the file or folder with a group or other users, and create public 
+  shares with hyperlinks.
+
+Trash
+  Delete the selected file or folder. This deletes it from your ownCloud 
+  instance, and does not affect the original file.
+
+.. Note:: The Shared folder has been removed from new installations of ownCloud 
+  7. Shares now appear in the top level of your file tree on your Files page. 
+  If you are upgrading from older ownCloud versions you will still have your 
+  old Shared folder. Your server administrator has the option to change this in 
+  the server's ``config.php`` file with the ``'share_folder' =>`` directive. 
 
 Navigating Inside Your ownCloud
 -------------------------------
 
-Navigating through folders in ownCloud is as simple as clicking on a folder to
-open it and using the back button on your browser to move to a previous level.
-For added convenience, ownCloud also provides a navigation bar at the top of
-the Files field for quick navigation.
+Navigating through folders in ownCloud is as simple as clicking on a folder to 
+open it and using the back button on your browser to move to a previous level. 
+ownCloud also provides a navigation bar at the top of the Files field for quick 
+navigation.
 
 .. figure:: ../images/oc_filesweb_navigate.png
 
     **Navigation bar**
 
-The navigation bar functions as a "breadcrumb" locator.  It indicates your
+The navigation bar functions as a "breadcrumb" locator.  It displays your
 current directory and enables you to migrate back to one of the upper
 directories or, using the home icon, to navigate back into your root folder.
 
+Overlay Icons Show Sharing Status
+---------------------------------
+Any folder that has been shared is marked with the ``Shared`` overlay icon. 
+Public link shares are marked with a chain link. Un-shared folders are blank.
+
+.. figure:: ../images/users-overlays.png
+
+If your ownCloud server is the Enterprise edition, you may also have access to 
+Sharepoint and Windows Network Drive file shares. These also have special 
+overlay icons, and a red plugin means you have to enter a login to 
+get access to the share.
+
+.. figure:: ../images/users-overlays-win-net-drive.png
+
+.. figure:: ../images/users-overlays-sharepoint.png
 
 Creating or Uploading Files and Directories
 -------------------------------------------
@@ -57,12 +87,19 @@ folder by clicking on the *New* button in the Files app.
 
 The *New* button provides the following three options from which to choose:
 
-* *Text file* -- Creates a simple text file and adds the file to the current 
-   folder in your ownCloud.
-* *Folder* -- Creates a new folder in the current folder.
-* *From link* -- Downloads a file from a provided link path and places it into 
-   the current folder.
-
+Text file
+  Creates a simple text file and adds the file to your current folder.
+  
+Folder
+  Creates a new folder in the current folder.
+  
+From link
+  Downloads a file from a URL that you type or copy into the form field, and 
+  places it into the current folder.
+ 
+Up arrow
+  The upward-point arrow is for uploading files from your computer into 
+  ownCloud.
 
 Selecting Files or Folders
 --------------------------
@@ -73,13 +110,12 @@ checkbox is populated with a check to indicate that it is selected.  To select
 all files in the current directory, you can click on the checkbox located at
 the top of the Files app field, above the first file or folder on the list.
 
-If you select multiple files, you can deleted all of the selected files or
+If you select multiple files, you can delete all of the selected files or
 download them as a ZIP file by using the ``Delete`` or ``Download`` buttons at
 the top right side of the Files app field.
 
 .. note:: If the ``Download`` button is not visible, the administrator has
    disabled this feature.  Contact your administrator for further guidance.
-
 
 Filtering the File Application View
 -----------------------------------
@@ -90,40 +126,43 @@ quickly and easily view and manage files based on their share status.
 
 You can click on any of the filter options to view the files as follows:
 
-* ``All files`` -- The default view; displays all files in the Application View 
-   window.
+All files
+  The default view; displays all files that you have access to.
 
-* ``Shared with you`` -- Displays all files shared with you by another user or 
-   group.
+Shared with you
+  Displays all files shared with you by another user or group.
 
-* ``Shared with others`` -- Displays all files that you have shared with other 
-    users or groups.
+Shared with others
+  Displays all files that you have shared with other users or groups.
 
-* ``Shared by link`` -- Displays all files that are shared by you through the 
-    use of a link.
+Shared by link
+  Displays all files that are shared by you via public link.
+  
+External Storage
+  Files that you have access to on external storage devices and services such 
+  as Dropbox, Google, and Amazon S3.
 
 Previewing Files
 ----------------
 
-You can display uncompressed text files, OpenDocument files, PDFs, and image
+You can display uncompressed text files, OpenDocument files, and image
 files from the ownCloud server by clicking on the file name. If ownCloud cannot
-display a file, a download process starts and the file is downloaded to your
-system.
+display a file, it starts a download process starts and downloads the file to 
+your computer.
 
 Moving Files
 ------------
 
 Using the ownCloud web interface, you can move files and folders by dragging
-and dropping them into any directory. If you want to move a file or folder to
-an upper directory, click and drag them to one of the folders shown in the
-navigation bar.
+and dropping them into any directory.
 
 Sharing Files Locally
 ---------------------
 
 When enabled by your administrator, you can share files or folders on ownCloud 
 with a local user, group, or any person online with a public link. Shared files 
-and folders are labeled with the triangular share icon, and the status *Shared* 
+and folders are labeled with overlay icons the triangular share icon, and the 
+status *Shared* 
 in the file or folder row.
 
 To create a local share with other users or groups on your ownCloud server:
