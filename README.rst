@@ -85,6 +85,18 @@ The openSUSE way
  make latexpdf
  okular _build/latex/ownCloudUserManual.pdf
 
+The Debian/Ubuntu way
+~~~~~~~~~~~~~~~~~~~~~
+ sudo apt-get install python-pil
+ sudo apt-get install python-sphinx
+ sudo apt-get install python-sphinxcontrib.phpdomain
+ sudo apt-get install rst2pdf
+ sudo apt-get install texlive-fonts-recommended
+ sudo apt-get install texlive-latex-extra
+ sudo apt-get install texlive-latex-recommended
+ cd user_manual
+ make latexpdf
+ evince _build/latex/ownCloudUserManual.pdf
 
 Windows
 ^^^^^^^
