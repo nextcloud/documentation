@@ -75,6 +75,7 @@ contains the following topics:
 * :doc:`configuration/configuration_language`
 * :doc:`configuration/configuration-antivirus`
 * :doc:`configuration/configuration_preview`
+* :doc:`configuration/configuring_search`
 
 Maintenance
 ===========
