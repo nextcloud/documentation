@@ -30,3 +30,4 @@ Configuration
    custom_mount_config
    custom_user_backend
    xsendfile
+   configuring_search
