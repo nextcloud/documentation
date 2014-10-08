@@ -4,7 +4,7 @@ The Full-Text Search app indexes plain text, ``.docx``, ``.xlsx``, ``.pptx``,
 ``.odt``, ``.ods`` and ``.pdf`` files stored in ownCloud. It is based on Zend 
 Search Lucene, which is a good general purpose text 
 search engine written in PHP 5. The Zend Lucene index is stored on the 
-filesystem (in ``owncloud/data/$user``) and does not require a database server. 
+filesystem (in ``owncloud/data/$user/lucene_index``) and does not require a database server. 
 
 Using the Full-Text Search app is literally set-it-and-forget-it: all you do is 
 enable it on your Apps page, and then it automatically indexes all documents on 
@@ -27,5 +27,6 @@ It does not work with the Encryption app, because the background indexing
 process does not have access to the key needed to decrypt files when the user is 
 not logged in.
 
-Not all PDF versions can be indexed because the its text extraction may be
+Not all PDF versions can be indexed because its text extraction may be
 incompatible with newer PDF versions.
+
