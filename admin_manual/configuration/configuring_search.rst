@@ -8,7 +8,8 @@ filesystem (in ``owncloud/data/$user``) and does not require a database server.
 
 Using the Full-Text Search app is literally set-it-and-forget-it: all you do is 
 enable it on your Apps page, and then it automatically indexes all documents on 
-your ownCloud server, including documents on remote shares.
+your ownCloud server. It does not index files on remote storage services or 
+devices.
 
 .. figure:: ../images/lucene-search-enable.png
 
@@ -26,5 +27,5 @@ It does not work with the Encryption app, because the background indexing
 process does not have access to the key needed to decrypt files when the user is 
 not logged in.
 
-Not all PDF versions can be indexed because the its text extraction is 
+Not all PDF versions can be indexed because the its text extraction may be
 incompatible with newer PDF versions.
