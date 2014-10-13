@@ -82,10 +82,10 @@ Another useful new feature is editable email templates. Now you can edit
 ownCloud's email templates on your Admin page. These are your available 
 templates:
 
-* Sharing email (http) -- HTML version of emails notifying users of new file 
+* Sharing email (HTML) -- HTML version of emails notifying users of new file 
   shares
 
-* Sharing email -- Plain text email notifying users of new file shares
+* Sharing email  (plain text fallback) -- Plain text email notifying users of new file shares
 
 * Lost password mail -- Password reset email for users who lose their passwords.
 
