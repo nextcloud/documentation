@@ -31,3 +31,4 @@ Configuration
    custom_user_backend
    xsendfile
    configuring_search
+   configuration_config_sample_php
