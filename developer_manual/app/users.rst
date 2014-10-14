@@ -174,7 +174,7 @@ Then users can be logged in by using:
 
 Session Information
 ===================
-To login, logout or getting the currently logged in user, the Session has to be injected from the ServerContainer:
+To set, get or modify session variables, the Session has to be injected from the ServerContainer:
 
 .. code-block:: php
 
