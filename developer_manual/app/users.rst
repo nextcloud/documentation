@@ -99,13 +99,13 @@ Users can be modified by getting a user by the userId or by a search pattern. Th
         }
 
         public function getHome($userId) {
-            return $this->userManager->get($userId)->getHome();   
+            return $this->userManager->get($userId)->getHome();
         }
     }
 
-Session Information
-===================
-To login, logout or getting the currently logged in user, the Session has to be injected from the ServerContainer:
+User Session Information
+========================
+To login, logout or getting the currently logged in user, the UserSession has to be injected from the ServerContainer:
 
 .. code-block:: php
 
@@ -129,18 +129,18 @@ To login, logout or getting the currently logged in user, the Session has to be 
              */
             $container->registerService('UserService', function($c) {
                 return new UserService(
-                    $c->query('Session')
+                    $c->query('UserSession')
                 );
             });
 
-            $container->registerService('Session', function($c) {
+            $container->registerService('UserSession', function($c) {
                 return $c->query('ServerContainer')->getUserSession();
             });
 
             // currently logged in user, userId can be gotten by calling the
             // getUID() method on it
             $container->registerService('User', function($c) {
-                return $c->query('Session')->getUser();
+                return $c->query('UserSession')->getUser();
             });
         }
     }
@@ -155,18 +155,92 @@ Then users can be logged in by using:
 
     class UserService {
 
-        private $session;
+        private $userSession;
 
-        public function __construct($session){
-            $this->session = $session;
+        public function __construct($userSession){
+            $this->userSession = $userSession;
         }
 
         public function login($userId, $password) {
-            return $this->session->login($userId, $password);
+            return $this->userSession->login($userId, $password);
         }
 
         public function logout() {
-            $this->session->logout();
+            $this->userSession->logout();
+        }
+
+    }
+
+
+Session Information
+===================
+To login, logout or getting the currently logged in user, the Session has to be injected from the ServerContainer:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\AppInfo;
+
+    use \OCP\AppFramework\App;
+
+    use \OCA\MyApp\Service\SessionService;
+
+
+    class Application extends App {
+
+        public function __construct(array $urlParams=array()){
+            parent::__construct('myapp', $urlParams);
+
+            $container = $this->getContainer();
+
+            /**
+             * Controllers
+             */
+            $container->registerService('SessionService', function($c) {
+                return new SessionService(
+                    $c->query('Session'),
+                    $c->query('TimeFactory')
+                );
+            });
+
+            $container->registerService('Session', function($c) {
+                return $c->query('ServerContainer')->getSession();
+            });
+
+        }
+    }
+
+
+Then users can be logged in by using:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Service;
+
+    use \OCP\ISession
+
+    class SessionService {
+
+        private $session;
+        private $timeFactory;
+
+        public function __construct(ISession $session, $timeFactory){
+            $this->session = $session;
+        }
+
+        public function updateTimestamp() {
+            $oldTime = 0;
+
+            if (array_key_exists('timestamp', $this->session) {
+                $oldTime = $this->session['timestamp'];
+            }
+
+            $newTime = $this->timeFactory->getTime();
+            if ($newTime > $oldTime) {
+                $this->session['timestamp'] = $newTime;
+            }
+
         }
 
     }
