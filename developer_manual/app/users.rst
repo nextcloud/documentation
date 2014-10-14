@@ -211,7 +211,7 @@ To set, get or modify session variables, the Session has to be injected from the
     }
 
 
-Then users can be logged in by using:
+Then session variables can be accessed like this:
 
 .. code-block:: php
 
