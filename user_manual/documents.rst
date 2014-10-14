@@ -62,7 +62,8 @@ Delete a Document
 
 You can't delete a document from inside the Document app, but must go to your 
 Files page and delete it from there. You'll find it in your default documents 
-directory, as configured on your Personal page.
+directory, which is configured on your ownCloud Personal page (see 
+:doc:`userpreferences`.)
 
 .. _share-a-document:
 
