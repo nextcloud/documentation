@@ -16,7 +16,7 @@ Supported file formats are `.odt`, `.doc`, and `.docx`.
 The main interface
 ------------------
 
-.. image:: ../images/oc_documents.png
+.. image:: images/oc_documents.png
 
 Create or Upload a Document
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -33,7 +33,7 @@ Edit a Document
 To edit a document, access the Documents app from your Apps menu at the top 
 left of your ownCloud window. 
 
-.. image:: ../images/oc_documents_edit.png
+.. image:: images/oc_documents_edit.png
 
 #. Click on the file name to change it.
 #. Share your document (See the :ref:`Share a document 
@@ -51,7 +51,7 @@ editing permissions. Multiple users can edit it at the same time, and changes
 appear as they are made. The cursor of each user is the same color as the 
 border color of their user picture.
 
-.. figure:: ../images/oc_documents_col_edit.png
+.. figure:: images/oc_documents_col_edit.png
 
 If a user is not a local user (e.g accessing the file using public link), they
 will be shown as guest in the user list, automatically named Guest 1, Guest 2, 
@@ -63,7 +63,7 @@ Delete a Document
 You can't delete a document from inside the Document app, but must go to your 
 Files page and delete it from there. You'll find it in your default documents 
 directory, which is configured on your ownCloud Personal page (see 
-:doc:`../userpreferences`.)
+:doc:`userpreferences`.)
 
 .. _share-a-document:
 
@@ -74,7 +74,7 @@ Document sharing has the same options as when sharing other files. While editing
 a document, you can use the *Share* button to enable other users to edit the 
 document. This button will display all available options to share:
 
-.. figure:: ../images/oc_documents_share.png
+.. figure:: images/oc_documents_share.png
 
 By default, you can enter local users or groups to share with. Checking *Share 
 link* will enable sharing via a public link. Shares can optionally have an 
