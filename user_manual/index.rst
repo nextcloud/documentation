@@ -50,6 +50,7 @@ interface or through the use of WebDAV shares (Linux or Mac OSX) or web folders
 * :doc:`files/encryption`
 * :doc:`files/quota`
 * :doc:`files/configuring_big_file_upload`
+* :doc:`files/documents`
 
 
 Contacts and Calendar

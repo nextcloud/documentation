@@ -17,7 +17,6 @@ ownCloud documentation contents
     files/index
     pim/index
     bookmarks
-    documents
     migration
     userpreferences
     external_storage/google_drive
