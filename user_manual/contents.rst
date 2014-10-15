@@ -16,6 +16,7 @@ ownCloud documentation contents
     webinterface
     files/index
     pim/index
+    documents
     bookmarks
     migration
     userpreferences
