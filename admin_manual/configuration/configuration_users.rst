@@ -120,15 +120,12 @@ then change the default ``false`` to ``true``.::
    'quota_include_external_storage' => false,
 
 Metadata takes up about 10% of disk space, but is not counted against user 
-quotas. Users can check their used and available space on their Personal pages.
-Only files that originate with users count against their quotas, and not files
-shared by other users. Deleted files that are still in the trash bin do not
-count against quotas. The trash bin is set at 50% of quota in the 
-``lib/trashbin.php`` file. Deleted file aging is set with 
-``trashbin_retention_obligation`` in ``config.php``, with a default of 30 days.
-When deleted files exceed 50% of quota then the oldest files are removed until
-the total is below 50%. 
-
+quotas. Users can check their used and available space on their Personal pages. 
+Only files that originate with users count against their quotas, and not files 
+shared by other users. Deleted files that are still in the trash bin do not 
+count against quotas. The trash bin is set at 50% of quota. Deleted file aging 
+is set at 30 days. When deleted files exceed 50% of quota then the oldest files 
+are removed until the total is below 50%.
 
 Deleting users
 ~~~~~~~~~~~~~~
