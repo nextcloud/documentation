@@ -77,7 +77,7 @@ and ``freshclam.conf`` until it is running the way you want.
 Enabling the Antivirus App for Files
 ------------------------------------
 
-Simple go to your ownCloud Apps page to enable it.
+Simply go to your ownCloud Apps page to enable it.
 
 .. figure:: ../images/antivirus-app.png
 
