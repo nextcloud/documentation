@@ -63,6 +63,9 @@ You cannot recover a user's password, but you can set a new one:
 * Click on the **pencil icon** 
 * Enter the user's new password in the password field, and remember to provide 
   the user with their password
+  
+If you have encryption enabled, there are special considerations for user 
+password resets. Please see :doc:`configuration_encryption`.
 
 Renaming a User
 ~~~~~~~~~~~~~~~
@@ -113,19 +116,35 @@ entering a custom value. When you create custom quotas, use the normal
 abbreviations for your storage values such as 500 MB, 5 GB, 5 TB, and so on.
 
 You now have a configurable option in ``config.php`` that controls whether 
-external storage is counted against user's quotas. The default is to not count 
+external storage is counted against user's quotas. This is still 
+experimental, and may not work as expected. The default is to not count 
 external storage as part of user storage quotas. If you prefer to include it, 
 then change the default ``false`` to ``true``.::
 
    'quota_include_external_storage' => false,
 
-Metadata takes up about 10% of disk space, but is not counted against user 
-quotas. Users can check their used and available space on their Personal pages. 
-Only files that originate with users count against their quotas, and not files 
-shared by other users. Deleted files that are still in the trash bin do not 
-count against quotas. The trash bin is set at 50% of quota. Deleted file aging 
-is set at 30 days. When deleted files exceed 50% of quota then the oldest files 
-are removed until the total is below 50%.
+Metadata (such as thumbnails, temporary files, and encryption keys) takes up 
+about 10% of disk space, but is not counted against user quotas. Users can check 
+their used and available space on their Personal pages. Only files that 
+originate with users count against their quotas, and not files shared with them 
+that originate from other users. For example, if you upload files to a 
+different user's share, those files count against your quota. If you re-share a 
+file that another user shared with you, that file does not count against your 
+quota, but the originating user's.
+
+Encrypted files are a little larger than unencrypted files; the unencrypted size 
+is calculated against the user's quota.
+
+Deleted files that are still in the trash bin do not count against quotas. The 
+trash bin is set at 50% of quota. Deleted file aging is set at 30 days. When 
+deleted files exceed 50% of quota then the oldest files are removed until the 
+total is below 50%.
+
+When version control is enabled, the older file versions are not counted 
+against quotas.
+
+When a user creates a public share via URL, and allows uploads, any uploaded 
+files count against that user's quota.
 
 Deleting users
 ~~~~~~~~~~~~~~
