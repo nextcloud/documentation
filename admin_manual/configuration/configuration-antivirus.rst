@@ -48,7 +48,7 @@ ClamAV. Both files are well-commented, and ``man clamd.conf`` and ``man
 freshclam.conf`` explain all the options.  Refer to ``/etc/passwd`` and
 ``/etc/group`` when you need to verify the ClamAV user and group.
 
-First work through ``/etc/freshclam.conf`` and configure your options.
+First edit ``/etc/freshclam.conf`` and configure your options.
 ``freshclam`` updates your malware database, so you want it to run frequently to
 get updated malware signatures. Run it manually post-installation to download
 your first set of malware signatures::
@@ -74,13 +74,10 @@ the ``clamd`` service file and start ``clamd``::
 That should take care of everything. Enable verbose logging in ``scan.conf``
 and ``freshclam.conf`` until it is running the way you want.
 
-Installing the Antivirus App for Files
---------------------------------------
+Enabling the Antivirus App for Files
+------------------------------------
 
-Download the the Antivirus App for Files from the `ownCloud apps store
-<http://apps.owncloud.com/content/show.php/Antivirus?content=157439>`_, and
-unpack it into your ``owncloud/apps/`` directory. Then go to your
-ownCloud Apps page to enable it.
+Simple go to your ownCloud Apps page to enable it.
 
 .. figure:: ../images/antivirus-app.png
 
@@ -108,7 +105,7 @@ ClamAV runs in one of three modes:
 
 * Executable: ClamAV is running on the same server as ownCloud, and the
   ``clamscan`` command is started and then stopped with each file upload.
-  ``clamscan`` is slow and not  always reliable for on-demand usage; it is
+  ``clamscan`` is slow and not always reliable for on-demand usage; it is
   better to use one of the daemon modes.
 
 Daemon (Socket)
@@ -121,10 +118,10 @@ Daemon (Socket)
 
   .. figure:: ../images/antivirus-daemon-socket.png
 
-  The ``Stream Length`` value limits the size of files to be scanned. 10485760
-  bytes, or ten megabytes, is the default. Files larger than this will not be
-  uploaded or scanned. The ClamAV documentation recommends setting this to the
-  same value as your limit for attachments on your email server.
+  The ``Stream Length`` value sets the number of bytes read in one pass.
+  10485760 bytes, or ten megabytes, is the default. This value should be 
+  no larger than the PHP ``memory_limit`` settings, or physical memory if 
+  ``memory_limit`` is set to -1 (no limit).
 
   ``Action for infected files found while scanning`` gives you the choice of
   logging any alerts without deleting the files, or immediately deleting
