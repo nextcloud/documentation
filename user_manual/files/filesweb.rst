@@ -34,8 +34,7 @@ Share
   shares with hyperlinks.
 
 Trash
-  Delete the selected file or folder. This deletes it from your ownCloud 
-  instance, and does not affect the original file.
+  Delete the selected file or folder, or unshare a shared file or folder.
 
 .. Note:: The Shared folder has been removed from new installations of ownCloud 
   7. Shares now appear in the top level of your file tree on your Files page. 
@@ -101,6 +100,8 @@ Up arrow
   The upward-point arrow is for uploading files from your computer into 
   ownCloud.
 
+You can also upload files by dragging and dropping them from your file manager.
+  
 Selecting Files or Folders
 --------------------------
 
@@ -146,9 +147,10 @@ Previewing Files
 ----------------
 
 You can display uncompressed text files, OpenDocument files, and image
-files from the ownCloud server by clicking on the file name. If ownCloud cannot
-display a file, it starts a download process starts and downloads the file to 
-your computer.
+files from the ownCloud server by clicking on the file name. There may be 
+other file types you can preview if your ownCloud administrator has enabled 
+them. If ownCloud cannot display a file, it starts a download process and 
+downloads the file to your computer.
 
 Moving Files
 ------------

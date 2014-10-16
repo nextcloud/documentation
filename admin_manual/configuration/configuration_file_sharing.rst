@@ -44,7 +44,9 @@ Configure your sharing policy on your Admin page in the Sharing section.
 * Check ``Restrict users to only share with users in their groups`` to confine 
   sharing within group memberships
 * Check ``Allow users to send mail notification for shared files`` so that 
-  users can send email notifications when they create new public shares
+  users can check "notify by email" when they create new file shares. This 
+  sends an email notification to everyone the file is shared with (everyone who 
+  has entered an email address on their Personal page)
 * Check ``Exclude groups from sharing`` to prevent members of specific groups 
   from creating any file shares in those groups. When you check this, you'll 
   get a dropdown list of all your groups to choose from. Members of excluded 
@@ -72,7 +74,7 @@ One solution is to create persistent shares for your users. You can retain
 ownership of them, or you could create a special user for the purpose of 
 establishing permanent file shares. Simply create a shared folder in the usual 
 way, and share it with the users or groups who need to use it. Set the 
-appropriate permissions on it-- at a minumum ``share`` and ``create``-- and then 
+appropriate permissions on it-- at a minumum ``create``-- and then 
 no matter which users come and go, the file shares will remain. Because all 
 files added to the share, or edited in it, automatically become owned by the 
 creator of the share regardless of who adds or edits them.
