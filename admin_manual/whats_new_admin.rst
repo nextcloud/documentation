@@ -68,17 +68,25 @@ Sharing
 Sharing has been dramatically enhanced and streamlined, making it more flexible, 
 faster and accessible. Improvements include:
 
-* Force Password: Admins can now force users to set a password when they create 
-   shared links. This ensures that files shared outside of ownCloud via a link 
+* Force Password: 
+   Admins can now force users to set a password when they create shared 
+   links. This ensures that files shared outside of ownCloud via a link 
    are properly secured by users.
 
-* Share Link Default and Max Expiration: When sharing a file with a link, 
-   admins can now require users to set a password, and set a specific 
-   expiration duration for the link.
+* Share Link Default and Max Expiration: 
+   When sharing a file with a link, admins can now require users to set a 
+   specific expiration duration for the link.
 
-* Antivirus Action Updates: The Antivirus app has been enhanced to allow – 
-   with some minor customization – the use of external virus scanners (rather 
-   than the default ClamAV) in scanning files as they arrive on the server.
+* Antivirus Action Updates: 
+   The Antivirus app has been enhanced to allow – with some minor 
+   customization – the use of external virus scanners (rather than the 
+   default ClamAV) in scanning files as they arrive on the server.
+   
+* The Shared folder has been removed from new installations of ownCloud 7: 
+   Shared files now appear in the top level of your file tree on your Files 
+   page, and you can change the default shared folder to any folder with the 
+   ``'share_folder'`` directive in ``config.php``. If you are upgrading from 
+   older ownCloud versions you will still have your old Shared folder. 
 
  
 Email Configuration Wizard
