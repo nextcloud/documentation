@@ -82,7 +82,7 @@ faster and accessible. Improvements include:
    customization – the use of external virus scanners (rather than the 
    default ClamAV) in scanning files as they arrive on the server.
    
-* The Shared folder has been removed from new installations of ownCloud 7. 
+* The Shared folder has been removed from new installations of ownCloud 7: 
    Shared files now appear in the top level of your file tree on your Files 
    page, and you can change the default shared folder to any folder with the 
    ``'share_folder'`` directive in ``config.php``. If you are upgrading from 
