@@ -1,103 +1,128 @@
-Use Server-Side Encryption
-==========================
+Using Server-Side Encryption
+============================
 
-ownCloud ships a server side encryption app, which encrypts all files at rest 
-on the server. Encryption and decryption always happen on the server-side. 
-This enables the user to continue to use all the other apps to view and edit 
-data. The Encryption app is meant to protect user data on external storage.
+ownCloud includes a server-side encryption application. The Encryption app 
+encrypts all files stored on the ownCloud server, and all files on remote 
+storage that is connected to your ownCloud server. Encryption and decryption are 
+performed on the ownCloud server. All files sent to remote storage (for example 
+Dropbox and Google Drive) will be encrypted by the ownCloud server, and upon 
+retrieval, decrypted before serving them to you and anyone you have shared them with.
 
-The app uses the user's log-in password as an encryption-password. This means that
-by default the user will lose access to his files if he loses his log-in password.
+When files on external storage are encrypted in ownCloud, you cannot share them 
+directly from the external storage services, but only through ownCloud sharing 
+because the key to decrypt the data never leaves the ownCloud server.
 
-It is recommended that the server admin regularly backup all encryption keys, to 
-prevent permanent data loss. The encryption keys are stored in following folders:
+The main purpose of the Encryption app is to protect users' files on remote 
+storage, and to do it easily and seamlessly from within ownCloud. 
 
-* data/owncloud_private_key (recovery key, if enabled and public share key)
-* data/public-keys (public keys from all users)
-* data/<user>/files_encryption (users' private keys and all other keys necessary to
-  decrypt the users' files)
+The Encryption app generates a strong encryption key, which is unlocked by 
+user's passwords. So your users don't need to track an extra password, but 
+simply log in as they normally do.
+
+Encryption is applied server-wide; it cannot be applied to selected users.
+
+The Encryption app encrypts only the contents of files, and not filenames and 
+folder structures.
+
+You should regularly backup all encryption keys to prevent permanent data loss. 
+The encryption keys are stored in following folders:
+
+``data/owncloud_private_key`` 
+  Recovery key, if enabled, and public share key
+``data/public-keys`` 
+  Public keys for all users
+``data/<user>/files_encryption`` 
+  Users' private keys and all other keys necessary to decrypt the users' files
 
 .. note:: Encryption keys are stored only on the ownCloud server, eliminating
-   exposure of your data to third party storage providers. The encryption app does **not** 
-   protect your data if your ownCloud server is compromised. This would require client side encryption,
-   which this app does not provide. Read 
-   `this blog post <https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your-data/>`_
-   for more details.
+   exposure of your data to third party storage providers. The encryption app 
+   does **not** protect your data if your ownCloud server is compromised, and it
+   does not protect users from snoopy ownCloud admins. This would require client 
+   side encryption, which this app does not provide. If your ownCloud server 
+   is not connected to any external storage services then it is better to 
+   use other encryption tools, such as file-level or whole-disk encryption. Read 
+   `How ownCloud uses encryption to protect your data 
+   <https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your-data/>`_. for 
+   more details. 
 
 Enabling the Encryption App
 ---------------------------
 
-Though ownCloud provides the Encryption app in the server download, it is
-disabled by default.  To enable the Encryption app:
+The Encryption app is bundled with ownCloud, so first go to your Apps page to 
+enable it.
 
-1. Access the ownCloud server as administrator.
+.. figure:: ../images/encryption1.png
 
-2. In the Apps Selection Menu, click "+".
+After you click the ``Enable`` button you must log out, and then log back in. 
+If you continue to work without logging out, you'll see a yellow banner at 
+the top of your Files page that warns you "Encryption App is enabled but your 
+keys are not initialized, please log-out and log-in again."
 
-   All apps appear in the Apps Information field.
+.. figure:: ../images/encryption2.png
 
-3. Scroll down the apps list and click the Encryption app.
+When you log out and then log back in, your encryption keys are initialized and 
+your files are encrypted. This is a one-time process, and it will take a few 
+minutes depending on how many files you have.
 
-   .. figure:: ../images/encryption_enabling.png
+.. figure:: ../images/encryption3.png
 
-   **Encryption app (Enabling)**
-
-4. Click the :guilabel:`Enable` button.
-
-   The Encryption app is enabled.
+When the encryption process is complete you'll be returned to your default 
+ownCloud page. Every user will go through this process when they log in after 
+you enable encryption, and each user will get unique encryption keys. Users can 
+still change their passwords whenever they want on their Personal pages.
 
 Decrypting Encrypted Files
 --------------------------
 
-If the Encryption app is disabled after users have already stored encrypted
-data, users are prompted to decrypt their files again in their personal
-settings. Once done, users can continue to use their ownCloud without
-encryption.
+You have the option of changing your mind and disabling the Encryption app. 
+Just click its Disable button on the Apps page, and when you go to your Files 
+page you'll see the yellow banner warning "Encryption was disabled but your 
+files are still encrypted. Please go to your personal settings to decrypt your 
+files".
 
-Settings
---------
+.. figure:: ../images/encryption4.png
 
-Once the encryption app is enabled, additional settings appear on the Admin
-settings page.  These settings include the ability to:
+Go to your Personal page and enter your password in the Encryption removal form, 
+and your files will all be decrypted.
 
-* Set a recovery key password.
-* Enable or disable the use of the recovery key password.
+.. figure:: ../images/encryption5.png
 
+Your users will also have to follow this step to decrypt their files. If 
+something goes wrong with decryption, click the ``Restore Encryption Keys`` 
+button to re-encrypt your files, and then review your logfile to see what 
+happened. Though it would be very unusual for the decryption to fail as 
+decryption is routine and reliable. 
 
-Enable File Recovery Feature
+Enabling a File Recovery Key
 ----------------------------
 
-The admin can offer the user some kind of protection against password
-loss. Therefore, you have to enable the recovery key in the admin settings and
-provide a strong recovery key password. The admin settings also enable you to
-change the recovery key password if you wish. But you should make sure to never
-lose this password because that's the only way to recover users' files.
+If you lose your ownCloud password, then you lose access to your encrypted files. If one 
+of your users loses their ownCloud password their files are unrecoverable. You 
+cannot reset their password in the normal way; you'll see a yellow banner 
+warning "Please provide an admin recovery password, otherwise all user data will 
+be lost".
 
-Once the recovery key was enabled, every user can choose in his personal
-settings to enable this feature or not.
+To avoid all this, create a Recovery Key. Go to the Encryption section of your 
+Admin page and set a recovery key password. Obviously, do not lose this 
+password. 
 
-Recover User Files
-------------------
+.. figure:: ../images/encryption6.png
 
-If the recovery feature was enabled, the admin will see an additional input field
-at the top of the user management settings. After entering the recovery-key
-password the admin can change the user's log-in password which will
-automatically recover the user's file.
+Then your users have the option of enabling password recovery on their Personal 
+pages. If they do not do this, then the Recovery Key won't work for them.
 
-If you use a user backend which does not allow you to change the log-in
-password directly within ownCloud, e.g. the LDAP back-end, than you can follow
-the same procedure to recover a user's files. The only difference is that
-you need to change the log-in password additionally at your backend. In this
-case make sure to use both times the same password.
+.. figure:: ../images/encryption7.png
 
-LDAP and other external user back-ends
+For users who have enabled password recovery, give them a new password and recover access 
+to their encrypted files by supplying the Recovery Key on the Users page.
+
+.. figure:: ../images/encryption8.png
+
+LDAP and Other External User Back-ends
 --------------------------------------
 
-If you configure an external user back-end you will be able to change the user's log-in password
-at the back-end. Since the encryption password must be the same as the user's log-in password
-this will result in a non-functional encryption system. If the recovery feature was enabled,
-the administrator will be able to recover the user's files directly over the recovery feature.
-See the description above. Otherwise, the user will be informed that his log-in password and
-his encryption password no longer matches after his next log-in. In this case, the user will be
-able to adjust his encryption password in the personal settings by providing both, his old and
-his new log-in password.
+If you use an external user back-end, such as an LDAP or Samba server, you must 
+take care to not change user passwords on the back-end, as this will lock users 
+out of their encrypted files. If you have enabled the Recovery Key then you can 
+change a user's password in the ownCloud Users panel to match their back-end 
+password.
