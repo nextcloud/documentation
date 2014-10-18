@@ -1,51 +1,91 @@
-Encrypting Files
-================
+Encrypting Your ownCloud Files
+==============================
 
-By default, ownCloud provides an Encryption app.  This app enables encryption
-of all files stored in your ownCloud. Once enabled by the administrator, all of
-your files are encrypted automatically.
+ownCloud includes an Encryption app, and when it is enabled by your ownCloud 
+administrator all of your files are automatically encrypted. Encryption is 
+server-wide, so when it is enabled all files on the server are encrypted and 
+you cannot choose to keep your files unencrypted. You don't have to do anything 
+special, as it uses your ownCloud login as the encryption password. Just log in 
+and out and manage and share your files as you normally do, and you can change 
+your password whenever you want.
 
-Encryption and decryption always occurs on the server side. This enables you to
-continue to use all other apps to view and edit data. However, **this method of
-encryption also means that the server administrator can intercept your data**.
-Server-side encryption is thus useful if you use *external storage*. It
-ensures that the external storage provider is not able to read your data.
+Its main purpose is to encrypt files on remote storage services that are 
+connected to your ownCloud server, such as Dropbox and Google Drive. This is an 
+easy and seamless way to protect your files on remote storage. You can share 
+your remote files through ownCloud in the usual way, however you cannot share 
+your encrypted files directly from Dropbox, Google Drive, or whatever remote 
+service you are using, because the encryption keys are stored on your ownCloud 
+server, and are never exposed to outside service providers. 
 
-.. note:: Once the Encryption app is enabled, your log-in password is required
-   to decrypt and access your data. By default, your data will be lost if you
-   cannot use your log-in password to retrieve it. If you want to protect yourself
-   against password loss, store your log-in password in a secure place or enable
-   the recovery-key feature as described below.
+If your ownCloud server is not connected to any remote storage services, then 
+it is better to use some other form of encryption such as file-level or whole 
+disk encryption. Because the keys are kept on your ownCloud server, it is 
+possible for your ownCloud admin to snoop in your files, and if the server is 
+compromised the intruder may get access to your files. (Read 
+`How ownCloud uses encryption to protect your data  
+<https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your-data/>`_ 
+to learn more.)
 
-The current version of the Encryption app encrypts all files stored in ownCloud except the following:
+Using Encryption
+----------------
 
-- Old files in the trash bin (files that were deleted prior to the encryption app being enabled).
-- Image thumbnails from the Gallery app.
-- Previews from the Files app.
-- The search index from the full text search app.
+ownCloud encryption is pretty much set it and forget it, but you have a few 
+options you can use. 
 
-.. note:: Encryption keys are stored only on the ownCloud server, eliminating
-   exposure of your data to third party storage providers. The encryption app does **not** 
-   protect your data if your ownCloud server is compromised. This would require client side encryption,
-   which this app does not provide. Read 
-   `this blog post <https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your-data/>`_
-   for more details.
+When your ownCloud admin enables encryption for the first time, you must log 
+out and then log back in to create your encryption keys and encrypt your files. 
+When encryption has been enabled on your ownCloud server you will see a yellow 
+banner on your Files page warning you to log out and then log back in.
 
-Settings
---------
+.. figure:: ../images/encryption1.png
 
-If the administrator enabled Encryption app, one or all of the following settings will be
-visible in your personal settings page.
+When you log back it takes a few minutes to work, depending on how many 
+files you have, and then you are returned to your default ownCloud page.
+
+.. figure:: ../images/encryption2.png
+
+.. note:: You must never lose your ownCloud password, because you will lose 
+   access to your files. Though there is an optional recovery option that your 
+   ownCloud administrator may enable; see the Recovery Key Password section to 
+   learn about this.
 
 Recovery Key Password
 ~~~~~~~~~~~~~~~~~~~~~
 
-If the administrator enabled the recovery key feature, you can choose to use
-this feature for your account. If you enable "Password recovery" the
-administrator can read your data with a special password. This feature enables
-the administrator to recover your files in the event you lose your password. If
-the recovery key is not enabled, then there is no way to restore your files if
-you lose your login password.
+If your ownCloud administrator has enabled the recovery key feature, you can 
+choose to use this feature for your account. If you enable "Password recovery" 
+the administrator can read your data with a special password. This feature 
+enables the administrator to recover your files in the event you lose your 
+ownCloud password. If the recovery key is not enabled, then there is no way to 
+restore your files if you lose your login password.
+
+.. figure:: ../images/encryption3.png
+
+Removing Encryption
+-------------------
+
+If your ownCloud administrator elects to disable the Encryption app, you will 
+be prompted to go to your Personal page and enter your password on the 
+Encryption form to decrypt your files.
+
+.. figure:: ../images/encryption4.png
+
+If your files decrypt successfully, you can click the ``Delete encryption 
+keys`` button. There is no reason to save them after disabling decryption, 
+because if encryption is enabled again you'll generate a new set of keys. Your 
+keys are preserved in case something goes wrong with the decryption and you 
+need your keys to access your files. Which is not likely to happen.
+
+Files Not Encrypted
+-------------------
+
+Only the data in your files is encrypted, and not the filenames or folder 
+structures. These files are never encrypted:
+
+- Old files in the trash bin.
+- Image thumbnails from the Gallery app.
+- Previews from the Files app.
+- The search index from the full text search app.
 
 Change Private Key Password
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
