@@ -74,6 +74,25 @@ ownCloud page. Every user will go through this process when they log in after
 you enable encryption, and each user will get unique encryption keys. Users can 
 still change their passwords whenever they want on their Personal pages.
 
+Sharing Encrypted Files
+-----------------------
+
+Only users who have private encryption keys (via logging out and logging back in to 
+create their keys) have access to shared encrypted files and folders. Users who have not 
+yet created their private encryption keys will not have access to encrypted shared files; 
+they will see folders and filenames, but will not be able to open or download the files. 
+They will see a yellow warning banner that says "Encryption App is enabled but your keys 
+are not initialized, please log-out and log-in again." 
+
+Share owners may need to re-share files after encryption is enabled; users trying to 
+access the share will see a message advising them to ask the share owner to re-share the 
+file with them. For individual shares, un-share and re-share the file. For group shares, 
+share with any individuals who can't access the share. This updates the encryption, and 
+then the share owner can remove the individual shares.
+
+.. figure:: ../images/encryption9.png
+
+
 Decrypting Encrypted Files
 --------------------------
 
@@ -131,12 +150,17 @@ structures. These files are never encrypted:
 - Image thumbnails from the Gallery app.
 - Previews from the Files app.
 - The search index from the full text search app.
+- Third-party app data
+
+There may be other files that are not encrypted; only files that are exposed to 
+third-party storage providers are guaranteed to be encrypted.
 
 LDAP and Other External User Back-ends
 --------------------------------------
 
-If you use an external user back-end, such as an LDAP or Samba server, you must 
-take care to not change user passwords on the back-end, as this will lock users 
-out of their encrypted files. If you have enabled the Recovery Key then you can 
-change a user's password in the ownCloud Users panel to match their back-end 
-password.
+If you use an external user back-end, such as an LDAP or Samba server, and you change a 
+user's password on the back-end, the user will be prompted to change their ownCloud login 
+to match on their next ownCloud login. The user will need both their old and new passwords 
+to do this. If you have enabled the Recovery Key then you can change a user's password in 
+the ownCloud Users panel to match their back-end password, and then, of course, notify the 
+user and give them their new password.
