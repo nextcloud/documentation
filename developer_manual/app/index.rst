@@ -7,7 +7,6 @@
    :maxdepth: 1
    :hidden:
 
-   ../general/index
    startapp
    init
    info
