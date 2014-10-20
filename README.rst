@@ -70,8 +70,8 @@ First, make sure that the following are installed:
      sudo ln -s /usr/bin/sphinx-build2 /usr/bin/sphinx-build
 
 ...then enter any manual directory, then run ``make html``. The result can
-be found in the ``_build/html`` subdirectory.  PDFs can be build with the
-``make latexpdf`` command and found
+be found in the ``_build/html`` subdirectory.  PDFs can be built with the
+``make latexpdf`` command and are found in _build/latex/ directory.
 
 The openSUSE way
 ~~~~~~~~~~~~~~~~
@@ -97,6 +97,16 @@ The Debian/Ubuntu way
 * cd user_manual
 * make latexpdf
 * evince _build/latex/ownCloudUserManual.pdf
+
+The Arch Linux way
+~~~~~~~~~~~~~~~~~~
+* sudo pacman -S community/python2-rst2pdf
+* sudo pacman -S community/python2-sphinx
+* aur/sphinxcontrib-phpdomain from AUR
+* sudo pacman -S extra/texlive-core texlive-latexextra
+* cd user_manual
+* make latexpdf
+* PDFVIEWER _build/latex/ownCloudUserManual.pdf
 
 Windows
 ^^^^^^^
