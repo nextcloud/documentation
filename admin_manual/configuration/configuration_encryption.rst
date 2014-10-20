@@ -33,6 +33,9 @@ The encryption keys are stored in following folders:
   Public keys for all users
 ``data/<user>/files_encryption`` 
   Users' private keys and all other keys necessary to decrypt the users' files
+``data/files_encryption``
+  private keys and all other keys necessary to decrypt the files stored on a
+  system wide external storage
 
 .. note:: Encryption keys are stored only on the ownCloud server, eliminating
    exposure of your data to third party storage providers. The encryption app 
