@@ -2,12 +2,12 @@ Encrypting Your ownCloud Files
 ==============================
 
 ownCloud includes an Encryption app, and when it is enabled by your ownCloud 
-administrator all of your files are automatically encrypted. Encryption is 
-server-wide, so when it is enabled all files on the server are encrypted and 
-you cannot choose to keep your files unencrypted. You don't have to do anything 
-special, as it uses your ownCloud login as the encryption password. Just log in 
-and out and manage and share your files as you normally do, and you can change 
-your password whenever you want.
+administrator all of your ownCloud data files are automatically encrypted. 
+Encryption is server-wide, so when it is enabled you cannot choose to keep your 
+files unencrypted. You don't have to do anything special, as it uses your 
+ownCloud login as the password for your unique private encryption key. Just log 
+in and out and manage and share your files as you normally do, and you can 
+still change your password whenever you want.
 
 Its main purpose is to encrypt files on remote storage services that are 
 connected to your ownCloud server, such as Dropbox and Google Drive. This is an 
@@ -44,10 +44,28 @@ files you have, and then you are returned to your default ownCloud page.
 
 .. figure:: ../images/encryption2.png
 
+
 .. note:: You must never lose your ownCloud password, because you will lose 
    access to your files. Though there is an optional recovery option that your 
    ownCloud administrator may enable; see the Recovery Key Password section to 
    learn about this.
+   
+Sharing Encrypted Files
+-----------------------
+
+Only users who have private encryption keys have access to shared encrypted 
+files and folders. Users who have not yet created their private encryption keys 
+will not have access to encrypted shared files; they will see folders and 
+filenames, but will not be able to open or download the files. They will see a 
+yellow warning banner that says "Encryption App is enabled but your keys are not 
+initialized, please log-out and log-in again."
+
+Share owners may need to re-share files after encryption is enabled; users 
+trying to access the share will see a message advising them to ask the share 
+owner to re-share the file with them. For individual shares, un-share and 
+re-share the file. For group shares, share with any individuals who can't access 
+the share. This updates the encryption, and then the share owner can remove the 
+individual shares.
 
 Recovery Key Password
 ~~~~~~~~~~~~~~~~~~~~~
@@ -86,6 +104,10 @@ structures. These files are never encrypted:
 - Image thumbnails from the Gallery app.
 - Previews from the Files app.
 - The search index from the full text search app.
+- Third-party app data
+
+There may be other files that are not encrypted; only files that are exposed to 
+third-party storage providers are guaranteed to be encrypted.
 
 Change Private Key Password
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
