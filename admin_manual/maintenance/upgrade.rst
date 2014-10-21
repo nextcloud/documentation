@@ -8,8 +8,14 @@ by the third digit of the version number. For example, 4.5.1, 5.0.17, 6.0.4 and
 version number.)
 
 Major releases are indicated by the first and second digits. So 4.5.0, 5.0.0, 
-6.0.0, and 7.0.0 are major releases. You may use the Update app for staying 
-current with new point releases, but not for upgrading to a major release. 
+6.0.0, and 7.0.0 are major releases. You may use the Updater app for staying 
+current with new point releases (Community Edition only), but not for upgrading 
+to a major release. Please see :doc:`update` for instructions on using the 
+Updater app.
+
+You cannot skip major releases; for example, upgrading from 5.0 to 7.0. This is 
+unsupported, and you'll likely experience unpredictable results. It is best to 
+install all upgrades and updates in order.
 
 .. note:: If you installed ownCloud from your Linux distribution repositories 
    using your package manager, then it is best to update/upgrade ownCloud using 
