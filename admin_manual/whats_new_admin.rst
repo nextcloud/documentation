@@ -88,6 +88,10 @@ faster and accessible. Improvements include:
    ``'share_folder'`` directive in ``config.php``. If you are upgrading from 
    older ownCloud versions you will still have your old Shared folder. 
 
+* In older versions of ownCloud, you could set an expiration date on both local 
+   and public shares. Now you can set an expiration date only on public shares, 
+   and local shares do not expire when public shares expire. The only way to 
+   "expire" a local share is to click the trash can icon to un-share your files.
  
 Email Configuration Wizard
 --------------------------

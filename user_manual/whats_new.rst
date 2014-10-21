@@ -56,4 +56,11 @@ Viewing your Files page is faster now thanks to "lazy loading", which loads
 files as you scroll down the page instead of loading all of them when you open 
 the page.
 
+Change in Share Expiration Date
+-------------------------------
+
+In older versions of ownCloud, you could set an expiration date on both local 
+and public shares. Now you can set an expiration date only on public shares, 
+and local shares do not expire when public shares expire. The only way to 
+"expire" a local share is to click the trash can icon to un-share your files.
 
