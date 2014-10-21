@@ -163,8 +163,7 @@ Sharing Files Locally
 
 When enabled by your administrator, you can share files or folders on ownCloud 
 with a local user, group, or any person online with a public link. Shared files 
-and folders are labeled with overlay icons the triangular share icon, and the 
-status *Shared* 
+and folders are labeled with the triangular share icon, and the status *Shared* 
 in the file or folder row.
 
 To create a local share with other users or groups on your ownCloud server:
@@ -210,4 +209,12 @@ and check Share Link.
 This creates a public URL that anyone can use to access the share. You have the
 options to send an email notification, protect it with a password, and put an 
 expiration date on it. Your ownCloud administrator has the option to require 
-passwords and expiration dates.  
+passwords and expiration dates. 
+
+Change in Share Expiration Date
+-------------------------------
+
+In older versions of ownCloud, you could set an expiration date on both local 
+and public shares. Now you can set an expiration date only on public shares, 
+and local shares do not expire when public shares expire. The only way to 
+"expire" a local share is to click the trash can icon to un-share your files.
