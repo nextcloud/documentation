@@ -24,8 +24,8 @@ Updater app or upgrading manually. You should still maintain regular backups
 .. note:: If you have a large ownCloud installation you
    should not use the Updater app, in order to avoid PHP timeouts. The Updater 
    app is better for smaller installations that have less data and fewer 
-   users, and for admins who do not have shell access, for example on a 
-   hosted server. Larger installations should update ownCloud with their 
+   users, and for admins who do not have shell access, for example on shared 
+   hosting. Larger installations should update ownCloud with their 
    Linux package managers or manually upgrade, and then complete the update 
    with the ``occ upgrade`` command, which is in the ``owncloud`` directory. 
    Run ``occ help`` to see complete command options. ownCloud Enterprise 
