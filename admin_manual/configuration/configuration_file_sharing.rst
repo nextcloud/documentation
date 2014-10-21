@@ -62,11 +62,11 @@ re-sharing, editing, updating, and deletion privileges:
 
 .. figure:: ../images/sharing-user-local.png
 
-.. note::In older versions of ownCloud, you could set an expiration date on both 
-   local and public shares. Now you can set an expiration date only on public 
-   shares, and local shares do not expire when public shares expire. The only 
-   way to "expire" a local share is to click the trash can icon to un-share your 
-   files.
+.. note:: In older versions of ownCloud, you could set an expiration date on 
+   both local and public shares. Now you can set an expiration date only on 
+   public shares, and local shares do not expire when public shares 
+   expire. The only way to "expire" a local share is to click the trash can 
+   icon to un-share your files.
 
 Creating Persistent File Shares
 -------------------------------
