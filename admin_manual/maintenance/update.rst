@@ -29,7 +29,7 @@ Updater app or upgrading manually. You should still maintain regular backups
    Linux package managers or manually upgrade, and then complete the update 
    with the ``occ upgrade`` command, which is in the ``owncloud`` directory. 
    Run ``occ help`` to see complete command options. ownCloud Enterprise 
-   Edition does not include the Update app.   
+   Edition does not include the Updater app.   
 
 The Updater app performs these operations:
 
