@@ -109,6 +109,21 @@ There is currently no good way to translate JavaScript strings. One way to still
 
     var addNewTranslation = $('#add-new').text();
 
+Hints
+=====
+In case some translation strings may be translated wrongly because they have multiple meanings, you can add hints which will be shown in the Transifex web-interface:
+
+.. code-block:: php
+
+    <ul id="translations">
+        <li id="add-new">
+            <?php
+                // TRANSLATORS Will be shown inside a popup and asks the user to add a new file
+                p($l->t('Add new file')); 
+            ?>
+        </li>
+    </ul>
+
 Creating your own translatable files
 ====================================
 If Transifex is not the right choice or the app is not accepted for translation, generate the gettext strings by yourself by creating an **l10n/** directory in the app folder and executing::
