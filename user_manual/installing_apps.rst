@@ -12,7 +12,7 @@ If a manual app install fails, this could be due to the fact that
 
 +you have downloaded a version incompatible with the ownCloud version in use
 
-+the app contains malicious code
++the app has been rejected by the internal app code checker
 
 +there is a genuine bug in the app that prevents it from running. 
 
