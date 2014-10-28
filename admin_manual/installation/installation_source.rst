@@ -159,6 +159,9 @@ via the ownCloud Web interface. If you are planning to use the automatic
 updater app for updating ownCloud, the whole ``owncloud/`` directory must be 
 writable by the HTTP user.
 
+If you do not plan to use the updater application we recommend setting the directory 
+permissions as strict as possible, an example can be found below.
+
 You can find your HTTP user in your HTTP server configuration files. Or you can 
 create a PHP page to find it for you. To do this, create a plain text file with 
 a single line in it:
@@ -179,6 +182,17 @@ should see a single line in your browser page with the HTTP user name.
   directory is::
 
     chown -R <http-user>:<http-user> /path/to/owncloud/
+    
+* For hardenend security we  highly recommend setting the following permissions as strict as possible, 
+  however some feature such as the integrated updater application will not work anymore. Please 
+  note, that this commands should be executed after the initial installation::
+  
+    chown -R root:root /path/to/owncloud/
+    chown <http-user>:<http-user> /path/to/owncloud/config/config.php
+    chown -R <http-user>:<http-user> /path/to/owncloud/data/
+    chown root:root /path/to/owncloud/data/.htaccess
+    chown <http-user>:<http-user> /path/to/owncloud/apps/
+    
 
 * This example is for Ubuntu 14.04 LTS server::
    
