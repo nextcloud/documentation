@@ -147,20 +147,16 @@ Now download the archive of the latest ownCloud version:
   document root of your Web server. Typically, on Ubuntu systems this 
   ``/var/www/owncloud``, so your copying command is::
     
-    cp -r owncloud /var/www/`
+    cp -r owncloud /var/www/
 
-Set the Directory Permissions
------------------------------
+Setting Secure Directory Permissions
+------------------------------------
 
 Your HTTP user must own at least the ``config/``, ``data/`` 
 and ``apps/`` directories in your ownCloud directory so that you can 
 configure ownCloud, create, modify and delete your data files, and install apps 
-via the ownCloud Web interface. If you are planning to use the automatic 
-updater app for updating ownCloud, the whole ``owncloud/`` directory must be 
-writable by the HTTP user.
-
-If you do not plan to use the updater application we recommend setting the directory 
-permissions as strict as possible, an example can be found below.
+via the ownCloud Web interface. We recommend setting the directory 
+permissions as strictly as possible for stronger security.
 
 You can find your HTTP user in your HTTP server configuration files. Or you can 
 create a PHP page to find it for you. To do this, create a plain text file with 
@@ -169,7 +165,7 @@ a single line in it:
       ``<?php echo exec('whoami'); ?>``
    
 Name it ``whoami.php`` and place it in your ``/var/www/html`` directory, and 
-then open it in a Web browser, for example ``http://servername/whoami.php``. You 
+then open it in a Web browser, for example ``http://localhost/whoami.php``. You 
 should see a single line in your browser page with the HTTP user name.
 
 .. note:: When using an NFS mount for the data directory, do not change 
@@ -178,14 +174,13 @@ should see a single line in your browser page with the HTTP user name.
    ownership as above could result in some issues if the NFS mount is 
    lost.
 
-* The generic command to change ownership of all files and subdirectories in a 
-  directory is::
+The generic command to change ownership of all files and subdirectories in a 
+directory is::
 
     chown -R <http-user>:<http-user> /path/to/owncloud/
     
-* For hardenend security we  highly recommend setting the following permissions as strict as possible, 
-  however some feature such as the integrated updater application will not work anymore. Please 
-  note, that this commands should be executed after the initial installation::
+  For hardened security we  highly recommend setting the permissions on your ownCloud directory as strictly 
+  as possible. These commands should be executed immediately after the initial installation::
   
     chown -R root:root /path/to/owncloud/
     chown <http-user>:<http-user> /path/to/owncloud/config/config.php
@@ -193,6 +188,8 @@ should see a single line in your browser page with the HTTP user name.
     chown root:root /path/to/owncloud/data/.htaccess
     chown <http-user>:<http-user> /path/to/owncloud/apps/
     
+These strict permissions will prevent the Updater app from working. If you use the Updater app, it needs your whole
+ownCloud directory to be owned by the http-user, like these examples:
 
 * This example is for Ubuntu 14.04 LTS server::
    
@@ -209,6 +206,8 @@ should see a single line in your browser page with the HTTP user name.
 * openSUSE::
 
     chown -R wwwrun:www /path/to/owncloud/
+    
+After the Update app has run, you should re-apply the strict permissions.    
 
 Apache is the recommended Web server.
 
