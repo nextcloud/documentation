@@ -179,8 +179,8 @@ directory is::
 
     chown -R <http-user>:<http-user> /path/to/owncloud/
     
-  For hardened security we  highly recommend setting the permissions on your ownCloud directory as strictly 
-  as possible. These commands should be executed immediately after the initial installation::
+For hardened security we  highly recommend setting the permissions on your ownCloud directory as strictly 
+as possible. These commands should be executed immediately after the initial installation::
   
     chown -R root:root /path/to/owncloud/
     chown <http-user>:<http-user> /path/to/owncloud/config/config.php
