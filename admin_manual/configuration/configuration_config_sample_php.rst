@@ -929,6 +929,25 @@ One way to test is applying for a trystack account at http://trystack.org/
 
 ::
 
+	'supportedDatabases' => array(
+		'sqlite',
+		'mysql',
+		'pgsql',
+		'oci',
+		'mssql'
+	),
+
+Database types that are supported for installation.
+
+Available:
+	- sqlite (SQLite3)
+	- mysql (MySQL)
+	- pgsql (PostgreSQL)
+	- oci (Oracle)
+	- mssql (Microsoft SQL Server)
+
+::
+
 	'custom_csp_policy' =>
 		"default-src 'self'; script-src 'self' 'unsafe-eval'; ".
 		"style-src 'self' 'unsafe-inline'; frame-src *; img-src *; ".
