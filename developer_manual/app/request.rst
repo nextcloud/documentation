@@ -45,7 +45,7 @@ A :doc:`Middleware <middleware>` is a convenient way to execute common tasks suc
 
 Container
 =========
-The :doc:`container` is the place where you define all of your classes and in particular all of your controllers. The container is responsible for assembling all of your objects (newing your classes) that should only have one single instance without relying on globals or singletons. If you want to know more about why you should use it and what the benefits are, read up on the topic in :doc:`container`.
+The :doc:`container` is the place where you define all of your classes and in particular all of your controllers. The container is responsible for assembling all of your objects (instantiating your classes) that should only have one single instance without relying on globals or singletons. If you want to know more about why you should use it and what the benefits are, read up on the topic in :doc:`container`.
 
 Controller
 ==========
