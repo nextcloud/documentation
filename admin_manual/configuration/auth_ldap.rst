@@ -511,7 +511,7 @@ If you have trouble with certificate validation make sure that
   */etc/ldap/ldap.conf* on Linux, *C:\\openldap\\sysconf\\ldap.conf* or
   *C:\\ldap.conf* on Windows) using a **TLS_CACERT /path/to/cert** line.
 * Using LDAPS, also make sure that the port is correctly configured (by default
-  686)
+  636)
 
 Microsoft Active Directory
 --------------------------
