@@ -92,6 +92,9 @@ The class which should be applied to a first level element (**li**) that hosts o
 
 Menus
 -----
+
+.. versionadded:: 8
+
 To add actions that affect the current list element you can add a menu for second and/or first level elements by adding the button and menu inside the corresponding **li** element and adding the **with-menu** css class:
 
 .. code-block:: html
@@ -177,6 +180,9 @@ In case of AngularJS the following small directive can be added to handle all th
 
 Editing
 -------
+
+.. versionadded:: 8
+
 Often an edit option is needed an entry. To add one for a given entry simply hide the title and add the following div inside the entry:
 
 .. code-block:: html
@@ -212,6 +218,8 @@ If AngularJS is used you want to autofocus the input box. This can be achieved b
 
 Undo entry
 ----------
+
+.. versionadded:: 8
 
 If you want to undo a performed action on a navigation entry such as deletion, you should show the undo directly in place of the entry and make it disappear after location change or 7 seconds:
 
