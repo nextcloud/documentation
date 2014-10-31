@@ -477,7 +477,7 @@ ownCloud Avatar integration
 
 ownCloud support user profile pictures, which are also called avatars. If a user 
 has a photo stored in the *jpegPhoto* or *thumbnailPhoto* attribute on your LDAP 
-server, it will be used as their avatar. In this case the user cannot their 
+server, it will be used as their avatar. In this case the user cannot alter their 
 avatar (on their Personal page) as it must be changed in LDAP. *jpegPhoto* is 
 preferred over *thumbnailPhoto*.
 
