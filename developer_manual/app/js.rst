@@ -25,7 +25,7 @@ For AngularJS the following lines would need to be added:
 
 .. code-block:: js
 
-    var app = angular.module('MyApp', [).config(['$httpProvider', function($httpProvider) {
+    var app = angular.module('MyApp', []).config(['$httpProvider', function($httpProvider) {
         $httpProvider.defaults.headers.common.requesttoken = oc_requesttoken;
     }]);
 
