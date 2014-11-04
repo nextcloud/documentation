@@ -16,7 +16,7 @@ The JavaScript files reside in the **js/** folder and should be included in the 
   script('myapp', array('script', 'navigation'));  //  adds js/script.js js/navigation.js
 
   // add vendor files (also allows the array syntax)
-  vendorScript('myapp', 'script');  //  adds vendor/script.js
+  vendor_script('myapp', 'script');  //  adds vendor/script.js
 
 The recommended JavaScript framework to use is `AngularJS <https://angularjs.org/#>`_. A nice tutorial screencast collection can be found on `Egghead.io <https://egghead.io/technologies/angularjs>`_
 

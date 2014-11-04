@@ -16,7 +16,7 @@ The CSS files reside in the **css/** folder and should be included in the templa
   style('myapp', array('style', 'navigation'));  // adds js/style.css, js/navigation.css
 
   // include vendor file (also allows vendor syntax)
-  vendorStyle('myapp', 'style');  // adds vendor/style.css
+  vendor_style('myapp', 'style');  // adds vendor/style.css
 
 Web Components go into the **component/** folder and can be imported like this:
 
