@@ -111,6 +111,15 @@ Prefix for the ownCloud tables in the database.
 
 ::
 
+	'dbdriveroptions' => array(
+		PDO::MYSQL_ATTR_SSL_CA => '/file/path/to/ca_cert.pem',
+	),
+
+Additional driver options for the database connection, eg. to enable SSL
+encryption in MySQL.
+
+::
+
 	'installed' => false,
 
 Indicates whether the ownCloud instance was installed successfully; ``true``
@@ -418,10 +427,10 @@ addresses starting with ``10.0.0.`` and ending with 1 to 3:
 
 	'overwrite.cli.url' => '',
 
-Use this configuration parameter to specify the base url for any urls which are
-generated within ownCloud using any kind of command line tools (cron or occ).
-
-The value should contain the full base URL: ``https://www.example.com/owncloud``
+Use this configuration parameter to specify the base url for any urls which
+are generated within ownCloud using any kind of command line tools (cron or
+occ). The value should contain the full base URL:
+``https://www.example.com/owncloud``
 
 ::
 
@@ -447,8 +456,8 @@ These parameters control the Deleted files app.
 
 	'trashbin_retention_obligation' => 30,
 
-When the trash bin app is enabled (default), this is the number of days a file
-will be kept in the trash bin. Default is 30 days.
+When the trash bin app is enabled (default), this is the number of days a
+file will be kept in the trash bin. Default is 30 days.
 
 ::
 
