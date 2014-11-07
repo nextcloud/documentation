@@ -37,25 +37,21 @@ web browser like Firefox, Chrome, or Internet Explorer:
 File Access and Management
 ==========================
 The following topics contain information about file access and management.
-Access information includes how to access your server using the ownCloud web
-interface or through the use of WebDAV shares (Linux or Mac OSX) or web folders
-(Windows):
 
-* :doc:`files/filesweb`
-* :doc:`files/files`
-* :doc:`files/sync`
-* :doc:`files/server_to_server_using`
-* :doc:`files/versioncontrol`
+* :doc:`files/configuring_big_file_upload`
 * :doc:`files/deletedfiles`
 * :doc:`files/encryption`
+* :doc:`files/files`
+* :doc:`files/filesweb`
 * :doc:`files/quota`
-* :doc:`files/configuring_big_file_upload`
-
+* :doc:`files/server_to_server_using`
+* :doc:`files/sync`
+* :doc:`files/versioncontrol`
 
 Contacts and Calendar
 =====================
-The following topic provides information about the **Contacts** and
-**Calendar** applications including usage instructions as well as how to
+The following topics provide information about the **Contacts** and
+**Calendar** applications, including usage instructions as well as how to
 export, import, and synchronization the ownCloud calendar application with
 different operating system calendars:
 
@@ -96,7 +92,7 @@ Administrator's manual:
 <http://doc.owncloud.org/server/7.0/admin_manual/configuration/
 custom_mount_config_gui.html>`_
 
-Indices and tables
-==================
+.. Indices and tables
+.. ==================
 
-* :ref:`genindex`
+.. * :ref:`genindex`
