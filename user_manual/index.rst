@@ -76,13 +76,6 @@ to manage your bookmarks:
 
 * :doc:`bookmarks`
 
-Backup
-======
-The following topic describes the ownCloud **User_Migrate** application used to
-import and export user account settings:
-
-* :doc:`migration`
-
 External storage
 ================
 Please see ``Configuring External Storage (GUI)`` in the ownCloud 
