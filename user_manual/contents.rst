@@ -1,8 +1,8 @@
 .. _contents:
 
-===============================
-ownCloud documentation contents
-===============================
+====================
+ownCloud User Manual 
+====================
 
 .. toctree::
     :hidden:
@@ -24,7 +24,7 @@ ownCloud documentation contents
 
 
 
-Indices and tables
-==================
+.. Indices and tables
+.. ==================
 
-* :ref:`genindex`
+.. * :ref:`genindex`
