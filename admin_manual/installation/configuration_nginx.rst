@@ -2,6 +2,8 @@ Nginx Configuration
 ===================
 
 -  You need to insert the following code into **your nginx config file.**
+-  The config assumes that ownCloud is installed in /var/www/owncloud and
+   that it is accessed via http(s)://cloud.example.com.
 -  Adjust **server_name**, **root**, **ssl_certificate** and 
    **ssl_certificate_key** to suit your needs.
 -  Make sure your SSL certificates are readable by the server (see `Nginx HTTP 
@@ -29,7 +31,7 @@ Nginx Configuration
     ssl_certificate_key /etc/ssl/nginx/cloud.example.com.key;
 
     # Path to the root of your installation
-    root /var/www/;
+    root /var/www/owncloud/;
     # set max upload size 
     client_max_body_size 10G;             
     fastcgi_buffers 64 4K;
