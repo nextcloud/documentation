@@ -39,7 +39,7 @@ Adding Third Party Apps
 
 As mentioned earlier, ownCloud supports a number of different apps.  Some apps are developed and supported by ownCloud directly, while other apps are created by third parties and either included in or available for your ownCloud server installation.  Any apps that are not developed by ownCloud show a *3rd party* designation.
 
-To understand what an application does, you can click the app name to view a description of the app and any of the app settings in the Application View field.
+To understand what an application does, you can click the app name to view a description of the app and any of the app settings in the Application View field.  Clicking the *Enable* button will enable the app.  If the app is a third party app, it will be downloaded from the app store, installed and enabled.  The App page does not show third party applications which have not been reviewed by the ownCloud security team. Find more information on security `in this article <https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your-data/>`_.
 
 Though ownCloud provides many apps in the server installation, you can view many more apps at the `ownCloud apps store <http://apps.owncloud.com/>`_.
 
@@ -51,7 +51,11 @@ To view or install apps from the ownCloud apps store:
 
    The ownCloud apps store launches.
 
-3. Read about any of the apps in the ownCloud app store and install any that you like.
+3. Read about any of the apps in the ownCloud app store and download any that you like.
+
+4. Extract a downloaded compressed file and place the contents (which should themselves be contained in a folder with the app name) in the apps folder in your ownCloud installation.
+
+5. Ensure the permissions and ownership are similar to the other ownCloud apps. Typically, access rights are **rwxr-x---** or **750** in octal notation and owner is for example **wwwrun**.
 
 .. note:: If you would like to create or add your own ownCloud app, please use the *Add your App...* button on the same page. This button redirects you to our `Developer Center <http://owncloud.org/dev>`_ where you can find information about creating and adding your own apps.
 
