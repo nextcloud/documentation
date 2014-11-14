@@ -15,6 +15,12 @@ In ownCloud root folder call
 
   php occ db:convert-type [options] type username hostname database
 
+Available values for the ``type`` parameter are:
+
+* mysql (for MySQL or MariaDB)
+* oci (for Oracle)
+* pgsql (for PostgreSQL)
+
 The Options
 
 * ``--port="3306"``                       the database port (optional)
