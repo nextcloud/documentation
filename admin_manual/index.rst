@@ -5,7 +5,7 @@ Introduction
 Welcome to the ownCloud Administrator Guide.  This guide describes
 administrator tasks for ownCloud; a flexible, open source, file synchronization
 and sharing solution. ownCloud is comprised of a server running on either a
-Linux or Microsoft Word platform as well as client applications for Microsoft
+Linux or Microsoft Windows platform as well as client applications for Microsoft
 Windows, Mac OS X and Linux (Desktop Client) and mobile clients for both the
 Android and Apple iOS operating system.
 
