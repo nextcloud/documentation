@@ -75,8 +75,9 @@ be found in the ``_build/html`` subdirectory.  PDFs can be built with the
 
 The openSUSE way
 ~~~~~~~~~~~~~~~~
-* sudo zypper in pyhton-Sphinx
-* sudo zypper in pyhton-rst2pdf
+* sudo zypper in python-Sphinx
+* sudo zypper in python-rst2pdf
+* sudo zypper in python-sphinxcontrib-phpdomain # requires repository "devel:languages:python"
 * sudo zypper in pdfjam   # pull in latexpdf and all of texlive
 * sudo zypper in texlive-threeparttable
 * sudo zypper in texlive-wrapfig
