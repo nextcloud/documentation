@@ -65,7 +65,7 @@ You cannot recover a user's password, but you can set a new one:
   the user with their password
   
 If you have encryption enabled, there are special considerations for user 
-password resets. Please see :doc:`configuration_encryption`.
+password resets. Please see :doc:`server_side_encryption_configuration`.
 
 Renaming a User
 ~~~~~~~~~~~~~~~

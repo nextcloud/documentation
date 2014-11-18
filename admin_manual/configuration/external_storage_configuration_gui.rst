@@ -337,6 +337,6 @@ above) and will be replaced by the user login.
 Although configuration may be done by making modifications to the 
 ``mount.json`` file, it is recommended to use the Web-GUI in the administrator 
 panel (as described in the above section) to add, remove, or modify mount 
-options to prevent any problems. See :doc:`custom_mount_config` for 
+options to prevent any problems. See :doc:`external_storage_configuration` for 
 configuration examples.
 

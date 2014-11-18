@@ -1,6 +1,6 @@
-===========
+======
 Issues
-===========
+======
 
 If you think you have found a bug in ownCloud, please:
 

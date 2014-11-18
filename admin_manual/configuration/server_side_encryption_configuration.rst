@@ -1,5 +1,5 @@
-Using Server-Side Encryption
-============================
+Server-Side Encryption Configuration
+====================================
 
 ownCloud includes a server-side encryption application. The Encryption app 
 encrypts all files stored on the ownCloud server, and all files on remote 

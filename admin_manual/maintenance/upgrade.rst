@@ -49,7 +49,7 @@ current ownCloud tarball with ``wget``:
   ``wget http://download.owncloud.org/community/owncloud-latest.tar.bz2``
 
 For Windows operating systems. see the installation instruction in 
-:doc:`../installation/installation_windows`.
+:doc:`../installation/windows_installation`.
 
 5. Stop your web server.
 

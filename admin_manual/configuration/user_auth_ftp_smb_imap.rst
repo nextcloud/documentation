@@ -1,7 +1,7 @@
-Custom User Backend Configuration
-=================================
+User Authentication with IMAP, SMB, and FTP
+===========================================
 
-Starting with ownCloud 4.5 is possible to configure additional user backends
+You may configure additional user backends
 in ownCloud's configuration :file:`config/config.php` using the following
 syntax:
 
@@ -63,7 +63,7 @@ Provides authentication against Samba servers
   ),
 
 FTP
-~~~
+---
 
 Provides authentication against FTP servers
 

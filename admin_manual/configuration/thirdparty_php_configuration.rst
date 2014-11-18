@@ -1,5 +1,5 @@
-Using Third Party Components
-============================
+Using Third Party PHP Components
+================================
 
 ownCloud uses some third party PHP components to provide some of its functionality. These components are part of the software package and are contained in the **/3rdparty** folder.
 

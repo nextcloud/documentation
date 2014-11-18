@@ -25,58 +25,66 @@ user interface or how to install clients on the server, refer to the following:
 Document Structure
 ------------------
 
-This document is broken out into three major sections -- Installation,
-Configuration, and Maintenance.  The following sections provide detailed
-information about various tasks associated with each of these sections.
-
+This document is broken out into three major sections -- Installation, Configuration, and 
+Maintenance.  The Issues sections has instructions for reporting bugs. The following 
+sections provide detailed information about various tasks associated with each of these 
+sections.
 
 Installation
 ============
 This section provides detailed instructions on how to install ownCloud in
 different scenarios.  It contains the following topics:
 
-* :doc:`installation/installation_linux` (recommended)
-* :doc:`installation/installation_windows`
-* :doc:`installation/installation_source`
-* :doc:`installation/installation_others`
-* :doc:`installation/installation_ucs`
-* :doc:`installation/installation_macos` (not supported)
-* :doc:`installation/installation_appliance`
+* :doc:`installation/appliance_installation`
+* :doc:`installation/apps_management_installation`
+* :doc:`installation/hiawatha_configuration`
+* :doc:`installation/installation_wizard`
+* :doc:`installation/lighttpd_configuration`
+* :doc:`installation/linux_installation` (recommended)
+* :doc:`installation/macos_installation` (not supported)
+* :doc:`installation/nginx_configuration`
+* :doc:`installation/others_installation`
+* :doc:`installation/source_installation`
+* :doc:`installation/ucs_installation`
+* :doc:`installation/windows_installation`
+* :doc:`installation/yaws_configuration`
 
-.. note:: If you just want to try out ownCloud in a virtual machine, without
-   any configuration, refer to :doc:`installation/installation_appliance`.  For
-   your convenience, this topic contains ready-to-use images.
+.. note:: If you just want to try out ownCloud in a virtual machine, without any 
+   configuration, refer to :doc:`installation/appliance_installation`.  For your 
+   convenience, this topic contains ready-to-use images.
 
 Configuration
 =============
-This section describes how to configure ownCloud and your web server.  It
+This section describes how to configure ownCloud and your Web server.  It
 contains the following topics:
 
-* :doc:`configuration/configuration_apps`
-* :doc:`configuration/configuration_file_sharing`
-* :doc:`configuration/configuration_users`
-* :doc:`configuration/configuration_database`
-* :doc:`configuration/auth_ldap`
-* :doc:`configuration/server_to_server_managing`
-* :doc:`configuration/custom_mount_config_gui`
-* :doc:`configuration/custom_mount_config`
-* :doc:`configuration/background_jobs`
-* :doc:`configuration/configuration_mail`
-* :doc:`configuration/configuration_automation`
-* :doc:`configuration/configuration_encryption`
-* :doc:`configuration/configuring_big_file_upload`
-* :doc:`configuration/configuration_reverseproxy`
-* :doc:`configuration/xsendfile`
-* :doc:`configuration/configuration_3rdparty`
-* :doc:`configuration/custom_user_backend`
-* :doc:`configuration/configuration_custom_clients`
-* :doc:`configuration/configuration_knowledgebase`
-* :doc:`configuration/configuration_logging`
-* :doc:`configuration/configuration_language`
-* :doc:`configuration/configuration-antivirus`
-* :doc:`configuration/configuration_preview`
-* :doc:`configuration/configuring_search`
-* :doc:`configuration/configuration_config_sample_php`
+* :doc:`configuration/antivirus_configuration`
+* :doc:`configuration/automatic_configuration`
+* :doc:`configuration/background_jobs_configuration`
+* :doc:`configuration/big_file_upload_configuration`
+* :doc:`configuration/collaborative_documents_configuration`
+* :doc:`configuration/config_sample_php_parameters`
+* :doc:`configuration/custom_client_configuration`
+* :doc:`configuration/database_configuration`
+* :doc:`configuration/email_configuration`
+* :doc:`configuration/external_storage_configuration_gui`
+* :doc:`configuration/external_storage_configuration`
+* :doc:`configuration/file_sharing_configuration`
+* :doc:`configuration/files_locking_enabling`
+* :doc:`configuration/js_css_asset_management_configuration`
+* :doc:`configuration/knowledgebase_configuration`
+* :doc:`configuration/language_configuration`
+* :doc:`configuration/logging_configuration`
+* :doc:`configuration/previews_configuration`
+* :doc:`configuration/reverse_proxy_configuration`
+* :doc:`configuration/search_configuration`
+* :doc:`configuration/server_side_encryption_configuration`
+* :doc:`configuration/server_to_server_configuration`
+* :doc:`configuration/serving_static_files_configuration`
+* :doc:`configuration/thirdparty_php_configuration`
+* :doc:`configuration/user_auth_ftp_smb_imap`
+* :doc:`configuration/user_auth_ldap`
+* :doc:`configuration/user_configuration`
 
 Maintenance
 ===========
@@ -85,10 +93,17 @@ This sections describes the maintenance tasks associated with the ownCloud
 server (for example, updating or migrating to a new version of ownCloud).  It
 contains the following topics:
 
-* :doc:`maintenance/enable_maintenance`
 * :doc:`maintenance/backup`
+* :doc:`maintenance/convert_db`
+* :doc:`maintenance/enable_maintenance`
+* :doc:`maintenance/migrating`
+* :doc:`maintenance/restore`
 * :doc:`maintenance/update`
 * :doc:`maintenance/upgrade`
-* :doc:`maintenance/restore`
-* :doc:`maintenance/migrating`
-* :doc:`maintenance/convert_db`
+
+Issues
+======
+
+What to do when you have problems, and where to report bugs.
+
+* :doc:`issues/index`

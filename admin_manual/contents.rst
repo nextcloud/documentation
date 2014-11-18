@@ -17,8 +17,3 @@ ownCloud documentation contents
     configuration/index
     maintenance/index
     issues/index
-
-Indices and tables
-==================
-
-* :ref:`genindex`
