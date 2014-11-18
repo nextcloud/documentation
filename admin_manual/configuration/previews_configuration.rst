@@ -1,5 +1,5 @@
-Preview Configuration
-=====================
+Previews Configuration
+======================
 The ownCloud thumbnail system is used to generate thumbnails from various 
 file types, which are then shown as thumbnails in the Files application of 
 the web interface, or as a larger preview for public shared links.

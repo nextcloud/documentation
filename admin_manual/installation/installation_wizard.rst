@@ -50,7 +50,7 @@ Database choice
 
 * For a guideline on which database system to choose, and on pointers how to
   set them up for being available for php/ownCloud, see
-  :doc:`../configuration/configuration_database`
+  :doc:`../configuration/database_configuration`
 
 * Note that you will only be able to choose among the PHP database connectors
   which are actually installed on the system.

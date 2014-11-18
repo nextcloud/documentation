@@ -5,15 +5,16 @@ Installation
 .. toctree::
    :maxdepth: 1
 
-   installation_appliance
-   installation_linux
-   installation_macos
-   installation_windows
-   installation_ucs
-   installation_source
-   installation_others
+   appliance_installation
+   apps_management_installation
+   hiawatha_configuration
    installation_wizard
-   configuration_nginx
-   configuration_lighttpd
-   configuration_yaws
-   configuration_hiawatha.rst
+   lighttpd_configuration
+   linux_installation
+   macos_installation
+   nginx_configuration
+   others_installation
+   source_installation
+   ucs_installation
+   windows_installation
+   yaws_configuration

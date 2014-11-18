@@ -21,7 +21,7 @@ This is important, because you possibly could not watch otherwise whether the
 desired changes take effect.
 
 Enabling uploading big files
-============================
+----------------------------
 
 **Configuring your webserver**
 

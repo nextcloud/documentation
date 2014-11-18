@@ -344,8 +344,8 @@ Example config for Apache 2.4:
 
 * In order for the maximum upload size to be configurable, the
   :file:`.htaccess` in the ownCloud folder needs to be made writable by the
-  server (this should already be done, see section `Set the Directory 
-  Permissions`_).
+  server (this should already be done, see section ``Set the Directory 
+  Permissions``).
 
 * You should make sure that any built-in WebDAV module of your web server is 
   disabled (at least for the ownCloud directory), as it will interfere with 
@@ -398,20 +398,20 @@ Other Web Servers
      
 **Microsoft Internet Information Server (IIS)**
 
-See :doc:`installation_windows` for further instructions.
+See :doc:`windows_installation` for further instructions.
 
 **Nginx Configuration**
 
-See :doc:`configuration_nginx`
+See :doc:`nginx_configuration`
 
 **Lighttpd Configuration**
 
-See :doc:`configuration_lighttpd`
+See :doc:`lighttpd_configuration`
 
 **Yaws Configuration**
 
-See :doc:`configuration_yaws`
+See :doc:`yaws_configuration`
 
 **Hiawatha Configuration**
 
-See :doc:`configuration_hiawatha`
+See :doc:`hiawatha_configuration`

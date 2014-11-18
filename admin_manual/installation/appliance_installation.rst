@@ -1,5 +1,5 @@
-Appliances
-----------
+ownCloud Appliances
+===================
 
 If you are looking for virtual machine images, check the Software Appliances
 section.  The Hardware Appliances section is of interest for people seeking to

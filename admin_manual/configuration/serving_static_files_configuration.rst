@@ -1,5 +1,6 @@
-Serving static files via web server
-===================================
+Serving Static Files for Better Performance
+===========================================
+
 Since ownCloud 5 it is possible to let web servers handle static file serving.
 This should generally improve performance (web servers are optimized for this) and in some cases permits controlled
 file serving (i.e. pause and resume downloads).

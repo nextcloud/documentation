@@ -1,5 +1,5 @@
-Asset Management
-================
+JavaScript and CSS Asset Management
+===================================
 
 In production environments, JavaScript and CSS files are delivered in a concatenated and compressed format.
 

@@ -1,5 +1,5 @@
-Using the Files Locking App
----------------------------
+Files Locking App Configuration
+-------------------------------
 
 The Files Locking application enables ownCloud to lock files while reading or 
 writing to and from backend storage. The purpose of the app is to avoid file 
