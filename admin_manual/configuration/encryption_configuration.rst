@@ -1,5 +1,5 @@
-Server-Side Encryption Configuration
-====================================
+Encryption Configuration
+========================
 
 ownCloud includes a server-side encryption application. The Encryption app 
 encrypts all files stored on the ownCloud server, and all files on remote 
@@ -164,3 +164,20 @@ to match on their next ownCloud login. The user will need both their old and new
 to do this. If you have enabled the Recovery Key then you can change a user's password in 
 the ownCloud Users panel to match their back-end password, and then, of course, notify the 
 user and give them their new password.
+
+Encryption on Windows Servers
+-----------------------------
+
+If you get a "Missing requirements" error message when you enable encryption on a Windows server, 
+enter the absolute location of your openSSL configuration file in ``config.php``::
+
+  'openssl' => array(
+      'config' => '/absolute/location/of/openssl.cnf',
+  ),
+  
+For example, in a typical installation it looks like this::
+
+  'openssl' => array(
+      'config' => '/Program Files (x86)\GnuWin32\share\openssl.cnf',
+  ),
+
