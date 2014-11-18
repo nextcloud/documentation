@@ -14,6 +14,7 @@ Configuration
    custom_client_configuration
    database_configuration
    email_configuration
+   encryption_configuration
    external_storage_configuration_gui
    external_storage_configuration
    file_sharing_configuration
@@ -25,7 +26,6 @@ Configuration
    previews_configuration
    reverse_proxy_configuration
    search_configuration
-   server_side_encryption_configuration
    server_to_server_configuration
    serving_static_files_configuration
    thirdparty_php_configuration
