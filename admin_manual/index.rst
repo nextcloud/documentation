@@ -78,7 +78,7 @@ contains the following topics:
 * :doc:`configuration/previews_configuration`
 * :doc:`configuration/reverse_proxy_configuration`
 * :doc:`configuration/search_configuration`
-* :doc:`configuration/server_side_encryption_configuration`
+* :doc:`configuration/encryption_configuration`
 * :doc:`configuration/server_to_server_configuration`
 * :doc:`configuration/serving_static_files_configuration`
 * :doc:`configuration/thirdparty_php_configuration`
