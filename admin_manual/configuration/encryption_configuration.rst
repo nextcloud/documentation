@@ -6,7 +6,8 @@ encrypts all files stored on the ownCloud server, and all files on remote
 storage that is connected to your ownCloud server. Encryption and decryption are 
 performed on the ownCloud server. All files sent to remote storage (for example 
 Dropbox and Google Drive) will be encrypted by the ownCloud server, and upon 
-retrieval, decrypted before serving them to you and anyone you have shared them with.
+retrieval, decrypted before serving them to you and anyone you have shared them 
+with.
 
 When files on external storage are encrypted in ownCloud, you cannot share them 
 directly from the external storage services, but only through ownCloud sharing 
@@ -19,7 +20,8 @@ The Encryption app generates a strong encryption key, which is unlocked by
 user's passwords. So your users don't need to track an extra password, but 
 simply log in as they normally do.
 
-Encryption is applied server-wide; it cannot be applied to selected users.
+Encryption is applied server-wide; it cannot be applied to selected users or 
+files.
 
 The Encryption app encrypts only the contents of files, and not filenames and 
 folder structures.
@@ -40,13 +42,14 @@ The encryption keys are stored in following folders:
 .. note:: Encryption keys are stored only on the ownCloud server, eliminating
    exposure of your data to third party storage providers. The encryption app 
    does **not** protect your data if your ownCloud server is compromised, and it
-   does not protect users from snoopy ownCloud admins. This would require client 
-   side encryption, which this app does not provide. If your ownCloud server 
-   is not connected to any external storage services then it is better to 
-   use other encryption tools, such as file-level or whole-disk encryption. Read 
+   does not prevent ownCloud administrators from reading user's files. This 
+   would require client-side encryption, which this app does not provide. If 
+   your ownCloud server is not connected to any external storage services then 
+   it is better to  use other encryption tools, such as file-level or 
+   whole-disk encryption. Read 
    `How ownCloud uses encryption to protect your data 
-   <https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your-data/>`_. for 
-   more details. 
+   <https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your-data/>`_ 
+   for more information. 
 
 Enabling the Encryption App
 ---------------------------
@@ -71,18 +74,18 @@ minutes depending on how many files you have.
 
 When the encryption process is complete you'll be returned to your default 
 ownCloud page. Every user will go through this process when they log in after 
-you enable encryption, and each user will get unique encryption keys. Users can 
-still change their passwords whenever they want on their Personal pages.
+you enable encryption, and each user will get unique encryption keys. Users can change 
+their passwords whenever they want on their Personal pages, and ownCloud will update 
+their encryption keys automatically/
 
 Sharing Encrypted Files
 -----------------------
 
-Only users who have private encryption keys (via logging out and logging back in to 
-create their keys) have access to shared encrypted files and folders. Users who have not 
-yet created their private encryption keys will not have access to encrypted shared files; 
-they will see folders and filenames, but will not be able to open or download the files. 
-They will see a yellow warning banner that says "Encryption App is enabled but your keys 
-are not initialized, please log-out and log-in again." 
+Only users who have private encryption keys have access to shared encrypted files and 
+folders. Users who have not yet created their private encryption keys will not have access 
+to encrypted shared files; they will see folders and filenames, but will not be able to 
+open or download the files. They will see a yellow warning banner that says "Encryption 
+App is enabled but your keys are not initialized, please log-out and log-in again." 
 
 Share owners may need to re-share files after encryption is enabled; users trying to 
 access the share will see a message advising them to ask the share owner to re-share the 
@@ -91,7 +94,6 @@ share with any individuals who can't access the share. This updates the encrypti
 then the share owner can remove the individual shares.
 
 .. figure:: ../images/encryption9.png
-
 
 Decrypting Encrypted Files
 --------------------------
@@ -104,29 +106,26 @@ files".
 
 .. figure:: ../images/encryption4.png
 
-Go to your Personal page and enter your password in the Encryption removal form, 
-and your files will all be decrypted.
+Go to your Personal page and enter your password in the Encryption removal form, and your 
+files will all be decrypted.
 
 .. figure:: ../images/encryption5.png
 
 Your users will also have to follow this step to decrypt their files. If 
 something goes wrong with decryption, click the ``Restore Encryption Keys`` 
 button to re-encrypt your files, and then review your logfile to see what 
-happened. Though it would be very unusual for the decryption to fail as 
-decryption is routine and reliable. 
+happened. 
 
 Enabling a File Recovery Key
 ----------------------------
 
 If you lose your ownCloud password, then you lose access to your encrypted files. If one 
-of your users loses their ownCloud password their files are unrecoverable. You 
-cannot reset their password in the normal way; you'll see a yellow banner 
-warning "Please provide an admin recovery password, otherwise all user data will 
-be lost".
+of your users loses their ownCloud password their files are unrecoverable. You cannot 
+reset their password in the normal way; you'll see a yellow banner warning "Please provide 
+an admin recovery password, otherwise all user data will be lost".
 
 To avoid all this, create a Recovery Key. Go to the Encryption section of your 
-Admin page and set a recovery key password. Obviously, do not lose this 
-password. 
+Admin page and set a recovery key password.
 
 .. figure:: ../images/encryption6.png
 
@@ -165,19 +164,22 @@ to do this. If you have enabled the Recovery Key then you can change a user's pa
 the ownCloud Users panel to match their back-end password, and then, of course, notify the 
 user and give them their new password.
 
-Encryption on Windows Servers
------------------------------
+"Missing requirements" Message on Windows Servers
+-------------------------------------------------
 
-If you get a "Missing requirements" error message when you enable encryption on a Windows server, 
-enter the absolute location of your openSSL configuration file in ``config.php``::
+If you get a "Missing requirements" error message when you enable encryption on 
+a Windows server, enter the absolute location of your openSSL configuration file in 
+``config.php``::
 
   'openssl' => array(
-      'config' => '/absolute/location/of/openssl.cnf',
+      'config' => 'C:\path\to\openssl.cnf',
   ),
   
-For example, in a typical installation it looks like this::
+For example, in a typical installation on a 64-bit Windows 7 system it looks like this::
 
   'openssl' => array(
-      'config' => '/Program Files (x86)\GnuWin32\share\openssl.cnf',
+      'config' => 'C:\OpenSSL-Win64\openssl.cnf',
   ),
 
+There are many ways to configure OpenSSL, so be sure to verify your correct file
+location.
