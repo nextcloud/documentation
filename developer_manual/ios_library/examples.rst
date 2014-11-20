@@ -364,7 +364,7 @@ Code example
 
 
 Download a file with background session
--------------------------------------
+---------------------------------------
 
 Download an existing file storaged on the cloud server using background session, only supported by iOS 7 and higher. 
 
@@ -433,7 +433,7 @@ Code example
 
 
 Set callback when background download task finishes
------------------------------------------
+---------------------------------------------------
 
 Method to set callbacks of the pending download transfers when the app starts. It's used when there are pendings download background transfers. The block is executed when a pending background task finishes.
 
@@ -448,7 +448,7 @@ Code example
     }];
 
 Set progress callback with pending background download tasks
----------------------------------------------------
+------------------------------------------------------------
 
 Method to set progress callbacks of the pending download transfers. It's used when there are pendings background download transfers. The block is executed when a pending task get a input porgress.
 
