@@ -19,7 +19,7 @@ setup and process of contribution is
 You might want to start with doing one or two `junior jobs <https://github.com/owncloud/iOS/issues?q=is%3Aopen+is%3Aissue+label%3A%22Junior+Job%22>`_
 to get into the code and note our :doc:`../general/index`
 
-ownCloud Android Library
+ownCloud iOS Library
 ------------------------
 This document will describe how to the use ownCloud iOS library.  The ownCloud
 iOS library for iOS allows a developer to communicate with any ownCloud server;
