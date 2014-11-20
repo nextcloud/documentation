@@ -37,7 +37,7 @@ source_suffix = '.rst'
 #source_encoding = 'utf-8-sig'
 
 # The master toctree document.
-master_doc = 'contents'
+master_doc = 'index'
 
 # General information about the project.
 project = u'ownCloud Developer Manual'
@@ -185,7 +185,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('contents', 'ownCloudDeveloperManual.tex', u'ownCloud Developer Manual',
+  ('index', 'ownCloudDeveloperManual.tex', u'ownCloud Developer Manual',
    u'The ownCloud developers', 'manual'),
 ]
 
@@ -211,7 +211,7 @@ latex_logo = '../_shared_assets/static/logo-blue.pdf'
 
 # -- Options for pdf page output -----------------------------------------------
 
-pdf_documents = [('contents', u'owncloudDeveloperManual', u'ownCloud Developer Manual',
+pdf_documents = [('index', u'owncloudDeveloperManual', u'ownCloud Developer Manual',
                   u'The ownCloud developers'),]
 
 # -- Options for manual page output --------------------------------------------
@@ -219,7 +219,7 @@ pdf_documents = [('contents', u'owncloudDeveloperManual', u'ownCloud Developer M
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('contents', 'owncloudDeveloperManual', u'ownCloud Developer Manual',
+    ('index', 'owncloudDeveloperManual', u'ownCloud Developer Manual',
      [u'The ownCloud developers'], 1)
 ]
 
@@ -233,7 +233,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('contents', 'ownCloudDeveloperManual', u'ownCloud Developer Manual',
+  ('index', 'ownCloudDeveloperManual', u'ownCloud Developer Manual',
    u'The ownCloud developers', 'ownCloud', 'The ownCloud Developer Manual.',
    'Miscellaneous'),
 ]
