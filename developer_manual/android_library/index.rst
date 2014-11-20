@@ -3,6 +3,26 @@
 ===============================
 Android Application Development
 ===============================
+ownCloud provides an official ownCloud Android client, which gives its users
+access to their files on their ownCloud. It also includes functionality like
+automatically uploading pictures and videos to ownCloud.
+
+For third party application developers, ownCloud offers the ownCloud Android
+library under the MIT license.
+
+Android ownCloud Client development
+-----------------------------------
+
+If you are interested in working on the ownCloud android client, you can find
+the source code `in github <https://github.com/owncloud/android/>`_. The
+setup and process of contribution is
+`documented here <https://raw.githubusercontent.com/owncloud/android/master/SETUP.md>`_.
+
+You might want to start with doing one or two `junior jobs <https://github.com/owncloud/android/issues?q=is%3Aopen+is%3Aissue+label%3A%22Junior+Job%22>`_
+to get into the code and note our :doc:`../general/index`
+
+ownCloud Android Library
+------------------------
 
 This document will describe how to the use ownCloud Android Library.  The
 ownCloud Android Library allows a developer to communicate with any ownCloud
@@ -14,13 +34,6 @@ application with ownCloud.
 
 The tool needed is any IDE for Android. This guide includes some screenshots
 showing examples in Eclipse.
-
-If you are looking for working on the ownCloud android client, find the source
-code `in github <https://github.com/owncloud/android/>`_. The setup and process
-of contribution is `documented here <https://raw.githubusercontent.com/owncloud/android/master/SETUP.md>`_.
-
-You might want to start with doing one or two `junior jobs <https://github.com/owncloud/android/issues?q=is%3Aopen+is%3Aissue+label%3A%22Junior+Job%22>`_
-to get into the code!
 
 .. toctree::
    :maxdepth: 2
