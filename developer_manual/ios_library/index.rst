@@ -11,8 +11,8 @@ by link among others.
 This library may be added to a project and seamlessly integrates any
 application with ownCloud.
 
-The tool needed is Xcode 5, this guide includes some screenshots showing
-examples in Xcode 5.
+The tool needed is Xcode 6, this guide includes some screenshots showing
+examples in Xcode 6.
 
 .. _iosindex:
 
