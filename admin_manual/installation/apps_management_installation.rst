@@ -113,15 +113,4 @@ To enable installation from your own apps store:
 
     "appstoreenabled" => true,
     "appstoreurl" => "http://api.apps.owncloud.com/v1",
-
-Guarding Against Malicious Code
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-You can enable checks for malicious code fragments in third party apps
-by setting the **appcodechecker** parameter.
-
-.. code-block:: php
-
-  <?php
-
-    "appcodechecker" => false,
+    
