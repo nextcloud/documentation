@@ -13,11 +13,12 @@ ownCloud Developer Documentation Contents
     :maxdepth: 3
 
     general/index
-    android_library/index
-    ios_library/index
     app/index
     core/index
     testing/index
     bugtracker/index
     commun/index
+    
+..     android_library/index
+..     ios_library/index
     
