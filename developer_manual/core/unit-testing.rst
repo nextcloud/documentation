@@ -35,36 +35,50 @@ Then you can simply run the created test with phpunit.
 
 An example for a simple test would be:
 
-:file:`/srv/http/owncloud/apps/myapp/tests/testsuite.php`
+:file:`/srv/http/owncloud/apps/myapp/tests/testaddtwo.php`
 
 .. code-block:: php
 
-  <?php
-  require_once("../myfolder/myfunction.php");
+    <?php
+    namespace OCA\Myapp\Tests;
 
-  class TestAddTwo extends PHPUnit_Framework_TestCase {
+    class TestAddTwo extends \Test\TestCase {
+        protected $testMe;
 
-      public function testAddTwo(){
-          $this->assertEquals(5, addTwo(3));
-      }
+        protected function setUp() {
+            parent::setUp();
+            $this->testMe = new \OCA\Myapp\TestMe();
+        }
 
-  }
-  ?>
+        public function testAddTwo(){
+              $this->assertEquals(5, $this->testMe->addTwo(3));
+        }
 
-:file:`/srv/http/owncloud/apps/myapp/tests/testsuite.php`
+    }
+
+
+:file:`/srv/http/owncloud/apps/myapp/lib/testme.php`
 
 .. code-block:: php
 
-  <?php
-  function addTwo($number){
-      return $number + 2;
-  }
-  ?>
+    <?php
+    namespace OCA\Myapp;
+
+    class TestMe {
+        public function addTwo($number){
+            return $number + 2;
+        }
+    }
 
 In :file:`/srv/http/owncloud/apps/myapp/` you run the test with::
 
-  phpunit tests/testsuite.php
+  phpunit tests/testaddtwo.php
 
+
+Make sure to extend the ``\Test\TestCase`` class with your test and always call the parent methods,
+when overwriting ``setUp()``, ``setUpBeforeClass()``, ``tearDown()`` or ``tearDownAfterClass()`` method
+from the TestCase. These methods set up important stuff and clean up the system after the test,
+so the next test can run without side effects, like remaining files and entries in the file cache, etc.
 
 For more resources on PHPUnit visit: http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html
 
