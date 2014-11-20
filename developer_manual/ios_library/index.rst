@@ -17,7 +17,7 @@ examples in Xcode 5.
 .. _iosindex:
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :hidden:
 
    library_installation

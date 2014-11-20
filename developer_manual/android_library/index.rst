@@ -23,7 +23,7 @@ You might want to start with doing one or two `junior jobs <https://github.com/o
 to get into the code!
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :hidden:
 
    library_installation

@@ -1,9 +1,9 @@
-=======
-General
-=======
+==============================
+General Contributor Guidelines
+==============================
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    code-of-conduct
    devenv
