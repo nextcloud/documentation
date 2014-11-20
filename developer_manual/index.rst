@@ -1,4 +1,4 @@
-.. _index:
+.. _contents:
 
 ================================
 ownCloud Developer Documentation
@@ -26,3 +26,19 @@ If you want to contribute please read the `Contributor agreement
 .. _ownCloud appstore: http://apps.owncloud.com/
 .. _Translation: https://www.transifex.com/projects/p/owncloud/
 .. _Documentation: https://github.com/owncloud/documentation#owncloud-documentation
+
+Table of Contents
+=================
+
+.. toctree::
+    :maxdepth: 2
+
+    general/index
+    app/index
+    android_library/index
+    ios_library/index
+    core/index
+    testing/index
+    bugtracker/index
+    commun/index
+     
