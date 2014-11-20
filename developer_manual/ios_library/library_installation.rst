@@ -9,7 +9,7 @@ The ownCloud iOS library may be obtained from the following Github repository:
 `git@github.com:owncloud/ios-library.git
 <mailto:git@github.com:owncloud/ios-library.git>`_
 
-Once obtained, this code should be compiled with Xcode 5.  The Github
+Once obtained, this code should be compiled with Xcode 6.  The Github
 repository not only contains the library, ownCloud iOS library, but also
 contains a sample project, OCLibraryExample, which will assist in learning how
 to use the library.
