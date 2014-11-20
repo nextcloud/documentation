@@ -1,8 +1,8 @@
 .. _index:
 
-================================
-ownCloud Developer Documentation
-================================
+=======================
+Developer Documentation
+=======================
 
 If you want to contribute please read the `Contributor agreement <http://owncloud.org/about/contributor-agreement/>`_
 
