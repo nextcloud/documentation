@@ -26,6 +26,7 @@ To run ownCloud, your web server must have the following installed:
 * PHP module libxml
 * PHP module mb multibyte
 * PHP module SimpleXML
+* PHP module XMLWriter
 * PHP module zip
 * PHP module zlib
 
