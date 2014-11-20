@@ -28,6 +28,10 @@ If you want to contribute please read the `Contributor agreement <http://ownclou
 .. _Translation: https://www.transifex.com/projects/p/owncloud/
 .. _Documentation: https://github.com/owncloud/documentation#owncloud-documentation
 
+Index and Tables
+================
+* :ref:`genindex`
+* :ref:`modindex`
 
 
 
