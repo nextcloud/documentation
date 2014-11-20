@@ -1,8 +1,8 @@
 .. _contents:
 
-=========================================
-ownCloud Developer Documentation Contents
-=========================================
+===============================
+ownCloud documentation contents
+===============================
 
 .. toctree::
     :hidden:
@@ -13,11 +13,13 @@ ownCloud Developer Documentation Contents
     :maxdepth: 3
 
     general/index
-    android_library/index
-    ios_library/index
     app/index
     core/index
     testing/index
     bugtracker/index
     commun/index
-    
+
+Indices and tables
+==================
+
+* :ref:`genindex`
