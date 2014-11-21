@@ -1,4 +1,4 @@
-Installing and Mananging Apps
+Installing and Managing Apps
 =============================
 
 After installing ownCloud, you may provide added functionality by installing applications.
