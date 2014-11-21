@@ -165,6 +165,34 @@ Control Structures
 
   ?>
 
+Unit tests
+^^^^^^^^^^
+Unit tests must always extend the ``\Test\TestCase`` class, which takes care
+of cleaning up the installation after the test.
+
+If a test is run with multiple different values, a data provider must be used.
+The name of the data provider method must not start with ``test`` and must end
+with ``Data``.
+
+.. code-block:: php
+
+    <?php
+    namespace Test;
+    class Dummy extends \Test\TestCase {
+        public function dummyData() {
+            return array(
+                array(1, true),
+                array(2, false),
+            );
+        }
+
+        /**
+         * @dataProvider dummyData
+         */
+        public function testDummy($input, $expected) {
+            $this->assertEquals($expected, \Dummy::method($input));
+        }
+    }
 
 
 JavaScript
