@@ -1,6 +1,7 @@
-Apps Configuration
-==================
-After installing ownCloud, you might want to provide added functionality on top of the core functionality that is installed by default.  ownCloud enables you to enhance your experience and your user's experiences by installing various *apps*.
+Installing and Mananging Apps
+=============================
+
+After installing ownCloud, you may provide added functionality by installing applications.
 
 Viewing Enabled Apps
 --------------------
@@ -22,26 +23,33 @@ During the ownCloud installation, some apps are enabled by default. To see which
 Managing Apps
 -------------
 
-In the Apps page, you can enable or disable applications, as well as modify any app settings, by clicking the app name.  If an app is already enabled, it appears highlighted in the list.  In addition, enabled apps appear at the top of the app list in the Apps Information Field.  In contrast, disabled apps appear below any enabled apps in the list and are not highlighted.
-
-To modify an app:
-
-1. Click the app that you want to modify.
-
-   The app is highlighted and any available settings for the app appear in the Application View window.
-
-2. Make any desired changes to the app.
-
-   All app changes are applied dynamically as soon as you select the change.  As there are many apps available for use with ownCloud, we do not list all apps or apps settings that are available to you.  However, we have documented several standard apps (for example, the Contacts and Calendar apps) that are directly supported.
+In the Apps page, you can enable or disable applications. If an app is already enabled, it 
+appears highlighted in the list.  In addition, enabled apps appear at the top of the app 
+list in the Apps Information Field.  In contrast, disabled apps appear below any enabled 
+apps in the list and are not highlighted. Some apps have some configurable options on the 
+Apps page, but mainly they are enabled or disabled here, and they are configured on your 
+ownCloud Admin page.
 
 Adding Third Party Apps
 -----------------------
 
-As mentioned earlier, ownCloud supports a number of different apps.  Some apps are developed and supported by ownCloud directly, while other apps are created by third parties and either included in or available for your ownCloud server installation.  Any apps that are not developed by ownCloud show a *3rd party* designation.
+Some apps are developed and supported by ownCloud directly, while other apps are created 
+by third parties and either included in or available for your ownCloud server 
+installation.  Any apps that are not developed by ownCloud show a *3rd party* 
+designation. Install unsupported apps at your own risk.
 
-To understand what an application does, you can click the app name to view a description of the app and any of the app settings in the Application View field.  Clicking the *Enable* button will enable the app.  If the app is a third party app, it will be downloaded from the app store, installed and enabled.  The App page does not show third party applications which have not been reviewed by the ownCloud security team. Find more information on security `in this article <https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your-data/>`_.
+Sometimes the installation of a third-party app fails silently, possibly because
+``'appcodechecker' => true,`` is enabled in ``config.php``. When ``appcodechecker`` is 
+enabled it checks if third-party apps are using the private API, rather than the public 
+API. If they are then they will not be installed. 
 
-Though ownCloud provides many apps in the server installation, you can view many more apps at the `ownCloud apps store <http://apps.owncloud.com/>`_.
+To understand what an application does, you can click the app name to view a description 
+of the app and any of the app settings in the Application View field.  Clicking the 
+*Enable* button will enable the app.  If the app is a third party app, it will be 
+downloaded from the app store, installed and enabled.
+
+Though ownCloud provides many apps in the server installation, you can view  more in
+the `ownCloud apps store <http://apps.owncloud.com/>`_.
 
 To view or install apps from the ownCloud apps store:
 
@@ -53,27 +61,37 @@ To view or install apps from the ownCloud apps store:
 
 3. Read about any of the apps in the ownCloud app store and download any that you like.
 
-4. Extract a downloaded compressed file and place the contents (which should themselves be contained in a folder with the app name) in the apps folder in your ownCloud installation.
+4. Extract a downloaded compressed file and place the contents (which should themselves be 
+contained in a folder with the app name) in the apps folder in your ownCloud 
+installation, typically ``owncloud/apps``.
 
-5. Ensure the permissions and ownership are similar to the other ownCloud apps. Typically, access rights are **rwxr-x---** or **750** in octal notation and owner is for example **wwwrun**.
+5. Ensure the permissions and ownership are similar to the other ownCloud apps. Typically, 
+access rights are **rwxr-x---**, or **0750** in octal notation, and the owner and group 
+are your HTTP user. On CentOS this is ``apache``, Ubuntu is ``www-data``, and on openSUSE 
+is it ``wwwrun:www``.
 
-.. note:: If you would like to create or add your own ownCloud app, please use the *Add your App...* button on the same page. This button redirects you to our `Developer Center <http://owncloud.org/dev>`_ where you can find information about creating and adding your own apps.
+.. note:: If you would like to create or add your own ownCloud app, please use the 
+   *Add your App...* button on the same page. This button redirects you to our 
+   `Developer Center <http://owncloud.org/dev>`_ where you can find information about 
+   creating and adding your own apps.
 
 Setting App Parameters
 ----------------------
-Parameters are set in the :file:`config/config.php` inside the **$CONFIG** array.
 
-Use custom app directories
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-Use the **apps_paths** array to set the apps folders which should be scanned
-for available apps and/or where user specific apps should be installed.The key
-**path** defines the absolute file system path to the app folder. The key
-**url** defines the http web path to that folder, starting at the ownCloud
-web root. The key **writable** indicates if a user can install apps in that
-folder.
+Most app parameters are configured on your Admin page, and some are set in
+:file:`config/config.php`. Always try your Admin page first.
 
-.. note:: If you want to make sure that the default **/apps/** folder only contains apps shipped with ownCloud, you
- should follow the example and set-up a **/apps2/** folder which will be used to store all apps downloaded by users
+Using Custom App Directories
+----------------------------
+
+Use the **apps_paths** array in `config.php` to set any custom apps directory locations. 
+The key **path** defines the absolute file system path to the app folder. The key **url** 
+defines the HTTP web path to that folder, starting at the ownCloud web root. The key 
+**writable** indicates if a user can install apps in that folder.
+
+.. note:: To ensure that the default **/apps/** folder only contains apps 
+   shipped with ownCloud, follow this example to setup an **/apps2/** folder 
+   which will be used to store all other apps.
 
 .. code-block:: php
 
@@ -92,10 +110,11 @@ folder.
         ),
     ),
 
-
 Using Your Own Appstore
-~~~~~~~~~~~~~~~~~~~~~~~
-You can enable the installation of apps from your own apps store.  However, this requires that you can write to at least one of the configured apps directories.
+-----------------------
+
+You can enable the installation of apps from your own apps store. This requires that you 
+can write to at least one of the configured apps directories.
 
 To enable installation from your own apps store:
 
@@ -105,7 +124,8 @@ To enable installation from your own apps store:
 
 2. Set the **appstoreurl** to the URL of your ownCloud apps store.
 
-   This parameter is used to set the http path to the ownCloud apps store. The appstore server must use :abbr:`OCS (Open Collaboration Services)`.
+   This parameter is used to set the http path to the ownCloud apps store. The appstore 
+   server must use :abbr:`OCS (Open Collaboration Services)`.
 
 .. code-block:: php
 
@@ -113,4 +133,5 @@ To enable installation from your own apps store:
 
     "appstoreenabled" => true,
     "appstoreurl" => "http://api.apps.owncloud.com/v1",
+
     
