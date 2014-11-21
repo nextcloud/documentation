@@ -9,7 +9,7 @@ Dropbox and Google Drive) will be encrypted by the ownCloud server, and upon
 retrieval, decrypted before serving them to you and anyone you have shared them 
 with.
 
-.. note: Encrypting files increases their size by roughly 35%, so you must take this into 
+.. note:: Encrypting files increases their size by roughly 35%, so you must take this into 
    account when you are provisioning storage and setting storage quotas.
 
 When files on external storage are encrypted in ownCloud, you cannot share them 
