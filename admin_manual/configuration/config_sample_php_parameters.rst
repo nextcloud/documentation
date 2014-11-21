@@ -44,7 +44,7 @@ and you should never use it.
 	'trusted_domains' =>
 	  array (
 	    'demo.example.org',
-	    'otherdomain.example.org:8080',
+	    'otherdomain.example.org',
 	  ),
 
 Your list of trusted domains that users can log into. Specifying trusted
