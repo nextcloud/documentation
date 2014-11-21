@@ -12,11 +12,11 @@ iOS ownCloud Client development
 -----------------------------------
 
 If you are interested in working on the ownCloud iOS client, you can find
-the source code `in github <https://github.com/owncloud/iOS/>`_. The
+the source code `in github <https://github.com/owncloud/ios-issues/>`_. The
 setup and process of contribution is
-`documented here <https://raw.githubusercontent.com/owncloud/iOS/master/SETUP.md>`_.
+`documented here <https://github.com/owncloud/ios-issues/SETUP.md>`_.
 
-You might want to start with doing one or two `junior jobs <https://github.com/owncloud/iOS/issues?q=is%3Aopen+is%3Aissue+label%3A%22Junior+Job%22>`_
+You might want to start with doing one or two `junior jobs <https://github.com/owncloud/iOS-issues/issues?q=is%3Aopen+is%3Aissue+label%3A%22Junior+Job%22>`_
 to get into the code and note our :doc:`../general/index`
 
 Note that contribution to the iOS client require signing the iOS addendum to the `ownCloud Contributor Agreement <https://owncloud.org/contribute/agreement/>`_. You are permitted to test the iOS client on Apple hardware thanks to the 'iOS license exception <https://owncloud.org/contribute/iOS-license-exception/>`_.
