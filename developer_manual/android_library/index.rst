@@ -16,7 +16,7 @@ Android ownCloud Client development
 If you are interested in working on the ownCloud android client, you can find
 the source code `in github <https://github.com/owncloud/android/>`_. The
 setup and process of contribution is
-`documented here <https://github.com/owncloud/android/SETUP.md>`_.
+`documented here <https://github.com/owncloud/android/blob/master/SETUP.md>`_.
 
 You might want to start with doing one or two `junior jobs <https://github.com/owncloud/android/issues?q=is%3Aopen+is%3Aissue+label%3A%22Junior+Job%22>`_
 to get into the code and note our :doc:`../general/index`
