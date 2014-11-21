@@ -184,10 +184,15 @@ For hardened security we  highly recommend setting the permissions on your ownCl
 as possible. These commands should be executed immediately after the initial installation::
   
     chown -R root:root /path/to/owncloud/
+    chmod -R 755 /path/to/owncloud/
     chown <http-user>:<http-user> /path/to/owncloud/config/config.php
+    chmod 750 /path/to/owncloud/config/config.php
     chown -R <http-user>:<http-user> /path/to/owncloud/data/
+    chmod -R 750 /path/to/owncoud/data
     chown root:root /path/to/owncloud/data/.htaccess
+    chmod 755 /path/to/owncloud/data/.htaccess
     chown <http-user>:<http-user> /path/to/owncloud/apps/
+    chmod 750 /path/to/owncloud/apps/
     
 These strict permissions will prevent the Updater app from working. If you use the Updater app, it needs your whole
 ownCloud directory to be owned by the http-user, like these examples:
