@@ -494,7 +494,7 @@ To turn off checks the following *Annotations* can be added before the controlle
 * **@NoCSRFRequired**: Don't check the CSRF token (use this wisely since you might create a security hole, to understand what it does see :doc:`../general/security`)
 * **@PublicPage**: Everyone can access that page without having to log in
 
-A controller method that turns of all checks would look like this:
+A controller method that turns off all checks would look like this:
 
 .. code-block:: php
 
