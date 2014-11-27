@@ -47,9 +47,9 @@ Finding bugs to triage
 
 Github offers several search queries which can be useful to find a list of bugs which deserve a closer look:
 
-* `The bugs least recently commented on <https://github.com/owncloud/core/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-asc+>`_
-* `Least commented issues <https://github.com/owncloud/core/issues?q=is%3Aopen+is%3Aissue+no%3Aassignee+no%3Amilestone+no%3Alabel+sort%3Acomments-asc>`_
-* `bugs which need info <https://github.com/owncloud/core/issues?q=is%3Aopen+is%3Aissue+label%3A%22Needs+info%22+sort%3Acreated-asc>`_
+* `The bugs least recently commented on <https://github.com/issues?q=is%3Aissue+user%3Aowncloud+is%3Aopen+sort%3Aupdated-asc++is%3Apublic+>`_
+* `Least commented issues <https://github.com/issues?q=is%3Aissue+user%3Aowncloud+is%3Aopen+no%3Aassignee+no%3Amilestone+no%3Alabel+sort%3Acomments-asc+>`_
+* `Bugs which need info <https://github.com/issues?q=is%3Aissue+user%3Aowncloud+is%3Aopen+label%3A%22Needs+info%22+sort%3Acreated-asc+>`_
 
 But there are more methods. For example, if you are a user of ownCloud with a specific setup like using nginx as web server or dropbox as storage, or using the encryption app, you could look for bugs with these keywords. You can then use your knowledge of your installation and your installation itself to see if bugs are (still) valid or reproduce them.
 
@@ -92,6 +92,8 @@ Now that you know that the bug report is unique, and that is not an external iss
 
 Check `our bug reporting guidelines<https://github.com/owncloud/core/blob/master/CONTRIBUTING.md#submitting-issues>`_ and make sure bug reports comply with it! The information asked in the `issue template<https://raw.github.com/owncloud/core/master/issue_template.md>`_ is needed for developers to solve issues.
 
+Once you added a request for more information, add a #needinfo tag.
+
 If there has been a request for more information on the report, either by you, a developer or somebody else, but the original reporter (or somebody else who might have the answer) has not responded for 1 month or longer, you can close the issue. Be polite and note that whoever can answer the question can re-open the issue!
 
 ### Reproducing the issue
@@ -106,10 +108,11 @@ If you can't reproduce an issue in a newer version of ownCloud, it is most likel
 #### Finalizing and tagging
 Once you are done reproducing an issue, it is time to finish up and make clear to the developers what they can do:
 
-* If it is a genuine bug (or you are pretty sure it is) add the 'bug' tag.
+* If it is a genuine bug (or you are pretty sure it is) add the 'Bug' tag.
 * If it is a genuine feature request (or you are pretty sure it is) add the 'enhancement' tag.
 * If the issue is clearly related to something specific, @mention a maintainer. examples: @schiesbn for encryption, @blizzz for LDAP, @PVince81 for quota stuff... You can find a `list of maintainers here<https://github.com/owncloud/core/wiki/Maintainers>`_.
-*
+
+Now, the developers can pick the issue up. Note that while we wish we would always pick up and solve problems promptly, not all areas of ownCloud get the same amount of attention and contribution, so this can occasionally take a long time.
 
 
 Collaboration
