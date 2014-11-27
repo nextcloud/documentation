@@ -76,14 +76,13 @@ When the issue is a feature request, you can be helpful in the same way: merge r
 
 **Notes**
 * Be polite: when you need to request information or feedback be clear and polite, and you will get more information in less time. Think about how you'd like to be treated, were you to report a bug!
+* You can answer more quickly and friendly using one of `these templates<https://gist.github.com/jancborchardt/6155185>`_.
 * Often our github issue tracker is a place for discussions about solutions. Be friendly, inclusive and respect other people's position.
 
 ### Identifying external issues
-Bugs can be due to a specific configuration or unsupported platforms. Raspberry Pi's suffer from SQLite time-outs, nginx has issues Apache doesn't and Microsoft Server with ISS is simply not supported at all. While external issues aren't always a reason to close a report, be sure that they are clear: does the user use the 'standard' platform? Ask for information if this is missing.
+Bugs can be due to a specific configuration or unsupported platforms. Raspberry Pi's suffer from SQLite time-outs, nginx has issues Apache doesn't and Microsoft Server with IIS is not well supported. While external issues aren't always a reason to close a report, be sure that they are clear: does the user use the 'standard' platform? Ask for information if this is missing.
 
 Last but not least, the problem might be due to the user doing something that simply does not work. Your general ownCloud knowledge might be helpful here - if this is the case, you can often swiftly close the issue with a comment about what went wrong.
-
-XXX - more about this?
 
 **Notes**
 * You might have to say no to some requests, for example when a problem has been solved in a new release but won't become available for the release the reporter is using; or when a solution has been chosen which the reporter is unhappy about. Be considerate. People feel surprisingly strong about ownCloud, and you should take care to explain that we don't aim to ignore them; on the contrary. But sometimes, decisions which benefit the majority of users don't help an individual. The extensibility and open availability of the code of ownCloud is here to relieve the pain of such decisions.
@@ -93,22 +92,25 @@ Now that you know that the bug report is unique, and that is not an external iss
 
 Check `our bug reporting guidelines<https://github.com/owncloud/core/blob/master/CONTRIBUTING.md#submitting-issues>`_ and make sure bug reports comply with it! The information asked in the `issue template<https://raw.github.com/owncloud/core/master/issue_template.md>`_ is needed for developers to solve issues.
 
-xxx anything specific to add?
-TODO:
-
-* When do we add what tags;
-* should we let triagers add 'severity' tags? Which, when, how?
-* when do we assign things;
-* asking for missing information? Ping people: when people don't respond to requests for information, ask again or, after a few times, close. What rule do we want here?
+If there has been a request for more information on the report, either by you, a developer or somebody else, but the original reporter (or somebody else who might have the answer) has not responded for 1 month or longer, you can close the issue. Be polite and note that whoever can answer the question can re-open the issue!
 
 ### Reproducing the issue
-An important step of bug triaging is trying to reproduce the bugs, this means, using the information the reporters added to the bug report to force(recreate, reproduce, repeat) the bug in the application.
+An important step of bug triaging is trying to reproduce the bugs, this means, using the information the reporters added to the bug report to force (recreate, reproduce, repeat) the bug in the application.
 
 This is needed in order to differentiate random/race condition bugs of reproducible ones (which may be reproduced by developers too; and they can fix them).
 
 To reproduce an issue, please refer to our testing documents: :doc:`../testing/index`
 
 If you can't reproduce an issue in a newer version of ownCloud, it is most likely fixed and can be closed. Comment that you failed to reproduce the problem, and if the reporter can confirm (or doesn't respond for a long time), you can close the issue.
+
+#### Finalizing and tagging
+Once you are done reproducing an issue, it is time to finish up and make clear to the developers what they can do:
+
+* If it is a genuine bug (or you are pretty sure it is) add the 'bug' tag.
+* If it is a genuine feature request (or you are pretty sure it is) add the 'enhancement' tag.
+* If the issue is clearly related to something specific, @mention a maintainer. examples: @schiesbn for encryption, @blizzz for LDAP, @PVince81 for quota stuff... You can find a `list of maintainers here<https://github.com/owncloud/core/wiki/Maintainers>`_.
+*
+
 
 Collaboration
 -------------
