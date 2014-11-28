@@ -56,7 +56,8 @@ necessary security checks.
 	'datadirectory' => '/var/www/owncloud/data',
 
 Where user files are stored; this defaults to ``data/`` in the ownCloud
-directory. The SQLite database is also stored here, when you use SQLite.
+directory. The SQLite database is also stored here, when you use SQLite. (SQLite is
+available only in ownCloud Community Edition)
 
 ::
 
@@ -948,7 +949,8 @@ One way to test is applying for a trystack account at http://trystack.org/
 		'mssql'
 	),
 
-Database types that are supported for installation.
+Database types that are supported for installation. (SQLite is available only in
+ownCloud Community Edition)
 
 Available:
 	- sqlite (SQLite3)
