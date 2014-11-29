@@ -950,7 +950,7 @@ One way to test is applying for a trystack account at http://trystack.org/
 	),
 
 Database types that are supported for installation. (SQLite is available only in
-ownCloud Community Edition)
+ownCloud Community Edition, oci and mssql only for the Enterprise Edition)
 
 Available:
 	- sqlite (SQLite3)
