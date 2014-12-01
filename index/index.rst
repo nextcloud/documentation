@@ -34,7 +34,7 @@ This documents the *deprecated* ownCloud release.
 * `Developer Manual <http://doc.owncloud.org/server/5.0/developer_manual/>`_ (`Download PDF <http://doc.owncloud.org/server/5.0/ownCloudDeveloperManual.pdf>`_)
 
 ---------------------------
-ownCloud Desktop Client 1.6
+ownCloud Desktop Client 1.7
 ---------------------------
 
-* `ownCloud Client Manual <http://doc.owncloud.org/desktop/1.6/>`_ (`Download PDF <http://doc.owncloud.org/desktop/1.6/ownCloudClientManual.pdf>`_)
+* `ownCloud Client Manual <http://doc.owncloud.org/desktop/1.7/>`_ (`Download PDF <http://doc.owncloud.org/desktop/1.7/ownCloudClientManual.pdf>`_)
