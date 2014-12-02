@@ -152,7 +152,7 @@ you can preview if your ownCloud administrator has enabled them. If ownCloud can
 display a file, it starts a download process and downloads the file to your computer. 
 
 Video streaming by the native ownCloud video player depends on your Web browser and the 
-video format. If your ownCloud administrator has enable video streaming, and it doesn't 
+video format. If your ownCloud administrator has enabled video streaming, and it doesn't 
 work in your Web browser, it may be a browser issue.
 
 Moving Files
