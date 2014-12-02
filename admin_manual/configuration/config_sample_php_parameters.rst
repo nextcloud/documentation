@@ -967,3 +967,10 @@ Available:
 		"font-src 'self' data:; media-src *",
 
 Custom CSP policy, changing this will overwrite the standard policy
+
+::
+
+	'secret' => 'ICertainlyShouldHaveChangedTheDefaultSecret',
+
+Secret used by ownCloud for various purposes, e.g. to encrypt data. If you
+lose this string there will be data corruption.
