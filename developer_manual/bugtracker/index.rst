@@ -12,8 +12,20 @@ Bugtracker
 Thank you for helping ownCloud by reporting bugs. Before submitting an issue, please read
 `Issue submission guidelines`_ first.
 
-Bugs related to the core should be entered into the `ownCloud Core Repository Issues`_. If your report
-is related to an application, their bugtrackers will be also found in the same guideline page.
+* If the issue is with the ownCloud server, report it to the `Core repository`_
+* If the issue is with the ownCloud client, report it to the `Mirall repository`_
+* If the issue with with an ownCloud app, report it to where that app is developed
+* If the app is listed in our `main github repository`_ report it to the correct sub 
+  repository
+* If the app is listed in the `apps repository`_ report it there
 
-.. _ownCloud Core Repository Issues: https://github.com/owncloud/core/issues
+Please note that the mailing list should not be used for bug reports, as it is hard to track them there.
+
+
+
+
 .. _Issue submission guidelines: https://github.com/owncloud/core/blob/master/CONTRIBUTING.md#submitting-issues
+.. _Core repository:  https://github.com/owncloud/core/issues
+.. _Mirall repository: https://github.com/owncloud/mirall/issues
+.. _main github repository: https://github.com/owncloud
+.. _apps repository: https://github.com/owncloud/apps/issues
