@@ -15,9 +15,9 @@ Thank you for helping ownCloud by reporting bugs. Before submitting an issue, pl
 * If the issue is with the ownCloud server, report it to the `Core repository`_
 * If the issue is with the ownCloud client, report it to the `Mirall repository`_
 * If the issue with with an ownCloud app, report it to where that app is developed
-
-  * If the app is listed in our `main github repository`_ report it to the correct sub repository
-  * If the app is listed in the `apps repository`_ report it there
+* If the app is listed in our `main github repository`_ report it to the correct sub 
+  repository
+* If the app is listed in the `apps repository`_ report it there
 
 Please note that the mailing list should not be used for bug reports, as it is hard to track them there.
 
