@@ -5,7 +5,7 @@ ownCloud documentation contents
 ===============================
 
 .. toctree::
-    :hidden:
+
 
     index
 

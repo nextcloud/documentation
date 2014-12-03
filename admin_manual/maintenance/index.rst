@@ -3,7 +3,7 @@ Maintenance
 ===========
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    enable_maintenance
    backup

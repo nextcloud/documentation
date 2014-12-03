@@ -3,7 +3,7 @@ Configuration
 =============
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    antivirus_configuration
    automatic_configuration

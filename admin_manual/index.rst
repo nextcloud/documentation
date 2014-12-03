@@ -48,6 +48,7 @@ different scenarios.  It contains the following topics:
 * :doc:`installation/ucs_installation`
 * :doc:`installation/windows_installation`
 * :doc:`installation/yaws_configuration`
+* :doc:`installation/selinux_configuration`
 
 .. note:: If you just want to try out ownCloud in a virtual machine, without any 
    configuration, refer to :doc:`installation/appliance_installation`.  For your 
