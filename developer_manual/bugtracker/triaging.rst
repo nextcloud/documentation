@@ -60,7 +60,7 @@ Much content from https://techbase.kde.org/Contribute/Bugsquad/Guide_To_BugTriag
 
 The goal of triaging is to have only useful bug reports for the developers. And you don't have to know much to be able to judge at least some bug reports to be less than useful. There are duplications, incomplete reports and so on. Here is the work flow for each bug:
 
-.. figure:: ../images/kanbanexample.png
+.. figure:: ../images/triage work flow.png
    :scale: 50
 
 Let's go over each step.
