@@ -70,8 +70,15 @@ during installation and update, so you shouldn't need to change it.
 
 	'dbtype' => 'sqlite',
 
-Identifies the database used with this installation: ``sqlite``, ``mysql``,
-``pgsql``, ``oci``, or ``mssql``.
+Identifies the database used with this installation. See also config option
+``supportedDatabases``
+
+Available:
+	- sqlite (SQLite3 - Community Edition Only)
+	- mysql (MySQL)
+	- pgsql (PostgreSQL)
+	- oci (Oracle - Enterprise Edition Only)
+	- mssql (Microsoft SQL Server - Enterprise Edition Only)
 
 ::
 
@@ -949,15 +956,14 @@ One way to test is applying for a trystack account at http://trystack.org/
 		'mssql'
 	),
 
-Database types that are supported for installation. (SQLite is available only in
-ownCloud Community Edition, oci and mssql only for the Enterprise Edition)
+Database types that are supported for installation.
 
 Available:
-	- sqlite (SQLite3)
+	- sqlite (SQLite3 - Community Edition Only)
 	- mysql (MySQL)
 	- pgsql (PostgreSQL)
-	- oci (Oracle)
-	- mssql (Microsoft SQL Server)
+	- oci (Oracle - Enterprise Edition Only)
+	- mssql (Microsoft SQL Server - Enterprise Edition Only)
 
 ::
 
