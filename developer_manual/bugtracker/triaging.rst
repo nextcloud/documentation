@@ -9,13 +9,13 @@ ownCloud Bug Triaging
 Bug Triaging is the process of checking bug reports to see if they are still valid (the problem might be solved since the bug was reported), reproducing them when possible (to make sure it really is an ownCloud issue and not a configuration problem) and in general making sure the bug is useful for a developer who wants to fix it. If the bug is not useful and can't be augmented by the original reporter or the triaging contributor, it has to be closed.
 
 Why do you want to join
------------------------
+=======================
 Helping to bring the number if issues down makes it easier for developers to spend their time productively and bug triagers thus **contribute greatly to ownCloud development**! Triaging a bug doesn’t take long so the work comes in small chunks and you don’t need many skills, just some patience and sometimes perseverance.
 
 Bug triagers who contribute significantly should ask to be listed as an active contributor on the `owncloud.org <http://owncloud.org>`_ page!
 
 How do you triage bugs
-----------------------
+======================
 The process of checking, reproducing and closing invalid issues is called ‘bug triaging‘. Issues can be divided in one of three kinds:
 
 1. Bugs or feature requests which come with all needed information to allow a developer to fix or work on them
@@ -32,7 +32,7 @@ Triaging follows these steps:
 * Find the next bug-to-be-dealt-with and repeat!
 
 General considerations
-----------------------
+======================
 
 * You need a `github account <http://github.com>`_ to contribute to bug triaging.
 * If you are not familiar with the github issue tracker interface (which is used by ownCloud to handle bug reports), you `may find this guide useful <https://guides.github.com/features/issues/>`_.
@@ -43,7 +43,7 @@ General considerations
     Open question: do you need to sign the contributor agreement for this? Shouldn't be the case...
 
 Finding bugs to triage
-----------------------
+======================
 
 Github offers several search queries which can be useful to find a list of bugs which deserve a closer look:
 
@@ -54,7 +54,7 @@ Github offers several search queries which can be useful to find a list of bugs 
 But there are more methods. For example, if you are a user of ownCloud with a specific setup like using nginx as web server or dropbox as storage, or using the encryption app, you could look for bugs with these keywords. You can then use your knowledge of your installation and your installation itself to see if bugs are (still) valid or reproduce them.
 
 Checking if the issue is useful
--------------------------------
+===============================
 
 Much content from https://techbase.kde.org/Contribute/Bugsquad/Guide_To_BugTriaging
 
@@ -65,7 +65,8 @@ The goal of triaging is to have only useful bug reports for the developers. And 
 
 Let's go over each step.
 
-### Finding duplicates
+Finding duplicates
+------------------
 To find duplicates, the search tool in github is your first stop. In `this screen <https://github.com/owncloud/core/issues>`_ you can easily search for a few keywords from the bug report. If you find other bugs with the same content, decide what the best bug report is (often the oldest or the one where one or more developers have already started to engage and discuss the problem). That is the 'master' bug report, you can now close the other one (or comment that it can be closed as duplicate).
 
 If the bug report you were reviewing contains additional information, you can add that information to the 'master' bug report in a comment. Mention this bug report (using #<bug report number>) so a developer can look up the original, closed, report and perhaps ask the initial reporter there for additional information.
@@ -74,20 +75,20 @@ If you can't find anything, look in closed bug reports. The problem might be sol
 
 When the issue is a feature request, you can be helpful in the same way: merge related requests by adding information of one to the other and closing the first.
 
-**Notes**
-* Be polite: when you need to request information or feedback be clear and polite, and you will get more information in less time. Think about how you'd like to be treated, were you to report a bug!
-* You can answer more quickly and friendly using one of `these templates <https://gist.github.com/jancborchardt/6155185>`_.
-* Often our github issue tracker is a place for discussions about solutions. Be friendly, inclusive and respect other people's position.
+.. note:: Be polite: when you need to request information or feedback be clear and polite, and you will get more information in less time. Think about how you'd like to be treated, were you to report a bug!
+.. note:: You can answer more quickly and friendly using one of `these templates <https://gist.github.com/jancborchardt/6155185>`_.
+.. note:: Often our github issue tracker is a place for discussions about solutions. Be friendly, inclusive and respect other people's position.
 
-### Identifying external issues
+Identifying external issues
+---------------------------
 Bugs can be due to a specific configuration or unsupported platforms. Raspberry Pi's suffer from SQLite time-outs, nginx has issues Apache doesn't and Microsoft Server with IIS is not well supported. While external issues aren't always a reason to close a report, be sure that they are clear: does the user use the 'standard' platform? Ask for information if this is missing.
 
 Last but not least, the problem might be due to the user doing something that simply does not work. Your general ownCloud knowledge might be helpful here - if this is the case, you can often swiftly close the issue with a comment about what went wrong.
 
-**Notes**
-* You might have to say no to some requests, for example when a problem has been solved in a new release but won't become available for the release the reporter is using; or when a solution has been chosen which the reporter is unhappy about. Be considerate. People feel surprisingly strong about ownCloud, and you should take care to explain that we don't aim to ignore them; on the contrary. But sometimes, decisions which benefit the majority of users don't help an individual. The extensibility and open availability of the code of ownCloud is here to relieve the pain of such decisions.
+.. note:: You might have to say no to some requests, for example when a problem has been solved in a new release but won't become available for the release the reporter is using; or when a solution has been chosen which the reporter is unhappy about. Be considerate. People feel surprisingly strong about ownCloud, and you should take care to explain that we don't aim to ignore them; on the contrary. But sometimes, decisions which benefit the majority of users don't help an individual. The extensibility and open availability of the code of ownCloud is here to relieve the pain of such decisions.
 
-### Determining if the report is complete
+Determining if the report is complete
+-------------------------------------
 Now that you know that the bug report is unique, and that is not an external issue, you need to check all the needed information is there.
 
 Check `our bug reporting guidelines <https://github.com/owncloud/core/blob/master/CONTRIBUTING.md#submitting-issues>`_ and make sure bug reports comply with it! The information asked in the `issue template <https://raw.github.com/owncloud/core/master/issue_template.md>`_ is needed for developers to solve issues.
@@ -96,7 +97,8 @@ Once you added a request for more information, add a #needinfo tag.
 
 If there has been a request for more information on the report, either by you, a developer or somebody else, but the original reporter (or somebody else who might have the answer) has not responded for 1 month or longer, you can close the issue. Be polite and note that whoever can answer the question can re-open the issue!
 
-### Reproducing the issue
+Reproducing the issue
+---------------------
 An important step of bug triaging is trying to reproduce the bugs, this means, using the information the reporters added to the bug report to force (recreate, reproduce, repeat) the bug in the application.
 
 This is needed in order to differentiate random/race condition bugs of reproducible ones (which may be reproduced by developers too; and they can fix them).
@@ -105,7 +107,8 @@ To reproduce an issue, please refer to our testing documents: :doc:`../testing/i
 
 If you can't reproduce an issue in a newer version of ownCloud, it is most likely fixed and can be closed. Comment that you failed to reproduce the problem, and if the reporter can confirm (or doesn't respond for a long time), you can close the issue.
 
-#### Finalizing and tagging
+Finalizing and tagging
+----------------------
 Once you are done reproducing an issue, it is time to finish up and make clear to the developers what they can do:
 
 * If it is a genuine bug (or you are pretty sure it is) add the 'Bug' tag.
@@ -116,7 +119,7 @@ Now, the developers can pick the issue up. Note that while we wish we would alwa
 
 
 Collaboration
--------------
+=============
 You can just get started with bug triaging. But if you want, you can register on the `testpilot mailing list <http://mailman.owncloud.org/mailman/listinfo/testpilots>`_ and perhaps introduce yourself to `testpilots@owncloud.org <testpilots@owncloud.org>`_. On this list we announce and discuss testing and bug triaging related subjects.
 
 You can also join the **#owncloud-testing** channel on **irc.freenode.net** (`link for IRC clients <irc://#owncloud-testing@freenode.net>`_ and `link to webchat <https://webchat.freenode.net/>`_) to ask questions but keep in mind that people aren't active 24/7 and it can occasionally take a while to get a response.
