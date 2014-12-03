@@ -3,7 +3,7 @@ Installation
 ============
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    appliance_installation
    apps_management_installation
@@ -14,8 +14,8 @@ Installation
    macos_installation
    nginx_configuration
    others_installation
-   selinux_configuration
    source_installation
    ucs_installation
    windows_installation
    yaws_configuration
+   selinux_configuration
