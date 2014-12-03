@@ -37,7 +37,7 @@ General considerations
 * You need a `github account <http://github.com>`_ to contribute to bug triaging.
 * If you are not familiar with the github issue tracker interface (which is used by ownCloud to handle bug reports), you `may find this guide useful <https://guides.github.com/features/issues/>`_.
 * You will initially only be able to comment on issues. The ability to close issues or assign labels will be given liberally to those who have shown to be willing and able to contribute. Just ask on IRC!
-* Read `our bug reporting guidelines<https://github.com/owncloud/core/blob/master/CONTRIBUTING.md#submitting-issues>`_ so you know what a good report should look like and where things belong. The `issue template<https://raw.github.com/owncloud/core/master/issue_template.md>`_ asks specifically for some information developers need to solve issues.
+* Read `our bug reporting guidelines <https://github.com/owncloud/core/blob/master/CONTRIBUTING.md#submitting-issues>`_ so you know what a good report should look like and where things belong. The `issue template <https://raw.github.com/owncloud/core/master/issue_template.md>`_ asks specifically for some information developers need to solve issues.
 * It might even be fixed, sometimes! It can also be fruitful to contact the `developers on irc <irc://freenode/#owncloud-dev>`_. Tell them you're triaging bugs and share what problem you bumped into. Or just ask on the test-pilots mailing list.
 
     Open question: do you need to sign the contributor agreement for this? Shouldn't be the case...
@@ -76,7 +76,7 @@ When the issue is a feature request, you can be helpful in the same way: merge r
 
 **Notes**
 * Be polite: when you need to request information or feedback be clear and polite, and you will get more information in less time. Think about how you'd like to be treated, were you to report a bug!
-* You can answer more quickly and friendly using one of `these templates<https://gist.github.com/jancborchardt/6155185>`_.
+* You can answer more quickly and friendly using one of `these templates <https://gist.github.com/jancborchardt/6155185>`_.
 * Often our github issue tracker is a place for discussions about solutions. Be friendly, inclusive and respect other people's position.
 
 ### Identifying external issues
@@ -90,7 +90,7 @@ Last but not least, the problem might be due to the user doing something that si
 ### Determining if the report is complete
 Now that you know that the bug report is unique, and that is not an external issue, you need to check all the needed information is there.
 
-Check `our bug reporting guidelines<https://github.com/owncloud/core/blob/master/CONTRIBUTING.md#submitting-issues>`_ and make sure bug reports comply with it! The information asked in the `issue template<https://raw.github.com/owncloud/core/master/issue_template.md>`_ is needed for developers to solve issues.
+Check `our bug reporting guidelines <https://github.com/owncloud/core/blob/master/CONTRIBUTING.md#submitting-issues>`_ and make sure bug reports comply with it! The information asked in the `issue template <https://raw.github.com/owncloud/core/master/issue_template.md>`_ is needed for developers to solve issues.
 
 Once you added a request for more information, add a #needinfo tag.
 
@@ -110,7 +110,7 @@ Once you are done reproducing an issue, it is time to finish up and make clear t
 
 * If it is a genuine bug (or you are pretty sure it is) add the 'Bug' tag.
 * If it is a genuine feature request (or you are pretty sure it is) add the 'enhancement' tag.
-* If the issue is clearly related to something specific, @mention a maintainer. examples: @schiesbn for encryption, @blizzz for LDAP, @PVince81 for quota stuff... You can find a `list of maintainers here<https://github.com/owncloud/core/wiki/Maintainers>`_.
+* If the issue is clearly related to something specific, @mention a maintainer. examples: @schiesbn for encryption, @blizzz for LDAP, @PVince81 for quota stuff... You can find a `list of maintainers here <https://github.com/owncloud/core/wiki/Maintainers>`_.
 
 Now, the developers can pick the issue up. Note that while we wish we would always pick up and solve problems promptly, not all areas of ownCloud get the same amount of attention and contribution, so this can occasionally take a long time.
 
