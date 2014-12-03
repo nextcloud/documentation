@@ -14,6 +14,7 @@ Installation
    macos_installation
    nginx_configuration
    others_installation
+   selinux_configuration
    source_installation
    ucs_installation
    windows_installation
