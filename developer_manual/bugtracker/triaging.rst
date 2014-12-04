@@ -41,7 +41,7 @@ General considerations
 * It might even be fixed, sometimes! It can also be fruitful to contact the `developers on irc <irc://freenode/#owncloud-dev>`_. Tell them you're triaging bugs and share what problem you bumped into. Or just ask on the test-pilots mailing list.
 * To ensure no two people are working on the same issue, we ask you to simply add a comment like "I am triaging this" in the issue you want to work on, and when done, before or after executing the triaging actions, note similarly that you're done.
 
-    Open question: do you need to sign the contributor agreement for this? Shouldn't be the case...
+    To be able to tag and close issues, you need to have access to the repository. For the core and sync app repositories this also means having signed the contributor agreement. However, this isn't really needed for triaging as you can comment after you're done triaging and somebody else can execute those actions.
 
 Finding bugs to triage
 ======================
