@@ -322,6 +322,7 @@ By default there is only a responder for JSON but more can be added easily:
     namespace OCA\MyApp\Controller;
 
     use \OCP\AppFramework\Controller;
+    use \OCP\AppFramework\Http\DataResponse;
 
     class PageController extends Controller {
 
@@ -329,7 +330,15 @@ By default there is only a responder for JSON but more can be added easily:
 
             // XMLResponse has to be implemented
             $this->registerResponder('xml', function($value) {
-                return new XMLResponse($value);
+                if ($value instanceof DataResponse) {
+                    return new XMLResponse(
+                        $value->getData(),
+                        $value->getStatus(),
+                        $value->getHeaders()
+                    );
+                } else {
+                    return new XMLResponse($value);
+                }
             });
 
             return array('test' => 'hi');
@@ -338,6 +347,32 @@ By default there is only a responder for JSON but more can be added easily:
     }
 
 .. note:: The above example would only return XML if the **format** parameter was *xml*. If you want to return an XMLResponse regardless of the format parameter, extend the Response class and return a new instance of it from the controller method instead.
+
+.. versionadded:: 8
+
+Because returning values works fine in case of a success but not in case of failure that requires a custom HTTP error code, you can always wrap the value in a **DataResponse**. This works for both normal responses and error responses.
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use \OCP\AppFramework\Controller;
+    use \OCP\AppFramework\Http\DataResponse;
+    use \OCP\AppFramework\Http\Http;
+
+    class PageController extends Controller {
+
+        public function returnHi() {
+            try {
+                return new DataResponse(calculate_hi());
+            } catch (\Exception $ex) {
+                return new DataResponse(array('msg' => 'not found!'), Http::STATUS_NOT_FOUND);
+            }
+        }
+
+    }
+
 
 Templates
 ---------
