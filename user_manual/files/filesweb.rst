@@ -8,8 +8,16 @@ system ask your server administrator.
 
 .. figure:: ../images/users-files.png
 
+
     **ownCloud web interface Files app**
 
+
+.. Note:: The Shared folder has been removed from new installations of ownCloud 
+  7. Shares now appear in the top level of your file tree on your Files page. 
+  If you are upgrading from older ownCloud versions you will still have your 
+  old Shared folder. Your server administrator has the option to change this in 
+  the server's ``config.php`` file with the ``'share_folder' =>`` directive. 
+    
 ownCloud version 7 can display thumbnail previews for image files, MP3 covers, 
 and text files, if this enabled by your server administrator. Hover your cursor 
 over a file or folder to expose the controls for the following operations:
@@ -35,12 +43,18 @@ Share
 
 Trash
   Delete the selected file or folder, or unshare a shared file or folder.
+  
+Previewing Files
+----------------
 
-.. Note:: The Shared folder has been removed from new installations of ownCloud 
-  7. Shares now appear in the top level of your file tree on your Files page. 
-  If you are upgrading from older ownCloud versions you will still have your 
-  old Shared folder. Your server administrator has the option to change this in 
-  the server's ``config.php`` file with the ``'share_folder' =>`` directive. 
+You can display uncompressed text files, OpenDocument files, videos, and image files in 
+the ownCloud embedded viewers  by clicking on the file name. There may be other file types 
+you can preview if your ownCloud administrator has enabled them. If ownCloud cannot 
+display a file, it starts a download process and downloads the file to your computer. 
+
+Video streaming by the native ownCloud video player depends on your Web browser and the 
+video format. If your ownCloud administrator has enabled video streaming, and it doesn't 
+work in your Web browser, it may be a browser issue.  
 
 Navigating Inside Your ownCloud
 -------------------------------
@@ -142,18 +156,6 @@ Shared by link
 External Storage
   Files that you have access to on external storage devices and services such 
   as Dropbox, Google, and Amazon S3.
-
-Previewing Files
-----------------
-
-You can display uncompressed text files, OpenDocument files, videos, and image files in 
-the ownCloud embedded viewers  by clicking on the file name. There may be other file types 
-you can preview if your ownCloud administrator has enabled them. If ownCloud cannot 
-display a file, it starts a download process and downloads the file to your computer. 
-
-Video streaming by the native ownCloud video player depends on your Web browser and the 
-video format. If your ownCloud administrator has enabled video streaming, and it doesn't 
-work in your Web browser, it may be a browser issue.
 
 Moving Files
 ------------
