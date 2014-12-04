@@ -27,7 +27,7 @@ The job of a bug triager is to identify the One’s for developers to look at, h
 Triaging follows these steps:
 
 * Find an issue somebody should look at
-* Be that somebody and see if the issue is useful for a developer
+* Be that somebody and see if the issue content is useful for a developer
 * Reply and close, ask a question, add information or a label.
 * Find the next bug-to-be-dealt-with and repeat!
 
@@ -39,6 +39,7 @@ General considerations
 * You will initially only be able to comment on issues. The ability to close issues or assign labels will be given liberally to those who have shown to be willing and able to contribute. Just ask on IRC!
 * Read `our bug reporting guidelines <https://github.com/owncloud/core/blob/master/CONTRIBUTING.md#submitting-issues>`_ so you know what a good report should look like and where things belong. The `issue template <https://raw.github.com/owncloud/core/master/issue_template.md>`_ asks specifically for some information developers need to solve issues.
 * It might even be fixed, sometimes! It can also be fruitful to contact the `developers on irc <irc://freenode/#owncloud-dev>`_. Tell them you're triaging bugs and share what problem you bumped into. Or just ask on the test-pilots mailing list.
+* To ensure no two people are working on the same issue, we ask you to simply add a comment like "I am triaging this" in the issue you want to work on, and when done, before or after executing the triaging actions, note similarly that you're done.
 
     Open question: do you need to sign the contributor agreement for this? Shouldn't be the case...
 
@@ -52,6 +53,10 @@ Github offers several search queries which can be useful to find a list of bugs 
 * `Bugs which need info <https://github.com/issues?q=is%3Aissue+user%3Aowncloud+is%3Aopen+label%3A%22Needs+info%22+sort%3Acreated-asc+>`_
 
 But there are more methods. For example, if you are a user of ownCloud with a specific setup like using nginx as web server or dropbox as storage, or using the encryption app, you could look for bugs with these keywords. You can then use your knowledge of your installation and your installation itself to see if bugs are (still) valid or reproduce them.
+
+Once you have picked an issue, add a comment that you've started triaging:
+
+    "I am triaging this bug"
 
 Checking if the issue is useful
 ===============================
@@ -79,9 +84,9 @@ When the issue is a feature request, you can be helpful in the same way: merge r
 .. note:: You can answer more quickly and friendly using one of `these templates <https://gist.github.com/jancborchardt/6155185>`_.
 .. note:: Often our github issue tracker is a place for discussions about solutions. Be friendly, inclusive and respect other people's position.
 
-Identifying external issues
----------------------------
-Bugs can be due to a specific configuration or unsupported platforms. Raspberry Pi's suffer from SQLite time-outs, nginx has issues Apache doesn't and Microsoft Server with IIS is not well supported. While external issues aren't always a reason to close a report, be sure that they are clear: does the user use the 'standard' platform? Ask for information if this is missing.
+Determining relevance of issue
+------------------------------
+Not all issues are relevant for ownCloud. Bugs can be due to a specific configuration or unsupported platforms. Raspberry Pi's suffer from SQLite time-outs, nginx has problems Apache doesn't and Microsoft Server with IIS is not well supported. While external issues are not always a reason to close a report, be sure that they are clear: does the user use the 'standard' platform? Ask for information if this is missing.
 
 Last but not least, the problem might be due to the user doing something that simply does not work. Your general ownCloud knowledge might be helpful here - if this is the case, you can often swiftly close the issue with a comment about what went wrong.
 
@@ -105,7 +110,7 @@ This is needed in order to differentiate random/race condition bugs of reproduci
 
 To reproduce an issue, please refer to our testing documents: :doc:`../testing/index`
 
-If you can't reproduce an issue in a newer version of ownCloud, it is most likely fixed and can be closed. Comment that you failed to reproduce the problem, and if the reporter can confirm (or doesn't respond for a long time), you can close the issue.
+If you can't reproduce an issue in a newer version of ownCloud, it is most likely fixed and can be closed. Comment that you failed to reproduce the problem, and if the reporter can confirm (or doesn't respond for a long time), you can close the issue. Also, be sure to add what exactly you tested with - the ownCloud Master or a branch (and if so, when), or did you use a release, and if so - what version?
 
 Finalizing and tagging
 ----------------------
