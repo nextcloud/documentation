@@ -8,6 +8,7 @@ Bugtracker
 
    codereviews
    kanban
+   triaging
 
 Thank you for helping ownCloud by reporting bugs. Before submitting an issue, please read
 `Issue submission guidelines`_ first.
