@@ -1,6 +1,6 @@
-=========================
-User & Session Management
-=========================
+=================================
+User, Session & Cookie Management
+=================================
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
@@ -244,3 +244,51 @@ Then session variables can be accessed like this:
         }
 
     }
+
+Managing cookies
+===================
+To set, get or modify cookies the `request` variable and the `response` class can be used from within controllers:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+    use \OCP\AppFramework\Controller;
+    use \OCP\IRequest;
+
+    class BakeryController extends Controller {
+
+        public function __construct($appName, IRequest $request) {
+            parent::__construct($appName, $request);
+        }
+
+
+        /**
+         * Gets the value of the cookie "bar"
+         */
+        public function getCookie() {
+            $cookie = $this->request->getCookie('bar');
+        }
+
+        /**
+         * Adds a cookie "foo" with value "bar" that expires after user closes the browser
+         * Adds a cookie "bar" with value "foo" that expires 2015-01-01
+         */
+        public function addCookie() {
+            $response = new TemplateResponse(...);
+            $response->addCookie('foo', 'bar');
+            $response->addCookie('bar', 'foo', new \DateTime('2015-01-01 00:00'));
+            return $response;
+        }
+
+        /**
+         * Invalidates the cookie "foo"
+         * Invalidates the cookie "bar" and "bazinga"
+         */
+        public function invalidateCookie() {
+            $response = new TemplateResponse(...);
+            $response->invalidateCookie('foo');
+            $response->invalidateCookies(array('bar', 'bazinga'));
+            return $response;
+        }
+   }
