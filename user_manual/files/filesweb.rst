@@ -7,17 +7,7 @@ has the option to disable these features, so if any of them are missing on your
 system ask your server administrator.
 
 .. figure:: ../images/users-files.png
-
-
-    **ownCloud web interface Files app**
-
-
-.. Note:: The Shared folder has been removed from new installations of ownCloud 
-  7. Shares now appear in the top level of your file tree on your Files page. 
-  If you are upgrading from older ownCloud versions you will still have your 
-  old Shared folder. Your server administrator has the option to change this in 
-  the server's ``config.php`` file with the ``'share_folder' =>`` directive. 
-    
+   
 ownCloud version 7 can display thumbnail previews for image files, MP3 covers, 
 and text files, if this enabled by your server administrator. Hover your cursor 
 over a file or folder to expose the controls for the following operations:
@@ -43,7 +33,7 @@ Share
 
 Trash
   Delete the selected file or folder, or unshare a shared file or folder.
-  
+
 Previewing Files
 ----------------
 
@@ -170,6 +160,14 @@ When enabled by your administrator, you can share files or folders on ownCloud
 with a local user, group, or any person online with a public link. Shared files 
 and folders are labeled with the triangular share icon, and the status *Shared* 
 in the file or folder row.
+
+  
+.. Note:: The Shared folder has been removed from new installations of ownCloud 
+  7. Shares now appear in the top level of your file tree on your Files page. 
+  If you are upgrading from older ownCloud versions you will still have your 
+  old Shared folder. Your server administrator has the option to change this in 
+  the server's ``config.php`` file with the ``'share_folder' =>`` directive.  
+  
 
 To create a local share with other users or groups on your ownCloud server:
 
