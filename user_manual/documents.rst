@@ -55,7 +55,8 @@ border color of their user picture.
 
 If a user is not a local user (e.g accessing the file using public link), they
 will be shown as guest in the user list, automatically named Guest 1, Guest 2, 
-and so on. Guests can change their nicknames at any time.
+and so on. Guests can change their nicknames at any time by clicking on their
+names or thumbnails in the user list.
 
 Delete a Document
 ~~~~~~~~~~~~~~~~~
