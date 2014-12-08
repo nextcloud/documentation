@@ -10,7 +10,7 @@ ownCloud requires a database in which administrative data is stored. The followi
 
 The MySQL or MariaDB databases are the recommended database engines. However, because it is a file based database with the least administrative overhead, SQLite is chosen by default.
 
-.. note:: Because SQLite has some difficulties handling multiple users, we recommend that it be used only for single user ownCloud installatins.
+.. note:: Because SQLite has some difficulties handling multiple users, we recommend that it be used only for single user ownCloud installations.
 
 Requirements
 ------------

@@ -519,6 +519,18 @@ If it is not, then any options controlled by ``.htaccess``, such as large
 file uploads, will not work. It also runs checks on the ``data/`` directory,
 which verifies that it can't be accessed directly through the web server.
 
+::
+
+	'config_is_read_only' => false,
+
+In certain environments it is desired to have a read-only config file.
+
+When this switch is set to ``true`` ownCloud will not verify whether the
+configuration is writable. However, it will not be possible to configure
+all options via the web-interface. Furthermore, when updating ownCloud
+it is required to make the config file writable again for the update
+process.
+
 Logging
 -------
 
