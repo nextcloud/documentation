@@ -29,7 +29,7 @@ To get started, do the following:
 
 Then you can simply run the created test with phpunit.
 
-.. note:: If you use owncloud functions in your class under test (i.e: OC::getUser()) you'll need to bootstrap owncloud or use dependency injection.
+.. note:: If you use ownCloud functions in your class under test (i.e: OC::getUser()) you'll need to bootstrap ownCloud or use dependency injection.
 
 .. note:: You'll most likely run your tests under a different user than the web server. This might cause problems with your PHP settings (i.e: open_basedir) and requires you to adjust your configuration.
 
