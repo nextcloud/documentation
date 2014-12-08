@@ -51,15 +51,17 @@ would look like this:
 .. code-block:: php
 
     <?php
-    // tests/unit/storage/AuthorStorageTest.php
-    namespace OCA\MyApp\Storage;
+    // tests/storage/AuthorStorageTest.php
+    namespace OCA\MyApp\Tests\Storage;
 
-    class AuthorStorageTest extends \PHPUnit_Framework_TestCase {
+    class AuthorStorageTest extends \Test\TestCase {
 
         private $container;
         private $storage;
 
         protected function setUp() {
+            parent::setUp();
+
             $app = new \OCA\MyApp\AppInfo\Application();
             $this->container = $app->getContainer();
             $this->storage = $storage = $this->getMockBuilder('\OCP\Files\Folder')
@@ -84,3 +86,8 @@ would look like this:
         }
 
     }
+
+Make sure to extend the ``\Test\TestCase`` class with your test and always call the parent methods,
+when overwriting ``setUp()``, ``setUpBeforeClass()``, ``tearDown()`` or ``tearDownAfterClass()`` method
+from the TestCase. These methods set up important stuff and clean up the system after the test,
+so the next test can run without side effects, like remaining files and entries in the file cache, etc.
