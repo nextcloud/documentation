@@ -27,9 +27,9 @@ How will it work?
    could already name other developers (using @GitHubusername) and ask them for
    review.
 #. Other developers (either named or at free will) have a look at the changes
-   and are welcome to write comments within the comment field.  #. In case the
-   reviewer is okay with the changes and thinks all his comments and suggestions
-   have been take into account a :+1 on the comment will signal a positive
+   and are welcome to write comments within the comment field.
+#. In case the reviewer is okay with the changes and thinks all his comments and 
+   suggestions have been take into account a :+1 on the comment will signal a positive
    review.
 #. Before a pull request will be merged into master or the corresponding
    branch at least 2 reviewers need to give :+1 score.
