@@ -104,7 +104,7 @@ To add the app's classes simply open the :file:`appinfo/application.php` use the
        * Services
        */
       $container->registerService('AuthorMapper', function($c){
-        return new AuthorService(
+        return new AuthorMapper(
           $c->query('ServerContainer')->getDb()
         );
       });
