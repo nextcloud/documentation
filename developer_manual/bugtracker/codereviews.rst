@@ -23,9 +23,9 @@ How will it work?
 -----------------
 
 #. A developer will submit his changes on GitHub via a pull request.
-   `GitHub:help - using pull requests`_ #. Within the pull request the developer
-   could already name other developers (using @GitHubusername) and ask them for
-   review.
+   `GitHub:help - using pull requests`_
+#. Within the pull request the developer could already name other developers (using
+   @GitHubusername) and ask them for review.
 #. Other developers (either named or at free will) have a look at the changes
    and are welcome to write comments within the comment field.
 #. In case the reviewer is okay with the changes and thinks all his comments and 
