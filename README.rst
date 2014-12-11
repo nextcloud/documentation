@@ -6,6 +6,8 @@ client manuals are in the respective git repositories. Because of the
 complexity of the server and the split into the core and apps modules,
 the manuals are in this separate directory.
 
+Documentation can be seen on: https://doc.owncloud.org
+
 License
 -------
 
