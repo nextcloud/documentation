@@ -190,7 +190,7 @@ storage support’ app, the class to be used is **\\OC\\Files\\Storage\\SMB**\  
 takes the following options:
 
 -  **host**: the host name of the samba server
--  **user**: the user name used to login on the samba server
+-  **user**: the username or domain/username to login on the samba server
 -  **password**: the password to login on the samba server
 -  **share**: the share on the samba server to mount
 -  **root**: the folder inside the samba share to mount (optional, defaults
@@ -200,6 +200,7 @@ takes the following options:
 
 Example
 ^^^^^^^
+With username only:
 
 .. code-block:: json
 
@@ -207,6 +208,21 @@ Example
         "options":{
             "host":"myhost.com",
             "user":"johndoe",
+            "password":"secret",
+            "share":"\/test",
+            "root":"\/Pictures"
+        },
+        "priority":100
+    }
+    
+With domainname and username:
+
+.. code-block:: json
+
+    {   "class":"\\OC\\Files\\Storage\\SMB",
+        "options":{
+            "host":"myhost.com",
+            "user":"domain\/johndoe",
             "password":"secret",
             "share":"\/test",
             "root":"\/Pictures"
