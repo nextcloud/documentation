@@ -504,7 +504,7 @@ Each response subclass has access to the **setStatus** method which lets you set
                 // try to get author with $id
 
             } catch (NotFoundException $ex) {
-                return new JSONResponse()->setStatus(Http::STATUS_NOT_FOUND);
+                return new JSONResponse(array(), Http::STATUS_NOT_FOUND);
             }
         }
 
