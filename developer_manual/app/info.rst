@@ -43,6 +43,19 @@ The :file:`appinfo/info.xml` contains metadata about the app:
 
       <default_enable />
       <shipped>true</shipped>
+
+      <dependencies>
+          <php min-version="5.4" max-version="5.5"/>
+          <database>sqlite</database>
+          <database>mysql</database>
+          <command os="linux">grep</command>
+          <command os="windows">notepad.exe</command>
+          <lib min-version="1.2">xml</lib>
+          <lib max-version="2.0">intl</lib>
+          <lib>curl</lib>
+          <os>Linux</os>
+          <owncloud min-version="6.0.4" max-version="8"/>
+      </dependencies>
   </info>
 
 id
@@ -96,7 +109,40 @@ link to 'admin' and 'user' documentation
 
 website
 -------
-link to project webpage
+link to project web page
+
+Dependencies
+============
+All tags within the dependencies tag define a set of requirements which have to be fulfilled in order to operate
+properly. As soon as one of these requirements is not met the app cannot be installed.
+
+php
+---
+Defines the minimum and the maximum version of php which is required to run this app.
+
+database
+--------
+Each supported database has to be listed in here. Valid values are sqlite, mysql, pgsql, oci and mssql. In the future
+it will be possible to specify versions here as well.
+In case no database is specified it is assumed that all databases are supported.
+
+command
+-------
+Defines a command line tool to be available. With the attribute 'os' the required operating system for this tool can be
+specified. Valid values for the 'os' attribute are as returned by the php function `php_uname http://php.net/manual/en/function.php-uname.php`_.
+
+lib
+---
+Defines a required php extension with required minimum and/or maximum version.
+
+os
+--
+Defines the required target operating system the app can run on. Valid values are as returned by the php function `php_uname http://php.net/manual/en/function.php-uname.php`_.
+
+owncloud
+--------
+Defines minimum and maximum versions of the ownCloud core. In case undefined the values will be taken from the tag 'requiremin'.
+
 
 Deprecated
 ==========
