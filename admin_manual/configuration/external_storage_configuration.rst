@@ -194,7 +194,7 @@ takes the following options:
 -  **password**: the password to login on the samba server
 -  **share**: the share on the samba server to mount
 -  **root**: the folder inside the samba share to mount (optional, defaults
-   to ‘/’)
+   to ‘/’). To assign the owncloud logon username automatically to the subfolder, use $user instead a particular subfolder name.
 
 .. note:: The SMB backend requires **smbclient** to be installed on the server.
 

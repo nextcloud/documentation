@@ -269,7 +269,7 @@ You need the following information:
 *   Password -- The password to login to the Samba server.
 *   Share -- The share on the Samba server to mount.
 *   Root -- The folder inside the Samba share to mount (optional, defaults to 
-    ``/``)
+    ``/``). To assign the owncloud logon username automatically to the subfolder, use $user instead a particular subfolder name.
 
 And finally, the ownCloud users and groups who get access to the share.    
 
