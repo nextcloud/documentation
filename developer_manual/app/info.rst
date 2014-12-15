@@ -133,7 +133,8 @@ specified. Valid values for the 'os' attribute are as returned by the php functi
 
 lib
 ---
-Defines a required php extension with required minimum and/or maximum version.
+Defines a required php extension with required minimum and/or maximum version. The names for the libraries have to match the result as returned by the php function  `get_loaded_extensions http://php.net/manual/en/function.get-loaded-extensions.php`_.
+The explicit version of an extension is read from `phpversion http://php.net/manual/de/function.phpversion.php`_ - with some exception as to be read up in the code base `https://github.com/owncloud/core/blob/master/lib/private/app/platformrepository.php#L45`_
 
 os
 --
