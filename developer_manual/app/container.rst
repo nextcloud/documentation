@@ -69,7 +69,7 @@ To add the app's classes simply open the :file:`appinfo/application.php` use the
   use \OCA\MyApp\Service\AuthorService;
   use \OCA\MyApp\Db\AuthorMapper;
 
-  class MyApp extends App {
+  class Application extends App {
 
 
     /**
