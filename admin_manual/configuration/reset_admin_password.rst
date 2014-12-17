@@ -9,7 +9,7 @@ The normal ways to recover a lost password are:
    on your Personal page in the ownCloud Web interface, so that the ownCloud 
    server can email a reset link to you.
 
-2. Ask your ownCloud server admin to reset it for you.
+2. Ask another ownCloud server admin to reset it for you.
 
 If neither of these is an option, then you have a third option, and that is 
 using the ``occ`` command. ``occ`` is in the ``owncloud`` directory, for 
