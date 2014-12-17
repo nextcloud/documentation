@@ -292,6 +292,7 @@ Types:
 * **OCP\\ICache**
 * **OCP\\ICacheFactory**
 * **OCP\\IConfig**
+* **OCP\\AppFramework\\Utility\\IControllerMethodReflector**
 * **OCP\\Contacts\\IManager**
 * **OCP\\IDateTimeZone**
 * **OCP\\IDb**
@@ -307,6 +308,7 @@ Types:
 * **OCP\\INavigationManager**
 * **OCP\\IPreview**
 * **OCP\\IRequest**
+* **OCP\\AppFramework\\Utility\\ITimeFactory**
 * **OCP\\ITagManager**
 * **OCP\\ITempManager**
 * **OCP\\Route\\IRouter**
