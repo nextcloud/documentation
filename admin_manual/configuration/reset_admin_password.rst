@@ -1,6 +1,6 @@
 ==============================
-Recovering Lost Admin Password
-==============================
+Resetting a Lost Admin Password
+===============================
 
 The normal ways to recover a lost password are:
 

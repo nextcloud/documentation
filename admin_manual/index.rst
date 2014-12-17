@@ -86,6 +86,7 @@ contains the following topics:
 * :doc:`configuration/user_auth_ftp_smb_imap`
 * :doc:`configuration/user_auth_ldap`
 * :doc:`configuration/user_configuration`
+* :doc:`configuration/reset_admin_password`
 
 Maintenance
 ===========
