@@ -32,3 +32,4 @@ Configuration
    user_auth_ftp_smb_imap
    user_auth_ldap
    user_configuration
+   reset_admin_password
