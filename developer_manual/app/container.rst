@@ -50,7 +50,7 @@ would turn into this by using Dependency Injection:
 
 Using a container
 =================
-Passing dependencies into the constructor rather than newing them in the constructor has the following drawback: Every line in the source code where **new AuthorMapper** is being used has to be changed, once a new constructor argument is being added to it.
+Passing dependencies into the constructor rather than instantiating them in the constructor has the following drawback: Every line in the source code where **new AuthorMapper** is being used has to be changed, once a new constructor argument is being added to it.
 
 The solution for this particular problem is to limit the **new AuthorMapper** to one file, the container. The container contains all the factories for creating these objects and is configured in :file:`appinfo/application.php`.
 
@@ -149,6 +149,201 @@ The container works in the following way:
 * **AuthorController** gets the **AuthorService** and finally the controller can be newed and the object is being returned
 
 So basically the container is used as a giant factory to build all the classes that are needed for the application. Because it centralizes all the creation of objects (the **new Class()** lines), it is very easy to add new constructor parameters without breaking existing code: only the **__construct** method and the container line where the **new** is being called need to be changed.
+
+
+Use automatic dependency assembly (recommended)
+===============================================
+.. versionadded:: 8
+
+Since ownCloud 8 it is possible to omit the **appinfo/application.php** and use automatic dependency assembly instead.
+
+How does automatic assembly work
+--------------------------------
+Automatic assembly creates new instances of classes just by looking at the class name and its constructor parameters. For each constructor parameter the type or the variable name is used to query the container, e.g.:
+
+* **SomeType $type** will use **$container->query('SomeType')**
+* **$variable** will use **$container->query('variable')**
+
+If all constructor parameters are resolved, the class will be created, saved as a service and returned.
+
+So basically the following is now possible:
+
+.. code-block:: php
+
+  <?php
+  namespace OCA\MyApp;
+
+  class MyTestClass {}
+
+  class MyTestClass2 {
+      public $class;
+      public $appName;
+
+      public function __construct(MyTestClass $class, $AppName) {
+          $this->class = $class;
+          $this->appName = $AppName;
+      }
+  }
+
+  $container = new \OCP\App('myapp');
+
+  $class2 = $container->query('OCA\MyApp\MyTestClass2');
+
+  $class2 instanceof MyTestClass2;  // true
+  $class2->class instanceof MyTestClass;  // true
+  $class2->appName === 'appname';  // true
+  $class2 === $container->query('OCA\MyApp\MyTestClass2');  // true
+
+.. note:: $AppName is resolved because the container registered a parameter under the key 'AppName' which will return the app id. The lookup is case sensitive so while $AppName will work correctly, using $appName as a constructor parameter will fail.
+
+How does it affect the request lifecycle
+----------------------------------------
+
+* A request comes in
+* All apps' **routes.php** files are loaded
+
+  * If a **routes.php** file returns an array, and an **appname/appinfo/application.php** exists, include it, create a new instance of **\\OCA\\AppName\\AppInfo\\Application.php** and register the routes on it. That way a container can be used while still benefitting from the new routes behavior
+  * If a **routes.php** file returns an array, but there is no **appname/appinfo/application.php**, create a new \\OCP\\App instance with the app id and register the routes on it
+
+* A request is matched for the route, e.g. with the name **page#index**
+* The appropriate container is being queried for the entry PageController (to keep backwards compability)
+* If the entry does not exist, the container is queried for OCA\\AppName\\Controller\\PageController and if no entry exists, the container tries to create the class by using reflection on its constructor parameters
+
+How does this affect controllers
+--------------------------------
+The only thing what needs to be done to add a route and a controller method is now:
+
+**myapp/appinfo/routes.php**
+
+.. code-block:: php
+
+  <?php
+  return ['routes' => [
+      ['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
+  ]];
+
+**myapp/appinfo/controller/pagecontroller.php**
+
+.. code-block:: php
+
+  <?php
+  namespace OCA\MyApp\Controller;
+
+  class PageController {
+      public function __construct($AppName, \OCP\IRequest $request) {
+          parent::__construct($AppName, $request);
+      }
+
+      public function index() {
+          // your code here
+      }
+  }
+
+There is no need to wire up anything in **appinfo/application.php**. Everyting will be done automatically.
+
+
+How to deal with interface and primitive type parameters
+--------------------------------------------------------
+Interfaces and primitive types can not be instantiated, so the container can not automatically assemble them. The actual implementation needs to be wired up in the container:
+
+.. code-block:: php
+
+  <?php
+
+  namespace OCA\MyApp\AppInfo;
+
+  class Application extends \OCP\AppFramework\App {
+
+      /**
+       * Define your dependencies in here
+       */
+      public function __construct(array $urlParams=array()){
+          parent::__construct('myapp', $urlParams);
+
+          $container = $this->getContainer();
+
+          // AuthorMapper requires a location as string called $TableName
+          $container->registerParameter('TableName', 'my_app_table');
+
+          // the interface is called IAuthorMapper and AuthorMapper implements it
+          $container->registerService('OCA\MyApp\Db\IAuthorMapper', function ($c) {
+              return $c->query('OCA\MyApp\Db\AuthorMapper');
+          });
+      }
+
+  }
+
+Predefined core services
+------------------------
+The following parameter names and type hints can be used inject core services instead of using **$container->getServer()->getServiceX()**
+
+Parameters:
+
+* **AppName**: The app id
+* **WebRoot**: The path to the ownCloud installation
+* **UserId**: The id of the current user
+
+Types:
+
+* **OCP\\IAppConfig**
+* **OCP\\IAppManager**
+* **OCP\\IAvatarManager**
+* **OCP\\Activity\\IManager**
+* **OCP\\ICache**
+* **OCP\\ICacheFactory**
+* **OCP\\IConfig**
+* **OCP\\Contacts\\IManager**
+* **OCP\\IDateTimeZone**
+* **OCP\\IDb**
+* **OCP\\IDBConnection**
+* **OCP\\Diagnostics\\IEventLogger**
+* **OCP\\Diagnostics\\IQueryLogger**
+* **OCP\\Files\\Config\\IMountProviderCollection**
+* **OCP\\Files\\IRootFolder**
+* **OCP\\IGroupManager**
+* **OCP\\IL10N**
+* **OCP\\ILogger**
+* **OCP\\BackgroundJob\\IJobList**
+* **OCP\\INavigationManager**
+* **OCP\\IPreview**
+* **OCP\\IRequest**
+* **OCP\\ITagManager**
+* **OCP\\ITempManager**
+* **OCP\\Route\\IRouter**
+* **OCP\\ISearch**
+* **OCP\\ISearch**
+* **OCP\\Security\\ICrypto**
+* **OCP\\Security\\IHasher**
+* **OCP\\Security\\ISecureRandom**
+* **OCP\\IURLGenerator**
+* **OCP\\IUserManager**
+* **OCP\\IUserSession**
+
+How to enable it
+----------------
+To make use of this new feature, the following things have to be done:
+
+* **appinfo/info.xml** requires to provide another field called **namespace** where the namespace of the app is defined. The required namespace is the one which comes after the top level namespace **OCA\\**, e.g.: for **OCA\\MyBeautifulApp\\Some\\OtherClass** the needed namespace would be **MyBeautifulApp** and would be added to the info.xml in the following way:
+
+  .. code-block:: xml
+
+    <?xml version="1.0"?>
+    <info>
+       <namespace>MyBeautifulApp</namespace>
+       <!-- other options here ... -->
+    </info>
+
+* **appinfo/routes.php**: Instead of creating a new Application class instance, simply return the routes array like:
+
+  .. code-block:: php
+
+      <?php
+      return ['routes' => [
+          ['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
+      ]];
+
+
+.. note:: A namespace tag is required because you can not deduct the namespace from the app id
 
 Which classes should be added
 =============================
