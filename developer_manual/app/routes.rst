@@ -55,6 +55,7 @@ The route array contains the following parts:
         }
 * **method** (Optional, defaults to GET): The HTTP method that should be matched, (e.g. GET, POST, PUT, DELETE, HEAD, OPTIONS, PATCH)
 * **requirements** (Optional): lets you match and extract URLs that have slashes in them (see **Matching suburls**)
+* **postfix** (Optional): lets you define a route id postfix. Since each route name will be transformed to a route id (**page#method** -> **myapp.page.method**) and the route id can only exist once you can use the postfix option to alter the route id creation by adding a string to the route id e.g.: **'name' => 'page#method', 'postfix' => 'test'** will yield the route id **myapp.page.methodtest**. This makes it possitble to add more than one route/url for a controller method
 
 Extracting values from the URL
 ==============================
