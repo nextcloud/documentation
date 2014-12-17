@@ -104,6 +104,33 @@ Sometimes its needed to match more than one URL fragment. An example would be to
 
     }
 
+Default values for suburl
+==========================
+Apart from matching requirements, suburl may also have default value. Say you want to support pagination (a 'page' parameter) for your **/posts** suburl that displays posts entries list. You may set a default value to 'page' parameter, that will be used if not already set in the url. Use the **defaults** parameter in your route which is an array containing pairs of **'urlparameter' => 'defaultvalue'**:
+
+.. code-block:: php
+
+    <?php
+
+    // Request: GET /index.php/app/myapp/post
+
+    // appinfo/routes.php
+    array(
+        'name'     => 'post#index',
+        'url'      => '/post/{page}',
+        'verb'     => 'GET',
+        'defaults' => array('page' => 1) // this allows same url as /index.php/myapp/post/1
+    ),
+
+    // controller/postcontroller.php
+    class PostController
+    {
+        public function index($page = 1)
+        {
+            // $page will be 1
+        }
+    }
+
 Registering resources
 =====================
 When dealing with resources, writing routes can become quite repetitive since most of the time routes for the following tasks are needed:
