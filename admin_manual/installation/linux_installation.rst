@@ -1,16 +1,15 @@
-===================
-Linux Distributions
-===================
+===================================
+Preferred Linux Installation Method
+===================================
 
 Supported Distribution Packages
 -------------------------------
 
-Ready-to-use packages are available at `openSUSE Build Service`_ for a variety of Linux distributions.
+Ready-to-use packages are available at the ownCloud repository on the `openSUSE Build Service`_ for a variety of Linux distributions. Follow the instructions for your distro to add the oBS repository, download and install the repo signing key, and install ownCloud. Then run the Installation Wizard to complete your installation. (see :doc:`installation_wizard`).
 
-If your distribution is not listed please follow :doc:`source_installation`.
+If your distribution is not listed, your Linux distribution may maintain its own ownCloud packages, or you may prefer to install from source code (see :doc:`source_installation`).
 
 .. _openSUSE Build Service: http://software.opensuse.org/download.html?project=isv:ownCloud:community&package=owncloud
-
 
 Additional Installation Guides and Notes
 ----------------------------------------
@@ -27,8 +26,4 @@ See :doc:`selinux_configuration` for a suggested configuration for SELinux-enabl
 
 .. _ownCloud, installation and setup: http://pclinuxoshelp.com/index.php/Owncloud,_installation_and_setup
 
-Installation Wizard
--------------------
 
-For setting up your ownCloud instance after installation, please refer to the
-:doc:`installation_wizard` section.

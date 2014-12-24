@@ -1,10 +1,9 @@
-Manual Installation
-===================
+Manual Installation on Linux
+============================
 
-If you do not want to use packages, here is how you setup ownCloud from
-scratch using a classic :abbr:`LAMP (Linux, Apache, MySQL, PHP)` setup:
+Installing ownCloud on Linux from the openSUSE Build Service packages is the preferred method (see :doc:`linux_installation`). These are maintained by ownCloud engineers, and you can use your package manager to keep your ownCloud server up-to-date.
 
-This document provides a complete walk-through for installing ownCloud on Ubuntu 
+If there are no packages for your Linux distribution, or you prefer installing from sources, you can setup ownCloud from scratch using a classic LAMP stack (Linux, Apache, MySQL/MariaDB, PHP). This document provides a complete walk-through for installing ownCloud on Ubuntu 
 14.04 LTS Server with Apache and MySQL.
 
 Prerequisites
@@ -12,8 +11,9 @@ Prerequisites
 
 .. note:: This tutorial assumes you have terminal access to the machine you want
           to install ownCloud on. Although this is not an absolute requirement,
-          installation without it is highly likely to require contacting your
-          hoster (e.g. for installing required modules).
+          installation without it is likely to require contacting your
+          hoster (e.g. for installing required modules). Consult the `PHP manual 
+          <http://php.net/manual/en/extensions.php>`_ for information on modules. Your Linux distribution should have packages for all required modules.
 
 To run ownCloud, your web server must have the following installed:
 
@@ -47,10 +47,9 @@ Database connectors (pick at least one):
 * PHP module mcrypt (increases file encryption performance)
 * PHP module openssl (required for accessing HTTPS resources)
 
-Required for specific apps (if you use the mentioned app, you must install that
-package):
+Required for specific apps:
 
-* PHP module ldap (for ldap integration)
+* PHP module ldap (for LDAP integration)
 * smbclient (for SMB storage)
 * PHP module ftp (for FTP storage)
 
@@ -59,7 +58,7 @@ Recommended for specific apps (*optional*):
 * PHP module exif (for image rotation in pictures app)
 * PHP module gmp (for SFTP storage)
 
-For enhanced performance (*optional* / select only one of the following):
+For enhanced server performance (*optional* / select only one of the following):
 
 * PHP module apc
 * PHP module apcu
@@ -69,14 +68,14 @@ For preview generation (*optional*):
 
 * PHP module imagick
 * avconv or ffmpeg
-* OpenOffice or libreOffice
+* OpenOffice or LibreOffice
 
 **Remarks:**
 
 * Please check your distribution, operating system or hosting partner 
-  documentation on how to install/enable these modules.
+  documentation on how to install and enable these modules.
 
-* Make sure your distribution's php version fulfils the version requirements
+* Make sure your distribution's PHP version fulfills the version requirements
   specified above. If it doesn't, there might be custom repositories you can
   use. If you are e.g. running Ubuntu 10.04 LTS, you can update your PHP using
   a custom `PHP PPA <https://launchpad.net/~ondrej/+archive/php5>`_::
@@ -85,21 +84,19 @@ For preview generation (*optional*):
 	sudo apt-get update
 	sudo apt-get install php5
 
-* You don’t need any WebDAV support module for your web server (i.e. Apache’s
-  mod_webdav) to access your ownCloud data via WebDAV. ownCloud has a built-in
-  WebDAV server of its own.
+* You don’t need the WebDAV module for your web server (i.e. Apache’s
+  ``mod_webdav``) to access your ownCloud data via WebDAV. ownCloud has a built-in
+  WebDAV server of its own, SabreDAV.
 
 Example installation on Ubuntu 14.04 LTS Server
 -----------------------------------------------
-On a machine running a pristine Ubuntu 14.04 LTS server, you would install the
+On a machine running a pristine Ubuntu 14.04 LTS server, install the
 required and recommended modules for a typical ownCloud installation, using
-Apache and MySQL by issuing the following commands in a terminal::
+Apache and MariaDB, by issuing the following commands in a terminal::
 
-    apt-get install apache2 mysql-server libapache2-mod-php5
+    apt-get install apache2 mariadb-server libapache2-mod-php5
     apt-get install php5-gd php5-json php5-mysql php5-curl
     apt-get install php5-intl php5-mcrypt php5-imagick
-
-**Remarks:**
 
 * This installs the packages for the ownCloud core system. If you are planning 
   on running additional apps, keep in mind that they might require additional 
@@ -110,13 +107,13 @@ Apache and MySQL by issuing the following commands in a terminal::
   English. You might have to press a different key if you have a different 
   system language).
 
-* At the installation of the MySQL server, you will be prompted for a root 
+* At the installation of the MySQL server, you will be prompted to create a root 
   password. Be sure to remember the password you enter there for later use 
   as you will need it during ownCloud database setup.
 
 Now download the archive of the latest ownCloud version:
 
-* Navigate to the `ownCloud Installation Page <http://owncloud.org/install>`_.
+* Go to the `ownCloud Installation Page <http://owncloud.org/install>`_.
 * Click the **Archive file for server owners** button.
 * Click **Download Unix**.
 * This downloads a file named owncloud-x.y.z.tar.bz2 (where
@@ -145,12 +142,20 @@ Now download the archive of the latest ownCloud version:
     cp -r owncloud /path/to/webserver/document-root
 
   where ``/path/to/webserver/document-root`` is replaced by the 
-  document root of your Web server. Typically, on Ubuntu systems this 
+  document root of your Web server. On Ubuntu systems this 
   ``/var/www/owncloud``, so your copying command is::
     
     cp -r owncloud /var/www/
+    
+Installation Wizard
+-------------------
 
-Setting Secure Directory Permissions
+Finish setting up your ownCloud server by following 
+the :doc:`installation_wizard`.
+
+After running the Installation Wizard your ownCloud installation is complete. However, you should perform the following steps to improve your server's security.
+
+Setting Strong Directory Permissions
 ------------------------------------
 
 Your HTTP user must own at least the ``config/``, ``data/`` 
@@ -169,8 +174,8 @@ Name it ``whoami.php`` and place it in your ``/var/www/html`` directory, and
 then open it in a Web browser, for example ``http://localhost/whoami.php``. You 
 should see a single line in your browser page with the HTTP user name.
 
-.. note:: When using an NFS mount for the data directory, do not change 
-   ownership as above. The simple act of mounting the drive will set 
+.. note:: When using an NFS mount for the data directory, do not change its 
+   ownership from the default. The simple act of mounting the drive will set 
    proper permissions for ownCloud to write to the directory. Changing 
    ownership as above could result in some issues if the NFS mount is 
    lost.
@@ -194,7 +199,7 @@ as possible. These commands should be executed immediately after the initial ins
     chown <http-user>:<http-user> /path/to/owncloud/apps/
     chmod 750 /path/to/owncloud/apps/
     
-These strict permissions will prevent the Updater app from working. If you use the Updater app, it needs your whole
+These strict permissions will prevent the Updater app from working (see :doc:`../maintenance/update`). If you use the Updater app, it needs your whole
 ownCloud directory to be owned by the http-user, like these examples:
 
 * This example is for Ubuntu 14.04 LTS server::
@@ -213,7 +218,12 @@ ownCloud directory to be owned by the http-user, like these examples:
 
     chown -R wwwrun:www /path/to/owncloud/
     
-After the Update app has run, you should re-apply the strict permissions.    
+After the Update app has run, you should re-apply the strict permissions. 
+
+SELinux
+-------
+
+See :doc:`selinux_configuration` for a suggested configuration for SELinux-enabled distributions such as Fedora and CentOS.
 
 Apache is the recommended Web server.
 
@@ -393,11 +403,7 @@ Example config for Apache 2.4:
      systemctl restart httpd.service
      
 
-Install Wizard
---------------
-
-Finish setting up your ownCloud server by following 
-the :doc:`installation_wizard`.  
+  
 
 Other Web Servers
 -----------------

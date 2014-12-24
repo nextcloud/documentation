@@ -17,12 +17,8 @@ You cannot skip major releases; for example, upgrading from 5.0 to 7.0. This is
 unsupported, and you'll likely experience unpredictable results. It is best to 
 install all upgrades and updates in order.
 
-.. note:: If you installed ownCloud from your Linux distribution repositories 
-   using your package manager, then it is best to update/upgrade ownCloud using 
-   your package manager and staying in sync with your distro updates, rather 
-   than using the Updater app or upgrading manually. You should still 
-   maintain regular backups (see :doc:`backup`), and make a backup before every 
-   update/upgrade.
+.. note:: If you installed ownCloud from
+   `openSUSE Build Service <http://software.opensuse.org/download.html?project=isv:ownCloud:community&package=owncloud>`_, or from your Linux distribution repositories using your package manager, then it is best to update/upgrade ownCloud using your package manager rather than using the Updater app or upgrading manually. You should still maintain regular backups (see :doc:`backup`), and make a backup before every update/upgrade.
 
 Manual Upgrade Procedure
 ------------------------

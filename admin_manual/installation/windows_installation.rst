@@ -20,8 +20,8 @@ Windows 7 and Windows Server 2008
 .. note:: You must move the data directory outside of your public root (See
           advanced installation settings)
 
-This section describes how to install ownCloud on Windows with :abbr:`IIS 
-(Internet Information Services)`.
+This section describes how to install ownCloud on Windows with IIS 
+(Internet Information Services).
 
 These instructions assume that you have a standard, non-IIS enabled Windows 
 machine using Windows 7 or Server 2008. After enabling IIS, the procedures are 

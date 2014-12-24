@@ -3,14 +3,14 @@ Database Configuration
 
 ownCloud requires a database in which administrative data is stored. The following databases are currently supported:
 
-* `MySQL <http://www.mysql.com/>`_ / MariaDB <https://mariadb.org/>`
-* `SQLite <http://www.sqlite.org/>`
+* `MySQL <http://www.mysql.com/>`_ / `MariaDB <https://mariadb.org/>`_
+* `SQLite <http://www.sqlite.org/>`_
 * `PostgreSQL <http://www.postgresql.org/>`_
 * `Oracle <http://www.oracle.com/>`_
 
 The MySQL or MariaDB databases are the recommended database engines. However, because it is a file based database with the least administrative overhead, SQLite is chosen by default.
 
-.. note:: Because SQLite has some difficulties handling multiple users, we recommend that it be used only for single user ownCloud installations.
+.. note:: Because SQLite does not handle large datasets or large numbers of users well, we recommend that it be used only for single user ownCloud installations, or for simple testing setups.
 
 Requirements
 ------------
