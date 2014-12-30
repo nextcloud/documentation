@@ -37,6 +37,8 @@ At this point, this repository hosts three manuals:
 * **Administrators Manual:** Setup, Deployment, Best Practices, etc.
 * **Developers Manual:** Developing Apps for ownCloud & understanding the
   core Architecture.
+  
+Please work in the appropriate branch. stable6 is for ownCloud 6, which is still supported; stable7 is for ownCloud 7, and master is version 8.0.
 
 Editing
 -------
