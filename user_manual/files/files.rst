@@ -1,8 +1,8 @@
 Accessing ownCloud Files Using WebDAV
 =====================================
 
-ownCloud fully supports the WebDAV protocol, and it is pretty easy to 
-connect and synchronize with your ownCloud server over WebDAV. In this 
+ownCloud fully supports the WebDAV protocol, and you can
+connect and synchronize with your ownCloud files over WebDAV.  In this 
 chapter you will learn how to connect Linux, Mac OS X, Windows, and mobile 
 devices to your ownCloud server via WebDAV. Before we get into configuring 
 WebDAV, let's take a quick look at the recommended way of connecting client 
