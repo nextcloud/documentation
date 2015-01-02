@@ -51,36 +51,6 @@ external storage services, and check the services you want to allow.
 After creating your external storage mounts, you can share them and control 
 permissions just like any other ownCloud share.
 
-Note regarding temporary disk space needs
------------------------------------------
-
-Not all external storage types are currently enabled for or do support streaming.
-Therefore ownCloud needs temporary space to buffer data for transfers. This can occur 
-when there are many concurrent users transferring data with a higher volume over a small 
-bandwidth wire. ownCloud may need in these cases an amount of temporary space which could 
-exeed the server capabilities. Example: 100 concurrent users uploading each a file having 
-300MB with a total transfer time of 6000s (1h 40min). The temporary space needed 
-by ownCloud for this period of time is 30GB. Even though it is not mandatory,
-the location of the temp directory used by ownCloud can be configured manually.
-To do so, you need to maintain the ``tempdirectory`` parameter described in
-``config.sample.php``
-
-As of writing, following external storage list uses temp files for up/download:
-
-* FTP
-* SMB / SMB_OC
-* WebDAV
-* Amazon S3
-* Dropbox
-* Google Drive
-* OpenStack SWIFT
-
-External storage list that uses direct file streaming:
-
-* Local
-* SFTP
-
-
 Local Storage
 -------------
 
