@@ -79,6 +79,13 @@ Finish Installation
 * ownCloud will set up your cloud according to the given settings
 * When it's finished, it will log you in as administrative user and present the
   "Welcome to ownCloud" screen.
+  
+Setting Strong Directory Permissions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For improved server security, you should set strong permissions on your 
+ownCloud directories according to the **Setting Strong Directory Permissions** 
+section of :doc:`source_installation`.
 
 Trusted Domains
 ~~~~~~~~~~~~~~~

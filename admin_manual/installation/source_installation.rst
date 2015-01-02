@@ -190,6 +190,8 @@ as possible. These commands should be executed immediately after the initial ins
   
     chown -R root:root /path/to/owncloud/
     chmod -R 755 /path/to/owncloud/
+    chown <http-user>:<http-user> /path/to/owncloud/config/
+    chmod 0750 /path/to/owncloud/config/
     chown <http-user>:<http-user> /path/to/owncloud/config/config.php
     chmod 750 /path/to/owncloud/config/config.php
     chown -R <http-user>:<http-user> /path/to/owncloud/data/
@@ -200,7 +202,7 @@ as possible. These commands should be executed immediately after the initial ins
     chmod 750 /path/to/owncloud/apps/
     
 These strict permissions will prevent the Updater app from working (see :doc:`../maintenance/update`). If you use the Updater app, it needs your whole
-ownCloud directory to be owned by the http-user, like these examples:
+ownCloud directory to be owned by the HTTP user, like these examples:
 
 * This example is for Ubuntu 14.04 LTS server::
    
@@ -218,7 +220,7 @@ ownCloud directory to be owned by the http-user, like these examples:
 
     chown -R wwwrun:www /path/to/owncloud/
     
-After the Update app has run, you should re-apply the strict permissions. 
+After the Updater app has run, you should re-apply the strict permissions. 
 
 SELinux
 -------
