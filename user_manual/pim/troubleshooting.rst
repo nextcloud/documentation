@@ -46,7 +46,7 @@ create or edit the :file:`.htaccess` file and add the following lines::
     Redirect 301 /.well-known/carddav /owncloud/remote.php/carddav
     Redirect 301 /.well-known/caldav /owncloud/remote.php/caldav
 
-If you use Nginx as web server, the setting looks something like::
+If you use lighttpd as web server, the setting looks something like::
 
     url.redirect = (
         "^/.well-known/carddav" => "/owncloud/remote.php/carddav",
