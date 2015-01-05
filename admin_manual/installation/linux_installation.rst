@@ -8,7 +8,7 @@ Supported Distribution Packages
 Installing ownCloud on Linux from the `openSUSE Build Service`_ packages is the 
 preferred method. These are maintained by ownCloud engineers, and you can use 
 your package manager to keep your ownCloud server up-to-date. Ready-to-use 
-packages are available at the ownCloud repository on the for a variety of Linux 
+packages are available at the ownCloud repository for a variety of Linux 
 distributions. Follow the instructions for your distro to add the oBS 
 repository, download and install the repository signing key, and install 
 ownCloud. Then run the Installation Wizard to complete your installation. (see 
