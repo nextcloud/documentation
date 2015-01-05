@@ -120,6 +120,8 @@ as possible. These commands should be executed immediately after the initial ins
   
     chown -R root:root /path/to/owncloud/
     chmod -R 755 /path/to/owncloud/
+    chown <http-user>:<http-user> /path/to/owncloud/config/
+    chmod 0750 /path/to/owncloud/config/
     chown <http-user>:<http-user> /path/to/owncloud/config/config.php
     chmod 750 /path/to/owncloud/config/config.php
     chown -R <http-user>:<http-user> /path/to/owncloud/data/
