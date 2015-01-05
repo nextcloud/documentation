@@ -345,7 +345,7 @@ To make use of this new feature, the following things have to be done:
       ]];
 
 
-.. note:: A namespace tag is required because you can not deduct the namespace from the app id
+.. note:: A namespace tag is required because you can not deduce the namespace from the app id
 
 Which classes should be added
 =============================
