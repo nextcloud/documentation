@@ -15,9 +15,10 @@ Major releases are indicated by the first and second digits. So 4.5.0, 5.0.0,
 6.0.0, and 7.0.0 are major releases. The Updater app is not for upgrades; 
 please see :doc:`upgrade` for instructions on upgrading to a major release.
 
-If you installed ownCloud from your Linux distribution repositories using your 
-package manager, then it is best to update/upgrade ownCloud using your package 
-manager and staying in sync with your distro updates, rather than using the 
+If you installed ownCloud from our `openSUSE Build Service repositories,` 
+<https://software.opensuse.org/download/package?project=isv:ownCloud:community& 
+package=owncloud>`_ or your own Linux distribution repositories, then it is best 
+to update/upgrade ownCloud using your package manager rather than using the 
 Updater app or upgrading manually. You should still maintain regular backups 
 (see :doc:`backup`), and make a backup before every update/upgrade. 
 
@@ -55,17 +56,7 @@ steps:
    always have your own current backups (See :doc:`backup` for details.)
    
 3. Verify that the HTTP user on your system can write to your whole ownCloud 
-   directory; on a stock Linux installation this is the ``www-data`` or 
-   ``apache`` user on systems that are running the Apache HTTP server. You can 
-   find your HTTP user in your HTTP server configuration files. Or you can 
-   create a PHP page to find it for you. To do this, create a plain text file 
-   with this single line in it:
-
-      ``<?php echo exec('whoami'); ?>``
-   
-   Name it ``whoami.php`` and place it in your Web root directory, for example ``/var/www/html``, and then open it in a Web browser, for example 
-   ``http://servername/whoami.php``. You should see a single line in your 
-   browser page with the HTTP user name.
+   directory; see the 
    
 4. Navigate to your 'Admin' page and click the 'Update Center' button under 
    Updater:
@@ -77,11 +68,9 @@ steps:
 .. figure:: ../images/updater-3.png
 
 6. Click Update, and carefully read the messages. If there are any problems it 
-   will tell you. The most common issue is directory permissions; see :ref:`setting_strong_permissions`.
-   
-   
-   otherwise you will see a message about checking your 
-   installation, making a backup, and moving files:
+will tell you. The most common issue is directory permissions; see 
+:ref:`setting_strong_permissions`. Otherwise you will see a message about 
+checking your installation, making a backup, and moving files:
 
 .. figure:: ../images/updater-4.png
 
@@ -109,30 +98,19 @@ learn how to upgrade manually.
 
 Setting Strong Permissions
 --------------------------
-
-The generic command to change ownership of all files and subdirectories in a 
-directory is::
+   
+For hardened security we  highly recommend setting the permissions on your 
+ownCloud directory as strictly as possible. These commands should be executed 
+immediately after the initial installation. Please follow the steps in the 
+**Setting Strong Directory Permissions** section of 
+:doc:`../installation/installation_wizard`.
+    
+These strict permissions will prevent the Updater app from working, as it needs 
+your whole ownCloud directory to be owned by the HTTP user. The generic command 
+to change ownership of all files and subdirectories in a directory to the HTTP 
+user is::
 
     chown -R <http-user>:<http-user> /path/to/owncloud/
-    
-For hardened security we  highly recommend setting the permissions on your ownCloud directory as strictly 
-as possible. These commands should be executed immediately after the initial installation::
-  
-    chown -R root:root /path/to/owncloud/
-    chmod -R 755 /path/to/owncloud/
-    chown <http-user>:<http-user> /path/to/owncloud/config/
-    chmod 0750 /path/to/owncloud/config/
-    chown <http-user>:<http-user> /path/to/owncloud/config/config.php
-    chmod 750 /path/to/owncloud/config/config.php
-    chown -R <http-user>:<http-user> /path/to/owncloud/data/
-    chmod -R 750 /path/to/owncloud/data
-    chown root:root /path/to/owncloud/data/.htaccess
-    chmod 755 /path/to/owncloud/data/.htaccess
-    chown <http-user>:<http-user> /path/to/owncloud/apps/
-    chmod 750 /path/to/owncloud/apps/
-    
-These strict permissions will prevent the Updater app from working, as it needs your whole
-ownCloud directory to be owned by the http-user, like these examples:
 
 * This example is for Ubuntu 14.04 LTS server::
    
@@ -150,7 +128,7 @@ ownCloud directory to be owned by the http-user, like these examples:
 
     chown -R wwwrun:www /path/to/owncloud/
     
-After the Updater app has run, you should re-apply the strict permissions.    
+After the Updater app has run, you should re-apply the strict permissions. 
 
 
 

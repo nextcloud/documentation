@@ -153,7 +153,9 @@ Installation Wizard
 Finish setting up your ownCloud server by following 
 the :doc:`installation_wizard`.
 
-After running the Installation Wizard your ownCloud installation is complete. However, you should perform the following steps to improve your server's security.
+After running the Installation Wizard your ownCloud installation is complete. 
+However, you should perform the following steps to improve your server's 
+security.
 
 Setting Strong Directory Permissions
 ------------------------------------

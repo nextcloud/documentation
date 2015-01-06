@@ -68,9 +68,9 @@ Database Choice
     same username as you specified for the administrative user, plus an
     ``oc_`` prefix) and will use that for all subsequent database access.
 
-  * There are restrictions as to what characters a database name
-      may or may not contain, see the
-      `MySQL Schema Object Names documentation`_ for details);
+  * There are restrictions as to what characters a database name may or may 
+    not contain; see the
+    `MySQL Schema Object Names documentation`_ for details);
 
 Finish Installation
 ~~~~~~~~~~~~~~~~~~~
@@ -83,9 +83,80 @@ Finish Installation
 Setting Strong Directory Permissions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For improved server security, you should set strong permissions on your 
-ownCloud directories according to the **Setting Strong Directory Permissions** 
-section of :doc:`source_installation`.
+For hardened security we highly recommend setting the permissions on your 
+ownCloud directory as strictly as possible. These commands should be executed 
+immediately after the initial installation. Your HTTP user must own at least the 
+``config/``, ``data/`` and ``apps/`` directories in your ownCloud directory so 
+that you can configure ownCloud, create, modify and delete your data files, and 
+install apps via the ownCloud Web interface. 
+
+You can find your HTTP user in your HTTP server configuration files. Or you can 
+create a PHP page to find it for you. To do this, create a plain text file with 
+a single line in it:
+
+      ``<?php echo exec('whoami'); ?>``
+   
+Name it ``whoami.php`` and place it in your ``/var/www/html`` directory, and 
+then open it in a Web browser, for example ``http://localhost/whoami.php``. You 
+should see a single line in your browser page with the HTTP user name.
+
+* The HTTP user and group in Debian/Ubuntu is ``www-data``.
+* The HTTP user and group in Fedora/CentOS is ``apache``.
+* The HTTP user and group in Arch Linux is ``http``.
+* The HTTP user in openSUSE is ``wwwrun``, and the HTTP group is ``www``.
+
+.. note:: When using an NFS mount for the data directory, do not change its 
+   ownership from the default. The simple act of mounting the drive will set 
+   proper permissions for ownCloud to write to the directory. Changing 
+   ownership as above could result in some issues if the NFS mount is 
+   lost.
+
+The easy way to set the correct permissions is to copy and run this 
+script. Replace the ``ocpath`` variable with the path to your ownCloud 
+directory, and replace the ``htuser`` variable with your own HTTP user::
+
+ #!/bin/bash
+ ocpath='/var/www/owncloud'
+ htuser='www-data'
+
+ find ${ocpath}/ -type f -print0 | xargs -0 chmod 0640
+ find ${ocpath}/ -type d -print0 | xargs -0 chmod 0750
+
+ chown -R root:${htuser} ${ocpath}/
+ chown -R ${htuser}:root ${ocpath}/apps/
+ chown -R ${htuser}:root ${ocpath}/config/
+ chown -R ${htuser}:root ${ocpath}/data/
+
+ chown ${htuser}:root ${ocpath}/.htaccess
+ chown root:${htuser} ${ocpath}/data/.htaccess
+ 
+If you have customized your ownCloud installation and your filepaths are 
+different than the standard installation, then modify this script accordingly. 
+
+This lists the recommended modes and ownership for your ownCloud directories 
+and files:
+
+* All files should be read-write for the file owner, read-only for the 
+  group owner, and zero for the world
+* All directories should be executable (because directories always need the 
+  executable bit set), read-write for the directory owner, and read-only for 
+  the group owner
+* The :file:`/` directory should be owned by ``root:[HTTP user]``
+* The :file:`apps/` directory should be owned by ``[HTTP user]:root``
+* The :file:`config/` directory should be owned by ``[HTTP user]:root``
+* The :file:`data/` directory should be owned by ``[HTTP user]:root``
+* The :file:`[ocpath]/.htaccess` file should be owned by ``[HTTP user]:root``
+* The :file:`data/.htaccess` file should be owned by ``root:[HTTP user]``
+
+For example, on Ubuntu Linux these commands set the ownership and permissions 
+on the :file:`data/` directory::
+ 
+ $ sudo chown -R www-data:root /var/www/owncloud/data
+ $ sudo chmod 0750 /var/www/owncloud/data
+ 
+All new files in the :file:`data/` directory automatically inherit the correct 
+permissions, 0640, 
+
 
 Trusted Domains
 ~~~~~~~~~~~~~~~

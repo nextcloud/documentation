@@ -14,7 +14,9 @@ repository, download and install the repository signing key, and install
 ownCloud. Then run the Installation Wizard to complete your installation. (see 
 :doc:`installation_wizard`).
 
-If your distribution is not listed, your Linux distribution may maintain its own ownCloud packages, or you may prefer to install from source code (see :doc:`source_installation`).
+If your distribution is not listed, your Linux distribution may maintain its own 
+ownCloud packages, or you may prefer to install from source code (see 
+:doc:`source_installation`).
 
 .. _openSUSE Build Service: http://software.opensuse.org/download.html?project=isv:ownCloud:community&package=owncloud
 
