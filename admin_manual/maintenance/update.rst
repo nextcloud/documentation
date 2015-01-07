@@ -15,7 +15,7 @@ Major releases are indicated by the first and second digits. So 4.5.0, 5.0.0,
 6.0.0, and 7.0.0 are major releases. The Updater app is not for upgrades; 
 please see :doc:`upgrade` for instructions on upgrading to a major release.
 
-If you installed ownCloud from our `openSUSE Build Service repositories,` 
+If you installed ownCloud from our `openSUSE Build Service repositories 
 <https://software.opensuse.org/download/package?project=isv:ownCloud:community& 
 package=owncloud>`_ or your own Linux distribution repositories, then it is best 
 to update/upgrade ownCloud using your package manager rather than using the 
