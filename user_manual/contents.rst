@@ -21,10 +21,4 @@ ownCloud User Manual
     migration
     userpreferences
     external_storage/google_drive
-
-
-
-.. Indices and tables
-.. ==================
-
-.. * :ref:`genindex`
+    android/android_app
