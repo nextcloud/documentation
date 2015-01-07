@@ -3,10 +3,8 @@ Installation Wizard
 
 When ownCloud prerequisites are fulfilled and all ownCloud files are installed
 on the server, the last step to complete the installation is
-running the Installation Wizard.
-
-* Open your web browser
-* Navigate to your ownCloud instance.
+running the Installation Wizard. Open your Web browser to your new ownCloud 
+installation.
 
   * If you are installing ownCloud on the same machine as you are accessing the
     install wizard from, the URL will be ``http://localhost/owncloud``, or ``https://localhost/owncloud`` if you have enabled SSL.
@@ -31,12 +29,12 @@ password that you want.
 Storage & Database
 ~~~~~~~~~~~~~~~~~~
 
-* Click ``Storage & Database`` to see all of your database options, and to optionally change the default data storage directory.
-
-* The database you want to use must already be installed, and you must have a database admin user and password.
-
-* Enter any arbitrary name for the Database name. This must be a database that does not already exist.
-
+* Click ``Storage & Database`` to see all of your database options, and to 
+  optionally change the default data storage directory.
+* The database you want to use must already be installed, and you must have a 
+  database admin user and password.
+* Enter any arbitrary name for the Database name. This must be a database that 
+  does not already exist.
 * If you are not using Apache as the web server, it is highly
   recommended to configure the data directory to a location outside of
   the document root. Otherwise all user data is potentially publicly
@@ -83,12 +81,12 @@ Finish Installation
 Setting Strong Directory Permissions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For hardened security we highly recommend setting the permissions on your 
-ownCloud directory as strictly as possible. These commands should be executed 
-immediately after the initial installation. Your HTTP user must own at least the 
-``config/``, ``data/`` and ``apps/`` directories in your ownCloud directory so 
-that you can configure ownCloud, create, modify and delete your data files, and 
-install apps via the ownCloud Web interface. 
+For hardened security we recommend setting the permissions on your ownCloud 
+directory as strictly as possible. This should be done immediately after the 
+initial installation. Your HTTP user must own the ``config/``, ``data/`` and 
+``apps/`` directories in your ownCloud directory so that you can configure 
+ownCloud, create, modify and delete your data files, and install apps via the 
+ownCloud Web interface. 
 
 You can find your HTTP user in your HTTP server configuration files. Or you can 
 create a PHP page to find it for you. To do this, create a plain text file with 
@@ -123,12 +121,15 @@ directory, and replace the ``htuser`` variable with your own HTTP user::
  find ${ocpath}/ -type d -print0 | xargs -0 chmod 0750
 
  chown -R root:${htuser} ${ocpath}/
- chown -R ${htuser}:root ${ocpath}/apps/
- chown -R ${htuser}:root ${ocpath}/config/
- chown -R ${htuser}:root ${ocpath}/data/
+ chown -R ${htuser}:${htuser} ${ocpath}/apps/
+ chown -R ${htuser}:${htuser} ${ocpath}/config/
+ chown -R ${htuser}:${htuser} ${ocpath}/data/
 
- chown ${htuser}:root ${ocpath}/.htaccess
+ chown root:${htuser} ${ocpath}/.htaccess
  chown root:${htuser} ${ocpath}/data/.htaccess
+ 
+ chmod 0644 ${ocpath}/.htaccess
+ chmod 0644 ${ocpath}/data/.htaccess
  
 If you have customized your ownCloud installation and your filepaths are 
 different than the standard installation, then modify this script accordingly. 
@@ -142,21 +143,13 @@ and files:
   executable bit set), read-write for the directory owner, and read-only for 
   the group owner
 * The :file:`/` directory should be owned by ``root:[HTTP user]``
-* The :file:`apps/` directory should be owned by ``[HTTP user]:root``
-* The :file:`config/` directory should be owned by ``[HTTP user]:root``
-* The :file:`data/` directory should be owned by ``[HTTP user]:root``
-* The :file:`[ocpath]/.htaccess` file should be owned by ``[HTTP user]:root``
+* The :file:`apps/` directory should be owned by ``[HTTP user]:[HTTP user]``
+* The :file:`config/` directory should be owned by ``[HTTP user]:[HTTP user]``
+* The :file:`data/` directory should be owned by ``[HTTP user]:[HTTP user]``
+* The :file:`[ocpath]/.htaccess` file should be owned by ``root:[HTTP user]``
 * The :file:`data/.htaccess` file should be owned by ``root:[HTTP user]``
-
-For example, on Ubuntu Linux these commands set the ownership and permissions 
-on the :file:`data/` directory::
- 
- $ sudo chown -R www-data:root /var/www/owncloud/data
- $ sudo chmod 0750 /var/www/owncloud/data
- 
-All new files in the :file:`data/` directory automatically inherit the correct 
-permissions, 0640, 
-
+* Both :file:`.htaccess` files are read-write file owner, read-only group and 
+  world
 
 Trusted Domains
 ~~~~~~~~~~~~~~~

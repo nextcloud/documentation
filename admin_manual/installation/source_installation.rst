@@ -160,69 +160,9 @@ security.
 Setting Strong Directory Permissions
 ------------------------------------
 
-Your HTTP user must own at least the ``config/``, ``data/`` 
-and ``apps/`` directories in your ownCloud directory so that you can 
-configure ownCloud, create, modify and delete your data files, and install apps 
-via the ownCloud Web interface. We recommend setting the directory 
-permissions as strictly as possible for stronger security.
-
-You can find your HTTP user in your HTTP server configuration files. Or you can 
-create a PHP page to find it for you. To do this, create a plain text file with 
-a single line in it:
-
-      ``<?php echo exec('whoami'); ?>``
-   
-Name it ``whoami.php`` and place it in your ``/var/www/html`` directory, and 
-then open it in a Web browser, for example ``http://localhost/whoami.php``. You 
-should see a single line in your browser page with the HTTP user name.
-
-.. note:: When using an NFS mount for the data directory, do not change its 
-   ownership from the default. The simple act of mounting the drive will set 
-   proper permissions for ownCloud to write to the directory. Changing 
-   ownership as above could result in some issues if the NFS mount is 
-   lost.
-
-The generic command to change ownership of all files and subdirectories in a 
-directory is::
-
-    chown -R <http-user>:<http-user> /path/to/owncloud/
-    
-For hardened security we  highly recommend setting the permissions on your ownCloud directory as strictly 
-as possible. These commands should be executed immediately after the initial installation::
-  
-    chown -R root:root /path/to/owncloud/
-    chmod -R 0755 /path/to/owncloud/
-    chown <http-user>:<http-user> /path/to/owncloud/config/
-    chmod 0750 /path/to/owncloud/config/
-    chown <http-user>:<http-user> /path/to/owncloud/config/config.php
-    chmod 0750 /path/to/owncloud/config/config.php
-    chown -R <http-user>:<http-user> /path/to/owncloud/data/
-    chmod -R 0750 /path/to/owncloud/data
-    chown root:root /path/to/owncloud/data/.htaccess
-    chmod 0755 /path/to/owncloud/data/.htaccess
-    chown <http-user>:<http-user> /path/to/owncloud/apps/
-    chmod 0750 /path/to/owncloud/apps/
-    
-These strict permissions will prevent the Updater app from working (see :doc:`../maintenance/update`). If you use the Updater app, it needs your whole
-ownCloud directory to be owned by the HTTP user, like these examples:
-
-* This example is for Ubuntu 14.04 LTS server::
-   
-    chown -R www-data:www-data /var/www/owncloud
-
-* Arch Linux::
-
-    chown -R http:http /path/to/owncloud/
-
-* Fedora::
-
-    chown -R apache:apache /path/to/owncloud/
-	
-* openSUSE::
-
-    chown -R wwwrun:www /path/to/owncloud/
-    
-After the Updater app has run, you should re-apply the strict permissions. 
+We recommend setting the directory permissions in your ownCloud installation as 
+strictly as possible for stronger security. Please refer to the ``Setting 
+Strong Directory Permissions`` section of :doc:`installation_wizard`.
 
 SELinux
 -------
