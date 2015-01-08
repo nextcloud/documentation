@@ -161,7 +161,7 @@ Connecting to an FTP server requires:
 * Whatever name you want for your local mountpoint.
 * The URL of your FTP server.
 * FTP server username and password.
-* The FTP directory to mount in ownCloud. ownCloud defaults to the root 
+* Remote Subfolder, the FTP directory to mount in ownCloud. ownCloud defaults to the root 
   directory. When you specify a different directory you must leave off the 
   leading slash. For example, if you want to connect your 
   ``public_html/images`` directory, then type it exactly like that. 
@@ -178,7 +178,7 @@ safely tucked inside an SSH tunnel. To connect an SFTP server you need:
 * Whatever name you want for your local mountpoint.
 * The URL of your SFTP server.
 * SFTP server username and password.
-* The SFTP directory to mount in ownCloud.
+* Remote Subfolder, the SFTP directory to mount in ownCloud.
 * The ownCloud users or groups who are allowed to access the share. 
 
 Google Drive
@@ -268,7 +268,7 @@ You need the following information:
 *   Username -- The username or domain/username used to login to the Samba server.
 *   Password -- The password to login to the Samba server.
 *   Share -- The share on the Samba server to mount.
-*   Root -- The folder inside the Samba share to mount (optional, defaults to 
+*   Remote Subfolder -- The remote subfolder inside the Samba share to mount (optional, defaults to 
     ``/``). To assign the ownCloud logon username automatically to the subfolder, use ``$user`` instead of a particular subfolder name.
 
 And finally, the ownCloud users and groups who get access to the share.    
@@ -295,7 +295,7 @@ ownCloud server.
 *   Folder name -- Whatever name you want for your local mountpoint.
 *   URL -- The URL of the WebDAV or ownCloud server.
 *   Username and password for the remote server
-*   Root -- The remote folder you want to mount (optional, defaults 
+*   Remote Subfolder -- The remote subfolder you want to mount (optional, defaults 
     to ``/``)
 *   Secure ``https://`` - Whether to use ``https://`` to connect to the WebDav 
     server instead of ``http://`` (We always recommend ``https://`` for 

@@ -128,7 +128,7 @@ options:
 -  **password**: the password to login on the ftp server
 -  **secure**: whether to use ftps:// (FTP over TLS) to connect to the ftp
    server instead of ftp:// (optional, defaults to false)
--  **root**: the folder inside the ftp server to mount (optional, defaults
+-  **root**: the remote subfolder inside the ftp server to mount (optional, defaults
    to ‘/’)
 
 
@@ -161,7 +161,7 @@ options:
 -  **host**: the hostname of the SSH server
 -  **user**: the username used to login to the SSH server
 -  **password**: the password to login on the SSH server
--  **root**: the folder inside the SSH server to mount (optional, defaults
+-  **root**: the remote subfolder inside the SSH server to mount (optional, defaults
    to ‘/’)
 
 
@@ -193,7 +193,7 @@ takes the following options:
 -  **user**: the username or domain/username to login on the samba server
 -  **password**: the password to login on the samba server
 -  **share**: the share on the samba server to mount
--  **root**: the folder inside the samba share to mount (optional, defaults
+-  **root**: the remote subfolder inside the samba share to mount (optional, defaults
    to ‘/’). To assign the ownCloud logon username automatically to the subfolder, use ``$user`` instead of a particular subfolder name.
 
 .. note:: The SMB backend requires **smbclient** to be installed on the server.
@@ -243,7 +243,7 @@ following options:
 -  **password**: the password to login on the webdav server
 -  **secure**: whether to use https:// to connect to the webdav server
    instead of http:// (optional, defaults to false)
--  **root**: the folder inside the webdav server to mount (optional,
+-  **root**: the remote subfolder inside the webdav server to mount (optional,
    defaults to ‘/’)
 
 
