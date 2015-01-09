@@ -37,7 +37,7 @@ CORS also needs a separate URL for the preflighted **OPTIONS** request that easi
     // appinfo/routes.php
     array(
         'name' => 'author_api#preflighted_cors', 
-        'url' => '/api/1.0/authors/{path}', 
+        'url' => '/api/1.0/{path}', 
         'verb' => 'OPTIONS', 
         'requirements' => array('path' => '.+')
     )
