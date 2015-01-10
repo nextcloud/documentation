@@ -77,7 +77,7 @@ On the server side we need to register a callback that is executed once the requ
 
 This route calls the controller **OCA\\OwnNotes\\PageController->index()** method which is defined in **ownnotes/controller/pagecontroller.php**. The controller returns a :doc:`template <templates>`, in this case **ownnotes/templates/main.php**:
 
-.. note:: the @Stuff turns off security checks, see :doc:`controllers`
+.. note:: @NoAdminRequired and @NoCSRFRequired in the comments above the method turn off security checks, see :doc:`controllers`
 
 .. code-block:: php
 
