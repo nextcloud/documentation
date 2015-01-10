@@ -4,7 +4,7 @@ Tutorial
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-This tutorial will outline how to create a very simple notes app.
+This tutorial will outline how to create a very simple notes app. The finished app is available on `GitHub <https://github.com/owncloud/tutorial#tutorial>`_.
 
 
 Setup
