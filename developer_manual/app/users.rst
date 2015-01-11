@@ -246,7 +246,7 @@ Then session variables can be accessed like this:
     }
 
 Managing cookies
-===================
+================
 To set, get or modify cookies the `request` variable and the `response` class can be used from within controllers:
 
 .. code-block:: php
