@@ -7,6 +7,7 @@
    :maxdepth: 2
    :hidden:
 
+   tutorial
    startapp
    init
    info
@@ -50,12 +51,16 @@ Before starting to write an app please read the security and coding guidelines:
 * :doc:`../general/security`
 * :doc:`../general/codingguidelines`
 
-After this you can start to write your first app:
+After this you can start with the tutorial
 
-* :doc:`startapp`
+* :doc:`tutorial`
 
 App development
 ===============
+Create a new app:
+
+* :doc:`startapp`
+
 Inner parts of an app:
 
 * :doc:`init`
