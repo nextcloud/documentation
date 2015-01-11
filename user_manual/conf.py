@@ -41,7 +41,7 @@ master_doc = 'contents'
 
 # General information about the project.
 project = u'ownCloud User Manual'
-copyright = u'2012-2014, The ownCloud developers'
+copyright = u'2012-2015, The ownCloud developers'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -253,7 +253,7 @@ texinfo_documents = [
 epub_title = u'ownCloud User Manual'
 epub_author = u'The ownCloud developers'
 epub_publisher = u'The ownCloud developers'
-epub_copyright = u'2012-2014, The ownCloud developers'
+epub_copyright = u'2012-2015, The ownCloud developers'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.
