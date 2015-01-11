@@ -253,7 +253,7 @@ texinfo_documents = [
 epub_title = u'ownCloud User Manual'
 epub_author = u'The ownCloud developers'
 epub_publisher = u'The ownCloud developers'
-epub_copyright = u'2012-2014, The ownCloud developers'
+epub_copyright = u'2012-2015, The ownCloud developers'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.
