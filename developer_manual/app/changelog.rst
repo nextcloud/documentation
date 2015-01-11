@@ -36,3 +36,4 @@ Features
 * The :doc:`container <container>` can now automatically resolve and build classes based on type hints and variable naming conventions
 * :doc:`Routes <routes>` can now be returned as an array in **appinfo/routes.php** if the **<namespace>** tag is set in **appinfo/info.xml**. The :doc:`container <container>` must either be omitted or available under **appinfo/application.php** and named **OCA\\YourApp\\YourNamespace\\AppInfo\\Application**
 * **vendor_script** and **vendor_style** :doc:`template functions <templates>` have been added to load styles and scripts from your **vendor** folder
+* The documentation now features an :doc:`app tutorial <tutorial>`
