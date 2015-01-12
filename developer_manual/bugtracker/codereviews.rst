@@ -23,12 +23,12 @@ How will it work?
 -----------------
 
 #. A developer will submit his changes on GitHub via a pull request.
-   `GitHub:help - using pull requests`_
+   `GitHub:help - using pull requests <https://help.GitHub.com/articles/using-pull-requests>`_
 #. Within the pull request the developer could already name other developers (using
    @GitHubusername) and ask them for review.
 #. Other developers (either named or at free will) have a look at the changes
    and are welcome to write comments within the comment field.
-#. In case the reviewer is okay with the changes and thinks all his comments and 
+#. In case the reviewer is okay with the changes and thinks all his comments and
    suggestions have been take into account a :+1 on the comment will signal a positive
    review.
 #. Before a pull request will be merged into master or the corresponding
@@ -53,7 +53,6 @@ Questions?
 Feel free to drop a line on the `mailing list`_ or join us on `IRC`_.
 
 .. _core repository: https://GitHub.com/owncloud/core
-.. _GitHub: help - using pull requests: https://help.GitHub.com/articles/using-pull-requests
 .. _continuous integration server: https://ci.owncloud.org/
 .. _mailing list: https://mailman.owncloud.org/mailman/listinfo/devel
 .. _IRC: http://webchat.freenode.net/?channels=owncloud-dev

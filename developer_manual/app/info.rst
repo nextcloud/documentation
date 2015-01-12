@@ -165,16 +165,16 @@ In case no database is specified it is assumed that all databases are supported.
 command
 -------
 Defines a command line tool to be available. With the attribute 'os' the required operating system for this tool can be
-specified. Valid values for the 'os' attribute are as returned by the php function `php_uname http://php.net/manual/en/function.php-uname.php`_.
+specified. Valid values for the 'os' attribute are as returned by the php function `php_uname <http://php.net/manual/en/function.php-uname.php>`_.
 
 lib
 ---
-Defines a required php extension with required minimum and/or maximum version. The names for the libraries have to match the result as returned by the php function  `get_loaded_extensions http://php.net/manual/en/function.get-loaded-extensions.php`_.
-The explicit version of an extension is read from `phpversion http://php.net/manual/de/function.phpversion.php`_ - with some exception as to be read up in the code base `https://github.com/owncloud/core/blob/master/lib/private/app/platformrepository.php#L45`_
+Defines a required php extension with required minimum and/or maximum version. The names for the libraries have to match the result as returned by the php function  `get_loaded_extensions <http://php.net/manual/en/function.get-loaded-extensions.php>`_.
+The explicit version of an extension is read from `phpversion <http://php.net/manual/de/function.phpversion.php>`_ - with some exception as to be read up in the `code base <https://github.com/owncloud/core/blob/master/lib/private/app/platformrepository.php#L45>`_
 
 os
 --
-Defines the required target operating system the app can run on. Valid values are as returned by the php function `php_uname http://php.net/manual/en/function.php-uname.php`_.
+Defines the required target operating system the app can run on. Valid values are as returned by the php function `php_uname <http://php.net/manual/en/function.php-uname.php>`_.
 
 owncloud
 --------
