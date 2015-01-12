@@ -21,6 +21,14 @@ Deprecations
 * `OCP\\AppFramework\\IAppContainer <https://github.com/owncloud/core/blob/d59c4e832fea87d03d199a3211186a47fd252c32/lib/public/appframework/iappcontainer.php>`_: methods **getCoreApi** and **log**. Removal planned in **8.3**
 * `OCP\\AppFramework\\Controller <https://github.com/owncloud/core/blob/d59c4e832fea87d03d199a3211186a47fd252c32/lib/public/appframework/controller.php>`_: methods **params**, **getParams**, **method**, **getUploadedFile**, **env**, **cookie**, **render**. Removal planned in **8.3**
 
+.. note:: Deprecations of constants and methods with namespaces!
+
+* The following methods have been moved into the **OCP\\Template::<method>** class instead of being namespaced directly:
+**OCP\\image_path**, **OCP\\mimetype_icon**, **OCP\\preview_icon**, **OCP\\publicPreview_icon**, **OCP\\human_file_size**, **OCP\\relative_modified_date**, **OCP\\html_select_options**. Removal planned in **9.0**
+* **OCP\\simple_file_size** has been deprecated in favour of **OCP\\Template::human_file_size**. Removal planned in **9.0**
+* The **OCP\\PERMISSION_<permission>** and **OCP\\FILENAME_INVALID_CHARS** have been moved to **OCP\\Constants::<old name>**. Removal planned in **9.0**
+* The **OC_GROUP_BACKEND_<method>** and **OC_USER_BACKEND_<method>** have been moved to **OC_Group_Backend::<method>** and **OC_User_Backend::<method>** respectively. Removal planned in **9.0**
+
 Features
 ========
 
