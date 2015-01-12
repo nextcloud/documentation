@@ -17,6 +17,7 @@ The :file:`appinfo/info.xml` contains metadata about the app:
       <licence>AGPL</licence>
       <author>Your Name</author>
       <requiremin>5</requiremin>
+      <namespace>YourAppsNamespace</namespace>
 
       <types>
           <type>filesystem</type>
@@ -28,7 +29,15 @@ The :file:`appinfo/info.xml` contains metadata about the app:
           <admin>http://doc.owncloud.org</admin>
       </documentation>
 
+      <category>other</category>
+
       <website>http://www.owncloud.org</website>
+
+      <bugs>http://github.com/owncloud/theapp/issues</bugs>
+
+      <repository type="git">http://github.com/owncloud/theapp.git</repository>
+
+      <ocsid>1234</ocsid>
 
       <!-- deprecated, just for reference -->
       <public>
@@ -89,7 +98,11 @@ author
 
 requiremin
 ----------
-**Required**: The minimal version of ownCloud.
+Required if not added in the **<dependencies>** tag. The minimal version of ownCloud.
+
+namespace
+---------
+Required if routes.php returns an array. If your app is namespaced like **\\OCA\\MyApp\\Controller\\PageController** the required namespace value is **MyApp**. If not given it tries to default to the first letter upper cased app id, e.g. **myapp** would be tried under **Myapp**
 
 types
 -----
@@ -110,6 +123,29 @@ link to 'admin' and 'user' documentation
 website
 -------
 link to project web page
+
+repository
+----------
+Link to the version control repo
+
+bugs
+----
+Link to the bug tracker
+
+category
+--------
+Category on the app store. Can be one of the following:
+
+* other
+* multimedia
+* pim
+* productivity
+* games
+* tools
+
+ocsid
+-----
+The app's id on the app store, e.g.: https://apps.owncloud.com/content/show.php/QOwnNotes?content=168497 would have the ocsid **168497**. If given helps users to install and update the same app from the app store
 
 Dependencies
 ============

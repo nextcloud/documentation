@@ -7,6 +7,7 @@
    :maxdepth: 2
    :hidden:
 
+   changelog
    tutorial
    startapp
    init
@@ -57,6 +58,10 @@ After this you can start with the tutorial
 
 App development
 ===============
+Take a look at the changes in this version:
+
+* :doc:`changelog`
+
 Create a new app:
 
 * :doc:`startapp`
