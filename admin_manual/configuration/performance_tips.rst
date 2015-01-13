@@ -31,13 +31,13 @@ Object caching can be done locally with the APCu extension,
 or for distributed PHP environments using Memcached.
 Memcached servers must be specified in the "memcached_servers" array in ownCloud's config file.
 
-`Serving static files via web server <xsendfile.rst>`_
+`Serving static files via web server <serving_static_files_configuration.rst>`_
 -----------------------------------
 
-`Using cron to perform background jobs <background_jobs.rst#cron>`_
+`Using cron to perform background jobs <background_jobs_configuration.rst#cron>`_
 -------------------------------------
 
-`Using MySQL instead of SQLite <configuration_database.rst#configuring-a-mysql-or-mariadb-database>`_
+`Using MySQL instead of SQLite <database_configuration.rst#configuring-a-mysql-or-mariadb-database>`_
 -----------------------------
 
 MySQL or MariaDB should be preferred because of the `performance limitations of SQLite with highly concurrent applications <http://www.sqlite.org/whentouse.html>`_, like ownCloud.
