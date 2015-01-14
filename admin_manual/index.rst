@@ -83,6 +83,7 @@ contains the following topics:
 * :doc:`configuration/knowledgebase_configuration`
 * :doc:`configuration/language_configuration`
 * :doc:`configuration/logging_configuration`
+* :doc:`configuration/occ_command`
 * :doc:`configuration/previews_configuration`
 * :doc:`configuration/reverse_proxy_configuration`
 * :doc:`configuration/search_configuration`
