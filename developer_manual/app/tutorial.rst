@@ -721,6 +721,8 @@ Creating a navigation
 =====================
 The template file **ownnotes/templates/part.navigation.php** contains the navigation. ownCloud defines many handy :doc:`CSS styles <css>` which we are going to reuse to style the navigation. Adjust the file to contain only the following code:
 
+.. note:: **$l->t()** is used to make your strings :doc:`translatable <l10n>` and **p()** is used :doc:`to print escaped HTML <templates>`
+
 .. code-block:: php
 
     <!-- translation strings -->
