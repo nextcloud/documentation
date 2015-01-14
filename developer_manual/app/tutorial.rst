@@ -437,7 +437,7 @@ You can pass in the mapper by adding it as a type hinted parameter. ownCloud wil
 This is all that is needed on the server side. Now let's progress to the client side.
 
 
-Writing a test for the controller (optional)
+Writing a test for the controller (recommended)
 ============================================
 Tests are essential for having happy users and a carefree life. No one wants their users to rant about your app breaking their ownCloud or being buggy. To do that you need to test your app. Since this amounts to a ton of repetitive tasks, we need to automate the tests.
 
