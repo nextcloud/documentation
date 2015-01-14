@@ -23,6 +23,7 @@ Configuration
    knowledgebase_configuration
    language_configuration
    logging_configuration
+   occ_command
    previews_configuration
    reverse_proxy_configuration
    search_configuration
