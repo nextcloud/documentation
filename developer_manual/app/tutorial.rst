@@ -479,8 +479,6 @@ Let's take the logic that was inside the controller and put it into a separate c
 
         public function find($id, $userId) {
             try {
-                error_log($id);
-                error_log($this->userId);
                 return $this->mapper->find($id, $userId);
 
             // in order to be able to plug in different storage backends like files
