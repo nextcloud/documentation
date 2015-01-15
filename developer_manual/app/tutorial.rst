@@ -333,8 +333,6 @@ Connect Database & Controllers
 ==============================
 The mapper which provides the database access is finished and can be passed into the controller.
 
-In general it is good practice to use another class between mappers and controllers (aka services) to be able to reuse the code in other places, but for the sake of brevity we will leave them out.
-
 You can pass in the mapper by adding it as a type hinted parameter. ownCloud will figure out how to :doc:`assemble them by itself <container>`. Additionally we want to know the userId of the currently logged in user. Simply add a **$UserId** parameter to the constructor (case sensitive!). To do that open **ownnotes/controller/notecontroller.php** and change it to the following:
 
 .. code-block:: php
@@ -436,6 +434,211 @@ You can pass in the mapper by adding it as a type hinted parameter. ownCloud wil
 
 This is all that is needed on the server side. Now let's progress to the client side.
 
+Making things reusable and decoupling controllers from the database
+===================================================================
+Let's say our app is now on the app store and and we get a request that we should save the files in the filesystem which requires access to the filesystem.
+
+The filesystem API is quite different from the database API and throws different exceptions, which means we need to rewrite everything in the **NoteController** class to use it. This is bad because a controller's only responsibility should be to deal with incoming Http requests and return Http responses. If we need to change the controller because the data storage was changed the code is probably too tightly coupled and we need to add another layer in between. This layer is called **Service**.
+
+Let's take the logic that was inside the controller and put it into a separate class inside **ownnotes/service/noteservice.php**:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\OwnNotes\Service;
+
+    use Exception;
+
+    use OCP\AppFramework\Db\DoesNotExistException;
+    use OCP\AppFramework\Db\MultipleObjectsReturnedException;
+
+    use OCA\OwnNotes\Db\Note;
+    use OCA\OwnNotes\Db\NoteMapper;
+
+
+    class NoteService {
+
+        private $mapper;
+
+        public function __construct(NoteMapper $mapper){
+            $this->mapper = $mapper;
+        }
+
+        public function findAll($userId) {
+            return $this->mapper->findAll($userId);
+        }
+
+        private function handleException ($e) {
+            if ($e instanceof DoesNotExistException ||
+                $e instanceof MultipleObjectsReturnedException) {
+                throw new NotFoundException($e->getMessage());
+            } else {
+                throw $e;
+            }
+        }
+
+        public function find($id, $userId) {
+            try {
+                error_log($id);
+                error_log($this->userId);
+                return $this->mapper->find($id, $userId);
+
+            // in order to be able to plug in different storage backends like files
+            // for instance it is a good idea to turn storage related exceptions
+            // into service related exceptions so controllers and service users
+            // have to deal with only one type of exception
+            } catch(Exception $e) {
+                $this->handleException($e);
+            }
+        }
+
+        public function create($title, $content, $userId) {
+            $note = new Note();
+            $note->setTitle($title);
+            $note->setContent($content);
+            $note->setUserId($userId);
+            return $this->mapper->insert($note);
+        }
+
+        public function update($id, $title, $content, $userId) {
+            try {
+                $note = $this->mapper->find($id, $userId);
+                $note->setTitle($title);
+                $note->setContent($content);
+                return $this->mapper->update($note);
+            } catch(Exception $e) {
+                $this->handleException($e);
+            }
+        }
+
+        public function delete($id, $userId) {
+            try {
+                $note = $this->mapper->find($id, $userId);
+                $this->mapper->delete($note);
+                return $note;
+            } catch(Exception $e) {
+                $this->handleException($e);
+            }
+        }
+
+    }
+
+Remember how we had all those ugly try catches that where checking for **DoesNotExistException** and simply returned a 404 response? Let's also put this into a reusable class. In our case we chose a `trait <http://php.net/manual/en/language.oop5.traits.php>`_ so we can inherit methods without having to add it to our inheritance hirarchie. This will be important later on when you've got controllers that inherit from the **ApiController** class instead.
+
+The trait is created in **ownnotes/controller/errors.php**:
+
+
+.. code-block:: php
+
+    <?php
+
+    namespace OCA\OwnNotes\Controller;
+
+    use Closure;
+
+    use OCP\AppFramework\Http;
+    use OCP\AppFramework\Http\DataResponse;
+
+    use OCA\OwnNotes\Service\NotFoundException;
+
+
+    trait Errors {
+
+        protected function handleNotFound (Closure $callback) {
+            try {
+                return new DataResponse($callback());
+            } catch(NotFoundException $e) {
+                $message = ['message' => $e->getMessage()];
+                return new DataResponse($message, Http::STATUS_NOT_FOUND);
+            }
+        }
+
+    }
+
+Now we can wire up the trait and the service inside the **NoteController**:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\OwnNotes\Controller;
+
+    use OCP\IRequest;
+    use OCP\AppFramework\Http\DataResponse;
+    use OCP\AppFramework\Controller;
+
+    use OCA\OwnNotes\Service\NoteService;
+
+    class NoteController extends Controller {
+
+        private $service;
+        private $userId;
+
+        use Errors;
+
+        public function __construct($AppName, IRequest $request,
+                                    NoteService $service, $UserId){
+            parent::__construct($AppName, $request);
+            $this->service = $service;
+            $this->userId = $UserId;
+        }
+
+        /**
+         * @NoAdminRequired
+         */
+        public function index() {
+            return new DataResponse($this->service->findAll($this->userId));
+        }
+
+        /**
+         * @NoAdminRequired
+         *
+         * @param int $id
+         */
+        public function show($id) {
+            return $this->handleNotFound(function () use ($id) {
+                return $this->service->find($id, $this->userId);
+            });
+        }
+
+        /**
+         * @NoAdminRequired
+         *
+         * @param string $title
+         * @param string $content
+         */
+        public function create($title, $content) {
+            return $this->handleNotFound(function () use ($title, $content) {
+                return $this->service->create($title, $content, $this->userId);
+            });
+        }
+
+        /**
+         * @NoAdminRequired
+         *
+         * @param int $id
+         * @param string $title
+         * @param string $content
+         */
+        public function update($id, $title, $content) {
+            return $this->handleNotFound(function () use ($id, $title, $content) {
+                return $this->service->update($id, $title, $content, $this->userId);
+            });
+        }
+
+        /**
+         * @NoAdminRequired
+         *
+         * @param int $id
+         */
+        public function destroy($id) {
+            return $this->handleNotFound(function () use ($id) {
+                return $this->service->delete($id, $this->userId);
+            });
+        }
+
+    }
+
+Great! Now the only reason that the controller needs to be changed is when request/response related things change.
 
 Writing a test for the controller (recommended)
 ===============================================
@@ -456,24 +659,81 @@ Because ownCloud uses :doc:`Dependency Injection <container>` to assemble your a
 
     use OCP\AppFramework\Http;
     use OCP\AppFramework\Http\DataResponse;
+
+    use OCA\OwnNotes\Service\NotFoundException;
+
+
+    class NoteControllerTest extends PHPUnit_Framework_TestCase {
+
+        protected $controller;
+        protected $service;
+        protected $userId = 'john';
+        protected $request;
+
+        public function setUp() {
+            $this->request = $this->getMockBuilder('OCP\IRequest')->getMock();
+            $this->service = $this->getMockBuilder('OCA\OwnNotes\Service\NoteService')
+                ->disableOriginalConstructor()
+                ->getMock();
+            $this->controller = new NoteController(
+                'ownnotes', $this->request, $this->service, $this->userId
+            );
+        }
+
+        public function testUpdate() {
+            $note = 'just check if this value is returned correctly';
+            $this->service->expects($this->once())
+                ->method('update')
+                ->with($this->equalTo(3),
+                        $this->equalTo('title'),
+                        $this->equalTo('content'),
+                       $this->equalTo($this->userId))
+                ->will($this->returnValue($note));
+
+            $result = $this->controller->update(3, 'title', 'content');
+
+            $this->assertEquals($note, $result->getData());
+        }
+
+
+        public function testUpdateNotFound() {
+            // test the correct status code if no note is found
+            $this->service->expects($this->once())
+                ->method('update')
+                ->will($this->throwException(new NotFoundException()));
+
+            $result = $this->controller->update(3, 'title', 'content');
+
+            $this->assertEquals(Http::STATUS_NOT_FOUND, $result->getStatus());
+        }
+
+    }
+
+
+We can and should also create a test for the **NoteService** class:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\OwnNotes\Service;
+
+    use PHPUnit_Framework_TestCase;
+
     use OCP\AppFramework\Db\DoesNotExistException;
 
     use OCA\OwnNotes\Db\Note;
 
-    class NoteControllerTest extends PHPUnit_Framework_TestCase {
+    class NoteServiceTest extends PHPUnit_Framework_TestCase {
 
-        private $controller;
+        private $service;
         private $mapper;
         private $userId = 'john';
 
         public function setUp() {
-            $request = $this->getMockBuilder('OCP\IRequest')->getMock();
             $this->mapper = $this->getMockBuilder('OCA\OwnNotes\Db\NoteMapper')
                 ->disableOriginalConstructor()
                 ->getMock();
-            $this->controller = new NoteController(
-                'ownnotes', $request, $this->mapper, $this->userId
-            );
+            $this->service = new NoteService($this->mapper);
         }
 
         public function testUpdate() {
@@ -497,12 +757,15 @@ Because ownCloud uses :doc:`Dependency Injection <container>` to assemble your a
                 ->with($this->equalTo($updatedNote))
                 ->will($this->returnValue($updatedNote));
 
-            $result = $this->controller->update(3, 'title', 'content');
+            $result = $this->service->update(3, 'title', 'content', $this->userId);
 
-            $this->assertEquals($updatedNote, $result->getData());
+            $this->assertEquals($updatedNote, $result);
         }
 
 
+        /**
+         * @expectedException OCA\OwnNotes\Service\NotFoundException
+         */
         public function testUpdateNotFound() {
             // test the correct status code if no note is found
             $this->mapper->expects($this->once())
@@ -510,13 +773,10 @@ Because ownCloud uses :doc:`Dependency Injection <container>` to assemble your a
                 ->with($this->equalTo(3))
                 ->will($this->throwException(new DoesNotExistException('')));
 
-            $result = $this->controller->update(3, 'title', 'content');
-
-            $this->assertEquals(Http::STATUS_NOT_FOUND, $result->getStatus());
+            $this->service->update(3, 'title', 'content', $this->userId);
         }
 
     }
-
 
 If `PHPUnit is installed <https://phpunit.de/>`_ we can run the tests inside **ownnotes/** with the following command::
 
@@ -603,7 +863,7 @@ Adding a RESTful API (optional)
 ===============================
 A :doc:`RESTful API <api>` allows other apps such as Android or iPhone apps to access and change your notes. Since syncing is a big core component of ownCloud it is a good idea to add (and document!) your own RESTful API.
 
-Because **NoteController** already offers a RESTful API and returns JSON it is easy to reuse. The only pieces that need to be changed are the annotations which disable the CSRF check (not needed for a REST call usually) and add support for `CORS <https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS>`_ so your API can be accessed from other webapps.
+Because we put our logic into the **NoteService** class it is very easy to reuse it. The only pieces that need to be changed are the annotations which disable the CSRF check (not needed for a REST call usually) and add support for `CORS <https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS>`_ so your API can be accessed from other webapps.
 
 With that in mind create a new controller in **ownnotes/controller/noteapicontroller.php**:
 
@@ -613,16 +873,23 @@ With that in mind create a new controller in **ownnotes/controller/noteapicontro
     namespace OCA\OwnNotes\Controller;
 
     use OCP\IRequest;
+    use OCP\AppFramework\Http\DataResponse;
     use OCP\AppFramework\ApiController;
 
+    use OCA\OwnNotes\Service\NoteService;
 
     class NoteApiController extends ApiController {
 
-        private $controller;
+        private $service;
+        private $userId;
 
-        public function __construct($AppName, IRequest $request, NoteController $controller) {
+        use Errors;
+
+        public function __construct($AppName, IRequest $request,
+                                    NoteService $service, $UserId){
             parent::__construct($AppName, $request);
-            $this->controller = $controller;
+            $this->service = $service;
+            $this->userId = $UserId;
         }
 
         /**
@@ -631,7 +898,7 @@ With that in mind create a new controller in **ownnotes/controller/noteapicontro
          * @NoAdminRequired
          */
         public function index() {
-            return $this->controller->index();
+            return new DataResponse($this->service->findAll($this->userId));
         }
 
         /**
@@ -642,7 +909,9 @@ With that in mind create a new controller in **ownnotes/controller/noteapicontro
          * @param int $id
          */
         public function show($id) {
-            return $this->controller->show($id);
+            return $this->handleNotFound(function () use ($id) {
+                return $this->service->find($id, $this->userId);
+            });
         }
 
         /**
@@ -654,7 +923,9 @@ With that in mind create a new controller in **ownnotes/controller/noteapicontro
          * @param string $content
          */
         public function create($title, $content) {
-            return $this->controller->create($title, $content);
+            return $this->handleNotFound(function () use ($title, $content) {
+                return $this->service->create($title, $content, $this->userId);
+            });
         }
 
         /**
@@ -667,7 +938,9 @@ With that in mind create a new controller in **ownnotes/controller/noteapicontro
          * @param string $content
          */
         public function update($id, $title, $content) {
-            return $this->controller->update($id, $title, $content);
+            return $this->handleNotFound(function () use ($id, $title, $content) {
+                return $this->service->update($id, $title, $content, $this->userId);
+            });
         }
 
         /**
@@ -678,7 +951,9 @@ With that in mind create a new controller in **ownnotes/controller/noteapicontro
          * @param int $id
          */
         public function destroy($id) {
-            return $this->controller->destroy($id);
+            return $this->handleNotFound(function () use ($id) {
+                return $this->service->delete($id, $this->userId);
+            });
         }
 
     }
