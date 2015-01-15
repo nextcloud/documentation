@@ -179,10 +179,12 @@ To start the Windows IIS web server, you can use either the user interface
     
     If you are an enterprise customer, or are running a large installation with 
     a lot of files and users, you should launch the update from the command 
-    line. The ``occ`` command is in your ``owncloud/`` directory, so on a 
-    typical Linux installation you could run this command:
+    line. The ``occ`` command is in your ``owncloud/`` directory. This example is from Ubuntu 
+    Linux:
     
-     ``php /var/www/owncloud/occ upgrade``
+     ``sudo -u www-data php /var/www/owncloud/occ upgrade``
+     
+     See :doc:`../configuration/occ_command` to learn more about the ``occ`` command.
     
 13. The upgrade operation takes a few minutes, depending on the size of your 
     installation. When it is finished you will see a success message, or an 
