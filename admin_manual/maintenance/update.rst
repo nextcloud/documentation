@@ -29,8 +29,8 @@ Updater app or upgrading manually. You should still maintain regular backups
    hosting. Larger installations should update ownCloud with their 
    Linux package managers or manually upgrade, and then complete the update 
    with the ``occ upgrade`` command, which is in the ``owncloud`` directory. 
-   Run ``occ help`` to see complete command options. (ownCloud Enterprise 
-   Edition does not include the Updater app.)   
+   See :doc:`../configuration/occ_command` to learn more about using the 
+   ``occ`` command. 
 
 The Updater app performs these operations:
 

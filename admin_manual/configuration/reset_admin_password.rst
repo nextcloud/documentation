@@ -15,7 +15,7 @@ If neither of these is an option, then you have a third option, and that is
 using the ``occ`` command. ``occ`` is in the ``owncloud`` directory, for 
 example ``/var/www/owncloud/occ``. ``occ`` has a command for resetting all 
 user passwords, ``user:resetpassword``. It is best to run ``occ`` as the HTTP 
-user, as in this example::
+user, as in this example on Ubuntu Linux::
 
  $ sudo -u www-data /var/www/owncloud/occ user:resetpassword admin
  Enter a new password: 
@@ -31,3 +31,5 @@ default Apache HTTP user:group on Linux distros:
 * Centos, Red Hat, Fedora: apache:apache
 * Debian, Ubuntu, Linux Mint: www-data:www-data
 * openSUSE: wwwrun:www
+
+See :doc:`occ_command` to learn more about using the ``occ`` command.
