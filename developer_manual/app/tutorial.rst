@@ -921,9 +921,7 @@ With that in mind create a new controller in **ownnotes/controller/noteapicontro
          * @param string $content
          */
         public function create($title, $content) {
-            return $this->handleNotFound(function () use ($title, $content) {
-                return $this->service->create($title, $content, $this->userId);
-            });
+            return $this->service->create($title, $content, $this->userId);
         }
 
         /**
