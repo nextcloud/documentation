@@ -80,7 +80,7 @@ Identifies the database used with this installation. See also config option
 
 Available:
 	- sqlite (SQLite3 - Community Edition Only)
-	- mysql (MySQL)
+	- mysql (MySQL/MariaDB)
 	- pgsql (PostgreSQL)
 	- oci (Oracle - Enterprise Edition Only)
 	- mssql (Microsoft SQL Server - Enterprise Edition Only)
@@ -781,6 +781,31 @@ concerns:
  - OC\Preview\SVG
  - OC\Preview\TIFF
 
+The following providers are not available in Microsoft Windows:
+
+ - OC\Preview\Movie
+ - OC\Preview\MSOfficeDoc
+ - OC\Preview\MSOffice2003
+ - OC\Preview\MSOffice2007
+ - OC\Preview\OpenDocument
+ - OC\Preview\StarOffice
+
+LDAP
+----
+
+Global settings used by LDAP User and Group Backend
+
+
+::
+
+	'ldapUserCleanupInterval' => 51,
+
+defines the interval in minutes for the background job that checks user
+existance and marks them as ready to be cleaned up. The number is always
+minutes. Setting it to 0 disables the feature.
+
+See command line (occ) methods ldap:show-remnants and user:delete
+
 Maintenance
 -----------
 
@@ -877,6 +902,19 @@ AES-256-CFB are supported.
 
 ::
 
+	'redis' => array(
+		'host' => 'localhost', // can also be a unix domain socket: '/tmp/redis.sock'
+		'port' => 6379,
+		'timeout' => 0.0
+	),
+
+Connection details for redis to use for memory caching.
+
+Redis is only used if other memory cache options (xcache, apc, apcu) are
+not available.
+
+::
+
 	'memcached_servers' => array(
 		// hostname, port and optional weight. Also see:
 		// http://www.php.net/manual/en/memcached.addservers.php
@@ -887,7 +925,7 @@ AES-256-CFB are supported.
 
 Server details for one or more memcached servers to use for memory caching.
 
-Memcache is only used if other memory cache options (xcache, apc, apcu) are
+Memcache is only used if other memory cache options (xcache, apc, apcu, redis) are
 not available.
 
 ::
@@ -929,6 +967,18 @@ using external storages, not recommended for regular use.
 
 All css and js files will be served by the web server statically in one js
 file and one css file if this is set to ``true``.
+
+::
+
+	'assetdirectory' => '/var/www/owncloud',
+
+The parent of the directory where css and js assets will be stored if
+piplelining is enabled; this defaults to the ownCloud directory. The assets
+will be stored in a subdirectory of this directory named 'assets'. The
+server *must* be configured to serve that directory as $WEBROOT/assets.
+
+You will only likely need to change this if the main ownCloud directory
+is not writeable by the web server in your configuration.
 
 ::
 
