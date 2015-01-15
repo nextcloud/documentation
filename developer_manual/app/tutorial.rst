@@ -526,7 +526,6 @@ Following up create the exceptions in **ownnotes/service/serviceexception.php**:
 .. code-block:: php
 
     <?php
-
     namespace OCA\OwnNotes\Service;
 
     use Exception;
@@ -538,9 +537,7 @@ and **ownnotes/service/notfoundexception.php**:
 .. code-block:: php
 
     <?php
-
     namespace OCA\OwnNotes\Service;
-
 
     class NotFoundException extends ServiceException {}
 
