@@ -34,6 +34,12 @@ web browser like Firefox, Chrome, or Internet Explorer:
 
 * :doc:`webinterface`
 
+Mobile Apps
+===========
+How to access ownCloud from a Android device.
+
+* :doc:`android/android_app`
+
 File Access and Management
 ==========================
 The following topics contain information about file access and management.
