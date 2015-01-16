@@ -996,6 +996,26 @@ You can test the API by running a GET request with **curl**::
 
     curl -u user:password http://localhost:8080/index.php/apps/ownnotes/api/0.1/notes
 
+Since the **NoteApiController** is basically identical to the **NoteController**, the unit test for it simply inherits its tests from the **NoteControllerTest**. Create the file **ownnotes/tests/unit/controller/NoteApiControllerTest.php**:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\OwnNotes\Controller;
+
+    require_once __DIR__ . '/NoteControllerTest.php';
+
+    class NoteApiControllerTest extends NoteControllerTest {
+
+        public function setUp() {
+            parent::setUp();
+            $this->controller = new NoteApiController(
+                'ownnotes', $this->request, $this->service, $this->userId
+            );
+        }
+
+    }
+
 Adding JavaScript and CSS
 =========================
 To create a modern webapp you need to write :doc:`JavaScript<js>`. You can use any JavaScript framework but for this tutorial we want to keep it as simple as possible and therefore only include the templating library `handlebarsjs <http://handlebarsjs.com/>`_. `Download the file <http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v2.0.0.js>`_ into **ownnotes/js/handlebars.js** and include it at the very top of **ownnotes/templates/main.php** before the other scripts and styles:
