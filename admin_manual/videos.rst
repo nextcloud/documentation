@@ -13,8 +13,8 @@ Server to Server Sharing on ownCloud 7
 `Build a Cloud of ownCloud Servers with Server to Server Sharing
 <https://www.youtube.com/watch?v=h09ppkkYDNk>`_
 
-.. figure:: images/build-a-cloud-of-servers-320.png
-   :target: https://www.youtube.com/watch?v=h09ppkkYDNk
+.. .. figure:: images/build-a-cloud-of-servers-320.png
+..   :target: https://www.youtube.com/watch?v=h09ppkkYDNk
 
 Create your own cloud of ownCloud servers with server-to-server sharing. 
 Link specific shares to other ownCloud servers and have two-way synchronization.
