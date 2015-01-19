@@ -7,6 +7,15 @@ Please visit our `YouTube channel
 for howtos, demos, news, and Webinars for both the 
 Community and Enterprise versions of ownCloud.
 
+Server to Server Sharing on ownCloud 7
+--------------------------------------
+
+`Build a Cloud of ownCloud Servers with Server to Server Sharing
+<https://www.youtube.com/watch?v=h09ppkkYDNk>`_
+
+Create your own cloud of ownCloud servers with server-to-server sharing. 
+Link specific shares to other ownCloud servers and have two-way synchronization.
+
 Introducing ownCloud 7 Enterprise Edition
 -----------------------------------------
 
