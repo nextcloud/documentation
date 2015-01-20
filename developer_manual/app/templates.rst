@@ -54,8 +54,8 @@ To include CSS or JavaScript use the **addStyle** and **addScript** functions:
 .. code-block:: php
 
   <?php
-  \OCP\Util::addScript('myapp', 'script');  // add js/script.js
-  \OCP\Util::addStyle('myapp', 'style');  // add css/style.css
+  script('myapp', 'script');  // add js/script.js
+  style('myapp', 'style');  // add css/style.css
 
 
 Including images
