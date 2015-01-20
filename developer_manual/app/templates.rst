@@ -49,7 +49,7 @@ The parent variables will also be available in the included templates, but shoul
 
 Including CSS and JavaScript
 ============================
-To include CSS or JavaScript use the **addStyle** and **addScript** functions:
+To include CSS or JavaScript use the **style** and **script** functions:
 
 .. code-block:: php
 
@@ -60,9 +60,9 @@ To include CSS or JavaScript use the **addStyle** and **addScript** functions:
 
 Including images
 ================
-To generate links to images use the **imagePath** function:
+To generate links to images use the **image_path** function:
 
 .. code-block:: php
- 
-  <img src="<?php print_unescaped(image_path('myapp', 'app.png')); // img/app.png?> />
+  
+  <img src="<?php print_unescaped(image_path('myapp', 'app.png')); ?> />
 
