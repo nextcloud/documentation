@@ -382,7 +382,63 @@ Example
         "priority":100
     }
 
+External Storage Password Management
+------------------------------------
+    
+ownCloud handles passwords for external mounts differently than regular 
+ownCloud user passwords.
 
+The regular user and file share passwords (when you use the default ownCloud 
+user backend) are stored using a strong cryptographically secure hashing 
+mechanism in the database. On a new user account with a new password, the 
+password is hashed and stored in the ownCloud database. The plain-text password 
+is never stored. When the user logs in, the hash of the password they enter is 
+compared with the hash in the database. When the hashes match the user is 
+allowed access. These are not recoverable, so when a user loses a password the 
+only option is to create a new password.
+
+Passwords which are used to connect against external storage (e.g. 
+SMB or FTP), there we have to differentiate again between different 
+implementations:
+
+1. **Login with ownCloud credentials** 
+
+When a mountpoint has this option, for example ``SMB / CIFS using OC login``, 
+the password will be intercepted when a user logs in and written to the PHP 
+session (which is a file on the filesystem), and written encrypted into the 
+session with a key from the configuration file. Every time that password is 
+required ownCloud reads it from the PHP session file.
+
+When you use this option, features such as sharing will not work properly from 
+that mountpoint when the user is not logged-in.
+
+Depending on the implementation of the application, this means that the password 
+could get leaked in the ``ps`` output, as we use ``smbclient`` for SMB storage 
+access in the community version. There is a `bug report on this 
+<https://github.com/owncloud/core/issues/6092>`_. Consequently, we're currently 
+evaluating an alternative approach accessing the library directly, and thus not 
+leaking the password anymore. This is already implemented in the Enterprise 
+Edition in our Windows Network Drive application, and it will get into the 
+community version once we have streamlined the code of the ``files_external`` 
+application a little bit more.
+
+2. **Stored credentials**
+
+When you enter credentials into the ``files_external`` dialog those are stored 
+on the filesystem and encrypted with a key stored in ``config.php``. This is 
+required since ownCloud needs access to those files and shares even when the 
+user is not logged-in to have sharing and other key features properly working.
+
+To sum up:
+
+The "login with ownCloud credentials" SMB function in the community edition 
+exposes the password in the server system's process list. If you want to get 
+around this limitation without waiting for it to be addressed in CE you can get 
+the Enterprise Edition. However, even then the password is stored in the PHP 
+session and a malicious admin could access it. You can protect your PHP session 
+files using protections available in your filesystem. Stored credentials are 
+always accessible to the ownCloud instance.
+   
 .. _Amazon S3: http://aws.amazon.com/de/s3/
 .. _Dropbox: https://www.dropbox.com/
 .. _Google Drive: https://drive.google.com/start
