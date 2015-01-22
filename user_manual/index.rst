@@ -30,15 +30,9 @@ solution. After all, with ownCloud, it’s Your Cloud, Your Data, Your Way.
 Web Interface
 =============
 The following topic contains a general overview how to access ownCloud from a
-web browser like Firefox, Chrome, or Internet Explorer:
+Web browser:
 
 * :doc:`webinterface`
-
-Mobile Apps
-===========
-How to access ownCloud from a Android device.
-
-* :doc:`android/android_app`
 
 File Access and Management
 ==========================
