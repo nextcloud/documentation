@@ -33,23 +33,22 @@ users and your ``ldapUserCleanupInterval`` is 20 minutes, the process will
 examine the first 50 users, then 20 minutes later the next 50 users, and 20 
 minutes later the next 50, and so on.
 
-This is done with the ``occ`` command, which must be run as your HTTP user. The 
-``occ`` command is in your ownCloud directory, for example 
-``/var/www/owncloud/occ``. To learn more about ``occ``, see :doc:`occ_command`.
+There are two ``occ`` commands to use for examining a table of users marked as 
+deleted, and then manually deleting them.  The ``occ`` command is in your 
+ownCloud directory, for example ``/var/www/owncloud/occ``, and it must be run as 
+your HTTP user. To learn more about ``occ``, see :doc:`occ_command`.
 
-There are two commands to use. These examples are for Ubuntu Linux:
+These examples are for Ubuntu Linux:
 
-1. ``sudo -u www-data occ ldap:show-remnants`` displays a table with all users 
-   that have been marked as deleted, and their LDAP data.
+1. ``sudo -u www-data php occ ldap:show-remnants`` displays a table with all 
+   users that have been marked as deleted, and their LDAP data.
 
-2. ``sudo -u www-data occ user:delete [user]`` removes the user's data from the 
+2. ``sudo -u www-data php occ user:delete [user]`` removes the user's data from the 
    ownCloud data directory.
 
- This example shows what the table of users marked as 
-``deleted`` looks like, and it assumes you have changed to the directory that 
-``occ`` is in::
+This example shows what the table of users marked as ``deleted`` looks like::
 
- $ sudo -u www-data ldap:show-remnants
+ $ sudo -u www-data php occ ldap:show-remnants
  +-----------------+-----------------+------------------+--------------------------------------+
  | ownCloud name   | Display Name    | LDAP UID         | LDAP DN                              |
  +-----------------+-----------------+------------------+--------------------------------------+
@@ -59,8 +58,8 @@ There are two commands to use. These examples are for Ubuntu Linux:
  | aaliyah_kunze   | aaliyah kunze   | aaliyah_kunze    | uid=aaliyah_kunze,ou=people,dc=com   |
  +-----------------+-----------------+------------------+--------------------------------------+
 
-Then you can run ``sudo -u www-data occ user:delete aaliyah_brown`` to delete 
-user aaliyah_brown. You must use the ownCloud name.
+Then you can run ``sudo -u www-data php occ user:delete aaliyah_brown`` to delete 
+user aaliyah_brown. You must use the user's ownCloud name.
 
 Deleting Local ownCloud Users
 -----------------------------
