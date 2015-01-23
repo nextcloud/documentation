@@ -735,6 +735,18 @@ original size. A value of ``1`` or ``null`` disables scaling.
 
 ::
 
+	'preview_max_filesize_image' => 50,
+
+max file size for generating image previews with imagegd (default behaviour)
+If the image is bigger, it'll try other preview generators,
+but will most likely show the default mimetype icon
+
+Value represents the maximum filesize in megabytes
+Default is 50
+Set to -1 for no limit
+
+::
+
 	'preview_libreoffice_path' => '/usr/bin/libreoffice',
 
 custom path for LibreOffice/OpenOffice binary
@@ -1086,6 +1098,18 @@ List of trusted proxy servers
 
 Headers that should be trusted as client IP address in combination with
 `trusted_proxies`
+
+::
+
+	'max_filesize_animated_gifs_public_sharing' => 10,
+
+max file size for animating gifs on public-sharing-site.
+
+If the gif is bigger, it'll show a static preview
+
+Value represents the maximum filesize in megabytes
+Default is 10
+Set to -1 for no limit
 
 ::
 
