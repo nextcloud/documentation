@@ -2,17 +2,14 @@
 User Provisioning API
 =====================
 
-The Provisioning API application is exclusive to ownCloud Enterprise Edition, 
-and is enabled by default.
-
-This application enables a set of APIs that external systems can use to create, 
+The Provisioning API application enables a set of APIs that external systems can use to create, 
 edit, delete and query user attributes, query, set and remove groups, set quota 
 and query total storage used in ownCloud. Group admin users can also query 
 ownCloud and perform the same functions as an admin for groups they manage. The 
 API also enables an admin to query for active ownCloud applications, application 
-info, and to enable or disable an app remotely. Once the app is enabled, HTTP 
+info, and to enable or disable an app remotely. HTTP 
 requests can be used via a Basic Auth header to perform any of the functions 
-listed above.
+listed above. The Provisioning API app is enabled by default.
 
 The base URL for all calls to the share API is **<owncloud_base_url>/ocs/v1.php/cloud**.
 
