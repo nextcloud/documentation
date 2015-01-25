@@ -34,22 +34,18 @@ Adding Third Party Apps
 -----------------------
 
 Some apps are developed and supported by ownCloud directly, while other apps are created 
-by third parties and either included in or available for your ownCloud server 
-installation.  Any apps that are not developed by ownCloud show a *3rd party* 
-designation. Install unsupported apps at your own risk.
-
-Sometimes the installation of a third-party app fails silently, possibly because
-``'appcodechecker' => true,`` is enabled in ``config.php``. When ``appcodechecker`` is 
-enabled it checks if third-party apps are using the private API, rather than the public 
-API. If they are then they will not be installed. 
+by third parties and available for your ownCloud server installation.  Apps developed
+by the ownCloud community show a *recommended* designation. Any apps that are not
+developed by ownCloud but have been reviewed by the ownCloud security team show a 
+*3rd party* designation. Install unsupported apps at your own risk.
 
 To understand what an application does, you can click the app name to view a description 
 of the app and any of the app settings in the Application View field.  Clicking the 
-*Enable* button will enable the app.  If the app is a third party app, it will be 
-downloaded from the app store, installed and enabled.
+*Enable* button will enable the app.  If the app is not part of the ownCloud installation,
+it will be downloaded from the app store, installed and enabled. 
 
-Though ownCloud provides many apps in the server installation, you can view  more in
-the `ownCloud apps store <http://apps.owncloud.com/>`_.
+You can view new, unreviewed or unstable applications in the 
+`ownCloud apps store <http://apps.owncloud.com/>`_.
 
 To view or install apps from the ownCloud apps store:
 
@@ -69,6 +65,11 @@ installation, typically ``owncloud/apps``.
 access rights are **rwxr-x---**, or **0750** in octal notation, and the owner and group 
 are your HTTP user. On CentOS this is ``apache``, Ubuntu is ``www-data``, and on openSUSE 
 is it ``wwwrun:www``.
+
+Sometimes the installation of a third-party app fails silently, possibly because
+``'appcodechecker' => true,`` is enabled in ``config.php``. When ``appcodechecker`` is 
+enabled it checks if third-party apps are using the private API, rather than the public 
+API. If they are then they will not be installed. 
 
 .. note:: If you would like to create or add your own ownCloud app, please use the 
    *Add your App...* button on the same page. This button redirects you to our 
