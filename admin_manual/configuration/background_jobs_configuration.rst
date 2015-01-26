@@ -38,7 +38,7 @@ your server using the Internet. For example::
 Cron
 ~~~~
 
-Using the operating system cron feature is the preferred method for executing regular tasks.  This method enables the execution of scheduled jobs without the inherent limitations the web server might have.  For example:
+Using the operating system cron feature is the preferred method for executing regular tasks.  This method enables the execution of scheduled jobs without the inherent limitations the web server might have.
 
 To run a cron job on a \*nix system, every 15 minutes, under the default web server user (often, ``www-data`` or ``wwwrun``), you must set up the following cron job to call the **cron.php** script::
 
