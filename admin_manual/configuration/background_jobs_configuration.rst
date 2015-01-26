@@ -38,7 +38,7 @@ your server using the Internet. For example::
 Cron
 ~~~~
 
-Using the operating system cron feature is the preferred method for executing regular tasks.  This method enables the execution of scheduled jobs without the inherent limitations the web server might have.  For example:
+Using the operating system cron feature is the preferred method for executing regular tasks.  This method enables the execution of scheduled jobs without the inherent limitations the web server might have.
 
 To run a cron job on a \*nix system, every 15 minutes, under the default web server user (often, ``www-data`` or ``wwwrun``), you must set up the following cron job to call the **cron.php** script::
 
@@ -48,7 +48,9 @@ To run a cron job on a \*nix system, every 15 minutes, under the default web ser
 You can verify if the cron job has been added and scheduled by executing::
 
   # crontab -u www-data -l
-  */15  *  *  *  * php -f /var/www/owncloud/cron.php
+  */15  *  *  *  * php -f /var/www/owncloud/cron.php > /dev/null 2>&1
+
+.. note:: On some systems it might be required to call **php-cli** instead of **php**.
 
 .. note:: Please refer to the crontab man page for the exact command syntax.
 
