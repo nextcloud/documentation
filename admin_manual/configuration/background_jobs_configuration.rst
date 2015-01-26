@@ -50,6 +50,8 @@ You can verify if the cron job has been added and scheduled by executing::
   # crontab -u www-data -l
   */15  *  *  *  * php -f /var/www/owncloud/cron.php
 
+.. note:: On some systems it might be required to call **php-cli** instead of **php**.
+
 .. note:: Please refer to the crontab man page for the exact command syntax.
 
 .. _easyCron: http://www.easycron.com/
