@@ -41,3 +41,5 @@ Memcached servers must be specified in the "memcached_servers" array in ownCloud
 -----------------------------
 
 MySQL or MariaDB should be preferred because of the `performance limitations of SQLite with highly concurrent applications <http://www.sqlite.org/whentouse.html>`_, like ownCloud.
+
+On large instances you could consider `running MySQLTuner <https://github.com/major/MySQLTuner-perl/>`_ to optimize the database.
