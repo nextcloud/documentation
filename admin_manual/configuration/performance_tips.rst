@@ -46,15 +46,15 @@ On large instances you could consider `running MySQLTuner <https://github.com/ma
 
 -----------------------------------
 
-Nginx: caching owncloud gallery thumbnails with fastcgi_cache_purge
+Nginx: caching ownCloud gallery thumbnails with fastcgi_cache_purge
 ===================================================================
 
-| One of the optimisations for owncloud when using Nginx as webserver is to combine FastCGI caching with "Cache Purge", a `3rdparty Nginx module <http://wiki.nginx.org/3rdPartyModules>`_  that adds the ability to purge content from `FastCGI`, `proxy`, `SCGI` and `uWSGI` caches. This mechanism speeds up thumbnail presentation as it shifts requests to Nginx and minimizes php invocations which else would take place for every thumbnail presented every time.
+| One of the optimisations for ownCloud when using Nginx as webserver is to combine FastCGI caching with "Cache Purge", a `3rdparty Nginx module <http://wiki.nginx.org/3rdPartyModules>`_  that adds the ability to purge content from `FastCGI`, `proxy`, `SCGI` and `uWSGI` caches. This mechanism speeds up thumbnail presentation as it shifts requests to Nginx and minimizes php invocations which else would take place for every thumbnail presented every time.
 | The following procedure is based on an Ubuntu 14.04 system. You may need to adopt it according your OS type and release.
 | **Note I:** 
 |    Unlike Apache, Nginx does not dynamically load modules. All modules needed, must be compiled into Nginx. This is one of the reasons for Nginx´s performance.
 | **Note II:**
-|    It is expected to have an already running Nginx installation with a working configuration set up like described in the owncloud documentation.
+|    It is expected to have an already running Nginx installation with a working configuration set up like described in the ownCloud documentation.
 
 Nginx module check
 ------------------
@@ -154,9 +154,9 @@ Configure Nginx with the ``nginx-cache-purge`` module
    |
 
 2. | *Configuration*
-   | ``sudo vi /etc/nginx/sites-enabled/{your-owncloud-nginx-config-file}``
+   | ``sudo vi /etc/nginx/sites-enabled/{your-ownCloud-nginx-config-file}``
    | 
-   | Note: the ``keys_zone`` / ``fastcgi_cache`` name and the ``{path}`` must be unique to each instance of owncloud serverd with Nginx !
+   | Note: the ``keys_zone`` / ``fastcgi_cache`` name and the ``{path}`` must be unique to each instance of ownCloud serverd with Nginx !
    | 
    | Add at the *beginning*, but *outside* the ``server{}`` block:
    | ``fastcgi_cache_path {path} levels=1:2 keys_zone=OWNCLOUD:100m inactive=60m;``
@@ -191,7 +191,7 @@ Configure Nginx with the ``nginx-cache-purge`` module
    |    ``}``
    |
    | Note regarding the ``fastcgi_pass`` parameter:
-   | Use whatever fits your configuration. In the example above, a ``upstream`` was defined in a global configuration file.
+   | Use whatever fits your configuration. In the example above, a ``upstream`` was defined in an Nginx global configuration file.
    | This then can look like:
    |    
    |  ``upstream php-handler {``
@@ -206,7 +206,7 @@ Configure Nginx with the ``nginx-cache-purge`` module
    
    * | Open your browser and clear your cache.
    
-   * | Logon to your owncloud instance, open the gallery app, move thru your folders
+   * | Logon to your ownCloud instance, open the gallery app, move thru your folders
      | and watch while the thumbs are generated for the first time.
    * | You may also watch with eg. ``htop`` your system load while the thumbnails are processed.
    * | Goto another app or logout and relogon.
