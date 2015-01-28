@@ -107,7 +107,7 @@ Improved Server-to-Server Sharing
 
 Server-to-Server Sharing, introduced in ownCloud 7, allows you to mount file 
 shares from remote ownCloud servers, and create a "cloud of ownClouds". In 
-ownCloud 8 the process for creating a new Server-to-Server is easier and more 
+ownCloud 8 the process for creating a new Server-to-Server link is easier and more 
 streamlined.
 
 Improved Search
