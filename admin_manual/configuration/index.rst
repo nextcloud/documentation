@@ -24,6 +24,7 @@ Configuration
    language_configuration
    logging_configuration
    occ_command
+   performance_tips
    previews_configuration
    reverse_proxy_configuration
    search_configuration
