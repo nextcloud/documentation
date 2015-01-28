@@ -6,30 +6,29 @@ New Packaging
 
 We are introducing a new packaging system. Instead of two editions, Community 
 and Enterprise, we now offer Server to replace the old Community edition, and
-Enterprise Subscription replaces the old Enterprise Edition, and now there are 
-three levels of paid support.
+Enterprise Subscription replaces the old Enterprise Edition.
 
 Server includes core file share and synchronization features plus community 
 apps, and is community-supported and free of cost. See `owncloud.org 
 <https://owncloud.org/>`_ for current information and links to downloads.
 
-ownCloud paid subscriptions now come in three versions:
+ownCloud now offers two levels of paid support:
 
 * ownCloud Standard 
 * ownCloud Enterprise
-* ownCloud Reporting and Auditing
 
 The ownCloud Standard Subscription is for customers who want paid support for 
-the core Server, and do not need the Enterprise apps. This includes:
+the core Server, and do not need Enterprise apps. This includes:
 
 * ownCloud Server
 * ownCloud desktop and mobile apps (without the custom branding build service)
-* ownCloud Enterprise Edition open-sourced apps licensed as AGPL (Share Files, 
+* ownCloud open-source apps licensed as AGPL (Share Files, 
   Federated Cloud, Versions, Deleted files, LDAP/AD, Antivirus, Encryption, 
-  External Storage, etc.), 8x5 support hours
+  External Storage. etc.), 8x5 support hours
 
-Note: we do not support Contacts, Calendar, Tasks, Chat, Documents, etc. 
-as these are community-only apps.
+Note: This does not include support for Contacts, Calendar, Tasks, Chat, 
+Documents, or any other community-only apps, and it does not include support 
+for Enterprise-only apps or services.
 
 The ownCloud Enterprise Subscription replaces the Enterprise Edition. This 
 includes the core Server plus Enterprise apps. The Enterprise Subscription 
