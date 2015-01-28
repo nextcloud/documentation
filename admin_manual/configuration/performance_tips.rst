@@ -176,7 +176,6 @@ Configure Nginx with the ``nginx-cache-purge`` module
    |    
    |  ``location ~ \.php(?:$|/) {``
    |      ``fastcgi_split_path_info ^(.+\.php)(/.+)$;``
-   |      ``try_files $fastcgi_script_name =404;``
    |    
    |      ``include fastcgi_params;``
    |      ``fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;``
