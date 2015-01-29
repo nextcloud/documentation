@@ -61,6 +61,7 @@ Inside your database layer class you can now start running queries like:
             while($row = $result->fetchRow()) {
                 return $row;
             }
+            $result->closeCursor();
         }
 
     }
@@ -68,7 +69,7 @@ Inside your database layer class you can now start running queries like:
 
 Mappers
 =======
-The aforementioned example is the most basic way write a simple database query but the more queries amass, the more code has to be written and the harder it will become to maintain it. 
+The aforementioned example is the most basic way write a simple database query but the more queries amass, the more code has to be written and the harder it will become to maintain it.
 
 To generalize and simplify the problem, split code into resources and create an **Entity** and a **Mapper** class for it. The mapper class provides a way to run Sql queries and maps the result onto the related entities.
 
@@ -92,7 +93,7 @@ To create a mapper, inherit from the mapper baseclass and call the parent constr
     class AuthorMapper extends Mapper {
 
         public function __construct(IDb $db) {
-            parent::__construct($db, 'myapp_authors'); 
+            parent::__construct($db, 'myapp_authors');
         }
 
 
@@ -121,11 +122,14 @@ To create a mapper, inherit from the mapper baseclass and call the parent constr
             $result = $query->execute();
 
             while($row = $result->fetchRow()) {
+                $result->closeCursor();
                 return $row['count'];
             }
         }
 
     }
+
+.. note:: The cursor is closed automatically for all **INSERT**, **DELETE**, **UPDATE** queries and when calling the methods **findOneQuery**, **findEntities**, **findEntity**, **delete**, **insert** and **update**. For custom calls using execute you should always close the cursor after you are done with the fetching to prevent database lock problems on SqLite
 
 Every mapper also implements default methods for deleting and updating an entity based on its id::
 
@@ -192,7 +196,7 @@ Entities are data objects that carry all the table's information for one row. Ev
 
 Types
 -----
-The following properties should be annotated by types, to not only assure that the types are converted correctly for storing them in the database (e.g. PHP casts false to the empty string which fails on postgres) but also for casting them when they are retrieving from the database. 
+The following properties should be annotated by types, to not only assure that the types are converted correctly for storing them in the database (e.g. PHP casts false to the empty string which fails on postgres) but also for casting them when they are retrieving from the database.
 
 The following types can be added for a field:
 
@@ -226,9 +230,9 @@ Since all attributes should be protected, getters and setters are automatically 
 Custom attribute to database column mapping
 -------------------------------------------
 
-By default each attribute will be mapped to a database column by a certain convention, e.g. **phoneNumber** 
+By default each attribute will be mapped to a database column by a certain convention, e.g. **phoneNumber**
 will be mapped to the column **phone_number** and vice versa. Sometimes it is needed though to map attributes to
-different columns because of backwards compability. To define a custom 
+different columns because of backwards compability. To define a custom
 mapping, simply override the **columnToProperty** and **propertyToColumn** methods of the entity in question:
 
 .. code-block:: php
@@ -263,8 +267,8 @@ mapping, simply override the **columnToProperty** and **propertyToColumn** metho
         }
 
     }
-    
-    
+
+
 Slugs
 -----
 Slugs are used to identify resources in the URL by a string rather than integer id. Since the URL allows only certain values, the entity baseclass provides a slugify method for it:
@@ -276,4 +280,4 @@ Slugs are used to identify resources in the URL by a string rather than integer 
     $author->setName('Some*thing');
     $author->slugify('name');  // Some-thing
 
- 
+
