@@ -74,13 +74,17 @@ When you log out and then log back in, your encryption keys are initialized and
 your files are encrypted. This is a one-time process, and it will take a few 
 minutes depending on how many files you have.
 
+.. note:: The more files you have, the longer the initial encryption will take. It is
+   better to activate the encryption app after a new ownCloud installation, to avoid
+   possible timeouts.
+
 .. figure:: ../images/encryption3.png
 
 When the encryption process is complete you'll be returned to your default 
 ownCloud page. Every user will go through this process when they log in after 
 you enable encryption, and each user will get unique encryption keys. Users can change 
 their passwords whenever they want on their Personal pages, and ownCloud will update 
-their encryption keys automatically/
+their encryption keys automatically.
 
 Sharing Encrypted Files
 -----------------------
