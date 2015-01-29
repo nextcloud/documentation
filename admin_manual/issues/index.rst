@@ -49,8 +49,23 @@ helpful. See:
   bug in older SabreDAV versions and information for mod_security problems)
 * `0 byte files <http://sabre.io/dav/0bytes>`_ (Reasons for empty files on the 
   server)
-* `Clients <http://sabre.io/dav/clients/>`_ (A comprehensive lists of WebDAV 
+* `Clients <http://sabre.io/dav/clients/>`_ (A comprehensive list of WebDAV 
   clients, and possible problems with each one)
 * `Finder, OS X's built-in WebDAV client 
   <http://sabre.io/dav/clients/finder/>`_ 
   (Describes problems with Finder on various webservers)
+
+General Troubleshooting
+-----------------------
+
+.. note:: The data directory on the server is exclusive to ownCloud and must not be modified manually.
+
+Disregarding this can lead to unwanted behaviours like:
+
+* Problems with sync clients
+* Undetected changes due to caching in the database
+
+If you need to directly upload files from the same server please use a WebDAV command
+line client like `cadaver` to upload files to the WebDAV interface at:
+
+  https://example.org/owncloud/remote.php/webdav
