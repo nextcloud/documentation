@@ -15,14 +15,6 @@ This documents the *development* version of ownCloud. Do not use for production!
 * `Developer Manual <http://doc.owncloud.org/server/8.0/developer_manual/>`_ (`Download PDF 
   <http://doc.owncloud.org/server/8.0/ownCloudDeveloperManual.pdf>`_)
 
-.. Uncomment this section and push when the 1.8 client is released
-.. ---------------------------
-.. ownCloud Desktop Client 1.8
-.. ---------------------------
-
-.. * `ownCloud Desktop Client Manual <http://doc.owncloud.org/desktop/1.8/>`_ (`Download PDF 
-..   <http://doc.owncloud.org/desktop/1.8/ownCloudClientManual.pdf>`_)
-
 -------------------
 ownCloud Server 7.0
 -------------------
@@ -34,13 +26,6 @@ This documents the *latest* ownCloud release, suitable for production use.
 * `Developer Manual <http://doc.owncloud.org/server/7.0/developer_manual/>`_ (`Download PDF <http://doc.owncloud.org/server/7.0/ownCloudDeveloperManual.pdf>`_)
 * `ownCloud Videos <http://doc.owncloud.org/server/7.0/admin_manual/videos.html>`_
 
----------------------------
-ownCloud Desktop Client 1.7
----------------------------
-
-* `ownCloud Desktop Client Manual <http://doc.owncloud.org/desktop/1.7/>`_ (`Download PDF 
-  <http://doc.owncloud.org/desktop/1.7/ownCloudClientManual.pdf>`_)
-
 -------------------
 ownCloud Server 6.0
 -------------------
@@ -49,7 +34,6 @@ This documents the *previous* ownCloud release, suitable for production use.
 
 * `User Manual <http://doc.owncloud.org/server/6.0/user_manual/>`_ (`Download PDF <http://doc.owncloud.org/server/6.0/ownCloudUserManual.pdf>`_)
 * `Administrator Manual <http://doc.owncloud.org/server/6.0/admin_manual/>`_ (`Download PDF <http://doc.owncloud.org/server/6.0/ownCloudAdminManual.pdf>`_)
-
 
 -------------------
 ownCloud Server 5.0
@@ -60,3 +44,35 @@ This documents the *deprecated* ownCloud release.
 * `User Manual <http://doc.owncloud.org/server/5.0/user_manual/>`_ (`Download PDF <http://doc.owncloud.org/server/5.0/ownCloudUserManual.pdf>`_)
 * `Administrator Manual <http://doc.owncloud.org/server/5.0/admin_manual/>`_ (`Download PDF <http://doc.owncloud.org/server/5.0/ownCloudAdminManual.pdf>`_)
 * `Developer Manual <http://doc.owncloud.org/server/5.0/developer_manual/>`_ (`Download PDF <http://doc.owncloud.org/server/5.0/ownCloudDeveloperManual.pdf>`_)
+
+---------------------------
+ownCloud Desktop Client 1.8
+---------------------------
+
+The *development* version of the ownCloud desktop sync client.
+
+* `ownCloud Desktop Client Manual <http://doc.owncloud.org/desktop/1.8/>`_ (`Download PDF 
+  <http://doc.owncloud.org/desktop/1.8/ownCloudClientManual.pdf>`_)
+
+---------------------------
+ownCloud Desktop Client 1.7
+---------------------------
+
+The *latest* ownCloud desktop sync client release, suitable for production use.
+
+* `ownCloud Desktop Client Manual <http://doc.owncloud.org/desktop/1.7/>`_ (`Download PDF 
+  <http://doc.owncloud.org/desktop/1.7/ownCloudClientManual.pdf>`_)
+
+-------------------- 
+ownCloud Android App  
+--------------------
+
+* `ownCloud Android App Manual <http://doc.owncloud.org/android/>`_ (`Download PDF
+  <http://doc.owncloud.org/android/ownCloudAndroidAppManual.pdf>`_)
+
+---------------- 
+ownCloud iOS App  
+----------------
+
+* `ownCloud iOS App Manual <http://doc.owncloud.org/ios/>`_ (`Download PDF 
+  <http://doc.owncloud.org/ios/ownCloudiOSAppManual.pdf>`_)
