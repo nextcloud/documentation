@@ -170,19 +170,13 @@ edit ``/etc/davfs2/davfs2.conf`` and add::
 
 **Problem:** Certificate warnings
 
-<<<<<<< HEAD
-**Solution:** If you use a self-signed certificate, you will get a warning. To change this, you need to adress the "pem"-file of your certificate. 
-At first copy ``mycertificate.pem`` to  - for example - ``/etc/davfs2/certs/``. After that edit :file:`/etc/davfs2/davfs2.conf` and uncomment the line ``servercert`` (or add it). 
-Now add the path of your certificate. In this this example::
-=======
 **Solution:** If you use a self-signed certificate, you will get a warning. To 
 change this, you need to configure ``davfs2`` to recognize your certificate. 
 Copy ``mycertificate.pem`` to ``/etc/davfs2/certs/``. Then edit 
 ``/etc/davfs2/davfs2.conf`` and uncomment the line ``servercert``. Now add the 
 path of your certificate as in this example::
 
->>>>>>> 28e0495... Overhaul of WebDAV page; many corrections and updates
-    servercert   /etc/davfs2/certs/mycertificate.pem
+ servercert   /etc/davfs2/certs/mycertificate.pem
 
 Accessing Files Using Mac OS X
 ------------------------------

@@ -18,6 +18,5 @@ ownCloud User Manual
     pim/index
     documents
     bookmarks
-    migration
     userpreferences
     external_storage/google_drive
