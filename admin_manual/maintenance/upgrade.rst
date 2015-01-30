@@ -3,22 +3,26 @@ Upgrading Your ownCloud Server
 
 Updating and upgrading your ownCloud installation are two different tasks. 
 Updating means updating to the next point release, which is indicated 
-by the third digit of the version number. For example, 4.5.1, 5.0.17, 6.0.4 and 
-7.0.1 are point releases. (Look at the bottom of your Admin page to see your 
-version number.)
+by the third digit of the version number. For example, 6.0.4 and 
+7.0.4 are point releases. (Look at the bottom of your Admin page to see your 
+version number.) Please see :doc:`update` for instructions on using the 
+Updater app (Server only).
 
-Major releases are indicated by the first and second digits. So 4.5.0, 5.0.0, 
-6.0.0, and 7.0.0 are major releases. You may use the Updater app for staying 
-current with new point releases (Community Edition only), but not for upgrading 
-to a major release. Please see :doc:`update` for instructions on using the 
-Updater app.
+Upgrading your ownCloud server means upgrading to the next major ownCloud release. Major releases 
+are indicated by the first and second digits. So 6.0, 7.0 and 8.0 are major releases. You may use 
+the Updater app for staying current with new point releases (Server only), but not for upgrading to 
+a major release. 
 
-You cannot skip major releases; for example, upgrading from 5.0 to 7.0. This is 
-unsupported, and you'll likely experience unpredictable results. It is best to 
-install all upgrades and updates in order.
+The best method for keeping your ownCloud server on Linux servers current is by configuring your 
+system to use the `openSUSE Build Service 
+<http://software.opensuse.org/download.html?project=isv:ownCloud:community&package=owncloud>`_, and 
+then stay current by using your package manager to upgrade. You should still maintain regular 
+backups (see :doc:`backup`), and make a backup before every update/upgrade.
 
-.. note:: If you installed ownCloud from
-   `openSUSE Build Service <http://software.opensuse.org/download.html?project=isv:ownCloud:community&package=owncloud>`_, or from your Linux distribution repositories using your package manager, then it is best to update/upgrade ownCloud using your package manager rather than using the Updater app or upgrading manually. You should still maintain regular backups (see :doc:`backup`), and make a backup before every update/upgrade.
+Windows server admins must use the manual upgrade procedure.
+
+You cannot skip major releases; for example, upgrading from 5.0 to 7.0. This is unsupported, and 
+you'll experience unpredictable results. It is best to install all upgrades and updates in order.   
 
 Manual Upgrade Procedure
 ------------------------
@@ -34,19 +38,11 @@ further requests.
    compatibility with your new ownCloud version.
 3. Back up your existing ownCloud Server database, data directory, and 
    ``config.php`` file. (See :doc:`backup`.)
-4. Download the latest ownCloud Server version into an empty directory outside 
+4. Download and unpack the latest ownCloud Server version from `owncloud.org/install/ 
+   <https://owncloud.org/install/>`_ into an empty directory outside 
    of your current installation. For example, if your current ownCloud is 
    installed in ``/var/www/owncloud/`` you could create a new directory called
    ``/var/www/owncloud2/``
-
-On Linux operating systems, change to your new directory and download the 
-current ownCloud tarball with ``wget``:
-
-  ``wget http://download.owncloud.org/community/owncloud-latest.tar.bz2``
-
-For Windows operating systems. see the installation instruction in 
-:doc:`../installation/windows_installation`.
-
 5. Stop your web server.
 
 Depending on your environment, you will be running either an Apache server or 
