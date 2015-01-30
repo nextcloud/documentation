@@ -1,6 +1,14 @@
+==================================
 What's New for Users in ownCloud 8
 ==================================
 
+Desktop Sync Client Shares From File Manager, Selective Sync
+------------------------------------------------------------
+
+The Desktop Sync Client now allows you to share files directly from your file 
+manager, and has a new graphical selective sync file chooser. See the 
+`ownCloud Desktop Client Manual <http://doc.owncloud.org/desktop/1.8/>`_ for 
+more information.
 
 Favorites
 ---------
