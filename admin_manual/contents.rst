@@ -12,7 +12,8 @@ ownCloud documentation contents
 .. toctree::
     :maxdepth: 3
      
-    videos 
+    videos
+    release_notes
     whats_new_admin
     installation/index
     configuration/index
