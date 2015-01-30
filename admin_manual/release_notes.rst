@@ -17,15 +17,17 @@ Supported Platforms
 ^^^^^^^^^^^^^^^^^^^
 
 * Hypervisors: Hyper-V, VMware ESX, Xen, KVM
-* Server: Windows 2008R2; 2012, Linux (Debian 6, RHEL / Centos 6 and 7, Ubuntu 
-  12 and 14, SLES 11, Univention Corporate Server 3.x)
-* Databases: MySQL 5.x; Microsoft SQL Server 2008R2; SQL Server 2012 R2; Oracle 
-  11g
-* Desktop: Windows XP, Windows 7, Mac OS X 10.7+ (64-bit only), Linux (CentOS 
-  6, Ubuntu 10.04 and 11.04+, Fedora 16+, openSUSE 11.4+)
+* Server: Linux (Debian 7, SUSE Linux Enterprise Server 11 & 12 RHEL/Centos 6.5 
+  and 7, Ubuntu 12.04 LTS, 14.04 LTS, 14.10, Univention Corporate Server 
+  3.x), Windows 2008R2, 2012 
+* Databases: MySQL/MariaDB 5.x; Microsoft SQL Server 2008R2; SQL Server 2012 
+  R2; Oracle 11g
+* Desktop: Windows XP SP3 (EoL Q2 2015), Windows 7+, Mac OS X 10.7+ (64-bit 
+  only), Linux (CentOS 6.5, 7, Ubuntu 12.04 LTS, 14.04 LTS, 14.10, Fedora 20, 
+  21, openSUSE 12.3, 13)
 * Mobile apps: iOS 7+, Android 4+
-* Webserver: IIS (Windows) and Apache2 (Windows and Linux)
-* Web browser: IE8, IE9+, Firefox v14+, Chrome v18+, Safari v5+
+* Webserver: Apache2 (Linux and Windows), IIS (Windows)
+* Web browser: IE8+, Firefox 14+, Chrome 18+, Safari 5+
 
 PHP 5.3 Support Dropped
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -63,11 +65,11 @@ treat the group as two groups.
 
 .. https://github.com/owncloud/core/issues/10983
 
-Hebrew File Names Too Large Windows IIS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Hebrew File Names Too Large on Windows
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-On Windows IIS Hebrew file names grow to five times their original size after 
-being translated to Unicode.
+On Windows servers Hebrew file names grow to five times their original size 
+after being translated to Unicode.
 
 .. https://github.com/owncloud/core/issues/8938
 
@@ -112,6 +114,12 @@ app on a SWIFT object store incurs twice as many HTTP requests and increases
 latency significantly.
 
 .. https://github.com/owncloud/core/issues/10900
+
+App Store is Back
+^^^^^^^^^^^^^^^^^
+
+The ownCloud App Store has been re-enabled in oC 8. Note that third-party apps 
+are not supported.
 
 ========================
 ownCloud 7 Release Notes
