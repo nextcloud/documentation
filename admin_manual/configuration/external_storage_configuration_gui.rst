@@ -185,7 +185,7 @@ Google Drive
 ------------
 
 All applications that access a Google API must be registered through the 
-`Google Cloud Console <https://cloud.google.com>`_. Follow along carefully 
+`Google Cloud Console <https://console.developers.google.com/>`_. Follow along carefully 
 because the Google is a bit of a maze and it's easy to get lost. 
 
 .. note:: Your ownCloud server must have a registered domain name and be 
