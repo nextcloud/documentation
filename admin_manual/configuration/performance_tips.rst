@@ -59,6 +59,21 @@ Object caching can be done locally with the APCu extension,
 or for distributed PHP environments using Memcached.
 Memcached servers must be specified in the "memcached_servers" array in ownCloud's config file.
 
+Enable the SPDY protocol
+------------------------
+
+Your webserver can be configured to use the SPDY protocol which could improve the overall performance of ownCloud.
+Please have a look at the documentation of your webservers module for more infos:
+
+* | `mod-spdy for Apache <https://code.google.com/p/mod-spdy/>`_
+  |
+
+* | `ngx_http_spdy_module for NginX <http://nginx.org/en/docs/http/ngx_http_spdy_module.html>`_
+  |
+
+.. note:: If you want to enable SPDY for Apache please note the `Known Issues <https://code.google.com/p/mod-spdy/wiki/KnownIssues>`_
+of this module to avoid problems after enabling it.
+
 `Serving static files via web server <serving_static_files_configuration.rst>`_
 ------------------------------------
 
