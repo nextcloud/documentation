@@ -8,8 +8,9 @@ address of your personal ownCloud setup or a URL address that you have received
 from your company or your service provider.
 
 .. note:: If you are administering the server yourself, we recommend that you 
-   read the `ownCloud Administrators Guide 
-   <http://doc.owncloud.org/server/7.0/admin_manual/>`_.
+   read the `ownCloud Administrators Guide
+   <http://doc.owncloud.org/server/8.0/admin_manual/>`_.
+.. TODO ON RELEASE: Update version number above on release
 
 Accessing the ownCloud Web Interface
 ------------------------------------

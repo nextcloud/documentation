@@ -8,6 +8,6 @@ ownCloud server administrator controls which of these are available to you. Plea
 configuration howtos and example:
 
 `Configuring External Storage (GUI) 
-<http://doc.owncloud.org/server/7.0/admin_manual/configuration/
+<http://doc.owncloud.org/server/8.0/admin_manual/configuration/
 custom_mount_config_gui.html>`_
-
+.. TODO ON RELEASE: Update version number above on release

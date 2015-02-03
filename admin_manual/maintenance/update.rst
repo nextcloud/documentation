@@ -7,12 +7,12 @@ instance by default, which you can easily confirm by looking on your Apps page.
 
 Updating and upgrading your ownCloud installation are two different tasks. 
 Updating means updating to the next point release, which is indicated 
-by third digit of the version number. For example, 4.5.1, 5.0.17, 6.0.4 and 
-7.0.1 are point releases. (Look at the bottom of your Admin page to see your 
+by third digit of the version number. For example, 6.0.4 and
+7.0.4 are point releases. (Look at the bottom of your Admin page to see your
 version number.)
 
-Major releases are indicated by the first and second digits. So 4.5.0, 5.0.0, 
-6.0.0, and 7.0.0 are major releases. The Updater app is not for upgrades; 
+Major releases are indicated by the first and second digits. So 6.0, 7.0, and 8.0
+are major releases. The Updater app is not for upgrades;
 please see :doc:`upgrade` for instructions on upgrading to a major release.
 
 If you installed ownCloud from our `openSUSE Build Service repositories 

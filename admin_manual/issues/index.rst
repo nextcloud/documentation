@@ -33,7 +33,8 @@ If you can't find a solution, please use our `bugtracker`_.
 .. _the ownCloud User mailing list: https://mailman.owncloud.org/mailman/listinfo/user
 .. _webchat: http://webchat.freenode.net/?channels=owncloud
 .. _Enterprise Edition: https://owncloud.com/lp/community-or-enterprise/
-.. _bugtracker: http://doc.owncloud.org/server/7.0/developer_manual/bugtracker/index.html
+.. _bugtracker: http://doc.owncloud.org/server/8.0/developer_manual/bugtracker/index.html
+.. TODO ON RELEASE: Update version number above on release
 
 Troubleshooting WebDAV
 ----------------------
