@@ -72,7 +72,7 @@ Please have a look at the documentation of your webservers module for more infos
   |
 
 .. note:: If you want to enable SPDY for Apache please note the `Known Issues <https://code.google.com/p/mod-spdy/wiki/KnownIssues>`_
-of this module to avoid problems after enabling it.
+   of this module to avoid problems after enabling it.
 
 `Serving static files via web server <serving_static_files_configuration.rst>`_
 ------------------------------------
