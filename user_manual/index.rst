@@ -92,8 +92,9 @@ Please see ``Configuring External Storage (GUI)`` in the ownCloud
 Administrator's manual:
 
 `Configuring External Storage (GUI) 
-<http://doc.owncloud.org/server/7.0/admin_manual/configuration/
+<http://doc.owncloud.org/server/8.0/admin_manual/configuration/
 custom_mount_config_gui.html>`_
+.. TODO ON RELEASE: Update version number above on release
 
 .. Indices and tables
 .. ==================
