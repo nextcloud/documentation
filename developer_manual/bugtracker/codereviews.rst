@@ -22,10 +22,13 @@ reviewed!
 How will it work?
 -----------------
 
-#. A developer will submit his changes on GitHub via a pull request.
+#. A developer will submit his changes on GitHub via a pull request (PR).
    `GitHub:help - using pull requests <https://help.GitHub.com/articles/using-pull-requests>`_
 #. Within the pull request the developer could already name other developers (using
    @GitHubusername) and ask them for review.
+#. Using Labels section on the right side, they add *"5 - To review"* label if the patch is
+   complete. If they have no permission to do that, other developers may add this Label in case
+   PR author had indicated.
 #. Other developers (either named or at free will) have a look at the changes
    and are welcome to write comments within the comment field.
 #. In case the reviewer is okay with the changes and thinks all his comments and
