@@ -39,6 +39,19 @@ The :file:`appinfo/info.xml` contains metadata about the app:
 
       <ocsid>1234</ocsid>
 
+      <dependencies>
+          <php min-version="5.4" max-version="5.5"/>
+          <database>sqlite</database>
+          <database>mysql</database>
+          <command os="linux">grep</command>
+          <command os="windows">notepad.exe</command>
+          <lib min-version="1.2">xml</lib>
+          <lib max-version="2.0">intl</lib>
+          <lib>curl</lib>
+          <os>Linux</os>
+          <owncloud min-version="6.0.4" max-version="8"/>
+      </dependencies>
+
       <!-- deprecated, just for reference -->
       <public>
           <file id="caldav">appinfo/caldav.php</file>
@@ -52,19 +65,7 @@ The :file:`appinfo/info.xml` contains metadata about the app:
 
       <default_enable />
       <shipped>true</shipped>
-
-      <dependencies>
-          <php min-version="5.4" max-version="5.5"/>
-          <database>sqlite</database>
-          <database>mysql</database>
-          <command os="linux">grep</command>
-          <command os="windows">notepad.exe</command>
-          <lib min-version="1.2">xml</lib>
-          <lib max-version="2.0">intl</lib>
-          <lib>curl</lib>
-          <os>Linux</os>
-          <owncloud min-version="6.0.4" max-version="8"/>
-      </dependencies>
+      <!-- end deprecated -->
   </info>
 
 id
