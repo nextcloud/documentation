@@ -18,7 +18,9 @@ syntax:
       ),
   ),
 
-Currently the “External user support” (user_external) app provides the following user backends:
+Currently the “External user support” (user_external) app, which you need to
+enable first (See :doc:`../installation/apps_management_installation`)
+provides the following user backends:
 
 IMAP
 ----
