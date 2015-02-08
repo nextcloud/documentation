@@ -11,6 +11,7 @@ Breaking changes
 ================
 
 * Setting session variables inside a controller requires the **@UseSession** annotation, otherwise the session will be closed
+* Applications not using the AppFramework need now to register their routes as well in **appinfo/routes.php**. See https://mailman.owncloud.org/pipermail/devel/2014-August/000565.html
 
 Deprecations
 ============
