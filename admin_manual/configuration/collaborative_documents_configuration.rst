@@ -26,3 +26,12 @@ available to all groups.
 
 See "Collaborative Document Editing" in the User manual to learn how to create 
 and share documents in the Documents application.
+
+Enabling and testing MS Word support
+====================================
+
+Go to your admin settings menu. After choosing ``Local`` or ``External`` click
+on the ``Apply and test`` button. If you have a working LibreOffice or OpenOffice
+installation a green ``Saved`` icon should appear.
+
+.. image:: ../images/documents_apply_test.png
