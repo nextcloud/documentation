@@ -6,7 +6,7 @@ Documentation Overview
 ownCloud Server 8.0
 --------------------
 
-This documents the *latest* version of ownCloud. Do not use for production!
+This documents the *latest* version of ownCloud, suitable for production use.
 
 * `User Manual <http://doc.owncloud.org/server/8.0/user_manual/>`_ (`Download 
   PDF <http://doc.owncloud.org/server/8.0/ownCloudUserManual.pdf>`_)
