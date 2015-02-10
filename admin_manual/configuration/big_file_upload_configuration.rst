@@ -29,8 +29,8 @@ Configuring Your Webserver
 ownCloud comes with its own ``owncloud/.htaccess`` file. Set the following 
 two parameters inside this ``.htaccess`` file::
 
- upload_max_filesize = 16G
- post_max_size = 16G
+ php_value upload_max_filesize = 16G
+ php_value post_max_size = 16G
 
 Adjust these values for your needs. If you see PHP timeouts in your logfiles, 
 increase the timeout values, which are in seconds::
