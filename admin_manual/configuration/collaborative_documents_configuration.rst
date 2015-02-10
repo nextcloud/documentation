@@ -35,3 +35,17 @@ on the ``Apply and test`` button. If you have a working LibreOffice or OpenOffic
 installation a green ``Saved`` icon should appear.
 
 .. image:: ../images/documents_apply_test.png
+
+**Troubleshooting**
+
+If the mentioned test fails please make sure that:
+
+* you're not running Windows (it is currently not supported)
+* the PHP functions ``escapeshellarg`` and ``shell_exec`` are not disabled in your
+  PHP configuration
+* the libreoffice/openoffice binary is within your PATH and is executeable for the
+  HTTP user
+* your SELinux configuration is not blocking the execution of the binary
+* the PHP ``open_basedir`` is correctly configured to allow the access to the binary
+
+More hints why the test is failing can be found in your ``data/owncloud.log``.
