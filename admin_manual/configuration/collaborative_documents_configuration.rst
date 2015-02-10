@@ -16,7 +16,7 @@ natively in ownCloud, and you must have LibreOffice or OpenOffice installed on
 the ownCloud server to convert `.doc`, and `.docx` documents.
   
 Enabling the Documents App
-==========================
+--------------------------
 
 Go to your Apps page and click the ``Enable`` button. You also have the option 
 to grant access to the Documents apps to selected user groups. By default it is 
@@ -28,7 +28,7 @@ See "Collaborative Document Editing" in the User manual to learn how to create
 and share documents in the Documents application.
 
 Enabling and testing MS Word support
-====================================
+------------------------------------
 
 Go to your admin settings menu. After choosing ``Local`` or ``External`` click
 on the ``Apply and test`` button. If you have a working LibreOffice or OpenOffice
