@@ -36,7 +36,8 @@ installation a green ``Saved`` icon should appear.
 
 .. image:: ../images/documents_apply_test.png
 
-**Troubleshooting**
+Troubleshooting
+~~~~~~~~~~~~~~~
 
 If the mentioned test fails please make sure that:
 
