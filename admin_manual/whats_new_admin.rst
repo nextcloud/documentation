@@ -78,8 +78,8 @@ More Powerful User Management
 
 In addition to the existing filter and text string searchable user management, 
 an entirely new set of features has been added to ownCloud. Admins can now edit 
-email addresses for system users, sort users, select multiple users at once, and
-rename groups.
+email addresses for system users and send email notification to newly created
+system users.
 
 LDAP Improvements, Including LDAP User Cleanup
 ----------------------------------------------
