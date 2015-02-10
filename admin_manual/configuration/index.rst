@@ -9,7 +9,7 @@ Configuration
    automatic_configuration
    background_jobs_configuration
    big_file_upload_configuration
-   collaborative_documents_configuration.rst
+   collaborative_documents_configuration
    config_sample_php_parameters
    custom_client_configuration
    database_configuration
