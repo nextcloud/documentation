@@ -90,7 +90,7 @@ On large instances you could consider `running MySQLTuner <https://github.com/ma
 -----------------------------------
 
 Nginx: caching ownCloud gallery thumbnails with fastcgi_cache_purge
-===================================================================
+-------------------------------------------------------------------
 
 | One of the optimisations for ownCloud when using Nginx as webserver is to combine FastCGI caching with "Cache Purge", a `3rdparty Nginx module <http://wiki.nginx.org/3rdPartyModules>`_  that adds the ability to purge content from `FastCGI`, `proxy`, `SCGI` and `uWSGI` caches. This mechanism speeds up thumbnail presentation as it shifts requests to Nginx and minimizes php invocations which else would take place for every thumbnail presented every time.
 | The following procedure is based on an Ubuntu 14.04 system. You may need to adopt it according your OS type and release.
@@ -100,7 +100,7 @@ Nginx: caching ownCloud gallery thumbnails with fastcgi_cache_purge
 |    It is expected to have an already running Nginx installation with a working configuration set up like described in the ownCloud documentation.
 
 Nginx module check
-------------------
+~~~~~~~~~~~~~~~~~~
 | As a first step, it is necessary to check if your Nginx installation has the ``nginx cache purge`` module compiled in.
 | 
 | ``nginx -V 2>&1 | grep ngx_cache_purge -o``
@@ -108,7 +108,7 @@ Nginx module check
 | If your output contains ``ngx_cache_purge``, you can continue with the configuration, else you need to manually compile Nginx with the module needed.
 
 Compile Nginx with the ``nginx-cache-purge`` module
----------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. | *Preparation*
    | ``cd /opt``
@@ -190,7 +190,7 @@ Compile Nginx with the ``nginx-cache-purge`` module
    | Do a regular visit on the `Nginx news page <http://nginx.org>`_ and proceed in case of updates with item 2 to 5
 
 Configure Nginx with the ``nginx-cache-purge`` module
------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 1. | *Preparation*
    | Create a directory where Nginx will save the cached thumbnails. Use any path that fits to your environment. Replace ``{path}`` with the path used, example path below:
    | ``sudo mkdir -p /usr/local/tmp/cache``
