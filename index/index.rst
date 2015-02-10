@@ -2,9 +2,9 @@
 Documentation Overview
 ======================
 
------------------------------------------
-Development Version - ownCloud Server 8.0
------------------------------------------
+--------------------
+ownCloud Server 8.0
+--------------------
 
 This documents the *latest* version of ownCloud. Do not use for production!
 
