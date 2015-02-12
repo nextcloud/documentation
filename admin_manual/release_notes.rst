@@ -21,7 +21,7 @@ Supported Platforms
   and 7, Ubuntu 12.04 LTS, 14.04 LTS, 14.10, Univention Corporate Server 
   3.x), Windows 2008R2, 2012 
 * Databases: MySQL/MariaDB 5.x; Microsoft SQL Server 2008R2; SQL Server 2012 
-  R2; Oracle 11g
+  R2; Oracle 11g; PostgreSQL
 * Desktop: Windows XP SP3 (EoL Q2 2015), Windows 7+, Mac OS X 10.7+ (64-bit 
   only), Linux (CentOS 6.5, 7, Ubuntu 12.04 LTS, 14.04 LTS, 14.10, Fedora 20, 
   21, openSUSE 12.3, 13)
