@@ -293,13 +293,13 @@ calendar event:
 Special CalDAV URLs
 -------------------
 
-Additionally the calendar app is providing two URLs for special functions:
+Additionally the Calendar app is providing two URLs for special functions:
 
 **Export calendar as an .ics file**
 
   https://ADDRESS/remote.php/caldav/calendars/USERNAME/CALENDARNAME?export
 
-**Your contact's birthdays**
+**Your contacts' birthdays**
 
   https://ADDRESS/remote.php/caldav/calendars/USERNAME/contact_birthdays
 
