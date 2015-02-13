@@ -28,6 +28,10 @@ available for use:
 -  `Google Drive`_
 -  `OpenStack Swift`_
 
+.. note:: You need to enable the `External storage support` app first before you
+   can use the examples below. See the section :doc:`<external_storage_configuration_gui>`
+   how to do this.
+
 Please keep in mind that some formatting has been applied and carriage returns
 have been added for better readability. In the :file:`data/mount.json` all
 values need to be concatenated and written in a row without these modifications!
