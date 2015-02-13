@@ -356,7 +356,6 @@ Known Problems
 .. _in your file manager: http://en.wikipedia.org/wiki/Webdav#WebDAV_client_applications
 .. _ownCloud sync clients: http://doc.owncloud.org/desktop/1.7/
 .. _Mount ownCloud to a local folder without sync: http://owncloud.org/use/webdav/
-.. _ownCloud Mirall repository: https://github.com/owncloud/mirall
 .. _Android: http://github.com/owncloud/android
 .. _WebDAV Navigator: http://seanashton.net/webdav/
 .. _Android devices: https://play.google.com/store/apps/details?id=com.schimera.webdavnavlite
