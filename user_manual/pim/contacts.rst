@@ -325,9 +325,9 @@ ownCloud provides the following alternative synchronization options:
 Special CardDAV URLs
 -------------------
 
-Additionally the contacts app is providing an URL for special functions:
+Additionally, the Contacts app is providing an URL for special functions:
 
-**Export an addressbook as a VCARD file**
+**Export an address book as a vCard file**
 
   https://ADDRESS/remote.php/caldav/addressbooks/USERNAME/ADDRESSBOOK?export
 
