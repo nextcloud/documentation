@@ -35,5 +35,5 @@ PostgreSQL
 ^^^^^^^^^^
 ::
 
-    PGPASSWORD="password" pg_dump owncloud -h [server] -U [username] -f owncloud-sqlbkp_`date +"%Y%m%d"`.bak
+    PGPASSWORD="password" pg_dump [db_name] -h [server] -U [username] -f owncloud-sqlbkp_`date +"%Y%m%d"`.bak
 
