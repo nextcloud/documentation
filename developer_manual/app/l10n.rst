@@ -126,12 +126,41 @@ In case some translation strings may be translated wrongly because they have mul
 
 Creating your own translatable files
 ====================================
-If Transifex is not the right choice or the app is not accepted for translation, generate the gettext strings by yourself by creating an **l10n/** directory in the app folder and executing::
+
+If Transifex is not the right choice or the app is not accepted for translation,
+generate the gettext strings by yourself by creating an :file:`l10n/` directory
+in the app folder and executing::
 
 
-    cd /srv/http/owncloud/l10n
-    perl l10n.pl myapp read 
+    cd /srv/http/owncloud/apps/myapp/l10n
+    perl l10n.pl myapp read
 
 The translation script requires **Locale::PO** and **gettext**, installable via::
 
     apt-get install liblocale-po-perl gettext
+
+The above script generates a template that can be used to translate all strings
+of an app. This template is located in the folder :file:`template/` with the
+name :file:`myapp.pot`. It can be used by your favored translation tool which
+then creates a :file:`.po` file. The :file:`.po` file needs to be place in a
+folder named like the language code with the app name as filename - for example
+:file:`l10n/es/myapp.po`. After this step the perl script needs to be invoked to
+transfer the po file into our own fileformat that is more easily readable by
+the server code::
+
+    perl l10n.pl myapp write
+
+Now the following folder structure is available::
+
+    myapp/l10n
+    ├── es
+    │   └── myapp.po
+    ├── es.js
+    ├── es.json
+    ├── es.php
+    ├── l10n.pl
+    └── templates
+        └── myapp.pot
+
+You then just need the :file:`.php`, :file:`.json` and :file:`.js` files for a
+working localized app.
