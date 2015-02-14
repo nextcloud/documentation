@@ -172,6 +172,25 @@ See :doc:`selinux_configuration` for a suggested configuration for SELinux-enabl
 
 Apache is the recommended Web server.
 
+Configuration notes to php.ini files
+------------------------------------
+
+Keep in mind that changes to php.ini may have to be done on more than one ini file. This can be the case, as example, for the ``date.timezone`` setting.
+
+**php.ini - used by the webserver:**
+::
+
+   /etc/php5/apache2/php.ini
+ or
+   /etc/php5/fpm/php.ini
+ or ...
+
+**php.ini - used by the php-cli and so by ownCloud CRON jobs:**
+::
+
+  /etc/php5/cli/php.ini
+
+
 Apache Web Server Configuration
 -------------------------------
 
