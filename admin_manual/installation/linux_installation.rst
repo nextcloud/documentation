@@ -36,3 +36,5 @@ See :doc:`selinux_configuration` for a suggested configuration for SELinux-enabl
 .. _ownCloud, installation and setup: http://pclinuxoshelp.com/index.php/Owncloud,_installation_and_setup
 
 
+**Debian/Ubuntu:** The package is installing an additional Apache config file to `/etc/apache2/conf.d/owncloud.conf`
+which contains an `Alias` to the owncloud installation directory as well as some more needed configuration options.
