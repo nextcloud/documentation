@@ -29,7 +29,7 @@ available for use:
 -  `OpenStack Swift`_
 
 .. note:: You need to enable the `External storage support` app first before you
-   can use the examples below. See the section :doc:`<external_storage_configuration_gui>`
+   can use the examples below. See the section :doc:`external_storage_configuration_gui`
    how to do this.
 
 Please keep in mind that some formatting has been applied and carriage returns
