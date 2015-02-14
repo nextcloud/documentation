@@ -128,9 +128,9 @@ Now download the archive of the latest ownCloud version:
 * You may also verify the PGP signature::
     
     wget https://download.owncloud.org/community/owncloud-x.y.z.tar.bz2.asc
-    wget https://owncloud.org/owncloud.asc
+    wget https://www.owncloud.org/owncloud.asc
     gpg --import owncloud.asc
-    gpg owncloud-x.y.z.tar.bz2
+    gpg --verify owncloud-x.y.z.tar.bz2.asc owncloud-x.y.z.tar.bz2
   
 * Now you can extract the archive contents. Open a terminal, navigate to your 
   download directory, and run::
