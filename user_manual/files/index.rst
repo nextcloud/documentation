@@ -5,12 +5,12 @@ Files & Synchronization
 .. toctree::
    :maxdepth: 1
 
-   filesweb
    files
-   versioncontrol
-   server_to_server_using
-   deletedfiles
+   filesweb
    sync
    encryption
-   quota
    configuring_big_file_upload
+   deletedfiles
+   quota
+   server_to_server_using
+   versioncontrol

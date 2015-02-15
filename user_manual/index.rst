@@ -48,14 +48,14 @@ File Access and Management
 ==========================
 The following topics contain information about file access and management.
 
-* :doc:`files/configuring_big_file_upload`
-* :doc:`files/deletedfiles`
-* :doc:`files/encryption`
 * :doc:`files/files`
 * :doc:`files/filesweb`
+* :doc:`files/sync`
+* :doc:`files/encryption`
+* :doc:`files/configuring_big_file_upload`
+* :doc:`files/deletedfiles`
 * :doc:`files/quota`
 * :doc:`files/server_to_server_using`
-* :doc:`files/sync`
 * :doc:`files/versioncontrol`
 
 Contacts and Calendar
