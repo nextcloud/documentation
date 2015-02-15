@@ -325,7 +325,7 @@ Example config for Apache 2.4:
 * In order for the maximum upload size to be configurable, the
   :file:`.htaccess` in the ownCloud folder needs to be made writable by the
   server (this should already be done, see section ``Set the Directory 
-  Permissions``).
+  Permissions``). If PHP-FPM is used, it can't read ``.htaccess`` PHP settings unless a PECL extension is installed. If PHP-FPM is used without the PECL extension installed, settings and permissions must be set in the ``owncloud/.user.ini`` file.
 
 * You should make sure that any built-in WebDAV module of your web server is 
   disabled (at least for the ownCloud directory), as it will interfere with 

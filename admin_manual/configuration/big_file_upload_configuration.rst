@@ -26,8 +26,10 @@ System Configuration
 Configuring Your Webserver
 --------------------------
 
-ownCloud comes with its own ``owncloud/.htaccess`` file. Set the following 
-two parameters inside this ``.htaccess`` file::
+| ownCloud comes with its own ``owncloud/.htaccess`` file.
+| If PHP-FPM is used, it can't read ``.htaccess`` PHP settings unless a PECL extension is installed. If PHP-FPM is used without the PECL extension installed, settings and permissions must be set in the ``owncloud/.user.ini`` file.
+
+Set the following two parameters inside the corresponding .ini file::
 
  php_value upload_max_filesize = 16G
  php_value post_max_size = 16G
@@ -41,7 +43,7 @@ increase the timeout values, which are in seconds::
 Configuring PHP
 ---------------
 
-If you don't want to use the ownCloud ``.htaccess`` file, you may 
+If you don't want to use the ownCloud ``.htaccess`` or ``.user.ini`` file, you may 
 configure PHP instead. Make sure to comment out any lines ``.htaccess`` 
 pertaining to upload size, if you entered any.
 
@@ -67,7 +69,7 @@ Tell PHP which temp file you want it to use::
  
  upload_tmp_dir = /var/big_temp_file/
 
-**Output Buffering** must be turned off in ``.htaccess`` or ``php.ini``, or PHP 
+**Output Buffering** must be turned off in ``.htaccess`` or ``.user.ini`` or ``php.ini``, or PHP 
 will return memory-related errors:
 
 * ``output_buffering = 0``
