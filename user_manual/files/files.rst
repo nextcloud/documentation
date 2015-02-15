@@ -352,7 +352,13 @@ Known Problems
   a value of **4294967295**, and reboot Windows or restart the **WebClient**
   service.
 
+**Problem**
+  Accessing your files from Microsoft Office via WebDAV fails.
 
+**Solution**
+  Known problems and their solutions are documented in the KB2123563_ article.
+
+.. _KB2123563: https://support.microsoft.com/kb/2123563
 .. _in your file manager: http://en.wikipedia.org/wiki/Webdav#WebDAV_client_applications
 .. _ownCloud sync clients: http://doc.owncloud.org/desktop/1.7/
 .. _Mount ownCloud to a local folder without sync: http://owncloud.org/use/webdav/
