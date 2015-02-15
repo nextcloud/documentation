@@ -349,7 +349,7 @@ Frequently Asked Questions
 .. _RST Cheat Sheet: http://github.com/ralsina/rst-cheatsheet/raw/master/rst-cheatsheet.pdf
 .. _reStructuredText Primer: http://sphinx-doc.org/rest.html
 .. _reStructuredText User Documentation: http://docutils.sourceforge.net/rst.html
-.. _own manual: https://github.com/owncloud/mirall/tree/master/doc
+.. _own manual: https://github.com/owncloud/client/tree/master/doc
 .. _Inkscape: http://www.inkscape.org
 .. _set up vim to spot unwanted spaces: http://vim.wikia.com/wiki/Highlight_unwanted_spaces
 .. _ownCloud mailinglist: mailto:owncloud@kde.org

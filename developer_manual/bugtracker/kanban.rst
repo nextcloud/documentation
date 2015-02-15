@@ -11,7 +11,7 @@ Kanban Board = github issues + huboard
 --------------------------------------
 
 We are using http://huboard.com to visualize ownCloud github issues as a `kanban
-board`_ (see: `core`_, `apps`_, `mirall`_):
+board`_ (see: `core`_, `apps`_, `client`_):
 
 .. figure:: ../images/kanbanexample.png
    :scale: 70
@@ -274,7 +274,7 @@ Release.
 .. _mailing list: mailto:owncloud@kde.org
 .. _core: http://huboard.com/owncloud/core/board/#
 .. _apps: http://huboard.com/owncloud/apps/board/#
-.. _mirall: http://huboard.com/owncloud/mirall/board/#
+.. _client: http://huboard.com/owncloud/client/board/#
 .. _Gherkin: https://github.com/cucumber/cucumber/wiki/Gherkin
 .. _existing ones: https://ci.tmit.eu/job/acceptance-test/cucumber-html-reports/?
 .. _“Given … when … then …“: https://github.com/cucumber/cucumber/wiki/Given-When-Then
