@@ -74,18 +74,25 @@ Please have a look at the documentation of your webservers module for more infos
 .. note:: If you want to enable SPDY for Apache please note the `Known Issues <https://code.google.com/p/mod-spdy/wiki/KnownIssues>`_
    of this module to avoid problems after enabling it.
 
-`Serving static files via web server <serving_static_files_configuration.rst>`_
-------------------------------------
+Serving static files via web server
+-----------------------------------
 
-`Using cron to perform background jobs <background_jobs_configuration.rst#cron>`_
---------------------------------------
+See the section :doc:`serving_static_files_configuration` for a description and the benefits.
 
-`Using MySQL instead of SQLite <database_configuration.rst#configuring-a-mysql-or-mariadb-database>`_
-------------------------------
+Using cron to perform background jobs
+-------------------------------------
+
+See the section :doc:`background_jobs_configuration` for a description and the benefits.
+
+Using MySQL instead of SQLite
+-----------------------------
 
 MySQL or MariaDB should be preferred because of the `performance limitations of SQLite with highly concurrent applications <http://www.sqlite.org/whentouse.html>`_, like ownCloud.
 
 On large instances you could consider `running MySQLTuner <https://github.com/major/MySQLTuner-perl/>`_ to optimize the database.
+
+See the section :doc:`database_configuration` how to configure ownCloud for MySQL or MariaDB. If your installation is already running on
+SQLite then it is possible to convert to MySQL or MariaDB using the steps provided in :doc:`../maintenance/convert_db`.
 
 -----------------------------------
 
