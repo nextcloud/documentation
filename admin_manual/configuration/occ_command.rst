@@ -12,9 +12,17 @@ interface. You can perform many common server operations with ``occ``::
 * Query and change LDAP settings
 
 ``occ`` is in the :file:`owncloud/` directory; for example 
-:file:`/var/www/owncloud` on Ubuntu Linux. ``occ`` is a PHP script. The 
-preferred way to run it is as your HTTP user. Running it with no options lists 
-all commands and options, like this example on Ubuntu:: 
+:file:`/var/www/owncloud` on Ubuntu Linux. ``occ`` is a PHP script. You must run 
+it as your HTTP user to ensure that the correct permissions are maintained on 
+your ownCloud files and directories. 
+
+.. note:: The HTTP user is different on the various Linux distributions. See 
+   the **Setting Strong Directory Permissions** section of 
+   :doc:`../installation/installation_wizard` to learn how to find your HTTP 
+   user
+
+Running it with no options lists all commands and options, like this example on 
+Ubuntu::
 
  $ sudo -u www-data php occ
 
