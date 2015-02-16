@@ -28,10 +28,6 @@ Ubuntu::
 
 This is the same as ``sudo -u www-data php occ list``.
 
-.. note:: See the **Setting Strong Directory Permissions** section of 
-   :doc:`../installation/installation_wizard` to learn how to find your HTTP 
-   user
-
 Run it with the ``-h`` option for syntax help::
 
  $ sudo -u www-data php occ -h
