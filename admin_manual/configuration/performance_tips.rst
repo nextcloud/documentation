@@ -94,7 +94,13 @@ On large instances you could consider `running MySQLTuner <https://github.com/ma
 See the section :doc:`database_configuration` how to configure ownCloud for MySQL or MariaDB. If your installation is already running on
 SQLite then it is possible to convert to MySQL or MariaDB using the steps provided in :doc:`../maintenance/convert_db`.
 
------------------------------------
+Improve slow performance with MySQL on Windows
+----------------------------------------------
+
+On Windows hosts running MySQL on the same system changing the parameter ``dbhost`` in your ``config/config.php``
+from ``localhost`` to ``127.0.0.1`` could improve the page loading time.
+
+See also `this forum thread <http://forum.owncloud.org/viewtopic.php?f=17&t=7559>`_.
 
 Nginx: caching ownCloud gallery thumbnails with fastcgi_cache_purge
 -------------------------------------------------------------------
