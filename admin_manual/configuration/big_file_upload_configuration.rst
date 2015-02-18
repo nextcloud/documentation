@@ -38,6 +38,28 @@ increase the timeout values, which are in seconds::
  php_value max_input_time 3600
  php_value max_execution_time 3600
 
+There are also several other configuration option in your webserver config which
+could prevent the upload of larger files. Please see the manual of your webserver
+how to configure those values correctly:
+
+Apache
+~~~~~~
+`LimitRequestBody <https://httpd.apache.org/docs/current/en/mod/core.html#limitrequestbody>`_
+`SSLRenegBufferSize <https://httpd.apache.org/docs/current/mod/mod_ssl.html#sslrenegbuffersize>`_
+
+Apache with mod_fcgid
+~~~~~~~~~~~~~~~~~~~~~
+`FcgidMaxRequestLen <https://httpd.apache.org/mod_fcgid/mod/mod_fcgid.html#fcgidmaxrequestlen>`_
+
+NginX
+~~~~~
+`client_max_body_size <http://nginx.org/en/docs/http/ngx_http_core_module.html#client_max_body_size>`_
+
+IIS
+~~~
+`maxAllowedContentLength <http://www.iis.net/configreference/system.webserver/security/requestfiltering/requestlimits#005>`_
+
+
 Configuring PHP
 ---------------
 
