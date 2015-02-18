@@ -2,10 +2,9 @@
 ownCloud Videos
 ===============
 
-Please visit our `YouTube channel
-<https://www.youtube.com/user/ownCloudofficial/>`_
-for howtos, demos, news, and Webinars for both the 
-Community and Enterprise versions of ownCloud.
+Please visit our `YouTube channel 
+<https://www.youtube.com/user/ownCloudofficial/>`_ for howtos, demos, news, and 
+Webinars for both the Server and Enterprise versions of ownCloud.
 
 Server to Server Sharing on ownCloud 7
 --------------------------------------
@@ -13,8 +12,8 @@ Server to Server Sharing on ownCloud 7
 `Build a Cloud of ownCloud Servers with Server to Server Sharing
 <https://www.youtube.com/watch?v=h09ppkkYDNk>`_
 
-.. .. figure:: images/build-a-cloud-of-servers-320.png
-..   :target: https://www.youtube.com/watch?v=h09ppkkYDNk
+..  figure:: build-a-cloud-of-servers-320.png
+..  :target: https://www.youtube.com/watch?v=h09ppkkYDNk
 
 Create your own cloud of ownCloud servers with server-to-server sharing. 
 Link specific shares to other ownCloud servers and have two-way synchronization.
@@ -25,7 +24,7 @@ Introducing ownCloud 7 Enterprise Edition
 `ownCloud 7 Enterprise Edition Enterprise File Sync and Share Software
 <https://www.youtube.com/watch?v=SBn_8uVibLc>`_
 
-.. figure:: images/oc-video-2.png
+.. figure:: oc-video-2.png
    :target: https://www.youtube.com/watch?v=SBn_8uVibLc
 
 ownCloud 7 Enterprise Edition introduces Universal File Access, which provides 
@@ -39,7 +38,7 @@ ownCloud for Enterprise File Sync and Share
 `ownCloud for Enterprise File Sync and Share
 <https://www.youtube.com/watch?v=2HTQcf1zccU>`_
 
-.. figure:: images/oc-video-1.png
+.. figure:: oc-video-1.png
    :target: https://www.youtube.com/watch?v=2HTQcf1zccU 
 
 ownCloud is an enterprise-grade file sync and share solution that is hosted in your data 

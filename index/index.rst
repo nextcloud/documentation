@@ -2,6 +2,14 @@
 Documentation Overview
 ======================
 
+---------------
+ownCloud Videos
+---------------
+
+`Howtos, demos, news, and Webinars 
+<http://doc.owncloud.org/server/8.0/admin_manual/videos.html>`_ for both the 
+Server and Enterprise versions of ownCloud.
+
 --------------------
 ownCloud Server 8.0
 --------------------
@@ -30,10 +38,24 @@ This documents the *previous* ownCloud release, suitable for production use.
 ownCloud Server 6.0
 -------------------
 
-This documents the *deprecated* ownCloud release.
+This documents the *older* ownCloud release. ownCloud 6 receives security 
+fixes, and users are encouraged to upgrade to the latest production release.
 
 * `User Manual <http://doc.owncloud.org/server/6.0/user_manual/>`_ (`Download PDF <http://doc.owncloud.org/server/6.0/ownCloudUserManual.pdf>`_)
-* `Administrator Manual <http://doc.owncloud.org/server/6.0/admin_manual/>`_ (`Download PDF <http://doc.owncloud.org/server/6.0/ownCloudAdminManual.pdf>`_)
+* `Administrator Manual <http://doc.owncloud.org/server/6.0/admin_manual/>`_ 
+(`Download PDF <http://doc.owncloud.org/server/6.0/ownCloudAdminManual.pdf>`_)
+
+-------------------
+ownCloud Server 5.0
+-------------------
+
+This documents the *deprecated* ownCloud release. Users are encouraged to 
+upgrade to the latest production release.
+
+* `User Manual <http://doc.owncloud.org/server/5.0/user_manual/>`_ (`Download 
+PDF <http://doc.owncloud.org/server/6.0/ownCloudUserManual.pdf>`_)
+* `Administrator Manual <http://doc.owncloud.org/server/5.0/admin_manual/>`_ 
+(`Download PDF <http://doc.owncloud.org/server/5.0/ownCloudAdminManual.pdf>`_)
 
 ---------------------------
 ownCloud Desktop Client 1.8

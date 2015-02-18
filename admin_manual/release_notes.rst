@@ -92,9 +92,9 @@ on your ownCloud server.
 
 .. https://github.com/owncloud/core/issues/10657
 
-=================
-Enterprise 8 Only
-=================
+
+**-- Enterprise 8 Only --**
+---------------------------
 
 Direct Uploads to SWIFT do not Appear in ownCloud
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -121,10 +121,8 @@ App Store is Back
 The ownCloud App Store has been re-enabled in oC 8. Note that third-party apps 
 are not supported.
 
-========================
-ownCloud 7 Release Notes
-========================
-
+**-- ownCloud 7 Release Notes --**
+----------------------------------
 
 LDAP Search Performance Improved
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -220,9 +218,8 @@ Setting a user's storage quota should be the equivalent of read-only, however,
 users can 
 still create empty files.
 
-=================
-Enterprise 7 Only
-=================
+**-- Enterprise 7 Only --**
+---------------------------
 
 Windows Network Drive
 ^^^^^^^^^^^^^^^^^^^^^

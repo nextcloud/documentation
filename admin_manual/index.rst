@@ -25,9 +25,9 @@ user interface or how to install clients on the server, refer to the following:
 ownCloud Videos
 ---------------
 
-See :doc:`videos`
+See :doc:`videos/index`
 for howtos, demos, news, and Webinars for both the 
-Community and Enterprise versions of ownCloud.
+Server and Enterprise versions of ownCloud.
 
 Document Structure
 ------------------
@@ -58,8 +58,7 @@ different scenarios.  It contains the following topics:
 * :doc:`installation/selinux_configuration`
 
 .. note:: If you just want to try out ownCloud in a virtual machine, without any 
-   configuration, refer to :doc:`installation/appliance_installation`.  For your 
-   convenience, this topic contains ready-to-use images.
+   configuration, refer to :doc:`installation/appliance_installation`.
 
 Configuration
 =============
