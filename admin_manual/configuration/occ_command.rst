@@ -221,6 +221,11 @@ This example searches for usernames that includes "rob"::
 
  $ sudo -u www-data php occ ldap:search rob
  
+Check if an LDAP user exists. This works only if the ownCloud server is 
+connected to an LDAP server::
+
+ $ sudo -u www-data php occ ldap:check-user robert
+ 
 You can see your whole LDAP configuration, or the configuration for a single 
 configID::
 
@@ -237,7 +242,7 @@ example that sets search attributes::
 the server::
 
  $ sudo -u www-data php occ ldap:test-config ""
- The configuration is valid and the connection could be established!
+ The configuration is valid and the connection could be established! 
  
 File Scanning
 -------------
