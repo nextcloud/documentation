@@ -29,14 +29,6 @@ Supported Platforms
 * Webserver: Apache2 (Linux and Windows), IIS (Windows)
 * Web browser: IE8+, Firefox 14+, Chrome 18+, Safari 5+
 
-No Public Links With Required Passwords on Mobile Apps
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The iOS and Android apps cannot create public share links when passwords are 
-required (server Admin page, Sharing section). Instead, when users try to 
-create a public share link they will see a "You do not have permission to share 
-this file" message.
-
 PHP 5.3 Support Dropped
 ^^^^^^^^^^^^^^^^^^^^^^^
 
