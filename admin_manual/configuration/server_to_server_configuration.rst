@@ -39,6 +39,13 @@ Un-check the ``Share Link`` checkbox to disable the share.
 See "Using Server-to-Server Sharing" in the Users Manual to learn how to 
 connect to a remote public share.
 
+Using self-signed certificates
+------------------------------
+
+When using self-signed certificates for server-to-server sharing the certificate
+needs to be imported in the personal settings of the user. Please refer to `this <http://ownclouden.blogspot.de/2014/11/owncloud-https-external-mount.html>`_
+blogpost for more informations.
+
 Notes
 --------
 
