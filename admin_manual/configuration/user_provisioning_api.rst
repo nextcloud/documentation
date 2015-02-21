@@ -37,7 +37,7 @@ Status codes:
 Example
 -------
 
-* POST ``http://admin:secret@example.com/ocs/v1.php/cloud/users -d user="Frank" -d 
+* POST ``http://admin:secret@example.com/ocs/v1.php/cloud/users -d userid="Frank" -d 
   password="frankspassword"``
 * Creates the user ``Frank`` with password ``frankspassword``
 
@@ -144,7 +144,7 @@ Edits attributes related to a user. Users are able to edit email, displayname an
 **Syntax: ocs/v1.php/cloud/users/{userid}**
 
 * HTTP method: PUT
-* PUT argument: key, the field to edit (email, quota, displayname, password)
+* PUT argument: key, the field to edit (email, quota, display, password)
 * PUT argument: value, the new value for the field
 
 Status codes:
