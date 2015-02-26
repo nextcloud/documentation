@@ -51,6 +51,13 @@ external storage services, and check the services you want to allow.
 After creating your external storage mounts, you can share them and control 
 permissions just like any other ownCloud share.
 
+Using self-signed certificates
+------------------------------
+
+When using self-signed certificates for external storage mounts the certificate
+needs to be imported in the personal settings of the user. Please refer to `this <http://ownclouden.blogspot.de/2014/11/owncloud-https-external-mount.html>`_
+blogpost for more informations.
+
 Local Storage
 -------------
 

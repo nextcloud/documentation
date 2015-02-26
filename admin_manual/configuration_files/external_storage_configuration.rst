@@ -39,6 +39,13 @@ values need to be concatenated and written in a row without these modifications!
 It is recommended to use the :doc:`Web-GUI <external_storage_configuration_gui>` in the
 administrator panel to add, remove or modify mount options to prevent any problems!
 
+Using self-signed certificates
+------------------------------
+
+When using self-signed certificates for external storage mounts the certificate
+needs to be imported in the personal settings of the user. Please refer to `this <http://ownclouden.blogspot.de/2014/11/owncloud-https-external-mount.html>`_
+blogpost for more informations.
+
 Example
 -------
 
