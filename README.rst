@@ -133,7 +133,7 @@ Prerequisites
 ^^^^^^^^^^^^
 
 1. Install Python 2.x
-2. Install odt2shpinx (``easy_install odt2sphinx``)
+2. Install odt2sphinx (``easy_install odt2sphinx``)
 3. Install GCC/clang (`Xcode command line tools`_ required on Mac OS)
 
 Process
