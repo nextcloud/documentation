@@ -1,3 +1,4 @@
+===================================
 What's New for Admins in ownCloud 8
 ===================================
 
@@ -48,6 +49,9 @@ install ownCloud 8 from the existing ``owncloud-enterprise`` repository. The
 the community edition will upgrade via package manager by adding the 
 ``owncloud-enterprise repository``, and installing ownCloud Enterprise Edition 
 apps on top of their ``owncloud-server``.
+
+Visit `owncloud.com <https://owncloud.com/>`_ for more information on the 
+Enterprise Edition.
 
 No More PHP 5.3
 ---------------

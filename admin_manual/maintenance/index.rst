@@ -11,5 +11,4 @@ Maintenance
    upgrade
    restore
    migrating
-   convert_db
 

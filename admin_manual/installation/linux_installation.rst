@@ -2,6 +2,11 @@
 Preferred Linux Installation Method
 ===================================
 
+Recommend Setup and Supported Platforms
+---------------------------------------
+
+See the :doc:`../release_notes` for the recommended ownCloud setup and supported platforms.
+
 Supported Distribution Packages
 -------------------------------
 
@@ -23,18 +28,16 @@ ownCloud packages, or you may prefer to install from source code (see
 Additional Installation Guides and Notes
 ----------------------------------------
 
-See :doc:`selinux_configuration` for a suggested configuration for SELinux-enabled distributions such as Fedora and CentOS.
+See :doc:`selinux_configuration` for a suggested configuration for 
+SELinux-enabled distributions such as Fedora and CentOS.
 
-**Archlinux:** The are two packages for ownCloud: `stable version`_ in the official community repository and `development version`_ in AUR.
+**Archlinux:** The current `stable version`_ is in the 
+official community repository, and more packages are in 
+in `the Arch User Repository`_.
 
 .. _stable version: https://www.archlinux.org/packages/community/any/owncloud
-.. _development version: http://aur.archlinux.org/packages.php?ID=38767
+.. _the Arch User Repository: https://aur.archlinux.org/packages/?O=0&K=owncloud
 
+**Mageia:** The `Mageia Wiki`_ has a good page on installing ownCloud from the Mageia software repository.
 
-**PCLinuxOS:** Follow the Tutorial `ownCloud, installation and setup`_ on the PCLinuxOS web site.
-
-.. _ownCloud, installation and setup: http://pclinuxoshelp.com/index.php/Owncloud,_installation_and_setup
-
-
-**Debian/Ubuntu:** The package is installing an additional Apache config file to `/etc/apache2/conf.d/owncloud.conf`
-which contains an `Alias` to the owncloud installation directory as well as some more needed configuration options.
+.. _Mageia Wiki: https://wiki.mageia.org/en/OwnCloud

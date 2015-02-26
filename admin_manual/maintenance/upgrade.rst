@@ -179,7 +179,8 @@ To start the Windows IIS web server, you can use either the user interface
     
      $ sudo -u www-data php occ upgrade
      
-    Please see :doc:`../configuration/occ_command` to learn more about ``occ``.
+    Please see :doc:`../configuration_server/occ_command` to learn more about 
+    ``occ``.
     
 13. The upgrade operation takes a few minutes, depending on the size of your 
     installation. When it is finished you will see a success message, or an 

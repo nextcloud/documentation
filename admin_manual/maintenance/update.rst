@@ -1,3 +1,4 @@
+======================================
 Updating ownCloud with the Updater App
 ======================================
 
@@ -82,7 +83,7 @@ steps:
 
    $ sudo -u www-data php occ upgrade
    
-   See :doc:`../configuration/occ_command` to learn more about using the 
+   See :doc:`../configuration_server/occ_command` to learn more about using the 
    ``occ`` command. 
 
 8. It works for a few minutes, and when it is finished displays a success 

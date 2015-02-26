@@ -1,3 +1,4 @@
+===================
 Backing up ownCloud
 ===================
 
@@ -18,10 +19,11 @@ your ownCloud environment. You could use this command::
 Backup Database
 ---------------
 
-MySQL
-^^^^^
+MySQL/MariaDB
+^^^^^^^^^^^^^
 
-MySQL is the recommended database engine. To backup MySQL::
+MySQL or MariaDB, which is a drop-in MySQL replacement, is the recommended 
+database engine. To backup MySQL/MariaDB::
 
     mysqldump --lock-tables -h [server] -u [username] -p[password] [db_name] > owncloud-sqlbkp_`date +"%Y%m%d"`.bak
 

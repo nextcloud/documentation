@@ -1,10 +1,12 @@
 Manual Installation on Linux
 ============================
 
-Installing ownCloud on Linux from the openSUSE Build Service packages is the preferred method (see :doc:`linux_installation`). These are maintained by ownCloud engineers, and you can use your package manager to keep your ownCloud server up-to-date.
+Installing ownCloud on Linux from the openSUSE Build Service packages is the preferred method (see :doc:`linux_installation`). 
+These are maintained by ownCloud engineers, and you can use your package manager to keep your ownCloud server up-to-date.
 
-If there are no packages for your Linux distribution, or you prefer installing from sources, you can setup ownCloud from scratch using a classic LAMP stack (Linux, Apache, MySQL/MariaDB, PHP). This document provides a complete walk-through for installing ownCloud on Ubuntu 
-14.04 LTS Server with Apache and MySQL.
+If there are no packages for your Linux distribution, or you prefer installing from sources, you can setup ownCloud from scratch 
+using a classic LAMP stack (Linux, Apache, MySQL/MariaDB, PHP). This document provides a complete walk-through for installing 
+ownCloud on Ubuntu 14.04 LTS Server with Apache and MySQL.
 
 Prerequisites
 -------------
@@ -12,8 +14,9 @@ Prerequisites
 .. note:: This tutorial assumes you have terminal access to the machine you want
           to install ownCloud on. Although this is not an absolute requirement,
           installation without it is likely to require contacting your
-          hoster (e.g. for installing required modules). Consult the `PHP manual 
-          <http://php.net/manual/en/extensions.php>`_ for information on modules. Your Linux distribution should have packages for all required modules.
+          hoster (e.g. for installing required modules). Consult the 
+          `PHP manual <http://php.net/manual/en/extensions.php>`_ for information on modules. 
+          Your Linux distribution should have packages for all required modules.
 
 To run ownCloud, your web server must have the following installed:
 
@@ -114,7 +117,7 @@ Apache and MariaDB, by issuing the following commands in a terminal::
 
 Now download the archive of the latest ownCloud version:
 
-* Go to the `ownCloud Installation Page <http://owncloud.org/install>`_.
+* Go to the `ownCloud Download Page <http://owncloud.org/install>`_.
 * Click the **Archive file for server owners** button.
 * Click **Download Unix**.
 * This downloads a file named owncloud-x.y.z.tar.bz2 (where
@@ -148,6 +151,81 @@ Now download the archive of the latest ownCloud version:
     
     cp -r owncloud /var/www/
     
+Apache Web Server Configuration
+-------------------------------
+
+On Debian, Ubuntu, and their derivatives, Apache installs with a useful configuration so all you have to do is create a 
+:file:`/etc/apache2/conf-available` file with these lines in it:
+
+.. code-block:: xml
+   
+   Alias /owncloud /var/www/owncloud
+   <Directory /var/www/owncloud/>
+    AllowOverride All
+   </Directory>
+
+Then create a symlink to  :file:`/etc/apache2/conf-enabled`::
+
+  ln -s /etc/apache2/conf-available/owncloud.conf /etc/apache2/conf-enabled/owncloud.conf
+  
+Additional Apache Configurations
+--------------------------------
+
+* For ownCloud to work correctly, we need the module ``mod_rewrite``. Enable it 
+  by running::
+
+    a2enmod rewrite
+
+* You should make sure that any built-in WebDAV module of your Web server is 
+  disabled (at least for the ownCloud directory), as it will interfere with 
+  ownCloud's built-in WebDAV support.
+
+  If you need the WebDAV support in the rest of your configuration, you can turn 
+  it off specifically for the ownCloud entry by adding the following line in 
+  the ``<Directory`` section for your ownCloud server::
+
+    Dav Off  
+
+* You must disable any server-configured authentication for ownCloud, as it 
+  uses Basic authentication internally for DAV services. If you have turned on 
+  authentication on a parent folder (via e.g. an ``AuthType Basic``
+  directive), you can turn off the authentication specifically for the ownCloud 
+  entry. Following the above example configuration file, add the following line 
+  in the ``<Directory`` section::
+
+    Satisfy Any
+
+* When using SSL, take special note on the ServerName. You should specify one in 
+  the  server configuration, as well as in the CommonName field of the 
+  certificate. If you want your ownCloud to be reachable via the internet, then 
+  set both of these to the domain you want to reach your ownCloud server.
+  
+* Now restart Apache::
+  
+     service apache2 restart
+     
+.. note:: You can use ownCloud over plain http, but we strongly encourage you to
+          use SSL/TLS to encrypt all of your server traffic, and to protect 
+          user's logins and data in transit.
+
+Enabling SSL
+------------
+
+An Apache installed under Ubuntu comes already set-up with a simple
+self-signed certificate. All you have to do is to enable the ssl module and
+the according site. Open a terminal and run::
+
+     a2enmod ssl
+     a2ensite default-ssl
+     service apache2 reload
+
+.. note:: Self-signed certificates have their drawbacks - especially when you
+          plan to make your ownCloud server publicly accessible. You might want
+          to consider getting a certificate signed by commercial signing
+          authority. Check with your domain name registrar or hosting service,
+          if you're using one, for good deals on commercial certificates. 
+    
+    
 Installation Wizard
 -------------------
 
@@ -175,7 +253,8 @@ Apache is the recommended Web server.
 Configuration notes to php.ini files
 ------------------------------------
 
-Keep in mind that changes to php.ini may have to be done on more than one ini file. This can be the case, as example, for the ``date.timezone`` setting.
+Keep in mind that changes to php.ini may have to be done on more than one ini file. This can be the case, as example, for the 
+``date.timezone`` setting.
 
 **php.ini - used by the webserver:**
 ::
@@ -191,184 +270,6 @@ Keep in mind that changes to php.ini may have to be done on more than one ini fi
   /etc/php5/cli/php.ini
 
 
-Apache Web Server Configuration
--------------------------------
-
-.. note:: You can use ownCloud over plain http, but we strongly encourage you to
-          use SSL/TLS to encrypt all of your server traffic, and to protect 
-          user's logins and data in transit.
-
-Enabling SSL
-------------
-
-An Apache installed under Ubuntu comes already set-up with a simple
-self-signed certificate. All you have to do is to enable the ssl module and
-the according site. Open a terminal and run::
-
-     a2enmod ssl
-     a2ensite default-ssl
-     service apache2 reload
-
-If you are using a different distribution, check your documentation on how to
-enable SSL.
-
-.. note:: Self-signed certificates have their drawbacks - especially when you
-          plan to make your ownCloud server publicly accessible. You might want
-          to consider getting a certificate signed by commercial signing
-          authority. Check with your domain name registrar or hosting service,
-          if you're using one, for good deals on commercial certificates.
-
-Configuring ownCloud
---------------------
-
-Since there was a change in the way versions 2.2 and 2.4 are configured,
-you'll have to find out which Apache version you are using.
-
-Usually you can do this by running one of the following commands::
-
-     apachectl -v
-     apache2 -v
-
-Example output::
-
-    Server version: Apache/2.4.7 (Ubuntu)
-    Server built:   Jul 22 2014 14:36:38
-
-Example config for Apache 2.2:
-
-.. code-block:: xml
-
-    <Directory /path/to/owncloud>
-        Options Indexes FollowSymLinks
-        AllowOverride All
-        Order allow,deny
-        allow from all
-    </Directory>
-
-
-Example config for Apache 2.4:
-
-.. code-block:: xml
-
-    <Directory /path/to/owncloud>
-        Options Indexes FollowSymLinks
-        AllowOverride All
-        Require all granted
-    </Directory>
-
-* This configuration entry needs to go into the configuration file of the 
-  "site" you want to use.
-* On a Ubuntu system, this typically is the "default-ssl" site (to be found in
-  the :file:`/etc/apache2/sites-available/default-ssl.conf`).
-* Add the entry shown above immediately before the line containing::
-
-	</VirtualHost>
-
-  (this should be one of the last lines in the file).
-
-* A minimal site configuration file on Ubuntu 14.04 might look like this:
-
-.. code-block:: xml
-
-	<IfModule mod_ssl.c>
-	<VirtualHost _default_:443>
-		ServerName YourServerName
-		ServerAdmin webmaster@localhost
-		DocumentRoot /var/www
-		<Directory />
-			Options FollowSymLinks
-			AllowOverride None
-		</Directory>
-		<Directory /var/www/>
-			Options Indexes FollowSymLinks
-			AllowOverride None
-			Order allow,deny
-			allow from all
-		</Directory>
-		ErrorLog ${APACHE_LOG_DIR}/error.log
-		LogLevel warn
-		CustomLog ${APACHE_LOG_DIR}/ssl_access.log combined
-		SSLEngine on
-		SSLCertificateFile    /etc/ssl/certs/ssl-cert-snakeoil.pem
-		SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
-		<FilesMatch "\.(cgi|shtml|phtml|php)$">
-			SSLOptions +StdEnvVars
-		</FilesMatch>
-		<Directory /usr/lib/cgi-bin>
-			SSLOptions +StdEnvVars
-		</Directory>
-		BrowserMatch "MSIE [2-6]" \
-			nokeepalive ssl-unclean-shutdown \
-			downgrade-1.0 force-response-1.0
-		BrowserMatch "MSIE [17-9]" ssl-unclean-shutdown
-		<Directory /var/www/owncloud>
-			Options Indexes FollowSymLinks
-			AllowOverride All
-			Allow from all
-			Require all granted
-			Dav Off
-			Satisfy Any        
-		</Directory>
-	</VirtualHost>
-	</IfModule>
-
-* For ownCloud to work correctly, we need the module ``mod_rewrite``. Enable it 
-  by running::
-
-    a2enmod rewrite
-
-* In distributions that do not come with ``a2enmod``, the module needs to be
-  enabled manually by editing the Apache config files, usually 
-  :file:`/etc/httpd/httpd.conf`. Consult the Apache documentation or your Linux
-  distribution's documentation.
-
-* In order for the maximum upload size to be configurable, the
-  :file:`.htaccess` in the ownCloud folder needs to be made writable by the
-  server (this should already be done, see section ``Set the Directory 
-  Permissions``). If PHP-FPM is used, it can't read ``.htaccess`` PHP settings unless a PECL extension is installed. If PHP-FPM is used without the PECL extension installed, settings and permissions must be set in the ``owncloud/.user.ini`` file.
-
-* You should make sure that any built-in WebDAV module of your web server is 
-  disabled (at least for the ownCloud directory), as it will interfere with 
-  ownCloud's built-in WebDAV support.
-
-  If you need the WebDAV support in the rest of your configuration, you can turn 
-  it off specifically for the ownCloud entry by adding the following line in 
-  the ``<Directory`` section for your ownCloud server. Add the following line 
-  directly after the ``allow from all`` / ``Require all granted`` line::
-
-    Dav Off
-
-* You must disable any server-configured authentication for ownCloud, as it 
-  uses Basic authentication internally for DAV services. If you have turned on 
-  authentication on a parent folder (via e.g. an ``AuthType Basic``
-  directive), you can turn off the authentication specifically for the ownCloud 
-  entry. Following the above example configuration file, add the following line 
-  directly after the ``allow from all`` / ``Require all granted`` line in the 
-  ``<Directory`` section::
-
-    Satisfy Any
-
-* When using ssl, take special note on the ServerName. You should specify one in 
-  the  server configuration, as well as in the CommonName field of the 
-  certificate. If you want your ownCloud to be reachable via the internet, then 
-  set both of these to the domain you want to reach your ownCloud server.
-
-.. note:: By default, the certificates' CommonName will be set to the host name 
-   at the time the ssl-cert package was installed.
-
-* Finally, restart Apache.
-
-  * On Ubuntu systems run::
-  
-     service apache2 restart
-
-  * On systemd systems (Fedora, Arch Linux, OpenSUSE), run::
-
-     systemctl restart httpd.service
-     
-
-  
-
 Other Web Servers
 -----------------
      
@@ -379,10 +280,6 @@ See :doc:`windows_installation` for further instructions.
 **Nginx Configuration**
 
 See :doc:`nginx_configuration`
-
-**Lighttpd Configuration**
-
-See :doc:`lighttpd_configuration`
 
 **Yaws Configuration**
 
