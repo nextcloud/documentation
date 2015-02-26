@@ -41,7 +41,7 @@ source_suffix = '.rst'
 master_doc = 'contents'
 
 # General information about the project.
-project = u'ownCloud Administrators Manual'
+project = u'ownCloud Server Administration Manual'
 copyright = u'2012-2015, The ownCloud developers'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -65,7 +65,7 @@ release = '8.0'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build']
+exclude_patterns = ['_build','_shared_assets','scripts/*']
 
 # The reST default role (used for this markup: `text`) to use for all documents.
 #default_role = None
@@ -109,7 +109,7 @@ html_theme_options = {
 #html_title = None
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
-html_short_title = "Admin Manual"
+html_short_title = "Server Admin Manual"
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
@@ -167,7 +167,7 @@ html_show_sphinx = False
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'ownCloudAdminManual'
+htmlhelp_basename = 'ownCloudServerAdminManual'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -185,10 +185,7 @@ latex_elements = {
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
-latex_documents = [
-  ('contents', 'ownCloudAdminManual.tex', u'ownCloud Administrators Manual',
-   u'The ownCloud developers', 'manual'),
-]
+latex_documents = [('contents', 'ownCloudServerAdminManual.tex', u'ownCloud Server Administration Manual', u'The ownCloud developers', 'manual'),]
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
@@ -212,17 +209,13 @@ latex_logo = '../_shared_assets/static/logo-blue.pdf'
 
 # -- Options for pdf page output -----------------------------------------------
 
-pdf_documents = [('contents', u'owncloudAdminManual', u'ownCloud Admin Manual',
-                  u'The ownCloud developers'),]
+pdf_documents = [('contents', u'owncloudServerAdminManual', u'ownCloud Server AdministrationManual', u'The ownCloud developers'),]
 
 # -- Options for manual page output --------------------------------------------
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [
-    ('contents', 'owncloudadminmanual', u'ownCloud Admin Manual',
-     [u'The ownCloud developers'], 1)
-]
+man_pages = [ ('contents', 'owncloudserveradminmanual', u'ownCloud Server Administration Manual', [u'The ownCloud developers'], 1) ]
 
 # If true, show URL addresses after external links.
 #man_show_urls = False
@@ -233,11 +226,7 @@ man_pages = [
 # Grouping the document tree into Texinfo files. List of tuples
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
-texinfo_documents = [
-  ('contents', 'ownCloudAdminManual', u'ownCloud Admin Manual',
-   u'The ownCloud developers', 'ownCloud', 'The ownCloud Admin Manual.',
-   'Miscellaneous'),
-]
+texinfo_documents = [ ('contents', 'ownCloudServerAdminManual', u'ownCloud Server Administration Manual', u'The ownCloud developers', 'ownCloud', 'The ownCloud Server Administration Manual.', 'Miscellaneous'), ]
 
 # Documents to append as an appendix to all manuals.
 #texinfo_appendices = []
@@ -252,7 +241,7 @@ texinfo_documents = [
 # -- Options for Epub output ---------------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'ownCloud Admin Manual'
+epub_title = u'ownCloud Server Administration Manual'
 epub_author = u'The ownCloud developers'
 epub_publisher = u'The ownCloud developers'
 epub_copyright = u'2012-2015, The ownCloud developers'
