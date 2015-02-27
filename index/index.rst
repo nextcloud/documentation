@@ -7,7 +7,7 @@ ownCloud Videos
 ---------------
 
 `Howtos, demos, news, and Webinars 
-<http://doc.owncloud.org/server/8.0/admin_manual/videos.html>`_ for both the 
+<http://doc.owncloud.org/server/8.0/admin_manual/videos/index.html>`_ for both the 
 Server and Enterprise versions of ownCloud.
 
 --------------------

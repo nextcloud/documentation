@@ -1,16 +1,17 @@
+======================
 Managing Deleted Files
 ======================
 
 ownCloud maintains a copy of deleted files in case you need them again. To
-ensure that individual users do not run out of memory, the Files app manages
-the total memory size of deleted files for each user. When it comes to managing
-deleted files, keep the following in mind:
+ensure that individual users do not run out of storage space, the Files app manages
+the amount of space allocated for deleted files for each user. When it comes to managing
+quotas and calculating how much storage you need, keep the following in mind:
 
-* The total memory allocation for deleted files can never exceed more that 50%
+* The total storage allocation for deleted files can never exceed more that 50%
   of the currently available free space for each user.
 
 * Once the 50% maximum is reached for deleted files, ownCloud begins to delete files,
-  starting with the oldest versions, until it reaches the memory usage limit again.
+  starting with the oldest versions, until it reaches the storage limit again.
 
 You can view all of the deleted files by clicking on the :guilabel:`Deleted
 files` button in Files app on the web interface.
@@ -60,6 +61,6 @@ Each time a file is added to the deleted files directory, ownCloud checks the
 age of the deleted files. By default, deleted files remain in the deleted files
 directory for 180 days.
 
-The administrator can adjust the age-out value in the config.php by setting the
+The administrator can adjust the age-out value in the ``config.php`` file by setting the
 ``trashbin_retention_obligation`` value. Files with ages that exceed this value
 are deleted permanently.

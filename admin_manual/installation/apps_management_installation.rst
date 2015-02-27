@@ -1,3 +1,4 @@
+=============================
 Installing and Managing Apps
 =============================
 
@@ -6,29 +7,22 @@ After installing ownCloud, you may provide added functionality by installing app
 Viewing Enabled Apps
 --------------------
 
-During the ownCloud installation, some apps are enabled by default. To see which apps are enabled:
+During the ownCloud installation, some apps are enabled by default. To see which apps are 
+enabled go to your Apps page.
 
-1. Click ``Apps`` in the Apps Selection Menu.
+.. image:: ../images/oc_admin_app_page.png
 
-   The apps available for use with ownCloud appear in the Apps Information Field.
-
-   .. figure:: ../images/oc_admin_app_page.png
-
-     **Administrator application page**
-
-2. Scroll down the Apps Information Field to view the enabled apps.
-
-   Apps that are enabled appear at he top of the list of apps.
+You will see which apps are enabled, not enabled, and recommended. You'll also see 
+additional filters, such as Multimedia, PIM, and Productivity for finding apps quickly. 
+The ``More apps`` link takes you to the ownCloud App Store, and the ``Add your app`` link 
+takes you to the ownCloud Developer Manual.
 
 Managing Apps
 -------------
 
-In the Apps page, you can enable or disable applications. If an app is already enabled, it 
-appears highlighted in the list.  In addition, enabled apps appear at the top of the app 
-list in the Apps Information Field.  In contrast, disabled apps appear below any enabled 
-apps in the list and are not highlighted. Some apps have some configurable options on the 
-Apps page, but mainly they are enabled or disabled here, and they are configured on your 
-ownCloud Admin page.
+In the Apps page, you can enable or disable applications.Some apps have some configurable 
+options on the Apps page, but mainly they are enabled or disabled here, and are 
+configured on your ownCloud Admin page.
 
 Adding Third Party Apps
 -----------------------
@@ -72,9 +66,9 @@ enabled it checks if third-party apps are using the private API, rather than the
 API. If they are then they will not be installed. 
 
 .. note:: If you would like to create or add your own ownCloud app, please use the 
-   *Add your App...* button on the same page. This button redirects you to our 
-   `Developer Center <http://owncloud.org/dev>`_ where you can find information about 
-   creating and adding your own apps.
+    *Add your App...* button on the same page. This button redirects you to the 
+    `App Development documentation <https://doc.owncloud.org/server/8.0/developer_manual/app/index.html>`_,
+    where you can find information about creating and adding your own apps.
 
 Setting App Parameters
 ----------------------
