@@ -13,8 +13,6 @@ Installation on Windows 7 and Windows Server 2008
           ownCloud is not supported on the Internet Server Application 
           Programming Interface (ISAPI). 
           
-          Microsoft SQL Server is not supported.
-          
           For these reasons, while ownCloud server will run on Windows, it is 
           not recommended at this time.
 

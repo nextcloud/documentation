@@ -51,7 +51,7 @@ the community edition will upgrade via package manager by adding the
 apps on top of their ``owncloud-server``.
 
 Visit `owncloud.com <https://owncloud.com/>`_ for more information on the 
-Enterprise Edition.
+Enterprise Subscription.
 
 No More PHP 5.3
 ---------------

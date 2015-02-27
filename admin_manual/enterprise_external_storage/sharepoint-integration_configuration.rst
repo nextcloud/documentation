@@ -88,6 +88,11 @@ ownCloud config file found in ``/owncloud/config/config.php``::
 Troubleshooting
 ---------------
 
+Turn on Sharepoint app logging by modifying the following line in 
+:file:`apps/sharepoint/lib/sharepoint.php` to ``TRUE``::
+
+ private static $enableLogs = TRUE;
+
 Global mount points can't be accessed: You have to fill out your SharePoint 
 credentials as User on the personal settings page, or in the popup menu. These 
 credentials are used to mount all global mount points.
@@ -96,5 +101,5 @@ Personal mount points can't be accessed: You have to fill your SharePoint
 credentials as User on the personal settings page in case your personal mount 
 point doesn't have its own credentials.
 
-A user can´t update the credentials: Verify that the correct credentials are 
+A user can't update the credentials: Verify that the correct credentials are 
 configured, and the correct type, either global or custom.
