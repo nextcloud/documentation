@@ -36,12 +36,12 @@ This documents the *latest* version of ownCloud Enterprise Subscription, suitabl
 * `User Manual <https://doc.owncloud.com/server/8.0EE/user_manual/>`_ 
 
 .. (`Download 
-..  PDF <https://doc.owncloud.org/server/8.0/ownCloudUserManual.pdf>`_)
+..  PDF <https://doc.owncloud.com/server/8.0EE/ownCloudUserManual.pdf>`_)
 
 * `Administrator Manual <https://doc.owncloud.com/server/8.0EE/admin_manual/>`_ 
 
 .. (`Download PDF 
-..  <https://doc.owncloud.org/server/8.0/ownCloudAdminManual.pdf>`_)
+..  <https://doc.owncloud.com/server/8.0EE/ownCloudAdminManual.pdf>`_)
  
 
 -------------------
@@ -98,7 +98,7 @@ fixes, and users are encouraged to upgrade to the latest production release.
 * `User Manual <https://doc.owncloud.com/server/6.0EE/user_manual/>`_ 
   
 ..  (`Download 
-..   PDF <https://doc.owncloud.org/server/6.0EE/ownCloudUserManual.pdf>`_) 
+..   PDF <https://doc.owncloud.com/server/6.0EE/ownCloudUserManual.pdf>`_) 
 
 * `Administrator Manual <https://doc.owncloud.com/server/6.0EE/admin_manual/>`_
 
@@ -126,9 +126,8 @@ This documents the *deprecated* ownCloud release. Users are encouraged to
 upgrade to the latest production release.
 
 * `User Manual <https://doc.owncloud.com/server/5.0EE/user_manual/>`_ 
-
-..  (`Download 
-..  PDF <https://doc.owncloud.org/server/5.0EE/ownCloudUserManual.pdf>`_) 
+  (`Download 
+  PDF <https://doc.owncloud.com/server/5.0EE/ownCloudUserManual.pdf>`_) 
 
 * `Administrator Manual <https://doc.owncloud.com/server/5.0EE/admin_manual/>`_ 
   (`Download PDF 
