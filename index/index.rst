@@ -2,13 +2,15 @@
 Documentation Overview
 ======================
 
----------------
-ownCloud Videos
----------------
+------------------
+ownCloud Resources
+------------------
 
-`Howtos, demos, news, and Webinars 
+* `Howtos, demos, news, and Webinars 
 <https://doc.owncloud.org/server/8.0/admin_manual/videos/index.html>`_ for both the 
 Server and Enterprise versions of ownCloud.
+* `ownCloud FAQ <https://owncloud.org/eight>`_ with answers around the ownCloud community, technology and more.
+* `Where to get help <https://owncloud.org/faq/#channels>`_ when the documentation is not enough.
 
 --------------------
 ownCloud Server 8.0
