@@ -31,18 +31,17 @@ This documents the *latest* version of ownCloud, suitable for production use.
 ownCloud Enterprise Subscription 8.0
 ------------------------------------
 
-This documents the *latest* version of ownCloud Enterprise Subscription, suitable for production use.
+This documents the *latest* version of ownCloud Enterprise Subscription, 
+suitable for production use.
 
-* `User Manual <https://doc.owncloud.com/server/8.0EE/user_manual/>`_ 
+* `User Manual <http://doc.owncloud.com/server/8.0EE/user_manual/com/>`_ 
+  (`Download PDF 
+  <https://doc.owncloud.com/server/8.0EE/ownCloudUserManual.pdf>`_)
 
-.. (`Download 
-..  PDF <https://doc.owncloud.com/server/8.0EE/ownCloudUserManual.pdf>`_)
-
-* `Administrator Manual <https://doc.owncloud.com/server/8.0EE/admin_manual/>`_ 
-
-.. (`Download PDF 
-..  <https://doc.owncloud.com/server/8.0EE/ownCloudAdminManual.pdf>`_)
- 
+* `Administrator Manual 
+  <https://doc.owncloud.com/server/8.0EE/admin_manual/com/>`_ 
+  (`Download PDF 
+  <https://doc.owncloud.com/server/8.0EE/ownCloudServerAdminManual.pdf>`_) 
 
 -------------------
 ownCloud Server 7.0
