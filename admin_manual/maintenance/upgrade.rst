@@ -14,7 +14,14 @@ Upgrading your ownCloud server means upgrading to the next major ownCloud
 release. Major releases are indicated by the first and second digits. So 6.0, 
 7.0 and 8.0 are major releases. You may use the Updater app for staying current 
 with new point releases (Server only), but not for upgrading to a major 
-release. 
+release.
+
+.. note:: Before upgrading to a new major release, always first review any 
+   third-party apps you have installed for compatibility with  
+   the new ownCloud release. Any apps that are not developed by ownCloud show a 
+   3rd party designation. Install unsupported apps at your own risk.Then, 
+   before the upgrade, they must all be disabled. After the upgrade is 
+   complete you may re-enable them.
 
 Preferred Upgrade Method
 ------------------------
