@@ -6,12 +6,14 @@ Introduction
 ------------
 
 Welcome to the ownCloud Server Administration Guide. This guide describes 
-administration tasks for ownCloud, the flexible open source file 
-synchronization 
-and sharing solution. ownCloud includes the ownCloud server, which runs on 
-Linux 
+administration tasks for ownCloud, the flexible open source file synchronization 
+and sharing solution. ownCloud includes the ownCloud server, which runs on Linux 
 and Microsoft Windows, client applications for Microsoft Windows, Mac OS X and 
 Linux, and mobile clients for the Android and Apple iOS operating systems.
+
+Current editions of ownCloud manuals are always available online at 
+`doc.owncloud.org <https://doc.owncloud.org/>`_ and `doc.owncloud.com 
+<https://doc.owncloud.com/>`_.
 
 ownCloud server is available in three editions:
 

@@ -1,28 +1,36 @@
+==============================
 Upgrading Your ownCloud Server
 ==============================
 
 Updating and upgrading your ownCloud installation are two different tasks. 
 Updating means updating to the next point release, which is indicated 
-by the third digit of the version number. For example, 6.0.4 and 
-7.0.4 are point releases. (Look at the bottom of your Admin page to see your 
+by the third digit of the version number. For example, 7.0.4 and 
+8.0.4 are point releases. (Look at the bottom of your Admin page to see your 
 version number.) Please see :doc:`update` for instructions on using the 
-Updater app (Server only).
+Updater app. (The Updater app is available only in the Server edition, and not 
+included in the Enterprise Subscription.)
 
-Upgrading your ownCloud server means upgrading to the next major ownCloud release. Major releases 
-are indicated by the first and second digits. So 6.0, 7.0 and 8.0 are major releases. You may use 
-the Updater app for staying current with new point releases (Server only), but not for upgrading to 
-a major release. 
+Upgrading your ownCloud server means upgrading to the next major ownCloud 
+release. Major releases are indicated by the first and second digits. So 6.0, 
+7.0 and 8.0 are major releases. You may use the Updater app for staying current 
+with new point releases (Server only), but not for upgrading to a major 
+release. 
 
-The best method for keeping your ownCloud server on Linux servers current is by configuring your 
-system to use the `openSUSE Build Service 
-<http://software.opensuse.org/download.html?project=isv:ownCloud:community&package=owncloud>`_, and 
-then stay current by using your package manager to upgrade. You should still maintain regular 
-backups (see :doc:`backup`), and make a backup before every update/upgrade.
+Preferred Upgrade Method
+------------------------
+
+The best method for keeping your ownCloud server on Linux servers current is by 
+configuring your system to use the `openSUSE Build Service 
+<http://software.opensuse.org/download.html?project=isv:ownCloud:community&
+package=owncloud>`_, and then stay current by using your package manager to 
+upgrade. You should still maintain regular backups (see :doc:`backup`), and make 
+a backup before every update/upgrade.
 
 Windows server admins must use the manual upgrade procedure.
 
-You cannot skip major releases; for example, upgrading from 5.0 to 7.0. This is unsupported, and 
-you'll experience unpredictable results. It is best to install all upgrades and updates in order.   
+You cannot skip major releases; for example, upgrading from 5.0 to 7.0. This is 
+unsupported, and you'll experience unpredictable results. It is best to install 
+all upgrades and updates in order.
 
 Manual Upgrade Procedure
 ------------------------

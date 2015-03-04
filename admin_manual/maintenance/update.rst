@@ -4,23 +4,22 @@ Updating ownCloud with the Updater App
 
 The Updater app automates many of the steps of updating an ownCloud installation 
 to the next point release. The Updater app should be enabled in your ownCloud 
-instance by default, which you can easily confirm by looking on your Apps page.
+Server instance by default, which you can easily confirm by looking on your 
+Apps page.
+
+.. note:: The Updater app is not included in ownCloud Enterprise Subscription.
 
 Updating and upgrading your ownCloud installation are two different tasks. 
 Updating means updating to the next point release, which is indicated 
-by third digit of the version number. For example, 6.0.4 and
-7.0.4 are point releases. (Look at the bottom of your Admin page to see your
+by third digit of the version number. For example, 7.0.4 and
+8.0.4 are point releases. (Look at the bottom of your Admin page to see your
 version number.)
 
 Major releases are indicated by the first and second digits. So 6.0, 7.0, and 8.0
 are major releases. The Updater app is not for upgrades;
 please see :doc:`upgrade` for instructions on upgrading to a major release.
 
-If you installed ownCloud from our `openSUSE Build Service repositories 
-<https://software.opensuse.org/download/package?project=isv:ownCloud:community& 
-package=owncloud>`_ or your own Linux distribution repositories, then it is best 
-to update/upgrade ownCloud using your package manager rather than using the 
-Updater app or upgrading manually. You should still maintain regular backups 
+You should maintain regular backups 
 (see :doc:`backup`), and make a backup before every update/upgrade. 
 
 The Updater app performs these operations:
@@ -36,7 +35,7 @@ The Updater app performs these operations:
 * Updates the ownCloud database
 * Copies your old ``config.php`` to the new ``config/`` directory
 
-Using the Updater app to upgrade your ownCloud installation is just a few 
+Using the Updater app to update your ownCloud installation is just a few 
 steps:
 
 1. You should see a notification at the top of any ownCloud page when there is 
@@ -130,7 +129,4 @@ user is::
 
     chown -R wwwrun:www /path/to/owncloud/
     
-After the Updater app has run, you should re-apply the strict permissions. 
-
-
-
+After the Updater app has run, you should re-apply the strict permissions.
