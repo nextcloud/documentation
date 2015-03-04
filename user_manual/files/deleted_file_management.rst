@@ -1,6 +1,6 @@
-======================
-Managing Deleted Files
-======================
+=======================
+Deleted File Management
+=======================
 
 ownCloud maintains a copy of deleted files in case you need them again. To
 ensure that individual users do not run out of storage space, the Files app manages

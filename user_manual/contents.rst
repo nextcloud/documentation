@@ -1,17 +1,13 @@
 .. _contents:
 
-====================
-ownCloud User Manual 
-====================
+=================
+Table of Contents
+=================
 
 .. toctree::
-    :hidden:
-
+    :maxdepth: 2
+    
     index
-
-.. toctree::
-    :maxdepth: 3
-
     whats_new
     webinterface
     files/index
@@ -19,4 +15,4 @@ ownCloud User Manual
     documents
     bookmarks
     userpreferences
-    external_storage/google_drive
+    external_storage/index

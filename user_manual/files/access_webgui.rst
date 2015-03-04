@@ -1,5 +1,6 @@
-Accessing your Files Using the Web Interface
-============================================
+=====================================================
+Accessing your Files Using the ownCloud Web Interface
+=====================================================
 
 You can access your ownCloud files with the ownCloud web interface and create, 
 preview, edit, delete, share, and re-share files. Your ownCloud administrator 
@@ -8,9 +9,12 @@ system ask your server administrator.
 
 .. figure:: ../images/users-files.png
    
-ownCloud version 7 can display thumbnail previews for image files, MP3 covers, 
+ownCloud can display thumbnail previews for image files, MP3 covers, 
 and text files, if this enabled by your server administrator. Hover your cursor 
 over a file or folder to expose the controls for the following operations:
+
+Favorites
+  Click the star to the left of the file icon to mark it as a favorite.
 
 Pencil icon
   Rename a file or folder. This does not alter the filename on the original 
@@ -69,10 +73,10 @@ Public link shares are marked with a chain link. Un-shared folders are blank.
 
 .. figure:: ../images/users-overlays.png
 
-If your ownCloud server is the Enterprise edition, you may also have access to 
-Sharepoint and Windows Network Drive file shares. These also have special 
-overlay icons, and a red plugin means you have to enter a login to 
-get access to the share.
+If your ownCloud server is the Enterprise Subscription, you may also have access 
+to Sharepoint and Windows Network Drive file shares. These also have special 
+overlay icons, and a red plugin means you have to enter a login to get access to 
+the share.
 
 .. figure:: ../images/users-overlays-win-net-drive.png
 
@@ -133,6 +137,9 @@ You can click on any of the filter options to view the files as follows:
 
 All files
   The default view; displays all files that you have access to.
+  
+Favorites
+  Files or folders marked with the yellow star. 
 
 Shared with you
   Displays all files shared with you by another user or group.
@@ -160,14 +167,6 @@ When enabled by your administrator, you can share files or folders on ownCloud
 with a local user, group, or any person online with a public link. Shared files 
 and folders are labeled with the triangular share icon, and the status *Shared* 
 in the file or folder row.
-
-  
-.. Note:: The Shared folder has been removed from new installations of ownCloud 
-  7. Shares now appear in the top level of your file tree on your Files page. 
-  If you are upgrading from older ownCloud versions you will still have your 
-  old Shared folder. Your server administrator has the option to change this in 
-  the server's ``config.php`` file with the ``'share_folder' =>`` directive.  
-  
 
 To create a local share with other users or groups on your ownCloud server:
 
@@ -198,8 +197,8 @@ name of the file owner.
 When you want to revoke a share, simply click the Trashcan icon next to the 
 name of the appropriate user or group in the Shared dialog.    
     
-Creating a Public Share
------------------------
+Creating a Public Link Share
+----------------------------
 
 You can share files outside of your organization with people who are not users 
 on your ownCloud server by creating a public share link. Open the Share dialog 
@@ -221,3 +220,12 @@ In older versions of ownCloud, you could set an expiration date on both local
 and public shares. Now you can set an expiration date only on public shares, 
 and local shares do not expire when public shares expire. The only way to 
 "expire" a local share is to click the trash can icon to un-share your files.
+
+Creating or Connecting to a Federated Cloud Sharing Link
+--------------------------------------------------------
+
+Federated Cloud Sharing, introduced in ownCloud 7 as Server-to-Server sharing, 
+allows you to mount file shares from remote ownCloud servers, and manage them 
+just like a local share. In ownCloud 8 the process for creating a new 
+sharing link is easier and more streamlined. See :doc:`federated_cloud_sharing` 
+to learn to how to create and connect to new Federated Cloud shares.

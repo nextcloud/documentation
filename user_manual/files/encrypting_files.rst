@@ -1,3 +1,4 @@
+==============================
 Encrypting Your ownCloud Files
 ==============================
 
@@ -47,8 +48,8 @@ files you have, and then you are returned to your default ownCloud page.
 
 .. note:: You must never lose your ownCloud password, because you will lose 
    access to your files. Though there is an optional recovery option that your 
-   ownCloud administrator may enable; see the Recovery Key Password section to 
-   learn about this.
+   ownCloud administrator may enable; see the Recovery Key Password section 
+   (below) to learn about this.
    
 Sharing Encrypted Files
 -----------------------
@@ -92,7 +93,7 @@ If your files decrypt successfully, you can click the ``Delete encryption
 keys`` button. There is no reason to save them after disabling decryption, 
 because if encryption is enabled again you'll generate a new set of keys. Your 
 keys are preserved in case something goes wrong with the decryption and you 
-need your keys to access your files. Which is not likely to happen.
+need your keys to access your files.
 
 Files Not Encrypted
 -------------------
