@@ -139,11 +139,11 @@ mod_gzip
 mod_gzip should be used because it speeds up the transfer of data and helps to
 free server memory and http connections are closed faster.
 
-
-mod_deflate
------------
-mod_deflate should be used because it speeds up the transfer of data and helps
-to free server memory and http connections are closed faster
+.. Commented out because oC does not support mod_deflate
+.. mod_deflate
+.. -----------
+.. mod_deflate should be used because it speeds up the transfer of data and helps
+.. to free server memory and http connections are closed faster
 
 
 php safe mode
