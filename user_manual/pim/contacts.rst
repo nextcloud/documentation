@@ -1,3 +1,4 @@
+======================
 Using the Contacts App
 ======================
 
@@ -323,7 +324,7 @@ ownCloud provides the following alternative synchronization options:
   find this app `here <https://owncloud.org/install/>`_.
 
 Special CardDAV URLs
--------------------
+--------------------
 
 Additionally, the Contacts app is providing an URL for special functions:
 

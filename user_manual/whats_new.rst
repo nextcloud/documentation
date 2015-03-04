@@ -17,13 +17,13 @@ Users can now assign a favorite icon to files and folders. Look for
 improvements in this feature in future ownCloud editions to make finding and 
 managing files even easier.
 
-Improved Server-to-Server Sharing
----------------------------------
+Improved Federated Cloud Sharing
+--------------------------------
 
-Server-to-Server Sharing, introduced in ownCloud 7, allows you to mount file 
-shares from remote ownCloud servers, and create a "cloud of ownClouds". In 
-ownCloud 8 the process for creating a new Server-to-Server link is easier and more 
-streamlined.
+Federated Cloud Sharing, introduced in ownCloud 7 as Server-to-Server sharing, 
+allows you to mount file shares from remote ownCloud servers, and create a 
+"cloud of ownClouds". In ownCloud 8 the process for creating a new 
+sharing link is easier and more streamlined.
 
 Improved Search
 ---------------
