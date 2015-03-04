@@ -81,7 +81,7 @@ If you can't find anything, look in closed bug reports. The problem might be sol
 When the issue is a feature request, you can be helpful in the same way: merge related requests by adding information of one to the other and closing the first.
 
 .. note:: Be polite: when you need to request information or feedback be clear and polite, and you will get more information in less time. Think about how you'd like to be treated, were you to report a bug!
-.. note:: You can answer more quickly and friendly using one of `these templates <https://gist.github.com/jancborchardt/6155185>`_.
+.. note:: You can answer more quickly and friendly using one of `these templates <https://gist.github.com/jancborchardt/6155185#clean-up-inactive-issues>`_. 
 .. note:: Often our github issue tracker is a place for discussions about solutions. Be friendly, inclusive and respect other people's position.
 
 Determining relevance of issue
@@ -127,7 +127,7 @@ Collaboration
 =============
 You can just get started with bug triaging. But if you want, you can register on the `testpilot mailing list <http://mailman.owncloud.org/mailman/listinfo/testpilots>`_ and perhaps introduce yourself to `testpilots@owncloud.org <testpilots@owncloud.org>`_. On this list we announce and discuss testing and bug triaging related subjects.
 
-You can also join the **#owncloud-testing** channel on **irc.freenode.net** (`link for IRC clients <irc://#owncloud-testing@freenode.net>`_ and `link to webchat <https://webchat.freenode.net/>`_) to ask questions but keep in mind that people aren't active 24/7 and it can occasionally take a while to get a response.
+You can also join the **#owncloud-testing** channel on **irc.freenode.net** (`link for IRC clients <irc://#owncloud-testing@freenode.net>`_ and `link to webchat <https://webchat.freenode.net/>`_) to ask questions but keep in mind that people aren't active 24/7 and it can occasionally take a while to get a response. Last but not least, ownCloud contributor `Jan Borchardt has a great guide for developers and triagers <https://gist.github.com/jancborchardt/6155185>`_ about dealing with issues, including some 'stock answers' and thoughts on how to deal with pull requests.
 
 For further questions or help you can also send a mail to:
 
