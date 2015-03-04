@@ -20,7 +20,7 @@ This documents the *latest* version of ownCloud, suitable for production use.
 
 * `User Manual <https://doc.owncloud.org/server/8.0/user_manual/>`_ (`Download 
   PDF <https://doc.owncloud.org/server/8.0/ownCloudUserManual.pdf>`_)
-* `Administrator Manual <https://doc.owncloud.org/server/8.0/admin_manual/>`_ 
+* `Administrator Manual <https://doc.owncloud.org/server/8.0/admin_manual/>`_
 
 .. (`Download PDF 
 ..   <https://doc.owncloud.org/server/8.0/ownCloudAdminManual.pdf>`_)
@@ -36,12 +36,12 @@ ownCloud Enterprise Subscription 8.0
 This documents the *latest* version of ownCloud Enterprise Subscription, 
 suitable for production use.
 
-* `User Manual <http://doc.owncloud.com/server/8.0EE/user_manual/com/>`_ 
+* `User Manual <http://doc.owncloud.com/server/8.0EE/user_manual/>`_ 
   (`Download PDF 
   <https://doc.owncloud.com/server/8.0EE/ownCloudUserManual.pdf>`_)
 
 * `Administrator Manual 
-  <https://doc.owncloud.com/server/8.0EE/admin_manual/com/>`_ 
+  <https://doc.owncloud.com/server/8.0EE/admin_manual/>`_ 
   (`Download PDF 
   <https://doc.owncloud.com/server/8.0EE/ownCloudServerAdminManual.pdf>`_) 
 
