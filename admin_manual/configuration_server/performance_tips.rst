@@ -51,13 +51,21 @@ OPcache improves PHP performance by storing precompiled script bytecode in share
 thereby removing the need for PHP to load and parse scripts on each request.
 This extension is bundled with PHP 5.5.0 and later, and is available in PECL for PHP versions 5.2, 5.3, and 5.4.
 
-Object Caching
+Memory Caching
 --------------
 
-ownCloud is written to take advantage of object caching.
-Object caching can be done locally with the APCu extension,
-or for distributed PHP environments using Memcached.
-Memcached servers must be specified in the "memcached_servers" array in ownCloud's config file.
+ownCloud is written to take advantage of memory caching.
+Many backends are available, see :file:`config.sample.php` for the available classes.
+
+Some backends are designed for local use, while others are used for distributed use.
+A local backend will cache things local to the server, such as file paths, and will not be seen by other servers in the cluster.
+A distributed backend will cache things relevant to the entire instance, such as database caching.
+
+To enable a local backend (APCu is recommended) use the config option ``memcache.local``.
+To enable a distributed backend, which defaults to the value of ``memcache.local`` if unset, use ``memcache.distributed``.
+
+If you are using the Memcached backend, you must configure your servers in the config option ``memcached_servers``.
+If you are using the Redis backend, you must configure your server in the config option ``redis``.
 
 Enable the SPDY protocol
 ------------------------
