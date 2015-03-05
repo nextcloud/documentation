@@ -100,6 +100,13 @@ on your ownCloud server.
 **-- Enterprise 8 Only --**
 ---------------------------
 
+No Federated Cloud Sharing with Shibboleth
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Federated Cloud Sharing (formerly Server-to-Server file sharing)does not work with Shibboleth .
+
+.. https://github.com/owncloud/user_shibboleth/issues/28
+
 Direct Uploads to SWIFT do not Appear in ownCloud
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -270,6 +277,3 @@ LDAP Home Connector Linux Only
 
 The LDAP Home Connector application requires Linux (with MySQL, MariaDB, 
 or PostgreSQL) to operate correctly.
-
-
-
