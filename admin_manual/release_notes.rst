@@ -231,6 +231,11 @@ still create empty files.
 **-- Enterprise 7 Only --**
 ---------------------------
 
+No Federated Cloud Sharing with Shibboleth
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Federated Cloud Sharing (formerly Server-to-Server file sharing)does not work with Shibboleth .
+
 Windows Network Drive
 ^^^^^^^^^^^^^^^^^^^^^
 Windows Network Drive runs only on Linux servers because it requires the Samba 
