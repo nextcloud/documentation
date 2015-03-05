@@ -5,8 +5,7 @@ ownCloud |version| Release Notes
 Recommended Setup for Running ownCloud
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-ownCloud runs on multiple operating systems and HTTP servers. For best 
-performance, stability, support, and full functionality we recommend:
+For best performance, stability, support, and full functionality we recommend:
 
 * Red Hat Enterprise Linux 7
 * MySQL/MariaDB
