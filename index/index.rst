@@ -21,10 +21,8 @@ This documents the *latest* version of ownCloud, suitable for production use.
 * `User Manual <https://doc.owncloud.org/server/8.0/user_manual/>`_ (`Download 
   PDF <https://doc.owncloud.org/server/8.0/ownCloudUserManual.pdf>`_)
 * `Administrator Manual <https://doc.owncloud.org/server/8.0/admin_manual/>`_
-
-.. (`Download PDF 
-..   <https://doc.owncloud.org/server/8.0/ownCloudAdminManual.pdf>`_)
-
+  (`Download PDF   
+  <https://doc.owncloud.org/server/8.0/ownCloudServerAdminManual.pdf>`_)
 * `Developer Manual <https://doc.owncloud.org/server/8.0/developer_manual/>`_ 
   (`Download PDF 
   <https://doc.owncloud.org/server/8.0/ownCloudDeveloperManual.pdf>`_)
@@ -36,14 +34,13 @@ ownCloud Enterprise Subscription 8.0
 This documents the *latest* version of ownCloud Enterprise Subscription, 
 suitable for production use.
 
-* `User Manual <http://doc.owncloud.com/server/8.0EE/user_manual/>`_ 
+* `User Manual <https://doc.owncloud.com/server/8.0/user_manual/>`_ 
   (`Download PDF 
-  <https://doc.owncloud.com/server/8.0EE/ownCloudUserManual.pdf>`_)
-
+  <https://doc.owncloud.com/server/8.0/ownCloudUserManual.pdf>`_)
 * `Administrator Manual 
-  <https://doc.owncloud.com/server/8.0EE/admin_manual/>`_ 
+  <https://doc.owncloud.com/server/8.0/admin_manual/>`_ 
   (`Download PDF 
-  <https://doc.owncloud.com/server/8.0EE/ownCloudServerAdminManual.pdf>`_) 
+  <https://doc.owncloud.com/server/8.0/ownCloudServerAdminManual.pdf>`_) 
 
 -------------------
 ownCloud Server 7.0
@@ -67,14 +64,12 @@ ownCloud Enterprise Server 7.0
 This documents the *previous* ownCloud release, suitable for production use.
 
 * `User Manual <https://doc.owncloud.com/server/7.0EE/user_manual/>`_ 
-
-..  (`Download   PDF 
-..  <https://doc.owncloud.com/server/7.0EE/ownCloudUserManual.pdf>`_)
+  (`Download   PDF 
+  <https://doc.owncloud.com/server/7.0EE/ownCloudEEUserManual.pdf>`_)
 
 * `Administrator Manual <https://doc.owncloud.com/server/7.0EE/admin_manual/>`_
-
-..  (`Download PDF 
-..  <https://doc.owncloud.com/server/7.0EE/ownCloudAdminManual.pdf>`_)
+  (`Download PDF 
+  <https://doc.owncloud.com/server/7.0EE/ownCloudEEAdminManual.pdf>`_)
 
 -------------------
 ownCloud Server 6.0
@@ -97,14 +92,12 @@ This documents the *older* ownCloud release. ownCloud 6 receives security
 fixes, and users are encouraged to upgrade to the latest production release.
 
 * `User Manual <https://doc.owncloud.com/server/6.0EE/user_manual/>`_ 
-  
-..  (`Download 
-..   PDF <https://doc.owncloud.com/server/6.0EE/ownCloudUserManual.pdf>`_) 
-
-* `Administrator Manual <https://doc.owncloud.com/server/6.0EE/admin_manual/>`_
-
-..  (`Download PDF 
-..  <https://doc.owncloud.com/server/6.0EE/ownCloudAdminManual.pdf>`_)
+  (`Download 
+  PDF <https://doc.owncloud.com/server/6.0EE/ownCloudEEUserManual.pdf>`_) 
+* `Administrator Manual 
+  <https://doc.owncloud.com/server/6.0EE/admin_manual/>`_
+  (`Download PDF 
+  <https://doc.owncloud.com/server/6.0EE/ownCloudEEAdminManual.pdf>`_)
   
 -------------------
 ownCloud Server 5.0
