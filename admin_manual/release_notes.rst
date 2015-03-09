@@ -5,8 +5,7 @@ ownCloud |version| Release Notes
 Recommended Setup for Running ownCloud
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-ownCloud runs on multiple operating systems and HTTP servers. For best 
-performance, stability, support, and full functionality we recommend:
+For best performance, stability, support, and full functionality we recommend:
 
 * Red Hat Enterprise Linux 7
 * MySQL/MariaDB
@@ -19,15 +18,19 @@ Supported Platforms
 * Hypervisors: Hyper-V, VMware ESX, Xen, KVM
 * Server: Linux (Debian 7, SUSE Linux Enterprise Server 11 & 12 RHEL/Centos 6.5 
   and 7, Ubuntu 12.04 LTS, 14.04 LTS, 14.10, Univention Corporate Server 
-  3.x), Windows 2008R2, 2012 
-* Databases: MySQL/MariaDB 5.x; Microsoft SQL Server 2008R2; SQL Server 2012 
-  R2; Oracle 11g; PostgreSQL
+  3.x)
+* Databases: MySQL/MariaDB 5.x; Oracle 11g; PostgreSQL
 * Desktop: Windows XP SP3 (EoL Q2 2015), Windows 7+, Mac OS X 10.7+ (64-bit 
   only), Linux (CentOS 6.5, 7, Ubuntu 12.04 LTS, 14.04 LTS, 14.10, Fedora 20, 
   21, openSUSE 12.3, 13)
 * Mobile apps: iOS 7+, Android 4+
-* Webserver: Apache2 (Linux and Windows), IIS (Windows)
+* Webserver: Apache2
 * Web browser: IE8+, Firefox 14+, Chrome 18+, Safari 5+
+
+Windows Server Not Supported
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Windows Server is not supported in ownCloud 8.
 
 PHP 5.3 Support Dropped
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -95,6 +98,13 @@ on your ownCloud server.
 
 **-- Enterprise 8 Only --**
 ---------------------------
+
+No Federated Cloud Sharing with Shibboleth
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Federated Cloud Sharing (formerly Server-to-Server file sharing)does not work with Shibboleth .
+
+.. https://github.com/owncloud/user_shibboleth/issues/28
 
 Direct Uploads to SWIFT do not Appear in ownCloud
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -221,6 +231,11 @@ still create empty files.
 **-- Enterprise 7 Only --**
 ---------------------------
 
+No Federated Cloud Sharing with Shibboleth
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Federated Cloud Sharing (formerly Server-to-Server file sharing)does not work with Shibboleth .
+
 Windows Network Drive
 ^^^^^^^^^^^^^^^^^^^^^
 Windows Network Drive runs only on Linux servers because it requires the Samba 
@@ -266,6 +281,3 @@ LDAP Home Connector Linux Only
 
 The LDAP Home Connector application requires Linux (with MySQL, MariaDB, 
 or PostgreSQL) to operate correctly.
-
-
-

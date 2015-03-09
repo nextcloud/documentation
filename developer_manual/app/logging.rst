@@ -61,7 +61,7 @@ and then be used in the following way:
         }
 
         public function log($message) {
-            $this->logger->error('hi', array('app' => $this->appName));
+            $this->logger->error($message, array('app' => $this->appName));
         }
 
     }
