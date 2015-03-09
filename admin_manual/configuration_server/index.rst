@@ -16,7 +16,6 @@ ownCloud Server Configuration
    language_configuration
    logging_configuration
    occ_command
-   performance_tips
    performance_tuning
    
    reverse_proxy_configuration
