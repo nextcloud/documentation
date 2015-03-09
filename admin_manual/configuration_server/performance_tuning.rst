@@ -2,10 +2,6 @@
 Server Tuning & Performance Tips
 ################################
 
-.. toctree::
-    :maxdepth: 2
-    :hidden:
-
 There are a number of options to tune the ownCloud installation and enable a 
 high level of performance. The database, for example, needs indexes in the most 
 active tables. The number of live Apache connections needs to be turned up to 
