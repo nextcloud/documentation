@@ -8,7 +8,7 @@ Additional ownCloud Resources
 
 * `Howto, demo, news, and Webinar videos
   <https://doc.owncloud.org/server/8.0/admin_manual/videos/index.html>`_ 
-* `ownCloud FAQ 
+* `ownCloud 8 Tour 
   <https://owncloud.org/eight>`_ Video introduction to ownCloud 8.
 * `Where to get help 
   <https://owncloud.org/faq/>`_ when the documentation is not enough.
