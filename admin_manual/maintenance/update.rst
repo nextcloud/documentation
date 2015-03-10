@@ -38,59 +38,64 @@ The Updater app performs these operations:
 Using the Updater app to update your ownCloud installation is just a few 
 steps:
 
-1. You should see a notification at the top of any ownCloud page when there is 
-   a new update available:
+1.  You should see a notification at the top of any ownCloud page when there is 
+    a new update available:
    
 .. figure:: ../images/updater-1.png
+
+2.  Or, you will see a notification on your login screen. If you see this, skip 
+    ahead to step 10.
+
+.. figure:: ../images/updater-8.png
    
-2. Even though the Updater app backs up important directories, you should 
-   always have your own current backups (See :doc:`backup` for details.)
+3.  Even though the Updater app backs up important directories, you should 
+    always have your own current backups (See :doc:`backup` for details.)
    
-3. Verify that the HTTP user on your system can write to your whole ownCloud 
-   directory; see :ref:`setting_strong_permissions`.
+4.  Verify that the HTTP user on your system can write to your whole ownCloud 
+    directory; see the :ref:`setting_strong_permissions` section below.
    
-4. Navigate to your 'Admin' page and click the 'Update Center' button under 
-   Updater:
+5.  Navigate to your Admin page and click the `Update Center` button under 
+    Updater:
 
 .. figure:: ../images/updater-2.png
 
-5. This takes you to the Updater control panel.
+5.  This takes you to the Updater control panel.
 
 .. figure:: ../images/updater-3.png
 
-6. Click Update, and carefully read the messages. If there are any problems it 
-   will tell you. The most common issue is directory permissions; see 
-   :ref:`setting_strong_permissions`. Otherwise you will see a message about 
-   checking your installation, making a backup, and moving files:
+6.  Click Update, and carefully read the messages. If there are any problems it 
+    will tell you. The most common issue is directory permissions; see 
+    :ref:`setting_strong_permissions`. Otherwise you will see a message about 
+    checking your installation, making a backup, and moving files.
 
-.. figure:: ../images/updater-4.png
+7.  Click Proceed, and then it downloads the updates, which may take a few 
+    minutes.
 
-8. Click Proceed, and then it downloads the updates, which may take a few 
-   minutes:
+8.  The Update app wants you to be very sure you want to update, and so you 
+    must click one more button, the Start Update button:
 
-.. figure:: ../images/updater-5.png
+.. figure:: ../images/updater-8.png
 
-7. The Update app wants you to be very sure you want to update, and so you must 
-   click one more button, the Start Update button:
+..  note:: If you have a large ownCloud installation, at this point you
+    should use the ``occ upgrade`` command, running it as your HTTP user, 
+    instead of clicking Start Update, in order to avoid PHP timeouts. This 
+    example is for Ubuntu Linux:
 
-.. figure:: ../images/updater-6.png
-
-.. note:: If you have a large ownCloud installation, at this point you
-   should use the ``occ upgrade`` command, running it as your HTTP user, 
-   instead of clicking Start Update, in order to avoid PHP timeouts. This 
-   example is for Ubuntu Linux:
-
-   $ sudo -u www-data php occ upgrade
+    $ sudo -u www-data php occ upgrade
    
-   See :doc:`../configuration_server/occ_command` to learn more about using the 
-   ``occ`` command. 
+    See :doc:`../configuration_server/occ_command` to learn more about using 
+    the ``occ`` command. 
 
-8. It works for a few minutes, and when it is finished displays a success 
-   message, which disappears after a short time. 
+9.  It works for a few minutes, and when it is finished displays a success 
+    message, which disappears after a short time. 
    
 .. figure:: ../images/updater-7.png
 
-Refresh your Admin page to verify your new version number.
+    Refresh your Admin page to verify your new version number.
+   
+10. If you start the update from your login screen, click the ``Start Update`` 
+    button. For larger installations, do not click ``Start Update`` but instead 
+    use the ``occ`` command as in step 7.  
 
 If the Updater app fails, then you must update manually. See :doc:`upgrade` to 
 learn how to upgrade manually. 
