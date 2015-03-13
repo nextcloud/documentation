@@ -207,3 +207,13 @@ correct. Go to the Apps page and review the core apps to make sure the right
 ones are enabled.
 
 Now you can review your third-party apps, and upgrade and enable them.
+
+Troubleshooting
+---------------
+
+Occasionally, files do not show up after a upgrade. A rescan of the files can help::
+
+ $ sudo -u www-data php console.php files:scan --all
+
+See `the owncloud.org support page <http://owncloud.org/support>`_ for further
+resources for both home and enterprise users.
