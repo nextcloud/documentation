@@ -2,7 +2,7 @@
 Custom Client Download Repositories
 ===================================
 
-You may set up your own local download repositories for your ownCloud desktop 
+You may set up your own download repositories for your ownCloud desktop 
 clients and mobile apps in :file:`config/config.php`. This example shows 
 the default download locations:
 
@@ -10,7 +10,7 @@ the default download locations:
 
   <?php
 
-    "customclient_desktop" => "http://owncloud.org/sync-clients/",
+    "customclient_desktop" => "https://owncloud.org/sync-clients/",
     "customclient_android" => "https://play.google.com/store/apps/details?id=com.owncloud.android",
     "customclient_ios"     => "https://itunes.apple.com/us/app/owncloud/id543672169?mt=8",
 
