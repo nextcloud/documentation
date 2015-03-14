@@ -218,7 +218,7 @@ Occasionally, *files do not show up after a upgrade*. A rescan of the files can 
 See `the owncloud.org support page <http://owncloud.org/support>`_ for further
 resources for both home and enterprise users.
 
-Sometimes, ownCloud can get *stuck in a upgrade*. This is usually due to the process taking too long and encountering a time-out. It is recommended to turn of the upgrade and start over with the manual process from the command line as described above under point 12.
+Sometimes, ownCloud can get *stuck in a upgrade*. This is usually due to the process taking too long and encountering a time-out. It is recommended to turn off the upgrade and start over with the manual process from the command line as described above under point 12.
 
 Stop the upgrade process this way::
 
