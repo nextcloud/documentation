@@ -1,11 +1,14 @@
-=====================================
-Distributing Your Branded Android App
-=====================================
+=======================================================
+Distributing Your Branded Android App (Enterprise Only)
+=======================================================
 
 Now that you have created your branded Android app with ownCloud's ownBuilder 
 service (:doc:`creating_branded_apps`) how do you distribute it to your users? 
-There are multiple ways: email, publish it on your own Web site, or publish it 
-in the Google Play store.
+There are multiple ways: :ref:`email`, :ref:`publish_server`, or 
+:ref:`publish_google_play`.
+
+
+.. _email:
 
 Email
 -----
@@ -31,6 +34,8 @@ your branded app.
 When the installation is complete, the `ownCloud Android App Manual 
 <https://doc.owncloud.com/android/>`_ contains instructions for using the app.
 
+.. _publish_server:
+
 Publish On Your ownCloud Server
 ---------------------------------
 
@@ -42,6 +47,8 @@ left pull-down activity menu to see the download, tap the app name, and then the
 installer opens.
 
 .. image:: ../images/android_custom_5.png
+
+.. _publish_google_play:
 
 Publish to the Google Play Store
 --------------------------------
@@ -296,6 +303,22 @@ should now see a **Publish App** button.
 It will not be published immediately, but after review by Google.
 
 .. image:: ../images/android_custom_23.png
+
+After it has been published, your store listing is updated as PUBLISHED, and it 
+includes a link to your Play Store listing.
+
+.. image:: ../images/android_custom_24.png
+
+Now all you need to do is distribute the URL to your users, and they can 
+install it either from their Web browsers, or from their Google Play Store 
+apps. This is how it looks to your users.
+
+.. image:: ../images/android_custom_25.png
+
+See :doc:`custom_client_repos` to learn how to configure your ownCloud server 
+to use the link to your branded app instead of the ownCloud app, and see the 
+**Theming the First Run Wizard** section of :doc:`../operations/theming` to 
+learn how to create a custom icon for your branded app.
 
 Resources
 ---------
