@@ -131,9 +131,6 @@ or command line method as follows:
    than your ``owncloud/`` directory. If you have your ``data/`` directory 
    already stored in another location, you can skip this step. If you want to 
    do so, now is a good time to change the location of your ``data/`` directory. 
-   See the "Advanced Options" chapter in 
-   :doc:`../installation/installation_wizard` for more information about    
-   changing the default database or data directory.
 
 11. Restart your web server.
 
