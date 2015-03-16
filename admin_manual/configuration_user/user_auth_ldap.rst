@@ -362,7 +362,8 @@ Special Attributes
 Quota Field:
   ownCloud can read an LDAP attribute and set the user quota according to its
   value. Specify the attribute here, and it will return human-readable values, 
-  e.g. "2 GB".
+  e.g. "2 GB". Any quota set in LDAP overrides quotas set on the ownCloud user 
+  management page.
 
   * Example: *ownCloudQuota*
 
