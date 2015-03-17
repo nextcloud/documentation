@@ -2,36 +2,34 @@
 Updating ownCloud with the Updater App
 ======================================
 
-The Updater app automates many of the steps of updating an ownCloud installation 
-to the next point release. The Updater app should be enabled in your ownCloud 
-Server instance by default, which you can easily confirm by looking on your 
-Apps page.
+The Updater app automates many of the steps of updating an ownCloud 
+installation. You should keep your ownCloud server updated and not skip any 
+releases. The Updater app is enabled in your ownCloud Server instance by 
+default, which you can confirm by looking on your Apps page.
 
-.. note:: The Updater app is not included in ownCloud Enterprise Subscription.
+The Updater App is not required, and it is recommended to use other methods for 
+keeping your ownCloud server up-to-date, if possible. (TODO: links to 
+relevant docs) It is useful for installations that do not have root access, 
+such as shared hosting, and for installations with a smaller number of users 
+and data.
 
-Updating and upgrading your ownCloud installation are two different tasks. 
-Updating means updating to the next point release, which is indicated 
-by third digit of the version number. For example, 7.0.4 and
-8.0.4 are point releases. (Look at the bottom of your Admin page to see your
-version number.)
-
-Major releases are indicated by the first and second digits. So 6.0, 7.0, and 8.0
-are major releases. The Updater app is not for upgrades;
-please see :doc:`upgrade` for instructions on upgrading to a major release.
+.. note:: The Updater app is not included in ownCloud Enterprise Subscription, 
+   but is only in the Server edition.
 
 You should maintain regular backups 
-(see :doc:`backup`), and make a backup before every update/upgrade. 
+(see :doc:`backup`), and make a backup before every update. 
 
 The Updater app performs these operations:
 
-* Creates a ``backup`` directory under your ownCloud data directory
+* Creates an ``updater_backup`` directory under your ownCloud data directory
 * Download and extracts updated package content into the 
-  ``backup/packageVersion`` directory
+  ``updater_backup/packageVersion`` directory
 * Makes a copy of your current ownCloud instance, except for your data 
-  directory, to  ``backup/currentVersion-randomstring``
+  directory, to  ``updater_backup/currentVersion-randomstring``
 * Moves all directories except ``data``, ``config`` and ``themes`` from the 
-  current instance to ``backup/tmp``
-* Moves all directories from ``backup/packageVersion`` to the current version
+  current instance to ``updater_backup/tmp``
+* Moves all directories from ``updater_backup/packageVersion`` to the current 
+  version
 * Updates the ownCloud database
 * Copies your old ``config.php`` to the new ``config/`` directory
 
@@ -42,19 +40,14 @@ steps:
     a new update available:
    
 .. figure:: ../images/updater-1.png
-
-2.  Or, you will see a notification on your login screen. If you see this, skip 
-    ahead to step 10.
-
-.. figure:: ../images/updater-8.png
    
-3.  Even though the Updater app backs up important directories, you should 
+2.  Even though the Updater app backs up important directories, you should 
     always have your own current backups (See :doc:`backup` for details.)
    
-4.  Verify that the HTTP user on your system can write to your whole ownCloud 
+3.  Verify that the HTTP user on your system can write to your whole ownCloud 
     directory; see the :ref:`setting_strong_permissions` section below.
    
-5.  Navigate to your Admin page and click the `Update Center` button under 
+4.  Navigate to your Admin page and click the `Update Center` button under 
     Updater:
 
 .. figure:: ../images/updater-2.png
@@ -64,41 +57,52 @@ steps:
 .. figure:: ../images/updater-3.png
 
 6.  Click Update, and carefully read the messages. If there are any problems it 
-    will tell you. The most common issue is directory permissions; see 
-    :ref:`setting_strong_permissions`. Otherwise you will see a message about 
-    checking your installation, making a backup, and moving files.
+    will tell you. The most common issue is directory permissions; your HTTP 
+    user needs write permissions to your whole ownCloud directory. (See 
+    :ref:`setting_strong_permissions`.) Otherwise you will see messages about 
+    checking your installation and making backups.
+    
+.. figure:: ../images/updater-9.png
+    :scale: 75 %
 
-7.  Click Proceed, and then it downloads the updates, which may take a few 
+7.  Click Proceed, and then it performs the remaining steps, which takes a few 
     minutes.
+    
+.. figure:: ../images/updater-10.png  
+    :scale: 75 %
 
-8.  The Update app wants you to be very sure you want to update, and so you 
-    must click one more button, the Start Update button:
+8.  If your directory permissions are correct, a backup was made, and 
+    downloading the new ownCloud archive succeeded you will see the following 
+    screen. Click the Start Update button to complete your update:
 
 .. figure:: ../images/updater-8.png
 
 ..  note:: If you have a large ownCloud installation, at this point you
     should use the ``occ upgrade`` command, running it as your HTTP user, 
-    instead of clicking Start Update, in order to avoid PHP timeouts. This 
-    example is for Ubuntu Linux:
+    instead of clicking the Start Update button, in order to avoid PHP 
+    timeouts. This example is for Ubuntu Linux:
 
     $ sudo -u www-data php occ upgrade
    
     See :doc:`../configuration_server/occ_command` to learn more about using 
     the ``occ`` command. 
 
-9.  It works for a few minutes, and when it is finished displays a success 
+9.  It runs for a few minutes, and when it is finished displays a success 
     message, which disappears after a short time. 
    
 .. figure:: ../images/updater-7.png
 
-    Refresh your Admin page to verify your new version number.
-   
-10. If you start the update from your login screen, click the ``Start Update`` 
-    button. For larger installations, do not click ``Start Update`` but instead 
-    use the ``occ`` command as in step 7.  
+Refresh your Admin page to verify your new version number. In the Updater 
+section of your Admin page you can see the current status and backups. These 
+are backups of your old and new ownCloud installations, and do not contain your 
+data files. If your update works and there are no problems you can delete the 
+backups from this screen.
 
-If the Updater app fails, then you must update manually. See :doc:`upgrade` to 
-learn how to upgrade manually. 
+.. figure:: ../images/updater-11.png
+    :scale: 75 %
+
+If the Updater app fails, then you must update manually. (TODO: link to 
+relevant docs)
 
 .. _setting_strong_permissions:
 

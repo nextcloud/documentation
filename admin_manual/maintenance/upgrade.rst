@@ -1,10 +1,16 @@
-==============================
-Upgrading Your ownCloud Server
-==============================
+=============================
+Updating Your ownCloud Server
+=============================
 
-Updating and upgrading your ownCloud installation are two different tasks. 
-Updating means updating to the next point release, which is indicated 
-by the third digit of the version number. For example, 7.0.4 and 
+You should keep your ownCloud server up-to-date, and there are several ways to 
+do this. One way is by :doc:`update`. The Updater App is a nice tool that 
+automates many of the steps. It is better 
+
+However, it is not included 
+in the Enterprise Subscription. 
+
+
+For example, 7.0.4 and 
 8.0.4 are point releases. (Look at the bottom of your Admin page to see your 
 version number.) Please see :doc:`update` for instructions on using the 
 Updater app. (The Updater app is available only in the Server edition, and not 
@@ -16,7 +22,7 @@ release. Major releases are indicated by the first and second digits. So 6.0,
 with new point releases (Server only), but not for upgrading to a major 
 release.
 
-.. note:: Before upgrading to a new major release, always first review any 
+.. note:: Before updating to a new major release, always first review any 
    third-party apps you have installed for compatibility with  
    the new ownCloud release. Any apps that are not developed by ownCloud show a 
    3rd party designation. Install unsupported apps at your own risk.Then, 
