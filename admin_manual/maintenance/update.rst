@@ -104,6 +104,14 @@ backups from this screen.
 If the Updater app fails, then you must update manually. (TODO: link to 
 relevant docs)
 
+Can't Login Without Updating
+----------------------------
+
+If you can't login to your ownCloud installation without performing an update first, this means
+that updated ownCloud files have already been downloaded to your server, most likely via 
+your Linux package manager during a routine system update. So you only need to click the Start
+Update button, or run the ``occ`` command to complete the update.
+
 .. _setting_strong_permissions:
 
 Setting Strong Permissions
