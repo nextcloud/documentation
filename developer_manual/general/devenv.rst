@@ -55,7 +55,7 @@ After the development tool installation make the directory writable::
   
 Then install ownCloud from git::
 
-  ocdev setup base
+  ocdev setup --dir /var/www base
 
 Adjust rights::
 
