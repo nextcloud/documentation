@@ -19,14 +19,14 @@ or install it manually::
   chmod +x phpunit.phar
   sudo mv phpunit.phar /usr/local/bin/phpunit
 
-After the installation the ''phpunit'' command is available.
+After the installation the ''phpunit'' command is available::
 
   phpunit --version
   
-And you can update it using 
+And you can update it using::
 
-    phpunit --self-update
-    
+  phpunit --self-update
+
 You can find more information in the PHPUnit documentation: https://phpunit.de/manual/current/en/installation.html
 
 Writing PHP unit tests
