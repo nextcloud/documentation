@@ -1,6 +1,6 @@
-======================================
-Updating ownCloud with the Updater App
-======================================
+=======================================
+Upgrading ownCloud with the Updater App
+=======================================
 
 The Updater app automates many of the steps of updating an ownCloud 
 installation. You should keep your ownCloud server updated and not skip any 
@@ -8,8 +8,8 @@ releases. The Updater app is enabled in your ownCloud Server instance by
 default, which you can confirm by looking on your Apps page.
 
 The Updater App is not required, and it is recommended to use other methods for 
-keeping your ownCloud server up-to-date, if possible. (TODO: links to 
-relevant docs) It is useful for installations that do not have root access, 
+keeping your ownCloud server up-to-date, if possible. (See :doc:`upgrade`.) The 
+Updater App is useful for installations that do not have root access, 
 such as shared hosting, and for installations with a smaller number of users 
 and data.
 
@@ -101,8 +101,7 @@ backups from this screen.
 .. figure:: ../images/updater-11.png
     :scale: 75 %
 
-If the Updater app fails, then you must update manually. (TODO: link to 
-relevant docs)
+If the Updater app fails, then you must update manually. (See :doc:`upgrade`.)
 
 Can't Login Without Updating
 ----------------------------
