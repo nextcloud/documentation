@@ -1,3 +1,4 @@
+======================
 Database Configuration
 ======================
 
@@ -378,4 +379,3 @@ Useful SQL commands
   MySQL     : quit
   PostgreSQL: \q
   Oracle    : quit
-
