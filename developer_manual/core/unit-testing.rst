@@ -13,12 +13,21 @@ To install it, either get it via your packagemanager::
 
   sudo apt-get install phpunit
 
-or install it via PEAR::
+or install it manually::
 
-  pear config-set auto_discover 1
-  pear install pear.phpunit.de/PHPUnit
+  wget https://phar.phpunit.de/phpunit.phar
+  chmod +x phpunit.phar
+  sudo mv phpunit.phar /usr/local/bin/phpunit
 
 After the installation the ''phpunit'' command is available.
+
+  phpunit --version
+  
+And you can update it using 
+
+    phpunit --self-update
+    
+You can find more information in the PHPUnit documentation: https://phpunit.de/manual/current/en/installation.html
 
 Writing PHP unit tests
 ~~~~~~~~~~~~~~~~~~~~~~
