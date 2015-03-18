@@ -5,13 +5,14 @@ Preferred Linux Installation Method
 Recommend Setup and Supported Platforms
 ---------------------------------------
 
-See the :doc:`../release_notes` for the recommended ownCloud setup and supported platforms.
+See the :doc:`../release_notes` for the recommended ownCloud setup and supported 
+platforms.
 
 Installing ownCloud Enterprise Subscription
 -------------------------------------------
 
-See :doc:`../enterprise_installation/linux_installation` for instructions on installing 
-ownCloud Enterprise Subscription.
+See :doc:`../enterprise_installation/linux_installation` for instructions on 
+installing ownCloud Enterprise Subscription.
 
 Supported Distribution Packages
 -------------------------------

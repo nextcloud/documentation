@@ -1,12 +1,20 @@
+============================
 Manual Installation on Linux
 ============================
 
-Installing ownCloud on Linux from the openSUSE Build Service packages is the preferred method (see :doc:`linux_installation`). 
-These are maintained by ownCloud engineers, and you can use your package manager to keep your ownCloud server up-to-date.
+Installing ownCloud on Linux from the openSUSE Build Service packages is the 
+preferred method (see :doc:`linux_installation`). These are maintained by 
+ownCloud engineers, and you can use your package manager to keep your ownCloud 
+server up-to-date.
 
-If there are no packages for your Linux distribution, or you prefer installing from sources, you can setup ownCloud from scratch 
-using a classic LAMP stack (Linux, Apache, MySQL/MariaDB, PHP). This document provides a complete walk-through for installing 
-ownCloud on Ubuntu 14.04 LTS Server with Apache and MySQL.
+.. note:: Enterprise Subscription customers should refer to  
+   :doc:`../enterprise_installation/linux_installation`
+
+If there are no packages for your Linux distribution, or you prefer installing 
+from sources, you can setup ownCloud from scratch using a classic LAMP stack 
+(Linux, Apache, MySQL/MariaDB, PHP). This document provides a complete 
+walk-through for installing ownCloud on Ubuntu 14.04 LTS Server with Apache and 
+MySQL.
 
 Prerequisites
 -------------
@@ -272,10 +280,6 @@ Keep in mind that changes to php.ini may have to be done on more than one ini fi
 
 Other Web Servers
 -----------------
-     
-**Microsoft Internet Information Server (IIS)**
-
-See :doc:`windows_installation` for further instructions.
 
 **Nginx Configuration**
 
@@ -288,3 +292,7 @@ See :doc:`yaws_configuration`
 **Hiawatha Configuration**
 
 See :doc:`hiawatha_configuration`
+
+**Microsoft Internet Information Server (IIS)**
+
+See :doc:`windows_installation` for further instructions.
