@@ -1,6 +1,6 @@
-==============================================================================
-Installing ownCloud Enterprise Subscription on Windows with SQL Server and IIS
-==============================================================================
+======================================================
+Installing ownCloud on Windows with SQL Server and IIS
+======================================================
 
 The most streamlined method of installing ownCloud on a Windows server is to use the 
 Microsoft Web Platform Installer (WPI).  Download this free utility from 
@@ -17,18 +17,9 @@ Microsoft Web Platform Installer (WPI).  Download this free utility from
           ownCloud is not supported on the Internet Server Application 
           Programming Interface (ISAPI).
           
-          For these reasons, while ownCloud server will run on Windows and is supported, 
-          it is not recommended at this time.
-
-You also need the ownCloud package, which you can download from the ``ownCloud 8
-Enterprise Edition for Windows Files`` folder in your account on 
-`Customer.owncloud.com <http://customer.owncloud.com/>`_. 
-
-.. note:: If you are upgrading an existing ownCloud installation, please refer to the 
-   Customer Advisory document in the ``ownCloud 8 Enterprise Edition for Windows`` folder 
-   in your account on 
-   `Customer.owncloud.com <http://customer.owncloud.com/>`_. .
-
+          For these reasons, ownCloud on Windows is not recommended and not 
+          supported.        
+          
 Installing IIS, PHP, and SQL Server
 -----------------------------------
  
@@ -120,8 +111,9 @@ Then restart the IIS service to apply all changes.
 Installing ownCloud
 -------------------
 
-Unzip your ownCloud archive (downloaded from your account on 
-`Customer.owncloud.com <http://customer.owncloud.com/>`_), which unpacks to a single 
+Download the latest version of ownCloud from http://owncloud.org/download.    
+You may download the archive in either tar.bz2 or zip format. Unpack the file 
+and save it locally, which unpacks to a single 
 ``owncloud`` folder containing all ownCloud files. Place this in your Web root, typically 
 ``C:\inetpub\wwwroot\``, so you have ``C:\inetpub\wwwroot\owncloud``. Set permissions on 
 ``C:\inetpub\wwwroot\owncloud`` so that your IIS user has read-write access.

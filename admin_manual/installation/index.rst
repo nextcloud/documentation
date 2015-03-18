@@ -6,8 +6,6 @@ Installation
    :maxdepth: 2
 
    linux_installation
-   windows_installation
-   macos_installation
    installation_wizard
    appliance_installation
    apps_management_installation
@@ -17,3 +15,6 @@ Installation
    ucs_installation   
    yaws_configuration
    selinux_configuration
+   macos_installation
+   windows_installation
+   windows2_installation

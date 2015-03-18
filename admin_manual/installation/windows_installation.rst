@@ -14,7 +14,7 @@ Installation on Windows 7 and Windows Server 2008
           Programming Interface (ISAPI). 
           
           For these reasons, while ownCloud server will run on Windows, it is 
-          not recommended at this time.
+          not recommended and not supported.
 
 .. note:: You must move the data directory outside of your public root (See
           advanced installation settings)
@@ -234,12 +234,9 @@ Installing ownCloud
 ~~~~~~~~~~~~~~~~~~~
 
 1. Download the latest version of ownCloud from http://owncloud.org/download.    
-   The file is downloaded in tar.bz2 format.
+   You may download the archive in either tar.bz2 or zip format.
 
-2. Unzip the file and save it locally.
-
-    .. note:: You can use jZip for a free utility (like Peazip) to unzip the 
-       file.
+2. Unpack the file and save it locally.
 
 3. Copy the file to your ``wwwroot`` directory (for example, 
    **C:\\inetpub\\wwwroot**).
