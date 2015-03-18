@@ -31,7 +31,7 @@ This is a deprecation roadmap which lists all current deprecation targets and wi
  * Replace all calls on the db using **getInsertId** with **lastInsertId**
  * Replace all calls on the db using **prepareQuery** with **prepare**
  * The **__construct** method of **OCP\\AppFramework\\Db\\Mapper** no longer requires an instance of **OCP\\IDb** but an instance of **OCP\\IDbConnection**
- * The **execute** method on **OCP\\AppFramework\\Db\\Mapper** no longer returns an instance of **OC_DB_StatementWrapper** but an instance of **PDOStatement**
+ * The **execute** method on **OCP\\AppFramework\\Db\\Mapper** no longer returns an instance of **OC_DB_StatementWrapper** but an instance of **PDOStatement**, so the following methods called on the result will no longer work: **fetchRow**, **fetchOne**, **bindParam**. Simply migrate those to their PDO equivalents.
 
 9.0
 ---
