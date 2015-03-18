@@ -1,6 +1,6 @@
-=======================
-Oracle Database Support
-=======================
+=====================
+Oracle Database Setup
+=====================
 
 .. toctree::
     :maxdepth: 2
