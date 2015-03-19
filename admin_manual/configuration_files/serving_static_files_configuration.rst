@@ -88,7 +88,7 @@ X-Accel-Redirect is supported by default in Nginx and no additional operation sh
 
 Configuration - Method 1
 ~~~~~~~~~~~~~~~~~~~~~~~~
-Method 1 is prefered because it limits files what files can be served through X-Accel. ::
+Method 1 is prefered because it limits what files can be served through X-Accel. ::
 
     location ~ \.php(?:$|/) {
         ...
