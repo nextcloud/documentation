@@ -88,7 +88,7 @@ X-Accel-Redirect is supported by default in Nginx and no additional operation sh
 
 Configuration - Method 1
 ~~~~~~~~~~~~~~~~~~~~~~~~
-Method 1 is prefered because it limits files what files can be served through X-Accel.:
+Method 1 is prefered because it limits files what files can be served through X-Accel. ::
 
     location ~ \.php(?:$|/) {
         ...
@@ -133,7 +133,7 @@ Method 1 is prefered because it limits files what files can be served through X-
 Configuration - Method 2
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Method 2 is simplier to setup when using local external storage mounts, especially when they are available to many but not all users.
-This method may be prefered if you are regularly adding users that should not all have access to the same local external storage mount(s).:
+This method may be prefered if you are regularly adding users that should not all have access to the same local external storage mount(s). ::
 
     location ~ \.php(?:$|/) {
         ...
