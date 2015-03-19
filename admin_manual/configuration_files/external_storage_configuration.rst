@@ -1,3 +1,4 @@
+=================================================
 Configuring External Storage (Configuration File)
 =================================================
 
@@ -134,7 +135,7 @@ filesystem and is part of the ‘External storage support’ app, the class
 to be used is **\\OC\\Files\\Storage\\FTP**\  and takes the following
 options:
 
--  **host**: the hostname of the ftp server
+-  **host**: the hostname of the ftp server, and optionally the port number
 -  **user**: the username used to login on the ftp server
 -  **password**: the password to login on the ftp server
 -  **secure**: whether to use ftps:// (FTP over TLS) to connect to the ftp
@@ -150,7 +151,7 @@ Example
 
     {   "class":"\\OC\\Files\\Storage\\FTP",
         "options":{
-            "host":"ftp.myhost.com",
+            "host":"ftp.myhost.com:21",
             "user":"johndoe",
             "password":"secret",
             "root":"\/Videos",
