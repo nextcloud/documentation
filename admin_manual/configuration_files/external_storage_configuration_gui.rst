@@ -166,7 +166,7 @@ FTP/FTPS/SFTP
 Connecting to an FTP server requires:
 
 * Whatever name you want for your local mountpoint.
-* The URL of your FTP server.
+* The URL of your FTP server, and optionally the port number.
 * FTP server username and password.
 * Remote Subfolder, the FTP directory to mount in ownCloud. ownCloud defaults to the root 
   directory. When you specify a different directory you must leave off the 
