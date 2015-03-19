@@ -497,8 +497,9 @@ ownCloud performs several verification checks. There are two options,
 
 	'appcodechecker' => true,
 
-Check 3rd party apps to make sure they are using the private API and not the
-public API. If the app uses the private API it cannot be installed.
+Checks an app before install whether it uses private APIs instead of the
+proper public APIs. If this is set to true it will only allow to install or
+enable apps that pass this check.
 
 ::
 
@@ -682,8 +683,9 @@ indicates if a web server can write files to that folder.
 
 	'appcodechecker' => true,
 
-Check 3rd party apps to make sure they are using the private API and not the
-public API. If the app uses the private API it cannot be installed.
+Checks an app before install whether it uses private APIs instead of the
+proper public APIs. If this is set to true it will only allow to install or
+enable apps that pass this check.
 
 
 
