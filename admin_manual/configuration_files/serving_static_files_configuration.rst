@@ -132,7 +132,7 @@ Method 1 is prefered because it limits what files can be served through X-Accel.
 
 Configuration - Method 2
 ~~~~~~~~~~~~~~~~~~~~~~~~
-Method 2 is simplier to setup when using local external storage mounts, especially when they are available to many, but not all users.
+Method 2 is simpler to setup when using local external storage mounts, especially when they are available to many, but not all users.
 This method may be prefered if you are regularly adding users that should not all have access to the same local external storage mount(s). ::
 
     location ~ \.php(?:$|/) {
