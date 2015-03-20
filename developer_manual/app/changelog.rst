@@ -9,6 +9,13 @@ The following changes went into ownCloud 8:
 
 Breaking changes
 ================
+None so far
+
+Features
+========
+* There is a new :doc:`OCSResponse and OCSController <controllers>` which allows you to easily migrate OCS code to the App Framework. This was added purely for compatibility reasons and the preferred way of doing APIs is using a :doc:`api`
+* You can now stream files in PHP by using the built in :doc:`StreamResponse <controllers>`.
+* For more advanced usecases you can now implement the :doc:`CallbackResponse <controllers>` interface which allows your response to do its own response rendering
 
 * Setting session variables inside a controller requires the **@UseSession** annotation, otherwise the session will be closed
 * Applications not using the AppFramework need now to register their routes as well in **appinfo/routes.php**. See https://mailman.owncloud.org/pipermail/devel/2014-August/000565.html
@@ -22,7 +29,14 @@ Deprecations
 * `OCP\\AppFramework\\IAppContainer <https://github.com/owncloud/core/blob/d59c4e832fea87d03d199a3211186a47fd252c32/lib/public/appframework/iappcontainer.php>`_: methods **getCoreApi** and **log**. Removal planned in **8.3**
 * `OCP\\AppFramework\\Controller <https://github.com/owncloud/core/blob/d59c4e832fea87d03d199a3211186a47fd252c32/lib/public/appframework/controller.php>`_: methods **params**, **getParams**, **method**, **getUploadedFile**, **env**, **cookie**, **render**. Removal planned in **8.3**
 
+<<<<<<< HEAD
 .. note:: Deprecations of constants and methods with namespaces!
+=======
+ * Replace all calls on the db using **getInsertId** with **lastInsertId**
+ * Replace all calls on the db using **prepareQuery** with **prepare**
+ * The **__construct** method of **OCP\\AppFramework\\Db\\Mapper** no longer requires an instance of **OCP\\IDb** but an instance of **OCP\\IDbConnection**
+ * The **execute** method on **OCP\\AppFramework\\Db\\Mapper** no longer returns an instance of **OC_DB_StatementWrapper** but an instance of **PDOStatement**
+>>>>>>> recreate commit
 
 * The following methods have been moved into the **OCP\\Template::<method>** class instead of being namespaced directly, Removal planned in **9.0**:
 
