@@ -14,7 +14,7 @@ To create a controller, simply extend the Controller class and create a method t
     <?php
     namespace OCA\MyApp\Controller;
 
-    use OCP\AppFramework\Controller;
+    use \OCP\AppFramework\Controller;
 
     class AuthorController extends Controller {
 
@@ -34,9 +34,9 @@ To connect a controller and a route the controller has to be registered in the :
     <?php
     namespace OCA\MyApp\AppInfo;
 
-    use OCP\AppFramework\App;
+    use \OCP\AppFramework\App;
 
-    use OCA\MyApp\Controller\AuthorApiController;
+    use \OCA\MyApp\Controller\AuthorApiController;
 
 
     class Application extends App {
@@ -98,7 +98,7 @@ All those parameters can easily be accessed by adding them to the controller met
     <?php
     namespace OCA\MyApp\Controller;
 
-    use OCP\AppFramework\Controller;
+    use \OCP\AppFramework\Controller;
 
     class PageController extends Controller {
 
@@ -117,7 +117,7 @@ It is also possible to set default parameter values by using PHP default method 
     <?php
     namespace OCA\MyApp\Controller;
 
-    use OCP\AppFramework\Controller;
+    use \OCP\AppFramework\Controller;
 
     class PageController extends Controller {
 
@@ -150,7 +150,7 @@ would be passed in as the string *'false'* which is not what one would expect. T
     <?php
     namespace OCA\MyApp\Controller;
 
-    use OCP\AppFramework\Controller;
+    use \OCP\AppFramework\Controller;
 
     class PageController extends Controller {
 
@@ -196,7 +196,7 @@ It is possible to pass JSON using a POST, PUT or PATCH request. To do that the *
     <?php
     namespace OCA\MyApp\Controller;
 
-    use OCP\AppFramework\Controller;
+    use \OCP\AppFramework\Controller;
 
     class PageController extends Controller {
 
@@ -218,8 +218,8 @@ Headers, files, cookies and environment variables can be accessed directly from 
     <?php
     namespace OCA\MyApp\Controller;
 
-    use OCP\AppFramework\Controller;
-    use OCP\IRequest;
+    use \OCP\AppFramework\Controller;
+    use \OCP\IRequest;
 
     class PageController extends Controller {
 
@@ -256,8 +256,8 @@ Returning JSON is simple, just pass an array to a JSONResponse:
     <?php
     namespace OCA\MyApp\Controller;
 
-    use OCP\AppFramework\Controller;
-    use OCP\AppFramework\Http\JSONResponse;
+    use \OCP\AppFramework\Controller;
+    use \OCP\AppFramework\Http\JSONResponse;
 
     class PageController extends Controller {
 
@@ -275,7 +275,7 @@ Because returning JSON is such an common task, there's even a shorter way how to
     <?php
     namespace OCA\MyApp\Controller;
 
-    use OCP\AppFramework\Controller;
+    use \OCP\AppFramework\Controller;
 
     class PageController extends Controller {
 
@@ -321,8 +321,8 @@ By default there is only a responder for JSON but more can be added easily:
     <?php
     namespace OCA\MyApp\Controller;
 
-    use OCP\AppFramework\Controller;
-    use OCP\AppFramework\Http\DataResponse;
+    use \OCP\AppFramework\Controller;
+    use \OCP\AppFramework\Http\DataResponse;
 
     class PageController extends Controller {
 
@@ -357,9 +357,9 @@ Because returning values works fine in case of a success but not in case of fail
     <?php
     namespace OCA\MyApp\Controller;
 
-    use OCP\AppFramework\Controller;
-    use OCP\AppFramework\Http\DataResponse;
-    use OCP\AppFramework\Http\Http;
+    use \OCP\AppFramework\Controller;
+    use \OCP\AppFramework\Http\DataResponse;
+    use \OCP\AppFramework\Http\Http;
 
     class PageController extends Controller {
 
@@ -395,8 +395,8 @@ A :doc:`template <templates>` can be rendered by returning a TemplateResponse. A
     <?php
     namespace OCA\MyApp\Controller;
 
-    use OCP\AppFramework\Controller;
-    use OCP\AppFramework\Http\TemplateResponse;
+    use \OCP\AppFramework\Controller;
+    use \OCP\AppFramework\Http\TemplateResponse;
 
     class PageController extends Controller {
 
@@ -417,8 +417,8 @@ A redirect can be achieved by returning a RedirectResponse:
     <?php
     namespace OCA\MyApp\Controller;
 
-    use OCP\AppFramework\Controller;
-    use OCP\AppFramework\Http\RedirectResponse;
+    use \OCP\AppFramework\Controller;
+    use \OCP\AppFramework\Http\RedirectResponse;
 
     class PageController extends Controller {
 
@@ -437,8 +437,8 @@ A file download can be triggered by returning a DownloadResponse:
     <?php
     namespace OCA\MyApp\Controller;
 
-    use OCP\AppFramework\Controller;
-    use OCP\AppFramework\Http\DownloadResponse;
+    use \OCP\AppFramework\Controller;
+    use \OCP\AppFramework\Http\DownloadResponse;
 
     class PageController extends Controller {
 
@@ -462,7 +462,7 @@ Creating a custom XMLResponse class could look like this:
     <?php
     namespace OCA\MyApp\Http;
 
-    use OCP\AppFramework\Http\Response;
+    use \OCP\AppFramework\Http\Response;
 
     class XMLResponse extends Response {
 
@@ -481,89 +481,6 @@ Creating a custom XMLResponse class could look like this:
 
     }
 
-Streamed and lazily rendered responses
---------------------------------------
-.. versionadded:: 8.1
-
-By default all responses are rendered at once and sent as a string through middleware. In certain cases this is not a desirable behavior, for instance if you want to stream a file in order to save memory. To do that use the now available **OCP\\AppFramework\\Http\\StreamResponse** class:
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\Controller;
-
-    use OCP\AppFramework\Controller;
-    use OCP\AppFramework\Http\StreamResponse;
-
-    class PageController extends Controller {
-
-        public function downloadXMLFile() {
-            return new StreamResponse('/some/path/to/file.xml');
-        }
-
-    }
-
-
-
-
-If you want to use a custom, lazily rendered response simply implement the interface **OCP\\AppFramework\\Http\\ICallbackResponse** for your response:
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\Http;
-
-    use OCP\AppFramework\Http\Response;
-    use OCP\AppFramework\Http\ICallbackResponse;
-
-    class LazyResponse extends Response implements ICallbackResponse {
-
-        public function callback(IOutput $output) {
-            // custom code in here
-        }
-
-    }
-
-.. note:: Because this code is rendered after several usually built in helpers, you need to take care of errors and proper HTTP caching by yourself.
-
-OCS
----
-.. versionadded:: 8.1
-
-.. note:: This is purely for compatibility reasons. If you are planning to offer an external API, go for a :doc:`api` instead.
-
-In order to ease migration from OCS API routes to the App Framework, an additional controller and response have been added. To migrate your API you can use the **OCP\\AppFramework\\OCSController** baseclass and return your data in the form of an array in the following way:
-
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\Controller;
-
-    use OCP\AppFramework\OCSController;
-
-    class ShareController extends OCSController {
-
-        /**
-         * @NoAdminRequired
-         * @NoCSRFRequired
-         * @PublicPage
-         * @CORS
-         */
-        public function getShares() {
-            return [
-                'data' => [
-                    // actual data is in here
-                ],
-                // optional
-                'statuscode' => 100,
-                'status' => 'OK'
-            ];
-        }
-
-    }
-
-The format parameter works out of the box, no intervention is required.
 
 Handling errors
 ---------------
@@ -576,9 +493,9 @@ Each response subclass has access to the **setStatus** method which lets you set
     <?php
     namespace OCA\MyApp\Controller;
 
-    use OCP\AppFramework\Controller;
-    use OCP\AppFramework\Http;
-    use OCP\AppFramework\Http\JSONResponse;
+    use \OCP\AppFramework\Controller;
+    use \OCP\AppFramework\Http;
+    use \OCP\AppFramework\Http\JSONResponse;
 
     class AuthorController extends Controller {
 
@@ -619,8 +536,8 @@ A controller method that turns off all checks would look like this:
     <?php
     namespace OCA\MyApp\Controller;
 
-    use OCP\IRequest;
-    use OCP\AppFramework\Controller;
+    use \OCP\IRequest;
+    use \OCP\AppFramework\Controller;
 
     class PageController extends Controller {
 
@@ -634,5 +551,3 @@ A controller method that turns off all checks would look like this:
         }
 
     }
-
-
