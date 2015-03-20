@@ -98,6 +98,17 @@ To create a mapper, inherit from the mapper baseclass and call the parent constr
             return $row['count'];
         }
 
+
+        public function authorNameCountNamedArguments($name) {
+            $sql = 'SELECT COUNT(*) AS `count` FROM `*PREFIX*myapp_authors` ' .
+                'WHERE `name` = :name';
+            $stmt = $this->execute($sql, [':name' => $name]);
+
+            $row = $stmt->fetch();
+            $stmt->closeCursor();
+            return $row['count'];
+        }
+
     }
 
 .. note:: The cursor is closed automatically for all **INSERT**, **DELETE**, **UPDATE** queries and when calling the methods **findOneQuery**, **findEntities**, **findEntity**, **delete**, **insert** and **update**. For custom calls using execute you should always close the cursor after you are done with the fetching to prevent database lock problems on SqLite

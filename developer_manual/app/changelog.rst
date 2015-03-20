@@ -16,6 +16,7 @@ Features
 * There is a new :doc:`OCSResponse and OCSController <controllers>` which allows you to easily migrate OCS code to the App Framework. This was added purely for compatibility reasons and the preferred way of doing APIs is using a :doc:`api`
 * You can now stream files in PHP by using the built in :doc:`StreamResponse <controllers>`.
 * For more advanced usecases you can now implement the :doc:`CallbackResponse <controllers>` interface which allows your response to do its own response rendering
+* In addition to passing an array of positional parameters using execute on a mapper method you can now :doc:`pass an associative array <database>` to use named parameters in SQL queries
 
 
 Deprecations
