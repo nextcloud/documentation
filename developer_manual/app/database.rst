@@ -4,33 +4,7 @@ Database Access
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-The basic way to run a database query is to inject the **Db** service.
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\AppInfo;
-
-    use \OCP\AppFramework\App;
-
-    use \OCA\MyApp\Db\AuthorDAO;
-
-
-    class Application extends App {
-
-        public function __construct(array $urlParams=array()){
-            parent::__construct('myapp', $urlParams);
-
-            $container = $this->getContainer();
-
-            /**
-             * Database Layer
-             */
-            $container->registerService('AuthorDAO', function($c) {
-                return new AuthorDAO($c->query('ServerContainer')->getDb());
-            });
-        }
-    }
+The basic way to run a database query is to use the database connection provided by **OCP\\IDBConnection**.
 
 Inside your database layer class you can now start running queries like:
 
@@ -41,27 +15,27 @@ Inside your database layer class you can now start running queries like:
 
     namespace OCA\MyApp\Db;
 
-    use \OCP\IDb;
+    use OCP\IDBConnection;
 
     class AuthorDAO {
 
         private $db;
 
-        public function __construct(IDb $db) {
+        public function __construct(IDBConnection $db) {
             $this->db = $db;
         }
 
         public function find($id) {
             $sql = 'SELECT * FROM `*PREFIX*myapp_authors` ' .
                 'WHERE `id` = ?';
-            $query = $db->prepareQuery($sql);
-            $query->bindParam(1, $id, \PDO::PARAM_INT);
-            $result = $query->execute();
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(1, $id, \PDO::PARAM_INT);
+            $stmt->execute();
 
-            while($row = $result->fetchRow()) {
-                return $row;
-            }
-            $result->closeCursor();
+            $row = $stmt->fetch();
+
+            $stmt->closeCursor();
+            return $row;
         }
 
     }
@@ -71,7 +45,7 @@ Mappers
 =======
 The aforementioned example is the most basic way write a simple database query but the more queries amass, the more code has to be written and the harder it will become to maintain it.
 
-To generalize and simplify the problem, split code into resources and create an **Entity** and a **Mapper** class for it. The mapper class provides a way to run Sql queries and maps the result onto the related entities.
+To generalize and simplify the problem, split code into resources and create an **Entity** and a **Mapper** class for it. The mapper class provides a way to run SQL queries and maps the result onto the related entities.
 
 
 To create a mapper, inherit from the mapper baseclass and call the parent constructor with the following parameters:
@@ -87,12 +61,12 @@ To create a mapper, inherit from the mapper baseclass and call the parent constr
 
     namespace OCA\MyApp\Db;
 
-    use \OCP\IDb;
-    use \OCP\AppFramework\Db\Mapper;
+    use OCP\IDBConnection;
+    use OCP\AppFramework\Db\Mapper;
 
     class AuthorMapper extends Mapper {
 
-        public function __construct(IDb $db) {
+        public function __construct(IDBConnection $db) {
             parent::__construct($db, 'myapp_authors');
         }
 
@@ -104,7 +78,7 @@ To create a mapper, inherit from the mapper baseclass and call the parent constr
         public function find($id) {
             $sql = 'SELECT * FROM `*PREFIX*myapp_authors` ' .
                 'WHERE `id` = ?';
-            return $this->findEntity($sql, array($id));
+            return $this->findEntity($sql, [$id]);
         }
 
 
@@ -117,14 +91,22 @@ To create a mapper, inherit from the mapper baseclass and call the parent constr
         public function authorNameCount($name) {
             $sql = 'SELECT COUNT(*) AS `count` FROM `*PREFIX*myapp_authors` ' .
                 'WHERE `name` = ?';
-            $query = $this->db->prepareQuery($sql);
-            $query->bindParam(1, $name, \PDO::PARAM_STR);
-            $result = $query->execute();
+            $stmt = $this->execute($sql, [$name]);
 
-            while($row = $result->fetchRow()) {
-                $result->closeCursor();
-                return $row['count'];
-            }
+            $row = $stmt->fetch();
+            $stmt->closeCursor();
+            return $row['count'];
+        }
+
+
+        public function authorNameCountNamedArguments($name) {
+            $sql = 'SELECT COUNT(*) AS `count` FROM `*PREFIX*myapp_authors` ' .
+                'WHERE `name` = :name';
+            $stmt = $this->execute($sql, [':name' => $name]);
+
+            $row = $stmt->fetch();
+            $stmt->closeCursor();
+            return $row['count'];
         }
 
     }
@@ -139,33 +121,7 @@ or::
 
     $authorMapper->update($entity);
 
-Mappers should be registered in the constructor to reuse them inside the application:
 
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\AppInfo;
-
-    use \OCP\AppFramework\App;
-
-    use \OCA\MyApp\Db\AuthorMapper;
-
-
-    class Application extends App {
-
-        public function __construct(array $urlParams=array()){
-            parent::__construct('myapp', $urlParams);
-
-            $container = $this->getContainer();
-
-            /**
-             * Database Layer
-             */
-            $container->registerService('AuthorMapper', function($c) {
-                return new AuthorMapper($c->query('ServerContainer')->getDb());
-            });
-        }
-    }
 
 Entities
 ========
@@ -180,7 +136,7 @@ Entities are data objects that carry all the table's information for one row. Ev
     // db/author.php
     namespace OCA\MyApp\Db;
 
-    use \OCP\AppFramework\Db\Entity;
+    use OCP\AppFramework\Db\Entity;
 
     class Author extends Entity {
 
@@ -215,7 +171,7 @@ Since all attributes should be protected, getters and setters are automatically 
     // db/author.php
     namespace OCA\MyApp\Db;
 
-    use \OCP\AppFramework\Db\Entity;
+    use OCP\AppFramework\Db\Entity;
 
     class Author extends Entity {
         protected $stars;
@@ -242,7 +198,7 @@ mapping, simply override the **columnToProperty** and **propertyToColumn** metho
     // db/author.php
     namespace OCA\MyApp\Db;
 
-    use \OCP\AppFramework\Db\Entity;
+    use OCP\AppFramework\Db\Entity;
 
     class Author extends Entity {
         protected $stars;
