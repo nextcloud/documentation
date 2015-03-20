@@ -162,6 +162,9 @@ Example
 
 .. note:: PHP needs to be build with FTP support for this backend to work.
 
+.. note:: A non-blocking or correctly configured SELinux setup is needed
+   for this backend to work.
+
 SFTP
 ~~~~
 
