@@ -121,10 +121,18 @@ if you make a mistake because your old ownCloud files are preserved, so if
 something goes wrong all you have to do is copy them back to their original 
 locations.
 
-Start by putting your server in maintenance mode. Do this by entering your 
-``owncloud/config/config.php`` file and changing ``'maintenance' => false,`` to 
-``'maintenance' => true,``. This prevents new logins, and logged-in users can't 
-make any further requests.
+Start by putting your server in maintenance mode. This prevents new logins, 
+locks the sessions of logged-in users, and displays a status screen so users 
+know what is happening. There are two ways to do this, and the preferred method 
+is to use the ``occ`` command, which you must run as your HTTP user. This example
+is for Ubuntu Linux::
+
+ $ sudo -u www-data php occ maintenance:mode --on
+ 
+Please see :doc:`../configuration/occ_command` to learn more about ``occ``. 
+
+The other way is by entering your ``config.php`` file and changing 
+``'maintenance' => false,`` to ``'maintenance' => true,``. 
 
 1. If you are upgrading to a major release, for example from 7.0.5 to 
    8.0, you must review all third party applications (not core apps), for  
@@ -211,9 +219,6 @@ for recommended setups and supported platforms.)
     
      $ sudo -u www-data php occ upgrade
      
-    Please see :doc:`../configuration_server/occ_command` to learn more about 
-    ``occ``.
-    
 13. The upgrade operation takes a few minutes, depending on the size of your 
     installation. When it is finished you will see a success message, or an 
     error message that will tell where it went wrong.   
