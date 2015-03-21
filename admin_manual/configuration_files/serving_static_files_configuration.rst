@@ -86,9 +86,9 @@ Installation
 ~~~~~~~~~~~~
 X-Accel-Redirect is supported by default in Nginx and no additional operation should be needed to install it.
 
-Configuration
-~~~~~~~~~~~~~
-Configuration is similar to Apache::
+Configuration - Method 1
+~~~~~~~~~~~~~~~~~~~~~~~~
+Method 1 is prefered because it limits what files can be served through X-Accel. ::
 
     location ~ \.php(?:$|/) {
         ...
@@ -129,6 +129,26 @@ Configuration is similar to Apache::
   * **~ ^/data/(?:USER1|USER2)/files/LOCAL-MOUNT-NAME/(.+)$** ~ a local external storage mount available to multiple users
 
   * **~ ^/data/[^/]+/files/LOCAL-MOUNT-NAME/(.+)$** ~ a local external storage mount available to all users
+
+Configuration - Method 2
+~~~~~~~~~~~~~~~~~~~~~~~~
+Method 2 is simpler to setup when using local external storage mounts, especially when they are available to many, but not all users.
+This method may be prefered if you are regularly adding users that should not all have access to the same local external storage mount(s). ::
+
+    location ~ \.php(?:$|/) {
+        ...
+        fastcgi_param MOD_X_ACCEL_REDIRECT_ENABLED on;
+        fastcgi_param MOD_X_ACCEL_REDIRECT_PREFIX /xaccel;
+    }
+
+    location ^~ /xaccel {
+        internal;
+        alias /;
+    }
+
+* **fastcgi_param MOD_X_ACCEL_REDIRECT_ENABLED** ~ Tells ownCloud scripts that they should add the X-Accel-Redirect header when serving files.
+* **fastcgi_param MOD_X_ACCEL_REDIRECT_PREFIX** ~ A prefix to internally serve files from, in this example "/xaccel" is used but this is configurabl.e
+* **location ^~ /xaccel** ~ The location to internally serve files from, must match MOD_X_ACCEL_REDIRECT_PREFIX.
 
 How to check if it's working?
 -----------------------------
