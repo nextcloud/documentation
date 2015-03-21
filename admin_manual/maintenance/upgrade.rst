@@ -129,7 +129,7 @@ is for Ubuntu Linux::
 
  $ sudo -u www-data php occ maintenance:mode --on
  
-Please see :doc:`../configuration/occ_command` to learn more about ``occ``. 
+Please see :doc:`../configuration_server/occ_command` to learn more about ``occ``. 
 
 The other way is by entering your ``config.php`` file and changing 
 ``'maintenance' => false,`` to ``'maintenance' => true,``. 
