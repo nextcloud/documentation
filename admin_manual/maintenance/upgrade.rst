@@ -228,6 +228,14 @@ verify the version number. Check your other settings to make sure they're
 correct. Go to the Apps page and review the core apps to make sure the right 
 ones are enabled. Finally, re-enable your third-party apps.
 
+Setting Strong Permissions
+--------------------------
+   
+For hardened security we  highly recommend setting the permissions on your 
+ownCloud directory as strictly as possible. After upgrading, verify that your ownCloud
+directory permissions are set according to the **Setting Strong Directory Permissions** 
+section of :doc:`../installation/installation_wizard`.
+
 Restore From Backup
 -------------------
 
