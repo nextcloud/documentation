@@ -1,13 +1,14 @@
-===============================================
-Installing ownCloud Enterprise Edition on Linux
-===============================================
+====================================================
+Installing ownCloud Enterprise Subscription on Linux
+====================================================
 
 The recommended method for installing and maintaining your ownCloud Enterprise 
 Subscription is with your Linux package manager. Configure your package manager to 
 use the ownCloud Enterprise Subscription repository, import the signing key, and then 
 install and update ownCloud like any other software package. Please refer to 
 the ``README - ownCloud Package Installation.txt`` document in your account at 
-`Customer.owncloud.com <https://customer.owncloud.com/owncloud/>`_ account.
+`Customer.owncloud.com <https://customer.owncloud.com/owncloud/>`_ account for 
+instructions on setting up your Linux package manager.
 
 After you have completed your initial installation of ownCloud as detailed in 
 the README, follow the instructions in :doc:`../installation/installation_wizard` to finish 
