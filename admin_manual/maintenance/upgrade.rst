@@ -5,18 +5,22 @@ Upgrading Your ownCloud Server
 It is best to keep your ownCloud server upgraded regularly, and to install all 
 point releases and major releases without skipping any of them. Major releases 
 are 6.0, 7.0, and 8.0, and point releases are intermediate releases for each 
-major release. For example, 8.0.1 and 8.0.2 are point releases. There are 
-multiple ways to keep your ownCloud server upgraded: with the Updater App 
-(Server Edition only), with your Linux package manager, and by manually 
-upgrading. In this chapter we will cover using your Linux package manager, and 
-manually upgrading. (See :doc:`update` to learn about the Updater App.)
+major release. For example, 8.0.1 and 8.0.2 are point releases.
+
+There are multiple ways to keep your ownCloud server upgraded: with the Updater 
+App (Server Edition only), with your Linux package manager, and by manually 
+upgrading. In this chapter you will learn how to keep your ownCloud installation 
+current with your Linux package manager, and by manually upgrading.
+
+(See :doc:`update` to learn about the Updater App.)
 
 .. note:: Before upgrading to a new major release, always first review any 
    third-party apps you have installed for compatibility with  
    the new ownCloud release. Any apps that are not developed by ownCloud show a 
    3rd party designation. Install unsupported apps at your own risk. Then, 
    before the upgrade, they must all be disabled. After the upgrade is 
-   complete you may re-enable them.
+   complete and you are sure they are compatible with the new ownCloud 
+   release you may re-enable them.
 
 Preferred Upgrade Method
 ------------------------
@@ -24,18 +28,28 @@ Preferred Upgrade Method
 The best method for keeping ownCloud on Linux servers current is by 
 configuring your system to use the `openSUSE Build Service 
 <http://software.opensuse.org/download.html?project=isv:ownCloud:community& 
-package=owncloud>`_ (see :doc:`../installation/linux_installation`), and then 
-stay current by using your Linux package manager to upgrade.  You should still 
-maintain regular backups (see :doc:`../maintenance/backup`), and make a backup 
-before every upgrade.
+package=owncloud>`_ (see :doc:`../installation/linux_installation`); just 
+follow the instructions on oBS for setting up your package manager. Then 
+stay current by using your Linux package manager to upgrade. 
 
-All supported Linux distributions have update notifications and automatic 
-updaters. When a new ownCloud release is available from the openSUSE Build 
-Service repository, you will see it in your normal Linux package update 
-notifier, or it will be applied along with any other automatic updates. You may 
-wish to disable automatic package updates for ownCloud if you are running 
-third-party apps, so that you can verify their compatibility before upgrading 
-to a major release.
+.. note:: Enterprise Subscription customers will use their Enterprise software
+   repositories to install and update their ownCloud installations, rather 
+   than the openSUSE Build Service. Please see    
+   :doc:`../enterprise_installation/linux_installation` for more information.
+
+You should always maintain regular backups (see :doc:`../maintenance/backup`), 
+and make a backup before every upgrade.
+
+When a new ownCloud release is available you will see a yellow banner in your 
+ownCloud Web interface.
+
+.. figure:: ../images/updater-1.png
+
+**Upgrading is disruptive**. When you upgrade ownCloud with your Linux package 
+manager, that is just the first step to applying the upgrade. After 
+downloading the new ownCloud packages your session will be interrupted, and you 
+must run the upgrade wizard to complete the upgrade, which is discussed in the 
+next section.
 
 Upgrading With Your Linux Package Manager
 -----------------------------------------
@@ -64,14 +78,15 @@ Or update only ownCloud::
  
 Your Linux package manager only downloads the current ownCloud packages. There 
 is one more step, and that is to run the upgrade wizard to perform the final 
-steps of updating the database and turning off maintenance mode. You will see 
-two screens. On the first screen, click the Start Upgrade button, or optionally 
-run the ``occ upgrade`` command instead of clicking the button. 
+steps of updating the database and turning off maintenance mode. After using 
+your package manager to install the current ownCloud release, you will see two 
+screens. On the first screen, click the Start Upgrade button, or optionally run 
+the ``occ upgrade`` command instead of clicking the button. 
 
 .. figure:: ../images/updater-8.png
 
 ``occ upgrade`` 
-is more reliable, especially on installation with large datasets and large 
+is more reliable, especially on installations with large datasets and large 
 numbers of users because it avoids the risk of PHP timeouts. The ``occ`` command 
 is in your ``owncloud/`` directory. You must run it as your HTTP user. This 
 example is for Debian/Ubuntu::
@@ -80,11 +95,16 @@ example is for Debian/Ubuntu::
  
 This example is for Fedora, CentOS, and Red Hat Linux::
 
- $ sudo -u apache php occ upgrade
+ $ sudo -u apache php occ upgrade 
+
+* The HTTP user and group in Debian/Ubuntu is ``www-data``.
+* The HTTP user and group in Fedora/CentOS/RHEL is ``apache``.
+* The HTTP user and group in Arch Linux is ``http``.
+* The HTTP user in openSUSE is ``wwwrun``, and the HTTP group is ``www``. 
 
 See :doc:`../configuration_server/occ_command` to learn more about using the 
 ``occ`` command, and see the **Setting Strong Directory Permissions** section 
-of :doc:`../installation/installation_wizard` to learn about how to find your 
+of :doc:`../installation/installation_wizard` to learn how to find your 
 HTTP user.
 
 When the upgrade is successful you will see the following screen:
@@ -96,11 +116,15 @@ If the upgrade fails, then you must try a manual upgrade.
 Manual Upgrade Procedure
 ------------------------
 
+Manually upgrading ownCloud is a fairly simple procedure, and easy to reverse 
+if you make a mistake because your old ownCloud files are preserved, so if 
+something goes wrong all you have to do is copy them back to their original 
+locations.
+
 Start by putting your server in maintenance mode. Do this by entering your 
 ``owncloud/config/config.php`` file and changing ``'maintenance' => false,`` to 
-``'maintenance' 
-=> true,``. This prevents new logins, and logged-in users can't make any 
-further requests.
+``'maintenance' => true,``. This prevents new logins, and logged-in users can't 
+make any further requests.
 
 1. If you are upgrading to a major release, for example from 7.0.5 to 
    8.0, you must review all third party applications (not core apps), for  
@@ -152,12 +176,11 @@ for recommended setups and supported platforms.)
 9. If you keep your ``data/`` directory in your ``owncloud/`` directory, copy 
    it from your old version of ownCloud to the ``owncloud/`` directory of 
    your new ownCloud version. If you keep it outside of ``owncloud/`` then 
-   you don't have to do anything with it.
+   you don't have to do anything with it, because its location is configured in 
+   your original ``config.php``, and none of the upgrade steps touch it.
 
 .. note:: We recommend storing your ``data/`` directory in a location other 
-   than your ``owncloud/`` directory. If you have your ``data/`` directory 
-   already stored in another location, you can skip this step. If you want to 
-   do so, now is a good time to change the location of your ``data/`` directory. 
+   than your ``owncloud/`` directory.
 
 10. Restart your web server.
 
@@ -198,8 +221,12 @@ for recommended setups and supported platforms.)
 Assuming your upgrade succeeded, take a look at the bottom of the Admin page to 
 verify the version number. Check your other settings to make sure they're 
 correct. Go to the Apps page and review the core apps to make sure the right 
-ones are enabled. Now you can review your third-party apps, and upgrade and 
-enable them.
+ones are enabled. Finally, re-enable your third-party apps.
+
+Restore From Backup
+-------------------
+
+If you need to reverse your upgrade, see :doc:`restore`.
 
 Troubleshooting
 ---------------
