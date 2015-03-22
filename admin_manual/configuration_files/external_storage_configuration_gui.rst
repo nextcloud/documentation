@@ -177,7 +177,10 @@ Connecting to an FTP server requires:
   FTP session with SSL/TLS over ``ftps://`` (Your FTP server must be 
   configured to support ``ftps://``)
 * Enter the ownCloud users or groups who are allowed to access the share.  
-  
+
+.. note:: A non-blocking or correctly configured SELinux setup is needed
+   for this backend to work.
+
 .. figure:: ../images/external-storage-ftp.png
 
 SFTP uses SSH rather than SSL, as FTPS does, so your SFTP sessions are always 
