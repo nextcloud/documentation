@@ -87,7 +87,12 @@ the ``occ upgrade`` command instead of clicking the button.
 
 ``occ upgrade`` 
 is more reliable, especially on installations with large datasets and large 
-numbers of users because it avoids the risk of PHP timeouts. The ``occ`` command 
+numbers of users because it avoids the risk of PHP timeouts. 
+
+.. note:: The ``occ`` command does not download ownCloud updates. You must first download
+   the updated code, and then ``occ`` performs the final upgrade steps.
+
+The ``occ`` command 
 is in your ``owncloud/`` directory. You must run it as your HTTP user. This 
 example is for Debian/Ubuntu::
 
@@ -218,6 +223,9 @@ for recommended setups and supported platforms.)
     avoid PHP timeouts, like this example on Ubuntu Linux::
     
      $ sudo -u www-data php occ upgrade
+     
+   .. note:: The ``occ`` command does not download ownCloud updates. You must first download
+      and install the updated code, and then ``occ`` performs the final upgrade steps.  
      
 13. The upgrade operation takes a few minutes, depending on the size of your 
     installation. When it is finished you will see a success message, or an 
