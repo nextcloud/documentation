@@ -80,7 +80,9 @@ steps:
 ..  note:: If you have a large ownCloud installation, at this point you
     should use the ``occ upgrade`` command, running it as your HTTP user, 
     instead of clicking the Start Update button, in order to avoid PHP 
-    timeouts. This example is for Ubuntu Linux:
+    timeouts. The ``occ`` command does not download ownCloud updates. 
+    You must first download and install the updated code, and then ``occ`` 
+    performs the final upgrade steps.  This example is for Ubuntu Linux:
 
     $ sudo -u www-data php occ upgrade
    
