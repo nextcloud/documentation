@@ -82,9 +82,9 @@ steps:
     instead of clicking the Start Update button, in order to avoid PHP 
     timeouts. The ``occ`` command does not download ownCloud updates. 
     You must first download and install the updated code, and then ``occ`` 
-    performs the final upgrade steps.  This example is for Ubuntu Linux:
+    performs the final upgrade steps.  This example is for Ubuntu Linux::
 
-    $ sudo -u www-data php occ upgrade
+     $ sudo -u www-data php occ upgrade
    
     See :doc:`../configuration_server/occ_command` to learn more about using 
     the ``occ`` command. 
@@ -108,10 +108,11 @@ If the Updater app fails, then you must update manually. (See :doc:`upgrade`.)
 Can't Login Without Updating
 ----------------------------
 
-If you can't login to your ownCloud installation without performing an update first, this means
-that updated ownCloud files have already been downloaded to your server, most likely via 
-your Linux package manager during a routine system update. So you only need to click the Start
-Update button, or run the ``occ`` command to complete the update.
+If you can't login to your ownCloud installation without performing an update 
+first, this means that updated ownCloud files have already been downloaded to 
+your server, most likely via your Linux package manager during a routine system 
+update. So you only need to click the Start Update button, or run the ``occ`` 
+command to complete the update.
 
 .. _setting_strong_permissions:
 
