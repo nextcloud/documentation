@@ -11,6 +11,13 @@ $mapping = array(
     'admin-ldap'              => '/admin_manual/configuration/user_auth_ldap.html',
     'admin-provisioning-api'  => '/admin_manual/configuration/user_provisioning_api.html',
     'admin-source_install'    => '/admin_manual/installation/source_installation.html',
+    'admin-backup'            => '/admin_manual/maintenance/backup.html',
+    'admin-monitoring'        => '/admin_manual/operations/considerations_on_monitoring.html',
+    'admin-performance'       => '/admin_manual/configuration_server/performance_tuning.html',
+    'admin-config'            => '/admin_manual/configuration_server/config_sample_php_parameters.html',
+    'admin-db-conversion'     => '/admin_manual/configuration_database/db_conversion.html',
+
+    'developer-theming'       => '/developer_manual/core/theming.html',
 
     'user-encryption'         => '/user_manual/files/encryption.html',
     'user-files'              => '/user_manual/files/index.html',
@@ -38,6 +45,8 @@ if (array_key_exists($from, $mapping)) {
 } else {
     if (strpos($from, 'admin-') === 0) {
         header('Location: ' . $location . '/admin_manual');
+    } else if (strpos($from, 'developer-') === 0) {
+        header('Location: ' . $location . '/developer_manual');
     } else {
         header('Location: ' . $location . '/user_manual');
     }
