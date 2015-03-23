@@ -3,9 +3,10 @@ Upgrading Your ownCloud Server
 ==============================
 
 It is best to keep your ownCloud server upgraded regularly, and to install all 
-point releases and major releases without skipping any of them. Major releases 
-are 6.0, 7.0, and 8.0, and point releases are intermediate releases for each 
-major release. For example, 8.0.1 and 8.0.2 are point releases.
+point releases and major releases without skipping any of them, as skipping releases
+increases the risk of errors. Major releases are 6.0, 7.0, and 8.0, and point releases 
+are intermediate releases for each major release. For example, 8.0.1 and 8.0.2 are point 
+releases.
 
 There are multiple ways to keep your ownCloud server upgraded: with the Updater 
 App (Server Edition only), with your Linux package manager, and by manually 
@@ -116,15 +117,14 @@ When the upgrade is successful you will see the following screen:
 
 .. figure:: ../images/updater-7.png
 
+After upgrading, verify that your ownCloud
+directory permissions are set according to the **Setting Strong Directory Permissions** 
+section of :doc:`../installation/installation_wizard`.
+
 If the upgrade fails, then you must try a manual upgrade.
 
 Manual Upgrade Procedure
 ------------------------
-
-Manually upgrading ownCloud is a fairly simple procedure, and easy to reverse 
-if you make a mistake because your old ownCloud files are preserved, so if 
-something goes wrong all you have to do is copy them back to their original 
-locations.
 
 Start by putting your server in maintenance mode. This prevents new logins, 
 locks the sessions of logged-in users, and displays a status screen so users 
@@ -225,13 +225,13 @@ for recommended setups and supported platforms.)
      $ sudo -u www-data php occ upgrade
      
    .. note:: The ``occ`` command does not download ownCloud updates. You must first download
-      and install the updated code, and then ``occ`` performs the final upgrade steps.  
+      and install the updated code (steps 1-3), and then ``occ`` performs the final upgrade steps.  
      
 13. The upgrade operation takes a few minutes, depending on the size of your 
     installation. When it is finished you will see a success message, or an 
     error message that will tell where it went wrong.   
 
-Assuming your upgrade succeeded, take a look at the bottom of the Admin page to 
+Assuming your upgrade succeeded, take a look at the bottom of your Admin page to 
 verify the version number. Check your other settings to make sure they're 
 correct. Go to the Apps page and review the core apps to make sure the right 
 ones are enabled. Finally, re-enable your third-party apps.
