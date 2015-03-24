@@ -1,3 +1,4 @@
+======================
 ownCloud Documentation
 ======================
 
@@ -7,6 +8,22 @@ complexity of the server and the split into the core and apps modules,
 the manuals are in this separate directory.
 
 Documentation can be seen on: https://doc.owncloud.org
+
+Manuals
+-------
+
+At this point, this repository hosts three manuals:
+
+* **Users Manual:** Covers topics from an end user's Point of View
+* **Administrators Manual:** Setup, Deployment, Best Practices, etc.
+* **Developers Manual:** Developing Apps for ownCloud & understanding the
+  core Architecture.
+  
+Please work in the appropriate branch. stable6 is for ownCloud 6, stable7 is for ownCloud 7, and 
+master is version 8.0.
+
+.. note:: ``configuration_server/config_sample_php_parameters.rst is auto-generated from the core
+   config.sample.php file; changes to this file must be made in core `<https://github.com/owncloud/core/tree/master/config>`_
 
 License
 -------
@@ -27,18 +44,6 @@ from GitHub.
 For PHP documentation you'll need to get the according language
 domain package. The documenation for PHP source is located at
 http://packages.python.org/sphinxcontrib-phpdomain/reference.html
-
-Manuals
--------
-
-At this point, this repository hosts three manuals:
-
-* **Users Manual:** Covers topics from an end user's Point of View
-* **Administrators Manual:** Setup, Deployment, Best Practices, etc.
-* **Developers Manual:** Developing Apps for ownCloud & understanding the
-  core Architecture.
-  
-Please work in the appropriate branch. stable6 is for ownCloud 6, which is still supported; stable7 is for ownCloud 7, and master is version 8.0.
 
 Editing
 -------
