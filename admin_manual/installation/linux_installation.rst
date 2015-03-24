@@ -52,3 +52,6 @@ in `the Arch User Repository`_.
 **Mageia:** The `Mageia Wiki`_ has a good page on installing ownCloud from the Mageia software repository.
 
 .. _Mageia Wiki: https://wiki.mageia.org/en/OwnCloud
+
+**Debian/Ubuntu:** The package is installing an additional Apache config file to ``/etc/apache2/conf.d/owncloud.conf``
+which contains an ``Alias`` to the owncloud installation directory as well as some more needed configuration options.
