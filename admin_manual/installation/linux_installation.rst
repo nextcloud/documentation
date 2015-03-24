@@ -27,6 +27,9 @@ repository, download and install the repository signing key, and install
 ownCloud. Then run the Installation Wizard to complete your installation. (see 
 :doc:`installation_wizard`).
 
+.. note:: Please don't move the folders provided by this packages after the installation.
+   This will break further updates.
+
 If your distribution is not listed, your Linux distribution may maintain its own 
 ownCloud packages, or you may prefer to install from source code (see 
 :doc:`source_installation`).
