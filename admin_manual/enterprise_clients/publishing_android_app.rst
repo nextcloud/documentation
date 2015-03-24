@@ -5,71 +5,39 @@ Distributing Your Branded Android App (Enterprise Only)
 Now that you have created your branded Android app with ownCloud's ownBuilder 
 service (:doc:`creating_branded_apps`) how do you distribute it to your users? 
 There are multiple ways: :ref:`email`, :ref:`publish_server`, or 
-:ref:`publish_google_play`.
+:ref:`publish_google_play`. However you distribute it, the first step is to 
+digitally sign your new app. Signing your app verifies authorship and 
+authenticity.
 
+When you create your branded Android app we supply you with two ``.apk`` files: 
+one for debugging and testing, and one for deployment, like these examples::
+ 
+ acmecloud_1.7.0-debug.apk
+ acmecloud_1.7.0-release-unsigned.apk
+ 
+The second  ``.apk`` file, ``acmecloud_1.7.0-release-unsigned.apk``, is the one 
+you will sign and distribute.
 
-.. _email:
+Digitally Signing Android Apps
+------------------------------
 
-Email
------
+Signing your app is required, and the most time-consuming part is installing 
+the commands you need to sign them. You need three commands to sign your app: 
+``keytool``, ``jarsigner``, and ``zipalign``. Follow these steps:
 
-You can download your branded Android app from your account on 
-`Customer.owncloud.com <https://customer.owncloud.com/owncloud>`_, and send it 
-as an email attachment to your users. When they open your email on their 
-Android phone or tablet, they must first click the the download arrow (bottom 
-left of the screenshot) to download your app.
+1. Install the signing commands
+2. Create a self-signed certificate with ``keytool``
+3. Use ``jarsigner`` to sign the app, and to verify signing
+4. Use ``zipalign`` to optimize your app
 
-.. image:: ../images/android_custom_1.png
+You only need to create a certificate once, and then use it to sign all of your 
+branded ownCloud apps. If you publish your apps on Google Play they must all be 
+signed with the same certificate.
 
-When the arrow changes to a green checkbox, it has been downloaded. 
+Installing the App Signing Tools
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. image:: ../images/android_custom_2.png
-
-Now your user must click on the green checkbox, and this launches the app 
-installer, and all they have to do is follow the installation wizard to install 
-your branded app.
-
-.. image:: ../images/android_custom_3.png
-
-When the installation is complete, the `ownCloud Android App Manual 
-<https://doc.owncloud.com/android/>`_ contains instructions for using the app.
-
-.. _publish_server:
-
-Publish On Your ownCloud Server
----------------------------------
-
-You can distribute your custom branded app from your ownCloud server. Simply 
-upload it to your ownCloud server and share it like any other file. Your users 
-can log into your ownCloud server on their Android devices with any Web browser 
-and download your custom branded app. Your users only need to open their top 
-left pull-down activity menu to see the download, tap the app name, and then the 
-installer opens.
-
-.. image:: ../images/android_custom_5.png
-
-.. _publish_google_play:
-
-Publish to the Google Play Store
---------------------------------
-
-You may elect to publish your app in the Google Play store, either as a free 
-or paid app. There are serveral steps to publishing a free app:
-
-1. Create a Google Play Publisher account.
-
-2. Sign your branded app with your own signing certificate.
-
-3. Upload your signed branded app to your Google Play Publisher account.
-
-As part of creating your Google Play Publisher account you will have to create 
-some screenshots of your app in specific sizes, and create a store description.
-
-Prequisites
-^^^^^^^^^^^
-
-You need three commands to sign your app: ``keytool``, ``jarsigner``, and 
-``zipalign``. ``keytool`` and ``jarsigner`` are in Java runtimes. Linux users 
+``keytool`` and ``jarsigner`` are in Java runtimes. Linux users 
 can get these in OpenJDK. For example, on current versions of Debian, 
 Mint, and Ubuntu Linux you need to install two packages. The first one supplies 
 ``keytool`` and the second one supplies ``jarsigner``::
@@ -77,12 +45,22 @@ Mint, and Ubuntu Linux you need to install two packages. The first one supplies
  $ sudo apt-get install openjdk-7-jre-headless
  $ sudo apt-get install openjdk-7-jdk
  
-It is simpler to get these on CentOS and Fedora, as they have created some nice 
+On SUSE systems, install this package::
+ 
+ $ sudo zypper install java-1_7_0-openjdk-devel
+ 
+It is simpler to get these on CentOS and Red Hat Enterprise Linux, as they have 
+created some nice 
 wrapper scripts around ``keytool`` and ``jarsigner`` that you can install 
 standalone::
  
  $ sudo yum install keytool-maven-plugin.noarch
  $ sudo yum install maven-jarsigner-plugin.noarch
+ 
+Mac OS X and Windows users can download the Oracle JDK from `Oracle's Java 
+Download 
+<http://www.oracle.com/technetwork/java/javase/downloads/index.html>`_ 
+page. 
  
 ``zipalign`` is included in the `Android Software Development Kit 
 <https://developer.android.com/sdk/index.html>`_. It is a large download, but 
@@ -92,28 +70,30 @@ computer and use it. Go to `Android Software Development Kit
 "Download Android Studio" button.
 
 .. image:: ../images/android_custom_17.png
+   :scale: 75%
 
 Download the appropriate **SDK Tools Only** package for your operating system.
 
 .. image:: ../images/android_custom_18.png
-
-Unpack it and change to the unpacked directory, for example 
-``$ cd android-sdk-linux`` on Linux systems. There is one more step, and that 
-is to install additional tools::
+   :scale: 75%
+   
+Unpack it and change to the unpacked directory, which is ``android-sdk-linux`` 
+on Linux systems, ``android-sdk-macosx`` on Mac systems, and 
+``android-sdk-windows`` on Windows systems. There is one more step, and that is 
+to install additional tools. Run this command from the unpacked directory::
  
- $ tools/android update sdk --no-ui
+ tools/android update sdk --no-ui
  
-This will take some time. When it's finished you'll find ``zipalign`` in the 
-``build-tools`` directory. For convenience, you could copy ``zipalign`` to your 
-home folder or other location of your choice, and to any other computer without 
-installing the whole Android SDK.
+This will take some time, as it is a large download. When it's finished you'll 
+find ``zipalign`` in the ``build-tools`` directory. For convenience, you could 
+copy ``zipalign`` to your home folder or other location of your choice, and to 
+any other computer without installing the whole Android SDK.
 
 Digitally Signing Your App
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Google requires that your apps be digitally signed with your own signing 
-certificate, to verify authorship and the authenticity of your app. Self-signed 
-certificates are acceptable. In these examples the name of the app, as supplied 
+After installing your signing tools, signing your app takes just a few steps. 
+In these examples the name of the app, as supplied 
 by ownBuilder, is ``acmecloud_1.7.0-release-unsigned.apk``.
 
 To create your certificate copy the following command, replacing 
@@ -196,7 +176,8 @@ it's good::
 The last step for preparing your ``.apk`` for release is to run ``zipalign`` on 
 it. ``zipalign`` optimizes your file to use less memory. You must specify both 
 an input and an output file, so this is good time to give your app a shorter 
-name, and it should not say "unsigned"::
+name, and it should not say "unsigned". Our example file will be renamed to 
+``acmecloud_1.7.0.apk``::
 
  $ zipalign -v 4 acmecloud_1.7.0-release-unsigned.apk acmecloud_1.7.0.apk
  Verifying alignment of acmecloud_1.7.0.apk (4)...
@@ -208,8 +189,65 @@ name, and it should not say "unsigned"::
    Verification succesful
 
 Again, this emits a lot of output, and when you see **Verification succesful** 
-at the end you know it succeeded, and it is ready to upload to the Google Play 
-Store. 
+at the end you know it succeeded, and it is ready to distribute.
+
+.. _email:
+
+Distribution via Email
+----------------------
+
+You can download your branded Android app from your account on 
+`Customer.owncloud.com <https://customer.owncloud.com/owncloud>`_, and send it 
+as an email attachment to your users. (This is not the optimal way to distribute 
+it as it is over 2 megabytes in size.) When they open your email on their 
+Android phone or tablet, they must first click the the download arrow (bottom 
+right of the screenshot) to download your app.
+
+.. image:: ../images/android_custom_1.png
+
+When the arrow changes to a green checkbox, it has been downloaded. 
+
+.. image:: ../images/android_custom_2.png
+
+Now your user must click on the green checkbox, and this launches the app 
+installer, and all they have to do is follow the installation wizard to install 
+your branded app.
+
+.. image:: ../images/android_custom_3.png
+   :scale: 75%
+
+When the installation is complete, the `ownCloud Android App Manual 
+<https://doc.owncloud.com/android/>`_ contains instructions for using the app.
+
+.. _publish_server:
+
+Publish On Your ownCloud Server
+-------------------------------
+
+You can distribute your branded app from your ownCloud server. Simply upload it 
+to your ownCloud server and share it like any other file: you can create normal 
+ownCloud shares with ownCloud users and groups, and you may create a link share 
+to share it with anyone. (See the **Files & Synchronization** section of the 
+`ownCloud User Manual 
+<https://doc.owncloud.org/server/8.0/user_manual/files/index.html>`_ to learn 
+more about sharing files.)
+
+.. _publish_google_play:
+
+Publish to the Google Play Store
+--------------------------------
+
+You may elect to publish your app in the Google Play store, either as a free 
+or paid app. There are several steps to publishing a free app:
+
+1. Create a Google Play Publisher account.
+
+2. Sign your branded app with your own signing certificate.
+
+3. Upload your signed branded app to your Google Play Publisher account.
+
+As part of creating your Google Play Publisher account you will have to create 
+some screenshots of your app in specific sizes, and create a store description.
 
 Create a Google Play Publisher Account
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -236,6 +274,7 @@ the Save Draft button to preserve your changes.)
 On the next screen, enter your product description.
 
 .. image:: ../images/android_custom_8.png
+   :scale: 75%
 
 Then you'll have to upload a batch of graphics in various sizes for the 
 **Graphic Assets** section, like these images for a smartphone and seven-inch 
@@ -269,6 +308,7 @@ For now let's make this a free app, so click the Free button and select the
 countries you want to distribute it in.
 
 .. image:: ../images/android_custom_13.png
+   :scale: 75%
 
 Now you may upload your app.
  
@@ -280,6 +320,7 @@ page and click **Upload your first APK to Production**. You don't need a license
 key for a free app.
 
 .. image:: ../images/android_custom_14.png
+   :scale: 75%
 
 Drag-and-drop, or browse to select your app.
 
@@ -288,19 +329,22 @@ Drag-and-drop, or browse to select your app.
 A successful upload looks like this:
 
 .. image:: ../images/android_custom_20.png
+   :scale: 75%
 
 Your app is not yet published, but only uploaded to your account. There is one 
 more step to take before you can publish, and that is to go back to the 
 **Pricing & Distribution** page and fill out the **Consent** section. 
 
 .. image:: ../images/android_custom_21.png
+   :scale: 75%
 
 Click the Save Draft button, and if you followed all the required steps you 
 should now see a **Publish App** button. 
 
 .. image:: ../images/android_custom_22.png
 
-It will not be published immediately, but after review by Google.
+It will not be published immediately, but after review by Google, which usually 
+takes just a few hours.
 
 .. image:: ../images/android_custom_23.png
 
