@@ -7,3 +7,4 @@ Creating Custom and Branded ownCloud Clients (ES only)
 
    creating_branded_apps
    custom_client_repos
+   publishing_android_app
