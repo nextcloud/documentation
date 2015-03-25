@@ -364,6 +364,23 @@ to use the link to your branded app instead of the ownCloud app, and see the
 **Theming the First Run Wizard** section of :doc:`../operations/theming` to 
 learn how to create a custom icon for your branded app.
 
+Publishing a Paid App in Google Play
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you would rather not give your branded app away you can sell it on Google 
+Play. You may convert a paid app to free, but you may not convert a free app to 
+paid.
+
+You must establish a Google Wallet Merchant Account. On your Google Dev Console 
+click the **Learn more** link under the Free/Paid button for a nice thorough 
+review of the process and tools. It requires verifying your business 
+information and bank account, and you should expect it to take 3-4 days. 
+
+.. image:: ../images/android_custom_26.png
+
+When you're ready to set it up, click the **Set up a merchant account now** 
+link under the Free/Paid button.
+
 Resources
 ---------
 
