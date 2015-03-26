@@ -57,6 +57,10 @@ generic recommendation is not really possible.
 We recommend to use the `Mozilla SSL Configuration Generator`_ to generate a suitable configuration suited for your environment,
 furthermore the free `Qualys SSL Labs Tests`_ give a good guidance whether the SSL server was correctly configured.
 
+Use a dedicated domain for ownCloud
+-----------------------------------
+Administrators are encouraged to install ownCloud on a dedicated domain such as cloud.domain.tld instead of domain.tld to
+gain all the benefits offered by the Same-Origin-Policy.
 
 Serve security related Headers by the web server
 ------------------------------------------------
