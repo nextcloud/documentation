@@ -1126,3 +1126,6 @@ configuration. DO NOT ADD THIS SWITCH TO YOUR CONFIGURATION!
 
 If you, brave person, have read until here be aware that you should not
 modify *ANY* settings in this file without reading the documentation.
+
+.. ALL_OTHER_SECTIONS_END
+.. Generated content above. Don't change this.
