@@ -16,6 +16,7 @@ $mapping = array(
     'admin-performance'       => '/admin_manual/configuration_server/performance_tuning.html',
     'admin-config'            => '/admin_manual/configuration_server/config_sample_php_parameters.html',
     'admin-db-conversion'     => '/admin_manual/configuration_database/db_conversion.html',
+    'admin-security'          => '/admin_manual/configuration_server/hardening.html',
 
     'developer-theming'       => '/developer_manual/core/theming.html',
 
