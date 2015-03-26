@@ -1129,3 +1129,16 @@ modify *ANY* settings in this file without reading the documentation.
 
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
+
+App config options
+------------------
+
+Retention for activities of the activity app:
+
+
+::
+
+	'activity_expire_days' => 365,
+
+Every day a cron job is ran, which deletes all activities for all users
+which are older then the number of days that is set for ``activity_expire_days``
