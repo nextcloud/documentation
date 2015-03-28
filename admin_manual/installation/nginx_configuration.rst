@@ -39,6 +39,10 @@ Nginx Configuration
     # Disable gzip to avoid the removal of the ETag header
     gzip off;
 
+    # Uncomment if your server is build with the ngx_pagespeed module
+    # This module is currently not supported.
+    #pagespeed off;
+
     rewrite ^/caldav(.*)$ /remote.php/caldav$1 redirect;
     rewrite ^/carddav(.*)$ /remote.php/carddav$1 redirect;
     rewrite ^/webdav(.*)$ /remote.php/webdav$1 redirect;
