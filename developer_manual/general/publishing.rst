@@ -121,7 +121,7 @@ Be technically sound
 
 Respect the users
 
-* Apps have to follow design and `HTML/CSS layout guidelines <https://doc.owncloud.org/server/8.0/developer_manual/app/css.html>`_
+* Apps have to follow design and `HTML/CSS layout guidelines <../app/css.html>`_
 * Apps correctly clean up after themselves on uninstall and correctly handle up- and downgrades
 * Apps clearly communicate their intended purpose and active features, including features introduced through updates.
 * Apps respect the users' choices and do not make unexpected changes, or limit users' ability to revert them. For example, they do not remove other apps or disable settings.
