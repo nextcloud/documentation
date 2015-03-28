@@ -106,12 +106,14 @@ App guidelines
 These are the app guidelines an app has to comply with to have a chance to be approved.
 
 Legal and security
+
 * Apps can not use 'ownCloud' in their name
 * Irregular and unannounced security audits of all apps can and will take place. If ever any indication of malicious intent is found, the developer(s) can count on a minimum 2 year ban from any ownCloud app infrastructure. Malicious intent includes deliberate spying on users by leaking user data to a third party system, ... (lukas, help out, man! what is evil?)
 * Apps do not violate any laws; it has to comply with copyright- and trademark law.
 * App authors have to respond timely to security concerns and not make ownCloud more vulnerable to attack.
 
 Be technically sound
+
 * Apps can only use the public ownCloud API
 * At time of the release of an app it can only be configured to be compatible with the latest ownCloud release +1
 * Apps should not cause ownCloud to break, consume excessive memory or slow ownCloud down
@@ -119,7 +121,7 @@ Be technically sound
 
 Respect the users
 
-* Apps have to follow design and HTML/CSS layout guidelines - https://doc.owncloud.org/server/8.0/developer_manual/app/css.html
+* Apps have to follow design and `HTML/CSS layout guidelines <https://doc.owncloud.org/server/8.0/developer_manual/app/css.html>`_
 * Apps correctly clean up after themselves on uninstall and correctly handle up- and downgrades
 * Apps clearly communicate their intended purpose and active features, including features introduced through updates.
 * Apps respect the users' choices and do not make unexpected changes, or limit users' ability to revert them. For example, they do not remove other apps or disable settings.
