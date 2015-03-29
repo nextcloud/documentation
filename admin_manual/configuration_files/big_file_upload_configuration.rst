@@ -15,6 +15,9 @@ hard limits that cannot be exceeded:
 64-bit filesystems have much higher limits; consult the documentation for your 
 filesystem.
 
+.. note:: The ownCloud sync client is not affected by this described upload limits
+   as it is uploading files in smaller chunks.
+
 System Configuration
 --------------------
 
