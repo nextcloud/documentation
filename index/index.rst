@@ -12,13 +12,29 @@ Additional ownCloud Resources
   <https://owncloud.org/eight>`_ Video introduction to ownCloud 8.
 * `Where to get help 
   <https://owncloud.org/faq/>`_ when the documentation is not enough.
+ 
+------------
+ownCloud 8.1
+------------
+
+This documents the *development* version of ownCloud.
+
+* `User Manual <https://doc.owncloud.org/server/8.1/user_manual/>`_ (`Download 
+  PDF <https://doc.owncloud.org/server/8.1/ownCloudUserManual.pdf>`_)
+* `Administration Manual <https://doc.owncloud.org/server/8.1/admin_manual/>`_
+  (`Download PDF   
+  <https://doc.owncloud.org/server/8.1/ownCloudServerAdminManual.pdf>`_)
+* `Developer Manual <https://doc.owncloud.org/server/8.1/developer_manual/>`_ 
+  (`Download PDF 
+  <https://doc.owncloud.org/server/8.1/ownCloudDeveloperManual.pdf>`_) 
+
    
 ------------
 ownCloud 8.0
 ------------
 
-This documents *all* editions of the *latest* version of ownCloud, Server and 
-Enterprise Subscription, suitable for production use.
+This documents *latest* version of ownCloud, Server and Enterprise Subscription, 
+suitable for production use.
 
 * `User Manual <https://doc.owncloud.org/server/8.0/user_manual/>`_ (`Download 
   PDF <https://doc.owncloud.org/server/8.0/ownCloudUserManual.pdf>`_)
