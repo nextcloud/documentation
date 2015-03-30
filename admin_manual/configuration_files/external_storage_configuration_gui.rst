@@ -59,6 +59,23 @@ When using self-signed certificates for external storage mounts the certificate
 needs to be imported in the personal settings of the user. Please refer to `this <http://ownclouden.blogspot.de/2014/11/owncloud-https-external-mount.html>`_
 blogpost for more informations.
 
+Adding files to external storages
+---------------------------------
+
+In general it is recommended to configure the background job ``Webcron`` or
+``Cron`` as described in :doc:`../configuration_server/background_jobs_configuration`
+so ownCloud is able to detect files added to your external storages without the need
+that a users is browsing your ownCloud installation.
+
+Please also be aware that ownCloud might not always be able to find out what has been
+changed remotely (files changes without going through ownCloud), especially
+when it's very deep in the folder hierarchy of the external storage.
+
+You might need to setup a cron job that runs ``sudo -u www-data php occ files:scan --all``
+(or replace "--all" with the user name, see also :doc:`../configuration_server/occ_command`)
+to trigger a rescan of the user's files periodically (for example every 15 minutes), which includes
+the mounted external storage.
+
 Local Storage
 -------------
 
