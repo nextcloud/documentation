@@ -25,6 +25,10 @@ AJAX
 
 The AJAX scheduling method is the default option.  Unfortunately, however, it is also the least reliable. Each time a user visits the ownCloud page, a single background job is executed. The advantage of this mechanism is that is does not require access to the system nor registration with a third party service. The disadvantage of this mechanism, when compared to the Webcron service, is that it requires regular visits to the page for it to be triggered.
 
+.. note:: Especially when using the Activity App or external storages, where new
+   files are added, updated or deleted one of the two methods below should be
+   preferred.
+
 Webcron
 ~~~~~~~
 
