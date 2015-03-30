@@ -5,11 +5,11 @@
 
 $mapping = array(
     'admin-dir_permissions'   => '/admin_manual/installation/installation_wizard.html#setting-strong-directory-permissions',
-    'admin-encryption'        => '/admin_manual/configuration/encryption_configuration.html',
-    'admin-external-storage'  => '/admin_manual/configuration/external_storage_configuration_gui.html',
+    'admin-encryption'        => '/admin_manual/configuration_files/encryption_configuration.html',
+    'admin-external-storage'  => '/admin_manual/configuration_files/external_storage_configuration_gui.html',
     'admin-install'           => '/admin_manual/installation/index.html',
-    'admin-ldap'              => '/admin_manual/configuration/user_auth_ldap.html',
-    'admin-provisioning-api'  => '/admin_manual/configuration/user_provisioning_api.html',
+    'admin-ldap'              => '/admin_manual/configuration_user/user_auth_ldap.html',
+    'admin-provisioning-api'  => '/admin_manual/configuration_user/user_provisioning_api.html',
     'admin-source_install'    => '/admin_manual/installation/source_installation.html',
     'admin-backup'            => '/admin_manual/maintenance/backup.html',
     'admin-monitoring'        => '/admin_manual/operations/considerations_on_monitoring.html',
@@ -20,14 +20,14 @@ $mapping = array(
 
     'developer-theming'       => '/developer_manual/core/theming.html',
 
-    'user-encryption'         => '/user_manual/files/encryption.html',
+    'user-encryption'         => '/user_manual/files/encrypting_files.html',
     'user-files'              => '/user_manual/files/index.html',
     'user-manual'             => '/user_manual',
-    'user-sync-calendars'     => '/user_manual/pim/calendar.html#synchronising-calendars-with-caldav',
-    'user-sync-contacts'      => '/user_manual/pim/contacts.html#keeping-your-addressbook-in-sync',
-    'user-trashbin'           => '/user_manual/files/deletedfiles.html',
-    'user-versions'           => '/user_manual/files/versioncontrol.html',
-    'user-webdav'             => '/user_manual/files/files.html',
+    'user-sync-calendars'     => '/user_manual/pim/calendar.html#synchronizing-calendars-using-caldav',
+    'user-sync-contacts'      => '/user_manual/pim/contacts.html#synchronizing-address-books',
+    'user-trashbin'           => '/user_manual/files/deleted_file_management.html',
+    'user-versions'           => '/user_manual/files/version_control.html',
+    'user-webdav'             => '/user_manual/files/access_webdav.html',
 );
 
 ############# Do not edit below this line #################
