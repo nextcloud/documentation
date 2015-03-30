@@ -40,3 +40,11 @@ Allow access to a remote database
 An additional setting is needed if your installation is connecting to a remote database::
 
  setsebool -P httpd_can_network_connect_db on
+ 
+Allow access to LDAP server
+---------------------------
+
+Use this setting to allow LDAP connections::
+
+ setsebool -P httpd_can_connect_ldap on
+  
