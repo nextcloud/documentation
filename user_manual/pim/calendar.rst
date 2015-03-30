@@ -1,5 +1,10 @@
+======================
 Using the Calendar App
 ======================
+
+The Calendar app is not included in ownCloud 8, and is not 
+supported. You may easily install it by clicking the Enable button on its 
+entry in Apps > PIM.
 
 The ownCloud Calendar app enables you to create and edit events, synchronize to
 other calendars you might use, and create new, personalized calendars.

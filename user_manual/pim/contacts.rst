@@ -2,6 +2,10 @@
 Using the Contacts App
 ======================
 
+The Contacts app is not included in ownCloud 8, and is not 
+supported. You may easily install it by clicking the Enable button on its 
+entry in Apps > PIM.
+
 The ownCloud Contacts app is similar to other mobile contact applications, but 
 with more functionality.  When you first access the Contacts app, a default 
 address book becomes available.
