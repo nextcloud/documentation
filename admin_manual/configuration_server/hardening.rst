@@ -10,6 +10,15 @@ This document lists some security hardenings which require manual interaction by
           however in some cases that are considered second level as defense administrators are encouraged to check these
           hardenings manually.
 
+Deployment
+----------
+
+Move data directory outside of the web root
+*******************************************
+It is highly recommended to move the data directory (where ownCloud stores its data) outside of the web root (i.e. outside
+of ``/var/www``), this can be done by modifying the ``datadirectory`` switch in the configuration file. It is possible to
+do this also after an instance has been installed by moving the folder manually.
+
 Use HTTPS
 ---------
 Using ownCloud without using an encrypted HTTPS connection might allow attackers in a man-in-the-middle (MITM) situation
