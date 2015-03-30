@@ -4,7 +4,8 @@ ownCloud aims to ship with secure defaults that do not need to get modified by a
 some additional security hardening can only be applied in scenarios were the administrator have complete control over the
 ownCloud instance.
 
-This document lists some security hardenings which require manual interaction by administrators.
+This document lists some security hardenings which require manual interaction by administrators. The whole document content
+is based on the assumption that you run ownCloud Server on Apache2 on a Linux environment.
 
 .. note:: ownCloud will warn you in the administration interface if some critical security relevant options are missing,
           however in some cases that are considered second level as defense administrators are encouraged to check these
