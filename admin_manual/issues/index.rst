@@ -36,6 +36,64 @@ If you can't find a solution, please use our `bugtracker`_.
 .. _bugtracker: http://doc.owncloud.org/server/8.0/developer_manual/bugtracker/index.html
 .. TODO ON RELEASE: Update version number above on release
 
+Troubleshooting Webserver and PHP problems
+------------------------------------------
+
+Logfiles
+~~~~~~~~
+
+When having issues the first step is to check the logfiles provided by PHP and
+the Webserver.
+
+.. note:: In the following the paths to the logfiles of a default Debian installation
+   running Apache2 with mod_php is assumed. On other webservers, linux distros or
+   operating systems they can differ.
+
+* The logfile of Apache2 is located in ``/var/log/apache2/error.log``.
+* The logfile of PHP can be configured in your ``/etc/php5/apache2/php.ini``. 
+  You need to set the directive ``log_errors`` to ``On`` and choose the path
+  to store the logfile in the ``error_log`` directive. After those changes you
+  need to restart your Webserver.
+* The logfile of ownCloud is located in the datadirectory ``/var/www/owncloud/data/owncloud.log``.
+
+Webserver and PHP modules
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+There are some Webserver or PHP modules which are known to cause various problems
+like broken up-/downloads. The following shows a draft overview over this modules:
+
+1. Apache
+
+* mod_pagespeed
+* mod_evasive
+* mod_security
+* mod_reqtimeout
+* mod_deflate
+* libapache2-mod-php5filter (use libapache2-mod-php5 instead)
+* mod_spdy together with libapache2-mod-php5 / mod_php (use fcgi or php-fpm instead)
+* mod_dav
+* mod_xsendfile / X-Sendfile (causing broken downloads if not configured correctly)
+
+2. NginX
+
+* ngx_pagespeed
+* HttpDavModule
+* X-Sendfile (causing broken downloads if not configured correctly)
+
+3. Mac OS X server
+
+* mod_auth_apple
+* com.apple.webapp.webdavsharing
+
+4. LigHTTPd
+
+* ModWebDAV
+* X-Sendfile2 (causing broken downloads if not configured correctly)
+
+5. PHP
+
+* eAccelerator
+
 Troubleshooting WebDAV
 ----------------------
 
