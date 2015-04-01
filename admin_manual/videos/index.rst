@@ -2,9 +2,17 @@
 ownCloud Videos
 ===============
 
-Please visit our `YouTube channel 
-<https://www.youtube.com/user/ownCloudofficial/>`_ for howtos, demos, news, and 
-Webinars for both the Server and Enterprise versions of ownCloud.
+Please visit the `owncloud.com YouTube channel
+<https://www.youtube.com/user/ownCloudofficial/>`_ for howtos, demos, news, and Webinars
+for both the Server and Enterprise versions of ownCloud.
+
+The `ownclouders communty YouTube channel <https://www.youtube.com/user/ownclouders/>`_
+gathers howtos and tutorials from all over the
+web `in this playlist
+<https://www.youtube.com/watch?v=NNfWIme5sFc&list=PLtZe22ggl2YBi1u2dH0qg9fgnym5DwYbW>`_.
+
+You can find `more webinars, white papers and other resources on owncloud.com.
+<https://owncloud.com/resources/>`_
 
 Server to Server Sharing on ownCloud 7
 --------------------------------------

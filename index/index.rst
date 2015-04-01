@@ -11,7 +11,7 @@ Additional ownCloud Resources
 * `What's New in ownCloud 8 
   <https://owncloud.org/eight>`_ Video introduction to ownCloud 8.
 * `Where to get help 
-  <https://owncloud.org/faq/>`_ when the documentation is not enough.
+  <https://owncloud.org/support/>`_ when the documentation is not enough.
  
 ------------
 ownCloud 8.1
