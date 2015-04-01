@@ -36,14 +36,55 @@ If you can't find a solution, please use our `bugtracker`_.
 .. _bugtracker: http://doc.owncloud.org/server/8.0/developer_manual/bugtracker/index.html
 .. TODO ON RELEASE: Update version number above on release
 
+General Troubleshooting
+-----------------------
+
+Debugging the issue
+~~~~~~~~~~~~~~~~~~~
+
+In a standard ownCloud installation the log level is set to "Normal". to find any issues
+you need to raise the log level to "All" from the Admin page. Please see :doc:`../configuration_server/logging_configuration`
+for more informations on this log levels.
+
+Some logging - for example JavaScript console logging - needs manually editing the
+configuration file.
+Edit :file:`config/config.php` and add ``define('DEBUG', true);``::
+
+    <?php
+    define('DEBUG',true);
+    $CONFIG = array (
+        ... configuration goes here ...
+    );
+
+For JavaScript issues you will also need to view the javascript console. All major browsers
+have decent developer tools for viewing the console, and you usually access them by
+pressing F-12. For Firefox it is recommended to install the `Firebug extension <https://getfirebug.com/>`_.
+
+.. note:: The logfile of ownCloud is located in the datadirectory ``/var/www/owncloud/data/owncloud.log``.
+
+Debugging Sync-Issues
+~~~~~~~~~~~~~~~~~~~~~
+
+.. note:: The data directory on the server is exclusive to ownCloud and must not be modified manually.
+
+Disregarding this can lead to unwanted behaviours like:
+
+* Problems with sync clients
+* Undetected changes due to caching in the database
+
+If you need to directly upload files from the same server please use a WebDAV command
+line client like `cadaver` to upload files to the WebDAV interface at:
+
+  https://example.org/owncloud/remote.php/webdav
+
 Troubleshooting Webserver and PHP problems
 ------------------------------------------
 
 Logfiles
 ~~~~~~~~
 
-When having issues the first step is to check the logfiles provided by PHP and
-the Webserver.
+When having issues the first step is to check the logfiles provided by PHP, the Webserver
+and ownCloud itself.
 
 .. note:: In the following the paths to the logfiles of a default Debian installation
    running Apache2 with mod_php is assumed. On other webservers, linux distros or
@@ -116,27 +157,8 @@ helpful. See:
 Troubleshooting Contacts & Calendar
 -----------------------------------
 
-Debugging the issue
-```````````````````
-
-In a standard ownCloud installation the log level is set to "Normal". to find any issues
-you need to raise the log level to "All" from the Admin page.
-Some logging - for example JavaScript console logging - needs manually editing the
-configuration file.
-Edit :file:`config/config.php` and add ``define('DEBUG', true);``::
-
-    <?php
-    define('DEBUG',true);
-    $CONFIG = array (
-        ... configuration goes here ...
-    );
-
-For JavaScript issues you will also need to view the javascript console. All major browsers
-have decent developer tools for viewing the console, and you usually access them by
-pressing F-12. For Firefox it is recommended to install the `Firebug extension <https://getfirebug.com/>`_.
-
 Service discovery
-`````````````````
+~~~~~~~~~~~~~~~~~
 
 Some clients - especially iOS - have problems finding the proper sync URL, even when explicitly
 configured to use it.
@@ -145,7 +167,7 @@ There are several techniques to remedy this, which are described extensively at 
 `Sabre DAV website <http://sabre.io/dav/service-discovery/>`_.
 
 Apple iOS
-`````````
+~~~~~~~~~
 
 Below is what have proven to work with iOS including iOS 7.
 
@@ -173,7 +195,7 @@ Now change the URL in the client settings to just use ``ADDRESS`` instead of e.g
 This problem is being discussed in the `forum <http://forum.owncloud.org/viewtopic.php?f=3&t=71&p=2211#p2197>`_.
 
 Unable to update Contacts or Events
-```````````````````````````````````
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you get an error like ``PATCH https://ADDRESS/some_url HTTP/1.0 501 Not Implemented`` it is
 likely caused by one of the following reasons:
@@ -185,18 +207,3 @@ Outdated lighttpd web server
 Using Pound reverse-proxy/load balancer
   As of writing this Pound doesn't support the HTTP/1.1 verb.
   Pound is easily `patched <http://www.apsis.ch/pound/pound_list/archive/2013/2013-08/1377264673000>`_ to support HTTP/1.1.
-
-General Troubleshooting
------------------------
-
-.. note:: The data directory on the server is exclusive to ownCloud and must not be modified manually.
-
-Disregarding this can lead to unwanted behaviours like:
-
-* Problems with sync clients
-* Undetected changes due to caching in the database
-
-If you need to directly upload files from the same server please use a WebDAV command
-line client like `cadaver` to upload files to the WebDAV interface at:
-
-  https://example.org/owncloud/remote.php/webdav
