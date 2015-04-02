@@ -7,7 +7,9 @@ ownCloud can automatically collect all JavaScript and CSS files, aggregate and c
 
 If your web server has write access to your ownCloud installation, then the 'assets' folder will be automatically created for you, otherwise, you need to create it yourself before enabling that option and you must give write access to your web server user.
 
-Assets found in that folder will from now on be served as static files by your web server and will be automatically updated whenever a change is detected.
+Assets found in that folder will from now on be served as static files by your web server and will be automatically refreshed whenever ownCloud or one of its apps is updated.
+It's important to note that apps installed via git might not always update their version number with every commit and this could lead to an out-of-sync asset folder.
+It is not recommended to enable asset-pipelining when using apps pulled via git.
 
 
 Parameters
