@@ -4,11 +4,21 @@ ownCloud aims to ship with secure defaults that do not need to get modified by a
 some additional security hardening can only be applied in scenarios were the administrator have complete control over the
 ownCloud instance.
 
-This document lists some security hardenings which require manual interaction by administrators.
+This document lists some security hardenings which require manual interaction by administrators. The whole document content
+is based on the assumption that you run ownCloud Server on Apache2 on a Linux environment.
 
 .. note:: ownCloud will warn you in the administration interface if some critical security relevant options are missing,
           however in some cases that are considered second level as defense administrators are encouraged to check these
           hardenings manually.
+
+Deployment
+----------
+
+Move data directory outside of the web root
+*******************************************
+It is highly recommended to move the data directory (where ownCloud stores its data) outside of the web root (i.e. outside
+of ``/var/www``), this can be done by modifying the ``datadirectory`` switch in the configuration file. It is possible to
+do this also after an instance has been installed by moving the folder manually.
 
 Use HTTPS
 ---------
