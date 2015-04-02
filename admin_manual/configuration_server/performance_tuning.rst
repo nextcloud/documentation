@@ -116,8 +116,8 @@ Object Caching
 
 ownCloud is written to take advantage of object caching. Object caching can be 
 done locally with the APCu extension, or for distributed PHP environments using 
-Memcached. Memcached servers must be specified in the "memcached_servers" array 
-in ownCloud's config file.
+Memcached. Memcached servers must be specified in the ``memcached_servers`` array 
+in ownCloud's config file ``config.php``. For examples see ``config.sample.php``
 
 Serving static files via web server
 ===================================
@@ -191,7 +191,7 @@ your webservers module for more information:
 
 * `mod-spdy for Apache <https://code.google.com/p/mod-spdy/>`_
 
-* `ngx_http_spdy_module for NginX 
+* `ngx_http_spdy_module for nginx 
   <http://nginx.org/en/docs/http/ngx_http_spdy_module.html>`_
 
 .. note:: If you want to enable SPDY for Apache please note the `Known Issues 
@@ -480,8 +480,8 @@ Compile Nginx with the ``nginx-cache-purge`` module
 Add following lines (in case, replace ``{trusty}`` by your distribution  
 name)::
 
-   deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx``
-   deb -src http://nginx.org/packages/mainline/ubuntu/ trusty nginx``    
+   deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx
+   deb -src http://nginx.org/packages/mainline/ubuntu/ trusty nginx    
 
 Then run ``sudo apt-get update``
 
@@ -498,7 +498,7 @@ Then run ``sudo apt-get update``
 
    cd /opt
    sudo apt-get build-dep nginx
-   sudo apt-get source nginx`  
+   sudo apt-get source nginx
 
 3. **Download module(s) to be compiled in and configure compiler arguments**
     
@@ -524,7 +524,7 @@ If not present, add the following line at the top under::
    #export DH_VERBOSE=1:
    MODULESDIR = $(CURDIR)/debian/modules
    
-And the end of every ``./configure`` command add::
+And the end of every ``configure`` command add::
 
   --add-module=$(MODULESDIR)/ngx_cache_purge
     
@@ -551,19 +551,19 @@ The parameters may now look::
    
 .. code-block:: bash  
 
-   nginx -V 2>&1  grep  ngx_cache_purge -o``
+   nginx -V 2>&1 | grep ngx_cache_purge -o
     
 It should show now: ``ngx_cache_purge``
     
 Show Nginx version including all features compiled and installed::
 
-   nginx -V 2>&1  sed s/" --"/"\n\t--"/g
+   nginx -V 2>&1 | sed s/" --"/"\n\t--"/g
 
 6. **Mark Nginx to be blocked from further updates via apt-get**
 
 .. code-block:: bash
 
-   sudo dpkg --get-selections  grep nginx
+   sudo dpkg --get-selections | grep nginx
     
 For every nginx component listed run ``sudo apt-mark hold <component>``   
 
@@ -588,12 +588,11 @@ Configure Nginx with the ``nginx-cache-purge`` module
 
 .. code-block:: bash
 
-   sudo vi /etc/nginx/sites-enabled/{your-ownCloud-nginx-config-file}``
+   sudo vi /etc/nginx/sites-enabled/{your-ownCloud-nginx-config-file}
     
 Add at the *beginning*, but *outside* the ``server{}`` block::
 
-   fastcgi_cache_path {path} levels=1:2 keys_zone=OWNCLOUD:100m 
-   inactive=60m;
+   fastcgi_cache_path {path} levels=1:2 keys_zone=OWNCLOUD:100m inactive=60m;
    
 Add *inside* the ``server{}`` block, as an example of a configuration::
    
