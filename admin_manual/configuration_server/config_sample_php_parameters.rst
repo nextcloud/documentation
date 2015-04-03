@@ -778,7 +778,11 @@ Use this if LibreOffice/OpenOffice requires additional arguments.
 ::
 
 	'enabledPreviewProviders' => array(
-		'OC\Preview\Image',
+		'OC\Preview\PNG',
+		'OC\Preview\JPEG',
+		'OC\Preview\GIF',
+		'OC\Preview\BMP',
+		'OC\Preview\XBitmap',
 		'OC\Preview\MP3',
 		'OC\Preview\TXT',
 		'OC\Preview\MarkDown'
@@ -788,7 +792,11 @@ Only register providers that have been explicitly enabled
 
 The following providers are enabled by default:
 
- - OC\\Preview\\Image
+ - OC\\Preview\\PNG
+ - OC\\Preview\\JPEG
+ - OC\\Preview\\GIF
+ - OC\\Preview\\BMP
+ - OC\\Preview\\XBitmap
  - OC\\Preview\\MarkDown
  - OC\\Preview\\MP3
  - OC\\Preview\\TXT
