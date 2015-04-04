@@ -42,8 +42,8 @@ General Troubleshooting
 Debugging the issue
 ~~~~~~~~~~~~~~~~~~~
 
-In a standard ownCloud installation the log level is set to "Normal". to find any issues
-you need to raise the log level to "All" from the Admin page. Please see :doc:`../configuration_server/logging_configuration`
+In a standard ownCloud installation the log level is set to ``Normal``. To find any issues
+you need to raise the log level to ``All`` from the Admin page. Please see :doc:`../configuration_server/logging_configuration`
 for more informations on this log levels.
 
 Some logging - for example JavaScript console logging - needs manually editing the
@@ -73,9 +73,27 @@ Disregarding this can lead to unwanted behaviours like:
 * Undetected changes due to caching in the database
 
 If you need to directly upload files from the same server please use a WebDAV command
-line client like `cadaver` to upload files to the WebDAV interface at:
+line client like ``cadaver`` to upload files to the WebDAV interface at:
 
   https://example.org/owncloud/remote.php/webdav
+
+Common problems / error messages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Some common problems / error messages found in your logfiles as described above:
+
+* ``SQLSTATE[HY000] [1040] Too many connections`` -> You need to increase the
+  connection limit of your database, please refer to the manual of your database
+  for more informations.
+* ``SQLSTATE[HY000]: General error: 5 database is locked`` -> You're using ``SQLite``
+  which can't handle a lot of parallel requests. Please consider converting to
+  another database like described in :doc:`../configuration_database/db_conversion`.
+* ``SQLSTATE[HY000]: General error: 2006 MySQL server has gone away`` -> The database
+  request takes too long and therefore the MySQL server times out. Please refer
+  to the manual of your database how to raise the configured timeouts.
+* ``SQLSTATE[HY000] [2002] No such file or directory`` -> There is a problem
+  accessing your SQLite database file in your datadirectory (``data/owncloud.db``).
+  Please check the permissions of this folder/file or if it exists at all.
 
 Troubleshooting Webserver and PHP problems
 ------------------------------------------
@@ -153,6 +171,9 @@ helpful. See:
 * `Finder, OS X's built-in WebDAV client 
   <http://sabre.io/dav/clients/finder/>`_ 
   (Describes problems with Finder on various webservers)
+
+There is also a well maintained FAQ thread available at the `ownCloud Forums <https://forum.owncloud.org/viewtopic.php?f=17&t=7536>`_
+forums which contains various additional informations about WebDAV problems.
 
 Troubleshooting Contacts & Calendar
 -----------------------------------
