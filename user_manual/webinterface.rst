@@ -10,6 +10,9 @@ your ownCloud server and enter your username and password.
 
     **ownCloud login window**
 
+.. note:: Some apps like ``files_external`` or ``files_encryption`` are disabling the ``remember``
+   checkbox (shown above) on purpose if they are enabled by your administrator. 
+
 Navigating the Main User Interface
 ------------------------------------
 
