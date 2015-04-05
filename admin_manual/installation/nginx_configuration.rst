@@ -111,4 +111,7 @@ Nginx Configuration
           **post_max_size** values. You’ll need to restart php5-fpm and nginx
 	  services in order these changes to be applied.
 
-.. note:: ownCloud comes with its own ``owncloud/.htaccess`` file. If PHP-FPM is used, it can't read ``.htaccess`` PHP settings unless a PECL extension is installed. If PHP-FPM is used without the PECL extension installed, settings and permissions must be set in the ``owncloud/.user.ini`` file.
+.. note:: ownCloud comes with its own ``owncloud/.htaccess`` file. If PHP-FPM is used,
+          it can't read ``.htaccess`` PHP settings unless the ``htscanner`` PECL extension
+          is installed. If PHP-FPM is used without this PECL extension installed, settings
+          and permissions must be set in the ``owncloud/.user.ini`` file.
