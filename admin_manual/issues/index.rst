@@ -173,7 +173,7 @@ helpful. See:
   (Describes problems with Finder on various webservers)
 
 There is also a well maintained FAQ thread available at the `ownCloud Forums <https://forum.owncloud.org/viewtopic.php?f=17&t=7536>`_
-forums which contains various additional informations about WebDAV problems.
+which contains various additional informations about WebDAV problems.
 
 Troubleshooting Contacts & Calendar
 -----------------------------------
