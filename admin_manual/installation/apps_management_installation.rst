@@ -1,6 +1,6 @@
-=============================
+============================
 Installing and Managing Apps
-=============================
+============================
 
 After installing ownCloud, you may provide added functionality by installing applications.
 
@@ -20,9 +20,10 @@ takes you to the ownCloud Developer Manual.
 Managing Apps
 -------------
 
-In the Apps page, you can enable or disable applications.Some apps have some configurable 
-options on the Apps page, but mainly they are enabled or disabled here, and are 
-configured on your ownCloud Admin page.
+In the Apps page you can enable or disable applications. Some apps have  
+configurable options on the Apps page, such as **Enable only for specific 
+groups**, but mainly they are enabled or disabled here, and are configured on 
+your ownCloud Admin or Personal page.
 
 Adding Third Party Apps
 -----------------------
