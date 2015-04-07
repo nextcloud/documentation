@@ -20,7 +20,7 @@ Features
 
 Deprecations
 ============
-This is a deprecation roadmap which lists all current deprecation targets and will be updated from release to release:
+This is a deprecation roadmap which lists all current deprecation targets and will be updated from release to release. This lists the version when a specific method or class will be removed.
 
 .. note:: Deprecations on interfaces also affect the implementing classes!
 
