@@ -13,11 +13,12 @@ Updater App is useful for installations that do not have root access,
 such as shared hosting, and for installations with a smaller number of users 
 and data.
 
-.. note:: The Updater app is not included in ownCloud Enterprise Subscription, 
-   but is only in the Server edition.
+.. note:: The Updater app is not enabled and not supported in ownCloud 
+   Enterprise Subscription.
 
-You should maintain regular backups 
-(see :doc:`backup`), and make a backup before every update. 
+You should maintain regular backups (see :doc:`backup`), and make a backup 
+before every update. The Updater app does not backup your database or data 
+directory.
 
 The Updater app performs these operations:
 
@@ -30,7 +31,6 @@ The Updater app performs these operations:
   current instance to ``updater_backup/tmp``
 * Moves all directories from ``updater_backup/packageVersion`` to the current 
   version
-* Updates the ownCloud database
 * Copies your old ``config.php`` to the new ``config/`` directory
 
 Using the Updater app to update your ownCloud installation is just a few 
@@ -103,7 +103,7 @@ backups from this screen.
 .. figure:: ../images/updater-11.png
     :scale: 75 %
 
-If the Updater app fails, then you must update manually. (See :doc:`upgrade`.)
+If the update fails, then you must update manually. (See :doc:`upgrade`.)
 
 Can't Login Without Updating
 ----------------------------
