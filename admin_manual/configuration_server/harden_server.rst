@@ -1,4 +1,5 @@
-Hardening and security guidance
+===============================
+Hardening and Security Guidance
 ===============================
 ownCloud aims to ship with secure defaults that do not need to get modified by administrators. However, in some cases
 some additional security hardening can only be applied in scenarios were the administrator have complete control over the

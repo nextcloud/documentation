@@ -5,6 +5,7 @@ ownCloud Server Configuration
 .. toctree::
    :maxdepth: 2
 
+   occ_command
    antivirus_configuration
    automatic_configuration
    background_jobs_configuration   
@@ -15,9 +16,8 @@ ownCloud Server Configuration
    knowledgebase_configuration
    language_configuration
    logging_configuration
-   occ_command
-   performance_tuning
-   
+   harden_server
+   performance_tuning   
    reverse_proxy_configuration
    search_configuration   
    thirdparty_php_configuration
