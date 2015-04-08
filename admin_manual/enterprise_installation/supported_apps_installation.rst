@@ -1,5 +1,9 @@
+===============================================
 Supported ownCloud Enterprise Subscription Apps
 ===============================================
+
+See :doc:`../installation/apps_management_installation` for instructions on 
+managing ownCloud apps.
 
 These applications are supported in ownCloud Enterprise Edition. The first name 
 on each line is the name of the application as it appears on the Apps page in 
@@ -54,6 +58,6 @@ WebDAV user backend (user_webdavauth)
 
 Windows Network Drive (windows_network_drive)
 
-3rd party and unsupported apps must be disabled before performing a system 
-upgrade. Then find and install the upgraded versions, and after the upgrade is 
-complete re-enable them.
+.. note::3rd party and unsupported apps must be disabled before performing a 
+   system upgrade. Then install the upgraded versions, and after the 
+   upgrade is complete re-enable them.

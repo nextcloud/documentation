@@ -2,7 +2,6 @@
 Enterprise Subscription Installation (ES Only)
 ==============================================
 
-
 .. toctree::
    :maxdepth: 2
    
