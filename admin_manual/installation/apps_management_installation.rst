@@ -5,6 +5,12 @@ Installing and Managing Apps
 After installing ownCloud, you may provide added functionality by installing 
 applications.
 
+Enterprise Subscription Supported Apps
+--------------------------------------
+
+See :doc:`../enterprise_installation/supported_apps_installation` for a list of 
+supported Enterprise Subscription apps.
+
 Viewing Enabled Apps
 --------------------
 
@@ -131,5 +137,3 @@ To enable installation from your own apps store:
 
     "appstoreenabled" => true,
     "appstoreurl" => "http://api.apps.owncloud.com/v1",
-
-    
