@@ -10,7 +10,10 @@ Viewing Enabled Apps
 During the ownCloud installation, some apps are enabled by default. To see which apps are 
 enabled go to your Apps page.
 
-.. image:: ../images/oc_admin_app_page.png
+.. figure:: ../images/oc_admin_app_page.png
+   :scale: 50%
+   
+   *Click to enlarge*
 
 You will see which apps are enabled, not enabled, and recommended. You'll also see 
 additional filters, such as Multimedia, PIM, and Productivity for finding apps quickly. 
