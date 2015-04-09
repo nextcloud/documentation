@@ -27,6 +27,19 @@ see additional filters, such as Multimedia, PIM, and Productivity for finding
 apps quickly. The ``More apps`` link takes you to the ownCloud App Store, and 
 the ``Add your app`` link takes you to the ownCloud Developer Manual.
 
+Re-enabling Contacts and Calendar Apps
+--------------------------------------
+
+The Contacts and Calendar apps are unsupported community apps, and by 
+default are not enabled or installed in ownCloud 8. You may easily install and 
+enable them by clicking on the PIM filter, and then clicking the **Enable** 
+buttons for both apps. This will download and enable them.
+
+If you were using Contacts and Calendar in previous versions of ownCloud, and 
+you upgraded to ownCloud 8, your Contacts and Calendar data are still in your 
+ownCloud database. Installing and enabling them in ownCloud 8 will 
+automatically restore your data.
+
 Managing Apps
 -------------
 

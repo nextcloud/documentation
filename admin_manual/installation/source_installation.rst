@@ -292,7 +292,3 @@ See :doc:`yaws_configuration`
 **Hiawatha Configuration**
 
 See :doc:`hiawatha_configuration`
-
-**Microsoft Internet Information Server (IIS)**
-
-See :doc:`windows_installation` for further instructions.
