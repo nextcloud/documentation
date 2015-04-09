@@ -2,6 +2,15 @@
 ownCloud Documentation Overview
 ===============================
 
+----------------
+Getting ownCloud
+----------------
+
+You can download and install ownCloud on your own Linux server, use the Web 
+Installer to install it on shared Web hosting, try some prefab cloud images, 
+or sign up for hosted ownCloud services. See the `Get Started 
+<https://owncloud.org/install/>`_ page for more information.
+
 -----------------------------
 Additional ownCloud Resources
 -----------------------------
