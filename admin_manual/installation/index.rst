@@ -16,5 +16,3 @@ Installation
    yaws_configuration
    selinux_configuration
    macos_installation
-   windows_installation
-   windows2_installation
