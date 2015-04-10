@@ -678,6 +678,16 @@ The URL of the appstore to use.
 
 ::
 
+	'appstore.experimental.enabled' => false,
+
+Whether to show experimental apps in the appstore interface
+
+Experimental apps are not checked for security issues and are new or known
+to be unstable and under heavy development. Installing these can cause data
+loss or security breaches.
+
+::
+
 	'apps_paths' => array(
 		array(
 			'path'=> '/var/www/owncloud/apps',
@@ -728,14 +738,14 @@ Valid values are ``true``, to enable previews, or
 
 ::
 
-	'preview_max_x' => null,
+	'preview_max_x' => 2048,
 
 The maximum width, in pixels, of a preview. A value of ``null`` means there
 is no limit.
 
 ::
 
-	'preview_max_y' => null,
+	'preview_max_y' => 2048,
 
 The maximum height, in pixels, of a preview. A value of ``null`` means there
 is no limit.
