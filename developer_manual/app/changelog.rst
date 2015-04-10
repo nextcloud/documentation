@@ -20,7 +20,7 @@ Features
 
 Deprecations
 ============
-This is a deprecation roadmap which lists all current deprecation targets and will be updated from release to release:
+This is a deprecation roadmap which lists all current deprecation targets and will be updated from release to release. This lists the version when a specific method or class will be removed.
 
 .. note:: Deprecations on interfaces also affect the implementing classes!
 
@@ -54,3 +54,7 @@ This is a deprecation roadmap which lists all current deprecation targets and wi
 * `OCP\\AppFramework\\IApi <https://github.com/owncloud/core/blob/d59c4e832fea87d03d199a3211186a47fd252c32/lib/public/appframework/iapi.php>`_: full class
 * `OCP\\AppFramework\\IAppContainer <https://github.com/owncloud/core/blob/d59c4e832fea87d03d199a3211186a47fd252c32/lib/public/appframework/iappcontainer.php>`_: methods **getCoreApi** and **log**
 * `OCP\\AppFramework\\Controller <https://github.com/owncloud/core/blob/d59c4e832fea87d03d199a3211186a47fd252c32/lib/public/appframework/controller.php>`_: methods **params**, **getParams**, **method**, **getUploadedFile**, **env**, **cookie**, **render**
+
+8.1
+---
+* `\\OC\\Preferences <https://github.com/owncloud/core/commit/909a53e087b7815ba9cd814eb6c22845ef5b48c7>`_ and `\\OC_Preferences <https://github.com/owncloud/core/commit/4df7c0a1ed52ed1922116686cb5ad8da2544c997>`_
