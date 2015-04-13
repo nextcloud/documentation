@@ -12,6 +12,18 @@ is based on the assumption that you run ownCloud Server on Apache2 on a Linux en
           however in some cases that are considered second level as defense administrators are encouraged to check these
           hardenings manually.
 
+Operating system
+----------------
+
+Give PHP read accesss to ``/dev/urandom``
+*****************************************
+ownCloud uses a `RFC 4086 ("Randomness Requirements for Security")`_ compliant mixer to generate cryptographically secure
+pseudo-random numbers. This means that when generating a random number ownCloud will request multiple random numbers from
+different sources and deriviate from these the final random number.
+
+The random number generation also tries to request random numbers from ``/dev/urandom``, thus it is highly recommended to
+configure your setup in such a way that PHP is able to read random data from it.
+
 Deployment
 ----------
 
@@ -101,3 +113,4 @@ and verify that above mentioned security headers are shipped.
 
 .. _Mozilla SSL Configuration Generator: https://mozilla.github.io/server-side-tls/ssl-config-generator/
 .. _Qualys SSL Labs Tests: https://www.ssllabs.com/ssltest/
+.. _RFC 4086 ("Randomness Requirements for Security"): https://tools.ietf.org/html/rfc4086#section-5.2
