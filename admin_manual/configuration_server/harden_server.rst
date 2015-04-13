@@ -24,6 +24,11 @@ different sources and deriviate from these the final random number.
 The random number generation also tries to request random numbers from ``/dev/urandom``, thus it is highly recommended to
 configure your setup in such a way that PHP is able to read random data from it.
 
+Enable hardening modules such as SELinux
+****************************************
+It is highly recommend to enable hardening modules such as SELinux where possible. A list of required configurations can
+be found in our documentation.
+
 Deployment
 ----------
 
