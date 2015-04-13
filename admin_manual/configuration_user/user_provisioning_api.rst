@@ -346,7 +346,7 @@ Status codes:
 Example
 -------
 
-  * POST ``http://admin:secret@myowncloud.org/ocs/v1.php/cloud/users/Frank/subadmin -d 
+  * POST ``http://admin:secret@myowncloud.org/ocs/v1.php/cloud/users/Frank/subadmins -d 
     groupid="group"``
   * Makes the user ``Frank`` a subadmin of the ``group`` group
 
@@ -369,7 +369,7 @@ users / removesubadmin
 
 Removes the subadmin rights for the user specified from the group specified. Authentication is done by sending a Basic HTTP Authorization header.
 
-**Syntax: ocs/v1.php/cloud/users/{userid}/subadmin**
+**Syntax: ocs/v1.php/cloud/users/{userid}/subadmins**
 
 * HTTP method: DELETE
 * DELETE argument: groupid, string - the group from which to remove the user's subadmin rights
@@ -384,7 +384,7 @@ Status codes:
 Example
 -------
 
-  * DELETE ``http://admin:secret@myowncloud.org/ocs/v1.php/cloud/users/Frank/subadmin -d groupid="oldgroup"``
+  * DELETE ``http://admin:secret@myowncloud.org/ocs/v1.php/cloud/users/Frank/subadmins -d groupid="oldgroup"``
   * Removes ``Frank's`` subadmin rights from the ``oldgroup`` group
 
 XML Output
@@ -419,7 +419,7 @@ Status codes:
 Example
 -------
 
-  * GET ``http://admin:secret@myowncloud.org/ocs/v1.php/cloud/users/Frank/subadmin``
+  * GET ``http://admin:secret@myowncloud.org/ocs/v1.php/cloud/users/Frank/subadmins``
   * Returns the groups of which ``Frank`` is a subadmin
 
 XML Output
