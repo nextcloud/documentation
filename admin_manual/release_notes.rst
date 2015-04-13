@@ -3,7 +3,7 @@ ownCloud |version| Release Notes
 ================================
 
 Recommended Setup for Running ownCloud
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------------
 
 For best performance, stability, support, and full functionality we recommend:
 
@@ -13,7 +13,7 @@ For best performance, stability, support, and full functionality we recommend:
 * Apache 2.4
 
 Supported Platforms
-^^^^^^^^^^^^^^^^^^^
+-------------------
 
 * Server: Linux (Debian 7, SUSE Linux Enterprise Server 11 SP3 & 12, 
   Red Hat Enterprise Linux/Centos 6.5 and 7, Ubuntu 12.04 LTS, 14.04 LTS, 
@@ -27,6 +27,24 @@ Supported Platforms
   21, openSUSE 12.3, 13)
 * Mobile apps: iOS 7+, Android 4+
 * Web browser: IE8+, Firefox 14+, Chrome 18+, Safari 5+
+
+Windows Not Supported
+^^^^^^^^^^^^^^^^^^^^^
+
+The ownCloud 8 server is not supported on any version of Windows.
+
+Enterprise 8.0 Only
+-------------------
+
+Sharepoint Drive SSL Not Verified
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The SharePoint Drive app does not verify the SSL certificate of the SharePoint 
+server or the ownCloud server, as it is expected that both devices are in the 
+same trusted environment.
+
+ownCloud 8.0
+------------
 
 Windows Server Not Supported
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -97,13 +115,21 @@ on your ownCloud server.
 .. https://github.com/owncloud/core/issues/10657
 
 
-**-- Enterprise 8 Only --**
----------------------------
+Enterprise 8.0 Only
+-------------------
+
+Sharepoint Drive SSL Not Verified
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The SharePoint Drive app does not verify the SSL certificate of the SharePoint 
+server or the ownCloud server, as it is expected that both devices are in the 
+same trusted environment.
 
 No Federated Cloud Sharing with Shibboleth
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Federated Cloud Sharing (formerly Server-to-Server file sharing)does not work with Shibboleth .
+Federated Cloud Sharing (formerly Server-to-Server file sharing)does not work 
+with Shibboleth .
 
 .. https://github.com/owncloud/user_shibboleth/issues/28
 
@@ -132,8 +158,8 @@ App Store is Back
 The ownCloud App Store has been re-enabled in oC 8. Note that third-party apps 
 are not supported.
 
-**-- ownCloud 7 Release Notes --**
-----------------------------------
+ownCloud 7 Release Notes
+------------------------
 
 LDAP Search Performance Improved
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -229,13 +255,14 @@ Setting a user's storage quota should be the equivalent of read-only, however,
 users can 
 still create empty files.
 
-**-- Enterprise 7 Only --**
----------------------------
+Enterprise 7 Only
+-----------------
 
 No Federated Cloud Sharing with Shibboleth
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Federated Cloud Sharing (formerly Server-to-Server file sharing)does not work with Shibboleth .
+Federated Cloud Sharing (formerly Server-to-Server file sharing) does not work 
+with Shibboleth .
 
 Windows Network Drive
 ^^^^^^^^^^^^^^^^^^^^^
