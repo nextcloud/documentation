@@ -33,7 +33,7 @@ Windows Not Supported
 
 The ownCloud 8 server is not supported on any version of Windows.
 
-Enterprise 8.0 Only
+Enterprise 8.1 Only
 -------------------
 
 Sharepoint Drive SSL Not Verified
