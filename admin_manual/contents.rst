@@ -27,7 +27,5 @@ Enterprise Subscription Only
     enterprise_installation/index
     enterprise_clients/index
     enterprise_external_storage/index
+    enterprise_files_drop/index
     enterprise_user_management/index
-    
-..    uncomment this when the app is released and page is published    
-..    enterprise_files_drop/index

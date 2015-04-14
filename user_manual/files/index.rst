@@ -11,6 +11,7 @@ Files & Synchronization
    desktop_mobile_sync
    encrypting_files
    federated_cloud_sharing
+   file_drop
    large_file_upload
    quota
    version_control
