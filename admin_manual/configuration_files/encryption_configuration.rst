@@ -174,22 +174,25 @@ to do this. If you have enabled the Recovery Key then you can change a user's pa
 the ownCloud Users panel to match their back-end password, and then, of course, notify the 
 user and give them their new password.
 
-"Missing requirements" Message on Windows Servers
--------------------------------------------------
+.. This section commented out because there is no windows support
+.. in oC8; un-comment this if windows support is restored
+.. "Missing requirements" Message on Windows Servers
+.. --------------------------------------------------
 
-If you get a "Missing requirements" error message when you enable encryption on 
-a Windows server, enter the absolute location of your openSSL configuration file in 
-``config.php``::
+.. If you get a "Missing requirements" error message when you enable encryption 
+.. on a Windows server, enter the absolute location of your openSSL 
+.. configuration file in ``config.php``::
 
-  'openssl' => array(
-      'config' => 'C:\path\to\openssl.cnf',
-  ),
+..   'openssl' => array(
+..      'config' => 'C:\path\to\openssl.cnf',
+..  ),
   
-For example, in a typical installation on a 64-bit Windows 7 system it looks like this::
+.. For example, in a typical installation on a 64-bit Windows 7 system it looks 
+.. like this::
 
-  'openssl' => array(
-      'config' => 'C:\OpenSSL-Win64\openssl.cnf',
-  ),
+..  'openssl' => array(
+..      'config' => 'C:\OpenSSL-Win64\openssl.cnf',
+..  ),
 
-There are many ways to configure OpenSSL, so be sure to verify your correct file
-location.
+.. There are many ways to configure OpenSSL, so be sure to verify your correct 
+.. file location.
