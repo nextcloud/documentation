@@ -960,7 +960,8 @@ If unset, defaults to the value of memcache.local
 	'redis' => array(
 		'host' => 'localhost', // can also be a unix domain socket: '/tmp/redis.sock'
 		'port' => 6379,
-		'timeout' => 0.0
+		'timeout' => 0.0,
+		'dbindex' => 0, // Optional, if undefined SELECT will not run and will use Redis Server's default DB Index.
 	),
 
 Connection details for redis to use for memory caching.
