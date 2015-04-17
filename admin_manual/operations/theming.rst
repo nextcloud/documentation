@@ -22,6 +22,11 @@ it in ``config.php`` with the ``theme`` directive:
 .. code-block:: php
 
   'theme' => 'themename',
+  
+.. note:: When you upgrade ownCloud custom themes are disabled, as custom 
+   themes can sometimes break the upgrade routine. You must re-enable your 
+   custom theme after the upgrade is complete by re-entering your theme name in 
+   config.php.
 
 This theme overrides any Javascript files, images, templates and CSS files in other 
 locations. Your directory structure should be the same as in ``owncloud/core/``::
