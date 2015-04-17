@@ -89,11 +89,13 @@ Some common problems / error messages found in your logfiles as described above:
   which can't handle a lot of parallel requests. Please consider converting to
   another database like described in :doc:`../configuration_database/db_conversion`.
 * ``SQLSTATE[HY000]: General error: 2006 MySQL server has gone away`` -> The database
-  request takes too long and therefore the MySQL server times out. Please refer
-  to the manual of your database how to raise the configured timeouts.
+  request takes too long and therefore the MySQL server times out. Its also possible
+  that the server is dropping a too large packet. Please refer to the manual of your
+  database how to raise the config options ``wait_timeout`` and/or ``max_allowed_packet``.
 * ``SQLSTATE[HY000] [2002] No such file or directory`` -> There is a problem
   accessing your SQLite database file in your datadirectory (``data/owncloud.db``).
-  Please check the permissions of this folder/file or if it exists at all.
+  Please check the permissions of this folder/file or if it exists at all. If you're
+  using MySQL please start your database.
 
 Troubleshooting Webserver and PHP problems
 ------------------------------------------
