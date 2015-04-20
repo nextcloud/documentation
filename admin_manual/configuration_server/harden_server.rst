@@ -19,15 +19,15 @@ Give PHP read accesss to ``/dev/urandom``
 *****************************************
 ownCloud uses a `RFC 4086 ("Randomness Requirements for Security")`_ compliant mixer to generate cryptographically secure
 pseudo-random numbers. This means that when generating a random number ownCloud will request multiple random numbers from
-different sources and deriviate from these the final random number.
+different sources and derive from these the final random number.
 
 The random number generation also tries to request random numbers from ``/dev/urandom``, thus it is highly recommended to
 configure your setup in such a way that PHP is able to read random data from it.
 
 Enable hardening modules such as SELinux
 ****************************************
-It is highly recommend to enable hardening modules such as SELinux where possible. A list of required configurations can
-be found in our documentation.
+It is highly recommend to enable hardening modules such as SELinux where possible. See See :doc:`selinux_configuration.rst`
+to learn more about SELinux.
 
 Deployment
 ----------
