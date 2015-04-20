@@ -38,6 +38,16 @@ It is highly recommended to move the data directory (where ownCloud stores its d
 of ``/var/www``), this can be done by modifying the ``datadirectory`` switch in the configuration file. It is possible to
 do this also after an instance has been installed by moving the folder manually.
 
+Disable preview image generation
+********************************
+ownCloud is able to generate preview images of common filetypes such as images or text files. By default the preview generation
+for some file types that we consider secure enough for deployment is enabled by default. However, administrators should be
+aware that these previews are generated using PHP libraries written in C which might be vulnerable to vulnerable attack vectors.
+
+For high security deployments we recommend disabling the preview generation by setting the ``enable_previews`` switch to
+``false`` in the configuration file. As an administrator you are also able to manage which preview providers are enabled
+by modifying the ``enabledPreviewProviders`` option switch.
+
 Use HTTPS
 ---------
 Using ownCloud without using an encrypted HTTPS connection might allow attackers in a man-in-the-middle (MITM) situation
