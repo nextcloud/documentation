@@ -31,7 +31,7 @@ Supported Platforms
 Older Desktop Clients Not Allowed to Connect and Sync
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Because of various technical issues, desktop sync clients older than 1.6.1 are 
+Because of various technical issues, desktop sync clients older than 1.7 are 
 not allowed to connect and sync with the ownCloud server.
 
 Windows Not Supported
