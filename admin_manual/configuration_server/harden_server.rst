@@ -8,9 +8,8 @@ ownCloud instance.
 This document lists some security hardenings which require manual interaction by administrators. The whole document content
 is based on the assumption that you run ownCloud Server on Apache2 on a Linux environment.
 
-.. note:: ownCloud will warn you in the administration interface if some critical security relevant options are missing,
-          however in some cases that are considered second level as defense administrators are encouraged to check these
-          hardenings manually.
+.. note:: ownCloud will warn you in the administration interface if some critical security-relevant options are missing.
+          However, it is still up to the server administrator to review and maintain system security.
 
 Operating system
 ----------------
@@ -35,8 +34,8 @@ Deployment
 Move data directory outside of the web root
 *******************************************
 It is highly recommended to move the data directory (where ownCloud stores its data) outside of the web root (i.e. outside
-of ``/var/www``), this can be done by modifying the ``datadirectory`` switch in the configuration file. It is possible to
-do this also after an instance has been installed by moving the folder manually.
+of ``/var/www``) It is possible to do this by moving the folder manually, and then adjusting the ``'datadirectory'``
+parameter in ``config.php``.
 
 Disable preview image generation
 ********************************
@@ -45,7 +44,7 @@ for some file types that we consider secure enough for deployment is enabled by 
 aware that these previews are generated using PHP libraries written in C which might be vulnerable to vulnerable attack vectors.
 
 For high security deployments we recommend disabling the preview generation by setting the ``enable_previews`` switch to
-``false`` in the configuration file. As an administrator you are also able to manage which preview providers are enabled
+``false`` in ``config.php``. As an administrator you are also able to manage which preview providers are enabled
 by modifying the ``enabledPreviewProviders`` option switch.
 
 Use HTTPS
