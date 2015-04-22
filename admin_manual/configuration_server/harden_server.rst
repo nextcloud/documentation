@@ -25,8 +25,8 @@ configure your setup in such a way that PHP is able to read random data from it.
 
 Enable hardening modules such as SELinux
 ****************************************
-It is highly recommend to enable hardening modules such as SELinux where possible. See See :doc:`selinux_configuration.rst`
-to learn more about SELinux.
+It is highly recommend to enable hardening modules such as SELinux where possible. See 
+:doc:`selinux_configuration.rst` to learn more about SELinux.
 
 Deployment
 ----------
@@ -52,12 +52,12 @@ Use HTTPS
 Using ownCloud without using an encrypted HTTPS connection might allow attackers in a man-in-the-middle (MITM) situation
 to intercept your users data and passwords. Thus ownCloud always recommends to setup ownCloud behind HTTPS.
 
-How to setup HTTPS on your web server depends on your setup, we recommend to check your distributions vendor information
+How to setup HTTPS on your web server depends on your setup, we recommend to check your distribution's vendor information
 on how to configure and setup HTTPS.
 
 Redirect all unencrypted traffic to HTTPS
 *****************************************
-To redirect all HTTP traffic to HTTPS administrators are encouraged to issue a permanent redirect using the 301 statuscode,
+To redirect all HTTP traffic to HTTPS administrators are encouraged to issue a permanent redirect using the 301 status code,
 when using Apache this can be achieved by a setting such as the following in the Apache VirtualHosts config:
 
 .. code-block:: none
