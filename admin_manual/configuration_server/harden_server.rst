@@ -1,64 +1,78 @@
 ===============================
 Hardening and Security Guidance
 ===============================
-ownCloud aims to ship with secure defaults that do not need to get modified by administrators. However, in some cases
-some additional security hardening can only be applied in scenarios were the administrator have complete control over the
-ownCloud instance.
 
-This document lists some security hardenings which require manual interaction by administrators. The whole document content
-is based on the assumption that you run ownCloud Server on Apache2 on a Linux environment.
+ownCloud aims to ship with secure defaults that do not need to get modified by 
+administrators. However, in some cases some additional security hardening can 
+only be applied in scenarios were the administrator have complete control over 
+the ownCloud instance.
 
-.. note:: ownCloud will warn you in the administration interface if some critical security-relevant options are missing.
-          However, it is still up to the server administrator to review and maintain system security.
+This document lists some security hardenings which require manual interaction by 
+administrators. The whole document content is based on the assumption that you 
+run ownCloud Server on Apache2 on a Linux environment.
+
+.. note:: ownCloud will warn you in the administration interface if some 
+   critical security-relevant options are missing. However, it is still up to 
+   the server administrator to review and maintain system security.
 
 Operating system
 ----------------
 
 Give PHP read accesss to ``/dev/urandom``
 *****************************************
-ownCloud uses a `RFC 4086 ("Randomness Requirements for Security")`_ compliant mixer to generate cryptographically secure
-pseudo-random numbers. This means that when generating a random number ownCloud will request multiple random numbers from
-different sources and derive from these the final random number.
+ownCloud uses a `RFC 4086 ("Randomness Requirements for Security")`_ compliant 
+mixer to generate cryptographically secure pseudo-random numbers. This means 
+that when generating a random number ownCloud will request multiple random 
+numbers from different sources and derive from these the final random number.
 
-The random number generation also tries to request random numbers from ``/dev/urandom``, thus it is highly recommended to
-configure your setup in such a way that PHP is able to read random data from it.
+The random number generation also tries to request random numbers from 
+``/dev/urandom``, thus it is highly recommended to configure your setup in such 
+a way that PHP is able to read random data from it.
 
 Enable hardening modules such as SELinux
 ****************************************
-It is highly recommend to enable hardening modules such as SELinux where possible. See 
-:doc:`../installation/selinux_configuration.rst` to learn more about SELinux.
+It is highly recommend to enable hardening modules such as SELinux where 
+possible. See :doc:`../installation/selinux_configuration` to learn more about 
+SELinux.
 
 Deployment
 ----------
 
 Move data directory outside of the web root
 *******************************************
-It is highly recommended to move the data directory (where ownCloud stores its data) outside of the web root (i.e. outside
-of ``/var/www``) It is possible to do this by moving the folder manually, and then adjusting the ``'datadirectory'``
-parameter in ``config.php``.
+It is highly recommended to move the data directory (where ownCloud stores its 
+data) outside of the web root (i.e. outside of ``/var/www``) It is possible to 
+do this by moving the folder manually, and then adjusting the 
+``'datadirectory'`` parameter in ``config.php``.
 
 Disable preview image generation
 ********************************
-ownCloud is able to generate preview images of common filetypes such as images or text files. By default the preview generation
-for some file types that we consider secure enough for deployment is enabled by default. However, administrators should be
-aware that these previews are generated using PHP libraries written in C which might be vulnerable to vulnerable attack vectors.
+ownCloud is able to generate preview images of common filetypes such as images 
+or text files. By default the preview generation for some file types that we 
+consider secure enough for deployment is enabled by default. However, 
+administrators should be aware that these previews are generated using PHP 
+libraries written in C which might be vulnerable to vulnerable attack vectors.
 
-For high security deployments we recommend disabling the preview generation by setting the ``enable_previews`` switch to
-``false`` in ``config.php``. As an administrator you are also able to manage which preview providers are enabled
-by modifying the ``enabledPreviewProviders`` option switch.
+For high security deployments we recommend disabling the preview generation by 
+setting the ``enable_previews`` switch to ``false`` in ``config.php``. As an 
+administrator you are also able to manage which preview providers are enabled by 
+modifying the ``enabledPreviewProviders`` option switch.
 
 Use HTTPS
 ---------
-Using ownCloud without using an encrypted HTTPS connection might allow attackers in a man-in-the-middle (MITM) situation
-to intercept your users data and passwords. Thus ownCloud always recommends to setup ownCloud behind HTTPS.
+Using ownCloud without using an encrypted HTTPS connection might allow attackers 
+in a man-in-the-middle (MITM) situation to intercept your users data and 
+passwords. Thus ownCloud always recommends to setup ownCloud behind HTTPS.
 
-How to setup HTTPS on your web server depends on your setup, we recommend to check your distribution's vendor information
-on how to configure and setup HTTPS.
+How to setup HTTPS on your web server depends on your setup, we recommend to 
+check your distribution's vendor information on how to configure and setup 
+HTTPS.
 
 Redirect all unencrypted traffic to HTTPS
 *****************************************
-To redirect all HTTP traffic to HTTPS administrators are encouraged to issue a permanent redirect using the 301 status code,
-when using Apache this can be achieved by a setting such as the following in the Apache VirtualHosts config:
+To redirect all HTTP traffic to HTTPS administrators are encouraged to issue a 
+permanent redirect using the 301 status code, when using Apache this can be 
+achieved by a setting such as the following in the Apache VirtualHosts config:
 
 .. code-block:: none
 
@@ -69,12 +83,15 @@ when using Apache this can be achieved by a setting such as the following in the
 
 Enable HTTP Strict Transport Security
 *************************************
-While redirecting all traffic to HTTPS is already a good start it will often not completely prevent man-in-the-middle attacks
-for a regular user. Thus administrators are encouraged to set the HTTP Strict Transport Security header which will instruct
-browsers to not allow any connection to the ownCloud instance anymore using HTTPS and a invalid certificate warning will
-often not be able to get bypassed.
+While redirecting all traffic to HTTPS is already a good start it will often not 
+completely prevent man-in-the-middle attacks for a regular user. Thus 
+administrators are encouraged to set the HTTP Strict Transport Security header 
+which will instruct browsers to not allow any connection to the ownCloud 
+instance anymore using HTTPS and a invalid certificate warning will often not be 
+able to get bypassed.
 
-This can be achieved by setting the following settings within the Apache VirtualHost file:
+This can be achieved by setting the following settings within the Apache 
+VirtualHost file:
 
 .. code-block:: none
 
@@ -87,17 +104,21 @@ It shall be noted that this requires that the ``mod_headers`` extension to be in
 
 Proper SSL configuration
 ************************
-Default SSL configurations by web servers are often not state of the art and require fine-tuning for an optimal performance
-and security experience. The available SSL ciphers and options depends completely on your environment and thus giving a
-generic recommendation is not really possible.
+Default SSL configurations by web servers are often not state of the art and 
+require fine-tuning for an optimal performance and security experience. The 
+available SSL ciphers and options depends completely on your environment and 
+thus giving a generic recommendation is not really possible.
 
-We recommend to use the `Mozilla SSL Configuration Generator`_ to generate a suitable configuration suited for your environment,
-furthermore the free `Qualys SSL Labs Tests`_ give a good guidance whether the SSL server was correctly configured.
+We recommend to use the `Mozilla SSL Configuration Generator`_ to generate a 
+suitable configuration suited for your environment, furthermore the free `Qualys 
+SSL Labs Tests`_ give a good guidance whether the SSL server was correctly 
+configured.
 
 Use a dedicated domain for ownCloud
 -----------------------------------
-Administrators are encouraged to install ownCloud on a dedicated domain such as cloud.domain.tld instead of domain.tld to
-gain all the benefits offered by the Same-Origin-Policy.
+Administrators are encouraged to install ownCloud on a dedicated domain such as 
+cloud.domain.tld instead of domain.tld to gain all the benefits offered by the 
+Same-Origin-Policy.
 
 Serve security related Headers by the web server
 ------------------------------------------------
@@ -112,18 +133,21 @@ Basic security headers are served by ownCloud already in a default environment. 
 - ``X-Frame-Options: SAMEORIGIN``
 	- Prevents to embed the ownCloud instance within an iframe from other domains to prevent Clickjacking and other similiar attacks.
 
-However, these headers are added by the applications code in PHP and thus not served on static resources and rely on the
-fact that there is no way to bypass the intended response code path.
+However, these headers are added by the applications code in PHP and thus not 
+served on static resources and rely on the fact that there is no way to bypass 
+the intended response code path.
 
-For optimal security administrators are encouraged to serve these basic HTTP headers by the web server to enforce them on
-response. To do this Apache has to be configured to use the ``.htaccess`` file as well as the following Apache modules
-needs to be enabled:
+For optimal security administrators are encouraged to serve these basic HTTP 
+headers by the web server to enforce them on response. To do this Apache has to 
+be configured to use the ``.htaccess`` file as well as the following Apache 
+modules needs to be enabled:
 
 - mod_headers
 - mod_env
 
-Administrators can verify whether this security change is active by accessing a static resource served by the web server
-and verify that above mentioned security headers are shipped.
+Administrators can verify whether this security change is active by accessing a 
+static resource served by the web server and verify that above mentioned 
+security headers are shipped.
 
 .. _Mozilla SSL Configuration Generator: https://mozilla.github.io/server-side-tls/ssl-config-generator/
 .. _Qualys SSL Labs Tests: https://www.ssllabs.com/ssltest/
