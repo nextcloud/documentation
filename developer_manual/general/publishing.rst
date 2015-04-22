@@ -33,8 +33,8 @@ Requirements:
 * minimum of 2 active maintainers and contributions from others
 * security audited and design reviewed
 * app is at least 6 months old and has seen regular releases
-* app is signed, identity verified
 * follows app guidelines
+.. * app is signed, identity verified
 
 App store:
 ^^^^^^^^^^
@@ -60,9 +60,9 @@ Requirements:
 * minimum 5 ratings, average score 60/100 or better
 * app is at least 3 months old
 * follows app guidelines
-* app is signed, at least domain verified
 * the developer is trusted
 * app is subject to unannounced security audits
+.. * app is signed, at least domain verified
 
 .. note:: **Developer trust**: The developer(s) is/are known in community; he/she has/have been active for a while, have met others at events and/or worked with others in various areas.
 .. note:: **security audits**: in practice this means that at least some of the code of this developer has been audited; either through another app by the same developer or with an earlier version of the app. And that the attitude of the developer towards these audits has been positive.
@@ -86,7 +86,7 @@ Requirements:
 * 0 confirmed security problems
 * less than 3 unconfirmed 'security flags'
 * rating over 20/100
-* app is signed but no verification has to be done
+.. * app is signed but no verification has to be done
 
 App store:
 ^^^^^^^^^^
