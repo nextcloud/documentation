@@ -26,7 +26,7 @@ configure your setup in such a way that PHP is able to read random data from it.
 Enable hardening modules such as SELinux
 ****************************************
 It is highly recommend to enable hardening modules such as SELinux where possible. See 
-:doc:`selinux_configuration.rst` to learn more about SELinux.
+:doc:`../installation/selinux_configuration.rst` to learn more about SELinux.
 
 Deployment
 ----------
