@@ -155,9 +155,10 @@ Now download the archive of the latest ownCloud version:
 
   where ``/path/to/webserver/document-root`` is replaced by the 
   document root of your Web server. On Ubuntu systems this 
-  ``/var/www/owncloud``, so your copying command is::
+  ``/var/www/html/owncloud``, so your copying command is::
     
-    cp -r owncloud /var/www/
+    mkdir /var/www/html
+    cp -r owncloud /var/www/html
     
 Apache Web Server Configuration
 -------------------------------
@@ -167,8 +168,8 @@ On Debian, Ubuntu, and their derivatives, Apache installs with a useful configur
 
 .. code-block:: xml
    
-   Alias /owncloud /var/www/owncloud
-   <Directory /var/www/owncloud/>
+   Alias /owncloud /var/www/html/owncloud
+   <Directory /var/www/html/owncloud/>
     AllowOverride All
    </Directory>
 
