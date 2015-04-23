@@ -13,6 +13,26 @@ deployment.
 
 This chapter gives a few hands-on tips on how to achieve this.
 
+***************************
+PHP Version and Information
+***************************
+
+You will need to know your PHP version and configurations. To do this, create a 
+plain-text file named **phpinfo.php** and place it in your Web root, for 
+example ``/var/www/html/phpinfo.php``. (Your Web root may be in a different 
+location; your Linux distribution documentation will tell you where.) This file 
+contains just this line::
+
+ <?php phpinfo(); ?>
+
+Open this file in a Web browser:
+
+.. figure:: ../images/phpinfo.png
+
+Your PHP version is at the top, and the rest of the page contains abundant 
+essential system information such as active modules, active `.ini` files, and 
+much more.
+
 ********************
 General Linux tuning
 ********************
@@ -34,11 +54,32 @@ performance. To do so, add the following to ``/etc/fstab``::
 
 	none /tmp tmpfs,size=6g defaults
 
-Make sure the APC byte code cache is installed:
+Make sure the APC or Opcache bytecode cache is installed. This example is for 
+CentOS/Red Hat/Fedora running PHP 5.4:
 
 .. code-block:: console
 
-	# yum install php-pecl-apc
+	$ sudo yum install php-pecl-apc
+	
+On Ubuntu systems running PHP 5.4 this command installs APC:
+
+.. code-block:: console
+
+        $ sudo apt-get install php-apc
+             
+PHP 5.5 replaces APC with Opcache. Opcache is bundled with PHP 5.5 so it should 
+not be necessary to install it separately. For reference, this command installs 
+it on CentOS/Red Hat/Fedora running PHP 5.5 and up:       
+
+.. code-block:: console
+
+        $ sudo yum install php-pecl-zendopcache
+        
+For reference, this installs it on Ubuntu:
+
+.. code-block:: console
+
+        $ sudo apt-get install php5-xcache        
 
 Tuning System Parameters
 ========================
@@ -98,7 +139,6 @@ Move PHP Code into RAM Disk:
 .. code-block:: console
 
 	# mv /var/www/html /var/www/html_fs
-
 
 Copy ownCloud installation to RAM Disk and symlink storage to ownCloud ``data``
 directory.
