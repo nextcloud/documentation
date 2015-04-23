@@ -30,8 +30,10 @@ Open this file in a Web browser:
 .. figure:: ../images/phpinfo.png
 
 Your PHP version is at the top, and the rest of the page contains abundant 
-essential system information such as active modules, active `.ini` files, and 
-much more.
+system information such as active modules, active `.ini` files, and much more. 
+When you are finished reviewing your information you must delete 
+``phpinfo.php``, or move it outside of your Web directory, because it is a 
+security risk to expose such sensitive data.
 
 ********************
 General Linux tuning
@@ -68,18 +70,7 @@ On Ubuntu systems running PHP 5.4 this command installs APC:
         $ sudo apt-get install php-apc
              
 PHP 5.5 replaces APC with Opcache. Opcache is bundled with PHP 5.5 so it should 
-not be necessary to install it separately. For reference, this command installs 
-it on CentOS/Red Hat/Fedora running PHP 5.5 and up:       
-
-.. code-block:: console
-
-        $ sudo yum install php-pecl-zendopcache
-        
-For reference, this installs it on Ubuntu:
-
-.. code-block:: console
-
-        $ sudo apt-get install php5-xcache        
+not be necessary to install it separately.
 
 Tuning System Parameters
 ========================
@@ -157,7 +148,8 @@ Object Caching
 ownCloud is written to take advantage of object caching. Object caching can be 
 done locally with the APCu extension, or for distributed PHP environments using 
 Memcached. Memcached servers must be specified in the ``memcached_servers`` array 
-in ownCloud's config file ``config.php``. For examples see ``config.sample.php``
+in ownCloud's config file ``config.php``. For examples see 
+:doc:`config_sample_php_parameters`
 
 Serving static files via web server
 ===================================
