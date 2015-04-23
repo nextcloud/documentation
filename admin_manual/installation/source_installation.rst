@@ -157,7 +157,6 @@ Now download the archive of the latest ownCloud version:
   document root of your Web server. On Ubuntu systems this 
   ``/var/www/html/owncloud``, so your copying command is::
     
-    mkdir /var/www/html
     cp -r owncloud /var/www/html
     
 Apache Web Server Configuration
