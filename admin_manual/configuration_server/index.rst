@@ -6,6 +6,7 @@ ownCloud Server Configuration
    :maxdepth: 2
 
    occ_command
+   activity_configuration
    antivirus_configuration
    automatic_configuration
    background_jobs_configuration   
