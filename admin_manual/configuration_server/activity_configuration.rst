@@ -28,5 +28,5 @@ Furthermore it is recommended to configure the background job ``Webcron`` or
 ``Cron`` as described in :doc:`background_jobs_configuration`.
 
 There is also a config option ``activity_expire_days`` available in your
-``config.php`` (See :doc:`config_sample_php_parameters.rst`) which allows
+``config.php`` (See :doc:`config_sample_php_parameters`) which allows
 you to clean-up older activies from the database.
