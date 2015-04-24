@@ -278,6 +278,50 @@ Keep in mind that changes to php.ini may have to be done on more than one ini fi
   /etc/php5/cli/php.ini
 
 
+.. _using_php-fpm:
+Configuration notes to php-fpm
+------------------------------
+
+**System environment variables**
+
+It may be the case when using ``php-fpm``, system environment variables like PATH, TMP or others are not automatically populated in the same way compared when using ``php-cli``.
+
+A php call like ``getenv('PATH');`` can therefore return an empty result. Even fallback data with most commonly used content for those variables is most times defined, this may not match 100% of the requirements. In those cases, the variables need to be set manually in the corresponding ``php-fpm`` ini/config file. 
+
+Example root path for these ini/config files:
+
++--------------------+-----------------------+
+| Ubuntu/Mint        | CentOS/Red Hat/Fedora |
++--------------------+-----------------------+ 
+| ``/etc/php5/fpm/`` | ``/etc/php-fpm.d/``   |
++--------------------+-----------------------+ 
+
+In both examples, the ini/config file is called ``www.conf`` where it may be stored in an subdirectory.
+
+Usually, you will find some or all of the environment variables beeing commented out like:
+::
+
+	;env[HOSTNAME] = $HOSTNAME
+	;env[PATH] = /usr/local/bin:/usr/bin:/bin
+	;env[TMP] = /tmp
+	;env[TMPDIR] = /tmp
+	;env[TEMP] = /tmp
+
+You can either just uncomment the existing one and/or copy the output from the command shell eg: ``printenv PATH`` (example: ``/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin``) to the environment variable to be set. If no system environment variable is present to be uncommented, you need to create one.
+
+Consider when using shared hosting or a control panel to manage your VM or server to read the documentation which comes with that software as the configuration files are almost certain to be located somewhere else, for security and flexibility reasons.
+
+Please keep in mind, that it is possible to create different settings for ``php-cli`` and ``php-fpm``
+and even for different domains/websites. Please take care to take the right one. Your result can be tested with ``phpinfo()`` which must accessed via a browser to your domain/website.
+
+**Maximum upload size**
+
+If you want to effectively increase the maximum upload size, you will also have to modify your ``php-fpm`` configuration (usually at ``example_paths_above/php.ini``) and increase ``upload_max_filesize`` and ``post_max_size`` values. You will need to restart ``php5-fpm`` and ``webserver`` services in order for these changes to be applied.
+
+**.htaccess notes for webservers \<> Apache**
+
+ownCloud comes with its own ``owncloud/.htaccess`` file. If ``php-fpm`` is used, it can't read ``.htaccess`` PHP settings unless the ``htscanner`` PECL extension is installed. If ``php-fpm`` is used without this PECL extension installed, settings and permissions must be set in the ``owncloud/.user.ini`` file.
+
 Other Web Servers
 -----------------
 
