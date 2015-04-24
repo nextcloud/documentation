@@ -105,13 +105,4 @@ Nginx Configuration
 -  Remove **ssl_certificate** and **ssl_certificate_key**.
 -  Remove **fastcgi_params HTTPS on;**
 
-.. note:: If you want to effectively increase maximum upload size you will also
-          have to modify your **php-fpm configuration** (**usually at
-          /etc/php5/fpm/php.ini**) and increase **upload_max_filesize** and
-          **post_max_size** values. You’ll need to restart php5-fpm and nginx
-	  services in order these changes to be applied.
-
-.. note:: ownCloud comes with its own ``owncloud/.htaccess`` file. If PHP-FPM is used,
-          it can't read ``.htaccess`` PHP settings unless the ``htscanner`` PECL extension
-          is installed. If PHP-FPM is used without this PECL extension installed, settings
-          and permissions must be set in the ``owncloud/.user.ini`` file.
+.. note:: Please read the "Configuration notes to php-fpm" :ref:`using_php-fpm`
