@@ -7,7 +7,7 @@ errors, adding new material, and writing tips and tricks. You must have a
 `Github <https://github.com/>`_ account.
 
 Sharing tips and tricks is the easiest way to contribute, because these go in 
-the ownCloud Documentation Wiki. You can create and edit docs directly in the 
+the `ownCloud Documentation Wiki <https://github.com/owncloud/documentation/wiki>`_. You can create and edit docs directly in the 
 Wiki. The subject matter is wide open: admin, user, mobile apps, LAMP stack, 
 development hints, installing ownCloud on diverse hardware such as Raspberry 
 Pi or giant clusters-- anything that is correct and useful.
