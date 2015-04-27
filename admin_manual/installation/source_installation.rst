@@ -286,7 +286,7 @@ Configuration notes to php-fpm
 **System environment variables**
 
 When you are using ``php-fpm``, system environment variables like 
-PATH, TMP or others are not automatically populated in the same way as when 
+PATH, TMP or others are not automatically populated in the same way as 
 when using ``php-cli``. A PHP call like ``getenv('PATH');`` can therefore 
 return an empty result. So you may need to manually configure environment 
 varibles in the appropropriate ``php-fpm`` ini/config file. 
