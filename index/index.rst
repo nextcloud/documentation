@@ -16,12 +16,19 @@ Additional ownCloud Resources
 -----------------------------
 
 * `Howto, demo, news, and Webinar videos
-  <https://doc.owncloud.org/server/8.0/admin_manual/videos/index.html>`_ 
+  <https://doc.owncloud.org/server/8.0/admin_manual/videos/index.html>`_
 * `What's New in ownCloud 8 
   <https://owncloud.org/eight>`_ Video introduction to ownCloud 8.
 * `Where to get help 
   <https://owncloud.org/support/>`_ when the documentation is not enough.
- 
+  
+------------------------------------------------
+Reporting Documentation Bugs & How to Contribute
+------------------------------------------------
+
+If you find an error or omission in any of the manuals, we welcome your bug 
+reports and contributions. Please see :doc:`howto_contribute` for instructions.
+
 ------------
 ownCloud 8.1
 ------------
