@@ -22,7 +22,7 @@ request. The manuals are written using Sphinx and RST markup.
   repository on Github. Read the README.rst on the front page of the repo for 
   instructions on setting up your build enviroment.
 
-* The documentation for the desktop sync client is incorporated into the 
+* The documentation for the desktop sync client is in the ``doc`` directory of the 
   `Desktop client repo <https://github.com/owncloud/client>`_. See the 
   README.md for instructions.
 
