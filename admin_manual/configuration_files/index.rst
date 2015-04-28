@@ -9,10 +9,10 @@ File Sharing and Management
     file_sharing_configuration.rst
     big_file_upload_configuration.rst
     collaborative_documents_configuration
-    default_files_configuration.rst
-    encryption_configuration.rst    
+    default_files_configuration.rst  
     external_storage_configuration_gui
     external_storage_configuration
+    encryption_configuration.rst
     files_locking_enabling.rst
     federated_cloud_sharing_configuration.rst
     previews_configuration
