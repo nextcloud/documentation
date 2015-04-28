@@ -2,26 +2,28 @@
 Encryption Configuration
 ========================
 
-In ownCloud 8.1 the Encryption app has been changed to the ownCloud Default 
-Encryption Module. It has a number of changes and improvements, including:
+In ownCloud 8.1 the server-side encryption has a number of changes and 
+improvements, including:
 
 * When encryption is enabled, all files are no longer encrypted at user's first 
   logins because this caused timeouts on large installations. Instead, only 
   files that are created or updated after encryption has been enabled are 
   encrypted.
 
-* The  "decrypt all" option in the Personal settings has been removed, also for 
+* The "decrypt all" option in the Personal settings has been removed, also for 
   performance reasons.
 
 * A new option for users to enable/disable encryption on a per mount-point 
   basis.
+  
+* The option to choose from multiple encryption modules.
 
-The Default Encryption Module encrypts files stored on the ownCloud server, and 
-files on remote storage that is connected to your ownCloud server. Encryption 
-and decryption are performed on the ownCloud server. All files sent to remote 
-storage (for example Dropbox and Google Drive) will be encrypted by the ownCloud 
-server, and upon retrieval, decrypted before serving them to you and anyone you 
-have shared them with.
+ownCloud server-side encryption encrypts files stored on the ownCloud server, 
+and files on remote storage that is connected to your ownCloud server. 
+Encryption and decryption are performed on the ownCloud server. All files sent 
+to remote storage (for example Dropbox and Google Drive) will be encrypted by 
+the ownCloud server, and upon retrieval, decrypted before serving them to you 
+and anyone you have shared them with.
 
 .. note:: Encrypting files increases their size by roughly 35%, so you must 
    take this into account when you are provisioning storage and setting 
@@ -32,27 +34,24 @@ When files on external storage are encrypted in ownCloud, you cannot share them
 directly from the external storage services, but only through ownCloud sharing 
 because the key to decrypt the data never leaves the ownCloud server.
 
-The main purpose of the Default Encryption Module is to protect users' files on 
-remote storage, and to do it easily and seamlessly from within ownCloud. 
+The main purpose of the ownCloud server-side encryption is to protect users' 
+files on remote storage, and to do it easily and seamlessly from within 
+ownCloud. 
 
-The Default Encryption Module generates a strong encryption key, which is 
+ownCloud's server-side encryption generates a strong encryption key, which is 
 unlocked by user's passwords. So your users don't need to track an extra 
 password, but simply log in as they normally do. It encrypts only the contents 
 of files, and not filenames and folder structures.
 
 You should regularly backup all encryption keys to prevent permanent data loss. 
-The encryption keys are stored in following folders:
+The encryption keys are stored in following directories:
 
-``data/owncloud_private_key`` 
-  Recovery key, if enabled, and public share key
-``data/public-keys`` 
-  Public keys for all users
 ``data/<user>/files_encryption`` 
   Users' private keys and all other keys necessary to decrypt the users' files
 ``data/files_encryption``
   private keys and all other keys necessary to decrypt the files stored on a
   system wide external storage
-
+  
 .. note:: Encryption keys are stored only on the ownCloud server, eliminating
    exposure of your data to third party storage providers. The encryption app 
    does **not** protect your data if your ownCloud server is compromised, and it
@@ -63,32 +62,41 @@ The encryption keys are stored in following folders:
    whole-disk encryption. Read 
    `How ownCloud uses encryption to protect your data 
    <https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your-
-   data/>`_ for more information. 
+   data/>`_ for more information.
+   
+Before Enabling Encryption
+--------------------------
 
-Enabling the Default Encryption Module
---------------------------------------
+Plan very carefully before enabling encryption. You have the option to disable 
+encryption, but there are scenarios where it is possible that some files will 
+not be recoverable. It is best to think of encryption as all-or-nothing: either 
+you use it, or you don't, and once files are encrypted they must always be 
+encrypted. Always have backups of your encryption keys stored in a safe 
+location, and consider enabling all recovery options.
 
-The Default Encryption Module is bundled with ownCloud, so first go to your Apps 
-page to enable it.
+Enabling Encryption
+-------------------
 
-.. figure:: ../images/encryption1.png
+ownCloud encryption now consists of two parts. The base encryption system is 
+enabled and disabled on your Admin page. First you must enable this, and then 
+select an encryption module to load. Currently the only available encryption 
+module is the ownCloud Default Encryption Module.
 
-Next, go to your ownCloud admin page. You will see a yellow banner that warns 
-you "Encryption is enabled but your keys are not initialized, please log-out and 
-log-in again", and the same warning in the **ownCloud basic encryption module** 
-section of your Admin page.
-
-.. figure:: ../images/encryption2.png
-
-Don't log out yet, but go to the **Server-side encryption** section of your 
-Admin page and check **Enable server-side encryption**. There is also an option 
-to **Select default encryption module**, which is already selected because 
-currently there is just one.
+First go to the **Server-side encryption** section of your Admin page and check 
+**Enable server-side encryption**.
 
 .. figure:: ../images/encryption3.png
 
-Now you can log out and log back in to initialize your ownCloud server's 
-encryption keys.
+There is no encryption module loaded yet, so go to your Apps page to enable the 
+ownCloud Default Encryption Module.
+
+.. figure:: ../images/encryption1.png
+
+If you return to your Admin page you will see the ownCloud Default Encryption 
+Module added to the module selector, and automatically selected. Now you must 
+log out and then log back in to initialize your encryption keys.
+
+.. figure:: ../images/encryption14.png
 
 Sharing Encrypted Files
 -----------------------
@@ -159,8 +167,10 @@ Or disable it.
 Disabling Encryption
 --------------------
 
-You have the option of changing your mind and disabling the Encryption app. 
-Just click its Disable button on the Apps page.
+You have the option of changing your mind and disabling the Encryption app by 
+un-checking **Enable server-side encryption** on your Admin page. But remember, 
+under certain conditions it is possible to create unrecoverable files, so make 
+sure you have good backups first.
 
 occ Encryption Commands
 -----------------------
