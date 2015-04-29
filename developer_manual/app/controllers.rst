@@ -288,6 +288,7 @@ Cookies can be set or modified directly on the response class:
     use DateTime;
 
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\TemplateResponse;
     use OCP\IRequest;
 
     class BakeryController extends Controller {
