@@ -209,9 +209,9 @@ It is possible to pass JSON using a POST, PUT or PATCH request. To do that the *
 
     }
 
-Headers, files, cookies and environment variables
--------------------------------------------------
-Headers, files, cookies and environment variables can be accessed directly from the request object. Every controller depends on the app name and the request object and sets both on protected attributes:
+Reading headers, files, cookies and environment variables
+---------------------------------------------------------
+Headers, files, cookies and environment variables can be accessed directly from the request object:
 
 .. code-block:: php
 
@@ -223,25 +223,98 @@ Headers, files, cookies and environment variables can be accessed directly from 
 
     class PageController extends Controller {
 
-        public function __construct($appName, IRequest $request) {
-            parent::__construct($appName, $request);
-        }
-
-
         public function someMethod() {
-
             $type = $this->request->getHeader('Content-Type');  // $_SERVER['HTTP_CONTENT_TYPE']
             $cookie = $this->request->getCookie('myCookie');  // $_COOKIES['myCookie']
             $file = $this->request->getUploadedFile('myfile');  // $_FILES['myfile']
             $env = $this->request->getEnv('SOME_VAR');  // $_ENV['SOME_VAR']
-
-            // access the app name
-            $name = $this->appName;
         }
 
     }
 
-Why should those values be accessed from the request object and not from the global array like $_FILES? Simple: `because it's bad practice <http://c2.com/cgi/wiki?GlobalVariablesAreBad>`_
+Why should those values be accessed from the request object and not from the global array like $_FILES? Simple: `because it's bad practice <http://c2.com/cgi/wiki?GlobalVariablesAreBad>`_ and will make testing harder.
+
+
+Reading and writing session variables
+-------------------------------------
+To set, get or modify session variables, the ISession object has to be injected into the controller.
+
+Then session variables can be accessed like this:
+
+.. note:: The session is closed automatically for writing, unless you add the @UseSession annotation!
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\ISession;
+    use OCP\IRequest;
+    use OCP\AppFramework\Controller;
+
+    class PageController extends Controller {
+
+        private $session;
+
+        public function __construct($AppName, IRequest $request, ISession $session) {
+            parent::__construct($AppName, $request);
+            $this->session = $session;
+        }
+
+        /**
+         * The following annotation is only needed for writing session values
+         * @UseSession
+         */
+        public function writeASessionVariable() {
+            // read a session variable
+            $value = $this->session['value'];
+
+            // write a session variable
+            $this->session['value'] = 'new value';
+        }
+
+    }
+
+
+Setting cookies
+---------------
+Cookies can be set or modified directly on the response class:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use DateTime;
+
+    use OCP\AppFramework\Controller;
+    use OCP\IRequest;
+
+    class BakeryController extends Controller {
+
+        /**
+         * Adds a cookie "foo" with value "bar" that expires after user closes the browser
+         * Adds a cookie "bar" with value "foo" that expires 2015-01-01
+         */
+        public function addCookie() {
+            $response = new TemplateResponse(...);
+            $response->addCookie('foo', 'bar');
+            $response->addCookie('bar', 'foo', new DateTime('2015-01-01 00:00'));
+            return $response;
+        }
+
+        /**
+         * Invalidates the cookie "foo"
+         * Invalidates the cookie "bar" and "bazinga"
+         */
+        public function invalidateCookie() {
+            $response = new TemplateResponse(...);
+            $response->invalidateCookie('foo');
+            $response->invalidateCookies(array('bar', 'bazinga'));
+            return $response;
+        }
+   }
+
 
 Responses
 =========
