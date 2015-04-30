@@ -11,6 +11,7 @@ $mapping = array(
     'admin-install'           => '/admin_manual/installation/index.html',
     'admin-ldap'              => '/admin_manual/configuration_user/user_auth_ldap.html',
     'admin-provisioning-api'  => '/admin_manual/configuration_user/user_provisioning_api.html',
+    'admin-sharing'           => '/admin_manual/configuration_files/file_sharing_configuration.html',
     'admin-sharing-federated' => '/admin_manual/configuration_files/federated_cloud_sharing_configuration.html',
     'admin-source_install'    => '/admin_manual/installation/source_installation.html',
     'admin-backup'            => '/admin_manual/maintenance/backup.html',
@@ -19,6 +20,7 @@ $mapping = array(
     'admin-config'            => '/admin_manual/configuration_server/config_sample_php_parameters.html',
     'admin-db-conversion'     => '/admin_manual/configuration_database/db_conversion.html',
     'admin-security'          => '/admin_manual/configuration_server/hardening.html',
+    'admin-email'             => '/admin_manual/configuration_server/email_configuration.html',
 
     'developer-theming'       => '/developer_manual/core/theming.html',
 
