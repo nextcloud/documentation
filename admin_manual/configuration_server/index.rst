@@ -5,6 +5,7 @@ ownCloud Server Configuration
 .. toctree::
    :maxdepth: 2
 
+   security_setup_warnings
    occ_command
    activity_configuration
    antivirus_configuration

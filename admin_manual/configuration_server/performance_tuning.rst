@@ -56,7 +56,12 @@ performance. To do so, add the following to ``/etc/fstab``::
 
 	none /tmp tmpfs,size=6g defaults
 
-Make sure the APC or Opcache bytecode cache is installed. This example is for 
+.. _caching:
+	
+Caching
+=======	
+
+Install the APC or Opcache bytecode cache. This example is for 
 CentOS/Red Hat/Fedora running PHP 5.4:
 
 .. code-block:: console
@@ -71,6 +76,22 @@ On Ubuntu systems running PHP 5.4 this command installs APC:
              
 PHP 5.5 replaces APC with Opcache. Opcache is bundled with PHP 5.5 so it should 
 not be necessary to install it separately.
+
+APC is both an opcode cache and data store. OPcache is only an opcode cache, so 
+for caching user data you should install APCu.
+
+Distributed PHP environments should use Memcached. Memcached servers must be 
+specified in the ``memcached_servers`` array in ownCloud's config file 
+``config.php``. For examples see :doc:`config_sample_php_parameters`
+
+OPcache Extension
+-----------------
+
+OPcache improves PHP performance by storing precompiled script bytecode in 
+shared memory, thereby removing the need for PHP to load and parse scripts on 
+each request. This extension is bundled with PHP 5.5.0 and later, and is 
+available in PECL for PHP versions 5.2, 5.3, and 5.4.
+
 
 Tuning System Parameters
 ========================
@@ -142,15 +163,6 @@ directory.
 ownCloud Server Tuning
 **********************
 
-Object Caching
-==============
-
-ownCloud is written to take advantage of object caching. Object caching can be 
-done locally with the APCu extension, or for distributed PHP environments using 
-Memcached. Memcached servers must be specified in the ``memcached_servers`` array 
-in ownCloud's config file ``config.php``. For examples see 
-:doc:`config_sample_php_parameters`
-
 Serving static files via web server
 ===================================
 
@@ -163,15 +175,7 @@ Using cron to perform background jobs
 
 See the section :doc:`background_jobs_configuration` for a description and the 
 benefits.
-
-OPcache Extension
-=================
-
-OPcache improves PHP performance by storing precompiled script bytecode in 
-shared memory, thereby removing the need for PHP to load and parse scripts on 
-each request. This extension is bundled with PHP 5.5.0 and later, and is 
-available in PECL for PHP versions 5.2, 5.3, and 5.4.
-          
+         
 ********************          
 SSL / Encryption App
 ********************
