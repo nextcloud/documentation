@@ -60,5 +60,4 @@ Reporting Documentation Suggestions
 -----------------------------------
 
 If you don't have a specific problem or contribution, but wish to offer a 
-suggestion, open an Issue in the appropriate repository and apply the 
-appropriate label such as Enhancement, Question, or Discussion.
+suggestion, open an Issue in the appropriate repository.
