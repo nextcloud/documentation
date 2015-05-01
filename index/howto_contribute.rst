@@ -55,8 +55,6 @@ Please follow this template when reporting documentation errors:
   references. If you don't know the answer that is OK.
 * Provide screenshots if they add useful information
 * Provide your Web browser version and operating system & version
-* Apply the appropriate Label to your Issue. Take some care with this so that 
-  it gets the proper attention
 
 Reporting Documentation Suggestions
 -----------------------------------
