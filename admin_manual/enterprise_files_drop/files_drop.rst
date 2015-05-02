@@ -1,22 +1,22 @@
-===================================================
-Enabling Anonymous Uploads with File Drop (ES Only)
-===================================================
+====================================================
+Enabling Anonymous Uploads with Files Drop (ES Only)
+====================================================
 
-The File Drop application, introduced in ownCloud 8.0.3 Enterprise 
+The Files Drop application, introduced in ownCloud 8.0.3 Enterprise 
 Subscription, allows anyone to upload files with the click of a button to the 
 directory of your choosing, without needing a login, and they cannot see or 
 change the contents of the directory. It is the perfect replacement for 
 attaching large files to email, maintaining an FTP server, and commercial 
 file-sharing services.
 
-When files are uploaded to your File Drop directory, you can manage them just 
+When files are uploaded to your Files Drop directory, you can manage them just 
 like any other ownCloud share: you may share them, restrict access, edit, and 
 delete them.
 
-Setting Up the File Drop App
+Setting Up the Files Drop App
 -----------------------------
 
-Setting up File Drop is a matter of a few clicks. First go to your Apps page 
+Setting up Files Drop is a matter of a few clicks. First go to your Apps page 
 and enable it.
 
 .. image:: ../images/files-drop-1.png
@@ -43,10 +43,10 @@ customize this.)
 
 .. image:: ../images/files-drop-4.png
 
-Using the File Drop App
+Using the Files Drop App
 ------------------------
 
-Uploading files via the File Drop app is simple. Open your Web browser to the 
+Uploading files via the Files Drop app is simple. Open your Web browser to the 
 share URL created by ownCloud:
 
 .. figure:: ../images/files-drop-5.png
