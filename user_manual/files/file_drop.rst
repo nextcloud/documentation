@@ -3,7 +3,7 @@ Making Anonymous Uploads (ES Only)
 ==================================
 
 If your ownCloud administrator (Enterprise Subscription only) has enabled the 
-File Drop application, you may create your own special upload directory so that 
+Files Drop application, you may create your own special upload directory so that 
 other people can upload files to you without having to log in to the server, and 
 without being an ownCloud user. They will not be allowed to see the contents of 
 this directory, or to make any changes. This is an excellent alternative to 
@@ -13,7 +13,7 @@ file-sharing services.
 Setting Up Your Own File Drop
 -----------------------------
 
-Go to your Personal page and you will see the File Drop configuration section.
+Go to your Personal page and you will see the Files Drop configuration section.
 
 .. image:: ../images/files-drop-2.png
 
@@ -27,7 +27,7 @@ which in the following example is name **upload**.
    *Click to enlarge*
    
 On your Personal page you should now see a URL for your upload directory. Share 
-this URL with anyone you want to allow uploads to your File Drop folder. Note 
+this URL with anyone you want to allow uploads to your Files Drop folder. Note 
 that the default maximum upload size in this example is 512MB; this is 
 configurable, so contact your ownCloud administrator if you need a larger 
 limit.
@@ -37,7 +37,7 @@ limit.
 Uploading Files
 ---------------
 
-Using the File Drop app is simple. You receive a link to the upload 
+Using the Files Drop app is simple. You receive a link to the upload 
 folder, click the link, and then you'll see an ownCloud page with a **Click to 
 upload** button.
 
