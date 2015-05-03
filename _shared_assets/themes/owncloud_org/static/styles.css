@@ -5,9 +5,67 @@
 ul#menu-support.menu {
   padding-left: 0;
 }
-ul#menu-support.menu ul {
-  padding-left: 20px;
+ul#menu-support.menu > ul {
+  padding-left: 0px;
+  list-style: none;
 }
+ul#menu-support.menu ul {
+  background-color: white;
+}
+/* round bullets for the second level entries */
+ul#menu-support.menu ul ul {
+  list-style-type: disc;
+}
+/* square bullets for the third level entries */
+ul#menu-support.menu ul ul ul {
+  list-style-type: square;
+}
+/* having a separator between each elements of the top list and
+   between above the top of the third level list */
+ul#menu-support.menu > ul > li,
+ul#menu-support.menu ul ul ul {
+  border-top: 1px solid #EFEFEF;
+}
+/* highlight the current list entry of the first list with white
+   font on blue background */
+ul#menu-support.menu > ul > li.current {
+  background-color: #428BCA;
+  color: white;
+}
+/* set to default padding for the sublist of the current entry */
+ul#menu-support.menu ul > li.current > ul {
+  padding-left: 20px;
+  color: #428BCA;
+}
+/* set a padding for all list entry elements below the first level */
+ul#menu-support.menu > ul li {
+  padding: 5px;
+  padding-left: 0px;
+}
+/* setting the padding for the first level entries */
+ul#menu-support.menu > ul > li,
+ul#menu-support.menu > ul li.toctree-l1 {
+  padding: 5px 10px;
+}
+/* additional padding to the bottom, to have equal border width */
+ul#menu-support.menu > ul li.toctree-l1.current {
+  padding-bottom: 10px;
+}
+/* override the color of links */
+ul#menu-support.menu ul > li.current > a:hover,
+ul#menu-support.menu ul > li.current > a:focus,
+ul#menu-support.menu ul > li.current > a {
+  color: white;
+}
+/* override the color of the current link */
+ul#menu-support.menu ul > li.current > a.current {
+  color: #428BCA;
+}
+/* override the color of the current link in the first level */
+ul#menu-support.menu > ul > li.current > a.current {
+  color: white;
+}
+
 .headerlink {
   color: rgba(66, 139, 202,0.5);
   display: none;
