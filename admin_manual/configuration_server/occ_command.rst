@@ -7,7 +7,7 @@ interface. You can perform many common server operations with ``occ``::
 
 * Manage apps
 * Manage users
-* Upgrade the ownCloud database
+* Convert the ownCloud database
 * Reset passwords, including administrator passwords
 * Convert the ownCloud database from SQLite to a more performant DB
 * Query and change LDAP settings
@@ -25,7 +25,7 @@ your ownCloud files and directories.
 Running it with no options lists all commands and options, like this example on 
 Ubuntu::
 
- $ sudo -u www-data php  occ
+ $ sudo -u www-data php occ
  ownCloud version 8.1
  Usage:
   [options] command [arguments]
@@ -141,6 +141,8 @@ The other two commands are:
 * ``background:cron``
 * ``background:webcron``
 
+See :doc:`../configuration_server/background_jobs_configuration` to learn more.
+
 Database Conversion
 -------------------
 
@@ -149,13 +151,12 @@ workloads, but production servers with multiple users should use MariaDB, MySQL,
 or PostgreSQL. You can use ``occ`` to convert from SQLite to one of these other 
 databases. You need:
 
-* Your desired database installed and its PHP connector
+* Your desired database and its PHP connector installed
 * The login and password of a database admin user
 * The database port number, if it is a non-standard port
 
 This is example converts to SQLite MySQL/MariaDB:: 
 
- $ sudo -u www-data php occ db:generate-change-script
  $ sudo -u www-data php occ db:convert-type mysql oc_dbuser 127.0.0.1 
  oc_database
 
@@ -171,7 +172,6 @@ intended to be run manually.
 ``files:cleanup`` tidies up the server's file cache by deleting all file 
 entries that have no matching entries in the storage table.
    
-   
 l10n, Create javascript Translation Files for Apps
 --------------------------------------------------
 
@@ -180,79 +180,40 @@ syntax::
 
   l10n:createjs appname language_name
   
-The output can be either ``.js`` or ``.json``. This example converts the 
-Activity app to Bosnian::
+This example converts the Activity app to Bosnian::
 
- $ sudo -u www-data php occ l10n:createjs activity bs.js
-  
+ $ sudo -u www-data php occ l10n:createjs activity bs
+
 These are the supported language codes, and `Codes for the Representation of 
 Names of Languages
 <http://www.loc.gov/standards/iso639-2/php/code_list.php>`_ may be helpful::
 
- ach.js            es_CR.json  ja.json     ro.js                              
- ach.json          es_EC.js    jv.js       ro.json                   
- ady.js            es_EC.json  jv.json     ru.js                      
- ady.json          es.js       ka_GE.js    ru.json                    
- af_ZA.js          es.json     ka_GE.json  si_LK.js                   
- af_ZA.json        es_MX.js    km.js       si_LK.json                 
- ak.js             es_MX.json  km.json     sk.js
- ak.json           es_PE.js    kn.js       sk.json
- am_ET.js          es_PE.json  kn.json     sk_SK.js
- am_ET.json        es_PY.js    ko.js       sk_SK.json
- ar.js             es_PY.json  ko.json     sl.js
- ar.json           es_US.js    ku_IQ.js    sl.json
- ast.js            es_US.json  ku_IQ.json  sq.js
- ast.json          es_UY.js    lb.js       sq.json
- az.js             es_UY.json  lb.json     sr.js
- az.json           et_EE.js    lo.js       sr.json
- be.js             et_EE.json  lo.json     sr@latin.js
- be.json           eu_ES.js    lt_LT.js    sr@latin.json
- bg_BG.js          eu_ES.json  lt_LT.json  su.js
- bg_BG.json        eu.js       lv.js       su.json
- bn_BD.js          eu.json     lv.json     sv.js
- bn_BD.json        fa.js       mg.js       sv.json
- bn_IN.js          fa.json     mg.json     sw_KE.js
- bn_IN.json        fi_FI.js    mk.js       sw_KE.json
- bs.js             fi_FI.json  mk.json     ta_IN.js
- bs.json           fi.js       ml_IN.js    ta_IN.json
- ca.js             fi.json     ml_IN.json  ta_LK.js
- ca.json           fil.js      ml.js       ta_LK.json
- ca@valencia.js    fil.json    ml.json     te.js
- ca@valencia.json  fr_CA.js    mn.js       te.json
- cs_CZ.js          fr_CA.json  mn.json     tg_TJ.js
- cs_CZ.json        fr.js       mr.js       tg_TJ.json
- cy_GB.js          fr.json     mr.json     th_TH.js
- cy_GB.json        fy_NL.js    ms_MY.js    th_TH.json
- da.js             fy_NL.json  ms_MY.json  tl_PH.js
- da.json           gl.js       mt_MT.js    tl_PH.json
- de_AT.js          gl.json     mt_MT.json  tr.js
- de_AT.json        gu.js       my_MM.js    tr.json
- de_CH.js          gu.json     my_MM.json  tzm.js
- de_CH.json        he.js       nb_NO.js    tzm.json
- de_DE.js          he.json     nb_NO.json  ug.js
- de_DE.json        hi_IN.js    nds.js      ug.json
- de.js             hi_IN.json  nds.json    uk.js
- de.json           hi.js       ne.js       uk.json
- el.js             hi.json     ne.json     ur.js
- el.json           hr.js       nl.js       ur.json
- en_GB.js          hr.json     nl.json     ur_PK.js
- en_GB.json        hu_HU.js    nn_NO.js    ur_PK.json
- en_NZ.js          hu_HU.json  nn_NO.json  uz.js
- en_NZ.json        hy.js       nqo.js      uz.json
- en@pirate.js      hy.json     nqo.json    vi.js
- en@pirate.json    ia.js       oc.js       vi.json
- eo.js             ia.json     oc.json     
- eo.json           id.js       or_IN.js    yo.js
- es_AR.js          id.json     or_IN.json  yo.json
- es_AR.json        ignorelist  pa.js       zh_CN.js
- es_BO.js          io.js       pa.json     zh_CN.json
- es_BO.json        io.json     pl.js       zh_HK.js
- es_CL.js          is.js       pl.json     zh_HK.json
- es_CL.json        is.json     pt_BR.js    zh_TW.js
- es_CO.js          it.js       pt_BR.json  zh_TW.json
- es_CO.json        it.json     pt_PT.js
- es_CR.js          ja.js       pt_PT.json
- 
+ ach                     gu     ml     sr
+ ady          eo         he     ml_IN  sr@latin
+ af_ZA        es         hi     mn     su
+ ak           es_AR      hi_IN  ms_MY  sv
+ am_ET        es_BO      hr     mt_MT  sw_KE
+ ar           es_CL      hu_HU  my_MM  ta_IN
+ ast          es_CO      hy     nb_NO  ta_LK
+ az           es_CR      ia     nds    te
+ be           es_EC      id     ne     tg_TJ
+ bg_BG        es_MX      io     nl     th_TH
+ bn_BD        es_PE      is     nn_NO  tl_PH
+ bn_IN        es_PY      it     nqo    tr
+ bs           es_US      ja     oc     tzm
+ ca           es_UY      jv     or_IN  ug
+ ca@valencia  et_EE      ka_GE  pa     uk
+ cs_CZ        eu         km     pl     ur
+ cy_GB        eu_ES      kn     pt_BR  ur_PK
+ da           fa         ko     pt_PT  uz
+ de           fi         ku_IQ  ro     vi
+ de_AT        fi_FI      lb     ru     yo
+ de_CH        fil        lo     si_LK  zh_CN
+ de_DE        fr         lt_LT  sk     zh_HK
+ el           fr_CA      lv     sk_SK  zh_TW
+ en_GB        fy_NL      mg     sl
+ en_NZ        gl         mk     sq
+
 LDAP Commands
 -------------
 
@@ -263,7 +224,7 @@ Search for an LDAP user, using this syntax::
  $ sudo -u www-data php occ ldap:search [--group] [--offset="..."] 
  [--limit="..."] search
 
-This example searches for usernames that includes "rob"::
+This example searches for usernames that start with "rob"::
 
  $ sudo -u www-data php occ ldap:search rob
  
@@ -272,11 +233,31 @@ connected to an LDAP server::
 
  $ sudo -u www-data php occ ldap:check-user robert
  
-You can see your whole LDAP configuration, or the configuration for a single 
-configID::
+``ldap:create-empty-config`` creates an empty LDAP configuration. The first 
+one you create has no ``configID``, like this example::
+
+ $ sudo -u www-data php occ ldap:create-empty-config
+   Created new configuration with configID ''
+   
+This is a holdover from the early days, when there was no option to create 
+additional configurations. The second, and all subsequent, configurations 
+that you create are automatically assigned IDs::
+ 
+ $ sudo -u www-data php occ ldap:create-empty-config
+    Created new configuration with configID 's01' 
+ 
+Then you can list and view your configurations::
 
  $ sudo -u www-data php occ ldap:show-config
+ 
+And view the configuration for a single configID::
+
  $ sudo -u www-data php occ ldap:show-config s01
+ 
+``ldap:delete-config [configID]`` deletes an existing LDAP configuration:: 
+
+ $ sudo -u www-data php occ ldap:delete  s01
+  Deleted configuration with configID 's01'
  
 The ``ldap:set-config`` command is for manipulating configurations, like this 
 example that sets search attributes::
@@ -287,16 +268,12 @@ example that sets search attributes::
 ``ldap:test-config`` tests whether your configuration is correct and can bind to 
 the server::
 
- $ sudo -u www-data php occ ldap:test-config ""
+ $ sudo -u www-data php occ ldap:test-config s01
  The configuration is valid and the connection could be established!
  
 ``ldap:show-remnants`` is for cleaning up the LDAP mappings table, and is 
-documented in :doc:`../configuration_user/user_auth_ldap_cleanup`.
- 
-``ldap:create-empty-config`` creates an empty LDAP configuration.
-
-``ldap:delete-config`` deletes an existing LDAP configuration.
-    
+documented in :doc:`../configuration_user/user_auth_ldap_cleanup`. 
+   
 Maintenance Commands
 --------------------
 
@@ -452,3 +429,4 @@ you can omit this step with the ``--skip-migration-test`` option::
 You can perform this simulation manually with the ``--dry-run`` option::
  
  $ sudo -u www-data php occ upgrade --dry-run
+ 
