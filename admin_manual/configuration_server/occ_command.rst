@@ -6,7 +6,8 @@ ownCloud's ``occ`` command (ownCloud console) is ownCloud's command-line
 interface. You can perform many common server operations with ``occ``::
 
 * Manage apps
-* Upgrade the ownCloud database
+* Manage users
+* Convert the ownCloud database
 * Reset passwords, including administrator passwords
 * Convert the ownCloud database from SQLite to a more performant DB
 * Query and change LDAP settings
@@ -25,6 +26,27 @@ Running it with no options lists all commands and options, like this example on
 Ubuntu::
 
  $ sudo -u www-data php occ
+ ownCloud version 8.1
+ Usage:
+  [options] command [arguments]
+
+ Options:
+  --help (-h)           Display this help message
+  --quiet (-q)          Do not output any message
+  --verbose (-v|vv|vvv) Increase the verbosity of messages: 1 for normal 
+                        output, 2 for more verbose output and 3 for debug
+  --version (-V)        Display this application version
+  --ansi                Force ANSI output
+  --no-ansi             Disable ANSI output
+  --no-interaction (-n) Do not ask any interactive question
+
+ Available commands:
+  check                       check dependencies of the server environment
+  help                        Displays help for a command
+  list                        Lists commands
+  status                      show some status information
+  upgrade                     run upgrade routines after installation of a new 
+                              release. The release has to be installed before.
 
 This is the same as ``sudo -u www-data php occ list``.
 
@@ -35,7 +57,7 @@ Run it with the ``-h`` option for syntax help::
 Display your ownCloud version::
 
  $ sudo -u www-data php occ -V
-   ownCloud version 7.0.4
+   ownCloud version 8.1
    
 Query your ownCloud server status::
  
@@ -43,8 +65,8 @@ Query your ownCloud server status::
    Array
    (
     [installed] => true
-    [version] => 7.0.4.2
-    [versionstring] => 7.0.4
+    [version] => 8.1.0.3
+    [versionstring] => 8.1.0
     [edition] => 
    )
    
@@ -72,18 +94,197 @@ this example for the ``maintenance:mode`` command::
    --no-ansi             Disable ANSI output.
    --no-interaction (-n) Do not ask any interactive question.
    
+Apps Commands
+-------------
+
+The ``app`` commands list, enable, and disable apps. This lists all of your 
+installed apps, and shows whether they are enabled or disabled::
+
+ $ sudo -u www-data php occ app:list
+ 
+Enable an app::
+
+ $ sudo -u www-data php occ app:enable external
+   external enabled
+   
+``app:check-code`` checks if the app uses ownCloud's public API (``OCP``) or 
+private API (``OC_``), and then enables the app. If the app uses the private 
+API it will print a warning::
+
+  $ sudo -u www-data php occ app:check-code activity
+    [snip]
+    Analysing /var/www/owncloud/apps/activity/extension/files_sharing.php
+    0 errors
+    Analysing /var/www/owncloud/apps/activity/extension/files.php
+    0 errors
+  App is not compliant
+   
+Disable an app::
+
+ $ sudo -u www-data php occ app:disable external
+   external disabled   
+   
+Background Jobs Selector
+------------------------
+
+Select which scheduler you want to use for controlling background jobs: Ajax, 
+Webcron, or Cron. This is the same as using the **Cron** section on your Admin 
+page.
+
+This example selects Ajax::
+
+ $ sudo -u www-data php occ background:ajax
+   Set mode for background jobs to 'ajax'
+
+The other two commands are:
+
+* ``background:cron``
+* ``background:webcron``
+
+See :doc:`../configuration_server/background_jobs_configuration` to learn more.
+
+Database Conversion
+-------------------
+
+The SQLite database is good for testing, and for ownCloud servers with small 
+workloads, but production servers with multiple users should use MariaDB, MySQL, 
+or PostgreSQL. You can use ``occ`` to convert from SQLite to one of these other 
+databases. You need:
+
+* Your desired database and its PHP connector installed
+* The login and password of a database admin user
+* The database port number, if it is a non-standard port
+
+This is example converts to SQLite MySQL/MariaDB:: 
+
+ $ sudo -u www-data php occ db:convert-type mysql oc_dbuser 127.0.0.1 
+ oc_database
+
+For a more detailed explanation see 
+:doc:`../configuration_database/db_conversion`
+
+File Operations
+---------------
+
+The ``files:scan`` command scans for new files for the file cache, and isn't 
+intended to be run manually.
+
+``files:cleanup`` tidies up the server's file cache by deleting all file 
+entries that have no matching entries in the storage table.
+   
+l10n, Create javascript Translation Files for Apps
+--------------------------------------------------
+
+Use the ``l10n:createjs`` to translate apps into various languages, using this 
+syntax::
+
+  l10n:createjs appname language_name
+  
+This example converts the Activity app to Bosnian::
+
+ $ sudo -u www-data php occ l10n:createjs activity bs
+
+These are the supported language codes, and `Codes for the Representation of 
+Names of Languages
+<http://www.loc.gov/standards/iso639-2/php/code_list.php>`_ may be helpful::
+
+ ach                     gu     ml     sr
+ ady          eo         he     ml_IN  sr@latin
+ af_ZA        es         hi     mn     su
+ ak           es_AR      hi_IN  ms_MY  sv
+ am_ET        es_BO      hr     mt_MT  sw_KE
+ ar           es_CL      hu_HU  my_MM  ta_IN
+ ast          es_CO      hy     nb_NO  ta_LK
+ az           es_CR      ia     nds    te
+ be           es_EC      id     ne     tg_TJ
+ bg_BG        es_MX      io     nl     th_TH
+ bn_BD        es_PE      is     nn_NO  tl_PH
+ bn_IN        es_PY      it     nqo    tr
+ bs           es_US      ja     oc     tzm
+ ca           es_UY      jv     or_IN  ug
+ ca@valencia  et_EE      ka_GE  pa     uk
+ cs_CZ        eu         km     pl     ur
+ cy_GB        eu_ES      kn     pt_BR  ur_PK
+ da           fa         ko     pt_PT  uz
+ de           fi         ku_IQ  ro     vi
+ de_AT        fi_FI      lb     ru     yo
+ de_CH        fil        lo     si_LK  zh_CN
+ de_DE        fr         lt_LT  sk     zh_HK
+ el           fr_CA      lv     sk_SK  zh_TW
+ en_GB        fy_NL      mg     sl
+ en_NZ        gl         mk     sq
+
+LDAP Commands
+-------------
+
+You can run the following LDAP commands with ``occ``.
+
+Search for an LDAP user, using this syntax::
+
+ $ sudo -u www-data php occ ldap:search [--group] [--offset="..."] 
+ [--limit="..."] search
+
+This example searches for usernames that start with "rob"::
+
+ $ sudo -u www-data php occ ldap:search rob
+ 
+Check if an LDAP user exists. This works only if the ownCloud server is 
+connected to an LDAP server::
+
+ $ sudo -u www-data php occ ldap:check-user robert
+ 
+``ldap:create-empty-config`` creates an empty LDAP configuration. The first 
+one you create has no ``configID``, like this example::
+
+ $ sudo -u www-data php occ ldap:create-empty-config
+   Created new configuration with configID ''
+   
+This is a holdover from the early days, when there was no option to create 
+additional configurations. The second, and all subsequent, configurations 
+that you create are automatically assigned IDs::
+ 
+ $ sudo -u www-data php occ ldap:create-empty-config
+    Created new configuration with configID 's01' 
+ 
+Then you can list and view your configurations::
+
+ $ sudo -u www-data php occ ldap:show-config
+ 
+And view the configuration for a single configID::
+
+ $ sudo -u www-data php occ ldap:show-config s01
+ 
+``ldap:delete-config [configID]`` deletes an existing LDAP configuration:: 
+
+ $ sudo -u www-data php occ ldap:delete  s01
+  Deleted configuration with configID 's01'
+ 
+The ``ldap:set-config`` command is for manipulating configurations, like this 
+example that sets search attributes::
+ 
+ $ sudo -u www-data php occ ldap:set-config s01 ldapAttributesForUserSearch 
+ "cn;givenname;sn;displayname;mail"
+ 
+``ldap:test-config`` tests whether your configuration is correct and can bind to 
+the server::
+
+ $ sudo -u www-data php occ ldap:test-config s01
+ The configuration is valid and the connection could be established!
+ 
+``ldap:show-remnants`` is for cleaning up the LDAP mappings table, and is 
+documented in :doc:`../configuration_user/user_auth_ldap_cleanup`. 
+   
 Maintenance Commands
 --------------------
 
-These three maintenance commands put your ownCloud server into
+These maintenance commands put your ownCloud server into
 maintenance and single-user mode, and run repair steps during updates.
 
 You must put your ownCloud server into maintenance mode whenever you perform an 
 update or upgrade. This locks the sessions of all logged-in users, including 
 administrators, and displays a status screen warning that the server is in 
 maintenance mode. Users who are not already logged in cannot log in until 
-maintenance mode is turned off. When you take the server out of maintenance 
-mode 
+maintenance mode is turned off. When you take the server out of maintenance mode 
 logged-in users must refresh their Web browsers to continue working::
 
  $ sudo -u www-data php occ maintenance:mode --on
@@ -106,28 +307,88 @@ up the database, so while you can run it manually there usually isn't a need
 to::
   
   $ sudo -u www-data php occ maintenance:repair
-    - Repair mime types  
-    - Repair config
+     - Repair mime types
+ - Repair legacy storages
+ - Repair config
+ - Clear asset cache after upgrade
+     - Asset pipeline disabled -> nothing to do
+ - Generate ETags for file where no ETag is present.
+     - ETags have been fixed for 0 files/folders.
+ - Clean tags and favorites
+     - 0 tags for delete files have been removed.
+     - 0 tag entries for deleted tags have been removed.
+     - 0 tags with no entries have been removed.
+ - Re-enable file app    
  
 User Commands
 -------------
 
-The ``user`` commands reset passwords, display a simple report showing how 
-many users you have, and when a user was last logged in.
+The ``user`` commands create and remove users, reset passwords, display a simple 
+report showing how many users you have, and when a user was last logged in.
+
+You can create a new user with their display name, login name, and any group 
+memberships with the ``user:add`` command. The syntax is::
+
+ user:add [--password-from-env] [--display-name[="..."]] [-g|--group[="..."]] 
+ uid
+
+The ``display-name`` corresponds to the **Full Name** on the Users page in your 
+ownCloud Web UI, and the ``uid`` is their **Username**, which is their 
+login name. This example adds new user Layla Smith, and adds her to the 
+**users** and **db-admins** groups. Any groups that do not exist are created:: 
+ 
+ $ sudo -u www-data php occ user:add --display-name="Layla Smith" 
+   --group="users db-admins" layla
+   Enter password: 
+   Confirm password: 
+   The user "layla" was created successfully
+   Display name set to "Layla Smith"
+   User "layla" added to group "users db-admins"
+   
+Go to your Users page, and you will see your new user.   
+
+``password-from-env`` allows you to set the user's password from an environment 
+variable. This prevents the password from being exposed to all users via the 
+process list, and will only be visible in the history of the user (root) 
+running the command. This also permits creating scripts for adding multiple new 
+users.
+
+To use ``password-from-env`` you must run as "real" root, rather than ``sudo``, 
+because ``sudo`` strips environment variables. This example adds new user Fred 
+Jones::
+
+ $ su
+ Password:
+ # export OC_PASS=newpassword
+ # su -s /bin/sh www-data -c 'php occ user:add --password-from-env 
+   --display-name="Fred Jones" --group="users" fred'
+ The user "fred" was created successfully
+ Display name set to "Fred Jones"
+ User "fred" added to group "users" 
 
 You can reset any user's password, including administrators (see 
-:doc:`../configuration_user/reset_admin_password`). In this example the 
-username is layla::
+:doc:`../configuration_user/reset_admin_password`)::
 
  $ sudo -u www-data php occ user:resetpassword layla
    Enter a new password: 
    Confirm the new password: 
    Successfully reset password for layla
    
+You may also use ``password-from-env`` to reset passwords::
+
+ # export OC_PASS=newpassword
+ # su -s /bin/sh www-data -c 'php occ user:resetpassword --password-from-env 
+   layla'
+   Successfully reset password for layla
+   
+You can delete users::
+
+ $ sudo -u www-data php occ user:delete fred
+   
 View a user's most recent login::   
    
  $ sudo -u www-data php occ user:lastseen layla 
- layla's last login: 09.01.2015 18:46
+   layla's last login: 09.01.2015 18:46
    
 Generate a simple report that counts all users, including users on external user
 authentication servers such as LDAP::
@@ -144,34 +405,16 @@ authentication servers such as LDAP::
  | user directories | 2  |
  +------------------+----+
    
-Apps Commands
--------------
-
-The ``app`` commands list, enable, and disable apps. This lists all of your 
-installed apps, and shows whether they are enabled or disabled::
-
- $ sudo -u www-data php occ app:list
- 
-Enable an app::
-
- $ sudo -u www-data php occ app:enable external
-   external enabled
-   
-Disable an app::
-
- $ sudo -u www-data php occ app:disable external
-   external disabled
-   
 Upgrade Command
 ---------------
 
 When you are performing an update or upgrade on your ownCloud server (see the 
 Maintenance section of this manual), it is better to use ``occ`` to perform the 
-database upgrade step, rather than the Web GUI,  in order to avoid timeouts. 
-PHP 
+database upgrade step, rather than the Web GUI,  in order to avoid timeouts. PHP 
 scripts invoked from the Web interface are limited to 3600 seconds. In larger 
 environments this may not be enough, leaving the system in an inconsistent 
-state. Use this command to upgrade your databases::
+state. After performing all the preliminary steps (see 
+:doc:`../maintenance/upgrade`) use this command to upgrade your databases::
 
  $ sudo -u www-data php occ upgrade
 
@@ -187,67 +430,3 @@ You can perform this simulation manually with the ``--dry-run`` option::
  
  $ sudo -u www-data php occ upgrade --dry-run
  
-Database Conversion
--------------------
-
-The SQLite database is good for testing, and for ownCloud servers with small 
-workloads, but production servers with multiple users should use MariaDB, 
-MySQL, 
-or PostgreSQL. You can use ``occ`` to convert from SQLite to one of these other 
-databases. You need:
-
-* Your desired database installed and its PHP connector
-* The login and password of a database admin user
-* The database port number, if it is a non-standard port
-
-This is example converts to MySQL/MariaDB:: 
-
- $ sudo -u www-data php occ db:generate-change-script
- $ sudo -u www-data php occ db:convert-type mysql oc_dbuser 127.0.0.1 
- oc_database
-
-For a more detailed explanation see 
-:doc:`../configuration_database/db_conversion`   
-
-LDAP Commands
--------------
-
-You can run the following LDAP commands with ``occ``.
-
-Search for an LDAP user, using this syntax::
-
- $ sudo -u www-data php occ ldap:search [--group] [--offset="..."] 
- [--limit="..."] search
-
-This example searches for usernames that includes "rob"::
-
- $ sudo -u www-data php occ ldap:search rob
- 
-Check if an LDAP user exists. This works only if the ownCloud server is 
-connected to an LDAP server::
-
- $ sudo -u www-data php occ ldap:check-user robert
- 
-You can see your whole LDAP configuration, or the configuration for a single 
-configID::
-
- $ sudo -u www-data php occ ldap:show-config
- $ sudo -u www-data php occ ldap:show-config s01
- 
-The ``ldap:set-config`` command is for manipulating configurations, like this 
-example that sets search attributes::
- 
- $ sudo -u www-data php occ ldap:set-config s01 ldapAttributesForUserSearch 
- "cn;givenname;sn;displayname;mail"
- 
-``ldap:test-config`` tests whether your configuration is correct can bind to 
-the server::
-
- $ sudo -u www-data php occ ldap:test-config ""
- The configuration is valid and the connection could be established! 
- 
-File Scanning
--------------
-
-The ``files:scan`` command scans for new files for the file cache, and isn't 
-intended to be run manually.
