@@ -62,13 +62,10 @@ Display your ownCloud version::
 Query your ownCloud server status::
  
  $ sudo -u www-data php occ status
-   Array
-   (
-    [installed] => true
-    [version] => 8.1.0.3
-    [versionstring] => 8.1.0
-    [edition] => 
-   )
+   - installed: true
+   - version: 8.1.0.4
+   - versionstring: 8.1 alpha 3
+   - edition:
    
 ``occ`` has options, commands, and arguments. Options and arguments are 
 optional, while commands are required. The syntax is::
@@ -108,8 +105,8 @@ Enable an app::
    external enabled
    
 ``app:check-code`` checks if the app uses ownCloud's public API (``OCP``) or 
-private API (``OC_``), and then enables the app. If the app uses the private 
-API it will print a warning::
+private API (``OC_``). If the app uses the private API it will print a
+warning::
 
   $ sudo -u www-data php occ app:check-code activity
     [snip]
@@ -338,13 +335,14 @@ login name. This example adds new user Layla Smith, and adds her to the
 **users** and **db-admins** groups. Any groups that do not exist are created:: 
  
  $ sudo -u www-data php occ user:add --display-name="Layla Smith" 
-   --group="users db-admins" layla
+   --group="users" --group="db-admins" layla
    Enter password: 
    Confirm password: 
    The user "layla" was created successfully
    Display name set to "Layla Smith"
-   User "layla" added to group "users db-admins"
-   
+   User "layla" added to group "users"
+   User "layla" added to group "db-admins"
+
 Go to your Users page, and you will see your new user.   
 
 ``password-from-env`` allows you to set the user's password from an environment 
@@ -410,7 +408,7 @@ Upgrade Command
 
 When you are performing an update or upgrade on your ownCloud server (see the 
 Maintenance section of this manual), it is better to use ``occ`` to perform the 
-database upgrade step, rather than the Web GUI,  in order to avoid timeouts. PHP 
+database upgrade step, rather than the Web GUI, in order to avoid timeouts. PHP
 scripts invoked from the Web interface are limited to 3600 seconds. In larger 
 environments this may not be enough, leaving the system in an inconsistent 
 state. After performing all the preliminary steps (see 
@@ -429,4 +427,3 @@ you can omit this step with the ``--skip-migration-test`` option::
 You can perform this simulation manually with the ``--dry-run`` option::
  
  $ sudo -u www-data php occ upgrade --dry-run
- 
