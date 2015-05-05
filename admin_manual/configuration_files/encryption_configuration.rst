@@ -177,7 +177,13 @@ occ Encryption Commands
 
 You may also use the ``occ`` command to perform encryption operations.
 
-This is equivalent to checking **Enable server-side encryption** on your Admin 
+Get the current status of encryption (Is enabled? What's the default module
+ID?)::
+
+ occ encryption:status
+
+
+This is equivalent to checking **Enable server-side encryption** on your Admin
 page::
 
  occ encryption:enable
