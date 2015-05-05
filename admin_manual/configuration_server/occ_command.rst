@@ -108,8 +108,8 @@ Enable an app::
    external enabled
    
 ``app:check-code`` checks if the app uses ownCloud's public API (``OCP``) or 
-private API (``OC_``), and then enables the app. If the app uses the private 
-API it will print a warning::
+private API (``OC_``). If the app uses the private API it will print a
+warning::
 
   $ sudo -u www-data php occ app:check-code activity
     [snip]
@@ -429,4 +429,3 @@ you can omit this step with the ``--skip-migration-test`` option::
 You can perform this simulation manually with the ``--dry-run`` option::
  
  $ sudo -u www-data php occ upgrade --dry-run
- 
