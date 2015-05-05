@@ -62,13 +62,10 @@ Display your ownCloud version::
 Query your ownCloud server status::
  
  $ sudo -u www-data php occ status
-   Array
-   (
-    [installed] => true
-    [version] => 8.1.0.3
-    [versionstring] => 8.1.0
-    [edition] => 
-   )
+   - installed: true
+   - version: 8.1.0.4
+   - versionstring: 8.1 alpha 3
+   - edition:
    
 ``occ`` has options, commands, and arguments. Options and arguments are 
 optional, while commands are required. The syntax is::
