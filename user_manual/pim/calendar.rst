@@ -102,40 +102,26 @@ cooperative planning and information sharing.
 
 The Calendar app provides both the Primary CalDAV address and the iOS/OSX CalDAV
 address.  Using these addresses, you can use CalDAV-compatible programs (for
-example, Kontact, Evolution, or Thunderbird) using the address provided.
+example, Kontact, Evolution, or Mozilla Thunderbird with the Lightning Add-on)
+using the address provided.
 
-To better understand the URL creation, consider the following examples:
-
-Let's assume you access your ownCloud web interface using the following address::
-
-  http://ADDRESS
-
-To access your ownCloud calendars using CalDAV-compatible programs like
-Kontact, Evolution, or Thunderbird, you would use the following URL::
-
-  http://ADDRESS/remote.php/caldav
-
-To access your ownCloud calendars using Apple iCal you would use the following
-URL, making sure to include the final slash::
-
-  http://ADDRESS/remote.php/caldav/principals/username/
-
-To access your ownCloud calendars using Mozilla Lightning you would use the
-following URL::
-
-  https://ADDRESS/remote.php/caldav/calendars/USERNAME/CALENDARNAME
-
-.. Note:: Mozilla Lightning doesn't support using multiple accounts on a single
+.. Note:: The Lightning Add-on doesn't support using multiple accounts on a single
    server as a default. You need to set ``calendar.network.multirealm`` to ``true``
-   in the Config Editor of Thunderbird to be able to use multiple accounts.
+   in the Config Editor of Mozilla Thunderbird to be able to use multiple accounts.
 
-The following is an example showing the completed URL where the calendar name is
-``defaultcalendar`` and the username is ``test``::
+Getting the CalDAV link 
+~~~~~~~~~~~~~~~~~~~~~~~
 
-       https://localhost/owncloud/remote.php/caldav/calendars/test/defaultcalendar
+The GUI of ownCloud provides you the needed links which can be used in your CalDAV-compatible
+program. Open up the Calendar App and use the |caldavlink| icon next to the calendar name as
+shown in the figure below:
 
-.. Note:: Calendar names are lowercase and any spaces are removed. They are not
-   URL-encoded.
+.. figure:: ../images/calendar_caldav_link.png
+
+Furthermore you can get the Primary CalDAV address as well as the iOS/OS X CalDAV address by
+using the |gear| icon on the bottom left of the Calendar app as shown in the figure below:
+
+.. figure:: ../images/calendar_caldav_ios.png
 
 Creating Events
 ---------------
@@ -331,3 +317,5 @@ ownCloud calendar and the desktop calendar to which you are synchronizing. You
 can also set the timezone manually in the personal settings.
 
 .. |download| image:: ../images/download.png
+.. |caldavlink| image:: ../images/calendar_caldav_icon.png
+.. |gear| image:: ../images/gear.png
