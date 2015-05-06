@@ -16,10 +16,14 @@ interface. You can perform many common server operations with ``occ``::
 it as your HTTP user to ensure that the correct permissions are maintained on 
 your ownCloud files and directories. 
 
-.. note:: The HTTP user is different on the various Linux distributions. See 
-   the **Setting Strong Directory Permissions** section of 
-   :doc:`../installation/installation_wizard` to learn how to find your HTTP 
-   user
+The HTTP user is different on the various Linux distributions. See the 
+**Setting Strong Directory Permissions** section of :doc:`../installation/installation_wizard` 
+to learn how to find your HTTP user
+   
+* The HTTP user and group in Debian/Ubuntu is www-data.
+* The HTTP user and group in Fedora/CentOS is apache.
+* The HTTP user and group in Arch Linux is http.
+* The HTTP user in openSUSE is wwwrun, and the HTTP group is www.   
 
 Running it with no options lists all commands and options, like this example on 
 Ubuntu::
@@ -93,13 +97,13 @@ this example for the ``maintenance:mode`` command::
 The ``status`` command from above has an option to define the output format.
 Default is plain text, but it can also be ``json``::
 
- $ ./occ status --output json
+ $ sudo -u www-data php status --output json
  {"installed":true,"version":"8.1.0.4","versionstring":"8.1 alpha 3",
  "edition":"Enterprise"}
 
 or ``json_pretty``::
 
- $ ./occ status --output json_pretty
+ $ sudo -u www-data php status --output json_pretty
  {
      "installed": true,
      "version": "8.1.0.4",
@@ -179,6 +183,14 @@ This is example converts to SQLite MySQL/MariaDB::
 
 For a more detailed explanation see 
 :doc:`../configuration_database/db_conversion`
+
+Encryption
+----------
+
+When you are using encryption, you must manually migrate your encryption 
+keys after upgrading your ownCloud server::
+
+ $ sudo -u www-data php occ encryption:migrate-keys 
 
 File Operations
 ---------------
