@@ -7,7 +7,6 @@ interface. You can perform many common server operations with ``occ``::
 
 * Manage apps
 * Manage users
-* Convert the ownCloud database
 * Reset passwords, including administrator passwords
 * Convert the ownCloud database from SQLite to a more performant DB
 * Query and change LDAP settings
