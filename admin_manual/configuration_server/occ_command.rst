@@ -60,7 +60,7 @@ Display your ownCloud version::
    ownCloud version 8.1
    
 Query your ownCloud server status::
- 
+
  $ sudo -u www-data php occ status
    - installed: true
    - version: 8.1.0.4
@@ -74,7 +74,7 @@ optional, while commands are required. The syntax is::
  
 Get detailed information on individual commands with the ``help`` command, like 
 this example for the ``maintenance:mode`` command::
- 
+
  $ sudo -u www-data php occ help maintenance:mode
    Usage:
    maintenance:mode [--on] [--off]
@@ -90,7 +90,28 @@ this example for the ``maintenance:mode`` command::
    --ansi                Force ANSI output.
    --no-ansi             Disable ANSI output.
    --no-interaction (-n) Do not ask any interactive question.
-   
+
+The ``status`` command from above has an option to define the output format.
+Default is plain text, but it can also be ``json``::
+
+ $ ./occ status --output json
+ {"installed":true,"version":"8.1.0.4","versionstring":"8.1 alpha 3",
+ "edition":"Enterprise"}
+
+or ``json_pretty``::
+
+ $ ./occ status --output json_pretty
+ {
+     "installed": true,
+     "version": "8.1.0.4",
+     "versionstring": "8.1 alpha 3",
+     "edition": "Enterprise"
+ }
+
+This ``output`` option is available on all list and list-like commands::
+``status``, ``check``, ``app:list``, ``encryption:status``
+and ``encryption:list-modules``
+
 Apps Commands
 -------------
 
