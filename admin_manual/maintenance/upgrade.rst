@@ -252,6 +252,28 @@ If you need to reverse your upgrade, see :doc:`restore`.
 Troubleshooting
 ---------------
 
+When upgrading ownCloud and you are running MySQL or MariaDB with binary logging 
+enabled, your upgrade may fail with these errors in your MySQL/MariaDB log::
+
+ An unhandled exception has been thrown:
+ exception 'PDOException' with message 'SQLSTATE[HY000]: General error: 1665 
+ Cannot execute statement: impossible to write to binary log since 
+ BINLOG_FORMAT = STATEMENT and at least one table uses a storage engine limited 
+ to row-based logging. InnoDB is limited to row-logging when transaction 
+ isolation level is READ COMMITTED or READ UNCOMMITTED.' 
+
+There are two solutions. One is to disable binary logging. Binary logging 
+records all changes to your database, and how long each change took. The 
+purpose of binary logging is to enable replication and to support backup 
+operations.
+
+The other is to change the BINLOG_FORMAT = STATEMENT in your database 
+configuration file, or possibly in your database startup script, to 
+BINLOG_FORMAT = MIXED. See `Overview of the Binary 
+Log <https://mariadb.com/kb/en/mariadb/overview-of-the-binary-log/>`_ and `The 
+Binary Log <https://dev.mysql.com/doc/refman/5.6/en/binary-log.html>`_ for 
+detailed information.
+
 Occasionally, *files do not show up after a upgrade*. A rescan of the files can help::
 
  $ sudo -u www-data php console.php files:scan --all
