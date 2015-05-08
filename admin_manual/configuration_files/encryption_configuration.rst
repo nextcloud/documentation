@@ -67,11 +67,9 @@ The encryption keys are stored in following directories:
 Before Enabling Encryption
 --------------------------
 
-Plan very carefully before enabling encryption. You have the option to disable 
-encryption, but there are scenarios where it is possible that some files will 
-not be recoverable. It is best to think of encryption as all-or-nothing: either 
-you use it, or you don't, and once files are encrypted they must always be 
-encrypted. Always have backups of your encryption keys stored in a safe 
+Plan very carefully before enabling encryption because **it is not 
+reversible**, and if you lose your encryption keys your files are not 
+recoverable. Always have backups of your encryption keys stored in a safe 
 location, and consider enabling all recovery options.
 
 Enabling Encryption
@@ -83,16 +81,17 @@ select an encryption module to load. Currently the only available encryption
 module is the ownCloud Default Encryption Module.
 
 First go to the **Server-side encryption** section of your Admin page and check 
-**Enable server-side encryption**.
+**Enable server-side encryption**. You have one last chance to change your mind.
 
 .. figure:: ../images/encryption3.png
 
-There is no encryption module loaded yet, so go to your Apps page to enable the 
-ownCloud Default Encryption Module.
+After clicking the **Enable Encryption** button you see the message "No 
+encryption module loaded, please load a encryption module in the app menu ", so 
+go to your Apps page to enable the ownCloud Default Encryption Module.
 
 .. figure:: ../images/encryption1.png
 
-If you return to your Admin page you will see the ownCloud Default Encryption 
+Return to your Admin page to see the ownCloud Default Encryption 
 Module added to the module selector, and automatically selected. Now you must 
 log out and then log back in to initialize your encryption keys.
 
@@ -101,12 +100,10 @@ log out and then log back in to initialize your encryption keys.
 Sharing Encrypted Files
 -----------------------
 
-Only users who have private encryption keys have access to shared encrypted 
-files and folders. Users who have not yet created their private encryption keys 
-will not have access to encrypted shared files; they will see folders and 
-filenames, but will not be able to open or download the files. They will see a 
-yellow warning banner that says "Encryption App is enabled but your keys are not 
-initialized, please log-out and log-in again." 
+After encryption is enabled your users must also log out and log back in to 
+generate their personal encryption keys. They will see a yellow warning banner 
+that says "Encryption App is enabled but your keys are not initialized, please 
+log-out and log-in again." 
 
 Share owners may need to re-share files after encryption is enabled; users 
 trying to access the share will see a message advising them to ask the share 
@@ -129,7 +126,8 @@ the right to expose the encryption menu. Encryption is enabled by default.
 
 .. figure:: ../images/encryption13.png
 
-To disable encryption, click the gear icon and un-check **encryption**.
+To disable encryption, click the gear icon and un-check **encryption**. Again, 
+consider encrypting an external mountpoint to be permanent.
 
 Enabling Users' File Recovery Key
 ---------------------------------
@@ -160,38 +158,19 @@ You may change your Recovery Key password.
 
 .. figure:: ../images/encryption12.png
 
-Or disable it.
-
-.. figure:: ../images/encryption11.png
-
-Disabling Encryption
---------------------
-
-You have the option of changing your mind and disabling the Encryption app by 
-un-checking **Enable server-side encryption** on your Admin page. But remember, 
-under certain conditions it is possible to create unrecoverable files, so make 
-sure you have good backups first.
-
 occ Encryption Commands
 -----------------------
 
 You may also use the ``occ`` command to perform encryption operations.
 
-Get the current status of encryption (Is enabled? What's the default module
-ID?)::
+Get the current status of encryption and loaded encryption module::
 
  occ encryption:status
-
 
 This is equivalent to checking **Enable server-side encryption** on your Admin
 page::
 
  occ encryption:enable
-
-This is equivalent to un-checking **Enable server-side encryption** on your 
-Admin page::
-
- occ encryption:disable
  
 List the available encryption modules::
 
