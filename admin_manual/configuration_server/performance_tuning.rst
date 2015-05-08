@@ -213,6 +213,13 @@ AES-NI extension:
   
 * If your environment runs virtualized, check the virtualization vendor for 
   support.
+  
+SSL session reuse
+=================
+
+You should enable SSL session tickets or SSL session identifiers in your
+web server. This will lead to lower delay in connection setup time for
+TCP connections to the ownCloud.
 
 **************  
 Webserver Tips
