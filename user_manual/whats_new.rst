@@ -2,6 +2,11 @@
 What's New for Users in ownCloud 8
 ==================================
 
+Groups Listings on Personal Page
+--------------------------------
+
+Now you can which ownCloud groups you belong to on your Personal page in the Web interface.
+
 Desktop Sync Client Shares From File Manager, Selective Sync
 ------------------------------------------------------------
 
