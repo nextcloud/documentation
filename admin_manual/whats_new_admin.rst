@@ -53,6 +53,11 @@ apps on top of their ``owncloud-server``.
 Visit `owncloud.com <https://owncloud.com/>`_ for more information on the 
 Enterprise Subscription.
 
+See Your Group Memberships
+--------------------------
+
+Now you, and your users, can see which groups you belong to on your Personal pages.
+
 No More PHP 5.3
 ---------------
 
