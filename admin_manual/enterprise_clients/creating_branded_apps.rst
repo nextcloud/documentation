@@ -1,24 +1,32 @@
-=======================================================
-Creating Branded iOS and Android Apps (Enterprise Only)
-=======================================================
+==============================================
+Creating Branded Client Apps (Enterprise Only)
+==============================================
 
 Overview
 --------
 
 ownBrander is an ownCloud build service that is exclusive to Enterprise 
-customers, for easily creating your own branded Android and iOS 
-ownCloud sync apps, and your own branded ownCloud desktop sync client. Customers 
-will access the app through their `customer.owncloud.com 
-<https://customer.owncloud.com>`_ accounts.
+customers for creating branded Android and iOS ownCloud sync apps, and branded 
+ownCloud desktop sync clients. You build your apps with the 
+ownBrander app on your `Customer.owncloud.com 
+<https://customer.owncloud.com/owncloud/>`_ accounts, and within 24-48 hours 
+they are loaded into your account.
 
 .. image:: ../images/ownbrander-1.png
 
-You need to supply your own artwork, and the wizard tells you the required 
-dimensions. To build Android and Desktop sync apps you need to supply only your 
-own custom branded artwork. Building any iOS app requires custom branded 
-artwork plus obtaining and installing a P12 certificate and provisioning 
-profile from Apple (see :ref:`creating-ios-apps`). Then, to create the app, you 
-follow a simple graphical wizard. 
+Building a Branded iOS App
+--------------------------
+
+Building a branded iOS app requires your own artwork, and you must create a P12 
+certificate and three provisioning profiles for digitally signing your apps. 
+Apple has strict and specific requirements, so it is a lengthy process. See 
+:doc:`../enterprise_ios_app/index` for a complete tutorial.
+
+Building an Android App or Desktop Sync Client
+----------------------------------------------
+   
+To build Android and Desktop sync apps you need to supply your own artwork, 
+and the ownBrander wizard details the required specifications.
 
 .. image:: ../images/ownbrander-2.png
 
@@ -27,17 +35,14 @@ of any items that need to be corrected, or a success message:
 
 .. image:: ../images/ownbrander-3.png
 
-And then when your new app is built, which may take up to 48 hours, it will 
+When your new app is built, which may take up to 48 hours, it will 
 appear in your personal folder on the Files page.
 
 .. image:: ../images/ownbrander-4.png
 
-Creating Branded Android or Desktop Sync Clients
-------------------------------------------------
-
 You can play around with ownBrander and create some apps for testing and 
 learning. The Android and Desktop sync clients are the easiest to use for 
-testing, and we'll walk through creating an Android app. You need a just a few 
+testing, so we'll walk through creating an Android app. You need a just a few 
 images, and the wizard tells you their required dimensions. They must be the 
 exact specified dimensions, preferably in PNG format.
 
@@ -89,22 +94,7 @@ and upload an icon.
 Now you are finished. Click the Generate Android App button, and you will 
 either see a success message, or an error message telling you what you need to 
 fix. When all of your options are entered correctly and you click the Generate 
-Android App button, it takes up to 48 hours for your app to appear on your 
-Files page.
+Android App button, it takes up to 48 hours for your app to appear in your 
+`Customer.owncloud.com <https://customer.owncloud.com/owncloud/>`_ account.
 
 .. image:: ../images/ownbrander-12.png
-
-.. _creating-ios-apps:
-
-Creating Apps for iOS
----------------------
-
-You need many more images for creating an iOS app so that your app works on all 
-iPhones and iPads in both portrait and landscape modes. You also need an Apple 
-developer account, and a `P12 certificate and provisioning profile 
-<https://developer.apple.com/library/ios/documentation/Security/Conceptual/
-CertKeyTrustProgGuide/iPhone_Tasks/iPhone_Tasks.html#//apple_ref/doc/uid/
-TP40001358-CH208-SW13>`_. We will install these for you on your 
-`customer.owncloud.com 
-<https://customer.owncloud.com>`_ account. Contact branding@owncloud.com if you 
-have any questions.
