@@ -14,13 +14,13 @@ they are loaded into your account.
 
 .. image:: ../images/ownbrander-1.png
 
-Building a Branded iOS App
---------------------------
+.. Building a Branded iOS App
+.. --------------------------
 
-Building a branded iOS app requires your own artwork, and you must create a P12 
-certificate and three provisioning profiles for digitally signing your apps. 
-Apple has strict and specific requirements, so it is a lengthy process. See 
-:doc:`../enterprise_ios_app/index` for a complete tutorial.
+.. Building a branded iOS app requires your own artwork, and you must create a 
+.. P12 certificate and three provisioning profiles for digitally signing your 
+.. apps. Apple has strict and specific requirements, so it is a lengthy 
+.. process. See:doc:`../enterprise_ios_app/index` for a complete tutorial.
 
 Building an Android App or Desktop Sync Client
 ----------------------------------------------
