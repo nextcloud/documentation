@@ -16,7 +16,7 @@ Antivirus app for files (files_antivirus)
 
 Deleted Files (files_trashbin)
 
-Encryption (files_encryption)
+Encryption (encryption)
 
 Enterprise License Key (enterprise_key)
 
@@ -26,7 +26,7 @@ External user support (user_external)
 
 Files (files)
 
-File Firewall (Firewall)
+File Firewall (firewall)
 
 File Locking (files_locking)
 
