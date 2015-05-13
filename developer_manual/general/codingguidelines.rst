@@ -39,7 +39,7 @@ The most important labels and their meaning:
  * #5 - To Review - ready for review
  * #6 - Reviewing - review in progress
  * #7 - To Release - reviewed PR that awaits unfreeze of a branch to get merged
-* App tags: #app:files #app:user_ldap #app:files_version and so on. These tags indicate the app that is impacted by the issue or which the PR is related to
+* App tags: #app:files #app:user_ldap #app:files_versions and so on. These tags indicate the app that is impacted by the issue or which the PR is related to
 * settings tags: #settings:personal #settings:apps #settings:admin and so on. These tags indicate the settings area that is impacted by the issue or which the PR is related to
 * db tags: #db:mysql #db:sqlite #db:postgresql and so on. These tags indicate the database that is impacted by the issue or which the PR is related to
 * browser tags: #browser:ie #browser:safari and so on. These tags indicate the browser that is impacted by the issue or which the PR is related to
