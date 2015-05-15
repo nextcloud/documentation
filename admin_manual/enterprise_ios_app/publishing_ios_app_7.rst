@@ -15,7 +15,12 @@ Your first ownBrander task is to review the iOS page on ownBrander for your
 image requirements. You will need a lot of them, in specific sizes and formats, 
 and they're all listed on the ownBrander page.
 
-There are three sections: Required, Suggested, and Advanced.
+There are three sections: Required, Suggested, and Advanced. The Required 
+sections contains all of the required elements that you must configure. 
+Suggested and Advanced allow additional customizations.
+
+When you have completed and submitted your app, email your three provisioning 
+profiles and P12 certificate to branding@owncloud.com.
 
 Required Section
 ----------------
