@@ -120,12 +120,15 @@ Generate iOS App
 ----------------
 
 When you have uploaded all of your images and completed your customizations, 
-click the **Generate iOS App** button and take a well-deserved break. Check 
-your account on 
-`Customer.owncloud.com <https://customer.owncloud.com/owncloud/>`_ in 48 hours 
-to see your new branded ownCloud app.
+click the **Generate iOS App** button and take a well-deserved break. Remember 
+to email your three provisioning profiles and P12 certificate to 
+branding@owncloud.com.
 
 .. figure:: ../images/ownbrander-28.png
 
 You may go back and make changes, and when you click the **Generate iOS App** 
 button the build system will use your latest changes.
+
+Check your account on `Customer.owncloud.com 
+<https://customer.owncloud.com/owncloud/>`_ in 48 hours to see your new branded 
+ownCloud app.
