@@ -39,12 +39,13 @@ If you can't find a solution, please use our `bugtracker`_.
 General Troubleshooting
 -----------------------
 
-Debugging the issue
-~~~~~~~~~~~~~~~~~~~
+ownCloud Logfiles
+~~~~~~~~~~~~~~~~~
 
-In a standard ownCloud installation the log level is set to ``Normal``. To find any issues
-you need to raise the log level to ``All`` from the Admin page. Please see :doc:`../configuration_server/logging_configuration`
-for more informations on this log levels.
+In a standard ownCloud installation the log level is set to ``Normal``. To find 
+any issues you need to raise the log level to ``All`` from the Admin page. 
+Please see :doc:`../configuration_server/logging_configuration` for more 
+informations on this log levels.
 
 Some logging - for example JavaScript console logging - needs manually editing the
 configuration file.
@@ -60,7 +61,25 @@ For JavaScript issues you will also need to view the javascript console. All maj
 have decent developer tools for viewing the console, and you usually access them by
 pressing F-12. For Firefox it is recommended to install the `Firebug extension <https://getfirebug.com/>`_.
 
-.. note:: The logfile of ownCloud is located in the datadirectory ``/var/www/owncloud/data/owncloud.log``.
+.. note:: The logfile of ownCloud is located in the datadirectory 
+``/var/www/owncloud/data/owncloud.log``.
+
+phpinfo
+~~~~~~~
+
+You will need to know your PHP version and configurations. To do this, create a 
+plain-text file named **phpinfo.php** and place it in your Web root, for 
+example ``/var/www/html/phpinfo.php``. (Your Web root may be in a different 
+location; your Linux distribution documentation will tell you where.) This file 
+contains just this line::
+
+ <?php phpinfo(); ?>
+
+Open this file in a Web browser. Your PHP version is at the top, and the rest of 
+the page contains abundant system information such as active modules, active 
+`.ini` files, and much more. When you are finished reviewing your information 
+you must delete ``phpinfo.php``, or move it outside of your Web directory, 
+because it is a security risk to expose such sensitive data.
 
 Debugging Sync-Issues
 ~~~~~~~~~~~~~~~~~~~~~
