@@ -10,10 +10,10 @@ The CSS files reside in the **css/** folder and should be included in the templa
 
   <?php
   // include one file
-  style('myapp', 'style');  // adds js/style.css
+  style('myapp', 'style');  // adds css/style.css
 
   // include multiple files for the same app
-  style('myapp', array('style', 'navigation'));  // adds js/style.css, js/navigation.css
+  style('myapp', array('style', 'navigation'));  // adds css/style.css, css/navigation.css
 
   // include vendor file (also allows vendor syntax)
   vendor_style('myapp', 'style');  // adds vendor/style.css
