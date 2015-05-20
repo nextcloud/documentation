@@ -82,7 +82,7 @@ If the folder should be collapsible, the **collapsible** class and a button with
             <li><a href="#">First level entry</a></li>
             <li class="collapsible open">
                 <button class="collapse"></button>
-                <a href="#" class="icon-folder">Folder name</a>
+                <a href="#" class="icon-folder svg">Folder name</a>
                 <ul>
                     <li><a href="#">Folder contents</a></li>
                     <li><a href="#">Folder contents</a></li>
@@ -102,7 +102,7 @@ The class which should be applied to a first level element (**li**) that hosts o
         <ul class="with-icon">
             <li><a href="#">First level entry</a></li>
             <li class="drag-and-drop">
-                <a href="#" class="icon-folder">Folder name</a>
+                <a href="#" class="icon-folder svg">Folder name</a>
                 <ul>
                     <li><a href="#">Folder contents</a></li>
                     <li><a href="#">Folder contents</a></li>
@@ -216,7 +216,7 @@ Often an edit option is needed an entry. To add one for a given entry simply hid
                 <div class="app-navigation-entry-edit">
                     <form>
                         <input type="text" value="First level entry" autofocus-on-insert>
-                        <input type="submit" value="" class="action icon-checkmark">
+                        <input type="submit" value="" class="action icon-checkmark svg">
                     </form>
                 </div>
 
@@ -254,7 +254,7 @@ If you want to undo a performed action on a navigation entry such as deletion, y
 
                 <div class="app-navigation-entry-deleted">
                     <div class="app-navigation-entry-deleted-description">Deleted X</div>
-                    <button class="app-navigation-entry-deleted-button icon-history" title="Undo"></button>
+                    <button class="app-navigation-entry-deleted-button icon-history svg" title="Undo"></button>
                 </div>
             </li>
         </ul>
