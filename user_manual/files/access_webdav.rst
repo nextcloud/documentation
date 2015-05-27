@@ -354,13 +354,21 @@ Known Problems
 **Solution**
   Windows limits the maximum size a file transferred from or to  a WebDAV share
   may have.  You can increase the value **FileSizeLimitInBytes** in
-  **HKEY_LOCAL_MacHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters**
+  **HKEY_LOCAL_MacHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters**
   by clicking on **Modify**.
 
   To increase the limit to the maximum value of 4GB, select **Decimal**, enter
   a value of **4294967295**, and reboot Windows or restart the **WebClient**
   service.
 
+**Problem**
+  Windows doesn't accepts the username and password.
+
+**Solution**
+  You need to change value of **BasicAuthLevel** in
+  **HKEY_LOCAL_MacHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters**
+  to ``2``.
+  
 **Problem**
   Accessing your files from Microsoft Office via WebDAV fails.
 
