@@ -38,14 +38,12 @@ This documents the *development* version of ownCloud.
 * `User Manual <https://doc.owncloud.org/server/8.1/user_manual/>`_ (`Download 
   PDF <https://doc.owncloud.org/server/8.1/ownCloudUserManual.pdf>`_)
 * `Administration Manual <https://doc.owncloud.org/server/8.1/admin_manual/>`_
+  (`Download PDF   
+  <https://doc.owncloud.org/server/8.1/ownCloudServerAdminManual.pdf>`_)
 * `Developer Manual <https://doc.owncloud.org/server/8.1/developer_manual/>`_ 
   (`Download PDF 
   <https://doc.owncloud.org/server/8.1/ownCloudDeveloperManual.pdf>`_) 
 
-.. admin pdf disabled until ios ownbrander chapter fixed
-..  (`Download PDF   
-.. <https://doc.owncloud.org/server/8.1/ownCloudServerAdminManual.pdf>`_)
-   
 ------------
 ownCloud 8.0
 ------------
@@ -56,13 +54,11 @@ suitable for production use.
 * `User Manual <https://doc.owncloud.org/server/8.0/user_manual/>`_ (`Download 
   PDF <https://doc.owncloud.org/server/8.0/ownCloudUserManual.pdf>`_)
 * `Administration Manual <https://doc.owncloud.org/server/8.0/admin_manual/>`_
+  (`Download PDF   
+  <https://doc.owncloud.org/server/8.0/ownCloudServerAdminManual.pdf>`_)
 * `Developer Manual <https://doc.owncloud.org/server/8.0/developer_manual/>`_ 
   (`Download PDF 
   <https://doc.owncloud.org/server/8.0/ownCloudDeveloperManual.pdf>`_)
-
-.. admin pdf disabled until ios ownbrander chapter fixed
-..  (`Download PDF   
-..  <https://doc.owncloud.org/server/8.0/ownCloudServerAdminManual.pdf>`_)
 
 ------------------------------
 ownCloud Community Edition 7.0
