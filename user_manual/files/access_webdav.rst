@@ -362,14 +362,6 @@ Known Problems
   service.
 
 **Problem**
-  Windows doesn't accepts the username and password.
-
-**Solution**
-  You need to change value of **BasicAuthLevel** in
-  **HKEY_LOCAL_MacHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters**
-  to ``2``.
-  
-**Problem**
   Accessing your files from Microsoft Office via WebDAV fails.
 
 **Solution**
