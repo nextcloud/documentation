@@ -354,7 +354,7 @@ Known Problems
 **Solution**
   Windows limits the maximum size a file transferred from or to  a WebDAV share
   may have.  You can increase the value **FileSizeLimitInBytes** in
-  **HKEY_LOCAL_MacHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters**
+  **HKEY_LOCAL_MacHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters**
   by clicking on **Modify**.
 
   To increase the limit to the maximum value of 4GB, select **Decimal**, enter
