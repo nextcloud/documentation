@@ -31,8 +31,11 @@ that when generating a random number ownCloud will request multiple random
 numbers from different sources and derive from these the final random number.
 
 The random number generation also tries to request random numbers from 
-``/dev/urandom``, thus it is highly recommended to configure your setup in such 
-a way that PHP is able to read random data from it.
+``/dev/urandom``, thus it is **highly recommended** to configure your setup in
+such a way that PHP is able to read random data from it. Not granting PHP access
+to ``/dev/urandom`` may make your random numbers predictable and may make your
+ownCloud instance insecure as attackers might predict password reset tokens or
+other sensitive data.
 
 Enable hardening modules such as SELinux
 ****************************************
