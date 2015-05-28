@@ -62,7 +62,7 @@ have decent developer tools for viewing the console, and you usually access them
 pressing F-12. For Firefox it is recommended to install the `Firebug extension <https://getfirebug.com/>`_.
 
 .. note:: The logfile of ownCloud is located in the datadirectory 
-``/var/www/owncloud/data/owncloud.log``.
+   ``/var/www/owncloud/data/owncloud.log``.
 
 phpinfo
 ~~~~~~~

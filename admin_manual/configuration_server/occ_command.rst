@@ -262,11 +262,11 @@ connected to an LDAP server::
 
  $ sudo -u www-data php occ ldap:check-user robert
  
- ``ldap:check-user`` will not run a check when it finds a disabled LDAP 
+``ldap:check-user`` will not run a check when it finds a disabled LDAP 
 connection. This prevents users that exist on disabled LDAP connections from 
 being marked as deleted. If you know for certain that user you are searching for 
 is not in one of the disabled connections, and exists on an active connection, 
-use the ``--force`` option to force it to check all active LDAP connections:
+use the ``--force`` option to force it to check all active LDAP connections::
 
  $ sudo -u www-data php occ ldap:check-user --force robert
 
