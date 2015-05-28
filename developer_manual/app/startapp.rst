@@ -6,7 +6,7 @@ Create an app
 
 After :doc:`you've set up the development environment and installed the dev tool <../general/devenv>` change into the ownCloud apps directory::
 
-    cd /var/www/core/apps
+    cd /var/www/owncloud/apps
 
 Then run::
 
