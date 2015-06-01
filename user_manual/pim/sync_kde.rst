@@ -2,7 +2,7 @@
 Synchronizing with KDE SC
 =========================
 
-.. image:: /images/kdes1.png
+.. ..image:: /images/kdes1.png
 
 From KDE SC 4.8 and forward setting up ownCloud is very easy. Note that the KDE 
 calendar needs to have the ownCloud Calendar and Contacts apps enabled on the 
