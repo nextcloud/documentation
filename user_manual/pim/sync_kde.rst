@@ -1,13 +1,14 @@
+=========================
 Synchronizing with KDE SC
 =========================
 
 .. image:: /images/kdes1.png
 
-From KDE SC 4.8 and forward setting up ownCloud is very easy. Please obey that the KDE calendar needs to have 
-ownCloud calendar and ownCloud contacts activated on the ownCloud server. Only the ownCloud calendar is not sufficient.
-From System Settings Personal Information/Akonadi Resources Configuration select DAV
-Groupware resource.
-
+From KDE SC 4.8 and forward setting up ownCloud is very easy. Note that the KDE 
+calendar needs to have the ownCloud Calendar and Contacts apps enabled on the 
+ownCloud server. You need both and not just the Calendar. From System Settings 
+Personal Information/Akonadi Resources Configuration select DAV Groupware 
+resource.
 
 .. image:: ../images/kdes2.png
 
