@@ -18,7 +18,11 @@ run ownCloud Server on Apache2 on a Linux environment.
 Limit on Password Length
 ------------------------
 
-ownCloud uses the bcrypt algorithm and thus for security and performance reasons, e.g. Denial of Service as CPU demand increases exponentially, it only verifies the first 72 characters of passwords. This applies to all passwords that you use in ownCloud: user passwords, passwords on link shares, and passwords on external shares.
+ownCloud uses the bcrypt algorithm and thus for security and performance reasons,
+e.g. Denial of Service as CPU demand increases exponentially, it only verifies
+the first 72 characters of passwords. This applies to all passwords that you use
+in ownCloud: user passwords, passwords on link shares, and passwords on external
+shares.
 
 Operating system
 ----------------
@@ -42,6 +46,16 @@ Enable hardening modules such as SELinux
 It is highly recommend to enable hardening modules such as SELinux where 
 possible. See :doc:`../installation/selinux_configuration` to learn more about 
 SELinux.
+
+Use newest PHP version
+**********************
+Some security features and hardenings in PHP are only available in the latest
+PHP release and thus it is recommended to run the latest PHP version. You can
+find the latest version on http://php.net/.
+
+Some Linux distributions backport security patches, but this is not reliable as
+some get missed, or the backports are years late. It is always best to run the
+latest PHP version.
 
 Deployment
 ----------
