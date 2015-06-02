@@ -53,10 +53,9 @@ Some security features and hardenings in PHP are only available in the latest
 PHP release and thus it is recommended to run the latest PHP version. You can
 find the latest version on http://php.net/.
 
-While distributions are trying to backport security patches there have been
-quite some cases where some has been missed or only backported after a long
-period of time, sometimes up to a few years. Also all security hardenings
-are usually not backported.
+Some Linux distributions backport security patches, but this is not reliable as
+some get missed, or the backports are years late. It is always best to run the
+latest PHP version.
 
 Deployment
 ----------
