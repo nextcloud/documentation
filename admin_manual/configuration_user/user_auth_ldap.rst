@@ -1,9 +1,13 @@
+=============================
 User Authentication with LDAP
 =============================
 
-ownCloud ships with an LDAP application so that your existing LDAP users may 
-have access to your ownCloud server without creating separate ownCloud user 
-accounts.
+ownCloud ships with an LDAP application to allow LDAP users (including Active 
+Directory) to appear in your ownCloud user listings. These users will 
+authenticate to ownCloud with their LDAP credentials, so you don't have to 
+create separate ownCloud user accounts for them. You will manage their ownCloud 
+group memberships, quotas, and sharing permissions just like any other ownCloud 
+user.
 
 .. Note:: For performance reasons, we recommend using PHP 5.4 or greater to use 
    the LDAP application with more than 500 users. The PHP LDAP module is 
