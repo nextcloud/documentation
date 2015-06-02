@@ -1177,6 +1177,27 @@ Set to -1 for no limit
 
 ::
 
+	'filelocking.enabled' => false,
+
+Enables the EXPERIMENTAL file locking.
+
+This is disabled by default as it is experimental.
+
+Prevents concurrent processes to access the same files
+at the same time. Can help prevent side effects that would
+be caused by concurrent operations.
+
+WARNING: EXPERIMENTAL
+
+::
+
+	'memcache.locking' => '\OC\Memcache\Redis',
+
+Memory caching backend for file locking
+Because most memcache backends can clean values without warning using redis is recommended
+
+::
+
 	'copied_sample_config' => true,
 
 This entry is just here to show a warning in case somebody copied the sample
