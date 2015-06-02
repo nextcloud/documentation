@@ -12,14 +12,22 @@ Cache Warnings
 --------------
 
 "No memory cache has been configured. To enhance your performance please 
-configure a memcache if available." PHP has three caching extentions: APCu, 
-OPCache, and Xcache. You will see this warning if you have no caches installed, 
-and you may see it if you have APCu < 4.0.6 installed; older versions are 
-disabled because of performance problems. 
+configure a memcache if available." ownCloud supports multiple php caching
+extentions:
 
-If you see "APCu below version 4.0.6 is installed. for stability and 
-performance reasons we recommend to update to a newer APCu version" then you 
-need to upgrade, or, if you're not using it, remove it.
+* APC
+* APCu (minimum required php extension version: 4.0.6)
+* Memcached
+* Redis (minimum required php extension version: 2.2.5)
+* Xcache
+
+You will see this warning if you have no caches installed or if your cache
+does not have the required minimum version installed; older versions are
+disabled because of performance problems.
+
+If you see "*{Cache}* below version *{Version}* is installed. for stability and
+performance reasons we recommend to update to a newer *{Cache}* version" then
+you need to upgrade, or, if you're not using it, remove it.
 
 It is not required to use any caches, but caches improve server performance. See 
 :doc:`performance_tuning` for more information on installing and using caches.
