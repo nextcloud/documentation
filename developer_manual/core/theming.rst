@@ -43,9 +43,9 @@ Structure
 =========
 
 The folder structure of a theme is exactly the same as the main ownCloud
-structure. You can override js files, images and templates with own versions.
-CSS files are loaded additionally to the default files so you can override CSS
-properties.
+structure. You can override js files, images, translations and templates with
+own versions. CSS files are loaded additionally to the default files so you can
+override CSS properties.
 
 
 How to change images and the logo
@@ -111,6 +111,48 @@ Save your CSS-file and refresh to see the new login screen.
 The other major color scheme is the blue header bar on the main navigation page once you log in to ownCloud.
 This color we will change with the above as well.
 Save the file and refresh the browser for the changes to take effect.
+
+How to change translations
+==========================
+
+.. versionadded 8.0
+
+You can override the translation of single strings within your theme. Simply
+create the same folder structure within your theme folder for the language file
+you want to override. Only the changed strings need to be added to that file for
+all other terms the shipped translation will be used.
+
+If you want to override the translation of the term "Download" within the
+``files`` app for the language ``de`` you need to create the file
+``themes/THEME_NAME/apps/files/l10n/de.js`` and put the following code in:
+
+.. code-block:: js
+
+  OC.L10N.register(
+    "files",
+    {
+      "Download" : "Herunterladen"
+    },
+    "nplurals=2; plural=(n != 1);"
+  );
+
+Additionally you need to create another file
+``themes/THEME_NAME/apps/files/l10n/de.json`` with the same translations that
+look like this:
+
+.. code-block:: json
+
+  {
+    "translations": {
+      "Download" : "Herunterladen"
+    },
+    "pluralForm" :"nplurals=2; plural=(n != 1);"
+  }
+
+Both files (``.js`` and ``.json``) are needed with the same translations,
+because the first is needed to enable translations in the JavaScript code and
+the second one is read by the PHP code and provides the data for translated
+terms in there.
 
 Testing the new theme out
 =========================
