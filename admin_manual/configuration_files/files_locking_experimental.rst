@@ -19,6 +19,10 @@ The new file locking mechanism has these capabilities:
 * Manages locks correctly on external storage mounts
 * Manages encrypted files correctly
 
+You must install the ``php-redis`` module for the new file locking to work. On 
+Debian/Ubuntu/Mint this is ``php5-redis``, and on Red Hat/CentOS/Fedora is it 
+``php-pecl-redis`` in the EPEL repository.
+
 We recommend using `Redis <http://redis.io/>`_ as your ownCloud memcache when 
 you enable file locking. Memcached, the popular distributed memory caching 
 system, is not suitable for the new file locking because it is not designed to 
