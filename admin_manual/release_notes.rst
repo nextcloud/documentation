@@ -26,8 +26,16 @@ Supported Platforms
   only), Linux (CentOS 6.5, 7, Ubuntu 12.04 LTS, 14.04 LTS, 14.10, Fedora 20, 
   21, openSUSE 12.3, 13)
 * Mobile apps: iOS 7+, Android 4+
-* Web browser: IE8+ (but not compatibility mode), Firefox 14+, Chrome 18+, Safari 5+
+* Web browser: IE8+ (but not compatibility mode), Firefox 14+, Chrome 18+, 
+  Safari 5+
 
+Special Migration Considerations for Encryption
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When you upgrade from ownCloud 8.0, with encryption enabled, to 8.1, you must 
+enable the new encryption backend and migrate your encryption keys. See 
+:doc:`configuration_files/encryption_configuration`
+  
 Older Desktop Clients Not Allowed to Connect and Sync
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

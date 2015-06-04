@@ -2,6 +2,9 @@
 Encryption Configuration
 ========================
 
+If you are upgrading from ownCloud 8.0, and have encryption enabled, please see 
+:ref:`upgrading` for the correct steps to upgrade your encryption. 
+
 In ownCloud 8.1 the server-side encryption has a number of changes and 
 improvements, including:
 
@@ -71,6 +74,8 @@ Plan very carefully before enabling encryption because **it is not
 reversible**, and if you lose your encryption keys your files are not 
 recoverable. Always have backups of your encryption keys stored in a safe 
 location, and consider enabling all recovery options.
+
+.. _enable_encryption:
 
 Enabling Encryption
 -------------------
@@ -210,6 +215,26 @@ both their old and new passwords to do this. If you have enabled the Recovery
 Key then you can change a user's password in the ownCloud Users panel to match 
 their back-end password, and then, of course, notify the user and give them 
 their new password.
+
+.. _upgrading:
+
+Upgrading From ownCloud 8.0
+---------------------------
+
+The encryption backend has changed in ownCloud 8.1, so you must take some 
+additional steps to migrate encryption correctly. If you do not follow these 
+steps you may not be able to access your files.
+
+After your upgrade is complete, follow the steps in :ref:`enable_encryption` to 
+enable the new encryption system. Then click the **Start Migration** button 
+on your Admin page to migrate your encryption keys, or use the ``occ`` command. 
+This example is for Debian/Ubuntu Linux::
+
+ $ sudo -u www-data php occ encryption:migrate-keys
+ 
+You must run ``occ`` as your HTTP user; see 
+:doc:`../configuration_server/occ_command`. 
+
 
 .. This section commented out because there is no windows support
 .. in oC8; un-comment this if windows support is restored
