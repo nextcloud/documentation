@@ -1191,7 +1191,7 @@ WARNING: EXPERIMENTAL
 
 ::
 
-	'memcache.locking' => '\OC\Memcache\Redis',
+	'memcache.locking' => '\\OC\\Memcache\\Redis',
 
 Memory caching backend for file locking
 Because most memcache backends can clean values without warning using redis is recommended
