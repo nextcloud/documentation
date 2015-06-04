@@ -59,10 +59,36 @@ same trusted environment.
 
 ownCloud 8.0
 ------------
+
+Manual LDAP Port Configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When you are configuring the LDAP user and group backend application, ownCloud 
+may not auto-detect the LDAP server's port number, so you will need to enter it 
+manually.
+
+.. https://github.com/owncloud/core/pull/16748
+
+No Preview Icon on Text Files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+There is no preview icon displayed for text files when the file contains fewer than six characters.
+
+.. https://github.com/owncloud/core/issues/16556#event-316503097
+
 Remote Federated Cloud Share Cannot be Reshared With Local Users
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When you mount a Federated Cloud share from a remote ownCloud server, you cannot re-share it with your local ownCloud users. (See :doc:`configuration_files/federated_cloud_sharing_configuration` to learn more about federated cloud sharing)
+
+Manually Migrate Encryption Keys after Upgrade
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you are using the Encryption app and upgrading from older versions of 
+ownCloud to ownCloud 8.0, you must manually migrate your encryption keys with 
+the *occ* command after the upgrade is complete, like this example for CentOS: 
+*sudo -u apache php occ encryption:migrate-keys* You must run *occ* as your HTTP 
+user. See :doc:`../configuration_server/occ_command` to learn more about *occ*
 
 Windows Server Not Supported
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -178,6 +204,15 @@ are not supported.
 
 ownCloud 7 Release Notes
 ------------------------
+
+Manual LDAP Port Configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When you are configuring the LDAP user and group backend application, ownCloud 
+may not auto-detect the LDAP server's port number, so you will need to enter it 
+manually.
+
+.. https://github.com/owncloud/core/pull/16748
 
 LDAP Search Performance Improved
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
