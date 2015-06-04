@@ -227,8 +227,8 @@ steps you may not be able to access your files.
 
 After your upgrade is complete, follow the steps in :ref:`enable_encryption` to 
 enable the new encryption system. Then click the **Start Migration** button 
-on your Admin page, or use the ``occ`` command to migrate your 
-encryption keys. This example is for Debian/Ubuntu Linux::
+on your Admin page to migrate your encryption keys, or use the ``occ`` command. 
+This example is for Debian/Ubuntu Linux::
 
  $ sudo -u www-data php occ encryption:migrate-keys
  
