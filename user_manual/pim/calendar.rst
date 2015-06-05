@@ -2,8 +2,9 @@
 Using the Calendar App
 ======================
 
-The Calendar app is not enabled in ownCloud 8, and is not 
-supported. You may ask your ownCloud server admin to enable it, and if you are 
+The Calendar app is not enabled by default in ownCloud 8 and needs to
+be enabled seperately. It is also not a supported core app. You may ask
+your ownCloud server admin to enable it, and if you are 
 your own admin consult the `Installation > Installing and Managing Apps
 <https://doc.owncloud.org/server/8.0/admin_manual/installation/
 apps_management_installation.html>`_
