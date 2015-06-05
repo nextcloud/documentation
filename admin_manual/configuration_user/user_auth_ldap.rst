@@ -103,8 +103,10 @@ Base DN:
 User Filter
 ~~~~~~~~~~~
 
-Use this to control which LDAP users have access to your ownCloud server. You 
-may bypass the form fields and enter a raw LDAP filter if you prefer.
+Use this to control which LDAP users are listed as ownCloud users on your ownCloud server.
+In order to control which LDAP users can login to your ownCloud server use the Login filter.
+Those LDAP users who have access but are not listed as users (if there are any) will be hidden users.
+You may bypass the form fields and enter a raw LDAP filter if you prefer.
 
 .. figure:: ../images/ldap-wizard-2-user.png
 
@@ -117,7 +119,7 @@ only those object classes:
 only from those groups:
   If your LDAP server supports the ``member-of-overlay`` in LDAP filters, you 
   can define that only users from one or more certain groups are allowed to
-  appear and log in into ownCloud. By default, no value will be selected. You
+  appear in user listings in ownCloud. By default, no value will be selected. You
   may select multiple groups.
 
   If your LDAP server does not support the member-of-overlay in LDAP filters,
@@ -129,20 +131,19 @@ Edit raw filter instead:
   
   Example:
 
-  * *objectClass=inetOrgPerson*
+  * *(&(objectClass=inetOrgPerson)(memberOf=cn=owncloudusers,ou=groups,dc=example,dc=com))*
 
 x users found:
   This is an indicator that tells you approximately how many users will be
-  allowed to access ownCloud. The number updates automatically after any 
-  changes.
+  listed in ownCloud. The number updates automatically after any changes.
 
 Login Filter
 ~~~~~~~~~~~~
 
-The settings in the Login Filter tab determine what the user's login will be, 
-for example an LDAP username, or an email address. You may select multiple user 
-details. (You may bypass the form fields and enter a raw LDAP filter if you 
-prefer.)
+The settings in the Login Filter tab determine which LDAP users can log in to your
+ownCloud system and which attribute or attributes the provided login name is matched
+against (e.g. LDAP/AD username, email address). You may select multiple user details.
+(You may bypass the form fields and enter a raw LDAP filter if you prefer.)
 
 You may override your User Filter settings on the User Filter tab by using a raw 
 LDAP filter.
@@ -173,8 +174,8 @@ Edit raw filter instead:
 
   Examples:
 
-  * only username: *uid=%uid*
-  * username or email address: *(|(uid=%uid)(mail=$uid))*
+  * only username: (&(objectClass=inetOrgPerson)(memberOf=cn=owncloudusers,ou=groups,dc=example,dc=com)(uid=%uid)*
+  * username or email address: *((&(objectClass=inetOrgPerson)(memberOf=cn=owncloudusers,ou=groups,dc=example,dc=com)(|(uid=%uid)(mail=%uid)))*
 
 Group Filter
 ~~~~~~~~~~~~
