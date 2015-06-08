@@ -8,9 +8,15 @@ file shares between ownCloud servers, in effect creating a cloud of ownClouds.
 You can automatically send an email notification when you create the share, add 
 password protection, allow users to upload files, and set an expiration date.
 
+Federated cloud sharing now works a little differently than in ownCloud 8.0. 
+Its configuration is now incorporated into the Sharing section on your ownCloud 
+admin page, and you may share directly with users on other ownCloud servers 
+without being required to send an email notification.
+
 Follow these steps to create a new federated cloud share:
 
-1. Go to the Admin page and scroll to the Federated Cloud Sharing section.
+1. Go to your ownCloud Admin page and scroll to the Federated Cloud Sharing 
+section of the Sharing section.
 
 .. figure:: ../images/remote_shares.png
    
@@ -21,18 +27,71 @@ servers.`` Leaving the checkboxes blank disables federated cloud sharing.
 3. In the Sharing section, check ``Allow users to share via link`` and ``Allow 
 users to send mail notification for shared files``.
 
-4. Now your and your users can go to your Files page to create a new federated 
-cloud share. Hover your cursor over the file or directory 
-you want to share to expose the sharing options. Check the ``Share 
-Link`` checkbox to create the share, and to expose all of your sharing options.
+4. Now you and your users can go to your Files pages to create a new federated 
+cloud share. Click the Share icon on the file or directory you want to share to 
+expose your first sharing option. 
 
-.. figure:: ../images/create_public_share.png
+.. figure:: ../images/create_public_share-1.png
+
+This dialog allows you to create local shares with users and groups on your 
+local ownCloud server, and also to create federated cloud shares with users on 
+remote ownCloud servers by typing a link to the remote server in the form of 
+``<user>@<link-to-owncloud>``. In this screenshot the remote ownCloud server is 
+on the local network, so the URL form is ``user@hostname/owncloud``, or 
+``layla@remote-server/owncloud`` in the example. The URL you type is echoed by 
+the form, and labeled as ``(remote)``.
+
+.. figure:: ../images/create_public_share-2.png
+
+Press the return key, and then wait for the link to be established. You'll see a 
+status message while it is working.
+
+.. figure:: ../images/create_public_share-3.png
+
+When the link has been successfully created you'll see a confirmation.
+
+.. figure:: ../images/create_public_share-4.png
+
+You can return to the share dialog any time to see a list of everyone you have 
+shared with, and federated cloud shares are labeled as ``(remote)``.
+
+.. figure:: ../images/create_public_share-5.png
+
+Click the trash can icon to disconnect the share.
+
+Creating Federated Cloud Shares via Email
+-----------------------------------------
+
+Check the ``Share Link`` checkbox to expose more sharing options (which are 
+described more fully in :doc:`file_sharing_configuration`). You may create a 
+federated cloud share by allowing ownCloud to create the link for you, and 
+then email it to the person you want to create the share with.
+
+.. figure:: ../images/create_public_share-6.png
    
-Your new public share is labeled with a chain link. Share it by entering the 
-email address of the person you want to share it with. You may optionally set a 
-password  and expiration date on it. If you do not protect it with a password, 
-it is visible to anyone who has the URL. Un-check the ``Share Link`` checkbox to 
-disable the share.
+You may optionally set a password and expiration date on it. When your recipient 
+receives your email they must click the link, or copy it to a Web 
+browser. They will see a page displaying a thumbnail of the file, with a button 
+to **Add to your ownCloud**.
+
+.. figure:: ../images/create_public_share-8.png
+
+Your recipient should click the **Add to your ownCloud** button. On the next 
+screen your recipient needs to enter the URL to their ownCloud 
+server, and then press the return key.
+
+.. figure:: ../images/create_public_share-9.png
+
+Your recipient has to take one more step, and that is to confirm creating the 
+federated cloud share link by clicking the **Add remote share** button.
+
+.. figure:: ../images/create_public_share-10.png
+
+Un-check the ``Share Link`` checkbox to disable any federated cloud share 
+created this way.
+
+Configuration Tips
+------------------
 
 The Sharing section on your Admin page allows you to control how your users 
 manage federated cloud shares:
@@ -41,13 +100,6 @@ manage federated cloud shares:
 * Check ``Set default expiration date`` to require an expiration date on link 
   shares.
 * Check ``Allow public uploads`` to allow two-way file sharing.
-
-Users on other ownCloud servers can mount this share and use it just like any 
-ownCloud share. See "Using Federated Cloud Sharing" in the Users Manual to learn 
-how to connect to a remote public share.
-
-Notes
------
 
 Your Apache Web server must have ``mod_rewrite`` enabled, and you must have 
 ``trusted_domains`` configured in ``config.php``. Consider also enabling SSL to 
