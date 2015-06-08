@@ -34,6 +34,14 @@ Configure your sharing policy on your Admin page in the Sharing section.
 * Check ``Allow resharing`` to enable users to re-share files shared with them
 * Check ``Restrict users to only share with users in their groups`` to confine 
   sharing within group memberships
+
+  .. note::
+
+    This setting does not apply to the federated cloud sharing feature. If
+    :doc:`federated cloud sharing <federated_cloud_sharing_configuration>` is
+    enabled, users can still share items with any users on any instances
+    (including the one they are on) via a remote share.
+
 * Check ``Allow users to send mail notification for shared files`` so that 
   users can check "notify by email" when they create new file shares. This 
   sends an email notification to everyone the file is shared with (everyone who 
