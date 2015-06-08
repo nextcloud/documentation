@@ -17,7 +17,7 @@ example ``/var/www/owncloud/occ``. ``occ`` has a command for resetting all
 user passwords, ``user:resetpassword``. It is best to run ``occ`` as the HTTP 
 user, as in this example on Ubuntu Linux::
 
- $ sudo -u www-data /var/www/owncloud/occ user:resetpassword admin
+ $ sudo -u www-data php /var/www/owncloud/occ user:resetpassword admin
  Enter a new password: 
  Confirm the new password: 
  Successfully reset password for admin
