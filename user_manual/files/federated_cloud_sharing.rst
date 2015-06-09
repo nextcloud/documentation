@@ -17,7 +17,7 @@ Administration Manual.) Follow these steps to create a new share:
 1. Go to your ``Files`` page and click the Share icon on the file or directory 
 you want to share. Enter the username and URL of the remote user in this form: 
 ``<username>@<oc-server-url>``. In this example, that is 
-``layla@remote-server/owncloud``. The form automatically enters the address 
+``layla@remote-server/owncloud``. The form automatically echoes the address 
 that you type and labels it as "remote".
 
 .. figure:: ../images/direct-share-1.png
