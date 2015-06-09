@@ -48,9 +48,14 @@ status message while it is working.
 
 .. figure:: ../images/create_public_share-3.png
 
-When the link has been successfully created you'll see a confirmation.
+When the remote server has been successully contacted you'll see a confirmation.
 
 .. figure:: ../images/create_public_share-4.png
+
+The link is created when your remote user confirms the share by clicking the 
+**Add remote share** button.
+
+.. figure:: ../images/create_public_share-7.png
 
 You can return to the share dialog any time to see a list of everyone you have 
 shared with, and federated cloud shares are labeled as ``(remote)``.
@@ -102,8 +107,9 @@ manage federated cloud shares:
 * Check ``Allow public uploads`` to allow two-way file sharing.
 
 Your Apache Web server must have ``mod_rewrite`` enabled, and you must have 
-``trusted_domains`` configured in ``config.php``. Consider also enabling SSL to 
-encrypt all traffic between your servers.
+``trusted_domains`` correctly configured in ``config.php`` to allow external 
+connections (see :doc:`../installation/installation_wizard`). Consider also 
+enabling SSL to encrypt all traffic between your servers .
 
 Your ownCloud server creates the share link from the URL that you used to log 
 into the server, so make sure that you log into your server using a URL that is 
