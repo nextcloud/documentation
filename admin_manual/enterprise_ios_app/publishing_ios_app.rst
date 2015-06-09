@@ -14,12 +14,16 @@ Prerequisites
   (included in Utilities)
 * An iOS developer account on 
   `Developer.Apple.com/ios <https://developer.apple.com/ios/>`_, 
-  which costs $99 per year.
+  which costs $99 per year. Or an Enterprise account for $299/yr. The 
+  developer account limits you to testing on 100 devices, which must be 
+  registered in your account. The Enterprise account allows testing on 
+  unlimited, unregistered devices.
 * An ownCloud Enterprise Subscription, with the ownBrander app enabled on 
   `Customer.owncloud.com <https://customer.owncloud.com/owncloud>`_
-* Some iPhones or iPads for testing your app, which must have their UDIDs 
+* Some iPhones or iPads for testing your app. Again, if you have the $99 
+  developer account each device must have its UDID
   registered in your account on `Developer.Apple.com 
-  <https://developer.apple.com>`_. You may register up to 100 devices.
+  <https://developer.apple.com>`_.
 
 Procedure
 =========
