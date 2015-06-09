@@ -3,59 +3,66 @@ Using Federated Cloud Sharing
 =============================
 
 Federated Cloud Sharing, introduced in ownCloud 7 as Server-to-Server sharing, 
-allows you to mount file shares from remote ownCloud servers, and manage them 
-just like a local share. This feature enables you to:
+allows you to mount file shares from remote ownCloud servers, in effect 
+creating your own cloud of ownClouds. You can create direct share links with 
+users on other ownCloud servers.
 
-* Selectively share files or directories.
-* Combine two private clouds into a single public cloud. 
-* Eliminate the need to create user accounts on multiple ownCloud servers.
-* View files in a Web browser or ownCloud client.
-
-Creating a New Share
---------------------
+Creating a New Federated Cloud Share
+------------------------------------
 
 Federated Cloud Sharing is enabled on new or upgraded ownCloud installations
 by default. (See "Configuring Federated Cloud Sharing" in the ownCloud Server 
 Administration Manual.) Follow these steps to create a new share:
 
-1. Go to your ``Files`` page and hover your cursor over the file or directory 
-you want to share to expose your administration options. Check the ``Share 
-Link`` checkbox to create the share, and to expose all of your sharing options.
+1. Go to your ``Files`` page and click the Share icon on the file or directory 
+you want to share. Enter the username and URL of the remote user in this form: 
+``<username>@<oc-server-url>``. In this example, that is 
+``layla@remote-server/owncloud``. The form automatically enters the address 
+that you type and labels it as "remote".
 
-2. Set any options that you want to apply to your new share: send an email 
-notification, add password protection, allow users to upload files to the share, 
-or set an expiration date. If you check **Allow Public Upload** then other 
-users can overwrite, rename and delete files in the share. If you do not send 
-an email notification, you will need to figure out some other way to share the 
-link.
+.. figure:: ../images/direct-share-1.png
 
-   .. figure:: ../images/s2s-create_public_share.png
+2. You'll see a status indicator as ownCloud looks for the remote server. 
+
+.. figure:: ../images/direct-share-2.png
+
+When your local ownCloud server makes a successful connection with the remote 
+ownCloud server you'll see a confirmation.
    
-And that's all there is to it. Your new public share is labeled with a chain 
-link. If you do not protect it with a password, it is visible to anyone who has 
-the URL. (ownCloud server admins have the option of requiring users to set 
-passwords on shares in ``Admin > Sharing.``)
+.. figure:: ../images/direct-share-3.png   
 
-Connecting to a Remote Share
------------------------------
+Your recipient on the other end of the link, on the remote ownCloud server, 
+will see a dialog asking them to confirm the new share. All they have to do is 
+click the **Add remote share** button, and it's done.
 
-1. Open the share link in your Web browser.
+.. figure:: ../images/direct-share-4.png
 
-   .. figure:: ../images/s2s-connect-to-remote-share.png
+Click the Share button anytime to see who you have shared your file with. Remove 
+your linked share anytime by clicking the trash can icon. This only unlinks the 
+share, and does not delete any files.
 
-2. Click the ``Add to your ownCloud`` button, and enter the URL of your ownCloud 
-server. If you are not already logged in you will get a login window.
+Creating a New Federated Cloud Share via Email
+----------------------------------------------
 
-3. After logging in you will see a dialogue asking you ``"Do you want to add the 
-remote share [share name] from [remote server name]?"``
+What if you do not know the username or URL? Then you can have ownCloud create 
+the link for you and email it to your recipient. 
 
-   .. figure:: ../images/s2s-add-remote-share.png
+.. figure:: ../images/create_public_share-6.png
 
-4. Click the ``Add Remote Share`` button, and enjoy your new share. It is marked 
-with a share icon, and the name of the share's owner and originating server.
+When your recipient receives your email they will have to take a number of 
+steps to complete the share link. First they must open the link you sent them in 
+a Web browser, and then click the **Add to your ownCloud** button.
 
-   .. figure:: ../images/s2s-remote-share-labeled.png
+.. figure:: ../images/create_public_share-8.png
 
+The **Add to your ownCloud** button changes to a form field, and your recipient 
+needs to enter the URL of their ownCloud server in this field and press the 
+return key, or click the arrow.
+
+.. figure:: ../images/create_public_share-9.png
+
+Next, they will see a dialog asking to confirm. All they have to do is click 
+the **Add remote share** button and they're finished.
+ 
 Remove your linked share anytime by clicking the trash can icon. This only 
 unlinks the share, and does not delete any files.
-
