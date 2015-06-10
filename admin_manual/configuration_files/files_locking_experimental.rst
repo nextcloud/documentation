@@ -4,7 +4,8 @@ Experimental File Locking
 
 ownCloud's new experimental file locking mechanism operates differently than 
 the old File Locking application, and will eventually replace it. If you elect 
-to use the new file locking make sure you disable the File Locking app.
+to use the new file locking mechanism make sure you disable the File Locking 
+app.
 
 The new file locking mechanism has these capabilities:
 
@@ -32,7 +33,7 @@ long as they are needed. Redis is available on most Linux distributions, and
 requires a simple configuration in your ``config.php`` file, like this example::
 
  'filelocking.enabled' => 'true',
- 'memcache.local' => '\\OC\\Memcache\\redis',
+ 'memcache.local' => '\\OC\\Memcache\\Redis',
  'redis' => array(
 	'host' => 'localhost', 
 	// can also be a unix domain socket: 
