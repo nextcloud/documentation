@@ -45,5 +45,11 @@ requires a simple configuration in your ``config.php`` file, like this example::
 	'dbindex' => 0, 
  ),
  
+The **Server status** section on your ownCloud Admin page indicates whether 
+experimental file locking is enabled or disabled, and if it is configured 
+correctly. 
+
+.. figure:: ../images/file-lock-status.png
+
 See ``config.sample.php`` to see configuration examples for Redis, and for all 
 supported memcaches. 
