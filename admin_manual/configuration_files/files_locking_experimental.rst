@@ -20,20 +20,16 @@ The new file locking mechanism has these capabilities:
 * Manages locks correctly on external storage mounts
 * Manages encrypted files correctly
 
-You must install the ``php-redis`` module for the new file locking to work. On 
-Debian/Ubuntu/Mint this is ``php5-redis``, and on Red Hat/CentOS/Fedora is it 
-``php-pecl-redis`` in the EPEL repository.
+You must install the Redis server and ``php-redis`` module for the new file 
+locking to work. On Debian/Ubuntu/Mint this is ``redis-server`` and 
+``php5-redis``, and on Red Hat/CentOS/Fedora is it ``redis`` 
+and ``php-pecl-redis`` from the EPEL repository.
 
-We recommend using `Redis <http://redis.io/>`_ as your ownCloud memcache when 
-you enable file locking. Memcached, the popular distributed memory caching 
-system, is not suitable for the new file locking because it is not designed to 
-store locks, and data can disappear from the cache at any time. Redis is a 
-key-value store, and it guarantees that cached objects are available for as 
-long as they are needed. Redis is available on most Linux distributions, and 
-requires a simple configuration in your ``config.php`` file, like this example::
+After installing Redis you must enter a simple configuration in your 
+``config.php`` file, like this example::
 
  'filelocking.enabled' => 'true',
- 'memcache.local' => '\\OC\\Memcache\\Redis',
+ 'memcache.local' => '\OC\Memcache\Redis',
  'redis' => array(
 	'host' => 'localhost', 
 	// can also be a unix domain socket: 
@@ -52,4 +48,10 @@ correctly.
 .. figure:: ../images/file-lock-status.png
 
 See ``config.sample.php`` to see configuration examples for Redis, and for all 
-supported memcaches. 
+supported memcaches.
+
+Learn more about Reds at `Redis <http://redis.io/>`_. Memcached, the popular 
+distributed memory caching system, is not suitable for the new file locking 
+because it is not designed to store locks, and data can disappear from the cache 
+at any time. Redis is a key-value store, and it guarantees that cached objects 
+are available for as long as they are needed. 
