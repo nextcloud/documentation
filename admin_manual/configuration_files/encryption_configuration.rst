@@ -3,7 +3,7 @@ Encryption Configuration
 ========================
 
 If you are upgrading from ownCloud 8.0, and have encryption enabled, please see 
-:ref:`upgrading` for the correct steps to upgrade your encryption. 
+:ref:`upgrading` (below) for the correct steps to upgrade your encryption. 
 
 In ownCloud 8.1 the server-side encryption has a number of changes and 
 improvements, including:
@@ -44,7 +44,7 @@ ownCloud.
 ownCloud's server-side encryption generates a strong encryption key, which is 
 unlocked by user's passwords. So your users don't need to track an extra 
 password, but simply log in as they normally do. It encrypts only the contents 
-of files, and not filenames and folder structures.
+of files, and not filenames and directory structures.
 
 You should regularly backup all encryption keys to prevent permanent data loss. 
 The encryption keys are stored in following directories:
@@ -91,7 +91,7 @@ First go to the **Server-side encryption** section of your Admin page and check
 .. figure:: ../images/encryption3.png
 
 After clicking the **Enable Encryption** button you see the message "No 
-encryption module loaded, please load a encryption module in the app menu ", so 
+encryption module loaded, please load a encryption module in the app menu", so 
 go to your Apps page to enable the ownCloud Default Encryption Module.
 
 .. figure:: ../images/encryption1.png
@@ -196,10 +196,10 @@ Files Not Encrypted
 Only the data in your files is encrypted, and not the filenames or folder
 structures. These files are never encrypted:
 
-- Old files in the trash bin.
-- Image thumbnails from the Gallery app.
-- Previews from the Files app.
-- The search index from the full text search app.
+- Old files in the trash bin
+- Image thumbnails from the Gallery app
+- Previews from the Files app
+- The search index from the full text search app
 - Third-party app data
 
 There may be other files that are not encrypted; only files that are exposed to 
@@ -226,14 +226,102 @@ additional steps to migrate encryption correctly. If you do not follow these
 steps you may not be able to access your files.
 
 After your upgrade is complete, follow the steps in :ref:`enable_encryption` to 
-enable the new encryption system. Then click the **Start Migration** button 
-on your Admin page to migrate your encryption keys, or use the ``occ`` command. 
-This example is for Debian/Ubuntu Linux::
+enable the new encryption system. Then click the **Start Migration** button on 
+your Admin page to migrate your encryption keys, or use the ``occ`` command. We 
+strongly recommend using the ``occ`` command; the **Start Migration** button is 
+for admins who do not have access to the console, for example installations on 
+shared hosting. This example is for Debian/Ubuntu Linux::
 
  $ sudo -u www-data php occ encryption:migrate-keys
  
+This example is for Red Hat/CentOS/Fedora Linux::
+
+ $ sudo -u apache php occ encryption:migrate-keys 
+ 
 You must run ``occ`` as your HTTP user; see 
-:doc:`../configuration_server/occ_command`. 
+:doc:`../configuration_server/occ_command`.
+
+Where Keys are Stored
+---------------------
+
+All of your encryption keys are stored in your ownCloud :file:`data/` 
+directory. When you run the migration command your old keys are backed up in 
+your data directory:
+
+Backup for system-wide keys:
+ :file:`data/encryption_migration_backup_<timestamp>`
+
+Backup for user-specific keys: 
+ :file:`data/<user>/encryption_migration_backup_<timestamp>`
+
+Both backup directories contain the keys in the old file structure. This is the 
+old file structure for ownCloud 8.0:
+
+Private public share key:
+ :file:`data/files_encryption/pubShare_<public-share-key-id>.privateKey`
+    
+Private recovery key: 
+ :file:`data/files_encryption/recovery_<recovery-key-id>.privateKey`
+ 
+Public keys of all users: 
+ :file:`data/files_encryption/public_keys`
+ 
+File keys for system-wide mount points: 
+ :file:`data/files_encryption/keys/<file_path>/<filename>/fileKey`
+
+Share keys for files on a system-wide mount point (one key for the owner and one key for each user with access to the file): 
+ :file:`data/files_encryption/keys/<file_path>/<filename>/<user>.shareKey`
+
+Users' private keys: 
+ :file:`data/<user>/files_encryption/<user>.privateKey`
+
+File keys for files owned by the user: 
+ :file:`data/<user>/files_encryption/keys/<file_path>/<filename>/fileKey`
+
+Share keys for files owned by the user (one key for the owner and one key for each user with access to the file):
+ :file:`data/<user>/files_encryption/keys/<file_path>/<filename>/<user>.shareKey`
+ 
+This is the new file structure for ownCloud 8.1:
+
+Private public share key:
+ :file:`data/files_encryption/OC_DEFAULT_MODULE/pubShare_<public-share-key-id>.
+ privateKey`
+
+Private recovery key: 
+ :file:`data/files_encryption/OC_DEFAULT_MODULE/recovery_<recovery-key-id>.
+ privateKey`
+
+Public public share key: 
+ :file:`data/files_encryption/OC_DEFAULT_MODULE/pubShare_<public-share-key-id>.
+ publicKey`
+
+Public recovery key: 
+ :file:`data/files_encryption/OC_DEFAULT_MODULE/recovery_<recovery-key-id>.
+ publicKey`
+
+File keys for system-wide mount points: 
+ :file:`data/files_encryption/keys/<file_path>/<filename>/OC_DEFAULT_MODULE/ 
+ fileKey`
+
+Share keys for files on a system-wide mount point (one key for the owner and one key for each user with access to the file): 
+ :file:`data/files_encryption/keys/<file_path>/<filename/OC_DEFAULT_MODULE/
+ <user>.shareKey`
+
+Users' private keys: 
+ :file:`data/<user>/files_encryption/OC_DEFAULT_MODULE/<user>.privateKey`
+
+Users' public keys:
+ :file:`data/<user>/files_encryption/OC_DEFAULT_MODULE/<user>.publicKey`
+
+File keys for files owned by the user: 
+ :file:`data/<user>/files_encryption/keys/<file_path>/<filename>/
+ OC_DEFAULT_MODULE/fileKey`
+
+Share keys for files owned by the user (one key for the owner and one key for each user with access to the file):
+ :file:`data/<user>/files_encryption/keys/<file_path>/<filename/
+ OC_DEFAULT_MODULE/<user> .shareKey`
+
+
 
 
 .. This section commented out because there is no windows support
