@@ -2,17 +2,38 @@
 User Management
 ===============
 
-On the User management page you can create new users, view all of your users in 
-a single scrolling window, filter users by group, see what groups they belong 
-to, edit their full names and passwords, see their data storage locations, view 
-and set quotas, and, if you so desire, delete them with a single click.
+On the User management page of your ownCloud Web UI you can:
+
+* Create new users
+* View all of your users in a single scrolling window
+* Filter users by group
+* See what groups they belong to
+* Edit their full names and passwords
+* See their data storage locations
+* View and set quotas
+* Create and edit their email addresses
+* Send an automatic email notification to new users
+* Delete them with a single click
+
+The default view displays basic information about your users.
 
 .. figure:: ../images/users-config.png
+
+The Group filters on the left sidebar lets you quickly filter users by their 
+group memberships, and create new groups.
+
+.. figure:: ../images/users-config-1.png
+
+Click the gear icon on the lower left sidebar to set a default storage quota, 
+and to display additional fields: **Show storage location, Show last log in, 
+Show user backend, Send email to new users,** and **Show email address**.
+
+.. figure:: ../images/users-config-2.png
 
 User accounts have the following properties:
 
 *Login Name (Username)*
-  This is the unique ID of an ownCloud user, and it cannot be changed.
+  The unique ID of an ownCloud user, and it cannot be changed.
 
 *Full Name*
   The user's display name that appears on file shares, the ownCloud Web 
@@ -52,7 +73,11 @@ underscores (_), periods (.) and ampersands (@). After creating the user, you
 may fill in their **Full Name** if it is different than the login name, or 
 leave it for the user to complete.
 
-Remember to give your new users their logins and passwords.
+If you have checked **Send email to new user** in the control panel on the 
+lower left sidebar, you may also enter the new user's email address, and 
+ownCloud will automatically send them a notification with their new login 
+information. You may edit this email using the email template editor on your 
+Admin page (see :doc:`../configuration_server/email_configuration`).
 
 Reset a User's Password
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -159,6 +184,6 @@ user.
 All of the files owned by the user are deleted as well, including all files they 
 have shared. If you need to preserve the user's files and shares, you must first 
 download them from your ownCloud Files page, which compresses them into a zip 
-file, or use a sync client to copy them to your local computer. See the "File 
-Sharing" section of the Admin Manual to learn how to create persistent file 
-shares that survive user deletions.
+file, or use a sync client to copy them to your local computer. See 
+:doc:`../configuration_files/file_sharing_configuration` to learn how to create 
+persistent file shares that survive user deletions.
