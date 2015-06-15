@@ -122,7 +122,12 @@ VirtualHost file:
      Header always add Strict-Transport-Security "max-age=15768000; includeSubDomains; preload"
   </VirtualHost>
 
-It shall be noted that this requires that the ``mod_headers`` extension to be installed.
+Be aware that above policy will also apply for all subdomains, if you don't
+have HTTPS properly configured on all subdomains you mut remove the ``includeSubdomains``
+part.
+
+Furthermore it shall be noted that this requires that the ``mod_headers`` 
+extension is installed.
 
 Proper SSL configuration
 ************************
