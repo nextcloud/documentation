@@ -119,7 +119,7 @@ VirtualHost file:
 
   <VirtualHost *:443>
      ServerName cloud.owncloud.com
-     Header always add Strict-Transport-Security "max-age=15768000"
+     Header always add Strict-Transport-Security "max-age=15768000; includeSubDomains; preload"
   </VirtualHost>
 
 It shall be noted that this requires that the ``mod_headers`` extension to be installed.
