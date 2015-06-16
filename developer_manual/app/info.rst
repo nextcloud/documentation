@@ -20,7 +20,7 @@ The :file:`appinfo/info.xml` contains metadata about the app:
       <namespace>YourAppsNamespace</namespace>
 
       <types>
-          <type>filesystem</type>
+          <filesystem/>
       </types>
 
 
