@@ -198,12 +198,15 @@ AES-NI extension:
 * For each CPU core present: ``grep flags /proc/cpuinfo`` or as a summary for 
   all cores: ``grep -m 1 ^flags /proc/cpuinfo`` If the result contains any 
   ``aes``, the extension is present.   
-  
-* On Windows you can run ``coreinfo`` from Sysinternals `Windows Sysinternals 
-  Download Coreinfo 
-  <https://technet.microsoft.com/en-us/sysinternals/cc835722.aspx>`_ which 
-  gives you details of the processor and extensions present. Note: you may have 
-  to run the command shell as administrator to get an output.
+
+.. windows is not supported on 8.x  
+.. * On Windows you can run ``coreinfo`` from Sysinternals `Windows 
+.. Sysinternals 
+..  Download Coreinfo 
+..  <https://technet.microsoft.com/en-us/sysinternals/cc835722.aspx>`_ which 
+..  gives you details of the processor and extensions present. Note: you may 
+.. have 
+..  to run the command shell as administrator to get an output.
   
 * Search eg. on the Intel web if the processor used supports the extension 
   `Intel Processor Feature Filter 
@@ -307,7 +310,7 @@ Log files
 
 Log files should be switched off for maximum performance.
 
-Comment out the `CustomLog`` directive. Keep ``ErrorLog`` to be able to track down errors.
+Comment out the ``CustomLog`` directive. Keep ``ErrorLog`` to be able to track down errors.
 
 .. todo: loglevel?
 
@@ -340,7 +343,9 @@ Currently ownCloud supports the following relational database management systems
 - PostgreSQL
 - SQLite
 - Oracle
-- Mssql
+
+SQLite is not supported in the Enterprise edition, and is not recommended 
+except for systems with very light workloads, and for testing ownCloud.
 
 We are using the `doctrine database abstraction layer`_ and schema evolution 
 with a `MDB2 Schema`_ based table description in XML.
@@ -348,8 +353,6 @@ with a `MDB2 Schema`_ based table description in XML.
 .. _doctrine database abstraction layer: http://www.doctrine-project.org/projects/dbal.html
 .. _MDB2 Schema: https://raw2.github.com/pear/MDB2_Schema/master/docs/xml_schema_documentation.html
 
-The default indexes are chosen to support every day usage. Additional indexes 
-might further improve the performance.
 
 Using MariaDB/MySQL instead of SQLite
 =====================================
@@ -377,44 +380,6 @@ from ``localhost`` to ``127.0.0.1`` could improve the page loading time.
 See also `this forum thread 
 <http://forum.owncloud.org/viewtopic.php?f=17&t=7559>`_.
 
-MySQL / MariaDB
-===============
-
-Additional indexes may improve performance.
-
-Index on uid in oc_group_user:
-
-.. code-block:: sql
-
-	create index oc_group_user_uid on oc_group_user(uid);
-
-Index on oc_share:
-
-.. code-block:: sql
-
-	create index oc_share_file_target on oc_share(file_target);
-
-Index on oc_filecache:
-
-.. code-block:: sql
-
-	create index oc_filepath on oc_filecache(storage,size);
-
-Index on oc_files_versions:
-
-.. code-block:: sql
-
-	create index oc_files_versions_user  on oc_files_versions(user);
-
-Index on oc_files_trashsize:
-
-.. code-block:: sql
-
-	create index oc_files_trashsize_user  on oc_files_trashsize(user);
-
-Progress of adding them to the default code is tracked in 
-https://github.com/owncloud/core/issues/7474.
-
 Other performance improvements
 ==============================
 
@@ -426,16 +391,7 @@ Postgresql
 
 Alternative to MariaDB/MySQL. Used in production by a few core developers.
 
-Migration
----------
-
 Requires at least Postgresql 9.0
-
-Additional Indexes
-------------------
-
-The ones from MySQL should work just fine. Progress of adding them to the 
-default code is tracked in https://github.com/owncloud/core/issues/7474.
 
 Other performance improvements
 ------------------------------
@@ -447,12 +403,6 @@ Oracle Database
 
 Usage scenario: Existing enterprise installations. Only core apps are supported 
 and tested. Not recommended because it involves compiling the oci8
-
-Additional Indexes
-------------------
-
-The ones from mysql should work just fine. Progress of adding them to the 
-default code is tracked in https://github.com/owncloud/core/issues/7474.
 
 Other performance improvements
 ------------------------------
@@ -466,21 +416,6 @@ When ORA-56600 occurs (Oracle Bug 8467564) set this php.ini setting:
 `oci8.statement_cache_size=1000`, see `oracle forum discussion`_
 
 .. _oracle forum discussion: https://community.oracle.com/message/3468020#3468020
-
-Microsoft SQL Server
-====================
-
-Usage scenario: Only core apps are supported. **Not** even tested by Jenkins.
-
-Additional Indexes
-------------------
-
-The ones from mysql should work just fine. Progress of adding them to the default code is tracked in https://github.com/owncloud/core/issues/7474.
-
-Other performance improvements
-------------------------------
-
-http://www.mssqltips.com/sql-server-tip-category/9/performance-tuning/
 
 *******************************************************************
 Nginx: caching ownCloud gallery thumbnails with fastcgi_cache_purge
