@@ -12,7 +12,7 @@ and all parameter from these files will be loaded. In this way you can specify
 common attributes like the email setup in a file called `email.config.php` that
 contains only the email related parameters. This enables an easy deployment of
 config parameters. Another advantage is, that those parameters can't be
-overwritten by ownCloud. Aslo the values in those files overwrite the values of
+overwritten by ownCloud. Also the values in those files overwrite the values of
 `config.php`.
 
 .. Generated content below. Don't change this.
