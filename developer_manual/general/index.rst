@@ -12,4 +12,3 @@ General Contributor Guidelines
    performance
    debugging
    backporting
-   publishing

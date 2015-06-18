@@ -32,6 +32,7 @@
    backgroundjobs
    logging
    testing
+   publishing
 
 ===============
 App Development
@@ -55,6 +56,10 @@ Before starting to write an app please read the security and coding guidelines:
 After this you can start with the tutorial
 
 * :doc:`tutorial`
+
+Once you are ready for publishing, check out the app store process:
+
+* :doc:`publishing`
 
 App development
 ===============
