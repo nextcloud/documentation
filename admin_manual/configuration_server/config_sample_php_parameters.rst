@@ -84,7 +84,6 @@ Available:
 	- mysql (MySQL/MariaDB)
 	- pgsql (PostgreSQL)
 	- oci (Oracle - Enterprise Edition Only)
-	- mssql (Microsoft SQL Server - Enterprise Edition Only)
 
 ::
 
@@ -1127,7 +1126,6 @@ One way to test is applying for a trystack account at http://trystack.org/
 		'mysql',
 		'pgsql',
 		'oci',
-		'mssql'
 	),
 
 Database types that are supported for installation.
@@ -1137,7 +1135,6 @@ Available:
 	- mysql (MySQL)
 	- pgsql (PostgreSQL)
 	- oci (Oracle - Enterprise Edition Only)
-	- mssql (Microsoft SQL Server - Enterprise Edition Only)
 
 All other config options
 ------------------------
