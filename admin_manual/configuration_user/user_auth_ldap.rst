@@ -9,10 +9,8 @@ create separate ownCloud user accounts for them. You will manage their ownCloud
 group memberships, quotas, and sharing permissions just like any other ownCloud 
 user.
 
-.. Note:: For performance reasons, we recommend using PHP 5.4 or greater to use 
-   the LDAP application with more than 500 users. The PHP LDAP module is 
-   required; this is supplied by ``php5-ldap`` on Debian/Ubuntu, and 
-   ``php-ldap`` on CentOS/Red Hat/Fedora.
+.. Note:: The PHP LDAP module is required; this is supplied by ``php5-ldap`` on Debian/Ubuntu, and 
+   ``php-ldap`` on CentOS/Red Hat/Fedora. PHP 5.4+ is required in ownCloud 8.
 
 The LDAP application supports:
 
