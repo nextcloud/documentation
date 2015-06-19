@@ -29,6 +29,13 @@ Supported Platforms
 * Web browser: IE8+ (but not compatibility mode), Firefox 14+, Chrome 18+, 
   Safari 5+
 
+Caching Change for LDAP App
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The persistent file-based cache has been dropped and replaced with a 
+memory-only cache, which must be explicitly configured. See 
+:doc:`configuration_user/user_auth_ldap`
+  
 Special Migration Considerations for Encryption
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
