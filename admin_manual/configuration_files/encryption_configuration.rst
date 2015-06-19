@@ -225,6 +225,11 @@ The encryption backend has changed in ownCloud 8.1, so you must take some
 additional steps to migrate encryption correctly. If you do not follow these 
 steps you may not be able to access your files.
 
+Before you start your upgrade, put your ownCloud server into 
+``maintenance:singleuser`` mode (See :doc:`../maintenance/enable_maintenance`.) 
+You must do this to prevent users and sync clients from accessing files before 
+you have completed your encryption migration.
+
 After your upgrade is complete, follow the steps in :ref:`enable_encryption` to 
 enable the new encryption system. Then click the **Start Migration** button on 
 your Admin page to migrate your encryption keys, or use the ``occ`` command. We 
@@ -240,6 +245,9 @@ This example is for Red Hat/CentOS/Fedora Linux::
  
 You must run ``occ`` as your HTTP user; see 
 :doc:`../configuration_server/occ_command`.
+
+When you are finished, take your ownCloud server out of 
+``maintenance:singleuser`` mode.
 
 Where Keys are Stored
 ---------------------
