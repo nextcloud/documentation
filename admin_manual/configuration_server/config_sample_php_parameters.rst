@@ -275,7 +275,7 @@ Enabling this sends a "heartbeat" to the server to keep it from timing out.
 
 ::
 
-	'skeletondirectory' => '',
+	'skeletondirectory' => '/path/to/owncloud/core/skeleton',
 
 The directory where the skeleton files are located. These files will be
 copied to the data directory of new users. Leave empty to not copy any
