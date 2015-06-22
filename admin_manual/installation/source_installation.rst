@@ -162,7 +162,8 @@ Now download the archive of the latest ownCloud version:
 Apache Web Server Configuration
 -------------------------------
 
-On Debian, Ubuntu, and their derivatives, Apache installs with a useful configuration so all you have to do is create a 
+On Debian, Ubuntu, and their derivatives, Apache installs with a useful 
+configuration so all you have to do is create a 
 :file:`/etc/apache2/conf-available/owncloud.conf` file with these lines in it:
 
 .. code-block:: xml
@@ -254,7 +255,8 @@ Strong Directory Permissions`` section of :doc:`installation_wizard`.
 SELinux
 -------
 
-See :doc:`selinux_configuration` for a suggested configuration for SELinux-enabled distributions such as Fedora and CentOS.
+See :doc:`selinux_configuration` for a suggested configuration for 
+SELinux-enabled distributions such as Fedora and CentOS.
 
 Apache is the recommended Web server.
 

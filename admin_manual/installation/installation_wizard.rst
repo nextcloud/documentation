@@ -72,6 +72,8 @@ Finish Installation
 * When it's finished, it will log you in as administrative user and present the
   "Welcome to ownCloud" screen.
   
+.. _strong_perms:
+
 Setting Strong Directory Permissions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
