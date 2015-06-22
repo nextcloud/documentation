@@ -200,7 +200,95 @@ intended to be run manually.
 
 ``files:cleanup`` tidies up the server's file cache by deleting all file 
 entries that have no matching entries in the storage table.
-   
+
+Installation
+------------
+
+You can install ownCloud entirely from the command line. After downloading the 
+tarball and copying ownCloud into the appropriate directories, or 
+after installing ownCloud packages (See 
+:doc:`../installation/linux_installation` and 
+:doc:`../installation/source_installation`) you can use ``occ`` commands in 
+place of running the graphical Installation Wizard.
+
+Apply correct permissions to your ownCloud directories; see 
+:ref:`strong_perms`. Then choose your ``occ`` options. This lists your 
+available options::
+
+ $ sudo -u www-data php /var/www/owncloud/occ
+ ownCloud is not installed - only a limited number of commands are available
+ ownCloud version 8.1 RC1
+
+ Usage:
+  [options] command [arguments]
+
+ Options:
+  --help (-h)           Display this help message
+  --quiet (-q)          Do not output any message
+  --verbose (-v|vv|vvv) Increase the verbosity of messages: 1 for normal 
+  output,  2 for more verbose output and 3 for debug
+  --version (-V)        Display this application version
+  --ansi                Force ANSI output
+  --no-ansi             Disable ANSI output
+  --no-interaction (-n) Do not ask any interactive question
+
+ Available commands:
+  check                 check dependencies of the server environment
+  help                  Displays help for a command
+  list                  Lists commands
+  status                show some status information
+  app
+  app:check-code        check code to be compliant
+  l10n
+  l10n:createjs         Create javascript translation files for a given app
+  maintenance
+  maintenance:install   install ownCloud
+  
+Display your ``maintenance:install`` options::
+
+ $ sudo -u www-data php /var/www/owncloud/occ help maintenance:install
+ ownCloud is not installed - only a limited number of commands are available
+ Usage:
+  maintenance:install [--database="..."] [--database-name="..."] 
+ [--database-host="..."] [--database-user="..."] [--database-pass[="..."]] 
+ [--database-table-prefix[="..."]] [--admin-user="..."] [--admin-pass="..."] 
+ [--data-dir="..."]
+
+ Options:
+  --database               Supported database type (default: "sqlite")
+  --database-name          Name of the database
+  --database-host          Hostname of the database (default: "localhost")
+  --database-user          User name to connect to the database
+  --database-pass          Password of the database user
+  --database-table-prefix  Prefix for all tables (default: oc_)
+  --admin-user             User name of the admin account (default: "admin")
+  --admin-pass             Password of the admin account
+  --data-dir               Path to data directory (default: 
+                           "/var/www/owncloud/data")
+  --help (-h)              Display this help message
+  --quiet (-q)             Do not output any message
+  --verbose (-v|vv|vvv)    Increase the verbosity of messages: 1 for normal 
+   output, 2 for more verbose output and 3 for debug
+  --version (-V)           Display this application version
+  --ansi                   Force ANSI output
+  --no-ansi                Disable ANSI output
+  --no-interaction (-n)    Do not ask any interactive question
+
+This example completes the installation::
+
+ $ sudo -u www-data php /var/www/owncloud/occ  maintenance:install --database 
+ "mysql" --database-name "owncloud"  --database-user "root" --database-pass 
+ "password" --admin-user "admin" --admin-pass "password" 
+ ownCloud is not installed - only a limited number of commands are available
+ ownCloud was successfully installed
+
+Supported databases are::
+
+ - sqlite (SQLite3 - Community Edition Only)
+ - mysql (MySQL/MariaDB)
+ - pgsql (PostgreSQL)
+ - oci (Oracle 
+ 
 l10n, Create javascript Translation Files for Apps
 --------------------------------------------------
 
