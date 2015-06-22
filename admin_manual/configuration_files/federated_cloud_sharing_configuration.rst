@@ -5,8 +5,12 @@ Configuring Federated Cloud Sharing
 In ownCloud 7 this was called server-to-server sharing. Now it is called 
 federated cloud sharing. With just a few clicks you can easily and securely link 
 file shares between ownCloud servers, in effect creating a cloud of ownClouds. 
-You can automatically send an email notification when you create the share, share directly with users on other ownCloud servers, add 
-password protection, allow users to upload files, and set an expiration date.
+You can automatically send an email notification when you create the share, 
+share directly with users on other ownCloud servers, add password protection, 
+allow users to upload files, and set an expiration date.
+
+.. Note:: Currently, federated shares cannot be re-shared, and the only visible 
+   option when you create the share is **Can edit**.
 
 Follow these steps to create a new federated cloud share:
 
