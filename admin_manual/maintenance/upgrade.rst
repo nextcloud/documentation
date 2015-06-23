@@ -8,6 +8,18 @@ increases the risk of errors. Major releases are 6.0, 7.0, and 8.0, and point re
 are intermediate releases for each major release. For example, 8.0.1 and 8.0.2 are point 
 releases.
 
+Version numbering changed with ownCloud 8.0. Major releases are now indicated 
+by the second number, so 8.0. 8.1, and 8.2 are major releases. The third number 
+indicates an intermediate release, e.g. 8.0.5.
+
+.. note:: If you are using the Encryption app and upgrading from older 
+   versions of ownCloud to ownCloud 8.0, you must manually migrate your 
+   encryption keys with the *occ* command after the upgrade is complete, like 
+   this example for CentOS:
+   *sudo -u apache php occ encryption:migrate-keys*
+   You must run *occ* as your HTTP user. See 
+   :doc:`../configuration_server/occ_command` to learn more about *occ*
+
 There are multiple ways to keep your ownCloud server upgraded: with the Updater 
 App (Server Edition only), with your Linux package manager, and by manually 
 upgrading. In this chapter you will learn how to keep your ownCloud installation 
@@ -99,9 +111,21 @@ example is for Debian/Ubuntu::
 
  $ sudo -u www-data php occ upgrade
  
+Before completing the upgrade, ownCloud first runs a simulation by copying all 
+database tables to a temporary directory and then performing the upgrade on 
+them, to ensure that the upgrade will complete correctly. This takes twice as 
+much time, which on large installations can be many hours, so you can omit this 
+step with the ``--skip-migration-test`` option::
+
+ $ sudo -u www-data php occ upgrade --skip-migration-test 
+ 
 This example is for Fedora, CentOS, and Red Hat Linux::
 
  $ sudo -u apache php occ upgrade 
+ 
+Or::
+
+  $ sudo -u apache php occ upgrade -skip-migration-test
 
 * The HTTP user and group in Debian/Ubuntu is ``www-data``.
 * The HTTP user and group in Fedora/CentOS/RHEL is ``apache``.
