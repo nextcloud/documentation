@@ -287,7 +287,7 @@ Supported databases are::
  - sqlite (SQLite3 - Community Edition Only)
  - mysql (MySQL/MariaDB)
  - pgsql (PostgreSQL)
- - oci (Oracle 
+ - oci (Oracle) 
  
 l10n, Create javascript Translation Files for Apps
 --------------------------------------------------
