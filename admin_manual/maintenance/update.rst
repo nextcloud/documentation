@@ -85,9 +85,16 @@ steps:
     performs the final upgrade steps.  This example is for Ubuntu Linux::
 
      $ sudo -u www-data php occ upgrade
-   
-    See :doc:`../configuration_server/occ_command` to learn more about using 
-    the ``occ`` command. 
+ 
+Before completing the upgrade, ownCloud first runs a simulation by copying all 
+database tables to a temporary directory and then performing the upgrade on 
+them, to ensure that the upgrade will complete correctly. This takes twice as 
+much time, which on large installations can be many hours, so you can omit this 
+step with the ``--skip-migration-test`` option::
+
+ $ sudo -u www-data php occ upgrade --skip-migration-test 
+
+See :doc:`../configuration_server/occ_command` to learn more.
 
 9.  It runs for a few minutes, and when it is finished displays a success 
     message, which disappears after a short time. 
