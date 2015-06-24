@@ -105,33 +105,32 @@ should see a single line in your browser page with the HTTP user name.
    ownership as above could result in some issues if the NFS mount is 
    lost.
 
-The easy way to set the correct permissions is to copy and run this 
-script. Replace the ``ocpath`` variable with the path to your ownCloud 
-directory, and replace the ``htuser`` variable with your own HTTP user::
+The easy way to set the correct permissions is to copy and run this script. Replace the ``ocpath`` variable with the path to your ownCloud directory, and replace the ``htuser`` and ``htgroup`` variables with your HTTP user and group::
 
  #!/bin/bash
  ocpath='/var/www/owncloud'
  htuser='www-data'
+ htgroup='www-data'
 
  find ${ocpath}/ -type f -print0 | xargs -0 chmod 0640
  find ${ocpath}/ -type d -print0 | xargs -0 chmod 0750
 
  chown -R root:${htuser} ${ocpath}/
- chown -R ${htuser}:${htuser} ${ocpath}/apps/
- chown -R ${htuser}:${htuser} ${ocpath}/config/
- chown -R ${htuser}:${htuser} ${ocpath}/data/
- chown -R ${htuser}:${htuser} ${ocpath}/themes/
+ chown -R ${htuser}:${htgroup} ${ocpath}/apps/
+ chown -R ${htuser}:${htgroup} ${ocpath}/config/
+ chown -R ${htuser}:${htgroup} ${ocpath}/data/
+ chown -R ${htuser}:${htgroup} ${ocpath}/themes/
 
  chown root:${htuser} ${ocpath}/.htaccess
  chown root:${htuser} ${ocpath}/data/.htaccess
- 
+
  chmod 0644 ${ocpath}/.htaccess
  chmod 0644 ${ocpath}/data/.htaccess
  
 If you have customized your ownCloud installation and your filepaths are 
-different than the standard installation, then modify this script accordingly.
+different than the standard installation, then modify this script accordingly. 
 
-These are the recommended modes and ownership for your ownCloud directories 
+This lists the recommended modes and ownership for your ownCloud directories 
 and files:
 
 * All files should be read-write for the file owner, read-only for the 
@@ -139,13 +138,13 @@ and files:
 * All directories should be executable (because directories always need the 
   executable bit set), read-write for the directory owner, and read-only for 
   the group owner
-* The :file:`/` directory should be owned by ``root:[HTTP user]``
-* The :file:`apps/` directory should be owned by ``[HTTP user]:[HTTP user]``
-* The :file:`config/` directory should be owned by ``[HTTP user]:[HTTP user]``
-* The :file:`data/` directory should be owned by ``[HTTP user]:[HTTP user]``
-* The :file:`themes/` directory should be owned by ``[HTTP user]:[HTTP user]``
-* The :file:`[ocpath]/.htaccess` file should be owned by ``root:[HTTP user]``
-* The :file:`data/.htaccess` file should be owned by ``root:[HTTP user]``
+* The :file:`/` directory should be owned by ``root:[HTTP group]``
+* The :file:`apps/` directory should be owned by ``[HTTP user]:[HTTP group]``
+* The :file:`config/` directory should be owned by ``[HTTP user]:[HTTP group]``
+* The :file:`themes/` directory should be owned by ``[HTTP user]:[HTTP group]``
+* The :file:`data/` directory should be owned by ``[HTTP user]:[HTTP group]``
+* The :file:`[ocpath]/.htaccess` file should be owned by ``root:[HTTP group]``
+* The :file:`data/.htaccess` file should be owned by ``root:[HTTP group]``
 * Both :file:`.htaccess` files are read-write file owner, read-only group and 
   world
 
