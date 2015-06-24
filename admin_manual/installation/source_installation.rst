@@ -45,7 +45,7 @@ To run ownCloud, your web server must have the following installed:
 Database connectors (pick at least one):
 
 * PHP module sqlite (>= 3, usually not recommended for performance reasons)
-* PHP module mysql
+* PHP module mysql (MySQL/MariaDB)
 * PHP module pgsql (requires PostgreSQL >= 9.0)
 
 *Recommended* packages:
@@ -82,20 +82,6 @@ For preview generation (*optional*):
 * avconv or ffmpeg
 * OpenOffice or LibreOffice
 
-**Remarks:**
-
-* Please check your distribution, operating system or hosting partner 
-  documentation on how to install and enable these modules.
-
-* Make sure your distribution's PHP version fulfills the version requirements
-  specified above. If it doesn't, there might be custom repositories you can
-  use. If you are e.g. running Ubuntu 10.04 LTS, you can update your PHP using
-  a custom `PHP PPA <https://launchpad.net/~ondrej/+archive/php5>`_::
-
-	sudo add-apt-repository ppa:ondrej/php5
-	sudo apt-get update
-	sudo apt-get install php5
-
 * You don’t need the WebDAV module for your web server (i.e. Apache’s
   ``mod_webdav``) to access your ownCloud data via WebDAV. ownCloud has a built-in
   WebDAV server of its own, SabreDAV.
@@ -114,14 +100,9 @@ Apache and MariaDB, by issuing the following commands in a terminal::
   on running additional apps, keep in mind that they might require additional 
   packages.  See the Prerequisites section (above) for details.
 
-* At the execution of each of the above commands you might be prompted whether 
-  you want to continue; press "Y" for Yes (that is if your system language is 
-  English. You might have to press a different key if you have a different 
-  system language).
-
-* At the installation of the MySQL server, you will be prompted to create a root 
-  password. Be sure to remember the password you enter there for later use 
-  as you will need it during ownCloud database setup.
+* At the installation of the MySQL/MariaDB server, you will be prompted to 
+  create a root password. Be sure to remember the password you enter there 
+  for later use as you will need it during ownCloud database setup.
 
 Now download the archive of the latest ownCloud version:
 
@@ -168,8 +149,8 @@ configuration so all you have to do is create a
 
 .. code-block:: xml
    
-   Alias /owncloud /var/www/html/owncloud
-   <Directory /var/www/html/owncloud/>
+   Alias /owncloud /var/www/owncloud
+   <Directory /var/www/owncloud/>
     AllowOverride All
    </Directory>
 
@@ -213,7 +194,7 @@ Additional Apache Configurations
   
      service apache2 restart
      
-.. note:: You can use ownCloud over plain http, but we strongly encourage you to
+.. note:: You can use ownCloud over plain HTTP, but we strongly encourage you to
           use SSL/TLS to encrypt all of your server traffic, and to protect 
           user's logins and data in transit.
 
@@ -232,25 +213,22 @@ the according site. Open a terminal and run::
           plan to make your ownCloud server publicly accessible. You might want
           to consider getting a certificate signed by commercial signing
           authority. Check with your domain name registrar or hosting service,
-          if you're using one, for good deals on commercial certificates. 
-    
+          if you're using one, for good deals on commercial certificates.    
     
 Installation Wizard
 -------------------
 
-Finish setting up your ownCloud server by following 
-the :doc:`installation_wizard`.
+You may complete your installation by running either the graphical Installation 
+Wizard, or on the command line with the ``occ`` command. To use ``occ`` see 
+:doc:`command_line_installation`.
 
-After running the Installation Wizard your ownCloud installation is complete. 
-However, you should perform the following steps to improve your server's 
-security.
+To use the graphical Installation Wizard see :doc:`installation_wizard`.
 
 Setting Strong Directory Permissions
 ------------------------------------
 
 We recommend setting the directory permissions in your ownCloud installation as 
-strictly as possible for stronger security. Please refer to the ``Setting 
-Strong Directory Permissions`` section of :doc:`installation_wizard`.
+strictly as possible for stronger security. Please refer to :ref:`strong_perms`.
 
 SELinux
 -------

@@ -6,6 +6,7 @@ Installation
    :maxdepth: 2
 
    linux_installation
+   command_line_installation
    installation_wizard
    appliance_installation
    apps_management_installation

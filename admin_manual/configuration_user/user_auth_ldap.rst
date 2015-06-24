@@ -522,6 +522,7 @@ If you have trouble with certificate validation make sure that
 .. commenting out windows section as windows server is not supported  
 ..  *C:\\openldap\\sysconf\\ldap.conf* or
 ..  *C:\\ldap.conf* on Windows) using a **TLS_CACERT /path/to/cert** line.
+
 * Using LDAPS, also make sure that the port is correctly configured (by default
   636)
 
@@ -578,9 +579,8 @@ Caching
 
 The LDAP cache has changed in ownCloud 8.1. There is no more file cache, but 
 only a memory cache, and you must install and configure the memory cache. The 
-simplest memory cache to use is APCu. This is supplied by the 
-``php5-apcu`` package on Debian/Ubuntu/Mint, and by ``php-pecl-apcu``on Red 
-Hat/CentOS/Fedora.
+simplest memory cache to use is APCu. This is supplied by the ``php5-apcu`` 
+package on Debian/Ubuntu/Mint, and by ``php-pecl-apcu``on Red Hat/CentOS/Fedora.
 
 After installing APCu you must modify ``config.php`` to select APCu as the 
 ownCloud cache::
@@ -593,8 +593,9 @@ each unique request expires. User logins are not cached, so if you need to
 improve login times set up a slave LDAP server to share the load.
 
 The Redis key-value cache and store is an excellent fast and robust cache, and 
-if you are using the new experimental file locking (see :doc:``) then you must 
-use Redis. Redis configuration looks like this::
+if you are using the new experimental file locking (see 
+:doc:`../configuration_files/files_locking_experimental`) then you must use 
+Redis. Redis configuration looks like this::
 
  'filelocking.enabled' => 'true',
  'memcache.local' => '\OC\Memcache\Redis',
