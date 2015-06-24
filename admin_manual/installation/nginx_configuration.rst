@@ -1,3 +1,4 @@
+.. _nginx_configuration_example:
 Nginx Configuration
 ===================
 
@@ -33,6 +34,13 @@ Nginx Configuration
 
     ssl_certificate /etc/ssl/nginx/cloud.example.com.crt;
     ssl_certificate_key /etc/ssl/nginx/cloud.example.com.key;
+
+    # Add headers to serve security related headers
+    add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
+    add_header X-Content-Type-Options nosniff;
+    add_header X-Frame-Options "SAMEORIGIN";
+    add_header X-XSS-Protection "1; mode=block";
+    add_header X-Robots-Tag none;
 
     # Path to the root of your installation
     root /var/www/owncloud/;

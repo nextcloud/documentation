@@ -145,13 +145,16 @@ However, these headers are added by the applications code in PHP and thus not
 served on static resources and rely on the fact that there is no way to bypass 
 the intended response code path.
 
-For optimal security administrators are encouraged to serve these basic HTTP 
-headers by the web server to enforce them on response. To do this Apache has to 
-be configured to use the ``.htaccess`` file as well as the following Apache 
+For optimal security, administrators are encouraged to serve these basic HTTP 
+headers by the web server to enforce them on response.
+
+Apache has to be configured to use the ``.htaccess`` file as well as the following Apache 
 modules needs to be enabled:
 
 - mod_headers
 - mod_env
+
+For nginx, please see the nginx configuration example :ref:`nginx_configuration_example`
 
 Administrators can verify whether this security change is active by accessing a 
 static resource served by the web server and verify that above mentioned 
