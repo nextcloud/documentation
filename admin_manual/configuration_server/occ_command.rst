@@ -14,11 +14,15 @@ interface. You can perform many common server operations with ``occ``::
 ``occ`` is in the :file:`owncloud/` directory; for example 
 :file:`/var/www/owncloud` on Ubuntu Linux. ``occ`` is a PHP script. You must run 
 it as your HTTP user to ensure that the correct permissions are maintained on 
-your ownCloud files and directories. 
+your ownCloud files and directories.
 
-The HTTP user is different on the various Linux distributions. See the 
-**Setting Strong Directory Permissions** section of :doc:`../installation/installation_wizard` 
-to learn how to find your HTTP user
+.. _http_user:
+
+Run occ As Your HTTP User
+-------------------------
+
+The HTTP user is different on the various Linux distributions. See 
+:ref:`strong_perms` to learn how to find your HTTP user
    
 * The HTTP user and group in Debian/Ubuntu is www-data.
 * The HTTP user and group in Fedora/CentOS is apache.
@@ -201,8 +205,10 @@ intended to be run manually.
 ``files:cleanup`` tidies up the server's file cache by deleting all file 
 entries that have no matching entries in the storage table.
 
-Installation
-------------
+.. _cli_installation:
+
+Command Line Installation
+-------------------------
 
 You can install ownCloud entirely from the command line. After downloading the 
 tarball and copying ownCloud into the appropriate directories, or 
