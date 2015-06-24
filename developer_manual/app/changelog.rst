@@ -24,7 +24,7 @@ Features
 * There is a new :doc:`OCSResponse and OCSController <controllers>` which allows you to easily migrate OCS code to the App Framework. This was added purely for compatibility reasons and the preferred way of doing APIs is using a :doc:`api`
 * You can now stream files in PHP by using the built in :doc:`StreamResponse <controllers>`.
 * For more advanced usecases you can now implement the :doc:`CallbackResponse <controllers>` interface which allows your response to do its own response rendering
-* Custom preview providers can now be implemented using ** OCP\IPreview::registerProvider**
+* Custom preview providers can now be implemented using **OCP\IPreview::registerProvider**
 * There is a mightier class for remote web service requests at **OCP\Http\Client** 
 * **OCP\\IImage** allows now basic image manipulations such as resizing or rotating
 * **OCP\\Mail** allows sending mails in an object-oriented way now
@@ -41,7 +41,7 @@ This is a deprecation roadmap which lists all current deprecation targets and wi
 
 11.1
 ----
-* **OCP\\App::setActiveNavigationEntry** has been deprecated in favour of (**\\OCP\\INavigationManager**)
+* **OCP\\App::setActiveNavigationEntry** has been deprecated in favour of **\\OCP\\INavigationManager**
 * **OCP\\BackgroundJob::registerJob** has been deprecated in favour of **OCP\\BackgroundJob\\IJobList**
 * **OCP\\Contacts** functions has been deprecated in favour of **\\OCP\\Contacts\\IManager** 
 * **OCP\\DB** functions have been deprecated in favour of the ones in **\\OCP\\IDBConnection**
@@ -51,8 +51,8 @@ This is a deprecation roadmap which lists all current deprecation targets and wi
 * **\\OCP\\IServerContainer::getHTTPHelper** has been deprecated in favour of **\\OCP\\Http\\Client\\IClientService**
 * Legacy applications not using the AppFramework are now likely to use the deprecated **OCP\\JSON** and **OCP\\Response** code:
 
-  * **\\OCP\\JSON** has been completely deprecated in favour of the AppFramework. Developers shall use the AppFramework instead of using the legacy **OCP\\JSON**code. This allows testable controllers and is highly encouraged.
-  * **\\OCP\\Response** has been completely deprecated in favour of the AppFramework. Developers shall use the AppFramework instead of using the legacy **OCP\\JSON**code. This allows testable controllers and is highly encouraged.
+  * **\\OCP\\JSON** has been completely deprecated in favour of the AppFramework. Developers shall use the AppFramework instead of using the legacy **OCP\\JSON** code. This allows testable controllers and is highly encouraged.
+  * **\\OCP\\Response** has been completely deprecated in favour of the AppFramework. Developers shall use the AppFramework instead of using the legacy **OCP\\JSON** code. This allows testable controllers and is highly encouraged.
 
 * Diverse **OCP\\Users** function got deprecated in favour of **OCP\\IUserManager**: 
 
