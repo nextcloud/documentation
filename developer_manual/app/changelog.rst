@@ -9,20 +9,63 @@ The following changes went into ownCloud 8.1:
 
 Breaking changes
 ================
-None so far
+The following breaking changes usually do only affect applications which misuse existing API or do not follow best practises.
+
+* The default Content-Security-Policy of AppFramework apps is now stricter but can be adjusted by developers. See https://github.com/owncloud/core/pull/13989
+* Parameters passed to OC.generateUrl are now automatically encoded, this behaviour can be adjusted by developers. See https://github.com/owncloud/core/pull/14266
+* Views constructed by OC\Files\View do not allow directory traversals anymore in the constructor. See https://github.com/owncloud/core/pull/14342
+* The CSRF token may now contain not URL compatible characters (for example the plus sign: +), developers have to ensure that the CSRF token is encoded properly before using it in URIs.
+* The default RNG now returns all valid base64 characters
+* OC.msg escapes the message now by default (see https://github.com/owncloud/core/pull/14208)
+
 
 Features
 ========
 * There is a new :doc:`OCSResponse and OCSController <controllers>` which allows you to easily migrate OCS code to the App Framework. This was added purely for compatibility reasons and the preferred way of doing APIs is using a :doc:`api`
 * You can now stream files in PHP by using the built in :doc:`StreamResponse <controllers>`.
 * For more advanced usecases you can now implement the :doc:`CallbackResponse <controllers>` interface which allows your response to do its own response rendering
+* Custom preview providers can now be implemented using **OCP\IPreview::registerProvider**
+* There is a mightier class for remote web service requests at **OCP\Http\Client** 
+* **OCP\\IImage** allows now basic image manipulations such as resizing or rotating
+* **OCP\\Mail** allows sending mails in an object-oriented way now
+* **OCP\\IRequest** contains more methods now such as getting the request URI
+* **OCP\\Encryption** allows writing custom encryption backends
 
+Furthermore all public APIs have received a **@since** annotation allowing developers to see when a function has been introduced.
 
 Deprecations
 ============
 This is a deprecation roadmap which lists all current deprecation targets and will be updated from release to release. This lists the version when a specific method or class will be removed.
 
 .. note:: Deprecations on interfaces also affect the implementing classes!
+
+11.1
+----
+* **OCP\\App::setActiveNavigationEntry** has been deprecated in favour of **\\OCP\\INavigationManager**
+* **OCP\\BackgroundJob::registerJob** has been deprecated in favour of **OCP\\BackgroundJob\\IJobList**
+* **OCP\\Contacts** functions has been deprecated in favour of **\\OCP\\Contacts\\IManager** 
+* **OCP\\DB** functions have been deprecated in favour of the ones in **\\OCP\\IDBConnection**
+* **OCP\\Files::tmpFile** has been deprecated in favour of **\\OCP\\ITempManager::getTemporaryFile**
+* **OCP\\Files::tmpFolder** has been deprecated in favour of **\\OCP\\ITempManager::getTemporaryFolder**
+* **\\OCP\\IServerContainer::getDb** has been deprecated in favour of **\\OCP\\IServerContainer::getDatabaseConnection**
+* **\\OCP\\IServerContainer::getHTTPHelper** has been deprecated in favour of **\\OCP\\Http\\Client\\IClientService**
+* Legacy applications not using the AppFramework are now likely to use the deprecated **OCP\\JSON** and **OCP\\Response** code:
+
+  * **\\OCP\\JSON** has been completely deprecated in favour of the AppFramework. Developers shall use the AppFramework instead of using the legacy **OCP\\JSON** code. This allows testable controllers and is highly encouraged.
+  * **\\OCP\\Response** has been completely deprecated in favour of the AppFramework. Developers shall use the AppFramework instead of using the legacy **OCP\\JSON** code. This allows testable controllers and is highly encouraged.
+
+* Diverse **OCP\\Users** function got deprecated in favour of **OCP\\IUserManager**: 
+
+  * **OCP\\Users::getUsers** has been deprecated in favour of **OCP\\IUserManager::search**
+  * **OCP\\Users::getDisplayName** has been deprecated in favour of **OCP\\IUserManager::getDisplayName**
+  * **OCP\\Users::getDisplayNames** has been deprecated in favour of **OCP\\IUserManager::searchDisplayName**
+  * **OCP\\Users::userExists** has been deprecated in favour of **OCP\\IUserManager::userExists**
+* Various static **OCP\\Util** functions have been deprecated:
+
+  * **OCP\\Util::linkToRoute** has been deprecated in favour of **\\OCP\\IURLGenerator::linkToRoute**
+  * **OCP\\Util::linkTo** has been deprecated in favour of **\\OCP\\IURLGenerator::linkTo**
+  * **OCP\\Util::imagePath** has been deprecated in favour of **\\OCP\\IURLGenerator::imagePath**
+  * **OCP\\Util::isValidPath** has been deprecated in favour of **\\OCP\\IURLGenerator::imagePath** 
 
 10.0
 ----
