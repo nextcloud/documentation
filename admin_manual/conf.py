@@ -172,7 +172,10 @@ htmlhelp_basename = 'ownCloudServerAdminManual'
 
 # -- Options for LaTeX output --------------------------------------------------
 
-latex_elements = {
+latex_elements = {'preamble': '\usepackage{morefloats}', 'figure_align': 'H',
+}
+
+# latex_elements = {
 # The paper size ('letterpaper' or 'a4paper').
 #'papersize': 'letterpaper',
 
@@ -180,8 +183,6 @@ latex_elements = {
 #'pointsize': '10pt',
 
 # Additional stuff for the LaTeX preamble.
-'preamble': '\usepackage{morefloats}'
-}
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
