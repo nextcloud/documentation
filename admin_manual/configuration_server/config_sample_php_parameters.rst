@@ -1,3 +1,4 @@
+=====================
 Config.php Parameters
 =====================
 ownCloud uses the ``config/config.php`` file to control server operations.
@@ -6,14 +7,13 @@ ownCloud. This document provides a more detailed reference. Many options are
 configurable on your Admin page, so it is usually not necessary to edit
 ``config/config.php``.
 
-ownCloud provides a feature of loading config parameter from multiple files.
-You can add arbitrary files ending with `.config.php` in the `config/` directory
-and all parameter from these files will be loaded. In this way you can specify
-common attributes like the email setup in a file called `email.config.php` that
-contains only the email related parameters. This enables an easy deployment of
-config parameters. Another advantage is, that those parameters can't be
-overwritten by ownCloud. Also the values in those files overwrite the values of
-`config.php`.
+ownCloud supports loading configuration parameters from multiple files.
+You can add arbitrary files ending with :file:`.config.php` in the :file:`config/`
+directory, for example you could place your email server configuration
+in :file:`email.config.php`. This allows you to easily create and manage
+custom configurations, or to divide a large complex configuration file 
+into a set of smaller files. These custom files are not overwritten by 
+ownCloud, and the values in these files take precedence over :file:`config.php`.
 
 .. Generated content below. Don't change this.
 .. DEFAULT_SECTION_START
