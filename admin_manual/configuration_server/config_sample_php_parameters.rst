@@ -1185,15 +1185,15 @@ Set to -1 for no limit
 
 	'filelocking.enabled' => false,
 
-Enables the EXPERIMENTAL file locking.
+Enables transactional file locking.
 
-This is disabled by default as it is experimental.
+This is disabled by default as it is still beta.
 
 Prevents concurrent processes to access the same files
 at the same time. Can help prevent side effects that would
 be caused by concurrent operations.
 
-WARNING: EXPERIMENTAL
+WARNING: BETA quality
 
 ::
 
