@@ -199,8 +199,22 @@ keys after upgrading your ownCloud server::
 File Operations
 ---------------
 
-The ``files:scan`` command scans for new files for the file cache, and isn't 
-intended to be run manually.
+The ``files:scan`` command scans for new files and updates the file cache. You 
+may rescan all files, per-user, a space-delimited list of users, and limit the 
+search path::
+
+ $ sudo -u www-data php occ  files:scan --help
+   Usage:
+   files:scan [-p|--path="..."] [-q|--quiet] [--all] [user_id1] ... [user_idN]
+
+ Arguments:
+   user_id               will rescan all files of the given user(s)
+
+ Options:
+   --path (-p)           limit rescan to this path, eg. 
+   --path="/alice/files/Music", the user_id is determined by the path and the 
+   user_id parameter and --all are ignored
+   --all                 will rescan all files of all known users
 
 ``files:cleanup`` tidies up the server's file cache by deleting all file 
 entries that have no matching entries in the storage table.
