@@ -15,7 +15,8 @@ Prerequisites
 * An iOS developer account on 
   `Developer.Apple.com/ios <https://developer.apple.com/ios/>`_, 
   which costs $99 per year. Or an Enterprise account for $299/yr. The 
-  developer account limits you to testing on 100 devices, which must be 
+  developer account limits you to testing on 100 devices of each type (Apple TV,
+  Apple Watch, iPad, iPhone, iPod Touch) which must be 
   registered in your account. The Enterprise account allows testing on 
   unlimited, unregistered devices.
 * An ownCloud Enterprise Subscription, with the ownBrander app enabled on 
