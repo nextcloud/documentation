@@ -203,7 +203,7 @@ The ``files:scan`` command scans for new files and updates the file cache. You
 may rescan all files, per-user, a space-delimited list of users, and limit the 
 search path::
 
- $ sudo -u www-data php owncloud/occ  files:scan --help
+ $ sudo -u www-data php occ  files:scan --help
    Usage:
    files:scan [-p|--path="..."] [-q|--quiet] [--all] [user_id1] ... [user_idN]
 
