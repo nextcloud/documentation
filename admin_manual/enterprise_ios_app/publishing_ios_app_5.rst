@@ -54,7 +54,6 @@ and click **Add Another**. On the following screen select **Ad Hoc** and click
 **Continue**.
 
 .. figure:: ../images/cert-35.png
-   :scale: 80%
   
 This time select the Select the **.DocumentProvider** app ID and click 
 **Continue**.
@@ -65,20 +64,17 @@ Select the certificate that you created at the beginning of this process and
 click **Continue**.
 
 .. figure:: ../images/cert-43.png
-   :scale: 80%
   
 Select the devices that you want to install and test your app on, then click 
 **Continue**. These must be the same devices you selected for the first 
-provisioning profile, and they will be selected by default.
+provisioning profile.
 
 .. figure:: ../images/cert-39.png
-   :scale: 80%
    
-Give this provisioning profile the same **bundleID** as your first profile 
+Give this provisioning profile the same name as your first profile, 
 plus **.DocumentProvider** and click **Generate**.   
 
 .. figure:: ../images/cert-44.png
-   :scale: 80%
   
 Just like the first provisioning profile, download it to your Mac computer, and 
 then double-click to install it in Xcode.
@@ -91,7 +87,6 @@ and click **Add Another**. On the following screen select **Ad Hoc** and click
 **Continue**.
 
 .. figure:: ../images/cert-35.png
-   :scale: 80%
 
 This time select the Select the **.DocumentProviderFileProvider** app ID and 
 click **Continue**.
@@ -102,26 +97,25 @@ Select the certificate that you created at the beginning of this process and
 click **Continue**.
 
 .. figure:: ../images/cert-43.png
-   :scale: 80%
+
+Select the devices that you want to install and test your app on, then click 
+**Continue**. These must be the same devices you selected for the first 
+provisioning profile.
+
+.. figure:: ../images/cert-39.png
    
-Give this provisioning profile the same **bundleID** as your first profile 
+Give this provisioning profile the same name as your first profile 
 plus **.DocumentProviderFileProvider** and click **Generate**. There is a 
 50-character limit, but don't worry about counting characters because it will 
 be automatically truncated if you go over.  
 
 .. figure:: ../images/cert-47.png
-   :scale: 80%
       
 Download it to your Mac computer, and then double-click to install it in Xcode. 
-You should now see all of your provisioning profiles in your Download folder:
-
-.. figure:: ../images/cert-51.png
-   :scale: 80%
-   
-And listed in your "iOS Provisioning Profiles".
+You should now see all of your provisioning profiles listed in your "iOS 
+Provisioning Profiles".
 
 .. figure:: ../images/cert-52.png
-   :scale: 80%
 
 You have one more certificate to create, and that is your P12 certificate.   
   
