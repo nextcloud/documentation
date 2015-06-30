@@ -49,7 +49,7 @@ A default set of security and privacy HTTP headers have been added to the
 ownCloud ``.htaccess`` file, and ownCloud administrators may now customize which 
 headers are sent.
 
-The persistent file-based cache for LDAP integration has been dropped and 
+The persistent file-based cache (e.g. used by LDAP integration) has been dropped and 
 replaced with a memory-only cache, which must be explicitly configured. See 
 :doc:`configuration_user/user_auth_ldap`. Memory cache configuration for the 
 ownCloud server is no longer automatic, requiring configuration in 
