@@ -26,7 +26,7 @@ The LDAP application supports:
   port number
 * Read-only access to your LDAP (no edit or delete of users on your LDAP) 
 
-.. Note:: The LDAP app is not compatible with the ``WebDAV user backend`` app. 
+.. Note:: The LDAP app is not compatible with the ``User backend using remote HTTP servers`` app. 
    You cannot use both of them at the same time. 
 
 Configuration
