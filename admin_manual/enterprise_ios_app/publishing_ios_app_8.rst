@@ -3,7 +3,8 @@ Testing Your New Branded iOS App
 ================================
 
 You'll distribute the file with the :file:`.ipa` extension, like our example 
-:file:`Acme iOS App-3.4.201.ipa`, from your `<https://customer.owncloud.com>`_ 
+:file:`MyBiz iOS App-3.4.201.ipa`, from your 
+`<https://customer.owncloud.com/owncloud>`_ 
 account to your beta testers. To do this you'll need a Mac computer, an iPhone 
 or iPad registered in your Apple developer account, and the iTunes account 
 associated with your Apple developer account.

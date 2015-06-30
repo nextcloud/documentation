@@ -2,13 +2,13 @@
 Building Your iOS App With ownBrander
 =====================================
 
-At last you have arrived to the point where you can actually build your 
-branded iOS app. Log into your account on `Customer.owncloud.com 
+At long last you have arrived at the point where you can actually build your 
+branded iOS app. Log into your account on `Customer.owncloud.com/owncloud 
 <https://customer.owncloud.com/owncloud/>`_ and open the ownBrander app.
 
 .. figure:: ../images/ownbrander-1.png
 
-If you don't see the ownBrander app, open a support request (Open Case 
+If you don't see the ownBrander app, open a support request (**Open Case** 
 button).
 
 Your first ownBrander task is to review the iOS page on ownBrander for your 
@@ -71,13 +71,11 @@ into the app. The ownBuilder app tells you exactly which images you need, and
 their required size. Click the example images on the right to enlarge them.
 
 .. figure:: ../images/ownbrander-14.png
-   :scale: 70%
    
 You may enter a custom **User agent**, which is useful for traffic analysis and 
 whitelisting your app.
    
 .. figure:: ../images/ownbrander-22.png
-   :scale: 70%
 
 Check **Recommend** to open a Twitter, Facebook, and Email recommendation 
 configurator.
