@@ -11,7 +11,7 @@ user.
 
 .. Note:: The PHP LDAP module is required; this is supplied by ``php5-ldap`` on 
    Debian/Ubuntu, and ``php-ldap`` on CentOS/Red Hat/Fedora. PHP 5.4+ is 
-   required in ownCloud 8.
+   required in ownCloud 8.1.
 
 The LDAP application supports:
 
@@ -463,23 +463,12 @@ Testing the configuration
 The **Test Configuration** button checks the values as currently given in the 
 input fields. You do not need to save before testing. By clicking on the 
 button, ownCloud will try to bind to the ownCloud server using the
-settings currently given in the input fields. The response will look like this:
+settings currently given in the input fields. If the binding fails you'll see a 
+yellow banner with the error message "The configuration is invalid. Please have 
+a look at the logs for further details." 
 
-.. figure:: ../images/ldap-settings-invalid-oc45.png
-
-   Failure
-
-In case the configuration fails, you can see details in ownCloud's log, which
-is in the data directory and called **owncloud.log** or on the bottom the
-**Settings -- Admin page**. You must refresh the Admin page to see the new log 
-entries.
-
-.. figure:: ../images/ldap-settings-valid-oc45.png
-
-   Success
-
-In this case, Save the settings. You can check if the users and groups are
-fetched correctly on the Users page.
+When the configuration test reports success, save your settings and check if the 
+users and groups are fetched correctly on the Users page.
 
 ownCloud Avatar integration
 ---------------------------
@@ -580,7 +569,8 @@ Caching
 The LDAP cache has changed in ownCloud 8.1. There is no more file cache, but 
 only a memory cache, and you must install and configure the memory cache. The 
 simplest memory cache to use is APCu. This is supplied by the ``php5-apcu`` 
-package on Debian/Ubuntu/Mint, and by ``php-pecl-apcu``on Red Hat/CentOS/Fedora.
+package on Debian/Ubuntu/Mint, and by ``php-pecl-apcu`` on Red 
+Hat/CentOS/Fedora.
 
 After installing APCu you must modify ``config.php`` to select APCu as the 
 ownCloud cache::
