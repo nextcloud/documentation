@@ -80,21 +80,6 @@ restore your files if you lose your login password.
 
 .. figure:: ../images/encryption3.png
 
-Removing Encryption
--------------------
-
-If your ownCloud administrator elects to disable the Encryption app, you will 
-be prompted to go to your Personal page and enter your password on the 
-Encryption form to decrypt your files.
-
-.. figure:: ../images/encryption4.png
-
-If your files decrypt successfully, you can click the ``Delete encryption 
-keys`` button. There is no reason to save them after disabling decryption, 
-because if encryption is enabled again you'll generate a new set of keys. Your 
-keys are preserved in case something goes wrong with the decryption and you 
-need your keys to access your files.
-
 Files Not Encrypted
 -------------------
 
