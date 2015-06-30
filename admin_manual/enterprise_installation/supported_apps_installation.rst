@@ -54,10 +54,10 @@ Text Editor (files_texteditor)
 
 Versions (files_versions)
 
-WebDAV user backend (user_webdavauth)
+User backend using remote HTTP servers (user_webdavauth)
 
 Windows Network Drive (windows_network_drive)
 
-.. note::3rd party and unsupported apps must be disabled before performing a 
+.. note:: 3rd party and unsupported apps must be disabled before performing a 
    system upgrade. Then install the upgraded versions, and after the 
    upgrade is complete re-enable them.
