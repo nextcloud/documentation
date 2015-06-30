@@ -5,6 +5,8 @@ What's New for Admins in ownCloud 8.1
 ownCloud Server and Enterprise Subscription 8.1 are shipping with a batch of 
 improvements and new features, including:
 
+* Improved performance, with faster file transfers, much faster file deletion, improved scalability   through improved handling of parallel requests, and up to 50% more users on each ownCloud server    instance. 
+* Better file locking
 * Updated encryption with support for multiple encryption backends and 
   migration tools for 8.0 -> 8.1
 * Improved LDAP configuration wizard
