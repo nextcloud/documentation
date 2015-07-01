@@ -417,6 +417,21 @@ When ORA-56600 occurs (Oracle Bug 8467564) set this php.ini setting:
 
 .. _oracle forum discussion: https://community.oracle.com/message/3468020#3468020
 
+
+*****************
+Scalability notes
+*****************
+
+When multiple installations are an option due to geographical or task related separation, using the Federated Cloud Sharing functionality to run separate ownCloud instances which link to each other can be helpful when scaling to hundreds of thousands of users. See :doc:`../configuration_files/federated_cloud_sharing_configuration`.
+
+In general, scalability of ownCloud goes up significantly in each release. For example, ownCloud 8.1 can sustain over 50% more users on the same hardware as ownCloud 8.0 could. If the ability to have many users on a single ownCloud server is an important consideration, use the latest ownCloud Server and client versions.
+
+Find more details and tips on deploying large ownCloud installations in :doc:`../operations/scaling_multiple_machines`, the `ownCloud whitepapers`_ on owncloud.com and the `ownCloud FAQ`_.
+
+.. _ownCloud whitepapers: https://owncloud.com/whitepapers
+
+.. _ownCloud FAQ: https://owncloud.org/faq/#scaling
+
 *******************************************************************
 Nginx: caching ownCloud gallery thumbnails with fastcgi_cache_purge
 *******************************************************************
