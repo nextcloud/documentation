@@ -3,7 +3,7 @@ Testing Your New Branded iOS App
 ================================
 
 You'll distribute the file with the :file:`.ipa` extension, like our example 
-:file:`MyBiz iOS App-3.4.201.ipa`, from your 
+:file:`MyBiz iOS App-3.4.211.ipa`, from your 
 `<https://customer.owncloud.com/owncloud>`_ 
 account to your beta testers. To do this you'll need a Mac computer, an iPhone 
 or iPad registered in your Apple developer account, and the iTunes account 
@@ -22,7 +22,8 @@ associated with your Apple developer account.
 Your other testers can now install and test your app on their registered iPhones 
 and iPads just like any other app from iTunes. 
 
-.. Note:: If you have the Enterprise Apple developer account, there is no limit on the number of testing devices, and they do not have to be registered.
+.. Note:: If you have the Enterprise Apple developer account, there is no limit 
+   on the number of testing devices, and they do not have to be registered.
 
 Getting Crash Reports From Testers
 ----------------------------------

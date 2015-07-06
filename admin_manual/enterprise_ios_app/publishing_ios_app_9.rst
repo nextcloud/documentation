@@ -13,15 +13,30 @@ same computer that you are using to upload your app to iTunes.
 
 Download your :file:`xcarchive.zip` file from your account on 
 `<https://customer.owncloud.com>`_. Your friendly Mac will automatically unpack 
-it and change the name to something like Owncloud iOs Client 29-05-15 
-13.35.xcarchive. Double-click on this file to automatically install it into 
-Xcode. Go to Xcode and you will see it in the Archives listing.
+it and change the name to something like :file:`Owncloud iOs Client 02-07-15 
+10.30.xcarchive`. Double-click on this file to automatically install it into 
+Xcode. Go to Xcode and you will see it in the Archives listing (**Window > 
+Organizer**).
 
-.. .. figure:: ../images/ios-publish-2.png
+.. figure:: ../images/ios-publish-2.png
 
-Click **Submit to App Store**. If you have not already entered your 
-Developer.apple.com login in Xcode you will be prompted to do it now. Click the 
-**Add** button.
+On the right sidebar of the Archives screen you'll see a big blue button 
+labeled **Submit to App Store**. Click this button.
+
+.. figure:: ../images/ios-publish-7.png
+
+Select the appropriate Development Team for your app, which if you have only 
+one will be easy.
+
+.. figure:: ../images/ios-publish-8.png
+
+On the next screen click the blue **Submit** button. You'll see some messages 
+aobut validating and preparing your achive, and finally, uploading to iTunes.
+
+.. figure:: ../images/ios-publish-9.png
+
+If you have not already entered your Developer.apple.com login in Xcode you will 
+be prompted to do it now. Click the **Add** button.
 
 .. .. figure:: ../images/ios-publish-3.png
 
@@ -45,6 +60,8 @@ branded iOS app.
 
 --TODO final steps & images--
 
+
+FIRST set up itunes, THEN upload app
 
 
 
