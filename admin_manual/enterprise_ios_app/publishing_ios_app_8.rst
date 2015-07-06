@@ -24,6 +24,8 @@ and iPads just like any other app from iTunes. (Note that if you have an
 Enterprise account you do not need to register any devices, and your testers 
 may use any iPhone or iPad to test your app.)
 
+.. Note:: If you have the Enterprise Apple developer account, there is no limit on the number of testing devices, and they do not have to be registered.
+
 Getting Crash Reports From Testers
 ----------------------------------
 
