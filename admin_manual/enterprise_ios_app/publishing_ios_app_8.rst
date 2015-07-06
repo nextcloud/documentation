@@ -20,9 +20,7 @@ associated with your Apple developer account.
    installs your app on your device.
 
 Your other testers can now install and test your app on their registered iPhones 
-and iPads just like any other app from iTunes. (Note that if you have an 
-Enterprise account you do not need to register any devices, and your testers 
-may use any iPhone or iPad to test your app.)
+and iPads just like any other app from iTunes. 
 
 .. Note:: If you have the Enterprise Apple developer account, there is no limit on the number of testing devices, and they do not have to be registered.
 
