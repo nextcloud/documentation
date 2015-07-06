@@ -53,8 +53,8 @@ The persistent file-based cache (e.g. used by LDAP integration) has been dropped
 replaced with a memory-only cache, which must be explicitly configured. See 
 :doc:`configuration_user/user_auth_ldap`. Memory cache configuration for the 
 ownCloud server is no longer automatic, requiring configuration in 
-``config.php```` with the keys memcache.local`` and/or 
-``memcache.distributed``; see :ref:`caching`. 
+``config.php`` with the keys ``memcache.local`` and/or ``memcache.distributed``;
+see :ref:`caching`. 
 
 The OC_User_HTTP backend has been removed. Administrators are encouraged to use 
 the ``user_webdavauth`` application instead.
