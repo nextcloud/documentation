@@ -93,6 +93,7 @@ Nginx Configuration
      fastcgi_param PATH_INFO $fastcgi_path_info;
      fastcgi_param HTTPS on;
      fastcgi_pass php-handler;
+     fastcgi_intercept_errors on;
      }
 
      # Optional: set long EXPIRES header on static assets
