@@ -75,6 +75,8 @@ Due to various technical issues, by default desktop sync clients older than
 configurable via the ``minimum.supported.desktop.version`` switch in 
 ``config.php``.
 
+Previews are now generated at a maximum size of 2048 x 2048 pixels. This is configurable via the ``preview_max_x`` and ``preview_max_y``switches in ``config.php``.
+
 The ownCloud 8 server is not supported on any version of Windows.
 
 Enterprise 8.1 Only
