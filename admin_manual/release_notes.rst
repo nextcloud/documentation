@@ -66,7 +66,10 @@ requests.
 When you upgrade from ownCloud 8.0, with encryption enabled, to 8.1, you must 
 enable the new encryption backend and migrate your encryption keys. See 
 :doc:`configuration_files/encryption_configuration`
-  
+
+Encryption can no longer be disabled in ownCloud 8.1. It is planned to re-add
+this feature to the command line client for a future release.
+
 Due to various technical issues, by default desktop sync clients older than 
 1.7 are not allowed to connect and sync with the ownCloud server. This is 
 configurable via the ``minimum.supported.desktop.version`` switch in 
