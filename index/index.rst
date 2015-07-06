@@ -11,16 +11,17 @@ Installer to install it on shared Web hosting, try some prefab cloud images,
 or sign up for hosted ownCloud services. See the `Get Started 
 <https://owncloud.org/install/>`_ page for more information.
 
------------------------------
-Additional ownCloud Resources
------------------------------
+.. rework this section
+.. -----------------------------
+.. Additional ownCloud Resources
+.. -----------------------------
 
-* `Howto, demo, news, and Webinar videos
-  <https://doc.owncloud.org/server/8.0/admin_manual/videos/index.html>`_
-* `What's New in ownCloud 8 
-  <https://owncloud.org/eight>`_ Video introduction to ownCloud 8.
-* `Where to get help 
-  <https://owncloud.org/support/>`_ when the documentation is not enough.
+.. * `Howto, demo, news, and Webinar videos
+..   <https://doc.owncloud.org/server/8.0/admin_manual/videos/index.html>`_
+.. * `What's New in ownCloud 8 
+..  <https://owncloud.org/eight>`_ Video introduction to ownCloud 8.
+.. * `Where to get help 
+..  <https://owncloud.org/support/>`_ when the documentation is not enough.
   
 ------------------------------------------------
 Reporting Documentation Bugs & How to Contribute
@@ -33,7 +34,7 @@ reports and contributions. Please see :doc:`howto_contribute` for instructions.
 ownCloud 8.1
 ------------
 
-This documents the *development* version of ownCloud.
+This documents the *latest production* version of ownCloud.
 
 * `User Manual <https://doc.owncloud.org/server/8.1/user_manual/>`_ (`Download 
   PDF <https://doc.owncloud.org/server/8.1/ownCloudUserManual.pdf>`_)
@@ -48,8 +49,8 @@ This documents the *development* version of ownCloud.
 ownCloud 8.0
 ------------
 
-This documents *latest* version of ownCloud, Server and Enterprise Subscription, 
-suitable for production use.
+This documents the *previous production* version of ownCloud, Server and 
+Enterprise Subscription.
 
 * `User Manual <https://doc.owncloud.org/server/8.0/user_manual/>`_ (`Download 
   PDF <https://doc.owncloud.org/server/8.0/ownCloudUserManual.pdf>`_)
@@ -64,7 +65,7 @@ suitable for production use.
 ownCloud Community Edition 7.0
 ------------------------------
 
-This documents the *previous* ownCloud release, suitable for production use.
+This documents the ownCloud 7.0 release, suitable for production use.
 
 * `User Manual <https://doc.owncloud.org/server/7.0/user_manual/>`_ (`Download 
   PDF <https://doc.owncloud.org/server/7.0/ownCloudUserManual.pdf>`_)
@@ -93,7 +94,8 @@ The *latest* ownCloud desktop sync client release, suitable for production use.
 ownCloud Desktop Client 1.7
 ---------------------------
 
-The *previous* ownCloud desktop sync client release, suitable for production use.
+The *previous* ownCloud desktop sync client release, suitable for production 
+use.
 
 * `ownCloud Desktop Client Manual <https://doc.owncloud.org/desktop/1.7/>`_ 
   (`Download PDF 
