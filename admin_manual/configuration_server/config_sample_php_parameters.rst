@@ -698,8 +698,6 @@ Options for the Apps folder, Apps store, and App code checker.
 
 When enabled, admins may install apps from the ownCloud app store.
 
-The app store is disabled by default for ownCloud Enterprise Edition
-
 ::
 
 	'appstoreurl' => 'https://api.owncloud.com/v1',
@@ -924,63 +922,16 @@ SSL
 
 Extra SSL options to be used for configuration.
 
-Miscellaneous
--------------
-
-
-::
-
-	'blacklisted_files' => array('.htaccess'),
-
-Blacklist a specific file or files and disallow the upload of files
-with this name. ``.htaccess`` is blocked by default.
-
-WARNING: USE THIS ONLY IF YOU KNOW WHAT YOU ARE DOING.
-
-::
-
-	'share_folder' => '/',
-
-Define a default folder for shared files and folders other than root.
-
-::
-
-	'theme' => '',
-
-If you are applying a theme to ownCloud, enter the name of the theme here.
-
-The default location for themes is ``owncloud/themes/``.
-
-::
-
-	'cipher' => 'AES-256-CFB',
-
-The default cipher for encrypting files. Currently AES-128-CFB and
-AES-256-CFB are supported.
-
-::
-
-	'minimum.supported.desktop.version' => '1.7.0',
-
-The minimum ownCloud desktop client version that will be allowed to sync with
-this server instance. All connections made from earlier clients will be denied
-by the server. Defaults to the minimum officially supported ownCloud version at
-the time of release of this server version.
-
-When changing this, note that older unsupported versions of the ownCloud desktop
-client may not function as expected, and could lead to permanent data loss for
-clients or other unexpected results.
-
 Memory caching backend configuration
 ------------------------------------
 
 Available cache backends:
-- \OC\Memcache\APC        Alternative PHP Cache backend
-- \OC\Memcache\APCu       APC user backend
-- \OC\Memcache\ArrayCache In-memory array-based backend (not recommended)
-- \OC\Memcache\Memcached  Memcached backend
-- \OC\Memcache\Redis      Redis backend
-- \OC\Memcache\XCache     XCache backend
+* \OC\Memcache\APC        Alternative PHP Cache backend
+* \OC\Memcache\APCu       APC user backend
+* \OC\Memcache\ArrayCache In-memory array-based backend (not recommended)
+* \OC\Memcache\Memcached  Memcached backend
+* \OC\Memcache\Redis      Redis backend
+* \OC\Memcache\XCache     XCache backend
 
 
 ::
@@ -1029,6 +980,116 @@ Location of the cache folder, defaults to ``data/$user/cache`` where
 ``$user`` is the current user. When specified, the format will change to
 ``$cache_path/$user`` where ``$cache_path`` is the configured cache directory
 and ``$user`` is the user.
+
+Using Object Store with ownCloud
+--------------------------------
+
+
+::
+
+	'objectstore' => array(
+		'class' => 'OC\\Files\\ObjectStore\\Swift',
+		'arguments' => array(
+			// trystack will user your facebook id as the user name
+			'username' => 'facebook100000123456789',
+			// in the trystack dashboard go to user -> settings -> API Password to
+			// generate a password
+			'password' => 'Secr3tPaSSWoRdt7',
+			// must already exist in the objectstore, name can be different
+			'container' => 'owncloud',
+			// create the container if it does not exist. default is false
+			'autocreate' => true,
+			// required, dev-/trystack defaults to 'RegionOne'
+			'region' => 'RegionOne',
+			// The Identity / Keystone endpoint
+			'url' => 'http://8.21.28.222:5000/v2.0',
+			// required on dev-/trystack
+			'tenantName' => 'facebook100000123456789',
+			// dev-/trystack uses swift by default, the lib defaults to 'cloudFiles'
+			// if omitted
+			'serviceName' => 'swift',
+		),
+	),
+
+This example shows how to configure ownCloud to store all files in a
+swift object storage.
+
+It is important to note that ownCloud in object store mode will expect
+exclusive access to the object store container because it only stores the
+binary data for each file. The metadata is currently kept in the local
+database for performance reasons.
+
+WARNING: The current implementation is incompatible with any app that uses
+direct file IO and circumvents our virtual filesystem. That includes
+Encryption and Gallery. Gallery will store thumbnails directly in the
+filesystem and encryption will cause severe overhead because key files need
+to be fetched in addition to any requested file.
+
+One way to test is applying for a trystack account at http://trystack.org/
+
+::
+
+	'supportedDatabases' => array(
+		'sqlite',
+		'mysql',
+		'pgsql',
+		'oci',
+	),
+
+Database types that are supported for installation.
+
+Available:
+	- sqlite (SQLite3 - Community Edition Only)
+	- mysql (MySQL)
+	- pgsql (PostgreSQL)
+	- oci (Oracle - Enterprise Edition Only)
+
+All other config options
+------------------------
+
+
+::
+
+	'blacklisted_files' => array('.htaccess'),
+
+Blacklist a specific file or files and disallow the upload of files
+with this name. ``.htaccess`` is blocked by default.
+
+WARNING: USE THIS ONLY IF YOU KNOW WHAT YOU ARE DOING.
+
+::
+
+	'share_folder' => '/',
+
+Define a default folder for shared files and folders other than root.
+
+::
+
+	'theme' => '',
+
+If you are applying a theme to ownCloud, enter the name of the theme here.
+
+The default location for themes is ``owncloud/themes/``.
+
+::
+
+	'cipher' => 'AES-256-CFB',
+
+The default cipher for encrypting files. Currently AES-128-CFB and
+AES-256-CFB are supported.
+
+::
+
+	'minimum.supported.desktop.version' => '1.7.0',
+
+The minimum ownCloud desktop client version that will be allowed to sync with
+this server instance. All connections made from earlier clients will be denied
+by the server. Defaults to the minimum officially supported ownCloud version at
+the time of release of this server version.
+
+When changing this, note that older unsupported versions of the ownCloud desktop
+client may not function as expected, and could lead to permanent data loss for
+clients or other unexpected results.
 
 ::
 
@@ -1088,69 +1149,6 @@ filesystem for all storage.
 
 ::
 
-	'objectstore' => array(
-		'class' => 'OC\\Files\\ObjectStore\\Swift',
-		'arguments' => array(
-			// trystack will user your facebook id as the user name
-			'username' => 'facebook100000123456789',
-			// in the trystack dashboard go to user -> settings -> API Password to
-			// generate a password
-			'password' => 'Secr3tPaSSWoRdt7',
-			// must already exist in the objectstore, name can be different
-			'container' => 'owncloud',
-			// create the container if it does not exist. default is false
-			'autocreate' => true,
-			// required, dev-/trystack defaults to 'RegionOne'
-			'region' => 'RegionOne',
-			// The Identity / Keystone endpoint
-			'url' => 'http://8.21.28.222:5000/v2.0',
-			// required on dev-/trystack
-			'tenantName' => 'facebook100000123456789',
-			// dev-/trystack uses swift by default, the lib defaults to 'cloudFiles'
-			// if omitted
-			'serviceName' => 'swift',
-		),
-	),
-
-The example below shows how to configure ownCloud to store all files in a
-swift object storage.
-
-It is important to note that ownCloud in object store mode will expect
-exclusive access to the object store container because it only stores the
-binary data for each file. The metadata is currently kept in the local
-database for performance reasons.
-
-WARNING: The current implementation is incompatible with any app that uses
-direct file IO and circumvents our virtual filesystem. That includes
-Encryption and Gallery. Gallery will store thumbnails directly in the
-filesystem and encryption will cause severe overhead because key files need
-to be fetched in addition to any requested file.
-
-One way to test is applying for a trystack account at http://trystack.org/
-
-::
-
-	'supportedDatabases' => array(
-		'sqlite',
-		'mysql',
-		'pgsql',
-		'oci',
-	),
-
-Database types that are supported for installation.
-
-Available:
-	- sqlite (SQLite3 - Community Edition Only)
-	- mysql (MySQL)
-	- pgsql (PostgreSQL)
-	- oci (Oracle - Enterprise Edition Only)
-
-All other config options
-------------------------
-
-
-::
-
 	'secret' => '',
 
 Secret used by ownCloud for various purposes, e.g. to encrypt data. If you
@@ -1191,7 +1189,9 @@ This is disabled by default as it is still beta.
 
 Prevents concurrent processes to access the same files
 at the same time. Can help prevent side effects that would
-be caused by concurrent operations.
+be caused by concurrent operations. Mainly relevant for
+very large installations with many users working with
+shared files.
 
 WARNING: BETA quality
 
@@ -1200,7 +1200,8 @@ WARNING: BETA quality
 	'memcache.locking' => '\\OC\\Memcache\\Redis',
 
 Memory caching backend for file locking
-Because most memcache backends can clean values without warning using redis is recommended
+Because most memcache backends can clean values without warning using redis
+is highly recommended to *avoid data loss*.
 
 ::
 
