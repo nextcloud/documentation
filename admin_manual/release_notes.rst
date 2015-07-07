@@ -49,6 +49,11 @@ A default set of security and privacy HTTP headers have been added to the
 ownCloud ``.htaccess`` file, and ownCloud administrators may now customize which 
 headers are sent.
 
+More strict SSL certificate checking improves security but can result in
+"cURL error 60: SSL certificate problem: unable to get local issuer certificate"
+errors with certain broken PHP versions. Update your PHP or contact your vendor
+if you receive these errors.
+
 The persistent file-based cache (e.g. used by LDAP integration) has been dropped and 
 replaced with a memory-only cache, which must be explicitly configured. See 
 :doc:`configuration_user/user_auth_ldap`. Memory cache configuration for the 
