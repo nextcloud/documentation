@@ -31,6 +31,21 @@ If you find an error or omission in any of the manuals, we welcome your bug
 reports and contributions. Please see :doc:`howto_contribute` for instructions.
 
 ------------
+ownCloud 8.2
+------------
+
+This documents the *development* version of ownCloud.
+
+* `User Manual <https://doc.owncloud.org/server/8.2/user_manual/>`_ (`Download 
+  PDF <https://doc.owncloud.org/server/8.2/ownCloudUserManual.pdf>`_)
+* `Administration Manual <https://doc.owncloud.org/server/8.2/admin_manual/>`_ 
+  (`Download PDF   
+  <https://doc.owncloud.org/server/8.2/ownCloudServerAdminManual.pdf>`_)
+* `Developer Manual <https://doc.owncloud.org/server/8.2/developer_manual/>`_ 
+  (`Download PDF 
+  <https://doc.owncloud.org/server/8.2/ownCloudDeveloperManual.pdf>`_)
+
+------------
 ownCloud 8.1
 ------------
 
