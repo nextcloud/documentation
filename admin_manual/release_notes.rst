@@ -51,8 +51,8 @@ headers are sent.
 
 More strict SSL certificate checking improves security but can result in
 "cURL error 60: SSL certificate problem: unable to get local issuer certificate"
-errors with certain broken PHP versions. Update your PHP or contact your vendor
-if you receive these errors.
+errors with certain broken PHP versions. Please verify your SSL setup, update your
+PHP or contact your vendor if you receive these errors.
 
 The persistent file-based cache (e.g. used by LDAP integration) has been dropped and 
 replaced with a memory-only cache, which must be explicitly configured. See 
