@@ -31,7 +31,9 @@ Supported Platforms
  
 Changes in 8.1
 --------------
-  
+
+The ownCloud 8 server is not supported on any version of Windows.  
+
 "Download from link" feature has been removed.
 
 The ``.htaccess`` and ``index.html`` files in the ``data/`` directory are now 
@@ -81,8 +83,6 @@ configurable via the ``minimum.supported.desktop.version`` switch in
 ``config.php``.
 
 Previews are now generated at a maximum size of 2048 x 2048 pixels. This is configurable via the ``preview_max_x`` and ``preview_max_y`` switches in ``config.php``.
-
-The ownCloud 8 server is not supported on any version of Windows.
 
 The 8.1.0 release has a minor bug which makes app updates fail at first try. Reload the apps page and try again, and the update will succeed.
 
