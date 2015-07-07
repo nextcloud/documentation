@@ -34,11 +34,11 @@ Changes in 8.1
 
 The ownCloud 8 server is not supported on any version of Windows.  
 
-"Download from link" feature has been removed.
-
 The ``.htaccess`` and ``index.html`` files in the ``data/`` directory are now 
 updated after every update. If you make any modifications to these files they 
 will be lost after updates.
+
+"Download from link" feature has been removed.
 
 The SabreDAV browser at ``/remote.php/webdav`` has been removed.
 
