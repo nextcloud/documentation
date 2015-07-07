@@ -8,6 +8,7 @@ There are number of pre-made virtual machine-based appliances:
 
 -  `SUSE Studio, ownCloud on openSuSE`_, runnable directly from an USB stick.
 -  `Amahi home server`_
+-  `ownCloud VM on Ubuntu 14.04 with MySQL and Apache`_, fully configured from start
 
 
 .. ownCloud on Hardware Appliances
@@ -23,6 +24,7 @@ There are number of pre-made virtual machine-based appliances:
 
 
 .. _Amahi home server: https://wiki.amahi.org/index.php/OwnCloud
+.. _ownCloud VM on Ubuntu 14.04 with MySQL and Apache: https://www.en0ch.se/pre-configured-owncloud-installaton/
 .. _ownCloud 7 on Raspberry Pi (Arch Linux) using Lighttpd: http://eiosifidis.blogspot.de/2014/07/install-owncloud-7-on-raspberry-pi-arch.html
 .. _OpenWrt Guide: http://wiki.openwrt.org/doc/howto/owncloud
 .. _SUSE Studio, ownCloud on openSuSE: http://susestudio.com/a/TadMax/owncloud-in-a-box
