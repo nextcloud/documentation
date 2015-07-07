@@ -84,9 +84,7 @@ Previews are now generated at a maximum size of 2048 x 2048 pixels. This is conf
 
 The ownCloud 8 server is not supported on any version of Windows.
 
-The 8.1.0 release has a minor bug which makes app updates fail at first try. Reload the apps page and trying again will work.
-
-again will succeed.
+The 8.1.0 release has a minor bug which makes app updates fail at first try. Reload the apps page and try again, and the update will succeed.
 
 Enterprise 8.1 Only
 -------------------
