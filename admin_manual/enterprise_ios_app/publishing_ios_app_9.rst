@@ -20,20 +20,43 @@ Organizer**).
 
 .. figure:: ../images/ios-publish-2.png
 
-On the right sidebar of the Archives screen you'll see a big blue button 
-labeled **Submit to App Store**. Click this button.
+Next, go back to the `Apple Developer Member Center 
+<https://developer.apple.com/membercenter/index.action>`_ to log into iTunes 
+Connect to set up your app storefront.
+
+.. figure:: ../images/ios-publish-3.png
+
+After logging in click the blue **My Apps** button. This takes you to your main 
+screen for managing your apps on iTunes. Click the plus button on the top left 
+to setup your new branded iOS app. 
+
+.. figure:: ../images/ios-publish-4.png
+
+This opens a screen where you will enter your app information. Make sure you 
+get it right the first time, because it is difficult to delete apps, and Apple 
+will not let you re-use your app name or SKU.
+
+* Enter any name you want for your app. This is the name that will appear in 
+  your App Store listing.
+* Choose your primary language.
+* Select the bundle ID from the drop-down selector.
+* Enter your app version number, which should match the version number as it 
+  appears in your Xcode organizer.
+* The SKU is unique ID for your app, and is anything you want.
+
+Then click the **Create** button.
+
+.. figure:: ../images/ios-publish-5.png
+
+Now go back to your Xcode organizer to upload your app; click the blue **Submit 
+to App Store** button. 
+
+.. figure:: ../images/ios-publish-6.png
+
+This takes a few minutes as it verifies your bundle ID and certificates, and 
+then you will see an upload status.
 
 .. figure:: ../images/ios-publish-7.png
-
-Select the appropriate Development Team for your app, which if you have only 
-one will be easy.
-
-.. figure:: ../images/ios-publish-8.png
-
-On the next screen click the blue **Submit** button. You'll see some messages 
-aobut validating and preparing your achive, and finally, uploading to iTunes.
-
-.. figure:: ../images/ios-publish-9.png
 
 If you have not already entered your Developer.apple.com login in Xcode you will 
 be prompted to do it now. Click the **Add** button.
