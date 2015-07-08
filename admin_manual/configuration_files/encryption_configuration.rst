@@ -237,11 +237,11 @@ strongly recommend using the ``occ`` command; the **Start Migration** button is
 for admins who do not have access to the console, for example installations on 
 shared hosting. This example is for Debian/Ubuntu Linux::
 
- $ sudo -u www-data php occ encryption:migrate-keys
+ $ sudo -u www-data php occ encryption:migrate
  
 This example is for Red Hat/CentOS/Fedora Linux::
 
- $ sudo -u apache php occ encryption:migrate-keys 
+ $ sudo -u apache php occ encryption:migrate
  
 You must run ``occ`` as your HTTP user; see 
 :doc:`../configuration_server/occ_command`.
