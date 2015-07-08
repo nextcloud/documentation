@@ -85,7 +85,7 @@ Further Shibboleth specific configuration as defined in
 	# Configure the module for content.
 	#
 	# Shibboleth is disabled for the following location to allow non 
-	  shibboleth webdav access
+	# shibboleth webdav access
 	<Location ~ "/oc-shib/remote.php/nonshib-webdav">
 	  Satisfy Any
 	  Allow from all
@@ -94,15 +94,15 @@ Further Shibboleth specific configuration as defined in
 	</Location>
 
 	# Shibboleth is disabled for the following location to allow public link 
-	  sharing
+	# sharing
 	<Location ~ 
 	  "/oc-shib/(status.php$
+	  |index.php/s/
 	  |public.php$
 	  |cron.php$
 	  |core/img/
-	  |index.php/apps/files_sharing/publicpreview.png$
+	  |index.php/apps/files_sharing/ajax/publicpreview.php$
 	  |index.php/apps/files/ajax/upload.php$
-	  |index.php/core/ajax/translations.php$
 	  |apps/files/templates/fileexists.html$
 	  |index.php/apps/files/ajax/mimeicon.php$)">
 	  Satisfy Any
@@ -112,7 +112,7 @@ Further Shibboleth specific configuration as defined in
 	</Location>
 
 	# Shibboleth is disabled for the following location to allow public gallery 
-          sharing
+    # sharing
 	<Location ~ 
          "/oc-shib/(apps/gallery/templates/slideshow.html$
          |index.php/apps/gallery/ajax/getimages.php	
@@ -125,7 +125,7 @@ Further Shibboleth specific configuration as defined in
 	</Location>
 
 	# Shibboleth is disabled for the following location to allow public link 
-	  sharing
+	# sharing
 	<Location ~ "/oc-shib/.*\.css">
 	  Satisfy Any
 	  Allow from all
@@ -134,7 +134,7 @@ Further Shibboleth specific configuration as defined in
 	</Location>
 
 	# Shibboleth is disabled for the following location to allow public link 
-	  sharing
+	# sharing
 	<Location ~ "/oc-shib/.*\.js">
 	  Satisfy Any
 	  Allow from all
@@ -142,8 +142,17 @@ Further Shibboleth specific configuration as defined in
 	  Require all granted
 	</Location>
 
-	# Besides the exceptions above this location is now under control of 
-	  Shibboleth
+	# Shibboleth is disabled for the following location to allow public link
+	# sharing
+	<Location ~ "/oc-shib/.*\.woff ">
+	  Satisfy Any
+	  Allow from all
+	  AuthType None
+	  Require all granted
+	</Location>
+
+	# Besides the exceptions above this location is now under control of
+	# Shibboleth
 	<Location /oc-shib>
 	  AuthType shibboleth
 	  ShibRequireSession On
@@ -273,4 +282,3 @@ provided by the ownCloud support team.
     https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPApacheConfig
 .. _WebDAV and Shibboleth: 
     https://wiki.shibboleth.net/confluence/display/SHIB2/WebDAV
-    
