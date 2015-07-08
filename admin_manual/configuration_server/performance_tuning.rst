@@ -106,8 +106,8 @@ Configuration for more concurrent requests.
 	echo "1" > /proc/sys/net/ipv4/tcp_tw_reuse
 	echo "10" > /proc/sys/net/ipv4/tcp_fin_timeout
 
-	echo "65536" > /proc/sys/net/core/somaxconn
-	echo "65536" > /proc/sys/net/ipv4/tcp_max_syn_backlog
+	echo "65535" > /proc/sys/net/core/somaxconn
+	echo "65535" > /proc/sys/net/ipv4/tcp_max_syn_backlog
 	echo "262144" > /proc/sys/net/netfilter/nf_conntrack_max
 
 Check if the values have been set accordingly:
@@ -123,9 +123,9 @@ Check if the values have been set accordingly:
 	# cat /proc/sys/net/ipv4/tcp_fin_timeout
         10
 	# cat /proc/sys/net/core/somaxconn
-        65536
+        65535
 	# cat /proc/sys/net/ipv4/tcp_max_syn_backlog
-        65536
+        65535
 	# cat /proc/sys/net/netfilter/nf_conntrack_max
         262144
 
@@ -136,8 +136,8 @@ Next, persist the settings across reboots by adding them into ``/etc/sysctl.conf
 	net.ipv4.tcp_tw_reuse = 1
 	net.ipv4.tcp_fin_timeout = 10
 
-	net.core.somaxconn = 65536
-	net.ipv4.tcp_max_syn_backlog = 65536
+	net.core.somaxconn = 65535
+	net.ipv4.tcp_max_syn_backlog = 65535
 	net.netfilter.nf_conntrack_max = 262144
 
 Tuning Memory
