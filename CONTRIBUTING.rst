@@ -90,7 +90,7 @@ Writing Style
 -------------
 
 Documentation should be concise and to the point, maintaining a consistent
-style. Here is some advise on what to watch out for when contributing.
+style. Here is some advice on what to watch out for when contributing.
 
 **Know what you are writing about**
   While this sounds obvious, this poses a challenge to both novice and
@@ -192,14 +192,14 @@ style. Here is some advise on what to watch out for when contributing.
 
 **Provide examples**
   After providing a bit of theory, complex topics should always be accompanied
-  by a meaningful but concise examples. An example is the ideal starting point
+  by meaningful but concise examples. An example is the ideal starting point
   for further explanation.
 
 **Provide schematics**
   "One Picture is Worth Ten Thousand Words". The more complex the topic, the
   more people will appreciate being presented with the literal "big picture".
   Inkscape_ is a great tool for drawing and exporting schematics. It is a good
-  idea to export both PDF and PNG, since PDF will go better with inside PDF.
+  idea to export both PDF and PNG, since PDF will go better within PDF.
   Let Sphinx decide which format to use by writing ``Image:: MyImage.*``
 
 **Provide screenshots**
@@ -262,7 +262,7 @@ style. Here is some advise on what to watch out for when contributing.
 
 **Use title case sentences for headings**
   This means that headings should obey
-  to the following rules [3]_:
+  the following rules [3]_:
 
 1. Capitalize the first word of the title/heading and of any
    subtitle/subheading.
@@ -289,7 +289,7 @@ style. Here is some advise on what to watch out for when contributing.
 
 **Find a human reviewer**
   This can be any person within the community, or a person familiar with the topic.
-  Let them try to comprehend what you just wrote. If they don not get it, an average
+  Let them try to comprehend what you just wrote. If they do not get it, an average
   user most likely will not either. A reviewer will also spot grammar errors,
   which the spell checker can not usually catch.
 
