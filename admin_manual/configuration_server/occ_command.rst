@@ -29,6 +29,12 @@ The HTTP user is different on the various Linux distributions. See
 * The HTTP user and group in Arch Linux is http.
 * The HTTP user in openSUSE is wwwrun, and the HTTP group is www.   
 
+
+If your HTTP server is configured to use a different php version than the default (/usr/bin/php), occ should be run with the same version. Example: In CentOS 6.5 with SCL-PHP54 installed, the command looks like this::
+
+  $ sudo -u apache /opt/rh/php54/root/usr/bin/php /var/www/html/owncloud/occ ...
+
+
 Running it with no options lists all commands and options, like this example on 
 Ubuntu::
 
