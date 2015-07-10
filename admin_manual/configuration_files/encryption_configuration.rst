@@ -292,28 +292,22 @@ Share keys for files owned by the user (one key for the owner and one key for ea
 This is the new file structure for ownCloud 8.1:
 
 Private public share key:
- :file:`data/files_encryption/OC_DEFAULT_MODULE/pubShare_<public-share-key-id>.
- privateKey`
+ :file:`data/files_encryption/OC_DEFAULT_MODULE/pubShare_<public-share-key-id>.privateKey`
 
 Private recovery key: 
- :file:`data/files_encryption/OC_DEFAULT_MODULE/recovery_<recovery-key-id>.
- privateKey`
+ :file:`data/files_encryption/OC_DEFAULT_MODULE/recovery_<recovery-key-id>.privateKey`
 
 Public public share key: 
- :file:`data/files_encryption/OC_DEFAULT_MODULE/pubShare_<public-share-key-id>.
- publicKey`
+ :file:`data/files_encryption/OC_DEFAULT_MODULE/pubShare_<public-share-key-id>.publicKey`
 
 Public recovery key: 
- :file:`data/files_encryption/OC_DEFAULT_MODULE/recovery_<recovery-key-id>.
- publicKey`
+ :file:`data/files_encryption/OC_DEFAULT_MODULE/recovery_<recovery-key-id>.publicKey`
 
 File keys for system-wide mount points: 
- :file:`data/files_encryption/keys/<file_path>/<filename>/OC_DEFAULT_MODULE/ 
- fileKey`
+ :file:`data/files_encryption/keys/<file_path>/<filename>/OC_DEFAULT_MODULE/fileKey`
 
 Share keys for files on a system-wide mount point (one key for the owner and one key for each user with access to the file): 
- :file:`data/files_encryption/keys/<file_path>/<filename/OC_DEFAULT_MODULE/
- <user>.shareKey`
+ :file:`data/files_encryption/keys/<file_path>/<filename>/OC_DEFAULT_MODULE/<user>.shareKey`
 
 Users' private keys: 
  :file:`data/<user>/files_encryption/OC_DEFAULT_MODULE/<user>.privateKey`
@@ -322,12 +316,10 @@ Users' public keys:
  :file:`data/<user>/files_encryption/OC_DEFAULT_MODULE/<user>.publicKey`
 
 File keys for files owned by the user: 
- :file:`data/<user>/files_encryption/keys/<file_path>/<filename>/
- OC_DEFAULT_MODULE/fileKey`
+ :file:`data/<user>/files_encryption/keys/<file_path>/<filename>/OC_DEFAULT_MODULE/fileKey`
 
 Share keys for files owned by the user (one key for the owner and one key for each user with access to the file):
- :file:`data/<user>/files_encryption/keys/<file_path>/<filename/
- OC_DEFAULT_MODULE/<user> .shareKey`
+ :file:`data/<user>/files_encryption/keys/<file_path>/<filename>/OC_DEFAULT_MODULE/<user>.shareKey`
 
 
 
