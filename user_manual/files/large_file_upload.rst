@@ -15,6 +15,6 @@ set by your administrator):
 * Contact your administrator to request an increase in these variables
 
 * Refer to the section in the `Admin Documentation  
-  <https://doc.owncloud.org/server/8.0/admin_manual/configuration_files/
+  <https://doc.owncloud.org/server/8.2/admin_manual/configuration_files/
   big_file_upload_configuration.html>`_ that describes how to manage file 
   upload size limits.
