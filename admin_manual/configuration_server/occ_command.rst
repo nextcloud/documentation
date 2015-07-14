@@ -243,7 +243,7 @@ available options::
 
  $ sudo -u www-data php /var/www/owncloud/occ
  ownCloud is not installed - only a limited number of commands are available
- ownCloud version 8.1 RC1
+ ownCloud version 8.1.0
 
  Usage:
   [options] command [arguments]
@@ -272,7 +272,7 @@ available options::
   
 Display your ``maintenance:install`` options::
 
- $ sudo -u www-data php /var/www/owncloud/occ help maintenance:install
+ $ sudo -u www-data php occ help maintenance:install
  ownCloud is not installed - only a limited number of commands are available
  Usage:
   maintenance:install [--database="..."] [--database-name="..."] 
@@ -302,7 +302,8 @@ Display your ``maintenance:install`` options::
 
 This example completes the installation::
 
- $ sudo -u www-data php /var/www/owncloud/occ  maintenance:install --database 
+ $ cd /var/www/owncloud/
+ $ sudo -u www-data php occ maintenance:install --database 
  "mysql" --database-name "owncloud"  --database-user "root" --database-pass 
  "password" --admin-user "admin" --admin-pass "password" 
  ownCloud is not installed - only a limited number of commands are available

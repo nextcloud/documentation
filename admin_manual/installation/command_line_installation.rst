@@ -20,11 +20,16 @@ of running the graphical Installation Wizard.
 You must run ``occ`` as your HTTP user; see :ref:`http_user`. This example 
 shows how to complete your ownCloud installation with ``occ`` on Ubuntu Linux::
 
- $ sudo -u www-data php /var/www/owncloud/occ  maintenance:install --database 
+ $ cd /var/www/owncloud/
+ $ sudo -u www-data php occ  maintenance:install --database 
  "mysql" --database-name "owncloud"  --database-user "root" --database-pass 
  "password" --admin-user "admin" --admin-pass "password" 
  ownCloud is not installed - only a limited number of commands are available
  ownCloud was successfully installed
+ 
+Note that you must change to the root ownCloud directory, as in the example 
+above, to run ``occ  maintenance:install``, or the installation will fail with 
+a PHP fatal error message.
 
 Supported databases are::
 
