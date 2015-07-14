@@ -42,9 +42,7 @@ After installing Redis you must enter a simple configuration in your
        //'dbindex' => 0,
      ),
 
-The **Server status** section on your ownCloud Admin page indicates whether 
-<<<<<<< HEAD:admin_manual/configuration_files/files_locking_experimental.rst
-experimental file locking is enabled or disabled.
+The **Server status** section on your ownCloud Admin page indicates whether experimental file locking is enabled or disabled.
 
 .. figure:: ../images/transactional-locking-1.png
 
