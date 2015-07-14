@@ -2,7 +2,7 @@
 Transactional File Locking
 ==========================
 
-ownCloud's new experimental file locking mechanism operates differently than 
+ownCloud's new transactional file locking mechanism operates differently than 
 the old File Locking application, and will eventually replace it. If you elect 
 to use the new file locking mechanism make sure you disable the File Locking 
 app.
