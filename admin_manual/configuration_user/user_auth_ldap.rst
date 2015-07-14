@@ -584,7 +584,7 @@ improve login times set up a slave LDAP server to share the load.
 
 The Redis key-value cache and store is an excellent fast and robust cache, and 
 if you are using the new experimental file locking (see 
-:doc:`../configuration_files/files_locking_experimental`) then you must use 
+:doc:`../configuration_files/files_locking_transactional`) then you must use 
 Redis. Redis configuration looks like this::
 
  'filelocking.enabled' => 'true',

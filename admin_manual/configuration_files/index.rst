@@ -14,7 +14,7 @@ File Sharing and Management
     external_storage_configuration
     encryption_configuration
     files_locking_enabling
-    files_locking_experimental
+    files_locking_transactional
     federated_cloud_sharing_configuration
     previews_configuration
     serving_static_files_configuration

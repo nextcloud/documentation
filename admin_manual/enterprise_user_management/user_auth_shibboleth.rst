@@ -229,9 +229,10 @@ Status codes:
 * 100 - successful
 * 998 - user unknown
 
-Example
+Example:
 
 .. code-block:: bash
+
 	$ curl -X DELETE "https://cloud.example.com/ocs/v1.php/cloud/users/myself@testshib.org/non_shib_password" -u admin:admin 
 	<?xml version="1.0"?>
 	<ocs>
