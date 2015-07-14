@@ -62,7 +62,7 @@ Database connectors (pick at least one):
 Required for specific apps:
 
 * PHP module ldap (for LDAP integration)
-* smbclient (for SMB storage)
+* smbclient (external user authentication)
 * PHP module ftp (for FTP storage / external user authentication)
 * PHP module imap (for external user authentication)
 
