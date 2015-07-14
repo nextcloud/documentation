@@ -1,6 +1,6 @@
-=========================
-Experimental File Locking
-=========================
+==========================
+Transactional File Locking
+==========================
 
 ownCloud's new experimental file locking mechanism operates differently than 
 the old File Locking application, and will eventually replace it. If you elect 
@@ -33,7 +33,7 @@ After installing Redis you must enter a simple configuration in your
  'redis' => array(
 	'host' => 'localhost', 
 	// can also be a unix domain socket: 
-        '/tmp/redis.sock'
+        '/tmp/redis.sock',
 	'port' => 6379,
 	'timeout' => 0.0,
 	// Optional, if undefined SELECT will not run and will use Redis 
