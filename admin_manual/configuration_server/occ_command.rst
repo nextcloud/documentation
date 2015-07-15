@@ -643,15 +643,64 @@ authentication servers such as LDAP::
 Upgrade Command
 ---------------
 
+List all options, like this example on CentOS Linux::
+
+ $ sudo -u apache php occ upgrade -h
+ Usage:
+ upgrade [--skip-migration-test] [--dry-run] [--no-app-disable]
+
+ Options:
+ --skip-migration-test  skips the database schema migration simulation and 
+    update directly
+ --dry-run              only runs the database schema migration simulation, do 
+   not actually update
+ --no-app-disable       skips the disable of third party apps
+ --help (-h)            Display this help message.
+ --quiet (-q)           Do not output any message.
+ --verbose (-v|vv|vvv)  Increase the verbosity of messages: 1 for normal output, 
+   2 for more verbose output and 3 for debug.
+ --version (-V)         Display this application version.
+ --ansi                 Force ANSI output.
+ --no-ansi              Disable ANSI output.
+ --no-interaction (-n)  Do not ask any interactive question
+
 When you are performing an update or upgrade on your ownCloud server (see the 
 Maintenance section of this manual), it is better to use ``occ`` to perform the 
 database upgrade step, rather than the Web GUI, in order to avoid timeouts. PHP
 scripts invoked from the Web interface are limited to 3600 seconds. In larger 
 environments this may not be enough, leaving the system in an inconsistent 
 state. After performing all the preliminary steps (see 
-:doc:`../maintenance/upgrade`) use this command to upgrade your databases::
+:doc:`../maintenance/upgrade`) use this command to upgrade your databases, 
+like this example on CentOS Linux. Note how it details the steps::
 
  $ sudo -u www-data php occ upgrade
+ ownCloud or one of the apps require upgrade - only a limited number of 
+ commands are available                            
+ Turned on maintenance mode                                                      
+ Checked database schema update           
+ Checked database schema update for apps
+ Updated database      
+ Updating <gallery> ...                                                          
+ Updated <gallery> to 0.6.1               
+ Updating <activity> ...
+ Updated <activity> to 2.1.0            
+ Update successful
+ Turned off maintenance mode
+ 
+.. uncomment when 8.1.1 is released  
+.. If you enable verbosity you'll see even more details 
+.. of the upgrade process::
+.. ownCloud or one of the apps require upgrade - only a limited number of 
+.. commands are available
+.. Turned on maintenance mode
+.. Repair step: Repair MySQL database engine
+.. Repair info: Not a mysql database -> nothing to do
+.. Repair step: Repair MySQL collation
+.. Repair info: Not a mysql database -> nothing to no
+.. Repair step: Repair SQLite autoincrement
+.. [snip]
+.. Update successful
+.. Turned off maintenance mode
 
 Before completing the upgrade, ownCloud first runs a simulation by 
 copying all database tables to a temporary directory and then performing the 
