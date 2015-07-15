@@ -49,7 +49,9 @@ The ownCloud Main User Interface contains the following fields and functions:
   specified link.
 
 .. note:: You can also drag and drop files from your file manager into the 
-   ownCloud Files Application View to upload them to ownCloud.
+   ownCloud Files Application View to upload them to ownCloud. Currently, 
+   the only Web browsers that support drag-and-drop folders are Chrome and 
+   Chromium.
 
 * **Upload** button: Located next to the ``New`` button in the
   Navigation Bar, the ``Upload`` button opens a file picker for 
