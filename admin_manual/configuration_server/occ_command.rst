@@ -174,6 +174,88 @@ The other two commands are:
 
 See :doc:`../configuration_server/background_jobs_configuration` to learn more.
 
+Config Commands
+---------------
+
+The ``config`` commands can be used to configure the ownCloud server. It is
+possible to list all config values with one command::
+
+  $ sudo -u www-data php occ config:list
+
+By default passwords and other sensitive data is omitted from the report, so the
+output can be posted publicly (e.g. as part of a bug report). In order to
+generate a full backport of all config values the ``--private`` flag needs to be
+set::
+
+  $ sudo -u www-data php occ config:list --private
+
+The exported content can also be imported again to allow the fast set up of
+similar instances. The import command will only add/update values. Values that
+exist in the current configuration, but not in the one that is being imported
+are left untouched::
+
+  $ sudo -u www-data php occ config:import filename.json
+
+It is also possible to import remote files, by piping the input::
+
+  $ sudo -u www-data php occ config:import < local-backup.json
+
+.. note::
+
+  While it is possible to update/set/delete the versions and installation
+  statuses of apps and ownCloud itself, it is **not** recommended to do this
+  directly. Use the ``occ app:enable``, ``occ app:disable`` and ``occ update``
+  commands instead.
+
+Getting a single config value
++++++++++++++++++++++++++++++
+
+There are also commands to get the value of a single app or system config::
+
+  $ sudo -u www-data php occ config:system:get version
+  8.2.0.2
+
+  $ sudo -u www-data php occ config:app:get activity installed_version
+  2.1.0
+
+
+Setting a single config value
++++++++++++++++++++++++++++++
+
+There are also commands to get the value of a single app or system config::
+
+  $ sudo -u www-data php /occ config:system:set logtimezone --value="Europe/Berlin"
+  System config value logtimezone set to Europe/Berlin
+
+  $ sudo -u www-data php occ config:app:set files_sharing incoming_server2server_share_enabled --value="yes"
+  Config value incoming_server2server_share_enabled for app files_sharing set to yes
+
+The set command will create the value, when it did not exist before. If you only
+want to update the value, you can set the ``--update-only``::
+
+  $ sudo -u www-data php occ config:system:set doesnotexist --value="true" --update-only
+  Value not updated, as it has not been set before.
+
+
+Deleting a single config value
+++++++++++++++++++++++++++++++
+
+There are also commands to delete a config of an app or system config::
+
+  $ sudo -u www-data php occ config:system:delete doesnotexistanymore
+  System config value doesnotexistanymore deleted
+
+  $ sudo -u www-data php occ config:app:delete appname doesnotexistanymore
+  Config value doesnotexistanymore of app appname deleted
+
+The delete command will by default not complain if the config was not set
+before. If you want to be notified in that case, set the
+``--error-if-not-exists`` flag::
+
+  $ sudo -u www-data php occ config:system:delete doesnotexist --error-if-not-exists
+  System config doesnotexist could not be deleted because it did not exist
+
+
 Database Conversion
 -------------------
 
