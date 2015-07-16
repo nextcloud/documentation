@@ -711,7 +711,7 @@ or to use in a bug report::
 .. Repair step: Repair MySQL collation
 .. Repair info: Not a mysql database -> nothing to no
 .. Repair step: Repair SQLite autoincrement
-.. [snip]
+.. ...
 .. Update successful
 .. Turned off maintenance mode
 
