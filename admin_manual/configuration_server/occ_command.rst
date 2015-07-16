@@ -687,6 +687,19 @@ like this example on CentOS Linux. Note how it details the steps::
  Update successful
  Turned off maintenance mode
  
+If there is an error it throws an exception, and the error is detailed in your 
+ownCloud logfile, so you can use the log output to figure out what went wrong, 
+or to use in a bug report::
+
+ Turned on maintenance mode
+ Checked database schema update
+ Checked database schema update for apps
+ Updated database
+ Updating <files_sharing> ...
+ Exception
+ Update failed
+ Turned off maintenance mode
+ 
 .. uncomment when 8.1.1 is released  
 .. If you enable verbosity you'll see even more details 
 .. of the upgrade process::
