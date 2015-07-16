@@ -61,6 +61,13 @@ performance. To do so, add the following to ``/etc/fstab``::
 Caching
 =======	
 
+.. note:: Memory cache configuration for the ownCloud server is no longer
+          automatic, requiring configuration in config.php with the keys
+          memcache.local and/or memcache.distributed;
+          see :doc:`config_sample_php_parameters`.
+          Before the memcache.local can be used you need to install
+          APC, APCu or XCache.
+
 Caching improves performance by storing data, code, and other objects in 
 memory. 
 
