@@ -94,6 +94,7 @@ Nginx Configuration
      fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
      fastcgi_param PATH_INFO $fastcgi_path_info;
      fastcgi_param HTTPS on;
+     fastcgi_param modHeadersAvailable true; #Avoid sending the security headers twice
      fastcgi_pass php-handler;
      fastcgi_intercept_errors on;
      }
