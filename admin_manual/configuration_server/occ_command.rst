@@ -697,6 +697,7 @@ or to use in a bug report::
  Updated database
  Updating <files_sharing> ...
  Exception
+ ServerNotAvailableException: LDAP server is not available
  Update failed
  Turned off maintenance mode
  
