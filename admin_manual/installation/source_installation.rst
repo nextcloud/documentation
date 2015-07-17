@@ -62,7 +62,7 @@ Database connectors (pick at least one):
 Required for specific apps:
 
 * PHP module ldap (for LDAP integration)
-* smbclient (external user authentication)
+* smbclient (for external user authentication)
 * PHP module ftp (for FTP storage / external user authentication)
 * PHP module imap (for external user authentication)
 
@@ -166,6 +166,17 @@ Additional Apache Configurations
   by running::
 
     a2enmod rewrite
+  
+  Additional recommended modules are ``mod_headers``, ``mod_env``, ``mod_dir`` and ``mod_mime``::
+  
+    a2enmod headers
+    a2enmod env
+    a2enmod dir
+    a2enmod mime
+  
+  If you're running ``mod_fcgi`` instead of the standard ``mod_php`` also enable::
+  
+    a2enmod setenvif
 
 * You should make sure that any built-in WebDAV module of your Web server is 
   disabled (at least for the ownCloud directory), as it will interfere with 
