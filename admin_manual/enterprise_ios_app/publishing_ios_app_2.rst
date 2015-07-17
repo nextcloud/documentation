@@ -2,8 +2,9 @@
 Create Certificate Signing Request
 ==================================
 
-Create a :file:`.certSigningRequest` (CSR) file on your Mac, using Keychain 
-Access. Open Finder, and then open Keychain Access from the Utilities folder.
+Start by creating a :file:`.certSigningRequest` (CSR) file on your Mac, using 
+Keychain Access. Open Finder, and then open Keychain Access from the Utilities 
+folder.
     
 .. figure:: ../images/mac-1.png
 
@@ -50,8 +51,7 @@ Then click **iOS Apps > Certificates**.
 
 .. figure:: ../images/cert-2.png
 
-Next, click the add button (the little plus sign) in the top right corner of 
-the 
+Next, click the add button (the little plus sign) in the top right corner of the 
 **iOS Certificate** page.
 
 .. figure:: ../images/cert-3.png

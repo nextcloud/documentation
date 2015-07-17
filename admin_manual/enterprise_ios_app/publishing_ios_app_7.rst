@@ -119,7 +119,7 @@ Generate iOS App
 
 When you have uploaded all of your images and completed your customizations, 
 click the **Generate iOS App** button and take a well-deserved break. Remember 
-to email your three provisioning profiles and P12 certificate to 
+to email your four Ad Hoc provisioning profiles and P12 certificate to 
 branding@owncloud.com.
 
 .. figure:: ../images/ownbrander-28.png

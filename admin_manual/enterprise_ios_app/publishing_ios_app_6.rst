@@ -2,7 +2,7 @@
 Creating a P12 Certificate
 ==========================
 
-In addition to emailing your three provisioning profiles to 
+In addition to emailing your four Ad Hoc provisioning profiles to 
 branding@owncloud.com, you must also include your P12 certificate. To create 
 this, return to Keychain Access on your Mac computer and find your private key 
 that you created at the beginning (see 

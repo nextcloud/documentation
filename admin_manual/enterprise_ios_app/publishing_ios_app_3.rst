@@ -2,7 +2,7 @@
 Create Bundle IDs
 =================
 
-The next step is to create three **Bundle IDs**. These are unique identifiers 
+The next step is to create four **Bundle IDs**. These are unique identifiers 
 for your branded iOS app. You must also create an **App Group** and place your 
 three **Bundle IDs** in your **App Group**. You will need your base **Bundle 
 ID** and **App Group** when you build your app with the ownBrander app on 
@@ -49,7 +49,7 @@ The next step is to create an App Group and put your App ID in it. Go to
 .. figure:: ../images/cert-13.png
      
 Create a description for your app group, and a unique identifier in the format 
-*group.com.MyCompany.MyAppGroup*. Then click **Continue**.    
+*group.com.MyCompany.MyAppGroup*. Then click **Continue**
 
 .. figure:: ../images/cert-14.png
    
@@ -151,7 +151,43 @@ Select your group and click **Continue**.
 On the confirmation screen click **Assign**, and you'll see the message "You 
 have successfully updated the App Groups associations with your App ID." 
 
-Now you should have three new App IDs, and all three of them should belong to 
+Create a ShareExtApp Bundle ID
+------------------------------
+
+This supports Apple's ShareIN extension. 
+
+Yet again, go to **Identifiers > App IDs** and click the plus button to create a 
+ShareExtApp Bundle ID. Follow the same naming conventions as for your App ID, 
+then click **Continue**.
+
+.. figure:: ../images/cert-53.png
+   
+Confirm your new App ID and click **Submit**.
+
+.. figure:: ../images/cert-54.png
+
+You will see one more confirmation; review it and click **Done**. Now you need 
+to add it to your App Group. Go to **Identifiers > App IDs** and click on your 
+new ShareExtApp Bundle ID to open its configuration window, and 
+then click the **Edit** button. 
+
+.. figure:: ../images/cert-55.png
+   
+Select **App Groups** and click the **Edit** button.   
+
+.. figure:: ../images/cert-56.png
+
+Select your group and click **Continue**.
+
+.. figure:: ../images/cert-57.png
+    
+On the confirmation screen click **Assign**, and you'll see the message "You 
+have successfully updated the App Groups associations with your App ID." 
+
+Four Completed App IDs
+----------------------
+
+Now you should have four new App IDs, and all of them should belong to 
 your App Group.
 
 .. figure:: ../images/cert-37.png
