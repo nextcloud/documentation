@@ -1,3 +1,4 @@
+=============
 OCS Share API
 =============
 
@@ -6,6 +7,8 @@ pre-defined OCS calls.
 
 The base URL for all calls to the share API is: *<owncloud_base_url>/ocs/v1.php/apps/files_sharing/api/v1*
 
+Local Shares
+============
 
 Get All Shares
 --------------
@@ -61,7 +64,6 @@ Statuscodes:
 * 100 - successful
 * 404 - share doesn't exist
 
-
 Create a new Share
 ------------------
 
@@ -71,7 +73,7 @@ Share a file/folder with a user/group or as public link.
 * Method: POST
 
 * POST Arguments: path - (string) path to the file/folder which should be shared
-* POST Arguments: shareType - (int) '0' = user; '1' = group; '3' = public link
+* POST Arguments: shareType - (int) 0 = user; 1 = group; 3 = public link; 6 = federated cloud share
 * POST Arguments: shareWith - (string) user / group id with which the file should be shared
 * POST Arguments: publicUpload - (boolean) allow public upload to a public shared folder (true/false)
 * POST Arguments: password - (string) password to protect public link Share with
@@ -103,7 +105,6 @@ Statuscodes:
 * 100 - successful
 * 404 - file couldn't be deleted
 
-
 Update Share
 ------------
 
@@ -129,3 +130,67 @@ Statuscodes:
 * 400 - wrong or no update parameter given
 * 403 - public upload disabled by the admin
 * 404 - couldn't update share
+
+
+Federated Cloud Shares
+======================
+
+Both the sending and the receiving instance need to have federated cloud sharing
+enabled and configured. See `Configuring Federated Cloud Sharing <https://doc.owncloud.org/server/8.2/admin_manual/configuration_files/federated_cloud_sharing_configuration.html>`_.
+
+Create a new Federated Cloud Share
+----------------------------------
+
+Creating a federated cloud share can be done via the local share endpoint, using
+(int) 6 as a shareType and the `Federated Cloud ID <https://owncloud.org/federation/>`_
+of the share recipient as shareWith. See `Create a new Share`_ for more information.
+
+
+List pending Federated Cloud Shares
+-----------------------------------
+
+Get all pending federated cloud shares the user has received.
+
+* Syntax: /remote_shares
+* Method: GET
+
+* Result: XML with all pending federated cloud shares
+
+Statuscodes:
+
+* 100 - successful
+* 404 - couldn't fetch shares
+
+Accept a pending Federated Cloud Share
+--------------------------------------
+
+Locally accept a received federated cloud share that was sent from a remote instance.
+
+* Syntax: /remote_shares/*<share_id>*
+* Method: POST
+
+* Arguments: share_id - (int) share ID
+
+* Result: XML with the share information
+
+Statuscodes:
+
+* 100 - successful
+* 404 - share doesn't exist
+
+Decline a pending Federated Cloud Share
+---------------------------------------
+
+Locally decline a received federated cloud share that was sent from a remote instance.
+
+* Syntax: /remote_shares/*<share_id>*
+* Method: DELETE
+
+* Arguments: share_id - (int) share ID
+
+* Result: XML with the share information
+
+Statuscodes:
+
+* 100 - successful
+* 404 - share doesn't exist
