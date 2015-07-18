@@ -68,13 +68,13 @@ fixed.
 Changing Colors
 ---------------
 
-The color scheme is stored in the ``style.css`` file within the
+The color scheme is stored in the ``styles.css`` file within the
 ``owncloud/core/css`` folder.
 
-To change the color of the header bars, copy the ``core/css/style.css``
-to ``themes/<themename>/core/css/style.css`` and edit.
+To change the color of the header bars, copy the ``core/css/styles.css``
+to ``themes/<themename>/core/css/styles.css`` and edit.
 
-This example shows a section in ``style.css`` that configures colors. There are several 
+This example shows a section in ``styles.css`` that configures colors. There are several 
 locations within this file that assign colors to various page elements.
 
 .. code-block:: css
@@ -159,8 +159,8 @@ width, but the height is fixed. This file also goes in the
 Modifying Colors
 ----------------
 
-The color definitions are stored in ``core/css/style.css``.
-The first step is to copy this file to ``themes/GeneralHospital/core/css/style.css``.
+The color definitions are stored in ``core/css/styles.css``.
+The first step is to copy this file to ``themes/GeneralHospital/core/css/styles.css``.
 
 As stated in section Changing colors, edit the colors as desired in this section:
 
