@@ -86,10 +86,27 @@ ownCloud Web interface.
 
 You can find your HTTP user in your HTTP server configuration files. Or you can 
 create a PHP page to find it for you. To do this, create a plain text file with 
-a single line in it:
+the following lines in it:
 
-      ``<?php echo exec('whoami'); ?>``
-   
+.. code-block:: php
+
+  <?php
+  echo "User: " . exec('whoami');
+  echo "Group: " . exec('groups');
+  ?>
+
+If the exec php function is disabled (getting a white page with the script above)
+you can also try to use a script like:
+
+.. code-block:: php
+
+  <?php
+  $processUser = posix_getpwuid(posix_geteuid());
+  echo "User: " . $processUser['name'];
+  $processGroup = posix_getgrgid($processUser['gid']);
+  echo " Group: " . $processGroup['name'];
+  ?>
+
 Name it ``whoami.php`` and place it in your ``/var/www/html`` directory, and 
 then open it in a Web browser, for example ``http://localhost/whoami.php``. You 
 should see a single line in your browser page with the HTTP user name.
