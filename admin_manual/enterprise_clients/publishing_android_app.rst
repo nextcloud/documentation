@@ -229,7 +229,7 @@ to your ownCloud server and share it like any other file: you can create normal
 ownCloud shares with ownCloud users and groups, and you may create a link share 
 to share it with anyone. (See the **Files & Synchronization** section of the 
 `ownCloud User Manual 
-<https://doc.owncloud.org/server/8.0/user_manual/files/index.html>`_ to learn 
+<https://doc.owncloud.org/server/8.2/user_manual/files/index.html>`_ to learn
 more about sharing files.)
 
 .. _publish_google_play:

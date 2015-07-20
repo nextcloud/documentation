@@ -17,7 +17,7 @@ or sign up for hosted ownCloud services. See the `Get Started
 .. -----------------------------
 
 .. * `Howto, demo, news, and Webinar videos
-..   <https://doc.owncloud.org/server/8.0/admin_manual/videos/index.html>`_
+..   <https://doc.owncloud.org/server/8.2/admin_manual/videos/index.html>`_
 .. * `What's New in ownCloud 8 
 ..  <https://owncloud.org/eight>`_ Video introduction to ownCloud 8.
 .. * `Where to get help 
@@ -58,7 +58,7 @@ This documents the *latest production* version of ownCloud.
   <https://doc.owncloud.org/server/8.1/ownCloudServerAdminManual.pdf>`_)
 * `Developer Manual <https://doc.owncloud.org/server/8.1/developer_manual/>`_ 
   (`Download PDF 
-  <https://doc.owncloud.org/server/8.1/ownCloudDeveloperManual.pdf>`_) 
+  <https://doc.owncloud.org/server/8.1/ownCloudDeveloperManual.pdf>`_)
   
 ------------
 ownCloud 8.0
