@@ -94,7 +94,7 @@ API. If they are then they will not be installed.
 .. note:: If you would like to create or add your own ownCloud app, please use the 
     *Add your App...* button on the same page. This button redirects you to the 
     `App Development documentation 
-    <https://doc.owncloud.org/server/8.0/developer_manual/app/index.html>`_,
+    <https://doc.owncloud.org/server/8.2/developer_manual/app/index.html>`_,
     where you can find information about creating and adding your own apps.
 
 Using Custom App Directories
