@@ -210,6 +210,8 @@ Additional Apache Configurations
           use SSL/TLS to encrypt all of your server traffic, and to protect 
           user's logins and data in transit.
 
+.. _enabling-ssl-label:
+
 Enabling SSL
 ------------
 

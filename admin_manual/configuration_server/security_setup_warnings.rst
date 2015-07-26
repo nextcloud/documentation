@@ -30,7 +30,7 @@ performance reasons we recommend to update to a newer *{Cache}* version" then
 you need to upgrade, or, if you're not using it, remove it.
 
 It is not required to use any caches, but caches improve server performance. See 
-:doc:`performance_tuning` for more information on installing and using caches.
+:ref:`caching` for more information on installing and using caches.
 
 You are accessing this site via HTTP
 ------------------------------------
@@ -42,15 +42,41 @@ server to support it, and then there are some settings in the **Security**
 section of your ownCloud Admin page to enable. The following manual pages 
 describe how to enable HTTPS on the Apache and Nginx Web servers.
 
+:ref:`enabling-ssl-label` (on Apache)
 
-`Enabling SSL (on Apache) 
-<https://doc.owncloud.org/server/8.1/admin_manual/installation/ 
-source_installation.html#enabling-ssl>`_
+:ref:`use-https-label`
 
-`Use HTTPS 
-<https://doc.owncloud.org/server/8.1/admin_manual/configuration_server/ 
-harden_server.html#use-https>`_
+:ref:`nginx_configuration_example`
 
-`Nginx 
-Configuration <https://doc.owncloud.org/server/8.1/admin_manual/installation/ 
-nginx_configuration.html>`_
+The test with getenv(\"PATH\") only returns an empty response
+-------------------------------------------------------------
+
+Some environments are not passing a valid PATH variable to ownCloud. The
+:ref:`using_php-fpm` are providing the information how to configure your environment.
+
+The "Strict-Transport-Security" HTTP header is not configured
+-------------------------------------------------------------
+
+"The "Strict-Transport-Security" HTTP header is not configured to least "15768000" seconds.
+For enhanced security we recommend enabling HSTS as described in our security tips."
+
+The HSTS header needs to be configured within your webserver by following the
+:ref:`enable-hsts-label` documentation
+
+/dev/urandom is not readable by PHP
+-----------------------------------
+
+"/dev/urandom is not readable by PHP which is highly discouraged for security reasons.
+Further information can be found in our documentation."
+
+This message is another one which needs to be taken seriously. Please have a look
+at the :ref:`dev-urandom-label` documentation.
+
+Your web server is not yet set up properly to allow file synchronization
+------------------------------------------------------------------------
+
+"Your web server is not yet set up properly to allow file synchronization because
+the WebDAV interface seems to be broken."
+
+At the ownCloud community forums a larger `FAQ <https://forum.owncloud.org/viewtopic.php?f=17&t=7536>`_
+is maintained containing various informations and debugging hints.
