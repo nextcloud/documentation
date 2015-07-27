@@ -47,12 +47,12 @@ Using the operating system cron feature is the preferred method for executing re
 To run a cron job on a \*nix system, every 15 minutes, under the default web server user (often, ``www-data`` or ``wwwrun``), you must set up the following cron job to call the **cron.php** script::
 
   # crontab -u www-data -e
-  */15  *  *  *  * php -f /var/www/owncloud/cron.php > /dev/null 2>&1
+  */15  *  *  *  * php -f /var/www/owncloud/cron.php
 
 You can verify if the cron job has been added and scheduled by executing::
 
   # crontab -u www-data -l
-  */15  *  *  *  * php -f /var/www/owncloud/cron.php > /dev/null 2>&1
+  */15  *  *  *  * php -f /var/www/owncloud/cron.php
 
 .. note:: On some systems it might be required to call **php-cli** instead of **php**.
 
