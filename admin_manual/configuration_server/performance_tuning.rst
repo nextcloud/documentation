@@ -101,6 +101,13 @@ Distributed PHP environments should use Memcached. Memcached servers must be
 specified in the ``memcached_servers`` array in ownCloud's config file 
 ``config.php``. For examples see :doc:`config_sample_php_parameters`.
 
+ .. note:: When a memory cache has been configured, but is unavailable due to a
+           a missing extension or server downtime, ownCloud will be
+           inaccessible, as a memory cache is considered to be a vital
+           component.
+           This does not however affect **occ**, which will instead just print
+           a warning to the logs.
+
 Tuning System Parameters
 ========================
 
