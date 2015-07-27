@@ -21,6 +21,7 @@ $mapping = array(
     'admin-db-conversion'     => '/admin_manual/configuration_database/db_conversion.html',
     'admin-security'          => '/admin_manual/configuration_server/harden_server.html',
     'admin-email'             => '/admin_manual/configuration_server/email_configuration.html',
+    'admin-reverse-proxy'     => '/admin_manual/configuration_server/reverse_proxy_configuration.html',
 
     'developer-theming'       => '/developer_manual/core/theming.html',
 

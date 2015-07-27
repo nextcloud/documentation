@@ -1,12 +1,39 @@
 Reverse Proxy Configuration
 ===========================
 
+ownCloud can be run through a reverse proxy, which can cache static assets such
+as images, CSS or JS files, move the load of handling HTTPS to a different
+server or load balance between multiple servers.
+
+Defining Trusted Proxies
+------------------------
+
+For security, you must explicitly define the proxy servers that ownCloud is to
+trust. Connections from trusted proxies will be specially treated to get the
+real client information, for use in access control and logging. Parameters are
+configured in :file:`config/config.php`
+
+Set the **trusted_proxies** parameter as an array of IP address to define the
+servers ownCloud should trust as proxies. This parameter provides protection
+against client spoofing, and you should secure those servers as you would your
+ownCloud server.
+
+A reverse proxy can define HTTP headers with the original client IP address,
+and ownCloud can use those headers to retrieve that IP address. ownCloud uses
+the de-facto standard header 'X-Forwarded-For' by default, but this can be
+configured with the **forwarded_for_headers** parameter. This parameter is an
+array of PHP lookup strings, for example 'X-Forwarded-For' becomes
+'HTTP_X_FORWARDED_FOR'. Incorrectly setting this parameter may allow clients
+to spoof their IP address as visible to ownCloud, even when going through the
+trusted proxy! The correct value for this parameter is dependent on your
+proxy software.
+
+Overwrite Parameters
+--------------------
+
 The automatic hostname, protocol or webroot detection of ownCloud can fail in
 certain reverse proxy situations. This configuration allows to manually override
 the automatic detection.
-
-Parameters
-----------
 
 If ownCloud fails to automatically detected the hostname, protocol or webroot
 you can use the **overwrite** parameters inside the :file:`config/config.php`.
@@ -37,6 +64,7 @@ you can set the following parameters inside the :file:`config/config.php`.
 
   <?php
   $CONFIG = array (
+    "trusted_proxies"   => ['10.0.0.1'],
     "overwritehost"     => "ssl-proxy.tld",
     "overwriteprotocol" => "https",
     "overwritewebroot"  => "/domain.tld/owncloud",
