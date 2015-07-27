@@ -27,6 +27,8 @@ shares.
 Operating system
 ----------------
 
+.. _dev-urandom-label:
+
 Give PHP read accesss to ``/dev/urandom``
 *****************************************
 ownCloud uses a `RFC 4086 ("Randomness Requirements for Security")`_ compliant 
@@ -40,6 +42,9 @@ such a way that PHP is able to read random data from it. Not granting PHP access
 to ``/dev/urandom`` may make your random numbers predictable and may make your
 ownCloud instance insecure as attackers might predict password reset tokens or
 other sensitive data.
+
+.. note:: When having an ``open_basedir`` configured within your ``php.ini``
+   make sure to include the folder ``/dev``.
 
 Enable hardening modules such as SELinux
 ****************************************
@@ -80,6 +85,8 @@ setting the ``enable_previews`` switch to ``false`` in ``config.php``. As an
 administrator you are also able to manage which preview providers are enabled by 
 modifying the ``enabledPreviewProviders`` option switch.
 
+.. _use-https-label:
+
 Use HTTPS
 ---------
 Using ownCloud without using an encrypted HTTPS connection might allow attackers 
@@ -102,6 +109,8 @@ achieved by a setting such as the following in the Apache VirtualHosts config:
      ServerName cloud.owncloud.com
      Redirect permanent / https://cloud.owncloud.com/
   </VirtualHost>
+
+.. _enable-hsts-label:
 
 Enable HTTP Strict Transport Security
 *************************************
