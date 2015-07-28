@@ -80,3 +80,21 @@ the WebDAV interface seems to be broken."
 
 At the ownCloud community forums a larger `FAQ <https://forum.owncloud.org/viewtopic.php?f=17&t=7536>`_
 is maintained containing various informations and debugging hints.
+
+Outdated NSS / OpenSSL version
+------------------------------
+
+"cURL is using an outdated OpenSSL version (OpenSSL/$version). Please update your 
+operating system or features such as installing and updating apps via the app store 
+or Federated Cloud Sharing will not work reliably."
+
+"cURL is using an outdated NSS version (NSS/$version). Please update your operating 
+system or features such as installing and updating apps via the app store or Federated 
+Cloud Sharing will not work reliably."
+
+There are known bugs in older OpenSSL and NSS versions leading to misbehaviour in 
+combination with remote hosts using SNI. A technology used by most of the HTTPS
+websites. To ensure that ownCloud will work properly you need to update OpenSSL
+to at least 1.0.2b or 1.0.1d. For NSS the patch version depends on your distribution
+and an heuristic is running the test which actually reproduces the bug. There
+are distributions such as RHEL/CentOS which have this backport still `pending <https://bugzilla.redhat.com/show_bug.cgi?id=1241172>`_.
