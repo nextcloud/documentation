@@ -182,6 +182,10 @@ Example
 .. note:: A non-blocking or correctly configured SELinux setup is needed
    for this backend to work.
 
+.. note:: The external storage ``FTP/FTPS/SFTP`` needs the ``allow_url_fopen`` PHP
+   setting to be set to ``1``. When having connection problems make sure that it is
+   not set to ``0`` in your ``php.ini``.
+
 SFTP
 ~~~~
 
@@ -213,6 +217,10 @@ Example
     }
 
 .. note:: PHP needs to be build with SFTP support for this backend to work.
+
+.. note:: The external storage ``FTP/FTPS/SFTP`` needs the ``allow_url_fopen`` PHP
+   setting to be set to ``1``. When having connection problems make sure that it is
+   not set to ``0`` in your ``php.ini``.
 
 SMB
 ~~~

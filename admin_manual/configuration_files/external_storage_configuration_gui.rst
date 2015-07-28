@@ -198,6 +198,10 @@ Connecting to an FTP server requires:
 .. note:: A non-blocking or correctly configured SELinux setup is needed
    for this backend to work.
 
+.. note:: The external storage ``FTP/FTPS/SFTP`` needs the ``allow_url_fopen`` PHP
+   setting to be set to ``1``. When having connection problems make sure that it is
+   not set to ``0`` in your ``php.ini``.
+
 .. figure:: ../images/external-storage-ftp.png
 
 SFTP uses SSH rather than SSL, as FTPS does, so your SFTP sessions are always 
