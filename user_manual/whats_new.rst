@@ -15,6 +15,8 @@ manager, and has a new graphical selective sync file chooser. See the
 `ownCloud Desktop Client Manual <http://doc.owncloud.org/desktop/1.8/>`_ for 
 more information.
 
+.. _favorites-label:
+
 Favorites
 ---------
 
