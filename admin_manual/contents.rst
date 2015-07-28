@@ -13,6 +13,7 @@ Table of Contents
     configuration_files/index
     configuration_server/index
     configuration_database/index
+    configuration_mimetypes/index
     maintenance/index
     operations/index
     issues/index
@@ -29,4 +30,4 @@ Enterprise Subscription Only
     enterprise_external_storage/index   
     enterprise_user_management/index
     enterprise_files_drop/index
-    
+
