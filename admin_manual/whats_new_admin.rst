@@ -13,6 +13,8 @@ improvements and new features, including:
 * WebDAV performance enhancements
 * SFTP external storage with SSH keys
 * SMB external storage is now based on ``libsmbclient``
+
+* Individual settings per external storage mount, including encryption and previews
 * Improved performance and better storage space management of preview 
   generation
 * UI improvements for configurating external storage
