@@ -689,7 +689,7 @@ like this example on CentOS Linux. Note how it details the steps::
  
 Enabling verbosity displays timestamps::
 
- ./occ upgrade -v
+ $ sudo -u www-data php occ upgrade -v
  ownCloud or one of the apps require upgrade - only a limited number of commands are available
  2015-06-23T09:06:15+0000 Turned on maintenance mode
  2015-06-23T09:06:15+0000 Checked database schema update
