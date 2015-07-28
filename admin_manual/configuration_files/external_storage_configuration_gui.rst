@@ -10,6 +10,27 @@ All of these connect to a LAN ownCloud server that is not publicly accessible,
 with one exception: Google Drive requires an ownCloud server with a registered 
 domain name that is accessible over the Internet.
 
+`Video: How to Configure External Storage in ownCloud Server 8.1
+<https://youtu.be/uezzFDRnoPY>`_
+
+.. figure:: images/video_externalstorage.png
+   :target: https://youtu.be/uezzFDRnoPY 
+  
+New Settings Options
+--------------------
+
+Hover your cursor to the right of any external mount configuration to expose 
+the settings button and trashcan. Click the trashcan to delete the 
+mountpoint. The settings button allows you to configure each mountpoint 
+individually with the following options:
+
+* Encryption
+* Previews
+* Check for changes Never, Once every direct access, or Every time the 
+  filesystem is Used. 
+  
+.. figure:: ../images/encryption13.png
+
 Supported mounts
 ----------------
 
@@ -371,4 +392,3 @@ Although configuration may be done by making modifications to the
 panel (as described in the above section) to add, remove, or modify mount 
 options to prevent any problems. See :doc:`external_storage_configuration` for 
 configuration examples.
-
