@@ -9,12 +9,6 @@ mount their own external storage services.
 All of these connect to a LAN ownCloud server that is not publicly accessible, 
 with one exception: Google Drive requires an ownCloud server with a registered 
 domain name that is accessible over the Internet.
-
-`Video: How to Configure External Storage in ownCloud Server 8.1
-<https://youtu.be/uezzFDRnoPY>`_
-
-.. figure:: images/video_externalstorage.png
-   :target: https://youtu.be/uezzFDRnoPY 
   
 New Settings Options
 --------------------
