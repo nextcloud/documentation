@@ -1,5 +1,5 @@
 =====================================
-What's New for Admins in ownCloud 8.1
+What's New for Admins in ownCloud 8.2
 =====================================
 
 ownCloud Server and Enterprise Subscription 8.1 are shipping with a batch of 
