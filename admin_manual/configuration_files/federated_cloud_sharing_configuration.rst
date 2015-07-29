@@ -12,6 +12,18 @@ allow users to upload files, and set an expiration date.
 .. Note:: Currently, federated shares cannot be re-shared, and the only visible 
    option when you create the share is **Can edit**.
 
+Sharing With ownCloud 7
+-----------------------
+
+Direct share links (:ref:`direct-share-link`) are not supported in ownCloud 
+7, so you must create federated cloud shares with public links 
+(:ref:`public-link-share`). 
+
+.. _direct-share-link:   
+   
+Creating a Direct Share Link
+----------------------------
+
 Follow these steps to create a new federated cloud share:
 
 1. Go to your ownCloud Admin page and scroll to the Federated Cloud Sharing 
@@ -63,12 +75,14 @@ shared with, and federated cloud shares are labeled as ``(remote)``.
 
 Click the trash can icon to disconnect the share.
 
-Creating Federated Cloud Shares via Email
------------------------------------------
+.. _public-link-share:
+
+Creating Federated Cloud Shares via Public Link Share
+-----------------------------------------------------
 
 Check the ``Share Link`` checkbox to expose more sharing options (which are 
 described more fully in :doc:`file_sharing_configuration`). You may create a 
-federated cloud share by allowing ownCloud to create the link for you, and 
+federated cloud share by allowing ownCloud to create a public link for you, and 
 then email it to the person you want to create the share with.
 
 .. figure:: ../images/create_public_share-6.png
