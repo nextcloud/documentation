@@ -1,11 +1,68 @@
-=====================================
-What's New for Admins in ownCloud 8.2
-=====================================
+===========================================
+What's New for Admins in ownCloud |version|
+===========================================
 
-ownCloud Server and Enterprise Subscription 8.1 are shipping with a batch of 
-improvements and new features, including:
+New Packaging
+-------------
 
-* Improved performance, with faster file transfers, much faster file deletion, improved scalability   through improved handling of parallel requests, and up to 50% more users on each ownCloud server    instance. 
+We are introducing a new packaging system (starting in ownCloud 8.0). Instead of 
+two editions, Community and Enterprise, we now offer Server to replace the old 
+Community edition, and Enterprise Subscription replaces the old Enterprise 
+Edition.
+
+Server includes core file share and synchronization features plus community 
+apps, and is community-supported and free of cost. See `owncloud.org 
+<https://owncloud.org/>`_ for current information and links to downloads.
+
+ownCloud now offers two levels of paid support:
+
+* ownCloud Standard 
+* ownCloud Enterprise
+
+The ownCloud Standard Subscription is for customers who want paid support for 
+the core Server, and do not need Enterprise apps. This includes:
+
+* ownCloud Server
+* ownCloud desktop and mobile apps (without the custom branding build service)
+* ownCloud open-source apps licensed as AGPL (Share Files, 
+  Federated Cloud, Versions, Deleted files, LDAP/AD, Antivirus, Encryption, 
+  External Storage. etc.), 8x5 support hours
+
+Note: This does not include support for Contacts, Calendar, Tasks, Chat, 
+Documents, or any other community-only apps, and it does not include support 
+for Enterprise-only apps or services.
+
+The ownCloud Enterprise Subscription replaces the Enterprise Edition. This 
+includes the core Server plus Enterprise apps. The Enterprise Subscription 
+includes:
+
+* ownCloud Standard Subscription
+* ownCloud Enterprise apps (Logging modules, SAML, File Firewall, Sharepoint, 
+  Windows Network Drive, Home Directory Mounts, etc) 
+* ownBrander for mobile app branding
+* ownCloud Commercial License for closed-source customizations
+* Up to 24x7 support
+* Deployment assistance for the rollout
+
+New customers, or customers upgrading from the old Enterprise Edition will 
+install ownCloud 8 from the existing ``owncloud-enterprise`` repository. The 
+``owncloud-server`` dependency will be pulled in automatically. Customers using 
+the community edition will upgrade via package manager by adding the 
+``owncloud-enterprise repository``, and installing ownCloud Enterprise Edition 
+apps on top of their ``owncloud-server``.
+
+Visit `owncloud.com <https://owncloud.com/>`_ for more information on the 
+Enterprise Subscription.
+
+Improvements and New Features
+-----------------------------
+
+ownCloud Server and Enterprise Subscription |version| are shipping with a batch 
+of improvements and new features, including:
+
+* Improved performance, with faster file transfers, much faster file deletion, 
+  improved scalability through improved handling of parallel requests, and up 
+  to 50% more users on each ownCloud server instance. 
 * Better file locking
 * Updated encryption with support for multiple encryption backends and 
   migration tools for 8.0 -> 8.1

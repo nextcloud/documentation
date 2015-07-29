@@ -26,11 +26,16 @@ ownCloud server is available in three editions:
 See :doc:`../whats_new_admin` for more information on the different ownCloud 
 editions.
 
-ownCloud Videos
----------------
+ownCloud Videos and Blogs
+-------------------------
 
-See :doc:`videos/index` for howtos, demos, news, and Webinars for both the 
-Server and Enterprise Subscription versions of ownCloud.
+See the `official ownCloud channel 
+<https://www.youtube.com/channel/UC_4gez4lsWqciH-otOlXo5w>`_ and `ownClouders 
+community channel <https://www.youtube.com/channel/UCA8Ehsdu3KaxSz5KOcCgHbw>`_ 
+on YouTube for tutorials, overviews, and conference videos.
+
+Visit `ownCloud Planet <https://owncloud.org/news/>`_ for news and developer 
+blogs.
 
 Target Audience
 ---------------
