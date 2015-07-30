@@ -1110,7 +1110,7 @@ calculation, defaults to false.
 
 ::
 
-	'filesystem_check_changes' => 1,
+	'filesystem_check_changes' => 0,
 
 Specifies how often the filesystem is checked for changes made outside
 ownCloud.
