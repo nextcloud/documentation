@@ -44,6 +44,9 @@ ownCloud admins may mount these external storage services and devices:
 ownCloud users can be given permission to mount any of these, except local 
 storage.
 
+.. note:: A non-blocking or correctly configured SELinux setup is needed
+   for these backends to work. Please refer to the :ref:`selinux-config-label`.
+
 Enabling External Storage Support
 ---------------------------------
 
@@ -209,9 +212,6 @@ Connecting to an FTP server requires:
   FTP session with SSL/TLS over ``ftps://`` (Your FTP server must be 
   configured to support ``ftps://``)
 * Enter the ownCloud users or groups who are allowed to access the share.  
-
-.. note:: A non-blocking or correctly configured SELinux setup is needed
-   for this backend to work.
 
 .. note:: The external storage ``FTP/FTPS/SFTP`` needs the ``allow_url_fopen`` PHP
    setting to be set to ``1``. When having connection problems make sure that it is

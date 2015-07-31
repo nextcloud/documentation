@@ -1,3 +1,5 @@
+.. _selinux-config-label:
+
 =====================
 SELinux Configuration
 =====================
@@ -56,3 +58,10 @@ the app store. To allow this access use the following setting::
 
  setsebool -P httpd_can_network_connect on
 
+Allow access to SMTP/sendmail
+-----------------------------
+
+If you want to allow ownCloud to send out e-mail notifications via sendmail you need
+to use the following setting::
+
+ setsebool -P httpd_can_sendmail on
