@@ -7,7 +7,9 @@ client manuals are in the respective git repositories. Because of the
 complexity of the server and the split into the core and apps modules,
 the manuals are in this separate directory.
 
-Documentation can be seen on: https://doc.owncloud.org
+Documentation is published on https://doc.owncloud.org and https://doc.owncloud.com.
+
+The documentation Wiki https://github.com/owncloud/documentation/wiki is available for tips, tricks, edge cases, and anyone who wants to contribute more easuly, without using Git and Sphinx.
 
 Manuals
 -------
