@@ -123,8 +123,9 @@ branding with custom colors and images.
 When you are finished click the **Generate Android App** button, and you will 
 either see a success message, or an error message telling you what you need to 
 fix. Note also that at the bottom of the wizard, the name and version of 
-your new app is displayed. When all of your options are entered correctly and 
-you click the Generate 
+your new app is displayed, for example **The version that it will be generated 
+is: oc-android-1.7.0_signed**. When all of your options are 
+entered correctly and you click the Generate 
 Android App button, it takes up to 48 hours for your app to appear in your 
 `Customer.owncloud.com <https://customer.owncloud.com/owncloud/>`_ account.
 
