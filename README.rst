@@ -9,7 +9,7 @@ the manuals are in this separate directory.
 
 Documentation is published on https://doc.owncloud.org and https://doc.owncloud.com.
 
-The documentation Wiki https://github.com/owncloud/documentation/wiki is available for tips, tricks, edge cases, and anyone who wants to contribute more easuly, without using Git and Sphinx.
+The documentation Wiki https://github.com/owncloud/documentation/wiki is available for tips, tricks, edge cases, and anyone who wants to contribute more easily, without using Git and Sphinx.
 
 Manuals
 -------
