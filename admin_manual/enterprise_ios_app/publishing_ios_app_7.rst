@@ -86,7 +86,9 @@ If you have online help, enter the URL here.
 
 .. figure:: ../images/ownbrander-24.png
 
-Enter a **Feedback email** address, if you have one.
+**Activate the option feedback** creates an option for your users to either 
+enable or not enable the feedback option on their devices. If you enable this, 
+enter your **Feedback email** address.
 
 .. figure:: ../images/ownbrander-25.png
 
@@ -98,6 +100,27 @@ Check **Show a "new account" link in app** to allow new users to request a new
 account.
 
 .. figure:: ../images/ownbrander-27.png
+
+Upload an icon that will be displayed by default when there is no file preview 
+to display.
+
+.. figure:: ../images/ownbrander-30.png
+
+By default, sharing by public URL is enabled. Public share links allow your 
+users to share files with anyone. This option allows you to disable public link 
+sharing.
+
+.. figure:: ../images/ownbrander-31.png
+
+You may disable background transfers if you are using mobile device management 
+(MDM), such as Mobile Iron, that does not support background jobs, or if you 
+simply do not want to allow the app to work in the background. By default, 
+the ownCloud iOS app supports background file transfers by taking
+advantage of `Background Execution. 
+<https://developer.apple.com/library/ios/documentation/iPhone/Conceptual/
+iPhoneOSProgrammingGuide/BackgroundExecution/BackgroundExecution.html>`_
+
+.. figure:: ../images/ownbrander-32.png
 
 That completes the required elements of your branded iOS app.
 
