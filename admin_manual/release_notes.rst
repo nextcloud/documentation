@@ -15,7 +15,7 @@ For best performance, stability, support, and full functionality we recommend:
 Supported Platforms
 -------------------
 
-* Server: Linux (Debian 7, SUSE Linux Enterprise Server 11 SP3 & 12, 
+* Server: Linux (Debian 7 & 8, SUSE Linux Enterprise Server 11 SP3 & 12, 
   Red Hat Enterprise Linux/Centos 6.5 and 7, Ubuntu 12.04 LTS, 14.04 LTS, 
   14.10)
 * Webserver: Apache 2  
