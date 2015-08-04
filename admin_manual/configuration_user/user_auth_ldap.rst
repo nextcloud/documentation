@@ -27,7 +27,10 @@ The LDAP application supports:
 * Read-only access to your LDAP (no edit or delete of users on your LDAP) 
 
 .. Note:: The LDAP app is not compatible with the ``User backend using remote HTTP servers`` app. 
-   You cannot use both of them at the same time. 
+   You cannot use both of them at the same time.
+
+.. note:: A non-blocking or correctly configured SELinux setup is needed
+   for the LDAP backend to work. Please refer to the :ref:`selinux-config-label`.
 
 Configuration
 -------------
