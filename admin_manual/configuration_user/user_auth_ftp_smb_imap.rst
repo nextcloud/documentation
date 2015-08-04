@@ -18,6 +18,9 @@ syntax:
       ),
   ),
 
+.. note:: A non-blocking or correctly configured SELinux setup is needed
+   for these backends to work. Please refer to the :ref:`selinux-config-label`.
+
 Currently the “External user support” (user_external) app, which you need to
 enable first (See :doc:`../installation/apps_management_installation`)
 provides the following user backends:
