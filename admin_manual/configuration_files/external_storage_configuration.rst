@@ -2,11 +2,9 @@
 Configuring External Storage (Configuration File)
 =================================================
 
-Since ownCloud 4.0 it is possible to configure the filesystem to mount external
-storage providers into ownCloud's virtual file system. You can configure these
-file systems by creating and editing :file:`data/mount.json`. This file contains
-all settings in JSON (JavaScript Object Notation) format. At the moment two
-different types of entries exist:
+You may configure external storage mounts by creating and editing the 
+:file:`data/mount.json`. This file contains all settings in JSON (JavaScript 
+Object Notation) format. At the moment two different types of entries exist:
 
 -  **Group mounts:** each entry configures a mount for each user in group.
 -  **User mounts:** each entry configures a mount for a single user or for all
@@ -29,9 +27,22 @@ available for use:
 -  `Google Drive`_
 -  `OpenStack Swift`_
 
-.. note:: You need to enable the `External storage support` app first before you
-   can use the examples below. See the section :doc:`external_storage_configuration_gui`
-   how to do this.
+You need to enable the `External storage support` app first. You can 
+do this on the Apps page of your ownCloud Web GUI, or use the ``occ`` command. 
+This example shows how to list apps, and how to enable the `External storage 
+support` app on Debian Linux and its derivatives::
+
+ $ sudo -u www-data php occ app:list
+ Enabled:                                                                        
+  [snip]
+ Disabled:
+ - files_external
+  [snip]
+
+  $ sudo -u www-data php occ app:enable files_external
+  files_external enabled
+
+See :doc:`../configuration_server/occ_command` to learn more about ``occ``.
 
 .. note:: A non-blocking or correctly configured SELinux setup is needed
    for these backends to work. Please refer to the :ref:`selinux-config-label`.
