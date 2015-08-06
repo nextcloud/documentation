@@ -115,6 +115,9 @@ Some common problems / error messages found in your logfiles as described above:
   accessing your SQLite database file in your datadirectory (``data/owncloud.db``).
   Please check the permissions of this folder/file or if it exists at all. If you're
   using MySQL please start your database.
+* ``Connection closed / Operation cancelled`` -> This could be caused by wrong ``KeepAlive``
+  settings within your Apache config. Make sure that ``KeepAlive`` is set to ``On`` and
+  also try to raise the limits of ``KeepAliveTimeout`` and ``MaxKeepAliveRequests``.
 
 Troubleshooting Webserver and PHP problems
 ------------------------------------------
