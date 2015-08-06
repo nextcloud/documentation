@@ -329,7 +329,7 @@ Entities are returned from so called :doc:`Mappers <database>`. Let's create one
 
     }
 
-.. note:: The first parent constructor parameter is the database layer, the second one database table and the third is the entity on which the result should be mapped onto. Insert, delete and update methods are already implemented.
+.. note:: The first parent constructor parameter is the database layer, the second one is the database table and the third is the entity on which the result should be mapped onto. Insert, delete and update methods are already implemented.
 
 Connect Database & Controllers
 ==============================
@@ -544,7 +544,7 @@ and **ownnotes/service/notfoundexception.php**:
     class NotFoundException extends ServiceException {}
 
 
-Remember how we had all those ugly try catches that where checking for **DoesNotExistException** and simply returned a 404 response? Let's also put this into a reusable class. In our case we chose a `trait <http://php.net/manual/en/language.oop5.traits.php>`_ so we can inherit methods without having to add it to our inheritance hirarchie. This will be important later on when you've got controllers that inherit from the **ApiController** class instead.
+Remember how we had all those ugly try catches that where checking for **DoesNotExistException** and simply returned a 404 response? Let's also put this into a reusable class. In our case we chose a `trait <http://php.net/manual/en/language.oop5.traits.php>`_ so we can inherit methods without having to add it to our inheritance hierarchy. This will be important later on when you've got controllers that inherit from the **ApiController** class instead.
 
 The trait is created in **ownnotes/controller/errors.php**:
 
@@ -805,7 +805,7 @@ If `PHPUnit is installed <https://phpunit.de/>`_ we can run the tests inside **o
 
 Integration Tests
 -----------------
-Integration tests are slow and need a fully working instance but make sure that our classes work well together. Instead of mocking out all classes and parameters we can decide wether to use full instances or replace certain classes. Because they are slow we don't want as many integration tests as unit tests.
+Integration tests are slow and need a fully working instance but make sure that our classes work well together. Instead of mocking out all classes and parameters we can decide whether to use full instances or replace certain classes. Because they are slow we don't want as many integration tests as unit tests.
 
 In our case we want to create an integration test for the udpate method without mocking out the **NoteMapper** class so we actually write to the existing database.
 
@@ -1293,7 +1293,7 @@ When the page is loaded we want all the existing notes to load. Furthermore we w
 
 Apply finishing touches
 =======================
-Now the only thing left is to style the textare in a nicer fashion. To do that open **ownnotes/css/style.css** and replace the content with the following :doc:`CSS <css>` code:
+Now the only thing left is to style the textarea in a nicer fashion. To do that open **ownnotes/css/style.css** and replace the content with the following :doc:`CSS <css>` code:
 
 .. code-block:: css
 
