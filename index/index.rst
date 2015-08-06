@@ -11,18 +11,6 @@ Installer to install it on shared Web hosting, try some prefab cloud images,
 or sign up for hosted ownCloud services. See the `Get Started 
 <https://owncloud.org/install/>`_ page for more information.
 
-.. rework this section
-.. -----------------------------
-.. Additional ownCloud Resources
-.. -----------------------------
-
-.. * `Howto, demo, news, and Webinar videos
-..   <https://doc.owncloud.org/server/8.2/admin_manual/videos/index.html>`_
-.. * `What's New in ownCloud 8 
-..  <https://owncloud.org/eight>`_ Video introduction to ownCloud 8.
-.. * `Where to get help 
-..  <https://owncloud.org/support/>`_ when the documentation is not enough.
-  
 ------------------------------------------------
 Reporting Documentation Bugs & How to Contribute
 ------------------------------------------------
@@ -93,7 +81,17 @@ This documents the ownCloud 7.0 release, suitable for production use.
   
 ==============================
 Desktop Client and Mobile Apps
-==============================  
+============================== 
+
+---------------------------
+ownCloud Desktop Client 2.0
+---------------------------
+
+The *development* version of the ownCloud Desktop Client.
+
+* `ownCloud Desktop Client Manual <https://doc.owncloud.org/desktop/2.0/>`_ 
+  (`Download PDF 
+  <https://doc.owncloud.org/desktop/2.0/ownCloudClientManual.pdf>`_)
   
 ---------------------------
 ownCloud Desktop Client 1.8
