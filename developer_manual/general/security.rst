@@ -38,7 +38,7 @@ Cross site scripting
 
 `Cross site scripting <http://en.wikipedia.org/wiki/Cross-site_scripting>`_ happens when user input is passed directly to templates. A potential attacker might be able to inject HTML/JavaScript into the page to steal the users session, log keyboard entries, even perform DDOS attacks on other websites or other malicious actions.
 
-Despite of the fact that ownCloud uses Content-Security-Policy to prevent the execution of inline JavaScript code developers are still required to prevent XSS. CSP is just another layer of defense that is not implemented in all web browsers.
+Despite the fact that ownCloud uses Content-Security-Policy to prevent the execution of inline JavaScript code developers are still required to prevent XSS. CSP is just another layer of defense that is not implemented in all web browsers.
 
 To prevent XSS in your app you have to sanitize the templates and all JavaScripts which performs a DOM manipulation.
 
@@ -128,11 +128,11 @@ Code executions and file inclusions can be easily prevented by **never** allowin
   <?php
   require("/includes/" . $_GET['file']);
 
-.. note:: If you have to pass user input to a potential dangerous, double check to be sure that there is no other way. If it is not possible otherwise sanitize every user parameter and ask people to audit your sanitize function.
+.. note:: If you have to pass user input to a potentially dangerous function, double check to be sure that there is no other way. If it is not possible otherwise sanitize every user parameter and ask people to audit your sanitize function.
 
 Directory Traversal
 -------------------
-Very often developers forget about sanitizing the file path (removing all \ and /), this allows an attacker to traversal through directories on the server which opens several potential attack vendors including privilege escalations, code executions or file disclosures.
+Very often developers forget about sanitizing the file path (removing all \\ and /), this allows an attacker to traverse through directories on the server which opens several potential attack vendors including privilege escalations, code executions or file disclosures.
 
 **DON'T**
 
@@ -151,7 +151,7 @@ Very often developers forget about sanitizing the file path (removing all \ and 
   $file = str_replace(array('/', '\\'), '',  $_GET['file']);
   fopen("/data/" . $username . "/" . $file . ".txt");
 
-.. note:: PHP also interprets the backslash (\) in paths, don't forget to replace it too!
+.. note:: PHP also interprets the backslash (\\) in paths, don't forget to replace it too!
 
 
 Shell Injection
@@ -192,7 +192,7 @@ PHP offers the following functions to escape user input:
 Auth bypass / Privilege escalations
 -----------------------------------
 
-Auth bypass/privilege escalations happens when a user is able to perform not authorized actions.
+Auth bypass/privilege escalations happen when a user is able to perform unauthorized actions.
 
 ownCloud offers three simple checks:
 
@@ -228,7 +228,7 @@ Unvalidated redirects
 ---------------------
 This is more of an annoyance than a critical security vulnerability since it may be used for social engineering or phishing.
 
-Always validate the URL before redirecting if the requested URL is on the same domain or an allowed ressource.
+Always validate the URL before redirecting if the requested URL is on the same domain or an allowed resource.
 
 **DON'T**
 
