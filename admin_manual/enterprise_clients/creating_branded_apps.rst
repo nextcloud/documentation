@@ -92,6 +92,11 @@ button to your users. You need this to enable multiaccounts.
 
 .. image:: ../images/ownbrander-8.png
 
+.. _sign_android_app:
+
+Signing Android Client
+----------------------
+
 The next option is **Sign Android Client**. You can upload your signing 
 certificate in the wizard so that is signed during the build process, or you 
 can optionally sign your app after we build it. See 

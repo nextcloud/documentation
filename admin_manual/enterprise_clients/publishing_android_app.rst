@@ -21,9 +21,11 @@ you will sign and distribute.
 Digitally Signing Android Apps
 ------------------------------
 
-Signing your app is required, and the most time-consuming part is installing 
-the commands you need to sign them. You need three commands to sign your app: 
-``keytool``, ``jarsigner``, and ``zipalign``. Follow these steps:
+Signing your app is required. You can do this in the :ref:`ownBrander 
+wizard <sign_android_app>`, or after it is built and delivered to you. The most 
+time-consuming part of signing the built app is installing the commands you need 
+to sign it. You need three commands to sign your app: ``keytool``, 
+``jarsigner``, and ``zipalign``. Follow these steps:
 
 1. Install the signing commands
 2. Create a self-signed certificate with ``keytool``
