@@ -12,18 +12,18 @@ Database performance
 The database plays an important role in ownCloud performance. The general rule is: database queries are very bad and should be avoided if possible. The reasons for that are:
 
 * Roundtrips: Bigger ownCloud installations have the database not installed on the application server but on a remote dedicated database server. The problem is that database queries then go over the network. These roundtrips can add up significantly if you have a lot of queries. 
-* Speed. A lot of people think that databases are fast. This is not always true if you compare it with handing data internally in PHP or in the filesystem or even use key/value based storages. So every developer should always double check if the database is really the best place for the data.
+* Speed. A lot of people think that databases are fast. This is not always true if you compare it with handling data internally in PHP or in the filesystem or even using key/value based storages. So every developer should always double check if the database is really the best place for the data.
 * Scalability. If you have a big ownCloud cluster setup you usually have several ownCloud/webservers in parallel and a central database and a central storage. This means that everything that happens on the ownCloud/PHP side can parallelize and can be scaled. Stuff that is happening in the database and in the storage is critical because it only exists once and can't be scaled so easily.
 
 We can reduce the load on the database by:
 
 1. Making sure that every query uses an index.
-2. Reducing the overall numbers of queries.
+2. Reducing the overall number of queries.
 3. If you are familiar with cache invalidation you can try caching query results in PHP.
 
 There a several ways to monitor which queries are actually executed on the database.
 
-With MySQL is is very easy with just a bit of configuration:
+With MySQL it is very easy with just a bit of configuration:
 
 1. Slow query log.
 
@@ -37,7 +37,7 @@ If a query takes more than a second we have a serious problem of course. You can
 
 2. log all queries.
 
-If you reduce the long_query_time to zero than every statement is logged. This is super helpful to see what is going on. Just do a `tail -f` on the logfile and click around in the interface or access the WebDAV interface::
+If you reduce the long_query_time to zero then every statement is logged. This is super helpful to see what is going on. Just do a `tail -f` on the logfile and click around in the interface or access the WebDAV interface::
 
   log_slow_queries = 1
   log_slow_queries = /var/log/mysql/mysql-slow.log
