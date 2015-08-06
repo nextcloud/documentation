@@ -4,7 +4,7 @@ Debugging
 Debug mode
 ----------
 
-When debug mode is enabled ownCloud, a variety of debugging features are enabled - see debugging documentation. Add the following to the very end of :file:`/config/config.php` to enable it::
+When debug mode is enabled in ownCloud, a variety of debugging features are enabled - see debugging documentation. Add the following to the very end of :file:`/config/config.php` to enable it::
 
   define( "DEBUG", 1);
 
