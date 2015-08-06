@@ -107,8 +107,7 @@ The *latest* ownCloud desktop sync client release, suitable for production use.
 ownCloud Desktop Client 1.7
 ---------------------------
 
-The *previous* ownCloud desktop sync client release, suitable for production 
-use.
+The *previous* ownCloud desktop sync client release. Users are encouraged to upgrade.
 
 * `ownCloud Desktop Client Manual <https://doc.owncloud.org/desktop/1.7/>`_ 
   (`Download PDF 
