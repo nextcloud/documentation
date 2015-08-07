@@ -17,7 +17,7 @@ You shall never split sentences!
 Reason:
 ~~~~~~~
 
-Translators lose the context and they have no chance to possible re-arrange words.
+Translators lose the context and they have no chance to possibly re-arrange words.
 
 Example:
 ~~~~~~~~
@@ -34,7 +34,7 @@ Translators will translate:
 * ' or "
 * cloud
 
-By translating these individual strings for sure the case will be lost of local filesystem and cloud. The two white spaces with the or will get lost while translating as well.
+By translating these individual strings for sure the case will be lost of local filesystem and cloud. The two white spaces with the or will get lost while translating as well. For languages that have a different grammatical order it prevents the translators from reordering the sentence components.
 
 Html on translation string:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -44,7 +44,7 @@ Html tags in translation strings is ugly but usually translators can handle this
 What about variable in the strings?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In case you need to add variables to the translation strings do it like that:
+If you need to add variables to the translation strings do it like this:
 
 .. code-block:: php
 
