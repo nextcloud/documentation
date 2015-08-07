@@ -4,7 +4,7 @@ RESTful API
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-Offering a RESTful API is not different from creating a :doc:`route <routes>` and :doc:`controllers <controllers>` for the web interface. It is recommended though to inherit from ApiController and add **@CORS** annotations to the methods so that `also web applications will be able to access the API <https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS>`_.
+Offering a RESTful API is not different from creating a :doc:`route <routes>` and :doc:`controllers <controllers>` for the web interface. It is recommended though to inherit from ApiController and add **@CORS** annotations to the methods so that `web applications will also be able to access the API <https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS>`_.
 
 .. code-block:: php
 
@@ -29,7 +29,7 @@ Offering a RESTful API is not different from creating a :doc:`route <routes>` an
 
     }
 
-CORS also needs a separate URL for the preflighted **OPTIONS** request that easily be added by adding the following route:
+CORS also needs a separate URL for the preflighted **OPTIONS** request that can easily be added by adding the following route:
 
 .. code-block:: php
 
@@ -43,7 +43,7 @@ CORS also needs a separate URL for the preflighted **OPTIONS** request that easi
     )
 
 
-Keep in mind that multiple apps will likely depend on the API interface once it is published and they will move at different speeds to react on changes implemented in the API. Therefore it is recommended to version the API in the URL to not break existing apps when backwards incompatible changes are introduced::
+Keep in mind that multiple apps will likely depend on the API interface once it is published and they will move at different speeds to react to changes implemented in the API. Therefore it is recommended to version the API in the URL to not break existing apps when backwards incompatible changes are introduced::
 
     /index.php/apps/myapp/api/1.0/resource
 
