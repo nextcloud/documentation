@@ -78,7 +78,7 @@ name
 
 description
 -----------
-**Required**: This contains the description of the app which will be shown in the apps overview page.
+**Required**: This contains the description of the app which will be shown in the app overview page.
 
 version
 -------
@@ -109,21 +109,21 @@ types
 -----
 ownCloud allows to specify four kind of "types". Currently supported "types":
 
-* **prelogin**: apps which needs to load on the login page
+* **prelogin**: apps which need to load on the login page
 
-* **filesystem**: apps which provides filesystem functionality (e.g. files sharing app)
+* **filesystem**: apps which provide filesystem functionality (e.g. files sharing app)
 
-* **authentication**: apps which provided authentication backends
+* **authentication**: apps which provide authentication backends
 
 * **logging**: apps which implement a logging system
 
 documentation
 -------------
-link to 'admin' and 'user' documentation
+Link to 'admin' and 'user' documentation
 
 website
 -------
-link to project web page
+Link to project web page
 
 repository
 ----------
