@@ -204,7 +204,7 @@ Editing
 
 .. versionadded:: 8
 
-Often an edit option is needed an entry. To add one for a given entry simply hide the title and add the following div inside the entry:
+Often an edit option is needed for an entry. To add one for a given entry simply hide the title and add the following div inside the entry:
 
 .. code-block:: html
 
@@ -290,7 +290,7 @@ The data attribute **data-apps-slide-toggle** slides up a target area using a jQ
 
 Icons
 =====
-To use icons which are shipped in core, special class to apply the background image are supplied. All of these classes use **background-position: center** and **background-repeat: no-repeat**.
+To use icons which are shipped in core, special classes to apply the background image are supplied. All of these classes use **background-position: center** and **background-repeat: no-repeat**.
 
 * **icon-breadcrumb**:
     .. image:: ../img/7/breadcrumb.png
