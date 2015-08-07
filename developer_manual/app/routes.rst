@@ -108,7 +108,7 @@ Sometimes its needed to match more than one URL fragment. An example would be to
 
 Default values for suburl
 ==========================
-Apart from matching requirements, suburl may also have default value. Say you want to support pagination (a 'page' parameter) for your **/posts** suburl that displays posts entries list. You may set a default value to 'page' parameter, that will be used if not already set in the url. Use the **defaults** parameter in your route which is an array containing pairs of **'urlparameter' => 'defaultvalue'**:
+Apart from matching requirements, a suburl may also have a default value. Say you want to support pagination (a 'page' parameter) for your **/posts** suburl that displays posts entries list. You may set a default value for the 'page' parameter, that will be used if not already set in the url. Use the **defaults** parameter in your route which is an array containing pairs of **'urlparameter' => 'defaultvalue'**:
 
 .. code-block:: php
 
@@ -143,7 +143,7 @@ When dealing with resources, writing routes can become quite repetitive since mo
 * Update an entry
 * Delete an entry
 
-To prevent repetition, it's possible define resources. The following routes:
+To prevent repetition, it's possible to define resources. The following routes:
 
 .. code-block:: php
 
