@@ -31,7 +31,6 @@ Only as .tar files:
 
 * Ubuntu 12.04 LTS
 * SLES 11 sp3
-* SLES 12 (once PHP dependencies (e.g. posix) are added)
 
 Other server components:
 
