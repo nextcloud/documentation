@@ -7,28 +7,74 @@ Recommended Setup for Running ownCloud
 
 For best performance, stability, support, and full functionality we recommend:
 
-* Red Hat Enterprise Linux 7
-* MySQL/MariaDB
-* PHP 5.4 +
-* Apache 2.4
+* LAMP stack with a Web server and separate database/storage server
+* PHP 5.4+ with APC cache enabled
+* MySQL with InnoDB, and buffer cache increased to 16MB
+* MySQL Query Cache enabled
+* Windows 7 or Mac 10.8 desktop clients
+* Webkit browser (Firefox, Chrome, Safari)
+* Mobile apps on Android 4+, iOS 7+
+* WebDAV Clients: Cyber Duck and NetDrive (for mounting via a Windows drive 
+  letter)
 
-Supported Platforms
--------------------
+Supported Server Platforms
+--------------------------
 
-* Server: Linux (Debian 7 & 8, SUSE Linux Enterprise Server 11 SP3 & 12, 
-  Red Hat Enterprise Linux/Centos 6.5 and 7, Ubuntu 12.04 LTS, 14.04 LTS, 
-  14.10)
-* Webserver: Apache 2  
-* Databases: MySQL/MariaDB 5.x; Oracle 11g; PostgreSQL
+Full Packages:
+
+* Debian 7, 8
+* RHEL / Centos 6.5, 6.6 and 7
+* Ubuntu 14.04 LTS and 15.04
+* SLES 12 (once PHP dependencies (e.g. posix) are added)
+    
+Only as .tar files:
+
+* Ubuntu 12.04 LTS
+* SLES 11 sp3
+* SLES 12 (once PHP dependencies (e.g. posix) are added)
+
+Other server components:
+
 * PHP 5.4 + required
+* Databases: MySQL/MariaDB 5.x; Oracle 11g; PostgreSQL
 * Hypervisors: Hyper-V, VMware ESX, Xen, KVM
-* Desktop: Windows XP SP3 (EoL Q2 2015), Windows 7+, Mac OS X 10.7+ (64-bit 
-  only), Linux (CentOS 6.5, 7, Ubuntu 12.04 LTS, 14.04 LTS, 14.10, Fedora 20, 
-  21, openSUSE 12.3, 13)
-* Mobile apps: iOS 7+, Android 4+
-* Web browser: IE8+ (but not compatibility mode), Firefox 14+, Chrome 18+, 
-  Safari 5+
- 
+
+Supported Desktop Platforms
+---------------------------
+
+In general, we will support the most recent two releases of operating systems 
+that are still supported by upstream or by the publisher. Currently this 
+includes:
+
+* Windows 7+
+* Mac OS X 10.7+ (64-bit only)
+* CentOS 6.6, 7 (7 is 64 bit only)
+* Ubuntu 14.04 LTS, 15.04
+* Fedora 21, 22
+* Debian 7,8
+* openSUSE 13.1, 13.2
+
+Supported Mobile Platforms
+--------------------------
+
+* iOS 7+
+* Android 4+
+
+Supported Web Browsers
+----------------------
+
+* IE8+ (except compatibility mode)
+* Firefox v35+
+* Chrome v40+, 
+* Safari v5+
+
+Not Supported With any ownCloud Version
+---------------------------------------
+
+* Native Windows WebDAV clients
+* Windows RT
+* SQLite in production
+
 Changes in 8.1
 --------------
 

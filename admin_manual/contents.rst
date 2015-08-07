@@ -17,8 +17,7 @@ Table of Contents
     maintenance/index
     operations/index
     issues/index
-    videos/index
-    
+
 Enterprise Subscription Only
 ----------------------------
 
