@@ -342,7 +342,7 @@ Returning JSON is simple, just pass an array to a JSONResponse:
 
     }
 
-Because returning JSON is such an common task, there's even a shorter way how to do this:
+Because returning JSON is such an common task, there's even a shorter way to do this:
 
 .. code-block:: php
 
@@ -454,7 +454,7 @@ A :doc:`template <templates>` can be rendered by returning a TemplateResponse. A
 
 * **appName**: tells the template engine in which app the template should be located
 * **templateName**: the name of the template inside the template/ folder without the .php extension
-* **parameters**: optional array parameters that can is available in the template through $_, e.g.::
+* **parameters**: optional array parameters that are available in the template through $_, e.g.::
 
     array('key' => 'something')
 
@@ -737,7 +737,7 @@ To turn off checks the following *Annotations* can be added before the controlle
 
 * **@NoAdminRequired**: Also users that are not admins can access the page
 * **@NoCSRFRequired**: Don't check the CSRF token (use this wisely since you might create a security hole, to understand what it does see :doc:`../general/security`)
-* **@PublicPage**: Everyone can access that page without having to log in
+* **@PublicPage**: Everyone can access the page without having to log in
 
 A controller method that turns off all checks would look like this:
 
