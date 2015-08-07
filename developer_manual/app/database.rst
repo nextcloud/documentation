@@ -43,7 +43,7 @@ Inside your database layer class you can now start running queries like:
 
 Mappers
 =======
-The aforementioned example is the most basic way write a simple database query but the more queries amass, the more code has to be written and the harder it will become to maintain it.
+The aforementioned example is the most basic way to write a simple database query but the more queries amass, the more code has to be written and the harder it will become to maintain it.
 
 To generalize and simplify the problem, split code into resources and create an **Entity** and a **Mapper** class for it. The mapper class provides a way to run SQL queries and maps the result onto the related entities.
 
@@ -141,7 +141,7 @@ Entities are data objects that carry all the table's information for one row. Ev
 
 Types
 -----
-The following properties should be annotated by types, to not only assure that the types are converted correctly for storing them in the database (e.g. PHP casts false to the empty string which fails on postgres) but also for casting them when they are retrieving from the database.
+The following properties should be annotated by types, to not only assure that the types are converted correctly for storing them in the database (e.g. PHP casts false to the empty string which fails on postgres) but also for casting them when they are retrieved from the database.
 
 The following types can be added for a field:
 
