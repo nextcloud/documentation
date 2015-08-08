@@ -4,7 +4,7 @@ Configuration
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-The config that allows the app to set global, app and user settings can be injected from the ServerContainer. All values are saved as strings and must be casted to the correct value.
+The config that allows the app to set global, app and user settings can be injected from the ServerContainer. All values are saved as strings and must be cast to the correct value.
 
 
 .. code-block:: php
