@@ -277,6 +277,12 @@ ini file. This can be the case, as example, for the ``date.timezone`` setting.
 Configuration notes to php-fpm
 ------------------------------
 
+**Security: Use at least PHP => 5.5.22 or >= 5.6.6,**
+
+Due to `a bug with security implications <https://bugs.php.net/bug.php?id=64938>`_ 
+in older PHP releases with the handling of XML data you are highly encouraged to run
+at least PHP 5.5.22 or 5.6.6 when in a threaded environment.
+
 **System environment variables**
 
 When you are using ``php-fpm``, system environment variables like 
