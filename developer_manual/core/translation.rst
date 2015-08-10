@@ -34,7 +34,7 @@ Translators will translate:
 * ' or "
 * cloud
 
-By translating these individual strings for sure the case will be lost of local filesystem and cloud. The two white spaces with the or will get lost while translating as well. For languages that have a different grammatical order it prevents the translators from reordering the sentence components.
+Translating these individual strings results in  ``local filesystem`` and ``cloud`` losing case. The two white spaces surrounding ``or`` will get lost while translating as well. For languages that have a different grammatical order it prevents the translators from reordering the sentence components.
 
 Html on translation string:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
