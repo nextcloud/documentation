@@ -13,7 +13,7 @@ If you are unfamiliar with this pattern, watch the following videos:
 
 Dependency Injection
 ====================
-Dependency Injection sounds pretty complicated but it just means: Don't new dependencies in your constructor or methods but pass them in. So this:
+Dependency Injection sounds pretty complicated but it just means: Don't put new dependencies in your constructor or methods but pass them in. So this:
 
 .. code-block:: php
 
@@ -55,7 +55,7 @@ Passing dependencies into the constructor rather than instantiating them in the 
 The solution for this particular problem is to limit the **new AuthorMapper** to one file, the container. The container contains all the factories for creating these objects and is configured in :file:`appinfo/application.php`.
 
 
-To add the app's classes simply open the :file:`appinfo/application.php` use the **registerService** method on the container object:
+To add the app's classes simply open the :file:`appinfo/application.php` and use the **registerService** method on the container object:
 
 .. code-block:: php
 
@@ -117,7 +117,7 @@ How the container works
 The container works in the following way:
 
 * :doc:`A request comes in and is matched against a route <request>` (for the AuthorController in this case)
-* The matched route queries **AuthorController** service form the container::
+* The matched route queries **AuthorController** service from the container::
 
     return new AuthorController(
       $c->query('AppName'),
@@ -144,9 +144,9 @@ The container works in the following way:
     });
 
 * The **database connection** is returned from the server container
-* Now **AuthorMapper** has all of its dependencies and the object is being returned
+* Now **AuthorMapper** has all of its dependencies and the object is returned
 * **AuthorService** gets the **AuthorMapper** and returns the object
-* **AuthorController** gets the **AuthorService** and finally the controller can be newed and the object is being returned
+* **AuthorController** gets the **AuthorService** and finally the controller can be ``new``ed and the object is returned
 
 So basically the container is used as a giant factory to build all the classes that are needed for the application. Because it centralizes all the creation of objects (the **new Class()** lines), it is very easy to add new constructor parameters without breaking existing code: only the **__construct** method and the container line where the **new** is being called need to be changed.
 
@@ -211,7 +211,7 @@ How does it affect the request lifecycle
 
 How does this affect controllers
 --------------------------------
-The only thing what needs to be done to add a route and a controller method is now:
+The only thing that needs to be done to add a route and a controller method is now:
 
 **myapp/appinfo/routes.php**
 
@@ -239,7 +239,7 @@ The only thing what needs to be done to add a route and a controller method is n
       }
   }
 
-There is no need to wire up anything in **appinfo/application.php**. Everyting will be done automatically.
+There is no need to wire up anything in **appinfo/application.php**. Everything will be done automatically.
 
 
 How to deal with interface and primitive type parameters
@@ -275,7 +275,7 @@ Interfaces and primitive types can not be instantiated, so the container can not
 
 Predefined core services
 ------------------------
-The following parameter names and type hints can be used inject core services instead of using **$container->getServer()->getServiceX()**
+The following parameter names and type hints can be used to inject core services instead of using **$container->getServer()->getServiceX()**
 
 Parameters:
 
@@ -349,7 +349,7 @@ To make use of this new feature, the following things have to be done:
 
 Which classes should be added
 =============================
-In general all of the app's controllers need to be registered inside the container. Then following question is: What goes into the constructor of the controller? Pass everything into the controller constructor that is responsible matches one of the following criteria:
+In general all of the app's controllers need to be registered inside the container. Then the following question is: What goes into the constructor of the controller? Pass everything into the controller constructor that matches one of the following criteria:
 
 * It does I/O (database, write/read to files)
 * It is a global (e.g. $_POST, etc. This is in the request class by the way)
