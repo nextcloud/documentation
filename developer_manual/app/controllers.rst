@@ -168,7 +168,7 @@ would be passed in as the string *'false'* which is not what one would expect. T
 
     }
 
-The following types will be casted:
+The following types will be cast:
 
 * **bool** or **boolean**
 * **float**

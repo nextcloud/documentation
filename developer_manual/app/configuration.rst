@@ -4,7 +4,7 @@ Configuration
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-The config allows the app to set global, app and user settings can be injected from the ServerContainer. All values are saved as strings and must be casted to the correct value.
+The config that allows the app to set global, app and user settings can be injected from the ServerContainer. All values are saved as strings and must be cast to the correct value.
 
 
 .. code-block:: php
@@ -42,7 +42,7 @@ The config allows the app to set global, app and user settings can be injected f
 
 System values
 =============
-System values are saved in the :file:`config/config.php` and allow to modify and read the global configuration: 
+System values are saved in the :file:`config/config.php` and allow the app to modify and read the global configuration: 
 
 .. code-block:: php
 
