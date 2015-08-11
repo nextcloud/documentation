@@ -94,6 +94,11 @@ and 5.4.
 APC is both an opcode cache and data store. OPCache is only an opcode cache, so 
 for caching user data you should also install APCu.
 
+You can test the state of APC(u) by putting the testing file from the documentation
+in your server root. It is usually called 'apc.php' and can be found in
+/usr/share/doc/php5-apcu/apc.php or /usr/share/doc/packages/php5-apcu/apc.php or
+a similar location, depending on your distribution.
+
 The Redis key-value cache and store is an excellent fast and robust cache. For 
 configuration examples see :doc:`config_sample_php_parameters`. 
 
