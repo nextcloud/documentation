@@ -48,6 +48,8 @@ Address book
    -  Change port to 80.
    -  Go back to account information and hit Save.
 
-Now should now find your contacts in the address book of your
-iPhone.
-If it's still not working, have a look at the :doc:`troubleshooting` guide.
+Now should now find your contacts in the address book of your iPhone.
+If it's still not working, have a look at the :doc:`troubleshooting`
+and `Troubleshooting Contacts & Calendar`_ guides.
+
+.. _Troubleshooting Contacts & Calendar: https://doc.owncloud.org/server/8.2/admin_manual/issues/index.html#troubleshooting-contacts-calendar

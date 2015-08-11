@@ -27,9 +27,11 @@ The setup is basically the same as with iOS using the path **ADDRESS/remote.php/
 
 11. You may have to restart addressbook once more. After this, it should work.
 
-If it's still not working, have a look at the :doc:`troubleshooting` guide.
+If it's still not working, have a look at the :doc:`troubleshooting` and
+`Troubleshooting Contacts & Calendar`_ guides.
 
 There is also an easy `HOWTO`_ in the forum.
 
 
 .. _HOWTO: http://forum.owncloud.org/viewtopic.php?f=3&t=132
+.. _Troubleshooting Contacts & Calendar: https://doc.owncloud.org/server/8.2/admin_manual/issues/index.html#troubleshooting-contacts-calendar
