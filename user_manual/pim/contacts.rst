@@ -344,5 +344,7 @@ Additionally, the Contacts app is providing an URL for special functions:
 Troubleshooting
 ---------------
 
-Are you having problems using the app? Have a look at the :doc:`troubleshooting` guide.
+Are you having problems using the app? Have a look at the :doc:`troubleshooting`
+and `Troubleshooting Contacts & Calendar`_ guides.
 
+.. _Troubleshooting Contacts & Calendar: https://doc.owncloud.org/server/8.2/admin_manual/issues/index.html#troubleshooting-contacts-calendar
