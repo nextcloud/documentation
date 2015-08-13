@@ -40,7 +40,7 @@ banner on your Files page warning you to log out and then log back in.
 
 .. figure:: ../images/encryption1.png
 
-When you log back it takes a few minutes to work, depending on how many 
+When you log back in it takes a few minutes to work, depending on how many 
 files you have, and then you are returned to your default ownCloud page.
 
 .. figure:: ../images/encryption2.png
