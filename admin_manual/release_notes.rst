@@ -111,8 +111,7 @@ see :ref:`caching`.
 The OC_User_HTTP backend has been removed. Administrators are encouraged to use 
 the ``user_webdavauth`` application instead.
 
-ownCloud ships now with its own root certificate bundle derived from the 
-Mozilla. The system root certificate bundle will not be used anymore for most 
+ownCloud ships now with its own root certificate bundle derived from Mozilla's root certificates file. The system root certificate bundle will not be used anymore for most 
 requests.
   
 When you upgrade from ownCloud 8.0, with encryption enabled, to 8.1, you must 
