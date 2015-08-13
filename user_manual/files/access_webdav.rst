@@ -255,15 +255,13 @@ For example: ``net use Z: https://example.org/owncloud/remote.php/webdav
 
 .. note:: Though not recommended, you can also mount the ownCloud server
      using HTTP, leaving the connection unencrypted.  If you plan to use HTTP
-     connections on devices while in public place, we strongly recommend using a 
+     connections on devices while in a public place, we strongly recommend using a 
      VPN tunnel to provide the necessary security.
 
 An alternative command syntax is::
 
   net use Z: \\example.org@ssl\owncloud\remote.php\webdav /user:youruser 
   yourpassword
-
-You can also mount your ownCloud via HTTP, leaving the connection unencrypted.
 
 Mapping Drives With Windows Explorer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
