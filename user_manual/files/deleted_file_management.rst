@@ -41,7 +41,7 @@ magic powers to prevent this.
 How the Deleted Files app Manages Storage Space
 -----------------------------------------------
 
-To ensure that users doesn't run over their storage quotas, the Deleted Files 
+To ensure that users do not run over their storage quotas, the Deleted Files 
 app allocates a maximum of 50% of their currently available free space to 
 deleted files. If your deleted files exceed this limit, ownCloud deletes the 
 oldest files (files with the oldest timestamps from when they were deleted) 
