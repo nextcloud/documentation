@@ -74,14 +74,14 @@ of improvements and new features, including:
 * Individual settings per external storage mount, including encryption and previews
 * Improved performance and better storage space management of preview 
   generation
-* UI improvements for configurating external storage
+* UI improvements for configuring external storage
 * The ownCloud Appstore shows now different trust levels, and allows enabling 
   experimental apps
 * Deleted files & folders now keep the share info after restoring from trashbin 
   (local shares only and not external storage)
 
 
-* Many more links from the administration UI to the relevant documention
+* Many more links from the administration UI to the relevant documentation
 * ``occ`` command updated to allow installing ownCloud completely from the 
   command line
 * User avatars are displayed in share dialogs
