@@ -309,7 +309,7 @@ Base User Tree:
 
 User Search Attributes:
   These attributes are used when searches for users are performed, for example 
-  in the in the share dialogue. The user display name attribute is the 
+  in the share dialogue. The user display name attribute is the 
   default. You may list multiple attributes, one per line.
 
   If an attribute is not available on a user object, the user will not be 
@@ -342,7 +342,7 @@ Base Group Tree:
 Group Search Attributes:
   These attributes are used when a search for groups is done, for example in 
   the share dialogue. By default the group display name attribute as specified 
-  above is being used. Multiple attributes can be given, one in each line.
+  above is used. Multiple attributes can be given, one in each line.
 
   If you override the default, the group display name attribute will not be
   taken into account, unless you specify it as well.
@@ -476,7 +476,7 @@ users and groups are fetched correctly on the Users page.
 ownCloud Avatar integration
 ---------------------------
 
-ownCloud support user profile pictures, which are also called avatars. If a user 
+ownCloud supports user profile pictures, which are also called avatars. If a user 
 has a photo stored in the *jpegPhoto* or *thumbnailPhoto* attribute on your LDAP 
 server, it will be used as their avatar. In this case the user cannot alter their 
 avatar (on their Personal page) as it must be changed in LDAP. *jpegPhoto* is 
@@ -492,7 +492,7 @@ Avatars managed in ownCloud are not stored in LDAP.
 
 The *jpegPhoto* or *thumbnailPhoto* attribute is fetched once a day to make
 sure the current photo from LDAP is used in ownCloud. LDAP avatars override 
-ownCloud avatars, and when an LDAP avatar is deleted it the most recent 
+ownCloud avatars, and when an LDAP avatar is deleted then the most recent 
 ownCloud avatar replaces it.
 
 Photos served from LDAP are automatically cropped and resized in ownCloud. This 
@@ -556,10 +556,10 @@ LDAP it will be detected, and there will be no conflicts.
 
 Those mappings are done in the database table ``ldap_user_mapping`` and
 ``ldap_group_mapping``. The user name is also used for the user's folder (except
-something else is specified in *User Home Folder Naming Rule*), which
+if something else is specified in *User Home Folder Naming Rule*), which
 contains files and meta data.
 
-As of ownCloud 5 internal user name and a visible display name are separated.
+As of ownCloud 5 the internal user name and a visible display name are separated.
 This is not the case for group names, yet, i.e. a group name cannot be altered.
 
 That means that your LDAP configuration should be good and ready before putting
@@ -604,7 +604,7 @@ Redis. Redis configuration looks like this::
  ),
 
 Redis is supplied by the ``redis-server`` and ``php5-redis`` packages on 
-Debian/Ubuntu/Mint, and on Red Hat/CentOS/Fedroa by ``redis`` and 
+Debian/Ubuntu/Mint, and on Red Hat/CentOS/Fedora by ``redis`` and 
 ``php-pecl-redis`` from the EPEL repository.
 
 You can adjust the **Cache Time-To-Live** value to balance performance and 
@@ -638,5 +638,5 @@ Handling with Backup Server
 When ownCloud is not able to contact the main LDAP server, ownCloud assumes it 
 is offline and will not try to connect again for the time specified in **Cache 
 Time-To-Live**. If you have a backup server configured ownCloud will connect to 
-instead. When you have a scheduled downtime, check **Disable Main Server**  to 
+it instead. When you have scheduled downtime, check **Disable Main Server**  to 
 avoid unnecessary connection attempts.
