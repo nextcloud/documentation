@@ -15,7 +15,7 @@ hard limits that cannot be exceeded:
 64-bit filesystems have much higher limits; consult the documentation for your 
 filesystem.
 
-.. note:: The ownCloud sync client is not affected by this described upload limits
+.. note:: The ownCloud sync client is not affected by these upload limits
    as it is uploading files in smaller chunks.
 
 System Configuration
@@ -25,8 +25,8 @@ System Configuration
 * Disable user quotas, which makes them unlimited
 * Your temp file or partition has to be big enough to hold multiple 
   parallel uploads from multiple users; e.g. if the max upload size is 10GB and 
-  the average users uploading the same time is 100: temp space has to hold at 
-  least 10x100 GB
+  the average number of users uploading at the same time is 100: temp space has 
+  to hold at least 10x100 GB
 
 Configuring Your Webserver
 --------------------------
@@ -52,9 +52,9 @@ Apache module could also stop large uploads from completing. If you're using thi
 module and getting failed uploads of large files either disable it in your Apache
 config or raise the configured ``RequestReadTimeout`` timeouts.
 
-There are also several other configuration option in your webserver config which
+There are also several other configuration options in your webserver config which
 could prevent the upload of larger files. Please see the manual of your webserver
-how to configure those values correctly:
+for how to configure those values correctly:
 
 Apache
 ~~~~~~
@@ -91,7 +91,7 @@ to see which ``php.ini`` file your server is using. This is the one you want to
 edit.
 
 If you are running ownCloud on a 32-bit system, any ``open_basedir`` directive 
-in your ``php.ini`` file needs to be commented out
+in your ``php.ini`` file needs to be commented out.
 
 Set the following two parameters inside ``php.ini``, using your own desired 
 file size values::
