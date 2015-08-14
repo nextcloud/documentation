@@ -3,10 +3,16 @@ Upgrading Your ownCloud Server
 ==============================
 
 It is best to keep your ownCloud server upgraded regularly, and to install all 
-point releases and major releases without skipping any of them, as skipping releases
-increases the risk of errors. Major releases are 6.0, 7.0, and 8.0, and point releases 
-are intermediate releases for each major release. For example, 8.0.1 and 8.0.2 are point 
-releases.
+point releases and major releases without skipping any of them, as skipping 
+releases increases the risk of errors. Major releases are 6.0, 7.0, and 8.0, and 
+point releases are intermediate releases for each major release. For example, 
+8.0.1 and 8.0.2 are point releases.
+
+.. note:: **Downgrading** is not supported and risks corrupting your data! If 
+   you want to revert to an older ownCloud version, install it from scratch 
+   and then restore your data from backup. Before doing this, file a support 
+   ticket (if you have paid support) or ask for help in the ownCloud forums to 
+   see if your issue can be resolved without downgrading.
 
 Version numbering changed with ownCloud 8.0. Major releases are now indicated 
 by the second number, so 8.0. 8.1, and 8.2 are major releases. The third number 

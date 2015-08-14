@@ -7,14 +7,20 @@ installation. You should keep your ownCloud server updated and not skip any
 releases. The Updater app is enabled in your ownCloud Server instance by 
 default, which you can confirm by looking on your Apps page.
 
+.. note:: The Updater app is not enabled and not supported in ownCloud 
+   Enterprise Subscription.
+   
+   **Downgrading** is not supported and risks corrupting your data! If you want 
+   to revert to an older ownCloud version, install it from scratch and then 
+   restore your data from backup. Before doing this, file a support ticket (if 
+   you have paid support) or ask for help in the ownCloud forums to see if your 
+   issue can be resolved without downgrading.
+
 The Updater App is not required, and it is recommended to use other methods for 
 keeping your ownCloud server up-to-date, if possible. (See :doc:`upgrade`.) The 
 Updater App is useful for installations that do not have root access, 
 such as shared hosting, and for installations with a smaller number of users 
 and data.
-
-.. note:: The Updater app is not enabled and not supported in ownCloud 
-   Enterprise Subscription.
 
 You should maintain regular backups (see :doc:`backup`), and make a backup 
 before every update. The Updater app does not backup your database or data 

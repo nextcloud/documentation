@@ -14,6 +14,15 @@ Installing ownCloud Enterprise Subscription
 See :doc:`../enterprise_installation/linux_installation` for instructions on 
 installing ownCloud Enterprise Subscription.
 
+Downgrading Not Supported
+-------------------------
+
+Downgrading is not supported and risks corrupting your data! If you want to 
+revert to an older ownCloud version, install it from scratch and then restore 
+your data from backup. Before doing this, file a support ticket (if you have 
+paid support) or ask for help in the ownCloud forums to see if your issue can be 
+resolved without downgrading.
+
 Supported Distribution Packages
 -------------------------------
 
