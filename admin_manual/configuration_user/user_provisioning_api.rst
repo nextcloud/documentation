@@ -62,7 +62,7 @@ XML Output
 users / getusers
 ================
 
-Retrieves a list of users from the cloud server. Authentication is done by sending a Basic HTTP Authorization header.
+Retrieves a list of users from the ownCloud server. Authentication is done by sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users**
 
@@ -177,7 +177,7 @@ XML Output
 users / deleteuser
 ==================
 
-Deletes a user from the cloud server. Authentication is done by sending a Basic HTTP Authorization header.
+Deletes a user from the ownCloud server. Authentication is done by sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}**
 
@@ -192,7 +192,7 @@ Example
 -------
 
   * DELETE ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank``
-  * Deletes the use ``Frank``
+  * Deletes the user ``Frank``
 
 XML Output
 ----------
@@ -300,8 +300,8 @@ Status codes:
 
 * 100 - successful
 * 101 - no group specified
-* 102 - group doesnt exist
-* 103 - user doesn't exist
+* 102 - group does not exist
+* 103 - user does not exist
 * 104 - insufficient privileges
 * 105 - failed to remove user from group
 
@@ -341,7 +341,7 @@ Status codes:
 * 100 - successful
 * 101 - user does not exist
 * 102 - group does not exist
-* 103 - unkown failure
+* 103 - unknown failure
 
 Example
 -------
@@ -414,7 +414,7 @@ Status codes:
 
 * 100 - successful
 * 101 - user does not exist
-* 102 - unkown failure
+* 102 - unknown failure
 
 Example
 -------
@@ -443,7 +443,7 @@ XML Output
 groups / getgroups
 ==================
 
-Retrieves a list of groups from the cloud server. Authentication is done by sending a Basic HTTP Authorization header.
+Retrieves a list of groups from the ownCloud server. Authentication is done by sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/groups**
 
@@ -568,7 +568,7 @@ sending a Basic HTTP Authorization header.
 Status codes:
 
 * 100 - successful
-* 101 - group doesn't exist
+* 101 - group does not exist
 * 102 - unknown failure
 
 Example
@@ -607,7 +607,7 @@ sending a Basic HTTP Authorization header.
 Status codes:
 
 * 100 - successful
-* 101 - group doesn't exist
+* 101 - group does not exist
 * 102 - failed to delete group
 
 Example
@@ -633,7 +633,7 @@ XML Output
 apps / getapps
 ==============
 
-Returns a list of apps installed on the cloud server. Authentication is done by sending a Basic HTTP Authorization 
+Returns a list of apps installed on the ownCloud server. Authentication is done by sending a Basic HTTP Authorization 
 header.
 
 **Syntax: ocs/v1.php/cloud/apps/**
