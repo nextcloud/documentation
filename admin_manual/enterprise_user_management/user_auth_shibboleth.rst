@@ -317,9 +317,9 @@ Attributes
 
 **objectGUID**
 
-* *Example:* 
-* *Uniqueness:* 
-* *Other implications:* 
+* *Example:* 47AB881D-0655-414D-982F-02998C905A28
+* *Uniqueness:* Globally unique
+* *Other implications:* Incompatible with ``windows_network_drive`` app
 
 Keep in mind that ownCloud will derive the home folder from the ``uid``, unless 
 a home folder naming rule is in place. The only truly stable attribute is the 
