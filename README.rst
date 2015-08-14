@@ -28,6 +28,11 @@ Please wrap lines at 80 characters.
 .. note:: ``configuration_server/config_sample_php_parameters.rst`` is auto-generated from the core
    config.sample.php file; changes to this file must be made in core `<https://github.com/owncloud/core/tree/master/config>`_
 
+Conventions
+-----------
+
+ownCloud Apps Store
+
 License
 -------
 
