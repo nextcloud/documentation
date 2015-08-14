@@ -197,7 +197,7 @@ Additional Apache Configurations
 
     Satisfy Any
 
-* When using SSL, take special note on the ServerName. You should specify one in 
+* When using SSL, take special note of the ServerName. You should specify one in 
   the  server configuration, as well as in the CommonName field of the 
   certificate. If you want your ownCloud to be reachable via the internet, then 
   set both of these to the domain you want to reach your ownCloud server.
@@ -215,9 +215,9 @@ Additional Apache Configurations
 Enabling SSL
 ------------
 
-An Apache installed under Ubuntu comes already set-up with a simple
+Apache installed under Ubuntu comes already set-up with a simple
 self-signed certificate. All you have to do is to enable the ssl module and
-the according site. Open a terminal and run::
+the default site. Open a terminal and run::
 
      a2enmod ssl
      a2ensite default-ssl
@@ -225,7 +225,7 @@ the according site. Open a terminal and run::
 
 .. note:: Self-signed certificates have their drawbacks - especially when you
           plan to make your ownCloud server publicly accessible. You might want
-          to consider getting a certificate signed by commercial signing
+          to consider getting a certificate signed by a commercial signing
           authority. Check with your domain name registrar or hosting service,
           if you're using one, for good deals on commercial certificates.    
     
@@ -256,7 +256,7 @@ Configuration notes to php.ini files
 ------------------------------------
 
 Keep in mind that changes to ``php.ini`` may have to be done on more than one 
-ini file. This can be the case, as example, for the ``date.timezone`` setting.
+ini file. This can be the case, for example, for the ``date.timezone`` setting.
 
 **php.ini - used by the webserver:**
 ::
