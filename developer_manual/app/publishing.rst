@@ -41,11 +41,11 @@ App store:
 * available in Apps page in separate category
 * sorted first in all overviews, 'Official' tag
 * shown as featured, on owncloud.org etc
-* major releases optionally featured on owncloud.org and send to owncloud-announce list
+* major releases optionally featured on owncloud.org and sent to owncloud-announce list
 * new versions/updates approved by at least one other person
 
 note:
-Official apps include those part of the release tarball. We'd like to keep the tarball minimal so most official apps are not part of the standard installation.
+Official apps include those that are part of the release tarball. We'd like to keep the tarball minimal so most official apps are not part of the standard installation.
 
 Approved
 ^^^^^^^^
@@ -90,12 +90,12 @@ Requirements:
 App store:
 
 * show up in Apps page provided user has enabled "allow installation of experimental apps" in the settings.
-* Warning about security and stability risks show for app
+* Warning about security and stability risks is shown for app
 * sorted below all others.
 
 Getting an app approved
 -----------------------
-If you want your app to be approved, make sure you fulfill all the requirements and enter your details in `this form on the ownCloud website <http://owncloud.org/contribute/appform>`_. A team ownCloud contributors will review your application. As part of the process, you will be subscribed to the `ownCloud app review mailing list <http://mailman.owncloud.org/mailman/listinfo/appsreview>`_ where you can answer the questions and comments about your app. You are encouraged to help review other contributors' apps as well!
+If you want your app to be approved, make sure you fulfill all the requirements and enter your details in `this form on the ownCloud website <http://owncloud.org/contribute/appform>`_. A team of ownCloud contributors will review your application. As part of the process, you will be subscribed to the `ownCloud app review mailing list <http://mailman.owncloud.org/mailman/listinfo/appsreview>`_ where you can answer the questions and comments about your app. You are encouraged to help review other contributors' apps as well!
 
 Losing a rating
 ^^^^^^^^^^^^^^^
@@ -103,7 +103,7 @@ Apps can lose their rating when:
 
 * they are found to no longer satisfy the requirements
 * when security/malicious intent issues are found
-* when developer requests so
+* when a developer requests so
 
 App guidelines
 --------------
@@ -114,7 +114,7 @@ Legal and security
 
 * Apps can not use 'ownCloud' in their name
 * Irregular and unannounced security audits of all apps can and will take place.
-* If any indication of malicious intend or bad fait is found the developer(s) in question can count on a minimum 2 year ban from any ownCloud infrastructure.
+* If any indication of malicious intent or bad fait is found the developer(s) in question can count on a minimum 2 year ban from any ownCloud infrastructure.
    * Malicious intent includes deliberate spying on users by leaking user data to a third party system or adding a back door (like a hard-coded user account) to ownCloud. An unintentional security bug that gets fixed in time won't be considered bad faith.
 * Apps do not violate any laws; it has to comply with copyright- and trademark law.
 * App authors have to respond timely to security concerns and not make ownCloud more vulnerable to attack.
@@ -136,7 +136,7 @@ Respect the users
 * Apps correctly clean up after themselves on uninstall and correctly handle up- and downgrades
 * Apps clearly communicate their intended purpose and active features, including features introduced through updates.
 * Apps respect the users' choices and do not make unexpected changes, or limit users' ability to revert them. For example, they do not remove other apps or disable settings.
-* Apps must respect user privacy. IF user data is send anywhere, this must be clearly explained and be kept to a minimum for the functioning of an app. Use proper security measures when needed.
+* Apps must respect user privacy. IF user data is sent anywhere, this must be clearly explained and be kept to a minimum for the functioning of an app. Use proper security measures when needed.
 * App authors must provide means to contact them, be it through a bug tracker, forum or mail.
 
 Apps which break the guidelines will lose their 'approved' or 'official' state; and might be blocked from the app store altogether. This also has repercussions for the author, especially in case of security concerns, he/she might find themselves blocked from submitting applications.
