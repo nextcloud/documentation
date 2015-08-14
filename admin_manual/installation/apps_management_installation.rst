@@ -24,7 +24,7 @@ apps are enabled go to your Apps page.
 
 You will see which apps are enabled, not enabled, and recommended. You'll also 
 see additional filters, such as Multimedia and Productivity for finding 
-apps quickly. The ``More apps`` link takes you to the ownCloud App Store, and 
+apps quickly. The ``More apps`` link takes you to the ownCloud Apps Store, and 
 the ``Add your app`` link takes you to the ownCloud Developer Manual.
 
 Re-enabling Contacts and Calendar Apps
@@ -65,17 +65,17 @@ part of the ownCloud installation, it will be downloaded from the app store,
 installed and enabled. 
 
 You can view new, unreviewed or unstable applications in the 
-`ownCloud apps store <http://apps.owncloud.com/>`_.
+`ownCloud Apps Store <http://apps.owncloud.com/>`_.
 
-To view or install apps from the ownCloud apps store:
+To view or install apps from the ownCloud Apps Store:
 
 1. Scroll to the bottom of the Apps Information Field.
 
 2. Click *More apps*.
 
-   The ownCloud apps store launches.
+   The ownCloud Apps Store launches.
 
-3. Read about any of the apps in the ownCloud app store and download any that you like.
+3. Read about any of the apps in the ownCloud Apps Store and download any that you like.
 
 4. Extract a downloaded compressed file and place the contents (which should 
    themselves be contained in a folder with the app name) in the apps folder in 
