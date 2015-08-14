@@ -60,7 +60,7 @@ Database Choice
   user account with restricted rights.
 
 * There are restrictions as to what characters a database name may or may not contain; see the `MySQL Schema Object Names 
-  documentation`_ for details).
+  documentation`_ for details.
   
 .. _MySQL Schema Object Names documentation: http://dev.mysql.com/doc/refman/5.5/en/identifiers.html
 
