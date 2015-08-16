@@ -10,7 +10,7 @@ Large scale ownCloud deployments are typically installed as load balanced
 n-tier web applications.  Successfully managing such an installation requires
 active monitoring of the application and supporting infrastructure components.
 The purpose of this section is to outline the components of ownCloud that need
-to be monitored, and provide guidance on what to look for ownCloud in an
+to be monitored, and provide guidance on what to look for in ownCloud in an
 enterprise installation.
 
 ownCloud Deployment Architecture
@@ -60,7 +60,7 @@ ownCloud.log
 ownCloud also provides a built in logging function. If the ownCloud Enterprise Edition logging applications
 are enabled, this file will track user logins and shared file activity. If these logging applications are
 not enabled, this log file still tracks basic ownCloud health. Given the potential for this file to get
-quite large, the log file should be rotated on a daily basis, and given the important of the error information
+quite large, the log file should be rotated on a daily basis, and given the importance of the error information
 in the log file, this should be integrated with an enterprise log manager.
 
 
@@ -69,7 +69,7 @@ Logfile entries that start with the keyword “Error” should be logged and rep
 Apache
 ^^^^^^
 
-The apache error and access log should also be monitored. Significant spontanious changes of the number
+The apache error and access log should also be monitored. Significant spontaneous changes of the number
 of requests per second should also be monitored and looked into.
 
 
@@ -90,8 +90,8 @@ Load Balancer
 -------------
 
 The load balancer is monitoring the health of the application servers and is distributing the traffic in
-the optimal way. The application-servers are should additionally monitored to detect long lasting OS or
-hardware problems. Monitoring solutions like Nagos provide build in functionality to do this.
+the optimal way. The application-servers should also be monitored to detect long lasting OS or
+hardware problems. Monitoring solutions like Nagos provide built in functionality to do this.
 
 
 
