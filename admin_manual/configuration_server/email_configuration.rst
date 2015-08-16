@@ -141,7 +141,7 @@ SMTP
 If you want to send email using a local or remote SMTP server it is necessary
 to enter the name or IP address of the server, optionally followed by a colon
 separated port number, e.g. **:425**. If this value is not given the default
-port 25/tcp will be used unless you will change that by modifying the
+port 25/tcp will be used unless you change that by modifying the
 **mail_smtpport** parameter. Multiple servers can be entered, separated by
 semicolons:
 
@@ -301,7 +301,7 @@ Send a Test Email
 -----------------
 
 To test your email configuration, save your email address in your personal
-settings and then use the **Send email** button in *Email Server* section
+settings and then use the **Send email** button in the *Email Server* section
 of the Admin settings page.
 
 
@@ -339,7 +339,7 @@ reset email) having the domain part of the sender address appear as follows::
 
   no-reply@example.com
 
-**Question**: How can I find out if a SMTP server is reachable?
+**Question**: How can I find out if an SMTP server is reachable?
 
 **Answer**: Use the ping command to check the server availability::
 
