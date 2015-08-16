@@ -52,7 +52,7 @@ The test with getenv(\"PATH\") only returns an empty response
 -------------------------------------------------------------
 
 Some environments are not passing a valid PATH variable to ownCloud. The
-:ref:`using_php-fpm` are providing the information how to configure your environment.
+:ref:`using_php-fpm` provides the information about how to configure your environment.
 
 The "Strict-Transport-Security" HTTP header is not configured
 -------------------------------------------------------------
@@ -79,7 +79,7 @@ Your web server is not yet set up properly to allow file synchronization
 the WebDAV interface seems to be broken."
 
 At the ownCloud community forums a larger `FAQ <https://forum.owncloud.org/viewtopic.php?f=17&t=7536>`_
-is maintained containing various informations and debugging hints.
+is maintained containing various information and debugging hints.
 
 Outdated NSS / OpenSSL version
 ------------------------------
