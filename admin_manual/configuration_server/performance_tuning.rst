@@ -274,11 +274,11 @@ your webservers module for more information:
 Apache Tuning
 *************
 
-Maximum number Apache processes
-===============================
+Maximum number of Apache processes
+==================================
 
-An Apache process is using around 12MB of RAM. Apache should be configured that 
-the maximum number of HTTPD processes time 12MB is lower than the amount of 
+An Apache process uses around 12MB of RAM. Apache should be configured so that 
+the maximum number of HTTPD processes times 12MB is lower than the amount of 
 RAM. Otherwise the system begins to swap and the performance goes down. In this 
 case the maximum number is set to 6000.
 
@@ -384,7 +384,7 @@ On large instances you could consider `running MySQLTuner
 <https://github.com/major/MySQLTuner-perl/>`_ to optimize the database.
 
 See the section :doc:`../configuration_database/linux_database_configuration` 
-how to configure ownCloud for MySQL or MariaDB. If your installation is already 
+for how to configure ownCloud for MySQL or MariaDB. If your installation is already 
 running on
 SQLite then it is possible to convert to MySQL or MariaDB using the steps 
 provided in :doc:`../configuration_database/db_conversion`.
@@ -455,12 +455,12 @@ Find more details and tips on deploying large ownCloud installations in :doc:`..
 Nginx: caching ownCloud gallery thumbnails with fastcgi_cache_purge
 *******************************************************************
 
-One of the optimisations for ownCloud when using Nginx as webserver is to 
+One of the optimisations for ownCloud when using Nginx as the webserver is to 
 combine FastCGI caching with "Cache Purge", a `3rdparty Nginx module 
 <http://wiki.nginx.org/3rdPartyModules>`_  that adds the ability to purge 
 content from `FastCGI`, `proxy`, `SCGI` and `uWSGI` caches. This mechanism 
 speeds up thumbnail presentation as it shifts requests to Nginx and minimizes 
-php invocations which else would take place for every thumbnail presented every 
+php invocations which otherwise would take place for every thumbnail presented every 
 time.
  
 The following procedure is based on an Ubuntu 14.04 system. You may need to 
@@ -482,7 +482,7 @@ As a first step, it is necessary to check if your Nginx installation has the
  nginx -V 2>&1 | grep ngx_cache_purge -o
  
 If your output contains ``ngx_cache_purge``, you can continue with the 
-configuration, else you need to manually compile Nginx with the module needed.
+configuration, otherwise you need to manually compile Nginx with the module needed.
 
 Compile Nginx with the ``nginx-cache-purge`` module
 ===================================================
@@ -496,7 +496,7 @@ Compile Nginx with the ``nginx-cache-purge`` module
     sudo apt-key add nginx_signing.key
     sudo vi /etc/apt/sources.list.d/nginx.list
     
-Add following lines (in case, replace ``{trusty}`` by your distribution  
+Add the following lines (if different, replace ``{trusty}`` by your distribution  
 name)::
 
    deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx
@@ -543,12 +543,12 @@ If not present, add the following line at the top under::
    #export DH_VERBOSE=1:
    MODULESDIR = $(CURDIR)/debian/modules
    
-And the end of every ``configure`` command add::
+And at the end of every ``configure`` command add::
 
   --add-module=$(MODULESDIR)/ngx_cache_purge
     
 Don't forget to escape preceeding lines with a backslash ``\``.
-The parameters may now look::
+The parameters may now look like::
       
    $(WITH_SPDY) \
    --with-cc-opt="$(CFLAGS)" \
@@ -572,7 +572,7 @@ The parameters may now look::
 
    nginx -V 2>&1 | grep ngx_cache_purge -o
     
-It should show now: ``ngx_cache_purge``
+It should now show: ``ngx_cache_purge``
     
 Show Nginx version including all features compiled and installed::
 
@@ -589,7 +589,7 @@ For every nginx component listed run ``sudo apt-mark hold <component>``
 7. **Regular checks for nginx updates**
 
 Do a regular visit on the `Nginx news page <http://nginx.org>`_ and proceed 
-in case of updates with item 2 to 5.
+in case of updates with items 2 to 5.
 
 Configure Nginx with the ``nginx-cache-purge`` module
 =====================================================
@@ -643,7 +643,7 @@ Add *inside* the ``server{}`` block, as an example of a configuration::
          }
    
 .. note: Note regarding the ``fastcgi_pass`` parameter:
-   Use whatever fits your configuration. In the example above, a ``upstream`` 
+   Use whatever fits your configuration. In the example above, an ``upstream`` 
    was defined in an Nginx global configuration file.
    This then can look like::
        
