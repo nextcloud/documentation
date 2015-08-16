@@ -47,7 +47,7 @@ password, but simply log in as they normally do. It encrypts only the contents
 of files, and not filenames and directory structures.
 
 You should regularly backup all encryption keys to prevent permanent data loss. 
-The encryption keys are stored in following directories:
+The encryption keys are stored in the following directories:
 
 ``data/<user>/files_encryption`` 
   Users' private keys and all other keys necessary to decrypt the users' files
@@ -168,7 +168,7 @@ occ Encryption Commands
 
 You may also use the ``occ`` command to perform encryption operations.
 
-Get the current status of encryption and loaded encryption module::
+Get the current status of encryption and the loaded encryption module::
 
  occ encryption:status
 
