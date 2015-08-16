@@ -32,7 +32,7 @@ Restore Database
 MySQL
 ^^^^^
 
-MySQL is the recommended database engine. To backup MySQL::
+MySQL is the recommended database engine. To restore MySQL::
 
     mysql -h [server] -u [username] -p[password] [db_name] < owncloud-sqlbkp.bak
 
