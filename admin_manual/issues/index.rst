@@ -45,7 +45,7 @@ ownCloud Logfiles
 In a standard ownCloud installation the log level is set to ``Normal``. To find 
 any issues you need to raise the log level to ``All`` from the Admin page. 
 Please see :doc:`../configuration_server/logging_configuration` for more 
-informations on this log levels.
+information on these log levels.
 
 Some logging - for example JavaScript console logging - needs manually editing the
 configuration file.
@@ -61,7 +61,7 @@ For JavaScript issues you will also need to view the javascript console. All maj
 have decent developer tools for viewing the console, and you usually access them by
 pressing F-12. For Firefox it is recommended to install the `Firebug extension <https://getfirebug.com/>`_.
 
-.. note:: The logfile of ownCloud is located in the datadirectory 
+.. note:: The logfile of ownCloud is located in the data directory 
    ``/var/www/owncloud/data/owncloud.log``.
 
 phpinfo
@@ -103,16 +103,16 @@ Some common problems / error messages found in your logfiles as described above:
 
 * ``SQLSTATE[HY000] [1040] Too many connections`` -> You need to increase the
   connection limit of your database, please refer to the manual of your database
-  for more informations.
+  for more information.
 * ``SQLSTATE[HY000]: General error: 5 database is locked`` -> You're using ``SQLite``
   which can't handle a lot of parallel requests. Please consider converting to
   another database like described in :doc:`../configuration_database/db_conversion`.
 * ``SQLSTATE[HY000]: General error: 2006 MySQL server has gone away`` -> The database
   request takes too long and therefore the MySQL server times out. Its also possible
-  that the server is dropping a too large packet. Please refer to the manual of your
-  database how to raise the config options ``wait_timeout`` and/or ``max_allowed_packet``.
+  that the server is dropping a packet that is too large. Please refer to the manual of your
+  database for how to raise the config options ``wait_timeout`` and/or ``max_allowed_packet``.
 * ``SQLSTATE[HY000] [2002] No such file or directory`` -> There is a problem
-  accessing your SQLite database file in your datadirectory (``data/owncloud.db``).
+  accessing your SQLite database file in your data directory (``data/owncloud.db``).
   Please check the permissions of this folder/file or if it exists at all. If you're
   using MySQL please start your database.
 * ``Connection closed / Operation cancelled`` -> This could be caused by wrong ``KeepAlive``
@@ -137,13 +137,13 @@ and ownCloud itself.
   You need to set the directive ``log_errors`` to ``On`` and choose the path
   to store the logfile in the ``error_log`` directive. After those changes you
   need to restart your Webserver.
-* The logfile of ownCloud is located in the datadirectory ``/var/www/owncloud/data/owncloud.log``.
+* The logfile of ownCloud is located in the data directory ``/var/www/owncloud/data/owncloud.log``.
 
 Webserver and PHP modules
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 There are some Webserver or PHP modules which are known to cause various problems
-like broken up-/downloads. The following shows a draft overview over this modules:
+like broken up-/downloads. The following shows a draft overview of these modules:
 
 1. Apache
 
@@ -197,7 +197,7 @@ helpful. See:
   (Describes problems with Finder on various webservers)
 
 There is also a well maintained FAQ thread available at the `ownCloud Forums <https://forum.owncloud.org/viewtopic.php?f=17&t=7536>`_
-which contains various additional informations about WebDAV problems.
+which contains various additional information about WebDAV problems.
 
 Troubleshooting Contacts & Calendar
 -----------------------------------
@@ -214,11 +214,11 @@ There are several techniques to remedy this, which are described extensively at 
 Apple iOS
 ~~~~~~~~~
 
-Below is what have proven to work with iOS including iOS 7.
+Below is what has been proven to work with iOS including iOS 7.
 
 If your ownCloud instance is installed in a subfolder under the web server's document root and
 the client has difficulties finding the Cal- or CardDAV end-points, configure your web server to
-redirect from a "well-know" URL to the one used by ownCloud.
+redirect from a "well-known" URL to the one used by ownCloud.
 When using the Apache web server this is easily achieved using a :file:`.htaccess` file in the document
 root of your site.
 
@@ -228,7 +228,7 @@ create or edit the :file:`.htaccess` file and add the following lines::
     Redirect 301 /.well-known/carddav /owncloud/remote.php/carddav
     Redirect 301 /.well-known/caldav /owncloud/remote.php/caldav
 
-If you use lighttpd as web server, the setting looks something like::
+If you use lighttpd as the web server, the setting looks something like::
 
     url.redirect = (
         "^/.well-known/carddav" => "/owncloud/remote.php/carddav",
