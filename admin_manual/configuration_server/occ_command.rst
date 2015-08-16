@@ -22,7 +22,7 @@ Run occ As Your HTTP User
 -------------------------
 
 The HTTP user is different on the various Linux distributions. See 
-:ref:`strong_perms` to learn how to find your HTTP user
+:ref:`strong_perms` to learn how to find your HTTP user.
    
 * The HTTP user and group in Debian/Ubuntu is www-data.
 * The HTTP user and group in Fedora/CentOS is apache.
@@ -182,7 +182,7 @@ possible to list all config values with one command::
 
   $ sudo -u www-data php occ config:list
 
-By default passwords and other sensitive data is omitted from the report, so the
+By default passwords and other sensitive data are omitted from the report, so the
 output can be posted publicly (e.g. as part of a bug report). In order to
 generate a full backport of all config values the ``--private`` flag needs to be
 set::
@@ -461,7 +461,7 @@ connected to an LDAP server::
  
 ``ldap:check-user`` will not run a check when it finds a disabled LDAP 
 connection. This prevents users that exist on disabled LDAP connections from 
-being marked as deleted. If you know for certain that user you are searching for 
+being marked as deleted. If you know for certain that the user you are searching for 
 is not in one of the disabled connections, and exists on an active connection, 
 use the ``--force`` option to force it to check all active LDAP connections::
 
