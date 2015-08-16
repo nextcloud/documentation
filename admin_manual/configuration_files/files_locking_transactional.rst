@@ -15,7 +15,7 @@ The new file locking mechanism has these capabilities:
   files inside the directories
 * Releases locks after file transactions are interrupted, for 
   example when a sync client loses the connection during an upload
-* Manage locking and releasing locks correctly on shared files during changes 
+* Manages locking and releasing locks correctly on shared files during changes 
   from multiple users
 * Manages locks correctly on external storage mounts
 * Manages encrypted files correctly
