@@ -18,4 +18,4 @@ The server should support :abbr:`OCS (Open Collaboration Services)`.
     "knowledgebaseenabled" => true,
     "knowledgebaseurl"     => "http://api.apps.owncloud.com/v1",
 
-.. note:: Disabling the help menu item might increase the number of support request you have to answer in the future
+.. note:: Disabling the help menu item might increase the number of support requests you have to answer in the future
