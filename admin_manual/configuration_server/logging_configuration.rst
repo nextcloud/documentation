@@ -2,7 +2,7 @@ Logging Configuration
 =====================
 To get an idea of how the current status of an ownCloud system is or to
 solve issues log information is a good point to start with. ownCloud allows
-to configure the way how and which depth of information should be logged.
+the way, and which depth of information should be logged to be configured.
 
 Parameters
 ----------
@@ -19,10 +19,10 @@ will be logged. You can choose between:
 
 The most detailed information will be written if **0** (DEBUG) is set, the
 least information will be written if **3** (ERROR) is set. Keep in mind that
-it might slow down the whole system if a too detailed logging will has been
+it might slow down the whole system if too detailed logging has been
 configured. By default the log level is set to **2** (WARN).
 
-This parameters can be set in the :file:`config/config.php`
+These parameters can be set in the :file:`config/config.php`
 
 ownCloud
 ~~~~~~~~
@@ -48,7 +48,7 @@ date format in the example the date/time format will be written in the format
 
 syslog
 ~~~~~~
-All log information will be send to the default syslog daemon of a system.
+All log information will be sent to the default syslog daemon of a system.
 
 .. code-block:: php
 
