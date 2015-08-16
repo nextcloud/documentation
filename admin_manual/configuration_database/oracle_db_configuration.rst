@@ -7,7 +7,7 @@ Oracle Database Setup
     :hidden:
 
 This document will cover the setup and preparation of the ownCloud server to
-support the use or Oracle as a backend database.  For the purposes of testing,
+support the use of Oracle as a backend database.  For the purposes of testing,
 we are setting up using Oracle Enterprise Linux as both the web server that
 will host ownCloud and as a host for the Oracle Database.
 
@@ -50,7 +50,7 @@ Substitute an actual password for ``password``.  Items like TableSpace, Quota et
 Downloading and Installing the Oracle Instant Client
 ----------------------------------------------------
 
-As was mentioned in the outset of this document, the example in this document
+As was mentioned at the outset of this document, the example in this document
 involves the Web servers being Oracle Enterprise Linux, in this case it is
 necessary to go to the Oracle site and download the `Oracle Instant Client`_ for
 your OS Distribution.
@@ -156,7 +156,7 @@ In this example the users table space (as is seen in the user creation script ab
 Configuration File
 ------------------
 
-Assuming all of the steps have been followed to completion, The first run wizard should complete and have an operating instance of ownCloud should appear.
+Assuming all of the steps have been followed to completion, The first run wizard should complete and an operating instance of ownCloud should appear.
 
 The configuration file should look something like this:
 
