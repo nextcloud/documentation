@@ -17,7 +17,7 @@ Logging levels range from **DEBUG**, which logs all activity, to **FATAL**, whic
 
 By default the log level is set to **2** (WARN). Use **DEBUG** when you have a problem to diagnose, and then reset your log level to a less-verbose level as **DEBUG** outputs a lot of information, and can affect your server performance.
 
-Logging level parameters are set in the :file:`config/config.php`, or on the Admin page of your ownCloud Web GUI.
+Logging level parameters are set in the :file:`config/config.php` file, or on the Admin page of your ownCloud Web GUI.
 
 ownCloud
 ~~~~~~~~
