@@ -7,7 +7,7 @@ Use your ownCloud log to review system status, or to help debug problems. You ma
 Parameters
 ----------
 
-Logging levels range from **DEBUG**, which logs all activity, to **ERROR**, which logs only errors.
+Logging levels range from **DEBUG**, which logs all activity, to **FATAL**, which logs only fatal errors.
 
 * **0**: DEBUG: All activity; the most detailed logging.
 * **1**: INFO:  Activity such as user logins and file activities, plus warnings, errors, and fatal errors.
