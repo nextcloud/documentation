@@ -28,7 +28,7 @@ If you decide to use a MySQL or MariaDB database, ensure the following:
 
 * That you have installed and enabled the MySQL extension in PHP
 
-* That the **mysql.default_socket** points to the correct socket (if the database runs on same server as ownCloud).
+* That the **mysql.default_socket** points to the correct socket (if the database runs on the same server as ownCloud).
 
 .. note:: MariaDB is backwards compatible with MySQL.  All instructions work for both. You will not need to replace mysql with anything.
 
@@ -293,7 +293,7 @@ command line interface:
 
 **MySQL**:
 
-Assuming the database server is installed on the same sytem you're running,
+Assuming the database server is installed on the same system you're running
 the command from, use::
 
   mysql -uUSERNAME -p
@@ -316,7 +316,7 @@ the respective host name::
 
 **PostgreSQL**:
 
-Assuming the database server is installed on the same sytem you're running
+Assuming the database server is installed on the same system you're running
 the command from, use::
 
   psql -Uusername -downcloud
