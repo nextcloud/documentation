@@ -1,7 +1,7 @@
 Mimetype mapping
 ================
 
-ownCloud allows administrators to specify the mapping of a file extention to a
+ownCloud allows administrators to specify the mapping of a file extension to a
 mimetype. For example files ending in ``mp3`` map to ``audio/mpeg``. Which 
 then in turn allows ownCloud to show the audio icon.
 
