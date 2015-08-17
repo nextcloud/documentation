@@ -32,10 +32,10 @@ Overwrite Parameters
 --------------------
 
 The automatic hostname, protocol or webroot detection of ownCloud can fail in
-certain reverse proxy situations. This configuration allows to manually override
-the automatic detection.
+certain reverse proxy situations. This configuration allows the automatic detection
+to be manually overridden.
 
-If ownCloud fails to automatically detected the hostname, protocol or webroot
+If ownCloud fails to automatically detect the hostname, protocol or webroot
 you can use the **overwrite** parameters inside the :file:`config/config.php`.
 The **overwritehost** parameter is used to set the hostname of the proxy. You
 can also specify a port. The **overwriteprotocol** parameter is used to set the
@@ -72,5 +72,5 @@ you can set the following parameters inside the :file:`config/config.php`.
   );
 
 .. note:: If you want to use the SSL proxy during installation you have to
-  create the :file:`config/config.php` otherwise you have to extend to existing
+  create the :file:`config/config.php` otherwise you have to extend the existing
   **$CONFIG** array.
