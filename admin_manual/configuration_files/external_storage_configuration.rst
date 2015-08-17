@@ -11,7 +11,7 @@ Object Notation) format. At the moment two different types of entries exist:
    users.
 
 For each type, there is a JSON array with the user/group name as key, and an
-array of configuration entries as value. Each entry consist of the class name
+array of configuration entries as value. Each entry consists of the class name
 of the storage backend and an array of backend specific options and will be
 replaced by the user login. The template **$user** can be used in the mount
 point or backend options. As of writing the following storage backends are
@@ -59,7 +59,7 @@ Using self-signed certificates
 
 When using self-signed certificates for external storage mounts the certificate
 needs to be imported in the personal settings of the user. Please refer to `this <http://ownclouden.blogspot.de/2014/11/owncloud-https-external-mount.html>`_
-blogpost for more informations.
+blogpost for more information.
 
 Adding files to external storages
 ---------------------------------
@@ -67,10 +67,10 @@ Adding files to external storages
 In general it is recommended to configure the background job ``Webcron`` or
 ``Cron`` as described in :doc:`../configuration_server/background_jobs_configuration`
 so ownCloud is able to detect files added to your external storages without the need
-that a users is browsing your ownCloud installation.
+for a user to be browsing your ownCloud installation.
 
 Please also be aware that ownCloud might not always be able to find out what has been
-changed remotely (files changes without going through ownCloud), especially
+changed remotely (files changed without going through ownCloud), especially
 when it's very deep in the folder hierarchy of the external storage.
 
 You might need to setup a cron job that runs ``sudo -u www-data php occ files:scan --all``
@@ -167,8 +167,8 @@ to be used is **\\OC\\Files\\Storage\\FTP**\  and takes the following
 options:
 
 -  **host**: the hostname of the ftp server, and optionally the port number
--  **user**: the username used to login on the ftp server
--  **password**: the password to login on the ftp server
+-  **user**: the username used to login to the ftp server
+-  **password**: the password to login to the ftp server
 -  **secure**: whether to use ftps:// (FTP over TLS) to connect to the ftp
    server instead of ftp:// (optional, defaults to false)
 -  **root**: the remote subfolder inside the ftp server to mount (optional, defaults
@@ -191,7 +191,7 @@ Example
         "priority":100
     }
 
-.. note:: PHP needs to be build with FTP support for this backend to work.
+.. note:: PHP needs to be built with FTP support for this backend to work.
 
 .. note:: The external storage ``FTP/FTPS/SFTP`` needs the ``allow_url_fopen`` PHP
    setting to be set to ``1``. When having connection problems make sure that it is
@@ -207,7 +207,7 @@ options:
 
 -  **host**: the hostname of the SSH server
 -  **user**: the username used to login to the SSH server
--  **password**: the password to login on the SSH server
+-  **password**: the password to login to the SSH server
 -  **root**: the remote subfolder inside the SSH server to mount (optional, defaults
    to ‘/’)
 
@@ -227,7 +227,7 @@ Example
         "priority":100
     }
 
-.. note:: PHP needs to be build with SFTP support for this backend to work.
+.. note:: PHP needs to be built with SFTP support for this backend to work.
 
 .. note:: The external storage ``FTP/FTPS/SFTP`` needs the ``allow_url_fopen`` PHP
    setting to be set to ``1``. When having connection problems make sure that it is
@@ -241,8 +241,8 @@ storage support’ app, the class to be used is **\\OC\\Files\\Storage\\SMB**\  
 takes the following options:
 
 -  **host**: the host name of the samba server
--  **user**: the username or domain/username to login on the samba server
--  **password**: the password to login on the samba server
+-  **user**: the username or domain/username to login to the samba server
+-  **password**: the password to login to the samba server
 -  **share**: the share on the samba server to mount
 -  **root**: the remote subfolder inside the samba share to mount (optional, defaults
    to ‘/’). To assign the ownCloud logon username automatically to the subfolder, use ``$user`` instead of a particular subfolder name.
@@ -288,8 +288,8 @@ the class to be used is **\\OC\\Files\\Storage\\DAV**\  and takes the
 following options:
 
 -  **host**: the hostname of the webdav server.
--  **user**: the username used to login on the webdav server
--  **password**: the password to login on the webdav server
+-  **user**: the username used to login to the webdav server
+-  **password**: the password to login to the webdav server
 -  **secure**: whether to use https:// to connect to the webdav server
    instead of http:// (optional, defaults to false)
 -  **root**: the remote subfolder inside the webdav server to mount (optional,
@@ -408,8 +408,8 @@ the following options:
 
 -  **host**: the hostname of the authentication server for the swift
    storage.
--  **user**: the username used to login on the swift server
--  **token**: the authentication token to login on the swift server
+-  **user**: the username used to login to the swift server
+-  **token**: the authentication token to login to the swift server
 -  **secure**: whether to use ftps:// to connect to the swift server instead
    of ftp:// (optional, defaults to false)
 -  **root**: the container inside the swift server to mount (optional,
