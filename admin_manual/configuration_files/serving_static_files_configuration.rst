@@ -48,8 +48,8 @@ For versions >=0.10 (e.g. Ubuntu 12.10)
 
 * **SetEnv MOD_X_SENDFILE_ENABLED**: tells ownCloud scripts that they should add the X-Sendfile header when serving files
 * **XSendFile**: enables web server handling of X-Sendfile headers (and therefore file serving) for the specified Directory
-* **XSendFileAllowAbove (<0.10)**: enables file serving through web server on path outside the specified Directory. This is needed for configured local mounts which may reside outside data directory
-* **XSendFilePath (>=0.10)**: a white list of paths that the web server is allowed to serve outside of the specified Directory. Other paths which correspond to local mounts should be configured here as well. For a more in-depth documentation of this directive refer to mod_xsendfile website linked above
+* **XSendFileAllowAbove (<0.10)**: enables file serving through the web server on a path outside the specified Directory. This is needed for configured local mounts which may reside outside the data directory.
+* **XSendFilePath (>=0.10)**: a white list of paths that the web server is allowed to serve outside of the specified Directory. Other paths which correspond to local mounts should be configured here as well. For a more in-depth documentation of this directive refer to the mod_xsendfile website linked above.
 
 LigHTTPd (X-Sendfile2)
 ----------------------
@@ -88,7 +88,7 @@ X-Accel-Redirect is supported by default in Nginx and no additional operation sh
 
 Configuration - Method 1
 ~~~~~~~~~~~~~~~~~~~~~~~~
-Method 1 is prefered because it limits what files can be served through X-Accel. ::
+Method 1 is preferred because it limits what files can be served through X-Accel. ::
 
     location ~ \.php(?:$|/) {
         ...
@@ -106,7 +106,7 @@ Method 1 is prefered because it limits what files can be served through X-Accel.
     #        alias /path/to/local-mountpoint;
     #    }
 
-    #    A 'Local' External Storage Mountpoint available to mulitple users
+    #    A 'Local' External Storage Mountpoint available to multiple users
     #    location ~ ^/data/(?:USER1|USER2)/files/LOCAL-FS-MOUNT-NAME/(.+)$ {
     #        alias /path/to/local-mountpoint/$1;
     #    }
@@ -133,7 +133,7 @@ Method 1 is prefered because it limits what files can be served through X-Accel.
 Configuration - Method 2
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Method 2 is simpler to setup when using local external storage mounts, especially when they are available to many, but not all users.
-This method may be prefered if you are regularly adding users that should not all have access to the same local external storage mount(s). ::
+This method may be preferred if you are regularly adding users that should not all have access to the same local external storage mount(s). ::
 
     location ~ \.php(?:$|/) {
         ...
@@ -147,7 +147,7 @@ This method may be prefered if you are regularly adding users that should not al
     }
 
 * **fastcgi_param MOD_X_ACCEL_REDIRECT_ENABLED** ~ Tells ownCloud scripts that they should add the X-Accel-Redirect header when serving files.
-* **fastcgi_param MOD_X_ACCEL_REDIRECT_PREFIX** ~ A prefix to internally serve files from, in this example "/xaccel" is used but this is configurabl.e
+* **fastcgi_param MOD_X_ACCEL_REDIRECT_PREFIX** ~ A prefix to internally serve files from, in this example "/xaccel" is used but this is configurable.
 * **location ^~ /xaccel** ~ The location to internally serve files from, must match MOD_X_ACCEL_REDIRECT_PREFIX.
 
 How to check if it's working?
