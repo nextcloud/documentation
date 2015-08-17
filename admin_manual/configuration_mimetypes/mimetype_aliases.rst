@@ -42,7 +42,7 @@ text/code
   Source code
 
 Once you have made changes to ``config/mimetypealiases.json``, run the
-following to propogate the changes through the system::
+following to propagate the changes through the system::
 
   $ ./occ maintenance:mimetypesjs
 
