@@ -22,7 +22,7 @@ indicates an intermediate release, e.g. 8.0.5.
    versions of ownCloud to ownCloud 8.0, you must manually migrate your 
    encryption keys with the *occ* command after the upgrade is complete, like 
    this example for CentOS:
-   *sudo -u apache php occ encryption:migrate-keys*
+   *sudo -u apache php occ encryption:migrate*
    You must run *occ* as your HTTP user. See 
    :doc:`../configuration_server/occ_command` to learn more about *occ*
 
