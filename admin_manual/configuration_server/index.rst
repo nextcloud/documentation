@@ -19,7 +19,7 @@ ownCloud Server Configuration
    language_configuration
    logging_configuration
    harden_server
-   performance_tuning   
    reverse_proxy_configuration
    search_configuration   
    thirdparty_php_configuration
+   performance_tuning
