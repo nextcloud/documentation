@@ -3,15 +3,15 @@ Server Tuning & Performance Tips
 ################################
 
 There are a number of options to tune the ownCloud installation and enable a 
-high level of performance. The database, for example, needs indexes in the most 
-active tables. The number of live Apache connections needs to be turned up to 
-1000 or more, and the number of allowed MySQL connections also has to be 
-increased to the same. Turning on the Alternative PHP Cache (APC) will also 
-increase performance on the app servers, and there are likely a number of 
-environment and policy specific configurations needed as well in any given 
-deployment.
+higher level of performance. This chapter gives a few hands-on tips on 
+configuring your database, and LAMP stack to improve performance. This chapter 
+is community-maintained and unsupported; test these tips carefully before 
+deploying them on production servers.
 
-This chapter gives a few hands-on tips on how to achieve this.
+If you wish to add tips to this page, please put them in the relevant section. 
+If there isn't an appropriate section then start a new one.
+
+.. _phpinfo:
 
 ***************************
 PHP Version and Information
@@ -25,7 +25,8 @@ contains just this line::
 
  <?php phpinfo(); ?>
 
-Open this file in a Web browser:
+Open this file in a Web browser by pointing your browser to 
+``localhost/phpinfo.php``:
 
 .. figure:: ../images/phpinfo.png
 
@@ -35,150 +36,6 @@ When you are finished reviewing your information you must delete
 ``phpinfo.php``, or move it outside of your Web directory, because it is a 
 security risk to expose such sensitive data.
 
-********************
-General Linux tuning
-********************
-
-System configuration overview
-=============================
-
-.. code-block:: console
-
-	# cat /etc/sysctl.conf
-        ...
-	net.core.somaxconn = 4096
-	net.ipv4.tcp_max_syn_backlog = 2048
-        ...
-	# ulimit -nH 4096
-
-Make sure that your ``/tmp`` is in ramdisk which improves session handling
-performance. To do so, add the following to ``/etc/fstab``::
-
-	none /tmp tmpfs,size=6g defaults
-
-.. _caching:
-	
-Caching
-=======	
-
-.. note:: Memory cache configuration for the ownCloud server is no longer
-          automatic, requiring configuration in config.php with the keys
-          memcache.local and/or memcache.distributed;
-          see :doc:`config_sample_php_parameters`.
-          Before the memcache.local can be used you need to install
-          APC, APCu or XCache.
-
-Caching improves performance by storing data, code, and other objects in 
-memory. 
-
-The APC or OPCache bytecode cache are commonly used in PHP environments. This 
-example installs APC on CentOS/Red Hat/Fedora systems running PHP 5.4:
-
-.. code-block:: console
-
-	$ sudo yum install php-pecl-apc
-	
-On Ubuntu systems running PHP 5.4 this command installs APC:
-
-.. code-block:: console
-
-        $ sudo apt-get install php-apc
-             
-PHP 5.5 replaces APC with OPCache. OPCache is bundled with PHP 5.5 so it should 
-not be necessary to install it separately. OPCache improves PHP performance by 
-storing precompiled script bytecode in shared memory, thereby removing the need 
-for PHP to load and parse scripts on each request. This extension is bundled 
-with PHP 5.5.0 and later, and is available in PECL for PHP versions 5.2, 5.3, 
-and 5.4.
-
-APC is both an opcode cache and data store. OPCache is only an opcode cache, so 
-for caching user data you should also install APCu.
-
-You can test the state of APC(u) by putting the testing file from the documentation
-in your server root. It is usually called 'apc.php' and can be found in
-/usr/share/doc/php5-apcu/apc.php or /usr/share/doc/packages/php5-apcu/apc.php or
-a similar location, depending on your distribution.
-
-The Redis key-value cache and store is an excellent fast and robust cache. For 
-configuration examples see :doc:`config_sample_php_parameters`. 
-
-Distributed PHP environments should use Memcached. Memcached servers must be 
-specified in the ``memcached_servers`` array in ownCloud's config file 
-``config.php``. For examples see :doc:`config_sample_php_parameters`.
-
- .. note:: When a memory cache has been configured, but is unavailable due to a
-           a missing extension or server downtime, ownCloud will be
-           inaccessible, as a memory cache is considered to be a vital
-           component.
-           This does not however affect **occ**, which will instead just print
-           a warning to the logs.
-
-Tuning System Parameters
-========================
-
-Configuration for more concurrent requests.
-
-.. code-block:: bash
-
-	echo "2048 64512" > /proc/sys/net/ipv4/ip_local_port_range
-	echo "1" > /proc/sys/net/ipv4/tcp_tw_recycle
-	echo "1" > /proc/sys/net/ipv4/tcp_tw_reuse
-	echo "10" > /proc/sys/net/ipv4/tcp_fin_timeout
-
-	echo "65535" > /proc/sys/net/core/somaxconn
-	echo "65535" > /proc/sys/net/ipv4/tcp_max_syn_backlog
-	echo "262144" > /proc/sys/net/netfilter/nf_conntrack_max
-
-Check if the values have been set accordingly:
-
-.. code-block:: console
-
-	# cat /proc/sys/net/ipv4/ip_local_port_range
-        2048 64512
-	# cat /proc/sys/net/ipv4/tcp_tw_recycle
-        1
-	# cat /proc/sys/net/ipv4/tcp_tw_reuse
-        1
-	# cat /proc/sys/net/ipv4/tcp_fin_timeout
-        10
-	# cat /proc/sys/net/core/somaxconn
-        65535
-	# cat /proc/sys/net/ipv4/tcp_max_syn_backlog
-        65535
-	# cat /proc/sys/net/netfilter/nf_conntrack_max
-        262144
-
-Next, persist the settings across reboots by adding them into ``/etc/sysctl.conf``::
-
-	net.ipv4.ip_local_port_range = 2048 64512
-	net.ipv4.tcp_tw_recycle = 1
-	net.ipv4.tcp_tw_reuse = 1
-	net.ipv4.tcp_fin_timeout = 10
-
-	net.core.somaxconn = 65535
-	net.ipv4.tcp_max_syn_backlog = 65535
-	net.netfilter.nf_conntrack_max = 262144
-
-Tuning Memory
-=============
-
-Add RAM disk to fstab::
-
-	- none /var/www/html tmpfs defaults,size=6g
-
-Move PHP Code into RAM Disk:
-
-.. code-block:: console
-
-	# mv /var/www/html /var/www/html_fs
-
-Copy ownCloud installation to RAM Disk and symlink storage to ownCloud ``data``
-directory.
-
-.. note:: ram disks are not reboot-safe. You need to establish a way to persist them,
-          for instance by using ``cp`` or ``rsync`` to transfer them from a location
-          on the hard disk to the ram disk before apache starts.
-          
 **********************
 ownCloud Server Tuning
 **********************
@@ -186,73 +43,33 @@ ownCloud Server Tuning
 Serving static files via web server
 ===================================
 
-See the section 
-:doc:`../configuration_files/serving_static_files_configuration` for a 
+See :doc:`../configuration_files/serving_static_files_configuration` for a 
 description and the benefits.
 
 Using cron to perform background jobs
 =====================================
 
-See the section :doc:`background_jobs_configuration` for a description and the 
+See :doc:`background_jobs_configuration` for a description and the 
 benefits.
 
 Enable JavaScript and CSS Asset Management
 ==========================================
 
-See the section :doc:`js_css_asset_management_configuration` for a description and the 
+See :doc:`js_css_asset_management_configuration` for a description and the 
 benefits.
-         
-********************          
-SSL / Encryption App
-********************
-
-SSL (HTTPS) and file encryption/decryption can be offloaded to a processor's 
-AES-NI extension. This can both speed up these operations while lowering 
-processing overhead. This requires a processor with the `AES-NI instruction set 
-<http://wikipedia.org/wiki/AES_instruction_set>`_.
-
-Here are some examples how to check if your CPU / environment supports the 
-AES-NI extension:
-
-* For each CPU core present: ``grep flags /proc/cpuinfo`` or as a summary for 
-  all cores: ``grep -m 1 ^flags /proc/cpuinfo`` If the result contains any 
-  ``aes``, the extension is present.   
-
-.. windows is not supported on 8.x  
-.. * On Windows you can run ``coreinfo`` from Sysinternals `Windows 
-.. Sysinternals 
-..  Download Coreinfo 
-..  <https://technet.microsoft.com/en-us/sysinternals/cc835722.aspx>`_ which 
-..  gives you details of the processor and extensions present. Note: you may 
-.. have 
-..  to run the command shell as administrator to get an output.
-  
-* Search eg. on the Intel web if the processor used supports the extension 
-  `Intel Processor Feature Filter 
-  <http://ark.intel.com/MySearch.aspx?AESTech=true>`_ You may set a filter by 
-  ``"AES New Instructions"`` to get a reduced result set.
-   
-* For versions of openssl >= 1.0.1, AES-NI does not work via an engine and 
-  will not show up in the ``openssl engine`` command. It is active by default 
-  on the supported hardware. You can check the openssl version via ``openssl 
-  version -a``
-    
-* If your processor supports AES-NI but it does not show up eg via grep or 
-  coreinfo, it is maybe disabled in the BIOS.
-  
-* If your environment runs virtualized, check the virtualization vendor for 
-  support.
-  
-SSL session reuse
-=================
-
-You should enable SSL session tickets or SSL session identifiers in your
-web server. This will lead to lower delay in connection setup time for
-TCP connections to the ownCloud.
-
+          
 **************  
 Webserver Tips
 **************
+
+PHP safe mode
+=============
+
+PHP safe mode has to be turned off. It is deprecated and has been removed in
+newer PHP versions. Verify its status in `phpinfo_`, and look for ``safe_mode 
+on/off``. If it is on, then add this line to ``php.ini`` to turn it off::
+
+ safe_mode = Off
 
 Enable the SPDY protocol
 ========================
@@ -303,12 +120,6 @@ helps to free server memory, and HTTP connections are closed faster.
 .. mod_deflate should be used because it speeds up the transfer of data and helps
 .. to free server memory and http connections are closed faster
 
-PHP safe mode
-=============
-
-PHP safe mode has to be turned off. It is deprecated and will be removed in
-newer PHP versions.
-
 MPM
 ===
 
@@ -329,7 +140,8 @@ Log files
 
 Log files should be switched off for maximum performance.
 
-Comment out the ``CustomLog`` directive. Keep ``ErrorLog`` to be able to track down errors.
+Comment out the ``CustomLog`` directive. Keep ``ErrorLog`` to be able to track 
+down errors.
 
 .. todo: loglevel?
 
@@ -351,109 +163,9 @@ MaxKeepAliveRequests 4096
 		Options Indexes SymLinksIfOwnerMatch AllowOverride All
 	</Directory>
 
-**********************
-Database Best Practice
-**********************
-
-Currently ownCloud supports the following relational database management systems:
-
-- MySQL
-- MariaDB
-- PostgreSQL
-- SQLite
-- Oracle
-
-SQLite is not supported in the Enterprise edition, and is not recommended 
-except for systems with very light workloads, and for testing ownCloud.
-
-We are using the `doctrine database abstraction layer`_ and schema evolution 
-with a `MDB2 Schema`_ based table description in XML.
-
-.. _doctrine database abstraction layer: http://www.doctrine-project.org/projects/dbal.html
-.. _MDB2 Schema: https://raw2.github.com/pear/MDB2_Schema/master/docs/xml_schema_documentation.html
-
-
-Using MariaDB/MySQL instead of SQLite
-=====================================
-
-MySQL or MariaDB are preferred because of the `performance limitations of 
-SQLite with highly concurrent applications 
-<http://www.sqlite.org/whentouse.html>`_, like ownCloud.
-
-On large instances you could consider `running MySQLTuner 
-<https://github.com/major/MySQLTuner-perl/>`_ to optimize the database.
-
-See the section :doc:`../configuration_database/linux_database_configuration` 
-for how to configure ownCloud for MySQL or MariaDB. If your installation is already 
-running on
-SQLite then it is possible to convert to MySQL or MariaDB using the steps 
-provided in :doc:`../configuration_database/db_conversion`.
-
-Improve slow performance with MySQL on Windows
-==============================================
-
-On Windows hosts running MySQL on the same system changing the parameter 
-``dbhost`` in your ``config/config.php``
-from ``localhost`` to ``127.0.0.1`` could improve the page loading time.
-
-See also `this forum thread 
-<http://forum.owncloud.org/viewtopic.php?f=17&t=7559>`_.
-
-Other performance improvements
-==============================
-
-Mysql: compare https://tools.percona.com/wizard to your current settings
-MariaDB: https://mariadb.com/kb/en/optimization-and-tuning/
-
-Postgresql
-==========
-
-Alternative to MariaDB/MySQL. Used in production by a few core developers.
-
-Requires at least Postgresql 9.0
-
-Other performance improvements
-------------------------------
-
-See http://wiki.postgresql.org/wiki/Performance_Optimization
-
-Oracle Database
-===============
-
-Usage scenario: Existing enterprise installations. Only core apps are supported 
-and tested. Not recommended because it involves compiling the oci8
-
-Other performance improvements
-------------------------------
-
-http://de.slideshare.net/cjorcl/best-practices-php-and-the-oracle-database and ask your DBA.
-
-Problems
---------
-
-When ORA-56600 occurs (Oracle Bug 8467564) set this php.ini setting:
-`oci8.statement_cache_size=1000`, see `oracle forum discussion`_
-
-.. _oracle forum discussion: https://community.oracle.com/message/3468020#3468020
-
-
-*****************
-Scalability notes
-*****************
-
-When multiple installations are an option due to geographical or task related separation, using the Federated Cloud Sharing functionality to run separate ownCloud instances which link to each other can be helpful when scaling to hundreds of thousands of users. See :doc:`../configuration_files/federated_cloud_sharing_configuration`.
-
-In general, scalability of ownCloud goes up significantly in each release. For example, ownCloud 8.1 can sustain over 50% more users on the same hardware as ownCloud 8.0 could. If the ability to have many users on a single ownCloud server is an important consideration, use the latest ownCloud Server and client versions.
-
-Find more details and tips on deploying large ownCloud installations in :doc:`../operations/scaling_multiple_machines`, the `ownCloud whitepapers`_ on owncloud.com and the `ownCloud FAQ`_.
-
-.. _ownCloud whitepapers: https://owncloud.com/whitepapers
-
-.. _ownCloud FAQ: https://owncloud.org/faq/#scaling
-
-*******************************************************************
-Nginx: caching ownCloud gallery thumbnails with fastcgi_cache_purge
-*******************************************************************
+******************************************
+Nginx: caching ownCloud gallery thumbnails
+******************************************
 
 One of the optimisations for ownCloud when using Nginx as the webserver is to 
 combine FastCGI caching with "Cache Purge", a `3rdparty Nginx module 
@@ -669,3 +381,254 @@ Add *inside* the ``server{}`` block, as an example of a configuration::
    Your thumbnails should appear more or less immediately.
 *  ``htop`` will not show up additional load while processing, compared to 
    the high load before.
+   
+**********************
+Database Best Practice
+**********************
+
+Currently ownCloud supports the following relational database management 
+systems:
+
+- MySQL
+- MariaDB
+- PostgreSQL
+- SQLite
+- Oracle
+
+SQLite is not supported in the Enterprise edition, and is not recommended 
+except for systems with very light workloads, and for testing ownCloud.
+
+We are using the `doctrine database abstraction layer`_ and schema evolution 
+with a `MDB2 Schema`_ based table description in XML.
+
+.. _doctrine database abstraction layer: 
+   http://www.doctrine-project.org/projects/dbal.html
+
+.. _MDB2 Schema: 
+   https://raw2.github.com/pear/MDB2_Schema/master/docs/
+   xml_schema_documentation.html
+
+
+Using MariaDB/MySQL instead of SQLite
+=====================================
+
+MySQL or MariaDB are preferred because of the `performance limitations of 
+SQLite with highly concurrent applications 
+<http://www.sqlite.org/whentouse.html>`_, like ownCloud.
+
+On large instances you could consider `running MySQLTuner 
+<https://github.com/major/MySQLTuner-perl/>`_ to optimize the database.
+
+See the section :doc:`../configuration_database/linux_database_configuration` 
+for how to configure ownCloud for MySQL or MariaDB. If your installation is 
+already 
+running on
+SQLite then it is possible to convert to MySQL or MariaDB using the steps 
+provided in :doc:`../configuration_database/db_conversion`.
+
+Improve slow performance with MySQL on Windows
+==============================================
+
+On Windows hosts running MySQL on the same system changing the parameter 
+``dbhost`` in your ``config/config.php``
+from ``localhost`` to ``127.0.0.1`` could improve the page loading time.
+
+See also `this forum thread 
+<http://forum.owncloud.org/viewtopic.php?f=17&t=7559>`_.
+
+Other performance improvements
+==============================
+
+Mysql: compare https://tools.percona.com/wizard to your current settings
+MariaDB: https://mariadb.com/kb/en/optimization-and-tuning/
+
+Postgresql
+==========
+
+Alternative to MariaDB/MySQL. Used in production by a few core developers.
+
+Requires at least Postgresql 9.0
+
+Other performance improvements
+------------------------------
+
+See http://wiki.postgresql.org/wiki/Performance_Optimization
+
+Oracle Database
+===============
+
+Usage scenario: Existing enterprise installations. Only core apps are supported 
+and tested. Not recommended because it involves compiling the oci8
+
+Other performance improvements
+------------------------------
+
+http://de.slideshare.net/cjorcl/best-practices-php-and-the-oracle-database and 
+ask your DBA.
+
+Problems
+--------
+
+When ORA-56600 occurs (Oracle Bug 8467564) set this php.ini setting:
+`oci8.statement_cache_size=1000`, see `oracle forum discussion`_
+
+.. _oracle forum discussion: 
+   https://community.oracle.com/message/3468020#3468020
+
+********************
+General Linux tuning
+********************
+
+System configuration overview
+=============================
+
+.. code-block:: console
+
+	# cat /etc/sysctl.conf
+        ...
+	net.core.somaxconn = 4096
+	net.ipv4.tcp_max_syn_backlog = 2048
+        ...
+	# ulimit -nH 4096
+
+Make sure that your ``/tmp`` is in ramdisk which improves session handling
+performance. To do so, add the following to ``/etc/fstab``::
+
+	none /tmp tmpfs,size=6g defaults
+
+Make sure the APC or Opcache bytecode cache is installed. This example is for 
+CentOS/Red Hat/Fedora running PHP 5.4:
+
+.. code-block:: console
+
+	$ sudo yum install php-pecl-apc
+	
+On Ubuntu systems running PHP 5.4 this command installs APC:
+
+.. code-block:: console
+
+        $ sudo apt-get install php-apc
+             
+PHP 5.5 replaces APC with OPCache. OPCache is bundled with PHP 5.5 so it should 
+not be necessary to install it separately. OPCache improves PHP performance by 
+storing precompiled script bytecode in shared memory, thereby removing the need 
+for PHP to load and parse scripts on each request. This extension is bundled 
+with PHP 5.5.0 and later, and is available in PECL for PHP versions 5.2, 5.3, 
+and 5.4.
+
+APC is both an opcode cache and data store. OPCache is only an opcode cache, so 
+for caching user data you should also install APCu.
+
+You can test the state of APC(u) by putting the testing file from the 
+documentation
+in your server root. It is usually called 'apc.php' and can be found in
+/usr/share/doc/php5-apcu/apc.php or /usr/share/doc/packages/php5-apcu/apc.php or
+a similar location, depending on your distribution.
+
+Tuning System Parameters
+========================
+
+Configuration for more concurrent requests.
+
+.. code-block:: bash
+
+	echo "2048 64512" > /proc/sys/net/ipv4/ip_local_port_range
+	echo "1" > /proc/sys/net/ipv4/tcp_tw_recycle
+	echo "1" > /proc/sys/net/ipv4/tcp_tw_reuse
+	echo "10" > /proc/sys/net/ipv4/tcp_fin_timeout
+
+	echo "65536" > /proc/sys/net/core/somaxconn
+	echo "65536" > /proc/sys/net/ipv4/tcp_max_syn_backlog
+	echo "262144" > /proc/sys/net/netfilter/nf_conntrack_max
+
+Check if the values have been set accordingly:
+
+.. code-block:: console
+
+	# cat /proc/sys/net/ipv4/ip_local_port_range
+        2048 64512
+	# cat /proc/sys/net/ipv4/tcp_tw_recycle
+        1
+	# cat /proc/sys/net/ipv4/tcp_tw_reuse
+        1
+	# cat /proc/sys/net/ipv4/tcp_fin_timeout
+        10
+	# cat /proc/sys/net/core/somaxconn
+        65536
+	# cat /proc/sys/net/ipv4/tcp_max_syn_backlog
+        65536
+	# cat /proc/sys/net/netfilter/nf_conntrack_max
+        262144
+
+Next, persist the settings across reboots by adding them into 
+``/etc/sysctl.conf``::
+
+	net.ipv4.ip_local_port_range = 2048 64512
+	net.ipv4.tcp_tw_recycle = 1
+	net.ipv4.tcp_tw_reuse = 1
+	net.ipv4.tcp_fin_timeout = 10
+
+	net.core.somaxconn = 65536
+	net.ipv4.tcp_max_syn_backlog = 65536
+	net.netfilter.nf_conntrack_max = 262144
+
+Tuning Memory
+=============
+
+Add RAM disk to fstab::
+
+	- none /var/www/html tmpfs defaults,size=6g
+
+Move PHP Code into RAM Disk:
+
+.. code-block:: console
+
+	# mv /var/www/html /var/www/html_fs
+
+Copy ownCloud installation to RAM Disk and symlink storage to ownCloud ``data``
+directory.
+
+.. note:: ram disks are not reboot-safe. You need to establish a way to persist 
+   them, for instance by using ``cp`` or ``rsync`` to transfer them from a 
+   location on the hard disk to the ram disk before apache starts.
+
+********************          
+SSL / Encryption App
+********************
+
+SSL (HTTPS) and file encryption/decryption can be offloaded to a processor's 
+AES-NI extension. This can both speed up these operations while lowering 
+processing overhead. This requires a processor with the `AES-NI instruction set 
+<http://wikipedia.org/wiki/AES_instruction_set>`_.
+
+Here are some examples how to check if your CPU / environment supports the 
+AES-NI extension:
+
+* For each CPU core present: ``grep flags /proc/cpuinfo`` or as a summary for 
+  all cores: ``grep -m 1 ^flags /proc/cpuinfo`` If the result contains any 
+  ``aes``, the extension is present.   
+
+.. windows is not supported on 8.x  
+.. * On Windows you can run ``coreinfo`` from Sysinternals `Windows 
+.. Sysinternals 
+..  Download Coreinfo 
+..  <https://technet.microsoft.com/en-us/sysinternals/cc835722.aspx>`_ which 
+..  gives you details of the processor and extensions present. Note: you may 
+.. have 
+..  to run the command shell as administrator to get an output.
+  
+* Search eg. on the Intel web if the processor used supports the extension 
+  `Intel Processor Feature Filter 
+  <http://ark.intel.com/MySearch.aspx?AESTech=true>`_ You may set a filter by 
+  ``"AES New Instructions"`` to get a reduced result set.
+   
+* For versions of openssl >= 1.0.1, AES-NI does not work via an engine and 
+  will not show up in the ``openssl engine`` command. It is active by default 
+  on the supported hardware. You can check the openssl version via ``openssl 
+  version -a``
+    
+* If your processor supports AES-NI but it does not show up eg via grep or 
+  coreinfo, it is maybe disabled in the BIOS.
+  
+* If your environment runs virtualized, check the virtualization vendor for 
+  support.
