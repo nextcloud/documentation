@@ -15,9 +15,11 @@ about 10% of disk space, but is not counted against user quotas. Some apps
 store information in the database, such as the Calendar and Contacts apps. This 
 data is excluded from your quota.
 
-Files are counted against the quotas of their original owners. When other 
-users share files with you, the shared files count against the quotas of the 
-original file owners, and not the users they are shared with.
+When other users share files with you, the shared files count against the 
+original share owner's quota. When you share a folder and allow other users or 
+groups to upload files to it, all uploaded and edited files count against your 
+quota. When you re-share files shared with you, the re-share still counts 
+against the quote of the original share owner.
 
 Encrypted files are a little larger than unencrypted files; the unencrypted size 
 is calculated against your quota.
