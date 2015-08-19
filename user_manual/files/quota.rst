@@ -1,5 +1,7 @@
+=============
 Storage Quota
 =============
+
 Your ownCloud admin has the option to set a storage quota on users. Look at 
 the top of your Personal page to see what your quota is, and how much you have 
 used.
@@ -13,11 +15,9 @@ about 10% of disk space, but is not counted against user quotas. Some apps
 store information in the database, such as the Calendar and Contacts apps. This 
 data is excluded from your quota.
 
-Only files that originate with users count against their quotas, and not files 
-shared with them that originate from other users. For example, if you upload 
-files to another user's share, those files count against your quota. If you 
-re-share a file that another user shared with you, that file does not count 
-against your quota, but the originating user's.
+Files are counted against the quotas of their original owners. When other 
+users share files with you, the shared files count against the quotas of the 
+original file owners, and not the users they are shared with.
 
 Encrypted files are a little larger than unencrypted files; the unencrypted size 
 is calculated against your quota.
