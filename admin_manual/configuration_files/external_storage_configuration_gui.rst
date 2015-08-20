@@ -363,6 +363,10 @@ ownCloud server.
 
 .. figure:: ../images/external-storage-webdav.png
 
+.. Note:: CPanel users should install `Web Disk 
+   <https://documentation.cpanel.net/display/ALD/Web+Disk>`_ to enable WebDAV 
+   functionality.
+
 OpenStack Object Storage
 ------------------------
 
