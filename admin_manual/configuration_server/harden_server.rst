@@ -36,6 +36,9 @@ The random number generation also tries to request random numbers from
 ``/dev/urandom``, thus it is highly recommended to configure your setup in such 
 a way that PHP is able to read random data from it.
 
+.. note:: When having an ``open_basedir`` configured within your ``php.ini`` file,
+   make sure to include the folder ``/dev``.
+
 Enable hardening modules such as SELinux
 ****************************************
 
