@@ -19,7 +19,7 @@ When other users share files with you, the shared files count against the
 original share owner's quota. When you share a folder and allow other users or 
 groups to upload files to it, all uploaded and edited files count against your 
 quota. When you re-share files shared with you, the re-share still counts 
-against the quote of the original share owner.
+against the quota of the original share owner.
 
 Encrypted files are a little larger than unencrypted files; the unencrypted size 
 is calculated against your quota.
