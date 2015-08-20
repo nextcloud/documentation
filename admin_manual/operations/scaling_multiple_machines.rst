@@ -33,7 +33,10 @@ following components were installed on each application server:
 *   PHP-XML
 *   PHP-MYSQL
 *   PHP-CURL
-*   SMBCLIENT
+
+Also required is `php5-libsmbclient 
+<https://software.opensuse.org/download.html?project=isv%3AownCloud%3Acommunity%
+3A8.1&package=php5-libsmbclient>`_.
 
 It is also worth mentioning that the appropriate exceptions where made in the
 firewall to allow the ownCloud traffic (for the purpose of testing we

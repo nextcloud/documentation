@@ -62,7 +62,7 @@ Database connectors (pick at least one):
 Required for specific apps:
 
 * PHP module ldap (for LDAP integration)
-* smbclient (for external user authentication)
+* `php5-libsmbclient <https://software.opensuse.org/download.html?project=isv%3AownCloud%3Acommunity%3A8.1&package=php5-libsmbclient>`_
 * PHP module ftp (for FTP storage / external user authentication)
 * PHP module imap (for external user authentication)
 

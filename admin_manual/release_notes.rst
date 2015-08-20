@@ -77,13 +77,14 @@ Not Supported With any ownCloud Version
 Changes in 8.1
 --------------
 
-The ownCloud 8 server is not supported on any version of Windows.  
+SMB external storage now based on ``php5-smbclient``, which must be downloaded 
+from the ownCloud software repositories.
+  
+"Download from link" feature has been removed.
 
 The ``.htaccess`` and ``index.html`` files in the ``data/`` directory are now 
 updated after every update. If you make any modifications to these files they 
 will be lost after updates.
-
-"Download from link" feature has been removed.
 
 The SabreDAV browser at ``/remote.php/webdav`` has been removed.
 
@@ -111,8 +112,9 @@ see :ref:`caching`.
 The OC_User_HTTP backend has been removed. Administrators are encouraged to use 
 the ``user_webdavauth`` application instead.
 
-ownCloud ships now with its own root certificate bundle derived from Mozilla's root certificates file. The system root certificate bundle will not be used anymore for most 
-requests.
+ownCloud ships now with its own root certificate bundle derived from Mozilla's 
+root certificates file. The system root certificate bundle will not be used 
+anymore for most requests.
   
 When you upgrade from ownCloud 8.0, with encryption enabled, to 8.1, you must 
 enable the new encryption backend and migrate your encryption keys. See 
@@ -121,14 +123,27 @@ enable the new encryption backend and migrate your encryption keys. See
 Encryption can no longer be disabled in ownCloud 8.1. It is planned to re-add
 this feature to the command line client for a future release.
 
+It is not recommended to upgrade encryption-enabled systems from ownCloud Server 8.0
+to version 8.1.0 as there is a chance the migration will break. We recommend 
+migrating to the first bugfix release, ownCloud Server 8.1.1.
+
 Due to various technical issues, by default desktop sync clients older than 
 1.7 are not allowed to connect and sync with the ownCloud server. This is 
 configurable via the ``minimum.supported.desktop.version`` switch in 
 ``config.php``.
 
-Previews are now generated at a maximum size of 2048 x 2048 pixels. This is configurable via the ``preview_max_x`` and ``preview_max_y`` switches in ``config.php``.
+Previews are now generated at a maximum size of 2048 x 2048 pixels. This is configurable
+via the ``preview_max_x`` and ``preview_max_y`` switches in ``config.php``.
 
-The 8.1.0 release has a minor bug which makes app updates fail at first try. Reload the apps page and try again, and the update will succeed.
+The ownCloud 8 server is not supported on any version of Windows.
+
+The 8.1.0 release has a minor bug which makes app updates fail at first try. Reload the
+apps page and try again, and the update will succeed.
+
+The ``forcessl`` option within the ``config.php`` and the ``Enforce SSL`` option within the
+Admin-Backend was removed. This now needs to be configured like described in :ref:`use-https-label`.
+
+WebDAV file locking was removed in oC 8.1 which causes Finder on Mac OS X to mount WebDAV read-only.
 
 Enterprise 8.1 Only
 -------------------

@@ -57,8 +57,9 @@ administrator panel to add, remove or modify mount options to prevent any proble
 Using self-signed certificates
 ------------------------------
 
-When using self-signed certificates for external storage mounts the certificate
-needs to be imported in the personal settings of the user. Please refer to `this <http://ownclouden.blogspot.de/2014/11/owncloud-https-external-mount.html>`_
+When using self-signed certificates for external storage mounts the certificate 
+needs to be imported in the personal settings of the user. Please refer to `this 
+<http://ownclouden.blogspot.de/2014/11/owncloud-https-external-mount.html>`_ 
 blogpost for more information.
 
 Adding files to external storages
@@ -73,10 +74,11 @@ Please also be aware that ownCloud might not always be able to find out what has
 changed remotely (files changed without going through ownCloud), especially
 when it's very deep in the folder hierarchy of the external storage.
 
-You might need to setup a cron job that runs ``sudo -u www-data php occ files:scan --all``
-(or replace "--all" with the user name, see also :doc:`../configuration_server/occ_command`)
-to trigger a rescan of the user's files periodically (for example every 15 minutes), which includes
-the mounted external storage.
+You might need to setup a cron job that runs ``sudo -u www-data php occ 
+files:scan --all`` (or replace "--all" with the user name, see also 
+:doc:`../configuration_server/occ_command`) to trigger a rescan of the user's 
+files periodically (for example every 15 minutes), which includes the mounted 
+external storage.
 
 Example
 -------
@@ -236,7 +238,10 @@ Example
 SMB
 ~~~
 The SMB backend mounts a folder on a remote Samba server, a NAS appliance or
-a Windows machine into the virtual file system. It is part of the ‘External
+a Windows machine into the virtual file system. This requires 
+``php5-libsmbclient`` (`installation instructions 
+<https://software.opensuse.org/download.html?project=isv%3AownCloud%3Acommunity%
+3A8.1&package=php5-libsmbclient>`_). It is part of the ‘External
 storage support’ app, the class to be used is **\\OC\\Files\\Storage\\SMB**\  and
 takes the following options:
 
