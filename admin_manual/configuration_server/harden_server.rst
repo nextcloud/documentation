@@ -3,11 +3,9 @@ Hardening and Security Guidance
 ===============================
 
 ownCloud aims to ship with secure defaults that do not need to get modified by 
-administrators. However, in some cases some additional security hardening can 
-be 
+administrators. However, in some cases some additional security hardening can be 
 applied in scenarios were the administrator has complete control over 
-the ownCloud instance. This page assumes that you run ownCloud Server on 
-Apache2 
+the ownCloud instance. This page assumes that you run ownCloud Server on Apache2 
 in a Linux environment.
 
 .. note:: ownCloud will warn you in the administration interface if some 
@@ -70,8 +68,7 @@ libraries written in C which might be vulnerable to attack vectors.
 
 For high security deployments we recommend disabling the preview generation by 
 setting the ``enable_previews`` switch to ``false`` in ``config.php``. As an 
-administrator you are also able to manage which preview providers are enabled 
-by 
+administrator you are also able to manage which preview providers are enabled by 
 modifying the ``enabledPreviewProviders`` option switch.
 
 Use HTTPS
@@ -147,16 +144,13 @@ Basic security headers are served by ownCloud already in a default environment.
 These include:
 
 - ``X-Content-Type-Options: nosniff``
-	- Instructs some browsers to not sniff the mimetype of files. This is 
-used for example to prevent browsers from interpreting text files as JavaScript.
+	- Instructs some browsers to not sniff the mimetype of files. This is used for example to prevent browsers from interpreting text files as JavaScript.
 - ``X-XSS-Protection: 1; mode=block``
-	- Instructs browsers to enable their browser side Cross-Site-Scripting 
-filter.
+	- Instructs browsers to enable their browser side Cross-Site-Scripting filter.
 - ``X-Robots-Tag: none``
 	- Instructs search machines to not index these pages.
 - ``X-Frame-Options: SAMEORIGIN``
-	- Prevents embedding of the ownCloud instance within an iframe from 
-other domains to prevent Clickjacking and other similiar attacks.
+	- Prevents embedding of the ownCloud instance within an iframe from other domains to prevent Clickjacking and other similiar attacks.
 
 These headers are hard-coded into the ownCloud server, and need no intervention 
 by the server administrator.
@@ -173,8 +167,6 @@ Administrators can verify whether this security change is active by accessing a
 static resource served by the web server and verify that the above mentioned 
 security headers are shipped.
 
-.. _Mozilla SSL Configuration Generator: 
-https://mozilla.github.io/server-side-tls/ssl-config-generator/
+.. _Mozilla SSL Configuration Generator: https://mozilla.github.io/server-side-tls/ssl-config-generator/
 .. _Qualys SSL Labs Tests: https://www.ssllabs.com/ssltest/
-.. _RFC 4086 ("Randomness Requirements for Security"): 
-https://tools.ietf.org/html/rfc4086#section-5.2
+.. _RFC 4086 ("Randomness Requirements for Security"): https://tools.ietf.org/html/rfc4086#section-5.2
