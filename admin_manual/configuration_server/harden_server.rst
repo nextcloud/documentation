@@ -24,6 +24,8 @@ passwords on external shares.
 Operating system
 ----------------
 
+.. _dev-urandom-label:
+
 Give PHP read accesss to ``/dev/urandom``
 *****************************************
 
@@ -74,6 +76,8 @@ setting the ``enable_previews`` switch to ``false`` in ``config.php``. As an
 administrator you are also able to manage which preview providers are enabled by 
 modifying the ``enabledPreviewProviders`` option switch.
 
+.. _use-https-label:
+
 Use HTTPS
 ---------
 
@@ -98,6 +102,8 @@ achieved by a setting such as the following in the Apache VirtualHosts config:
      ServerName cloud.owncloud.com
      Redirect permanent / https://cloud.owncloud.com/
   </VirtualHost>
+
+.. _enable-hsts-label:
 
 Enable HTTP Strict Transport Security
 *************************************
