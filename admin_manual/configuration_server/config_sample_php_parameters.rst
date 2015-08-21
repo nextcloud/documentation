@@ -591,9 +591,11 @@ for logging.
 
 ::
 
-	'logfile' => 'owncloud.log',
+	'logfile' => '/var/log/owncloud.log',
 
-Change the ownCloud logfile name from ``owncloud.log`` to something else.
+Log file path for the ownCloud logging type.
+
+Defaults to ``[datadirectory]/owncloud.log``
 
 ::
 
@@ -670,8 +672,8 @@ can solve such issues.
 Enables log rotation and limits the total size of logfiles. The default is 0,
 or no rotation. Specify a size in bytes, for example 104857600 (100 megabytes
 = 100 * 1024 * 1024 bytes). A new logfile is created with a new name when the
-old logfile reaches your limit. The total size of all logfiles is double the
-``log_rotate_sizerotation`` value.
+old logfile reaches your limit. If a rotated log file is already present, it
+will be overwritten.
 
 Alternate Code Locations
 ------------------------
