@@ -155,7 +155,7 @@ external storage adapters this can be considered a feature and not a vulnerabili
 
 This means that an user on your ownCloud instance could probe whether other hosts
 are accessible from the ownCloud network. If you do not want this you need to 
-ensure that your ownCloud is properly installed in a seggregated network and proper 
+ensure that your ownCloud is properly installed in a segregated network and proper 
 firewall rules are in place.
 
 Serve security related Headers by the web server
