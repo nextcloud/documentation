@@ -139,6 +139,8 @@ suitable configuration suited for your environment, and the free `Qualys
 SSL Labs Tests`_ gives good guidance on whether your SSL server is correctly 
 configured.
 
+Also ensure that HTTP compression is disabled to mitigate the BREACH attack.
+
 Use a dedicated domain for ownCloud
 -----------------------------------
 
