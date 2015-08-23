@@ -77,8 +77,10 @@ Not Supported With any ownCloud Version
 Changes in 8.1
 --------------
 
-SMB external storage now based on ``php5-smbclient``, which must be downloaded 
-from the ownCloud software repositories.
+SMB external storage now based on ``php5-libsmbclient``, which must be downloaded 
+from the ownCloud software repositories (`installation instructions 
+<https://software.opensuse.org/download.html?project=isv%3AownCloud%3Acommunity% 
+3A8.1&package=php5-libsmbclient>`_).
   
 "Download from link" feature has been removed.
 
