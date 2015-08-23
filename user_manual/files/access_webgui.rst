@@ -92,18 +92,14 @@ folder by clicking on the *New* button in the Files app.
 
     **New button options**
 
-The *New* button provides the following three options from which to choose:
+The *New* button provides the following two options from which to choose:
 
 Text file
   Creates a simple text file and adds the file to your current folder.
   
 Folder
   Creates a new folder in the current folder.
-  
-From link
-  Downloads a file from a URL that you type or copy into the form field, and 
-  places it into the current folder.
- 
+
 Up arrow
   The upward-point arrow is for uploading files from your computer into 
   ownCloud.
