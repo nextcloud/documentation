@@ -261,9 +261,6 @@ Disable Main Server:
   You can manually override the main server and make ownCloud only connect to
   the backup server. This is useful for planned downtimes.
 
-Case insensitive LDAP server (Windows):
-  When the LDAP server is running on a Windows Host.
-
 Turn off SSL certificate validation:
   Turns off SSL certificate checking. Use it for testing only!
 
