@@ -278,6 +278,59 @@ The session timeout can be overridden in the service provider, but this
 requires a source code change of the Apache Shibboleth module. A patch can be 
 provided by the ownCloud support team.
 
+UID Considerations and Windows Network Drive compatability
+----------------------------------------------------------
+
+When using ``user_shibboleth`` in single-sign on (SSO) only mode, together with 
+``user_ldap``, both apps need to resolve to the same ``uid``. 
+``user_shibboleth`` will do the authentication, and ``user_ldap`` will provide 
+user details such as ``email`` and ``displayname``. In the case of Active 
+Directory, multiple attributes can be used as the ``uid``. But they all have 
+different implications to take into account.
+
+Attributes
+^^^^^^^^^^
+
+**sAMAccountName**
+
+* *Example:* jfd
+* *Uniqueness:* Domain local, might change e.g. marriage
+* *Other implications:* Works with ``windows_network_drive`` app
+
+**userPrincipalName**
+
+* *Example:* jfd@owncloud.com
+* *Uniqueness:* Forest local, might change on eg. marriage
+* *Other implications:* TODO check WND compatability
+  
+**objectSid**
+
+* *Example:* S-1-5-21-2611707862-2219215769-354220275-1137
+* *Uniqueness:* Domain local, changes when the user is moved to a new domain
+* *Other implications:* Incompatible with ``windows_network_drive`` app
+
+**sIDHistory**
+
+* *Example:* Multi-value
+* *Uniqueness:* Contains previous objectSIDs
+* *Other implications:* Incompatible with ``windows_network_drive`` app
+
+**objectGUID**
+
+* *Example:* 47AB881D-0655-414D-982F-02998C905A28
+* *Uniqueness:* Globally unique
+* *Other implications:* Incompatible with ``windows_network_drive`` app
+
+Keep in mind that ownCloud will derive the home folder from the ``uid``, unless 
+a home folder naming rule is in place. The only truly stable attribute is the 
+``objectGUID``, so that should be used. If not for the ``uid`` then at least as 
+the home folder naming rule. The tradeoff here is that if you want to use 
+``windows_network_drive`` you are bound to the ``sAMAccountName``, as that is 
+used as the login.
+
+Also be aware that using ``user_shibboleth`` in Autoprovisioning mode will not 
+allow you to use SSO for your ``user_ldap`` users, because ``uid`` collisions 
+will be detected by ``user_ldap``.
 
 .. _native Apache integration: 
     https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPApacheConfig
