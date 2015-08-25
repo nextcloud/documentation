@@ -1244,6 +1244,15 @@ is highly recommended to *avoid data loss*.
 
 ::
 
+	'debug' => false,
+
+Set this ownCloud instance to debugging mode
+
+Only enable this for local development and not in production environments
+This will disable the minifier and outputs some additional debug information
+
+::
+
 	'copied_sample_config' => true,
 
 This entry is just here to show a warning in case somebody copied the sample
