@@ -49,11 +49,11 @@ information on these log levels.
 
 Some logging - for example JavaScript console logging - needs manually editing the
 configuration file.
-Edit :file:`config/config.php` and add ``define('DEBUG', true);``::
+Edit :file:`config/config.php` and set ``debug`` to ``true``::
 
     <?php
-    define('DEBUG',true);
     $CONFIG = array (
+        'debug' => true,
         ... configuration goes here ...
     );
 
