@@ -15,9 +15,13 @@ After the `development tool <https://github.com/owncloud/ocdev/blob/master/READM
 
 .. note:: $BRANCH is the desired ownCloud branch (e.g. stable7 for ownCloud 7, stable8 for ownCloud 8, etc)
 
-First you want to enable debug mode to get proper error messages. To do that add **DEFINE('DEBUG', true);** at the end of the **owncloud/config/config.php** file::
+First you want to enable debug mode to get proper error messages. To do that set ``debug`` to ``true`` in the **owncloud/config/config.php** file::
 
-    echo "\nDEFINE('DEBUG', true);" >> owncloud/config/config.php
+    <?php
+    $CONFIG = array (
+        'debug' => true,
+        ... configuration goes here ...
+    );
 
 .. note:: PHP errors are logged to **owncloud/data/owncloud.log**
 
