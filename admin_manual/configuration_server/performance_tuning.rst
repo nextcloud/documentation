@@ -96,8 +96,7 @@ Maximum number of Apache processes
 
 An Apache process uses around 12MB of RAM. Apache should be configured so that 
 the maximum number of HTTPD processes times 12MB is lower than the amount of 
-RAM. Otherwise the system begins to swap and the performance goes down. In this 
-case the maximum number is set to 6000.
+RAM. Otherwise the system begins to swap and the performance goes down.
 
 KeepAlive should be configured with sensible defaults
 =====================================================
