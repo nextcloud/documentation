@@ -153,7 +153,7 @@ As ownCloud supports features such as Federated File Sharing we do not consider
 Server Side Request Forgery (SSRF) part of our threat model. In fact, given all our
 external storage adapters this can be considered a feature and not a vulnerability.
 
-This means that an user on your ownCloud instance could probe whether other hosts
+This means that a user on your ownCloud instance could probe whether other hosts
 are accessible from the ownCloud network. If you do not want this you need to 
 ensure that your ownCloud is properly installed in a segregated network and proper 
 firewall rules are in place.
