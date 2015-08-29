@@ -148,6 +148,18 @@ Administrators are encouraged to install ownCloud on a dedicated domain such as
 cloud.domain.tld instead of domain.tld to gain all the benefits offered by the 
 Same-Origin-Policy.
 
+Ensure that your ownCloud instance is installed in a DMZ
+--------------------------------------------------------
+
+As ownCloud supports features such as Federated File Sharing we do not consider
+Server Side Request Forgery (SSRF) part of our threat model. In fact, given all our
+external storage adapters this can be considered a feature and not a vulnerability.
+
+This means that a user on your ownCloud instance could probe whether other hosts
+are accessible from the ownCloud network. If you do not want this you need to 
+ensure that your ownCloud is properly installed in a segregated network and proper 
+firewall rules are in place.
+
 Serve security related Headers by the web server
 ------------------------------------------------
 
