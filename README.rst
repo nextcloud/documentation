@@ -2,11 +2,6 @@
 ownCloud Documentation
 ======================
 
-This is the ownCloud documentation. It currently focuses on the server,
-client manuals are in the respective git repositories. Because of the
-complexity of the server and the split into the core and apps modules,
-the manuals are in this separate directory.
-
 Documentation is published on https://doc.owncloud.org and https://doc.owncloud.com.
 
 The documentation Wiki https://github.com/owncloud/documentation/wiki is available for tips, tricks, edge cases, and anyone who wants to contribute more easily, without using Git and Sphinx.
@@ -21,7 +16,7 @@ At this point, this repository hosts three manuals:
 * **Developers Manual:** Developing Apps for ownCloud & understanding the
   core Architecture.
   
-Please work in the appropriate branch. stable6 is for ownCloud 6, stable7 is for ownCloud 7, and stable8 is 8.0, stable8.1 is 8.1, and master is version 8.2.
+Please work in the appropriate branch. stable6 is for ownCloud 6, stable7 is for ownCloud 7, stable8 is 8.0, stable8.1 is 8.1, and master is version 8.2.
 
 Please wrap lines at 80 characters.
 
@@ -32,6 +27,8 @@ Conventions
 -----------
 
 ownCloud Apps Store
+synchronize
+
 
 License
 -------
@@ -44,7 +41,7 @@ Attribution 3.0 Unported license (`CC BY 3.0`_).
 Style
 -------
 
-It is using the `Sphinx Documentation Generator
+Source files are written using the `Sphinx Documentation Generator
 <http://sphinx.pocoo.org/>`_. The syntax follows the `reStructuredText
 <http://docutils.sourceforge.net/rst.html>`_ style, and can also be edited
 from GitHub.
