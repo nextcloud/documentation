@@ -542,7 +542,7 @@ Creating a custom XMLResponse class could look like this:
 
         private $xml;
 
-        public function construct(array $xml) {
+        public function __construct(array $xml) {
             $this->addHeader('Content-Type', 'application/xml');
             $this->xml = $xml;
         }
