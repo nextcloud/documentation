@@ -64,8 +64,18 @@ benefits.
 Caching
 *******
 
-Make sure the APC or Opcache bytecode cache is installed. This example is for 
-CentOS/Red Hat/Fedora running PHP 5.4:
+.. note:: Memory cache configuration for the ownCloud server is no longer
+          automatic, requiring configuration in config.php with the keys
+          memcache.local and/or memcache.distributed;
+          see :doc:`config_sample_php_parameters`.
+          Before the memcache.local can be used you need to install
+          APC, APCu or XCache.
+
+Caching improves performance by storing data, code, and other objects in 
+memory. 
+
+The APC or OPCache bytecode cache are commonly used in PHP environments. This 
+example installs APC on CentOS/Red Hat/Fedora systems running PHP 5.4:
 
 .. code-block:: console
 
@@ -91,6 +101,20 @@ You can test the state of APC(u) by putting the testing file from the documentat
 in your server root. It is usually called 'apc.php' and can be found in
 /usr/share/doc/php5-apcu/apc.php or /usr/share/doc/packages/php5-apcu/apc.php or
 a similar location, depending on your distribution.
+
+The Redis key-value cache and store is an excellent fast and robust cache. For 
+configuration examples see :doc:`config_sample_php_parameters`. 
+
+Distributed PHP environments should use Memcached. Memcached servers must be 
+specified in the ``memcached_servers`` array in ownCloud's config file 
+``config.php``. For examples see :doc:`config_sample_php_parameters`.
+
+ .. note:: When a memory cache has been configured, but is unavailable due to a
+           a missing extension or server downtime, ownCloud will be
+           inaccessible, as a memory cache is considered to be a vital
+           component.
+           This does not however affect **occ**, which will instead just print
+           a warning to the logs.
           
 **************  
 Webserver Tips
