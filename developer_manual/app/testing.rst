@@ -14,6 +14,12 @@ The PHP tests go into the **tests/** directory. Unfortunately the classloader in
 
     phpunit tests/
 
+When writing your own tests, please ensure that PHPUnit bootstraps from :file:`tests/bootstrap.php`, to set up various environment variables and autoloader registration correctly. Without this, you will see errors as the ownCloud autoloader security policy prevents access to the tests/ subdirectory. This can be configured in your :file:`phpunit.xml` file as follows:
+
+.. code-block:: xml
+
+    <phpunit bootstrap="../../tests/bootstrap.php">
+
 PHP classes should be tested by accessing them from the container to ensure that the container is wired up properly. Services that should be mocked can be replaced directly in the container.
 
 A test for the **AuthorStorage** class in :doc:`filesystem`:
