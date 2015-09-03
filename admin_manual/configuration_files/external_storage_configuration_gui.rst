@@ -169,21 +169,6 @@ Note your App key and App secret, which you will enter in the External Storage
 form on your ownCloud Admin page.
 
 .. figure:: ../images/external-storage-dropbox-configapp.png
-
-You need two ``Redirect URIs``. You may use ``localhost`` as the hostname for 
-testing because you don't need to use HTTPS, but this is not recommended for 
-production use because it sends all traffic in the clear::
-
-  http://localhost/owncloud/index.php/settings/personal
-  http://localhost/owncloud/index.php/settings/admin
-  
-HTTPS is recommended for production use to encrypt your sessions::
-
-  https://localhost/owncloud/index.php/settings/personal
-  https://localhost/owncloud/index.php/settings/admin
-  
-  https://example.com/owncloud/index.php/settings/personal
-  https://example.com/owncloud/index.php/settings/admin
   
 Your ownCloud configuration requires only the local mount name, the App Key and 
 the App Secret, and which users or groups have access to the share.
