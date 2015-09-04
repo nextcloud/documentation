@@ -24,7 +24,7 @@ With each level come requirements and a position in the store.
 
 Official
 ^^^^^^^^
-Official apps are developed by and within the ownCloud community and its `Github <http://github.com/owncloud>`_ repository and offer functionality central to ownCloud. They are ready for serious use.
+Official apps are developed by and within the ownCloud community and its `Github <http://github.com/owncloud>`_ repository and offer functionality central to ownCloud. They are ready for serious use and can be considered a part of ownCloud.
 
 Requirements:
 
@@ -33,6 +33,7 @@ Requirements:
 * security audited and design reviewed
 * app is at least 6 months old and has seen regular releases
 * follows app guidelines
+* supports the same platforms, browsers, databases, PHP versions and so on as ownCloud Core
 
 .. * app is signed, identity verified
 
@@ -60,6 +61,7 @@ Requirements:
 * follows app guidelines
 * the developer is trusted
 * app is subject to unannounced security audits
+* has defined requirements and dependencies (like what browsers, databases, PHP versions and so on are supported)
 
 .. * app is signed, at least domain verified
 
