@@ -33,7 +33,7 @@ Requirements:
 * security audited and design reviewed
 * app is at least 6 months old and has seen regular releases
 * follows app guidelines
-* supports the same platforms, browsers, databases, PHP versions and so on as ownCloud Core
+* supports the same platforms and technologies mentioned in the release notes of the ownCloud version this app is made for
 
 .. * app is signed, identity verified
 
