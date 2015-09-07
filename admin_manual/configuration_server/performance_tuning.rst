@@ -40,12 +40,6 @@ security risk to expose such sensitive data.
 ownCloud Server Tuning
 **********************
 
-Serving static files via web server
-===================================
-
-See :doc:`../configuration_files/serving_static_files_configuration` for a 
-description and the benefits.
-
 Using cron to perform background jobs
 =====================================
 
