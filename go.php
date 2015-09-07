@@ -22,6 +22,7 @@ $mapping = array(
     'admin-security'          => '/admin_manual/configuration_server/harden_server.html',
     'admin-email'             => '/admin_manual/configuration_server/email_configuration.html',
     'admin-reverse-proxy'     => '/admin_manual/configuration_server/reverse_proxy_configuration.html',
+    'admin-php-fpm'           => '/admin_manual/installation/source_installation.html#configuration-notes-to-php-fpm',
 
     'developer-theming'       => '/developer_manual/core/theming.html',
 
