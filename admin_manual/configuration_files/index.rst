@@ -17,5 +17,3 @@ File Sharing and Management
     files_locking_transactional
     federated_cloud_sharing_configuration
     previews_configuration
-    serving_static_files_configuration
-    
