@@ -91,7 +91,7 @@ Load Balancer
 
 The load balancer is monitoring the health of the application servers and is distributing the traffic in
 the optimal way. The application-servers should also be monitored to detect long lasting OS or
-hardware problems. Monitoring solutions like Nagos provide built in functionality to do this.
+hardware problems. Monitoring solutions like Nagios provide built in functionality to do this.
 
 
 
