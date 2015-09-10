@@ -186,7 +186,7 @@ latex_elements = {'preamble': '\usepackage{morefloats}', 'figure_align': 'H',
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
-latex_documents = [('contents', 'ownCloudServerAdminManual.tex', u'ownCloud Server Administration Manual', u'The ownCloud developers', 'manual'),]
+latex_documents = [('contents', 'ownCloud_Server_Administration_Manual.tex', u'ownCloud Server Administration Manual', u'The ownCloud developers', 'manual'),]
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
@@ -210,7 +210,7 @@ latex_logo = '../_shared_assets/static/logo-blue.pdf'
 
 # -- Options for pdf page output -----------------------------------------------
 
-pdf_documents = [('contents', u'owncloudServerAdminManual', u'ownCloud Server AdministrationManual', u'The ownCloud developers'),]
+pdf_documents = [('contents', u'owncloud Server Administration Manual', u'ownCloud Server Administration Manual', u'The ownCloud developers'),]
 
 # -- Options for manual page output --------------------------------------------
 
@@ -227,7 +227,7 @@ man_pages = [ ('contents', 'owncloudserveradminmanual', u'ownCloud Server Admini
 # Grouping the document tree into Texinfo files. List of tuples
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
-texinfo_documents = [ ('contents', 'ownCloudServerAdminManual', u'ownCloud Server Administration Manual', u'The ownCloud developers', 'ownCloud', 'The ownCloud Server Administration Manual.', 'Miscellaneous'), ]
+texinfo_documents = [ ('contents', 'ownCloud Server Admin Manual', u'ownCloud Server Administration Manual', u'The ownCloud developers', 'ownCloud', 'The ownCloud Server Administration Manual.', 'Miscellaneous'), ]
 
 # Documents to append as an appendix to all manuals.
 #texinfo_appendices = []
