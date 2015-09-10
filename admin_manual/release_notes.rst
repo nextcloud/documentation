@@ -74,6 +74,14 @@ Not Supported With any ownCloud Version
 * Windows RT
 * SQLite in production
 
+Changes in 8.2
+--------------
+
+XSendFile support has been removed, so there is no longer support for `serving 
+static files
+<https://doc.owncloud.org/server/8.1/admin_manual/configuration_files/
+serving_static_files_configuration.html>`_ from your ownCloud server.
+
 Changes in 8.1
 --------------
 
