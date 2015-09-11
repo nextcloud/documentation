@@ -47,10 +47,6 @@ See :doc:`../configuration_server/occ_command` to learn more about ``occ``.
 .. note:: A non-blocking or correctly configured SELinux setup is needed
    for these backends to work. Please refer to the :ref:`selinux-config-label`.
 
-Please keep in mind that some formatting has been applied and carriage returns
-have been added for better readability. In the :file:`data/mount.json` all
-values need to be concatenated and written in a row without these modifications!
-
 It is recommended to use the :doc:`Web-GUI <external_storage_configuration_gui>` in the
 administrator panel to add, remove or modify mount options to prevent any problems!
 
@@ -85,31 +81,32 @@ Example
 
 .. code-block:: json
 
-    {"group":{
+    {
+      "group":{
         "admin":{
             "\/$user\/files\/Admin_Stuff":{
                 "class":"\\OC\\Files\\Storage\\Local",
                 "options":{ ... },
                 "priority":150
-                }
             }
-        }
-     "user":{
+         }
+      },
+      "user":{
         "all":{
             "\/$user\/files\/Pictures":{
                 "class":"\\OC\\Files\\Storage\\DAV",
                 "options":{ ... },
                 "priority":100
-                }
             }
+         },
         "someuser":{
             "\/someuser\/files\/Music":{
                 "class":"\\OC\\Files\\Storage\\FTP",
                 "options":{ ... },
                 "priority":100
-                }
             }
-        }
+         }
+      }
     }
 
 Priorities
