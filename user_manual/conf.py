@@ -185,7 +185,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('contents', 'ownCloudUserManual.tex', u'ownCloud User Manual',
+  ('contents', 'ownCloud_User_Manual.tex', u'ownCloud User Manual',
    u'The ownCloud developers', 'manual'),
 ]
 
