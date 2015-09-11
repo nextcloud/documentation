@@ -157,7 +157,7 @@ terms in there.
 How to change names, slogans and URLs
 =====================================
 
-The ownCloud theming allows to change a lot of the names that are shown all over in the web interface. It's also possible to change the URLs to the documentation or the Android/iOS apps.
+The ownCloud theming allows a lot of the names that are shown on the web interface to be changed. It's also possible to change the URLs to the documentation or the Android/iOS apps.
 
 This can be done with a file named ``defaults.php`` within the root of the theme. In there you need to specify a class named ``OC_Theme`` and need to implement the methods you want to overwrite:
 
@@ -193,7 +193,7 @@ Each method should return a string. Following methods are available:
 
 .. note:: Only these methods are available in the templates, because we internally wrap around hardcoded method names.
 
-One exception is the method ``buildDocLinkToKey`` which gets passed in a key as first parameter. For core we build do something like this to build the documentation link:
+One exception is the method ``buildDocLinkToKey`` which gets passed in a key as first parameter. For core we do something like this to build the documentation link:
 
 .. code-block:: php
 
