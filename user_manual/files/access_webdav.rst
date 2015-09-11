@@ -366,6 +366,28 @@ Known Problems
   Known problems and their solutions are documented in the KB2123563_ article.
 
 **Problem**
+  Cannot map ownCloud as a WebDAV drive in Windows using self-signed certificate.
+
+**Solution**
+  1) Go to the your ownCloud instance via your favorite web browser ,
+  2) Click through until you get to the Certificate error in the browser status line.
+  3) View the cert, then from the Details tab, select Copy to File.
+  4) Save to the desktop as myOwnCloud.cer, for example,
+  5) Start, Run, MMC.
+  6) File, Add/Remove Snap-In,
+  7) Select Certificates, Click Add, My User Account, then Finish, then OK,
+  8) Dig down to Trust Root Certification Authorities, Certificates,
+  9) Right-Click Certificate, Select All Tasks, Import,
+  10) Select the Save Cert from the Desktop
+  11) Select Place all Certificates in the following Store, Click Browse,
+  12) Check the Box that says Show Physical Stores, Expand out Trusted Root Certification Authorities, and select Local Computer there, click OK, Complete the Import,
+  13) Check the list to make sure it shows up. You will probably need to Refresh before you see it. Exit MMC,
+  14) Open Browser, select Tools, Delete Browsing History
+  15) Select all but Inprivate Filtering Data, complete,
+  16) Go to Internet Options, Content Tab, Clear SSL State,
+  17) Close browser and reopen and test.
+  
+**Problem**
   You cannot download more than 50 MB or upload large Files when the upload takes
   longer than 30 minutes using Web Client in Windows 7.
 
