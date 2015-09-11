@@ -2,19 +2,21 @@
 ownCloud Documentation
 ======================
 
-Documentation is published on https://doc.owncloud.org and https://doc.owncloud.com.
+Documentation is published on `<https://doc.owncloud.org>`_ and 
+`<https://doc.owncloud.com.>`_
 
-The documentation Wiki https://github.com/owncloud/documentation/wiki is available for tips, tricks, edge cases, and anyone who wants to contribute more easily, without using Git and Sphinx.
+The `documentation Wiki <https://github.com/owncloud/documentation/wiki>`_ is 
+available for tips, tricks, edge cases, and anyone who wants to contribute more 
+easily, without having to learn Git and Sphinx.
 
 Manuals
 -------
 
-At this point, this repository hosts three manuals:
+This repository hosts three manuals:
 
-* **Users Manual:** Covers topics from an end user's Point of View
-* **Administrators Manual:** Setup, Deployment, Best Practices, etc.
-* **Developers Manual:** Developing Apps for ownCloud & understanding the
-  core Architecture.
+* **Users' Manual**
+* **Administration Manual**
+* **Developers Manual** 
   
 Please work in the appropriate branch. stable6 is for ownCloud 6, stable7 is for ownCloud 7, stable8 is 8.0, stable8.1 is 8.1, and master is version 8.2.
 
@@ -23,12 +25,13 @@ Please wrap lines at 80 characters.
 .. note:: ``configuration_server/config_sample_php_parameters.rst`` is auto-generated from the core
    config.sample.php file; changes to this file must be made in core `<https://github.com/owncloud/core/tree/master/config>`_
 
-Conventions
------------
+Spelling and Capitalization Conventions
+---------------------------------------
 
-ownCloud Apps Store
-synchronize
+As this grows it may be moved to its own page.
 
+* ownCloud Apps Store
+* synchronize
 
 License
 -------
@@ -39,27 +42,33 @@ Attribution 3.0 Unported license (`CC BY 3.0`_).
 .. _CC BY 3.0: http://creativecommons.org/licenses/by/3.0/deed.en_US
 
 Style
--------
+-----
 
 Source files are written using the `Sphinx Documentation Generator
 <http://sphinx.pocoo.org/>`_. The syntax follows the `reStructuredText
 <http://docutils.sourceforge.net/rst.html>`_ style, and can also be edited
 from GitHub.
 
-For PHP documentation you'll need to get the according language
-domain package. The documenation for PHP source is located at
-http://packages.python.org/sphinxcontrib-phpdomain/reference.html
-
 Editing
 -------
-Contributing to the documentation requires a github account.
 
-To edit a document, either do a checkout of the repository and edit the rst
-files from there, or work directly on github. The latter is only really
-suitable for small fixes and improvements because substantial editing efforts
-can better be controlled in an editor.
+Contributing to the documentation requires a Github account. Make sure you are 
+working in the correct branch for your version of ownCloud or client apps. 
+If your edits pertain to multiple manual versions, be prepared to backport as 
+needed.
 
-To edit on github, fork the repository (see top-right of the screen, under
+To edit a document, you can edit the .rst files on your local system, or work 
+directly on Github. The latter is only suitable for small fixes and improvements 
+because substantial editing efforts can better be controlled on your local PC. 
+
+The best way is to install a complete Sphinx build environment and work on your 
+local PC. You will be able to make your own local builds, which is the fastest 
+and best way to preview for errors. Sphinx will report syntax errors, missing 
+images, and formatting errors. The Github preview is not complete and misses 
+many mistakes. Create a new branch against the master or stable branch you are 
+editing, make your edits, then push your new branch to Github and open a new PR. 
+
+To edit on Github, fork the repository (see top-right of the screen, under
 your username). You will then be able to make changes easily. Once done, 
 you can create a pull request and get the changes reviewed and back into
 the official repository.
@@ -140,7 +149,7 @@ Sometimes, existing documentation might be in Word or LibreOffice documents. To
 make it part of this documentation collection, follow these steps:
 
 Prerequisites
-^^^^^^^^^^^^
+^^^^^^^^^^^^^
 
 1. Install Python 2.x
 2. Install odt2sphinx (``easy_install odt2sphinx``)
