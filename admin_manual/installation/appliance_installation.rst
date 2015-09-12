@@ -4,7 +4,7 @@ ownCloud Appliances
 Software Appliances
 ~~~~~~~~~~~~~~~~~~~
 
-There are number of pre-made virtual machine-based appliances:
+There are a number of pre-made virtual machine-based appliances:
 
 -  `SUSE Studio, ownCloud on openSuSE`_, runnable directly from an USB stick.
 -  `Amahi home server`_
