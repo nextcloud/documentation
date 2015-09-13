@@ -78,6 +78,17 @@ directory. The SQLite database is also stored here, when you use SQLite.
 
 ::
 
+	'tempdirectory' => '/tmp/owncloudtemp',
+
+Override where ownCloud stores temporary files. Useful in situations where
+the system temporary directory is on a limited space ramdisk or is otherwise
+restricted, or if external storages which do not support streaming are in
+use.
+
+The web server user must have write access to this directory.
+
+::
+
 	'version' => '',
 
 The current version number of your ownCloud installation. This is set up
