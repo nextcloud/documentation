@@ -1,3 +1,4 @@
+========================
 Setting Your Preferences
 ========================
 
@@ -10,6 +11,7 @@ To access your personal settings:
    The Personal Settings Menu opens.
 
    .. figure:: images/oc_personal_settings_dropdown.png
+      :alt: screenshot of user menu at top-right of ownCloud Web GUI
 
    **Personal Settings Menu**
 
@@ -18,6 +20,7 @@ To access your personal settings:
    The Personal Settings Page opens in the main viewing window.
 
    .. figure:: images/personal_settings.png
+      :alt: screenshot of user's Personal settings page
 
 .. note:: If you are an administrator, you can also manage users and administer 
    the server by using the related links in the Personal Settings Menu. 
@@ -34,6 +37,7 @@ Appearing at the top of the page, this information provides the amount of space
 used and available for the user (in Megabytes).
 
 .. figure:: images/usage_indicator.png
+   :alt: screenshot of space used/available indicator
 
 Password
 --------
@@ -44,6 +48,7 @@ password, ownCloud provides a dynamic password strength indicator for your
 assistance.
 
 .. figure:: images/password_change.png
+   :alt: screenshot of password management form
 
 .. note:: If you would like the ability to recover your password through
      e-mail, specify your email address in the Email field (see below).
@@ -55,6 +60,7 @@ Enables you to specify your full name. This name appears at the top of the
 Personal Settings Menu.
 
    .. figure:: images/full_name.png
+      :alt: screenshot of Full Name form
 
 Email
 -----
@@ -64,6 +70,7 @@ administrator in sending you notifications. For information about setting email
 notifications, see "Notifications" below.
 
 .. figure:: images/email_address_personal_settings.png
+   :alt: screenshot of email address form
 
 Profile picture
 ---------------
@@ -75,14 +82,16 @@ from an external source, or select an image from any existing images in your
 ownCloud folders.
 
 .. figure:: images/profile_picture_personal_settings.png
+   :alt: screenshot of profile picture management form
 
 Language
 --------
 
-Enables you to change your web interface language, if you want to override the
+Enables you to change your Web interface language, if you want to override the
 browser settings.
 
 .. figure:: images/language_personal_settings.png
+   :alt: screenshot of language dropdown selector
 
 Notifications
 -------------
@@ -95,26 +104,28 @@ changes made by others on your account. You can obtain email notifications
 hourly, daily, or weekly.
 
 .. figure:: images/notifications_personal_settings.png
+   :alt: screenshot of notifications management form
 
 Limit notifications to your favorite files
-++++++++++++++++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Since ownCloud 8.1 it is possible to "Limit notifications about creation and
 changes to your favorite files". This means you will no longer receive
-notifications for all files, but only those, which are marked as favorite or are
+notifications for all files, but only those which are marked as favorite or are
 in a folder that is marked as a favorite, using the new :ref:`favorites-label`
 feature.
 
 .. note:: This option is only available for the notification stream at the
   moment, due to the way the email notifications are generated in ownCloud 8.1.
 
-Documents
----------
+Save New Documents Location
+---------------------------
 
-Enables you to specify a location (folder) to which newly created documents are
-saved.
+If your ownCloud server admin has enabled the Documents app, you can specify a 
+location (folder) to which newly created documents are saved.
 
 .. figure:: images/documents_personal_settings.png
+   :alt: screenshot of Documents form
 
 Version
 -------
