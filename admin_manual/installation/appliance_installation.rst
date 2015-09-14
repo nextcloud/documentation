@@ -27,10 +27,10 @@ Follow these steps to get the appliance working:
    for you on first boot. If you log in at the console, you'll  be prompted to 
    change the password. This is optional.
 
-5. With your web-browser try ``http://localhost:8888`` or 
+5. With your Web browser try ``http://localhost:8888`` or 
    ``http://localhost:80`` or the addess printed on the console. One of them 
    should work. If not, please review and adjust the network setup of 
-   virtualbox to bridged mode.
+   Virtualbox to bridged mode.
 
 6. You should see a Web page with login credentials (if you haven't changed 
    them already) and a list of URLs to try to reach the ownCloud web 
