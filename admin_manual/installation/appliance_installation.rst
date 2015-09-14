@@ -8,37 +8,29 @@ Instructions for VirtualBox and OVA
 Follow these steps to get the appliance working:
 
 1. Download the Virtual Machine image zip file and unpack it
-2. Start VirtualBox and click on *File ...* *Import Appliance ...*
+2. Start VirtualBox and click on *File ...* > *Import Appliance ...*
 3. Click the green Start arrow. After a minute you should see the console greeting message.
-.. figure:: ../images/community-vm-console.png
-   :scale: 50%
-   
-   *Click to enlarge*
+
+.. figure:: images/community-vm-console.png
+
 4. Note the username and password here. It is a random password that we generate for you on first boot.
-5. If you log in at the console, you'll  be prompted to change the password. This is optional.
-6. With your web-browser try ``http://localhost:8888`` or ``http://localhost:80`` or the addess printed on the console.
-     One of them should work. If not, please review and adjust the network setup of virtualbox to bridged mode.
-7. You should see a webpage with login credentials (if you haven't changed them already) and a list of URLs to try to reach the ownCloud web service.  Which one works, again depends on the network setup of your hypervisor.
-     .. figure:: ../images/community-vm-splash.png
+   If you log in at the console, you'll  be prompted to change the password. This is optional.
+5. With your web-browser try ``http://localhost:8888`` or ``http://localhost:80`` or the addess printed on the console.
+   One of them should work. If not, please review and adjust the network setup of virtualbox to bridged mode.
+6. You should see a webpage with login credentials (if you haven't changed them already) and a list of URLs to try to reach the ownCloud web service.  Which one works, again depends on the network setup of your hypervisor.
+
+.. figure:: images/community-vm-splash.png
    :scale: 50%
    
    *Click to enlarge*
 
-.. note:: Before diving into ownCloud, please consider memorizing the admin password, and cmake sure the login credentials are no longer displayed. Click the *[Hide Credentials]* button. When using the proxy-app, this web-page may be publically visible.
+.. note:: Before diving into ownCloud, please consider memorizing the admin password, and cmake sure the login credentials are no longer displayed. Click the *[Hide Credentials]* button. When using the ownCloud Proxy app, this web-page may be publicly visible.
 
 .. note:: Inside the VM, ownCloud runs with a default disk size of 40 GB and its own mysql database. The ownCloud admin user is also a valid account on the ubuntu system that runs inside the VM. You can ssh into the machine and do sudo from there, and administrate the system.
 
 **For VMware**
 
-1. Double click on the .vmx file
-2. Network Adapter
-3. Bridged Network
-
-After the VM is booted a plain Ubuntu console appears, showing you the IP-address and initial login credentials. Here you have some options:
-
--  Follow the instructions on screen.
--  Direct your web browser to the IP-address shown in the console which will bring you to a basic web-page there with further instructions.
-
+You can follow most of the steps above, however, after opening the VMX file, you will have to configure ``Bridged Network`` as *Network Adapter*
 
 Software Appliances
 ~~~~~~~~~~~~~~~~~~~
