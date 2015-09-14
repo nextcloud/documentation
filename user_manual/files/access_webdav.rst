@@ -13,7 +13,7 @@ ownCloud Desktop and Mobile Clients
 
 The recommended method for keeping your desktop PC synchronized with your 
 ownCloud server is by using the `ownCloud Desktop Client 
-<http://doc.owncloud.org/desktop/2.0/>`_. You can configure the ownCloud client 
+<https://owncloud.org/install/#install-clients>`_. You can configure the ownCloud client 
 to save files in any local directory you want, and you choose which directories 
 on the ownCloud server to sync with. The client displays the current connection 
 status and logs all activity, so you always know which remote files have been 
@@ -22,7 +22,7 @@ local PC are properly synchronized with the server.
 
 The recommended method for syncing your ownCloud server with Android and 
 Apple iOS devices is by using the `ownCloud mobile apps 
-<http://owncloud.org/install/#mobile>`_.
+<https://owncloud.org/install/#install-clients>`_.
 
 To connect to your ownCloud server with the **ownCloud** mobile apps, use the 
 base URL and folder only::
