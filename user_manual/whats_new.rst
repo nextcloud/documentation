@@ -1,19 +1,20 @@
-====================================
-What's New for Users in ownCloud 8.1
-====================================
+==========================================
+What's New for Users in ownCloud |version|
+==========================================
 
 Groups Listings on Personal Page
 --------------------------------
 
-Now you can see which ownCloud groups you belong to on your Personal page in the Web interface.
+Now you can see which ownCloud groups you belong to on your Personal page in the 
+Web interface.
 
 Desktop Sync Client Shares From File Manager, Selective Sync
 ------------------------------------------------------------
 
 The Desktop Sync Client now allows you to share files directly from your file 
-manager, and has a new graphical selective sync file chooser. See the 
-`ownCloud Desktop Client Manual <http://doc.owncloud.org/desktop/1.8/>`_ for 
-more information.
+manager, and has a new graphical selective sync file chooser. See the `ownCloud 
+Desktop Client Manual <http://doc.owncloud.org/desktop/2.0/>`_ for more 
+information.
 
 .. _favorites-label:
 

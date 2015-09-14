@@ -1,14 +1,17 @@
+===============
 Troubleshooting
 ===============
 
 BlackBerry OS 10.2
 ------------------
 
-BlackBerry OS up to 10.2.2102 does not accept a URL with protocol ``https://`` in front of the server address.
-It will always tell you, that it cannot login on your server. So instead of writing
+BlackBerry OS up to 10.2.2102 does not accept a URL with protocol ``https://`` 
+in front of the server address. It will always tell you that it cannot login on 
+your server. So instead of writing::
 
     https://address/remote.php/carddav/principals/username
     
-in the server address field, you have to write
+in the server address field, you have to write::
 
     address/remote.php/carddav/principals/username
+    

@@ -2,19 +2,18 @@
 Accessing ownCloud Files Using WebDAV
 =====================================
 
-ownCloud fully supports the WebDAV protocol, and you can
-connect and synchronize with your ownCloud files over WebDAV.  In this 
-chapter you will learn how to connect Linux, Mac OS X, Windows, and mobile 
-devices to your ownCloud server via WebDAV. Before we get into configuring 
-WebDAV, let's take a quick look at the recommended way of connecting client 
-devices to your ownCloud servers.
+ownCloud fully supports the WebDAV protocol, and you can connect and synchronize 
+with your ownCloud files over WebDAV.  In this chapter you will learn how to 
+connect Linux, Mac OS X, Windows, and mobile devices to your ownCloud server via 
+WebDAV. Before we get into configuring WebDAV, let's take a quick look at the 
+recommended way of connecting client devices to your ownCloud servers.
 
 ownCloud Desktop and Mobile Clients
 -----------------------------------
 
 The recommended method for keeping your desktop PC synchronized with your 
 ownCloud server is by using the `ownCloud Desktop Client 
-<http://doc.owncloud.org/desktop/1.7/>`_. You can configure the ownCloud client 
+<http://doc.owncloud.org/desktop/2.0/>`_. You can configure the ownCloud client 
 to save files in any local directory you want, and you choose which directories 
 on the ownCloud server to sync with. The client displays the current connection 
 status and logs all activity, so you always know which remote files have been 
@@ -53,22 +52,24 @@ Windows in the same way as any remote network share, and stay synchronized.
 Accessing Files Using Linux
 ---------------------------
 
-You can access files in Linux operating systems using the following methods:
+You can access files in Linux operating systems using the following methods.
 
-Accessing Files with GNOME and Nautilus File Manager
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Nautilus File Manager
+^^^^^^^^^^^^^^^^^^^^^
 
 Use the ``davs://`` protocol to connect the Nautilus file manager to your 
 ownCloud share::
 
   davs://example.org/owncloud/remote.php/webdav
 
-.. note:: If your server connection is not HTTPS-secured, use `dav://` instead of `davs://`.
+.. note:: If your server connection is not HTTPS-secured, use `dav://` instead 
+   of `davs://`.
 
 .. image:: ../images/webdav_gnome3_nautilus.png
+   :alt: screenshot of configuring Nautilus file manager to use WebDAV
 
 Accessing Files with KDE and Dolphin File Manager
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To access your ownCloud files using the Dolphin file manager in KDE, use 
 the ``webdav://`` protocol::
@@ -76,15 +77,16 @@ the ``webdav://`` protocol::
     webdav://example.org/owncloud/remote.php/webdav
 
 .. image:: ../images/webdav_dolphin.png
+   :alt: screenshot of configuring Dolphin file manager to use WebDAV
 
 You can create a permanent link to your ownCloud server:
 
-1. Open Dolphin and click "Network" in the left hand "Places" column.
-2. Click on the icon labeled **Add a Network Folder**.
+#. Open Dolphin and click "Network" in the left hand "Places" column.
+#. Click on the icon labeled **Add a Network Folder**.
    The resulting dialog should appear with WebDAV already selected.
-3. If WebDAV is not selected, select it.
-4. Click **Next**.
-5. Enter the following settings:
+#. If WebDAV is not selected, select it.
+#. Click **Next**.
+#. Enter the following settings:
 
    * Name: The name you want to see in the **Places** bookmark, for example ownCloud.
 
@@ -93,9 +95,9 @@ You can create a permanent link to your ownCloud server:
    * Server: The ownCloud domain name, for example **example.org** (without 
      **http://** before or directories afterwards).
    * Folder -- Enter the path ``owncloud/remote.php/webdav``.
-6. (Optional) Check the "Create icon checkbox" for a bookmark to appear in the 
+#. (Optional) Check the "Create icon checkbox" for a bookmark to appear in the 
    Places column.
-7. (Optional) Provide any special settings or an SSL certificate in the "Port & 
+#. (Optional) Provide any special settings or an SSL certificate in the "Port & 
    Encrypted" checkbox.
 
 Creating WebDAV Mounts on the Linux Command Line
@@ -110,30 +112,30 @@ automatically every time you log in to your Linux computer.
    WebDAV shares just like any other remote filesystem. Use this command to 
    install it on Debian/Ubuntu::
    
-    # apt-get install davfs2
+    apt-get install davfs2
     
 2. Use this command to install it on CentOS, Fedora, and openSUSE::
 
-    # yum install davfs2    
+    yum install davfs2    
 
 3. Add yourself to the ``davfs2`` group::
 
-    # usermod -aG davfs2 <username>
+    usermod -aG davfs2 <username>
 
 3. Then create an ``owncloud`` directory in your home directory for the 
    mountpoint, and ``.davfs2/`` for your personal configuration file::
    
-    $ mkdir ~/owncloud
-    $ mkdir ~/.davfs2
+    mkdir ~/owncloud
+    mkdir ~/.davfs2
     
-4. Copy ``/etc/davfs2/secrets`` to ``~/.davfs2`` :: 
+4. Copy ``/etc/davfs2/secrets`` to ``~/.davfs2``:: 
 
-    # cp  /etc/davfs2/secrets ~/.davfs2/secrets 
+    cp  /etc/davfs2/secrets ~/.davfs2/secrets 
    
 5. Set yourself as the owner and make the permissions read-write owner only::
     
-    # chown <username>:<username>  ~/.davfs2/secrets
-    # chmod 600 ~/.davfs2/secrets
+    chown <username>:<username>  ~/.davfs2/secrets
+    chmod 600 ~/.davfs2/secrets
  
 6. Add your ownCloud login credentials to the end of the ``secrets`` file, 
    using your ownCloud server URL and your ownCloud username and password::
@@ -148,30 +150,38 @@ automatically every time you log in to your Linux computer.
 8. Then test that it mounts and authenticates by running the following 
    command. If you set it up correctly you won't need root permissions::
 
-    $ mount ~/owncloud
+    mount ~/owncloud
     
 9. You should also be able to unmount it::
  
-    $ umount ~/owncloud
+    umount ~/owncloud
     
 Now every time you login to your Linux system your ownCloud share should 
-automatically mount via WebDAV in your ``~/owncloud`` directory. If you 
-prefer to mount it manually, change ``auto`` to ``noauto`` in 
-``/etc/fstab``.
+automatically mount via WebDAV in your ``~/owncloud`` directory. If you prefer 
+to mount it manually, change ``auto`` to ``noauto`` in ``/etc/fstab``.
 
 Known Issues
-~~~~~~~~~~~~
+------------
 
-**Problem:** Resource temporarily unavailable
+Problem
+^^^^^^^
+Resource temporarily unavailable
 
-**Solution:** If you experience trouble when you create a file in the directory, 
+Solution
+^^^^^^^^
+If you experience trouble when you create a file in the directory, 
 edit ``/etc/davfs2/davfs2.conf`` and add::
 
     use_locks 0
 
-**Problem:** Certificate warnings
+Problem
+^^^^^^^ 
+Certificate warnings
 
-**Solution:** If you use a self-signed certificate, you will get a warning. To 
+Solution
+^^^^^^^^ 
+
+If you use a self-signed certificate, you will get a warning. To 
 change this, you need to configure ``davfs2`` to recognize your certificate. 
 Copy ``mycertificate.pem`` to ``/etc/davfs2/certs/``. Then edit 
 ``/etc/davfs2/davfs2.conf`` and uncomment the line ``servercert``. Now add the 
@@ -195,6 +205,7 @@ To access files through the Mac OS X Finder:
 2. Specify the address of the server in the **Server Address** field.
 
   .. image:: ../images/osx_webdav1.png
+     :alt: Screenshot of entering your ownCloud server address on Mac OS X
 
   For example, the URL used to connect to the ownCloud server 
   from the Mac OS X Finder is::
@@ -234,7 +245,7 @@ ownCloud to one or more directories of your local hard drive.
 .. _KB841215: http://support.microsoft.com/kb/841215
 
 Mapping Drives With the Command Line
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following example shows how to map a drive using the command line.  To map 
 the drive:
@@ -264,7 +275,7 @@ An alternative command syntax is::
   yourpassword
 
 Mapping Drives With Windows Explorer
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To map a drive using the Microsoft Windows Explorer:
 
@@ -286,8 +297,7 @@ To map a drive using the Microsoft Windows Explorer:
 
 .. figure:: ../images/explorer_webdav.png
    :scale: 80%
-
-   **Mapping WebDAV on Windows Explorer**
+   :alt: screenshot of mapping WebDAV on Windows Explorer
 
 5. Click the ``Finish`` button.
 
@@ -325,74 +335,97 @@ the 'Path' field. For example:
 Now Cyberduck enables file access to the ownCloud server.
 
 Known Problems
-~~~~~~~~~~~~~~
+--------------
 
-**Problem**
-  Windows does not connect using HTTPS.
+Problem
+^^^^^^^
+Windows does not connect using HTTPS.
 
-**Solution 1**
-  The Windows WebDAV Client might not support Server Name Indication (SNI) on
-  encrypted connections. If you encounter an error mounting an SSL-encrypted
-  ownCloud instance, contact your provider about assigning a dedicated IP 
-  address for your SSL-based server.
+Solution 1
+^^^^^^^^^^
 
-**Solution 2**
-  The Windows WebDAV Client might not support TSLv1.1 / TSLv1.2 connections.
-  If you have restricted your server config to only provide TLSv1.1 and above
-  the connection to your server might fail. Please refer to the WinHTTP_
-  documentation for further information.
+The Windows WebDAV Client might not support Server Name Indication (SNI) on 
+encrypted connections. If you encounter an error mounting an SSL-encrypted 
+ownCloud instance, contact your provider about assigning a dedicated IP address 
+for your SSL-based server.
+
+Solution 2
+^^^^^^^^^^
+
+The Windows WebDAV Client might not support TSLv1.1 / TSLv1.2 connections. If 
+you have restricted your server config to only provide TLSv1.1 and above the 
+connection to your server might fail. Please refer to the WinHTTP_ documentation 
+for further information.
 
 .. _WinHTTP: https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features
 
-**Problem**
-  You receive the following error message:
-  **Error 0x800700DF: The file size exceeds the limit allowed and cannot be 
-  saved.**
+Problem
+^^^^^^^
 
-**Solution**
-  Windows limits the maximum size a file transferred from or to  a WebDAV share
-  may have.  You can increase the value **FileSizeLimitInBytes** in
-  **HKEY_LOCAL_MacHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters**
-  by clicking on **Modify**.
+You receive the following error message: **Error 0x800700DF: The file size 
+exceeds the limit allowed and cannot be saved.**
 
-  To increase the limit to the maximum value of 4GB, select **Decimal**, enter
-  a value of **4294967295**, and reboot Windows or restart the **WebClient**
-  service.
+Solution
+^^^^^^^^
 
-**Problem**
-  Accessing your files from Microsoft Office via WebDAV fails.
+Windows limits the maximum size a file transferred from or to  a WebDAV share 
+may have.  You can increase the value **FileSizeLimitInBytes** in 
+**HKEY_LOCAL_MacHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters
+** by clicking on **Modify**.
 
-**Solution**
-  Known problems and their solutions are documented in the KB2123563_ article.
+To increase the limit to the maximum value of 4GB, select **Decimal**, enter a 
+value of **4294967295**, and reboot Windows or restart the **WebClient** 
+service.
 
-**Problem**
-  Cannot map ownCloud as a WebDAV drive in Windows using self-signed certificate.
+Problem
+^^^^^^^
 
-**Solution**
-  1) Go to the your ownCloud instance via your favorite web browser ,
-  2) Click through until you get to the Certificate error in the browser status line.
-  3) View the cert, then from the Details tab, select Copy to File.
-  4) Save to the desktop as myOwnCloud.cer, for example,
-  5) Start, Run, MMC.
-  6) File, Add/Remove Snap-In,
-  7) Select Certificates, Click Add, My User Account, then Finish, then OK,
-  8) Dig down to Trust Root Certification Authorities, Certificates,
-  9) Right-Click Certificate, Select All Tasks, Import,
-  10) Select the Save Cert from the Desktop
-  11) Select Place all Certificates in the following Store, Click Browse,
-  12) Check the Box that says Show Physical Stores, Expand out Trusted Root Certification Authorities, and select Local Computer there, click OK, Complete the Import,
-  13) Check the list to make sure it shows up. You will probably need to Refresh before you see it. Exit MMC,
-  14) Open Browser, select Tools, Delete Browsing History
-  15) Select all but Inprivate Filtering Data, complete,
-  16) Go to Internet Options, Content Tab, Clear SSL State,
-  17) Close browser and reopen and test.
+Accessing your files from Microsoft Office via WebDAV fails.
+
+Solution
+^^^^^^^^
+
+Known problems and their solutions are documented in the KB2123563_ article.
   
-**Problem**
-  You cannot download more than 50 MB or upload large Files when the upload takes
-  longer than 30 minutes using Web Client in Windows 7.
+Problem
+^^^^^^^
+Cannot map ownCloud as a WebDAV drive in Windows using self-signed certificate.
 
-**Solution**
-  Workarounds are documented in the KB2668751_ article.
+Solution
+^^^^^^^^
+
+  #. Go to the your ownCloud instance via your favorite Web browser.
+  #. Click through until you get to the certificate error in the browser status 
+     line.
+  #. View the cert, then from the Details tab, select Copy to File.
+  #. Save to the desktop with an arbitrary name, for example ``myOwnCloud.cer``.
+  #. Start, Run, MMC.
+  #. File, Add/Remove Snap-In.  
+  #. Select Certificates, Click Add, My User Account, then Finish, then OK.
+  #. Dig down to Trust Root Certification Authorities, Certificates.
+  #. Right-Click Certificate, Select All Tasks, Import.
+  #. Select the Save Cert from the Desktop.
+  #. Select Place all Certificates in the following Store, Click Browse,
+  #. Check the Box that says Show Physical Stores, Expand out Trusted Root 
+     Certification Authorities, and select Local Computer there, click OK, 
+     Complete the Import.
+  #. Check the list to make sure it shows up. You will probably need to Refresh 
+     before you see it. Exit MMC.
+  #. Open Browser, select Tools, Delete Browsing History.
+  #. Select all but In Private Filtering Data, complete.
+  #. Go to Internet Options, Content Tab, Clear SSL State.
+  #. Close browser, then re-open and test.
+  
+Problem
+^^^^^^^
+
+You cannot download more than 50 MB or upload large Files when the upload takes 
+longer than 30 minutes using Web Client in Windows 7.
+
+Solution
+^^^^^^^^
+
+Workarounds are documented in the KB2668751_ article.
 
 .. _KB2668751: https://support.microsoft.com/kb/2668751
 .. _KB2123563: https://support.microsoft.com/kb/2123563
