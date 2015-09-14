@@ -132,6 +132,37 @@ following order, with later mount types always overriding a previous mount type:
 -  user (not all) : per-user mount configurations
 -  :file:`data/$user/mount.json` : personal mount configurations
 
+Configuring Temporary Disk Space Needs
+--------------------------------------
+
+Not all external storage types are currently enabled for, or support 
+streaming. Therefore ownCloud needs temporary space to buffer data for 
+transfers. This can occur when there are many concurrent users transferring data 
+with a higher volume over small bandwidth. ownCloud may need, in these 
+cases, additional temporary space.
+
+Example: 100 concurrent users uploading each a 300MB file with a 
+total transfer time of 6000s (1h 40min). The temporary space needed by ownCloud 
+for this period of time is 30GB. Even though it is not mandatory, the location 
+of the temp directory used by ownCloud can be configured manually. To do so, 
+you need to maintain the ``tempdirectory`` parameter described in 
+``config.sample.php``
+
+As of writing, following external storage list uses temp files for up/download:
+
+* FTP
+* SMB / SMB_OC
+* WebDAV
+* Amazon S3
+* Dropbox
+* Google Drive
+* OpenStack SWIFT
+
+External storage list that uses direct file streaming:
+
+* Local
+* SFTP
+
 Backends
 --------
 
