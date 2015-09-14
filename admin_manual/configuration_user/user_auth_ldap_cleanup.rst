@@ -17,7 +17,7 @@ These items are removed upon cleanup:
 * User's ownCloud home folder
 * User's corresponding entry in ``oc_storages``
 
-There are two prequisites for LDAP User Cleanup to operate:
+There are two prerequisites for LDAP User Cleanup to operate:
 
 1. Set ``ldapUserCleanupInterval`` in ``config.php`` to your desired check 
    interval in minutes. The default is 51 minutes.
