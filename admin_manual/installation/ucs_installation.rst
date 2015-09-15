@@ -85,7 +85,7 @@ one version of ownCloud installed.
 Manually by download
 """"""""""""""""""""
 
-Download the integration packages `from our website`_ and install them from
+Download the integration packages `from the UCS repository`_ and install them from
 within your download folder (note: the package owncloud-unsupported is
 optional) via command line:
 
@@ -167,3 +167,5 @@ empty, a message will be displayed.
 
 
 .. _from our website: https://owncloud.com/download
+
+.. _from the UCS repository: http://updates.software-univention.de/4.0/maintained/4.0-3/
