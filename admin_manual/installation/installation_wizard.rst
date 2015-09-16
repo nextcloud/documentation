@@ -2,114 +2,135 @@
 Installation Wizard
 ===================
 
-When ownCloud prerequisites are fulfilled and all ownCloud files are installed on the server, the last step to complete the 
-installation is running the Installation Wizard.
+Quick Start
+-----------
 
-  * If you are installing ownCloud on the same machine as you are accessing the
-    install wizard from, the URL will be ``http://localhost/owncloud``, or ``https://localhost/owncloud`` if you have enabled SSL.
-  * If you are installing ownCloud on a different machine, you'll have to access
-    it by its hostname or IP address, e.g. ``http://example.com/owncloud``.
-  * If you are using a self-signed certificate, you will be presented with a
-    security warning about the issuer of the certificate not being trusted which
-    you can ignore.
+When ownCloud prerequisites are fulfilled and all ownCloud files are installed, 
+the last step to completing the installation is running the Installation 
+Wizard. 
+This is just three steps:
 
-* You will be presented with the setup screen:
+#. Point your Web browser to ``http://localhost/owncloud``
+#. Enter your desired administrator's username and password.
+#. Click **Finish Setup**.
 
-.. image:: images/install-wizard.png
+.. figure:: images/install-wizard.png
    :scale: 75%
- 
+   :alt: screenshot of the installation wizard   
    
-Required Settings
-~~~~~~~~~~~~~~~~~
+You're finished and can start using your new ownCloud server.   
 
-Under ``create an admin account`` you must enter a username and password for the administrative user account. You may choose any 
-username and password that you want.
+Of course, there is much more that you can do to set up your ownCloud server 
+for 
+best performance and security. In the following sections we will cover 
+important 
+installation and post-installation steps. Note that you must follow the 
+instructions in :ref:`Setting Strong Permissions <label-setting-strong-perms>` 
+in order to use the :doc:`occ Command <../configuration_server/occ_command>`.
 
-Storage & Database
-~~~~~~~~~~~~~~~~~~
+* :ref:`Data Directory Location <label-data-directory-location>`
+* :ref:`Database Choice <label-database-choice>`
+* :ref:`Trusted Domains <label-trusted-domains>`
+* :ref:`Setting Strong Permissions <label-setting-strong-perms>`
 
-* Click ``Storage & Database`` to see all of your database options, and to optionally change the default data storage directory. 
-  The default database is SQLite, which is sufficient for testing and simple single-user setups, but not for a production server.
-  
-.. note:: SQLite is not supported and not included in the ownCloud Enterprise Subscription.  
-  
-* The database you want to use must already be installed, and you must have the database administrative user and password for all 
-  databases except SQLite, which does not have an admin user.
-* Enter any arbitrary name for the ownCloud Database name. This must be a database that 
-  does not already exist.
-* If you are not using Apache as the web server, it is highly
-  recommended to configure the data directory to a location outside of
-  the document root. Otherwise all user data is potentially publicly
-  visible.
+.. _label-data-directory-location:
 
-.. image:: images/install-wizard-advanced.png
+Data Directory Location
+-----------------------
+
+Click **Storage and Database** to expose additional installation configuration 
+options for your ownCloud data directory and database options.
+
+.. figure:: images/install-wizard-2.png
    :scale: 75%
+   :alt: screenshot of the installation wizard with all options exposed
+
+You should locate your ownCloud data directory outside of your Web root if you 
+are using an HTTP server other than Apache, or you may wish to store your 
+ownCloud data in a different location for other reasons (e.g. on a storage 
+server). It is best to configure your data directory location at installation, 
+as it is difficult to move after installation. You may put it anywhere; in this 
+example is it located in ``/var/oc_data``. This directory must already exist, 
+and must be owned by your HTTP user (see :ref:`label-setting-strong-perms`).
+
+.. _label-database-choice:
 
 Database Choice
-~~~~~~~~~~~~~~~
+---------------
 
-* See :doc:`../configuration_database/linux_database_configuration` for 
-  guidelines on choosing a database.
+SQLite is the default database for ownCloud Server (it is not 
+available and not supported in the Enterprise edition), and it is good only for 
+testing and lightweight single-user setups without client synchronization. 
+Supported databases are MySQL, MariaDB, Oracle 11g, and PostgreSQL, and we 
+recommend :doc:`MySQL/MariaDB <../release_notes>`. Your database and PHP 
+connectors must be installed before you run the Installation Wizard. When you 
+install ownCloud from packages all the necessary dependencies will be satisfied 
+(see :doc:`source_installation` for a detailed listing of required and optional 
+PHP modules). You will need the root database login, or any administrator login 
+that has permissions to create and modify databases, and then enter any name 
+you 
+want for your ownCloud database.
 
-* It is not easy to migrate to another database system after you have set up ownCloud.
+Click Finish Setup, and start using your new ownCloud server. 
 
-* You will only be able to choose among the PHP database connectors which are actually installed on the system.
+.. figure:: images/install-wizard-3.png
+   :scale: 75%
+   :alt: screenshot of the welcome screen after a successful installation
 
-* When using MySQL/MariaDB or PostgreSQL you need the login of the database root user, or an admin user with sufficient 
-  privileges to create a new database and add users. This lets ownCloud create its own database; it will also create a database 
-  user account with restricted rights.
+Now we will look at some important post-installation steps.
 
-* There are restrictions as to what characters a database name may or may not contain; see the `MySQL Schema Object Names 
-  documentation`_ for details.
+.. _label-trusted-domains: 
+
+Trusted Domains
+---------------
+
+All URLs used to access your ownCloud server must be whitelisted in your 
+``config.php`` file, under the ``trusted_domains`` setting. Users 
+are allowed to log into ownCloud only when they point their browsers to a 
+URL that is listed in the ``trusted_domains`` setting. You may use IP addresses 
+and domain names. A typical configuration looks like this::
+
+ 'trusted_domains' => 
+   array (
+    0 => 'localhost', 
+    1 => 'server1.example.com', 
+    2 => '192.168.1.50',
+ ),
+
+The loopback address, ``127.0.0.1``, is automatically whitelisted, so as long 
+as you have access to the physical server you can always log in. In the event 
+that a load balancer is in place there will be no issues as long as it sends 
+the correct X-Forwarded-Host header. When a user tries a URL that 
+is not whitelisted the following error appears:
+
+.. figure:: images/untrusted-domain.png
+   :scale: 75%
+   :alt: screenshot of error message when URL is not whitelisted in 
+    trusted_domains
   
-.. _MySQL Schema Object Names documentation: http://dev.mysql.com/doc/refman/5.5/en/identifiers.html
-
-Finish Installation
-~~~~~~~~~~~~~~~~~~~
-
-* Once you've entered all settings, click "Finish Setup"
-* ownCloud will set up your cloud according to your settings
-* When it's finished, it will log you in as administrative user and present the
-  "Welcome to ownCloud" screen.
+.. _label-setting-strong-perms:
   
 .. _strong_perms:
 
 Setting Strong Directory Permissions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------------
 
 For hardened security we recommend setting the permissions on your ownCloud 
-directory as strictly as possible. This should be done immediately after the 
-initial installation. Your HTTP user must own the ``config/``, ``data/`` and 
-``apps/`` directories in your ownCloud directory so that you can configure 
-ownCloud, create, modify and delete your data files, and install apps via the 
-ownCloud Web interface. 
+directories as strictly as possible, and for proper server operations. This 
+should be done immediately after the initial installation. Your HTTP user must 
+own the ``config/``, ``data/`` and ``apps/`` directories so that you can 
+configure ownCloud, create, modify and delete your data files, and install apps 
+via the ownCloud Web interface. 
 
 You can find your HTTP user in your HTTP server configuration files. Or you can 
-create a PHP page to find it for you. To do this, create a plain text file with 
-the following lines in it:
+use ``phpinfo``. To do this, create a plain text file with 
+the following line in it::
 
-.. code-block:: php
+  <?php phpinfo(); ?>
 
-  <?php
-  echo "User: " . exec('whoami');
-  echo "Group: " . exec('groups');
-  ?>
-
-If the exec php function is disabled (getting a white page with the script above)
-you can also try to use a script like:
-
-.. code-block:: php
-
-  <?php
-  $processUser = posix_getpwuid(posix_geteuid());
-  echo "User: " . $processUser['name'];
-  $processGroup = posix_getgrgid($processUser['gid']);
-  echo " Group: " . $processGroup['name'];
-  ?>
-
-Name it ``whoami.php`` and place it in your ``/var/www/html`` directory, and 
-then open it in a Web browser, for example ``http://localhost/whoami.php``. You 
-should see a single line in your browser page with the HTTP user name.
+Name it ``phpinfo.php`` and place it in your Web root, and then 
+open it in a Web browser, for example ``http://localhost/phpinfo.php``. Look 
+for the **User/Group** line.
 
 * The HTTP user and group in Debian/Ubuntu is ``www-data``.
 * The HTTP user and group in Fedora/CentOS is ``apache``.
@@ -122,7 +143,9 @@ should see a single line in your browser page with the HTTP user name.
    ownership as above could result in some issues if the NFS mount is 
    lost.
 
-The easy way to set the correct permissions is to copy and run this script. Replace the ``ocpath`` variable with the path to your ownCloud directory, and replace the ``htuser`` and ``htgroup`` variables with your HTTP user and group::
+The easy way to set the correct permissions is to copy and run this script. 
+Replace the ``ocpath`` variable with the path to your ownCloud directory, and 
+replace the ``htuser`` and ``htgroup`` variables with your HTTP user and group::
 
  #!/bin/bash
  ocpath='/var/www/owncloud'
@@ -155,7 +178,6 @@ and files:
 * All directories should be executable (because directories always need the 
   executable bit set), read-write for the directory owner, and read-only for 
   the group owner
-* The :file:`/` directory should be owned by ``root:[HTTP group]``
 * The :file:`apps/` directory should be owned by ``[HTTP user]:[HTTP group]``
 * The :file:`config/` directory should be owned by ``[HTTP user]:[HTTP group]``
 * The :file:`themes/` directory should be owned by ``[HTTP user]:[HTTP group]``
@@ -164,35 +186,3 @@ and files:
 * The :file:`data/.htaccess` file should be owned by ``root:[HTTP group]``
 * Both :file:`.htaccess` files are read-write file owner, read-only group and 
   world
-
-Trusted Domains
-~~~~~~~~~~~~~~~
-
-ownCloud will take the URL used to access the Installation Wizard and insert that into the ``config.php`` file for the 
-``trusted_domains`` setting. All needed domain names of the ownCloud server go into the ``trusted_domains`` setting. Users will 
-only be able to log into ownCloud when they point their browsers to a domain name listed in the ``trusted_domains`` setting. An 
-IPv4 address can be specified instead of a domain name. A typical configuration looks like this::
-
- 'trusted_domains' => 
-   array (
-    0 => 'localhost', 
-    1 => 'server1.example.com', 
-    2 => '192.168.1.50',
- ),
-
-In the event that a load balancer is in place there will be no issues as long
-as it sends the correct X-Forwarded-Host header.
-
-The loopback address, ``127.0.0.1``, is whitelisted and
-therefore users on the ownCloud server who access ownCloud with the loopback
-interface will be able to successfully login.
-In the event that an improper URL is used, the
-following error will appear:
-
-.. image:: images/untrusted-domain.png
-   :scale: 75%
-   
-For configuration examples, refer to the :file:`config/config.sample.php`
-document.
-
-
