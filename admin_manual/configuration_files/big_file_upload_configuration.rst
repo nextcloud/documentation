@@ -36,7 +36,9 @@ Configuring Your Webserver
 | PECL extension is installed. If PHP-FPM is used without this PECL extension installed,
 | settings and permissions must be set in the ``owncloud/.user.ini`` file.
 
-Set the following two parameters inside the corresponding .ini file::
+Set the following two parameters inside the corresponding php.ini file (see the 
+**Loaded Configuration File** section of :ref:`label-phpinfo` to find your 
+relevant php.ini files) ::
 
  php_value upload_max_filesize = 16G
  php_value post_max_size = 16G
@@ -57,22 +59,17 @@ could prevent the upload of larger files. Please see the manual of your webserve
 for how to configure those values correctly:
 
 Apache
-~~~~~~
+^^^^^^
 * `LimitRequestBody <https://httpd.apache.org/docs/current/en/mod/core.html#limitrequestbody>`_
 * `SSLRenegBufferSize <https://httpd.apache.org/docs/current/mod/mod_ssl.html#sslrenegbuffersize>`_
 
 Apache with mod_fcgid
-~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^
 * `FcgidMaxRequestLen <https://httpd.apache.org/mod_fcgid/mod/mod_fcgid.html#fcgidmaxrequestlen>`_
 
 NginX
-~~~~~
+^^^^^
 * `client_max_body_size <http://nginx.org/en/docs/http/ngx_http_core_module.html#client_max_body_size>`_
-
-IIS
-~~~
-* `maxAllowedContentLength <http://www.iis.net/configreference/system.webserver/security/requestfiltering/requestlimits#005>`_
-
 
 Configuring PHP
 ---------------
@@ -80,15 +77,6 @@ Configuring PHP
 If you don't want to use the ownCloud ``.htaccess`` or ``.user.ini`` file, you may 
 configure PHP instead. Make sure to comment out any lines ``.htaccess`` 
 pertaining to upload size, if you entered any.
-
-To view your current PHP configuration and to see the location of your 
-``php.ini`` file, create a plain text file named ``phpinfo.php`` with just this 
-single line of code in it: ``<?php phpinfo(); ?>``. Place this file in your Web 
-root, for example ``/var/www/html``, and open it in your Web browser, for 
-example ``http://localhost/phpinfo.php``. This will display your complete 
-current PHP configuration. Look for the **Loaded Configuration File** section 
-to see which ``php.ini`` file your server is using. This is the one you want to 
-edit.
 
 If you are running ownCloud on a 32-bit system, any ``open_basedir`` directive 
 in your ``php.ini`` file needs to be commented out.

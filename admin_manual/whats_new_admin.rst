@@ -60,6 +60,7 @@ Improvements and New Features
 ownCloud Server and Enterprise Subscription |version| are shipping with a batch 
 of improvements and new features, including:
 
+* Auto-completion of usernames in file share dialogs
 * Improved performance, with faster file transfers, much faster file deletion, 
   improved scalability through improved handling of parallel requests, and up 
   to 50% more users on each ownCloud server instance. 

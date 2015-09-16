@@ -7,6 +7,7 @@ File Sharing and Management
     :maxdepth: 2
     
     file_sharing_configuration
+    federated_cloud_sharing_configuration
     big_file_upload_configuration
     collaborative_documents_configuration
     default_files_configuration  
@@ -15,5 +16,4 @@ File Sharing and Management
     encryption_configuration
     files_locking_enabling
     files_locking_transactional
-    federated_cloud_sharing_configuration
     previews_configuration

@@ -2,38 +2,38 @@
 Configuring Federated Cloud Sharing
 ===================================
 
-In ownCloud 7 this was called server-to-server sharing. Now it is called 
-federated cloud sharing. With just a few clicks you can easily and securely link 
+In ownCloud 7 this was called Server-to-Server sharing. Now it is called 
+Federated Cloud sharing. With just a few clicks you can easily and securely link 
 file shares between ownCloud servers, in effect creating a cloud of ownClouds. 
 You can automatically send an email notification when you create the share, 
 share directly with users on other ownCloud servers, add password protection, 
 allow users to upload files, and set an expiration date.
 
-.. Note:: Currently, federated shares cannot be re-shared, and the only visible 
-   option when you create the share is **Can edit**.
+.. Note:: Currently, Federated shares cannot be re-shared, and the only 
+   permissions option when you create the share is **Can edit**.
 
 Sharing With ownCloud 7
 -----------------------
 
-Direct share links (:ref:`direct-share-link`) are not supported in ownCloud 
-7, so you must create federated cloud shares with public links 
-(:ref:`public-link-share`). 
+Direct share links (:ref:`label-direct-share-link`) are not supported in 
+ownCloud 7, so you must create Federated Cloud shares with public links 
+(:ref:`label-public-link-share`). 
 
-.. _direct-share-link:   
+.. _label-direct-share-link:   
    
 Creating a Direct Share Link
 ----------------------------
 
-Follow these steps to create a new federated cloud share:
+Follow these steps to create a new Federated Cloud share:
 
 1. Go to your ownCloud Admin page and scroll to the Federated Cloud Sharing 
-section of the Sharing section.
+   section of the Sharing section.
 
-.. figure:: ../images/remote_shares.png
+.. figure:: images/federated-sharing.png
    
 2. Check ``Allow other users on this server to send shares to other 
 servers`` and ``Allow users on this server to receive shares from other 
-servers.`` Leaving the checkboxes blank disables federated cloud sharing.
+servers.`` Leaving the checkboxes blank disables Federated Cloud sharing.
 
 3. In the Sharing section, check ``Allow users to share via link`` and ``Allow 
 users to send mail notification for shared files``.
@@ -42,7 +42,7 @@ users to send mail notification for shared files``.
 cloud share. Click the Share icon on the file or directory you want to share to 
 expose your first sharing option. 
 
-.. figure:: ../images/create_public_share-1.png
+.. figure:: images/create_public_share-1.png
 
 This dialog allows you to create local shares with users and groups on your 
 local ownCloud server, and also to create federated cloud shares with users on 
@@ -52,30 +52,30 @@ on the local network, so the URL form is ``user@hostname/owncloud``, or
 ``layla@remote-server/owncloud`` in the example. The URL you type is echoed by 
 the form, and labeled as ``(remote)``.
 
-.. figure:: ../images/create_public_share-2.png
+.. figure:: images/create_public_share-2.png
 
 Press the return key, and then wait for the link to be established. You'll see a 
 status message while it is working.
 
-.. figure:: ../images/create_public_share-3.png
+.. figure:: images/create_public_share-3.png
 
 When the remote server has been successully contacted you'll see a confirmation.
 
-.. figure:: ../images/create_public_share-4.png
+.. figure:: images/create_public_share-4.png
 
 The link is created when your remote user confirms the share by clicking the 
 **Add remote share** button.
 
-.. figure:: ../images/create_public_share-7.png
+.. figure:: images/create_public_share-7.png
 
 You can return to the share dialog any time to see a list of everyone you have 
 shared with, and federated cloud shares are labeled as ``(remote)``.
 
-.. figure:: ../images/create_public_share-5.png
+.. figure:: images/create_public_share-5.png
 
 Click the trash can icon to disconnect the share.
 
-.. _public-link-share:
+.. _label-public-link-share:
 
 Creating Federated Cloud Shares via Public Link Share
 -----------------------------------------------------
