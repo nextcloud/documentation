@@ -641,7 +641,7 @@ Defaults to ``[datadirectory]/owncloud.log``
 	'loglevel' => 2,
 
 Loglevel to start logging at. Valid values are: 0 = Debug, 1 = Info, 2 =
-Warning, 3 = Error. The default value is Warning.
+Warning, 3 = Error, and 4 = Fatal. The default value is Warning.
 
 ::
 
