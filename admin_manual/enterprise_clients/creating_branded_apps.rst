@@ -22,6 +22,13 @@ P12 certificate and four provisioning profiles for digitally signing your
 apps. Apple has strict and specific requirements, so it is a lengthy 
 process. See :doc:`../enterprise_ios_app/index` for a complete tutorial.
 
+Run Branded and Un-branded Desktop Sync Clients
+-----------------------------------------------
+
+Your users may run both a branded and un-branded desktop sync client 
+side-by-side. Both clients run independently of each other, and do not share 
+account information or files.
+
 Building an Android App or Desktop Sync Client
 ----------------------------------------------
    
