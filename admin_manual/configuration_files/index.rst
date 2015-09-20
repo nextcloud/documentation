@@ -13,6 +13,7 @@ File Sharing and Management
     default_files_configuration  
     external_storage_configuration_gui
     external_storage_configuration
+    external_storage/auth_mechanisms
     encryption_configuration
     files_locking_enabling
     files_locking_transactional

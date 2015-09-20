@@ -6,29 +6,85 @@ The External Storage Support application enables you to mount external storage
 services and devices as secondary ownCloud storage devices. You may also allow 
 users to mount their own external storage services.
 
-All of these connect to a LAN ownCloud server that is not publicly accessible, 
-with one exception: Google Drive requires an ownCloud server with a registered 
-domain name that is accessible over the Internet.
-  
-New Settings Options
---------------------
+Enabling External Storage Support
+---------------------------------
 
-Hover your cursor to the right of any external mount configuration to expose 
-the settings button and trashcan. Click the trashcan to delete the 
-mountpoint. The settings button allows you to configure each mountpoint 
+The ``External storage support`` application is enabled on the ``Apps`` page.
+
+.. figure:: external_storage/images/enable_app.png
+
+Storage configuration
+---------------------
+
+To create a new external storage mount, select an available backend from the
+dropdown 'Add storage'. Each backend has different required options, which can
+be configured in the 'Configuration' fields.
+
+.. figure:: external_storage/images/add_storage.png
+
+Each backend may also accept multiple authentication methods. These can be
+selected with the dropdown under 'Authentication'. Different backends support
+different authentication mechanisms, some specific to the backend, others more
+generic. See :doc:`external_storage/auth_mechanisms` for more detailed
+information.
+
+When an authentication mechanism is selected, the configuration fields will
+change as appropriate for the mechanism. Some backends may not be migrated to
+the new authentication mechanism system, and will be displayed with a mechanism
+of 'Built-in'.
+
+Here is an example of the SFTP backend, which supports both password-based
+authentication and public key authentication:
+
+.. figure:: external_storage/images/auth_mechanism.png
+
+If any required fields remain incomplete, they will be marked with a red
+border. When all required fields are filled, the storage will be saved. A green
+dot next to the storage row indicates the storage is ready for use, a red
+square indicates an error occurred - double check your configuration settings.
+A yellow icon indicates that ownCloud could not verify the storage, perhaps due
+to missing information at that moment in time.
+
+Applicable users/groups
+-----------------------
+
+A storage configured in the personal settings will be available only to the
+user that created it, but a storage configured in the admin settings can be
+assigned to users and groups. By default, all users are assigned the storage;
+this can be restricted with the 'Available for' selection.
+
+.. figure:: external_storage/images/applicable.png
+
+.. _external_storage_mount_options:
+
+Mount options
+-------------
+
+Hover your cursor to the right of any storage configuration to expose
+the settings button and trashcan. Click the trashcan to delete the
+mountpoint. The settings button allows you to configure each storage mount
 individually with the following options:
 
 * Encryption
 * Previews
-* Check for changes Never, Once every direct access, or Every time the 
-  filesystem is Used. 
-  
-.. figure:: ../images/encryption13.png
+* Filesystem check frequency (Never, Once per direct access, every time the
+  filesystem is used)
 
-Supported mounts
-----------------
+.. figure:: external_storage/images/mount_options.png
 
-ownCloud admins may mount these external storage services and devices:
+Using self-signed certificates
+------------------------------
+
+When using self-signed certificates for external storage mounts the certificate
+needs to be imported in the personal settings of the user. Please refer to 
+`this blogpost <http://ownclouden.blogspot.de/2014/11/owncloud-https-external-mount.html>`_
+for more information.
+
+Available storage backends
+--------------------------
+
+The following backends are provided by the external storages app. Other apps
+may provide their own backends, which are not listed here.
 
 .. toctree::
     :maxdepth: 1
@@ -44,41 +100,18 @@ ownCloud admins may mount these external storage services and devices:
     external_storage/smb
     external_storage/webdav
 
-ownCloud users can be given permission to mount any of these, except local 
-storage.
-
 .. note:: A non-blocking or correctly configured SELinux setup is needed
    for these backends to work. Please refer to the :ref:`selinux-config-label`.
 
-Enabling External Storage Support
----------------------------------
-
-The ``External storage support`` application is enabled on the ``Apps`` page.
-
-.. figure:: ../images/external-storage-app-enable.png
-
-After enabling it, go to your ``Admin`` page to set up your external 
-storage mounts.
-
-.. figure:: ../images/external-storage-app-add.png
-
-When your configuration is correct you'll see a green light at the left, and if 
-it isn't you'll see a red light.
+Configuring backends mountable by the user
+------------------------------------------
 
 Check ``Enable User External Storage`` to allow your users to mount their own 
-external storage services, and check the services you want to allow.
+external storage services, and check the backends you want to allow. Beware,
+this allows a user to make potentially arbitrary connections to other services
+on your network!
 
-.. figure:: ../images/external-storage-app-usermounts.png
-
-After creating your external storage mounts, you can share them and control 
-permissions just like any other ownCloud share.
-
-Using self-signed certificates
-------------------------------
-
-When using self-signed certificates for external storage mounts the certificate
-needs to be imported in the personal settings of the user. Please refer to `this <http://ownclouden.blogspot.de/2014/11/owncloud-https-external-mount.html>`_
-blogpost for more information.
+.. figure:: external_storage/images/user_mounts.png
 
 Adding files to external storages
 ---------------------------------
@@ -97,23 +130,12 @@ You might need to setup a cron job that runs ``sudo -u www-data php occ files:sc
 to trigger a rescan of the user's files periodically (for example every 15 minutes), which includes
 the mounted external storage.
 
-Configuration File
+Configuration file
 ------------------
 
-The configuration of mounts created within the External Storage App are stored 
-in the ``data/mount.json`` file. This file contains all settings in JSON 
-(JavaScript Object Notation) format. Two different types of entries exist:
+Storage mount configurations are stored in a JSON formatted file. Admin
+storages are stored in ``data/mount.json``, while personal storages are stored
+in ``data/$user/mount.json``. For more advanced usecases, including
+provisioning external storages from outside ownCloud, see
+:doc:`external_storage_configuration`.
 
-*   Group mounts: Each entry configures a mount for each user in group.
-*   User mount: Each entry configures a mount for a single user or all users.
-
-For each type, there is a JSON array with the user/group name as key and an 
-array of configuration values as the value. Each entry consist of the class name 
-of the storage backend and an array of backend specific options (described 
-above) and will be replaced by the user login.
-
-Although configuration may be done by making modifications to the 
-``mount.json`` file, it is recommended to use the Web-GUI in the administrator 
-panel (as described in the above section) to add, remove, or modify mount 
-options to prevent any problems. See :doc:`external_storage_configuration` for 
-configuration examples.

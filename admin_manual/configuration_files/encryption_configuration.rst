@@ -123,16 +123,11 @@ Encrypting External Mountpoints
 -------------------------------
 
 You and your users can encrypt individual external mountpoints. You must have 
-external storage enabled on your Admin page, and enabled for your users (see 
-:doc:`external_storage_configuration_gui`).
+external storage enabled on your Admin page, and enabled for your users.
 
-After setting up the external storage mountpoint, click the little gear icon at 
-the right to expose the encryption menu. Encryption is enabled by default.
-
-.. figure:: ../images/encryption13.png
-
-To disable encryption, click the gear icon and un-check **encryption**. Again, 
-consider encrypting an external mountpoint to be permanent.
+Encryption settings can be configured in the mount options for an external
+storage mount, see :ref:`external_storage_mount_options`
+(:doc:`external_storage_configuration_gui`)
 
 Enabling Users' File Recovery Key
 ---------------------------------
