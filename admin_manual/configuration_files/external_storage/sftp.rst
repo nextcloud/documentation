@@ -2,10 +2,18 @@
 SFTP
 ====
 
-To connect an SFTP server you need:
+This backend can be used to connect to an SFTP server.
 
-* Whatever name you want for your local mountpoint.
-* The URL of your SFTP server.
-* SFTP server username and password.
-* Remote Subfolder, the SFTP directory to mount in ownCloud.
-* The ownCloud users or groups who are allowed to access the share. 
+A ``Host`` is required; a port can be specified as part of the ``Host`` field
+in the following format: ``hostname.domain:port``. The default port is 22 (SSH).
+
+SFTP supports the password authentication mechanism. See
+:doc:`auth_mechanisms` for detailed information.
+
+SFTP also supports public key authentication. A public/private keypair can be
+generated on the ownCloud server, then you need to put the public key on the
+destination server in ``.ssh/authorized_keys``. ownCloud will then use the
+private key to connect to the SFTP server.
+
+A ``Root`` can be specified to change the directory used. The default is the
+root directory (``/``).

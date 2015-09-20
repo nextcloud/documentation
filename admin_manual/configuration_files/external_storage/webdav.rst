@@ -2,17 +2,20 @@
 WebDAV
 ======
 
-Use these to mount a directory from any WebDAV server, or another 
+Use this backend to mount a directory from any WebDAV server, or another 
 ownCloud server.
 
-*   Folder name -- Whatever name you want for your local mountpoint.
-*   URL -- The URL of the WebDAV or ownCloud server.
-*   Username and password for the remote server
-*   Remote Subfolder -- The remote subfolder you want to mount (optional, defaults 
-    to ``/``)
-*   Secure ``https://`` - Whether to use ``https://`` to connect to the WebDav 
-    server instead of ``http://`` (We always recommend ``https://`` for 
-    security)
+The following information is required:
+
+- ``URL`` -- The URL of the WebDAV or ownCloud server, including subdirectories
+
+WebDAV uses the password authentication scheme, see :doc:`auth_mechanisms`
+
+Optionally, a ``Remote Subfolder`` can be specified to change the desination
+directory. The default is to use the whole root.
+
+The ``Secure https://`` checkbox can be used as an alternative to specifying
+``https://`` in the ``URL`` field.
 
 .. figure:: images/webdav.png
 

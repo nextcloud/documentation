@@ -2,6 +2,10 @@
 Google Drive
 ============
 
+ownCloud uses OAuth 2.0 to connect to Google Drive. This requires configuration
+through Google to get an app ID and app secret, as ownCloud registers itself
+as an app.
+
 All applications that access a Google API must be registered through the 
 `Google Cloud Console <https://console.developers.google.com/>`_. Follow along carefully 
 because the Google interface is a bit of a maze and it's easy to get lost. 

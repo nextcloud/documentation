@@ -2,35 +2,34 @@
 SMB/CIFS
 ========
 
-You can mount SMB/CIFS file shares on ownCloud servers that run on Linux. This 
-requires ``php5-libsmbclient`` (`installation instructions 
-<https://software.opensuse.org/download.html?project=isv%3AownCloud%3Acommunity% 
-3A8.1&package=php5-libsmbclient>`_). SMB/CIFS file servers include any Windows 
-file share, Samba servers on Linux and other Unix-type operating systems, and 
-NAS appliances. 
+ownCloud can connect to Windows file servers or other SMB compatible servers
+with this backend.
 
-You need the following information:
+.. note:: The SMB/CIFS backend requires ``smbclient`` to be installed on the
+          ownCloud server. This is a utility provided as part of the Samba
+          project.
 
-*   Folder name -- Whatever name you want for your local mountpoint.
-*   Host -- The URL of the Samba server.
-*   Username -- The username or domain/username used to login to the Samba server.
-*   Password -- The password to login to the Samba server.
-*   Share -- The share on the Samba server to mount.
-*   Remote Subfolder -- The remote subfolder inside the Samba share to mount 
-    (optional, defaults to ``/``). To assign the ownCloud logon username 
-    automatically to the subfolder, use ``$user`` instead of a particular 
-    subfolder name. And finally, the ownCloud users and groups who get access 
-    to the share.    
+The following information is required:
+
+- ``Host`` -- the hostname of the server, optionally with port: ``hostname.domain:port``
+- ``Share`` -- the share to connect to
+
+SMB/CIFS uses the password authentication scheme. See
+:doc:`auth_mechanisms` for more information.
+
+Optionally, a ``Domain`` can be specified. This is useful in cases where the
+SMB server requires a domain and a username, and an advanced authentication
+mechanism like 'Session credentials' is used such that the username cannot be
+modified. This is concatenated with the username, so the backend gets
+``domain\username``
+
+Optionally, a ``Remote subfolder`` can be specified to change the destination
+directory within the share. The default is the root of the share.
+
+.. note:: For improved reliability and performance, it is recommended to
+          install ``libsmbclient-php``, a native PHP module for connecting to
+          SMB servers. It is available as ``php5-libsmbclient`` in the ownCloud
+          `OBS repositories <https://software.opensuse.org/download/package?
+          project=isv:ownCloud:community&package=php5-libsmbclient>`_
 
 .. figure:: images/smb.png
-
-SMB/CIFS using OC login
--------------------------
-
-This works the same way as setting up a SMB/CIFS mount, except you can use your 
-ownCloud logins intead of the SMB/CIFS server logins. To make this work, your 
-ownCloud users need the same login and password as on the SMB/CIFS server. 
-
-.. note:: Shares set up with ``SMB/CIFS using OC login`` cannot be shared in 
-   ownCloud. If you need to share your SMB/CIFS mount, then use the SMB/CIFS 
-   mount without oC login.

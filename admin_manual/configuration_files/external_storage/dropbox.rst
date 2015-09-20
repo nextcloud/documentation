@@ -2,6 +2,9 @@
 Dropbox
 =======
 
+While Dropbox supports the newer OAuth 2.0, ownClou uses OAuth 1.0, so you can
+safely ignore any references to OAuth 2.0 in the Dropbox configuration.
+
 Connecting Dropbox is a little more work because you have to create a Dropbox 
 app. Log into the `Dropbox Developers page <http://www.dropbox.com/developers>`_ 
 and click ``App Console``:

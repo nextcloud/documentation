@@ -2,17 +2,11 @@
 Local
 =====
 
-Use this to mount any directory on your ownCloud server that is outside of your 
-ownCloud ``data/`` directory. This directory must be readable and writable by 
-your HTTP server user.
+Local storages provide access to any directory on the ownCloud server. Since
+this is a significant security risk, Local storage can only be configured in
+the admin settings.
 
-In the ``Folder name`` field enter the folder name that you want to appear on 
-your ownCloud ``Files`` page. 
-
-In the ``Configuration`` field enter the full filepath of the directory you 
-want to mount.
-
-In the ``Available for`` field enter the users or groups who have permission to 
-access the mount.
+The directory will be accessed as the web server user, so permissions must be
+correct.
 
 .. figure:: images/local.png
