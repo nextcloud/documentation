@@ -15,4 +15,4 @@ want to mount.
 In the ``Available for`` field enter the users or groups who have permission to 
 access the mount.
 
-.. figure:: ../../images/external-storage-app-local.png
+.. figure:: images/local.png

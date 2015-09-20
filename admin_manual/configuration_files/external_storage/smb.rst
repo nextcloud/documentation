@@ -22,7 +22,7 @@ You need the following information:
     subfolder name. And finally, the ownCloud users and groups who get access 
     to the share.    
 
-.. figure:: ../../images/external-storage-smb.png
+.. figure:: images/smb.png
 
 SMB/CIFS using OC login
 -------------------------

@@ -20,5 +20,5 @@ Connecting to an FTP server requires:
    setting to be set to ``1``. When having connection problems make sure that it is
    not set to ``0`` in your ``php.ini``.
 
-.. figure:: ../../images/external-storage-ftp.png
+.. figure:: images/ftp.png
 

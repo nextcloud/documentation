@@ -14,7 +14,7 @@ ownCloud server.
     server instead of ``http://`` (We always recommend ``https://`` for 
     security)
 
-.. figure:: ../../images/external-storage-webdav.png
+.. figure:: images/webdav.png
 
 .. Note:: CPanel users should install `Web Disk 
    <https://documentation.cpanel.net/display/ALD/Web+Disk>`_ to enable WebDAV 

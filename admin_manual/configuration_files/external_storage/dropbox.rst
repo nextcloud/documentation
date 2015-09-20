@@ -6,7 +6,7 @@ Connecting Dropbox is a little more work because you have to create a Dropbox
 app. Log into the `Dropbox Developers page <http://www.dropbox.com/developers>`_ 
 and click ``App Console``:
 
-.. figure:: ../../images/external-storage-dropbox.png
+.. figure:: images/dropbox.png
 
 If you have not already created any Dropbox apps it will ask you to accept 
 their terms and conditions. Then you are presented with the choice to create 
@@ -20,7 +20,7 @@ check:
   
 Then enter whatever name you want for your app.
 
-.. figure:: ../../images/external-storage-dropbox-app.png
+.. figure:: images/dropbox-app.png
 
 Now click the ``Create App`` button. Under ``Status``, do not click 
 ``Development (Apply for production status)`` because that is for apps that you 
@@ -32,15 +32,15 @@ Dropbox share.
 Note your App key and App secret, which you will enter in the External Storage 
 form on your ownCloud Admin page.
 
-.. figure:: ../../images/external-storage-dropbox-configapp.png
+.. figure:: images/dropbox-configapp.png
   
 Your ownCloud configuration requires only the local mount name, the App Key and 
 the App Secret, and which users or groups have access to the share.
 
-.. figure:: ../../images/external-storage-dropbox-oc.png
+.. figure:: images/dropbox-oc.png
 
 You must be logged into Dropbox, and when ownCloud successfully verifies your 
 connection Dropbox will ask for verification to connect to your Dropbox 
 account. Click ``Allow``, and you're done.
 
-.. figure:: ../../images/external-storage-dropbox-allowshare.png
+.. figure:: images/dropbox-allowshare.png

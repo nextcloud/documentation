@@ -50,4 +50,4 @@ additional configuration at the service provider, where an app ID and app
 secret are provided and can be entered into ownCloud. Then, ownCloud can
 perform an authentication request, establishing the storage connection.
 
-.. figure:: ../../images/external-storage-dropbox-oc.png
+.. figure:: images/dropbox-oc.png

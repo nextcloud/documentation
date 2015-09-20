@@ -20,4 +20,4 @@ access your S3 mount.
 The hostname, port, and region of your S3 server are optional; you will need 
 to use these for non-Amazon S3-compatible servers.
 
-.. figure:: ../../images/external-storage-amazons3.png
+.. figure:: images/amazons3.png
