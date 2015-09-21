@@ -148,6 +148,10 @@ RAM. Otherwise the system begins to swap and the performance goes down.
 KeepAlive should be configured with sensible defaults
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+The KeepAlive directive enables persistent HTTP connections, allowing multiple 
+requests to be sent over the same TCP connection. This reduces latency by as 
+much as 50%.
+
 .. code-block:: apache
 
 	KeepAlive On
