@@ -7,7 +7,7 @@ Recommended Setup for Running ownCloud
 
 For best performance, stability, support, and full functionality we recommend:
 
-* LAMP stack with a Web server and separate database/storage server
+* LAMP stack with Apache HTTP server and separate database/storage server
 * PHP 5.4+ with APC cache enabled
 * MySQL with InnoDB, and buffer cache increased to 16MB
 * MySQL Query Cache enabled
