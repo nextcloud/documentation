@@ -11,7 +11,7 @@ The following information is required:
 
 WebDAV uses the password authentication scheme, see :doc:`auth_mechanisms`
 
-Optionally, a ``Remote Subfolder`` can be specified to change the desination
+Optionally, a ``Remote Subfolder`` can be specified to change the destination
 directory. The default is to use the whole root.
 
 The ``Secure https://`` checkbox can be used as an alternative to specifying

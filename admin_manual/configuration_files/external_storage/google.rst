@@ -47,7 +47,7 @@ sections: ``0Auth`` and ``Public API Access``.
 Click ``0Auth > Create New Client ID``. The next screen that opens is ``Create 
 Client ID``. Check ``Web Application`` and click the ``Configure Consent 
 Screen`` button. You'll see the consent screen the first time you create a 
-mountpoint for your Google Drive in owncloud.
+mountpoint for your Google Drive in ownCloud.
 
 .. figure:: images/google-drive5.png
 
@@ -72,7 +72,7 @@ then click ``Save``.
 
 .. figure:: images/google-drive10.png
 
-This should take you back to the 0Auth screen, with a summary of your settings 
+This should take you back to the OAuth screen, with a summary of your settings 
 and editing buttons. This contains your ``Client ID`` and ``Client Secret``, 
 which you need to set up your ownCloud connection.
 

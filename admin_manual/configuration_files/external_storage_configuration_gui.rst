@@ -135,7 +135,7 @@ Configuration file
 
 Storage mount configurations are stored in a JSON formatted file. Admin
 storages are stored in ``data/mount.json``, while personal storages are stored
-in ``data/$user/mount.json``. For more advanced usecases, including
+in ``data/$user/mount.json``. For more advanced use cases, including
 provisioning external storages from outside ownCloud, see
 :doc:`external_storage_configuration`.
 
