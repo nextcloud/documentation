@@ -5,6 +5,7 @@ Installation
 .. toctree::
    :maxdepth: 2
 
+   system_requirements
    linux_installation
    command_line_installation
    installation_wizard
