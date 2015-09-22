@@ -134,13 +134,10 @@ You
 
 Edit raw filter instead:
   Clicking on this text toggles the filter mode and you can enter the raw LDAP 
-  filter directly.
-  
-  Example:
+  filter directly. Example::
 
-  * 
-*(&(objectClass=inetOrgPerson)(memberOf=cn=owncloudusers,ou=groups,dc=example,dc
-=com))*
+   (&(objectClass=inetOrgPerson)(memberOf=cn=owncloudusers,ou=groups,
+   dc=example,dc=com))
 
 x users found:
   This is an indicator that tells you approximately how many users will be
@@ -187,12 +184,15 @@ Edit raw filter instead:
 
   Examples:
 
-  * only username: 
-(&(objectClass=inetOrgPerson)(memberOf=cn=owncloudusers,ou=groups,dc=example,dc=
-com)(uid=%uid)*
-  * username or email address: 
-*((&(objectClass=inetOrgPerson)(memberOf=cn=owncloudusers,ou=groups,dc=example,
-dc=com)(|(uid=%uid)(mail=%uid)))*
+  * only username:: 
+
+     (&(objectClass=inetOrgPerson)(memberOf=cn=owncloudusers,ou=groups,
+     dc=example,dc=com)(uid=%uid)
+  
+  * username or email address::
+  
+     ((&(objectClass=inetOrgPerson)(memberOf=cn=owncloudusers,ou=groups,
+     dc=example,dc=com)(|(uid=%uid)(mail=%uid)))
 
 Group Filter
 ^^^^^^^^^^^^
