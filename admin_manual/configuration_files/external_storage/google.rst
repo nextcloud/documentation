@@ -39,12 +39,12 @@ Before you click ``Enable API`` you might want to click on ``Learn more`` or
 ``Enable API`` takes you to the Drive API dashboard, with tabs for 
 ``Overview, Usage, Quota``, and ``Drive UI Integration``. Feel free to 
 explore, and then go to ``APIs & Auth > Credentials``. This screen has two 
-sections: ``0Auth`` and ``Public API Access``.
+sections: ``OAuth`` and ``Public API Access``.
 
 .. figure:: images/google-drive4.png
 
 
-Click ``0Auth > Create New Client ID``. The next screen that opens is ``Create 
+Click ``OAuth > Create New Client ID``. The next screen that opens is ``Create 
 Client ID``. Check ``Web Application`` and click the ``Configure Consent 
 Screen`` button. You'll see the consent screen the first time you create a 
 mountpoint for your Google Drive in ownCloud.
