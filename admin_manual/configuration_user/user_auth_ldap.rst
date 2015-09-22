@@ -44,7 +44,7 @@ the configuration is correct. Hover your cursor over the fields to see some
 pop-up tooltips. 
 
 Server Tab
-~~~~~~~~~~
+^^^^^^^^^^
 
 Start with the Server tab. You may configure multiple servers if you have them. 
 At a minimum you must supply the LDAP server's hostname. If your server requires 
@@ -103,12 +103,15 @@ Base DN:
   * *dc=my-company,dc=com*
 
 User Filter
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 Use this to control which LDAP users are listed as ownCloud users on your 
-ownCloud server. In order to control which LDAP users can login to your ownCloud 
-server use the Login filter. Those LDAP users who have access but are not listed 
-as users (if there are any) will be hidden users. You may bypass the form fields 
+ownCloud server. In order to control which LDAP users can login to your 
+ownCloud 
+server use the Login filter. Those LDAP users who have access but are not 
+listed 
+as users (if there are any) will be hidden users. You may bypass the form 
+fields 
 and enter a raw LDAP filter if you prefer.
 
 .. figure:: ../images/ldap-wizard-2-user.png
@@ -122,7 +125,8 @@ only those object classes:
 only from those groups:
   If your LDAP server supports the ``member-of-overlay`` in LDAP filters, you 
   can define that only users from one or more certain groups are allowed to
-  appear in user listings in ownCloud. By default, no value will be selected. You
+  appear in user listings in ownCloud. By default, no value will be selected. 
+You
   may select multiple groups.
 
   If your LDAP server does not support the member-of-overlay in LDAP filters,
@@ -134,21 +138,27 @@ Edit raw filter instead:
   
   Example:
 
-  * *(&(objectClass=inetOrgPerson)(memberOf=cn=owncloudusers,ou=groups,dc=example,dc=com))*
+  * 
+*(&(objectClass=inetOrgPerson)(memberOf=cn=owncloudusers,ou=groups,dc=example,dc
+=com))*
 
 x users found:
   This is an indicator that tells you approximately how many users will be
   listed in ownCloud. The number updates automatically after any changes.
 
 Login Filter
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
-The settings in the Login Filter tab determine which LDAP users can log in to your
-ownCloud system and which attribute or attributes the provided login name is matched
-against (e.g. LDAP/AD username, email address). You may select multiple user details.
+The settings in the Login Filter tab determine which LDAP users can log in to 
+your
+ownCloud system and which attribute or attributes the provided login name is 
+matched
+against (e.g. LDAP/AD username, email address). You may select multiple user 
+details.
 (You may bypass the form fields and enter a raw LDAP filter if you prefer.)
 
-You may override your User Filter settings on the User Filter tab by using a raw 
+You may override your User Filter settings on the User Filter tab by using a 
+raw 
 LDAP filter.
 
 .. figure:: ../images/ldap-wizard-3-login.png
@@ -177,11 +187,15 @@ Edit raw filter instead:
 
   Examples:
 
-  * only username: (&(objectClass=inetOrgPerson)(memberOf=cn=owncloudusers,ou=groups,dc=example,dc=com)(uid=%uid)*
-  * username or email address: *((&(objectClass=inetOrgPerson)(memberOf=cn=owncloudusers,ou=groups,dc=example,dc=com)(|(uid=%uid)(mail=%uid)))*
+  * only username: 
+(&(objectClass=inetOrgPerson)(memberOf=cn=owncloudusers,ou=groups,dc=example,dc=
+com)(uid=%uid)*
+  * username or email address: 
+*((&(objectClass=inetOrgPerson)(memberOf=cn=owncloudusers,ou=groups,dc=example,
+dc=com)(|(uid=%uid)(mail=%uid)))*
 
 Group Filter
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 By default, no LDAP groups will be available in ownCloud. The settings in the 
 group filter tab determine which groups will be available in ownCloud. You may 
@@ -218,7 +232,8 @@ Advanced Settings
 -----------------
 
 The LDAP Advanced Setting section contains options that are not needed for a 
-working connection. This provides controls to disable the current configuration, 
+working connection. This provides controls to disable the current 
+configuration, 
 configure replica hosts, and various performance-enhancing options.
 
 The Advanced Settings are structured into three parts:
@@ -228,7 +243,7 @@ The Advanced Settings are structured into three parts:
 * Special Attributes
 
 Connection Settings
-~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
 
 .. figure:: ../images/ldap-advanced-1-connection.png
 
@@ -283,7 +298,7 @@ See the Caching section below for detailed information on how the cache
 operates.
 
 Directory Settings
-~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
 
 .. figure:: ../images/ldap-advanced-2-directory.png
 
@@ -359,7 +374,7 @@ Group Member association:
   * Example: *uniquemember*
 
 Special Attributes
-~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^
 
 .. figure:: ../images/ldap-advanced-3-attributes.png
 
