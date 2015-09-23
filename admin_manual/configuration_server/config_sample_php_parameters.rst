@@ -1,16 +1,17 @@
 =====================
 Config.php Parameters
 =====================
+
 ownCloud uses the ``config/config.php`` file to control server operations.
 ``config/config.sample.php`` lists all the configurable parameters within
-ownCloud along with example or default values. This document provides a more
-detailed reference. Many options are configurable on your Admin page, so it
+ownCloud, along with example or default values. This document provides a more
+detailed reference. Most options are configurable on your Admin page, so it
 is usually not necessary to edit ``config/config.php``.
 
-.. note:: The installer creates a config containing the essential parameters.
-   Only manually add config parameters to ``config/config.php`` if you need to
-   use a special value for a parameter. Do not copy everything from
-   ``config/config.sample.php``.
+.. note:: The installer creates a configuration containing the essential parameters.
+   Only manually add configuration parameters to ``config/config.php`` if you need to
+   use a special value for a parameter. **Do not copy everything from
+   ``config/config.sample.php``. Only enter the parameters you wish to modify!**
 
 ownCloud supports loading configuration parameters from multiple files.
 You can add arbitrary files ending with :file:`.config.php` in the :file:`config/`
