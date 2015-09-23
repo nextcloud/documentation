@@ -9,7 +9,7 @@ The `documentation Wiki <https://github.com/owncloud/documentation/wiki>`_ is
 available for tips, tricks, edge cases, and anyone who wants to contribute more 
 easily, without having to learn Git and Sphinx.
 
-See :doc:`style_guide` for formatting and style conventions.
+See the `Style Guide <https://github.com/owncloud/documentation/blob/master/style_guide.rst>`_ for formatting and style conventions.
 
 Manuals
 -------
