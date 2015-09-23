@@ -122,7 +122,7 @@ numbers. Sphinx RST markup does not have a tag for figure numbers, so you must
 use the caption element. You may use simple numbering like "Figure 1, Figure 2", 
 or add a caption. Captions must follow a blank line and be italicized, like this example::
 
-  .. figure:: images/users-files.png
+  .. figure:: images/users-config.png
      :alt: Files page showing the user's files.
      
      *Figure 4: Files page showing the user's files.*
