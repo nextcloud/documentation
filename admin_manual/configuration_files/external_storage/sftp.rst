@@ -2,18 +2,28 @@
 SFTP
 ====
 
-This backend can be used to connect to an SFTP server.
+ownCloud's SFTP backend connects to an SFTP server over an SSH tunnel. It 
+supports both password and public key authentication. Select **SFTP** from the 
+**Add Storage** dropdown menu for password authentication, and **SFTP with 
+secret key login** for public key authentication.
 
-A ``Host`` is required; a port can be specified as part of the ``Host`` field
-in the following format: ``hostname.domain:port``. The default port is 22 (SSH).
+The ``Host`` field is required; a port can be specified as part of the ``Host`` 
+field in the following format: ``hostname.domain:port``. The default port is 22 
+(SSH).
 
-SFTP supports the password authentication mechanism. See
-:doc:`auth_mechanisms` for detailed information.
+For public key authentication, you can generate a public/private key pair from 
+your **SFTP with secret key login** configuration.
 
-SFTP also supports public key authentication. A public/private keypair can be
-generated on the ownCloud server, then you need to put the public key on the
-destination server in ``.ssh/authorized_keys``. ownCloud will then use the
+.. figure:: images/auth_mechanism.png
+
+After generating your keys, you need to copy your new public key to the
+destination server in ``.ssh/authorized_keys``. ownCloud will then use its
 private key to connect to the SFTP server.
 
-A ``Root`` can be specified to change the directory used. The default is the
-root directory (``/``).
+The default **Remote Subfolder** is the root directory (``/``) of the remote 
+SFTP server, and you may enter any directory you wish.
+
+See :doc:`../external_storage_configuration_gui` for additional mount 
+options and information.
+
+See :doc:`auth_mechanisms` for more information on authentication schemes.

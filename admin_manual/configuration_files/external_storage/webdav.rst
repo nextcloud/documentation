@@ -5,20 +5,25 @@ WebDAV
 Use this backend to mount a directory from any WebDAV server, or another 
 ownCloud server.
 
-The following information is required:
+You need the following information:
 
-- ``URL`` -- The URL of the WebDAV or ownCloud server, including subdirectories
-
-WebDAV uses the password authentication scheme, see :doc:`auth_mechanisms`
+* Folder name: The name of your local mountpoint.
+* The URL of the WebDAV or ownCloud server.
+* Username and password for the remote server
+* Remote Subfolder:  Optional, defaults to /)
+* Secure https://: We always recommend https:// for security, though you can 
+  leave this unchecked for http://.
 
 Optionally, a ``Remote Subfolder`` can be specified to change the destination
 directory. The default is to use the whole root.
-
-The ``Secure https://`` checkbox can be used as an alternative to specifying
-``https://`` in the ``URL`` field.
 
 .. figure:: images/webdav.png
 
 .. Note:: CPanel users should install `Web Disk 
    <https://documentation.cpanel.net/display/ALD/Web+Disk>`_ to enable WebDAV 
    functionality.
+
+See :doc:`../external_storage_configuration_gui` for additional mount 
+options and information.
+
+See :doc:`auth_mechanisms` for more information on authentication schemes.
