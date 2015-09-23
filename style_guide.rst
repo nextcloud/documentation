@@ -4,6 +4,8 @@ ownCloud Manuals Style Guide
 
 *This is a work in progress*
 
+See the `Documentation README <https://github.com/owncloud/documentation/blob/master/README.rst>`_ for information on setting up your documentation build environment
+
 See `reStructuredText Primer <http://sphinx-doc.org/rest.html>`_ for a complete 
 Sphinx/RST markup reference.
 
