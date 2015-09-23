@@ -10,7 +10,6 @@ You need the following information:
 * Folder name: The name of your local mountpoint.
 * The URL of the WebDAV or ownCloud server.
 * Username and password for the remote server
-* Remote Subfolder:  Optional, defaults to /)
 * Secure https://: We always recommend https:// for security, though you can 
   leave this unchecked for http://.
 
@@ -18,6 +17,7 @@ Optionally, a ``Remote Subfolder`` can be specified to change the destination
 directory. The default is to use the whole root.
 
 .. figure:: images/webdav.png
+   :alt: Webdav configuration form.
 
 .. Note:: CPanel users should install `Web Disk 
    <https://documentation.cpanel.net/display/ALD/Web+Disk>`_ to enable WebDAV 

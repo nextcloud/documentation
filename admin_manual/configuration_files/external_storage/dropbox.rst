@@ -50,3 +50,5 @@ account. Click **Allow**, and you're done.
 
 See :doc:`../external_storage_configuration_gui` for additional mount 
 options and information.
+
+See :doc:`auth_mechanisms` for more information on authentication schemes.

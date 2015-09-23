@@ -9,7 +9,8 @@ mounts.
 
 Use this to mount any directory on your ownCloud server that is outside 
 of your ownCloud ``data/`` directory. This directory must be readable and 
-writable by your HTTP server user, like these examples on Ubuntu Linux::
+writable by your HTTP server user. These ownership and permission examples 
+are on Ubuntu Linux::
 
  sudo -u www-data chown -R www-data:www-data /localdir
  sudo -u www-data chmod -R 0750 /localdir
@@ -30,3 +31,5 @@ access the mount. By default all users have access.
 
 See :doc:`../external_storage_configuration_gui` for additional mount 
 options and information.
+
+See :doc:`auth_mechanisms` for more information on authentication schemes.

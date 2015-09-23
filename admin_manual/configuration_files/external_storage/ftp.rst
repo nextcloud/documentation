@@ -16,9 +16,9 @@ To connect to an FTP server, you will need:
 Your new mountpoint is available to all users by default, and you may restrict 
 access by entering specific users or groups in the **Available for** field.  
 
-Optionally, ownCloud can use FTPS by checking **Secure ftps://**. This requires 
-additional configuration with you root certificate if the FTP server uses a 
-self-signed certificate.
+Optionally, ownCloud can use FTPS (FTP over SSL) by checking **Secure ftps://**. 
+This requires additional configuration with your root certificate if the FTP 
+server uses a self-signed certificate.
 
 .. figure:: images/ftp.png
    :alt: ownCloud GUI FTP configuration. 

@@ -10,14 +10,14 @@ storage that uses the OpenStack Swift protocol.
 The bucket will be created if it does not exist.
 
 The OpenStack authentication mechanism uses the OpenStack Keystone v2
-protocol, connecting to the server specified in the ``URL of Identity 
-Endpoint`` field. You need your ``Username``, ``Tenant name`` and ``Password``.
+protocol, connecting to the server specified in the **URL of Identity 
+Endpoint** field. You need your **Username**, **Tenant name** and **Password**.
 
-The Rackspace authentication mechanism requires a Rackspace ``Username`` and
-``API key``.
+The Rackspace authentication mechanism requires a Rackspace **Username** and
+**API key**.
 
-It may be necessary to specify a ``Service name`` or ``Region``. The timeout of
-HTTP requests is set in the ``Request timeout`` field, in seconds.
+It may be necessary to specify a **Service name** or **Region**. The timeout of
+HTTP requests is set in the **Request timeout** field, in seconds.
 
 See :doc:`../external_storage_configuration_gui` for additional mount 
 options and information.
