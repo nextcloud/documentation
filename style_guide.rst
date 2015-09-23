@@ -32,17 +32,17 @@ Page Titles and Headings
 
 There are many ways to markup headings and subheadings. This is the official 
 ownCloud way. Three levels is enough; if you find that you want more, 
-then re-think the organization of your text.
+then re-think the organization of your text::
 
-==============
-Page title, h1
-==============
+ ==============
+ Page title, h1
+ ==============
 
-Subhead, h2
------------
+ Subhead, h2
+ -----------
 
-Subhead, h3
-^^^^^^^^^^^
+ Subhead, h3
+ ^^^^^^^^^^^
 
 Labels and Code
 ---------------
@@ -59,7 +59,7 @@ elements like these examples::
  ** Full Name** field
  **Quota** dropdown menu
 
-.. figure:: users-files.png
+.. figure:: users-config.png
    :alt: User listings and administration page.
    
    Figure 1: The ownCloud user listing and administration page.
