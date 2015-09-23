@@ -56,13 +56,13 @@ elements like these examples::
  **Password** field
  **Groups** dropdown menu
  **Create** button
- ** Full Name** field
+ **Full Name** field
  **Quota** dropdown menu
 
 .. figure:: users-config.png
    :alt: User listings and administration page.
    
-   Figure 1: The ownCloud user listing and administration page.
+   *Figure 1: The ownCloud user listing and administration page.*
    
 Use double-backticks for inline code and command examples::
   
