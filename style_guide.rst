@@ -45,6 +45,18 @@ then re-think the organization of your text::
 
  Subhead, h3
  ^^^^^^^^^^^
+ 
+This is how they render:
+
+==============
+Page title, h1
+==============
+
+Subhead, h2
+-----------
+
+Subhead, h3
+^^^^^^^^^^^
 
 Labels and Code
 ---------------
@@ -60,6 +72,20 @@ elements like these examples::
  **Create** button
  **Full Name** field
  **Quota** dropdown menu
+ 
+This is how they render:
+ 
+**Username** field
+
+**Password** field
+
+**Groups** dropdown menu
+
+**Create** button
+
+**Full Name** field
+
+**Quota** dropdown menu
 
 .. figure:: users-config.png
    :alt: User listings and administration page.
@@ -71,6 +97,12 @@ Use double-backticks for inline code and command examples::
   ``sudo -u www-data php occ files:scan --help``
   ``maintenance:install``
   
+This is how they render:
+
+``sudo -u www-data php occ files:scan --help``
+
+``maintenance:install``
+
 When you are giving hyperlinks as examples, use double-backticks rather than 
 creating a live hyperlink::
 
@@ -88,12 +120,12 @@ square.
 All images must have alt tags, which are brief and descriptive, and figure 
 numbers. Sphinx RST markup does not have a tag for figure numbers, so you must 
 use the caption element. You may use simple numbering like "Figure 1, Figure 2", 
-or add a caption. Captions must follow a blank line, like this example::
+or add a caption. Captions must follow a blank line and be italicized, like this example::
 
   .. figure:: images/users-files.png
      :alt: Files page showing the user's files.
      
-     Figure 4: Files page showing the user's files.
+     *Figure 4: Files page showing the user's files.*
 
 Images must go into a sub-directory of the directory containing your manual 
 page. Currently the manuals have both a single master images directory, and 
