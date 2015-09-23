@@ -123,9 +123,9 @@ use the caption element. You may use simple numbering like "Figure 1, Figure 2",
 or add a caption. Captions must follow a blank line and be italicized, like this example::
 
   .. figure:: images/users-config.png
-     :alt: Files page showing the user's files.
+     :alt: User listings and administration page.
      
-     *Figure 4: Files page showing the user's files.*
+     *Figure 1: The ownCloud user listing and administration page.*
 
 Images must go into a sub-directory of the directory containing your manual 
 page. Currently the manuals have both a single master images directory, and 
