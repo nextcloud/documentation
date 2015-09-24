@@ -5,9 +5,8 @@ Preferred Linux Installation Method
 Installation Quick Start
 ------------------------
 
-See the :doc:`../release_notes` for the recommended ownCloud setup and 
-supported 
-platforms.
+See the :doc:`system_requirements` for the recommended ownCloud setup and 
+supported platforms.
 
 Installing ownCloud Server (the free community edition) on Linux from the 
 `openSUSE Build Service`_ packages is the preferred method. These are 
