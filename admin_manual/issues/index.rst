@@ -139,6 +139,12 @@ Some common problems / error messages found in your logfiles as described above:
   ``KeepAlive`` settings within your Apache config. Make sure that 
   ``KeepAlive`` is set to ``On`` and  also try to raise the limits of 
   ``KeepAliveTimeout`` and  ``MaxKeepAliveRequests``.
+* ``No basic authentication headers were found`` -> This error is shown in your
+  ``data/owncloud.log`` file. Some Apache modules like ``mod_fastcgi``, ``mod_fcgid``
+  or ``mod_proxy_fcgi`` are not passing the needed authentication headers to
+  PHP and so the login to ownCloud via WebDAV, CalDAV and CardDAV clients is
+  failing. Information on how to correctly configure your environment can be
+  found at the `forums <https://forum.owncloud.org/viewtopic.php?f=17&t=30646>`_.
 
 Troubleshooting Webserver and PHP problems
 ------------------------------------------
