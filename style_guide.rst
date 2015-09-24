@@ -33,11 +33,11 @@ Page Titles and Headings
 ------------------------
 
 There are many ways to markup headings and subheadings. This is the official 
-ownCloud way. Three levels is enough; if you find that you want more, 
+ownCloud way. Use title case. Three levels is enough; if you find that you want more, 
 then re-think the organization of your text::
 
  ==============
- Page title, h1
+ Page Title, h1
  ==============
 
  Subhead, h2
@@ -49,7 +49,7 @@ then re-think the organization of your text::
 This is how they render:
 
 ==============
-Page title, h1
+Page Title, h1
 ==============
 
 Subhead, h2
