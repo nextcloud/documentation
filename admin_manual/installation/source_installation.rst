@@ -146,7 +146,7 @@ Apache Web Server Configuration
 
 On Debian, Ubuntu, and their derivatives, Apache installs with a useful 
 configuration so all you have to do is create a 
-:file:`/etc/apache2/conf-available/owncloud.conf` file with these lines in it:
+:file:`/etc/apache2/sites-available/owncloud.conf` file with these lines in it:
 
 .. code-block:: xml
    
@@ -155,9 +155,9 @@ configuration so all you have to do is create a
     AllowOverride All
    </Directory>
 
-Then create a symlink to  :file:`/etc/apache2/conf-enabled`::
+Then create a symlink to  :file:`/etc/apache2/sites-enabled`::
 
-  ln -s /etc/apache2/conf-available/owncloud.conf /etc/apache2/conf-enabled/owncloud.conf
+  ln -s /etc/apache2/sites-available/owncloud.conf /etc/apache2/sites-enabled/owncloud.conf
   
 Additional Apache Configurations
 --------------------------------
