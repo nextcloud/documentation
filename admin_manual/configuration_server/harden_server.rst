@@ -39,7 +39,7 @@ The random number generation also tries to request random numbers from
 a way that PHP is able to read random data from it.
 
 .. note:: When having an ``open_basedir`` configured within your ``php.ini`` file,
-   make sure to include the folder ``/dev``.
+   make sure to include ``/dev/urandom``.
 
 Enable hardening modules such as SELinux
 ****************************************
