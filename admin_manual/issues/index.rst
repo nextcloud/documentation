@@ -170,6 +170,9 @@ Webserver and ownCloud itself.
 Webserver and PHP modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. note:: Lighttpd is not supported with ownCloud, and some ownCloud features 
+   may not work at all on Lighttpd.
+
 There are some Webserver or PHP modules which are known to cause various 
 problems like broken up-/downloads. The following shows a draft overview of 
 these modules:
@@ -199,12 +202,7 @@ these modules:
 * mod_auth_apple
 * com.apple.webapp.webdavsharing
 
-4. LigHTTPd
-
-* ModWebDAV
-* X-Sendfile2 (causing broken downloads if not configured correctly)
-
-5. PHP
+4. PHP
 
 * eAccelerator
 
@@ -212,7 +210,12 @@ Troubleshooting WebDAV
 ----------------------
 
 ownCloud uses SabreDAV, and the SabreDAV documentation is comprehensive and 
-helpful. See:
+helpful.
+
+.. note: Lighttpd is not supported on ownCloud, and Lighttpd WebDAV does not 
+   work with ownCloud.
+
+See:
 
 * `SabreDAV FAQ <http://sabre.io/dav/faq/>`_
 * `Webservers <http://sabre.io/dav/webservers>`_ (Lists lighttpd as not 
@@ -262,13 +265,6 @@ following lines::
     Redirect 301 /.well-known/carddav /owncloud/remote.php/carddav
     Redirect 301 /.well-known/caldav /owncloud/remote.php/caldav
 
-If you use Lighttpd as the web server, the setting looks something like::
-
-    url.redirect = (
-        "^/.well-known/carddav" => "/owncloud/remote.php/carddav",
-        "^/.well-known/caldav" => "/owncloud/remote.php/caldav",
-    )
-
 Now change the URL in the client settings to just use ``ADDRESS`` instead of 
 e.g. ``ADDRESS/remote.php/carddav/principals/username``.
 
@@ -280,10 +276,6 @@ Unable to update Contacts or Events
 
 If you get an error like ``PATCH https://ADDRESS/some_url HTTP/1.0 501 Not 
 Implemented`` it is likely caused by one of the following reasons:
-
-Outdated lighttpd web server
-  lighttpd in debian wheezy (1.4.31) doesn't support the PATCH HTTP verb.
-  Upgrade to lighttpd >= 1.4.33.
 
 Using Pound reverse-proxy/load balancer
   As of writing this Pound doesn't support the HTTP/1.1 verb.
