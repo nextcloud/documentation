@@ -119,21 +119,36 @@ on/off``. If it is on, then add this line to ``php.ini`` to turn it off::
 
  safe_mode = Off
 
-Enable the SPDY protocol
-^^^^^^^^^^^^^^^^^^^^^^^^
+Enable the SPDY / http_v2 protocol
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Your webserver can be configured to use the SPDY protocol which could improve 
+Your webserver can be configured to use the SPDY / http_v2 protocol which could improve 
 the overall performance of ownCloud. Please have a look at the documentation of 
 your webservers module for more information:
 
-* `mod-spdy for Apache <https://code.google.com/p/mod-spdy/>`_
-
-* `ngx_http_spdy_module for nginx 
-  <http://nginx.org/en/docs/http/ngx_http_spdy_module.html>`_
+====================  ==================
+Webserver             Module Name / Link
+====================  ==================
+Apache                `mod-spdy <https://code.google.com/p/mod-spdy/>`_
+nginx (<1.9.5)        `ngx_http_spdy_module <http://nginx.org/en/docs/http/ngx_http_spdy_module.html>`_
+nginx (+1.9.5)        `ngx_http_http2_module <http://nginx.org/en/docs/http/ngx_http_v2_module.html>`_
+====================  ==================
 
 .. note:: If you want to enable SPDY for Apache please note the `Known Issues 
    <https://code.google.com/p/mod-spdy/wiki/KnownIssues>`_
    of this module to avoid problems after enabling it.
+
+.. note:: If you want to use http_v2 for nginx you have to check two things:
+
+   1.) be aware that this module is not built in by default due to a dependency 
+   to the openssl version used on your system. It will be enabled with the 
+   ``--with-http_v2_module`` configuration parameter during compilation. The 
+   dependency should be checked automatically. You can check the presence of http_v2
+   with ``nginx -V 2>&1 | grep http_v2 -o``. An example how to compile nginx can
+   be found in section "Configure Nginx with the ``nginx-cache-purge`` module" below.
+   
+   2.) When you have used SPDY before, the nginx config has to be changed from 
+   ``listen 443 ssl spdy;`` to ``listen 443 ssl http2;``
 
 Apache Tuning
 -------------
@@ -308,7 +323,6 @@ And at the end of every ``configure`` command add::
 Don't forget to escape preceeding lines with a backslash ``\``.
 The parameters may now look like::
       
-   $(WITH_SPDY) \
    --with-cc-opt="$(CFLAGS)" \
    --with-ld-opt="$(LDFLAGS)" \
    --with-ipv6 \
