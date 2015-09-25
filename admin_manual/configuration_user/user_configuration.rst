@@ -69,7 +69,7 @@ To create a user account:
 .. figure:: ../images/users-create.png
 
 Login names may contain letters (a-z, A-Z), numbers (0-9), dashes (-), 
-underscores (_), periods (.) and ampersands (@). After creating the user, you 
+underscores (_), periods (.) and ampersands (&). After creating the user, you 
 may fill in their **Full Name** if it is different than the login name, or 
 leave it for the user to complete.
 
