@@ -1,6 +1,9 @@
 ===================
-Memory Requirements
+System Requirements
 ===================
+
+Memory
+------
 
 Memory requirements for running an ownCloud server are greatly variable, 
 depending on the numbers of users and files, and volume of server activity. 
@@ -21,16 +24,14 @@ Supported Platforms
 
 * Server: Linux (Debian 7, SUSE Linux Enterprise Server 11 SP3 & 12, 
   Red Hat Enterprise Linux/Centos 6.5 and 7 (7 is 64-bit only), Ubuntu 12.04 
-  LTS, 14.04 LTS, 
-  14.10)
+  LTS, 14.04 LTS, 14.10)
 * Webserver: Apache 2  
 * Databases: MySQL/MariaDB 5.x; Oracle 11g; PostgreSQL
 * PHP 5.4 + required
 * Hypervisors: Hyper-V, VMware ESX, Xen, KVM
 * Desktop: Windows XP SP3 (EoL Q2 2015), Windows 7+, Mac OS X 10.7+ (64-bit 
   only), Linux (CentOS 6.5, 7 (7 is 64-bit only), Ubuntu 12.04 LTS, 14.04 LTS, 
-  14.10, Fedora 20, 
-  21, openSUSE 12.3, 13)
+  14.10, Fedora 20, 21, openSUSE 12.3, 13, Debian 7 & 8).
 * Mobile apps: iOS 7+, Android 4+
 * Web browser: IE8+ (except Compatibility Mode), Firefox 14+, Chrome 18+, 
   Safari 5+
