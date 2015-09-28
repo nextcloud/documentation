@@ -11,10 +11,11 @@ static files
 serving_static_files_configuration.html>`_ from your ownCloud server.
 
 LDAP issue: 8.2 uses the ``memberof`` attribute by default. If this is not 
-activated on your LDAP server you will see this message in your LDAP log: 
-``<= bdb_equality_candidates: (memberOf) not indexed``. Fix this by disabling 
-the ``memberof`` attribute on your ownCloud server with the ``occ`` command, 
-like this example on Ubuntu Linux::
+activated on your LDAP server your user groups will not be detected, and you 
+will see this message in your ownCloud log: ``Error PHP Array to string 
+conversion at /var/www/html/owncloud/lib/private/template/functions.php#36``. 
+Fix this by disabling the ``memberof`` attribute on your ownCloud server with 
+the ``occ`` command, like this example on Ubuntu Linux::
 
  sudo -u www-data php occ ldap:set-config "s01" useMemberOfToDetectMembership 0
  
