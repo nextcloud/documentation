@@ -7,14 +7,15 @@ Installation
 
    system_requirements
    linux_installation
-   command_line_installation
    installation_wizard
-   appliance_installation
+   command_line_installation
    apps_management_installation
-   hiawatha_configuration  
-   nginx_configuration
    source_installation
-   ucs_installation   
-   yaws_configuration
+   appliance_installation
+   php_54_installation
    selinux_configuration
+   nginx_configuration   
+   ucs_installation
+   hiawatha_configuration   
+   yaws_configuration
    macos_installation
