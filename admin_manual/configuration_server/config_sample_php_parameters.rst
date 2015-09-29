@@ -10,8 +10,8 @@ is usually not necessary to edit ``config/config.php``.
 
 .. note:: The installer creates a configuration containing the essential parameters.
    Only manually add configuration parameters to ``config/config.php`` if you need to
-   use a special value for a parameter. **Do not copy everything from
-   ``config/config.sample.php``. Only enter the parameters you wish to modify!**
+   use a special value for a parameter. **Do not copy everything from**
+   ``config/config.sample.php`` **. Only enter the parameters you wish to modify!**
 
 ownCloud supports loading configuration parameters from multiple files.
 You can add arbitrary files ending with :file:`.config.php` in the :file:`config/`
