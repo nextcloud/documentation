@@ -13,6 +13,8 @@ serving_static_files_configuration.html>`_ from your ownCloud server.
 Changes in 8.1
 --------------
 
+Use APCu only if available in version 4.0.6 and higher. If you install an older version, you will see a ``APCu below version 4.0.6 is installed, for stability and performance reasons we recommend to update to a newer APCu version`` warning on your ownCloud admin page.
+
 SMB external storage now based on ``php5-libsmbclient``, which must be downloaded 
 from the ownCloud software repositories (`installation instructions 
 <https://software.opensuse.org/download.html?project=isv%3AownCloud%3Acommunity% 
