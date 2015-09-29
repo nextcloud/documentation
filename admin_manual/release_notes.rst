@@ -10,6 +10,19 @@ static files
 <https://doc.owncloud.org/server/8.1/admin_manual/configuration_files/
 serving_static_files_configuration.html>`_ from your ownCloud server.
 
+LDAP issue: 8.2 uses the ``memberof`` attribute by default. If this is not 
+activated on your LDAP server your user groups will not be detected, and you 
+will see this message in your ownCloud log: ``Error PHP Array to string 
+conversion at /var/www/html/owncloud/lib/private/template/functions.php#36``. 
+Fix this by disabling the ``memberof`` attribute on your ownCloud server with 
+the ``occ`` command, like this example on Ubuntu Linux::
+
+ sudo -u www-data php occ ldap:set-config "s01" useMemberOfToDetectMembership 0
+ 
+Run ``sudo -u www-data php occ ldap:show-config`` to find the correct ``sNN`` 
+value; if there is not one then use empty quotes, ``""``. (See 
+:doc:`configuration_server/occ_command`.)
+
 Changes in 8.1
 --------------
 
