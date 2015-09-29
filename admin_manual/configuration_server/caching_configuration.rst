@@ -2,9 +2,6 @@
 Configuring Memory Caching
 ==========================
 
-https://owncloud.org/blog/making-owncloud-faster-through-caching/
-http://www.simplemachines.org/community/index.php?topic=354914.0
-
 You can significantly improve your ownCloud server performance with memory 
 caching, where frequently-requested objects are stored in memory for faster 
 retrieval. There are two types of caches to use: PHP opcache, and data caching 
