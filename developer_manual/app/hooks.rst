@@ -156,7 +156,9 @@ Filesystem hooks available in scope **\\OC\\Files**:
 
 Filesystem Scanner
 ------------------
-Filesystem scanner hooks available in scope **\\OC\\Utils\\Scanner**:
+Filesystem scanner hooks available in scope **\\OC\\Files\\Utils\\Scanner**:
 
 * **scanFile** (string $absolutePath)
 * **scanFolder** (string $absolutePath)
+* **postScanFile** (string $absolutePath)
+* **postScanFolder** (string $absolutePath)
