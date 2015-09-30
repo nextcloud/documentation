@@ -519,19 +519,21 @@ ownCloud 8.1 and before.
 
 Available values:
 
-* ``auto``      default setting. keeps files and folders in the trash bin
-                for 30 days and automatically deletes anytime after that
-                if space is needed (note: files may not be deleted if space
-                is not needed).
-* ``D, auto``   keeps files and folders in the trash bin for D+ days,
-                delete anytime if space needed (note: files may not be deleted
-                if space is not needed)
-* ``auto, D``   delete all files in the trash bin that are older than D days
-                automatically, delete other files anytime if space needed
-* ``D1, D2``    keep files and folders the in trash bin for at least D1 days
-                and delete when exceeds D2 days
-* ``disabled``  trash bin auto clean disabled, files and folders will be
-                kept forever
+* ``auto``
+    default setting. keeps files and folders in the trash bin for 30 days
+    and automatically deletes anytime after that if space is needed (note:
+    files may not be deleted if space is not needed).
+* ``D, auto``
+    keeps files and folders in the trash bin for D+ days, delete anytime if
+    space needed (note: files may not be deleted if space is not needed)
+* ``auto, D``
+    delete all files in the trash bin that are older than D days
+    automatically, delete other files anytime if space needed
+* ``D1, D2``
+    keep files and folders the in trash bin for at least D1 days and
+    delete when exceeds D2 days
+* ``disabled``
+    trash bin auto clean disabled, files and folders will be kept forever
 
 ::
 
@@ -551,15 +553,21 @@ initially set to "auto", which is equivalent to the default setting in
 ownCloud 8.1 and before.
 
 Available values:
-  ``auto``      default setting. Automatically expire versions according to
-                expire rules. Please refer to Files_versions online documentation
-                for more info.
-  ``D, auto``   keep versions at least for D days, apply expire rules to all
-                versions that are older than D days
-* ``auto, D``   delete all versions that are older than D days automatically,
-                delete other versions according to expire rules
-* ``D1, D2``    keep versions for at least D1 days and delete when exceeds D2 days
-  ``disabled``  versions auto clean disabled, versions will be kept forever
+
+* ``auto``
+    default setting. Automatically expire versions according to expire
+    rules. Please refer to Files_versions online documentation for more
+    info.
+* ``D, auto``
+    keep versions at least for D days, apply expire rules to all versions
+    that are older than D days
+* ``auto, D``
+    delete all versions that are older than D days automatically, delete
+    other versions according to expire rules
+* ``D1, D2``
+    keep versions for at least D1 days and delete when exceeds D2 days
+* ``disabled``
+    versions auto clean disabled, versions will be kept forever
 
 ownCloud Verifications
 ----------------------
