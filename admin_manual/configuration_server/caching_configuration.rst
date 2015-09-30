@@ -137,7 +137,9 @@ Redis
 
 Redis is an excellent modern memcache to use for both distributed caching, and 
 with :doc:`Transactional File Locking <../configuration_files/files_locking_transactional>` because it guarantees 
-that cached objects are available for as long as they are needed. 
+that cached objects are available for as long as they are needed.
+
+The Redis PHP module must be version 2.2.5 or better.
 
 On Debian/Ubuntu/Mint install ``redis-server`` and ``php5-redis``. The installer 
 will automatically launch ``redis-server`` and configure it to launch at 
