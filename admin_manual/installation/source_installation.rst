@@ -71,11 +71,14 @@ Recommended for specific apps (*optional*):
 * PHP module exif (for image rotation in pictures app)
 * PHP module gmp (for SFTP storage)
 
-For enhanced server performance (*optional* / select only one of the following):
+For enhanced server performance (*optional*) select one of the following):
 
 * PHP module apc
 * PHP module apcu
-* PHP module xcache
+* PHP module memcached
+* PHP module redis
+
+See :doc:`../configuration_server/caching_configuration`.
 
 For preview generation (*optional*):
 
