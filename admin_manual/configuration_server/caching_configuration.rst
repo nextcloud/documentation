@@ -6,8 +6,9 @@ You can significantly improve your ownCloud server performance with memory
 caching, where frequently-requested objects are stored in memory for faster 
 retrieval. There are two types of caches to use: a PHP opcode cache, which is 
 commonly called *opcache*, and data caching for your Web server. If you do not 
-install a memcache you will see a warning on your ownCloud admin page. (A 
-memcache is not required and you may ignore the warning if you prefer.)
+install and enable a local memcache you will see a warning on your ownCloud 
+admin page. (A memcache is not required and you may ignore the warning if you 
+prefer.)
 
 A PHP opcache stores compiled PHP scripts so they don't need to be re-compiled 
 every time they are called. PHP bundles the Zend OPcache in core since version 
@@ -40,11 +41,12 @@ These are supported but not recommended:
 * `ArrayCache <http://www.arbylon.net/projects/knowceans-tools/doc/org/knowceans/util/ArrayCache.html>`_
    
 Memcaches must be explicitly configured in ownCloud 8.1 and up by installing 
-and configuring your desired cache, and then adding the appropriate entry to 
+and enabling your desired cache, and then adding the appropriate entry to 
 ``config.php``.
 
 You may use both a local and a distributed cache. Recommended caches are APCu 
-and Redis.
+and Redis. After installing and enabling your chosen memcache, verify that it is 
+active by running :ref:`label-phpinfo`.
    
 APC
 ---
@@ -120,11 +122,12 @@ You can verify that the Memcached daemon is running with ``ps ax``::
  19563 ? Sl 0:02 /usr/bin/memcached -m 64 -p 11211 -u memcache -l 
  127.0.0.1
 
-Then add the appropriate entries to your ``config.php``. This example uses APCu 
+Restart your Web server, add the appropriate entries to your 
+``config.php``, and refresh your ownCloud admin page. This example uses APCu 
 for the local cache, Memcached as the distributed memcache, and lists all the 
 servers in the shared cache pool with their port numbers::
 
- 'memcache.local' => '\OC\Memcache\Memcached',
+ 'memcache.local' => '\OC\Memcache\APCu',
  'memcache.distributed' => '\OC\Memcache\Memcached',
  'memcached_servers' => array(
       array('localhost', 11211),
@@ -136,7 +139,8 @@ Redis
 -----
 
 Redis is an excellent modern memcache to use for both distributed caching, and 
-with :doc:`Transactional File Locking <../configuration_files/files_locking_transactional>` because it guarantees 
+as a local cache with :doc:`Transactional File Locking 
+<../configuration_files/files_locking_transactional>` because it guarantees 
 that cached objects are available for as long as they are needed.
 
 The Redis PHP module must be version 2.2.5 or better.
@@ -154,26 +158,23 @@ You can verify that the Redis daemon is running with ``ps ax``::
  ps ax | grep redis
  22203 ? Ssl    0:00 /usr/bin/redis-server 127.0.0.1:6379 
  
-This example ``config.php`` configuration uses APCu for the local server cache, 
-and sets up three servers in the shared cache pool:: 
+Restart your Web server, add the appropriate entries to your ``config.php``, and 
+refresh your ownCloud admin page. This example ``config.php`` configuration uses 
+Redis for the local server cache::
 
- 'memcache.local' => '\OC\Memcache\APCu',
- 'memcache.distributed' => '\OC\Memcache\Redis',     
- 'redis' => array(
-	'host' => 'localhost', 
-        // optionally, use a Unix socket
-        // 'host' => '/tmp/redis.sock',
-        'host' => 'server1.example.com', 
-	'host' => 'server2.example.com', 
-	'port' => 6379,
-	'timeout' => 0.0,
-         ),     
-         
-Redis is very configurable; consult `the Redis documentation <http://redis.io/documentation>`_ to learn more.
+  'memcache.local' => '\OC\Memcache\Redis',
+  'redis' => array(
+       'host' => 'localhost',
+       'port' => 6379,
+       'timeout' => 0.0,
+        ),
+
+Redis is very configurable; consult `the Redis documentation 
+<http://redis.io/documentation>`_ to learn more.
 
 Cache Directory Location
 ------------------------
 
 The cache directory defaults to ``data/$user/cache`` where ``$user`` is the 
-current user. You may use the ``'cache_path'`` directive in ``config.php`` to select a different 
-location.
+current user. You may use the ``'cache_path'`` directive in ``config.php`` to 
+select a different location.
