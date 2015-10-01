@@ -9,9 +9,9 @@ Table of Contents
     release_notes
     whats_new_admin
     installation/index
-    configuration_user/index
-    configuration_files/index
     configuration_server/index
+    configuration_user/index
+    configuration_files/index    
     configuration_database/index
     configuration_mimetypes/index
     maintenance/index
@@ -30,4 +30,3 @@ Enterprise Subscription Only
     enterprise_external_storage/index   
     enterprise_user_management/index
     enterprise_files_drop/index
-
