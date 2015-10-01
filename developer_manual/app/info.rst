@@ -29,7 +29,7 @@ The :file:`appinfo/info.xml` contains metadata about the app:
           <admin>http://doc.owncloud.org</admin>
       </documentation>
 
-      <category>other</category>
+      <category>tool</category>
 
       <website>http://www.owncloud.org</website>
 
@@ -137,7 +137,6 @@ category
 --------
 Category on the app store. Can be one of the following:
 
-* other
 * multimedia
 * pim
 * productivity
