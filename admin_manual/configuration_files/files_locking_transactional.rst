@@ -20,29 +20,22 @@ The new file locking mechanism has these capabilities:
 * Manages locks correctly on external storage mounts
 * Manages encrypted files correctly
 
-You must install the Redis server and ``php-redis`` module for the new file 
-locking to work. On Debian/Ubuntu/Mint this is ``redis-server`` and 
-``php5-redis``, and on Red Hat/CentOS/Fedora is it ``redis`` 
-and ``php-pecl-redis`` from the EPEL repository. After installing Redis and its 
-corresponding PHP module, restart your HTTP server.
+You must install the Redis server and corresponding PHP module for the new file 
+locking to work. (See :doc:`../configuration_server/caching_configuration`.)
 
-After installing Redis you must enter a simple configuration in your 
-``config.php`` file, like this example::
+After installing Redis you must enter a configuration in your ``config.php`` 
+file like this example::
 
   'filelocking.enabled' => 'true',
   'memcache.locking' => '\OC\Memcache\Redis',
   'redis' => array(
        'host' => 'localhost',
-       // can also be a unix domain socket:
-       '/tmp/redis.sock',
        'port' => 6379,
        'timeout' => 0.0,
-       // Optional, if undefined SELECT will not run and will use Redis
-       // Server's default DB Index.
-       //'dbindex' => 0,
-     ),
+        ),
 
-The **Server status** section on your ownCloud Admin page indicates whether experimental file locking is enabled or disabled.
+The **Server status** section on your ownCloud Admin page indicates whether 
+experimental file locking is enabled or disabled.
 
 .. figure:: ../images/transactional-locking-1.png
 

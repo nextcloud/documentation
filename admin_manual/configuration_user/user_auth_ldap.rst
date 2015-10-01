@@ -582,7 +582,8 @@ Caching
 -------
 
 The LDAP cache has changed in ownCloud 8.1. There is no more file cache, but 
-only a memory cache, and you must install and configure the memory cache. The 
+only a memory cache, and you must install and configure the memory cache (see 
+:doc:`../configuration_server/caching_configuration`). The 
 simplest memory cache to use is APCu. This is supplied by the ``php5-apcu`` 
 package on Debian/Ubuntu/Mint, and by ``php-pecl-apcu`` on Red 
 Hat/CentOS/Fedora.
@@ -598,26 +599,21 @@ each unique request expires. User logins are not cached, so if you need to
 improve login times set up a slave LDAP server to share the load.
 
 The Redis key-value cache and store is an excellent fast and robust cache, and 
-if you are using the new experimental file locking (see 
-:doc:`../configuration_files/files_locking_transactional`) then you must use 
-Redis. Redis configuration looks like this::
+if you are using :doc:`Transaction File Locking 
+<../configuration_files/files_locking_transactional>`) then you must use Redis. 
+A Redis configuration looks like this::
 
  'filelocking.enabled' => 'true',
  'memcache.local' => '\OC\Memcache\Redis',
  'redis' => array(
        'host' => 'localhost',
-       // can also be a unix domain socket:
-       '/tmp/redis.sock'
        'port' => 6379,
        'timeout' => 0.0,
-       // Optional, if undefined SELECT will not run and will use Redis
-       // Server's default DB Index.
-       'dbindex' => 0,
- ),
+       ),
 
 Redis is supplied by the ``redis-server`` and ``php5-redis`` packages on 
 Debian/Ubuntu/Mint, and on Red Hat/CentOS/Fedora by ``redis`` and 
-``php-pecl-redis`` from the EPEL repository.
+``php-pecl-redis`` from the EPEL repository. 
 
 You can adjust the **Cache Time-To-Live** value to balance performance and 
 freshness of LDAP data. All LDAP requests will be cached for 10 minutes by 

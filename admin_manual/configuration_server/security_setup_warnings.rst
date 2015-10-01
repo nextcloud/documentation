@@ -15,22 +15,21 @@ Cache Warnings
 configure a memcache if available." ownCloud supports multiple php caching
 extentions:
 
-* APC
-* APCu (minimum required php extension version: 4.0.6)
+* APC (PHP 5.4 only)
+* APCu (PHP 5.5+, minimum required PHP extension version 4.0.6)
 * Memcached
 * Redis (minimum required php extension version: 2.2.5)
-* Xcache
 
-You will see this warning if you have no caches installed or if your cache
-does not have the required minimum version installed; older versions are
-disabled because of performance problems.
+You will see this warning if you have no caches installed and enabled, or if 
+your cache does not have the required minimum version installed; older versions 
+are disabled because of performance problems.
 
 If you see "*{Cache}* below version *{Version}* is installed. for stability and
 performance reasons we recommend to update to a newer *{Cache}* version" then
 you need to upgrade, or, if you're not using it, remove it.
 
-It is not required to use any caches, but caches improve server performance. See 
-:ref:`caching` for more information on installing and using caches.
+You are not required to use any caches, but caches improve server performance. 
+See :doc:`caching_configuration`.
 
 You are accessing this site via HTTP
 ------------------------------------
