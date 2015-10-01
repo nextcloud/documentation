@@ -55,7 +55,7 @@ APC is only for systems running PHP 5.4 and older. The oldest supported PHP
 version in ownCloud is 5.4.
 
 .. note:: RHEL 6 and CentOS 6 ship with PHP 5.3 and must be upgraded to PHP 
-   5.4 to run ownCloud. See :doc:`php_54_installation`.
+   5.4 to run ownCloud. See :doc:`../installation/php_54_installation`.
 
 On Red Hat/CentOS/Fedora systems running PHP 5.4, install ``php-pecl-apc``. On 
 Debian/Ubuntu/Mint systems install ``php-apc``. Then restart your Web server. 
