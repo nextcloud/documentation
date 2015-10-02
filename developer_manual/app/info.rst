@@ -138,7 +138,6 @@ category
 Category on the app store. Can be one of the following:
 
 * multimedia
-* pim
 * productivity
 * games
 * tools
