@@ -7,8 +7,12 @@ caching, where frequently-requested objects are stored in memory for faster
 retrieval. There are two types of caches to use: a PHP opcode cache, which is 
 commonly called *opcache*, and data caching for your Web server. If you do not 
 install and enable a local memcache you will see a warning on your ownCloud 
-admin page. (A memcache is not required and you may ignore the warning if you 
-prefer.)
+admin page. A memcache is not required and you may ignore the warning if you 
+prefer.
+
+.. note:: If you enable only a distributed cache in 
+   your ``config.php`` (``memcache.distributed``) and not a 
+   local cache (``memcache.local``) you will still see the cache warning.
 
 A PHP opcache stores compiled PHP scripts so they don't need to be re-compiled 
 every time they are called. PHP bundles the Zend OPcache in core since version 
@@ -106,6 +110,10 @@ and performs well with ownCloud with one exception: it is not suitable to use
 with :doc:`Transactional File Locking <../configuration_files/files_locking_transactional>` because it does not 
 store locks, and data can disappear from the cache at any time (Redis is 
 the best for this). 
+
+.. note:: Be sure to install the **memcached** PHP module, and not memcache, as 
+   in the following examples. ownCloud supports only the **memcached** PHP 
+   module.
 
 Setting up Memcached is easy. On Debian/Ubuntu/Mint install ``memcached`` and 
 ``php5-memcached``. The installer will automatically start ``memcached`` and 
