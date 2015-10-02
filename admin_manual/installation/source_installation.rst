@@ -335,7 +335,7 @@ correct locations.
 
 Please keep in mind that it is possible to create different settings for 
 ``php-cli`` and ``php-fpm``, and for different domains and Web sites. 
-The best way to check your settings is with ``phpinfo()``.
+The best way to check your settings is with :ref:`label-phpinfo`.
 
 **Maximum upload size**
 

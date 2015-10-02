@@ -123,14 +123,7 @@ configure ownCloud, create, modify and delete your data files, and install apps
 via the ownCloud Web interface. 
 
 You can find your HTTP user in your HTTP server configuration files. Or you can 
-use ``phpinfo``. To do this, create a plain text file with 
-the following line in it::
-
-  <?php phpinfo(); ?>
-
-Name it ``phpinfo.php`` and place it in your Web root, and then 
-open it in a Web browser, for example ``http://localhost/phpinfo.php``. Look 
-for the **User/Group** line.
+use :ref:`label-phpinfo` (Look for the **User/Group** line).
 
 * The HTTP user and group in Debian/Ubuntu is ``www-data``.
 * The HTTP user and group in Fedora/CentOS is ``apache``.
