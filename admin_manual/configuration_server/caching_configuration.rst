@@ -36,7 +36,7 @@ of memcache that best fits your needs. The supported caching backends are:
    A local cache for systems running PHP 5.5 and up, APCu 4.06 or better required.
 * `Memcached <http://www.memcached.org/>`_ 
    Distributed cache for multi-server ownCloud installations.
-* `Redis <http://redis.io/>`_ 
+* `Redis <http://redis.io/>`_, PHP module 2.2.5 or better required.
    For distributed caching, and required for Transactional File Locking.
 
 These are supported but not recommended:
@@ -46,7 +46,8 @@ These are supported but not recommended:
    
 Memcaches must be explicitly configured in ownCloud 8.1 and up by installing 
 and enabling your desired cache, and then adding the appropriate entry to 
-``config.php``.
+``config.php`` (See :doc:`config_sample_php_parameters` for an overview of
+all possible config parameters).
 
 You may use both a local and a distributed cache. Recommended caches are APCu 
 and Redis. After installing and enabling your chosen memcache, verify that it is 
@@ -80,6 +81,8 @@ Linux distributions. On Red Hat/CentOS/Fedora systems running PHP 5.5 and up
 install ``php-pecl-apcu``. On Debian/Ubuntu/Mint systems install ``php5-apcu``. 
 Then restart your Web server.
  
+The version of APCu must be 4.0.6 or better.
+
 After restarting your Web server, add this line to your ``config.php`` file::
 
  'memcache.local' => '\OC\Memcache\APCu',
@@ -107,9 +110,9 @@ Memcached
 
 Memcached is a reliable oldtimer for shared caching on distributed servers, 
 and performs well with ownCloud with one exception: it is not suitable to use 
-with :doc:`Transactional File Locking <../configuration_files/files_locking_transactional>` because it does not 
-store locks, and data can disappear from the cache at any time (Redis is 
-the best for this). 
+with :doc:`Transactional File Locking <../configuration_files/files_locking_transactional>`
+because it does not store locks, and data can disappear from the cache at any time
+(Redis is the best for this). 
 
 .. note:: Be sure to install the **memcached** PHP module, and not memcache, as 
    in the following examples. ownCloud supports only the **memcached** PHP 
@@ -184,5 +187,5 @@ Cache Directory Location
 ------------------------
 
 The cache directory defaults to ``data/$user/cache`` where ``$user`` is the 
-current user. You may use the ``'cache_path'`` directive in ``config.php`` to 
-select a different location.
+current user. You may use the ``'cache_path'`` directive in ``config.php``
+(See :doc:`config_sample_php_parameters`) to select a different location.
