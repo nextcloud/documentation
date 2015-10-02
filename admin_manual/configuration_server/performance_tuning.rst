@@ -11,28 +11,6 @@ deploying them on production servers.
 If you wish to add tips to this page, please put them in the relevant section. 
 If there isn't an appropriate section then start a new one.
 
-PHP Version and Information
----------------------------
-
-You will need to know your PHP version and configurations. To do this, create a 
-plain-text file named **phpinfo.php** and place it in your Web root, for 
-example ``/var/www/html/phpinfo.php``. (Your Web root may be in a different 
-location; your Linux distribution documentation will tell you where.) This file 
-contains just this line::
-
- <?php phpinfo(); ?>
-
-Open this file in a Web browser by pointing your browser to 
-``localhost/phpinfo.php``:
-
-.. figure:: ../images/phpinfo.png
-
-Your PHP version is at the top, and the rest of the page contains abundant 
-system information such as active modules, active `.ini` files, and much more. 
-When you are finished reviewing your information you must delete 
-``phpinfo.php``, or move it outside of your Web directory, because it is a 
-security risk to expose such sensitive data.
-
 ownCloud Server Tuning
 ----------------------
 
@@ -65,7 +43,7 @@ PHP safe mode
 ^^^^^^^^^^^^^
 
 PHP safe mode has to be turned off. It is deprecated and has been removed in 
-newer PHP versions. Verify its status with ``phpinfo``, and look for 
+newer PHP versions. Verify its status with :ref:`label-phpinfo`, and look for 
 ``safe_mode 
 on/off``. If it is on, then add this line to ``php.ini`` to turn it off::
 

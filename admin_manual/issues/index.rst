@@ -77,8 +77,8 @@ the `Firebug extension <https://getfirebug.com/>`_.
 
 .. _label-phpinfo:   
    
-phpinfo
-^^^^^^^
+PHP Version and Information
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You will need to know your PHP version and configurations. To do this, create a 
 plain-text file named **phpinfo.php** and place it in your Web root, for 
@@ -88,14 +88,16 @@ contains just this line::
 
  <?php phpinfo(); ?>
 
-Open this file in a Web browser. e.g. ``http://localhost/phpinfo``. Your PHP 
-version is at the top, and the rest of the page contains abundant system 
-information such as active modules, active `.ini` files, and much more. When 
-you 
-are finished reviewing your information you must delete ``phpinfo.php``, or 
-move 
-it outside of your Web directory, because it is a security risk to expose such 
-sensitive data.
+Open this file in a Web browser by pointing your browser to 
+``localhost/phpinfo.php``:
+
+.. figure:: ../images/phpinfo.png
+
+Your PHP version is at the top, and the rest of the page contains abundant 
+system information such as active modules, active `.ini` files, and much more. 
+When you are finished reviewing your information you must delete 
+``phpinfo.php``, or move it outside of your Web directory, because it is a 
+security risk to expose such sensitive data.
 
 Debugging Sync Issues
 ^^^^^^^^^^^^^^^^^^^^^

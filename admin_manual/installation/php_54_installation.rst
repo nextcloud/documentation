@@ -40,9 +40,8 @@ Then restart Apache::
  
  service httpd restart
 
-Verify with ``phpinfo`` that your Apache server is using PHP 5.4 and loading 
-the correct modules; see   
-https://doc.owncloud.org/server/8.1/admin_manual/configuration_server/performance_tuning.html#php-version-and-information to learn how to use ``phpinfo``.
+Verify with :ref:`label-phpinfo` that your Apache server is using PHP 5.4 and loading 
+the correct modules.
 
 CentOS 6
 --------
@@ -75,8 +74,5 @@ Finally, restart Apache::
  
  service httpd restart
 
-Verify with ``phpinfo`` that your Apache server is using PHP 5.4 and loading 
-the correct modules; see   
-https://doc.owncloud.com/server/8.1/admin_manual/configuration_server/
-performance_tuning.html#php-version-and-information to learn how to use 
-``phpinfo``.
+Verify with :ref:`label-phpinfo` that your Apache server is using PHP 5.4 and loading 
+the correct modules.
