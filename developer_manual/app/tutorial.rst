@@ -266,7 +266,7 @@ To create the tables in the database, the :doc:`version tag <info>` in **ownnote
         <author>Your Name</author>
         <version>0.0.2</version>
         <namespace>OwnNotes</namespace>
-        <category>other</category>
+        <category>tool</category>
         <dependencies>
             <owncloud min-version="8" />
         </dependencies>
