@@ -26,7 +26,7 @@ Prerequisites
           `PHP manual <http://php.net/manual/en/extensions.php>`_ for information on modules. 
           Your Linux distribution should have packages for all required modules.
 
-To run ownCloud, your web server must have the following installed:
+To run ownCloud, your Web server must have the following installed:
 
 * php5 (>= 5.4)
 * PHP module ctype
@@ -42,7 +42,7 @@ To run ownCloud, your web server must have the following installed:
 * PHP module zip
 * PHP module zlib
 
-Database connectors (pick at least one):
+Database connectors (pick the one for your database:)
 
 * PHP module sqlite (>= 3, usually not recommended for performance reasons)
 * PHP module mysql (MySQL/MariaDB)
@@ -71,12 +71,13 @@ Recommended for specific apps (*optional*):
 * PHP module exif (for image rotation in pictures app)
 * PHP module gmp (for SFTP storage)
 
-For enhanced server performance (*optional*) select one of the following):
+For enhanced server performance (*optional*) select one of the following 
+memcaches:
 
 * PHP module apc
 * PHP module apcu
 * PHP module memcached
-* PHP module redis
+* PHP module redis (required for Transactional File Locking)
 
 See :doc:`../configuration_server/caching_configuration`.
 
@@ -86,7 +87,7 @@ For preview generation (*optional*):
 * avconv or ffmpeg
 * OpenOffice or LibreOffice
 
-* You don’t need the WebDAV module for your web server (i.e. Apache’s
+* You don’t need the WebDAV module for your Web server (i.e. Apache’s
   ``mod_webdav``) to access your ownCloud data via WebDAV. ownCloud has a built-in
   WebDAV server of its own, SabreDAV.
 
@@ -115,11 +116,14 @@ Now download the archive of the latest ownCloud version:
 * Click **Download Unix**.
 * This downloads a file named owncloud-x.y.z.tar.bz2 (where
   x.y.z is the version number of the current latest version).
-* Save this file on the machine you want to install ownCloud on.
+* Download its corresponding checksum file, e.g. owncloud-x.y.z.tar.bz2.md5, 
+  or owncloud-x.y.z.tar.bz2.sha256. 
+* Save these files in the same directory on the machine you want to install 
+  ownCloud on.
 * Verify the MD5 or SHA256 sum::
    
-    md5sum  owncloud-x.y.z.tar.bz2
-    sha256sum owncloud-x.y.z.tar.bz2
+    md5sum -c owncloud-x.y.z.tar.bz2.md5 < owncloud-x.y.z.tar.bz2
+    sha256sum -c owncloud-x.y.z.tar.bz2.sha256 < owncloud-x.y.z.tar.bz2
    
 * You may also verify the PGP signature::
     
