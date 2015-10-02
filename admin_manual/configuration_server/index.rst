@@ -22,5 +22,6 @@ ownCloud Server Configuration
    search_configuration   
    thirdparty_php_configuration
    performance_tuning
+   performance_tuning/index
    js_css_asset_management_configuration
    automatic_configuration
