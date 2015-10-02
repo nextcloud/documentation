@@ -26,6 +26,8 @@ Make a backup of your current theme(s) e.g.:
 * Goto …/owncloud/themes
 * cp -r default default.old
 
+.. note:: In this example the theme name ``default`` is used because this is automatically loaded. This should be changed in the config file to avoid having this overwritten by the ownCloud package (see :ref:`notes-for-updates`).
+
 Creating and activating a new theme
 ===================================
 
@@ -78,6 +80,8 @@ Inserting a new logo into an existing theme is as simple as replacing the old lo
 You can use: scalable vector graphics (.svg) or common graphics formats for the internet such as portable network graphics (.png) or .jepg
 Just insert the new created picture by using the unchanged name of the old picture.
 
+The app icons can also be overwritten in a theme. To change for example the app icon of the activity app you need to overwrite it by saving the new image to …/owncloud/themes/default/apps/activity/img/activity.svg
+
 changing the default colours
 ----------------------------
 
@@ -88,14 +92,15 @@ On the top of the login page you can see a case- distinguished setting for diffe
 
   /* HEADERS */
   ...
-  background: #1d2d42; /* Old browsers */
-  background: -moz-linear-gradient(top, #33537a 0%, #1d2d42  100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F1B3A4), color-stop(100%,#1d2d42)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #33537a 0%,#1d2d42 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #33537a 0%,#1d2d42 100%); /* Opera11.10+ */
-  background: -ms-linear-gradient(top, #33537a 0%,#1d2d42 100%); /* IE10+ */
-  background: linear-gradient(top, #33537a 0%,#1d2d42 100%); /* W3C */
-
+  body-login {
+    background: #1d2d42; /* Old browsers */
+    background: -moz-linear-gradient(top, #33537a 0%, #1d2d42  100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F1B3A4), color-stop(100%,#1d2d42)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #33537a 0%,#1d2d42 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #33537a 0%,#1d2d42 100%); /* Opera11.10+ */
+    background: -ms-linear-gradient(top, #33537a 0%,#1d2d42 100%); /* IE10+ */
+    background: linear-gradient(top, #33537a 0%,#1d2d42 100%); /* W3C */
+  }
 
 The different background-assignments indicate the headers for a lot of different browser types. What you most likely want to do is change the #35537a (lighter blue) and #ld2d42 (dark blue) color to the colours of our choice. In some older and other browsers, there is just one color, but in the rest showing gradients is possible.
 The login page background is a horizontal gradient. The first hex number, #35537a, is the top color of the gradient at the login screen. The second hex number, #ld2d42 is the bottom color of the gradient at the login screen.
@@ -212,6 +217,8 @@ There are different options for doing so:
 
 .. _GitHub themes repository: https://github.com/owncloud/themes
 .. _here: https://github.com/owncloud/themes/tree/master/example
+
+.. _notes-for-updates:
 
 Notes for Updates
 =================
