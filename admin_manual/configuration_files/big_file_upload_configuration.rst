@@ -95,3 +95,12 @@ Tell PHP which temp file you want it to use::
 will return memory-related errors:
 
 * ``output_buffering = 0``
+
+Configuring ownCloud
+--------------------
+
+If you have configured the ``session_lifetime`` setting in your ``config.php``
+(See :doc:`config_sample_php_parameters`) file then make sure it is not too
+low. This setting needs to be configured to at least the time (in seconds) that
+the longest upload will take. If unsure remove this completely from your
+configuration to reset it to the default shown in the ``config.sample.php``.
