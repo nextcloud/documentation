@@ -124,7 +124,7 @@ Suppressing Log Messages
 
 If you're seeing meaningless messages in your logfile, for example `client 
 denied by server configuration: /var/www/data/htaccesstest.txt 
-<https://forum.owncloud.org/viewtopic.php?f=17&t=20217>_`, add this section to 
+<https://forum.owncloud.org/viewtopic.php?f=17&t=20217>`_, add this section to 
 your Nginx configuration to suppress them::
 
          location = /data/htaccesstest.txt {
@@ -132,3 +132,21 @@ your Nginx configuration to suppress them::
             log_not_found off;
             access_log off;
         }
+
+JavaScript (.js) or CSS (.css) files not served properly
+--------------------------------------------------------
+
+A common issue with custom nginx configs is that JavaScript (.js)
+or CSS (.css) files are not served properly leading to a 404 (File not found)
+error on those files and a broken webinterface.
+
+This could be caused by the:
+
+ location ~* \.(?:jpg|jpeg|gif|bmp|ico|png|css|js|swf)$ {
+
+block shown above not located **below** the 
+
+ location ~ \.php(?:$|/) {
+
+block. Other custom configurations like caching JavaScript (.js)
+or CSS (.css) files via gzip could also cause such issues.
