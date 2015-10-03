@@ -1322,6 +1322,16 @@ This will disable the minifier and outputs some additional debug information
 
 ::
 
+	'update.skip-migration-test' => false,
+
+Skips the migration test during upgrades
+
+If this is set to true the migration test are deactivated during upgrade.
+This is only recommended in installations where upgrade tests are run in
+advance with the same data on a test system.
+
+::
+
 	'copied_sample_config' => true,
 
 This entry is just here to show a warning in case somebody copied the sample
