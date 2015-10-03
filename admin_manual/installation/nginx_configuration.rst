@@ -99,11 +99,23 @@ Nginx Configuration
      fastcgi_intercept_errors on;
      }
 
-     # Optional: set long EXPIRES header on static assets
-     location ~* \.(?:jpg|jpeg|gif|bmp|ico|png|css|js|swf)$ {
-         expires 30d;
+     # Adding the cache control header for js and css files
+     # Make sure it is BELOW the location ~ \.php(?:$|/) { block
+     location ~* \.(?:css|js)$ {
+         add_header Cache-Control "public, max-age=7200";
+         # Add headers to serve security related headers
+         add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
+         add_header X-Content-Type-Options nosniff;
+         add_header X-Frame-Options "SAMEORIGIN";
+         add_header X-XSS-Protection "1; mode=block";
+         add_header X-Robots-Tag none;
          # Optional: Don't log access to assets
-           access_log off;
+         access_log off;
+     }
+
+     # Optional: Don't log access to other assets
+     location ~* \.(?:jpg|jpeg|gif|bmp|ico|png|swf)$ {
+         access_log off;
      }
 
     }
@@ -127,7 +139,7 @@ denied by server configuration: /var/www/data/htaccesstest.txt
 <https://forum.owncloud.org/viewtopic.php?f=17&t=20217>`_, add this section to 
 your Nginx configuration to suppress them::
 
-         location = /data/htaccesstest.txt {
+        location = /data/htaccesstest.txt {
             allow all;
             log_not_found off;
             access_log off;
@@ -142,11 +154,11 @@ error on those files and a broken webinterface.
 
 This could be caused by the:
 
- location ~* \.(?:jpg|jpeg|gif|bmp|ico|png|css|js|swf)$ {
+        location ~* \.(?:css|js)$ {
 
 block shown above not located **below** the 
 
- location ~ \.php(?:$|/) {
+        location ~ \.php(?:$|/) {
 
 block. Other custom configurations like caching JavaScript (.js)
 or CSS (.css) files via gzip could also cause such issues.
