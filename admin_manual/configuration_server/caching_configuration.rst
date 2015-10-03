@@ -32,11 +32,11 @@ of memcache that best fits your needs. The supported caching backends are:
 
 * `APC <http://php.net/manual/en/book.apc.php>`_ 
    A local cache for systems running PHP 5.4.
-* `APCu <https://pecl.php.net/package/APCu>`_ 
-   A local cache for systems running PHP 5.5 and up, APCu 4.06 or better required.
+* `APCu <https://pecl.php.net/package/APCu>`_, APCu 4.06 and up required.
+   A local cache for systems running PHP 5.5 and up.
 * `Memcached <http://www.memcached.org/>`_ 
    Distributed cache for multi-server ownCloud installations.
-* `Redis <http://redis.io/>`_, PHP module 2.2.5 or better required.
+* `Redis <http://redis.io/>`_, PHP module 2.2.5 and up required.
    For distributed caching, and required for Transactional File Locking.
 
 These are supported but not recommended:
@@ -81,7 +81,7 @@ Linux distributions. On Red Hat/CentOS/Fedora systems running PHP 5.5 and up
 install ``php-pecl-apcu``. On Debian/Ubuntu/Mint systems install ``php5-apcu``. 
 Then restart your Web server.
  
-The version of APCu must be 4.0.6 or better.
+The version of APCu must be 4.0.6 and up.
 
 After restarting your Web server, add this line to your ``config.php`` file::
 
@@ -154,7 +154,7 @@ as a local cache with :doc:`Transactional File Locking
 <../configuration_files/files_locking_transactional>` because it guarantees 
 that cached objects are available for as long as they are needed.
 
-The Redis PHP module must be version 2.2.5 or better.
+The Redis PHP module must be version 2.2.5 and up.
 
 On Debian/Ubuntu/Mint install ``redis-server`` and ``php5-redis``. The installer 
 will automatically launch ``redis-server`` and configure it to launch at 
