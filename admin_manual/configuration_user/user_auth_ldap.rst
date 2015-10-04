@@ -537,6 +537,14 @@ Compared to earlier ownCloud versions, no further tweaks need to be done to
 make ownCloud work with Active Directory. ownCloud will automatically find the
 correct configuration in the set-up process.
 
+memberOf / Read MemberOf permissions
+------------------------------------
+
+If you want to use ``memberOf`` within your filter you might need to give your
+querying user the permissions to use it. For Microsoft Active Directory this
+is described `here <https://serverfault.com/questions/167371/what-permissions-are
+-required-for-enumerating-users-groups-in-active-directory/167401#167401>`_.
+
 Duplicating Server Configurations
 ---------------------------------
 
@@ -559,7 +567,7 @@ ownCloud LDAP Internals
 Some parts of how the LDAP backend works are described here.
 
 User and Group Mapping
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^
 
 In ownCloud the user or group name is used to have all relevant information in
 the database assigned. To work reliably a permanent internal user name and
@@ -579,41 +587,15 @@ it into production. The mapping tables are filled early, but as long as you are
 testing, you can empty the tables any time. Do not do this in production.
 
 Caching
--------
+^^^^^^^
 
 The LDAP cache has changed in ownCloud 8.1. There is no more file cache, but 
 only a memory cache, and you must install and configure the memory cache (see 
-:doc:`../configuration_server/caching_configuration`). The 
-simplest memory cache to use is APCu. This is supplied by the ``php5-apcu`` 
-package on Debian/Ubuntu/Mint, and by ``php-pecl-apcu`` on Red 
-Hat/CentOS/Fedora.
-
-After installing APCu you must modify ``config.php`` to select APCu as the 
-ownCloud cache::
-
- 'memcache.local' => '\OC\Memcache\APCu',
- 
-The ownCloud  **Cache** helps to speed up user interactions and sharing. It is 
-populated on demand, and remains populated until the **Cache Time-To-Live** for 
-each unique request expires. User logins are not cached, so if you need to
-improve login times set up a slave LDAP server to share the load.
-
-The Redis key-value cache and store is an excellent fast and robust cache, and 
-if you are using :doc:`Transaction File Locking 
-<../configuration_files/files_locking_transactional>`) then you must use Redis. 
-A Redis configuration looks like this::
-
- 'filelocking.enabled' => 'true',
- 'memcache.local' => '\OC\Memcache\Redis',
- 'redis' => array(
-       'host' => 'localhost',
-       'port' => 6379,
-       'timeout' => 0.0,
-       ),
-
-Redis is supplied by the ``redis-server`` and ``php5-redis`` packages on 
-Debian/Ubuntu/Mint, and on Red Hat/CentOS/Fedora by ``redis`` and 
-``php-pecl-redis`` from the EPEL repository. 
+:doc:`../configuration_server/caching_configuration`). The ownCloud  **Cache**
+helps to speed up user interactions and sharing. It is populated on demand,
+and remains populated until the **Cache Time-To-Live** for each unique request
+expires. User logins are not cached, so if you need to improve login times set
+up a slave LDAP server to share the load.
 
 You can adjust the **Cache Time-To-Live** value to balance performance and 
 freshness of LDAP data. All LDAP requests will be cached for 10 minutes by 
@@ -641,7 +623,7 @@ defunct, for example due to a server migration or unreachable server. In this
 case the other servers will also receive the request.
 
 Handling with Backup Server
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When ownCloud is not able to contact the main LDAP server, ownCloud assumes it 
 is offline and will not try to connect again for the time specified in **Cache 
