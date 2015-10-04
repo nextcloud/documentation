@@ -45,18 +45,19 @@ the new location. It is also assumed that the authentication method
 
 
 #.  Create a dump from the database and copy it to the new machine. There
-    import it in the database.
+    import it in the database (See :doc:`backup` and :doc:`restore`).
 
 
 #.  Copy all files from your ownCloud instance, the ownCloud program files, the
     data files, the log files and the configuration files, to the new
-    machine. The data files should keep their original timestamp (can be done by
-    using ``rsync`` with ``-t`` option) otherwise the clients will re-download
-    all the files after the migration. Depending on the original installation
-    method and the OS the files are located in different locations. On the new
-    system make sure to pick the appropriate locations. If you change any paths,
-    make sure to adopt the paths in the ownCloud config.php file. Note: This
-    step might take several hours, depending on your installation.
+    machine (See :doc:`backup` and :doc:`restore`). The data files should keep
+    their original timestamp (can be done by using ``rsync`` with ``-t`` option)
+    otherwise the clients will re-download all the files after the migration.
+    Depending on the original installation method and the OS the files are
+    located in different locations. On the new system make sure to pick the
+    appropriate locations. If you change any paths, make sure to adopt the paths
+    in the ownCloud config.php file. Note: This step might take several hours,
+    depending on your installation.
 
 
 #.  While still having ownCloud in maintenance mode (confirm!) and **BEFORE**
