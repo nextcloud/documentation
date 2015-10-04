@@ -3,7 +3,7 @@ ownCloud Documentation
 ======================
 
 Documentation is published on `<https://doc.owncloud.org>`_ and 
-`<https://doc.owncloud.com.>`_
+`<https://doc.owncloud.com>`_.
 
 The `documentation Wiki <https://github.com/owncloud/documentation/wiki>`_ is 
 available for tips, tricks, edge cases, and anyone who wants to contribute more 
