@@ -1264,6 +1264,9 @@ lose this string there will be data corruption.
 
 List of trusted proxy servers
 
+If you configure these also consider setting `forwarded_for_headers` which
+otherwise defaults to `HTTP_X_FORWARDED_FOR` (the `X-Forwarded-For` header).
+
 ::
 
 	'forwarded_for_headers' => array('HTTP_X_FORWARDED', 'HTTP_FORWARDED_FOR'),
