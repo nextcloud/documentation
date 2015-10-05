@@ -3,9 +3,10 @@ Transactional File Locking
 ==========================
 
 ownCloud's new transactional file locking mechanism operates differently than 
-the old File Locking application, and will eventually replace it. If you elect 
-to use the new file locking mechanism make sure you disable the File Locking 
-app.
+the old File Locking application, and will eventually replace it. The purpose
+of this mechanism is to avoid file corruption during normal operation. If you
+select to use the new file locking mechanism make sure you disable the File
+Locking app.
 
 The new file locking mechanism has these capabilities:
 
