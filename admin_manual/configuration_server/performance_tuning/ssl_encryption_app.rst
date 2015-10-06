@@ -1,55 +1,6 @@
-================================
-Server Tuning & Performance Tips
-================================
-
-There are a number of options to tune the ownCloud installation and enable a 
-higher level of performance. This chapter gives a few hands-on tips on 
-configuring your database, and LAMP stack to improve performance. This chapter 
-is community-maintained and unsupported; test these tips carefully before 
-deploying them on production servers.
-
-If you wish to add tips to this page, please put them in the relevant section. 
-If there isn't an appropriate section then start a new one.
-
-ownCloud Server Tuning
-----------------------
-
-Using cron to perform background jobs
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-See :doc:`background_jobs_configuration` for a description and the 
-benefits.
-
-Enable JavaScript and CSS Asset Management
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-See :doc:`js_css_asset_management_configuration` for a description and the 
-benefits.
-
-.. _caching:
-
-Caching
--------
-
-Caching improves performance by storing data, code, and other objects in memory. 
-Memory cache configuration for the ownCloud server is no longer automatic in 
-ownCloud 8.1 and up, but must be installed and configured. See      
-:doc:`caching_configuration`.
-
-Webserver Tips
---------------
-
-Various hints for Apache and NginX can be found at the separate page
-:doc:`performance_tuning/webserver_tips`.
-
-Database Best Practice
-----------------------
-
-Various Database Best Practices can be found at the separate page
-:doc:`performance_tuning/database_best_practice`.
-         
+====================
 SSL / Encryption App
---------------------
+====================
 
 SSL (HTTPS) and file encryption/decryption can be offloaded to a processor's 
 AES-NI extension. This can both speed up these operations while lowering 
