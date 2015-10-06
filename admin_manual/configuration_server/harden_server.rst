@@ -115,14 +115,16 @@ connection to the ownCloud instance using HTTP, and it attempts to prevent site
 visitors from bypassing invalid certificate warnings.
 
 This can be achieved by setting the following settings within the Apache 
-VirtualHost file:
+VirtualHost file::
 
-.. code-block:: none
-
-  <VirtualHost *:443>
-     ServerName cloud.owncloud.com
-     Header always add Strict-Transport-Security "max-age=15768000"
+ <VirtualHost *:443>
+   ServerName cloud.owncloud.com
+     <IfModule mod_headers.c>
+       Header always set Strict-Transport-Security "max-age=15768000; includeSubDomains; preload"
+     </IfModule>
   </VirtualHost>
+  
+This example configuration will make all subdomains only accessible via HTTPS. If you have subdomains not accessible via HTTPS, remove ``includeSubdomains;``. 
 
 This requires the ``mod_headers`` extension in Apache.
 
