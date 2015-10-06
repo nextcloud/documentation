@@ -5,11 +5,11 @@ Encryption Configuration
 If you are upgrading from ownCloud 8.0, and have encryption enabled, please see 
 :ref:`upgrading` (below) for the correct steps to upgrade your encryption. 
 
-In ownCloud 8.1 the server-side encryption has a number of changes and 
+In ownCloud 8.1 and up the server-side encryption has a number of changes and 
 improvements, including:
 
 * When encryption is enabled, all files are no longer encrypted at user's first 
-  logins because this caused timeouts on large installations. Instead, only 
+  logins because this causes timeouts on large installations. Instead, only 
   files that are created or updated after encryption has been enabled are 
   encrypted.
 
@@ -42,7 +42,7 @@ files on remote storage, and to do it easily and seamlessly from within
 ownCloud. 
 
 ownCloud's server-side encryption generates a strong encryption key, which is 
-unlocked by user's passwords. So your users don't need to track an extra 
+unlocked by user's passwords. Your users don't need to track an extra 
 password, but simply log in as they normally do. It encrypts only the contents 
 of files, and not filenames and directory structures.
 
@@ -55,16 +55,27 @@ The encryption keys are stored in the following directories:
   private keys and all other keys necessary to decrypt the files stored on a
   system wide external storage
   
+When encryption is enabled, all files are encrypted and decrypted by the 
+ownCloud application, and stored encrypted on your remote storage.
+This protects your data on externally hosted storage. The ownCloud 
+admin and the storage admin will see only encrypted files when browsing backend 
+storage.  
+  
 .. note:: Encryption keys are stored only on the ownCloud server, eliminating
-   exposure of your data to third party storage providers. The encryption app 
+   exposure of your data to third-party storage providers. The encryption app 
    does **not** protect your data if your ownCloud server is compromised, and it
    does not prevent ownCloud administrators from reading user's files. This 
    would require client-side encryption, which this app does not provide. If 
    your ownCloud server is not connected to any external storage services then 
-   it is better to  use other encryption tools, such as file-level or 
-   whole-disk encryption. Read 
-   `How ownCloud uses encryption to protect your data 
-   <https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your-
+   it is better to use other encryption tools, such as file-level or 
+   whole-disk encryption. 
+   
+   Note also that SSL terminates at or before Apache on the ownCloud server, and 
+   all files will exist in an unencrypted state between the SSL connection 
+   termination and the ownCloud code that encrypts and decrypts files. This is 
+   also potentially exploitable by anyone with administrator access to your 
+   server. Read `How ownCloud uses encryption to protect your data 
+   <https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your- 
    data/>`_ for more information.
    
 Before Enabling Encryption
