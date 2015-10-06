@@ -1240,9 +1240,10 @@ is not writeable by the web server in your configuration.
 
 ::
 
-	'mount_file' => 'data/mount.json',
+	'mount_file' => '/var/www/owncloud/data/mount.json',
 
 Where ``mount.json`` file should be stored, defaults to ``data/mount.json``
+in the ownCloud directory.
 
 ::
 
