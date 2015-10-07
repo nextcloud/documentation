@@ -21,14 +21,14 @@ Nginx Configuration
   upstream php-handler {
     server 127.0.0.1:9000;
     #server unix:/var/run/php5-fpm.sock;
-    }
+  }
 
   server {
     listen 80;
     server_name cloud.example.com;
     # enforce https
     return 301 https://$server_name$request_uri;  
-    }
+  }
 
   server {
     listen 443 ssl;
@@ -69,56 +69,55 @@ Nginx Configuration
       allow all;
       log_not_found off;
       access_log off;
-      }
+    }
 
     location ~ ^/(?:\.htaccess|data|config|db_structure\.xml|README){
       deny all;
-      }
+    }
 
     location / {
-     # The following 2 rules are only needed with webfinger
-     rewrite ^/.well-known/host-meta /public.php?service=host-meta last;
-     rewrite ^/.well-known/host-meta.json /public.php?service=host-meta-json last;
+      # The following 2 rules are only needed with webfinger
+      rewrite ^/.well-known/host-meta /public.php?service=host-meta last;
+      rewrite ^/.well-known/host-meta.json /public.php?service=host-meta-json last;
 
-     rewrite ^/.well-known/carddav /remote.php/carddav/ redirect;
-     rewrite ^/.well-known/caldav /remote.php/caldav/ redirect;
+      rewrite ^/.well-known/carddav /remote.php/carddav/ redirect;
+      rewrite ^/.well-known/caldav /remote.php/caldav/ redirect;
 
-     rewrite ^(/core/doc/[^\/]+/)$ $1/index.html;
+      rewrite ^(/core/doc/[^\/]+/)$ $1/index.html;
 
-     try_files $uri $uri/ /index.php;
-     }
-
-     location ~ \.php(?:$|/) {
-     fastcgi_split_path_info ^(.+\.php)(/.+)$;
-     include fastcgi_params;
-     fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-     fastcgi_param PATH_INFO $fastcgi_path_info;
-     fastcgi_param HTTPS on;
-     fastcgi_param modHeadersAvailable true; #Avoid sending the security headers twice
-     fastcgi_pass php-handler;
-     fastcgi_intercept_errors on;
-     }
-
-     # Adding the cache control header for js and css files
-     # Make sure it is BELOW the location ~ \.php(?:$|/) { block
-     location ~* \.(?:css|js)$ {
-         add_header Cache-Control "public, max-age=7200";
-         # Add headers to serve security related headers
-         add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
-         add_header X-Content-Type-Options nosniff;
-         add_header X-Frame-Options "SAMEORIGIN";
-         add_header X-XSS-Protection "1; mode=block";
-         add_header X-Robots-Tag none;
-         # Optional: Don't log access to assets
-         access_log off;
-     }
-
-     # Optional: Don't log access to other assets
-     location ~* \.(?:jpg|jpeg|gif|bmp|ico|png|swf)$ {
-         access_log off;
-     }
-
+      try_files $uri $uri/ /index.php;
     }
+
+    location ~ \.php(?:$|/) {
+      fastcgi_split_path_info ^(.+\.php)(/.+)$;
+      include fastcgi_params;
+      fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+      fastcgi_param PATH_INFO $fastcgi_path_info;
+      fastcgi_param HTTPS on;
+      fastcgi_param modHeadersAvailable true; #Avoid sending the security headers twice
+      fastcgi_pass php-handler;
+      fastcgi_intercept_errors on;
+    }
+
+    # Adding the cache control header for js and css files
+    # Make sure it is BELOW the location ~ \.php(?:$|/) { block
+    location ~* \.(?:css|js)$ {
+      add_header Cache-Control "public, max-age=7200";
+      # Add headers to serve security related headers
+      add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
+      add_header X-Content-Type-Options nosniff;
+      add_header X-Frame-Options "SAMEORIGIN";
+      add_header X-XSS-Protection "1; mode=block";
+      add_header X-Robots-Tag none;
+      # Optional: Don't log access to assets
+      access_log off;
+    }
+
+    # Optional: Don't log access to other assets
+    location ~* \.(?:jpg|jpeg|gif|bmp|ico|png|swf)$ {
+      access_log off;
+    }
+  }
 
 .. note:: You can use ownCloud over plain http, but we strongly encourage you to
           use SSL/TLS to encrypt all of your server traffic, and to protect 
@@ -140,9 +139,9 @@ denied by server configuration: /var/www/data/htaccesstest.txt
 your Nginx configuration to suppress them::
 
         location = /data/htaccesstest.txt {
-            allow all;
-            log_not_found off;
-            access_log off;
+          allow all;
+          log_not_found off;
+          access_log off;
         }
 
 JavaScript (.js) or CSS (.css) files not served properly
@@ -152,11 +151,11 @@ A common issue with custom nginx configs is that JavaScript (.js)
 or CSS (.css) files are not served properly leading to a 404 (File not found)
 error on those files and a broken webinterface.
 
-This could be caused by the:
+This could be caused by the::
 
         location ~* \.(?:css|js)$ {
 
-block shown above not located **below** the 
+block shown above not located **below** the::
 
         location ~ \.php(?:$|/) {
 
