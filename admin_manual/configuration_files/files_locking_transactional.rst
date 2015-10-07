@@ -36,7 +36,7 @@ file like this example::
         ),
         
 .. note:: Large installations especially benefit from setting 
-   ``memcache.locking``. File locking is enable by default, which uses the 
+   ``memcache.locking``. File locking is enabled by default, which uses the 
    database locking backend. This places a significant load on your database. 
    Using ``memcache.locking`` relieves the database load and improves 
    performance.
