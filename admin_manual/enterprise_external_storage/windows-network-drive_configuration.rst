@@ -12,20 +12,23 @@ Any Windows file share, and Samba servers on Linux and other Unix-type operating
 systems use the SMB/CIFS file-sharing protocol. The files and directories on the 
 SMB/CIFS server will be visible on your Files page just like your other ownCloud 
 files and folders. They are labeled with a little four-pane Windows-style icon, 
-and the left pane of your Files page includes a Windows Network Drive filter.
+and the left pane of your Files page includes a Windows Network Drive filter. 
+Figure 1 shows a new Windows Network Drive share marked with red warnings. 
+This indicates that ownCloud cannot connect to the share because it is not 
+available, or there is an error in the configuration. 
 
-.. figure:: ../images/smb-files-view.png
+.. figure:: images/wnd-1.png
+   :alt: Windows Network Drive share on your Files page.
+   
+   *Figure 1: Windows Network Drive share on your Files page.*
 
 Files are synchronized bi-directionally, and you can create, upload, and delete 
-files and folders. You have the option of allowing users to create personal 
-mounts of their own SMB/CIFS shares, and controlling whether they can 
-share them.
-
-ownCloud server admins can create Windows Network Drive mounts, and optionally 
-allow users to create their own personal Windows Network Drive mounts. The 
-password for each mount is encrypted and stored in the ownCloud database, using 
-a long random secret key stored in ``config.php``. This allows ownCloud to 
-access the shares when the users who own the mounts are not logged in.
+files and folders. ownCloud server admins can create Windows Network Drive 
+mounts, and optionally allow users to create their own personal Windows Network 
+Drive mounts. The password for each mount is encrypted and stored in the 
+ownCloud database, using a long random secret key stored in ``config.php``. This 
+allows ownCloud to access the shares when the users who own the mounts are not 
+logged in.
 
 Installation
 ------------
@@ -79,28 +82,37 @@ In openSUSE, modify the ``/usr/sbin/start_apache2`` file::
 
 Restart Apache, open your ownCloud Admin page and start creating SMB/CIFS mounts.
 
-Admin-created SMB Mounts
-------------------------
+Creating a New Share
+--------------------
 
 When you create a new SMB share you need the login credentials for the share, 
 the server address, the share name, and the folder you want to connect to. 
 
 1. First enter the ownCloud mountpoint for your new SMB share. This must not be 
    an existing folder.
-2. Then enter which ownCloud users or groups get access to the share
-3. Next, enter the address of the server that contains the SMB share
-4. Then the Windows share name
-5. Then the root folder of the share
+2. Then enter which ownCloud users or groups get access to the share. The 
+   default is all users.
+3. Next, enter the address of the server that contains the SMB share.
+4. Then the Windows share name.
+5. Then the root folder of the share.
+6. Then your login credentials.
 
-You have three options for login credentials: 
+You have four options for login credentials: 
 
-* Global credentials, which are set in the ``Global credentials`` fields
-* ``Credentials only for this mount``, which are set in the fields to the right 
-  of the ``Credentials`` dropdown menu 
-* ``Let users use their credentials`` requires users to configure their logins 
-  on their Personal pages, or enter them the first time they access the share
+* **User credentials**.
+* **Global credentials**, which uses the credentials  set in the Global 
+  credentials fields
+* **Login credentials** is for users to connect to the mountpoint using their 
+  DOMAIN/logincredentials; enter the domain in the **Domain** field.
+* **Custom Credentials** 
   
-.. figure:: ../images/smb-create-share.png
+.. figure:: images/wnd-2.png
+   :scale: 45%
+   :alt: Windows Network Drive configuration panel.
+   
+   *Figure 2: Windows Network Drive configuration panel. (Click to enlarge.)*
+  
+When you're finished click the **Save** button.  
 
 Personal SMB Mounts
 -------------------
@@ -109,10 +121,5 @@ Users create their own personal SMB mounts on their Personal pages. These are
 created the same way as Admin-created shares. Users have only two options for 
 login credentials: 
 
-* ``Use personal credentials``, which are entered in the ``Personal 
-  credentials`` fields.
-* ``Use credentials only for this mount``, which are entered in the fields to 
-  the right of the Credentials dropdown menu
-
-.. figure:: ../images/smb-user-share.png
-
+* **Personal Credentials**.
+* **Custom Credentials**
