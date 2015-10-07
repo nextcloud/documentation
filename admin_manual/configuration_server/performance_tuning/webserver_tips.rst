@@ -58,13 +58,14 @@ KeepAlive should be configured with sensible defaults
 
 The KeepAlive directive enables persistent HTTP connections, allowing multiple 
 requests to be sent over the same TCP connection. This reduces latency by as 
-much as 50%.
+much as 50%. Especially in combination with the periodic checks of the sync
+client the following settings are recommended:
 
 .. code-block:: apache
 
 	KeepAlive On
-	KeepAliveTimeout 2
-	MaxKeepAliveRequests 10
+	KeepAliveTimeout 100
+	MaxKeepAliveRequests 200
 
 mod_gzip
 ^^^^^^^^
