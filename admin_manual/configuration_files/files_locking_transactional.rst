@@ -5,7 +5,7 @@ Transactional File Locking
 ownCloud's new transactional file locking mechanism operates differently than 
 the old File Locking application, and will eventually replace it. The purpose
 of this mechanism is to avoid file corruption during normal operation. If you
-select to use the new file locking mechanism make sure you disable the File
+elect to use the new file locking mechanism make sure you disable the File
 Locking app.
 
 The new file locking mechanism has these capabilities:
@@ -34,6 +34,12 @@ file like this example::
        'port' => 6379,
        'timeout' => 0.0,
         ),
+        
+.. note:: Large installations especially benefit from setting 
+   ``memcache.locking``. File locking is enable by default, which uses the 
+   database locking backend. This places a significant load on your database. 
+   Using ``memcache.locking`` relieves the database load and improves 
+   performance.
 
 The **Server status** section on your ownCloud Admin page indicates whether 
 experimental file locking is enabled or disabled.
