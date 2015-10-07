@@ -107,23 +107,24 @@ down errors.
 
 .. todo: loglevel?
 
-MaxKeepAliveRequests 4096
-^^^^^^^^^^^^^^^^^^^^^^^^^
+.. commented out until somebody knows what to do with it
+.. MaxKeepAliveRequests 4096
+.. ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: apache
+.. .. code-block:: apache
 
-	<IfModule prefork.c>
-		StartServers 100
-		MinSpareServers 100
-		MaxSpareServers 2000
-		ServerLimit 6000
-		MaxClients 6000
-		MaxRequestsPerChild 4000
-	</IfModule>
+..	<IfModule prefork.c>
+..		StartServers 100
+..		MinSpareServers 100
+..		MaxSpareServers 2000
+..		ServerLimit 6000
+..		MaxClients 6000
+..		MaxRequestsPerChild 4000
+..	</IfModule>
 
-	<Directory "/var/www/html">
-		Options Indexes SymLinksIfOwnerMatch AllowOverride All
-	</Directory>
+..	<Directory "/var/www/html">
+..		Options Indexes SymLinksIfOwnerMatch AllowOverride All
+..	</Directory>
 
 Nginx: caching ownCloud gallery thumbnails
 ------------------------------------------
