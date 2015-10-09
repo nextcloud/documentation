@@ -510,8 +510,12 @@ Use the ``--enable`` option to turn on logging. Use ``--file`` to set a differen
 Maintenance Commands
 --------------------
 
-These maintenance commands put your ownCloud server into
-maintenance and single-user mode, and run repair steps during updates.
+The available maintenance commands are:
+
+* maintenance:mimetype:update-db
+* maintenance:mode
+* maintenance:repair 
+* maintenance:singleuser
 
 You must put your ownCloud server into maintenance mode whenever you perform an 
 update or upgrade. This locks the sessions of all logged-in users, including 
@@ -530,7 +534,7 @@ troubleshooting on a running server::
  $ sudo -u www-data php occ maintenance:singleuser --on
    Single user mode enabled
    
-And turn it off when you're finished::
+Turn it off when you're finished::
 
  $ sudo -u www-data php occ maintenance:singleuser --off
    Single user mode disabled
@@ -551,8 +555,10 @@ to::
      - 0 tags for delete files have been removed.
      - 0 tag entries for deleted tags have been removed.
      - 0 tags with no entries have been removed.
- - Re-enable file app    
+ - Re-enable file app
  
+``maintenance:mimetype:update-db`` updates the ownCloud database and file cache with changed mimetypes found in ``config/mimetypemapping.json``. Run this command after modifying ``config/mimetypemapping.json``. If you change a mimetype, run ``maintenance:mimetype:update-db --repair-filecache`` to apply the change to existing files.
+
 .. _user_commands_label: 
  
 User Commands
