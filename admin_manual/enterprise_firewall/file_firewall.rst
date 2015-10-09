@@ -1,6 +1,6 @@
-======================
-File Firewall(ES only)
-======================
+=======================
+File Firewall (ES only)
+=======================
 
 The File Firewall GUI enables you to create and manage firewall rule sets from 
 your ownCloud admin page. The File Firewall gives you finer-grained control of 
@@ -30,7 +30,7 @@ button.
 
 Figure 2 shows two rules. The first rule, **No Support outside 
 office hours**, prevents members of the support group from logging into the 
-ownCloud Web interface from 5pm-9am.
+ownCloud Web interface from 5pm-9am, and also blocks client syncing.
 
 The second rule prevents members of the qa-team group from accessing the Web UI 
 from IP addresses that are outside of the local network.
@@ -52,11 +52,11 @@ User Agent
  The User-Agent of the request (matches|does not match) the given string.
 
 User Device
-  A shortcut for matching all known (`android`|`ios`|`desktop`) sync clients by 
+  A shortcut for matching all known (``android``|``ios``|``desktop``) sync clients by 
   their User Agent string.
 
 Request Time
- The time of the request (has to|must not) in a single range from beginning 
+ The time of the request (has to|must not) be in a single range from beginning 
  time to end time.
 
 Request URL
@@ -66,10 +66,10 @@ Request URL
 Request Type
  The request (is|is not) a (WebDAV|public share link|other) request.
 
-Request IP Range
+Request IP Range (IPv4) and IP Range (IPv6)
  The request's ``REMOTE_ADDR`` header (is|is not) matching the given IP range.
 
-Subnet
+Subnet (IPv4) and Subnet (IPv6)
  The request's ``SERVER_ADDR`` header (is|is not) matching the given IP range.
 
 File Size Upload
@@ -84,8 +84,10 @@ Regular Expression
  The File Firewall supports regular expressions, allowing you to create custom 
  rules using the following conditions:
 
-* User IP
-* Subnet
+* IP Range (IPv4)
+* IP Range (IPv6)
+* Subnet (IPv4)
+* Subnet (IPv6)
 * User agent
 * User group
 * Request URL
@@ -93,7 +95,7 @@ Regular Expression
 You can combine multiple rules into one rule. E.g., if a rule applies to both 
 the support and the qa-team you could write your rule like this::
 
- Regular Expression > `^(support|qa-team)$` > `is` > `User group`
+ Regular Expression > ^(support|qa-team)$ > is > User group
 
 No Manual Editing
 -----------------
@@ -102,15 +104,57 @@ We do not recommend modifying the configuration values directly in your
 ``config.php``. These use JSON encoding, so the values are difficult to read 
 and a single typo will break all of your rules.
 
-Correctly Blocking Access to a Folder
--------------------------------------
+Controlling Access to Folders
+-----------------------------
 
-See examples of the correct regexp syntax to use for controlling access to 
-specific folders at
-`Example rule to restrict access to a folder based on 
-CIDR <https://github.com/owncloud/firewall/issues/53#issuecomment-141995297>`_.
+These examples show how to use regular expressions to control access to folders.
 It is quite important to note that WebDAV and WebUI require two different URL 
 matches in 8.2, and are therefore split into 2 rules.
+
+This example blocks access to any folder with "Secure" in the name.
+
+Block Web UI::
+
+   Request Type: Other
+   Request IP: 127.0.0.1/24
+   Regex: Request URL: apps\/files\/
+   Regex: Request URL: dir\=(.*)\%2FSecure(\%2F(.*)|$|&(.*))
+  
+Block WebDAV::
+
+   Request Type: WebDAV
+   Request IP: 127.0.0.1/24
+   Regex: Request URL: remote\.php\/webdav(\/(.*))*\/Secure(\/(.*)|$)
+
+This example blocks only the root folder named Secure.
+
+Block Web UI::
+
+   Request Type: Other
+   Request IP: 127.0.0.1/24
+   Regex: Request URL: apps\/files\/
+   Regex: Request URL: dir\=(\%2F)+Secure(\%2F(.*)|$|&(.*))
+
+Block Webdav::
+
+   Request Type: WebDAV
+   Request IP: 127.0.0.1/24
+   Regex: Request URL: remote\.php\/webdav(\/)+Secure(\/(.*)|$)
+
+Blocking multiple folders isn't much more complicated. These examples block the folders named Secure and Secret.
+
+Block Web UI::
+
+   Request Type: Other
+   Request IP: 127.0.0.1/24
+   Regex: Request URL: apps\/files\/
+   Regex: Request URL: dir\=(.*)\%2F(Secure|Secret)(\%2F(.*)|$|&(.*))
+
+Block Webdav::
+
+   Request Type: WebDAV
+   Request IP: 127.0.0.1/24
+   Regex: Request URL: remote\.php\/webdav(\/(.*))*\/(Secure|Secret)(\/(.*)|$)
 
 Custom Configuration for Branded Clients
 ----------------------------------------
@@ -151,7 +195,7 @@ strings, for example ``'android_branded'``, with your own User Agent strings::
     'my ownbrander second desktop user agent string' => 'desktop_branded',
   ),
 
-The Web UI dropdown then expends to the following options:
+The Web UI dropdown then expands to the following options:
 
 * Android Client - always visible
 * iOS Client - always visible
@@ -160,9 +204,9 @@ The Web UI dropdown then expends to the following options:
 * iOS Client (Branded) - visible when at least one ``ios_branded`` is defined
 * Desktop Client (Branded) - visible when at least one ``desktop_branded`` is defined
 * All branded clients - visible when at least one of ``android_branded``, 
-  ``android_branded`` or ``desktop_branded`` is defined
+  ``ios_branded`` or ``desktop_branded`` is defined
 * All non-branded clients - visible when at least one of ``android_branded``, 
-  ``android_branded or ``desktop_branded`` is defined
+  ``ios_branded or ``desktop_branded`` is defined
 * Others (Browsers, etc.) - always visible
 
 Then these options operate this way:
@@ -170,5 +214,5 @@ Then these options operate this way:
 * The ``* Client`` options only match ``android``, ``ios`` and ``desktop`` respectively.
 * The ``* Client (Branded)`` options match the ``*_branded`` agents equivalent.
 * ``All branded clients`` matches: ``android_branded``, ``ios_branded`` and 
-  `desktop_branded`
+  ``desktop_branded``
 * ``All non-branded clients`` matches: ``android``, ``ios`` and ``desktop``
