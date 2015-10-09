@@ -421,7 +421,7 @@ Names of Languages
 LDAP Commands
 -------------
 
-These LDAP commands appear only when you have enabled the LDAP backend. Then you can run the following LDAP commands with ``occ``.
+These LDAP commands appear only when you have enabled the LDAP backend on your Apps page. Then you can run the following LDAP commands with ``occ``.
 
 Search for an LDAP user, using this syntax::
 
