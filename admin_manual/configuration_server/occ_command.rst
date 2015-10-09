@@ -3,20 +3,32 @@ Using the occ Command
 =====================
 
 ownCloud's ``occ`` command (ownCloud console) is ownCloud's command-line 
-interface. You can perform many common server operations with ``occ``::
-
-* Manage apps
-* Manage users
-* Reset passwords, including administrator passwords
-* Convert the ownCloud database from SQLite to a more performant DB
-* Query and change LDAP settings
+interface. You can perform many common server operations with ``occ``, such as installing and upgrading ownCloud, manage users, encryption, passwords, and LDAP setting, and more.
 
 ``occ`` is in the :file:`owncloud/` directory; for example 
 :file:`/var/www/owncloud` on Ubuntu Linux. ``occ`` is a PHP script. You must run 
 it as your HTTP user to ensure that the correct permissions are maintained on 
 your ownCloud files and directories.
 
-.. _http_user:
+occ Command Directory
+---------------------
+
+* :ref:`http_user_label`
+* :ref:`apps_commands_label`
+* :ref:`background_jobs_selector_label`
+* :ref:`config_commands_label`
+* :ref:`database_conversion_label`
+* :ref:`encryption_label`
+* :ref:`file_operations_label`
+* :ref:`create_javascript_translation_files_label`
+* :ref:`ldap_commands_label`
+* :ref:`logging_commands_label`
+* :ref:`maintenance_commands_label`
+* :ref:`user_commands_label`
+* :ref:`command_line_installation_label`
+* :ref:`command_line_upgrade_label`
+
+.. _http_user_label:
 
 Run occ As Your HTTP User
 -------------------------
@@ -29,17 +41,15 @@ The HTTP user is different on the various Linux distributions. See
 * The HTTP user and group in Arch Linux is http.
 * The HTTP user in openSUSE is wwwrun, and the HTTP group is www.   
 
-
-If your HTTP server is configured to use a different php version than the default (/usr/bin/php), occ should be run with the same version. Example: In CentOS 6.5 with SCL-PHP54 installed, the command looks like this::
+If your HTTP server is configured to use a different PHP version than the default (/usr/bin/php), ``occ`` should be run with the same version. Example: In CentOS 6.5 with SCL-PHP54 installed, the command looks like this::
 
   $ sudo -u apache /opt/rh/php54/root/usr/bin/php /var/www/html/owncloud/occ ...
-
 
 Running it with no options lists all commands and options, like this example on 
 Ubuntu::
 
  $ sudo -u www-data php occ
- ownCloud version 8.1
+ ownCloud version 8.2
  Usage:
   [options] command [arguments]
 
@@ -70,14 +80,14 @@ Run it with the ``-h`` option for syntax help::
 Display your ownCloud version::
 
  $ sudo -u www-data php occ -V
-   ownCloud version 8.1
+   ownCloud version 8.2
    
 Query your ownCloud server status::
 
  $ sudo -u www-data php occ status
    - installed: true
-   - version: 8.1.0.4
-   - versionstring: 8.1 alpha 3
+   - version: 8.2.0.9
+   - versionstring: 8.2
    - edition:
    
 ``occ`` has options, commands, and arguments. Options and arguments are 
@@ -107,17 +117,17 @@ this example for the ``maintenance:mode`` command::
 The ``status`` command from above has an option to define the output format.
 Default is plain text, but it can also be ``json``::
 
- $ sudo -u www-data php status --output json
- {"installed":true,"version":"8.1.0.4","versionstring":"8.1 alpha 3",
+ $ sudo -u www-data php status --output =json
+ {"installed":true,"version":"8.2.0.9","versionstring":"8.2",
  "edition":"Enterprise"}
 
 or ``json_pretty``::
 
- $ sudo -u www-data php status --output json_pretty
+ $ sudo -u www-data php status --output =json_pretty
  {
      "installed": true,
-     "version": "8.1.0.4",
-     "versionstring": "8.1 alpha 3",
+     "version": "8.2.0.9",
+     "versionstring": "8.2",
      "edition": "Enterprise"
  }
 
@@ -125,10 +135,12 @@ This ``output`` option is available on all list and list-like commands:
 ``status``, ``check``, ``app:list``, ``encryption:status``
 and ``encryption:list-modules``
 
+.. _apps_commands_label:
+
 Apps Commands
 -------------
 
-The ``app`` commands list, enable, and disable apps. This lists all of your 
+The ``app`` commands list, enable, and disable apps. This example lists all of your 
 installed apps, and shows whether they are enabled or disabled::
 
  $ sudo -u www-data php occ app:list
@@ -138,22 +150,28 @@ Enable an app::
  $ sudo -u www-data php occ app:enable external
    external enabled
    
-``app:check-code`` checks if the app uses ownCloud's public API (``OCP``) or 
-private API (``OC_``). If the app uses the private API it will print a
-warning::
-
-  $ sudo -u www-data php occ app:check-code activity
-    [snip]
-    Analysing /var/www/owncloud/apps/activity/extension/files_sharing.php
-    0 errors
-    Analysing /var/www/owncloud/apps/activity/extension/files.php
-    0 errors
-  App is not compliant
-   
 Disable an app::
 
  $ sudo -u www-data php occ app:disable external
    external disabled   
+   
+``app:check-code`` has multiple checks: it checks if an app uses ownCloud's public API (``OCP``) or private API (``OC_``), and it also checks for deprecated methods and the validity of the ``info.xml`` file. By default all checks are enabled. The Activity app is an example of a correctly-formatted app::
+
+ $ sudo -u www-data php occ app:check-code activity
+   App is compliant - awesome job!
+
+If your app has issues, you'll see output like this::
+
+ $ sudo -u www-data php occ app:check-code foo_app
+   Analysing /opt/owncloud/apps/foo_app/events/event/ruleevent.php
+   1 errors
+    line   33: OC_L10N - private class must not be instantiated
+   Analysing /opt/owncloud/apps/foo_app/events/listeners/failurelistener.php
+   1 errors
+    line   46: OC_User - Static method of private class must not be called
+   PHP Fatal error:  Call to undefined method PhpParser\Node\Expr\Variable::toString() in /opt/owncloud/lib/private/app/codechecker/nodevisitor.php on line 171 
+   
+.. _background_jobs_selector_label:   
    
 Background Jobs Selector
 ------------------------
@@ -174,22 +192,23 @@ The other two commands are:
 
 See :doc:`../configuration_server/background_jobs_configuration` to learn more.
 
+.. _config_commands_label:
+
 Config Commands
 ---------------
 
-The ``config`` commands can be used to configure the ownCloud server. It is
-possible to list all config values with one command::
+The ``config`` commands are used to configure the ownCloud server. You can list all configuration values with one command::
 
   $ sudo -u www-data php occ config:list
 
 By default passwords and other sensitive data are omitted from the report, so the
 output can be posted publicly (e.g. as part of a bug report). In order to
-generate a full backport of all config values the ``--private`` flag needs to be
+generate a full backport of all configuration values the ``--private`` flag needs to be
 set::
 
   $ sudo -u www-data php occ config:list --private
 
-The exported content can also be imported again to allow the fast set up of
+The exported content can also be imported again to allow the fast setup of
 similar instances. The import command will only add/update values. Values that
 exist in the current configuration, but not in the one that is being imported
 are left untouched::
@@ -207,10 +226,10 @@ It is also possible to import remote files, by piping the input::
   directly. Use the ``occ app:enable``, ``occ app:disable`` and ``occ update``
   commands instead.
 
-Getting a single config value
-+++++++++++++++++++++++++++++
+Getting a Single Configuration Value
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-There are also commands to get the value of a single app or system config::
+These commands get the value of a single app and system configuration::
 
   $ sudo -u www-data php occ config:system:get version
   8.2.0.2
@@ -219,10 +238,10 @@ There are also commands to get the value of a single app or system config::
   2.1.0
 
 
-Setting a single config value
-+++++++++++++++++++++++++++++
+Setting a Single Configuration Value
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-There are also commands to get the value of a single app or system config::
+These commands get the value of a single app or system configuration::
 
   $ sudo -u www-data php /occ config:system:set logtimezone --value="Europe/Berlin"
   System config value logtimezone set to Europe/Berlin
@@ -230,17 +249,15 @@ There are also commands to get the value of a single app or system config::
   $ sudo -u www-data php occ config:app:set files_sharing incoming_server2server_share_enabled --value="yes"
   Config value incoming_server2server_share_enabled for app files_sharing set to yes
 
-The set command will create the value, when it did not exist before. If you only
-want to update the value, you can set the ``--update-only``::
+The ``set`` command creates the value, if it does not already exist. To update the value,  set ``--update-only``::
 
   $ sudo -u www-data php occ config:system:set doesnotexist --value="true" --update-only
   Value not updated, as it has not been set before.
 
+Deleting a Single Configuration Value
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Deleting a single config value
-++++++++++++++++++++++++++++++
-
-There are also commands to delete a config of an app or system config::
+These commands delete the configuration of an app or system configuration::
 
   $ sudo -u www-data php occ config:system:delete doesnotexistanymore
   System config value doesnotexistanymore deleted
@@ -248,14 +265,15 @@ There are also commands to delete a config of an app or system config::
   $ sudo -u www-data php occ config:app:delete appname doesnotexistanymore
   Config value doesnotexistanymore of app appname deleted
 
-The delete command will by default not complain if the config was not set
+The delete command will by default not complain if the configuration was not set
 before. If you want to be notified in that case, set the
 ``--error-if-not-exists`` flag::
 
   $ sudo -u www-data php occ config:system:delete doesnotexist --error-if-not-exists
   System config doesnotexist could not be deleted because it did not exist
 
-
+.. _database_conversion_label:  
+  
 Database Conversion
 -------------------
 
@@ -276,13 +294,61 @@ This is example converts to SQLite MySQL/MariaDB::
 For a more detailed explanation see 
 :doc:`../configuration_database/db_conversion`
 
+.. _encryption_label:
+
 Encryption
 ----------
 
-When you are using encryption, you must manually migrate your encryption 
-keys after upgrading your ownCloud server::
+ownCloud 8.2 introduces a new set of encryption commands::
 
- $ sudo -u www-data php occ encryption:migrate 
+ encryption:change-key-storage-root  
+ encryption:show-key-storage-root    
+ encryption:set-default-module       
+ encryption:list-modules             
+ encryption:encrypt-all              
+ encryption:decrypt-all              
+ encryption:disable                  
+ encryption:status                   
+ encryption:enable
+ encryption:enable-master-key 
+ encryption:migrate
+
+``encryption:status`` shows whether you have active encryption, and your default encryption module. To enable encryption you must first enable the Encryption app, and then run ``encryption:enable``::
+
+ $ sudo -u www-data php occ app:enable encryption
+ $ sudo -u www-data php occ encryption:enable
+ $ sudo -u www-data php occ encryption:status
+  - enabled: true
+  - defaultModule: OC_DEFAULT_MODULE
+   
+``encryption:change-key-storage-root`` is for moving your encryption keys to a different folder. It takes one argument, ``newRoot``, which defines your new root folder::
+
+ $ sudo -u www-data php occ encryption:change-key-storage-root /etc/oc-keys
+ 
+You can see the current location of your keys folder::
+
+ sudo -u www-data php occ encryption:show-key-storage-root
+ Current key storage root:  default storage location (data/)
+ 
+``encryption:list-modules`` displays your available encryption modules. You will see a list of modules only if you have enabled the Encryption app. Use ``encryption:set-default-module [module name]`` to set your desired module.
+
+``encryption:encrypt-all`` encrypts all data files for all users. You must first put your ownCloud server into single-user mode to prevent any user activity until encryption is completed.
+
+``encryption:decrypt-all`` decrypts all user data files, or optionally a single user::
+ 
+ $ sudo -u www-data php occ encryption:decrypt freda
+
+Users must have enabled recovery keys on their Personal pages. You must first put your ownCloud server into single-user mode to prevent any user activity until encryption is completed.
+
+Use ``encryption:disable`` to disable your encryption module. You must first put your ownCloud server into single-user mode to prevent any user activity.
+
+``encryption:enable-master-key`` creates a new master key, which is used for all user data instead of individual user keys. This is especially useful to enable single-sign on Use this only on fresh installations with no existing data, or on systems where encryption has not already been enabled. It is not possible to disable it.
+
+``encryption:migrate`` migatres encryption keys after a major ownCloud version upgrade. You may optionally specify individual users in a space-delimited list.
+
+See :doc:`../configuration_files/encryption_configuration` to learn more.
+
+.. _file_operations_label:
 
 File Operations
 ---------------
@@ -307,98 +373,9 @@ search path::
 ``files:cleanup`` tidies up the server's file cache by deleting all file 
 entries that have no matching entries in the storage table.
 
-.. _cli_installation:
-
-Command Line Installation
--------------------------
-
-You can install ownCloud entirely from the command line. After downloading the 
-tarball and copying ownCloud into the appropriate directories, or 
-after installing ownCloud packages (See 
-:doc:`../installation/linux_installation` and 
-:doc:`../installation/source_installation`) you can use ``occ`` commands in 
-place of running the graphical Installation Wizard.
-
-Apply correct permissions to your ownCloud directories; see 
-:ref:`strong_perms`. Then choose your ``occ`` options. This lists your 
-available options::
-
- $ sudo -u www-data php /var/www/owncloud/occ
- ownCloud is not installed - only a limited number of commands are available
- ownCloud version 8.1.0
-
- Usage:
-  [options] command [arguments]
-
- Options:
-  --help (-h)           Display this help message
-  --quiet (-q)          Do not output any message
-  --verbose (-v|vv|vvv) Increase the verbosity of messages: 1 for normal 
-  output,  2 for more verbose output and 3 for debug
-  --version (-V)        Display this application version
-  --ansi                Force ANSI output
-  --no-ansi             Disable ANSI output
-  --no-interaction (-n) Do not ask any interactive question
-
- Available commands:
-  check                 check dependencies of the server environment
-  help                  Displays help for a command
-  list                  Lists commands
-  status                show some status information
-  app
-  app:check-code        check code to be compliant
-  l10n
-  l10n:createjs         Create javascript translation files for a given app
-  maintenance
-  maintenance:install   install ownCloud
-  
-Display your ``maintenance:install`` options::
-
- $ sudo -u www-data php occ help maintenance:install
- ownCloud is not installed - only a limited number of commands are available
- Usage:
-  maintenance:install [--database="..."] [--database-name="..."] 
- [--database-host="..."] [--database-user="..."] [--database-pass[="..."]] 
- [--database-table-prefix[="..."]] [--admin-user="..."] [--admin-pass="..."] 
- [--data-dir="..."]
-
- Options:
-  --database               Supported database type (default: "sqlite")
-  --database-name          Name of the database
-  --database-host          Hostname of the database (default: "localhost")
-  --database-user          User name to connect to the database
-  --database-pass          Password of the database user
-  --database-table-prefix  Prefix for all tables (default: oc_)
-  --admin-user             User name of the admin account (default: "admin")
-  --admin-pass             Password of the admin account
-  --data-dir               Path to data directory (default: 
-                           "/var/www/owncloud/data")
-  --help (-h)              Display this help message
-  --quiet (-q)             Do not output any message
-  --verbose (-v|vv|vvv)    Increase the verbosity of messages: 1 for normal 
-   output, 2 for more verbose output and 3 for debug
-  --version (-V)           Display this application version
-  --ansi                   Force ANSI output
-  --no-ansi                Disable ANSI output
-  --no-interaction (-n)    Do not ask any interactive question
-
-This example completes the installation::
-
- $ cd /var/www/owncloud/
- $ sudo -u www-data php occ maintenance:install --database 
- "mysql" --database-name "owncloud"  --database-user "root" --database-pass 
- "password" --admin-user "admin" --admin-pass "password" 
- ownCloud is not installed - only a limited number of commands are available
- ownCloud was successfully installed
-
-Supported databases are::
-
- - sqlite (SQLite3 - Community Edition Only)
- - mysql (MySQL/MariaDB)
- - pgsql (PostgreSQL)
- - oci (Oracle) 
+.. _create_javascript_translation_files_label:
  
-l10n, Create javascript Translation Files for Apps
+l10n, Create Javascript Translation Files for Apps
 --------------------------------------------------
 
 Use the ``l10n:createjs`` to migrate your PHP-based translation files into Javascript files::
@@ -439,6 +416,8 @@ Names of Languages
  en_GB        fy_NL      mg     sl
  en_NZ        gl         mk     sq
 
+.. _ldap_commands_label: 
+ 
 LDAP Commands
 -------------
 
@@ -505,7 +484,28 @@ the server::
  The configuration is valid and the connection could be established!
  
 ``ldap:show-remnants`` is for cleaning up the LDAP mappings table, and is 
-documented in :doc:`../configuration_user/user_auth_ldap_cleanup`. 
+documented in :doc:`../configuration_user/user_auth_ldap_cleanup`.
+
+.. _logging_commands_label:
+
+Logging Commands
+----------------
+
+Run ``log:owncloud`` to see your current logging status::
+
+ $ sudo -u www-data php occ log:owncloud 
+ Log backend ownCloud: enabled
+ Log file: /opt/owncloud/data/owncloud.log
+ Rotate at: disabled
+
+Use the ``--enable`` option to turn on logging. Use ``--file`` to set a different log file path. Set your rotation by log file size in bytes with ``--rotate-size``; 0 disables rotation. 
+
+``log:manage`` sets your logging backend, log level, and timezone. The defaults are ``owncloud``, ``Warning``, and ``UTC``. Available options are:
+
+* --backend [owncloud, syslog, errorlog]
+* --level [debug, info, warning, error]
+
+.. _maintenance_commands_label:
    
 Maintenance Commands
 --------------------
@@ -552,6 +552,8 @@ to::
      - 0 tag entries for deleted tags have been removed.
      - 0 tags with no entries have been removed.
  - Re-enable file app    
+ 
+.. _user_commands_label: 
  
 User Commands
 -------------
@@ -638,9 +640,102 @@ authentication servers such as LDAP::
  |                  |    |
  | user directories | 2  |
  +------------------+----+
+ 
+.. _command_line_installation_label: 
+ 
+Command Line Installation
+-------------------------
+
+You can install ownCloud entirely from the command line. After downloading the 
+tarball and copying ownCloud into the appropriate directories, or 
+after installing ownCloud packages (See 
+:doc:`../installation/linux_installation` and 
+:doc:`../installation/source_installation`) you can use ``occ`` commands in 
+place of running the graphical Installation Wizard.
+
+Apply correct permissions to your ownCloud directories; see 
+:ref:`strong_perms`. Then choose your ``occ`` options. This lists your 
+available options::
+
+ $ sudo -u www-data php /var/www/owncloud/occ
+ ownCloud is not installed - only a limited number of commands are available
+ ownCloud version 8.2.0
+
+ Usage:
+  [options] command [arguments]
+
+ Options:
+  --help (-h)           Display this help message
+  --quiet (-q)          Do not output any message
+  --verbose (-v|vv|vvv) Increase the verbosity of messages: 1 for normal 
+  output,  2 for more verbose output and 3 for debug
+  --version (-V)        Display this application version
+  --ansi                Force ANSI output
+  --no-ansi             Disable ANSI output
+  --no-interaction (-n) Do not ask any interactive question
+
+ Available commands:
+  check                 check dependencies of the server environment
+  help                  Displays help for a command
+  list                  Lists commands
+  status                show some status information
+  app
+  app:check-code        check code to be compliant
+  l10n
+  l10n:createjs         Create javascript translation files for a given app
+  maintenance
+  maintenance:install   install ownCloud
+  
+Display your ``maintenance:install`` options::
+
+ $ sudo -u www-data php occ help maintenance:install
+ ownCloud is not installed - only a limited number of commands are available
+ Usage:
+  maintenance:install [--database="..."] [--database-name="..."] 
+ [--database-host="..."] [--database-user="..."] [--database-pass[="..."]] 
+ [--database-table-prefix[="..."]] [--admin-user="..."] [--admin-pass="..."] 
+ [--data-dir="..."]
+
+ Options:
+  --database               Supported database type (default: "sqlite")
+  --database-name          Name of the database
+  --database-host          Hostname of the database (default: "localhost")
+  --database-user          User name to connect to the database
+  --database-pass          Password of the database user
+  --database-table-prefix  Prefix for all tables (default: oc_)
+  --admin-user             User name of the admin account (default: "admin")
+  --admin-pass             Password of the admin account
+  --data-dir               Path to data directory (default: 
+                           "/var/www/owncloud/data")
+  --help (-h)              Display this help message
+  --quiet (-q)             Do not output any message
+  --verbose (-v|vv|vvv)    Increase the verbosity of messages: 1 for normal 
+   output, 2 for more verbose output and 3 for debug
+  --version (-V)           Display this application version
+  --ansi                   Force ANSI output
+  --no-ansi                Disable ANSI output
+  --no-interaction (-n)    Do not ask any interactive question
+
+This example completes the installation::
+
+ $ cd /var/www/owncloud/
+ $ sudo -u www-data php occ maintenance:install --database 
+ "mysql" --database-name "owncloud"  --database-user "root" --database-pass 
+ "password" --admin-user "admin" --admin-pass "password" 
+ ownCloud is not installed - only a limited number of commands are available
+ ownCloud was successfully installed
+
+Supported databases are::
+
+ - sqlite (SQLite3 - Community Edition Only)
+ - mysql (MySQL/MariaDB)
+ - pgsql (PostgreSQL)
+ - oci (Oracle)
+ 
+.. _command_line_upgrade_label: 
    
-Upgrade Command
----------------
+Command Line Upgrade
+--------------------
 
 List all options, like this example on CentOS Linux::
 
@@ -711,21 +806,6 @@ or to use in a bug report::
  ServerNotAvailableException: LDAP server is not available
  Update failed
  Turned off maintenance mode
- 
-.. uncomment when 8.1.1 is released  
-.. If you enable verbosity you'll see even more details 
-.. of the upgrade process::
-.. ownCloud or one of the apps require upgrade - only a limited number of 
-.. commands are available
-.. Turned on maintenance mode
-.. Repair step: Repair MySQL database engine
-.. Repair info: Not a mysql database -> nothing to do
-.. Repair step: Repair MySQL collation
-.. Repair info: Not a mysql database -> nothing to no
-.. Repair step: Repair SQLite autoincrement
-.. ...
-.. Update successful
-.. Turned off maintenance mode
 
 Before completing the upgrade, ownCloud first runs a simulation by 
 copying all database tables to a temporary directory and then performing the 
