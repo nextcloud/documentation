@@ -421,7 +421,7 @@ Names of Languages
 LDAP Commands
 -------------
 
-You can run the following LDAP commands with ``occ``.
+These LDAP commands appear only when you have enabled the LDAP backend. Then you can run the following LDAP commands with ``occ``.
 
 Search for an LDAP user, using this syntax::
 
@@ -652,6 +652,8 @@ authentication servers such as LDAP::
 Command Line Installation
 -------------------------
 
+These commands are available only after you have downloaded and unpacked the ownCloud archive, and before you complete the installation.
+
 You can install ownCloud entirely from the command line. After downloading the 
 tarball and copying ownCloud into the appropriate directories, or 
 after installing ownCloud packages (See 
@@ -742,6 +744,8 @@ Supported databases are::
    
 Command Line Upgrade
 --------------------
+
+These commands are available only after you have download upgraded packages or archives, and before you complete the upgrade.
 
 List all options, like this example on CentOS Linux::
 
