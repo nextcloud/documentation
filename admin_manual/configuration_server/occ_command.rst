@@ -342,7 +342,7 @@ Users must have enabled recovery keys on their Personal pages. You must first pu
 
 Use ``encryption:disable`` to disable your encryption module. You must first put your ownCloud server into single-user mode to prevent any user activity.
 
-``encryption:enable-master-key`` creates a new master key, which is used for all user data instead of individual user keys. This is especially useful to enable single-sign on Use this only on fresh installations with no existing data, or on systems where encryption has not already been enabled. It is not possible to disable it.
+``encryption:enable-master-key`` creates a new master key, which is used for all user data instead of individual user keys. This is especially useful to enable single-sign on. Use this only on fresh installations with no existing data, or on systems where encryption has not already been enabled. It is not possible to disable it.
 
 ``encryption:migrate`` migatres encryption keys after a major ownCloud version upgrade. You may optionally specify individual users in a space-delimited list.
 
@@ -745,7 +745,7 @@ Supported databases are::
 Command Line Upgrade
 --------------------
 
-These commands are available only after you have download upgraded packages or archives, and before you complete the upgrade.
+These commands are available only after you have downloaded upgraded packages or archives, and before you complete the upgrade.
 
 List all options, like this example on CentOS Linux::
 
