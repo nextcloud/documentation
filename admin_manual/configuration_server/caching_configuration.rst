@@ -180,6 +180,17 @@ Redis for the local server cache::
        'timeout' => 0.0,
         ),
 
+If you want to connect to Redis configured to listen on an unix socket (which is
+recommended if Redis is running on the same system as ownCloud) use this example
+``config.php`` configuration::
+
+  'memcache.local' => '\OC\Memcache\Redis',
+  'redis' => array(
+       'host' => '/var/run/redis/redis.sock',
+       'port' => 0,
+       'timeout' => 0.0,
+        ),
+
 Redis is very configurable; consult `the Redis documentation 
 <http://redis.io/documentation>`_ to learn more.
 
