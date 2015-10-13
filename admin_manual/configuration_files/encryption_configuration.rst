@@ -3,30 +3,29 @@ Encryption Configuration
 ========================
 
 If you are upgrading from ownCloud 8.0, and have encryption enabled, please see 
-:ref:`upgrading_encryption_label` (below) for the correct steps to upgrade your encryption. 
+:ref:`upgrading_encryption_label` (below) for the correct steps to upgrade your 
+encryption.
 
-In ownCloud 8.1 and up the server-side encryption has a number of changes and 
+The primary purpose of the ownCloud server-side encryption is to protect users' 
+files on remote storage, such as Dropbox and Google Drive, and to do it easily 
+and seamlessly from within ownCloud.
+
+In ownCloud 8.2 the server-side encryption has a number of changes and 
 improvements, including:
 
-* When encryption is enabled, all files are no longer encrypted at user's first 
-  logins because this causes timeouts on large installations. Instead, only 
-  files that are created or updated after encryption has been enabled are 
-  encrypted.
-
-* The "decrypt all" option in the Personal settings has been removed, also for 
-  performance reasons.
-
-* A new option for users to enable/disable encryption on a per mount-point 
-  basis.
-  
-* The option to choose from multiple encryption modules.
+* An option to create a master encryption key, which replaces all individual 
+  user keys. This is especially useful for single-sign on.
+* Encrypt all data files at once when enabling encryption.
+* Decrypt all data files, or per user.
+* Users may decrypt their own files.
+* Migrate all keys after a major upgrade, or per user.
+* Move your keys to a different folder.
 
 ownCloud server-side encryption encrypts files stored on the ownCloud server, 
 and files on remote storage that is connected to your ownCloud server. 
 Encryption and decryption are performed on the ownCloud server. All files sent 
-to remote storage (for example Dropbox and Google Drive) will be encrypted by 
-the ownCloud server, and upon retrieval, decrypted before serving them to you 
-and anyone you have shared them with.
+to remote storage will be encrypted by the ownCloud server, and upon retrieval, 
+decrypted before serving them to you and anyone you have shared them with.
 
 .. note:: Encrypting files increases their size by roughly 35%, so you must 
    take this into account when you are provisioning storage and setting 
@@ -36,10 +35,6 @@ and anyone you have shared them with.
 When files on external storage are encrypted in ownCloud, you cannot share them 
 directly from the external storage services, but only through ownCloud sharing 
 because the key to decrypt the data never leaves the ownCloud server.
-
-The main purpose of the ownCloud server-side encryption is to protect users' 
-files on remote storage, and to do it easily and seamlessly from within 
-ownCloud. 
 
 ownCloud's server-side encryption generates a strong encryption key, which is 
 unlocked by user's passwords. Your users don't need to track an extra 
@@ -81,14 +76,19 @@ storage.
 Before Enabling Encryption
 --------------------------
 
-Plan very carefully before enabling encryption because if you lose your encryption keys your files are not recoverable. Always have backups of your encryption keys stored in a safe location, and consider enabling all recovery options.
+Plan very carefully before enabling encryption because it is not reversible via 
+the ownCloud Web interface. If you lose your encryption keys your files are not 
+recoverable. Always have backups of your encryption keys stored in a safe 
+location, and consider enabling all recovery options.
+
+You have more options via the ``occ`` command (see :ref:`occ_encryption_label`)
 
 .. _enable_encryption_label:
 
 Enabling Encryption
 -------------------
 
-ownCloud encryption now consists of two parts. The base encryption system is 
+ownCloud encryption consists of two parts. The base encryption system is 
 enabled and disabled on your Admin page. First you must enable this, and then 
 select an encryption module to load. Currently the only available encryption 
 module is the ownCloud Default Encryption Module.
@@ -166,10 +166,14 @@ You may change your Recovery Key password.
 
 .. figure:: ../images/encryption12.png
 
+.. _occ_encryption_label:
+
 occ Encryption Commands
 -----------------------
 
-You may also use the ``occ`` command to perform encryption operations.
+If you have shell access you may use the ``occ`` command to perform encryption 
+operations, and you have additional options such as decryption and creating a 
+single master encryption key.
 
 Get the current status of encryption and the loaded encryption module::
 
@@ -188,17 +192,45 @@ Select a different default Encryption module::
 
  occ encryption:set-default-module [Module ID]. 
  
-The [module ID] is taken from the ``encryption:list-modules`` command. 
+The [module ID] is taken from the ``encryption:list-modules`` command.
+
+Encrypt all data files for all users. For performance reasons, when you enable 
+encryption on an ownCloud server only new and changed files are encrypted. This 
+command gives you the option to encrypt all files. This command give You must 
+first put your ownCloud server into single-user mode to prevent any user 
+activity until encryption is completed::
+
+ occ encryption:encrypt-all
+
+Decrypt all user data files, or optionally a single user::
+ 
+ occ encryption:decrypt-all [username]
+
+Move keys to a different folder::
+
+ occ encryption:change-key-storage-root
+ 
+View current location of keys::
+
+ occ encryption:show-key-storage-root
+ 
+Create a new master key. Use this when you have a single-sign on 
+infrastructure.  Use this only on fresh installations with no existing data, or 
+on systems where encryption has not already been enabled. It is not possible to 
+disable it::
+
+ occ encryption:enable-master-key
  
 See :ref:`encryption_label`  for detailed instructions on using ``occ``.
 
 Files Not Encrypted
 -------------------
 
-Only the data in your files is encrypted, and not the filenames or folder
-structures. These files are never encrypted:
+Only the data in the files in ``data/user/files`` is encrypted, and not the 
+filenames or folder structures. These files are never encrypted:
 
-- Old files in the trash bin
+- Files in the trash bin
+- Versions
 - Image thumbnails from the Gallery app
 - Previews from the Files app
 - The search index from the full text search app
