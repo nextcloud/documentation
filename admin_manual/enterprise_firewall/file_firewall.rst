@@ -206,7 +206,7 @@ The Web UI dropdown then expands to the following options:
 * All branded clients - visible when at least one of ``android_branded``, 
   ``ios_branded`` or ``desktop_branded`` is defined
 * All non-branded clients - visible when at least one of ``android_branded``, 
-  ``ios_branded or ``desktop_branded`` is defined
+  ``ios_branded or`` ``desktop_branded`` is defined
 * Others (Browsers, etc.) - always visible
 
 Then these options operate this way:
