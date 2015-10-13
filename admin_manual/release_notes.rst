@@ -5,6 +5,11 @@ ownCloud |version| Release Notes
 Changes in 8.2
 --------------
 
+``filesystem_check_changes`` in ``config.php`` is set to 0 by default. This 
+prevents unnecessary update checks and improves performance. If you are using 
+external storage mounts such as NFS on a remote storage server, set this to 1 
+so that ownCloud will detect remote file changes.
+
 XSendFile support has been removed, so there is no longer support for `serving 
 static files
 <https://doc.owncloud.org/server/8.1/admin_manual/configuration_files/
