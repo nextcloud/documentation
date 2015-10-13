@@ -185,14 +185,14 @@ So basically the following is now possible:
       }
   }
 
-  $container = new \OCP\App('myapp');
+  $app = new \OCP\AppFramework\App('myapp');
 
-  $class2 = $container->query('OCA\MyApp\MyTestClass2');
+  $class2 = $app->getContainer()->query('OCA\MyApp\MyTestClass2');
 
   $class2 instanceof MyTestClass2;  // true
   $class2->class instanceof MyTestClass;  // true
   $class2->appName === 'appname';  // true
-  $class2 === $container->query('OCA\MyApp\MyTestClass2');  // true
+  $class2 === $app->getContainer()->query('OCA\MyApp\MyTestClass2');  // true
 
 .. note:: $AppName is resolved because the container registered a parameter under the key 'AppName' which will return the app id. The lookup is case sensitive so while $AppName will work correctly, using $appName as a constructor parameter will fail.
 
@@ -203,7 +203,7 @@ How does it affect the request lifecycle
 * All apps' **routes.php** files are loaded
 
   * If a **routes.php** file returns an array, and an **appname/appinfo/application.php** exists, include it, create a new instance of **\\OCA\\AppName\\AppInfo\\Application.php** and register the routes on it. That way a container can be used while still benefitting from the new routes behavior
-  * If a **routes.php** file returns an array, but there is no **appname/appinfo/application.php**, create a new \\OCP\\App instance with the app id and register the routes on it
+  * If a **routes.php** file returns an array, but there is no **appname/appinfo/application.php**, create a new \\OCP\\AppFramework\\App instance with the app id and register the routes on it
 
 * A request is matched for the route, e.g. with the name **page#index**
 * The appropriate container is being queried for the entry PageController (to keep backwards compability)
