@@ -7,6 +7,7 @@ Files & Synchronization
 
    access_webgui
    access_webdav
+   gallery_app
    deleted_file_management
    desktop_mobile_sync
    encrypting_files
