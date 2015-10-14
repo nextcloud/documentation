@@ -19,14 +19,11 @@ With this facts you can easily determine, where the following object-related att
 * links
 * graphics
 
-In owncloud standard theme everything is held very simple. This allows you quick adapting. In an unchanged ownCloud version CSS files and the standard pictures reside in /owncloud/themes/default folder.
 The next thing you should do, before starting any changes is:
 Make a backup of your current theme(s) e.g.:
 
-* Goto …/owncloud/themes
-* cp -r default default.old
-
-.. note:: In this example the theme name ``default`` is used because this is automatically loaded. This should be changed in the config file to avoid having this overwritten by the ownCloud package (see :ref:`notes-for-updates`).
+* cd …/owncloud/themes
+* cp -r example mytheme
 
 Creating and activating a new theme
 ===================================
@@ -34,12 +31,12 @@ Creating and activating a new theme
 There are two basic ways of creating new themings:
 
 * Doing all new from scratch
-* Starting from an existing theme and doing everything step by step and more experimentally
+* Starting from an existing theme or the example theme and doing everything step by step and more experimentally
 
 Depending on how you created your new theme it will be necessary to
 
 * put a new theme into the /themes -folder. The theme can be activated by putting "theme" => ‘themename’, into the config.php file.
-* make all changes in the /themes/default -file
+* make all changes in the /themes/example or /themes/‘themename’ -folder
 
 Structure
 =========
@@ -47,8 +44,14 @@ Structure
 The folder structure of a theme is exactly the same as the main ownCloud
 structure. You can override js files, images, translations and templates with
 own versions. CSS files are loaded additionally to the default files so you can
-override CSS properties.
+override CSS properties. CSS files and the standard pictures that are used reside
+for example in /owncloud/core/ and /owncloud/settings/ in these sub folders:
 
+* css = style sheets
+* js = JavaScripts
+* img = images
+* l10n = translation files
+* templates = php and html template files
 
 How to change images and the logo
 =================================
@@ -164,7 +167,7 @@ How to change names, slogans and URLs
 
 The ownCloud theming allows a lot of the names that are shown on the web interface to be changed. It's also possible to change the URLs to the documentation or the Android/iOS apps.
 
-This can be done with a file named ``defaults.php`` within the root of the theme. In there you need to specify a class named ``OC_Theme`` and need to implement the methods you want to overwrite:
+This can be done with a file named ``defaults.php`` within the root of the theme. You can find it in the example theme (*/themes/example/defaults.php*). In there you need to specify a class named ``OC_Theme`` and need to implement the methods you want to overwrite:
 
 .. code-block:: php
 
