@@ -273,7 +273,7 @@ Configure Nginx with the ``nginx-cache-purge`` module
 1. **Preparation**
    Create a directory where Nginx will save the cached thumbnails. Use any 
    path that fits to your environment. Replace ``{path}`` in this example with 
-   your file path:
+   your path created:
    
 .. code-block:: bash   
    
@@ -284,25 +284,36 @@ Configure Nginx with the ``nginx-cache-purge`` module
 .. code-block:: bash
 
    sudo vi /etc/nginx/sites-enabled/{your-ownCloud-nginx-config-file}
-    
+   
 Add at the *beginning*, but *outside* the ``server{}`` block::
 
+   # cache_purge
    fastcgi_cache_path {path} levels=1:2 keys_zone=OWNCLOUD:100m inactive=60m;
+   map $request_uri $skip_cache {
+        default 1;
+        ~*/thumbnail.php 0;
+        ~*/apps/galleryplus/ 0;
+        ~*/apps/gallery/ 0;
+   }
+
+.. note:: Please adopt or delete any regex line in the ``map`` block according 
+   your needs and the ownCloud version used.
+.. note:: As an alternative to mapping, you can use as many ``if`` statements in 
+   your server block as necessary::
    
+    set $skip_cache 1;
+    if ($request_uri ~* "thumbnail.php")      { set $skip_cache 0; }
+    if ($request_uri ~* "/apps/galleryplus/") { set $skip_cache 0; }
+    if ($request_uri ~* "/apps/gallery/")     { set $skip_cache 0; }
+
 Add *inside* the ``server{}`` block, as an example of a configuration::
    
-   set $skip_cache 1;
-       
-   # POST requests and urls with a query string should always go to PHP
-    
-   if ($request_uri ~* "thumbnail.php") 
-   { set $skip_cache 0;
-   }
-       
+   
+   # cache_purge
    fastcgi_cache_key "$scheme$request_method$host$request_uri";
    fastcgi_cache_use_stale error timeout invalid_header http_500;
    fastcgi_ignore_headers Cache-Control Expires Set-Cookie;
-       
+   
    location ~ \.php(?:$/) {
          fastcgi_split_path_info ^(.+\.php)(/.+)$;
        
@@ -312,28 +323,29 @@ Add *inside* the ``server{}`` block, as an example of a configuration::
          fastcgi_param HTTPS on;
          fastcgi_pass php-handler;
        
+         # cache_purge
          fastcgi_cache_bypass $skip_cache;
          fastcgi_no_cache $skip_cache;
          fastcgi_cache OWNCLOUD;
          fastcgi_cache_valid  60m;
          }
    
-.. note: Note regarding the ``fastcgi_pass`` parameter:
+.. note:: Note regarding the ``fastcgi_pass`` parameter:
    Use whatever fits your configuration. In the example above, an ``upstream`` 
    was defined in an Nginx global configuration file.
-   This then can look like::
+   This may look like::
        
      upstream php-handler {
-         server 127.0.0.1:9000;
+         server unix:/var/run/php5-fpm.sock;
          # or
-         #server unix:/var/run/php5-fpm.sock;
+         # server 127.0.0.1:9000;
        } 
    
 3. **Test the configuration**
 
 .. code-block:: bash
 
-   sudo service nginx restart
+   sudo nginx -s reload
    
 *  Open your browser and clear your cache.   
 *  Logon to your ownCloud instance, open the gallery app, move thru your       
