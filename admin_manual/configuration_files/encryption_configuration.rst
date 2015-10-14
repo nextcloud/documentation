@@ -196,9 +196,9 @@ The [module ID] is taken from the ``encryption:list-modules`` command.
 
 Encrypt all data files for all users. For performance reasons, when you enable 
 encryption on an ownCloud server only new and changed files are encrypted. This 
-command gives you the option to encrypt all files. This command give You must 
-first put your ownCloud server into single-user mode to prevent any user 
-activity until encryption is completed::
+command gives you the option to encrypt all files. You must first put your 
+ownCloud server into single-user mode to prevent any user activity until 
+encryption is completed::
 
  occ encryption:encrypt-all
 
