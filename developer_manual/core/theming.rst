@@ -35,8 +35,8 @@ There are two basic ways of creating new themings:
 
 Depending on how you created your new theme it will be necessary to
 
-* put a new theme into the /themes -folder. The theme can be activated by putting "theme" => ‘themename’, into the config.php file.
-* make all changes in the /themes/example or /themes/‘themename’ -folder
+* put a new theme into the /themes -folder. The theme can be activated by putting ``'theme' => 'MyTheme'``, into the ``/config/config.php`` file.
+* make your changes in the ``/themes/MyTheme`` -folder
 
 
 Structure
