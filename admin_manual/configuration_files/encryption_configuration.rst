@@ -18,7 +18,6 @@ improvements, including:
 * Encrypt all data files at once when enabling encryption.
 * Decrypt all data files, or per user.
 * Users may decrypt their own files.
-* Migrate all keys after a major upgrade, or per user.
 * Move your keys to a different folder.
 
 ownCloud server-side encryption encrypts files stored on the ownCloud server, 
@@ -229,8 +228,9 @@ Files Not Encrypted
 Only the data in the files in ``data/user/files`` is encrypted, and not the 
 filenames or folder structures. These files are never encrypted:
 
-- Files in the trash bin
-- Versions
+- Existing files in the trash bin & Versions. Only new and changed files after 
+  encryption is enabled are encrypted.
+- Existing files in Versions
 - Image thumbnails from the Gallery app
 - Previews from the Files app
 - The search index from the full text search app
