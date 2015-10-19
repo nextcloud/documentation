@@ -205,7 +205,7 @@ Decrypt all user data files, or optionally a single user::
  
  occ encryption:decrypt-all [username]
 
-Move keys to a different folder::
+Move keys to a different folder, either locally or on a different server::
 
  occ encryption:change-key-storage-root
  
