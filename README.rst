@@ -20,7 +20,7 @@ This repository hosts three manuals:
 * **Administration Manual**
 * **Developers Manual** 
   
-Please work in the appropriate branch. stable6 is for ownCloud 6, stable7 is for ownCloud 7, stable8 is 8.0, stable8.1 is 8.1, and master is version 8.2.
+Please work in the appropriate branch. stable6 is for ownCloud 6, stable7 is for ownCloud 7, stable8 is 8.0, stable8.1 is 8.1, and stable8.2 is 8.2, and master is version 9.
 
 Please wrap lines at 80 characters.
 
