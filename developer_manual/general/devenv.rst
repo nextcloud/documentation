@@ -11,7 +11,7 @@ Please follow the steps on this page to set up your development environment.
 Set up web server and database
 ==============================
 
-First `set up your web server and database <http://doc.owncloud.org/server/8.2/admin_manual/#installation>`_ (**Section**: Manual Installation - Prerequisites).
+First `set up your web server and database <http://doc.owncloud.org/server/9.0/admin_manual/#installation>`_ (**Section**: Manual Installation - Prerequisites).
 .. TODO ON RELEASE: Update version number above on release
 
 Get the source
@@ -19,7 +19,7 @@ Get the source
 
 There are two ways to obtain ownCloud sources: 
 
-* Using the `stable version <http://doc.owncloud.org/server/8.2/admin_manual/#installation>`_
+* Using the `stable version <http://doc.owncloud.org/server/8.0/admin_manual/#installation>`_
 .. TODO ON RELEASE: Update version number above on release
 * Using the development version from `GitHub`_ which will be explained below.
 

@@ -41,7 +41,7 @@ If you can't find a solution, please use our `bugtracker`_.
 .. _webchat: http://webchat.freenode.net/?channels=owncloud
 .. _Enterprise Subscription: https://owncloud.com/lp/community-or-enterprise/
 .. _bugtracker: 
-   http://doc.owncloud.org/server/8.2/developer_manual/bugtracker/index.html
+   http://doc.owncloud.org/server/9.0/developer_manual/bugtracker/index.html
 .. TODO ON RELEASE: Update version number above on release
 
 General Troubleshooting
