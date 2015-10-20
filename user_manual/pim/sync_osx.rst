@@ -34,4 +34,4 @@ There is also an easy `HOWTO`_ in the forum.
 
 
 .. _HOWTO: http://forum.owncloud.org/viewtopic.php?f=3&t=132
-.. _Troubleshooting Contacts & Calendar: https://doc.owncloud.org/server/8.2/admin_manual/issues/index.html#troubleshooting-contacts-calendar
+.. _Troubleshooting Contacts & Calendar: https://doc.owncloud.org/server/9.0/admin_manual/issues/index.html#troubleshooting-contacts-calendar
