@@ -8,8 +8,6 @@ info**. The **File Shared access logging app** records the file sharing activity
 of your users, and **Log audit info** records user logins and logouts.
 
 .. figure:: images/logging-1.png
-
-.. figure:: images/logging-2.png
    :alt: The two enterprise logging apps on the Apps page.
    
 These two apps work together, and should be enabled together. Your logging 
