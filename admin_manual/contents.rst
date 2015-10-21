@@ -30,3 +30,6 @@ Enterprise Subscription Only
     enterprise_external_storage/index   
     enterprise_user_management/index
     enterprise_files_drop/index
+    enterprise_logging/index
+   
+
