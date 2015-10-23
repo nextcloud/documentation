@@ -355,20 +355,40 @@ File Operations
 
 The ``files:scan`` command scans for new files and updates the file cache. You 
 may rescan all files, per-user, a space-delimited list of users, and limit the 
-search path::
+search path. If not using ``--quiet``, statistics will be shown at the end of the scan::
 
  $ sudo -u www-data php occ  files:scan --help
    Usage:
-   files:scan [-p|--path="..."] [-q|--quiet] [--all] [user_id1] ... [user_idN]
+   files:scan [-p|--path="..."] [-q|--quiet] [-v|vv|vvv --verbose] [--all] [user_id1] ... [user_idN]
 
  Arguments:
    user_id               will rescan all files of the given user(s)
 
  Options:
-   --path (-p)           limit rescan to this path, eg. 
-   --path="/alice/files/Music", the user_id is determined by the path and the 
-   user_id parameter and --all are ignored
+   --path                limit rescan to the user/path given
    --all                 will rescan all files of all known users
+   --quiet               suppress any output
+   --verbose             files and directories being processed are shown additionally during scanning
+
+Verbosity levels of ``-vv`` or ``-vvv`` are automatically reset to ``-v``
+
+When using the ``--path`` option, the path must consist of following components::
+
+  "user_id/files/path" 
+    or
+  "user_id/files/mount_name"
+    or
+  "user_id/files/mount_name/path"
+
+where the term ``files`` is mandatory.
+
+Example::
+
+  --path="/alice/files/Music"
+
+In the example above, the user_id ``alice`` is determined implicitly from the path component given.
+
+The ``--path``, ``--all`` and ``[user_id]`` parameters and are exclusive - only one must be specified.
 
 ``files:cleanup`` tidies up the server's file cache by deleting all file 
 entries that have no matching entries in the storage table.
