@@ -626,6 +626,16 @@ Warning, 3 = Error, and 4 = Fatal. The default value is Warning.
 
 ::
 
+	'syslog_tag' => 'ownCloud',
+
+If you maintain different instances and aggregate the logs, you may want
+to distinguish between them. ``syslog_tag`` can be set per instance
+with a unique id. Only available if ``log_type`` is set to ``syslog``.
+
+The default value is ``ownCloud``.
+
+::
+
 	'log.condition' => [
 		'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
 		'users' => ['sample-user'],
