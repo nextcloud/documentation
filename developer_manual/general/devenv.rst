@@ -19,7 +19,7 @@ Get the source
 
 There are two ways to obtain ownCloud sources: 
 
-* Using the `stable version <http://doc.owncloud.org/server/8.0/admin_manual/#installation>`_
+* Using the `stable version <http://doc.owncloud.org/server/9.0/admin_manual/#installation>`_
 .. TODO ON RELEASE: Update version number above on release
 * Using the development version from `GitHub`_ which will be explained below.
 
