@@ -309,8 +309,8 @@ Add at the *beginning*, but *outside* the ``server{}`` block::
 Add *inside* the ``server{}`` block, as an example of a configuration::
    
    
-   # cache_purge
-   fastcgi_cache_key "$scheme$request_method$host$request_uri";
+   # cache_purge (with $http_cookies we have unique keys for the user)
+   fastcgi_cache_key $http_cookie$request_method$host$request_uri;
    fastcgi_cache_use_stale error timeout invalid_header http_500;
    fastcgi_ignore_headers Cache-Control Expires Set-Cookie;
    
@@ -328,6 +328,7 @@ Add *inside* the ``server{}`` block, as an example of a configuration::
          fastcgi_no_cache $skip_cache;
          fastcgi_cache OWNCLOUD;
          fastcgi_cache_valid  60m;
+         fastcgi_cache_methods GET HEAD;
          }
    
 .. note:: Note regarding the ``fastcgi_pass`` parameter:
