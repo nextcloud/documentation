@@ -124,9 +124,7 @@ When you're finished click the **Save** button.
 
 
 
-.. note::
-
-When you create a new mountpoint using Login credentials you must log out of ownCloud, and then log back in so you can access the share. You only have to do this the first time.
+.. note:: When you create a new mountpoint using Login credentials you must log out of ownCloud,     and then log back in so you can access the share. You only have to do this the first time.
 
 Personal SMB Mounts
 -------------------
