@@ -70,3 +70,7 @@ Mageia software repository.
 ``/etc/apache2/conf.d/owncloud.conf`` which contains an ``Alias`` to the 
 owncloud installation directory as well as some more needed configuration 
 options.
+
+**Running ownCloud in a subdir**: If you're running ownCloud in a subdir and
+want to use CalDAV or CardDAV clients make sure you have configured the correct 
+:ref:`service-discovery-label` URLs.

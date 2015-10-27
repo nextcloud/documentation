@@ -239,6 +239,8 @@ which contains various additional information about WebDAV problems.
 Troubleshooting Contacts & Calendar
 -----------------------------------
 
+.. _service-discovery-label:
+
 Service discovery
 ^^^^^^^^^^^^^^^^^
 
@@ -247,11 +249,6 @@ when explicitly configured to use it.
 
 There are several techniques to remedy this, which are described extensively at 
 the `Sabre DAV website <http://sabre.io/dav/service-discovery/>`_.
-
-Apple iOS
-^^^^^^^^^
-
-Below is what has been proven to work with iOS including iOS 7.
 
 If your ownCloud instance is installed in a subfolder under the web server's 
 document root and the client has difficulties finding the Cal- or CardDAV 
