@@ -5,6 +5,8 @@ ownCloud |version| Release Notes
 Changes in 8.2
 --------------
 
+PHP 5.6.11+ breaks the LDAP wizard with a 'Could not connect to LDAP' error. See https://github.com/owncloud/core/issues/20020. 
+
 ``filesystem_check_changes`` in ``config.php`` is set to 0 by default. This 
 prevents unnecessary update checks and improves performance. If you are using 
 external storage mounts such as NFS on a remote storage server, set this to 1 
@@ -27,6 +29,9 @@ the ``occ`` command, like this example on Ubuntu Linux::
 Run ``sudo -u www-data php occ ldap:show-config`` to find the correct ``sNN`` 
 value; if there is not one then use empty quotes, ``""``. (See 
 :doc:`configuration_server/occ_command`.)
+
+Users of the Linux Package need to update their repository setup as described
+in this `blogpost <https://owncloud.org/blog/upgrading-to-owncloud-server-8-2/>`_.
 
 Changes in 8.1
 --------------
