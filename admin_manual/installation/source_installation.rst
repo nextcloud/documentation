@@ -208,19 +208,22 @@ Additional Apache Configurations
   the  server configuration, as well as in the CommonName field of the 
   certificate. If you want your ownCloud to be reachable via the internet, then 
   set both of these to the domain you want to reach your ownCloud server.
-  
+
 * Now restart Apache::
-  
+
      service apache2 restart
-     
-.. note:: You can use ownCloud over plain HTTP, but we strongly encourage you to
-          use SSL/TLS to encrypt all of your server traffic, and to protect 
-          user's logins and data in transit.
+
+* If you're running ownCloud in a subdir and want to use CalDAV or CardDAV clients
+  make sure you have configured the correct :ref:`service-discovery-label` URLs.
 
 .. _enabling-ssl-label:
 
 Enabling SSL
 ------------
+
+.. note:: You can use ownCloud over plain HTTP, but we strongly encourage you to
+          use SSL/TLS to encrypt all of your server traffic, and to protect 
+          user's logins and data in transit.
 
 Apache installed under Ubuntu comes already set-up with a simple
 self-signed certificate. All you have to do is to enable the ssl module and
