@@ -45,9 +45,9 @@ Preferred Upgrade Method
 ------------------------
 
 The best method for keeping ownCloud on Linux servers current is by 
-configuring your system to use the `openSUSE Build Service 
-<http://software.opensuse.org/download.html?project=isv:ownCloud:community& 
-package=owncloud>`_ (see :doc:`../installation/linux_installation`); just 
+configuring your system to use our `Open Build Service 
+<https://download.owncloud.org/download/repositories/8.2/owncloud/>`_ (see 
+:doc:`../installation/linux_installation`); just 
 follow the instructions on oBS for setting up your package manager. Then 
 stay current by using your Linux package manager to upgrade. 
 

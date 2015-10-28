@@ -2,7 +2,7 @@
 Manual Installation on Linux
 ============================
 
-Installing ownCloud on Linux from the openSUSE Build Service packages is the 
+Installing ownCloud on Linux from our Open Build Service packages is the 
 preferred method (see :doc:`linux_installation`). These are maintained by 
 ownCloud engineers, and you can use your package manager to keep your ownCloud 
 server up-to-date.
