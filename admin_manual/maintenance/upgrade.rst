@@ -49,7 +49,7 @@ the upgrade. These are the basic steps to upgrading ownCloud:
 * Install new packages from the ownCloud `Open Build Service`_.
 * Take your ownCloud server out of maintenance mode.
 * Run the upgrade wizard.
-* Log in and apply strong permissions to your ownCloud directories apps.
+* Log in and apply strong permissions to your ownCloud directories.
 * Re-enable third-party apps.
    
 Prerequisites
@@ -107,8 +107,8 @@ the :doc:`../configuration_server/occ_command`, like this example on Ubuntu::
 
 The final step is to run the upgrade wizard to perform the final steps of 
 updating your apps and database. You will see a screen with a summary of apps 
-that will be updated, and a **Start Update** button. If you have shell access is 
-it better to **not** click the Start Update button, but rather to use ``occ 
+that will be updated, and a **Start Update** button. If you have shell access it 
+is better to **not** click the Start Update button, but rather to use ``occ 
 upgrade``, like this example on CentOS::
 
  $ sudo -u apache php occ upgrade
