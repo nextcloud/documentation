@@ -61,7 +61,7 @@ Extending the "new" menu in the files app
 
 .. code-block:: js
 
-    var myNewFileEntry = {
+    var myFileMenuPlugin = {
         attach: function (menu) {
             menu.addMenuEntry({
                 id: 'abc',
@@ -75,7 +75,7 @@ Extending the "new" menu in the files app
             });
         }
     };
-    OC.Plugins.register('OCA.Files.NewFileMenu', myNewFileEntry);
+    OC.Plugins.register('OCA.Files.NewFileMenu', myFileMenuPlugin);
 
 This will register a new menu entry in the "New" menu of the files app. The
 method ``attach()`` is called once the menu is build. This usually happens right
