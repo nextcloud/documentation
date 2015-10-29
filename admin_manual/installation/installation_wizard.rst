@@ -61,7 +61,7 @@ SQLite is the default database for ownCloud Server (it is not
 available and not supported in the Enterprise edition), and it is good only for 
 testing and lightweight single-user setups without client synchronization. 
 Supported databases are MySQL, MariaDB, Oracle 11g, and PostgreSQL, and we 
-recommend :doc:`MySQL/MariaDB <../release_notes>`. Your database and PHP 
+recommend :doc:`MySQL/MariaDB <system_requirements>`. Your database and PHP 
 connectors must be installed before you run the Installation Wizard. When you 
 install ownCloud from packages all the necessary dependencies will be satisfied 
 (see :doc:`source_installation` for a detailed listing of required and optional 
