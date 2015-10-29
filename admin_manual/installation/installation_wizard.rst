@@ -20,18 +20,16 @@ This is just three steps:
    
 You're finished and can start using your new ownCloud server.   
 
-Of course, there is much more that you can do to set up your ownCloud server 
-for 
-best performance and security. In the following sections we will cover 
-important 
+Of course, there is much more that you can do to set up your ownCloud server for 
+best performance and security. In the following sections we will cover important 
 installation and post-installation steps. Note that you must follow the 
-instructions in :ref:`Setting Strong Permissions <label-setting-strong-perms>` 
-in order to use the :doc:`occ Command <../configuration_server/occ_command>`.
+instructions in :ref:`Setting Strong Permissions <strong-perms-label>` in order 
+to use the :doc:`occ Command <../configuration_server/occ_command>`.
 
 * :ref:`Data Directory Location <label-data-directory-location>`
 * :ref:`Database Choice <label-database-choice>`
 * :ref:`Trusted Domains <label-trusted-domains>`
-* :ref:`Setting Strong Permissions <label-setting-strong-perms>`
+* :ref:`Setting Strong Permissions <strong-perms-label>`
 
 .. _label-data-directory-location:
 
@@ -51,7 +49,8 @@ ownCloud data in a different location for other reasons (e.g. on a storage
 server). It is best to configure your data directory location at installation, 
 as it is difficult to move after installation. You may put it anywhere; in this 
 example is it located in ``/var/oc_data``. This directory must already exist, 
-and must be owned by your HTTP user (see :ref:`label-setting-strong-perms`).
+and must be owned by your HTTP user (see 
+:ref:`strong-perms-label`).
 
 .. _label-database-choice:
 
@@ -108,10 +107,8 @@ is not whitelisted the following error appears:
    :alt: screenshot of error message when URL is not whitelisted in 
     trusted_domains
   
-.. _label-setting-strong-perms:
-  
-.. _strong_perms:
-
+.. _strong-perms-label:
+ 
 Setting Strong Directory Permissions
 ------------------------------------
 

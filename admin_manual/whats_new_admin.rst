@@ -8,6 +8,8 @@ on Github for a comprehensive list of new features and updates.
 
 Some of the improvements of interest to ownCloud admins are:
 
+* New ownCloud package repositories (admins must manually change to these, see 
+  :doc:`maintenance/upgrade`)
 * Configurable temporary directory
 * Many new occ commands for logging, encryption, and apps 
 * Unavailable external storages are not rechecked every request; rather, their 
