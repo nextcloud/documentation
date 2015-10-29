@@ -78,5 +78,5 @@ Extending the "new" menu in the files app
     OC.Plugins.register('OCA.Files.NewFileMenu', myFileMenuPlugin);
 
 This will register a new menu entry in the "New" menu of the files app. The
-method ``attach()`` is called once the menu is build. This usually happens right
+method ``attach()`` is called once the menu is built. This usually happens right
 after the click on the button.
