@@ -9,6 +9,9 @@ Changes in 9.0
 Changes in 8.2
 --------------
 
+New location for Linux package repositories; ownCloud admins must manually 
+change to the new repos. See :doc:`maintenance/upgrade`
+
 PHP 5.6.11+ breaks the LDAP wizard with a 'Could not connect to LDAP' error. See https://github.com/owncloud/core/issues/20020. 
 
 ``filesystem_check_changes`` in ``config.php`` is set to 0 by default. This 
