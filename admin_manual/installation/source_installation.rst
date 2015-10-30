@@ -253,7 +253,7 @@ Setting Strong Directory Permissions
 
 We recommend setting the directory permissions in your ownCloud installation as 
 strictly as possible for stronger security. Please refer to 
-:ref:`strong-perms-label`.
+:ref:`strong_perms_label`.
 
 SELinux
 -------

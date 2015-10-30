@@ -23,15 +23,15 @@ You're finished and can start using your new ownCloud server.
 Of course, there is much more that you can do to set up your ownCloud server for 
 best performance and security. In the following sections we will cover important 
 installation and post-installation steps. Note that you must follow the 
-instructions in :ref:`Setting Strong Permissions <strong-perms-label>` in order 
+instructions in :ref:`Setting Strong Permissions <strong_perms_label>` in order 
 to use the :doc:`occ Command <../configuration_server/occ_command>`.
 
-* :ref:`Data Directory Location <label-data-directory-location>`
-* :ref:`Database Choice <label-database-choice>`
-* :ref:`Trusted Domains <label-trusted-domains>`
-* :ref:`Setting Strong Permissions <strong-perms-label>`
+* :ref:`Data Directory Location <data_directory_location_label>`
+* :ref:`Database Choice <database_choice_label>`
+* :ref:`Trusted Domains <trusted_domains_label>`
+* :ref:`Setting Strong Permissions <strong_perms_label>`
 
-.. _label-data-directory-location:
+.. _data_directory_location_label:
 
 Data Directory Location
 -----------------------
@@ -50,9 +50,9 @@ server). It is best to configure your data directory location at installation,
 as it is difficult to move after installation. You may put it anywhere; in this 
 example is it located in ``/var/oc_data``. This directory must already exist, 
 and must be owned by your HTTP user (see 
-:ref:`strong-perms-label`).
+:ref:`strong_perms_label`).
 
-.. _label-database-choice:
+.. _database_choice_label:
 
 Database Choice
 ---------------
@@ -78,7 +78,7 @@ Click Finish Setup, and start using your new ownCloud server.
 
 Now we will look at some important post-installation steps.
 
-.. _label-trusted-domains: 
+.. _trusted_domains_label: 
 
 Trusted Domains
 ---------------
@@ -107,7 +107,7 @@ is not whitelisted the following error appears:
    :alt: screenshot of error message when URL is not whitelisted in 
     trusted_domains
   
-.. _strong-perms-label:
+.. _strong_perms_label:
  
 Setting Strong Directory Permissions
 ------------------------------------

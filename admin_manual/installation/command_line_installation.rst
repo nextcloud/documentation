@@ -12,7 +12,7 @@ and unpack the tarball in the appropriate directories. (See
 :doc:`linux_installation` and :doc:`source_installation`.)
 
 2. Apply the correction permissions to your ownCloud files and directories (see 
-:ref:`strong-perms-label`.)
+:ref:`strong_perms_label`.)
 
 3. Use the ``occ`` command to complete your installation. This takes the place 
 of running the graphical Installation Wizard.
