@@ -47,14 +47,18 @@ Mint, and Ubuntu Linux you need to install two packages. The first one supplies
  $ sudo apt-get install openjdk-7-jre-headless
  $ sudo apt-get install openjdk-7-jdk
  
+Plus some additional 32-bit packages::
+
+ $ sudo apt-get install libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5 
+ zlib1g:i386
+
 On SUSE systems, install this package::
  
  $ sudo zypper install java-1_7_0-openjdk-devel
  
 It is simpler to get these on CentOS and Red Hat Enterprise Linux, as they have 
-created some nice 
-wrapper scripts around ``keytool`` and ``jarsigner`` that you can install 
-standalone::
+created some nice wrapper scripts around ``keytool`` and ``jarsigner`` that you 
+can install standalone::
  
  $ sudo yum install keytool-maven-plugin.noarch
  $ sudo yum install maven-jarsigner-plugin.noarch
@@ -105,7 +109,7 @@ must both have a password, which can be same for both. Then enter your company
 information as you are prompted::
 
  $ keytool -genkey -v -keystore acme-release-key.keystore -alias acme_key 
- -keyalg RSA -keysize 2048 
+ -keyalg RSA -keysize 2048 -validity 10000
  Enter keystore password:  
  Re-enter new password: 
  What is your first and last name?
