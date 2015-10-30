@@ -53,13 +53,6 @@ recommended if Redis is running on the same system as ownCloud) use this example
    Using ``memcache.locking`` relieves the database load and improves 
    performance.
 
-The **Server status** section on your ownCloud Admin page indicates whether 
-experimental file locking is enabled or disabled.
-
-.. figure:: ../images/transactional-locking-1.png
-
-.. figure:: ../images/transactional-locking-2.png
-
 See ``config.sample.php`` to see configuration examples for Redis, and for all 
 supported memcaches.
 
