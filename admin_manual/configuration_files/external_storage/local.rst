@@ -15,7 +15,7 @@ are on Ubuntu Linux::
  sudo -u www-data chown -R www-data:www-data /localdir
  sudo -u www-data chmod -R 0750 /localdir
  
-See :ref:`strong-perms-label` for information on correct file permissions, and 
+See :ref:`strong_perms_label` for information on correct file permissions, and 
 find your HTTP user :ref:`label-phpinfo`.
  
 In the **Folder name** field enter the folder name that you want to appear on 

@@ -2,15 +2,16 @@
 Upgrading Your ownCloud Server
 ==============================
 
-For ownCloud 8.2 the Linux package repositories have changed, and **you must 
-configure your system to use these new repos**. The new repos are at our `Open 
-Build Service`_. Just follow the instructions for your Linux distribution, and 
-then install new ownCloud packages in the usual way with your package manager.
+Starting with ownCloud 8.2 the Linux package repositories have changed, and 
+**you must configure your system to use these new repos**. The new repos are at 
+our `Open Build Service`_. Just follow the instructions for your Linux 
+distribution, and then install new ownCloud packages in the usual way with your 
+package manager.
 
 It is best to keep your ownCloud server upgraded regularly, and to install all 
 point releases and major releases without skipping any of them, as skipping 
-releases increases the risk of errors. Major releases are 8.0, 8.1, and 
-8.2. Point releases are intermediate releases for each major release. For 
+releases increases the risk of errors. Major releases are 8.0, 8.1, 8.2, and 
+9.0. Point releases are intermediate releases for each major release. For 
 example, 8.0.9 and 8.1.3 are point releases.
 
 There are multiple ways to keep your ownCloud server upgraded: with the 
@@ -29,7 +30,7 @@ When you are upgrading to a major release, evaluate any third-party apps for
 compatibility with the upgrade, and then disable them before upgrading. You may 
 re-enable them after the upgrade is completed.
 
-.. note:: **Downgrading** is not supported and risks corrupting your data! If 
+.. note:: **Downgrading is not supported** and risks corrupting your data! If 
    you want to revert to an older ownCloud version, make a new, fresh 
    installation and then restore your data from backup. Before doing this, 
    file a support ticket (if you have paid support) or ask for help in the 
@@ -44,12 +45,16 @@ current by using your Linux package manager to install fresh ownCloud packages.
 After installing upgraded packages you must run a few more steps to complete 
 the upgrade. These are the basic steps to upgrading ownCloud:
 
-* Disable all third-party apps.
-* Make a fresh backup (see :doc:`../maintenance/backup`).
+* :doc:`Disable <../installation/apps_management_installation>` all third-party 
+  apps.
+* Make a :doc:`fresh backup <backup>`.
 * Install new packages from the ownCloud `Open Build Service`_.
-* Take your ownCloud server out of maintenance mode.
-* Run the upgrade wizard.
-* Log in and apply strong permissions to your ownCloud directories.
+* Take your ownCloud server out of :doc:`maintenance mode 
+  <enable_maintenance>`.
+* Run the :ref:`upgrade wizard <upgrade_wizard_label>` (optionally disabling 
+  the :ref:`migration test <migration_test_label>`).
+* Log in and :ref:`apply strong permissions <strong_perms_label>` to your 
+  ownCloud directories.
 * Re-enable third-party apps.
    
 Prerequisites
@@ -98,25 +103,43 @@ Your Linux package manager only downloads the current ownCloud packages. Then
 your ownCloud server is automatically put into maintenance mode.
 
 .. figure:: images/upgrade-1.png
+   :scale: 70%
+   :alt: ownCloud status screen informing users that it is in maintenance mode.
+   
+   *Click to enlarge*
 
 Next, take your server out of maintenance mode. You can do this by changing 
-``'maintenance' => true, to 'maintenance' => false,`` in ``config.php``, or use 
-the :doc:`../configuration_server/occ_command`, like this example on Ubuntu::
+``'maintenance' => true,`` to ``'maintenance' => false,`` in ``config.php``, or 
+use the :doc:`occ command <../configuration_server/occ_command>`, like this 
+example on Ubuntu::
 
  $ sudo -u www-data php occ maintenance:mode --off
-
+ 
+.. _upgrade_wizard_label:
+ 
+Upgrade Wizard
+--------------
+ 
 The final step is to run the upgrade wizard to perform the final steps of 
 updating your apps and database. You will see a screen with a summary of apps 
-that will be updated, and a **Start Update** button. If you have shell access it 
+that are updated, and a **Start Update** button. If you have shell access it 
 is better to **not** click the Start Update button, but rather to use ``occ 
 upgrade``, like this example on CentOS::
 
  $ sudo -u apache php occ upgrade
 
 .. figure:: images/upgrade-2.png
+   :scale: 70%
+   :alt: ownCloud upgrade status screen
+   
+   *Click to enlarge*
 
 ``occ upgrade`` is more reliable, especially on installations with large 
-datasets and large numbers of users because it avoids the risk of PHP timeouts. 
+datasets and large numbers of users because it avoids the risk of PHP timeouts.
+
+When the upgrade is completed you will be returned to the login screen.
+
+.. _migration_test_label:
 
 Migration Test
 ^^^^^^^^^^^^^^
@@ -127,15 +150,13 @@ them, to ensure that the upgrade will complete correctly. This can delay large
 installations by several hours, so you can omit this step with the 
 ``--skip-migration-test`` option, like this example on CentOS::
 
- $ sudo -u apache php occ upgrade --skip-migration-test 
-
-When the upgrade is successful you will be returned to the login screen.
+ $ sudo -u apache php occ upgrade --skip-migration-test
 
 Setting Strong Permissions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 After upgrading, verify that your ownCloud directory permissions are set 
-according to :ref:`strong-perms-label`.
+according to :ref:`strong_perms_label`.
 
 If the upgrade fails, then you must try a manual upgrade.
 
@@ -170,25 +191,6 @@ The other way is by entering your ``config.php`` file and changing
    ``/var/www/owncloud2/``
 3. Stop your Web server.
 
-Apache 2 is the recommended server for ownCloud (see 
-:doc:`../installation/system_requirements` for recommended setups and supported 
-platforms.)
-
-  +-----------------------+-----------------------------------------+
-  | Operating System      | Command (as root)                       |
-  +=======================+=========================================+
-  | CentOS/ Red Hat       |  ``apachectl stop``                     |         
-  +-----------------------+-----------------------------------------+
-  | Debian                |                                         |
-  | or                    | ``/etc/init.d/apache2 stop``            |
-  | Ubuntu                |                                         |
-  +-----------------------+-----------------------------------------+
-  | SUSE Enterprise       |                                         |
-  | Linux 11              | ``/usr/sbin/rcapache2 stop``            |       
-  |                       |                                         |
-  | openSUSE 12.3 and up  | ``systemctl stop apache2``              |
-  +-----------------------+-----------------------------------------+
-
 4. Rename or move your current ownCloud directory (named ``owncloud/`` if 
    installed using defaults) to another location.
 
@@ -213,22 +215,7 @@ platforms.)
 .. note:: We recommend storing your ``data/`` directory in a location other 
    than your ``owncloud/`` directory.
 
-9. Restart your web server.
-
-  +-----------------------+-----------------------------------------+
-  | Operating System      | Command (as root)                       |
-  +=======================+=========================================+
-  | CentOS/ Red Hat       |  ``apachectl start``                    |         
-  +-----------------------+-----------------------------------------+
-  | Debian                |                                         |
-  | or                    | ``/etc/init.d/apache2 start``           |
-  | Ubuntu                |                                         |
-  +-----------------------+-----------------------------------------+
-  | SUSE Enterprise       |                                         |
-  | Linux 11              | ``/usr/sbin/rcapache2 start``           |       
-  |                       |                                         |
-  | openSUSE 12.3 and up  | ``systemctl start apache2``             |
-  +-----------------------+-----------------------------------------+
+9. Restart your Web server.
 
 10. Now you should be able to open a Web browser to your ownCloud server and 
     log in as usual. You have a couple more steps to go: You should see a 
@@ -245,15 +232,15 @@ platforms.)
    .. note:: The ``occ`` command does not download ownCloud updates. You must first download
       and install the updated code (steps 1-3), and then ``occ`` performs the final upgrade steps.  
      
-11. The upgrade operation takes a few minutes, depending on the size of your 
-    installation. When it is finished you will see a success message, or an 
-    error message that will tell where it went wrong.   
+11. The upgrade operation takes a few minutes to a few hours, depending on the 
+    size of your installation. When it is finished you will see a success 
+    message, or an error message that will tell where it went wrong.   
 
 Assuming your upgrade succeeded, take a look at the bottom of your Admin page to 
 verify the version number. Check your other settings to make sure they're 
 correct. Go to the Apps page and review the core apps to make sure the right 
 ones are enabled. Re-enable your third-party apps. Then apply strong 
-permissions to your ownCloud directories (:ref:`strong-perms-label`).
+permissions to your ownCloud directories (:ref:`strong_perms_label`).
 
 Reverse Upgrade
 ---------------
@@ -292,13 +279,13 @@ Occasionally, *files do not show up after a upgrade*. A rescan of the files can 
 See `the owncloud.org support page <http://owncloud.org/support>`_ for further
 resources for both home and enterprise users.
 
-Sometimes, ownCloud can get *stuck in a upgrade*. This is usually due to the process taking too long and encountering a time-out. It is recommended to turn off the upgrade and start over with the manual process from the command line as described above under point 12.
-
-Stop the upgrade process this way::
+Sometimes, ownCloud can get *stuck in a upgrade*. This is usually due to the 
+process taking too long and encountering a PHP time-out. Stop the upgrade 
+process this way::
 
      $ sudo -u www-data php occ maintenance:mode --off
   
-And start the manual process::
+Then start the manual process::
   
     $ sudo -u www-data php occ upgrade
 
@@ -307,4 +294,5 @@ If this does not work properly, try the repair function::
     $ sudo -u www-data php occ maintenance:repair
 
 .. _Open Build Service: 
-   https://download.owncloud.org/download/repositories/8.2/owncloud/ 
+   https://download.owncloud.org/download/repositories/8.2/owncloud/
+   
