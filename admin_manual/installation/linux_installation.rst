@@ -71,3 +71,6 @@ options.
 **Running ownCloud in a subdir**: If you're running ownCloud in a subdir and
 want to use CalDAV or CardDAV clients make sure you have configured the correct 
 :ref:`service-discovery-label` URLs.
+
+**Note for MySQL/MariaDB environments**: Please refer to :ref:`db-binlog-label`
+on how to correctly configure your environment if you have binary logging enabled.
