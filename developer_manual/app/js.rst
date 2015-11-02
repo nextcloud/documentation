@@ -18,7 +18,18 @@ The JavaScript files reside in the **js/** folder and should be included in the 
   // add vendor files (also allows the array syntax)
   vendor_script('myapp', 'script');  //  adds vendor/script.js
 
-The recommended JavaScript framework to use is `AngularJS <https://angularjs.org/#>`_. A nice tutorial screencast collection can be found on `Egghead.io <https://egghead.io/technologies/angularjs>`_
+If the script file is only needed when the file list is displayed, you should
+listen to the ``OCA\Files::loadAdditionalScripts`` event:
+
+.. code-block:: php
+
+  <?php
+  $eventDispatcher = \OC::$server->getEventDispatcher();
+  $eventDispatcher->addListener('OCA\Files::loadAdditionalScripts', function() {
+    script('myapp', 'script');  // adds js/script.js
+    vendor_script('myapp', 'script');  //  adds vendor/script.js
+  });
+
 
 Sending the CSRF token
 ======================
