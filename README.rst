@@ -34,6 +34,7 @@ As this grows it may be moved to its own page.
 
 * ownCloud Apps Store
 * synchronize
+* Web (Web page, Web site)
 
 License
 -------
