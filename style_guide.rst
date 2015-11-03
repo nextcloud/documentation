@@ -130,4 +130,5 @@ or add a caption. Captions must follow a blank line and be italicized, like this
 Images must go into a sub-directory of the directory containing your manual 
 page. Currently the manuals have both a single master images directory, and 
 image directories local to each chapter. A single master images directory is 
-difficult to maintain and inevitably becomes cluttered with obsolete images.
+difficult to maintain and inevitably becomes cluttered with obsolete images. Eventually
+the single master directories will be gone.
