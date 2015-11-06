@@ -11,6 +11,10 @@ Nginx Configuration
    **ssl_certificate_key** to suit your needs.
 -  Make sure your SSL certificates are readable by the server (see `Nginx HTTP 
    SSL Module documentation <http://wiki.nginx.org/HttpSslModule>`_).
+-  ``add_header`` statements are only taken from the current level and are not cascaded 
+   from or to a different level. All necessary ``add_header`` statements must be defined 
+   in each level needed. For better readability is is possible to move *common* add 
+   header statements into a separate file and include that file wherever necessary.
 
 .. note:: The following example assumes that your ownCloud is installed in
    your webroot. If you're using a subfolder you need to adjust the configuration
