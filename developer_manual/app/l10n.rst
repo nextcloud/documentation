@@ -97,17 +97,13 @@ In every template the global variable **$l** can be used to translate the string
 
 JavaScript
 ==========
-There is currently no good way to translate JavaScript strings. One way to still use translated strings in the scripts is to create an invisible HTML element with all the translations in it which can be parsed in the JavaScript code:
-
-.. code-block:: php
-
-    <ul id="translations">
-        <li id="add-new"><?php p($l->t('Add new file')); ?></li>
-    </ul>
+There is a global function **t()** available for translating strings. The first argument is your app name, the second argument is the string to translate.
 
 .. code-block:: js
 
-    var addNewTranslation = $('#add-new').text();
+    t('myapp', 'Hello World!');
+
+For advanced usage, refer to the source code **core/js/l10n.js**, **t()** is bind to **OC.L10N.translate()**.
 
 Hints
 =====
