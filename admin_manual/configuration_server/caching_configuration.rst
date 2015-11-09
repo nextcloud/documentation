@@ -178,10 +178,28 @@ Redis for the local server cache::
        'host' => 'localhost',
        'port' => 6379,
        'timeout' => 0.0,
+       'password' => '', // Optional, if not defined no password will be used.
+        ),
+
+.. note:: For enhanced security it is recommended to configure Redis to require
+   a password. See http://redis.io/topics/security for more information.
+
+If you want to connect to Redis configured to listen on an unix socket (which is
+recommended if Redis is running on the same system as ownCloud) use this example
+``config.php`` configuration::
+
+  'memcache.local' => '\OC\Memcache\Redis',
+  'redis' => array(
+       'host' => '/var/run/redis/redis.sock',
+       'port' => 0,
+       'timeout' => 0.0,
         ),
 
 Redis is very configurable; consult `the Redis documentation 
-<http://redis.io/documentation>`_ to learn more.
+<http://redis.io/documentation>`_ to learn more. 
+
+If you are on Ubuntu you can follow `this guide 
+<https://www.en0ch.se/how-to-configure-redis-cache-in-ubuntu-14-04-with-owncloud/>`_ for a complete installation from scratch. 
 
 Cache Directory Location
 ------------------------

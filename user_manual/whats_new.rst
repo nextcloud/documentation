@@ -2,6 +2,17 @@
 What's New for Users in ownCloud |version|
 ==========================================
 
+File upload action is now in the "New" menu in the files app.
+
+The Files app has a new sidebar displaying file details. 
+
+The Pictures app has been almost entirely rewritten and is now known as Gallery.
+
+Password reset tokens are expire after 12 hours, or after you log in within 12 
+hours of request a reset. 
+
+Federated shares now appear on your "Shared with you" tab.
+
 Groups Listings on Personal Page
 --------------------------------
 

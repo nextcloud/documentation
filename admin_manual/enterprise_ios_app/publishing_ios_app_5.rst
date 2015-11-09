@@ -3,12 +3,13 @@ Create Provisioning Profiles
 ============================
 
 The next phase of this glorious journey is to create eight provisioning 
-profiles: 4 Ad Hoc and 4 App Store. You will email the four Ad Hoc profiles, 
+profiles: 4 Ad Hoc and :ref:`4 App Store <app_store_profiles_label>`. You will 
+email the four Ad Hoc profiles, 
 and your :doc:`P12 certificate <publishing_ios_app_6>` (which you will create 
 after your provisioning profiles), to branding@owncloud.com after building your 
 branded app with the ownBrander app on `Customer.owncloud.com 
-<https://customer.owncloud.com/owncloud>`_. Do not send us the App Store 
-profiles. All eight of these profiles must be stored on your Mac PC.
+<https://customer.owncloud.com/owncloud>`_. **Do not send us the App Store 
+profiles.** All eight of these profiles must be stored on your Mac PC.
 
 First Ad Hoc Provisioning Profile
 ---------------------------------
@@ -151,6 +152,8 @@ You should now see all of your Ad Hoc provisioning profiles listed in your "iOS
 Provisioning Profiles".
 
 .. figure:: ../images/cert-59.png
+
+.. _app_store_profiles_label:
 
 Create Four App Store Profiles
 ------------------------------

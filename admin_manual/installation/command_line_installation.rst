@@ -12,12 +12,12 @@ and unpack the tarball in the appropriate directories. (See
 :doc:`linux_installation` and :doc:`source_installation`.)
 
 2. Apply the correction permissions to your ownCloud files and directories (see 
-:ref:`strong_perms`.)
+:ref:`strong_perms_label`.)
 
 3. Use the ``occ`` command to complete your installation. This takes the place 
 of running the graphical Installation Wizard.
 
-You must run ``occ`` as your HTTP user; see :ref:`http_user`. This example 
+You must run ``occ`` as your HTTP user; see :ref:`http_user_label`. This example 
 shows how to complete your ownCloud installation with ``occ`` on Ubuntu Linux::
 
  $ cd /var/www/owncloud/
@@ -38,4 +38,4 @@ Supported databases are::
  - pgsql (PostgreSQL)
  - oci (Oracle)
  
-See :ref:`cli_installation` for more information. 
+See :ref:`command_line_installation_label` for more information. 

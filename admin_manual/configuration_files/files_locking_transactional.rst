@@ -5,7 +5,7 @@ Transactional File Locking
 ownCloud's new transactional file locking mechanism operates differently than 
 the old File Locking application, and will eventually replace it. The purpose
 of this mechanism is to avoid file corruption during normal operation. If you
-select to use the new file locking mechanism make sure you disable the File
+elect to use the new file locking mechanism make sure you disable the File
 Locking app.
 
 The new file locking mechanism has these capabilities:
@@ -33,14 +33,29 @@ file like this example::
        'host' => 'localhost',
        'port' => 6379,
        'timeout' => 0.0,
+       'password' => '', // Optional, if not defined no password will be used.
         ),
 
-The **Server status** section on your ownCloud Admin page indicates whether 
-experimental file locking is enabled or disabled.
+.. note:: For enhanced security it is recommended to configure Redis to require
+   a password. See http://redis.io/topics/security for more information.
 
-.. figure:: ../images/transactional-locking-1.png
+If you want to connect to Redis configured to listen on an unix socket (which is
+recommended if Redis is running on the same system as ownCloud) use this example
+``config.php`` configuration::
 
-.. figure:: ../images/transactional-locking-2.png
+  'filelocking.enabled' => 'true',
+  'memcache.locking' => '\OC\Memcache\Redis',
+  'redis' => array(
+       'host' => '/var/run/redis/redis.sock',
+       'port' => 0,
+       'timeout' => 0.0,
+        ),
+   
+.. note:: Large installations especially benefit from setting 
+   ``memcache.locking``. File locking is enabled by default, which uses the 
+   database locking backend. This places a significant load on your database. 
+   Using ``memcache.locking`` relieves the database load and improves 
+   performance.
 
 See ``config.sample.php`` to see configuration examples for Redis, and for all 
 supported memcaches.

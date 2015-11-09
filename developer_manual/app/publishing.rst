@@ -97,7 +97,9 @@ App store:
 
 Getting an app approved
 -----------------------
-If you want your app to be approved, make sure you fulfill all the requirements and enter your details in `this form on the ownCloud website <http://owncloud.org/contribute/appform>`_. A team of ownCloud contributors will review your application. As part of the process, you will be subscribed to the `ownCloud app review mailing list <http://mailman.owncloud.org/mailman/listinfo/appsreview>`_ where you can answer the questions and comments about your app. You are encouraged to help review other contributors' apps as well!
+If you want your app to be approved, make sure you fulfill all the requirements and then create an issue in the `app approval github repository <https://github.com/owncloud/app-approval>`_ using `this template <https://github.com/owncloud/app-approval/blob/master/README.md>`_. A team of ownCloud contributors will review your application. Updates to an app require re-review but, of course, an initial review takes more effort and time than the checking of an update.
+
+You are encouraged to help review other contributors' apps as well! Every app requires at least two independent reviews so your review of at least 2 (more is better!) other apps will ensure the process continues smoothly. Thank you for participating in this process and being a great ownCloud Community member!
 
 Losing a rating
 ^^^^^^^^^^^^^^^

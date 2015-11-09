@@ -427,6 +427,68 @@ Solution
 
 Workarounds are documented in the KB2668751_ article.
 
+
+Accessing Files Using cURL
+--------------------------
+
+Since WebDAV is an extension of HTTP cURL can be used to script file operations.
+	
+To create a folder with the current date as name:
+
+.. code-block:: bash
+
+	$ curl -u user:pass -X MKCOL "http://example.org/owncloud/remote.php/webdav/$(date '+%d-%b-%Y')"
+
+To upload a file ``error.log`` into that directory:
+
+.. code-block:: bash
+
+	$ curl -u user:pass -T error.log "http://example.org/owncloud/remote.php/webdav/$(date '+%d-%b-%Y')/error.log"
+
+To move a file:
+
+.. code-block:: bash
+
+	$ curl -u user:pass -X MOVE --header 'Destination: http://example.org/owncloud/remote.php/webdav/target.jpg' http://example.org/owncloud/remote.php/webdav/source.jpg
+
+To get the properties of files in the root folder:
+
+.. code-block:: bash
+
+	$ curl -X PROPFIND -H "Depth: 1" -u user:pass http://example.org/owncloud/remote.php/webdav/ | xml_pp
+	<?xml version="1.0" encoding="utf-8"?>
+    <d:multistatus xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns" xmlns:s="http://sabredav.org/ns">
+      <d:response>
+        <d:href>/owncloud/remote.php/webdav/</d:href>
+        <d:propstat>
+          <d:prop>
+            <d:getlastmodified>Tue, 13 Oct 2015 17:07:45 GMT</d:getlastmodified>
+            <d:resourcetype>
+              <d:collection/>
+            </d:resourcetype>
+            <d:quota-used-bytes>163</d:quota-used-bytes>
+            <d:quota-available-bytes>11802275840</d:quota-available-bytes>
+            <d:getetag>"561d3a6139d05"</d:getetag>
+          </d:prop>
+          <d:status>HTTP/1.1 200 OK</d:status>
+        </d:propstat>
+      </d:response>
+      <d:response>
+        <d:href>/owncloud/remote.php/webdav/welcome.txt</d:href>
+        <d:propstat>
+          <d:prop>
+            <d:getlastmodified>Tue, 13 Oct 2015 17:07:35 GMT</d:getlastmodified>
+            <d:getcontentlength>163</d:getcontentlength>
+            <d:resourcetype/>
+            <d:getetag>"47465fae667b2d0fee154f5e17d1f0f1"</d:getetag>
+            <d:getcontenttype>text/plain</d:getcontenttype>
+          </d:prop>
+          <d:status>HTTP/1.1 200 OK</d:status>
+        </d:propstat>
+      </d:response>
+    </d:multistatus>
+
+
 .. _KB2668751: https://support.microsoft.com/kb/2668751
 .. _KB2123563: https://support.microsoft.com/kb/2123563
 .. _in your file manager: http://en.wikipedia.org/wiki/Webdav#WebDAV_client_applications

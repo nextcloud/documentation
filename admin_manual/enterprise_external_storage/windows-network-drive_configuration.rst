@@ -99,12 +99,20 @@ the server address, the share name, and the folder you want to connect to.
 
 You have four options for login credentials: 
 
-* **User credentials**.
-* **Global credentials**, which uses the credentials  set in the Global 
+* **User credentials**. For admin-created global mountpoints; users must 
+  click on the share and then enter their personal credentials to access the 
+  share.
+* **Global credentials**. Uses the credentials set in the Global 
   credentials fields
 * **Login credentials** is for users to connect to the mountpoint using their 
-  DOMAIN/logincredentials; enter the domain in the **Domain** field.
-* **Custom Credentials** 
+  DOMAIN/login credentials; enter the domain in the **Domain** field.
+* **Custom Credentials**. On admin-created global mountpoints, the admin may 
+  configure custom credentials to access the shares. For example, the admin 
+  uses a single system account to mount company folders for all users. The 
+  folder permissions are mapped with the system account permissions. When users 
+  create a share on their Personal pages, custom credentials are only for that 
+  mountpoint. For example, User A creates a mountpoint that is accessible with 
+  User B's credentials.
   
 .. figure:: images/wnd-2.png
    :scale: 45%
@@ -112,7 +120,11 @@ You have four options for login credentials:
    
    *Figure 2: Windows Network Drive configuration panel. (Click to enlarge.)*
   
-When you're finished click the **Save** button.  
+When you're finished click the **Save** button.
+
+
+
+.. note:: When you create a new mountpoint using Login credentials you must log out of ownCloud,     and then log back in so you can access the share. You only have to do this the first time.
 
 Personal SMB Mounts
 -------------------

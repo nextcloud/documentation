@@ -4,11 +4,11 @@ Publishing Your New Branded iOS App
 
 At last, after following all the previous steps and passing beta testing, your 
 branded iOS app is ready to publish for general distribution on iTunes. You need 
-a Mac computer with Xcode installed (Xcode is a free download), and you need 
-the three provisioning profiles and p12 file that you created copied to the 
-same computer that you are using to upload your app to iTunes. You will also 
-need a number of screenshots of your app in specific sizes and resolutions, 
-which are detailed in your iTunes Connect setup screen.
+a Mac computer with Xcode installed (Xcode is a free download), and you need the 
+eight provisioning profiles (4 Ad Hoc and 4 Apple Store) and p12 file that you 
+created copied to the same computer that you are using to upload your app to 
+iTunes. You will also need a number of screenshots of your app in specific sizes 
+and resolutions, which are detailed in your iTunes Connect setup screen.
 
 .. Note:: Apple must review and approve your app, and the approval process can 
    take several days to several weeks. 

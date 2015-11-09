@@ -2,7 +2,7 @@
 Manual Installation on Linux
 ============================
 
-Installing ownCloud on Linux from the openSUSE Build Service packages is the 
+Installing ownCloud on Linux from our Open Build Service packages is the 
 preferred method (see :doc:`linux_installation`). These are maintained by 
 ownCloud engineers, and you can use your package manager to keep your ownCloud 
 server up-to-date.
@@ -208,19 +208,22 @@ Additional Apache Configurations
   the  server configuration, as well as in the CommonName field of the 
   certificate. If you want your ownCloud to be reachable via the internet, then 
   set both of these to the domain you want to reach your ownCloud server.
-  
+
 * Now restart Apache::
-  
+
      service apache2 restart
-     
-.. note:: You can use ownCloud over plain HTTP, but we strongly encourage you to
-          use SSL/TLS to encrypt all of your server traffic, and to protect 
-          user's logins and data in transit.
+
+* If you're running ownCloud in a subdir and want to use CalDAV or CardDAV clients
+  make sure you have configured the correct :ref:`service-discovery-label` URLs.
 
 .. _enabling-ssl-label:
 
 Enabling SSL
 ------------
+
+.. note:: You can use ownCloud over plain HTTP, but we strongly encourage you to
+          use SSL/TLS to encrypt all of your server traffic, and to protect 
+          user's logins and data in transit.
 
 Apache installed under Ubuntu comes already set-up with a simple
 self-signed certificate. All you have to do is to enable the ssl module and
@@ -249,7 +252,8 @@ Setting Strong Directory Permissions
 ------------------------------------
 
 We recommend setting the directory permissions in your ownCloud installation as 
-strictly as possible for stronger security. Please refer to :ref:`strong_perms`.
+strictly as possible for stronger security. Please refer to 
+:ref:`strong_perms_label`.
 
 SELinux
 -------

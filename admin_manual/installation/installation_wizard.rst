@@ -20,20 +20,18 @@ This is just three steps:
    
 You're finished and can start using your new ownCloud server.   
 
-Of course, there is much more that you can do to set up your ownCloud server 
-for 
-best performance and security. In the following sections we will cover 
-important 
+Of course, there is much more that you can do to set up your ownCloud server for 
+best performance and security. In the following sections we will cover important 
 installation and post-installation steps. Note that you must follow the 
-instructions in :ref:`Setting Strong Permissions <label-setting-strong-perms>` 
-in order to use the :doc:`occ Command <../configuration_server/occ_command>`.
+instructions in :ref:`Setting Strong Permissions <strong_perms_label>` in order 
+to use the :doc:`occ Command <../configuration_server/occ_command>`.
 
-* :ref:`Data Directory Location <label-data-directory-location>`
-* :ref:`Database Choice <label-database-choice>`
-* :ref:`Trusted Domains <label-trusted-domains>`
-* :ref:`Setting Strong Permissions <label-setting-strong-perms>`
+* :ref:`Data Directory Location <data_directory_location_label>`
+* :ref:`Database Choice <database_choice_label>`
+* :ref:`Trusted Domains <trusted_domains_label>`
+* :ref:`Setting Strong Permissions <strong_perms_label>`
 
-.. _label-data-directory-location:
+.. _data_directory_location_label:
 
 Data Directory Location
 -----------------------
@@ -51,9 +49,10 @@ ownCloud data in a different location for other reasons (e.g. on a storage
 server). It is best to configure your data directory location at installation, 
 as it is difficult to move after installation. You may put it anywhere; in this 
 example is it located in ``/var/oc_data``. This directory must already exist, 
-and must be owned by your HTTP user (see :ref:`label-setting-strong-perms`).
+and must be owned by your HTTP user (see 
+:ref:`strong_perms_label`).
 
-.. _label-database-choice:
+.. _database_choice_label:
 
 Database Choice
 ---------------
@@ -62,7 +61,7 @@ SQLite is the default database for ownCloud Server (it is not
 available and not supported in the Enterprise edition), and it is good only for 
 testing and lightweight single-user setups without client synchronization. 
 Supported databases are MySQL, MariaDB, Oracle 11g, and PostgreSQL, and we 
-recommend :doc:`MySQL/MariaDB <../release_notes>`. Your database and PHP 
+recommend :doc:`MySQL/MariaDB <system_requirements>`. Your database and PHP 
 connectors must be installed before you run the Installation Wizard. When you 
 install ownCloud from packages all the necessary dependencies will be satisfied 
 (see :doc:`source_installation` for a detailed listing of required and optional 
@@ -79,7 +78,7 @@ Click Finish Setup, and start using your new ownCloud server.
 
 Now we will look at some important post-installation steps.
 
-.. _label-trusted-domains: 
+.. _trusted_domains_label: 
 
 Trusted Domains
 ---------------
@@ -108,10 +107,8 @@ is not whitelisted the following error appears:
    :alt: screenshot of error message when URL is not whitelisted in 
     trusted_domains
   
-.. _label-setting-strong-perms:
-  
-.. _strong_perms:
-
+.. _strong_perms_label:
+ 
 Setting Strong Directory Permissions
 ------------------------------------
 
@@ -144,18 +141,19 @@ replace the ``htuser`` and ``htgroup`` variables with your HTTP user and group::
  ocpath='/var/www/owncloud'
  htuser='www-data'
  htgroup='www-data'
+ rootuser='root' # On QNAP this is admin
 
  find ${ocpath}/ -type f -print0 | xargs -0 chmod 0640
  find ${ocpath}/ -type d -print0 | xargs -0 chmod 0750
 
- chown -R root:${htuser} ${ocpath}/
+ chown -R ${rootuser}:${htgroup} ${ocpath}/
  chown -R ${htuser}:${htgroup} ${ocpath}/apps/
  chown -R ${htuser}:${htgroup} ${ocpath}/config/
  chown -R ${htuser}:${htgroup} ${ocpath}/data/
  chown -R ${htuser}:${htgroup} ${ocpath}/themes/
 
- chown root:${htuser} ${ocpath}/.htaccess
- chown root:${htuser} ${ocpath}/data/.htaccess
+ chown ${rootuser}:${htgroup} ${ocpath}/.htaccess
+ chown ${rootuser}:${htgroup} ${ocpath}/data/.htaccess
 
  chmod 0644 ${ocpath}/.htaccess
  chmod 0644 ${ocpath}/data/.htaccess

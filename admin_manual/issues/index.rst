@@ -41,11 +41,19 @@ If you can't find a solution, please use our `bugtracker`_.
 .. _webchat: http://webchat.freenode.net/?channels=owncloud
 .. _Enterprise Subscription: https://owncloud.com/lp/community-or-enterprise/
 .. _bugtracker: 
-   http://doc.owncloud.org/server/8.2/developer_manual/bugtracker/index.html
+   http://doc.owncloud.org/server/9.0/developer_manual/bugtracker/index.html
 .. TODO ON RELEASE: Update version number above on release
 
 General Troubleshooting
 -----------------------
+
+Disable 3rdparty / non-shipped apps
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It might be possible that 3rd party / non-shipped apps are causing various 
+different issues. Always disable 3rd party apps before upgrades, and for 
+troubleshooting. Please refer to the :ref:`apps_commands_label` on how
+to disable an app from command line.
 
 ownCloud Logfiles
 ^^^^^^^^^^^^^^^^^
@@ -239,6 +247,8 @@ which contains various additional information about WebDAV problems.
 Troubleshooting Contacts & Calendar
 -----------------------------------
 
+.. _service-discovery-label:
+
 Service discovery
 ^^^^^^^^^^^^^^^^^
 
@@ -247,11 +257,6 @@ when explicitly configured to use it.
 
 There are several techniques to remedy this, which are described extensively at 
 the `Sabre DAV website <http://sabre.io/dav/service-discovery/>`_.
-
-Apple iOS
-^^^^^^^^^
-
-Below is what has been proven to work with iOS including iOS 7.
 
 If your ownCloud instance is installed in a subfolder under the web server's 
 document root and the client has difficulties finding the Cal- or CardDAV 

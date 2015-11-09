@@ -6,10 +6,10 @@ The Contacts app is not enabled by default in ownCloud 8 and needs to
 be enabled seperately. It is also not a supported core app. You may ask
 your ownCloud server admin to enable it, and if you are 
 your own admin consult the `Installation > Installing and Managing Apps
-<https://doc.owncloud.org/server/8.2/admin_manual/installation/
+<https://doc.owncloud.org/server/9.0/admin_manual/installation/
 apps_management_installation.html>`_
 section of the `ownCloud Server Administration Manual
-<https://doc.owncloud.org/server/8.2/admin_manual/html>`_.
+<https://doc.owncloud.org/server/9.0/admin_manual/html>`_.
 
 The ownCloud Contacts app is similar to other mobile contact applications, but 
 with more functionality.  When you first access the Contacts app, a default 
@@ -347,4 +347,4 @@ Troubleshooting
 Are you having problems using the app? Have a look at the :doc:`troubleshooting`
 and `Troubleshooting Contacts & Calendar`_ guides.
 
-.. _Troubleshooting Contacts & Calendar: https://doc.owncloud.org/server/8.2/admin_manual/issues/index.html#troubleshooting-contacts-calendar
+.. _Troubleshooting Contacts & Calendar: https://doc.owncloud.org/server/9.0/admin_manual/issues/index.html#troubleshooting-contacts-calendar
