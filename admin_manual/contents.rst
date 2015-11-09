@@ -23,7 +23,7 @@ Enterprise Subscription Only
 
 .. toctree::
     :maxdepth: 3
-
+    
     enterprise_installation/index
     enterprise_clients/index
     enterprise_server_branding/index
@@ -31,5 +31,4 @@ Enterprise Subscription Only
     enterprise_user_management/index
     enterprise_files_drop/index
     enterprise_logging/index
-   
-
+    enterprise_firewall/index
