@@ -222,6 +222,10 @@ password for a user:
 
 Syntax: ``/v1/cloud/users/{userid}/non_shib_password``
 
+.. note:: In pure SSO mode the WebDAV password feature will not work, as we 
+   have no way to store the WebDAV password. It does work in auto-provision 
+   mode.
+
 * HTTP method: DELETE
 
 Status codes:
