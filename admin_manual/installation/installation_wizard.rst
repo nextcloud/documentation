@@ -14,7 +14,7 @@ This is just three steps:
 #. Enter your desired administrator's username and password.
 #. Click **Finish Setup**.
 
-.. figure:: images/install-wizard.png
+.. figure:: images/install-wizard-a.png
    :scale: 75%
    :alt: screenshot of the installation wizard   
    
@@ -37,11 +37,11 @@ Data Directory Location
 -----------------------
 
 Click **Storage and Database** to expose additional installation configuration 
-options for your ownCloud data directory and database options.
+options for your ownCloud data directory and database.
 
-.. figure:: images/install-wizard-2.png
+.. figure:: images/install-wizard-a1.png
    :scale: 75%
-   :alt: screenshot of the installation wizard with all options exposed
+   :alt: installation wizard with all options exposed
 
 You should locate your ownCloud data directory outside of your Web root if you 
 are using an HTTP server other than Apache, or you may wish to store your 
@@ -57,24 +57,23 @@ and must be owned by your HTTP user (see
 Database Choice
 ---------------
 
-SQLite is the default database for ownCloud Server (it is not 
-available and not supported in the Enterprise edition), and it is good only for 
-testing and lightweight single-user setups without client synchronization. 
-Supported databases are MySQL, MariaDB, Oracle 11g, and PostgreSQL, and we 
-recommend :doc:`MySQL/MariaDB <system_requirements>`. Your database and PHP 
-connectors must be installed before you run the Installation Wizard. When you 
-install ownCloud from packages all the necessary dependencies will be satisfied 
-(see :doc:`source_installation` for a detailed listing of required and optional 
-PHP modules). You will need the root database login, or any administrator login 
-that has permissions to create and modify databases, and then enter any name 
-you 
-want for your ownCloud database.
+SQLite is the default database for ownCloud Server (it is not available and not 
+supported in the Enterprise edition), and it is good only for testing and 
+lightweight single-user setups without client synchronization. Supported 
+databases are MySQL, MariaDB, Oracle 11g, and PostgreSQL, and we recommend 
+:doc:`MySQL/MariaDB <system_requirements>`. Your database and PHP connectors 
+must be installed before you run the Installation Wizard. When you install 
+ownCloud from packages all the necessary dependencies will be satisfied (see 
+:doc:`source_installation` for a detailed listing of required and optional PHP 
+modules). You will need the root database login, or any administrator login that 
+has permissions to create and modify databases, and then enter any name you want 
+for your ownCloud database.
 
 Click Finish Setup, and start using your new ownCloud server. 
 
-.. figure:: images/install-wizard-3.png
+.. figure:: images/install-wizard-a2.png
    :scale: 75%
-   :alt: screenshot of the welcome screen after a successful installation
+   :alt: ownCloud welcome screen after a successful installation
 
 Now we will look at some important post-installation steps.
 
@@ -102,10 +101,9 @@ that a load balancer is in place there will be no issues as long as it sends
 the correct X-Forwarded-Host header. When a user tries a URL that 
 is not whitelisted the following error appears:
 
-.. figure:: images/untrusted-domain.png
+.. figure:: images/install-wizard-a4.png
    :scale: 75%
-   :alt: screenshot of error message when URL is not whitelisted in 
-    trusted_domains
+   :alt: Error message when URL is not whitelisted
   
 .. _strong_perms_label:
  
