@@ -8,6 +8,8 @@ has the option to disable these features, so if any of them are missing on your
 system ask your server administrator.
 
 .. figure:: ../images/oc_main_web_labelled.png
+   :scale: 75%
+   :alt: The Files view screen.
    
 ownCloud can display thumbnail previews for image files, MP3 covers, 
 and text files, if this enabled by your server administrator. Hover your cursor 
