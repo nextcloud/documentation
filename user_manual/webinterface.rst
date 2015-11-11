@@ -6,25 +6,22 @@ You can connect to your ownCloud server using any Web browser; just point it to
 your ownCloud server and enter your username and password.
 
   .. figure:: images/oc_connect.png
-    :scale: 75%
+     :alt: ownCloud login screen.
 
-    **ownCloud login window**
-
-.. note:: Some apps like ``files_external`` or ``encryption`` are disabling the ``remember``
-   checkbox (shown above) on purpose if they are enabled by your administrator. 
+.. note:: Some apps like ``files_external`` or ``encryption`` will disable 
+   the **Stay logged in** checkbox.
 
 Navigating the Main User Interface
-------------------------------------
+----------------------------------
 
-By default, the ownCloud Web interface opens to your Files page.
-Once you have accessed the ownCloud Server main web interface you can add files, 
-remove files, and make changes based on the access privileges set by you
-(if you are administering the server) or by your server administrator.
+By default, the ownCloud Web interface opens to your Files page. Once you have 
+accessed the ownCloud Server main Web interface you can add files, remove files, 
+and make changes based on the access privileges set by you (if you are 
+administering the server) or by your server administrator.
 
   .. figure:: images/oc_main_web_labelled.png
-    :scale: 75%
-
-  **Navigating the main user interface**
+     :scale: 75%
+     :alt: The main Files view.
 
 The ownCloud Main User Interface contains the following fields and functions:
 
@@ -45,20 +42,18 @@ The ownCloud Main User Interface contains the following fields and functions:
   migrate to higher levels of the folder hierarchy up to the root level (home).
 
 * **New** button: Located in the Navigation Bar, the ``New`` button
-  enables you to create new files, new folders, or upload existing files from a
-  specified link.
+  enables you to create new files, new folders, or upload files.
 
 .. note:: You can also drag and drop files from your file manager into the 
    ownCloud Files Application View to upload them to ownCloud. Currently, 
    the only Web browsers that support drag-and-drop folders are Chrome and 
    Chromium.
 
-* **Upload** button: Located next to the ``New`` button in the
-  Navigation Bar, the ``Upload`` button opens a file picker for 
-  uploading files from your system to the ownCloud server. 
-
-* **Search** field: The Search field is in the upper right hand corner of 
-  your Web interface, for searching for files.
+* **Search** field: Click on the magnifier in the upper right hand corner of 
+  to search for files.
+  
+* **Gallery** button. This looks like four little squares, and takes you 
+  directly to your image gallery.   
 
 * **Personal Settings** menu: Click on your ownCloud username, located to the 
   right of the Search field, to open your Personal Settings dropdown menu. Your 
@@ -75,4 +70,3 @@ The ownCloud Main User Interface contains the following fields and functions:
   * ownCloud Version information
 
   See :doc:`userpreferences` section to learn more about those settings.
-
