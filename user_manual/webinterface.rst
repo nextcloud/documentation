@@ -14,16 +14,15 @@ your ownCloud server and enter your username and password.
 Navigating the Main User Interface
 ----------------------------------
 
-By default, the ownCloud Web interface opens to your Files page. Once you have 
-accessed the ownCloud Server main Web interface you can add files, remove files, 
-and make changes based on the access privileges set by you (if you are 
-administering the server) or by your server administrator.
+By default, the ownCloud Web interface opens to your Files page. You can add, 
+remove, and share files, and make changes based on the access privileges set by 
+you (if you are administering the server) or by your server administrator.
 
-  .. figure:: images/oc_main_web_labelled.png
+.. figure:: images/files_page.png
      :scale: 75%
      :alt: The main Files view.
 
-The ownCloud Main User Interface contains the following fields and functions:
+The ownCloud user interface contains the following fields and functions:
 
 * **Apps Selection Menu**: Located in the upper left corner, click the arrow to 
   open a dropdown menu to navigate to your various available apps.
@@ -64,9 +63,12 @@ The ownCloud Main User Interface contains the following fields and functions:
   * Server usage and space availability
   * Password management
   * Name, email, and profile picture settings
+  * Groups memberships
   * Interface language settings
   * Manage notifications
+  * Federated Cloud ID
+  * Social media sharing buttons
   * SSL certificate manager
   * ownCloud Version information
 
-  See :doc:`userpreferences` section to learn more about those settings.
+  See :doc:`userpreferences` section to learn more about these settings.
