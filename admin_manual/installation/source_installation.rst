@@ -14,7 +14,20 @@ If there are no packages for your Linux distribution, or you prefer installing
 from sources, you can setup ownCloud from scratch using a classic LAMP stack 
 (Linux, Apache, MySQL/MariaDB, PHP). This document provides a complete 
 walk-through for installing ownCloud on Ubuntu 14.04 LTS Server with Apache and 
-MySQL.
+MariaDB.
+
+* :ref:`prerequisites_label`
+* :ref:`ubuntu_installation_label`
+* :ref:`apache_configuration_label`
+* :ref:`enabling_ssl_label`
+* :ref:`installation_wizard_label`
+* :ref:`strong_permissions_label`
+* :ref:`selinux_tips_label`
+* :ref:`php_ini_tips_label`
+* :ref:`php_fpm_tips_label`
+* :ref:`other_HTTP_servers_label`
+
+.. _prerequisites_label:
 
 Prerequisites
 -------------
@@ -26,9 +39,9 @@ Prerequisites
           `PHP manual <http://php.net/manual/en/extensions.php>`_ for information on modules. 
           Your Linux distribution should have packages for all required modules.
 
-To run ownCloud, your Web server must have the following installed:
+To run ownCloud, your Web server must have the following PHP modules installed:
 
-* php5 (>= 5.4)
+* php5 (>= 5.5)
 * PHP module ctype
 * PHP module dom
 * PHP module GD
@@ -50,7 +63,7 @@ Database connectors (pick the one for your database:)
 
 *Recommended* packages:
 
-* PHP module curl (highly recommended, some functionality, e.g. http user
+* PHP module curl (highly recommended, some functionality, e.g. HTTP user
   authentication, depends on this)
 * PHP module fileinfo (highly recommended, enhances file analysis performance)
 * PHP module bz2 (recommended, required for extraction of apps)
@@ -62,7 +75,9 @@ Database connectors (pick the one for your database:)
 Required for specific apps:
 
 * PHP module ldap (for LDAP integration)
-* `php5-libsmbclient <https://software.opensuse.org/download.html?project=isv%3AownCloud%3Acommunity%3A8.1&package=php5-libsmbclient>`_
+* `php5-libsmbclient 
+  <https://software.opensuse.org/download.html?project=isv%3AownCloud%3
+  Acommunity%3A8.1&package=php5-libsmbclient>`_ (SMB/CIFS integration) 
 * PHP module ftp (for FTP storage / external user authentication)
 * PHP module imap (for external user authentication)
 
@@ -90,9 +105,12 @@ For preview generation (*optional*):
 * You don’t need the WebDAV module for your Web server (i.e. Apache’s
   ``mod_webdav``) to access your ownCloud data via WebDAV. ownCloud has a built-in
   WebDAV server of its own, SabreDAV.
+  
+.. _ubuntu_installation_label:  
 
-Example installation on Ubuntu 14.04 LTS Server
+Example Installation on Ubuntu 14.04 LTS Server
 -----------------------------------------------
+
 On a machine running a pristine Ubuntu 14.04 LTS server, install the
 required and recommended modules for a typical ownCloud installation, using
 Apache and MariaDB, by issuing the following commands in a terminal::
@@ -112,8 +130,8 @@ Apache and MariaDB, by issuing the following commands in a terminal::
 Now download the archive of the latest ownCloud version:
 
 * Go to the `ownCloud Download Page <http://owncloud.org/install>`_.
-* Click the **Archive file for server owners** button.
-* Click **Download Unix**.
+* Go to **Download ownCloud Server > Download > Archive file for 
+  server owners** and download either the tar.bz2 or .zip archive in step 1.
 * This downloads a file named owncloud-x.y.z.tar.bz2 (where
   x.y.z is the version number of the current latest version).
 * Download its corresponding checksum file, e.g. owncloud-x.y.z.tar.bz2.md5, 
@@ -137,37 +155,49 @@ Now download the archive of the latest ownCloud version:
 
     tar -xjf owncloud-x.y.z.tar.bz2
 
-* Copy the ownCloud files to their final destination in the document root of 
-  your web server::
+* This unpacks to a single ``owncloud`` directory. Copy the ownCloud directory 
+  to its final destination in the document root of your web server::
 
     cp -r owncloud /path/to/webserver/document-root
 
   where ``/path/to/webserver/document-root`` is replaced by the 
   document root of your Web server. On Ubuntu systems this 
-  ``/var/www/html/owncloud``, so your copying command is::
+  ``/var/www/owncloud``, so your copying command is::
     
-    cp -r owncloud /var/www/html
+    cp -r owncloud /var/www/
+    
+ .. _apache_configuration_label:   
     
 Apache Web Server Configuration
 -------------------------------
 
 On Debian, Ubuntu, and their derivatives, Apache installs with a useful 
 configuration so all you have to do is create a 
-:file:`/etc/apache2/sites-available/owncloud.conf` file with these lines in it:
+:file:`/etc/apache2/sites-available/owncloud.conf` file with these lines in 
+it:
 
 .. code-block:: xml
    
-   Alias /owncloud /var/www/owncloud
-   <Directory /var/www/owncloud/>
+ Alias /owncloud /var/www/owncloud
+  <Directory /var/www/owncloud/>
+    Options +FollowSymlinks
     AllowOverride All
-   </Directory>
 
-Then create a symlink to  :file:`/etc/apache2/sites-enabled`::
+   <IfModule mod_dav.c>
+    Dav off
+   </IfModule>
+
+   SetEnv HOME /var/www/owncloud
+   SetEnv HTTP_HOME /var/www/owncloud
+
+  </Directory>   
+
+Then create a symlink to :file:`/etc/apache2/sites-enabled`::
 
   ln -s /etc/apache2/sites-available/owncloud.conf /etc/apache2/sites-enabled/owncloud.conf
   
 Additional Apache Configurations
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * For ownCloud to work correctly, we need the module ``mod_rewrite``. Enable it 
   by running::
@@ -184,16 +214,6 @@ Additional Apache Configurations
   If you're running ``mod_fcgi`` instead of the standard ``mod_php`` also enable::
   
     a2enmod setenvif
-
-* You should make sure that any built-in WebDAV module of your Web server is 
-  disabled (at least for the ownCloud directory), as it will interfere with 
-  ownCloud's built-in WebDAV support.
-
-  If you need the WebDAV support in the rest of your configuration, you can turn 
-  it off specifically for the ownCloud entry by adding the following line in 
-  the ``<Directory`` section for your ownCloud server::
-
-    Dav Off  
 
 * You must disable any server-configured authentication for ownCloud, as it 
   uses Basic authentication internally for DAV services. If you have turned on 
@@ -213,10 +233,11 @@ Additional Apache Configurations
 
      service apache2 restart
 
-* If you're running ownCloud in a subdir and want to use CalDAV or CardDAV clients
-  make sure you have configured the correct :ref:`service-discovery-label` URLs.
+* If you're running ownCloud in a subdirectory and want to use CalDAV or 
+  CardDAV clients make sure you have configured the correct 
+  :ref:`service-discovery-label` URLs.
 
-.. _enabling-ssl-label:
+.. _enabling_ssl_label:
 
 Enabling SSL
 ------------
@@ -236,17 +257,27 @@ the default site. Open a terminal and run::
 .. note:: Self-signed certificates have their drawbacks - especially when you
           plan to make your ownCloud server publicly accessible. You might want
           to consider getting a certificate signed by a commercial signing
-          authority. Check with your domain name registrar or hosting service,
-          if you're using one, for good deals on commercial certificates.    
+          authority. Check with your domain name registrar or hosting service 
+          for good deals on commercial certificates.    
+    
+.. _installation_wizard_label:
     
 Installation Wizard
 -------------------
 
-You may complete your installation by running either the graphical Installation 
-Wizard, or on the command line with the ``occ`` command. To use ``occ`` see 
-:doc:`command_line_installation`.
+After restarting Apache you must complete your installation your installation by 
+running either the graphical Installation Wizard, or on the command line with 
+the ``occ`` command. To enable this you must temporarily change the ownership 
+of your ``owncloud`` directory to your HTTP user. On Debian/Ubuntu/etc. this is 
+``www-data``::
+
+ chown -R www-data:www-data /var/www/owncloud/
+
+To use ``occ`` see :doc:`command_line_installation`. 
 
 To use the graphical Installation Wizard see :doc:`installation_wizard`.
+
+.. _strong_permissions_label:
 
 Setting Strong Directory Permissions
 ------------------------------------
@@ -255,16 +286,18 @@ We recommend setting the directory permissions in your ownCloud installation as
 strictly as possible for stronger security. Please refer to 
 :ref:`strong_perms_label`.
 
-SELinux
--------
+.. _selinux_tips_label:
+
+SELinux Configuration Tips
+--------------------------
 
 See :doc:`selinux_configuration` for a suggested configuration for 
 SELinux-enabled distributions such as Fedora and CentOS.
 
-Apache is the recommended Web server.
+.. _php_ini_tips_label:
 
-Configuration notes to php.ini files
-------------------------------------
+php.ini Configuration Notes
+---------------------------
 
 Keep in mind that changes to ``php.ini`` may have to be done on more than one 
 ini file. This can be the case, for example, for the ``date.timezone`` setting.
@@ -283,12 +316,12 @@ ini file. This can be the case, for example, for the ``date.timezone`` setting.
   /etc/php5/cli/php.ini
 
 
-.. _using_php-fpm:
+.. _php_fpm_tips_label:
 
-Configuration notes to php-fpm
-------------------------------
+php-fpm Configuration Notes
+---------------------------
 
-**Security: Use at least PHP => 5.5.22 or >= 5.6.6,**
+**Security: Use at least PHP => 5.5.22 or >= 5.6.6**
 
 Due to `a bug with security implications <https://bugs.php.net/bug.php?id=64938>`_ 
 in older PHP releases with the handling of XML data you are highly encouraged to run
@@ -354,6 +387,8 @@ ownCloud comes with its own ``owncloud/.htaccess`` file. ``php-fpm`` can't
 read PHP settings in ``.htaccess`` unless the ``htscanner`` PECL extension is 
 installed. If ``php-fpm`` is used without this PECL extension installed, 
 settings and permissions must be set in the ``owncloud/.user.ini`` file.
+
+.. _other_HTTP_servers_label:
 
 Other Web Servers
 -----------------

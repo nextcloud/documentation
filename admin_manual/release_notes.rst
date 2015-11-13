@@ -110,8 +110,9 @@ The ownCloud 8 server is not supported on any version of Windows.
 The 8.1.0 release has a minor bug which makes app updates fail at first try. Reload the
 apps page and try again, and the update will succeed.
 
-The ``forcessl`` option within the ``config.php`` and the ``Enforce SSL`` option within the
-Admin-Backend was removed. This now needs to be configured like described in :ref:`use-https-label`.
+The ``forcessl`` option within the ``config.php`` and the ``Enforce SSL`` option 
+within the Admin-Backend was removed. This now needs to be configured like 
+described in :ref:`use_https_label`.
 
 WebDAV file locking was removed in oC 8.1 which causes Finder on Mac OS X to mount WebDAV read-only.
 

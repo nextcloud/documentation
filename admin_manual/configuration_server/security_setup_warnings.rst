@@ -53,9 +53,9 @@ server to support it, and then there are some settings in the **Security**
 section of your ownCloud Admin page to enable. The following manual pages 
 describe how to enable HTTPS on the Apache and Nginx Web servers.
 
-:ref:`enabling-ssl-label` (on Apache)
+:ref:`enabling_ssl_label` (on Apache)
 
-:ref:`use-https-label`
+:ref:`use_https_label`
 
 :ref:`nginx_configuration_example`
 
@@ -63,7 +63,8 @@ The test with getenv(\"PATH\") only returns an empty response
 -------------------------------------------------------------
 
 Some environments are not passing a valid PATH variable to ownCloud. The
-:ref:`using_php-fpm` provides the information about how to configure your environment.
+:ref:`php_fpm_tips_label` provides the information about how to configure your 
+environment.
 
 The "Strict-Transport-Security" HTTP header is not configured
 -------------------------------------------------------------

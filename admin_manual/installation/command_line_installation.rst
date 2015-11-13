@@ -11,14 +11,14 @@ line:
 and unpack the tarball in the appropriate directories. (See 
 :doc:`linux_installation` and :doc:`source_installation`.)
 
-2. Apply the correction permissions to your ownCloud files and directories (see 
-:ref:`strong_perms_label`.)
+2. Change the ownership of your ``owncloud`` directory to your HTTP user, like 
+this example for Debian/Ubuntu. You must run ``occ`` as your HTTP user; see 
+:ref:`http_user_label`::
+
+ $ sudo chown -R www-data:www-data /var/www/owncloud/
 
 3. Use the ``occ`` command to complete your installation. This takes the place 
-of running the graphical Installation Wizard.
-
-You must run ``occ`` as your HTTP user; see :ref:`http_user_label`. This example 
-shows how to complete your ownCloud installation with ``occ`` on Ubuntu Linux::
+of running the graphical Installation Wizard::
 
  $ cd /var/www/owncloud/
  $ sudo -u www-data php occ  maintenance:install --database 
@@ -38,4 +38,9 @@ Supported databases are::
  - pgsql (PostgreSQL)
  - oci (Oracle)
  
-See :ref:`command_line_installation_label` for more information. 
+See :ref:`command_line_installation_label` for more information.
+
+Finally, apply the correct strong permissions to your ownCloud files and 
+directories (see :ref:`strong_perms_label`). This is an extremely important 
+step. It helps protect your ownCloud installation, and ensures that it will run 
+correctly.

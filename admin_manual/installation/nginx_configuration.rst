@@ -132,7 +132,7 @@ Nginx Configuration
 -  Remove **ssl_certificate** and **ssl_certificate_key**.
 -  Remove **fastcgi_params HTTPS on;**
 
-.. note:: If you are using php-fpm please read :ref:`using_php-fpm`
+.. note:: If you are using php-fpm please read :ref:`php_fpm_tips_label`
 
 Suppressing Log Messages
 ------------------------
