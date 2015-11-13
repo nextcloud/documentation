@@ -76,7 +76,7 @@ setting the ``enable_previews`` switch to ``false`` in ``config.php``. As an
 administrator you are also able to manage which preview providers are enabled by 
 modifying the ``enabledPreviewProviders`` option switch.
 
-.. _use-https-label:
+.. _use_https_label:
 
 Use HTTPS
 ---------
