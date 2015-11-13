@@ -265,7 +265,7 @@ the default site. Open a terminal and run::
 Installation Wizard
 -------------------
 
-After restarting Apache you must complete your installation your installation by 
+After restarting Apache you must complete your installation by 
 running either the graphical Installation Wizard, or on the command line with 
 the ``occ`` command. To enable this you must temporarily change the ownership 
 of your ``owncloud`` directory to your HTTP user. On Debian/Ubuntu/etc. this is 
@@ -277,14 +277,17 @@ To use ``occ`` see :doc:`command_line_installation`.
 
 To use the graphical Installation Wizard see :doc:`installation_wizard`.
 
+After your installation is complete and you can log into ownCloud, you must 
+apply strong permissions to your ownCloud directory.
+
 .. _strong_permissions_label:
 
 Setting Strong Directory Permissions
 ------------------------------------
 
-We recommend setting the directory permissions in your ownCloud installation as 
-strictly as possible for stronger security. Please refer to 
-:ref:`strong_perms_label`.
+After completing installation, we recommend immediately setting the directory 
+permissions in your ownCloud installation as strictly as possible for stronger 
+security. Please refer to :ref:`strong_perms_label`.
 
 .. _selinux_tips_label:
 
