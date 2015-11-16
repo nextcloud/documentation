@@ -63,7 +63,7 @@ The ownCloud user interface contains the following fields and functions:
   * Server usage and space availability
   * Password management
   * Name, email, and profile picture settings
-  * Groups memberships
+  * Group memberships
   * Interface language settings
   * Manage notifications
   * Federated Cloud ID
