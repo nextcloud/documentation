@@ -124,7 +124,7 @@ top.
 Filtering the Files View
 ------------------------
 
-The right sidebar on the Files page contains several filter for quickly sorting 
+The right sidebar on the Files page contains several filters for quickly sorting 
 and managing your files.
 
 All files
