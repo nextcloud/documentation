@@ -12,14 +12,6 @@ on/off``. If it is on, then add this line to ``php.ini`` to turn it off::
 
  safe_mode = Off
 
-Raise max_file_uploads of PHP
------------------------------
-
-The PHP setting ``max_file_uploads`` within the ``php.ini`` defaults to ``20``
-on most environments which allows that number of simultaneous uploads.
-Currently the ownCloud sync client is doing ``3`` parallel uploads which means
-that at least ``6`` clients can upload files simultaneously. Depending on your
-server usage it is recommended to raise this number to a higher value.
 
 Enable the SPDY / http_v2 protocol
 ----------------------------------
