@@ -31,9 +31,9 @@ the database load and improves performance. Admins of ownCloud servers with
 heavy workloads should install a memcache. (See 
 :doc:`../configuration_server/caching_configuration`.)  
 
-You must install the Redis server and corresponding PHP module for the new file 
-locking to work. After installing Redis you must enter a configuration in your 
-``config.php`` file like this example::
+To use a memcache with Transactional File Locking, you must install the Redis 
+server and corresponding PHP module. After installing Redis you must enter a 
+configuration in your ``config.php`` file like this example::
 
   'filelocking.enabled' => 'true',
   'memcache.locking' => '\OC\Memcache\Redis',
