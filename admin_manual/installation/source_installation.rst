@@ -11,10 +11,11 @@ server up-to-date.
    :doc:`../enterprise_installation/linux_installation`
 
 If there are no packages for your Linux distribution, or you prefer installing 
-from sources, you can setup ownCloud from scratch using a classic LAMP stack 
-(Linux, Apache, MySQL/MariaDB, PHP). This document provides a complete 
-walk-through for installing ownCloud on Ubuntu 14.04 LTS Server with Apache and 
-MariaDB.
+from the source tarball, you can setup ownCloud from scratch using a classic 
+LAMP stack (Linux, Apache, MySQL/MariaDB, PHP). This document provides a 
+complete walk-through for installing ownCloud on Ubuntu 14.04 LTS Server with 
+Apache and MariaDB, using `the ownCloud .tar archive 
+<https://owncloud.org/install/>`_.
 
 * :ref:`prerequisites_label`
 * :ref:`ubuntu_installation_label`
@@ -27,19 +28,21 @@ MariaDB.
 * :ref:`php_fpm_tips_label`
 * :ref:`other_HTTP_servers_label`
 
+.. note:: Admins of SELinux-enabled distributions such as CentOS, Fedora, and 
+   Red Hat Enterprise Linux may need to set new rules to enable installing 
+   ownCloud. See :ref:`selinux_tips_label` for a suggested configuration.
+
 .. _prerequisites_label:
 
 Prerequisites
 -------------
 
-.. note:: This tutorial assumes you have terminal access to the machine you want
-          to install ownCloud on. Although this is not an absolute requirement,
-          installation without it is likely to require contacting your
-          hoster (e.g. for installing required modules). Consult the 
-          `PHP manual <http://php.net/manual/en/extensions.php>`_ for information on modules. 
-          Your Linux distribution should have packages for all required modules.
+The ownCloud .tar archive contains all of the required PHP modules. This section 
+lists all required and optional PHP modules.  Consult the `PHP manual 
+<http://php.net/manual/en/extensions.php>`_ for more information on modules. 
+Your Linux distribution should have packages for all required modules.
 
-To run ownCloud, your Web server must have the following PHP modules installed:
+Required:
 
 * php5 (>= 5.5)
 * PHP module ctype
@@ -94,7 +97,8 @@ memcaches:
 * PHP module memcached
 * PHP module redis (required for Transactional File Locking)
 
-See :doc:`../configuration_server/caching_configuration`.
+See :doc:`../configuration_server/caching_configuration` to learn how to select 
+and configure a memcache.
 
 For preview generation (*optional*):
 
@@ -102,9 +106,10 @@ For preview generation (*optional*):
 * avconv or ffmpeg
 * OpenOffice or LibreOffice
 
-* You don’t need the WebDAV module for your Web server (i.e. Apache’s
-  ``mod_webdav``) to access your ownCloud data via WebDAV. ownCloud has a built-in
-  WebDAV server of its own, SabreDAV.
+You don’t need the WebDAV module for your Web server (i.e. Apache’s 
+``mod_webdav``), as ownCloud has a built-in WebDAV server of its own, SabreDAV. 
+If ``mod_webdav`` is enabled you must disable it for ownCloud. (See 
+:ref:`apache_configuration_label` for an example configuration.)
   
 .. _ubuntu_installation_label:  
 
@@ -121,7 +126,7 @@ Apache and MariaDB, by issuing the following commands in a terminal::
 
 * This installs the packages for the ownCloud core system. If you are planning 
   on running additional apps, keep in mind that they might require additional 
-  packages.  See the Prerequisites section (above) for details.
+  packages.  See :ref:`prerequisites_label` for details.
 
 * At the installation of the MySQL/MariaDB server, you will be prompted to 
   create a root password. Be sure to remember the password you enter there 
@@ -131,18 +136,18 @@ Now download the archive of the latest ownCloud version:
 
 * Go to the `ownCloud Download Page <http://owncloud.org/install>`_.
 * Go to **Download ownCloud Server > Download > Archive file for 
-  server owners** and download either the tar.bz2 or .zip archive in step 1.
-* This downloads a file named owncloud-x.y.z.tar.bz2 (where
-  x.y.z is the version number of the current latest version).
+  server owners** and download either the tar.bz2 or .zip archive.
+* This downloads a file named owncloud-x.y.z.tar.bz2 or owncloud-x.y.z.zip 
+  (where x.y.z is the version number).
 * Download its corresponding checksum file, e.g. owncloud-x.y.z.tar.bz2.md5, 
   or owncloud-x.y.z.tar.bz2.sha256. 
-* Save these files in the same directory on the machine you want to install 
-  ownCloud on.
 * Verify the MD5 or SHA256 sum::
    
     md5sum -c owncloud-x.y.z.tar.bz2.md5 < owncloud-x.y.z.tar.bz2
     sha256sum -c owncloud-x.y.z.tar.bz2.sha256 < owncloud-x.y.z.tar.bz2
-   
+    md5sum  -c owncloud-x.y.z.zip.md5 < owncloud-x.y.z.zip
+    sha256sum  -c owncloud-x.y.z.zip.sha256 < owncloud-x.y.z.zip
+    
 * You may also verify the PGP signature::
     
     wget https://download.owncloud.org/community/owncloud-x.y.z.tar.bz2.asc
@@ -150,10 +155,11 @@ Now download the archive of the latest ownCloud version:
     gpg --import owncloud.asc
     gpg --verify owncloud-x.y.z.tar.bz2.asc owncloud-x.y.z.tar.bz2
   
-* Now you can extract the archive contents. Open a terminal, navigate to your 
-  download directory, and run::
+* Now you can extract the archive contents. Run the appropriate unpacking 
+  command for your archive type::
 
     tar -xjf owncloud-x.y.z.tar.bz2
+    unzip owncloud-x.y.z.zip
 
 * This unpacks to a single ``owncloud`` directory. Copy the ownCloud directory 
   to its final destination in the document root of your web server::
@@ -164,7 +170,7 @@ Now download the archive of the latest ownCloud version:
   document root of your Web server. On Ubuntu systems this 
   ``/var/www/owncloud``, so your copying command is::
     
-    cp -r owncloud /var/www/
+    cp -r owncloud /var/www
     
  .. _apache_configuration_label:   
     
@@ -267,11 +273,15 @@ Installation Wizard
 
 After restarting Apache you must complete your installation by 
 running either the graphical Installation Wizard, or on the command line with 
-the ``occ`` command. To enable this you must temporarily change the ownership 
-of your ``owncloud`` directory to your HTTP user. On Debian/Ubuntu/etc. this is 
-``www-data``::
+the ``occ`` command. To enable this, temporarily change the ownership on your 
+ownCloud directories to your HTTP user (see :ref:`strong_perms_label` to learn 
+how to find your HTTP user)::
 
  chown -R www-data:www-data /var/www/owncloud/
+ 
+.. note:: Admins of SELinux-enabled distributions may need to write new SELinux 
+   rules to complete their ownCloud installation; see 
+   :ref:`selinux_tips_label`. 
 
 To use ``occ`` see :doc:`command_line_installation`. 
 
@@ -285,7 +295,7 @@ apply strong permissions to your ownCloud directory.
 Setting Strong Directory Permissions
 ------------------------------------
 
-After completing installation, we recommend immediately setting the directory 
+After completing installation, you must immediately set the directory 
 permissions in your ownCloud installation as strictly as possible for stronger 
 security. Please refer to :ref:`strong_perms_label`.
 
