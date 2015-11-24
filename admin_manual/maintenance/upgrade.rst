@@ -215,16 +215,14 @@ The other way is by entering your ``config.php`` file and changing
 .. note:: We recommend storing your ``data/`` directory in a location other 
    than your ``owncloud/`` directory.
 
-9. Restart your Web server.
+9. If you are using third party applications, look into the ``owncloud/apps/`` 
+   directory to see if they are there. If not, copy them from your old ``apps/``
+   directory to your new one. Make sure the directory permissions of your third
+   party application directories are the same as for the other ones.
 
-10. Now you should be able to open a Web browser to your ownCloud server and 
-    log in as usual. You have a couple more steps to go: You should see a 
-    **Start Update** screen, just like in the **Upgrading With Your Linux 
-    Package Manager** section, above. Review the prerequisites, and if you have 
-    followed all the steps click the **Start Update** button.    
-    
-    If you are running a large installation with a lot of files and users, 
-    you should launch the upgrade from the command  line using ``occ`` to 
+10. Restart your Web server.
+
+11. Now launch the upgrade from the command  line using ``occ`` to
     avoid PHP timeouts, like this example on Ubuntu Linux::
     
      $ sudo -u www-data php occ upgrade
@@ -232,11 +230,15 @@ The other way is by entering your ``config.php`` file and changing
    .. note:: The ``occ`` command does not download ownCloud updates. You must first download
       and install the updated code (steps 1-3), and then ``occ`` performs the final upgrade steps.  
      
-11. The upgrade operation takes a few minutes to a few hours, depending on the 
+12. The upgrade operation takes a few minutes to a few hours, depending on the 
     size of your installation. When it is finished you will see a success 
     message, or an error message that will tell where it went wrong.   
 
-Assuming your upgrade succeeded, take a look at the bottom of your Admin page to 
+Assuming your upgrade succeeded, disable the maintenance mode::
+
+	$ sudo -u www-data php occ maintenance:mode --off
+
+Login and take a look at the bottom of your Admin page to 
 verify the version number. Check your other settings to make sure they're 
 correct. Go to the Apps page and review the core apps to make sure the right 
 ones are enabled. Re-enable your third-party apps. Then apply strong 
