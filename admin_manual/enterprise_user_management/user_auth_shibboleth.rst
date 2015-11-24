@@ -9,18 +9,28 @@ The ownCloud Shibboleth user backend application integrates ownCloud with a
 Shibboleth Service Provider (SP) and allows operations in federated and 
 single-sign-on infrastructures. Setting up Shibboleth has three steps:
 
-1. Create the appropriate Apache configuration
-2. Enable the Shibboleth app
-3. Enable Shibboleth on your ownCloud admin page
+1. Create the appropriate Apache configuration.
+2. Enable the Shibboleth app.
+3. Map Shibboleth environment variables to ownCloud attributes.
 
 Currently supported installations are based on the `native Apache integration`_ 
 . The individual configuration of the service provider is highly dependent on 
 the operating system, as well as on the integration with the Identity 
 Providers (IdP), and require case-by-case analysis and installation.
 
-The ownCloud Desktop Client and mobile clients can interact with an 
+The ownCloud Desktop Client can interact with an 
 ownCloud instance running inside a Shibboleth Service Provider by using built-in 
 browser components for authentication against the IdP.
+
+The regular ownCloud Android and iOS mobile apps do not work with Shibboleth.
+However, customers who create 
+:doc:`branded mobile apps with ownBrander 
+<../enterprise_clients/creating_branded_apps>`
+have the option to enable SAML authentication in ownBrander.
+
+Enterprise customers also have the option to request a regular ownCloud 
+mobile client built to use Shibboleth from their ownCloud account 
+representatives.
 
 The ownCloud desktop sync client and mobile apps store users' logins, so 
 your users only need to enter their logins the first time they set up their 
@@ -30,6 +40,7 @@ shows a test Shibboleth login screen from
 sync client.
 
 .. figure:: ../images/shib-gui1.png
+   :alt: First client login screen.
 
    *figure 1: First login screen*
    
@@ -38,6 +49,7 @@ server and login information just like it does for any other ownCloud server
 connections.
 
 .. figure:: ../images/shib-gui4.png
+   :alt: The ownCloud client shows which server you are connected to.
 
    *figure 2: ownCloud client displays server information*
    
@@ -161,51 +173,31 @@ Further Shibboleth specific configuration as defined in
 	  require valid-user
 	</Location>
 
-Application Configuration
--------------------------
+Enabling & Configurating the Shibboleth App
+-------------------------------------------
 
-After installing and enabling the Shibboleth application there are three 
-configuration variables to set up, depending on the data sent back by the 
-IdP. The configuration is stored in ``apps/user_shibboleth``.
-
-.. code-block:: php
-
-	namespace OCA\user_shibboleth {
-	        const SHIB_SESSION_ID = 'Shib-Session-ID';
-	        const SHIB_EPPN = 'eppn';
-	        const SHIB_EMAIL = 'eppn';
-	        const SHIB_DISPLAY_NAME = 'eppn';
-	}
-
-
-+---------------------+--------------------------------------------------------+
-| Parameter           | Description                                            |
-+---------------------+--------------------------------------------------------+
-| SHIB_SESSION_ID     | This constant defines the name of the environment      |
-|                     | variable holding the Shibboleth session id.            |
-+---------------------+--------------------------------------------------------+
-| SHIB_EPPN           | This constant defines the name of the environment      |
-|                     | variable which holds the EPPN (eduPersonPrincipalName).| 
-|                     | This is the unique user identifier.                    | 
-+---------------------+--------------------------------------------------------+
-| SHIB_EMAIL          | The environment variable with this given name holds the|
-|                     | email address of the logged-in user.                   |
-+---------------------+--------------------------------------------------------+
-| SHIB_DISPLAY_NAME   | This constant defines the name of the environment      |
-|                     | variable holding the user's display name.              |
-+---------------------+--------------------------------------------------------+
-
-Enabling the Shibboleth App
----------------------------
-
-You must enable the Shibboleth app on your Apps page, and then check **Activate 
-Shibboleth** and click the **Save** button on your ownCloud Admin page. The 
-system information displayed on your Admin page may be useful for 
-troubleshooting; for example you can copy and include it on a support ticket.
+You must enable the Shibboleth app on your Apps page, and then select the mode 
+you want Shibboleth to operate in from the dropdown on your Admin page, either 
+**Autoprovision Users** or **Single sign-on only**.
 
 .. figure:: ../images/shib-gui5.png
+   :alt: Shibboleth configuration screen.
 
-   *figure 3: Enabling Shibboleth on the Admin page*
+   *figure 3: Enabling Shibboleth on the Admin page*	
+
+In ownCloud 8.1 the Shibboleth variables were stored in 
+``apps/user_shibboleth/config.php``. This file was overwritten on upgrades. In 
+ownCloud 8.2 the variables are stored in the ownCloud database, so Shibboleth 
+is now automatically upgradeable.
+
+After installing and enabling the Shibboleth application there are four 
+Shibboleth environment configuration variables to map to ownCloud user 
+attributes.
+
+.. figure:: ../images/shib-gui6.png
+   :alt: Dropdowns for mapping Shibboleth environment configuration variables to ownCloud user attributes.
+
+   *figure 4: Mapping Shibboleth environment configuration variables to ownCloud user attributes*
 
 WebDAV Support
 --------------
