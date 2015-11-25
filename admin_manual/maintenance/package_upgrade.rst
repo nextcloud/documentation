@@ -156,4 +156,4 @@ according to :ref:`strong_perms_label`.
 If the upgrade fails, then you must try a manual upgrade.
 
 .. _Open Build Service: 
-   https://download.owncloud.org/download/repositories/8.2/owncloud/
+   https://download.owncloud.org/download/repositories/stable/owncloud/
