@@ -8,6 +8,8 @@ Maintenance
    enable_maintenance
    backup
    upgrade
+   package_upgrade
+   manual_upgrade
    update
    restore
    migrating
