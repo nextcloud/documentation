@@ -4,8 +4,7 @@ How to Upgrade Your ownCloud Server
 
 There are three ways to upgrade your ownCloud server:
 
-* Using your :doc:`Linux package manager <package_upgrade>` with our `Open 
-  Build Service`_ repository. This is the recommended method.
+* Using your :doc:`Linux package manager <package_upgrade>` with our official ownCloud repositories. This    is the recommended method.
 * With the :doc:`Updater App <update>` (Server Edition only). Recommended for 
   shared hosters, and for users who want an easy way to track different 
   release channels. (It is not available and not supported on the Enterprise 
