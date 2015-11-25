@@ -21,6 +21,8 @@ When an update is available for your ownCloud server, you will see a
 notification at the top of your ownCloud Web interface. When you click the 
 notification it brings you here, to this page.
 
+**It is best to keep your ownCloud server upgraded regularly**, and to install all point releases and major releases without skipping any of them, as skipping releases increases the risk of errors. Major releases are 8.0, 8.1, 8.2, and 9.0. Point releases are intermediate releases for each major release. For example, 8.0.9 and 8.1.3 are point releases.
+
 **Upgrading is disruptive**. Your ownCloud server will be put into maintenance 
 mode, so your users will be locked out until the upgrade is completed. Large 
 installations may take several hours to complete the upgrade.
