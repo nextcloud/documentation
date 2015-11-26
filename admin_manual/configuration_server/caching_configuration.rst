@@ -162,7 +162,7 @@ startup.
 
 On Red Hat/CentOS/Fedora install ``redis`` and ``php-pecl-redis``. It will not 
 start automatically, so you must use your service manager to start 
-``memcached``, and to launch it at boot as a daemon.
+``redis-server``, and to launch it at boot as a daemon.
  
 You can verify that the Redis daemon is running with ``ps ax``::
  
