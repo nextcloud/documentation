@@ -41,7 +41,6 @@ Troubleshooting
 
 If the mentioned test fails please make sure that:
 
-* you're not running Windows (it is currently not supported)
 * the PHP functions ``escapeshellarg`` and ``shell_exec`` are not disabled in your
   PHP configuration
 * the libreoffice/openoffice binary is within your PATH and is executeable for the
