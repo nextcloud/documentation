@@ -14,6 +14,7 @@ ownCloud Server Configuration
    config_sample_php_parameters
    email_configuration
    external_sites
+   custom_client_repos
    knowledgebase_configuration
    language_configuration
    logging_configuration
