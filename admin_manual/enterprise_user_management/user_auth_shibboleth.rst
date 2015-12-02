@@ -34,7 +34,12 @@ representatives.
 
 The ownCloud desktop sync client and mobile apps store users' logins, so 
 your users only need to enter their logins the first time they set up their 
-accounts. These screenshots show what the user sees at account setup. Figure 1 
+accounts. 
+
+.. note:: The ownCloud clients may use only a single Shibboleth login per 
+   ownCloud server; multi-account is not supported with Shibboleth.
+
+These screenshots show what the user sees at account setup. Figure 1 
 shows a test Shibboleth login screen from 
 `Testshib.org <https://www.testshib.org/index.html>`_ on the ownCloud desktop 
 sync client.
