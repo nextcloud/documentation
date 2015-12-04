@@ -26,7 +26,7 @@ Operating system
 
 .. _dev-urandom-label:
 
-Give PHP read accesss to ``/dev/urandom``
+Give PHP read access to ``/dev/urandom``
 *****************************************
 
 ownCloud uses a `RFC 4086 ("Randomness Requirements for Security")`_ compliant 
@@ -175,7 +175,7 @@ These include:
 - ``X-Robots-Tag: none``
 	- Instructs search machines to not index these pages.
 - ``X-Frame-Options: SAMEORIGIN``
-	- Prevents embedding of the ownCloud instance within an iframe from other domains to prevent Clickjacking and other similiar attacks.
+	- Prevents embedding of the ownCloud instance within an iframe from other domains to prevent Clickjacking and other similar attacks.
 
 These headers are hard-coded into the ownCloud server, and need no intervention 
 by the server administrator.
