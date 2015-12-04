@@ -2,10 +2,6 @@
 Encryption Configuration
 ========================
 
-If you are upgrading from ownCloud 8.0, and have encryption enabled, please see 
-:ref:`upgrading_encryption_label` (below) for the correct steps to upgrade your 
-encryption.
-
 The primary purpose of the ownCloud server-side encryption is to protect users' 
 files on remote storage, such as Dropbox and Google Drive, and to do it easily 
 and seamlessly from within ownCloud.
@@ -136,8 +132,8 @@ Encryption settings can be configured in the mount options for an external
 storage mount, see :ref:`external_storage_mount_options_label`
 (:doc:`external_storage_configuration_gui`)
 
-Enabling Users' File Recovery Key
----------------------------------
+Enabling Users File Recovery Keys
+----------------------------------
 
 If you lose your ownCloud password, then you lose access to your encrypted 
 files. If one of your users loses their ownCloud password their files are 
@@ -251,109 +247,3 @@ their back-end password, and then, of course, notify the user and give them
 their new password.
 
 .. _upgrading_encryption_label:
-
-Upgrading From ownCloud 8.0
----------------------------
-
-The encryption backend has changed in ownCloud 8.1, so you must take some 
-additional steps to migrate encryption correctly. If you do not follow these 
-steps you may not be able to access your files.
-
-Before you start your upgrade, put your ownCloud server into 
-``maintenance:singleuser`` mode (See :doc:`../maintenance/enable_maintenance`.) 
-You must do this to prevent users and sync clients from accessing files before 
-you have completed your encryption migration.
-
-After your upgrade is complete, follow the steps in :ref:`enable_encryption_label` to 
-enable the new encryption system. Then click the **Start Migration** button on 
-your Admin page to migrate your encryption keys, or use the ``occ`` command. We 
-strongly recommend using the ``occ`` command; the **Start Migration** button is 
-for admins who do not have access to the console, for example installations on 
-shared hosting. This example is for Debian/Ubuntu Linux::
-
- $ sudo -u www-data php occ encryption:migrate
- 
-This example is for Red Hat/CentOS/Fedora Linux::
-
- $ sudo -u apache php occ encryption:migrate
- 
-You must run ``occ`` as your HTTP user; see 
-:doc:`../configuration_server/occ_command`.
-
-When you are finished, take your ownCloud server out of 
-``maintenance:singleuser`` mode.
-
-Where Keys are Stored
----------------------
-
-All of your encryption keys are stored in your ownCloud :file:`data/` 
-directory. When you run the migration command your old keys are backed up in 
-your data directory:
-
-Backup for system-wide keys:
- :file:`data/encryption_migration_backup_<timestamp>`
-
-Backup for user-specific keys: 
- :file:`data/<user>/encryption_migration_backup_<timestamp>`
-
-Both backup directories contain the keys in the old file structure. This is the 
-old file structure for ownCloud 8.0:
-
-Private public share key:
- :file:`data/files_encryption/pubShare_<public-share-key-id>.privateKey`
-    
-Private recovery key: 
- :file:`data/files_encryption/recovery_<recovery-key-id>.privateKey`
- 
-Public keys of all users: 
- :file:`data/files_encryption/public_keys`
- 
-File keys for system-wide mount points: 
- :file:`data/files_encryption/keys/<file_path>/<filename>/fileKey`
-
-Share keys for files on a system-wide mount point (one key for the owner and one key for each user with access to the file): 
- :file:`data/files_encryption/keys/<file_path>/<filename>/<user>.shareKey`
-
-Users' private keys: 
- :file:`data/<user>/files_encryption/<user>.privateKey`
-
-File keys for files owned by the user: 
- :file:`data/<user>/files_encryption/keys/<file_path>/<filename>/fileKey`
-
-Share keys for files owned by the user (one key for the owner and one key for each user with access to the file):
- :file:`data/<user>/files_encryption/keys/<file_path>/<filename>/<user>.shareKey`
- 
-This is the new file structure for ownCloud 8.1:
-
-Private public share key:
- :file:`data/files_encryption/OC_DEFAULT_MODULE/pubShare_<public-share-key-id>.privateKey`
-
-Private recovery key: 
- :file:`data/files_encryption/OC_DEFAULT_MODULE/recovery_<recovery-key-id>.privateKey`
-
-Public public share key: 
- :file:`data/files_encryption/OC_DEFAULT_MODULE/pubShare_<public-share-key-id>.publicKey`
-
-Public recovery key: 
- :file:`data/files_encryption/OC_DEFAULT_MODULE/recovery_<recovery-key-id>.publicKey`
-
-File keys for system-wide mount points: 
- :file:`data/files_encryption/keys/<file_path>/<filename>/OC_DEFAULT_MODULE/fileKey`
-
-Share keys for files on a system-wide mount point (one key for the owner and one key for each user with access to the file): 
- :file:`data/files_encryption/keys/<file_path>/<filename>/OC_DEFAULT_MODULE/<user>.shareKey`
-
-Users' private keys: 
- :file:`data/<user>/files_encryption/OC_DEFAULT_MODULE/<user>.privateKey`
-
-Users' public keys:
- :file:`data/<user>/files_encryption/OC_DEFAULT_MODULE/<user>.publicKey`
-
-File keys for files owned by the user: 
- :file:`data/<user>/files_encryption/keys/<file_path>/<filename>/OC_DEFAULT_MODULE/fileKey`
-
-Share keys for files owned by the user (one key for the owner and one key for each user with access to the file):
- :file:`data/<user>/files_encryption/keys/<file_path>/<filename>/OC_DEFAULT_MODULE/<user>.shareKey`
-
-.. references --  https://github.com/owncloud/QA/issues/16
-.. 
