@@ -41,8 +41,8 @@ source_suffix = '.rst'
 master_doc = 'contents'
 
 # General information about the project.
-project = u'ownCloud Server Administration Manual'
-copyright = u'2012-2015, The ownCloud developers'
+project = u'ownCloud 9.0 Server Administration Manual'
+copyright = u'2012-2016, The ownCloud developers'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
