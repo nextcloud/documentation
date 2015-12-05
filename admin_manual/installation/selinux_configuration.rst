@@ -65,3 +65,10 @@ If you want to allow ownCloud to send out e-mail notifications via sendmail you 
 to use the following setting::
 
  setsebool -P httpd_can_sendmail on
+
+Allow access to CIFS/SMB
+------------------------
+
+If you have placed your datadir on a CIFS/SMB share use the following setting::
+
+ setsebool -P httpd_use_cifs on
