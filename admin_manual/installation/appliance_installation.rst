@@ -48,7 +48,7 @@ Follow these steps to get the appliance working:
    When using the ownCloud Proxy app, this Web page may be publicly visible.
 
 .. note:: Inside the VM, ownCloud runs with a default disk size of 40 GB and its 
-   own MySql database. The ownCloud admin user is also a valid account on the 
+   own MySQL database. The ownCloud admin user is also a valid account on the 
    Ubuntu system that runs inside the VM. You can administer the VM via SSH.
 
 **For VMware**

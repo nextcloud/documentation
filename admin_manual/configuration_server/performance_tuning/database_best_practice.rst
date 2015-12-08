@@ -54,7 +54,7 @@ See also `this forum thread
 Other performance improvements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Mysql: compare https://tools.percona.com/wizard to your current settings
+MySQL: compare https://tools.percona.com/wizard to your current settings
 MariaDB: https://mariadb.com/kb/en/optimization-and-tuning/
 
 Postgresql

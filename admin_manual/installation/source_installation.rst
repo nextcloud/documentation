@@ -61,7 +61,7 @@ Required:
 Database connectors (pick the one for your database:)
 
 * PHP module sqlite (>= 3, usually not recommended for performance reasons)
-* PHP module mysql (MySQL/MariaDB)
+* PHP module pdo_mysql (MySQL/MariaDB)
 * PHP module pgsql (requires PostgreSQL >= 9.0)
 
 *Recommended* packages:

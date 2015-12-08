@@ -57,7 +57,7 @@ Configuring a MySQL or MariaDB Database
 
 If you decide to use a MySQL or MariaDB database, ensure the following:
 
-* That you have installed and enabled the MySQL extension in PHP
+* That you have installed and enabled the pdo_mysql extension in PHP
 
 * That the **mysql.default_socket** points to the correct socket (if the database runs on the same server as ownCloud).
 
@@ -69,7 +69,6 @@ The PHP configuration in :file:`/etc/php5/conf.d/mysql.ini` could look like this
 
   # configuration for PHP MySQL module
   extension=pdo_mysql.so
-  extension=mysql.so
 
   [mysql]
   mysql.allow_local_infile=On
