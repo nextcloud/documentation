@@ -24,7 +24,7 @@ $mapping = array(
     'admin-reverse-proxy'     => '/admin_manual/configuration_server/reverse_proxy_configuration.html',
     'admin-php-fpm'           => '/admin_manual/installation/source_installation.html#configuration-notes-to-php-fpm',
     'admin-transactional-locking' => '/admin_manual/configuration_files/files_locking_transactional.html',
-    'admin-code-integrity' => '/admin_manual/maintenance/code-signing.html',
+    'admin-code-integrity' => '/admin_manual/issues/code_signing.html',
 
     'developer-theming'       => '/developer_manual/core/theming.html',
 

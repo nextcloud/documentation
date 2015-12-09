@@ -3,6 +3,7 @@ Code Signing
 ============
 
 .. sectionauthor:: Lukas Reschke <lukas@owncloud.com>
+.. code_signing_label:
 
 ownCloud supports code signing for the core releases, and for ownCloud 
 applications. Code signing gives our users an additional layer of security by 
@@ -48,8 +49,8 @@ Is Code Signing Mandatory For Apps?
 Code signing is optional for all third-party applications. Applications 
 with a tag of "Official" on apps.owncloud.com require code signing.
 
-Fixing Invalid Code Integrity
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Fixing Invalid Code Integrity Messages
+--------------------------------------
 
 A code integrity error message ("There were problems with the code integrity 
 check. More information…") appears in a yellow banner at the top of your 
@@ -169,7 +170,7 @@ https://owncloud.org/support/. After fixing these problems verify by clicking
 "Rescan…".
 
 Errors
-======
+------
 
 The following errors can be encountered when trying to verify a code signature.
 

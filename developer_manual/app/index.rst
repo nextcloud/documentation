@@ -63,7 +63,7 @@ Once you are ready for publishing, check out the app store process:
 
 For enhanced security it is also possible to sign your code:
 
-* :doc:`code-signing`
+* :doc:`code_signing`
 
 App development
 ===============
