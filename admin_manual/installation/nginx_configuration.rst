@@ -61,13 +61,17 @@ Nginx Configuration
     # This module is currently not supported.
     #pagespeed off;
 
-    rewrite ^/caldav(.*)$ /remote.php/caldav$1 redirect;
-    rewrite ^/carddav(.*)$ /remote.php/carddav$1 redirect;
-    rewrite ^/webdav(.*)$ /remote.php/webdav$1 redirect;
-
     index index.php;
     error_page 403 /core/templates/403.php;
     error_page 404 /core/templates/404.php;
+
+    rewrite ^/.well-known/carddav /remote.php/carddav/ permanent;
+    rewrite ^/.well-known/caldav /remote.php/caldav/ permanent;
+
+    # The following 2 rules are only needed for the user_webfinger app.
+    # Uncomment it if you're planning to use this app.
+    #rewrite ^/.well-known/host-meta /public.php?service=host-meta last;
+    #rewrite ^/.well-known/host-meta.json /public.php?service=host-meta-json last;
 
     location = /robots.txt {
       allow all;
@@ -75,17 +79,17 @@ Nginx Configuration
       access_log off;
     }
 
-    location ~ ^/(?:\.htaccess|data|config|db_structure\.xml|README){
+    location ~ ^/(build|tests|config|lib|3rdparty|templates|data)/ {
+      deny all;
+    }
+
+    location ~ ^/(?:\.|autotest|occ|issue|indie|db_|console) {
       deny all;
     }
 
     location / {
-      # The following 2 rules are only needed with webfinger
-      rewrite ^/.well-known/host-meta /public.php?service=host-meta last;
-      rewrite ^/.well-known/host-meta.json /public.php?service=host-meta-json last;
 
-      rewrite ^/.well-known/carddav /remote.php/carddav/ redirect;
-      rewrite ^/.well-known/caldav /remote.php/caldav/ redirect;
+      rewrite ^/remote/(.*) /remote.php last;
 
       rewrite ^(/core/doc/[^\/]+/)$ $1/index.html;
 
