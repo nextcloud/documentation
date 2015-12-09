@@ -72,26 +72,6 @@ UCS App Center
 Open the Univention Management Console and choose the App Center module. You
 will see a variety of available applications, including ownCloud. You can install and upgrade ownCloud from the App Center.
 
-Reinstallation
-""""""""""""""
-
-When ownCloud was installed before and uninstalled via AppCenter or via command
-line using apt-get remove, ownCloud can be simply installed again. The old
-configuration will be used again.
-
-When an older ownCloud was installed and has been purged (only possible via
-command line using apt-get purge) the old configuration is gone, but data is
-left. This blocks an installation. You can either install the old version and
-upgrade to ownCloud 5 or (re)move the old data. This is done by removing the
-MySQL database "ownCloud" using the command line:
-
-::
-
-	mysql -u root -e "DROP DATABASE owncloud" -p`tail /etc/mysql.secret
-
-In this case you probably also want to remove the data directory
-**/var/lib/owncloud** although this is not mandatory.
-
 Postconfiguration (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
