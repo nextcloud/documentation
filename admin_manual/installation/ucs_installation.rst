@@ -63,38 +63,14 @@ or via UMC:
 Installation
 ^^^^^^^^^^^^
 
-Now, we are ready to install ownCloud. This can be either done through the UCS
-App Center (recommended) or by downloading the packages.
+Now, we are ready to install ownCloud. The recommend method is by using the UCS
+App Center.
 
 UCS App Center
 """"""""""""""
 
 Open the Univention Management Console and choose the App Center module. You
-will see a variety of available applications, including ownCloud.
-
-.. image:: ../images/ucs-app-center-module.png
-
-Click on ownCloud 5 and follow the instructions.
-
-.. image:: ../images/ucs-app-center-install.png
-
-In the UCS App Center, you can also upgrade from ownCloud 4.5 by installing
-ownCloud 5.0. They are provided as separate apps. It is only possible to have
-one version of ownCloud installed.
-
-Manually by download
-""""""""""""""""""""
-
-Download the integration packages `from our website`_ and install them from
-within your download folder (note: the package owncloud-unsupported is
-optional) via command line:
-
-::
-
-	dpkg -i owncloud*.deb
-
-ownCloud will be configured to fully work with LDAP.
-
+will see a variety of available applications, including ownCloud. You can install and upgrade ownCloud from the App Center.
 
 Reinstallation
 """"""""""""""
@@ -148,13 +124,10 @@ variables as parameters: **owncloud/user/enabled** for enabling or disabling,
 **owncloud/user/quota** as the Quota value and **owncloud/join/users/filter** as
 LDAP filter to select the users to update.
 
-Groups 2012.4.0.4
-"""""""""""""""""
+Groups
+""""""
 
-Since ownCloud Enterprise 2012.4.0.4 group support is enabled. Groups,
-that are activated for ownCloud usage, can be used to share files to
-instead of single users, for example. It is also important to note, that
-users can only share within groups where they belong to. Groups can be
+Groups can be
 enabled and disabled via UCM as shown in the screen shot below.
 
 .. image:: ../images/ucsint.png
@@ -167,3 +140,5 @@ empty, a message will be displayed.
 
 
 .. _from our website: https://owncloud.com/download
+
+.. _from the UCS App Center: https://www.univention.com/products/univention-app-center/app-catalog/
