@@ -10,10 +10,10 @@ Pre configuration
 ^^^^^^^^^^^^^^^^^
 
 ownCloud makes use of the UCR, the Univention Configuration Registry. The values
-are being read during installation, most of them can be changed later, too.
+are read during installation, most of them can be changed later, too.
 Changes done directly via ownCloud are not taken over to UCR. We think we found
 sane defaults, nevertheless you might have your own requirements. The
-installation script will listen to the UCR keys listed below. In case you want
+installation script will listen to the UCR keys listed below. If want
 to override any default setting, simply add the key in question to the UCR and
 assign your required value.
 
@@ -45,9 +45,9 @@ assign your required value.
   "owncloud/ldap/user/homeAttribute",	"(empty)",	"Attribute that should be used to create the user's owncloud internal home folder",	5.0.9
   "owncloud/ldap/group/displayName",	"cn",	"The LDAP attribute that should be used as groupname in ownCloud",	2012.4.0.4
   "owncloud/ldap/group/searchAttributes",	"cn,description, mailPrimaryAddress",	"Attributes taken into consideration when searching for groups (comma separated)",	5.0.9
-  "owncloud/join/users/update",	"yes",	"Wether ownCloud LDAP schema should be applied to existing users",	2012.0.1
-  "owncloud/group/enableDomainUsers",	"1",	"Wether the group “Domain Users” shall be enabled for ownCloud on install",	2012.4.0.4
-  "owncloud/join/users/filter",	"(&(\|(&(objectClass=posixAccount) (objectClass=shadowAccount)) (objectClass=univentionMail) (objectClass=sambaSamAccount) (objectClass=simpleSecurityObject) (&(objectClass=person) (objectClass=organizationalPerson) (objectClass=inetOrgPerson))) (!(uidNumber=0)) (!(\|(uid=*$) (uid=owncloudsystemuser) (uid=join-backup) (uid=join-slave))) (!(objectClass=ownCloudUser)))",	"Filters, on which LDAP users the ownCloud schema should be applied to. The default excludes system users and already ownCloudUsers.",	2012.0.1
+  "owncloud/join/users/update",	"yes",	"Whether ownCloud LDAP schema should be applied to existing users",	2012.0.1
+  "owncloud/group/enableDomainUsers",	"1",	"Whether the group “Domain Users” shall be enabled for ownCloud on install",	2012.4.0.4
+  "owncloud/join/users/filter",	"(&(\|(&(objectClass=posixAccount) (objectClass=shadowAccount)) (objectClass=univentionMail) (objectClass=sambaSamAccount) (objectClass=simpleSecurityObject) (&(objectClass=person) (objectClass=organizationalPerson) (objectClass=inetOrgPerson))) (!(uidNumber=0)) (!(\|(uid=*$) (uid=owncloudsystemuser) (uid=join-backup) (uid=join-slave))) (!(objectClass=ownCloudUser)))",	"Filters, on which LDAP users the ownCloud schema should be applied to. The default excludes system users and existing ownCloudUsers.",	2012.0.1
   "owncloud/join/groups/filter",	"(empty)",	"Filters which LDAP groups will be en/disabled for ownCloud when running the script /usr/share/owncloud/update-groups.sh",	2012.4.0.4
 
 If you want to override the default settings, simply create the key in
@@ -63,19 +63,20 @@ or via UMC:
 Installation
 ^^^^^^^^^^^^
 
-Now, we are ready to install ownCloud. The recommend method is by using the UCS
-App Center.
+Now, we are ready to install ownCloud. The recommended method is by using the
+UCS App Center.
 
 UCS App Center
 """"""""""""""
 
 Open the Univention Management Console and choose the App Center module. You
-will see a variety of available applications, including ownCloud. You can install and upgrade ownCloud from the App Center.
+will see a variety of available applications, including ownCloud. You can
+install and upgrade ownCloud from the App Center.
 
 Postconfiguration (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-There is only one local admin user “owncloudadmin”, you can find his password in
+There is only one local admin user “owncloudadmin”, you can find the password in
 `/etc/owncloudadmin.secret`. Use this account, if you want to change basic
 ownCloud settings.
 
@@ -83,8 +84,8 @@ In the installation process a virtual host is set up (Apache is required
 therefore). If you want to modify the settings, edit
 :file:`/etc/apache2/sites-available/owncloud` and restart the web server. You
 might want to do it to enable HTTPS connections. Besides that, you can edit the
-**.htaccess-File in /var/www/owncloud/**. In the latter file there are also the
-PHP limits for file transfer specified.
+**.htaccess-File in /var/www/owncloud/**. In the latter file the
+PHP limits for file transfer are also specified.
 
 Using ownCloud
 ^^^^^^^^^^^^^^
@@ -114,11 +115,11 @@ enabled and disabled via UCM as shown in the screen shot below.
 
 Another way to enable or disable groups is to use the script
 :file:`/usr/share/owncloud/update-groups.sh`. Currently, it takes an argument
-which can be 1=enable groups or 0=disable groups. The filter applied is being
-taken from the UCR variable **owncloud/join/groups/filter**. In case it is
+which can be 1=enable groups or 0=disable groups. The filter applied is
+taken from the UCR variable **owncloud/join/groups/filter**. If it is
 empty, a message will be displayed.
 
 
 .. _from our website: https://owncloud.com/download
 
-.. _from the UCS App Center: https://www.univention.com/products/univention-app-center/app-catalog/
+w.. _from the UCS App Center: https://www.univention.com/products/univention-app-center/app-catalog/
