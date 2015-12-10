@@ -31,7 +31,7 @@ Activate the new PHP version permanently::
  
 Disable loading the old PHP 5.3 Apache module:: 
 
- mv /etc/httpd/conf.d/php.conf /etc/httpd/conf.d/php.conf/old
+ mv /etc/httpd/conf.d/php.conf /etc/httpd/conf.d/php.conf.old
  
 You should now have a /etc/httpd/conf.d/php54-php.conf file, which loads the 
 correct PHP 5.4 module for Apache.
@@ -65,7 +65,7 @@ Activate the new PHP version permanently::
  
 Disable loading the old PHP 5.3 Apache module:: 
 
- mv /etc/httpd/conf.d/php.conf /etc/httpd/conf.d/php.conf/old
+ mv /etc/httpd/conf.d/php.conf /etc/httpd/conf.d/php.conf.old
  
 You should now have a /etc/httpd/conf.d/php54-php.conf file, which loads the 
 correct PHP 5.4 module for Apache.
