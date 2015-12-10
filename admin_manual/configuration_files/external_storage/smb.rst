@@ -36,6 +36,8 @@ modified. This is concatenated with the username, so the backend gets
           project=isv:ownCloud:community&package=php5-libsmbclient>`_
 
 .. figure:: images/smb.png
+   :alt: Samba external storage configuration.
+   :scale: 75%
 
 See :doc:`../external_storage_configuration_gui` for additional mount 
 options and information.
