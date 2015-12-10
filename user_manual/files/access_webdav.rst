@@ -194,7 +194,7 @@ Accessing Files Using Mac OS X
 
 .. note:: The Mac OS X Finder suffers from a `series of implementation problems 
    <http://sabre.io/dav/clients/finder/>`_ and should only be used if the 
-   ownCloud server runs on **Apache** and **mod_php**.
+   ownCloud server runs on **Apache** and **mod_php**, or **Nginx 1.3.8+**.
 
 To access files through the Mac OS X Finder:
 
