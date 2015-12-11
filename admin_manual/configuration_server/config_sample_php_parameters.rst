@@ -965,6 +965,20 @@ default naming rule of using the internal user ID as home folder name.
 If this is set to **false** it will fallback for the users without the
 attribute set to naming the home folder like the internal user ID.
 
+Comments
+--------
+
+Global settings for the Comments infrastructure
+
+
+::
+
+	'comments.managerFactory' => '\OC\Comments\ManagerFactory',
+
+Replaces the default Comments Manager Factory. This can be utilized if an
+own or 3rdParty CommentsManager should be used that – for instance – uses the
+filesystem instead of the database to keep the comments.
+
 Maintenance
 -----------
 
