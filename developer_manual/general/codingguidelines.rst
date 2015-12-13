@@ -44,8 +44,8 @@ The most important labels and their meaning:
 * db tags: #db:mysql #db:sqlite #db:postgresql and so on. These tags indicate the database that is impacted by the issue or which the PR is related to
 * Browser tags: #browser:ie #browser:safari and so on. These tags indicate the browser that is impacted by the issue or which the PR is related to
 * Component tags: #comp:filesystem #comp:javascript and so on. These tags indicate the components of ownCloud impacted by the issue or which the PR is related to
-* Development tool tags: #dev:unit_testing #dev:public_API and so on. These tags indicate the development tool (and not ownCloud code) impacted by the issue or which the PR is related
-* Feature tags: #feature:something. These tags indicate the features accross apps and components which are impacted by the issue or which the PR is related to
+* Development tool tags: #dev:unit_testing #dev:public_API and so on. These tags indicate development-specific tools like those for testing and public developer-facing API's impacted by the issue or which the PR is related
+* Feature tags: #feature:something. These tags indicate the features across apps and components which are impacted by the issue or which the PR is related to
 * #triage - this issue *has to be* `triaged <../bugtracker/triaging.html>`_
 * #needs info - this issue needs further information from the reporter, see `triaging <../bugtracker/triaging.html>`_ old tag is #clarification request, please don't use that one anymore.
 * #discussion - this issue needs to be discussed
