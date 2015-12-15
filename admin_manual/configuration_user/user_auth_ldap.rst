@@ -408,9 +408,11 @@ User Home Folder Naming Rule:
 
   * Example: *cn*
 
-In new ownCloud installations the home folder rule is enforced. This means that once you set a home folder naming rule (get a home folder from an LDAP attribute), it must be available for all users. If it isn't available for a user, then that user will not be able to login. In existing ownCloud installations the old behavior still applies; which is using the ownCloud username as the home folder when an LDAP attribute is not set. You may change this to enforcing the home folder rule with this entry in ``config.php``::
+In new ownCloud installations (8.0.10, 8.1.5, 8.2.0 and up) the home folder rule is enforced. This means that once you set a home folder naming rule (get a home folder from an LDAP attribute), it must be available for all users. If it isn't available for a user, then that user will not be able to login. Also, the filesystem will not be set up for that user, so their file shares will not be available to other users.
 
- 'enforce_home_folder_naming_rule' => true,
+In existing ownCloud installations the old behavior still applies, which is using the ownCloud username as the home folder when an LDAP attribute is not set. You may change this to enforcing the home folder rule with the ``occ`` command in ownCloud 8.2, like this example on Ubuntu::
+
+  sudo -u www-data php occ config:app:set user_ldap enforce_home_folder_naming_rule --value=1 
   
 Expert Settings
 ---------------
