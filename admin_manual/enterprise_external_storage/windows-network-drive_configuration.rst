@@ -3,10 +3,7 @@ Installing and Configuring the Windows Network Drive App
 ========================================================
 
 The Windows Network Drive app creates a control panel on your Admin page for 
-seamless mounting of SMB/CIFS file shares on ownCloud servers that run on Linux. 
-It does not work on Windows IIS or Windows Apache setups, but only Linux 
-servers, because it requires the Samba client. (Samba is the free software 
-implementation of the SMB/CIFS networking protocol.)
+seamless mounting of SMB/CIFS file shares on ownCloud servers.
 
 Any Windows file share, and Samba servers on Linux and other Unix-type operating 
 systems use the SMB/CIFS file-sharing protocol. The files and directories on the 
@@ -94,9 +91,14 @@ the server address, the share name, and the folder you want to connect to.
    default is all users.
 3. Next, enter the address of the server that contains the SMB share.
 4. Then the Windows share name.
-5. Then the root folder of the share.
+5. Then the root folder of the share. This is the folder name, or the ``$user`` variable for user's home directories.
 6. Then your login credentials.
 
+.. figure:: images/wnd-3.jpg
+   :alt: $user variable in the folder field.
+
+   *Figure 2: $user variable to automatically set user's home directories.*
+   
 You have four options for login credentials: 
 
 * **User credentials**. For admin-created global mountpoints; users must 
@@ -118,11 +120,9 @@ You have four options for login credentials:
    :scale: 45%
    :alt: Windows Network Drive configuration panel.
    
-   *Figure 2: Windows Network Drive configuration panel. (Click to enlarge.)*
+   *Figure 3: Windows Network Drive configuration panel. (Click to enlarge.)*
   
 When you're finished click the **Save** button.
-
-
 
 .. note:: When you create a new mountpoint using Login credentials you must log out of ownCloud,     and then log back in so you can access the share. You only have to do this the first time.
 
