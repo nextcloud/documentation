@@ -129,8 +129,8 @@ Apache and MariaDB, by issuing the following commands in a terminal::
   packages.  See :ref:`prerequisites_label` for details.
 
 * At the installation of the MySQL/MariaDB server, you will be prompted to 
-  create a root password. Be sure to remember the password you enter there 
-  for later use as you will need it during ownCloud database setup.
+  create a root password. Be sure to remember your password as you will need it 
+  during ownCloud database setup.
 
 Now download the archive of the latest ownCloud version:
 
@@ -162,15 +162,19 @@ Now download the archive of the latest ownCloud version:
     unzip owncloud-x.y.z.zip
 
 * This unpacks to a single ``owncloud`` directory. Copy the ownCloud directory 
-  to its final destination in the document root of your web server::
+  to its final destination. When you are running the Apache HTTP server you may 
+  safely install ownCloud in your Apache document root::
 
     cp -r owncloud /path/to/webserver/document-root
 
   where ``/path/to/webserver/document-root`` is replaced by the 
   document root of your Web server. On Ubuntu systems this 
-  ``/var/www/owncloud``, so your copying command is::
+  ``/var/www/html/owncloud``, so your copying command is::
     
-    cp -r owncloud /var/www
+    cp -r owncloud /var/www/html
+
+On other HTTP servers it is recommended to install ownCloud outside of the 
+document root. 
     
  .. _apache_configuration_label:   
     
@@ -180,12 +184,11 @@ Apache Web Server Configuration
 On Debian, Ubuntu, and their derivatives, Apache installs with a useful 
 configuration so all you have to do is create a 
 :file:`/etc/apache2/sites-available/owncloud.conf` file with these lines in 
-it:
+it, replacing the **Directory** and other filepaths with your own filepaths:
 
 .. code-block:: xml
    
- Alias /owncloud /var/www/owncloud
-  <Directory /var/www/owncloud/>
+  <Directory /var/www/html/owncloud/>
     Options +FollowSymlinks
     AllowOverride All
 
@@ -193,10 +196,16 @@ it:
     Dav off
    </IfModule>
 
-   SetEnv HOME /var/www/owncloud
-   SetEnv HTTP_HOME /var/www/owncloud
+   SetEnv HOME /var/www/html/owncloud
+   SetEnv HTTP_HOME /var/www/html/owncloud
 
-  </Directory>   
+  </Directory>
+  
+If you install ownCloud outside of Apache's DocumentRoot, then you must add an 
+**Alias** directive at the top of the file. In this example ownCloud is installed in
+``/var/www/owncloud``::
+
+ Alias /owncloud "/var/www/owncloud/"
 
 Then create a symlink to :file:`/etc/apache2/sites-enabled`::
 
@@ -277,7 +286,7 @@ the ``occ`` command. To enable this, temporarily change the ownership on your
 ownCloud directories to your HTTP user (see :ref:`strong_perms_label` to learn 
 how to find your HTTP user)::
 
- chown -R www-data:www-data /var/www/owncloud/
+ chown -R www-data:www-data /var/www/html/owncloud/
  
 .. note:: Admins of SELinux-enabled distributions may need to write new SELinux 
    rules to complete their ownCloud installation; see 
