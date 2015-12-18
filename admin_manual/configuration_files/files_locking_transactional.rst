@@ -63,7 +63,7 @@ See ``config.sample.php`` to see configuration examples for Redis, and for all
 supported memcaches.
 
 If you are on Ubuntu you can follow `this guide  
-<https://www.en0ch.se/how-to-configure-redis-cache-in-ubuntu-14-04-with-owncloud/>`_ for a complete installation from scratch. 
+<https://www.techandme.se/how-to-configure-redis-cache-in-ubuntu-14-04-with-owncloud/>`_ for a complete installation from scratch. 
 
 Learn more about Reds at `Redis <http://redis.io/>`_. Memcached, the popular 
 distributed memory caching system, is not suitable for the new file locking 
