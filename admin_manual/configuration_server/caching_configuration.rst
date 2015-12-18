@@ -199,7 +199,7 @@ Redis is very configurable; consult `the Redis documentation
 <http://redis.io/documentation>`_ to learn more. 
 
 If you are on Ubuntu you can follow `this guide 
-<https://www.en0ch.se/how-to-configure-redis-cache-in-ubuntu-14-04-with-owncloud/>`_ for a complete installation from scratch. 
+<https://www.techandme.se/how-to-configure-redis-cache-in-ubuntu-14-04-with-owncloud/>`_ for a complete installation from scratch. 
 
 Cache Directory Location
 ------------------------
