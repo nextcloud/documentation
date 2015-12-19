@@ -949,22 +949,6 @@ minutes. Setting it to 0 disables the feature.
 
 See command line (occ) methods ldap:show-remnants and user:delete
 
-::
-
-	'enforce_home_folder_naming_rule' => true,
-
-Enforce the existence of the home folder naming rule for all users
-
-Following scenario:
- * a home folder naming rule is set in LDAP advanced settings
- * a user doesn't have the home folder naming rule attribute set
-
-If this is set to **true** (default) it will NOT fallback to the core's
-default naming rule of using the internal user ID as home folder name.
-
-If this is set to **false** it will fallback for the users without the
-attribute set to naming the home folder like the internal user ID.
-
 Comments
 --------
 
