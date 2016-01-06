@@ -9,6 +9,7 @@ Table of Contents
     release_notes
     whats_new_admin
     installation/index
+    deployment_recommendations/index
     configuration_server/index
     configuration_user/index
     configuration_files/index    
