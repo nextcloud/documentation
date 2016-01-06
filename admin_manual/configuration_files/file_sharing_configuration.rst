@@ -53,6 +53,12 @@ Configure your sharing policy on your Admin page in the Sharing section.
 * Check ``Allow username autocompletion in share dialog`` to enable 
   auto-completion of ownCloud usernames.
 
+
+.. note:: ownCloud does not preserve the mtime (modification time) of 
+   directories, though it does update the mtimes on files. See  
+   `Wrong folder date when syncing 
+   <https://github.com/owncloud/core/issues/7009>`_ for discussion of this.
+  
 Creating Persistent File Shares
 -------------------------------
 
