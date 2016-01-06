@@ -37,7 +37,7 @@ of memcache that best fits your needs. The supported caching backends are:
 * `Memcached <http://www.memcached.org/>`_ 
    Distributed cache for multi-server ownCloud installations.
 * `Redis <http://redis.io/>`_, PHP module 2.2.5 and up required.
-   For distributed caching, and required for Transactional File Locking.
+   For distributed caching.
 
 These are supported but not recommended:
 
