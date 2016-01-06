@@ -181,6 +181,10 @@ Redis for the local server cache::
        'password' => '', // Optional, if not defined no password will be used.
         ),
 
+For best performance, use Redis for file locking by adding this::
+
+  'memcache.locking' => '\OC\Memcache\Redis',
+
 .. note:: For enhanced security it is recommended to configure Redis to require
    a password. See http://redis.io/topics/security for more information.
 
@@ -207,3 +211,40 @@ Cache Directory Location
 The cache directory defaults to ``data/$user/cache`` where ``$user`` is the 
 current user. You may use the ``'cache_path'`` directive in ``config.php``
 (See :doc:`config_sample_php_parameters`) to select a different location.
+
+Recommendation Based on Type of Deployment
+------------------------------------------
+
+Small/private home server
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Only use APCu::
+
+    'memcache.local' => '\OC\Memcache\APCu',
+
+Small organization, single-server setup
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Use APCu for local caching, Redis for file locking::
+
+ 'memcache.local' => '\OC\Memcache\APCu',
+ 'memcache.locking' => '\OC\Memcache\Redis',
+  'redis' => array(
+       'host' => 'YOUR_CHOICE',
+       'port' => YOUR_CHOICE,
+       'timeout' => 0.0,
+        ),
+
+Large organization, clustered setup
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Use Redis for everything::
+
+  'memcache.distributed' => '\OC\Memcache\Redis',
+  'memcache.locking' => '\OC\Memcache\Redis',
+  'memcache.local' => '\OC\Memcache\APCu',
+  'redis' => array(
+       'host' => 'YOUR_CHOICE',
+       'port' => YOUR_CHOICE,
+       'timeout' => 0.0,
+        ),
