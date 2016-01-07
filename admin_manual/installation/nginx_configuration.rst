@@ -93,7 +93,7 @@ Nginx Configuration
 
       rewrite ^(/core/doc/[^\/]+/)$ $1/index.html;
 
-      try_files $uri $uri/ = 404;
+      try_files $uri $uri/ =404;
     }
 
     location ~ \.php(?:$|/) {
