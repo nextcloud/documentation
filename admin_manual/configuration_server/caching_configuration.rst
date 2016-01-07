@@ -150,7 +150,7 @@ Redis
 -----
 
 Redis is an excellent modern memcache to use for both distributed caching, and 
-as a local cache with :doc:`Transactional File Locking 
+as a local cache for :doc:`Transactional File Locking 
 <../configuration_files/files_locking_transactional>` because it guarantees 
 that cached objects are available for as long as they are needed.
 
@@ -177,7 +177,6 @@ Redis for the local server cache::
   'redis' => array(
        'host' => 'localhost',
        'port' => 6379,
-       'timeout' => 0.0,
        'password' => '', // Optional, if not defined no password will be used.
         ),
 
@@ -196,7 +195,6 @@ recommended if Redis is running on the same system as ownCloud) use this example
   'redis' => array(
        'host' => '/var/run/redis/redis.sock',
        'port' => 0,
-       'timeout' => 0.0,
         ),
 
 Redis is very configurable; consult `the Redis documentation 
@@ -230,21 +228,19 @@ Use APCu for local caching, Redis for file locking::
  'memcache.local' => '\OC\Memcache\APCu',
  'memcache.locking' => '\OC\Memcache\Redis',
   'redis' => array(
-       'host' => 'YOUR_CHOICE',
-       'port' => YOUR_CHOICE,
-       'timeout' => 0.0,
+       'host' => 'localhost',
+       'port' => 6379,
         ),
 
 Large organization, clustered setup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Use Redis for everything::
+Use Redis for everything except local memcache::
 
   'memcache.distributed' => '\OC\Memcache\Redis',
   'memcache.locking' => '\OC\Memcache\Redis',
   'memcache.local' => '\OC\Memcache\APCu',
   'redis' => array(
-       'host' => 'YOUR_CHOICE',
-       'port' => YOUR_CHOICE,
-       'timeout' => 0.0,
+       'host' => 'localhost',
+       'port' => 6379,
         ),
