@@ -18,9 +18,9 @@ The amount of data stored in an ownCloud instance continually grows. Plan ahead.
 Consider setting up a scale-out deployment, or using Federated Cloud Sharing to 
 keep individual ownCloud instances to a manageable size.
 
-.. comment: Federating instances seems the best way organically grow in an 
-   enterprise. A lookup server to tie all the instances together under a single 
-   domain is being worked on.
+.. comment: Federating instances seems the best way to grow organically in 
+   an enterprise. A lookup server to tie all the instances together under a 
+   single domain is being worked on.
 
 * Operating system: Linux.
 * Webserver: Apache 2.4.
@@ -381,7 +381,7 @@ A Single Master DB is Single Point of Failure, Does Not Scale
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When master fails another slave can become master. Multi-master has the risk of 
-split brain and is a more complicated. Can run into deadlocks which oC tries 
+split brain and is more complicated. Can run into deadlocks which oC tries 
 to solve with high level file locking -> here be dragons.
 
 Software Considerations
@@ -390,7 +390,7 @@ Software Considerations
 Operating System
 ^^^^^^^^^^^^^^^^
 
-We are dependent on distributions that offers an easy way to install the 
+We are dependent on distributions that offer an easy way to install the 
 various components in an up-to-date version. Debian is loved by administrators 
 for its stability and can integrate recent versions of PHP fairly easy.
 
@@ -427,7 +427,7 @@ slave(s).
 .. comment: MySQL locks tables for schema updates and might even have to copy 
    the whole table. That is pretty much a non-starter for migrations unless you 
    are using a scale out deployment where you can apply the schema changes to 
-   each slave individually. Even the each migration might take several hours. 
+   each slave individually. Even then each migration might take several hours. 
    Make sure you have enough disk space. You have been warned.
 
 .. comment: Currently, ownCloud uses the utf8 character set with utf8_bin 
@@ -486,7 +486,7 @@ References
 
 `Database High Availability`_
    
-`Performance enhancements for Apache and PHP`_   
+`Performance enhancements for Apache and PHP`_  
 
 .. _Maintenance: 
    https://doc.owncloud.org/server/9.0/admin_manual/maintenance/index.html
@@ -509,5 +509,5 @@ References
 .. _Database High Availability: 
    http://www.severalnines.com/blog/become-mysql-dba-blog-series-database-high-
    availability
-.. _Performance enhacements for Apache and PHP: 
+.. _Performance enhancements for Apache and PHP: 
    http://blog.bitnami.com/2014/06/performance-enhacements-for-apache-and.html  
