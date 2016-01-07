@@ -109,6 +109,11 @@ certificate in the wizard so that is signed during the build process, or you
 can optionally sign your app after we build it. See 
 :doc:`publishing_android_app` to learn how to sign your app after it is built.
 
+.. note:: Google Play Store requires that certificates have a validity period 
+   ending after October 22, 2033. See 
+   `<http://developer.android.com/intl/es/tools/publishing/app-signing.
+   html#considerations>`_.
+
 **Root folder name** displays the root folder name on your user's devices.
 
 **Help url** is for entering a link to your help page for the app.
