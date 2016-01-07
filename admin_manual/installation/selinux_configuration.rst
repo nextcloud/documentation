@@ -72,3 +72,12 @@ Allow access to CIFS/SMB
 If you have placed your datadir on a CIFS/SMB share use the following setting::
 
  setsebool -P httpd_use_cifs on
+
+Troubleshooting
+---------------
+
+For general Troubleshooting of SELinux and its profiles try to install the package ``setroubleshoot`` and run::
+
+ sealert -a /var/log/audit/audit.log > /path/to/mylogfile.txt
+
+to get a report which helps you configuring your SELinux profiles.
