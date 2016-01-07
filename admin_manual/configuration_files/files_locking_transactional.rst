@@ -69,4 +69,9 @@ Learn more about Reds at `Redis <http://redis.io/>`_. Memcached, the popular
 distributed memory caching system, is not suitable for the new file locking 
 because it is not designed to store locks, and data can disappear from the cache 
 at any time. Redis is a key-value store, and it guarantees that cached objects 
-are available for as long as they are needed. 
+are available for as long as they are needed.
+
+Debian Jesse users, please see this `Github discussion 
+<https://github.com/owncloud/core/issues/20675>`_ if you have problems with 
+LDAP authentication.
+
