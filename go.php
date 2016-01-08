@@ -25,6 +25,7 @@ $mapping = array(
     'admin-php-fpm'           => '/admin_manual/installation/source_installation.html#configuration-notes-to-php-fpm',
     'admin-transactional-locking' => '/admin_manual/configuration_files/files_locking_transactional.html',
     'admin-code-integrity' => '/admin_manual/issues/code_signing.html',
+    'admin-setup-well-known-URL' => '/admin_manual/issues/general_troubleshooting.html#service-discovery',
 
     'developer-theming'       => '/developer_manual/core/theming.html',
 
@@ -61,4 +62,3 @@ if (array_key_exists($from, $mapping)) {
         header('Location: ' . $location . '/user_manual');
     }
 }
-
