@@ -2,8 +2,8 @@
 ownCloud Deployment Recommendations
 ===================================
 
-What is the best way to install and maintain ownCloud? The answer to that, of 
-course, is *"it depends"* because every ownCloud customer has their own 
+What is the best way to install and maintain ownCloud? The answer to that is 
+*"it depends"* because every ownCloud customer has their own 
 particular needs and IT infrastructure. ownCloud and the LAMP stack are 
 highly-configurable, so we will present three typical scenarios and make 
 best-practice recommendations for both software and hardware.
@@ -45,29 +45,27 @@ Small Workgroups or Departments
    100 GB to 10TB.
 
 * High availability level
-   Nightly interruption of service for backup, component failure leads to 
-   interruption of service.
+   Zero-downtime backups via Btrfs snapshots, component failure leads to 
+   interruption of service. Alternate backup scheme on other filesystems: 
+   nightly backups with service interruption.
    
-*Image is missing*
-
 Recommended System Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. comment: ***this image is missing*** ![OC small deployment 
-   scenario](http://yuml.me/diagram/scruffy/class/OC small deployment scenario, 
-   [Web server|Apache;DB Server;local storage], [Web server]-[LDAP Server])
 
 One machine running the application server, Webserver, database server and 
 local storage.
 
 Authentication via an existing LDAP or Active Directory server.
 
+.. figure:: images/deprecs-1.png
+   :alt: Network diagram for small enterprises.
+
 * Components
    One server with at least 2 CPU cores, 16GB RAM, local storage as needed.
 
 * Operating system
-   Enterprise grade Linux distribution with full support from OS vendor. Red 
-   Hat Enterprise Linux or SUSE Linux Enterprise Server 12 are recommended.
+   Enterprise-grade Linux distribution with full support from OS vendor. We 
+   recommend Red Hat Enterprise Linux or SUSE Linux Enterprise Server 12.
 
 * SSL Configuration
    The SSL termination is done in Apache. A standard SSL certificate is 
@@ -77,22 +75,26 @@ Authentication via an existing LDAP or Active Directory server.
    None. 
 
 * Database
-   MySQL, MariaDB or PostgreSQL.
- 
-.. comment: We currently recommend MySQL / MariaDB, as our customers have 
-   had good experiences when moving to a Galera cluster to scale the DB.
+   MySQL, MariaDB or PostgreSQL. We currently recommend MySQL / MariaDB, as our 
+   customers have had good experiences when moving to a Galera cluster to 
+   scale the DB.
 
 * Backup
-   Automatic nightly backups:
+   Install owncloud, ownCloud data directory and database on Btrfs filesystem. 
+   Make regular snapshots at desired intervals for zero downtime backups. 
+   Mount DB partitions with the "nodatacow" option to prevent fragmentation.
+ 
+   Alternatively, make nightly backups with service interruption:
    
    * Shut down Apache.
    * Create database dump.
    * Push data directory to backup.
    * Push database dump to backup.
    * Start Apache.
-   * Optionally rsync to a backup storage and tape backup. (See the 
-     `Maintenance`_ section of the Administration manual for tips on backups 
-     and restores.)
+   
+   Then optionally rsync to a backup storage or tape backup. (See the 
+   `Maintenance`_ section of the Administration manual for tips on backups 
+   and restores.)
 
 * Authentication
    User authentication via one or several LDAP or Active Directory servers. (See
@@ -108,7 +110,7 @@ Authentication via an existing LDAP or Active Directory server.
    ``echo "tmpfs /var/lib/php5/pool-www tmpfs defaults,noatime,mode=1777 0 0" 
    >> /etc/fstab``.
 
-* Caching
+* Memory Caching
    A memcache speeds up server performance, and ownCloud supports four 
    memcaches; refer to `Configuring Memory Caching`_ for information on 
    selecting and configuring a memcache.
@@ -132,9 +134,6 @@ Mid-sized Enterprises
 * High availability level
    Every component is fully redundant and can fail without service interruption. 
    Backups without service interruption
-   
-.. figure:: images/deprecs-2.png
-   :alt: Network diagram for mid-sized enterprise.
 
 Recommended System Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -147,20 +146,22 @@ Storage on an NFS server.
 
 Authentication via an existing LDAP or Active Directory server.
 
+.. figure:: images/deprecs-2.png
+   :alt: Network diagram for mid-sized enterprise.
+
 * Components
-   2 to 4 application servers with 4 sockets and 32GB RAM.
-   2 DB servers with 4 sockets and 64GB RAM
-   1 HAproxy load balancer with 2 sockets and 16GB RAM.
-   NFS storage server as needed.
+   * 2 to 4 application servers with 4 sockets and 32GB RAM.
+   * 2 DB servers with 4 sockets and 64GB RAM.
+   * 1 HAproxy load balancer with 2 sockets and 16GB RAM.
+   * NFS storage server as needed.
 
 * Operating system
    Enterprise grade Linux distribution with full support from OS vendor. Red 
    Hat Enterprise Linux or SUSE Linux Enterprise Server 12 are recommended.
 
 * SSL Configuration
-   The SSL termination is done in the HAProxy Load Balancer. A standard SSL 
-   certificate is needed, installed according to the `HAProxy 
-   documentation <http://www.haproxy.org/#docs>`_.)
+   The SSL termination is done in the HAProxy load balancer. A standard SSL 
+   certificate is needed, installed according to the `HAProxy documentation`_.
 
 * Load Balancer
    HAProxy running on a dedicated server in front of the application servers. 
@@ -199,7 +200,7 @@ Authentication via an existing LDAP or Active Directory server.
     * Restart MySQL replication.
 
 * Authentication
-   User authentication can be used via one or several LDAP or AD directories. 
+   User authentication via one or several LDAP or Active Directory servers. 
    (See `User Authentication with LDAP`_  for information on configuring 
    ownCloud to use LDAP and AD.)
    
@@ -208,17 +209,22 @@ Authentication via an existing LDAP or Active Directory server.
    optimal scalability
 
 * Session Management
-   Local Session management on the application server. PHP sessions are stored 
-   in /tmp which is mounted as tmpfs. (please add configuration details here)
+   Session management on the application server. PHP sessions are stored 
+   in a tmpfs mounted at the operating system-specific session storage 
+   location. You can find out where that is by running ``grep -R 
+   'session.save_path` /etc/php5`` and then add it to the ``/etc/fstab`` file, 
+   for example: 
+   ``echo "tmpfs /var/lib/php5/pool-www tmpfs defaults,noatime,mode=1777 0 0" 
+   >> /etc/fstab``.
 
-* Caching
+* Memory Caching
    A memcache speeds up server performance, and ownCloud supports four 
    memcaches; refer to `Configuring Memory Caching`_ for information on 
    selecting and configuring a memcache.
    
 * Storage
-   An off-the-shelf NFS solution should be used. Examples are IBM Elastic 
-   Storage or RedHat CEPH.
+   Use an off-the-shelf NFS solution, such as IBM Elastic Storage or RedHat 
+   Ceph.
    
 * ownCloud Edition
    Enterprise Edition. (See `ownCloud Server or Enterprise Edition`_ for 
@@ -235,14 +241,7 @@ Large Enterprises and Service Providers
    
 * High availabily level
    Every component is fully redundant and can fail without service interruption.
-   Backups without service interruption
-   
-.. figure:: images/deprecs-3.png
-   :scale: 60%
-   :alt: Network diagram for large enterprise.   
-
-.. comment: ![Not pretty ... but needs discussion anyway] 
-   (http://yuml.me/cfeebddd)   
+   Backups without service interruption  
    
 Recommended System Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -257,18 +256,22 @@ Cloud federation for a distributed setup over several data centers.
 
 Authentication via an existing LDAP or Active Directory server, or SAML.
 
+.. figure:: images/deprecs-3.png
+   :scale: 60%
+   :alt: Network diagram for large enterprise. 
+
 * Components
-   4 to 20 application servers with 4 sockets and 64GB  RAM.
-   4 DB servers with 4 sockets and 128GB RAM
-   2 Hardware load balancer, for example BIG IP from F5
-   NFS storage server as needed.
+   * 4 to 20 application servers with 4 sockets and 64GB  RAM.
+   * 4 DB servers with 4 sockets and 128GB RAM
+   * 2 Hardware load balancer, for example BIG IP from F5
+   * NFS storage server as needed.
 
 * Operating system
    RHEL 7 with latest service packs.
 
 * SSL Configuration
-   The SSL termination is done in the Load Balancer. A standard SSL certificate 
-   is needed, installed according to the Load Balancer documentation. 
+   The SSL termination is done in the load balancer. A standard SSL certificate 
+   is needed, installed according to the load balancer documentation. 
 
 * Load Balancer
    A redundant hardware load-balancer with heartbeat, for example `F5 Big-IP`_. 
@@ -299,19 +302,16 @@ Authentication via an existing LDAP or Active Directory server, or SAML.
    optimal scalability.
 
 * Session Management
-   Redis should be use for the session management storage (see `Configuring 
-   Memory Caching`_).
+   Redis should be used for the session management storage.
 
 * Caching
    Redis for distributed in-memory caching (see `Configuring Memory 
    Caching`_).
    
-*  Storage
-    An off-the-shelf NFS solution should be used. Examples are IBM Elastic 
-    Storage or RedHAT CEPH. Optionally, an S3 compatible object store can also 
-    be used. 
-
-    .. comment:  (please add more meat here)   
+* Storage
+   An off-the-shelf NFS solution should be used. Examples are IBM Elastic 
+   Storage or RedHAT Ceph. Optionally, an S3 compatible object store can also 
+   be used.
 
 * ownCloud Edition
    Enterprise Edition. (See `ownCloud Server or Enterprise Edition`_ for 
@@ -321,28 +321,29 @@ Hardware Considerations
 -----------------------
 
 * Solid-state drives (SSDs) for I/O.
-* Separate hard disks for storage and database, SSDs for DBs.
+* Separate hard disks for storage and database, SSDs for databases.
 * Multiple network interfaces to distribute server synchronisation and backend 
   traffic across multiple subnets.
 
 Single Machine / Scale-Up Deployment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Widely used in the community. Lowest end hardware: RaspberryPI.
+The single-machine deployment is widely used in the community.
 
 Pros:
 
-* Easy setup (no session storage daemon-> use tmpfs for performance, local 
-  storage).
+* Easy setup: no session storage daemon, use tmpfs and memory caching to 
+  enhance performance, local storage.
 * No network latency to consider.
-* To scale buy bigger CPU, memory, or hard drive.
+* To scale buy a bigger CPU, more memory, larger hard drive, or additional hard 
+  drives.
 
 Cons:
 
-* No high availability
-* Amount of data in oC tends to never shrink -> sooner rather than later a 
-  single machine will not scale (multiple up- and downloads kill I/O, even with 
-  SSD)
+* Fewer high availability options.
+* The amount of data in ownCloud tends to continually grow. Eventually a 
+  single machine will not scale; I/O performance decreases and becomes a 
+  bottleneck with multiple up- and downloads, even with solid-state drives.
 
 Scale-Out Deployment
 ^^^^^^^^^^^^^^^^^^^^
@@ -381,8 +382,8 @@ A Single Master DB is Single Point of Failure, Does Not Scale
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When master fails another slave can become master. Multi-master has the risk of 
-split brain and is more complicated. Can run into deadlocks which oC tries 
-to solve with high level file locking -> here be dragons.
+split brain and is more complicated. Can run into deadlocks which ownCloud tries 
+to solve with high-level file locking.
 
 Software Considerations
 -----------------------
@@ -390,12 +391,14 @@ Software Considerations
 Operating System
 ^^^^^^^^^^^^^^^^
 
-We are dependent on distributions that offer an easy way to install the 
-various components in an up-to-date version. Debian is loved by administrators 
-for its stability and can integrate recent versions of PHP fairly easy.
-
-That being said, ownCloud has a partnership with RedHat and SUSE for customers 
-who need commercial support.
+We are dependent on distributions that offer an easy way to install the various 
+components in up-to-date versions. ownCloud has a partnership with RedHat 
+and SUSE for customers who need commercial support. Canonical, the parent 
+company of Ubuntu Linux, also offers enterprise service and support. Debian 
+and Ubuntu are free of cost, and include newer software packages. CentOS is the 
+community-supported free-of-cost Red Hat Enterprise Linux clone. openSUSE is 
+community-supported, and includes many of the same system administration tools 
+as SUSE Linux Enterprise Server.
 
 Webserver
 ^^^^^^^^^
@@ -412,14 +415,17 @@ deployments separate PHP pools are simply not necessary.
 
 .. comment:  Nginx stores uploaded files on disk before handing them to php-fpm 
    which is a performance problem with GB-sized files. There seems to be an 
-   Nginx fork from China that handles that better.
+   Nginx fork from China that handles that better. 
+   
+.. comment from carla: We shouldn't recommend forks unless they are proven, 
+   well-supported and dependable.
 
 Relational Database
 ^^^^^^^^^^^^^^^^^^^
 
 More often than not the customer already has an opinion on what database to 
 use. In general, the recommendation is to use what their database administrator 
-is most familiar with. Taking into account what GCX is seeing at customer 
+is most familiar with. Taking into account what we are seeing at customer 
 deployments, we recommend MySQL/MariaDB in a master-slave deployment with a 
 MySQL proxy in front of them to send updates to master, and selects to the 
 slave(s).
@@ -435,8 +441,8 @@ slave(s).
    emojis cannot be used. This can be fixed by [moving to 
    utf8mb4/utf8mb4_bin](https://github.com/owncloud/core/issues/7030).
 
-The second best option is PostgreSQL (alter table does not lock table - makes 
-migration less painful) although we have yet to find a customer who uses a 
+The second best option is PostgreSQL (alter table does not lock table, which 
+makes migration less painful) although we have yet to find a customer who uses a 
 master-slave setup.
 
 .. comment: PostgreSQL may produce excessive amounts of dead tuples due to 
@@ -447,18 +453,17 @@ What about the other DBMS?
 * Sqlite is adequate for simple testing, and for low-load single-user 
   deployments. It is not adequate for production systems.
 * MSSQL is not automatically tested.
-* Oracle is a pain, but the de facto standard at huge enterprises. Developers 
-  need to be aware of the 30 char identifier limit, empty string equals null 
-  and varchar2 can only be made 4000 chars wide.
+* Oracle is expensive, but is the de facto standard at large enterprises. 
+  Developers need to be aware of the 30 char identifier limit, empty string 
+  equals null and varchar2 can only be made 4000 chars wide.
 
 File Storage
 ------------
 
-This is what separates us from WordPress or typo3. Our main use case is up- and 
-download of files. Sooner or later that requires scale-out storage. Currently, 
-the options are GPFS or an object store like Ceph/s3 or Openstack/Swift. GPFS 
-is expensive, and our s3 and Swift implementations use temp files which 
-prevents them from scaling adequately.
+Our main use case is up- and download of files. Sooner or later, that requires 
+scale-out storage. Currently, the options are GPFS or an object store like 
+Ceph/s3 or Openstack/Swift. GPFS is expensive, and our s3 and Swift 
+implementations use temp files which prevents them from scaling adequately.
 
 .. comment: A proof of concept implementation based on 
    [phprados](https://github.com/ceph/phprados) that talks directly to a 
@@ -473,10 +478,11 @@ prevents them from scaling adequately.
 Session Storage
 ---------------
 
-* Redis (persistent, nice graphical inspection tools available, ownCloud high 
-  level locking supported)
-* If Shibboleth is a requirement you must use Memcached, as it can also be used 
-  to scale-out shibd session storage (see `Memcache StorageService`_).
+* Redis: provides persistence, nice graphical inspection tools available, 
+  supports ownCloud high-level file locking.
+   
+* If Shibboleth is a requirement you must use Memcached, and it can also be 
+  used to scale-out shibd session storage (see `Memcache StorageService`_).
 
 .. comment: High Availability / Failover deployment
    Use Case: site replication -> different problem
@@ -486,7 +492,10 @@ References
 
 `Database High Availability`_
    
-`Performance enhancements for Apache and PHP`_  
+`Performance enhancements for Apache and PHP`_
+
+`How to Set Up a Redis Server as a Session Handler for PHP on Ubuntu 14.04`_
+
 
 .. _Maintenance: 
    https://doc.owncloud.org/server/9.0/admin_manual/maintenance/index.html
@@ -506,8 +515,14 @@ References
 .. _Memcache StorageService:  
    https://wiki.shibboleth.net/confluence/display/SHIB2/
    NativeSPStorageService#NativeSPStorageService-MemcacheStorageService
+   
 .. _Database High Availability: 
    http://www.severalnines.com/blog/become-mysql-dba-blog-series-database-high-
    availability
 .. _Performance enhancements for Apache and PHP: 
    http://blog.bitnami.com/2014/06/performance-enhacements-for-apache-and.html  
+.. _How to Set Up a Redis Server as a Session Handler for PHP on Ubuntu 14.04: 
+   https://www.digitalocean.com/community/tutorials/how-to-set-up-a-redis-server
+   -as -a-session-handler-for-php-on-ubuntu-14-04
+.. _HAProxy documentation:
+   http://www.haproxy.org/#docs
