@@ -150,7 +150,7 @@ Redis
 -----
 
 Redis is an excellent modern memcache to use for both distributed caching, and 
-as a local cache with :doc:`Transactional File Locking 
+as a local cache for :doc:`Transactional File Locking 
 <../configuration_files/files_locking_transactional>` because it guarantees 
 that cached objects are available for as long as they are needed.
 
@@ -177,9 +177,12 @@ Redis for the local server cache::
   'redis' => array(
        'host' => 'localhost',
        'port' => 6379,
-       'timeout' => 0.0,
        'password' => '', // Optional, if not defined no password will be used.
         ),
+
+For best performance, use Redis for file locking by adding this::
+
+  'memcache.locking' => '\OC\Memcache\Redis',
 
 .. note:: For enhanced security it is recommended to configure Redis to require
    a password. See http://redis.io/topics/security for more information.
@@ -192,7 +195,6 @@ recommended if Redis is running on the same system as ownCloud) use this example
   'redis' => array(
        'host' => '/var/run/redis/redis.sock',
        'port' => 0,
-       'timeout' => 0.0,
         ),
 
 Redis is very configurable; consult `the Redis documentation 
@@ -207,3 +209,38 @@ Cache Directory Location
 The cache directory defaults to ``data/$user/cache`` where ``$user`` is the 
 current user. You may use the ``'cache_path'`` directive in ``config.php``
 (See :doc:`config_sample_php_parameters`) to select a different location.
+
+Recommendation Based on Type of Deployment
+------------------------------------------
+
+Small/private home server
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Only use APCu::
+
+    'memcache.local' => '\OC\Memcache\APCu',
+
+Small organization, single-server setup
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Use APCu for local caching, Redis for file locking::
+
+ 'memcache.local' => '\OC\Memcache\APCu',
+ 'memcache.locking' => '\OC\Memcache\Redis',
+  'redis' => array(
+       'host' => 'localhost',
+       'port' => 6379,
+        ),
+
+Large organization, clustered setup
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Use Redis for everything except local memcache::
+
+  'memcache.distributed' => '\OC\Memcache\Redis',
+  'memcache.locking' => '\OC\Memcache\Redis',
+  'memcache.local' => '\OC\Memcache\APCu',
+  'redis' => array(
+       'host' => 'localhost',
+       'port' => 6379,
+        ),
