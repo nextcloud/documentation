@@ -36,7 +36,9 @@ The Calendar app contains the following fields and controls:
   controls include sharing, obtaining an external URL link to the calendar, an
   export function, an edit function, and a delete (trash) button.
 
-  .. note:: Some Ad-Block plugins hide the "Share" button for calendars. If the "Share" button is missing, try disabling your Ad-Block plugin or add a whitelist-entry for your OwnCloud instance.
+  .. note:: Some Ad-Block plugins hide the "Share" button for calendars. If the
+     "Share" button is missing, try disabling your Ad-Block plugin or add a
+     whitelist-entry for your OwnCloud instance.
 
 - Calendar Settings -- Provides access to the calendar-specific settings.  These
   settings include the calendar timezone selection, time format selection, week
@@ -299,11 +301,11 @@ Additionally the Calendar app is providing two URLs for special functions:
 
 **Export calendar as an .ics file**
 
-  https://ADDRESS/remote.php/caldav/calendars/USERNAME/CALENDARNAME?export
+  https://example.com/remote.php/dav/calendars/USERNAME/CALENDARNAME?export
 
 **Your contacts' birthdays**
 
-  https://ADDRESS/remote.php/caldav/calendars/USERNAME/contact_birthdays
+  https://example.com/remote.php/dav/calendars/USERNAME/contact_birthdays
 
 Calendar App FAQ
 ----------------
