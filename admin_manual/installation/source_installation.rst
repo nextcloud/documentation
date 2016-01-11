@@ -44,7 +44,7 @@ Your Linux distribution should have packages for all required modules.
 
 Required:
 
-* php5 (>= 5.5)
+* php5 (>= 5.4)
 * PHP module ctype
 * PHP module dom
 * PHP module GD
