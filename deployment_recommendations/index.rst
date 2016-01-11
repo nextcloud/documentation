@@ -11,10 +11,12 @@ best-practice recommendations for both software and hardware.
 General Recommendations
 -----------------------
 
-.. note:: Whatever the size of your organization, always keep one thing in mind: 
+.. note:: Whatever the size of your organization, always keep one thing in 
+mind: 
    the amount of data stored in ownCloud will only grow. Plan ahead.
 
-The amount of data stored in an ownCloud instance continually grows. Plan ahead. 
+The amount of data stored in an ownCloud instance continually grows. Plan 
+ahead. 
 Consider setting up a scale-out deployment, or using Federated Cloud Sharing to 
 keep individual ownCloud instances to a manageable size.
 
@@ -58,7 +60,6 @@ local storage.
 Authentication via an existing LDAP or Active Directory server.
 
 .. figure:: images/deprecs-1.png
-   :scale: 75%
    :alt: Network diagram for small enterprises.
 
 * Components
@@ -133,7 +134,8 @@ Mid-sized Enterprises
    Up to 200TB.
    
 * High availability level
-   Every component is fully redundant and can fail without service interruption. 
+   Every component is fully redundant and can fail without service 
+interruption. 
    Backups without service interruption
 
 Recommended System Requirements
@@ -383,7 +385,8 @@ A Single Master DB is Single Point of Failure, Does Not Scale
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When master fails another slave can become master. Multi-master has the risk of 
-split brain and is more complicated. Can run into deadlocks which ownCloud tries 
+split brain and is more complicated. Can run into deadlocks which ownCloud 
+tries 
 to solve with high-level file locking.
 
 Software Considerations
@@ -443,7 +446,8 @@ slave(s).
    utf8mb4/utf8mb4_bin](https://github.com/owncloud/core/issues/7030).
 
 The second best option is PostgreSQL (alter table does not lock table, which 
-makes migration less painful) although we have yet to find a customer who uses a 
+makes migration less painful) although we have yet to find a customer who uses 
+a 
 master-slave setup.
 
 .. comment: PostgreSQL may produce excessive amounts of dead tuples due to 
