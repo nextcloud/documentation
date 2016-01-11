@@ -23,9 +23,8 @@ The other way is by entering your ``config.php`` file and changing
    installed in ``/var/www/owncloud/`` you could create a new directory called
    ``/var/www/owncloud2/``
    
-   .. note:: To unpack your new tarball::
-
-    tar xjf owncloud-latest.tar.bz2
+   .. note:: To unpack your new tarball, run:
+      tar xjf owncloud-latest.tar.bz2
     
 .. note:: Enterprise users must download their new ownCloud archives from 
    their accounts on `<https://customer.owncloud.com/owncloud/>`_
