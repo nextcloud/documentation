@@ -88,7 +88,7 @@ the `Firebug extension <https://getfirebug.com/>`_.
 .. note:: The logfile of ownCloud is located in the data directory 
    ``owncloud/data/owncloud.log``.
 
-.. _label-phpinfo:   
+.. _label-phpinfo:
    
 PHP Version and Information
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -126,7 +126,7 @@ Disregarding this can lead to unwanted behaviours like:
 If you need to directly upload files from the same server please use a WebDAV 
 command line client like ``cadaver`` to upload files to the WebDAV interface at:
 
-  https://example.com/owncloud/remote.php/dav
+``https://example.com/owncloud/remote.php/dav``
 
 Common problems / error messages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -221,6 +221,8 @@ these modules:
 
 * eAccelerator
 
+.. _trouble-webdav-label:
+
 Troubleshooting WebDAV
 ----------------------
 
@@ -263,17 +265,18 @@ sync URL, even when explicitly configured to use it.
 If you want to use CalDAV or CardDAV clients together with ownCloud it is
 important to have a correct working setup of the following URLs:
 
-https://example.com/.well-known/carddav
-https://example.com/.well-known/caldav
+| ``https://example.com/.well-known/carddav``
+| ``https://example.com/.well-known/caldav``
+|
 
 Those need to be redirecting your clients to the correct DAV endpoints. If
 running ownCloud at the document root of your webserver the correct URL is:
 
-https://example.com/remote.php/dav
+``https://example.com/remote.php/dav``
 
 and if running in a subfolder like ``owncloud``:
 
-https://example.com/owncloud/remote.php/dav
+``https://example.com/owncloud/remote.php/dav``
 
 For the first case the :file:`.htaccess` file shipped with ownCloud should do
 this work for your when running Apache. You only need to make sure that your
@@ -284,14 +287,19 @@ web server is using this file. When running nginx please refer to the
    / repositories provided by ownCloud.
 
 If your ownCloud instance is installed in a subfolder called ``owncloud`` and
-you're running Apache create or edit the :file:`.htaccess`` file within the
+you're running Apache create or edit the :file:`.htaccess` file within the
 document root of your webserver and add the following lines::
 
     Redirect 301 /.well-known/carddav /owncloud/remote.php/dav
     Redirect 301 /.well-known/caldav /owncloud/remote.php/dav
 
-Now change the URL in the client settings to just use ``https://example.com``
-instead of e.g. ``https://example.com/owncloud/remote.php/dav/principals/username``.
+Now change the URL in the client settings to just use:
+
+``https://example.com``
+
+instead of e.g.
+
+``https://example.com/owncloud/remote.php/dav/principals/username``.
 
 There are also several techniques to remedy this, which are described extensively at 
 the `Sabre DAV website <http://sabre.io/dav/service-discovery/>`_.
@@ -299,8 +307,11 @@ the `Sabre DAV website <http://sabre.io/dav/service-discovery/>`_.
 Unable to update Contacts or Events
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you get an error like ``PATCH https://example.com/remote.php/dav HTTP/1.0 501 Not 
-Implemented`` it is likely caused by one of the following reasons:
+If you get an error like:
+
+``PATCH https://example.com/remote.php/dav HTTP/1.0 501 Not Implemented``
+
+it is likely caused by one of the following reasons:
 
 Using Pound reverse-proxy/load balancer
   As of writing this Pound doesn't support the HTTP/1.1 verb.
@@ -310,7 +321,7 @@ Using Pound reverse-proxy/load balancer
 
 Misconfigured web server
   Your webserver is misconfigured and blocks the needed DAV methods.
-  Please refer to ``Troubleshooting WebDAV`` above for troubleshooting steps.
+  Please refer to :ref:`trouble-webdav-label` above for troubleshooting steps.
 
 Other issues
 ------------
