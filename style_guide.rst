@@ -132,3 +132,8 @@ page. Currently the manuals have both a single master images directory, and
 image directories local to each chapter. A single master images directory is 
 difficult to maintain and inevitably becomes cluttered with obsolete images. Eventually
 the single master directories will be gone.
+
+Example URL
+-----------
+
+Use ``https://example.com`` in your examples where you want to include an URL.
