@@ -23,6 +23,10 @@ The other way is by entering your ``config.php`` file and changing
    installed in ``/var/www/owncloud/`` you could create a new directory called
    ``/var/www/owncloud2/``
    
+   .. note:: To unpack your new tarball::
+
+    tar xjf owncloud-latest.tar.bz2
+    
 .. note:: Enterprise users must download their new ownCloud archives from 
    their accounts on `<https://customer.owncloud.com/owncloud/>`_
    
@@ -31,37 +35,33 @@ The other way is by entering your ``config.php`` file and changing
 4. Rename or move your current ownCloud directory (named ``owncloud/`` if 
    installed using defaults) to another location.
 
-5. Unpack your new tarball::
-
-    tar xjf owncloud-latest.tar.bz2
-    
-6. This creates a new ``owncloud/`` directory populated with your new server 
+5. This creates a new ``owncloud/`` directory populated with your new server 
    files. Copy this directory and its contents to the original location of your 
    old server, for example ``/var/www/``, so that once again you have 
    ``/var/www/owncloud`` .
 
-7. Copy and paste the ``config.php`` file from your old version of 
+6. Copy and paste the ``config.php`` file from your old version of 
    ownCloud to your new ownCloud version.
 
-8. If you keep your ``data/`` directory in your ``owncloud/`` directory, copy 
+7. If you keep your ``data/`` directory in your ``owncloud/`` directory, copy 
    it from your old version of ownCloud to the ``owncloud/`` directory of 
    your new ownCloud version. If you keep it outside of ``owncloud/`` then 
    you don't have to do anything with it, because its location is configured in 
    your original ``config.php``, and none of the upgrade steps touch it.
 
-9. If you are using 3rd party applications, look in your new ``owncloud/apps/`` 
+8. If you are using 3rd party applications, look in your new ``owncloud/apps/`` 
    directory to see if they are there. If not, copy them from your old ``apps/``
    directory to your new one. Make sure the directory permissions of your third
    party application directories are the same as for the other ones.
 
-10. Restart your Web server.
+9. Restart your Web server.
 
-11. Now launch the upgrade from the command  line using ``occ``, like this 
+10. Now launch the upgrade from the command  line using ``occ``, like this 
     example on CentOS Linux::
     
      sudo -u apache php occ upgrade
      
-12. The upgrade operation takes a few minutes to a few hours, depending on the 
+11. The upgrade operation takes a few minutes to a few hours, depending on the 
     size of your installation. When it is finished you will see a success 
     message, or an error message that will tell where it went wrong.   
 
