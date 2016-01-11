@@ -14,7 +14,7 @@ See the `Style Guide <https://github.com/owncloud/documentation/blob/master/styl
 Manuals
 -------
 
-This repository hosts three manuals:
+This repository hosts four manuals:
 
 * **Users' Manual**
 * **Administration Manual**
