@@ -109,4 +109,11 @@ combination with remote hosts using SNI. A technology used by most of the HTTPS
 websites. To ensure that ownCloud will work properly you need to update OpenSSL
 to at least 1.0.2b or 1.0.1d. For NSS the patch version depends on your distribution
 and an heuristic is running the test which actually reproduces the bug. There
-are distributions such as RHEL/CentOS which have this backport still `pending <https://bugzilla.redhat.com/show_bug.cgi?id=1241172>`_.
+are distributions such as RHEL/CentOS which have this backport still `pending 
+<https://bugzilla.redhat.com/show_bug.cgi?id=1241172>`_.
+
+Your web server is not set up properly to resolve /.well-known/caldav/ or /.well-known/carddav/
+-----------------------------------------------------------------------------------------------
+
+Both URLs needs to be correctly redirected to the DAV endpoint of ownCloud. Please
+refer to :ref:`service-discovery-label` for more info.

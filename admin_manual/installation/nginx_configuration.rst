@@ -65,8 +65,8 @@ Nginx Configuration
     error_page 403 /core/templates/403.php;
     error_page 404 /core/templates/404.php;
 
-    rewrite ^/.well-known/carddav /remote.php/carddav/ permanent;
-    rewrite ^/.well-known/caldav /remote.php/caldav/ permanent;
+    rewrite ^/.well-known/carddav /remote.php/dav/ permanent;
+    rewrite ^/.well-known/caldav /remote.php/dav/ permanent;
 
     # The following 2 rules are only needed for the user_webfinger app.
     # Uncomment it if you're planning to use this app.

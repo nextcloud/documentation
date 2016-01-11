@@ -272,10 +272,12 @@ Synchronizing With Android
 
 To synchronize with an Android device:
 
-1) Install CardDAV- Sync free from the Google play store by visiting `this link <https://play.google.com/store/apps/details?id=org.dmfs.carddav.sync>`_.
+1) Install CardDAV- Sync free from the Google play store by visiting `this link
+   <https://play.google.com/store/apps/details?id=org.dmfs.carddav.sync>`_.
    This app supports auto-configuration.
   
-  .. note:: Following the installing, visit carddavs://example.org/remote.php/carddav/ to auto-configure the app.
+  .. note:: Following the installation, visit carddavs://example.com/remote.php/dav/
+     to auto-configure the app.
 
 3) Enter your login details.
 
@@ -298,7 +300,7 @@ To synchronize with an Apple iOS device:
 
 5. Select ``Add CardDAV account``.
 
-6. For ``server``, enter http://example.org/remote.php/carddav/principals/username
+6. For ``server``, enter https://example.com/remote.php/dav/principals/username
 
 7. Specify your username and password.
 
@@ -339,7 +341,7 @@ Additionally, the Contacts app is providing an URL for special functions:
 
 **Export an address book as a vCard file**
 
-  https://ADDRESS/remote.php/carddav/addressbooks/USERNAME/ADDRESSBOOKNAME?export
+  https://example.com/remote.php/dav/addressbooks/USERNAME/ADDRESSBOOKNAME?export
 
 Troubleshooting
 ---------------

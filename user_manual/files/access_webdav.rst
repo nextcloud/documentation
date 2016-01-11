@@ -27,14 +27,14 @@ Apple iOS devices is by using the `ownCloud mobile apps
 To connect to your ownCloud server with the **ownCloud** mobile apps, use the 
 base URL and folder only::
 
-    example.org/owncloud
+    example.com/owncloud
 
 In addition to the mobile apps provided by ownCloud, you can use other apps to 
 connect to ownCloud from your mobile device using WebDAV. `WebDAV Navigator`_ is 
 a good (proprietary) app for `Android devices`_, `iPhones`_, and `BlackBerry 
 devices`_. The URL to use on these is::
 
-    example.org/owncloud/remote.php/webdav
+    example.com/owncloud/remote.php/dav
     
 WebDAV Configuration
 --------------------
@@ -46,7 +46,7 @@ Distributed Authoring and Versioning (WebDAV) is a Hypertext Transfer Protocol
 servers. With WebDAV you can access your ownCloud shares on Linux, Mac OS X and 
 Windows in the same way as any remote network share, and stay synchronized.
 
-.. note:: In the following examples, You must adjust **example.org/** to the
+.. note:: In the following examples, You must adjust **example.com/** to the
    URL of your ownCloud server installation.
 
 Accessing Files Using Linux
@@ -60,7 +60,7 @@ Nautilus File Manager
 Use the ``davs://`` protocol to connect the Nautilus file manager to your 
 ownCloud share::
 
-  davs://example.org/owncloud/remote.php/webdav
+  davs://example.com/owncloud/remote.php/dav
 
 .. note:: If your server connection is not HTTPS-secured, use `dav://` instead 
    of `davs://`.
@@ -74,7 +74,7 @@ Accessing Files with KDE and Dolphin File Manager
 To access your ownCloud files using the Dolphin file manager in KDE, use 
 the ``webdav://`` protocol::
 
-    webdav://example.org/owncloud/remote.php/webdav
+    webdav://example.com/owncloud/remote.php/dav
 
 .. image:: ../images/webdav_dolphin.png
    :alt: screenshot of configuring Dolphin file manager to use WebDAV
@@ -92,9 +92,9 @@ You can create a permanent link to your ownCloud server:
 
    * User: The ownCloud username you used to log in, for example admin.
    
-   * Server: The ownCloud domain name, for example **example.org** (without 
+   * Server: The ownCloud domain name, for example **example.com** (without 
      **http://** before or directories afterwards).
-   * Folder -- Enter the path ``owncloud/remote.php/webdav``.
+   * Folder -- Enter the path ``owncloud/remote.php/dav``.
 #. (Optional) Check the "Create icon checkbox" for a bookmark to appear in the 
    Places column.
 #. (Optional) Provide any special settings or an SSL certificate in the "Port & 
@@ -140,11 +140,11 @@ automatically every time you log in to your Linux computer.
 6. Add your ownCloud login credentials to the end of the ``secrets`` file, 
    using your ownCloud server URL and your ownCloud username and password::
 
-    example.org/owncloud/remote.php/webdav <username> <password>
+    example.com/owncloud/remote.php/dav <username> <password>
 
 7. Add the mount information to ``/etc/fstab``::
 
-    example.org/owncloud/remote.php/webdav /home/<username>/owncloud 
+    example.com/owncloud/remote.php/dav /home/<username>/owncloud 
     davfs user,rw,auto 0 0
 
 8. Then test that it mounts and authenticates by running the following 
@@ -210,7 +210,7 @@ To access files through the Mac OS X Finder:
   For example, the URL used to connect to the ownCloud server 
   from the Mac OS X Finder is::
 
-    http://example.org/owncloud/remote.php/webdav
+    https://example.com/owncloud/remote.php/dav
 
   .. image:: ../images/osx_webdav2.png
 
@@ -254,12 +254,12 @@ the drive:
 2. Enter the following line in the command prompt to map to the computer Z 
    drive::
 
-    net use Z: https://<drive_path>/remote.php/webdav /user:youruser 
+    net use Z: https://<drive_path>/remote.php/dav /user:youruser 
     yourpassword
 
   where <drive_path> is the URL to your ownCloud server.
 
-For example: ``net use Z: https://example.org/owncloud/remote.php/webdav 
+For example: ``net use Z: https://example.com/owncloud/remote.php/dav 
 /user:youruser yourpassword``
 
   The computer maps the files of your ownCloud account to the drive letter Z.
@@ -271,7 +271,7 @@ For example: ``net use Z: https://example.org/owncloud/remote.php/webdav
 
 An alternative command syntax is::
 
-  net use Z: \\example.org@ssl\owncloud\remote.php\webdav /user:youruser 
+  net use Z: \\example.com@ssl\owncloud\remote.php\dav /user:youruser 
   yourpassword
 
 Mapping Drives With Windows Explorer
@@ -284,11 +284,11 @@ To map a drive using the Microsoft Windows Explorer:
    the drop-down menu.
 3. Choose a local network drive to which you want to map ownCloud.
 4. Specify the address to your ownCloud instance, followed by 
-   **/remote.php/webdav**.
+   **/remote.php/dav**.
 
   For example::
 
-    https://example.org/owncloud/remote.php/webdav
+    https://example.com/owncloud/remote.php/dav
 
 .. note:: For SSL protected servers, check **Reconnect at logon** to ensure
      that the mapping is persistent upon subsequent reboots. If you want to 
@@ -317,7 +317,7 @@ To use Cyberduck:
 
 1. Specify a server without any leading protocol information. For example:
 
-  ``example.org``
+  ``example.com``
 
 2. Specify the appropriate port.  The port you choose depends on whether or not
 your ownCloud server supports SSL. Cyberduck requires that you select a
@@ -330,7 +330,7 @@ different connection type if you plan to use SSL.  For example:
 3. Use the 'More Options' drop-down menu to add the rest of your WebDAV URL into 
 the 'Path' field. For example:
 
-  ``remote.php/webdav``
+  ``remote.php/dav``
 
 Now Cyberduck enables file access to the ownCloud server.
 
@@ -437,29 +437,29 @@ To create a folder with the current date as name:
 
 .. code-block:: bash
 
-	$ curl -u user:pass -X MKCOL "http://example.org/owncloud/remote.php/webdav/$(date '+%d-%b-%Y')"
+	$ curl -u user:pass -X MKCOL "https://example.com/owncloud/remote.php/dav/$(date '+%d-%b-%Y')"
 
 To upload a file ``error.log`` into that directory:
 
 .. code-block:: bash
 
-	$ curl -u user:pass -T error.log "http://example.org/owncloud/remote.php/webdav/$(date '+%d-%b-%Y')/error.log"
+	$ curl -u user:pass -T error.log "https://example.com/owncloud/remote.php/dav/$(date '+%d-%b-%Y')/error.log"
 
 To move a file:
 
 .. code-block:: bash
 
-	$ curl -u user:pass -X MOVE --header 'Destination: http://example.org/owncloud/remote.php/webdav/target.jpg' http://example.org/owncloud/remote.php/webdav/source.jpg
+	$ curl -u user:pass -X MOVE --header 'Destination: https://example.com/owncloud/remote.php/dav/target.jpg' https://example.com/owncloud/remote.php/dav/source.jpg
 
 To get the properties of files in the root folder:
 
 .. code-block:: bash
 
-	$ curl -X PROPFIND -H "Depth: 1" -u user:pass http://example.org/owncloud/remote.php/webdav/ | xml_pp
+	$ curl -X PROPFIND -H "Depth: 1" -u user:pass https://example.com/owncloud/remote.php/dav/ | xml_pp
 	<?xml version="1.0" encoding="utf-8"?>
     <d:multistatus xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns" xmlns:s="http://sabredav.org/ns">
       <d:response>
-        <d:href>/owncloud/remote.php/webdav/</d:href>
+        <d:href>/owncloud/remote.php/dav/</d:href>
         <d:propstat>
           <d:prop>
             <d:getlastmodified>Tue, 13 Oct 2015 17:07:45 GMT</d:getlastmodified>
@@ -474,7 +474,7 @@ To get the properties of files in the root folder:
         </d:propstat>
       </d:response>
       <d:response>
-        <d:href>/owncloud/remote.php/webdav/welcome.txt</d:href>
+        <d:href>/owncloud/remote.php/dav/welcome.txt</d:href>
         <d:propstat>
           <d:prop>
             <d:getlastmodified>Tue, 13 Oct 2015 17:07:35 GMT</d:getlastmodified>

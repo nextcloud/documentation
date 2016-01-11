@@ -34,14 +34,14 @@ If you think you have found a bug in ownCloud, please:
 
 If you can't find a solution, please use our `bugtracker`_.
 
-.. _the ownCloud Forums: http://forum.owncloud.org
+.. _the ownCloud Forums: https://forum.owncloud.org
 .. _FAQ page: https://forum.owncloud.org/viewforum.php?f=17
 .. _the ownCloud User mailing list: 
    https://mailman.owncloud.org/mailman/listinfo/user
 .. _webchat: http://webchat.freenode.net/?channels=owncloud
 .. _Enterprise Subscription: https://owncloud.com/lp/community-or-enterprise/
 .. _bugtracker: 
-   http://doc.owncloud.org/server/9.0/developer_manual/bugtracker/index.html
+   https://doc.owncloud.org/server/9.0/developer_manual/bugtracker/index.html
 .. TODO ON RELEASE: Update version number above on release
 
 General Troubleshooting
@@ -126,7 +126,7 @@ Disregarding this can lead to unwanted behaviours like:
 If you need to directly upload files from the same server please use a WebDAV 
 command line client like ``cadaver`` to upload files to the WebDAV interface at:
 
-  https://example.org/owncloud/remote.php/webdav
+  https://example.com/owncloud/remote.php/dav
 
 Common problems / error messages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -257,36 +257,49 @@ Troubleshooting Contacts & Calendar
 Service discovery
 ^^^^^^^^^^^^^^^^^
 
-Some clients - especially iOS - have problems finding the proper sync URL, even 
-when explicitly configured to use it.
+Some clients - especially on iOS/Mac OS X - have problems finding the proper
+sync URL, even when explicitly configured to use it.
 
-There are several techniques to remedy this, which are described extensively at 
+If you want to use CalDAV or CardDAV clients together with ownCloud it is
+important to have a correct working setup of the following URLs:
+
+https://example.com/.well-known/carddav
+https://example.com/.well-known/caldav
+
+Those need to be redirecting your clients to the correct DAV endpoints. If
+running ownCloud at the document root of your webserver the correct URL is:
+
+https://example.com/remote.php/dav
+
+and if running in a subfolder like ``owncloud``:
+
+https://example.com/owncloud/remote.php/dav
+
+For the first case the :file:`.htaccess` file shipped with ownCloud should do
+this work for your when running Apache. You only need to make sure that your
+web server is using this file. When running nginx please refer to the 
+:ref:`nginx_configuration_example` example.
+
+.. note: The following step is important for users using the linux packages
+   / repositories provided by ownCloud.
+
+If your ownCloud instance is installed in a subfolder called ``owncloud`` and
+you're running Apache create or edit the :file:`.htaccess`` file within the
+document root of your webserver and add the following lines::
+
+    Redirect 301 /.well-known/carddav /owncloud/remote.php/dav
+    Redirect 301 /.well-known/caldav /owncloud/remote.php/dav
+
+Now change the URL in the client settings to just use ``https://example.com``
+instead of e.g. ``https://example.com/owncloud/remote.php/dav/principals/username``.
+
+There are also several techniques to remedy this, which are described extensively at 
 the `Sabre DAV website <http://sabre.io/dav/service-discovery/>`_.
-
-If your ownCloud instance is installed in a subfolder under the web server's 
-document root and the client has difficulties finding the Cal- or CardDAV 
-end-points, configure your web server to redirect from a "well-known" URL to 
-the 
-one used by ownCloud. When using the Apache web server this is easily achieved 
-using a :file:`.htaccess` file in the document root of your site.
-
-Say your instance is located in the ``owncloud`` folder, so the URL to it is 
-``ADDRESS/owncloud``, create or edit the :file:`.htaccess` file and add the 
-following lines::
-
-    Redirect 301 /.well-known/carddav /owncloud/remote.php/carddav
-    Redirect 301 /.well-known/caldav /owncloud/remote.php/caldav
-
-Now change the URL in the client settings to just use ``ADDRESS`` instead of 
-e.g. ``ADDRESS/remote.php/carddav/principals/username``.
-
-This problem is being discussed in the `forum 
-<http://forum.owncloud.org/viewtopic.php?f=3&t=71&p=2211#p2197>`_.
 
 Unable to update Contacts or Events
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you get an error like ``PATCH https://ADDRESS/some_url HTTP/1.0 501 Not 
+If you get an error like ``PATCH https://example.com/remote.php/dav HTTP/1.0 501 Not 
 Implemented`` it is likely caused by one of the following reasons:
 
 Using Pound reverse-proxy/load balancer
@@ -294,6 +307,10 @@ Using Pound reverse-proxy/load balancer
   Pound is easily `patched 
   <http://www.apsis.ch/pound/pound_list/archive/2013/2013-08/1377264673000>`_ 
   to support HTTP/1.1.
+
+Misconfigured web server
+  Your webserver is misconfigured and blocks the needed DAV methods.
+  Please refer to ``Troubleshooting WebDAV`` above for troubleshooting steps.
 
 Other issues
 ------------

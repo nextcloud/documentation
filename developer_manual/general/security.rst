@@ -242,7 +242,7 @@ Always validate the URL before redirecting if the requested URL is on the same d
 .. code-block:: php
 
   <?php
-  header('Location: http://www.example.com'. $_GET['redirectURL']);
+  header('Location: https://example.com'. $_GET['redirectURL']);
 
 Getting help
 ------------

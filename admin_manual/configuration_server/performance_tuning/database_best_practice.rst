@@ -49,7 +49,7 @@ On Windows hosts running MySQL on the same system changing the parameter
 from ``localhost`` to ``127.0.0.1`` could improve the page loading time.
 
 See also `this forum thread 
-<http://forum.owncloud.org/viewtopic.php?f=17&t=7559>`_.
+<https://forum.owncloud.org/viewtopic.php?f=17&t=7559>`_.
 
 Other performance improvements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

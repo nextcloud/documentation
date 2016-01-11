@@ -66,7 +66,7 @@ you're finished click **Save**.
 
 The next screen that opens is **Create Client ID**. Check **Web Application**,  
 then enter your app name. **Authorized JavaScript Origins** is your root domain, 
-for example ``https://www.example.com``, without a trailing slash. You need two 
+for example ``https://example.com``, without a trailing slash. You need two 
 **Authorized Redirect URIs**, and they must be in this form::
 
   https://example.com/owncloud/index.php/settings/personal
