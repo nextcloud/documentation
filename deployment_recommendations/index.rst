@@ -58,6 +58,7 @@ local storage.
 Authentication via an existing LDAP or Active Directory server.
 
 .. figure:: images/deprecs-1.png
+   :scale: 75%
    :alt: Network diagram for small enterprises.
 
 * Components
