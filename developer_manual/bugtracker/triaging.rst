@@ -10,9 +10,9 @@ Bug Triaging is the process of checking bug reports to see if they are still val
 
 Why do you want to join
 =======================
-Helping to bring the number if issues down makes it easier for developers to spend their time productively and bug triagers thus **contribute greatly to ownCloud development**! Triaging a bug doesn’t take long so the work comes in small chunks and you don’t need many skills, just some patience and sometimes perseverance.
+Helping to bring the number of issues down makes it easier for developers to spend their time productively and bug triagers thus **contribute greatly to ownCloud development**! Triaging a bug doesn’t take long so the work comes in small chunks and you don’t need many skills, just some patience and sometimes perseverance.
 
-Bug triagers who contribute significantly should ask to be listed as an active contributor on the `owncloud.org <http://owncloud.org>`_ page!
+Bug triagers who contribute significantly should ask to be listed as an active contributor on the `owncloud.org <https://owncloud.org>`_ page!
 
 How do you triage bugs
 ======================
@@ -34,7 +34,7 @@ Triaging follows these steps:
 General considerations
 ======================
 
-* You need a `github account <http://github.com>`_ to contribute to bug triaging.
+* You need a `github account <https://github.com>`_ to contribute to bug triaging.
 * If you are not familiar with the github issue tracker interface (which is used by ownCloud to handle bug reports), you `may find this guide useful <https://guides.github.com/features/issues/>`_.
 * You will initially only be able to comment on issues. The ability to close issues or assign labels will be given liberally to those who have shown to be willing and able to contribute. Just ask on IRC!
 * Read `our bug reporting guidelines <https://github.com/owncloud/core/blob/master/CONTRIBUTING.md#submitting-issues>`_ so you know what a good report should look like and where things belong. The `issue template <https://raw.github.com/owncloud/core/master/issue_template.md>`_ asks specifically for some information developers need to solve issues.
@@ -125,7 +125,7 @@ Now, the developers can pick the issue up. Note that while we wish we would alwa
 
 Collaboration
 =============
-You can just get started with bug triaging. But if you want, you can register on the `testpilot mailing list <http://mailman.owncloud.org/mailman/listinfo/testpilots>`_ and perhaps introduce yourself to `testpilots@owncloud.org <testpilots@owncloud.org>`_. On this list we announce and discuss testing and bug triaging related subjects.
+You can just get started with bug triaging. But if you want, you can register on the `testpilot mailing list <https://mailman.owncloud.org/mailman/listinfo/testpilots>`_ and perhaps introduce yourself to `testpilots@owncloud.org <testpilots@owncloud.org>`_. On this list we announce and discuss testing and bug triaging related subjects.
 
 You can also join the **#owncloud-testing** channel on **irc.freenode.net** (`link for IRC clients <irc://#owncloud-testing@freenode.net>`_ and `link to webchat <https://webchat.freenode.net/>`_) to ask questions but keep in mind that people aren't active 24/7 and it can occasionally take a while to get a response. Last but not least, ownCloud contributor `Jan Borchardt has a great guide for developers and triagers <https://gist.github.com/jancborchardt/6155185>`_ about dealing with issues, including some 'stock answers' and thoughts on how to deal with pull requests.
 

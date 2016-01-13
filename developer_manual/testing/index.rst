@@ -17,7 +17,7 @@ Furthermore, during bug fixing the ownCloud developers often do not have the pos
 
 Another benefit is a closer relationship to the developers: **You know what people are responsible for which parts** and it is easier to get help.
 
-If you want you will be listed as an active contributor on the `owncloud.org <http://owncloud.org>`_ page.
+If you want you will be listed as an active contributor on the `owncloud.org <https://owncloud.org>`_ page.
 
 
 Who can join
@@ -26,7 +26,7 @@ Anyone who is interested in improving the quality on his/her setup and is willin
 
 How do you join
 ---------------
-Simply register on the `testpilot mailing list <http://mailman.owncloud.org/mailman/listinfo/testpilots>`_ and send an introduction of your personal setup and interests to `testpilots@owncloud.org <testpilots@owncloud.org>`_
+Simply register on the `testpilot mailing list <https://mailman.owncloud.org/mailman/listinfo/testpilots>`_ and send an introduction of your personal setup and interests to `testpilots@owncloud.org <testpilots@owncloud.org>`_
 
 You can also join the **#owncloud-testing** channel on **irc.freenode.net** but keep in mind that we may take longer to answer ;)
 

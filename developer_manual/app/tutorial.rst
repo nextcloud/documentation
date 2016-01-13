@@ -9,7 +9,7 @@ This tutorial will outline how to create a very simple notes app. The finished a
 
 Setup
 =====
-After the `development tool <https://github.com/owncloud/ocdev/blob/master/README.rst#installation>`_ has been installed the :doc:`development environment needs to be set up <../general/devenv>`. This can be done by either `downloading the zip from the website <http://owncloud.org/install/>`_ or cloning it directly from GitHub::
+After the `development tool <https://github.com/owncloud/ocdev/blob/master/README.rst#installation>`_ has been installed the :doc:`development environment needs to be set up <../general/devenv>`. This can be done by either `downloading the zip from the website <https://owncloud.org/install/>`_ or cloning it directly from GitHub::
 
     ocdev setup core --dir owncloud  --branch $BRANCH
 

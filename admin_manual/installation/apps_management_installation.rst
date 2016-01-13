@@ -65,7 +65,7 @@ part of the ownCloud installation, it will be downloaded from the app store,
 installed and enabled. 
 
 You can view new, unreviewed or unstable applications in the 
-`ownCloud Apps Store <http://apps.owncloud.com/>`_.
+`ownCloud Apps Store <https://apps.owncloud.com/>`_.
 
 To view or install apps from the ownCloud Apps Store:
 
@@ -149,4 +149,4 @@ To enable installation from your own apps store:
   <?php
 
     "appstoreenabled" => true,
-    "appstoreurl" => "http://api.apps.owncloud.com/v1",
+    "appstoreurl" => "https://api.owncloud.com/v1",

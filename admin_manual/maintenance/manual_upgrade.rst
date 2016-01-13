@@ -101,7 +101,7 @@ help::
 
  sudo -u www-data php console.php files:scan --all
 
-See `the owncloud.org support page <http://owncloud.org/support>`_ for further
+See `the owncloud.org support page <https://owncloud.org/support>`_ for further
 resources for both home and enterprise users.
 
 Sometimes, ownCloud can get *stuck in a upgrade*. This is usually due to the 

@@ -25,17 +25,17 @@ The :file:`appinfo/info.xml` contains metadata about the app:
 
 
       <documentation>
-          <user>http://doc.owncloud.org</user>
-          <admin>http://doc.owncloud.org</admin>
+          <user>https://doc.owncloud.org</user>
+          <admin>https://doc.owncloud.org</admin>
       </documentation>
 
       <category>tool</category>
 
-      <website>http://www.owncloud.org</website>
+      <website>https://owncloud.org</website>
 
-      <bugs>http://github.com/owncloud/theapp/issues</bugs>
+      <bugs>https://github.com/owncloud/theapp/issues</bugs>
 
-      <repository type="git">http://github.com/owncloud/theapp.git</repository>
+      <repository type="git">https://github.com/owncloud/theapp.git</repository>
 
       <ocsid>1234</ocsid>
 
