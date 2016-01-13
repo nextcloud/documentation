@@ -28,6 +28,7 @@ $mapping = array(
     'admin-setup-well-known-URL' => '/admin_manual/issues/general_troubleshooting.html#service-discovery',
 
     'developer-theming'       => '/developer_manual/core/theming.html',
+    'developer-code-integrity'=> '/developer_manual/app/code_signing.html',
 
     'user-encryption'         => '/user_manual/files/encrypting_files.html',
     'user-files'              => '/user_manual/files/index.html',
