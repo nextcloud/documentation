@@ -47,6 +47,8 @@ Nginx Configuration
     add_header X-Frame-Options "SAMEORIGIN";
     add_header X-XSS-Protection "1; mode=block";
     add_header X-Robots-Tag none;
+    add_header X-Download-Options noopen;
+    add_header X-Permitted-Cross-Domain-Policies none;
 
     # Path to the root of your installation
     root /var/www/owncloud/;
@@ -117,6 +119,8 @@ Nginx Configuration
       add_header X-Frame-Options "SAMEORIGIN";
       add_header X-XSS-Protection "1; mode=block";
       add_header X-Robots-Tag none;
+      add_header X-Download-Options noopen;
+      add_header X-Permitted-Cross-Domain-Policies none;
       # Optional: Don't log access to assets
       access_log off;
     }
