@@ -23,6 +23,6 @@ manuals:
 * `ownCloud Android App`_
 * `ownCloud iOS App`_ 
 
-.. _`ownCloud Desktop Client`: http://doc.owncloud.org/desktop/
-.. _`ownCloud Android App`: http://doc.owncloud.org/android/
-.. _`ownCloud iOS App`: http://doc.owncloud.org/ios/
+.. _`ownCloud Desktop Client`: https://doc.owncloud.org/desktop/2.1/
+.. _`ownCloud Android App`: https://doc.owncloud.org/android/
+.. _`ownCloud iOS App`: https://doc.owncloud.org/ios/

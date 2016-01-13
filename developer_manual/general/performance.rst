@@ -61,4 +61,4 @@ The recommendation is to automatically do 10000 PROPFINDs or file uploads, measu
 
 Getting help
 ------------
-If you need help with performance or other issues please ask on our `mailing list <http://mailman.owncloud.org/mailman/listinfo/devel>`_ or on our IRC channel **#owncloud-dev** on **irc.freenode.net**.
+If you need help with performance or other issues please ask on our `mailing list <https://mailman.owncloud.org/mailman/listinfo/devel>`_ or on our IRC channel **#owncloud-dev** on **irc.freenode.net**.

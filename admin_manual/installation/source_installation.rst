@@ -134,7 +134,7 @@ Apache and MariaDB, by issuing the following commands in a terminal::
 
 Now download the archive of the latest ownCloud version:
 
-* Go to the `ownCloud Download Page <http://owncloud.org/install>`_.
+* Go to the `ownCloud Download Page <https://owncloud.org/install>`_.
 * Go to **Download ownCloud Server > Download > Archive file for 
   server owners** and download either the tar.bz2 or .zip archive.
 * This downloads a file named owncloud-x.y.z.tar.bz2 or owncloud-x.y.z.zip 
@@ -151,7 +151,7 @@ Now download the archive of the latest ownCloud version:
 * You may also verify the PGP signature::
     
     wget https://download.owncloud.org/community/owncloud-x.y.z.tar.bz2.asc
-    wget https://www.owncloud.org/owncloud.asc
+    wget https://owncloud.org/owncloud.asc
     gpg --import owncloud.asc
     gpg --verify owncloud-x.y.z.tar.bz2.asc owncloud-x.y.z.tar.bz2
   

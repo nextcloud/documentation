@@ -6,8 +6,8 @@ Coding Style & General Guidelines
 General
 -------
 
-* Ideally, discuss your plans on the `mailing list <http://mailman.owncloud.org/mailman/listinfo/devel>`_ to see if others want to work with you on it
-* We use `Github <http://github.com/owncloud>`_, please get an account there and clone the repositories you want to work on
+* Ideally, discuss your plans on the `mailing list <https://mailman.owncloud.org/mailman/listinfo/devel>`_ to see if others want to work with you on it
+* We use `Github <https://github.com/owncloud>`_, please get an account there and clone the repositories you want to work on
 * Fixes go directly to master, nevertheless they need to be tested thoroughly.
 * New features are always developed in a branch and only merged to master once they are fully done.
 * Software should work. We only put features into master when they are complete. It's better to not have a feature instead of having one that works poorly.
@@ -15,7 +15,7 @@ General
 * When you are finished, use the merge request function on Github to create a pull request. The other developers will look at it and give you feedback. You can signify that your PR is ready for review by adding the label "5 - ready for review" to it. You can also post your merge request to the mailing list to let people know. See `the code review page for more information <../bugtracker/codereviews.html>`_
 * It is key to keep changes separate and small. The bigger and more hairy a PR grows, the harder it is to get it in. So split things up where you can in smaller changes - if you need a small improvement like a API addition for a big feature addition, get it in first rather than adding it to the big piece of work!
 * Decisions are made by consensus. We strive for making the best technical decisions and as nobody can know everything, we collaborate. That means a first negative comment might not be the final word, neither is positive feedback an immediate GO. ownCloud is built out of modular pieces (apps) and maintainers have a strong influence. In case of disagreement we consult other seasoned contributors.
-* We need a signed contributor agreement from you to commit into the core repository (apps don't need that). All the information is in our `Contributor agreement FAQ <http://owncloud.org/contribute/agreement/>`_.
+* We need a signed contributor agreement from you to commit into the core repository (apps don't need that). All the information is in our `Contributor agreement FAQ <https://owncloud.org/contribute/agreement/>`_.
 
 Labels
 ------
@@ -72,7 +72,7 @@ Coding
 * No global variables or functions
 * Unit tests
 * HTML should be HTML5 compliant
-* Check these `database performance tips <http://mailman.owncloud.org/pipermail/devel/2014-June/000262.html>`_
+* Check these `database performance tips <https://mailman.owncloud.org/pipermail/devel/2014-June/000262.html>`_
 * When you ``git pull``, always ``git pull --rebase`` to avoid generating extra commits like: *merged master into master*
 
 

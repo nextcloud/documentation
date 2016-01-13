@@ -346,7 +346,7 @@ Status codes:
 Example
 -------
 
-  * POST ``http://admin:secret@myowncloud.org/ocs/v1.php/cloud/users/Frank/subadmins -d 
+  * POST ``https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins -d 
     groupid="group"``
   * Makes the user ``Frank`` a subadmin of the ``group`` group
 
@@ -384,7 +384,7 @@ Status codes:
 Example
 -------
 
-  * DELETE ``http://admin:secret@myowncloud.org/ocs/v1.php/cloud/users/Frank/subadmins -d groupid="oldgroup"``
+  * DELETE ``https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins -d groupid="oldgroup"``
   * Removes ``Frank's`` subadmin rights from the ``oldgroup`` group
 
 XML Output
@@ -419,7 +419,7 @@ Status codes:
 Example
 -------
 
-  * GET ``http://admin:secret@myowncloud.org/ocs/v1.php/cloud/users/Frank/subadmins``
+  * GET ``https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins``
   * Returns the groups of which ``Frank`` is a subadmin
 
 XML Output
@@ -574,7 +574,7 @@ Status codes:
 Example
 -------
 
-  * GET ``http://admin:secret@myowncloud.org/ocs/v1.php/cloud/groups/mygroup/subadmins``
+  * GET ``https://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup/subadmins``
   * Return the subadmins of the group: ``mygroup``
 
 XML Output

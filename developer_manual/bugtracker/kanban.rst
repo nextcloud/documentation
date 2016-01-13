@@ -279,7 +279,7 @@ Release.
 .. _existing ones: https://ci.tmit.eu/job/acceptance-test/cucumber-html-reports/?
 .. _“Given … when … then …“: https://github.com/cucumber/cucumber/wiki/Given-When-Then
 .. _unit tests: https://github.com/owncloud/core/tree/master/tests
-.. _Code Review Documentation: http://owncloud.org/dev/code-reviews-on-github/
+.. _Code Review Documentation: https://owncloud.org/dev/code-reviews-on-github/
 .. _Jenkins: https://ci.tmit.eu/
 .. _cucumber: http://cukes.info/
 .. _transifex: https://www.transifex.com/projects/p/owncloud/

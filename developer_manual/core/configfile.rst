@@ -55,7 +55,7 @@ App config
   "appstoreenabled" => true,
 
   /* URL of the appstore to use, server should understand OCS */
-  "appstoreurl" => "http://api.apps.owncloud.com/v1",
+  "appstoreurl" => "https://api.owncloud.com/v1",
 
   /* Mode to use for sending mail, can be sendmail, smtp, qmail or php, see PHPMailer docs */
   "mail_smtpmode" => "sendmail",

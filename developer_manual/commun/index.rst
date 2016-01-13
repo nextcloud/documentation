@@ -7,7 +7,7 @@ Help and Communication
 
 Mailing lists
 -------------
-Communicate via mail on our `mailing lists <http://mailman.owncloud.org>`_.
+Communicate via mail on our `mailing lists <https://mailman.owncloud.org>`_.
 
 IRC channels
 ------------
@@ -21,5 +21,5 @@ Chat with us on `IRC <http://www.irchelp.org/>`_. All channels are on **irc.free
 
 Maintainers
 -----------
-* `Contact <http://owncloud.org/contact/>`_ a maintainer of a certain app or division
+* `Contact <https://owncloud.org/contact/>`_ a maintainer of a certain app or division
 

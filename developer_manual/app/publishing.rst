@@ -24,7 +24,7 @@ With each level come requirements and a position in the store.
 
 Official
 ^^^^^^^^
-Official apps are developed by and within the ownCloud community and its `Github <http://github.com/owncloud>`_ repository and offer functionality central to ownCloud. They are ready for serious use and can be considered a part of ownCloud.
+Official apps are developed by and within the ownCloud community and its `Github <https://github.com/owncloud>`_ repository and offer functionality central to ownCloud. They are ready for serious use and can be considered a part of ownCloud.
 
 Requirements:
 
