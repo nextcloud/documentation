@@ -8,14 +8,12 @@ Parameters
 ----------
 
 If you want to disable the ownCloud help menu item you can use the **knowledgebaseenabled** parameter inside the
-:file:`config/config.php`. The **knowledgebaseurl** parameter is used to set the http path to the ownCloud help page.
-The server should support :abbr:`OCS (Open Collaboration Services)`.
+:file:`config/config.php`.
 
 .. code-block:: php
 
   <?php
 
     "knowledgebaseenabled" => true,
-    "knowledgebaseurl"     => "http://api.apps.owncloud.com/v1",
 
 .. note:: Disabling the help menu item might increase the number of support requests you have to answer in the future
