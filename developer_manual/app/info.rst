@@ -107,7 +107,7 @@ Required if routes.php returns an array. If your app is namespaced like **\\OCA\
 
 types
 -----
-ownCloud allows to specify four kind of "types". Currently supported "types":
+ownCloud allows to specify four kind of ``types``. Currently supported ``types``:
 
 * **prelogin**: apps which need to load on the login page
 
@@ -116,6 +116,13 @@ ownCloud allows to specify four kind of "types". Currently supported "types":
 * **authentication**: apps which provide authentication backends
 
 * **logging**: apps which implement a logging system
+
+* **prevent_group_restriction**: apps which can not be enabled for specific groups (e.g. notifications app).
+  Introduced with ownCloud 9.0, can also be used in earlier versions, but the functionality is ignored.
+
+.. note::
+
+  Due to technical reasons apps of any type listed above can not be enabled for specific groups only.
 
 documentation
 -------------
