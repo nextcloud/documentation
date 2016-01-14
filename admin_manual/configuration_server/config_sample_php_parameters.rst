@@ -582,6 +582,14 @@ attempting to make a WebDAV request from PHP.
 
 ::
 
+	'check_for_working_wellknown_setup' => true,
+
+Allows ownCloud to verify a working .well-known URL redirects. This is done
+by attempting to make a request from JS to
+https://your-domain.com/.well-known/caldav/
+
+::
+
 	'check_for_working_htaccess' => true,
 
 This is a crucial security check on Apache servers that should always be set
@@ -1000,6 +1008,12 @@ SSL
 
 Extra SSL options to be used for configuration.
 
+::
+
+	'enable_certificate_management' => false,
+
+Allow the configuration of system wide trusted certificates
+
 Memory caching backend configuration
 ------------------------------------
 
@@ -1121,6 +1135,20 @@ filesystem and encryption will cause severe overhead because key files need
 to be fetched in addition to any requested file.
 
 One way to test is applying for a trystack account at http://trystack.org/
+
+Sharing
+-------
+
+Global settings for Sharing
+
+
+::
+
+	'sharing.managerFactory' => '\OC\Share20\ProviderFactory',
+
+Replaces the default Share Provider Factory. This can be utilized if
+own or 3rdParty Share Providers be used that – for instance – uses the
+filesystem instead of the database to keep the share information.
 
 All other config options
 ------------------------
