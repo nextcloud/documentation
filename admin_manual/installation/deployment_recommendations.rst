@@ -14,7 +14,6 @@ General Recommendations
 .. note:: Whatever the size of your organization, always keep one thing in mind: 
    the amount of data stored in ownCloud will only grow. Plan ahead.
 
-The amount of data stored in an ownCloud instance continually grows. Plan ahead. 
 Consider setting up a scale-out deployment, or using Federated Cloud Sharing to 
 keep individual ownCloud instances to a manageable size.
 
@@ -381,9 +380,10 @@ But on uploads stores the whole file on disk before handing it over to PHP-FPM.
 A Single Master DB is Single Point of Failure, Does Not Scale
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When master fails another slave can become master. Multi-master has the risk of 
-split brain and is more complicated. Can run into deadlocks which ownCloud tries 
-to solve with high-level file locking.
+When master fails another slave can become master. However, the increased 
+complexity carries some risks: Multi-master has the risk of split brain, and 
+deadlocks. ownCloud tries to solve the problem of deadlocks with high-level 
+file locking.
 
 Software Considerations
 -----------------------
