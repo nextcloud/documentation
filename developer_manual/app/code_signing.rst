@@ -139,6 +139,12 @@ In case you lose your certificate please submit a new CSR as described above and
 mention that you have lost the previous one. ownCloud will revoke the old 
 certificate.
 
+If you're maintaining an app together with multiple people it is recommended to
+designate a release manager that is responsible for the signing process as well
+as the uploading to apps.owncloud.com. If there are cases where this is not 
+feasible and multiple certificates are required ownCloud can create them on a 
+case by case basis. We do not recommend developers to share their private key.
+
 Errors
 ------
 
