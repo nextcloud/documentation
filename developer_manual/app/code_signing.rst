@@ -117,20 +117,12 @@ Ensure that you keep all generated files to sign your application. The following
 examples will assume that you are trying to sign an application named 
 "contacts".
 
-1. Generate a private key and CSR: ``openssl req -new -newkey rsa:2048 -nodes 
-   -keyout contacts.key -out contacts.csr``
-   - Country Name: [press enter]
-   - State or Province name: [press enter]
-   - Organization Name: [press enter]
-   - Organizational Unit Name: [press enter]
-   - Common Name: contacts
-   - Email Address: [press enter]
-   - A challenge password: [press enter]
-   - An optional company name: [press enter]
+1. Generate a private key and CSR: ``openssl req -nodes -newkey rsa:2048 -keyout contacts.key -out contacts.csr -subj "/CN=contacts"``. Replace "contacts" with your application identifier.
 2. Post the CSR at https://github.com/owncloud/appstore-issues, and configure 
    your GitHub account to show your mail address in your profile. ownCloud 
    might ask you for further information to verify that you're the legitimate 
-   owner of the application.
+   owner of the application. Make sure to keep the private key file (``contacts.key``)
+   secret and not disclose it to any third-parties.
 3. ownCloud will provide you with the signed certificate.
 4. Run ``./occ integrity:sign-app`` to sign your application, and specify 
    your private and the public key. A valid example looks like: ``./occ 
