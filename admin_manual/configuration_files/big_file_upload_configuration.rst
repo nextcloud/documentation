@@ -67,9 +67,21 @@ Apache with mod_fcgid
 ^^^^^^^^^^^^^^^^^^^^^
 * `FcgidMaxRequestLen <https://httpd.apache.org/mod_fcgid/mod/mod_fcgid.html#fcgidmaxrequestlen>`_
 
-NginX
+nginx
 ^^^^^
 * `client_max_body_size <http://nginx.org/en/docs/http/ngx_http_core_module.html#client_max_body_size>`_
+* `fastcgi_read_timeout <http://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_read_timeout>`_
+* `client_body_temp_path <http://nginx.org/en/docs/http/ngx_http_core_module.html#client_body_temp_path>`_
+
+For more info how to configure nginx to raise the upload limits see also `this
+<https://github.com/owncloud/documentation/wiki/Uploading-files-up-to-16GB#configuring-nginx>`_
+wiki entry.
+
+.. note:: For ``client_body_temp_path`` make sure it is pointing to a path/partition which
+   holds enough space for the filesize you want to upload. Also place it at least at the same
+   partition the ``upload_tmp_dir`` or ``tempdirectory`` settings described below are pointing
+   to. For optimal performance ``client_body_temp_path`` and ``upload_tmp_dir/tempdirectory``
+   should be also placed on different devices/hard drives.
 
 Configuring PHP
 ---------------
@@ -98,6 +110,10 @@ will return memory-related errors:
 
 Configuring ownCloud
 --------------------
+
+As an alternative to the ``upload_tmp_dir`` of PHP (e.g. if you don't have access to your
+``php.ini``) you can also configure a temporary location for uploaded files by using the
+``tempdirectory`` setting in your ``config.php`` (See :doc:`../configuration_server/config_sample_php_parameters`).
 
 If you have configured the ``session_lifetime`` setting in your ``config.php``
 (See :doc:`../configuration_server/config_sample_php_parameters`) file then 
