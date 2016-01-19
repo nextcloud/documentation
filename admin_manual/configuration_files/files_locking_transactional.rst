@@ -16,12 +16,19 @@ file corruption during normal operation. It performs these functions:
 * Manages locks correctly on external storage mounts
 * Manages encrypted files correctly
 
-.. note:: Transactional file locking is in core, and replaces the old File 
-   Locking app. The File Locking app has been removed from ownCloud in version 
-   8.2.1. If your ownCloud server still has the File Locking app, you must 
-   visit your Apps page to verify that it is disabled; the File Locking app and 
-   Transactional File Locking cannot both operate at the same time.
-   
+What Transactional File locking is not for: it is not for preventing collisions 
+in collaborative document editing (see 
+:doc:`collaborative_documents_configuration` to learn about collaboration). 
+Multiple users can open and edit a document at the same time and Transactional 
+File locking does not prevent this. Rather, it prevents simultaneous file 
+saving.
+
+.. note:: Transactional file locking is in ownCloud core, and replaces the old 
+   File Locking app. The File Locking app has been removed from ownCloud in 
+   version 8.2.1. If your ownCloud server still has the File Locking app, you 
+   must visit your Apps page to verify that it is disabled; the File Locking 
+   app and Transactional File Locking cannot both operate at the same time.
+  
 When you see the warning on your ownCloud admin page "Transactional file locking 
 is using the database as locking backend, for best performance it's advised to 
 configure a memcache for locking", you are not required to use a memcache. File 
