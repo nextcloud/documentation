@@ -35,7 +35,8 @@ them.
 .. note:: If you see errors when you upload SVG files, such as "Incorrect 
    extension.File type image/svg+xml is not correct", "This SVG is invalid", 
    or "Error uploading file: Incorrect size", try opening the file in 
-   `Inkscape <https://inkscape.org/en/>`_ and then upload your SVG image again.
+   `Inkscape <https://inkscape.org/en/>`_ then save as "Plain SVG" and 
+   upload your SVG image again.
 
 The wizard has two sections. The first section contains all the required 
 elements: logos and other artwork, colors, naming, and your enterprise URL. The 
