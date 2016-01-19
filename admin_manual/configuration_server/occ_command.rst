@@ -672,7 +672,8 @@ authentication servers such as LDAP::
 Command Line Installation
 -------------------------
 
-These commands are available only after you have downloaded and unpacked the ownCloud archive, and before you complete the installation.
+These commands are available only after you have downloaded and unpacked the 
+ownCloud archive, and before you complete the installation.
 
 You can install ownCloud entirely from the command line. After downloading the 
 tarball and copying ownCloud into the appropriate directories, or 
@@ -684,8 +685,6 @@ place of running the graphical Installation Wizard.
 Apply correct permissions to your ownCloud directories; see 
 :ref:`strong_perms_label`. Then choose your ``occ`` options. This lists your 
 available options::
-
-To be able to run the installation command, you have to ``cd`` into the root folder of ownCloud. Using path-to-owncloud won't work.
 
  $ sudo -u www-data php /var/www/owncloud/occ
  ownCloud is not installed - only a limited number of commands are available
