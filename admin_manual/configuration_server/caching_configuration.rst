@@ -32,7 +32,7 @@ of memcache that best fits your needs. The supported caching backends are:
 
 * `APC <http://php.net/manual/en/book.apc.php>`_ 
    A local cache for systems running PHP 5.4.
-* `APCu <https://pecl.php.net/package/APCu>`_, APCu 4.06 and up required.
+* `APCu <https://pecl.php.net/package/APCu>`_, APCu 4.0.6 and up required.
    A local cache for systems running PHP 5.5 and up.
 * `Memcached <http://www.memcached.org/>`_ 
    Distributed cache for multi-server ownCloud installations.
