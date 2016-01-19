@@ -21,8 +21,7 @@ By default, ownCloud can generate previews for the following filetypes:
           Due to security concerns those providers have been disabled by
           default and are considered unsupported.
           While those providers are still available, we discourage enabling 
-them, 
-          and they are not documented.
+          them, and they are not documented.
 
 Parameters
 ----------
