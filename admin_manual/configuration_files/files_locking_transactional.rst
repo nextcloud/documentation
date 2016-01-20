@@ -18,10 +18,11 @@ file corruption during normal operation. It performs these functions:
 
 What Transactional File locking is not for: it is not for preventing collisions 
 in collaborative document editing (see 
-:doc:`collaborative_documents_configuration` to learn about collaboration). 
-Multiple users can open and edit a document at the same time and Transactional 
-File locking does not prevent this. Rather, it prevents simultaneous file 
-saving.
+:doc:`collaborative_documents_configuration` to learn about collaboration with 
+the Documents app), nor will it prevent multiple users from editing the same 
+document, or give notice that other users are working on the same document. 
+Multiple users can open and edit a file at the same time and Transactional File 
+locking does not prevent this. Rather, it prevents simultaneous file saving.
 
 .. note:: Transactional file locking is in ownCloud core, and replaces the old 
    File Locking app. The File Locking app has been removed from ownCloud in 
