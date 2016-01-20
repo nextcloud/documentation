@@ -51,7 +51,7 @@ steps:
     always have your own current backups (See :doc:`backup` for details.)
    
 3.  Verify that the HTTP user on your system can write to your whole ownCloud 
-    directory; see the :ref:`setting_strong_permissions` section below.
+    directory; see the :ref:`setting_permissions_for_updating` section below.
    
 4.  Navigate to your Admin page and click the `Update Center` button under 
     Updater:
@@ -127,10 +127,10 @@ your server, most likely via your Linux package manager during a routine system
 update. So you only need to click the Start Update button, or run the ``occ`` 
 command to complete the update.
 
-.. _setting_strong_permissions:
+.. _setting_permissions_for_updating:
 
-Setting Strong Permissions
---------------------------
+Setting Permissions for Updating
+--------------------------------
    
 For hardened security we  highly recommend setting the permissions on your 
 ownCloud directory as strictly as possible. These commands should be executed 
@@ -145,20 +145,35 @@ user is::
 
     chown -R <http-user>:<http-user> /path/to/owncloud/
 
-* This example is for Ubuntu 14.04 LTS server::
-   
-    chown -R www-data:www-data /var/www/owncloud
+You can find your HTTP user in your HTTP server configuration files. Or you can 
+use :ref:`label-phpinfo` (Look for the **User/Group** line).
 
-* Arch Linux::
+* The HTTP user and group in Debian/Ubuntu is ``www-data``.
+* The HTTP user and group in Fedora/CentOS is ``apache``.
+* The HTTP user and group in Arch Linux is ``http``.
+* The HTTP user in openSUSE is ``wwwrun``, and the HTTP group is ``www``.
 
-    chown -R http:http /path/to/owncloud/
+Preparing the instance for upgrading
+------------------------------------
 
-* Fedora::
+Replace the ``ocpath`` variable with the path to your ownCloud directory, and 
+replace the ``htuser`` and ``htgroup`` variables with your HTTP user and group.
 
-    chown -R apache:apache /path/to/owncloud/
-	
-* openSUSE::
-
-    chown -R wwwrun:www /path/to/owncloud/
+  ::
+  
+    #!/bin/bash
+    # Sets permissions of the owncloud instance for updating
     
-After the Updater app has run, you should re-apply the strict permissions.
+    ocpath='/var/www/owncloud'
+    htuser='www-data'
+    htgroup='www-data'
+    
+    chown -R ${htuser}:${htgroup} ${ocpath}
+    
+
+Preparing the instance after upgrading
+--------------------------------------
+
+Please use the script described in :ref:`strong_perms_label` in the "Installation Wizard" document.
+
+If you have customized your ownCloud installation and your filepaths are different than the standard installation, then modify the scripts accordingly.

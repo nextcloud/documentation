@@ -112,10 +112,10 @@ Setting Strong Directory Permissions
 
 For hardened security we recommend setting the permissions on your ownCloud 
 directories as strictly as possible, and for proper server operations. This 
-should be done immediately after the initial installation. Your HTTP user must 
-own the ``config/``, ``data/`` and ``apps/`` directories so that you can 
-configure ownCloud, create, modify and delete your data files, and install apps 
-via the ownCloud Web interface. 
+should be done immediately after the initial installation and before running the 
+setup. Your HTTP user must own the ``config/``, ``data/`` and ``apps/`` directories 
+so that you can configure ownCloud, create, modify and delete your data files, 
+and install apps via the ownCloud Web interface. 
 
 You can find your HTTP user in your HTTP server configuration files. Or you can 
 use :ref:`label-phpinfo` (Look for the **User/Group** line).
@@ -141,20 +141,35 @@ replace the ``htuser`` and ``htgroup`` variables with your HTTP user and group::
  htgroup='www-data'
  rootuser='root' # On QNAP this is admin
 
+ printf "Creating possible missing Directories\n"
+ mkdir -p $ocpath/data
+ mkdir -p $ocpath/assets
+
+ printf "chmod Files and Directories\n"
  find ${ocpath}/ -type f -print0 | xargs -0 chmod 0640
  find ${ocpath}/ -type d -print0 | xargs -0 chmod 0750
 
+ printf "chown Directories\n"
  chown -R ${rootuser}:${htgroup} ${ocpath}/
  chown -R ${htuser}:${htgroup} ${ocpath}/apps/
  chown -R ${htuser}:${htgroup} ${ocpath}/config/
  chown -R ${htuser}:${htgroup} ${ocpath}/data/
  chown -R ${htuser}:${htgroup} ${ocpath}/themes/
+ chown -R ${htuser}:${htgroup} ${ocpath}/assets/
 
- chown ${rootuser}:${htgroup} ${ocpath}/.htaccess
- chown ${rootuser}:${htgroup} ${ocpath}/data/.htaccess
+ chmod +x ${ocpath}/occ
 
- chmod 0644 ${ocpath}/.htaccess
- chmod 0644 ${ocpath}/data/.htaccess
+ printf "chmod/chown .htaccess\n"
+ if [ -f ${ocpath}/.htaccess ]
+  then
+   chmod 0644 ${ocpath}/.htaccess
+   chown ${rootuser}:${htgroup} ${ocpath}/.htaccess
+ fi
+ if [ -f ${ocpath}/data/.htaccess ]
+  then
+   chmod 0644 ${ocpath}/data/.htaccess
+   chown ${rootuser}:${htgroup} ${ocpath}/data/.htaccess
+ fi
  
 If you have customized your ownCloud installation and your filepaths are 
 different than the standard installation, then modify this script accordingly. 
@@ -170,8 +185,14 @@ and files:
 * The :file:`apps/` directory should be owned by ``[HTTP user]:[HTTP group]``
 * The :file:`config/` directory should be owned by ``[HTTP user]:[HTTP group]``
 * The :file:`themes/` directory should be owned by ``[HTTP user]:[HTTP group]``
+* The :file:`assets/` directory should be owned by ``[HTTP user]:[HTTP group]``
 * The :file:`data/` directory should be owned by ``[HTTP user]:[HTTP group]``
 * The :file:`[ocpath]/.htaccess` file should be owned by ``root:[HTTP group]``
 * The :file:`data/.htaccess` file should be owned by ``root:[HTTP group]``
 * Both :file:`.htaccess` files are read-write file owner, read-only group and 
   world
+
+If you want to update/upgrade your installation via the GUI or the occ-command,
+check :ref:`setting_permissions_for_updating:` in the 
+"Upgrading ownCloud with the Updater App" document.
+ 
