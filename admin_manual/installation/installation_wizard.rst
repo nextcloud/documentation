@@ -139,6 +139,7 @@ replace the ``htuser`` and ``htgroup`` variables with your HTTP user and group::
  ocpath='/var/www/owncloud'
  htuser='www-data'
  htgroup='www-data'
+ rootuser='root'
 
  printf "Creating possible missing Directories\n"
  mkdir -p $ocpath/data
