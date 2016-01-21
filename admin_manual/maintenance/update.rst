@@ -45,43 +45,34 @@ steps:
 1.  You should see a notification at the top of any ownCloud page when there is 
     a new update available:
    
-.. figure:: ../images/updater-1.png
+.. figure:: images/upgrade-notifier.png
+   :alt: upgrade notifier banner.
    
 2.  Even though the Updater app backs up important directories, you should 
     always have your own current backups (See :doc:`backup` for details.)
    
 3.  Verify that the HTTP user on your system can write to your whole ownCloud 
-    directory; see the :ref:`setting_permissions_for_updating` section below.
+    directory; see the :ref:`set_updating_permissions_label` section below.
    
 4.  Navigate to your Admin page and click the `Update Center` button under 
-    Updater:
+    Updater. This takes you to the Updater control panel.
 
-.. figure:: ../images/updater-2.png
-
-5.  This takes you to the Updater control panel.
-
-.. figure:: ../images/updater-3.png
-
-6.  Click Update, and carefully read the messages. If there are any problems it 
+5.  Click Update, and carefully read the messages. If there are any problems it 
     will tell you. The most common issue is directory permissions; your HTTP 
     user needs write permissions to your whole ownCloud directory. (See 
-    :ref:`setting_strong_permissions`.) Otherwise you will see messages about 
-    checking your installation and making backups.
-    
-.. figure:: ../images/updater-9.png
-    :scale: 75 %
+    :ref:`strong_perms_label`.) Otherwise you will see messages 
+    about checking your installation and making backups.
 
-7.  Click Proceed, and then it performs the remaining steps, which takes a few 
+6.  Click Proceed, and then it performs the remaining steps, which takes a few 
     minutes.
-    
-.. figure:: ../images/updater-10.png  
-    :scale: 75 %
 
-8.  If your directory permissions are correct, a backup was made, and 
+7.  If your directory permissions are correct, a backup was made, and 
     downloading the new ownCloud archive succeeded you will see the following 
     screen. Click the Start Update button to complete your update:
 
-.. figure:: ../images/updater-8.png
+.. figure:: images/upgrade-2.png
+   :scale: 75%
+   :alt: ownCloud upgrade wizard screen.
 
 ..  note:: If you have a large ownCloud installation, at this point you
     should use the ``occ upgrade`` command, running it as your HTTP user, 
@@ -102,19 +93,14 @@ step with the ``--skip-migration-test`` option::
 
 See :doc:`../configuration_server/occ_command` to learn more.
 
-9.  It runs for a few minutes, and when it is finished displays a success 
-    message, which disappears after a short time. 
-   
-.. figure:: ../images/updater-7.png
+8.  It runs for a few minutes, and when it is finished displays a success 
+    message, which disappears after a short time.
 
 Refresh your Admin page to verify your new version number. In the Updater 
 section of your Admin page you can see the current status and backups. These 
 are backups of your old and new ownCloud installations, and do not contain your 
 data files. If your update works and there are no problems you can delete the 
 backups from this screen.
-
-.. figure:: ../images/updater-11.png
-    :scale: 75 %
 
 If the update fails, then you must update manually. (See :doc:`upgrade`.)
 
@@ -127,23 +113,30 @@ your server, most likely via your Linux package manager during a routine system
 update. So you only need to click the Start Update button, or run the ``occ`` 
 command to complete the update.
 
-.. _setting_permissions_for_updating:
+.. _set_updating_permissions_label:
 
 Setting Permissions for Updating
 --------------------------------
    
 For hardened security we  highly recommend setting the permissions on your 
 ownCloud directory as strictly as possible. These commands should be executed 
-immediately after the initial installation. Please follow the steps in the 
-**Setting Strong Directory Permissions** section of 
-:doc:`../installation/installation_wizard`.
+immediately after the initial installation. Please follow the steps in 
+:ref:`strong_perms_label`.
     
 These strict permissions will prevent the Updater app from working, as it needs 
-your whole ownCloud directory to be owned by the HTTP user. The generic command 
-to change ownership of all files and subdirectories in a directory to the HTTP 
-user is::
+your whole ownCloud directory to be owned by the HTTP user. Run this script to 
+set the appropriate permissions for updating. Replace the ``ocpath`` variable 
+with the path to your ownCloud directory, and replace the ``htuser`` and 
+``htgroup`` variables with your HTTP user and group.::
 
-    chown -R <http-user>:<http-user> /path/to/owncloud/
+    #!/bin/bash
+    # Sets permissions of the owncloud instance for updating
+    
+    ocpath='/var/www/owncloud'
+    htuser='www-data'
+    htgroup='www-data'
+    
+    chown -R ${htuser}:${htgroup} ${ocpath}
 
 You can find your HTTP user in your HTTP server configuration files. Or you can 
 use :ref:`label-phpinfo` (Look for the **User/Group** line).
@@ -153,27 +146,5 @@ use :ref:`label-phpinfo` (Look for the **User/Group** line).
 * The HTTP user and group in Arch Linux is ``http``.
 * The HTTP user in openSUSE is ``wwwrun``, and the HTTP group is ``www``.
 
-Preparing the instance for upgrading
-------------------------------------
-
-Replace the ``ocpath`` variable with the path to your ownCloud directory, and 
-replace the ``htuser`` and ``htgroup`` variables with your HTTP user and group.
-
-  ::
-  
-    #!/bin/bash
-    # Sets permissions of the owncloud instance for updating
-    
-    ocpath='/var/www/owncloud'
-    htuser='www-data'
-    htgroup='www-data'
-    
-    chown -R ${htuser}:${htgroup} ${ocpath}
-    
-
-Preparing the instance after upgrading
---------------------------------------
-
-Please use the script described in :ref:`strong_perms_label` in the "Installation Wizard" document.
-
-If you have customized your ownCloud installation and your filepaths are different than the standard installation, then modify the scripts accordingly.
+After the update is completed, re-apply the strong directory permissions 
+immediately by running the script in :ref:`strong_perms_label`.

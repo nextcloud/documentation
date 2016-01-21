@@ -139,7 +139,6 @@ replace the ``htuser`` and ``htgroup`` variables with your HTTP user and group::
  ocpath='/var/www/owncloud'
  htuser='www-data'
  htgroup='www-data'
- rootuser='root' # On QNAP this is admin
 
  printf "Creating possible missing Directories\n"
  mkdir -p $ocpath/data
@@ -192,7 +191,6 @@ and files:
 * Both :file:`.htaccess` files are read-write file owner, read-only group and 
   world
 
-If you want to update/upgrade your installation via the GUI or the occ-command,
-check :ref:`setting_permissions_for_updating:` in the 
-"Upgrading ownCloud with the Updater App" document.
- 
+These strong permissions prevent upgrading your ownCloud server; 
+see :ref:`set_updating_permissions_label` for a script to quickly change 
+permissions to allow upgrading.
