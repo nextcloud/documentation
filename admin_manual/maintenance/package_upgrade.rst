@@ -147,8 +147,8 @@ installations by several hours, so you can omit this step with the
 
  $ sudo -u apache php occ upgrade --skip-migration-test
 
-Setting Strong Permissions
---------------------------
+Setting Strong Directory Permissions
+------------------------------------
 
 After upgrading, verify that your ownCloud directory permissions are set 
 according to :ref:`strong_perms_label`.

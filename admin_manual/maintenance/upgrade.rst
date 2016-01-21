@@ -4,7 +4,8 @@ How to Upgrade Your ownCloud Server
 
 There are three ways to upgrade your ownCloud server:
 
-* Using your :doc:`Linux package manager <package_upgrade>` with our official ownCloud repositories. This    is the recommended method.
+* Using your :doc:`Linux package manager <package_upgrade>` with our official 
+  ownCloud repositories. This is the recommended method. 
 * With the :doc:`Updater App <update>` (Server Edition only). Recommended for 
   shared hosters, and for users who want an easy way to track different 
   release channels. (It is not available and not supported on the Enterprise 
@@ -20,7 +21,12 @@ When an update is available for your ownCloud server, you will see a
 notification at the top of your ownCloud Web interface. When you click the 
 notification it brings you here, to this page.
 
-**It is best to keep your ownCloud server upgraded regularly**, and to install all point releases and major releases without skipping any of them, as skipping releases increases the risk of errors. Major releases are 8.0, 8.1, 8.2, and 9.0. Point releases are intermediate releases for each major release. For example, 8.0.9 and 8.1.3 are point releases. **Skipping major releases is not supported.**
+**It is best to keep your ownCloud server upgraded regularly**, and to install 
+all point releases and major releases without skipping any of them, as skipping 
+releases increases the risk of errors. Major releases are 8.0, 8.1, 8.2, and 
+9.0. Point releases are intermediate releases for each major release. For 
+example, 8.0.9 and 8.1.3 are point releases. **Skipping major releases is not 
+supported.**
 
 **Upgrading is disruptive**. Your ownCloud server will be put into maintenance 
 mode, so your users will be locked out until the upgrade is completed. Large 
