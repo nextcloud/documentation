@@ -11,12 +11,11 @@ expressions.
 
 Each rule consists of one or more conditions. A request matches a rule if 
 all conditions evaluate to true. If a request matches at least one of the 
-defined rules, the request is blocked.
+defined rules, the request is blocked and the file content can not be read or
+written.
 
-Administrators are excluded from the firewall when they 
-access the instance via the WebUI, to allow admins to modify the rules. 
-Otherwise they could potentially be locked out. Public share links and syncing 
-via WebDAV are subject to firewall rules for all users all the time.
+.. note::
+   As of ownCloud 9.0, the File Firewall app cannot lock out administrators from the Web interface when      rules are misconfigured.
 
 Figure 1 shows an empty firewall configuration panel. Set your logging level to 
 **Failures Only** for debugging, and create a new ruleset by clicking the **Add 
@@ -52,7 +51,7 @@ User Agent
  The User-Agent of the request (matches|does not match) the given string.
 
 User Device
-  A shortcut for matching all known (``android``|``ios``|``desktop``) sync clients by 
+  A shortcut for matching all known (``android`` | ``ios`` | ``desktop``) sync clients by
   their User Agent string.
 
 Request Time
@@ -79,6 +78,10 @@ File Size Upload
 File Mimetype Upload
  When a file is uploaded the mimetype (is|is not|begins with|does not begin 
  with|ends with|does not end with) the given string.
+
+System File Tag
+ One of the parent folders or the file itself (is|is not) tagged with a System
+ tag.
 
 Regular Expression
  The File Firewall supports regular expressions, allowing you to create custom 
@@ -107,54 +110,21 @@ and a single typo will break all of your rules.
 Controlling Access to Folders
 -----------------------------
 
-These examples show how to use regular expressions to control access to folders.
-It is quite important to note that WebDAV and WebUI require two different URL 
-matches in 8.2, and are therefore split into 2 rules.
+The easiest way to block access to a folder, starting with ownCloud 9.0, is to use a
+system tag. A new rule type was added which allows you to block access to
+files and folders, where at least one of the parents has a given tag. Now you
+just need to add the tag to the folder or file, and then block the tag with the
+File Firewall.
 
-This example blocks access to any folder with "Secure" in the name.
+This example blocks access to any folder with the tag "Confidential".
 
-Block Web UI::
+Block by System Tag::
 
-   Request Type: Other
-   Request IP: 127.0.0.1/24
-   Regex: Request URL: apps\/files\/
-   Regex: Request URL: dir\=(.*)\%2FSecure(\%2F(.*)|$|&(.*))
-  
-Block WebDAV::
+   System file tag:   is       "Confidential"
+   Subnet IPv4:       is not   "255.255.255.0/24"
 
-   Request Type: WebDAV
-   Request IP: 127.0.0.1/24
-   Regex: Request URL: remote\.php\/webdav(\/(.*))*\/Secure(\/(.*)|$)
-
-This example blocks only the root folder named Secure.
-
-Block Web UI::
-
-   Request Type: Other
-   Request IP: 127.0.0.1/24
-   Regex: Request URL: apps\/files\/
-   Regex: Request URL: dir\=(\%2F)+Secure(\%2F(.*)|$|&(.*))
-
-Block Webdav::
-
-   Request Type: WebDAV
-   Request IP: 127.0.0.1/24
-   Regex: Request URL: remote\.php\/webdav(\/)+Secure(\/(.*)|$)
-
-Blocking multiple folders isn't much more complicated. These examples block the folders named Secure and Secret.
-
-Block Web UI::
-
-   Request Type: Other
-   Request IP: 127.0.0.1/24
-   Regex: Request URL: apps\/files\/
-   Regex: Request URL: dir\=(.*)\%2F(Secure|Secret)(\%2F(.*)|$|&(.*))
-
-Block Webdav::
-
-   Request Type: WebDAV
-   Request IP: 127.0.0.1/24
-   Regex: Request URL: remote\.php\/webdav(\/(.*))*\/(Secure|Secret)(\/(.*)|$)
+.. figure:: images/firewall-3.png
+   :alt: Protecting files tagged with "Confidential" from outside access
 
 Custom Configuration for Branded Clients
 ----------------------------------------
