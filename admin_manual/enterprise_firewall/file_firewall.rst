@@ -15,10 +15,7 @@ defined rules, the request is blocked and the file content can not be read or
 written.
 
 .. note::
-   As of ownCloud 9.0 administrators are no longer exceptions to the rules.
-   This was changed, because since ownCloud 9.0 the file firewall app no longer
-   can lock out administrators from the web interface, when rules are
-   misconfigured.
+   As of ownCloud 9.0, the File Firewall app cannot lock out administrators from the Web interface when      rules are misconfigured.
 
 Figure 1 shows an empty firewall configuration panel. Set your logging level to 
 **Failures Only** for debugging, and create a new ruleset by clicking the **Add 
@@ -113,11 +110,11 @@ and a single typo will break all of your rules.
 Controlling Access to Folders
 -----------------------------
 
-The easiest way to block access to a folder starting ownCloud 9.0 is to use a
-system tag. A new rule type was added, which allows you to block access to
+The easiest way to block access to a folder, starting with ownCloud 9.0, is to use a
+system tag. A new rule type was added which allows you to block access to
 files and folders, where at least one of the parents has a given tag. Now you
-just need to add the tag to the folder or file and then block the tag with the
-file firewall.
+just need to add the tag to the folder or file, and then block the tag with the
+File Firewall.
 
 This example blocks access to any folder with the tag "Confidential".
 
