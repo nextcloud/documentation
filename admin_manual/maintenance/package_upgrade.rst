@@ -139,11 +139,12 @@ your ownCloud Web page to return to your previous session.
 Migration Test
 ^^^^^^^^^^^^^^
 
-ownCloud starts your upgrade by first running a simulation: it copies all 
-database tables to a temporary directory, and then performs the upgrade on 
-them to ensure that the upgrade will complete correctly. This can delay large 
-installations by several hours, so you can omit this step with the 
-``--skip-migration-test`` option, like this example on CentOS::
+Before completing the upgrade, ownCloud first runs a simulation by copying all 
+database tables to new tables, and then performs the upgrade on them, to ensure 
+that the upgrade will complete correctly. The copied tables are deleted after 
+the upgrade. This takes twice as much time, which on large installations can be 
+many hours, so you can omit this step with the ``--skip-migration-test`` 
+option, like this example on CentOS::
 
  $ sudo -u apache php occ upgrade --skip-migration-test
 
