@@ -125,9 +125,9 @@ examples will assume that you are trying to sign an application named
    secret and not disclose it to any third-parties.
 3. ownCloud will provide you with the signed certificate.
 4. Run ``./occ integrity:sign-app`` to sign your application, and specify 
-   your private and the public key. A valid example looks like: ``./occ 
-   integrity:sign-app --privateKey=/Users/lukasreschke/contacts.key 
-   --certificate=/Users/lukasreschke/CA/contacts.crt --appId=contacts``
+   your private and the public key as well as the path to the application. 
+   A valid example looks like: ``./occ integrity:sign-app --privateKey=/Users/lukasreschke/contacts.key 
+   --certificate=/Users/lukasreschke/CA/contacts.crt --path=/Users/lukasreschke/Programming/contacts``
 
 The occ tool will store a ``signature.json`` file within the ``appinfo`` folder 
 of your application. Then compress the application folder and upload it to 
