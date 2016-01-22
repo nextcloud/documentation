@@ -971,6 +971,14 @@ Replaces the default Comments Manager Factory. This can be utilized if an
 own or 3rdParty CommentsManager should be used that – for instance – uses the
 filesystem instead of the database to keep the comments.
 
+::
+
+	'systemtags.managerFactory' => '\OC\SystemTag\ManagerFactory',
+
+Replaces the default System Tags Manager Factory. This can be utilized if an
+own or 3rdParty SystemTagsManager should be used that – for instance – uses the
+filesystem instead of the database to keep the comments.
+
 Maintenance
 -----------
 
