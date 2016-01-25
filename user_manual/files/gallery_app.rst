@@ -6,7 +6,7 @@ The Pictures app has been rewritten and improved, and is now called the Gallery
 app. It supports more image formats, sorting, zoom, and scrolling. It also 
 supports advanced customizations via a simple text file.
 
-On your mail ownCloud Files page, click the little icon at the top right, 
+On your main ownCloud Files page, click the little icon at the top right, 
 underneath your username, to open your Gallery. The Gallery app automatically 
 finds all images in your ownCloud folders, and overlays the thumbnails with the 
 folder names. Click on the folder thumbnails to open the folders. At the top 
@@ -28,40 +28,45 @@ Custom Configuration
    
 You may customize a Gallery album with a simple text file named 
 **gallery.cnf**, which contains parameters structured using the 
-`Yaml <https://en.wikipedia.org/wiki/YAML>`_ markup language.
+`Yaml <https://en.wikipedia.org/wiki/YAML>`_ markup language. You may have 
+multiple **gallery.cnf** files; you need one in your own root ownCloud folder 
+(your Home folder) that defines global features, and then you may have 
+individual per-album **gallery.cnf** files if you want to define different 
+behaviors in different albums.
 
 Features
 ^^^^^^^^
 
 The following general features are currently implemented:
 
-* Native SVG support
-* Access to external shares
+* Native SVG support.
+* Access to external shares.
 
 The following album features are currently implemented:
 
-* Adding a link to a file containing a description
-* Typing a simple copyright statement directly in the configuration file
-* Adding a link to a file containing a copyright statement
-* Defining a sort type and order
-* Defining the colour of the background
-* Defining if sub-albums will inherit the configuration
+* Adding a link to a file containing a description.
+* Typing a simple copyright statement directly in the configuration file.
+* Adding a link to a file containing a copyright statement.
+* Defining a sort type and order.
+* Defining the colour of the background.
+* Defining if sub-albums will inherit the configuration.
 
 The following slideshow features are currently implemented:
 
-* Showing a button which lets you pick which background, between black and 
-  white, should be used for the picture you are currently viewing in the 
-  slideshow
+* Showing a button which lets you pick which background, either black or 
+  white, to use for the picture you are currently viewing (for images with 
+  transparent backgrounds).
 
 Setup
 ^^^^^
 
-The configuration file has to be named **gallery.cnf**
+The configuration file has to be named **gallery.cnf**. You may have multiple 
+per-album **gallery.cnf** files. To enable global features, place one in your 
+top-level folder, which is symbolised in the Web GUI by the home icon. (This 
+puts it in ``data/<user>/files/``.) See :ref:`an example below 
+<supported_variables_label>` in the **Global features** section.
 
-You need a `gallery.cnf` file in your root ownCloud folder to activate it, and 
-users may create their own per-album configurations.
-
-.. note:: You need to refresh the browser after changing your configuration to 
+.. note:: You need to refresh your browser after changing your configuration to 
    see your changes.
 
 Format
@@ -97,42 +102,42 @@ Here is an example `gallery.cnf`::
    is no `description_link`
    description_link: readme.md
    copyright: Copyright 2003-2016 [interfaSys sàrl](http://www.interfasys.ch), 
- Switzerland
+   Switzerland
    copyright_link: copyright.md
    inherit: yes
  sorting:
    type: date
    order: des
    inherit: yes
+   
+.. _supported_variables_label:   
 
 Supported Variables
 ^^^^^^^^^^^^^^^^^^^
 
-**Global features**
+**Global Features**
 
-Used to configure the app. Only supported if the ownCloud 
-administrator places a `gallery.cnf` in the root of the instance.
+Place this in your root ownCloud folder, which is your Home folder.
 
 * **external_shares**: Set to **yes** in your root configuration file if you 
-  want to be able to load images stored on external locations, when using the 
+  want to load images stored on external locations, when using the 
   **files_external** app.
-* **native_svg**: Set to **yes** in your root configuration file if you want to 
-  be able to see SVG images rendered by the browser. This may represent a 
-  security risk if you can't fully trust your SVG files.
+* **native_svg**: Set to **yes** in your root configuration file to enable 
+  rendering SVG images in your browser. This may represent a security risk if 
+  you can't fully trust your SVG files.
 * **background_colour_toggle**: Set to **yes** in your root configuration file 
-  if you want to have an additional button in the slideshow, enabling users to 
-  toggle the colour of the background of transparent images between black and 
-  white.
+  to enable a button that toggles between black and white backgrounds on 
+  transparent images.
 
 .. note:: External shares are 20-50 times slower than local shares. Be prepared 
    to wait a long time before being able to see all the images contained in a 
    shared album.
 
-**Album configuration**
+**Album Configuration**
 
 Each album can be individually configured using the following configuration 
-sections. It's possible to use the **inherit** parameter to make sure all 
-sub-albums are configured the same way.
+sections. Use the **inherit** parameter to pass configurations on to 
+sub-albums.
 
 **Design**
 
@@ -145,7 +150,7 @@ sub-albums are configured the same way.
 * **inherit**: Set to **yes** if you want sub-folders to inherit this part of 
   the configuration.
 
-**Album presentation**
+**Album Presentation**
 
 * **description**: A markdown-formatted string which will be displayed in the 
   info box. It can spread over multiple lines using the Yaml markers.
@@ -170,10 +175,8 @@ See `<http://www.markitdown.net/markdown>`_ for the markdown syntax.
 * **inherit**: Set to **yes** if you want sub-folders to inherit this part of 
   the configuration.
 
-Possible Future Extensions
---------------------------
-
-Different sorting parameters for albums.
+Notes
+-----
 
 * When only the sort **type** variable has been set, the default sort order 
   will be used.
@@ -183,14 +186,14 @@ Different sorting parameters for albums.
 * To enable a feature such as native SVG in a public share, you need to create 
   in that folder a configuration file containing that feature.
 * If you share a folder publicly, don't forget to add all the files you link to 
-  (e.g. description.md or copyright.md) inside the shared folder as 
+  (e.g. ``description.md`` or ``copyright.md``) inside the shared folder as 
   the user won't have access to files stored in the parent folder.
 * Since people can download a whole folder as an archive, it's usually best to 
   include all files within a shared folder, rather than adding text directly 
   in the configuration file.
 
 Examples
-^^^^^^^^
+--------
 
 **Sorting Only**
 
@@ -214,7 +217,7 @@ spread a description over multiple lines::
    copyright_link: copyright_2015_lmb.html
    inherit: yes
 
-**Load images from external clouds**
+**Load Images From External Clouds**
 
 .. note:: Features can only be defined in the root folder.
 
@@ -233,3 +236,9 @@ You can add standard configuration items to the same configuration file::
  # Gallery configuration file
   features:
   native_svg: yes
+  
+Possible Future Extensions
+--------------------------
+
+Different sorting parameters for albums.
+
