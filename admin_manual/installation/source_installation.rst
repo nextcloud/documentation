@@ -405,10 +405,9 @@ server in order for these changes to be applied.
 
 **.htaccess notes for webservers \<> Apache**
 
-ownCloud comes with its own ``owncloud/.htaccess`` file. ``php-fpm`` can't 
-read PHP settings in ``.htaccess`` unless the ``htscanner`` PECL extension is 
-installed. If ``php-fpm`` is used without this PECL extension installed, 
-settings and permissions must be set in the ``owncloud/.user.ini`` file.
+ownCloud comes with its own ``owncloud/.htaccess`` file. Because ``php-fpm`` can't 
+read PHP settings in ``.htaccess`` these settings and permissions must be set
+in the ``owncloud/.user.ini`` file.
 
 .. _other_HTTP_servers_label:
 

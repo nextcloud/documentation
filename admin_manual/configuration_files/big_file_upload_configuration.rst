@@ -31,10 +31,9 @@ System Configuration
 Configuring Your Webserver
 --------------------------
 
-| ownCloud comes with its own ``owncloud/.htaccess`` file.
-| If PHP-FPM is used, it can't read ``.htaccess`` PHP settings unless the ``htscanner``
-| PECL extension is installed. If PHP-FPM is used without this PECL extension installed,
-| settings and permissions must be set in the ``owncloud/.user.ini`` file.
+| ownCloud comes with its own ``owncloud/.htaccess`` file. Because ``php-fpm`` can't 
+| read PHP settings in ``.htaccess`` these settings and permissions must be set
+| in the ``owncloud/.user.ini`` file.
 
 Set the following two parameters inside the corresponding php.ini file (see the 
 **Loaded Configuration File** section of :ref:`label-phpinfo` to find your 
