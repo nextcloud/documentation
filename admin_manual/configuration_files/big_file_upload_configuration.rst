@@ -31,9 +31,9 @@ System Configuration
 Configuring Your Webserver
 --------------------------
 
-| ownCloud comes with its own ``owncloud/.htaccess`` file. Because ``php-fpm`` can't 
-| read PHP settings in ``.htaccess`` these settings and permissions must be set
-| in the ``owncloud/.user.ini`` file.
+.. note:: ownCloud comes with its own ``owncloud/.htaccess`` file. Because ``php-fpm``
+   can't read PHP settings in ``.htaccess`` these settings must be set in the
+   ``owncloud/.user.ini`` file.
 
 Set the following two parameters inside the corresponding php.ini file (see the 
 **Loaded Configuration File** section of :ref:`label-phpinfo` to find your 
@@ -120,3 +120,27 @@ make sure it is not too
 low. This setting needs to be configured to at least the time (in seconds) that
 the longest upload will take. If unsure remove this completely from your
 configuration to reset it to the default shown in the ``config.sample.php``.
+
+Configuring upload limits within the GUI
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If all prerequisites described in this documentation are in place an admin can change the
+upload limits on demand by using the ``File handling`` input box within the administrative
+backend of ownCloud.
+
+.. figure:: images/admin_filehandling-1.png
+
+Depending on your environment you might get an insufficient permissions message shown for
+this input box.
+
+.. figure:: images/admin_filehandling-2.png
+
+To be able to use this input box you need to make sure that:
+
+* your web server is be able to use the ``.htaccess`` file shipped by ownCloud (Apache only)
+* the user your web server is running as has write permissions to the files ``.htaccess`` and ``.user.ini``
+
+:ref:`strong_perms_label` might prevent write access to these files. As an admin you need
+to decide between the ability to use the input box and a more secure ownCloud installation
+where you need to manually modify the upload limits in the ``.htaccess`` and ``.user.ini``
+files described above.
