@@ -67,7 +67,7 @@ Ubuntu::
   check                       check dependencies of the server environment
   help                        Displays help for a command
   list                        Lists commands
-  status                      show some status information
+  status                      show some status informationb
   upgrade                     run upgrade routines after installation of a new 
                               release. The release has to be installed before.
 
@@ -256,8 +256,8 @@ The ``set`` command creates the value, if it does not already exist. To update t
 Setting a non-string Configuration Value
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to write a boolean or integer value to the config file, you need to
-specify the type on your command as well. The following values are known:
+In order to write a Boolean or integer value to the configuration file, you need to
+specify the type on your command as well. This applies only to the ``config:system:set`` command. The following values are known:
 
 * ``boolean``
 * ``integer``
