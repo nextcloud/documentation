@@ -31,8 +31,9 @@ Prerequisites
        
        https://mycloud.example.com/install/mycloud-2.1.1.787.pkg.tbz.sig
    
-   -  You need a human-readable Website with links to your client
-      files. This could be https://mycloud.example.com/install/ with
+   -  You should have a Web page with links to your branded clients, so your 
+      users can find and download them. For example, 
+      https://mycloud.example.com/install/ with
       ``Options +Indexes`` in your ownCloud ``.htaccess`` file.
 
 Install client-updater-server
@@ -93,7 +94,7 @@ Windows
    Name of the new client, same as “Application name” configured in
    ownBrander
 -  ``'updateUrl'``
-   Human-readable website with links to your new client files
+   Human-readable Web site with links to your new client files
 -  ``'downloadUrl'``
    Full URL to download the \*.exe file. http\ **s** needed
 
@@ -111,7 +112,7 @@ notification.
    Name of the new client, same as “Application name” configured in
    ownBrander
 -  ``'updateUrl'``
-   Human-readable Website with links to your new client files to
+   Human-readable Web site with links to your new client files to
    manually install new client versions
 
 Mac OS X
