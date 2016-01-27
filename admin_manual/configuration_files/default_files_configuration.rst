@@ -22,7 +22,8 @@ Additional Configuration
 ------------------------
 
 The configuration option ``skeletondirectory`` available in your
-``config.php`` (See :doc:`config_sample_php_parameters`) allows
+``config.php`` (See 
+:doc:`../configuration_server/config_sample_php_parameters`) allows
 you to configure the directory where the skeleton files are located.
 These files will be copied to the data directory of new users. Leave
 empty to not copy any skeleton files.
