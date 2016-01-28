@@ -523,44 +523,8 @@ entries that have no matching entries in the storage table.
 l10n, Create Javascript Translation Files for Apps
 --------------------------------------------------
 
-Use the ``l10n:createjs`` to migrate your PHP-based translation files into 
-Javascript files::
-
-  l10n:createjs appname language_name
-  
-This example converts the Activity app to Bosnian::
-
- $ sudo -u www-data php occ l10n:createjs activity bs
-
-These are the supported language codes, and `Codes for the Representation of 
-Names of Languages
-<http://www.loc.gov/standards/iso639-2/php/code_list.php>`_ may be helpful::
-
- ach                     gu     ml     sr
- ady          eo         he     ml_IN  sr@latin
- af_ZA        es         hi     mn     su
- ak           es_AR      hi_IN  ms_MY  sv
- am_ET        es_BO      hr     mt_MT  sw_KE
- ar           es_CL      hu_HU  my_MM  ta_IN
- ast          es_CO      hy     nb_NO  ta_LK
- az           es_CR      ia     nds    te
- be           es_EC      id     ne     tg_TJ
- bg_BG        es_MX      io     nl     th_TH
- bn_BD        es_PE      is     nn_NO  tl_PH
- bn_IN        es_PY      it     nqo    tr
- bs           es_US      ja     oc     tzm
- ca           es_UY      jv     or_IN  ug
- ca@valencia  et_EE      ka_GE  pa     uk
- cs_CZ        eu         km     pl     ur
- cy_GB        eu_ES      kn     pt_BR  ur_PK
- da           fa         ko     pt_PT  uz
- de           fi         ku_IQ  ro     vi
- de_AT        fi_FI      lb     ru     yo
- de_CH        fil        lo     si_LK  zh_CN
- de_DE        fr         lt_LT  sk     zh_HK
- el           fr_CA      lv     sk_SK  zh_TW
- en_GB        fy_NL      mg     sl
- en_NZ        gl         mk     sq
+This command is for app developers to update their translation mechanism from
+ownCloud 7 to ownCloud 8 and later.
 
 .. _ldap_commands_label: 
  
