@@ -25,6 +25,11 @@ Please work in the appropriate branch. Stable7 is for ownCloud 7, stable8 is 8.0
 
 Please wrap lines at 80 characters.
 
+**Important: Please copy the links to any relevant Github PRs or issues at the end of every doc page. This makes it much easier to go back and find information and fact-check.** Like this example::
+
+ .. Github references
+ .. Foo PR title #100 https://github.com/owncloud/core/pull/100
+
 .. note:: ``configuration_server/config_sample_php_parameters.rst`` is auto-generated from the core
    config.sample.php file; changes to this file must be made in core `<https://github.com/owncloud/core/tree/master/config>`_
 
