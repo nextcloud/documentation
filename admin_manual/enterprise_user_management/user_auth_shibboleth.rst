@@ -24,7 +24,7 @@ A good starting point for the service provider installation can be found in
 `the official Shibboleth Wiki`_.
 
 A successful installation and configuration will populate Apache environment
-variables with at least the unique user id which is then used by the ownCloud
+variables with at least a unique user id which is then used by the ownCloud
 Shibboleth app to login a user.
 
 Apache Configuration
@@ -45,7 +45,7 @@ following aliases are defined in an Apache virtual host directive:
 	Alias /oc-shib /var/www/owncloud/
 
 Further Shibboleth specific configuration as defined in
-``/etc/Apache2/conf.d/shib.conf``:
+``/etc/apache2/conf.d/shib.conf``:
 
 .. code-block:: Apache
 
