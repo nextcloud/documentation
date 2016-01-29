@@ -392,3 +392,5 @@ because ``uid`` collisions will be detected by ``user_ldap``.
 .. Github references
 .. update shibboleth doc, restructure some sections, add occ commands 
 .. https://github.com/owncloud/documentation/pull/2116/
+.. Shibboleth configuration in 8.2.1
+.. https://github.com/owncloud/enterprise/issues/981
