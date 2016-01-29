@@ -7,12 +7,12 @@ Introduction
 
 The ownCloud Shibboleth user backend application integrates ownCloud with a
 Shibboleth Service Provider (SP) and allows operations in federated and
-single-sign-on infrastructures. Setting up Shibboleth has two big steps:
+single-sign-on (SSO) infrastructures. Setting up Shibboleth has two big steps:
 
-1. Enable and configure the apache Shibboleth module.
+1. Enable and configure the Apache Shibboleth module.
 2. Enable and configure the ownCloud Shibboleth app.
 
-The apache Shibboleth module
+The Apache Shibboleth module
 ----------------------------
 
 Currently supported installations are based on the `native Apache integration`_.
@@ -21,9 +21,9 @@ the operating system, as well as on the integration with the Identity
 Providers (IdP), and require case-by-case analysis and installation.
 
 A good starting point for the service provider installation can be found in
-`the official Shibboleth wiki`_.
+`the official Shibboleth Wiki`_.
 
-A successful installation and configuration will populate apache environment
+A successful installation and configuration will populate Apache environment
 variables with at least the unique user id which is then used by the ownCloud
 Shibboleth app to login a user.
 
@@ -45,9 +45,9 @@ following aliases are defined in an Apache virtual host directive:
 	Alias /oc-shib /var/www/owncloud/
 
 Further Shibboleth specific configuration as defined in
-``/etc/apache2/conf.d/shib.conf``:
+``/etc/Apache2/conf.d/shib.conf``:
 
-.. code-block:: apache
+.. code-block:: Apache
 
 	#
 	# Load the Shibboleth module.
@@ -92,8 +92,8 @@ Further Shibboleth specific configuration as defined in
 	  Require all granted
 	</Location>
 
-	# Shibboleth is disabled for the following location to allow public gallery
-    # sharing
+	# Shibboleth is disabled for the following location 
+	# to allow public gallery sharing
 	<Location ~
          "/oc-shib/(apps/gallery/templates/slideshow.html$
          |index.php/apps/gallery/ajax/getimages.php
@@ -145,7 +145,7 @@ Further Shibboleth specific configuration as defined in
 Depending on the ownCloud Shibboleth app mode, you may need to revisit this
 configuration.
 
-The ownCloud Shibboleth app
+The ownCloud Shibboleth App
 ---------------------------
 
 After enabling the Shibboleth app on your Apps page, you need to choose the app
@@ -155,41 +155,41 @@ attributes on your Admin page.
 .. figure:: ../images/shib-gui5.png
    :alt: Shibboleth configuration screen.
 
-   *figure 3: Enabling Shibboleth on the Admin page*
+   *figure 1: Enabling Shibboleth on the ownCloud Admin page*
 
-Choosing the app mode
+Choosing the App Mode
 ^^^^^^^^^^^^^^^^^^^^^
 
-After enabling the app it will be in **Not active** mode, which ignores a
-Shibboleth session and allows you to login as an administrator and inspect the
-currently available apache environment variables. Use this mode to set up the
-environment mapping for the other modes in case you locked yourself out of the
-system. You can also change the app mode and environment mappings by using the
-occ command, eg.::
+After enabling the app it will be in **Not active** mode, which ignores a 
+Shibboleth session and allows you to login as an administrator and inspect the 
+currently available Apache environment variables. Use this mode to set up the 
+environment mapping for the other modes, and in case you locked yourself out of 
+the system. You can also change the app mode and environment mappings by using 
+the ``occ`` command, eg.::
 
  $ sudo -u www-data php occ shibboleth:mode notactive
  $ sudo -u www-data php occ shibboleth:mapping --uid login
 
-In **Single sign-on only** mode the app checks if the environment variable for
-the Shibboleth session, by default ``Shib-Session-Id``, is set. If that is the
-case it will take the value of the environment variable as the uid, by default
- ``eppn``, and check if a user is known by that uid. In effect, this allows
- another user backend, eg. the ldap backend to provide the displayname, email
- and avatar.
+In **Single sign-on only** mode the app checks if the environment variable for 
+the Shibboleth session, by default **Shib-Session-Id**, is set. If that is the 
+case it will take the value of the environment variable as the ``uid``, by 
+default ``eppn``, and check if a user is known by that ``uid``. In effect, this 
+allows another user backend, eg. the LDAP app, to provide the ``displayname``, 
+``email`` and ``avatar``.
 
  .. note:: As an example the IdP can send the **sAMAccountName** which the
-    apache Shibboleth module writes to a custom apache environment variable
+    Apache Shibboleth module writes to a custom Apache environment variable
     called ``login``. The ownCloud Shibboleth app reads that ``login``
-    environment variable and tries to find an ldap user with that uid. For this
-    to work the LDAP backend also needs to be configured to use the
-    **sAMAccountName* as the **Internal Username Attribute** in the
+    environment variable and tries to find an LDAP user with that ``uid``. For 
+    this to work the LDAP backend also needs to be configured to use the
+    **sAMAccountName** as the **Internal Username Attribute** in the
     :doc:`LDAP expert settings <../configuration_user/user_auth_ldap>`.
 
- .. note:: In many scenarios Shibboleth is not intended to hide the users
+ .. note:: In many scenarios Shibboleth is not intended to hide the user's
     password from the service provider, but only to implement SSO. If that is
     the case it is sufficient to protect the ownCloud base url with Shibboleth.
-    This will send web users to the IdP but allow desktop and mobile clients to
-    continue using username and password, proventing popups due to an expired
+    This will send Web users to the IdP but allow desktop and mobile clients to
+    continue using username and password, preventing popups due to an expired
     Shibboleth session lifetime.
 
 In **Autoprovision Users** mode the app will not ask another user backend, but
@@ -199,7 +199,8 @@ variables for display name and email address.
 .. figure:: ../images/shib-gui6.png
    :alt: Dropdowns for mapping Shibboleth environment configuration variables to ownCloud user attributes.
 
-   *figure 4: Mapping Shibboleth environment configuration variables to ownCloud user attributes*
+   *figure 2: Mapping Shibboleth environment configuration variables to ownCloud 
+   user attributes*
 
 In ownCloud 8.1 the Shibboleth environment variable mapping was stored in
 ``apps/user_shibboleth/config.php``. This file was overwritten on upgrades,
@@ -238,7 +239,7 @@ sync client.
 .. figure:: ../images/shib-gui1.png
    :alt: First client login screen.
 
-   *figure 1: First login screen*
+   *figure 3: First login screen*
 
 Then after going through the setup wizard, the desktop sync client displays the
 server and login information just like it does for any other ownCloud server
@@ -247,7 +248,7 @@ connections.
 .. figure:: ../images/shib-gui4.png
    :alt: The ownCloud client shows which server you are connected to.
 
-   *figure 2: ownCloud client displays server information*
+   *figure 4: ownCloud client displays server information*
 
 To your users, it doesn't look or behave differently on the desktop sync
 client, Android app, or iOS app from an ordinary ownCloud account setup. The
@@ -264,11 +265,11 @@ Personal settings page.
 
 .. image:: ../images/shibboleth-personal.png
 
-.. note:: In **Single sign-on only* mode the alternative WebDAV Url feature will
-   not work, as we have no way to store the WebDAV password. Instead the normal
-   WebDAV endpoint can be omittet from the Shibboleth authentication, allowing
-   WebDAV clients to use normal username and password based authentication. That
-   includes the desktop and mobile clients.
+.. note:: In **Single sign-on only** mode the alternative WebDAV Url feature 
+   will not work, as we have no way to store the WebDAV password. Instead the 
+   normal WebDAV endpoint can be omittet from the Shibboleth authentication, 
+   allowing WebDAV clients to use normal username and password based 
+   authentication. That includes the desktop and mobile clients.
 
 For provisioning purpose an OCS API has been added to revoke a generated
 password for a user:
@@ -304,10 +305,11 @@ Known Limitations
 Encryption
 ^^^^^^^^^^
 
-File encryption can only be used together with Shibboleth when the master
-key based encryption is used because the per user encryption
-requires the user's password to unlock the private encryption key. Due to the
-nature of Shibboleth the user's password is not known to the service provider.
+File encryption can only be used together with Shibboleth when the 
+:ref:`master key-based encryption <occ_encryption_label>` is used because the 
+per- user encryption requires the user's password to unlock the private 
+encryption key. Due to the nature of Shibboleth the user's password is not known 
+to the service provider.
 
 Other Login Mechanisms
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -385,3 +387,8 @@ because ``uid`` collisions will be detected by ``user_ldap``.
     https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPApacheConfig
 .. _WebDAV and Shibboleth:
     https://wiki.shibboleth.net/confluence/display/SHIB2/WebDAV
+
+    
+.. Github references
+.. update shibboleth doc, restructure some sections, add occ commands 
+.. https://github.com/owncloud/documentation/pull/2116/
