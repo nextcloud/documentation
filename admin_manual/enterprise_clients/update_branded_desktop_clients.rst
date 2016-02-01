@@ -8,18 +8,31 @@ available, it will also provide metadata for the update, such as the Download
 URL, signatures or a fallback URL that the client can resort to in case the
 update goes wrong.
 
+Clients for Mac OS X and Windows will update themselves automatically. Linux 
+clients will not. You have two options for your Linux users:
+
+* Set up your own download repository so your Linux users can update your 
+  branded clients with their package managers when they receive an update 
+  notification.
+* Upload new versions of your branded client to your Web server. Your Linux 
+  users receive update notifications, then download and install the client 
+  manually.
+
+There are times when you may want to disable update notifications. See the 
+examples below to learn how to do this.
+
 Prerequisites
 -------------
 
-#. Configure “Update URL” in the “Desktop” section of your ownBrander
-   account (available for “advanced” users only)
+#. Configure "Update URL" in the "Desktop" section of your ownBrander
+   account (available for "advanced" users only).
 
    -  Example:
        https://mycloud.example.com/updates/
        (note the forward slash at the end.)
 
-#. Generate branded clients
-#. Upload branded clients to your webserver
+#. Generate branded clients.
+#. Upload branded clients to your Web server.
 
    -  Windows example:
        https://mycloud.example.com/install/mycloud-2.1.1.240-setup.exe
@@ -40,10 +53,10 @@ Install client-updater-server
 -----------------------------
 
 #. Download ``client-updater-server-0.3.tar.xz`` from
-   https://customer.owncloud.com/
+   https://customer.owncloud.com/.
 #. Extract ``client-updater-server-0.3.tar.xz`` to your Web server. The
    ``index.php`` must be accessible at
-   ``https://mycloud.example.com/updates/index.php``
+   ``https://mycloud.example.com/updates/index.php``.
 #. Copy your ownCloud ``config/default.php`` file, and name it according 
    your **Application short name** as configured in ownBrander.
 
@@ -85,54 +98,59 @@ All configuration is done in your ``config/mycloud.php``::
 
     ];
 
+Disabling Notifications
+^^^^^^^^^^^^^^^^^^^^^^^
+
+There may be times when you wish to disable update notifications. To do this, 
+make the ``'currentVersion'`` and ``'currentVersionString'`` older than the 
+currently installed version. To re-enable notifications, change these to 
+release versions that are newer than the currently installed clients.
+    
+    
 Windows
 ^^^^^^^
 
 -  ``'currentVersion'``
    Exact version of the new client, including the build nr
--  ``'currentVersionString'``
-   Name of the new client, same as “Application name” configured in
-   ownBrander
+-  ``'currentVersionString'``.
+   Name of the new client, same as "Application name" configured in
+   ownBrander.
 -  ``'updateUrl'``
-   Human-readable Web site with links to your new client files
+   Human-readable Web site with links to your new client files.
 -  ``'downloadUrl'``
-   Full URL to download the \*.exe file. http\ **s** needed
+   Full URL to download the \*.exe file. http\ **s** needed.
 
-Linux
-^^^^^
-
-If you host a branded download repository for your users, then you don’t
-need to notify your users about new releases. Just configure an older
-version than the version you deployed to your users to never trigger a 
-notification.
-
--  ``'currentVersion'``
-   Exact version of the new client, including the build nr
--  ``'currentVersionString'``
-   Name of the new client, same as “Application name” configured in
-   ownBrander
--  ``'updateUrl'``
-   Human-readable Web site with links to your new client files to
-   manually install new client versions
 
 Mac OS X
 ^^^^^^^^
 
 -  ``currentVersion'``
-   Exact version of the new client, including the build nr
+   Exact version of the new client, including the build number.
 -  ``'currentVersionString'``
-   Name of the new client, same as “Application name” configured in
-   ownBrander
+   Name of the new client, same as "Application name" configured in
+   ownBrander.
 -  ``'downloadUrl'``
-   Full URL to download the \*.pkg\ **.tbz** file. http\ **s** needed
+   Full URL to download the \*.pkg\ **.tbz** file. http\ **s** needed.
 -  ``'pubDate'``
-   Currently not used
+   Currently not used.
 -  ``'signature'``
    Content of ``mycloud-2.1.1.787.pkg.tbz.sig``, adds some extra
-   security to the Mac OS X updater
+   security to the Mac OS X updater.
 -  ``'minimumSystemVersion'``
    Minimum required Mac OS X version according to
-   https://owncloud.org/install/#install-clients
+   https://owncloud.org/install/#install-clients.
+   
+Linux
+^^^^^
+
+-  ``'currentVersion'``
+   Exact version of the new client, including the build nr
+-  ``'currentVersionString'``.
+   Name of the new client, same as "Application name" configured in
+   ownBrander.
+-  ``'updateUrl'``
+   Human-readable Web site with links to your new client files to
+   manually install new client versions.   
 
 Debugging client-updater-server
 -------------------------------
