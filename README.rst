@@ -19,7 +19,6 @@ This repository hosts four manuals:
 * **Users' Manual**
 * **Administration Manual**
 * **Developers Manual** 
-* **Deployment Recommendations**
   
 Please work in the appropriate branch. Stable7 is for ownCloud 7, stable8 is 8.0, stable8.1 is 8.1, stable8.2 is 8.2, and master is version 9.
 
