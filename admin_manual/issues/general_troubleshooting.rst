@@ -161,34 +161,34 @@ Some common problems / error messages found in your logfiles as described above:
   failing. Information on how to correctly configure your environment can be
   found at the `forums <https://forum.owncloud.org/viewtopic.php?f=17&t=30646>`_.
 
-Troubleshooting Webserver and PHP problems
-------------------------------------------
+Troubleshooting Web server and PHP problems
+-------------------------------------------
 
 Logfiles
 ^^^^^^^^
 
 When having issues the first step is to check the logfiles provided by PHP, the 
-Webserver and ownCloud itself.
+Web server and ownCloud itself.
 
 .. note:: In the following the paths to the logfiles of a default Debian 
-   installation running Apache2 with mod_php is assumed. On other webservers, 
+   installation running Apache2 with mod_php is assumed. On other Web servers, 
    Linux distros or operating systems they can differ.
 
 * The logfile of Apache2 is located in ``/var/log/apache2/error.log``.
 * The logfile of PHP can be configured in your ``/etc/php5/apache2/php.ini``. 
   You need to set the directive ``log_errors`` to ``On`` and choose the path
   to store the logfile in the ``error_log`` directive. After those changes you
-  need to restart your Webserver.
+  need to restart your Web server.
 * The logfile of ownCloud is located in the data directory 
   ``/var/www/owncloud/data/owncloud.log``.
 
-Webserver and PHP modules
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Web server and PHP modules
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note:: Lighttpd is not supported with ownCloud, and some ownCloud features 
    may not work at all on Lighttpd.
 
-There are some Webserver or PHP modules which are known to cause various 
+There are some Web server or PHP modules which are known to cause various 
 problems like broken up-/downloads. The following shows a draft overview of 
 these modules:
 
@@ -235,7 +235,7 @@ helpful.
 See:
 
 * `SabreDAV FAQ <http://sabre.io/dav/faq/>`_
-* `Webservers <http://sabre.io/dav/webservers>`_ (Lists lighttpd as not 
+* `Web servers <http://sabre.io/dav/webservers>`_ (Lists lighttpd as not 
   recommended)
 * `Working with large files <http://sabre.io/dav/large-files/>`_ (Shows a PHP 
   bug in older SabreDAV versions and information for mod_security problems)
@@ -245,7 +245,7 @@ See:
   clients, and possible problems with each one)
 * `Finder, OS X's built-in WebDAV client 
   <http://sabre.io/dav/clients/finder/>`_ 
-  (Describes problems with Finder on various webservers)
+  (Describes problems with Finder on various Web servers)
 
 There is also a well maintained FAQ thread available at the `ownCloud Forums 
 <https://forum.owncloud.org/viewtopic.php?f=17&t=7536>`_
@@ -270,7 +270,7 @@ important to have a correct working setup of the following URLs:
 |
 
 Those need to be redirecting your clients to the correct DAV endpoints. If
-running ownCloud at the document root of your webserver the correct URL is:
+running ownCloud at the document root of your Web server the correct URL is:
 
 ``https://example.com/remote.php/dav``
 
@@ -288,7 +288,7 @@ web server is using this file. When running nginx please refer to the
 
 If your ownCloud instance is installed in a subfolder called ``owncloud`` and
 you're running Apache create or edit the :file:`.htaccess` file within the
-document root of your webserver and add the following lines::
+document root of your Web server and add the following lines::
 
     Redirect 301 /.well-known/carddav /owncloud/remote.php/dav
     Redirect 301 /.well-known/caldav /owncloud/remote.php/dav
@@ -319,8 +319,8 @@ Using Pound reverse-proxy/load balancer
   <http://www.apsis.ch/pound/pound_list/archive/2013/2013-08/1377264673000>`_ 
   to support HTTP/1.1.
 
-Misconfigured web server
-  Your webserver is misconfigured and blocks the needed DAV methods.
+Misconfigured Web server
+  Your Web server is misconfigured and blocks the needed DAV methods.
   Please refer to :ref:`trouble-webdav-label` above for troubleshooting steps.
 
 Other issues

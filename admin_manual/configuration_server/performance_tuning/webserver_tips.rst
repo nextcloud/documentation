@@ -1,6 +1,6 @@
-==============
-Webserver Tips
-==============
+===============
+Web server Tips
+===============
 
 PHP safe mode
 -------------
@@ -16,12 +16,12 @@ on/off``. If it is on, then add this line to ``php.ini`` to turn it off::
 Enable the SPDY / http_v2 protocol
 ----------------------------------
 
-Your webserver can be configured to use the SPDY / http_v2 protocol which could improve 
+Your Web server can be configured to use the SPDY / http_v2 protocol which could improve 
 the overall performance of ownCloud. Please have a look at the documentation of 
-your webservers module for more information:
+your Web servers module for more information:
 
 ====================  ==================
-Webserver             Module Name / Link
+Web server            Module Name / Link
 ====================  ==================
 Apache                `mod-spdy <https://code.google.com/p/mod-spdy/>`_
 nginx (<1.9.5)        `ngx_http_spdy_module <http://nginx.org/en/docs/http/ngx_http_spdy_module.html>`_
@@ -121,7 +121,7 @@ down errors.
 Nginx: caching ownCloud gallery thumbnails
 ------------------------------------------
 
-One of the optimizations for ownCloud when using Nginx as the webserver is to 
+One of the optimizations for ownCloud when using Nginx as the Web server is to 
 combine FastCGI caching with "Cache Purge", a `3rdparty Nginx module 
 <http://wiki.nginx.org/3rdPartyModules>`_  that adds the ability to purge 
 content from `FastCGI`, `proxy`, `SCGI` and `uWSGI` caches. This mechanism 
