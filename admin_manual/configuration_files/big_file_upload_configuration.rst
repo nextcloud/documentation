@@ -28,8 +28,8 @@ System Configuration
   the average number of users uploading at the same time is 100: temp space has 
   to hold at least 10x100 GB
 
-Configuring Your Webserver
---------------------------
+Configuring Your Web server
+---------------------------
 
 .. note:: ownCloud comes with its own ``owncloud/.htaccess`` file. Because ``php-fpm``
    can't read PHP settings in ``.htaccess`` these settings must be set in the
@@ -53,8 +53,8 @@ Apache module could also stop large uploads from completing. If you're using thi
 module and getting failed uploads of large files either disable it in your Apache
 config or raise the configured ``RequestReadTimeout`` timeouts.
 
-There are also several other configuration options in your webserver config which
-could prevent the upload of larger files. Please see the manual of your webserver
+There are also several other configuration options in your Web server config which
+could prevent the upload of larger files. Please see the manual of your Web server
 for how to configure those values correctly:
 
 Apache

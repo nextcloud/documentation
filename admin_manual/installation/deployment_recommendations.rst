@@ -22,7 +22,7 @@ keep individual ownCloud instances to a manageable size.
    single domain is being worked on.
 
 * Operating system: Linux.
-* Webserver: Apache 2.4.
+* Web server: Apache 2.4.
 * Database: MySQL/MariaDB.
 * PHP 5.5+. PHP 5.4 is the minimum supported version; note that it reached 
   end-of-life in September 2015 and is no longer supported by the PHP team. 
@@ -51,7 +51,7 @@ Small Workgroups or Departments
 Recommended System Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-One machine running the application server, Webserver, database server and 
+One machine running the application server, Web server, database server and 
 local storage.
 
 Authentication via an existing LDAP or Active Directory server.
@@ -173,7 +173,7 @@ Authentication via an existing LDAP or Active Directory server.
    memcached seem more appropriate. this is mid size already. the software 
    stack should be the same as for L`_
    Frank: Yes. But this only works if haproxy can read the http stream which 
-   means that we have to terminate SSL in the haproxy instead of the webserver. 
+   means that we have to terminate SSL in the haproxy instead of the Web server. 
    Totally possible. Whatever you prefer :-)
    Jörn: AFAIK you need to do SSL offloading to do sticky sessions, because the 
    load balancer has to look into the http stream or rely on the client IP to 
@@ -245,7 +245,7 @@ Large Enterprises and Service Providers
 Recommended System Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-4 to 20 application/Webservers.
+4 to 20 application/Web servers.
 
 A cluster of two or more database servers.
 
@@ -400,8 +400,8 @@ community-supported free-of-cost Red Hat Enterprise Linux clone. openSUSE is
 community-supported, and includes many of the same system administration tools 
 as SUSE Linux Enterprise Server.
 
-Webserver
-^^^^^^^^^
+Web server
+^^^^^^^^^^
 
 Taking Apache and Nginx as the contenders, Apache with mod_php is currently the 
 best option, as Nginx does not support all features necessary for enterprise 

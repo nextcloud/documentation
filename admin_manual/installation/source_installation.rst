@@ -330,7 +330,7 @@ php.ini Configuration Notes
 Keep in mind that changes to ``php.ini`` may have to be done on more than one 
 ini file. This can be the case, for example, for the ``date.timezone`` setting.
 
-**php.ini - used by the webserver:**
+**php.ini - used by the Web server:**
 ::
 
    /etc/php5/apache2/php.ini
@@ -409,7 +409,7 @@ your ``php-fpm`` configuration and increase the ``upload_max_filesize`` and
 ``post_max_size`` values. You will need to restart ``php5-fpm`` and your HTTP 
 server in order for these changes to be applied.
 
-**.htaccess notes for webservers \<> Apache**
+**.htaccess notes for Web servers \<> Apache**
 
 ownCloud comes with its own ``owncloud/.htaccess`` file. Because ``php-fpm`` can't 
 read PHP settings in ``.htaccess`` these settings and permissions must be set

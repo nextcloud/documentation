@@ -72,7 +72,7 @@ The "Strict-Transport-Security" HTTP header is not configured
 "The "Strict-Transport-Security" HTTP header is not configured to least "15768000" seconds.
 For enhanced security we recommend enabling HSTS as described in our security tips."
 
-The HSTS header needs to be configured within your webserver by following the
+The HSTS header needs to be configured within your Web server by following the
 :ref:`enable-hsts-label` documentation
 
 /dev/urandom is not readable by PHP

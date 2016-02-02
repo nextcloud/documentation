@@ -13,7 +13,7 @@ The database plays an important role in ownCloud performance. The general rule i
 
 * Roundtrips: Bigger ownCloud installations have the database not installed on the application server but on a remote dedicated database server. The problem is that database queries then go over the network. These roundtrips can add up significantly if you have a lot of queries. 
 * Speed. A lot of people think that databases are fast. This is not always true if you compare it with handling data internally in PHP or in the filesystem or even using key/value based storages. So every developer should always double check if the database is really the best place for the data.
-* Scalability. If you have a big ownCloud cluster setup you usually have several ownCloud/webservers in parallel and a central database and a central storage. This means that everything that happens on the ownCloud/PHP side can parallelize and can be scaled. Stuff that is happening in the database and in the storage is critical because it only exists once and can't be scaled so easily.
+* Scalability. If you have a big ownCloud cluster setup you usually have several ownCloud/Web servers in parallel and a central database and a central storage. This means that everything that happens on the ownCloud/PHP side can parallelize and can be scaled. Stuff that is happening in the database and in the storage is critical because it only exists once and can't be scaled so easily.
 
 We can reduce the load on the database by:
 
