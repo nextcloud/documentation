@@ -69,6 +69,16 @@ modules). You will need the root database login, or any administrator login that
 has permissions to create and modify databases, and then enter any name you want 
 for your ownCloud database.
 
+After you enter your root or administrator login for your database, the 
+installer creates a special database user with privileges limited to the 
+ownCloud database. Then ownCloud needs only the special ownCloud database 
+user, and drops the root dB login. This user is named for your ownCloud admin 
+user, with an ``oc_`` prefix, and then given a random password. The ownCloud 
+database user and password are written into ``config.php``::
+
+  'dbuser' => 'oc_molly',
+  'dbpassword' => 'pX65Ty5DrHQkYPE5HRsDvyFHlZZHcm',  
+
 Click Finish Setup, and start using your new ownCloud server. 
 
 .. figure:: images/install-wizard-a2.png
