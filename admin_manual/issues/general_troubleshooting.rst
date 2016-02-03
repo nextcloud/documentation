@@ -280,7 +280,7 @@ and if running in a subfolder like ``owncloud``:
 
 For the first case the :file:`.htaccess` file shipped with ownCloud should do
 this work for your when running Apache. You only need to make sure that your
-web server is using this file. When running nginx please refer to the 
+Web server is using this file. When running nginx please refer to the 
 :ref:`nginx_configuration_example` example.
 
 .. note: The following step is important for users using the linux packages

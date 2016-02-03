@@ -177,7 +177,7 @@ Authentication via an existing LDAP or Active Directory server.
    Totally possible. Whatever you prefer :-)
    Jörn: AFAIK you need to do SSL offloading to do sticky sessions, because the 
    load balancer has to look into the http stream or rely on the client IP to 
-   determine the web server for the session. Not doing SSL offloading instead 
+   determine the Web server for the session. Not doing SSL offloading instead 
    requires you to use a shared session (via memcached or redis) because the 
    requests are distributed via round robin or least load. It allows you to 
    scale out the ssl load by adding more applicaton servers. So ... I think it 

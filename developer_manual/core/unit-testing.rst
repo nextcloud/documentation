@@ -40,7 +40,7 @@ Then you can simply run the created test with phpunit.
 
 .. note:: If you use ownCloud functions in your class under test (i.e: OC::getUser()) you'll need to bootstrap ownCloud or use dependency injection.
 
-.. note:: You'll most likely run your tests under a different user than the web server. This might cause problems with your PHP settings (i.e: open_basedir) and requires you to adjust your configuration.
+.. note:: You'll most likely run your tests under a different user than the Web server. This might cause problems with your PHP settings (i.e: open_basedir) and requires you to adjust your configuration.
 
 An example for a simple test would be:
 
@@ -101,7 +101,7 @@ To do this, you'll need to provide the ``--bootstrap`` argument when running PHP
 
   phpunit --bootstrap tests/bootstrap.php apps/myapp/tests/testsuite.php
 
-If you run the test under a different user than your web server, you'll have to
+If you run the test under a different user than your Web server, you'll have to
 adjust your php.ini and file rights.
 
 :file:`/etc/php/php.ini`::

@@ -8,10 +8,10 @@ Development Environment
 
 Please follow the steps on this page to set up your development environment.
 
-Set up web server and database
+Set up Web server and database
 ==============================
 
-First `set up your web server and database <https://doc.owncloud.org/server/9.0/admin_manual/#installation>`_ (**Section**: Manual Installation - Prerequisites).
+First `set up your Web server and database <https://doc.owncloud.org/server/9.0/admin_manual/#installation>`_ (**Section**: Manual Installation - Prerequisites).
 
 .. TODO ON RELEASE: Update version number above on release
 
@@ -29,14 +29,14 @@ To check out the source from `GitHub`_ you will need to install git (see `Settin
 Gather information about server setup
 -------------------------------------
 
-To get started the basic git repositories need to cloned into the web server's directory. Depending on the distribution this will either be
+To get started the basic git repositories need to cloned into the Web server's directory. Depending on the distribution this will either be
 
 * **/var/www**
 * **/var/www/html** 
 * **/srv/http** 
 
 
-Then identify the user and group the web server is running as and the Apache user and group for the **chown** command will either be
+Then identify the user and group the Web server is running as and the Apache user and group for the **chown** command will either be
 
 * **http**
 * **www-data** 
@@ -46,7 +46,7 @@ Then identify the user and group the web server is running as and the Apache use
 Check out the code
 ------------------
 
-The following commands are using **/var/www** as the web server's directory and **www-data** as user name and group.
+The following commands are using **/var/www** as the Web server's directory and **www-data** as user name and group.
 
 Install the `development tool <https://github.com/owncloud/ocdev/blob/master/README.rst#installation>`_
 
@@ -66,7 +66,7 @@ Adjust rights::
   sudo chmod o-rw /var/www
 
 
-Finally restart the web server (this might vary depending on your distribution)::
+Finally restart the Web server (this might vary depending on your distribution)::
 
   sudo systemctl restart httpd.service
 

@@ -18,7 +18,7 @@ ownCloud Deployment Architecture
 
 Before discussing how to monitor ownCloud, it is important to understand the architecture of a
 typical ownCloud deployment. These monitoring best practices are developed based on the use of load
-balanced web servers, a clustered database running a distributed database storage engine, such as
+balanced Web servers, a clustered database running a distributed database storage engine, such as
 MySQL NDB, and a clustered filesystem, such as Red Hat Storage.
 
 It is assumed that specific enterprise tools (monitoring, log management, etc) to monitor
