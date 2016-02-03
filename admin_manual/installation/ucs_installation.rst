@@ -82,7 +82,7 @@ ownCloud settings.
 
 In the installation process a virtual host is set up (Apache is required
 therefore). If you want to modify the settings, edit
-:file:`/etc/apache2/sites-available/owncloud` and restart the web server. You
+:file:`/etc/apache2/sites-available/owncloud` and restart the Web server. You
 might want to do it to enable HTTPS connections. Besides that, you can edit the
 **.htaccess-File in /var/www/owncloud/**. In the latter file the
 PHP limits for file transfer are also specified.

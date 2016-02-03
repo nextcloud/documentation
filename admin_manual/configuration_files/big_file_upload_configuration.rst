@@ -137,8 +137,8 @@ this input box.
 
 To be able to use this input box you need to make sure that:
 
-* your web server is be able to use the ``.htaccess`` file shipped by ownCloud (Apache only)
-* the user your web server is running as has write permissions to the files ``.htaccess`` and ``.user.ini``
+* your Web server is be able to use the ``.htaccess`` file shipped by ownCloud (Apache only)
+* the user your Web server is running as has write permissions to the files ``.htaccess`` and ``.user.ini``
 
 :ref:`strong_perms_label` might prevent write access to these files. As an admin you need
 to decide between the ability to use the input box and a more secure ownCloud installation

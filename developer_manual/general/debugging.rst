@@ -18,7 +18,7 @@ When debug mode is enabled in ownCloud, a variety of debugging features are enab
 Identifying errors
 ------------------
 
-ownCloud uses custom error PHP handling that prevents errors being printed to web server log files or command line output. Instead, errors are generally stored in ownCloud's own log file, located at: :file:`/data/owncloud.log`
+ownCloud uses custom error PHP handling that prevents errors being printed to Web server log files or command line output. Instead, errors are generally stored in ownCloud's own log file, located at: :file:`/data/owncloud.log`
 
 
 Debugging variables
@@ -38,7 +38,7 @@ not:
 
   <?php trigger_error( "\$user = $user" ); // may not be logged anywhere ?>
 
-To disable custom error handling in ownCloud (and have PHP and your web server handle errors instead), see Debug mode.
+To disable custom error handling in ownCloud (and have PHP and your Web server handle errors instead), see Debug mode.
 
 
 Using a PHP debugger (XDebug)

@@ -162,7 +162,7 @@ are accessible from the ownCloud network. If you do not want this you need to
 ensure that your ownCloud is properly installed in a segregated network and proper 
 firewall rules are in place.
 
-Serve security related Headers by the web server
+Serve security related Headers by the Web server
 ------------------------------------------------
 
 Basic security headers are served by ownCloud already in a default environment. 
@@ -181,7 +181,7 @@ These headers are hard-coded into the ownCloud server, and need no intervention
 by the server administrator.
 
 For optimal security, administrators are encouraged to serve these basic HTTP 
-headers by the web server to enforce them on response. To do this Apache has to 
+headers by the Web server to enforce them on response. To do this Apache has to 
 be configured to use the ``.htaccess`` file and the following Apache 
 modules need to be enabled:
 
@@ -189,7 +189,7 @@ modules need to be enabled:
 - mod_env
 
 Administrators can verify whether this security change is active by accessing a 
-static resource served by the web server and verify that the above mentioned 
+static resource served by the Web server and verify that the above mentioned 
 security headers are shipped.
 
 .. _Mozilla SSL Configuration Generator: https://mozilla.github.io/server-side-tls/ssl-config-generator/

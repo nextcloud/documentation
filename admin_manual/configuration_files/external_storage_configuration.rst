@@ -186,7 +186,7 @@ Example
       "priority":150
     }
 
-.. note:: You must ensure that the web server has sufficient permissions on the folder.
+.. note:: You must ensure that the Web server has sufficient permissions on the folder.
 
 FTP (or FTPS)
 ~~~~~~~~~~~~~

@@ -30,7 +30,7 @@ the new location. It is also assumed that the authentication method
 
 
 #.  Set up the new machine with the desired OS, install and configure the
-    web server as well as PHP for ownCloud (e.g. permissions or file upload size
+    Web server as well as PHP for ownCloud (e.g. permissions or file upload size
     limits) and make sure the PHP version matches ownCloud supported
     configuration and all relevant PHP extensions are installed. Also set up
     the database and make sure it is an ownCloud supported configuration. If
@@ -41,7 +41,7 @@ the new location. It is also assumed that the authentication method
 #.  On the original machine then stop ownCloud. First activate the
     maintenance mode. After waiting for 6-7 minutes for all sync clients to
     register the server as in maintenance mode stop the application and/or
-    web server that serves ownCloud.
+    Web server that serves ownCloud.
 
 
 #.  Create a dump from the database and copy it to the new machine. There
@@ -61,10 +61,10 @@ the new location. It is also assumed that the authentication method
 
 
 #.  While still having ownCloud in maintenance mode (confirm!) and **BEFORE**
-    changing the ``CNAME`` record in the DNS start up the database, web server /
+    changing the ``CNAME`` record in the DNS start up the database, Web server /
     application server on the new machine and point your web browser to the
     migrated ownCloud instance. Confirm that you see the maintenance mode
-    notice, that a logfile entry is written by both the web server and
+    notice, that a logfile entry is written by both the Web server and
     ownCloud and that no error messages occur. Then take ownCloud out of
     maintenance mode and repeat. Log in as admin and confirm normal function
     of ownCloud.
