@@ -13,13 +13,14 @@ listed above. The Provisioning API app is enabled by default.
 
 The base URL for all calls to the share API is **owncloud_base_url/ocs/v1.php/cloud**.
 
-Instruction set
-===============
+Instruction Set For Users
+=========================
 
-users / adduser
-===============
+**users / adduser**
+-------------------
 
-Create a new user on the ownCloud server. Authentication is done by sending a basic HTTP authentication header.
+Create a new user on the ownCloud server. Authentication is done by sending a 
+basic HTTP authentication header.
 
 **Syntax: ocs/v1.php/cloud/users**
 
@@ -35,34 +36,32 @@ Status codes:
 * 103 - unknown error occurred whilst adding the user
 
 Example
--------
+^^^^^^^
 
-* POST ``http://admin:secret@example.com/ocs/v1.php/cloud/users -d userid="Frank" -d 
-  password="frankspassword"``
+* POST ``http://admin:secret@example.com/ocs/v1.php/cloud/users -d 
+  userid="Frank" -d password="frankspassword"``
 * Creates the user ``Frank`` with password ``frankspassword``
 
 XML Output
-----------
+^^^^^^^^^^
 
 .. code-block:: xml
 
-   <?xml version="1.0"?>
-    <ocs>
-     <meta>
-      <statuscode>100</statuscode>
-      <status>ok</status>
-     </meta>
-     <data>
-      <email>frank@example.org</email>
-      <quota>0</quota>
-      <enabled>true</enabled>
-     </data>
-    </ocs>
+ <?xml version="1.0"?>
+ <ocs>
+  <meta>
+   <status>ok</status>
+   <statuscode>100</statuscode>
+   <message/>
+  </meta>
+  <data/>
+ </ocs>
 
-users / getusers
-================
+**users / getusers**
+--------------------
 
-Retrieves a list of users from the ownCloud server. Authentication is done by sending a Basic HTTP Authorization header.
+Retrieves a list of users from the ownCloud server. Authentication is done by 
+sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users**
 
@@ -76,13 +75,13 @@ Status codes:
 * 100 - successful
 
 Example
--------
+^^^^^^^
 
 * GET ``http://admin:secret@example.com/ocs/v1.php/cloud/users?search=Frank``
 * Returns list of users matching the search string.
 
 XML Output
-----------
+^^^^^^^^^^
 
 .. code-block:: xml
 
@@ -99,10 +98,11 @@ XML Output
     </data>
   </ocs>
 
-users / getuser
-===============
+**users / getuser**
+-------------------
 
-Retrieves information about a single user. Authentication is done by sending a Basic HTTP Authorization header.
+Retrieves information about a single user. Authentication is done by sending a 
+Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}**
 
@@ -113,13 +113,13 @@ Status codes:
 * 100 - successful
 
 Example
--------
+^^^^^^^
 
   * GET ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank``
   * Returns information on the user ``Frank``
 
 XML Output
-----------
+^^^^^^^^^^
 
 .. code-block:: xml
 
@@ -136,10 +136,12 @@ XML Output
     </data>
   </ocs>
 
-users / edituser
-================
+**users / edituser**
+--------------------
 
-Edits attributes related to a user. Users are able to edit email, displayname and password; admins can also edit the quota value. Authentication is done by sending a Basic HTTP Authorization header.
+Edits attributes related to a user. Users are able to edit email, displayname 
+and password; admins can also edit the quota value. Authentication is done by 
+sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}**
 
@@ -154,14 +156,14 @@ Status codes:
 * 102 - invalid input data
 
 Example
--------
+^^^^^^^
 
-  * PUT ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -d key="email", 
-    value="franksnewemail@example.org"``
-  * Updates the email address for the user ``Frank``
+  * PUT ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -d 
+    "key=email&value=frank@example.org&key=quota&value=100MB"``
+  * Updates the email address for the user ``Frank`` and sets his quota
 
 XML Output
-----------
+^^^^^^^^^^
 
 .. code-block:: xml
 
@@ -174,10 +176,11 @@ XML Output
     <data/>
   </ocs>
 
-users / deleteuser
-==================
+**users / deleteuser**
+----------------------
 
-Deletes a user from the ownCloud server. Authentication is done by sending a Basic HTTP Authorization header.
+Deletes a user from the ownCloud server. Authentication is done by sending a 
+Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}**
 
@@ -189,13 +192,13 @@ Statuscodes:
 * 101 - failure
 
 Example
--------
+^^^^^^^
 
   * DELETE ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank``
   * Deletes the user ``Frank``
 
 XML Output
-----------
+^^^^^^^^^^
 
 .. code-block:: xml
 
@@ -208,10 +211,11 @@ XML Output
     <data/>
   </ocs>
 
-users / getgroups
-=================
+**users / getgroups**
+---------------------
 
-Retrieves a list of groups the specified user is a member of. Authentication is done by sending a Basic HTTP Authorization header.
+Retrieves a list of groups the specified user is a member of. Authentication is 
+done by sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}/groups**
 
@@ -222,13 +226,13 @@ Status codes:
 * 100 - successful
 
 Example
--------
+^^^^^^^
 
   * GET  ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups``
   * Retrieves a list of groups of which ``Frank`` is a member
 
 XML Output
-----------
+^^^^^^^^^^
 
 .. code-block:: xml
 
@@ -246,10 +250,11 @@ XML Output
     </data>
   </ocs>
 
-users / addtogroup
-==================
+**users / addtogroup**
+----------------------
 
-Adds the specified user to the specified group. Authentication is done by sending a Basic HTTP Authorization header.
+Adds the specified user to the specified group. Authentication is done by 
+sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}/groups**
 
@@ -266,14 +271,14 @@ Status codes:
 * 105 - failed to add user to group
 
 Example
--------
+^^^^^^^
 
-  * POST ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups -d 
-    groupid="newgroup"``
+  * POST ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups 
+    -d groupid="newgroup"``
   * Adds the user ``Frank`` to the group ``newgroup``
 
 XML Output
-----------
+^^^^^^^^^^
 
 .. code-block:: xml
 
@@ -286,10 +291,11 @@ XML Output
     <data/>
   </ocs>
 
-users / removefromgroup
-=======================
+**users / removefromgroup**
+---------------------------
 
-Removes the specified user from the specified group. Authentication is done by sending a Basic HTTP Authorization header.
+Removes the specified user from the specified group. Authentication is done by 
+sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}/groups**
 
@@ -306,14 +312,15 @@ Status codes:
 * 105 - failed to remove user from group
 
 Example
--------
+^^^^^^^
 
-  * DELETE ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups -d 
+  * DELETE 
+    ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups -d 
     groupid="newgroup"``
   * Removes the user ``Frank`` from the group ``newgroup``
 
 XML Output
-----------
+^^^^^^^^^^
 
 .. code-block:: xml
 
@@ -326,15 +333,17 @@ XML Output
     <data/>
   </ocs>
   
-users / createsubadmin
-======================
+**users / createsubadmin**
+--------------------------
 
-Makes a user the subadmin of a group. Authentication is done by sending a Basic HTTP Authorization header.
+Makes a user the subadmin of a group. Authentication is done by sending a Basic 
+HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}/subadmins**
 
 * HTTP method: POST
-* POST argument: groupid, string - the group of which to make the user a subadmin
+* POST argument: groupid, string - the group of which to make the user a 
+  subadmin
 
 Status codes:
 
@@ -344,14 +353,15 @@ Status codes:
 * 103 - unknown failure
 
 Example
--------
+^^^^^^^
 
-  * POST ``https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins -d 
-    groupid="group"``
+  * POST 
+    ``https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins 
+    -d groupid="group"``
   * Makes the user ``Frank`` a subadmin of the ``group`` group
 
 XML Output
-----------
+^^^^^^^^^^
 
 .. code-block:: xml
 
@@ -364,15 +374,17 @@ XML Output
     <data/>
   </ocs>
 
-users / removesubadmin
-======================
+**users / removesubadmin**
+--------------------------
 
-Removes the subadmin rights for the user specified from the group specified. Authentication is done by sending a Basic HTTP Authorization header.
+Removes the subadmin rights for the user specified from the group specified. 
+Authentication is done by sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}/subadmins**
 
 * HTTP method: DELETE
-* DELETE argument: groupid, string - the group from which to remove the user's subadmin rights
+* DELETE argument: groupid, string - the group from which to remove the user's 
+  subadmin rights
 
 Status codes:
 
@@ -382,13 +394,15 @@ Status codes:
 * 103 - unknown failure
 
 Example
--------
+^^^^^^^
 
-  * DELETE ``https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins -d groupid="oldgroup"``
+  * DELETE 
+    ``https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins 
+    -d groupid="oldgroup"``
   * Removes ``Frank's`` subadmin rights from the ``oldgroup`` group
 
 XML Output
-----------
+^^^^^^^^^^
 
 .. code-block:: xml
 
@@ -401,10 +415,11 @@ XML Output
     <data/>
   </ocs>
   
-users / getsubadmingroups
-=========================
+**users / getsubadmingroups**
+-----------------------------
 
-Returns the groups in which the user is a subadmin. Authentication is done by sending a Basic HTTP Authorization header.
+Returns the groups in which the user is a subadmin. Authentication is done by 
+sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}/subadmins**
 
@@ -417,13 +432,14 @@ Status codes:
 * 102 - unknown failure
 
 Example
--------
+^^^^^^^
 
-  * GET ``https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins``
+  * GET 
+    ``https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins``
   * Returns the groups of which ``Frank`` is a subadmin
 
 XML Output
-----------
+^^^^^^^^^^
 
 .. code-block:: xml
 
@@ -439,11 +455,14 @@ XML Output
     </data>
   </ocs>  
   
+Instruction Set For Groups
+==========================  
 
-groups / getgroups
-==================
+**groups / getgroups**
+----------------------
 
-Retrieves a list of groups from the ownCloud server. Authentication is done by sending a Basic HTTP Authorization header.
+Retrieves a list of groups from the ownCloud server. Authentication is done by 
+sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/groups**
 
@@ -457,13 +476,13 @@ Status codes:
 * 100 - successful
 
 Example
--------
+^^^^^^^
 
   * GET ``http://admin:secret@example.com/ocs/v1.php/cloud/groups?search=adm``
   * Returns list of groups matching the search string.
 
 XML Output
-----------
+^^^^^^^^^^
 
 .. code-block:: xml
 
@@ -480,8 +499,8 @@ XML Output
     </data>
   </ocs>
 
-groups / addgroup
-=================
+**groups / addgroup**
+---------------------
 
 Adds a new group. Authentication is done by
 sending a Basic HTTP Authorization header.
@@ -499,13 +518,14 @@ Status codes:
 * 103 - failed to add the group
 
 Example
--------
+^^^^^^^
 
-  * POST ``http://admin:secret@example.com/ocs/v1.php/cloud/groups -d groupid="newgroup"``
+  * POST ``http://admin:secret@example.com/ocs/v1.php/cloud/groups -d 
+    groupid="newgroup"``
   * Adds a new group called ``newgroup``
 
 XML Output
-----------
+^^^^^^^^^^
 
 .. code-block:: xml
 
@@ -518,10 +538,11 @@ XML Output
     <data/>
   </ocs>
 
-groups / getgroup
-=================
+**groups / getgroup**
+---------------------
 
-Retrieves a list of group members. Authentication is done by sending a Basic HTTP Authorization header.
+Retrieves a list of group members. Authentication is done by sending a Basic 
+HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/groups/{groupid}**
 
@@ -532,13 +553,13 @@ Status codes:
 * 100 - successful
 
 Example
--------
+^^^^^^^
 
   * POST ``http://admin:secret@example.com/ocs/v1.php/cloud/groups/admin``
   * Returns a list of users in the ``admin`` group
 
 XML Output
-----------
+^^^^^^^^^^
 
 .. code-block:: xml
 
@@ -555,8 +576,8 @@ XML Output
     </data>
   </ocs>
   
-groups / getsubadmins
-=====================
+**groups / getsubadmins**
+-------------------------
 
 Returns subadmins of the group. Authentication is done by
 sending a Basic HTTP Authorization header.
@@ -572,13 +593,14 @@ Status codes:
 * 102 - unknown failure
 
 Example
--------
+^^^^^^^
 
-  * GET ``https://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup/subadmins``
+  * GET 
+    ``https://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup/subadmins``
   * Return the subadmins of the group: ``mygroup``
 
 XML Output
-----------
+^^^^^^^^^^
 
 .. code-block:: xml
 
@@ -594,8 +616,8 @@ XML Output
     </data>
   </ocs>  
 
-groups / deletegroup
-====================
+**groups / deletegroup**
+------------------------
 
 Removes a group. Authentication is done by
 sending a Basic HTTP Authorization header.
@@ -611,13 +633,13 @@ Status codes:
 * 102 - failed to delete group
 
 Example
--------
+^^^^^^^
 
   * DELETE ``http://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup``
   * Delete the group ``mygroup``
 
 XML Output
-----------
+^^^^^^^^^^
 
 .. code-block:: xml
 
@@ -629,11 +651,15 @@ XML Output
     </meta>
     <data/>
   </ocs>
+  
+Instruction Set For Apps
+=========================  
 
-apps / getapps
-==============
+**apps / getapps**
+------------------
 
-Returns a list of apps installed on the ownCloud server. Authentication is done by sending a Basic HTTP Authorization 
+Returns a list of apps installed on the ownCloud server. Authentication is done 
+by sending a Basic HTTP Authorization 
 header.
 
 **Syntax: ocs/v1.php/cloud/apps/**
@@ -647,13 +673,13 @@ Status codes:
 * 101 - invalid input data
 
 Example
--------
+^^^^^^^
 
   * GET ``http://admin:secret@example.com/ocs/v1.php/cloud/apps?filter=enabled``
   * Gets enabled apps
 
 XML Output
-----------
+^^^^^^^^^^
 
 .. code-block:: xml
 
@@ -671,10 +697,11 @@ XML Output
     </data>
   </ocs>
 
-apps / getappinfo
-=================
+**apps / getappinfo**
+---------------------
 
-Provides information on a specific application. Authentication is done by sending a Basic HTTP Authorization header.
+Provides information on a specific application. Authentication is done by 
+sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/apps/{appid}**
 
@@ -685,13 +712,13 @@ Status codes:
 * 100 - successful
 
 Example
--------
+^^^^^^^
 
   * GET ``http://admin:secret@example.com/ocs/v1.php/cloud/apps/files``
   * Get app info for the ``files`` app
 
 XML Output
-----------
+^^^^^^^^^^
 
 .. code-block:: xml
 
@@ -724,10 +751,11 @@ XML Output
     </data>
   </ocs>
 
-apps / enable
-=============
+**apps / enable**
+-----------------
 
-Enable an app.  Authentication is done by sending a Basic HTTP Authorization header.
+Enable an app.  Authentication is done by sending a Basic HTTP Authorization 
+header.
 
 **Syntax: ocs/v1.php/cloud/apps/{appid}**
 
@@ -738,13 +766,13 @@ Status codes:
 * 100 - successful
 
 Example
--------
+^^^^^^^
 
   * POST ``http://admin:secret@example.com/ocs/v1.php/cloud/apps/files_texteditor``
   * Enable the ``files_texteditor`` app
 
 XML Output
-----------
+^^^^^^^^^^
 
 .. code-block:: xml
 
@@ -756,8 +784,8 @@ XML Output
     </meta>
   </ocs>
 
-apps / disable
-==============
+**apps / disable**
+------------------
 
 Disables the specified app. Authentication is
 done by sending a Basic HTTP Authorization header.
@@ -772,13 +800,13 @@ Status codes:
 * 100 - successful
 
 Example
--------
+^^^^^^^
 
   * DELETE ``http://admin:secret@example.com/ocs/v1.php/cloud/apps/files_texteditor``
   * Disable the ``files_texteditor`` app
 
 XML Output
-----------
+^^^^^^^^^^
 
 .. code-block:: xml
 
