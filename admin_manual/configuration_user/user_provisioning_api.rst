@@ -155,13 +155,17 @@ Status codes:
 * 101 - user not found
 * 102 - invalid input data
 
-Example
-^^^^^^^
+Examples
+^^^^^^^^
 
-  * PUT ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -d 
-    "key=email&value=frank@example.org&key=quota&value=100MB"``
-  * Updates the email address for the user ``Frank`` and sets his quota
-
+  * PUT ``PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -d 
+    key="email" -d value="franksnewemail@example.org"``
+  * Updates the email address for the user ``Frank``
+  
+  * PUT ``PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -d 
+    key="quota" -d value="100MB"``
+  * Updates the quota for the user ``Frank``
+  
 XML Output
 ^^^^^^^^^^
 
