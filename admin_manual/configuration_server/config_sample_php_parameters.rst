@@ -597,18 +597,18 @@ to ``true``. This verifies that the ``.htaccess`` file is writable and works.
 
 If it is not, then any options controlled by ``.htaccess``, such as large
 file uploads, will not work. It also runs checks on the ``data/`` directory,
-which verifies that it can't be accessed directly through the web server.
+which verifies that it can't be accessed directly through the Web server.
 
 ::
 
 	'config_is_read_only' => false,
 
-In certain environments it is desired to have a read-only config file.
+In certain environments it is desired to have a read-only configuration file.
 
 When this switch is set to ``true`` ownCloud will not verify whether the
 configuration is writable. However, it will not be possible to configure
-all options via the web-interface. Furthermore, when updating ownCloud
-it is required to make the config file writable again for the update
+all options via the Web interface. Furthermore, when updating ownCloud
+it is required to make the configuration file writable again for the update
 process.
 
 Logging
@@ -799,9 +799,9 @@ loss or security breaches.
 Use the ``apps_paths`` parameter to set the location of the Apps directory,
 which should be scanned for available apps, and where user-specific apps
 should be installed from the Apps store. The ``path`` defines the absolute
-file system path to the app folder. The key ``url`` defines the HTTP web path
-to that folder, starting from the ownCloud web root. The key ``writable``
-indicates if a web server can write files to that folder.
+file system path to the app folder. The key ``url`` defines the HTTP Web path
+to that folder, starting from the ownCloud webroot. The key ``writable``
+indicates if a Web server can write files to that folder.
 
 ::
 
@@ -1158,8 +1158,8 @@ Replaces the default Share Provider Factory. This can be utilized if
 own or 3rdParty Share Providers be used that – for instance – uses the
 filesystem instead of the database to keep the share information.
 
-All other config options
-------------------------
+All other configuration options
+-------------------------------
 
 
 ::
@@ -1175,8 +1175,8 @@ encryption in MySQL.
 
 	'sqlite.journal_mode' => 'DELETE',
 
-sqlite3 journal mode can be specified using this config parameter - can be
-'WAL' or 'DELETE' see for more details https://www.sqlite.org/wal.html
+sqlite3 journal mode can be specified using this configuration parameter -
+can be 'WAL' or 'DELETE' see for more details https://www.sqlite.org/wal.html
 
 ::
 
@@ -1204,7 +1204,7 @@ the system temporary directory is on a limited space ramdisk or is otherwise
 restricted, or if external storages which do not support streaming are in
 use.
 
-The web server user must have write access to this directory.
+The Web server user must have write access to this directory.
 
 ::
 
@@ -1281,7 +1281,7 @@ general use if outside changes might happen.
 
 	'asset-pipeline.enabled' => false,
 
-All css and js files will be served by the web server statically in one js
+All css and js files will be served by the Web server statically in one js
 file and one css file if this is set to ``true``. This improves performance.
 
 ::
@@ -1294,7 +1294,7 @@ will be stored in a subdirectory of this directory named 'assets'. The
 server *must* be configured to serve that directory as $WEBROOT/assets.
 
 You will only likely need to change this if the main ownCloud directory
-is not writeable by the web server in your configuration.
+is not writeable by the Web server in your configuration.
 
 ::
 
