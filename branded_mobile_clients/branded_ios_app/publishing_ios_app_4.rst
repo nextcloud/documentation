@@ -20,7 +20,7 @@ your iOS device to your Mac computer. Your device will appear on the left
 sidebar in iTunes. Click on this to display your device information. Then click 
 on the serial number, and you will see your UDID.
 
-.. figure:: ../images/itunes-udid.png
+.. figure:: images/itunes-udid.png
     
 Return to your account on `Developer.apple.com 
 <https://developer.apple.com>`_, go to **IOS Apps > 
@@ -28,7 +28,7 @@ Devices > All**, and click the plus button on the top right to register a new
 device. You can make the name anything you want, and the UDID must be the UDID 
 copied from iTunes.
 
-.. figure:: ../images/itunes-udid-3.png
+.. figure:: images/itunes-udid-3.png
  
 If you have a large number of devices to register, you may enter them in a text 
 file in this format, and then upload the file::
@@ -40,7 +40,7 @@ file in this format, and then upload the file::
 Click **Download sample files** to see examples of plain text and markup 
 files.
 
-.. figure:: ../images/itunes-udid-4.png
+.. figure:: images/itunes-udid-4.png
 
 When you are finished entering your device IDs click the **Continue** button. 
 Verify, and then click **Done**.
