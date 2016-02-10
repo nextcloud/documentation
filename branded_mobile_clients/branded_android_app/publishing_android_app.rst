@@ -1,10 +1,10 @@
-=======================================================
-Distributing Your Branded Android App (Enterprise Only)
-=======================================================
+=====================================
+Distributing Your Branded Android App
+=====================================
 
 Now that you have created your branded Android app with ownCloud's ownBuilder 
-service (:doc:`creating_branded_apps`) how do you distribute it to your users? 
-There are multiple ways: :ref:`email`, :ref:`publish_server`, or 
+service (:doc:`building_branded_android_client`) how do you distribute it to 
+your users? There are multiple ways: :ref:`email`, :ref:`publish_server`, or 
 :ref:`publish_google_play`. However you distribute it, the first step is to 
 digitally sign your new app. Signing your app verifies authorship and 
 authenticity.
@@ -12,10 +12,10 @@ authenticity.
 When you create your branded Android app we supply you with two ``.apk`` files: 
 one for debugging and testing, and one for deployment, like these examples::
  
- acmecloud_1.7.0-debug.apk
- acmecloud_1.7.0-release-unsigned.apk
+ acmecloud_2.0.0-debug.apk
+ acmecloud_2.0.0-release-unsigned.apk
  
-The second  ``.apk`` file, ``acmecloud_1.7.0-release-unsigned.apk``, is the one 
+The second  ``.apk`` file, ``acmecloud_2.0.0-release-unsigned.apk``, is the one 
 you will sign and distribute.
 
 Digitally Signing Android Apps
@@ -75,12 +75,12 @@ computer and use it. Go to `Android Software Development Kit
 <https://developer.android.com/sdk/index.html>`_ and click the 
 "Download Android Studio" button.
 
-.. image:: ../images/android_custom_17.png
+.. image:: images/android_custom_17.png
    :scale: 75%
 
 Download the appropriate **SDK Tools Only** package for your operating system.
 
-.. image:: ../images/android_custom_18.png
+.. image:: images/android_custom_18.png
    :scale: 75%
    
 Unpack it and change to the unpacked directory, which is ``android-sdk-linux`` 
@@ -204,22 +204,23 @@ Distribution via Email
 
 You can download your branded Android app from your account on 
 `Customer.owncloud.com <https://customer.owncloud.com/owncloud>`_, and send it 
-as an email attachment to your users. (This is not the optimal way to distribute 
+as an email attachment to your users. (This is not the optimal way to 
+distribute 
 it as it is over 2 megabytes in size.) When they open your email on their 
 Android phone or tablet, they must first click the the download arrow (bottom 
 right of the screenshot) to download your app.
 
-.. image:: ../images/android_custom_1.png
+.. image:: images/android_custom_1.png
 
 When the arrow changes to a green checkbox, it has been downloaded. 
 
-.. image:: ../images/android_custom_2.png
+.. image:: images/android_custom_2.png
 
 Now your user must click on the green checkbox, and this launches the app 
 installer, and all they have to do is follow the installation wizard to install 
 your branded app.
 
-.. image:: ../images/android_custom_3.png
+.. image:: images/android_custom_3.png
    :scale: 75%
 
 When the installation is complete, the `ownCloud Android App Manual 
@@ -269,37 +270,37 @@ time-consuming task is creating all the required graphics. After registering,
 you'll see the welcome screen for the Google Dev Console. Click **Publish an 
 Android app on Google Play**. 
 
-.. image:: ../images/android_custom_6.png
+.. image:: images/android_custom_6.png
 
 This opens the **Add New Application** screen. Click the **Prepare Store 
 Listing** button. (Note that as you navigate the various screens, you can click 
 the Save Draft button to preserve your changes.)
 
-.. image:: ../images/android_custom_7.png
+.. image:: images/android_custom_7.png
 
 On the next screen, enter your product description.
 
-.. image:: ../images/android_custom_8.png
+.. image:: images/android_custom_8.png
    :scale: 75%
 
 Then you'll have to upload a batch of graphics in various sizes for the 
 **Graphic Assets** section, like these images for a smartphone and seven-inch 
 tablet. You are required to upload at least two images.
 
-.. image:: ../images/android_custom_9.png
+.. image:: images/android_custom_9.png
 
 You must also upload a 512x512-pixel logo, and a 1024x500 banner.
 
-.. image:: ../images/android_custom_10.png
+.. image:: images/android_custom_10.png
 
 Now choose the store categories for your app.
 
-.. image:: ../images/android_custom_11.png
+.. image:: images/android_custom_11.png
 
 Then enter your contact information, which will be visible on your store 
 listing.
 
-.. image:: ../images/android_custom_12.png
+.. image:: images/android_custom_12.png
 
 On the next line you may optionally link to your privacy policy. It is 
 recommended to have a privacy policy.
@@ -313,7 +314,7 @@ Android Wear, Android TV, and various Google marketing tie-ins, and many more.
 For now let's make this a free app, so click the Free button and select the 
 countries you want to distribute it in.
 
-.. image:: ../images/android_custom_13.png
+.. image:: images/android_custom_13.png
    :scale: 75%
 
 Now you may upload your app.
@@ -322,53 +323,77 @@ Uploading to Google Play Store
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Now you can upload your app to your Google Play Store page. Go to the **APK** 
-page and click **Upload your first APK to Production**. You don't need a license 
+page and click **Upload your first APK to Production**. You don't need a 
+license 
 key for a free app.
 
-.. image:: ../images/android_custom_14.png
+.. image:: images/android_custom_14.png
    :scale: 75%
 
 Drag-and-drop, or browse to select your app.
 
-.. image:: ../images/android_custom_15.png
+.. image:: images/android_custom_15.png
 
 A successful upload looks like this:
 
-.. image:: ../images/android_custom_20.png
+.. image:: images/android_custom_20.png
    :scale: 75%
 
 Your app is not yet published, but only uploaded to your account. There is one 
 more step to take before you can publish, and that is to go back to the 
 **Pricing & Distribution** page and fill out the **Consent** section. 
 
-.. image:: ../images/android_custom_21.png
+.. image:: images/android_custom_21.png
    :scale: 75%
 
 Click the Save Draft button, and if you followed all the required steps you 
 should now see a **Publish App** button. 
 
-.. image:: ../images/android_custom_22.png
+.. image:: images/android_custom_22.png
 
 It will not be published immediately, but after review by Google, which usually 
 takes just a few hours.
 
-.. image:: ../images/android_custom_23.png
+.. image:: images/android_custom_23.png
 
 After it has been published, your store listing is updated as PUBLISHED, and it 
 includes a link to your Play Store listing.
 
-.. image:: ../images/android_custom_24.png
+.. image:: images/android_custom_24.png
 
 Now all you need to do is distribute the URL to your users, and they can 
 install it either from their Web browsers, or from their Google Play Store 
 apps. This is how it looks to your users.
 
-.. image:: ../images/android_custom_25.png
+.. image:: images/android_custom_25.png
 
-See :doc:`custom_client_repos` to learn how to configure your ownCloud server 
-to use the link to your branded app instead of the ownCloud app, and see the 
-**Theming the First Run Wizard** section of :doc:`../operations/theming` to 
-learn how to create a custom icon for your branded app.
+Customize Download Link
+-----------------------
+
+You may configure the URLs to your own download repositories for your ownCloud 
+desktop clients and mobile apps in :file:`config/config.php`. This example shows 
+the default download locations:
+
+.. code-block:: php
+
+  <?php
+
+    "customclient_desktop" => "https://owncloud.org/sync-clients/",
+    "customclient_android" => 
+    "https://play.google.com/store/apps/details?id=com.owncloud.android",
+    "customclient_ios"     => 
+    "https://itunes.apple.com/us/app/owncloud/id543672169?mt=8",
+
+Simply replace the URLs with the links to your own preferred download repos.
+
+You may test alternate URLs without editing :file:`config/config.php` by setting 
+a test URL as an environment variable::
+
+ export OCC_UPDATE_URL=https://test.example.com
+  
+When you're finished testing you can disable the environment variable::
+
+ unset OCC_UPDATE_URL
 
 Publishing a Paid App in Google Play
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -382,7 +407,7 @@ click the **Learn more** link under the Free/Paid button for a nice thorough
 review of the process and tools. It requires verifying your business 
 information and bank account, and you should expect it to take 3-4 days. 
 
-.. image:: ../images/android_custom_26.png
+.. image:: images/android_custom_26.png
 
 When you're ready to set it up, click the **Set up a merchant account now** 
 link under the Free/Paid button.

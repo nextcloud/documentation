@@ -20,7 +20,7 @@ iOs Client 02-07-15 10.30.xcarchive`. Double-click on this file to automatically
 install it into Xcode. Go to Xcode and you will see it in the Archives listing 
 under **Window > Organizer**.
 
-.. figure:: ../images/ios-publish-2.png
+.. figure:: images/ios-publish-2.png
    
    *figure 1*
 
@@ -28,20 +28,20 @@ Next, go back to the `Apple Developer Member Center
 <https://developer.apple.com/membercenter/index.action>`_ to log into iTunes 
 Connect to set up your app storefront.
 
-.. figure:: ../images/ios-publish-3.png
+.. figure:: images/ios-publish-3.png
 
    *figure 2*
 
 After logging in click the blue **My Apps** button. This takes you to the main 
 screen for managing your apps on iTunes. 
 
-.. figure:: ../images/ios-publish.png
+.. figure:: images/ios-publish.png
 
    *figure 3*
 
 Click the plus button on the top left to setup your new branded iOS app. 
 
-.. figure:: ../images/ios-publish-4.png
+.. figure:: images/ios-publish-4.png
 
    *figure 4*
 
@@ -59,21 +59,21 @@ will not let you re-use your app name or SKU.
 
 Then click the **Create** button.
 
-.. figure:: ../images/ios-publish-5.png
+.. figure:: images/ios-publish-5.png
 
    *figure 5*
 
 Now go back to your Xcode organizer to upload your app; click the blue **Submit 
 to App Store** button. 
 
-.. figure:: ../images/ios-publish-6.png
+.. figure:: images/ios-publish-6.png
 
    *figure 6*
 
 This takes a few minutes as it verifies your bundle ID and certificates, and 
 then you will see an upload status.
 
-.. figure:: ../images/ios-publish-7.png
+.. figure:: images/ios-publish-7.png
 
    *figure 7*
    
@@ -89,7 +89,7 @@ in some information for your app listing on your iTunes storefront. You should
 see something like this on your main screen (figure 8). You should click the 
 **Save** button at the top right periodically to preserve your changes.
 
-.. figure:: ../images/ios-publish-8.png
+.. figure:: images/ios-publish-8.png
 
    *figure 8*
    
@@ -99,14 +99,14 @@ screen is for entering screenshots of your app for various devices, and
 optionally a demonstration video. Click the little question marks to learn the 
 required image specifications.
 
-.. figure:: ../images/ios-publish-9.png
+.. figure:: images/ios-publish-9.png
 
    *figure 9*
    
 Then you must enter your app name, a description, some keywords for iTunes 
 searches, and some optional URLs.   
 
-.. figure:: ../images/ios-publish-10.png
+.. figure:: images/ios-publish-10.png
 
    *figure 10*   
 
@@ -116,13 +116,13 @@ skip this.
 The **General App Information** section requires a 1024x1024 logo, version, 
 rating, category, license, copyright, and contact information.
 
-.. figure:: ../images/ios-publish-11.png
+.. figure:: images/ios-publish-11.png
 
    *figure 11*
    
 In the **Build** section, click the plus button and select your app.   
    
-.. figure:: ../images/ios-publish-14.png
+.. figure:: images/ios-publish-14.png
 
    *figure 12*     
 
@@ -131,7 +131,7 @@ information about your app to guide reviewers. Remember, everyone on iTunes can
 review your app, so it's in your best interest to be helpful. You may 
 optionally provide a login for a demo account.
 
-.. figure:: ../images/ios-publish-12.png
+.. figure:: images/ios-publish-12.png
 
    *figure 13*
 
@@ -145,7 +145,7 @@ Pricing
 Next, you must go to the **Pricing** page to set your price, and to select the 
 terroritories you want your app to be available in.
 
-.. figure:: ../images/ios-publish-13.png
+.. figure:: images/ios-publish-13.png
 
    *figure 14*
 
@@ -165,7 +165,7 @@ review". In a few days, or perhaps many days, your app will either be approved
 or rejected. If it is rejected Apple will tell you what you need to do to get 
 it approved.
 
-.. figure:: ../images/ios-publish-15.png
+.. figure:: images/ios-publish-15.png
 
    *figure 15*
 
