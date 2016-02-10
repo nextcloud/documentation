@@ -30,12 +30,14 @@ Building a Branded iOS App
 --------------------------
 
 Building and distributing your branded iOS ownCloud app involves a large number 
-of interdependent steps. The process is detailed in the "Building a Branded iOS 
-App Manual" Follow these instructions exactly and in order, and you will have a 
+of interdependent steps. The process is detailed in the "ownCloud Building 
+Branded Apps Manual"" Follow these instructions exactly and in order, and you 
+will have a 
 nice branded iOS app that you can distribute to your users.
 
 Building an Android App
 -----------------------
    
-See :doc:`` for instructions on building your own branded Android app.
+Building and distributing your branded Android ownCloud app is fairly simple, 
+and the process is detailed in the "ownCloud Building Branded Apps Manual" 
 
