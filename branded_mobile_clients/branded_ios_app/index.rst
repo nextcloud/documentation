@@ -1,6 +1,6 @@
-===================================
-Creating Branded iOS Apps (ES only)
-===================================
+=========================
+Creating Branded iOS Apps
+=========================
 
 .. toctree::
    :maxdepth: 3

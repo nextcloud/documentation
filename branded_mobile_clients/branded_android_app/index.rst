@@ -1,6 +1,6 @@
-===============================================
-Building Branded Android Apps (Enterprise only)
-===============================================
+=============================
+Building Branded Android Apps
+=============================
 
 .. toctree::
     :maxdepth: 3
