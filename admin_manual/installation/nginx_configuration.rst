@@ -14,7 +14,9 @@ Nginx Configuration
 -  ``add_header`` statements are only taken from the current level and are not cascaded 
    from or to a different level. All necessary ``add_header`` statements must be defined 
    in each level needed. For better readability is is possible to move *common* add 
-   header statements into a separate file and include that file wherever necessary.
+   header statements into a separate file and include that file wherever necessary. 
+   However, each ``add_header`` statement must be written in a single line to prevent 
+   connection problems with sync clients.
 
 .. note:: The following example assumes that your ownCloud is installed in
    your webroot. If you're using a subfolder you need to adjust the configuration
