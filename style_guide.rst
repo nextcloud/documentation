@@ -111,6 +111,8 @@ creating a live hyperlink::
 Images
 ------
 
+Use lowercase with hyphens for image names, for example image-name.png.
+
 Images should be in .png format. Keep your screenshots focused on the items you 
 are describing. When you need an image of something large like a configuration 
 form on the ownCloud admin page, narrow your Web browser to fold the fields 
