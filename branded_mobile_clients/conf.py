@@ -50,7 +50,7 @@ version = '1.0'
 release = '1.0'
 
 # General information about the project.
-project = u'ownCloud %s Building Branded Mobile Apps Manual'
+project = u'ownCloud Building Branded Mobile Apps Manual'
 copyright = u'2012-2016, The ownCloud developers'
 
 
