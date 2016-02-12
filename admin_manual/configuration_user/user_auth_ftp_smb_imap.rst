@@ -54,7 +54,7 @@ Provides authentication against Samba servers
 
 - **Class:** OC_User_SMB
 - **Arguments:** the samba server to authenticate against
-- **Dependency:** `php5-libsmbclient <https://software.opensuse.org/download.html?project=isv%3AownCloud%3Acommunity%3A8.1&package=php5-libsmbclient>`_
+- **Dependency:** `php5-libsmbclient <https://download.owncloud.org/download/repositories/stable/owncloud/>`_
 - **Example:**
 
 .. code-block:: php
