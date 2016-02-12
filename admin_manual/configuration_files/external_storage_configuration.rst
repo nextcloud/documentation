@@ -268,10 +268,9 @@ SMB
 The SMB backend mounts a folder on a remote Samba server, a NAS appliance or
 a Windows machine into the virtual file system. This requires 
 ``php5-libsmbclient`` (`installation instructions 
-<https://software.opensuse.org/download.html?project=isv%3AownCloud%3Acommunity%
-3A8.1&package=php5-libsmbclient>`_). It is part of the ‘External
-storage support’ app, the class to be used is **\\OC\\Files\\Storage\\SMB**\  and
-takes the following options:
+<https://download.owncloud.org/download/repositories/stable/owncloud/`_).
+It is part of the ‘External storage support’ app, the class to be used
+is **\\OC\\Files\\Storage\\SMB**\  and takes the following options:
 
 -  **host**: the host name of the samba server
 -  **user**: the username or domain/username to login to the samba server

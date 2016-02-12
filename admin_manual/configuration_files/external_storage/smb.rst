@@ -6,7 +6,7 @@ ownCloud can connect to Windows file servers or other SMB-compatible servers
 with the SMB/CIFS backend.
 
 .. note:: The SMB/CIFS backend requires ``smbclient`` to be installed on the
-          ownCloud server. This should be included any any Linux distribution.
+          ownCloud server. This should be included in any Linux distribution.
 
 You need the following information:
 
@@ -32,8 +32,8 @@ modified. This is concatenated with the username, so the backend gets
 .. note:: For improved reliability and performance, we recommended installing   
           ``libsmbclient-php``, a native PHP module for connecting to
           SMB servers. It is available as ``php5-libsmbclient`` in the ownCloud
-          `OBS repositories <https://software.opensuse.org/download/package?
-          project=isv:ownCloud:community&package=php5-libsmbclient>`_
+          `OBS repositories <https://download.owncloud.org/download/repositories/
+          stable/owncloud/>`_
 
 .. figure:: images/smb.png
    :alt: Samba external storage configuration.
