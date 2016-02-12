@@ -15,25 +15,26 @@ by default. (See "Configuring Federated Cloud Sharing" in the ownCloud Server
 Administration Manual.) Follow these steps to create a new share:
 
 1. Go to your ``Files`` page and click the Share icon on the file or directory 
-you want to share. Enter the username and URL of the remote user in this form: 
-``<username>@<oc-server-url>``. In this example, that is 
+you want to share. In the sidebar enter the username and URL of the remote user
+in this form: ``<username>@<oc-server-url>``. In this example, that is
 ``layla@remote-server/owncloud``. The form automatically echoes the address 
 that you type and labels it as "remote".
 
 .. figure:: ../images/direct-share-1.png
 
-2. You'll see a status indicator as ownCloud looks for the remote server. 
-
-.. figure:: ../images/direct-share-2.png
-
-When your local ownCloud server makes a successful connection with the remote 
+2. When your local ownCloud server makes a successful connection with the remote
 ownCloud server you'll see a confirmation.
    
 .. figure:: ../images/direct-share-3.png   
 
-Your recipient on the other end of the link, on the remote ownCloud server, 
-will see a dialog asking them to confirm the new share. All they have to do is 
-click the **Add remote share** button, and it's done.
+3. Since ownCloud 9.0 your recipient on the other end of the link, on the remote
+ownCloud server, will get a notification asking them to confirm the new share.
+All they have to do is click the **Accept** button, and it's done.
+
+.. figure:: ../images/direct-share-5.png
+
+If the remote server does not have the notification app installed, the recipient
+will see the dialog from the previous ownCloud versions.
 
 .. figure:: ../images/direct-share-4.png
 
