@@ -334,6 +334,18 @@ the 'Path' field. For example:
 
 Now Cyberduck enables file access to the ownCloud server.
 
+Accessing public shares over WebDAV
+-----------------------------------
+
+ownCloud provides the possibility to access public shares over WebDAV.
+
+To access the public share, open::
+
+  https://example.com/owncloud/public.php/dav
+
+in a WebDAV client, use the share token as username and the (optional) share password
+as password.
+
 Known Problems
 --------------
 
