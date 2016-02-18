@@ -19,8 +19,9 @@ in ownBrander.
 Building a Branded Desktop Sync Client
 --------------------------------------
 
-See :doc:`building_branded_desktop_client` for instructions on building your own 
-branded desktop sync client.
+See `Building Branded ownCloud Clients (Enterprise Only)`_ for instructions on 
+building your own branded desktop sync client, and for setting up an automatic 
+update service.
 
 Your users may run both a branded and un-branded desktop sync client 
 side-by-side. Both clients run independently of each other, and do not share 
@@ -30,14 +31,17 @@ Building a Branded iOS App
 --------------------------
 
 Building and distributing your branded iOS ownCloud app involves a large number 
-of interdependent steps. The process is detailed in the "ownCloud Building 
-Branded Apps Manual"" Follow these instructions exactly and in order, and you 
-will have a 
-nice branded iOS app that you can distribute to your users.
+of interdependent steps. The process is detailed in the `Building Branded 
+ownCloud Clients (Enterprise Only)`_ manual. Follow these instructions exactly 
+and in order, and you will have a nice branded iOS app that you can distribute 
+to your users.
 
 Building an Android App
 -----------------------
    
 Building and distributing your branded Android ownCloud app is fairly simple, 
-and the process is detailed in the "ownCloud Building Branded Apps Manual" 
+and the process is detailed in 
+`Building Branded ownCloud Clients (Enterprise Only)`_.
 
+.. _Building Branded ownCloud Clients (Enterprise Only): 
+    https://doc.owncloud.com/branded_clients/
