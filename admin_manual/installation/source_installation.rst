@@ -189,9 +189,7 @@ Apache Web Server Configuration
 On Debian, Ubuntu, and their derivatives, Apache installs with a useful 
 configuration so all you have to do is create a 
 :file:`/etc/apache2/sites-available/owncloud.conf` file with these lines in 
-it, replacing the **Directory** and other filepaths with your own filepaths:
-
-.. code-block:: xml
+it, replacing the **Directory** and other filepaths with your own filepaths::
    
   <Directory /var/www/html/owncloud/>
     Options +FollowSymlinks

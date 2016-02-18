@@ -79,7 +79,7 @@ external storage.
 Example
 -------
 
-.. code-block:: json
+::
 
     {
       "group":{

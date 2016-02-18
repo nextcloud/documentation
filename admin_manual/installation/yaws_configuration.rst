@@ -5,9 +5,7 @@ This should be in your **yaws_server.conf**. In the configuration file, the
 **dir_listings = false** is important and also the redirect from **data/**
 to somewhere else, because files will be saved in this directory and it
 should not be accessible from the outside. A configuration file would look
-like this
-
-.. code-block:: xml
+like this::
 
     <server owncloud.myserver.com/>
             port = 80

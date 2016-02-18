@@ -21,8 +21,8 @@ Nginx Configuration
 .. note:: The following example assumes that your ownCloud is installed in
    your webroot. If you're using a subfolder you need to adjust the configuration
    accordingly.
-
-.. code-block:: python
+   
+::   
 
   upstream php-handler {
     server 127.0.0.1:9000;

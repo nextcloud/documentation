@@ -45,9 +45,7 @@ following aliases are defined in an Apache virtual host directive:
 	Alias /oc-shib /var/www/owncloud/
 
 Further Shibboleth specific configuration as defined in
-``/etc/apache2/conf.d/shib.conf``:
-
-.. code-block:: Apache
+``/etc/apache2/conf.d/shib.conf``::
 
 	#
 	# Load the Shibboleth module.
