@@ -21,25 +21,24 @@ You must also install the updated database module for your database. This instal
  
  yum install php55-php-mysqlnd
  
-Activate the new PHP version permanently::
- 
- source /opt/rh/php55/enable
- 
-Disable loading the old PHP Apache module by changing its name. Look in ``/etc/httpd/conf.d/`` to verify the module name:: 
+Disable loading the old PHP Apache modules by changing their names::
 
- mv /etc/httpd/conf.d/php.conf /etc/httpd/conf.d/php.conf.old 
+ mv /etc/httpd/conf.d/php.conf /etc/httpd/conf.d/php54.off
+ mv /etc/httpd/conf.modules.d/10-php.conf /etc/httpd/conf.modules.d/10-php54.off
  
-Copy the PHP 5.5 Apache modules from /opt/rh/php55/::
+Copy the PHP 5.5 Apache modules into place::
 
  cp /opt/rh/httpd24/root/etc/httpd/conf.d/php55-php.conf /etc/httpd/conf.d/
- cp /opt/rh/httpd24/root/etc/httpd/conf.modules.d/10-php55-php.conf /etc/httpd/conf.modules.d/
- cp /opt/rh/httpd24/root/etc/httpd/modules/libphp-php55.so /etc/httpd/modules/
+ cp /opt/rh/httpd24/root/etc/httpd/conf.modules.d/10-php55-php.conf /etc/httpdconf.modules.d/
+ cp /opt/rh/httpd24/root/etc/httpd/modules/libphp55-php5.so /etc/httpd/modules/
 
 Then restart Apache::
  
  service httpd restart
 
-Verify with ``phpinfo`` that your Apache server is using PHP 5.5 and loading the correct modules; see :ref:`label-phpinfo` to learn how to use phpinfo.
+Verify with ``phpinfo`` that your Apache server is using PHP 5.5 and loading the 
+correct modules; see :ref:`label-phpinfo` to learn how to use phpinfo.
+
 
 CentOS 7 Upgrade to PHP 5.5
 ---------------------------
@@ -59,23 +58,21 @@ Then install PHP 5.5 and these modules::
 You must also install the updated database module for your database. This installs the new PHP 5.5 module for MySQL/MariaDB:: 
  
  yum install php55-php-mysqlnd
- 
-Activate the new PHP version permanently::
- 
- source /opt/rh/php55/enable
- 
-Disable loading the old PHP Apache module by changing its name. Look in /etc/httpd/conf.d/ to verify the module name:: 
+  
+Disable loading the old PHP Apache modules by changing their names::
 
- mv /etc/httpd/conf.d/php.conf /etc/httpd/conf.d/php.conf.old 
+ mv /etc/httpd/conf.d/php.conf /etc/httpd/conf.d/php54.off
+ mv /etc/httpd/conf.modules.d/10-php.conf /etc/httpd/conf.modules.d/10-php54.off
  
-Copy the PHP 5.5 Apache modules from /opt/rh/php55/::
+Copy the PHP 5.5 Apache modules into place::
 
  cp /opt/rh/httpd24/root/etc/httpd/conf.d/php55-php.conf /etc/httpd/conf.d/
- cp /opt/rh/httpd24/root/etc/httpd/conf.modules.d/10-php55-php.conf /etc/httpd/conf.modules.d/
- cp /opt/rh/httpd24/root/etc/httpd/modules/libphp-php55.so /etc/httpd/modules/
+ cp /opt/rh/httpd24/root/etc/httpd/conf.modules.d/10-php55-php.conf /etc/httpdconf.modules.d/
+ cp /opt/rh/httpd24/root/etc/httpd/modules/libphp55-php5.so /etc/httpd/modules/
 
 Then restart Apache::
  
  service httpd restart
 
-Verify with ``phpinfo`` that your Apache server is using PHP 5.5 and loading the correct modules; see :ref:`label-phpinfo` to learn how to use phpinfo.
+Verify with ``phpinfo`` that your Apache server is using PHP 5.5 and loading the 
+correct modules; see :ref:`label-phpinfo` to learn how to use ``phpinfo``.

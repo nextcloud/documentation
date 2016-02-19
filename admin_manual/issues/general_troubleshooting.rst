@@ -107,7 +107,7 @@ Open this file in a Web browser by pointing your browser to
 .. figure:: ../images/phpinfo.png
 
 Your PHP version is at the top, and the rest of the page contains abundant 
-system information such as active modules, active `.ini` files, and much more. 
+system information such as active modules, active ``.ini`` files, and much more. 
 When you are finished reviewing your information you must delete 
 ``phpinfo.php``, or move it outside of your Web directory, because it is a 
 security risk to expose such sensitive data.
