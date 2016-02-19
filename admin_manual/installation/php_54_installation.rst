@@ -25,13 +25,9 @@ example installs the new PHP 5.4 module for MySQL/MariaDB::
  
  yum install php54-php-mysqlnd
  
-Activate the new PHP version permanently::
- 
- source /opt/rh/php54/enable
- 
 Disable loading the old PHP 5.3 Apache module:: 
 
- mv /etc/httpd/conf.d/php.conf /etc/httpd/conf.d/php.conf.old
+ mv /etc/httpd/conf.d/php.conf /etc/httpd/conf.d/php53.off
  
 You should now have a /etc/httpd/conf.d/php54-php.conf file, which loads the 
 correct PHP 5.4 module for Apache.
@@ -59,13 +55,9 @@ module for MySQL/MariaDB::
  
  yum install php54-php-mysqlnd
  
-Activate the new PHP version permanently::
- 
- source /opt/rh/php54/enable
- 
 Disable loading the old PHP 5.3 Apache module:: 
 
- mv /etc/httpd/conf.d/php.conf /etc/httpd/conf.d/php.conf.old
+ mv /etc/httpd/conf.d/php.conf /etc/httpd/conf.d/php53.off
  
 You should now have a /etc/httpd/conf.d/php54-php.conf file, which loads the 
 correct PHP 5.4 module for Apache.
