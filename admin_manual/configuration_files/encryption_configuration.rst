@@ -168,7 +168,8 @@ occ Encryption Commands
 
 If you have shell access you may use the ``occ`` command to perform encryption 
 operations, and you have additional options such as decryption and creating a 
-single master encryption key.
+single master encryption key. See :ref:`encryption_label`  for detailed 
+instructions on using ``occ``.
 
 Get the current status of encryption and the loaded encryption module::
 
@@ -216,12 +217,24 @@ disable it::
 
  occ encryption:enable-master-key
  
-See :ref:`encryption_label`  for detailed instructions on using ``occ``.
+Disabling Encryption
+--------------------
+
+You may disable encryption only with ``occ``. Make sure you have backups of all 
+encryption keys, including users'. Put your ownCloud server into 
+single-user mode, and then disable your encryption module with this command::
+
+ occ maintenance:singleuser --on
+ occ encryption:disable
+ 
+Take it out of single-user mode when you are finished::
+
+ occ maintenance:singleuser --off
 
 Files Not Encrypted
 -------------------
 
-Only the data in the files in ``data/user/files`` is encrypted, and not the 
+Only the data in the files in ``data/user/files`` are encrypted, and not the 
 filenames or folder structures. These files are never encrypted:
 
 - Existing files in the trash bin & Versions. Only new and changed files after 
