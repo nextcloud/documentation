@@ -10,7 +10,9 @@ setting, and more.
 ``occ`` is in the :file:`owncloud/` directory; for example 
 :file:`/var/www/owncloud` on Ubuntu Linux. ``occ`` is a PHP script. **You must 
 run it as your HTTP user** to ensure that the correct permissions are maintained 
-on your ownCloud files and directories, and you must run it from its directory.
+on your ownCloud files and directories. In ownCloud 8.2+ you may run it from 
+any directory (specifying the filepath); in previous releases it had to be 
+run from the :file:`owncloud/` directory.
 
 occ Command Directory
 ---------------------
@@ -49,8 +51,7 @@ If your HTTP server is configured to use a different PHP version than the
 default (/usr/bin/php), ``occ`` should be run with the same version. For 
 example, in CentOS 6.5 with SCL-PHP54 installed, the command looks like this::
 
-  $ cd /var/www/html/owncloud/
-  $ sudo -u apache /opt/rh/php54/root/usr/bin/php occ
+  $ sudo -u apache /opt/rh/php54/root/usr/bin/php /var/www/html/owncloud/occ
 
 Running it with no options lists all commands and options, like this example on 
 Ubuntu::
