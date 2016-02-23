@@ -11,7 +11,7 @@ Please follow the steps on this page to set up your development environment.
 Set up Web server and database
 ==============================
 
-First `set up your Web server and database <https://doc.owncloud.org/server/9.0/admin_manual/#installation>`_ (**Section**: Manual Installation - Prerequisites).
+First `set up your Web server and database <https://doc.owncloud.org/server/9.0/admin_manual/installation/index.html>`_ (**Section**: Manual Installation - Prerequisites).
 
 .. TODO ON RELEASE: Update version number above on release
 
