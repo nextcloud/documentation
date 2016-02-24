@@ -166,7 +166,7 @@ Accept a pending Federated Cloud Share
 
 Locally accept a received federated cloud share that was sent from a remote instance.
 
-* Syntax: /remote_shares/*<share_id>*
+* Syntax: /remote_shares/pending/*<share_id>*
 * Method: POST
 
 * Arguments: share_id - (int) share ID
