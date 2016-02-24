@@ -19,7 +19,7 @@ Calendar
 
    -  Select OK.
    -  Select advanced settings.
-   -  Make sure Use SSL is set to OFF.
+   -  If your server does not support SSL, make sure Use SSL is set to OFF.
    -  Change port to 80.
    -  Go back to account information and hit Save.
 
@@ -44,7 +44,7 @@ Address book
 
    -  Select OK.
    -  Select advanced settings.
-   -  Make sure Use SSL is set to OFF.
+   -  If your server does not support SSL, make sure Use SSL is set to OFF.
    -  Change port to 80.
    -  Go back to account information and hit Save.
 
