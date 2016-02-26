@@ -1,6 +1,7 @@
 =============================================================
 Configuring S3 and OpenStack Swift Objects as Primary Storage
 =============================================================
+
 In ownCloud Enterprise Subscription, you can configure S3 objects as primary 
 storage. This replaces the default data directory, which is 
 ``/var/www/owncloud/data`` on default Linux installations, and 
@@ -98,6 +99,8 @@ into the virtual filesystem. The class to be used is ``\\OC\\Files\\ObjectStore\
             'url' => 'http://devstack:5000/v2.0',
             'tenantName' => 'demo', 
             'serviceName' => 'swift', 
+            // url Type, optional, public, internal or admin
+	    'urlType' => 'internal'
         ),
     ),
 
