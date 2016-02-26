@@ -28,6 +28,7 @@ occ Command Directory
 * :ref:`ldap_commands_label`
 * :ref:`logging_commands_label`
 * :ref:`maintenance_commands_label`
+* :ref:`shibboleth_label` (Enterprise only)
 * :ref:`trashbin_label`
 * :ref:`user_commands_label`
 * :ref:`versions_label`
@@ -698,6 +699,16 @@ with changed mimetypes found in ``config/mimetypemapping.json``. Run this
 command after modifying ``config/mimetypemapping.json``. If you change a 
 mimetype, run ``maintenance:mimetype:update-db --repair-filecache`` to apply the 
 change to existing files.
+
+.. _shibboleth_label:
+
+Shibboleth Modes (Enterprise only)
+----------------------------------
+
+``shibboleth:mode`` sets your Shibboleth mode to ``notactive``, 
+``autoprovision``, or ``ssoonly``::
+
+ shibboleth:mode [mode]
 
 .. _trashbin_label: 
 
