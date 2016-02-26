@@ -91,10 +91,15 @@ the server address, the share name, and the folder you want to connect to.
    default is all users.
 3. Next, enter the address of the server that contains the SMB share.
 4. Then the Windows share name.
-5. Then the root folder of the share. This is the folder name, or the ``$user`` variable for user's home directories.
+5. Then the root folder of the share. This is the folder name, or the 
+   ``$user`` variable for user's home directories. Note that the LDAP 
+   ``Internal Username Attribute`` must be set to the ``samaccountname`` for 
+   either the share or the root to work, and the user's home directory needs 
+   to match the ``samaccountname``. (See 
+   :doc:`../configuration_user/user_auth_ldap`.)
 6. Then your login credentials.
 
-.. figure:: images/wnd-3.jpg
+.. figure:: images/wnd-3.png
    :alt: $user variable in the folder field.
 
    *Figure 2: $user variable to automatically set user's home directories.*
