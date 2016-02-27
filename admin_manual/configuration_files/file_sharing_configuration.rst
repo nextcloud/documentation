@@ -16,6 +16,9 @@ ownCloud users. You have control of a number of user permissions on file shares:
 * Allow email notifications of new public shares
 * Exclude groups from creating shares
 
+.. note:: ownCloud Enterprise includes a Share Link Password Policy app; see 
+   :ref:`password_policy_label`.
+
 Configure your sharing policy on your Admin page in the Sharing section.
 
 .. figure:: images/sharing-files-1.png
@@ -58,6 +61,17 @@ Configure your sharing policy on your Admin page in the Sharing section.
    directories, though it does update the mtimes on files. See  
    `Wrong folder date when syncing 
    <https://github.com/owncloud/core/issues/7009>`_ for discussion of this.
+   
+.. _password_policy_label:
+
+Share Link Password Policy
+--------------------------
+
+ownCloud Enterprise users have the option of enabling the Share Link Password 
+Policy app. This allows you to enforce password length, required characters, 
+define special characters, and expiration dates on share links.
+
+.. figure:: images/sharing-files-2.png
   
 Creating Persistent File Shares
 -------------------------------
