@@ -117,8 +117,7 @@ log-out and log-in again."
 Share owners may need to re-share files after encryption is enabled; users 
 trying to access the share will see a message advising them to ask the share 
 owner to re-share the file with them. For individual shares, un-share and 
-re-share the file. For group shares, share with any individuals who can't 
-access 
+re-share the file. For group shares, share with any individuals who can't access 
 the share. This updates the encryption, and then the share owner can remove the 
 individual shares.
 
