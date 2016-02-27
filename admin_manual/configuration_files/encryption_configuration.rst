@@ -6,15 +6,10 @@ The primary purpose of the ownCloud server-side encryption is to protect users'
 files on remote storage, such as Dropbox and Google Drive, and to do it easily 
 and seamlessly from within ownCloud.
 
-In ownCloud 8.2 the server-side encryption has a number of changes and 
-improvements, including:
-
-* An option to create a master encryption key, which replaces all individual 
-  user keys. This is especially useful for single-sign on.
-* Encrypt all data files at once when enabling encryption.
-* Decrypt all data files, or per user.
-* Users may decrypt their own files.
-* Move your keys to a different folder.
+In ownCloud 9.0 the server-side encryption separates encryption of local and 
+remote storage. This allows you to encrypt remote storage, such as Dropbox and 
+Google, without having to also encrypt your home storage on your ownCloud 
+server.
 
 ownCloud server-side encryption encrypts files stored on the ownCloud server, 
 and files on remote storage that is connected to your ownCloud server. 
@@ -91,19 +86,25 @@ module is the ownCloud Default Encryption Module.
 First go to the **Server-side encryption** section of your Admin page and check 
 **Enable server-side encryption**. You have one last chance to change your mind.
 
-.. figure:: ../images/encryption3.png
+.. figure:: images/encryption3.png
 
 After clicking the **Enable Encryption** button you see the message "No 
 encryption module loaded, please load a encryption module in the app menu", so 
 go to your Apps page to enable the ownCloud Default Encryption Module.
 
-.. figure:: ../images/encryption1.png
+.. figure:: images/encryption1.png
 
 Return to your Admin page to see the ownCloud Default Encryption 
 Module added to the module selector, and automatically selected. Now you must 
 log out and then log back in to initialize your encryption keys.
 
-.. figure:: ../images/encryption14.png
+.. figure:: images/encryption14.png
+
+When you log back in, there is a checkbox for enabling encryption on your home 
+storage. This is checked by default. Un-check to avoid encrypting your home 
+storage.
+
+.. figure:: images/encryption15.png
 
 Sharing Encrypted Files
 -----------------------
@@ -116,11 +117,12 @@ log-out and log-in again."
 Share owners may need to re-share files after encryption is enabled; users 
 trying to access the share will see a message advising them to ask the share 
 owner to re-share the file with them. For individual shares, un-share and 
-re-share the file. For group shares, share with any individuals who can't access 
+re-share the file. For group shares, share with any individuals who can't 
+access 
 the share. This updates the encryption, and then the share owner can remove the 
 individual shares.
 
-.. figure:: ../images/encryption9.png
+.. figure:: images/encryption9.png
 
 Encrypting External Mountpoints
 -------------------------------
@@ -144,22 +146,22 @@ user data will be lost".
 To avoid all this, create a Recovery Key. Go to the Encryption section of your 
 Admin page and set a recovery key password.
 
-.. figure:: ../images/encryption10.png
+.. figure:: images/encryption10.png
 
 Then your users have the option of enabling password recovery on their Personal 
 pages. If they do not do this, then the Recovery Key won't work for them.
 
-.. figure:: ../images/encryption7.png
+.. figure:: images/encryption7.png
 
 For users who have enabled password recovery, give them a new password and 
 recover access to their encrypted files by supplying the Recovery Key on the 
 Users page.
 
-.. figure:: ../images/encryption8.png
+.. figure:: images/encryption8.png
 
 You may change your Recovery Key password.
 
-.. figure:: ../images/encryption12.png
+.. figure:: images/encryption12.png
 
 .. _occ_encryption_label:
 
