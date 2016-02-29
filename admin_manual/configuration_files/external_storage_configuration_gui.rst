@@ -68,8 +68,7 @@ individually with the following options:
 
 * Encryption
 * Previews
-* Filesystem check frequency (Never, Once per direct access, every time the
-  filesystem is used)
+* Filesystem check frequency (Never, Once per direct access)
 
 .. figure:: external_storage/images/mount_options.png
    :alt: Additional mount options exposed on mouseover.
