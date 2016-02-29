@@ -28,7 +28,7 @@ occ Command Directory
 * :ref:`ldap_commands_label`
 * :ref:`logging_commands_label`
 * :ref:`maintenance_commands_label`
-* :ref:`shibboleth_label` (Enterprise only)
+* :ref:`shibboleth_label`
 * :ref:`trashbin_label`
 * :ref:`user_commands_label`
 * :ref:`versions_label`
