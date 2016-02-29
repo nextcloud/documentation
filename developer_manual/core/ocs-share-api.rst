@@ -146,12 +146,60 @@ Creating a federated cloud share can be done via the local share endpoint, using
 of the share recipient as shareWith. See `Create a new Share`_ for more information.
 
 
+List accepted Federated Cloud Shares
+------------------------------------
+
+Get all federated cloud shares the user has accepted.
+
+* Syntax: /remote_shares
+* Method: GET
+
+* Result: XML with all accepted federated cloud shares
+
+Statuscodes:
+
+* 100 - successful
+
+Get information about a known Federated Cloud Share
+---------------------------------------------------
+
+Get information about a given received federated cloud that was sent from a remote instance.
+
+* Syntax: /remote_shares/*<share_id>*
+* Method: GET
+
+* Arguments: share_id - (int) share ID as listed in the id field in the ``remote_shares`` list
+
+* Result: XML with the share information
+
+Statuscodes:
+
+* 100 - successful
+* 404 - share doesn't exist
+
+Delete an accepted Federated Cloud Share
+----------------------------------------
+
+Locally delete a received federated cloud share that was sent from a remote instance.
+
+* Syntax: /remote_shares/*<share_id>*
+* Method: DELETE
+
+* Arguments: share_id - (int) share ID as listed in the id field in the ``remote_shares`` list
+
+* Result: XML with the share information
+
+Statuscodes:
+
+* 100 - successful
+* 404 - share doesn't exist
+
 List pending Federated Cloud Shares
 -----------------------------------
 
 Get all pending federated cloud shares the user has received.
 
-* Syntax: /remote_shares
+* Syntax: /remote_shares/pending
 * Method: GET
 
 * Result: XML with all pending federated cloud shares
@@ -159,7 +207,6 @@ Get all pending federated cloud shares the user has received.
 Statuscodes:
 
 * 100 - successful
-* 404 - couldn't fetch shares
 
 Accept a pending Federated Cloud Share
 --------------------------------------
@@ -169,7 +216,7 @@ Locally accept a received federated cloud share that was sent from a remote inst
 * Syntax: /remote_shares/pending/*<share_id>*
 * Method: POST
 
-* Arguments: share_id - (int) share ID
+* Arguments: share_id - (int) share ID as listed in the id field in the ``remote_shares/pending`` list
 
 * Result: XML with the share information
 
@@ -183,10 +230,10 @@ Decline a pending Federated Cloud Share
 
 Locally decline a received federated cloud share that was sent from a remote instance.
 
-* Syntax: /remote_shares/*<share_id>*
+* Syntax: /remote_shares/pending/*<share_id>*
 * Method: DELETE
 
-* Arguments: share_id - (int) share ID
+* Arguments: share_id - (int) share ID as listed in the id field in the ``remote_shares/pending`` list
 
 * Result: XML with the share information
 
