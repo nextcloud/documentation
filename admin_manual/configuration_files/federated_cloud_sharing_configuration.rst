@@ -28,7 +28,12 @@ is a few steps on the originating server.
 
 1. Enable the Federation app.
 
-2. Go to your ownCloud Admin page and scroll to the Federation 
+2. Go to your ownCloud Admin page and scroll to the Sharing 
+   section. Verify that **Allow users on this server to send shares to other 
+   servers** and **Allow users on this server to receive shares from other 
+   servers** are enabled. 
+
+3. Now go to the Federation 
    section. By default, **Add server automatically once a federated share was 
    created successfully** is checked. The Federation app supports creating a 
    list of trusted ownCloud servers, which allows the trusted servers to 
@@ -38,15 +43,15 @@ is a few steps on the originating server.
 .. figure:: images/federation-0.png
    
 3. Now go to your Files page and select a folder to share. Click the share 
-icon, and then enter the username and URL of the user on the remote ownCloud 
-server. In this example, that is ``freda@https://example.com/owncloud``. When 
-ownCloud verifies the link, it displays it with the **(remote)** label. Click 
-on this label to establish the link.
+   icon, and then enter the username and URL of the user on the remote ownCloud 
+   server. In this example, that is ``freda@https://example.com/owncloud``. 
+   When ownCloud verifies the link, it displays it with the **(remote)** label. 
+   Click on this label to establish the link.
 
 .. figure:: images/federation-2.png
 
 3. When the link is successfully completed, you have a single share option, 
-and that is **can edit**.
+   and that is **can edit**.
 
 .. figure:: images/federation-3.png
 
@@ -59,10 +64,9 @@ Configuring Trusted ownCloud Servers
 
 You may create a list of trusted ownCloud servers for Federation sharing. This 
 allows your linked ownCloud servers to share user directories, and to auto-fill 
-user names in share dialogs. If **Add server 
-automatically once a federated share was created successfully** is enabled on 
-your Admin page, servers will be automatically added to your trusted list when 
-you create new Federation shares.
+user names in share dialogs. If **Add server automatically once a federated 
+share was created successfully** is enabled on your Admin page, servers will be 
+automatically added to your trusted list when you create new Federation shares.
 
 You may also enter ownCloud server URLs in the **Add ownCloud Server** field. 
 The yellow light indicates a successful connection, with no user names 
@@ -77,11 +81,12 @@ Creating Federation Shares via Public Link Share
 ------------------------------------------------
 
 You'll need to use a Public Link Share to create Federation shares with 
+ownCloud 8.x and older.
 
 Check the ``Share Link`` checkbox to expose more sharing options (which are 
 described more fully in :doc:`file_sharing_configuration`). You may create a 
-federated cloud share by allowing ownCloud to create a public link for you, and 
-then email it to the person you want to create the share with.
+Federation share by allowing ownCloud to create a public link for you, and then 
+email it to the person you want to create the share with.
 
 .. figure:: images/create_public_share-6.png
    
