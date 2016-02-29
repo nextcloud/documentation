@@ -1,109 +1,107 @@
-===================================
-Configuring Federated Cloud Sharing
-===================================
+==============================
+Configuring Federation Sharing
+==============================
 
-In ownCloud 7 this was called Server-to-Server sharing. Now it is called 
-Federated Cloud sharing. With just a few clicks you can easily and securely link 
-file shares between ownCloud servers, in effect creating a cloud of ownClouds. 
-You can automatically send an email notification when you create the share, 
-share directly with users on other ownCloud servers, add password protection, 
-allow users to upload files, and set an expiration date.
-
-.. Note:: Currently, Federated shares cannot be re-shared, and the only 
-   permissions option when you create the share is **Can edit**.
+Federated Cloud Sharing is now managed by the Federation app (9.0+), and is 
+now called Federation sharing. When you enable the Federation app you can 
+easily and securely link file shares between ownCloud servers, in effect 
+creating a cloud of ownClouds. You can automatically send an email notification 
+when you create the share, share directly with users on other ownCloud servers, 
+add password protection, allow users to upload files, and set an expiration 
+date.
 
 Sharing With ownCloud 7
 -----------------------
 
-Direct share links (:ref:`label-direct-share-link`) are not supported in 
-ownCloud 7, so you must create Federated Cloud shares with public links 
+Direct Federation shares (:ref:`label-direct-share-link`) are not supported in 
+ownCloud 7, so you must create Federation shares with public links 
 (:ref:`label-public-link-share`). 
 
 .. _label-direct-share-link:   
    
-Creating a Direct Share Link
-----------------------------
+Creating a new Federation Share (9.0+ only)
+-------------------------------------------
 
-Follow these steps to create a new Federated Cloud share:
+Follow these steps to create a new Federation share between two ownCloud 9.0+ 
+servers. This requires no action by the user on the remote server; all it takes 
+is a few steps on the originating server.
 
-1. Go to your ownCloud Admin page and scroll to the Federated Cloud Sharing 
-   section of the Sharing section.
+1. Enable the Federation app.
 
-.. figure:: images/federated-sharing.png
+2. Go to your ownCloud Admin page and scroll to the Federation 
+   section. By default, **Add server automatically once a federated share was 
+   created successfully** is checked. The Federation app supports creating a 
+   list of trusted ownCloud servers, which allows the trusted servers to 
+   exchange user directories and auto-complete the names of external users when 
+   you create shares. If you do not want this enabled, then un-check it.
+
+.. figure:: images/federation-0.png
    
-2. Check ``Allow other users on this server to send shares to other 
-servers`` and ``Allow users on this server to receive shares from other 
-servers.`` Leaving the checkboxes blank disables Federated Cloud sharing.
+3. Now go to your Files page and select a folder to share. Click the share 
+icon, and then enter the username and URL of the user on the remote ownCloud 
+server. In this example, that is ``freda@https://example.com/owncloud``. When 
+ownCloud verifies the link, it displays it with the **(remote)** label. Click 
+on this label to establish the link.
 
-3. In the Sharing section, check ``Allow users to share via link`` and ``Allow 
-users to send mail notification for shared files``.
+.. figure:: images/federation-2.png
 
-4. Now you and your users can go to your Files pages to create a new federated 
-cloud share. Click the Share icon on the file or directory you want to share to 
-expose your first sharing option. 
+3. When the link is successfully completed, you have a single share option, 
+and that is **can edit**.
 
-.. figure:: images/create_public_share-1.png
+.. figure:: images/federation-3.png
 
-This dialog allows you to create local shares with users and groups on your 
-local ownCloud server, and also to create federated cloud shares with users on 
-remote ownCloud servers by typing a link to the remote server in the form of 
-``<user>@<link-to-owncloud>``. In this screenshot the remote ownCloud server is 
-on the local network, so the URL form is ``user@hostname/owncloud``, or 
-``layla@remote-server/owncloud`` in the example. The URL you type is echoed by 
-the form, and labeled as ``(remote)``.
+You may disconnect the share at any time by clicking the trash can icon.
 
-.. figure:: images/create_public_share-2.png
+.. Note:: Federation shares cannot be re-shared.
 
-Press the return key, and then wait for the link to be established. You'll see a 
-status message while it is working.
+Configuring Trusted ownCloud Servers
+------------------------------------
 
-.. figure:: images/create_public_share-3.png
+You may create a list of trusted ownCloud servers for Federation sharing. This 
+allows your linked ownCloud servers to share user directories, and to auto-fill 
+user names in share dialogs. If **Add server 
+automatically once a federated share was created successfully** is enabled on 
+your Admin page, servers will be automatically added to your trusted list when 
+you create new Federation shares.
 
-When the remote server has been successully contacted you'll see a confirmation.
+You may also enter ownCloud server URLs in the **Add ownCloud Server** field. 
+The yellow light indicates a successful connection, with no user names 
+exchanges. The green light indicates a successful connection with user names 
+exchanged. A red light means the connection failed.
 
-.. figure:: images/create_public_share-4.png
-
-The link is created when your remote user confirms the share by clicking the 
-**Add remote share** button.
-
-.. figure:: images/create_public_share-7.png
-
-You can return to the share dialog any time to see a list of everyone you have 
-shared with, and federated cloud shares are labeled as ``(remote)``.
-
-.. figure:: images/create_public_share-5.png
-
-Click the trash can icon to disconnect the share.
+.. figure:: images/federation-1.png
 
 .. _label-public-link-share:
 
-Creating Federated Cloud Shares via Public Link Share
------------------------------------------------------
+Creating Federation Shares via Public Link Share
+------------------------------------------------
+
+You'll need to use a Public Link Share to create Federation shares with 
 
 Check the ``Share Link`` checkbox to expose more sharing options (which are 
 described more fully in :doc:`file_sharing_configuration`). You may create a 
 federated cloud share by allowing ownCloud to create a public link for you, and 
 then email it to the person you want to create the share with.
 
-.. figure:: ../images/create_public_share-6.png
+.. figure:: images/create_public_share-6.png
    
 You may optionally set a password and expiration date on it. When your recipient 
 receives your email they must click the link, or copy it to a Web 
 browser. They will see a page displaying a thumbnail of the file, with a button 
 to **Add to your ownCloud**.
 
-.. figure:: ../images/create_public_share-8.png
+.. figure:: images/create_public_share-8.png
 
 Your recipient should click the **Add to your ownCloud** button. On the next 
 screen your recipient needs to enter the URL to their ownCloud 
 server, and then press the return key.
 
-.. figure:: ../images/create_public_share-9.png
+.. figure:: images/create_public_share-9.png
 
 Your recipient has to take one more step, and that is to confirm creating the 
 federated cloud share link by clicking the **Add remote share** button.
 
-.. figure:: ../images/create_public_share-10.png
+.. figure:: images/create_public_share-10.png
 
 Un-check the ``Share Link`` checkbox to disable any federated cloud share 
 created this way.
