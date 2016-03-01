@@ -22,4 +22,5 @@ ownCloud has many improvements. Some of our new features are:
   (:doc:`configuration_user/reset_user_password`)
 * Command-line options added to the Updater app. (:doc:`maintenance/update`)
 * Many new ``occ`` commands. (:doc:`configuration_server/occ_command`)
+* Admin option to enable and disable sharing on external storage mountpoints. (:ref:`external_storage_mount_options_label`)
 

@@ -6,7 +6,6 @@ Table of Contents
     :maxdepth: 3
      
     index 
-    release_notes
     whats_new_admin
     installation/index
     configuration_server/index
@@ -17,6 +16,7 @@ Table of Contents
     maintenance/index
     operations/index
     issues/index
+..  release_notes
 
 Enterprise Subscription Only
 ----------------------------

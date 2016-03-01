@@ -24,6 +24,7 @@ occ Command Directory
 * :ref:`database_conversion_label`
 * :ref:`encryption_label`
 * :ref:`file_operations_label`
+* :ref:`files_external_label`
 * :ref:`create_javascript_translation_files_label`
 * :ref:`ldap_commands_label`
 * :ref:`logging_commands_label`
@@ -391,7 +392,7 @@ For a more detailed explanation see
 Encryption
 ----------
 
-ownCloud 8.2 introduces a new set of encryption commands::
+``occ`` includes a complete set of commands for managing encryption::
 
  encryption
   encryption:change-key-storage-root   Change key storage root
@@ -519,6 +520,27 @@ one must be specified.
 
 ``files:cleanup`` tidies up the server's file cache by deleting all file 
 entries that have no matching entries in the storage table.
+
+.. _files_external_label:
+
+Files External
+--------------
+
+Commands for managing external storage::
+
+ files_external
+  files_external:applicable           Manage applicable users and groups for a mount
+  files_external:backends             Show available authentication and storage backends
+  files_external:config               Manage backend configuration for a mount
+  files_external:create               Create a new mount configuration
+  files_external:delete               Delete an external mount
+  files_external:export               Export mount configurations
+  files_external:import               Import mount configurations
+  files_external:list                 List configured mounts
+  files_external:option               Manage mount options for a mount
+  files_external:verify               Verify mount configuration
+
+These commands replicate the functionality in the ownCloud Web GUI, plus two new features:  ``files_external:export`` and ``files_external:import``. Use ``files_external:export`` to export all admin mounts to a text file, and ``files_external:export [user_id]`` to export the mounts of the specified ownCloud user. Use ``files_external:import [filename]`` to import the configuration.
 
 .. _create_javascript_translation_files_label:
  
