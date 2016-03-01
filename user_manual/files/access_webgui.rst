@@ -11,6 +11,24 @@ system ask your server administrator.
    :scale: 75%
    :alt: The Files view screen.
    
+Tagging Files
+-------------
+
+New for 9.0: file tagging. You can assign tags to files. To create tags, open a 
+file to the Details view. Then type your tags. To enter more than one tag press 
+the return key after creating each tag.
+
+.. figure:: ../images/files_page-7.png
+   :alt: Creating file tags.
+   
+Then use the Tags filter on the left sidebar to filter files by tags.
+
+.. figure:: ../images/files_page-8.png
+   :alt: Creating file tags.
+  
+File Controls
+-------------
+   
 ownCloud can display thumbnail previews for image files, MP3 covers, 
 and text files, if this enabled by your server administrator. Hover your cursor 
 over a file or folder to expose the controls for the following operations:
@@ -168,8 +186,8 @@ and public shares. Now you can set an expiration date only on public shares,
 and local shares do not expire when public shares expire. The only way to 
 "expire" a local share is to click the trash can icon to un-share your files.
 
-Creating or Connecting to a Federated Cloud Sharing Link
---------------------------------------------------------
+Creating or Connecting to a Federation Share Link
+-------------------------------------------------
 
 Federated Cloud Sharing allows you to mount file shares from remote ownCloud 
 servers, and manage them just like a local share. In ownCloud 8 the process for 

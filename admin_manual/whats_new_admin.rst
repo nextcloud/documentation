@@ -9,15 +9,17 @@ comprehensive list of new features and updates.
 ownCloud has many improvements. Some of our new features are:
 
 * Separate encryption for home storage and remote storage; you may encrypt 
-  remote storage without encrypting local storage. See 
-  :doc:`configuration_files/encryption_configuration`.
+  remote storage without encrypting local storage. 
+  (:doc:`configuration_files/encryption_configuration`)
 * Password policy app for share links, for setting password requirements such 
-  as minimum length and required characters (Enterprise only). See 
-  :ref:`password_policy_label`.
+  as minimum length and required characters (Enterprise only).
+  (:ref:`password_policy_label`)
 * New command to transfer files from one user to another. 
-  See :ref:`transfer_userfiles_label`.
+  (:ref:`transfer_userfiles_label`)
 * Streamlined Federation sharing with user and group name auto-fill. See 
-  :ref:`label-direct-share-link`.
+  (:ref:`label-direct-share-link`)
 * Configurable password reset URL. See 
-  :doc:`configuration_user/reset_user_password`
-* Command-line options added to the Updater app. See :doc:`maintenance/update`
+  (:doc:`configuration_user/reset_user_password`)
+* Command-line options added to the Updater app. (:doc:`maintenance/update`)
+* File tagging. 
+  (`<https://doc.owncloud.org/server/9.0/user_manual/files/access_webgui.html>`_)
