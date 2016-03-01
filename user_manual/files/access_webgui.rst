@@ -44,7 +44,11 @@ Favorites
 Share
   Share the file or folder with a group or other users, and create public 
   shares with hyperlinks. You can also see who you have shared with already, 
-  and revoke shares by clicking the trash can icon. If username auto-completion 
+  and revoke shares by clicking the trash can icon. 
+  
+.. note:: New in 9.0, you can see all re-shares of your original file shares.
+
+  If username auto-completion 
   is enabled, when you start typing the user or group name ownCloud will 
   automatically complete it for you. If your administrator has enabled email 
   notifications, you can send an email notification of the new share from the 

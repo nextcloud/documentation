@@ -21,5 +21,5 @@ ownCloud has many improvements. Some of our new features are:
 * Configurable password reset URL. See 
   (:doc:`configuration_user/reset_user_password`)
 * Command-line options added to the Updater app. (:doc:`maintenance/update`)
-* File tagging. 
-  (`<https://doc.owncloud.org/server/9.0/user_manual/files/access_webgui.html>`_)
+* Many new ``occ`` commands. (:doc:`configuration_server/occ_command`)
+

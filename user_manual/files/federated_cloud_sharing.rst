@@ -1,49 +1,36 @@
-=============================
-Using Federated Cloud Sharing
-=============================
+=======================
+Using Federation Shares
+=======================
 
-Federated Cloud Sharing, introduced in ownCloud 7 as Server-to-Server sharing, 
-allows you to mount file shares from remote ownCloud servers, in effect 
+Federation Sharing allows you to mount file shares from remote ownCloud servers, in effect 
 creating your own cloud of ownClouds. You can create direct share links with 
 users on other ownCloud servers.
 
-Creating a New Federated Cloud Share
-------------------------------------
+Creating a New Federation Share
+-------------------------------
 
-Federated Cloud Sharing is enabled on new or upgraded ownCloud installations
-by default. (See "Configuring Federated Cloud Sharing" in the ownCloud Server 
-Administration Manual.) Follow these steps to create a new share:
+Federation sharing is enabled on new or upgraded ownCloud installations
+by default. Follow these steps to create a new share with other ownCloud 9 servers:
 
 1. Go to your ``Files`` page and click the Share icon on the file or directory 
 you want to share. In the sidebar enter the username and URL of the remote user
 in this form: ``<username>@<oc-server-url>``. In this example, that is
 ``layla@remote-server/owncloud``. The form automatically echoes the address 
-that you type and labels it as "remote".
+that you type and labels it as "remote". Click on the label.
 
 .. figure:: ../images/direct-share-1.png
 
 2. When your local ownCloud server makes a successful connection with the remote
-ownCloud server you'll see a confirmation.
+ownCloud server you'll see a confirmation. Your only share option is **Can edit**. Federation shares cannot be re-shared.
    
-.. figure:: ../images/direct-share-3.png   
-
-3. Since ownCloud 9.0 your recipient on the other end of the link, on the remote
-ownCloud server, will get a notification asking them to confirm the new share.
-All they have to do is click the **Accept** button, and it's done.
-
-.. figure:: ../images/direct-share-5.png
-
-If the remote server does not have the notification app installed, the recipient
-will see the dialog from the previous ownCloud versions.
-
-.. figure:: ../images/direct-share-4.png
-
 Click the Share button anytime to see who you have shared your file with. Remove 
 your linked share anytime by clicking the trash can icon. This only unlinks the 
 share, and does not delete any files.
 
 Creating a New Federated Cloud Share via Email
 ----------------------------------------------
+
+Use this method when you are sharing with users on ownCloud 8.x and older.
 
 What if you do not know the username or URL? Then you can have ownCloud create 
 the link for you and email it to your recipient. 
