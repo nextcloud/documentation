@@ -3,9 +3,10 @@ Upgrading ownCloud with the Updater App
 =======================================
 
 The Updater app automates many of the steps of updating an ownCloud 
-installation. You should keep your ownCloud server updated and not skip any 
-releases. The Updater app is enabled in your ownCloud Server instance by 
-default, which you can confirm by looking on your Apps page.
+installation. It is useful for installations that do not have root access, 
+such as shared hosting, for installations with a smaller number of users 
+and data, and it automates updating 
+:doc:`manual installations<../installation/source_installation>`.
 
 .. note:: The Updater app is **not enabled and not supported** in ownCloud 
    Enterprise Subscription. 
@@ -22,13 +23,6 @@ default, which you can confirm by looking on your Apps page.
    restore your data from backup. Before doing this, file a support ticket (if 
    you have paid support) or ask for help in the ownCloud forums to see if your 
    issue can be resolved without downgrading.
-
-The Updater App is not required, and it is recommended to use other methods for 
-keeping your ownCloud server up-to-date, if possible. (See :doc:`upgrade`.) The 
-Updater App is useful for installations that do not have root access, 
-such as shared hosting, for installations with a smaller number of users 
-and data, and it automates updating 
-:doc:`manual installations<../installation/source_installation>`.
 
 You should maintain regular backups (see :doc:`backup`), and make a backup 
 before every update. The Updater app does not backup your database or data 
@@ -51,10 +45,7 @@ Using the Updater app to update your ownCloud installation is just a few
 steps:
 
 1.  You should see a notification at the top of any ownCloud page when there is 
-    a new update available:
-   
-.. figure:: images/upgrade-notifier.png
-   :alt: upgrade notifier banner.
+    a new update available.
    
 2.  Even though the Updater app backs up important directories, you should 
     always have your own current backups (See :doc:`backup` for details.)
@@ -62,13 +53,14 @@ steps:
 3.  Verify that the HTTP user on your system can write to your whole ownCloud 
     directory; see the :ref:`set_updating_permissions_label` section below.
    
-4.  Navigate to your Admin page and click the `Update Center` button under 
+4.  Navigate to your Admin page and click the **Update Center** button under 
     Updater. This takes you to the Updater control panel.
 
 5.  Click Update, and carefully read the messages. If there are any problems it 
     will tell you. The most common issue is directory permissions; your HTTP 
     user needs write permissions to your whole ownCloud directory. (See 
-    :ref:`strong_perms_label`.) Otherwise you will see messages 
+    :ref:`strong_perms_label`.) Another common issue is SELinux rules 
+    (see :ref:`selinux-config-label`.) Otherwise you will see messages 
     about checking your installation and making backups.
 
 6.  Click Proceed, and then it performs the remaining steps, which takes a few 
@@ -82,12 +74,12 @@ steps:
    :scale: 75%
    :alt: ownCloud upgrade wizard screen.
 
-..  note:: If you have a large ownCloud installation, at this point you
+..  note:: If you have a large ownCloud installation and have shell access,
     should use the ``occ upgrade`` command, running it as your HTTP user, 
     instead of clicking the Start Update button, in order to avoid PHP 
-    timeouts. The ``occ`` command does not download ownCloud updates. 
-    You must first download and install the updated code, and then ``occ`` 
-    performs the final upgrade steps.  This example is for Ubuntu Linux::
+    timeouts.
+    
+This example is for Ubuntu Linux::
 
      $ sudo -u www-data php occ upgrade
  
@@ -111,16 +103,8 @@ are backups of your old and new ownCloud installations, and do not contain your
 data files. If your update works and there are no problems you can delete the 
 backups from this screen.
 
-If the update fails, then you must update manually. (See :doc:`upgrade`.)
-
-Can't Login Without Updating
-----------------------------
-
-If you can't login to your ownCloud installation without performing an update 
-first, this means that updated ownCloud files have already been downloaded to 
-your server, most likely via your Linux package manager during a routine system 
-update. So you only need to click the Start Update button, or run the ``occ`` 
-command to complete the update.
+If the update fails, then you must update manually. (See :doc:`Manually 
+upgrading <manual_upgrade>`.)
 
 .. _set_updating_permissions_label:
 

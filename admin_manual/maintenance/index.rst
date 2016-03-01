@@ -7,11 +7,9 @@ Maintenance
 
    enable_maintenance
    backup
+   upgrade
    package_upgrade
-   manual_upgrade
    update
+   manual_upgrade
    restore
    migrating
-
-.. do not publish until it is updated for 9.0   
-.. upgrade

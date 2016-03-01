@@ -38,24 +38,27 @@ installations may take several hours to complete the upgrade.
    file a support ticket (if you have paid support) or ask for help in the 
    ownCloud forums to see if your issue can be resolved without downgrading.
 
-Update Notifier and Updater App Are Not the Same
-------------------------------------------------
+.. not sure about notifications
+.. Update Notifier and Updater App Are Not the Same
+.. ------------------------------------------------
 
-ownCloud has two update tools: the ownCloud core update notifier, and the 
-Updater app. Figure 1 shows what you see when the Updater app is enabled: both 
-the core notifier and the Updater app control panel are visible on your admin 
-page.
+.. ownCloud has two update tools: the ownCloud core update notifier, and the 
+.. Updater app. Figure 1 shows what you see when the Updater app is enabled: 
+.. both 
+.. the core notifier and the Updater app control panel are visible on your 
+.. admin 
+.. page.
 
-.. figure:: images/2-updates.png
-   :alt: Both update mechanisms displayed on Admin page.
+.. .. figure:: images/2-updates.png
+..   :alt: Both update mechanisms displayed on Admin page.
    
-   *Figure 1: The top yellow banner is the update notifier, and the Updates 
-   section is the Updater app.*
+..   *Figure 1: The top yellow banner is the update notifier, and the Updates 
+..   section is the Updater app.*
    
-The core update notifier has only one function, and that is to display a 
-notification when a new ownCloud release is available. Then you decide which 
-upgrade method to use. When you maintain your ownCloud server via your Linux 
-package manager you should ensure that the Updater app is disabled.
+.. The core update notifier has only one function, and that is to display a 
+.. notification when a new ownCloud release is available. Then you decide which 
+.. upgrade method to use. When you maintain your ownCloud server via your Linux 
+.. package manager you should ensure that the Updater app is disabled.
   
 Prerequisites
 -------------
