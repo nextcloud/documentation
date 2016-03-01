@@ -31,7 +31,7 @@ Re-enabling Contacts and Calendar Apps
 --------------------------------------
 
 The Contacts and Calendar apps are unsupported community apps, and by 
-default are not enabled or installed in ownCloud 8. You may easily install and 
+default are not enabled or installed in ownCloud 8+. You may easily install and 
 enable them by clicking on the Productivity filter, and then clicking the **Enable** 
 buttons for both apps. This will download and enable them.
 
