@@ -2,11 +2,13 @@
 Upgrading ownCloud with the Updater App
 =======================================
 
-The Updater app automates many of the steps of updating an ownCloud 
+The Updater app automates many of the steps of upgrading an ownCloud 
 installation. It is useful for installations that do not have root access, 
 such as shared hosting, for installations with a smaller number of users 
 and data, and it automates updating 
-:doc:`manual installations<../installation/source_installation>`.
+:doc:`manual installations <../installation/source_installation>`.
+
+New in 9.0, the Updater app has :ref:`command-line options <updater_cli_label>`.
 
 .. note:: The Updater app is **not enabled and not supported** in ownCloud 
    Enterprise Subscription. 
@@ -141,3 +143,54 @@ use :ref:`label-phpinfo` (Look for the **User/Group** line).
 
 After the update is completed, re-apply the strong directory permissions 
 immediately by running the script in :ref:`strong_perms_label`.
+
+.. _updater_cli_label:
+
+Command Line Options
+--------------------
+
+The Updater app includes command-line options to automate updates, to create 
+checkpoints and to roll back to older checkpoints. You must run it as your HTTP 
+user. This example on Ubuntu Linux displays command options::
+
+ sudo -u www-data php updater/application.php list
+ 
+See usage for commands, like this example for the ``upgrade:checkpoint`` 
+command:: 
+
+  sudo -u www-data php updater/application.php upgrade:checkpoint -h
+
+You can display a help summary::
+  
+ sudo -u www-data php updater/application.php --help
+ 
+When you run it without options it runs a system check:: 
+
+ sudo -u www-data php owncloud/updater/application.php
+ ownCloud updater 1.0 - CLI based ownCloud server upgrades
+ Checking system health.
+ - file permissions are ok.
+ Current version is 9.0.0.12
+ No updates found online.
+ Done
+ 
+Create a checkpoint::
+
+ sudo -u www-data php updater/application.php upgrade:checkpoint  --create 
+ Created checkpoint 9.0.0.12-56d5e4e004964
+
+List checkpoints::
+
+ sudo -u www-data php updater/application.php upgrade:checkpoint --list
+ 
+Restore an earlier checkpoint::
+
+ sudo -u www-data php owncloud/updater/application.php upgrade:checkpoint 
+  --restore=9.0.0.12-56d5e4e004964
+
+Add a line like this to your crontab to automatically create daily 
+checkpoints::
+
+ 2 15 * * * sudo -u www-data php /path/to/owncloud/updater/application.php 
+ upgrade:checkpoint --create > /dev/null 2>&1
+ 

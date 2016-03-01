@@ -2,10 +2,9 @@
 What's New for Admins in ownCloud |version|
 ===========================================
 
-.. See the `ownCloud 9.0 
-.. Features page 
-.. <https://github.com/owncloud/core/wiki/ownCloud-9.0-Features>`_ 
-.. on Github for a comprehensive list of new features and updates.
+See the `ownCloud 9.0 Features page 
+<https://github.com/owncloud/core/wiki/ownCloud-9.0-Features>`_ on Github for a 
+comprehensive list of new features and updates.
 
 ownCloud has many improvements. Some of our new features are:
 
@@ -21,4 +20,4 @@ ownCloud has many improvements. Some of our new features are:
   :ref:`label-direct-share-link`.
 * Configurable password reset URL. See 
   :doc:`configuration_user/reset_user_password`
-  
+* Command-line options added to the Updater app. See :doc:`maintenance/update`
