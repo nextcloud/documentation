@@ -59,7 +59,7 @@ Running it with no options lists all commands and options, like this example on
 Ubuntu::
 
  $ sudo -u www-data php occ
- ownCloud version 8.2
+ ownCloud version 9.0
  Usage:
   [options] command [arguments]
 
@@ -90,14 +90,14 @@ Run it with the ``-h`` option for syntax help::
 Display your ownCloud version::
 
  $ sudo -u www-data php occ -V
-   ownCloud version 8.2
+   ownCloud version 9.0
    
 Query your ownCloud server status::
 
  $ sudo -u www-data php occ status
    - installed: true
-   - version: 8.2.0.9
-   - versionstring: 8.2
+   - version: 9.0.0
+   - versionstring: 9.0
    - edition:
    
 ``occ`` has options, commands, and arguments. Options and arguments are 
@@ -128,7 +128,7 @@ The ``status`` command from above has an option to define the output format.
 The default is plain text, but it can also be ``json``::
 
  $ sudo -u www-data php status --output =json
- {"installed":true,"version":"8.2.0.9","versionstring":"8.2",
+ {"installed":true,"version":"9.0.0","versionstring":"9.0",
  "edition":"Enterprise"}
 
 or ``json_pretty``::
@@ -136,8 +136,8 @@ or ``json_pretty``::
  $ sudo -u www-data php status --output =json_pretty
  {
      "installed": true,
-     "version": "8.2.0.9",
-     "versionstring": "8.2",
+     "version": "9.0.0",
+     "versionstring": "9.0",
      "edition": "Enterprise"
  }
 
@@ -272,7 +272,7 @@ Getting a Single Configuration Value
 These commands get the value of a single app or system configuration::
 
   $ sudo -u www-data php occ config:system:get version
-  8.2.0.2
+  9.0.0
 
   $ sudo -u www-data php occ config:app:get activity installed_version
   2.1.0
@@ -905,7 +905,7 @@ available options::
 
  $ sudo -u www-data php /var/www/owncloud/occ
  ownCloud is not installed - only a limited number of commands are available
- ownCloud version 8.2.0
+ ownCloud version 9.0.0
 
  Usage:
   [options] command [arguments]
