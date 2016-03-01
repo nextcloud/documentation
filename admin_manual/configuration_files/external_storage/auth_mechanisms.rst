@@ -25,11 +25,12 @@ Password-based Mechanisms
 The **Username and password** mechanism requires a manually-defined username and
 password. These get passed directly to the backend.
 
-The **Session credentials** mechanism uses the ownCloud login credentials of the
-user to connect to the storage. These are not stored anywhere on the server,
-but rather in the user session, giving increased security. The drawback is that
-sharing is disabled when this mechanism is in use, as ownCloud has no access
-to the storage credentials and so other users cannot use it.
+The **Log-in credentials, save in session** mechanism uses the ownCloud login 
+credentials of the user to connect to the storage. These are not stored anywhere 
+on the server, but rather in the user session, giving increased security. The 
+drawbacks are that sharing is disabled when this mechanism is in use, as 
+ownCloud has no access to the storage credentials, and background file scanning 
+does not work.
 
 Public-key Mechanisms
 ---------------------

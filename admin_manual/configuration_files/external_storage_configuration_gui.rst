@@ -11,7 +11,7 @@ Enabling External Storage Support
 
 The External storage support application is enabled on your Apps page.
 
-.. figure:: external_storage/images/enable_app.png
+.. figure:: external_storage/images/enable-app.png
    :alt: Enable external storage on your Apps page.
 
 Storage Configuration
@@ -29,12 +29,10 @@ authentication mechanisms; some specific to the backend, others are more
 generic. See :doc:`external_storage/auth_mechanisms` for more detailed 
 information.
 
-When you select an authentication mechanism, the configuration 
-fields change as appropriate for the mechanism. Some backends are not yet 
-migrated to
-the new authentication mechanism system, and are displayed with a mechanism
-of **Built-in**. The SFTP backend, to give an example, supports both 
-password-based authentication and public key authentication.
+When you select an authentication mechanism, the configuration fields change as 
+appropriate for the mechanism. The SFTP backend, for one example, supports 
+**username and password**, **Log-in credentials, save in session**, and **RSA 
+public key**.
 
 .. figure:: external_storage/images/auth_mechanism.png
    :alt: An SFTP configuration example.
