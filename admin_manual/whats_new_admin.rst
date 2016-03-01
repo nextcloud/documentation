@@ -17,4 +17,8 @@ ownCloud has many improvements. Some of our new features are:
   :ref:`password_policy_label`.
 * New command to transfer files from one user to another. 
   See :ref:`transfer_userfiles_label`.
-* Streamlined Federation sharing. See :ref:`label-direct-share-link`.
+* Streamlined Federation sharing with user and group name auto-fill. See 
+  :ref:`label-direct-share-link`.
+* Configurable password reset URL. See 
+  :doc:`configuration_user/reset_user_password`
+  
