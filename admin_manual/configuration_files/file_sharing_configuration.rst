@@ -56,23 +56,27 @@ Configure your sharing policy on your Admin page in the Sharing section.
 * Check ``Allow username autocompletion in share dialog`` to enable 
   auto-completion of ownCloud usernames.
 
-
 .. note:: ownCloud does not preserve the mtime (modification time) of 
    directories, though it does update the mtimes on files. See  
    `Wrong folder date when syncing 
    <https://github.com/owncloud/core/issues/7009>`_ for discussion of this.
+
+.. _transfer_userfiles_label:   
+
+Transferring Files to Another User
+----------------------------------
+
+You may transfer files from one user to another with ``occ``. This is useful 
+when you have to remove a user. Be sure to transfer the files before you delete 
+the user!  This transfers all files from user1 to user2, and the shares and 
+metadata info associated with those files (shares, tags, comments, etc). 
+Trashbin contents are not transferred::
+
+ occ files:transfer-ownership user1 user2
+ 
+(See :doc:`../configuration_server/occ_command` for a complete ``occ`` 
+reference.) 
    
-.. _password_policy_label:
-
-Share Link Password Policy
---------------------------
-
-ownCloud Enterprise users have the option of enabling the Share Link Password 
-Policy app. This allows you to enforce password length, required characters, 
-define special characters, and expiration dates on share links.
-
-.. figure:: images/sharing-files-2.png
-  
 Creating Persistent File Shares
 -------------------------------
 
@@ -88,4 +92,15 @@ way, and share it with the users or groups who need to use it. Set the
 appropriate permissions on it, and then no matter which users come and go, the 
 file shares will remain. Because all files added to the share, or edited in it, 
 automatically become owned by the owner of the share regardless of who adds or 
-edits them.
+edits them.   
+   
+.. _password_policy_label:
+
+Share Link Password Policy
+--------------------------
+
+ownCloud Enterprise users have the option of enabling the Share Link Password 
+Policy app. This allows you to enforce password length, required characters, 
+define special characters, and expiration dates on share links.
+
+.. figure:: images/sharing-files-2.png

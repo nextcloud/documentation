@@ -7,7 +7,7 @@ What's New for Admins in ownCloud |version|
 .. <https://github.com/owncloud/core/wiki/ownCloud-9.0-Features>`_ 
 .. on Github for a comprehensive list of new features and updates.
 
-Some of the improvements of interest to ownCloud admins are:
+ownCloud has many improvements. Some of our new features are:
 
 * Separate encryption for home storage and remote storage; you may encrypt 
   remote storage without encrypting local storage. See 
@@ -15,4 +15,6 @@ Some of the improvements of interest to ownCloud admins are:
 * Password policy app for share links, for setting password requirements such 
   as minimum length and required characters (Enterprise only). See 
   :ref:`password_policy_label`.
-  
+* New command to transfer files from one user to another. 
+  See :ref:`transfer_userfiles_label`.
+* Streamlined Federation sharing. See :ref:`label-direct-share-link`.
