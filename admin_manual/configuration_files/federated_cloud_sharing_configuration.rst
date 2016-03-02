@@ -70,7 +70,7 @@ automatically added to your trusted list when you create new Federation shares.
 
 You may also enter ownCloud server URLs in the **Add ownCloud Server** field. 
 The yellow light indicates a successful connection, with no user names 
-exchanges. The green light indicates a successful connection with user names 
+exchanged. The green light indicates a successful connection with user names 
 exchanged. A red light means the connection failed.
 
 .. figure:: images/federation-1.png
