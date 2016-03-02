@@ -5,16 +5,13 @@ Configuring Federation Sharing
 Federated Cloud Sharing is now managed by the Federation app (9.0+), and is 
 now called Federation sharing. When you enable the Federation app you can 
 easily and securely link file shares between ownCloud servers, in effect 
-creating a cloud of ownClouds. You can automatically send an email notification 
-when you create the share, share directly with users on other ownCloud servers, 
-add password protection, allow users to upload files, and set an expiration 
-date.
+creating a cloud of ownClouds.
 
-Sharing With ownCloud 7
------------------------
+Sharing With ownCloud 8 and Older
+---------------------------------
 
 Direct Federation shares (:ref:`label-direct-share-link`) are not supported in 
-ownCloud 7, so you must create Federation shares with public links 
+ownCloud 8 and older, so you must create Federation shares with public links 
 (:ref:`label-public-link-share`). 
 
 .. _label-direct-share-link:   
@@ -56,8 +53,6 @@ is a few steps on the originating server.
 .. figure:: images/federation-3.png
 
 You may disconnect the share at any time by clicking the trash can icon.
-
-.. Note:: Federation shares cannot be re-shared.
 
 Configuring Trusted ownCloud Servers
 ------------------------------------
