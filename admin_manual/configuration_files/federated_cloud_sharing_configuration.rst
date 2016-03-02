@@ -10,11 +10,11 @@ when you create the share, share directly with users on other ownCloud servers,
 add password protection, allow users to upload files, and set an expiration 
 date.
 
-Sharing With ownCloud 7
------------------------
+Sharing With ownCloud 8 and Older
+---------------------------------
 
 Direct Federation shares (:ref:`label-direct-share-link`) are not supported in 
-ownCloud 7, so you must create Federation shares with public links 
+ownCloud 8 and older, so you must create Federation shares with public links 
 (:ref:`label-public-link-share`). 
 
 .. _label-direct-share-link:   
@@ -70,7 +70,7 @@ automatically added to your trusted list when you create new Federation shares.
 
 You may also enter ownCloud server URLs in the **Add ownCloud Server** field. 
 The yellow light indicates a successful connection, with no user names 
-exchanges. The green light indicates a successful connection with user names 
+exchanged. The green light indicates a successful connection with user names 
 exchanged. A red light means the connection failed.
 
 .. figure:: images/federation-1.png
