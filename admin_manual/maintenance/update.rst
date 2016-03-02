@@ -33,10 +33,10 @@ directory.
 The Updater app performs these operations:
 
 * Creates an ``updater_backup`` directory under your ownCloud data directory
-* Download and extracts updated package content into the 
+* Downloads and extracts updated package content into the 
   ``updater_backup/packageVersion`` directory
 * Makes a copy of your current ownCloud instance, except for your data 
-  directory, to  ``updater_backup/currentVersion-randomstring``
+  directory, to ``updater_backup/currentVersion-randomstring``
 * Moves all directories except ``data``, ``config`` and ``themes`` from the 
   current instance to ``updater_backup/tmp``
 * Moves all directories from ``updater_backup/packageVersion`` to the current 
@@ -77,7 +77,7 @@ steps:
    :alt: ownCloud upgrade wizard screen.
 
 ..  note:: If you have a large ownCloud installation and have shell access,
-    should use the ``occ upgrade`` command, running it as your HTTP user, 
+    you should use the ``occ upgrade`` command, running it as your HTTP user, 
     instead of clicking the Start Update button, in order to avoid PHP 
     timeouts.
     
