@@ -511,6 +511,12 @@ Available values:
 * ``disabled``
     trash bin auto clean disabled, files and folders will be kept forever
 
+File versions
+-------------
+
+These parameters control the Versions app.
+
+
 ::
 
 	'versions_retention_obligation' => 'auto',
@@ -1281,7 +1287,7 @@ general use if outside changes might happen.
 
 	'part_file_in_storage' => true,
 
-By default ownCloud will store the part files created during upload in the
+On default ownCloud will store the part files created during upload in the
 same storage as the upload target. Setting this to false will store the part
 files in the root of the users folder which might be required to work with certain
 external storage setups that have limited rename capabilities.
