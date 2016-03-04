@@ -22,7 +22,7 @@ Apache and MariaDB, using `the ownCloud .tar archive
 * :ref:`apache_configuration_label`
 * :ref:`enabling_ssl_label`
 * :ref:`installation_wizard_label`
-* :ref:`strong_permissions_label`
+* :ref:`strong_perms_label`
 * :ref:`selinux_tips_label`
 * :ref:`php_ini_tips_label`
 * :ref:`php_fpm_tips_label`
@@ -177,12 +177,14 @@ Now download the archive of the latest ownCloud version:
   ``/var/www/html/owncloud``, so your copying command is::
     
     cp -r owncloud /var/www/html
+    
+However, in the following examples ownCloud is installed in ``/var/www/``.  
 
 On other HTTP servers it is recommended to install ownCloud outside of the 
-document root. 
-    
- .. _apache_configuration_label:   
-    
+document root.
+
+.. _apache_configuration_label:
+   
 Apache Web Server Configuration
 -------------------------------
 
@@ -191,7 +193,9 @@ configuration so all you have to do is create a
 :file:`/etc/apache2/sites-available/owncloud.conf` file with these lines in 
 it, replacing the **Directory** and other filepaths with your own filepaths::
    
-  <Directory /var/www/html/owncloud/>
+  Alias /owncloud "/var/www/owncloud/"
+   
+  <Directory /var/www/owncloud/>
     Options +FollowSymlinks
     AllowOverride All
 
@@ -199,17 +203,11 @@ it, replacing the **Directory** and other filepaths with your own filepaths::
     Dav off
    </IfModule>
 
-   SetEnv HOME /var/www/html/owncloud
-   SetEnv HTTP_HOME /var/www/html/owncloud
+   SetEnv HOME /var/www/owncloud
+   SetEnv HTTP_HOME /var/www/owncloud
 
   </Directory>
   
-If you install ownCloud outside of Apache's DocumentRoot, then you must add an 
-**Alias** directive at the top of the file. In this example ownCloud is installed in
-``/var/www/owncloud``::
-
- Alias /owncloud "/var/www/owncloud/"
-
 Then create a symlink to :file:`/etc/apache2/sites-enabled`::
 
   ln -s /etc/apache2/sites-available/owncloud.conf /etc/apache2/sites-enabled/owncloud.conf
@@ -276,20 +274,20 @@ the default site. Open a terminal and run::
           plan to make your ownCloud server publicly accessible. You might want
           to consider getting a certificate signed by a commercial signing
           authority. Check with your domain name registrar or hosting service 
-          for good deals on commercial certificates.    
+          for good deals on commercial certificates.   
     
 .. _installation_wizard_label:
     
 Installation Wizard
 -------------------
 
-After restarting Apache you must complete your installation by 
-running either the graphical Installation Wizard, or on the command line with 
-the ``occ`` command. To enable this, temporarily change the ownership on your 
-ownCloud directories to your HTTP user (see :ref:`strong_perms_label` to learn 
-how to find your HTTP user)::
+After restarting Apache you must complete your installation by running either 
+the graphical Installation Wizard, or on the command line with the ``occ`` 
+command. To enable this, temporarily change the ownership on your ownCloud 
+directories to your HTTP user (see :ref:`strong_perms_label` to learn how to 
+find your HTTP user)::
 
- chown -R www-data:www-data /var/www/html/owncloud/
+ chown -R www-data:www-data /var/www/owncloud/
  
 .. note:: Admins of SELinux-enabled distributions may need to write new SELinux 
    rules to complete their ownCloud installation; see 
@@ -299,17 +297,14 @@ To use ``occ`` see :doc:`command_line_installation`.
 
 To use the graphical Installation Wizard see :doc:`installation_wizard`.
 
-After your installation is complete and you can log into ownCloud, you must 
-apply strong permissions to your ownCloud directory.
-
-.. _strong_permissions_label:
-
 Setting Strong Directory Permissions
 ------------------------------------
 
 After completing installation, you must immediately set the directory 
 permissions in your ownCloud installation as strictly as possible for stronger 
 security. Please refer to :ref:`strong_perms_label`.
+
+Now your ownCloud server is ready to use.
 
 .. _selinux_tips_label:
 
