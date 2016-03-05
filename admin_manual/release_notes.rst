@@ -6,7 +6,14 @@ ownCloud |version| Release Notes
 Changes in 9.0
 --------------
 
-Home folder rule is enforced in the user_ldap application in new ownCloud installations; see :doc:`configuration_user/user_auth_ldap`. This affects ownCloud 8.0.10, 8.1.5 and 8.2.0 and up.
+Home folder rule is enforced in the user_ldap application in new ownCloud installations; see
+:doc:`configuration_user/user_auth_ldap`. This affects ownCloud 8.0.10, 8.1.5 and 8.2.0 and up.
+
+The Calendar and Contacts apps have been rewritten and the CalDAV and CardDAV backends of these
+apps were merged into ownCloud core. During the upgrade existing Calendars and Addressbooks
+are automatically migrated. As a fallback for failed upgrades or an option to test a migration
+``dav:migrate-calendars`` and/or ``dav:migrate-addressbooks`` scripts are available via the
+``occ`` command. See :doc:`configuration_server/occ_command`.
 
 Changes in 8.2
 --------------
