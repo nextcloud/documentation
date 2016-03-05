@@ -511,6 +511,12 @@ Available values:
 * ``disabled``
     trash bin auto clean disabled, files and folders will be kept forever
 
+File versions
+-------------
+
+These parameters control the Versions app.
+
+
 ::
 
 	'versions_retention_obligation' => 'auto',
