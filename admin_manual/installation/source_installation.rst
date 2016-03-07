@@ -175,7 +175,7 @@ Now download the archive of the latest ownCloud version:
   where ``/path/to/webserver/document-root`` is replaced by the 
   document root of your Web server::
     
-    cp -r owncloud /var/www/
+    cp -r owncloud /var/www
 
 On other HTTP servers it is recommended to install ownCloud outside of the 
 document root.
