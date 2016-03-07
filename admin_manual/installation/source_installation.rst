@@ -173,12 +173,9 @@ Now download the archive of the latest ownCloud version:
     cp -r owncloud /path/to/webserver/document-root
 
   where ``/path/to/webserver/document-root`` is replaced by the 
-  document root of your Web server. On Ubuntu systems this 
-  ``/var/www/html/owncloud``, so your copying command is::
+  document root of your Web server::
     
-    cp -r owncloud /var/www/html
-    
-However, in the following examples ownCloud is installed in ``/var/www/``.  
+    cp -r owncloud /var/www/
 
 On other HTTP servers it is recommended to install ownCloud outside of the 
 document root.
