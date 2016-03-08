@@ -29,7 +29,7 @@ Disable loading the old PHP Apache modules by changing their names::
 Copy the PHP 5.5 Apache modules into place::
 
  cp /opt/rh/httpd24/root/etc/httpd/conf.d/php55-php.conf /etc/httpd/conf.d/
- cp /opt/rh/httpd24/root/etc/httpd/conf.modules.d/10-php55-php.conf /etc/httpdconf.modules.d/
+ cp /opt/rh/httpd24/root/etc/httpd/conf.modules.d/10-php55-php.conf /etc/httpd/conf.modules.d/
  cp /opt/rh/httpd24/root/etc/httpd/modules/libphp55-php5.so /etc/httpd/modules/
 
 Then restart Apache::
