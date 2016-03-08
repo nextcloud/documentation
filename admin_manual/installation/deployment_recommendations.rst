@@ -452,18 +452,14 @@ What about the other DBMS?
 
 * Sqlite is adequate for simple testing, and for low-load single-user 
   deployments. It is not adequate for production systems.
-* MSSQL is not automatically tested.
-* Oracle is expensive, but is the de facto standard at large enterprises. 
-  Developers need to be aware of the 30 char identifier limit, empty string 
-  equals null and varchar2 can only be made 4000 chars wide.
+* Microsoft SQL Server is not a supported option.
+* Oracle DB is the de facto standard at large enterprises and is fully
+  supported with ownCloud Enterprise Edition only.
 
 File Storage
 ------------
 
-Our main use case is up- and download of files. Sooner or later, that requires 
-scale-out storage. Currently, the options are GPFS or an object store like 
-Ceph/s3 or Openstack/Swift. GPFS is expensive, and our s3 and Swift 
-implementations use temp files which prevents them from scaling adequately.
+While many customers are starting with NFS, sooner or later that requires scale-out storage. Currently the options are GPFS or GlusterFS, or an object store protocol like S3 (supported in Enterprise Edition only) or Swift. S3 also allows access to Ceph Storage.
 
 .. comment: A proof of concept implementation based on 
    [phprados](https://github.com/ceph/phprados) that talks directly to a 
