@@ -11,6 +11,16 @@ remote storage. This allows you to encrypt remote storage, such as Dropbox and
 Google, without having to also encrypt your home storage on your ownCloud 
 server.
 
+.. note:: Starting with ownCloud 9.0 we support Authenticated Encryption for all
+   newly encrypted files. See https://hackerone.com/reports/108082 for more 
+   technical information about the impact.
+   
+   For maximum security make sure to configure external storage with "Check for 
+   changes: Never". This will let ownCloud ignore new files not added via ownCloud, 
+   so a malicious external storage administrator could not add new files to the 
+   storage without your knowledge. Of course, this is not wise if your external 
+   storage is subject to legitimate external changes.
+
 ownCloud server-side encryption encrypts files stored on the ownCloud server, 
 and files on remote storage that is connected to your ownCloud server. 
 Encryption and decryption are performed on the ownCloud server. All files sent 
