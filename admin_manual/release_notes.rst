@@ -10,6 +10,19 @@ Home folder rule is enforced in the user_ldap application in new ownCloud instal
 
 Updates on systems with large datasets will take longer, due to the addition of checksums to the oC database. See `<https://github.com/owncloud/core/issues/22747>`_.
 
+Linux packages are available from our `official download repository <https://download.owncloud.org/download/repositories/stable/owncloud/>`_ . Currently, there are packages available for the following Linux distributions:
+
+* CentOS 7
+* Debian 8
+* openSUSE 13.2
+* openSUSE Leap 42.1
+* SUSE Linux Enterprise Server 12
+* Ubuntu 14.04
+* Ubuntu 15.10
+* Red Hat Enteprise Linux 7
+
+If your distribution is not on this list, see :doc:`installation/source_installation` and :doc:`maintenance/manual_upgrade`.
+
 Changes in 8.2
 --------------
 
