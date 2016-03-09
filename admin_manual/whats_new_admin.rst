@@ -8,6 +8,8 @@ comprehensive list of new features and updates.
 
 ownCloud has many improvements. Some of our new features are:
 
+* Split Linux packaging, dividing ownCloud and dependencies into two separate 
+  packages (:doc:`installation/linux_installation`)
 * Separate encryption for home storage and remote storage; you may encrypt 
   remote storage without encrypting local storage. 
   (:doc:`configuration_files/encryption_configuration`)
