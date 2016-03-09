@@ -8,6 +8,8 @@ Changes in 9.0
 
 Home folder rule is enforced in the user_ldap application in new ownCloud installations; see :doc:`configuration_user/user_auth_ldap`. This affects ownCloud 8.0.10, 8.1.5 and 8.2.0 and up.
 
+Updates on systems with large datasets will take longer, due to the addition of checksums to the oC database. See `<https://github.com/owncloud/core/issues/22747>`_.
+
 Changes in 8.2
 --------------
 
