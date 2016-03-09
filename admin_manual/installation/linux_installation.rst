@@ -2,22 +2,45 @@
 Preferred Linux Installation Method
 ===================================
 
-Installation Quick Start
-------------------------
+Changes in 9.0
+--------------
 
-See the :doc:`system_requirements` for the recommended ownCloud setup and 
-supported platforms.
+Linux distribution packages (from `Open 
+Build Service`_) have been divided into two packages for ownCloud 
+9, ``owncloud-deps`` and ``owncloud-files``. The ``owncloud-files`` package 
+installs only ownCloud, with no Apache, database, or PHP dependencies. To 
+install a complete system, including dependencies (Apache, PHP) install the 
+metapackage ``owncloud``.
 
-Installing ownCloud Server (the free community edition) on Linux from our `Open 
-Build Service`_ packages is the preferred method. These are maintained by 
-ownCloud engineers, and you can use your package manager to keep your ownCloud 
-server up-to-date.  Follow the instructions for your distro to add the ownCloud 
-Open Build Service repository, download and install the repository signing key, 
-and install ownCloud. Then run the Installation Wizard to complete your 
-installation. (see :doc:`installation_wizard`).
+Split packages are available for the following Linux distributions:
+
+* CentOS 7                      
+* Debian 8 
+* RHEL 7 
+* SLES 12 
+* Ubuntu 14.04, 15.10
+* openSUSE 13.2, Leap 42.1
+
+``owncloud-files`` is available for the following distributions. You will 
+have to install your own LAMP stack first. Browse 
+`<http://download.owncloud.org/download/repositories/9.0/owncloud-files/>`_ to 
+find the ``owncloud-files`` package for your distro:
+
+* CentOS 6, 7
+* Debian 7
+* RHEL 6
+* SLES 12
+* Ubuntu 12.04, 14.10
+
+Follow the instructions on the download page to install ownCloud. Then run the 
+Installation Wizard to complete your installation. (see 
+:doc:`installation_wizard`).
 
 .. note:: Do not move the folders provided by these packages after the 
    installation, as this will break updates.
+
+See the :doc:`system_requirements` for the recommended ownCloud setup and 
+supported platforms.
 
 Installing ownCloud Enterprise Subscription
 -------------------------------------------
