@@ -19,9 +19,6 @@ installation. (see :doc:`installation_wizard`).
 .. note:: Do not move the folders provided by these packages after the 
    installation, as this will break updates.
 
-.. _Open Build Service: 
-   https://download.owncloud.org/download/repositories/8.2/owncloud/
-
 Installing ownCloud Enterprise Subscription
 -------------------------------------------
 
@@ -74,3 +71,8 @@ want to use CalDAV or CardDAV clients make sure you have configured the correct
 
 **Note for MySQL/MariaDB environments**: Please refer to :ref:`db-binlog-label`
 on how to correctly configure your environment if you have binary logging enabled.
+
+
+.. _Open Build Service: 
+   https://download.owncloud.org/download/repositories/9.0/owncloud/
+   

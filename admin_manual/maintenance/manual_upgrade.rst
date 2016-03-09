@@ -2,7 +2,7 @@
 Manual ownCloud Upgrade
 =======================
 
-Always start by making a fresh backup & disabling all 3rd party apps.
+Always start by making a fresh backup and disabling all 3rd party apps.
 
 Put your server in maintenance mode. This prevents new logins, locks the 
 sessions of logged-in users, and displays a status screen so users know what is 
@@ -19,34 +19,31 @@ The other way is by entering your ``config.php`` file and changing
    ``config.php`` file. (See :doc:`backup`.)
 2. Download and unpack the latest ownCloud Server release (Archive file) from 
    `owncloud.org/install/`_ into an empty directory outside 
-   of your current installation. For example, if your current ownCloud is 
-   installed in ``/var/www/owncloud/`` you could create a new directory called
-   ``/var/www/owncloud2/``
+   of your current installation.
    
    .. note:: To unpack your new tarball, run:
-      tar xjf owncloud-latest.tar.bz2
+      tar xjf owncloud-[version].tar.bz2
     
 .. note:: Enterprise users must download their new ownCloud archives from 
    their accounts on `<https://customer.owncloud.com/owncloud/>`_
    
 3. Stop your Web server.
 
-4. Rename or move your current ownCloud directory (named ``owncloud/`` if 
-   installed using defaults) to another location.
+4. Rename your current ownCloud directory, for example ``owncloud-old``.
 
-5. This creates a new ``owncloud/`` directory populated with your new server 
-   files. Copy this directory and its contents to the original location of your 
-   old server, for example ``/var/www/``, so that once again you have 
-   ``/var/www/owncloud`` .
+5. Unpacking the new archive creates a new ``owncloud`` directory populated 
+   with your new server files. Copy this directory and its contents to the 
+   original location of your old server, for example ``/var/www/``, so that 
+   once again you have ``/var/www/owncloud``.
 
-6. Copy and paste the ``config.php`` file from your old version of 
-   ownCloud to your new ownCloud version.
+6. Copy the ``config.php`` file from your old ownCloud directory to your new 
+   ownCloud directory.
 
 7. If you keep your ``data/`` directory in your ``owncloud/`` directory, copy 
-   it from your old version of ownCloud to the ``owncloud/`` directory of 
-   your new ownCloud version. If you keep it outside of ``owncloud/`` then 
-   you don't have to do anything with it, because its location is configured in 
-   your original ``config.php``, and none of the upgrade steps touch it.
+   it from your old version of ownCloud to your new ``owncloud/``. If you keep 
+   it outside of ``owncloud/`` then you don't have to do anything with it, 
+   because its location is configured in your original ``config.php``, and 
+   none of the upgrade steps touch it.
 
 8. If you are using 3rd party applications, look in your new ``owncloud/apps/`` 
    directory to see if they are there. If not, copy them from your old ``apps/``
