@@ -10,7 +10,8 @@ Build Service`_) have been divided into two packages for ownCloud
 9, ``owncloud-deps`` and ``owncloud-files``. The ``owncloud-files`` package 
 installs only ownCloud, with no Apache, database, or PHP dependencies. To 
 install a complete system, including dependencies (Apache, PHP) install the 
-metapackage ``owncloud``.
+metapackage ``owncloud``. Install your desired database separately, before you 
+install ownCloud.
 
 Split packages are available for the following Linux distributions:
 
@@ -41,6 +42,23 @@ Installation Wizard to complete your installation. (see
 
 See the :doc:`system_requirements` for the recommended ownCloud setup and 
 supported platforms.
+
+Repos: Stable or Version?
+-------------------------
+
+You may use either of the following repositories for ownCloud 9:
+
+`<https://download.owncloud.org/download/repositories/stable/owncloud/>`_
+`<https://download.owncloud.org/download/repositories/9.0/owncloud/>`_
+
+When you use the Stable repo, you never have to change it as it always tracks 
+the current stable ownCloud version through all major releases: 8.2, 9.0, 
+and so on. (Major releases are indicated by the second number, so 8.0, 8.1, 
+8.2, and 9.0 were all major releases.)
+
+If you wish to track a specific major release, such as 8.2 or 9.0, then use 
+that repo. That way you won't accidentally find yourself looking at an upgrade 
+to the next major release before you're ready.
 
 Installing ownCloud Enterprise Subscription
 -------------------------------------------
