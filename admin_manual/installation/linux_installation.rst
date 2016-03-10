@@ -23,7 +23,7 @@ Split packages are available for the following Linux distributions:
 * openSUSE 13.2, Leap 42.1
 
 ``owncloud-files`` is available for the following distributions. You will 
-have to install your own LAMP stack first. Browse 
+have to install your own LAMP stack first. This allows you to create your own custom LAMP stack without dependency conflicts with the ownCloud package. Browse 
 `<http://download.owncloud.org/download/repositories/9.0/owncloud-files/>`_ to 
 find the ``owncloud-files`` package for your distro:
 
@@ -48,8 +48,8 @@ Repos: Stable or Version?
 
 You may use either of the following repositories for ownCloud 9:
 
-`<https://download.owncloud.org/download/repositories/stable/owncloud/>`_
-`<https://download.owncloud.org/download/repositories/9.0/owncloud/>`_
+* `<https://download.owncloud.org/download/repositories/stable/owncloud/>`_
+* `<https://download.owncloud.org/download/repositories/9.0/owncloud/>`_
 
 When you use the Stable repo, you never have to change it as it always tracks 
 the current stable ownCloud version through all major releases: 8.2, 9.0, 
