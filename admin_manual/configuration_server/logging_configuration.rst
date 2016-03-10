@@ -33,7 +33,7 @@ date/time is written in the format "*2013-01-10T15:20:25+02:00*". By using the
 date format in the example below, the date/time format will be written in the format
 "*January 10, 2013 15:20:25*".
 
-.. code-block:: php
+::
 
     "log_type" => "owncloud",
     "logfile" => "owncloud.log",
@@ -45,7 +45,7 @@ syslog
 
 All log information will be sent to your default syslog daemon.
 
-.. code-block:: php
+::
 
     "log_type" => "syslog",
     "logfile" => "",

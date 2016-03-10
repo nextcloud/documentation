@@ -37,7 +37,7 @@ Step one, if it has not already been completed by your :abbr:`DBA (DataBase Admi
 space on the Oracle instance for ownCloud.  This can be done by logging in as a
 DBA and running the script below:
 
-.. code-block:: sql
+::
 
   CREATE USER owncloud IDENTIFIED BY password;
   ALTER USER owncloud DEFAULT TABLESPACE users TEMPORARY TABLESPACE temp QUOTA unlimited ON users;
@@ -157,7 +157,7 @@ Assuming all of the steps have been followed to completion, the first run wizard
 
 The configuration file should look something like this:
 
-.. code-block:: php
+::
 
     <?php
     $CONFIG = array (

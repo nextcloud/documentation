@@ -37,7 +37,7 @@ specific and require a high degree of customization.
 The ownCloud instance itself is installed in ``/var/www/owncloud/``.  The
 following aliases are defined in an Apache virtual host directive:
 
-.. code-block:: apache
+::
 
 	# non-Shibboleth access
 	Alias /owncloud /var/www/owncloud/
@@ -283,7 +283,7 @@ Status codes:
 
 Example:
 
-.. code-block:: bash
+::
 
 	$ curl -X DELETE "https://cloud.example.com/ocs/v1.php/cloud/users/myself@testshib.org/non_shib_password" -u admin:admin
 	<?xml version="1.0"?>

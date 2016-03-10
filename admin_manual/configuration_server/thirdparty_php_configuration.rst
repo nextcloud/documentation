@@ -14,7 +14,7 @@ When using third party components, keep the following parameters in mind:
 
 An example of what these parameters might look like is as follows:
 
-.. code-block:: php
+::
 
   <?php
 

@@ -33,7 +33,7 @@ Data Directory
 ~~~~~~~~~~~~~~
 Using the following parameter settings, the "Finish setup" screen requests database and admin credentials settings.
 
-.. code-block:: php
+::
 
     <?php
     $AUTOCONFIG = array(
@@ -45,7 +45,7 @@ SQLite Database
 ~~~~~~~~~~~~~~~
 Using the following parameter settings, the "Finish setup" screen requests data directory and admin credentials settings.
 
-.. code-block:: php
+::
 
     <?php
     $AUTOCONFIG = array(
@@ -58,7 +58,7 @@ MySQL Database
 ~~~~~~~~~~~~~~
 Using the following parameter settings, the "Finish setup" screen requests data directory and admin credentials settings.
 
-.. code-block:: php
+::
 
     <?php
     $AUTOCONFIG = array(
@@ -78,7 +78,7 @@ PostgreSQL Database
 ~~~~~~~~~~~~~~~~~~~
 Using the following parameter settings, the "Finish setup" screen requests data directory and admin credentials settings.
 
-.. code-block:: php
+::
 
     <?php
     $AUTOCONFIG = array(
@@ -99,7 +99,7 @@ All Parameters
 
 Using the following parameter settings, because all parameters are already configured in the file, the ownCloud installation skips the "Finish setup" screen.
 
-.. code-block:: php
+::
 
     <?php
     $AUTOCONFIG = array(

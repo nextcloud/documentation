@@ -18,7 +18,7 @@ You may also put your
 server into this mode by editing :file:`config/config.php`. Change 
 ``"maintenance" => false`` to ``"maintenance" => true``:
 
-.. code-block:: php
+::
 
    <?php
 
