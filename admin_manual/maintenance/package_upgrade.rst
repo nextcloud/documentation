@@ -66,11 +66,11 @@ this until you refresh your ownCloud page.
 Then use ``occ`` to complete the upgrade. You must run ``occ`` as your HTTP 
 user. This example is for Debian/Ubuntu::
 
- sudo -u www-data php occ maintenance:mode --off
- 
-This example is for Fedora/CentOS/Red Hat::
+ sudo -u www-data php occ upgrade
 
- sudo -u apache php occ maintenance:mode --off 
+This example is for CentOS/RHEL/Fedora::
+
+ sudo -u apache php occ upgrade 
 
 .. _migration_test_label:
 
