@@ -33,5 +33,5 @@ Supported Platforms
   only), Linux (CentOS 6.5, 7 (7 is 64-bit only), Ubuntu 12.04 LTS, 14.04 LTS, 
   14.10, Fedora 20, 21, openSUSE 12.3, 13, Debian 7 & 8).
 * Mobile apps: iOS 7+, Android 4+
-* Web browser: IE8+ (except Compatibility Mode), Firefox 14+, Chrome 18+, 
+* Web browser: IE9+ (except Compatibility Mode), Firefox 14+, Chrome 18+, 
   Safari 5+
