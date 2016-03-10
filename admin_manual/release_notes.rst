@@ -10,18 +10,7 @@ Home folder rule is enforced in the user_ldap application in new ownCloud instal
 
 Updates on systems with large datasets will take longer, due to the addition of checksums to the oC database. See `<https://github.com/owncloud/core/issues/22747>`_.
 
-Linux packages are available from our `official download repository <https://download.owncloud.org/download/repositories/stable/owncloud/>`_ . Currently, there are packages available for the following Linux distributions:
-
-* CentOS 7
-* Debian 8
-* openSUSE 13.2
-* openSUSE Leap 42.1
-* SUSE Linux Enterprise Server 12
-* Ubuntu 14.04
-* Ubuntu 15.10
-* Red Hat Enteprise Linux 7
-
-If your distribution is not on this list, see :doc:`installation/source_installation` and :doc:`maintenance/manual_upgrade`.
+Linux packages are available from our `official download repository <https://download.owncloud.org/download/repositories/stable/owncloud/>`_ . New in 9.0: split packages. ``owncloud`` installs ownCloud plus dependencies, including Apache and PHP. ``owncloud-files`` installs only ownCloud. This is useful for custom LAMP stacks, and allows you to install your own LAMP apps and versions without packaging conflicts with ownCloud. See `<installation/linux_installation>`_.
 
 Changes in 8.2
 --------------
