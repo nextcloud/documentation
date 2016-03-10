@@ -111,7 +111,7 @@ are careful, edit these even without knowing PHP or HTML; don't touch any of the
 code, but you can edit the text portions of the messages. For example, this the 
 lost password mail template:
 
-.. code-block:: php
+::
 
   <?php
   
@@ -145,7 +145,7 @@ port 25/tcp will be used unless you change that by modifying the
 **mail_smtpport** parameter. Multiple servers can be entered, separated by
 semicolons:
 
-.. code-block:: php
+::
 
   <?php
 
@@ -155,7 +155,7 @@ semicolons:
 
 or
 
-.. code-block:: php
+::
 
   <?php
 
@@ -166,7 +166,7 @@ or
 If a malware or SPAM scanner is running on the SMTP server it might be
 necessary that you increase the SMTP timeout to e.g. 30s:
 
-.. code-block:: php
+::
 
   <?php
 
@@ -175,7 +175,7 @@ necessary that you increase the SMTP timeout to e.g. 30s:
 If the SMTP server accepts insecure connections, the default setting can be
 used:
 
-.. code-block:: php
+::
 
   <?php
 
@@ -189,7 +189,7 @@ SSL
 A secure connection will be initiated using the outdated SMTPS protocol
 which uses the port 465/tcp:
 
-.. code-block:: php
+::
 
   <?php
 
@@ -201,7 +201,7 @@ TLS
 A secure connection will be initiated using the STARTTLS protocol which
 uses the default port 25/tcp:
 
-.. code-block:: php
+::
 
   <?php
 
@@ -211,7 +211,7 @@ uses the default port 25/tcp:
 And finally it is necessary to configure if the SMTP server requires
 authentication, if not, the default values can be taken as is.
 
-.. code-block:: php
+::
 
   <?php
 
@@ -223,7 +223,7 @@ If SMTP authentication is required you have to set the required username
 and password and can optionally choose between the authentication types
 **LOGIN** (default) or **PLAIN**.
 
-.. code-block:: php
+::
 
   <?php
 
@@ -240,7 +240,7 @@ defined by the configuration settings in the **php.ini** file. (On \*nix
 systems this will most likely be Sendmail.) ownCloud should be able to send
 email out of the box.
 
-.. code-block:: php
+::
 
   <?php
 
@@ -261,7 +261,7 @@ necessary to have an installed and working email system on your \*nix server.
 The sendmail binary (**/usr/sbin/sendmail**) is usually part of that system.
 ownCloud should be able to send email out of the box.
 
-.. code-block:: php
+::
 
   <?php
 
@@ -283,7 +283,7 @@ installed and working qmail email system on your server. The sendmail binary
 (**/var/qmail/bin/sendmail**) will then be used to send email. ownCloud should
 be able to send email out of the box.
 
-.. code-block:: php
+::
 
   <?php
 
@@ -311,7 +311,7 @@ Troubleshooting
 If you are unable to send email, try turning on debugging. Do this by enabling 
 the ``mail_smtpdebug parameter`` in ``config/config.php``.
 
-.. code-block:: php
+::
 
   <?php
 
@@ -328,7 +328,7 @@ where your ownCloud installation is served.  If you have a different mail domain
 name you can override this behavior by setting the following configuration 
 parameter:
 
-.. code-block:: php
+::
 
   <?php
 
@@ -429,7 +429,7 @@ Enabling Debug Mode
 If you are unable to send email, it might be useful to activate further debug
 messages by enabling the mail_smtpdebug parameter:
 
-.. code-block:: php
+::
 
   <?php
 

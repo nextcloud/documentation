@@ -41,7 +41,7 @@ thumbnails.
 
 Set the configuration option ``enable_previews`` in config.php to ``false``:
 
-.. code-block:: php
+::
 
   <?php
     'enable_previews' => false,
@@ -51,7 +51,7 @@ Maximum preview size:
 
 There are two configuration options to set the maximum size of a preview.
 
-.. code-block:: php
+::
 
   <?php
     'preview_max_x' => null,
@@ -61,7 +61,7 @@ By default, both options are set to null. 'Null' is equal to no limit.
 Numeric values represent the size in pixels. The following code limits previews
 to a maximum size of 100×100px:
 
-.. code-block:: php
+::
 
   <?php
     'preview_max_x' => 100,
@@ -76,14 +76,14 @@ If a lot of small pictures are stored on the ownCloud instance and the preview
 system generates blurry previews, you might want to consider setting a maximum 
 scale factor. By default, pictures are upscaled to 10 times the original size:
 
-.. code-block:: php
+::
 
   <?php
     'preview_max_scale_factor' => 10,
 
 If you want to disable scaling at all, you can set the config value to '1':
 
-.. code-block:: php
+::
 
   <?php
     'preview_max_scale_factor' => 1,
@@ -91,7 +91,7 @@ If you want to disable scaling at all, you can set the config value to '1':
 If you want to disable the maximum scaling factor, you can set the config value 
 to 'null':
 
-.. code-block:: php
+::
 
   <?php
     'preview_max_scale_factor' => null,

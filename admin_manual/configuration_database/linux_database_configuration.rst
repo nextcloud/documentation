@@ -65,7 +65,7 @@ If you decide to use a MySQL or MariaDB database, ensure the following:
 
 The PHP configuration in :file:`/etc/php5/conf.d/mysql.ini` could look like this:
 
-.. code-block:: ini
+::
 
   # configuration for PHP MySQL module
   extension=pdo_mysql.so
@@ -94,7 +94,7 @@ To start the MySQL command line mode use::
 
 Then a **mysql>** or **MariaDB [root]>** prompt will appear. Now enter the following lines and confirm them with the enter key:
 
-.. code-block:: sql
+::
 
   CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
   CREATE DATABASE IF NOT EXISTS owncloud;
@@ -110,7 +110,7 @@ name of the database. The :file:`config/config.php` as created by the
 :doc:`../installation/installation_wizard` would therefore contain entries like
 this:
 
-.. code-block:: php
+::
 
   <?php
 
@@ -129,7 +129,7 @@ If you decide to use a PostgreSQL database make sure that you have installed
 and enabled the PostgreSQL extension in PHP. The PHP configuration in :file:`/etc/php5/conf.d/pgsql.ini` could look
 like this:
 
-.. code-block:: ini
+::
 
   # configuration for PHP PostgreSQL module
   extension=pdo_pgsql.so
@@ -150,7 +150,7 @@ To start the postgres command line mode use::
 
 Then a **template1=#** prompt will appear. Now enter the following lines and confirm them with the enter key:
 
-.. code-block:: sql
+::
 
   CREATE USER username CREATEDB;
   CREATE DATABASE owncloud OWNER username;
@@ -165,7 +165,7 @@ and an empty password to access it, and the name of the database. The :file:`con
 created by the :doc:`../installation/installation_wizard` would therefore contain entries like
 this:
 
-.. code-block:: php
+::
 
   <?php
 
@@ -189,7 +189,7 @@ To start the postgres command line mode use::
 
 Then a **postgres=#** prompt will appear. Now enter the following lines and confirm them with the enter key:
 
-.. code-block:: sql
+::
 
   CREATE USER username WITH PASSWORD 'password';
   CREATE DATABASE owncloud TEMPLATE template0 ENCODING 'UNICODE';
@@ -206,7 +206,7 @@ the name of the database. The :file:`config/config.php` as created by the
 :doc:`../installation/installation_wizard` would therefore contain entries like
 this:
 
-.. code-block:: php
+::
 
   <?php
 
@@ -224,7 +224,7 @@ If you are deploying to an Oracle database make sure that you have installed
 and enabled the `Oracle extension <http://php.net/manual/en/book.oci8.php>`_ in PHP. The PHP configuration in
 :file:`/etc/php5/conf.d/oci8.ini` could look like this:
 
-.. code-block:: ini
+::
 
   # configuration for PHP Oracle extension
   extension=oci8.so
@@ -233,7 +233,7 @@ Make sure that the Oracle environment has been set up for the process trying to 
 For a local Oracle XE installation this can be done by exporting the following environment variables
 (eg. in :file:`/etc/apache2/envvars` for Apache)
 
-.. code-block:: bash
+::
 
   export ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe
   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME/lib
@@ -252,7 +252,7 @@ To start the Oracle command line mode with a DBA account use::
 
 After entering the password a **SQL>** prompt will appear. Now enter the following lines and confirm them with the enter key:
 
-.. code-block:: sql
+::
 
   CREATE USER owncloud IDENTIFIED BY password;
   ALTER USER owncloud DEFAULT TABLESPACE users
@@ -280,7 +280,7 @@ name of the database. The :file:`config/config.php` as created by the
 :doc:`../installation/installation_wizard` would therefore contain entries like
 this:
 
-.. code-block:: php
+::
 
   <?php
 

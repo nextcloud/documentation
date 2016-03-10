@@ -235,7 +235,7 @@ Enterprise Server and Red Hat Enterprise Linux.
 The Redis PHP module must be at least version 2.2.5. Please note that 
 the Redis PHP module versions 2.2.5 - 2.2.7 will only work for:
   
-.. code-block:: bash
+::
    
    PHP version 6.0.0 or older
    PHP version 5.2.0 or newer

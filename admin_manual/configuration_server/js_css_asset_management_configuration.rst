@@ -15,7 +15,7 @@ It is not recommended to enable asset-pipelining when using apps pulled via git.
 Parameters
 ----------
 
-.. code-block:: php
+::
 
   <?php
     $CONFIG = array (

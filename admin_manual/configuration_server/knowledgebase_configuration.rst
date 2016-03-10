@@ -10,7 +10,7 @@ Parameters
 If you want to disable the ownCloud help menu item you can use the **knowledgebaseenabled** parameter inside the
 :file:`config/config.php`.
 
-.. code-block:: php
+::
 
   <?php
 

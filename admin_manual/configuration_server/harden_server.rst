@@ -96,7 +96,7 @@ To redirect all HTTP traffic to HTTPS administrators are encouraged to issue a
 permanent redirect using the 301 status code. When using Apache this can be 
 achieved by a setting such as the following in the Apache VirtualHosts config:
 
-.. code-block:: none
+::
 
   <VirtualHost *:80>
      ServerName cloud.owncloud.com

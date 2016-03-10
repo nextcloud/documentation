@@ -45,7 +45,7 @@ call the status.php file on each ownCloud server. This file can be found in the 
 the server, which by default is /owncloud/status.php. If the server is functioning normally, the response
 looks something like this:
 
-.. code-block:: json
+::
 
     {"installed":"true","version":"6.0.0.16","versionstring":"6.0.1","edition":""}
 
