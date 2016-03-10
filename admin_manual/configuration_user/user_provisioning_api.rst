@@ -45,7 +45,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-.. code-block:: xml
+::
 
  <?xml version="1.0"?>
  <ocs>
@@ -83,7 +83,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-.. code-block:: xml
+::
 
   <?xml version="1.0"?>
   <ocs>
@@ -121,7 +121,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-.. code-block:: xml
+::
 
   <?xml version="1.0"?>
   <ocs>
@@ -169,7 +169,7 @@ Examples
 XML Output
 ^^^^^^^^^^
 
-.. code-block:: xml
+::
 
   <?xml version="1.0"?>
   <ocs>
@@ -204,7 +204,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-.. code-block:: xml
+::
 
   <?xml version="1.0"?>
   <ocs>
@@ -238,7 +238,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-.. code-block:: xml
+::
 
   <?xml version="1.0"?>
   <ocs>
@@ -284,7 +284,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-.. code-block:: xml
+::
 
   <?xml version="1.0"?>
   <ocs>
@@ -326,7 +326,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-.. code-block:: xml
+::
 
   <?xml version="1.0"?>
   <ocs>
@@ -367,7 +367,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-.. code-block:: xml
+::
 
   <?xml version="1.0"?>
   <ocs>
@@ -408,7 +408,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-.. code-block:: xml
+::
 
   <?xml version="1.0"?>
   <ocs>
@@ -445,7 +445,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-.. code-block:: xml
+::
 
   <?xml version="1.0"?>
   <ocs>
@@ -488,7 +488,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-.. code-block:: xml
+::
 
   <?xml version="1.0"?>
   <ocs>
@@ -531,7 +531,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-.. code-block:: xml
+::
 
   <?xml version="1.0"?>
   <ocs>
@@ -565,7 +565,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-.. code-block:: xml
+::
 
   <?xml version="1.0"?>
   <ocs>
@@ -606,7 +606,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-.. code-block:: xml
+::
 
   <?xml version="1.0"?>
   <ocs>
@@ -645,7 +645,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-.. code-block:: xml
+::
 
   <?xml version="1.0"?>
   <ocs>
@@ -685,7 +685,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-.. code-block:: xml
+::
 
   <?xml version="1.0"?>
   <ocs>
@@ -724,7 +724,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-.. code-block:: xml
+::
 
   <?xml version="1.0"?>
   <ocs>
@@ -778,7 +778,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-.. code-block:: xml
+::
 
   <?xml version="1.0"?>
   <ocs>
@@ -812,7 +812,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-.. code-block:: xml
+::
 
   <?xml version="1.0"?>
   <ocs>

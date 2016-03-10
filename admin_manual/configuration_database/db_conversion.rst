@@ -15,7 +15,7 @@ Run the conversion
 First setup the new database, here called "new_db_name".
 In ownCloud root folder call
 
-.. code-block:: bash
+::
 
   php occ db:convert-type [options] type username hostname database
 
@@ -32,7 +32,7 @@ apps will not be converted even with option ``--all-apps``
 
 For example
 
-.. code-block:: bash
+::
 
   php occ db:convert-type --all-apps mysql oc_mysql_user 127.0.0.1 new_db_name
 
@@ -48,7 +48,7 @@ Unconvertible Tables
 If you updated your ownCloud installation there might exist old tables, which 
 are not used anymore. The converter will tell you which ones.
 
-.. code-block:: bash
+::
 
 
   The following tables will not be converted:

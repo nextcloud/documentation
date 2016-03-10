@@ -60,7 +60,7 @@ via a multiple domains reverse SSL proxy
 **https://ssl-proxy.tld/domain.tld/owncloud** with the IP address **10.0.0.1**
 you can set the following parameters inside the :file:`config/config.php`.
 
-.. code-block:: php
+::
 
   <?php
   $CONFIG = array (
