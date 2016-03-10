@@ -6,7 +6,7 @@ You may configure the URLs to your own download repositories for your ownCloud
 desktop clients and mobile apps in :file:`config/config.php`. This example shows 
 the default download locations:
 
-.. code-block:: php
+::
 
   <?php
 

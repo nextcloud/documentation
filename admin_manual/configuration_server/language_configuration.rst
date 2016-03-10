@@ -15,7 +15,7 @@ codes.
 Parameters
 ----------
 
-.. code-block:: php
+::
 
   <?php
 

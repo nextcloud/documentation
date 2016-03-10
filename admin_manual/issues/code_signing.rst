@@ -73,7 +73,7 @@ To debug issues caused by the code integrity check click on "List of invalid
 files…", and you will be shown a text document listing the different issues. The 
 content of the file will look similar to the following example:
 
-.. code-block:: text
+::
 
   Technical information
   =====================
