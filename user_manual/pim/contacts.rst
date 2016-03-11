@@ -2,7 +2,7 @@
 Using the Contacts App
 ======================
 
-The Contacts app is not enabled by default in ownCloud 8 and needs to
+The Contacts app is not enabled by default in ownCloud |version| and needs to
 be enabled seperately. It is also not a supported core app. You may ask
 your ownCloud server admin to enable it, and if you are 
 your own admin consult the `Installation > Installing and Managing Apps
@@ -16,8 +16,7 @@ with more functionality.  When you first access the Contacts app, a default
 address book becomes available.
 
 .. figure:: ../images/contacts_empty.png
-
-  **Contacts app (empty)**
+   :alt: Contacts app main screen.
 
 In the Apps Information field for the Contacts app, you can choose to create a
 new contact or a new group.  This field also enables you to filter your contacts
@@ -42,14 +41,12 @@ To import contacts using a VCF file:
 1. At the bottom of the Contacts app information field, locate the gear button.
 
   .. figure:: ../images/contact_bottombar.png
-
-     **Contact settings gear button**
+     :alt: Contact settings gear button.
 
 2. Click the gear button. The Contacts app upload field opens. 
 
   .. figure:: ../images/contact_uploadbutton.png
-
-   **Contacts app upload field**
+     :alt: Contacts app upload field.
 
 3. Choose an address book to which you want to import contacts by clicking the
 checkbox next to the address book.
@@ -90,11 +87,9 @@ include the following:
 7. Once you have selected the appropriate files, click the `Open`` button.
 
   .. figure:: ../images/contact_vcfpick.jpg
+     :alt: Selecting VCF files.
 
-    **Selecting VCF files**
-
-    The interface automatically places your contacts into ownCloud.
-
+The interface automatically places your contacts into ownCloud.
 
 Creating Contacts Manually
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -108,6 +103,7 @@ To create a new contact:
    An empty new contact configuration opens in the Application View field.
   
   .. figure:: ../images/contact_new.png
+     :alt: Addin a new contact.
   
 2. Specify the new contact information as follows:
 
@@ -174,8 +170,7 @@ Defining a Contact Avatar
 By default, new contacts receive a letter avatar (picture) of "U" (for "User").
 
 .. figure:: ../images/contact_picture_default.png
-
-  **Contact picture (default)**
+   :alt: Default contact picture.
 
 When you specify the name of a contact, the avatar reflects the name by adopting
 the first letter of the name you provide.  For example, if you were to specify
@@ -185,8 +180,7 @@ that start with the same first letter, the avatar uses the same letter but
 changes color to indicate the difference.
  
 .. figure:: ../images/contact_picture.png
-
-  **Contact picture (dynamic change)**
+   :alt: New contact picture.
 
 Customizing an Avatar
 ~~~~~~~~~~~~~~~~~~~~~
@@ -210,8 +204,7 @@ After you have selected an image for your contact, the Contacts app enables you
 to crop the picture.
 
 .. figure:: ../images/contact_crop.jpg
-
-   **Cropping contact image**
+   :alt: Cropping contact image.
 
 To crop the image:
 
@@ -232,8 +225,7 @@ available address books, certain options for each address book, and enables you
 to create new address books.
 
 .. figure:: ../images/contacts_settings.png
-
-   **Contacts settings**
+   :alt: Contacts settings.
 
 The Contacts settings enables you to share, export, edit, and delete address 
 books.
@@ -250,8 +242,7 @@ To add an address book:
   A field opens requesting you to enter a display name for the new address book.
   
   .. figure:: ../images/contact_address_book_add.png
-
-    **Adding an address book**
+     :alt: Adding an address book
 
 
 2. Specify a display name for the address book.

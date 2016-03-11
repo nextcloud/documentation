@@ -2,7 +2,7 @@
 Using the Calendar App
 ======================
 
-The Calendar app is not enabled by default in ownCloud 8 and needs to
+The Calendar app is not enabled by default in ownCloud |version| and needs to
 be enabled seperately. It is also not a supported core app. You may ask
 your ownCloud server admin to enable it, and if you are 
 your own admin consult the `Installation > Installing and Managing Apps
@@ -18,9 +18,8 @@ By default, when you access the Calendar app for the first time, you get a
 "Personal" calendar that you can use or modify as you like.
 
 .. figure:: ../images/calendar_default.png
-
-  **Calendar app (default)**
-
+   :alt: Main calendar app screen.
+   
 The Calendar app contains the following fields and controls:
 
 - Calendar Date Field -- Provides the current date or enables you to select a
@@ -79,8 +78,7 @@ The Calendar app settings provides global configuration that applies to all
 calendars that you have created in the Calendar app.
 
   .. figure:: ../images/calendar_settings.png
-
-    **Calendar app settings**
+     :alt: Calendar app settings.
 
 In the Calendar app settings, you can modify the following:
 
@@ -117,21 +115,24 @@ using the address provided.
 Getting the CalDAV link 
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-The GUI of ownCloud provides you the needed links which can be used in your CalDAV-compatible
-program. Open up the Calendar App and use the |caldavlink| icon next to the calendar name as
-shown in the figure below:
+The GUI of ownCloud provides the needed links which can be used in your 
+CalDAV-compatible program. Open up the Calendar App and use the |caldavlink| 
+icon next to the calendar name as shown in the figure below:
 
 .. figure:: ../images/calendar_caldav_link.png
+   :alt: Caldav link.
 
 Furthermore you can get the Primary CalDAV address as well as the iOS/OS X CalDAV address by
 using the |gear| icon on the bottom left of the Calendar app as shown in the figure below:
 
 .. figure:: ../images/calendar_caldav_ios.png
+   :alt: 
 
 Creating Events
 ---------------
 
-The Calendar app enables you to create new events.
+The Calendar app enables you to schedule events, send 
+invitations, and set reminders.
 
 To create a new event:
 
@@ -140,8 +141,7 @@ To create a new event:
    The ``Create a new event`` dialog box opens.
 
    .. figure:: ../images/calendar_create_event.png
-
-     **Create a new event dialog box**
+      :alt: Creating a new event.
 
 2. Specify a title for the event.
 
@@ -150,94 +150,7 @@ To create a new event:
 4. (Optional) Provide advanced option details.  These details can include the
    event location, the event category, and an event description.
 
-   .. figure:: ../images/calendar_create_event.png
-
-     **Create a new event dialog box**
-
-5. (Optional) Click the Repeating tab to define any repeat settings for the event.
-
-   .. figure:: ../images/calendar_create_event_repeat.png
-
-     **Event Repeating tab**
-
-   The Repeating tab provides the option of not repeating the event(default) or
-   repeating the event daily, weekly, every weekday, biweekly, monthly, or yearly.
-   In addition, by selecting the ``Advanced`` button in the Repeating tab, each
-   repeat option provides different levels of customization to better define your
-   repeat requirements for the event.
-
-   The following table helps to define the options for each repeat rule:
-
-   +-----------------+------------------------------------------------------------------------------------+
-   | Repeat Rule     | Options                                                                            |
-   +=================+====================================================================================+
-   | Does not repeat | n/a                                                                                |
-   +-----------------+------------------------------------------------------------------------------------+
-   | Daily           | Interval - Interval at which the event is repeated                                 |
-   |                 | End - never, by occurrences, by date                                               |
-   +-----------------+------------------------------------------------------------------------------------+
-   | Weekly          | Select weekdays - Weekday(s) on which the event is repeated                        |
-   |                 | Interval - Interval at which the event is repeated                                 |
-   |                 | End - never, by occurrences, by date                                               |
-   +-----------------+------------------------------------------------------------------------------------+
-   | Every Weekday   | Interval - Interval at which the event is repeated                                 |
-   |                 | End - never, by occurrences, by date                                               |
-   +-----------------+------------------------------------------------------------------------------------+
-   | Bi-Weekly       | Interval - Interval at which the event is repeated                                 |
-   |                 | End - never, by occurrences, by date                                               |
-   +-----------------+------------------------------------------------------------------------------------+
-   | Monthly         | Day choice -- by monthday or by weekday                                            |
-   |                 | Events week of month - Weekday selection only; week of month on which event occurs |
-   |                 | Select weekdays - Weekday(s) on which the event is repeated                        |
-   |                 | Interval - Interval at which the event is repeated                                 |
-   |                 | End - never, by occurrences, by date                                               |
-   +-----------------+------------------------------------------------------------------------------------+
-   | Yearly          | Date option - by event's date, by year days, by week number, by day and month      |
-   |                 | Interval - Interval at which the event is repeated                                 |
-   |                 | End - never, by occurrences, by date                                               |
-   +-----------------+------------------------------------------------------------------------------------+
-
-
-.. note:: If you choose all days (Monday through Friday) in the weekview menu,
-  the repeating option automatically sets the repeat rule to "every weekday." If
-  you can divide the interval of the weekview by two, the repeating option
-  automatically sets the repeat rule to "Bi-Weekly".
-
-Sharing Events
---------------
-
-Once an event has been saved, a new tab appears for the event that enables you
-to share it.
-
-.. figure:: ../images/calendar_create_event_share.png
-
-  **Event Share tab**
-
-The options available in the Share tab include the following:
-
-- ``Share with user or group`` field -- Enables you to specify users or groups with whom you want to
-  share the event.
-
-- Share visibility pulldown menu -- Enables you to specify the level of
-  information that is shared.  The possible levels include:
-
-  * Show full event -- Displays full event details to those with whom the
-    event is shared.
-  * Show only busy -- Displays only that you are busy during this event; no
-    event details are provided.
-  * Hide event -- Hides the event from the users or groups specified.
-
-To share an event:
-
-1. Specify the users or groups with whom you want to share (or hide) the event.
-
-2. Define the level of visibility that you want the users or groups to have.
-
-3. (Optional) Click the ``Send Email`` button to share the event details using an email.
-
-4. Click the ``Save event`` button to save your changes.
-
-   The Calendar app saves and closes the event window.
+5. (Optional) Make it a repeating event, invite attendees, and set reminders.
 
 Exporting and Importing Events
 ------------------------------
@@ -248,51 +161,19 @@ or from other calendars.
 Exporting Events and Calendar
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. figure:: ../images/event_export.png
-
-  **Exporting an event**
-
 You can export either a single event or an entire calendar. If you want to export
 a single event, click on the event, select "Advanced" and press the "Export Event" button in the bottom left
-corner. If you want to export an entire calendar, use the |download| icon next to the calendar name as
-shown in the figure below:
-
-.. figure:: ../images/calendar_export.png
-
-  **Exporting calendar**
+corner. If you want to export an entire calendar, use the download icon next to 
+the calendar name.
 
 Importing Events
 ~~~~~~~~~~~~~~~~
 
-.. figure:: ../images/calendar_import.png
-
-  **Importing events**
-
-You can import your calendar as an iCal file using the Files app. The Calendar app
+You can import your calendar as an iCal file using the Files app. The Calendar 
+app
 enables you to import the calendar into a new calendar or into an already existing calendar.
 
 To import your calendar, click the calendar file to open the import dialog.
-
-.. note:: If the progress bar does not work properly, the folder
-          ``apps/calendar/import_tmp/`` might not have write permission.
-
-Deleting an Event
------------------
-
-The Calendar app enables you to delete any event that you create.  To delete a
-calendar event:
-
-1. Click the event in the Calendar app.
-
-   The Edit event dialog box opens.
-
-   .. figure:: ../images/calendar_edit_event.png
-
-     **Edit event dialog box**
-
-2. Click the ``Delete event`` button.
-
-   The Calendar app deletes the event.
 
 Special CalDAV URLs
 -------------------
