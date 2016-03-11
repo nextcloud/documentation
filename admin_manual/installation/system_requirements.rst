@@ -35,3 +35,6 @@ Supported Platforms
 * Mobile apps: iOS 7+, Android 4+
 * Web browser: IE9+ (except Compatibility Mode), Firefox 14+, Chrome 18+, 
   Safari 5+
+
+See :doc:`source_installation` for minimum software versions for installing 
+ownCloud.
