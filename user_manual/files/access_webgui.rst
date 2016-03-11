@@ -2,7 +2,7 @@
 Accessing your Files Using the ownCloud Web Interface
 =====================================================
 
-You can access your ownCloud files with the ownCloud web interface and create, 
+You can access your ownCloud files with the ownCloud Web interface and create, 
 preview, edit, delete, share, and re-share files. Your ownCloud administrator 
 has the option to disable these features, so if any of them are missing on your 
 system ask your server administrator.
@@ -16,7 +16,8 @@ Tagging Files
 
 New for 9.0: file tagging. You can assign tags to files. To create tags, open a 
 file to the Details view. Then type your tags. To enter more than one tag press 
-the return key after creating each tag.
+the return key after creating each tag. All tags are system tags, and are 
+shared by all users on your ownCloud server.
 
 .. figure:: ../images/files_page-7.png
    :alt: Creating file tags.
@@ -24,7 +25,25 @@ the return key after creating each tag.
 Then use the Tags filter on the left sidebar to filter files by tags.
 
 .. figure:: ../images/files_page-8.png
-   :alt: Creating file tags.
+   :alt: Viewing file tags.
+ 
+Comments
+--------
+ 
+New for 9.0: Comments. Use the Details view to add and read comments on any 
+file or folder. Comments are visible to everyone who has access to the file.
+
+.. figure:: ../images/file_menu_comments_2.png
+   :alt: Creating and viewing comments.
+  
+Video Player
+------------
+
+You can play videos in ownCloud with the Video Player app by simply clicking on 
+the file.
+
+.. figure:: ../images/video_player_2.png
+   :alt: Watching a movie.
   
 File Controls
 -------------
