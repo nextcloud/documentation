@@ -101,6 +101,14 @@ If you want your app to be approved, make sure you fulfill all the requirements 
 
 You are encouraged to help review other contributors' apps as well! Every app requires at least two independent reviews so your review of at least 2 (more is better!) other apps will ensure the process continues smoothly. Thank you for participating in this process and being a great ownCloud Community member!
 
+Using the code checker
+^^^^^^^^^^^^^^^^^^^^^^
+Before asking for approval, it is best to check your app code with the code checker, and fix the issues found by the code checker.
+
+.. code-block:: bash
+
+  ./occ app:check-code <app_name>
+  
 Losing a rating
 ^^^^^^^^^^^^^^^
 Apps can lose their rating when:
