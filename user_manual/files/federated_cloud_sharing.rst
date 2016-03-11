@@ -21,7 +21,8 @@ that you type and labels it as "remote". Click on the label.
 .. figure:: ../images/direct-share-1.png
 
 2. When your local ownCloud server makes a successful connection with the remote
-ownCloud server you'll see a confirmation. Your only share option is **Can edit**. Federation shares cannot be re-shared.
+ownCloud server you'll see a confirmation. Your only share option is **Can 
+edit**. 
    
 Click the Share button anytime to see who you have shared your file with. Remove 
 your linked share anytime by clicking the trash can icon. This only unlinks the 

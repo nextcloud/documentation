@@ -13,6 +13,8 @@ Table of Contents
     files/index
     pim/index
     documents
-    bookmarks
     userpreferences
     external_storage/index
+    
+..  removed from 9?    
+..  bookmarks    

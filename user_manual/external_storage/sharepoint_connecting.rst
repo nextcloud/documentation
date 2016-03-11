@@ -1,6 +1,6 @@
-========================
-Connecting to SharePoint
-========================
+==========================================
+Connecting to SharePoint (Enterprise only)
+==========================================
 
 Native SharePoint support has been added to ownCloud Enterprise Subscription as 
 a secondary storage location for SharePoint 2007, 2010 and 2013. To the user, 
@@ -59,8 +59,6 @@ libraries:
 * Select "Use user credentials".
 
 * Click the ``Save`` button, and you're done
-
-.. figure:: ../images/sharepoint-drive-config-user.png
 
 You may elect to use different authentication credentials for some of your 
 SharePoint libraries. For these, you must first select ``use custom 

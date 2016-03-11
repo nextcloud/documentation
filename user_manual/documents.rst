@@ -51,8 +51,6 @@ editing permissions. Multiple users can edit it at the same time, and changes
 appear as they are made. The cursor of each user is the same color as the 
 border color of their user picture.
 
-.. figure:: images/oc_documents_col_edit.png
-
 If a user is not a local user (e.g accessing the file using public link), they
 will be shown as guest in the user list, automatically named Guest 1, Guest 2, 
 and so on. Guests can change their nicknames at any time by clicking on their
@@ -73,13 +71,5 @@ Share a Document
 
 Document sharing has the same options as when sharing other files. While editing 
 a document, you can use the *Share* button to enable other users to edit the 
-document. This button will display all available options to share:
-
-.. figure:: images/oc_documents_share.png
-
-By default, you can enter local users or groups to share with. Checking *Share 
-link* will enable sharing via a public link. Shares can optionally have an 
-expiration date and password. ownCloud will send the public link to users by 
-email by typing each email address into the email field.  Separate multiple 
-email addresses with a space.
+document. This button will display all available options to share.
 

@@ -13,121 +13,31 @@ To access your personal settings:
    .. figure:: images/oc_personal_settings_dropdown.png
       :alt: screenshot of user menu at top-right of ownCloud Web GUI
 
-   **Personal Settings Menu**
+   *Personal Settings Menu*
 
 2. Choose *Personal* from the drop down menu.
-
-   The Personal Settings Page opens in the main viewing window.
 
    .. figure:: images/personal_settings.png
       :alt: screenshot of user's Personal settings page
 
 .. note:: If you are an administrator, you can also manage users and administer 
-   the server by using the related links in the Personal Settings Menu. 
-   However, these links do not appear to a normal user.
+   the server. These links do not appear to a non-admin user.
 
 The options listed in the Personal Settings Page depend on the applications that 
-are enabled by the administrator.  However, some of the default settings for 
-this page include the following:
+are enabled by the administrator.  Some of the features you will see 
+include the following.
 
-Usage and available quota
--------------------------
-
-Appearing at the top of the page, this information provides the amount of space
-used and available for the user (in Megabytes).
-
-.. figure:: images/usage_indicator.png
-   :alt: screenshot of space used/available indicator
-
-Password
---------
-
-Enables you to change your password.  To change your password, you must provide
-your current password along with your new password. When creating a new
-password, ownCloud provides a dynamic password strength indicator for your
-assistance.
-
-.. figure:: images/password_change.png
-   :alt: screenshot of password management form
-
-.. note:: If you would like the ability to recover your password through
-     e-mail, specify your email address in the Email field (see below).
-
-Full Name
----------
-
-Enables you to specify your full name. This name appears at the top of the
-Personal Settings Menu.
-
-   .. figure:: images/full_name.png
-      :alt: screenshot of Full Name form
-
-Email
------
-
-Enables you to specify an email address for use by the ownCloud server and
-administrator in sending you notifications. For information about setting email
-notifications, see "Notifications" below.
-
-.. figure:: images/email_address_personal_settings.png
-   :alt: screenshot of email address form
-
-Profile picture
----------------
-
-Enables you to specify a new avatar (profile image) that identifies you on the
-ownCloud server. By default, the profile picture is the first initial of your
-username. You can choose to keep the letter designation, upload a new image
-from an external source, or select an image from any existing images in your
-ownCloud folders.
-
-.. figure:: images/profile_picture_personal_settings.png
-   :alt: screenshot of profile picture management form
-
-Language
---------
-
-Enables you to change your Web interface language, if you want to override the
-browser settings.
-
-.. figure:: images/language_personal_settings.png
-   :alt: screenshot of language dropdown selector
-
-Notifications
--------------
-
-Enables you to specify what notifications you receive for activities on your
-ownCloud instance. You can choose to receive messages through an email
-notification or online stream notification. In addition, the Notifications
-settings enable you to exclude changes that you make yourself and obtain only
-changes made by others on your account. You can obtain email notifications
-hourly, daily, or weekly.
-
-.. figure:: images/notifications_personal_settings.png
-   :alt: screenshot of notifications management form
-
-Limit notifications to your favorite files
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Since ownCloud 8.1 it is possible to "Limit notifications about creation and
-changes to your favorite files". This means you will no longer receive
-notifications for all files, but only those which are marked as favorite or are
-in a folder that is marked as a favorite.
-
-.. note:: This option is only available for the notification stream at the
-  moment, due to the way the email notifications are generated in ownCloud 8.1.
-
-Save New Documents Location
----------------------------
-
-If your ownCloud server admin has enabled the Documents app, you can specify a 
-location (folder) to which newly created documents are saved.
-
-.. figure:: images/documents_personal_settings.png
-   :alt: screenshot of Documents form
-
-Version
--------
-
-Specifies the ownCloud software version that you are using along with links to
-the ownCloud community, source code, and licensing information.
+* Usage and available quota
+* Manage your profile picture.
+* Full name. You can make this anything you want, as it is separate from your 
+  ownCloud login name, which is unique and cannot be changed.
+* Email address.
+* Lists your Group memberships.
+* Manage your password.
+* Choose the language for your ownCloud interface.
+* Links to desktop and mobile apps.
+* Manage your Activity stream and notifications.
+* Default folder to save new documents to.
+* Your Federated sharing ID.
+* Social sharing links.
+* ownCloud version.
