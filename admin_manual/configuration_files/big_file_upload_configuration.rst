@@ -75,7 +75,7 @@ Apache with mod_fcgid
    Setting ``FcgidMaxRequestInMem`` significantly higher than normal may no longer be
    necessary, once bug #51747 is fixed.
 
-nginx
+NGINX
 ^^^^^
 * `client_max_body_size <http://nginx.org/en/docs/http/ngx_http_core_module.html#client_max_body_size>`_
 * `fastcgi_read_timeout <http://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_read_timeout>`_

@@ -50,14 +50,15 @@ You are accessing this site via HTTP
 server to require using HTTPS instead." Please take this warning seriously; 
 using HTTPS is a fundamental security measure. You must configure your Web 
 server to support it, and then there are some settings in the **Security** 
-section of your ownCloud Admin page to enable. The following manual pages 
+section of your ownCloud Admin page to enable. The following pages 
 describe how to enable HTTPS on the Apache and Nginx Web servers.
 
 :ref:`enabling_ssl_label` (on Apache)
 
 :ref:`use_https_label`
 
-:ref:`nginx_configuration_example`
+`NGINX configuration 
+<https://github.com/owncloud/documentation/wiki/NGINX-Configuration>`_
 
 The test with getenv(\"PATH\") only returns an empty response
 -------------------------------------------------------------
@@ -84,7 +85,7 @@ Further information can be found in our documentation."
 This message is another one which needs to be taken seriously. Please have a look
 at the :ref:`dev-urandom-label` documentation.
 
-Your web server is not yet set up properly to allow file synchronization
+Your Web server is not yet set up properly to allow file synchronization
 ------------------------------------------------------------------------
 
 "Your web server is not yet set up properly to allow file synchronization because
@@ -112,7 +113,8 @@ and an heuristic is running the test which actually reproduces the bug. There
 are distributions such as RHEL/CentOS which have this backport still `pending 
 <https://bugzilla.redhat.com/show_bug.cgi?id=1241172>`_.
 
-Your web server is not set up properly to resolve /.well-known/caldav/ or /.well-known/carddav/
+Your Web server is not set up properly to resolve /.well-known/caldav/ or 
+/.well-known/carddav/
 -----------------------------------------------------------------------------------------------
 
 Both URLs needs to be correctly redirected to the DAV endpoint of ownCloud. Please

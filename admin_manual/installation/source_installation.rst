@@ -398,7 +398,7 @@ your ``php-fpm`` configuration and increase the ``upload_max_filesize`` and
 ``post_max_size`` values. You will need to restart ``php5-fpm`` and your HTTP 
 server in order for these changes to be applied.
 
-**.htaccess notes for Web servers \<> Apache**
+**.htaccess notes for Apache**
 
 ownCloud comes with its own ``owncloud/.htaccess`` file. Because ``php-fpm`` can't 
 read PHP settings in ``.htaccess`` these settings and permissions must be set
@@ -409,14 +409,12 @@ in the ``owncloud/.user.ini`` file.
 Other Web Servers
 -----------------
 
-**Nginx Configuration**
+`NGINX configuration 
+<https://github.com/owncloud/documentation/wiki/NGINX-Configuration>`_
 
-See :doc:`nginx_configuration`
 
-**Yaws Configuration**
+`Other HTTP servers 
+<https://github.com/owncloud/documentation/wiki/Alternate-Web-server-notes>`_
 
-See :doc:`yaws_configuration`
-
-**Hiawatha Configuration**
-
-See :doc:`hiawatha_configuration`
+`Univention Corporate Server installation 
+<https://github.com/owncloud/documentation/wiki/UCS-Installation>`_
