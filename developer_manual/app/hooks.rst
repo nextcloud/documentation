@@ -61,7 +61,7 @@ The hook logic should be in a separate class that is being registered in the :do
             $callback = function($user) {
                 // your code that executes before $user is deleted
             };
-            $userManager->listen('\OC\User', 'preDelete', $callback);
+            $this->userManager->listen('\OC\User', 'preDelete', $callback);
         }
 
     }
