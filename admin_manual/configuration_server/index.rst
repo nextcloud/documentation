@@ -8,7 +8,6 @@ ownCloud Server Configuration
    security_setup_warnings
    occ_command
    activity_configuration
-   antivirus_configuration
    caching_configuration
    background_jobs_configuration   
    config_sample_php_parameters
@@ -25,3 +24,6 @@ ownCloud Server Configuration
    performance_tuning/index
    js_css_asset_management_configuration
    automatic_configuration
+ 
+.. removing until it passes code integrity check 
+.. antivirus_configuration   
