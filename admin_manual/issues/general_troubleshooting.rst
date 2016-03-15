@@ -15,8 +15,7 @@ refer to our community support channels:
    freenode.net, also accessible via `webchat`_
 
 Please understand that all these channels essentially consist of users like you 
-helping each other out. Consider helping others out where you can, to 
-contribute 
+helping each other out. Consider helping others out where you can, to contribute 
 back for the help you get. This is the only way to keep a community like 
 ownCloud healthy and sustainable!
 
@@ -212,12 +211,7 @@ these modules:
 * HttpDavModule
 * X-Sendfile (causing broken downloads if not configured correctly)
 
-3. Mac OS X server
-
-* mod_auth_apple
-* com.apple.webapp.webdavsharing
-
-4. PHP
+3. PHP
 
 * eAccelerator
 
@@ -280,11 +274,10 @@ and if running in a subfolder like ``owncloud``:
 
 For the first case the :file:`.htaccess` file shipped with ownCloud should do
 this work for your when running Apache. You only need to make sure that your
-Web server is using this file. When running nginx please refer to the 
-:ref:`nginx_configuration_example` example.
+Web server is using this file. When running NGINX please refer to
+`NGINX configuration 
+<https://github.com/owncloud/documentation/wiki/NGINX-Configuration>`_
 
-.. note: The following step is important for users using the linux packages
-   / repositories provided by ownCloud.
 
 If your ownCloud instance is installed in a subfolder called ``owncloud`` and
 you're running Apache create or edit the :file:`.htaccess` file within the
