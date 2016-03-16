@@ -25,3 +25,4 @@ ownCloud Server Configuration
    performance_tuning/index
    js_css_asset_management_configuration
    automatic_configuration
+

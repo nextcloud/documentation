@@ -123,8 +123,7 @@ To enable installation from your own apps store:
 2. Set the **appstoreurl** to the URL of your ownCloud apps store.
 
    This parameter is used to set the http path to the ownCloud apps store. The 
-appstore 
-   server must use :abbr:`OCS (Open Collaboration Services)`.
+   appstore server must use :abbr:`OCS (Open Collaboration Services)`.
 
 ::
 
