@@ -250,4 +250,4 @@ On Debian/Mint/Ubuntu, use ``apt-cache`` to see the available
 On CentOS and Fedora, the ``yum`` command shows available and installed version 
 information::
 
- yum find php-pecl-redis
+ yum search php-pecl-redis
