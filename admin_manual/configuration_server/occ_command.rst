@@ -141,8 +141,7 @@ The default is plain text, but it can also be ``json``::
 
 or ``json_pretty``::
 
- root@studio:/var/www/owncloud# sudo -u www-data php occ status 
- --output=json_pretty
+ sudo -u www-data php occ status --output=json_pretty
  {
     "installed": true,
     "version": "9.0.0.19",
@@ -574,7 +573,7 @@ File Operations
  files
   files:cleanup              cleanup filecache
   files:scan                 rescan filesystem
-  files:transfer-ownership   All files and folders are move to another 
+  files:transfer-ownership   All files and folders are moved to another 
                              user - shares are moved as well. (Added in 9.0)
  
 The ``files:scan`` command scans for new files and updates the file cache. You 
@@ -663,8 +662,8 @@ Integrity Check
 Apps which have an official tag MUST be code signed starting with ownCloud 9.0. Unsigned official apps won't be installable anymore. Code signing is optional for all third-party applications::
 
  integrity
-  integrity:check-app                 Check an app integrity using a signature.
-  integrity:check-core                Check a core integrity using a signature.
+  integrity:check-app                 Check app integrity using a signature.
+  integrity:check-core                Check core integrity using a signature.
   integrity:sign-app                  Signs an app using a private key.
   integrity:sign-core                 Sign core using a private key
 
@@ -861,7 +860,7 @@ Use these commands to manage server-wide SSL certificates. These are useful when
  security
   security:certificates         list trusted certificates
   security:certificates:import  import trusted certificate
-  security:certificates:remove  import trusted certificate
+  security:certificates:remove  remove trusted certificate
 
 This example lists your installed certificates::
 
