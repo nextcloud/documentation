@@ -62,7 +62,7 @@ It is not recommended to the user to perform adaptations inside the
 folder ``/themes/example`` because files inside this folder might get
 replaced during the next ownCloud update process.
 
-During an update, files might get changed within the core an settings 
+During an update, files might get changed within the core and settings 
 folders. This could result in problems because your template files will 
 not 'know' about these changes and therefore must be manually merged with
 the updated core file or simply be deleted (or renamed for a test).
@@ -72,7 +72,7 @@ ownCloud version, and you have a ``/themes/MyTheme/settings/templates/apps.php``
 in your template, you must merge the changes that where made within the update
 with the ones you did in your template.
 
-But this is unlikely at least ownCloud aims to give further information in this case.
+But this is unlikely and will be mentioned in the ownCloud release notes if it occurs.
 
 
 How to change images and the logo
