@@ -49,6 +49,8 @@ Is Code Signing Mandatory For Apps?
 Code signing is optional for all third-party applications. Applications 
 with a tag of "Official" on apps.owncloud.com require code signing.
 
+.. _code_signing_fix_warning_label:
+
 Fixing Invalid Code Integrity Messages
 --------------------------------------
 
@@ -58,6 +60,8 @@ ownCloud Web interface:
 
 .. image:: images/code-integrity-notification.png
    :alt: Code integrity warning banner.
+
+.. note:: The yellow banner is only shown for admin users.
 
 Clicking on this link will take you to your ownCloud admin page, which provides 
 the following options:
@@ -172,6 +176,8 @@ https://owncloud.org/support/. After fixing these problems verify by clicking
 Errors
 ------
 
+.. warning:: Please don't modify the mentioned ``signature.json`` itself.
+
 The following errors can be encountered when trying to verify a code signature.
 
 - ``INVALID_HASH``
@@ -189,7 +195,9 @@ The following errors can be encountered when trying to verify a code signature.
 - ``EXTRA_FILE``
 
   - The file does not exist in ``signature.json``. This usually happens when a 
-    file has been removed and ``signature.json`` has not been updated.
+    file has been removed and ``signature.json`` has not been updated. It also
+    happens if you have placed additional files in your ownCloud installation
+    folder.
 
 - ``EXCEPTION``
 

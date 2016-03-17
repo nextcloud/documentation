@@ -11,6 +11,7 @@ Installation
    installation_wizard
    command_line_installation
    apps_management_installation
+   apps_supported
    source_installation
    appliance_installation
    php_54_installation
