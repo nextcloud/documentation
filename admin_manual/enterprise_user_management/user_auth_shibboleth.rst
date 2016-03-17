@@ -82,6 +82,7 @@ Further Shibboleth specific configuration as defined in
 	  |core/img/
 	  |index.php/apps/files_sharing/ajax/publicpreview.php$
 	  |index.php/apps/files/ajax/upload.php$
+	  |index.php/apps/files_sharing/ajax/list.php$
 	  |apps/files/templates/fileexists.html$
 	  |index.php/apps/files/ajax/mimeicon.php$)">
 	  Satisfy Any
@@ -96,6 +97,7 @@ Further Shibboleth specific configuration as defined in
          "/oc-shib/(apps/gallery/templates/slideshow.html$
          |index.php/apps/gallery/ajax/getimages.php
          |index.php/apps/gallery/ajax/thumbnail.php
+         |index.php/apps/gallery/config.public
          |index.php/apps/gallery/ajax/image.php)">
 	  Satisfy Any
 	  Allow from all
