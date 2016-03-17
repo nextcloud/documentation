@@ -22,7 +22,7 @@ apps are enabled go to your Apps page.
 
 You will see which apps are enabled, not enabled, and recommended. You'll also 
 see additional filters, such as Multimedia, Productivity, and Tool for finding 
-more mpps quickly.
+more apps quickly.
 
 Managing Apps
 -------------
