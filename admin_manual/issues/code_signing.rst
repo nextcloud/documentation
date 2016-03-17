@@ -49,7 +49,7 @@ Is Code Signing Mandatory For Apps?
 Code signing is optional for all third-party applications. Applications 
 with a tag of "Official" on apps.owncloud.com require code signing.
 
-.. code_signing_fix_warning_label:
+.. _code_signing_fix_warning_label:
 
 Fixing Invalid Code Integrity Messages
 --------------------------------------

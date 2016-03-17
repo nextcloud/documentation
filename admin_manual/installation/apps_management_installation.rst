@@ -5,11 +5,10 @@ Installing and Managing Apps
 After installing ownCloud, you may provide added functionality by installing 
 applications.
 
-Enterprise Subscription Supported Apps
---------------------------------------
+Supported Apps
+--------------
 
-See :doc:`../enterprise_installation/supported_apps_installation` for a list of 
-supported Enterprise Subscription apps.
+See :doc:`apps_supported` for a list of supported Server and Enterprise Subscription apps.
 
 Viewing Enabled Apps
 --------------------
@@ -39,30 +38,12 @@ Some apps are developed and supported by ownCloud directly. These have an
 **Official** tag. Apps with the **Approved** tag are community-developed and 
 supported; they are maintained by trusted developers, and are under active 
 development. Only **Official** and **Approved** apps are linked on the Apps 
-page.
+page by default.
 
-To understand what an application does, you can click the app name to view a 
-description of the app and any of the app settings in the Application View 
-field.  Clicking the **Enable** button will enable the app.  If the app is not 
-part of the ownCloud installation, it will be downloaded from the app store, 
-installed and enabled. 
+Click the app name to view a description of the app and any of the app settings in the Application View field.  Clicking the **Enable** button will enable the app.  If the app is not part of the ownCloud installation, it will be downloaded from the app store, installed and enabled. 
 
-You can view new, unreviewed or unstable applications in the `ownCloud Apps 
-Store <https://apps.owncloud.com/>`_. Install unsupported apps at your own risk.
-
-To view or install apps from the ownCloud Apps Store:
-
-1. Read about any of the apps in the ownCloud Apps Store and download any that 
-   you like.
-
-2. Extract a downloaded compressed file and place the contents (which should 
-   themselves be contained in a folder with the app name) in the apps folder in 
-   your ownCloud installation, typically ``owncloud/apps``.
-
-3. Ensure the permissions and ownership are similar to the other ownCloud apps. 
-   Typically, access rights are **rwxr-x---**, or **0750** in octal notation, 
-   and the owner and group are your HTTP user. On CentOS this is ``apache``, 
-   Debian/Ubuntu is ``www-data``, and on openSUSE is it ``wwwrun:www``.
+Click the gear icon on the lower left to browse experimental apps in the `ownCloud Apps 
+Store <https://apps.owncloud.com/>`_. Install experimental apps at your own risk.
 
 Sometimes the installation of a third-party app fails silently, possibly because
 ``'appcodechecker' => true,`` is enabled in ``config.php``. When ``appcodechecker`` is 
