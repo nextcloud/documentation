@@ -625,7 +625,7 @@ entries that have no matching entries in the storage table.
 You may transfer all files and shares from one user to another. This is useful 
 before removing a user::
 
- sudo -u www-data php occfiles:transfer-ownership <source-user> 
+ sudo -u www-data php occ files:transfer-ownership <source-user>
  <destination-user>
 
 .. _files_external_label:
