@@ -3,7 +3,7 @@ Code Signing
 ============
 
 .. sectionauthor:: Lukas Reschke <lukas@owncloud.com>
-.. code_signing_label:
+.. _code_signing_label:
 
 ownCloud supports code signing for the core releases, and for ownCloud 
 applications. Code signing gives our users an additional layer of security by 
