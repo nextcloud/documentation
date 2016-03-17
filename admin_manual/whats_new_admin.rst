@@ -25,4 +25,7 @@ ownCloud has many improvements. Some of our new features are:
 * Command-line options added to the Updater app. (:doc:`maintenance/update`)
 * Many new ``occ`` commands. (:doc:`configuration_server/occ_command`)
 * Admin option to enable and disable sharing on external storage mountpoints. (:ref:`external_storage_mount_options_label`)
+* New ``occ`` commands for migrating contacts and calendars from 8.2, 
+  if auto-migration during upgrade fails, and new commands for creating 
+  addressbooks and calendars (:ref:`dav_label`)
 
