@@ -6,11 +6,23 @@ ownCloud |version| Release Notes
 Changes in 9.0
 --------------
 
-Home folder rule is enforced in the user_ldap application in new ownCloud installations; see :doc:`configuration_user/user_auth_ldap`. This affects ownCloud 8.0.10, 8.1.5 and 8.2.0 and up.
+Home folder rule is enforced in the user_ldap application in new ownCloud installations; see
+:doc:`configuration_user/user_auth_ldap`. This affects ownCloud 8.0.10, 8.1.5 and 8.2.0 and up.
 
-Updates on systems with large datasets will take longer, due to the addition of checksums to the oC database. See `<https://github.com/owncloud/core/issues/22747>`_.
+The Calendar and Contacts apps have been rewritten and the CalDAV and CardDAV backends of these
+apps were merged into ownCloud core. During the upgrade existing Calendars and Addressbooks
+are automatically migrated. As a fallback for failed upgrades or an option to test a migration
+``dav:migrate-calendars`` and/or ``dav:migrate-addressbooks`` scripts are available via the
+``occ`` command. See :doc:`configuration_server/occ_command`.
 
-Linux packages are available from our `official download repository <https://download.owncloud.org/download/repositories/stable/owncloud/>`_ . New in 9.0: split packages. ``owncloud`` installs ownCloud plus dependencies, including Apache and PHP. ``owncloud-files`` installs only ownCloud. This is useful for custom LAMP stacks, and allows you to install your own LAMP apps and versions without packaging conflicts with ownCloud. See `<installation/linux_installation>`_.
+Updates on systems with large datasets will take longer, due to the addition of checksums to the
+oC database. See `<https://github.com/owncloud/core/issues/22747>`_.
+
+Linux packages are available from our `official download repository <https://download.owncloud.org/download/repositories/stable/owncloud/>`_ .
+New in 9.0: split packages. ``owncloud`` installs ownCloud plus dependencies, including Apache
+and PHP. ``owncloud-files`` installs only ownCloud. This is useful for custom LAMP stacks, and
+allows you to install your own LAMP apps and versions without packaging conflicts with ownCloud.
+See :doc:`installation/linux_installation`.
 
 Changes in 8.2
 --------------
@@ -49,7 +61,9 @@ in this `blogpost <https://owncloud.org/blog/upgrading-to-owncloud-server-8-2/>`
 Changes in 8.1
 --------------
 
-Use APCu only if available in version 4.0.6 and higher. If you install an older version, you will see a ``APCu below version 4.0.6 is installed, for stability and performance reasons we recommend to update to a newer APCu version`` warning on your ownCloud admin page.
+Use APCu only if available in version 4.0.6 and higher. If you install an older version,
+you will see a ``APCu below version 4.0.6 is installed, for stability and performance
+reasons we recommend to update to a newer APCu version`` warning on your ownCloud admin page.
 
 SMB external storage now based on ``php5-libsmbclient``, which must be downloaded 
 from the ownCloud software repositories (`installation instructions 
@@ -151,7 +165,9 @@ There is no preview icon displayed for text files when the file contains fewer t
 Remote Federated Cloud Share Cannot be Reshared With Local Users
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When you mount a Federated Cloud share from a remote ownCloud server, you cannot re-share it with your local ownCloud users. (See :doc:`configuration_files/federated_cloud_sharing_configuration` to learn more about federated cloud sharing)
+When you mount a Federated Cloud share from a remote ownCloud server, you cannot re-share it with
+your local ownCloud users. (See :doc:`configuration_files/federated_cloud_sharing_configuration` 
+to learn more about federated cloud sharing)
 
 Manually Migrate Encryption Keys after Upgrade
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
