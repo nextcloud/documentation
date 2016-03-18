@@ -17,7 +17,7 @@ For best performance, stability, support, and full functionality we recommend:
 * Red Hat Enterprise Linux 7
 * MySQL/MariaDB
 * PHP 5.4 +
-* Apache 2.4
+* Apache 2.4 with mod_php
 
 Supported Platforms
 -------------------
@@ -25,7 +25,7 @@ Supported Platforms
 * Server: Linux (Debian 7, SUSE Linux Enterprise Server 11 SP3 & 12, 
   Red Hat Enterprise Linux/Centos 6.5 and 7 (7 is 64-bit only), Ubuntu 12.04 
   LTS, 14.04 LTS, 14.10)
-* Web server: Apache 2  
+* Web server: Apache 2 with mod_php
 * Databases: MySQL/MariaDB 5.x; Oracle 11g; PostgreSQL
 * PHP 5.4 + required
 * Hypervisors: Hyper-V, VMware ESX, Xen, KVM
