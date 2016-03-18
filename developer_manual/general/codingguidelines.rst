@@ -32,13 +32,10 @@ The most important labels and their meaning:
 * #p1-urgent #p2-high #p3-medium #p4-low signify the priority of the bug.
 * #Junior Job - these are issues which are relatively easy to solve and ideal for people who want to learn how to code in ownCloud
 * Tags showing the state of the issue or PR, numbered 1-6:
- * #1 - Backlog - (please don't use, we prefer using a backlog milestone)
- * #2 - Triaging - (please don't use, we prefer using the triage label)
- * #3 - To develop - ready to start development on this
- * #4 - Developing - development in progress
- * #5 - To Review - ready for review
- * #6 - Reviewing - review in progress
- * #7 - To Release - reviewed PR that awaits unfreeze of a branch to get merged
+ * #1 - To develop - ready to start development on this
+ * #2 - Developing - development in progress
+ * #3 - To Review - ready for review
+ * #4 - To Release - reviewed PR that awaits unfreeze of a branch to get merged
 * App tags: #app:files #app:user_ldap #app:files_versions and so on. These tags indicate the app that is impacted by the issue or which the PR is related to
 * Settings tags: #settings:personal #settings:apps #settings:admin and so on. These tags indicate the settings area that is impacted by the issue or which the PR is related to
 * db tags: #db:mysql #db:sqlite #db:postgresql and so on. These tags indicate the database that is impacted by the issue or which the PR is related to
