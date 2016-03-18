@@ -23,8 +23,9 @@ Split packages are available for the following Linux distributions:
 * openSUSE 13.2, Leap 42.1
 
 ``owncloud-files`` is available for the following distributions. You will 
-have to install your own LAMP stack first. This allows you to create your own custom LAMP stack without dependency conflicts with the ownCloud package. Browse 
-`<http://download.owncloud.org/download/repositories/9.0/owncloud-files/>`_ to 
+have to install your own LAMP stack first. This allows you to create your own custom LAMP
+stack without dependency conflicts with the ownCloud package. Browse 
+`<http://download.owncloud.org/download/repositories/9.0/owncloud/>`_ to 
 find the ``owncloud-files`` package for your distro:
 
 * CentOS 6, 7
@@ -33,11 +34,16 @@ find the ``owncloud-files`` package for your distro:
 * SLES 12
 * Ubuntu 12.04, 14.10
 
+Repositories for Fedora, openSUSE Tumbleweed and Ubuntu 15.04 were dropped. If you use
+Fedora, the CentOS 7 packages will most likely work (the owncloud-files one at least).
+openSUSE users similarly can rely on LEAP packages for Tumbleweed and Ubuntu 15.04 users
+can use 15.10 ones.
+
 Follow the instructions on the download page to install ownCloud. Then run the 
 Installation Wizard to complete your installation. (see 
 :doc:`installation_wizard`).
 
-.. note:: Do not move the folders provided by these packages after the 
+.. warning:: Do not move the folders provided by these packages after the 
    installation, as this will break updates.
 
 See the :doc:`system_requirements` for the recommended ownCloud setup and 
