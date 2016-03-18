@@ -549,6 +549,10 @@ See :doc:`../configuration_files/encryption_configuration` to learn more.
  
 Federation Sync
 ---------------
+
+.. note::
+  This command is only available when the "Federation" app (``federation``) is
+  enabled.
  
 Synchronize the addressbooks of all federated ownCloud servers::
 
@@ -633,6 +637,10 @@ before removing a user::
 Files External
 --------------
 
+.. note::
+  These commands are only available when the "External storage support" app
+  (``files_external``) is enabled.
+
 Commands for managing external storage::
 
  files_external
@@ -694,6 +702,10 @@ ownCloud 7 to ownCloud 8 and later.
  
 LDAP Commands
 -------------
+
+.. note::
+  These commands are only available when the "LDAP user and group backend" app
+  (``user_ldap``) is enabled.
 
 These LDAP commands appear only when you have enabled the LDAP app. Then 
 you can run the following LDAP commands with ``occ``::
@@ -879,6 +891,10 @@ Remove a certificate::
 Shibboleth Modes (Enterprise only)
 ----------------------------------
 
+.. note::
+  This command is only available when the "Shibboleth user backend" app
+  (``user_shibboleth``) is enabled.
+
 ``shibboleth:mode`` sets your Shibboleth mode to ``notactive``, 
 ``autoprovision``, or ``ssoonly``::
 
@@ -888,6 +904,10 @@ Shibboleth Modes (Enterprise only)
 
 Trashbin
 --------
+
+.. note::
+  This command is only available when the "Deleted files" app
+  (``files_trashbin``) is enabled.
 
 The ``trashbin:cleanup`` command removes the deleted files of the specified 
 users in a space-delimited list, or all users if none are specified.
@@ -1012,6 +1032,10 @@ authentication servers such as LDAP::
  
 Versions
 --------
+
+.. note::
+  This command is only available when the "Versions" app (``files_versions``) is
+  enabled.
 
 Use this command to delete file versions for specific users, or for all users 
 when none are specified::
