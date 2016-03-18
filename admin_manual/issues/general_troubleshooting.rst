@@ -68,16 +68,9 @@ file, or to **Everything** on your ownCloud Admin page. Please see
 :doc:`../configuration_server/logging_configuration` for more information on 
 these log levels.
 
-Some logging - for example JavaScript console logging - needs manually editing 
-the configuration file. Edit :file:`config/config.php` and add 
-``define('DEBUG', 
-true);``::
-
-    <?php
-    define('DEBUG',true);
-    $CONFIG = array (
-        ... configuration goes here ...
-    );
+Some logging - for example JavaScript console logging - needs debugging 
+enabled. Edit :file:`config/config.php` and change ``'debug' => false,`` to 
+``'debug' => true,`` Be sure to change it back when you are finished.
 
 For JavaScript issues you will also need to view the javascript console. All 
 major browsers have developer tools for viewing the console, and you 
