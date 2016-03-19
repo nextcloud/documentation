@@ -116,7 +116,7 @@ are distributions such as RHEL/CentOS which have this backport still `pending
 Your Web server is not set up properly to resolve /.well-known/caldav/ or /.well-known/carddav/
 -----------------------------------------------------------------------------------------------
 
-Both URLs needs to be correctly redirected to the DAV endpoint of ownCloud. Please
+Both URLs need to be correctly redirected to the DAV endpoint of ownCloud. Please
 refer to :ref:`service-discovery-label` for more info.
 
 Some files have not passed the integrity check
