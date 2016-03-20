@@ -24,6 +24,9 @@ and PHP. ``owncloud-files`` installs only ownCloud. This is useful for custom LA
 allows you to install your own LAMP apps and versions without packaging conflicts with ownCloud.
 See :doc:`installation/linux_installation`.
 
+New option for the ownCloud admin to enable or disable sharing on individual external mountpoints
+(see :ref:`external_storage_mount_options_label`). Sharing on such mountpoints is disabled by default.
+
 Changes in 8.2
 --------------
 
