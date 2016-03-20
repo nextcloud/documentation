@@ -8,7 +8,9 @@ users to mount their own external storage services.
 
 ownCloud 9.0 introduces a new set of :ref:`occ commands for managing external storage <files_external_label>`.
 
-Also new in 9.0 is an option for the ownCloud admin to disable sharing on individual external mountpoints (see :ref:`external_storage_mount_options_label`.)
+Also new in 9.0 is an option for the ownCloud admin to enable or disable sharing on individual
+external mountpoints (see :ref:`external_storage_mount_options_label`). Sharing on such
+mountpoints is disabled by default.
 
 Enabling External Storage Support
 ---------------------------------
@@ -75,7 +77,9 @@ individually with the following options:
 
 The **Encryption** checkbox is visible only when the Encryption app is enabled. 
 
-**Enable Sharing** allows the ownCloud admin to enable or disable sharing on individual mountpoints. When sharing is disabled the shares are retained internally, so that you can re-enable sharing and the previous shares become available again.
+**Enable Sharing** allows the ownCloud admin to enable or disable sharing on individual mountpoints.
+When sharing is disabled the shares are retained internally, so that you can re-enable sharing
+and the previous shares become available again. Sharing is disabled by default.
 
 .. figure:: external_storage/images/mount_options.png
    :alt: Additional mount options exposed on mouseover.
