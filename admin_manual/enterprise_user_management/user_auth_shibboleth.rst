@@ -50,96 +50,100 @@ Further Shibboleth specific configuration as defined in
 	#
 	# Load the Shibboleth module.
 	#
-	LoadModule mod_shib /usr/lib64/shibboleth/mod_shib_22.so
-
+	LoadModule mod_shib /usr/lib64/shibboleth/mod_shib_24.so
+	
 	#
 	# Ensures handler will be accessible.
 	#
 	<Location /Shibboleth.sso>
-	  Satisfy Any
-	  Allow from all
+	  AuthType None
+	  Require all granted
 	</Location>
-
+	
 	#
 	# Configure the module for content.
 	#
-	# Shibboleth is disabled for the following location to allow non
-	# Shibboleth webdav access
-	<Location ~ "/oc-shib/remote.php/nonshib-webdav">
-	  Satisfy Any
-	  Allow from all
-	  AuthType None
-	  Require all granted
-	</Location>
-
-	# Shibboleth is disabled for the following location to allow public link
-	# sharing
-	<Location ~
-	  "/oc-shib/(status.php$
-	  |index.php/s/
-	  |public.php$
-	  |cron.php$
-	  |core/img/
-	  |index.php/apps/files_sharing/ajax/publicpreview.php$
-	  |index.php/apps/files/ajax/upload.php$
-	  |index.php/apps/files_sharing/ajax/list.php$
-	  |apps/files/templates/fileexists.html$
-	  |index.php/apps/files/ajax/mimeicon.php$)">
-	  Satisfy Any
-	  Allow from all
-	  AuthType None
-	  Require all granted
-	</Location>
-
-	# Shibboleth is disabled for the following location 
-	# to allow public gallery sharing
-	<Location ~
-         "/oc-shib/(apps/gallery/templates/slideshow.html$
-         |index.php/apps/gallery/ajax/getimages.php
-         |index.php/apps/gallery/ajax/thumbnail.php
-         |index.php/apps/gallery/config.public
-         |index.php/apps/gallery/ajax/image.php)">
-	  Satisfy Any
-	  Allow from all
-	  AuthType None
-	  Require all granted
-	</Location>
-
-	# Shibboleth is disabled for the following location to allow public link
-	# sharing
-	<Location ~ "/oc-shib/.*\.css">
-	  Satisfy Any
-	  Allow from all
-	  AuthType None
-	  Require all granted
-	</Location>
-
-	# Shibboleth is disabled for the following location to allow public link
-	# sharing
-	<Location ~ "/oc-shib/.*\.js">
-	  Satisfy Any
-	  Allow from all
-	  AuthType None
-	  Require all granted
-	</Location>
-
-	# Shibboleth is disabled for the following location to allow public link
-	# sharing
-	<Location ~ "/oc-shib/.*\.woff ">
-	  Satisfy Any
-	  Allow from all
-	  AuthType None
-	  Require all granted
-	</Location>
-
+	
+	#
 	# Besides the exceptions above this location is now under control of
 	# Shibboleth
+	#
 	<Location /oc-shib>
 	  AuthType shibboleth
 	  ShibRequireSession On
 	  ShibUseHeaders Off
 	  ShibExportAssertion On
 	  require valid-user
+	</Location>
+	
+	#
+	# Shibboleth is disabled for the following location to allow non
+	# shibboleth webdav access
+	#
+	<Location ~ "/oc-shib/remote.php/nonshib-webdav">
+	  AuthType None
+	  Require all granted
+	</Location>
+	
+	#
+	# Shibboleth is disabled for the following location to allow public link
+	# sharing
+	#
+	<Location ~ \
+	"/oc-shib/(status.php$\
+	|index.php/s/\
+	|public.php$\
+	|cron.php$\
+	|core/img/\
+	|index.php/apps/files_sharing/ajax/publicpreview.php$\
+	|index.php/apps/files/ajax/upload.php$\
+	|apps/files/templates/fileexists.html$\
+	|index.php/apps/files/ajax/mimeicon.php$\
+	|index.php/apps/files_sharing/ajax/list.php$\
+	|themes/\
+	|index.php/apps/files_pdfviewer/\
+	|apps/files_pdfviewer/)">
+	  AuthType None
+	  Require all granted
+	</Location>
+	
+	#
+	# Shibboleth is disabled for the following location to allow public gallery
+	# sharing
+	#
+	<Location ~ \
+	"/oc-shib/(index.php/apps/gallery/s/\
+	|index.php/apps/gallery/slideshow$\
+	|index.php/apps/gallery/.*\.public)">
+	  AuthType None
+	  Require all granted
+	</Location>
+	
+	#
+	# Shibboleth is disabled for the following location to allow public link
+	# sharing
+	#
+	<Location ~ "/oc-shib/.*\.css">
+	  AuthType None
+	  Require all granted
+	</Location>
+	
+	#
+	# Shibboleth is disabled for the following location to allow public link
+	# sharing
+	#
+	<Location ~ "/oc-shib/.*\.js">
+	  AuthType None
+	  Require all granted
+	</Location>
+	
+	#
+	# Shibboleth is disabled for the following location to allow public link
+	# sharing
+	#
+	<Location ~ "/oc-shib/.*\.woff">
+	  AuthType None
+	  Require all granted
 	</Location>
 
 Depending on the ownCloud Shibboleth app mode, you may need to revisit this
