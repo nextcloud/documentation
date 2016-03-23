@@ -637,6 +637,9 @@ before removing a user::
 Files External
 --------------
 
+These commands replace the ``data/mount.json`` configuration file used in 
+ownCloud releases before 9.0.
+
 .. note::
   These commands are only available when the "External storage support" app
   (``files_external``) is enabled.
@@ -656,11 +659,16 @@ Commands for managing external storage::
   files_external:verify      Verify mount configuration
 
 These commands replicate the functionality in the ownCloud Web GUI, plus two new 
-features:  ``files_external:export`` and ``files_external:import``. Use 
-``files_external:export`` to export all admin mounts to a text file, and 
+features:  ``files_external:export`` and ``files_external:import``. 
+
+Use ``files_external:export`` to export all admin mounts to stdout, and 
 ``files_external:export [user_id]`` to export the mounts of the specified 
-ownCloud user. Use ``files_external:import [filename]`` to import the 
-configuration.
+ownCloud user. 
+
+Use ``files_external:import [filename]`` to import legacy JSON configurations, 
+and to copy external mount configurations to another ownCloud server.
+
+Added in 9.0.
 
 .. _integrity_check_label:
 
