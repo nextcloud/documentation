@@ -29,6 +29,6 @@ Enterprise Subscription Only
     enterprise_server_branding/index
     enterprise_external_storage/index   
     enterprise_user_management/index
-    enterprise_files_drop/index
+    enterprise_file_management/index
     enterprise_logging/index
     enterprise_firewall/index
