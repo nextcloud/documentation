@@ -107,7 +107,7 @@ security risk to expose such sensitive data.
 Debugging Sync Issues
 ^^^^^^^^^^^^^^^^^^^^^
 
-.. note:: The data directory on the server is exclusive to ownCloud and must 
+.. warning:: The data directory on the server is exclusive to ownCloud and must 
    not be modified manually.
 
 Disregarding this can lead to unwanted behaviours like:

@@ -56,7 +56,7 @@ This protects your data on externally hosted storage. The ownCloud
 admin and the storage admin will see only encrypted files when browsing backend 
 storage.  
   
-.. note:: Encryption keys are stored only on the ownCloud server, eliminating
+.. warning:: Encryption keys are stored only on the ownCloud server, eliminating
    exposure of your data to third-party storage providers. The encryption app 
    does **not** protect your data if your ownCloud server is compromised, and it
    does not prevent ownCloud administrators from reading user's files. This 
