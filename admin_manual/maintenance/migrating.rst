@@ -21,7 +21,7 @@ the new location. It is also assumed that the authentication method
 (e.g. LDAP) remains the same after the migration.
 
 
-.. note:: At NO TIME any changes to the **ORIGINAL** system are required
+.. warning:: At NO TIME any changes to the **ORIGINAL** system are required
     **EXCEPT** putting ownCloud into maintenance mode.
 
     This ensures, should anything unforseen happen you can go
