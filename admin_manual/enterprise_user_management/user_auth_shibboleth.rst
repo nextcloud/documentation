@@ -31,7 +31,7 @@ Apache Configuration
 ^^^^^^^^^^^^^^^^^^^^
 
 This is an example configuration as installed and operated on a Linux server
-running the Apache Web server. These configurations are highly operating system
+running the Apache 2.4 Web server. These configurations are highly operating system
 specific and require a high degree of customization.
 
 The ownCloud instance itself is installed in ``/var/www/owncloud/``.  The
@@ -169,7 +169,7 @@ Shibboleth session and allows you to login as an administrator and inspect the
 currently available Apache environment variables. Use this mode to set up the 
 environment mapping for the other modes, and in case you locked yourself out of 
 the system. You can also change the app mode and environment mappings by using 
-the ``occ`` command, eg.::
+the ``occ`` command, like this example on Ubuntu Linux::
 
  $ sudo -u www-data php occ shibboleth:mode notactive
  $ sudo -u www-data php occ shibboleth:mapping --uid login
@@ -208,7 +208,7 @@ variables for display name and email address.
 
 In ownCloud 8.1 the Shibboleth environment variable mapping was stored in
 ``apps/user_shibboleth/config.php``. This file was overwritten on upgrades,
-preventing a seamless upgrade procedure. In ownCloud 8.2 the variables are
+preventing a seamless upgrade procedure. In ownCloud 8.2+ the variables are
 stored in the ownCloud database, making Shibboleth automatically upgradeable.
 
 Shibboleth with Desktop and Mobile Clients
