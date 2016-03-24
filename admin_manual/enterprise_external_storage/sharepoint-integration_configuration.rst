@@ -31,7 +31,7 @@ The supported authentication methods are:
 Enabling the SharePoint Plugin
 ------------------------------
 
-The SharePoint plugin is a native plugin in ownCloud 7 EE, so the first step is 
+The SharePoint plugin is a native plugin, so the first step is 
 to enter the ``Apps`` administration page and enable it.
 
 .. figure:: ../images/app-sharepoint-enable.png
@@ -87,6 +87,10 @@ ownCloud config file found in ``/owncloud/config/config.php``::
 
 Troubleshooting
 ---------------
+
+SharePoint unsharing is handled in the background via Cron. If you remove the 
+sharing option from a Sharepoint mount, it will take a little time for the 
+share to be removed, until the Cron job runs
 
 Turn on Sharepoint app logging by modifying the following line in 
 :file:`apps/sharepoint/lib/sharepoint.php` to ``TRUE``::
