@@ -27,6 +27,8 @@ A successful installation and configuration will populate Apache environment
 variables with at least a unique user id which is then used by the ownCloud
 Shibboleth app to login a user.
 
+See the `documentation Wiki <https://github.com/owncloud/documentation/wiki/Shibboleth-example-configurations>`_ for more configuration examples.
+
 Apache Configuration
 ^^^^^^^^^^^^^^^^^^^^
 
