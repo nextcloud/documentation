@@ -74,7 +74,7 @@ There are two retention engines that further allow you to fine-tune your
 retention settings: **TagBasedRetention** and **UserBasedRetention**. 
 **TagBasedRetention** is the default.
 
-**TagBasedRetention**: This checks ten files that have a particular tag 
+**TagBasedRetention**: This checks files that have a particular tag 
 assigned. Then it checks (depth-first) the children of the tagged item, before 
 continuing with the other tagged items. Children that have already been checked  
 will not be checked a second time.
