@@ -2,118 +2,61 @@
 LDAP Home Connector
 ===================
 
-.. toctree::
-    :maxdepth: 2
-    :hidden:
+The LDAP Home Connector App enables you to configure your ownCloud server 
+to display your users' Windows home directories on their Files pages, 
+just like any other folder. Typically, Windows home directories are stored 
+on a network server in a root folder, such as Users, which then contains 
+individual folders for each user.
 
-The LDAP Home Connector App provides the ability to mount a user’s windows home
-directory to their ownCloud instance.
+You must already have the LDAP app enabled and a working LDAP/Active Directory 
+configuration in ownCloud.
 
-This document assumes the ownCloud Enterprise Subscription has been installed and
-the app has been downloaded from ownCloud.
+Next, configure the root Windows home directory to be mounted on your ownCloud 
+server. Then use the LDAP Home Connector and LDAP app to connect it to ownCloud.
 
+Mount Home Directory
+--------------------
 
-Mount home directory in Ubuntu
-==============================
+Create an entry in :file:`/etc/fstab` for the remote Windows root home 
+directory mount. Store the credentials to access the home directory in a 
+separate file, for example :file:`/etc/credentials`, with the username and 
+password on separate lines, like this::
 
-There are two options to mount the home directory.
+ username=winhomeuser
+ password=winhomepassword
 
-#.  This is not persistent across reboots and will need to be entered after each reboot of the Ubuntu server
+Then add a line like this to :file:`/etc/fstab`, substituting your own server 
+address and filenames::
 
+ //192.168.1.58/share /mnt/share cifs credentials=/etc/credentials,uid=33,gid=33
 
-    *   #mount –t cifs –o username=<user>,password=<password>,uid=www-data,gid=www-data //<ip>/<directory> <directory>
+Configure the LDAP Home Connector
+---------------------------------
 
-        *   #mount –t cifs –o username=ocmount,password=Password01,uid=www-data,gid=www-data //192.168.1.58/share /mnt/share
+Enable the LDAP Home Connector app. Then go to the LDAP Home Connector form 
+on your ownCloud admin page. In the **Display folder as:** field enter the name 
+as you want it to appear on your users' File pages.
 
+Then in the **Attribute name:** field enter the LDAP attribute name that will 
+contain the home directory. Use any LDAP attribute that is not already in use, 
+then save your changes.
 
+.. image:: images/ldap-home-connector-1.png
+   :alt: LDAP Home Connector configuration.
 
-#.  Modifying the /etc/fstab file will keep the mount across reboots
+Configure the LDAP Server
+-------------------------
 
+In Active Directory, open the user profile. Scroll to the **Extensions** 
+section and open the **Attribute Editor** tab
 
-    *   Add the following line to the fstab file
+.. image:: images/ldap-home-connector-2.png
+   :alt: Active Directory Attribute editor.
 
-        *   //<ip>/<directory>
-            <directory>
-            cifs
-            credentials=<credential file>,uid=33,gid=33
+Scroll to the attribute being used (UserSharedFolder in this instance), and 
+click **Edit**.  Enter the users home directory.
 
-            *   //192.168.1.58/share /mnt/share cifs credentials=/etc/credentials,uid=33,gid=33
+.. image:: images/ldap-home-connector-3.png
+   :alt: Editing the LDAP attribute.
 
-    *   Then create a <credential file> with the following
-
-        *   Username=<user>
-        *   Password=<password>
-
-            *   /etc/credentials is as follows:
-
-                .. image:: ../images/ldaphome-1.png
-                    :width: 3.8228in
-                    :height: 0.698in
-
-
-Configure ownCloud
-==================
-
-Install the app
----------------
-
-#.  ftp the app package (eg enterprise_files_ldap_home-x.y.z.tar.bz2) to the apps directory of your ownCloud instance
-
-#.  Decompress the app package
-
-    *   tar jxvf enterprise_files_ldap_home-x.y.z.tar.bz2
-
-#.  The decompression creates an enterprise directory – Under the enterprise directory exists the files_ldap_home directory.
-    Move this to up one level
-
-    *   #cd enterprise
-    *   #mv –R files_ldap_home ..
-
-#.  Login to your ownCloud instance as admin and proceed to the apps page
-
-#.  Find the LDAP Home Connector app on the left and select it
-
-#.  Select “Enable”
-
-    .. image:: ../images/ldaphome-2.png
-
-
-Configure the App
------------------
-
-
-#.  Navigate to the Admin page and scroll to the “LDAP User Home” section
-
-    .. image:: ../images/ldaphome-3.png
-
-#.  Fill in the name that you would like to display the folder to the user as in “Display Folder As”
-
-#.  Fill in the attribute name that will contain the homeDirectory.
-    Use any LDAP attribute that is not already in use, In this document we will use the UserSharedFolder attribute.
-
-#.  Select “Save”
-
-
-Configure the LDAP server
-=========================
-
-#.  In Active directory, open the user profile
-
-#.  Scroll to the “Extensions” section and select the “Attribute Editor” tab
-
-    .. image:: ../images/ldaphome-4.png
-
-#.  Scroll to the attribute being used (UserSharedFolder in this instance)
-
-#.  Select Edit
-
-#.  Enter the user’s home directory (from the mount)
-
-    .. image:: ../images/ldaphome-5.png
-
-#.  Select OK
-
-#.  Select OK at the bottom of the user page
-
-    .. image:: ../images/ldaphome-6.png
-
+Save your changes, and you are finished.
