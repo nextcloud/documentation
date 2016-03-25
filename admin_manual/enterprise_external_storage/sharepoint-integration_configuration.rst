@@ -17,62 +17,65 @@ SharePoint rules.
 
 The plugin uses the Simple Object Access Protocol (SOAP) and WebDAV for the 
 uploads and downloads to talk to SharePoint servers.  Your ownCloud server must 
-have ``php-soap`` or ``php5-soap`` installed. Most Linux distributions and 
-Windows call the package ``php-soap``, though there may be some 
-Linux variants that call it ``php5-soap``. Starting with ownCloud 7.0.2 EE, 
-Linux packages and ownCloud appliances will install ``php5-soap`` as a required 
-dependency.
+have ``php-soap`` or ``php5-soap`` installed. Linux packages and ownCloud 
+appliances will install ``php5-soap`` as a required dependency.
 
 The supported authentication methods are:
 
 * Basic Auth
-* NTLM (Recomended)
-
-Enabling the SharePoint Plugin
-------------------------------
-
-The SharePoint plugin is a native plugin, so the first step is 
-to enter the ``Apps`` administration page and enable it.
-
-.. figure:: ../images/app-sharepoint-enable.png
+* NTLM (Recommended)
    
-Next, enter the ``Admin`` panel to set up SharePoint connections in the 
-``SharePoint Drive Configuration`` section. 
+Creating a Sharepoint Mount
+---------------------------
+   
+Enable the Sharepoint app, and then enter the ``Admin`` panel to set up 
+SharePoint connections in the ``SharePoint Drive Configuration`` section.
 
-.. figure:: ../images/sharepoint-drive-config.png
+Enter your SharePoint Listing credentials. These credentials are not 
+stored in the database, but are used only during plugin setup to list the 
+Document Libraries available per SharePoint site.
 
-* First, enter your SharePoint Listing credentials. These credentials are not 
-  stored in the database, but are used only during plugin setup to list the 
-  Document Libraries available per SharePoint site.
+.. figure:: images/sharepoint-1.png
+   :alt: Listing and global credentials.
 
-* ``Global credentials`` is an optional field. If you fill in this field, these 
-  credentials will be used on on all SharePoint mounts where you select: “Use 
-  global credentials” as the Authentication credentials
+``Global credentials`` is optional. If you fill in these fields, these 
+credentials will be used on on all SharePoint mounts where you select: **Use 
+global credentials** as the authentication credentials.
 
-* Enter your ownCloud mount point in the ``Local Folder Name`` column. This is 
-  the name of the folder that each user will see on the ownCloud filesystem. You 
-  may use an existing folder, or enter a name to create a new mount point
+.. figure:: images/sharepoint-2.png
+   :alt: Creating a new mountpoint.
 
-* Select who will have access to this mountpoint, by default “All users”, or a 
-  user or a group
+Enter your ownCloud mountpoint in the ``Local Folder Name`` column. This is the 
+name of the folder that each user will see on the ownCloud filesystem. You may 
+use an existing folder, or enter a name to create a new mount point
 
-* Enter your SharePoint server URL
+Select who will have access to this mountpoint, by default **All users**, or a 
+user or a group.
 
-* Then click the little refresh icon to the left of the ``Document Library`` 
-  field. If your credentials and URL are correct you'll get a dropdown list of 
-  available SharePoint libraries
+Enter your SharePoint server URL, then click the little refresh icon to the left 
+of the ``Document Library`` field. If your credentials and URL are correct 
+you'll get a dropdown list of available SharePoint libraries. Select the 
+document library you want to mount.
 
-* Select the document library you want to mount
+.. figure:: images/sharepoint-3.png
+   :alt: Selecting auth credentials.
 
-* Select which kind of Authentication credentials you want to use for this 
-  mountpoint. If you select ``use custom credentials``, you will have to enter the 
-  the credentials on this line. Otherwise, the global credentials or the user's 
-  own credentials will be used
+Select which kind of Authentication credentials you want to use for this 
+mountpoint. If you select **Custom credentials** you will have to enter the 
+the credentials on this line. Otherwise, the global credentials or the user's 
+own credentials will be used. Click Save, and you're done
 
-* Click Save, and you're done
+.. Please see ``Connecting to SharePoint`` in the User Manual to learn how to 
+.. use your new SharePoint connections.
 
-Please see ``Connecting to SharePoint`` in the User Manual to learn how to use 
-your new SharePoint connections.
+Enabling Users
+--------------
+
+You may allow your users to create their own Sharepoint mounts on their 
+Personal pages, and allow sharing on these mounts.
+
+.. figure:: images/sharepoint-4.png
+   :alt: Allow user Sharepoint mounts.
 
 Note
 ----
