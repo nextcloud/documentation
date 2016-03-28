@@ -34,7 +34,9 @@ Log-in credentials, save in database
  Credentials are stored in the database, and files can be shared.
  
 User entered, store in database
- User credentials are stored in the database, and files can be shared.
+ Users provide their own login credentials, rather than using admin-supplied 
+ credentials. User credentials are stored in the  database, and files can be 
+ shared.
  
 Global credentials
  Re-usable credentials entered by the admin, files can be shared.
