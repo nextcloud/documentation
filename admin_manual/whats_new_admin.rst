@@ -29,4 +29,12 @@ ownCloud has many improvements. Some of our new features are:
   if auto-migration during upgrade fails, and new commands for creating 
   addressbooks and calendars (:ref:`dav_label`)
 * New optional second name attribute in the LDAP app, so that user names appear 
-  as ``User Foo (optional 2nd attribute)`` (:ref:`ldap_directory_settings`) 
+  as ``User Foo (optional 2nd attribute)`` (:ref:`ldap_directory_settings`)
+  
+Enterprise Only
+---------------
+
+* Advanced tagging management with the Workflow app 
+  (:doc:`enterprise_file_management/files_tagging`)
+* Advanced authentication backends (:doc:`  
+  enterprise_external_storage/enterprise_only_auth`) 

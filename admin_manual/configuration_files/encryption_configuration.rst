@@ -292,7 +292,8 @@ Before you start your upgrade, put your ownCloud server into
 You must do this to prevent users and sync clients from accessing files before 
 you have completed your encryption migration.
 
-After your upgrade is complete, follow the steps in :ref:`enable_encryption` to 
+After your upgrade is complete, follow the steps in 
+:ref:`enable_encryption_label` to 
 enable the new encryption system. Then click the **Start Migration** button on 
 your Admin page to migrate your encryption keys, or use the ``occ`` command. We 
 strongly recommend using the ``occ`` command; the **Start Migration** button is 
