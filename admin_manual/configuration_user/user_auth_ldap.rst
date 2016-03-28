@@ -24,10 +24,11 @@ The LDAP application supports:
 * Support for primary groups in Active Directory
 * Auto-detection of LDAP attributes such as base DN, email, and the LDAP server 
   port number
-* Only read access to your LDAP (edit or delete of users on your LDAP is not supported)
+* Only read access to your LDAP (edit or delete of users on your LDAP is not  
+  supported)
 
-.. warning:: The LDAP app is not compatible with the ``User backend using remote HTTP servers`` app. 
-   You cannot use both of them at the same time.
+.. warning:: The LDAP app is not compatible with the ``User backend using remote 
+   HTTP servers`` app. You cannot use both of them at the same time.
 
 .. note:: A non-blocking or correctly configured SELinux setup is needed
    for the LDAP backend to work. Please refer to the :ref:`selinux-config-label`.
@@ -53,6 +54,7 @@ to auto-detect the server's port and base DN. The base DN and port are
 mandatory, so if ownCloud cannot detect them you must enter them manually.
 
 .. figure:: ../images/ldap-wizard-1-server.png
+   :alt: LDAP wizard, server tab
 
 Server configuration:
   Configure one or more LDAP servers. Click the **Delete Configuration** 
@@ -106,15 +108,13 @@ User Filter
 ^^^^^^^^^^^
 
 Use this to control which LDAP users are listed as ownCloud users on your 
-ownCloud server. In order to control which LDAP users can login to your 
-ownCloud 
-server use the Login filter. Those LDAP users who have access but are not 
-listed 
-as users (if there are any) will be hidden users. You may bypass the form 
-fields 
+ownCloud server. In order to control which LDAP users can login to your ownCloud 
+server use the Login filter. Those LDAP users who have access but are not listed 
+as users (if there are any) will be hidden users. You may bypass the form fields 
 and enter a raw LDAP filter if you prefer.
 
 .. figure:: ../images/ldap-wizard-2-user.png
+   :alt: User filter
 
 only those object classes:
   ownCloud will determine the object classes that are typically available for
@@ -147,18 +147,16 @@ Login Filter
 ^^^^^^^^^^^^
 
 The settings in the Login Filter tab determine which LDAP users can log in to 
-your
-ownCloud system and which attribute or attributes the provided login name is 
-matched
-against (e.g. LDAP/AD username, email address). You may select multiple user 
-details.
-(You may bypass the form fields and enter a raw LDAP filter if you prefer.)
+your ownCloud system and which attribute or attributes the provided login name 
+is matched against (e.g. LDAP/AD username, email address). You may select 
+multiple user details. (You may bypass the form fields and enter a raw LDAP 
+filter if you prefer.)
 
-You may override your User Filter settings on the User Filter tab by using a 
-raw 
+You may override your User Filter settings on the User Filter tab by using a raw 
 LDAP filter.
 
 .. figure:: ../images/ldap-wizard-3-login.png
+   :alt: Login filter
 
 LDAP Username:
   If this value is checked, the login value will be compared to the username in
@@ -202,6 +200,7 @@ group filter tab determine which groups will be available in ownCloud. You may
 also elect to enter a raw LDAP filter instead.
 
 .. figure:: ../images/ldap-wizard-4-group.png
+   :alt: Group filter
 
 only those object classes:
   ownCloud will determine the object classes that are typically available for
@@ -246,8 +245,7 @@ Connection Settings
 ^^^^^^^^^^^^^^^^^^^
 
 .. figure:: ../images/ldap-advanced-1-connection.png
-
-   LDAP Advanced Settings, section Connection Settings
+   :alt: Advanced settings
 
 Configuration Active:
   Enables or Disables the current configuration. By default, it is turned off. 
@@ -297,17 +295,23 @@ Cache Time-To-Live:
 See the Caching section below for detailed information on how the cache 
 operates.
 
+.. _ldap_directory_settings:
+
 Directory Settings
 ^^^^^^^^^^^^^^^^^^^
 
 .. figure:: ../images/ldap-advanced-2-directory.png
-
-   LDAP Advanced Settings, section Directory Settings
+   :alt: Directory settings.
 
 User Display Name Field:
   The attribute that should be used as display name in ownCloud.
 
   *  Example: *displayName*
+  
+2nd User Display Name Field:  
+  An optional second attribute displayed in brackets after the display name, 
+  for example using the ``mail`` attribute displays as ``Molly Foo 
+  (molly@example.com)``.
 
 Base User Tree:
   The base DN of LDAP, from where all users can be reached. This must be a 
@@ -377,8 +381,7 @@ Special Attributes
 ^^^^^^^^^^^^^^^^^^
 
 .. figure:: ../images/ldap-advanced-3-attributes.png
-
-   LDAP Advanced Settings, section Special Attributes
+   :alt: Special Attributes.
 
 Quota Field:
   ownCloud can read an LDAP attribute and set the user quota according to its
@@ -418,6 +421,7 @@ Expert Settings
 ---------------
 
 .. figure:: ../images/ldap-expert.png
+   :alt: Expert settings.
 
 In the Expert Settings fundamental behavior can be adjusted to your needs. The
 configuration should be well-tested before starting production use.
@@ -501,8 +505,7 @@ avatar (on their Personal page) as it must be changed in LDAP. *jpegPhoto* is
 preferred over *thumbnailPhoto*.
 
 .. figure:: ../images/ldap-fetched-avatar.png
-
-   Profile picture fetched from LDAP
+   :alt: Profile picture fetched from LDAP.
 
 If the *jpegPhoto* or *thumbnailPhoto* attribute is not set or empty, then 
 users can upload and manage their avatars on their ownCloud Personal pages. 
