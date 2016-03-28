@@ -16,7 +16,8 @@ server.
    technical information about the impact.
    
    For maximum security make sure to configure external storage with "Check for 
-   changes: Never". This will let ownCloud ignore new files not added via ownCloud, 
+   changes: Never". This will let ownCloud ignore new files not added via 
+ownCloud, 
    so a malicious external storage administrator could not add new files to the 
    storage without your knowledge. Of course, this is not wise if your external 
    storage is subject to legitimate external changes.
@@ -65,7 +66,8 @@ storage.
    it is better to use other encryption tools, such as file-level or 
    whole-disk encryption. 
    
-   Note also that SSL terminates at or before Apache on the ownCloud server, and 
+   Note also that SSL terminates at or before Apache on the ownCloud server, 
+and 
    all files will exist in an unencrypted state between the SSL connection 
    termination and the ownCloud code that encrypts and decrypts files. This is 
    also potentially exploitable by anyone with administrator access to your 
@@ -127,7 +129,8 @@ log-out and log-in again."
 Share owners may need to re-share files after encryption is enabled; users 
 trying to access the share will see a message advising them to ask the share 
 owner to re-share the file with them. For individual shares, un-share and 
-re-share the file. For group shares, share with any individuals who can't access 
+re-share the file. For group shares, share with any individuals who can't 
+access 
 the share. This updates the encryption, and then the share owner can remove the 
 individual shares.
 
@@ -271,3 +274,47 @@ their back-end password, and then, of course, notify the user and give them
 their new password.
 
 .. _upgrading_encryption_label:
+
+Encryption migration to ownCloud 8.0
+------------------------------------
+
+When you upgrade from older versions of ownCloud to ownCloud 8.0, you must 
+manually migrate
+your encryption keys with the *occ* command after the upgrade is complete, like 
+this
+example for CentOS: *sudo -u apache php occ encryption:migrate-keys* You must 
+run *occ* as
+your HTTP user. See :doc:`../configuration_server/occ_command` to learn more 
+about *occ*.
+
+Encryption migration to ownCloud 8.1
+------------------------------------
+
+The encryption backend has changed in ownCloud 8.1 again, so you must take some 
+additional steps to migrate encryption correctly. If you do not follow these 
+steps you may not be able to access your files.
+
+Before you start your upgrade, put your ownCloud server into 
+``maintenance:singleuser`` mode (See :doc:`../maintenance/enable_maintenance`.) 
+You must do this to prevent users and sync clients from accessing files before 
+you have completed your encryption migration.
+
+After your upgrade is complete, follow the steps in 
+:ref:`enable_encryption_label` to 
+enable the new encryption system. Then click the **Start Migration** button on 
+your Admin page to migrate your encryption keys, or use the ``occ`` command. We 
+strongly recommend using the ``occ`` command; the **Start Migration** button is 
+for admins who do not have access to the console, for example installations on 
+shared hosting. This example is for Debian/Ubuntu Linux::
+
+ $ sudo -u www-data php occ encryption:migrate
+ 
+This example is for Red Hat/CentOS/Fedora Linux::
+
+ $ sudo -u apache php occ encryption:migrate
+ 
+You must run ``occ`` as your HTTP user; see 
+:doc:`../configuration_server/occ_command`.
+
+When you are finished, take your ownCloud server out of 
+``maintenance:singleuser`` mode.
