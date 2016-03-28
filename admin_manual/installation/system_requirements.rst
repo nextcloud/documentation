@@ -26,7 +26,7 @@ Supported Platforms
   Red Hat Enterprise Linux/Centos 6.5 and 7 (7 is 64-bit only), Ubuntu 12.04 
   LTS, 14.04 LTS, 14.10)
 * Web server: Apache 2 with mod_php
-* Databases: MySQL/MariaDB 5.x; Oracle 11g; PostgreSQL
+* Databases: MySQL/MariaDB 5.5+; Oracle 11g; PostgreSQL
 * PHP 5.4 + required
 * Hypervisors: Hyper-V, VMware ESX, Xen, KVM
 * Desktop: Windows XP SP3 (EoL Q2 2015), Windows 7+, Mac OS X 10.7+ (64-bit 
