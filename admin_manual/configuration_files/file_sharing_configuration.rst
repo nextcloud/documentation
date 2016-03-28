@@ -104,3 +104,6 @@ Policy app. This allows you to enforce password length, required characters,
 define special characters, and expiration dates on share links.
 
 .. figure:: images/sharing-files-2.png
+
+Note that you cannot use Emojis as special characters with MySQL, as it 
+supports UTF8 characters only of 1-3 bytes, and emojis require 4 bytes.
