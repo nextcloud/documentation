@@ -28,4 +28,5 @@ ownCloud has many improvements. Some of our new features are:
 * New ``occ`` commands for migrating contacts and calendars from 8.2, 
   if auto-migration during upgrade fails, and new commands for creating 
   addressbooks and calendars (:ref:`dav_label`)
-
+* New optional second name attribute in the LDAP app, so that user names appear 
+  as ``User Foo (optional 2nd attribute)`` (:ref:`ldap_directory_settings`) 
