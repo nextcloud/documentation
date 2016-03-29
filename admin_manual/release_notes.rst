@@ -111,7 +111,7 @@ anymore for most requests.
   
 When you upgrade from ownCloud 8.0, with encryption enabled, to 8.1, you must 
 enable the new encryption backend and migrate your encryption keys. See 
-:doc:`configuration_files/encryption_configuration`
+:ref:`upgrading_encryption_label`.
 
 Encryption can no longer be disabled in ownCloud 8.1. It is planned to re-add
 this feature to the command line client for a future release.
@@ -176,10 +176,8 @@ Manually Migrate Encryption Keys after Upgrade
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you are using the Encryption app and upgrading from older versions of 
-ownCloud to ownCloud 8.0, you must manually migrate your encryption keys with 
-the *occ* command after the upgrade is complete, like this example for CentOS: 
-*sudo -u apache php occ encryption:migrate* You must run *occ* as your HTTP 
-user. See :doc:`../configuration_server/occ_command` to learn more about *occ*
+ownCloud to ownCloud 8.0, you must manually migrate your encryption keys.
+See :ref:`upgrading_encryption_label`.
 
 Windows Server Not Supported
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -76,4 +76,11 @@ may re-enable them.
    https://download.owncloud.org/download/repositories/8.2/owncloud/
    
 .. _owncloud.org/install/:
-   https://owncloud.org/install/  
+   https://owncloud.org/install/ 
+
+Encryption migration from oC 7.0 to 8.0 and 8.0 to 8.1
+------------------------------------------------------
+
+The encryption backend was changed twice between ownCloud 7.0 and 8.0 as well as
+between 8.0 and 8.1. If you're upgrading from these older versions please refer to 
+:ref:`upgrading_encryption_label` for the needed migration steps.
