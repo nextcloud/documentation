@@ -13,9 +13,6 @@ ownCloud has many improvements. Some of our new features are:
 * Separate encryption for home storage and remote storage; you may encrypt 
   remote storage without encrypting local storage. 
   (:doc:`configuration_files/encryption_configuration`)
-* Password policy app for share links, for setting password requirements such 
-  as minimum length and required characters (Enterprise only).
-  (:ref:`password_policy_label`)
 * New command to transfer files from one user to another. 
   (:ref:`transfer_userfiles_label`)
 * Streamlined Federation sharing with user and group name auto-fill. See 
@@ -34,7 +31,10 @@ ownCloud has many improvements. Some of our new features are:
 Enterprise Only
 ---------------
 
-* Advanced tagging management with the Workflow app 
+* Advanced tagging management with the Workflow app. 
   (:doc:`enterprise_file_management/files_tagging`)
-* Advanced authentication backends 
-  (:doc:`enterprise_external_storage/enterprise_only_auth`) 
+* Advanced authentication backends. 
+  (:doc:`enterprise_external_storage/enterprise_only_auth`)
+* Password policy app for share links, for setting password requirements such 
+  as minimum length and required characters.
+  (:ref:`password_policy_label`)  
