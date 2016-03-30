@@ -15,12 +15,11 @@ server.
    newly encrypted files. See https://hackerone.com/reports/108082 for more 
    technical information about the impact.
    
-   For maximum security make sure to configure external storage with "Check for 
-   changes: Never". This will let ownCloud ignore new files not added via 
-ownCloud, 
-   so a malicious external storage administrator could not add new files to the 
-   storage without your knowledge. Of course, this is not wise if your external 
-   storage is subject to legitimate external changes.
+   For maximum security make sure to configure external storage with "Check for
+   changes: Never". This will let ownCloud ignore new files not added via
+   ownCloud, so a malicious external storage administrator could not add new
+   files to the storage without your knowledge. Of course, this is not wise if
+   your external storage is subject to legitimate external changes.
 
 ownCloud server-side encryption encrypts files stored on the ownCloud server, 
 and files on remote storage that is connected to your ownCloud server. 
@@ -66,13 +65,12 @@ storage.
    it is better to use other encryption tools, such as file-level or 
    whole-disk encryption. 
    
-   Note also that SSL terminates at or before Apache on the ownCloud server, 
-and 
-   all files will exist in an unencrypted state between the SSL connection 
-   termination and the ownCloud code that encrypts and decrypts files. This is 
-   also potentially exploitable by anyone with administrator access to your 
-   server. Read `How ownCloud uses encryption to protect your data 
-   <https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your- 
+   Note also that SSL terminates at or before Apache on the ownCloud server,
+   and all files will exist in an unencrypted state between the SSL connection
+   termination and the ownCloud code that encrypts and decrypts files. This is
+   also potentially exploitable by anyone with administrator access to your
+   server. Read `How ownCloud uses encryption to protect your data
+   <https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your-
    data/>`_ for more information.
    
 Before Enabling Encryption
