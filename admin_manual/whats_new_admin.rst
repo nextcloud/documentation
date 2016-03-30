@@ -36,5 +36,5 @@ Enterprise Only
 
 * Advanced tagging management with the Workflow app 
   (:doc:`enterprise_file_management/files_tagging`)
-* Advanced authentication backends (:doc:`  
-  enterprise_external_storage/enterprise_only_auth`) 
+* Advanced authentication backends 
+  (:doc:`enterprise_external_storage/enterprise_only_auth`) 
