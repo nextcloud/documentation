@@ -74,6 +74,9 @@ distributions it is enabled by default. However, it does
 not bundle a data cache. APCu is a data cache, and it is available in most 
 Linux distributions. On Red Hat/CentOS/Fedora systems running PHP 5.5 and up 
 install ``php-pecl-apcu``. On Debian/Ubuntu/Mint systems install ``php5-apcu``. 
+On Ubuntu 14.04LTS, APCu version is 4.0.2, which is a too old version for working with Owncloud. 
+Nevertheless, Ubuntu backports ships 4.0.7. You can simply Install it with the command: 
+``apt-get install php5-apcu/trusty-backports``
 Then restart your Web server.
  
 The version of APCu must be 4.0.6 and up.
