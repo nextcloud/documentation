@@ -1381,6 +1381,16 @@ shared files.
 
 ::
 
+	'filelocking.ttl' => 3600,
+
+Set the time-to-live for locks in secconds.
+
+Any lock older than this will be automatically cleaned up.
+
+If not set this defaults to either 1 hour or the php max_execution_time, whichever is higher.
+
+::
+
 	'memcache.locking' => '\\OC\\Memcache\\Redis',
 
 Memory caching backend for file locking
