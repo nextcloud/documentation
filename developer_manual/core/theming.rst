@@ -104,6 +104,16 @@ Just insert the new created picture by using the unchanged name of the old pictu
 
 The app icons can also be overwritten in a theme. To change for example the app icon of the activity app you need to overwrite it by saving the new image to …/owncloud/themes/default/apps/activity/img/activity.svg
 
+Changing favicon
+----------------
+For compatibility with older browsers, favicon (the image that appears in your browser tab) uses .../owncloud/core/img/favicon.ico.
+
+To customize favicon for MyTheme:
+
+* Create a version of your logo in .ico format
+* Store your custom favicon as .../owncloud/themes/MyTheme/core/img/favicon.ico
+* Include .../owncloud/themes/MyTheme/core/img/favicon.svg and favicon.png to cover any future updates to favicon handling.
+
 Changing the default colours
 ----------------------------
 With a web-developer tool like Mozilla-Inspector, you also get easily displayed the color of the background you clicked on.
