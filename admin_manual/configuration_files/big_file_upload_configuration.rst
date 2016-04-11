@@ -85,11 +85,11 @@ For more info how to configure nginx to raise the upload limits see also `this
 <https://github.com/owncloud/documentation/wiki/Uploading-files-up-to-16GB#configuring-nginx>`_
 wiki entry.
 
-.. note:: For ``client_body_temp_path`` make sure it is pointing to a path/partition which
-   holds enough space for the filesize you want to upload. Also place it at least at the same
-   partition the ``upload_tmp_dir`` or ``tempdirectory`` settings described below are pointing
-   to. For optimal performance ``client_body_temp_path`` and ``upload_tmp_dir/tempdirectory``
-   should be also placed on different devices/hard drives.
+.. note:: Make sure that ``client_body_temp_path`` points to a partition with 
+   adequate space for your upload file size, and on the same partition as
+   the ``upload_tmp_dir`` or ``tempdirectory`` (see below). For optimal 
+   performance, place these on a separate hard drive that is dedicated to 
+   swap and temp storage.
 
 Configuring PHP
 ---------------
