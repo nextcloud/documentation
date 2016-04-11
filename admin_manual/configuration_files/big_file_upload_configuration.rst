@@ -86,7 +86,7 @@ For more info how to configure nginx to raise the upload limits see also `this
 wiki entry.
 
 .. note:: Make sure that ``client_body_temp_path`` points to a partition with 
-   adequate space for your upload file size, and on the same partition as the
+   adequate space for your upload file size, and on the same partition as
    the ``upload_tmp_dir`` or ``tempdirectory`` (see below). For optimal 
    performance, place these on a separate hard drive that is dedicated to 
    swap and temp storage.
