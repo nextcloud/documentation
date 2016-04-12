@@ -3,9 +3,9 @@ Synchronizing with OS X
 
 To use ownCloud with iCal you will need to use the following URL::
 
-    https://example.com/remote.php/dav/principals/username/
+    https://example.com/remote.php/dav/principals/users/USERNAME/
 
-The setup is basically the same as with iOS using the path ``https://example.com/remote.php/dav/principals/username/``
+The setup is basically the same as with iOS using the path ``https://example.com/remote.php/dav/principals/users/USERNAME/``
 to sync with ownCloud. For OS X 10.7 Lion and 10.8 Mountain Lion everything works
 fine, but OS X 10.6 (Snow Leopard) and older needs some fiddling to work. A user
 contributed the following:
@@ -31,7 +31,7 @@ your favorite text editor.
 
 8. Make it look like this. Please note that the :443 after **example.com** is important::
 
-    <key>servername</key <string>https://example.com:443/owncloud/remote.php/dav/principals/username</string> <key>username</key <string>username</string>
+    <key>servername</key <string>https://example.com:443/owncloud/remote.php/dav/principals/users/USERNAME</string> <key>username</key <string>username</string>
 
 9. Save the file and open addressbook again. It will not work yet.
 

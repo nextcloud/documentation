@@ -291,7 +291,7 @@ To synchronize with an Apple iOS device:
 
 5. Select ``Add CardDAV account``.
 
-6. For ``server``, enter https://example.com/remote.php/dav/principals/username
+6. For ``server``, enter https://example.com/remote.php/dav/principals/users/USERNAME/
 
 7. Specify your username and password.
 
