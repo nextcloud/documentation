@@ -316,7 +316,7 @@ SELinux-enabled distributions such as Fedora and CentOS.
 php.ini Configuration Notes
 ---------------------------
 
-Keep in mind that changes to ``php.ini`` may have to be done on more than one 
+Keep in mind that changes to ``php.ini`` may have to be configured on more than one 
 ini file. This can be the case, for example, for the ``date.timezone`` setting.
 
 **php.ini - used by the Web server:**

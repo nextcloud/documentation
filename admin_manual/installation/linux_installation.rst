@@ -5,11 +5,12 @@ Preferred Linux Installation Method
 Changes in 9.0
 --------------
 
-Linux distribution packages (from `Open 
-Build Service`_) have been divided into two packages for ownCloud 
-9, ``owncloud-deps`` and ``owncloud-files``. The ``owncloud-files`` package 
-installs only ownCloud, with no Apache, database, or PHP dependencies. To 
-install a complete system, including dependencies (Apache, PHP) install the 
+Linux distribution packages (from `Open Build Service`_) have been divided into 
+multiple packages for ownCloud 9: ``owncloud-deps-php5``,  
+``owncloud-deps-php7.0``, ``and ``owncloud-files``. The ``owncloud-files`` 
+package installs only ownCloud, with no Apache, database, or PHP dependencies. 
+The ``owncloud-deps`` packages streamline installing appropriate PHP versions. 
+To install a complete system, including dependencies (Apache, PHP) install the 
 metapackage ``owncloud``. Install your desired database separately, before you 
 install ownCloud.
 
@@ -28,7 +29,7 @@ stack without dependency conflicts with the ownCloud package. Browse
 `<http://download.owncloud.org/download/repositories/9.0/owncloud/>`_ to 
 find the ``owncloud-files`` package for your distro:
 
-* CentOS 6, 7
+* CentOS 6
 * Debian 7
 * RHEL 6
 * SLES 12
