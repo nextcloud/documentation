@@ -21,7 +21,7 @@ To upgrade your Enterprise Subscription, refer to
 Manual Installation
 -------------------
 
-Download the ownCloud archive from your account at https://customer.owncloud.com/owncloud, then follow the instructions at :doc:`source_installation`.
+Download the ownCloud archive from your account at https://customer.owncloud.com/owncloud, then follow the instructions at :doc:`../installation/source_installation`.
 
 SELinux
 -------
