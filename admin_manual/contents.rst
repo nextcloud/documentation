@@ -18,17 +18,17 @@ Table of Contents
     operations/index
     issues/index
 
-Enterprise Subscription Only
-----------------------------
+.. Enterprise Subscription Only
+.. ----------------------------
 
-.. toctree::
-    :maxdepth: 3
+.. .. toctree::
+..     :maxdepth: 3
     
-    enterprise_installation/index
-    enterprise_clients/index
-    enterprise_server_branding/index
-    enterprise_external_storage/index   
-    enterprise_user_management/index
-    enterprise_file_management/index
-    enterprise_logging/index
-    enterprise_firewall/index
+..    enterprise_installation/index
+..    enterprise_clients/index
+..    enterprise_server_branding/index
+..    enterprise_external_storage/index   
+..    enterprise_user_management/index
+..    enterprise_file_management/index
+..    enterprise_logging/index
+..    enterprise_firewall/index

@@ -28,13 +28,14 @@ ownCloud has many improvements. Some of our new features are:
 * New optional second name attribute in the LDAP app, so that user names appear 
   as ``User Foo (optional 2nd attribute)`` (:ref:`ldap_directory_settings`)
   
-Enterprise Only
----------------
+.. Enterprise Only
+.. ---------------
 
-* Advanced tagging management with the Workflow app. 
-  (:doc:`enterprise_file_management/files_tagging`)
-* Advanced authentication backends. 
-  (:doc:`enterprise_external_storage/enterprise_only_auth`)
-* Password policy app for share links, for setting password requirements such 
-  as minimum length and required characters.
-  (:ref:`password_policy_label`)  
+.. * Advanced tagging management with the Workflow app. 
+..   (:doc:`enterprise_file_management/files_tagging`)
+.. * Advanced authentication backends. 
+..   (:doc:`enterprise_external_storage/enterprise_only_auth`)
+.. * Password policy app for share links, for setting password requirements 
+.. such 
+..   as minimum length and required characters.
+..   (:ref:`password_policy_label`)  
