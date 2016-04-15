@@ -6,13 +6,12 @@ Changes in 9.0
 --------------
 
 Linux distribution packages (from `Open Build Service`_) have been divided into 
-multiple packages for ownCloud 9: ``owncloud-deps-php5``,  
-``owncloud-deps-php7.0``, ``and ``owncloud-files``. The ``owncloud-files`` 
-package installs only ownCloud, with no Apache, database, or PHP dependencies. 
-The ``owncloud-deps`` packages streamline installing appropriate PHP versions. 
-To install a complete system, including dependencies (Apache, PHP) install the 
-metapackage ``owncloud``. Install your desired database separately, before you 
-install ownCloud.
+multiple packages for ownCloud 9: ``owncloud-deps``, and ``owncloud-files``. The 
+``owncloud-files`` package installs only ownCloud, with no Apache, database, or 
+PHP dependencies. The ``owncloud-deps`` packages install all dependencies: 
+Apache, PHP, and MySQL. ``owncloud-deps`` is not intended to be installed by 
+itself, but rather is pulled in by the metapackage ``owncloud``. Install 
+``owncloud`` to get a complete installation with dependencies.
 
 Split packages are available for the following Linux distributions:
 
@@ -23,11 +22,12 @@ Split packages are available for the following Linux distributions:
 * Ubuntu 14.04, 15.10
 * openSUSE 13.2, Leap 42.1
 
-``owncloud-files`` is available for the following distributions. You will 
-have to install your own LAMP stack first. This allows you to create your own custom LAMP
-stack without dependency conflicts with the ownCloud package. Browse 
-`<http://download.owncloud.org/download/repositories/9.0/owncloud/>`_ to 
-find the ``owncloud-files`` package for your distro:
+``owncloud-files`` is available for the following distributions, but not 
+``owncoud-deps``. You will have to install your own LAMP stack first. This 
+allows you to create your own custom LAMP stack without dependency conflicts 
+with the ownCloud package. Browse 
+`<http://download.owncloud.org/download/repositories/9.0/owncloud/>`_ to find 
+the ``owncloud-files`` package for your distro:
 
 * CentOS 6
 * Debian 7
@@ -35,10 +35,10 @@ find the ``owncloud-files`` package for your distro:
 * SLES 12
 * Ubuntu 12.04, 14.10
 
-Repositories for Fedora, openSUSE Tumbleweed and Ubuntu 15.04 were dropped. If you use
-Fedora, the CentOS 7 packages will most likely work (the owncloud-files one at least).
-openSUSE users similarly can rely on LEAP packages for Tumbleweed and Ubuntu 15.04 users
-can use 15.10 ones.
+Repositories for Fedora, openSUSE Tumbleweed and Ubuntu 15.04 were dropped. If 
+you use Fedora, install ``owncloud-files`` over your own LAMP stack. openSUSE 
+users similarly can rely on LEAP packages for Tumbleweed, and Ubuntu 15.04 
+users can use the 15.10 packages.
 
 Follow the instructions on the download page to install ownCloud. Then run the 
 Installation Wizard to complete your installation. (see 
