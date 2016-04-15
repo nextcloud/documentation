@@ -31,14 +31,11 @@ you need to upgrade, or, if you're not using it, remove it.
 You are not required to use any caches, but caches improve server performance. 
 See :doc:`caching_configuration`.
 
-Transactional file locking
---------------------------
+Transactional file locking is disabled
+--------------------------------------
 
 "Transactional file locking is disabled, this might lead to issues with race
 conditions."
-
-"Transactional file locking is using the database as locking backend, for best
-performance it's advised to configure a memcache for locking."
 
 Please see :doc:`../configuration_files/files_locking_transactional` on how
 to correctly configure your environment for transactional file locking.
