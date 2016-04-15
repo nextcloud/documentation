@@ -17,3 +17,4 @@ File Sharing and Management
     encryption_configuration
     files_locking_transactional
     previews_configuration
+    file_versioning
