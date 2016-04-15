@@ -16,6 +16,6 @@ View your logfiles on your admin page. Click the **Download logfile** button to
 dump the plain text log, or open the logfile directly in a text editor. The 
 default location is ``owncloud/data/owncloud.log``. 
  
-See :doc:`../../configuration_server/logging_configuration` and 
+See :doc:`../configuration_server/logging_configuration` and 
 :doc:`../enterprise_file_management/files_tagging` for more information on 
 logging and tagging.

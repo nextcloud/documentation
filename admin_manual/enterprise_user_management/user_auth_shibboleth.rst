@@ -158,7 +158,7 @@ After enabling the Shibboleth app on your Apps page, you need to choose the app
 mode and map the necessary Shibboleth environment variables to ownCloud user
 attributes on your Admin page.
 
-.. figure:: images/shib-gui5.png
+.. figure:: ../images/shib-gui5.png
    :alt: Shibboleth configuration screen.
 
    *figure 1: Enabling Shibboleth on the ownCloud Admin page*
@@ -189,7 +189,7 @@ allows another user backend, eg. the LDAP app, to provide the ``displayname``,
     environment variable and tries to find an LDAP user with that ``uid``. For 
     this to work the LDAP backend also needs to be configured to use the
     **sAMAccountName** as the **Internal Username Attribute** in the
-    :doc:`LDAP expert settings <../../configuration_user/user_auth_ldap>`.
+    :doc:`LDAP expert settings <../configuration_user/user_auth_ldap>`.
 
  .. note:: In many scenarios Shibboleth is not intended to hide the user's
     password from the service provider, but only to implement SSO. If that is
@@ -202,7 +202,7 @@ In **Autoprovision Users** mode the app will not ask another user backend, but
 instead provision users on the fly by reading the two additional environment
 variables for display name and email address.
 
-.. figure:: images/shib-gui6.png
+.. figure:: ../images/shib-gui6.png
    :alt: Dropdowns for mapping Shibboleth environment configuration variables to ownCloud user attributes.
 
    *figure 2: Mapping Shibboleth environment configuration variables to ownCloud 
@@ -242,7 +242,7 @@ shows a test Shibboleth login screen from
 `Testshib.org <https://www.testshib.org/index.html>`_ on the ownCloud desktop
 sync client.
 
-.. figure:: images/shib-gui1.png
+.. figure:: ../images/shib-gui1.png
    :alt: First client login screen.
 
    *figure 3: First login screen*
@@ -251,7 +251,7 @@ Then after going through the setup wizard, the desktop sync client displays the
 server and login information just like it does for any other ownCloud server
 connections.
 
-.. figure:: images/shib-gui4.png
+.. figure:: ../images/shib-gui4.png
    :alt: The ownCloud client shows which server you are connected to.
 
    *figure 4: ownCloud client displays server information*
@@ -269,7 +269,7 @@ WebDAV Url, for example ``https://cloud.example.com/remote.php/nonshib-webdav/``
 to log in with their username and password. The password is generated on the
 Personal settings page.
 
-.. image:: images/shibboleth-personal.png
+.. image:: ../images/shibboleth-personal.png
 
 .. note:: In **Single sign-on only** mode the alternative WebDAV Url feature 
    will not work, as we have no way to store the WebDAV password. Instead the 

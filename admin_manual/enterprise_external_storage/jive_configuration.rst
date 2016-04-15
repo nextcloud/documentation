@@ -23,7 +23,7 @@ The Jive application is installed under the owncloud/apps directory on the serve
 admin screen. This app is only available for ownCloud EE v6 or higher. Go to the ownCloud admin screen section
 “Jive backend parameters” to configure the app to match your Jive server system parameters.
 
-.. image:: images/jive_config.png
+.. image:: ../images/jive_config.png
 
 +----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------+
 | Parameter                              | Description                                                                                                                                                                                              | Values                                             |
@@ -83,7 +83,7 @@ The ownCloud Jive plugin can be used in various ways to extend the access to the
 Web Client Use Cases
 --------------------
 
-.. image:: images/jive_2.png
+.. image:: ../images/jive_2.png
     :width: 3.2398in
     :height: 2.9898in
 
