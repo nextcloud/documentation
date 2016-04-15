@@ -96,7 +96,7 @@ the server address, the share name, and the folder you want to connect to.
    ``Internal Username Attribute`` must be set to the ``samaccountname`` for 
    either the share or the root to work, and the user's home directory needs 
    to match the ``samaccountname``. (See 
-   :doc:`../configuration_user/user_auth_ldap`.)
+   :doc:`../../configuration_user/user_auth_ldap`.)
 6. Then your login credentials.
 
 .. figure:: images/wnd-3.png

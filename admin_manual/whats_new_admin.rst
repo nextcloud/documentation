@@ -32,9 +32,9 @@ Enterprise Only
 ---------------
 
 * Advanced tagging management with the Workflow app. 
-  (:doc:`enterprise_file_management/files_tagging`)
+  (:doc:`enterprise-only/enterprise_file_management/files_tagging`)
 * Advanced authentication backends. 
-  (:doc:`enterprise_external_storage/enterprise_only_auth`)
+  (:doc:`enterprise-only/enterprise_external_storage/enterprise_only_auth`)
 * Password policy app for share links, for setting password requirements such 
   as minimum length and required characters.
   (:ref:`password_policy_label`)  

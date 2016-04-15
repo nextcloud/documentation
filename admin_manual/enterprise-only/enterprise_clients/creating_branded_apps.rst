@@ -14,7 +14,7 @@ the completed, customized apps are loaded into your account. You must supply
 your own artwork, and you'll find all the specifications and required elements 
 in ownBrander.
 
-.. image:: ../images/ownbrander-1.png
+.. image:: images/ownbrander-1.png
 
 Building a Branded Desktop Sync Client
 --------------------------------------

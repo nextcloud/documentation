@@ -18,7 +18,7 @@ ownBrander app enabled on your account. When you
 complete the steps in the wizard the ownBrander service builds your new branded 
 theme, and in 24-48 hours you'll see it in your account.
 
-.. figure:: ../images/ownbrander-1.png
+.. figure:: images/ownbrander-1.png
    :alt: ownBrander app button is on the top left of your ownCloud Web GUI, 
     after clicking the down arrow at the right of the ownCloud logo
    
@@ -28,7 +28,7 @@ need a number of images in specific sizes and formats, and the wizard tells you
 what you need. Example images are on the right, and you can click to enlarge 
 them.
 
-.. figure:: ../images/webbrander-1.png
+.. figure:: images/webbrander-1.png
    :alt: ownBrander wizard with instructions, upload buttons for your custom 
     branded images, and example screenshots
 
