@@ -24,11 +24,11 @@ Enterprise Subscription Only
 .. toctree::
     :maxdepth: 3
     
-    enterprise-only/enterprise_installation/index
-    enterprise-only/enterprise_clients/index
-    enterprise-only/enterprise_server_branding/index
-    enterprise-only/enterprise_external_storage/index   
-    enterprise-only/enterprise_user_management/index
-    enterprise-only/enterprise_file_management/index
-    enterprise-only/enterprise_logging/index
-    enterprise-only/enterprise_firewall/index
+    enterprise_installation/index
+    enterprise_clients/index
+    enterprise_server_branding/index
+    enterprise_external_storage/index   
+    enterprise_user_management/index
+    enterprise_file_management/index
+    enterprise_logging/index
+    enterprise_firewall/index
