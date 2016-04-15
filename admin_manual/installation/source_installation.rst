@@ -8,7 +8,7 @@ ownCloud engineers, and you can use your package manager to keep your ownCloud
 server up-to-date.
 
 .. note:: Enterprise Subscription customers should refer to  
-   :doc:`../enterprise_installation/linux_installation`
+   :doc:`../enterprise-only/enterprise_installation/linux_installation`
 
 If there are no packages for your Linux distribution, or you prefer installing 
 from the source tarball, you can setup ownCloud from scratch using a classic 

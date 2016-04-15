@@ -13,14 +13,22 @@ up your Linux package manager.
 
 After you have completed your initial installation of ownCloud as detailed in 
 the README, follow the instructions in 
-:doc:`../installation/installation_wizard` to finish setting up ownCloud.
+:doc:`../../installation/installation_wizard` to finish setting up ownCloud.
 
 To upgrade your Enterprise Subscription, refer to 
-:doc:`../maintenance/upgrade`.
+:doc:`../../maintenance/upgrade`.
+
+Manual Installation
+-------------------
+
+Download the ownCloud archive from your account at 
+https://customer.owncloud.com/owncloud, then follow the instructions at 
+:doc:`../../installation/source_installation`.
 
 SELinux
 -------
 
 Linux distributions that use SELinux need to take some extra steps so that 
 ownCloud will operate correctly under SELinux. Please see 
-:doc:`../installation/selinux_configuration` for some recommended configurations.
+:doc:`../../installation/selinux_configuration` for some recommended 
+configurations.

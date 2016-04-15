@@ -70,8 +70,8 @@ to the next major release before you're ready.
 Installing ownCloud Enterprise Subscription
 -------------------------------------------
 
-See :doc:`../enterprise_installation/linux_installation` for instructions on 
-installing ownCloud Enterprise Subscription.
+See :doc:`../enterprise-only/enterprise_installation/linux_installation` for 
+instructions on installing ownCloud Enterprise Subscription.
 
 Downgrading Not Supported
 -------------------------

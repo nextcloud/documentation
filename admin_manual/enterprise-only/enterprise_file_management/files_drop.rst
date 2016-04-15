@@ -38,7 +38,7 @@ On your Personal page you should now see a URL for your upload directory. Share
 this URL with anyone you want to allow uploads to your File Drop folder. Note 
 that the maximum upload size in this example is 512MB. (The default 
 ownCloud upload file size limit is 512MB. See 
-:doc:`../configuration_files/big_file_upload_configuration` to learn how to 
+:doc:`../../configuration_files/big_file_upload_configuration` to learn how to 
 customize this.)
 
 .. image:: images/files-drop-4.png
