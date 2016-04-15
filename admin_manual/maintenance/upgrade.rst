@@ -14,8 +14,7 @@ There are three ways to upgrade your ownCloud server:
   from `owncloud.org/install/`_.
 * Enterprise Subscription customers will use their Enterprise software 
   repositories to maintain their ownCloud servers, rather than the Open Build 
-  Service. Please see 
-  :doc:`../enterprise-only/enterprise_installation/linux_installation` for 
+  Service. Please see :doc:`../enterprise_installation/linux_installation` for 
   more information.  
   
 When an update is available for your ownCloud server, you will see a 
