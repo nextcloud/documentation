@@ -96,7 +96,7 @@ memcaches:
 * PHP module apc
 * PHP module apcu
 * PHP module memcached
-* PHP module redis (required for Transactional File Locking)
+* PHP module redis (>= 2.2.5, required for Transactional File Locking)
 
 See :doc:`../configuration_server/caching_configuration` to learn how to select 
 and configure a memcache.
