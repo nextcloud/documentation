@@ -869,7 +869,7 @@ custom path for LibreOffice/OpenOffice binary
 
 	'preview_office_cl_parameters' =>
 		' --headless --nologo --nofirststartwizard --invisible --norestore '.
-		'-convert-to pdf -outdir ',
+		'--convert-to pdf --outdir ',
 
 Use this if LibreOffice/OpenOffice requires additional arguments.
 
