@@ -736,7 +736,7 @@ Search for an LDAP user, using this syntax::
  [--limit="..."] search
 
 Searches will match at the beginning of the attribute value only. This example 
-searches for usernames that start with "rob"::
+searches for givenNames that start with "rob"::
 
  sudo -u www-data php occ ldap:search "rob"
  
@@ -745,8 +745,8 @@ example, ``jeroboam`` with the asterisk wildcard::
 
  sudo -u www-data php occ ldap:search "*rob"
 
-Refine searches by adjusting user search attributes (see ``ldap:set-config`` 
-below). ``ldap:set-config`` For example, if your search attributes are 
+User search attributes are set with ``ldap:set-config`` 
+(below). For example, if your search attributes are 
 ``givenName`` and ``sn`` you can find users by first name + last name very 
 quickly. For example, you'll find Terri Hanson by searching for ``te ha``. 
 Trailing whitespaces are ignored.
