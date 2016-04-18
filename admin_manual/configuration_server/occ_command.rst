@@ -735,9 +735,21 @@ Search for an LDAP user, using this syntax::
  sudo -u www-data php occ ldap:search [--group] [--offset="..."] 
  [--limit="..."] search
 
-This example searches for usernames that start with "rob"::
+Searches will match at the beginning of the attribute value only. This example 
+searches for usernames that start with "rob"::
 
- sudo -u www-data php occ ldap:search rob
+ sudo -u www-data php occ ldap:search "rob"
+ 
+This will find robbie, roberta, and robin. Broaden the search to find, for 
+example, ``jeroboam`` with the asterisk wildcard::
+
+ sudo -u www-data php occ ldap:search "*rob"
+
+Refine searches by adjusting user search attributes (see ``ldap:set-config`` 
+below). ``ldap:set-config`` For example, if your search attributes are 
+``givenName`` and ``sn`` you can find users by first name + last name very 
+quickly. For example, you'll find Terri Hanson by searching for ``te ha``. 
+Trailing whitespaces are ignored.
  
 Check if an LDAP user exists. This works only if the ownCloud server is 
 connected to an LDAP server::
