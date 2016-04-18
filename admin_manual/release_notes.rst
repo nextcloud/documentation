@@ -328,11 +328,11 @@ Nate, then search for ``*te``::
 
  occ ldap:search "*te"
 
-Refine searches by adjusting your search attributes in the ``User Search 
-Attributes`` form in your LDAP configuration on the Admin page. For example, if 
-your search attributes are ``givenName`` and ``sn`` you can find users by first 
-name + last name very quickly. For example, you'll find Terri Hanson by 
-searching for ``te ha``. Trailing whitespaces are ignored.
+Refine searches by adjusting the ``User Search Attributes`` field of the 
+Advanced tab in your LDAP configuration on the Admin page. For example, if your 
+search attributes are ``givenName`` and ``sn`` you can find users by first name 
++ last name very quickly. For example, you'll find Terri Hanson by searching for 
+``te ha``. Trailing whitespaces are ignored.
 
 .. https://github.com/owncloud/core/issues/12647
 
