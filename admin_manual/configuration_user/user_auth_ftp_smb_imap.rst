@@ -54,7 +54,8 @@ Provides authentication against Samba servers
 
 - **Class:** OC_User_SMB
 - **Arguments:** the samba server to authenticate against
-- **Dependency:** PHP smbclient module
+- **Dependency:** PHP smbclient module (see 
+  :doc:`../configuration_files/external_storage/smb`)
 - **Example:**
 
 ::
