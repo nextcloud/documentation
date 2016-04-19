@@ -80,8 +80,8 @@ Database connectors (pick the one for your database:)
 Required for specific apps:
 
 * PHP module ldap (for LDAP integration)
-* `php5-libsmbclient <https://download.owncloud.org/download/repositories/stable/owncloud/>`_
-  (SMB/CIFS integration)
+* PHP module smbclient  (SMB/CIFS integration, see 
+  :doc:`../configuration_files/external_storage/smb`)
 * PHP module ftp (for FTP storage / external user authentication)
 * PHP module imap (for external user authentication)
 
