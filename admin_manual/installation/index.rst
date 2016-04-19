@@ -14,6 +14,4 @@ Installation
    apps_supported
    source_installation
    appliance_installation
-   php_54_installation
-   php_55_installation
    selinux_configuration
