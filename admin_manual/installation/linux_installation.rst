@@ -6,12 +6,16 @@ Changes in 9.0
 --------------
 
 Linux distribution packages (from `Open Build Service`_) have been divided into 
-multiple packages for ownCloud 9: ``owncloud-deps``, and ``owncloud-files``. The 
-``owncloud-files`` package installs only ownCloud, with no Apache, database, or 
-PHP dependencies. The ``owncloud-deps`` packages install all dependencies: 
-Apache, PHP, and MySQL. ``owncloud-deps`` is not intended to be installed by 
-itself, but rather is pulled in by the metapackage ``owncloud``. Install 
-``owncloud`` to get a complete installation with dependencies.
+multiple packages for ownCloud 9: ``owncloud-deps`` and ``owncloud-files``. 
+
+The ``owncloud-files`` package installs only ownCloud, with no Apache, database, 
+or PHP dependencies. 
+
+The ``owncloud-deps`` packages install all dependencies: Apache, PHP, and MySQL. 
+``owncloud-deps`` is not intended to be installed by itself, but rather is 
+pulled in by the metapackage ``owncloud``. 
+
+Install ``owncloud`` to get a complete installation with dependencies.
 
 Split packages are available for the following Linux distributions:
 
@@ -32,13 +36,12 @@ the ``owncloud-files`` package for your distro:
 * CentOS 6
 * Debian 7
 * RHEL 6
-* SLES 12
 * Ubuntu 12.04, 14.10
 
 Repositories for Fedora, openSUSE Tumbleweed and Ubuntu 15.04 were dropped. If 
 you use Fedora, install ``owncloud-files`` over your own LAMP stack. openSUSE 
-users similarly can rely on LEAP packages for Tumbleweed, and Ubuntu 15.04 
-users can use the 15.10 packages.
+users can rely on LEAP packages for Tumbleweed, and Ubuntu 15.04 users can use 
+the 15.10 packages.
 
 Follow the instructions on the download page to install ownCloud. Then run the 
 Installation Wizard to complete your installation. (see 
@@ -108,14 +111,9 @@ Mageia software repository.
 
 .. _Mageia Wiki: https://wiki.mageia.org/en/OwnCloud
 
-**Debian/Ubuntu:** The package installs an additional Apache config file to 
-``/etc/apache2/conf-available/owncloud.conf`` which contains an ``Alias`` to the 
-owncloud installation directory as well as some more needed configuration 
-options.
-
-**Running ownCloud in a subdir**: If you're running ownCloud in a subdir and
-want to use CalDAV or CardDAV clients make sure you have configured the correct 
-:ref:`service-discovery-label` URLs.
+**Running ownCloud in a subdirectory**: If you're running ownCloud in a 
+subdirectory and want to use CalDAV or CardDAV clients make sure you have 
+configured the correct :ref:`service-discovery-label` URLs.
 
 **Note for MySQL/MariaDB environments**: Please refer to :ref:`db-binlog-label`
 on how to correctly configure your environment if you have binary logging enabled.
