@@ -34,7 +34,7 @@ following components were installed on each application server:
 *   PHP-MYSQL
 *   PHP-CURL
 
-Also required is the PHP smbclient module (see 
+Also required is the PHP smbclient module or smbclient (see 
 :doc:`../configuration_files/external_storage/smb`).
 
 It is also worth mentioning that the appropriate exceptions where made in the
