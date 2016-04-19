@@ -80,8 +80,7 @@ Database connectors (pick the one for your database:)
 Required for specific apps:
 
 * PHP module ldap (for LDAP integration)
-* `php5-libsmbclient <https://download.owncloud.org/download/repositories/stable/owncloud/>`_
-  (SMB/CIFS integration)
+* PHP module smbclient  (SMB/CIFS integration)
 * PHP module ftp (for FTP storage / external user authentication)
 * PHP module imap (for external user authentication)
 
@@ -267,11 +266,8 @@ the default site. Open a terminal and run::
      a2ensite default-ssl
      service apache2 reload
 
-.. note:: Self-signed certificates have their drawbacks - especially when you
-          plan to make your ownCloud server publicly accessible. You might want
-          to consider getting a certificate signed by a commercial signing
-          authority. Check with your domain name registrar or hosting service 
-          for good deals on commercial certificates.   
+.. note:: See :ref:`security_commands_label` for help on managing self-signed 
+   certificates.   
     
 .. _installation_wizard_label:
     

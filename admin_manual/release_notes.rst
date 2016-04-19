@@ -27,15 +27,17 @@ See :doc:`installation/linux_installation`.
 New option for the ownCloud admin to enable or disable sharing on individual external mountpoints
 (see :ref:`external_storage_mount_options_label`). Sharing on such mountpoints is disabled by default.
 
-.. Enterprise 9.0
-.. --------------
+Enterprise 9.0
+--------------
 
-.. owncloud-enterprise packages are no longer available for CentOS6, RHEL6, 
-.. Debian7, or any version of Fedora. A new package, owncloud-enterprise-files, 
-.. is available for all supported platforms, including the above. This new 
-.. package comes without dependencies, and is installable on a larger number of 
-.. platforms. System administrators must install their own LAMP stacks and 
-.. databases. See https://owncloud.org/blog/time-to-upgrade-to-owncloud-9-0/
+``owncloud-enterprise`` packages are no longer available for CentOS6, RHEL6, 
+Debian7, or any version of Fedora. A new package, 
+``owncloud-enterprise-files``, is available for all supported platforms. This 
+new package comes without dependencies, and is installable on a larger number of 
+platforms. System administrators on these older distros must install their own 
+LAMP stacks and databases. On newer supported distros, install 
+``owncloud-enterprise`` as usual. See 
+:doc:`enterprise_installation/linux_installation`.
 
 Changes in 8.2
 --------------

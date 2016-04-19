@@ -34,8 +34,7 @@ following components were installed on each application server:
 *   PHP-MYSQL
 *   PHP-CURL
 
-Also required is `php5-libsmbclient 
-<https://download.owncloud.org/download/repositories/stable/owncloud/>`_.
+Also required is the PHP smbclient module.
 
 It is also worth mentioning that the appropriate exceptions where made in the
 firewall to allow the ownCloud traffic (for the purpose of testing we

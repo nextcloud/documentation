@@ -884,8 +884,8 @@ change to existing files.
 
 .. _security_commands_label:
 
-Security
---------
+Security (Import SSL Certificates)
+----------------------------------
 
 Use these commands to manage server-wide SSL certificates. These are useful when you create federation shares with other ownCloud servers that use self-signed certificates::
 
