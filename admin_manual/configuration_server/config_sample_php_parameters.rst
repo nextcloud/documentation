@@ -538,8 +538,8 @@ Available values:
 
 * ``auto``
     default setting. Automatically expire versions according to expire
-    rules. Please refer to Files_versions online documentation for more
-    info.
+    rules. Please refer to :doc:`../configuration_files/file_versioning` for
+    more information.
 * ``D, auto``
     keep versions at least for D days, apply expire rules to all versions
     that are older than D days
@@ -1380,6 +1380,12 @@ Memory caching backend for file locking
 
 Because most memcache backends can clean values without warning using redis
 is highly recommended to *avoid data loss*.
+
+::
+
+	'upgrade.disable-web' => false,
+
+Disable the web based updater
 
 ::
 
