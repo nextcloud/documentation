@@ -6,6 +6,11 @@ ownCloud |version| Release Notes
 Changes in 9.0
 --------------
 
+9.0 requires .ico files for favicons. This will change in 9.1, which will 
+use .svg files. See `Changing favicon 
+<https://doc.owncloud.org/server/9.0/developer_manual/core/theming.html#changing
+-favicon>`_ in the Developer Manual.
+
 Home folder rule is enforced in the user_ldap application in new ownCloud installations; see
 :doc:`configuration_user/user_auth_ldap`. This affects ownCloud 8.0.10, 8.1.5 and 8.2.0 and up.
 

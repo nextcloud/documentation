@@ -22,7 +22,6 @@ ownCloud Server Configuration
    reverse_proxy_configuration
    search_configuration   
    thirdparty_php_configuration
-   performance_tuning/index
    js_css_asset_management_configuration
    automatic_configuration
    oc_server_tuning
