@@ -173,3 +173,42 @@ The configuration file should look something like this:
     'dbpassword' => '********',
     'installed' => true,
     );
+
+Useful SQL Commands
+-------------------
+
+**Is my dB Reachable?**
+
+On the machine where your Oracle database is installed, type::
+
+  sqlplus username
+
+::
+
+  SQL> select * from v$version;
+
+  BANNER
+  --------------------------------------------------------------------------------
+  Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+  PL/SQL Release 11.2.0.2.0 - Production
+  CORE	11.2.0.2.0	Production
+  TNS for Linux: Version 11.2.0.2.0 - Production
+  NLSRTL Version 11.2.0.2.0 - Production
+
+  SQL> exit
+
+**Show Database Users**::
+
+  Oracle    : SELECT * FROM all_users;
+
+**Show available Databases**::
+
+  Oracle    : SELECT name FROM v$database; (requires DBA privileges)
+
+**Show ownCloud Tables in Database**::
+
+  Oracle    : SELECT table_name FROM user_tables;
+
+**Quit Database**::
+
+  Oracle    : quit
