@@ -19,8 +19,7 @@ ownCloud Server Configuration
    language_configuration
    logging_configuration
    harden_server
-   reverse_proxy_configuration
-   search_configuration   
+   reverse_proxy_configuration 
    thirdparty_php_configuration
    js_css_asset_management_configuration
    automatic_configuration
