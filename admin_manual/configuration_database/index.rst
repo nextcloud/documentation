@@ -7,4 +7,3 @@ Database Configuration
 
     db_conversion.rst
     linux_database_configuration.rst
-    oracle_db_configuration.rst

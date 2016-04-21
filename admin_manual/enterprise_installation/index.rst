@@ -8,4 +8,5 @@ Enterprise Subscription Installation (ES Only)
    linux_installation
    supported_apps_installation
    license_keys_installation
+   oracle_db_configuration
    
