@@ -13,7 +13,8 @@ The MySQL or MariaDB databases are the recommended database engines.
 Requirements
 ------------
 
-Choosing to use MySQL / MariaDB, PostgreSQL, or Oracle as your database requires that you install and set up the server software first.
+Choosing to use MySQL / MariaDB, PostgreSQL, or Oracle (ownCloud Enterprise Subscription only) as your database requires that you install and set up the server software first. 
+(Oracle users, see :doc:`../enterprise_installation/oracle_db_configuration`.)
 
 .. note:: The steps for configuring a third party database are beyond the scope of this document.  Please refer to the documentation for your specific database choice for instructions.
 
@@ -217,82 +218,6 @@ this:
     "dbhost"        => "localhost",
     "dbtableprefix" => "oc_",
 
-Oracle Database
-~~~~~~~~~~~~~~~
-
-If you are deploying to an Oracle database make sure that you have installed
-and enabled the `Oracle extension <http://php.net/manual/en/book.oci8.php>`_ in PHP. The PHP configuration in
-:file:`/etc/php5/conf.d/oci8.ini` could look like this:
-
-::
-
-  # configuration for PHP Oracle extension
-  extension=oci8.so
-
-Make sure that the Oracle environment has been set up for the process trying to use the Oracle extension.
-For a local Oracle XE installation this can be done by exporting the following environment variables
-(eg. in :file:`/etc/apache2/envvars` for Apache)
-
-::
-
-  export ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe
-  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME/lib
-
-Installing and configuring Oracle support for PHP is way out of scope for this document.
-The official Oracle documentation called `The Underground PHP and Oracle Manual <http://www.oracle.com/technetwork/topics/php/underground-php-oracle-manual-098250.html>`_
-should help you through the process.
-
-Creating a database user for ownCloud can be done by using the sqlplus command line interface
-or the Oracle Application Express web interface.
-The database tables will be created by ownCloud when you login for the first time.
-
-To start the Oracle command line mode with a DBA account use::
-
-  sqlplus system AS SYSDBA
-
-After entering the password a **SQL>** prompt will appear. Now enter the following lines and confirm them with the enter key:
-
-::
-
-  CREATE USER owncloud IDENTIFIED BY password;
-  ALTER USER owncloud DEFAULT TABLESPACE users
-                      TEMPORARY TABLESPACE temp
-                      QUOTA unlimited ON users;
-  GRANT create session
-      , create table
-      , create procedure
-      , create sequence
-      , create trigger
-      , create view
-      , create synonym
-      , alter session
-     TO owncloud;
-
-.. note:: In Oracle creating a user is the same as creating a database in other RDBMs, so no ``CREATE DATABASE`` statement is necessary.
-
-You can quit the prompt by entering::
-
-  exit
-
-An ownCloud instance configured with Oracle would contain the hostname on which
-the database is running, a valid username and password to access it, and the
-name of the database. The :file:`config/config.php` as created by the
-:doc:`../installation/installation_wizard` would therefore contain entries like
-this:
-
-::
-
-  <?php
-
-    "dbtype"        => "oci",
-    "dbname"        => "XE",
-    "dbuser"        => "owncloud",
-    "dbpassword"    => "password",
-    "dbhost"        => "localhost",
-
-.. note:: This example assumes you are running an Oracle Express Edition on
-          ``localhost``. The ``dbname`` is the name of the Oracle instance.
-          For Oracle Express Edition it is always ``XE``.
 
 Troubleshooting
 ---------------
@@ -363,25 +288,6 @@ the respective host name::
   (1 row)
   postgres=# \q
 
-**Oracle**:
-
-On the machine where your Oracle database is installed, type::
-
-  sqlplus username
-
-::
-
-  SQL> select * from v$version;
-
-  BANNER
-  --------------------------------------------------------------------------------
-  Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
-  PL/SQL Release 11.2.0.2.0 - Production
-  CORE	11.2.0.2.0	Production
-  TNS for Linux: Version 11.2.0.2.0 - Production
-  NLSRTL Version 11.2.0.2.0 - Production
-
-  SQL> exit
 
 Useful SQL commands
 ~~~~~~~~~~~~~~~~~~~
@@ -390,22 +296,18 @@ Useful SQL commands
 
   MySQL     : SELECT User,Host FROM mysql.user;
   PostgreSQL: SELECT * FROM pg_user;
-  Oracle    : SELECT * FROM all_users;
 
 **Show available Databases**::
 
   MySQL     : SHOW DATABASES;
   PostgreSQL: \l
-  Oracle    : SELECT name FROM v$database; (requires DBA privileges)
 
 **Show ownCloud Tables in Database**::
 
   MySQL     : USE owncloud; SHOW TABLES;
   PostgreSQL: \c owncloud; \d
-  Oracle    : SELECT table_name FROM user_tables;
 
 **Quit Database**::
 
   MySQL     : quit
   PostgreSQL: \q
-  Oracle    : quit
