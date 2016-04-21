@@ -177,7 +177,7 @@ The configuration file should look something like this:
 Useful SQL Commands
 -------------------
 
-**Is my dB Reachable?**
+**Is my Database Reachable?**
 
 On the machine where your Oracle database is installed, type::
 
