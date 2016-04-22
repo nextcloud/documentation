@@ -119,7 +119,7 @@ VirtualHost file::
  <VirtualHost *:443>
    ServerName cloud.owncloud.com
      <IfModule mod_headers.c>
-       Header always set Strict-Transport-Security "max-age=15768000; includeSubDomains; preload"
+       Header always set Strict-Transport-Security "max-age=15552000; includeSubDomains; preload"
      </IfModule>
   </VirtualHost>
   
