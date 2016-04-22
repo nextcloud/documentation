@@ -67,7 +67,7 @@ environment.
 The "Strict-Transport-Security" HTTP header is not configured
 -------------------------------------------------------------
 
-"The "Strict-Transport-Security" HTTP header is not configured to least "15768000" seconds.
+"The "Strict-Transport-Security" HTTP header is not configured to least "15552000" seconds.
 For enhanced security we recommend enabling HSTS as described in our security tips."
 
 The HSTS header needs to be configured within your Web server by following the
