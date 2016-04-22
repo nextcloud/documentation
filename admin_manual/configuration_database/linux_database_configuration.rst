@@ -218,12 +218,26 @@ this:
     "dbhost"        => "localhost",
     "dbtableprefix" => "oc_",
 
+.. _db-troubleshooting-label:
 
 Troubleshooting
 ---------------
 
+How to workaround General error: 2006 MySQL server has gone away
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The database request takes too long and therefore the MySQL server times out. Its 
+also possible that the server is dropping a packet that is too large. Please 
+refer to the manual of your database for how to raise the configuration options 
+``wait_timeout`` and/or ``max_allowed_packet``.
+
+Some shared hosters are not allowing the access to these config options. For such
+systems ownCloud is providing a ``dbdriveroptions`` configuration option within your
+:file:`config/config.php` where you can pass such options to the database driver.
+Please refer to :doc:`../configuration_server/config_sample_php_parameters` for an example.
+
 How can I find out if my MySQL/PostgreSQL server is reachable?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To check the server's network availability, use the ping command on
 the server's host name (db.server.com in this example)::
