@@ -30,10 +30,7 @@ locking does not prevent this. Rather, it prevents simultaneous file saving.
    must visit your Apps page to verify that it is disabled; the File Locking 
    app and Transactional File Locking cannot both operate at the same time.
   
-When you see the warning on your ownCloud admin page "Transactional file locking 
-is using the database as locking backend, for best performance it's advised to 
-configure a memcache for locking", you are not required to use a memcache. File 
-locking is enabled by default, using the database locking backend. This 
+File locking is enabled by default, using the database locking backend. This 
 places a significant load on your database. Using ``memcache.locking`` relieves 
 the database load and improves performance. Admins of ownCloud servers with 
 heavy workloads should install a memcache. (See 
