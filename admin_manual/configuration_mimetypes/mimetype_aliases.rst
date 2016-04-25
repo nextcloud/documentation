@@ -9,7 +9,7 @@ files instead of the default file icon.
 By default ownCloud is distributed with 
 ``owncloud/resources/config/mimetypealiases.dist.json``.
 Do not modify this file, as it will be replaced when ownCloud is updated. 
-Instead, create your own ``owncloud/resources/config/mimetypealiases.json`` 
+Instead, create your own ``owncloud/config/mimetypealiases.json`` 
 file with your custom aliases. Use the same syntax as in 
 ``owncloud/resources/config/mimetypealiases.dist.json``.
 
@@ -19,7 +19,7 @@ Ubuntu Linux::
 
   $ sudo -u www-data php occ maintenance:mimetype:update-js
   
-See :doc:`../configuration_server/occ_command` to learn more about ``occ``.  
+See :doc:`../configuration_server/occ_command` to learn more about ``occ``.
 
 Some common mimetypes that may be useful in creating aliases are:
 
