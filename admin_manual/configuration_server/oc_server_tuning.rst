@@ -36,6 +36,14 @@ configure ownCloud for MySQL or MariaDB. If your installation is already running
 SQLite then it is possible to convert to MySQL or MariaDB using the steps provided
 in :doc:`../configuration_database/db_conversion`.
 
+Using Redis-based Transactional File Locking
+--------------------------------------------
+
+File locking is enabled by default, using the database locking backend. This 
+places a significant load on your database. See the section
+:doc:`../configuration_files/files_locking_transactional` for how to
+configure ownCloud to use Redis-based Transactional File Locking.
+
 SSL / Encryption App
 --------------------
 
