@@ -1,21 +1,27 @@
-Mimetype aliases
+================
+Mimetype Aliases
 ================
 
-ownCloud allows administrators to specify aliases for mimetypes. This makes it
-possible to show more specific icons for certain mimetypes. Take as an example
-audio files. It is nicer if they show a nice audio icon instead of the default
-file icon.
+ownCloud allows you to create aliases for mimetypes, so that you can display 
+custom icons for files. For example, you might want a nice audio icon for audio 
+files instead of the default file icon.
 
-By default ownCloud is distributed with ``config/mimetypealiases.dist.json``.
-Administrators should not modify this file, as it will be replaced when
-ownCloud is updated.
+By default ownCloud is distributed with 
+``owncloud/resources/config/mimetypealiases.dist.json``.
+Do not modify this file, as it will be replaced when ownCloud is updated. 
+Instead, create your own ``owncloud/config/mimetypealiases.json`` 
+file with your custom aliases. Use the same syntax as in 
+``owncloud/resources/config/mimetypealiases.dist.json``.
 
-Adding custom aliases
----------------------
+Once you have made changes to your ``mimetypealiases.json``, use the ``occ`` 
+command to propagate the changes through the system. This example is for 
+Ubuntu Linux::
 
-Custom mimetype aliases can be added to ``config/mimetypealiases.json``, using
-the same syntax as ``config/mimetypealiases.dist.json``. Some common mimetypes
-that may be useful in creating aliases are:
+  $ sudo -u www-data php occ maintenance:mimetype:update-js
+  
+See :doc:`../configuration_server/occ_command` to learn more about ``occ``.
+
+Some common mimetypes that may be useful in creating aliases are:
 
 image
   Generic image
@@ -40,9 +46,3 @@ text
 
 text/code
   Source code
-
-Once you have made changes to ``config/mimetypealiases.json``, run the
-following to propagate the changes through the system::
-
-  $ ./occ maintenance:mimetypesjs
-
