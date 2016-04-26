@@ -7,46 +7,56 @@ safely ignore any references to OAuth 2.0 in the Dropbox configuration.
 
 Connecting Dropbox is a little more work because you have to create a Dropbox 
 app. Log into the `Dropbox Developers page <http://www.dropbox.com/developers>`_ 
-and click **App Console**:
+and click **Create Your App**:
 
 .. figure:: images/dropbox.png
+   :alt: Create your app.
 
-If you have not already created any Dropbox apps it will ask you to accept 
-their terms and conditions. Then you are presented with the choice to create 
-either a Drop-ins App or a Dropbox API App. Click **Dropbox API App**, and then 
-check:
+Next, for **Choose an API** check **Dropbox API**.
 
-* Files and datastores.
-* No -- My app needs access to files already on Dropbox.
-* All file types -- My app needs access to a user's full Dropbox. Only 
-  supported via the CoreAPI.
+.. figure:: images/dropbox-1.png
+   :alt: Select Dropbox API.
+
+The next option is choosing which folders to share, or to share everything in 
+your Dropbox.
+
+.. figure:: images/dropbox-2.png
+   :alt: Folder selection.
+   
+Then enter your app name. This is anything you want it to be. 
+
+.. figure:: images/dropbox-3.png
+   :alt: Name your app.
+   
+Then click the **Create App** button.   
+   
+Now you are on your app page, which displays its settings and more options. Do 
+not click **Development (Apply for production)** because that is for apps 
+that you want to release publicly.
+
+.. figure:: images/dropbox-4.png
+   :alt: Your app's page.
+
+Click **Enable additional users** to allow multiple ownCloud users to access 
+your new Dropbox share.
   
-Then enter whatever name you want for your app.
+Now go to your ownCloud Admin page. Your ownCloud configuration requires only 
+the local mount name, the **App Key** and the **App Secret**, and which users 
+or groups have access to the share. Remember the little gear icon at the 
+far right for additional options.
 
-.. figure:: images/dropbox-app.png
+After entering your local mount name, **App Key** and **App Secret**, click 
+**Grant access**.
 
-Now click the **Create App** button. Under **Status**, do not click 
-**Development (Apply for production status)** because that is for apps that you 
-want to release publicly.
+.. figure:: images/dropbox-6.png
+   :alt: ownCloud Dropbox configuration.
 
-Click **Enable additional users** to allow multiple ownCloud users to use your 
-new Dropbox share.
+If you are not already logged into Dropbox, you will be prompted to login 
+and authorize access. This happens only once, when you are first creating 
+the new share. Click **Allow**, and you're done.
 
-Note your App key and App secret, which you will enter in the External Storage 
-form on your ownCloud Admin page.
-
-.. figure:: images/dropbox-configapp.png
-  
-Your ownCloud configuration requires only the local mount name, the App Key and 
-the App Secret, and which users or groups have access to the share.
-
-.. figure:: images/dropbox-oc.png
-
-You must be logged into Dropbox, and when ownCloud successfully verifies your 
-connection Dropbox will ask for verification to connect to your Dropbox 
-account. Click **Allow**, and you're done.
-
-.. figure:: images/dropbox-allowshare.png
+.. figure:: images/dropbox-5.png
+   :alt: Allow Dropbox access.
 
 See :doc:`../external_storage_configuration_gui` for additional mount 
 options and information.
