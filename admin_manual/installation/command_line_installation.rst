@@ -44,3 +44,17 @@ Finally, apply the correct strong permissions to your ownCloud files and
 directories (see :ref:`strong_perms_label`). This is an extremely important 
 step. It helps protect your ownCloud installation, and ensures that it will run 
 correctly.
+
+BINLOG_FORMAT = STATEMENT
+-------------------------
+
+If your ownCloud installation fails and you see this in your ownCloud log::
+
+ An unhandled exception has been thrown: exception ‘PDOException’ with message 
+ 'SQLSTATE[HY000]: General error: 1665 Cannot execute statement: impossible to 
+ write to binary log since BINLOG_FORMAT = STATEMENT and at least one table 
+ uses a storage engine limited to row-based logging. InnoDB is limited to 
+ row-logging when transaction isolation level is READ COMMITTED or READ 
+ UNCOMMITTED.'
+
+See :ref:`db-binlog-label`.
