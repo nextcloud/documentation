@@ -19,6 +19,7 @@ Apache and MariaDB, using `the ownCloud .tar archive
 
 * :ref:`prerequisites_label`
 * :ref:`ubuntu_installation_label`
+* :ref:`binlog_format_label`
 * :ref:`apache_configuration_label`
 * :ref:`enabling_ssl_label`
 * :ref:`installation_wizard_label`
@@ -179,6 +180,22 @@ Now download the archive of the latest ownCloud version:
 
 On other HTTP servers it is recommended to install ownCloud outside of the 
 document root.
+
+.. _binlog_format_label:
+
+BINLOG_FORMAT = STATEMENT
+-------------------------
+
+If your ownCloud installation fails and you see this in your ownCloud log::
+
+ An unhandled exception has been thrown: exception ‘PDOException’ with message 
+ 'SQLSTATE[HY000]: General error: 1665 Cannot execute statement: impossible to 
+ write to binary log since BINLOG_FORMAT = STATEMENT and at least one table 
+ uses a storage engine limited to row-based logging. InnoDB is limited to 
+ row-logging when transaction isolation level is READ COMMITTED or READ 
+ UNCOMMITTED.'
+
+See :ref:`db-binlog-label`.
 
 .. _apache_configuration_label:
    
