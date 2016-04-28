@@ -81,7 +81,7 @@ the server address, the share name, and the folder you want to connect to.
 
    *Figure 3: WND server, credentials, and additional mount options.*  
 
-Your changes are save automatically.
+Your changes are saved automatically.
 
 .. note:: When you create a new mountpoint using Login credentials you must log 
    out of ownCloud, and then log back in so you can access the share. You 
