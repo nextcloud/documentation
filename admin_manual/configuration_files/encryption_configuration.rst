@@ -185,17 +185,24 @@ instructions on using ``occ``.
 Get the current status of encryption and the loaded encryption module::
 
  occ encryption:status
+  - enabled: false                 
+  - defaultModule: OC_DEFAULT_MODULE
 
 This is equivalent to checking **Enable server-side encryption** on your Admin
 page::
 
  occ encryption:enable
+ Encryption enabled
+
+ Default module: OC_DEFAULT_MODULE
  
 List the available encryption modules::
 
  occ encryption:list-modules
+  - OC_DEFAULT_MODULE: Default encryption module [default*]
 
-Select a different default Encryption module::
+Select a different default Encryption module (currently the only available 
+module is OC_DEFAULT_MODULE)::
 
  occ encryption:set-default-module [Module ID]. 
  
@@ -207,19 +214,44 @@ command gives you the option to encrypt all files. You must first put your
 ownCloud server into single-user mode to prevent any user activity until 
 encryption is completed::
 
+ occ maintenance:singleuser
+ Single user mode is currently enabled
+
+Then run ``occ``::
+
  occ encryption:encrypt-all
+ 
+ You are about to start to encrypt all files stored in your ownCloud.
+ It will depend on the encryption module you use which files get encrypted.
+ Depending on the number and size of your files this can take some time
+ Please make sure that no user access his files during this process!
+
+ Do you really want to continue? (y/n) 
+ 
+When you type ``y`` it creates a key pair for each of your users, and then 
+encrypts their files, displaying progress until all user files are encrypted. 
 
 Decrypt all user data files, or optionally a single user::
  
  occ encryption:decrypt-all [username]
-
-Move keys to a different folder, either locally or on a different server::
-
- occ encryption:change-key-storage-root
  
 View current location of keys::
 
  occ encryption:show-key-storage-root
+ Current key storage root:  default storage location (data/) 
+
+Move keys to a different root folder, either locally or on a different server. 
+The folder must already exist, be owned by root and your HTTP group, and be 
+restricted to root and your HTTP group. This example is for Ubuntu Linux. Note 
+that the new folder is relative to your ``occ`` directory::
+
+ mkdir /etc/keys
+ chown -R root:www-data /etc/keys
+ chmod -R 0770 /etc/keys
+ occ encryption:change-key-storage-root ../../../etc/keys
+ Start to move keys:
+    4 [============================]
+ Key storage root successfully changed to ../../../etc/keys
  
 Create a new master key. Use this when you have a single-sign on 
 infrastructure.  Use this only on fresh installations with no existing data, or 
