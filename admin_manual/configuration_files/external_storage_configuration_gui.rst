@@ -143,12 +143,3 @@ You might need to setup a cron job that runs ``sudo -u www-data php occ files:sc
 (or replace "--all" with the user name, see also :doc:`../configuration_server/occ_command`)
 to trigger a rescan of the user's files periodically (for example every 15 minutes), which includes
 the mounted external storage.
-
-Configuration File
-------------------
-
-Storage mount configurations are stored in a JSON formatted file. Admin
-storages are stored in ``data/mount.json``, while personal storages are stored
-in ``data/$user/mount.json``. For more advanced use cases, including
-provisioning external storages from outside ownCloud, see
-:doc:`external_storage_configuration`.
