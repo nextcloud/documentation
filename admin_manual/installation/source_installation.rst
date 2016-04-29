@@ -21,6 +21,7 @@ Apache and MariaDB, using `the ownCloud .tar archive
 * :ref:`ubuntu_installation_label`
 * :ref:`binlog_format_label`
 * :ref:`apache_configuration_label`
+* :ref:`pretty_urls_label` 
 * :ref:`enabling_ssl_label`
 * :ref:`installation_wizard_label`
 * :ref:`strong_perms_label`
@@ -266,6 +267,15 @@ Additional Apache Configurations
 * If you're running ownCloud in a subdirectory and want to use CalDAV or 
   CardDAV clients make sure you have configured the correct 
   :ref:`service-discovery-label` URLs.
+  
+.. _pretty_urls_label:  
+  
+Pretty URLs
+-----------
+
+Pretty URLs are created automatically when ``.htaccess`` is writable by the 
+HTTP user, ``mod_env`` and ``mod_rewrite`` are installed, and 
+``'overwrite.cli.url'`` in your ``config.php`` is set to any non-null value.
 
 .. _enabling_ssl_label:
 
