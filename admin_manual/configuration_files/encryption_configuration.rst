@@ -224,8 +224,8 @@ Then run ``occ``::
  
  You are about to start to encrypt all files stored in your ownCloud.
  It will depend on the encryption module you use which files get encrypted.
- Depending on the number and size of your files this can take some time
- Please make sure that no user access his files during this process!
+ Depending on the number and size of your files this can take some time.
+ Please make sure that no users access their files during this process!
 
  Do you really want to continue? (y/n) 
  
