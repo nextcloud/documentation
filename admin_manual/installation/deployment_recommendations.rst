@@ -104,7 +104,7 @@ Authentication via an existing LDAP or Active Directory server.
    Local session management on the application server. PHP sessions are stored 
    in a tmpfs mounted at the operating system-specific session storage 
    location. You can find out where that is by running ``grep -R 
-   'session.save_path` /etc/php5`` and then add it to the ``/etc/fstab`` file, 
+   'session.save_path' /etc/php5`` and then add it to the ``/etc/fstab`` file, 
    for example: 
    ``echo "tmpfs /var/lib/php5/pool-www tmpfs defaults,noatime,mode=1777 0 0" 
    >> /etc/fstab``.
@@ -211,7 +211,7 @@ Authentication via an existing LDAP or Active Directory server.
    Session management on the application server. PHP sessions are stored 
    in a tmpfs mounted at the operating system-specific session storage 
    location. You can find out where that is by running ``grep -R 
-   'session.save_path` /etc/php5`` and then add it to the ``/etc/fstab`` file, 
+   'session.save_path' /etc/php5`` and then add it to the ``/etc/fstab`` file, 
    for example: 
    ``echo "tmpfs /var/lib/php5/pool-www tmpfs defaults,noatime,mode=1777 0 0" 
    >> /etc/fstab``.
