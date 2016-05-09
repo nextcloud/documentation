@@ -1422,3 +1422,9 @@ Retention for activities of the activity app:
 
 Every day a cron job is ran, which deletes all activities for all users
 which are older then the number of days that is set for ``activity_expire_days``
+
+::
+
+	'wnd.logging.enable' => true,
+
+This enables debug logs for the windows_network_drive app.
