@@ -50,14 +50,26 @@ into the virtual filesystem. The class to be used is ``OCA\ObjectStore\S3``:
 
 ::
 
-  'objectstore' => array(
+  'objectstore' => [
     'class' => 'OCA\ObjectStore\S3',
-        'arguments' => array(
-          'key' => 'yourkey',
-          'secret' => 'yoursecret',
-          'bucket' => 'your-oc-bucket',
-          'region' => 'region-of-your-oc-bucket'
-        ),
+    'arguments' => [
+        // replace with your bucket
+        'bucket' => 'owncloud',
+        'autocreate' => true,
+        // uncomment to enable server side encryption
+        //'serversideencryption' => 'AES256',
+        'options' => [
+            // version and region are required
+            'version' => '2006-03-01',
+            // change to your region
+            'region'  => 'eu-central-1',
+            'credentials' => [
+                // replace key and secret with your credentials
+                'key' => 'EJ39ITYZEUH5BGWDRUFY',
+                'secret' => 'M5MrXTRjkyMaxXPe2FRXMTfTfbKEnZCu+7uRTVSj',
+            ],
+        ],
+    ],
   ),
 
 
@@ -69,19 +81,31 @@ into the virtual filesystem. The class to be used is ``OCA\ObjectStore\S3``:
 
 ::
 
-  'objectstore' => array(
-    'class' => 'OCA\ObjectStore\S3',
-	'arguments' => array(
-	  'key' => 'GEZ550B06Z2ZDB52CT21',
-	  'secret' => '6Vdo7ObSMBlI4TMRw0jpRE75K6qS9QNTk6nBboxP',
-	  'bucket' => 'devobjectstore',
-	  'base_url' => 'http://ceph/',
-	  'hostname' => 'ceph',
-	  // you must use this region or the amazon lib will overwrite
-	  // the path style when resetting the region
-	  'region' => 's3-eu-west-1.amazonaws.com'
-	),
-  ),
+    'objectstore' => [
+        'class' => 'OCA\ObjectStore\S3',
+        'arguments' => [
+            // replace with your bucket
+            'bucket' => 'owncloud',
+            'autocreate' => true,
+            'options' => [
+                // version and region are required
+                'version' => '2006-03-01',
+                'region'  => '',
+                // replace key, secret and bucket with your credentials
+                'credentials' => [
+                    // replace key and secret with your credentials
+                    'key'    => 'EJ39ITYZEUH5BGWDRUFY',
+                    'secret' => 'M5MrXTRjkyMaxXPe2FRXMTfTfbKEnZCu+7uRTVSj',
+                ],
+                // replace the ceph endpoint with your rgw url
+                'endpoint' => 'http://cephhost:8000/',
+                // Use path style when talking to ceph
+                'command.params' => [
+                    'PathStyle' => true,
+                ],
+            ],
+        ],
+    ],
 
 OpenStack Swift
 ~~~~~~~~~~~~~~~
