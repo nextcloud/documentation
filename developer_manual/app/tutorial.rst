@@ -81,7 +81,7 @@ On the server side we need to register a callback that is executed once the requ
         ['name' => 'page#index', 'url' => '/', 'verb' => 'GET']
     ]];
 
-This route calls the controller **OCA\\OwnNotes\\PageController->index()** method which is defined in **ownnotes/controller/pagecontroller.php**. The controller returns a :doc:`template <templates>`, in this case **ownnotes/templates/main.php**:
+This route calls the controller **OCA\\OwnNotes\\PageController->index()** method which is defined in **ownnotes/lib/Controller/PageController.php**. The controller returns a :doc:`template <templates>`, in this case **ownnotes/templates/main.php**:
 
 .. note:: @NoAdminRequired and @NoCSRFRequired in the comments above the method turn off security checks, see :doc:`controllers`
 
@@ -110,7 +110,7 @@ This route calls the controller **OCA\\OwnNotes\\PageController->index()** metho
 
     }
 
-Since the route which returns the intial HTML has been taken care of, the controller which handles the AJAX requests for the notes needs to be set up. Create the following file: **ownnotes/controller/notecontroller.php** with the following content:
+Since the route which returns the intial HTML has been taken care of, the controller which handles the AJAX requests for the notes needs to be set up. Create the following file: **ownnotes/lib/Controller/NoteController.php** with the following content:
 
 .. code-block:: php
 
@@ -274,7 +274,7 @@ To create the tables in the database, the :doc:`version tag <info>` in **ownnote
 
 Reload the page to trigger the database migration.
 
-Now that the tables are created we want to map the database result to a PHP object to be able to control data. First create an :doc:`entity <database>` in **ownnotes/db/note.php**:
+Now that the tables are created we want to map the database result to a PHP object to be able to control data. First create an :doc:`entity <database>` in **ownnotes/lib/Db/Note.php**:
 
 
 .. code-block:: php
@@ -305,7 +305,7 @@ Now that the tables are created we want to map the database result to a PHP obje
 
 We also define a **jsonSerializable** method and implement the interface to be able to transform the entity to JSON easily.
 
-Entities are returned from so called :doc:`Mappers <database>`. Let's create one in **ownnotes/db/notemapper.php** and add a **find** and **findAll** method:
+Entities are returned from so called :doc:`Mappers <database>`. Let's create one in **ownnotes/lib/Db/NoteMapper.php** and add a **find** and **findAll** method:
 
 .. code-block:: php
 
@@ -339,7 +339,7 @@ Connect Database & Controllers
 ==============================
 The mapper which provides the database access is finished and can be passed into the controller.
 
-You can pass in the mapper by adding it as a type hinted parameter. ownCloud will figure out how to :doc:`assemble them by itself <container>`. Additionally we want to know the userId of the currently logged in user. Simply add a **$UserId** parameter to the constructor (case sensitive!). To do that open **ownnotes/controller/notecontroller.php** and change it to the following:
+You can pass in the mapper by adding it as a type hinted parameter. ownCloud will figure out how to :doc:`assemble them by itself <container>`. Additionally we want to know the userId of the currently logged in user. Simply add a **$UserId** parameter to the constructor (case sensitive!). To do that open **ownnotes/lib/Controller/NoteController.php** and change it to the following:
 
 .. code-block:: php
 
@@ -446,7 +446,7 @@ Let's say our app is now on the app store and and we get a request that we shoul
 
 The filesystem API is quite different from the database API and throws different exceptions, which means we need to rewrite everything in the **NoteController** class to use it. This is bad because a controller's only responsibility should be to deal with incoming Http requests and return Http responses. If we need to change the controller because the data storage was changed the code is probably too tightly coupled and we need to add another layer in between. This layer is called **Service**.
 
-Let's take the logic that was inside the controller and put it into a separate class inside **ownnotes/service/noteservice.php**:
+Let's take the logic that was inside the controller and put it into a separate class inside **ownnotes/lib/Service/NoteService.php**:
 
 .. code-block:: php
 
@@ -527,7 +527,7 @@ Let's take the logic that was inside the controller and put it into a separate c
 
     }
 
-Following up create the exceptions in **ownnotes/service/serviceexception.php**:
+Following up create the exceptions in **ownnotes/lib/Service/ServiceException.php**:
 
 .. code-block:: php
 
@@ -538,7 +538,7 @@ Following up create the exceptions in **ownnotes/service/serviceexception.php**:
 
     class ServiceException extends Exception {}
 
-and **ownnotes/service/notfoundexception.php**:
+and **ownnotes/lib/Service/NotFoundException.php**:
 
 .. code-block:: php
 
@@ -550,7 +550,7 @@ and **ownnotes/service/notfoundexception.php**:
 
 Remember how we had all those ugly try catches that where checking for **DoesNotExistException** and simply returned a 404 response? Let's also put this into a reusable class. In our case we chose a `trait <http://php.net/manual/en/language.oop5.traits.php>`_ so we can inherit methods without having to add it to our inheritance hierarchy. This will be important later on when you've got controllers that inherit from the **ApiController** class instead.
 
-The trait is created in **ownnotes/controller/errors.php**:
+The trait is created in **ownnotes/lib/Controller/Errors.php**:
 
 
 .. code-block:: php
@@ -671,12 +671,12 @@ Unit Tests
 ----------
 A unit test is a test that tests a class in isolation. It is very fast and catches most of the bugs, so we want many unit tests.
 
-Because ownCloud uses :doc:`Dependency Injection <container>` to assemble your app, it is very easy to write unit tests by passing mocks into the constructor. A simple test for the update method can be added by adding this to **ownnotes/tests/unit/controller/NoteControllerTest.php**:
+Because ownCloud uses :doc:`Dependency Injection <container>` to assemble your app, it is very easy to write unit tests by passing mocks into the constructor. A simple test for the update method can be added by adding this to **ownnotes/tests/Unit/Controller/NoteControllerTest.php**:
 
 .. code-block:: php
 
     <?php
-    namespace OCA\OwnNotes\Controller;
+    namespace OCA\OwnNotes\Tests\Unit\Controller;
 
     use PHPUnit_Framework_TestCase;
 
@@ -738,7 +738,7 @@ We can and should also create a test for the **NoteService** class:
 .. code-block:: php
 
     <?php
-    namespace OCA\OwnNotes\Service;
+    namespace OCA\OwnNotes\Tests\Unit\Service;
 
     use PHPUnit_Framework_TestCase;
 
@@ -805,7 +805,7 @@ If `PHPUnit is installed <https://phpunit.de/>`_ we can run the tests inside **o
 
     phpunit
 
-.. note:: You need to adjust the **ownnotes/tests/unit/controller/PageControllerTest** file to get the tests passing: remove the **testEcho** method since that method is no longer present in your **PageController** and do not test the user id parameters since they are not passed anymore
+.. note:: You need to adjust the **ownnotes/tests/Unit/Controller/PageControllerTest** file to get the tests passing: remove the **testEcho** method since that method is no longer present in your **PageController** and do not test the user id parameters since they are not passed anymore
 
 Integration Tests
 -----------------
@@ -813,12 +813,12 @@ Integration tests are slow and need a fully working instance but make sure that 
 
 In our case we want to create an integration test for the udpate method without mocking out the **NoteMapper** class so we actually write to the existing database.
 
-To do that create a new file called **ownnotes/tests/integration/NoteIntegrationTest.php** with the following content:
+To do that create a new file called **ownnotes/tests/Integration/NoteIntegrationTest.php** with the following content:
 
 .. code-block:: php
 
     <?php
-    namespace OCA\OwnNotes\Controller;
+    namespace OCA\OwnNotes\Tests\Integration\Controller;
 
     use OCP\AppFramework\Http\DataResponse;
     use OCP\AppFramework\App;
@@ -888,7 +888,7 @@ A :doc:`RESTful API <api>` allows other apps such as Android or iPhone apps to a
 
 Because we put our logic into the **NoteService** class it is very easy to reuse it. The only pieces that need to be changed are the annotations which disable the CSRF check (not needed for a REST call usually) and add support for `CORS <https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS>`_ so your API can be accessed from other webapps.
 
-With that in mind create a new controller in **ownnotes/controller/noteapicontroller.php**:
+With that in mind create a new controller in **ownnotes/lib/Controller/NoteApiController.php**:
 
 .. code-block:: php
 
@@ -1002,12 +1002,12 @@ You can test the API by running a GET request with **curl**::
 
     curl -u user:password http://localhost:8080/index.php/apps/ownnotes/api/0.1/notes
 
-Since the **NoteApiController** is basically identical to the **NoteController**, the unit test for it simply inherits its tests from the **NoteControllerTest**. Create the file **ownnotes/tests/unit/controller/NoteApiControllerTest.php**:
+Since the **NoteApiController** is basically identical to the **NoteController**, the unit test for it simply inherits its tests from the **NoteControllerTest**. Create the file **ownnotes/tests/Unit/Controller/NoteApiControllerTest.php**:
 
 .. code-block:: php
 
     <?php
-    namespace OCA\OwnNotes\Controller;
+    namespace OCA\OwnNotes\Tests\Unit\Controller;
 
     require_once __DIR__ . '/NoteControllerTest.php';
 
