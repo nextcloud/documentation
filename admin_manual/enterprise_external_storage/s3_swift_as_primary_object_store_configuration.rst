@@ -35,12 +35,12 @@ constructor with the ``arguments`` key:
 
 ::
 
-    'objectstore' => array(
+    'objectstore' => [
         'class' => 'Implementation\\Of\\OCP\\Files\\ObjectStore\\IObjectStore',
-        'arguments' => array(
+        'arguments' => [
             ...
-        ),
-    ),
+        ],
+    ],
 
 Amazon S3
 ~~~~~~~~~
@@ -51,26 +51,26 @@ into the virtual filesystem. The class to be used is ``OCA\ObjectStore\S3``:
 ::
 
   'objectstore' => [
-    'class' => 'OCA\ObjectStore\S3',
-    'arguments' => [
-        // replace with your bucket
-        'bucket' => 'owncloud',
-        'autocreate' => true,
-        // uncomment to enable server side encryption
-        //'serversideencryption' => 'AES256',
-        'options' => [
-            // version and region are required
-            'version' => '2006-03-01',
-            // change to your region
-            'region'  => 'eu-central-1',
-            'credentials' => [
-                // replace key and secret with your credentials
-                'key' => 'EJ39ITYZEUH5BGWDRUFY',
-                'secret' => 'M5MrXTRjkyMaxXPe2FRXMTfTfbKEnZCu+7uRTVSj',
-            ],
-        ],
-    ],
-  ),
+      'class' => 'OCA\ObjectStore\S3',
+      'arguments' => [
+          // replace with your bucket
+          'bucket' => 'owncloud',
+          'autocreate' => true,
+          // uncomment to enable server side encryption
+          //'serversideencryption' => 'AES256',
+          'options' => [
+              // version and region are required
+              'version' => '2006-03-01',
+              // change to your region
+              'region'  => 'eu-central-1',
+              'credentials' => [
+                  // replace key and secret with your credentials
+                  'key' => 'EJ39ITYZEUH5BGWDRUFY',
+                  'secret' => 'M5MrXTRjkyMaxXPe2FRXMTfTfbKEnZCu+7uRTVSj',
+              ],
+          ],
+      ],
+  ],
 
 
 Ceph S3
@@ -115,9 +115,9 @@ into the virtual filesystem. The class to be used is ``\\OC\\Files\\ObjectStore\
 
 ::
 
-    'objectstore' => array(
+    'objectstore' => [
         'class' => 'OC\\Files\\ObjectStore\\Swift',
-        'arguments' => array(
+        'arguments' => [
             'username' => 'demo', 
             'password' => 'password', 
             'container' => 'owncloud', 
@@ -128,7 +128,7 @@ into the virtual filesystem. The class to be used is ``\\OC\\Files\\ObjectStore\
             'serviceName' => 'swift', 
             // url Type, optional, public, internal or admin
 	    'urlType' => 'internal'
-        ),
-    ),
+        ],
+    ],
 
 
