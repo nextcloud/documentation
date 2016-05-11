@@ -25,9 +25,10 @@ App architecture
 The following directories have now been created:
 
 * **appinfo/**: Contains app metadata and configuration
-* **controller/**: Contains the controllers
 * **css/**: Contains the CSS
 * **js/**: Contains the JavaScript files
+* **lib/Controller/**: Contains the controllers
+* **lib/**: Contains the other class files of your app
 * **templates/**: Contains the templates
 * **tests/**: Contains the tests
 

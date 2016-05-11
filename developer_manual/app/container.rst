@@ -52,10 +52,10 @@ Using a container
 =================
 Passing dependencies into the constructor rather than instantiating them in the constructor has the following drawback: Every line in the source code where **new AuthorMapper** is being used has to be changed, once a new constructor argument is being added to it.
 
-The solution for this particular problem is to limit the **new AuthorMapper** to one file, the container. The container contains all the factories for creating these objects and is configured in :file:`appinfo/application.php`.
+The solution for this particular problem is to limit the **new AuthorMapper** to one file, the container. The container contains all the factories for creating these objects and is configured in :file:`lib/AppInfo/Application.php`.
 
 
-To add the app's classes simply open the :file:`appinfo/application.php` and use the **registerService** method on the container object:
+To add the app's classes simply open the :file:`lib/AppInfo/Application.php` and use the **registerService** method on the container object:
 
 .. code-block:: php
 
@@ -155,7 +155,7 @@ Use automatic dependency assembly (recommended)
 ===============================================
 .. versionadded:: 8
 
-Since ownCloud 8 it is possible to omit the **appinfo/application.php** and use automatic dependency assembly instead.
+Since ownCloud 8 it is possible to omit the **lib/AppInfo/Application.php** and use automatic dependency assembly instead.
 
 How does automatic assembly work
 --------------------------------
@@ -202,8 +202,8 @@ How does it affect the request lifecycle
 * A request comes in
 * All apps' **routes.php** files are loaded
 
-  * If a **routes.php** file returns an array, and an **appname/appinfo/application.php** exists, include it, create a new instance of **\\OCA\\AppName\\AppInfo\\Application.php** and register the routes on it. That way a container can be used while still benefitting from the new routes behavior
-  * If a **routes.php** file returns an array, but there is no **appname/appinfo/application.php**, create a new \\OCP\\AppFramework\\App instance with the app id and register the routes on it
+  * If a **routes.php** file returns an array, and an **appname/lib/AppInfo/Application.php** exists, include it, create a new instance of **\\OCA\\AppName\\AppInfo\\Application.php** and register the routes on it. That way a container can be used while still benefitting from the new routes behavior
+  * If a **routes.php** file returns an array, but there is no **appname/lib/AppInfo/Application.php**, create a new \\OCP\\AppFramework\\App instance with the app id and register the routes on it
 
 * A request is matched for the route, e.g. with the name **page#index**
 * The appropriate container is being queried for the entry PageController (to keep backwards compability)
@@ -222,7 +222,7 @@ The only thing that needs to be done to add a route and a controller method is n
       ['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
   ]];
 
-**myapp/appinfo/controller/pagecontroller.php**
+**myapp/appinfo/lib/Controller/PageController.php**
 
 .. code-block:: php
 
@@ -239,7 +239,7 @@ The only thing that needs to be done to add a route and a controller method is n
       }
   }
 
-There is no need to wire up anything in **appinfo/application.php**. Everything will be done automatically.
+There is no need to wire up anything in **lib/AppInfo/Application.php**. Everything will be done automatically.
 
 
 How to deal with interface and primitive type parameters

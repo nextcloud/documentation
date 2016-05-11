@@ -57,7 +57,7 @@ would look like this:
 .. code-block:: php
 
     <?php
-    // tests/storage/AuthorStorageTest.php
+    // tests/Storage/AuthorStorageTest.php
     namespace OCA\MyApp\Tests\Storage;
 
     class AuthorStorageTest extends \Test\TestCase {
