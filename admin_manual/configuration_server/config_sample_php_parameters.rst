@@ -1083,6 +1083,31 @@ Server details for one or more memcached servers to use for memory caching.
 
 ::
 
+	'memcached_options' => array(
+		// Set timeouts to 50ms
+		\Memcached::OPT_CONNECT_TIMEOUT => 50,
+		\Memcached::OPT_RETRY_TIMEOUT =>   50,
+		\Memcached::OPT_SEND_TIMEOUT =>    50,
+		\Memcached::OPT_RECV_TIMEOUT =>    50,
+		\Memcached::OPT_POLL_TIMEOUT =>    50,
+	
+		// Enable compression
+		\Memcached::OPT_COMPRESSION =>          true,
+	
+		// Turn on consistent hashing
+		\Memcached::OPT_LIBKETAMA_COMPATIBLE => true,
+	
+		// Enable Binary Protocol
+		\Memcached::OPT_BINARY_PROTOCOL =>      true,
+	
+		// Binary serializer vill be enabled if the igbinary PECL module is available
+		//\Memcached::OPT_SERIALIZER => \Memcached::SERIALIZER_IGBINARY,
+	),
+
+Connection options for memcached, see http://apprize.info/php/scaling/15.html
+
+::
+
 	'cache_path' => '',
 
 Location of the cache folder, defaults to ``data/$user/cache`` where
