@@ -11,11 +11,15 @@ There are three ways to upgrade your ownCloud server:
   release channels. (It is not available and not supported on the Enterprise 
   edition.)
 * :doc:`Manually upgrading <manual_upgrade>` with the ownCloud ``.tar`` archive 
-  from `owncloud.org/install/`_.
-* Enterprise Subscription customers will use their Enterprise software 
+  from `owncloud.org/install/`_. 
+* Manually upgrading is also an option for users on shared hosting; download 
+  and unpack the ownCloud tarball to your PC, then transfer the ownCloud files 
+  to your hosting account via FTP. Do not overwrite your ``data/`` and 
+  ``config/`` files.
+* Enterprise customers will use their Enterprise software 
   repositories to maintain their ownCloud servers, rather than the Open Build 
   Service. Please see :doc:`../enterprise_installation/linux_installation` for 
-  more information.  
+  more information.
   
 When an update is available for your ownCloud server, you will see a 
 notification at the top of your ownCloud Web interface. When you click the 
