@@ -1,6 +1,6 @@
-====================================
-Enterprise Server Branding (ES only)
-==================================== 
+============================================
+Enterprise Server Branding (Enterprise only)
+============================================ 
 
 .. toctree::
     :maxdepth: 2

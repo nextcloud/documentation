@@ -2,7 +2,7 @@
 Configuring SharePoint Integration
 ==================================
 
-Native SharePoint support has been added to the ownCloud Enterprise Subscription as a 
+Native SharePoint support has been added to the ownCloud Enterprise edition as a 
 secondary storage location for SharePoint 2007, 2010 and 2013. When this is 
 enabled, users can access and sync all of their SharePoint content via ownCloud, 
 whether in the desktop sync, mobile or Web interfaces. Updated files are 

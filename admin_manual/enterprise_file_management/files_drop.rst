@@ -1,6 +1,6 @@
-====================================================
-Enabling Anonymous Uploads with Files Drop (ES Only)
-====================================================
+============================================================
+Enabling Anonymous Uploads with Files Drop (Enterprise Only)
+============================================================
 
 The Files Drop application, introduced in ownCloud 8.0.3 Enterprise 
 Subscription, allows anyone to upload files with the click of a button to the 

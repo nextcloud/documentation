@@ -1,6 +1,6 @@
-===========================================
-Creating Branded ownCloud Clients (ES only)
-===========================================
+===================================================
+Creating Branded ownCloud Clients (Enterprise only)
+===================================================
 
 .. toctree::
    :maxdepth: 3

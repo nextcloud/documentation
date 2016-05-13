@@ -1,6 +1,6 @@
-=======================
-File Firewall (ES only)
-=======================
+===============================
+File Firewall (Enterprise only)
+===============================
 
 The File Firewall GUI enables you to create and manage firewall rule sets from 
 your ownCloud admin page. The File Firewall gives you finer-grained control of 

@@ -20,8 +20,8 @@ ownCloud server is available in three editions:
 * The free community-supported Server. This is the core server for all editions.
 * The Standard Subscription for customers who want paid support for the core 
   Server, without Enterprise applications.
-* The Enterprise Subscription replaces the Enterprise Edition. This 
-  includes the core Server, Enterprise apps and support.
+* The Enterprise Subscription provides paid support for the Enterprise Edition. 
+  This includes the core Server and Enterprise apps.
   
 See :doc:`../whats_new_admin` for more information on the different ownCloud 
 editions.
