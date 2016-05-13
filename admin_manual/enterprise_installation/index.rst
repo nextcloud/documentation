@@ -1,6 +1,6 @@
-==============================================
-Enterprise Subscription Installation (ES Only)
-==============================================
+===============================
+Enterprise Edition Installation
+===============================
 
 .. toctree::
    :maxdepth: 2

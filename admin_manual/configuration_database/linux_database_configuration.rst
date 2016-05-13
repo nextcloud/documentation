@@ -13,7 +13,9 @@ The MySQL or MariaDB databases are the recommended database engines.
 Requirements
 ------------
 
-Choosing to use MySQL / MariaDB, PostgreSQL, or Oracle (ownCloud Enterprise Subscription only) as your database requires that you install and set up the server software first. 
+Choosing to use MySQL / MariaDB, PostgreSQL, or Oracle (ownCloud Enterprise 
+edition only) as your database requires that you install and set up the server 
+software first. 
 (Oracle users, see :doc:`../enterprise_installation/oracle_db_configuration`.)
 
 .. note:: The steps for configuring a third party database are beyond the scope of this document.  Please refer to the documentation for your specific database choice for instructions.

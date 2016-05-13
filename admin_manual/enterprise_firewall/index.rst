@@ -1,6 +1,6 @@
-=============================
-Enterprise Firewall (ES only)
-=============================
+=====================================
+Enterprise Firewall (Enterprise only)
+=====================================
 
 .. toctree::
     :maxdepth: 2

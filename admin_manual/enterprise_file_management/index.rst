@@ -1,6 +1,6 @@
-====================================
-Enterprise File Management (ES Only)
-====================================
+============================================
+Enterprise File Management (Enterprise Only)
+============================================
 
 .. toctree::
    :maxdepth: 2

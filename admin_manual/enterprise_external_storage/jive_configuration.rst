@@ -8,7 +8,7 @@ Jive Integration
 
 The Jive application allows Jive users to access files stored in Jive
 from a mobile device, tablet, or desktop client. Users have complete access
-through ownCloud Enterprise Subscription to upload, edit or download their files.
+through ownCloud Enterprise edition to upload, edit or download their files.
 
 Jive can be configured as a data storage location for ownCloud, which means
 files saved in Jive appear in folders within ownCloud. Jive remains the system

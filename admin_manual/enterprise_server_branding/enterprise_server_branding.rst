@@ -1,12 +1,12 @@
-=================================
-Custom Theming ownCloud (ES only)
-=================================
+=========================================
+Custom Theming ownCloud (Enterprise only)
+=========================================
 
 Overview
 --------
 
 ownBrander is an ownCloud build service that is exclusive to Enterprise 
-subscription customers for creating branded ownCloud clients and servers. You 
+edition customers for creating branded ownCloud clients and servers. You 
 may brand your ownCloud server using ownBrander to easily build a custom theme, 
 using your own logo and artwork. ownCloud has always been theme-able, but it was 
 a manual process that required editing CSS and PHP files. Now Enterprise 

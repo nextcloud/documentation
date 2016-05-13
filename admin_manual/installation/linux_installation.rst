@@ -70,11 +70,11 @@ If you wish to track a specific major release, such as 8.2 or 9.0, then use
 that repo. That way you won't accidentally find yourself looking at an upgrade 
 to the next major release before you're ready.
 
-Installing ownCloud Enterprise Subscription
--------------------------------------------
+Installing ownCloud Enterprise Edition
+--------------------------------------
 
 See :doc:`../enterprise_installation/linux_installation` for instructions on 
-installing ownCloud Enterprise Subscription.
+installing ownCloud Enterprise edition.
 
 Downgrading Not Supported
 -------------------------

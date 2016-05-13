@@ -18,8 +18,8 @@ Table of Contents
     operations/index
     issues/index
 
-Enterprise Subscription Only
-----------------------------
+Enterprise Edition Only
+-----------------------
 
 .. toctree::
     :maxdepth: 3

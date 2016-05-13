@@ -11,7 +11,7 @@ and data, and it automates updating
 New in 9.0, the Updater app has :ref:`command-line options <updater_cli_label>`.
 
 .. note:: The Updater app is **not enabled and not supported** in ownCloud 
-   Enterprise Subscription. 
+   Enterprise edition. 
    
    The Updater app is **not included** in the 
    `Linux packages on our Open Build Service 

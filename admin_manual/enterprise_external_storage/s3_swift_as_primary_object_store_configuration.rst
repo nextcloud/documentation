@@ -2,7 +2,7 @@
 Configuring S3 and OpenStack Swift Objects as Primary Storage
 =============================================================
 
-In ownCloud Enterprise Subscription, you can configure S3 objects as primary 
+In ownCloud Enterprise edition, you can configure S3 objects as primary 
 storage. This replaces the default ownCloud ``owncloud/data`` directory. You may 
 still need to keep the ``owncloud/data`` directory for these reasons:
 

@@ -8,7 +8,7 @@ applications.
 Supported Apps
 --------------
 
-See :doc:`apps_supported` for a list of supported Server and Enterprise Subscription apps.
+See :doc:`apps_supported` for a list of supported Enterprise edition apps.
 
 Viewing Enabled Apps
 --------------------
