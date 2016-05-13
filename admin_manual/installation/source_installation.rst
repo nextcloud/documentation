@@ -7,7 +7,7 @@ preferred method (see :doc:`linux_installation`). These are maintained by
 ownCloud engineers, and you can use your package manager to keep your ownCloud 
 server up-to-date.
 
-.. note:: Enterprise Subscription customers should refer to  
+.. note:: Enterprise customers should refer to  
    :doc:`../enterprise_installation/linux_installation`
 
 If there are no packages for your Linux distribution, or you prefer installing 

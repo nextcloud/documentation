@@ -1,6 +1,6 @@
-=========================
-User Management (ES only)
-=========================
+=================================
+User Management (Enterprise only)
+=================================
 
 .. toctree::
     :maxdepth: 2

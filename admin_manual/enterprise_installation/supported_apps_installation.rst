@@ -1,6 +1,6 @@
-===============================================
-Supported ownCloud Enterprise Subscription Apps
-===============================================
+==========================================
+Supported ownCloud Enterprise Edition Apps
+==========================================
 
 See :doc:`../installation/apps_supported` for a list of supported apps.
 

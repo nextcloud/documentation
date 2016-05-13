@@ -1,6 +1,6 @@
-=====================================================
-Advanced File Tagging With the Workflow App (ES only)
-=====================================================
+=============================================================
+Advanced File Tagging With the Workflow App (Enterprise only)
+=============================================================
 
 New in ownCloud 9.0, the Workflow App provides advanced management of file 
 tagging. The app has three parts: Tag Manager, Automatic Tagging, and Retention.

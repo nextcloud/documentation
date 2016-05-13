@@ -1,6 +1,6 @@
-=================================
-Enterprise Logging Apps (ES only)
-=================================
+========================================
+Enterprise Logging Apps (Enteprise only)
+========================================
 
 .. toctree::
     :maxdepth: 2

@@ -1,6 +1,6 @@
-==========================
-External Storage (ES only)
-==========================
+==================================
+External Storage (Enterprise only)
+==================================
 
 .. toctree::
     :maxdepth: 2
