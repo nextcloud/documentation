@@ -6,7 +6,7 @@ ownCloud requires a database in which administrative data is stored. The followi
 
 * `MySQL <http://www.mysql.com/>`_ / `MariaDB <https://mariadb.org/>`_
 * `PostgreSQL <http://www.postgresql.org/>`_
-* `Oracle <http://www.oracle.com/>`_
+* `Oracle <http://www.oracle.com/>`_ (ownCloud Enterprise edition only)
 
 The MySQL or MariaDB databases are the recommended database engines.
 
