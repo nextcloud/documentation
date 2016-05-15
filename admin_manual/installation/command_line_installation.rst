@@ -33,10 +33,10 @@ a PHP fatal error message.
 
 Supported databases are::
 
- - sqlite (SQLite3 - Server Edition Only)
+ - sqlite (SQLite3 - ownCloud Community edition only)
  - mysql (MySQL/MariaDB)
  - pgsql (PostgreSQL)
- - oci (Oracle)
+ - oci (Oracle - ownCloud Enterprise edition only)
  
 See :ref:`command_line_installation_label` for more information.
 
