@@ -21,6 +21,10 @@ You must also install the updated database module for your database. This instal
  
  yum install php55-php-mysqlnd
  
+If you are using the ownCloud LDAP app, you need this module::
+
+ yum install php55-php-ldap
+ 
 Disable loading the old PHP Apache modules by changing their names::
 
  mv /etc/httpd/conf.d/php.conf /etc/httpd/conf.d/php54.off
@@ -58,6 +62,10 @@ Then install PHP 5.5 and these modules::
 You must also install the updated database module for your database. This installs the new PHP 5.5 module for MySQL/MariaDB:: 
  
  yum install php55-php-mysqlnd
+ 
+If you are using the ownCloud LDAP app, you need this module::
+
+ yum install php55-php-ldap 
   
 Disable loading the old PHP Apache modules by changing their names::
 
