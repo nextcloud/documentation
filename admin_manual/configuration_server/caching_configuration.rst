@@ -221,13 +221,13 @@ Use Redis for everything except local memcache::
        'port' => 6379,
         ),
 
-..  _install_redis_label:     
-
 Additional notes for Redis vs. APCu on Memory Caching
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 APCu is faster at local caching than Redis. If you have enough memory, use APCu for Memory Caching
 and Redis for File Locking. If you are low on memory, use Redis for both.
+
+..  _install_redis_label:     
 
 Additional Redis Installation Help
 ----------------------------------
