@@ -1,15 +1,15 @@
+=======================
 Using the Bookmarks App
 =======================
 
-If you want to add a bookmark to the Bookmarks application, 
-you can either use the main interface or the bookmarklet.
+The Bookmark application allows you to bookmark Web sites inside ownCloud.
 
 The main interface
 --------------------
 
 Add a bookmark
 ~~~~~~~~~~~~~~
-In the bookmark application, enter a URL into the top-left area of the content section. After adding an address, click on the pencil button to edit fields for the given address.
+In the Bookmark application, enter a URL into the top-left area of the content section. After adding an address, click on the pencil button to edit fields for the given address.
 The main ownCloud bookmark interface contains 3 fields at the top where
 you can enter the website address (or URL), the title of your bookmark, and
 a set of tags separated from each other by a space.
