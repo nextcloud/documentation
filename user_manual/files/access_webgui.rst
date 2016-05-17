@@ -40,7 +40,9 @@ Video Player
 ------------
 
 You can play videos in ownCloud with the Video Player app by simply clicking on 
-the file.
+the file. Video streaming by the native ownCloud video player depends on your Web browser 
+and the video format. If your ownCloud administrator has enabled video 
+streaming, and it doesn't work in your Web browser, it may be a browser issue. See https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility for supported multimedia formats in Web browsers. 
 
 .. figure:: ../images/video_player_2.png
    :alt: Watching a movie.
@@ -104,10 +106,6 @@ files in the ownCloud embedded viewers by clicking on the file name. There may
 be other file types you can preview if your ownCloud administrator has enabled 
 them. If ownCloud cannot display a file, it starts a download process and 
 downloads the file to your computer. 
-
-Video streaming by the native ownCloud video player depends on your Web browser 
-and the video format. If your ownCloud administrator has enabled video 
-streaming, and it doesn't work in your Web browser, it may be a browser issue.  
 
 Navigating Inside Your ownCloud
 -------------------------------

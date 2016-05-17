@@ -15,6 +15,5 @@ Table of Contents
     documents
     userpreferences
     external_storage/index
+    bookmarks
     
-..  removed from 9?    
-..  bookmarks    
