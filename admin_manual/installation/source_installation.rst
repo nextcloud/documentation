@@ -131,7 +131,12 @@ Apache and MariaDB, by issuing the following commands in a terminal::
     apt-get install php5-gd php5-json php5-mysql php5-curl
     apt-get install php5-intl php5-mcrypt php5-imagick
 
-* This installs the packages for the ownCloud core system. If you are planning 
+* This installs the packages for the ownCloud core system. 
+  ``libapache2-mod-php5`` provides the following PHP extensions: ``bcmath bz2 
+  calendar Core ctype date dba dom ereg exif fileinfo filter ftp gettext hash 
+  iconv libxml mbstring mhash openssl pcre Phar posix Reflection session shmop 
+  SimpleXML soap sockets SPL standard sysvmsg sysvsem sysvshm tokenizer wddx 
+  xml xmlreader xmlwriter zip zlib``. If you are planning 
   on running additional apps, keep in mind that they might require additional 
   packages.  See :ref:`prerequisites_label` for details.
 
