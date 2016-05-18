@@ -71,6 +71,12 @@ correct. Go to the Apps page and review the core apps to make sure the right
 ones are enabled. Re-enable your third-party apps. Then apply strong 
 permissions to your ownCloud directories (:ref:`strong_perms_label`).
 
+Previous ownCloud Releases
+--------------------------
+
+You'll find previous ownCloud releases in the `ownCloud Server Changelog 
+<https://owncloud.org/changelog/>`_.
+
 Reverse Upgrade
 ---------------
 
