@@ -96,3 +96,25 @@ If the upgrade fails, then you must try a manual upgrade.
 
 .. _Open Build Service: 
    https://download.owncloud.org/download/repositories/stable/owncloud/
+   
+.. _skipped_release_upgrade_label:  
+   
+Upgrading Across Skipped Releases
+---------------------------------
+
+It is best to update your ownCloud installation with every new point release, 
+and to never skip any major releases. If you have skipped any major releases you 
+can bring your ownCloud current with these steps:
+
+#. Add the repository of your current version
+#. Upgrade your current version to the latest point release
+#. Add the repo of the next major release
+#. Upgrade your current version to the next major release
+#. Run upgrade routine
+#. Repeat from step 3 until you reach the last available major release
+
+You'll find previous ownCloud releases in the `ownCloud Server Changelog 
+<https://owncloud.org/changelog/>`_.
+
+If upgrading via your package manager fails, then you must perform a 
+:doc:`manual_upgrade`.
