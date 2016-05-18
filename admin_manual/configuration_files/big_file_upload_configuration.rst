@@ -91,12 +91,12 @@ wiki entry.
    performance, place these on a separate hard drive that is dedicated to 
    swap and temp storage.
    
-In case your site is behind a Nginx frontend (for example a loadbalancer): 
+If your site is behind a Nginx frontend (for example a loadbalancer): 
 
 By default, downloads will be limited to 1GB due to ``proxy_buffering`` and ``proxy_max_temp_file_size`` on the frontend.
 
 * If you can access the frontend's configuration, disable `proxy_buffering <http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_buffering>`_ or increase `proxy_max_temp_file_size <http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_max_temp_file_size>`_ from the default 1GB.
-* If you do not have have access to the frontend, set the `X-Accel-Buffering <http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_buffering>`_ header to ``add_header X-Accel-Buffering no;`` on your backend server.
+* If you do not have access to the frontend, set the `X-Accel-Buffering <http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_buffering>`_ header to ``add_header X-Accel-Buffering no;`` on your backend server.
 
 Configuring PHP
 ---------------
