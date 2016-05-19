@@ -8,9 +8,10 @@ users to mount their own external storage services.
 
 ownCloud 9.0 introduces a new set of :ref:`occ commands for managing external storage <files_external_label>`.
 
-Also new in 9.0 is an option for the ownCloud admin to enable or disable sharing on individual
-external mountpoints (see :ref:`external_storage_mount_options_label`). Sharing on such
-mountpoints is disabled by default.
+Also new in 9.0 is an option for the ownCloud admin to enable or disable sharing 
+on individual external mountpoints (see 
+:ref:`external_storage_mount_options_label`). Sharing on such mountpoints is 
+disabled by default.
 
 Enabling External Storage Support
 ---------------------------------
@@ -48,6 +49,9 @@ filled, the storage is automatically saved. A green dot next to the storage row
 indicates the storage is ready for use. A red or yellow icon indicates 
 that ownCloud could not connect to the external storage, so you need to 
 re-check your configuration and network availability.
+
+If there is an error on the storage, it will be marked as unavailable for ten 
+minutes. To re-check it, click the colored icon or reload your Admin page.
 
 User and Group Permissions
 --------------------------
