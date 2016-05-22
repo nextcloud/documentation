@@ -739,19 +739,6 @@ Log successful cron runs.
 
 ::
 
-	'cron.lockfile.location' => '',
-
-Location of the lock file for cron executions can be specified here.
-
-Default is within the tmp directory. The file is named in the following way:
-owncloud-server-$INSTANCEID-cron.lock
-where $INSTANCEID is the string specified in the ``instanceid`` field.
-Because the cron lock file is accessed at regular intervals, it may prevent
-enabled disk drives from spinning down. A different location for this file
-can solve such issues.
-
-::
-
 	'log_rotate_size' => false,
 
 Enables log rotation and limits the total size of logfiles. The default is 0,
