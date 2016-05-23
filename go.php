@@ -17,7 +17,7 @@ $mapping = array(
     'admin-backup'            => '/admin_manual/maintenance/backup.html',
     'admin-monitoring'        => '/admin_manual/operations/considerations_on_monitoring.html',
     
-    'admin-server-tuning'     => '/admin_manual/configuration_server/oc_server_tuning.html',
+    'admin-performance'       => '/admin_manual/configuration_server/oc_server_tuning.html',
     'admin-config'            => '/admin_manual/configuration_server/config_sample_php_parameters.html',
     'admin-db-conversion'     => '/admin_manual/configuration_database/db_conversion.html',
     'admin-security'          => '/admin_manual/configuration_server/harden_server.html',
