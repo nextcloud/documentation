@@ -27,7 +27,7 @@ Split packages are available for the following Linux distributions:
 * openSUSE 13.2, Leap 42.1
 
 ``owncloud-files`` is available for the following distributions, but not 
-``owncoud-deps``. You will have to install your own LAMP stack first. This 
+``owncloud-deps``. You will have to install your own LAMP stack first. This 
 allows you to create your own custom LAMP stack without dependency conflicts 
 with the ownCloud package. Browse 
 `<http://download.owncloud.org/download/repositories/9.0/owncloud/>`_ to find 
