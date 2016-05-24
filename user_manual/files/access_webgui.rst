@@ -8,16 +8,15 @@ has the option to disable these features, so if any of them are missing on your
 system ask your server administrator.
 
 .. figure:: ../images/files_page.png
-   :scale: 75%
    :alt: The Files view screen.
    
 Tagging Files
 -------------
 
-New for 9.0: file tagging. You can assign tags to files. To create tags, open a 
-file to the Details view. Then type your tags. To enter more than one tag press 
-the return key after creating each tag. All tags are system tags, and are 
-shared by all users on your ownCloud server.
+You can assign tags to files. To create tags, open a file to the Details view. 
+Then type your tags. To enter more than one tag press the return key after 
+creating each tag. All tags are system tags, and are shared by all users on your 
+ownCloud server.
 
 .. figure:: ../images/files_page-7.png
    :alt: Creating file tags.
@@ -30,8 +29,8 @@ Then use the Tags filter on the left sidebar to filter files by tags.
 Comments
 --------
  
-New for 9.0: Comments. Use the Details view to add and read comments on any 
-file or folder. Comments are visible to everyone who has access to the file.
+Use the Details view to add and read comments on any file or folder. Comments 
+are visible to everyone who has access to the file.
 
 .. figure:: ../images/file_menu_comments_2.png
    :alt: Creating and viewing comments.
@@ -97,6 +96,16 @@ Overflow Menu
   
 .. figure:: ../images/files_page-4.png
    :alt: Details screen.  
+   
+The **Settings** gear icon at the lower left allows you to show or hide hidden 
+files in your ownCloud Web interface. These are also called dotfiles, because 
+they are prefixed with a dot, e.g. ``.mailfile``. The dot tells your operating 
+system to hide these files in your file browsers, unless you choose to display 
+them. Usually these are configuration files, so having the option to hide them 
+reduces clutter.
+
+.. figure:: ../images/hidden_files.png
+   :alt: Hiding or displaying hidden files. 
  
 Previewing Files
 ----------------
