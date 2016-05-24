@@ -102,8 +102,7 @@ files in your ownCloud Web interface. These are also called dotfiles, because
 they are prefixed with a dot, e.g. ``.mailfile``. The dot tells your operating 
 system to hide these files in your file browsers, unless you choose to display 
 them. Usually these are configuration files, so having the option to hide them 
-reduces clutter. When you enable or disable showing hidden files, refresh your 
-Web browser to see the change.
+reduces clutter.
 
 .. figure:: ../images/hidden_files.png
    :alt: Hiding or displaying hidden files. 
