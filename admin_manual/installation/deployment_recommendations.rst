@@ -408,18 +408,6 @@ best option, as Nginx does not support all features necessary for enterprise
 deployments. Mod_php is recommended instead of PHP_FPM, because in scale-out 
 deployments separate PHP pools are simply not necessary.
 
-
-.. comment: Nginx currently does not integrate with Shibboleth, which prevents 
-   SSO. Nevertheless, the Shibboleth community seems to be investigating how to 
-   integrate with Nginx.
-
-.. comment:  Nginx stores uploaded files on disk before handing them to php-fpm 
-   which is a performance problem with GB-sized files. There seems to be an 
-   Nginx fork from China that handles that better. 
-   
-.. comment from carla: We shouldn't recommend forks unless they are proven, 
-   well-supported and dependable.
-
 Relational Database
 ^^^^^^^^^^^^^^^^^^^
 

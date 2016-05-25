@@ -265,8 +265,7 @@ and if running in a subfolder like ``owncloud``:
 For the first case the :file:`.htaccess` file shipped with ownCloud should do
 this work for your when running Apache. You only need to make sure that your
 Web server is using this file. When running NGINX please refer to
-`NGINX configuration 
-<https://github.com/owncloud/documentation/wiki/NGINX-Configuration>`_
+:doc:`../installation/nginx_examples`.
 
 
 If your ownCloud instance is installed in a subfolder called ``owncloud`` and
