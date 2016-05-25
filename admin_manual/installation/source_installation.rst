@@ -438,8 +438,7 @@ in the ``owncloud/.user.ini`` file.
 Other Web Servers
 -----------------
 
-`NGINX configuration 
-<https://github.com/owncloud/documentation/wiki/NGINX-Configuration>`_
+:doc:`nginx_examples`
 
 
 `Other HTTP servers 

@@ -54,8 +54,7 @@ describe how to enable HTTPS on the Apache and Nginx Web servers.
 
 :ref:`use_https_label`
 
-`NGINX configuration 
-<https://github.com/owncloud/documentation/wiki/NGINX-Configuration>`_
+:doc:`../installation/nginx_examples`
 
 The test with getenv(\"PATH\") only returns an empty response
 -------------------------------------------------------------
