@@ -1300,8 +1300,9 @@ calculation, defaults to false.
 
 	'filesystem_check_changes' => 0,
 
-Specifies how often the filesystem is checked for changes made outside
-ownCloud.
+Specifies how often the local filesystem (the ownCloud data/ directory, and
+NFS mounts in data/) is checked for changes made outside ownCloud. This
+does not apply to external storages.
 
 0 -> Never check the filesystem for outside changes, provides a performance
 increase when it's certain that no changes are made directly to the
