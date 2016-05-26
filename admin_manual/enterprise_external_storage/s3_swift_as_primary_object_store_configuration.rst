@@ -2,14 +2,16 @@
 Configuring S3 and OpenStack Swift Objects as Primary Storage
 =============================================================
 
-In ownCloud Enterprise edition, you can configure S3 objects as primary 
-storage. This replaces the default ownCloud ``owncloud/data`` directory. You may 
+In ownCloud Enterprise Subscription, you can configure S3 objects as primary 
+storage. This replaces the default ownCloud ``owncloud/data`` directory. You 
+may 
 still need to keep the ``owncloud/data`` directory for these reasons:
 
 * The ownCloud log file is saved in the data directory
 * Legacy apps may not support using anything but the ``owncloud/data`` directory
 
-You can move your logfile by changing its location in ``config.php``. You may still need 
+You can move your logfile by changing its location in ``config.php``. You may 
+still need 
 ``owncloud/data`` for backwards compatibility with some apps.
 
 Implications
@@ -35,12 +37,12 @@ constructor with the ``arguments`` key:
 
 ::
 
-    'objectstore' => array(
+    'objectstore' => [
         'class' => 'Implementation\\Of\\OCP\\Files\\ObjectStore\\IObjectStore',
-        'arguments' => array(
+        'arguments' => [
             ...
-        ),
-    ),
+        ],
+    ],
 
 Amazon S3
 ~~~~~~~~~
@@ -51,32 +53,33 @@ into the virtual filesystem. The class to be used is ``OCA\ObjectStore\S3``:
 ::
 
   'objectstore' => [
-    'class' => 'OCA\ObjectStore\S3',
-    'arguments' => [
-        // replace with your bucket
-        'bucket' => 'owncloud',
-        'autocreate' => true,
-        // uncomment to enable server side encryption
-        //'serversideencryption' => 'AES256',
-        'options' => [
-            // version and region are required
-            'version' => '2006-03-01',
-            // change to your region
-            'region'  => 'eu-central-1',
-            'credentials' => [
-                // replace key and secret with your credentials
-                'key' => 'EJ39ITYZEUH5BGWDRUFY',
-                'secret' => 'M5MrXTRjkyMaxXPe2FRXMTfTfbKEnZCu+7uRTVSj',
-            ],
-        ],
-    ],
-  ),
+      'class' => 'OCA\ObjectStore\S3',
+      'arguments' => [
+          // replace with your bucket
+          'bucket' => 'owncloud',
+          'autocreate' => true,
+          // uncomment to enable server side encryption
+          //'serversideencryption' => 'AES256',
+          'options' => [
+              // version and region are required
+              'version' => '2006-03-01',
+              // change to your region
+              'region'  => 'eu-central-1',
+              'credentials' => [
+                  // replace key and secret with your credentials
+                  'key' => 'EJ39ITYZEUH5BGWDRUFY',
+                  'secret' => 'M5MrXTRjkyMaxXPe2FRXMTfTfbKEnZCu+7uRTVSj',
+              ],
+          ],
+      ],
+  ],
 
 
 Ceph S3
 ~~~~~~~
 
-The S3 backend can also be used to mount the bucket of a ceph object store via the s3 API
+The S3 backend can also be used to mount the bucket of a ceph object store via 
+the s3 API
 into the virtual filesystem. The class to be used is ``OCA\ObjectStore\S3``:
 
 ::
@@ -111,13 +114,14 @@ OpenStack Swift
 ~~~~~~~~~~~~~~~
 
 The Swift backend mounts a container on an OpenStack Object Storage server
-into the virtual filesystem. The class to be used is ``\\OC\\Files\\ObjectStore\\Swift``:
+into the virtual filesystem. The class to be used is 
+``\\OC\\Files\\ObjectStore\\Swift``:
 
 ::
 
-    'objectstore' => array(
+    'objectstore' => [
         'class' => 'OC\\Files\\ObjectStore\\Swift',
-        'arguments' => array(
+        'arguments' => [
             'username' => 'demo', 
             'password' => 'password', 
             'container' => 'owncloud', 
@@ -128,7 +132,7 @@ into the virtual filesystem. The class to be used is ``\\OC\\Files\\ObjectStore\
             'serviceName' => 'swift', 
             // url Type, optional, public, internal or admin
 	    'urlType' => 'internal'
-        ),
-    ),
+        ],
+    ],
 
 
