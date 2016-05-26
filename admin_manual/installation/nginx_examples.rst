@@ -17,11 +17,11 @@ community-maintained. (Thank you, contributors!)
    SSL Module documentation <http://wiki.nginx.org/HttpSslModule>`_).
 -  ``add_header`` statements are only taken from the current level and are not 
    cascaded from or to a different level. All necessary ``add_header`` 
-   statements must be defined  in each level needed. For better readability it 
-   is possible to move *common* add 
-   header statements into a separate file and include that file wherever 
-   necessary.  However, each ``add_header`` statement must be written in a 
-   single line to prevent connection problems with sync clients.
+   statements must be defined in each level needed. For better readability it 
+   is possible to move *common* add header statements into a separate file 
+   and include that file wherever necessary. However, each ``add_header`` 
+   statement must be written in a single line to prevent connection problems 
+   with sync clients.
 
 Example Configurations
 ----------------------
@@ -84,8 +84,8 @@ To use http_v2 for nginx you have to check two things:
    to the openssl version used on your system. It will be enabled with the 
    ``--with-http_v2_module`` configuration parameter during compilation. The 
    dependency should be checked automatically. You can check the presence of 
-   http_v2 with ``nginx -V 2>&1 | grep http_v2 -o``. An example how to compile 
-   nginx can be found in section "Configure nginx with the 
+   http_v2 with ``nginx -V 2>&1 | grep http_v2 -o``. An example of how to 
+   compile nginx can be found in section "Configure nginx with the 
    ``nginx-cache-purge`` module" below.
    
    2.) When you have used SPDY before, the nginx config has to be changed from 
@@ -137,9 +137,7 @@ Compile nginx with the ``nginx-cache-purge`` module
     sudo vi /etc/apt/sources.list.d/nginx.list
     
 Add the following lines (if different, replace ``{trusty}`` by your 
-distribution 
- 
-name)::
+distribution name)::
 
    deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx
    deb -src http://nginx.org/packages/mainline/ubuntu/ trusty nginx    
