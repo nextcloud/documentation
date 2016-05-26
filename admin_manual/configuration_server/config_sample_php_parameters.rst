@@ -270,6 +270,14 @@ Enabling this sends a "heartbeat" to the server to keep it from timing out.
 
 ::
 
+	'token_auth_enforced' => false,
+
+Enforce token authentication for clients, which blocks requests using the user
+password for enhanced security. Users need to generate tokens in personal settings
+which can be used as passwords on their clients.
+
+::
+
 	'skeletondirectory' => '/path/to/owncloud/core/skeleton',
 
 The directory where the skeleton files are located. These files will be
@@ -1127,6 +1135,15 @@ Location of the cache folder, defaults to ``data/$user/cache`` where
 ``$user`` is the current user. When specified, the format will change to
 ``$cache_path/$user`` where ``$cache_path`` is the configured cache directory
 and ``$user`` is the user.
+
+::
+
+	'cache_chunk_gc_ttl' => 86400, // 60*60*24 = 1 day
+
+TTL of chunks located in the cache folder before they're removed by
+garbage collection (in seconds). Increase this value if users have
+issues uploading very large files via the ownCloud Client as upload isn't
+completed within one day.
 
 Using Object Store with ownCloud
 --------------------------------
