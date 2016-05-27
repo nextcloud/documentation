@@ -31,7 +31,9 @@ If you think you have found a bug in ownCloud, please:
 * Search for a solution (see the options above)
 * Double-check your configuration
 
-If you can't find a solution, please use our `bugtracker`_.
+If you can't find a solution, please use our `bugtracker`_. You can generate a 
+configuration report with the :ref:`occ config command 
+<config_commands_label>`, with passwords automatically obscured.
 
 .. _the ownCloud Forums: https://forum.owncloud.org
 .. _FAQ page: https://forum.owncloud.org/viewforum.php?f=17
@@ -40,7 +42,7 @@ If you can't find a solution, please use our `bugtracker`_.
 .. _webchat: http://webchat.freenode.net/?channels=owncloud
 .. _Enterprise Edition: https://owncloud.com/lp/community-or-enterprise/
 .. _bugtracker: 
-   https://doc.owncloud.org/server/9.0/developer_manual/bugtracker/index.html
+   https://doc.owncloud.org/server/9.1/developer_manual/bugtracker/index.html
 .. TODO ON RELEASE: Update version number above on release
 
 General Troubleshooting
