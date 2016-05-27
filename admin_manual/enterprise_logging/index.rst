@@ -1,5 +1,5 @@
 ========================================
-Enterprise Logging Apps (Enteprise only)
+Enterprise Logging Apps (Enterprise only)
 ========================================
 
 .. toctree::
