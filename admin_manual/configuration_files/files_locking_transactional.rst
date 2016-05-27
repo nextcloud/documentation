@@ -40,7 +40,7 @@ To use a memcache with Transactional File Locking, you must install the Redis
 server and corresponding PHP module. After installing Redis you must enter a 
 configuration in your ``config.php`` file like this example::
 
-  'filelocking.enabled' => 'true',
+  'filelocking.enabled' => true,
   'memcache.locking' => '\OC\Memcache\Redis',
   'redis' => array(
        'host' => 'localhost',
@@ -56,7 +56,7 @@ If you want to configure Redis to listen on an Unix socket (which is
 recommended if Redis is running on the same system as ownCloud) use this example
 ``config.php`` configuration::
 
-  'filelocking.enabled' => 'true',
+  'filelocking.enabled' => true,
   'memcache.locking' => '\OC\Memcache\Redis',
   'redis' => array(
        'host' => '/var/run/redis/redis.sock',
