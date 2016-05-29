@@ -173,6 +173,9 @@ the application. For other means on how to receive support please take a look at
 https://owncloud.org/support/. After fixing these problems verify by clicking 
 "Rescan…".
 
+.. note:: When using a FTP client to upload those files make sure it is using the
+   ``Binary`` transfer mode instead of the ``ASCII`` transfer mode.
+
 Errors
 ------
 
