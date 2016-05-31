@@ -32,3 +32,4 @@ Enterprise Edition Only
     enterprise_file_management/index
     enterprise_logging/index
     enterprise_firewall/index
+    enterprise_troubleshooting
