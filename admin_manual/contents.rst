@@ -3,7 +3,7 @@ Table of Contents
 =================
 
 .. toctree::
-    :maxdepth: 3
+    :maxdepth: 2
      
     index 
     release_notes
@@ -22,7 +22,7 @@ Enterprise Edition Only
 -----------------------
 
 .. toctree::
-    :maxdepth: 3
+    :maxdepth: 2
     
     enterprise_installation/index
     enterprise_clients/index
