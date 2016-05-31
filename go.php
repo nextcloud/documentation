@@ -27,6 +27,8 @@ $mapping = array(
     'admin-transactional-locking' => '/admin_manual/configuration_files/files_locking_transactional.html',
     'admin-code-integrity' => '/admin_manual/issues/code_signing.html',
     'admin-setup-well-known-URL' => '/admin_manual/issues/general_troubleshooting.html#service-discovery',
+    
+    'admin-enterprise-license' => '/admin_manual/enterprise_installation/license_keys_installation.html',
 
     'developer-theming'       => '/developer_manual/core/theming.html',
     'developer-code-integrity'=> '/developer_manual/app/code_signing.html',
