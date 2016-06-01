@@ -74,7 +74,7 @@ the following options:
    :alt: Links for resolving code integrity warnings.
 
 To debug issues caused by the code integrity check click on "List of invalid 
-files…", and you will be shown a text document listing the different issues. The 
+files...", and you will be shown a text document listing the different issues. The 
 content of the file will look similar to the following example:
 
 ::
@@ -175,6 +175,18 @@ https://owncloud.org/support/. After fixing these problems verify by clicking
 
 .. note:: When using a FTP client to upload those files make sure it is using the
    ``Binary`` transfer mode instead of the ``ASCII`` transfer mode.
+   
+.. _rescans_label:   
+   
+Rescans
+-------
+
+Rescans are triggered at installation, and by updates. You may run scans manually with the ``occ`` command. The first command scans the ownCloud core files, and the second command scans the named app. There is not yet a command to manually scan all apps::
+
+  occ integrity:check-core
+  occ integrity:check-app $appid
+  
+See :doc:`../configuration_server/occ_command` to learn more about using ``occ``.  
 
 Errors
 ------

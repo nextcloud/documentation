@@ -682,7 +682,7 @@ Apps which have an official tag MUST be code signed starting with ownCloud 9.0. 
   integrity:check-core                Check core integrity using a signature.
   integrity:sign-app                  Signs an app using a private key.
   integrity:sign-core                 Sign core using a private key
-
+  
 After creating your signing key, sign your app like this example:: 
  
  sudo -u www-data php occ integrity:sign-app --privateKey=/Users/lukasreschke/contacts.key --certificate=/Users/lukasreschke/CA/contacts.crt --path=/Users/lukasreschke/Programming/contacts
@@ -694,7 +694,9 @@ Verify your app::
 When it returns nothing, your app is signed correctly. When it returns a message then there is an error. See `Code Signing 
 <https://doc.owncloud.org/server/9.0/developer_manual/app/code_signing.html#how-to-get-your-app-signed>`_ in the Developer manual for more detailed information.
 
-``integrity:check-core`` and ``integrity:sign-core`` are for ownCloud core developers only.
+``integrity:sign-core`` is for ownCloud core developers only.
+
+See :doc:`../issues/code_signing` to learn more.
   
 Added in 9.0.  
 
