@@ -694,7 +694,7 @@ Verify your app::
 When it returns nothing, your app is signed correctly. When it returns a message then there is an error. See `Code Signing 
 <https://doc.owncloud.org/server/9.0/developer_manual/app/code_signing.html#how-to-get-your-app-signed>`_ in the Developer manual for more detailed information.
 
-``integrity:check-core`` and ``integrity:sign-core`` are for ownCloud core developers only.
+``integrity:sign-core`` is for ownCloud core developers only.
 
 See :doc:`../issues/code_signing` to learn more.
   
