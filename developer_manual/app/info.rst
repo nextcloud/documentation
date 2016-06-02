@@ -27,6 +27,7 @@ The :file:`appinfo/info.xml` contains metadata about the app:
       <documentation>
           <user>https://doc.owncloud.org</user>
           <admin>https://doc.owncloud.org</admin>
+          <developer>https://doc.owncloud.org</developer>
       </documentation>
 
       <category>tool</category>
@@ -126,7 +127,7 @@ ownCloud allows to specify four kind of ``types``. Currently supported ``types``
 
 documentation
 -------------
-Link to 'admin' and 'user' documentation
+Link to 'admin', 'user', 'developer' documentation
 
 website
 -------
