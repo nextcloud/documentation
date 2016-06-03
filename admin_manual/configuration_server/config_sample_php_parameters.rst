@@ -764,7 +764,7 @@ Some of the ownCloud code may be stored in alternate locations.
 ::
 
 	'customclient_desktop' =>
-		'http://owncloud.org/sync-clients/',
+		'https://owncloud.org/install/#install-clients',
 	'customclient_android' =>
 		'https://play.google.com/store/apps/details?id=com.owncloud.android',
 	'customclient_ios' =>
