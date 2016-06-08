@@ -116,6 +116,7 @@ Creating, deleting, updating, searching, login and logout:
 * :doc:`users`
 
 Writing a two-factor auth provider:
+
 * :doc:`two-factor-provider`
 
 Hooks
