@@ -28,11 +28,13 @@
    configuration
    filesystem
    users
+   two-factor-provider
    hooks
    backgroundjobs
    logging
    testing
    publishing
+   code_signing
 
 ===============
 App Development
