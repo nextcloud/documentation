@@ -115,6 +115,9 @@ Creating, deleting, updating, searching, login and logout:
 
 * :doc:`users`
 
+Writing a two-factor auth provider:
+* :doc:`two-factor-provider`
+
 Hooks
 -----
 Listen on events like user creation and execute code:
