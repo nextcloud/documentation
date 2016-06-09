@@ -14,6 +14,7 @@ Table of Contents
     pim/index
     documents
     userpreferences
+    session_management
     external_storage/index
     bookmarks
     
