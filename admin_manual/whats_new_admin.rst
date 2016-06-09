@@ -10,6 +10,8 @@ ownCloud has many improvements. Some of our new features are:
 
 * New ``occ`` option, ``--unscanned``, to scan only previously unscanned 
   files (`<https://github.com/owncloud/core/pull/24702>`_)
+* New ``occ`` command to disable/enable users
+* New ``occ`` command to disable/enable two-factor auth for specific users
 * New group tags for system file tags 
   (`<https://github.com/owncloud/enterprise/issues/1208>`_)
 * Cleaner internal file URLs 
