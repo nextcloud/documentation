@@ -34,6 +34,7 @@ include the following.
 * Email address.
 * Lists your Group memberships.
 * Manage your password.
+* :doc:`userpreferences`.
 * Choose the language for your ownCloud interface.
 * Links to desktop and mobile apps.
 * Manage your Activity stream and notifications.
