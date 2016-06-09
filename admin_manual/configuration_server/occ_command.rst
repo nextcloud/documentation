@@ -39,6 +39,8 @@ occ Command Directory
 * :ref:`versions_label`
 * :ref:`command_line_installation_label`
 * :ref:`command_line_upgrade_label`
+* :ref:`two_factor_auth_label`
+* :ref:`disable_user_label`
 
 .. _http_user_label:
 
@@ -1269,5 +1271,35 @@ option::
  sudo -u www-data php occ upgrade --skip-migration-test
 
 You can perform this simulation manually with the ``--dry-run`` option::
- 
+
  sudo -u www-data php occ upgrade --dry-run
+
+.. _two_factor_auth_label:
+
+Two-factor Authentication
+-------------------------
+If a two-factor provider app is enabled, it is enabled for all users by default
+(though the provider can decide whether or not the user has to pass the challenge).
+In the case of an user losing access to the second factor (e.g. lost phone with
+two-factor SMS verification), the admin can temporarily disable the two-factor
+check for that user via the occ command::
+
+ sudo -u www-data php occ twofactor:disable <username>
+
+To re-enable two-factor auth again use the following commmand::
+
+ sudo -u www-data php occ twofactor:enable <username>
+
+.. _disable_user_label:
+
+Disable Users
+-------------
+Admins can disable users via the occ command too::
+
+ sudo -u www-data php occ user:disable <username>
+
+Use the following command to enable the user again::
+
+ sudo -u www-data php occ user:enable <username>
+
+Note that once users are disabled, their connected browsers will be disconnected.
