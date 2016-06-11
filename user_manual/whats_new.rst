@@ -1,6 +1,6 @@
-==========================================
-What's New for Users in ownCloud |version|
-==========================================
+===========================================
+What's New for Users in Nextcloud |version|
+===========================================
 
 * File tagging, and filtering by tags. (:doc:`files/access_webgui`)
 * See all re-shares on files you have shared.
