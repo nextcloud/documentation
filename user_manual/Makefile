@@ -47,19 +47,14 @@ html:   html-org
 html-all: html-release html-org html-com
 
 html-release:
-	$(SPHINXBUILD) -b html -D html_theme='owncloud_release' $(ALLSPHINXOPTS) $(BUILDDIR)/html/release
+	$(SPHINXBUILD) -b html -D html_theme='nextcloud_release' $(ALLSPHINXOPTS) $(BUILDDIR)/html/release
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html/release."
 
-html-org:
-	$(SPHINXBUILD) -b html -D html_theme='owncloud_org' $(ALLSPHINXOPTS) $(BUILDDIR)/html/org
+html-com:
+	$(SPHINXBUILD) -b html -D html_theme='nextcloud_com' $(ALLSPHINXOPTS) $(BUILDDIR)/html/org
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html/org."
-
-html-com:
-	$(SPHINXBUILD) -b html -D html_theme='owncloud_com' $(ALLSPHINXOPTS) $(BUILDDIR)/html/com
-	@echo
-	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html/com."
 
 dirhtml:
 	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml
@@ -92,17 +87,17 @@ qthelp:
 	@echo
 	@echo "Build finished; now you can run "qcollectiongenerator" with the" \
 	      ".qhcp project file in $(BUILDDIR)/qthelp, like this:"
-	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/OwncloudDocumentation.qhcp"
+	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/NextcloudDocumentation.qhcp"
 	@echo "To view the help file:"
-	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/OwncloudDocumentation.qhc"
+	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/NextcloudDocumentation.qhc"
 
 devhelp:
 	$(SPHINXBUILD) -b devhelp $(ALLSPHINXOPTS) $(BUILDDIR)/devhelp
 	@echo
 	@echo "Build finished."
 	@echo "To view the help file:"
-	@echo "# mkdir -p $$HOME/.local/share/devhelp/OwncloudDocumentation"
-	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/OwncloudDocumentation"
+	@echo "# mkdir -p $$HOME/.local/share/devhelp/NextcloudDocumentation"
+	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/NextcloudDocumentation"
 	@echo "# devhelp"
 
 epub:
