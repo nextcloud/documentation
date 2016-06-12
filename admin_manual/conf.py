@@ -237,15 +237,9 @@ texinfo_documents = [ ('contents', 'Nextcloud Server Admin Manual', u'Nextcloud 
 
 # Bibliographic Dublin Core info.
 epub_title = u'Nextcloud Server Administration Manual'
-<<<<<<< HEAD
 epub_author = u'The Nextcloud developers'
 epub_publisher = u'The Nextcloud developers'
-epub_copyright = u'2012-2016, The Nextcloud developers'
-=======
-epub_author = u'The ownCloud developers'
-epub_publisher = u'The ownCloud developers'
-epub_copyright = u'2016, The ownCloud developers'
->>>>>>> stable9
+epub_copyright = u'2016, The Nextcloud developers'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.
