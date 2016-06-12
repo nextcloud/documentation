@@ -4,9 +4,6 @@
 Nextcloud Developer Documentation
 ================================
 
-If you want to contribute please read the `Contributor agreement 
-<https://owncloud.org/about/contributor-agreement/>`_
-
 +-------------------------+-------------------------+-----------------------------+
 |:doc:`app/index`         |:doc:`core/index`        |`Documentation`_             |
 | Develop apps for        | Develop on the Nextcloud | Create and enhance          |
