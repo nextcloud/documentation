@@ -166,7 +166,7 @@ html_show_sphinx = False
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'ownCloudServerAdminManual'
+htmlhelp_basename = 'NextcloudServerAdminManual'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -182,7 +182,7 @@ htmlhelp_basename = 'ownCloudServerAdminManual'
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
-latex_documents = [('contents', 'ownCloud_Server_Administration_Manual.tex', u'ownCloud Server Administration Manual', u'The ownCloud developers', 'manual'),]
+latex_documents = [('contents', 'Nextcloud_Server_Administration_Manual.tex', u'Nextcloud Server Administration Manual', u'The Nextcloud developers', 'manual'),]
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
@@ -206,13 +206,13 @@ latex_logo = '../_shared_assets/static/logo-blue.pdf'
 
 # -- Options for pdf page output -----------------------------------------------
 
-pdf_documents = [('contents', u'owncloud Server Administration Manual', u'ownCloud Server Administration Manual', u'The ownCloud developers'),]
+pdf_documents = [('contents', u'Nextcloud Server Administration Manual', u'Nextcloud Server Administration Manual', u'The Nextcloud developers'),]
 
 # -- Options for manual page output --------------------------------------------
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [ ('contents', 'owncloudserveradminmanual', u'ownCloud Server Administration Manual', [u'The ownCloud developers'], 1) ]
+man_pages = [ ('contents', 'nextcloudserveradminmanual', u'Nextcloud Server Administration Manual', [u'The Nextcloud developers'], 1) ]
 
 # If true, show URL addresses after external links.
 #man_show_urls = False
@@ -223,7 +223,7 @@ man_pages = [ ('contents', 'owncloudserveradminmanual', u'ownCloud Server Admini
 # Grouping the document tree into Texinfo files. List of tuples
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
-texinfo_documents = [ ('contents', 'ownCloud Server Admin Manual', u'ownCloud Server Administration Manual', u'The ownCloud developers', 'ownCloud', 'The ownCloud Server Administration Manual.', 'Miscellaneous'), ]
+texinfo_documents = [ ('contents', 'Nextcloud Server Admin Manual', u'Nextcloud Server Administration Manual', u'The Nextcloud developers', 'Nextcloud', 'The Nextcloud Server Administration Manual.', 'Miscellaneous'), ]
 
 # Documents to append as an appendix to all manuals.
 #texinfo_appendices = []
@@ -238,7 +238,7 @@ texinfo_documents = [ ('contents', 'ownCloud Server Admin Manual', u'ownCloud Se
 # -- Options for Epub output ---------------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'ownCloud Server Administration Manual'
+epub_title = u'Nextcloud Server Administration Manual'
 epub_author = u'The ownCloud developers'
 epub_publisher = u'The ownCloud developers'
 epub_copyright = u'2016, The ownCloud developers'
