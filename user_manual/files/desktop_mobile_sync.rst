@@ -17,7 +17,7 @@ have your latest files with you wherever you are.
 Its usage is documented separately in the `Nextcloud Desktop Client Manual`_.
 
 .. _Nextcloud Sync Client: https://nextcloud.com/sync-client/
-.. _Nextcloud Desktop Client Manual:  https://doc.nextcloud.com/
+.. _Nextcloud Desktop Client Manual:  https://docs.nextcloud.org/
 
 Mobile Clients
 --------------

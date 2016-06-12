@@ -504,7 +504,7 @@ To get the properties of files in the root folder:
 .. _KB2668751: https://support.microsoft.com/kb/2668751
 .. _KB2123563: https://support.microsoft.com/kb/2123563
 .. _in your file manager: http://en.wikipedia.org/wiki/Webdav#WebDAV_client_applications
-.. _ownCloud sync clients: https://doc.nextcloud.com/desktop/2.1/
+.. _ownCloud sync clients: https://docs.nextcloud.org/desktop/2.1/
 .. _Mount ownCloud to a local folder without sync: https://nextcloud.com/use/webdav/
 .. _Android: https://github.com/nextcloud/android
 .. _WebDAV Navigator: http://seanashton.net/webdav/
