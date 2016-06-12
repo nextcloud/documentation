@@ -52,4 +52,4 @@ Now should now find your contacts in the address book of your iPhone.
 If it's still not working, have a look at the :doc:`troubleshooting`
 and `Troubleshooting Contacts & Calendar`_ guides.
 
-.. _Troubleshooting Contacts & Calendar: https://doc.owncloud.org/server/9.0/admin_manual/issues/index.html#troubleshooting-contacts-calendar
+.. _Troubleshooting Contacts & Calendar: https://doc.nextcloud.com/server/9/admin_manual/issues/index.html#troubleshooting-contacts-calendar

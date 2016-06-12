@@ -1,15 +1,14 @@
-======================
-ownCloud Documentation
-======================
+=======================
+Nextcloud Documentation
+=======================
 
-Documentation is published on `<https://doc.owncloud.org>`_ and 
-`<https://doc.owncloud.com>`_.
+Documentation is published on `<https://doc.nextcloud.com>`_.
 
-The `documentation Wiki <https://github.com/owncloud/documentation/wiki>`_ is 
+The `documentation Wiki <https://github.com/nextcloud/documentation/wiki>`_ is 
 available for tips, tricks, edge cases, and anyone who wants to contribute more 
 easily, without having to learn Git and Sphinx.
 
-See the `Style Guide <https://github.com/owncloud/documentation/blob/master/style_guide.rst>`_ for formatting and style conventions.
+See the `Style Guide <https://github.com/nextcloud/documentation/blob/master/style_guide.rst>`_ for formatting and style conventions.
 
 Manuals
 -------
@@ -20,24 +19,24 @@ This repository hosts four manuals:
 * **Administration Manual**
 * **Developers Manual** 
   
-Please work in the appropriate branch. Stable7 is for ownCloud 7, stable8 is 8.0, stable8.1 is 8.1, stable8.2 is 8.2, and master is version 9.
+Please work in the appropriate branch: **stable9** is for Nextcloud 9, and **master** is for the coming release.
 
 Please wrap lines at 80 characters.
 
 **Important: Please copy the links to any relevant Github PRs or issues at the end of every doc page. This makes it much easier to go back and find information and fact-check.** Like this example::
 
- .. Github references
- .. Foo PR title #100 https://github.com/owncloud/core/pull/100
+ .. GitHub references
+ .. Foo PR title #28 https://github.com/nextcloud/server/pull/28
 
-.. note:: ``configuration_server/config_sample_php_parameters.rst`` is auto-generated from the core
-   config.sample.php file; changes to this file must be made in core `<https://github.com/owncloud/core/tree/master/config>`_
+.. note:: ``configuration_server/config_sample_php_parameters.rst`` is auto-generated from the server's
+   config.sample.php file; changes to this file must be made in core `<https://github.com/nextcloud/server/tree/master/config>`_
 
 Spelling and Capitalization Conventions
 ---------------------------------------
 
 As this grows it may be moved to its own page.
 
-* ownCloud Apps Store
+* Nextcloud Apps Store
 * synchronize
 * Web (Web page, Web site)
 
@@ -60,23 +59,23 @@ from GitHub.
 Editing
 -------
 
-Contributing to the documentation requires a Github account. Make sure you are 
-working in the correct branch for your version of ownCloud or client apps. 
+Contributing to the documentation requires a GitHub account. Make sure you are 
+working in the correct branch for your version of Nextcloud or client apps. 
 If your edits pertain to multiple manual versions, be prepared to backport as 
 needed.
 
 To edit a document, you can edit the .rst files on your local system, or work 
-directly on Github. The latter is only suitable for small fixes and improvements 
+directly on GitHub. The latter is only suitable for small fixes and improvements 
 because substantial editing efforts can better be controlled on your local PC. 
 
 The best way is to install a complete Sphinx build environment and work on your 
 local PC. You will be able to make your own local builds, which is the fastest 
 and best way to preview for errors. Sphinx will report syntax errors, missing 
-images, and formatting errors. The Github preview is not complete and misses 
+images, and formatting errors. The GitHub preview is not complete and misses 
 many mistakes. Create a new branch against the master or stable branch you are 
-editing, make your edits, then push your new branch to Github and open a new PR. 
+editing, make your edits, then push your new branch to GitHub and open a new PR. 
 
-To edit on Github, fork the repository (see top-right of the screen, under
+To edit on GitHub, fork the repository (see top-right of the screen, under
 your username). You will then be able to make changes easily. Once done, 
 you can create a pull request and get the changes reviewed and back into
 the official repository.
