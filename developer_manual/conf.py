@@ -40,8 +40,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'ownCloud Developer Manual'
-copyright = u'2012-2015, The ownCloud developers'
+project = u'Nextcloud Developer Manual'
+copyright = u'2016, The Nextcloud developers'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -251,10 +251,10 @@ texinfo_documents = [
 # -- Options for Epub output ---------------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'ownCloud Developer Manual'
-epub_author = u'The ownCloud developers'
-epub_publisher = u'The ownCloud developers'
-epub_copyright = u'2012-2015, The ownCloud developers'
+epub_title = u'Nextcloud Developer Manual'
+epub_author = u'The Nextcloud developers'
+epub_publisher = u'The Nextcloud developers'
+epub_copyright = u'2016, The Nextcloud developers'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.
