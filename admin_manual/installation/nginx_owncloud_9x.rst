@@ -1,8 +1,8 @@
 =================================================
-Nginx Configuration for the ownCloud 9.x Branches
+Nginx Configuration for the Nextcloud 9.x Branches
 =================================================
 
-The following configuration should be used when ownCloud is placed in the 
+The following configuration should be used when Nextcloud is placed in the 
 webroot of your Nginx installation. Be careful about line breaks if you copy 
 the examples, as long lines may be broken for page formatting.
 
@@ -12,10 +12,10 @@ Some environments might need a ``cgi.fix_pathinfo`` set to ``1`` in their
 Thanks to `@josh4trunks <https://github.com/josh4trunks>`_ for providing / 
 creating these configuration examples.
 
-ownCloud in the webroot of nginx
+Nextcloud in the webroot of nginx
 --------------------------------
 
-The following config should be used when ownCloud is placed in the webroot of 
+The following config should be used when Nextcloud is placed in the webroot of 
 your nginx installation.
 
 ::
@@ -147,10 +147,10 @@ your nginx installation.
       }
   }
 
-ownCloud in a subdir of nginx
+Nextcloud in a subdir of nginx
 ------------------------------
 
-The following config should be used when ownCloud is placed within a subdir of 
+The following config should be used when Nextcloud is placed within a subdir of 
 your nginx installation.
 
 ::

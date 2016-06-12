@@ -301,7 +301,7 @@ Useful SQL commands
   MySQL     : SHOW DATABASES;
   PostgreSQL: \l
 
-**Show ownCloud Tables in Database**::
+**Show Nextcloud Tables in Database**::
 
   MySQL     : USE owncloud; SHOW TABLES;
   PostgreSQL: \c owncloud; \d

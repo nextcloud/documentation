@@ -5,7 +5,7 @@ Obtaining the library
 ---------------------
 
 
-The ownCloud Android library may be obtained from the following Github repository:
+The Nextcloud Android library may be obtained from the following Github repository:
 
 `https://github.com/owncloud/android-library <https://github.com/owncloud/android-library>`_
 
@@ -19,7 +19,7 @@ Add the library to a project
 
 There are different methods to add an external library to a project, then we will describe one of them.
 
-#.  Compile the ownCloud Android Library
+#.  Compile the Nextcloud Android Library
 
 
 
@@ -30,7 +30,7 @@ There are different methods to add an external library to a project, then we wil
 For that, access to
 Properties > Android > Library
 ** **
-and click on add and select the ownCloud Android library
+and click on add and select the Nextcloud Android library
 
 |1000000000000270000003A317117674_png|
 

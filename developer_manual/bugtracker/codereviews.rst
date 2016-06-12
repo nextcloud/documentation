@@ -8,7 +8,7 @@ Code Reviews on GitHub
 Introduction
 ------------
 
-In order to increase the code quality within ownCloud, developers are requested
+In order to increase the code quality within Nextcloud, developers are requested
 to perform code reviews.  As we are now heavily using the GitHub platform these
 code review shall take place on GitHub as well.
 
@@ -42,7 +42,7 @@ How will it work?
 Examples
 --------
 Read our `coding guidelines`_ for information on what a good pull request and
-good ownCloud code looks like.
+good Nextcloud code looks like.
 
 These are two examples that are considered to be good examples of how pull
 requests should be handled

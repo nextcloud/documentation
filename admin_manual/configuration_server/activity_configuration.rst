@@ -1,7 +1,7 @@
 Configuring the Activity App
 ============================
 
-You can configure your ownCloud server to automatically send out e-mail notifications
+You can configure your Nextcloud server to automatically send out e-mail notifications
 to your users for various events like:
 
 * A file or folder has been shared
@@ -16,12 +16,12 @@ Enabling the Activity App
 -------------------------
 
 The Activity App is shipped and enabled by default. If it is not enabled
-simply go to your ownCloud Apps page to enable it.
+simply go to your Nextcloud Apps page to enable it.
 
-Configuring your ownCloud for the Activity App
-----------------------------------------------
+Configuring your Nextcloud for the Activity App
+-----------------------------------------------
 
-To configure your ownCloud to send out e-mail notifications a working
+To configure your Nextcloud to send out e-mail notifications a working
 :doc:`email_configuration` is mandatory.
 
 Furthermore it is recommended to configure the background job ``Webcron`` or

@@ -462,7 +462,7 @@ A :doc:`template <templates>` can be rendered by returning a TemplateResponse. A
 
     $_['key']
 
-* **renderAs**: defaults to *user*, tells ownCloud if it should include it in the web interface, or in case *blank* is passed solely render the template
+* **renderAs**: defaults to *user*, tells Nextcloud if it should include it in the web interface, or in case *blank* is passed solely render the template
 
 .. code-block:: php
 
@@ -604,7 +604,7 @@ Modifying the Content Security Policy
 -------------------------------------
 .. versionadded:: 8.1
 
-By default ownCloud disables all resources which are not served on the same domain, forbids cross domain requests and disables inline CSS and JavaScript by setting a `Content Security Policy <https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy>`_. However if an app relies on thirdparty media or other features which are forbidden by the current policy the policy can be relaxed.
+By default Nextcloud disables all resources which are not served on the same domain, forbids cross domain requests and disables inline CSS and JavaScript by setting a `Content Security Policy <https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy>`_. However if an app relies on thirdparty media or other features which are forbidden by the current policy the policy can be relaxed.
 
 .. note:: Double check your content and edge cases before you relax the policy! Also read the `documentation provided by MDN <https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy>`_
 

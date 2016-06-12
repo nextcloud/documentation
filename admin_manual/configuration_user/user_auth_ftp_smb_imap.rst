@@ -3,7 +3,7 @@ User Authentication with IMAP, SMB, and FTP
 ===========================================
 
 You may configure additional user backends
-in ownCloud's configuration :file:`config/config.php` using the following
+in Nextcloud's configuration :file:`config/config.php` using the following
 syntax:
 
 ::

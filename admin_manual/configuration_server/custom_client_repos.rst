@@ -2,7 +2,7 @@
 Custom Client Download Repositories
 ===================================
 
-You may configure the URLs to your own download repositories for your ownCloud 
+You may configure the URLs to your own download repositories for your Nextcloud 
 desktop clients and mobile apps in :file:`config/config.php`. This example shows 
 the default download locations:
 

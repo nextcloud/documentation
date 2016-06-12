@@ -6,10 +6,10 @@ The normal ways to recover a lost password are:
 
 1. Click the password reset link on the login screen; this appears after a 
    failed login attempt. This works only if you have entered your email address 
-   on your Personal page in the ownCloud Web interface, so that the ownCloud 
+   on your Personal page in the Nextcloud Web interface, so that the Nextcloud 
    server can email a reset link to you.
 
-2. Ask another ownCloud server admin to reset it for you.
+2. Ask another Nextcloud server admin to reset it for you.
 
 If neither of these is an option, then you have a third option, and that is 
 using the ``occ`` command. ``occ`` is in the ``owncloud`` directory, for 
@@ -22,7 +22,7 @@ user, as in this example on Ubuntu Linux::
  Confirm the new password: 
  Successfully reset password for admin
  
-If your ownCloud username is not ``admin``, then substitute your ownCloud 
+If your Nextcloud username is not ``admin``, then substitute your Nextcloud 
 username.
 
 You can find your HTTP user in your HTTP configuration file. These are the 

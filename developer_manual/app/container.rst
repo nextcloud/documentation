@@ -155,7 +155,7 @@ Use automatic dependency assembly (recommended)
 ===============================================
 .. versionadded:: 8
 
-Since ownCloud 8 it is possible to omit the **appinfo/application.php** and use automatic dependency assembly instead.
+Since Nextcloud 8 it is possible to omit the **appinfo/application.php** and use automatic dependency assembly instead.
 
 How does automatic assembly work
 --------------------------------
@@ -280,7 +280,7 @@ The following parameter names and type hints can be used to inject core services
 Parameters:
 
 * **AppName**: The app id
-* **WebRoot**: The path to the ownCloud installation
+* **WebRoot**: The path to the Nextcloud installation
 * **UserId**: The id of the current user
 
 Types:

@@ -5,42 +5,42 @@ Code Signing
 .. sectionauthor:: Lukas Reschke <lukas@owncloud.com>
 .. _code_signing_label:
 
-ownCloud supports code signing for the core releases, and for ownCloud 
+Nextcloud supports code signing for the core releases, and for Nextcloud 
 applications. Code signing gives our users an additional layer of security by 
 ensuring that nobody other than authorized persons can push updates.
 
 It also ensures that all upgrades have been executed properly, so that no files 
 are left behind, and all old files are properly replaced. In the past, invalid 
-updates were a significant source of errors when updating ownCloud.
+updates were a significant source of errors when updating Nextcloud.
 
 FAQ
 ---
 
-Why Did ownCloud Add Code Signing?
+Why Did Nextcloud Add Code Signing?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 By supporting Code Signing we add another layer of security by ensuring that 
 nobody other than authorized persons can push updates for applications, and 
 ensuring proper upgrades.
 
-Do We Lock Down ownCloud?
+Do We Lock Down Nextcloud?
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ownCloud project is open source and always will be. We do not want to 
-make it more difficult for our users to run ownCloud. Any code signing errors on 
-upgrades will not prevent ownCloud from running, but will display a warning on 
+The Nextcloud project is open source and always will be. We do not want to 
+make it more difficult for our users to run Nextcloud. Any code signing errors on 
+upgrades will not prevent Nextcloud from running, but will display a warning on 
 the Admin page. For applications that are not tagged "Official" the code signing 
 process is optional.
 
 Not Open Source Anymore?
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ownCloud project is open source and always will be. The code signing 
+The Nextcloud project is open source and always will be. The code signing 
 process is optional, though highly recommended. The code check for the 
-core parts of ownCloud is enabled when the ownCloud release version branch has 
+core parts of Nextcloud is enabled when the Nextcloud release version branch has 
 been set to stable.
 
-For custom distributions of ownCloud it is recommended to change the release 
+For custom distributions of Nextcloud it is recommended to change the release 
 version branch in version.php to something else than "stable".
 
 Is Code Signing Mandatory For Apps?
@@ -56,14 +56,14 @@ Fixing Invalid Code Integrity Messages
 
 A code integrity error message ("There were problems with the code integrity 
 check. More information…") appears in a yellow banner at the top of your 
-ownCloud Web interface:
+Nextcloud Web interface:
 
 .. image:: images/code-integrity-notification.png
    :alt: Code integrity warning banner.
 
 .. note:: The yellow banner is only shown for admin users.
 
-Clicking on this link will take you to your ownCloud admin page, which provides 
+Clicking on this link will take you to your Nextcloud admin page, which provides 
 the following options:
 
 1. Link to this documentation entry.
@@ -162,9 +162,9 @@ content of the file will look similar to the following example:
 
 In above error output it can be seen that:
 
-1. In the ownCloud core (that is, the ownCloud server itself) the files 
+1. In the Nextcloud core (that is, the Nextcloud server itself) the files 
    "index.php" and "version.php" do have the wrong version.
-2. In the ownCloud core the unrequired extra file "/test.php" has been found.
+2. In the Nextcloud core the unrequired extra file "/test.php" has been found.
 3. It was not possible to verify the signature of the calendar application.
 
 The solution is to upload the correct "index.php" and "version.php" files, and 
@@ -181,7 +181,7 @@ https://owncloud.org/support/. After fixing these problems verify by clicking
 Rescans
 -------
 
-Rescans are triggered at installation, and by updates. You may run scans manually with the ``occ`` command. The first command scans the ownCloud core files, and the second command scans the named app. There is not yet a command to manually scan all apps::
+Rescans are triggered at installation, and by updates. You may run scans manually with the ``occ`` command. The first command scans the Nextcloud core files, and the second command scans the named app. There is not yet a command to manually scan all apps::
 
   occ integrity:check-core
   occ integrity:check-app $appid
@@ -211,7 +211,7 @@ The following errors can be encountered when trying to verify a code signature.
 
   - The file does not exist in ``signature.json``. This usually happens when a 
     file has been removed and ``signature.json`` has not been updated. It also
-    happens if you have placed additional files in your ownCloud installation
+    happens if you have placed additional files in your Nextcloud installation
     folder.
 
 - ``EXCEPTION``
@@ -226,7 +226,7 @@ The following errors can be encountered when trying to verify a code signature.
 
     - ``Certificate is not valid.``
 
-      - The certificate has not been issued by the official ownCloud Code 
+      - The certificate has not been issued by the official Nextcloud Code 
         Signing Root Authority.
 
     - ``Certificate is not valid for required scope. (Requested: %s, current: %s)``

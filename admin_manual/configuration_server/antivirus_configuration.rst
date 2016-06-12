@@ -1,10 +1,10 @@
 Configuring the ClamAV Antivirus Scanner
 ========================================
 
-You can configure your ownCloud server to automatically run a virus scan on
+You can configure your Nextcloud server to automatically run a virus scan on
 newly-uploaded files with the Antivirus App for Files. The Antivirus App for
 Files integrates the open source anti-virus engine `ClamAV
-<http://www.clamav.net/index.html>`_  with ownCloud. ClamAV detects all forms
+<http://www.clamav.net/index.html>`_  with Nextcloud. ClamAV detects all forms
 of malware including Trojan horses, viruses, and worms, and it operates on all
 major file types including Windows, Linux, and Mac files, compressed files,
 executables, image files, Flash, PDF, and many others. ClamAV's Freshclam
@@ -12,9 +12,9 @@ daemon automatically updates its malware signature database at scheduled
 intervals.
 
 ClamAV runs on Linux and any Unix-type operating system, and Microsoft Windows.
-However, it has only been tested with ownCloud on Linux, so these instructions
+However, it has only been tested with Nextcloud on Linux, so these instructions
 are for Linux systems. You must first install ClamAV, and then install and
-configure the Antivirus App for Files on ownCloud.
+configure the Antivirus App for Files on Nextcloud.
 
 Installing ClamAV
 -----------------
@@ -77,14 +77,14 @@ and ``freshclam.conf`` until it is running the way you want.
 Enabling the Antivirus App for Files
 ------------------------------------
 
-Simply go to your ownCloud Apps page to enable it.
+Simply go to your Nextcloud Apps page to enable it.
 
 .. figure:: ../images/antivirus-app.png
 
-Configuring ClamAV on ownCloud
+Configuring ClamAV on Nextcloud
 ------------------------------
 
-Next, go to your ownCloud Admin page and set your ownCloud logging level to
+Next, go to your Nextcloud Admin page and set your Nextcloud logging level to
 Everything.
 
 .. figure:: ../images/antivirus-logging.png
@@ -95,21 +95,21 @@ Now find your Antivirus Configuration panel on your Admin page.
 
 ClamAV runs in one of three modes:
 
-* Daemon (Socket): ClamAV is running on the same server as ownCloud. The ClamAV
+* Daemon (Socket): ClamAV is running on the same server as Nextcloud. The ClamAV
   daemon, ``clamd``, runs in the background. When there is no activity ``clamd``
   places a minimal load on your system. If your users upload large volumes of
   files you will see high CPU usage.
 
 * Daemon: ClamAV is running on a different server. This is a good option
-  for ownCloud servers with high volumes of file uploads.
+  for Nextcloud servers with high volumes of file uploads.
 
-* Executable: ClamAV is running on the same server as ownCloud, and the
+* Executable: ClamAV is running on the same server as Nextcloud, and the
   ``clamscan`` command is started and then stopped with each file upload.
   ``clamscan`` is slow and not always reliable for on-demand usage; it is
   better to use one of the daemon modes.
 
 Daemon (Socket)
-  ownCloud should detect your ``clamd`` socket and fill in the ``Socket``
+  Nextcloud should detect your ``clamd`` socket and fill in the ``Socket``
   field. This is the ``LocalSocket`` option in ``clamd.conf``. You can
   run ``netstat`` to verify::
 
@@ -135,7 +135,7 @@ Daemon
 
 Executable
   The Executable option requires the path to ``clamscan``, which is the
-  interactive ClamAV scanning command. ownCloud should find it automatically.
+  interactive ClamAV scanning command. Nextcloud should find it automatically.
 
   .. figure:: ../images/antivirus-executable.png
 

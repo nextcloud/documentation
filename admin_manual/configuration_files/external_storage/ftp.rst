@@ -9,19 +9,19 @@ To connect to an FTP server, you will need:
 * The URL of the FTP server
 * Port number (default: 21)
 * FTP server username and password
-* Remote Subfolder, the FTP directory to mount in ownCloud. ownCloud defaults 
+* Remote Subfolder, the FTP directory to mount in Nextcloud. Nextcloud defaults 
   to the root directory. If you specify a subfolder you must leave 
   off the leading slash. For example, ``public_html/images``
   
 Your new mountpoint is available to all users by default, and you may restrict 
 access by entering specific users or groups in the **Available for** field.  
 
-Optionally, ownCloud can use FTPS (FTP over SSL) by checking **Secure ftps://**. 
+Optionally, Nextcloud can use FTPS (FTP over SSL) by checking **Secure ftps://**. 
 This requires additional configuration with your root certificate if the FTP 
 server uses a self-signed certificate.
 
 .. figure:: images/ftp.png
-   :alt: ownCloud GUI FTP configuration. 
+   :alt: Nextcloud GUI FTP configuration. 
 
 .. note:: The external storage ``FTP/FTPS`` needs the ``allow_url_fopen`` PHP
    setting to be set to ``1``. When having connection problems make sure that it 

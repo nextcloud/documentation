@@ -2,7 +2,7 @@
 Using the Contacts App
 ======================
 
-The Contacts app is not enabled by default in ownCloud |version| and needs to
+The Contacts app is not enabled by default in Nextcloud |version| and needs to
 be enabled seperately. It is also not a supported core app. It is currently 
 under heavy development, so documentation has moved to the `documentation Wiki 
 on Github 

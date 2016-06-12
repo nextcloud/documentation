@@ -2,11 +2,11 @@
 Configuring Memory Caching
 ==========================
 
-You can significantly improve your ownCloud server performance with memory 
+You can significantly improve your Nextcloud server performance with memory 
 caching, where frequently-requested objects are stored in memory for faster 
 retrieval. There are two types of caches to use: a PHP opcode cache, which is 
 commonly called *opcache*, and data caching for your Web server. If you do not 
-install and enable a local memcache you will see a warning on your ownCloud 
+install and enable a local memcache you will see a warning on your Nextcloud 
 admin page. **A memcache is not required and you may safely ignore the warning 
 if you prefer.**
 
@@ -19,7 +19,7 @@ every time they are called. PHP bundles the Zend OPcache in core since version
 5.5, so you don't need to install an opcache for PHP 5.5+.
 
 If you are using PHP 5.4, which is the oldest supported PHP version for 
-ownCloud, you may install the Alternative PHP Cache (APC). This is both an 
+Nextcloud, you may install the Alternative PHP Cache (APC). This is both an 
 opcache and data cache. APC has not been updated since 2012 and is essentially 
 dead, and PHP 5.4 is old and lags behind later releases. If it is possible 
 to upgrade to a later PHP release that is the best option.
@@ -27,7 +27,7 @@ to upgrade to a later PHP release that is the best option.
 Data caching is supplied by the Alternative PHP Cache, user (APCu) in PHP 
 5.5+, Memcached, or Redis.
 
-ownCloud supports multiple memory caching backends, so you can choose the type 
+Nextcloud supports multiple memory caching backends, so you can choose the type 
 of memcache that best fits your needs. The supported caching backends are:
 
 * `APC <http://php.net/manual/en/book.apc.php>`_ 
@@ -35,11 +35,11 @@ of memcache that best fits your needs. The supported caching backends are:
 * `APCu <https://pecl.php.net/package/APCu>`_, APCu 4.0.6 and up required.
    A local cache for systems running PHP 5.5 and up.
 * `Memcached <http://www.memcached.org/>`_ 
-   Distributed cache for multi-server ownCloud installations.
+   Distributed cache for multi-server Nextcloud installations.
 * `Redis <http://redis.io/>`_, PHP module 2.2.5 and up required.
    For distributed caching.
    
-Memcaches must be explicitly configured in ownCloud 8.1 and up by installing 
+Memcaches must be explicitly configured in Nextcloud 8.1 and up by installing 
 and enabling your desired cache, and then adding the appropriate entry to 
 ``config.php`` (See :doc:`config_sample_php_parameters` for an overview of
 all possible config parameters).
@@ -52,10 +52,10 @@ APC
 ---
 
 APC is only for systems running PHP 5.4 and older. The oldest supported PHP 
-version in ownCloud is 5.4.
+version in Nextcloud is 5.4.
 
 .. note:: RHEL 6 and CentOS 6 ship with PHP 5.3 and must be upgraded to PHP 
-   5.4 to run ownCloud. See :doc:`../installation/php_54_installation`.
+   5.4 to run Nextcloud. See :doc:`../installation/php_54_installation`.
 
 On Red Hat/CentOS/Fedora systems running PHP 5.4, install ``php-pecl-apc``. On 
 Debian/Ubuntu/Mint systems install ``php-apc``. Then restart your Web server. 
@@ -64,7 +64,7 @@ After restarting your Web server, add this line to your ``config.php`` file::
 
  'memcache.local' => '\OC\Memcache\APC',
  
-Refresh your ownCloud admin page, and the cache warning should disappear.
+Refresh your Nextcloud admin page, and the cache warning should disappear.
 
 APCu
 ----
@@ -74,8 +74,8 @@ distributions it is enabled by default. However, it does
 not bundle a data cache. APCu is a data cache, and it is available in most 
 Linux distributions. On Red Hat/CentOS/Fedora systems running PHP 5.5 and up 
 install ``php-pecl-apcu``. On Debian/Ubuntu/Mint systems install ``php5-apcu``.
-On Ubuntu 14.04LTS, the APCu version is 4.0.2, which is too old to use with ownCloud. 
-ownCloud requires 4.0.6+. You may install 4.0.7 from Ubuntu backports with this command::
+On Ubuntu 14.04LTS, the APCu version is 4.0.2, which is too old to use with Nextcloud. 
+Nextcloud requires 4.0.6+. You may install 4.0.7 from Ubuntu backports with this command::
 
   apt-get install php5-apcu/trusty-backports
    
@@ -85,19 +85,19 @@ After restarting your Web server, add this line to your ``config.php`` file::
 
  'memcache.local' => '\OC\Memcache\APCu',
  
-Refresh your ownCloud admin page, and the cache warning should disappear.  
+Refresh your Nextcloud admin page, and the cache warning should disappear.  
 
 Memcached
 ---------
 
 Memcached is a reliable oldtimer for shared caching on distributed servers, 
-and performs well with ownCloud with one exception: it is not suitable to use 
+and performs well with Nextcloud with one exception: it is not suitable to use 
 with :doc:`Transactional File Locking <../configuration_files/files_locking_transactional>`
 because it does not store locks, and data can disappear from the cache at any time
 (Redis is the best memcache for this). 
 
 .. note:: Be sure to install the **memcached** PHP module, and not memcache, as 
-   in the following examples. ownCloud supports only the **memcached** PHP 
+   in the following examples. Nextcloud supports only the **memcached** PHP 
    module.
 
 Setting up Memcached is easy. On Debian/Ubuntu/Mint install ``memcached`` and 
@@ -116,7 +116,7 @@ You can verify that the Memcached daemon is running with ``ps ax``::
  127.0.0.1
 
 Restart your Web server, add the appropriate entries to your 
-``config.php``, and refresh your ownCloud admin page. This example uses APCu 
+``config.php``, and refresh your Nextcloud admin page. This example uses APCu 
 for the local cache, Memcached as the distributed memcache, and lists all the 
 servers in the shared cache pool with their port numbers::
 
@@ -154,7 +154,7 @@ You can verify that the Redis daemon is running with ``ps ax``::
  22203 ? Ssl    0:00 /usr/bin/redis-server 127.0.0.1:6379 
  
 Restart your Web server, add the appropriate entries to your ``config.php``, and 
-refresh your ownCloud admin page. This example ``config.php`` configuration uses 
+refresh your Nextcloud admin page. This example ``config.php`` configuration uses 
 Redis for the local server cache::
 
   'memcache.local' => '\OC\Memcache\Redis',
@@ -168,7 +168,7 @@ For best performance, use Redis for file locking by adding this::
   'memcache.locking' => '\OC\Memcache\Redis',
 
 If you want to connect to Redis configured to listen on an Unix socket (which is
-recommended if Redis is running on the same system as ownCloud) use this example
+recommended if Redis is running on the same system as Nextcloud) use this example
 ``config.php`` configuration::
 
   'memcache.local' => '\OC\Memcache\Redis',

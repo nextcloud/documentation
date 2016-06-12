@@ -112,7 +112,7 @@ Your Nextcloud server creates the share link from the URL that you used to log
 into the server, so make sure that you log into your server using a URL that is 
 accessible to your users. For example, if you log in via its LAN IP address, 
 such as ``http://192.168.10.50``, then your share URL will be something like 
-``http://192.168.10.50/owncloud/index.php/s/jWfCfTVztGlWTJe``, which is not 
+``http://192.168.10.50/nextcloud/index.php/s/jWfCfTVztGlWTJe``, which is not 
 accessible outside of your LAN. This also applies to using the server name; for 
 access outside of your LAN you need to use a fully-qualified domain name such as 
 ``http://myserver.example.com``, rather than ``http://myserver``.

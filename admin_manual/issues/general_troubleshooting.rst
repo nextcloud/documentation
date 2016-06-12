@@ -2,31 +2,31 @@
 General Troubleshooting
 =======================
 
-If you have trouble installing, configuring or maintaining ownCloud, please 
+If you have trouble installing, configuring or maintaining Nextcloud, please 
 refer to our community support channels:
 
-* `The ownCloud Forums`_
+* `The Nextcloud Forums`_
 
-.. note:: The ownCloud forums have a `FAQ page`_ where each topic corresponds 
+.. note:: The Nextcloud forums have a `FAQ page`_ where each topic corresponds 
    to typical mistakes or frequently occurring issues
 
-* `The ownCloud User mailing list`_
-*  The ownCloud IRC chat channel ``irc://#owncloud@freenode.net`` on 
+* `The Nextcloud User mailing list`_
+*  The Nextcloud IRC chat channel ``irc://#owncloud@freenode.net`` on 
    freenode.net, also accessible via `webchat`_
 
 Please understand that all these channels essentially consist of users like you 
 helping each other out. Consider helping others out where you can, to contribute 
 back for the help you get. This is the only way to keep a community like 
-ownCloud healthy and sustainable!
+Nextcloud healthy and sustainable!
 
-If you are using ownCloud in a business or otherwise large scale deployment, 
-note that ownCloud Inc. offers the `Enterprise Edition`_ with commercial 
+If you are using Nextcloud in a business or otherwise large scale deployment, 
+note that Nextcloud Inc. offers the `Enterprise Edition`_ with commercial 
 support options.
 
 Bugs
 ----
 
-If you think you have found a bug in ownCloud, please:
+If you think you have found a bug in Nextcloud, please:
 
 * Search for a solution (see the options above)
 * Double-check your configuration
@@ -35,9 +35,9 @@ If you can't find a solution, please use our `bugtracker`_. You can generate a
 configuration report with the :ref:`occ config command 
 <config_commands_label>`, with passwords automatically obscured.
 
-.. _the ownCloud Forums: https://forum.owncloud.org
+.. _the Nextcloud Forums: https://forum.owncloud.org
 .. _FAQ page: https://forum.owncloud.org/viewforum.php?f=17
-.. _the ownCloud User mailing list: 
+.. _the Nextcloud User mailing list: 
    https://mailman.owncloud.org/mailman/listinfo/user
 .. _webchat: http://webchat.freenode.net/?channels=owncloud
 .. _Enterprise Edition: https://owncloud.com/lp/community-or-enterprise/
@@ -48,7 +48,7 @@ configuration report with the :ref:`occ config command
 General Troubleshooting
 -----------------------
 
-Check the ownCloud :doc:`../installation/system_requirements`, especially 
+Check the Nextcloud :doc:`../installation/system_requirements`, especially 
 supported browser versions.
 
 When you see warnings about ``code integrity``, refer to :doc:`code_signing`.
@@ -61,12 +61,12 @@ different issues. Always disable 3rd party apps before upgrades, and for
 troubleshooting. Please refer to the :ref:`apps_commands_label` on how
 to disable an app from command line.
 
-ownCloud Logfiles
+Nextcloud Logfiles
 ^^^^^^^^^^^^^^^^^
 
-In a standard ownCloud installation the log level is set to ``Normal``. To find 
+In a standard Nextcloud installation the log level is set to ``Normal``. To find 
 any issues you need to raise the log level to ``All`` in your ``config.php`` 
-file, or to **Everything** on your ownCloud Admin page. Please see 
+file, or to **Everything** on your Nextcloud Admin page. Please see 
 :doc:`../configuration_server/logging_configuration` for more information on 
 these log levels.
 
@@ -79,7 +79,7 @@ major browsers have developer tools for viewing the console, and you
 usually access them by pressing F12. For Firefox we recommend to installing 
 the `Firebug extension <https://getfirebug.com/>`_.
 
-.. note:: The logfile of ownCloud is located in the data directory 
+.. note:: The logfile of Nextcloud is located in the data directory 
    ``owncloud/data/owncloud.log``.
 
 .. _label-phpinfo:
@@ -109,7 +109,7 @@ security risk to expose such sensitive data.
 Debugging Sync Issues
 ^^^^^^^^^^^^^^^^^^^^^
 
-.. warning:: The data directory on the server is exclusive to ownCloud and must 
+.. warning:: The data directory on the server is exclusive to Nextcloud and must 
    not be modified manually.
 
 Disregarding this can lead to unwanted behaviours like:
@@ -151,7 +151,7 @@ Some common problems / error messages found in your logfiles as described above:
 * ``No basic authentication headers were found`` -> This error is shown in your
   ``data/owncloud.log`` file. Some Apache modules like ``mod_fastcgi``, ``mod_fcgid``
   or ``mod_proxy_fcgi`` are not passing the needed authentication headers to
-  PHP and so the login to ownCloud via WebDAV, CalDAV and CardDAV clients is
+  PHP and so the login to Nextcloud via WebDAV, CalDAV and CardDAV clients is
   failing. Information on how to correctly configure your environment can be
   found at the `forums <https://forum.owncloud.org/viewtopic.php?f=17&t=30646>`_.
 
@@ -162,7 +162,7 @@ Logfiles
 ^^^^^^^^
 
 When having issues the first step is to check the logfiles provided by PHP, the 
-Web server and ownCloud itself.
+Web server and Nextcloud itself.
 
 .. note:: In the following the paths to the logfiles of a default Debian 
    installation running Apache2 with mod_php is assumed. On other Web servers, 
@@ -173,13 +173,13 @@ Web server and ownCloud itself.
   You need to set the directive ``log_errors`` to ``On`` and choose the path
   to store the logfile in the ``error_log`` directive. After those changes you
   need to restart your Web server.
-* The logfile of ownCloud is located in the data directory 
+* The logfile of Nextcloud is located in the data directory 
   ``/var/www/owncloud/data/owncloud.log``.
 
 Web server and PHP modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. note:: Lighttpd is not supported with ownCloud, and some ownCloud features 
+.. note:: Lighttpd is not supported with Nextcloud, and some Nextcloud features 
    may not work at all on Lighttpd.
 
 There are some Web server or PHP modules which are known to cause various 
@@ -215,11 +215,11 @@ these modules:
 Troubleshooting WebDAV
 ----------------------
 
-ownCloud uses SabreDAV, and the SabreDAV documentation is comprehensive and 
+Nextcloud uses SabreDAV, and the SabreDAV documentation is comprehensive and 
 helpful.
 
-.. note: Lighttpd is not supported on ownCloud, and Lighttpd WebDAV does not 
-   work with ownCloud.
+.. note: Lighttpd is not supported on Nextcloud, and Lighttpd WebDAV does not 
+   work with Nextcloud.
 
 See:
 
@@ -236,7 +236,7 @@ See:
   <http://sabre.io/dav/clients/finder/>`_ 
   (Describes problems with Finder on various Web servers)
 
-There is also a well maintained FAQ thread available at the `ownCloud Forums 
+There is also a well maintained FAQ thread available at the `Nextcloud Forums 
 <https://forum.owncloud.org/viewtopic.php?f=17&t=7536>`_
 which contains various additional information about WebDAV problems.
 
@@ -251,7 +251,7 @@ Service discovery
 Some clients - especially on iOS/Mac OS X - have problems finding the proper
 sync URL, even when explicitly configured to use it.
 
-If you want to use CalDAV or CardDAV clients together with ownCloud it is
+If you want to use CalDAV or CardDAV clients together with Nextcloud it is
 important to have a correct working setup of the following URLs:
 
 | ``https://example.com/.well-known/carddav``
@@ -259,7 +259,7 @@ important to have a correct working setup of the following URLs:
 |
 
 Those need to be redirecting your clients to the correct DAV endpoints. If
-running ownCloud at the document root of your Web server the correct URL is:
+running Nextcloud at the document root of your Web server the correct URL is:
 
 ``https://example.com/remote.php/dav``
 
@@ -267,13 +267,13 @@ and if running in a subfolder like ``owncloud``:
 
 ``https://example.com/owncloud/remote.php/dav``
 
-For the first case the :file:`.htaccess` file shipped with ownCloud should do
+For the first case the :file:`.htaccess` file shipped with Nextcloud should do
 this work for your when running Apache. You only need to make sure that your
 Web server is using this file. When running NGINX please refer to
 :doc:`../installation/nginx_examples`.
 
 
-If your ownCloud instance is installed in a subfolder called ``owncloud`` and
+If your Nextcloud instance is installed in a subfolder called ``owncloud`` and
 you're running Apache create or edit the :file:`.htaccess` file within the
 document root of your Web server and add the following lines::
 

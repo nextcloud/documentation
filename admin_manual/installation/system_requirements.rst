@@ -5,11 +5,11 @@ System Requirements
 Memory
 ------
 
-Memory requirements for running an ownCloud server are greatly variable, 
+Memory requirements for running an Nextcloud server are greatly variable, 
 depending on the numbers of users and files, and volume of server activity. 
-ownCloud needs a minimum of 128MB RAM, and we recommend a minimum of 512MB.
+Nextcloud needs a minimum of 128MB RAM, and we recommend a minimum of 512MB.
 
-Recommended Setup for Running ownCloud
+Recommended Setup for Running Nextcloud
 --------------------------------------
 
 For best performance, stability, support, and full functionality we recommend:
@@ -26,7 +26,7 @@ Supported Platforms
   Red Hat Enterprise Linux/Centos 6.5 and 7 (7 is 64-bit only), Ubuntu 12.04 
   LTS, 14.04 LTS, 14.10)
 * Web server: Apache 2 with mod_php
-* Databases: MySQL/MariaDB 5.5+; Oracle 11g (ownCloud Enterprise edition only); PostgreSQL
+* Databases: MySQL/MariaDB 5.5+; Oracle 11g (Nextcloud Enterprise edition only); PostgreSQL
 * PHP 5.4 + required
 * Hypervisors: Hyper-V, VMware ESX, Xen, KVM
 * Desktop: Windows XP SP3 (EoL Q2 2015), Windows 7+, Mac OS X 10.7+ (64-bit 
@@ -37,4 +37,4 @@ Supported Platforms
   Safari 5+
 
 See :doc:`source_installation` for minimum software versions for installing 
-ownCloud.
+Nextcloud.

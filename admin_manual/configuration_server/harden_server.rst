@@ -2,23 +2,23 @@
 Hardening and Security Guidance
 ===============================
 
-ownCloud aims to ship with secure defaults that do not need to get modified by 
+Nextcloud aims to ship with secure defaults that do not need to get modified by 
 administrators. However, in some cases some additional security hardening can be 
 applied in scenarios were the administrator has complete control over 
-the ownCloud instance. This page assumes that you run ownCloud Server on Apache2 
+the Nextcloud instance. This page assumes that you run Nextcloud Server on Apache2 
 in a Linux environment.
 
-.. note:: ownCloud will warn you in the administration interface if some 
+.. note:: Nextcloud will warn you in the administration interface if some 
    critical security-relevant options are missing. However, it is still up to 
    the server administrator to review and maintain system security.
    
 Limit on Password Length
 ------------------------
 
-ownCloud uses the bcrypt algorithm, and thus for security and performance 
+Nextcloud uses the bcrypt algorithm, and thus for security and performance 
 reasons, e.g. Denial of Service as CPU demand increases exponentially, it only 
 verifies the first 72 characters of passwords. This applies to all passwords 
-that you use in ownCloud: user passwords, passwords on link shares, and 
+that you use in Nextcloud: user passwords, passwords on link shares, and 
 passwords on external shares.
 
 Operating system
@@ -29,9 +29,9 @@ Operating system
 Give PHP read access to ``/dev/urandom``
 *****************************************
 
-ownCloud uses a `RFC 4086 ("Randomness Requirements for Security")`_ compliant 
+Nextcloud uses a `RFC 4086 ("Randomness Requirements for Security")`_ compliant 
 mixer to generate cryptographically secure pseudo-random numbers. This means 
-that when generating a random number ownCloud will request multiple random 
+that when generating a random number Nextcloud will request multiple random 
 numbers from different sources and derive from these the final random number.
 
 The random number generation also tries to request random numbers from 
@@ -65,7 +65,7 @@ installation.
 Disable preview image generation
 ********************************
 
-ownCloud is able to generate preview images of common filetypes such as images 
+Nextcloud is able to generate preview images of common filetypes such as images 
 or text files. By default the preview generation for some file types that we 
 consider secure enough for deployment is enabled by default. However, 
 administrators should be aware that these previews are generated using PHP 
@@ -81,7 +81,7 @@ modifying the ``enabledPreviewProviders`` option switch.
 Use HTTPS
 ---------
 
-Using ownCloud without using an encrypted HTTPS connection opens up your server 
+Using Nextcloud without using an encrypted HTTPS connection opens up your server 
 to a man-in-the-middle (MITM) attack, and risks the interception of user data 
 and passwords. It is a best practice, and highly recommended, to always use 
 HTTPS on production servers, and to never allow unencrypted HTTP.
@@ -111,7 +111,7 @@ Enable HTTP Strict Transport Security
 While redirecting all traffic to HTTPS is good, it may not completely prevent 
 man-in-the-middle attacks. Thus administrators are encouraged to set the HTTP 
 Strict Transport Security header, which instructs browsers to not allow any 
-connection to the ownCloud instance using HTTP, and it attempts to prevent site 
+connection to the Nextcloud instance using HTTP, and it attempts to prevent site 
 visitors from bypassing invalid certificate warnings.
 
 This can be achieved by setting the following settings within the Apache 
@@ -143,29 +143,29 @@ configured.
 
 Also ensure that HTTP compression is disabled to mitigate the BREACH attack.
 
-Use a dedicated domain for ownCloud
+Use a dedicated domain for Nextcloud
 -----------------------------------
 
-Administrators are encouraged to install ownCloud on a dedicated domain such as 
+Administrators are encouraged to install Nextcloud on a dedicated domain such as 
 cloud.domain.tld instead of domain.tld to gain all the benefits offered by the 
 Same-Origin-Policy.
 
-Ensure that your ownCloud instance is installed in a DMZ
+Ensure that your Nextcloud instance is installed in a DMZ
 --------------------------------------------------------
 
-As ownCloud supports features such as Federated File Sharing we do not consider
+As Nextcloud supports features such as Federated File Sharing we do not consider
 Server Side Request Forgery (SSRF) part of our threat model. In fact, given all our
 external storage adapters this can be considered a feature and not a vulnerability.
 
-This means that a user on your ownCloud instance could probe whether other hosts
-are accessible from the ownCloud network. If you do not want this you need to 
-ensure that your ownCloud is properly installed in a segregated network and proper 
+This means that a user on your Nextcloud instance could probe whether other hosts
+are accessible from the Nextcloud network. If you do not want this you need to 
+ensure that your Nextcloud is properly installed in a segregated network and proper 
 firewall rules are in place.
 
 Serve security related Headers by the Web server
 ------------------------------------------------
 
-Basic security headers are served by ownCloud already in a default environment. 
+Basic security headers are served by Nextcloud already in a default environment. 
 These include:
 
 - ``X-Content-Type-Options: nosniff``
@@ -175,9 +175,9 @@ These include:
 - ``X-Robots-Tag: none``
 	- Instructs search machines to not index these pages.
 - ``X-Frame-Options: SAMEORIGIN``
-	- Prevents embedding of the ownCloud instance within an iframe from other domains to prevent Clickjacking and other similar attacks.
+	- Prevents embedding of the Nextcloud instance within an iframe from other domains to prevent Clickjacking and other similar attacks.
 
-These headers are hard-coded into the ownCloud server, and need no intervention 
+These headers are hard-coded into the Nextcloud server, and need no intervention 
 by the server administrator.
 
 For optimal security, administrators are encouraged to serve these basic HTTP 

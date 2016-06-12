@@ -70,7 +70,7 @@ The :file:`appinfo/info.xml` contains metadata about the app:
 
 id
 --
-**Required**: This field contains the internal app name, and has to be the same as the folder name of the app. This id needs to be unique in ownCloud, meaning no other app should have this id.
+**Required**: This field contains the internal app name, and has to be the same as the folder name of the app. This id needs to be unique in Nextcloud, meaning no other app should have this id.
 
 name
 ----
@@ -91,7 +91,7 @@ licence
 * AGPL 3 (recommended)
 * MIT
 
-If a proprietary/non AGPL compatible licence should be used, the `ownCloud Enterprise Edition <https://owncloud.com/overview/enterprise-edition>`_ must be used.
+If a proprietary/non AGPL compatible licence should be used, the `Nextcloud Enterprise Edition <https://owncloud.com/overview/enterprise-edition>`_ must be used.
 
 author
 ------
@@ -99,7 +99,7 @@ author
 
 requiremin
 ----------
-Required if not added in the **<dependencies>** tag. The minimal version of ownCloud.
+Required if not added in the **<dependencies>** tag. The minimal version of Nextcloud.
 
 namespace
 ---------
@@ -107,7 +107,7 @@ Required if routes.php returns an array. If your app is namespaced like **\\OCA\
 
 types
 -----
-ownCloud allows to specify four kind of ``types``. Currently supported ``types``:
+Nextcloud allows to specify four kind of ``types``. Currently supported ``types``:
 
 * **prelogin**: apps which need to load on the login page
 
@@ -118,7 +118,7 @@ ownCloud allows to specify four kind of ``types``. Currently supported ``types``
 * **logging**: apps which implement a logging system
 
 * **prevent_group_restriction**: apps which can not be enabled for specific groups (e.g. notifications app).
-  Introduced with ownCloud 9.0, can also be used in earlier versions, but the functionality is ignored.
+  Introduced with Nextcloud 9.0, can also be used in earlier versions, but the functionality is ignored.
 
 .. note::
 
@@ -184,7 +184,7 @@ Defines the required target operating system the app can run on. Valid values ar
 
 owncloud
 --------
-Defines minimum and maximum versions of the ownCloud core. In case undefined the values will be taken from the tag 'requiremin'.
+Defines minimum and maximum versions of the Nextcloud core. In case undefined the values will be taken from the tag 'requiremin'.
 
 
 Deprecated
@@ -218,10 +218,10 @@ Can be set to true to indicate that this app is a webapp. This can be used to te
 
 default_enable
 --------------
-**Core apps only**: Used to tell ownCloud to enable them after the installation.
+**Core apps only**: Used to tell Nextcloud to enable them after the installation.
 
 shipped
 -------
-**Core apps only**: Used to tell ownCloud that the app is in the standard release.
+**Core apps only**: Used to tell Nextcloud that the app is in the standard release.
 
 Please note that if this attribute is set to *FALSE* or not set at all, every time you disable the application, all the files of the application itself will be *REMOVED* from the server!

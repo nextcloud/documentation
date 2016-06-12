@@ -1,45 +1,45 @@
 ==============================
-Upgrade ownCloud From Packages
+Upgrade Nextcloud From Packages
 ==============================
 
-.. note:: Starting with ownCloud 8.2 the Linux package repositories have 
+.. note:: Starting with Nextcloud 8.2 the Linux package repositories have 
    changed, and **you must configure your system to use these new 
-   repositories** to install or upgrade ownCloud 8.2+. The new repositories are 
+   repositories** to install or upgrade Nextcloud 8.2+. The new repositories are 
    at our `Open Build Service`_.
    
 Upgrade Quickstart
 ------------------
 
-The best method for keeping ownCloud current on Linux servers is by configuring 
-your system to use ownCloud's `Open Build Service`_ repository. Then stay 
-current by using your Linux package manager to install fresh ownCloud packages. 
+The best method for keeping Nextcloud current on Linux servers is by configuring 
+your system to use Nextcloud's `Open Build Service`_ repository. Then stay 
+current by using your Linux package manager to install fresh Nextcloud packages. 
 After installing upgraded packages you must run a few more steps to complete 
 the 
-upgrade. These are the basic steps to upgrading ownCloud:
+upgrade. These are the basic steps to upgrading Nextcloud:
 
 * :doc:`Disable <../installation/apps_management_installation>` all third-party 
   apps.
 * Make a :doc:`fresh backup <backup>`.
-* Upgrade your ownCloud packages.
+* Upgrade your Nextcloud packages.
 * Run :ref:`occ upgrade <command_line_upgrade_label>` (optionally disabling the 
   :ref:`migration test   
   <migration_test_label>`).
 * :ref:`Apply strong permissions <strong_perms_label>` to your 
-  ownCloud directories.
-* Take your ownCloud server out of :ref:`maintenance mode 
+  Nextcloud directories.
+* Take your Nextcloud server out of :ref:`maintenance mode 
   <maintenance_commands_label>`.  
 * Re-enable third-party apps.
 
 Upgrade Tips
 ------------
 
-Upgrading ownCloud from our `Open Build Service`_ repository is just like any 
+Upgrading Nextcloud from our `Open Build Service`_ repository is just like any 
 normal Linux upgrade. For example, on Debian or Ubuntu Linux this is the 
 standard system upgrade command::
 
  apt-get update && apt-get upgrade
  
-Or you can upgrade just ownCloud with this command::
+Or you can upgrade just Nextcloud with this command::
 
  apt-get update && apt-get install owncloud
  
@@ -51,17 +51,17 @@ You can apply all available updates with this command::
  
  yum update
  
-Or update only ownCloud::
+Or update only Nextcloud::
  
  yum update owncloud
  
-Your Linux package manager only downloads the current ownCloud packages. Then 
-your ownCloud server is immediately put into maintenance mode. You may not see 
-this until you refresh your ownCloud page.
+Your Linux package manager only downloads the current Nextcloud packages. Then 
+your Nextcloud server is immediately put into maintenance mode. You may not see 
+this until you refresh your Nextcloud page.
 
 .. figure:: images/upgrade-1.png
    :scale: 75%
-   :alt: ownCloud status screen informing users that it is in maintenance mode.
+   :alt: Nextcloud status screen informing users that it is in maintenance mode.
 
 Then use ``occ`` to complete the upgrade. You must run ``occ`` as your HTTP 
 user. This example is for Debian/Ubuntu::
@@ -77,7 +77,7 @@ This example is for CentOS/RHEL/Fedora::
 Migration Test
 --------------
 
-Before completing the upgrade, ownCloud first runs a simulation by copying all 
+Before completing the upgrade, Nextcloud first runs a simulation by copying all 
 database tables to new tables, and then performs the upgrade on them, to ensure 
 that the upgrade will complete correctly. The copied tables are deleted after 
 the upgrade. This takes twice as much time, which on large installations can be 
@@ -89,7 +89,7 @@ option, like this example on CentOS::
 Setting Strong Directory Permissions
 ------------------------------------
 
-After upgrading, verify that your ownCloud directory permissions are set 
+After upgrading, verify that your Nextcloud directory permissions are set 
 according to :ref:`strong_perms_label`.
 
 If the upgrade fails, then you must try a manual upgrade.
@@ -102,9 +102,9 @@ If the upgrade fails, then you must try a manual upgrade.
 Upgrading Across Skipped Releases
 ---------------------------------
 
-It is best to update your ownCloud installation with every new point release, 
+It is best to update your Nextcloud installation with every new point release, 
 and to never skip any major releases. If you have skipped any major releases you 
-can bring your ownCloud current with these steps:
+can bring your Nextcloud current with these steps:
 
 #. Add the repository of your current version
 #. Upgrade your current version to the latest point release
@@ -113,7 +113,7 @@ can bring your ownCloud current with these steps:
 #. Run upgrade routine
 #. Repeat from step 3 until you reach the last available major release
 
-You'll find previous ownCloud releases in the `ownCloud Server Changelog 
+You'll find previous Nextcloud releases in the `Nextcloud Server Changelog 
 <https://owncloud.org/changelog/>`_.
 
 If upgrading via your package manager fails, then you must perform a 

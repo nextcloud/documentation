@@ -2,7 +2,7 @@
 Installing PHP 5.5 on RHEL 7 and CentOS 7
 =========================================
 
-PHP 5.4 has been end-of-life since September 2015 and is no longer supported by the PHP team. RHEL 7 still ships with PHP 5.4, and Red Hat supports it. ownCloud also supports PHP 5.4, so upgrading is not required. However, it is highly recommended to upgrade to PHP 5.5+ for best security and performance. 
+PHP 5.4 has been end-of-life since September 2015 and is no longer supported by the PHP team. RHEL 7 still ships with PHP 5.4, and Red Hat supports it. Nextcloud also supports PHP 5.4, so upgrading is not required. However, it is highly recommended to upgrade to PHP 5.5+ for best security and performance. 
 
 **Before upgrading, evaluate all of your PHP apps for compatibility with PHP 5.5.**
 
@@ -21,7 +21,7 @@ You must also install the updated database module for your database. This instal
  
  yum install php55-php-mysqlnd
  
-If you are using the ownCloud LDAP app, you need this module::
+If you are using the Nextcloud LDAP app, you need this module::
 
  yum install php55-php-ldap
  
@@ -63,7 +63,7 @@ You must also install the updated database module for your database. This instal
  
  yum install php55-php-mysqlnd
  
-If you are using the ownCloud LDAP app, you need this module::
+If you are using the Nextcloud LDAP app, you need this module::
 
  yum install php55-php-ldap 
   
