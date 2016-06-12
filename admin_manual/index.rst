@@ -32,9 +32,9 @@ user interface, and desktop and mobile clients, please refer to their
 respective manuals:
 
 * `Nextcloud User Manual`_
-* `Nextcloud Desktop Client`_
+* `ownCloud Desktop Client`_
 * `Nextcloud Android App`_
 
 .. _`Nextcloud User Manual`: https://docs.nextcloud.org/server/9/user_manual/
-.. _`Nextcloud Desktop Client`: https://docs.nextcloud.org/desktop/2.1/
+.. _`ownCloud Desktop Client`: https://doc.owncloud.org/desktop/2.1/ 
 .. _`Nextcloud Android App`: https://docs.nextcloud.org/android/
