@@ -204,12 +204,7 @@ latex_logo = '../_shared_assets/static/logo-blue.pdf'
 #latex_domain_indices = True
 
 # -- Options for pdf page output -----------------------------------------------
-
-<<<<<<< HEAD
-pdf_documents = [('contents', u'nextcloud Server Administration Manual', u'Nextcloud Server Administration Manual', u'The Nextcloud developers'),]
-=======
 pdf_documents = [('contents', u'Nextcloud Server Administration Manual', u'Nextcloud Server Administration Manual', u'The Nextcloud developers'),]
->>>>>>> stable9
 
 # -- Options for manual page output --------------------------------------------
 
