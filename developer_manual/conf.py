@@ -166,7 +166,7 @@ html_show_sphinx = False
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'owncloudDeveloperManual'
+htmlhelp_basename = 'NextcloudDeveloperManual'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -185,8 +185,8 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'ownCloudDeveloperManual.tex', u'ownCloud Developer Manual',
-   u'The ownCloud developers', 'manual'),
+  ('index', 'NextcloudDeveloperManual.tex', u'Nextcloud Developer Manual',
+   u'The Nextcloud developers', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -211,16 +211,16 @@ latex_logo = '../_shared_assets/static/logo-blue.pdf'
 
 # -- Options for pdf page output -----------------------------------------------
 
-pdf_documents = [('index', u'owncloudDeveloperManual', u'ownCloud Developer Manual',
-                  u'The ownCloud developers'),]
+pdf_documents = [('index', u'NextcloudDeveloperManual', u'Nextcloud Developer Manual',
+                  u'The Nextcloud developers'),]
 
 # -- Options for manual page output --------------------------------------------
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'owncloudDeveloperManual', u'ownCloud Developer Manual',
-     [u'The ownCloud developers'], 1)
+    ('index', 'NextcloudDeveloperManual', u'Nextcloud Developer Manual',
+     [u'The Nextcloud developers'], 1)
 ]
 
 # If true, show URL addresses after external links.
