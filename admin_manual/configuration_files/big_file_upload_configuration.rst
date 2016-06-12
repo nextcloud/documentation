@@ -69,7 +69,7 @@ Apache with mod_fcgid
 
 .. note:: If you are using Apache/2.4 with mod_fcgid, as of February/March 2016,
    ``FcgidMaxRequestInMem`` still needs to be significantly increased from its default value
-   to avoid the occurence of segmentation faults when uploading big files. This is not a regular
+   to avoid the occurrence of segmentation faults when uploading big files. This is not a regular
    setting but serves as a workaround for `Apache with mod_fcgid bug #51747 <https://bz.apache.org/bugzilla/show_bug.cgi?id=51747>`_.
    
    Setting ``FcgidMaxRequestInMem`` significantly higher than normal may no longer be

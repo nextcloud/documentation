@@ -1121,7 +1121,7 @@ Server details for one or more memcached servers to use for memory caching.
 		// Enable Binary Protocol
 		\Memcached::OPT_BINARY_PROTOCOL =>      true,
 	
-		// Binary serializer vill be enabled if the igbinary PECL module is available
+		// Binary serializer will be enabled if the igbinary PECL module is available
 		//\Memcached::OPT_SERIALIZER => \Memcached::SERIALIZER_IGBINARY,
 	),
 
