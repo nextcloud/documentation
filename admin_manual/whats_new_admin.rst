@@ -1,14 +1,10 @@
-===========================================
-What's New for Admins in ownCloud |version|
-===========================================
+============================================
+What's New for Admins in Nextcloud |version|
+============================================
 
-See the `ownCloud 9.0 Features page 
-<https://github.com/owncloud/core/wiki/ownCloud-9.0-Features>`_ on Github for a 
-comprehensive list of new features and updates.
+Nextcloud has many improvements. Some of our new features are:
 
-ownCloud has many improvements. Some of our new features are:
-
-* Split Linux packaging, dividing ownCloud and dependencies into two separate 
+* Split Linux packaging, dividing Nextcloud and dependencies into two separate 
   packages (:doc:`installation/linux_installation`)
 * Separate encryption for home storage and remote storage; you may encrypt 
   remote storage without encrypting local storage. 
@@ -27,14 +23,3 @@ ownCloud has many improvements. Some of our new features are:
   addressbooks and calendars (:ref:`dav_label`)
 * New optional second name attribute in the LDAP app, so that user names appear 
   as ``User Foo (optional 2nd attribute)`` (:ref:`ldap_directory_settings`)
-  
-Enterprise Only
----------------
-
-* Advanced tagging management with the Workflow app. 
-  (:doc:`enterprise_file_management/files_tagging`)
-* Advanced authentication backends. 
-  (:doc:`enterprise_external_storage/enterprise_only_auth`)
-* Password policy app for share links, for setting password requirements such 
-  as minimum length and required characters.
-  (:ref:`password_policy_label`)  
