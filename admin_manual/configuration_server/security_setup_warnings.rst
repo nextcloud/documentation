@@ -13,7 +13,7 @@ Cache Warnings
 
 "No memory cache has been configured. To enhance your performance please 
 configure a memcache if available." ownCloud supports multiple php caching
-extentions:
+extensions:
 
 * APC (PHP 5.4 only)
 * APCu (PHP 5.5+, minimum required PHP extension version 4.0.6)

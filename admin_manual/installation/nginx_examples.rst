@@ -187,7 +187,7 @@ And at the end of every ``configure`` command add::
 
   --add-module=$(MODULESDIR)/ngx_cache_purge
     
-Don't forget to escape preceeding lines with a backslash ``\``.
+Don't forget to escape preceding lines with a backslash ``\``.
 The parameters may now look like::
       
    --with-cc-opt="$(CFLAGS)" \
@@ -312,7 +312,7 @@ Add *inside* the ``server{}`` block, as an example of a configuration::
    sudo nginx -s reload
    
 *  Open your browser and clear your cache.   
-*  Logon to your ownCloud instance, open the gallery app, move thru your       
+*  Logon to your ownCloud instance, open the gallery app, move through your
    folders and watch while the thumbnails are generated for the first time.
 *  You may also watch with eg. ``htop`` your system load while the 
    thumbnails are processed.

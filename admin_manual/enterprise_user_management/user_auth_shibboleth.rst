@@ -336,7 +336,7 @@ The session timeout can be overridden in the service provider, but this
 requires a source code change of the Apache Shibboleth module. A patch can be
 provided by the ownCloud support team.
 
-UID Considerations and Windows Network Drive compatability
+UID Considerations and Windows Network Drive compatibility
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When using ``user_shibboleth`` in **Single sign-on only** mode, together with
@@ -356,7 +356,7 @@ different implications to take into account:
 
 * *Example:* jfd@owncloud.com
 * *Uniqueness:* Forest local, might change on eg. marriage
-* *Other implications:* TODO check WND compatability
+* *Other implications:* TODO check WND compatibility
 
 **objectSid**
 

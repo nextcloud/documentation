@@ -269,7 +269,7 @@ the command from, use::
 
   mysql -uUSERNAME -p
 
-To acess a MySQL installation on a different machine, add the -h option with
+To access a MySQL installation on a different machine, add the -h option with
 the respective host name::
 
   mysql -uUSERNAME -p -h HOSTNAME
@@ -292,7 +292,7 @@ the command from, use::
 
   psql -Uusername -downcloud
 
-To acess a MySQL installation on a different machine, add the -h option with
+To access a MySQL installation on a different machine, add the -h option with
 the respective host name::
 
   psql -Uusername -downcloud -h HOSTNAME
