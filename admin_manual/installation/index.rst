@@ -7,7 +7,6 @@ Installation
 
    system_requirements
    deployment_recommendations
-   linux_installation
    installation_wizard
    command_line_installation
    apps_management_installation
@@ -18,5 +17,4 @@ Installation
    php_55_installation
    selinux_configuration
    nginx_examples
-   nginx_owncloud_8x
    nginx_owncloud_9x

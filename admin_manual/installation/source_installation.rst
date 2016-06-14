@@ -2,16 +2,7 @@
 Manual Installation on Linux
 ============================
 
-Installing Nextcloud on Linux from our Open Build Service packages is the 
-preferred method (see :doc:`linux_installation`). These are maintained by 
-Nextcloud engineers, and you can use your package manager to keep your Nextcloud 
-server up-to-date.
-
-.. note:: Enterprise customers should refer to  
-   :doc:`../enterprise_installation/linux_installation`
-
-If there are no packages for your Linux distribution, or you prefer installing 
-from the source tarball, you can setup Nextcloud from scratch using a classic 
+You can setup Nextcloud from scratch using a classic
 LAMP stack (Linux, Apache, MySQL/MariaDB, PHP). This document provides a 
 complete walk-through for installing Nextcloud on Ubuntu 14.04 LTS Server with 
 Apache and MariaDB, using `the Nextcloud .tar archive 

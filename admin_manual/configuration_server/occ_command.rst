@@ -1091,10 +1091,7 @@ These commands are available only after you have downloaded and unpacked the
 Nextcloud archive, and taken no further installation steps.
 
 You can install Nextcloud entirely from the command line. After downloading the 
-tarball and copying Nextcloud into the appropriate directories, or 
-after installing Nextcloud packages (See 
-:doc:`../installation/linux_installation` and 
-:doc:`../installation/source_installation`) you can use ``occ`` commands in 
+tarball and copying Nextcloud into the appropriate directories (See :doc:`../installation/source_installation`) you can use ``occ`` commands in 
 place of running the graphical Installation Wizard.
 
 Apply correct permissions to your Nextcloud directories; see 

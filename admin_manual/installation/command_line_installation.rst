@@ -8,8 +8,7 @@ the command line. There are three stages to installing Nextcloud via the command
 line:
 
 1. Download and install the Nextcloud code via your package manager, or download 
-and unpack the tarball in the appropriate directories. (See 
-:doc:`linux_installation` and :doc:`source_installation`.)
+and unpack the tarball in the appropriate directories. (See :doc:`source_installation`.)
 
 2. Change the ownership of your ``owncloud`` directory to your HTTP user, like 
 this example for Debian/Ubuntu. You must run ``occ`` as your HTTP user; see 

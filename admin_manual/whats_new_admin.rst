@@ -4,8 +4,6 @@ What's New for Admins in Nextcloud |version|
 
 Nextcloud has many improvements. Some of our new features are:
 
-* Split Linux packaging, dividing Nextcloud and dependencies into two separate 
-  packages (:doc:`installation/linux_installation`)
 * Separate encryption for home storage and remote storage; you may encrypt 
   remote storage without encrypting local storage. 
   (:doc:`configuration_files/encryption_configuration`)

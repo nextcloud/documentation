@@ -17,11 +17,7 @@ There are three ways to upgrade your Nextcloud server:
   files, except ``data/`` and ``config/`` files, on your hosting account. Then 
   transfer the new Nextcloud files to your hosting account, again 
   preserving your existing ``data/`` and ``config/`` files.
-* Enterprise customers will use their Enterprise software 
-  repositories to maintain their Nextcloud servers, rather than the Open Build 
-  Service. Please see :doc:`../enterprise_installation/linux_installation` for 
-  more information.
-  
+
 When an update is available for your Nextcloud server, you will see a 
 notification at the top of your Nextcloud Web interface. When you click the 
 notification it brings you here, to this page.
