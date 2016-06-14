@@ -1,6 +1,6 @@
-===================
+====================
 Backing up Nextcloud
-===================
+====================
 
 To backup an Nextcloud installation there are three main things you need to retain:
 

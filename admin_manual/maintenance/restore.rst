@@ -1,6 +1,6 @@
-==================
+===================
 Restoring Nextcloud
-==================
+===================
 
 To restore an Nextcloud installation there are three main things you need to 
 restore:

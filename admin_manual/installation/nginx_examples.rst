@@ -92,7 +92,7 @@ To use http_v2 for nginx you have to check two things:
    ``listen 443 ssl spdy;`` to ``listen 443 ssl http2;``
 
 nginx: caching Nextcloud gallery thumbnails
-==========================================
+===========================================
 
 One of the optimizations for Nextcloud when using nginx as the Web server is to 
 combine FastCGI caching with "Cache Purge", a `3rdparty nginx module 

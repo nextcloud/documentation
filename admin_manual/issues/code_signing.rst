@@ -17,14 +17,14 @@ FAQ
 ---
 
 Why Did Nextcloud Add Code Signing?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 By supporting Code Signing we add another layer of security by ensuring that 
 nobody other than authorized persons can push updates for applications, and 
 ensuring proper upgrades.
 
 Do We Lock Down Nextcloud?
-^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Nextcloud project is open source and always will be. We do not want to 
 make it more difficult for our users to run Nextcloud. Any code signing errors on 

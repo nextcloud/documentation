@@ -1,6 +1,6 @@
-=======================
+========================
 Manual Nextcloud Upgrade
-=======================
+========================
 
 Always start by making a fresh backup and disabling all 3rd party apps.
 
@@ -69,7 +69,7 @@ ones are enabled. Re-enable your third-party apps. Then apply strong
 permissions to your Nextcloud directories (:ref:`strong_perms_label`).
 
 Previous Nextcloud Releases
---------------------------
+---------------------------
 
 You'll find previous ownCloud releases in the `ownCloud Server Changelog 
 <https://owncloud.org/changelog/>`_ and previous Nextcloud releases in the 

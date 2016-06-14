@@ -578,7 +578,7 @@ Available values:
     versions auto clean disabled, versions will be kept forever
 
 Nextcloud Verifications
-----------------------
+-----------------------
 
 Nextcloud performs several verification checks. There are two options,
 ``true`` and ``false``.
@@ -1135,7 +1135,7 @@ Location of the cache folder, defaults to ``data/$user/cache`` where
 and ``$user`` is the user.
 
 Using Object Store with Nextcloud
---------------------------------
+---------------------------------
 
 
 ::
