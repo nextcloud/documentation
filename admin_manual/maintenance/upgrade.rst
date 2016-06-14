@@ -11,7 +11,7 @@ There are three ways to upgrade your Nextcloud server:
   release channels. (It is not available and not supported on the Enterprise 
   edition.)
 * :doc:`Manually upgrading <manual_upgrade>` with the Nextcloud ``.tar`` archive 
-  from `owncloud.org/install/`_. 
+  from https://nextcloud.com/install. 
 * Manually upgrading is also an option for users on shared hosting; download 
   and unpack the Nextcloud tarball to your PC. Delete your existing Nextcloud 
   files, except ``data/`` and ``config/`` files, on your hosting account. Then 
