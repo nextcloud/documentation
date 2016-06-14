@@ -972,12 +972,15 @@ The ``user`` commands create and remove users, reset passwords, display a simple
 report showing how many users you have, and when a user was last logged in::
 
  user
-  user:add            adds a user
-  user:delete         deletes the specified user
-  user:lastseen       shows when the user was logged it last 
-                      time
-  user:report         shows how many users have access
-  user:resetpassword  Resets the password of the named user
+  user:add                            adds a user
+  user:delete                         deletes the specified user
+  user:disable                        disables the specified user
+  user:enable                         enables the specified user
+  user:lastseen                       shows when the user was logged in last time
+  user:report                         shows how many users have access
+  user:resetpassword                  Resets the password of the named user
+  user:setting                        Read and modify user settings
+
 
 You can create a new user with their display name, login name, and any group 
 memberships with the ``user:add`` command. The syntax is::
@@ -1041,7 +1044,36 @@ View a user's most recent login::
    
  sudo -u www-data php occ user:lastseen layla 
    layla's last login: 09.01.2015 18:46
-   
+
+Read user settings::
+
+ sudo -u www-data php occ user:setting layla
+   - core:
+     - lang: en
+   - login:
+     - lastLogin: 1465910968
+   - settings:
+     - email: layla@example.tld
+
+Filter by app::
+
+ sudo -u www-data php occ user:setting layla core
+   - core:
+     - lang: en
+
+Get a single setting::
+
+ sudo -u www-data php occ user:setting layla core lang
+ en
+
+Set a setting::
+
+ sudo -u www-data php occ user:setting layla settings email "new-layla@example.tld"
+
+Delete a setting::
+
+ sudo -u www-data php occ user:setting layla settings email --delete
+
 Generate a simple report that counts all users, including users on external user
 authentication servers such as LDAP::
 
