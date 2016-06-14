@@ -1,6 +1,6 @@
-==============================
+===============================
 Upgrade Nextcloud From Packages
-==============================
+===============================
 
 .. note:: Starting with Nextcloud 8.2 the Linux package repositories have 
    changed, and **you must configure your system to use these new 

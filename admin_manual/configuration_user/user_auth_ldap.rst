@@ -496,7 +496,7 @@ When the configuration test reports success, save your settings and check if the
 users and groups are fetched correctly on the Users page.
 
 Nextcloud Avatar integration
----------------------------
+----------------------------
 
 Nextcloud supports user profile pictures, which are also called avatars. If a user 
 has a photo stored in the *jpegPhoto* or *thumbnailPhoto* attribute on your LDAP 
@@ -571,7 +571,7 @@ In case you have a working configuration and want to create a similar one or
 Now you can modify and enable the configuration.
 
 Nextcloud LDAP Internals
------------------------
+------------------------
 
 Some parts of how the LDAP backend works are described here.
 

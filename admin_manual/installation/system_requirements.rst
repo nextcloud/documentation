@@ -10,7 +10,7 @@ depending on the numbers of users and files, and volume of server activity.
 Nextcloud needs a minimum of 128MB RAM, and we recommend a minimum of 512MB.
 
 Recommended Setup for Running Nextcloud
---------------------------------------
+---------------------------------------
 
 For best performance, stability, support, and full functionality we recommend:
 

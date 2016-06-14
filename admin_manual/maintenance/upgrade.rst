@@ -1,6 +1,6 @@
-===================================
+====================================
 How to Upgrade Your Nextcloud Server
-===================================
+====================================
 
 There are three ways to upgrade your Nextcloud server:
 
@@ -34,8 +34,8 @@ mode, so your users will be locked out until the upgrade is completed. Large
 installations may take several hours to complete the upgrade.
 
 .. warning:: **Downgrading is not supported** and risks corrupting your data! 
-If 
-   you want to revert to an older Nextcloud version, make a new, fresh 
+ 
+   If you want to revert to an older Nextcloud version, make a new, fresh 
    installation and then restore your data from backup. Before doing this, 
    file a support ticket (if you have paid support) or ask for help in the 
    Nextcloud forums to see if your issue can be resolved without downgrading.
@@ -82,7 +82,7 @@ may re-enable them.
 
 
 Debian Migration to Official Nextcloud Packages
-----------------------------------------------
+-----------------------------------------------
 
 As of March 2016 Debian will not include Nextcloud packages. Debian users can 
 migrate to the official Nextcloud packages by following this guide, 

@@ -62,7 +62,7 @@ troubleshooting. Please refer to the :ref:`apps_commands_label` on how
 to disable an app from command line.
 
 Nextcloud Logfiles
-^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 
 In a standard Nextcloud installation the log level is set to ``Normal``. To find 
 any issues you need to raise the log level to ``All`` in your ``config.php`` 

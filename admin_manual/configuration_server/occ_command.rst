@@ -911,7 +911,7 @@ Remove a certificate::
 .. _shibboleth_label:
 
 Shibboleth Modes (Enterprise Edition only)
------------------------------------------
+------------------------------------------
 
 .. note::
   This command is only available when the "Shibboleth user backend" app

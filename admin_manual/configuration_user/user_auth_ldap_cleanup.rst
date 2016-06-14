@@ -63,7 +63,7 @@ Then you can run ``sudo -u www-data php occ user:delete aaliyah_brown`` to delet
 user aaliyah_brown. You must use the user's Nextcloud name.
 
 Deleting Local Nextcloud Users
------------------------------
+------------------------------
 
 You may also use ``occ user:delete [user]`` to remove a local Nextcloud user; 
 this removes their user account and their data.

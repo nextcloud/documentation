@@ -144,14 +144,14 @@ configured.
 Also ensure that HTTP compression is disabled to mitigate the BREACH attack.
 
 Use a dedicated domain for Nextcloud
------------------------------------
+------------------------------------
 
 Administrators are encouraged to install Nextcloud on a dedicated domain such as 
 cloud.domain.tld instead of domain.tld to gain all the benefits offered by the 
 Same-Origin-Policy.
 
 Ensure that your Nextcloud instance is installed in a DMZ
---------------------------------------------------------
+---------------------------------------------------------
 
 As Nextcloud supports features such as Federated File Sharing we do not consider
 Server Side Request Forgery (SSRF) part of our threat model. In fact, given all our

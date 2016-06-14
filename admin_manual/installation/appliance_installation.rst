@@ -1,6 +1,6 @@
-============================
+=============================
 Nextcloud Community Appliance
-============================
+=============================
 
 Nextcloud has a publicly developed community appliance `on GitHub`_. Download the 
 latest release from the Appliances tab on the `Nextcloud server installation 
