@@ -32,7 +32,7 @@ download of files, delete rename files and folders, etc.
 This library may be added to a project and seamlessly integrates any
 application with Nextcloud.
 
-The tool needed is any IDE for Android prefered IDE at the moment is Android Studio.
+The tool needed is any IDE for Android preferred IDE at the moment is Android Studio.
 
 .. toctree::
    :maxdepth: 2
