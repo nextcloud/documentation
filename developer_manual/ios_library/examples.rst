@@ -317,7 +317,7 @@ Download a file
 
 Download an existing file on the cloud server. The info needed is the server
 URL, path of the file on the server and localPath, path where the file will be
-stored on the device and a boolean to indicate if is neccesary to use LIFO queue or FIFO.
+stored on the device and a boolean to indicate if is necessary to use LIFO queue or FIFO.
 
 Code example
 ~~~~~~~~~~~~
@@ -784,7 +784,7 @@ Check if file of folder is shared
 
 Check if a specific file or folder is shared in your cloud server.
 
-Teh info need is Path, your server URL and the Id of the item that you want.
+The info need is Path, your server URL and the Id of the item that you want.
 
 
 Before check an item, you have to read the shared items on the selected

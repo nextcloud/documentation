@@ -43,4 +43,3 @@ showing examples in Eclipse.
 
    library_installation
    examples
-

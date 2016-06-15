@@ -206,7 +206,7 @@ How does it affect the request lifecycle
   * If a **routes.php** file returns an array, but there is no **appname/appinfo/application.php**, create a new \\OCP\\AppFramework\\App instance with the app id and register the routes on it
 
 * A request is matched for the route, e.g. with the name **page#index**
-* The appropriate container is being queried for the entry PageController (to keep backwards compability)
+* The appropriate container is being queried for the entry PageController (to keep backwards compatibility)
 * If the entry does not exist, the container is queried for OCA\\AppName\\Controller\\PageController and if no entry exists, the container tries to create the class by using reflection on its constructor parameters
 
 How does this affect controllers
