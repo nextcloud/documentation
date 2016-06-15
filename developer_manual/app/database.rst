@@ -177,7 +177,7 @@ Custom attribute to database column mapping
 
 By default each attribute will be mapped to a database column by a certain convention, e.g. **phoneNumber**
 will be mapped to the column **phone_number** and vice versa. Sometimes it is needed though to map attributes to
-different columns because of backwards compability. To define a custom
+different columns because of backwards compatibility. To define a custom
 mapping, simply override the **columnToProperty** and **propertyToColumn** methods of the entity in question:
 
 .. code-block:: php

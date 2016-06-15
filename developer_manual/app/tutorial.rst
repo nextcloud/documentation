@@ -110,7 +110,7 @@ This route calls the controller **OCA\\OwnNotes\\PageController->index()** metho
 
     }
 
-Since the route which returns the intial HTML has been taken care of, the controller which handles the AJAX requests for the notes needs to be set up. Create the following file: **ownnotes/lib/Controller/NoteController.php** with the following content:
+Since the route which returns the initial HTML has been taken care of, the controller which handles the AJAX requests for the notes needs to be set up. Create the following file: **ownnotes/lib/Controller/NoteController.php** with the following content:
 
 .. code-block:: php
 

@@ -120,7 +120,7 @@ Update a given share. Only one value can be updated per request.
 * PUT Arguments: publicUpload - (boolean) enable (true) /disable (false) public
   upload for public shares.
 * PUT Arguments: expireDate - (string) set a expire date for public link
-  shares. This argument expects a well formated date string, e.g. 'YYYY-MM-DD'
+  shares. This argument expects a well formatted date string, e.g. 'YYYY-MM-DD'
 
 .. note:: Only one of the update parameters can be specified at once.
 

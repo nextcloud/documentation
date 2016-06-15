@@ -30,7 +30,7 @@ The class for the above example would live in :file:`cron/sometask.php`. Try to 
 
     }
 
-Dont forget to configure the cron service on the server by executing::
+Don't forget to configure the cron service on the server by executing::
 
     sudo crontab -u http -e
 
