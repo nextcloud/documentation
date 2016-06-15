@@ -7,7 +7,7 @@ Obtaining the library
 
 The ownCloud Android library may be obtained from the following Github repository:
 
-`https://github.com/owncloud/android-library <https://github.com/owncloud/android-library>`_
+`https://github.com/nextcloud/android-library <https://github.com/nextcloud/android-library>`_
 
 Once obtained, this code should be compiled. The Github repository not only contains the library, but also a sample project, sample_client
 sample_client  properties/android/librerias
@@ -17,25 +17,35 @@ sample_client  properties/android/librerias
 Add the library to a project
 ----------------------------
 
-There are different methods to add an external library to a project, then we will describe one of them.
+There are different methods to add an external library to a project, we will describe two.
 
-#.  Compile the ownCloud Android Library
-
-
-
-#.  Define a dependency within your project.
+#.  Add the library as a gradle dependency via jitpack
 
 
 
-For that, access to
-Properties > Android > Library
-** **
-and click on add and select the ownCloud Android library
+#.  Add the library repo to your Android project as a git submodule
 
-|1000000000000270000003A317117674_png|
 
-Then all the public classes and methods of the library will be available for your own app.
+Add the library as a gradle dependency
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. |1000000000000270000003A317117674_png| image:: images/1000000000000270000003A317117674.png
-    :width: 10.795cm
-    :height: 16.106cm
+Simply open your::
+
+  build.gradle
+
+and add the dependency::
+
+  compile 'com.github.nextcloud:android-library:<version>'
+
+<version> refers to the exact version you would like to include in your application. This could be -SNAPSHOT for always using the latest code revision of the master branch. Alternatively you can also specifiy a version number which refers to a fixed release, e.g. 1.0.0. (compile 'com.github.nextcloud:android-library:1.0.0')
+
+
+Add the library project to your project as a git submodule
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Basically get the code and compile it having it integrated via a git submodule
+
+Go into your own apps directory on the command line and add the Nextcloud Android library as a submodule::
+  git submodule add https://github.com/nextcloud/android-library nextcloud-android-library
+
+Import/Open your app in Android Studio and you are done. All the public classes and methods of the library will be available for your own app.
