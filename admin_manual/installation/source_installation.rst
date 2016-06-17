@@ -13,9 +13,9 @@ server up-to-date.
 If there are no packages for your Linux distribution, or you prefer installing 
 from the source tarball, you can setup ownCloud from scratch using a classic 
 LAMP stack (Linux, Apache, MySQL/MariaDB, PHP). This document provides a 
-complete walk-through for installing ownCloud on Ubuntu 14.04 LTS Server with 
-Apache and MariaDB, using `the ownCloud .tar archive 
-<https://owncloud.org/install/>`_.
+complete walk-through for installing Nextcloud on Ubuntu 14.04 LTS Server with 
+Apache and MariaDB, using `the Nextcloud .tar archive 
+<https://nextcloud.com/install/>`_.
 
 * :ref:`prerequisites_label`
 * :ref:`ubuntu_installation_label`
@@ -146,43 +146,43 @@ Apache and MariaDB, by issuing the following commands in a terminal::
 
 Now download the archive of the latest ownCloud version:
 
-* Go to the `ownCloud Download Page <https://owncloud.org/install>`_.
-* Go to **Download ownCloud Server > Download > Archive file for 
+* Go to the `Nextcloud Download Page <https://nextcloud.com/install>`_.
+* Go to **Download Nextcloud Server > Download > Archive file for 
   server owners** and download either the tar.bz2 or .zip archive.
-* This downloads a file named owncloud-x.y.z.tar.bz2 or owncloud-x.y.z.zip 
+* This downloads a file named nextcloud-x.y.z.tar.bz2 or nextcloud-x.y.z.zip 
   (where x.y.z is the version number).
-* Download its corresponding checksum file, e.g. owncloud-x.y.z.tar.bz2.md5, 
-  or owncloud-x.y.z.tar.bz2.sha256. 
+* Download its corresponding checksum file, e.g. nextcloud-x.y.z.tar.bz2.md5, 
+  or nextcloud-x.y.z.tar.bz2.sha256. 
 * Verify the MD5 or SHA256 sum::
    
-    md5sum -c owncloud-x.y.z.tar.bz2.md5 < owncloud-x.y.z.tar.bz2
-    sha256sum -c owncloud-x.y.z.tar.bz2.sha256 < owncloud-x.y.z.tar.bz2
-    md5sum  -c owncloud-x.y.z.zip.md5 < owncloud-x.y.z.zip
-    sha256sum  -c owncloud-x.y.z.zip.sha256 < owncloud-x.y.z.zip
+    md5sum -c nextcloud-x.y.z.tar.bz2.md5 < nextcloud-x.y.z.tar.bz2
+    sha256sum -c nextcloud-x.y.z.tar.bz2.sha256 < nextcloud-x.y.z.tar.bz2
+    md5sum  -c nextcloud-x.y.z.zip.md5 < nextcloud-x.y.z.zip
+    sha256sum  -c nextcloud-x.y.z.zip.sha256 < nextcloud-x.y.z.zip
     
 * You may also verify the PGP signature::
     
-    wget https://download.owncloud.org/community/owncloud-x.y.z.tar.bz2.asc
+    wget https://download.nextcloud.com/server/releases/nextcloud-x.y.z.tar.bz2.asc
     wget https://owncloud.org/owncloud.asc
     gpg --import owncloud.asc
-    gpg --verify owncloud-x.y.z.tar.bz2.asc owncloud-x.y.z.tar.bz2
+    gpg --verify nextcloud-x.y.z.tar.bz2.asc nextcloud-x.y.z.tar.bz2
   
 * Now you can extract the archive contents. Run the appropriate unpacking 
   command for your archive type::
 
-    tar -xjf owncloud-x.y.z.tar.bz2
-    unzip owncloud-x.y.z.zip
+    tar -xjf nextcloud-x.y.z.tar.bz2
+    unzip nextcloud-x.y.z.zip
 
-* This unpacks to a single ``owncloud`` directory. Copy the ownCloud directory 
+* This unpacks to a single ``nextcloud`` directory. Copy the Nextcloud directory 
   to its final destination. When you are running the Apache HTTP server you may 
   safely install ownCloud in your Apache document root::
 
-    cp -r owncloud /path/to/webserver/document-root
+    cp -r nextcloud /path/to/webserver/document-root
 
   where ``/path/to/webserver/document-root`` is replaced by the 
   document root of your Web server::
     
-    cp -r owncloud /var/www
+    cp -r nextcloud /var/www
 
 On other HTTP servers it is recommended to install ownCloud outside of the 
 document root.
@@ -210,12 +210,12 @@ Apache Web Server Configuration
 
 On Debian, Ubuntu, and their derivatives, Apache installs with a useful 
 configuration so all you have to do is create a 
-:file:`/etc/apache2/sites-available/owncloud.conf` file with these lines in 
+:file:`/etc/apache2/sites-available/nextcloud.conf` file with these lines in 
 it, replacing the **Directory** and other filepaths with your own filepaths::
    
-  Alias /owncloud "/var/www/owncloud/"
+  Alias /nextcloud "/var/www/nextcloud/"
    
-  <Directory /var/www/owncloud/>
+  <Directory /var/www/nextcloud/>
     Options +FollowSymlinks
     AllowOverride All
 
@@ -223,14 +223,14 @@ it, replacing the **Directory** and other filepaths with your own filepaths::
     Dav off
    </IfModule>
 
-   SetEnv HOME /var/www/owncloud
-   SetEnv HTTP_HOME /var/www/owncloud
+   SetEnv HOME /var/www/nextcloud
+   SetEnv HTTP_HOME /var/www/nextcloud
 
   </Directory>
   
 Then create a symlink to :file:`/etc/apache2/sites-enabled`::
 
-  ln -s /etc/apache2/sites-available/owncloud.conf /etc/apache2/sites-enabled/owncloud.conf
+  ln -s /etc/apache2/sites-available/nextcloud.conf /etc/apache2/sites-enabled/nextcloud.conf
   
 Additional Apache Configurations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -316,7 +316,7 @@ command. To enable this, temporarily change the ownership on your ownCloud
 directories to your HTTP user (see :ref:`strong_perms_label` to learn how to 
 find your HTTP user)::
 
- chown -R www-data:www-data /var/www/owncloud/
+ chown -R www-data:www-data /var/www/nextcloud/
  
 .. note:: Admins of SELinux-enabled distributions may need to write new SELinux 
    rules to complete their ownCloud installation; see 
@@ -432,9 +432,9 @@ server in order for these changes to be applied.
 
 **.htaccess notes for Apache**
 
-ownCloud comes with its own ``owncloud/.htaccess`` file. Because ``php-fpm`` can't 
+Nextcloud comes with its own ``nextcloud/.htaccess`` file. Because ``php-fpm`` can't 
 read PHP settings in ``.htaccess`` these settings and permissions must be set
-in the ``owncloud/.user.ini`` file.
+in the ``nextcloud/.user.ini`` file.
 
 .. _other_HTTP_servers_label:
 
@@ -444,8 +444,8 @@ Other Web Servers
 :doc:`nginx_examples`
 
 
-`Other HTTP servers 
+`Other HTTP servers (ownCloud)
 <https://github.com/owncloud/documentation/wiki/Alternate-Web-server-notes>`_
 
-`Univention Corporate Server installation 
+`Univention Corporate Server installation (ownCloud)
 <https://github.com/owncloud/documentation/wiki/UCS-Installation>`_
