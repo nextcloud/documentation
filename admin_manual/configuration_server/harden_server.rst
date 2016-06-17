@@ -99,8 +99,8 @@ achieved by a setting such as the following in the Apache VirtualHosts config:
 ::
 
   <VirtualHost *:80>
-     ServerName cloud.owncloud.com
-     Redirect permanent / https://cloud.owncloud.com/
+     ServerName cloud.nextcloud.com
+     Redirect permanent / https://cloud.nextcloud.com/
   </VirtualHost>
 
 .. _enable-hsts-label:
@@ -118,7 +118,7 @@ This can be achieved by setting the following settings within the Apache
 VirtualHost file::
 
  <VirtualHost *:443>
-   ServerName cloud.owncloud.com
+   ServerName cloud.nextcloud.com
      <IfModule mod_headers.c>
        Header always set Strict-Transport-Security "max-age=15768000; includeSubDomains; preload"
      </IfModule>

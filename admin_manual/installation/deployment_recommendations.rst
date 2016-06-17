@@ -79,7 +79,7 @@ Authentication via an existing LDAP or Active Directory server.
    scale the DB.
 
 * Backup
-   Install owncloud, Nextcloud data directory and database on Btrfs filesystem. 
+   Install Nextcloud data directory and database on Btrfs filesystem. 
    Make regular snapshots at desired intervals for zero downtime backups. 
    Mount DB partitions with the "nodatacow" option to prevent fragmentation.
  

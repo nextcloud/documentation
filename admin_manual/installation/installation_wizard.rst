@@ -10,7 +10,7 @@ the last step to completing the installation is running the Installation
 Wizard. 
 This is just three steps:
 
-#. Point your Web browser to ``http://localhost/owncloud``
+#. Point your Web browser to ``http://localhost/nextcloud``
 #. Enter your desired administrator's username and password.
 #. Click **Finish Setup**.
 
@@ -146,7 +146,7 @@ Replace the ``ocpath`` variable with the path to your Nextcloud directory, and
 replace the ``htuser`` and ``htgroup`` variables with your HTTP user and group::
 
  #!/bin/bash
- ocpath='/var/www/owncloud'
+ ocpath='/var/www/nextcloud'
  htuser='www-data'
  htgroup='www-data'
  rootuser='root'

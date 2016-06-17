@@ -55,9 +55,9 @@ Example
 Multiple Domains Reverse SSL Proxy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you want to access your Nextcloud installation **http://domain.tld/owncloud**
+If you want to access your Nextcloud installation **http://domain.tld/nextcloud**
 via a multiple domains reverse SSL proxy
-**https://ssl-proxy.tld/domain.tld/owncloud** with the IP address **10.0.0.1**
+**https://ssl-proxy.tld/domain.tld/nextcloud** with the IP address **10.0.0.1**
 you can set the following parameters inside the :file:`config/config.php`.
 
 ::
@@ -67,7 +67,7 @@ you can set the following parameters inside the :file:`config/config.php`.
     "trusted_proxies"   => ['10.0.0.1'],
     "overwritehost"     => "ssl-proxy.tld",
     "overwriteprotocol" => "https",
-    "overwritewebroot"  => "/domain.tld/owncloud",
+    "overwritewebroot"  => "/domain.tld/nextcloud",
     "overwritecondaddr" => "^10\.0\.0\.1$",
   );
 

@@ -37,7 +37,7 @@ service (for example, easyCron_), you ensure that background jobs are executed
 regularly. To use this type of service, your server you must be able to access
 your server using the Internet. For example::
 
-  URL to call: http[s]://<domain-of-your-server>/owncloud/cron.php
+  URL to call: http[s]://<domain-of-your-server>/nextcloud/cron.php
 
 Cron
 ~~~~
@@ -47,14 +47,14 @@ Using the operating system cron feature is the preferred method for executing re
 To run a cron job on a \*nix system, every 15 minutes, under the default Web server user (often, ``www-data`` or ``wwwrun``), you must set up the following cron job to call the **cron.php** script::
 
   # crontab -u www-data -e
-  */15  *  *  *  * php -f /var/www/owncloud/cron.php
+  */15  *  *  *  * php -f /var/www/nextcloud/cron.php
 
 You can verify if the cron job has been added and scheduled by executing::
 
   # crontab -u www-data -l
-  */15  *  *  *  * php -f /var/www/owncloud/cron.php
+  */15  *  *  *  * php -f /var/www/nextcloud/cron.php
 
-.. note:: You have to replace the path ``/var/www/owncloud/cron.php`` with the path to your current Nextcloud installation.
+.. note:: You have to replace the path ``/var/www/nextcloud/cron.php`` with the path to your current Nextcloud installation.
 
 .. note:: On some systems it might be required to call **php-cli** instead of **php**.
 
