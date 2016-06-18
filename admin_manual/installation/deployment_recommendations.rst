@@ -1,10 +1,10 @@
-===================================
-ownCloud Deployment Recommendations
-===================================
+====================================
+Nextcloud Deployment Recommendations
+====================================
 
-What is the best way to install and maintain ownCloud? The answer to that is 
-*"it depends"* because every ownCloud customer has their own 
-particular needs and IT infrastructure. ownCloud and the LAMP stack are 
+What is the best way to install and maintain Nextcloud? The answer to that is 
+*"it depends"* because every Nextcloud customer has their own 
+particular needs and IT infrastructure. Nextcloud and the LAMP stack are 
 highly-configurable, so we will present three typical scenarios and make 
 best-practice recommendations for both software and hardware.
 
@@ -12,10 +12,10 @@ General Recommendations
 -----------------------
 
 .. note:: Whatever the size of your organization, always keep one thing in mind: 
-   the amount of data stored in ownCloud will only grow. Plan ahead.
+   the amount of data stored in Nextcloud will only grow. Plan ahead.
 
 Consider setting up a scale-out deployment, or using Federated Cloud Sharing to 
-keep individual ownCloud instances to a manageable size.
+keep individual Nextcloud instances to a manageable size.
 
 .. comment: Federating instances seems the best way to grow organically in 
    an enterprise. A lookup server to tie all the instances together under a 
@@ -79,7 +79,7 @@ Authentication via an existing LDAP or Active Directory server.
    scale the DB.
 
 * Backup
-   Install owncloud, ownCloud data directory and database on Btrfs filesystem. 
+   Install owncloud, Nextcloud data directory and database on Btrfs filesystem. 
    Make regular snapshots at desired intervals for zero downtime backups. 
    Mount DB partitions with the "nodatacow" option to prevent fragmentation.
  
@@ -97,7 +97,7 @@ Authentication via an existing LDAP or Active Directory server.
 
 * Authentication
    User authentication via one or several LDAP or Active Directory servers. (See
-   `User Authentication with LDAP`_ for information on configuring ownCloud to 
+   `User Authentication with LDAP`_ for information on configuring Nextcloud to 
    use LDAP and AD.)
 
 * Session Management
@@ -110,16 +110,16 @@ Authentication via an existing LDAP or Active Directory server.
    >> /etc/fstab``.
 
 * Memory Caching
-   A memcache speeds up server performance, and ownCloud supports four 
+   A memcache speeds up server performance, and Nextcloud supports four 
    memcaches; refer to `Configuring Memory Caching`_ for information on 
    selecting and configuring a memcache.
 
 * Storage
    Local storage.
 
-* ownCloud Edition
-   Standard Edition. (See `ownCloud Server or Enterprise Edition`_ for 
-   comparisons of the ownCloud editions.)
+* Nextcloud Edition
+   Standard Edition. (See `Nextcloud Server or Enterprise Edition`_ for 
+   comparisons of the Nextcloud editions.)
 
 Mid-sized Enterprises
 ---------------------
@@ -201,7 +201,7 @@ Authentication via an existing LDAP or Active Directory server.
 * Authentication
    User authentication via one or several LDAP or Active Directory servers. 
    (See `User Authentication with LDAP`_  for information on configuring 
-   ownCloud to use LDAP and AD.)
+   Nextcloud to use LDAP and AD.)
    
 * LDAP 
    Read-only slaves should be deployed on every application server for 
@@ -217,7 +217,7 @@ Authentication via an existing LDAP or Active Directory server.
    >> /etc/fstab``.
 
 * Memory Caching
-   A memcache speeds up server performance, and ownCloud supports four 
+   A memcache speeds up server performance, and Nextcloud supports four 
    memcaches; refer to `Configuring Memory Caching`_ for information on 
    selecting and configuring a memcache.
    
@@ -225,9 +225,9 @@ Authentication via an existing LDAP or Active Directory server.
    Use an off-the-shelf NFS solution, such as IBM Elastic Storage or RedHat 
    Ceph.
    
-* ownCloud Edition
-   Enterprise Edition. (See `ownCloud Server or Enterprise Edition`_ for 
-   comparisons of the ownCloud editions.)
+* Nextcloud Edition
+   Enterprise Edition. (See `Nextcloud Server or Enterprise Edition`_ for 
+   comparisons of the Nextcloud editions.)
 
 Large Enterprises and Service Providers
 ---------------------------------------
@@ -312,9 +312,9 @@ Authentication via an existing LDAP or Active Directory server, or SAML.
    Storage or RedHAT Ceph. Optionally, an S3 compatible object store can also 
    be used.
 
-* ownCloud Edition
-   Enterprise Edition. (See `ownCloud Server or Enterprise Edition`_ for 
-   comparisons of the ownCloud editions.)
+* Nextcloud Edition
+   Enterprise Edition. (See `Nextcloud Server or Enterprise Edition`_ for 
+   comparisons of the Nextcloud editions.)
    
 Hardware Considerations
 -----------------------
@@ -340,7 +340,7 @@ Pros:
 Cons:
 
 * Fewer high availability options.
-* The amount of data in ownCloud tends to continually grow. Eventually a 
+* The amount of data in Nextcloud tends to continually grow. Eventually a 
   single machine will not scale; I/O performance decreases and becomes a 
   bottleneck with multiple up- and downloads, even with solid-state drives.
 
@@ -382,7 +382,7 @@ A Single Master DB is Single Point of Failure, Does Not Scale
 
 When master fails another slave can become master. However, the increased 
 complexity carries some risks: Multi-master has the risk of split brain, and 
-deadlocks. ownCloud tries to solve the problem of deadlocks with high-level 
+deadlocks. Nextcloud tries to solve the problem of deadlocks with high-level 
 file locking.
 
 Software Considerations
@@ -392,7 +392,7 @@ Operating System
 ^^^^^^^^^^^^^^^^
 
 We are dependent on distributions that offer an easy way to install the various 
-components in up-to-date versions. ownCloud has a partnership with RedHat 
+components in up-to-date versions. Nextcloud has a partnership with RedHat 
 and SUSE for customers who need commercial support. Canonical, the parent 
 company of Ubuntu Linux, also offers enterprise service and support. Debian 
 and Ubuntu are free of cost, and include newer software packages. CentOS is the 
@@ -424,7 +424,7 @@ slave(s).
    each slave individually. Even then each migration might take several hours. 
    Make sure you have enough disk space. You have been warned.
 
-.. comment: Currently, ownCloud uses the utf8 character set with utf8_bin 
+.. comment: Currently, Nextcloud uses the utf8 character set with utf8_bin 
    collation on MySQL installations. As a result 4 byte UTF characters like 
    emojis cannot be used. This can be fixed by [moving to 
    utf8mb4/utf8mb4_bin](https://github.com/owncloud/core/issues/7030).
@@ -442,7 +442,7 @@ What about the other DBMS?
   deployments. It is not adequate for production systems.
 * Microsoft SQL Server is not a supported option.
 * Oracle DB is the de facto standard at large enterprises and is fully
-  supported with ownCloud Enterprise Edition only.
+  supported with Nextcloud Enterprise Edition only.
 
 File Storage
 ------------
@@ -463,7 +463,7 @@ Session Storage
 ---------------
 
 * Redis: provides persistence, nice graphical inspection tools available, 
-  supports ownCloud high-level file locking.
+  supports Nextcloud high-level file locking.
    
 * If Shibboleth is a requirement you must use Memcached, and it can also be 
   used to scale-out shibd session storage (see `Memcache StorageService`_).
@@ -489,7 +489,7 @@ References
 .. _Configuring Memory Caching:   
    https://doc.owncloud.org/server/9.0/admin_manual/configuration_server/ 
    caching_configuration.html
-.. _ownCloud Server or Enterprise Edition:  
+.. _Nextcloud Server or Enterprise Edition:  
    https://owncloud.com/owncloud-server-or-enterprise-edition/
 .. _F5 Big-IP: https://f5.com/products/big-ip/
 
