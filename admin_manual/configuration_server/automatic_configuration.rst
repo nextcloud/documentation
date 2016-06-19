@@ -1,16 +1,16 @@
 Automatic Configuration Setup
 =============================
 
-If you need to install ownCloud on multiple servers, you normally do not want
+If you need to install Nextcloud on multiple servers, you normally do not want
 to set up each instance separately as described in 
 :doc:`../configuration_database/linux_database_configuration`.
-For this reason, ownCloud provides an automatic configuration feature.
+For this reason, Nextcloud provides an automatic configuration feature.
 
 To take advantage of this feature, you must create a configuration file, called
-:file:`../owncloud/config/autoconfig.php`, and set the file parameters as required.
-You can specify any number of parameters in this file.  Any unspecified parameters appear on the "Finish setup" screen when you first launch ownCloud.
+:file:`../nextcloud/config/autoconfig.php`, and set the file parameters as required.
+You can specify any number of parameters in this file.  Any unspecified parameters appear on the "Finish setup" screen when you first launch Nextcloud.
 
-The :file:`../owncloud/config/autoconfig.php` is automatically removed after the initial configuration has been applied.
+The :file:`../nextcloud/config/autoconfig.php` is automatically removed after the initial configuration has been applied.
 
 Parameters
 ----------
@@ -37,7 +37,7 @@ Using the following parameter settings, the "Finish setup" screen requests datab
 
     <?php
     $AUTOCONFIG = array(
-      "directory"     => "/www/htdocs/owncloud/data",
+      "directory"     => "/www/htdocs/nextcloud/data",
     );
 
 
@@ -50,7 +50,7 @@ Using the following parameter settings, the "Finish setup" screen requests data 
     <?php
     $AUTOCONFIG = array(
       "dbtype"        => "sqlite",
-      "dbname"        => "owncloud",
+      "dbname"        => "nextcloud",
       "dbtableprefix" => "",
     );
 
@@ -63,7 +63,7 @@ Using the following parameter settings, the "Finish setup" screen requests data 
     <?php
     $AUTOCONFIG = array(
       "dbtype"        => "mysql",
-      "dbname"        => "owncloud",
+      "dbname"        => "nextcloud",
       "dbuser"        => "username",
       "dbpass"        => "password",
       "dbhost"        => "localhost",
@@ -83,7 +83,7 @@ Using the following parameter settings, the "Finish setup" screen requests data 
     <?php
     $AUTOCONFIG = array(
       "dbtype"        => "pgsql",
-      "dbname"        => "owncloud",
+      "dbname"        => "nextcloud",
       "dbuser"        => "username",
       "dbpass"        => "password",
       "dbhost"        => "localhost",
@@ -97,21 +97,21 @@ Using the following parameter settings, the "Finish setup" screen requests data 
 All Parameters
 ~~~~~~~~~~~~~~
 
-Using the following parameter settings, because all parameters are already configured in the file, the ownCloud installation skips the "Finish setup" screen.
+Using the following parameter settings, because all parameters are already configured in the file, the Nextcloud installation skips the "Finish setup" screen.
 
 ::
 
     <?php
     $AUTOCONFIG = array(
       "dbtype"        => "mysql",
-      "dbname"        => "owncloud",
+      "dbname"        => "nextcloud",
       "dbuser"        => "username",
       "dbpass"        => "password",
       "dbhost"        => "localhost",
       "dbtableprefix" => "",
       "adminlogin"    => "root",
       "adminpass"     => "root-password",
-      "directory"     => "/www/htdocs/owncloud/data",
+      "directory"     => "/www/htdocs/nextcloud/data",
     );
 
 .. note:: Keep in mind that the automatic configuration does not eliminate the need for 
