@@ -432,8 +432,8 @@ Other Web Servers
 :doc:`nginx_examples`
 
 
-`Other HTTP servers (ownCloud)
-<https://github.com/owncloud/documentation/wiki/Alternate-Web-server-notes>`_
+`Other HTTP servers (Nextcloud)
+<https://github.com/nextcloud/documentation/wiki/Alternate-Web-server-notes>`_
 
 `Univention Corporate Server installation (ownCloud)
 <https://github.com/owncloud/documentation/wiki/UCS-Installation>`_
