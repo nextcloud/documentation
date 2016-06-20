@@ -154,8 +154,8 @@ Now download the archive of the latest Nextcloud version:
 * You may also verify the PGP signature::
     
     wget https://download.nextcloud.com/server/releases/nextcloud-x.y.z.tar.bz2.asc
-    wget https://owncloud.org/owncloud.asc
-    gpg --import owncloud.asc
+    wget https://nextcloud.com/nextcloud.asc
+    gpg --import nextcloud.asc
     gpg --verify nextcloud-x.y.z.tar.bz2.asc nextcloud-x.y.z.tar.bz2
   
 * Now you can extract the archive contents. Run the appropriate unpacking 
@@ -432,8 +432,8 @@ Other Web Servers
 :doc:`nginx_examples`
 
 
-`Other HTTP servers (ownCloud)
-<https://github.com/owncloud/documentation/wiki/Alternate-Web-server-notes>`_
+`Other HTTP servers (Nextcloud)
+<https://github.com/nextcloud/documentation/wiki/Alternate-Web-server-notes>`_
 
 `Univention Corporate Server installation (ownCloud)
 <https://github.com/owncloud/documentation/wiki/UCS-Installation>`_
