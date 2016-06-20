@@ -2,11 +2,6 @@
 Manual Installation on Linux
 ============================
 
-Installing Nextcloud on Linux from our Open Build Service packages is the 
-preferred method (see :doc:`linux_installation`). These are maintained by 
-Nextcloud engineers, and you can use your package manager to keep your 
-Nextcloud server up-to-date.
-
 .. note:: Enterprise customers should refer to  
    :doc:`../enterprise_installation/linux_installation`
 
