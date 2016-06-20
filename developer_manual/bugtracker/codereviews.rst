@@ -55,8 +55,7 @@ Questions?
 
 Feel free to drop a line on the `mailing list`_ or join us on `IRC`_.
 
-.. _core repository: https://GitHub.com/owncloud/core
-.. _continuous integration server: https://ci.owncloud.org/
-.. _mailing list: https://mailman.owncloud.org/mailman/listinfo/devel
-.. _IRC: http://webchat.freenode.net/?channels=owncloud-dev
+.. server repository: https://GitHub.com/nextcloud/server
+.. _continuous integration server: https://ci.weasel.rocks/
+.. _IRC: http://webchat.freenode.net/?channels=nextcloud-dev
 .. _coding guidelines: ../general/codingguidelines

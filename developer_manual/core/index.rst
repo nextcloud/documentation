@@ -12,9 +12,9 @@
    externalapi
    ocs-share-api
 
-=================
+================
 Core Development
-=================
+================
 
 Intro
 -----

@@ -434,7 +434,7 @@ makes migration less painful) although we have yet to find a customer who uses a
 master-slave setup.
 
 .. comment: PostgreSQL may produce excessive amounts of dead tuples due to 
-   owncloud transactions preventing the execution of the autovacum process.
+   Nextcloud transactions preventing the execution of the autovacum process.
 
 What about the other DBMS?
 
@@ -482,19 +482,17 @@ References
 
 
 .. _Maintenance: 
-   https://doc.owncloud.org/server/9.0/admin_manual/maintenance/index.html
+   https://docs.nextcloud.org/server/9/admin_manual/maintenance/index.html
 .. _User Authentication with LDAP:
-   https://doc.owncloud.org/server/9.0/admin_manual/configuration_user/    
+   https://docs.nextcloud.org/server/9/admin_manual/configuration_user/
    user_auth_ldap.html
 .. _Configuring Memory Caching:   
-   https://doc.owncloud.org/server/9.0/admin_manual/configuration_server/ 
+   https://docs.nextcloud.org/server/9/admin_manual/configuration_server/
    caching_configuration.html
-.. _Nextcloud Server or Enterprise Edition:  
-   https://owncloud.com/owncloud-server-or-enterprise-edition/
 .. _F5 Big-IP: https://f5.com/products/big-ip/
 
 .. _Shibboleth Integration: 
-   https://doc.owncloud.org/server/9.0/admin_manual/enterprise_user_management/
+   https://docs.nextcloud.org/server/9/admin_manual/enterprise_user_management/
    user_auth_shibboleth.html
 .. _Memcache StorageService:  
    https://wiki.shibboleth.net/confluence/display/SHIB2/

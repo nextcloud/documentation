@@ -410,7 +410,7 @@ Solution
   #. Click through until you get to the certificate error in the browser status 
      line.
   #. View the cert, then from the Details tab, select Copy to File.
-  #. Save to the desktop with an arbitrary name, for example ``myOwnCloud.cer``.
+  #. Save to the desktop with an arbitrary name, for example ``myNextcloud.cer``.
   #. Start, Run, MMC.
   #. File, Add/Remove Snap-In.  
   #. Select Certificates, Click Add, My User Account, then Finish, then OK.
@@ -505,7 +505,6 @@ To get the properties of files in the root folder:
 .. _KB2123563: https://support.microsoft.com/kb/2123563
 .. _in your file manager: http://en.wikipedia.org/wiki/Webdav#WebDAV_client_applications
 .. _ownCloud sync clients: https://docs.nextcloud.org/desktop/2.1/
-.. _Mount ownCloud to a local folder without sync: https://nextcloud.com/use/webdav/
 .. _Android: https://github.com/nextcloud/android
 .. _WebDAV Navigator: http://seanashton.net/webdav/
 .. _Android devices: https://play.google.com/store/apps/details?id=com.schimera.webdavnavlite

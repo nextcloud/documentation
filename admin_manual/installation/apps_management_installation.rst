@@ -55,7 +55,7 @@ API. If they are then they will not be installed.
 
 .. note:: If you would like to create or add your own Nextcloud app, please 
    refer to the `developer manual
-   <https://doc.owncloud.org/server/9.0/developer_manual/app/index.html>`_.
+   <https://docs.nextcloud.org/server/9/developer_manual/app/index.html>`_.
 
 Using Custom App Directories
 ----------------------------

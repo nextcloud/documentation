@@ -97,8 +97,8 @@ Then a **mysql>** or **MariaDB [root]>** prompt will appear. Now enter the follo
 ::
 
   CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
-  CREATE DATABASE IF NOT EXISTS owncloud;
-  GRANT ALL PRIVILEGES ON owncloud.* TO 'username'@'localhost' IDENTIFIED BY 'password';
+  CREATE DATABASE IF NOT EXISTS nextcloud;
+  GRANT ALL PRIVILEGES ON nextcloud.* TO 'username'@'localhost' IDENTIFIED BY 'password';
 
 You can quit the prompt by entering::
 
@@ -115,7 +115,7 @@ this:
   <?php
 
     "dbtype"        => "mysql",
-    "dbname"        => "owncloud",
+    "dbname"        => "nextcloud",
     "dbuser"        => "username",
     "dbpassword"    => "password",
     "dbhost"        => "localhost",
@@ -153,7 +153,7 @@ Then a **template1=#** prompt will appear. Now enter the following lines and con
 ::
 
   CREATE USER username CREATEDB;
-  CREATE DATABASE owncloud OWNER username;
+  CREATE DATABASE nextcloud OWNER username;
 
 You can quit the prompt by entering::
 
@@ -170,7 +170,7 @@ this:
   <?php
 
     "dbtype"        => "pgsql",
-    "dbname"        => "owncloud",
+    "dbname"        => "nextcloud",
     "dbuser"        => "username",
     "dbpassword"    => "",
     "dbhost"        => "/var/run/postgresql",
@@ -192,7 +192,7 @@ Then a **postgres=#** prompt will appear. Now enter the following lines and conf
 ::
 
   CREATE USER username WITH PASSWORD 'password';
-  CREATE DATABASE owncloud TEMPLATE template0 ENCODING 'UNICODE';
+  CREATE DATABASE nextcloud TEMPLATE template0 ENCODING 'UNICODE';
   ALTER DATABASE owncloud OWNER TO username;
   GRANT ALL PRIVILEGES ON DATABASE owncloud TO username;
 
@@ -211,7 +211,7 @@ this:
   <?php
 
     "dbtype"        => "pgsql",
-    "dbname"        => "owncloud",
+    "dbname"        => "nextcloud",
     "dbuser"        => "username",
     "dbpassword"    => "password",
     "dbhost"        => "localhost",
@@ -273,12 +273,12 @@ the respective host name::
 Assuming the database server is installed on the same system you're running
 the command from, use::
 
-  psql -Uusername -downcloud
+  psql -Uusername -dnextcloud
 
 To acess a MySQL installation on a different machine, add the -h option with
 the respective host name::
 
-  psql -Uusername -downcloud -h HOSTNAME
+  psql -Uusername -dnextcloud -h HOSTNAME
 
 ::
 
@@ -303,8 +303,8 @@ Useful SQL commands
 
 **Show Nextcloud Tables in Database**::
 
-  MySQL     : USE owncloud; SHOW TABLES;
-  PostgreSQL: \c owncloud; \d
+  MySQL     : USE nextcloud; SHOW TABLES;
+  PostgreSQL: \c nextcloud; \d
 
 **Quit Database**::
 

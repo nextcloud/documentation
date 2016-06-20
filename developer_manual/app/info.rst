@@ -25,17 +25,17 @@ The :file:`appinfo/info.xml` contains metadata about the app:
 
 
       <documentation>
-          <user>https://doc.owncloud.org</user>
-          <admin>https://doc.owncloud.org</admin>
+          <user>https://doc.nextcloud.org</user>
+          <admin>https://doc.nextcloud.org</admin>
       </documentation>
 
       <category>tool</category>
 
-      <website>https://owncloud.org</website>
+      <website>https://nextcloud.org</website>
 
-      <bugs>https://github.com/owncloud/theapp/issues</bugs>
+      <bugs>https://github.com/nextcloud/theapp/issues</bugs>
 
-      <repository type="git">https://github.com/owncloud/theapp.git</repository>
+      <repository type="git">https://github.com/nextcloud/theapp.git</repository>
 
       <ocsid>1234</ocsid>
 
@@ -90,8 +90,6 @@ licence
 
 * AGPL 3 (recommended)
 * MIT
-
-If a proprietary/non AGPL compatible licence should be used, the `Nextcloud Enterprise Edition <https://owncloud.com/overview/enterprise-edition>`_ must be used.
 
 author
 ------

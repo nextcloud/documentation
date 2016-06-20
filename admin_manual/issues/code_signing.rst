@@ -170,7 +170,7 @@ In above error output it can be seen that:
 The solution is to upload the correct "index.php" and "version.php" files, and 
 delete the "test.php" file. For the calendar exception contact the developer of 
 the application. For other means on how to receive support please take a look at 
-https://owncloud.org/support/. After fixing these problems verify by clicking 
+https://nextcloud.com/support/. After fixing these problems verify by clicking
 "Rescan…".
 
 .. note:: When using a FTP client to upload those files make sure it is using the

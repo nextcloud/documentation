@@ -11,7 +11,7 @@ Please follow the steps on this page to set up your development environment.
 Set up Web server and database
 ==============================
 
-First `set up your Web server and database <https://doc.owncloud.org/server/9.0/admin_manual/installation/index.html>`_ (**Section**: Manual Installation - Prerequisites).
+First `set up your Web server and database <https://docs.nextcloud.org/server/9/admin_manual/installation/index.html>`_ (**Section**: Manual Installation - Prerequisites).
 
 .. TODO ON RELEASE: Update version number above on release
 
@@ -20,7 +20,7 @@ Get the source
 
 There are two ways to obtain Nextcloud sources: 
 
-* Using the `stable version <https://doc.owncloud.org/server/9.0/admin_manual/#installation>`_
+* Using the `stable version <https://docs.nextcloud.org/server/9/admin_manual/#installation>`_
 .. TODO ON RELEASE: Update version number above on release
 * Using the development version from `GitHub`_ which will be explained below.
 
@@ -48,7 +48,7 @@ Check out the code
 
 The following commands are using **/var/www** as the Web server's directory and **www-data** as user name and group.
 
-Install the `development tool <https://github.com/owncloud/ocdev/blob/master/README.rst#installation>`_
+Install the `development tool <https://github.com/nextcloud/ocdev/blob/master/README.rst#installation>`_
 
 After the development tool installation make the directory writable::
 
@@ -108,6 +108,6 @@ or to prune all merged branches, you would execute this::
 It is even easier if you create alias from these commands in case you want to avoid retyping those each time you need them.
 
 
-.. _GitHub: https://github.com/owncloud
+.. _GitHub: https://github.com/nextcloud
 .. _GitHub Help Page: https://help.github.com/
 

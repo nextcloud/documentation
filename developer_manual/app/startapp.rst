@@ -6,7 +6,7 @@ Create an app
 
 After :doc:`you've set up the development environment and installed the dev tool <../general/devenv>` change into the Nextcloud apps directory::
 
-    cd /var/www/owncloud/apps
+    cd /var/www/nextcloud/apps
 
 Then run::
 

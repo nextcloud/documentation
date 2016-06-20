@@ -35,7 +35,7 @@ minutes later the next 50, and so on.
 
 There are two ``occ`` commands to use for examining a table of users marked as 
 deleted, and then manually deleting them.  The ``occ`` command is in your 
-Nextcloud directory, for example ``/var/www/owncloud/occ``, and it must be run as 
+Nextcloud directory, for example ``/var/www/nextcloud/occ``, and it must be run as
 your HTTP user. To learn more about ``occ``, see 
 :doc:`../configuration_server/occ_command`.
 

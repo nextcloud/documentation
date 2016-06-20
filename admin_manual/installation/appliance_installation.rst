@@ -62,16 +62,12 @@ There are a number of unofficial pre-made virtual machine-based appliances:
 
 -  `Tech and Me - Nextcloud VM on Ubuntu 16.04 with PHP 7, MySQL, and Apache`_, fully configured 
    environment.
--  `SUSE Studio, Nextcloud on openSuSE`_, which runs directly from an USB stick.
 -  `Amahi home server`_
 
 .. _on Github: https://github.com/Nextcloud/vm
 .. _VirtualBox: https://www.virtualbox.org
-.. _Nextcloud server installation page: https://owncloud.org/install/#instructions-server 
+.. _Nextcloud server installation page: https://nextcloud.com/install/#instructions-server
 .. _Amahi home server: https://wiki.amahi.org/index.php/OwnCloud
 .. _Tech and Me - Nextcloud VM on Ubuntu 16.04 with PHP 7, MySQL, and Apache: https://www.techandme.se/pre-configured-owncloud-installaton/
 .. _Nextcloud 7 on Raspberry Pi (Arch Linux) using Lighttpd: http://eiosifidis.blogspot.de/2014/07/install-owncloud-7-on-raspberry-pi-arch.html
-.. _OpenWrt Guide: http://wiki.openwrt.org/doc/howto/owncloud
-.. _SUSE Studio, Nextcloud on openSuSE: http://susestudio.com/a/TadMax/owncloud-in-a-box
-.. _QNAP Guide: http://wiki.qnap.com/wiki/Category:OwnCloud
 .. _Synology Package: http://www.cphub.net/index.php?id=40&pid=213

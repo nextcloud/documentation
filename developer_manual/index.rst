@@ -1,28 +1,27 @@
 .. _contents:
 
-================================
+=================================
 Nextcloud Developer Documentation
-================================
+=================================
 
 +-------------------------+-------------------------+-----------------------------+
 |:doc:`app/index`         |:doc:`core/index`        |`Documentation`_             |
-| Develop apps for        | Develop on the Nextcloud | Create and enhance          |
-| Nextcloud and publish on | internals               | documentation               |
-| the `Nextcloud appstore`_|                         |                             |
+| Develop apps for        | Develop on the Nextcloud | Create and enhance         |
+| Nextcloud and publish on | internals               | documentation              |
+| the `Nextcloud appstore`_|                         |                            |
 +-------------------------+-------------------------+-----------------------------+
-|:doc:`testing/index`     |:doc:`bugtracker/index`  |`Translation`_               |
-| Help us to test         | Report, triage or fix   | Translate Nextcloud into     |
-| Nextcloud by joining the | bugs to improve quality | your language               |
+|:doc:`testing/index`     |:doc:`bugtracker/index`  |:doc:`android_library/index` |
+| Help us to test         | Report, triage or fix   | Integrating with Android    |
+| Nextcloud by joining the | bugs to improve quality                              |
 | testing team            |                         |                             |
 +-------------------------+-------------------------+-----------------------------+
-|:doc:`commun/index`      | :doc:`ios_library/index`|:doc:`android_library/index` |      
-| Help on IRC, the        |  Integration with iOS   | Integrating with Android    |
+|:doc:`commun/index`      |                         |                             |
+| Help on IRC, the        |                         |                             |
 | mailinglist and forum   |                         |                             |
 +-------------------------+-------------------------+-----------------------------+
 
 .. _Nextcloud appstore: https://apps.owncloud.com/
-.. _Translation: https://www.transifex.com/projects/p/owncloud/
-.. _Documentation: https://github.com/owncloud/documentation#owncloud-documentation
+.. _Documentation: https://github.com/nextcloud/documentation#nextcloud-documentation
 
 Table of Contents
 =================
@@ -33,9 +32,7 @@ Table of Contents
     general/index
     app/index
     android_library/index
-    ios_library/index
     core/index
-    testing/index
     bugtracker/index
     commun/index
     

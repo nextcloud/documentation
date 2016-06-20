@@ -39,7 +39,7 @@ Authentication & Basics
 ~~~~~~~~~~~~~~~~~~~~~~~
 Because REST is stateless you have to send user and password each time you access the API. Therefore running Nextcloud **with SSL is highly recommended** otherwise **everyone in your network can log your credentials**::
 
-    https://user:password@yourowncloud.com/ocs/v1.php/apps/yourapp
+    https://user:password@yournextcloud.com/ocs/v1.php/apps/yourapp
 
 
 Output

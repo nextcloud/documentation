@@ -31,7 +31,7 @@ SQLite
 ^^^^^^
 ::
 
-    sqlite3 data/owncloud.db .dump > nextcloud-sqlbkp_`date +"%Y%m%d"`.bak
+    sqlite3 data/nextcloud.db .dump > nextcloud-sqlbkp_`date +"%Y%m%d"`.bak
 
 PostgreSQL
 ^^^^^^^^^^

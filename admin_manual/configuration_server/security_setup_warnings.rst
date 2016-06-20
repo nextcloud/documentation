@@ -87,9 +87,6 @@ Your Web server is not yet set up properly to allow file synchronization
 "Your web server is not yet set up properly to allow file synchronization because
 the WebDAV interface seems to be broken."
 
-At the Nextcloud community forums a larger `FAQ <https://forum.owncloud.org/viewtopic.php?f=17&t=7536>`_
-is maintained containing various information and debugging hints.
-
 Outdated NSS / OpenSSL version
 ------------------------------
 

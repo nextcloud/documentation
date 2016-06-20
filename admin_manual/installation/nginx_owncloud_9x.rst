@@ -52,7 +52,7 @@ your nginx installation.
       add_header X-Permitted-Cross-Domain-Policies none;
   
       # Path to the root of your installation
-      root /var/www/owncloud/;
+      root /var/www/nextcloud/;
   
       location = /robots.txt {
           allow all;
@@ -197,19 +197,19 @@ your nginx installation.
   
       # The following 2 rules are only needed for the user_webfinger app.
       # Uncomment it if you're planning to use this app.
-      # rewrite ^/.well-known/host-meta /owncloud/public.php?service=host-meta 
+      # rewrite ^/.well-known/host-meta /nextcloud/public.php?service=host-meta
       # last;
       #rewrite ^/.well-known/host-meta.json 
-      # /owncloud/public.php?service=host-meta-json last;
+      # /nextcloud/public.php?service=host-meta-json last;
   
       location = /.well-known/carddav { return 301 
-        $scheme://$host/owncloud/remote.php/dav; }
+        $scheme://$host/nextcloud/remote.php/dav; }
       location = /.well-known/caldav { return 301 
-        $scheme://$host/owncloud/remote.php/dav; }
+        $scheme://$host/nextcloud/remote.php/dav; }
   
       location /.well-known/acme-challenge { }
   
-      location ^~ /owncloud {
+      location ^~ /nextcloud {
   
           # set max upload size
           client_max_body_size 512M;
@@ -222,23 +222,23 @@ your nginx installation.
           # This module is currently not supported.
           #pagespeed off;
   
-          error_page 403 /owncloud/core/templates/403.php;
-          error_page 404 /owncloud/core/templates/404.php;
+          error_page 403 /nextcloud/core/templates/403.php;
+          error_page 404 /nextcloud/core/templates/404.php;
   
-          location /owncloud {
-              rewrite ^ /owncloud/index.php$uri;
+          location /nextcloud {
+              rewrite ^ /nextcloud/index.php$uri;
           }
   
           location ~ 
-          ^/owncloud/(?:build|tests|config|lib|3rdparty|templates|data)/ {
+          ^/nextcloud/(?:build|tests|config|lib|3rdparty|templates|data)/ {
               deny all;
           }
-          location ~ ^/owncloud/(?:\.|autotest|occ|issue|indie|db_|console) {
+          location ~ ^/nextcloud/(?:\.|autotest|occ|issue|indie|db_|console) {
               deny all;
           }
   
           location ~ 
-       ^/owncloud/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|
+       ^/nextcloud/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|
        updater/.+|ocs-provider/.+|core/templates/40[34])\.php(?:$|/) {
               include fastcgi_params;
               fastcgi_split_path_info ^(.+\.php)(/.+)$;
@@ -253,7 +253,7 @@ your nginx installation.
               fastcgi_request_buffering off;
           }
   
-          location ~ ^/owncloud/(?:updater|ocs-provider)(?:$|/) {
+          location ~ ^/nextcloud/(?:updater|ocs-provider)(?:$|/) {
               try_files $uri/ =404;
               index index.php;
           }
@@ -261,7 +261,7 @@ your nginx installation.
           # Adding the cache control header for js and css files
           # Make sure it is BELOW the PHP block
           location ~* \.(?:css|js)$ {
-              try_files $uri /owncloud/index.php$uri$is_args$args;
+              try_files $uri /nextcloud/index.php$uri$is_args$args;
               add_header Cache-Control "public, max-age=7200";
               # Add headers to serve security related headers  (It is intended 
               # to have those duplicated to the ones above)
@@ -280,7 +280,7 @@ your nginx installation.
           }
   
           location ~* \.(?:svg|gif|png|html|ttf|woff|ico|jpg|jpeg)$ {
-              try_files $uri /owncloud/index.php$uri$is_args$args;
+              try_files $uri /nextcloud/index.php$uri$is_args$args;
               # Optional: Don't log access to other assets
               access_log off;
           }

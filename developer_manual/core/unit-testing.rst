@@ -44,7 +44,7 @@ Then you can simply run the created test with phpunit.
 
 An example for a simple test would be:
 
-:file:`/srv/http/owncloud/apps/myapp/tests/testaddtwo.php`
+:file:`/srv/http/nextcloud/apps/myapp/tests/testaddtwo.php`
 
 .. code-block:: php
 
@@ -66,7 +66,7 @@ An example for a simple test would be:
     }
 
 
-:file:`/srv/http/owncloud/apps/myapp/lib/testme.php`
+:file:`/srv/http/nextcloud/apps/myapp/lib/testme.php`
 
 .. code-block:: php
 
@@ -79,7 +79,7 @@ An example for a simple test would be:
         }
     }
 
-In :file:`/srv/http/owncloud/apps/myapp/` you run the test with::
+In :file:`/srv/http/nextcloud/apps/myapp/` you run the test with::
 
   phpunit tests/testaddtwo.php
 
@@ -92,12 +92,12 @@ so the next test can run without side effects, like remaining files and entries 
 For more resources on PHPUnit visit: http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html
 
 Bootstrapping Nextcloud
-~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
 If you use Nextcloud functions or classes in your code, you'll need to make them available to your test by bootstrapping Nextcloud.
 
 To do this, you'll need to provide the ``--bootstrap`` argument when running PHPUnit
 
-:file:`/srv/http/owncloud`::
+:file:`/srv/http/nextcloud`::
 
   phpunit --bootstrap tests/bootstrap.php apps/myapp/tests/testsuite.php
 
@@ -108,14 +108,14 @@ adjust your php.ini and file rights.
 
   open_basedir = none
 
-:file:`/srv/http/owncloud`::
+:file:`/srv/http/nextcloud`::
 
   su -c "chmod a+r config/config.php"
   su -c "chmod a+rx data/"
   su -c "chmod a+w data/owncloud.log"
 
 Running unit tests for the Nextcloud core project
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The core project provides a script that runs all the core unit tests using different database backends like sqlite, mysql, pgsql, oci (for Oracle)::
 
   ./autotest.sh

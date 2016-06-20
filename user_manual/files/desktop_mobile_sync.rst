@@ -26,5 +26,5 @@ Visit your Personal page in your Nextcloud Web interface to find download links
 for Android and iOS mobile sync clients. Or, visit the `Nextcloud download page 
 <https://nextcloud.com/install/>`_.
 
-Visit the `Nextcloud documentation page <https://doc.owncloud.org/>`_ to read 
+Visit the `Nextcloud documentation page <https://docs.nextcloud.org/>`_ to read
 the mobile apps user manuals.

@@ -1,10 +1,9 @@
 Theming Nextcloud
-================
+=================
 Themes can be used to customize the look and feel of Nextcloud.
 Themes can relate to the following topics of owncloud:
 
 * Theming the web-frontend
-* Theming the owncloud Desktop client
 
 This documentation contains only the Web-frontend adaptations so far.
 
@@ -22,7 +21,7 @@ With this facts you can easily determine, where the following object-related att
 The next thing you should do, before starting any changes is:
 Make a backup of your current theme(s) e.g.:
 
-* cd …/owncloud/themes
+* cd …/nextcloud/themes
 * cp -r example mytheme
 
 
@@ -45,7 +44,7 @@ The folder structure of a theme is exactly the same as the main Nextcloud
 structure. You can override js files, images, translations and templates with
 own versions. CSS files are loaded additionally to the default files so you can
 override CSS properties. CSS files and the standard pictures that are used reside
-for example in /owncloud/core/ and /owncloud/settings/ in these sub folders:
+for example in /nextcloud/core/ and /nextcloud/settings/ in these sub folders:
 
 * css = style sheets
 * js = JavaScripts
@@ -93,8 +92,8 @@ If you want to do a quick exchange like (1) it's important to know the size of t
 
 The (main) pictures, that can be found inside Nextcloud standard theming are the following:
 
-* The logo at the login-page above the credentials-box: 	        …/owncloud/themes/default/core/img/logo.svg
-* The logo, that's always in the left upper corner after login:   …/owncloud/themes/default/core/img/logo-wide.svg
+* The logo at the login-page above the credentials-box: 	        …/nextcloud/themes/default/core/img/logo.svg
+* The logo, that's always in the left upper corner after login:   …/nextcloud/themes/default/core/img/logo-wide.svg
 
 Inserting your new logo
 -----------------------
@@ -106,13 +105,13 @@ The app icons can also be overwritten in a theme. To change for example the app 
 
 Changing favicon
 ----------------
-For compatibility with older browsers, favicon (the image that appears in your browser tab) uses .../owncloud/core/img/favicon.ico.
+For compatibility with older browsers, favicon (the image that appears in your browser tab) uses .../nextcloud/core/img/favicon.ico.
 
 To customize favicon for MyTheme:
 
 * Create a version of your logo in .ico format
-* Store your custom favicon as .../owncloud/themes/MyTheme/core/img/favicon.ico
-* Include .../owncloud/themes/MyTheme/core/img/favicon.svg and favicon.png to cover any future updates to favicon handling.
+* Store your custom favicon as .../nextcloud/themes/MyTheme/core/img/favicon.ico
+* Include .../nextcloud/themes/MyTheme/core/img/favicon.svg and favicon.png to cover any future updates to favicon handling.
 
 Changing the default colours
 ----------------------------
@@ -201,7 +200,7 @@ This can be done with a file named ``defaults.php`` within the root of the theme
 
   class OC_Theme {
     public function getAndroidClientUrl() {
-      return 'https://play.google.com/store/apps/details?id=com.owncloud.android';
+      return 'https://play.google.com/store/apps/details?id=com.nextcloud.client';
     }
 
     public function getName() {
@@ -234,7 +233,7 @@ One exception is the method ``buildDocLinkToKey`` which gets passed in a key as 
 .. code-block:: php
 
   public function buildDocLinkToKey($key) {
-    return $this->getDocBaseUrl() . '/server/9.0/go.php?to=' . $key;
+    return $this->getDocBaseUrl() . '/server/9/go.php?to=' . $key;
   }
 
 

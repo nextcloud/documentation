@@ -5,7 +5,7 @@ OCS Share API
 The OCS Share API allows you to access the sharing API from outside over
 pre-defined OCS calls.
 
-The base URL for all calls to the share API is: *<owncloud_base_url>/ocs/v1.php/apps/files_sharing/api/v1*
+The base URL for all calls to the share API is: *<nextcloud_base_url>/ocs/v1.php/apps/files_sharing/api/v1*
 
 Local Shares
 ============
@@ -136,7 +136,7 @@ Federated Cloud Shares
 ======================
 
 Both the sending and the receiving instance need to have federated cloud sharing
-enabled and configured. See `Configuring Federated Cloud Sharing <https://doc.owncloud.org/server/9.0/admin_manual/configuration_files/federated_cloud_sharing_configuration.html>`_.
+enabled and configured. See `Configuring Federated Cloud Sharing <https://docs.nextcloud.org/server/9/admin_manual/configuration_files/federated_cloud_sharing_configuration.html>`_.
 
 Create a new Federated Cloud Share
 ----------------------------------

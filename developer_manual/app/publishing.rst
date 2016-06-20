@@ -24,7 +24,7 @@ With each level come requirements and a position in the store.
 
 Official
 ^^^^^^^^
-Official apps are developed by and within the Nextcloud community and its `Github <https://github.com/owncloud>`_ repository and offer functionality central to Nextcloud. They are ready for serious use and can be considered a part of Nextcloud.
+Official apps are developed by and within the Nextcloud community and its `Github <https://github.com/nextcloud>`_ repository and offer functionality central to Nextcloud. They are ready for serious use and can be considered a part of Nextcloud.
 
 Requirements:
 
@@ -41,8 +41,7 @@ App store:
 
 * available in Apps page in separate category
 * sorted first in all overviews, 'Official' tag
-* shown as featured, on owncloud.org etc
-* major releases optionally featured on owncloud.org and sent to owncloud-announce list
+* shown as featured, on nextcloud.com etc
 * new versions/updates approved by at least one other person
 
 note:

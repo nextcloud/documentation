@@ -10,8 +10,7 @@ refer to our community support channels:
 .. note:: The Nextcloud forums have a `FAQ page`_ where each topic corresponds 
    to typical mistakes or frequently occurring issues
 
-* `The Nextcloud User mailing list`_
-*  The Nextcloud IRC chat channel ``irc://#owncloud@freenode.net`` on 
+*  The Nextcloud IRC chat channel ``irc://#nextcloud@freenode.net`` on
    freenode.net, also accessible via `webchat`_
 
 Please understand that all these channels essentially consist of users like you 
@@ -20,7 +19,7 @@ back for the help you get. This is the only way to keep a community like
 Nextcloud healthy and sustainable!
 
 If you are using Nextcloud in a business or otherwise large scale deployment, 
-note that Nextcloud Inc. offers the `Enterprise Edition`_ with commercial 
+note that Nextcloud GmbH. offers the `Enterprise Edition`_ with commercial
 support options.
 
 Bugs
@@ -35,14 +34,10 @@ If you can't find a solution, please use our `bugtracker`_. You can generate a
 configuration report with the :ref:`occ config command 
 <config_commands_label>`, with passwords automatically obscured.
 
-.. _the Nextcloud Forums: https://forum.owncloud.org
-.. _FAQ page: https://forum.owncloud.org/viewforum.php?f=17
-.. _the Nextcloud User mailing list: 
-   https://mailman.owncloud.org/mailman/listinfo/user
-.. _webchat: http://webchat.freenode.net/?channels=owncloud
-.. _Enterprise Edition: https://owncloud.com/lp/community-or-enterprise/
-.. _bugtracker: 
-   https://doc.owncloud.org/server/9.1/developer_manual/bugtracker/index.html
+.. _the Nextcloud Forums: https://help.nextcloud.com
+.. _webchat: http://webchat.freenode.net/?channels=nextcloud
+.. _bugtracker:
+   https://docs.nextcloud.org/server/9/developer_manual/bugtracker/index.html
 .. TODO ON RELEASE: Update version number above on release
 
 General Troubleshooting
@@ -80,7 +75,7 @@ usually access them by pressing F12. For Firefox we recommend to installing
 the `Firebug extension <https://getfirebug.com/>`_.
 
 .. note:: The logfile of Nextcloud is located in the data directory 
-   ``owncloud/data/owncloud.log``.
+   ``nextcloud/data/owncloud.log``.
 
 .. _label-phpinfo:
    
@@ -120,7 +115,7 @@ Disregarding this can lead to unwanted behaviours like:
 If you need to directly upload files from the same server please use a WebDAV 
 command line client like ``cadaver`` to upload files to the WebDAV interface at:
 
-``https://example.com/owncloud/remote.php/dav``
+``https://example.com/nextcloud/remote.php/dav``
 
 Common problems / error messages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -153,7 +148,7 @@ Some common problems / error messages found in your logfiles as described above:
   or ``mod_proxy_fcgi`` are not passing the needed authentication headers to
   PHP and so the login to Nextcloud via WebDAV, CalDAV and CardDAV clients is
   failing. Information on how to correctly configure your environment can be
-  found at the `forums <https://forum.owncloud.org/viewtopic.php?f=17&t=30646>`_.
+  found at the `ownCloud forums <https://forum.owncloud.org/viewtopic.php?f=17&t=30646>`_.
 
 Troubleshooting Web server and PHP problems
 -------------------------------------------
@@ -174,7 +169,7 @@ Web server and Nextcloud itself.
   to store the logfile in the ``error_log`` directive. After those changes you
   need to restart your Web server.
 * The logfile of Nextcloud is located in the data directory 
-  ``/var/www/owncloud/data/owncloud.log``.
+  ``/var/www/nextcloud/data/owncloud.log``.
 
 Web server and PHP modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -236,7 +231,7 @@ See:
   <http://sabre.io/dav/clients/finder/>`_ 
   (Describes problems with Finder on various Web servers)
 
-There is also a well maintained FAQ thread available at the `Nextcloud Forums 
+There is also a well maintained FAQ thread available at the `ownCloud Forums
 <https://forum.owncloud.org/viewtopic.php?f=17&t=7536>`_
 which contains various additional information about WebDAV problems.
 
@@ -263,9 +258,9 @@ running Nextcloud at the document root of your Web server the correct URL is:
 
 ``https://example.com/remote.php/dav``
 
-and if running in a subfolder like ``owncloud``:
+and if running in a subfolder like ``nextcloud``:
 
-``https://example.com/owncloud/remote.php/dav``
+``https://example.com/nextcloud/remote.php/dav``
 
 For the first case the :file:`.htaccess` file shipped with Nextcloud should do
 this work for your when running Apache. You only need to make sure that your
@@ -277,16 +272,15 @@ If your Nextcloud instance is installed in a subfolder called ``owncloud`` and
 you're running Apache create or edit the :file:`.htaccess` file within the
 document root of your Web server and add the following lines::
 
-    Redirect 301 /.well-known/carddav /owncloud/remote.php/dav
-    Redirect 301 /.well-known/caldav /owncloud/remote.php/dav
-
+    Redirect 301 /.well-known/carddav /nextcloud/remote.php/dav
+nextcloud
 Now change the URL in the client settings to just use:
 
 ``https://example.com``
 
 instead of e.g.
 
-``https://example.com/owncloud/remote.php/dav/principals/username``.
+``https://example.com/nextcloud/remote.php/dav/principals/username``.
 
 There are also several techniques to remedy this, which are described extensively at 
 the `Sabre DAV website <http://sabre.io/dav/service-discovery/>`_.

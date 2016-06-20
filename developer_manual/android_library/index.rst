@@ -14,17 +14,15 @@ Android Nextcloud Client development
 -----------------------------------
 
 If you are interested in working on the Nextcloud android client, you can find
-the source code `in github <https://github.com/owncloud/android/>`_. The
+the source code `in github <https://github.com/nextcloud/android/>`_. The
 setup and process of contribution is
-`documented here <https://github.com/owncloud/android/blob/master/SETUP.md>`_.
+`documented here <https://github.com/nextcloud/android/blob/master/SETUP.md>`_.
 
-You might want to start with doing one or two `junior jobs <https://github.com/owncloud/android/issues?q=is%3Aopen+is%3Aissue+label%3A%22Junior+Job%22>`_
+You might want to start with doing one or two `junior jobs <https://github.com/nextcloud/android/issues?q=is%3Aopen+is%3Aissue+label%3A%22Junior+Job%22>`_
 to get into the code and note our :doc:`../general/index`
 
-Note that contribution to the Android client require signing the `Nextcloud Contributor Agreement <https://owncloud.org/contribute/agreement/>`_.
-
 Nextcloud Android Library
-------------------------
+-------------------------
 
 This document will describe how to the use Nextcloud Android Library.  The
 Nextcloud Android Library allows a developer to communicate with any Nextcloud
