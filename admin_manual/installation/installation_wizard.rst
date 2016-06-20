@@ -120,12 +120,12 @@ is not whitelisted the following error appears:
 Setting Strong Directory Permissions
 ------------------------------------
 
-For hardened security we recommend setting the permissions on your Nextcloud 
-directories as strictly as possible, and for proper server operations. This 
-should be done immediately after the initial installation and before running the 
-setup. Your HTTP user must own the ``config/``, ``data/`` and ``apps/`` directories 
-so that you can configure Nextcloud, create, modify and delete your data files, 
-and install apps via the Nextcloud Web interface. 
+For hardened security we recommend setting the permissions on your Nextcloud
+directories as strictly as possible. This should be done immediately after the
+initial installation and before running the setup. Your HTTP user must own the
+``config/``, ``data/`` and ``apps/`` directories so that you can configure
+Nextcloud, create, modify and delete your data files, and install apps via the
+Nextcloud Web interface.
 
 You can find your HTTP user in your HTTP server configuration files. Or you can 
 use :ref:`label-phpinfo` (Look for the **User/Group** line).
