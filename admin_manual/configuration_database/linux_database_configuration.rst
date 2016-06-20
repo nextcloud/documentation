@@ -195,9 +195,9 @@ Then a **postgres=#** prompt will appear. Now enter the following lines and conf
 ::
 
   CREATE USER username WITH PASSWORD 'password';
-  CREATE DATABASE owncloud TEMPLATE template0 ENCODING 'UNICODE';
-  ALTER DATABASE owncloud OWNER TO username;
-  GRANT ALL PRIVILEGES ON DATABASE owncloud TO username;
+  CREATE DATABASE nextcloud TEMPLATE template0 ENCODING 'UNICODE';
+  ALTER DATABASE nextcloud OWNER TO username;
+  GRANT ALL PRIVILEGES ON DATABASE nextcloud TO username;
 
 You can quit the prompt by entering::
 
