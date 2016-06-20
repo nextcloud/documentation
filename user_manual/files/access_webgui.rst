@@ -124,15 +124,6 @@ Public link shares are marked with a chain link. Un-shared folders are blank.
 .. figure:: ../images/files_page-5.png
    :alt: Share status icons.
 
-If your Nextcloud server is the Enterprise edition, you may also have access 
-to Sharepoint and Windows Network Drive file shares. These have special status 
-icons. An icon with a red plugin and background means you have to enter a login 
-to get access to the share.
-
-.. figure:: ../images/users-overlays-win-net-drive.png
-
-.. figure:: ../images/users-overlays-sharepoint.png
-
 Creating or Uploading Files and Directories
 -------------------------------------------
 
