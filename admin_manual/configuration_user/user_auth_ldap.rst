@@ -88,7 +88,7 @@ User DN:
 
   Example:
 
-  * *uid=owncloudsystemuser,cn=sysusers,dc=my-company,dc=com*
+  * *uid=nextcloudsystemuser,cn=sysusers,dc=my-company,dc=com*
 
 Password:
   The password for the user given above. Empty for anonymous access.
@@ -136,7 +136,7 @@ Edit raw filter instead:
   Clicking on this text toggles the filter mode and you can enter the raw LDAP 
   filter directly. Example::
 
-   (&(objectClass=inetOrgPerson)(memberOf=cn=owncloudusers,ou=groups,
+   (&(objectClass=inetOrgPerson)(memberOf=cn=nextcloudusers,ou=groups,
    dc=example,dc=com))
 
 x users found:
@@ -184,12 +184,12 @@ Edit raw filter instead:
 
   * only username:: 
 
-     (&(objectClass=inetOrgPerson)(memberOf=cn=owncloudusers,ou=groups,
+     (&(objectClass=inetOrgPerson)(memberOf=cn=nextcloudusers,ou=groups,
      dc=example,dc=com)(uid=%uid)
   
   * username or email address::
   
-     ((&(objectClass=inetOrgPerson)(memberOf=cn=owncloudusers,ou=groups,
+     ((&(objectClass=inetOrgPerson)(memberOf=cn=nextcloudusers,ou=groups,
      dc=example,dc=com)(|(uid=%uid)(mail=%uid)))
 
 Group Filter
@@ -404,8 +404,8 @@ Email Field:
   * Example: *mail*
 
 User Home Folder Naming Rule:
-  By default, the ownCloud server creates the user directory in your ownCloud 
-  data directory and gives it the ownCloud username, .e.g ``/var/www/owncloud/data/alice``. You may want to override this setting and name it after an LDAP
+  By default, the Nextcloud server creates the user directory in your Nextcloud 
+  data directory and gives it the Nextcloud username, .e.g ``/var/www/nextcloud/data/alice``. You may want to override this setting and name it after an LDAP
   attribute value. The attribute can also return an absolute path, e.g. 
   ``/mnt/storage43/alice``. Leave it empty for default behavior.
 
