@@ -174,7 +174,7 @@ specified. Valid values for the 'os' attribute are as returned by the php functi
 lib
 ---
 Defines a required php extension with required minimum and/or maximum version. The names for the libraries have to match the result as returned by the php function  `get_loaded_extensions <http://php.net/manual/en/function.get-loaded-extensions.php>`_.
-The explicit version of an extension is read from `phpversion <http://php.net/manual/de/function.phpversion.php>`_ - with some exception as to be read up in the `code base <https://github.com/owncloud/core/blob/master/lib/private/app/platformrepository.php#L45>`_
+The explicit version of an extension is read from `phpversion <http://php.net/manual/de/function.phpversion.php>`_ - with some exception as to be read up in the `code base <https://github.com/nextcloud/server/blob/master/lib/private/app/platformrepository.php#L45>`_
 
 os
 --
@@ -195,17 +195,17 @@ The following sections are just listed for reference and should not be used beca
 
 public
 ------
-Used to provide a public interface (requires no login) for the app. The id is appended to the URL **/owncloud/index.php/public**. Example with id set to 'calendar'::
+Used to provide a public interface (requires no login) for the app. The id is appended to the URL **/nextcloud/index.php/public**. Example with id set to 'calendar'::
 
-    /owncloud/index.php/public/calendar
+    /nextcloud/index.php/public/calendar
 
 Also take a look at :doc:`../core/externalapi`.
 
 remote
 ------
-Same as public but requires login. The id is appended to the URL **/owncloud/index.php/remote**. Example with id set to 'calendar'::
+Same as public but requires login. The id is appended to the URL **/nextcloud/index.php/remote**. Example with id set to 'calendar'::
 
-    /owncloud/index.php/remote/calendar
+    /nextcloud/index.php/remote/calendar
 
 Also take a look at :doc:`../core/externalapi`.
 
