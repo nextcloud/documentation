@@ -32,7 +32,7 @@ For example
 
 ::
 
-  php occ db:convert-type --all-apps mysql oc_mysql_user 127.0.0.1 new_db_name
+  php occ db:convert-type --all-apps mysql nc_mysql_user 127.0.0.1 new_db_name
 
 To successfully proceed with the conversion, you must type ``yes`` when prompted 
 with the question ``Continue with the conversion?``
