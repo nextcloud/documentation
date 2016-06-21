@@ -48,7 +48,7 @@ are using an HTTP server other than Apache, or you may wish to store your
 Nextcloud data in a different location for other reasons (e.g. on a storage 
 server). It is best to configure your data directory location at installation, 
 as it is difficult to move after installation. You may put it anywhere; in this 
-example is it located in ``/var/oc_data``. This directory must already exist, 
+example is it located in ``/opt/nextcloud``. This directory must already exist, 
 and must be owned by your HTTP user (see 
 :ref:`strong_perms_label`).
 
@@ -72,7 +72,7 @@ for your Nextcloud database.
 After you enter your root or administrator login for your database, the 
 installer creates a special database user with privileges limited to the 
 Nextcloud database. Then Nextcloud needs only the special Nextcloud database 
-user, and drops the root dB login. This user is named for your Nextcloud admin 
+user, and drops the root DB login. This user is named for your Nextcloud admin 
 user, with an ``oc_`` prefix, and then given a random password. The Nextcloud 
 database user and password are written into ``config.php``::
 
@@ -142,45 +142,45 @@ use :ref:`label-phpinfo` (Look for the **User/Group** line).
    lost.
 
 The easy way to set the correct permissions is to copy and run this script. 
-Replace the ``ocpath`` variable with the path to your Nextcloud directory, and 
+Replace the ``dcpath`` variable with the path to your Nextcloud directory, and 
 replace the ``htuser`` and ``htgroup`` variables with your HTTP user and group::
 
  #!/bin/bash
- ocpath='/var/www/nextcloud'
+ dcpath='/var/www/nextcloud'
  htuser='www-data'
  htgroup='www-data'
  rootuser='root'
 
  printf "Creating possible missing Directories\n"
- mkdir -p $ocpath/data
- mkdir -p $ocpath/assets
- mkdir -p $ocpath/updater
+ mkdir -p $dcpath/data
+ mkdir -p $dcpath/assets
+ mkdir -p $dcpath/updater
 
  printf "chmod Files and Directories\n"
- find ${ocpath}/ -type f -print0 | xargs -0 chmod 0640
- find ${ocpath}/ -type d -print0 | xargs -0 chmod 0750
+ find ${ncpath}/ -type f -print0 | xargs -0 chmod 0640
+ find ${ncpath}/ -type d -print0 | xargs -0 chmod 0750
 
  printf "chown Directories\n"
- chown -R ${rootuser}:${htgroup} ${ocpath}/
- chown -R ${htuser}:${htgroup} ${ocpath}/apps/
- chown -R ${htuser}:${htgroup} ${ocpath}/assets/
- chown -R ${htuser}:${htgroup} ${ocpath}/config/
- chown -R ${htuser}:${htgroup} ${ocpath}/data/
- chown -R ${htuser}:${htgroup} ${ocpath}/themes/
- chown -R ${htuser}:${htgroup} ${ocpath}/updater/
+ chown -R ${rootuser}:${htgroup} ${dcpath}/
+ chown -R ${htuser}:${htgroup} ${dcpath}/apps/
+ chown -R ${htuser}:${htgroup} ${dcpath}/assets/
+ chown -R ${htuser}:${htgroup} ${dcpath}/config/
+ chown -R ${htuser}:${htgroup} ${dcpath}/data/
+ chown -R ${htuser}:${htgroup} ${dcpath}/themes/
+ chown -R ${htuser}:${htgroup} ${dcpath}/updater/
 
- chmod +x ${ocpath}/occ
+ chmod +x ${dcpath}/occ
 
  printf "chmod/chown .htaccess\n"
- if [ -f ${ocpath}/.htaccess ]
+ if [ -f ${dcpath}/.htaccess ]
   then
-   chmod 0644 ${ocpath}/.htaccess
-   chown ${rootuser}:${htgroup} ${ocpath}/.htaccess
+   chmod 0644 ${dcpath}/.htaccess
+   chown ${rootuser}:${htgroup} ${dcpath}/.htaccess
  fi
- if [ -f ${ocpath}/data/.htaccess ]
+ if [ -f ${dcpath}/data/.htaccess ]
   then
-   chmod 0644 ${ocpath}/data/.htaccess
-   chown ${rootuser}:${htgroup} ${ocpath}/data/.htaccess
+   chmod 0644 ${dcpath}/data/.htaccess
+   chown ${rootuser}:${htgroup} ${dcpath}/data/.htaccess
  fi
  
 If you have customized your Nextcloud installation and your filepaths are 
@@ -199,7 +199,7 @@ and files:
 * The :file:`themes/` directory should be owned by ``[HTTP user]:[HTTP group]``
 * The :file:`assets/` directory should be owned by ``[HTTP user]:[HTTP group]``
 * The :file:`data/` directory should be owned by ``[HTTP user]:[HTTP group]``
-* The :file:`[ocpath]/.htaccess` file should be owned by ``root:[HTTP group]``
+* The :file:`[ncpath]/.htaccess` file should be owned by ``root:[HTTP group]``
 * The :file:`data/.htaccess` file should be owned by ``root:[HTTP group]``
 * Both :file:`.htaccess` files are read-write file owner, read-only group and 
   world
