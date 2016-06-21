@@ -113,18 +113,18 @@ immediately after the initial installation. Please follow the steps in
     
 These strict permissions will prevent the Updater app from working, as it needs 
 your whole Nextcloud directory to be owned by the HTTP user. Run this script to 
-set the appropriate permissions for updating. Replace the ``ocpath`` variable 
+set the appropriate permissions for updating. Replace the ``ncpath`` variable 
 with the path to your Nextcloud directory, and replace the ``htuser`` and 
 ``htgroup`` variables with your HTTP user and group.::
 
     #!/bin/bash
     # Sets permissions of the Nextcloud instance for updating
     
-    ocpath='/var/www/nextcloud'
+    ncpath='/var/www/nextcloud'
     htuser='www-data'
     htgroup='www-data'
     
-    chown -R ${htuser}:${htgroup} ${ocpath}
+    chown -R ${htuser}:${htgroup} ${ncpath}
 
 You can find your HTTP user in your HTTP server configuration files. Or you can 
 use :ref:`label-phpinfo` (Look for the **User/Group** line).
