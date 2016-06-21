@@ -44,12 +44,6 @@ Examples
 Read our `coding guidelines`_ for information on what a good pull request and
 good Nextcloud code looks like.
 
-These are two examples that are considered to be good examples of how pull
-requests should be handled
-
-* https://github.com/owncloud/core/pull/121
-* https://github.com/owncloud/core/pull/146
-
 Questions?
 ----------
 
