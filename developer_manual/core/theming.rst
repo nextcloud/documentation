@@ -1,7 +1,7 @@
 Theming Nextcloud
 =================
 Themes can be used to customize the look and feel of Nextcloud.
-Themes can relate to the following topics of owncloud:
+Themes can relate to the following topics of Nextcloud:
 
 * Theming the web-frontend
 
@@ -101,7 +101,7 @@ Inserting a new logo into an existing theme is as simple as replacing the old lo
 You can use: scalable vector graphics (.svg) or common graphics formats for the internet such as portable network graphics (.png) or .jepg
 Just insert the new created picture by using the unchanged name of the old picture.
 
-The app icons can also be overwritten in a theme. To change for example the app icon of the activity app you need to overwrite it by saving the new image to …/owncloud/themes/default/apps/activity/img/activity.svg
+The app icons can also be overwritten in a theme. To change for example the app icon of the activity app you need to overwrite it by saving the new image to …/nextcloud/themes/default/apps/activity/img/activity.svg
 
 Changing favicon
 ----------------
