@@ -2,26 +2,26 @@
 Using Federation Shares
 =======================
 
-Federation Sharing allows you to mount file shares from remote ownCloud servers, in effect 
-creating your own cloud of ownClouds. You can create direct share links with 
-users on other ownCloud servers.
+Federation Sharing allows you to mount file shares from remote Nextcloud servers, in effect 
+creating your own cloud of Nextclouds. You can create direct share links with 
+users on other Nextcloud servers.
 
 Creating a New Federation Share
 -------------------------------
 
-Federation sharing is enabled on new or upgraded ownCloud installations
-by default. Follow these steps to create a new share with other ownCloud 9 servers:
+Federation sharing is enabled on new or upgraded Nextcloud installations
+by default. Follow these steps to create a new share with other Nextcloud or ownCloud 9 servers:
 
 1. Go to your ``Files`` page and click the Share icon on the file or directory 
 you want to share. In the sidebar enter the username and URL of the remote user
 in this form: ``<username>@<oc-server-url>``. In this example, that is
-``layla@remote-server/owncloud``. The form automatically echoes the address 
+``layla@remote-server/nextcloud``. The form automatically echoes the address 
 that you type and labels it as "remote". Click on the label.
 
 .. figure:: ../images/direct-share-1.png
 
-2. When your local ownCloud server makes a successful connection with the remote
-ownCloud server you'll see a confirmation. Your only share option is **Can 
+2. When your local Nextcloud server makes a successful connection with the remote
+Nextcloud server you'll see a confirmation. Your only share option is **Can 
 edit**. 
    
 Click the Share button anytime to see who you have shared your file with. Remove 
@@ -33,7 +33,7 @@ Creating a New Federated Cloud Share via Email
 
 Use this method when you are sharing with users on ownCloud 8.x and older.
 
-What if you do not know the username or URL? Then you can have ownCloud create 
+What if you do not know the username or URL? Then you can have Nextcloud create 
 the link for you and email it to your recipient. 
 
 .. figure:: ../images/create_public_share-6.png

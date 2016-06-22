@@ -1,14 +1,14 @@
 Collaborative Document Editing
 ==============================
 
-The Documents application supports editing documents within ownCloud, without 
+The Documents application supports editing documents within Nextcloud, without 
 the need to launch an external application. The Documents app supports these 
 features:
 
 * Cooperative edit, with multiple users editing files simultaneously. 
-* Document creation within ownCloud.
+* Document creation within Nextcloud.
 * Document upload.
-* Share and edit files in the browser, and then share them inside ownCloud or 
+* Share and edit files in the browser, and then share them inside Nextcloud or 
   through a public link.
 
 Supported file formats are `.odt`, `.doc`, and `.docx`.
@@ -31,7 +31,7 @@ Edit a Document
 ~~~~~~~~~~~~~~~
 
 To edit a document, access the Documents app from your Apps menu at the top 
-left of your ownCloud window. 
+left of your Nextcloud window. 
 
 .. image:: images/oc_documents_edit.png
 
@@ -61,7 +61,7 @@ Delete a Document
 
 You can't delete a document from inside the Document app, but must go to your 
 Files page and delete it from there. You'll find it in your default documents 
-directory, which is configured on your ownCloud Personal page (see 
+directory, which is configured on your Nextcloud Personal page (see 
 :doc:`userpreferences`.)
 
 .. _share-a-document:
