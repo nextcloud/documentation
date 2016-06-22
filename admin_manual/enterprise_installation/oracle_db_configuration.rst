@@ -6,35 +6,35 @@ Oracle Database Setup
     :maxdepth: 2
     :hidden:
 
-This document will cover the setup and preparation of the ownCloud server to
+This document will cover the setup and preparation of the Nextcloud server to
 support the use of Oracle as a backend database.  For the purposes of testing,
 we are using Oracle Enterprise Linux as both the Web server that
-will host ownCloud, and as a host for the Oracle Database.
+will host Nextcloud, and as a host for the Oracle Database.
 
 Outline of Steps
 ================
 
 This document will cover the following steps:
 
-* Setup of the ownCloud user in Oracle: This involves setting up a user space
-  in Oracle for setting up the ownCloud database.
+* Setup of the Nextcloud user in Oracle: This involves setting up a user space
+  in Oracle for setting up the Nextcloud database.
 * Installing the Oracle Instant Client on the Web server (facilitating the
   connection to the Oracle Database).
 * Compiling and installing the Oracle PHP Plugin oci8 module
-* Pointing ownCloud at the Oracle database in the initial setup process
+* Pointing Nextcloud at the Oracle database in the initial setup process
 
 The document assumes that you already have your Oracle instance running, and
 have provisioned the needed resources. It also assumes that you have installed
-ownCloud with all of the prerequisites.
+Nextcloud with all of the prerequisites.
 
 Configuring Oracle
 ==================
 
-Setting up the User Space for ownCloud
+Setting up the User Space for Nextcloud
 --------------------------------------
 
 Step one, if it has not already been completed by your :abbr:`DBA (DataBase Administrator)`, provision a user
-space on the Oracle instance for ownCloud.  This can be done by logging in as a
+space on the Oracle instance for Nextcloud.  This can be done by logging in as a
 DBA and running the script below:
 
 ::
@@ -60,7 +60,7 @@ your OS Distribution.
 * Install the basic client from the RPM.  Use the ``rpm –ivh`` command
 * Install the SDK RPM package.  Use the ``rpm –ivh`` command
 
-At this point, the Oracle Instant client is installed on the ownCloud Host (in
+At this point, the Oracle Instant client is installed on the Nextcloud Host (in
 the home directory).
 
 Install the OCI8 PHP Extension:
@@ -109,11 +109,11 @@ The next step is to compile and install the OCI8 PHP extension for connectivity 
 
    * Save the document
 
-Configure ownCloud
+Configure Nextcloud
 ==================
 
-The next step is to configure the ownCloud instance to point to the Oracle Database, again this document assumes
-that ownCloud has previously been installed.
+The next step is to configure the Nextcloud instance to point to the Oracle Database, again this document assumes
+that Nextcloud has previously been installed.
 
 Configuration Wizard
 --------------------
@@ -153,7 +153,7 @@ In this example the users table space (as is seen in the user creation script ab
 Configuration File
 ------------------
 
-Assuming all of the steps have been followed to completion, the first run wizard should complete successfully, and an operating instance of ownCloud should appear.
+Assuming all of the steps have been followed to completion, the first run wizard should complete successfully, and an operating instance of Nextcloud should appear.
 
 The configuration file should look something like this:
 
@@ -205,7 +205,7 @@ On the machine where your Oracle database is installed, type::
 
   Oracle    : SELECT name FROM v$database; (requires DBA privileges)
 
-**Show ownCloud Tables in Database**::
+**Show Nextcloud Tables in Database**::
 
   Oracle    : SELECT table_name FROM user_tables;
 

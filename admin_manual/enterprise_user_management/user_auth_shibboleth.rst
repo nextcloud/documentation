@@ -5,12 +5,12 @@ Shibboleth Integration (Enterprise only)
 Introduction
 ------------
 
-The ownCloud Shibboleth user backend application integrates ownCloud with a
+The Nextcloud Shibboleth user backend application integrates Nextcloud with a
 Shibboleth Service Provider (SP) and allows operations in federated and
 single-sign-on (SSO) infrastructures. Setting up Shibboleth has two big steps:
 
 1. Enable and configure the Apache Shibboleth module.
-2. Enable and configure the ownCloud Shibboleth app.
+2. Enable and configure the Nextcloud Shibboleth app.
 
 The Apache Shibboleth module
 ----------------------------
@@ -24,7 +24,7 @@ A good starting point for the service provider installation can be found in
 `the official Shibboleth Wiki`_.
 
 A successful installation and configuration will populate Apache environment
-variables with at least a unique user id which is then used by the ownCloud
+variables with at least a unique user id which is then used by the Nextcloud
 Shibboleth app to login a user.
 
 See the `documentation Wiki <https://github.com/owncloud/documentation/wiki/Shibboleth-example-configurations>`_ for more configuration examples.
@@ -36,7 +36,7 @@ This is an example configuration as installed and operated on a Linux server
 running the Apache 2.4 Web server. These configurations are highly operating system
 specific and require a high degree of customization.
 
-The ownCloud instance itself is installed in ``/var/www/owncloud/``.  The
+The Nextcloud instance itself is installed in ``/var/www/owncloud/``.  The
 following aliases are defined in an Apache virtual host directive:
 
 ::
@@ -148,20 +148,20 @@ Further Shibboleth specific configuration as defined in
 	  Require all granted
 	</Location>
 
-Depending on the ownCloud Shibboleth app mode, you may need to revisit this
+Depending on the Nextcloud Shibboleth app mode, you may need to revisit this
 configuration.
 
-The ownCloud Shibboleth App
+The Nextcloud Shibboleth App
 ---------------------------
 
 After enabling the Shibboleth app on your Apps page, you need to choose the app
-mode and map the necessary Shibboleth environment variables to ownCloud user
+mode and map the necessary Shibboleth environment variables to Nextcloud user
 attributes on your Admin page.
 
 .. figure:: ../images/shib-gui5.png
    :alt: Shibboleth configuration screen.
 
-   *figure 1: Enabling Shibboleth on the ownCloud Admin page*
+   *figure 1: Enabling Shibboleth on the Nextcloud Admin page*
 
 Choosing the App Mode
 ^^^^^^^^^^^^^^^^^^^^^
@@ -185,7 +185,7 @@ allows another user backend, eg. the LDAP app, to provide the ``displayname``,
 
  .. note:: As an example the IdP can send the **sAMAccountName** which the
     Apache Shibboleth module writes to a custom Apache environment variable
-    called ``login``. The ownCloud Shibboleth app reads that ``login``
+    called ``login``. The Nextcloud Shibboleth app reads that ``login``
     environment variable and tries to find an LDAP user with that ``uid``. For 
     this to work the LDAP backend also needs to be configured to use the
     **sAMAccountName** as the **Internal Username Attribute** in the
@@ -193,7 +193,7 @@ allows another user backend, eg. the LDAP app, to provide the ``displayname``,
 
  .. note:: In many scenarios Shibboleth is not intended to hide the user's
     password from the service provider, but only to implement SSO. If that is
-    the case it is sufficient to protect the ownCloud base url with Shibboleth.
+    the case it is sufficient to protect the Nextcloud base url with Shibboleth.
     This will send Web users to the IdP but allow desktop and mobile clients to
     continue using username and password, preventing popups due to an expired
     Shibboleth session lifetime.
@@ -203,43 +203,43 @@ instead provision users on the fly by reading the two additional environment
 variables for display name and email address.
 
 .. figure:: ../images/shib-gui6.png
-   :alt: Dropdowns for mapping Shibboleth environment configuration variables to ownCloud user attributes.
+   :alt: Dropdowns for mapping Shibboleth environment configuration variables to Nextcloud user attributes.
 
-   *figure 2: Mapping Shibboleth environment configuration variables to ownCloud 
+   *figure 2: Mapping Shibboleth environment configuration variables to Nextcloud 
    user attributes*
 
-In ownCloud 8.1 the Shibboleth environment variable mapping was stored in
+In Nextcloud 8.1 the Shibboleth environment variable mapping was stored in
 ``apps/user_shibboleth/config.php``. This file was overwritten on upgrades,
-preventing a seamless upgrade procedure. In ownCloud 8.2+ the variables are
-stored in the ownCloud database, making Shibboleth automatically upgradeable.
+preventing a seamless upgrade procedure. In Nextcloud 8.2+ the variables are
+stored in the Nextcloud database, making Shibboleth automatically upgradeable.
 
 Shibboleth with Desktop and Mobile Clients
 ------------------------------------------
 
-The ownCloud Desktop Client can interact with an
-ownCloud instance running inside a Shibboleth Service Provider by using built-in
+The Nextcloud Desktop Client can interact with an
+Nextcloud instance running inside a Shibboleth Service Provider by using built-in
 browser components for authentication against the IdP.
 
-The regular ownCloud Android and iOS mobile apps do not work with Shibboleth.
+The regular Nextcloud Android and iOS mobile apps do not work with Shibboleth.
 However, customers who create
 :doc:`branded mobile apps with ownBrander
 <../enterprise_clients/creating_branded_apps>`
 have the option to enable SAML authentication in ownBrander.
 
-Enterprise customers also have the option to request a regular ownCloud
-mobile client built to use Shibboleth from their ownCloud account
+Enterprise customers also have the option to request a regular Nextcloud
+mobile client built to use Shibboleth from their Nextcloud account
 representatives.
 
-The ownCloud desktop sync client and mobile apps store users' logins, so
+The Nextcloud desktop sync client and mobile apps store users' logins, so
 your users only need to enter their logins the first time they set up their
 accounts.
 
-.. note:: The ownCloud clients may use only a single Shibboleth login per
-   ownCloud server; multi-account is not supported with Shibboleth.
+.. note:: The Nextcloud clients may use only a single Shibboleth login per
+   Nextcloud server; multi-account is not supported with Shibboleth.
 
 These screenshots show what the user sees at account setup. Figure 1
 shows a test Shibboleth login screen from
-`Testshib.org <https://www.testshib.org/index.html>`_ on the ownCloud desktop
+`Testshib.org <https://www.testshib.org/index.html>`_ on the Nextcloud desktop
 sync client.
 
 .. figure:: ../images/shib-gui1.png
@@ -248,16 +248,16 @@ sync client.
    *figure 3: First login screen*
 
 Then after going through the setup wizard, the desktop sync client displays the
-server and login information just like it does for any other ownCloud server
+server and login information just like it does for any other Nextcloud server
 connections.
 
 .. figure:: ../images/shib-gui4.png
-   :alt: The ownCloud client shows which server you are connected to.
+   :alt: The Nextcloud client shows which server you are connected to.
 
-   *figure 4: ownCloud client displays server information*
+   *figure 4: Nextcloud client displays server information*
 
 To your users, it doesn't look or behave differently on the desktop sync
-client, Android app, or iOS app from an ordinary ownCloud account setup. The
+client, Android app, or iOS app from an ordinary Nextcloud account setup. The
 only difference is the initial setup screen where they enter their account
 login.
 
@@ -320,9 +320,9 @@ to the service provider.
 Other Login Mechanisms
 ^^^^^^^^^^^^^^^^^^^^^^
 
-You can allow other login mechanisms (e.g. LDAP or ownCloud native) by creating
+You can allow other login mechanisms (e.g. LDAP or Nextcloud native) by creating
 a second Apache virtual host configuration. This second location is not
-protected by Shibboleth, and you can use your other ownCloud login mechanisms.
+protected by Shibboleth, and you can use your other Nextcloud login mechanisms.
 
 Session Timeout
 ^^^^^^^^^^^^^^^
@@ -334,7 +334,7 @@ hour.
 
 The session timeout can be overridden in the service provider, but this
 requires a source code change of the Apache Shibboleth module. A patch can be
-provided by the ownCloud support team.
+provided by the Nextcloud support team.
 
 UID Considerations and Windows Network Drive compatibility
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -376,7 +376,7 @@ different implications to take into account:
 * *Uniqueness:* Globally unique
 * *Other implications:* Incompatible with ``windows_network_drive`` app
 
-Keep in mind that ownCloud will derive the home folder from the ``uid``, unless
+Keep in mind that Nextcloud will derive the home folder from the ``uid``, unless
 a home folder naming rule is in place. The only truly stable attribute is the
 ``objectGUID``, so that should be used. If not for the ``uid`` then at least as
 the home folder naming rule. The tradeoff here is that if you want to use

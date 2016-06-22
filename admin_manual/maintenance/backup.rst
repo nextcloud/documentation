@@ -1,8 +1,8 @@
 ===================
-Backing up ownCloud
+Backing up Nextcloud
 ===================
 
-To backup an ownCloud installation there are three main things you need to retain:
+To backup an Nextcloud installation there are three main things you need to retain:
 
 #. The config folder
 #. The data folder
@@ -11,8 +11,8 @@ To backup an ownCloud installation there are three main things you need to retai
 Backup Folders
 --------------
 
-Simply copy your config and data folder (or even your whole ownCloud install and data folder) to a place outside of
-your ownCloud environment. You could use this command::
+Simply copy your config and data folder (or even your whole Nextcloud install and data folder) to a place outside of
+your Nextcloud environment. You could use this command::
 
     rsync -Aax nextcloud/ nextcloud-dirbkp_`date +"%Y%m%d"`/
 

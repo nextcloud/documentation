@@ -1,11 +1,11 @@
 =================================================
-Nginx configuration for the ownCloud 8.x branches
+Nginx configuration for the Nextcloud 8.x branches
 =================================================
 
-ownCloud in the webroot of nginx
+Nextcloud in the webroot of nginx
 --------------------------------
 
-The following configuration should be used when ownCloud is placed in the 
+The following configuration should be used when Nextcloud is placed in the 
 webroot of your Nginx installation. Be careful about line breaks if you copy 
 the examples, as long lines may be broken for page formatting.
 
@@ -126,10 +126,10 @@ the examples, as long lines may be broken for page formatting.
       }
     }
 
-ownCloud in a subdir of nginx
+Nextcloud in a subdir of nginx
 ------------------------------
 
-The following config should be used when ownCloud is placed within a subdir of 
+The following config should be used when Nextcloud is placed within a subdir of 
 your nginx installation.
 
 .. note:: This config is currently untested

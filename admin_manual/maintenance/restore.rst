@@ -1,8 +1,8 @@
 ==================
-Restoring ownCloud
+Restoring Nextcloud
 ==================
 
-To restore an ownCloud installation there are three main things you need to 
+To restore an Nextcloud installation there are three main things you need to 
 restore:
 
 #. The configuration directory
@@ -21,9 +21,9 @@ Restore Folders
 .. note:: This guide assumes that your previous backup is called 
    "owncloud-dirbkp"
 
-Simply copy your configuration and data folder (or even your whole ownCloud 
+Simply copy your configuration and data folder (or even your whole Nextcloud 
 install and 
-data folder) to your ownCloud environment. You could use this command::
+data folder) to your Nextcloud environment. You could use this command::
 
     rsync -Aax owncloud-dirbkp/ owncloud/
 

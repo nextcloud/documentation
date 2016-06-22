@@ -73,7 +73,7 @@ After the next nightly sync job a new resource will appear on Transifex and from
 Translation sync jobs:
 ~~~~~~~~~~~~~~~~~~~~~~
 
-https://ci.owncloud.org/view/translation-sync/
+https://ci.nextcloud.org/view/translation-sync/
 
 **Caution: information below is in general not needed!**
 

@@ -136,13 +136,13 @@ Federated Cloud Shares
 ======================
 
 Both the sending and the receiving instance need to have federated cloud sharing
-enabled and configured. See `Configuring Federated Cloud Sharing <https://doc.owncloud.org/server/9.0/admin_manual/configuration_files/federated_cloud_sharing_configuration.html>`_.
+enabled and configured. See `Configuring Federated Cloud Sharing <https://doc.nextcloud.org/server/9.0/admin_manual/configuration_files/federated_cloud_sharing_configuration.html>`_.
 
 Create a new Federated Cloud Share
 ----------------------------------
 
 Creating a federated cloud share can be done via the local share endpoint, using
-(int) 6 as a shareType and the `Federated Cloud ID <https://owncloud.org/federation/>`_
+(int) 6 as a shareType and the `Federated Cloud ID <https://nextcloud.org/federation/>`_
 of the share recipient as shareWith. See `Create a new Share`_ for more information.
 
 

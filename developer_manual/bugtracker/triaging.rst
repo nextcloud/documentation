@@ -1,18 +1,18 @@
 =====================
-ownCloud Bug Triaging
+Nextcloud Bug Triaging
 =====================
 
 .. toctree::
    :maxdepth: 2
    :hidden:
 
-Bug Triaging is the process of checking bug reports to see if they are still valid (the problem might be solved since the bug was reported), reproducing them when possible (to make sure it really is an ownCloud issue and not a configuration problem) and in general making sure the bug is useful for a developer who wants to fix it. If the bug is not useful and can't be augmented by the original reporter or the triaging contributor, it has to be closed.
+Bug Triaging is the process of checking bug reports to see if they are still valid (the problem might be solved since the bug was reported), reproducing them when possible (to make sure it really is an Nextcloud issue and not a configuration problem) and in general making sure the bug is useful for a developer who wants to fix it. If the bug is not useful and can't be augmented by the original reporter or the triaging contributor, it has to be closed.
 
 Why do you want to join
 =======================
-Helping to bring the number of issues down makes it easier for developers to spend their time productively and bug triagers thus **contribute greatly to ownCloud development**! Triaging a bug doesn’t take long so the work comes in small chunks and you don’t need many skills, just some patience and sometimes perseverance.
+Helping to bring the number of issues down makes it easier for developers to spend their time productively and bug triagers thus **contribute greatly to Nextcloud development**! Triaging a bug doesn’t take long so the work comes in small chunks and you don’t need many skills, just some patience and sometimes perseverance.
 
-Bug triagers who contribute significantly should ask to be listed as an active contributor on the `owncloud.org <https://owncloud.org>`_ page!
+Bug triagers who contribute significantly should ask to be listed as an active contributor on the `nextcloud.org <https://nextcloud.org>`_ page!
 
 How do you triage bugs
 ======================
@@ -35,7 +35,7 @@ General considerations
 ======================
 
 * You need a `github account <https://github.com>`_ to contribute to bug triaging.
-* If you are not familiar with the github issue tracker interface (which is used by ownCloud to handle bug reports), you `may find this guide useful <https://guides.github.com/features/issues/>`_.
+* If you are not familiar with the github issue tracker interface (which is used by Nextcloud to handle bug reports), you `may find this guide useful <https://guides.github.com/features/issues/>`_.
 * You will initially only be able to comment on issues. The ability to close issues or assign labels will be given liberally to those who have shown to be willing and able to contribute. Just ask on IRC!
 * Read `our bug reporting guidelines <https://github.com/owncloud/core/blob/master/CONTRIBUTING.md#submitting-issues>`_ so you know what a good report should look like and where things belong. The `issue template <https://raw.github.com/owncloud/core/master/issue_template.md>`_ asks specifically for some information developers need to solve issues.
 * It might even be fixed, sometimes! It can also be fruitful to contact the `developers on irc <irc://freenode/#owncloud-dev>`_. Tell them you're triaging bugs and share what problem you bumped into. Or just ask on the test-pilots mailing list.
@@ -52,7 +52,7 @@ Github offers several search queries which can be useful to find a list of bugs 
 * `Least commented issues <https://github.com/issues?q=is%3Aissue+user%3Aowncloud+is%3Aopen+no%3Aassignee+no%3Amilestone+no%3Alabel+sort%3Acomments-asc+>`_
 * `Bugs which need info <https://github.com/issues?q=is%3Aissue+user%3Aowncloud+is%3Aopen+label%3A%22Needs+info%22+sort%3Acreated-asc+>`_
 
-But there are more methods. For example, if you are a user of ownCloud with a specific setup like using nginx as Web server or dropbox as storage, or using the encryption app, you could look for bugs with these keywords. You can then use your knowledge of your installation and your installation itself to see if bugs are (still) valid or reproduce them.
+But there are more methods. For example, if you are a user of Nextcloud with a specific setup like using nginx as Web server or dropbox as storage, or using the encryption app, you could look for bugs with these keywords. You can then use your knowledge of your installation and your installation itself to see if bugs are (still) valid or reproduce them.
 
 Once you have picked an issue, add a comment that you've started triaging:
 
@@ -86,11 +86,11 @@ When the issue is a feature request, you can be helpful in the same way: merge r
 
 Determining relevance of issue
 ------------------------------
-Not all issues are relevant for ownCloud. Bugs can be due to a specific configuration or unsupported platforms. Raspberry Pi's suffer from SQLite time-outs, nginx has problems Apache doesn't and Microsoft Server with IIS is not well supported. While external issues are not always a reason to close a report, be sure that they are clear: does the user use the 'standard' platform? Ask for information if this is missing.
+Not all issues are relevant for Nextcloud. Bugs can be due to a specific configuration or unsupported platforms. Raspberry Pi's suffer from SQLite time-outs, nginx has problems Apache doesn't and Microsoft Server with IIS is not well supported. While external issues are not always a reason to close a report, be sure that they are clear: does the user use the 'standard' platform? Ask for information if this is missing.
 
-Last but not least, the problem might be due to the user doing something that simply does not work. Your general ownCloud knowledge might be helpful here - if this is the case, you can often swiftly close the issue with a comment about what went wrong.
+Last but not least, the problem might be due to the user doing something that simply does not work. Your general Nextcloud knowledge might be helpful here - if this is the case, you can often swiftly close the issue with a comment about what went wrong.
 
-.. note:: You might have to say no to some requests, for example when a problem has been solved in a new release but won't become available for the release the reporter is using; or when a solution has been chosen which the reporter is unhappy about. Be considerate. People feel surprisingly strong about ownCloud, and you should take care to explain that we don't aim to ignore them; on the contrary. But sometimes, decisions which benefit the majority of users don't help an individual. The extensibility and open availability of the code of ownCloud is here to relieve the pain of such decisions.
+.. note:: You might have to say no to some requests, for example when a problem has been solved in a new release but won't become available for the release the reporter is using; or when a solution has been chosen which the reporter is unhappy about. Be considerate. People feel surprisingly strong about Nextcloud, and you should take care to explain that we don't aim to ignore them; on the contrary. But sometimes, decisions which benefit the majority of users don't help an individual. The extensibility and open availability of the code of Nextcloud is here to relieve the pain of such decisions.
 
 Determining if the report is complete
 -------------------------------------
@@ -110,7 +110,7 @@ This is needed in order to differentiate random/race condition bugs of reproduci
 
 To reproduce an issue, please refer to our testing documents: :doc:`../testing/index`
 
-If you can't reproduce an issue in a newer version of ownCloud, it is most likely fixed and can be closed. Comment that you failed to reproduce the problem, and if the reporter can confirm (or doesn't respond for a long time), you can close the issue. Also, be sure to add what exactly you tested with - the ownCloud Master or a branch (and if so, when), or did you use a release, and if so - what version?
+If you can't reproduce an issue in a newer version of Nextcloud, it is most likely fixed and can be closed. Comment that you failed to reproduce the problem, and if the reporter can confirm (or doesn't respond for a long time), you can close the issue. Also, be sure to add what exactly you tested with - the Nextcloud Master or a branch (and if so, when), or did you use a release, and if so - what version?
 
 Finalizing and tagging
 ----------------------
@@ -120,14 +120,14 @@ Once you are done reproducing an issue, it is time to finish up and make clear t
 * If it is a genuine feature request (or you are pretty sure it is) add the 'enhancement' tag.
 * If the issue is clearly related to something specific, @mention a maintainer. examples: @schiesbn for encryption, @blizzz for LDAP, @PVince81 for quota stuff... You can find a `list of maintainers here <https://github.com/owncloud/core/wiki/Maintainers>`_.
 
-Now, the developers can pick the issue up. Note that while we wish we would always pick up and solve problems promptly, not all areas of ownCloud get the same amount of attention and contribution, so this can occasionally take a long time.
+Now, the developers can pick the issue up. Note that while we wish we would always pick up and solve problems promptly, not all areas of Nextcloud get the same amount of attention and contribution, so this can occasionally take a long time.
 
 
 Collaboration
 =============
-You can just get started with bug triaging. But if you want, you can register on the `testpilot mailing list <https://mailman.owncloud.org/mailman/listinfo/testpilots>`_ and perhaps introduce yourself to `testpilots@owncloud.org <testpilots@owncloud.org>`_. On this list we announce and discuss testing and bug triaging related subjects.
+You can just get started with bug triaging. But if you want, you can register on the `testpilot mailing list <https://mailman.nextcloud.org/mailman/listinfo/testpilots>`_ and perhaps introduce yourself to `testpilots@nextcloud.org <testpilots@nextcloud.org>`_. On this list we announce and discuss testing and bug triaging related subjects.
 
-You can also join the **#owncloud-testing** channel on **irc.freenode.net** (`link for IRC clients <irc://#owncloud-testing@freenode.net>`_ and `link to webchat <https://webchat.freenode.net/>`_) to ask questions but keep in mind that people aren't active 24/7 and it can occasionally take a while to get a response. Last but not least, ownCloud contributor `Jan Borchardt has a great guide for developers and triagers <https://gist.github.com/jancborchardt/6155185>`_ about dealing with issues, including some 'stock answers' and thoughts on how to deal with pull requests.
+You can also join the **#owncloud-testing** channel on **irc.freenode.net** (`link for IRC clients <irc://#owncloud-testing@freenode.net>`_ and `link to webchat <https://webchat.freenode.net/>`_) to ask questions but keep in mind that people aren't active 24/7 and it can occasionally take a while to get a response. Last but not least, Nextcloud contributor `Jan Borchardt has a great guide for developers and triagers <https://gist.github.com/jancborchardt/6155185>`_ about dealing with issues, including some 'stock answers' and thoughts on how to deal with pull requests.
 
 For further questions or help you can also send a mail to:
 

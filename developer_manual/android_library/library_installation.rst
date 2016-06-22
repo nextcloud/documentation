@@ -5,7 +5,7 @@ Obtaining the library
 ---------------------
 
 
-The ownCloud Android library may be obtained from the following Github repository:
+The Nextcloud Android library may be obtained from the following Github repository:
 
 `https://github.com/nextcloud/android-library <https://github.com/nextcloud/android-library>`_
 

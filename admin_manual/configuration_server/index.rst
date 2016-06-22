@@ -1,5 +1,5 @@
 =============================
-ownCloud Server Configuration
+Nextcloud Server Configuration
 =============================
 
 .. toctree::

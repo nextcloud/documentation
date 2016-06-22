@@ -3,7 +3,7 @@ Operations
 ==========
 
 Advanced operation including monitoring, scaling across multiple machines, and 
-creating a custom theme for your ownCloud server.
+creating a custom theme for your Nextcloud server.
 
 .. toctree::
    :maxdepth: 2

@@ -11,11 +11,11 @@ A typical HTTP request consists of the following:
 * **A Method**: e.g. GET
 * **Request headers**: e.g. Accept: application/json
 
-The following sections will present an overview over how that request is being processed to provide an in depth view over how ownCloud works. If you are not interested in the internals or don't want to execute anything before and after your controller, feel free to skip this section and continue directly with defining :doc:`your app's routes <routes>`.
+The following sections will present an overview over how that request is being processed to provide an in depth view over how Nextcloud works. If you are not interested in the internals or don't want to execute anything before and after your controller, feel free to skip this section and continue directly with defining :doc:`your app's routes <routes>`.
 
 Front controller
 ================
-In the beginning, all requests are sent to ownCloud's :file:`index.php` which in turn executes :file:`lib/base.php`. This file inspects the HTTP headers and abstracts away differences between different Web servers and initializes the basic classes. Afterwards the basic apps are being loaded in the following order:
+In the beginning, all requests are sent to Nextcloud's :file:`index.php` which in turn executes :file:`lib/base.php`. This file inspects the HTTP headers and abstracts away differences between different Web servers and initializes the basic classes. Afterwards the basic apps are being loaded in the following order:
 
 * Authentication backends
 * Filesystem

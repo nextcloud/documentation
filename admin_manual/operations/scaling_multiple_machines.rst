@@ -6,9 +6,9 @@ Scaling Across Multiple Machines
     :maxdepth: 2
     :hidden:
 
-This document will cover the reference architecture for the ownCloud Scale Out
+This document will cover the reference architecture for the Nextcloud Scale Out
 model for a single datacenter implementation.  The document will focus on the
-three main elements of an ownCloud deployment:
+three main elements of an Nextcloud deployment:
 
 *   Application layer
 *   Database Layer
@@ -21,10 +21,10 @@ Application Layer
 =================
 
 For the application layer of this reference architecture we used Oracle
-Enterprise Linux as the front end servers to host the ownCloud code.  In this
+Enterprise Linux as the front end servers to host the Nextcloud code.  In this
 instance we made ``httpd`` a permissive domain, allowing it to operate within the
 SELinux environment.  In this example we also used the standard directory
-structure placing the ownCloud code in the Apache root directory. The
+structure placing the Nextcloud code in the Apache root directory. The
 following components were installed on each application server:
 
 *   Apache
@@ -38,7 +38,7 @@ Also required is the PHP smbclient module or smbclient (see
 :doc:`../configuration_files/external_storage/smb`).
 
 It is also worth mentioning that the appropriate exceptions where made in the
-firewall to allow the ownCloud traffic (for the purpose of testing we
+firewall to allow the Nextcloud traffic (for the purpose of testing we
 enable both encrypted SSL via port 443 and unencrypted via port 80).
 
 The next step was to generate and import the needed SSL certificates following
@@ -65,7 +65,7 @@ the IP address should one fail.
 .. Session Management (this section is a WIP pending testing based on customer feedback).
 
 .. The load balancer is to be configured to spread the workload across the various
-.. ownCloud application servers, with details to be filled in around session
+.. Nextcloud application servers, with details to be filled in around session
 .. management upon further testing.
 
 Database Layer
@@ -84,7 +84,7 @@ looking like this:
 Taking a closer look at the database architecture, we have created redundant
 MySQL NDB Management nodes for redundancy and we have configured 3 NDB
 SQL/Storage nodes across which we are able to spread the database traffic.  All
-of the clients (ownCloud Application Servers) will connect to the database via
+of the clients (Nextcloud Application Servers) will connect to the database via
 the My SQL Proxy. It is worth noting that MySQL proxy is still in beta and that using
 another load balancing method like HAProxy or F5 is supported, in that you will
 be distributing traffic among the various SQL/Storage nodes. Here, we simply

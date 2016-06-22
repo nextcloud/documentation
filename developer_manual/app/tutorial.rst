@@ -9,11 +9,11 @@ This tutorial will outline how to create a very simple notes app. The finished a
 
 Setup
 =====
-After the `development tool <https://github.com/owncloud/ocdev/blob/master/README.rst#installation>`_ has been installed the :doc:`development environment needs to be set up <../general/devenv>`. This can be done by either `downloading the zip from the website <https://owncloud.org/install/>`_ or cloning it directly from GitHub::
+After the `development tool <https://github.com/owncloud/ocdev/blob/master/README.rst#installation>`_ has been installed the :doc:`development environment needs to be set up <../general/devenv>`. This can be done by either `downloading the zip from the website <https://nextcloud.org/install/>`_ or cloning it directly from GitHub::
 
     ocdev setup core --dir owncloud  --branch $BRANCH
 
-.. note:: $BRANCH is the desired ownCloud branch (e.g. stable7 for ownCloud 7, stable8 for ownCloud 8, etc)
+.. note:: $BRANCH is the desired Nextcloud branch (e.g. stable7 for Nextcloud 7, stable8 for Nextcloud 8, etc)
 
 First you want to enable debug mode to get proper error messages. To do that set ``debug`` to ``true`` in the **owncloud/config/config.php** file::
 
@@ -35,7 +35,7 @@ Afterwards the app can be created in the **apps** folder::
     cd apps
     ocdev startapp OwnNotes
 
-This creates a new folder called **ownnotes**. Now access and set up ownCloud through the webinterface at `http://localhost:8080 <http://localhost:8080>`_ and enable the OwnNotes application on the `apps page <http://localhost:8080/index.php/settings/apps>`_.
+This creates a new folder called **ownnotes**. Now access and set up Nextcloud through the webinterface at `http://localhost:8080 <http://localhost:8080>`_ and enable the OwnNotes application on the `apps page <http://localhost:8080/index.php/settings/apps>`_.
 
 The first basic app is now available at `http://localhost:8080/index.php/apps/ownnotes/ <http://localhost:8080/index.php/apps/ownnotes/>`_
 
@@ -261,7 +261,7 @@ To create the tables in the database, the :doc:`version tag <info>` in **ownnote
     <info>
         <id>ownnotes</id>
         <name>Own Notes</name>
-        <description>My first ownCloud app</description>
+        <description>My first Nextcloud app</description>
         <licence>AGPL</licence>
         <author>Your Name</author>
         <version>0.0.2</version>
@@ -339,7 +339,7 @@ Connect Database & Controllers
 ==============================
 The mapper which provides the database access is finished and can be passed into the controller.
 
-You can pass in the mapper by adding it as a type hinted parameter. ownCloud will figure out how to :doc:`assemble them by itself <container>`. Additionally we want to know the userId of the currently logged in user. Simply add a **$UserId** parameter to the constructor (case sensitive!). To do that open **ownnotes/lib/Controller/NoteController.php** and change it to the following:
+You can pass in the mapper by adding it as a type hinted parameter. Nextcloud will figure out how to :doc:`assemble them by itself <container>`. Additionally we want to know the userId of the currently logged in user. Simply add a **$UserId** parameter to the constructor (case sensitive!). To do that open **ownnotes/lib/Controller/NoteController.php** and change it to the following:
 
 .. code-block:: php
 
@@ -665,13 +665,13 @@ Great! Now the only reason that the controller needs to be changed is when reque
 
 Writing a test for the controller (recommended)
 ===============================================
-Tests are essential for having happy users and a carefree life. No one wants their users to rant about your app breaking their ownCloud or being buggy. To do that you need to test your app. Since this amounts to a ton of repetitive tasks, we need to automate the tests.
+Tests are essential for having happy users and a carefree life. No one wants their users to rant about your app breaking their Nextcloud or being buggy. To do that you need to test your app. Since this amounts to a ton of repetitive tasks, we need to automate the tests.
 
 Unit Tests
 ----------
 A unit test is a test that tests a class in isolation. It is very fast and catches most of the bugs, so we want many unit tests.
 
-Because ownCloud uses :doc:`Dependency Injection <container>` to assemble your app, it is very easy to write unit tests by passing mocks into the constructor. A simple test for the update method can be added by adding this to **ownnotes/tests/Unit/Controller/NoteControllerTest.php**:
+Because Nextcloud uses :doc:`Dependency Injection <container>` to assemble your app, it is very easy to write unit tests by passing mocks into the constructor. A simple test for the update method can be added by adding this to **ownnotes/tests/Unit/Controller/NoteControllerTest.php**:
 
 .. code-block:: php
 
@@ -884,7 +884,7 @@ To run the integration tests change into the **ownnotes** directory and run::
 
 Adding a RESTful API (optional)
 ===============================
-A :doc:`RESTful API <api>` allows other apps such as Android or iPhone apps to access and change your notes. Since syncing is a big core component of ownCloud it is a good idea to add (and document!) your own RESTful API.
+A :doc:`RESTful API <api>` allows other apps such as Android or iPhone apps to access and change your notes. Since syncing is a big core component of Nextcloud it is a good idea to add (and document!) your own RESTful API.
 
 Because we put our logic into the **NoteService** class it is very easy to reuse it. The only pieces that need to be changed are the annotations which disable the CSRF check (not needed for a REST call usually) and add support for `CORS <https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS>`_ so your API can be accessed from other webapps.
 
@@ -1035,7 +1035,7 @@ To create a modern webapp you need to write :doc:`JavaScript<js>`. You can use a
 
 Creating a navigation
 =====================
-The template file **ownnotes/templates/part.navigation.php** contains the navigation. ownCloud defines many handy :doc:`CSS styles <css>` which we are going to reuse to style the navigation. Adjust the file to contain only the following code:
+The template file **ownnotes/templates/part.navigation.php** contains the navigation. Nextcloud defines many handy :doc:`CSS styles <css>` which we are going to reuse to style the navigation. Adjust the file to contain only the following code:
 
 .. note:: **$l->t()** is used to make your strings :doc:`translatable <l10n>` and **p()** is used :doc:`to print escaped HTML <templates>`
 
@@ -1336,4 +1336,4 @@ Now the only thing left is to style the textarea in a nicer fashion. To do that 
         height: 44px;
     }
 
-Congratulations! You've written your first ownCloud app. You can now either try to further improve the tutorial notes app or start writing your own app.
+Congratulations! You've written your first Nextcloud app. You can now either try to further improve the tutorial notes app or start writing your own app.

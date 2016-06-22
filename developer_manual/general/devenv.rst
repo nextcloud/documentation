@@ -11,16 +11,16 @@ Please follow the steps on this page to set up your development environment.
 Set up Web server and database
 ==============================
 
-First `set up your Web server and database <https://doc.owncloud.org/server/9.0/admin_manual/installation/index.html>`_ (**Section**: Manual Installation - Prerequisites).
+First `set up your Web server and database <https://doc.nextcloud.org/server/9.0/admin_manual/installation/index.html>`_ (**Section**: Manual Installation - Prerequisites).
 
 .. TODO ON RELEASE: Update version number above on release
 
 Get the source
 ==============
 
-There are two ways to obtain ownCloud sources: 
+There are two ways to obtain Nextcloud sources: 
 
-* Using the `stable version <https://doc.owncloud.org/server/9.0/admin_manual/#installation>`_
+* Using the `stable version <https://doc.nextcloud.org/server/9.0/admin_manual/#installation>`_
 .. TODO ON RELEASE: Update version number above on release
 * Using the development version from `GitHub`_ which will be explained below.
 
@@ -54,11 +54,11 @@ After the development tool installation make the directory writable::
 
   sudo chmod o+rw /var/www
   
-Then install ownCloud from git::
+Then install Nextcloud from git::
 
   ocdev setup --dir /var/www/<folder> base
 
-where <folder> is the folder where you want to install ownCloud.
+where <folder> is the folder where you want to install Nextcloud.
 
 Adjust rights::
 

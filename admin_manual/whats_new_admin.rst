@@ -1,12 +1,12 @@
 ===========================================
-What's New for Admins in ownCloud |version|
+What's New for Admins in Nextcloud |version|
 ===========================================
 
-See the `ownCloud 9.1 Features page 
-<https://github.com/owncloud/core/wiki/ownCloud-9.0-Features>`_ on Github for a 
+See the `Nextcloud 9.1 Features page 
+<https://github.com/owncloud/core/wiki/Nextcloud-9.0-Features>`_ on Github for a 
 comprehensive list of new features and updates.
 
-ownCloud has many improvements. Some of our new features are:
+Nextcloud has many improvements. Some of our new features are:
 
 * New ``occ`` option, ``--unscanned``, to scan only previously unscanned 
   files (`<https://github.com/owncloud/core/pull/24702>`_)

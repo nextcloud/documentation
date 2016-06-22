@@ -1,28 +1,28 @@
 .. _index:
 
 ===========================================
-ownCloud |version| User Manual Introduction
+Nextcloud |version| User Manual Introduction
 ===========================================
 
-**Welcome to ownCloud: your self-hosted file sync and share solution.**
+**Welcome to Nextcloud: your self-hosted file sync and share solution.**
 
-ownCloud is open source file sync and share software for everyone from
-individuals operating the free ownCloud Server edition, to large enterprises
-and service providers operating the ownCloud Enterprise Subscription. ownCloud
+Nextcloud is open source file sync and share software for everyone from
+individuals operating the free Nextcloud Server edition, to large enterprises
+and service providers operating the Nextcloud Enterprise Subscription. Nextcloud
 provides a safe, secure, and compliant file synchronization and sharing
 solution on servers that you control.
 
 You can share one or more files and folders on your computer, and synchronize 
-them with your ownCloud server. Place files in your local shared directories, 
+them with your Nextcloud server. Place files in your local shared directories, 
 and those files are immediately synchronized to the server and to other devices 
-using the ownCloud Desktop Sync Client, Android app, or iOS app. To learn more 
-about the ownCloud desktop and mobile clients, please refer to their respective 
+using the Nextcloud Desktop Sync Client, Android app, or iOS app. To learn more 
+about the Nextcloud desktop and mobile clients, please refer to their respective 
 manuals:
 
-* `ownCloud Desktop Client`_
-* `ownCloud Android App`_
-* `ownCloud iOS App`_ 
+* `Nextcloud Desktop Client`_
+* `Nextcloud Android App`_
+* `Nextcloud iOS App`_ 
 
-.. _`ownCloud Desktop Client`: https://doc.owncloud.org/desktop/2.1/
-.. _`ownCloud Android App`: https://doc.owncloud.org/android/
-.. _`ownCloud iOS App`: https://doc.owncloud.org/ios/
+.. _`Nextcloud Desktop Client`: https://doc.nextcloud.org/desktop/2.1/
+.. _`Nextcloud Android App`: https://doc.nextcloud.org/android/
+.. _`Nextcloud iOS App`: https://doc.nextcloud.org/ios/

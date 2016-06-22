@@ -1,8 +1,8 @@
 ======================
-ownCloud Documentation
+Nextcloud Documentation
 ======================
 
-Documentation is published on `<https://doc.owncloud.org>`_ and 
+Documentation is published on `<https://doc.nextcloud.org>`_ and 
 `<https://doc.owncloud.com>`_.
 
 The `documentation Wiki <https://github.com/owncloud/documentation/wiki>`_ is 
@@ -32,7 +32,7 @@ Spelling and Capitalization Conventions
 
 As this grows it may be moved to its own page.
 
-* ownCloud Apps Store
+* Nextcloud Apps Store
 * synchronize
 * Web (Web page, Web site)
 
@@ -56,7 +56,7 @@ Editing
 -------
 
 Contributing to the documentation requires a Github account. Make sure you are 
-working in the correct branch for your version of ownCloud or client apps. 
+working in the correct branch for your version of Nextcloud or client apps. 
 If your edits pertain to multiple manual versions, be prepared to backport as 
 needed.
 
@@ -110,7 +110,7 @@ The openSUSE way
 * sudo zypper in texlive-multirow
 * cd user_manual
 * make latexpdf
-* okular _build/latex/ownCloudUserManual.pdf
+* okular _build/latex/NextcloudUserManual.pdf
 
 The Debian/Ubuntu way
 ~~~~~~~~~~~~~~~~~~~~~
@@ -123,7 +123,7 @@ The Debian/Ubuntu way
 * sudo apt-get install texlive-latex-recommended
 * cd user_manual
 * make latexpdf
-* evince _build/latex/ownCloudUserManual.pdf
+* evince _build/latex/NextcloudUserManual.pdf
 
 The Arch Linux way
 ~~~~~~~~~~~~~~~~~~
@@ -133,7 +133,7 @@ The Arch Linux way
 * sudo pacman -S extra/texlive-core texlive-latexextra
 * cd user_manual
 * make latexpdf
-* PDFVIEWER _build/latex/ownCloudUserManual.pdf
+* PDFVIEWER _build/latex/NextcloudUserManual.pdf
 
 Windows
 ^^^^^^^

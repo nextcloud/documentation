@@ -2,11 +2,11 @@
 Configuring S3 and OpenStack Swift Objects as Primary Storage
 =============================================================
 
-In ownCloud Enterprise edition, you can configure S3 objects as primary 
-storage. This replaces the default ownCloud ``owncloud/data`` directory. You may 
+In Nextcloud Enterprise edition, you can configure S3 objects as primary 
+storage. This replaces the default Nextcloud ``owncloud/data`` directory. You may 
 still need to keep the ``owncloud/data`` directory for these reasons:
 
-* The ownCloud log file is saved in the data directory
+* The Nextcloud log file is saved in the data directory
 * Legacy apps may not support using anything but the ``owncloud/data`` directory
 
 You can move your logfile by changing its location in ``config.php``. You may still need 
@@ -15,12 +15,12 @@ You can move your logfile by changing its location in ``config.php``. You may st
 Implications
 ------------
 
-ownCloud in object store mode expects exclusive access to the object store 
+Nextcloud in object store mode expects exclusive access to the object store 
 container, because it only stores the binary data for each file. The metadata 
 are kept in the local database for performance reasons.
 
 The current implementation is incompatible with any app that uses 
-direct file I/O and circumvents the ownCloud virtual filesystem. That includes 
+direct file I/O and circumvents the Nextcloud virtual filesystem. That includes 
 Encryption and Gallery. Gallery stores thumbnails directly in the 
 filesystem, and Encryption causes severe overhead because key files need 
 to be fetched in addition to any requested file.

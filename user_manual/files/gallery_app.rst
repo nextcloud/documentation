@@ -6,9 +6,9 @@ The Pictures app has been rewritten and improved, and is now called the Gallery
 app. It supports more image formats, sorting, zoom, and scrolling. It also 
 supports advanced customizations via a simple text file.
 
-On your main ownCloud Files page, click the little icon at the top right, 
+On your main Nextcloud Files page, click the little icon at the top right, 
 underneath your username, to open your Gallery. The Gallery app automatically 
-finds all images in your ownCloud folders, and overlays the thumbnails with the 
+finds all images in your Nextcloud folders, and overlays the thumbnails with the 
 folder names. Click on the folder thumbnails to open the folders. At the top 
 left you have two sorting options, alphabetical and by date.
 
@@ -29,7 +29,7 @@ Custom Configuration
 You may customize a Gallery album with a simple text file named 
 **gallery.cnf**, which contains parameters structured using the 
 `Yaml <https://en.wikipedia.org/wiki/YAML>`_ markup language. You may have 
-multiple **gallery.cnf** files; you need one in your own root ownCloud folder 
+multiple **gallery.cnf** files; you need one in your own root Nextcloud folder 
 (your Home folder) that defines global features, and then you may have 
 individual per-album **gallery.cnf** files if you want to define different 
 behaviors in different albums.
@@ -72,7 +72,7 @@ puts it in ``data/<user>/files/``.) See :ref:`an example below
 Format
 ^^^^^^
 
-UTF-8, **without BOM**. A file created from within the ownCloud Web GUI works.
+UTF-8, **without BOM**. A file created from within the Nextcloud Web GUI works.
 
 Structure
 ^^^^^^^^^
@@ -89,7 +89,7 @@ getting error messages.
 Here is an example `gallery.cnf`::
 
   # Gallery configuration file
-  # Created on 31 Jan 2016 by ownCloud User
+  # Created on 31 Jan 2016 by Nextcloud User
  features:
    external_shares: yes
    native_svg: yes
@@ -117,7 +117,7 @@ Supported Variables
 
 **Global Features**
 
-Place this in your root ownCloud folder, which is your Home folder.
+Place this in your root Nextcloud folder, which is your Home folder.
 
 * **external_shares**: Set to **yes** in your root configuration file if you 
   want to load images stored on external locations, when using the 

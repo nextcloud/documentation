@@ -1,5 +1,5 @@
 ================================
-ownCloud |version| Release Notes
+Nextcloud |version| Release Notes
 ================================
 
 
@@ -8,14 +8,14 @@ Changes in 9.0
 
 9.0 requires .ico files for favicons. This will change in 9.1, which will 
 use .svg files. See `Changing favicon 
-<https://doc.owncloud.org/server/9.0/developer_manual/core/theming.html#changing
+<https://doc.nextcloud.org/server/9.0/developer_manual/core/theming.html#changing
 -favicon>`_ in the Developer Manual.
 
-Home folder rule is enforced in the user_ldap application in new ownCloud installations; see
-:doc:`configuration_user/user_auth_ldap`. This affects ownCloud 8.0.10, 8.1.5 and 8.2.0 and up.
+Home folder rule is enforced in the user_ldap application in new Nextcloud installations; see
+:doc:`configuration_user/user_auth_ldap`. This affects Nextcloud 8.0.10, 8.1.5 and 8.2.0 and up.
 
 The Calendar and Contacts apps have been rewritten and the CalDAV and CardDAV backends of these
-apps were merged into ownCloud core. During the upgrade existing Calendars and Addressbooks
+apps were merged into Nextcloud core. During the upgrade existing Calendars and Addressbooks
 are automatically migrated. As a fallback for failed upgrades or an option to test a migration
 ``dav:migrate-calendars`` and/or ``dav:migrate-addressbooks`` scripts are available via the
 ``occ`` command. See :doc:`configuration_server/occ_command`.
@@ -23,25 +23,25 @@ are automatically migrated. As a fallback for failed upgrades or an option to te
 Updates on systems with large datasets will take longer, due to the addition of checksums to the
 oC database. See `<https://github.com/owncloud/core/issues/22747>`_.
 
-Linux packages are available from our `official download repository <https://download.owncloud.org/download/repositories/stable/owncloud/>`_ .
-New in 9.0: split packages. ``owncloud`` installs ownCloud plus dependencies, including Apache
-and PHP. ``owncloud-files`` installs only ownCloud. This is useful for custom LAMP stacks, and
-allows you to install your own LAMP apps and versions without packaging conflicts with ownCloud.
+Linux packages are available from our `official download repository <https://download.nextcloud.org/download/repositories/stable/owncloud/>`_ .
+New in 9.0: split packages. ``owncloud`` installs Nextcloud plus dependencies, including Apache
+and PHP. ``owncloud-files`` installs only Nextcloud. This is useful for custom LAMP stacks, and
+allows you to install your own LAMP apps and versions without packaging conflicts with Nextcloud.
 See :doc:`installation/linux_installation`.
 
-New option for the ownCloud admin to enable or disable sharing on individual external mountpoints
+New option for the Nextcloud admin to enable or disable sharing on individual external mountpoints
 (see :ref:`external_storage_mount_options_label`). Sharing on such mountpoints is disabled by default.
 
 Enterprise 9.0
 --------------
 
 owncloud-enterprise packages are no longer available for CentOS6, RHEL6, 
-Debian7, or any version of Fedora. A new package, owncloud-enterprise-files, is available for all supported platforms, including the above. This new package comes without dependencies, and is installable on a larger number of platforms. System administrators must install their own LAMP stacks and databases. See https://owncloud.org/blog/time-to-upgrade-to-owncloud-9-0/
+Debian7, or any version of Fedora. A new package, owncloud-enterprise-files, is available for all supported platforms, including the above. This new package comes without dependencies, and is installable on a larger number of platforms. System administrators must install their own LAMP stacks and databases. See https://nextcloud.org/blog/time-to-upgrade-to-owncloud-9-0/
 
 Changes in 8.2
 --------------
 
-New location for Linux package repositories; ownCloud admins must manually 
+New location for Linux package repositories; Nextcloud admins must manually 
 change to the new repos. See :doc:`maintenance/upgrade`
 
 PHP 5.6.11+ breaks the LDAP wizard with a 'Could not connect to LDAP' error. See https://github.com/owncloud/core/issues/20020. 
@@ -49,18 +49,18 @@ PHP 5.6.11+ breaks the LDAP wizard with a 'Could not connect to LDAP' error. See
 ``filesystem_check_changes`` in ``config.php`` is set to 0 by default. This 
 prevents unnecessary update checks and improves performance. If you are using 
 external storage mounts such as NFS on a remote storage server, set this to 1 
-so that ownCloud will detect remote file changes.
+so that Nextcloud will detect remote file changes.
 
 XSendFile support has been removed, so there is no longer support for `serving 
 static files
-<https://doc.owncloud.org/server/8.1/admin_manual/configuration_files/
-serving_static_files_configuration.html>`_ from your ownCloud server.
+<https://doc.nextcloud.org/server/8.1/admin_manual/configuration_files/
+serving_static_files_configuration.html>`_ from your Nextcloud server.
 
 LDAP issue: 8.2 uses the ``memberof`` attribute by default. If this is not 
 activated on your LDAP server your user groups will not be detected, and you 
-will see this message in your ownCloud log: ``Error PHP Array to string 
+will see this message in your Nextcloud log: ``Error PHP Array to string 
 conversion at /var/www/html/owncloud/lib/private/template/functions.php#36``. 
-Fix this by disabling the ``memberof`` attribute on your ownCloud server with 
+Fix this by disabling the ``memberof`` attribute on your Nextcloud server with 
 the ``occ`` command, like this example on Ubuntu Linux::
 
  sudo -u www-data php occ ldap:set-config "s01" useMemberOfToDetectMembership 0
@@ -70,18 +70,18 @@ value; if there is not one then use empty quotes, ``""``. (See
 :doc:`configuration_server/occ_command`.)
 
 Users of the Linux Package need to update their repository setup as described
-in this `blogpost <https://owncloud.org/blog/upgrading-to-owncloud-server-8-2/>`_.
+in this `blogpost <https://nextcloud.org/blog/upgrading-to-owncloud-server-8-2/>`_.
 
 Changes in 8.1
 --------------
 
 Use APCu only if available in version 4.0.6 and higher. If you install an older version,
 you will see a ``APCu below version 4.0.6 is installed, for stability and performance
-reasons we recommend to update to a newer APCu version`` warning on your ownCloud admin page.
+reasons we recommend to update to a newer APCu version`` warning on your Nextcloud admin page.
 
 SMB external storage now based on ``php5-libsmbclient``, which must be downloaded 
-from the ownCloud software repositories (`installation instructions 
-<https://software.opensuse.org/download.html?project=isv%3AownCloud%3Acommunity% 
+from the Nextcloud software repositories (`installation instructions 
+<https://software.opensuse.org/download.html?project=isv%3ANextcloud%3Acommunity% 
 3A8.1&package=php5-libsmbclient>`_).
   
 "Download from link" feature has been removed.
@@ -92,13 +92,13 @@ will be lost after updates.
 
 The SabreDAV browser at ``/remote.php/webdav`` has been removed.
 
-Using ownCloud without a ``trusted_domain`` configuration will not work anymore.
+Using Nextcloud without a ``trusted_domain`` configuration will not work anymore.
 
 The logging format for failed logins has changed and considers now the proxy 
 configuration in ``config.php``.
 
 A default set of security and privacy HTTP headers have been added to the 
-ownCloud ``.htaccess`` file, and ownCloud administrators may now customize which 
+Nextcloud ``.htaccess`` file, and Nextcloud administrators may now customize which 
 headers are sent.
 
 More strict SSL certificate checking improves security but can result in
@@ -109,37 +109,37 @@ PHP or contact your vendor if you receive these errors.
 The persistent file-based cache (e.g. used by LDAP integration) has been dropped and 
 replaced with a memory-only cache, which must be explicitly configured. See 
 :doc:`configuration_user/user_auth_ldap`. Memory cache configuration for the 
-ownCloud server is no longer automatic, requiring installation of 
+Nextcloud server is no longer automatic, requiring installation of 
 your desired cache backend and configuration in 
 ``config.php`` (see :doc:`configuration_server/caching_configuration`.) 
 
 The OC_User_HTTP backend has been removed. Administrators are encouraged to use 
 the ``user_webdavauth`` application instead.
 
-ownCloud ships now with its own root certificate bundle derived from Mozilla's 
+Nextcloud ships now with its own root certificate bundle derived from Mozilla's 
 root certificates file. The system root certificate bundle will not be used 
 anymore for most requests.
   
-When you upgrade from ownCloud 8.0, with encryption enabled, to 8.1, you must 
+When you upgrade from Nextcloud 8.0, with encryption enabled, to 8.1, you must 
 enable the new encryption backend and migrate your encryption keys. See 
 :ref:`upgrading_encryption_label`.
 
-Encryption can no longer be disabled in ownCloud 8.1. It is planned to re-add
+Encryption can no longer be disabled in Nextcloud 8.1. It is planned to re-add
 this feature to the command line client for a future release.
 
-It is not recommended to upgrade encryption-enabled systems from ownCloud Server 8.0
+It is not recommended to upgrade encryption-enabled systems from Nextcloud Server 8.0
 to version 8.1.0 as there is a chance the migration will break. We recommend 
-migrating to the first bugfix release, ownCloud Server 8.1.1.
+migrating to the first bugfix release, Nextcloud Server 8.1.1.
 
 Due to various technical issues, by default desktop sync clients older than 
-1.7 are not allowed to connect and sync with the ownCloud server. This is 
+1.7 are not allowed to connect and sync with the Nextcloud server. This is 
 configurable via the ``minimum.supported.desktop.version`` switch in 
 ``config.php``.
 
 Previews are now generated at a maximum size of 2048 x 2048 pixels. This is configurable
 via the ``preview_max_x`` and ``preview_max_y`` switches in ``config.php``.
 
-The ownCloud 8 server is not supported on any version of Windows.
+The Nextcloud 8 server is not supported on any version of Windows.
 
 The 8.1.0 release has a minor bug which makes app updates fail at first try. Reload the
 apps page and try again, and the update will succeed.
@@ -154,16 +154,16 @@ Enterprise 8.1 Only
 -------------------
 
 The SharePoint Drive app does not verify the SSL certificate of the SharePoint 
-server or the ownCloud server, as it is expected that both devices are in the 
+server or the Nextcloud server, as it is expected that both devices are in the 
 same trusted environment.
 
-ownCloud 8.0
+Nextcloud 8.0
 ------------
 
 Manual LDAP Port Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When you are configuring the LDAP user and group backend application, ownCloud 
+When you are configuring the LDAP user and group backend application, Nextcloud 
 may not auto-detect the LDAP server's port number, so you will need to enter it 
 manually.
 
@@ -179,26 +179,26 @@ There is no preview icon displayed for text files when the file contains fewer t
 Remote Federated Cloud Share Cannot be Reshared With Local Users
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When you mount a Federated Cloud share from a remote ownCloud server, you cannot re-share it with
-your local ownCloud users. (See :doc:`configuration_files/federated_cloud_sharing_configuration` 
+When you mount a Federated Cloud share from a remote Nextcloud server, you cannot re-share it with
+your local Nextcloud users. (See :doc:`configuration_files/federated_cloud_sharing_configuration` 
 to learn more about federated cloud sharing)
 
 Manually Migrate Encryption Keys after Upgrade
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you are using the Encryption app and upgrading from older versions of 
-ownCloud to ownCloud 8.0, you must manually migrate your encryption keys.
+Nextcloud to Nextcloud 8.0, you must manually migrate your encryption keys.
 See :ref:`upgrading_encryption_label`.
 
 Windows Server Not Supported
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Windows Server is not supported in ownCloud 8.
+Windows Server is not supported in Nextcloud 8.
 
 PHP 5.3 Support Dropped
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-PHP 5.3 is not supported in ownCloud 8, and PHP 5.4 or better is required.
+PHP 5.3 is not supported in Nextcloud 8, and PHP 5.4 or better is required.
 
 Disable Apache Multiviews
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -214,11 +214,11 @@ Delete ``Multiviews`` and restart Apache.
 
 .. https://github.com/owncloud/core/issues/9039
 
-ownCloud Does Not Follow Symlinks
+Nextcloud Does Not Follow Symlinks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-ownCloud's file scanner does not follow symlinks, which could lead to 
-infinite loops. To avoid this do not use soft or hard links in your ownCloud 
+Nextcloud's file scanner does not follow symlinks, which could lead to 
+infinite loops. To avoid this do not use soft or hard links in your Nextcloud 
 data directory.
 
 .. https://github.com/owncloud/core/issues/8976
@@ -226,7 +226,7 @@ data directory.
 No Commas in Group Names
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Creating an ownCloud group with a comma in the group name causes ownCloud to 
+Creating an Nextcloud group with a comma in the group name causes Nextcloud to 
 treat the group as two groups.
 
 .. https://github.com/owncloud/core/issues/10983
@@ -254,7 +254,7 @@ Encrypting Large Numbers of Files
 When you activate the Encryption app on a running server that has large numbers 
 of files, it is possible that you will experience timeouts. It is best to 
 activate encryption at installation, before accumulating large numbers of files 
-on your ownCloud server.
+on your Nextcloud server.
 
 .. https://github.com/owncloud/core/issues/10657
 
@@ -266,7 +266,7 @@ Sharepoint Drive SSL Not Verified
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The SharePoint Drive app does not verify the SSL certificate of the SharePoint 
-server or the ownCloud server, as it is expected that both devices are in the 
+server or the Nextcloud server, as it is expected that both devices are in the 
 same trusted environment.
 
 No Federated Cloud Sharing with Shibboleth
@@ -277,12 +277,12 @@ with Shibboleth .
 
 .. https://github.com/owncloud/user_shibboleth/issues/28
 
-Direct Uploads to SWIFT do not Appear in ownCloud
+Direct Uploads to SWIFT do not Appear in Nextcloud
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When files are uploaded directly to a SWIFT share mounted as external storage 
-in ownCloud, the files do not appear in ownCloud. However, files uploaded to 
-the SWIFT mount through ownCloud are listed correctly in both locations.
+in Nextcloud, the files do not appear in Nextcloud. However, files uploaded to 
+the SWIFT mount through Nextcloud are listed correctly in both locations.
 
 .. https://github.com/owncloud/core/issues/8633
 
@@ -290,7 +290,7 @@ SWIFT Objectstore Incompatible with Encryption App
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The current SWIFT implementation is incompatible with any app that uses direct 
-file I/O and circumvents the ownCloud virtual filesystem. Using the Encryption 
+file I/O and circumvents the Nextcloud virtual filesystem. Using the Encryption 
 app on a SWIFT object store incurs twice as many HTTP requests and increases 
 latency significantly.
 
@@ -299,16 +299,16 @@ latency significantly.
 App Store is Back
 ^^^^^^^^^^^^^^^^^
 
-The ownCloud App Store has been re-enabled in oC 8. Note that third-party apps 
+The Nextcloud App Store has been re-enabled in oC 8. Note that third-party apps 
 are not supported.
 
-ownCloud 7 Release Notes
+Nextcloud 7 Release Notes
 ------------------------
 
 Manual LDAP Port Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When you are configuring the LDAP user and group backend application, ownCloud 
+When you are configuring the LDAP user and group backend application, Nextcloud 
 may not auto-detect the LDAP server's port number, so you will need to enter it 
 manually.
 
@@ -341,13 +341,13 @@ search attributes are ``givenName`` and ``sn`` you can find users by first name
 
 .. https://github.com/owncloud/core/issues/12647
 
-Protecting ownCloud on IIS from Data Loss
+Protecting Nextcloud on IIS from Data Loss
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Under certain circumstances, running your ownCloud server on IIS could be at 
+Under certain circumstances, running your Nextcloud server on IIS could be at 
 risk of data loss. To prevent this, follow these steps.
 
-In your ownCloud server configuration file, ``owncloud\config\config.php``, set 
+In your Nextcloud server configuration file, ``owncloud\config\config.php``, set 
 ``config_is_read_only`` to true.
     
 Set the ``config.php`` file to read-only.
@@ -359,14 +359,14 @@ Antivirus App Modes
 ^^^^^^^^^^^^^^^^^^^
 
 The Antivirus App offers three modes for running the ClamAV anti-virus scanner: 
-as a daemon on the ownCloud server, a daemon on a remote server, or an 
+as a daemon on the Nextcloud server, a daemon on a remote server, or an 
 executable mode that calls ``clamscan`` on the local server. We recommend using 
 one of the daemon modes, as they are the most reliable.
 
 "Enable Only for Specific Groups" Fails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Some ownCloud applications have the option to be enabled only for certain 
+Some Nextcloud applications have the option to be enabled only for certain 
 groups. However, when you select specific groups they do not get access to the 
 app.
 
@@ -387,7 +387,7 @@ Because of limitations in ``phpseclib``, you cannot upload files larger than
 "Not Enough Space Available" on File Upload
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Setting user quotas to ``unlimited`` on an ownCloud installation that has 
+Setting user quotas to ``unlimited`` on an Nextcloud installation that has 
 unreliable free disk space reporting-- for example, on a shared hosting 
 provider-- may cause file uploads to fail with a "Not Enough Space Available" 
 error. A workaround is to set file quotas for all users instead of 
@@ -396,7 +396,7 @@ error. A workaround is to set file quotas for all users instead of
 No More Expiration Date On Local Shares
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In older versions of ownCloud, you could set an expiration date on both local 
+In older versions of Nextcloud, you could set an expiration date on both local 
 and public shares. Now you can set an expiration date only on public shares, 
 and 
 local shares do not expire when public shares expire.
@@ -436,19 +436,19 @@ Sharepoint Drive SSL
 ^^^^^^^^^^^^^^^^^^^^
 
 The SharePoint Drive app does not verify the SSL certificate of the SharePoint 
-server or the ownCloud server, as it is expected that both devices are in the 
+server or the Nextcloud server, as it is expected that both devices are in the 
 same trusted environment.
 
 Shibboleth and WebDAV Incompatible
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Shibboleth and standard WebDAV are incompatible, and cannot be used together in 
-ownCloud. If Shibboleth is enabled, the ownCloud client uses an extended WebDAV 
+Nextcloud. If Shibboleth is enabled, the Nextcloud client uses an extended WebDAV 
 protocol
 
 No SQLite
 ^^^^^^^^^
 
-SQLite is no longer an installation option for ownCloud Enterprise Edition, as 
+SQLite is no longer an installation option for Nextcloud Enterprise Edition, as 
 it not suitable for multiple-user installations or managing large numbers of 
 files.
 
