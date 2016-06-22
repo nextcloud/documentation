@@ -5,7 +5,7 @@ Preferred Linux Installation Method
 Nextcloud
 ---------
 
-NEXTCLOUD Linux distribution packages are not available at the Moment (June 2016)!
+Nextcloud Linux distribution packages are not available at the moment (June 2016)!
 The following Text reffers to the OwnCloud packages
 
 Changes in 9.0
