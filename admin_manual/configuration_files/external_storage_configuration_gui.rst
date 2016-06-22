@@ -139,7 +139,7 @@ Adding Files to External Storages
 
 We recommend configuring the background job **Webcron** or
 **Cron** (see :doc:`../configuration_server/background_jobs_configuration`)
-to enable external_storage/nextcloud to automatically detect files added to your external 
+to enable Nextcloud to automatically detect files added to your external 
 storages.
 
 Nextcloud may not always be able to find out what has been
