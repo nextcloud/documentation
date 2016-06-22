@@ -1,13 +1,13 @@
 =========================================
-Installing ownCloud From the Command Line
+Installing Nextcloud from the Command Line
 =========================================
 
-It is now possible to install ownCloud entirely from the command line. This is 
+It is now possible to install Nextcloud entirely from the command line. This is 
 convenient for scripted operations, headless servers, and sysadmins who prefer 
-the command line. There are three stages to installing ownCloud via the command 
+the command line. There are three stages to installing Nextcloud via the command 
 line:
 
-1. Download and install the ownCloud code via your package manager, or download 
+1. Download and install the Nextcloud code via your package manager, or download 
 and unpack the tarball in the appropriate directories. (See 
 :doc:`linux_installation` and :doc:`source_installation`.)
 
@@ -24,31 +24,31 @@ of running the graphical Installation Wizard::
  $ sudo -u www-data php occ  maintenance:install --database 
  "mysql" --database-name "nextcloud"  --database-user "root" --database-pass 
  "password" --admin-user "admin" --admin-pass "password" 
- ownCloud is not installed - only a limited number of commands are available
- ownCloud was successfully installed
+ Nextcloud is not installed - only a limited number of commands are available
+ Nextcloud was successfully installed
  
-Note that you must change to the root ownCloud directory, as in the example 
+Note that you must change to the root Nextcloud directory, as in the example 
 above, to run ``occ  maintenance:install``, or the installation will fail with 
 a PHP fatal error message.
 
 Supported databases are::
 
- - sqlite (SQLite3 - ownCloud Community edition only)
+ - sqlite (SQLite3 - Nextcloud Community edition only)
  - mysql (MySQL/MariaDB)
  - pgsql (PostgreSQL)
- - oci (Oracle - ownCloud Enterprise edition only)
+ - oci (Oracle)
  
 See :ref:`command_line_installation_label` for more information.
 
-Finally, apply the correct strong permissions to your ownCloud files and 
+Finally, apply the correct strong permissions to your Nextcloud files and 
 directories (see :ref:`strong_perms_label`). This is an extremely important 
-step. It helps protect your ownCloud installation, and ensures that it will run 
+step. It helps protect your Nextcloud installation, and ensures that it will run 
 correctly.
 
 BINLOG_FORMAT = STATEMENT
 -------------------------
 
-If your ownCloud installation fails and you see this in your ownCloud log::
+If your Nextcloud installation fails and you see this in your Nextcloud log::
 
  An unhandled exception has been thrown: exception ‘PDOException’ with message 
  'SQLSTATE[HY000]: General error: 1665 Cannot execute statement: impossible to 

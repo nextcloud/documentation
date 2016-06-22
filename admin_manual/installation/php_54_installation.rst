@@ -2,7 +2,7 @@
 Installing PHP 5.4 on RHEL 6 and CentOS 6
 =========================================
 
-Red Hat Enterprise Linux and CentOS 6 still ship with PHP 5.3. ownCloud 
+Red Hat Enterprise Linux and CentOS 6 still ship with PHP 5.3. Nextcloud 
 requires PHP 5.4 or better. There are several third-party repositories that 
 supply PHP 5.4, but you must use the Software Collections (SCL) repository to 
 be in compliance with your RHEL support contract, and not any other third-party 

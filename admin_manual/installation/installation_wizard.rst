@@ -5,7 +5,7 @@ Installation Wizard
 Quick Start
 -----------
 
-When ownCloud prerequisites are fulfilled and all ownCloud files are installed, 
+When Nextcloud prerequisites are fulfilled and all Nextcloud files are installed, 
 the last step to completing the installation is running the Installation 
 Wizard. 
 This is just three steps:
@@ -18,9 +18,9 @@ This is just three steps:
    :scale: 75%
    :alt: screenshot of the installation wizard   
    
-You're finished and can start using your new ownCloud server.   
+You're finished and can start using your new Nextcloud server.   
 
-Of course, there is much more that you can do to set up your ownCloud server for 
+Of course, there is much more that you can do to set up your Nextcloud server for 
 best performance and security. In the following sections we will cover important 
 installation and post-installation steps. Note that you must follow the 
 instructions in :ref:`Setting Strong Permissions <strong_perms_label>` in order 
@@ -37,15 +37,15 @@ Data Directory Location
 -----------------------
 
 Click **Storage and Database** to expose additional installation configuration 
-options for your ownCloud data directory and database.
+options for your Nextcloud data directory and database.
 
 .. figure:: images/install-wizard-a1.png
    :scale: 75%
    :alt: installation wizard with all options exposed
 
-You should locate your ownCloud data directory outside of your Web root if you 
+You should locate your Nextcloud data directory outside of your Web root if you 
 are using an HTTP server other than Apache, or you may wish to store your 
-ownCloud data in a different location for other reasons (e.g. on a storage 
+Nextcloud data in a different location for other reasons (e.g. on a storage 
 server). It is best to configure your data directory location at installation, 
 as it is difficult to move after installation. You may put it anywhere; in this 
 example is it located in ``/var/oc_data``. This directory must already exist, 
@@ -57,33 +57,32 @@ and must be owned by your HTTP user (see
 Database Choice
 ---------------
 
-SQLite is the default database for ownCloud Server (it is not available and not supported
-in the ownCloud Enterprise edition), and it is good only for testing and lightweight single-user
-setups without client synchronization. Supported databases are MySQL, MariaDB,
-Oracle 11g (ownCloud Enterprise edition only), and PostgreSQL, and we recommend
-:doc:`MySQL/MariaDB <system_requirements>`. Your database and PHP connectors 
-must be installed before you run the Installation Wizard. When you install 
-ownCloud from packages all the necessary dependencies will be satisfied (see 
-:doc:`source_installation` for a detailed listing of required and optional PHP 
-modules). You will need the root database login, or any administrator login that 
-has permissions to create and modify databases, and then enter any name you want 
-for your ownCloud database.
+SQLite is the default database for Nextcloud Server and it is good only for
+testing and lightweight single-user setups without client synchronization.
+Supported databases are MySQL, MariaDB, Oracle 11g , and PostgreSQL, and we
+recommend :doc:`MySQL/MariaDB <system_requirements>`. Your database and PHP
+connectors must be installed before you run the Installation Wizard. When
+you install Nextcloud from packages all the necessary dependencies will be
+satisfied (see :doc:`source_installation` for a detailed listing of required
+and optional PHP modules). You will need the root database login, or any
+administrator login that has permissions to create and modify databases, and
+then enter any name you want for your Nextcloud database.
 
 After you enter your root or administrator login for your database, the 
 installer creates a special database user with privileges limited to the 
-ownCloud database. Then ownCloud needs only the special ownCloud database 
-user, and drops the root dB login. This user is named for your ownCloud admin 
-user, with an ``oc_`` prefix, and then given a random password. The ownCloud 
+Nextcloud database. Then Nextcloud needs only the special Nextcloud database 
+user, and drops the root dB login. This user is named for your Nextcloud admin 
+user, with an ``oc_`` prefix, and then given a random password. The Nextcloud 
 database user and password are written into ``config.php``::
 
   'dbuser' => 'oc_molly',
   'dbpassword' => 'pX65Ty5DrHQkYPE5HRsDvyFHlZZHcm',  
 
-Click Finish Setup, and start using your new ownCloud server. 
+Click Finish Setup, and start using your new Nextcloud server. 
 
 .. figure:: images/install-wizard-a2.png
    :scale: 75%
-   :alt: ownCloud welcome screen after a successful installation
+   :alt: Nextcloud welcome screen after a successful installation
 
 Now we will look at some important post-installation steps.
 
@@ -92,9 +91,9 @@ Now we will look at some important post-installation steps.
 Trusted Domains
 ---------------
 
-All URLs used to access your ownCloud server must be whitelisted in your 
+All URLs used to access your Nextcloud server must be whitelisted in your 
 ``config.php`` file, under the ``trusted_domains`` setting. Users 
-are allowed to log into ownCloud only when they point their browsers to a 
+are allowed to log into Nextcloud only when they point their browsers to a 
 URL that is listed in the ``trusted_domains`` setting. You may use IP addresses 
 and domain names. A typical configuration looks like this::
 
@@ -137,12 +136,12 @@ use :ref:`label-phpinfo` (Look for the **User/Group** line).
 
 .. note:: When using an NFS mount for the data directory, do not change its 
    ownership from the default. The simple act of mounting the drive will set 
-   proper permissions for ownCloud to write to the directory. Changing 
+   proper permissions for Nextcloud to write to the directory. Changing 
    ownership as above could result in some issues if the NFS mount is 
    lost.
 
 The easy way to set the correct permissions is to copy and run this script. 
-Replace the ``ocpath`` variable with the path to your ownCloud directory, and 
+Replace the ``ocpath`` variable with the path to your Nextcloud directory, and 
 replace the ``htuser`` and ``htgroup`` variables with your HTTP user and group::
 
  #!/bin/bash
@@ -183,10 +182,10 @@ replace the ``htuser`` and ``htgroup`` variables with your HTTP user and group::
    chown ${rootuser}:${htgroup} ${ocpath}/data/.htaccess
  fi
  
-If you have customized your ownCloud installation and your filepaths are 
+If you have customized your Nextcloud installation and your filepaths are 
 different than the standard installation, then modify this script accordingly. 
 
-This lists the recommended modes and ownership for your ownCloud directories 
+This lists the recommended modes and ownership for your Nextcloud directories 
 and files:
 
 * All files should be read-write for the file owner, read-only for the 
@@ -204,6 +203,6 @@ and files:
 * Both :file:`.htaccess` files are read-write file owner, read-only group and 
   world
 
-These strong permissions prevent upgrading your ownCloud server; 
+These strong permissions prevent upgrading your Nextcloud server; 
 see :ref:`set_updating_permissions_label` for a script to quickly change 
 permissions to allow upgrading.

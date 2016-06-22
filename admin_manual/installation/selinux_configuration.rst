@@ -5,8 +5,8 @@ SELinux Configuration
 =====================
 
 When you have SELinux enabled on your Linux distribution, you may run into 
-permissions problems after a new ownCloud installation, and see ``permission 
-denied`` errors in your ownCloud logs. 
+permissions problems after a new Nextcloud installation, and see ``permission 
+denied`` errors in your Nextcloud logs. 
 
 The following settings should work for most SELinux systems that use the 
 default distro profiles. Run these commands as root, and remember to adjust the filepaths 
@@ -19,8 +19,8 @@ in these examples for your installation::
  semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/apps'
  restorecon '/var/www/html/nextcloud/apps'
  
-If you uninstall ownCloud you need to remove the ownCloud directory labels. To do 
-this execute the following commands as root after uninstalling ownCloud::
+If you uninstall Nextcloud you need to remove the Nextcloud directory labels. To do 
+this execute the following commands as root after uninstalling Nextcloud::
 
  semanage fcontext -d -t httpd_sys_rw_content_t '/var/www/html/nextcloud/data'
  restorecon '/var/www/html/nextcloud/data'
@@ -53,7 +53,7 @@ Use this setting to allow LDAP connections::
 Allow access to remote network
 ------------------------------
 
-ownCloud requires access to remote networks for functions such as Server-to-Server sharing, external storages or
+Nextcloud requires access to remote networks for functions such as Server-to-Server sharing, external storages or
 the app store. To allow this access use the following setting::
 
  setsebool -P httpd_can_network_connect on
@@ -61,7 +61,7 @@ the app store. To allow this access use the following setting::
 Allow access to SMTP/sendmail
 -----------------------------
 
-If you want to allow ownCloud to send out e-mail notifications via sendmail you need
+If you want to allow Nextcloud to send out e-mail notifications via sendmail you need
 to use the following setting::
 
  setsebool -P httpd_can_sendmail on

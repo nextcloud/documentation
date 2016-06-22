@@ -3,17 +3,17 @@ Converting Database Type
 ========================
 
 You can convert a SQLite database to a more performing MySQL, MariaDB or 
-PostgreSQL database with the ownCloud command line tool. SQLite is good for 
-testing and simple single-user ownCloud servers, but it does not scale for 
+PostgreSQL database with the Nextcloud command line tool. SQLite is good for 
+testing and simple single-user Nextcloud servers, but it does not scale for 
 multiple-user production users.
 
-.. note:: ownCloud Enterprise edition does not support SQLite.
+.. note:: Nextcloud Enterprise edition does not support SQLite.
 
 Run the conversion
 ------------------
 
 First setup the new database, here called "new_db_name".
-In ownCloud root folder call
+In Nextcloud root folder call
 
 ::
 
@@ -40,12 +40,12 @@ To successfully proceed with the conversion, you must type ``yes`` when prompted
 with the question ``Continue with the conversion?``
 
 On success the converter will automatically configure the new database in your 
-ownCloud config ``config.php``.
+Nextcloud config ``config.php``.
 
 Unconvertible Tables
 --------------------
 
-If you updated your ownCloud installation there might exist old tables, which 
+If you updated your Nextcloud installation there might exist old tables, which 
 are not used anymore. The converter will tell you which ones.
 
 ::
