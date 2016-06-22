@@ -35,7 +35,7 @@ those individually if necessary.
      :alt: Adding a new device.
 
 .. note:: You have only access to the device password when creating it,
-   ownCloud will not save the plain password, hence it's recommended to
+   Nextcloud will not save the plain password, hence it's recommended to
    enter the password on the new client immediately.
 
 

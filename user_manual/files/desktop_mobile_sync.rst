@@ -3,7 +3,9 @@ Desktop and Mobile Synchronization
 ==================================
 
 For synchronizing files with your desktop computer, we recommend using the
-`ownCloud Sync Client`_ for Windows, Mac OS X and Linux.
+`ownCloud Sync Client`_ for Windows, Mac OS X and Linux until the Nextcloud
+Sync Client will be released..
+
 
 The ownCloud Desktop Sync Client enables you to connect to your private 
 ownCloud Server.
@@ -23,8 +25,8 @@ Mobile Clients
 --------------
 
 Visit your Personal page in your ownCloud Web interface to find download links 
-for Android and iOS mobile sync clients. Or, visit the `ownCloud download page 
-<https://owncloud.org/install/>`_.
+for Android and iOS mobile sync clients. Or, visit the `Nextcloud download page 
+<https://nextcloud.com/install/>`_.
 
-Visit the `ownCloud documentation page <https://doc.owncloud.org/>`_ to read 
-the mobile apps user manuals.
+Visit the `Nextcloud documentation page <https://docs.nextcloud.org/>`_ to read 
+the user manuals.

@@ -2,7 +2,7 @@
 Storage Quota
 =============
 
-Your ownCloud admin has the option to set a storage quota on users. Look at 
+Your Nextcloud admin has the option to set a storage quota on users. Look at 
 the top of your Personal page to see what your quota is, and how much you have 
 used.
 
