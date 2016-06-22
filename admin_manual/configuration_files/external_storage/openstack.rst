@@ -8,7 +8,7 @@ OpenStack mechanism, and the other is used exclusively for Rackspace, a provider
 of object storage that uses the OpenStack Swift protocol.
 
 The OpenStack authentication mechanism uses the OpenStack Keystone v2
-protocol. Your ownCloud configuration needs:
+protocol. Your Nextcloud configuration needs:
 
 * **Bucket**. This is user-defined; think of it as a subdirectory of your total 
   storage. The bucket will be created if it does not exist.

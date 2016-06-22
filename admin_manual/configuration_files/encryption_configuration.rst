@@ -2,29 +2,29 @@
 Encryption Configuration
 ========================
 
-The primary purpose of the ownCloud server-side encryption is to protect users' 
+The primary purpose of the Nextcloud server-side encryption is to protect users' 
 files on remote storage, such as Dropbox and Google Drive, and to do it easily 
-and seamlessly from within ownCloud.
+and seamlessly from within Nextcloud.
 
-In ownCloud 9.0 the server-side encryption separates encryption of local and 
+In Nextcloud 9.0 the server-side encryption separates encryption of local and 
 remote storage. This allows you to encrypt remote storage, such as Dropbox and 
-Google, without having to also encrypt your home storage on your ownCloud 
+Google, without having to also encrypt your home storage on your Nextcloud 
 server.
 
-.. note:: Starting with ownCloud 9.0 we support Authenticated Encryption for all
+.. note:: Starting with Nextcloud 9.0 we support Authenticated Encryption for all
    newly encrypted files. See https://hackerone.com/reports/108082 for more 
    technical information about the impact.
    
    For maximum security make sure to configure external storage with "Check for 
-   changes: Never". This will let ownCloud ignore new files not added via ownCloud, 
+   changes: Never". This will let Nextcloud ignore new files not added via Nextcloud, 
    so a malicious external storage administrator could not add new files to the 
    storage without your knowledge. Of course, this is not wise if your external 
    storage is subject to legitimate external changes.
 
-ownCloud server-side encryption encrypts files stored on the ownCloud server, 
-and files on remote storage that is connected to your ownCloud server. 
-Encryption and decryption are performed on the ownCloud server. All files sent 
-to remote storage will be encrypted by the ownCloud server, and upon retrieval, 
+Nextcloud server-side encryption encrypts files stored on the Nextcloud server, 
+and files on remote storage that is connected to your Nextcloud server. 
+Encryption and decryption are performed on the Nextcloud server. All files sent 
+to remote storage will be encrypted by the Nextcloud server, and upon retrieval, 
 decrypted before serving them to you and anyone you have shared them with.
 
 .. note:: Encrypting files increases their size by roughly 35%, so you must 
@@ -32,11 +32,11 @@ decrypted before serving them to you and anyone you have shared them with.
    storage quotas. User's quotas are based on the unencrypted file size, and 
    not the encrypted file size.
 
-When files on external storage are encrypted in ownCloud, you cannot share them 
-directly from the external storage services, but only through ownCloud sharing 
-because the key to decrypt the data never leaves the ownCloud server.
+When files on external storage are encrypted in Nextcloud, you cannot share them 
+directly from the external storage services, but only through Nextcloud sharing 
+because the key to decrypt the data never leaves the Nextcloud server.
 
-ownCloud's server-side encryption generates a strong encryption key, which is 
+Nextcloud's server-side encryption generates a strong encryption key, which is 
 unlocked by user's passwords. Your users don't need to track an extra 
 password, but simply log in as they normally do. It encrypts only the contents 
 of files, and not filenames and directory structures.
@@ -51,25 +51,25 @@ The encryption keys are stored in the following directories:
   system wide external storage
   
 When encryption is enabled, all files are encrypted and decrypted by the 
-ownCloud application, and stored encrypted on your remote storage.
-This protects your data on externally hosted storage. The ownCloud 
+Nextcloud application, and stored encrypted on your remote storage.
+This protects your data on externally hosted storage. The Nextcloud 
 admin and the storage admin will see only encrypted files when browsing backend 
 storage.  
   
-.. warning:: Encryption keys are stored only on the ownCloud server, eliminating
+.. warning:: Encryption keys are stored only on the Nextcloud server, eliminating
    exposure of your data to third-party storage providers. The encryption app 
-   does **not** protect your data if your ownCloud server is compromised, and it
-   does not prevent ownCloud administrators from reading user's files. This 
+   does **not** protect your data if your Nextcloud server is compromised, and it
+   does not prevent Nextcloud administrators from reading user's files. This 
    would require client-side encryption, which this app does not provide. If 
-   your ownCloud server is not connected to any external storage services then 
+   your Nextcloud server is not connected to any external storage services then 
    it is better to use other encryption tools, such as file-level or 
    whole-disk encryption. 
    
-   Note also that SSL terminates at or before Apache on the ownCloud server, and 
+   Note also that SSL terminates at or before Apache on the Nextcloud server, and 
    all files will exist in an unencrypted state between the SSL connection 
-   termination and the ownCloud code that encrypts and decrypts files. This is 
+   termination and the Nextcloud code that encrypts and decrypts files. This is 
    also potentially exploitable by anyone with administrator access to your 
-   server. Read `How ownCloud uses encryption to protect your data 
+   server. Read `How Nextcloud uses encryption to protect your data 
    <https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your- 
    data/>`_ for more information.
    
@@ -77,7 +77,7 @@ Before Enabling Encryption
 --------------------------
 
 Plan very carefully before enabling encryption because it is not reversible via 
-the ownCloud Web interface. If you lose your encryption keys your files are not 
+the Nextcloud Web interface. If you lose your encryption keys your files are not 
 recoverable. Always have backups of your encryption keys stored in a safe 
 location, and consider enabling all recovery options.
 
@@ -88,10 +88,10 @@ You have more options via the ``occ`` command (see :ref:`occ_encryption_label`)
 Enabling Encryption
 -------------------
 
-ownCloud encryption consists of two parts. The base encryption system is 
+Nextcloud encryption consists of two parts. The base encryption system is 
 enabled and disabled on your Admin page. First you must enable this, and then 
 select an encryption module to load. Currently the only available encryption 
-module is the ownCloud Default Encryption Module.
+module is the Nextcloud Default Encryption Module.
 
 First go to the **Server-side encryption** section of your Admin page and check 
 **Enable server-side encryption**. You have one last chance to change your mind.
@@ -100,11 +100,11 @@ First go to the **Server-side encryption** section of your Admin page and check
 
 After clicking the **Enable Encryption** button you see the message "No 
 encryption module loaded, please load a encryption module in the app menu", so 
-go to your Apps page to enable the ownCloud Default Encryption Module.
+go to your Apps page to enable the Nextcloud Default Encryption Module.
 
 .. figure:: images/encryption1.png
 
-Return to your Admin page to see the ownCloud Default Encryption 
+Return to your Admin page to see the Nextcloud Default Encryption 
 Module added to the module selector, and automatically selected. Now you must 
 log out and then log back in to initialize your encryption keys.
 
@@ -146,8 +146,8 @@ storage mount, see :ref:`external_storage_mount_options_label`
 Enabling Users File Recovery Keys
 ----------------------------------
 
-If you lose your ownCloud password, then you lose access to your encrypted 
-files. If one of your users loses their ownCloud password their files are 
+If you lose your Nextcloud password, then you lose access to your encrypted 
+files. If one of your users loses their Nextcloud password their files are 
 unrecoverable. You cannot reset their password in the normal way; you'll see a 
 yellow banner warning "Please provide an admin recovery password, otherwise all 
 user data will be lost".
@@ -209,9 +209,9 @@ module is OC_DEFAULT_MODULE)::
 The [module ID] is taken from the ``encryption:list-modules`` command.
 
 Encrypt all data files for all users. For performance reasons, when you enable 
-encryption on an ownCloud server only new and changed files are encrypted. This 
+encryption on an Nextcloud server only new and changed files are encrypted. This 
 command gives you the option to encrypt all files. You must first put your 
-ownCloud server into single-user mode to prevent any user activity until 
+Nextcloud server into single-user mode to prevent any user activity until 
 encryption is completed::
 
  occ maintenance:singleuser
@@ -221,7 +221,7 @@ Then run ``occ``::
 
  occ encryption:encrypt-all
  
- You are about to start to encrypt all files stored in your ownCloud.
+ You are about to start to encrypt all files stored in your Nextcloud.
  It will depend on the encryption module you use which files get encrypted.
  Depending on the number and size of your files this can take some time.
  Please make sure that no users access their files during this process!
@@ -264,7 +264,7 @@ Disabling Encryption
 --------------------
 
 You may disable encryption only with ``occ``. Make sure you have backups of all 
-encryption keys, including users'. Put your ownCloud server into 
+encryption keys, including users'. Put your Nextcloud server into 
 single-user mode, and then disable your encryption module with this command::
 
  occ maintenance:singleuser --on
@@ -296,50 +296,8 @@ LDAP and Other External User Back-ends
 
 If you use an external user back-end, such as an LDAP or Samba server, and you 
 change a user's password on the back-end, the user will be prompted to change 
-their ownCloud login to match on their next ownCloud login. The user will need 
+their Nextcloud login to match on their next Nextcloud login. The user will need 
 both their old and new passwords to do this. If you have enabled the Recovery 
-Key then you can change a user's password in the ownCloud Users panel to match 
+Key then you can change a user's password in the Nextcloud Users panel to match 
 their back-end password, and then, of course, notify the user and give them 
 their new password.
-
-.. _upgrading_encryption_label:
-
-Encryption migration to ownCloud 8.0
-------------------------------------
-
-When you upgrade from older versions of ownCloud to ownCloud 8.0, you must manually migrate
-your encryption keys with the *occ* command after the upgrade is complete, like this
-example for CentOS: *sudo -u apache php occ encryption:migrate-keys* You must run *occ* as
-your HTTP user. See :doc:`../configuration_server/occ_command` to learn more about *occ*.
-
-Encryption migration to ownCloud 8.1
-------------------------------------
-
-The encryption backend has changed in ownCloud 8.1 again, so you must take some 
-additional steps to migrate encryption correctly. If you do not follow these 
-steps you may not be able to access your files.
-
-Before you start your upgrade, put your ownCloud server into 
-``maintenance:singleuser`` mode (See :doc:`../maintenance/enable_maintenance`.) 
-You must do this to prevent users and sync clients from accessing files before 
-you have completed your encryption migration.
-
-After your upgrade is complete, follow the steps in 
-:ref:`enable_encryption_label` to 
-enable the new encryption system. Then click the **Start Migration** button on 
-your Admin page to migrate your encryption keys, or use the ``occ`` command. We 
-strongly recommend using the ``occ`` command; the **Start Migration** button is 
-for admins who do not have access to the console, for example installations on 
-shared hosting. This example is for Debian/Ubuntu Linux::
-
- $ sudo -u www-data php occ encryption:migrate
- 
-This example is for Red Hat/CentOS/Fedora Linux::
-
- $ sudo -u apache php occ encryption:migrate
- 
-You must run ``occ`` as your HTTP user; see 
-:doc:`../configuration_server/occ_command`.
-
-When you are finished, take your ownCloud server out of 
-``maintenance:singleuser`` mode.

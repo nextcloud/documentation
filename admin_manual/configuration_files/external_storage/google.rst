@@ -2,8 +2,8 @@
 Google Drive
 ============
 
-ownCloud uses OAuth 2.0 to connect to Google Drive. This requires configuration
-through Google to get an app ID and app secret, as ownCloud registers itself
+Nextcloud uses OAuth 2.0 to connect to Google Drive. This requires configuration
+through Google to get an app ID and app secret, as Nextcloud registers itself
 as an app.
 
 All applications that access a Google API must be registered through the 
@@ -56,7 +56,7 @@ will use 0Auth 2.0.
    :alt: Another warning to create credentials.
    
 Now we have to create a consent screen. This is the information in the screen 
-Google shows you when you connect your new Google app to ownCloud the first 
+Google shows you when you connect your new Google app to Nextcloud the first 
 time. Click **Configure consent screen**. Then fill in the required form fields. 
 Your logo must be hosted, as you cannot upload it, so enter its URL. When 
 you're finished click **Save**.
@@ -69,10 +69,10 @@ then enter your app name. **Authorized JavaScript Origins** is your root domain,
 for example ``https://example.com``, without a trailing slash. You need two 
 **Authorized Redirect URIs**, and they must be in this form::
 
-  https://example.com/owncloud/index.php/settings/personal
-  https://example.com/owncloud/index.php/settings/admin
+  https://example.com/nextcloud/index.php/settings/personal
+  https://example.com/nextcloud/index.php/settings/admin
   
-Replace ``https://example.com/owncloud/`` with your own ownCloud server URL, 
+Replace ``https://example.com/nextcloud/`` with your own Nextcloud server URL, 
 then click **Create**.
 
 .. figure:: images/google-drive9.png
@@ -90,11 +90,11 @@ to see complete information.
 .. figure:: images/google-drive11.png
    :alt: Client ID and client secret
    
-Now you have everything you need to mount your Google Drive in ownCloud. 
+Now you have everything you need to mount your Google Drive in Nextcloud. 
 
 Go to the External Storage section of your Admin page, create your new folder 
 name, enter the Client ID and Client Secret, and click **Grant Access**. Your 
-consent page appears when ownCloud makes a successful connection. Click 
+consent page appears when Nextcloud makes a successful connection. Click 
 **Allow**.
 
 .. figure:: images/google-drive12.png
@@ -104,7 +104,7 @@ When you see the green light confirming a successful connection
 you're finished.
 
 .. figure:: images/google-drive13.png
-   :alt: Google Drive mount in ownCloud.
+   :alt: Google Drive mount in Nextcloud.
 
 See :doc:`../external_storage_configuration_gui` for additional mount 
 options and information.

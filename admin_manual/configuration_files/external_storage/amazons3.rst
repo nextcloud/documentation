@@ -2,7 +2,7 @@
 Amazon S3
 =========
 
-To connect your Amazon S3 buckets to ownCloud, you will need:
+To connect your Amazon S3 buckets to Nextcloud, you will need:
 
 - S3 access key
 - S3 secret key

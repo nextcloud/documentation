@@ -1,19 +1,19 @@
 Configuring the Collaborative Documents App
 ===========================================
 
-The Documents application supports editing documents within ownCloud, without the 
+The Documents application supports editing documents within Nextcloud, without the 
 need to launch an external application. The Documents app supports these 
 features:
 
 * Cooperative edit, with multiple users editing files simultaneously. 
-* Document creation within ownCloud.
+* Document creation within Nextcloud.
 * Document upload.
-* Share and edit files in the browser, and then share them inside ownCloud or 
+* Share and edit files in the browser, and then share them inside Nextcloud or 
   through a public link.
 
 Supported file formats are `.odt`, `.doc`, and `.docx`. `.odt` is supported 
-natively in ownCloud, and you must have LibreOffice or OpenOffice installed on 
-the ownCloud server to convert `.doc`, and `.docx` documents.
+natively in Nextcloud, and you must have LibreOffice or OpenOffice installed on 
+the Nextcloud server to convert `.doc`, and `.docx` documents.
   
 Enabling the Documents App
 --------------------------

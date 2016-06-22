@@ -2,7 +2,7 @@
 Dropbox
 =======
 
-While Dropbox supports the newer OAuth 2.0, ownCloud uses OAuth 1.0, so you can
+While Dropbox supports the newer OAuth 2.0, Nextcloud uses OAuth 1.0, so you can
 safely ignore any references to OAuth 2.0 in the Dropbox configuration.
 
 Connecting Dropbox is a little more work because you have to create a Dropbox 
@@ -37,10 +37,10 @@ that you want to release publicly.
 .. figure:: images/dropbox-4.png
    :alt: Your app's page.
 
-Click **Enable additional users** to allow multiple ownCloud users to access 
+Click **Enable additional users** to allow multiple Nextcloud users to access 
 your new Dropbox share.
   
-Now go to your ownCloud Admin page. Your ownCloud configuration requires only 
+Now go to your Nextcloud Admin page. Your Nextcloud configuration requires only 
 the local mount name, the **App Key** and the **App Secret**, and which users 
 or groups have access to the share. Remember the little gear icon at the 
 far right for additional options.
@@ -49,7 +49,7 @@ After entering your local mount name, **App Key** and **App Secret**, click
 **Grant access**.
 
 .. figure:: images/dropbox-6.png
-   :alt: ownCloud Dropbox configuration.
+   :alt: Nextcloud Dropbox configuration.
 
 If you are not already logged into Dropbox, you will be prompted to login 
 and authorize access. This happens only once, when you are first creating 

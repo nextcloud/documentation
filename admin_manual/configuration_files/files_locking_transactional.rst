@@ -2,7 +2,7 @@
 Transactional File Locking
 ==========================
 
-ownCloud's Transactional File Locking mechanism locks files to avoid 
+Nextcloud's Transactional File Locking mechanism locks files to avoid 
 file corruption during normal operation. It performs these functions:
 
 * Operates at a higher level than the filesystem, so you don't need to use a 
@@ -24,15 +24,15 @@ document, or give notice that other users are working on the same document.
 Multiple users can open and edit a file at the same time and Transactional File 
 locking does not prevent this. Rather, it prevents simultaneous file saving.
 
-.. note:: Transactional file locking is in ownCloud core, and replaces the old 
-   File Locking app. The File Locking app has been removed from ownCloud in 
-   version 8.2.1. If your ownCloud server still has the File Locking app, you 
+.. note:: Transactional file locking is in Nextcloud core, and replaces the old 
+   File Locking app. The File Locking app has been removed from Nextcloud in 
+   version 8.2.1. If your Nextcloud server still has the File Locking app, you 
    must visit your Apps page to verify that it is disabled; the File Locking 
    app and Transactional File Locking cannot both operate at the same time.
   
 File locking is enabled by default, using the database locking backend. This 
 places a significant load on your database. Using ``memcache.locking`` relieves 
-the database load and improves performance. Admins of ownCloud servers with 
+the database load and improves performance. Admins of Nextcloud servers with 
 heavy workloads should install a memcache. (See 
 :doc:`../configuration_server/caching_configuration`.)  
 
@@ -53,7 +53,7 @@ configuration in your ``config.php`` file like this example::
    a password. See http://redis.io/topics/security for more information.
 
 If you want to configure Redis to listen on an Unix socket (which is
-recommended if Redis is running on the same system as ownCloud) use this example
+recommended if Redis is running on the same system as Nextcloud) use this example
 ``config.php`` configuration::
 
   'filelocking.enabled' => true,
