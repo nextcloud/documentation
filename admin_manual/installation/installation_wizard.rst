@@ -57,17 +57,16 @@ and must be owned by your HTTP user (see
 Database Choice
 ---------------
 
-SQLite is the default database for Nextcloud Server (it is not available and not supported
-in the Nextcloud Enterprise edition), and it is good only for testing and lightweight single-user
-setups without client synchronization. Supported databases are MySQL, MariaDB,
-Oracle 11g (OwnCloud Enterprise edition only), and PostgreSQL, and we recommend
-:doc:`MySQL/MariaDB <system_requirements>`. Your database and PHP connectors 
-must be installed before you run the Installation Wizard. When you install 
-Nextcloud from packages all the necessary dependencies will be satisfied (see 
-:doc:`source_installation` for a detailed listing of required and optional PHP 
-modules). You will need the root database login, or any administrator login that 
-has permissions to create and modify databases, and then enter any name you want 
-for your Nextcloud database.
+SQLite is the default database for Nextcloud Server and it is good only for
+testing and lightweight single-user setups without client synchronization.
+Supported databases are MySQL, MariaDB, Oracle 11g , and PostgreSQL, and we
+recommend :doc:`MySQL/MariaDB <system_requirements>`. Your database and PHP
+connectors must be installed before you run the Installation Wizard. When
+you install Nextcloud from packages all the necessary dependencies will be
+satisfied (see :doc:`source_installation` for a detailed listing of required
+and optional PHP modules). You will need the root database login, or any
+administrator login that has permissions to create and modify databases, and
+then enter any name you want for your Nextcloud database.
 
 After you enter your root or administrator login for your database, the 
 installer creates a special database user with privileges limited to the 
