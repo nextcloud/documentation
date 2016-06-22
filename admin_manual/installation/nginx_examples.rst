@@ -2,14 +2,14 @@
 Nginx Example Configurations
 ============================
 
-This page covers example Nginx configurations to use with running an ownCloud 
+This page covers example Nginx configurations to use with running an Nextcloud 
 server. Note that Nginx is not officially supported, and this page is 
 community-maintained. (Thank you, contributors!)
 
 
 -  You need to insert the following code into **your Nginx configuration file.**
--  The configuration assumes that ownCloud is installed in 
-   ``/var/www/owncloud`` and that it is accessed via 
+-  The configuration assumes that Nextcloud is installed in 
+   ``/var/www/nextcloud`` and that it is accessed via 
    ``http(s)://cloud.example.com``.
 -  Adjust **server_name**, **root**, **ssl_certificate** and 
    **ssl_certificate_key** to suit your needs.
@@ -27,9 +27,9 @@ Example Configurations
 ----------------------
 
 - :doc:`nginx_owncloud_8x`
-- :doc:`nginx_owncloud_9x`
+- :doc:`nginx_nextcloud_9x`
 
-You can use ownCloud over plain http, but we strongly encourage you to use 
+You can use Nextcloud over plain http, but we strongly encourage you to use 
 SSL/TLS to encrypt all of your server traffic, and to protect user's logins and 
 data in transit.
 
@@ -91,10 +91,10 @@ To use http_v2 for nginx you have to check two things:
    2.) When you have used SPDY before, the nginx config has to be changed from 
    ``listen 443 ssl spdy;`` to ``listen 443 ssl http2;``
 
-nginx: caching ownCloud gallery thumbnails
+nginx: caching Nextcloud gallery thumbnails
 ==========================================
 
-One of the optimizations for ownCloud when using nginx as the Web server is to 
+One of the optimizations for Nextcloud when using nginx as the Web server is to 
 combine FastCGI caching with "Cache Purge", a `3rdparty nginx module 
 <http://wiki.nginx.org/3rdPartyModules>`_  that adds the ability to purge 
 content from `FastCGI`, `proxy`, `SCGI` and `uWSGI` caches. This mechanism 
@@ -109,7 +109,7 @@ adapt it according your OS type and release.
    Unlike Apache, nginx does not dynamically load modules. All modules needed 
    must be compiled into nginx. This is one of the reasons for nginx´s 
    performance. It is expected to have an already running nginx installation 
-   with a working configuration set up as described in the ownCloud 
+   with a working configuration set up as described in the Nextcloud 
    documentation.
 
 nginx module check
@@ -246,12 +246,12 @@ Configure nginx with the ``nginx-cache-purge`` module
 
 ::
 
-   sudo vi /etc/nginx/sites-enabled/{your-ownCloud-nginx-config-file}
+   sudo vi /etc/nginx/sites-enabled/{your-nextcloud-nginx-config-file}
    
 Add at the *beginning*, but *outside* the ``server{}`` block::
 
    # cache_purge
-   fastcgi_cache_path {path} levels=1:2 keys_zone=OWNCLOUD:100m inactive=60m;
+   fastcgi_cache_path {path} levels=1:2 keys_zone=NEXTCLOUD:100m inactive=60m;
    map $request_uri $skip_cache {
         default 1;
         ~*/thumbnail.php 0;
@@ -260,7 +260,7 @@ Add at the *beginning*, but *outside* the ``server{}`` block::
    }
 
 .. note:: Please adopt or delete any regex line in the ``map`` block according 
-   your needs and the ownCloud version used.
+   your needs and the Nextcloud version used.
    As an alternative to mapping, you can use as many ``if`` statements in 
    your server block as necessary::
    
@@ -289,7 +289,7 @@ Add *inside* the ``server{}`` block, as an example of a configuration::
          # cache_purge
          fastcgi_cache_bypass $skip_cache;
          fastcgi_no_cache $skip_cache;
-         fastcgi_cache OWNCLOUD;
+         fastcgi_cache NEXTCLOUD;
          fastcgi_cache_valid  60m;
          fastcgi_cache_methods GET HEAD;
          }
@@ -312,7 +312,7 @@ Add *inside* the ``server{}`` block, as an example of a configuration::
    sudo nginx -s reload
    
 *  Open your browser and clear your cache.   
-*  Logon to your ownCloud instance, open the gallery app, move through your
+*  Logon to your Nextcloud instance, open the gallery app, move through your
    folders and watch while the thumbnails are generated for the first time.
 *  You may also watch with eg. ``htop`` your system load while the 
    thumbnails are processed.
