@@ -15,7 +15,7 @@ hard limits that cannot be exceeded:
 64-bit filesystems have much higher limits; consult the documentation for your 
 filesystem.
 
-.. note:: The ownCloud sync client is not affected by these upload limits
+.. note:: The Nextcloud sync client is not affected by these upload limits
    as it is uploading files in smaller chunks.
 
 System Configuration
@@ -31,9 +31,9 @@ System Configuration
 Configuring Your Web server
 ---------------------------
 
-.. note:: ownCloud comes with its own ``owncloud/.htaccess`` file. Because ``php-fpm``
+.. note:: Nextcloud comes with its own ``nextcloud/.htaccess`` file. Because ``php-fpm``
    can't read PHP settings in ``.htaccess`` these settings must be set in the
-   ``owncloud/.user.ini`` file.
+   ``nextcloud/.user.ini`` file.
 
 Set the following two parameters inside the corresponding php.ini file (see the 
 **Loaded Configuration File** section of :ref:`label-phpinfo` to find your 
@@ -101,11 +101,11 @@ By default, downloads will be limited to 1GB due to ``proxy_buffering`` and ``pr
 Configuring PHP
 ---------------
 
-If you don't want to use the ownCloud ``.htaccess`` or ``.user.ini`` file, you may 
+If you don't want to use the Nextcloud ``.htaccess`` or ``.user.ini`` file, you may 
 configure PHP instead. Make sure to comment out any lines ``.htaccess`` 
 pertaining to upload size, if you entered any.
 
-If you are running ownCloud on a 32-bit system, any ``open_basedir`` directive 
+If you are running Nextcloud on a 32-bit system, any ``open_basedir`` directive 
 in your ``php.ini`` file needs to be commented out.
 
 Set the following two parameters inside ``php.ini``, using your own desired 
@@ -123,7 +123,7 @@ will return memory-related errors:
 
 * ``output_buffering = 0``
 
-Configuring ownCloud
+Configuring Nextcloud
 --------------------
 
 As an alternative to the ``upload_tmp_dir`` of PHP (e.g. if you don't have access to your
@@ -142,7 +142,7 @@ Configuring upload limits within the GUI
 
 If all prerequisites described in this documentation are in place an admin can change the
 upload limits on demand by using the ``File handling`` input box within the administrative
-backend of ownCloud.
+backend of Nextcloud.
 
 .. figure:: images/admin_filehandling-1.png
 
@@ -153,10 +153,10 @@ this input box.
 
 To be able to use this input box you need to make sure that:
 
-* your Web server is be able to use the ``.htaccess`` file shipped by ownCloud (Apache only)
+* your Web server is be able to use the ``.htaccess`` file shipped by Nextcloud (Apache only)
 * the user your Web server is running as has write permissions to the files ``.htaccess`` and ``.user.ini``
 
 :ref:`strong_perms_label` might prevent write access to these files. As an admin you need
-to decide between the ability to use the input box and a more secure ownCloud installation
+to decide between the ability to use the input box and a more secure Nextcloud installation
 where you need to manually modify the upload limits in the ``.htaccess`` and ``.user.ini``
 files described above.

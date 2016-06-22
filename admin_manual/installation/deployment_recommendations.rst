@@ -79,7 +79,7 @@ Authentication via an existing LDAP or Active Directory server.
    scale the DB.
 
 * Backup
-   Install owncloud, Nextcloud data directory and database on Btrfs filesystem. 
+   Install Nextcloud, Nextcloud data directory and database on Btrfs filesystem. 
    Make regular snapshots at desired intervals for zero downtime backups. 
    Mount DB partitions with the "nodatacow" option to prevent fragmentation.
  
@@ -482,19 +482,19 @@ References
 
 
 .. _Maintenance: 
-   https://doc.owncloud.org/server/9.0/admin_manual/maintenance/index.html
+   https://docs.nextcloud.org/server/9/admin_manual/maintenance/index.html
 .. _User Authentication with LDAP:
-   https://doc.owncloud.org/server/9.0/admin_manual/configuration_user/    
+   https://docs.nextcloud.org/server/9/admin_manual/configuration_user/    
    user_auth_ldap.html
 .. _Configuring Memory Caching:   
-   https://doc.owncloud.org/server/9.0/admin_manual/configuration_server/ 
+   https://docs.nextcloud.org/server/9/admin_manual/configuration_server/ 
    caching_configuration.html
 .. _Nextcloud Server or Enterprise Edition:  
-   https://owncloud.com/owncloud-server-or-enterprise-edition/
+   https://nextcloud.com/enterprise/
 .. _F5 Big-IP: https://f5.com/products/big-ip/
 
 .. _Shibboleth Integration: 
-   https://doc.owncloud.org/server/9.0/admin_manual/enterprise_user_management/
+   https://docs.nextcloud.org/server/9/admin_manual/enterprise_user_management/
    user_auth_shibboleth.html
 .. _Memcache StorageService:  
    https://wiki.shibboleth.net/confluence/display/SHIB2/

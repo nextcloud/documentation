@@ -3,12 +3,12 @@ WebDAV
 ======
 
 Use this backend to mount a directory from any WebDAV server, or another 
-ownCloud server.
+Nextcloud server.
 
 You need the following information:
 
 * Folder name: The name of your local mountpoint.
-* The URL of the WebDAV or ownCloud server.
+* The URL of the WebDAV or Nextcloud server.
 * Username and password for the remote server
 * Secure https://: We always recommend https:// for security, though you can 
   leave this unchecked for http://.
