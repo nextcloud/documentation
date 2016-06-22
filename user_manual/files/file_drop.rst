@@ -35,7 +35,7 @@ upload** button.
 .. image:: ../images/anonym_upload.png
    
 This opens a file picker, and you select the file or directory you want to 
-upload. You're alos able to yust drop files intoi the window-
+upload. You're also  able to just drop files into the window.
    
 When your upload is completed, the filenames are listet:
 
