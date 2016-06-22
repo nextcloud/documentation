@@ -24,7 +24,7 @@ Nextcloud
 
 All log information will be written to a separate log file which can be
 viewed using the log viewer on your Admin page. By default, a log
-file named **owncloud.log** will be created in the directory which has
+file named **nextcloud.log** will be created in the directory which has
 been configured by the **datadirectory** parameter in :file:`config/config.php`.
 
 The desired date format can optionally be defined using the **logdateformat** parameter in :file:`config/config.php`.
@@ -35,8 +35,8 @@ date format in the example below, the date/time format will be written in the fo
 
 ::
 
-    "log_type" => "owncloud",
-    "logfile" => "owncloud.log",
+    "log_type" => "nextcloud",
+    "logfile" => "nextcloud.log",
     "loglevel" => "3",
     "logdateformat" => "F d, Y H:i:s",
 

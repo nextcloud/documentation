@@ -11,12 +11,12 @@ Breaking changes
 ================
 The following breaking changes usually do only affect applications which misuse existing API or do not follow best practises.
 
-* The default Content-Security-Policy of AppFramework apps is now stricter but can be adjusted by developers. See https://github.com/owncloud/core/pull/13989
-* Parameters passed to OC.generateUrl are now automatically encoded, this behaviour can be adjusted by developers. See https://github.com/owncloud/core/pull/14266
-* Views constructed by OC\Files\View do not allow directory traversals anymore in the constructor. See https://github.com/owncloud/core/pull/14342
+* The default Content-Security-Policy of AppFramework apps is now stricter but can be adjusted by developers. See https://github.com/nextcloud/core/pull/13989
+* Parameters passed to OC.generateUrl are now automatically encoded, this behaviour can be adjusted by developers. See https://github.com/nextcloud/core/pull/14266
+* Views constructed by OC\Files\View do not allow directory traversals anymore in the constructor. See https://github.com/nextcloud/core/pull/14342
 * The CSRF token may now contain not URL compatible characters (for example the plus sign: +), developers have to ensure that the CSRF token is encoded properly before using it in URIs.
 * The default RNG now returns all valid base64 characters
-* OC.msg escapes the message now by default (see https://github.com/owncloud/core/pull/14208)
+* OC.msg escapes the message now by default (see https://github.com/nextcloud/core/pull/14208)
 
 
 Features
@@ -94,10 +94,10 @@ This is a deprecation roadmap which lists all current deprecation targets and wi
 
 8.3
 ---
-* `OCP\\AppFramework\\IApi <https://github.com/owncloud/core/blob/d59c4e832fea87d03d199a3211186a47fd252c32/lib/public/appframework/iapi.php>`_: full class
-* `OCP\\AppFramework\\IAppContainer <https://github.com/owncloud/core/blob/d59c4e832fea87d03d199a3211186a47fd252c32/lib/public/appframework/iappcontainer.php>`_: methods **getCoreApi** and **log**
-* `OCP\\AppFramework\\Controller <https://github.com/owncloud/core/blob/d59c4e832fea87d03d199a3211186a47fd252c32/lib/public/appframework/controller.php>`_: methods **params**, **getParams**, **method**, **getUploadedFile**, **env**, **cookie**, **render**
+* `OCP\\AppFramework\\IApi <https://github.com/nextcloud/core/blob/d59c4e832fea87d03d199a3211186a47fd252c32/lib/public/appframework/iapi.php>`_: full class
+* `OCP\\AppFramework\\IAppContainer <https://github.com/nextcloud/core/blob/d59c4e832fea87d03d199a3211186a47fd252c32/lib/public/appframework/iappcontainer.php>`_: methods **getCoreApi** and **log**
+* `OCP\\AppFramework\\Controller <https://github.com/nextcloud/core/blob/d59c4e832fea87d03d199a3211186a47fd252c32/lib/public/appframework/controller.php>`_: methods **params**, **getParams**, **method**, **getUploadedFile**, **env**, **cookie**, **render**
 
 8.1
 ---
-* `\\OC\\Preferences <https://github.com/owncloud/core/commit/909a53e087b7815ba9cd814eb6c22845ef5b48c7>`_ and `\\OC_Preferences <https://github.com/owncloud/core/commit/4df7c0a1ed52ed1922116686cb5ad8da2544c997>`_
+* `\\OC\\Preferences <https://github.com/nextcloud/core/commit/909a53e087b7815ba9cd814eb6c22845ef5b48c7>`_ and `\\OC_Preferences <https://github.com/nextcloud/core/commit/4df7c0a1ed52ed1922116686cb5ad8da2544c997>`_

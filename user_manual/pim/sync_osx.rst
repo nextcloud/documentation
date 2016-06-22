@@ -31,7 +31,7 @@ your favorite text editor.
 
 8. Make it look like this. Please note that the :443 after **example.com** is important::
 
-    <key>servername</key <string>https://example.com:443/owncloud/remote.php/dav/principals/users/USERNAME</string> <key>username</key <string>username</string>
+    <key>servername</key <string>https://example.com:443/nextcloud/remote.php/dav/principals/users/USERNAME</string> <key>username</key <string>username</string>
 
 9. Save the file and open addressbook again. It will not work yet.
 

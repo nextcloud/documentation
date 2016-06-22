@@ -245,4 +245,4 @@ Different sorting parameters for albums.
 Keeping Up With New Features
 ----------------------------
 
-See the `Gallery Wiki page <https://github.com/owncloud/gallery/wiki>`_ to stay informed of new developments.
+See the `Gallery Wiki page <https://github.com/nextcloud/gallery/wiki>`_ to stay informed of new developments.

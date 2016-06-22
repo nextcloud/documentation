@@ -41,7 +41,7 @@ the examples, as long lines may be broken for page formatting.
       add_header X-Robots-Tag none;
 
       # Path to the root of your installation
-      root /var/www/owncloud/;
+      root /var/www/nextcloud/;
 
       # set max upload size 
       client_max_body_size 512M;             
@@ -165,18 +165,18 @@ your nginx installation.
       add_header X-XSS-Protection "1; mode=block";
       add_header X-Robots-Tag none;
   
-      # Path to the root of your website (one level above owncloud folder)
+      # Path to the root of your website (one level above nextcloud folder)
       root /var/www;
   
-      rewrite ^/.well-known/carddav /owncloud/remote.php/carddav/ redirect;
-      rewrite ^/.well-known/caldav /owncloud/remote.php/caldav/ redirect;
+      rewrite ^/.well-known/carddav /nextcloud/remote.php/carddav/ redirect;
+      rewrite ^/.well-known/caldav /nextcloud/remote.php/caldav/ redirect;
 
       # The following 2 rules are only needed for the user_webfinger app.
       # Uncomment it if you're planning to use this app.
-      #rewrite ^/.well-known/host-meta /owncloud/public.php?service=host-meta 
+      #rewrite ^/.well-known/host-meta /nextcloud/public.php?service=host-meta 
       # last;
       #rewrite ^/.well-known/host-meta.json 
-      # /owncloud/public.php?service=host-meta-json last;
+      # /nextcloud/public.php?service=host-meta-json last;
 
       location = /robots.txt {
           allow all;
@@ -184,7 +184,7 @@ your nginx installation.
           access_log off;
       }
   
-      location ^~ /owncloud {
+      location ^~ /nextcloud {
   
           # set max upload size
           client_max_body_size 512M;
@@ -199,21 +199,21 @@ your nginx installation.
   
           index index.php;
   
-          error_page 403 /owncloud/core/templates/403.php;
-          error_page 404 /owncloud/core/templates/404.php;
+          error_page 403 /nextcloud/core/templates/403.php;
+          error_page 404 /nextcloud/core/templates/404.php;
   
           location ~ 
-          ^/owncloud/(build|tests|config|lib|3rdparty|templates|data)/ {
+          ^/nextcloud/(build|tests|config|lib|3rdparty|templates|data)/ {
               deny all;
           }
 
-          location ~ ^/owncloud/(?:\.|autotest|occ|issue|indie|db_|console) {
+          location ~ ^/nextcloud/(?:\.|autotest|occ|issue|indie|db_|console) {
               deny all;
           }
   
-          rewrite ^/owncloud/remote/(.*) /owncloud/remote.php last;
-          rewrite ^/owncloud/core/doc/([^\/]+)(?:$|/) 
-           /owncloud/core/doc/$1/index.html;
+          rewrite ^/nextcloud/remote/(.*) /nextcloud/remote.php last;
+          rewrite ^/nextcloud/core/doc/([^\/]+)(?:$|/) 
+           /nextcloud/core/doc/$1/index.html;
  
           try_files $uri $uri/ =404;
   

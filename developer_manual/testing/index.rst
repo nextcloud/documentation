@@ -28,12 +28,12 @@ How do you join
 ---------------
 Simply register on the `testpilot mailing list <https://mailman.nextcloud.org/mailman/listinfo/testpilots>`_ and send an introduction of your personal setup and interests to `testpilots@nextcloud.org <testpilots@nextcloud.org>`_
 
-You can also join the **#owncloud-testing** channel on **irc.freenode.net** but keep in mind that we may take longer to answer ;)
+You can also join the **#nextcloud-testing** channel on **irc.freenode.net** but keep in mind that we may take longer to answer ;)
 
 For further questions or help you can also send a mail to:
 
-* freitag@owncloud.com (IRC: dragotin)
-* posselt@owncloud.com (IRC: Raydiation)
+* freitag@nextcloud.com (IRC: dragotin)
+* posselt@nextcloud.com (IRC: Raydiation)
 
 What do you do
 --------------
@@ -62,7 +62,7 @@ Start by installing Nextcloud, either on real hardware or in a VM.
 You can find instructions for installation in the `admin documentation <../../admin_manual/#installation>`_.
 
 Please note that we are still working on the documentation and if you bump into a problem, you can
-`help us fix it <https://github.com/owncloud/documentation>`_. Small things can be edited straight on github.
+`help us fix it <https://github.com/nextcloud/documentation>`_. Small things can be edited straight on github.
 
 The Real Testing
 ----------------
@@ -72,7 +72,7 @@ as much as you can about why it doesn't and use that for a bug report.
 
 This is the stage where you should see if your issue is already reported by checking the issue
 tracker. It might even be fixed, sometimes! It can also be fruitful to contact the
-`developers on irc <irc://freenode/#owncloud-dev>`_. Tell them you're testing Nextcloud
+`developers on irc <irc://freenode/#nextcloud-dev>`_. Tell them you're testing Nextcloud
 and share what problem you bumped into. Or just ask on the test-pilots mailing list.
 
 Finally, if the issue you bump into is a clear bug and the developers are not aware of it, file it as a new issue. See :doc:`../bugtracker/index`

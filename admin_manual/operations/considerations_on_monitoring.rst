@@ -42,7 +42,7 @@ Status.php
 
 Nextcloud provides a very simple mechanism for determining if an application server is up and functioning –
 call the status.php file on each Nextcloud server. This file can be found in the root Nextcloud directory on
-the server, which by default is /owncloud/status.php. If the server is functioning normally, the response
+the server, which by default is /nextcloud/status.php. If the server is functioning normally, the response
 looks something like this:
 
 ::

@@ -3,13 +3,13 @@ Nextcloud Documentation
 ======================
 
 Documentation is published on `<https://doc.nextcloud.org>`_ and 
-`<https://doc.owncloud.com>`_.
+`<https://doc.nextcloud.com>`_.
 
-The `documentation Wiki <https://github.com/owncloud/documentation/wiki>`_ is 
+The `documentation Wiki <https://github.com/nextcloud/documentation/wiki>`_ is 
 available for tips, tricks, edge cases, and anyone who wants to contribute more 
 easily, without having to learn Git and Sphinx.
 
-See the `Style Guide <https://github.com/owncloud/documentation/blob/master/style_guide.rst>`_ for formatting and style conventions.
+See the `Style Guide <https://github.com/nextcloud/documentation/blob/master/style_guide.rst>`_ for formatting and style conventions.
 
 Manuals
 -------
@@ -25,7 +25,7 @@ Please work in the appropriate branch. Stable8 is 8.0, stable8.1 is 8.1, stable8
 Please wrap lines at 80 characters.
 
 .. note:: ``configuration_server/config_sample_php_parameters.rst`` is auto-generated from the core
-   config.sample.php file; changes to this file must be made in core `<https://github.com/owncloud/core/tree/master/config>`_
+   config.sample.php file; changes to this file must be made in core `<https://github.com/nextcloud/core/tree/master/config>`_
 
 Spelling and Capitalization Conventions
 ---------------------------------------

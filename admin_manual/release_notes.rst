@@ -21,11 +21,11 @@ are automatically migrated. As a fallback for failed upgrades or an option to te
 ``occ`` command. See :doc:`configuration_server/occ_command`.
 
 Updates on systems with large datasets will take longer, due to the addition of checksums to the
-oC database. See `<https://github.com/owncloud/core/issues/22747>`_.
+oC database. See `<https://github.com/nextcloud/core/issues/22747>`_.
 
-Linux packages are available from our `official download repository <https://download.nextcloud.org/download/repositories/stable/owncloud/>`_ .
-New in 9.0: split packages. ``owncloud`` installs Nextcloud plus dependencies, including Apache
-and PHP. ``owncloud-files`` installs only Nextcloud. This is useful for custom LAMP stacks, and
+Linux packages are available from our `official download repository <https://download.nextcloud.org/download/repositories/stable/nextcloud/>`_ .
+New in 9.0: split packages. ``nextcloud`` installs Nextcloud plus dependencies, including Apache
+and PHP. ``nextcloud-files`` installs only Nextcloud. This is useful for custom LAMP stacks, and
 allows you to install your own LAMP apps and versions without packaging conflicts with Nextcloud.
 See :doc:`installation/linux_installation`.
 
@@ -35,8 +35,8 @@ New option for the Nextcloud admin to enable or disable sharing on individual ex
 Enterprise 9.0
 --------------
 
-owncloud-enterprise packages are no longer available for CentOS6, RHEL6, 
-Debian7, or any version of Fedora. A new package, owncloud-enterprise-files, is available for all supported platforms, including the above. This new package comes without dependencies, and is installable on a larger number of platforms. System administrators must install their own LAMP stacks and databases. See https://nextcloud.org/blog/time-to-upgrade-to-owncloud-9-0/
+nextcloud-enterprise packages are no longer available for CentOS6, RHEL6, 
+Debian7, or any version of Fedora. A new package, nextcloud-enterprise-files, is available for all supported platforms, including the above. This new package comes without dependencies, and is installable on a larger number of platforms. System administrators must install their own LAMP stacks and databases. See https://nextcloud.org/blog/time-to-upgrade-to-nextcloud-9-0/
 
 Changes in 8.2
 --------------
@@ -44,7 +44,7 @@ Changes in 8.2
 New location for Linux package repositories; Nextcloud admins must manually 
 change to the new repos. See :doc:`maintenance/upgrade`
 
-PHP 5.6.11+ breaks the LDAP wizard with a 'Could not connect to LDAP' error. See https://github.com/owncloud/core/issues/20020. 
+PHP 5.6.11+ breaks the LDAP wizard with a 'Could not connect to LDAP' error. See https://github.com/nextcloud/core/issues/20020. 
 
 ``filesystem_check_changes`` in ``config.php`` is set to 0 by default. This 
 prevents unnecessary update checks and improves performance. If you are using 
@@ -59,7 +59,7 @@ serving_static_files_configuration.html>`_ from your Nextcloud server.
 LDAP issue: 8.2 uses the ``memberof`` attribute by default. If this is not 
 activated on your LDAP server your user groups will not be detected, and you 
 will see this message in your Nextcloud log: ``Error PHP Array to string 
-conversion at /var/www/html/owncloud/lib/private/template/functions.php#36``. 
+conversion at /var/www/html/nextcloud/lib/private/template/functions.php#36``. 
 Fix this by disabling the ``memberof`` attribute on your Nextcloud server with 
 the ``occ`` command, like this example on Ubuntu Linux::
 
@@ -70,7 +70,7 @@ value; if there is not one then use empty quotes, ``""``. (See
 :doc:`configuration_server/occ_command`.)
 
 Users of the Linux Package need to update their repository setup as described
-in this `blogpost <https://nextcloud.org/blog/upgrading-to-owncloud-server-8-2/>`_.
+in this `blogpost <https://nextcloud.org/blog/upgrading-to-nextcloud-server-8-2/>`_.
 
 Changes in 8.1
 --------------
@@ -167,14 +167,14 @@ When you are configuring the LDAP user and group backend application, Nextcloud
 may not auto-detect the LDAP server's port number, so you will need to enter it 
 manually.
 
-.. https://github.com/owncloud/core/pull/16748
+.. https://github.com/nextcloud/core/pull/16748
 
 No Preview Icon on Text Files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There is no preview icon displayed for text files when the file contains fewer than six characters.
 
-.. https://github.com/owncloud/core/issues/16556#event-316503097
+.. https://github.com/nextcloud/core/issues/16556#event-316503097
 
 Remote Federated Cloud Share Cannot be Reshared With Local Users
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -207,12 +207,12 @@ If Multiviews are enabled in your Apache configuration, this may cause problems
 with content negotiation, so disable Multiviews by removing it from your Apache 
 configuration. Look for lines like this:: 
 
- <Directory /var/www/owncloud>
+ <Directory /var/www/nextcloud>
  Options Indexes FollowSymLinks Multiviews
  
 Delete ``Multiviews`` and restart Apache.
 
-.. https://github.com/owncloud/core/issues/9039
+.. https://github.com/nextcloud/core/issues/9039
 
 Nextcloud Does Not Follow Symlinks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -221,7 +221,7 @@ Nextcloud's file scanner does not follow symlinks, which could lead to
 infinite loops. To avoid this do not use soft or hard links in your Nextcloud 
 data directory.
 
-.. https://github.com/owncloud/core/issues/8976
+.. https://github.com/nextcloud/core/issues/8976
 
 No Commas in Group Names
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -229,7 +229,7 @@ No Commas in Group Names
 Creating an Nextcloud group with a comma in the group name causes Nextcloud to 
 treat the group as two groups.
 
-.. https://github.com/owncloud/core/issues/10983
+.. https://github.com/nextcloud/core/issues/10983
 
 Hebrew File Names Too Large on Windows
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -237,7 +237,7 @@ Hebrew File Names Too Large on Windows
 On Windows servers Hebrew file names grow to five times their original size 
 after being translated to Unicode.
 
-.. https://github.com/owncloud/core/issues/8938
+.. https://github.com/nextcloud/core/issues/8938
 
 Google Drive Large Files Fail with 500 Error
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -246,7 +246,7 @@ Google Drive tries to download the entire file into memory, then write it to a
 temp file, and then stream it to the client, so very large file downloads from 
 Google Drive may fail with a 500 internal server error.
 
-.. https://github.com/owncloud/core/issues/8810
+.. https://github.com/nextcloud/core/issues/8810
 
 Encrypting Large Numbers of Files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -256,7 +256,7 @@ of files, it is possible that you will experience timeouts. It is best to
 activate encryption at installation, before accumulating large numbers of files 
 on your Nextcloud server.
 
-.. https://github.com/owncloud/core/issues/10657
+.. https://github.com/nextcloud/core/issues/10657
 
 
 Enterprise 8.0 Only
@@ -275,7 +275,7 @@ No Federated Cloud Sharing with Shibboleth
 Federated Cloud Sharing (formerly Server-to-Server file sharing)does not work 
 with Shibboleth .
 
-.. https://github.com/owncloud/user_shibboleth/issues/28
+.. https://github.com/nextcloud/user_shibboleth/issues/28
 
 Direct Uploads to SWIFT do not Appear in Nextcloud
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -284,7 +284,7 @@ When files are uploaded directly to a SWIFT share mounted as external storage
 in Nextcloud, the files do not appear in Nextcloud. However, files uploaded to 
 the SWIFT mount through Nextcloud are listed correctly in both locations.
 
-.. https://github.com/owncloud/core/issues/8633
+.. https://github.com/nextcloud/core/issues/8633
 
 SWIFT Objectstore Incompatible with Encryption App
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -294,7 +294,7 @@ file I/O and circumvents the Nextcloud virtual filesystem. Using the Encryption
 app on a SWIFT object store incurs twice as many HTTP requests and increases 
 latency significantly.
 
-.. https://github.com/owncloud/core/issues/10900
+.. https://github.com/nextcloud/core/issues/10900
 
 App Store is Back
 ^^^^^^^^^^^^^^^^^
@@ -312,7 +312,7 @@ When you are configuring the LDAP user and group backend application, Nextcloud
 may not auto-detect the LDAP server's port number, so you will need to enter it 
 manually.
 
-.. https://github.com/owncloud/core/pull/16748
+.. https://github.com/nextcloud/core/pull/16748
 
 LDAP Search Performance Improved
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -339,7 +339,7 @@ search attributes are ``givenName`` and ``sn`` you can find users by first name
 + last name very quickly. For example, you'll find Terri Hanson by searching for 
 ``te ha``. Trailing whitespaces are ignored.
 
-.. https://github.com/owncloud/core/issues/12647
+.. https://github.com/nextcloud/core/issues/12647
 
 Protecting Nextcloud on IIS from Data Loss
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -347,7 +347,7 @@ Protecting Nextcloud on IIS from Data Loss
 Under certain circumstances, running your Nextcloud server on IIS could be at 
 risk of data loss. To prevent this, follow these steps.
 
-In your Nextcloud server configuration file, ``owncloud\config\config.php``, set 
+In your Nextcloud server configuration file, ``nextcloud\config\config.php``, set 
 ``config_is_read_only`` to true.
     
 Set the ``config.php`` file to read-only.

@@ -26,7 +26,7 @@ community-maintained. (Thank you, contributors!)
 Example Configurations
 ----------------------
 
-- :doc:`nginx_owncloud_8x`
+- :doc:`nginx_nextcloud_8x`
 - :doc:`nginx_nextcloud_9x`
 
 You can use Nextcloud over plain http, but we strongly encourage you to use 

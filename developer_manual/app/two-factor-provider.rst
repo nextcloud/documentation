@@ -2,7 +2,7 @@
 Two-factor Providers
 ====================
 
-.. sectionauthor:: Christoph Wurst <christoph@owncloud.com>
+.. sectionauthor:: Christoph Wurst <christoph@nextcloud.com>
 
 Two-factor auth providers apps are used to plug custom second factors into the Nextcloud core. The following
 code was taken from the `two-factor test app`_.

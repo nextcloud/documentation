@@ -8,8 +8,8 @@ Overview
 ownBrander is an Nextcloud build service that is exclusive to Enterprise 
 customers for creating branded Android and iOS Nextcloud sync apps, and branded 
 Nextcloud desktop sync clients. You build your apps with the 
-ownBrander app on your `Customer.owncloud.com 
-<https://customer.owncloud.com/owncloud/>`_ account, and within 24-48 hours 
+ownBrander app on your `Customer.nextcloud.com 
+<https://customer.nextcloud.com/nextcloud/>`_ account, and within 24-48 hours 
 the completed, customized apps are loaded into your account. You must supply 
 your own artwork, and you'll find all the specifications and required elements 
 in ownBrander.
@@ -44,4 +44,4 @@ and the process is detailed in
 `Building Branded Nextcloud Clients (Enterprise Only)`_.
 
 .. _Building Branded Nextcloud Clients (Enterprise Only): 
-    https://doc.owncloud.com/branded_clients/
+    https://doc.nextcloud.com/branded_clients/

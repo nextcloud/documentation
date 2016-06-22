@@ -3,14 +3,14 @@ Configuring S3 and OpenStack Swift Objects as Primary Storage
 =============================================================
 
 In Nextcloud Enterprise edition, you can configure S3 objects as primary 
-storage. This replaces the default Nextcloud ``owncloud/data`` directory. You may 
-still need to keep the ``owncloud/data`` directory for these reasons:
+storage. This replaces the default Nextcloud ``nextcloud/data`` directory. You may 
+still need to keep the ``nextcloud/data`` directory for these reasons:
 
 * The Nextcloud log file is saved in the data directory
-* Legacy apps may not support using anything but the ``owncloud/data`` directory
+* Legacy apps may not support using anything but the ``nextcloud/data`` directory
 
 You can move your logfile by changing its location in ``config.php``. You may still need 
-``owncloud/data`` for backwards compatibility with some apps.
+``nextcloud/data`` for backwards compatibility with some apps.
 
 Implications
 ------------
@@ -54,7 +54,7 @@ into the virtual filesystem. The class to be used is ``OCA\ObjectStore\S3``:
       'class' => 'OCA\ObjectStore\S3',
       'arguments' => [
           // replace with your bucket
-          'bucket' => 'owncloud',
+          'bucket' => 'nextcloud',
           'autocreate' => true,
           // uncomment to enable server side encryption
           //'serversideencryption' => 'AES256',
@@ -85,7 +85,7 @@ into the virtual filesystem. The class to be used is ``OCA\ObjectStore\S3``:
         'class' => 'OCA\ObjectStore\S3',
         'arguments' => [
             // replace with your bucket
-            'bucket' => 'owncloud',
+            'bucket' => 'nextcloud',
             'autocreate' => true,
             'options' => [
                 // version and region are required
@@ -120,7 +120,7 @@ into the virtual filesystem. The class to be used is ``\\OC\\Files\\ObjectStore\
         'arguments' => [
             'username' => 'demo', 
             'password' => 'password', 
-            'container' => 'owncloud', 
+            'container' => 'nextcloud', 
             'autocreate' => true,
             'region' => 'RegionOne', 
             'url' => 'http://devstack:5000/v2.0',

@@ -39,9 +39,9 @@ DBA and running the script below:
 
 ::
 
-  CREATE USER owncloud IDENTIFIED BY password;
-  ALTER USER owncloud DEFAULT TABLESPACE users TEMPORARY TABLESPACE temp QUOTA unlimited ON users;
-  GRANT create session, create table, create procedure, create sequence, create trigger, create view, create synonym, alter session TO owncloud;
+  CREATE USER nextcloud IDENTIFIED BY password;
+  ALTER USER nextcloud DEFAULT TABLESPACE users TEMPORARY TABLESPACE temp QUOTA unlimited ON users;
+  GRANT create session, create table, create procedure, create sequence, create trigger, create view, create synonym, alter session TO nextcloud;
 
 Substitute an actual password for ``password``.  Items like TableSpace, Quota etc. will be determined by your DBA.
 
@@ -126,7 +126,7 @@ Database user
 ~~~~~~~~~~~~~
 
 This is the user space created in step 2.1.
-In our Example this would be owncloud.
+In our Example this would be nextcloud.
 
 
 Database password
@@ -169,7 +169,7 @@ The configuration file should look something like this:
     'dbname' => 'orcl',
     'dbhost' => '192.168.1.57',
     'dbtableprefix' => 'oc_',
-    'dbuser' => 'owncloud1',
+    'dbuser' => 'nextcloud1',
     'dbpassword' => '********',
     'installed' => true,
     );

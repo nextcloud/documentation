@@ -427,14 +427,14 @@ slave(s).
 .. comment: Currently, Nextcloud uses the utf8 character set with utf8_bin 
    collation on MySQL installations. As a result 4 byte UTF characters like 
    emojis cannot be used. This can be fixed by [moving to 
-   utf8mb4/utf8mb4_bin](https://github.com/owncloud/core/issues/7030).
+   utf8mb4/utf8mb4_bin](https://github.com/nextcloud/core/issues/7030).
 
 The second best option is PostgreSQL (alter table does not lock table, which 
 makes migration less painful) although we have yet to find a customer who uses a 
 master-slave setup.
 
 .. comment: PostgreSQL may produce excessive amounts of dead tuples due to 
-   owncloud transactions preventing the execution of the autovacum process.
+   nextcloud transactions preventing the execution of the autovacum process.
 
 What about the other DBMS?
 
@@ -452,7 +452,7 @@ While many customers are starting with NFS, sooner or later that requires scale-
 .. comment: A proof of concept implementation based on 
    [phprados](https://github.com/ceph/phprados) that talks directly to a 
    [ceph](http://ceph.com/) cluster without having to use temp files is [in 
-   development](https://github.com/owncloud/objectstore/pull/26).
+   development](https://github.com/nextcloud/objectstore/pull/26).
 
 .. comment: NFS can be used but needs to be micro-managed to distribute users 
    on multiple storages. If you want to go that route configure ldap to provide 

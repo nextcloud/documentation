@@ -2,7 +2,7 @@
 Code Signing
 ============
 
-.. sectionauthor:: Lukas Reschke <lukas@owncloud.com>
+.. sectionauthor:: Lukas Reschke <lukas@nextcloud.com>
 
 Nextcloud supports code signing for the core releases, and for Nextcloud 
 applications. Code signing gives our users an additional layer of security by 
@@ -46,7 +46,7 @@ Is Code Signing Mandatory For Apps?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Code signing is optional for all third-party applications. Applications 
-with a tag of "Official" on apps.owncloud.com require code signing.
+with a tag of "Official" on apps.nextcloud.com require code signing.
 
 Technical details
 -----------------
@@ -118,7 +118,7 @@ examples will assume that you are trying to sign an application named
 "contacts".
 
 1. Generate a private key and CSR: ``openssl req -nodes -newkey rsa:2048 -keyout contacts.key -out contacts.csr -subj "/CN=contacts"``. Replace "contacts" with your application identifier.
-2. Post the CSR at https://github.com/owncloud/appstore-issues, and configure 
+2. Post the CSR at https://github.com/nextcloud/appstore-issues, and configure 
    your GitHub account to show your mail address in your profile. Nextcloud 
    might ask you for further information to verify that you're the legitimate 
    owner of the application. Make sure to keep the private key file (``contacts.key``)
@@ -131,7 +131,7 @@ examples will assume that you are trying to sign an application named
 
 The occ tool will store a ``signature.json`` file within the ``appinfo`` folder 
 of your application. Then compress the application folder and upload it to 
-apps.owncloud.com. Be aware that doing any changes to the application after it 
+apps.nextcloud.com. Be aware that doing any changes to the application after it 
 has been signed requires another signing. So if you do not want to have some 
 files shipped remove them before running the signing command.
 
@@ -141,7 +141,7 @@ certificate.
 
 If you maintain an app together with multiple people it is recommended to
 designate a release manager responsible for the signing process as well
-as the uploading to apps.owncloud.com. If there are cases where this is not 
+as the uploading to apps.nextcloud.com. If there are cases where this is not 
 feasible and multiple certificates are required Nextcloud can create them on a 
 case by case basis. We do not recommend developers to share their private key.
 

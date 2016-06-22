@@ -4,18 +4,18 @@ Tutorial
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-This tutorial will outline how to create a very simple notes app. The finished app is available on `GitHub <https://github.com/owncloud/app-tutorial#tutorial>`_.
+This tutorial will outline how to create a very simple notes app. The finished app is available on `GitHub <https://github.com/nextcloud/app-tutorial#tutorial>`_.
 
 
 Setup
 =====
-After the `development tool <https://github.com/owncloud/ocdev/blob/master/README.rst#installation>`_ has been installed the :doc:`development environment needs to be set up <../general/devenv>`. This can be done by either `downloading the zip from the website <https://nextcloud.org/install/>`_ or cloning it directly from GitHub::
+After the `development tool <https://github.com/nextcloud/ocdev/blob/master/README.rst#installation>`_ has been installed the :doc:`development environment needs to be set up <../general/devenv>`. This can be done by either `downloading the zip from the website <https://nextcloud.org/install/>`_ or cloning it directly from GitHub::
 
-    ocdev setup core --dir owncloud  --branch $BRANCH
+    ocdev setup core --dir nextcloud  --branch $BRANCH
 
 .. note:: $BRANCH is the desired Nextcloud branch (e.g. stable7 for Nextcloud 7, stable8 for Nextcloud 8, etc)
 
-First you want to enable debug mode to get proper error messages. To do that set ``debug`` to ``true`` in the **owncloud/config/config.php** file::
+First you want to enable debug mode to get proper error messages. To do that set ``debug`` to ``true`` in the **nextcloud/config/config.php** file::
 
     <?php
     $CONFIG = array (
@@ -23,11 +23,11 @@ First you want to enable debug mode to get proper error messages. To do that set
         ... configuration goes here ...
     );
 
-.. note:: PHP errors are logged to **owncloud/data/owncloud.log**
+.. note:: PHP errors are logged to **nextcloud/data/nextcloud.log**
 
 Now open another terminal window and start the development server::
 
-    cd owncloud
+    cd nextcloud
     php -S localhost:8080
 
 Afterwards the app can be created in the **apps** folder::
@@ -268,7 +268,7 @@ To create the tables in the database, the :doc:`version tag <info>` in **ownnote
         <namespace>OwnNotes</namespace>
         <category>tool</category>
         <dependencies>
-            <owncloud min-version="8" />
+            <nextcloud min-version="8" />
         </dependencies>
     </info>
 

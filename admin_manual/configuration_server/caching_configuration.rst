@@ -235,7 +235,7 @@ Additional Redis Installation Help
 If your version of Mint or Ubuntu does not package the required version of 
 ``php5-redis``, then try `this Redis guide on Tech and Me 
 <https://www.techandme.se/how-to-configure-redis-cache-in-ubuntu-14-04-with-
-owncloud/>`_ for a complete Redis installation on Ubuntu 14.04 using PECL. 
+nextcloud/>`_ for a complete Redis installation on Ubuntu 14.04 using PECL. 
 These instructions are adaptable for any distro that does not package the 
 supported version, or that does not package Redis at all, such as SUSE Linux 
 Enterprise Server and Red Hat Enterprise Linux.

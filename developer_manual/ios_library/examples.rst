@@ -810,8 +810,8 @@ Tips
 
 * Credentials must be set before calling any method
 * Paths must not be on URL Encoding
-* Correct path: ``https://example.com/owncloud/remote.php/dav/Pop_Music/``
-* Wrong path: ``https://example.com/owncloud/remote.php/dav/Pop%20Music/``
+* Correct path: ``https://example.com/nextcloud/remote.php/dav/Pop_Music/``
+* Wrong path: ``https://example.com/nextcloud/remote.php/dav/Pop%20Music/``
 * There are some forbidden characters to be used in folder and files names on the server, same on the Nextcloud iOS library "\", "/","<",">",":",""","","?","*"
 * To move a folder the origin path and the destination path must end with “/”
 * To move a file the origin path and the destination path must not end with “/”

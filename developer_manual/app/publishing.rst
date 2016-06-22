@@ -24,7 +24,7 @@ With each level come requirements and a position in the store.
 
 Official
 ^^^^^^^^
-Official apps are developed by and within the Nextcloud community and its `Github <https://github.com/owncloud>`_ repository and offer functionality central to Nextcloud. They are ready for serious use and can be considered a part of Nextcloud.
+Official apps are developed by and within the Nextcloud community and its `Github <https://github.com/nextcloud>`_ repository and offer functionality central to Nextcloud. They are ready for serious use and can be considered a part of Nextcloud.
 
 Requirements:
 
@@ -42,7 +42,7 @@ App store:
 * available in Apps page in separate category
 * sorted first in all overviews, 'Official' tag
 * shown as featured, on nextcloud.org etc
-* major releases optionally featured on nextcloud.org and sent to owncloud-announce list
+* major releases optionally featured on nextcloud.org and sent to nextcloud-announce list
 * new versions/updates approved by at least one other person
 
 note:
@@ -97,7 +97,7 @@ App store:
 
 Getting an app approved
 -----------------------
-If you want your app to be approved, make sure you fulfill all the requirements and then create an issue in the `app approval github repository <https://github.com/owncloud/app-approval>`_ using `this template <https://github.com/owncloud/app-approval/blob/master/README.md>`_. A team of Nextcloud contributors will review your application. Updates to an app require re-review but, of course, an initial review takes more effort and time than the checking of an update.
+If you want your app to be approved, make sure you fulfill all the requirements and then create an issue in the `app approval github repository <https://github.com/nextcloud/app-approval>`_ using `this template <https://github.com/nextcloud/app-approval/blob/master/README.md>`_. A team of Nextcloud contributors will review your application. Updates to an app require re-review but, of course, an initial review takes more effort and time than the checking of an update.
 
 You are encouraged to help review other contributors' apps as well! Every app requires at least two independent reviews so your review of at least 2 (more is better!) other apps will ensure the process continues smoothly. Thank you for participating in this process and being a great Nextcloud Community member!
 

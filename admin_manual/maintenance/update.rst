@@ -15,7 +15,7 @@ New in 9.0, the Updater app has :ref:`command-line options <updater_cli_label>`.
    
    The Updater app is **not included** in the 
    `Linux packages on our Open Build Service 
-   <https://download.nextcloud.org/download/repositories/stable/owncloud/>`_, 
+   <https://download.nextcloud.org/download/repositories/stable/nextcloud/>`_, 
    but only in the `tar and zip archives 
    <https://nextcloud.org/install/#instructions-server>`_. When you install 
    Nextcloud from packages you should keep it updated with your package manager.
@@ -125,9 +125,9 @@ with the path to your Nextcloud directory, and replace the ``htuser`` and
 ``htgroup`` variables with your HTTP user and group.::
 
     #!/bin/bash
-    # Sets permissions of the owncloud instance for updating
+    # Sets permissions of the nextcloud instance for updating
     
-    ocpath='/var/www/owncloud'
+    ocpath='/var/www/nextcloud'
     htuser='www-data'
     htgroup='www-data'
     
@@ -166,7 +166,7 @@ You can display a help summary::
  
 When you run it without options it runs a system check:: 
 
- sudo -u www-data php owncloud/updater/application.php
+ sudo -u www-data php nextcloud/updater/application.php
  Nextcloud updater 1.0 - CLI based Nextcloud server upgrades
  Checking system health.
  - file permissions are ok.
@@ -185,12 +185,12 @@ List checkpoints::
  
 Restore an earlier checkpoint::
 
- sudo -u www-data php owncloud/updater/application.php upgrade:checkpoint 
+ sudo -u www-data php nextcloud/updater/application.php upgrade:checkpoint 
   --restore=9.0.0.12-56d5e4e004964
 
 Add a line like this to your crontab to automatically create daily 
 checkpoints::
 
- 2 15 * * * sudo -u www-data php /path/to/owncloud/updater/application.php 
+ 2 15 * * * sudo -u www-data php /path/to/nextcloud/updater/application.php 
  upgrade:checkpoint --create > /dev/null 2>&1
  

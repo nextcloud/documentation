@@ -22,30 +22,30 @@ The other way is by entering your ``config.php`` file and changing
    of your current installation.
    
    .. note:: To unpack your new tarball, run:
-      tar xjf owncloud-[version].tar.bz2
+      tar xjf nextcloud-[version].tar.bz2
     
 .. note:: Enterprise users must download their new Nextcloud archives from 
-   their accounts on `<https://customer.owncloud.com/owncloud/>`_
+   their accounts on `<https://customer.nextcloud.com/nextcloud/>`_
    
 3. Stop your Web server.
 
-4. Rename your current Nextcloud directory, for example ``owncloud-old``.
+4. Rename your current Nextcloud directory, for example ``nextcloud-old``.
 
-5. Unpacking the new archive creates a new ``owncloud`` directory populated 
+5. Unpacking the new archive creates a new ``nextcloud`` directory populated 
    with your new server files. Copy this directory and its contents to the 
    original location of your old server, for example ``/var/www/``, so that 
-   once again you have ``/var/www/owncloud``.
+   once again you have ``/var/www/nextcloud``.
 
 6. Copy the ``config.php`` file from your old Nextcloud directory to your new 
    Nextcloud directory.
 
-7. If you keep your ``data/`` directory in your ``owncloud/`` directory, copy 
-   it from your old version of Nextcloud to your new ``owncloud/``. If you keep 
-   it outside of ``owncloud/`` then you don't have to do anything with it, 
+7. If you keep your ``data/`` directory in your ``nextcloud/`` directory, copy 
+   it from your old version of Nextcloud to your new ``nextcloud/``. If you keep 
+   it outside of ``nextcloud/`` then you don't have to do anything with it, 
    because its location is configured in your original ``config.php``, and 
    none of the upgrade steps touch it.
 
-8. If you are using 3rd party applications, look in your new ``owncloud/apps/`` 
+8. If you are using 3rd party applications, look in your new ``nextcloud/apps/`` 
    directory to see if they are there. If not, copy them from your old ``apps/``
    directory to your new one. Make sure the directory permissions of your third
    party application directories are the same as for the other ones.

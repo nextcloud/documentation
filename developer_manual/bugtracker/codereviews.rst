@@ -47,16 +47,16 @@ good Nextcloud code looks like.
 These are two examples that are considered to be good examples of how pull
 requests should be handled
 
-* https://github.com/owncloud/core/pull/121
-* https://github.com/owncloud/core/pull/146
+* https://github.com/nextcloud/core/pull/121
+* https://github.com/nextcloud/core/pull/146
 
 Questions?
 ----------
 
 Feel free to drop a line on the `mailing list`_ or join us on `IRC`_.
 
-.. _core repository: https://GitHub.com/owncloud/core
+.. _core repository: https://GitHub.com/nextcloud/core
 .. _continuous integration server: https://ci.nextcloud.org/
 .. _mailing list: https://mailman.nextcloud.org/mailman/listinfo/devel
-.. _IRC: http://webchat.freenode.net/?channels=owncloud-dev
+.. _IRC: http://webchat.freenode.net/?channels=nextcloud-dev
 .. _coding guidelines: ../general/codingguidelines

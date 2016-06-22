@@ -24,7 +24,7 @@ disk encryption. Because the keys are kept on your Nextcloud server, it is
 possible for your Nextcloud admin to snoop in your files, and if the server is 
 compromised the intruder may get access to your files. (Read 
 `How Nextcloud uses encryption to protect your data  
-<https://nextcloud.org/blog/how-owncloud-uses-encryption-to-protect-your-data/>`_ 
+<https://nextcloud.org/blog/how-nextcloud-uses-encryption-to-protect-your-data/>`_ 
 to learn more.)
 
 Using Encryption

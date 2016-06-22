@@ -27,7 +27,7 @@ A successful installation and configuration will populate Apache environment
 variables with at least a unique user id which is then used by the Nextcloud
 Shibboleth app to login a user.
 
-See the `documentation Wiki <https://github.com/owncloud/documentation/wiki/Shibboleth-example-configurations>`_ for more configuration examples.
+See the `documentation Wiki <https://github.com/nextcloud/documentation/wiki/Shibboleth-example-configurations>`_ for more configuration examples.
 
 Apache Configuration
 ^^^^^^^^^^^^^^^^^^^^
@@ -36,15 +36,15 @@ This is an example configuration as installed and operated on a Linux server
 running the Apache 2.4 Web server. These configurations are highly operating system
 specific and require a high degree of customization.
 
-The Nextcloud instance itself is installed in ``/var/www/owncloud/``.  The
+The Nextcloud instance itself is installed in ``/var/www/nextcloud/``.  The
 following aliases are defined in an Apache virtual host directive:
 
 ::
 
 	# non-Shibboleth access
-	Alias /owncloud /var/www/owncloud/
+	Alias /nextcloud /var/www/nextcloud/
 	# for Shibboleth access
-	Alias /oc-shib /var/www/owncloud/
+	Alias /oc-shib /var/www/nextcloud/
 
 Further Shibboleth specific configuration as defined in
 ``/etc/apache2/conf.d/shib.conf``::
@@ -354,7 +354,7 @@ different implications to take into account:
 
 **userPrincipalName**
 
-* *Example:* jfd@owncloud.com
+* *Example:* jfd@nextcloud.com
 * *Uniqueness:* Forest local, might change on eg. marriage
 * *Other implications:* TODO check WND compatibility
 
@@ -397,6 +397,6 @@ because ``uid`` collisions will be detected by ``user_ldap``.
     
 .. Github references
 .. update shibboleth doc, restructure some sections, add occ commands 
-.. https://github.com/owncloud/documentation/pull/2116/
+.. https://github.com/nextcloud/documentation/pull/2116/
 .. Shibboleth configuration in 8.2.1
-.. https://github.com/owncloud/enterprise/issues/981
+.. https://github.com/nextcloud/enterprise/issues/981

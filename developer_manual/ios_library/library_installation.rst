@@ -6,8 +6,8 @@ Obtaining the library
 
 The Nextcloud iOS library may be obtained from the following Github repository:
 
-`git@github.com:owncloud/ios-library.git
-<mailto:git@github.com:owncloud/ios-library.git>`_
+`git@github.com:nextcloud/ios-library.git
+<mailto:git@github.com:nextcloud/ios-library.git>`_
 
 Once obtained, this code should be compiled with Xcode 6.  The Github
 repository not only contains the library, Nextcloud iOS library, but also

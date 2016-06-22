@@ -271,15 +271,15 @@ the Kanban board by Milestone, making it especially easy to focus on the current
 Release.
 
 .. _kanban board: http://en.wikipedia.org/wiki/Kanban_board
-.. _mailing list: mailto:owncloud@kde.org
-.. _core: http://huboard.com/owncloud/core/board/#
-.. _apps: http://huboard.com/owncloud/apps/board/#
-.. _client: http://huboard.com/owncloud/client/board/#
+.. _mailing list: mailto:nextcloud@kde.org
+.. _core: http://huboard.com/nextcloud/core/board/#
+.. _apps: http://huboard.com/nextcloud/apps/board/#
+.. _client: http://huboard.com/nextcloud/client/board/#
 .. _Gherkin: https://github.com/cucumber/cucumber/wiki/Gherkin
 .. _existing ones: https://ci.tmit.eu/job/acceptance-test/cucumber-html-reports/?
 .. _“Given … when … then …“: https://github.com/cucumber/cucumber/wiki/Given-When-Then
-.. _unit tests: https://github.com/owncloud/core/tree/master/tests
+.. _unit tests: https://github.com/nextcloud/core/tree/master/tests
 .. _Code Review Documentation: https://nextcloud.org/dev/code-reviews-on-github/
 .. _Jenkins: https://ci.tmit.eu/
 .. _cucumber: http://cukes.info/
-.. _transifex: https://www.transifex.com/projects/p/owncloud/
+.. _transifex: https://www.transifex.com/projects/p/nextcloud/

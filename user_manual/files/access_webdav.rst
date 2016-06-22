@@ -27,14 +27,14 @@ Apple iOS devices is by using the `Nextcloud mobile apps
 To connect to your Nextcloud server with the **Nextcloud** mobile apps, use the 
 base URL and folder only::
 
-    example.com/owncloud
+    example.com/nextcloud
 
 In addition to the mobile apps provided by Nextcloud, you can use other apps to 
 connect to Nextcloud from your mobile device using WebDAV. `WebDAV Navigator`_ is 
 a good (proprietary) app for `Android devices`_, `iPhones`_, and `BlackBerry 
 devices`_. The URL to use on these is::
 
-    example.com/owncloud/remote.php/dav/files/USERNAME/
+    example.com/nextcloud/remote.php/dav/files/USERNAME/
     
 WebDAV Configuration
 --------------------
@@ -60,7 +60,7 @@ Nautilus File Manager
 Use the ``davs://`` protocol to connect the Nautilus file manager to your 
 Nextcloud share::
 
-  davs://example.com/owncloud/remote.php/dav/files/USERNAME/
+  davs://example.com/nextcloud/remote.php/dav/files/USERNAME/
 
 .. note:: If your server connection is not HTTPS-secured, use `dav://` instead 
    of `davs://`.
@@ -74,7 +74,7 @@ Accessing Files with KDE and Dolphin File Manager
 To access your Nextcloud files using the Dolphin file manager in KDE, use 
 the ``webdav://`` protocol::
 
-    webdav://example.com/owncloud/remote.php/dav/files/USERNAME/
+    webdav://example.com/nextcloud/remote.php/dav/files/USERNAME/
 
 .. image:: ../images/webdav_dolphin.png
    :alt: screenshot of configuring Dolphin file manager to use WebDAV
@@ -94,7 +94,7 @@ You can create a permanent link to your Nextcloud server:
    
    * Server: The Nextcloud domain name, for example **example.com** (without 
      **http://** before or directories afterwards).
-   * Folder -- Enter the path ``owncloud/remote.php/dav/files/USERNAME/``.
+   * Folder -- Enter the path ``nextcloud/remote.php/dav/files/USERNAME/``.
 #. (Optional) Check the "Create icon checkbox" for a bookmark to appear in the 
    Places column.
 #. (Optional) Provide any special settings or an SSL certificate in the "Port & 
@@ -122,10 +122,10 @@ automatically every time you log in to your Linux computer.
 
     usermod -aG davfs2 <username>
 
-3. Then create an ``owncloud`` directory in your home directory for the 
+3. Then create an ``nextcloud`` directory in your home directory for the 
    mountpoint, and ``.davfs2/`` for your personal configuration file::
    
-    mkdir ~/owncloud
+    mkdir ~/nextcloud
     mkdir ~/.davfs2
     
 4. Copy ``/etc/davfs2/secrets`` to ``~/.davfs2``:: 
@@ -140,24 +140,24 @@ automatically every time you log in to your Linux computer.
 6. Add your Nextcloud login credentials to the end of the ``secrets`` file, 
    using your Nextcloud server URL and your Nextcloud username and password::
 
-    example.com/owncloud/remote.php/dav/files/USERNAME/ <username> <password>
+    example.com/nextcloud/remote.php/dav/files/USERNAME/ <username> <password>
 
 7. Add the mount information to ``/etc/fstab``::
 
-    example.com/owncloud/remote.php/dav/files/USERNAME/ /home/<username>/owncloud 
+    example.com/nextcloud/remote.php/dav/files/USERNAME/ /home/<username>/nextcloud 
     davfs user,rw,auto 0 0
 
 8. Then test that it mounts and authenticates by running the following 
    command. If you set it up correctly you won't need root permissions::
 
-    mount ~/owncloud
+    mount ~/nextcloud
     
 9. You should also be able to unmount it::
  
-    umount ~/owncloud
+    umount ~/nextcloud
     
 Now every time you login to your Linux system your Nextcloud share should 
-automatically mount via WebDAV in your ``~/owncloud`` directory. If you prefer 
+automatically mount via WebDAV in your ``~/nextcloud`` directory. If you prefer 
 to mount it manually, change ``auto`` to ``noauto`` in ``/etc/fstab``.
 
 Known Issues
@@ -210,7 +210,7 @@ To access files through the Mac OS X Finder:
   For example, the URL used to connect to the Nextcloud server 
   from the Mac OS X Finder is::
 
-    https://example.com/owncloud/remote.php/dav/files/USERNAME/
+    https://example.com/nextcloud/remote.php/dav/files/USERNAME/
 
   .. image:: ../images/osx_webdav2.png
 
@@ -259,7 +259,7 @@ the drive:
 
   where <drive_path> is the URL to your Nextcloud server.
 
-For example: ``net use Z: https://example.com/owncloud/remote.php/dav/files/USERNAME/ 
+For example: ``net use Z: https://example.com/nextcloud/remote.php/dav/files/USERNAME/ 
 /user:youruser yourpassword``
 
   The computer maps the files of your Nextcloud account to the drive letter Z.
@@ -271,7 +271,7 @@ For example: ``net use Z: https://example.com/owncloud/remote.php/dav/files/USER
 
 An alternative command syntax is::
 
-  net use Z: \\example.com@ssl\owncloud\remote.php\dav /user:youruser 
+  net use Z: \\example.com@ssl\nextcloud\remote.php\dav /user:youruser 
   yourpassword
 
 Mapping Drives With Windows Explorer
@@ -288,7 +288,7 @@ To map a drive using the Microsoft Windows Explorer:
 
   For example::
 
-    https://example.com/owncloud/remote.php/dav/files/USERNAME/
+    https://example.com/nextcloud/remote.php/dav/files/USERNAME/
 
 .. note:: For SSL protected servers, check **Reconnect at logon** to ensure
      that the mapping is persistent upon subsequent reboots. If you want to 
@@ -341,7 +341,7 @@ Nextcloud provides the possibility to access public shares over WebDAV.
 
 To access the public share, open::
 
-  https://example.com/owncloud/public.php/dav
+  https://example.com/nextcloud/public.php/dav
 
 in a WebDAV client, use the share token as username and the (optional) share password
 as password.
@@ -449,29 +449,29 @@ To create a folder with the current date as name:
 
 .. code-block:: bash
 
-	$ curl -u user:pass -X MKCOL "https://example.com/owncloud/remote.php/dav/files/USERNAME/$(date '+%d-%b-%Y')"
+	$ curl -u user:pass -X MKCOL "https://example.com/nextcloud/remote.php/dav/files/USERNAME/$(date '+%d-%b-%Y')"
 
 To upload a file ``error.log`` into that directory:
 
 .. code-block:: bash
 
-	$ curl -u user:pass -T error.log "https://example.com/owncloud/remote.php/dav/files/USERNAME/$(date '+%d-%b-%Y')/error.log"
+	$ curl -u user:pass -T error.log "https://example.com/nextcloud/remote.php/dav/files/USERNAME/$(date '+%d-%b-%Y')/error.log"
 
 To move a file:
 
 .. code-block:: bash
 
-	$ curl -u user:pass -X MOVE --header 'Destination: https://example.com/owncloud/remote.php/dav/files/USERNAME/target.jpg' https://example.com/owncloud/remote.php/dav/files/USERNAME/source.jpg
+	$ curl -u user:pass -X MOVE --header 'Destination: https://example.com/nextcloud/remote.php/dav/files/USERNAME/target.jpg' https://example.com/nextcloud/remote.php/dav/files/USERNAME/source.jpg
 
 To get the properties of files in the root folder:
 
 .. code-block:: bash
 
-	$ curl -X PROPFIND -H "Depth: 1" -u user:pass https://example.com/owncloud/remote.php/dav/files/USERNAME/ | xml_pp
+	$ curl -X PROPFIND -H "Depth: 1" -u user:pass https://example.com/nextcloud/remote.php/dav/files/USERNAME/ | xml_pp
 	<?xml version="1.0" encoding="utf-8"?>
     <d:multistatus xmlns:d="DAV:" xmlns:oc="http://nextcloud.org/ns" xmlns:s="http://sabredav.org/ns">
       <d:response>
-        <d:href>/owncloud/remote.php/dav/files/USERNAME/</d:href>
+        <d:href>/nextcloud/remote.php/dav/files/USERNAME/</d:href>
         <d:propstat>
           <d:prop>
             <d:getlastmodified>Tue, 13 Oct 2015 17:07:45 GMT</d:getlastmodified>
@@ -486,7 +486,7 @@ To get the properties of files in the root folder:
         </d:propstat>
       </d:response>
       <d:response>
-        <d:href>/owncloud/remote.php/dav/files/USERNAME/welcome.txt</d:href>
+        <d:href>/nextcloud/remote.php/dav/files/USERNAME/welcome.txt</d:href>
         <d:propstat>
           <d:prop>
             <d:getlastmodified>Tue, 13 Oct 2015 17:07:35 GMT</d:getlastmodified>
@@ -506,7 +506,7 @@ To get the properties of files in the root folder:
 .. _in your file manager: http://en.wikipedia.org/wiki/Webdav#WebDAV_client_applications
 .. _Nextcloud sync clients: https://doc.nextcloud.org/desktop/2.1/
 .. _Mount Nextcloud to a local folder without sync: https://nextcloud.org/use/webdav/
-.. _Android: https://github.com/owncloud/android
+.. _Android: https://github.com/nextcloud/android
 .. _WebDAV Navigator: http://seanashton.net/webdav/
 .. _Android devices: https://play.google.com/store/apps/details?id=com.schimera.webdavnavlite
 .. _iPhones: https://itunes.apple.com/app/webdav-navigator/id382551345

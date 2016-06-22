@@ -12,12 +12,12 @@ iOS Nextcloud Client development
 -----------------------------------
 
 If you are interested in working on the Nextcloud iOS client, you can find
-the source code `in github <https://github.com/owncloud/ios>`_. The
+the source code `in github <https://github.com/nextcloud/ios>`_. The
 setup and process of contribution is
-`documented here <https://github.com/owncloud/ios/blob/master/SETUP.md>`_.
+`documented here <https://github.com/nextcloud/ios/blob/master/SETUP.md>`_.
 
 You might want to start with doing one or two `junior jobs 
-<https://github.com/owncloud/ios/issues?q=is%3Aopen+is%3Aissue+label%3A%22Junior+Job%22>`_
+<https://github.com/nextcloud/ios/issues?q=is%3Aopen+is%3Aissue+label%3A%22Junior+Job%22>`_
 to get into the code and note our :doc:`../general/index`
 
 Note that contribution to the iOS client require signing the iOS addendum to the 

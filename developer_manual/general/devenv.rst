@@ -48,7 +48,7 @@ Check out the code
 
 The following commands are using **/var/www** as the Web server's directory and **www-data** as user name and group.
 
-Install the `development tool <https://github.com/owncloud/ocdev/blob/master/README.rst#installation>`_
+Install the `development tool <https://github.com/nextcloud/ocdev/blob/master/README.rst#installation>`_
 
 After the development tool installation make the directory writable::
 
@@ -108,6 +108,6 @@ or to prune all merged branches, you would execute this::
 It is even easier if you create alias from these commands in case you want to avoid retyping those each time you need them.
 
 
-.. _GitHub: https://github.com/owncloud
+.. _GitHub: https://github.com/nextcloud
 .. _GitHub Help Page: https://help.github.com/
 

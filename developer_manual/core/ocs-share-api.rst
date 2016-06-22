@@ -5,7 +5,7 @@ OCS Share API
 The OCS Share API allows you to access the sharing API from outside over
 pre-defined OCS calls.
 
-The base URL for all calls to the share API is: *<owncloud_base_url>/ocs/v1.php/apps/files_sharing/api/v1*
+The base URL for all calls to the share API is: *<nextcloud_base_url>/ocs/v1.php/apps/files_sharing/api/v1*
 
 Local Shares
 ============

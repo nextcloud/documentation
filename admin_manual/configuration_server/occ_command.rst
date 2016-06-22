@@ -7,12 +7,12 @@ interface. You can perform many common server operations with ``occ``, such as
 installing and upgrading Nextcloud, manage users, encryption, passwords, LDAP 
 setting, and more.
 
-``occ`` is in the :file:`owncloud/` directory; for example 
-:file:`/var/www/owncloud` on Ubuntu Linux. ``occ`` is a PHP script. **You must 
+``occ`` is in the :file:`nextcloud/` directory; for example 
+:file:`/var/www/nextcloud` on Ubuntu Linux. ``occ`` is a PHP script. **You must 
 run it as your HTTP user** to ensure that the correct permissions are maintained 
 on your Nextcloud files and directories. In Nextcloud 8.2+ you may run it from 
 any directory (specifying the filepath); in previous releases it had to be 
-run from the :file:`owncloud/` directory.
+run from the :file:`nextcloud/` directory.
 
 occ Command Directory
 ---------------------
@@ -59,7 +59,7 @@ If your HTTP server is configured to use a different PHP version than the
 default (/usr/bin/php), ``occ`` should be run with the same version. For 
 example, in CentOS 6.5 with SCL-PHP54 installed, the command looks like this::
 
-  sudo -u apache /opt/rh/php54/root/usr/bin/php /var/www/html/owncloud/occ
+  sudo -u apache /opt/rh/php54/root/usr/bin/php /var/www/html/nextcloud/occ
 
 Running ``occ`` with no options lists all commands and options, like this 
 example on Ubuntu::
@@ -196,7 +196,7 @@ enabled. The Activity app is an example of a correctly-formatted app::
 If your app has issues, you'll see output like this::
 
  sudo -u www-data php occ app:check-code foo_app
- Analysing /var/www/owncloud/apps/files/foo_app.php
+ Analysing /var/www/nextcloud/apps/files/foo_app.php
  4 errors
     line   45: OCP\Response - Static method of deprecated class must not be 
     called
@@ -209,7 +209,7 @@ If your app has issues, you'll see output like this::
 You can get the full filepath to an app::
     
     sudo -u www-data php occ app:getpath notifications
-    /var/www/owncloud/apps/notifications
+    /var/www/nextcloud/apps/notifications
 
 .. _background_jobs_selector_label:   
    
@@ -340,7 +340,7 @@ In order to set (and also get) the value of one key, you can specify multiple
 
   sudo -u www-data php occ config:system:get trusted_domains
   localhost
-  owncloud.local
+  nextcloud.local
   sample.tld
 
 To replace ``sample.tld`` with ``example.com`` trusted_domains => 2 needs to be
@@ -352,7 +352,7 @@ set::
 
   sudo -u www-data php occ config:system:get trusted_domains
   localhost
-  owncloud.local
+  nextcloud.local
   example.com
 
 Deleting a Single Configuration Value
@@ -823,13 +823,13 @@ These commands view and configure your Nextcloud logging preferences::
 
  log
   log:manage     manage logging configuration
-  log:owncloud   manipulate Nextcloud logging backend
+  log:nextcloud   manipulate Nextcloud logging backend
 
-Run ``log:owncloud`` to see your current logging status::
+Run ``log:nextcloud`` to see your current logging status::
 
- sudo -u www-data php occ log:owncloud 
+ sudo -u www-data php occ log:nextcloud 
  Log backend Nextcloud: enabled
- Log file: /opt/owncloud/data/owncloud.log
+ Log file: /opt/nextcloud/data/nextcloud.log
  Rotate at: disabled
 
 Use the ``--enable`` option to turn on logging. Use ``--file`` to set a 
@@ -837,9 +837,9 @@ different log file path. Set your rotation by log file size in bytes with
 ``--rotate-size``; 0 disables rotation. 
 
 ``log:manage`` sets your logging backend, log level, and timezone. The defaults 
-are ``owncloud``, ``Warning``, and ``UTC``. Available options are:
+are ``nextcloud``, ``Warning``, and ``UTC``. Available options are:
 
-* --backend [owncloud, syslog, errorlog]
+* --backend [nextcloud, syslog, errorlog]
 * --level [debug, info, warning, error]
 
 .. _maintenance_commands_label:
@@ -1108,7 +1108,7 @@ Apply correct permissions to your Nextcloud directories; see
 :ref:`strong_perms_label`. Then choose your ``occ`` options. This lists your 
 available options::
 
- sudo -u www-data php /var/www/owncloud/occ
+ sudo -u www-data php /var/www/nextcloud/occ
  Nextcloud is not installed - only a limited number of commands are available
  Nextcloud version 9.0.0
 
@@ -1157,7 +1157,7 @@ Display your ``maintenance:install`` options::
   --admin-user             User name of the admin account (default: "admin")
   --admin-pass             Password of the admin account
   --data-dir               Path to data directory (default: 
-                           "/var/www/owncloud/data")
+                           "/var/www/nextcloud/data")
   --help (-h)              Display this help message
   --quiet (-q)             Do not output any message
   --verbose (-v|vv|vvv)    Increase the verbosity of messages: 1 for normal 
@@ -1169,9 +1169,9 @@ Display your ``maintenance:install`` options::
 
 This example completes the installation::
 
- cd /var/www/owncloud/
+ cd /var/www/nextcloud/
  sudo -u www-data php occ maintenance:install --database 
- "mysql" --database-name "owncloud"  --database-user "root" --database-pass 
+ "mysql" --database-name "nextcloud"  --database-user "root" --database-pass 
  "password" --admin-user "admin" --admin-pass "password" 
  Nextcloud is not installed - only a limited number of commands are available
  Nextcloud was successfully installed

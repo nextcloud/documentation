@@ -11,7 +11,7 @@ refer to our community support channels:
    to typical mistakes or frequently occurring issues
 
 * `The Nextcloud User mailing list`_
-*  The Nextcloud IRC chat channel ``irc://#owncloud@freenode.net`` on 
+*  The Nextcloud IRC chat channel ``irc://#nextcloud@freenode.net`` on 
    freenode.net, also accessible via `webchat`_
 
 Please understand that all these channels essentially consist of users like you 
@@ -39,8 +39,8 @@ configuration report with the :ref:`occ config command
 .. _FAQ page: https://forum.nextcloud.org/viewforum.php?f=17
 .. _the Nextcloud User mailing list: 
    https://mailman.nextcloud.org/mailman/listinfo/user
-.. _webchat: http://webchat.freenode.net/?channels=owncloud
-.. _Enterprise Edition: https://owncloud.com/lp/community-or-enterprise/
+.. _webchat: http://webchat.freenode.net/?channels=nextcloud
+.. _Enterprise Edition: https://nextcloud.com/lp/community-or-enterprise/
 .. _bugtracker: 
    https://doc.nextcloud.org/server/9.1/developer_manual/bugtracker/index.html
 .. TODO ON RELEASE: Update version number above on release
@@ -80,7 +80,7 @@ usually access them by pressing F12. For Firefox we recommend to installing
 the `Firebug extension <https://getfirebug.com/>`_.
 
 .. note:: The logfile of Nextcloud is located in the data directory 
-   ``owncloud/data/owncloud.log``.
+   ``nextcloud/data/nextcloud.log``.
 
 .. _label-phpinfo:
    
@@ -120,7 +120,7 @@ Disregarding this can lead to unwanted behaviours like:
 If you need to directly upload files from the same server please use a WebDAV 
 command line client like ``cadaver`` to upload files to the WebDAV interface at:
 
-``https://example.com/owncloud/remote.php/dav``
+``https://example.com/nextcloud/remote.php/dav``
 
 Common problems / error messages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -139,14 +139,14 @@ Some common problems / error messages found in your logfiles as described above:
   refer to :ref:`db-troubleshooting-label` for more information.
 * ``SQLSTATE[HY000] [2002] No such file or directory`` -> There is a problem
   accessing your SQLite database file in your data directory 
-  (``data/owncloud.db``). Please check the permissions of this folder/file or 
+  (``data/nextcloud.db``). Please check the permissions of this folder/file or 
   if it exists at all. If you're using MySQL please start your database.
 * ``Connection closed / Operation cancelled`` -> This could be caused by wrong 
   ``KeepAlive`` settings within your Apache config. Make sure that 
   ``KeepAlive`` is set to ``On`` and  also try to raise the limits of 
   ``KeepAliveTimeout`` and  ``MaxKeepAliveRequests``.
 * ``No basic authentication headers were found`` -> This error is shown in your
-  ``data/owncloud.log`` file. Some Apache modules like ``mod_fastcgi``, ``mod_fcgid``
+  ``data/nextcloud.log`` file. Some Apache modules like ``mod_fastcgi``, ``mod_fcgid``
   or ``mod_proxy_fcgi`` are not passing the needed authentication headers to
   PHP and so the login to Nextcloud via WebDAV, CalDAV and CardDAV clients is
   failing. Information on how to correctly configure your environment can be
@@ -171,7 +171,7 @@ Web server and Nextcloud itself.
   to store the logfile in the ``error_log`` directive. After those changes you
   need to restart your Web server.
 * The logfile of Nextcloud is located in the data directory 
-  ``/var/www/owncloud/data/owncloud.log``.
+  ``/var/www/nextcloud/data/nextcloud.log``.
 
 Web server and PHP modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -260,9 +260,9 @@ running Nextcloud at the document root of your Web server the correct URL is:
 
 ``https://example.com/remote.php/dav``
 
-and if running in a subfolder like ``owncloud``:
+and if running in a subfolder like ``nextcloud``:
 
-``https://example.com/owncloud/remote.php/dav``
+``https://example.com/nextcloud/remote.php/dav``
 
 For the first case the :file:`.htaccess` file shipped with Nextcloud should do
 this work for your when running Apache. You only need to make sure that your
@@ -270,12 +270,12 @@ Web server is using this file. When running NGINX please refer to
 :doc:`../installation/nginx_examples`.
 
 
-If your Nextcloud instance is installed in a subfolder called ``owncloud`` and
+If your Nextcloud instance is installed in a subfolder called ``nextcloud`` and
 you're running Apache create or edit the :file:`.htaccess` file within the
 document root of your Web server and add the following lines::
 
-    Redirect 301 /.well-known/carddav /owncloud/remote.php/dav
-    Redirect 301 /.well-known/caldav /owncloud/remote.php/dav
+    Redirect 301 /.well-known/carddav /nextcloud/remote.php/dav
+    Redirect 301 /.well-known/caldav /nextcloud/remote.php/dav
 
 Now change the URL in the client settings to just use:
 
@@ -283,7 +283,7 @@ Now change the URL in the client settings to just use:
 
 instead of e.g.
 
-``https://example.com/owncloud/remote.php/dav/principals/username``.
+``https://example.com/nextcloud/remote.php/dav/principals/username``.
 
 There are also several techniques to remedy this, which are described extensively at 
 the `Sabre DAV website <http://sabre.io/dav/service-discovery/>`_.

@@ -12,8 +12,8 @@ Linux, client applications for Microsoft Windows, Mac OS X and Linux, and mobile
 clients for the Android and Apple iOS operating systems.
 
 Current editions of Nextcloud manuals are always available online at 
-`doc.nextcloud.org <https://doc.nextcloud.org/>`_ and `doc.owncloud.com 
-<https://doc.owncloud.com/>`_.
+`doc.nextcloud.org <https://doc.nextcloud.org/>`_ and `doc.nextcloud.com 
+<https://doc.nextcloud.com/>`_.
 
 Nextcloud server is available in three editions:
 

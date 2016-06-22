@@ -10,10 +10,10 @@ are two types of license keys: one is a free 30-day trial key. The other is a
 full license key for Enterprise customers.
 
 You can `download and try Nextcloud Enterprise for 30 days for free 
-<https://owncloud.com/download/>`_, which auto-generates a free 30-day key. When 
+<https://nextcloud.com/download/>`_, which auto-generates a free 30-day key. When 
 this key expires your Nextcloud installation is not removed, so when you become 
 an Enterprise customer you can enter your new key to regain access. See `How to 
-Buy Nextcloud <https://owncloud.com/how-to-buy-owncloud/>`_ for sales and  
+Buy Nextcloud <https://nextcloud.com/how-to-buy-nextcloud/>`_ for sales and  
 contact information.
 
 Configuration

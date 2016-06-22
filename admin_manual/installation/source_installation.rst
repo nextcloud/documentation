@@ -444,4 +444,4 @@ Other Web Servers
 <https://github.com/nextcloud/documentation/wiki/Alternate-Web-server-notes>`_
 
 `Univention Corporate Server installation (Nextcloud)
-<https://github.com/owncloud/documentation/wiki/UCS-Installation>`_
+<https://github.com/nextcloud/documentation/wiki/UCS-Installation>`_

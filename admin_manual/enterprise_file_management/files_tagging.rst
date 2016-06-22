@@ -9,7 +9,7 @@ The Workflow App should be enabled by default (Apps page), and the three
 configuration modules visible on your Nextcloud Admin page. 
 
 See `Tagging Files 
-<https://doc.owncloud.com/server/9.0/user_manual/files/access_webgui.html>`_ in 
+<https://doc.nextcloud.com/server/9.0/user_manual/files/access_webgui.html>`_ in 
 the Nextcloud User manual to learn how to apply and filter tags on files.
 
 Tag Manager

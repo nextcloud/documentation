@@ -2,7 +2,7 @@
 Code Signing
 ============
 
-.. sectionauthor:: Lukas Reschke <lukas@owncloud.com>
+.. sectionauthor:: Lukas Reschke <lukas@nextcloud.com>
 .. _code_signing_label:
 
 Nextcloud supports code signing for the core releases, and for Nextcloud 
@@ -47,7 +47,7 @@ Is Code Signing Mandatory For Apps?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Code signing is optional for all third-party applications. Applications 
-with a tag of "Official" on apps.owncloud.com require code signing.
+with a tag of "Official" on apps.nextcloud.com require code signing.
 
 .. _code_signing_fix_warning_label:
 

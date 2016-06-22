@@ -41,7 +41,7 @@ standard system upgrade command::
  
 Or you can upgrade just Nextcloud with this command::
 
- apt-get update && apt-get install owncloud
+ apt-get update && apt-get install nextcloud
  
 On Fedora, CentOS, and Red Hat Linux use ``yum`` to see all available updates::
 
@@ -53,7 +53,7 @@ You can apply all available updates with this command::
  
 Or update only Nextcloud::
  
- yum update owncloud
+ yum update nextcloud
  
 Your Linux package manager only downloads the current Nextcloud packages. Then 
 your Nextcloud server is immediately put into maintenance mode. You may not see 
@@ -95,7 +95,7 @@ according to :ref:`strong_perms_label`.
 If the upgrade fails, then you must try a manual upgrade.
 
 .. _Open Build Service: 
-   https://download.nextcloud.org/download/repositories/stable/owncloud/
+   https://download.nextcloud.org/download/repositories/stable/nextcloud/
    
 .. _skipped_release_upgrade_label:  
    

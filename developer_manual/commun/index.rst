@@ -13,10 +13,10 @@ IRC channels
 ------------
 Chat with us on `IRC <http://www.irchelp.org/>`_. All channels are on **irc.freenode.net**
 
-* Setup: **#owncloud**
-* Testing: **#owncloud-testing**
-* Development: **#owncloud-dev**
-* Design: **#owncloud-design**
+* Setup: **#nextcloud**
+* Testing: **#nextcloud-testing**
+* Development: **#nextcloud-dev**
+* Design: **#nextcloud-design**
 
 
 Maintainers

@@ -19,7 +19,7 @@ users at their desks and on the go.
 Configuration
 =============
 
-The Jive application is installed under the owncloud/apps directory on the server and enabled via the Nextcloud
+The Jive application is installed under the nextcloud/apps directory on the server and enabled via the Nextcloud
 admin screen. This app is only available for Nextcloud EE v6 or higher. Go to the Nextcloud admin screen section
 “Jive backend parameters” to configure the app to match your Jive server system parameters.
 

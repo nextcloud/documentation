@@ -13,7 +13,7 @@ a manual process that required editing CSS and PHP files. Now Enterprise
 customers can use ownBrander, which provides an easy graphical wizard. 
 
 You need an Enterprise subscription, an account on 
-`Customer.owncloud.com <https://customer.owncloud.com/owncloud>`_, and the 
+`Customer.nextcloud.com <https://customer.nextcloud.com/nextcloud>`_, and the 
 ownBrander app enabled on your account. When you 
 complete the steps in the wizard the ownBrander service builds your new branded 
 theme, and in 24-48 hours you'll see it in your account.
@@ -47,10 +47,10 @@ When you are finished, click the **Generate Web Server** button. If you want to
 change anything, go ahead and change it and click the **Generate Web Server** 
 button. This will override your previous version, if it has not been created 
 yet.In 24-48 hours you'll find your new branded theme in the **Web** folder in 
-your `Customer.owncloud.com <https://customer.owncloud.com/owncloud>`_ account. 
+your `Customer.nextcloud.com <https://customer.nextcloud.com/nextcloud>`_ account. 
 
 Inside the **Web** folder you'll find a **themes** folder. Copy this to your 
-``owncloud/themes`` directory. You may name your **themes** folder anything you 
+``nextcloud/themes`` directory. You may name your **themes** folder anything you 
 want, for example ``myBrandedTheme``. Then configure your Nextcloud server to 
 use your branded theme by entering it in your ``config.php`` file::
 

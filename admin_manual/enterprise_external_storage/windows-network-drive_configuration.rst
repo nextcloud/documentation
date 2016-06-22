@@ -38,7 +38,7 @@ Enable the Windows Network Drive app on your Nextcloud Apps page. Then there are
 a few dependencies to install.
 
 You must install the Nextcloud ``php5-libsmbclient`` binary; please refer to the README in 
-your `customer.owncloud.com <https://customer.owncloud.com/>`_ account for instructions 
+your `customer.nextcloud.com <https://customer.nextcloud.com/>`_ account for instructions 
 on obtaining it.
 
 You also need the Samba client installed on your Linux system. This is included in 

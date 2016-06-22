@@ -23,9 +23,9 @@ If you want to contribute please read the `Contributor agreement
 | mailinglist and forum   |                         |                             |
 +-------------------------+-------------------------+-----------------------------+
 
-.. _Nextcloud appstore: https://apps.owncloud.com/
-.. _Translation: https://www.transifex.com/projects/p/owncloud/
-.. _Documentation: https://github.com/owncloud/documentation#owncloud-documentation
+.. _Nextcloud appstore: https://apps.nextcloud.com/
+.. _Translation: https://www.transifex.com/projects/p/nextcloud/
+.. _Documentation: https://github.com/nextcloud/documentation#nextcloud-documentation
 
 Table of Contents
 =================

@@ -78,7 +78,7 @@ upgrade, all 3rd party apps must be disabled. After the upgrade is complete you
 may re-enable them.
 
 .. _Open Build Service: 
-   https://download.nextcloud.org/download/repositories/8.2/owncloud/
+   https://download.nextcloud.org/download/repositories/8.2/nextcloud/
    
 .. _nextcloud.org/install/:
    https://nextcloud.org/install/  
@@ -96,5 +96,5 @@ Debian Migration to Official Nextcloud Packages
 As of March 2016 Debian will not include Nextcloud packages. Debian users can 
 migrate to the official Nextcloud packages by following this guide, 
 `Upgrading Nextcloud on Debian Stable to official packages 
-<https://nextcloud.org/blog/upgrading-owncloud-on-debian-stable-to-official- 
+<https://nextcloud.org/blog/upgrading-nextcloud-on-debian-stable-to-official- 
 packages/>`_.

@@ -59,7 +59,7 @@ Configure your sharing policy on your Admin page in the Sharing section.
 .. note:: Nextcloud does not preserve the mtime (modification time) of 
    directories, though it does update the mtimes on files. See  
    `Wrong folder date when syncing 
-   <https://github.com/owncloud/core/issues/7009>`_ for discussion of this.
+   <https://github.com/nextcloud/core/issues/7009>`_ for discussion of this.
 
 .. _transfer_userfiles_label:   
 

@@ -34,9 +34,9 @@ The :file:`appinfo/info.xml` contains metadata about the app:
 
       <website>https://nextcloud.org</website>
 
-      <bugs>https://github.com/owncloud/theapp/issues</bugs>
+      <bugs>https://github.com/nextcloud/theapp/issues</bugs>
 
-      <repository type="git">https://github.com/owncloud/theapp.git</repository>
+      <repository type="git">https://github.com/nextcloud/theapp.git</repository>
 
       <ocsid>1234</ocsid>
 
@@ -50,7 +50,7 @@ The :file:`appinfo/info.xml` contains metadata about the app:
           <lib max-version="2.0">intl</lib>
           <lib>curl</lib>
           <os>Linux</os>
-          <owncloud min-version="6.0.4" max-version="8"/>
+          <nextcloud min-version="6.0.4" max-version="8"/>
       </dependencies>
 
       <!-- deprecated, just for reference -->
@@ -92,7 +92,7 @@ licence
 * AGPL 3 (recommended)
 * MIT
 
-If a proprietary/non AGPL compatible licence should be used, the `Nextcloud Enterprise Edition <https://owncloud.com/overview/enterprise-edition>`_ must be used.
+If a proprietary/non AGPL compatible licence should be used, the `Nextcloud Enterprise Edition <https://nextcloud.com/overview/enterprise-edition>`_ must be used.
 
 author
 ------
@@ -152,7 +152,7 @@ Category on the app store. Can be one of the following:
 
 ocsid
 -----
-The app's id on the app store, e.g.: https://apps.owncloud.com/content/show.php/QOwnNotes?content=168497 would have the ocsid **168497**. If given helps users to install and update the same app from the app store
+The app's id on the app store, e.g.: https://apps.nextcloud.com/content/show.php/QOwnNotes?content=168497 would have the ocsid **168497**. If given helps users to install and update the same app from the app store
 
 Dependencies
 ============
@@ -177,13 +177,13 @@ specified. Valid values for the 'os' attribute are as returned by the php functi
 lib
 ---
 Defines a required php extension with required minimum and/or maximum version. The names for the libraries have to match the result as returned by the php function  `get_loaded_extensions <http://php.net/manual/en/function.get-loaded-extensions.php>`_.
-The explicit version of an extension is read from `phpversion <http://php.net/manual/de/function.phpversion.php>`_ - with some exception as to be read up in the `code base <https://github.com/owncloud/core/blob/master/lib/private/app/platformrepository.php#L45>`_
+The explicit version of an extension is read from `phpversion <http://php.net/manual/de/function.phpversion.php>`_ - with some exception as to be read up in the `code base <https://github.com/nextcloud/core/blob/master/lib/private/app/platformrepository.php#L45>`_
 
 os
 --
 Defines the required target operating system the app can run on. Valid values are as returned by the php function `php_uname <http://php.net/manual/en/function.php-uname.php>`_.
 
-owncloud
+nextcloud
 --------
 Defines minimum and maximum versions of the Nextcloud core. In case undefined the values will be taken from the tag 'requiremin'.
 
@@ -198,17 +198,17 @@ The following sections are just listed for reference and should not be used beca
 
 public
 ------
-Used to provide a public interface (requires no login) for the app. The id is appended to the URL **/owncloud/index.php/public**. Example with id set to 'calendar'::
+Used to provide a public interface (requires no login) for the app. The id is appended to the URL **/nextcloud/index.php/public**. Example with id set to 'calendar'::
 
-    /owncloud/index.php/public/calendar
+    /nextcloud/index.php/public/calendar
 
 Also take a look at :doc:`../core/externalapi`.
 
 remote
 ------
-Same as public but requires login. The id is appended to the URL **/owncloud/index.php/remote**. Example with id set to 'calendar'::
+Same as public but requires login. The id is appended to the URL **/nextcloud/index.php/remote**. Example with id set to 'calendar'::
 
-    /owncloud/index.php/remote/calendar
+    /nextcloud/index.php/remote/calendar
 
 Also take a look at :doc:`../core/externalapi`.
 

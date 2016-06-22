@@ -6,7 +6,7 @@ When you have problems with your Nextcloud Enterprise installation, refer to
 :doc:`../issues/general_troubleshooting` to see if you can resolve your issue 
 without opening a support ticket. If you need to open a support ticket, use the 
 Open Ticket button in your account on 
-`<https://customer.owncloud.com/owncloud/>`_.
+`<https://customer.nextcloud.com/nextcloud/>`_.
 
 Bug reports and trouble tickets usually need a copy of your Nextcloud server 
 configuration report. You have two ways to generate a configuration report.

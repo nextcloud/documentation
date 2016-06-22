@@ -7,7 +7,7 @@ General
 -------
 
 * Ideally, discuss your plans on the `mailing list <https://mailman.nextcloud.org/mailman/listinfo/devel>`_ to see if others want to work with you on it
-* We use `Github <https://github.com/owncloud>`_, please get an account there and clone the repositories you want to work on
+* We use `Github <https://github.com/nextcloud>`_, please get an account there and clone the repositories you want to work on
 * Fixes go directly to master, nevertheless they need to be tested thoroughly.
 * New features are always developed in a branch and only merged to master once they are fully done.
 * Software should work. We only put features into master when they are complete. It's better to not have a feature instead of having one that works poorly.
