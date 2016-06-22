@@ -7,7 +7,6 @@ PostgreSQL database with the Nextcloud command line tool. SQLite is good for
 testing and simple single-user Nextcloud servers, but it does not scale for 
 multiple-user production users.
 
-.. note:: Nextcloud Enterprise edition does not support SQLite.
 
 Run the conversion
 ------------------
