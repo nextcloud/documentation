@@ -6,43 +6,43 @@ Considerations on Monitoring
     :maxdepth: 2
     :hidden:
 
-Large scale ownCloud deployments are typically installed as load balanced
+Large scale Nextcloud deployments are typically installed as load balanced
 n-tier web applications.  Successfully managing such an installation requires
 active monitoring of the application and supporting infrastructure components.
-The purpose of this section is to outline the components of ownCloud that need
-to be monitored, and provide guidance on what to look for in ownCloud in an
+The purpose of this section is to outline the components of Nextcloud that need
+to be monitored, and provide guidance on what to look for in Nextcloud in an
 enterprise installation.
 
-ownCloud Deployment Architecture
+Nextcloud Deployment Architecture
 ================================
 
-Before discussing how to monitor ownCloud, it is important to understand the architecture of a
-typical ownCloud deployment. These monitoring best practices are developed based on the use of load
+Before discussing how to monitor Nextcloud, it is important to understand the architecture of a
+typical Nextcloud deployment. These monitoring best practices are developed based on the use of load
 balanced Web servers, a clustered database running a distributed database storage engine, such as
 MySQL NDB, and a clustered filesystem, such as Red Hat Storage.
 
 It is assumed that specific enterprise tools (monitoring, log management, etc) to monitor
-operations are available, and that ownCloud is simply a new target for these tools.
+operations are available, and that Nextcloud is simply a new target for these tools.
 
 
-The Important Components of ownCloud
+The Important Components of Nextcloud
 ====================================
 
-ownCloud is a PHP application that depends on a filesystem for file storage, and a database for storing
+Nextcloud is a PHP application that depends on a filesystem for file storage, and a database for storing
 user and file meta data, as well as some application specific information.
 While the loss of an app server or a node in the database or storage clusters should not bring the
 system down, knowing that this happened and resolving it is essential to keeping the service running
-efficiently. Therefore it is important to monitor the ownCloud servers, the Load Balancer, the Storage
-Cluster and the Database. This documentation starts with the ownCloud application and works out from
+efficiently. Therefore it is important to monitor the Nextcloud servers, the Load Balancer, the Storage
+Cluster and the Database. This documentation starts with the Nextcloud application and works out from
 there through the layers of infrastructure.
 
 
 Status.php
 ----------
 
-ownCloud provides a very simple mechanism for determining if an application server is up and functioning –
-call the status.php file on each ownCloud server. This file can be found in the root ownCloud directory on
-the server, which by default is /owncloud/status.php. If the server is functioning normally, the response
+Nextcloud provides a very simple mechanism for determining if an application server is up and functioning –
+call the status.php file on each Nextcloud server. This file can be found in the root Nextcloud directory on
+the server, which by default is /nextcloud/status.php. If the server is functioning normally, the response
 looks something like this:
 
 ::
@@ -50,21 +50,21 @@ looks something like this:
     {"installed":"true","version":"6.0.0.16","versionstring":"6.0.1","edition":""}
 
 
-We recommend monitoring this file on each ownCloud application server to provide a basic check that the
+We recommend monitoring this file on each Nextcloud application server to provide a basic check that the
 server is operating properly.
 
 
-ownCloud.log
+Nextcloud.log
 ------------
 
-ownCloud also provides a built in logging function. If the ownCloud Enterprise Edition logging applications
+Nextcloud also provides a built in logging function. If the Nextcloud Enterprise Edition logging applications
 are enabled, this file will track user logins and shared file activity. If these logging applications are
-not enabled, this log file still tracks basic ownCloud health. Given the potential for this file to get
+not enabled, this log file still tracks basic Nextcloud health. Given the potential for this file to get
 quite large, the log file should be rotated on a daily basis, and given the importance of the error information
 in the log file, this should be integrated with an enterprise log manager.
 
 
-Logfile entries that start with the keyword “Error” should be logged and reported to ownCloud support.
+Logfile entries that start with the keyword “Error” should be logged and reported to Nextcloud support.
 
 Apache
 ^^^^^^
@@ -83,7 +83,7 @@ All mysql vendors provide tools to monitor this.
 Clustered Filesystem
 --------------------
 
-The available space of the filesystem should be monitored to prevent a full ownCloud. This functionality is
+The available space of the filesystem should be monitored to prevent a full Nextcloud. This functionality is
 provided by the operating-system and/or the cluster filesystem vendor.
 
 Load Balancer

@@ -1,10 +1,10 @@
-Theming ownCloud
+Theming Nextcloud
 ================
-Themes can be used to customize the look and feel of ownCloud.
-Themes can relate to the following topics of owncloud:
+Themes can be used to customize the look and feel of Nextcloud.
+Themes can relate to the following topics of nextcloud:
 
 * Theming the web-frontend
-* Theming the owncloud Desktop client
+* Theming the nextcloud Desktop client
 
 This documentation contains only the Web-frontend adaptations so far.
 
@@ -22,7 +22,7 @@ With this facts you can easily determine, where the following object-related att
 The next thing you should do, before starting any changes is:
 Make a backup of your current theme(s) e.g.:
 
-* cd …/owncloud/themes
+* cd …/nextcloud/themes
 * cp -r example mytheme
 
 
@@ -41,11 +41,11 @@ Depending on how you created your new theme it will be necessary to
 
 Structure
 =========
-The folder structure of a theme is exactly the same as the main ownCloud
+The folder structure of a theme is exactly the same as the main Nextcloud
 structure. You can override js files, images, translations and templates with
 own versions. CSS files are loaded additionally to the default files so you can
 override CSS properties. CSS files and the standard pictures that are used reside
-for example in /owncloud/core/ and /owncloud/settings/ in these sub folders:
+for example in /nextcloud/core/ and /nextcloud/settings/ in these sub folders:
 
 * css = style sheets
 * js = JavaScripts
@@ -60,7 +60,7 @@ Notes for Updates
 =================
 It is not recommended to the user to perform adaptations inside the 
 folder ``/themes/example`` because files inside this folder might get
-replaced during the next ownCloud update process.
+replaced during the next Nextcloud update process.
 
 During an update, files might get changed within the core and settings 
 folders. This could result in problems because your template files will 
@@ -68,11 +68,11 @@ not 'know' about these changes and therefore must be manually merged with
 the updated core file or simply be deleted (or renamed for a test).
 
 For example if ``/settings/templates/apps.php`` gets updated by a new
-ownCloud version, and you have a ``/themes/MyTheme/settings/templates/apps.php``
+Nextcloud version, and you have a ``/themes/MyTheme/settings/templates/apps.php``
 in your template, you must merge the changes that where made within the update
 with the ones you did in your template.
 
-But this is unlikely and will be mentioned in the ownCloud release notes if it occurs.
+But this is unlikely and will be mentioned in the Nextcloud release notes if it occurs.
 
 
 How to change images and the logo
@@ -91,10 +91,10 @@ If you want to do a quick exchange like (1) it's important to know the size of t
 * You can look up sizing in most cases via the file properties inside your file-manager
 * Create an own picture/logo with the same size then
 
-The (main) pictures, that can be found inside ownCloud standard theming are the following:
+The (main) pictures, that can be found inside Nextcloud standard theming are the following:
 
-* The logo at the login-page above the credentials-box: 	        …/owncloud/themes/default/core/img/logo.svg
-* The logo, that's always in the left upper corner after login:   …/owncloud/themes/default/core/img/logo-wide.svg
+* The logo at the login-page above the credentials-box: 	        …/nextcloud/themes/default/core/img/logo.svg
+* The logo, that's always in the left upper corner after login:   …/nextcloud/themes/default/core/img/logo-wide.svg
 
 Inserting your new logo
 -----------------------
@@ -102,17 +102,17 @@ Inserting a new logo into an existing theme is as simple as replacing the old lo
 You can use: scalable vector graphics (.svg) or common graphics formats for the internet such as portable network graphics (.png) or .jepg
 Just insert the new created picture by using the unchanged name of the old picture.
 
-The app icons can also be overwritten in a theme. To change for example the app icon of the activity app you need to overwrite it by saving the new image to …/owncloud/themes/default/apps/activity/img/activity.svg
+The app icons can also be overwritten in a theme. To change for example the app icon of the activity app you need to overwrite it by saving the new image to …/nextcloud/themes/default/apps/activity/img/activity.svg
 
 Changing favicon
 ----------------
-For compatibility with older browsers, favicon (the image that appears in your browser tab) uses .../owncloud/core/img/favicon.ico.
+For compatibility with older browsers, favicon (the image that appears in your browser tab) uses .../nextcloud/core/img/favicon.ico.
 
 To customize favicon for MyTheme:
 
 * Create a version of your logo in .ico format
-* Store your custom favicon as .../owncloud/themes/MyTheme/core/img/favicon.ico
-* Include .../owncloud/themes/MyTheme/core/img/favicon.svg and favicon.png to cover any future updates to favicon handling.
+* Store your custom favicon as .../nextcloud/themes/MyTheme/core/img/favicon.ico
+* Include .../nextcloud/themes/MyTheme/core/img/favicon.svg and favicon.png to cover any future updates to favicon handling.
 
 Changing the default colours
 ----------------------------
@@ -144,7 +144,7 @@ As usual:
 * third pair gives the blue value.
 
 Save your CSS-file and refresh to see the new login screen.
-The other major color scheme is the blue header bar on the main navigation page once you log in to ownCloud.
+The other major color scheme is the blue header bar on the main navigation page once you log in to Nextcloud.
 This color we will change with the above as well.
 Save the file and refresh the browser for the changes to take effect.
 
@@ -193,7 +193,7 @@ terms in there.
 
 How to change names, slogans and URLs
 =====================================
-The ownCloud theming allows a lot of the names that are shown on the web interface to be changed. It's also possible to change the URLs to the documentation or the Android/iOS apps.
+The Nextcloud theming allows a lot of the names that are shown on the web interface to be changed. It's also possible to change the URLs to the documentation or the Android/iOS apps.
 
 This can be done with a file named ``defaults.php`` within the root of the theme. You can find it in the example theme (*/themes/example/defaults.php*). In there you need to specify a class named ``OC_Theme`` and need to implement the methods you want to overwrite:
 
@@ -201,11 +201,11 @@ This can be done with a file named ``defaults.php`` within the root of the theme
 
   class OC_Theme {
     public function getAndroidClientUrl() {
-      return 'https://play.google.com/store/apps/details?id=com.owncloud.android';
+      return 'https://play.google.com/store/apps/details?id=com.nextcloud.android';
     }
 
     public function getName() {
-      return 'ownCloud';
+      return 'Nextcloud';
     }
   }
 

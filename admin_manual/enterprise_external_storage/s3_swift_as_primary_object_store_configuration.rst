@@ -2,25 +2,25 @@
 Configuring S3 and OpenStack Swift Objects as Primary Storage
 =============================================================
 
-In ownCloud Enterprise edition, you can configure S3 objects as primary 
-storage. This replaces the default ownCloud ``owncloud/data`` directory. You may 
-still need to keep the ``owncloud/data`` directory for these reasons:
+In Nextcloud Enterprise edition, you can configure S3 objects as primary 
+storage. This replaces the default Nextcloud ``nextcloud/data`` directory. You may 
+still need to keep the ``nextcloud/data`` directory for these reasons:
 
-* The ownCloud log file is saved in the data directory
-* Legacy apps may not support using anything but the ``owncloud/data`` directory
+* The Nextcloud log file is saved in the data directory
+* Legacy apps may not support using anything but the ``nextcloud/data`` directory
 
 You can move your logfile by changing its location in ``config.php``. You may still need 
-``owncloud/data`` for backwards compatibility with some apps.
+``nextcloud/data`` for backwards compatibility with some apps.
 
 Implications
 ------------
 
-ownCloud in object store mode expects exclusive access to the object store 
+Nextcloud in object store mode expects exclusive access to the object store 
 container, because it only stores the binary data for each file. The metadata 
 are kept in the local database for performance reasons.
 
 The current implementation is incompatible with any app that uses 
-direct file I/O and circumvents the ownCloud virtual filesystem. That includes 
+direct file I/O and circumvents the Nextcloud virtual filesystem. That includes 
 Encryption and Gallery. Gallery stores thumbnails directly in the 
 filesystem, and Encryption causes severe overhead because key files need 
 to be fetched in addition to any requested file.
@@ -54,7 +54,7 @@ into the virtual filesystem. The class to be used is ``OCA\ObjectStore\S3``:
       'class' => 'OCA\ObjectStore\S3',
       'arguments' => [
           // replace with your bucket
-          'bucket' => 'owncloud',
+          'bucket' => 'nextcloud',
           'autocreate' => true,
           // uncomment to enable server side encryption
           //'serversideencryption' => 'AES256',
@@ -85,7 +85,7 @@ into the virtual filesystem. The class to be used is ``OCA\ObjectStore\S3``:
         'class' => 'OCA\ObjectStore\S3',
         'arguments' => [
             // replace with your bucket
-            'bucket' => 'owncloud',
+            'bucket' => 'nextcloud',
             'autocreate' => true,
             'options' => [
                 // version and region are required
@@ -120,7 +120,7 @@ into the virtual filesystem. The class to be used is ``\\OC\\Files\\ObjectStore\
         'arguments' => [
             'username' => 'demo', 
             'password' => 'password', 
-            'container' => 'owncloud', 
+            'container' => 'nextcloud', 
             'autocreate' => true,
             'region' => 'RegionOne', 
             'url' => 'http://devstack:5000/v2.0',

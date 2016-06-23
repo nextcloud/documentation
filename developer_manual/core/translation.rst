@@ -73,7 +73,7 @@ After the next nightly sync job a new resource will appear on Transifex and from
 Translation sync jobs:
 ~~~~~~~~~~~~~~~~~~~~~~
 
-https://ci.owncloud.org/view/translation-sync/
+https://ci.nextcloud.org/view/translation-sync/
 
 **Caution: information below is in general not needed!**
 
@@ -95,8 +95,8 @@ Configure transifex
 
   for resource in calendar contacts core files media gallery settings
   do
-  tx set --auto-local -r owncloud.$resource "<lang>/$resource.po" --source-language=en \
+  tx set --auto-local -r nextcloud.$resource "<lang>/$resource.po" --source-language=en \
    --source-file "templates/$resource.pot" --execute
   done
 
-.. _Transifex: https://www.transifex.net/projects/p/owncloud/
+.. _Transifex: https://www.transifex.net/projects/p/nextcloud/

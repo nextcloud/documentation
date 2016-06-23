@@ -36,4 +36,4 @@ Don't forget to configure the cron service on the server by executing::
 
 where **http** is your Web server user, and add::
 
-    */15  *  *  *  * php -f /srv/http/owncloud/cron.php
+    */15  *  *  *  * php -f /srv/http/nextcloud/cron.php

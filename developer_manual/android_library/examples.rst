@@ -49,7 +49,7 @@ Code example
 
 .. code-block:: java
 
-  package com.owncloud.android.lib.common;
+  package com.nextcloud.android.lib.common;
 
   public class OwnCloudClient extends HttpClient {
     ...

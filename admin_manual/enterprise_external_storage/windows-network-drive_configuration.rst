@@ -3,15 +3,15 @@ Installing and Configuring the Windows Network Drive App
 ========================================================
 
 The Windows Network Drive app creates a control panel on your Admin page for 
-seamless mounting of SMB/CIFS file shares on ownCloud servers.
+seamless mounting of SMB/CIFS file shares on Nextcloud servers.
 
 Any Windows file share, and Samba servers on Linux and other Unix-type operating 
 systems use the SMB/CIFS file-sharing protocol. The files and directories on the 
-SMB/CIFS server will be visible on your Files page just like your other ownCloud 
+SMB/CIFS server will be visible on your Files page just like your other Nextcloud 
 files and folders. They are labeled with a little four-pane Windows-style icon, 
 and the left pane of your Files page includes a Windows Network Drive filter. 
 Figure 1 shows a new Windows Network Drive share marked with red warnings. 
-These indicate that ownCloud cannot connect to the share because it requires 
+These indicate that Nextcloud cannot connect to the share because it requires 
 the user to login, it is not available, or there is an error in the 
 configuration. 
 
@@ -21,24 +21,24 @@ configuration.
    *Figure 1: Windows Network Drive share on your Files page.*
 
 Files are synchronized bi-directionally, and you can create, upload, and delete 
-files and folders. ownCloud server admins can create Windows Network Drive 
+files and folders. Nextcloud server admins can create Windows Network Drive 
 mounts, and optionally allow users to create their own personal Windows Network 
 Drive mounts. 
 
 Depending on the authentication method, passwords for each mount are encrypted 
-and stored in the ownCloud database, using a long random secret key stored in 
-``config.php``, which allows ownCloud to access the shares when the users who 
+and stored in the Nextcloud database, using a long random secret key stored in 
+``config.php``, which allows Nextcloud to access the shares when the users who 
 own the mounts are not logged in. Or, passwords are not stored and available 
 only for the current session, which adds security.
 
 Installation
 ------------
 
-Enable the Windows Network Drive app on your ownCloud Apps page. Then there are 
+Enable the Windows Network Drive app on your Nextcloud Apps page. Then there are 
 a few dependencies to install.
 
-You must install the ownCloud ``php5-libsmbclient`` binary; please refer to the README in 
-your `customer.owncloud.com <https://customer.owncloud.com/>`_ account for instructions 
+You must install the Nextcloud ``php5-libsmbclient`` binary; please refer to the README in 
+your `customer.nextcloud.com <https://customer.nextcloud.com/>`_ account for instructions 
 on obtaining it.
 
 You also need the Samba client installed on your Linux system. This is included in 
@@ -52,7 +52,7 @@ Creating a New Share
 When you create a new WND share you need the login credentials for the share, 
 the server address, the share name, and the folder you want to connect to. 
 
-1. First enter the ownCloud mountpoint for your new WND share. This must not be 
+1. First enter the Nextcloud mountpoint for your new WND share. This must not be 
    an existing folder.
 2. Then select your authentication method; See :doc:`enterprise_only_auth` for 
    complete information on the five available authentication methods.
@@ -84,7 +84,7 @@ the server address, the share name, and the folder you want to connect to.
 Your changes are saved automatically.
 
 .. note:: When you create a new mountpoint using Login credentials you must log 
-   out of ownCloud, and then log back in so you can access the share. You 
+   out of Nextcloud, and then log back in so you can access the share. You 
    only have to do this the first time.
 
 Personal WND Mounts
@@ -135,5 +135,5 @@ In openSUSE, modify the ``/usr/sbin/start_apache2`` file::
  
   export HOME=/var/lib/apache2
 
-Restart Apache, open your ownCloud Admin page and start creating SMB/CIFS 
+Restart Apache, open your Nextcloud Admin page and start creating SMB/CIFS 
 mounts.

@@ -2,7 +2,7 @@
 Logging Configuration
 =====================
 
-Use your ownCloud log to review system status, or to help debug problems. You may adjust logging levels, and choose between using the ownCloud log or your syslog.
+Use your Nextcloud log to review system status, or to help debug problems. You may adjust logging levels, and choose between using the Nextcloud log or your syslog.
 
 Parameters
 ----------
@@ -17,14 +17,14 @@ Logging levels range from **DEBUG**, which logs all activity, to **FATAL**, whic
 
 By default the log level is set to **2** (WARN). Use **DEBUG** when you have a problem to diagnose, and then reset your log level to a less-verbose level as **DEBUG** outputs a lot of information, and can affect your server performance.
 
-Logging level parameters are set in the :file:`config/config.php` file, or on the Admin page of your ownCloud Web GUI.
+Logging level parameters are set in the :file:`config/config.php` file, or on the Admin page of your Nextcloud Web GUI.
 
-ownCloud
+Nextcloud
 ~~~~~~~~
 
 All log information will be written to a separate log file which can be
 viewed using the log viewer on your Admin page. By default, a log
-file named **owncloud.log** will be created in the directory which has
+file named **nextcloud.log** will be created in the directory which has
 been configured by the **datadirectory** parameter in :file:`config/config.php`.
 
 The desired date format can optionally be defined using the **logdateformat** parameter in :file:`config/config.php`.
@@ -35,8 +35,8 @@ date format in the example below, the date/time format will be written in the fo
 
 ::
 
-    "log_type" => "owncloud",
-    "logfile" => "owncloud.log",
+    "log_type" => "nextcloud",
+    "logfile" => "nextcloud.log",
     "loglevel" => "3",
     "logdateformat" => "F d, Y H:i:s",
 

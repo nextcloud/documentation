@@ -26,7 +26,7 @@ community-maintained. (Thank you, contributors!)
 Example Configurations
 ----------------------
 
-- :doc:`nginx_owncloud_8x`
+- :doc:`nginx_nextcloud_8x`
 - :doc:`nginx_nextcloud_9x`
 
 You can use Nextcloud over plain http, but we strongly encourage you to use 
@@ -43,7 +43,7 @@ Suppressing Log Messages
 
 If you're seeing meaningless messages in your logfile, for example `client 
 denied by server configuration: /var/www/data/htaccesstest.txt 
-<https://forum.owncloud.org/viewtopic.php?f=17&t=20217>`_, add this section to 
+<https://forum.nextcloud.org/viewtopic.php?f=17&t=20217>`_, add this section to 
 your nginx configuration to suppress them::
 
         location = /data/htaccesstest.txt {

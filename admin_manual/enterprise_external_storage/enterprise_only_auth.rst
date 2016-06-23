@@ -2,7 +2,7 @@
 Enterprise-Only Authentication Options
 ======================================
 
-In ownCloud 9.0+, there are five authentication backends for external storage 
+In Nextcloud 9.0+, there are five authentication backends for external storage 
 mounts:
 
 * Username and password
@@ -11,11 +11,11 @@ mounts:
 * User entered, store in database
 * Global credentials
 
-The first two are common to all editions of ownCloud, and the last three are 
+The first two are common to all editions of Nextcloud, and the last three are 
 only in the Enterprise edition. These are available to:
 
 * FTP
-* ownCloud
+* Nextcloud
 * SFTP
 * SMB/CIFS
 * WebDAV

@@ -6,25 +6,25 @@ App config
   <?php
 
   $CONFIG = array(
-  /* Flag to indicate ownCloud is successfully installed (true = installed) */
+  /* Flag to indicate Nextcloud is successfully installed (true = installed) */
   "installed" => false,
 
   /* Type of database, can be sqlite, mysql or pgsql */
   "dbtype" => "sqlite",
 
-  /* Name of the ownCloud database */
-  "dbname" => "owncloud",
+  /* Name of the Nextcloud database */
+  "dbname" => "nextcloud",
 
-  /* User to access the ownCloud database */
+  /* User to access the Nextcloud database */
   "dbuser" => "",
 
-  /* Password to access the ownCloud database */
+  /* Password to access the Nextcloud database */
   "dbpassword" => "",
 
-  /* Host running the ownCloud database */
+  /* Host running the Nextcloud database */
   "dbhost" => "",
 
-  /* Prefix for the ownCloud tables in the database */
+  /* Prefix for the Nextcloud tables in the database */
   "dbtableprefix" => "",
 
   /* Define the salt used to hash the user passwords. All your user passwords are lost if you lose this string. */
@@ -33,7 +33,7 @@ App config
   /* Force use of HTTPS connection (true = use HTTPS) */
   "forcessl" => false,
 
-  /* Theme to use for ownCloud */
+  /* Theme to use for Nextcloud */
   "theme" => "",
 
   /* Path to the 3rdparty directory */
@@ -52,7 +52,7 @@ App config
   "appstoreenabled" => true,
 
   /* URL of the appstore to use, server should understand OCS */
-  "appstoreurl" => "https://api.owncloud.com/v1",
+  "appstoreurl" => "https://api.nextcloud.com/v1",
 
   /* Mode to use for sending mail, can be sendmail, smtp, qmail or php, see PHPMailer docs */
   "mail_smtpmode" => "sendmail",
@@ -74,13 +74,13 @@ App config
   /* Check 3rdparty apps for malicious code fragments */
   "appcodechecker" => "",
 
-  /* Check if ownCloud is up to date */
+  /* Check if Nextcloud is up to date */
   "updatechecker" => true,
 
-  /* Place to log to, can be owncloud and syslog (owncloud is log menu item in admin menu) */
-  "log_type" => "owncloud",
+  /* Place to log to, can be nextcloud and syslog (nextcloud is log menu item in admin menu) */
+  "log_type" => "nextcloud",
 
-  /* File for the owncloud logger to log to, (default is ownloud.log in the data dir */
+  /* File for the nextcloud logger to log to, (default is ownloud.log in the data dir */
   "logfile" => "",
 
   /* Loglevel to start logging at. 0=DEBUG, 1=INFO, 2=WARN, 3=ERROR (default is WARN) */
@@ -89,7 +89,7 @@ App config
   /* Lifetime of the remember login cookie, default is 15 days */
   "remember_login_cookie_lifetime" => 60*60*24*15,
 
-  /* The directory where the user data is stored, default to data in the owncloud
+  /* The directory where the user data is stored, default to data in the nextcloud
    * directory. The sqlite database is also stored here, when sqlite is used.
    */
   // "datadirectory" => "",
@@ -102,7 +102,7 @@ App config
    You must have at least 1 app folder writable or you must set the parameter : appstoreenabled to false
   */
           array(
-                  'path'=> '/var/www/owncloud/apps',
+                  'path'=> '/var/www/nextcloud/apps',
                   'url' => '/apps',
                   'writable' => true,
     ),
@@ -113,7 +113,7 @@ App config
 Using alternative app directories
 ---------------------------------
 
-ownCloud can be set to use a custom app directory in /config/config.php. Customise the following code and add it to your config file:
+Nextcloud can be set to use a custom app directory in /config/config.php. Customise the following code and add it to your config file:
 
 .. code-block:: php
 
@@ -133,4 +133,4 @@ ownCloud can be set to use a custom app directory in /config/config.php. Customi
 		),
 	),
 
-ownCloud will use the first app directory which it finds in the array with 'writable' set to true.
+Nextcloud will use the first app directory which it finds in the array with 'writable' set to true.

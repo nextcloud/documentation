@@ -4,14 +4,14 @@ Classloader
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-The classloader is provided by ownCloud and loads all your classes automatically. The only thing left to include by yourself are 3rdparty libraries. Those should be loaded in :file:`lib/AppInfo/Application.php`.
+The classloader is provided by Nextcloud and loads all your classes automatically. The only thing left to include by yourself are 3rdparty libraries. Those should be loaded in :file:`lib/AppInfo/Application.php`.
 
 .. versionadded:: 9.1
 
 PSR-4 Autoloading
 -----------------
 
-Since ownCloud 9.1 there is a PSR-4 autoloader in place. The namespace **\\OCA\\MyApp**
+Since Nextcloud 9.1 there is a PSR-4 autoloader in place. The namespace **\\OCA\\MyApp**
 is mapped to :file:`/apps/myapp/lib/`. Afterwards normal PSR-4 rules apply, so
 a folder is a namespace section in the same casing and the class name matches
 the file name.

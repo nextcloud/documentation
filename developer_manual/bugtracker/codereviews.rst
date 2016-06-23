@@ -8,7 +8,7 @@ Code Reviews on GitHub
 Introduction
 ------------
 
-In order to increase the code quality within ownCloud, developers are requested
+In order to increase the code quality within Nextcloud, developers are requested
 to perform code reviews.  As we are now heavily using the GitHub platform these
 code review shall take place on GitHub as well.
 
@@ -42,21 +42,21 @@ How will it work?
 Examples
 --------
 Read our `coding guidelines`_ for information on what a good pull request and
-good ownCloud code looks like.
+good Nextcloud code looks like.
 
 These are two examples that are considered to be good examples of how pull
 requests should be handled
 
-* https://github.com/owncloud/core/pull/121
-* https://github.com/owncloud/core/pull/146
+* https://github.com/nextcloud/core/pull/121
+* https://github.com/nextcloud/core/pull/146
 
 Questions?
 ----------
 
 Feel free to drop a line on the `mailing list`_ or join us on `IRC`_.
 
-.. _core repository: https://GitHub.com/owncloud/core
-.. _continuous integration server: https://ci.owncloud.org/
-.. _mailing list: https://mailman.owncloud.org/mailman/listinfo/devel
-.. _IRC: http://webchat.freenode.net/?channels=owncloud-dev
+.. _core repository: https://GitHub.com/nextcloud/core
+.. _continuous integration server: https://ci.nextcloud.org/
+.. _mailing list: https://mailman.nextcloud.org/mailman/listinfo/devel
+.. _IRC: http://webchat.freenode.net/?channels=nextcloud-dev
 .. _coding guidelines: ../general/codingguidelines

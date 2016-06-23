@@ -1,5 +1,5 @@
 ==========================================
-Supported ownCloud Enterprise Edition Apps
+Supported Nextcloud Enterprise Edition Apps
 ==========================================
 
 See :doc:`../installation/apps_supported` for a list of supported apps.

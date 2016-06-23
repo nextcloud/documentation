@@ -443,5 +443,5 @@ Other Web Servers
 `Other HTTP servers (Nextcloud)
 <https://github.com/nextcloud/documentation/wiki/Alternate-Web-server-notes>`_
 
-`Univention Corporate Server installation (ownCloud)
-<https://github.com/owncloud/documentation/wiki/UCS-Installation>`_
+`Univention Corporate Server installation (Nextcloud)
+<https://github.com/nextcloud/documentation/wiki/UCS-Installation>`_

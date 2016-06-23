@@ -2,7 +2,7 @@ Kanban Board
 ============
 
 This chapter contains a lot of information about the development process the
-ownCloud community tries to follow, so please take your time to digest all the
+Nextcloud community tries to follow, so please take your time to digest all the
 information. In any case remember this page as the documentation on how it
 should be done. Nothing here is set in stone, so if you think something should
 be changed please discuss it on the `mailing list`_.
@@ -10,7 +10,7 @@ be changed please discuss it on the `mailing list`_.
 Kanban Board = github issues + huboard
 --------------------------------------
 
-We are using http://huboard.com to visualize ownCloud github issues as a `kanban
+We are using http://huboard.com to visualize Nextcloud github issues as a `kanban
 board`_ (see: `core`_, `apps`_, `client`_):
 
 .. figure:: ../images/kanbanexample.png
@@ -187,7 +187,7 @@ Why do we have it?
 
 What does a developer think?
   "Look at all the shiny things we will release with the next version of
-  ownCloud!"
+  Nextcloud!"
 
 When can I pull?
   This is the last step of the Kanban board. When the Release finally happens
@@ -221,7 +221,7 @@ Priority Labels
 
 * Panic should be used with caution. It is reserved for Bugs that would result
   in the loss of files or other user data. An Enhancement marked as Panic is
-  expected by ownCloud users for the next release. In either case an open Panic
+  expected by Nextcloud users for the next release. In either case an open Panic
   issue will prevent a release.
 
 * Attention is not as hard as Panic. But we really want this in the next release
@@ -257,7 +257,7 @@ Misc Labels
 * Needs info – Either from a developer or the bug reporter. This is nearly as
   severe as Panic, because no further action can be taken
 * L18n – A translation issue go see our `transifex`_
-* Junior Job – The issue is considered a good starting point to get involved in ownCloud development
+* Junior Job – The issue is considered a good starting point to get involved in Nextcloud development
 
 Milestones equal Releases
 -------------------------
@@ -271,15 +271,15 @@ the Kanban board by Milestone, making it especially easy to focus on the current
 Release.
 
 .. _kanban board: http://en.wikipedia.org/wiki/Kanban_board
-.. _mailing list: mailto:owncloud@kde.org
-.. _core: http://huboard.com/owncloud/core/board/#
-.. _apps: http://huboard.com/owncloud/apps/board/#
-.. _client: http://huboard.com/owncloud/client/board/#
+.. _mailing list: mailto:nextcloud@kde.org
+.. _core: http://huboard.com/nextcloud/core/board/#
+.. _apps: http://huboard.com/nextcloud/apps/board/#
+.. _client: http://huboard.com/nextcloud/client/board/#
 .. _Gherkin: https://github.com/cucumber/cucumber/wiki/Gherkin
 .. _existing ones: https://ci.tmit.eu/job/acceptance-test/cucumber-html-reports/?
 .. _“Given … when … then …“: https://github.com/cucumber/cucumber/wiki/Given-When-Then
-.. _unit tests: https://github.com/owncloud/core/tree/master/tests
-.. _Code Review Documentation: https://owncloud.org/dev/code-reviews-on-github/
+.. _unit tests: https://github.com/nextcloud/core/tree/master/tests
+.. _Code Review Documentation: https://nextcloud.org/dev/code-reviews-on-github/
 .. _Jenkins: https://ci.tmit.eu/
 .. _cucumber: http://cukes.info/
-.. _transifex: https://www.transifex.com/projects/p/owncloud/
+.. _transifex: https://www.transifex.com/projects/p/nextcloud/

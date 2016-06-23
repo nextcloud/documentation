@@ -7,7 +7,7 @@ Init the library
 Start using the library, it is needed to init the object OCCommunication.
 
 We recommend using the singleton method in the AppDelegate class in order to
-use the ownCloud iOS library.
+use the Nextcloud iOS library.
 
 Code example
 ~~~~~~~~~~~~
@@ -625,7 +625,7 @@ Check if the server supports Sharing api
 ----------------------------------------
 
 
-The Sharing API is included in ownCloud 5.0.13 and greater versions. The info
+The Sharing API is included in Nextcloud 5.0.13 and greater versions. The info
 needed is activeUser.url, the server URL that you want to check.
 
 Code Example
@@ -810,9 +810,9 @@ Tips
 
 * Credentials must be set before calling any method
 * Paths must not be on URL Encoding
-* Correct path: ``https://example.com/owncloud/remote.php/dav/Pop_Music/``
-* Wrong path: ``https://example.com/owncloud/remote.php/dav/Pop%20Music/``
-* There are some forbidden characters to be used in folder and files names on the server, same on the ownCloud iOS library "\", "/","<",">",":",""","","?","*"
+* Correct path: ``https://example.com/nextcloud/remote.php/dav/Pop_Music/``
+* Wrong path: ``https://example.com/nextcloud/remote.php/dav/Pop%20Music/``
+* There are some forbidden characters to be used in folder and files names on the server, same on the Nextcloud iOS library "\", "/","<",">",":",""","","?","*"
 * To move a folder the origin path and the destination path must end with “/”
 * To move a file the origin path and the destination path must not end with “/”
 * Upload and download actions may be cancelled thanks to the object “NSOperation”

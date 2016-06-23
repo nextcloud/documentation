@@ -1,8 +1,8 @@
 Language Configuration
 ======================
 
-In normal cases ownCloud will automatically detect the language of the Web-GUI.
-If this does not work properly or you want to make sure that ownCloud always
+In normal cases Nextcloud will automatically detect the language of the Web-GUI.
+If this does not work properly or you want to make sure that Nextcloud always
 starts with a given language, you can use the **default_language** parameter.
 
 Please keep in mind, that this will not effect a users language preference,

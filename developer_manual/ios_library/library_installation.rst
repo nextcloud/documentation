@@ -4,13 +4,13 @@ Library Installation
 Obtaining the library
 ---------------------
 
-The ownCloud iOS library may be obtained from the following Github repository:
+The Nextcloud iOS library may be obtained from the following Github repository:
 
-`git@github.com:owncloud/ios-library.git
-<mailto:git@github.com:owncloud/ios-library.git>`_
+`git@github.com:nextcloud/ios-library.git
+<mailto:git@github.com:nextcloud/ios-library.git>`_
 
 Once obtained, this code should be compiled with Xcode 6.  The Github
-repository not only contains the library, ownCloud iOS library, but also
+repository not only contains the library, Nextcloud iOS library, but also
 contains a sample project, OCLibraryExample, which will assist in learning how
 to use the library.
 
@@ -31,14 +31,14 @@ Reference headers and library binary files
 
 Follow these steps if this is the desired method.
 
-1. Compile the ownCloud iOS library and run the project.  A ``libownCloudiOS.a``
+1. Compile the Nextcloud iOS library and run the project.  A ``libNextcloudiOS.a``
 file will be generated.
 
 The following files are required:
 
 **Library file**
 
-* ``libownCloudiOS.a`` (Library)
+* ``libNextcloudiOS.a`` (Library)
 
 **Library Classes**
 
@@ -65,14 +65,14 @@ select the target library and add the path in the “Header Search Paths” fiel
 |100002010000034700000211B6BE4A2B_png|
 
 At this stage, the library is included on your project and you can start
-communicating with the ownCloud server.
+communicating with the Nextcloud server.
 
 Include the library as a subproject
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Follow these steps if this is the desired method.
 
-5. Add the file ``ownCloud iOS library.xcodeproj`` to the project via drag and
+5. Add the file ``Nextcloud iOS library.xcodeproj`` to the project via drag and
 drop.
 
 |100000000000030C000001E61DFDBF76_png|

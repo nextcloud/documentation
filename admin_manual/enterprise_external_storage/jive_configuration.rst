@@ -8,19 +8,19 @@ Jive Integration
 
 The Jive application allows Jive users to access files stored in Jive
 from a mobile device, tablet, or desktop client. Users have complete access
-through ownCloud Enterprise edition to upload, edit or download their files.
+through Nextcloud Enterprise edition to upload, edit or download their files.
 
-Jive can be configured as a data storage location for ownCloud, which means
-files saved in Jive appear in folders within ownCloud. Jive remains the system
-of record while ownCloud acts as a proxy, providing end-to-end file access for
+Jive can be configured as a data storage location for Nextcloud, which means
+files saved in Jive appear in folders within Nextcloud. Jive remains the system
+of record while Nextcloud acts as a proxy, providing end-to-end file access for
 users at their desks and on the go.
 
 
 Configuration
 =============
 
-The Jive application is installed under the owncloud/apps directory on the server and enabled via the ownCloud
-admin screen. This app is only available for ownCloud EE v6 or higher. Go to the ownCloud admin screen section
+The Jive application is installed under the nextcloud/apps directory on the server and enabled via the Nextcloud
+admin screen. This app is only available for Nextcloud EE v6 or higher. Go to the Nextcloud admin screen section
 “Jive backend parameters” to configure the app to match your Jive server system parameters.
 
 .. image:: ../images/jive_config.png
@@ -64,7 +64,7 @@ admin screen. This app is only available for ownCloud EE v6 or higher. Go to the
 | Jive private folder                    | Folder name for private stuff in Jive                                                                                                                                                                    | String value up to 250 characters max              |
 |                                        |                                                                                                                                                                                                          |                                                    |
 +----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------+
-| Activate large file sharing for Jive   | Enable the large file sharing subsystem. This allows storage of files that are too large for Jive to be stored on the ownCloud server and available via the ownCloud web, mobile and desktop interfaces. | Checkbox – enable/disable                          |
+| Activate large file sharing for Jive   | Enable the large file sharing subsystem. This allows storage of files that are too large for Jive to be stored on the Nextcloud server and available via the Nextcloud web, mobile and desktop interfaces. | Checkbox – enable/disable                          |
 |                                        |                                                                                                                                                                                                          |                                                    |
 +----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------+
 | Jive large file sharing FS mount point | Folder where the Jive large sharing File Share will be mounted                                                                                                                                           | String value up to 10 characters max               |
@@ -78,7 +78,7 @@ admin screen. This app is only available for ownCloud EE v6 or higher. Go to the
 Use Cases
 =========
 
-The ownCloud Jive plugin can be used in various ways to extend the access to the Jive content across multiple devices.
+The Nextcloud Jive plugin can be used in various ways to extend the access to the Jive content across multiple devices.
 
 Web Client Use Cases
 --------------------
@@ -145,11 +145,11 @@ Create a folder in the Desktop Client to create a new Jive Group.
 
 Upload a file in the Desktop Client folder, and see that file in the corresponding Jive Group.
 
-The ownCloud folder structure hierarchy matches the Jive Groups the user can access. Sub folders under the Jive Group
-folders that are created on the desktop will not sync to ownCloud or Jive because they will not match the Jive “Group”
+The Nextcloud folder structure hierarchy matches the Jive Groups the user can access. Sub folders under the Jive Group
+folders that are created on the desktop will not sync to Nextcloud or Jive because they will not match the Jive “Group”
 view. If a sub folder is created under the Jive Group desktop folder, the desktop client will display an error that
 this operation is not allowed. For example; if the folder structure is “JiveFileShare/GroupA”, any sub folder under
-GroupA will not be synced to ownCloud or Jive.
+GroupA will not be synced to Nextcloud or Jive.
 
 
 
@@ -162,7 +162,7 @@ Verify https certificate
 ------------------------
 
 If your Jive server is under https, it must provide a https certificate when a client connects to it. Curl (the client
-that ownCloud is using to connect to Jive) usually verify that certificate, but to do that you must somehow supply
+that Nextcloud is using to connect to Jive) usually verify that certificate, but to do that you must somehow supply
 a CA cert so curl can verify against.
 
 This feature is usually turn off to make the Jive app easier to use, because in this case curl won't verify the
@@ -172,7 +172,7 @@ you could be connecting to a fake Jive server without notice.
 If you want to turn on this feature, you must get the CA cert of the server (check “
 `http://curl.haxx.se/docs/sslcerts.html <http://curl.haxx.se/docs/sslcerts.html>`_
 ” for more information about how you can get the file you need)
-and install it in your ownCloud server.
+and install it in your Nextcloud server.
 
 In order to know where you should install the CA cert, you can run
 
@@ -211,7 +211,7 @@ that curl can connect to your Jive server, and if so, activate this feature.
 Authentication mechanism to use against Jive
 --------------------------------------------
 
-To be able to access to Jive, the ownCloud plugin needs to use some kind of authentication. At this time, the plugin
+To be able to access to Jive, the Nextcloud plugin needs to use some kind of authentication. At this time, the plugin
 supports basic and oAuth authentication.
 
 Basic authentication
@@ -219,8 +219,8 @@ Basic authentication
 
 In order to use basic authentication, you should take into account the following things:
 
-*   The credentials used to access to ownCloud must match the ones used to connect to Jive. This means that if you
-    access to ownCloud with a user “PeterP” and password “PeterPassword”, the same user must exist in Jive with the same
+*   The credentials used to access to Nextcloud must match the ones used to connect to Jive. This means that if you
+    access to Nextcloud with a user “PeterP” and password “PeterPassword”, the same user must exist in Jive with the same
     password. Otherwise, the user won't be able to access to Jive.
 
 *   If the credentials (typically the password) changes in one side, it must change in the other. You'll need to this manually.
@@ -242,21 +242,21 @@ oAuth authentication
 
 First of all, make sure Jive is prepared to support this authentication.
 
-The usage of this authentication method solves the issue of having the same credentials in both ownCloud and Jive
-server. This means that the ownCloud user “PeterP” with password “PeterPassword” can access to the contents of the Jive
-user “John” with password “John007”. It's also possible that another ownCloud user “AliceK” access to the contents of
+The usage of this authentication method solves the issue of having the same credentials in both Nextcloud and Jive
+server. This means that the Nextcloud user “PeterP” with password “PeterPassword” can access to the contents of the Jive
+user “John” with password “John007”. It's also possible that another Nextcloud user “AliceK” access to the contents of
 the Jive user “John” too at the same time.
 
-Keep in mind that this isn't insecure: any ownCloud user that wants to access to John's Jive content (following
+Keep in mind that this isn't insecure: any Nextcloud user that wants to access to John's Jive content (following
 this little example) MUST know his Jive password.
 
 If this authentication method is set, we don't store passwords BUT we still need to store some other things. These things are stored in plain text.
 
 These are the steps to make it work (if your Jive server support this authentication):
 
-#.  Activate the oAuth authentication in the ownCloud admin settings (just the admin can do this)
+#.  Activate the oAuth authentication in the Nextcloud admin settings (just the admin can do this)
 
-#.  Go to the ownCloud web interface, in the files app. A popup will appear.
+#.  Go to the Nextcloud web interface, in the files app. A popup will appear.
 
 #.  Click on the link that appear in the popup
 
@@ -265,9 +265,9 @@ These are the steps to make it work (if your Jive server support this authentica
 
 #.  After entering your Jive credentials, you get redirected a page with an activation code. If you entered the
     wrong credentials, you might not get redirected to that page. If this is the case click
-    in the link again in the ownCloud popup (point 3) which will redirect you to the activation code page.
+    in the link again in the Nextcloud popup (point 3) which will redirect you to the activation code page.
 
-#.  Copy the activation code into the ownCloud popup,
+#.  Copy the activation code into the Nextcloud popup,
     and click in the “send code” button. If there is no error, you're done.
 
 
@@ -280,7 +280,7 @@ covered, so the plugin will likely stop working for that user (we won't be able 
 
 [Ask for info to know how to solve this issue?]
 
-It's very important that the user access to ownCloud through the web interface first, so the user goes through
+It's very important that the user access to Nextcloud through the web interface first, so the user goes through
 the oAuth flow for the first time (as described with the steps above) to get an access token. Otherwise, the
 plugin won't get an access token and the user won't be able to get the files from Jive.
 
@@ -312,8 +312,8 @@ Filters
 -------
 
 The Jive plugin comes with a set of filters that the admin can set to filter the content the users can access
-through ownCloud. The drawback of using filters is that there isn't any performance gain because the filtering
-is mainly done in the ownCloud side, and even can degrade performance in some cases. We'll explain the filters
+through Nextcloud. The drawback of using filters is that there isn't any performance gain because the filtering
+is mainly done in the Nextcloud side, and even can degrade performance in some cases. We'll explain the filters
 one by one, and tell you what consequences have each one.
 
 Category filter and separator
@@ -345,7 +345,7 @@ category separator MUST always be set. In fact, you shouldn't need to change the
 Files shown inside those groups will be also affected by this filter. This means that all the files
 shown inside those groups must have all the categories too.
 
-Files uploaded through ownCloud to those groups will have all the categories set in Jive automatically.
+Files uploaded through Nextcloud to those groups will have all the categories set in Jive automatically.
 If you want to add more categories to those files, you'll need to do it manually through Jive.
 
 The usage of the category filter can degrade the performance a lot.
@@ -361,7 +361,7 @@ Tag filter
 
 This filter works only for private files. Files inside groups won't be affected by this filter.
 
-You can only set one tag for the files that will be shown in ownCloud. Make sure you set one of the tags from Jive
+You can only set one tag for the files that will be shown in Nextcloud. Make sure you set one of the tags from Jive
 as they're shown there. It's highly recommended to use only lowercase letters to set the tag to prevent possible
 issues when the tag is set in Jive.
 
@@ -394,7 +394,7 @@ You must also take into account that, by using only the filename, we avoid to do
 performance isn't significantly degraded.
 On the other hand, we cannot verify that a “.png” file is what it claims to be.
 
-This filter works for any file, and for uploads and downloads through ownCloud. This means that you won't be able to
+This filter works for any file, and for uploads and downloads through Nextcloud. This means that you won't be able to
 upload a file with any of those extensions from onwCloud and the Jive files which have those extensions won't
 be shown (and consequently they won't be downloaded). Of course, you can still upload the files from Jive
 (if Jive allows it) and have them there.
@@ -402,17 +402,17 @@ be shown (and consequently they won't be downloaded). Of course, you can still u
 Maximum upload file size
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-This filter allows you to limit the size of the files that will go through ownCloud. All files uploads and
+This filter allows you to limit the size of the files that will go through Nextcloud. All files uploads and
 downloads will be affected by this filter. You won't be able to upload files bigger than the file size limit
-and the Jive files bigger than the limit won't be shown in ownCloud (and consequently they won't be downloaded)
+and the Jive files bigger than the limit won't be shown in Nextcloud (and consequently they won't be downloaded)
 
 Under normal circumstances, you want to match the limit with the one Jive has.
 This way you can notify errors regarding the file size faster because the files won't reach the Jive server, and
 at the same time you allow the users to upload up to the maximum limit that Jive allows.
-(Note: we can't know this limit from ownCloud, so we can't provide a sensitive default value, plus the value can
+(Note: we can't know this limit from Nextcloud, so we can't provide a sensitive default value, plus the value can
 change among Jive instances. You might need to adjust the value manually).
 
-You can also set the limit to a lower value than what it's in Jive, so only small files will be delivered from ownCloud.
+You can also set the limit to a lower value than what it's in Jive, so only small files will be delivered from Nextcloud.
 
 Show groups of which you are member
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -448,9 +448,9 @@ Jive FS mount point
 ^^^^^^^^^^^^^^^^^^^
 
 The name of the folder that will hold the Jive virtual FS. The name shouldn't collide with any existing name in the root folder to prevent possible issues.
-The virtual FS will be mounted inside the root folder of the ownCloud FS.
+The virtual FS will be mounted inside the root folder of the Nextcloud FS.
 
-As said, the contents of the folder will be the groups that the user can access through ownCloud (recheck the “filters” section).
+As said, the contents of the folder will be the groups that the user can access through Nextcloud (recheck the “filters” section).
 
 Jive private folder
 ^^^^^^^^^^^^^^^^^^^
@@ -460,7 +460,7 @@ The folder where your private Jive files will be stored. The name of the folder 
 This private folder will be inside
 the Jive mount point, as if it were another group.
 
-Files inside this folder will be only visible to you, but they will be stored in Jive. They won't be visible neither for ownCloud users nor Jive users.
+Files inside this folder will be only visible to you, but they will be stored in Jive. They won't be visible neither for Nextcloud users nor Jive users.
 
 In order to prevent collisions with other groups, the folder name might be changed automatically by adding “(private)” to the end of the folder name
 if it's needed
@@ -473,7 +473,7 @@ The large file sharing allow you to share files over the Jive limits (typically 
 or disable this subsystem by checking or un-checking the checkbox, and provide the corresponding mount point.
 Use a non-existent folder name to prevent issues.
 
-Files inside that folder will be stored inside the ownCloud server. However those files can be shared by link to Jive.
+Files inside that folder will be stored inside the Nextcloud server. However those files can be shared by link to Jive.
 
 The process is like the following:
 
@@ -494,8 +494,8 @@ The process is like the following:
 Notifications
 -------------
 
-This Jive plugin runs a connectivity check between ownCloud and Jive whenever the web page is loaded. This
-check allows you to know some potential issues between the ownCloud – Jive connection.
+This Jive plugin runs a connectivity check between Nextcloud and Jive whenever the web page is loaded. This
+check allows you to know some potential issues between the Nextcloud – Jive connection.
 
 When a potential issue is detected, a notification will be shown, so you'll know what's happening.
 

@@ -2,16 +2,16 @@
 Mimetype Aliases
 ================
 
-ownCloud allows you to create aliases for mimetypes, so that you can display 
+Nextcloud allows you to create aliases for mimetypes, so that you can display 
 custom icons for files. For example, you might want a nice audio icon for audio 
 files instead of the default file icon.
 
-By default ownCloud is distributed with 
-``owncloud/resources/config/mimetypealiases.dist.json``.
-Do not modify this file, as it will be replaced when ownCloud is updated. 
-Instead, create your own ``owncloud/config/mimetypealiases.json`` 
+By default Nextcloud is distributed with 
+``nextcloud/resources/config/mimetypealiases.dist.json``.
+Do not modify this file, as it will be replaced when Nextcloud is updated. 
+Instead, create your own ``nextcloud/config/mimetypealiases.json`` 
 file with your custom aliases. Use the same syntax as in 
-``owncloud/resources/config/mimetypealiases.dist.json``.
+``nextcloud/resources/config/mimetypealiases.dist.json``.
 
 Once you have made changes to your ``mimetypealiases.json``, use the ``occ`` 
 command to propagate the changes through the system. This example is for 

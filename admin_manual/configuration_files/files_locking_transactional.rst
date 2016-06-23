@@ -68,7 +68,7 @@ See ``config.sample.php`` to see configuration examples for Redis, and for all
 supported memcaches.
 
 If you are on Ubuntu you can follow `this guide  
-<https://www.techandme.se/how-to-configure-redis-cache-in-ubuntu-14-04-with-owncloud/>`_ for a complete installation from scratch. 
+<https://www.techandme.se/how-to-configure-redis-cache-in-ubuntu-14-04-with-nextcloud/>`_ for a complete installation from scratch. 
 
 Learn more about Reds at `Redis <http://redis.io/>`_. Memcached, the popular 
 distributed memory caching system, is not suitable for the new file locking 
@@ -77,6 +77,6 @@ at any time. Redis is a key-value store, and it guarantees that cached objects
 are available for as long as they are needed.
 
 Debian Jesse users, please see this `Github discussion 
-<https://github.com/owncloud/core/issues/20675>`_ if you have problems with 
+<https://github.com/nextcloud/core/issues/20675>`_ if you have problems with 
 LDAP authentication.
 

@@ -3,7 +3,7 @@ File Firewall (Enterprise only)
 ===============================
 
 The File Firewall GUI enables you to create and manage firewall rule sets from 
-your ownCloud admin page. The File Firewall gives you finer-grained control of 
+your Nextcloud admin page. The File Firewall gives you finer-grained control of 
 access and sharing, with rules for allowing or denying access, and restrictions 
 per group, upload size, client devices, IP address, time of day, and many more 
 criteria. For additional flexibility the File Firewall also supports regular 
@@ -15,7 +15,7 @@ defined rules, the request is blocked and the file content can not be read or
 written.
 
 .. note::
-   As of ownCloud 9.0, the File Firewall app cannot lock out administrators from the Web interface when      rules are misconfigured.
+   As of Nextcloud 9.0, the File Firewall app cannot lock out administrators from the Web interface when      rules are misconfigured.
 
 Figure 1 shows an empty firewall configuration panel. Set your logging level to 
 **Failures Only** for debugging, and create a new ruleset by clicking the **Add 
@@ -29,7 +29,7 @@ button.
 
 Figure 2 shows two rules. The first rule, **No Support outside 
 office hours**, prevents members of the support group from logging into the 
-ownCloud Web interface from 5pm-9am, and also blocks client syncing.
+Nextcloud Web interface from 5pm-9am, and also blocks client syncing.
 
 The second rule prevents members of the qa-team group from accessing the Web UI 
 from IP addresses that are outside of the local network.
@@ -110,7 +110,7 @@ and a single typo will break all of your rules.
 Controlling Access to Folders
 -----------------------------
 
-The easiest way to block access to a folder, starting with ownCloud 9.0, is to use a
+The easiest way to block access to a folder, starting with Nextcloud 9.0, is to use a
 system tag. A new rule type was added which allows you to block access to
 files and folders, where at least one of the parents has a given tag. Now you
 just need to add the tag to the folder or file, and then block the tag with the
@@ -129,7 +129,7 @@ Block by System Tag::
 Custom Configuration for Branded Clients
 ----------------------------------------
 
-If you are using :doc:`branded ownCloud clients <../enterprise_clients/index>`, 
+If you are using :doc:`branded Nextcloud clients <../enterprise_clients/index>`, 
 you may define ``firewall.branded_clients`` in your ``config.php`` to identify 
 your branded clients in the firewall **"User Device"** rule.
 

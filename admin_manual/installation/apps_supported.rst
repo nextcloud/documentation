@@ -1,5 +1,5 @@
 ==========================
-Supported Apps in ownCloud
+Supported Apps in Nextcloud
 ==========================
 
 AGPL Apps
@@ -12,9 +12,9 @@ AGPL Apps
 * Encryption
 * External Sites
 * External Storage
-* ownCloud WebDAV Endpoint (handles old and new webdav endpoints)
-* Federated File Sharing (allows file sharing across ownCloud instances)
-* Federation (allows usernname auto-complete across ownCloud instances)
+* Nextcloud WebDAV Endpoint (handles old and new webdav endpoints)
+* Federated File Sharing (allows file sharing across Nextcloud instances)
+* Federation (allows usernname auto-complete across Nextcloud instances)
 * Files (cannot be disabled)
 * Files PDF Viewer
 * Files Sharing

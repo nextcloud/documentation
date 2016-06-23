@@ -2,17 +2,17 @@
 LDAP Home Connector
 ===================
 
-The LDAP Home Connector App enables you to configure your ownCloud server 
+The LDAP Home Connector App enables you to configure your Nextcloud server 
 to display your users' Windows home directories on their Files pages, 
 just like any other folder. Typically, Windows home directories are stored 
 on a network server in a root folder, such as Users, which then contains 
 individual folders for each user.
 
 You must already have the LDAP app enabled and a working LDAP/Active Directory 
-configuration in ownCloud.
+configuration in Nextcloud.
 
-Next, configure the root Windows home directory to be mounted on your ownCloud 
-server. Then use the LDAP Home Connector and LDAP app to connect it to ownCloud.
+Next, configure the root Windows home directory to be mounted on your Nextcloud 
+server. Then use the LDAP Home Connector and LDAP app to connect it to Nextcloud.
 
 Mount Home Directory
 --------------------
@@ -34,7 +34,7 @@ Configure the LDAP Home Connector
 ---------------------------------
 
 Enable the LDAP Home Connector app. Then go to the LDAP Home Connector form 
-on your ownCloud admin page. In the **Display folder as:** field enter the name 
+on your Nextcloud admin page. In the **Display folder as:** field enter the name 
 as you want it to appear on your users' File pages.
 
 Then in the **Attribute name:** field enter the LDAP attribute name that will 

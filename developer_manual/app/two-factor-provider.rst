@@ -2,9 +2,9 @@
 Two-factor Providers
 ====================
 
-.. sectionauthor:: Christoph Wurst <christoph@owncloud.com>
+.. sectionauthor:: Christoph Wurst <christoph@nextcloud.com>
 
-Two-factor auth providers apps are used to plug custom second factors into the ownCloud core. The following
+Two-factor auth providers apps are used to plug custom second factors into the Nextcloud core. The following
 code was taken from the `two-factor test app`_.
 
 .. _`two-factor test app`: https://github.com/ChristophWurst/twofactor_test
@@ -95,7 +95,7 @@ example below shows a minimalistic example of such a provider.
 
 Registering a two-factor auth provider
 ======================================
-You need to inform the ownCloud core that the app provides two-factor auth functionality. Two-factor
+You need to inform the Nextcloud core that the app provides two-factor auth functionality. Two-factor
 providers are registered via ``info.xml``.
 
 .. code-block:: XML

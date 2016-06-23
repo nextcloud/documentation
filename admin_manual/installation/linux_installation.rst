@@ -14,16 +14,16 @@ Changes in 9.0
 --------------
 
 Linux distribution packages (from `Open Build Service`_) have been divided into 
-multiple packages for ownCloud 9: ``owncloud-deps`` and ``owncloud-files``. 
+multiple packages for Nextcloud 9: ``nextcloud-deps`` and ``nextcloud-files``. 
 
-The ``owncloud-files`` package installs only ownCloud, with no Apache, database, 
+The ``nextcloud-files`` package installs only Nextcloud, with no Apache, database, 
 or PHP dependencies. 
 
-The ``owncloud-deps`` packages install all dependencies: Apache, PHP, and MySQL. 
-``owncloud-deps`` is not intended to be installed by itself, but rather is 
-pulled in by the metapackage ``owncloud``. 
+The ``nextcloud-deps`` packages install all dependencies: Apache, PHP, and MySQL. 
+``nextcloud-deps`` is not intended to be installed by itself, but rather is 
+pulled in by the metapackage ``nextcloud``. 
 
-Install ``owncloud`` to get a complete installation with dependencies.
+Install ``nextcloud`` to get a complete installation with dependencies.
 
 Split packages are available for the following Linux distributions:
 
@@ -34,12 +34,12 @@ Split packages are available for the following Linux distributions:
 * Ubuntu 14.04, 15.10
 * openSUSE 13.2, Leap 42.1
 
-``owncloud-files`` is available for the following distributions, but not 
-``owncloud-deps``. You will have to install your own LAMP stack first. This 
+``nextcloud-files`` is available for the following distributions, but not 
+``nextcloud-deps``. You will have to install your own LAMP stack first. This 
 allows you to create your own custom LAMP stack without dependency conflicts 
-with the ownCloud package. Browse 
-`<http://download.owncloud.org/download/repositories/9.0/owncloud/>`_ to find 
-the ``owncloud-files`` package for your distro:
+with the Nextcloud package. Browse 
+`<http://download.nextcloud.org/download/repositories/9.0/nextcloud/>`_ to find 
+the ``nextcloud-files`` package for your distro:
 
 * CentOS 6
 * Debian 7
@@ -47,30 +47,30 @@ the ``owncloud-files`` package for your distro:
 * Ubuntu 12.04, 14.10
 
 Repositories for Fedora, openSUSE Tumbleweed and Ubuntu 15.04 were dropped. If 
-you use Fedora, install ``owncloud-files`` over your own LAMP stack. openSUSE 
+you use Fedora, install ``nextcloud-files`` over your own LAMP stack. openSUSE 
 users can rely on LEAP packages for Tumbleweed, and Ubuntu 15.04 users can use 
 the 15.10 packages.
 
-Follow the instructions on the download page to install ownCloud. Then run the 
+Follow the instructions on the download page to install Nextcloud. Then run the 
 Installation Wizard to complete your installation. (see 
 :doc:`installation_wizard`).
 
 .. warning:: Do not move the folders provided by these packages after the 
    installation, as this will break updates.
 
-See the :doc:`system_requirements` for the recommended ownCloud setup and 
+See the :doc:`system_requirements` for the recommended Nextcloud setup and 
 supported platforms.
 
 Repos: Stable or Version?
 -------------------------
 
-You may use either of the following repositories for ownCloud 9:
+You may use either of the following repositories for Nextcloud 9:
 
-* `<https://download.owncloud.org/download/repositories/stable/owncloud/>`_
-* `<https://download.owncloud.org/download/repositories/9.0/owncloud/>`_
+* `<https://download.nextcloud.org/download/repositories/stable/nextcloud/>`_
+* `<https://download.nextcloud.org/download/repositories/9.0/nextcloud/>`_
 
 When you use the Stable repo, you never have to change it as it always tracks 
-the current stable ownCloud version through all major releases: 8.2, 9.0, 
+the current stable Nextcloud version through all major releases: 8.2, 9.0, 
 and so on. (Major releases are indicated by the second number, so 8.0, 8.1, 
 8.2, and 9.0 were all major releases.)
 
@@ -78,25 +78,25 @@ If you wish to track a specific major release, such as 8.2 or 9.0, then use
 that repo. That way you won't accidentally find yourself looking at an upgrade 
 to the next major release before you're ready.
 
-Installing ownCloud Enterprise Edition
+Installing Nextcloud Enterprise Edition
 --------------------------------------
 
 See :doc:`../enterprise_installation/linux_installation` for instructions on 
-installing ownCloud Enterprise edition.
+installing Nextcloud Enterprise edition.
 
 Downgrading Not Supported
 -------------------------
 
 Downgrading is not supported and risks corrupting your data! If you want to 
-revert to an older ownCloud version, install it from scratch and then restore 
+revert to an older Nextcloud version, install it from scratch and then restore 
 your data from backup. Before doing this, file a support ticket (if you have 
-paid support) or ask for help in the ownCloud forums to see if your issue can be 
+paid support) or ask for help in the Nextcloud forums to see if your issue can be 
 resolved without downgrading.
 
 BINLOG_FORMAT = STATEMENT
 -------------------------
 
-If your ownCloud installation fails and you see this in your ownCloud log::
+If your Nextcloud installation fails and you see this in your Nextcloud log::
 
  An unhandled exception has been thrown: exception ‘PDOException’ with message 
  'SQLSTATE[HY000]: General error: 1665 Cannot execute statement: impossible to 
@@ -118,22 +118,22 @@ SELinux-enabled distributions such as Fedora and CentOS.
 
 If your distribution is not listed, your Linux distribution may maintain its 
 own 
-ownCloud packages, or you may prefer to install from source code (see 
+Nextcloud packages, or you may prefer to install from source code (see 
 :doc:`source_installation`).
 
 **Archlinux:** The current `stable version`_ is in the 
 official community repository, and more packages are in 
 the `Arch User Repository`_.
 
-.. _stable version: https://www.archlinux.org/packages/community/any/owncloud
-.. _Arch User Repository: https://aur.archlinux.org/packages/?O=0&K=owncloud
+.. _stable version: https://www.archlinux.org/packages/community/any/nextcloud
+.. _Arch User Repository: https://aur.archlinux.org/packages/?O=0&K=nextcloud
 
-**Mageia:** The `Mageia Wiki`_ has a good page on installing ownCloud from the 
+**Mageia:** The `Mageia Wiki`_ has a good page on installing Nextcloud from the 
 Mageia software repository.
 
 .. _Mageia Wiki: https://wiki.mageia.org/en/OwnCloud
 
-**Running ownCloud in a subdirectory**: If you're running ownCloud in a 
+**Running Nextcloud in a subdirectory**: If you're running Nextcloud in a 
 subdirectory and want to use CalDAV or CardDAV clients make sure you have 
 configured the correct :ref:`service-discovery-label` URLs.
 
@@ -142,5 +142,5 @@ on how to correctly configure your environment if you have binary logging enable
 
 
 .. _Open Build Service: 
-   https://download.owncloud.org/download/repositories/9.0/owncloud/
+   https://download.nextcloud.org/download/repositories/9.0/nextcloud/
    

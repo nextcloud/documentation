@@ -82,7 +82,7 @@ NGINX
 * `client_body_temp_path <http://nginx.org/en/docs/http/ngx_http_core_module.html#client_body_temp_path>`_
 
 For more info how to configure nginx to raise the upload limits see also `this
-<https://github.com/owncloud/documentation/wiki/Uploading-files-up-to-16GB#configuring-nginx>`_
+<https://github.com/nextcloud/documentation/wiki/Uploading-files-up-to-16GB#configuring-nginx>`_
 wiki entry.
 
 .. note:: Make sure that ``client_body_temp_path`` points to a partition with 

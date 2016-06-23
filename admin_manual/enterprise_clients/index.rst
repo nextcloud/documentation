@@ -1,5 +1,5 @@
 ===================================================
-Creating Branded ownCloud Clients (Enterprise only)
+Creating Branded Nextcloud Clients (Enterprise only)
 ===================================================
 
 .. toctree::

@@ -1,21 +1,21 @@
 .. _contents:
 
 ================================
-ownCloud Developer Documentation
+Nextcloud Developer Documentation
 ================================
 
 If you want to contribute please read the `Contributor agreement 
-<https://owncloud.org/about/contributor-agreement/>`_
+<https://nextcloud.org/about/contributor-agreement/>`_
 
 +-------------------------+-------------------------+-----------------------------+
 |:doc:`app/index`         |:doc:`core/index`        |`Documentation`_             |
-| Develop apps for        | Develop on the ownCloud | Create and enhance          |
-| ownCloud and publish on | internals               | documentation               |
-| the `ownCloud appstore`_|                         |                             |
+| Develop apps for        | Develop on the Nextcloud | Create and enhance          |
+| Nextcloud and publish on | internals               | documentation               |
+| the `Nextcloud appstore`_|                         |                             |
 +-------------------------+-------------------------+-----------------------------+
 |:doc:`testing/index`     |:doc:`bugtracker/index`  |`Translation`_               |
-| Help us to test         | Report, triage or fix   | Translate ownCloud into     |
-| ownCloud by joining the | bugs to improve quality | your language               |
+| Help us to test         | Report, triage or fix   | Translate Nextcloud into     |
+| Nextcloud by joining the | bugs to improve quality | your language               |
 | testing team            |                         |                             |
 +-------------------------+-------------------------+-----------------------------+
 |:doc:`commun/index`      | :doc:`ios_library/index`|:doc:`android_library/index` |      
@@ -23,9 +23,9 @@ If you want to contribute please read the `Contributor agreement
 | mailinglist and forum   |                         |                             |
 +-------------------------+-------------------------+-----------------------------+
 
-.. _ownCloud appstore: https://apps.owncloud.com/
-.. _Translation: https://www.transifex.com/projects/p/owncloud/
-.. _Documentation: https://github.com/owncloud/documentation#owncloud-documentation
+.. _Nextcloud appstore: https://apps.nextcloud.com/
+.. _Translation: https://www.transifex.com/projects/p/nextcloud/
+.. _Documentation: https://github.com/nextcloud/documentation#nextcloud-documentation
 
 Table of Contents
 =================

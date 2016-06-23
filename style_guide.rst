@@ -1,20 +1,20 @@
 ============================
-ownCloud Manuals Style Guide
+Nextcloud Manuals Style Guide
 ============================
 
 *This is a work in progress*
 
-See the `Documentation README <https://github.com/owncloud/documentation/blob/master/README.rst>`_ for information on setting up your documentation build environment
+See the `Documentation README <https://github.com/nextcloud/documentation/blob/master/README.rst>`_ for information on setting up your documentation build environment
 
 See `reStructuredText Primer <http://sphinx-doc.org/rest.html>`_ for a complete 
 Sphinx/RST markup reference.
 
-This is the official style guide for the ownCloud Administration and User 
+This is the official style guide for the Nextcloud Administration and User 
 manuals. Please follow these conventions for consistency, and easier 
 proofreading and copyediting.
 
 When you are writing your text, make it as literal and specific as possible. Put 
-yourself in the place of the person who is using ownCloud and looking for 
+yourself in the place of the person who is using Nextcloud and looking for 
 instructions on performing a task. Don't make them guess, but spell 
 out every step in order, and tell exactly what buttons to click or what form 
 fields to fill out. Give complete information; for example, when configuring a 
@@ -33,7 +33,7 @@ Page Titles and Headings
 ------------------------
 
 There are many ways to markup headings and subheadings. This is the official 
-ownCloud way. Use title case. Three levels is enough; if you find that you want more, 
+Nextcloud way. Use title case. Three levels is enough; if you find that you want more, 
 then re-think the organization of your text::
 
  ==============
@@ -90,7 +90,7 @@ This is how they render:
 .. figure:: users-config.png
    :alt: User listings and administration page.
    
-   *Figure 1: The ownCloud user listing and administration page.*
+   *Figure 1: The Nextcloud user listing and administration page.*
    
 Use double-backticks for inline code and command examples::
   
@@ -115,7 +115,7 @@ Use lowercase with hyphens for image names, for example image-name.png.
 
 Images should be in .png format. Keep your screenshots focused on the items you 
 are describing. When you need an image of something large like a configuration 
-form on the ownCloud admin page, narrow your Web browser to fold the fields 
+form on the Nextcloud admin page, narrow your Web browser to fold the fields 
 into a smaller space, because a long skinny graphic is not very readable. Think 
 square.
 
@@ -127,7 +127,7 @@ or add a caption. Captions must follow a blank line and be italicized, like this
   .. figure:: images/users-config.png
      :alt: User listings and administration page.
      
-     *Figure 1: The ownCloud user listing and administration page.*
+     *Figure 1: The Nextcloud user listing and administration page.*
 
 Images must go into a sub-directory of the directory containing your manual 
 page. Currently the manuals have both a single master images directory, and 

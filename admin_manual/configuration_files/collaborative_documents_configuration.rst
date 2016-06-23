@@ -48,4 +48,4 @@ If the mentioned test fails please make sure that:
 * your SELinux configuration is not blocking the execution of the binary
 * the PHP ``open_basedir`` is correctly configured to allow the access to the binary
 
-More hints why the test is failing can be found in your ``data/owncloud.log``.
+More hints why the test is failing can be found in your ``data/nextcloud.log``.

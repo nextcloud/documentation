@@ -1,12 +1,12 @@
 External API
 ============
 
-.. sectionauthor:: Tom Needham <tom@owncloud.com>
+.. sectionauthor:: Tom Needham <tom@nextcloud.com>
 
 Introduction
 ------------
-The external API inside ownCloud allows third party developers to access data
-provided by ownCloud apps. ownCloud follows the `OCS v1.7
+The external API inside Nextcloud allows third party developers to access data
+provided by Nextcloud apps. Nextcloud follows the `OCS v1.7
 specification <http://www.freedesktop.org/wiki/Specifications/open-collaboration-services-1.7>`_ (draft).
 
 Usage
@@ -37,9 +37,9 @@ Once the API backend has matched your URL, your callable function as defined in
 
 Authentication & Basics
 ~~~~~~~~~~~~~~~~~~~~~~~
-Because REST is stateless you have to send user and password each time you access the API. Therefore running ownCloud **with SSL is highly recommended** otherwise **everyone in your network can log your credentials**::
+Because REST is stateless you have to send user and password each time you access the API. Therefore running Nextcloud **with SSL is highly recommended** otherwise **everyone in your network can log your credentials**::
 
-    https://user:password@yourowncloud.com/ocs/v1.php/apps/yourapp
+    https://user:password@yournextcloud.com/ocs/v1.php/apps/yourapp
 
 
 Output

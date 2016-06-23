@@ -6,31 +6,31 @@ Coding Style & General Guidelines
 General
 -------
 
-* Ideally, discuss your plans on the `mailing list <https://mailman.owncloud.org/mailman/listinfo/devel>`_ to see if others want to work with you on it
-* We use `Github <https://github.com/owncloud>`_, please get an account there and clone the repositories you want to work on
+* Ideally, discuss your plans on the `mailing list <https://mailman.nextcloud.org/mailman/listinfo/devel>`_ to see if others want to work with you on it
+* We use `Github <https://github.com/nextcloud>`_, please get an account there and clone the repositories you want to work on
 * Fixes go directly to master, nevertheless they need to be tested thoroughly.
 * New features are always developed in a branch and only merged to master once they are fully done.
 * Software should work. We only put features into master when they are complete. It's better to not have a feature instead of having one that works poorly.
 * It is best to start working based on an issue - create one if there is none. You describe what you want to do, ask feedback on the direction you take it and take it from there.
 * When you are finished, use the merge request function on Github to create a pull request. The other developers will look at it and give you feedback. You can signify that your PR is ready for review by adding the label "5 - ready for review" to it. You can also post your merge request to the mailing list to let people know. See `the code review page for more information <../bugtracker/codereviews.html>`_
 * It is key to keep changes separate and small. The bigger and more hairy a PR grows, the harder it is to get it in. So split things up where you can in smaller changes - if you need a small improvement like a API addition for a big feature addition, get it in first rather than adding it to the big piece of work!
-* Decisions are made by consensus. We strive for making the best technical decisions and as nobody can know everything, we collaborate. That means a first negative comment might not be the final word, neither is positive feedback an immediate GO. ownCloud is built out of modular pieces (apps) and maintainers have a strong influence. In case of disagreement we consult other seasoned contributors.
-* We need a signed contributor agreement from you to commit into the core repository (apps don't need that). All the information is in our `Contributor agreement FAQ <https://owncloud.org/contribute/agreement/>`_.
+* Decisions are made by consensus. We strive for making the best technical decisions and as nobody can know everything, we collaborate. That means a first negative comment might not be the final word, neither is positive feedback an immediate GO. Nextcloud is built out of modular pieces (apps) and maintainers have a strong influence. In case of disagreement we consult other seasoned contributors.
+* We need a signed contributor agreement from you to commit into the core repository (apps don't need that). All the information is in our `Contributor agreement FAQ <https://nextcloud.org/contribute/agreement/>`_.
 
 Labels
 ------
-We assign labels to issues and pull requests to make it easy to find them and to signal what needs to be done. Some of these are assigned by the developers, others by QA, bug triagers, project lead or maintainers and so on. It is not desired that users/reporters of bugs assign labels themselves, unless they are developers/contributors to ownCloud.
+We assign labels to issues and pull requests to make it easy to find them and to signal what needs to be done. Some of these are assigned by the developers, others by QA, bug triagers, project lead or maintainers and so on. It is not desired that users/reporters of bugs assign labels themselves, unless they are developers/contributors to Nextcloud.
 
 The most important labels and their meaning:
 
 * #bug - this issue is a bug
-* #enhancement - this issue is a feature request/idea for improvement of ownCloud
+* #enhancement - this issue is a feature request/idea for improvement of Nextcloud
 * #design - this needs help from the design team or is a design-related issue/pull request
 * #sharing - this issue or PR is related to sharing
 * #technical debt - this issue or PR is about `technical debt <http://en.wikipedia.org/wiki/Technical_debt>`_
 * #sev1-critical #sev2-high #sev3-medium #sev4-low signify how important the bug is.
 * #p1-urgent #p2-high #p3-medium #p4-low signify the priority of the bug.
-* #Junior Job - these are issues which are relatively easy to solve and ideal for people who want to learn how to code in ownCloud
+* #Junior Job - these are issues which are relatively easy to solve and ideal for people who want to learn how to code in Nextcloud
 * Tags showing the state of the issue or PR, numbered 1-6:
  * #1 - To develop - ready to start development on this
  * #2 - Developing - development in progress
@@ -40,7 +40,7 @@ The most important labels and their meaning:
 * Settings tags: #settings:personal #settings:apps #settings:admin and so on. These tags indicate the settings area that is impacted by the issue or which the PR is related to
 * db tags: #db:mysql #db:sqlite #db:postgresql and so on. These tags indicate the database that is impacted by the issue or which the PR is related to
 * Browser tags: #browser:ie #browser:safari and so on. These tags indicate the browser that is impacted by the issue or which the PR is related to
-* Component tags: #comp:filesystem #comp:javascript and so on. These tags indicate the components of ownCloud impacted by the issue or which the PR is related to
+* Component tags: #comp:filesystem #comp:javascript and so on. These tags indicate the components of Nextcloud impacted by the issue or which the PR is related to
 * Development tool tags: #dev:unit_testing #dev:public_API and so on. These tags indicate development-specific tools like those for testing and public developer-facing API's impacted by the issue or which the PR is related
 * Feature tags: #feature:something. These tags indicate the features across apps and components which are impacted by the issue or which the PR is related to
 * #triage - this issue *has to be* `triaged <../bugtracker/triaging.html>`_
@@ -69,7 +69,7 @@ Coding
 * No global variables or functions
 * Unit tests
 * HTML should be HTML5 compliant
-* Check these `database performance tips <https://mailman.owncloud.org/pipermail/devel/2014-June/000262.html>`_
+* Check these `database performance tips <https://mailman.nextcloud.org/pipermail/devel/2014-June/000262.html>`_
 * When you ``git pull``, always ``git pull --rebase`` to avoid generating extra commits like: *merged master into master*
 
 
@@ -86,7 +86,7 @@ User interface
 
 PHP
 ---
-The ownCloud coding style guide is based on `PEAR Coding Standards <http://pear.php.net/manual/en/standards.php>`_.
+The Nextcloud coding style guide is based on `PEAR Coding Standards <http://pear.php.net/manual/en/standards.php>`_.
 
 Always use::
 
