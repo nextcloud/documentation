@@ -56,7 +56,7 @@ After the development tool installation make the directory writable::
   
 Then install Nextcloud from git::
 
-  ocdev setup --dir /var/www/<folder> base
+  ncdev setup --dir /var/www/<folder> server
 
 where <folder> is the folder where you want to install Nextcloud.
 
