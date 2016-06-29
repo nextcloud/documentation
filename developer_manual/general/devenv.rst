@@ -48,17 +48,17 @@ Check out the code
 
 The following commands are using **/var/www** as the Web server's directory and **www-data** as user name and group.
 
-Install the `development tool <https://github.com/owncloud/ocdev/blob/master/README.rst#installation>`_
+Install the `development tool <https://github.com/nextcloud/ncdev>`_
 
 After the development tool installation make the directory writable::
 
   sudo chmod o+rw /var/www
   
-Then install ownCloud from git::
+Then install Nextcloud from git::
 
-  ocdev setup --dir /var/www/<folder> base
+  ncdev setup --dir /var/www/<folder> server
 
-where <folder> is the folder where you want to install ownCloud.
+where <folder> is the folder where you want to install Nextcloud.
 
 Adjust rights::
 
