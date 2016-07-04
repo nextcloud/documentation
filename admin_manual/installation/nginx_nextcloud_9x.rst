@@ -66,10 +66,12 @@ your nginx installation.
       #rewrite ^/.well-known/host-meta.json /public.php?service=host-meta-json 
       # last;
   
-      location = /.well-known/carddav { return 301 
-       $scheme://$host/remote.php/dav; }
-      location = /.well-known/caldav { return 301 
-       $scheme://$host/remote.php/dav; }
+      location = /.well-known/carddav { 
+        return 301 $scheme://$host/remote.php/dav;
+      }
+      location = /.well-known/caldav {
+        return 301 $scheme://$host/remote.php/dav;
+      }
   
       location /.well-known/acme-challenge { }
   
@@ -98,9 +100,7 @@ your nginx installation.
           deny all;
       }
   
-      location ~ 
-      ^/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater
-      /.+|ocs-provider/.+|core/templates/40[34])\.php(?:$|/) {
+      location ~ ^/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater/.+|ocs-provider/.+|core/templates/40[34])\.php(?:$|/) {
           include fastcgi_params;
           fastcgi_split_path_info ^(.+\.php)(/.+)$;
           fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
@@ -202,10 +202,12 @@ your nginx installation.
       #rewrite ^/.well-known/host-meta.json 
       # /nextcloud/public.php?service=host-meta-json last;
   
-      location = /.well-known/carddav { return 301 
-        $scheme://$host/nextcloud/remote.php/dav; }
-      location = /.well-known/caldav { return 301 
-        $scheme://$host/nextcloud/remote.php/dav; }
+      location = /.well-known/carddav {
+        return 301 $scheme://$host/nextcloud/remote.php/dav;
+      }
+      location = /.well-known/caldav {
+        return 301 $scheme://$host/nextcloud/remote.php/dav;
+      }
   
       location /.well-known/acme-challenge { }
   
@@ -237,9 +239,7 @@ your nginx installation.
               deny all;
           }
   
-          location ~ 
-       ^/nextcloud/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|
-       updater/.+|ocs-provider/.+|core/templates/40[34])\.php(?:$|/) {
+          location ~ ^/nextcloud/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater/.+|ocs-provider/.+|core/templates/40[34])\.php(?:$|/) {
               include fastcgi_params;
               fastcgi_split_path_info ^(.+\.php)(/.+)$;
               fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
