@@ -663,7 +663,7 @@ Logging
 
 	'log_type' => 'owncloud',
 
-By default the Nextcloud logs are sent to the ``owncloud.log`` file in the
+By default the Nextcloud logs are sent to the ``nextcloud.log`` file in the
 default Nextcloud data directory.
 
 If syslogging is desired, set this parameter to ``syslog``.
@@ -672,11 +672,11 @@ for logging.
 
 ::
 
-	'logfile' => '/var/log/owncloud.log',
+	'logfile' => '/var/log/nextcloud.log',
 
 Log file path for the Nextcloud logging type.
 
-Defaults to ``[datadirectory]/owncloud.log``
+Defaults to ``[datadirectory]/nextcloud.log``
 
 ::
 
