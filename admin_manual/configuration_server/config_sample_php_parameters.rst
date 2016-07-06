@@ -2,9 +2,9 @@
 Config.php Parameters
 =====================
 
-ownCloud uses the ``config/config.php`` file to control server operations.
+Nextcloud uses the ``config/config.php`` file to control server operations.
 ``config/config.sample.php`` lists all the configurable parameters within
-ownCloud, along with example or default values. This document provides a more
+Nextcloud, along with example or default values. This document provides a more
 detailed reference. Most options are configurable on your Admin page, so it
 is usually not necessary to edit ``config/config.php``.
 
@@ -13,7 +13,7 @@ is usually not necessary to edit ``config/config.php``.
    use a special value for a parameter. **Do not copy everything from**
    ``config/config.sample.php`` **. Only enter the parameters you wish to modify!**
 
-ownCloud supports loading configuration parameters from multiple files.
+Nextcloud supports loading configuration parameters from multiple files.
 You can add arbitrary files ending with :file:`.config.php` in the :file:`config/`
 directory, for example you could place your email server configuration
 in :file:`email.config.php`. This allows you to easily create and manage
@@ -143,7 +143,7 @@ installation.
 
 Default config.php Examples
 ---------------------------
-When you use SQLite as your ownCloud database, your ``config.php`` looks like
+When you use SQLite as your Nextcloud database, your ``config.php`` looks like
 this after installation. The SQLite database is stored in your ownCloud
 ``data/`` directory. SQLite is a simple, lightweight embedded database that
 is good for testing and for simple installations, but for production ownCloud
@@ -160,13 +160,13 @@ systems you should use MySQL, MariaDB, or PosgreSQL.
       0 => 'localhost',
       1 => 'studio',
     ),
-    'datadirectory' => '/var/www/owncloud/data',
+    'datadirectory' => '/var/www/nextcloud/data',
     'dbtype' => 'sqlite3',
     'version' => '7.0.2.1',
     'installed' => true,
   );
 
-This example is from a new ownCloud installation using MariaDB::
+This example is from a new Nextcloud installation using MariaDB::
 
 
   <?php
@@ -179,7 +179,7 @@ This example is from a new ownCloud installation using MariaDB::
       1 => 'studio',
       2 => '192.168.10.155'
     ),
-    'datadirectory' => '/var/www/owncloud/data',
+    'datadirectory' => '/var/www/nextcloud/data',
     'dbtype' => 'mysql',
      'version' => '7.0.2.1',
     'dbname' => 'owncloud',
@@ -316,7 +316,7 @@ resets.
 	'mail_domain' => 'example.com',
 
 The return address that you want to appear on emails sent by the Nextcloud
-server, for example ``oc-admin@example.com``, substituting your own domain,
+server, for example ``nc-admin@example.com``, substituting your own domain,
 of course.
 
 ::
@@ -607,7 +607,7 @@ available.
 
 ::
 
-	'updater.server.url' => 'https://updates.nextcloud.org/server/',
+	'updater.server.url' => 'https://updates.nextcloud.org/updater_server/',
 
 URL that Nextcloud should use to look for updates
 
