@@ -160,7 +160,7 @@ systems you should use MySQL, MariaDB, or PosgreSQL.
       0 => 'localhost',
       1 => 'studio',
     ),
-    'datadirectory' => '/var/www/Nextcloud/data',
+    'datadirectory' => '/var/www/nextcloud/data',
     'dbtype' => 'sqlite3',
     'version' => '7.0.2.1',
     'installed' => true,
