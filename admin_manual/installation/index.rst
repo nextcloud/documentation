@@ -16,4 +16,4 @@ Installation
    php_55_installation
    selinux_configuration
    nginx_examples
-   nginx_owncloud_9x
+   nginx_nextcloud_9x
