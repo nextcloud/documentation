@@ -1,5 +1,5 @@
 ===============================
-Enterprise Edition Installation
+Enterprise Installation
 ===============================
 
 .. toctree::
