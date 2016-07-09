@@ -1,5 +1,5 @@
 =======================
-Manual ownCloud Upgrade
+Manual Nextcloud Upgrade
 =======================
 
 Always start by making a fresh backup and disabling all 3rd party apps.
@@ -15,37 +15,35 @@ your HTTP user. This example is for Ubuntu Linux::
 The other way is by entering your ``config.php`` file and changing 
 ``'maintenance' => false,`` to ``'maintenance' => true,``. 
 
-1. Back up your existing ownCloud Server database, data directory, and 
+1. Back up your existing Nextcloud Server database, data directory, and 
    ``config.php`` file. (See :doc:`backup`.)
-2. Download and unpack the latest ownCloud Server release (Archive file) from 
-   `owncloud.org/install/`_ into an empty directory outside 
+2. Download and unpack the latest Nextcloud Server release (Archive file) from 
+   `nextcloud.org/install/`_ into an empty directory outside 
    of your current installation.
    
    .. note:: To unpack your new tarball, run:
-      tar xjf owncloud-[version].tar.bz2
+      tar xjf nextcloud-[version].tar.bz2
     
-.. note:: Enterprise users must download their new ownCloud archives from 
-   their accounts on `<https://customer.owncloud.com/owncloud/>`_
-   
+
 3. Stop your Web server.
 
-4. Rename your current ownCloud directory, for example ``owncloud-old``.
+4. Rename your current Nextcloud directory, for example ``nextcloud-old``.
 
-5. Unpacking the new archive creates a new ``owncloud`` directory populated 
+5. Unpacking the new archive creates a new ``nextcloud`` directory populated 
    with your new server files. Copy this directory and its contents to the 
    original location of your old server, for example ``/var/www/``, so that 
-   once again you have ``/var/www/owncloud``.
+   once again you have ``/var/www/nextcloud``.
 
-6. Copy the ``config.php`` file from your old ownCloud directory to your new 
-   ownCloud directory.
+6. Copy the ``config.php`` file from your old Nextcloud directory to your new 
+   Nextcloud directory.
 
-7. If you keep your ``data/`` directory in your ``owncloud/`` directory, copy 
-   it from your old version of ownCloud to your new ``owncloud/``. If you keep 
-   it outside of ``owncloud/`` then you don't have to do anything with it, 
+7. If you keep your ``data/`` directory in your ``nextcloud/`` directory, copy 
+   it from your old version of Nextcloud to your new ``nextcloud/``. If you keep 
+   it outside of ``nextcloud/`` then you don't have to do anything with it, 
    because its location is configured in your original ``config.php``, and 
    none of the upgrade steps touch it.
 
-8. If you are using 3rd party applications, look in your new ``owncloud/apps/`` 
+8. If you are using 3rd party applications, look in your new ``nextcloud/apps/`` 
    directory to see if they are there. If not, copy them from your old ``apps/``
    directory to your new one. Make sure the directory permissions of your third
    party application directories are the same as for the other ones.
@@ -69,13 +67,13 @@ Login and take a look at the bottom of your Admin page to
 verify the version number. Check your other settings to make sure they're 
 correct. Go to the Apps page and review the core apps to make sure the right 
 ones are enabled. Re-enable your third-party apps. Then apply strong 
-permissions to your ownCloud directories (:ref:`strong_perms_label`).
+permissions to your Nextcloud directories (:ref:`strong_perms_label`).
 
-Previous ownCloud Releases
+Previous Nextcloud Releases
 --------------------------
 
-You'll find previous ownCloud releases in the `ownCloud Server Changelog 
-<https://owncloud.org/changelog/>`_.
+You'll find previous Nextcloud releases in the `Nextcloud Server Changelog 
+<https://nextcloud.com/changelog/>`_.
 
 Reverse Upgrade
 ---------------
@@ -104,10 +102,10 @@ help::
 
  sudo -u www-data php console.php files:scan --all
 
-See `the owncloud.org support page <https://owncloud.org/support>`_ for further
-resources for both home and enterprise users.
+See `the nextcloud.com support page <https://nextcloud.com/support/>`_ for further
+resources.
 
-Sometimes, ownCloud can get *stuck in a upgrade*. This is usually due to the 
+Sometimes, Nextcloud can get *stuck in a upgrade*. This is usually due to the 
 process taking too long and encountering a PHP time-out. Stop the upgrade 
 process this way::
 
@@ -122,6 +120,6 @@ If this does not work properly, try the repair function::
  sudo -u www-data php occ maintenance:repair
 
 
-.. _owncloud.org/install/:
-   https://owncloud.org/install/  
+.. _nextcloud.com/install/:
+   https://nextcloud.com/install/  
   
