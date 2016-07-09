@@ -15,30 +15,30 @@ your HTTP user. This example is for Ubuntu Linux::
 The other way is by entering your ``config.php`` file and changing 
 ``'maintenance' => false,`` to ``'maintenance' => true,``. 
 
-1. Back up your existing Nextcloud or ownCloud Server database, data directory, and 
+1. Back up your existing Nextcloud Server database, data directory, and
    ``config.php`` file. (See :doc:`backup`.)
-2. Download and unpack the latest Nextcloud Server release (Archive file) from 
-   `nextcloud.com/install/`_ into an empty directory outside 
+2. Download and unpack the latest Nextcloud Server release (Archive file) from
+   `nextcloud.com/install/`_ into an empty directory outside
    of your current installation.
    
    .. note:: To unpack your new tarball, run:
       tar xjf nextcloud-[version].tar.bz2
-    
+
 3. Stop your Web server.
 
-4. Rename your current ownCloud or Nextcloud directory, for example ``owncloud-old``.
+4. Rename your current Nextcloud directory, for example ``nextcloud-old``.
 
-5. Unpacking the new archive creates a new ``Nextcloud`` directory populated 
+5. Unpacking the new archive creates a new ``nextcloud`` directory populated 
    with your new server files. Copy this directory and its contents to the 
    original location of your old server, for example ``/var/www/``, so that 
-   you have ``/var/www/nextcloud``.
+   once again you have ``/var/www/nextcloud``.
 
 6. Copy the ``config.php`` file from your old Nextcloud directory to your new 
    Nextcloud directory.
 
-7. If you keep your ``data/`` directory in your ``owncloud/`` directory, copy 
+7. If you keep your ``data/`` directory in your ``nextcloud/`` directory, copy 
    it from your old version of Nextcloud to your new ``nextcloud/``. If you keep 
-   it outside of ``owncloud/`` then you don't have to do anything with it, 
+   it outside of ``nextcloud/`` then you don't have to do anything with it,
    because its location is configured in your original ``config.php``, and 
    none of the upgrade steps touch it.
 
@@ -71,9 +71,8 @@ permissions to your Nextcloud directories (:ref:`strong_perms_label`).
 Previous Nextcloud Releases
 ---------------------------
 
-You'll find previous ownCloud releases in the `ownCloud Server Changelog 
-<https://owncloud.org/changelog/>`_ and previous Nextcloud releases in the 
-`Nextcloud Server Changelog <https://nextcloud.com/changelog/>`_.
+You'll find previous Nextcloud releases in the `Nextcloud Server Changelog 
+<https://nextcloud.com/changelog/>`_.
 
 Reverse Upgrade
 ---------------
@@ -102,8 +101,8 @@ help::
 
  sudo -u www-data php console.php files:scan --all
 
-See `the nextcloud.com support page <https://nextcloud.com/support>`_ for further
-resources for both home and enterprise users.
+See `the nextcloud.com support page <https://nextcloud.com/support/>`_ for further
+resources.
 
 Sometimes, Nextcloud can get *stuck in a upgrade*. This is usually due to the 
 process taking too long and encountering a PHP time-out. Stop the upgrade 
