@@ -8,10 +8,7 @@ such as shared hosting, for installations with a smaller number of users
 and data, and it automates updating 
 :doc:`manual installations <../installation/source_installation>`.
 
-New in 9.0, the Updater app has :ref:`command-line options <updater_cli_label>`.
-
-.. note:: The Updater app is **not enabled and not supported** in Nextcloud 
-   Enterprise edition. 
+The Updater app has :ref:`command-line options <updater_cli_label>`.
 
    **Downgrading** is not supported and risks corrupting your data! If you want 
    to revert to an older Nextcloud version, install it from scratch and then 
@@ -112,14 +109,14 @@ immediately after the initial installation. Please follow the steps in
 :ref:`strong_perms_label`.
     
 These strict permissions will prevent the Updater app from working, as it needs 
-your whole Nextcloud directory to be owned by the HTTP user. Run this script to 
-set the appropriate permissions for updating. Replace the ``ncpath`` variable 
+your whole Nextcloud directory to be owned by the HTTP user. Run this script to
+set the appropriate permissions for updating. Replace the ``ncpath`` variable
 with the path to your Nextcloud directory, and replace the ``htuser`` and 
 ``htgroup`` variables with your HTTP user and group.::
 
     #!/bin/bash
     # Sets permissions of the Nextcloud instance for updating
-    
+
     ncpath='/var/www/nextcloud'
     htuser='www-data'
     htgroup='www-data'
