@@ -73,8 +73,6 @@ your nginx installation.
         return 301 $scheme://$host/remote.php/dav;
       }
   
-      location /.well-known/acme-challenge { }
-  
       # set max upload size
       client_max_body_size 512M;
       fastcgi_buffers 64 4K;
@@ -231,8 +229,7 @@ your nginx installation.
               rewrite ^ /nextcloud/index.php$uri;
           }
   
-          location ~ 
-          ^/nextcloud/(?:build|tests|config|lib|3rdparty|templates|data)/ {
+          location ~ ^/nextcloud/(?:build|tests|config|lib|3rdparty|templates|data)/ {
               deny all;
           }
           location ~ ^/nextcloud/(?:\.|autotest|occ|issue|indie|db_|console) {
