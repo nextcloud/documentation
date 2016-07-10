@@ -2,12 +2,13 @@
 Restoring Nextcloud
 ===================
 
-To restore an Nextcloud installation there are three main things you need to 
+To restore a Nextcloud installation there are four main things you need to
 restore:
 
 #. The configuration directory
 #. The data directory
 #. The database
+# The theme directory
 
 .. note:: You must have both the database and data directory. You cannot 
    complete restoration unless you have both of these.
@@ -21,9 +22,8 @@ Restore Folders
 .. note:: This guide assumes that your previous backup is called 
    "nextcloud-dirbkp"
 
-Simply copy your configuration and data folder (or even your whole Nextcloud 
-install and 
-data folder) to your Nextcloud environment. You could use this command::
+Simply copy your configuration and data folder (or even your whole Nextcloud
+install and data folder) to your Nextcloud environment. You could use this command::
 
     rsync -Aax nextcloud-dirbkp/ nextcloud/
 
