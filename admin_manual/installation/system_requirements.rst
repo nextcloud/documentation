@@ -10,7 +10,7 @@ depending on the numbers of users and files, and volume of server activity.
 Nextcloud needs a minimum of 128MB RAM, and we recommend a minimum of 512MB.
 
 Recommended Setup for Running Nextcloud
---------------------------------------
+---------------------------------------
 
 For best performance, stability, support, and full functionality we recommend:
 
@@ -39,3 +39,12 @@ Supported Platforms
 
 See :doc:`source_installation` for minimum software versions for installing 
 Nextcloud.
+
+Database Requirements for MySQL / MariaDB
+-----------------------------------------
+
+The following is currently required if you're running Nextcloud together with a MySQL / MariaDB database:
+
+* Disabled or BINLOG_FORMAT = MIXED configured Binary Logging (See: :ref:`db-binlog-label`)
+* InnoDB storage engine (MyISAM is not supported)
+* "READ COMMITED" transaction isolation level (See: :ref:`db-transaction-label`)

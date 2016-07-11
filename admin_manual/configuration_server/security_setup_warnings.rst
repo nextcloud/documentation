@@ -119,3 +119,11 @@ Some files have not passed the integrity check
 ----------------------------------------------
 
 Please refer to the :ref:`code_signing_fix_warning_label` documentation how to debug this issue.
+
+Your database does not run with "READ COMMITED" transaction isolation level
+---------------------------------------------------------------------------
+
+"Your database does not run with "READ COMMITED" transaction isolation level.
+This can cause problems when multiple actions are executed in parallel."
+
+Please refer to :ref:`db-transaction-label` how to configure your database for this requirement.
