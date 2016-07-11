@@ -1,6 +1,6 @@
-===================================================
-Creating Branded ownCloud Clients (Enterprise only)
-===================================================
+==================================
+Creating Branded Nextcloud Clients
+==================================
 
 .. toctree::
    :maxdepth: 3
