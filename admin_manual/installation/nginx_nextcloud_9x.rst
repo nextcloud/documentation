@@ -199,14 +199,14 @@ your nginx installation.
       # last;
       #rewrite ^/.well-known/host-meta.json 
       # /nextcloud/public.php?service=host-meta-json last;
-  
+
       location = /.well-known/carddav {
         return 301 $scheme://$host/nextcloud/remote.php/dav;
       }
       location = /.well-known/caldav {
         return 301 $scheme://$host/nextcloud/remote.php/dav;
       }
-  
+
       location /.well-known/acme-challenge { }
   
       location ^~ /nextcloud {
@@ -228,14 +228,14 @@ your nginx installation.
           location /nextcloud {
               rewrite ^ /nextcloud/index.php$uri;
           }
-  
+
           location ~ ^/nextcloud/(?:build|tests|config|lib|3rdparty|templates|data)/ {
               deny all;
           }
           location ~ ^/nextcloud/(?:\.|autotest|occ|issue|indie|db_|console) {
               deny all;
           }
-  
+
           location ~ ^/nextcloud/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater/.+|ocs-provider/.+|core/templates/40[34])\.php(?:$|/) {
               include fastcgi_params;
               fastcgi_split_path_info ^(.+\.php)(/.+)$;
