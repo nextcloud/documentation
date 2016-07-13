@@ -1,6 +1,6 @@
-==============================
+===============================
 Encrypting Your Nextcloud Files
-==============================
+===============================
 
 Nextcloud includes an Encryption app, and when it is enabled by your Nextcloud 
 administrator all of your Nextcloud data files are automatically encrypted. 

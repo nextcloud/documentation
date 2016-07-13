@@ -24,7 +24,7 @@ Its usage is documented separately in the `ownCloud Desktop Client Manual`_.
 Mobile Clients
 --------------
 
-Visit your Personal page in your ownCloud Web interface to find download links 
+Visit your Personal page in your Nextcloud Web interface to find download links
 for Android and iOS mobile sync clients. Or, visit the `Nextcloud download page 
 <https://nextcloud.com/install/>`_.
 

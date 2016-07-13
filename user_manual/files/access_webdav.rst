@@ -1,6 +1,6 @@
-=====================================
+======================================
 Accessing Nextcloud Files Using WebDAV
-=====================================
+======================================
 
 Nextcloud fully supports the WebDAV protocol, and you can connect and synchronize 
 with your Nextcloud files over WebDAV.  In this chapter you will learn how to 
@@ -9,11 +9,11 @@ WebDAV. Before we get into configuring WebDAV, let's take a quick look at the
 recommended way of connecting client devices to your Nextcloud servers.
 
 Nextcloud Desktop and Mobile Clients
------------------------------------
+------------------------------------
 
 The recommended method for keeping your desktop PC synchronized with your 
 Nextcloud server is by using the `ownCloud Desktop Client 
-<https://owncloud.org/install/#install-clients>`_. You can configure the ownCloud client 
+<https://owncloud.org/install/#install-clients>`_. You can configure the client
 to save files in any local directory you want, and you choose which directories 
 on the Nextcloud server to sync with. The client displays the current connection 
 status and logs all activity, so you always know which remote files have been 
@@ -31,8 +31,7 @@ base URL and folder only::
 
 In addition to the mobile apps provided by Nextcloud or ownCloud, you can use other apps to 
 connect to Nextcloud from your mobile device using WebDAV. `WebDAV Navigator`_ is 
-a good (proprietary) app for `Android devices`_, `iPhones`_, and `BlackBerry 
-devices`_. The URL to use on these is::
+a good (proprietary) app for `Android devices`_ and `iPhones`_. The URL to use on these is::
 
     example.com/nextcloud/remote.php/dav/files/USERNAME/
     

@@ -5,7 +5,7 @@ Using the Bookmarks App
 The Bookmark application allows you to bookmark Web sites inside Nextcloud.
 
 The main interface
---------------------
+------------------
 
 Add a bookmark
 ~~~~~~~~~~~~~~

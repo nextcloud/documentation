@@ -1,8 +1,8 @@
 Thunderbird - Synchronize Addressbook
-======================================
+=====================================
 
 Addressbook
-------------
+-----------
 
 As someone who is new to ownCloud, New to SoGo Connector, and new to Thunderbird Addressbook... here is what you need in excruciating pithy detail to make this work (for all the other lost souls out there):
 
