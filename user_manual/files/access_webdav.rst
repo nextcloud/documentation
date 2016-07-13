@@ -31,8 +31,7 @@ base URL and folder only::
 
 In addition to the mobile apps provided by Nextcloud, you can use other apps to
 connect to Nextcloud from your mobile device using WebDAV. `WebDAV Navigator`_ is
-a good (proprietary) app for `Android devices`_, `iPhones`_, and `BlackBerry
-devices`_. The URL to use on these is::
+a good (proprietary) app for `Android devices`_ and `iPhones`_. The URL to use on these is::
 
     example.com/nextcloud/remote.php/dav/files/USERNAME/
 
