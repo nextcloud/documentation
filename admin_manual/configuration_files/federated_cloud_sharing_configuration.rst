@@ -55,7 +55,7 @@ is a few steps on the originating server.
 You may disconnect the share at any time by clicking the trash can icon.
 
 Configuring Trusted Nextcloud Servers
-------------------------------------
+-------------------------------------
 
 You may create a list of trusted Nextcloud servers for Federation sharing. This 
 allows your linked Nextcloud servers to share user directories, and to auto-fill 

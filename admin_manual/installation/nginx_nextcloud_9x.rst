@@ -1,6 +1,6 @@
-=================================================
+==================================================
 Nginx Configuration for the Nextcloud 9.x Branches
-=================================================
+==================================================
 
 The following configuration should be used when Nextcloud is placed in the 
 webroot of your Nginx installation. Be careful about line breaks if you copy 
@@ -13,7 +13,7 @@ Thanks to `@josh4trunks <https://github.com/josh4trunks>`_ for providing /
 creating these configuration examples.
 
 Nextcloud in the webroot of nginx
---------------------------------
+---------------------------------
 
 The following config should be used when Nextcloud is placed in the webroot of 
 your nginx installation.
