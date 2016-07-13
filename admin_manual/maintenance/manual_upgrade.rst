@@ -1,6 +1,6 @@
-=======================
+========================
 Manual Nextcloud Upgrade
-=======================
+========================
 
 Always start by making a fresh backup and disabling all 3rd party apps.
 
@@ -18,7 +18,7 @@ The other way is by entering your ``config.php`` file and changing
 1. Back up your existing Nextcloud Server database, data directory, and 
    ``config.php`` file. (See :doc:`backup`.)
 2. Download and unpack the latest Nextcloud Server release (Archive file) from 
-   `nextcloud.org/install/`_ into an empty directory outside 
+   `nextcloud.com/install/`_ into an empty directory outside
    of your current installation.
    
    .. note:: To unpack your new tarball, run:
@@ -70,7 +70,7 @@ ones are enabled. Re-enable your third-party apps. Then apply strong
 permissions to your Nextcloud directories (:ref:`strong_perms_label`).
 
 Previous Nextcloud Releases
---------------------------
+---------------------------
 
 You'll find previous Nextcloud releases in the `Nextcloud Server Changelog 
 <https://nextcloud.com/changelog/>`_.

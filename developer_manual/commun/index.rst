@@ -6,7 +6,7 @@ Help and Communication
    :maxdepth: 2
 
 Forums
--------------
+------
 Communicate via our `forums <https://help.nextcloud.com>`_.
 
 IRC channels

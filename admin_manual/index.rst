@@ -1,6 +1,6 @@
-============================================================
+=============================================================
 Nextcloud |version| Server Administration Manual Introduction
-============================================================
+=============================================================
 
 Introduction
 ------------
@@ -42,7 +42,7 @@ user interface, and desktop and mobile clients, please refer to their
 respective manuals:
 
 * `Nextcloud User Manual`_
-* `Nextcloud Desktop Client`_
+* `Nextcloud/ownCloud Desktop Client`_
 * `Nextcloud Android App`_
 * `Nextcloud iOS App`_ 
 
