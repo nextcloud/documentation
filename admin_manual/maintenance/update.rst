@@ -1,29 +1,19 @@
-=======================================
-Upgrading ownCloud with the Updater App
-=======================================
+==========================================
+Upgrading Nextcloud with the Nextcloud App
+==========================================
 
-The Updater app automates many of the steps of upgrading an ownCloud 
+The Updater app automates many of the steps of upgrading an Nextcloud 
 installation. It is useful for installations that do not have root access, 
 such as shared hosting, for installations with a smaller number of users 
 and data, and it automates updating 
 :doc:`manual installations <../installation/source_installation>`.
 
-New in 9.0, the Updater app has :ref:`command-line options <updater_cli_label>`.
-
-.. note:: The Updater app is **not enabled and not supported** in ownCloud 
-   Enterprise edition. 
-   
-   The Updater app is **not included** in the 
-   `Linux packages on our Open Build Service 
-   <https://download.owncloud.org/download/repositories/stable/owncloud/>`_, 
-   but only in the `tar and zip archives 
-   <https://owncloud.org/install/#instructions-server>`_. When you install 
-   ownCloud from packages you should keep it updated with your package manager.
+The Updater app has :ref:`command-line options <updater_cli_label>`.
    
    **Downgrading** is not supported and risks corrupting your data! If you want 
-   to revert to an older ownCloud version, install it from scratch and then 
+   to revert to an older Nextcloud version, install it from scratch and then 
    restore your data from backup. Before doing this, file a support ticket (if 
-   you have paid support) or ask for help in the ownCloud forums to see if your 
+   you have paid support) or ask for help in the Nextcloud forums to see if your 
    issue can be resolved without downgrading.
 
 You should maintain regular backups (see :doc:`backup`), and make a backup 
@@ -32,10 +22,10 @@ directory.
 
 The Updater app performs these operations:
 
-* Creates an ``updater_backup`` directory under your ownCloud data directory
+* Creates an ``updater_backup`` directory under your Nextcloud data directory
 * Downloads and extracts updated package content into the 
   ``updater_backup/packageVersion`` directory
-* Makes a copy of your current ownCloud instance, except for your data 
+* Makes a copy of your current Nextcloud instance, except for your data 
   directory, to ``updater_backup/currentVersion-randomstring``
 * Moves all directories except ``data``, ``config`` and ``themes`` from the 
   current instance to ``updater_backup/tmp``
@@ -43,16 +33,16 @@ The Updater app performs these operations:
   version
 * Copies your old ``config.php`` to the new ``config/`` directory
 
-Using the Updater app to update your ownCloud installation is just a few 
+Using the Updater app to update your Nextcloud installation is just a few 
 steps:
 
-1.  You should see a notification at the top of any ownCloud page when there is 
+1.  You should see a notification at the top of any Nextcloud page when there is 
     a new update available.
    
 2.  Even though the Updater app backs up important directories, you should 
     always have your own current backups (See :doc:`backup` for details.)
    
-3.  Verify that the HTTP user on your system can write to your whole ownCloud 
+3.  Verify that the HTTP user on your system can write to your whole Nextcloud 
     directory; see the :ref:`set_updating_permissions_label` section below.
    
 4.  Navigate to your Admin page and click the **Update Center** button under 
@@ -60,7 +50,7 @@ steps:
 
 5.  Click Update, and carefully read the messages. If there are any problems it 
     will tell you. The most common issue is directory permissions; your HTTP 
-    user needs write permissions to your whole ownCloud directory. (See 
+    user needs write permissions to your whole Nextcloud directory. (See 
     :ref:`strong_perms_label`.) Another common issue is SELinux rules 
     (see :ref:`selinux-config-label`.) Otherwise you will see messages 
     about checking your installation and making backups.
@@ -69,14 +59,14 @@ steps:
     minutes.
 
 7.  If your directory permissions are correct, a backup was made, and 
-    downloading the new ownCloud archive succeeded you will see the following 
+    downloading the new Nextcloud archive succeeded you will see the following 
     screen. Click the Start Update button to complete your update:
 
 .. figure:: images/upgrade-2.png
    :scale: 75%
    :alt: ownCloud upgrade wizard screen.
 
-..  note:: If you have a large ownCloud installation and have shell access,
+..  note:: If you have a large Nextcloud installation and have shell access,
     you should use the ``occ upgrade`` command, running it as your HTTP user, 
     instead of clicking the Start Update button, in order to avoid PHP 
     timeouts.
@@ -85,7 +75,7 @@ This example is for Ubuntu Linux::
 
      $ sudo -u www-data php occ upgrade
  
-Before completing the upgrade, ownCloud first runs a simulation by copying all 
+Before completing the upgrade, Nextcloud first runs a simulation by copying all 
 database tables to new tables, and then performs the upgrade on them, to ensure 
 that the upgrade will complete correctly. The copied tables are deleted after 
 the upgrade. This takes twice as much time, which on large installations can be 
@@ -101,7 +91,7 @@ See :doc:`../configuration_server/occ_command` to learn more.
 
 Refresh your Admin page to verify your new version number. In the Updater 
 section of your Admin page you can see the current status and backups. These 
-are backups of your old and new ownCloud installations, and do not contain your 
+are backups of your old and new Nextcloud installations, and do not contain your 
 data files. If your update works and there are no problems you can delete the 
 backups from this screen.
 
@@ -114,20 +104,20 @@ Setting Permissions for Updating
 --------------------------------
    
 For hardened security we  highly recommend setting the permissions on your 
-ownCloud directory as strictly as possible. These commands should be executed 
+Nextcloud directory as strictly as possible. These commands should be executed 
 immediately after the initial installation. Please follow the steps in 
 :ref:`strong_perms_label`.
     
 These strict permissions will prevent the Updater app from working, as it needs 
-your whole ownCloud directory to be owned by the HTTP user. Run this script to 
+your whole Nextcloud directory to be owned by the HTTP user. Run this script to 
 set the appropriate permissions for updating. Replace the ``ocpath`` variable 
-with the path to your ownCloud directory, and replace the ``htuser`` and 
+with the path to your Nextcloud directory, and replace the ``htuser`` and 
 ``htgroup`` variables with your HTTP user and group.::
 
     #!/bin/bash
-    # Sets permissions of the owncloud instance for updating
+    # Sets permissions of the Nextcloud instance for updating
     
-    ocpath='/var/www/owncloud'
+    ocpath='/var/www/nextcloud'
     htuser='www-data'
     htgroup='www-data'
     
@@ -166,8 +156,8 @@ You can display a help summary::
  
 When you run it without options it runs a system check:: 
 
- sudo -u www-data php owncloud/updater/application.php
- ownCloud updater 1.0 - CLI based ownCloud server upgrades
+ sudo -u www-data php nextcloud/updater/application.php
+ Nextcloud updater 1.0 - CLI based ownCloud server upgrades
  Checking system health.
  - file permissions are ok.
  Current version is 9.0.0.12
@@ -185,12 +175,12 @@ List checkpoints::
  
 Restore an earlier checkpoint::
 
- sudo -u www-data php owncloud/updater/application.php upgrade:checkpoint 
+ sudo -u www-data php nextcloud/updater/application.php upgrade:checkpoint 
   --restore=9.0.0.12-56d5e4e004964
 
 Add a line like this to your crontab to automatically create daily 
 checkpoints::
 
- 2 15 * * * sudo -u www-data php /path/to/owncloud/updater/application.php 
+ 2 15 * * * sudo -u www-data php /path/to/nextcloud/updater/application.php 
  upgrade:checkpoint --create > /dev/null 2>&1
  

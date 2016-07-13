@@ -1,6 +1,6 @@
-=====================================================
+======================================================
 Accessing your Files Using the Nextcloud Web Interface
-=====================================================
+======================================================
 
 You can access your Nextcloud files with the Nextcloud Web interface and create, 
 preview, edit, delete, share, and re-share files. Your Nextcloud administrator 

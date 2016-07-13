@@ -45,7 +45,7 @@ a Web browser, and then click the **Add to your ownCloud** button.
 .. figure:: ../images/create_public_share-8.png
 
 The **Add to your ownCloud** button changes to a form field, and your recipient 
-needs to enter the URL of their ownCloud server in this field and press the 
+needs to enter the URL of their Nextcloud or ownCloud server in this field and press the
 return key, or click the arrow.
 
 .. figure:: ../images/create_public_share-9.png

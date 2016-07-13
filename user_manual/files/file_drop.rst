@@ -1,6 +1,6 @@
-===========================
+========================
 Making Anonymous Uploads
-===========================
+========================
 
 You may create your own special upload directories so that other people can upload
 files to you without having to log in to the server, and without being an Nextcloud

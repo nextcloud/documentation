@@ -1,6 +1,6 @@
-==========================
+===========================
 The Nextcloud Web Interface
-==========================
+===========================
 
 You can connect to your Nextcloud server using any Web browser; just point it to 
 your Nextcloud server and enter your username and password. Supported Web 
