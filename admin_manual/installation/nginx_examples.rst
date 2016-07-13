@@ -26,7 +26,6 @@ community-maintained. (Thank you, contributors!)
 Example Configurations
 ----------------------
 
-- :doc:`nginx_owncloud_8x`
 - :doc:`nginx_nextcloud_9x`
 
 You can use Nextcloud over plain http, but we strongly encourage you to use 
@@ -92,7 +91,7 @@ To use http_v2 for nginx you have to check two things:
    ``listen 443 ssl spdy;`` to ``listen 443 ssl http2;``
 
 nginx: caching Nextcloud gallery thumbnails
-==========================================
+===========================================
 
 One of the optimizations for Nextcloud when using nginx as the Web server is to 
 combine FastCGI caching with "Cache Purge", a `3rdparty nginx module 

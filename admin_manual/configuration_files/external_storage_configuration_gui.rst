@@ -113,9 +113,8 @@ may provide their own backends, which are not listed here.
     external_storage/ftp
     external_storage/google
     external_storage/local
-	external_storage/nextcloud
+    external_storage/nextcloud
     external_storage/openstack
-    external_storage/owncloud
     external_storage/sftp
     external_storage/smb
     external_storage/webdav

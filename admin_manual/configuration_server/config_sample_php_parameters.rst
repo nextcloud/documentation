@@ -67,6 +67,7 @@ domains prevents host header poisoning. Do not remove this, as it performs
 necessary security checks.
 
 You can specify:
+
 - the exact hostname of your host or virtual host, e.g. demo.example.org.
 - the exact hostname with permitted port, e.g. demo.example.org:443.
   This disallows all other ports on this host
@@ -975,7 +976,7 @@ defines the interval in minutes for the background job that checks user
 existence and marks them as ready to be cleaned up. The number is always
 minutes. Setting it to 0 disables the feature.
 
-See command line (occ) methods ldap:show-remnants and user:delete
+See command line (occ) methods ``ldap:show-remnants`` and ``user:delete``
 
 Comments
 --------
