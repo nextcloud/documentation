@@ -8,7 +8,7 @@ restore:
 #. The configuration directory
 #. The data directory
 #. The database
-# The theme directory
+#. The theme directory
 
 .. note:: You must have both the database and data directory. You cannot 
    complete restoration unless you have both of these.

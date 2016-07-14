@@ -293,8 +293,7 @@ Authentication via an existing LDAP or Active Directory server, or SAML.
     
 * Authentication
    User authentication via one or several LDAP or Active Directory 
-   servers, or SAML/Shibboleth. (See `User Authentication with LDAP`_ and 
-   `Shibboleth Integration`_.) 
+   servers, or SAML/Shibboleth. (See `User Authentication with LDAP`_.)
 
 * LDAP
    Read-only slaves should be deployed on every application server for 
@@ -493,9 +492,6 @@ References
    https://nextcloud.com/enterprise/
 .. _F5 Big-IP: https://f5.com/products/big-ip/
 
-.. _Shibboleth Integration: 
-   https://docs.nextcloud.org/server/9/admin_manual/enterprise_user_management/
-   user_auth_shibboleth.html
 .. _Memcache StorageService:  
    https://wiki.shibboleth.net/confluence/display/SHIB2/
    NativeSPStorageService#NativeSPStorageService-MemcacheStorageService

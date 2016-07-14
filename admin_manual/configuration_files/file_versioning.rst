@@ -41,11 +41,3 @@ Additional options are:
 
 * ``disabled``  
     Disable Versions; no files will be deleted.
-
-Enterprise File Retention
--------------------------
-
-Enterprise customers have additional tools for managing file retention 
-policies; see :doc:`../enterprise_file_management/files_tagging`.
-
-    

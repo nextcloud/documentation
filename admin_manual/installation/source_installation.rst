@@ -2,9 +2,6 @@
 Manual Installation on Linux
 ============================
 
-.. note:: Enterprise customers should refer to  
-   :doc:`../enterprise_installation/linux_installation`
-
 If there are no packages for your Linux distribution, or you prefer installing 
 from the source tarball, you can setup Nextcloud from scratch using a classic 
 LAMP stack (Linux, Apache, MySQL/MariaDB, PHP). This document provides a 

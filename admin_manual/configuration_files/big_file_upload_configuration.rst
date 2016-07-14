@@ -124,7 +124,7 @@ will return memory-related errors:
 * ``output_buffering = 0``
 
 Configuring Nextcloud
---------------------
+---------------------
 
 As an alternative to the ``upload_tmp_dir`` of PHP (e.g. if you don't have access to your
 ``php.ini``) you can also configure a temporary location for uploaded files by using the
