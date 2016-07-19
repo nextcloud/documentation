@@ -72,6 +72,35 @@ Coding
 * HTML should be HTML5 compliant
 * When you ``git pull``, always ``git pull --rebase`` to avoid generating extra commits like: *merged master into master*
 
+License Headers
+---------------
+
+Nextcloud is licensed under the `GNU AGPLv3 <https://www.gnu.org/licenses/agpl>`_. From June, 16 2016 on we switched to "GNU AGPLv3 or any later version" for better long-term maintainability. If you create a new file please use this header:
+
+.. code-block:: php
+
+  /**
+   *
+   * @copyright Copyright (c) <year>, <your name> (<your email address>)
+   *
+   * @license GNU AGPL version 3 or any later version
+   *
+   * This program is free software: you can redistribute it and/or modify
+   * it under the terms of the GNU Affero General Public License as
+   * published by the Free Software Foundation, either version 3 of the
+   * License, or (at your option) any later version.
+   *
+   * This program is distributed in the hope that it will be useful,
+   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   * GNU Affero General Public License for more details.
+   *
+   * You should have received a copy of the GNU Affero General Public License
+   * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+   *
+   */
+
+If you edit an existing file please add a copyright notice with your name, if you consider your changes substantial enough to claim copyright. As a rule if thumb, this is the case if you contributed more than seven lines of code.
 
 User interface
 --------------
