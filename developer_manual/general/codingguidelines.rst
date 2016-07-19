@@ -72,8 +72,8 @@ Coding
 * Check these `database performance tips <https://mailman.owncloud.org/pipermail/devel/2014-June/000262.html>`_
 * When you ``git pull``, always ``git pull --rebase`` to avoid generating extra commits like: *merged master into master*
 
-License Haders
---------------
+License Headers
+---------------
 
 Nextcloud is licensed under the `GNU AGPLv3 <https://www.gnu.org/licenses/agpl>`_. From June, 16 2016 on we switched to "GNU AGPLv3 or any later version" for better long-term maintainability. If you create a new file please use this header:
 
