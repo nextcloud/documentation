@@ -12,7 +12,7 @@ Why do you want to join
 =======================
 Helping to bring the number of issues down makes it easier for developers to spend their time productively and bug triagers thus **contribute greatly to Nextcloud development**! Triaging a bug doesn’t take long so the work comes in small chunks and you don’t need many skills, just some patience and sometimes perseverance.
 
-Bug triagers who contribute significantly should ask to be listed as an active contributor on the `nextcloud.org <https://nextcloud.org>`_ page!
+Bug triagers who contribute significantly should ask to be listed as an active contributor on the `nextcloud.com <https://nextcloud.com>`_ page!
 
 How do you triage bugs
 ======================
@@ -48,9 +48,9 @@ Finding bugs to triage
 
 Github offers several search queries which can be useful to find a list of bugs which deserve a closer look:
 
-* `The bugs least recently commented on <https://github.com/issues?q=is%3Aissue+user%3Aowncloud+is%3Aopen+sort%3Aupdated-asc++is%3Apublic+>`_
-* `Least commented issues <https://github.com/issues?q=is%3Aissue+user%3Aowncloud+is%3Aopen+no%3Aassignee+no%3Amilestone+no%3Alabel+sort%3Acomments-asc+>`_
-* `Bugs which need info <https://github.com/issues?q=is%3Aissue+user%3Aowncloud+is%3Aopen+label%3A%22Needs+info%22+sort%3Acreated-asc+>`_
+* `The bugs least recently commented on <https://github.com/issues?q=is%3Aissue+user%3Anextcloud+is%3Aopen+sort%3Aupdated-asc++is%3Apublic+>`_
+* `Least commented issues <https://github.com/issues?q=is%3Aissue+user%3Anextcloud+is%3Aopen+no%3Aassignee+no%3Amilestone+no%3Alabel+sort%3Acomments-asc+>`_
+* `Bugs which need info <https://github.com/issues?q=is%3Aissue+user%3Anextcloudcloud+is%3Aopen+label%3A%22Needs+info%22+sort%3Acreated-asc+>`_
 
 But there are more methods. For example, if you are a user of Nextcloud with a specific setup like using nginx as Web server or dropbox as storage, or using the encryption app, you could look for bugs with these keywords. You can then use your knowledge of your installation and your installation itself to see if bugs are (still) valid or reproduce them.
 
@@ -81,7 +81,7 @@ If you can't find anything, look in closed bug reports. The problem might be sol
 When the issue is a feature request, you can be helpful in the same way: merge related requests by adding information of one to the other and closing the first.
 
 .. note:: Be polite: when you need to request information or feedback be clear and polite, and you will get more information in less time. Think about how you'd like to be treated, were you to report a bug!
-.. note:: You can answer more quickly and friendly using one of `these templates <https://gist.github.com/jancborchardt/6155185#clean-up-inactive-issues>`_. 
+.. note:: You can answer more quickly and friendly using one of `these templates <https://gist.github.com/jancborchardt/6155185#clean-up-inactive-issues>`_.
 .. note:: Often our github issue tracker is a place for discussions about solutions. Be friendly, inclusive and respect other people's position.
 
 Determining relevance of issue

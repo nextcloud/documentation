@@ -42,6 +42,7 @@ App store:
 * available in Apps page in separate category
 * sorted first in all overviews, 'Official' tag
 * shown as featured, on nextcloud.com etc
+* major releases optionally featured on nextcloud.com
 * new versions/updates approved by at least one other person
 
 note:
@@ -107,7 +108,7 @@ Before asking for approval, it is best to check your app code with the code chec
 .. code-block:: bash
 
   ./occ app:check-code <app_name>
-  
+
 Losing a rating
 ^^^^^^^^^^^^^^^
 Apps can lose their rating when:

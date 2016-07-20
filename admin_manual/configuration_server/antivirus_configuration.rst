@@ -119,8 +119,8 @@ Daemon (Socket)
   .. figure:: ../images/antivirus-daemon-socket.png
 
   The ``Stream Length`` value sets the number of bytes read in one pass.
-  10485760 bytes, or ten megabytes, is the default. This value should be 
-  no larger than the PHP ``memory_limit`` settings, or physical memory if 
+  10485760 bytes, or ten megabytes, is the default. This value should be
+  no larger than the PHP ``memory_limit`` settings, or physical memory if
   ``memory_limit`` is set to -1 (no limit).
 
   ``Action for infected files found while scanning`` gives you the choice of
@@ -141,5 +141,3 @@ Executable
 
 When you are satisfied with how ClamAV is operating, you might want to go
 back and change all of your logging to less verbose levels.
-
-

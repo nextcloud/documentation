@@ -10,7 +10,7 @@ Nextcloud Server Configuration
    activity_configuration
    antivirus_configuration
    caching_configuration
-   background_jobs_configuration   
+   background_jobs_configuration
    config_sample_php_parameters
    email_configuration
    external_sites
@@ -19,7 +19,7 @@ Nextcloud Server Configuration
    language_configuration
    logging_configuration
    harden_server
-   reverse_proxy_configuration 
+   reverse_proxy_configuration
    thirdparty_php_configuration
    js_css_asset_management_configuration
    automatic_configuration

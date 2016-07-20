@@ -57,12 +57,12 @@ for example in /nextcloud/core/ and /nextcloud/settings/ in these sub folders:
 
 Notes for Updates
 =================
-It is not recommended to the user to perform adaptations inside the 
+It is not recommended to the user to perform adaptations inside the
 folder ``/themes/example`` because files inside this folder might get
 replaced during the next Nextcloud update process.
 
-During an update, files might get changed within the core an settings 
-folders. This could result in problems because your template files will 
+During an update, files might get changed within the core an settings
+folders. This could result in problems because your template files will
 not 'know' about these changes and therefore must be manually merged with
 the updated core file or simply be deleted (or renamed for a test).
 

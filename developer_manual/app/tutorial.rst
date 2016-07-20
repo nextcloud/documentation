@@ -9,9 +9,9 @@ This tutorial will outline how to create a very simple notes app. The finished a
 
 Setup
 =====
-After the `development tool <https://github.com/nextcloud/ocdev/blob/master/README.rst#installation>`_ has been installed the :doc:`development environment needs to be set up <../general/devenv>`. This can be done by either `downloading the zip from the website <https://nextcloud.com/install/>`_ or cloning it directly from GitHub::
+After the `development tool <https://github.com/nextcloud/ncdev/blob/master/README.rst#installation>`_ has been installed the :doc:`development environment needs to be set up <../general/devenv>`. This can be done by either `downloading the zip from the website <https://nextcloud.com/install/>`_ or cloning it directly from GitHub::
 
-    ocdev setup core --dir nextcloud  --branch $BRANCH
+    ncdev setup core --dir nextcloud  --branch $BRANCH
 
 .. note:: $BRANCH is the desired Nextcloud branch (e.g. stable7 for Nextcloud 7, stable8 for Nextcloud 8, etc)
 
@@ -23,7 +23,7 @@ First you want to enable debug mode to get proper error messages. To do that set
         ... configuration goes here ...
     );
 
-.. note:: PHP errors are logged to **nextcloud/data/owncloud.log**
+.. note:: PHP errors are logged to **nextcloud/data/nextcloud.log**
 
 Now open another terminal window and start the development server::
 

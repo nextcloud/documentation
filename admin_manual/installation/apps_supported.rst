@@ -8,7 +8,7 @@ AGPL Apps
 * Activity
 * AntiVirus
 * Collaborative Tags
-* Comments 
+* Comments
 * Encryption
 * External Sites
 * External Storage

@@ -22,7 +22,7 @@ or install it manually::
 After the installation the ''phpunit'' command is available::
 
   phpunit --version
-  
+
 And you can update it using::
 
   phpunit --self-update
@@ -186,7 +186,6 @@ Documentation
 
 Here are some useful links about how to write unit tests with Jasmine and Sinon:
 
-- Karma test runner: http://karma-runner.github.io 
+- Karma test runner: http://karma-runner.github.io
 - Jasmine: http://pivotal.github.io/jasmine
-- Sinon (for mocking and stubbing): http://sinonjs.org/ 
-
+- Sinon (for mocking and stubbing): http://sinonjs.org/

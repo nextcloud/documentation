@@ -19,5 +19,5 @@ Table of Contents
     core/index
     bugtracker/index
     commun/index
-    
-..   test    
+
+..   test

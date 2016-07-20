@@ -155,7 +155,7 @@ Use automatic dependency assembly (recommended)
 ===============================================
 .. versionadded:: 8
 
-Since Nextcloud 8 it is possible to omit the **appinfo/application.php** and use automatic dependency assembly instead.
+It is possible to omit the **appinfo/application.php** and use automatic dependency assembly instead.
 
 How does automatic assembly work
 --------------------------------

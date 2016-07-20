@@ -36,7 +36,7 @@ date format in the example below, the date/time format will be written in the fo
 ::
 
     "log_type" => "owncloud",
-    "logfile" => "owncloud.log",
+    "logfile" => "nextcloud.log",
     "loglevel" => "3",
     "logdateformat" => "F d, Y H:i:s",
 
