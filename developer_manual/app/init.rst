@@ -4,7 +4,7 @@ Navigation and Pre-App configuration
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-The :file:`appinfo/app.php` is the first file that is loaded and executed in ownCloud. Depending on the purpose of the app it usually just contains the navigation setup, and maybe :doc:`backgroundjobs` and :doc:`hooks` registrations. This is how an example :file:`appinfo/app.php` could look like:
+The :file:`appinfo/app.php` is the first file that is loaded and executed in Nextcloud. Depending on the purpose of the app it usually just contains the navigation setup, and maybe :doc:`backgroundjobs` and :doc:`hooks` registrations. This is how an example :file:`appinfo/app.php` could look like:
 
 .. code-block:: php
     

@@ -18,7 +18,7 @@ First `set up your Web server and database <https://doc.owncloud.org/server/9.0/
 Get the source
 ==============
 
-There are two ways to obtain ownCloud sources: 
+There are two ways to obtain Nextcloud sources: 
 
 * Using the `stable version <https://doc.owncloud.org/server/9.0/admin_manual/#installation>`_
 .. TODO ON RELEASE: Update version number above on release

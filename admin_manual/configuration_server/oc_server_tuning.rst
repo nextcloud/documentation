@@ -1,5 +1,5 @@
 ======================
-ownCloud Server Tuning
+Nextcloud Server Tuning
 ======================
 
 Using cron to perform background jobs
@@ -20,8 +20,8 @@ Caching
 -------
 
 Caching improves performance by storing data, code, and other objects in memory. 
-Memory cache configuration for the ownCloud server is no longer automatic in 
-ownCloud 8.1 and up, but must be installed and configured. See      
+Memory cache configuration for the Nextcloud server is no longer automatic in 
+Nextcloud 8.1 and up, but must be installed and configured. See      
 :doc:`caching_configuration`.
 
 Using MariaDB/MySQL instead of SQLite
@@ -29,10 +29,10 @@ Using MariaDB/MySQL instead of SQLite
 
 MySQL or MariaDB are preferred because of the `performance limitations of 
 SQLite with highly concurrent applications 
-<http://www.sqlite.org/whentouse.html>`_, like ownCloud.
+<http://www.sqlite.org/whentouse.html>`_, like Nextcloud.
 
 See the section :doc:`../configuration_database/linux_database_configuration` for how to
-configure ownCloud for MySQL or MariaDB. If your installation is already running on
+configure Nextcloud for MySQL or MariaDB. If your installation is already running on
 SQLite then it is possible to convert to MySQL or MariaDB using the steps provided
 in :doc:`../configuration_database/db_conversion`.
 
@@ -42,7 +42,7 @@ Using Redis-based Transactional File Locking
 File locking is enabled by default, using the database locking backend. This 
 places a significant load on your database. See the section
 :doc:`../configuration_files/files_locking_transactional` for how to
-configure ownCloud to use Redis-based Transactional File Locking.
+configure Nextcloud to use Redis-based Transactional File Locking.
 
 SSL / Encryption App
 --------------------

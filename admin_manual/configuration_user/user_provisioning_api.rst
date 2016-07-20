@@ -4,14 +4,14 @@ User Provisioning API
 
 The Provisioning API application enables a set of APIs that external systems can use to create, 
 edit, delete and query user attributes, query, set and remove groups, set quota 
-and query total storage used in ownCloud. Group admin users can also query 
-ownCloud and perform the same functions as an admin for groups they manage. The 
-API also enables an admin to query for active ownCloud applications, application 
+and query total storage used in Nextcloud. Group admin users can also query 
+Nextcloud and perform the same functions as an admin for groups they manage. The 
+API also enables an admin to query for active Nextcloud applications, application 
 info, and to enable or disable an app remotely. HTTP 
 requests can be used via a Basic Auth header to perform any of the functions 
 listed above. The Provisioning API app is enabled by default.
 
-The base URL for all calls to the share API is **owncloud_base_url/ocs/v1.php/cloud**.
+The base URL for all calls to the share API is **nextcloud_base_url/ocs/v1.php/cloud**.
 
 Instruction Set For Users
 =========================
@@ -19,7 +19,7 @@ Instruction Set For Users
 **users / adduser**
 -------------------
 
-Create a new user on the ownCloud server. Authentication is done by sending a 
+Create a new user on the Nextcloud server. Authentication is done by sending a 
 basic HTTP authentication header.
 
 **Syntax: ocs/v1.php/cloud/users**
@@ -60,7 +60,7 @@ XML Output
 **users / getusers**
 --------------------
 
-Retrieves a list of users from the ownCloud server. Authentication is done by 
+Retrieves a list of users from the Nextcloud server. Authentication is done by 
 sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users**
@@ -183,7 +183,7 @@ XML Output
 **users / deleteuser**
 ----------------------
 
-Deletes a user from the ownCloud server. Authentication is done by sending a 
+Deletes a user from the Nextcloud server. Authentication is done by sending a 
 Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}**
@@ -465,7 +465,7 @@ Instruction Set For Groups
 **groups / getgroups**
 ----------------------
 
-Retrieves a list of groups from the ownCloud server. Authentication is done by 
+Retrieves a list of groups from the Nextcloud server. Authentication is done by 
 sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/groups**
@@ -662,7 +662,7 @@ Instruction Set For Apps
 **apps / getapps**
 ------------------
 
-Returns a list of apps installed on the ownCloud server. Authentication is done 
+Returns a list of apps installed on the Nextcloud server. Authentication is done 
 by sending a Basic HTTP Authorization 
 header.
 

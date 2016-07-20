@@ -10,12 +10,12 @@ Bugtracker
    kanban
    triaging
 
-Thank you for helping ownCloud by reporting bugs. Before submitting an issue, please read
+Thank you for helping Nextcloud by reporting bugs. Before submitting an issue, please read
 `Issue submission guidelines`_ first.
 
-* If the issue is with the ownCloud server, report it to the `Core repository`_
-* If the issue is with the ownCloud client, report it to the `Client repository`_
-* If the issue with with an ownCloud app, report it to where that app is developed
+* If the issue is with the Nextcloud server, report it to the `Core repository`_
+* If the issue is with the Nextcloud client, report it to the `Client repository`_
+* If the issue with with an Nextcloud app, report it to where that app is developed
 * If the app is listed in our `main github repository`_ report it to the correct sub 
   repository
 * If the app is listed in the `apps repository`_ report it there

@@ -7,7 +7,6 @@ Installation
 
    system_requirements
    deployment_recommendations
-   linux_installation
    installation_wizard
    command_line_installation
    apps_management_installation

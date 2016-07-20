@@ -1,5 +1,5 @@
 ================
-Theming ownCloud
+Theming Nextcloud
 ================
 
 .. toctree::

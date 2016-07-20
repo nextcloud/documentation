@@ -2,11 +2,11 @@
 Database Configuration
 ======================
 
-ownCloud requires a database in which administrative data is stored. The following databases are currently supported:
+Nextcloud requires a database in which administrative data is stored. The following databases are currently supported:
 
 * `MySQL <http://www.mysql.com/>`_ / `MariaDB <https://mariadb.org/>`_
 * `PostgreSQL <http://www.postgresql.org/>`_
-* `Oracle <http://www.oracle.com/>`_ (ownCloud Enterprise edition only)
+* `Oracle <http://www.oracle.com/>`_
 
 The MySQL or MariaDB databases are the recommended database engines.
 
@@ -25,12 +25,12 @@ requires that you install and set up the server software first.
 MySQL / MariaDB with Binary Logging Enabled
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-ownCloud is currently using a ``TRANSACTION_READ_COMMITTED`` transaction isolation
+Nextcloud is currently using a ``TRANSACTION_READ_COMMITTED`` transaction isolation
 to avoid data loss under high load scenarios (e.g. by using the sync client with
 many clients/users and many parallel operations). This requires a disabled or
 correctly configured binary logging when using MySQL or MariaDB. Your system is
 affected if you see the following in your log file during the installation or
-update of ownCloud:
+update of Nextcloud:
 
  An unhandled exception has been thrown:
  exception 'PDOException' with message 'SQLSTATE[HY000]: General error: 1665 
@@ -65,7 +65,7 @@ for detailed information.
 
 Parameters
 ----------
-For setting up ownCloud to use any database, use the instructions in :doc:`../installation/installation_wizard`. You should not have to edit the respective values in the :file:`config/config.php`.  However, in special cases (for example, if you want to connect your ownCloud instance to a database created by a previous installation of ownCloud), some modification might be required.
+For setting up Nextcloud to use any database, use the instructions in :doc:`../installation/installation_wizard`. You should not have to edit the respective values in the :file:`config/config.php`.  However, in special cases (for example, if you want to connect your Nextcloud instance to a database created by a previous installation of Nextcloud), some modification might be required.
 
 Configuring a MySQL or MariaDB Database
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -74,7 +74,7 @@ If you decide to use a MySQL or MariaDB database, ensure the following:
 
 * That you have installed and enabled the pdo_mysql extension in PHP
 
-* That the **mysql.default_socket** points to the correct socket (if the database runs on the same server as ownCloud).
+* That the **mysql.default_socket** points to the correct socket (if the database runs on the same server as Nextcloud).
 
 .. note:: MariaDB is backwards compatible with MySQL.  All instructions work for both. You will not need to replace mysql with anything.
 
@@ -100,7 +100,7 @@ The PHP configuration in :file:`/etc/php5/conf.d/mysql.ini` could look like this
   mysql.trace_mode=Off
 
 Now you need to create a database user and the database itself by using the
-MySQL command line interface. The database tables will be created by ownCloud
+MySQL command line interface. The database tables will be created by Nextcloud
 when you login for the first time.
 
 To start the MySQL command line mode use::
@@ -112,14 +112,14 @@ Then a **mysql>** or **MariaDB [root]>** prompt will appear. Now enter the follo
 ::
 
   CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
-  CREATE DATABASE IF NOT EXISTS owncloud;
-  GRANT ALL PRIVILEGES ON owncloud.* TO 'username'@'localhost' IDENTIFIED BY 'password';
+  CREATE DATABASE IF NOT EXISTS nextcloud;
+  GRANT ALL PRIVILEGES ON nextcloud.* TO 'username'@'localhost' IDENTIFIED BY 'password';
 
 You can quit the prompt by entering::
 
   quit
 
-An ownCloud instance configured with MySQL would contain the hostname on which
+An Nextcloud instance configured with MySQL would contain the hostname on which
 the database is running, a valid username and password to access it, and the
 name of the database. The :file:`config/config.php` as created by the
 :doc:`../installation/installation_wizard` would therefore contain entries like
@@ -130,7 +130,7 @@ this:
   <?php
 
     "dbtype"        => "mysql",
-    "dbname"        => "owncloud",
+    "dbname"        => "nextcloud",
     "dbuser"        => "username",
     "dbpassword"    => "password",
     "dbhost"        => "localhost",
@@ -168,13 +168,13 @@ Then a **template1=#** prompt will appear. Now enter the following lines and con
 ::
 
   CREATE USER username CREATEDB;
-  CREATE DATABASE owncloud OWNER username;
+  CREATE DATABASE nextcloud OWNER username;
 
 You can quit the prompt by entering::
 
   \q
 
-An ownCloud instance configured with PostgreSQL would contain the path to the socket on
+An Nextcloud instance configured with PostgreSQL would contain the path to the socket on
 which the database is running as the hostname, the system username the php process is using,
 and an empty password to access it, and the name of the database. The :file:`config/config.php` as 
 created by the :doc:`../installation/installation_wizard` would therefore contain entries like
@@ -185,7 +185,7 @@ this:
   <?php
 
     "dbtype"        => "pgsql",
-    "dbname"        => "owncloud",
+    "dbname"        => "nextcloud",
     "dbuser"        => "username",
     "dbpassword"    => "",
     "dbhost"        => "/var/run/postgresql",
@@ -196,7 +196,7 @@ this:
 If you use another authentication method (not peer), you'll need to use the following steps to get the database setup:
 Now you need to create a database user and the database itself by using the
 PostgreSQL command line interface. The database tables will be created by
-ownCloud when you login for the first time.
+Nextcloud when you login for the first time.
 
 To start the postgres command line mode use::
 
@@ -215,7 +215,7 @@ You can quit the prompt by entering::
 
   \q
 
-An ownCloud instance configured with PostgreSQL would contain the hostname on
+An Nextcloud instance configured with PostgreSQL would contain the hostname on
 which the database is running, a valid username and password to access it, and
 the name of the database. The :file:`config/config.php` as created by the
 :doc:`../installation/installation_wizard` would therefore contain entries like
@@ -226,7 +226,7 @@ this:
   <?php
 
     "dbtype"        => "pgsql",
-    "dbname"        => "owncloud",
+    "dbname"        => "nextcloud",
     "dbuser"        => "username",
     "dbpassword"    => "password",
     "dbhost"        => "localhost",
@@ -246,7 +246,7 @@ refer to the manual of your database for how to raise the configuration options
 ``wait_timeout`` and/or ``max_allowed_packet``.
 
 Some shared hosters are not allowing the access to these config options. For such
-systems ownCloud is providing a ``dbdriveroptions`` configuration option within your
+systems Nextcloud is providing a ``dbdriveroptions`` configuration option within your
 :file:`config/config.php` where you can pass such options to the database driver.
 Please refer to :doc:`../configuration_server/config_sample_php_parameters` for an example.
 
@@ -302,12 +302,12 @@ the respective host name::
 Assuming the database server is installed on the same system you're running
 the command from, use::
 
-  psql -Uusername -downcloud
+  psql -Uusername -dnextcloud
 
 To access a MySQL installation on a different machine, add the -h option with
 the respective host name::
 
-  psql -Uusername -downcloud -h HOSTNAME
+  psql -Uusername -dnextcloud -h HOSTNAME
 
 ::
 
@@ -330,10 +330,10 @@ Useful SQL commands
   MySQL     : SHOW DATABASES;
   PostgreSQL: \l
 
-**Show ownCloud Tables in Database**::
+**Show Nextcloud Tables in Database**::
 
-  MySQL     : USE owncloud; SHOW TABLES;
-  PostgreSQL: \c owncloud; \d
+  MySQL     : USE nextcloud; SHOW TABLES;
+  PostgreSQL: \c nextcloud; \d
 
 **Quit Database**::
 

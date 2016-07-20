@@ -15,7 +15,7 @@ Chat with us on `IRC <http://www.irchelp.org/>`_. All channels are on **irc.free
 
 * Setup: **#nextcloud**
 * Development: **#nextcloud-dev**
-* Design: **#owncloud-design**
+* Design: **#nextcloud-design**
 * Mobile: **#nextcloud-mobile**
 
 

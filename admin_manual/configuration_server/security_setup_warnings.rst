@@ -2,7 +2,7 @@
 Warnings on Admin Page
 ======================
 
-Your ownCloud server has a built-in configuration checker, and it reports its 
+Your Nextcloud server has a built-in configuration checker, and it reports its 
 findings at the top of your Admin page. These are some of the warnings you 
 might see, and what to do about them.
 
@@ -12,7 +12,7 @@ Cache Warnings
 --------------
 
 "No memory cache has been configured. To enhance your performance please 
-configure a memcache if available." ownCloud supports multiple php caching
+configure a memcache if available." Nextcloud supports multiple php caching
 extensions:
 
 * APC (PHP 5.4 only)
@@ -47,7 +47,7 @@ You are accessing this site via HTTP
 server to require using HTTPS instead." Please take this warning seriously; 
 using HTTPS is a fundamental security measure. You must configure your Web 
 server to support it, and then there are some settings in the **Security** 
-section of your ownCloud Admin page to enable. The following pages 
+section of your Nextcloud Admin page to enable. The following pages 
 describe how to enable HTTPS on the Apache and Nginx Web servers.
 
 :ref:`enabling_ssl_label` (on Apache)
@@ -59,7 +59,7 @@ describe how to enable HTTPS on the Apache and Nginx Web servers.
 The test with getenv(\"PATH\") only returns an empty response
 -------------------------------------------------------------
 
-Some environments are not passing a valid PATH variable to ownCloud. The
+Some environments are not passing a valid PATH variable to Nextcloud. The
 :ref:`php_fpm_tips_label` provides the information about how to configure your 
 environment.
 
@@ -87,7 +87,7 @@ Your Web server is not yet set up properly to allow file synchronization
 "Your web server is not yet set up properly to allow file synchronization because
 the WebDAV interface seems to be broken."
 
-At the ownCloud community forums a larger `FAQ <https://forum.owncloud.org/viewtopic.php?f=17&t=7536>`_
+At the Nextcloud community forums a larger `FAQ <https://forum.owncloud.org/viewtopic.php?f=17&t=7536>`_
 is maintained containing various information and debugging hints.
 
 Outdated NSS / OpenSSL version
@@ -103,7 +103,7 @@ Cloud Sharing will not work reliably."
 
 There are known bugs in older OpenSSL and NSS versions leading to misbehaviour in 
 combination with remote hosts using SNI. A technology used by most of the HTTPS
-websites. To ensure that ownCloud will work properly you need to update OpenSSL
+websites. To ensure that Nextcloud will work properly you need to update OpenSSL
 to at least 1.0.2b or 1.0.1d. For NSS the patch version depends on your distribution
 and an heuristic is running the test which actually reproduces the bug. There
 are distributions such as RHEL/CentOS which have this backport still `pending 
@@ -112,7 +112,7 @@ are distributions such as RHEL/CentOS which have this backport still `pending
 Your Web server is not set up properly to resolve /.well-known/caldav/ or /.well-known/carddav/
 -----------------------------------------------------------------------------------------------
 
-Both URLs need to be correctly redirected to the DAV endpoint of ownCloud. Please
+Both URLs need to be correctly redirected to the DAV endpoint of Nextcloud. Please
 refer to :ref:`service-discovery-label` for more info.
 
 Some files have not passed the integrity check

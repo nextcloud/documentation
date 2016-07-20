@@ -12,18 +12,17 @@ Linux, client applications for Microsoft Windows, Mac OS X and Linux, and mobile
 clients for the Android and Apple iOS operating systems.
 
 Current editions of Nextcloud manuals are always available online at 
-`doc.owncloud.org <https://docs.nextcloud.org/>`_ and `doc.owncloud.com 
-<https://doc.owncloud.com/>`_.
+`docs.nextcloud.org <https://docs.nextcloud.org/>`_.
 
 Nextcloud server is available:
 
 * As a free, full featured community-supported server, with all enterprise features.
 * Or with full enterprise support, including phone and email access to Nextcloud developers.
   
-See :doc:`../whats_new_admin` for more information on the different ownCloud 
+See :doc:`../whats_new_admin` for more information on the different Nextcloud 
 editions.
 
-ownCloud Videos and Blogs
+Nextcloud Videos and Blogs
 -------------------------
 
 See the `official Nextcloud channel 
@@ -42,11 +41,11 @@ user interface, and desktop and mobile clients, please refer to their
 respective manuals:
 
 * `Nextcloud User Manual`_
-* `Nextcloud/ownCloud Desktop Client`_
+* `Nextcloud/Nextcloud Desktop Client`_
 * `Nextcloud Android App`_
 * `Nextcloud iOS App`_ 
 
 .. _`Nextcloud User Manual`: https://docs.nextcloud.org/server/9.0/user_manual/
-.. _`Nextcloud/ownCloud Desktop Client`: https://doc.owncloud.org/desktop/2.2/
+.. _`Nextcloud/Nextcloud Desktop Client`: https://doc.owncloud.org/desktop/2.2/
 .. _`Nextcloud Android App`: https://docs.nextcloud.org/android/
 .. _`Nextcloud iOS App`: https://docs.nextcloud.org/ios/

@@ -4,7 +4,7 @@ Changelog
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-The following changes went into ownCloud 8.1:
+The following changes went into Nextcloud 8.1:
 
 
 Breaking changes

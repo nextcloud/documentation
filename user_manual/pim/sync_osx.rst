@@ -1,12 +1,12 @@
 Synchronizing with OS X
 =======================
 
-To use ownCloud with iCal you will need to use the following URL::
+To use Nextcloud with iCal you will need to use the following URL::
 
     https://example.com/remote.php/dav/principals/users/USERNAME/
 
 The setup is basically the same as with iOS using the path ``https://example.com/remote.php/dav/principals/users/USERNAME/``
-to sync with ownCloud. For OS X 10.7 Lion and 10.8 Mountain Lion everything works
+to sync with Nextcloud. For OS X 10.7 Lion and 10.8 Mountain Lion everything works
 fine, but OS X 10.6 (Snow Leopard) and older needs some fiddling to work. A user
 contributed the following:
 
@@ -31,11 +31,11 @@ your favorite text editor.
 
 8. Make it look like this. Please note that the :443 after **example.com** is important::
 
-    <key>servername</key <string>https://example.com:443/owncloud/remote.php/dav/principals/users/USERNAME</string> <key>username</key <string>username</string>
+    <key>servername</key <string>https://example.com:443/nextcloud/remote.php/dav/principals/users/USERNAME</string> <key>username</key <string>username</string>
 
 9. Save the file and open addressbook again. It will not work yet.
 
-10. Open the preferences for your ownCloud CardDAV-Account and enter your password.
+10. Open the preferences for your Nextcloud CardDAV-Account and enter your password.
 
 11. You may have to restart addressbook once more. After this, it should work.
 
@@ -46,4 +46,4 @@ There is also an easy `HOWTO`_ in the forum.
 
 
 .. _HOWTO: https://forum.owncloud.org/viewtopic.php?f=3&t=132
-.. _Troubleshooting Contacts & Calendar: https://doc.owncloud.org/server/9.0/admin_manual/issues/index.html#troubleshooting-contacts-calendar
+.. _Troubleshooting Contacts & Calendar: https://docs.nextcloud.org/server/10/admin_manual/issues/index.html#troubleshooting-contacts-calendar

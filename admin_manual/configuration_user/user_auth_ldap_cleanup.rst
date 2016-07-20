@@ -4,17 +4,17 @@ LDAP User Cleanup
 
 LDAP User Cleanup is a new feature in the ``LDAP user and group backend`` 
 application. LDAP User Cleanup is a background process that automatically 
-searches the ownCloud LDAP mappings table, and verifies if the LDAP users are 
+searches the Nextcloud LDAP mappings table, and verifies if the LDAP users are 
 still available. Any users that are not available are marked as ``deleted`` in 
 the ``oc_preferences`` database table. Then you can run a command to display 
 this table, displaying only the users marked as ``deleted``, and then you have 
-the option of removing their data from your ownCloud data directory.
+the option of removing their data from your Nextcloud data directory.
 
 These items are removed upon cleanup:
 
-* Local ownCloud group assignments
+* Local Nextcloud group assignments
 * User preferences (DB table ``oc_preferences``)
-* User's ownCloud home folder
+* User's Nextcloud home folder
 * User's corresponding entry in ``oc_storages``
 
 There are two prerequisites for LDAP User Cleanup to operate:
@@ -35,7 +35,7 @@ minutes later the next 50, and so on.
 
 There are two ``occ`` commands to use for examining a table of users marked as 
 deleted, and then manually deleting them.  The ``occ`` command is in your 
-ownCloud directory, for example ``/var/www/owncloud/occ``, and it must be run as 
+Nextcloud directory, for example ``/var/www/nextcloud/occ``, and it must be run as 
 your HTTP user. To learn more about ``occ``, see 
 :doc:`../configuration_server/occ_command`.
 
@@ -45,13 +45,13 @@ These examples are for Ubuntu Linux:
    users that have been marked as deleted, and their LDAP data.
 
 2. ``sudo -u www-data php occ user:delete [user]`` removes the user's data from the 
-   ownCloud data directory.
+   Nextcloud data directory.
 
 This example shows what the table of users marked as ``deleted`` looks like::
 
  $ sudo -u www-data php occ ldap:show-remnants
  +-----------------+-----------------+------------------+--------------------------------------+
- | ownCloud name   | Display Name    | LDAP UID         | LDAP DN                              |
+ | Nextcloud name   | Display Name    | LDAP UID         | LDAP DN                              |
  +-----------------+-----------------+------------------+--------------------------------------+
  | aaliyah_brown   | aaliyah brown   | aaliyah_brown    | uid=aaliyah_brown,ou=people,dc=com   |
  | aaliyah_hammes  | aaliyah hammes  | aaliyah_hammes   | uid=aaliyah_hammes,ou=people,dc=com  |
@@ -60,10 +60,10 @@ This example shows what the table of users marked as ``deleted`` looks like::
  +-----------------+-----------------+------------------+--------------------------------------+
 
 Then you can run ``sudo -u www-data php occ user:delete aaliyah_brown`` to delete 
-user aaliyah_brown. You must use the user's ownCloud name.
+user aaliyah_brown. You must use the user's Nextcloud name.
 
-Deleting Local ownCloud Users
+Deleting Local Nextcloud Users
 -----------------------------
 
-You may also use ``occ user:delete [user]`` to remove a local ownCloud user; 
+You may also use ``occ user:delete [user]`` to remove a local Nextcloud user; 
 this removes their user account and their data.

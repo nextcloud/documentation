@@ -1,26 +1,26 @@
 Email Configuration
 ===================
 
-ownCloud is capable of sending password reset emails, notifying users of new 
+Nextcloud is capable of sending password reset emails, notifying users of new 
 file shares, changes in files, and activity notifications. Your users configure 
 which notifications they want to receive on their Personal pages. 
 
-ownCloud does not contain a full email server, but rather connects to your 
-existing mail server. You must have a functioning mail server for ownCloud to be 
-able to send emails. You may have a mail server on the same machine as ownCloud, 
+Nextcloud does not contain a full email server, but rather connects to your 
+existing mail server. You must have a functioning mail server for Nextcloud to be 
+able to send emails. You may have a mail server on the same machine as Nextcloud, 
 or it may be a remote server.
 
-ownCloud 7 introduces a new feature, the graphical Email Configuration Wizard.
+Nextcloud 7 introduces a new feature, the graphical Email Configuration Wizard.
 
 .. figure:: ../images/smtp-config-wizard.png
    
-With the new wizard, connecting ownCloud to your mail server is fast and easy. 
+With the new wizard, connecting Nextcloud to your mail server is fast and easy. 
 The wizard fills in the values in ``config/config.php``, so you may use either 
 or both as you prefer.
 
-The ownCloud Email wizard supports three types of mail server connections: 
+The Nextcloud Email wizard supports three types of mail server connections: 
 SMTP, PHP, and Sendmail. Use the SMTP configurator for a remote server, and PHP 
-or Sendmail when your mail server is on the same machine as ownCloud. 
+or Sendmail when your mail server is on the same machine as Nextcloud. 
 
 .. note:: The Sendmail option refers to the Sendmail SMTP server, and any 
    drop-in Sendmail replacement such as Postfix, Exim, or Courier. All of 
@@ -30,11 +30,11 @@ Configuring an SMTP Server
 --------------------------
 
 You need the following information from your mailserver administrator to 
-connect ownCloud to a remote SMTP server:
+connect Nextcloud to a remote SMTP server:
 
 * Encryption type: None, SSL, or TLS
 
-* The From address you want your outgoing ownCloud mails to use
+* The From address you want your outgoing Nextcloud mails to use
 
 * Whether authentication is required
 
@@ -53,7 +53,7 @@ configured on your Personal page. The test message says::
   If you received this email, the settings seem to be correct.
   
   --
-  ownCloud
+  Nextcloud
   web services under your control
 
 Configuring PHP and Sendmail
@@ -79,7 +79,7 @@ Using Email Templates
 ---------------------
 
 Another useful new feature is editable email templates. Now you can edit 
-ownCloud's email templates on your Admin page. These are your available 
+Nextcloud's email templates on your Admin page. These are your available 
 templates:
 
 * Sharing email (HTML) -- HTML version of emails notifying users of new file 
@@ -237,7 +237,7 @@ PHP mail
 If you want to use PHP mail it is necessary to have an installed and working
 email system on your server. Which program in detail is used to send email is
 defined by the configuration settings in the **php.ini** file. (On \*nix
-systems this will most likely be Sendmail.) ownCloud should be able to send
+systems this will most likely be Sendmail.) Nextcloud should be able to send
 email out of the box.
 
 ::
@@ -259,7 +259,7 @@ Sendmail
 If you want to use the well known Sendmail program to send email, it is
 necessary to have an installed and working email system on your \*nix server.
 The sendmail binary (**/usr/sbin/sendmail**) is usually part of that system.
-ownCloud should be able to send email out of the box.
+Nextcloud should be able to send email out of the box.
 
 ::
 
@@ -280,7 +280,7 @@ qmail
 
 If you want to use the qmail program to send email, it is necessary to have an
 installed and working qmail email system on your server. The sendmail binary
-(**/var/qmail/bin/sendmail**) will then be used to send email. ownCloud should
+(**/var/qmail/bin/sendmail**) will then be used to send email. Nextcloud should
 be able to send email out of the box.
 
 ::
@@ -324,7 +324,7 @@ the ``mail_smtpdebug parameter`` in ``config/config.php``.
 **Question**: Why is my web domain different from my mail domain?
 
 **Answer**: The default domain name used for the sender address is the hostname 
-where your ownCloud installation is served.  If you have a different mail domain 
+where your Nextcloud installation is served.  If you have a different mail domain 
 name you can override this behavior by setting the following configuration 
 parameter:
 
@@ -334,7 +334,7 @@ parameter:
 
     "mail_domain" => "example.com",
 
-This setting results in every email sent by ownCloud (for example, the password 
+This setting results in every email sent by Nextcloud (for example, the password 
 reset email) having the domain part of the sender address appear as follows::
 
   no-reply@example.com

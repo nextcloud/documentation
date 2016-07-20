@@ -64,7 +64,7 @@ steps:
 
 .. figure:: images/upgrade-2.png
    :scale: 75%
-   :alt: ownCloud upgrade wizard screen.
+   :alt: Nextcloud upgrade wizard screen.
 
 ..  note:: If you have a large Nextcloud installation and have shell access,
     you should use the ``occ upgrade`` command, running it as your HTTP user, 
@@ -157,7 +157,7 @@ You can display a help summary::
 When you run it without options it runs a system check:: 
 
  sudo -u www-data php nextcloud/updater/application.php
- Nextcloud updater 1.0 - CLI based ownCloud server upgrades
+ Nextcloud updater 1.0 - CLI based Nextcloud server upgrades
  Checking system health.
  - file permissions are ok.
  Current version is 9.0.0.12

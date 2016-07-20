@@ -65,12 +65,12 @@ For example:
  sudo snap refresh nextcloud
  
 Your Snap package manager only upgrades the current Nextcloud Snap. Then 
-your ownCloud server is immediately put into maintenance mode. You may not see 
+your Nextcloud server is immediately put into maintenance mode. You may not see 
 this until you refresh your Nextcloud page.
 
 .. figure:: images/upgrade-1.png
    :scale: 75%
-   :alt: ownCloud status screen informing users that it is in maintenance mode.
+   :alt: Nextcloud status screen informing users that it is in maintenance mode.
 
 Then use ``occ`` to complete the upgrade. You must run ``occ`` as your HTTP 
 user. This example is for Debian/Ubuntu::

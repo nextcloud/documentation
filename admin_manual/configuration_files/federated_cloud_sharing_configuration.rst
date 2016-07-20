@@ -6,13 +6,7 @@ Federated Cloud Sharing is now managed by the Federation app (9.0+), and is
 now called Federation sharing. When you enable the Federation app you can 
 easily and securely link file shares between Nextcloud servers, in effect 
 creating a cloud of Nextclouds.
-
-Sharing With ownCloud 8 and Older
----------------------------------
-
-Direct Federation shares (:ref:`label-direct-share-link`) are not supported in 
-ownCloud 8 and older, so you must create Federation shares with public links 
-(:ref:`label-public-link-share`). 
+ 
 
 .. _label-direct-share-link:   
    
@@ -74,9 +68,6 @@ exchanged. A red light means the connection failed.
 
 Creating Federation Shares via Public Link Share
 ------------------------------------------------
-
-You'll need to use a Public Link Share to create Federation shares with 
-ownCloud 8.x and older.
 
 Check the ``Share Link`` checkbox to expose more sharing options (which are 
 described more fully in :doc:`file_sharing_configuration`). You may create a 

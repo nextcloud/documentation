@@ -14,7 +14,7 @@ The PHP tests go into the **tests/** directory. Unfortunately the classloader in
 
     phpunit tests/
 
-When writing your own tests, please ensure that PHPUnit bootstraps from :file:`tests/bootstrap.php`, to set up various environment variables and autoloader registration correctly. Without this, you will see errors as the ownCloud autoloader security policy prevents access to the tests/ subdirectory. This can be configured in your :file:`phpunit.xml` file as follows:
+When writing your own tests, please ensure that PHPUnit bootstraps from :file:`tests/bootstrap.php`, to set up various environment variables and autoloader registration correctly. Without this, you will see errors as the Nextcloud autoloader security policy prevents access to the tests/ subdirectory. This can be configured in your :file:`phpunit.xml` file as follows:
 
 .. code-block:: xml
 

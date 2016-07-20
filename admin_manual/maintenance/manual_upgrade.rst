@@ -83,7 +83,7 @@ If you need to reverse your upgrade, see :doc:`restore`.
 Troubleshooting
 ---------------
 
-When upgrading ownCloud and you are running MySQL or MariaDB with binary 
+When upgrading Nextcloud and you are running MySQL or MariaDB with binary 
 logging 
 enabled, your upgrade may fail with these errors in your MySQL/MariaDB log::
 
