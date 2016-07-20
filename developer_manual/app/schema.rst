@@ -4,7 +4,7 @@ Database Schema
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-ownCloud uses a database abstraction layer on top of either PDO, depending on the availability of PDO on the server.
+Nextcloud uses a database abstraction layer on top of either PDO, depending on the availability of PDO on the server.
 
 The database schema is inside :file:`appinfo/database.xml` in MDB2's `XML scheme notation <http://www.wiltonhotel.com/_ext/pear/docs/MDB2/docs/xml_schema_documentation.html>`_ where the placeholders \*dbprefix* (\*PREFIX* in your SQL) and \*dbname* can be used for the configured database table prefix and database name.
 

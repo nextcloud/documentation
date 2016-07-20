@@ -4,7 +4,7 @@ Create an app
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-After :doc:`you've set up the development environment and installed the dev tool <../general/devenv>` change into the ownCloud apps directory::
+After :doc:`you've set up the development environment and installed the dev tool <../general/devenv>` change into the Nextcloud apps directory::
 
     cd /var/www/owncloud/apps
 
@@ -18,7 +18,7 @@ This will create all the needed files in the current directory. For more informa
 
 Enable the app
 --------------
-The app can now be enabled on the ownCloud apps page
+The app can now be enabled on the Nextcloud apps page
 
 App architecture
 ----------------

@@ -6,25 +6,25 @@ App config
   <?php
 
   $CONFIG = array(
-  /* Flag to indicate ownCloud is successfully installed (true = installed) */
+  /* Flag to indicate Nextcloud is successfully installed (true = installed) */
   "installed" => false,
 
   /* Type of database, can be sqlite, mysql or pgsql */
   "dbtype" => "sqlite",
 
-  /* Name of the ownCloud database */
+  /* Name of the Nextcloud database */
   "dbname" => "owncloud",
 
-  /* User to access the ownCloud database */
+  /* User to access the Nextcloud database */
   "dbuser" => "",
 
-  /* Password to access the ownCloud database */
+  /* Password to access the Nextcloud database */
   "dbpassword" => "",
 
-  /* Host running the ownCloud database */
+  /* Host running the Nextcloud database */
   "dbhost" => "",
 
-  /* Prefix for the ownCloud tables in the database */
+  /* Prefix for the Nextcloud tables in the database */
   "dbtableprefix" => "",
 
   /* Define the salt used to hash the user passwords. All your user passwords are lost if you lose this string. */
@@ -33,7 +33,7 @@ App config
   /* Force use of HTTPS connection (true = use HTTPS) */
   "forcessl" => false,
 
-  /* Theme to use for ownCloud */
+  /* Theme to use for Nextcloud */
   "theme" => "",
 
   /* Path to the 3rdparty directory */
@@ -74,7 +74,7 @@ App config
   /* Check 3rdparty apps for malicious code fragments */
   "appcodechecker" => "",
 
-  /* Check if ownCloud is up to date */
+  /* Check if Nextcloud is up to date */
   "updatechecker" => true,
 
   /* Place to log to, can be owncloud and syslog (owncloud is log menu item in admin menu) */
@@ -113,7 +113,7 @@ App config
 Using alternative app directories
 ---------------------------------
 
-ownCloud can be set to use a custom app directory in /config/config.php. Customise the following code and add it to your config file:
+Nextcloud can be set to use a custom app directory in /config/config.php. Customise the following code and add it to your config file:
 
 .. code-block:: php
 
@@ -133,4 +133,4 @@ ownCloud can be set to use a custom app directory in /config/config.php. Customi
 		),
 	),
 
-ownCloud will use the first app directory which it finds in the array with 'writable' set to true.
+Nextcloud will use the first app directory which it finds in the array with 'writable' set to true.

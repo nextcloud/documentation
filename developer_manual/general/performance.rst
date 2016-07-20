@@ -3,17 +3,17 @@ Performance Considerations
 
 .. sectionauthor:: Frank Karlitschek <frank@owncloud.org>
 
-This document introduces some common considerations and tips on improving performance of ownCloud. Speed of ownCloud is important - nobody likes to wait and often, what is *just slow* for a small amount of data will become *unusable* with a large amount of data. Please keep these tips in mind when developing for ownCloud and consider reviewing your app to make it faster.
+This document introduces some common considerations and tips on improving performance of Nextcloud. Speed of Nextcloud is important - nobody likes to wait and often, what is *just slow* for a small amount of data will become *unusable* with a large amount of data. Please keep these tips in mind when developing for Nextcloud and consider reviewing your app to make it faster.
 
 .. note::**Tips welcome**: More tips and ideas on performance are very welcome!
 
 Database performance
 --------------------
-The database plays an important role in ownCloud performance. The general rule is: database queries are very bad and should be avoided if possible. The reasons for that are:
+The database plays an important role in Nextcloud performance. The general rule is: database queries are very bad and should be avoided if possible. The reasons for that are:
 
-* Roundtrips: Bigger ownCloud installations have the database not installed on the application server but on a remote dedicated database server. The problem is that database queries then go over the network. These roundtrips can add up significantly if you have a lot of queries. 
+* Roundtrips: Bigger Nextcloud installations have the database not installed on the application server but on a remote dedicated database server. The problem is that database queries then go over the network. These roundtrips can add up significantly if you have a lot of queries. 
 * Speed. A lot of people think that databases are fast. This is not always true if you compare it with handling data internally in PHP or in the filesystem or even using key/value based storages. So every developer should always double check if the database is really the best place for the data.
-* Scalability. If you have a big ownCloud cluster setup you usually have several ownCloud/Web servers in parallel and a central database and a central storage. This means that everything that happens on the ownCloud/PHP side can parallelize and can be scaled. Stuff that is happening in the database and in the storage is critical because it only exists once and can't be scaled so easily.
+* Scalability. If you have a big Nextcloud cluster setup you usually have several Nextcloud/Web servers in parallel and a central database and a central storage. This means that everything that happens on the Nextcloud/PHP side can parallelize and can be scaled. Stuff that is happening in the database and in the storage is critical because it only exists once and can't be scaled so easily.
 
 We can reduce the load on the database by:
 
@@ -33,7 +33,7 @@ If you put this into your my.cnf file, every query that takes longer than one se
   log_slow_queries = /var/log/mysql/mysql-slow.log 
   long_query_time=1 
 
-If a query takes more than a second we have a serious problem of course. You can watch it with `tail -f /var/log/mysql/mysql-slow.log` while using ownCloud.
+If a query takes more than a second we have a serious problem of course. You can watch it with `tail -f /var/log/mysql/mysql-slow.log` while using Nextcloud.
 
 2. log all queries.
 

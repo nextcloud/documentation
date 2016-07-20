@@ -4,9 +4,9 @@ App store publishing
 
 .. sectionauthor:: Jos Poortvliet <jospoortvliet@gmail.com>
 
-The ownCloud App Store
+The Nextcloud App Store
 ----------------------
-The ownCloud app store is build into ownCloud to allow you to get your apps to users as easily and safely as possible. The app store and the process of publishing apps aims to be:
+The Nextcloud app store is build into Nextcloud to allow you to get your apps to users as easily and safely as possible. The app store and the process of publishing apps aims to be:
 
 * secure
 * transparent
@@ -24,16 +24,16 @@ With each level come requirements and a position in the store.
 
 Official
 ^^^^^^^^
-Official apps are developed by and within the ownCloud community and its `Github <https://github.com/owncloud>`_ repository and offer functionality central to ownCloud. They are ready for serious use and can be considered a part of ownCloud.
+Official apps are developed by and within the Nextcloud community and its `Github <https://github.com/nextcloud>`_ repository and offer functionality central to Nextcloud. They are ready for serious use and can be considered a part of Nextcloud.
 
 Requirements:
 
-* developed in ownCloud github repo
+* developed in Nextcloud github repo
 * minimum of 2 active maintainers and contributions from others
 * security audited and design reviewed
 * app is at least 6 months old and has seen regular releases
 * follows app guidelines
-* supports the same platforms and technologies mentioned in the release notes of the ownCloud version this app is made for
+* supports the same platforms and technologies mentioned in the release notes of the Nextcloud version this app is made for
 
 .. * app is signed, identity verified
 
@@ -41,8 +41,8 @@ App store:
 
 * available in Apps page in separate category
 * sorted first in all overviews, 'Official' tag
-* shown as featured, on owncloud.org etc
-* major releases optionally featured on owncloud.org and sent to owncloud-announce list
+* shown as featured, on nextcloud.com etc
+* major releases optionally featured on nextcloud.com
 * new versions/updates approved by at least one other person
 
 note:
@@ -97,9 +97,9 @@ App store:
 
 Getting an app approved
 -----------------------
-If you want your app to be approved, make sure you fulfill all the requirements and then create an issue in the `app approval github repository <https://github.com/owncloud/app-approval>`_ using `this template <https://github.com/owncloud/app-approval/blob/master/README.md>`_. A team of ownCloud contributors will review your application. Updates to an app require re-review but, of course, an initial review takes more effort and time than the checking of an update.
+If you want your app to be approved, make sure you fulfill all the requirements and then create an issue in the `app approval github repository <https://github.com/owncloud/app-approval>`_ using `this template <https://github.com/owncloud/app-approval/blob/master/README.md>`_. A team of Nextcloud contributors will review your application. Updates to an app require re-review but, of course, an initial review takes more effort and time than the checking of an update.
 
-You are encouraged to help review other contributors' apps as well! Every app requires at least two independent reviews so your review of at least 2 (more is better!) other apps will ensure the process continues smoothly. Thank you for participating in this process and being a great ownCloud Community member!
+You are encouraged to help review other contributors' apps as well! Every app requires at least two independent reviews so your review of at least 2 (more is better!) other apps will ensure the process continues smoothly. Thank you for participating in this process and being a great Nextcloud Community member!
 
 Using the code checker
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -124,22 +124,22 @@ These are the app guidelines an app has to comply with to have a chance to be ap
 Legal and security
 ^^^^^^^^^^^^^^^^^^
 
-* Apps can not use 'ownCloud' in their name
+* Apps can not use 'Nextcloud' in their name
 * Irregular and unannounced security audits of all apps can and will take place.
-* If any indication of malicious intent or bad faith is found the developer(s) in question can count on a minimum 2 year ban from any ownCloud infrastructure.
-   * Malicious intent includes deliberate spying on users by leaking user data to a third party system or adding a back door (like a hard-coded user account) to ownCloud. An unintentional security bug that gets fixed in time won't be considered bad faith.
+* If any indication of malicious intent or bad faith is found the developer(s) in question can count on a minimum 2 year ban from any Nextcloud infrastructure.
+   * Malicious intent includes deliberate spying on users by leaking user data to a third party system or adding a back door (like a hard-coded user account) to Nextcloud. An unintentional security bug that gets fixed in time won't be considered bad faith.
 * Apps do not violate any laws; it has to comply with copyright- and trademark law.
-* App authors have to respond timely to security concerns and not make ownCloud more vulnerable to attack.
+* App authors have to respond timely to security concerns and not make Nextcloud more vulnerable to attack.
 
-.. note:: distributing malicious or illegal applications can have legal consequences including, but not limited to ownCloud or affected users taking legal action.
+.. note:: distributing malicious or illegal applications can have legal consequences including, but not limited to Nextcloud or affected users taking legal action.
 
 Be technically sound
 ^^^^^^^^^^^^^^^^^^^^
 
-* Apps can only use the public ownCloud API
-* At time of the release of an app it can only be configured to be compatible with the latest ownCloud release +1
-* Apps should not cause ownCloud to break, consume excessive memory or slow ownCloud down
-* Apps should not hamper functionality of ownCloud unless that is explicitly the goal of the app
+* Apps can only use the public Nextcloud API
+* At time of the release of an app it can only be configured to be compatible with the latest Nextcloud release +1
+* Apps should not cause Nextcloud to break, consume excessive memory or slow Nextcloud down
+* Apps should not hamper functionality of Nextcloud unless that is explicitly the goal of the app
 
 Respect the users
 ^^^^^^^^^^^^^^^^^

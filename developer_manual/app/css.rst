@@ -51,7 +51,7 @@ For built in mobile support your content has to be wrapped inside another div wi
 
 Navigation
 ==========
-ownCloud provides a default CSS navigation layout. If list entries should have 16x16 px icons, the **with-icon** class can be added to the base **ul**. The maximum supported indention level is two, further indentions are not recommended.
+Nextcloud provides a default CSS navigation layout. If list entries should have 16x16 px icons, the **with-icon** class can be added to the base **ul**. The maximum supported indention level is two, further indentions are not recommended.
 
 .. code-block:: html
 

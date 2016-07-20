@@ -2,7 +2,7 @@
 User Management
 ===============
 
-On the User management page of your ownCloud Web UI you can:
+On the User management page of your Nextcloud Web UI you can:
 
 * Create new users
 * View all of your users in a single scrolling window
@@ -33,10 +33,10 @@ Show user backend, Send email to new users,** and **Show email address**.
 User accounts have the following properties:
 
 *Login Name (Username)*
-  The unique ID of an ownCloud user, and it cannot be changed.
+  The unique ID of an Nextcloud user, and it cannot be changed.
 
 *Full Name*
-  The user's display name that appears on file shares, the ownCloud Web 
+  The user's display name that appears on file shares, the Nextcloud Web 
   interface, and emails. Admins and users may change the Full Name anytime. If 
   the Full Name is not set it defaults to the login name.
 
@@ -75,7 +75,7 @@ leave it for the user to complete.
 
 If you have checked **Send email to new user** in the control panel on the 
 lower left sidebar, you may also enter the new user's email address, and 
-ownCloud will automatically send them a notification with their new login 
+Nextcloud will automatically send them a notification with their new login 
 information. You may edit this email using the email template editor on your 
 Admin page (see :doc:`../configuration_server/email_configuration`).
 
@@ -96,7 +96,7 @@ password resets. Please see
 Renaming a User
 ~~~~~~~~~~~~~~~
 
-Each ownCloud user has two names: a unique **Login Name** used for 
+Each Nextcloud user has two names: a unique **Login Name** used for 
 authentication, and a **Full Name**, which is their display name. You can edit 
 the display name of a user, but you cannot change the login name of any user.
 
@@ -110,7 +110,7 @@ To set or change a user's display name:
 Granting Administrator Privileges to a User
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-ownCloud has two types of administrators: **Super Administrators** and **Group 
+Nextcloud has two types of administrators: **Super Administrators** and **Group 
 Administrators**. Group administrators have the rights to create, edit and 
 delete users in their assigned groups. Group administrators cannot access 
 system settings, or add or modify users in the groups that they are not **Group 
@@ -119,7 +119,7 @@ assign group admin privileges.
 
 .. figure:: ../images/users-groups.png
 
-**Super Administrators** have full rights on your ownCloud server, and can 
+**Super Administrators** have full rights on your Nextcloud server, and can 
 access and modify all settings. To assign the **Super Administrators** role to 
 a user, simply add them to the ``admin`` group.
 
@@ -183,7 +183,7 @@ user.
 
 All of the files owned by the user are deleted as well, including all files they 
 have shared. If you need to preserve the user's files and shares, you must first 
-download them from your ownCloud Files page, which compresses them into a zip 
+download them from your Nextcloud Files page, which compresses them into a zip 
 file, or use a sync client to copy them to your local computer. See 
 :doc:`../configuration_files/file_sharing_configuration` to learn how to create 
 persistent file shares that survive user deletions.

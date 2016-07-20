@@ -2,17 +2,17 @@
 Using the occ Command
 =====================
 
-ownCloud's ``occ`` command (ownCloud console) is ownCloud's command-line 
+Nextcloud's ``occ`` command (Nextcloud console) is Nextcloud's command-line 
 interface. You can perform many common server operations with ``occ``, such as 
-installing and upgrading ownCloud, manage users, encryption, passwords, LDAP 
+installing and upgrading Nextcloud, manage users, encryption, passwords, LDAP 
 setting, and more.
 
-``occ`` is in the :file:`owncloud/` directory; for example 
-:file:`/var/www/owncloud` on Ubuntu Linux. ``occ`` is a PHP script. **You must 
+``occ`` is in the :file:`nextcloud/` directory; for example 
+:file:`/var/www/nextcloud` on Ubuntu Linux. ``occ`` is a PHP script. **You must 
 run it as your HTTP user** to ensure that the correct permissions are maintained 
-on your ownCloud files and directories. In ownCloud 8.2+ you may run it from 
+on your Nextcloud files and directories. In Nextcloud 8.2+ you may run it from 
 any directory (specifying the filepath); in previous releases it had to be 
-run from the :file:`owncloud/` directory.
+run from the :file:`nextcloud/` directory.
 
 occ Command Directory
 ---------------------
@@ -59,13 +59,13 @@ If your HTTP server is configured to use a different PHP version than the
 default (/usr/bin/php), ``occ`` should be run with the same version. For 
 example, in CentOS 6.5 with SCL-PHP54 installed, the command looks like this::
 
-  sudo -u apache /opt/rh/php54/root/usr/bin/php /var/www/html/owncloud/occ
+  sudo -u apache /opt/rh/php54/root/usr/bin/php /var/www/html/nextcloud/occ
 
 Running ``occ`` with no options lists all commands and options, like this 
 example on Ubuntu::
 
  sudo -u www-data php occ 
- ownCloud version 9.0.0
+ Nextcloud version 9.0.0
 
  Usage:
   command [options] [arguments]
@@ -97,12 +97,12 @@ Run it with the ``-h`` option for syntax help::
 
  sudo -u www-data php occ -h
  
-Display your ownCloud version::
+Display your Nextcloud version::
 
  sudo -u www-data php occ -V
-   ownCloud version 9.0.0
+   Nextcloud version 9.0.0
    
-Query your ownCloud server status::
+Query your Nextcloud server status::
 
  sudo -u www-data php occ status
    - installed: true
@@ -185,7 +185,7 @@ Disable an app::
  sudo -u www-data php occ app:disable files_external
  files_external disabled   
    
-``app:check-code`` has multiple checks: it checks if an app uses ownCloud's 
+``app:check-code`` has multiple checks: it checks if an app uses Nextcloud's 
 public API (``OCP``) or private API (``OC_``), and it also checks for deprecated 
 methods and the validity of the ``info.xml`` file. By default all checks are 
 enabled. The Activity app is an example of a correctly-formatted app::
@@ -196,7 +196,7 @@ enabled. The Activity app is an example of a correctly-formatted app::
 If your app has issues, you'll see output like this::
 
  sudo -u www-data php occ app:check-code foo_app
- Analysing /var/www/owncloud/apps/files/foo_app.php
+ Analysing /var/www/nextcloud/apps/files/foo_app.php
  4 errors
     line   45: OCP\Response - Static method of deprecated class must not be 
     called
@@ -209,7 +209,7 @@ If your app has issues, you'll see output like this::
 You can get the full filepath to an app::
     
     sudo -u www-data php occ app:getpath notifications
-    /var/www/owncloud/apps/notifications
+    /var/www/nextcloud/apps/notifications
 
 .. _background_jobs_selector_label:   
    
@@ -218,7 +218,7 @@ Background Jobs Selector
 
 Use the ``background`` command to select which scheduler you want to use for 
 controlling background jobs, Ajax, Webcron, or Cron. This is the same as using 
-the **Cron** section on your ownCloud Admin page::
+the **Cron** section on your Nextcloud Admin page::
 
  background
   background:ajax       Use ajax to run background jobs
@@ -242,7 +242,7 @@ See :doc:`../configuration_server/background_jobs_configuration` to learn more.
 Config Commands
 ---------------
 
-The ``config`` commands are used to configure the ownCloud server::
+The ``config`` commands are used to configure the Nextcloud server::
 
  config
   config:app:delete      Delete an app config value
@@ -279,7 +279,7 @@ It is also possible to import remote files, by piping the input::
 .. note::
 
   While it is possible to update/set/delete the versions and installation
-  statuses of apps and ownCloud itself, it is **not** recommended to do this
+  statuses of apps and Nextcloud itself, it is **not** recommended to do this
   directly. Use the ``occ app:enable``, ``occ app:disable`` and ``occ update``
   commands instead.  
 
@@ -328,7 +328,7 @@ When you want to e.g. disable the maintenance mode run the following command::
 
   sudo -u www-data php occ config:system:set maintenance --value=false 
   --type=boolean
-  ownCloud is in maintenance mode - no app have been loaded
+  Nextcloud is in maintenance mode - no app have been loaded
   System config value maintenance set to boolean false
 
 Setting an array Configuration Value
@@ -340,7 +340,7 @@ In order to set (and also get) the value of one key, you can specify multiple
 
   sudo -u www-data php occ config:system:get trusted_domains
   localhost
-  owncloud.local
+  nextcloud.local
   sample.tld
 
 To replace ``sample.tld`` with ``example.com`` trusted_domains => 2 needs to be
@@ -352,7 +352,7 @@ set::
 
   sudo -u www-data php occ config:system:get trusted_domains
   localhost
-  owncloud.local
+  nextcloud.local
   example.com
 
 Deleting a Single Configuration Value
@@ -419,7 +419,7 @@ Run this command to migrate calendars::
 
  sudo -u www-data php occ dav:migrate-calendars [user]
  
-See `ownCloud 9.0 - calendar migration analysis 
+See `Nextcloud 9.0 - calendar migration analysis 
 <http://morrisjobke.de/2016/03/07/ownCloud-9.0-calendar-migration-analysis/>`_ 
 for help with troubleshooting and reporting problems. 
 
@@ -441,7 +441,7 @@ Added in 9.0.
 Database Conversion
 -------------------
 
-The SQLite database is good for testing, and for ownCloud servers with small 
+The SQLite database is good for testing, and for Nextcloud servers with small 
 single-user workloads that do not use sync clients, but production servers with 
 multiple users should use MariaDB, MySQL, or PostgreSQL. You can use ``occ`` to 
 convert from SQLite to one of these other databases.
@@ -449,7 +449,7 @@ convert from SQLite to one of these other databases.
 ::
 
  db
-  db:convert-type           Convert the ownCloud database to the newly 
+  db:convert-type           Convert the Nextcloud database to the newly 
                             configured one
   db:generate-change-script generates the change script from the current 
                             connected db to db_structure.xml
@@ -518,7 +518,7 @@ see a list of modules only if you have enabled the Encryption app. Use
 ``encryption:set-default-module [module name]`` to set your desired module.
 
 ``encryption:encrypt-all`` encrypts all data files for all users. You must first 
-put your ownCloud server into :ref:`single-user 
+put your Nextcloud server into :ref:`single-user 
 mode<maintenance_commands_label>` to prevent any user activity until encryption 
 is completed.
 
@@ -528,12 +528,12 @@ user::
  sudo -u www-data php occ encryption:decrypt freda
 
 Users must have enabled recovery keys on their Personal pages. You must first 
-put your ownCloud server into :ref:`single-user 
+put your Nextcloud server into :ref:`single-user 
 mode <maintenance_commands_label>` to prevent any user activity until 
 decryption is completed.
 
 Use ``encryption:disable`` to disable your encryption module. You must first put 
-your ownCloud server into :ref:`single-user mode <maintenance_commands_label>` 
+your Nextcloud server into :ref:`single-user mode <maintenance_commands_label>` 
 to prevent any user activity.
 
 ``encryption:enable-master-key`` creates a new master key, which is used for all 
@@ -542,7 +542,7 @@ single-sign on. Use this only on fresh installations with no existing data, or
 on systems where encryption has not already been enabled. It is not possible to 
 disable it.
 
-``encryption:migrate`` migrates encryption keys after a major ownCloud version 
+``encryption:migrate`` migrates encryption keys after a major Nextcloud version 
 upgrade. You may optionally specify individual users in a space-delimited list.
 
 See :doc:`../configuration_files/encryption_configuration` to learn more.
@@ -556,12 +556,12 @@ Federation Sync
   This command is only available when the "Federation" app (``federation``) is
   enabled.
  
-Synchronize the addressbooks of all federated ownCloud servers::
+Synchronize the addressbooks of all federated Nextcloud servers::
 
  federation:sync-addressbooks  Synchronizes addressbooks of all 
                                federated clouds
 
-In ownCloud 9.+, servers connected with federation shares can share user 
+In Nextcloud 9.+, servers connected with federation shares can share user 
 address books, and auto-complete usernames in share dialogs. Use this command 
 to synchronize federated servers::
 
@@ -574,7 +574,7 @@ Added in 9.0.
 File Operations
 ---------------
 
-``occ`` has three commands for managing files in ownCloud::
+``occ`` has three commands for managing files in Nextcloud::
 
  files
   files:cleanup              cleanup filecache
@@ -645,7 +645,7 @@ Files External
 --------------
 
 These commands replace the ``data/mount.json`` configuration file used in 
-ownCloud releases before 9.0.
+Nextcloud releases before 9.0.
 
 .. note::
   These commands are only available when the "External storage support" app
@@ -665,15 +665,15 @@ Commands for managing external storage::
   files_external:option      Manage mount options for a mount
   files_external:verify      Verify mount configuration
 
-These commands replicate the functionality in the ownCloud Web GUI, plus two new 
+These commands replicate the functionality in the Nextcloud Web GUI, plus two new 
 features:  ``files_external:export`` and ``files_external:import``. 
 
 Use ``files_external:export`` to export all admin mounts to stdout, and 
 ``files_external:export [user_id]`` to export the mounts of the specified 
-ownCloud user. 
+Nextcloud user. 
 
 Use ``files_external:import [filename]`` to import legacy JSON configurations, 
-and to copy external mount configurations to another ownCloud server.
+and to copy external mount configurations to another Nextcloud server.
 
 Added in 9.0.
 
@@ -682,7 +682,7 @@ Added in 9.0.
 Integrity Check
 ---------------
 
-Apps which have an official tag MUST be code signed starting with ownCloud 9.0. Unsigned official apps won't be installable anymore. Code signing is optional for all third-party applications::
+Apps which have an official tag MUST be code signed starting with Nextcloud 9.0. Unsigned official apps won't be installable anymore. Code signing is optional for all third-party applications::
 
  integrity
   integrity:check-app                 Check app integrity using a signature.
@@ -699,9 +699,9 @@ Verify your app::
   sudo -u www-data php occ integrity:check-app --path=/pathto/app appname
   
 When it returns nothing, your app is signed correctly. When it returns a message then there is an error. See `Code Signing 
-<https://doc.owncloud.org/server/9.0/developer_manual/app/code_signing.html#how-to-get-your-app-signed>`_ in the Developer manual for more detailed information.
+<https://docs.nextcloud.org/server/10/developer_manual/app/code_signing.html#how-to-get-your-app-signed>`_ in the Developer manual for more detailed information.
 
-``integrity:sign-core`` is for ownCloud core developers only.
+``integrity:sign-core`` is for Nextcloud core developers only.
 
 See :doc:`../issues/code_signing` to learn more.
   
@@ -713,7 +713,7 @@ l10n, Create Javascript Translation Files for Apps
 --------------------------------------------------
 
 This command is for app developers to update their translation mechanism from
-ownCloud 7 to ownCloud 8 and later.
+Nextcloud 7 to Nextcloud 8 and later.
 
 .. _ldap_commands_label: 
  
@@ -736,7 +736,7 @@ you can run the following LDAP commands with ``occ``::
   ldap:show-config              shows the LDAP configuration
   ldap:show-remnants            shows which users are not available on 
                                 LDAP anymore, but have remnants in 
-                                ownCloud.
+                                Nextcloud.
   ldap:test-config              tests an LDAP configuration
 
 Search for an LDAP user, using this syntax::
@@ -760,7 +760,7 @@ User search attributes are set with ``ldap:set-config``
 quickly. For example, you'll find Terri Hanson by searching for ``te ha``. 
 Trailing whitespaces are ignored.
  
-Check if an LDAP user exists. This works only if the ownCloud server is 
+Check if an LDAP user exists. This works only if the Nextcloud server is 
 connected to an LDAP server::
 
  sudo -u www-data php occ ldap:check-user robert
@@ -819,17 +819,17 @@ documented in :doc:`../configuration_user/user_auth_ldap_cleanup`.
 Logging Commands
 ----------------
 
-These commands view and configure your ownCloud logging preferences::
+These commands view and configure your Nextcloud logging preferences::
 
  log
   log:manage     manage logging configuration
-  log:owncloud   manipulate ownCloud logging backend
+  log:owncloud   manipulate Nextcloud logging backend
 
 Run ``log:owncloud`` to see your current logging status::
 
  sudo -u www-data php occ log:owncloud 
- Log backend ownCloud: enabled
- Log file: /opt/owncloud/data/owncloud.log
+ Log backend Nextcloud: enabled
+ Log file: /opt/nextcloud/data/nextcloud.log
  Rotate at: disabled
 
 Use the ``--enable`` option to turn on logging. Use ``--file`` to set a 
@@ -847,7 +847,7 @@ are ``owncloud``, ``Warning``, and ``UTC``. Available options are:
 Maintenance Commands
 --------------------
 
-Use these commands when you upgrade ownCloud, manage encryption, perform 
+Use these commands when you upgrade Nextcloud, manage encryption, perform 
 backups and other tasks that require locking users out until you are finished::
 
  maintenance
@@ -867,7 +867,7 @@ logged-in users must refresh their Web browsers to continue working::
  sudo -u www-data php occ maintenance:mode --on
  sudo -u www-data php occ maintenance:mode --off
  
-Putting your ownCloud server into single-user mode allows admins to log in and 
+Putting your Nextcloud server into single-user mode allows admins to log in and 
 work, but not ordinary users. This is useful for performing maintenance and 
 troubleshooting on a running server::
 
@@ -885,7 +885,7 @@ to::
   
  sudo -u www-data php occ maintenance:repair
  
-``maintenance:mimetype:update-db`` updates the ownCloud database and file cache 
+``maintenance:mimetype:update-db`` updates the Nextcloud database and file cache 
 with changed mimetypes found in ``config/mimetypemapping.json``. Run this 
 command after modifying ``config/mimetypemapping.json``. If you change a 
 mimetype, run ``maintenance:mimetype:update-db --repair-filecache`` to apply the 
@@ -896,7 +896,7 @@ change to existing files.
 Security
 --------
 
-Use these commands to manage server-wide SSL certificates. These are useful when you create federation shares with other ownCloud servers that use self-signed certificates::
+Use these commands to manage server-wide SSL certificates. These are useful when you create federation shares with other Nextcloud servers that use self-signed certificates::
 
  security
   security:certificates         list trusted certificates
@@ -989,7 +989,7 @@ memberships with the ``user:add`` command. The syntax is::
  uid
 
 The ``display-name`` corresponds to the **Full Name** on the Users page in your 
-ownCloud Web UI, and the ``uid`` is their **Username**, which is their 
+Nextcloud Web UI, and the ``uid`` is their **Username**, which is their 
 login name. This example adds new user Layla Smith, and adds her to the 
 **users** and **db-admins** groups. Any groups that do not exist are created:: 
  
@@ -1127,22 +1127,19 @@ Command Line Installation
 -------------------------
 
 These commands are available only after you have downloaded and unpacked the 
-ownCloud archive, and taken no further installation steps.
+Nextcloud archive, and taken no further installation steps.
 
-You can install ownCloud entirely from the command line. After downloading the 
-tarball and copying ownCloud into the appropriate directories, or 
-after installing ownCloud packages (See 
-:doc:`../installation/linux_installation` and 
-:doc:`../installation/source_installation`) you can use ``occ`` commands in 
-place of running the graphical Installation Wizard.
+You can install Nextcloud entirely from the command line. After downloading the 
+tarball and copying Nextcloud into the appropriate directories you can use ``occ`` 
+commands in place of running the graphical Installation Wizard.
 
-Apply correct permissions to your ownCloud directories; see 
+Apply correct permissions to your Nextcloud directories; see 
 :ref:`strong_perms_label`. Then choose your ``occ`` options. This lists your 
 available options::
 
- sudo -u www-data php /var/www/owncloud/occ
- ownCloud is not installed - only a limited number of commands are available
- ownCloud version 9.0.0
+ sudo -u www-data php /var/www/nextcloud/occ
+ Nextcloud is not installed - only a limited number of commands are available
+ Nextcloud version 9.0.0
 
  Usage:
   [options] command [arguments]
@@ -1167,12 +1164,12 @@ available options::
   l10n
   l10n:createjs         Create javascript translation files for a given app
   maintenance
-  maintenance:install   install ownCloud
+  maintenance:install   install Nextcloud
   
 Display your ``maintenance:install`` options::
 
  sudo -u www-data php occ help maintenance:install
- ownCloud is not installed - only a limited number of commands are available
+ Nextcloud is not installed - only a limited number of commands are available
  Usage:
   maintenance:install [--database="..."] [--database-name="..."] 
  [--database-host="..."] [--database-user="..."] [--database-pass[="..."]] 
@@ -1189,7 +1186,7 @@ Display your ``maintenance:install`` options::
   --admin-user             User name of the admin account (default: "admin")
   --admin-pass             Password of the admin account
   --data-dir               Path to data directory (default: 
-                           "/var/www/owncloud/data")
+                           "/var/www/nextcloud/data")
   --help (-h)              Display this help message
   --quiet (-q)             Do not output any message
   --verbose (-v|vv|vvv)    Increase the verbosity of messages: 1 for normal 
@@ -1201,19 +1198,19 @@ Display your ``maintenance:install`` options::
 
 This example completes the installation::
 
- cd /var/www/owncloud/
+ cd /var/www/nextcloud/
  sudo -u www-data php occ maintenance:install --database 
- "mysql" --database-name "owncloud"  --database-user "root" --database-pass 
+ "mysql" --database-name "nextcloud"  --database-user "root" --database-pass 
  "password" --admin-user "admin" --admin-pass "password" 
- ownCloud is not installed - only a limited number of commands are available
- ownCloud was successfully installed
+ Nextcloud is not installed - only a limited number of commands are available
+ Nextcloud was successfully installed
 
 Supported databases are::
 
- - sqlite (SQLite3 - ownCloud Community edition only)
+ - sqlite (SQLite3 - Nextcloud Community edition only)
  - mysql (MySQL/MariaDB)
  - pgsql (PostgreSQL)
- - oci (Oracle - ownCloud Enterprise edition only)
+ - oci (Oracle - Nextcloud Enterprise edition only)
  
 .. _command_line_upgrade_label: 
    
@@ -1244,7 +1241,7 @@ List all options, like this example on CentOS Linux::
  --no-ansi              Disable ANSI output.
  --no-interaction (-n)  Do not ask any interactive question
 
-When you are performing an update or upgrade on your ownCloud server (see the 
+When you are performing an update or upgrade on your Nextcloud server (see the 
 Maintenance section of this manual), it is better to use ``occ`` to perform the 
 database upgrade step, rather than the Web GUI, in order to avoid timeouts. PHP
 scripts invoked from the Web interface are limited to 3600 seconds. In larger 
@@ -1254,7 +1251,7 @@ state. After performing all the preliminary steps (see
 like this example on CentOS Linux. Note how it details the steps::
 
  sudo -u www-data php occ upgrade
- ownCloud or one of the apps require upgrade - only a limited number of 
+ Nextcloud or one of the apps require upgrade - only a limited number of 
  commands are available                            
  Turned on maintenance mode                                                      
  Checked database schema update           
@@ -1270,7 +1267,7 @@ like this example on CentOS Linux. Note how it details the steps::
 Enabling verbosity displays timestamps::
 
  sudo -u www-data php occ upgrade -v
- ownCloud or one of the apps require upgrade - only a limited number of commands are available
+ Nextcloud or one of the apps require upgrade - only a limited number of commands are available
  2015-06-23T09:06:15+0000 Turned on maintenance mode
  2015-06-23T09:06:15+0000 Checked database schema update
  2015-06-23T09:06:15+0000 Checked database schema update for apps
@@ -1280,7 +1277,7 @@ Enabling verbosity displays timestamps::
  2015-06-23T09:06:15+0000 Turned off maintenance mode
 
 If there is an error it throws an exception, and the error is detailed in your 
-ownCloud logfile, so you can use the log output to figure out what went wrong, 
+Nextcloud logfile, so you can use the log output to figure out what went wrong, 
 or to use in a bug report::
 
  Turned on maintenance mode
@@ -1293,7 +1290,7 @@ or to use in a bug report::
  Update failed
  Turned off maintenance mode
 
-Before completing the upgrade, ownCloud first runs a simulation by copying all 
+Before completing the upgrade, Nextcloud first runs a simulation by copying all 
 database tables to new tables, and then performs the upgrade on them, to ensure 
 that the upgrade will complete correctly. The copied tables are deleted after 
 the upgrade. This takes twice as much time, which on large installations can be 

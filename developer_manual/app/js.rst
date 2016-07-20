@@ -46,7 +46,7 @@ For AngularJS the following lines would need to be added:
 
 Generating URLs
 ===============
-To send requests to ownCloud the base URL where ownCloud is currently running is needed. To get the base URL use:
+To send requests to Nextcloud the base URL where Nextcloud is currently running is needed. To get the base URL use:
 
 .. code-block:: js
 

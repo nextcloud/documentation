@@ -4,11 +4,11 @@ Community Code of Conduct
 Preamble:
 ---------
 
-In the ownCloud community, participants from all over the world come together to create Free Software for a free internet. This is made possible by the support, hard work and enthusiasm of thousands of people, including those who create and use ownCloud software.
+In the Nextcloud community, participants from all over the world come together to create Free Software for a free internet. This is made possible by the support, hard work and enthusiasm of thousands of people, including those who create and use Nextcloud software.
 
-This document offers some guidance to ensure ownCloud participants can cooperate effectively in a positive and inspiring atmosphere, and to explain how together we can strengthen and support each other.
+This document offers some guidance to ensure Nextcloud participants can cooperate effectively in a positive and inspiring atmosphere, and to explain how together we can strengthen and support each other.
 
-This Code of Conduct is shared by all contributors and users who engage with the ownCloud team and its community services.
+This Code of Conduct is shared by all contributors and users who engage with the Nextcloud team and its community services.
 
 Overview
 --------
@@ -24,10 +24,10 @@ This Code of Conduct presents a summary of the shared values and “common sense
 
 Our community is made up of several groups of individuals and organizations which can roughly be divided into two groups:
 
-* Contributors, or those who add value to the project through improving ownCloud software and its services
-* Users, or those who add value to the project through their support as consumers of ownCloud software
+* Contributors, or those who add value to the project through improving Nextcloud software and its services
+* Users, or those who add value to the project through their support as consumers of Nextcloud software
 
-This Code of Conduct reflects the agreed standards of behavior for members of the ownCloud community, in any forum, mailing list, wiki, web site, IRC channel, public meeting or private correspondence within the context of the ownCloud team and its services. The community acts according to the standards written down in this Code of Conduct and will defend these standards for the benefit of the community. Leaders of any group, such as moderators of mailing lists, IRC channels, forums, etc., will exercise the right to suspend access to any person who persistently breaks our shared Code of Conduct.
+This Code of Conduct reflects the agreed standards of behavior for members of the Nextcloud community, in any forum, mailing list, wiki, web site, IRC channel, public meeting or private correspondence within the context of the Nextcloud team and its services. The community acts according to the standards written down in this Code of Conduct and will defend these standards for the benefit of the community. Leaders of any group, such as moderators of mailing lists, IRC channels, forums, etc., will exercise the right to suspend access to any person who persistently breaks our shared Code of Conduct.
 
 Be considerate
 --------------
@@ -36,23 +36,23 @@ Your actions and work will affect and be used by other people and you in turn wi
 
 As a contributor, ensure that you give full credit for the work of others and bear in mind how your changes affect others. It is also expected that you try to follow the development schedule and guidelines.
 
-As a user, remember that contributors work hard on their part of ownCloud and take great pride in it. If you are frustrated your problems are more likely to be resolved if you can give accurate and well-mannered information to all concerned.
+As a user, remember that contributors work hard on their part of Nextcloud and take great pride in it. If you are frustrated your problems are more likely to be resolved if you can give accurate and well-mannered information to all concerned.
 
 Be respectful
 -------------
 
-In order for the ownCloud community to stay healthy its members must feel comfortable and accepted. Treating one another with respect is absolutely necessary for this. In a disagreement, in the first instance assume that people mean well.
+In order for the Nextcloud community to stay healthy its members must feel comfortable and accepted. Treating one another with respect is absolutely necessary for this. In a disagreement, in the first instance assume that people mean well.
 
 We do not tolerate personal attacks, racism, sexism or any other form of discrimination. Disagreement is inevitable, from time to time, but respect for the views of others will go a long way to winning respect for your own view. Respecting other people, their work, their contributions and assuming well-meaning motivation will make community members feel comfortable and safe and will result in motivation and productivity.
 
-We expect members of our community to be respectful when dealing with other contributors, users and communities. Remember that ownCloud is an international project and that you may be unaware of important aspects of other cultures.
+We expect members of our community to be respectful when dealing with other contributors, users and communities. Remember that Nextcloud is an international project and that you may be unaware of important aspects of other cultures.
 
 Be collaborative
 ----------------
 
 The Free Software Movement depends on collaboration: it helps limit duplication of effort while improving the quality of the software produced. In order to avoid misunderstanding, try to be clear and concise when requesting help or giving it. Remember it is easy to misunderstand emails (especially when they are not written in your mother tongue). Ask for clarifications if unsure how something is meant; remember the first rule – assume in the first instance that people mean well.
 
-As a contributor, you should aim to collaborate with other community members, as well as with other communities that are interested in or depend on the work you do. Your work should be transparent and be fed back into the community when available, not just when ownCloud releases. If you wish to work on something new in existing projects, keep those projects informed of your ideas and progress.
+As a contributor, you should aim to collaborate with other community members, as well as with other communities that are interested in or depend on the work you do. Your work should be transparent and be fed back into the community when available, not just when Nextcloud releases. If you wish to work on something new in existing projects, keep those projects informed of your ideas and progress.
 
 It may not always be possible to reach consensus on the implementation of an idea, so don’t feel obliged to achieve this before you begin. However, always ensure that you keep the outside world informed of your work, and publish it in a way that allows outsiders to test, discuss and contribute to your efforts.
 
@@ -63,7 +63,7 @@ As a user, your feedback is important, as is its form. Poorly thought out commen
 Be pragmatic
 ------------
 
-ownCloud is a pragmatic community. We value tangible results over having the last word in a discussion. We defend our core values like freedom and respectful collaboration, but we don’t let arguments about minor issues get in the way of achieving more important results. We are open to suggestions and welcome solutions regardless of their origin. When in doubt support a solution which helps getting things done over one which has theoretical merits, but isn’t being worked on. Use the tools and methods which help getting the job done. Let decisions be taken by those who do the work.
+Nextcloud is a pragmatic community. We value tangible results over having the last word in a discussion. We defend our core values like freedom and respectful collaboration, but we don’t let arguments about minor issues get in the way of achieving more important results. We are open to suggestions and welcome solutions regardless of their origin. When in doubt support a solution which helps getting things done over one which has theoretical merits, but isn’t being worked on. Use the tools and methods which help getting the job done. Let decisions be taken by those who do the work.
 
 Support others in the community
 -------------------------------
@@ -83,4 +83,4 @@ Think deeply before turning a disagreement into a public dispute. If necessary r
 
 This document is licensed under the Creative Commons Attribution – Share Alike 3.0 License.
 
-The authors of this document would like to thank the ownCloud community and those who have worked to create such a dynamic environment to share in and who offered their thoughts and wisdom in the authoring of this document. We would also like to thank other vibrant communities that have helped shape this document with their own examples, especially KDE.
+The authors of this document would like to thank the Nextcloud community and those who have worked to create such a dynamic environment to share in and who offered their thoughts and wisdom in the authoring of this document. We would also like to thank other vibrant communities that have helped shape this document with their own examples, especially KDE.

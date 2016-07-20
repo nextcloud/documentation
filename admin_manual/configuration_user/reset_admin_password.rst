@@ -6,7 +6,7 @@ The normal ways to recover a lost password are:
 
 1. Click the password reset link on the login screen; this appears after a 
    failed login attempt. This works only if you have entered your email address 
-   on your Personal page in the ownCloud Web interface, so that the ownCloud 
+   on your Personal page in the Nextcloud Web interface, so that the Nextcloud 
    server can email a reset link to you.
 
 2. Ask another Nextcloud server admin to reset it for you.

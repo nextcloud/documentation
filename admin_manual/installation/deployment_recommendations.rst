@@ -433,7 +433,7 @@ makes migration less painful) although we have yet to find a customer who uses a
 master-slave setup.
 
 .. comment: PostgreSQL may produce excessive amounts of dead tuples due to 
-   owncloud transactions preventing the execution of the autovacum process.
+   Nextcloud transactions preventing the execution of the autovacum process.
 
 What about the other DBMS?
 
