@@ -20,9 +20,6 @@ Follow these steps to get the appliance working:
 3. Click the green Start arrow. After a minute you should see the console 
    greeting message.
 
-.. figure:: images/community-vm-console.png
-   :alt: screenshot of Ubuntu console login for newly-created virtual machine  
-
 4. Note the username and password here. It is a random password that we generate 
    for you on first boot. If you log in at the console, you'll  be prompted to 
    change the password. This is optional.
@@ -36,12 +33,6 @@ Follow these steps to get the appliance working:
    them already) and a list of URLs to try to reach the ownCloud web 
    service.  Which one works, again depends on the network setup of your 
    hypervisor.
-
-.. figure:: images/community-vm-splash.png
-   :scale: 50%
-   :alt: screenshot of new virtual machine Web GUI with login credentials
-   
-   *Click to enlarge*
 
 .. note:: You should write down your admin password, and make sure the login 
    credentials are no longer displayed. Click the *[Hide Credentials]* button. 
