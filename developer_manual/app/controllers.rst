@@ -26,7 +26,7 @@ To create a controller, simply extend the Controller class and create a method t
 
 
 Connecting a controller and a route
-====================================
+===================================
 To connect a controller and a route the controller has to be registered in the :doc:`container` like this:
 
 .. code-block:: php
@@ -422,8 +422,6 @@ By default there is only a responder for JSON but more can be added easily:
 
 .. note:: The above example would only return XML if the **format** parameter was *xml*. If you want to return an XMLResponse regardless of the format parameter, extend the Response class and return a new instance of it from the controller method instead.
 
-.. versionadded:: 8
-
 Because returning values works fine in case of a success but not in case of failure that requires a custom HTTP error code, you can always wrap the value in a **DataResponse**. This works for both normal responses and error responses.
 
 .. code-block:: php
@@ -557,7 +555,6 @@ Creating a custom XMLResponse class could look like this:
 
 Streamed and lazily rendered responses
 --------------------------------------
-.. versionadded:: 8.1
 
 By default all responses are rendered at once and sent as a string through middleware. In certain cases this is not a desirable behavior, for instance if you want to stream a file in order to save memory. To do that use the now available **OCP\\AppFramework\\Http\\StreamResponse** class:
 
@@ -602,7 +599,6 @@ If you want to use a custom, lazily rendered response simply implement the inter
 
 Modifying the Content Security Policy
 -------------------------------------
-.. versionadded:: 8.1
 
 By default Nextcloud disables all resources which are not served on the same domain, forbids cross domain requests and disables inline CSS and JavaScript by setting a `Content Security Policy <https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy>`_. However if an app relies on thirdparty media or other features which are forbidden by the current policy the policy can be relaxed.
 
@@ -655,8 +651,6 @@ The following policy for instance allows images, audio and videos from other dom
 
 OCS
 ---
-.. versionadded:: 8.1
-
 .. note:: This is purely for compatibility reasons. If you are planning to offer an external API, go for a :doc:`api` instead.
 
 In order to ease migration from OCS API routes to the App Framework, an additional controller and response have been added. To migrate your API you can use the **OCP\\AppFramework\\OCSController** baseclass and return your data in the form of an array in the following way:

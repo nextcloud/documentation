@@ -17,14 +17,14 @@ FAQ
 ---
 
 Why Did Nextcloud Add Code Signing?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 By supporting Code Signing we add another layer of security by ensuring that 
 nobody other than authorized persons can push updates for applications, and 
 ensuring proper upgrades.
 
 Do We Lock Down Nextcloud?
-^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Nextcloud project is open source and always will be. We do not want to 
 make it more difficult for our users to run Nextcloud. Any code signing errors on 
@@ -170,7 +170,7 @@ In above error output it can be seen that:
 The solution is to upload the correct "index.php" and "version.php" files, and 
 delete the "test.php" file. For the calendar exception contact the developer of 
 the application. For other means on how to receive support please take a look at 
-https://owncloud.org/support/. After fixing these problems verify by clicking 
+https://nextcloud.com/support/. After fixing these problems verify by clicking
 "Rescan…".
 
 .. note:: When using a FTP client to upload those files make sure it is using the
@@ -181,7 +181,7 @@ https://owncloud.org/support/. After fixing these problems verify by clicking
 Rescans
 -------
 
-Rescans are triggered at installation, and by updates. You may run scans manually with the ``occ`` command. The first command scans the Nextcloud core files, and the second command scans the named app. There is not yet a command to manually scan all apps::
+Rescans are triggered at installation, and by updates. You may run scans manually with the ``occ`` command. The first command scans the Nextcloud server files, and the second command scans the named app. There is not yet a command to manually scan all apps::
 
   occ integrity:check-core
   occ integrity:check-app $appid

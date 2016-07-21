@@ -13,7 +13,7 @@ App config
   "dbtype" => "sqlite",
 
   /* Name of the Nextcloud database */
-  "dbname" => "owncloud",
+  "dbname" => "nextcloud",
 
   /* User to access the Nextcloud database */
   "dbuser" => "",
@@ -102,7 +102,7 @@ App config
    You must have at least 1 app folder writable or you must set the parameter : appstoreenabled to false
   */
           array(
-                  'path'=> '/var/www/owncloud/apps',
+                  'path'=> '/var/www/nextcloud/apps',
                   'url' => '/apps',
                   'writable' => true,
     ),

@@ -4,35 +4,6 @@ Changelog
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-The following changes went into Nextcloud 8.1:
-
-
-Breaking changes
-================
-The following breaking changes usually do only affect applications which misuse existing API or do not follow best practises.
-
-* The default Content-Security-Policy of AppFramework apps is now stricter but can be adjusted by developers. See https://github.com/owncloud/core/pull/13989
-* Parameters passed to OC.generateUrl are now automatically encoded, this behaviour can be adjusted by developers. See https://github.com/owncloud/core/pull/14266
-* Views constructed by OC\Files\View do not allow directory traversals anymore in the constructor. See https://github.com/owncloud/core/pull/14342
-* The CSRF token may now contain not URL compatible characters (for example the plus sign: +), developers have to ensure that the CSRF token is encoded properly before using it in URIs.
-* The default RNG now returns all valid base64 characters
-* OC.msg escapes the message now by default (see https://github.com/owncloud/core/pull/14208)
-
-
-Features
-========
-* There is a new :doc:`OCSResponse and OCSController <controllers>` which allows you to easily migrate OCS code to the App Framework. This was added purely for compatibility reasons and the preferred way of doing APIs is using a :doc:`api`
-* You can now stream files in PHP by using the built in :doc:`StreamResponse <controllers>`.
-* For more advanced usecases you can now implement the :doc:`CallbackResponse <controllers>` interface which allows your response to do its own response rendering
-* Custom preview providers can now be implemented using **OCP\IPreview::registerProvider**
-* There is a mightier class for remote web service requests at **OCP\Http\Client** 
-* **OCP\\IImage** allows now basic image manipulations such as resizing or rotating
-* **OCP\\Mail** allows sending mails in an object-oriented way now
-* **OCP\\IRequest** contains more methods now such as getting the request URI
-* **OCP\\Encryption** allows writing custom encryption backends
-
-Furthermore all public APIs have received a **@since** annotation allowing developers to see when a function has been introduced.
-
 Deprecations
 ============
 This is a deprecation roadmap which lists all current deprecation targets and will be updated from release to release. This lists the version when a specific method or class will be removed.

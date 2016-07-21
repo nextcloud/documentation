@@ -18,7 +18,7 @@ When debug mode is enabled in Nextcloud, a variety of debugging features are ena
 Identifying errors
 ------------------
 
-Nextcloud uses custom error PHP handling that prevents errors being printed to Web server log files or command line output. Instead, errors are generally stored in Nextcloud's own log file, located at: :file:`/data/owncloud.log`
+Nextcloud uses custom error PHP handling that prevents errors being printed to Web server log files or command line output. Instead, errors are generally stored in Nextcloud's own log file, located at: :file:`/data/nextcloud.log`
 
 
 Debugging variables

@@ -7,7 +7,7 @@ PHP unit testing
 Getting PHPUnit
 ~~~~~~~~~~~~~~~
 
-Nextcloud uses PHPUnit >= 3.7 for unit testing.
+Nextcloud uses PHPUnit >= 4.8 for unit testing.
 
 To install it, either get it via your packagemanager::
 
@@ -92,7 +92,7 @@ so the next test can run without side effects, like remaining files and entries 
 For more resources on PHPUnit visit: http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html
 
 Bootstrapping Nextcloud
-~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
 If you use Nextcloud functions or classes in your code, you'll need to make them available to your test by bootstrapping Nextcloud.
 
 To do this, you'll need to provide the ``--bootstrap`` argument when running PHPUnit
@@ -115,7 +115,7 @@ adjust your php.ini and file rights.
   su -c "chmod a+w data/owncloud.log"
 
 Running unit tests for the Nextcloud core project
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The core project provides a script that runs all the core unit tests using different database backends like sqlite, mysql, pgsql, oci (for Oracle)::
 
   ./autotest.sh

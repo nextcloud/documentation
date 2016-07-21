@@ -82,7 +82,7 @@ Simply go to your Nextcloud Apps page to enable it.
 .. figure:: ../images/antivirus-app.png
 
 Configuring ClamAV on Nextcloud
-------------------------------
+-------------------------------
 
 Next, go to your Nextcloud Admin page and set your Nextcloud logging level to
 Everything.

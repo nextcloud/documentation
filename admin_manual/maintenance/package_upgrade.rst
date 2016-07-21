@@ -117,7 +117,7 @@ Nextcloud current with these steps:
 If you are using a Snap package:
 sudo snap refresh nextcloud
 
-If you did **not** install via a SNap package:
+If you did **not** install via a Snap package:
 
 #. Upgrade your current version to the latest point release
 #. Upgrade your current version to the next major release

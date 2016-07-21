@@ -1,6 +1,6 @@
-======================
+=======================
 Nextcloud Server Tuning
-======================
+=======================
 
 Using cron to perform background jobs
 -------------------------------------
@@ -20,9 +20,8 @@ Caching
 -------
 
 Caching improves performance by storing data, code, and other objects in memory. 
-Memory cache configuration for the Nextcloud server is no longer automatic in 
-Nextcloud 8.1 and up, but must be installed and configured. See      
-:doc:`caching_configuration`.
+Memory cache configuration for the Nextcloud server must be installed and configured.
+See :doc:`caching_configuration`.
 
 Using MariaDB/MySQL instead of SQLite
 -------------------------------------
