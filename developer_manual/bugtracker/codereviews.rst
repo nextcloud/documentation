@@ -53,10 +53,9 @@ requests should be handled
 Questions?
 ----------
 
-Feel free to drop a line on the `mailing list`_ or join us on `IRC`_.
+Feel free to drop a line on the `forums`_ or join us on `IRC`_.
 
-.. _core repository: https://GitHub.com/owncloud/core
-.. _continuous integration server: https://ci.owncloud.org/
-.. _mailing list: https://mailman.owncloud.org/mailman/listinfo/devel
-.. _IRC: http://webchat.freenode.net/?channels=owncloud-dev
+.. _continuous integration server: https://drone.weasel.rocks/
+.. _forums: https://help.nextcloud.com/
+.. _IRC: http://webchat.freenode.net/?channels=nextcloud-dev
 .. _coding guidelines: ../general/codingguidelines

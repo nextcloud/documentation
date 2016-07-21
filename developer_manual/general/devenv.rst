@@ -18,7 +18,7 @@ First `set up your Web server and database <https://docs.nextcloud.org/server/9/
 Get the source
 ==============
 
-There are two ways to obtain Nextcloud sources: 
+There are two ways to obtain Nextcloud sources:
 
 * Using the `stable version <https://docs.nextcloud.org/server/9/admin_manual/#installation>`_
 .. TODO ON RELEASE: Update version number above on release
@@ -32,14 +32,14 @@ Gather information about server setup
 To get started the basic git repositories need to cloned into the Web server's directory. Depending on the distribution this will either be
 
 * **/var/www**
-* **/var/www/html** 
-* **/srv/http** 
+* **/var/www/html**
+* **/srv/http**
 
 
 Then identify the user and group the Web server is running as and the Apache user and group for the **chown** command will either be
 
 * **http**
-* **www-data** 
+* **www-data**
 * **apache**
 * **wwwrun**
 
@@ -53,7 +53,7 @@ Install the `development tool <https://github.com/nextcloud/ncdev>`_
 After the development tool installation make the directory writable::
 
   sudo chmod o+rw /var/www
-  
+
 Then install Nextcloud from git::
 
   ncdev setup --dir /var/www/<folder> server
@@ -108,6 +108,5 @@ or to prune all merged branches, you would execute this::
 It is even easier if you create alias from these commands in case you want to avoid retyping those each time you need them.
 
 
-.. _GitHub: https://github.com/owncloud
+.. _GitHub: https://github.com/nextcloud
 .. _GitHub Help Page: https://help.github.com/
-

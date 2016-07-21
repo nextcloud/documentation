@@ -80,7 +80,7 @@ App config
   /* Place to log to, can be owncloud and syslog (owncloud is log menu item in admin menu) */
   "log_type" => "owncloud",
 
-  /* File for the owncloud logger to log to, (default is ownloud.log in the data dir */
+  /* File for the owncloud logger to log to, (default is nextcloud.log in the data dir */
   "logfile" => "",
 
   /* Loglevel to start logging at. 0=DEBUG, 1=INFO, 2=WARN, 3=ERROR (default is WARN) */

@@ -11,7 +11,7 @@ Database performance
 --------------------
 The database plays an important role in Nextcloud performance. The general rule is: database queries are very bad and should be avoided if possible. The reasons for that are:
 
-* Roundtrips: Bigger Nextcloud installations have the database not installed on the application server but on a remote dedicated database server. The problem is that database queries then go over the network. These roundtrips can add up significantly if you have a lot of queries. 
+* Roundtrips: Bigger Nextcloud installations have the database not installed on the application server but on a remote dedicated database server. The problem is that database queries then go over the network. These roundtrips can add up significantly if you have a lot of queries.
 * Speed. A lot of people think that databases are fast. This is not always true if you compare it with handling data internally in PHP or in the filesystem or even using key/value based storages. So every developer should always double check if the database is really the best place for the data.
 * Scalability. If you have a big Nextcloud cluster setup you usually have several Nextcloud/Web servers in parallel and a central database and a central storage. This means that everything that happens on the Nextcloud/PHP side can parallelize and can be scaled. Stuff that is happening in the database and in the storage is critical because it only exists once and can't be scaled so easily.
 
@@ -29,9 +29,9 @@ With MySQL it is very easy with just a bit of configuration:
 
 If you put this into your my.cnf file, every query that takes longer than one second is logged to a logfile::
 
-  log_slow_queries = 1 
-  log_slow_queries = /var/log/mysql/mysql-slow.log 
-  long_query_time=1 
+  log_slow_queries = 1
+  log_slow_queries = /var/log/mysql/mysql-slow.log
+  long_query_time=1
 
 If a query takes more than a second we have a serious problem of course. You can watch it with `tail -f /var/log/mysql/mysql-slow.log` while using Nextcloud.
 
@@ -61,4 +61,4 @@ The recommendation is to automatically do 10000 PROPFINDs or file uploads, measu
 
 Getting help
 ------------
-If you need help with performance or other issues please ask on our `mailing list <https://mailman.owncloud.org/mailman/listinfo/devel>`_ or on our IRC channel **#owncloud-dev** on **irc.freenode.net**.
+If you need help with performance or other issues please ask on our `forums <https://help.nextcloud.com>`_ or on our IRC channel **#nextcloud-dev** on **irc.freenode.net**.
