@@ -20,8 +20,7 @@ back for the help you get. This is the only way to keep a community like
 Nextcloud healthy and sustainable!
 
 If you are using Nextcloud in a business or otherwise large scale deployment,
-note that Nextcloud GmbH. offers the `Enterprise Edition`_ with commercial
-support options.
+note that Nextcloud GmbH offers commercial support options.
 
 Bugs
 ----

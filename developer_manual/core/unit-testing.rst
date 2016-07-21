@@ -7,7 +7,7 @@ PHP unit testing
 Getting PHPUnit
 ~~~~~~~~~~~~~~~
 
-Nextcloud uses PHPUnit >= 3.7 for unit testing.
+Nextcloud uses PHPUnit >= 4.8 for unit testing.
 
 To install it, either get it via your packagemanager::
 

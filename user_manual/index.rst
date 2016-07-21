@@ -18,8 +18,8 @@ using the Nextcloud / ownCloud Desktop Sync Client, Android app. To learn more
 about the Nextcloud desktop and mobile clients, please refer to their respective
 manuals:
 
-* `Nextcloud Desktop Client`_
+* `Nextcloud/ownCloud Desktop Client`_
 * `Nextcloud Android App`_
 
-.. _`Nextcloud Desktop Client`: https://doc.owncloud.org/desktop/2.1/
+.. _`Nextcloud/ownCloud Desktop Client`: https://doc.owncloud.org/desktop/2.2/
 .. _`Nextcloud Android App`: https://docs.nextcloud.org/android/

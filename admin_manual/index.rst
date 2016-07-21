@@ -24,7 +24,7 @@ See :doc:`../whats_new_admin` for more information on the different Nextcloud
 editions.
 
 Nextcloud Videos and Blogs
--------------------------
+--------------------------
 
 See the `official Nextcloud channel
 <https://www.youtube.com/channel/UCQjN5Fs5QSz1loJqLb5bkew>`_

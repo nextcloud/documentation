@@ -4,8 +4,9 @@
 Nextcloud Developer Documentation
 =================================
 
-.. _Nextcloud appstore: https://apps.owncloud.com/
-.. _Documentation: https://github.com/nextcloud/documentation#nextcloud-documentation
+.. _ownCloud appstore: https://apps.owncloud.com/
+.. _Translation: https://www.transifex.com/nextcloud/nextcloud/
+.. _Documentation: https://github.com/nextcloud/documentation
 
 Table of Contents
 =================

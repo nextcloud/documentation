@@ -100,8 +100,14 @@ Upgrading Across Skipped Releases
 ---------------------------------
 
 It is best to update your Nextcloud installation with every new point release,
-and to never skip any major releases. If you have skipped any major releases you
-can bring your Nextcloud current with these steps:
+and to never skip any major releases. While this requirement is being worked on,
+for the moment If you have skipped any major releases you can bring your
+Nextcloud current with these steps:
+
+If you are using a Snap package:
+sudo snap refresh nextcloud
+
+If you did **not** install via a Snap package:
 
 #. Add the repository of your current version
 #. Upgrade your current version to the latest point release

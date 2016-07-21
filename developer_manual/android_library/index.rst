@@ -11,7 +11,7 @@ For third party application developers, Nextcloud offers the Nextcloud Android
 library under the MIT license.
 
 Android Nextcloud Client development
------------------------------------
+------------------------------------
 
 If you are interested in working on the Nextcloud android client, you can find
 the source code `in github <https://github.com/nextcloud/android/>`_. The

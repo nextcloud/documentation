@@ -57,8 +57,8 @@ server is operating properly.
 Nextcloud.log
 -------------
 
-Nextcloud also provides a built in logging function. If the Nextcloud Enterprise Edition logging applications
-are enabled, this file will track user logins and shared file activity. If these logging applications are
+Nextcloud also provides a built in logging function. If the Nextcloud logging application
+is enabled, this file will track user logins and shared file activity. If these logging applications are
 not enabled, this log file still tracks basic Nextcloud health. Given the potential for this file to get
 quite large, the log file should be rotated on a daily basis, and given the importance of the error information
 in the log file, this should be integrated with an enterprise log manager.

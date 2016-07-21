@@ -54,7 +54,7 @@ configured on your Personal page. The test message says::
   
   --
   Nextcloud
-  web services under your control
+  a safe home for all your data
 
 Configuring PHP and Sendmail
 ----------------------------

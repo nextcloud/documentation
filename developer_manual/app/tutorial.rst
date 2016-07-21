@@ -13,7 +13,7 @@ After the `development tool <https://github.com/nextcloud/ncdev/blob/master/READ
 
     ncdev setup core --dir nextcloud  --branch $BRANCH
 
-.. note:: $BRANCH is the desired Nextcloud branch (e.g. stable7 for Nextcloud 7, stable8 for Nextcloud 8, etc)
+.. note:: $BRANCH is the desired Nextcloud branch (e.g. stable9 for Nextcloud 9, stable10 for Nextcloud 10, etc)
 
 First you want to enable debug mode to get proper error messages. To do that set ``debug`` to ``true`` in the **nextcloud/config/config.php** file::
 

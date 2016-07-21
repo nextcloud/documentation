@@ -181,7 +181,7 @@ https://nextcloud.com/support/. After fixing these problems verify by clicking
 Rescans
 -------
 
-Rescans are triggered at installation, and by updates. You may run scans manually with the ``occ`` command. The first command scans the Nextcloud core files, and the second command scans the named app. There is not yet a command to manually scan all apps::
+Rescans are triggered at installation, and by updates. You may run scans manually with the ``occ`` command. The first command scans the Nextcloud server files, and the second command scans the named app. There is not yet a command to manually scan all apps::
 
   occ integrity:check-core
   occ integrity:check-app $appid

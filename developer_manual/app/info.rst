@@ -16,7 +16,6 @@ The :file:`appinfo/info.xml` contains metadata about the app:
       <version>1.0</version>
       <licence>AGPL</licence>
       <author>Your Name</author>
-      <requiremin>5</requiremin>
       <namespace>YourAppsNamespace</namespace>
 
       <types>
@@ -53,6 +52,7 @@ The :file:`appinfo/info.xml` contains metadata about the app:
       </dependencies>
 
       <!-- deprecated, just for reference -->
+      <requiremin>5</requiremin>
       <public>
           <file id="caldav">appinfo/caldav.php</file>
       </public>
@@ -95,10 +95,6 @@ author
 ------
 **Required**: The name of the app author or authors.
 
-requiremin
-----------
-Required if not added in the **<dependencies>** tag. The minimal version of Nextcloud.
-
 namespace
 ---------
 Required if routes.php returns an array. If your app is namespaced like **\\OCA\\MyApp\\Controller\\PageController** the required namespace value is **MyApp**. If not given it tries to default to the first letter upper cased app id, e.g. **myapp** would be tried under **Myapp**
@@ -116,7 +112,6 @@ Nextcloud allows to specify four kind of ``types``. Currently supported ``types`
 * **logging**: apps which implement a logging system
 
 * **prevent_group_restriction**: apps which can not be enabled for specific groups (e.g. notifications app).
-  Introduced with Nextcloud 9.0, can also be used in earlier versions, but the functionality is ignored.
 
 .. note::
 
@@ -182,7 +177,7 @@ Defines the required target operating system the app can run on. Valid values ar
 
 owncloud
 ========
-Defines minimum and maximum versions of the Nextcloud core. In case undefined the values will be taken from the tag 'requiremin'.
+**Required**: Defines minimum and maximum versions of the Nextcloud core. In case undefined the values will be taken from the tag 'requiremin'.
 
 
 Deprecated
@@ -192,6 +187,10 @@ The following sections are just listed for reference and should not be used beca
 
 * **public/remote**: Use :doc:`api` instead because you'll have to use :doc:`../core/externalapi` which is known to be buggy (works only properly with GET/POST)
 * **standalone/default_enable**: They tell core what do on setup, you will not be able to even activate your app if it has those entries. This should be replaced by a config file inside core.
+
+requiremin
+==========
+Deprecated in favor of the **<dependencies>** tag.
 
 public
 ======

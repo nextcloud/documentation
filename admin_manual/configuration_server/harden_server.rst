@@ -27,7 +27,7 @@ Operating system
 .. _dev-urandom-label:
 
 Give PHP read access to ``/dev/urandom``
-*****************************************
+****************************************
 
 Nextcloud uses a `RFC 4086 ("Randomness Requirements for Security")`_ compliant
 mixer to generate cryptographically secure pseudo-random numbers. This means
@@ -137,9 +137,8 @@ available SSL ciphers and options depend completely on your environment and
 thus giving a generic recommendation is not really possible.
 
 We recommend using the `Mozilla SSL Configuration Generator`_ to generate a
-suitable configuration suited for your environment, and the free `Qualys
-SSL Labs Tests`_ gives good guidance on whether your SSL server is correctly
-configured.
+suitable configuration suited for your environment, and the free `Qualys SSL Labs Tests`_
+gives good guidance on whether your SSL server is correctly configured.
 
 Also ensure that HTTP compression is disabled to mitigate the BREACH attack.
 

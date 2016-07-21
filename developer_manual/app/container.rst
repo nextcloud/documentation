@@ -153,7 +153,6 @@ So basically the container is used as a giant factory to build all the classes t
 
 Use automatic dependency assembly (recommended)
 ===============================================
-.. versionadded:: 8
 
 It is possible to omit the **appinfo/application.php** and use automatic dependency assembly instead.
 

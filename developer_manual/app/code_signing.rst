@@ -16,14 +16,14 @@ FAQ
 ---
 
 Why Did Nextcloud Add Code Signing?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 By supporting Code Signing we add another layer of security by ensuring that 
 nobody other than authorized persons can push updates for applications, and 
 ensuring proper upgrades.
 
 Do We Lock Down Nextcloud?
-^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Nextcloud project is open source and always will be. We do not want to make 
 it more difficult for our users to run Nextcloud. Any code signing errors on 
@@ -104,8 +104,8 @@ still be ensured by having a new certificate issued.
 How Code Signing Affects Apps in the App Store
 ----------------------------------------------
 
-- Apps which have an ``official`` tag **MUST** be code signed starting with 
-  Nextcloud 9.0. Unsigned ``official`` apps won't be installable anymore.
+- Apps which have an ``official`` tag **MUST** be code signed.
+  Unsigned ``official`` apps won't be installable anymore.
 - Apps which have been signed in a previous release **MUST** be code-signed in 
   all future releases as well, otherwise the update will be refused.
 

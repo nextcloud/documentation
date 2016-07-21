@@ -9,8 +9,8 @@ users on other Nextcloud servers.
 Creating a New Federation Share
 -------------------------------
 
-Federation sharing is enabled on Nextcloud installations by default.
-Follow these steps to create a new share with other Nextcloud 9 servers:
+Federation sharing is enabled on new or upgraded Nextcloud installations
+by default. Follow these steps to create a new share with other Nextcloud or ownCloud 9+ servers:
 
 1. Go to your ``Files`` page and click the Share icon on the file or directory
 you want to share. In the sidebar enter the username and URL of the remote user
@@ -31,6 +31,8 @@ share, and does not delete any files.
 Creating a New Federated Cloud Share via Email
 ----------------------------------------------
 
+Use this method when you are sharing with users on ownCloud 8.x and older.
+
 What if you do not know the username or URL? Then you can have Nextcloud create
 the link for you and email it to your recipient.
 
@@ -43,7 +45,7 @@ a Web browser, and then click the **Add to your Nextcloud** button.
 .. figure:: ../images/create_public_share-8.png
 
 The **Add to your Nextcloud** button changes to a form field, and your recipient
-needs to enter the URL of their Nextcloud server in this field and press the
+needs to enter the URL of their Nextcloud or ownCloud server in this field and press the
 return key, or click the arrow.
 
 .. figure:: ../images/create_public_share-9.png

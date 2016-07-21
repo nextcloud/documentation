@@ -17,7 +17,6 @@ Thank you for helping Nextcloud by reporting bugs. Before submitting an issue, p
 * If the issue with with an Nextcloud app, report it to where that app is developed
 * If the app is listed in our `main github repository`_ report it to the correct sub
   repository
-* If the app is listed in the `apps repository`_ report it there
 
 Please note that the forums should not be used for bug reports, as it is hard to track them there.
 
