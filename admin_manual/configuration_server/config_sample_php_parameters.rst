@@ -284,6 +284,14 @@ which can be used as passwords on their clients.
 
 ::
 
+	'auth.bruteforce.protection.enabled' => true,
+
+Whether the bruteforce protection shipped with Nextcloud should be enabled or not.
+
+Disabling this is discouraged for security reasons.
+
+::
+
 	'skeletondirectory' => '/path/to/nextcloud/core/skeleton',
 
 The directory where the skeleton files are located. These files will be
@@ -531,7 +539,7 @@ to be deleted.
 Both minimum and maximum times can be set together to explicitly define
 file and folder deletion. For migration purposes, this setting is installed
 initially set to "auto", which is equivalent to the default setting in
-Nextcloud 8.1 and before.
+ownCloud 8.1 and before.
 
 Available values:
 
@@ -572,7 +580,7 @@ to be deleted.
 Both minimum and maximum times can be set together to explicitly define
 version deletion. For migration purposes, this setting is installed
 initially set to "auto", which is equivalent to the default setting in
-Nextcloud 8.1 and before.
+ownCloud 8.1 and before.
 
 Available values:
 
@@ -774,7 +782,7 @@ Some of the Nextcloud code may be stored in alternate locations.
 	'customclient_android' =>
 		'https://play.google.com/store/apps/details?id=com.nextcloud.client',
 	'customclient_ios' =>
-		'https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8',
+		'https://itunes.apple.com/us/app/owncloud/id543672169?mt=8',
 
 This section is for configuring the download links for Nextcloud clients, as
 seen in the first-run wizard and on Personal pages.
@@ -793,7 +801,7 @@ When enabled, admins may install apps from the Nextcloud app store.
 
 ::
 
-	'appstoreurl' => 'https://api.nextcloud.com/v1',
+	'appstoreurl' => 'https://api.owncloud.com/v1',
 
 The URL of the appstore to use.
 
@@ -1303,12 +1311,12 @@ AES-256-CFB are supported.
 
 	'minimum.supported.desktop.version' => '1.7.0',
 
-The minimum Nextcloud desktop client version that will be allowed to sync with
+The minimum ownCloud desktop client version that will be allowed to sync with
 this server instance. All connections made from earlier clients will be denied
-by the server. Defaults to the minimum officially supported Nextcloud desktop
+by the server. Defaults to the minimum officially supported ownCloud desktop
 clientversion at the time of release of this server version.
 
-When changing this, note that older unsupported versions of the Nextcloud desktop
+When changing this, note that older unsupported versions of the ownCloud desktop
 client may not function as expected, and could lead to permanent data loss for
 clients or other unexpected results.
 
