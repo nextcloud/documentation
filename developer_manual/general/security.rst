@@ -207,7 +207,7 @@ Additionally always check if the user has the right to perform that action. (e.g
 Sensitive data exposure
 -----------------------
 
-Always store user data or configuration files in safe locations, e.g. **owncloud/data/** and not in the webroot where they can be accessed by anyone using a web browser.
+Always store user data or configuration files in safe locations, e.g. **nextcloud/data/** and not in the webroot where they can be accessed by anyone using a web browser.
 
 Cross site request forgery
 --------------------------
@@ -246,4 +246,4 @@ Always validate the URL before redirecting if the requested URL is on the same d
 
 Getting help
 ------------
-If you need help to ensure that a function is secure please ask on our `mailing list <https://mailman.owncloud.org/mailman/listinfo/devel>`_ or on our IRC channel **#owncloud-dev** on **irc.freenode.net**.
+If you need help to ensure that a function is secure please ask on our `mailing list <https://mailman.owncloud.org/mailman/listinfo/devel>`_ or on our IRC channel **#nextcloud-dev** on **irc.freenode.net**.

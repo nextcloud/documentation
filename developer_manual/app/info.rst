@@ -24,18 +24,18 @@ The :file:`appinfo/info.xml` contains metadata about the app:
 
 
       <documentation>
-          <user>https://doc.owncloud.org</user>
-          <admin>https://doc.owncloud.org</admin>
-          <developer>https://doc.owncloud.org</developer>
+          <user>https://docs.nextcloud.org</user>
+          <admin>https://docs.nextcloud.org</admin>
+          <developer>https://docs.nextcloud.org</developer>
       </documentation>
 
       <category>tool</category>
 
-      <website>https://owncloud.org</website>
+      <website>https://example.org</website>
 
-      <bugs>https://github.com/owncloud/theapp/issues</bugs>
+      <bugs>https://github.com/nextcloud/theapp/issues</bugs>
 
-      <repository type="git">https://github.com/owncloud/theapp.git</repository>
+      <repository type="git">https://github.com/nextcloud/theapp.git</repository>
 
       <ocsid>1234</ocsid>
 
@@ -170,7 +170,7 @@ specified. Valid values for the 'os' attribute are as returned by the php functi
 lib
 ===
 Defines a required php extension with required minimum and/or maximum version. The names for the libraries have to match the result as returned by the php function  `get_loaded_extensions <http://php.net/manual/en/function.get-loaded-extensions.php>`_.
-The explicit version of an extension is read from `phpversion <http://php.net/manual/de/function.phpversion.php>`_ - with some exception as to be read up in the `code base <https://github.com/owncloud/core/blob/master/lib/private/app/platformrepository.php#L45>`_
+The explicit version of an extension is read from `phpversion <http://php.net/manual/de/function.phpversion.php>`_ - with some exception as to be read up in the `code base <https://github.com/nextcloud/server/blob/master/lib/private/App/PlatformRepository.php>`_
 
 os
 ==
@@ -195,17 +195,17 @@ Deprecated in favor of the **<dependencies>** tag.
 
 public
 ======
-Used to provide a public interface (requires no login) for the app. The id is appended to the URL **/owncloud/index.php/public**. Example with id set to 'calendar'::
+Used to provide a public interface (requires no login) for the app. The id is appended to the URL **/index.php/public**. Example with id set to 'calendar'::
 
-    /owncloud/index.php/public/calendar
+    /index.php/public/calendar
 
 Also take a look at :doc:`../core/externalapi`.
 
 remote
 ======
-Same as public but requires login. The id is appended to the URL **/owncloud/index.php/remote**. Example with id set to 'calendar'::
+Same as public but requires login. The id is appended to the URL **/index.php/remote**. Example with id set to 'calendar'::
 
-    /owncloud/index.php/remote/calendar
+    /index.php/remote/calendar
 
 Also take a look at :doc:`../core/externalapi`.
 

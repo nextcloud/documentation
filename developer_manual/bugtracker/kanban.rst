@@ -1,26 +1,11 @@
-Kanban Board
-============
+Development process
+===================
 
 This chapter contains a lot of information about the development process the
 Nextcloud community tries to follow, so please take your time to digest all the
 information. In any case remember this page as the documentation on how it
 should be done. Nothing here is set in stone, so if you think something should
-be changed please discuss it on the `mailing list`_.
-
-Kanban Board = github issues + huboard
---------------------------------------
-
-We are using http://huboard.com to visualize Nextcloud github issues as a `kanban
-board`_ (see: `core`_, `apps`_, `client`_):
-
-.. figure:: ../images/kanbanexample.png
-   :scale: 70
-
-As you may have noticed, the columns of the kanban board represent the
-life-cycle of an issue (be it a Bug or an Enhancement). An issue flows from the
-1 - Backlog on the left to the 7 - To release column on the right and is not
-closed until it has been released. Instead we pull an issue to the next column
-by changing the label.
+be changed please discuss it on the `forums`_.
 
 The Labels
 ----------
@@ -140,7 +125,7 @@ Why do we have it?
 
 What does a developer think?
   "I’ll check the Scenario described earlier works as expected. If necessary
-  I’ll update the related Gherkin Scenarios. `Jenkins`_ will test the scenario
+  I’ll update the related Gherkin Scenarios. `Drone`_ will test the scenario
   on all kinds of platforms, Web server and database combinations with
   `cucumber`_."
 
@@ -158,14 +143,14 @@ Reviewing
 Why do we have it?
   With the Gherkin Scenario from the Concept Phase reviewers have a checklist to
   test if a Bug has been solved and if an Enhancement works as expected. **The
-  most eager reviewer we have is Jenkins**. When it comes to testing he soldiers
+  most eager reviewer we have is Drone**. When it comes to testing he soldiers
   on going through the different combinations of platform, Web server and
   database.
 
 What does a developer think?
   "Damn! If I had written the Gherkin Scenarios and Cucumber Step Definitions I
   could leave the task of testing this on the different combinations of platform,
-  Web server and database to Jenkins. I’ll miss something when doing this
+  Web server and database to Drone. I’ll miss something when doing this
   manually.*
 
 When can I pull?
@@ -208,8 +193,8 @@ Reviewing considered impossible?
 How can you possibly review an issue when it requires you to test various
 combinations of browsers, platforms, databases and maybe even app combinations?
 Well, you can’t. But you can write a gherkin scenario that can be used to write
-an automated test that is executed by Jenkins on every commit to the main
-repositories. If for some reason Jenkins cannot be used for the review you will
+an automated test that is executed by Drone on every commit to the main
+repositories. If for some reason Drone cannot be used for the review you will
 find yourself in the very uncomfortable situation where you release half tested
 code that will hopefully not eat user data. Seriously! Write gherkin scenarios!
 
@@ -271,15 +256,12 @@ the Kanban board by Milestone, making it especially easy to focus on the current
 Release.
 
 .. _kanban board: http://en.wikipedia.org/wiki/Kanban_board
-.. _mailing list: mailto:owncloud@kde.org
-.. _core: http://huboard.com/owncloud/core/board/#
-.. _apps: http://huboard.com/owncloud/apps/board/#
-.. _client: http://huboard.com/owncloud/client/board/#
+.. _forums: https://help.nextcloud.org
 .. _Gherkin: https://github.com/cucumber/cucumber/wiki/Gherkin
-.. _existing ones: https://ci.tmit.eu/job/acceptance-test/cucumber-html-reports/?
+.. _existing ones: https://github.com/nextcloud/server/tree/master/build/integration/features
 .. _“Given … when … then …“: https://github.com/cucumber/cucumber/wiki/Given-When-Then
-.. _unit tests: https://github.com/owncloud/core/tree/master/tests
-.. _Code Review Documentation: https://owncloud.org/dev/code-reviews-on-github/
-.. _Jenkins: https://ci.tmit.eu/
+.. _unit tests: https://github.com/nextcloud/server/tree/master/tests
+.. _Code Review Documentation: codereviews
+.. _Drone: https://drone.weasel.rocks
 .. _cucumber: http://cukes.info/
-.. _transifex: https://www.transifex.com/projects/p/owncloud/
+.. _transifex: https://www.transifex.com/nextcloud/

@@ -42,7 +42,7 @@ Filesystem classes can be injected from the ServerContainer by calling the metho
 Writing to a file
 =================
 
-All methods return a Folder object on which files and folders can be accessed, or filesystem operations can be performed relatively to their root. For instance for writing to file:`owncloud/data/myfile.txt` you should get the root folder and use:
+All methods return a Folder object on which files and folders can be accessed, or filesystem operations can be performed relatively to their root. For instance for writing to file:`nextcloud/data/myfile.txt` you should get the root folder and use:
 
 .. code-block:: php
 
@@ -67,9 +67,9 @@ All methods return a Folder object on which files and folders can be accessed, o
                     $file = $this->storage->get('/myfile.txt');
                 }
 
-                // the id can be accessed by $file->getId(); 
+                // the id can be accessed by $file->getId();
                 $file->putContent($content);
-        
+
             } catch(\OCP\Files\NotPermittedException $e) {
                 // you have to create this exception by yourself ;)
                 throw new StorageException('Cant write to file');

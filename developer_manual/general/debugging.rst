@@ -62,7 +62,7 @@ XDebug will now (when activated) try to connect to localhost on port 9000, and w
 
 For further reading, see the XDebug documentation: http://xdebug.org/docs/remote
 
-Once you are familiar with how your debugging client works, you can start debugging with XDebug. To test Nextcloud through the web interface or other HTTP requests, set the ``XDEBUG_SESSION_START`` cookie or POST parameter. Alternatively, there are browser extensions to make this easy: 
+Once you are familiar with how your debugging client works, you can start debugging with XDebug. To test Nextcloud through the web interface or other HTTP requests, set the ``XDEBUG_SESSION_START`` cookie or POST parameter. Alternatively, there are browser extensions to make this easy:
 
 - The Easiest XDebug (Firefox): https://addons.mozilla.org/en-US/firefox/addon/the-easiest-xdebug/
 - XDebug Helper (Chrome): https://chrome.google.com/extensions/detail/eadndfjplgieldjbigjakmdgkmoaaaoc
