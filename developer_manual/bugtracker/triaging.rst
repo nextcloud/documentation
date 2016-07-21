@@ -1,6 +1,6 @@
-=====================
+======================
 Nextcloud Bug Triaging
-=====================
+======================
 
 .. toctree::
    :maxdepth: 2
@@ -50,7 +50,7 @@ Github offers several search queries which can be useful to find a list of bugs 
 
 * `The bugs least recently commented on <https://github.com/issues?q=is%3Aissue+user%3Anextcloud+is%3Aopen+sort%3Aupdated-asc++is%3Apublic+>`_
 * `Least commented issues <https://github.com/issues?q=is%3Aissue+user%3Anextcloud+is%3Aopen+no%3Aassignee+no%3Amilestone+no%3Alabel+sort%3Acomments-asc+>`_
-* `Bugs which need info <https://github.com/issues?q=is%3Aissue+user%3Anextcloudcloud+is%3Aopen+label%3A%22Needs+info%22+sort%3Acreated-asc+>`_
+* `Bugs which need info <https://github.com/issues?q=is%3Aissue+user%3Anextcloud+is%3Aopen+label%3A%22Needs+info%22+sort%3Acreated-asc+>`_
 
 But there are more methods. For example, if you are a user of Nextcloud with a specific setup like using nginx as Web server or dropbox as storage, or using the encryption app, you could look for bugs with these keywords. You can then use your knowledge of your installation and your installation itself to see if bugs are (still) valid or reproduce them.
 
@@ -116,9 +116,9 @@ Finalizing and tagging
 ----------------------
 Once you are done reproducing an issue, it is time to finish up and make clear to the developers what they can do:
 
-* If it is a genuine bug (or you are pretty sure it is) add the 'Bug' tag.
-* If it is a genuine feature request (or you are pretty sure it is) add the 'enhancement' tag.
-* If the issue is clearly related to something specific, @mention a maintainer. examples: @schiesbn for encryption, @blizzz for LDAP, @PVince81 for quota stuff... You can find a `list of maintainers here <https://github.com/nextcloud/server/wiki/Maintainers>`_.
+* If it is a genuine bug (or you are pretty sure it is) add the 'bug' label.
+* If it is a genuine feature request (or you are pretty sure it is) add the 'enhancement' label.
+* If the issue is clearly related to something specific, set the specific feature label and @mention a maintainer
 
 Now, the developers can pick the issue up. Note that while we wish we would always pick up and solve problems promptly, not all areas of Nextcloud get the same amount of attention and contribution, so this can occasionally take a long time.
 

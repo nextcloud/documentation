@@ -153,9 +153,8 @@ So basically the container is used as a giant factory to build all the classes t
 
 Use automatic dependency assembly (recommended)
 ===============================================
-.. versionadded:: 8
 
-Since Nextcloud 8 it is possible to omit the **lib/AppInfo/Application.php** and use automatic dependency assembly instead.
+In Nextcloud it is possible to omit the **lib/AppInfo/Application.php** and use automatic dependency assembly instead.
 
 How does automatic assembly work
 --------------------------------

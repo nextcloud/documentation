@@ -1,6 +1,6 @@
-===================================
+====================================
 How to Upgrade Your Nextcloud Server
-===================================
+====================================
 
 There are three ways to upgrade your Nextcloud server:
 
@@ -24,9 +24,9 @@ notification it brings you here, to this page.
 
 **It is best to keep your Nextcloud server upgraded regularly**, and to install 
 all point releases and major releases without skipping any of them, as skipping 
-releases increases the risk of errors. Major releases are 8.0, 8.1, 8.2, and 
-9.0. Point releases are intermediate releases for each major release. For 
-example, 8.0.9 and 8.1.3 are point releases. **Skipping major releases is not 
+releases increases the risk of errors. Major releases are 9, 10, and
+11. Point releases are intermediate releases for each major release. For
+example, 9.0.52 and 10.0.2 are point releases. **Skipping major releases is not
 supported.**
 
 **Upgrading is disruptive**. Your Nextcloud server will be put into maintenance 
@@ -72,12 +72,3 @@ Nextcloud release. Any apps that are not developed by Nextcloud show a 3rd party
 designation. **Install unsupported apps at your own risk**. Then, before the 
 upgrade, all 3rd party apps must be disabled. After the upgrade is complete you 
 may re-enable them.
-
-Debian Migration to Official Nextcloud Packages
-----------------------------------------------
-
-As of March 2016 Debian will not include Nextcloud packages. Debian users can 
-migrate to the official Nextcloud packages by following this guide, 
-`Upgrading Nextcloud on Debian Stable to official packages 
-<https://owncloud.org/blog/upgrading-owncloud-on-debian-stable-to-official- 
-packages/>`_.

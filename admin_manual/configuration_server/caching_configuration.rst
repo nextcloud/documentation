@@ -39,7 +39,7 @@ of memcache that best fits your needs. The supported caching backends are:
 * `Redis <http://redis.io/>`_, PHP module 2.2.5 and up required.
    For distributed caching.
    
-Memcaches must be explicitly configured in Nextcloud 8.1 and up by installing 
+Memcaches must be explicitly configured in Nextcloud by installing
 and enabling your desired cache, and then adding the appropriate entry to 
 ``config.php`` (See :doc:`config_sample_php_parameters` for an overview of
 all possible config parameters).

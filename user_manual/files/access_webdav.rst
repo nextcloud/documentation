@@ -12,8 +12,8 @@ Nextcloud Desktop and Mobile Clients
 ------------------------------------
 
 The recommended method for keeping your desktop PC synchronized with your 
-Nextcloud server is by using the `Nextcloud Desktop Client 
-<https://owncloud.org/install/#install-clients>`_. You can configure the client
+Nextcloud server is by using the `Nextcloud/ownCloud sync clients
+<https://nextcloud.com/install/#install-clients>`_. You can configure the client
 to save files in any local directory you want, and you choose which directories 
 on the Nextcloud server to sync with. The client displays the current connection 
 status and logs all activity, so you always know which remote files have been 
@@ -502,10 +502,6 @@ To get the properties of files in the root folder:
 
 .. _KB2668751: https://support.microsoft.com/kb/2668751
 .. _KB2123563: https://support.microsoft.com/kb/2123563
-.. _in your file manager: http://en.wikipedia.org/wiki/Webdav#WebDAV_client_applications
-.. _Nextcloud sync clients: https://doc.owncloud.org/desktop/2.1/
-.. _Mount Nextcloud to a local folder without sync: https://docs.nextcloud.org/server/9/admin_manual/configuration_files/external_storage/webdav.html?highlight=webdav
-.. _Android: https://github.com/nextcloud/android
 .. _WebDAV Navigator: http://seanashton.net/webdav/
 .. _Android devices: https://play.google.com/store/apps/details?id=com.schimera.webdavnavlite
 .. _iPhones: https://itunes.apple.com/app/webdav-navigator/id382551345
