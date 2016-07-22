@@ -16,7 +16,7 @@ By default, Nextcloud can generate previews for the following filetypes:
 * Cover of MP3 files
 * Text documents
 
-.. note:: Older versions of Nextcloud also supported the preview generation
+.. note:: Technically Nextcloud can also generate the previews
           of other file types such as PDF, SVG or various office documents.
           Due to security concerns those providers have been disabled by
           default and are considered unsupported.

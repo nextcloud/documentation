@@ -11,7 +11,7 @@ user.
 
 .. note:: The PHP LDAP module is required; this is supplied by ``php5-ldap`` on 
    Debian/Ubuntu, and ``php-ldap`` on CentOS/Red Hat/Fedora. PHP 5.4+ is 
-   required in Nextcloud 8.1.
+   required in Nextcloud.
 
 The LDAP application supports:
 
@@ -411,9 +411,9 @@ User Home Folder Naming Rule:
 
   * Example: *cn*
 
-In new Nextcloud installations (8.0.10, 8.1.5, 8.2.0 and up) the home folder rule is enforced. This means that once you set a home folder naming rule (get a home folder from an LDAP attribute), it must be available for all users. If it isn't available for a user, then that user will not be able to login. Also, the filesystem will not be set up for that user, so their file shares will not be available to other users.
+In new Nextcloud installations the home folder rule is enforced. This means that once you set a home folder naming rule (get a home folder from an LDAP attribute), it must be available for all users. If it isn't available for a user, then that user will not be able to login. Also, the filesystem will not be set up for that user, so their file shares will not be available to other users.
 
-In existing Nextcloud installations the old behavior still applies, which is using the Nextcloud username as the home folder when an LDAP attribute is not set. You may change this to enforcing the home folder rule with the ``occ`` command in Nextcloud 8.2, like this example on Ubuntu::
+In migrated Nextcloud installations the old behavior still applies, which is using the Nextcloud username as the home folder when an LDAP attribute is not set. You may change this to enforcing the home folder rule with the ``occ`` command in Nextcloud, like this example on Ubuntu::
 
   sudo -u www-data php occ config:app:set user_ldap enforce_home_folder_naming_rule --value=1 
   
@@ -496,7 +496,7 @@ When the configuration test reports success, save your settings and check if the
 users and groups are fetched correctly on the Users page.
 
 Nextcloud Avatar integration
----------------------------
+----------------------------
 
 Nextcloud supports user profile pictures, which are also called avatars. If a user 
 has a photo stored in the *jpegPhoto* or *thumbnailPhoto* attribute on your LDAP 
@@ -571,7 +571,7 @@ In case you have a working configuration and want to create a similar one or
 Now you can modify and enable the configuration.
 
 Nextcloud LDAP Internals
------------------------
+------------------------
 
 Some parts of how the LDAP backend works are described here.
 
@@ -598,8 +598,8 @@ testing, you can empty the tables any time. Do not do this in production.
 Caching
 ^^^^^^^
 
-The LDAP cache has changed in Nextcloud 8.1. There is no more file cache, but 
-only a memory cache, and you must install and configure the memory cache (see 
+The LDAP information is cached in Nextcloud memory cache, and you must install
+and configure the memory cache (see 
 :doc:`../configuration_server/caching_configuration`). The Nextcloud  **Cache**
 helps to speed up user interactions and sharing. It is populated on demand,
 and remains populated until the **Cache Time-To-Live** for each unique request

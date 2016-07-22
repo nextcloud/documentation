@@ -2,7 +2,7 @@
 Using the occ Command
 =====================
 
-Nextcloud's ``occ`` command (Nextcloud console) is Nextcloud's command-line 
+Nextcloud's ``occ`` command (origins from "ownCloud Console") is Nextcloud's command-line
 interface. You can perform many common server operations with ``occ``, such as 
 installing and upgrading Nextcloud, manage users, encryption, passwords, LDAP 
 setting, and more.
@@ -10,9 +10,7 @@ setting, and more.
 ``occ`` is in the :file:`nextcloud/` directory; for example 
 :file:`/var/www/nextcloud` on Ubuntu Linux. ``occ`` is a PHP script. **You must 
 run it as your HTTP user** to ensure that the correct permissions are maintained 
-on your Nextcloud files and directories. In Nextcloud 8.2+ you may run it from 
-any directory (specifying the filepath); in previous releases it had to be 
-run from the :file:`nextcloud/` directory.
+on your Nextcloud files and directories.
 
 occ Command Directory
 ---------------------
@@ -167,7 +165,6 @@ The ``app`` commands list, enable, and disable apps::
   app:disable      disable an app
   app:enable       enable an app
   app:getpath      Get an absolute path to the app directory
-                   (added in 9.0)
   app:list         List all available apps
 
 List all of your installed apps, and show whether they are 
@@ -419,7 +416,7 @@ Run this command to migrate calendars::
 
  sudo -u www-data php occ dav:migrate-calendars [user]
  
-See `Nextcloud 9.0 - calendar migration analysis 
+See `ownCloud 9.0 - calendar migration analysis
 <http://morrisjobke.de/2016/03/07/ownCloud-9.0-calendar-migration-analysis/>`_ 
 for help with troubleshooting and reporting problems. 
 
@@ -433,8 +430,6 @@ bernie::
 addressbook::
 
  sudo -u www-data php occ dav:sync-system-addressbook
- 
-Added in 9.0. 
 
 .. _database_conversion_label:  
   
@@ -561,13 +556,11 @@ Synchronize the addressbooks of all federated Nextcloud servers::
  federation:sync-addressbooks  Synchronizes addressbooks of all 
                                federated clouds
 
-In Nextcloud 9.+, servers connected with federation shares can share user 
+In Nextcloud, servers connected with federation shares can share user
 address books, and auto-complete usernames in share dialogs. Use this command 
 to synchronize federated servers::
 
   sudo -u www-data php occ federation:sync-addressbooks
-  
-Added in 9.0.  
 
 .. _file_operations_label:
 
@@ -580,7 +573,7 @@ File Operations
   files:cleanup              cleanup filecache
   files:scan                 rescan filesystem
   files:transfer-ownership   All files and folders are moved to another 
-                             user - shares are moved as well. (Added in 9.0)
+                             user - shares are moved as well.
  
 The ``files:scan`` command scans for new files and updates the file cache. You 
 may rescan all files, per-user, a space-delimited list of users, and limit the 
@@ -644,9 +637,6 @@ before removing a user::
 Files External
 --------------
 
-These commands replace the ``data/mount.json`` configuration file used in 
-Nextcloud releases before 9.0.
-
 .. note::
   These commands are only available when the "External storage support" app
   (``files_external``) is enabled.
@@ -675,14 +665,12 @@ Nextcloud user.
 Use ``files_external:import [filename]`` to import legacy JSON configurations, 
 and to copy external mount configurations to another Nextcloud server.
 
-Added in 9.0.
-
 .. _integrity_check_label:
 
 Integrity Check
 ---------------
 
-Apps which have an official tag MUST be code signed starting with Nextcloud 9.0. Unsigned official apps won't be installable anymore. Code signing is optional for all third-party applications::
+Apps which have an official tag MUST be code signed with Nextcloud. Unsigned official apps won't be installable anymore. Code signing is optional for all third-party applications::
 
  integrity
   integrity:check-app                 Check app integrity using a signature.
@@ -704,8 +692,6 @@ When it returns nothing, your app is signed correctly. When it returns a message
 ``integrity:sign-core`` is for Nextcloud core developers only.
 
 See :doc:`../issues/code_signing` to learn more.
-  
-Added in 9.0.  
 
 .. _create_javascript_translation_files_label:
  
@@ -713,7 +699,7 @@ l10n, Create Javascript Translation Files for Apps
 --------------------------------------------------
 
 This command is for app developers to update their translation mechanism from
-Nextcloud 7 to Nextcloud 8 and later.
+ownCloud 7 to Nextcloud.
 
 .. _ldap_commands_label: 
  

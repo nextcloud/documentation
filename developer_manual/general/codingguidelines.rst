@@ -23,38 +23,21 @@ We assign labels to issues and pull requests to make it easy to find them and to
 
 The most important labels and their meaning:
 
+* #backport-request - the pull requests also needs to be applied to older Nextcloud versions
 * #bug - this issue is a bug
 * #enhancement - this issue is a feature request/idea for improvement of Nextcloud
 * #design - this needs help from the design team or is a design-related issue/pull request
-* #sharing - this issue or PR is related to sharing
 * #technical debt - this issue or PR is about `technical debt <http://en.wikipedia.org/wiki/Technical_debt>`_
-* #sev1-critical #sev2-high #sev3-medium #sev4-low signify how important the bug is.
-* #p1-urgent #p2-high #p3-medium #p4-low signify the priority of the bug.
-* #Junior Job - these are issues which are relatively easy to solve and ideal for people who want to learn how to code in Nextcloud
-* Tags showing the state of the issue or PR, numbered 1-6:
+* #starter issue - these are issues which are relatively easy to solve and ideal for people who want to learn how to code in Nextcloud
+* #needs info - this issue needs further information from the reporter, see `triaging <../bugtracker/triaging.html>`_
+* #high #medium #low signify how important the bug is.
+* Tags showing the state of the issue or PR, numbered 0-4:
+ * #0 - Needs triage - ready to start development on this
  * #1 - To develop - ready to start development on this
  * #2 - Developing - development in progress
  * #3 - To Review - ready for review
  * #4 - To Release - reviewed PR that awaits unfreeze of a branch to get merged
-* App tags: #app:files #app:user_ldap #app:files_versions and so on. These tags indicate the app that is impacted by the issue or which the PR is related to
-* Settings tags: #settings:personal #settings:apps #settings:admin and so on. These tags indicate the settings area that is impacted by the issue or which the PR is related to
-* db tags: #db:mysql #db:sqlite #db:postgresql and so on. These tags indicate the database that is impacted by the issue or which the PR is related to
-* Browser tags: #browser:ie #browser:safari and so on. These tags indicate the browser that is impacted by the issue or which the PR is related to
-* Component tags: #comp:filesystem #comp:javascript and so on. These tags indicate the components of Nextcloud impacted by the issue or which the PR is related to
-* Development tool tags: #dev:unit_testing #dev:public_API and so on. These tags indicate development-specific tools like those for testing and public developer-facing API's impacted by the issue or which the PR is related
-* Feature tags: #feature:something. These tags indicate the features across apps and components which are impacted by the issue or which the PR is related to
-* #triage - this issue *has to be* `triaged <../bugtracker/triaging.html>`_
-* #needs info - this issue needs further information from the reporter, see `triaging <../bugtracker/triaging.html>`_ old tag is #clarification request, please don't use that one anymore.
-* #discussion - this issue needs to be discussed
-* #security - this is a security related issue
-* #windows server - this is related to windows server
-* #research - this item requires some research before it can continue
-* #packaging - this is related to packaging
-* #theming - refers to theming issues or improvements
-* #l10n - refers to translation issues or improvements
-* #release note - relevant for the release notes
-* #privacy - refers to issues that might lead to privacy concerns
-* #won't fix - This problem won't be fixed (can be for a wide variety of reasons...)
+* Feature tags: #feature: something. These tags indicate the features across apps and components which are impacted by the issue or which the PR is related to
 
 If you want a label not in the list above, please first discuss on the mailing list.
 

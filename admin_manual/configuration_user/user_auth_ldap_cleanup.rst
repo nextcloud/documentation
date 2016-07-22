@@ -51,7 +51,7 @@ This example shows what the table of users marked as ``deleted`` looks like::
 
  $ sudo -u www-data php occ ldap:show-remnants
  +-----------------+-----------------+------------------+--------------------------------------+
- | Nextcloud name   | Display Name    | LDAP UID         | LDAP DN                              |
+ | Nextcloud name  | Display Name    | LDAP UID         | LDAP DN                              |
  +-----------------+-----------------+------------------+--------------------------------------+
  | aaliyah_brown   | aaliyah brown   | aaliyah_brown    | uid=aaliyah_brown,ou=people,dc=com   |
  | aaliyah_hammes  | aaliyah hammes  | aaliyah_hammes   | uid=aaliyah_hammes,ou=people,dc=com  |
@@ -63,7 +63,7 @@ Then you can run ``sudo -u www-data php occ user:delete aaliyah_brown`` to delet
 user aaliyah_brown. You must use the user's Nextcloud name.
 
 Deleting Local Nextcloud Users
------------------------------
+------------------------------
 
 You may also use ``occ user:delete [user]`` to remove a local Nextcloud user; 
 this removes their user account and their data.

@@ -20,8 +20,7 @@ back for the help you get. This is the only way to keep a community like
 Nextcloud healthy and sustainable!
 
 If you are using Nextcloud in a business or otherwise large scale deployment, 
-note that Nextcloud Inc. offers the `Enterprise Edition`_ with commercial 
-support options.
+note that Nextcloud GmbH offers commercial support options.
 
 Bugs
 ----
@@ -57,7 +56,7 @@ troubleshooting. Please refer to the :ref:`apps_commands_label` on how
 to disable an app from command line.
 
 Nextcloud Logfiles
-^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 
 In a standard Nextcloud installation the log level is set to ``Normal``. To find 
 any issues you need to raise the log level to ``All`` in your ``config.php`` 
@@ -228,7 +227,7 @@ See:
   <http://sabre.io/dav/clients/finder/>`_ 
   (Describes problems with Finder on various Web servers)
 
-There is also a well maintained FAQ thread available at the `Nextcloud Forums 
+There is also a well maintained FAQ thread available at the `ownCloud Forums
 <https://forum.owncloud.org/viewtopic.php?f=17&t=7536>`_
 which contains various additional information about WebDAV problems.
 

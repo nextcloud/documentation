@@ -1,6 +1,6 @@
-==========================
+===========================
 Supported Apps in Nextcloud
-==========================
+===========================
 
 AGPL Apps
 ---------
@@ -31,17 +31,3 @@ AGPL Apps
 * Update Notifications
 * User External
 * User LDAP
-
-Enterprise-Only Apps
---------------------
-
-* Enterprise License Key
-* Files Drop
-* File Firewall
-* LDAP Home Connector
-* Log user and Sharing actions (1 new app, replacing the 2 former logging apps)
-* Object Storage (S3)
-* SharePoint
-* Shibboleth (SAML)
-* Windows Network Drives (requires External Storage)
-* Workflow

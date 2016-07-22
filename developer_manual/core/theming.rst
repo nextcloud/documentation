@@ -1,5 +1,5 @@
 Theming Nextcloud
-================
+=================
 Themes can be used to customize the look and feel of Nextcloud.
 Themes can relate to the following topics of owncloud:
 

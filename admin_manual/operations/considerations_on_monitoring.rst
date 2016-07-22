@@ -14,7 +14,7 @@ to be monitored, and provide guidance on what to look for in Nextcloud in an
 enterprise installation.
 
 Nextcloud Deployment Architecture
-================================
+=================================
 
 Before discussing how to monitor Nextcloud, it is important to understand the architecture of a
 typical Nextcloud deployment. These monitoring best practices are developed based on the use of load
@@ -26,7 +26,7 @@ operations are available, and that Nextcloud is simply a new target for these to
 
 
 The Important Components of Nextcloud
-====================================
+=====================================
 
 Nextcloud is a PHP application that depends on a filesystem for file storage, and a database for storing
 user and file meta data, as well as some application specific information.
@@ -55,10 +55,10 @@ server is operating properly.
 
 
 Nextcloud.log
-------------
+-------------
 
-Nextcloud also provides a built in logging function. If the Nextcloud Enterprise Edition logging applications
-are enabled, this file will track user logins and shared file activity. If these logging applications are
+Nextcloud also provides a built in logging function. If the Nextcloud logging application
+is enabled, this file will track user logins and shared file activity. If these logging applications are
 not enabled, this log file still tracks basic Nextcloud health. Given the potential for this file to get
 quite large, the log file should be rotated on a daily basis, and given the importance of the error information
 in the log file, this should be integrated with an enterprise log manager.
