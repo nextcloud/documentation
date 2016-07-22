@@ -10,8 +10,8 @@ creating a cloud of Nextclouds.
 
 .. _label-direct-share-link:   
    
-Creating a new Federation Share (9.0+ only)
--------------------------------------------
+Creating a new Federation Share
+-------------------------------
 
 Follow these steps to create a new Federation share between two Nextcloud 9.0+ 
 servers. This requires no action by the user on the remote server; all it takes 
@@ -33,7 +33,7 @@ is a few steps on the originating server.
 
 .. figure:: images/federation-0.png
    
-3. Now go to your Files page and select a folder to share. Click the share 
+4. Now go to your Files page and select a folder to share. Click the share 
    icon, and then enter the username and URL of the user on the remote Nextcloud 
    server. In this example, that is ``freda@https://example.com/nextcloud``. 
    When Nextcloud verifies the link, it displays it with the **(remote)** label. 
@@ -41,7 +41,7 @@ is a few steps on the originating server.
 
 .. figure:: images/federation-2.png
 
-3. When the link is successfully completed, you have a single share option, 
+5. When the link is successfully completed, you have a single share option, 
    and that is **can edit**.
 
 .. figure:: images/federation-3.png
