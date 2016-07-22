@@ -539,7 +539,7 @@ to be deleted.
 Both minimum and maximum times can be set together to explicitly define
 file and folder deletion. For migration purposes, this setting is installed
 initially set to "auto", which is equivalent to the default setting in
-ownCloud 8.1 and before.
+Nextloud.
 
 Available values:
 
@@ -580,7 +580,7 @@ to be deleted.
 Both minimum and maximum times can be set together to explicitly define
 version deletion. For migration purposes, this setting is installed
 initially set to "auto", which is equivalent to the default setting in
-ownCloud 8.1 and before.
+Nextloud.
 
 Available values:
 
@@ -782,7 +782,7 @@ Some of the Nextcloud code may be stored in alternate locations.
 	'customclient_android' =>
 		'https://play.google.com/store/apps/details?id=com.nextcloud.client',
 	'customclient_ios' =>
-		'https://itunes.apple.com/us/app/owncloud/id543672169?mt=8',
+		'https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8',
 
 This section is for configuring the download links for Nextcloud clients, as
 seen in the first-run wizard and on Personal pages.
@@ -1311,12 +1311,12 @@ AES-256-CFB are supported.
 
 	'minimum.supported.desktop.version' => '1.7.0',
 
-The minimum ownCloud desktop client version that will be allowed to sync with
+The minimum Nextcloud desktop client version that will be allowed to sync with
 this server instance. All connections made from earlier clients will be denied
-by the server. Defaults to the minimum officially supported ownCloud desktop
+by the server. Defaults to the minimum officially supported Nextcloud desktop
 clientversion at the time of release of this server version.
 
-When changing this, note that older unsupported versions of the ownCloud desktop
+When changing this, note that older unsupported versions of the Nextcloud desktop
 client may not function as expected, and could lead to permanent data loss for
 clients or other unexpected results.
 
