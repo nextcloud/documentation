@@ -13,7 +13,7 @@ creating a cloud of Nextclouds.
 Creating a new Federation Share
 -------------------------------
 
-Follow these steps to create a new Federation share between two Nextcloud 9.0+ 
+Follow these steps to create a new Federation share between two Nextcloud 
 servers. This requires no action by the user on the remote server; all it takes 
 is a few steps on the originating server.
 
