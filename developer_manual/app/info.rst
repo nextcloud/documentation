@@ -49,7 +49,11 @@ The :file:`appinfo/info.xml` contains metadata about the app:
           <lib max-version="2.0">intl</lib>
           <lib>curl</lib>
           <os>Linux</os>
-          <owncloud min-version="6.0.4" max-version="8"/>
+          <nextcloud min-version="10.0.4" max-version="11"/>
+
+          <!-- deprecated, just for reference -->
+          <owncloud min-version="9.1.4" max-version="9.2"/>
+          <!-- end deprecated -->
       </dependencies>
 
       <!-- deprecated, just for reference -->
@@ -176,18 +180,21 @@ os
 ==
 Defines the required target operating system the app can run on. Valid values are as returned by the php function `php_uname <http://php.net/manual/en/function.php-uname.php>`_.
 
-owncloud
-========
-**Required**: Defines minimum and maximum versions of the Nextcloud core. In case undefined the values will be taken from the tag 'requiremin'.
+nextcloud
+=========
+**Required**: Defines minimum and maximum versions of the Nextcloud core.
+Both, internal (9.1.x) and visible (10.0.x), versions can be used.
+In case undefined the values will be taken from the tag `dependencies.owncloud`_.
 
 
 Deprecated
 ----------
 
-The following sections are just listed for reference and should not be used because
+The following sections are just listed for reference and should not be used anymore:
 
-* **public/remote**: Use :doc:`api` instead because you'll have to use :doc:`../core/externalapi` which is known to be buggy (works only properly with GET/POST)
-* **standalone/default_enable**: They tell core what do on setup, you will not be able to even activate your app if it has those entries. This should be replaced by a config file inside core.
+dependencies.owncloud
+=====================
+Defines minimum and maximum versions of the Nextcloud core. In case undefined the values will be taken from the tag `requiremin`_.
 
 requiremin
 ==========
