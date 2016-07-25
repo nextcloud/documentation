@@ -53,3 +53,4 @@ If it's still not working, have a look at the :doc:`troubleshooting`
 and `Troubleshooting Contacts & Calendar`_ guides.
 
 .. _Troubleshooting Contacts & Calendar: https://docs.nextcloud.org/server/10/admin_manual/issues/index.html#troubleshooting-contacts-calendar
+.. TODO ON RELEASE: Update version number above on release

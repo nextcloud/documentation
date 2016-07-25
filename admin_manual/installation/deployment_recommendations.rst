@@ -480,14 +480,13 @@ References
 `How to Set Up a Redis Server as a Session Handler for PHP on Ubuntu 14.04`_
 
 
+.. TODO ON RELEASE: Update version number below on release
 .. _Maintenance: 
-   https://docs.nextcloud.org/server/9/admin_manual/maintenance/index.html
+   https://docs.nextcloud.org/server/10/admin_manual/maintenance/index.html
 .. _User Authentication with LDAP:
-   https://docs.nextcloud.org/server/9/admin_manual/configuration_user/    
-   user_auth_ldap.html
+   https://docs.nextcloud.org/server/10/admin_manual/configuration_user/user_auth_ldap.html
 .. _Configuring Memory Caching:   
-   https://docs.nextcloud.org/server/9/admin_manual/configuration_server/ 
-   caching_configuration.html
+   https://docs.nextcloud.org/server/10/admin_manual/configuration_server/caching_configuration.html
 .. _Nextcloud Server or Enterprise Edition:  
    https://nextcloud.com/enterprise/
 .. _F5 Big-IP: https://f5.com/products/big-ip/
