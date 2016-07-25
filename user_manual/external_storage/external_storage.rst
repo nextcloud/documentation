@@ -9,3 +9,5 @@ available to you. Please see `Configuring External Storage (GUI)
 <https://docs.nextcloud.org/server/9/admin_manual/configuration_files/
 external_storage_configuration_gui.html>`_ in the Nextcloud Administrator's 
 manual for configuration howtos and examples.
+
+.. TODO ON RELEASE: Update version number above on release

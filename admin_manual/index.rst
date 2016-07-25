@@ -49,3 +49,5 @@ respective manuals:
 .. _`Nextcloud/ownCloud Desktop Client`: https://doc.owncloud.org/desktop/2.2/
 .. _`Nextcloud Android App`: https://docs.nextcloud.org/android/
 .. _`Nextcloud iOS App`: https://docs.nextcloud.org/ios/
+
+.. TODO ON RELEASE: Update version number above on release

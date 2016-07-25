@@ -53,6 +53,7 @@ API. If they are then they will not be installed.
 .. note:: If you would like to create or add your own Nextcloud app, please
    refer to the `developer manual
    <https://docs.nextcloud.org/server/10/developer_manual/app/index.html>`_.
+.. TODO ON RELEASE: Update version number above on release
 
 Using Custom App Directories
 ----------------------------
