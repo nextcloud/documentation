@@ -36,7 +36,7 @@ configuration report with the :ref:`occ config command
 
 .. _the Nextcloud Forums: https://help.nextcloud.com
 .. _webchat: http://webchat.freenode.net/?channels=nextcloud
-   https://docs.nextcloud.org/server/10/developer_manual/bugtracker/index.html
+   https://docs.nextcloud.org/server/11/developer_manual/bugtracker/index.html
 .. TODO ON RELEASE: Update version number above on release
 
 General Troubleshooting
