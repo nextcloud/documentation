@@ -42,7 +42,7 @@ Status.php
 
 Nextcloud provides a very simple mechanism for determining if an application server is up and functioning –
 call the status.php file on each Nextcloud server. This file can be found in the root Nextcloud directory on
-the server, which by default is /owncloud/status.php. If the server is functioning normally, the response
+the server, which by default is /status.php. If the server is functioning normally, the response
 looks something like this:
 
 ::
@@ -92,9 +92,3 @@ Load Balancer
 The load balancer is monitoring the health of the application servers and is distributing the traffic in
 the optimal way. The application-servers should also be monitored to detect long lasting OS or
 hardware problems. Monitoring solutions like Nagios provide built in functionality to do this.
-
-
-
-
-
-

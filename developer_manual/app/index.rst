@@ -135,7 +135,7 @@ Periodically run code in the background:
 
 Logging
 -------
-Log to the :file:`data/owncloud.log`:
+Log to the :file:`data/nextcloud.log`:
 
 * :doc:`logging`
 

@@ -21,12 +21,12 @@ Methods are registered inside the :file:`appinfo/routes.php` using :php:class:`O
   <?php
 
   \OCP\API::register(
-      'get', 
-      '/apps/yourapp/url', 
+      'get',
+      '/apps/yourapp/url',
       function($urlParameters) {
       	return new \OC_OCS_Result($data);
       },
-      'yourapp', 
+      'yourapp',
       \OC_API::ADMIN_AUTH
   );
 
@@ -39,13 +39,13 @@ Authentication & Basics
 ~~~~~~~~~~~~~~~~~~~~~~~
 Because REST is stateless you have to send user and password each time you access the API. Therefore running Nextcloud **with SSL is highly recommended** otherwise **everyone in your network can log your credentials**::
 
-    https://user:password@yourowncloud.com/ocs/v1.php/apps/yourapp
+    https://user:password@example.com/ocs/v1.php/apps/yourapp
 
 
 Output
 ~~~~~~
 The output defaults to XML. If you want to get JSON append this to the URL::
-    
+
     ?format=json
 
 Output from the application is wrapped inside a **data** element:

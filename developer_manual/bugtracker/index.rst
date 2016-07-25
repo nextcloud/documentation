@@ -16,12 +16,11 @@ Thank you for helping Nextcloud by reporting bugs. Before submitting an issue, p
 * If the issue is with the Nextcloud server, report it to the `Server repository`_
 * If the issue is with the Nextcloud client, report it to the `Client repository`_
 * If the issue with with an Nextcloud app, report it to where that app is developed
-* If the app is listed in our `main github repository`_ report it to the correct sub 
+* If the app is listed in our `main GitHub organization`_ report it to the correct sub
   repository
 
-Please note that the mailing list should not be used for bug reports, as it is hard to track them there.
 
 .. _Issue submission guidelines: https://github.com/nextcloud/server/blob/master/CONTRIBUTING.md#submitting-issues
 .. _Server repository:  https://github.com/nextcloud/server/issues
 .. _Client repository: https://github.com/nextcloud/client/issues
-.. _main github repository: https://github.com/nextcloud
+.. _main GitHub organization: https://github.com/nextcloud

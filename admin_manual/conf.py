@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# ownCloud Documentation documentation build configuration file, created by
+# Nextcloud Documentation documentation build configuration file, created by
 # sphinx-quickstart on Mon Oct 22 23:16:40 2012.
 #
 # This file is execfile()d with the current directory set to its containing dir.
@@ -282,5 +282,3 @@ epub_copyright = u'2012-2016, The ownCloud developers'
 
 # Include todos?
 todo_include_todos = True
-
-

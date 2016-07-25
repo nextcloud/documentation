@@ -55,15 +55,15 @@ Code example
     ...
     // Set basic credentials
     client.setCredentials(
-        OwnCloudCredentialsFactory.newBasicCredentials(username, password)
+        NextcloudCredentialsFactory.newBasicCredentials(username, password)
     );
     // Set bearer access token
     client.setCredentials(
-        OwnCloudCredentialsFactory.newBearerCredentials(accessToken)
+        NextcloudCredentialsFactory.newBearerCredentials(accessToken)
     );
     // Set SAML2 session token
     client.setCredentials(
-        OwnCloudCredentialsFactory.newSamlSsoCredentials(cookie)
+        NextcloudCredentialsFactory.newSamlSsoCredentials(cookie)
     );
   }
 
@@ -75,12 +75,12 @@ of the new folder.
 
 Code example
 ~~~~~~~~~~~~
-                                                      
+   
 .. code-block:: java
 
   private void startFolderCreation(String newFolderPath) {
-    CreateRemoteFolderOperation createOperation = new CreateRemoteFolderOperation(newFolderPath, false); 
-    createOperation.execute( mClient , this , mHandler); 
+    CreateRemoteFolderOperation createOperation = new CreateRemoteFolderOperation(newFolderPath, false);
+    createOperation.execute( mClient , this , mHandler);
   }
 
   @Override
@@ -114,10 +114,10 @@ Code example
 
 
   @Override
-  public void onRemoteOperationFinish(RemoteOperation operation, RemoteOperationResult result) { 
+  public void onRemoteOperationFinish(RemoteOperation operation, RemoteOperationResult result) {
     if (operation instanceof ReadRemoteFolderOperation) {
       if (result.isSuccess()) {
-        List< RemoteFile > files = result.getData(); 
+        List< RemoteFile > files = result.getData();
         // do your stuff here
       }
     }
@@ -143,7 +143,7 @@ Code example
   @Override
   public void onRemoteOperationFinish(RemoteOperation operation, RemoteOperationResult result) {
     if (operation instanceof ReadRemoteFileOperation) {
-      if (result.isSuccess()) { 
+      if (result.isSuccess()) {
         RemoteFile file = result.getData()[0];
         // do your stuff here
       }
@@ -162,7 +162,7 @@ Code example
 
 .. code-block:: java
 
-  private void startRemoveFile(String filePath) { 
+  private void startRemoveFile(String filePath) {
     RemoveRemoteFileOperation removeOperation = new RemoveRemoteFileOperation(remotePath);
     removeOperation.execute( mClient , this , mHandler);
   }
@@ -170,8 +170,8 @@ Code example
   @Override
   public void onRemoteOperationFinish(RemoteOperation operation, RemoteOperationResult result) {
     if (operation instanceof RemoveRemoteFileOperation) {
-      if (result.isSuccess()) { 
-        // do your stuff here 
+      if (result.isSuccess()) {
+        // do your stuff here
       }
     }
     …
@@ -192,7 +192,7 @@ Code example
 
   private void startDownload(String filePath, File targetDirectory) {
     DownloadRemoteFileOperation downloadOperation = new DownloadRemoteFileOperation(filePath, targetDirectory.getAbsolutePath());
-    downloadOperation.addDatatransferProgressListener(this); 
+    downloadOperation.addDatatransferProgressListener(this);
     downloadOperation.execute( mClient, this, mHandler);
   }
 
@@ -209,7 +209,7 @@ Code example
   public void onTransferProgress( long progressRate, long totalTransferredSoFar, long totalToTransfer, String fileName) {
   mHandler.post( new Runnable() {
     @Override
-    public void run() { 
+    public void run() {
       // do your UI updates about progress here
     }
   });
@@ -227,22 +227,22 @@ Code example
 
 .. code-block:: java
 
-  private void startUpload (File fileToUpload, String remotePath, String mimeType) { 
+  private void startUpload (File fileToUpload, String remotePath, String mimeType) {
     UploadRemoteFileOperation uploadOperation = new UploadRemoteFileOperation( fileToUpload.getAbsolutePath(), remotePath, mimeType);
-    uploadOperation.addDatatransferProgressListener(this); 
-    uploadOperation.execute(mClient, this, mHandler); 
+    uploadOperation.addDatatransferProgressListener(this);
+    uploadOperation.execute(mClient, this, mHandler);
   }
 
   @Override
   public void onRemoteOperationFinish(RemoteOperation operation, RemoteOperationResult result) {
     if (operation instanceof UploadRemoteFileOperation) {
       if (result.isSuccess()) {
-        // do your stuff here 
+        // do your stuff here
       }
     }
   }
 
-  @Override 
+  @Override
   public void onTransferProgress(long progressRate, long totalTransferredSoFar, long totalToTransfer, String fileName) {
     mHandler.post( new Runnable() {
       @Override
@@ -256,7 +256,7 @@ Move a file or folder
 ---------------------
 
 Move an exisintg file or folder to a different location in the Nextcloud server. Parameters needed are the path
-to the file or folder to move, and the new path desired for it. The parent folder of the new path must exist in 
+to the file or folder to move, and the new path desired for it. The parent folder of the new path must exist in
 the server.
 
 When the parameter 'overwrite' is set to 'true', the file or folder is moved even if the new path is already
@@ -264,12 +264,12 @@ used by a different file or folder. This one will be replaced by the former.
 
 Code example
 ~~~~~~~~~~~~
-                                                      
+   
 .. code-block:: java
 
   private void startFileMove(String filePath, String newFilePath, boolean overwrite) {
-    MoveRemoteFileOperation moveOperation = new MoveRemoteFileOperation(filePath, newFilePath, overwrite); 
-    moveOperation.execute( mClient , this , mHandler); 
+    MoveRemoteFileOperation moveOperation = new MoveRemoteFileOperation(filePath, newFilePath, overwrite);
+    moveOperation.execute( mClient , this , mHandler);
   }
 
   @Override
@@ -295,14 +295,14 @@ Code example
 
   private void startAllSharesRetrieval() {
     GetRemoteSharesOperation getSharesOp = new GetRemoteSharesOperation();
-    getSharesOp.execute( mClient , this , mHandler); 
+    getSharesOp.execute( mClient , this , mHandler);
   }
 
   @Override
   public void onRemoteOperationFinish( RemoteOperation operation, RemoteOperationResult result) {
     if (operation instanceof GetRemoteSharesOperation) {
-      if (result.isSuccess()) { 
-        ArrayList< OCShare > shares = new ArrayList< OCShare >(); 
+      if (result.isSuccess()) {
+        ArrayList< OCShare > shares = new ArrayList< OCShare >();
         for (Object obj: result.getData()) {
           shares.add(( OCShare) obj);
         }
@@ -327,21 +327,21 @@ Code example
 
   private void startSharesRetrievalForFileOrFolder(String filePath, boolean getReshares) {
     GeteRemoteSharesForFileOperation operation = new GetRemoteSharesForFileOperation(filePath, getReshares, false);
-    operation.execute( mClient, this, mHandler); 
+    operation.execute( mClient, this, mHandler);
   }
 
   private void startSharesRetrievalForFilesInFolder(String folderPath, boolean getReshares) {
     GetRemoteSharesForFileOperation operation = new GetRemoteSharesForFileOperation(folderPath, getReshares, true);
-    operation.execute( mClient, this, mHandler); 
+    operation.execute( mClient, this, mHandler);
   }
 
   @Override
   public void onRemoteOperationFinish( RemoteOperation operation, RemoteOperationResult result) {
     if (operation instanceof GetRemoteSharesForFileOperation) {
       if (result.isSuccess()) {
-        ArrayList< OCShare > shares = new ArrayList< OCShare >(); 
+        ArrayList< OCShare > shares = new ArrayList< OCShare >();
         for (Object obj: result.getData()) {
-          shares.add(( OCShare) obj); 
+          shares.add(( OCShare) obj);
         }
         // do your stuff here
      }
@@ -371,8 +371,8 @@ Code example
   }
 
   private void startCreationOfGroupShareForFile(String filePath, String groupId) {
-    CreateRemoteShareOperation operation = new CreateRemoteShareOperation(filePath, ShareType.GROUP, groupId, false , "", 31); 
-    operation.execute(mClient, this, mHandler); 
+    CreateRemoteShareOperation operation = new CreateRemoteShareOperation(filePath, ShareType.GROUP, groupId, false , "", 31);
+    operation.execute(mClient, this, mHandler);
   }
 
   private void startCreationOfUserShareForFile(String filePath, String userId) {
@@ -383,7 +383,7 @@ Code example
   @Override
   public void onRemoteOperationFinish( RemoteOperation operation, RemoteOperationResult result) {
     if (operation instanceof CreateRemoteShareOperation) {
-      if (result.isSuccess()) { 
+      if (result.isSuccess()) {
         OCShare share = (OCShare) result.getData ().get(0);
         // do your stuff here
       }
