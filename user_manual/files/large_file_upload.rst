@@ -18,3 +18,4 @@ set by your administrator):
   <https://docs.nextcloud.org/server/9/admin_manual/configuration_files/
   big_file_upload_configuration.html>`_ that describes how to manage file 
   upload size limits.
+.. TODO ON RELEASE: Update version number above on release
