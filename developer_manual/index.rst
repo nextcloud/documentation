@@ -4,9 +4,9 @@
 Nextcloud Developer Documentation
 =================================
 
-.. _ownCloud appstore: https://apps.owncloud.com/
-.. _Translation: https://www.transifex.com/nextcloud/nextcloud/
-.. _Documentation: https://github.com/nextcloud/documentation
+.. _ownCloud Appstore: https://apps.owncloud.com/
+.. _Translation: https://www.transifex.com/nextcloud/
+.. _Documentation: https://github.com/nextcloud/documentation#nextcloud-documentation
 
 Table of Contents
 =================
@@ -20,5 +20,3 @@ Table of Contents
     core/index
     bugtracker/index
     commun/index
-    
-..   test    

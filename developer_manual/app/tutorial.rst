@@ -33,7 +33,7 @@ Now open another terminal window and start the development server::
 Afterwards the app can be created in the **apps** folder::
 
     cd apps
-    ocdev startapp OwnNotes
+    ncdev startapp OwnNotes
 
 This creates a new folder called **ownnotes**. Now access and set up Nextcloud through the webinterface at `http://localhost:8080 <http://localhost:8080>`_ and enable the OwnNotes application on the `apps page <http://localhost:8080/index.php/settings/apps>`_.
 

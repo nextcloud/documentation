@@ -13,7 +13,7 @@ The :file:`appinfo/app.php` is the first file that is loaded and executed in Nex
     \OC::$server->getNavigationManager()->add(function () {
         $urlGenerator = \OC::$server->getURLGenerator();
         return [
-            // the string under which your app will be referenced in owncloud
+            // the string under which your app will be referenced in nextcloud
             'id' => 'myapp',
 
             // sorting weight for the navigation. The higher the number, the higher
@@ -43,7 +43,7 @@ The :file:`appinfo/app.php` is the first file that is loaded and executed in Nex
 Although it is also possible to include :doc:`js` or :doc:`css` for other apps by placing the **addScript** or **addStyle** functions inside this file, it is strongly discouraged, because the file is loaded on each request (also such requests that do not return HTML, but e.g. json or webdav).
 
 .. code-block:: php
-    
+
     <?php
 
     \OCP\Util::addScript('myapp', 'script');  // include js/script.js for every app

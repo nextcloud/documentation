@@ -95,8 +95,8 @@ Configure transifex
 
   for resource in calendar contacts core files media gallery settings
   do
-  tx set --auto-local -r owncloud.$resource "<lang>/$resource.po" --source-language=en \
+  tx set --auto-local -r nextcloud.$resource "<lang>/$resource.po" --source-language=en \
    --source-file "templates/$resource.pot" --execute
   done
 
-.. _Transifex: https://www.transifex.net/projects/p/owncloud/
+.. _Transifex: https://www.transifex.com/nextcloud/
