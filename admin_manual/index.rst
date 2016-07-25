@@ -17,6 +17,14 @@ Current editions of Nextcloud manuals are always available online at
 If you need more and business-level support you can go
 `here <https://nextcloud.com/enterprise/>`_.
 
+Nextcloud server is available:
+
+* As a free, full featured community-supported server, with all enterprise features.
+* Or with full enterprise support, including phone and email access to Nextcloud developers.
+  
+See :doc:`../whats_new_admin` for more information on the different ownCloud 
+editions.
+
 * As a free, full featured community-supported server, with all enterprise features.
 * Or with full enterprise support, including phone and email access to Nextcloud developers.
 
@@ -26,12 +34,11 @@ editions.
 Nextcloud Videos and Blogs
 --------------------------
 
-See the `official Nextcloud channel
-<https://www.youtube.com/channel/UCQjN5Fs5QSz1loJqLb5bkew>`_
+See the `official Nextcloud channel 
+<https://www.youtube.com/channel/UCQjN5Fs5QSz1loJqLb5bkew>`_ 
 on YouTube for tutorials, overviews, and conference videos.
- 6ccd2c5... Branding
 
-Visit `Nextcloud Planet <https://nextcloud.com/news/>`_ for news and developer
+Visit `Nextcloud Planet <https://nextcloud.com/news/>`_ for news and developer 
 blogs.
 
 Target Audience

@@ -2,27 +2,51 @@
 Upgrade Nextcloud From Packages
 ===============================
 
-.. note:: Starting with Nextcloud 8.2 the Linux package repositories have
-   changed, and **you must configure your system to use these new
-   repositories** to install or upgrade Nextcloud 8.2+. The new repositories are
-   at our `Open Build Service`_.
-
 Upgrade Quickstart
 ------------------
 
-The best method for keeping Nextcloud current on Linux servers is by configuring
-your system to use Nextcloud's `Open Build Service`_ repository. Then stay
-current by using your Linux package manager to install fresh Nextcloud packages.
-After installing upgraded packages you must run a few more steps to complete
-the
-upgrade. These are the basic steps to upgrading Nextcloud:
+One effective, if unofficial method for keeping Nextcloud current on Linux servers is by configuring
+your system to use Nextcloud via a self contained "Snap" package, A technology allowing users to 
+always have the latest version of an "app".
 
-* :doc:`Disable <../installation/apps_management_installation>` all third-party
-  apps.
+That version from Canonical is quite restrictive. It is not aimed at developers or advanced users 
+who would want to tune their configuration by installing extra features. It is aimed at end-users 
+who want a no-brainer solution. Install it, use it. No need to worry about updating Nextcloud any 
+more.
+
+It will work for as long as Canonical pushes releases, just like with any other Linux package 
+maintained independently of Nextcloud.
+
+Installation
+------------
+
+**Ubuntu**
+$ sudo snap install nextcloud
+
+**All other distros**
+Go to http://snapcraft.io/71
+Type the command to install snapd
+Install Nextcloud $ sudo snap install nextcloud
+
+1st login
+---------
+
+After a successful install, assuming you and the device on which it was installed are on the 
+same network, you should be able to reach the Nextcloud installation by visiting .local in 
+your browser. If your hostname is localhost or localhost.localdomain, like on an Ubuntu Base 
+device (IoT), nextcloud.local will be used instead.
+
+You will be asked to create a password for "admin" and your favourite cloud will be ready
+
+**Note**
+
+Do not use on IoT devices yet. You probably don't need these instructions anyway if you're 
+using Snappy Base 16.04 as it's currently unreleased.
+
 * Make a :doc:`fresh backup <backup>`.
-* Upgrade your Nextcloud packages.
-* Run :ref:`occ upgrade <command_line_upgrade_label>` (optionally disabling the
-  :ref:`migration test
+* Upgrade your Nextcloud snap: sudo snap refresh nextcloud
+* Run :ref:`occ upgrade <command_line_upgrade_label>` (optionally disabling the 
+  :ref:`migration test   
   <migration_test_label>`).
 * :ref:`Apply strong permissions <strong_perms_label>` to your
   Nextcloud directories.
@@ -33,30 +57,13 @@ upgrade. These are the basic steps to upgrading Nextcloud:
 Upgrade Tips
 ------------
 
-Upgrading Nextcloud from our `Open Build Service`_ repository is just like any
-normal Linux upgrade. For example, on Debian or Ubuntu Linux this is the
-standard system upgrade command::
+Upgrading Nextcloud from a Snap is just like upgrading any snap package.
+For example:
 
- apt-get update && apt-get upgrade
+ sudo snap refresh nextcloud
 
-Or you can upgrade just Nextcloud with this command::
-
- apt-get update && apt-get install nextcloud
-
-On Fedora, CentOS, and Red Hat Linux use ``yum`` to see all available updates::
-
- yum check-update
-
-You can apply all available updates with this command::
-
- yum update
-
-Or update only Nextcloud::
-
- yum update nextcloud
-
-Your Snap package manager only upgrades the current Nextcloud Snap. Then
-your Nextcloud server is immediately put into maintenance mode. You may not see
+Your Snap package manager only upgrades the current Nextcloud Snap. Then 
+your ownCloud server is immediately put into maintenance mode. You may not see
 this until you refresh your Nextcloud page.
 
 .. figure:: images/upgrade-1.png
@@ -100,7 +107,7 @@ Upgrading Across Skipped Releases
 ---------------------------------
 
 It is best to update your Nextcloud installation with every new point release,
-and to never skip any major releases. While this requirement is being worked on,
+and to never skip any major releases. While this requirement is being worked on, 
 for the moment If you have skipped any major releases you can bring your
 Nextcloud current with these steps:
 
@@ -109,15 +116,13 @@ sudo snap refresh nextcloud
 
 If you did **not** install via a Snap package:
 
-#. Add the repository of your current version
 #. Upgrade your current version to the latest point release
-#. Add the repo of the next major release
 #. Upgrade your current version to the next major release
 #. Run upgrade routine
-#. Repeat from step 3 until you reach the last available major release
+#. Repeat from step 2 until you reach the last available major release
 
 You'll find previous Nextcloud releases in the `Nextcloud Server Changelog
 <https://nextcloud.com/changelog/>`_.
 
-If upgrading via your package manager fails, then you must perform a
+If upgrading via your Snap package manager fails, then you must perform a 
 :doc:`manual_upgrade`.
