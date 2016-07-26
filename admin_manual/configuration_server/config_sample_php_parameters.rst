@@ -677,7 +677,7 @@ Logging
 
 ::
 
-	'log_type' => 'owncloud',
+	'log_type' => 'file',
 
 By default the Nextcloud logs are sent to the ``nextcloud.log`` file in the
 default Nextcloud data directory.
