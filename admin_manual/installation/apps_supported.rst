@@ -6,28 +6,37 @@ AGPL Apps
 ---------
 
 * Activity
+* Admin Audit Log
 * AntiVirus
+* Calendar
 * Collaborative Tags
-* Comments 
+* Comments
+* Contacts
 * Encryption
 * External Sites
 * External Storage
-* Nextcloud WebDAV Endpoint (handles old and new webdav endpoints)
+* WebDAV Endpoint (handles old and new webdav endpoints)
 * Federated File Sharing (allows file sharing across Nextcloud instances)
 * Federation (allows usernname auto-complete across Nextcloud instances)
 * Files (cannot be disabled)
+* Files Access Control
+* Files Automated Tagging
 * Files PDF Viewer
 * Files Sharing
-* Files TextEditor
+* Files Text Editor
 * Files Trashbin
 * Files Versions
-* Files VideoPlayer
+* Files Video Player
 * First Run Wizard
 * Gallery
 * Notifications
 * Object Storage (Swift)
+* Password Policy
 * Provisioning API
 * Template Editor (for notification emails)
+* Theming
 * Update Notifications
 * User External
 * User LDAP
+* User SAML
+* Workflow Engine (cannot be disabled)
