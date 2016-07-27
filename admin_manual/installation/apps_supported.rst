@@ -15,7 +15,6 @@ AGPL Apps
 * Encryption
 * External Sites
 * External Storage
-* WebDAV Endpoint (handles old and new webdav endpoints)
 * Federated File Sharing (allows file sharing across Nextcloud instances)
 * Federation (allows usernname auto-complete across Nextcloud instances)
 * Files (cannot be disabled)
@@ -38,5 +37,6 @@ AGPL Apps
 * Update Notifications
 * User External
 * User LDAP
-* User SAML
+* User Shibboleth/SAML
+* WebDAV Endpoint (handles old and new webdav endpoints)
 * Workflow Engine (cannot be disabled)
