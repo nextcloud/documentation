@@ -37,6 +37,6 @@ AGPL Apps
 * Update Notifications
 * User External
 * User LDAP
-* User SAML
+* User Shibboleth/SAML
 * WebDAV Endpoint (handles old and new webdav endpoints)
 * Workflow Engine (cannot be disabled)
