@@ -32,6 +32,7 @@ AGPL Apps
 * Password Policy
 * Provisioning API
 * Template Editor (for notification emails)
+* Theming
 * Update Notifications
 * User External
 * User LDAP
