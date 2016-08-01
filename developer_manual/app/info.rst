@@ -178,16 +178,20 @@ Defines the required target operating system the app can run on. Valid values ar
 
 owncloud
 ========
-**Required**: Defines minimum and maximum versions of the Nextcloud core. In case undefined the values will be taken from the tag 'requiremin'.
+**Required**: Defines minimum and maximum versions of the Nextcloud core. In case undefined the values will be taken from the tag `requiremin`_.
+
+.. note:: Currently this tag is also used to check for the nextcloud version number.
+          Thereby the following "translation" is made:
+
+          * ownCloud 9.0 matches Nextcloud 9
+          * ownCloud 9.1 matches Nextcloud 10
+          * ownCloud 9.2 matches Nextcloud 11
 
 
 Deprecated
 ----------
 
 The following sections are just listed for reference and should not be used because
-
-* **public/remote**: Use :doc:`api` instead because you'll have to use :doc:`../core/externalapi` which is known to be buggy (works only properly with GET/POST)
-* **standalone/default_enable**: They tell core what do on setup, you will not be able to even activate your app if it has those entries. This should be replaced by a config file inside core.
 
 requiremin
 ==========
