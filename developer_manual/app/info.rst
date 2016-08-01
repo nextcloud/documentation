@@ -177,7 +177,14 @@ Defines the required target operating system the app can run on. Valid values ar
 
 owncloud
 ========
-**Required**: Defines minimum and maximum versions of the Nextcloud core. In case undefined the values will be taken from the tag 'requiremin'.
+**Required**: Defines minimum and maximum versions of the Nextcloud core. In case undefined the values will be taken from the tag `requiremin`_.
+
+.. note:: Currently this tag is also used to check for the nextcloud version number.
+          Thereby the following "translation" is made:
+
+          * ownCloud 9.0 matches Nextcloud 9
+          * ownCloud 9.1 matches Nextcloud 10
+          * ownCloud 9.2 matches Nextcloud 11
 
 
 Deprecated
