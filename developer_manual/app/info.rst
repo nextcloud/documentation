@@ -192,9 +192,6 @@ Deprecated
 
 The following sections are just listed for reference and should not be used because
 
-* **public/remote**: Use :doc:`api` instead because you'll have to use :doc:`../core/externalapi` which is known to be buggy (works only properly with GET/POST)
-* **standalone/default_enable**: They tell core what do on setup, you will not be able to even activate your app if it has those entries. This should be replaced by a config file inside core.
-
 requiremin
 ==========
 Deprecated in favor of the **<dependencies>** tag.
