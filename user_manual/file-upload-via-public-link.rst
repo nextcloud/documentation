@@ -9,13 +9,13 @@ You can allow people to upload files via public link without letting them see th
 
 To create a folder, click the + and choose a name, e.g. publicupload
 
-.. figure:: images/files-public-upload-create-folder
+.. figure:: images/files-public-upload-create-folder.png
 
 You have to share the folder by clicking the share icon. In the right sidebar click the checkbox "allow editing". Another checkbox with the name "hide file listing" will appear, check it!
 
-.. figure:: images/files-public-upload-sharing
+.. figure:: images/files-public-upload-sharing.png
 
 Copy the link and send it to the person who should upload files.
 When the link is opened in a browser, the person will see the avatar and username of the user who shared the folder. Files can be uploaded by selecting or dropping them.
 
-.. figure:: images/files-public-upload-visitor
+.. figure:: images/files-public-upload-visitor.png
