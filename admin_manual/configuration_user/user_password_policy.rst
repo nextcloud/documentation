@@ -22,3 +22,4 @@ You can configure
 * Enforce special characters like ! or :
 
 .. figure:: ../images/user_password_policy_configuration_app.png
+
