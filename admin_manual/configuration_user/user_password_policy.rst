@@ -21,4 +21,4 @@ You can configure
 * Enforce numeric characters
 * Enforce special characters like ! or :
 
-.. figure:: ../images/user_password_policy_configure_app.png
+.. figure:: ../images/user_password_policy_configuration_app.png
