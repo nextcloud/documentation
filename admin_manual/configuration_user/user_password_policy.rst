@@ -15,6 +15,7 @@ Enable the Password Policy app.
 Configure the Password Policy app.
 
 You can configure 
+
 * a minimal length of a password. Default is 10 characters.
 * to forbid common passwords like 'california' or 'enterprise'.  
 * enforce upper and lower case characters
