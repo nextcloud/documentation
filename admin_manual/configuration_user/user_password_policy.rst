@@ -3,16 +3,6 @@ User Password Policy App
 ========================
 
 A password policy is a set of rules designed to enhance computer security by encouraging users to employ strong passwords and use them properly. 
-To be able to to so you need to
-
-* enable the Password Policy app.
-* configure the Password Policy app.
-
-Enable the Password Policy app.
-
-.. figure:: ../images/user_password_policy_enable_app.png
-
-Configure the Password Policy app.
 
 You can configure 
 
