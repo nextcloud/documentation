@@ -24,3 +24,4 @@ Nextcloud Server Configuration
    js_css_asset_management_configuration
    automatic_configuration
    oc_server_tuning
+   theming
