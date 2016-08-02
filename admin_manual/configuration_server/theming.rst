@@ -12,9 +12,9 @@ In the administrative settings you can modify the appearance of Nextcloud:
 * Log in image: The background image of the log in page
 
 
-.. figure:: ../images/theming.png
+.. figure:: ../configuration_server/images/theming.png
 
 
 Log in page   
 
-.. figure:: ../images/theming-log-in-page.png
+.. figure:: ../configuration_server/images/theming-log-in-page.png
