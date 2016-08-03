@@ -8,7 +8,7 @@ In the administrative settings you can modify the appearance of Nextcloud:
 * Web Address 
 * Slogan
 * Color: The color of header bar, checkboxes and folder icon
-* Logo: The logo will appear in the header and on the log in page
+* Logo: The logo will appear in the header and on the log in page. Default has 62/34 px.
 * Log in image: The background image of the log in page
 
 
