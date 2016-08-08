@@ -407,8 +407,8 @@ confirm your paths, for example::
 If any of your system environment variables are not present in the file then 
 you must add them.
 
-When you are using shared hosting or a control panel to manage your Nextcloud 
-VM or server, the configuration files are almost certain to be located 
+When you are using shared hosting or a control panel to manage your `Nextcloud VM
+<https://github.com/nextcloud/vm>`_ or server, the configuration files are almost certain to be located 
 somewhere else, for security and flexibility reasons, so check your 
 documentation for the correct locations.
 
