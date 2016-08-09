@@ -119,7 +119,7 @@ your nginx installation.
   
       # Adding the cache control header for js and css files
       # Make sure it is BELOW the PHP block
-      location ~* \.(?:css|js)$ {
+      location ~* \.(?:css|js|woff|svg|gif)$ {
           try_files $uri /index.php$uri$is_args$args;
           add_header Cache-Control "public, max-age=7200";
           # Add headers to serve security related headers (It is intended to 
@@ -138,7 +138,7 @@ your nginx installation.
           access_log off;
       }
   
-      location ~* \.(?:svg|gif|png|html|ttf|woff|ico|jpg|jpeg)$ {
+      location ~* \.(?:png|html|ttf|ico|jpg|jpeg)$ {
           try_files $uri /index.php$uri$is_args$args;
           # Optional: Don't log access to other assets
           access_log off;
@@ -257,7 +257,7 @@ your nginx installation.
   
           # Adding the cache control header for js and css files
           # Make sure it is BELOW the PHP block
-          location ~* \.(?:css|js)$ {
+          location ~* \.(?:css|js|woff|svg|gif)$ {
               try_files $uri /nextcloud/index.php$uri$is_args$args;
               add_header Cache-Control "public, max-age=7200";
               # Add headers to serve security related headers  (It is intended 
@@ -276,7 +276,7 @@ your nginx installation.
               access_log off;
           }
   
-          location ~* \.(?:svg|gif|png|html|ttf|woff|ico|jpg|jpeg)$ {
+          location ~* \.(?:png|html|ttf|ico|jpg|jpeg)$ {
               try_files $uri /nextcloud/index.php$uri$is_args$args;
               # Optional: Don't log access to other assets
               access_log off;
