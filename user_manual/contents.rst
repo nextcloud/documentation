@@ -16,5 +16,4 @@ Table of Contents
     userpreferences
     session_management
     external_storage/index
-    bookmarks
     
