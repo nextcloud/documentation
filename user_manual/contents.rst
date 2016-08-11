@@ -15,5 +15,4 @@ Table of Contents
     documents
     userpreferences
     external_storage/index
-    bookmarks
     
