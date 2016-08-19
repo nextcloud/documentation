@@ -71,6 +71,7 @@ for example ``https://example.com``, without a trailing slash. You need two
 
   https://example.com/nextcloud/index.php/settings/personal
   https://example.com/nextcloud/index.php/settings/admin
+  https://example.com/nextcloud/settings/admin/externalstorages
   
 Replace ``https://example.com/nextcloud/`` with your own Nextcloud server URL, 
 then click **Create**.
