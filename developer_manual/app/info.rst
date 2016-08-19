@@ -51,6 +51,11 @@ The :file:`appinfo/info.xml` contains metadata about the app:
           <os>Linux</os>
           <owncloud min-version="6.0.4" max-version="8"/>
       </dependencies>
+      
+      <settings>
+          <admin-section>OCA\YourAppsNamespace\Settings\AdminSection</admin-section>
+          <admin>OCA\YourAppsNamespace\Settings\AdminSettings</admin>
+      </setting>
 
       <!-- deprecated, just for reference -->
       <requiremin>5</requiremin>
@@ -187,7 +192,22 @@ owncloud
           * ownCloud 9.1 matches Nextcloud 10
           * ownCloud 9.2 matches Nextcloud 11
 
+settings
+--------
 
+When your app has admin settings, this is the place to register the corresponding classes.
+
+admin-section
+=============
+
+In case the app needs to register a new section on the admin settings page, it needs to implement the \OCP\Settings\ISection interface. The implementing class needs to be specified here.
+
+admin
+=====
+
+In case the app has its own admin related settings, it needs to implement the \OCP\Settings\ISettings interface. The implementing class needs to be specified here.
+          
+          
 Deprecated
 ----------
 

@@ -32,6 +32,7 @@
    two-factor-provider
    hooks
    backgroundjobs
+   settings
    logging
    testing
    publishing
