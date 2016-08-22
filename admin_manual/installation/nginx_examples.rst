@@ -277,7 +277,7 @@ Add *inside* the ``server{}`` block, as an example of a configuration::
    fastcgi_ignore_headers Cache-Control Expires Set-Cookie;
    
    location ~ \.php(?:$/) {
-         fastcgi_split_path_info ^(.+\.php)(/.+)$;
+         fastcgi_split_path_info ^(.+\.php)(/.*)$;
        
          include fastcgi_params;
          fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
