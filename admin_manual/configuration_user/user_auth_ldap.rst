@@ -386,12 +386,12 @@ Enable LDAP password changes per user:
 
     |  - Access control policies must be configured on the LDAP server to grant permissions for password changes.
     |  - Passwords are sent in plaintext to the LDAP server. Therefore, transport encryption must be used for the communication between Nextcloud and the LDAP server, e.g. employ LDAPS.
-	|  - It is highly recommended to enable password hashing on the LDAP server. While Active Directory stores passwords in an one-way format by default, OpenLDAP users could configure the ``ppolicy_hash_cleartext`` directive of the ppolicy overlay that ships with OpenLDAP.
+    |  - It is highly recommended to enable password hashing on the LDAP server. While Active Directory stores passwords in an one-way format by default, OpenLDAP users could configure the ``ppolicy_hash_cleartext`` directive of the ppolicy overlay that ships with OpenLDAP.
   
- * Additional requirements for Active Directory:
+  * Additional requirements for Active Directory:
 
     |  - At least a 128-bit transport encryption must be used for the communication between Nextcloud and the LDAP server
-	|  - Make sure that the ``fUserPwdSupport`` char of the dSHeuristics is configured to employ the ``userPassword`` attribute as ``unicodePwd`` alias. While this is set accordingly on AD LDS by default, this is not the case on AD DS.
+    |  - Make sure that the ``fUserPwdSupport`` char of the dSHeuristics is configured to employ the ``userPassword`` attribute as ``unicodePwd`` alias. While this is set accordingly on AD LDS by default, this is not the case on AD DS.
 
 
 Special Attributes
