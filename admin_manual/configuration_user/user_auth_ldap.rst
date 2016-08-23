@@ -393,6 +393,7 @@ Enable LDAP password changes per user:
     |  - At least a 128-bit transport encryption must be used for the communication between Nextcloud and the LDAP server
 	|  - Make sure that the ``fUserPwdSupport`` char of the dSHeuristics is configured to employ the ``userPassword`` attribute as ``unicodePwd`` alias. While this is set accordingly on AD LDS by default, this is not the case on AD DS.
 
+
 Special Attributes
 ^^^^^^^^^^^^^^^^^^
 
