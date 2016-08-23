@@ -23,6 +23,7 @@
    js
    css
    l10n
+   theming
    schema
    database
    configuration
@@ -31,6 +32,7 @@
    two-factor-provider
    hooks
    backgroundjobs
+   settings
    logging
    testing
    publishing
@@ -101,6 +103,7 @@ The app's presentation layer:
 * :doc:`js`
 * :doc:`css`
 * :doc:`l10n`
+* :doc:`theming`
 
 Storage
 -------
