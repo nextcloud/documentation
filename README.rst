@@ -2,7 +2,7 @@
 Nextcloud Documentation
 =======================
 
-Documentation is published on `<https://docs.nextcloud.org>`_.
+Documentation is published on `<https://docs.nextcloud.com>`_.
 
 The `documentation Wiki <https://github.com/nextcloud/documentation/wiki>`_ is 
 available for tips, tricks, edge cases, and anyone who wants to contribute more 
