@@ -55,7 +55,7 @@ The :file:`appinfo/info.xml` contains metadata about the app:
       <settings>
           <admin-section>OCA\YourAppsNamespace\Settings\AdminSection</admin-section>
           <admin>OCA\YourAppsNamespace\Settings\AdminSettings</admin>
-      </setting>
+      </settings>
 
       <!-- deprecated, just for reference -->
       <requiremin>5</requiremin>
