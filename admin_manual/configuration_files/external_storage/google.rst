@@ -69,8 +69,10 @@ then enter your app name. **Authorized JavaScript Origins** is your root domain,
 for example ``https://example.com``, without a trailing slash. You need two 
 **Authorized Redirect URIs**, and they must be in this form::
 
-  https://example.com/nextcloud/index.php/settings/personal
-  https://example.com/nextcloud/index.php/settings/admin
+  https://example.com/nextcloud/index.php/settings/personal/
+  https://example.com/nextcloud/index.php/personal/
+  https://example.com/nextcloud/index.php/settings/admin/externalstorages
+  https://example.com/nextcloud/settings/admin/externalstorages
   
 Replace ``https://example.com/nextcloud/`` with your own Nextcloud server URL, 
 then click **Create**.
