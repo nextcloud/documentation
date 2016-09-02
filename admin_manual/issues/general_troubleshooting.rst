@@ -6,8 +6,7 @@ If you have trouble installing, configuring or maintaining Nextcloud, please
 refer to our community support channels:
 
 * `The Nextcloud Forums`_
-
-.. note:: The Nextcloud forums have a `FAQ page`_ where each topic corresponds 
+   The Nextcloud forums have a `FAQ page`_ where each topic corresponds
    to typical mistakes or frequently occurring issues
 
 * `The Nextcloud forums`_
@@ -35,6 +34,8 @@ configuration report with the :ref:`occ config command
 <config_commands_label>`, with passwords automatically obscured.
 
 .. _the Nextcloud Forums: https://help.nextcloud.com
+.. _FAQ page: https://help.nextcloud.com/c/faq
+.. _bugtracker: https://github.com/nextcloud/server/issues
 .. _webchat: http://webchat.freenode.net/?channels=nextcloud
    https://docs.nextcloud.org/server/11/developer_manual/bugtracker/index.html
 .. TODO ON RELEASE: Update version number above on release

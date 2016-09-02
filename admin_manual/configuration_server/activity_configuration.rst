@@ -19,7 +19,7 @@ The Activity App is shipped and enabled by default. If it is not enabled
 simply go to your Nextcloud Apps page to enable it.
 
 Configuring your Nextcloud for the Activity App
-----------------------------------------------
+-----------------------------------------------
 
 To configure your Nextcloud to send out e-mail notifications a working
 :doc:`email_configuration` is mandatory.
