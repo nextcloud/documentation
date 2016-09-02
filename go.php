@@ -9,6 +9,7 @@ $mapping = array(
     'admin-external-storage'  => '/admin_manual/configuration_files/external_storage_configuration_gui.html',
     'admin-sharing-federated' => '/admin_manual/configuration_files/federated_cloud_sharing_configuration.html',
     'admin-sharing'           => '/admin_manual/configuration_files/file_sharing_configuration.html',
+    'admin-files-access-control' => '/admin_manual/configuration_files/files_access_control.html',
     'admin-transactional-locking' => '/admin_manual/configuration_files/files_locking_transactional.html',
     'admin-background-jobs'   => '/admin_manual/configuration_server/background_jobs_configuration.html',
     'admin-config'            => '/admin_manual/configuration_server/config_sample_php_parameters.html',
