@@ -50,7 +50,7 @@ This example blocks access to any folder with the tag ``Confidential``.
        :alt: Deny access based on collaborative tag
 
 Prevent uploading of specific files
--------------------------
+-----------------------------------
 
 It's possible to prevent specific files from being uploaded to Nextcloud. You
 simply need to define a rule based on the mimetype and our powerful access control
