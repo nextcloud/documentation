@@ -7,6 +7,8 @@ pre-defined OCS calls.
 
 The base URL for all calls to the share API is: *<nextcloud_base_url>/ocs/v1.php/apps/files_sharing/api/v1*
 
+All calls to OCS endpoints require the ``OCS-APIRequest`` header to be set to ``true``.
+
 Local Shares
 ============
 

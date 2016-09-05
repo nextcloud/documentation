@@ -13,6 +13,8 @@ listed above. The Provisioning API app is enabled by default.
 
 The base URL for all calls to the share API is **nextcloud_base_url/ocs/v1.php/cloud**.
 
+All calls to OCS endpoints require the ``OCS-APIRequest`` header to be set to ``true``.
+
 Instruction Set For Users
 =========================
 
