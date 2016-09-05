@@ -49,6 +49,21 @@ This example blocks access to any folder with the tag ``Confidential``.
     .. figure:: images/files_access_control_collaborative_tags.png
        :alt: Deny access based on collaborative tag
 
+Prevent uploading of specific files
+-----------------------------------
+
+It's possible to prevent specific files from being uploaded to Nextcloud. You
+simply need to define a rule based on the mimetype and our powerful access control
+engine will block any attempt to upload the file. The safest way to define the rule
+is to use a regular expression, as it will help you cover all the known media types
+used for the type of file you're trying to block.
+
+The following example prevents zip files from being uploaded by using the regular
+expression: ``/^application\/(zip|x-zip-compressed)$/i``
+
+    .. figure:: images/files_access_control_block_mimetype.png
+       :alt: Prevent upload based on mimetype
+
 .. _available-rules-label:
 
 Available rules
