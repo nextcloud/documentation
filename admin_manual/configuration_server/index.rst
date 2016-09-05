@@ -25,4 +25,4 @@ Nextcloud Server Configuration
    oc_server_tuning
    theming
 
-   .. Intentional disabled antivirus_configuration
+.. Intentional disabled antivirus_configuration
