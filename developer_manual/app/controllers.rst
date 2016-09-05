@@ -653,7 +653,7 @@ OCS
 ---
 .. note:: This is purely for compatibility reasons. If you are planning to offer an external API, go for a :doc:`api` instead.
 
-In order to ease migration from OCS API routes to the App Framework, an additional controller and response have been added. To migrate your API you can use the **OCP\\AppFramework\\OCSController** baseclass and return your data in the form of an array in the following way:
+In order to ease migration from OCS API routes to the App Framework, an additional controller and response have been added. To migrate your API you can use the **OCP\\AppFramework\\OCSController** baseclass and return your data in the form of a DataResponse in the following way:
 
 
 .. code-block:: php
@@ -661,6 +661,7 @@ In order to ease migration from OCS API routes to the App Framework, an addition
     <?php
     namespace OCA\MyApp\Controller;
 
+    use OCP\AppFramework\Http\DataResponse;
     use OCP\AppFramework\OCSController;
 
     class ShareController extends OCSController {
@@ -672,19 +673,33 @@ In order to ease migration from OCS API routes to the App Framework, an addition
          * @CORS
          */
         public function getShares() {
-            return [
-                'data' => [
-                    // actual data is in here
-                ],
-                // optional
-                'statuscode' => 100,
-                'status' => 'OK'
-            ];
+            return new DataResponse([
+                //Your data here
+            ]);
         }
 
     }
 
 The format parameter works out of the box, no intervention is required.
+
+In order to make routing work for OCS routes you need to add a seperate 'ocs' entry to the routing table of your app.
+Inside these are normal routes.
+
+.. code-block:: php
+
+   <?php
+
+   return [
+        'ocs' => [
+            [
+                'name' => 'Share#getShares',
+                'url' => '/api/v1/shares',
+                'verb' => 'GET',
+            ],
+        ],
+   ];
+
+Now your method will be reachable via ``<server>/ocs/v2.php/apps/<APPNAME>/api/v1/shares``
 
 Handling errors
 ---------------
