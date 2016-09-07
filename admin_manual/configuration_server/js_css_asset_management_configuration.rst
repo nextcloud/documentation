@@ -1,6 +1,11 @@
 JavaScript and CSS Asset Management
 ===================================
 
+.. warning:: The asset pipelining feature has been remove in Nextcloud 10, because it broke several
+             apps, calendar and gallery being two of them. In order to remove traces, you can manually
+             remove the ``asset-pipeline.enabled`` config from your config file and delete the
+             ``assets/`` folder.
+
 In production environments, JavaScript and CSS files should be delivered in a concatenated and compressed format.
 
 Nextcloud can automatically collect all JavaScript and CSS files, aggregate and compress them to then save the result in a folder called 'assets' which can be found in the folder where Nextcloud has been installed. 
