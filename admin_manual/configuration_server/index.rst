@@ -21,7 +21,7 @@ Nextcloud Server Configuration
    reverse_proxy_configuration 
    thirdparty_php_configuration
    automatic_configuration
-   oc_server_tuning
+   server_tuning
    theming
 
 .. Intentional disabled antivirus_configuration
