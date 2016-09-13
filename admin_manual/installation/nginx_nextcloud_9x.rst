@@ -84,11 +84,12 @@ your nginx installation.
       # This module is currently not supported.
       #pagespeed off;
   
-      error_page 403 /core/templates/403.php;
-      error_page 404 /core/templates/404.php;
+      Currently not working
+      #error_page 403 /core/templates/403.php;
+      #error_page 404 /core/templates/404.php;
   
       location / {
-          rewrite ^ /index.php$uri;
+          rewrite ^ /index.php;
       }
   
       location ~ ^/(?:build|tests|config|lib|3rdparty|templates|data)/ {
