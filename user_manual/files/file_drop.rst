@@ -22,13 +22,13 @@ Check Share Link, Allow editing, Hide file listing.
 .. image:: ../images/anonym_hide_file_listing.png
 
 Now you can send the link to the uploadfolder manualy or by using the
-Nextcloud send funktion, if your administrator has enabled it.
+Nextcloud send function, if your administrator has enabled it.
 
 
 Uploading Files
 ---------------
 
-Using the anonymous upload funktion ist  simple. You receive a link to the upload 
+Using the anonymous upload function is  simple. You receive a link to the upload 
 folder, click the link, and then you'll see an Nextcloud page with a **Click to 
 upload** button.
 
@@ -37,6 +37,6 @@ upload** button.
 This opens a file picker, and you select the file or directory you want to 
 upload. You're also  able to just drop files into the window.
    
-When your upload is completed, the filenames are listet:
+When your upload is completed, the filenames are listed:
 
 .. image:: ../images/anonym_uploaded_files.png
