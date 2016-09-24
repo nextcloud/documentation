@@ -104,35 +104,34 @@ Base DN:
 
   * *dc=my-company,dc=com*
 
-User Filter
-^^^^^^^^^^^
+Users Tab
+^^^^^^^^^
 
 Use this to control which LDAP users are listed as Nextcloud users on your 
 Nextcloud server. In order to control which LDAP users can login to your Nextcloud 
-server use the Login filter. Those LDAP users who have access but are not listed 
+server use the **Login Attributes** tab. Those LDAP users who have access but are not listed 
 as users (if there are any) will be hidden users. You may bypass the form fields 
 and enter a raw LDAP filter if you prefer.
 
 .. figure:: ../images/ldap-wizard-2-user.png
    :alt: User filter
 
-only those object classes:
+Only those object classes:
   Nextcloud will determine the object classes that are typically available for
   user objects in your LDAP. Nextcloud will automatically select the object 
   class that returns the highest amount of users. You may select multiple 
   object classes.
 
-only from those groups:
+Only from those groups:
   If your LDAP server supports the ``member-of-overlay`` in LDAP filters, you 
   can define that only users from one or more certain groups are allowed to
-  appear in user listings in Nextcloud. By default, no value will be selected. 
-You
-  may select multiple groups.
+  appear in user listings in Nextcloud. By default, no value will be selected.
+  You may select multiple groups.
 
-  If your LDAP server does not support the member-of-overlay in LDAP filters,
+  If your LDAP server does not support the ``member-of-overlay`` in LDAP filters,
   the input field is disabled. Please contact your LDAP administrator.
 
-Edit raw filter instead:
+Edit LDAP Query:
   Clicking on this text toggles the filter mode and you can enter the raw LDAP 
   filter directly. Example::
 
@@ -143,16 +142,16 @@ x users found:
   This is an indicator that tells you approximately how many users will be
   listed in Nextcloud. The number updates automatically after any changes.
 
-Login Filter
-^^^^^^^^^^^^
+Login Attributes Tab
+^^^^^^^^^^^^^^^^^^^^
 
-The settings in the Login Filter tab determine which LDAP users can log in to 
+The settings in the Login Attributes tab determine which LDAP users can log in to 
 your Nextcloud system and which attribute or attributes the provided login name 
 is matched against (e.g. LDAP/AD username, email address). You may select 
 multiple user details. (You may bypass the form fields and enter a raw LDAP 
 filter if you prefer.)
 
-You may override your User Filter settings on the User Filter tab by using a raw 
+You may override your User Filter settings on the Users tab by using a raw 
 LDAP filter.
 
 .. figure:: ../images/ldap-wizard-3-login.png
@@ -161,21 +160,21 @@ LDAP filter.
 LDAP Username:
   If this value is checked, the login value will be compared to the username in
   the LDAP directory. The corresponding attribute, usually *uid* or
-  *samaccountname* will be detected automatically by Nextcloud.
+  *samaccountname* will be detected automatically by Nextcloud. 
 
 LDAP Email Address:
   If this value is checked, the login value will be compared to an email address
   in the LDAP directory; specifically, the *mailPrimaryAddress* and *mail* 
-  attributes.
+  attributes. 
 
 Other Attributes:
   This multi-select box allows you to select other attributes for the 
   comparison. The list is generated automatically from the user object 
-  attributes in your LDAP server.
+  attributes in your LDAP server. 
 
-Edit raw filter instead:
+Edit LDAP Query:
   Clicking on this text toggles the filter mode and you can enter the raw LDAP 
-  filter directly.
+  filter directly. 
 
   The **%uid** placeholder is replaced with the login name entered by the 
   user upon login.
@@ -192,30 +191,30 @@ Edit raw filter instead:
      ((&(objectClass=inetOrgPerson)(memberOf=cn=nextcloudusers,ou=groups,
      dc=example,dc=com)(|(uid=%uid)(mail=%uid)))
 
-Group Filter
-^^^^^^^^^^^^
+Groups Tab
+^^^^^^^^^^
 
 By default, no LDAP groups will be available in Nextcloud. The settings in the 
-group filter tab determine which groups will be available in Nextcloud. You may 
+Groups tab determine which groups will be available in Nextcloud. You may 
 also elect to enter a raw LDAP filter instead.
 
 .. figure:: ../images/ldap-wizard-4-group.png
    :alt: Group filter
 
-only those object classes:
+Only these object classes:
   Nextcloud will determine the object classes that are typically available for
   group objects in your LDAP server. Nextcloud will only list object
   classes that return at least one group object. You can select multiple
-  object classes. A typical object class is "group", or "posixGroup".
+  object classes. A typical object class is "group", or "posixGroup". 
 
-only from those groups:
+Only from these groups:
   Nextcloud will generate a list of available groups found in your LDAP server. 
-  and then you select the group or groups that get access to your Nextcloud 
-  server.
+  Then you select the group or groups that get access to your Nextcloud 
+  server. 
 
-Edit raw filter instead:
+Edit LDAP Query:
   Clicking on this text toggles the filter mode and you can enter the raw LDAP 
-  filter directly.
+  filter directly. 
 
   Example:
 
@@ -250,13 +249,13 @@ Connection Settings
 Configuration Active:
   Enables or Disables the current configuration. By default, it is turned off. 
   When Nextcloud makes a successful test connection it is automatically turned 
-  on.
+  on. 
 
 Backup (Replica) Host:
   If you have a backup LDAP server, enter the connection settings here. 
   Nextcloud will then automatically connect to the backup when the main server 
   cannot be reached. The backup server must be a replica of the main server so 
-  that the object UUIDs match.
+  that the object UUIDs match. 
 
   Example:
 
@@ -264,7 +263,7 @@ Backup (Replica) Host:
 
 Backup (Replica) Port:
   The connection port of the backup LDAP server. If no port is given,
-  but only a host, then the main port (as specified above) will be used.
+  but only a host, then the main port (as specified above) will be used. 
 
   Example:
 
@@ -272,16 +271,16 @@ Backup (Replica) Port:
 
 Disable Main Server:
   You can manually override the main server and make Nextcloud only connect to
-  the backup server. This is useful for planned downtimes.
+  the backup server. This is useful for planned downtimes. 
 
 Turn off SSL certificate validation:
-  Turns off SSL certificate checking. Use it for testing only!
+  Turns off SSL certificate checking. Use it for testing only! 
 
 Cache Time-To-Live:
   A cache is introduced to avoid unnecessary LDAP traffic, for example caching 
   usernames so they don't have to be looked up for every page, and speeding up 
   loading of the Users page. Saving the configuration empties the cache. The 
-  time is given in seconds.
+  time is given in seconds. 
 
   Note that almost every PHP request requires a new connection to the LDAP 
   server. If you require fresh PHP requests we recommend defining a minimum 
@@ -298,7 +297,7 @@ operates.
 .. _ldap_directory_settings:
 
 Directory Settings
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 
 .. figure:: ../images/ldap-advanced-2-directory.png
    :alt: Directory settings.
@@ -311,7 +310,7 @@ User Display Name Field:
 2nd User Display Name Field:  
   An optional second attribute displayed in brackets after the display name, 
   for example using the ``mail`` attribute displays as ``Molly Foo 
-  (molly@example.com)``.
+  (molly@example.com)``. 
 
 Base User Tree:
   The base DN of LDAP, from where all users can be reached. This must be a 
@@ -413,7 +412,7 @@ User Home Folder Naming Rule:
 
 In new Nextcloud installations the home folder rule is enforced. This means that once you set a home folder naming rule (get a home folder from an LDAP attribute), it must be available for all users. If it isn't available for a user, then that user will not be able to login. Also, the filesystem will not be set up for that user, so their file shares will not be available to other users.
 
-In migrated Nextcloud installations the old behavior still applies, which is using the Nextcloud username as the home folder when an LDAP attribute is not set. You may change this to enforcing the home folder rule with the ``occ`` command in Nextcloud, like this example on Ubuntu::
+In migrated Nextcloud installations the old behavior still applies, which is using the Nextcloud username as the home folder when an LDAP attribute is not set. You may change this enforcing the home folder rule with the ``occ`` command in Nextcloud, like this example on Ubuntu::
 
   sudo -u www-data php occ config:app:set user_ldap enforce_home_folder_naming_rule --value=1 
   
@@ -479,8 +478,8 @@ Username-LDAP User Mapping
   will have leftovers everywhere. Never clear the mappings in a production 
   environment, but only in a testing or experimental server.
 
-  **Clearing the Mappings is not configuration sensitive, it affects all LDAP
-  configurations!**
+.. warning:: Clearing the Mappings is not configuration sensitive, it affects all LDAP
+  configurations!
 
 Testing the configuration
 -------------------------
@@ -530,12 +529,10 @@ If you have trouble with certificate validation make sure that
 
 * You have the certificate of the server installed on the Nextcloud server
 * The certificate is announced in the system's LDAP configuration file (usually
-  */etc/ldap/ldap.conf*
-  
+  */etc/ldap/ldap.conf*)
 .. commenting out windows section as windows server is not supported  
 ..  *C:\\openldap\\sysconf\\ldap.conf* or
 ..  *C:\\ldap.conf* on Windows) using a **TLS_CACERT /path/to/cert** line.
-
 * Using LDAPS, also make sure that the port is correctly configured (by default
   636)
 
