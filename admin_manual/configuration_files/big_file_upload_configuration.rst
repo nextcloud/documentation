@@ -114,7 +114,7 @@ file size values::
  upload_max_filesize = 16G
  post_max_size = 16G
  
-Tell PHP which temp file you want it to use::
+Tell PHP which temp directory you want it to use::
  
  upload_tmp_dir = /var/big_temp_file/
 
@@ -153,7 +153,7 @@ this input box.
 
 To be able to use this input box you need to make sure that:
 
-* your Web server is be able to use the ``.htaccess`` file shipped by Nextcloud (Apache only)
+* your Web server is able to use the ``.htaccess`` file shipped by Nextcloud (Apache only)
 * the user your Web server is running as has write permissions to the files ``.htaccess`` and ``.user.ini``
 
 :ref:`strong_perms_label` might prevent write access to these files. As an admin you need
