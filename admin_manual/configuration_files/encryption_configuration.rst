@@ -215,7 +215,7 @@ command gives you the option to encrypt all files. You must first put your
 Nextcloud server into single-user mode to prevent any user activity until 
 encryption is completed::
 
- occ maintenance:singleuser
+ occ maintenance:singleuser --on
  Single user mode is currently enabled
 
 Then run ``occ``::
