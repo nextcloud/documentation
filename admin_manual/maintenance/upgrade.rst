@@ -72,9 +72,3 @@ Nextcloud release. Any apps that are not developed by Nextcloud show a 3rd party
 designation. **Install unsupported apps at your own risk**. Then, before the
 upgrade, all 3rd party apps must be disabled. After the upgrade is complete you
 may re-enable them.
-<<<<<<< HEAD
-
-.. nextcloud.com/install/:
-   https://nextcloud.com/install/
-=======
->>>>>>> d3d6ea5... Some more cleanup
