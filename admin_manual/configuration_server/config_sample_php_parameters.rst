@@ -623,7 +623,7 @@ available.
 
 ::
 
-	'updater.server.url' => 'https://updates.nextcloud.com/update-server/',
+	'updater.server.url' => 'https://updates.nextcloud.com/updater_server/',
 
 URL that Nextcloud should use to look for updates
 
