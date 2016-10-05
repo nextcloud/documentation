@@ -50,4 +50,4 @@ An example database XML file would look like this:
   </table>
   </database>
 
-To update the tables used by the app, simply adjust the database.xml file and increase the app version number in :file:`appinfo/version` to trigger an update.
+To update the tables used by the app, simply adjust the database.xml file and increase the app version number in :file:`appinfo/info.xml` to trigger an update.
