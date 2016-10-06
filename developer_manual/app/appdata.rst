@@ -40,6 +40,6 @@ The Simple Filesystem
 The `IAppData` uses the simple filesystem. This is a very simplified filesystem that will allow for easy
 mapping to for example memcaches. The filesystem has three elements: `root`, `folder`, `file`.
 
-The `root` can only contain folders. And each folder can only contain a files. This is limited to keep
+The `root` can only contain folders. And each folder can only contain files. This is limited to keep
 things simple and to allow easy mapping to other backends. For example a sysadmin might chose to map the
 avatars to fast storage since they are used often.
