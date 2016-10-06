@@ -28,6 +28,7 @@
    database
    configuration
    filesystem
+   appdata
    users
    two-factor-provider
    hooks
