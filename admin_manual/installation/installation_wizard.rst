@@ -137,8 +137,7 @@ use :ref:`label-phpinfo` (Look for the **User/Group** line).
 .. note:: When using an NFS mount for the data directory, do not change its 
    ownership from the default. The simple act of mounting the drive will set 
    proper permissions for Nextcloud to write to the directory. Changing 
-   ownership as above could result in some issues if the NFS mount is 
-   lost.
+   ownership as above could result in some issues if the NFS mount is lost.
 
 The easy way to set the correct permissions is to copy and save this script to
 a suitable path location, perhaps ``/usr/local/bin/`` - then run the script
@@ -146,6 +145,7 @@ from within your Nextcloud installation directory.  As per the comments in
 the script, you may setup additional environment variables on the command line
 if required.  The script can also be used to prepare for less strict
 permissions as required to do an upgrade::
+
 
  #!/bin/bash
 
@@ -192,9 +192,6 @@ permissions as required to do an upgrade::
  #
  # Main
  #
-
- # Default DocumentRoot
- DefaultDocumentRoot=/var/www/owncloud
 
  declare -A config
 
@@ -253,46 +250,40 @@ permissions as required to do an upgrade::
  [ "${1}" = "upgrade" ] && { upgrade=1; } || { upgrade=0; }
 
 
- # Determine Nextcloud installation, unless already set
+ # Determine Nextcloud installation path, unless already set
  [ -z "${nc_path}" ] && {
-     [ -f $(pwd)/occ ] && {
+     [ -f "$(pwd)"/occ ] && {
          nc_path=$(pwd)
      } || {
-         nc_path="${DefaultDocumentRoot}"
-         echo "Default Nextcloud path set"
+         [ -f /var/www/nextcloud/occ ] && {
+             nc_path=/var/www/nextcloud
+         } || {
+             [ -f /var/www/owncloud/occ ] && nc_path=/var/www/owncloud
+         } || {
+             error_exit "Nextcloud path not provided and cannot be determined"
+         }
      }
  }
  [ -f "${nc_path}"/occ ] || error_exit "Missing Nextcloud occ file"
+ config[nc_path]="${nc_path}"
+
 
  # Determine Nextcloud data path, unless already set
  [ -z "${nc_data}" ] && {
-     nc_data=''
-     [ -d $(pwd)/data  ] && { nc_data=$(pwd)/data; }
-     [ -d $(pwd)--data ] && { nc_data=$(pwd)--data; }
+     [ -d ${config[nc_path]}/data  ] && { nc_data=${config[nc_path]}/data; }
+     [ -d ${config[nc_path]}--data ] && { nc_data=${config[nc_path]}--data; }
  }
-
  [ -z "${nc_data}" ] && {
-     nc_data="${DefaultDocumentRoot}/data"
-     echo "Default data path set"
+     error_exit "Nextcloud data path not provided and cannot be determined"
  }
-
- echo
+ config[nc_data]="${nc_data}"
 
 
  # Report detils
  # - exit if required path(s) do not exist
- [ -d "${nc_path}" ] && {
-     echo -e "    Nextcloud installation path:   \"${nc_path}\""
- } || {
-     error_exit  "     Missing Nextcloud directory -- "${nc_path}"\n"
- }
-
- [ -d "${nc_data}" ] && {
-     echo -e "            Nextcloud Data path:   \"${nc_data}\"\n"
- } || {
-     error_exit "Missing Nextcloud data directory -- "${nc_data}"\n"
- }
-
+ echo
+ echo -e "    Nextcloud installation path:  \"${config[nc_path]}\""
+ echo -e "            Nextcloud Data path:  \"${config[nc_data]}\"\n"
  echo -e "                 htuser:htgroup   ${config[htuser]}:${config[htgroup]}\n"
 
  # Allow for confirmation of details, if not suitable,
@@ -303,23 +294,27 @@ permissions as required to do an upgrade::
  # If preparing for upgrade works, then set permissions more open, then exit
  [ ${upgrade} -eq 1 ] && {
      do_cmd chown -R ${config[htuser]}:${config[htgroup]} \
-         "${nc_path}" "${nc_data}"
+         "${config[nc_path]}" "${config[nc_data]}"
      echo -e "Ready for upgrade\n"
      exit
  }
 
  echo "Creating possible missing Directories"
- do_cmd mkdir -p "${nc_path}"/{assets,updater} "${nc_data}"
+ do_cmd mkdir -p "${config[nc_path]}"/{assets,updater} "${config[nc_data]}"
 
  echo "chmod Files and Directories"
- do_cmd find "${nc_path}"/ "${nc_data}"/ -type f -exec chmod 0640 {} \;
- do_cmd find "${nc_path}"/ "${nc_data}"/ -type d -exec chmod 0750 {} \;
+ do_cmd find "${config[nc_path]}"/ "${config[nc_data]}"/ \
+     -type f -exec chmod 0640 {} \;
+
+ do_cmd find "${config[nc_path]}"/ "${config[nc_data]}"/ \
+     -type d -exec chmod 0750 {} \;
+
 
  echo "chown Directories"
- do_cmd chown -R 0:${config[htgroup]} "${nc_path}"/
+ do_cmd chown -R 0:${config[htgroup]} "${config[nc_path]}"/
 
  # check for other expected (required) directories
- for pathx in "${nc_path}"/{apps,config,themes}/
+ for pathx in "${config[nc_path]}"/{apps,config,themes}/
  do
      [ ! -d ${pathx} ] && {
          error_exit "Missing required directory: ${pathx}\n"
@@ -327,25 +322,26 @@ permissions as required to do an upgrade::
  done
 
  do_cmd chown -R ${config[htuser]}:${config[htgroup]} \
-     "${nc_path}"/{apps,assets,config,themes,updater}/ "${nc_data}"/
+     "${config[nc_path]}"/{apps,assets,config,themes,updater}/ \
+     "${config[nc_data]}"/
 
- do_cmd chmod +x "${nc_path}"/occ
+ do_cmd chmod +x "${config[nc_path]}"/occ
 
  echo "chmod/chown .htaccess"
  # Protect every instance of .htaccess
  # - NB: there may be more than these default files:
- #    ${ncpaath}/.htaccess
- #    "${nc_data}"/.htaccess
- do_cmd find "${nc_path}"/ "${nc_data}"/ -name .htaccess \
+ #    "${config[nc_path]}"/.htaccess
+ #    "${config[nc_data]}"/.htaccess
+ do_cmd find "${config[nc_path]}"/ "${config[nc_data]}"/ -name .htaccess \
      -exec chmod 0644 {} \; \
      -exec chown 0:${config[htgroup]} {} \; \
      -ls
 
-If you have customized your Nextcloud installation and your filepaths are 
+If you have customized your Nextcloud installation and your filepaths are
 different than the standard installation, then use environment variables
 in the command line as detailed.
 
-This lists the recommended modes and ownership for your Nextcloud directories 
+This lists the recommended modes and ownership for your Nextcloud directories
 and files:
 
 * All files should be read-write for the file owner, read-only for the 
