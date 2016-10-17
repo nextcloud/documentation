@@ -10,7 +10,7 @@ All PHP classes can be tested with `PHPUnit <http://phpunit.de/>`_, JavaScript c
 
 PHP
 ===
-The PHP tests go into the **tests/** directory. Unfortunately the classloader in core requires a running server (as in fully configured and setup up with a database connection). This is unfortunately too complicated and slow so a separate classloader has to be provided. If the app has been generated with the **ncdev startapp** command, the classloader is already present in the the **tests/** directory and PHPUnit can be run with::
+The PHP tests go into the **tests/** directory and PHPUnit can be run with::
 
     phpunit tests/
 
