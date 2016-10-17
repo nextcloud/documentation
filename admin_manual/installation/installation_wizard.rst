@@ -157,8 +157,8 @@ replace the ``htuser`` and ``htgroup`` variables with your HTTP user and group::
  mkdir -p $ncpath/updater
 
  printf "chmod Files and Directories\n"
- find ${ncpath} -type f -print0 | xargs -0 chmod 0640
- find ${ncpath} -type d -print0 | xargs -0 chmod 0750
+ find ${ncpath}/ -type f -print0 | xargs -0 chmod 0640
+ find ${ncpath}/ -type d -print0 | xargs -0 chmod 0750
 
  printf "chown Directories\n"
  chown -R ${rootuser}:${htgroup} ${ncpath}
