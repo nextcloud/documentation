@@ -108,8 +108,6 @@ An important step of bug triaging is trying to reproduce the bugs, this means, u
 
 This is needed in order to differentiate random/race condition bugs of reproducible ones (which may be reproduced by developers too; and they can fix them).
 
-To reproduce an issue, please refer to our testing documents: :doc:`../testing/index`
-
 If you can't reproduce an issue in a newer version of Nextcloud, it is most likely fixed and can be closed. Comment that you failed to reproduce the problem, and if the reporter can confirm (or doesn't respond for a long time), you can close the issue. Also, be sure to add what exactly you tested with - the Nextcloud Master or a branch (and if so, when), or did you use a release, and if so - what version?
 
 Finalizing and tagging
