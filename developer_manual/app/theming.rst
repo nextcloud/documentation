@@ -21,9 +21,10 @@ When the theming app is enabled, it provides the **OCA.Theming** object. It can
 be used to handle themed instances differently.
 
 .. code-block:: javascript
-    if(OCA.Theming) {
-        $('.myapp-element').animate({backgroundColor:OCA.Theming.color});
-    }
+
+  if(OCA.Theming) {
+    $('.myapp-element').animate({backgroundColor:OCA.Theming.color});
+  }
 
 The following information is available:
 
