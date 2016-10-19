@@ -4,17 +4,11 @@ Create an app
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-After :doc:`you've set up the development environment and installed the dev tool <../general/devenv>` change into the Nextcloud apps directory::
+After :doc:`you've set up the development environment <../general/devenv>` change into the Nextcloud apps directory::
 
     cd /var/www/nextcloud/apps
 
-Then run::
-
-    ncdev startapp MyApp --email mail@example.com --author "Your Name" --description "My first app" --owncloud 8
-
-This will create all the needed files in the current directory. For more information on how to customize the generated app, see the `Project's GitHub page <https://github.com/nexcloud/ncdev>`_ or run::
-
-    ncdev startapp -h
+Then create a skeleton app in the `app store <https://apps.nextcloud.com/developer/apps/generate>`_.
 
 Enable the app
 --------------
@@ -27,7 +21,6 @@ The following directories have now been created:
 * **appinfo/**: Contains app metadata and configuration
 * **css/**: Contains the CSS
 * **js/**: Contains the JavaScript files
-* **lib/Controller/**: Contains the controllers
-* **lib/**: Contains the other class files of your app
+* **lib/**: Contains the php class files of your app
 * **templates/**: Contains the templates
 * **tests/**: Contains the tests
