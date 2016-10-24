@@ -13,21 +13,24 @@ default distro profiles. Run these commands as root, and remember to adjust the 
 in these examples for your installation::
 
  semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/data(/.*)?'
- restorecon -v -R '/var/www/html/nextcloud/data'
  semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/config(/.*)?'
- restorecon -v -R '/var/www/html/nextcloud/config'
  semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/apps(/.*)?'
- restorecon -v -R '/var/www/html/nextcloud/apps'
+ semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/.htaccess'
+ semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/.user.ini'
+
+ restorecon -Rv '/var/www/html/nextcloud/'
  
 If you uninstall Nextcloud you need to remove the Nextcloud directory labels. To do 
 this execute the following commands as root after uninstalling Nextcloud::
 
- semanage fcontext -d -t httpd_sys_rw_content_t '/var/www/html/nextcloud/data(/.*)?'
- restorecon -v -R '/var/www/html/nextcloud/data'
- semanage fcontext -d -t httpd_sys_rw_content_t '/var/www/html/nextcloud/config(/.*)?'
- restorecon -v -R '/var/www/html/nextcloud/config'
- semanage fcontext -d -t httpd_sys_rw_content_t '/var/www/html/nextcloud/apps(/.*)?'
- restorecon -v -R '/var/www/html/nextcloud/apps'
+ semanage fcontext -d '/var/www/html/nextcloud/data(/.*)?'
+ semanage fcontext -d '/var/www/html/nextcloud/config(/.*)?'
+ semanage fcontext -d '/var/www/html/nextcloud/apps(/.*)?'
+ semanage fcontext -d '/var/www/html/nextcloud/.htaccess'
+ semanage fcontext -d '/var/www/html/nextcloud/.user.ini'
+
+ restorecon -Rv '/var/www/html/nextcloud/'
+
 
 If you have customized SELinux policies and these examples do not work, you must give the 
 HTTP server write access to these directories::
@@ -35,6 +38,13 @@ HTTP server write access to these directories::
  /var/www/html/nextcloud/data
  /var/www/html/nextcloud/config
  /var/www/html/nextcloud/apps
+
+Disallow write access to the whole web directory
+------------------------------------------------
+
+For security reasons it's suggested to disable write access to all folders in /var/www/ (default):
+
+ setsebool -P  httpd_unified  off
 
 Allow access to a remote database
 ---------------------------------
@@ -49,7 +59,7 @@ Allow access to LDAP server
 Use this setting to allow LDAP connections::
 
  setsebool -P httpd_can_connect_ldap on
-  
+
 Allow access to remote network
 ------------------------------
 
@@ -57,6 +67,13 @@ Nextcloud requires access to remote networks for functions such as Server-to-Ser
 the app store. To allow this access use the following setting::
 
  setsebool -P httpd_can_network_connect on
+
+Allow access to network memcache
+--------------------------------
+
+This setting is not required if httpd_can_network_connect is already on
+
+ setsebool -P httpd_can_network_memcache on
 
 Allow access to SMTP/sendmail
 -----------------------------
@@ -72,6 +89,20 @@ Allow access to CIFS/SMB
 If you have placed your datadir on a CIFS/SMB share use the following setting::
 
  setsebool -P httpd_use_cifs on
+
+Allow access to FuseFS
+----------------------
+
+If your owncloud data folder resides on a Fuse Filesystem (e.g. EncFS etc), this setting is required as well:
+
+ setsebool -P httpd_use_fusefs on
+
+Allow access to GPG for Rainloop
+--------------------------------
+
+If you use a the rainloop webmail client app which supports GPG/PGP, you might need this:
+
+ setsebool -P httpd_use_gpg on
 
 Troubleshooting
 ---------------
