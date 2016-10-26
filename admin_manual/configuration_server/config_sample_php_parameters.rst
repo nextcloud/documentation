@@ -1338,7 +1338,7 @@ AES-256-CFB are supported.
 
 ::
 
-	'minimum.supported.desktop.version' => '1.7.0',
+	'minimum.supported.desktop.version' => '2.0.0',
 
 The minimum Nextcloud desktop client version that will be allowed to sync with
 this server instance. All connections made from earlier clients will be denied
