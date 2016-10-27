@@ -133,6 +133,8 @@ Apache and MariaDB, by issuing the following commands in a terminal::
   on running additional apps, keep in mind that they might require additional 
   packages.  See :ref:`prerequisites_label` for details.
 
+  .. note:: When running php7, you need to manually install ``php7.0-mbstring``, ``php7.0-xml`` and ``php7.0-zip``.
+
 * At the installation of the MySQL/MariaDB server, you will be prompted to 
   create a root password. Be sure to remember your password as you will need it 
   during Nextcloud database setup.
