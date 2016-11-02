@@ -14,6 +14,7 @@ File Sharing and Management
     external_storage_configuration_gui
     external_storage_configuration
     external_storage/auth_mechanisms
+    primary_storage
     encryption_configuration
     files_locking_transactional
     previews_configuration
