@@ -801,22 +801,6 @@ When enabled, admins may install apps from the Nextcloud app store.
 
 ::
 
-	'appstoreurl' => 'https://api.owncloud.com/v1',
-
-The URL of the appstore to use.
-
-::
-
-	'appstore.experimental.enabled' => false,
-
-Whether to show experimental apps in the appstore interface
-
-Experimental apps are not checked for security issues and are new or known
-to be unstable and under heavy development. Installing these can cause data
-loss or security breaches.
-
-::
-
 	'apps_paths' => array(
 		array(
 			'path'=> '/var/www/nextcloud/apps',
