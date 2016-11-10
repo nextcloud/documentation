@@ -182,6 +182,78 @@ XML Output
     <data/>
   </ocs>
 
+**users / disableuser**
+----------------------
+
+Disables a user on the Nextcloud server so that the user cannot login anymore.
+Authentication is done by sending a Basic HTTP Authorization header.
+
+**Syntax: ocs/v1.php/cloud/users/{userid}/disable**
+
+* HTTP method: PUT
+
+Statuscodes:
+
+* 100 - successful
+* 101 - failure
+
+Example
+^^^^^^^
+
+  * PUT ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/disable``
+  * Disables the user ``Frank``
+
+XML Output
+^^^^^^^^^^
+
+::
+
+  <?xml version="1.0"?>
+  <ocs>
+    <meta>
+      <status>ok</status>
+      <statuscode>100</statuscode>
+      <message/>
+    </meta>
+    <data/>
+  </ocs>
+
+**users / enableuser**
+----------------------
+
+Enables a user on the Nextcloud server so that the user can login again.
+Authentication is done by sending a Basic HTTP Authorization header.
+
+**Syntax: ocs/v1.php/cloud/users/{userid}/enable**
+
+* HTTP method: PUT
+
+Statuscodes:
+
+* 100 - successful
+* 101 - failure
+
+Example
+^^^^^^^
+
+  * PUT ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/enable``
+  * Enables the user ``Frank``
+
+XML Output
+^^^^^^^^^^
+
+::
+
+  <?xml version="1.0"?>
+  <ocs>
+    <meta>
+      <status>ok</status>
+      <statuscode>100</statuscode>
+      <message/>
+    </meta>
+    <data/>
+  </ocs>
+
 **users / deleteuser**
 ----------------------
 
