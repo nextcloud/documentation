@@ -1149,9 +1149,9 @@ Using Object Store with Nextcloud
 
 ::
 
-	'objectstore' => array(
+	'objectstore' => [
 		'class' => 'OC\\Files\\ObjectStore\\Swift',
-		'arguments' => array(
+		'arguments' => [
 			// trystack will user your facebook id as the user name
 			'username' => 'facebook100000123456789',
 			// in the trystack dashboard go to user -> settings -> API Password to
@@ -1159,6 +1159,8 @@ Using Object Store with Nextcloud
 			'password' => 'Secr3tPaSSWoRdt7',
 			// must already exist in the objectstore, name can be different
 			'container' => 'nextcloud',
+			// prefix to prepend to the fileid, default is 'oid:urn:'
+			'objectPrefix' => 'oid:urn:',
 			// create the container if it does not exist. default is false
 			'autocreate' => true,
 			// required, dev-/trystack defaults to 'RegionOne'
@@ -1172,8 +1174,8 @@ Using Object Store with Nextcloud
 			'serviceName' => 'swift',
 			// The Interface / url Type, optional
 			'urlType' => 'internal'
-		),
-	),
+		],
+	],
 
 This example shows how to configure Nextcloud to store all files in a
 swift object storage.
