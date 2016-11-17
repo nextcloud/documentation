@@ -153,6 +153,32 @@ This output option is available on all list and list-like commands:
 ``status``, ``check``, ``app:list``, ``config:list``, ``encryption:status``
 and ``encryption:list-modules``
 
+Enabling autocompletion
+-----------------------
+
+.. note:: This currently only works, if the user you use to execute the occ commands has a profile.
+  ``www-data`` in most cases is ``nologon`` and therefor can **not** use this.
+
+Since Nextcloud 11 autocompletion is available for bash (and bash based consoles).
+To enable it, you have to run **one** of the following commands::
+
+ # BASH ~4.x, ZSH
+ source <(/var/www/html/nextcloud/occ _completion --generate-hook)
+
+ # BASH ~3.x, ZSH
+ /var/www/html/nextcloud/occ _completion --generate-hook | source /dev/stdin
+
+ # BASH (any version)
+ eval $(/var/www/html/nextcloud/occ _completion --generate-hook)
+
+This will allow you to use autocompletion with the full path ``/var/www/html/nextcloud/occ <tab>``.
+
+If you also want to use autocompletion on occ from within the directory without using the full path,
+you need to specify ``--programm occ`` after the ``--generate-hook``.
+
+If you want the completion to apply automatically for all new shell sessions, add the command to your
+shell's profile (eg. ``~/.bash_profile`` or ``~/.zshrc``).
+
 .. _apps_commands_label:
 
 Apps Commands
