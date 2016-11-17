@@ -793,7 +793,7 @@ When enabled, admins may install apps from the Nextcloud app store.
 
 ::
 
-	'appstoreurl' => 'https://api.nextcloud.com/v1',
+	'appstoreurl' => 'https://apps.nextcloud.com/api/v0',
 
 The URL of the appstore to use.
 
