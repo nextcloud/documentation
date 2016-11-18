@@ -20,6 +20,8 @@ your Nextcloud environment. You could use this command::
 Backup Database
 ---------------
 
+.. warning:: Before restoring a backup see :doc:`restore`
+
 MySQL/MariaDB
 ^^^^^^^^^^^^^
 
