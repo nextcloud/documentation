@@ -506,6 +506,18 @@ conditions are met Nextcloud uses URLs without index.php in it:
 
 ::
 
+	'htaccess.IgnoreFrontController' => false,
+
+For server setups, that don't have `mod_env` enabled or restricted (e.g. suEXEC)
+this parameter has to be set to true and will assume mod_rewrite.
+
+Please check, if `mod_rewrite` is active and functional before setting this
+parameter and you updated your .htaccess with `occ maintenance:update:htaccess`.
+Otherwise your nextcloud installation might not be reachable anymore.
+For example, try accessing resources by leaving out `index.php` in the URL.
+
+::
+
 	'proxy' => '',
 
 The URL of your proxy server, for example ``proxy.example.com:8081``.
