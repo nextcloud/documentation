@@ -2,7 +2,7 @@
 Using two-factor authentication
 ===============================
 
-Ttwo-factor authentication (2FA) is a way to protect your Nextcloud account
+Two-factor authentication (2FA) is a way to protect your Nextcloud account
 against unauthorized access. It works by requiring two different 'proofs' of
 your identity. For example, *something you know* (like a password) and 
 *something you have* like a physical key. Typically, the first factor is a
