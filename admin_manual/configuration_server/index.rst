@@ -8,6 +8,7 @@ Nextcloud Server Configuration
    security_setup_warnings
    occ_command
    activity_configuration
+   sso_configuration
    caching_configuration
    background_jobs_configuration   
    config_sample_php_parameters
