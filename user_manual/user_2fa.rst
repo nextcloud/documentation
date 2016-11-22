@@ -19,7 +19,7 @@ Configuring two-factor authentication
 =====================================
 In your Personal Settings look up the Second-factor Auth setting. In this
 example this is TOTP, a Google Authenticator compatible time based code.
-  
+
 .. figure:: images/totp_enable.png
      :alt: TOTP configuration.
 
