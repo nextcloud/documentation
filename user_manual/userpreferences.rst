@@ -34,6 +34,7 @@ include the following.
 * Email address.
 * Lists your Group memberships.
 * Manage your password.
+* :doc:`user_2fa`.
 * :doc:`userpreferences`.
 * Choose the language for your Nextcloud interface.
 * Links to desktop and mobile apps.

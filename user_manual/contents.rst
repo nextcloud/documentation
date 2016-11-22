@@ -14,6 +14,7 @@ Table of Contents
     pim/index
     documents
     userpreferences
+    user_2fa
     session_management
     external_storage/index
     
