@@ -48,3 +48,18 @@ The following is currently required if you're running Nextcloud together with a 
 * Disabled or BINLOG_FORMAT = MIXED configured Binary Logging (See: :ref:`db-binlog-label`)
 * InnoDB storage engine (MyISAM is not supported)
 * "READ COMMITED" transaction isolation level (See: :ref:`db-transaction-label`)
+
+Emoji (UTF8 4-byte) support with MySQL / MariaDB
+================================================
+If you want to use UTF8 4-byte characters such as Emojis on your server, the database needs to be created with character set ``utf8mb4`` and collate ``utf8mb4_general_ci``, e.g.::
+
+  CREATE DATABASE nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+
+Additionally the following InnoDB settings need to be set::
+
+  [mysqld]
+  innodb_large_prefix=true
+  innodb_file_format=barracuda
+  innodb_file_per_table=true
+
+See :doc:`../maintenance/mysql_4byte_support` for more information.
