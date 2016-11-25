@@ -47,7 +47,7 @@ The configuration has the following structure.
 Openstack Swift
 ~~~~~~~~~~~~~
 
-The Swift backend mounts a container on an OpenStack Object Storage server into the virtual filesystem. The class to be used is \\OC\\Files\\ObjectStore\\Swift:
+The Swift backend mounts a container on an OpenStack Object Storage server into the virtual filesystem. The class to be used is :code:`\\OC\\Files\\ObjectStore\\Swift`
 
 ::
 
@@ -69,6 +69,40 @@ The Swift backend mounts a container on an OpenStack Object Storage server into 
 			'urlType' => 'internal'
 		),
 	),
+
+--------
+Amazon S3
+--------
+
+The S3 backend mounts a bucket on an Amazon S3 Storage or compatible server into the virtual filesystem. The class to be used is :code:`\\OC\\Files\\ObjectStore\\S3`
+
+::
+
+	'objectstore' => array(
+		'class' => 'OC\\Files\\ObjectStore\\S3',
+		'arguments' => array(
+			'bucket' => 'nextcloud',
+			'autocreate' => true,
+			'key'    => 'EJ39ITYZEUH5BGWDRUFY',
+			'secret' => 'M5MrXTRjkyMaxXPe2FRXMTfTfbKEnZCu+7uRTVSj',
+			'hostname' => 'example.com',
+			'port' => 1234,
+			'use_ssl' => true,
+			'region' => 'optional',
+			// required for some non amazon s3 implementations
+			'use_path_style'=>true
+		),
+	),
+
+Not all configuration options are required for all S3 servers.
+Overriding the hostname, port and region of your S3 server is only
+required for non-Amazon servers such as Ceph Object Gateway, which in turn
+usually don't require the region to be set.
+
+:code:`use_path_style` is usually not required (and is, in fact, incompatible with newer Amazon datacenters),
+but can be used with non-Amazon servers where the DNS infrastructure cannot be controlled. Ordinarily,
+requests will be made with http://bucket.hostname.domain/, but with path style enabled,
+requests are made with http://hostname.domain/bucket instead.
 
 ---------------------------
 Multibucket Object Store
