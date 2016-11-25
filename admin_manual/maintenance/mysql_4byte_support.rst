@@ -18,7 +18,7 @@ installation needs to be tweaked a bit.
 3. Restart the MySQL server in case you changed the configuration in step 2.
 4. Change your databases character set and collation::
 
-    ALTER DATABASE nextcloud CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+    ALTER DATABASE nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
 5. Set the ``mysql.utf8mb4`` config to true in your config.php::
 
