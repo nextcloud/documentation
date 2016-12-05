@@ -24,7 +24,7 @@ Supported Platforms
 
 * Server: Linux (Debian 7, SUSE Linux Enterprise Server 11 SP3 & 12, 
   Red Hat Enterprise Linux/CentOS 6.5 and 7 (7 is 64-bit only), Ubuntu 14.04 LTS, 16.04 LTS)
-* Web server: Apache 2 with mod_php or nginx
+* Web server: Apache 2 (mod_php, php-fpm) or Nginx (php-fpm) 
 * Databases: MySQL/MariaDB 5.5+; PostgreSQL; Oracle 11g (currently only possible 
   if you `contact us <https://nextcloud.com/enterprise>` as part of a subscription)
 * PHP 5.6 + required
@@ -33,7 +33,7 @@ Supported Platforms
   only), Linux (CentOS 6.5, 7 (7 is 64-bit only), Ubuntu 12.04 LTS, 14.04 LTS, 
   14.10, Fedora 20, 21, openSUSE 12.3, 13, Debian 7 & 8).
 * Mobile apps: iOS 7+, Android 4+
-* Web browser: IE11+, Microsoft Edge, Firefox 14+, Chrome 18+, Safari 5+
+* Web browser: IE11+, Microsoft Edge, Firefox 14+, Chrome 18+, Safari 7+
 
 See :doc:`source_installation` for minimum software versions for installing 
 Nextcloud.
