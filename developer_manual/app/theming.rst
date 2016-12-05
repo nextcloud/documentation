@@ -34,3 +34,9 @@ The following information is available:
 * **OCA.Theming.slogan** Instance slogan
 * **OCA.Theming.url**  Instance web address
 
+Icons
+=====
+
+The theming app will automatically generate favicons and home screen icons for
+each app by using the icon `img/app.svg` inside of the app folder. Any custom
+favicon set by an app will only be visible when the theming app is disabled.
