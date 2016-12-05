@@ -12,7 +12,7 @@ Linux, client applications for Microsoft Windows, Mac OS X and Linux, and mobile
 clients for the Android and Apple iOS operating systems.
 
 Current editions of Nextcloud manuals are always available online at 
-`docs.nextcloud.org <https://docs.nextcloud.org/>`_.
+`docs.nextcloud.org <https://docs.nextcloud.com/>`_.
 
 Nextcloud server is available:
 
@@ -45,9 +45,9 @@ respective manuals:
 * `Nextcloud Android App`_
 * `Nextcloud iOS App`_ 
 
-.. _`Nextcloud User Manual`: https://docs.nextcloud.org/server/11/user_manual/
+.. _`Nextcloud User Manual`: https://docs.nextcloud.com/server/11/user_manual/
 .. _`Nextcloud/ownCloud Desktop Client`: https://doc.owncloud.org/desktop/2.2/
-.. _`Nextcloud Android App`: https://docs.nextcloud.org/android/
-.. _`Nextcloud iOS App`: https://docs.nextcloud.org/ios/
+.. _`Nextcloud Android App`: https://docs.nextcloud.com/android/
+.. _`Nextcloud iOS App`: https://docs.nextcloud.com/ios/
 
 .. TODO ON RELEASE: Update version number above on release
