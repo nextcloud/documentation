@@ -18,3 +18,15 @@ In the administrative settings you can modify the appearance of Nextcloud:
 Log in page   
 
 .. figure:: ../configuration_server/images/theming-log-in-page.png
+
+Theming of icons
+================
+
+Nextcloud will automatically generate favicons and home screen icons
+depending on the current app and theming color. 
+
+This requires the following additional dependencies:
+
+ - PHP module imagick
+ - SVG support for imagick (e.g. `libmagickcore5-extra`)
+
