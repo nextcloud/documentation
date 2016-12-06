@@ -523,7 +523,7 @@ Troubleshooting, Tips and Tricks
 --------------------------------
 
 SSL Certificate Verification (LDAPS, TLS)
------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A common mistake with SSL certificates is that they may not be known to PHP.
 If you have trouble with certificate validation make sure that
@@ -540,14 +540,14 @@ If you have trouble with certificate validation make sure that
   636)
 
 Microsoft Active Directory
---------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Compared to earlier Nextcloud versions, no further tweaks need to be done to
 make Nextcloud work with Active Directory. Nextcloud will automatically find the
 correct configuration in the set-up process.
 
 memberOf / Read MemberOf permissions
-------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you want to use ``memberOf`` within your filter you might need to give your
 querying user the permissions to use it. For Microsoft Active Directory this
@@ -555,7 +555,7 @@ is described `here <https://serverfault.com/questions/167371/what-permissions-ar
 -required-for-enumerating-users-groups-in-active-directory/167401#167401>`_.
 
 Duplicating Server Configurations
----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In case you have a working configuration and want to create a similar one or
 "snapshot" configurations before modifying them you can do the following:
@@ -569,6 +569,22 @@ In case you have a working configuration and want to create a similar one or
 #. Click on **Save**
 
 Now you can modify and enable the configuration.
+
+"Sizelimit exceeded" message in logs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  ldap_search(): Partial search results returned: Sizelimit exceeded at
+  apps/user_ldap/lib/LDAP.php#256
+
+This error message means one of the following:
+
+#. Pagination of the results is used for communicating with the LDAP server
+   (pagination is by default enabled in OpenLDAP and AD), but there are more
+   results to return than what the pagination limit is set to. If there are no
+   users missing in you setup then you can ignore this error message for now.
+#. No pagination is used and this indicates that there are more results on the
+   LDAP server than what is returned. You should then enabled pagination on
+   your LDAP server to import all available users.
 
 Nextcloud LDAP Internals
 ------------------------
