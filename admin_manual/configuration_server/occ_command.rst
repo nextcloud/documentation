@@ -654,6 +654,7 @@ Commands for managing external storage::
   files_external:list        List configured mounts
   files_external:option      Manage mount options for a mount
   files_external:verify      Verify mount configuration
+  files_external:notify      Listen for active update notifications for a configured external mount
 
 These commands replicate the functionality in the Nextcloud Web GUI, plus two new 
 features:  ``files_external:export`` and ``files_external:import``. 
