@@ -576,7 +576,7 @@ Now you can modify and enable the configuration.
   ldap_search(): Partial search results returned: Sizelimit exceeded at
   apps/user_ldap/lib/LDAP.php#256
 
-This error message means that one of the following:
+This error message means one of the following:
 
 #. Pagination of the results is used for communicating with the LDAP server
    (pagination is by default enabled in OpenLDAP and AD), but there are more
