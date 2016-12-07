@@ -641,6 +641,18 @@ URL that Nextcloud should use to look for updates
 
 ::
 
+	'updater.release.channel' => 'stable',
+
+The channel that Nextcloud should use to look for updates
+
+Supported values:
+  - ``daily``
+  - ``beta`
+  - ``stable``
+  - ``production``
+
+::
+
 	'has_internet_connection' => true,
 
 Is Nextcloud connected to the Internet or running in a closed network?
