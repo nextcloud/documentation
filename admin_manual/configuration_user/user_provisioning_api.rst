@@ -160,11 +160,11 @@ Status codes:
 Examples
 ^^^^^^^^
 
-  * PUT ``PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -d 
+  * PUT ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -d 
     key="email" -d value="franksnewemail@example.org"``
   * Updates the email address for the user ``Frank``
   
-  * PUT ``PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -d 
+  * PUT ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -d 
     key="quota" -d value="100MB"``
   * Updates the quota for the user ``Frank``
   
@@ -378,7 +378,7 @@ sending a Basic HTTP Authorization header.
 **Syntax: ocs/v1.php/cloud/users/{userid}/groups**
 
 * HTTP method: DELETE
-* POST argument: groupid, string - the group to remove the user from
+* DELETE argument: groupid, string - the group to remove the user from
 
 Status codes:
 
