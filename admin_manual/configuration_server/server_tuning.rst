@@ -67,3 +67,8 @@ AES-NI extension:
   
 * If your environment runs virtualized, check the virtualization vendor for 
   support.
+  
+Enable HTTP2 for faster loading
+-------------------------------
+
+HTTP2 has `huge speed improvements <https://www.troyhunt.com/i-wanna-go-fast-https-massive-speed-advantage/>`_ over HTTP with multiple request. Most `browsers already support HTTP2 over SSL (HTTPS) <http://caniuse.com/#feat=http2>`_. So refer to your server manual for guides on how to use HTTP2.
