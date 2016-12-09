@@ -530,9 +530,6 @@ If you have trouble with certificate validation make sure that
 * You have the certificate of the server installed on the Nextcloud server
 * The certificate is announced in the system's LDAP configuration file (usually
   */etc/ldap/ldap.conf*)
-.. commenting out windows section as windows server is not supported
-..  *C:\\openldap\\sysconf\\ldap.conf* or
-..  *C:\\ldap.conf* on Windows) using a **TLS_CACERT /path/to/cert** line.
 * Using LDAPS, also make sure that the port is correctly configured (by default
   636)
 

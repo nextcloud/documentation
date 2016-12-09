@@ -1,6 +1,6 @@
-==================================================
-Nginx Configuration for the Nextcloud 9.x Branches
-==================================================
+===================
+Nginx Configuration
+===================
 
 The following configuration should be used when Nextcloud is placed in the 
 webroot of your Nginx installation. Be careful about line breaks if you copy 
@@ -18,7 +18,7 @@ Nextcloud in the webroot of nginx
 The following config should be used when Nextcloud is placed in the webroot of 
 your nginx installation.
 
-::
+.. code-block:: nginx
 
   upstream php-handler {
       server 127.0.0.1:9000;
@@ -151,7 +151,7 @@ Nextcloud in a subdir of nginx
 The following config should be used when Nextcloud is placed within a subdir of 
 your nginx installation.
 
-::
+.. code-block:: nginx
 
   upstream php-handler {
       server 127.0.0.1:9000;
