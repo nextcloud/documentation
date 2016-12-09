@@ -802,7 +802,7 @@ Some of the Nextcloud code may be stored in alternate locations.
 ::
 
 	'customclient_desktop' =>
-		'https://nextcloud.com/install/',
+		'https://nextcloud.com/install/#install-clients',
 	'customclient_android' =>
 		'https://play.google.com/store/apps/details?id=com.nextcloud.client',
 	'customclient_ios' =>
