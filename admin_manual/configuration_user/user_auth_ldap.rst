@@ -375,6 +375,23 @@ Group Member association:
   have a very valid reason and know what you are doing.
 
   * Example: *uniquemember*
+  
+Enable LDAP password changes per user:
+  Allow LDAP users to change their password and allow Super Administrators and Group Administrators to change the password of their LDAP users. 
+  
+  To enable this feature, the following requirements have to be met:
+  
+  * General requirements:
+
+   * Access control policies must be configured on the LDAP server to grant permissions for password changes.
+   * Passwords are sent in plaintext to the LDAP server. Therefore, transport encryption must be used for the communication between Nextcloud and the LDAP server, e.g. employ LDAPS.
+   * Enabling password hashing on the LDAP server is highly recommended. While Active Directory stores passwords in a one-way format by default, OpenLDAP users could configure the ``ppolicy_hash_cleartext`` directive of the ppolicy overlay that ships with OpenLDAP.
+  
+  * Additional requirements for Active Directory:
+
+   * At least a 128-bit transport encryption must be used for the communication between Nextcloud and the LDAP server
+   * Make sure that the ``fUserPwdSupport`` char of the dSHeuristics is configured to employ the ``userPassword`` attribute as ``unicodePwd`` alias. While this is set accordingly on AD LDS by default, this is not the case on AD DS.
+
 
 Special Attributes
 ^^^^^^^^^^^^^^^^^^
