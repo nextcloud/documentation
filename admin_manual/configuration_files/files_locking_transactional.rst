@@ -23,12 +23,6 @@ the Documents app), nor will it prevent multiple users from editing the same
 document, or give notice that other users are working on the same document. 
 Multiple users can open and edit a file at the same time and Transactional File 
 locking does not prevent this. Rather, it prevents simultaneous file saving.
-
-.. note:: Transactional file locking is in Nextcloud core, and replaces the old 
-   File Locking app. The File Locking app has been removed from Nextcloud in 
-   version 8.2.1. If your Nextcloud server still has the File Locking app, you 
-   must visit your Apps page to verify that it is disabled; the File Locking 
-   app and Transactional File Locking cannot both operate at the same time.
   
 File locking is enabled by default, using the database locking backend. This 
 places a significant load on your database. Using ``memcache.locking`` relieves 
