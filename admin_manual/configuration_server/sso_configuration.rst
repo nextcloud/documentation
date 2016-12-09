@@ -23,7 +23,8 @@ Enabling the SSO & SAML app
 ---------------------------
 
 .. warning:: Make sure to configure an administrative user that can access the instance via SSO. Logging-in with your
-regular Nextcloud account won't be possible anymore.
+             regular Nextcloud account won't be possible anymore.
+
 
 The "SSO & SAML" App is shipped and disabled by default. To enable the app enabled simply go to your Nextcloud Apps page
 to enable it. It can then be found in the "SSO & SAML authentication" section of your Nextcloud.
@@ -48,7 +49,7 @@ variable. (e.g. `REMOTE_USER` for Kerberos)
 Once done you also need to protect the login route properly. On an Apache server with mod_auth_kerb the following configuration
 would protect the login route:
 
-.. code-block:: httpd
+.. code-block:: apache
 
     <Location "/index.php/login">
     	AuthType Kerberos
@@ -65,4 +66,4 @@ would protect the login route:
 
 
 .. warning:: If this authentication approach is used clients do require an application specific password for authentication.
-A better integration into our desktop and mobile clients is considered for the future though.
+             A better integration into our desktop and mobile clients is considered for the future though.

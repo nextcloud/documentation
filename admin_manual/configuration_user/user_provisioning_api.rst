@@ -183,7 +183,7 @@ XML Output
   </ocs>
 
 **users / disableuser**
-----------------------
+-----------------------
 
 Disables a user on the Nextcloud server so that the user cannot login anymore.
 Authentication is done by sending a Basic HTTP Authorization header.

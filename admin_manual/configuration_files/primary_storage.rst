@@ -43,9 +43,9 @@ The configuration has the following structure.
 		),
 	),
 
-~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
 Openstack Swift
-~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
 
 The Swift backend mounts a container on an OpenStack Object Storage server into the virtual filesystem. The class to be used is :code:`\\OC\\Files\\ObjectStore\\Swift`
 
@@ -70,9 +70,9 @@ The Swift backend mounts a container on an OpenStack Object Storage server into 
 		),
 	),
 
---------
+---------
 Amazon S3
---------
+---------
 
 The S3 backend mounts a bucket on an Amazon S3 Storage or compatible server into the virtual filesystem. The class to be used is :code:`\\OC\\Files\\ObjectStore\\S3`
 
