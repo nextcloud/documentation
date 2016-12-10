@@ -647,7 +647,7 @@ The channel that Nextcloud should use to look for updates
 
 Supported values:
   - ``daily``
-  - ``beta``
+  - ``beta`
   - ``stable``
   - ``production``
 
@@ -965,6 +965,10 @@ concerns:
  - OC\\Preview\\TIFF
  - OC\\Preview\\Font
 
+.. note:: Troubleshooting steps for the MS Word previews are available
+   at the :doc:`../configuration_files/collaborative_documents_configuration`
+   section of the Administrators Manual.
+
 The following providers are not available in Microsoft Windows:
 
  - OC\\Preview\\Movie
@@ -1129,16 +1133,16 @@ Server details for one or more memcached servers to use for memory caching.
 		\Memcached::OPT_SEND_TIMEOUT =>    50,
 		\Memcached::OPT_RECV_TIMEOUT =>    50,
 		\Memcached::OPT_POLL_TIMEOUT =>    50,
-
+	
 		// Enable compression
 		\Memcached::OPT_COMPRESSION =>          true,
-
+	
 		// Turn on consistent hashing
 		\Memcached::OPT_LIBKETAMA_COMPATIBLE => true,
-
+	
 		// Enable Binary Protocol
 		\Memcached::OPT_BINARY_PROTOCOL =>      true,
-
+	
 		// Binary serializer vill be enabled if the igbinary PECL module is available
 		//\Memcached::OPT_SERIALIZER => \Memcached::SERIALIZER_IGBINARY,
 	),
