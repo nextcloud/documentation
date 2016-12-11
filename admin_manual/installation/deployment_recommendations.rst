@@ -24,11 +24,13 @@ keep individual Nextcloud instances to a manageable size.
 * Operating system: Linux.
 * Web server: Apache 2.4.
 * Database: MySQL/MariaDB.
-* PHP 5.5+. PHP 5.4 is the minimum supported version; note that it reached 
-  end-of-life in September 2015 and is no longer supported by the PHP team. 
-  Some Linux vendors, such as Red Hat, still support PHP 5.4.
-  5.6+ is recommended. ``mod_php`` is the recommended Apache module because it 
-  provides the best performance.
+* PHP 5.6+. PHP 5.6 is the minimum supported version. We recommend to deploy
+  on PHP 7 if possible. This version is known to offer significan performance
+  advantages. ``mod_php`` is the recommended Apache module due to
+  vendor support and ease of configuration. ``php-fpm`` with Apache Event
+  MPM (or nginx) is an alternative with potentially better scalability in
+  high load and limited RAM environments. For the best results we recommend
+  working with the Nextcloud GmbH enterprise suppor team for large deployments.
 
 .. comment: mod_php is easier to set up, php-fpm with apache event MPM seems to 
    scale better under load and limited RAM restrictions: 
@@ -116,10 +118,6 @@ Authentication via an existing LDAP or Active Directory server.
 
 * Storage
    Local storage.
-
-* Nextcloud Edition
-   Standard Edition. (See `Nextcloud Server or Enterprise Edition`_ for 
-   comparisons of the Nextcloud editions.)
 
 Mid-sized Enterprises
 ---------------------
@@ -224,10 +222,6 @@ Authentication via an existing LDAP or Active Directory server.
 * Storage
    Use an off-the-shelf NFS solution, such as IBM Elastic Storage or RedHat 
    Ceph.
-   
-* Nextcloud Edition
-   Enterprise Edition. (See `Nextcloud Server or Enterprise Edition`_ for 
-   comparisons of the Nextcloud editions.)
 
 Large Enterprises and Service Providers
 ---------------------------------------
@@ -310,10 +304,6 @@ Authentication via an existing LDAP or Active Directory server, or SAML.
    An off-the-shelf NFS solution should be used. Examples are IBM Elastic 
    Storage or RedHAT Ceph. Optionally, an S3 compatible object store can also 
    be used.
-
-* Nextcloud Edition
-   Enterprise Edition. (See `Nextcloud Server or Enterprise Edition`_ for 
-   comparisons of the Nextcloud editions.)
    
 Hardware Considerations
 -----------------------
