@@ -51,9 +51,9 @@ The other way is by entering your ``config.php`` file and changing
 9. Restart your Web server.
 
 10. Now launch the upgrade from the command  line using ``occ``, like this 
-    example on CentOS Linux::
+    example on Ubuntu Linux::
     
-     sudo -u apache php occ upgrade
+     sudo -u www-data php occ upgrade
      
 11. The upgrade operation takes a few minutes to a few hours, depending on the 
     size of your installation. When it is finished you will see a success 
