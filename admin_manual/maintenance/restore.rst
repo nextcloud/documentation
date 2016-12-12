@@ -30,6 +30,38 @@ install and data folder) to your Nextcloud environment. You could use this comma
 Restore Database
 ----------------
 
+Clean Database Before Restoring
+===============================
+
+.. warning:: Before restoring a backup you need to make sure to delete all existing database tables.
+
+The easiest way to do this is to drop and recreate the database.
+SQLite does this automatically.
+
+MySQL
+^^^^^
+
+MySQL is the recommended database engine. To restore MySQL::
+
+   mysql -h [server] -u [username] -p[password] -e "DROP DATABASE nextcloud"
+   mysql -h [server] -u [username] -p[password] -e "CREATE DATABASE nextcloud"
+
+If you use UTF8 with multibyte support (e.g. for emoijs in filenames), use::
+
+   mysql -h [server] -u [username] -p[password] -e "DROP DATABASE nextcloud"
+   mysql -h [server] -u [username] -p[password] -e "CREATE DATABASE nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci"
+
+
+PostgreSQL
+^^^^^^^^^^
+::
+
+    PGPASSWORD="password" psql -h [server] -U [username] -d nextcloud -c "DROP DATABASE \"nextcloud\";"
+    PGPASSWORD="password" psql -h [server] -U [username] -d nextcloud -c "CREATE DATABASE \"nextcloud\";"
+
+Restoring
+=========
+
 .. note:: This guide assumes that your previous backup is called
    "nextcloud-sqlbkp.bak"
 
