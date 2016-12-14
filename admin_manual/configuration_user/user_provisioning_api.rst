@@ -13,6 +13,8 @@ listed above. The Provisioning API app is enabled by default.
 
 The base URL for all calls to the share API is **nextcloud_base_url/ocs/v1.php/cloud**.
 
+All POST requests require the ``Content-Type: application/x-www-form-urlencoded`` header. (Note: Some libraries like Curl set this header automatically, other require to set the header explicitly)
+
 Instruction Set For Users
 =========================
 
