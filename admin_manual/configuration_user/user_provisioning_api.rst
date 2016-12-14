@@ -15,6 +15,8 @@ The base URL for all calls to the share API is **nextcloud_base_url/ocs/v1.php/c
 
 All calls to OCS endpoints require the ``OCS-APIRequest`` header to be set to ``true``.
 
+All POST requests require the ``Content-Type: application/x-www-form-urlencoded`` header. (Note: Some libraries like Curl set this header automatically, other require to set the header explicitly)
+
 Instruction Set For Users
 =========================
 
