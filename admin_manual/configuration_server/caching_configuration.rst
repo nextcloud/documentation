@@ -174,6 +174,9 @@ recommended if Redis is running on the same system as Nextcloud) use this exampl
   'redis' => array(
        'host' => '/var/run/redis/redis.sock',
        'port' => 0,
+       'dbindex' => 0,
+       'password' => 'secret',
+       'timeout' => 1.5,
         ),
 
 Redis is very configurable; consult `the Redis documentation 
