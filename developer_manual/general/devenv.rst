@@ -54,7 +54,7 @@ After the development tool installation make the directory writable::
 
 Then install Nextcloud from git::
 
-  git clone git@github.com:nextcloud/server.git --branch $BRANCH /var/www/<folder>
+  git clone git@github.com:nextcloud/server.git /var/www/<folder>
   cd /var/www/<folder> 
   git submodule update --init
 
