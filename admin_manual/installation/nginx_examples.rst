@@ -293,6 +293,7 @@ Add *inside* the ``server{}`` block, as an example of a configuration:
          fastcgi_param PATH_INFO $fastcgi_path_info;
          fastcgi_param HTTPS on;
          fastcgi_pass php-handler;
+         fastcgi_request_buffering off; #Available since nginx 1.7.11
        
          # cache_purge
          fastcgi_cache_bypass $skip_cache;
