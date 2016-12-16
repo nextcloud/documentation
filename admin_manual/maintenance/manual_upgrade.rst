@@ -48,11 +48,11 @@ The other way is by entering your ``config.php`` file and changing
    directory to your new one. Make sure the directory permissions of your third
    party application directories are the same as for the other ones.
    
-9. Adjust file ownership and permissions
+9. Adjust file ownership and permissions::
 
-    chown -R www-data:www-data nextcloud
-    find nextcloud/ -type d -exec chmod 750 {} \;
-    find nextcloud/ -type f -exec chmod 640 {} \;
+     chown -R www-data:www-data nextcloud
+     find nextcloud/ -type d -exec chmod 750 {} \;
+     find nextcloud/ -type f -exec chmod 640 {} \;
 
 10. Restart your Web server.
 
