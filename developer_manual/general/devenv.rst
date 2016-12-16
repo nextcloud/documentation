@@ -55,10 +55,10 @@ After the development tool installation make the directory writable::
 Then install Nextcloud from git::
 
   git clone git@github.com:nextcloud/server.git --branch $BRANCH /var/www/<folder>
-  cd /var/www/<folder>/server  
+  cd /var/www/<folder> 
   git submodule update --init
 
-where <folder> is the folder where you want to install Nextcloud. Occasionally, the git submodule command gives errors, it might work to just try again. Magic!
+where <folder> is the folder where you want to install Nextcloud.
 
 Adjust rights::
 
