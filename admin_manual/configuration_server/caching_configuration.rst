@@ -179,6 +179,8 @@ recommended if Redis is running on the same system as Nextcloud) use this exampl
        'timeout' => 1.5,
         ),
 
+Only "host" and "port" variables are required, the other ones are optional.
+
 Redis is very configurable; consult `the Redis documentation 
 <http://redis.io/documentation>`_ to learn more.
 
