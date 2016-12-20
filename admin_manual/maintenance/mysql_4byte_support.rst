@@ -13,7 +13,7 @@ installation needs to be tweaked a bit.
     [mysqld]
     innodb_large_prefix=true
     innodb_file_format=barracuda
-    innodb_file_per_table=true
+    innodb_file_per_table=1
 
 3. Restart the MySQL server in case you changed the configuration in step 2.
 4. Change your databases character set and collation::
