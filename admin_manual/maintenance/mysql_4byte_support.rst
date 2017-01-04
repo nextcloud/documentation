@@ -4,7 +4,7 @@ Enabling MySQL 4-byte support
 
 .. note:: This feature is currently **experimental**.
 
-In order to use Emojis on your Nextcloud server with a MySQL database, the
+In order to use Emojis (textbased smilies) on your Nextcloud server with a MySQL database, the
 installation needs to be tweaked a bit.
 
 1. Update your Nextcloud server to Nextcloud 11 or later.
@@ -28,7 +28,7 @@ installation needs to be tweaked a bit.
 
     $ sudo -u www-data occ maintenance:repair
 
-Now you should be able to use emojis like ``🎉`` in your file names, calendar events, comments and many more.
+Now you should be able to use Emojis in your file names, calendar events, comments and many more.
 
 MariaDB support
 ===============
