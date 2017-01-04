@@ -40,7 +40,7 @@ If you get a result, the module is present.
 
 Required:
 
-* php5 (>= 5.4)
+* php5 (>= 5.6)
 * PHP module ctype
 * PHP module dom
 * PHP module GD
