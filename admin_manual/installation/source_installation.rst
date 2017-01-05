@@ -113,27 +113,25 @@ If ``mod_webdav`` is enabled you must disable it for Nextcloud. (See
   
 .. _ubuntu_installation_label:  
 
-Example Installation on Ubuntu 14.04 LTS Server
+Example Installation on Ubuntu 16.04 LTS Server
 -----------------------------------------------
 
-On a machine running a pristine Ubuntu 14.04 LTS server, install the
+On a machine running a pristine Ubuntu 16.04 LTS server, install the
 required and recommended modules for a typical Nextcloud installation, using
 Apache and MariaDB, by issuing the following commands in a terminal::
 
-    apt-get install apache2 mariadb-server libapache2-mod-php5
-    apt-get install php5-gd php5-json php5-mysql php5-curl
-    apt-get install php5-intl php5-mcrypt php5-imagick
+    apt-get install apache2 mariadb-server libapache2-mod-php7.0
+    apt-get install php7.0-gd php7.0-json php7.0-mysql php7.0-curl php7.0-mbstring
+    apt-get install php7.0-intl php7.0-mcrypt php-imagick php7.0-xml php7.0-zip
 
 * This installs the packages for the Nextcloud core system. 
-  ``libapache2-mod-php5`` provides the following PHP extensions: ``bcmath bz2 
+  ``libapache2-mod-php7.0`` provides the following PHP extensions: ``bcmath bz2 
   calendar Core ctype date dba dom ereg exif fileinfo filter ftp gettext hash 
-  iconv libxml mbstring mhash openssl pcre Phar posix Reflection session shmop 
+  iconv libxml mhash openssl pcre Phar posix Reflection session shmop 
   SimpleXML soap sockets SPL standard sysvmsg sysvsem sysvshm tokenizer wddx 
-  xml xmlreader xmlwriter zip zlib``. If you are planning 
+  xmlreader xmlwriter zlib``. If you are planning 
   on running additional apps, keep in mind that they might require additional 
   packages.  See :ref:`prerequisites_label` for details.
-
-  .. note:: When running php7, you need to manually install ``php7.0-mbstring``, ``php7.0-xml`` and ``php7.0-zip``.
 
 * At the installation of the MySQL/MariaDB server, you will be prompted to 
   create a root password. Be sure to remember your password as you will need it 
