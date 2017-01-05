@@ -15,10 +15,9 @@ Cache Warnings
 configure a memcache if available." Nextcloud supports multiple php caching
 extensions:
 
-* APC (PHP 5.4 only)
-* APCu (PHP 5.5+, minimum required PHP extension version 4.0.6)
+* APCu (minimum required PHP extension version 4.0.6)
 * Memcached
-* Redis (minimum required php extension version: 2.2.5)
+* Redis (minimum required PHP extension version: 2.2.6)
 
 You will see this warning if you have no caches installed and enabled, or if 
 your cache does not have the required minimum version installed; older versions 

@@ -55,9 +55,9 @@ The HTTP user is different on the various Linux distributions. See
 
 If your HTTP server is configured to use a different PHP version than the 
 default (/usr/bin/php), ``occ`` should be run with the same version. For 
-example, in CentOS 6.5 with SCL-PHP54 installed, the command looks like this::
+example, in CentOS 6.5 with SCL-PHP56 installed, the command looks like this::
 
-  sudo -u apache /opt/rh/php54/root/usr/bin/php /var/www/html/nextcloud/occ
+  sudo -u apache /opt/rh/php56/root/usr/bin/php /var/www/html/nextcloud/occ
 
 Running ``occ`` with no options lists all commands and options, like this 
 example on Ubuntu::
