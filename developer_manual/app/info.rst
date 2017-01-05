@@ -40,7 +40,7 @@ The :file:`appinfo/info.xml` contains metadata about the app:
       <ocsid>1234</ocsid>
 
       <dependencies>
-          <php min-version="5.4" max-version="5.5"/>
+          <php min-version="5.6" max-version="7.1"/>
           <database>sqlite</database>
           <database>mysql</database>
           <command os="linux">grep</command>
