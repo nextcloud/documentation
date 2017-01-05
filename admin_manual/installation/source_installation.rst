@@ -40,7 +40,7 @@ If you get a result, the module is present.
 
 Required:
 
-* php (>= 5.6, 7.0 or 7.1)
+* PHP (>= 5.6, 7.0 or 7.1)
 * PHP module ctype
 * PHP module dom
 * PHP module GD
@@ -89,7 +89,7 @@ memcaches:
 
 * PHP module apcu (>= 4.0.6)
 * PHP module memcached
-* PHP module redis (>= 2.2.5, required for Transactional File Locking)
+* PHP module redis (>= 2.2.6, required for Transactional File Locking)
 
 See :doc:`../configuration_server/caching_configuration` to learn how to select 
 and configure a memcache.
