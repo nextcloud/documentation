@@ -58,8 +58,8 @@ changes made to the storage in near real-time.
    reliably on Windows SMB servers.
 
 .. note:: Using update notifications requires ``smbclient`` 4.x or newer.
-   Due to limitations with the smbclient php module, the ``smbclient`` binary
-   is required even when using the php module.
+   Due to limitations with the smbclient PHP module, the ``smbclient`` binary
+   is required even when using the PHP module.
 
 To start listening to update notifications, start the ``occ`` command like this::
 
