@@ -1064,7 +1064,6 @@ Memory caching backend configuration
 
 Available cache backends:
 
-* ``\OC\Memcache\APC``        Alternative PHP Cache backend
 * ``\OC\Memcache\APCu``       APC user backend
 * ``\OC\Memcache\ArrayCache`` In-memory array-based backend (not recommended)
 * ``\OC\Memcache\Memcached``  Memcached backend
@@ -1466,7 +1465,7 @@ Set the time-to-live for locks in secconds.
 
 Any lock older than this will be automatically cleaned up.
 
-If not set this defaults to either 1 hour or the PHP max_execution_time, whichever is higher.
+If not set this defaults to either 1 hour or the php max_execution_time, whichever is higher.
 
 ::
 
