@@ -56,7 +56,7 @@ If you want to use UTF8 4-byte characters such as Emojis on your server, the dat
 Additionally the following InnoDB settings need to be set::
 
   [mysqld]
-  innodb_large_prefix=true
+  innodb_large_prefix=on
   innodb_file_format=barracuda
   innodb_file_per_table=true
 
