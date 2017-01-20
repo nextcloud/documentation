@@ -48,12 +48,13 @@ The hook logic should be in a separate class that is being registered in the :do
 
     <?php
     namespace OCA\MyApp\Hooks;
+    use OCP\IUserManager;
 
     class UserHooks {
 
         private $userManager;
 
-        public function __construct($userManager){
+        public function __construct(IUserManager $userManager){
             $this->userManager = $userManager;
         }
 
