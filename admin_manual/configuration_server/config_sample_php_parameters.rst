@@ -377,7 +377,7 @@ Defaults to ``false``
 
 ::
 
-	'mail_smtpmode' => 'sendmail',
+	'mail_smtpmode' => 'php',
 
 Which mode to use for sending mail: ``sendmail``, ``smtp``, ``qmail`` or
 ``php``.
@@ -394,7 +394,7 @@ the server, with ``/usr/sbin/sendmail`` installed on your Unix system.
 For ``qmail`` the binary is /var/qmail/bin/sendmail, and it must be installed
 on your Unix system.
 
-Defaults to ``sendmail``
+Defaults to ``php``
 
 ::
 
