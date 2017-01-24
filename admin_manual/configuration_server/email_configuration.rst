@@ -142,16 +142,14 @@ If you want to send email using a local or remote SMTP server it is necessary
 to enter the name or IP address of the server, optionally followed by a colon
 separated port number, e.g. **:425**. If this value is not given the default
 port 25/tcp will be used unless you change that by modifying the
-**mail_smtpport** parameter. Multiple servers can be entered, separated by
-semicolons:
+**mail_smtpport** parameter.
 
 ::
 
   <?php
 
     "mail_smtpmode"     => "smtp",
-    "mail_smtphost"     => "smtp-1.server.dom;smtp-2.server.dom:425",
-    "mail_smtpport"     => 25,
+    "mail_smtphost"     => "smtp.server.dom:425",
 
 or
 
