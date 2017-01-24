@@ -25,7 +25,7 @@ keep individual Nextcloud instances to a manageable size.
 * Web server: Apache 2.4.
 * Database: MySQL/MariaDB.
 * PHP 5.6+. PHP 5.6 is the minimum supported version. We recommend to deploy
-  on PHP 7 if possible. This version is known to offer significan performance
+  on PHP 7 if possible. This version is known to offer significant performance
   advantages. ``mod_php`` is the recommended Apache module due to
   vendor support and ease of configuration. ``php-fpm`` with Apache Event
   MPM (or nginx) is an alternative with potentially better scalability in
