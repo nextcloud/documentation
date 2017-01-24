@@ -1,19 +1,23 @@
-============================
-Manual Installation on Linux
-============================
+=====================
+Installation on Linux
+=====================
 
-If there are no packages for your Linux distribution, or you prefer installing 
-from the source tarball, you can setup Nextcloud from scratch using a classic 
-LAMP stack (Linux, Apache, MySQL/MariaDB, PHP). This document provides a 
-complete walk-through for installing Nextcloud on Ubuntu 14.04 LTS Server with 
-Apache and MariaDB, using `the Nextcloud .tar archive 
-<https://nextcloud.com/install/>`_.
+If there are no packages for your Linux distribution, you have the option to
+install `Snap Packages <http://snapcraft.io/docs/core/install/>`_. See
+:ref:`snaps_label`
 
+In case you prefer installing from the source tarball, you can setup Nextcloud
+from scratch using a classic LAMP stack (Linux, Apache, MySQL/MariaDB, PHP).
+This document provides a complete walk-through for installing Nextcloud on
+Ubuntu 16.04 LTS Server with Apache and MariaDB, using `the Nextcloud .tar
+archive <https://nextcloud.com/install/>`_.
+
+* :ref:`snaps_label`
 * :ref:`prerequisites_label`
 * :ref:`ubuntu_installation_label`
 * :ref:`binlog_format_label`
 * :ref:`apache_configuration_label`
-* :ref:`pretty_urls_label` 
+* :ref:`pretty_urls_label`
 * :ref:`enabling_ssl_label`
 * :ref:`installation_wizard_label`
 * :ref:`selinux_tips_label`
@@ -21,20 +25,40 @@ Apache and MariaDB, using `the Nextcloud .tar archive
 * :ref:`php_fpm_tips_label`
 * :ref:`other_HTTP_servers_label`
 
-.. note:: Admins of SELinux-enabled distributions such as CentOS, Fedora, and 
-   Red Hat Enterprise Linux may need to set new rules to enable installing 
+.. note:: Admins of SELinux-enabled distributions such as CentOS, Fedora, and
+   Red Hat Enterprise Linux may need to set new rules to enable installing
    Nextcloud. See :ref:`selinux_tips_label` for a suggested configuration.
+
+.. _snaps_label:
+
+Installing via Snap Packages
+----------------------------
+
+A snap is a zip file containing an application together with its dependencies,
+and a description of how it should safely be run on your system, especially
+the different ways it should talk to other software. Most importantly snaps are
+designed to be secure, sandboxed, containerised applications isolated from the
+underlying system and from other applications.
+
+To install the Nextcloud Snap Package, run the following command in a terminal::
+
+    sudo snap install nextcloud
+
+.. note:: The `snapd technology <http://snapcraft.io/docs/core/>`_ is the core
+that powers snaps, and it offers a new way to package, distribute, update and
+run OS components and applications on a Linux system. See more about snaps on
+`snapcraft.io <http://snapcraft.io/>`_.
 
 .. _prerequisites_label:
 
-Prerequisites
--------------
+Prerequisites for Manual Installation
+-------------------------------------
 
-The Nextcloud .tar archive contains all of the required PHP modules. This 
-section lists all required and optional PHP modules.  Consult the `PHP manual 
-<http://php.net/manual/en/extensions.php>`_ for more information on modules. 
-Your Linux distribution should have packages for all required modules. You can 
-check the presence of a module by typing ``php -m | grep -i <module_name>``. 
+The Nextcloud .tar archive contains all of the required PHP modules. This
+section lists all required and optional PHP modules.  Consult the `PHP manual
+<http://php.net/manual/en/extensions.php>`_ for more information on modules.
+Your Linux distribution should have packages for all required modules. You can
+check the presence of a module by typing ``php -m | grep -i <module_name>``.
 If you get a result, the module is present.
 
 Required:
@@ -66,7 +90,7 @@ Database connectors (pick the one for your database:)
   authentication, depends on this)
 * PHP module fileinfo (highly recommended, enhances file analysis performance)
 * PHP module bz2 (recommended, required for extraction of apps)
-* PHP module intl (increases language translation performance and fixes sorting 
+* PHP module intl (increases language translation performance and fixes sorting
   of non-ASCII characters)
 * PHP module mcrypt (increases file encryption performance)
 * PHP module openssl (required for accessing HTTPS resources)
@@ -74,7 +98,7 @@ Database connectors (pick the one for your database:)
 Required for specific apps:
 
 * PHP module ldap (for LDAP integration)
-* PHP module smbclient  (SMB/CIFS integration, see 
+* PHP module smbclient  (SMB/CIFS integration, see
   :doc:`../configuration_files/external_storage/smb`)
 * PHP module ftp (for FTP storage / external user authentication)
 * PHP module imap (for external user authentication)
@@ -84,14 +108,14 @@ Recommended for specific apps (*optional*):
 * PHP module exif (for image rotation in pictures app)
 * PHP module gmp (for SFTP storage)
 
-For enhanced server performance (*optional*) select one of the following 
+For enhanced server performance (*optional*) select one of the following
 memcaches:
 
 * PHP module apcu (>= 4.0.6)
 * PHP module memcached
 * PHP module redis (>= 2.2.6, required for Transactional File Locking)
 
-See :doc:`../configuration_server/caching_configuration` to learn how to select 
+See :doc:`../configuration_server/caching_configuration` to learn how to select
 and configure a memcache.
 
 For preview generation (*optional*):
@@ -104,47 +128,54 @@ For command line processing (*optional*):
 
 * PHP module pcntl (enables command interruption by pressing ``ctrl-c``)
 
-You don’t need the WebDAV module for your Web server (i.e. Apache’s 
+You don’t need the WebDAV module for your Web server (i.e. Apache’s
 ``mod_webdav``), as Nextcloud has a built-in WebDAV server of its own,
 SabreDAV.
-If ``mod_webdav`` is enabled you must disable it for Nextcloud. (See 
+If ``mod_webdav`` is enabled you must disable it for Nextcloud. (See
 :ref:`apache_configuration_label` for an example configuration.)
-  
+ 
 .. _ubuntu_installation_label:  
 
 Example Installation on Ubuntu 16.04 LTS Server
 -----------------------------------------------
 
-On a machine running a pristine Ubuntu 16.04 LTS server, install the
-required and recommended modules for a typical Nextcloud installation, using
-Apache and MariaDB, by issuing the following commands in a terminal::
+On a machine running a pristine Ubuntu 16.04 LTS server, you have two options:
+
+To install the Nextcloud `Snap Package <http://snapcraft.io/>`_, run the
+following command in a terminal::
+
+    sudo snap install nextcloud
+
+Install the required and recommended modules for a typical Nextcloud
+installation, using Apache and MariaDB, by issuing the following commands in a
+terminal::
 
     apt-get install apache2 mariadb-server libapache2-mod-php7.0
     apt-get install php7.0-gd php7.0-json php7.0-mysql php7.0-curl php7.0-mbstring
     apt-get install php7.0-intl php7.0-mcrypt php-imagick php7.0-xml php7.0-zip
 
-* This installs the packages for the Nextcloud core system. 
-  ``libapache2-mod-php7.0`` provides the following PHP extensions: ``bcmath bz2 
-  calendar Core ctype date dba dom ereg exif fileinfo filter ftp gettext hash 
-  iconv libxml mhash openssl pcre Phar posix Reflection session shmop 
-  SimpleXML soap sockets SPL standard sysvmsg sysvsem sysvshm tokenizer wddx 
-  xmlreader xmlwriter zlib``. If you are planning 
-  on running additional apps, keep in mind that they might require additional 
+* This installs the packages for the Nextcloud core system.
+  ``libapache2-mod-php7.0`` provides the following PHP extensions: ``bcmath bz2
+  calendar Core ctype date dba dom ereg exif fileinfo filter ftp gettext hash
+  iconv libxml mhash openssl pcre Phar posix Reflection session shmop
+  SimpleXML soap sockets SPL standard sysvmsg sysvsem sysvshm tokenizer wddx
+  xmlreader xmlwriter zlib``. If you are planning
+  on running additional apps, keep in mind that they might require additional
   packages.  See :ref:`prerequisites_label` for details.
 
-* At the installation of the MySQL/MariaDB server, you will be prompted to 
-  create a root password. Be sure to remember your password as you will need it 
+* At the installation of the MySQL/MariaDB server, you will be prompted to
+  create a root password. Be sure to remember your password as you will need it
   during Nextcloud database setup.
 
 Now download the archive of the latest Nextcloud version:
 
 * Go to the `Nextcloud Download Page <https://nextcloud.com/install>`_.
-* Go to **Download Nextcloud Server > Download > Archive file for 
+* Go to **Download Nextcloud Server > Download > Archive file for
   server owners** and download either the tar.bz2 or .zip archive.
-* This downloads a file named nextcloud-x.y.z.tar.bz2 or nextcloud-x.y.z.zip 
+* This downloads a file named nextcloud-x.y.z.tar.bz2 or nextcloud-x.y.z.zip
   (where x.y.z is the version number).
-* Download its corresponding checksum file, e.g. nextcloud-x.y.z.tar.bz2.md5, 
-  or nextcloud-x.y.z.tar.bz2.sha256. 
+* Download its corresponding checksum file, e.g. nextcloud-x.y.z.tar.bz2.md5,
+  or nextcloud-x.y.z.tar.bz2.sha256.
 * Verify the MD5 or SHA256 sum::
    
     md5sum -c nextcloud-x.y.z.tar.bz2.md5 < nextcloud-x.y.z.tar.bz2
@@ -158,25 +189,25 @@ Now download the archive of the latest Nextcloud version:
     wget https://nextcloud.com/nextcloud.asc
     gpg --import nextcloud.asc
     gpg --verify nextcloud-x.y.z.tar.bz2.asc nextcloud-x.y.z.tar.bz2
-  
-* Now you can extract the archive contents. Run the appropriate unpacking 
+ 
+* Now you can extract the archive contents. Run the appropriate unpacking
   command for your archive type::
 
     tar -xjf nextcloud-x.y.z.tar.bz2
     unzip nextcloud-x.y.z.zip
 
-* This unpacks to a single ``nextcloud`` directory. Copy the Nextcloud directory 
-  to its final destination. When you are running the Apache HTTP server you may 
+* This unpacks to a single ``nextcloud`` directory. Copy the Nextcloud directory
+  to its final destination. When you are running the Apache HTTP server you may
   safely install Nextcloud in your Apache document root::
 
     cp -r nextcloud /path/to/webserver/document-root
 
-  where ``/path/to/webserver/document-root`` is replaced by the 
+  where ``/path/to/webserver/document-root`` is replaced by the
   document root of your Web server::
     
     cp -r nextcloud /var/www
 
-On other HTTP servers it is recommended to install Nextcloud outside of the 
+On other HTTP servers it is recommended to install Nextcloud outside of the
 document root.
 
 .. _binlog_format_label:
@@ -186,11 +217,11 @@ BINLOG_FORMAT = STATEMENT
 
 If your Nextcloud installation fails and you see this in your Nextcloud log::
 
- An unhandled exception has been thrown: exception ‘PDOException’ with message 
- 'SQLSTATE[HY000]: General error: 1665 Cannot execute statement: impossible to 
- write to binary log since BINLOG_FORMAT = STATEMENT and at least one table 
- uses a storage engine limited to row-based logging. InnoDB is limited to 
- row-logging when transaction isolation level is READ COMMITTED or READ 
+ An unhandled exception has been thrown: exception ‘PDOException’ with message
+ 'SQLSTATE[HY000]: General error: 1665 Cannot execute statement: impossible to
+ write to binary log since BINLOG_FORMAT = STATEMENT and at least one table
+ uses a storage engine limited to row-based logging. InnoDB is limited to
+ row-logging when transaction isolation level is READ COMMITTED or READ
  UNCOMMITTED.'
 
 See :ref:`db-binlog-label`.
@@ -200,9 +231,9 @@ See :ref:`db-binlog-label`.
 Apache Web Server Configuration
 -------------------------------
 
-On Debian, Ubuntu, and their derivatives, Apache installs with a useful 
-configuration so all you have to do is create a 
-:file:`/etc/apache2/sites-available/nextcloud.conf` file with these lines in 
+On Debian, Ubuntu, and their derivatives, Apache installs with a useful
+configuration so all you have to do is create a
+:file:`/etc/apache2/sites-available/nextcloud.conf` file with these lines in
 it, replacing the **Directory** and other filepaths with your own filepaths::
    
   Alias /nextcloud "/var/www/nextcloud/"
@@ -219,11 +250,11 @@ it, replacing the **Directory** and other filepaths with your own filepaths::
    SetEnv HTTP_HOME /var/www/nextcloud
 
   </Directory>
-  
+ 
 Then create a symlink to :file:`/etc/apache2/sites-enabled`::
 
   ln -s /etc/apache2/sites-available/nextcloud.conf /etc/apache2/sites-enabled/nextcloud.conf
-  
+ 
 Additional Apache Configurations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -231,47 +262,47 @@ Additional Apache Configurations
   it by running::
 
     a2enmod rewrite
-  
+ 
   Additional recommended modules are ``mod_headers``, ``mod_env``, ``mod_dir`` and ``mod_mime``::
-  
+ 
     a2enmod headers
     a2enmod env
     a2enmod dir
     a2enmod mime
-  
+ 
   If you're running ``mod_fcgi`` instead of the standard ``mod_php`` also enable::
-  
+ 
     a2enmod setenvif
 
-* You must disable any server-configured authentication for Nextcloud, as it 
-  uses Basic authentication internally for DAV services. If you have turned on 
-  authentication on a parent folder (via e.g. an ``AuthType Basic`` 
-  directive), you can turn off the authentication specifically for the 
-  Nextcloud entry. Following the above example configuration file, add the 
+* You must disable any server-configured authentication for Nextcloud, as it
+  uses Basic authentication internally for DAV services. If you have turned on
+  authentication on a parent folder (via e.g. an ``AuthType Basic``
+  directive), you can turn off the authentication specifically for the
+  Nextcloud entry. Following the above example configuration file, add the
   following line in the ``<Directory>`` section::
 
     Satisfy Any
 
-* When using SSL, take special note of the ServerName. You should specify one 
-  in the server configuration, as well as in the CommonName field of the 
-  certificate. If you want your Nextcloud to be reachable via the internet, 
+* When using SSL, take special note of the ServerName. You should specify one
+  in the server configuration, as well as in the CommonName field of the
+  certificate. If you want your Nextcloud to be reachable via the internet,
   then set both of these to the domain you want to reach your Nextcloud server.
 
 * Now restart Apache::
 
      service apache2 restart
 
-* If you're running Nextcloud in a subdirectory and want to use CalDAV or 
-  CardDAV clients make sure you have configured the correct 
+* If you're running Nextcloud in a subdirectory and want to use CalDAV or
+  CardDAV clients make sure you have configured the correct
   :ref:`service-discovery-label` URLs.
-  
+ 
 .. _pretty_urls_label:  
-  
+ 
 Pretty URLs
 -----------
 
-Pretty URLs are created automatically when ``.htaccess`` is writable by the 
-HTTP user, ``mod_env`` and ``mod_rewrite`` are installed, and 
+Pretty URLs are created automatically when ``.htaccess`` is writable by the
+HTTP user, ``mod_env`` and ``mod_rewrite`` are installed, and
 ``'overwrite.cli.url'`` in your ``config.php`` is set to any non-null value.
 
 .. _enabling_ssl_label:
@@ -279,8 +310,8 @@ HTTP user, ``mod_env`` and ``mod_rewrite`` are installed, and
 Enabling SSL
 ------------
 
-.. note:: You can use Nextcloud over plain HTTP, but we strongly encourage you 
-          to use SSL/TLS to encrypt all of your server traffic, and to protect 
+.. note:: You can use Nextcloud over plain HTTP, but we strongly encourage you
+          to use SSL/TLS to encrypt all of your server traffic, and to protect
           user's logins and data in transit.
 
 Apache installed under Ubuntu comes already set-up with a simple
@@ -292,9 +323,9 @@ the default site. Open a terminal and run::
      service apache2 reload
 
 .. note:: Self-signed certificates have their drawbacks - especially when you
-          plan to make your Nextcloud server publicly accessible. You might 
+          plan to make your Nextcloud server publicly accessible. You might
           want to consider getting a certificate signed by a commercial signing
-          authority. Check with your domain name registrar or hosting service 
+          authority. Check with your domain name registrar or hosting service
           for good deals on commercial certificates.   
     
 .. _installation_wizard_label:
@@ -309,11 +340,11 @@ your HTTP user:
 
  chown -R www-data:www-data /var/www/nextcloud/
  
-.. note:: Admins of SELinux-enabled distributions may need to write new SELinux 
-   rules to complete their Nextcloud installation; see 
-   :ref:`selinux_tips_label`. 
+.. note:: Admins of SELinux-enabled distributions may need to write new SELinux
+   rules to complete their Nextcloud installation; see
+   :ref:`selinux_tips_label`.
 
-To use ``occ`` see :doc:`command_line_installation`. 
+To use ``occ`` see :doc:`command_line_installation`.
 
 To use the graphical Installation Wizard see :doc:`installation_wizard`.
 
@@ -322,7 +353,7 @@ To use the graphical Installation Wizard see :doc:`installation_wizard`.
 SELinux Configuration Tips
 --------------------------
 
-See :doc:`selinux_configuration` for a suggested configuration for 
+See :doc:`selinux_configuration` for a suggested configuration for
 SELinux-enabled distributions such as Fedora and CentOS.
 
 .. _php_ini_tips_label:
@@ -330,7 +361,7 @@ SELinux-enabled distributions such as Fedora and CentOS.
 php.ini Configuration Notes
 ---------------------------
 
-Keep in mind that changes to ``php.ini`` may have to be configured on more than one 
+Keep in mind that changes to ``php.ini`` may have to be configured on more than one
 ini file. This can be the case, for example, for the ``date.timezone`` setting.
 
 **php.ini - used by the Web server:**
@@ -354,68 +385,68 @@ php-fpm Configuration Notes
 
 **Security: Use at least PHP >= 5.6.6**
 
-Due to `a bug with security implications <https://bugs.php.net/bug.php?id=64938>`_ 
+Due to `a bug with security implications <https://bugs.php.net/bug.php?id=64938>`_
 in older PHP releases with the handling of XML data you are highly encouraged to run
 at least PHP 5.6.6 when in a threaded environment.
 
 **System environment variables**
 
-When you are using ``php-fpm``, system environment variables like 
-PATH, TMP or others are not automatically populated in the same way as 
-when using ``php-cli``. A PHP call like ``getenv('PATH');`` can therefore 
-return an empty result. So you may need to manually configure environment 
-variables in the appropropriate ``php-fpm`` ini/config file. 
+When you are using ``php-fpm``, system environment variables like
+PATH, TMP or others are not automatically populated in the same way as
+when using ``php-cli``. A PHP call like ``getenv('PATH');`` can therefore
+return an empty result. So you may need to manually configure environment
+variables in the appropropriate ``php-fpm`` ini/config file.
 
 Here are some example root paths for these ini/config files:
 
 +--------------------+-----------------------+
 | Ubuntu/Mint        | CentOS/Red Hat/Fedora |
-+--------------------+-----------------------+ 
++--------------------+-----------------------+
 | ``/etc/php5/fpm/`` | ``/etc/php-fpm.d/``   |
-+--------------------+-----------------------+ 
++--------------------+-----------------------+
 
-In both examples, the ini/config file is called ``www.conf``, and depending on 
+In both examples, the ini/config file is called ``www.conf``, and depending on
 the distro version or customizations you have made, it may be in a subdirectory.
 
-Usually, you will find some or all of the environment variables 
+Usually, you will find some or all of the environment variables
 already in the file, but commented out like this::
 
-	;env[HOSTNAME] = $HOSTNAME
-	;env[PATH] = /usr/local/bin:/usr/bin:/bin
-	;env[TMP] = /tmp
-	;env[TMPDIR] = /tmp
-	;env[TEMP] = /tmp
+    ;env[HOSTNAME] = $HOSTNAME
+    ;env[PATH] = /usr/local/bin:/usr/bin:/bin
+    ;env[TMP] = /tmp
+    ;env[TMPDIR] = /tmp
+    ;env[TEMP] = /tmp
 
-Uncomment the appropriate existing entries. Then run ``printenv PATH`` to 
+Uncomment the appropriate existing entries. Then run ``printenv PATH`` to
 confirm your paths, for example::
 
         $ printenv PATH
         /home/user/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:
         /sbin:/bin:/
 
-If any of your system environment variables are not present in the file then 
+If any of your system environment variables are not present in the file then
 you must add them.
 
 When you are using shared hosting or a control panel to manage your `Nextcloud VM
-<https://github.com/nextcloud/vm>`_ or server, the configuration files are almost certain to be located 
-somewhere else, for security and flexibility reasons, so check your 
-documentation for the correct locations.
+<https://github.com/nextcloud/vm>`_ or server, the configuration files are almost
+certain to be located somewhere else, for security and flexibility reasons, so
+check your documentation for the correct locations.
 
-Please keep in mind that it is possible to create different settings for 
-``php-cli`` and ``php-fpm``, and for different domains and Web sites. 
+Please keep in mind that it is possible to create different settings for
+``php-cli`` and ``php-fpm``, and for different domains and Web sites.
 The best way to check your settings is with :ref:`label-phpinfo`.
 
 **Maximum upload size**
 
-If you want to increase the maximum upload size, you will also have to modify 
-your ``php-fpm`` configuration and increase the ``upload_max_filesize`` and 
-``post_max_size`` values. You will need to restart ``php5-fpm`` and your HTTP 
+If you want to increase the maximum upload size, you will also have to modify
+your ``php-fpm`` configuration and increase the ``upload_max_filesize`` and
+``post_max_size`` values. You will need to restart ``php5-fpm`` and your HTTP
 server in order for these changes to be applied.
 
 **.htaccess notes for Apache**
 
-Nextcloud comes with its own ``nextcloud/.htaccess`` file. Because ``php-fpm`` 
-can't read PHP settings in ``.htaccess`` these settings and permissions must 
+Nextcloud comes with its own ``nextcloud/.htaccess`` file. Because ``php-fpm``
+can't read PHP settings in ``.htaccess`` these settings and permissions must
 be set in the ``nextcloud/.user.ini`` file.
 
 .. _other_HTTP_servers_label:
@@ -428,3 +459,6 @@ Other Web Servers
 
 `Other HTTP servers (Nextcloud)
 <https://github.com/nextcloud/documentation/wiki/Alternate-Web-server-notes>`_
+
+
+
