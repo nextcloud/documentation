@@ -33,7 +33,7 @@ Installing via Snap Packages
 
 A snap is a zip file containing an application together with its dependencies, and a description of how it should safely be run on your system, especially the different ways it should talk to other software. Most importantly snaps are designed to be secure, sandboxed, containerised applications isolated from the underlying system and from other applications. 
     
-To install the Nextcloud Snap Package (available on Ubuntu 16.04 LTS and above), run the following command in a terminal::
+To install the Nextcloud Snap Package, run the following command in a terminal::
 
     sudo snap install nextcloud
 
@@ -130,7 +130,7 @@ Example Installation on Ubuntu 16.04 LTS Server
 
 On a machine running a pristine Ubuntu 16.04 LTS server, you have two options:
 
-To install the Nextcloud `Snap Package <http://snapcraft.io/>`_ (available on Ubuntu 16.04 LTS and above), run the following command in a terminal::
+To install the Nextcloud `Snap Package <http://snapcraft.io/>`_, run the following command in a terminal::
 
     sudo snap install nextcloud
 
