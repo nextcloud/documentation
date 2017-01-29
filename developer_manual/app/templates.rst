@@ -64,5 +64,5 @@ To generate links to images use the **image_path** function:
 
 .. code-block:: php
   
-  <img src="<?php print_unescaped(image_path('myapp', 'app.png')); ?> />
+  <img src="<?php print_unescaped(image_path('myapp', 'app.png')); ?>" />
 
