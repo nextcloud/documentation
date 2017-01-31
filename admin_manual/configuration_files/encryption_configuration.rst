@@ -143,6 +143,8 @@ Encryption settings can be configured in the mount options for an external
 storage mount, see :ref:`external_storage_mount_options_label`
 (:doc:`external_storage_configuration_gui`)
 
+.. _enable-file-recovery-key:
+
 Enabling Users File Recovery Keys
 ----------------------------------
 

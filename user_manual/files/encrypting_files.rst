@@ -27,6 +27,42 @@ compromised the intruder may get access to your files. (Read
 <https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your-data/>`_ 
 to learn more.)
 
+Encryption FAQ
+--------------
+
+How Can Encryption Be Disabled? 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The only way to disable encryption is to run the :ref:`"decrypt all" <encryption_label>` 
+script, which decrypts all files and disables encryption.
+
+Is It Possible To Disable Encryption With The Recovery Key?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Yes, *if* every user uses the :ref:`file recovery key
+<enable-file-recovery-key>`, :ref:`"decrypt all" <encryption_label>` will use it
+to decrypt all files.
+
+Can Encryption Be Disabled Without The User’s Password?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you don't have the users password or :ref:`file recovery key
+<enable-file-recovery-key>` then there is no way to decrypt all files. What's
+more, running it on login would be dangerous, because you would most likely run
+into timeouts. 
+
+Is It Planned To Move This To The Next User Login Or A Background Job? 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If we did that, then we would need to store your login password in the database.
+This could be seen as a security issue, so nothing like that is planned.
+
+Is Group Sharing Possible With The Recovery Key?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you mean adding users to groups and make it magically work? No. This only
+works with the master key.
+
 Using Encryption
 ----------------
 
