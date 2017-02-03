@@ -146,6 +146,7 @@ replace the ``htuser`` and ``htgroup`` variables with your HTTP user and group::
 
  #!/bin/bash
  ocpath='/var/www/nextcloud'
+ datapath='/var/www/nextcloud/data'
  htuser='www-data'
  htgroup='www-data'
  rootuser='root'
@@ -162,7 +163,7 @@ replace the ``htuser`` and ``htgroup`` variables with your HTTP user and group::
  chown -R ${rootuser}:${htgroup} ${ocpath}/
  chown -R ${htuser}:${htgroup} ${ocpath}/apps/
  chown -R ${htuser}:${htgroup} ${ocpath}/config/
- chown -R ${htuser}:${htgroup} ${ocpath}/data/
+ chown -R ${htuser}:${htgroup} ${datapath}
  chown -R ${htuser}:${htgroup} ${ocpath}/themes/
  chown -R ${htuser}:${htgroup} ${ocpath}/updater/
 
@@ -174,10 +175,10 @@ replace the ``htuser`` and ``htgroup`` variables with your HTTP user and group::
    chmod 0644 ${ocpath}/.htaccess
    chown ${rootuser}:${htgroup} ${ocpath}/.htaccess
  fi
- if [ -f ${ocpath}/data/.htaccess ]
+ if [ -f ${datapath}/.htaccess ]
   then
-   chmod 0644 ${ocpath}/data/.htaccess
-   chown ${rootuser}:${htgroup} ${ocpath}/data/.htaccess
+   chmod 0644 ${datapath}/.htaccess
+   chown ${rootuser}:${htgroup} ${datapath}/.htaccess
  fi
  
 If you have customized your Nextcloud installation and your filepaths are 
