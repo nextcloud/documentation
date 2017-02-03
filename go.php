@@ -27,6 +27,7 @@ $mapping = array(
     'admin-setup-well-known-URL' => '/admin_manual/issues/general_troubleshooting.html#service-discovery',
     'admin-backup'            => '/admin_manual/maintenance/backup.html',
     'admin-monitoring'        => '/admin_manual/operations/considerations_on_monitoring.html',
+    'admin-sso'               => '/admin_manual/configuration_server/sso_configuration.html',
     
     'developer-code-integrity'=> '/developer_manual/app/code_signing.html',
     'developer-theming'       => '/developer_manual/core/theming.html',
