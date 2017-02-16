@@ -14,9 +14,9 @@ user-manual-html:
 	@echo "User manual build finished; HTML is updated"
 
 user-manual-de-html:
-        rm -rf user_manual_de/_build/html/com
-        cd user_manual_de && make html
-        @echo "User manual de build finished; HTML is updated"
+	rm -rf user_manual_de/_build/html/com
+	cd user_manual_de && make html
+	@echo "User manual de build finished; HTML is updated"
 
 developer-manual-html:
 	rm -rf developer_manual/_build/html/com
@@ -32,8 +32,8 @@ user-manual-pdf:
 	@echo "User manual build finished; PDF is updated"
 
 user-manual-de-pdf:
-        cd user_manual_de && make latexpdf
-        @echo "User manual de build finished; PDF is updated"
+	cd user_manual_de && make latexpdf
+	@echo "User manual de build finished; PDF is updated"
 
 developer-manual-pdf:
 	cd developer_manual && make latexpdf
