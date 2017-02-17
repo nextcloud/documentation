@@ -1,12 +1,12 @@
 .. _contents:
 
-=================
-Table of Contents
-=================
+==================
+Inhaltsverzeichnis
+==================
 
 .. toctree::
     :maxdepth: 2
-    
+
     index
     whats_new
     webinterface
@@ -16,4 +16,4 @@ Table of Contents
     user_2fa
     session_management
     external_storage/index
-    
+

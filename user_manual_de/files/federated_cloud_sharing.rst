@@ -1,57 +1,66 @@
-=======================
-Using Federation Shares
-=======================
+=================
+Federated-Sharing
+=================
 
-Federation Sharing allows you to mount file shares from remote Nextcloud servers, in effect 
-creating your own cloud of Nextclouds. You can create direct share links with 
-users on other Nextcloud servers.
+Die Federated Freigabe ermöglicht Ihnen das Einbinden von Dateifragaben von
+entfernten Nextcloud-Servern. Sie können demnach direkte Freigabe-Links mit
+Benutzern auf anderen Nextcloud-Servern erstellen.
 
-Creating a New Federation Share
--------------------------------
+Eine neue Federated Freigabe erstellen
+--------------------------------------
 
-Federation sharing is enabled on new or upgraded Nextcloud installations
-by default. Follow these steps to create a new share with other Nextcloud or ownCloud 9+ servers:
+Die Federated Freigabe wird standardmäßig bei neuen oder aktualisierten
+Nextcloud-Installationen aktiviert. Gehen Sie folgendermaßen vor, um eine neue
+Freigabe mit anderen Nextcloud-Servern oder ownCloud-Servern ab Version 9 zu
+erstellen:
 
-1. Go to your ``Files`` page and click the Share icon on the file or directory 
-you want to share. In the sidebar enter the username and URL of the remote user
-in this form: ``<username>@<oc-server-url>``. In this example, that is
-``layla@remote-server/nextcloud``. The form automatically echoes the address 
-that you type and labels it as "remote". Click on the label.
+1. Gehen Sie in der linken Seitenleiste auf ``Alle Dateien`` und klicken Sie
+auf das Symbol "Freigeben" neben der Datei oder dem Ordner, den Sie freigeben
+möchten. Geben Sie in der rechten Seitenleiste den Benutzernamen und die URL des
+entfernten Benutzers wie folgt an: ``<username>@<oc-server-url>``. In diesem
+Beispiel lautet die Eingabe: ``layla@remote-server/nextcloud``. Das Formular
+erkennt automatisch die Adresse und markiert diese als "entfernt" Freigabe.
+Um die Adresse hinzuzufügen kann die Eingabetaste verwendet, oder auf die
+Auswahl geklickt werden.
 
 .. figure:: ../images/direct-share-1.png
 
-2. When your local Nextcloud server makes a successful connection with the remote
-Nextcloud server you'll see a confirmation. Your only share option is **Can 
-edit**. 
-   
-Click the Share button anytime to see who you have shared your file with. Remove 
-your linked share anytime by clicking the trash can icon. This only unlinks the 
-share, and does not delete any files.
+2. Wenn Ihr lokaler Nextcloud-Server eine erfolgreiche Verbindung mit dem
+entfernten Nextcloud-Server herstellt hat, sehen Sie eine Bestätigung. Die
+einzige Freigabeberechtigung ist **Kann bearbeiten**.
 
-Creating a New Federated Cloud Share via Email
-----------------------------------------------
+Unter dem Menüpunkt "Teilen" können die Freigaben der Datei eingesehen werden.
+Die Freigabe kann jederzeit durch ein Klick auf das Papierkorb-Symbol
+aufgehoben werden. Dies löscht nur die Freigabe und nicht die Datei.
 
-Use this method when you are sharing with users on ownCloud 8.x and older.
+Erstellen einer neuen Federated Freigabe per E-Mail
+---------------------------------------------------
 
-What if you do not know the username or URL? Then you can have Nextcloud create 
-the link for you and email it to your recipient. 
+Verwenden Sie diese Methode, wenn Sie mit Benutzern auf ownCloud 8.x und älter
+Dateien teilen möchten.
+
+Was, wenn Benutzername oder die URL unbekannt ist? Dann kann Nextcloud
+den Link erstellen und Ihrem Empfänger zusenden.
 
 .. figure:: ../images/create_public_share-6.png
 
-When your recipient receives your email they will have to take a number of 
-steps to complete the share link. First they must open the link you sent them in 
-a Web browser, and then click the **Add to your Nextcloud** button.
+Wenn der Empfänger die E-Mail erhält, müssen Sie eine Reihe von Schritten
+durchführen, um die Freigabe per Link abzuschließen. Zuerst müssen Sie den Link
+öffnen, der per Web-Browser versendet wurde. Klicken Sie dann auf die
+Schaltfläche **Zu Ihrer Nextcloud hinzufügen**.
 
 .. figure:: ../images/create_public_share-8.png
 
-The **Add to your Nextcloud** button changes to a form field, and your recipient 
-needs to enter the URL of their Nextcloud or ownCloud server in this field and press the
-return key, or click the arrow.
+Die Schaltfläche **Zu Ihrer Nextcloud hinzufügen** ändert sich in ein
+Formularfeld. Der Empfänger muss in diesem Feld die URL Ihres Nextcloud- oder
+ownCloud-Servers eingeben und zum Bestätigen die Eingabetaste drücken oder auf
+den Pfeil klicken.
 
 .. figure:: ../images/create_public_share-9.png
 
-Next, they will see a dialog asking to confirm. All they have to do is click 
-the **Add remote share** button and they're finished.
- 
-Remove your linked share anytime by clicking the trash can icon. This only 
-unlinks the share, and does not delete any files.
+Im nächsten Schritt muss das Hinzufügen im Dialog bestätigt werden. Mit einem
+Klick auf **Hinzufügen von entfernter Freigabe** ist das Hinzufügen einer
+neuen Federated Freigabe abgeschlossen.
+
+Entfernen Sie Ihre Freigaben jederzeit mit einem Klick auf das Papierkorb-Symbol.
+Dies entfernt lediglich die Freigabe, nicht aber die geteilten Dateien.

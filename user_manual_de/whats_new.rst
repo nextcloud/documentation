@@ -1,7 +1,5 @@
-===========================================
-What's New for Users in Nextcloud |version|
-===========================================
+=================================
+Neuerungen in Nextcloud |version|
+=================================
 
-* Option to hide or expose hidden files in the Web GUI
-
-
+* Dateien in der Web-Oberfläche verstecken oder darstellen
