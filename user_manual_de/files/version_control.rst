@@ -1,33 +1,32 @@
-===============
-Version Control
-===============
+==================
+Versionsverwaltung
+==================
 
-Nextcloud supports simple version control system for files. Versioning creates 
-backups of files which are accessible via the Versions tab on the Details 
-sidebar. This tab contains the history of the file where you can roll back a 
-file to any previous version. Changes made at intervals greater than two minutes 
-are saved in data/[user]/versions.
+Nextcloud hat ein einfaches Versionsverwaltung-System für Dateien. Versionierung
+erstellt Backups, welche unter dem "Versions"-Reiter in der Detail-Sidebar zu
+finden sind. Dieser Reiter enhält eine komplette Historie aller Änderungen an der
+entsprechenden Datei und erlaubt es, jegliche alte Version wiederherzustellen.
+Änderungen werden alle zwei Minuten unter data/[user]/versions abgelegt.
 
 .. figure:: ../images/files_versioning.png
 
-To restore a specific version of a file, click the circular arrow to the left. 
-Click on the timestamp to download it.
+Um eine bestimmte Version einer Datei wiederherzustellen, klicken Sie den
+Kreispfeil auf der linken Seite. Mit einem Klick auf den Zeitstempel kann die Datei
+heruntergeladen werden.
 
-The versioning app expires old versions automatically to make sure that
-the user doesn't run out of space. This pattern is used to delete
-old versions:
+Um Speicherplatz zu sparen, löscht die Versionen-App automatisch ältere Versionen nach diesen Regeln:
 
-* For the first second we keep one version
-* For the first 10 seconds Nextcloud keeps one version every 2 seconds
-* For the first minute Nextcloud keeps one version every 10 seconds
-* For the first hour Nextcloud keeps one version every minute
-* For the first 24 hours Nextcloud keeps one version every hour
-* For the first 30 days Nextcloud keeps one version every day
-* After the first 30 days Nextcloud keeps one version every week
+- In der ersten Sekunde wird einer Version erstellt
+- Die ersten 10 Sekunden wird alle 2 Sekunden eine Version erstellt
+- Die erste Minute wird alle 10 Sekunden eine Version erstellt
+- Die erste Stunde wird jede Minute eine Version erstellt
+- Die ersten 24 Stunden wird jede Stunde eine Version erstellt
+- Die ersten 30 Tage wird jeden Tag eine Version erstellt
+- Nach den ersten 30 Tagen wird jede Woche eine Version erstellt
 
-The versions are adjusted along this pattern every time a new version gets
-created.
+Sobald eine neue Version erstellt wird, passen sich alle bisher erstellten Versionen
+diesem Schema an.
 
-The version app never uses more that 50% of the user's currently available free 
-space. If the stored versions exceed this limit, Nextcloud deletes the oldest 
-versions until it meets the disk space limit again.
+Die Versionen-App benutzt nie mehr als 50% des für den Nutzer verfügbaren
+Speicherplatzes. Wenn dieses Limit überschritten wird, werden die ältesten
+Versionen gelöscht, sobald wieder mindestens 50% Speicher frei sind.

@@ -1,6 +1,6 @@
-======================
-Using the Contacts App
-======================
+=========================
+Benutzen der Kontakte-App
+=========================
 
-The Contacts app is not enabled by default in Nextcloud |version| and needs to
-be enabled separately. 
+Die Kontakte-App ist standardmäßig nicht in Nextcloud |version| aktiviert und
+muss erst manuell aktiviert werden.

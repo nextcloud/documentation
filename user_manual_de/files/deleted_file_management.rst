@@ -1,57 +1,46 @@
-======================
-Managing Deleted Files
-======================
+===========================
+Gelöschte Dateien verwalten
+===========================
 
-When you delete a file in Nextcloud, it is not immediately deleted permanently. 
-Instead, it is moved into the trash bin. It is not permanently deleted until 
-you manually delete it, or when the Deleted Files app deletes it to make room 
-for new files.
+Wenn eine Datei in Nextcloud gelöscht wird, wird diese vorerst in den Papierkorb
+verschoben. Dieser muss entweder manuell von Ihnen geleert werden, oder wird
+automatisch von der "Gelöschte Dateien"-App verwaltet.
 
-Find your deleted files by clicking on the **Deleted files** 
-button on the Files page of the Nextcloud Web interface. You'll have options to 
-either restore or permanently delete files.
+Um Dateien aus dem Papierkorb wiederherzustellen oder permanent zu löschen, klicken
+Sie auf "Gelöschte Dateien" in der linken Seitenleiste der "Dateien"-App.
 
-Quotas
-------
+Speicherkontingent
+------------------
 
-Deleted files are not counted against your storage quota. Only files that 
-originate with users count against their quotas, not files 
-shared with them that originate from other users. (See :doc:`quota` to learn 
-more about quotas.)
+Gelöschte Dateien, die sich noch im Papierkorb befinden, zählen nicht zum genutzten
+Speicherplatz. Unter :doc:`quota` finden Sie nähere Informationen zum Speicherkontigent.
 
-What Happens When Shared Files Are Deleted
-------------------------------------------
+Was passiert, wenn geteilte Dateien gelöscht werden
+---------------------------------------------------
 
-Deleting files gets a little complicated when they are shared files, as this 
-scenario illustrates:
+Es wird etwas komplizierter, wenn geteilte Dateien gelöscht werden. Ein Beispiel:
 
-1. User1 shares a folder "test" with User2 and User3
-2. User2 (the recipient) deletes a file/folder "sub" inside of "test"
-3. The folder "sub" will be moved to the trashbin of both User1 (owner) and 
-   User2 (recipient)
-4. But User3 will not have a copy of "sub" in her trash bin
+1. Benutzer 1 teilt einen Ordner "test" mit Benutzer 2 und 3
+2. Benutzer 2 (der Empfänger) löscht eine Datei / einen Ordner "hallo.txt" in "test"
+3. Diese Datei wird nun in den Papierkorb von Benutzer 1 (Besitzer) und Benutzer 2 (Empfänger) verschoben
+4. "hallo.txt" wird aber nicht in den Papierkorb von Benutzer 3 verschoben. Dieser hat keinerlei Zugriff mehr auf "hallo.txt"
 
-When User1 deletes "sub" then it is moved to User1's trash bin. It is 
-deleted from User2 and User3, but not placed in their trash bins.
+Wenn Benutzer 1 (Besitzer) die Datei "hallo.txt" löscht, wird diese in seinen Papierkorb verschoben.
+Benutzer 2 und 3 haben nun keinen Zugriff mehr auf diese Datei – nicht einmal über den Papierkorb.
 
-When you share files, other users may copy, rename, move, and share them with 
-other people, just as they can for any computer files; Nextcloud does not have 
-magic powers to prevent this.
+Geteilte Dateien können von anderen Benutzern kopiert, umbenannt, verschoben und erneut mit anderen Personen
+geteilt werden; Nextcloud kann dies nicht verhindern.
 
-How the Deleted Files app Manages Storage Space
------------------------------------------------
+Wie die "Gelöschte Dateien"-App den Papierkorb verwaltet
+--------------------------------------------------------
 
-To ensure that users do not run over their storage quotas, the Deleted Files 
-app allocates a maximum of 50% of their currently available free space to 
-deleted files. If your deleted files exceed this limit, Nextcloud deletes the 
-oldest files (files with the oldest timestamps from when they were deleted) 
-until it meets the memory usage limit again.
+Um sicherzustellen, dass einem Benutzer nie der freie Speicherplatz ausgeht, löscht die
+"Gelöschte Dateien"-App automatisch solange die ältesten Dateien aus dem Papierkorb, bis
+wieder mindestens 50% des für den Benutzer verfügbaren Speicherkontingents frei sind.
 
-Nextcloud checks the age of deleted files every time new files are added to the 
-deleted files. By default, deleted files stay in the trash bin for 180 days. The 
-Nextcloud server administrator can adjust this value in the ``config.php`` file 
-by setting the ``trashbin_retention_obligation`` value. Files older than the 
-``trashbin_retention_obligation`` value will be deleted permanently. 
-Additionally, Nextcloud calculates the maximum available space every time a new 
-file is added. If the deleted files exceed the new maximum allowed space 
-Nextcloud will expire old deleted files until the limit is met once again.
+Standardmäßig verbleiben Dateien 180 Tage im Papierkorb, bevor sie automatisch gelöscht
+werden. Ihr Nextcloud-Administrator kann diesen Wert über ``trashbin_retention_obligation``
+in ``config.php`` anpassen. Sobald eine neue Datei in den Papierkorb verschoben wird überprüft
+Nextcloud, ob in diesem Dateien schon länger als ``trashbin_retention_obligation``-Tage liegen
+und löscht diese dann gegebenenfalls.
+Der verfügbare Speicherplatz wird neu berechnet, sobald eine Datei hinzugefügt wird.

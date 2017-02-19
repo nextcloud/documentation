@@ -1,44 +1,47 @@
-=====================================
-Manage Connected Browsers and Devices
-=====================================
+=======================================
+Verbundene Browser und Geräte verwalten
+=======================================
 
-The personal settings page allows you to have an overview on the connected
-browsers and devices.
+In Ihren persönlichen Einstellungen finden Sie eine Übersicht aller verbundenen
+Browser und Geräten.
 
-Managing Connected Browsers
-===========================
-In the list of connected browsers you see which browsers connected to your
-account recently:
+Verbundene Browser verwalten
+============================
+In der Liste der verbundenen Browser sind alle Browser gelistet, von welchen Sie
+sich in letzter Zeit in Ihren Account eingeloggt haben.
 
 .. figure:: images/settings_sessions.png
-     :alt: List of browser sessions.
+     :alt: Liste der Browser-Sitzungen.
 
-You can use the trash icon to disconnect any of the browsers in the list.
+Um die Sitzung eines Browsers zu schließen, klicken Sie einfach auf das Papierkorb-
+Symbol auf einen Eintrag in der Liste.
 
-Managing Devices
-================
-In the list of connected devices you see all the devices and clients you
-generated a device password for and their last activity:
+Verbundene Geräte verwalten
+===========================
+In der Liste verbundener Geräte sind alle Geräte und Clients zu sehen, für welche
+Sie ein App-Passwort erstellt haben.
 
 .. figure:: images/settings_devices.png
-     :alt: List of connected devices.
+     :alt: Liste der verbundenen Geräte.
 
-You can use the trash icon to disconnect any of the devices in the list.
+Mit einem Klick auf das Papierkorb-Symbol können Sie die Verbindung zu einem Gerät
+trennen.
 
-At the bottom of the list you find a button to create a new device-specific
-password. You can choose a name to identify the token later. The generated
-password is used for configuring the new client. Ideally, generate individual
-tokens for every device you connect to your account, so you can disconnect
-those individually if necessary.
+Unter der Liste finden Sie einen Button, mit welchem Sie ein Geräte-spezifisches
+Passwort generieren können. Sie können diesem Passwort (oder auch "Token)") einen
+Namen geben, um dieses später leichter wiederzufinden. Dieses Passwort / Token wird
+verwendet, um neue Clients zu verbinden. Im Idealfall generieren Sie für jedes
+Gerät, von dem Sie sich in Ihren Account anmelden, einen eigenen Token. Dies macht
+es später einfacher, einzelne Geräte aus Ihrem Account abzumelden.
 
 .. figure:: images/settings_devices_add.png
-     :alt: Adding a new device.
+     :alt: Neues Gerät hinzufügen.
 
-.. note:: You have only access to the device password when creating it,
-   Nextcloud will not save the plain password, hence it's recommended to
-   enter the password on the new client immediately.
+.. note:: Das Geräte-spezifische Passwort wird nur einmalig angezeigt. Es ist später
+   nicht möglich, es erneut anzuzeigen. Wir empfehlen, das Passwort direkt nach
+   Erstellen an dem neuen Gerät einzutragen.
 
 
-.. note:: If you are :doc:`user_2fa` for your account,
-   device-specific passwords are the only way to configure clients. The
-   client will deny connections of clients using your login password then.
+.. note:: Falls Sie :doc:`user_2fa`, sind Geräte- spezifische Passwörter die einzige
+   Möglichkeit, um neue Clients hinzuzufügen. Clients können dann nicht mit Ihrem
+   Login-Passwort verwendet werden.

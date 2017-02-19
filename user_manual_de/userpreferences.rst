@@ -1,45 +1,43 @@
-========================
-Setting Your Preferences
-========================
+==============================
+Eigene Einstellungen vornehmen
+==============================
 
-As a user, you can manage your personal settings.
+Jeder Nutzer von Nextcloud kann seine eigenen, persönlichen Einstellungen vornehmen.
 
-To access your personal settings:
+Die persönlichen Einstellungen sind wie folgt zu erreichen:
 
-1. Clicking on your username in the top, right corner of your Nextcloud instance.
+1. Klicken Sie in der oberen rechten Ecke auf Ihren Benutzernamen.
 
-   The Personal Settings Menu opens.
+   Das Benutzer-Menü öffnet sich.
 
    .. figure:: images/oc_personal_settings_dropdown.png
-      :alt: screenshot of user menu at top-right of Nextcloud Web GUI
+      :alt: Bildschirmfoto des Benutzer-Menüs in der oberen rechten Ecke der Nextcloud Web-Overfläche
 
-   *Personal Settings Menu*
+   *Benutzer Menü*
 
-2. Choose *Personal* from the drop down menu.
+2. Wählen Sie "Persönlich" im Drop-Down Menü.
 
    .. figure:: images/personal_settings.png
-      :alt: screenshot of user's Personal settings page
+      :alt: Bildschirmfoto des "Persönlichen Einstellungsbereich"
 
-.. note:: If you are an administrator, you can also manage users and administer 
-   the server. These links do not appear to a non-admin user.
+.. note:: Als Administrator können Sie andere Benutzer und den Server administrieren.
+   Diese Menupunkt ist nur als Administrator im Drop-Down Menü zu sehen.
 
-The options listed in the Personal Settings Page depend on the applications that 
-are enabled by the administrator.  Some of the features you will see 
-include the following.
+Die Einstellungsmöglichkeiten im "Persönlichen Einstellungsbereich" können variieren, je nachdem
+welche Applikationen von Ihrem Administrator aktiviert wurden. Dies sind ein paar Beispiele:
 
-* Usage and available quota
-* Manage your profile picture.
-* Full name. You can make this anything you want, as it is separate from your 
-  Nextcloud login name, which is unique and cannot be changed.
-* Email address.
-* Lists your Group memberships.
-* Manage your password.
+* Aktuell verbrauchten und insgesamt verfügbaren Speicherplatz einsehen.
+* Profilbild ändern.
+* Voller Name. Dieser kann nach Belieben gesetzt werden und ist unabhängig von Ihrem Login-Namen.
+* E-Mail Adresse.
+* Gruppen-Mitgliedschaften verwalten.
+* Password-Verwaltung.
 * :doc:`user_2fa`.
 * :doc:`userpreferences`.
-* Choose the language for your Nextcloud interface.
-* Links to desktop and mobile apps.
-* Manage your Activity stream and notifications.
-* Default folder to save new documents to.
-* Your Federated sharing ID.
-* Social sharing links.
-* Nextcloud version.
+* Sprache der Oberfläche ändern.
+* Links zu den Desktop- und Mobil-Applikationen.
+* Aktivitäten und Benachrichtigungen verwalten.
+* Standard-Ordner, in dem Dokumente gespeichert werden sollen.
+* Federated Cloud-ID.
+* Social Media Buttons zum Teilen.
+* Nextcloud Versions-Informationen
