@@ -47,9 +47,10 @@ Required:
 * PHP module iconv
 * PHP module JSON
 * PHP module libxml (Linux package libxml2 must be >=2.7.0)
-* PHP module mb multibyte
+* PHP module mbstring
 * PHP module posix
 * PHP module SimpleXML
+* PHP module XMLReader
 * PHP module XMLWriter
 * PHP module zip
 * PHP module zlib
