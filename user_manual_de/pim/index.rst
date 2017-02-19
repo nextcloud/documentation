@@ -1,14 +1,13 @@
-===================
-Contacts & Calendar
-===================
+==================
+Kontake & Kalender
+==================
 
-The Contacts, Calendar, and Mail apps are not included in Nextcloud 10. 
-You may easily install them by clicking the Enable button on 
-their respective Apps > Productivity entries.
+Die "Kontakte"-, "Kalender"- und "Mail"-App wird nicht mit Nextcloud |version| ausgeliefert. Optional
+können diese Apps aber mit einem Klick auf "Aktivieren" unter Apps -> Produktivität nachinstalliert werden.
 
 .. toctree::
    :maxdepth: 1
-   
+
    contacts
    calendar
    sync_ios
@@ -16,4 +15,3 @@ their respective Apps > Productivity entries.
    sync_kde
    sync_thunderbird
    troubleshooting
-

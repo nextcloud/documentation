@@ -1,6 +1,6 @@
-======================
-Using the Calendar App
-======================
+===========================
+Benutzen der "Kalender"-App
+===========================
 
-The Calendar app is not enabled by default in Nextcloud |version| and needs to
-be enabled separately. 
+Die "Kalender"-App ist standardmäßig nicht in Nextcloud |version| aktiviert und
+muss erst manuell aktiviert werden.

@@ -1,20 +1,21 @@
-Synchronizing with OS X
-=======================
+Synchronisieren mit OS X
+========================
 
-To use Nextcloud with iCal you will need to use the following URL::
+Um Nextcloud mit iCal ("Kalender") zu synchronisieren, verwenden Sie folgende URL (verwenden Sie Ihre Domain
+und Ihren Benutzernamen anstelle von "example.com" und "USERNAME")::
 
     https://example.com/remote.php/dav/principals/users/USERNAME/
 
-The setup is basically the same as with iOS using the path ``https://example.com/remote.php/dav/principals/users/USERNAME/``
-to sync with Nextcloud. For OS X 10.7 Lion and 10.8 Mountain Lion everything works
-fine, but OS X 10.6 (Snow Leopard) and older needs some fiddling to work. A user
-contributed the following:
+Mit Mac OS X 10.7 Lion und 10.8 Mountain Lion funktioniert das Setup ohne Probleme. Wenn Sie noch
+OS X 10.6 Snow Leopard einsetzen, ist das Einrichten etwas komplizierter:
 
-#. Make sure, addressbook is not running. If it is, select the windows and press
-Command + Q to terminate it.
-#. Navigate to **/Users/YOUR\_USERNAME/Library/Application Support/AddressBook/Sources**.
-If you already have some kind of addressbook setup, it is likely you will see
-some folders named like this **BEA92826-FBF3-4E53-B5C6-ED7C2B454430**.
+# TODO(leon): Do we still need to support Snow Leopard? :)
+
+#. Beenden Sie die "Adressbuch"-Applikation auf Ihrem Mac.
+#. Öffnen Sie **/Users/YOUR\_USERNAME/Library/Application Support/AddressBook/Sources**.
+Wenn Sie bereits ein Adressbuch verwenden, sehen Sie nun Ordner mit Namen wie z.B.
+**BEA92826-FBF3-4E53-B5C6-ED7C2B454430**.
+
 Note down what folders there are now and leave the window open.
 #. Open addressbook and try to add a new CardDav addressbook. At this point, it
 does not matter what information you enter. It will come up with the same error

@@ -1,44 +1,29 @@
-Thunderbird - Synchronize Addressbook
-=====================================
+Thunderbird - Adressbuch synchronisieren
+========================================
 
-Addressbook
+Adressbuch
 -----------
 
-As someone who is new to Nextcloud, New to SoGo Connector, and new to Thunderbird Addressbook... here is what you need in excruciating pithy detail to make this work (for all the other lost souls out there):
+Diese Anleitung beschreibt Schritt-für-Schritt, wie Sie Ihr Adressbuch über Thunderbird synchroniseren können.
+Sie benötigen die folgende Software-Komponenten:
 
-#. `Thunderbird <http://www.mozilla.org/en-US/thunderbird/>`_ for your OS unless it comes with your OS distribution (Linux)
-#. `Sogo Connector <http://www.sogo.nu/downloads/frontends.html>`_ (latest release)
-#. `Lightning <https://addons.mozilla.org/en-US/thunderbird/addon/lightning/>`_ (a Thunderbird calendar add-on. At the time (Aug 14), syncing your contacts only works with this add-on installed.)
+#. `Thunderbird <https://www.mozilla.org/de/thunderbird/>`_
+#. `SOGo Connector <https://sogo.nu/download.html#/frontends>`_
+#. `Lightning <https://addons.mozilla.org/de/thunderbird/addon/lightning/>`_ (ein Thunderbird Kalender-Add-On)
 
-With an installed Thunderbird mailtool, an installed SoGo Connector, and an installed Lightning add-on:
+Es wird im Folgenden davon ausgegangen, dass diese drei Software-Komponenten installiert wurden.
 
-#. Thunderbird Addressbook is in the Thunderbird "Tools" Menu
-#. In the Thunderbird Addressbook application:
+#. Öffnen Sie das Thunderbird Adressbuch. Dieses ist im "Extras"-Menü zu finden.
 
-   -  "File > New > **Remote Addressbook**" (SoGo Connector added this)
-   -  "**Name:**" is the name you want to give your Addressbook in the Thunderbird addressbook bar area
-   -  "**URL:**" is found in your Nextcloud Contacts area, that little Gear symbol
+   -  Klicken Sie auf "Datei > Neu > **Entferntes Adressbuch**" (dieser Eintrag würde von SOGo hinzugefügt) # TODO(leon): Check.
+   -  Im "**Name**"-Feld tragen Sie den Namen des neuen Adressbuches ein
+   -  Im "**URL**"-Feld tragen Sie die URL ein, die Ihnen in der Nextcloud "Kontakte"-App nach Klick auf das Zahnrad-Symbol angezeigt wird. Dieses Symbol ist im unteren linken Bereich der "Kontakte"-App zu finden.
+   - Wenn Sie die Adressen nur in eine Richtigung (von der Nextcloud zu Thunderbird, nicht aber andersherum) synchronisieren möchten, aktivieren Sie "Nur lesen" # TODO(leon): Nur lesen?
+   - Bestätigen Sie mit "OK". # TODO(leon): Hinzufügen?
 
-.. image:: ../images/contact_thunderbird-Symbol_Gear.jpg
+Das Verschieben eines Kontaktes kann ungewollte Folgen haben. Wenn Sie einen Kontakt beispielsweise via Drag & Drop
+aus Ihrem Nextcloud-Adressbuch in das lokale Adressbuch verschieben, wird der Kontakt von Ihrer Nextcloud gelöscht
+und ist dann nur noch lokal verfügbar. Sie können Ihre Kontakte als VCF-Datei mit der Nextcloud Web-Oberfläche oder
+als LDIF per Thunderbird Adressbuch sichern.
 
-in the -bottom left- of the Contacts View (same symbol as found in the -top right- in the Calendar view). Then look for a little impeller symbol
-
-.. image:: ../images/contact_thunderbird-Symbol_Impeller.jpg
-
-which will display the URL you need for your installation to work.
-
-.. image:: ../images/contact_thunderbird-URL_config.jpg
-
-Once installed, synchronize (right click on your newly made remote address book and select "Synchronize").
-You'll see your address book populate from Nextcloud! Don't click "read only" above unless you don't want to
-modify your Nextcloud server addressbook, like it contains a listing of corporate contacts and is shared with
-lots of people, and you don't want a new user dragging it somewhere unintended.
-
-The rest of the details of dealing with Thunderbird addressbook are left to the reader... First thing I learned
-is dragging a contact to a different addressbook is a "move" operation. If you are worried about losing the
-contact, save it to a VCF file using Nextcloud (Or LDIF using Thunderbird Addressbook) first! Like dragging
-from "Nextcloud Addressbook" to "Personal Address Book" removes the contact from Nextcloud Server
-(*deleting it from all the other synchronized installations*) and puts it in your Local Machine -only-
-Address Book. So be careful or you'll have unintended consequences where you might have intended a "copy" operation.
-
-Contact *Pictures* are also sync'ed!
+Die Bilder Ihrer Kontakte werden ebenfalls synchronisiert!

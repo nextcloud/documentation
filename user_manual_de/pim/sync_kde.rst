@@ -1,54 +1,47 @@
-=========================
-Synchronizing with KDE SC
-=========================
+==========================
+Synchronisieren mit KDE SC
+==========================
 
 .. image:: ../images/kdes1.png
 
-From KDE SC 4.8 and forward setting up Nextcloud is very easy. Note that the KDE 
-calendar needs to have the Nextcloud Calendar and Contacts apps enabled on the 
-Nextcloud server. You need both and not just the Calendar. From System Settings 
-Personal Information/Akonadi Resources Configuration select DAV Groupware 
-resource.
+Ab KDE SC in Version 4.8 ist das Synchronisieren mit Nextcloud sehr einfach. Stellen Sie sicher,
+dass in Ihrer Nextcloud sowohl die "Kalender"- als auch die "Kontakte"-App aktiviert sind.
+Unter KDE, öffnen Sie Systemeinstellungen > Persönliche Informationen > Akonadi Konfiguration > DAV Groupware.
 
 .. image:: ../images/kdes2.png
 
-Enter your Nextcloud username and password and click "Next".
+Geben Sie Ihren Nextcloud Benutzernamen und Ihr Passwort ein. Bestätigen Sie mit einem Klick auf "Weiter".
 
 
 .. image:: ../images/kdes3.png
 
-Select Nextcloud in the drop down list and click "Next".
+Wählen Sie "Nextcloud" aus dem Dropdown Menü und bestätigen Sie mit "Weiter".
 
 
 
 .. image:: ../images/kdes4.png
 
-Enter the host name and installation path. If you do not use SSL
-remember to de-select "Use secure connection".
+Geben Sie die URL zu Ihrer Nextcloud-Instanz ein.
 
 
 .. image:: ../images/kdes5.png
 
-Test the connection. If everything went well you should see a message
-like the one below.
+Testen Sie die Verbindung. Wenn die Verbindung erfolgreich war, erhalten Sie eine Meldung wie unten zu sehen.
 
 
 .. image:: ../images/kdes6.png
 
-Click "Finish" and you will be able to change the display name and
-refresh interval.
+Klicken Sie auf "Abschließen". Nun können Sie den Anzeigenamen und Aktualisierungsintervall festlegen.
 
 
 .. image:: ../images/kdes7.png
 
-Now you should see the Akonadi resource doing the first
-synchronization.
+Akonadi sollte nun die erste Synchronisierung durchführen.
 
 ..  missing
 ..  .. image:: ../images/kdes8.png
 
-You can find the Contacts and Calendars in Kontact (or
-KOrganizer/KAddressbook if you run the programs separately.)
+Ihre Kontakte und Kalender sind nun in "Kontact" (bzw. KOrganizer/KAddressbook) zu finden.
 
 
 .. image:: ../images/kdes9.png
