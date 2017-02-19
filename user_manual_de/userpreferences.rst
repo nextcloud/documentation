@@ -11,17 +11,17 @@ Die persönlichen Einstellungen sind wie folgt zu erreichen:
    Das Benutzer-Menü öffnet sich.
 
    .. figure:: images/oc_personal_settings_dropdown.png
-      :alt: Bildschirmfoto des Benutzer-Menüs in der oberen rechten Ecke der Nextcloud Web-Overfläche
+      :alt: Bildschirmfoto des Benutzer-Menüs in der oberen rechten Ecke der Nextcloud Web-Oberfläche
 
    *Benutzer Menü*
 
-2. Wählen Sie "Persönlich" im Drop-Down Menü.
+2. Wählen Sie "Persönlich" im Dropdown Menü.
 
    .. figure:: images/personal_settings.png
       :alt: Bildschirmfoto des "Persönlichen Einstellungsbereich"
 
 .. note:: Als Administrator können Sie andere Benutzer und den Server administrieren.
-   Diese Menupunkt ist nur als Administrator im Drop-Down Menü zu sehen.
+   Diese Menüpunkt ist nur als Administrator im Drop-Down Menü zu sehen.
 
 Die Einstellungsmöglichkeiten im "Persönlichen Einstellungsbereich" können variieren, je nachdem
 welche Applikationen von Ihrem Administrator aktiviert wurden. Dies sind ein paar Beispiele:

@@ -44,4 +44,4 @@ Adressbuch
    -  Ändern Sie "Port" auf "80".
    -  Gehen Sie zurück zu den Account-Informationen und klicken Sie "Speichern".
 
-Ihr Kalender wird nun mit und über Nextcloud synchronisiert.
+Ihr Adressbuch wird nun mit und über Nextcloud synchronisiert.

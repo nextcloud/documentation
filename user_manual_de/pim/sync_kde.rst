@@ -5,7 +5,7 @@ Synchronisieren mit KDE SC
 .. image:: ../images/kdes1.png
 
 Ab KDE SC in Version 4.8 ist das Synchronisieren mit Nextcloud sehr einfach. Stellen Sie sicher,
-dass in Ihrer Nextcloud sowohl die Kalender- als auch die Kontakte-App aktiviert sind.
+dass in Ihrer Nextcloud sowohl die "Kalender"- als auch die "Kontakte"-App aktiviert sind.
 Unter KDE, öffnen Sie Systemeinstellungen > Persönliche Informationen > Akonadi Konfiguration > DAV Groupware.
 
 .. image:: ../images/kdes2.png
@@ -15,7 +15,7 @@ Geben Sie Ihren Nextcloud Benutzernamen und Ihr Passwort ein. Bestätigen Sie mi
 
 .. image:: ../images/kdes3.png
 
-Wählen Sie "Nextcloud" aus dem Drop-Down Menü und bestätigen Sie mit "Weiter".
+Wählen Sie "Nextcloud" aus dem Dropdown Menü und bestätigen Sie mit "Weiter".
 
 
 

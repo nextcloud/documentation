@@ -2,8 +2,8 @@
 Kontake & Kalender
 ==================
 
-Die Kontakte-, Kalender- und Mail-App wird nicht mit Nextcloud 10 ausgeliefert. Optional können
-diese Apps aber mit einem Klick auf "Aktivieren" unter Apps -> Produktivität nachinstalliert werden.
+Die "Kontakte"-, "Kalender"- und "Mail"-App wird nicht mit Nextcloud |version| ausgeliefert. Optional
+können diese Apps aber mit einem Klick auf "Aktivieren" unter Apps -> Produktivität nachinstalliert werden.
 
 .. toctree::
    :maxdepth: 1

@@ -14,7 +14,7 @@ sich in letzter Zeit in Ihren Account eingeloggt haben.
      :alt: Liste der Browser-Sitzungen.
 
 Um die Sitzung eines Browsers zu schließen, klicken Sie einfach auf das Papierkorb-
-Symbol auf einen Eintrag in der Liste.
+Symbol neben einem Eintrag in der Liste.
 
 Verbundene Geräte verwalten
 ===========================
@@ -39,7 +39,7 @@ es später einfacher, einzelne Geräte aus Ihrem Account abzumelden.
 
 .. note:: Das Geräte-spezifische Passwort wird nur einmalig angezeigt. Es ist später
    nicht möglich, es erneut anzuzeigen. Wir empfehlen, das Passwort direkt nach
-   Erstellen an dem neuen Gerät einzutragen.
+   Erstellen am neuen Gerät einzutragen.
 
 
 .. note:: Falls Sie :doc:`user_2fa`, sind Geräte- spezifische Passwörter die einzige

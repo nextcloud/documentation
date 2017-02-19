@@ -2,9 +2,9 @@
 Verschlüsseln Ihrer Daten in Nextcloud
 ======================================
 
-Nextcloud enthält eine Verschlüsselungs-App, die, sobald durch Ihren Administrator
-aktiviert, automatisch all Ihre Daten in Nextcloud verschlüsselt.
-Die Verschlüsselung findet serverseitig statt, und kann nicht deaktiviert werden,
+Wurde in Nextcloud die integrierte Verschlüsselungs-App von Ihrem Administrator
+aktiviert, werden all Ihre Daten automatisch verschlüsselt.
+Die Verschlüsselung findet serverseitig statt und kann nicht deaktiviert werden,
 wenn Ihr Administrator die Funktion aktiviert hat.
 Die Verschlüsselung findet automatisch und transparent zu Ihnen statt. Als
 Passwort für die Verschlüsselung wird Ihr Nextcloud Login-Passwort verwendet.
@@ -72,8 +72,8 @@ Die Verschlüsselung in Nextcloud ist einfach zu aktivieren und bedarf danach ke
 Wartung. Beim Aktivieren stehen Ihnen allerdings ein paar Konfigurations-Optionen bereit.
 
 Sobald Ihr Nextcloud-Administrator die Verschlüsselung erstmalig aktiviert hat, müssen
-Sie sich einmalig ab- und wieder anmelden, um die Verschlüsselungs-Passwörter zu generieren
-und Ihre Daten zu verschlüsseln.
+Sie sich einmalig ab- und wieder anmelden, um die Passwörter für die Verschlüsselung zu
+generieren und Ihre Daten zu verschlüsseln.
 Wenn die Verschlüsselung aktiviert wurde, sehen Sie in der "Dateien"-App einen gelben
 Hinweis, der Sie über dieses ab- und wieder anmelden informiert.
 
@@ -113,7 +113,7 @@ Wiederherstellungs-Schlüssel
 Wenn Ihr Nextcloud-Administrator die Wiederstellungs-Schlüssel-Funktion aktiviert hat,
 können Sie die Funktion für Ihren Account aktivieren. Wenn Sie "Password-Wiederherstellung"
 aktiviert haben, kann Ihr Administrator Ihre Daten mit einem speziellen Passwort lesen.
-Diese Funktion ermöglicht es Ihrem Administrator Ihre Daten wiederherzustellen sollten
+Diese Funktion ermöglicht es Ihrem Administrator Ihre Daten wiederherzustellen, sollten
 Sie Ihr Nextcloud-Passwort vergessen haben.
 Eine Wiederherstellung Ihrer Daten ist ohne einen Wiederstellungs-Schlüssel nicht möglich.
 

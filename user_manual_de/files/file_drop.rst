@@ -34,7 +34,7 @@ Anonym Dateien hochzuladen ist einfach: Öffnen Sie den geteilten Link und wähl
 .. image:: ../images/anonym_upload.png
 
 Dies öffnet die Dateiauswahl, in der Sie die hochzuladenden Dateien oder Ordner
-auswählen können. Die Objekte können auch per »Drag & Drop« ausgewählt werden.
+auswählen können. Die Objekte können auch per Drag & Drop ausgewählt werden.
 
 Bereits hochgeladene Dateien werden unter "Hochgeladene Dateien" angezeigt.
 

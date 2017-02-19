@@ -14,7 +14,7 @@ Um eine bestimmte Version einer Datei wiederherzustellen, klicken Sie den
 Kreispfeil auf der linken Seite. Mit einem Klick auf den Zeitstempel kann die Datei
 heruntergeladen werden.
 
-Um Speicherplatz zu sparen, löscht die Versionen-App automatisch ältere Versionen nach diesen Regeln:
+Um Speicherplatz zu sparen, löscht die "Versionen"-App automatisch ältere Versionen nach diesen Regeln:
 
 - In der ersten Sekunde wird einer Version erstellt
 - Die ersten 10 Sekunden wird alle 2 Sekunden eine Version erstellt
@@ -27,6 +27,6 @@ Um Speicherplatz zu sparen, löscht die Versionen-App automatisch ältere Versio
 Sobald eine neue Version erstellt wird, passen sich alle bisher erstellten Versionen
 diesem Schema an.
 
-Die Versionen-App benutzt nie mehr als 50% des für den Nutzer verfügbaren
+Die "Versionen"-App benutzt nie mehr als 50% des für den Nutzer verfügbaren
 Speicherplatzes. Wenn dieses Limit überschritten wird, werden die ältesten
 Versionen gelöscht, sobald wieder mindestens 50% Speicher frei sind.

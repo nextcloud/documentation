@@ -29,7 +29,7 @@ Löschen und Teilen Ihrer Dateien.
      :scale: 75%
      :alt: Die "Dateien"-App.
 
-Das Web-Interface enthält folgende Bereiche und Funktionen:
+Die Web-Oberfläche enthält folgende Bereiche und Funktionen:
 
 * **App-Auswahl Menü**: Dieses Menü befindet sich in der oberen linken Ecke.
   Mit einem Klick auf den Pfeil öffnet sich ein Dropdown-Menü mit allen aktuell
@@ -56,7 +56,7 @@ Das Web-Interface enthält folgende Bereiche und Funktionen:
    momentan nur von Chromium-basierenden Browsern unterstützt.
 
 * **Suchen**-Feld: In der oberen rechten Ecke lassen sich über die Suche z.B. Dateien
-  und Ordner suchen.
+  und Ordner finden.
 
 * **Galerie**-Button: Dieser Button sieht aus wie vier kleine Quadrate und springt mit
   einem Klick auf ihn direkt zu Ihrer Bilder-Galerie.

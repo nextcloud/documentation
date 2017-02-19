@@ -1,6 +1,6 @@
-=========================
-Benutzen der Kontakte-App
-=========================
+===========================
+Benutzen der "Kontakte"-App
+===========================
 
-Die Kontakte-App ist standardmäßig nicht in Nextcloud |version| aktiviert und
+Die "Kontakte"-App ist standardmäßig nicht in Nextcloud |version| aktiviert und
 muss erst manuell aktiviert werden.

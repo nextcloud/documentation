@@ -10,7 +10,7 @@ Mit dem Nextcloud Desktop Sync Client können Sie sich mit Ihrem privaten Nextcl
 verbinden. Sie können Ordner in Ihrem Home-Verzeichnis erstellen und den Inhalt dieser
 Ordner über Ihren Nextcloud-Server synchronisieren. Ziehen Sie einfach Dateien in diese
 Ordner und der Desktop Sync Client übernimmt den Rest. Änderungen an diesen Dateien werden
-automatisch zwischen allen Clients synchronisiert und Sie haben überall immer die aktuellste
+automatisch zwischen allen Clients synchronisiert. Somit haben Sie immer überall die aktuellste
 Version einer Datei.
 
 Zur Dokumentation des `Nextcloud Desktop Client`_.

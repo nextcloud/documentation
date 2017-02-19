@@ -3,8 +3,8 @@ Speicherkontingent
 ==================
 
 Ihr Nextcloud-Administrator kann individuell für jeden Nutzer den zur Verfügung
-gestellten Speicherplatz anpassen. Unter "Persönlich" können Sie den Ihnen
-zugeteilten und bisher genutzten Speicherplatz einsehen.
+gestellten Speicherplatz anpassen. Unter Ihren "Persönliche Einstellungen" können
+Sie den Ihnen zugeteilten und bisher genutzten Speicherplatz einsehen.
 
 .. figure:: ../images/quota1.png
 
@@ -29,7 +29,7 @@ Gelöschte Dateien, die sich noch im Papierkorb befinden, zählen nicht zum genu
 Speicherplatz. Die Größe des Papierkorbs ist auf 50% des Speicherkontingent eines
 Nutzers festgelegt. Dateien werden nach 30 Tagen aus dem Papierkorb gelöscht.
 Wenn die maximale Größe des Papierkorbs überschritten wird, werden nach und nach
-die ältesten Dateien von dort gelöscht.
+die ältesten Dateien von dort endgültig gelöscht.
 
 Alle mit der Versionsverwaltung erstellten Versionen einer Datei werden nicht
 zum Speicherkontingent dazugezählt.

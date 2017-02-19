@@ -36,7 +36,7 @@ Wie die "Gelöschte Dateien"-App den Papierkorb verwaltet
 
 Um sicherzustellen, dass einem Benutzer nie der freie Speicherplatz ausgeht, löscht die
 "Gelöschte Dateien"-App automatisch solange die ältesten Dateien aus dem Papierkorb, bis
-wieder mindestens 50% des für den Benutzer verfügbaren Speicherkontingents frei sind.
+wieder mindestens 50% des für den Benutzer verfügbaren Speicherkontingents frei ist.
 
 Standardmäßig verbleiben Dateien 180 Tage im Papierkorb, bevor sie automatisch gelöscht
 werden. Ihr Nextcloud-Administrator kann diesen Wert über ``trashbin_retention_obligation``
