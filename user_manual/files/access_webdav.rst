@@ -3,7 +3,7 @@ Accessing Nextcloud Files Using WebDAV
 ======================================
 
 Nextcloud fully supports the WebDAV protocol, and you can connect and synchronize
-with your Nextcloud files over WebDAV.  In this chapter you will learn how to
+with your Nextcloud files over WebDAV. In this chapter you will learn how to
 connect Linux, Mac OS X, Windows, and mobile devices to your Nextcloud server via
 WebDAV. Before we get into configuring WebDAV, let's take a quick look at the
 recommended way of connecting client devices to your Nextcloud servers.
@@ -133,7 +133,7 @@ automatically every time you log in to your Linux computer.
 
 5. Set yourself as the owner and make the permissions read-write owner only::
 
-    chown <username>:<username>  ~/.davfs2/secrets
+    chown <username>:<username> ~/.davfs2/secrets
     chmod 600 ~/.davfs2/secrets
 
 6. Add your Nextcloud login credentials to the end of the ``secrets`` file,
@@ -186,7 +186,7 @@ Copy ``mycertificate.pem`` to ``/etc/davfs2/certs/``. Then edit
 ``/etc/davfs2/davfs2.conf`` and uncomment the line ``servercert``. Now add the
 path of your certificate as in this example::
 
- servercert   /etc/davfs2/certs/mycertificate.pem
+ servercert /etc/davfs2/certs/mycertificate.pem
 
 Accessing Files Using Mac OS X
 ------------------------------
@@ -246,7 +246,7 @@ Nextcloud to one or more directories of your local hard drive.
 Mapping Drives With the Command Line
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following example shows how to map a drive using the command line.  To map
+The following example shows how to map a drive using the command line. To map
 the drive:
 
 1. Open a command prompt in Windows.
@@ -264,7 +264,7 @@ For example: ``net use Z: https://example.com/nextcloud/remote.php/dav/files/USE
   The computer maps the files of your Nextcloud account to the drive letter Z.
 
 .. note:: Though not recommended, you can also mount the Nextcloud server
-     using HTTP, leaving the connection unencrypted.  If you plan to use HTTP
+     using HTTP, leaving the connection unencrypted. If you plan to use HTTP
      connections on devices while in a public place, we strongly recommend using a
      VPN tunnel to provide the necessary security.
 
@@ -318,9 +318,9 @@ To use Cyberduck:
 
   ``example.com``
 
-2. Specify the appropriate port.  The port you choose depends on whether or not
+2. Specify the appropriate port. The port you choose depends on whether or not
 your Nextcloud server supports SSL. Cyberduck requires that you select a
-different connection type if you plan to use SSL.  For example:
+different connection type if you plan to use SSL. For example:
 
   80 (for WebDAV)
 
@@ -379,7 +379,7 @@ exceeds the limit allowed and cannot be saved.**
 Solution
 ^^^^^^^^
 
-Windows limits the maximum size a file transferred from or to  a WebDAV share
+Windows limits the maximum size a file transferred from or to a WebDAV share
 may have.  You can increase the value **FileSizeLimitInBytes** in
 **HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters**
 by clicking on **Modify**.
