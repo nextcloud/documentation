@@ -241,7 +241,7 @@ Nextcloud to one or more directories of your local hard drive.
   Please follow the Knowledge Base article before proceeding, and follow the
   Vista instructions if you run Windows 7.
 
-.. _KB841215: http://support.microsoft.com/kb/841215
+.. _KB841215: https://support.microsoft.com/kb/841215
 
 Mapping Drives With the Command Line
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
