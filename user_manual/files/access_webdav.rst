@@ -33,7 +33,7 @@ In addition to the mobile apps provided by Nextcloud or Nextcloud, you can use o
 connect to Nextcloud from your mobile device using WebDAV. `WebDAV Navigator`_ is 
 a good (proprietary) app for `Android devices`_ and `iPhones`_. The URL to use on these is::
 
-    example.com/nextcloud/remote.php/dav/files/USERNAME/
+    example.com/nextcloud/remote.php/webdav/
     
 WebDAV Configuration
 --------------------
@@ -59,7 +59,7 @@ Nautilus File Manager
 Use the ``davs://`` protocol to connect the Nautilus file manager to your 
 Nextcloud share::
 
-  davs://example.com/nextcloud/remote.php/dav/files/USERNAME/
+  davs://example.com/nextcloud/remote.php/webdav/
 
 .. note:: If your server connection is not HTTPS-secured, use `dav://` instead 
    of `davs://`.
@@ -73,7 +73,7 @@ Accessing Files with KDE and Dolphin File Manager
 To access your Nextcloud files using the Dolphin file manager in KDE, use 
 the ``webdav://`` protocol::
 
-    webdav://example.com/nextcloud/remote.php/dav/files/USERNAME/
+    webdav://example.com/nextcloud/remote.php/webdav/
 
 .. image:: ../images/webdav_dolphin.png
    :alt: screenshot of configuring Dolphin file manager to use WebDAV
@@ -93,7 +93,7 @@ You can create a permanent link to your Nextcloud server:
    
    * Server: The Nextcloud domain name, for example **example.com** (without 
      **http://** before or directories afterwards).
-   * Folder -- Enter the path ``nextcloud/remote.php/dav/files/USERNAME/``.
+   * Folder -- Enter the path ``nextcloud/remote.php/webdav/``.
 #. (Optional) Check the "Create icon checkbox" for a bookmark to appear in the 
    Places column.
 #. (Optional) Provide any special settings or an SSL certificate in the "Port & 
@@ -139,11 +139,11 @@ automatically every time you log in to your Linux computer.
 6. Add your Nextcloud login credentials to the end of the ``secrets`` file, 
    using your Nextcloud server URL and your Nextcloud username and password::
 
-    example.com/nextcloud/remote.php/dav/files/USERNAME/ <username> <password>
+    example.com/nextcloud/remote.php/webdav/ <username> <password>
 
 7. Add the mount information to ``/etc/fstab``::
 
-    example.com/nextcloud/remote.php/dav/files/USERNAME/ /home/<username>/nextcloud 
+    example.com/nextcloud/remote.php/webdav/ /home/<username>/nextcloud 
     davfs user,rw,auto 0 0
 
 8. Then test that it mounts and authenticates by running the following 
@@ -209,7 +209,7 @@ To access files through the Mac OS X Finder:
   For example, the URL used to connect to the Nextcloud server 
   from the Mac OS X Finder is::
 
-    https://example.com/nextcloud/remote.php/dav/files/USERNAME/
+    https://example.com/nextcloud/remote.php/webdav/
 
   .. image:: ../images/osx_webdav2.png
 
@@ -253,12 +253,12 @@ the drive:
 2. Enter the following line in the command prompt to map to the computer Z 
    drive::
 
-    net use Z: https://<drive_path>/remote.php/dav/files/USERNAME/ /user:youruser 
+    net use Z: https://<drive_path>/remote.php/webdav/ /user:youruser 
     yourpassword
 
   where <drive_path> is the URL to your Nextcloud server.
 
-For example: ``net use Z: https://example.com/nextcloud/remote.php/dav/files/USERNAME/ 
+For example: ``net use Z: https://example.com/nextcloud/remote.php/webdav/ 
 /user:youruser yourpassword``
 
   The computer maps the files of your Nextcloud account to the drive letter Z.
@@ -270,7 +270,7 @@ For example: ``net use Z: https://example.com/nextcloud/remote.php/dav/files/USE
 
 An alternative command syntax is::
 
-  net use Z: \\example.com@ssl\nextcloud\remote.php\dav /user:youruser 
+  net use Z: \\example.com@ssl\nextcloud\remote.php\webdav\ /user:youruser 
   yourpassword
 
 Mapping Drives With Windows Explorer
@@ -283,11 +283,11 @@ To map a drive using the Microsoft Windows Explorer:
    the drop-down menu.
 3. Choose a local network drive to which you want to map Nextcloud.
 4. Specify the address to your Nextcloud instance, followed by 
-   **/remote.php/dav/files/USERNAME/**.
+   **/remote.php/webdav/**.
 
   For example::
 
-    https://example.com/nextcloud/remote.php/dav/files/USERNAME/
+    https://example.com/nextcloud/remote.php/webdav/
 
 .. note:: For SSL protected servers, check **Reconnect at logon** to ensure
      that the mapping is persistent upon subsequent reboots. If you want to 
@@ -448,29 +448,29 @@ To create a folder with the current date as name:
 
 .. code-block:: bash
 
-	$ curl -u user:pass -X MKCOL "https://example.com/nextcloud/remote.php/dav/files/USERNAME/$(date '+%d-%b-%Y')"
+	$ curl -u user:pass -X MKCOL "https://example.com/nextcloud/remote.php/webdav/$(date '+%d-%b-%Y')"
 
 To upload a file ``error.log`` into that directory:
 
 .. code-block:: bash
 
-	$ curl -u user:pass -T error.log "https://example.com/nextcloud/remote.php/dav/files/USERNAME/$(date '+%d-%b-%Y')/error.log"
+	$ curl -u user:pass -T error.log "https://example.com/nextcloud/remote.php/webdav/$(date '+%d-%b-%Y')/error.log"
 
 To move a file:
 
 .. code-block:: bash
 
-	$ curl -u user:pass -X MOVE --header 'Destination: https://example.com/nextcloud/remote.php/dav/files/USERNAME/target.jpg' https://example.com/nextcloud/remote.php/dav/files/USERNAME/source.jpg
+	$ curl -u user:pass -X MOVE --header 'Destination: https://example.com/nextcloud/remote.php/webdav/target.jpg' https://example.com/nextcloud/remote.php/webdav/source.jpg
 
 To get the properties of files in the root folder:
 
 .. code-block:: bash
 
-	$ curl -X PROPFIND -H "Depth: 1" -u user:pass https://example.com/nextcloud/remote.php/dav/files/USERNAME/ | xml_pp
+	$ curl -X PROPFIND -H "Depth: 1" -u user:pass https://example.com/nextcloud/remote.php/webdav/ | xml_pp
 	<?xml version="1.0" encoding="utf-8"?>
     <d:multistatus xmlns:d="DAV:" xmlns:oc="http://nextcloud.org/ns" xmlns:s="http://sabredav.org/ns">
       <d:response>
-        <d:href>/nextcloud/remote.php/dav/files/USERNAME/</d:href>
+        <d:href>/nextcloud/remote.php/webdav/</d:href>
         <d:propstat>
           <d:prop>
             <d:getlastmodified>Tue, 13 Oct 2015 17:07:45 GMT</d:getlastmodified>
@@ -485,7 +485,7 @@ To get the properties of files in the root folder:
         </d:propstat>
       </d:response>
       <d:response>
-        <d:href>/nextcloud/remote.php/dav/files/USERNAME/welcome.txt</d:href>
+        <d:href>/nextcloud/remote.php/webdav/welcome.txt</d:href>
         <d:propstat>
           <d:prop>
             <d:getlastmodified>Tue, 13 Oct 2015 17:07:35 GMT</d:getlastmodified>
