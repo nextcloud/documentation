@@ -4,7 +4,7 @@ Thunderbird - Synchronize Addressbook
 Addressbook
 -----------
 
-As someone who is new to Nextcloud, New to SoGo Connector, and new to Thunderbird Addressbook... here is what you need in excruciating pithy detail to make this work (for all the other lost souls out there):
+As someone who is new to Nextcloud, new to SoGo Connector, and new to Thunderbird Addressbook... here is what you need in excruciating pithy detail to make this work (for all the other lost souls out there):
 
 #. `Thunderbird <http://www.mozilla.org/en-US/thunderbird/>`_ for your OS unless it comes with your OS distribution (Linux)
 #. `Sogo Connector <http://www.sogo.nu/downloads/frontends.html>`_ (latest release)
@@ -21,7 +21,7 @@ With an installed Thunderbird mailtool, an installed SoGo Connector, and an inst
 
 .. image:: ../images/contact_thunderbird-Symbol_Gear.jpg
 
-in the -bottom left- of the Contacts View (same symbol as found in the -top right- in the Calendar view). Then look for a little impeller symbol
+in the bottom left of the Contacts View (same symbol as found in the top right in the Calendar view). Then look for a little impeller symbol
 
 .. image:: ../images/contact_thunderbird-Symbol_Impeller.jpg
 

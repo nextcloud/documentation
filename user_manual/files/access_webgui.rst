@@ -157,7 +157,7 @@ Folder
 Selecting Files or Folders
 --------------------------
 
-You can select one or more files or folders by clicking on their checkboxes.  To
+You can select one or more files or folders by clicking on their checkboxes. To
 select all files in the current directory, click on the checkbox located at the
 top of the files listing.
 
