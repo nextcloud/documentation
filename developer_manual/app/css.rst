@@ -140,6 +140,7 @@ To add actions that affect the current list element you can add a menu for secon
                 </div>
 
             </li>
+        </ul>
     </div>
 
 The div with the class **app-navigation-entry-utils** contains only the button (class: **app-navigation-entry-utils-menu-button**) to display the menu but in many cases another entry is needed to display some sort of count (mails count, unread feed count, etc.). In that case add the **with-counter** class to the list entry to adjust the correct padding and text-oveflow of the entry's title.
