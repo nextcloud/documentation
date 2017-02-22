@@ -1,6 +1,6 @@
-=======================
-Files & Synchronization
-=======================
+==========================
+Dateien & Synchronisierung
+==========================
 
 .. toctree::
    :maxdepth: 1
@@ -16,4 +16,3 @@ Files & Synchronization
    large_file_upload
    quota
    version_control
-
