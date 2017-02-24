@@ -71,7 +71,6 @@ You can request additional properties by sending a request body with the :code:`
 		<oc:size />
 		<d:getcontentlength />
 		<nc:has-preview />
-		<oc:tags />
 		<oc:favorite />
 		<oc:comments-unread />
 		<oc:owner-display-name />
@@ -88,7 +87,6 @@ The following properties are supported:
 - :code:`{DAV:}getcontentlength`
 - :code:`{http://owncloud.org/ns}id` The fileid namespaced by the instance id, globally unique
 - :code:`{http://owncloud.org/ns}fileid` The unique id for the file within the instance
-- :code:`{http://owncloud.org/ns}tags`
 - :code:`{http://owncloud.org/ns}favorite`
 - :code:`{http://owncloud.org/ns}comments-href`
 - :code:`{http://owncloud.org/ns}comments-count`
@@ -215,28 +213,5 @@ Favorites for a user can be retrieved by sending a :code:`REPORT` request and sp
 File properties can be requested by adding a :code:`<d:prop/>` element to the request listing the requested properties in the same way as it would be done for a :code:`PROPFIND` request.
 
 When listing favorites, the request will find all favorites in the folder recursively, all favorites for a user can be found by sending the request to :code:`remote.php/dav/files/user`
-
-----
-Settings tags
-----
-
-A file or folder can be tagged by sending a :code:`PROPPATCH` request to the file or folder and setting the :code:`oc-tags` property.
-
-.. code-block:: xml
-
-	PROPPATCH remote.php/dav/files/user/path/to/file
-	<?xml version="1.0"?>
-	<d:propertyupdate xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns">
-	  <d:set>
-		<d:prop>
-			<oc:tags>
-				<oc:tag>tag1</oc:tag>
-				<oc:tag>tag2</oc:tag>
-			</oc:tags>
-		</d:prop>
-	  </d:set>
-	</d:propertyupdate>
-
-Note that all tags for the file have to be specified, it's not possible to only specify the tags that should be added or removed.
 
 .. _rfc4918: https://tools.ietf.org/html/rfc4918
