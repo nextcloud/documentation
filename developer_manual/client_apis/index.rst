@@ -20,6 +20,11 @@ OCS
 
 The OCS API provides all information that are not available via the DAV endpoints. This contains endpoints for user data or sharing capabilities for example. See :doc:`OCS/index` for more details.
 
+Other OCS API documentations:
+
+* `Notifications API <https://github.com/nextcloud/notifications/blob/5a2d3607952bad675e4057620a9c7de8a7f84f0b/docs/push-v3.md>`_
+
+
 .. toctree::
     :maxdepth: 2
     :hidden:
