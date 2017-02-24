@@ -7,6 +7,4 @@ Dropbox, Amazon S3, SMB/CIFS Fileservern sowie FTP-Servern in Ihre Nextcloud ein
 Ihr Nextcloud-Administrator kann einstellen, welche dieser Anbieter verwendet werden
 können. Mehr dazu finden Sie unter `Externen Speicher verwalten (GUI) <https://docs.nextcloud.org/server/11/admin_manual/configuration_files/external_storage_configuration_gui.html>`_.
 
-# TODO(leon): Update link to point to German translation.
-
 .. TODO ON RELEASE: Update version number above on release
