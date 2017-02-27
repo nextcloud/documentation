@@ -31,7 +31,6 @@ occ Command Directory
 * :ref:`logging_commands_label`
 * :ref:`maintenance_commands_label`
 * :ref:`security_commands_label`
-* :ref:`shibboleth_label`
 * :ref:`trashbin_label`
 * :ref:`user_commands_label`
 * :ref:`versions_label`
@@ -928,20 +927,6 @@ Import a new certificate::
 Remove a certificate::
 
  sudo -u www-data php occ security:remove [certificate name]
-
-.. _shibboleth_label:
-
-Shibboleth Modes (Enterprise Edition only)
-------------------------------------------
-
-.. note::
-  This command is only available when the "Shibboleth user backend" app
-  (``user_shibboleth``) is enabled.
-
-``shibboleth:mode`` sets your Shibboleth mode to ``notactive``, 
-``autoprovision``, or ``ssoonly``::
-
- shibboleth:mode [mode]
 
 .. _trashbin_label: 
 
