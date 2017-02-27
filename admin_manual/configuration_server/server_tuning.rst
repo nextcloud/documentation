@@ -72,3 +72,22 @@ Enable HTTP2 for faster loading
 -------------------------------
 
 HTTP2 has `huge speed improvements <https://www.troyhunt.com/i-wanna-go-fast-https-massive-speed-advantage/>`_ over HTTP with multiple request. Most `browsers already support HTTP2 over SSL (HTTPS) <http://caniuse.com/#feat=http2>`_. So refer to your server manual for guides on how to use HTTP2.
+
+.. _opcache:
+
+Enable PHP OPcache
+------------------
+
+The `OPcache <http://php.net/manual/en/intro.opcache.php>`_ improves the performance of PHP applications by caching precompiled bytecode. We recommend at least following settings:
+
+.. code:: ini
+
+  opcache.enable=On
+  opcache.enable_cli=1
+  opcache.interned_strings_buffer=8
+  opcache.max_accelerated_files=10000
+  opcache.memory_consumption=128
+  opcache.save_comments=1
+  opcache.revalidate_freq=1
+
+For more details check out the `official documentation <http://php.net/manual/en/opcache.configuration.php>`_ or `this blog post about some recommended settings <https://www.scalingphpbook.com/blog/2014/02/14/best-zend-opcache-settings.html>`_.
