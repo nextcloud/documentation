@@ -21,7 +21,7 @@ keep individual Nextcloud instances to a manageable size.
    an enterprise. A lookup server to tie all the instances together under a 
    single domain is being worked on.
 
-* Operating system: Linux.
+* Operating system: Linux (Ubuntu 16.04 or Red Hat Enterprise Linux 7 is recommended).
 * Web server: Apache 2.4.
 * Database: MySQL/MariaDB.
 * PHP 5.5+. PHP 5.4 is the minimum supported version; note that it reached 
@@ -59,12 +59,16 @@ Authentication via an existing LDAP or Active Directory server.
 .. figure:: images/deprecs-1.png
    :alt: Network diagram for small enterprises.
 
+.. comment:
+    https://yuml.me
+    [web server|DB; local storage]->[LDAP]
+
 * Components
    One server with at least 2 CPU cores, 16GB RAM, local storage as needed.
 
 * Operating system
    Enterprise-grade Linux distribution with full support from OS vendor. We 
-   recommend Red Hat Enterprise Linux or SUSE Linux Enterprise Server 12.
+   recommend Red Hat Enterprise Linux 7 or Ubuntu 16.04.
 
 * SSL Configuration
    The SSL termination is done in Apache. A standard SSL certificate is 
@@ -148,6 +152,23 @@ Authentication via an existing LDAP or Active Directory server.
 .. figure:: images/deprecs-2.png
    :alt: Network diagram for mid-sized enterprise.
 
+.. comment:
+    https://yuml.me
+    [load balancer]->[web server 1]
+    [load balancer]->[web server 2]
+    [web server 1]->[NFS]
+    [web server 2]->[NFS]
+    [web server 1]->[LDAP]
+    [web server 2]->[LDAP]
+    [web server 1]->[Redis]
+    [web server 2]->[Redis]
+    [web server 1]->[DB master]
+    [web server 2]->[DB master]
+    [web server 1]->[DB slave]
+    [web server 2]->[DB slave]
+    [DB master]->[DB slave]
+
+
 * Components
    * 2 to 4 application servers with 4 sockets and 32GB RAM.
    * 2 DB servers with 4 sockets and 64GB RAM.
@@ -156,7 +177,7 @@ Authentication via an existing LDAP or Active Directory server.
 
 * Operating system
    Enterprise grade Linux distribution with full support from OS vendor. Red 
-   Hat Enterprise Linux or SUSE Linux Enterprise Server 12 are recommended.
+   Hat Enterprise Linux or Ubuntu 16.04 are recommended.
 
 * SSL Configuration
    The SSL termination is done in the HAProxy load balancer. A standard SSL 
@@ -184,7 +205,10 @@ Authentication via an existing LDAP or Active Directory server.
    is exactly the other way round.
 
 * Database
-   MySQL/MariaDB Galera cluster with master-master replication.
+   MySQL/MariaDB Galera cluster with master-slave replication. The slave is
+   only used as failover in case the master is down. This could be extended
+   with a load balancer infront to distribute writes to the master and reads
+   to the slave as well. (see "Database load balancer" below)
 
 * Backup
    Minimum daily backup without downtime. All MySQL/MariaDB statements should 
@@ -247,7 +271,9 @@ Recommended System Requirements
 
 4 to 20 application/Web servers.
 
-A cluster of two or more database servers.
+A cluster of two or more database servers which are behind a load balancer to
+send all writes to the master and reads to the slaves. (see "Database load balancer"
+below)
 
 Storage is an NFS server, or an object store that is S3 compatible.
 
@@ -256,13 +282,55 @@ Cloud federation for a distributed setup over several data centers.
 Authentication via an existing LDAP or Active Directory server, or SAML.
 
 .. figure:: images/deprecs-3.png
-   :scale: 60%
    :alt: Network diagram for large enterprise. 
+
+.. comment:
+    https://yuml.me
+    [load balancer 1]->[web server 1|local LDAP slave]
+    [load balancer 1]->[web server 2|local LDAP slave]
+    [load balancer 1]->[web server 3|local LDAP slave]
+    [load balancer 1]->[web server 4|local LDAP slave]
+    [load balancer 2]->[web server 1]
+    [load balancer 2]->[web server 2]
+    [load balancer 2]->[web server 3]
+    [load balancer 2]->[web server 4]
+    [web server 1]->[NFS]
+    [web server 2]->[NFS]
+    [web server 3]->[NFS]
+    [web server 4]->[NFS]
+    [web server 1]->[LDAP]
+    [web server 2]->[LDAP]
+    [web server 3]->[LDAP]
+    [web server 4]->[LDAP]
+    [web server 1]->[Redis 1]
+    [web server 2]->[Redis 1]
+    [web server 3]->[Redis 1]
+    [web server 4]->[Redis 1]
+    [web server 1]->[Redis 2]
+    [web server 2]->[Redis 2]
+    [web server 3]->[Redis 2]
+    [web server 4]->[Redis 2]
+    [Redis 1]->[Redis 2]
+    [Redis 2]->[Redis 1]
+    [web server 1]->[DB load balancer]
+    [web server 2]->[DB load balancer]
+    [web server 3]->[DB load balancer]
+    [web server 4]->[DB load balancer]
+    [DB load balancer]->[DB master]
+    [DB load balancer]->[DB slave 1]
+    [DB load balancer]->[DB slave 2]
+    [DB load balancer]->[DB slave 3]
+    [DB master]->[DB slave 1]
+    [DB master]->[DB slave 2]
+    [DB master]->[DB slave 3]
 
 * Components
    * 4 to 20 application servers with 4 sockets and 64GB  RAM.
-   * 4 DB servers with 4 sockets and 128GB RAM
-   * 2 Hardware load balancer, for example BIG IP from F5
+   * 4 DB servers with 4 sockets and 128GB RAM plus a DB load balancer
+     (see "Database load balancer" below)
+   * 2 load balancer - either HAProxy with keepalived (heartbeat) and a shared
+     virutal IP address as a software solution or a hardware load balancer. For
+     the HAProxy we recommend at least 2 sockets and 16GB RAM each.
    * NFS storage server as needed.
 
 * Operating system
@@ -273,11 +341,13 @@ Authentication via an existing LDAP or Active Directory server, or SAML.
    is needed, installed according to the load balancer documentation. 
 
 * Load Balancer
-   A redundant hardware load-balancer with heartbeat, for example `F5 Big-IP`_. 
+   A redundant load-balancer with heartbeat, for example `HAProxy`_.
    This runs two load balancers in front of the application servers.
 
 * Database
-   MySQL/MariaDB Galera Cluster with 4x master -- master replication.
+   MySQL/MariaDB Galera Cluster with master - slave replication (master & 3 slaves).
+   The load balancer infront distributes writes to the master and reads to the
+   slaves. (see "Database load balancer" below)
 
 * Backup
    Minimum daily backup without downtime. All MySQL/MariaDB statements should 
@@ -353,7 +423,9 @@ Provider setup:
 * Least load to Apache servers (2-n)
 * Memcached/Redis for shared session storage (2-n)
 * Database cluster with single Master, multiple slaves and proxy to split 
-  requests accordingly (2-n)
+  requests accordingly (2-n) - HAProxy or `MaxScale`_ are possible proxy
+  solutions to load balance the writes to the master and reads to the slaves
+  (see "Database load balancer" below)
 * GPFS or Ceph via phprados (2-n, 3 to be safe, Ceph 10+ nodes to see speed 
   benefits under load)
 
@@ -379,10 +451,21 @@ But on uploads stores the whole file on disk before handing it over to PHP-FPM.
 A Single Master DB is Single Point of Failure, Does Not Scale
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When master fails another slave can become master. However, the increased 
-complexity carries some risks: Multi-master has the risk of split brain, and 
-deadlocks. Nextcloud tries to solve the problem of deadlocks with high-level 
-file locking.
+When master fails another slave can become master.
+
+A multi-master setup with Galera cluster is not supported, because we require
+``READ-COMMITTED`` as transaction isolation level. `Galera doesn't support this
+with a master-master replication`_ which will lead to deadlocks during uploads
+of multiple files into one directory for example.
+
+Database load balancer
+^^^^^^^^^^^^^^^^^^^^^^
+
+When Galera cluster is used as DB cluster solution, we recommend to use
+`MaxScale`_ as load balancer infront of the cluster to distribute writes to
+the master node and reads to the slaves.
+
+As alternative also `HAProxy can be used as load balancer for the DB`_.
 
 Software Considerations
 -----------------------
@@ -390,14 +473,11 @@ Software Considerations
 Operating System
 ^^^^^^^^^^^^^^^^
 
-We are dependent on distributions that offer an easy way to install the various 
-components in up-to-date versions. Nextcloud has a partnership with RedHat 
-and SUSE for customers who need commercial support. Canonical, the parent 
-company of Ubuntu Linux, also offers enterprise service and support. Debian 
-and Ubuntu are free of cost, and include newer software packages. CentOS is the 
-community-supported free-of-cost Red Hat Enterprise Linux clone. openSUSE is 
-community-supported, and includes many of the same system administration tools 
-as SUSE Linux Enterprise Server.
+We are dependent on distributions that offer an easy way to install the various
+components in up-to-date versions. We recommend Red Hat Enterprise Linux 7 or
+Ubuntu 16.04 - for both commercial support can be purchased. Debian
+and Ubuntu are free of cost, and include newer software packages. CentOS is the
+community-supported free-of-cost Red Hat Enterprise Linux clone.
 
 Web server
 ^^^^^^^^^^
@@ -413,9 +493,9 @@ Relational Database
 More often than not the customer already has an opinion on what database to 
 use. In general, the recommendation is to use what their database administrator 
 is most familiar with. Taking into account what we are seeing at customer 
-deployments, we recommend MySQL/MariaDB in a master-slave deployment with a 
+deployments, we recommend MySQL/MariaDB in a master - slave deployment with a
 MySQL proxy in front of them to send updates to master, and selects to the 
-slave(s).
+slave(s). (see "Database load balancer" above)
 
 .. comment: MySQL locks tables for schema updates and might even have to copy 
    the whole table. That is pretty much a non-starter for migrations unless you 
@@ -423,10 +503,10 @@ slave(s).
    each slave individually. Even then each migration might take several hours. 
    Make sure you have enough disk space. You have been warned.
 
-.. comment: Currently, Nextcloud uses the utf8 character set with utf8_bin 
+.. comment: By default Nextcloud uses the utf8 character set with utf8_bin
    collation on MySQL installations. As a result 4 byte UTF characters like 
-   emojis cannot be used. This can be fixed by [moving to 
-   utf8mb4/utf8mb4_bin](https://github.com/owncloud/core/issues/7030).
+   emojis cannot be used. See the config.php option ``'mysql.utf8mb4'`` to
+   switch to 4 byte UTF characters on MySQL.
 
 The second best option is PostgreSQL (alter table does not lock table, which 
 makes migration less painful) although we have yet to find a customer who uses a 
@@ -440,8 +520,8 @@ What about the other DBMS?
 * Sqlite is adequate for simple testing, and for low-load single-user 
   deployments. It is not adequate for production systems.
 * Microsoft SQL Server is not a supported option.
-* Oracle DB is the de facto standard at large enterprises and is fully
-  supported with Nextcloud Enterprise Edition only.
+* For Oracle DB support please `contact the Nextcloud team`_ to get more
+  information on this.
 
 File Storage
 ------------
@@ -489,7 +569,6 @@ References
    https://docs.nextcloud.org/server/10/admin_manual/configuration_server/caching_configuration.html
 .. _Nextcloud Server or Enterprise Edition:  
    https://nextcloud.com/enterprise/
-.. _F5 Big-IP: https://f5.com/products/big-ip/
 
 .. _Memcache StorageService:  
    https://wiki.shibboleth.net/confluence/display/SHIB2/
@@ -505,3 +584,13 @@ References
    -as -a-session-handler-for-php-on-ubuntu-14-04
 .. _HAProxy documentation:
    http://www.haproxy.org/#docs
+.. _Galera doesn't support this with a master-master replication:
+   http://galeracluster.com/documentation-webpages/isolationlevels.html#understanding-isolation-levels
+.. _contact the Nextcloud team:
+   https://nextcloud.com/contact/
+.. _HAProxy can be used as load balancer for the DB:
+   https://severalnines.com/blog/avoiding-deadlocks-galera-set-haproxy-single-node-writes-and-multi-node-reads
+.. _MaxScale:
+   https://mariadb.com/products/mariadb-maxscale
+.. _HAProxy:
+   http://www.haproxy.org/
