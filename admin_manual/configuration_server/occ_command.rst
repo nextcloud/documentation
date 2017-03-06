@@ -1223,13 +1223,9 @@ List all options, like this example on CentOS Linux::
 
  sudo -u apache php occ upgrade -h
  Usage:
- upgrade [--skip-migration-test] [--dry-run] [--no-app-disable]
+ upgrade [--no-app-disable]
 
  Options:
- --skip-migration-test  skips the database schema migration simulation and 
-    update directly
- --dry-run              only runs the database schema migration simulation, do 
-   not actually update
  --no-app-disable       skips the disable of third party apps
  --help (-h)            Display this help message.
  --quiet (-q)           Do not output any message.
@@ -1288,19 +1284,6 @@ or to use in a bug report::
  ServerNotAvailableException: LDAP server is not available
  Update failed
  Turned off maintenance mode
-
-Before completing the upgrade, Nextcloud first runs a simulation by copying all 
-database tables to new tables, and then performs the upgrade on them, to ensure 
-that the upgrade will complete correctly. The copied tables are deleted after 
-the upgrade. This takes twice as much time, which on large installations can be 
-many hours, so you can omit this step with the ``--skip-migration-test`` 
-option::
-
- sudo -u www-data php occ upgrade --skip-migration-test
-
-You can perform this simulation manually with the ``--dry-run`` option::
-
- sudo -u www-data php occ upgrade --dry-run
 
 .. _two_factor_auth_label:
 

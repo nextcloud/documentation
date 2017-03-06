@@ -47,9 +47,7 @@ using Snappy Base 16.04 as it's currently unreleased.
 
 * Make a :doc:`fresh backup <backup>`.
 * Upgrade your Nextcloud snap: sudo snap refresh nextcloud
-* Run :ref:`occ upgrade <command_line_upgrade_label>` (optionally disabling the 
-  :ref:`migration test   
-  <migration_test_label>`).
+* Run :ref:`occ upgrade <command_line_upgrade_label>`.
 * :ref:`Apply strong permissions <strong_perms_label>` to your 
   Nextcloud directories.
 * Take your Nextcloud server out of :ref:`maintenance mode 
@@ -80,20 +78,6 @@ user. This example is for Debian/Ubuntu::
 This example is for CentOS/RHEL/Fedora::
 
  sudo -u apache php occ upgrade 
-
-.. _migration_test_label:
-
-Migration Test
---------------
-
-Before completing the upgrade, Nextcloud first runs a simulation by copying all 
-database tables to new tables, and then performs the upgrade on them, to ensure 
-that the upgrade will complete correctly. The copied tables are deleted after 
-the upgrade. This takes twice as much time, which on large installations can be 
-many hours, so you can omit this step with the ``--skip-migration-test`` 
-option, like this example on CentOS::
-
- $ sudo -u apache php occ upgrade --skip-migration-test
 
 Setting Strong Directory Permissions
 ------------------------------------
