@@ -69,8 +69,8 @@ Authentication via an existing LDAP or Active Directory server.
    One server with at least 2 CPU cores, 16GB RAM, local storage as needed.
 
 * Operating system
-   Enterprise-grade Linux distribution with full support from OS vendor. We
-   recommend Red Hat Enterprise Linux 7 or Ubuntu 16.04.
+   Enterprise grade Linux distribution with full support from OS vendor. Red
+   Hat Enterprise Linux or Ubuntu 16.04 are recommended.
 
 * SSL Configuration
    The SSL termination is done in Apache. A standard SSL certificate is
@@ -328,7 +328,8 @@ Authentication via an existing LDAP or Active Directory server, or SAML.
    * NFS storage server as needed.
 
 * Operating system
-   RHEL 7 with latest service packs.
+   Enterprise grade Linux distribution with full support from OS vendor. Red
+   Hat Enterprise Linux or Ubuntu 16.04 are recommended.
 
 * SSL Configuration
    The SSL termination is done in the load balancer. A standard SSL certificate
