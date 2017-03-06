@@ -74,15 +74,6 @@ steps:
 This example is for Ubuntu Linux::
 
      $ sudo -u www-data php occ upgrade
- 
-Before completing the upgrade, Nextcloud first runs a simulation by copying all 
-database tables to new tables, and then performs the upgrade on them, to ensure 
-that the upgrade will complete correctly. The copied tables are deleted after 
-the upgrade. This takes twice as much time, which on large installations can be 
-many hours, so you can omit this step with the ``--skip-migration-test`` 
-option, like this example on Ubuntu::
-
- $ sudo -u www-data php occ upgrade --skip-migration-test 
 
 See :doc:`../configuration_server/occ_command` to learn more.
 
