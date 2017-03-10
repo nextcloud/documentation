@@ -102,6 +102,7 @@ Hooks available in scope **\\OC\\User**:
  
 * **preSetPassword** (\\OC\\User\\User $user, string $password, string $recoverPassword)
 * **postSetPassword** (\\OC\\User\\User $user, string $password, string $recoverPassword)
+* **changeUser** (\\OC\\User\\User $user, string $feature, string $value)
 * **preDelete** (\\OC\\User\\User $user)
 * **postDelete** (\\OC\\User\\User $user)
 * **preCreateUser** (string $uid, string $password)
