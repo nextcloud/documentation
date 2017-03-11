@@ -22,7 +22,7 @@ The other way is by entering your ``config.php`` file and changing
    of your current installation.
    
    .. note:: To unpack your new tarball, run:
-      tar xjf nextcloud-[version].tar.bz2
+      unzip nextcloud-[version].zip
     
 
 3. Stop your Web server.
