@@ -119,7 +119,7 @@ your nginx installation.
   
       # Adding the cache control header for js and css files
       # Make sure it is BELOW the PHP block
-      location ~* \.(?:css|js|woff|svg|gif)$ {
+      location ~* \.(?:css|js|properties|woff|svg|gif)$ {
           try_files $uri /index.php$uri$is_args$args;
           add_header Cache-Control "public, max-age=7200";
           # Add headers to serve security related headers (It is intended to 
@@ -257,7 +257,7 @@ your nginx installation.
   
           # Adding the cache control header for js and css files
           # Make sure it is BELOW the PHP block
-          location ~* \.(?:css|js|woff|svg|gif)$ {
+          location ~* \.(?:css|js|properties|woff|svg|gif)$ {
               try_files $uri /nextcloud/index.php$uri$is_args$args;
               add_header Cache-Control "public, max-age=7200";
               # Add headers to serve security related headers  (It is intended 
