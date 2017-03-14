@@ -12,8 +12,8 @@ Installation
    command_line_installation
    apps_management_installation
    apps_supported
-   php_54_installation
-   php_55_installation
+   php_56_installation
+   php_70_installation
    selinux_configuration
    nginx_examples
    nginx_nextcloud_9x
