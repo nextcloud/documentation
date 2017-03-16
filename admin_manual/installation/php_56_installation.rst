@@ -27,9 +27,13 @@ Then install PHP 5.6 and these modules::
  yum install rh-php56 rh-php56-php rh-php56-php-gd rh-php56-php-mbstring
 
 You must also install the updated database module for your database. This 
-example installs the new PHP 5.6 module for MySQL/MariaDB:: 
+installs the new PHP 5.6 module for MySQL/MariaDB:: 
  
  yum install rh-php56-php-mysqlnd
+ 
+If you are using the Nextcloud LDAP app, you need this module::
+
+ yum install rh-php56-php-ldap
  
 Disable loading the old PHP 5.3 Apache module:: 
 
@@ -59,10 +63,14 @@ Then install PHP 5.6 and these modules::
 
  yum install rh-php56 rh-php56-php rh-php56-php-gd rh-php56-php-mbstring
  
-You must also install the updated database module. This installs the new PHP 5.6 
-module for MySQL/MariaDB:: 
+You must also install the updated database module for your database. This 
+installs the new PHP 5.6 module for MySQL/MariaDB:: 
  
  yum install rh-php56-php-mysqlnd
+ 
+If you are using the Nextcloud LDAP app, you need this module::
+
+ yum install rh-php56-php-ldap
  
 Disable loading the old PHP 5.3 Apache module:: 
 
