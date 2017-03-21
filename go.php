@@ -29,6 +29,7 @@ $mapping = array(
     'admin-monitoring'        => '/admin_manual/operations/considerations_on_monitoring.html',
     'admin-sso'               => '/admin_manual/configuration_server/sso_configuration.html',
     'admin-php-opcache'       => '/admin_manual/configuration_server/server_tuning.html#enable-php-opcache',
+    'admin-mysql-utf8mb4'     => '/admin_manual/maintenance/mysql_4byte_support.html',
     
     'developer-code-integrity'=> '/developer_manual/app/code_signing.html',
     'developer-theming'       => '/developer_manual/core/theming.html',
