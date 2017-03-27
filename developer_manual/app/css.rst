@@ -132,10 +132,20 @@ To add actions that affect the current list element you can add a menu for secon
                     </ul>
                 </div>
 
-                <div class="app-navigation-entry-menu open">
+                <div class="app-navigation-entry-menu">
                     <ul>
-                        <li><button class="icon-rename svg" title="rename"></button></li>
-                        <li><button class="icon-delete svg" title="delete"></button></li>
+                        <li>
+                            <a href="#" class="menuitem action action-edit permanent">
+                                <span class="icon icon-rename"></span>
+                                <span><?php p($l->t('Edit group'));?></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="menuitem action action-delete permanent">
+                                <span class="icon icon-delete"></span>
+                                <span><?php p($l->t('Delete group'));?></span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
@@ -278,7 +288,7 @@ To create a settings area create a div with the id **app-settings** inside the *
                 <div id="app-settings-header">
                     <button class="settings-button"
                             data-apps-slide-toggle="#app-settings-content"
-                    ></button>
+                    ><?php p($l->t('Settings'));?></button>
                 </div>
                 <div id="app-settings-content">
                     <!-- Your settings in here -->
