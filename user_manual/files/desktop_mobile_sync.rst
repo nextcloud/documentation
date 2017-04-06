@@ -3,8 +3,7 @@ Desktop and Mobile Synchronization
 ==================================
 
 For synchronizing files with your desktop computer, we recommend using the
-`Nextcloud Sync Client`_ for Windows, Mac OS X and Linux until the Nextcloud
-Sync Client will be released..
+`Nextcloud Sync Client`_ for Windows, Mac OS X and Linux.
 
 
 The Nextcloud Desktop Sync Client enables you to connect to your Nextcloud Server.
@@ -15,9 +14,9 @@ computer, it will flow across the others using these desktop sync clients.
 You will always
 have your latest files with you wherever you are.
 
-Its usage is documented separately in the `Nextcloud Desktop Client Manual`_.
+Its usage is documented separately in the `Nextcloud/ownCloud Desktop Client Manual`_.
 
-.. _Nextcloud Sync Client: https://nextcloud.com/install/
+.. _`Nextcloud/ownCloud Desktop Client Manual`: https://doc.owncloud.org/desktop/2.3/
 .. _Nextcloud Desktop Client Manual: https://docs.nextcloud.org/
 
 Mobile Clients
