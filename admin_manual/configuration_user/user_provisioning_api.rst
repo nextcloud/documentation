@@ -134,9 +134,19 @@ XML Output
       <status>ok</status>
     </meta>
     <data>
-      <email>frank@example.org</email>
-      <quota>0</quota>
       <enabled>true</enabled>
+      <id>Frank</id>
+      <quota>0</quota>
+      <email>frank@example.org</email>
+      <displayname>Frank K.</displayname>
+      <phone>0123 / 456 789</phone>
+      <address>Foobar 12, 12345 Town</address>
+      <website>https://nextcloud.com</website>
+      <twitter>Nextcloud</twitter>
+      <groups>
+       <element>group1</element>
+       <element>group2</element>
+      </groups>
     </data>
   </ocs>
 
@@ -150,7 +160,18 @@ sending a Basic HTTP Authorization header.
 **Syntax: ocs/v1.php/cloud/users/{userid}**
 
 * HTTP method: PUT
-* PUT argument: key, the field to edit (email, quota, display, password)
+* PUT argument: key, the field to edit:
+
+  + email
+  + quota
+  + displayname
+  + display (**deprecated** use `displayname` instead)
+  + phone
+  + address
+  + website
+  + twitter
+  + password
+
 * PUT argument: value, the new value for the field
 
 Status codes:
