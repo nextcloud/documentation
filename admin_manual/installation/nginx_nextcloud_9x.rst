@@ -84,9 +84,6 @@ your nginx installation.
       # This module is currently not supported.
       #pagespeed off;
   
-      error_page 403 /core/templates/403.php;
-      error_page 404 /core/templates/404.php;
-  
       location / {
           rewrite ^ /index.php$uri;
       }
