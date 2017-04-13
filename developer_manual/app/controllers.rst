@@ -800,3 +800,44 @@ A controller method that would allow five requests for logged-in users and one r
 
         }
     }
+
+Brute-force protection
+======================
+
+Nextcloud supports brute-force protection on an action basis. By default controller methods are not protected. Brute-force protection should be used on security sensitive functions (e.g. login attempts) to increase the overall security of your application.
+
+The native brute-force protection will slow down requests if too many violations have been found. This slow down will be applied to all requests against a brute-force protected controller with the same action from the affected IP.
+
+To enable brute force protection the following *Annotation* can be added to the controller:
+
+* **@BruteForceProtection(action=string)**: "string" is the name of the action. Such as "login" or "reset". Brute-force attempts are on a per-action basis; this means if a violation for the "login" action is triggered, other actions such as "reset" or "foobar" are not affected.
+
+Then the **throttle()** method has to be called on the response in case of a violation. Doing so will increase the throttle counter and make following requests slower.
+
+A controller method that would employ brute-force protection with an action of "foobar" would look as following:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\IRequest;
+    use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\TemplateResponse;
+
+    class PageController extends Controller {
+
+        /**
+         * @BruteForceProtection(action=foobar)
+         */
+        public function rateLimitedForAll() {
+            $templateResponse = new TemplateResponse(…);
+            // In case of a violation increase the throttle counter
+            // note that $this->auth->isSuccessful here is just an
+            // example.
+            if(!$this->auth->isSuccessful()) {
+                 $templateResponse->throttle();
+            }
+            return $templateResponse;
+        }
+    }
