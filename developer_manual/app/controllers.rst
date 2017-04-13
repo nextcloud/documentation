@@ -729,9 +729,6 @@ Each response subclass has access to the **setStatus** method which lets you set
 
     }
 
-
-
-
 Authentication
 ==============
 By default every controller method enforces the maximum security, which is:
@@ -771,4 +768,35 @@ A controller method that turns off all checks would look like this:
 
     }
 
+Rate limiting
+=============
+Nextcloud supports rate limiting on a controller method basis. By default controller methods are not rate limited. Rate limiting should be used on expensive or security sensitive functions (e.g. password resets) to increase the overall security of your application.
 
+The native rate limiting will return a 429 status code to clients when the limit is reached and a default Nextcloud error page. When implementing rate limiting in your application, you should thus consider handling error situations where a 429 is returned by Nextcloud.
+
+To enable rate limiting the following *Annotations* can be added to the controller:
+
+* **@UserRateThrottle(limit=int, period=int)**: The rate limiting that is applied to logged-in users. If not specified Nextcloud will fallback to AnonUserRateThrottle.
+* **@AnonRateThrottle(limit=int, period=int)**: The rate limiting that is applied to guests.
+
+A controller method that would allow five requests for logged-in users and one request for anonymous users within the last 100 seconds would look as following:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\IRequest;
+    use OCP\AppFramework\Controller;
+
+    class PageController extends Controller {
+
+        /**
+         * @PublicPage
+         * @UserRateThrottle(limit=5, period=100)
+         * @AnonRateThrottle(limit=1, period=100)
+         */
+        public function rateLimitedForAll() {
+
+        }
+    }
