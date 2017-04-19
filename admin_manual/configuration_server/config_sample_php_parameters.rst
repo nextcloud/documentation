@@ -647,7 +647,7 @@ The channel that Nextcloud should use to look for updates
 
 Supported values:
   - ``daily``
-  - ``beta`
+  - ``beta``
   - ``stable``
   - ``production``
 
