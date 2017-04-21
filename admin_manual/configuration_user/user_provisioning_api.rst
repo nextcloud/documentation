@@ -555,7 +555,44 @@ XML Output
       <element>testgroup</element>
     </data>
   </ocs>  
-  
+
+Resend the welcome email
+------------------------
+
+The request to this endpoint triggers the welcome email for this user again.
+
+**Syntax: ocs/v1.php/cloud/users/{userid}/welcome**
+
+* HTTP method: POST
+
+Status codes:
+
+* 100 - successful
+* 101 - email address not available
+* 102 - sending email failed
+
+Example
+^^^^^^^
+
+  * POST
+    ``https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/welcome``
+  * Sends the welcome email to ``Frank``
+
+XML Output
+^^^^^^^^^^
+
+.. code-block:: xml
+
+  <?xml version="1.0"?>
+  <ocs>
+    <meta>
+        <status>ok</status>
+        <statuscode>100</statuscode>
+      <message/>
+    </meta>
+    <data/>
+  </ocs>
+
 Instruction Set For Groups
 ==========================  
 
