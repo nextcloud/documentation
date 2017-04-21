@@ -3,8 +3,7 @@ Nginx Example Configurations
 ============================
 
 This page covers example Nginx configurations to use with running an Nextcloud 
-server. Note that Nginx is not officially supported, and this page is 
-community-maintained. (Thank you, contributors!)
+server. This page is community-maintained. (Thank you, contributors!)
 
 
 -  You need to insert the following code into **your Nginx configuration file.**
