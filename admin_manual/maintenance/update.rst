@@ -113,6 +113,9 @@ with the path to your Nextcloud directory, and replace the ``htuser`` and
     htgroup='www-data'
     
     chown -R ${htuser}:${htgroup} ${ocpath}
+	
+	find ${ocpath}/ -type f -print0 | xargs -0 chmod 0640
+	find ${ocpath}/ -type d -print0 | xargs -0 chmod 0750
 
 You can find your HTTP user in your HTTP server configuration files. Or you can 
 use :ref:`label-phpinfo` (Look for the **User/Group** line).
