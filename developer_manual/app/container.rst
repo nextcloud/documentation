@@ -146,7 +146,7 @@ The container works in the following way:
 * The **database connection** is returned from the server container
 * Now **AuthorMapper** has all of its dependencies and the object is returned
 * **AuthorService** gets the **AuthorMapper** and returns the object
-* **AuthorController** gets the **AuthorService** and finally the controller can be ``new``ed and the object is returned
+* **AuthorController** gets the **AuthorService** and finally the controller can be instantiated and the object is returned
 
 So basically the container is used as a giant factory to build all the classes that are needed for the application. Because it centralizes all the creation of objects (the **new Class()** lines), it is very easy to add new constructor parameters without breaking existing code: only the **__construct** method and the container line where the **new** is being called need to be changed.
 

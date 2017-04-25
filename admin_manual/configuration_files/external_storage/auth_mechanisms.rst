@@ -2,11 +2,15 @@
 External Storage Authentication mechanisms
 ==========================================
 
-Nextcloud storage backends accept one or more authentication schemes such as 
-passwords, OAuth, or token-based, to name a few examples. Each authentication 
-scheme may be implemented by multiple authentication mechanisms. Different 
-mechanisms require different configuration parameters, depending on their 
+Nextcloud storage backends accept one or more authentication schemes such as
+passwords, OAuth, or token-based, to name a few examples. Each authentication
+scheme may be implemented by multiple authentication mechanisms. Different
+mechanisms require different configuration parameters, depending on their
 behaviour.
+
+
+.. figure:: images/authentication-types.png
+   :alt: Authentication types
 
 Special Mechanisms
 ------------------
@@ -23,14 +27,29 @@ Password-based Mechanisms
 -------------------------
 
 The **Username and password** mechanism requires a manually-defined username and
-password. These get passed directly to the backend.
+password. These get passed directly to the backend and are specified during the
+setup of the mount point.
 
-The **Log-in credentials, save in session** mechanism uses the Nextcloud login 
-credentials of the user to connect to the storage. These are not stored anywhere 
-on the server, but rather in the user session, giving increased security. The 
-drawbacks are that sharing is disabled when this mechanism is in use, as 
-Nextcloud has no access to the storage credentials, and background file scanning 
+The **Log-in credentials, save in session** mechanism uses the Nextcloud login
+credentials of the user to connect to the storage. These are not stored anywhere
+on the server, but rather in the user session, giving increased security. The
+drawbacks are that sharing is disabled when this mechanism is in use, as
+Nextcloud has no access to the storage credentials, and background file scanning
 does not work.
+
+The **Log-in credentials, save in database** mechanism uses the Nextcloud login
+credentials of the user to connect to the storage. These are stored in the
+database encrypted with the shared secret. This allows to share files from
+within this mount point.
+
+The **User entered, store in database** mechanism work in the same way as the
+"Username and password" mechanism but the credentials need to be specified by
+each user individually. Before the first access to that mount point the user
+will be prompted to enter the credentials.
+
+The **Global credentials** mechanism uses the general input field for "Global
+credentials" in the external storage settings section as source for the
+credentials instead of individual credentials for a mount point.
 
 Public-key Mechanisms
 ---------------------

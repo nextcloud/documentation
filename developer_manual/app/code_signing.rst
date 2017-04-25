@@ -118,7 +118,7 @@ examples will assume that you are trying to sign an application named
 "contacts".
 
 1. Generate a private key and CSR: ``openssl req -nodes -newkey rsa:2048 -keyout contacts.key -out contacts.csr -subj "/CN=contacts"``. Replace "contacts" with your application identifier.
-2. Post the CSR at https://github.com/owncloud/appstore-issues, and configure
+2. Post the CSR at https://github.com/nextcloud/app-certificate-requests, and configure
    your GitHub account to show your mail address in your profile. Nextcloud
    might ask you for further information to verify that you're the legitimate
    owner of the application. Make sure to keep the private key file (``contacts.key``)

@@ -28,6 +28,7 @@
    database
    configuration
    filesystem
+   appdata
    users
    two-factor-provider
    hooks
@@ -135,6 +136,12 @@ Background Jobs
 Periodically run code in the background:
 
 * :doc:`backgroundjobs`
+
+Settings
+---------------
+An app can register both admin settings as well as personal settings:
+
+* :doc:`settings`
 
 Logging
 -------

@@ -7,7 +7,6 @@ Table of Contents
      
     index 
     release_notes
-    whats_new_admin
     installation/index
     configuration_server/index
     configuration_user/index

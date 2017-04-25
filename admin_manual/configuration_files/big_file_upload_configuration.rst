@@ -21,7 +21,7 @@ filesystem.
 System Configuration
 --------------------
 
-* Make sure that the latest version of PHP (at least 5.4.9) is installed
+* Make sure that the latest version of PHP (at least 5.6.6) is installed
 * Disable user quotas, which makes them unlimited
 * Your temp file or partition has to be big enough to hold multiple 
   parallel uploads from multiple users; e.g. if the max upload size is 10GB and 
@@ -75,11 +75,17 @@ Apache with mod_fcgid
    Setting ``FcgidMaxRequestInMem`` significantly higher than normal may no longer be
    necessary, once bug #51747 is fixed.
 
-NGINX
+nginx
 ^^^^^
 * `client_max_body_size <http://nginx.org/en/docs/http/ngx_http_core_module.html#client_max_body_size>`_
 * `fastcgi_read_timeout <http://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_read_timeout>`_
 * `client_body_temp_path <http://nginx.org/en/docs/http/ngx_http_core_module.html#client_body_temp_path>`_
+
+Since nginx 1.7.11 a new config option `fastcgi_request_buffering
+<https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_request_buffering`_
+is availabe. Setting this option to ``fastcgi_request_buffering off;`` in your nginx config
+might help with timeouts during the upload. Furthermore it helps if you're running out of
+disc space on the tmp partition of your system.
 
 For more info how to configure nginx to raise the upload limits see also `this
 <https://github.com/owncloud/documentation/wiki/Uploading-files-up-to-16GB#configuring-nginx>`_
@@ -91,7 +97,7 @@ wiki entry.
    performance, place these on a separate hard drive that is dedicated to 
    swap and temp storage.
    
-If your site is behind a Nginx frontend (for example a loadbalancer): 
+If your site is behind a nginx frontend (for example a loadbalancer): 
 
 By default, downloads will be limited to 1GB due to ``proxy_buffering`` and ``proxy_max_temp_file_size`` on the frontend.
 
@@ -114,7 +120,7 @@ file size values::
  upload_max_filesize = 16G
  post_max_size = 16G
  
-Tell PHP which temp file you want it to use::
+Tell PHP which temp directory you want it to use::
  
  upload_tmp_dir = /var/big_temp_file/
 
@@ -153,7 +159,7 @@ this input box.
 
 To be able to use this input box you need to make sure that:
 
-* your Web server is be able to use the ``.htaccess`` file shipped by Nextcloud (Apache only)
+* your Web server is able to use the ``.htaccess`` file shipped by Nextcloud (Apache only)
 * the user your Web server is running as has write permissions to the files ``.htaccess`` and ``.user.ini``
 
 :ref:`strong_perms_label` might prevent write access to these files. As an admin you need

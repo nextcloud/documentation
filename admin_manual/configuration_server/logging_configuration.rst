@@ -19,8 +19,8 @@ By default the log level is set to **2** (WARN). Use **DEBUG** when you have a p
 
 Logging level parameters are set in the :file:`config/config.php` file, or on the Admin page of your Nextcloud Web GUI.
 
-ownCloud
-~~~~~~~~
+Nextcloud
+~~~~~~~~~
 
 All log information will be written to a separate log file which can be
 viewed using the log viewer on your Admin page. By default, a log

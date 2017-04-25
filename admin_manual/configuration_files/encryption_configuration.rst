@@ -143,6 +143,8 @@ Encryption settings can be configured in the mount options for an external
 storage mount, see :ref:`external_storage_mount_options_label`
 (:doc:`external_storage_configuration_gui`)
 
+.. _enable-file-recovery-key:
+
 Enabling Users File Recovery Keys
 ----------------------------------
 
@@ -214,7 +216,7 @@ command gives you the option to encrypt all files. You must first put your
 Nextcloud server into single-user mode to prevent any user activity until 
 encryption is completed::
 
- occ maintenance:singleuser
+ occ maintenance:singleuser --on
  Single user mode is currently enabled
 
 Then run ``occ``::

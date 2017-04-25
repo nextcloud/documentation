@@ -12,8 +12,8 @@ Table of Contents
     webinterface
     files/index
     pim/index
-    documents
     userpreferences
+    user_2fa
     session_management
     external_storage/index
     

@@ -16,27 +16,18 @@ if you prefer.**
 
 A PHP opcache stores compiled PHP scripts so they don't need to be re-compiled 
 every time they are called. PHP bundles the Zend OPcache in core since version 
-5.5, so you don't need to install an opcache for PHP 5.5+.
+5.5, so you don't need to install an opcache manually.
 
-If you are using PHP 5.4, which is the oldest supported PHP version for 
-Nextcloud, you may install the Alternative PHP Cache (APC). This is both an 
-opcache and data cache. APC has not been updated since 2012 and is essentially 
-dead, and PHP 5.4 is old and lags behind later releases. If it is possible 
-to upgrade to a later PHP release that is the best option.
-
-Data caching is supplied by the Alternative PHP Cache, user (APCu) in PHP 
-5.5+, Memcached, or Redis.
+Data caching is supplied by the user (APCu), Memcached or Redis.
 
 Nextcloud supports multiple memory caching backends, so you can choose the type 
 of memcache that best fits your needs. The supported caching backends are:
 
-* `APC <http://php.net/manual/en/book.apc.php>`_ 
-   A local cache for systems running PHP 5.4.
 * `APCu <https://pecl.php.net/package/APCu>`_, APCu 4.0.6 and up required.
-   A local cache for systems running PHP 5.5 and up.
+   A local cache for systems.
 * `Memcached <http://www.memcached.org/>`_ 
    Distributed cache for multi-server Nextcloud installations.
-* `Redis <http://redis.io/>`_, PHP module 2.2.5 and up required.
+* `Redis <http://redis.io/>`_, PHP module 2.2.6 and up required.
    For distributed caching.
    
 Memcaches must be explicitly configured in Nextcloud by installing
@@ -47,24 +38,6 @@ all possible config parameters).
 You may use both a local and a distributed cache. Recommended caches are APCu 
 and Redis. After installing and enabling your chosen memcache, verify that it is 
 active by running :ref:`label-phpinfo`.
-   
-APC
----
-
-APC is only for systems running PHP 5.4 and older. The oldest supported PHP 
-version in Nextcloud is 5.4.
-
-.. note:: RHEL 6 and CentOS 6 ship with PHP 5.3 and must be upgraded to PHP 
-   5.4 to run Nextcloud. See :doc:`../installation/php_54_installation`.
-
-On Red Hat/CentOS/Fedora systems running PHP 5.4, install ``php-pecl-apc``. On 
-Debian/Ubuntu/Mint systems install ``php-apc``. Then restart your Web server. 
- 
-After restarting your Web server, add this line to your ``config.php`` file::
-
- 'memcache.local' => '\OC\Memcache\APC',
- 
-Refresh your Nextcloud admin page, and the cache warning should disappear.
 
 APCu
 ----
@@ -72,9 +45,10 @@ APCu
 PHP 5.5 and up include the Zend OPcache in core, and on most Linux 
 distributions it is enabled by default. However, it does 
 not bundle a data cache. APCu is a data cache, and it is available in most 
-Linux distributions. On Red Hat/CentOS/Fedora systems running PHP 5.5 and up 
-install ``php-pecl-apcu``. On Debian/Ubuntu/Mint systems install ``php5-apcu``.
-On Ubuntu 14.04LTS, the APCu version is 4.0.2, which is too old to use with Nextcloud. Nextcloud requires 4.0.6+. You may install 4.0.7 from Ubuntu backports with this command::
+Linux distributions. On Red Hat/CentOS/Fedora systems install
+``php-pecl-apcu``. On Debian/Ubuntu/Mint systems install ``php5-apcu`` or ``php7.0-apcu``.
+On Ubuntu 14.04 LTS, the APCu version (4.0.2) is too old to use with Nextcloud (requires 4.0.6+).
+You may install 4.0.7 from Ubuntu backports with this command::
 
   apt-get install php5-apcu/trusty-backports
    
@@ -135,11 +109,11 @@ as a local cache for :doc:`Transactional File Locking
 <../configuration_files/files_locking_transactional>` because it guarantees 
 that cached objects are available for as long as they are needed.
 
-The Redis PHP module must be version 2.2.5+. If you are running a Linux 
+The Redis PHP module must be version 2.2.6+. If you are running a Linux
 distribution that does not package the supported versions of this module, or 
 does not package Redis at all, see :ref:`install_redis_label`.
 
-On Debian/Ubuntu/Mint install ``redis-server`` and ``php5-redis``. The installer 
+On Debian/Ubuntu/Mint install ``redis-server`` and ``php5-redis`` or ``php7.0-redis``. The installer
 will automatically launch ``redis-server`` and configure it to launch at 
 startup.
 
@@ -174,7 +148,12 @@ recommended if Redis is running on the same system as Nextcloud) use this exampl
   'redis' => array(
        'host' => '/var/run/redis/redis.sock',
        'port' => 0,
+       'dbindex' => 0,
+       'password' => 'secret',
+       'timeout' => 1.5,
         ),
+
+Only "host" and "port" variables are required, the other ones are optional.
 
 Redis is very configurable; consult `the Redis documentation 
 <http://redis.io/documentation>`_ to learn more.
@@ -240,13 +219,10 @@ These instructions are adaptable for any distro that does not package the
 supported version, or that does not package Redis at all, such as SUSE Linux 
 Enterprise Server and Red Hat Enterprise Linux.
 
-The Redis PHP module must be at least version 2.2.5. Please note that 
-the Redis PHP module versions 2.2.5 - 2.2.7 will only work for:
-  
-::
-   
-   PHP version 6.0.0 or older
-   PHP version 5.2.0 or newer
+The Redis PHP module must be at least version 2.2.6. Please note that
+the Redis PHP module versions 2.2.x will only work for PHP 5.6.x.
+
+For PHP 7.0 and PHP 7.1 use Redis PHP module 3.1.x or later.
   
 See `<https://pecl.php.net/package/redis>`_
 

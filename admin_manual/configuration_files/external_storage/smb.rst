@@ -45,3 +45,35 @@ See :doc:`../external_storage_configuration_gui` for additional mount
 options and information.
 
 See :doc:`auth_mechanisms` for more information on authentication schemes.
+
+------------------------
+SMB update notifications
+------------------------
+
+Starting with Nextcloud 10, Nextcloud can use smb update notifications to
+listen to changes made to a configured SMB/CIFS storage and detect external
+changes made to the storage in near real-time.
+
+.. note:: Due to limitations of linux based SMB servers, this feature only works
+   reliably on Windows SMB servers.
+
+.. note:: Using update notifications requires ``smbclient`` 4.x or newer.
+   Due to limitations with the smbclient PHP module, the ``smbclient`` binary
+   is required even when using the PHP module.
+
+To start listening to update notifications, start the ``occ`` command like this::
+
+ occ files_external:notify <mount_id>
+
+You can find the mount id for a specific storage using ``occ files_external:list``
+
+On default this command shows no output, can you see the list of detected changes by
+passing the ``-v`` option to the command.
+
+~~~~~~~~~~~~~~~~~~
+SMB Authentication
+~~~~~~~~~~~~~~~~~~
+
+In some cases (such as when using login credentials) it's not possible to read the
+smb credentials from the storage configuration, in those cases you can provide
+the username and password using the ``--username`` and ``--password`` arguments.

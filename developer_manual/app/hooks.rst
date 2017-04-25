@@ -48,12 +48,13 @@ The hook logic should be in a separate class that is being registered in the :do
 
     <?php
     namespace OCA\MyApp\Hooks;
+    use OCP\IUserManager;
 
     class UserHooks {
 
         private $userManager;
 
-        public function __construct($userManager){
+        public function __construct(IUserManager $userManager){
             $this->userManager = $userManager;
         }
 
@@ -101,12 +102,13 @@ Hooks available in scope **\\OC\\User**:
  
 * **preSetPassword** (\\OC\\User\\User $user, string $password, string $recoverPassword)
 * **postSetPassword** (\\OC\\User\\User $user, string $password, string $recoverPassword)
+* **changeUser** (\\OC\\User\\User $user, string $feature, string $value)
 * **preDelete** (\\OC\\User\\User $user)
 * **postDelete** (\\OC\\User\\User $user)
 * **preCreateUser** (string $uid, string $password)
 * **postCreateUser** (\\OC\\User\\User $user)
 * **preLogin** (string $user, string $password)
-* **postLogin** (\\OC\\User\\User $user)
+* **postLogin** (\\OC\\User\\User $user, string $password)
 * **logout** ()
 
 UserManager

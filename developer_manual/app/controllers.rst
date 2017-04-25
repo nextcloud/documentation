@@ -653,7 +653,7 @@ OCS
 ---
 .. note:: This is purely for compatibility reasons. If you are planning to offer an external API, go for a :doc:`api` instead.
 
-In order to ease migration from OCS API routes to the App Framework, an additional controller and response have been added. To migrate your API you can use the **OCP\\AppFramework\\OCSController** baseclass and return your data in the form of an array in the following way:
+In order to ease migration from OCS API routes to the App Framework, an additional controller and response have been added. To migrate your API you can use the **OCP\\AppFramework\\OCSController** baseclass and return your data in the form of a DataResponse in the following way:
 
 
 .. code-block:: php
@@ -661,6 +661,7 @@ In order to ease migration from OCS API routes to the App Framework, an addition
     <?php
     namespace OCA\MyApp\Controller;
 
+    use OCP\AppFramework\Http\DataResponse;
     use OCP\AppFramework\OCSController;
 
     class ShareController extends OCSController {
@@ -672,19 +673,33 @@ In order to ease migration from OCS API routes to the App Framework, an addition
          * @CORS
          */
         public function getShares() {
-            return [
-                'data' => [
-                    // actual data is in here
-                ],
-                // optional
-                'statuscode' => 100,
-                'status' => 'OK'
-            ];
+            return new DataResponse([
+                //Your data here
+            ]);
         }
 
     }
 
 The format parameter works out of the box, no intervention is required.
+
+In order to make routing work for OCS routes you need to add a seperate 'ocs' entry to the routing table of your app.
+Inside these are normal routes.
+
+.. code-block:: php
+
+   <?php
+
+   return [
+        'ocs' => [
+            [
+                'name' => 'Share#getShares',
+                'url' => '/api/v1/shares',
+                'verb' => 'GET',
+            ],
+        ],
+   ];
+
+Now your method will be reachable via ``<server>/ocs/v2.php/apps/<APPNAME>/api/v1/shares``
 
 Handling errors
 ---------------
@@ -713,9 +728,6 @@ Each response subclass has access to the **setStatus** method which lets you set
         }
 
     }
-
-
-
 
 Authentication
 ==============
@@ -756,4 +768,76 @@ A controller method that turns off all checks would look like this:
 
     }
 
+Rate limiting
+=============
+Nextcloud supports rate limiting on a controller method basis. By default controller methods are not rate limited. Rate limiting should be used on expensive or security sensitive functions (e.g. password resets) to increase the overall security of your application.
 
+The native rate limiting will return a 429 status code to clients when the limit is reached and a default Nextcloud error page. When implementing rate limiting in your application, you should thus consider handling error situations where a 429 is returned by Nextcloud.
+
+To enable rate limiting the following *Annotations* can be added to the controller:
+
+* **@UserRateThrottle(limit=int, period=int)**: The rate limiting that is applied to logged-in users. If not specified Nextcloud will fallback to AnonUserRateThrottle.
+* **@AnonRateThrottle(limit=int, period=int)**: The rate limiting that is applied to guests.
+
+A controller method that would allow five requests for logged-in users and one request for anonymous users within the last 100 seconds would look as following:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\IRequest;
+    use OCP\AppFramework\Controller;
+
+    class PageController extends Controller {
+
+        /**
+         * @PublicPage
+         * @UserRateThrottle(limit=5, period=100)
+         * @AnonRateThrottle(limit=1, period=100)
+         */
+        public function rateLimitedForAll() {
+
+        }
+    }
+
+Brute-force protection
+======================
+
+Nextcloud supports brute-force protection on an action basis. By default controller methods are not protected. Brute-force protection should be used on security sensitive functions (e.g. login attempts) to increase the overall security of your application.
+
+The native brute-force protection will slow down requests if too many violations have been found. This slow down will be applied to all requests against a brute-force protected controller with the same action from the affected IP.
+
+To enable brute force protection the following *Annotation* can be added to the controller:
+
+* **@BruteForceProtection(action=string)**: "string" is the name of the action. Such as "login" or "reset". Brute-force attempts are on a per-action basis; this means if a violation for the "login" action is triggered, other actions such as "reset" or "foobar" are not affected.
+
+Then the **throttle()** method has to be called on the response in case of a violation. Doing so will increase the throttle counter and make following requests slower.
+
+A controller method that would employ brute-force protection with an action of "foobar" would look as following:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\IRequest;
+    use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\TemplateResponse;
+
+    class PageController extends Controller {
+
+        /**
+         * @BruteForceProtection(action=foobar)
+         */
+        public function rateLimitedForAll() {
+            $templateResponse = new TemplateResponse(…);
+            // In case of a violation increase the throttle counter
+            // note that $this->auth->isSuccessful here is just an
+            // example.
+            if(!$this->auth->isSuccessful()) {
+                 $templateResponse->throttle();
+            }
+            return $templateResponse;
+        }
+    }

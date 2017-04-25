@@ -3,8 +3,7 @@ Nginx Example Configurations
 ============================
 
 This page covers example Nginx configurations to use with running an Nextcloud 
-server. Note that Nginx is not officially supported, and this page is 
-community-maintained. (Thank you, contributors!)
+server. This page is community-maintained. (Thank you, contributors!)
 
 
 -  You need to insert the following code into **your Nginx configuration file.**
@@ -43,7 +42,9 @@ Suppressing Log Messages
 If you're seeing meaningless messages in your logfile, for example `client 
 denied by server configuration: /var/www/data/htaccesstest.txt 
 <https://forum.owncloud.org/viewtopic.php?f=17&t=20217>`_, add this section to 
-your nginx configuration to suppress them::
+your nginx configuration to suppress them:
+
+.. code-block:: nginx
 
         location = /data/htaccesstest.txt {
           allow all;
@@ -58,11 +59,15 @@ A common issue with custom nginx configs is that JavaScript (.js)
 or CSS (.css) files are not served properly leading to a 404 (File not found)
 error on those files and a broken webinterface.
 
-This could be caused by the::
+This could be caused by the:
+
+.. code-block:: nginx
 
         location ~* \.(?:css|js)$ {
 
-block shown above not located **below** the::
+block shown above not located **below** the:
+
+.. code-block:: nginx
 
         location ~ \.php(?:$|/) {
 
@@ -72,23 +77,21 @@ or CSS (.css) files via gzip could also cause such issues.
 Performance Tuning
 ==================
 
-`nginx (<1.9.5) <ngx_http_spdy_module 
-<http://nginx.org/en/docs/http/ngx_http_spdy_module.html>`_
-`nginx (+1.9.5) <ngx_http_http2_module 
-<http://nginx.org/en/docs/http/ngx_http_v2_module.html>`_
+* `nginx (<1.9.5) <ngx_http_spdy_module <http://nginx.org/en/docs/http/ngx_http_spdy_module.html>`_
+* `nginx (+1.9.5) <ngx_http_http2_module <http://nginx.org/en/docs/http/ngx_http_v2_module.html>`_
 
 To use http_v2 for nginx you have to check two things:
 
-   1.) be aware that this module is not built in by default due to a dependency 
-   to the openssl version used on your system. It will be enabled with the 
-   ``--with-http_v2_module`` configuration parameter during compilation. The 
-   dependency should be checked automatically. You can check the presence of 
-   http_v2 with ``nginx -V 2>&1 | grep http_v2 -o``. An example of how to 
-   compile nginx can be found in section "Configure nginx with the 
-   ``nginx-cache-purge`` module" below.
+1.) be aware that this module is not built in by default due to a dependency 
+to the openssl version used on your system. It will be enabled with the 
+``--with-http_v2_module`` configuration parameter during compilation. The 
+dependency should be checked automatically. You can check the presence of 
+http_v2 with ``nginx -V 2>&1 | grep http_v2 -o``. An example of how to 
+compile nginx can be found in section "Configure nginx with the 
+``nginx-cache-purge`` module" below.
    
-   2.) When you have used SPDY before, the nginx config has to be changed from 
-   ``listen 443 ssl spdy;`` to ``listen 443 ssl http2;``
+2.) When you have used SPDY before, the nginx config has to be changed from 
+``listen 443 ssl spdy;`` to ``listen 443 ssl http2;``
 
 nginx: caching Nextcloud gallery thumbnails
 ===========================================
@@ -247,7 +250,9 @@ Configure nginx with the ``nginx-cache-purge`` module
 
    sudo vi /etc/nginx/sites-enabled/{your-nextcloud-nginx-config-file}
    
-Add at the *beginning*, but *outside* the ``server{}`` block::
+Add at the *beginning*, but *outside* the ``server{}`` block:
+
+.. code-block:: nginx
 
    # cache_purge
    fastcgi_cache_path {path} levels=1:2 keys_zone=NEXTCLOUD:100m inactive=60m;
@@ -261,15 +266,18 @@ Add at the *beginning*, but *outside* the ``server{}`` block::
 .. note:: Please adopt or delete any regex line in the ``map`` block according 
    your needs and the Nextcloud version used.
    As an alternative to mapping, you can use as many ``if`` statements in 
-   your server block as necessary::
+   your server block as necessary:
+
+   .. code-block:: nginx
    
     set $skip_cache 1;
     if ($request_uri ~* "thumbnail.php")      { set $skip_cache 0; }
     if ($request_uri ~* "/apps/galleryplus/") { set $skip_cache 0; }
     if ($request_uri ~* "/apps/gallery/")     { set $skip_cache 0; }
 
-Add *inside* the ``server{}`` block, as an example of a configuration::
-   
+Add *inside* the ``server{}`` block, as an example of a configuration:
+
+.. code-block:: nginx   
    
    # cache_purge (with $http_cookies we have unique keys for the user)
    fastcgi_cache_key $http_cookie$request_method$host$request_uri;
@@ -277,13 +285,14 @@ Add *inside* the ``server{}`` block, as an example of a configuration::
    fastcgi_ignore_headers Cache-Control Expires Set-Cookie;
    
    location ~ \.php(?:$/) {
-         fastcgi_split_path_info ^(.+\.php)(/.+)$;
+         fastcgi_split_path_info ^(.+\.php)(/.*)$;
        
          include fastcgi_params;
          fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
          fastcgi_param PATH_INFO $fastcgi_path_info;
          fastcgi_param HTTPS on;
          fastcgi_pass php-handler;
+         fastcgi_request_buffering off; #Available since nginx 1.7.11
        
          # cache_purge
          fastcgi_cache_bypass $skip_cache;
@@ -296,13 +305,15 @@ Add *inside* the ``server{}`` block, as an example of a configuration::
 .. note:: Note regarding the ``fastcgi_pass`` parameter:
    Use whatever fits your configuration. In the example above, an ``upstream`` 
    was defined in an nginx global configuration file.
-   This may look like::
+   This may look like:
+
+   .. code-block:: nginx
        
-     upstream php-handler {
-         server unix:/var/run/php5-fpm.sock;
-         # or
-         # server 127.0.0.1:9000;
-       } 
+      upstream php-handler {
+          server unix:/var/run/php5-fpm.sock;
+          # or
+          # server 127.0.0.1:9000;
+      } 
    
 3. **Test the configuration**
 

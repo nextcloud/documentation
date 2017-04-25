@@ -16,13 +16,13 @@ The other way is by entering your ``config.php`` file and changing
 ``'maintenance' => false,`` to ``'maintenance' => true,``. 
 
 1. Back up your existing Nextcloud Server database, data directory, and 
-   ``config.php`` file. (See :doc:`backup`.)
+   ``config.php`` file. (See :doc:`backup`, for restore information see :doc:`restore`)
 2. Download and unpack the latest Nextcloud Server release (Archive file) from 
    `nextcloud.com/install/`_ into an empty directory outside
    of your current installation.
    
    .. note:: To unpack your new tarball, run:
-      tar xjf nextcloud-[version].tar.bz2
+      unzip nextcloud-[version].zip
     
 
 3. Stop your Web server.
@@ -47,15 +47,21 @@ The other way is by entering your ``config.php`` file and changing
    directory to see if they are there. If not, copy them from your old ``apps/``
    directory to your new one. Make sure the directory permissions of your third
    party application directories are the same as for the other ones.
+   
+9. Adjust file ownership and permissions::
 
-9. Restart your Web server.
+     chown -R www-data:www-data nextcloud
+     find nextcloud/ -type d -exec chmod 750 {} \;
+     find nextcloud/ -type f -exec chmod 640 {} \;
 
-10. Now launch the upgrade from the command  line using ``occ``, like this 
-    example on CentOS Linux::
+10. Restart your Web server.
+
+11. Now launch the upgrade from the command  line using ``occ``, like this 
+    example on Ubuntu Linux::
     
-     sudo -u apache php occ upgrade
+     sudo -u www-data php occ upgrade
      
-11. The upgrade operation takes a few minutes to a few hours, depending on the 
+12. The upgrade operation takes a few minutes to a few hours, depending on the 
     size of your installation. When it is finished you will see a success 
     message, or an error message that will tell where it went wrong.   
 
@@ -74,11 +80,6 @@ Previous Nextcloud Releases
 
 You'll find previous Nextcloud releases in the `Nextcloud Server Changelog 
 <https://nextcloud.com/changelog/>`_.
-
-Reverse Upgrade
----------------
-
-If you need to reverse your upgrade, see :doc:`restore`.
 
 Troubleshooting
 ---------------

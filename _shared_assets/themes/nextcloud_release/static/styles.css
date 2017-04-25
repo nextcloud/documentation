@@ -314,12 +314,6 @@ ul#menu-support.menu > ul > li,
 ul#menu-support.menu ul ul ul {
   border-top: 1px solid #EFEFEF;
 }
-/* highlight the current list entry of the first list with white
-   font on blue background */
-ul#menu-support.menu > ul > li.current {
-  background-color: #428BCA;
-  color: white;
-}
 /* set to default padding for the sublist of the current entry */
 ul#menu-support.menu ul > li.current > ul {
   padding-left: 20px;
@@ -339,19 +333,41 @@ ul#menu-support.menu > ul li.toctree-l1 {
 ul#menu-support.menu > ul li.toctree-l1.current {
   padding-bottom: 10px;
 }
-/* override the color of links */
-ul#menu-support.menu ul > li.current > a:hover,
-ul#menu-support.menu ul > li.current > a:focus,
-ul#menu-support.menu ul > li.current > a {
-  color: white;
+
+#menu-support {
+    padding-left: 0;
 }
-/* override the color of the current link */
-ul#menu-support.menu ul > li.current > a.current {
-  color: #428BCA;
+#menu-support > ul {
+    padding-left: 0;
+    list-style-type: none;
 }
-/* override the color of the current link in the first level */
-ul#menu-support.menu > ul > li.current > a.current {
-  color: white;
+
+#menu-support > ul > li {
+    padding: 5px 9px;
+    padding-right: 0;
+}
+
+#menu-support > ul > li:nth-child(odd) {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+#menu-support > ul > li:last-child {
+    border-bottom: 0;
+}
+
+#menu-support > ul > .current {
+    border: 1px solid #999 !important;
+    border-right: 0 !important;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+#menu-support > ul > .current + li{
+    border-top: 0;
+}
+#menu-support ul ul {
+    padding-left: 27px;
 }
 
 .headerlink {

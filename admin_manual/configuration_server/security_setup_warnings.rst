@@ -8,6 +8,12 @@ might see, and what to do about them.
 
 .. figure:: ../images/security-setup-warning-1.png
 
+You can use the  `Nextcloud Security Scan <https://scan.nextcloud.com>`_ to see
+if your system is up to date and well secured. We have ran this scan over public
+IP addresses in the past to try and reach out to `extremely outdated systems <https://nextcloud.com/blog/nextcloud-releases-security-scanner-to-help-protect-private-clouds/>`_
+and might again in the future. Please, protect your privacy and keep your server
+up to date! Privacy means little without security.
+
 Cache Warnings
 --------------
 
@@ -15,10 +21,9 @@ Cache Warnings
 configure a memcache if available." Nextcloud supports multiple php caching
 extensions:
 
-* APC (PHP 5.4 only)
-* APCu (PHP 5.5+, minimum required PHP extension version 4.0.6)
+* APCu (minimum required PHP extension version 4.0.6)
 * Memcached
-* Redis (minimum required php extension version: 2.2.5)
+* Redis (minimum required PHP extension version: 2.2.6)
 
 You will see this warning if you have no caches installed and enabled, or if 
 your cache does not have the required minimum version installed; older versions 

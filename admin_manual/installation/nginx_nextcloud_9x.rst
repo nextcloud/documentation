@@ -1,6 +1,6 @@
-==================================================
-Nginx Configuration for the Nextcloud 9.x Branches
-==================================================
+===================
+Nginx Configuration
+===================
 
 The following configuration should be used when Nextcloud is placed in the 
 webroot of your Nginx installation. Be careful about line breaks if you copy 
@@ -18,7 +18,7 @@ Nextcloud in the webroot of nginx
 The following config should be used when Nextcloud is placed in the webroot of 
 your nginx installation.
 
-::
+.. code-block:: nginx
 
   upstream php-handler {
       server 127.0.0.1:9000;
@@ -84,9 +84,6 @@ your nginx installation.
       # This module is currently not supported.
       #pagespeed off;
   
-      error_page 403 /core/templates/403.php;
-      error_page 404 /core/templates/404.php;
-  
       location / {
           rewrite ^ /index.php$uri;
       }
@@ -99,8 +96,8 @@ your nginx installation.
       }
   
       location ~ ^/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater/.+|ocs-provider/.+|core/templates/40[34])\.php(?:$|/) {
+          fastcgi_split_path_info ^(.+\.php)(/.*)$;
           include fastcgi_params;
-          fastcgi_split_path_info ^(.+\.php)(/.+)$;
           fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
           fastcgi_param PATH_INFO $fastcgi_path_info;
           fastcgi_param HTTPS on;
@@ -151,7 +148,7 @@ Nextcloud in a subdir of nginx
 The following config should be used when Nextcloud is placed within a subdir of 
 your nginx installation.
 
-::
+.. code-block:: nginx
 
   upstream php-handler {
       server 127.0.0.1:9000;
@@ -221,10 +218,7 @@ your nginx installation.
           # Uncomment if your server is build with the ngx_pagespeed module
           # This module is currently not supported.
           #pagespeed off;
-  
-          error_page 403 /nextcloud/core/templates/403.php;
-          error_page 404 /nextcloud/core/templates/404.php;
-  
+
           location /nextcloud {
               rewrite ^ /nextcloud/index.php$uri;
           }
@@ -237,8 +231,8 @@ your nginx installation.
           }
 
           location ~ ^/nextcloud/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater/.+|ocs-provider/.+|core/templates/40[34])\.php(?:$|/) {
+              fastcgi_split_path_info ^(.+\.php)(/.*)$;
               include fastcgi_params;
-              fastcgi_split_path_info ^(.+\.php)(/.+)$;
               fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
               fastcgi_param PATH_INFO $fastcgi_path_info;
               fastcgi_param HTTPS on;

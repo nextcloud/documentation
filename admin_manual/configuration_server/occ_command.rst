@@ -31,7 +31,6 @@ occ Command Directory
 * :ref:`logging_commands_label`
 * :ref:`maintenance_commands_label`
 * :ref:`security_commands_label`
-* :ref:`shibboleth_label`
 * :ref:`trashbin_label`
 * :ref:`user_commands_label`
 * :ref:`versions_label`
@@ -55,9 +54,9 @@ The HTTP user is different on the various Linux distributions. See
 
 If your HTTP server is configured to use a different PHP version than the 
 default (/usr/bin/php), ``occ`` should be run with the same version. For 
-example, in CentOS 6.5 with SCL-PHP54 installed, the command looks like this::
+example, in CentOS 6.5 with SCL-PHP56 installed, the command looks like this::
 
-  sudo -u apache /opt/rh/php54/root/usr/bin/php /var/www/html/nextcloud/occ
+  sudo -u apache /opt/rh/php56/root/usr/bin/php /var/www/html/nextcloud/occ
 
 Running ``occ`` with no options lists all commands and options, like this 
 example on Ubuntu::
@@ -152,6 +151,32 @@ or ``json_pretty``::
 This output option is available on all list and list-like commands:
 ``status``, ``check``, ``app:list``, ``config:list``, ``encryption:status``
 and ``encryption:list-modules``
+
+Enabling autocompletion
+-----------------------
+
+.. note:: This currently only works, if the user you use to execute the occ commands has a profile.
+  ``www-data`` in most cases is ``nologon`` and therefor can **not** use this.
+
+Since Nextcloud 11 autocompletion is available for bash (and bash based consoles).
+To enable it, you have to run **one** of the following commands::
+
+ # BASH ~4.x, ZSH
+ source <(/var/www/html/nextcloud/occ _completion --generate-hook)
+
+ # BASH ~3.x, ZSH
+ /var/www/html/nextcloud/occ _completion --generate-hook | source /dev/stdin
+
+ # BASH (any version)
+ eval $(/var/www/html/nextcloud/occ _completion --generate-hook)
+
+This will allow you to use autocompletion with the full path ``/var/www/html/nextcloud/occ <tab>``.
+
+If you also want to use autocompletion on occ from within the directory without using the full path,
+you need to specify ``--programm occ`` after the ``--generate-hook``.
+
+If you want the completion to apply automatically for all new shell sessions, add the command to your
+shell's profile (eg. ``~/.bash_profile`` or ``~/.zshrc``).
 
 .. _apps_commands_label:
 
@@ -654,6 +679,7 @@ Commands for managing external storage::
   files_external:list        List configured mounts
   files_external:option      Manage mount options for a mount
   files_external:verify      Verify mount configuration
+  files_external:notify      Listen for active update notifications for a configured external mount
 
 These commands replicate the functionality in the Nextcloud Web GUI, plus two new 
 features:  ``files_external:export`` and ``files_external:import``. 
@@ -901,20 +927,6 @@ Import a new certificate::
 Remove a certificate::
 
  sudo -u www-data php occ security:remove [certificate name]
-
-.. _shibboleth_label:
-
-Shibboleth Modes (Enterprise Edition only)
-------------------------------------------
-
-.. note::
-  This command is only available when the "Shibboleth user backend" app
-  (``user_shibboleth``) is enabled.
-
-``shibboleth:mode`` sets your Shibboleth mode to ``notactive``, 
-``autoprovision``, or ``ssoonly``::
-
- shibboleth:mode [mode]
 
 .. _trashbin_label: 
 
@@ -1211,13 +1223,9 @@ List all options, like this example on CentOS Linux::
 
  sudo -u apache php occ upgrade -h
  Usage:
- upgrade [--skip-migration-test] [--dry-run] [--no-app-disable]
+ upgrade [--no-app-disable]
 
  Options:
- --skip-migration-test  skips the database schema migration simulation and 
-    update directly
- --dry-run              only runs the database schema migration simulation, do 
-   not actually update
  --no-app-disable       skips the disable of third party apps
  --help (-h)            Display this help message.
  --quiet (-q)           Do not output any message.
@@ -1276,19 +1284,6 @@ or to use in a bug report::
  ServerNotAvailableException: LDAP server is not available
  Update failed
  Turned off maintenance mode
-
-Before completing the upgrade, Nextcloud first runs a simulation by copying all 
-database tables to new tables, and then performs the upgrade on them, to ensure 
-that the upgrade will complete correctly. The copied tables are deleted after 
-the upgrade. This takes twice as much time, which on large installations can be 
-many hours, so you can omit this step with the ``--skip-migration-test`` 
-option::
-
- sudo -u www-data php occ upgrade --skip-migration-test
-
-You can perform this simulation manually with the ``--dry-run`` option::
-
- sudo -u www-data php occ upgrade --dry-run
 
 .. _two_factor_auth_label:
 

@@ -9,11 +9,12 @@ This tutorial will outline how to create a very simple notes app. The finished a
 
 Setup
 =====
-After the `development tool <https://github.com/nextcloud/ncdev/blob/master/README.rst#installation>`_ has been installed the :doc:`development environment needs to be set up <../general/devenv>`. This can be done by either `downloading the zip from the website <https://nextcloud.com/install/>`_ or cloning it directly from GitHub::
+First the :doc:`development environment <../general/devenv>` needs to be set up. This can be done by either `downloading the zip from the website <https://nextcloud.com/install/>`_ or cloning it directly from GitHub::
 
-    ncdev setup core --dir nextcloud  --branch $BRANCH
+   git clone git@github.com:nextcloud/server.git --branch $BRANCH
+   git submodule update --init
 
-.. note:: $BRANCH is the desired Nextcloud branch (e.g. stable9 for Nextcloud 9, stable10 for Nextcloud 10, etc)
+.. note:: ``$BRANCH`` is the desired Nextcloud branch (e.g. ``stable9`` for Nextcloud 9, ``stable10`` for Nextcloud 10, ..., ``master`` for the upcoming release)
 
 First you want to enable debug mode to get proper error messages. To do that set ``debug`` to ``true`` in the **nextcloud/config/config.php** file::
 
@@ -30,14 +31,11 @@ Now open another terminal window and start the development server::
     cd nextcloud
     php -S localhost:8080
 
-Afterwards the app can be created in the **apps** folder::
+Afterwards a skeleton app can be created in the `app store <https://apps.nextcloud.com/developer/apps/generate>`_.
 
-    cd apps
-    ncdev startapp OwnNotes
+Download the extracted the downloaded file and move it into your ``apps/`` directory. Afterwards the application can be enabled on the `apps page <http://localhost:8080/index.php/settings/apps>`_.
 
-This creates a new folder called **ownnotes**. Now access and set up Nextcloud through the webinterface at `http://localhost:8080 <http://localhost:8080>`_ and enable the OwnNotes application on the `apps page <http://localhost:8080/index.php/settings/apps>`_.
-
-The first basic app is now available at `http://localhost:8080/index.php/apps/ownnotes/ <http://localhost:8080/index.php/apps/ownnotes/>`_
+The first basic app is now available at ``http://localhost:8080/index.php/apps/yourappid/``
 
 Routes & Controllers
 ====================

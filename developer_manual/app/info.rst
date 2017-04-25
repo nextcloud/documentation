@@ -40,7 +40,7 @@ The :file:`appinfo/info.xml` contains metadata about the app:
       <ocsid>1234</ocsid>
 
       <dependencies>
-          <php min-version="5.4" max-version="5.5"/>
+          <php min-version="5.6" max-version="7.1"/>
           <database>sqlite</database>
           <database>mysql</database>
           <command os="linux">grep</command>
@@ -55,7 +55,7 @@ The :file:`appinfo/info.xml` contains metadata about the app:
       <settings>
           <admin-section>OCA\YourAppsNamespace\Settings\AdminSection</admin-section>
           <admin>OCA\YourAppsNamespace\Settings\AdminSettings</admin>
-      </setting>
+      </settings>
 
       <!-- deprecated, just for reference -->
       <requiremin>5</requiremin>
@@ -88,7 +88,7 @@ description
 
 version
 -------
-Contains the version of your app. Please also provide the same version in the :file:`appinfo/version`.
+Contains the version of your app.
 
 licence
 -------
@@ -159,7 +159,7 @@ properly. As soon as one of these requirements is not met the app cannot be inst
 
 php
 ===
-Defines the minimum and the maximum version of php which is required to run this app.
+Defines the minimum and the maximum version of PHP which is required to run this app.
 
 database
 ========
@@ -170,16 +170,16 @@ In case no database is specified it is assumed that all databases are supported.
 command
 =======
 Defines a command line tool to be available. With the attribute 'os' the required operating system for this tool can be
-specified. Valid values for the 'os' attribute are as returned by the php function `php_uname <http://php.net/manual/en/function.php-uname.php>`_.
+specified. Valid values for the 'os' attribute are as returned by the PHP function `php_uname <http://php.net/manual/en/function.php-uname.php>`_.
 
 lib
 ===
-Defines a required php extension with required minimum and/or maximum version. The names for the libraries have to match the result as returned by the php function  `get_loaded_extensions <http://php.net/manual/en/function.get-loaded-extensions.php>`_.
+Defines a required PHP extension with required minimum and/or maximum version. The names for the libraries have to match the result as returned by the PHP function  `get_loaded_extensions <http://php.net/manual/en/function.get-loaded-extensions.php>`_.
 The explicit version of an extension is read from `phpversion <http://php.net/manual/de/function.phpversion.php>`_ - with some exception as to be read up in the `code base <https://github.com/nextcloud/server/blob/master/lib/private/App/PlatformRepository.php>`_
 
 os
 ==
-Defines the required target operating system the app can run on. Valid values are as returned by the php function `php_uname <http://php.net/manual/en/function.php-uname.php>`_.
+Defines the required target operating system the app can run on. Valid values are as returned by the PHP function `php_uname <http://php.net/manual/en/function.php-uname.php>`_.
 
 owncloud
 ========

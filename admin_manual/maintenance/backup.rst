@@ -20,13 +20,15 @@ your Nextcloud environment. You could use this command::
 Backup Database
 ---------------
 
+.. warning:: Before restoring a backup see :doc:`restore`
+
 MySQL/MariaDB
 ^^^^^^^^^^^^^
 
 MySQL or MariaDB, which is a drop-in MySQL replacement, is the recommended 
 database engine. To backup MySQL/MariaDB::
 
-    mysqldump --lock-tables -h [server] -u [username] -p[password] [db_name] > nextcloud-sqlbkp_`date +"%Y%m%d"`.bak
+    mysqldump --single-transaction -h [server] -u [username] -p[password] [db_name] > nextcloud-sqlbkp_`date +"%Y%m%d"`.bak
 
 SQLite
 ^^^^^^

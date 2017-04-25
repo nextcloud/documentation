@@ -35,30 +35,31 @@ The Nextcloud .tar archive contains all of the required PHP modules. This
 section lists all required and optional PHP modules.  Consult the `PHP manual 
 <http://php.net/manual/en/extensions.php>`_ for more information on modules. 
 Your Linux distribution should have packages for all required modules. You can 
-check the precense of a module by typing ``php -m | grep -i <module_name>``. 
+check the presence of a module by typing ``php -m | grep -i <module_name>``. 
 If you get a result, the module is present.
 
 Required:
 
-* php5 (>= 5.4)
+* PHP (>= 5.6, 7.0 or 7.1)
 * PHP module ctype
 * PHP module dom
 * PHP module GD
 * PHP module iconv
 * PHP module JSON
 * PHP module libxml (Linux package libxml2 must be >=2.7.0)
-* PHP module mb multibyte
+* PHP module mbstring
 * PHP module posix
 * PHP module SimpleXML
+* PHP module XMLReader
 * PHP module XMLWriter
 * PHP module zip
 * PHP module zlib
 
 Database connectors (pick the one for your database:)
 
-* PHP module sqlite (>= 3, usually not recommended for performance reasons)
+* PHP module pdo_sqlite (>= 3, usually not recommended for performance reasons)
 * PHP module pdo_mysql (MySQL/MariaDB)
-* PHP module pgsql (requires PostgreSQL >= 9.0)
+* PHP module pdo_pgsql (requires PostgreSQL >= 9.0)
 
 *Recommended* packages:
 
@@ -87,10 +88,9 @@ Recommended for specific apps (*optional*):
 For enhanced server performance (*optional*) select one of the following 
 memcaches:
 
-* PHP module apc
-* PHP module apcu
+* PHP module apcu (>= 4.0.6)
 * PHP module memcached
-* PHP module redis (>= 2.2.5, required for Transactional File Locking)
+* PHP module redis (>= 2.2.6, required for Transactional File Locking)
 
 See :doc:`../configuration_server/caching_configuration` to learn how to select 
 and configure a memcache.
@@ -113,23 +113,23 @@ If ``mod_webdav`` is enabled you must disable it for Nextcloud. (See
   
 .. _ubuntu_installation_label:  
 
-Example Installation on Ubuntu 14.04 LTS Server
+Example Installation on Ubuntu 16.04 LTS Server
 -----------------------------------------------
 
-On a machine running a pristine Ubuntu 14.04 LTS server, install the
+On a machine running a pristine Ubuntu 16.04 LTS server, install the
 required and recommended modules for a typical Nextcloud installation, using
 Apache and MariaDB, by issuing the following commands in a terminal::
 
-    apt-get install apache2 mariadb-server libapache2-mod-php5
-    apt-get install php5-gd php5-json php5-mysql php5-curl
-    apt-get install php5-intl php5-mcrypt php5-imagick
+    apt-get install apache2 mariadb-server libapache2-mod-php7.0
+    apt-get install php7.0-gd php7.0-json php7.0-mysql php7.0-curl php7.0-mbstring
+    apt-get install php7.0-intl php7.0-mcrypt php-imagick php7.0-xml php7.0-zip
 
 * This installs the packages for the Nextcloud core system. 
-  ``libapache2-mod-php5`` provides the following PHP extensions: ``bcmath bz2 
+  ``libapache2-mod-php7.0`` provides the following PHP extensions: ``bcmath bz2 
   calendar Core ctype date dba dom ereg exif fileinfo filter ftp gettext hash 
-  iconv libxml mbstring mhash openssl pcre Phar posix Reflection session shmop 
+  iconv libxml mhash openssl pcre Phar posix Reflection session shmop 
   SimpleXML soap sockets SPL standard sysvmsg sysvsem sysvshm tokenizer wddx 
-  xml xmlreader xmlwriter zip zlib``. If you are planning 
+  xmlreader xmlwriter zlib``. If you are planning 
   on running additional apps, keep in mind that they might require additional 
   packages.  See :ref:`prerequisites_label` for details.
 
@@ -249,7 +249,7 @@ Additional Apache Configurations
   authentication on a parent folder (via e.g. an ``AuthType Basic`` 
   directive), you can turn off the authentication specifically for the 
   Nextcloud entry. Following the above example configuration file, add the 
-  following line in the ``<Directory`` section::
+  following line in the ``<Directory>`` section::
 
     Satisfy Any
 
@@ -363,11 +363,11 @@ ini file. This can be the case, for example, for the ``date.timezone`` setting.
 php-fpm Configuration Notes
 ---------------------------
 
-**Security: Use at least PHP => 5.5.22 or >= 5.6.6**
+**Security: Use at least PHP >= 5.6.6**
 
 Due to `a bug with security implications <https://bugs.php.net/bug.php?id=64938>`_ 
 in older PHP releases with the handling of XML data you are highly encouraged to run
-at least PHP 5.5.22 or 5.6.6 when in a threaded environment.
+at least PHP 5.6.6 when in a threaded environment.
 
 **System environment variables**
 

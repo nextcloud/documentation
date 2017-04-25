@@ -48,15 +48,15 @@ Check out the code
 
 The following commands are using **/var/www** as the Web server's directory and **www-data** as user name and group.
 
-Install the `development tool <https://github.com/nextcloud/ncdev>`_
-
 After the development tool installation make the directory writable::
 
   sudo chmod o+rw /var/www
 
 Then install Nextcloud from git::
 
-  ncdev setup --dir /var/www/<folder> server
+  git clone git@github.com:nextcloud/server.git /var/www/<folder>
+  cd /var/www/<folder> 
+  git submodule update --init
 
 where <folder> is the folder where you want to install Nextcloud.
 

@@ -77,7 +77,9 @@ and ``freshclam.conf`` until it is running the way you want.
 Enabling the Antivirus App for Files
 ------------------------------------
 
-Simply go to your Nextcloud Apps page to enable it.
+Place the ``files_antivirus`` app into the ``apps`` directory of your Nextcloud
+server. Then the app shows up on the Nextcloud Apps page where it simply can be
+enabled.
 
 .. figure:: ../images/antivirus-app.png
 
@@ -119,8 +121,8 @@ Daemon (Socket)
   .. figure:: ../images/antivirus-daemon-socket.png
 
   The ``Stream Length`` value sets the number of bytes read in one pass.
-  10485760 bytes, or ten megabytes, is the default. This value should be 
-  no larger than the PHP ``memory_limit`` settings, or physical memory if 
+  10485760 bytes, or ten megabytes, is the default. This value should be
+  no larger than the PHP ``memory_limit`` settings, or physical memory if
   ``memory_limit`` is set to -1 (no limit).
 
   ``Action for infected files found while scanning`` gives you the choice of
@@ -131,7 +133,7 @@ Daemon
   For the Daemon option you need the hostname or IP address of the remote
   server running ClamAV, and the server's port number.
 
-  .. figure:: ../images/antivirus-daemon-socket.png
+  .. figure:: ../images/antivirus-daemon.png
 
 Executable
   The Executable option requires the path to ``clamscan``, which is the
@@ -141,5 +143,3 @@ Executable
 
 When you are satisfied with how ClamAV is operating, you might want to go
 back and change all of your logging to less verbose levels.
-
-

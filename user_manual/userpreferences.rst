@@ -20,20 +20,21 @@ To access your personal settings:
    .. figure:: images/personal_settings.png
       :alt: screenshot of user's Personal settings page
 
-.. note:: If you are an administrator, you can also manage users and administer 
+.. note:: If you are an administrator, you can also manage users and administer
    the server. These links do not appear to a non-admin user.
 
-The options listed in the Personal Settings Page depend on the applications that 
-are enabled by the administrator.  Some of the features you will see 
+The options listed in the Personal Settings Page depend on the applications that
+are enabled by the administrator. Some of the features you will see
 include the following.
 
-* Usage and available quota
+* Usage and available quota.
 * Manage your profile picture.
-* Full name. You can make this anything you want, as it is separate from your 
+* Full name. You can make this anything you want, as it is separate from your
   Nextcloud login name, which is unique and cannot be changed.
 * Email address.
 * Lists your Group memberships.
 * Manage your password.
+* :doc:`user_2fa`.
 * :doc:`userpreferences`.
 * Choose the language for your Nextcloud interface.
 * Links to desktop and mobile apps.
