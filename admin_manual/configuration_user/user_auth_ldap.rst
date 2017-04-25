@@ -393,7 +393,7 @@ Enable LDAP password changes per user:
    * Make sure that the ``fUserPwdSupport`` char of the dSHeuristics is configured to employ the ``userPassword`` attribute as ``unicodePwd`` alias. While this is set accordingly on AD LDS by default, this is not the case on AD DS.
 
 Default password policy DN:
-  The DN of a default password policy that will be used for password expiry handling in the absence of any user specific password policy. Password expiry handling features the following:
+  This feature requires OpenLDAP with ppolicy. The DN of a default password policy will be used for password expiry handling in the absence of any user specific password policy. Password expiry handling features the following:
 
   * When a LDAP password is about to expire, display a warning message to the user showing the number of days left before it expires. Password expiry warnings are displayed through the notifications app for Nextcloud.
 
