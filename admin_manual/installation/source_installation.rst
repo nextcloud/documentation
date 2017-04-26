@@ -16,7 +16,6 @@ Apache and MariaDB, using `the Nextcloud .tar archive
 * :ref:`pretty_urls_label` 
 * :ref:`enabling_ssl_label`
 * :ref:`installation_wizard_label`
-* :ref:`strong_perms_label`
 * :ref:`selinux_tips_label`
 * :ref:`php_ini_tips_label`
 * :ref:`php_fpm_tips_label`
@@ -304,9 +303,8 @@ Installation Wizard
 
 After restarting Apache you must complete your installation by running either 
 the graphical Installation Wizard, or on the command line with the ``occ`` 
-command. To enable this, temporarily change the ownership on your Nextcloud 
-directories to your HTTP user (see :ref:`strong_perms_label` to learn how to 
-find your HTTP user)::
+command. To enable this, change the ownership on your Nextcloud directories to 
+your HTTP user:
 
  chown -R www-data:www-data /var/www/nextcloud/
  
@@ -317,15 +315,6 @@ find your HTTP user)::
 To use ``occ`` see :doc:`command_line_installation`. 
 
 To use the graphical Installation Wizard see :doc:`installation_wizard`.
-
-Setting Strong Directory Permissions
-------------------------------------
-
-After completing installation, you must immediately set the directory 
-permissions in your Nextcloud installation as strictly as possible for stronger 
-security. Please refer to :ref:`strong_perms_label`.
-
-Now your Nextcloud server is ready to use.
 
 .. _selinux_tips_label:
 

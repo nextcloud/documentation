@@ -72,8 +72,7 @@ Assuming your upgrade succeeded, disable the maintenance mode::
 Login and take a look at the bottom of your Admin page to 
 verify the version number. Check your other settings to make sure they're 
 correct. Go to the Apps page and review the core apps to make sure the right 
-ones are enabled. Re-enable your third-party apps. Then apply strong 
-permissions to your Nextcloud directories (:ref:`strong_perms_label`).
+ones are enabled. Re-enable your third-party apps.
 
 Previous Nextcloud Releases
 ---------------------------
