@@ -162,7 +162,4 @@ To be able to use this input box you need to make sure that:
 * your Web server is able to use the ``.htaccess`` file shipped by Nextcloud (Apache only)
 * the user your Web server is running as has write permissions to the files ``.htaccess`` and ``.user.ini``
 
-:ref:`strong_perms_label` might prevent write access to these files. As an admin you need
-to decide between the ability to use the input box and a more secure Nextcloud installation
-where you need to manually modify the upload limits in the ``.htaccess`` and ``.user.ini``
-files described above.
+
