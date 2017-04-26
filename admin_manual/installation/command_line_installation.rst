@@ -38,11 +38,6 @@ Supported databases are::
  
 See :ref:`command_line_installation_label` for more information.
 
-Finally, apply the correct strong permissions to your Nextcloud files and 
-directories (see :ref:`strong_perms_label`). This is an extremely important 
-step. It helps protect your Nextcloud installation, and ensures that it will run 
-correctly.
-
 BINLOG_FORMAT = STATEMENT
 -------------------------
 

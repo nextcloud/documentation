@@ -44,8 +44,7 @@ occ Command Directory
 Run occ As Your HTTP User
 -------------------------
 
-The HTTP user is different on the various Linux distributions. See 
-:ref:`strong_perms_label` to learn how to find your HTTP user.
+The HTTP user is different on the various Linux distributions:
    
 * The HTTP user and group in Debian/Ubuntu is www-data.
 * The HTTP user and group in Fedora/CentOS is apache.
@@ -1132,9 +1131,7 @@ You can install Nextcloud entirely from the command line. After downloading the
 tarball and copying Nextcloud into the appropriate directories you can use ``occ`` 
 commands in place of running the graphical Installation Wizard.
 
-Apply correct permissions to your Nextcloud directories; see 
-:ref:`strong_perms_label`. Then choose your ``occ`` options. This lists your 
-available options::
+Then choose your ``occ`` options. This lists your available options::
 
  sudo -u www-data php /var/www/nextcloud/occ
  Nextcloud is not installed - only a limited number of commands are available
