@@ -50,8 +50,6 @@ using Snappy Base 16.04 as it's currently unreleased.
 * Run :ref:`occ upgrade <command_line_upgrade_label>` (optionally disabling the 
   :ref:`migration test   
   <migration_test_label>`).
-* :ref:`Apply strong permissions <strong_perms_label>` to your 
-  Nextcloud directories.
 * Take your Nextcloud server out of :ref:`maintenance mode 
   <maintenance_commands_label>`.  
 * Re-enable third-party apps.
@@ -94,15 +92,6 @@ many hours, so you can omit this step with the ``--skip-migration-test``
 option, like this example on CentOS::
 
  $ sudo -u apache php occ upgrade --skip-migration-test
-
-Setting Strong Directory Permissions
-------------------------------------
-
-After upgrading, verify that your Nextcloud directory permissions are set 
-according to :ref:`strong_perms_label`.
-
-If the upgrade fails, then you must try a manual upgrade.
-
    
 .. _skipped_release_upgrade_label:  
    

@@ -50,10 +50,9 @@ steps:
 
 5.  Click Update, and carefully read the messages. If there are any problems it 
     will tell you. The most common issue is directory permissions; your HTTP 
-    user needs write permissions to your whole Nextcloud directory. (See 
-    :ref:`strong_perms_label`.) Another common issue is SELinux rules 
-    (see :ref:`selinux-config-label`.) Otherwise you will see messages 
-    about checking your installation and making backups.
+    user needs write permissions to your whole Nextcloud directory. Another common
+    issue is SELinux rules (see :ref:`selinux-config-label`.) Otherwise you will 
+    see  messages about checking your installation and making backups.
 
 6.  Click Proceed, and then it performs the remaining steps, which takes a few 
     minutes.
@@ -97,42 +96,6 @@ backups from this screen.
 
 If the update fails, then you must update manually. (See :doc:`Manually 
 upgrading <manual_upgrade>`.)
-
-.. _set_updating_permissions_label:
-
-Setting Permissions for Updating
---------------------------------
-   
-For hardened security we  highly recommend setting the permissions on your 
-Nextcloud directory as strictly as possible. These commands should be executed 
-immediately after the initial installation. Please follow the steps in 
-:ref:`strong_perms_label`.
-    
-These strict permissions will prevent the Updater app from working, as it needs 
-your whole Nextcloud directory to be owned by the HTTP user. Run this script to 
-set the appropriate permissions for updating. Replace the ``ocpath`` variable 
-with the path to your Nextcloud directory, and replace the ``htuser`` and 
-``htgroup`` variables with your HTTP user and group.::
-
-    #!/bin/bash
-    # Sets permissions of the Nextcloud instance for updating
-    
-    ocpath='/var/www/nextcloud'
-    htuser='www-data'
-    htgroup='www-data'
-    
-    chown -R ${htuser}:${htgroup} ${ocpath}
-
-You can find your HTTP user in your HTTP server configuration files. Or you can 
-use :ref:`label-phpinfo` (Look for the **User/Group** line).
-
-* The HTTP user and group in Debian/Ubuntu is ``www-data``.
-* The HTTP user and group in Fedora/CentOS is ``apache``.
-* The HTTP user and group in Arch Linux is ``http``.
-* The HTTP user in openSUSE is ``wwwrun``, and the HTTP group is ``www``.
-
-After the update is completed, re-apply the strong directory permissions 
-immediately by running the script in :ref:`strong_perms_label`.
 
 .. _updater_cli_label:
 
