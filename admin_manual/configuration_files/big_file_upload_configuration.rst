@@ -7,8 +7,6 @@ limit up to what your filesystem and operating system allows. There are certain
 hard limits that cannot be exceeded:
 
 * < 2GB on 32Bit OS-architecture
-* < 2GB on Windows (32Bit and 64Bit)
-* < 2GB with Server Version 4.5 or older
 * < 2GB with IE6 - IE8
 * < 4GB with IE9 - IE11
 
