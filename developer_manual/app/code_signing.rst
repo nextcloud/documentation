@@ -45,8 +45,7 @@ version branch in version.php to something else than "stable".
 Is Code Signing Mandatory For Apps?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Code signing is optional for all third-party applications. Applications
-with a tag of "Official" on apps.owncloud.com require code signing.
+Code signing is required for all applications on apps.nextcloud.com.
 
 Technical details
 -----------------
@@ -131,7 +130,7 @@ examples will assume that you are trying to sign an application named
 
 The occ tool will store a ``signature.json`` file within the ``appinfo`` folder
 of your application. Then compress the application folder and upload it to
-apps.owncloud.com. Be aware that doing any changes to the application after it
+apps.nextcloud.com. Be aware that doing any changes to the application after it
 has been signed requires another signing. So if you do not want to have some
 files shipped remove them before running the signing command.
 
@@ -141,7 +140,7 @@ certificate.
 
 If you maintain an app together with multiple people it is recommended to
 designate a release manager responsible for the signing process as well
-as the uploading to apps.owncloud.com. If there are cases where this is not
+as the uploading to apps.nextcloud.com. If there are cases where this is not
 feasible and multiple certificates are required Nextcloud can create them on a
 case by case basis. We do not recommend developers to share their private key.
 
