@@ -45,8 +45,8 @@ respective manuals:
 * `Nextcloud Android App`_
 * `Nextcloud iOS App`_
 
-.. _`Nextcloud User Manual`: https://docs.nextcloud.com/server/11/user_manual/
-.. _`Nextcloud/ownCloud Desktop Client`: https://doc.owncloud.org/desktop/2.2/
+.. _`Nextcloud User Manual`: https://docs.nextcloud.com/server/12/user_manual/
+.. _`Nextcloud/ownCloud Desktop Client`: https://doc.owncloud.org/desktop/2.3/
 .. _`Nextcloud Android App`: https://docs.nextcloud.com/android/
 .. _`Nextcloud iOS App`: https://docs.nextcloud.com/ios/
 

@@ -553,11 +553,11 @@ References
 
 .. TODO ON RELEASE: Update version number below on release
 .. _Maintenance:
-   https://docs.nextcloud.org/server/11/admin_manual/maintenance/index.html
+   https://docs.nextcloud.org/server/12/admin_manual/maintenance/index.html
 .. _User Authentication with LDAP:
-   https://docs.nextcloud.org/server/11/admin_manual/configuration_user/user_auth_ldap.html
+   https://docs.nextcloud.org/server/12/admin_manual/configuration_user/user_auth_ldap.html
 .. _Configuring Memory Caching:
-   https://docs.nextcloud.org/server/11/admin_manual/configuration_server/caching_configuration.html
+   https://docs.nextcloud.org/server/12/admin_manual/configuration_server/caching_configuration.html
 .. _Nextcloud Server or Enterprise Edition:
    https://nextcloud.com/enterprise/
 
