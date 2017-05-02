@@ -249,16 +249,6 @@ Nextcloud Web interface). ``false`` removes the Help item.
 
 ::
 
-	'enable_avatars' => true,
-
-``true`` enables avatars, or user profile photos. These appear on the User
-page, on user's Personal pages and are used by some apps (contacts, mail,
-etc). ``false`` disables them.
-
-Defaults to ``true``
-
-::
-
 	'allow_user_to_change_display_name' => true,
 
 ``true`` allows users to change their display names (on their Personal
@@ -1147,15 +1137,6 @@ are kicked out of Nextcloud instantly.
 
 Defaults to ``false``
 
-::
-
-	'singleuser' => false,
-
-When set to ``true``, the Nextcloud instance will be unavailable for all
-users who are not in the ``admin`` group.
-
-Defaults to ``false``
-
 SSL
 ---
 
@@ -1218,19 +1199,43 @@ Defaults to ``none``
 
 ::
 
-	'redis' => array(
+	'redis' => [
 		'host' => 'localhost', // can also be a unix domain socket: '/tmp/redis.sock'
 		'port' => 6379,
 		'timeout' => 0.0,
 		'password' => '', // Optional, if not defined no password will be used.
 		'dbindex' => 0, // Optional, if undefined SELECT will not run and will use Redis Server's default DB Index.
-	),
+	],
 
-Connection details for redis to use for memory caching.
+Connection details for redis to use for memory caching in a single server configuration.
 
 For enhanced security it is recommended to configure Redis
 to require a password. See http://redis.io/topics/security
 for more information.
+
+::
+
+	'redis.cluster' => [
+		'seeds' => [ // provide some/all of the cluster servers to bootstrap discovery, port required
+			'localhost:7000',
+			'localhost:7001'
+		],
+		'timeout' => 0.0,
+		'read_timeout' => 0.0,
+		'failover_mode' => \RedisCluster::FAILOVER_DISTRIBUTE
+	],
+
+Connection details for a Redis Cluster
+
+Only for use with Redis Clustering, for Sentinel-based setups use the single
+server configuration above, and perform HA on the hostname.
+
+Redis Cluster support requires the php module phpredis in version 3.0.0 or higher.
+
+Available failover modes:
+ - \\RedisCluster::FAILOVER_NONE - only send commands to master nodes (default)
+ - \\RedisCluster::FAILOVER_ERROR - failover to slaves for read commands if master is unavailable
+ - \\RedisCluster::FAILOVER_DISTRIBUTE - randomly distribute read commands across master and slaves
 
 ::
 
@@ -1356,6 +1361,20 @@ own or 3rdParty Share Providers be used that – for instance – uses the
 filesystem instead of the database to keep the share information.
 
 Defaults to ``\OC\Share20\ProviderFactory``
+
+::
+
+	'sharing.maxAutocompleteResults' => 0,
+
+Define max number of results returned by the user search for auto-completion
+Default is unlimited (value set to 0).
+
+::
+
+	'sharing.minSearchStringLength' => 0,
+
+Define the minimum length of the search string before we start auto-completion
+Default is no limit (value set to 0)
 
 All other configuration options
 -------------------------------
@@ -1636,6 +1655,18 @@ Defaults to ``none``
 
 ::
 
+	'filelocking.debug' => false,
+
+Enable locking debug logging
+
+Note that this can lead to a very large volume of log items being written which can lead
+to performance degradation and large log files on busy instance.
+
+Thus enabling this in production for longer periods of time is not recommended
+or should be used together with the ``log.condition`` setting.
+
+::
+
 	'upgrade.disable-web' => false,
 
 Disable the web based updater
@@ -1676,6 +1707,12 @@ configuration. DO NOT ADD THIS SWITCH TO YOUR CONFIGURATION!
 
 If you, brave person, have read until here be aware that you should not
 modify *ANY* settings in this file without reading the documentation.
+
+::
+
+	'lookup_server' => 'https://lookup.nextcloud.com',
+
+use a custom lookup server to publish user data
 
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
