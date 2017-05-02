@@ -223,7 +223,7 @@ Statuscodes:
 Example
 ^^^^^^^
 
-  * PUT ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/disable``
+  * PUT ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/disable -d key="disable" -d value="true"``
   * Disables the user ``Frank``
 
 XML Output
@@ -259,7 +259,7 @@ Statuscodes:
 Example
 ^^^^^^^
 
-  * PUT ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/enable``
+  * PUT ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/enable -d key="enable" -d value="true"``
   * Enables the user ``Frank``
 
 XML Output
