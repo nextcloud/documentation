@@ -284,6 +284,14 @@ which can be used as passwords on their clients.
 
 ::
 
+	'auth.bruteforce.protection.enabled' => true,
+
+Whether the bruteforce protection shipped with Nextcloud should be enabled or not.
+
+Disabling this is discouraged for security reasons.
+
+::
+
 	'skeletondirectory' => '/path/to/nextcloud/core/skeleton',
 
 The directory where the skeleton files are located. These files will be
@@ -531,7 +539,7 @@ to be deleted.
 Both minimum and maximum times can be set together to explicitly define
 file and folder deletion. For migration purposes, this setting is installed
 initially set to "auto", which is equivalent to the default setting in
-Nextcloud 8.1 and before.
+Nextcloud.
 
 Available values:
 
@@ -572,7 +580,7 @@ to be deleted.
 Both minimum and maximum times can be set together to explicitly define
 version deletion. For migration purposes, this setting is installed
 initially set to "auto", which is equivalent to the default setting in
-Nextcloud 8.1 and before.
+Nextcloud.
 
 Available values:
 
@@ -615,9 +623,21 @@ available.
 
 ::
 
-	'updater.server.url' => 'https://updates.nextcloud.org/server/',
+	'updater.server.url' => 'https://updates.nextcloud.com/updater_server/',
 
 URL that Nextcloud should use to look for updates
+
+::
+
+	'updater.release.channel' => 'stable',
+
+The channel that Nextcloud should use to look for updates
+
+Supported values:
+  - ``daily``
+  - ``beta`
+  - ``stable``
+  - ``production``
 
 ::
 
@@ -793,7 +813,7 @@ When enabled, admins may install apps from the Nextcloud app store.
 
 ::
 
-	'appstoreurl' => 'https://apps.nextcloud.com/api/v0',
+	'appstoreurl' => 'https://api.owncloud.com/v1',
 
 The URL of the appstore to use.
 
