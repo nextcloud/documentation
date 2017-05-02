@@ -42,9 +42,6 @@ page by default.
 
 Click the app name to view a description of the app and any of the app settings in the Application View field.  Clicking the **Enable** button will enable the app.  If the app is not part of the Nextcloud installation, it will be downloaded from the app store, installed and enabled.
 
-Click the gear icon on the lower left to browse experimental apps in the `ownCloud Apps
-Store <https://apps.owncloud.com/>`_. Install experimental apps at your own risk.
-
 Sometimes the installation of a third-party app fails silently, possibly because
 ``'appcodechecker' => true,`` is enabled in ``config.php``. When ``appcodechecker`` is
 enabled it checks if third-party apps are using the private API, rather than the public

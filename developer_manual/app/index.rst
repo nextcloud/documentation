@@ -47,7 +47,7 @@ App Development
 Intro
 =====
 
-Before you start, please check if there already is a similar app in the `App Store <https://apps.owncloud.com>`_ or the `GitHub organisation <https://github.com/nextcloud/>`_ that you could contribute to. Also, feel free to communicate your idea and plans in the `forum <https://help.nextcloud.com/>`_ so other contributors might join in.
+Before you start, please check if there already is a similar app in the `App Store <https://apps.nextcloud.com>`_ or the `GitHub organisation <https://github.com/nextcloud/>`_ that you could contribute to. Also, feel free to communicate your idea and plans in the `forum <https://help.nextcloud.com/>`_ so other contributors might join in.
 
 Then, please make sure you have set up a development environment:
 
