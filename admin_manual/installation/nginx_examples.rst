@@ -25,7 +25,7 @@ server. This page is community-maintained. (Thank you, contributors!)
 Example Configurations
 ----------------------
 
-- :doc:`nginx_nextcloud_9x`
+- :doc:`nginx`
 
 You can use Nextcloud over plain http, but we strongly encourage you to use 
 SSL/TLS to encrypt all of your server traffic, and to protect user's logins and 
