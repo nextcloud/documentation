@@ -3,10 +3,13 @@ Nextcloud |version| Release Notes
 =================================
 
 
-Changes in 11
+Changes in 12
 -------------
 
-tbd
+* In the Nginx configuration the Same-Origin header was removed. This is now
+  handled in PHP and keeping it will result in a wrong header. Please remove
+  those lines in your Nginx config:
+  ``add_header X-Frame-Options "SAMEORIGIN";``
 
 Q & A
 -----
