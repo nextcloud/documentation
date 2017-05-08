@@ -49,7 +49,7 @@ The Nextcloud user interface contains the following fields and functions:
   enables you to create new files, new folders, or upload files.
 
 .. note:: You can also drag and drop files from your file manager into the
-  Files Application View to upload them to your instance. Currently,
+   Files Application View to upload them to your instance. Currently,
    the only Web browsers that support drag-and-drop folders are Chrome and
    Chromium.
 
@@ -58,7 +58,7 @@ The Nextcloud user interface contains the following fields and functions:
 
 * **Contacts Menu** (7): Gives you an overview about your contacts and users on
   your server. Dependent on the given details and available apps, you can
-  directly start a video call with them or send emails. 
+  directly start a video call with them or send emails.
 
 * **Gallery** button (8). This looks like four little squares, and takes you
   directly to your image gallery.
