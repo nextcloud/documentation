@@ -7,7 +7,7 @@ preview, edit, delete, share, and re-share files. Your Nextcloud administrator
 has the option to disable these features, so if any of them are missing on your
 system ask your server administrator.
 
-.. figure:: ../images/files_page.png
+.. figure:: ../images/users-files.png
    :alt: The Files view screen.
 
 Tagging Files
