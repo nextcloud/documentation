@@ -19,7 +19,7 @@ or install it manually::
   chmod +x phpunit.phar
   sudo mv phpunit.phar /usr/local/bin/phpunit
 
-After the installation the ''phpunit'' command is available::
+After the installation the **phpunit** command is available::
 
   phpunit --version
 
@@ -36,7 +36,7 @@ To get started, do the following:
  - Create a directory called ``tests`` in the top level of your application
  - Create a PHP file in the directory and ``require_once`` your class which you want to test
 
-Then you can simply run the created test with phpunit.
+Then you can simply run the created test with **phpunit**.
 
 .. note:: If you use Nextcloud functions in your class under test (i.e., OC::getUser()) you'll need to bootstrap Nextcloud or use dependency injection.
 

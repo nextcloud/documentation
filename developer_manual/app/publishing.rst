@@ -45,8 +45,7 @@ App store:
 * major releases optionally featured on nextcloud.com
 * new versions/updates approved by at least one other person
 
-note:
-Official apps include those that are part of the release tarball. We'd like to keep the tarball minimal so most official apps are not part of the standard installation.
+.. note:: Official apps include those that are part of the release tarball. We'd like to keep the tarball minimal so most official apps are not part of the standard installation.
 
 Approved
 ^^^^^^^^
