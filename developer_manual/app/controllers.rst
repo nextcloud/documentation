@@ -319,7 +319,7 @@ Cookies can be set or modified directly on the response class:
 
 Responses
 =========
-Similar to how every controller receives a request object, every controller method has to to return a Response. This can be in the form of a Response subclass or in the form of a value that can be handled by a registered responder.
+Similar to how every controller receives a request object, every controller method has to return a Response. This can be in the form of a Response subclass or in the form of a value that can be handled by a registered responder.
 
 JSON
 ----
@@ -342,7 +342,7 @@ Returning JSON is simple, just pass an array to a JSONResponse:
 
     }
 
-Because returning JSON is such an common task, there's even a shorter way to do this:
+Because returning JSON is such a common task, there's even a shorter way to do this:
 
 .. code-block:: php
 
@@ -525,7 +525,7 @@ A file download can be triggered by returning a DownloadResponse:
 
 Creating custom responses
 -------------------------
-If no premade Response fits the needed usecase, its possible to extend the Response baseclass and custom Response. The only thing that needs to be implemented is the **render** method which returns the result as string.
+If no premade Response fits the needed usecase, it is possible to extend the Response base class and custom Response. The only thing that needs to be implemented is the **render** method which returns the result as string.
 
 Creating a custom XMLResponse class could look like this:
 
@@ -600,7 +600,7 @@ If you want to use a custom, lazily rendered response simply implement the inter
 Modifying the Content Security Policy
 -------------------------------------
 
-By default Nextcloud disables all resources which are not served on the same domain, forbids cross domain requests and disables inline CSS and JavaScript by setting a `Content Security Policy <https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy>`_. However if an app relies on thirdparty media or other features which are forbidden by the current policy the policy can be relaxed.
+By default Nextcloud disables all resources which are not served on the same domain, forbids cross domain requests and disables inline CSS and JavaScript by setting a `Content Security Policy <https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy>`_. However if an app relies on third-party media or other features which are forbidden by the current policy the policy can be relaxed.
 
 .. note:: Double check your content and edge cases before you relax the policy! Also read the `documentation provided by MDN <https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy>`_
 
@@ -653,7 +653,7 @@ OCS
 ---
 .. note:: This is purely for compatibility reasons. If you are planning to offer an external API, go for a :doc:`api` instead.
 
-In order to ease migration from OCS API routes to the App Framework, an additional controller and response have been added. To migrate your API you can use the **OCP\\AppFramework\\OCSController** baseclass and return your data in the form of a DataResponse in the following way:
+In order to ease migration from OCS API routes to the App Framework, an additional controller and response have been added. To migrate your API you can use the **OCP\\AppFramework\\OCSController** base class and return your data in the form of a DataResponse in the following way:
 
 
 .. code-block:: php
@@ -742,7 +742,7 @@ Most of the time though it makes sense to also allow normal users to access the 
 To turn off checks the following *Annotations* can be added before the controller:
 
 * **@NoAdminRequired**: Also users that are not admins can access the page
-* **@NoCSRFRequired**: Don't check the CSRF token (use this wisely since you might create a security hole, to understand what it does see :doc:`../general/security`)
+* **@NoCSRFRequired**: Don't check the CSRF token (use this wisely since you might create a security hole; to understand what it does see :doc:`../general/security`)
 * **@PublicPage**: Everyone can access the page without having to log in
 
 A controller method that turns off all checks would look like this:

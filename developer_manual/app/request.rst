@@ -6,7 +6,7 @@ Request lifecycle
 
 A typical HTTP request consists of the following:
 
-* **An URL**: e.g. /index.php/apps/myapp/something
+* **A URL**: e.g. /index.php/apps/myapp/something
 * **Request Parameters**: e.g. ?something=true&name=tom
 * **A Method**: e.g. GET
 * **Request headers**: e.g. Accept: application/json
@@ -15,7 +15,7 @@ The following sections will present an overview over how that request is being p
 
 Front controller
 ================
-In the beginning, all requests are sent to Nextcloud's :file:`index.php` which in turn executes :file:`lib/base.php`. This file inspects the HTTP headers and abstracts away differences between different Web servers and initializes the basic classes. Afterwards the basic apps are being loaded in the following order:
+In the beginning, all requests are sent to Nextcloud's :file:`index.php` which in turn executes :file:`lib/base.php`. This file inspects the HTTP headers, abstracts away differences between different Web servers and initializes the basic classes. Afterwards the basic apps are being loaded in the following order:
 
 * Authentication backends
 * Filesystem

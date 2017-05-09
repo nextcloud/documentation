@@ -154,7 +154,7 @@ What does a developer think?
   manually.*
 
 When can I pull?
-  As long as you are reviewing the issue the you should leave the "6 –
+  As long as you are reviewing the issue you should leave the "6 –
   Reviewing" label assigned. Before moving the issue to the "To review" step the
   issue should have been resolved, meaning that not only the issue has been
   implemented but also no other functionality has been broken.
@@ -182,7 +182,7 @@ Who is Assigned?
   No one.
 
 
-While we stated before that said that we push issues to the next column, we can
+While we stated before that we push issues to the next column, we can
 of course move the item back and forth arbitrarily. Basically you can drag the
 issue around in the huboard or just change the label when viewing the issue in
 the GitHub.
@@ -241,7 +241,7 @@ Misc Labels
 
 * Needs info – Either from a developer or the bug reporter. This is nearly as
   severe as Panic, because no further action can be taken
-* L18n – A translation issue go see our `transifex`_
+* L18n – A translation issue; go see our `transifex`_
 * Junior Job – The issue is considered a good starting point to get involved in Nextcloud development
 
 Milestones equal Releases

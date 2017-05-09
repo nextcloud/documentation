@@ -48,7 +48,7 @@ The aforementioned example is the most basic way to write a simple database quer
 To generalize and simplify the problem, split code into resources and create an **Entity** and a **Mapper** class for it. The mapper class provides a way to run SQL queries and maps the result onto the related entities.
 
 
-To create a mapper, inherit from the mapper baseclass and call the parent constructor with the following parameters:
+To create a mapper, inherit from the mapper base class and call the parent constructor with the following parameters:
 
 * Database connection
 * Table name
@@ -204,7 +204,7 @@ mapping, simply override the **columnToProperty** and **propertyToColumn** metho
         }
 
         public function propertyToColumn($property) {
-            if ($column === 'phoneNumber') {
+            if ($property === 'phoneNumber') {
                 return 'phonenumber';
             } else {
                 return parent::propertyToColumn($property);
@@ -216,7 +216,7 @@ mapping, simply override the **columnToProperty** and **propertyToColumn** metho
 
 Slugs
 -----
-Slugs are used to identify resources in the URL by a string rather than integer id. Since the URL allows only certain values, the entity baseclass provides a slugify method for it:
+Slugs are used to identify resources in the URL by a string rather than integer id. Since the URL allows only certain values, the entity base class provides a slugify method for it:
 
 .. code-block:: php
 

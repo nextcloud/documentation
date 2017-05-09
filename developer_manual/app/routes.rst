@@ -4,7 +4,7 @@ Routing
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-Routes map an URL and a method to a controller method. Routes are defined inside :file:`appinfo/routes.php` by passing a configuration array to the registerRoutes method. An example route would look like this:
+Routes map a URL and a method to a controller method. Routes are defined inside :file:`appinfo/routes.php` by passing a configuration array to the registerRoutes method. An example route would look like this:
 
 .. code-block:: php
 
@@ -55,7 +55,7 @@ The route array contains the following parts:
         }
 * **method** (Optional, defaults to GET): The HTTP method that should be matched, (e.g. GET, POST, PUT, DELETE, HEAD, OPTIONS, PATCH)
 * **requirements** (Optional): lets you match and extract URLs that have slashes in them (see **Matching suburls**)
-* **postfix** (Optional): lets you define a route id postfix. Since each route name will be transformed to a route id (**page#method** -> **myapp.page.method**) and the route id can only exist once you can use the postfix option to alter the route id creation by adding a string to the route id e.g.: **'name' => 'page#method', 'postfix' => 'test'** will yield the route id **myapp.page.methodtest**. This makes it possible to add more than one route/url for a controller method
+* **postfix** (Optional): lets you define a route id postfix. Since each route name will be transformed to a route id (**page#method** -> **myapp.page.method**) and the route id can only exist once you can use the postfix option to alter the route id creation by adding a string to the route id, e.g., **'name' => 'page#method', 'postfix' => 'test'** will yield the route id **myapp.page.methodtest**. This makes it possible to add more than one route/url for a controller method
 * **defaults** (Optional): If this setting is given, a default value will be assumed for each url parameter which is not present. The default values are passed in as a key => value par array
 
 Extracting values from the URL
@@ -85,7 +85,7 @@ The identifier used inside the route is being passed into controller method by r
 
 Matching suburls
 ================
-Sometimes its needed to match more than one URL fragment. An example would be to match a request for all URLs that start with **OPTIONS /index.php/apps/myapp/api**. To do this, use the **requirements** parameter in your route which is an array containing pairs of **'key' => 'regex'**:
+Sometimes it is needed to match more than one URL fragment. An example would be to match a request for all URLs that start with **OPTIONS /index.php/apps/myapp/api**. To do this, use the **requirements** parameter in your route which is an array containing pairs of **'key' => 'regex'**:
 
 .. code-block:: php
 
@@ -181,7 +181,7 @@ can be abbreviated by using the **resources** key:
 
 Using the URLGenerator
 ========================
-Sometimes its useful to turn a route into a URL to make the code independent from the URL design or to generate an URL for an image in **img/**. For that specific use case, the ServerContainer provides a service that can be used in your container:
+Sometimes it is useful to turn a route into a URL to make the code independent from the URL design or to generate a URL for an image in **img/**. For that specific use case, the ServerContainer provides a service that can be used in your container:
 
 .. code-block:: php
 
@@ -216,7 +216,7 @@ Sometimes its useful to turn a route into a URL to make the code independent fro
 
     }
 
-Inside the PageController the URL generator can now be used to generate an URL for a redirect:
+Inside the PageController the URL generator can now be used to generate a URL for a redirect:
 
 .. code-block:: php
 

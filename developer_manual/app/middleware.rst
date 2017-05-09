@@ -8,7 +8,7 @@ Middleware is logic that is run before and after each request and is modelled af
 
 * **beforeController**: This is executed before a controller method is being executed. This allows you to plug additional checks or logic before that method, like for instance security checks
 * **afterException**: This is being run when either the beforeController method or the controller method itself is throwing an exception. The middleware is asked in reverse order to handle the exception and to return a response. If the middleware can't handle the exception, it throws the exception again
-* **afterController**: This is being run after a successful controllermethod call and allows the manipulation of a Response object. The middleware is run in reverse order
+* **afterController**: This is being run after a successful controller method call and allows the manipulation of a Response object. The middleware is run in reverse order
 * **beforeOutput**: This is being run after the response object has been rendered and allows the manipulation of the outputted text. The middleware is run in reverse order
 
 To generate your own middleware, simply inherit from the Middleware class and overwrite the methods that should be used.
@@ -77,7 +77,7 @@ The middleware can be registered in the :doc:`container` and added using the **r
 
 Parsing annotations 
 ===================
-Sometimes its useful to conditionally execute code before or after a controller method. This can be done by defining custom annotations. An example would be to add a custom authentication method or simply add an additional header to the response. To access the parsed annotations, inject the **ControllerMethodReflector** class:
+Sometimes it is useful to conditionally execute code before or after a controller method. This can be done by defining custom annotations. An example would be to add a custom authentication method or simply add an additional header to the response. To access the parsed annotations, inject the **ControllerMethodReflector** class:
 
 .. code-block:: php
 

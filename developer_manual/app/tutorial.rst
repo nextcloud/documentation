@@ -33,7 +33,7 @@ Now open another terminal window and start the development server::
 
 Afterwards a skeleton app can be created in the `app store <https://apps.nextcloud.com/developer/apps/generate>`_.
 
-Download the extracted the downloaded file and move it into your ``apps/`` directory. Afterwards the application can be enabled on the `apps page <http://localhost:8080/index.php/settings/apps>`_.
+Download the compressed file that contains the generated app and extract it into your ``apps/`` directory. Afterwards the application can be enabled on the `apps page <http://localhost:8080/index.php/settings/apps>`_.
 
 The first basic app is now available at ``http://localhost:8080/index.php/apps/yourappid/``
 

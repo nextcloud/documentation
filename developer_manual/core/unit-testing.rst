@@ -9,7 +9,7 @@ Getting PHPUnit
 
 Nextcloud uses PHPUnit >= 4.8 for unit testing.
 
-To install it, either get it via your packagemanager::
+To install it, either get it via your package manager::
 
   sudo apt-get install phpunit
 
@@ -38,9 +38,9 @@ To get started, do the following:
 
 Then you can simply run the created test with phpunit.
 
-.. note:: If you use Nextcloud functions in your class under test (i.e: OC::getUser()) you'll need to bootstrap Nextcloud or use dependency injection.
+.. note:: If you use Nextcloud functions in your class under test (i.e., OC::getUser()) you'll need to bootstrap Nextcloud or use dependency injection.
 
-.. note:: You'll most likely run your tests under a different user than the Web server. This might cause problems with your PHP settings (i.e: open_basedir) and requires you to adjust your configuration.
+.. note:: You'll most likely run your tests under a different user than the Web server. This might cause problems with your PHP settings (i.e., open_basedir) and requires you to adjust your configuration.
 
 An example for a simple test would be:
 
@@ -84,7 +84,7 @@ In :file:`/srv/http/nextcloud/apps/myapp/` you run the test with::
   phpunit tests/testaddtwo.php
 
 
-Make sure to extend the ``\Test\TestCase`` class with your test and always call the parent methods,
+Make sure to extend the ``\Test\TestCase`` class with your test and always call the parent methods
 when overwriting ``setUp()``, ``setUpBeforeClass()``, ``tearDown()`` or ``tearDownAfterClass()`` method
 from the TestCase. These methods set up important stuff and clean up the system after the test,
 so the next test can run without side effects, like remaining files and entries in the file cache, etc.

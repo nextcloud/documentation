@@ -6,7 +6,7 @@ App store publishing
 
 The Nextcloud App Store
 -----------------------
-The Nextcloud app store is build into Nextcloud to allow you to get your apps to users as easily and safely as possible. The app store and the process of publishing apps aims to be:
+The Nextcloud app store is built into Nextcloud to allow you to get your apps to users as easily and safely as possible. The app store and the process of publishing apps aims to be:
 
 * secure
 * transparent
@@ -65,8 +65,8 @@ Requirements:
 
 .. * app is signed, at least domain verified
 
-.. note:: **Developer trust**: The developer(s) is/are known in community; he/she has/have been active for a while, have met others at events and/or worked with others in various areas.
-.. note:: **security audits**: in practice this means that at least some of the code of this developer has been audited; either through another app by the same developer or with an earlier version of the app. And that the attitude of the developer towards these audits has been positive.
+.. note:: **Developer trust**: the developer(s) is/are known in community; he/she has/have been active for a while, have met others at events and/or worked with others in various areas.
+.. note:: **Security audits**: in practice this means that at least some of the code of this developer has been audited; either through another app by the same developer or with an earlier version of the app. And that the attitude of the developer towards these audits has been positive.
 
 App store:
 
@@ -131,7 +131,7 @@ Legal and security
 * Apps do not violate any laws; it has to comply with copyright- and trademark law.
 * App authors have to respond timely to security concerns and not make Nextcloud more vulnerable to attack.
 
-.. note:: distributing malicious or illegal applications can have legal consequences including, but not limited to Nextcloud or affected users taking legal action.
+.. note:: Distributing malicious or illegal applications can have legal consequences including, but not limited to Nextcloud or affected users taking legal action.
 
 Be technically sound
 ^^^^^^^^^^^^^^^^^^^^
