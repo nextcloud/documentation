@@ -43,7 +43,7 @@ Get all shares from a given file/folder.
 
 * Result: XML with the shares
 
-Statuscodes
+Statuscodes:
 
 * 100 - successful
 * 400 - not a directory (if the 'subfile' argument was used)

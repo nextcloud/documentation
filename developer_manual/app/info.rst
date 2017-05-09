@@ -175,7 +175,7 @@ specified. Valid values for the 'os' attribute are as returned by the PHP functi
 lib
 ===
 Defines a required PHP extension with required minimum and/or maximum version. The names for the libraries have to match the result as returned by the PHP function  `get_loaded_extensions <http://php.net/manual/en/function.get-loaded-extensions.php>`_.
-The explicit version of an extension is read from `phpversion <http://php.net/manual/de/function.phpversion.php>`_ - with some exception as to be read up in the `code base <https://github.com/nextcloud/server/blob/master/lib/private/App/PlatformRepository.php>`_
+The explicit version of an extension is read from `phpversion <http://php.net/manual/de/function.phpversion.php>`_ - with some exception as to be read up in the `code base <https://github.com/nextcloud/server/blob/master/lib/private/App/PlatformRepository.php>`_.
 
 os
 ==

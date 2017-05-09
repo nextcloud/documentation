@@ -286,7 +286,7 @@ Read shared items by link
 -------------------------
 
 Get information about what files and folder are shared by link (the object
-mClient contains the information about the server URL and account)
+mClient contains the information about the server URL and account).
 
 Code example
 ~~~~~~~~~~~~

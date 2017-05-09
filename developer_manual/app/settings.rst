@@ -17,7 +17,7 @@ related to sharing.
 Settings Form
 =============
 
-For the settings form, three things are necessary
+For the settings form, three things are necessary:
 
 1. A class implementing ``\OCP\Settings\ISettings``
 2. A template

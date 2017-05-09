@@ -29,10 +29,10 @@ Creating and activating a new theme
 ===================================
 There are two basic ways of creating new themings:
 
-* Doing all new from scratch
-* Starting from an existing theme or the example theme and doing everything step by step and more experimentally
+* doing all new from scratch
+* starting from an existing theme or the example theme and doing everything step by step and more experimentally
 
-Depending on how you created your new theme it will be necessary to
+Depending on how you created your new theme it will be necessary to:
 
 * put a new theme into the /themes folder. The theme can be activated by putting ``'theme' => 'MyTheme'`` into the ``/config/config.php`` file.
 * make your changes in the ``/themes/MyTheme`` folder
@@ -99,10 +99,10 @@ The (main) pictures that can be found inside Nextcloud standard theming are the 
 Inserting your new logo
 -----------------------
 Inserting a new logo into an existing theme is as simple as replacing the old logo with the new (generated) one.
-You can use: scalable vector graphics (.svg) or common graphics formats for the Internet such as portable network graphics (.png) or .jpeg
+You can use: scalable vector graphics (.svg) or common graphics formats for the Internet such as portable network graphics (.png) or .jpeg.
 Just insert the new created picture by using the unchanged name of the old picture.
 
-The app icons can also be overwritten in a theme. To change for example the app icon of the activity app you need to overwrite it by saving the new image to …/nextcloud/themes/default/apps/activity/img/activity.svg
+The app icons can also be overwritten in a theme. To change for example the app icon of the activity app you need to overwrite it by saving the new image to …/nextcloud/themes/default/apps/activity/img/activity.svg.
 
 Changing favicon
 ----------------

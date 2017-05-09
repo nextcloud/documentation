@@ -37,13 +37,13 @@ and add the dependency::
 
   compile 'com.github.nextcloud:android-library:<version>'
 
-<version> refers to the exact version you would like to include in your application. This could be -SNAPSHOT for always using the latest code revision of the master branch. Alternatively you can also specifiy a version number which refers to a fixed release, e.g. 1.0.0. (compile 'com.github.nextcloud:android-library:1.0.0')
+<version> refers to the exact version you would like to include in your application. This could be -SNAPSHOT for always using the latest code revision of the master branch. Alternatively you can also specifiy a version number which refers to a fixed release, e.g. 1.0.0. (compile 'com.github.nextcloud:android-library:1.0.0').
 
 
 Add the library project to your project as a Git submodule
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Basically get the code and compile it having it integrated via a Git submodule
+Basically get the code and compile it having it integrated via a Git submodule.
 
 Go into your own apps directory on the command line and add the Nextcloud Android library as a submodule::
   git submodule add https://github.com/nextcloud/android-library nextcloud-android-library

@@ -34,7 +34,7 @@ Writing PHP unit tests
 
 To get started, do the following:
  - Create a directory called ``tests`` in the top level of your application
- - Create a PHP file in the directory and ``require_once`` your class which you want to test.
+ - Create a PHP file in the directory and ``require_once`` your class which you want to test
 
 Then you can simply run the created test with phpunit.
 
@@ -95,7 +95,7 @@ Bootstrapping Nextcloud
 ~~~~~~~~~~~~~~~~~~~~~~~
 If you use Nextcloud functions or classes in your code, you'll need to make them available to your test by bootstrapping Nextcloud.
 
-To do this, you'll need to provide the ``--bootstrap`` argument when running PHPUnit
+To do this, you'll need to provide the ``--bootstrap`` argument when running PHPUnit:
 
 :file:`/srv/http/nextcloud`::
 
@@ -177,9 +177,9 @@ Every time you reload the page, the unit tests will be relaunched and will outpu
 Unit test paths
 ~~~~~~~~~~~~~~~
 
-JavaScript unit test examples can be found in :file:`apps/files/tests/js/`
+JavaScript unit test examples can be found in :file:`apps/files/tests/js/`.
 
-Unit tests for the core app JavaScript code can be found in :file:`core/js/tests/specs`
+Unit tests for the core app JavaScript code can be found in :file:`core/js/tests/specs`.
 
 Documentation
 ~~~~~~~~~~~~~

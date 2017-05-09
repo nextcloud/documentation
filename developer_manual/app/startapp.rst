@@ -12,7 +12,7 @@ Then create a skeleton app in the `app store <https://apps.nextcloud.com/develop
 
 Enable the app
 --------------
-The app can now be enabled on the Nextcloud apps page
+The app can now be enabled on the Nextcloud apps page.
 
 App architecture
 ----------------

@@ -84,7 +84,7 @@ Manual quick translation update:
 
   cd l10n/ && perl l10n.pl read && tx push -s && tx pull -a && perl l10n.pl write && cd ..
 
-The translation script requires Locale::PO, installable via ``apt-get install liblocale-po-perl``
+The translation script requires Locale::PO, installable via ``apt-get install liblocale-po-perl``.
 
 Configure Transifex
 -------------------

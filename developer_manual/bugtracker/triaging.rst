@@ -28,7 +28,7 @@ Triaging follows these steps:
 
 * Find an issue somebody should look at
 * Be that somebody and see if the issue content is useful for a developer
-* Reply and close, ask a question, add information or a label.
+* Reply and close, ask a question, add information or a label
 * Find the next bug-to-be-dealt-with and repeat!
 
 General considerations
