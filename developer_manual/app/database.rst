@@ -114,7 +114,7 @@ or::
 
 Entities
 ========
-Entities are data objects that carry all the table's information for one row. Every Entity has an **id** field by default that is set to the integer type. Table rows are mapped from lower case and underscore separated names to pascal case attributes:
+Entities are data objects that carry all the table's information for one row. Every Entity has an **id** field by default that is set to the integer type. Table rows are mapped from lower case and underscore separated names to *lowerCamelCase* attributes:
 
 * **Table column name**: phone_number
 * **Property name**: phoneNumber
