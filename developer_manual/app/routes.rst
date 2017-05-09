@@ -21,7 +21,7 @@ Routes map a URL and a method to a controller method. Routes are defined inside 
 
 The route array contains the following parts:
 
-* **url**: The url that is matched after */index.php/apps/myapp*
+* **url**: The URL that is matched after */index.php/apps/myapp*
 * **name**: The controller and the method to call; *page#index* is being mapped to *PageController->index()*, *articles_api#drop_latest* would be mapped to *ArticlesApiController->dropLatest()*. The controller that matches the page#index name would have to be registered in the following way inside :file:`appinfo/application.php`:
 
   .. code-block:: php
@@ -54,9 +54,9 @@ The route array contains the following parts:
 
         }
 * **method** (Optional, defaults to GET): The HTTP method that should be matched, (e.g. GET, POST, PUT, DELETE, HEAD, OPTIONS, PATCH)
-* **requirements** (Optional): lets you match and extract URLs that have slashes in them (see **Matching suburls**)
-* **postfix** (Optional): lets you define a route id postfix. Since each route name will be transformed to a route id (**page#method** -> **myapp.page.method**) and the route id can only exist once you can use the postfix option to alter the route id creation by adding a string to the route id, e.g., **'name' => 'page#method', 'postfix' => 'test'** will yield the route id **myapp.page.methodtest**. This makes it possible to add more than one route/url for a controller method
-* **defaults** (Optional): If this setting is given, a default value will be assumed for each url parameter which is not present. The default values are passed in as a key => value par array
+* **requirements** (Optional): lets you match and extract URLs that have slashes in them (see **Matching subURLs**)
+* **postfix** (Optional): lets you define a route id postfix. Since each route name will be transformed to a route id (**page#method** -> **myapp.page.method**) and the route id can only exist once you can use the postfix option to alter the route id creation by adding a string to the route id, e.g., **'name' => 'page#method', 'postfix' => 'test'** will yield the route id **myapp.page.methodtest**. This makes it possible to add more than one route/URL for a controller method
+* **defaults** (Optional): If this setting is given, a default value will be assumed for each URL parameter which is not present. The default values are passed in as a key => value par array
 
 Extracting values from the URL
 ==============================
@@ -83,7 +83,7 @@ It is possible to extract values from the URL to allow RESTful URL design. To ex
 
 The identifier used inside the route is being passed into controller method by reflecting the method parameters. So basically if you want to get the value **{id}** in your method, you need to add **$id** to your method parameters.
 
-Matching suburls
+Matching subURLs
 ================
 Sometimes it is needed to match more than one URL fragment. An example would be to match a request for all URLs that start with **OPTIONS /index.php/apps/myapp/api**. To do this, use the **requirements** parameter in your route which is an array containing pairs of **'key' => 'regex'**:
 
@@ -106,9 +106,9 @@ Sometimes it is needed to match more than one URL fragment. An example would be 
 
     }
 
-Default values for suburl
+Default values for subURL
 ==========================
-Apart from matching requirements, a suburl may also have a default value. Say you want to support pagination (a 'page' parameter) for your **/posts** suburl that displays posts entries list. You may set a default value for the 'page' parameter, that will be used if not already set in the url. Use the **defaults** parameter in your route which is an array containing pairs of **'urlparameter' => 'defaultvalue'**:
+Apart from matching requirements, a subURL may also have a default value. Say you want to support pagination (a 'page' parameter) for your **/posts** subURL that displays posts entries list. You may set a default value for the 'page' parameter, that will be used if not already set in the URL. Use the **defaults** parameter in your route which is an array containing pairs of **'urlparameter' => 'defaultvalue'**:
 
 .. code-block:: php
 
@@ -121,7 +121,7 @@ Apart from matching requirements, a suburl may also have a default value. Say yo
         'name'     => 'post#index',
         'url'      => '/post/{page}',
         'verb'     => 'GET',
-        'defaults' => array('page' => 1) // this allows same url as /index.php/myapp/post/1
+        'defaults' => array('page' => 1) // this allows same URL as /index.php/myapp/post/1
     ),
 
     // controller/postcontroller.php

@@ -24,11 +24,11 @@ With each level come requirements and a position in the store.
 
 Official
 ^^^^^^^^
-Official apps are developed by and within the Nextcloud community and its `Github <https://github.com/nextcloud>`_ repository and offer functionality central to Nextcloud. They are ready for serious use and can be considered a part of Nextcloud.
+Official apps are developed by and within the Nextcloud community and its `GitHub <https://github.com/nextcloud>`_ repository and offer functionality central to Nextcloud. They are ready for serious use and can be considered a part of Nextcloud.
 
 Requirements:
 
-* developed in Nextcloud github repo
+* developed in Nextcloud GitHub repo
 * minimum of 2 active maintainers and contributions from others
 * security audited and design reviewed
 * app is at least 6 months old and has seen regular releases
@@ -54,7 +54,7 @@ Approved apps are developed by trusted developers and have passed a cursory secu
 
 Requirements:
 
-* code is developed in an open and version-managed code repository, ideally github with git but other scm/hosting is OK.
+* code is developed in an open and version-managed code repository, ideally GitHub with Git but other SCM/hosting is OK.
 * minimum of one active developer/maintainer
 * minimum 5 ratings, average score 60/100 or better
 * app is at least 3 months old
@@ -97,7 +97,7 @@ App store:
 
 Getting an app approved
 -----------------------
-If you want your app to be approved, make sure you fulfill all the requirements and then create an issue in the `app approval github repository <https://github.com/owncloud/app-approval>`_ using `this template <https://github.com/owncloud/app-approval/blob/master/README.md>`_. A team of Nextcloud contributors will review your application. Updates to an app require re-review but, of course, an initial review takes more effort and time than the checking of an update.
+If you want your app to be approved, make sure you fulfill all the requirements and then create an issue in the `app approval GitHub repository <https://github.com/owncloud/app-approval>`_ using `this template <https://github.com/owncloud/app-approval/blob/master/README.md>`_. A team of Nextcloud contributors will review your application. Updates to an app require re-review but, of course, an initial review takes more effort and time than the checking of an update.
 
 You are encouraged to help review other contributors' apps as well! Every app requires at least two independent reviews so your review of at least 2 (more is better!) other apps will ensure the process continues smoothly. Thank you for participating in this process and being a great Nextcloud Community member!
 

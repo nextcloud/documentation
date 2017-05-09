@@ -100,7 +100,7 @@ To create a mapper, inherit from the mapper base class and call the parent const
 
     }
 
-.. note:: The cursor is closed automatically for all **INSERT**, **DELETE**, **UPDATE** queries and when calling the methods **findOneQuery**, **findEntities**, **findEntity**, **delete**, **insert** and **update**. For custom calls using execute you should always close the cursor after you are done with the fetching to prevent database lock problems on SqLite
+.. note:: The cursor is closed automatically for all **INSERT**, **DELETE**, **UPDATE** queries and when calling the methods **findOneQuery**, **findEntities**, **findEntity**, **delete**, **insert** and **update**. For custom calls using execute you should always close the cursor after you are done with the fetching to prevent database lock problems on SQLite
 
 Every mapper also implements default methods for deleting and updating an entity based on its id::
 
@@ -141,7 +141,7 @@ Entities are data objects that carry all the table's information for one row. Ev
 
 Types
 -----
-The following properties should be annotated by types, to not only assure that the types are converted correctly for storing them in the database (e.g. PHP casts false to the empty string which fails on postgres) but also for casting them when they are retrieved from the database.
+The following properties should be annotated by types, to not only assure that the types are converted correctly for storing them in the database (e.g. PHP casts false to the empty string which fails on PostgreSQL) but also for casting them when they are retrieved from the database.
 
 The following types can be added for a field:
 

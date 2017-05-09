@@ -172,7 +172,7 @@ Since the route which returns the initial HTML has been taken care of, the contr
 
     }
 
-.. note:: The parameters are extracted from the request body and the url using the controller method's variable names. Since PHP does not support type hints for primitive types such as ints and booleans, we need to add them as annotations in the comments. In order to type cast a parameter to an int, add **@param int $parameterName**
+.. note:: The parameters are extracted from the request body and the URL using the controller method's variable names. Since PHP does not support type hints for primitive types such as ints and booleans, we need to add them as annotations in the comments. In order to type cast a parameter to an int, add **@param int $parameterName**
 
 Now the controller methods need to be connected to the corresponding URLs in the **ownnotes/appinfo/routes.php** file:
 

@@ -71,7 +71,7 @@ Nextcloud provides a default CSS navigation layout. If list entries should have 
 Folders
 -------
 
-Folders are like normal entries and are only supported for the first level. In contrast to normal entries, the links which show the title of the folder need to have the **icon-folder** css class.
+Folders are like normal entries and are only supported for the first level. In contrast to normal entries, the links which show the title of the folder need to have the **icon-folder** CSS class.
 
 If the folder should be collapsible, the **collapsible** class and a button with the class **collapse** are needed. After adding the collapsible class the folder's child entries can be toggled by adding the **open** class to the list element:
 
@@ -116,7 +116,7 @@ Menus
 
 .. versionadded:: 8
 
-To add actions that affect the current list element you can add a menu for second and/or first level elements by adding the button and menu inside the corresponding **li** element and adding the **with-menu** css class:
+To add actions that affect the current list element you can add a menu for second and/or first level elements by adding the button and menu inside the corresponding **li** element and adding the **with-menu** CSS class:
 
 .. code-block:: html
 

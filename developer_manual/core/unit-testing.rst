@@ -34,7 +34,7 @@ Writing PHP unit tests
 
 To get started, do the following:
  - Create a directory called ``tests`` in the top level of your application
- - Create a php file in the directory and ``require_once`` your class which you want to test.
+ - Create a PHP file in the directory and ``require_once`` your class which you want to test.
 
 Then you can simply run the created test with phpunit.
 

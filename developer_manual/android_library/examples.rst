@@ -286,7 +286,7 @@ Read shared items by link
 -------------------------
 
 Get information about what files and folder are shared by link (the object
-mClient contains the information about the server url and account)
+mClient contains the information about the server URL and account)
 
 Code example
 ~~~~~~~~~~~~
@@ -427,4 +427,4 @@ Tips
 * Wrong path: ``https://example.com/nextcloud/remote.php/dav/Pop%20Music/``
 * There are some forbidden characters to be used in folder and file names on the server, same on the Nextcloud Android Library "\","/","<",">",":",""","|","?","*"
 * Upload and download actions may be cancelled thanks to the objects uploadOperation.cancel(), downloadOperation.cancel()
-* Unit tests, before launching unit tests you have to enter your account information (server url, user and password) on TestActivity.java
+* Unit tests, before launching unit tests you have to enter your account information (server URL, user and password) on TestActivity.java

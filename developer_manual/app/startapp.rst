@@ -21,6 +21,6 @@ The following directories have now been created:
 * **appinfo/**: Contains app metadata and configuration
 * **css/**: Contains the CSS
 * **js/**: Contains the JavaScript files
-* **lib/**: Contains the php class files of your app
+* **lib/**: Contains the PHP class files of your app
 * **templates/**: Contains the templates
 * **tests/**: Contains the tests

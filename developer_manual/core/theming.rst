@@ -51,7 +51,7 @@ for example in /nextcloud/core/ and /nextcloud/settings/ in these sub folders:
 * js = JavaScripts
 * img = images
 * l10n = translation files
-* templates = php and html template files
+* templates = PHP and HTML template files
 
 .. _notes-for-updates:
 
@@ -99,7 +99,7 @@ The (main) pictures that can be found inside Nextcloud standard theming are the 
 Inserting your new logo
 -----------------------
 Inserting a new logo into an existing theme is as simple as replacing the old logo with the new (generated) one.
-You can use: scalable vector graphics (.svg) or common graphics formats for the internet such as portable network graphics (.png) or .jpeg
+You can use: scalable vector graphics (.svg) or common graphics formats for the Internet such as portable network graphics (.png) or .jpeg
 Just insert the new created picture by using the unchanged name of the old picture.
 
 The app icons can also be overwritten in a theme. To change for example the app icon of the activity app you need to overwrite it by saving the new image to …/nextcloud/themes/default/apps/activity/img/activity.svg

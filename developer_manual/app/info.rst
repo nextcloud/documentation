@@ -185,7 +185,7 @@ owncloud
 ========
 **Required**: Defines minimum and maximum versions of the Nextcloud core. In case undefined the values will be taken from the tag `requiremin`_.
 
-.. note:: Currently this tag is also used to check for the nextcloud version number.
+.. note:: Currently this tag is also used to check for the Nextcloud version number.
           Thereby the following "translation" is made:
 
           * ownCloud 9.0 matches Nextcloud 9
