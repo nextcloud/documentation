@@ -30,7 +30,7 @@ Web Components go into the **component/** folder and can be imported like this:
   component('myapp', array('tabs', 'forms'));  // adds component/tabs.html, component/forms.html
   
   
-.. note:: Keep in mind that Web Components are still very new and you `might need to add polyfills using Polymer <http://www.polymer-project.org/resources/compatibility.html>`_
+.. note:: Keep in mind that Web Components are still very new and you `might need to add polyfills <https://www.webcomponents.org/polyfills/>`_
   
 Standard layout
 ===============

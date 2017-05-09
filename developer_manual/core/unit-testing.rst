@@ -138,7 +138,7 @@ Further Reading
 JavaScript unit testing for core
 --------------------------------
 
-JavaScript Unit testing for **core** and **core apps** is done using the `Karma <http://karma-runner.github.io>`_ test runner with `Jasmine <http://pivotal.github.io/jasmine/>`_.
+JavaScript Unit testing for **core** and **core apps** is done using the `Karma <http://karma-runner.github.io>`_ test runner with `Jasmine <https://jasmine.github.io/>`_.
 
 Installing Node JS
 ~~~~~~~~~~~~~~~~~~

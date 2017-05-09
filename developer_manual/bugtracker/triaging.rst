@@ -48,9 +48,9 @@ Finding bugs to triage
 
 GitHub offers several search queries which can be useful to find a list of bugs which deserve a closer look:
 
-* `The bugs least recently commented on <https://github.com/issues?q=is%3Aissue+user%3Anextcloud+is%3Aopen+sort%3Aupdated-asc++is%3Apublic+>`_
-* `Least commented issues <https://github.com/issues?q=is%3Aissue+user%3Anextcloud+is%3Aopen+no%3Aassignee+no%3Amilestone+no%3Alabel+sort%3Acomments-asc+>`_
-* `Bugs which need info <https://github.com/issues?q=is%3Aissue+user%3Anextcloud+is%3Aopen+label%3A%22Needs+info%22+sort%3Acreated-asc+>`_
+* `The bugs least recently commented on <https://github.com/search?q=is%3Aissue+user%3Anextcloud+is%3Aopen+sort%3Aupdated-asc+is%3Apublic+>`_
+* `Least commented issues <https://github.com/search?q=is%3Aissue+user%3Anextcloud+is%3Aopen+no%3Aassignee+no%3Amilestone+no%3Alabel+sort%3Acomments-asc+>`_
+* `Bugs which need info <https://github.com/search?q=is%3Aissue+user%3Anextcloud+is%3Aopen+label%3A%22Needs+info%22+sort%3Acreated-asc+>`_
 
 But there are more methods. For example, if you are a user of Nextcloud with a specific setup like using nginx as Web server or Dropbox as storage, or using the encryption app, you could look for bugs with these keywords. You can then use your knowledge of your installation and your installation itself to see if bugs are (still) valid or reproduce them.
 
@@ -61,7 +61,7 @@ Once you have picked an issue, add a comment that you've started triaging:
 Checking if the issue is useful
 ===============================
 
-Much content from https://techbase.kde.org/Contribute/Bugsquad/Guide_To_BugTriaging
+Much content from https://community.kde.org/Guidelines_and_HOWTOs/Bug_triaging
 
 The goal of triaging is to have only useful bug reports for the developers. And you don't have to know much to be able to judge at least some bug reports to be less than useful. There are duplications, incomplete reports and so on. Here is the work flow for each bug:
 
@@ -121,6 +121,6 @@ Once you are done reproducing an issue, it is time to finish up and make clear t
 Now, the developers can pick the issue up. Note that while we wish we would always pick up and solve problems promptly, not all areas of Nextcloud get the same amount of attention and contribution, so this can occasionally take a long time.
 
 
-**Credit:** this document is in debt to the extensive `KDE guide to bug triaging <https://techbase.kde.org/Contribute/Bugsquad/Guide_To_BugTriaging>`_.
+**Credit:** this document is in debt to the extensive `KDE guide to bug triaging <https://community.kde.org/Guidelines_and_HOWTOs/Bug_triaging>`_.
 
 
