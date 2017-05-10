@@ -537,7 +537,7 @@ see a list of modules only if you have enabled the Encryption app. Use
 ``encryption:set-default-module [module name]`` to set your desired module.
 
 ``encryption:encrypt-all`` encrypts all data files for all users. You must first 
-put your Nextcloud server into :ref:`single-user 
+put your Nextcloud server into :ref:`maintenance
 mode<maintenance_commands_label>` to prevent any user activity until encryption 
 is completed.
 
@@ -547,12 +547,12 @@ user::
  sudo -u www-data php occ encryption:decrypt freda
 
 Users must have enabled recovery keys on their Personal pages. You must first 
-put your Nextcloud server into :ref:`single-user 
+put your Nextcloud server into :ref:`maintenance
 mode <maintenance_commands_label>` to prevent any user activity until 
 decryption is completed.
 
 Use ``encryption:disable`` to disable your encryption module. You must first put 
-your Nextcloud server into :ref:`single-user mode <maintenance_commands_label>` 
+your Nextcloud server into :ref:`maintenance mode <maintenance_commands_label>`
 to prevent any user activity.
 
 ``encryption:enable-master-key`` creates a new master key, which is used for all 
@@ -863,12 +863,12 @@ Use these commands when you upgrade Nextcloud, manage encryption, perform
 backups and other tasks that require locking users out until you are finished::
 
  maintenance
-  maintenance:mimetype:update-db       Update database mimetypes and update 
-                                       filecache
-  maintenance:mimetype:update-js       Update mimetypelist.js
-  maintenance:mode                     set maintenance mode
-  maintenance:repair                   repair this installation
-  maintenance:singleuser               set single user mode
+  maintenance:data-fingerprint        update the systems data-fingerprint after a backup is restored
+  maintenance:mimetype:update-db      Update database mimetypes and update filecache
+  maintenance:mimetype:update-js      Update mimetypelist.js
+  maintenance:mode                    set maintenance mode
+  maintenance:repair                  repair this installation
+  maintenance:update:htaccess         Updates the .htaccess file
 
 ``maintenance:mode`` locks the sessions of all logged-in users, including 
 administrators, and displays a status screen warning that the server is in 
@@ -878,18 +878,6 @@ logged-in users must refresh their Web browsers to continue working::
 
  sudo -u www-data php occ maintenance:mode --on
  sudo -u www-data php occ maintenance:mode --off
- 
-Putting your Nextcloud server into single-user mode allows admins to log in and 
-work, but not ordinary users. This is useful for performing maintenance and 
-troubleshooting on a running server::
-
- sudo -u www-data php occ maintenance:singleuser --on
- Single user mode enabled
-   
-Turn it off when you're finished::
-
- sudo -u www-data php occ maintenance:singleuser --off
- Single user mode disabled
 
 The ``maintenance:repair`` command runs automatically during upgrades to clean 
 up the database, so while you can run it manually there usually isn't a need 
