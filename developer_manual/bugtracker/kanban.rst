@@ -18,7 +18,7 @@ Backlog
 
 Why do we have it?
   To keep us focused on finishing issues that we started, new issues will be
-  hidden in this column. In huboard you can see the list of things that we could
+  hidden in this column. In HuBoard you can see the list of things that we could
   think about by clicking the small arrow in the top left corner of the concept
   column header.
 
@@ -61,7 +61,7 @@ When can I pull?
       when the issue is ready to be released.
 
     * A concept describing the planned implementation. This can be as simple as
-      a “this just needs changes to the login screen css” or so complex that you
+      a “this just needs changes to the login screen CSS” or so complex that you
       link to a blog entry somewhere else.
 
 Who is Assigned?
@@ -82,7 +82,7 @@ What does a developer think?
 
 When can I pull?
   If you feel like diving into the code and getting your hands dirty you should
-  look for issues with this label. In the comments, there should be a gherkin
+  look for issues with this label. In the comments, there should be a Gherkin
   scenario to tell you when you are done and a concept describing how to
   implement it. Before you start move the issue to the “Developing” step by
   assigning the "4 – Developing" label.
@@ -127,11 +127,11 @@ What does a developer think?
   "I’ll check the Scenario described earlier works as expected. If necessary
   I’ll update the related Gherkin Scenarios. `Drone`_ will test the scenario
   on all kinds of platforms, Web server and database combinations with
-  `cucumber`_."
+  `Cucumber`_."
 
 When can I pull?
   If you feel like making sure an issue works as expected you should look for
-  issues with this label. In the comments you should find a gherkin scenario that
+  issues with this label. In the comments you should find a Gherkin scenario that
   can be used as a checklist for what to try. Before you start move the issue to
   the “Reviewing” step by assigning the “6 – Reviewing” label.
 
@@ -154,7 +154,7 @@ What does a developer think?
   manually.*
 
 When can I pull?
-  As long as you are reviewing the issue the you should leave the "6 –
+  As long as you are reviewing the issue you should leave the "6 –
   Reviewing" label assigned. Before moving the issue to the "To review" step the
   issue should have been resolved, meaning that not only the issue has been
   implemented but also no other functionality has been broken.
@@ -182,9 +182,9 @@ Who is Assigned?
   No one.
 
 
-While we stated before that said that we push issues to the next column, we can
+While we stated before that we push issues to the next column, we can
 of course move the item back and forth arbitrarily. Basically you can drag the
-issue around in the huboard or just change the label when viewing the issue in
+issue around in the HuBoard or just change the label when viewing the issue in
 the GitHub.
 
 Reviewing considered impossible?
@@ -192,11 +192,11 @@ Reviewing considered impossible?
 
 How can you possibly review an issue when it requires you to test various
 combinations of browsers, platforms, databases and maybe even app combinations?
-Well, you can’t. But you can write a gherkin scenario that can be used to write
+Well, you can’t. But you can write a Gherkin scenario that can be used to write
 an automated test that is executed by Drone on every commit to the main
 repositories. If for some reason Drone cannot be used for the review you will
 find yourself in the very uncomfortable situation where you release half tested
-code that will hopefully not eat user data. Seriously! Write gherkin scenarios!
+code that will hopefully not eat user data. Seriously! Write Gherkin scenarios!
 
 Other Labels
 ------------
@@ -241,7 +241,7 @@ Misc Labels
 
 * Needs info – Either from a developer or the bug reporter. This is nearly as
   severe as Panic, because no further action can be taken
-* L18n – A translation issue go see our `transifex`_
+* L18n – A translation issue; go see our `Transifex`_
 * Junior Job – The issue is considered a good starting point to get involved in Nextcloud development
 
 Milestones equal Releases
@@ -251,7 +251,7 @@ Releases are planned via milestones which contain all the Enhancements and Bugs
 that we plan to release when the Deadline is met. When the Deadline approaches
 we will push new Enhancement request and less important bugs to the next
 milestone. This way a milestone will upon release contain all the issues that
-make up the changelog for the release. Furthermore, huboard allows us to filter
+make up the changelog for the release. Furthermore, HuBoard allows us to filter
 the Kanban board by Milestone, making it especially easy to focus on the current
 Release.
 
@@ -263,5 +263,5 @@ Release.
 .. _unit tests: https://github.com/nextcloud/server/tree/master/tests
 .. _Code Review Documentation: codereviews
 .. _Drone: https://drone.weasel.rocks
-.. _cucumber: http://cukes.info/
-.. _transifex: https://www.transifex.com/nextcloud/
+.. _Cucumber: http://cukes.info/
+.. _Transifex: https://www.transifex.com/nextcloud/

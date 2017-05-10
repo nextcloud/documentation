@@ -12,16 +12,16 @@ Admin
 For Nextcloud 10 the admin settings page got reworked. It is not a long list
 anymore, but divided into sections, where related settings forms are grouped.
 For example, in the **Sharing** section are only settings (built-in and of apps)
-relate to sharing.
+related to sharing.
 
 Settings Form
 =============
 
-For the settings form, three things are necessary
+For the settings form, three things are necessary:
 
 1. A class implementing ``\OCP\Settings\ISettings``
 2. A template
-3. The implementing class specified in the apps`s info.xml
+3. The implementing class specified in the app's info.xml
 
 Below is an example for an implementor of the ISettings interface. It is based
 on the survey_client solution.
@@ -202,8 +202,8 @@ implementation of the **user_ldap** app.
 Section
 =======
 
-It is also possible, that an app registers its own section. This should be done
-only, if there is not fitting corresponding section and the apps settings form
+It is also possible that an app registers its own section. This should be done
+only if there is not fitting corresponding section and the apps settings form
 takes a lot of screen estate. Otherwise, register to "additional".
 
 Basically, it works the same way as with the settings form. There are only two
@@ -260,7 +260,7 @@ An example implementation of the ISection interface:
 
     }
 
-Also the section must be registered in the apps`s info.xml.
+Also the section must be registered in the app's info.xml.
 
 Personal
 --------

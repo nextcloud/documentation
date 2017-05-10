@@ -125,7 +125,7 @@ The container works in the following way:
       $c->query('AuthorService')
     );
 
-* The **AppName** is queried and returned from the baseclass
+* The **AppName** is queried and returned from the base class
 * The **Request** is queried and returned from the server container
 * **AuthorService** is queried::
 

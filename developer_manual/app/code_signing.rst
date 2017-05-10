@@ -58,7 +58,7 @@ private key.
 
 This Root Authority is only used for signing certificate signing requests (CSRs)
 for additional certificates. Certificates issued by the Root Authority must
-always to be limited to a specific scope, usually the application identifier.
+always be limited to a specific scope, usually the application identifier.
 This enforcement is done using the ``CN`` attribute of the certificate.
 
 Code signing is then done by creating a  ``signature.json`` file with the
@@ -121,10 +121,10 @@ examples will assume that you are trying to sign an application named
    your GitHub account to show your mail address in your profile. Nextcloud
    might ask you for further information to verify that you're the legitimate
    owner of the application. Make sure to keep the private key file (``contacts.key``)
-   secret and not disclose it to any third-parties.
+   secret and not disclose it to any third parties.
 3. Nextcloud will provide you with the signed certificate.
 4. Run ``./occ integrity:sign-app`` to sign your application, and specify
-   your private and the public key as well as the path to the application.
+   your private and public keys as well as the path to the application.
    A valid example looks like: ``./occ integrity:sign-app --privateKey=/Users/lukasreschke/contacts.key
    --certificate=/Users/lukasreschke/CA/contacts.crt --path=/Users/lukasreschke/Programming/contacts``
 
@@ -174,7 +174,7 @@ manual.
   - Another exception has prevented the code verification. There are currently
     these following exceptions:
 
-    - ``Signature data not found.```
+    - ``Signature data not found.``
 
       - The app has mandatory code signing enforced but no ``signature.json``
         file has been found in its ``appinfo`` folder.

@@ -48,7 +48,7 @@ The aforementioned example is the most basic way to write a simple database quer
 To generalize and simplify the problem, split code into resources and create an **Entity** and a **Mapper** class for it. The mapper class provides a way to run SQL queries and maps the result onto the related entities.
 
 
-To create a mapper, inherit from the mapper baseclass and call the parent constructor with the following parameters:
+To create a mapper, inherit from the mapper base class and call the parent constructor with the following parameters:
 
 * Database connection
 * Table name
@@ -100,7 +100,7 @@ To create a mapper, inherit from the mapper baseclass and call the parent constr
 
     }
 
-.. note:: The cursor is closed automatically for all **INSERT**, **DELETE**, **UPDATE** queries and when calling the methods **findOneQuery**, **findEntities**, **findEntity**, **delete**, **insert** and **update**. For custom calls using execute you should always close the cursor after you are done with the fetching to prevent database lock problems on SqLite
+.. note:: The cursor is closed automatically for all **INSERT**, **DELETE**, **UPDATE** queries and when calling the methods **findOneQuery**, **findEntities**, **findEntity**, **delete**, **insert** and **update**. For custom calls using execute you should always close the cursor after you are done with the fetching to prevent database lock problems on SQLite
 
 Every mapper also implements default methods for deleting and updating an entity based on its id::
 
@@ -114,7 +114,7 @@ or::
 
 Entities
 ========
-Entities are data objects that carry all the table's information for one row. Every Entity has an **id** field by default that is set to the integer type. Table rows are mapped from lower case and underscore separated names to pascal case attributes:
+Entities are data objects that carry all the table's information for one row. Every Entity has an **id** field by default that is set to the integer type. Table rows are mapped from lower case and underscore separated names to *lowerCamelCase* attributes:
 
 * **Table column name**: phone_number
 * **Property name**: phoneNumber
@@ -141,7 +141,7 @@ Entities are data objects that carry all the table's information for one row. Ev
 
 Types
 -----
-The following properties should be annotated by types, to not only assure that the types are converted correctly for storing them in the database (e.g. PHP casts false to the empty string which fails on postgres) but also for casting them when they are retrieved from the database.
+The following properties should be annotated by types, to not only assure that the types are converted correctly for storing them in the database (e.g. PHP casts false to the empty string which fails on PostgreSQL) but also for casting them when they are retrieved from the database.
 
 The following types can be added for a field:
 
@@ -204,7 +204,7 @@ mapping, simply override the **columnToProperty** and **propertyToColumn** metho
         }
 
         public function propertyToColumn($property) {
-            if ($column === 'phoneNumber') {
+            if ($property === 'phoneNumber') {
                 return 'phonenumber';
             } else {
                 return parent::propertyToColumn($property);
@@ -216,7 +216,7 @@ mapping, simply override the **columnToProperty** and **propertyToColumn** metho
 
 Slugs
 -----
-Slugs are used to identify resources in the URL by a string rather than integer id. Since the URL allows only certain values, the entity baseclass provides a slugify method for it:
+Slugs are used to identify resources in the URL by a string rather than integer id. Since the URL allows only certain values, the entity base class provides a slugify method for it:
 
 .. code-block:: php
 

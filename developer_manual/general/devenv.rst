@@ -24,12 +24,12 @@ There are two ways to obtain Nextcloud sources:
 .. TODO ON RELEASE: Update version number above on release
 * Using the development version from `GitHub`_ which will be explained below.
 
-To check out the source from `GitHub`_ you will need to install git (see `Setting up git <https://help.github.com/articles/set-up-git>`_ from the GitHub help)
+To check out the source from `GitHub`_ you will need to install Git (see `Setting up Git <https://help.github.com/articles/set-up-git>`_ from the GitHub help)
 
 Gather information about server setup
 -------------------------------------
 
-To get started the basic git repositories need to cloned into the Web server's directory. Depending on the distribution this will either be
+To get started the basic Git repositories need to cloned into the Web server's directory. Depending on the distribution this will either be
 
 * **/var/www**
 * **/var/www/html**
@@ -52,7 +52,7 @@ After the development tool installation make the directory writable::
 
   sudo chmod o+rw /var/www
 
-Then install Nextcloud from git::
+Then install Nextcloud from Git::
 
   git clone git@github.com:nextcloud/server.git /var/www/<folder>
   cd /var/www/<folder> 

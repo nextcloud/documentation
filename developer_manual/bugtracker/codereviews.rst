@@ -10,7 +10,7 @@ Introduction
 
 In order to increase the code quality within Nextcloud, developers are requested
 to perform code reviews.  As we are now heavily using the GitHub platform these
-code review shall take place on GitHub as well.
+code reviews shall take place on GitHub as well.
 
 Precondition
 ------------
@@ -32,7 +32,7 @@ How will it work?
 #. Other developers (either named or at free will) have a look at the changes
    and are welcome to write comments within the comment field.
 #. In case the reviewer is okay with the changes and thinks all his comments and
-   suggestions have been take into account a :+1 on the comment will signal a positive
+   suggestions have been taken into account a :+1 on the comment will signal a positive
    review.
 #. Before a pull request will be merged into master or the corresponding
    branch at least 2 reviewers need to give :+1 score.

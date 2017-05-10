@@ -11,7 +11,7 @@ Background/cron jobs are usually registered in the :file:`appinfo/app.php` by us
     <?php
     \OCP\Backgroundjob::addRegularTask('\OCA\MyApp\Cron\SomeTask', 'run');
 
-The class for the above example would live in :file:`cron/sometask.php`. Try to keep the method as small as possible because its hard to test static methods. Simply reuse the app container and execute a service that was registered in it.
+The class for the above example would live in :file:`cron/sometask.php`. Try to keep the method as small as possible because its hard to test static methods. Simply reuse the app container and execute a service that was registered in it:
 
 .. code-block:: php
 

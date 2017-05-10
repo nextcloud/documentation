@@ -15,7 +15,7 @@ The CSS files reside in the **css/** folder and should be included in the templa
   // include multiple files for the same app
   style('myapp', array('style', 'navigation'));  // adds css/style.css, css/navigation.css
 
-  // include vendor file (also allows vendor syntax)
+  // include vendor file (also allows array syntax)
   vendor_style('myapp', 'style');  // adds vendor/style.css
 
 Web Components go into the **component/** folder and can be imported like this:
@@ -30,7 +30,7 @@ Web Components go into the **component/** folder and can be imported like this:
   component('myapp', array('tabs', 'forms'));  // adds component/tabs.html, component/forms.html
   
   
-.. note:: Keep in mind that Web Components are still very new and you `might need to add polyfills using Polymer <http://www.polymer-project.org/resources/compatibility.html>`_
+.. note:: Keep in mind that Web Components are still very new and you `might need to add polyfills <https://www.webcomponents.org/polyfills/>`_
   
 Standard layout
 ===============
@@ -71,7 +71,7 @@ Nextcloud provides a default CSS navigation layout. If list entries should have 
 Folders
 -------
 
-Folders are like normal entries and are only supported for the first level. In contrast to normal entries, the links which show the title of the folder need to have the **icon-folder** css class.
+Folders are like normal entries and are only supported for the first level. In contrast to normal entries, the links which show the title of the folder need to have the **icon-folder** CSS class.
 
 If the folder should be collapsible, the **collapsible** class and a button with the class **collapse** are needed. After adding the collapsible class the folder's child entries can be toggled by adding the **open** class to the list element:
 
@@ -116,7 +116,7 @@ Menus
 
 .. versionadded:: 8
 
-To add actions that affect the current list element you can add a menu for second and/or first level elements by adding the button and menu inside the corresponding **li** element and adding the **with-menu** css class:
+To add actions that affect the current list element you can add a menu for second and/or first level elements by adding the button and menu inside the corresponding **li** element and adding the **with-menu** CSS class:
 
 .. code-block:: html
 
@@ -153,7 +153,7 @@ To add actions that affect the current list element you can add a menu for secon
         </ul>
     </div>
 
-The div with the class **app-navigation-entry-utils** contains only the button (class: **app-navigation-entry-utils-menu-button**) to display the menu but in many cases another entry is needed to display some sort of count (mails count, unread feed count, etc.). In that case add the **with-counter** class to the list entry to adjust the correct padding and text-oveflow of the entry's title.
+The div with the class **app-navigation-entry-utils** contains only the button (class: **app-navigation-entry-utils-menu-button**) to display the menu but in many cases another entry is needed to display some sort of count (mails count, unread feed count, etc.). In that case add the **with-counter** class to the list entry to adjust the correct padding and text-overflow of the entry's title.
 
 The count should be limitted to 999 and turn to 999+ if any higher number is given. If AngularJS is used the following filter can be used to get the correct behaviour:
 
@@ -274,7 +274,7 @@ If you want to undo a performed action on a navigation entry such as deletion, y
 
 Settings Area
 =============
-To create a settings area create a div with the id **app-settings** inside the **app-navgiation** div:
+To create a settings area create a div with the id **app-settings** inside the **app-navigation** div:
 
 .. code-block:: html
 
