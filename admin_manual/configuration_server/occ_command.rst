@@ -879,6 +879,10 @@ logged-in users must refresh their Web browsers to continue working::
  sudo -u www-data php occ maintenance:mode --on
  sudo -u www-data php occ maintenance:mode --off
 
+After restoring a backup of your data directory or the database, you should always
+call ``maintenance:data-fingerprint`` once. This changes the ETag for all files
+in the communication with sync clients, allowing them to realize a file was modified.
+
 The ``maintenance:repair`` command runs automatically during upgrades to clean 
 up the database, so while you can run it manually there usually isn't a need 
 to::
