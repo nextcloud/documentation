@@ -36,8 +36,9 @@ How will it work?
    review.
 #. Before a pull request will be merged into master or the corresponding
    branch at least 2 reviewers need to give :+1 score.
-#. Our `continuous integration server`_ will give an additional indicator for
-   the quality of the pull request.
+#. Our continuous integration server will give an additional indicator for
+   the quality of the pull request (the results can be accessed from the GitHub
+   interface for that pull request).
 
 Examples
 --------
@@ -55,7 +56,6 @@ Questions?
 
 Feel free to drop a line on the `forums`_ or join us on `IRC`_.
 
-.. _continuous integration server: https://drone.weasel.rocks/
 .. _forums: https://help.nextcloud.com/
 .. _IRC: http://webchat.freenode.net/?channels=nextcloud-dev
 .. _coding guidelines: ../general/codingguidelines

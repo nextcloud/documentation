@@ -262,6 +262,6 @@ Release.
 .. _“Given … when … then …“: https://github.com/cucumber/cucumber/wiki/Given-When-Then
 .. _unit tests: https://github.com/nextcloud/server/tree/master/tests
 .. _Code Review Documentation: codereviews
-.. _Drone: https://drone.weasel.rocks
+.. _Drone: https://github.com/drone/drone
 .. _Cucumber: http://cukes.info/
 .. _Transifex: https://www.transifex.com/nextcloud/
