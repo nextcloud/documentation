@@ -5,7 +5,8 @@ Make text translatable
 ----------------------
 
 In HTML or PHP wrap it like this ``<?php p($l->t('This is some text'));?>`` or this ``<?php print_unescaped($l->t('This is some text'));?>``.
-For the right date format use ``<?php p($l->l('date', time()));?>``. Change the way dates are shown by editing /core/l10n/l10n-[lang].php.
+For the right date format use ``<?php p($l->l('date', time()));?>``. Change the way dates are shown by editing :file:`/core/l10n/l10n-{lang}.php`.
+
 To translate text in JavaScript use: ``t('appname','text to translate');``
 
 
@@ -54,21 +55,22 @@ Automated synchronization of translations
 -----------------------------------------
 
 Multiple nightly jobs have been setup in order to synchronize translations - it's a multi-step process:
-``perl l10n.pl read`` will rescan all PHP and JavaScript files and generate the templates.
-The templates are pushed to `Transifex`_ (tx push -s).
-All translations are pulled from `Transifex`_ (tx pull -a).
-``perl l10n.pl write`` will write the PHP files containing the translations.
-Finally the changes are pushed to Git.
+
+#. ``perl l10n.pl read`` will rescan all PHP and JavaScript files and generate the templates.
+#. The templates are pushed to `Transifex`_ (tx push -s).
+#. All translations are pulled from `Transifex`_ (tx pull -a).
+#. ``perl l10n.pl write`` will write the PHP files containing the translations.
+#. Finally the changes are pushed to Git.
 
 Please follow the steps below to add translation support to your app:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Create a folder ``l10n``.
-Create the file ``ignorelist`` which can contain files which shall not be scanned during step 4.
-Edit ``l10n/.tx/config`` and copy/paste a config section and adapt it by changing the app/folder name.
-Run ``perl l10n.pl read`` within the folder :file:`l10n`.
-Add the newly created translation template (l10n/Templates/<appname>.pot) to Git and commit the changes above.
-After the next nightly sync job a new resource will appear on Transifex and from now on every night the latest translations will arrive.
+#. Create a folder ``l10n``.
+#. Create the file ``ignorelist`` which can contain files which shall not be scanned during step 4.
+#. Edit ``l10n/.tx/config`` and copy/paste a config section and adapt it by changing the app/folder name.
+#. Run ``perl l10n.pl read`` within the folder :file:`l10n`.
+#. Add the newly created translation template (*l10n/Templates/<appname>.pot*) to Git and commit the changes above.
+#. After the next nightly sync job a new resource will appear on Transifex and from now on every night the latest translations will arrive.
 
 Translation sync jobs:
 ~~~~~~~~~~~~~~~~~~~~~~

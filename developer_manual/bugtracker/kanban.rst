@@ -57,12 +57,11 @@ When can I pull?
   documented in a comment to the issue before moving it to the "To develop"
   step:
 
-    * At least one Scenario – written in Gherkin – that tells you and the tester
-      when the issue is ready to be released.
-
-    * A concept describing the planned implementation. This can be as simple as
-      a “this just needs changes to the login screen CSS” or so complex that you
-      link to a blog entry somewhere else.
+  * At least one Scenario – written in Gherkin – that tells you and the tester
+    when the issue is ready to be released.
+  * A concept describing the planned implementation. This can be as simple as
+    a “this just needs changes to the login screen CSS” or so complex that you
+    link to a blog entry somewhere else.
 
 Who is Assigned?
   The maintainer that feels responsible for the issue.
@@ -135,7 +134,8 @@ When can I pull?
   can be used as a checklist for what to try. Before you start move the issue to
   the “Reviewing” step by assigning the “6 – Reviewing” label.
 
-**Who is Assigned?** No one. Especially not if you are working on something else!
+Who is Assigned?
+  No one. Especially not if you are working on something else!
 
 Reviewing
 ~~~~~~~~~
