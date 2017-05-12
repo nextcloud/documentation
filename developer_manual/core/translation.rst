@@ -72,11 +72,6 @@ Please follow the steps below to add translation support to your app:
 #. Add the newly created translation template (*l10n/Templates/<appname>.pot*) to Git and commit the changes above.
 #. After the next nightly sync job a new resource will appear on Transifex and from now on every night the latest translations will arrive.
 
-Translation sync jobs:
-~~~~~~~~~~~~~~~~~~~~~~
-
-https://ci.owncloud.org/view/translation-sync/
-
 **Caution: information below is in general not needed!**
 
 Manual quick translation update:
