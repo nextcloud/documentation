@@ -66,7 +66,7 @@ Please follow the steps below to add translation support to your app:
 Create a folder ``l10n``.
 Create the file ``ignorelist`` which can contain files which shall not be scanned during step 4.
 Edit ``l10n/.tx/config`` and copy/paste a config section and adapt it by changing the app/folder name.
-Run ``perl l10n.pl read`` with l10n.
+Run ``perl l10n.pl read`` within the folder :file:`l10n`.
 Add the newly created translation template (l10n/Templates/<appname>.pot) to Git and commit the changes above.
 After the next nightly sync job a new resource will appear on Transifex and from now on every night the latest translations will arrive.
 
