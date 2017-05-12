@@ -328,7 +328,7 @@ IMAP (OC_User_IMAP), SMB (OC_User_SMB), and FTP (OC_User_FTP).
 
 	'lost_password_link' => 'https://example.org/link/to/password/reset',
 
-If your user backend does not allow to reset the password (e.g. when it's a
+If your user backend does not allow password resets (e.g. when it's a
 read-only user backend like LDAP), you can specify a custom link, where the
 user is redirected to, when clicking the "reset password" link after a failed
 login-attempt.
@@ -533,12 +533,12 @@ accessible at. So if Nextcloud is accessible via "https://mycloud.org/nextcloud"
 the correct value would most likely be "/nextcloud". If Nextcloud is running
 under "https://mycloud.org/" then it would be "/".
 
-Note that above rule is not valid in every case, there are some rare setup
+Note that the above rule is not valid in every case, as there are some rare setup
 cases where this may not apply. However, to avoid any update problems this
 configuration value is explicitly opt-in.
 
-After setting this value run `occ maintenance:update:htaccess` and when following
-conditions are met Nextcloud uses URLs without index.php in it:
+After setting this value run `occ maintenance:update:htaccess`. Now, when the
+following conditions are met Nextcloud URLs won't contain `index.php`:
 
 - `mod_rewrite` is installed
 - `mod_env` is installed
@@ -1113,7 +1113,7 @@ Defaults to ``\OC\Comments\ManagerFactory``
 
 Replaces the default System Tags Manager Factory. This can be utilized if an
 own or 3rdParty SystemTagsManager should be used that – for instance – uses the
-filesystem instead of the database to keep the comments.
+filesystem instead of the database to keep the tags.
 
 Defaults to ``\OC\SystemTag\ManagerFactory``
 
@@ -1150,12 +1150,6 @@ SSL
 Extra SSL options to be used for configuration.
 
 Defaults to an empty array.
-
-::
-
-	'enable_certificate_management' => false,
-
-Allow the configuration of system wide trusted certificates
 
 Memory caching backend configuration
 ------------------------------------
@@ -1222,7 +1216,7 @@ for more information.
 		],
 		'timeout' => 0.0,
 		'read_timeout' => 0.0,
-		'failover_mode' => \RedisCluster::FAILOVER_DISTRIBUTE
+		'failover_mode' => \RedisCluster::FAILOVER_ERROR
 	],
 
 Connection details for a Redis Cluster
@@ -1235,8 +1229,16 @@ higher for PHP 7+ or phpredis in version 2.2.8 for PHP 5.6.
 
 Available failover modes:
  - \\RedisCluster::FAILOVER_NONE - only send commands to master nodes (default)
- - \\RedisCluster::FAILOVER_ERROR - failover to slaves for read commands if master is unavailable
+ - \\RedisCluster::FAILOVER_ERROR - failover to slaves for read commands if master is unavailable (recommended)
  - \\RedisCluster::FAILOVER_DISTRIBUTE - randomly distribute read commands across master and slaves
+
+WARNING: FAILOVER_DISTRIBUTE is a not recommended setting and we strongly
+suggest to not use it if you use Redis for file locking. Due to the way Redis
+is synchronised it could happen, that the read for an existing lock is
+scheduled to a slave that is not fully synchronised with the connected master
+which then causes a FileLocked exception.
+
+See https://redis.io/topics/cluster-spec for details about the Redis cluster
 
 ::
 
@@ -1306,7 +1308,7 @@ Using Object Store with Nextcloud
 	'objectstore' => [
 		'class' => 'OC\\Files\\ObjectStore\\Swift',
 		'arguments' => [
-			// trystack will user your facebook id as the user name
+			// trystack will use your facebook id as the user name
 			'username' => 'facebook100000123456789',
 			// in the trystack dashboard go to user -> settings -> API Password to
 			// generate a password
@@ -1358,7 +1360,7 @@ Global settings for Sharing
 	'sharing.managerFactory' => '\OC\Share20\ProviderFactory',
 
 Replaces the default Share Provider Factory. This can be utilized if
-own or 3rdParty Share Providers be used that – for instance – uses the
+own or 3rdParty Share Providers are used that – for instance – use the
 filesystem instead of the database to keep the share information.
 
 Defaults to ``\OC\Share20\ProviderFactory``
@@ -1641,7 +1643,7 @@ Defaults to ``true``
 
 	'filelocking.ttl' => 60*60,
 
-Set the time-to-live for locks in secconds.
+Set the lock's time-to-live in seconds.
 
 Any lock older than this will be automatically cleaned up.
 
