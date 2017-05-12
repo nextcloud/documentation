@@ -42,8 +42,8 @@ How will it work?
 
 Examples
 --------
-Read our `coding guidelines`_ for information on what a good pull request and
-good Nextcloud code looks like.
+Read our documentation about :doc:`../general/codingguidelines` for information
+on what a good pull request and good Nextcloud code looks like.
 
 These are two examples that are considered to be good examples of how pull
 requests should be handled
@@ -58,4 +58,3 @@ Feel free to drop a line on the `forums`_ or join us on `IRC`_.
 
 .. _forums: https://help.nextcloud.com/
 .. _IRC: http://webchat.freenode.net/?channels=nextcloud-dev
-.. _coding guidelines: ../general/codingguidelines
