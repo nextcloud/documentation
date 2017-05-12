@@ -1057,12 +1057,6 @@ SSL
 
 Extra SSL options to be used for configuration.
 
-::
-
-	'enable_certificate_management' => false,
-
-Allow the configuration of system wide trusted certificates
-
 Memory caching backend configuration
 ------------------------------------
 
