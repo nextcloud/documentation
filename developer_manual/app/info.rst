@@ -211,7 +211,7 @@ In case the app has its own admin related settings, it needs to implement the \O
 Deprecated
 ----------
 
-The following sections are just listed for reference and should not be used because
+The following sections are just listed for reference and should not be used; they are deprecated and often not evaluated anymore (i.e., they are ignored).
 
 requiremin
 ==========

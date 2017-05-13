@@ -57,12 +57,11 @@ When can I pull?
   documented in a comment to the issue before moving it to the "To develop"
   step:
 
-    * At least one Scenario – written in Gherkin – that tells you and the tester
-      when the issue is ready to be released.
-
-    * A concept describing the planned implementation. This can be as simple as
-      a “this just needs changes to the login screen CSS” or so complex that you
-      link to a blog entry somewhere else.
+  * At least one Scenario – written in Gherkin – that tells you and the tester
+    when the issue is ready to be released.
+  * A concept describing the planned implementation. This can be as simple as
+    a “this just needs changes to the login screen CSS” or so complex that you
+    link to a blog entry somewhere else.
 
 Who is Assigned?
   The maintainer that feels responsible for the issue.
@@ -121,7 +120,7 @@ To Review
 Why do we have it?
   Instead of directly committing to master we agree that **a second set of eyes
   will spot bugs** and increase our code quality and give us an opportunity to
-  learn from each other. See also our `Code Review Documentation`_
+  learn from each other. See also our documentation about :doc:`codereviews`
 
 What does a developer think?
   "I’ll check the Scenario described earlier works as expected. If necessary
@@ -135,7 +134,8 @@ When can I pull?
   can be used as a checklist for what to try. Before you start move the issue to
   the “Reviewing” step by assigning the “6 – Reviewing” label.
 
-**Who is Assigned?** No one. Especially not if you are working on something else!
+Who is Assigned?
+  No one. Especially not if you are working on something else!
 
 Reviewing
 ~~~~~~~~~
@@ -262,6 +262,6 @@ Release.
 .. _“Given … when … then …“: https://github.com/cucumber/cucumber/wiki/Given-When-Then
 .. _unit tests: https://github.com/nextcloud/server/tree/master/tests
 .. _Code Review Documentation: codereviews
-.. _Drone: https://drone.weasel.rocks
+.. _Drone: https://github.com/drone/drone
 .. _Cucumber: http://cukes.info/
 .. _Transifex: https://www.transifex.com/nextcloud/

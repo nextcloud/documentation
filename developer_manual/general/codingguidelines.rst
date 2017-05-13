@@ -28,7 +28,7 @@ The most important labels and their meaning:
 * #design - this needs help from the design team or is a design-related issue/pull request
 * #technical debt - this issue or PR is about `technical debt <http://en.wikipedia.org/wiki/Technical_debt>`_
 * #starter issue - these are issues which are relatively easy to solve and ideal for people who want to learn how to code in Nextcloud
-* #needs info - this issue needs further information from the reporter, see `triaging <../bugtracker/triaging.html>`_
+* #needs info - this issue needs further information from the reporter, see :doc:`../bugtracker/triaging`
 * #high #medium #low signify how important the bug is.
 * Tags showing the state of the issue or PR, numbered 0-4:
  * #0 - Needs triage - ready to start development on this

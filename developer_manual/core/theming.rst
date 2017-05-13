@@ -8,6 +8,7 @@ Themes can relate to the following topics of Nextcloud:
 
 This documentation contains only the Web-frontend adaptations so far.
 
+.. note:: This is an advanced way of theming Nextcloud; the Nextcloud team recommends instead the use of the **Theming** app which, when enabled, can be accessed from the Admin settings.
 
 Getting started
 ===============
@@ -89,7 +90,7 @@ If you want to do a quick exchange like (1) it's important to know the size of t
 
 * Go to the place in the filesystem, that has been shown by the web developer tool/s
 * You can look up sizing in most cases via the file properties inside your file-manager
-* Create an own picture/logo with the same size then
+* Create an own picture/logo with the same size as the original photo
 
 The (main) pictures that can be found inside Nextcloud standard theming are the following:
 

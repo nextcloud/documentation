@@ -9,9 +9,7 @@ The Nextcloud Android library may be obtained from the following GitHub reposito
 
 `https://github.com/nextcloud/android-library <https://github.com/nextcloud/android-library>`_
 
-Once obtained, this code should be compiled. The GitHub repository not only contains the library, but also a sample project, sample_client
-sample_client  properties/android/librerias
-, which will assist in learning how to use the library.
+Once obtained, this code should be compiled. The GitHub repository not only contains the library, but also a sample project, *sample_client*, which will assist in learning how to use the library.
 
 
 Add the library to a project
