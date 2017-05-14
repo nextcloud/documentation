@@ -35,27 +35,21 @@ installations may take several hours to complete the upgrade.
    file a support ticket (if you have paid support) or ask for help in the
    Nextcloud forums to see if your issue can be resolved without downgrading.
 
-.. not sure about notifications
-.. Update Notifier and Updater App Are Not the Same
-.. ------------------------------------------------
+Update Notifications
+--------------------
 
-.. Nextcloud has two update tools: the Nextcloud core update notifier, and the
-.. Updater app. Figure 1 shows what you see when the Updater app is enabled:
-.. both
-.. the core notifier and the Updater app control panel are visible on your
-.. admin
-.. page.
+Nextcloud has an update notification app, that informs the administrator about
+the availablilty of an update. Then you decide which update method to use.
 
-.. .. figure:: images/2-updates.png
-..   :alt: Both update mechanisms displayed on Admin page.
+.. figure:: images/2-updates.png
+   :alt: Both update notifications displayed on Admin page.
 
-..   *Figure 1: The top yellow banner is the update notifier, and the Updates
-..   section is the Updater app.*
+   *Figure 1: The top banner is the update notification that is shown on every
+   page, and the Updates section can be found in the admin page*
 
-.. The core update notifier has only one function, and that is to display a
-.. notification when a new Nextcloud release is available. Then you decide which
-.. upgrade method to use. When you maintain your Nextcloud server via your Linux
-.. package manager you should ensure that the Updater app is disabled.
+From there the web based updater can be used to fetch this new code. There is
+also an CLI based updater available, that does exactly the same as the web
+based updater but on the command line.
 
 Prerequisites
 -------------
