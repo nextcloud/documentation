@@ -1,6 +1,6 @@
-==========================================
-Upgrading Nextcloud with the Nextcloud App
-==========================================
+============================
+Upgrade via build-in Updater
+============================
 
 The Updater app automates many of the steps of upgrading an Nextcloud 
 installation. It is useful for installations that do not have root access, 

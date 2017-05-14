@@ -1,6 +1,6 @@
-==============================
-Maintenance Mode Configuration
-==============================
+================
+Maintenance Mode
+================
 
 You must put your Nextcloud server into maintenance mode before performing 
 upgrades, and for performing troubleshooting and maintenance. Please 
