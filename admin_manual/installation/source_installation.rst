@@ -454,7 +454,7 @@ be set in the ``nextcloud/.user.ini`` file.
 Other Web Servers
 -----------------
 
-:doc:`nginx_examples`
+:doc:`nginx`
 
 
 `Other HTTP servers (Nextcloud)

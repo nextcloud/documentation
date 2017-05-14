@@ -13,5 +13,4 @@ Installation
    apps_management_installation
    apps_supported
    selinux_configuration
-   nginx_examples
    nginx

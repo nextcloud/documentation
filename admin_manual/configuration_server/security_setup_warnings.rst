@@ -59,7 +59,7 @@ describe how to enable HTTPS on the Apache and Nginx Web servers.
 
 :ref:`use_https_label`
 
-:doc:`../installation/nginx_examples`
+:doc:`../installation/nginx`
 
 The test with getenv(\"PATH\") only returns an empty response
 -------------------------------------------------------------
