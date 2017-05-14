@@ -1,9 +1,6 @@
-=============================================================
-Nextcloud |version| Server Administration Manual Introduction
-=============================================================
-
+============
 Introduction
-------------
+============
 
 Welcome to the Nextcloud Server Administration Guide. This guide describes 
 administration tasks for Nextcloud, the flexible open source file synchronization 

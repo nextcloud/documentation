@@ -1,9 +1,8 @@
-=================================
-Nextcloud |version| Release Notes
-=================================
+=============
+Release Notes
+=============
 
-
-Changes in 11
--------------
+Changes in Nextcloud 11
+-----------------------
 
 tbd
