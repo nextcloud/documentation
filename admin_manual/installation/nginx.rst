@@ -33,7 +33,7 @@ your nginx installation.
   }
   
   server {
-      listen 443 ssl;
+      listen 443 ssl http2;
       server_name cloud.example.com;
   
       ssl_certificate /etc/ssl/nginx/cloud.example.com.crt;
@@ -161,7 +161,7 @@ your nginx installation.
   }
   
   server {
-      listen 443 ssl;
+      listen 443 ssl http2;
       server_name cloud.example.com;
   
       ssl_certificate /etc/ssl/nginx/cloud.example.com.crt;
