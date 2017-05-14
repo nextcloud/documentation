@@ -2,12 +2,25 @@
 Nginx Configuration
 ===================
 
-The following configuration should be used when Nextcloud is placed in the 
-webroot of your Nginx installation. Be careful about line breaks if you copy 
-the examples, as long lines may be broken for page formatting.
+This page covers example Nginx configurations to use with running an Nextcloud
+server. This page is community-maintained. (Thank you, contributors!)
 
-Some environments might need a ``cgi.fix_pathinfo`` set to ``1`` in their 
-``php.ini``.
+-  You need to insert the following code into **your Nginx configuration file.**
+-  Adjust **server_name**, **root**, **ssl_certificate** and
+   **ssl_certificate_key** to suit your needs.
+-  Make sure your SSL certificates are readable by the server (see `nginx HTTP
+   SSL Module documentation <http://wiki.nginx.org/HttpSslModule>`_).
+-  ``add_header`` statements are only taken from the current level and are not
+   cascaded from or to a different level. All necessary ``add_header``
+   statements must be defined in each level needed. For better readability it
+   is possible to move *common* add header statements into a separate file
+   and include that file wherever necessary. However, each ``add_header``
+   statement must be written in a single line to prevent connection problems
+   with sync clients.
+-  Be careful about line breaks if you copy the examples, as long lines may be
+   broken for page formatting.
+-  Some environments might need a ``cgi.fix_pathinfo`` set to ``1`` in their
+   ``php.ini``.
 
 Thanks to `@josh4trunks <https://github.com/josh4trunks>`_ for providing / 
 creating these configuration examples.
@@ -15,8 +28,9 @@ creating these configuration examples.
 Nextcloud in the webroot of nginx
 ---------------------------------
 
-The following config should be used when Nextcloud is placed in the webroot of 
-your nginx installation.
+The following configuration should be used when Nextcloud is placed in the
+webroot of your nginx installation. In this example it is
+``/var/www/nextcloud`` and it is accessed via ``http(s)://cloud.example.com``
 
 .. code-block:: nginx
 
@@ -273,4 +287,43 @@ your nginx installation.
           }
       }
   }
-  
+
+Tips and Tricks
+---------------
+
+Suppressing Log Messages
+========================
+
+If you're seeing meaningless messages in your logfile, for example ``client
+denied by server configuration: /var/www/data/htaccesstest.txt``, add this section to
+your nginx configuration to suppress them:
+
+.. code-block:: nginx
+
+        location = /data/htaccesstest.txt {
+          allow all;
+          log_not_found off;
+          access_log off;
+        }
+
+JavaScript (.js) or CSS (.css) files not served properly
+========================================================
+
+A common issue with custom nginx configs is that JavaScript (.js)
+or CSS (.css) files are not served properly leading to a 404 (File not found)
+error on those files and a broken webinterface.
+
+This could be caused by the:
+
+.. code-block:: nginx
+
+        location ~* \.(?:css|js)$ {
+
+block shown above not located **below** the:
+
+.. code-block:: nginx
+
+        location ~ \.php(?:$|/) {
+
+block. Other custom configurations like caching JavaScript (.js)
+or CSS (.css) files via gzip could also cause such issues.

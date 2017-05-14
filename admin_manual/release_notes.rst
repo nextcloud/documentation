@@ -15,6 +15,9 @@ Updates to Nginx configuration
   those lines in your Nginx config:
   ``add_header X-Frame-Options "SAMEORIGIN";``
   See :doc:`installation/nginx`
+* For improvements in serving HTTP requests the Nginx configuration now has
+  HTTP 2 enabled. Please update your Nginx config accordingly. See
+  :doc:`installation/nginx`
 
 Q & A
 -----
