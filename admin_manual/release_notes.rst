@@ -1,15 +1,20 @@
-=================================
-Nextcloud |version| Release Notes
-=================================
+=============
+Release Notes
+=============
 
+Changes in Nextcloud 12
+-----------------------
 
-Changes in 12
--------------
+.. TODO ON RELEASE: Update version number above on release
+
+Updates to Nginx configuration
+==============================
 
 * In the Nginx configuration the Same-Origin header was removed. This is now
   handled in PHP and keeping it will result in a wrong header. Please remove
   those lines in your Nginx config:
   ``add_header X-Frame-Options "SAMEORIGIN";``
+  See :doc:`installation/nginx`
 
 Q & A
 -----
