@@ -10,5 +10,4 @@ creating a custom theme for your Nextcloud server.
    
    considerations_on_monitoring
    scaling_multiple_machines.rst
-   theming.rst
 

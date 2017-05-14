@@ -2,7 +2,21 @@
 Theming
 =======
 
-In the administrative settings you can modify the appearance of Nextcloud:
+Nextcloud has two ways of theming. There is a theming app that provides a web
+UI to set up theming. The second option allows to overwrite most of the files
+but a customized theme needs to be created and maintained. For more information on
+this check out the `developers documentation <../../developer_manual/core/theming.html>`_.
+
+We recommend to use the theming app, because the Nextcloud team maintains this
+and verifies that all adjustments to the server work with the theming. It
+covers also most use cases like replacing the name, logos and colors.
+
+Theming app
+===========
+
+Check in the apps management that the theming app is enabled. Then the
+administrator settings show a section where you can modify the appearance of
+your Nextcloud:
 
 * Name 
 * Web Address 
