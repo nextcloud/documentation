@@ -90,8 +90,13 @@ webroot of your nginx installation. In this example it is
       client_max_body_size 512M;
       fastcgi_buffers 64 4K;
   
-      # Disable gzip to avoid the removal of the ETag header
-      gzip off;
+      # Enable gzip but do not remove ETag headers
+      gzip on;
+      gzip_vary on;
+      gzip_comp_level 4;
+      gzip_min_length 256;
+      gzip_proxied expired no-cache no-store private no_last_modified no_etag auth;
+      gzip_types application/atom+xml application/javascript application/json application/ld+json application/manifest+json application/rss+xml application/vnd.geo+json application/vnd.ms-fontobject application/x-font-ttf application/x-web-app-manifest+json application/xhtml+xml application/xml font/opentype image/bmp image/svg+xml image/x-icon text/cache-manifest text/css text/plain text/vcard text/vnd.rim.location.xloc text/vtt text/x-component text/x-cross-domain-policy;
   
       # Uncomment if your server is build with the ngx_pagespeed module
       # This module is currently not supported.
@@ -223,8 +228,13 @@ your nginx installation.
           client_max_body_size 512M;
           fastcgi_buffers 64 4K;
   
-          # Disable gzip to avoid the removal of the ETag header
-          gzip off;
+          # Enable gzip but do not remove ETag headers
+          gzip on;
+          gzip_vary on;
+          gzip_comp_level 4;
+          gzip_min_length 256;
+          gzip_proxied expired no-cache no-store private no_last_modified no_etag auth;
+          gzip_types application/atom+xml application/javascript application/json application/ld+json application/manifest+json application/rss+xml application/vnd.geo+json application/vnd.ms-fontobject application/x-font-ttf application/x-web-app-manifest+json application/xhtml+xml application/xml font/opentype image/bmp image/svg+xml image/x-icon text/cache-manifest text/css text/plain text/vcard text/vnd.rim.location.xloc text/vtt text/x-component text/x-cross-domain-policy;
   
           # Uncomment if your server is build with the ngx_pagespeed module
           # This module is currently not supported.
