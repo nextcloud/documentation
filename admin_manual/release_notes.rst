@@ -18,6 +18,8 @@ Updates to Nginx configuration
 * For improvements in serving HTTP requests the Nginx configuration now has
   HTTP 2 enabled. Please update your Nginx config accordingly. See
   :doc:`installation/nginx`
+* The GZip configuration for Nginx was updated. See :doc:`installation/nginx`
+  for details.
 
 Q & A
 -----
