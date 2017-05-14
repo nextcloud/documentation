@@ -1,6 +1,6 @@
-========================
-Manual Nextcloud Upgrade
-========================
+================
+Upgrade Manually
+================
 
 Always start by making a fresh backup and disabling all 3rd party apps.
 

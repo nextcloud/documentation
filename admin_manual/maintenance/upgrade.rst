@@ -1,12 +1,13 @@
-====================================
-How to Upgrade Your Nextcloud Server
-====================================
+==============
+How to Upgrade
+==============
 
 There are three ways to upgrade your Nextcloud server:
 
 * With the :doc:`Updater App <update>`.
 * :doc:`Manually upgrading <manual_upgrade>` with the Nextcloud ``.tar`` archive
   from our `Download page <https://nextcloud.com/install/>`_.
+* :doc:`Upgrading <package_upgrade>` via the snap packages.
 * Manually upgrading is also an option for users on shared hosting; download
   and unpack the Nextcloud tarball to your PC. Delete your existing Nextcloud
   files, except ``data/`` and ``config/`` files, on your hosting account. Then
