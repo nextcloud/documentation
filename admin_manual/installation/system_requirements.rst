@@ -60,4 +60,4 @@ Additionally the following InnoDB settings need to be set::
   innodb_file_format=barracuda
   innodb_file_per_table=true
 
-See :doc:`../maintenance/mysql_4byte_support` for more information.
+See :doc:`../configuration_database/mysql_4byte_support` for more information.

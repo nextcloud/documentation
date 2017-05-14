@@ -13,4 +13,3 @@ Maintenance
    manual_upgrade
    restore
    migrating
-   mysql_4byte_support

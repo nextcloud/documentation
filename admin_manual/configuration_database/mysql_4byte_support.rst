@@ -2,8 +2,6 @@
 Enabling MySQL 4-byte support
 =============================
 
-.. note:: This feature is currently **experimental**.
-
 In order to use Emojis (textbased smilies) on your Nextcloud server with a MySQL database, the
 installation needs to be tweaked a bit.
 
