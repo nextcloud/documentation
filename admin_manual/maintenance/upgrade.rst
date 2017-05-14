@@ -62,3 +62,32 @@ Nextcloud release. Any apps that are not developed by Nextcloud show a 3rd party
 designation. **Install unsupported apps at your own risk**. Then, before the
 upgrade, all 3rd party apps must be disabled. After the upgrade is complete you
 may re-enable them.
+
+Maintenance mode
+----------------
+
+You can put your Nextcloud server into maintenance mode before performing
+upgrades, or for performing troubleshooting or maintenance. Please see
+:doc:`../configuration_server/occ_command` to learn how to put your server into
+the maintenance mode (``maintenance:mode``) or execute repair commands
+(``maintenance:repair``) with the ``occ`` command.
+
+The :doc:`build-in Updater <update>` does this for you before replacing the
+existing Nextcloud code with the code of the new Nextcloud version.
+
+``maintenance:mode`` locks the sessions of logged-in users and prevents new
+logins. This is the mode to use for upgrades. You must run ``occ`` as the HTTP
+user, like this example on Ubuntu Linux::
+
+ $ sudo -u www-data php occ maintenance:mode --on
+
+You may also put your server into this mode by editing :file:`config/config.php`.
+Change ``"maintenance" => false`` to ``"maintenance" => true``:
+
+::
+
+   <?php
+
+    "maintenance" => true,
+
+Then change it back to ``false`` when you are finished.
