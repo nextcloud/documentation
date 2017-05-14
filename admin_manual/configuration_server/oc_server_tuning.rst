@@ -1,6 +1,6 @@
-=======================
-Nextcloud Server Tuning
-=======================
+=============
+Server Tuning
+=============
 
 Using cron to perform background jobs
 -------------------------------------

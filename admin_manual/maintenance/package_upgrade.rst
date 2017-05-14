@@ -1,6 +1,6 @@
-===============================
-Upgrade Nextcloud From Packages
-===============================
+====================
+Upgrade via Packages
+====================
 
    
 Upgrade Quickstart
