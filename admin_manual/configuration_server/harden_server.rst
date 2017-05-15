@@ -119,11 +119,22 @@ VirtualHost file::
  <VirtualHost *:443>
    ServerName cloud.nextcloud.com
      <IfModule mod_headers.c>
-       Header always set Strict-Transport-Security "max-age=15552000; includeSubDomains; preload"
+       Header always set Strict-Transport-Security "max-age=15552000; includeSubDomains"
      </IfModule>
   </VirtualHost>
-  
-This example configuration will make all subdomains only accessible via HTTPS. If you have subdomains not accessible via HTTPS, remove ``includeSubdomains;``. 
+
+.. warning::
+   We recommend the additional setting ``; preload`` to be added to that header.
+   Then the domain will be added to an hardcoded list that is shipped with all
+   major browsers and enforce HTTPS upon those domains. See the `HSTS preload
+   website for more information <https://hstspreload.org/>`_. Due to the policy
+   of this list you need to add it to the above example for yourself once you
+   are sure that this is what you want. `Removing the domain from this list
+   <https://hstspreload.org/#removal>`_ could take some months until it reaches
+   all installed browsers.
+
+This example configuration will make all subdomains only accessible via HTTPS.
+If you have subdomains not accessible via HTTPS, remove ``includeSubdomains;``.
 
 This requires the ``mod_headers`` extension in Apache.
 
