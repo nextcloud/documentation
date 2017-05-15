@@ -38,6 +38,7 @@ Below is the list of apps supported for Nextcloud 12. Supported here means that 
 * Provisioning API
 * Server info (monitoring app)
 * Sharebymail
+* Socialsharing (Diaspora, email, Facebook, Google+ and Twitter)
 * Sharepoint (external storage)
 * Template Editor (for notification emails)
 * Theming
