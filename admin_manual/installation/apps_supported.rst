@@ -2,7 +2,11 @@
 Supported Apps
 ==============
 
-Below is the list of apps supported for Nextcloud 12. Supported here means that we'll accept and fix bugs in these apps with regard to functionality and compatibility with Nextcloud 12. Customers of Nextcloud GmbH can additionally get help in managing and configuring these apps and get problems that affect them fixed with priority.
+==============
+Supported Apps
+==============
+
+Below is the list of apps supported for Nextcloud 12. Supported here means that we'll accept bugreports and resolve them in these apps with regard to functionality and compatibility with Nextcloud 12. To get access to work-arounds, long term support, priority bug fixing and custom consulting, contact Nextcloud GmbH.
 
 * Activity
 * Admin Audit Log
