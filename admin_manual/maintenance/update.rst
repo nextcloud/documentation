@@ -2,139 +2,226 @@
 Upgrade via build-in Updater
 ============================
 
-The Updater app automates many of the steps of upgrading an Nextcloud 
-installation. It is useful for installations that do not have root access, 
-such as shared hosting, for installations with a smaller number of users 
-and data, and it automates updating 
+The build-in updater automates many of the steps of upgrading an Nextcloud
+installation. It is useful for installations that do not have root access,
+such as shared hosting, for installations with a smaller number of users
+and data, and it automates updating
 :doc:`manual installations <../installation/source_installation>`.
 
-The Updater app has :ref:`command-line options <updater_cli_label>`.
-   
-   **Downgrading** is not supported and risks corrupting your data! If you want 
-   to revert to an older Nextcloud version, install it from scratch and then 
-   restore your data from backup. Before doing this, file a support ticket (if 
-   you have paid support) or ask for help in the Nextcloud forums to see if your 
+.. warning::
+   **Downgrading** is not supported and risks corrupting your data! If you want
+   to revert to an older Nextcloud version, install it from scratch and then
+   restore your data from backup. Before doing this, file a support ticket if
+   you have paid support or ask for help in the Nextcloud forums to see if your
    issue can be resolved without downgrading.
 
-You should maintain regular backups (see :doc:`backup`), and make a backup 
-before every update. The Updater app does not backup your database or data 
+You should maintain regular backups (see :doc:`backup`), and make a backup
+before every update. The build-in updater does not backup your database or data
 directory.
 
-The Updater app performs these operations:
+What does the Updater do?
+-------------------------
 
-* Creates an ``updater_backup`` directory under your Nextcloud data directory
-* Downloads and extracts updated package content into the 
-  ``updater_backup/packageVersion`` directory
-* Makes a copy of your current Nextcloud instance, except for your data 
-  directory, to ``updater_backup/currentVersion-randomstring``
-* Moves all directories except ``data``, ``config`` and ``themes`` from the 
-  current instance to ``updater_backup/tmp``
-* Moves all directories from ``updater_backup/packageVersion`` to the current 
-  version
-* Copies your old ``config.php`` to the new ``config/`` directory
+.. note::
+   The updater itself only replaces the existing files with the ones from the
+   version it updates to. The migration steps needs to be executed afterwards.
+   The command line mode provides a way to do this right after the code was
+   successfully replaced.
 
-Using the Updater app to update your Nextcloud installation is just a few 
+The build-in updater performs these operations:
+
+* **Check for expected files:** checks if only the expected files of a
+  Nextcloud installation are present, because it turned out that some files
+  that were left in the Nextcloud directory caused side effects that risked
+  the update procedure.
+* **Check for write permissions:** checks if all files that need to be
+  writable during the update procedure are actually writable.
+* **Enable maintenance mode:** enables the maintenance mode so that no other
+  actions are executed while running the update of the code.
+* **Create backup:** creates a backup of the existing code base in
+  ``/updater-INSTANCEID/backups/nextcloud-CURRENTVERSION/`` inside of the
+  data directory (this does not contain the ``/data``directory nor the
+  database).
+* **Downloading:** downloads the code in the version it should update to. This
+  is also shown in the web UI before the update is started. This archive is
+  downloaded to ``/updater-INSTANCEID/downloads/``.
+* **Extracting:** extracts the archive to the same folder.
+* **Replace entry points:** replaces all Nextcloud entry points with dummy
+  files so that when those files are replaced all clients still get the proper
+  maintenance mode response. Examples for those endpoints are ``index.php``,
+  ``remote.php`` or ``ocs/v1.php``.
+* **Delete old files:** deletes all files except the above mentioned entry
+  points, the data and config dir as well as non-shipped apps and themes. (And
+  the updater itself of course)
+* **Move new files in place:** moves the files from the extracted archive in
+  place.
+* **Keep maintenance mode active?:** asks you if the maintenance mode should
+  be kept active. This allows the admin to use the web based updater but run
+  the actual migration steps (``occ upgrade``) on the command line. If the
+  maintenance mode is kept active command line access is required. To use the
+  web based upgrade page disable the maintenance mode and click the link to
+  get to the upgrade page. (This step is only available in the web based
+  updater.)
+* **Done** the update of the code is done and you either need to go to the
+  linked page or to the command line to finish the upgrade by executing the
+  migration steps.
+
+Using the web based Updater
+---------------------------
+
+Using the build-in Updater to update your Nextcloud installation is just a few
 steps:
 
-1.  You should see a notification at the top of any Nextcloud page when there is 
-    a new update available.
-   
-2.  Even though the Updater app backs up important directories, you should 
-    always have your own current backups (See :doc:`backup` for details.)
-   
-3.  Verify that the HTTP user on your system can write to your whole Nextcloud 
-    directory; see the :ref:`set_updating_permissions_label` section below.
-   
-4.  Navigate to your Admin page and click the **Update Center** button under 
-    Updater. This takes you to the Updater control panel.
+1.  You should see a notification at the top of any Nextcloud page when there is
+    a new update available. Go to the admin settings page and scroll to the
+    section "Version". This section has a button to open the updater. This
+    section as well as the update notification is only available if the update
+    notication app is enabled in the apps management.
 
-5.  Click Update, and carefully read the messages. If there are any problems it 
-    will tell you. The most common issue is directory permissions; your HTTP 
-    user needs write permissions to your whole Nextcloud directory. Another common
-    issue is SELinux rules (see :ref:`selinux-config-label`.) Otherwise you will 
-    see  messages about checking your installation and making backups.
+.. figure:: images/updater-1-update-available.png
 
-6.  Click Proceed, and then it performs the remaining steps, which takes a few 
-    minutes.
+2.  Click the button "Open updater".
 
-7.  If your directory permissions are correct, a backup was made, and 
-    downloading the new Nextcloud archive succeeded you will see the following 
-    screen. Click the Start Update button to complete your update:
+.. figure:: images/updater-2-open-updater.png
 
-.. figure:: images/upgrade-2.png
-   :scale: 75%
-   :alt: Nextcloud upgrade wizard screen.
+3.  Verify the information that is shown and click the button "Start update"
+    to start the update.
 
-..  note:: If you have a large Nextcloud installation and have shell access,
-    you should use the ``occ upgrade`` command, running it as your HTTP user, 
-    instead of clicking the Start Update button, in order to avoid PHP 
-    timeouts.
-    
-This example is for Ubuntu Linux::
+.. figure:: images/updater-3-running-step.png
 
-     $ sudo -u www-data php occ upgrade
+4.  In case an error happens or the check failed the updater stops processing
+    and gives feedback. You can now try to solve the problem and click the
+    "Retry update" button. This will continue the update and re-run the failed
+    step. It will not re-run the previous succeeded steps.
 
-See :doc:`../configuration_server/occ_command` to learn more.
+.. figure:: images/updater-4-failed-step.png
 
-8.  It runs for a few minutes, and when it is finished displays a success 
-    message, which disappears after a short time.
+5. In case you close the updater, before it finished you can just open the
+   updater page again and proceed at the last succeeded step. Closing the web
+   page will still execute the running step but will not continue with the next
+   one, because this is triggered by the open updater page.
 
-Refresh your Admin page to verify your new version number. In the Updater 
-section of your Admin page you can see the current status and backups. These 
-are backups of your old and new Nextcloud installations, and do not contain your 
-data files. If your update works and there are no problems you can delete the 
-backups from this screen.
+.. figure:: images/updater-5-continue-update.png
 
-If the update fails, then you must update manually. (See :doc:`Manually 
-upgrading <manual_upgrade>`.)
+6. Once all steps are executed the updater will ask you a final question:
+   "Keep maintenance mode active?". This allows you to use either the web based
+   upgrade page or the command line based upgrade procedure (``occ upgrade``).
+   Command line access is required if the maintenance mode is kept active.
 
-.. _updater_cli_label:
+.. figure:: images/updater-6-maintenance-mode.png
 
-Command Line Options
---------------------
+7. Done. You now can continue either to the web based upgrade page or run
+   ``occ upgrade``. The two examples "Web based upgrade" and "Command line
+   based upgrade" shows how the screens then look like.
 
-The Updater app includes command-line options to automate updates, to create 
-checkpoints and to roll back to older checkpoints. You must run it as your HTTP 
-user. This example on Ubuntu Linux displays command options::
 
- sudo -u www-data php updater/application.php list
- 
-See usage for commands, like this example for the ``upgrade:checkpoint`` 
-command:: 
+**Web based upgrade**
 
-  sudo -u www-data php updater/application.php upgrade:checkpoint -h
+This is how the web based update would continue:
 
-You can display a help summary::
-  
- sudo -u www-data php updater/application.php --help
- 
-When you run it without options it runs a system check:: 
+.. image:: images/updater-7-disable-maintenance.png
 
- sudo -u www-data php nextcloud/updater/application.php
- Nextcloud updater 1.0 - CLI based Nextcloud server upgrades
- Checking system health.
- - file permissions are ok.
- Current version is 9.0.0.12
- No updates found online.
- Done
- 
-Create a checkpoint::
+.. image:: images/updater-9-upgrade-page.png
 
- sudo -u www-data php updater/application.php upgrade:checkpoint  --create 
- Created checkpoint 9.0.0.12-56d5e4e004964
+**Command line based upgrade**
 
-List checkpoints::
+This is how the command line based update would continue:
 
- sudo -u www-data php updater/application.php upgrade:checkpoint --list
- 
-Restore an earlier checkpoint::
+.. image:: images/updater-8-keep-maintenance.png
 
- sudo -u www-data php nextcloud/updater/application.php upgrade:checkpoint 
-  --restore=9.0.0.12-56d5e4e004964
 
-Add a line like this to your crontab to automatically create daily 
-checkpoints::
+.. code::
 
- 2 15 * * * sudo -u www-data php /path/to/nextcloud/updater/application.php 
- upgrade:checkpoint --create > /dev/null 2>&1
- 
+    $ sudo -u www-data php ./occ upgrade
+    Nextcloud or one of the apps require upgrade - only a limited number of commands are available
+    You may use your browser or the occ upgrade command to do the upgrade
+    Set log level to debug
+    Updating database schema
+    Updated database
+    Updating <files_pdfviewer> ...
+    Updated <files_pdfviewer> to 1.1.1
+    Updating <gallery> ...
+    Updated <gallery> to 17.0.0
+    Updating <activity> ...
+    Updated <activity> to 2.5.2
+    Updating <comments> ...
+    Updated <comments> to 1.2.0
+    Updating <theming> ...
+    Updated <theming> to 1.3.0
+    Starting code integrity check...
+    Finished code integrity check
+    Update successful
+    Maintenance mode is kept active
+    Reset log level
+
+Using the command line based Updater
+------------------------------------
+
+The command line based updater works in the exact same way the web based
+updater works. The steps and checks are the very same.
+
+The steps are basically the same as for the web based updater:
+
+1.  You should see a notification at the top of any Nextcloud page when there is
+    a new update available. Go to the admin settings page and scroll to the
+    section "Version". This section has a button to open the updater. This
+    section as well as the update notification is only available if the update
+    notication app is enabled in the apps management.
+
+.. image:: images/updater-1-update-available.png
+
+2. Instead of clicking that button you can now invoke the command line based
+   updater by going into the `updater/` directory in the Nextcloud directory
+   and executing the `updater.phar` as the web server user. (i.e.
+   ``sudo -u www-data php updater.phar``)
+
+.. image:: images/updater-cli-2-start-updater.png
+   :class: terminal-image
+
+3.  Verify the information that is shown and enter "Y" to start the update.
+
+.. image:: images/updater-cli-3-running-step.png
+   :class: terminal-image
+
+.. image:: images/updater-cli-4-failed-step.png
+   :class: terminal-image
+
+4.  In case an error happens or the check failed the updater stops processing
+    and gives feedback. You can now try to solve the problem and re-run the
+    updater command. This will continue the update and re-run the failed step.
+    It will not re-run the previous succeeded steps.
+
+.. image:: images/updater-cli-5-continue-update.png
+   :class: terminal-image
+
+6. Once all steps are executed the updater will ask you a final question:
+   "Should the "occ upgrade" command be executed?". This allows you to directly
+   execute the command line based upgrade procedure (``occ upgrade``). If you
+   select "No" then it will finish with
+   `Please now execute "./occ upgrade" to finish the upgrade.`.
+
+.. image:: images/updater-cli-6-run-command.png
+   :class: terminal-image
+
+7. Once the ``occ upgrade`` is done you get asked if the maintenance mode
+   should be kept active.
+
+.. image:: images/updater-cli-7-maintenance.png
+   :class: terminal-image
+
+Batch mode for command line based updater
+-----------------------------------------
+
+It is possible to run the command line based updater in a non-interactive mode.
+The updater then doesn't ask any interactive questions. It is assumed that if
+an update is available it should be installed and the ``occ upgrade`` command
+is executed as well. After finishing the maintenance mode will be turned off
+except an error occured during the ``occ upgrade`` or the replacement of the
+code.
+
+To execute this, run the command with the ``--no-interaction`` option. (i.e.
+``sudo -u www-data php updater.phar --no-interaction``)
+
+.. image:: images/updater-cli-8-no-interaction.png
+   :class: terminal-image
+
