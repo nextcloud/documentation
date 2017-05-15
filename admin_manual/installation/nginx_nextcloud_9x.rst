@@ -44,6 +44,12 @@ your nginx installation.
       # topic first.
       # add_header Strict-Transport-Security "max-age=15768000; 
       # includeSubDomains; preload;";
+      #
+      # WARNING: Only add the preload option once you read about
+      # the consequences in https://hstspreload.org/. This option
+      # will add the domain to a hardcoded list that is shipped
+      # in all major browsers and getting removed from this list
+      # could take several months.
       add_header X-Content-Type-Options nosniff;
       add_header X-Frame-Options "SAMEORIGIN";
       add_header X-XSS-Protection "1; mode=block";
@@ -125,6 +131,12 @@ your nginx installation.
           # this topic first.
           # add_header Strict-Transport-Security "max-age=15768000; 
           #  includeSubDomains; preload;";
+          #
+          # WARNING: Only add the preload option once you read about
+          # the consequences in https://hstspreload.org/. This option
+          # will add the domain to a hardcoded list that is shipped
+          # in all major browsers and getting removed from this list
+          # could take several months.
           add_header X-Content-Type-Options nosniff;
           add_header X-Frame-Options "SAMEORIGIN";
           add_header X-XSS-Protection "1; mode=block";
