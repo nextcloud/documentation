@@ -1,6 +1,6 @@
-==========================================
-Installing Nextcloud from the Command Line
-==========================================
+============================
+Installing from Command Line
+============================
 
 It is now possible to install Nextcloud entirely from the command line. This is 
 convenient for scripted operations, headless servers, and sysadmins who prefer 

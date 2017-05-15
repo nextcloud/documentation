@@ -1,6 +1,6 @@
-====================================
-Nextcloud Deployment Recommendations
-====================================
+==========================
+Deployment Recommendations
+==========================
 
 What is the best way to install and maintain Nextcloud? The answer to that is
 *"it depends"* because every Nextcloud customer has their own
