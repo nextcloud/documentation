@@ -2,10 +2,12 @@
 Release Notes
 =============
 
-Changes in Nextcloud 12
------------------------
+Changes in Nextcloud |version|
+------------------------------
 
-.. TODO ON RELEASE: Update version number above on release
+A detailed log of all changes can be found in the official `Changelog
+<https://nextcloud.com/changelog/>`_. There are also all current and previous
+versions linked.
 
 Updates to Nginx configuration
 ==============================
@@ -21,8 +23,8 @@ Updates to Nginx configuration
 * The GZip configuration for Nginx was updated. See :doc:`installation/nginx`
   for details.
 
-Q & A
------
+Common questions
+----------------
 
 Could not install core app bundle
 =================================
