@@ -6,7 +6,6 @@ Table of Contents
     :maxdepth: 2
      
     index 
-    release_notes
     whats_new_admin
     installation/index
     configuration_server/index
