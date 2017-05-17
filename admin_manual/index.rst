@@ -19,8 +19,8 @@ Nextcloud server is available:
 See :doc:`../release_notes` for more information on the different Nextcloud
 editions.
 
-Nextcloud Videos and Blogs
---------------------------
+Videos and Blogs
+----------------
 
 See the `official Nextcloud channel 
 <https://www.youtube.com/channel/UCQjN5Fs5QSz1loJqLb5bkew>`_ 
