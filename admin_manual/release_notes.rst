@@ -9,6 +9,15 @@ A detailed log of all changes can be found in the official `Changelog
 <https://nextcloud.com/changelog/>`_. There are also all current and previous
 versions linked.
 
+Theming
+=======
+The 'old' theming method with CSS files is still available, however, we
+switched to using scss on many files which is likely to break your theme.
+Re-creating your theme following the usual documentation should suffice.
+To lower the effort you need to spend on theming your Nextcloud instance we
+highly recommend to use the theming app instead of the themes feature. See
+:doc:`configuration_server/theming` for details.
+
 Updates to Nginx configuration
 ==============================
 
