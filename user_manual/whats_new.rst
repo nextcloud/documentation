@@ -22,4 +22,4 @@ What's New for Users in Nextcloud |version|
    .. figure:: images/multi_sharing.png
       :alt: screenshot of multiple sharing links
 
-5. Many other improvements and new apps, like screensharing in Video calls, new Circles app for user group handling, push notifications,  notifications of file changes even when shared to another server, you can undo removal of files from a folder you shared even if the removal was done by a recipient, directly sharing to social media and much more.
+5. Many other improvements and new apps, like screensharing in Video calls, new Circles app for user group handling, push notifications, notifications of file changes even when shared to another server, you can undo removal of files from a folder you shared even if the removal was done by a recipient, directly sharing to social media and much more.
