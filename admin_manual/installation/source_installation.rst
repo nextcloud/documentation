@@ -152,7 +152,7 @@ terminal::
 
     apt-get install apache2 mariadb-server libapache2-mod-php7.0
     apt-get install php7.0-gd php7.0-json php7.0-mysql php7.0-curl php7.0-mbstring
-    apt-get install php7.0-intl php7.0-mcrypt php-imagick php7.0-xml php7.0-zip
+    apt-get install php7.0-intl php7.0-mcrypt php7.0-imagick php7.0-xml php7.0-zip
 
 * This installs the packages for the Nextcloud core system.
   ``libapache2-mod-php7.0`` provides the following PHP extensions: ``bcmath bz2
