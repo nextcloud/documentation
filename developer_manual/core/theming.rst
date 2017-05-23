@@ -1,14 +1,8 @@
 Theming Nextcloud
 =================
 Themes can be used to customize the look and feel of Nextcloud.
-Themes can relate to the following topics of Nextcloud:
 
-* Theming the web-frontend
-* Theming the desktop client
-
-This documentation contains only the Web-frontend adaptations so far.
-
-.. note:: This is an advanced way of theming Nextcloud; the Nextcloud team recommends instead the use of the **Theming** app which, when enabled, can be accessed from the Admin settings.
+.. note:: This is an advanced way of theming Nextcloud; the Nextcloud team recommends instead the use of the `theming app <../../admin_manual/configuration_server/theming.html>` which, when enabled, can be accessed from the Admin settings.
 
 Getting started
 ===============
@@ -117,6 +111,31 @@ To customize favicon for MyTheme:
 
 Changing the default colours
 ----------------------------
+
+You can inject custom variables into the SCSS generator to apply colors to the default css code by adding the following method to defaults.php:
+
+.. code-clock:: php
+
+   	public function getScssVariables() {
+		return [
+			'color-primary' => '#745bca'
+		];
+	}
+
+
+The following variables can be overwritten:
+
+* color-main-text
+* color-main-background
+* color-primary
+* color-primary-text
+* color-error
+* color-warning
+* color-success
+* color-loading
+* color-loading-dark
+* color-box-shadow
+
 With a web-developer tool like Mozilla-Inspector, you also get easily displayed the color of the background you clicked on.
 On the top of the login page you can see a case- distinguished setting for different browsers:
 
@@ -190,6 +209,15 @@ Both files (``.js`` and ``.json``) are needed with the same translations,
 because the first is needed to enable translations in the JavaScript code and
 the second one is read by the PHP code and provides the data for translated
 terms in there.
+
+How to update custom mimetype icons
+===================================
+
+The following command is required to run after adding custom mimetype icons to your theme:
+
+.. code-block:: bash
+
+    sudo -u www-data php occ maintenance:mimetype:update-js
 
 
 How to change names, slogans and URLs
