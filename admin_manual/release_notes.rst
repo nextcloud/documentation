@@ -46,3 +46,11 @@ automatically. This could have multiple reasons: either you disabled the
 appstore with the config.php flag or your server could not reach the app store.
 The instance will work fine, but the features that are usually provided by this
 app are not available.
+
+Theming changes
+===============
+
+With Nextcloud 12, CSS files have been merged into one server.css so in order
+to keep your theme working you should consolidate your existing css styles into
+a server.css file. As for the example theme the styles.css file has been
+renamed to server.css.
