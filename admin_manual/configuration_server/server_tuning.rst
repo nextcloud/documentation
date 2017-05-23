@@ -82,7 +82,7 @@ The `OPcache <http://php.net/manual/en/intro.opcache.php>`_ improves the perform
 
 .. code:: ini
 
-  opcache.enable=On
+  opcache.enable=1
   opcache.enable_cli=1
   opcache.interned_strings_buffer=8
   opcache.max_accelerated_files=10000
