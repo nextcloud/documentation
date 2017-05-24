@@ -23,6 +23,9 @@ Each link can have a unique icon, icons are currently loaded from ``apps/externa
 If you select a language, the link will only be displayed for users with the selected language.
 This allows you to have different documentation links for users depending on their language.
 
+It is also possible to add links for a special device (recognized by the user agent).
+Currently the following options are available: All devices, Android app, iOS app, Desktop client and all others (Browsers).
+
 Hover your cursor over a row to make the trashcan icon appear when you
 want to remove them.
 
