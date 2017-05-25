@@ -13,13 +13,13 @@ See the `Style Guide <https://github.com/nextcloud/documentation/blob/master/sty
 Manuals
 -------
 
-This repository hosts four manuals:
+This repository hosts three manuals:
 
 * **Users' Manual**
 * **Administration Manual**
 * **Developers Manual**
 
-Please work in the appropriate branch: ``stable9`` is 9.0, ``stable10`` is 10.0, ``stable11`` is 11.0 and ``master`` is version 12.0.
+Please work in the appropriate branch: ``stable``-branches are for the respective release (e.g. 11.0 or 12.0), ``master`` is version 13.0.
 
 Please wrap lines at 80 characters.
 
