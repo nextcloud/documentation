@@ -4,7 +4,7 @@ What's New for Users in Nextcloud |version|
 
 1. Easier way to select a new app
 
-   .. figure:: images/app_menu.png
+   .. figure:: images/apps_menu.png
       :alt: screenshot of apps menu at top-left of Nextcloud Web GUI
       
 2. New Contacts menu to reach your colleagues or friends easier
