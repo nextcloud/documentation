@@ -33,21 +33,31 @@ Encryption FAQ
 How Can Encryption Be Disabled?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The only way to disable encryption is to run the :ref:`"decrypt all" <encryption_label>`
+The only way to disable encryption is to run the `"decrypt all"
+<https://docs.nextcloud.org/server/12/admin_manual/configuration_server/occ_command.html#encryption-label>`_.
+
+.. TODO ON RELEASE: Update version number above on release
+
 script, which decrypts all files and disables encryption.
 
 Is It Possible To Disable Encryption With The Recovery Key?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Yes, *if* every user uses the :ref:`file recovery key
-<enable-file-recovery-key>`, :ref:`"decrypt all" <encryption_label>` will use it
-to decrypt all files.
+Yes, *if* every user uses the `file recovery key
+<https://docs.nextcloud.com/server/12/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_,  `"decrypt all"
+<https://docs.nextcloud.org/server/12/admin_manual/configuration_server/occ_command.html#encryption-label>`_ will use it to decrypt all files.
+
+.. TODO ON RELEASE: Update version number above on release
 
 Can Encryption Be Disabled Without The User’s Password?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you don't have the users password or :ref:`file recovery key
-<enable-file-recovery-key>` then there is no way to decrypt all files. What's
+If you don't have the users password or `file recovery key
+<https://docs.nextcloud.com/server/12/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_.
+
+.. TODO ON RELEASE: Update version number above on release
+
+then there is no way to decrypt all files. What's
 more, running it on login would be dangerous, because you would most likely run
 into timeouts.
 
