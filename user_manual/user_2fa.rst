@@ -60,8 +60,8 @@ enter the TOTP code in your browser. Just enter your code:
 If the code was correct you will be redirected to your Nextcloud account.
 
 .. note:: Since the code is time-based, it’s important that your server’s and
-your smartphone’s clock are almost in sync. A time drift of a few seconds
-won’t be a problem.
+  your smartphone’s clock are almost in sync. A time drift of a few seconds
+  won’t be a problem.
 
 Using client applications with two-factor authentication
 ========================================================
