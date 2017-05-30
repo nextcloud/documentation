@@ -146,7 +146,7 @@ storage mount, see :ref:`external_storage_mount_options_label`
 .. _enable-file-recovery-key:
 
 Enabling Users File Recovery Keys
-----------------------------------
+---------------------------------
 
 If you lose your Nextcloud password, then you lose access to your encrypted 
 files. If one of your users loses their Nextcloud password their files are 
