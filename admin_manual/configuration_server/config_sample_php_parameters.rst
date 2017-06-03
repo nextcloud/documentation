@@ -1724,6 +1724,19 @@ modify *ANY* settings in this file without reading the documentation.
 
 use a custom lookup server to publish user data
 
+::
+
+	'gs.enabled' => false,
+
+set to true if the server is used in a setup based on Nextcloud's Global Scale architecture
+
+::
+
+	'gs.federation' => 'internal',
+
+by default federation is only used internally in a Global Scale setup
+If you want to allow federation outside of your environment set it to 'global'
+
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
 
