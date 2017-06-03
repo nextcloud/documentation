@@ -4,17 +4,6 @@ Upgrade Manually
 
 Always start by making a fresh backup and disabling all 3rd party apps.
 
-Put your server in maintenance mode. This prevents new logins, locks the 
-sessions of logged-in users, and displays a status screen so users know what is 
-happening. There are two ways to do this, and the preferred method is to use the 
-:doc:`occ command <../configuration_server/occ_command>`, which you must run as 
-your HTTP user. This example is for Ubuntu Linux::
-
- sudo -u www-data php occ maintenance:mode --on
- 
-The other way is by entering your ``config.php`` file and changing 
-``'maintenance' => false,`` to ``'maintenance' => true,``. 
-
 1. Back up your existing Nextcloud Server database, data directory, and 
    ``config.php`` file. (See :doc:`backup`, for restore information see :doc:`restore`)
 2. Download and unpack the latest Nextcloud Server release (Archive file) from 
@@ -63,11 +52,7 @@ The other way is by entering your ``config.php`` file and changing
      
 12. The upgrade operation takes a few minutes to a few hours, depending on the 
     size of your installation. When it is finished you will see a success 
-    message, or an error message that will tell where it went wrong.   
-
-Assuming your upgrade succeeded, disable the maintenance mode::
-
-     sudo -u www-data php occ maintenance:mode --off
+    message, or an error message that will tell where it went wrong.
 
 Login and take a look at the bottom of your Admin page to 
 verify the version number. Check your other settings to make sure they're 
@@ -105,9 +90,9 @@ help::
 See `the nextcloud.com support page <https://nextcloud.com/support/>`_ for further
 resources.
 
-Sometimes, Nextcloud can get *stuck in a upgrade*. This is usually due to the 
-process taking too long and encountering a PHP time-out. Stop the upgrade 
-process this way::
+Sometimes, Nextcloud can get *stuck in a upgrade* if the web based upgrade
+process is used. This is usually due to the process taking too long and
+encountering a PHP time-out. Stop the upgrade process this way::
 
  sudo -u www-data php occ maintenance:mode --off
   
