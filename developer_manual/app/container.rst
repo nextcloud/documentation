@@ -294,7 +294,6 @@ Types:
 * **OCP\\AppFramework\\Utility\\IControllerMethodReflector**
 * **OCP\\Contacts\\IManager**
 * **OCP\\IDateTimeZone**
-* **OCP\\IDb**
 * **OCP\\IDBConnection**
 * **OCP\\Diagnostics\\IEventLogger**
 * **OCP\\Diagnostics\\IQueryLogger**

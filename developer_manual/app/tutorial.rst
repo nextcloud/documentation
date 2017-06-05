@@ -310,12 +310,12 @@ Entities are returned from so called :doc:`Mappers <database>`. Let's create one
     <?php
     namespace OCA\OwnNotes\Db;
 
-    use OCP\IDb;
+    use OCP\IDbConnection;
     use OCP\AppFramework\Db\Mapper;
 
     class NoteMapper extends Mapper {
 
-        public function __construct(IDb $db) {
+        public function __construct(IDbConnection $db) {
             parent::__construct($db, 'ownnotes_notes', '\OCA\OwnNotes\Db\Note');
         }
 
