@@ -51,7 +51,7 @@ would protect the login route:
 
 .. code-block:: apache
 
-    <Location "/index.php/login">
+    <Location "/index.php/apps/user_saml/saml/login">
     	AuthType Kerberos
     	AuthName "Kerberos Login"
     	KrbServiceName HTTP
