@@ -1119,6 +1119,15 @@ filesystem instead of the database to keep the tags.
 
 Defaults to ``\OC\SystemTag\ManagerFactory``
 
+::
+
+	'mail_template_class' => '\OC\Mail\EMailTemplate',
+
+Replaces the default mail template layout. This can be utilized if the
+options to modify the mail texts with the theming app is not enough.
+
+The class must extend  ``\OC\Mail\EMailTemplate``
+
 Maintenance
 -----------
 
@@ -1736,6 +1745,12 @@ set to true if the server is used in a setup based on Nextcloud's Global Scale a
 
 by default federation is only used internally in a Global Scale setup
 If you want to allow federation outside of your environment set it to 'global'
+
+::
+
+	'settings.personal.showGroupMembership' => true
+
+show group membership on the personal page
 
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
