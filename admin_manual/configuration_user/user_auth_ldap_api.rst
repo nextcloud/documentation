@@ -192,61 +192,115 @@ XML Output
 Configuration Keys
 ==================
 
- +-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
- | Key                           | mode | required |description                                                                                                            |
- +-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
- | ldapHost                      | rw   | yes      | LDAP server host, supports protocol                                                                                   |
- | ldapPort                      | rw   | yes      | LDAP server port                                                                                                      |
- | ldapBackupHost                | rw   | no       | LDAP replica host                                                                                                     |
- | ldapBackupPort                | rw   | no       | LDAP replica port                                                                                                     |
- | ldapOverrideMainServer        | rw   | no       | Whether replica should be used instead                                                                                |
- | ldapBase                      | rw   | yes      | Base                                                                                                                  |
- | ldapBaseUsers                 | rw   | no       | Base for users, defaults to general base if not specified                                                             |
- | ldapBaseGroups                | rw   | no       | Base for groups, defaults to general base if not specified                                                            |
- | ldapAgentName                 | rw   | no       | DN for the (service) user to connect to LDAP                                                                          |
- | ldapAgentPassword             | rw   | no       | Password for the service user                                                                                         |
- | ldapTLS                       | rw   | no       | Whether to use StartTLS                                                                                               |
- | turnOffCertCheck              | rw   | no       | Turns off certificate validation for TLS connections                                                                  |
- | ldapIgnoreNamingRules         | rw   | no       | Backwards compatibility, do not set it.                                                                               |
- | ldapUserDisplayName           | rw   | yes      | Attribute used as display name for users                                                                              |
- | ldapUserDisplayName2          | rw   | no       | Additional attribute, if set show on brackets next to the main attribute                                              |
- | ldapGidNumber                 | rw   | no       | group ID attribute, needed for primary groups on OpenLDAP (and compatible)                                            |
- | ldapUserFilterObjectclass     | rw   | no       | set by the Settings Wizard (web UI)                                                                                   |
- | ldapUserFilterGroups          | rw   | no       | set by the Settings Wizard (web UI)                                                                                   |
- | ldapUserFilter                | rw   | yes      | LDAP Filter used to retrieve user                                                                                     |
- | ldapUserFilterMode            | rw   | no       | used by the Settings Wizard, set to 1 for manual editing                                                              |
- | ldapAttributesForUserSearch   | rw   | no       | attributes to be matched when searching for users. separate by ;                                                      |
- | ldapGroupFilter               | rw   | no       | LDAP Filter used to retrieve groups                                                                                   |
- | ldapGroupFilterMode           | rw   | no       | used by the Settings Wizard, set to 1 for manual editing                                                              |
- | ldapGroupFilterObjectclass    | rw   | no       | set by the Settings Wizard (web UI)                                                                                   |
- | ldapGroupFilterGroups         | rw   | no       | set by the Settings Wizard (web UI)                                                                                   |
- | ldapGroupMemberAssocAttr      | rw   | no       | attribute that indicates group members, one of: member, memberUid, uniqueMember, gidNumber                            |
- | ldapGroupDisplayName          | rw   | no       | Attribute used as display name for groups, required if groups are used                                                |
- | ldapAttributesForGroupSearch  | rw   | no       | attributes to be matched when searching for groups. separate by ;                                                     |
- | ldapLoginFilter               | rw   | yes      | LDAP Filter used to authenticate users                                                                                |
- | ldapLoginFilterMode           | rw   | no       | used by the Settings Wizard, set to 1 for manual editing                                                              |
- | ldapLoginFilterEmail          | rw   | no       | set by the Settings Wizard (web UI)                                                                                   |
- | ldapLoginFilterUsername       | rw   | no       | set by the Settings Wizard (web UI)                                                                                   |
- | ldapLoginFilterAttributes     | rw   | no       | set by the Settings Wizard (web UI)                                                                                   |
- | ldapQuotaAttribute            | rw   | no       | LDAP attribute containing the quote value (per user)                                                                  |
- | ldapQuotaDefault              | rw   | no       | Default Quota, if specified quota attribute is empty                                                                  |
- | ldapEmailAttribute            | rw   | no       | LDAP attribute containing the email address (takes first if multiple are stored)                                      |
- | ldapCacheTTL                  | rw   | no       | How long results from LDAP are cached, defaults to 10min                                                              |
- | ldapUuidUserAttribute         | r    | no       | set in runtime                                                                                                        |
- | ldapUuidGroupAttribute        | r    | no       | set in runtime                                                                                                        |
- | ldapConfigurationActive       | rw   | no       | whether this configuration is active. 1 is on, 0 is off.                                                              |
- | ldapExperiencedAdmin          | rw   | no       | used by the Settings Wizard, set to 1 for manual editing                                                              |
- | homeFolderNamingRule          | rw   | no       | LDAP attribute to use a user folder name                                                                              |
- | hasPagedResultSupport         | r    | no       | set in runtime                                                                                                        |
- | hasMemberOfFilterSupport      | r    | no       | set in runtime                                                                                                        |
- | useMemberOfToDetectMembership | rw   | no       | Whether to use memberOf to detect group memberships                                                                   |
- | ldapExpertUsernameAttr        | rw   | no       | LDAP attribute to use as internal username. Might be modified (e.g. to avoid name collisions, character restrictions) |
- | ldapExpertUUIDUserAttr        | rw   | no       | override the LDAP servers UUID attribute to identify LDAP user records                                                |
- | ldapExpertUUIDGroupAttr       | rw   | no       | override the LDAP servers UUID attribute to identify LDAP group records                                               |
- | lastJpegPhotoLookup           | r    | no       | set in runtime                                                                                                        |
- | ldapNestedGroups              | rw   | no       | Whether LDAP supports nested groups                                                                                   |
- | ldapPagingSize                | rw   | no       | Number of results to return per page                                                                                  |
- | turnOnPasswordChange          | rw   | no       | Whether users are allowed to change passwords (hashing must happen on LDAP!)                                          |
- | ldapDynamicGroupMemberURL     | rw   | no       | URL for dynamic groups                                                                                                |
- | ldapDefaultPPolicyDN          | rw   | no       | PPolicy DN for password rules                                                                                         |
- +-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| Key                           | Mode | Required | Description                                                                                                           |
++===============================+======+==========+=======================================================================================================================+
+| ldapHost                      | rw   | yes      | LDAP server host, supports protocol                                                                                   |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapPort                      | rw   | yes      | LDAP server port                                                                                                      |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapBackupHost                | rw   | no       | LDAP replica host                                                                                                     |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapBackupPort                | rw   | no       | LDAP replica port                                                                                                     |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapOverrideMainServer        | rw   | no       | Whether replica should be used instead                                                                                |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapBase                      | rw   | yes      | Base                                                                                                                  |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapBaseUsers                 | rw   | no       | Base for users, defaults to general base if not specified                                                             |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapBaseGroups                | rw   | no       | Base for groups, defaults to general base if not specified                                                            |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapAgentName                 | rw   | no       | DN for the (service) user to connect to LDAP                                                                          |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapAgentPassword             | rw   | no       | Password for the service user                                                                                         |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapTLS                       | rw   | no       | Whether to use StartTLS                                                                                               |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| turnOffCertCheck              | rw   | no       | Turns off certificate validation for TLS connections                                                                  |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapIgnoreNamingRules         | rw   | no       | Backwards compatibility, do not set it.                                                                               |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapUserDisplayName           | rw   | yes      | Attribute used as display name for users                                                                              |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapUserDisplayName2          | rw   | no       | Additional attribute, if set show on brackets next to the main attribute                                              |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapGidNumber                 | rw   | no       | group ID attribute, needed for primary groups on OpenLDAP (and compatible)                                            |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapUserFilterObjectclass     | rw   | no       | set by the Settings Wizard (web UI)                                                                                   |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapUserFilterGroups          | rw   | no       | set by the Settings Wizard (web UI)                                                                                   |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapUserFilter                | rw   | yes      | LDAP Filter used to retrieve user                                                                                     |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapUserFilterMode            | rw   | no       | used by the Settings Wizard, set to 1 for manual editing                                                              |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapAttributesForUserSearch   | rw   | no       | attributes to be matched when searching for users. separate by ;                                                      |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapGroupFilter               | rw   | no       | LDAP Filter used to retrieve groups                                                                                   |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapGroupFilterMode           | rw   | no       | used by the Settings Wizard, set to 1 for manual editing                                                              |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapGroupFilterObjectclass    | rw   | no       | set by the Settings Wizard (web UI)                                                                                   |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapGroupFilterGroups         | rw   | no       | set by the Settings Wizard (web UI)                                                                                   |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapGroupMemberAssocAttr      | rw   | no       | attribute that indicates group members, one of: member, memberUid, uniqueMember, gidNumber                            |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapGroupDisplayName          | rw   | no       | Attribute used as display name for groups, required if groups are used                                                |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapAttributesForGroupSearch  | rw   | no       | attributes to be matched when searching for groups. separate by ;                                                     |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapLoginFilter               | rw   | yes      | LDAP Filter used to authenticate users                                                                                |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapLoginFilterMode           | rw   | no       | used by the Settings Wizard, set to 1 for manual editing                                                              |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapLoginFilterEmail          | rw   | no       | set by the Settings Wizard (web UI)                                                                                   |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapLoginFilterUsername       | rw   | no       | set by the Settings Wizard (web UI)                                                                                   |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapLoginFilterAttributes     | rw   | no       | set by the Settings Wizard (web UI)                                                                                   |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapQuotaAttribute            | rw   | no       | LDAP attribute containing the quote value (per user)                                                                  |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapQuotaDefault              | rw   | no       | Default Quota, if specified quota attribute is empty                                                                  |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapEmailAttribute            | rw   | no       | LDAP attribute containing the email address (takes first if multiple are stored)                                      |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapCacheTTL                  | rw   | no       | How long results from LDAP are cached, defaults to 10min                                                              |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapUuidUserAttribute         | r    | no       | set in runtime                                                                                                        |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapUuidGroupAttribute        | r    | no       | set in runtime                                                                                                        |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapConfigurationActive       | rw   | no       | whether this configuration is active. 1 is on, 0 is off.                                                              |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapExperiencedAdmin          | rw   | no       | used by the Settings Wizard, set to 1 for manual editing                                                              |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| homeFolderNamingRule          | rw   | no       | LDAP attribute to use a user folder name                                                                              |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| hasPagedResultSupport         | r    | no       | set in runtime                                                                                                        |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| hasMemberOfFilterSupport      | r    | no       | set in runtime                                                                                                        |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| useMemberOfToDetectMembership | rw   | no       | Whether to use memberOf to detect group memberships                                                                   |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapExpertUsernameAttr        | rw   | no       | LDAP attribute to use as internal username. Might be modified (e.g. to avoid name collisions, character restrictions) |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapExpertUUIDUserAttr        | rw   | no       | override the LDAP servers UUID attribute to identify LDAP user records                                                |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapExpertUUIDGroupAttr       | rw   | no       | override the LDAP servers UUID attribute to identify LDAP group records                                               |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| lastJpegPhotoLookup           | r    | no       | set in runtime                                                                                                        |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapNestedGroups              | rw   | no       | Whether LDAP supports nested groups                                                                                   |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapPagingSize                | rw   | no       | Number of results to return per page                                                                                  |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| turnOnPasswordChange          | rw   | no       | Whether users are allowed to change passwords (hashing must happen on LDAP!)                                          |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapDynamicGroupMemberURL     | rw   | no       | URL for dynamic groups                                                                                                |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapDefaultPPolicyDN          | rw   | no       | PPolicy DN for password rules                                                                                         |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+
