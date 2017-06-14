@@ -1737,12 +1737,6 @@ set to true if the server is used in a setup based on Nextcloud's Global Scale a
 by default federation is only used internally in a Global Scale setup
 If you want to allow federation outside of your environment set it to 'global'
 
-::
-
-	'settings.personal.showGroupMembership' => true
-
-show group membership on the personal page
-
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
 
