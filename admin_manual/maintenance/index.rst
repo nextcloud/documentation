@@ -12,3 +12,4 @@ Maintenance
    manual_upgrade
    package_upgrade
    migrating
+   migrating_owncloud
