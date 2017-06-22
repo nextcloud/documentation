@@ -143,10 +143,17 @@ category
 --------
 Category on the app store. Can be one of the following:
 
+* auth
+* customization
+* files
+* games
+* integration
+* monitoring
 * multimedia
-* productivity
-* game
-* tool
+* office
+* organization
+* social
+* tools
 
 ocsid
 -----
