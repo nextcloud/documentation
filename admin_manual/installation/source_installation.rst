@@ -12,6 +12,7 @@ This document provides a complete walk-through for installing Nextcloud on
 Ubuntu 16.04 LTS Server with Apache and MariaDB, using `the Nextcloud .tar
 archive <https://nextcloud.com/install/>`_.
 
+* :ref:`vm_label`
 * :ref:`snaps_label`
 * :ref:`prerequisites_label`
 * :ref:`ubuntu_installation_label`
@@ -28,6 +29,17 @@ archive <https://nextcloud.com/install/>`_.
 .. note:: Admins of SELinux-enabled distributions such as CentOS, Fedora, and
    Red Hat Enterprise Linux may need to set new rules to enable installing
    Nextcloud. See :ref:`selinux_tips_label` for a suggested configuration.
+
+.. _vm_label:
+
+Installing on a Virtual Machine
+----------------------------
+
+If you are using Windows, the easiest way to get Nextcloud up an running is using our Virtual Machine. The VM is mainly maintainted by Tech and Me and are offered in several different versions. The main version is for VMware version 10 and comes in different sizes. The standard size is 20 GB, but you can also download a 500 GB and a 1 TB version. Tech and Me also provides a Hyper-V version for all Hyper-V users.
+
+You can find complete instructions and downloads here: https://github.com/nextcloud/vm or here https://www.techandme.se/nextcloud-vm/
+
+Of course you can also install it on other OSes than Windows and you are not limited to any OS really as long as your hypervisor can mount OVA, VMDK, or VHD.
 
 .. _snaps_label:
 
