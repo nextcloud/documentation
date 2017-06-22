@@ -11,7 +11,7 @@ installation needs to be tweaked a bit.
 2. Make sure the following InnoDB settings are set on your MySQL server::
 
     [mysqld]
-    innodb_large_prefix=on
+    innodb_large_prefix=1
     innodb_file_format=barracuda
     innodb_file_per_table=1
 
