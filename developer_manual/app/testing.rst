@@ -4,7 +4,7 @@ Testing
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-All PHP classes can be tested with `PHPUnit <http://phpunit.de/>`_, JavaScript can be tested by using `Karma <http://karma-runner.github.io/0.12/index.html>`_.
+All PHP classes can be tested with `PHPUnit <http://phpunit.de/>`_, JavaScript can be tested by using `Karma <http://karma-runner.github.io>`_.
 
 
 
