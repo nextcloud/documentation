@@ -230,6 +230,18 @@ Defaults to ``en``
 
 ::
 
+	'force_language' => 'en',
+
+With this setting a language can be forced for all users. If a language is
+forced, the users are also unable to change their language in the personal
+settings. If users shall be unable to change their language, but users have
+different languages, this value can be set to ``true`` instead of a language
+code.
+
+Defaults to ``false``
+
+::
+
 	'defaultapp' => 'files',
 
 Set the default app to open on login. Use the app names as they appear in the
