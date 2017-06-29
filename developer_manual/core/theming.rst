@@ -114,13 +114,13 @@ Changing the default colours
 
 You can inject custom variables into the SCSS generator to apply colors to the default css code by adding the following method to defaults.php:
 
-.. code-clock:: php
+.. code-block:: php
 
-   	public function getScssVariables() {
-		return [
-			'color-primary' => '#745bca'
-		];
-	}
+    public function getScssVariables() {
+        return [
+            'color-primary' => '#745bca'
+        ];
+    }
 
 
 The following variables can be overwritten:
