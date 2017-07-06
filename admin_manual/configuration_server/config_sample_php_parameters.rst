@@ -1225,6 +1225,20 @@ Replaces the default Share Provider Factory. This can be utilized if
 own or 3rdParty Share Providers be used that – for instance – uses the
 filesystem instead of the database to keep the share information.
 
+::
+
+	'sharing.maxAutocompleteResults' => 0,
+
+Define max number of results returned by the user search for auto-completion
+Default is unlimited (value set to 0).
+
+::
+
+	'sharing.minSearchStringLength' => 0,
+
+Define the minimum length of the search string before we start auto-completion
+Default is no limit (value set to 0)
+
 All other configuration options
 -------------------------------
 
