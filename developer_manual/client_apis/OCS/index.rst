@@ -1,4 +1,4 @@
-.. _webdavindex:
+.. _ocsapiindex:
 
 =========
 OCS API's
@@ -9,9 +9,9 @@ This document provides a quick overview of the OCS API endpoints supported in Ne
 All requests need to provide authentication information, either as a Basic Auth header or by passing a set of valid session cookies, if not stated otherwise.
 
 
-----
+--------------------------
 Testing requests with curl
-----
+--------------------------
 
 All OCS requests can be easily tested out using :code:`curl` by specifying the request method (:code:`GET`, :code:`PUT`, etc) and setting a request body where needed.
 

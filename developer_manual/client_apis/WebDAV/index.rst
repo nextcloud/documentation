@@ -7,17 +7,17 @@ WebDAV Client API's
 This document provides a quick overview of the WebDAV operations supported in Nextcloud, to keep things readable it won't go into many details
 for each operation, further information for each operation can be found in the corresponding rfc where applicable
 
-----
+-------------
 WebDAV Basics
-----
+-------------
 
 The base url for all WebDAV operations for a Nextcloud instance is :code:`/remote.php/dav`.
 
 All requests need to provide authentication information, either as a Basic Auth header or by passing a set of valid session cookies.
 
-----
+--------------------------
 Testing requests with curl
-----
+--------------------------
 
 All WebDAV requests can be easily tested out using :code:`curl` by specifying the request method (:code:`GET`, :code:`PROPFIND`, :code:`PUT`, etc) and setting a request body where needed.
 
@@ -39,9 +39,9 @@ For example: you can perform a :code:`PROPFIND` request to find files in a folde
      </d:propfind>'
 
 
-----
+--------------------------
 Listing Folders (rfc4918_)
-----
+--------------------------
 
 The contents of a folder can be listed by sending a :code:`PROPFIND` request to the folder.
 
@@ -49,9 +49,9 @@ The contents of a folder can be listed by sending a :code:`PROPFIND` request to 
 
 	PROPFIND remote.php/dav/files/user/path/to/folder
 
-~~~~
+~~~~~~~~~~~~~~~~~~~~~
 Requesting properties
-~~~~
+~~~~~~~~~~~~~~~~~~~~~
 
 By default, a :code:`PROPFIND` request will only return a small number of properties for each file: last modified date, file size, whether it's a folder, etag and mime type.
 
@@ -98,15 +98,15 @@ The following properties are supported:
 - :code:`{http://owncloud.org/ns}has-preview`
 - :code:`{http://owncloud.org/ns}size` Unlike :code:`getcontentlength`, this property also works for folders reporting the size of everything in the folder.
 
-~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Getting properties for just the folder
-~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can request properties of a folder without also getting the folder contents by adding a :code:`Depth: 0` header to the request.
 
-----
+-----------------
 Downloading files
-----
+-----------------
 
 A file can be downloaded by sending a :code:`GET` request to the WebDAV url of the file.
 
@@ -114,9 +114,9 @@ A file can be downloaded by sending a :code:`GET` request to the WebDAV url of t
 
 	GET remote.php/dav/files/user/path/to/file
 
-----
+---------------
 Uploading files
-----
+---------------
 
 A file can be uploading by sending a :code:`PUT` request to the file and sending the raw file contents as the request body.
 
@@ -126,9 +126,9 @@ A file can be uploading by sending a :code:`PUT` request to the file and sending
 
 Any existing file will be overwritten by the request.
 
-----
+---------------------------
 Creating folders (rfc4918_)
-----
+---------------------------
 
 A folder can be created by sending a :code:`MKCOL` request to the folder.
 
@@ -136,9 +136,9 @@ A folder can be created by sending a :code:`MKCOL` request to the folder.
 
 	MKCOL remote.php/dav/files/user/path/to/new/folder
 
-----
+-------------------------------------
 Deleting files and folders (rfc4918_)
-----
+-------------------------------------
 
 A file or folder can be created by sending a :code:`DELETE` request to the file or folder.
 
@@ -148,9 +148,9 @@ A file or folder can be created by sending a :code:`DELETE` request to the file 
 
 When deleting a folder, it's contents will be deleted recursively.
 
-----
+-----------------------------------
 Moving files and folders (rfc4918_)
-----
+-----------------------------------
 
 A file or folder can be moved by sending a :code:`MOVE` request to the file or folder and specifying the destination in the :code:`Destination` header as full url.
 
@@ -161,9 +161,9 @@ A file or folder can be moved by sending a :code:`MOVE` request to the file or f
 
 The overwrite behavior of the move can be controlled by setting the :code:`Overwrite` head to :code:`T` or :code:`F` to enable or disable overwriting respectively.
 
-----
+------------------------------------
 Copying files and folders (rfc4918_)
-----
+------------------------------------
 
 A file or folder can be copied by sending a :code:`COPY` request to the file or folder and specifying the destination in the :code:`Destination` header as full url.
 
@@ -174,9 +174,9 @@ A file or folder can be copied by sending a :code:`COPY` request to the file or 
 
 The overwrite behavior of the copy can be controlled by setting the :code:`Overwrite` head to :code:`T` or :code:`F` to enable or disable overwriting respectively.
 
-----
+------------------
 Settings favorites
-----
+------------------
 
 A file or folder can be marked as favorite by sending a :code:`PROPPATCH` request to the file or folder and setting the :code:`oc-favorite` property
 
@@ -194,9 +194,9 @@ A file or folder can be marked as favorite by sending a :code:`PROPPATCH` reques
 
 Setting the :code:`oc:favorite` property to 1 marks a file as favorite, setting it to 0 un-marks it as favorite.
 
-----
+-----------------
 Listing favorites
-----
+-----------------
 
 Favorites for a user can be retrieved by sending a :code:`REPORT` request and specifying :code:`oc:favorite` as a filter
 
