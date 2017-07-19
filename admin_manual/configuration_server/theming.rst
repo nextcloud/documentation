@@ -44,3 +44,18 @@ This requires the following additional dependencies:
  - PHP module imagick
  - SVG support for imagick (e.g. `libmagickcore5-extra`)
 
+Theming of mobile app URLs and IDs
+==================================
+
+The themes supported to change the URLs to the mobile apps (Android & iOS) that
+is shown when the web UI is opened on one of those devices. Then there was a
+header shown, that redirects the user to the app in the app store. By default
+this redirects to the Nextcloud apps. In some cases it is wanted that this
+links to branded versions of those apps. In those cases the IDs and URLs can be
+set via the occ command::
+
+    occ config:app:set theming AndroidClientUrl --value "https://play.google.com/store/apps/details?id=com.nextcloud.client"
+    occ config:app:set theming iTunesAppId --value "1125420102"
+    occ config:app:set theming iOSClientUrl --value "https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8"
+
+This feature was added in version 12.0.1 and 13.
