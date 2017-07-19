@@ -18,6 +18,7 @@ Its usage is documented separately in the `Nextcloud/ownCloud Desktop Client Man
 
 .. _`Nextcloud/ownCloud Desktop Client Manual`: https://doc.owncloud.org/desktop/2.2/
 .. _Nextcloud Desktop Client Manual: https://docs.nextcloud.org/
+.. _Nextcloud Sync Client: https://nextcloud.com/install/#install-clients
 
 Mobile Clients
 --------------
