@@ -21,8 +21,9 @@ Get the source
 There are two ways to obtain Nextcloud sources:
 
 * Using the `stable version <https://docs.nextcloud.org/server/11/admin_manual/#installation>`_
-.. TODO ON RELEASE: Update version number above on release
 * Using the development version from `GitHub`_ which will be explained below.
+
+.. TODO ON RELEASE: Update version number above on release
 
 To check out the source from `GitHub`_ you will need to install git (see `Setting up git <https://help.github.com/articles/set-up-git>`_ from the GitHub help)
 

@@ -90,7 +90,7 @@ Code example
       // do your stuff here
       }
     }
-    …
+    // …
   }
 
 Read folder
@@ -121,7 +121,7 @@ Code example
         // do your stuff here
       }
     }
-    …
+    // …
   }
 
 Read file
@@ -148,7 +148,7 @@ Code example
         // do your stuff here
       }
     }
-    …
+    // …
   }
 
 Delete file or folder
@@ -174,7 +174,7 @@ Code example
         // do your stuff here
       }
     }
-    …
+    // …
   }
 
 
@@ -279,7 +279,7 @@ Code example
       // do your stuff here
 	  }
     }
-    …
+    // …
   }
 
 Read shared items by link
