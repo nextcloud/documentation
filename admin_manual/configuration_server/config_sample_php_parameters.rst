@@ -1063,10 +1063,6 @@ concerns:
  - OC\\Preview\\TIFF
  - OC\\Preview\\Font
 
-.. note:: Troubleshooting steps for the MS Word previews are available
-   at the :doc:`../configuration_files/collaborative_documents_configuration`
-   section of the Administrators Manual.
-
 The following providers are not available in Microsoft Windows:
 
  - OC\\Preview\\Movie
@@ -1423,7 +1419,7 @@ and MySQL can handle 4 byte characters instead of 3 byte characters.
 
 If you want to convert an existing 3-byte setup into a 4-byte setup please
 set the parameters in MySQL as mentioned below and run the migration command:
- ./occ db:convert-mysql-charset
+./occ db:convert-mysql-charset
 The config setting will be set automatically after a successful run.
 
 Consult the documentation for more details.

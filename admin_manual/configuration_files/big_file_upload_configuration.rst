@@ -80,7 +80,7 @@ nginx
 * `client_body_temp_path <http://nginx.org/en/docs/http/ngx_http_core_module.html#client_body_temp_path>`_
 
 Since nginx 1.7.11 a new config option `fastcgi_request_buffering
-<https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_request_buffering`_
+<https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_request_buffering>`_
 is availabe. Setting this option to ``fastcgi_request_buffering off;`` in your nginx config
 might help with timeouts during the upload. Furthermore it helps if you're running out of
 disc space on the tmp partition of your system.

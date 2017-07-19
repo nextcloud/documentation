@@ -40,7 +40,7 @@ The build-in updater performs these operations:
   actions are executed while running the update of the code.
 * **Create backup:** creates a backup of the existing code base in
   ``/updater-INSTANCEID/backups/nextcloud-CURRENTVERSION/`` inside of the
-  data directory (this does not contain the ``/data``directory nor the
+  data directory (this does not contain the ``/data`` directory nor the
   database).
 * **Downloading:** downloads the code in the version it should update to. This
   is also shown in the web UI before the update is started. This archive is
