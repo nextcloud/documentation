@@ -115,7 +115,7 @@ the share. This updates the encryption, and then the share owner can remove the
 individual shares.
 
 Recovery Key Password
-~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^
 
 If your Nextcloud administrator has enabled the recovery key feature, you can
 choose to use this feature for your account. If you enable "Password recovery"
@@ -142,7 +142,7 @@ There may be other files that are not encrypted; only files that are exposed to
 third-party storage providers are guaranteed to be encrypted.
 
 Change Private Key Password
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This option is only available if your log-in password, but not your encryption
 password, was changed by your administrator. This can occur if your Nextcloud

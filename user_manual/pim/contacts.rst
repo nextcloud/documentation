@@ -105,5 +105,5 @@ to create new address books, simply by specifying an address books name.
 
 The Contacts settings also enables you to share, export and delete address
 books. You will also find the CardDAV URLs there.
-See :doc:`../pim/` for more details about syncing your adress books
+See :doc:`index` for more details about syncing your adress books
 with iOS, macOS, Thunderbird and other CardDAV clients.
