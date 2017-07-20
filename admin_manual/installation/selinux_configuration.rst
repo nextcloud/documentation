@@ -132,5 +132,5 @@ Nextcloud directory::
 
 It is much stronger security to have a more fine-grained ruleset as in the
 examples at the beginning, so use this only for testing and troubleshooting. It
- has a similar effect to disabling SELinux, so don't use it on production
- systems.
+has a similar effect to disabling SELinux, so don't use it on production
+systems.

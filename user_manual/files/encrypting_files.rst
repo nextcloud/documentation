@@ -33,14 +33,14 @@ Encryption FAQ
 How Can Encryption Be Disabled?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The only way to disable encryption is to run the :ref:`"decrypt all" <encryption_label>`
+The only way to disable encryption is to run the `"decrypt all" <../../admin_manual/configuration_server/occ_command.html#encryption-label>`_
 script, which decrypts all files and disables encryption.
 
 Is It Possible To Disable Encryption With The Recovery Key?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Yes, *if* every user uses the :ref:`file recovery key
-<enable-file-recovery-key>`, :ref:`"decrypt all" <encryption_label>` will use it
+<enable-file-recovery-key>`, `"decrypt all" <../../admin_manual/configuration_server/occ_command.html#encryption-label>`_ will use it
 to decrypt all files.
 
 Can Encryption Be Disabled Without The User’s Password?
