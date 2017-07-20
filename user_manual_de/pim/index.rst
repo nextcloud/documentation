@@ -12,6 +12,5 @@ können diese Apps aber mit einem Klick auf "Aktivieren" unter Apps -> Produktiv
    calendar
    sync_ios
    sync_osx
-   sync_kde
    sync_thunderbird
    troubleshooting

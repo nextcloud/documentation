@@ -262,7 +262,7 @@ and if running in a subfolder like ``nextcloud``:
 For the first case the :file:`.htaccess` file shipped with Nextcloud should do
 this work for your when running Apache. You only need to make sure that your
 Web server is using this file. When running Nginx please refer to
-:doc:`../installation/nginx.
+:doc:`../installation/nginx`.
 
 
 If your Nextcloud instance is installed in a subfolder called ``nextcloud`` and

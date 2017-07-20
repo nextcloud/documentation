@@ -32,22 +32,22 @@ Häufig gestellte Fragen zur Verschlüsselung
 Wie kann die Verschlüsselung deaktiviert werden?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Um die Verschlüsselung zu deaktivieren müssen Sie das :ref:`"alles entschlüsseln"
-<encryption_label>`-Skript ausführen, welches alle Daten wieder entschlüsselt und
+Um die Verschlüsselung zu deaktivieren müssen Sie das `"alles entschlüsseln"
+<../../admin_manual/configuration_server/occ_command.html#encryption-label>`_-Skript ausführen, welches alle Daten wieder entschlüsselt und
 die Verschlüsselung anschließend deaktiviert.
 
 Kann die Verschlüsselung mithilfe des Wiederherstellungs-Schlüssels deaktiviert werden?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Ja, *falls* jeder Nutzer den :ref:`Datei-Wiederherstellungs-Schlüssel
-<enable-file-recovery-key>` verwendet, können unter Verwendung des :ref:`"alles entschlüsseln"
-<encryption_label>`-Skripts alle Daten wieder entschlüsselt werden.
+Ja, *falls* jeder Nutzer den `Datei-Wiederherstellungs-Schlüssel
+<../../admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_ verwendet, können unter Verwendung des `"alles entschlüsseln"
+<../../admin_manual/configuration_server/occ_command.html#encryption-label>`_-Skripts alle Daten wieder entschlüsselt werden.
 
 Kann die Verschlüsselung ohne das Passwort eines Nutzers deaktiviert werden?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Sollte das Passwort eines Nutzers oder sein :ref:`Datei-Wiederherstellungs-Schlüssel
-<enable-file-recovery-key>` unbekannt sein, können die Daten dieses Nutzers nicht
+Sollte das Passwort eines Nutzers oder sein `Datei-Wiederherstellungs-Schlüssel
+<../../admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_ unbekannt sein, können die Daten dieses Nutzers nicht
 wieder entschlüsselt werden.
 Eine Entschlüsselung unmittelbar nach dem Login wäre gefährlich, da die Entschlüsselung
 sehr wahrscheinlich aufgrund einer Zeitüberschreitung abgebrochen werden würde.
@@ -101,7 +101,7 @@ Zugriff auf diese Daten mehr hat. Dies aktualisiert die Verschlüsselung, wonach
 Teilen mit diesem Nutzer wieder deaktiviert werden kann.
 
 Wiederherstellungs-Schlüssel
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Wenn Ihr Nextcloud-Administrator die Wiederstellungs-Schlüssel-Funktion aktiviert hat,
 können Sie die Funktion für Ihren Account aktivieren. Wenn Sie "Password-Wiederherstellung"
@@ -128,7 +128,7 @@ Es kann weitere Daten geben, die nicht verschlüsselt werden; Daten, die bei ext
 Speicheranbietern gesichert werden, sind auf jeden Fall verschlüsselt.
 
 Ändern des Passworts
-~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 Diese Option ist verfügbar, sollte Ihr Administrator Ihr Login-Passwort (aber nicht das
 Passwort zum Verschlüsseln Ihrer Daten) geändert haben. Dies kann z.B. dann der Fall sein,
