@@ -31,11 +31,11 @@ The most important labels and their meaning:
 * #needs info - this issue needs further information from the reporter, see `triaging <../bugtracker/triaging.html>`_
 * #high #medium #low signify how important the bug is.
 * Tags showing the state of the issue or PR, numbered 0-4:
- * #0 - Needs triage - ready to start development on this
- * #1 - To develop - ready to start development on this
- * #2 - Developing - development in progress
- * #3 - To Review - ready for review
- * #4 - To Release - reviewed PR that awaits unfreeze of a branch to get merged
+  * #0 - Needs triage - ready to start development on this
+  * #1 - To develop - ready to start development on this
+  * #2 - Developing - development in progress
+  * #3 - To Review - ready for review
+  * #4 - To Release - reviewed PR that awaits unfreeze of a branch to get merged
 * Feature tags: #feature: something. These tags indicate the features across apps and components which are impacted by the issue or which the PR is related to
 
 If you want a label not in the list above, please first discuss on the mailing list.

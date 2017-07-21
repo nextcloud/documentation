@@ -16,9 +16,6 @@ Nextcloud server is available:
 * As a free, full featured community-supported server, with all enterprise features.
 * Or with full enterprise support, including phone and email access to Nextcloud developers.
   
-See :doc:`../release_notes` for more information on the different Nextcloud
-editions.
-
 Videos and Blogs
 ----------------
 
