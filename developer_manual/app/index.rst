@@ -35,6 +35,7 @@
    backgroundjobs
    settings
    logging
+   repair
    testing
    publishing
    code_signing
@@ -148,6 +149,12 @@ Logging
 Log to the :file:`data/nextcloud.log`:
 
 * :doc:`logging`
+
+Repair steps
+------------
+Repair steps can be used to run code at various stages in app installation, uninstallation, migration ...
+
+* :doc:`repair`
 
 Testing
 -------
