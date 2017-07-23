@@ -83,7 +83,7 @@ Enabling debug mode
 
 .. note:: Do not enable this for production! This can create security problems and is only meant for debugging and development!
 
-To disable JavaScript and CSS caching debugging has to be enabled by setting ``debug`` to ``true`` in :file:`core/config/config.php`::
+To disable JavaScript and CSS caching debugging has to be enabled by setting ``debug`` to ``true`` in :file:`config/config.php`::
 
   <?php
   $CONFIG = array (
