@@ -124,16 +124,6 @@ The Debian/Ubuntu way
 * make latexpdf
 * evince _build/latex/NextcloudUserManual.pdf
 
-The Arch Linux way
-~~~~~~~~~~~~~~~~~~
-* sudo pacman -S community/python2-rst2pdf
-* sudo pacman -S community/python2-sphinx
-* aur/sphinxcontrib-phpdomain from AUR
-* sudo pacman -S extra/texlive-core texlive-latexextra
-* cd user_manual
-* make latexpdf
-* PDFVIEWER _build/latex/NextcloudUserManual.pdf
-
 Windows
 ^^^^^^^
 
