@@ -20,37 +20,6 @@ requires that you install and set up the server software first.
   scope of this document.  Please refer to the documentation for your specific
   database choice for instructions.
 
-.. _db-binlog-label:
-
-MySQL / MariaDB with Binary Logging Enabled
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Nextcloud is currently using a ``TRANSACTION_READ_COMMITTED`` transaction isolation
-to avoid data loss under high load scenarios (e.g. by using the sync client with
-many clients/users and many parallel operations). This requires a disabled or
-correctly configured binary logging when using MySQL or MariaDB. Your system is
-affected if you see the following in your log file during the installation or
-update of Nextcloud:
-
- An unhandled exception has been thrown:
- exception 'PDOException' with message 'SQLSTATE[HY000]: General error: 1665 
- Cannot execute statement: impossible to write to binary log since 
- BINLOG_FORMAT = STATEMENT and at least one table uses a storage engine limited 
- to row-based logging. InnoDB is limited to row-logging when transaction 
- isolation level is READ COMMITTED or READ UNCOMMITTED.'
-
-There are two solutions. One is to disable binary logging. Binary logging 
-records all changes to your database, and how long each change took. The 
-purpose of binary logging is to enable replication and to support backup 
-operations.
-
-The other is to change the BINLOG_FORMAT = STATEMENT in your database 
-configuration file, or possibly in your database startup script, to 
-BINLOG_FORMAT = MIXED. See `Overview of the Binary 
-Log <https://mariadb.com/kb/en/mariadb/overview-of-the-binary-log/>`_ and `The 
-Binary Log <https://dev.mysql.com/doc/refman/5.6/en/binary-log.html>`_ for 
-detailed information.
-
 .. _db-transaction-label:
 
 Database "READ COMMITED" transaction isolation level
@@ -176,7 +145,7 @@ You can quit the prompt by entering::
 
 An Nextcloud instance configured with PostgreSQL would contain the path to the socket on
 which the database is running as the hostname, the system username the PHP process is using,
-and an empty password to access it, and the name of the database. The :file:`config/config.php` as 
+and an empty password to access it, and the name of the database. The :file:`config/config.php` as
 created by the :doc:`../installation/installation_wizard` would therefore contain entries like
 this:
 
@@ -240,9 +209,9 @@ Troubleshooting
 How to workaround General error: 2006 MySQL server has gone away
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The database request takes too long and therefore the MySQL server times out. Its 
-also possible that the server is dropping a packet that is too large. Please 
-refer to the manual of your database for how to raise the configuration options 
+The database request takes too long and therefore the MySQL server times out. Its
+also possible that the server is dropping a packet that is too large. Please
+refer to the manual of your database for how to raise the configuration options
 ``wait_timeout`` and/or ``max_allowed_packet``.
 
 Some shared hosters are not allowing the access to these config options. For such
