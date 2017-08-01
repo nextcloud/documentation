@@ -14,95 +14,13 @@ The Nextcloud app store is built into Nextcloud to allow you to get your apps to
 * fair
 * easy to maintain
 
-Apps in the store are divided in three 'levels' of trust:
-
-* Official
-* Approved
-* Experimental
-
-With each level come requirements and a position in the store.
-
-Official
-^^^^^^^^
-Official apps are developed by and within the Nextcloud community and its `GitHub <https://github.com/nextcloud>`_ repository and offer functionality central to Nextcloud. They are ready for serious use and can be considered a part of Nextcloud.
-
-Requirements:
-
-* developed in Nextcloud GitHub repo
-* minimum of 2 active maintainers and contributions from others
-* security audited and design reviewed
-* app is at least 6 months old and has seen regular releases
-* follows app guidelines
-* supports the same platforms and technologies mentioned in the release notes of the Nextcloud version this app is made for
-
-.. * app is signed, identity verified
-
-App store:
-
-* available in Apps page in separate category
-* sorted first in all overviews, 'Official' tag
-* shown as featured, on nextcloud.com etc
-* major releases optionally featured on nextcloud.com
-* new versions/updates approved by at least one other person
-
-.. note:: Official apps include those that are part of the release tarball. We'd like to keep the tarball minimal so most official apps are not part of the standard installation.
-
-Approved
-^^^^^^^^
-Approved apps are developed by trusted developers and have passed a cursory security check. They are actively maintained in an open code repository and their maintainers deem them to be stable for casual to normal use.
-
-Requirements:
-
-* code is developed in an open and version-managed code repository, ideally GitHub with Git but other SCM/hosting is OK
-* minimum of one active developer/maintainer
-* minimum 5 ratings, average score 60/100 or better
-* app is at least 3 months old
-* follows app guidelines
-* the developer is trusted
-* app is subject to unannounced security audits
-* has defined requirements and dependencies (like what browsers, databases, PHP versions and so on are supported)
-
-.. * app is signed, at least domain verified
-
-.. note:: **Developer trust**: the developer(s) is/are known in community; he/she has/have been active for a while, have met others at events and/or worked with others in various areas.
-.. note:: **Security audits**: in practice this means that at least some of the code of this developer has been audited; either through another app by the same developer or with an earlier version of the app. And that the attitude of the developer towards these audits has been positive.
-
-App store:
-
-* visible in app store by default
-* sorted above experimental apps
-* search results sorted by ratings
-* developer can directly push new versions to the store
-* warning shows for security/stability risks
-
-Experimental
-^^^^^^^^^^^^
-Apps which have not been checked at all for security and/or are new, known to be unstable or under heavy development.
-
-Requirements:
-
-* no malicious intent found from this developer at any time
-* 0 confirmed security problems
-* less than 3 unconfirmed 'security flags'
-* rating over 20/100
-
-.. * app is signed but no verification has to be done
-
-App store:
-
-* show up in Apps page provided user has enabled "allow installation of experimental apps" in the settings
-* warning about security and stability risks is shown for app
-* sorted below all others
-
 Getting an app approved
 -----------------------
-If you want your app to be approved, make sure you fulfill all the requirements and then create an issue in the `app approval GitHub repository <https://github.com/owncloud/app-approval>`_ using `this template <https://github.com/owncloud/app-approval/blob/master/README.md>`_. A team of Nextcloud contributors will review your application. Updates to an app require re-review but, of course, an initial review takes more effort and time than the checking of an update.
-
-You are encouraged to help review other contributors' apps as well! Every app requires at least two independent reviews so your review of at least 2 (more is better!) other apps will ensure the process continues smoothly. Thank you for participating in this process and being a great Nextcloud Community member!
+You can find documentation on getting apps in our app store `here. <http://nextcloudappstore.readthedocs.io/en/latest/developer.html#publishing-apps-on-the-app-store>`_
 
 Using the code checker
 ^^^^^^^^^^^^^^^^^^^^^^
-Before asking for approval, it is best to check your app code with the code checker, and fix the issues found by the code checker.
+Before getting the app in the app store, it is best to check your app code with the code checker, and fix the issues found by the code checker.
 
 .. code-block:: bash
 
