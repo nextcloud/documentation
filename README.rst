@@ -89,10 +89,6 @@ First, make sure that the following are installed:
   on Mac: ``sudo easy_install Sphinx``
 * Sphinx PHPDomain (e.g. ``sudo easy_install sphinxcontrib-phpdomain``)
 * rst2pdf (e.g. ``sudo easy_install rst2pdf``)
-* If you're on Arch Linux, the build script is called sphinx-build2 which
-  will fail. You will need to provide a link to the expected script name::
-
-     sudo ln -s /usr/bin/sphinx-build2 /usr/bin/sphinx-build
 
 ...then enter any manual directory, then run ``make html``. The result can
 be found in the ``_build/html`` subdirectory.  PDFs can be built with the
@@ -123,6 +119,17 @@ The Debian/Ubuntu way
 * cd user_manual
 * make latexpdf
 * evince _build/latex/NextcloudUserManual.pdf
+
+The Arch Linux way
+~~~~~~~~~~~~~~~~~~
+* sudo pacman -S python2-sphinx
+* sudo pacman -S extra/texlive-core
+* sudo pacman -S texlive-latexextra
+* sudo pip2 install rst2pdf sphinxcontrib-phpdomain
+* sudo ln -s /usr/bin/sphinx-build2 /usr/bin/sphinx-build
+* cd user_manual
+* make latexpdf
+* PDFVIEWER _build/latex/NextcloudUserManual.pdf
 
 Windows
 ^^^^^^^
