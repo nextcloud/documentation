@@ -113,7 +113,7 @@ The Redis PHP module must be version 2.2.6+. If you are running a Linux
 distribution that does not package the supported versions of this module, or 
 does not package Redis at all, see :ref:`install_redis_label`.
 
-On Debian/Ubuntu/Mint install ``redis-server`` and ``php5-redis`` or ``php7.0-redis``. The installer
+On Debian/Ubuntu/Mint install ``redis-server`` and ``php-redis``. The installer
 will automatically launch ``redis-server`` and configure it to launch at 
 startup.
 
