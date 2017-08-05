@@ -38,7 +38,7 @@ You'll see your address book populate from Nextcloud!
 
 .. image:: ../images/synchronize_cardbook.png
 
-The rest of the details of dealing with Thunderbird addressbook are left to the reader... 
+The rest of the details of dealing with Thunderbird CardBook are left to the reader... 
 
 Calendar
 -----------
@@ -61,4 +61,4 @@ https://cloud.nextcloud.com/remote.php/dav/calendars/daniel/personal/
 
 .. image:: ../images/CalDAV_calendar.png
 
-The rest of the details of dealing with Thunderbird addressbook are left to the reader... 
+The rest of the details of dealing with Thunderbird Calendar are left to the reader... 
