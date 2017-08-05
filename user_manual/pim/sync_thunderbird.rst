@@ -12,28 +12,26 @@ As someone who is new to Nextcloud, new to CardBook... here is what you need in 
 
 With an installed Thunderbird mailtool, an installed CardBook add-on, and an installed Lightning add-on:
 
-#. Cardbook is found in the upper right corner of Thunderbird.
+1. Cardbook is found in the upper right corner of Thunderbird.
 .. image:: ../images/cardbook_icon.png
 
-#. In the Thunderbird Cardbook add-on:
+2. In the Thunderbird Cardbook add-on:
 
    -  "Adressbook > New Adressbook **Remote** > Next
    -  Fill in your information
 .. image:: ../images/new_addressbook.png
 
-in the bottom left of the Contacts View (same symbol as found in the top right in the Calendar view). Then look for a little impeller symbol
+3. In the bottom left of the Contacts View (in Nextcloud contatcs) look for a little impeller symbol that looks like this:
 
-.. image:: ../images/contacts_link.jpg
+.. image:: ../images/contacts_link.png
 
-which will display the URL you need for your installation to work:
+which will display the URL you need for your installation to work: https://cloud.nextcloud.com/remote.php/dav/addressbooks/users/daniel/Thunderbird/
 
-https://cloud.nextcloud.com/remote.php/dav/addressbooks/users/daniel/Thunderbird/
+4. Validate your settings and click Next, then choose the name of the addressbook and click Next again.
 
-Validate your settings and click Next, then choose the name of the addressbook and click Next again.
+.. image:: ../images/addressbook_name.png
 
-.. image:: ../images/addressbook_name.jpg
-
-Once installed, synchronize your addressbook by clicking "Syncronize" in the top left corner of CardBook.
+5. Once installed, synchronize your addressbook by clicking "Syncronize" in the top left corner of CardBook.
 You'll see your address book populate from Nextcloud! 
 
 The rest of the details of dealing with Thunderbird addressbook are left to the reader... 
