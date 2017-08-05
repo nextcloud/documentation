@@ -8,9 +8,8 @@ As someone who is new to Nextcloud, new to CardBook... here is what you need in 
 
 #. `Thunderbird <https://www.mozilla.org/en-US/thunderbird/>`_ for your OS unless it comes with your OS distribution (Linux)
 #. `CardBook <https://addons.mozilla.org/en-US/thunderbird/addon/cardbook/>`_ (a Thunderbird contacts add-on.)
-#. `Lightning <https://addons.mozilla.org/en-US/thunderbird/addon/lightning/>`_ (a Thunderbird calendar add-on.)
 
-With an installed Thunderbird mailtool, an installed CardBook add-on, and an installed Lightning add-on:
+With an installed Thunderbird mailtool, an installed CardBook add-on:
 
 1. Cardbook is found in the upper right corner of Thunderbird.
 
@@ -33,9 +32,17 @@ which will display the URL you need for your installation to work: https://cloud
 
 .. image:: ../images/addressbook_name.png
 
-5. Once installed, synchronize your addressbook by clicking "Syncronize" in the top left corner of CardBook.
+5. Once installed, synchronize your addressbook by clicking "Synchronize" in the top left corner of CardBook.
 You'll see your address book populate from Nextcloud! 
 
 .. image:: ../images/synchronize_cardbook.png
 
 The rest of the details of dealing with Thunderbird addressbook are left to the reader... 
+
+Calendar
+-----------
+
+#. `Thunderbird <https://www.mozilla.org/en-US/thunderbird/>`_ for your OS unless it comes with your OS distribution (Linux)
+#. `Lightning <https://addons.mozilla.org/en-US/thunderbird/addon/lightning/>`_ (a Thunderbird calendar add-on.)
+
+Please add instructions here by making a PR. Thank you.
