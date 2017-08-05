@@ -13,12 +13,14 @@ As someone who is new to Nextcloud, new to CardBook... here is what you need in 
 With an installed Thunderbird mailtool, an installed CardBook add-on, and an installed Lightning add-on:
 
 1. Cardbook is found in the upper right corner of Thunderbird.
+
 .. image:: ../images/cardbook_icon.png
 
 2. In the Thunderbird Cardbook add-on:
 
    -  "Adressbook > New Adressbook **Remote** > Next
    -  Fill in your information
+
 .. image:: ../images/new_addressbook.png
 
 3. In the bottom left of the Contacts View (in Nextcloud contatcs) look for a little impeller symbol that looks like this:
@@ -33,5 +35,7 @@ which will display the URL you need for your installation to work: https://cloud
 
 5. Once installed, synchronize your addressbook by clicking "Syncronize" in the top left corner of CardBook.
 You'll see your address book populate from Nextcloud! 
+
+.. image:: ../images/synchronize_cardbook.png
 
 The rest of the details of dealing with Thunderbird addressbook are left to the reader... 
