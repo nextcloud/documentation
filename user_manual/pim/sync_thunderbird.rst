@@ -54,9 +54,11 @@ https://cloud.nextcloud.com/remote.php/dav/calendars/admine/personal/
 2. Go to the calendar view in Thunderbird and right click in the calendar menu to the left (where the names of the calendars are) to add a **New Calendar**.
 
 3. Choose **On the network**
+
 .. image:: ../images/new_calendar.png
 
 4. Choose **CalDAV** and fill in the missing information:
+
 .. image:: ../images/CalDAV_calendar.png
 
 The rest of the details of dealing with Thunderbird addressbook are left to the reader... 
