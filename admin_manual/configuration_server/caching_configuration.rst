@@ -46,7 +46,7 @@ PHP 5.5 and up include the Zend OPcache in core, and on most Linux
 distributions it is enabled by default. However, it does 
 not bundle a data cache. APCu is a data cache, and it is available in most 
 Linux distributions. On Red Hat/CentOS/Fedora systems install
-``php-pecl-apcu``. On Debian/Ubuntu/Mint systems install ``php5-apcu`` or ``php7.0-apcu``.
+``php-pecl-apcu``. On Debian/Ubuntu/Mint systems install ``php-apcu``.
 On Ubuntu 14.04 LTS, the APCu version (4.0.2) is too old to use with Nextcloud (requires 4.0.6+).
 You may install 4.0.7 from Ubuntu backports with this command::
 
