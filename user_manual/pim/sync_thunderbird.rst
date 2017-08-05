@@ -1,4 +1,4 @@
-Thunderbird - Synchronize Addressbook
+Thunderbird - Synchronize Addressbook and Calendar
 =====================================
 
 Addressbook
