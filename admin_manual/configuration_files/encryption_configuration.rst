@@ -216,7 +216,7 @@ command gives you the option to encrypt all files. You must first put your
 Nextcloud server into maintenance mode to prevent any user activity until
 encryption is completed::
 
- occ maintenance:maintenance --on
+ occ maintenance:mode --on
  Maintenance mode is currently enabled
 
 Then run ``occ``::
@@ -269,12 +269,12 @@ You may disable encryption only with ``occ``. Make sure you have backups of all
 encryption keys, including users'. Put your Nextcloud server into 
 maintenance mode, and then disable your encryption module with this command::
 
- occ maintenance:maintenance --on
+ occ maintenance:mode --on
  occ encryption:disable
  
 Take it out of maintenance mode when you are finished::
 
- occ maintenance:maintenance --off
+ occ maintenance:mode --off
 
 Files Not Encrypted
 -------------------
