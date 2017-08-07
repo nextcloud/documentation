@@ -1,44 +1,64 @@
-Thunderbird - Synchronize Addressbook
+Thunderbird - Synchronize Addressbook and Calendar
 =====================================
 
 Addressbook
 -----------
 
-As someone who is new to Nextcloud, new to SoGo Connector, and new to Thunderbird Addressbook... here is what you need in excruciating pithy detail to make this work (for all the other lost souls out there):
+As someone who is new to Nextcloud and new to CardBook here is what you need in excruciating pithy detail to make this work:
 
-#. `Thunderbird <https://www.mozilla.org/en-US/thunderbird/>`_ for your OS unless it comes with your OS distribution (Linux)
-#. `Sogo Connector <https://sogo.nu/download.html#/frontends>`_ (latest release)
-#. `Lightning <https://addons.mozilla.org/en-US/thunderbird/addon/lightning/>`_ (a Thunderbird calendar add-on. At the time (Aug 14), syncing your contacts only works with this add-on installed.)
+- `Thunderbird <https://www.mozilla.org/en-US/thunderbird/>`_ for your OS unless it comes with your OS distribution (Linux)
+- `CardBook <https://addons.mozilla.org/en-US/thunderbird/addon/cardbook/>`_ (a Thunderbird contacts add-on.)
 
-With an installed Thunderbird mailtool, an installed SoGo Connector, and an installed Lightning add-on:
+Once you've installed CardBook and Thunderbird do like this:
 
-#. Thunderbird Addressbook is in the Thunderbird "Tools" Menu
-#. In the Thunderbird Addressbook application:
+1. In the bottom left of the Contacts View (in Nextcloud contatcs) look for a little impeller symbol that looks like this:
 
-   -  "File > New > **Remote Addressbook**" (SoGo Connector added this)
-   -  "**Name:**" is the name you want to give your Addressbook in the Thunderbird addressbook bar area
-   -  "**URL:**" is found in your Nextcloud Contacts area, that little Gear symbol
+.. image:: ../images/contacts_link.png
 
-.. image:: ../images/contact_thunderbird-Symbol_Gear.jpg
+which will display and URL that looks something like this:
+https://cloud.nextcloud.com/remote.php/dav/addressbooks/users/daniel/Thunderbird/
 
-in the bottom left of the Contacts View (same symbol as found in the top right in the Calendar view). Then look for a little impeller symbol
+2. Cardbook is found in the upper right corner of Thunderbird:
 
-.. image:: ../images/contact_thunderbird-Symbol_Impeller.jpg
+.. image:: ../images/cardbook_icon.png
 
-which will display the URL you need for your installation to work.
+3. In the Thunderbird Cardbook add-on:
 
-.. image:: ../images/contact_thunderbird-URL_config.jpg
+   -  "Adressbook > New Adressbook **Remote** > Next
+   -  Fill in your information
 
-Once installed, synchronize (right click on your newly made remote address book and select "Synchronize").
-You'll see your address book populate from Nextcloud! Don't click "read only" above unless you don't want to
-modify your Nextcloud server addressbook, like it contains a listing of corporate contacts and is shared with
-lots of people, and you don't want a new user dragging it somewhere unintended.
+.. image:: ../images/new_addressbook.png
 
-The rest of the details of dealing with Thunderbird addressbook are left to the reader... First thing I learned
-is dragging a contact to a different addressbook is a "move" operation. If you are worried about losing the
-contact, save it to a VCF file using Nextcloud (Or LDIF using Thunderbird Addressbook) first! Like dragging
-from "Nextcloud Addressbook" to "Personal Address Book" removes the contact from Nextcloud Server
-(*deleting it from all the other synchronized installations*) and puts it in your Local Machine -only-
-Address Book. So be careful or you'll have unintended consequences where you might have intended a "copy" operation.
+4. Validate your settings and click Next, then choose the name of the addressbook and click Next again.
 
-Contact *Pictures* are also sync'ed!
+.. image:: ../images/addressbook_name.png
+
+5. Once installed, synchronize your addressbook by clicking "Synchronize" in the top left corner of CardBook.
+You'll see your address book populate from Nextcloud! 
+
+.. image:: ../images/synchronize_cardbook.png
+
+The rest of the details of dealing with Thunderbird CardBook are left to the reader... 
+
+Calendar
+-----------
+
+- `Thunderbird <https://www.mozilla.org/en-US/thunderbird/>`_ for your OS unless it comes with your OS distribution (Linux)
+- `Lightning <https://addons.mozilla.org/en-US/thunderbird/addon/lightning/>`_ (a Thunderbird calendar add-on.)
+
+Once you've installed Lighning and Thunderbird do like this:
+
+1. Go to your Nextcloud Calendar and click on the 3 dotted menu for the calendar that you want to synchronize which will display and URL that looks something like this:
+https://cloud.nextcloud.com/remote.php/dav/calendars/daniel/personal/
+
+2. Go to the calendar view in Thunderbird and right click in the calendar menu to the left (where the names of the calendars are) to add a **New Calendar**.
+
+3. Choose **On the network**
+
+.. image:: ../images/new_calendar.png
+
+4. Choose **CalDAV** and fill in the missing information:
+
+.. image:: ../images/CalDAV_calendar.png
+
+The rest of the details of dealing with Thunderbird Calendar are left to the reader... 
