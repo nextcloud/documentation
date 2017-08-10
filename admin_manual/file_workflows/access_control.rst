@@ -98,6 +98,11 @@ option.
 
 * **File collaborative tag:** Either the file itself, or any of the file
   owner's parent folders needs to be tagged with the tag.
+
+  .. note:: Tags used in access control rules should be restricted tags,
+            otherwise any user can remove the tag to access the file again.
+            The best way to do this is with the :doc:`automated_tagging`.
+
 * **File mimetype:** The mimetype of the file, e.g. ``text/plain``
 * **File size:** The size of the file (*Only available on upload*)
 
