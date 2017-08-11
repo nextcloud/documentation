@@ -1,5 +1,5 @@
 ==========================
-Automated Tagging Of Files
+Automated Tagging of Files
 ==========================
 
 Nextcloud's Files Automated Tagging app allows to assign collaborative tags
