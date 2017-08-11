@@ -27,7 +27,7 @@ File age
 ========
 
 Currently retention is based on the creation date of the file. The sync client sends
-the original creation date to the server, while uploading through the web interface
-will create a new file with a new creation date.
+the **original** creation date to the server, while uploading through the web interface
+will create a new file with a **new** creation date.
 We hope to be able to add a ``upload date`` to the filesystem soon, which would make more
 sense. Until then this potentially unexpected behaviour has to be taken into account.
