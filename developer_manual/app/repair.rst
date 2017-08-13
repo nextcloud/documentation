@@ -1,6 +1,6 @@
-=======
+============
 Repair Steps
-=======
+============
 
 Repair steps are methods which are executed by Nextcloud on certain
 events which directly affect the app. You can use these repair steps to run
@@ -101,7 +101,7 @@ of the app:
 
 
 Repair-step types
-==========================
+=================
 The following repair steps are available:
 
 * ``install`` This repair step will be executed when installing the app. This means it is executed every time the app is enabled (using the Web interface or the CLI).
