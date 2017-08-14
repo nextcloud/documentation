@@ -153,12 +153,12 @@ Example Installation on Ubuntu 16.04 LTS Server
 
 On a machine running a pristine Ubuntu 16.04 LTS server, you have two options:
 
-To install the Nextcloud `Snap Package <http://snapcraft.io/>`_, run the
+You can either install the Nextcloud `Snap Package <http://snapcraft.io/>`_, just run the
 following command in a terminal::
 
     sudo snap install nextcloud
 
-Install the required and recommended modules for a typical Nextcloud
+Or you can use .deb packages to install the required and recommended modules for a typical Nextcloud
 installation, using Apache and MariaDB, by issuing the following commands in a
 terminal::
 
