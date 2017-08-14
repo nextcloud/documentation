@@ -54,9 +54,9 @@ Outputting information
 A repair step can generate information while running, using the
 ``OCP\Migration\IOutput`` parameter to the ``run`` method.
 Using the ``info`` and ``warning`` methods a message can be shown in the console.
-In orderto show a progressbar, firstly call the ``startProgress`` method.
+In order to show a progressbar, firstly call the ``startProgress`` method.
 The maximum number of steps can be adjusted by passing it as argument to the
-``startProgress`` method. After every step run the ``advance`` method. When all steps are finished run the ``finishProgress``
+``startProgress`` method. After every step run the ``advance`` method. Once all steps are finished run the ``finishProgress``
 method.
 
 The following function will sleep for 10 seconds and show the progress:
