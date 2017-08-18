@@ -865,14 +865,6 @@ debugging, as your logfile will become huge.
 
 ::
 
-	'cron_log' => true,
-
-Log successful cron runs.
-
-Defaults to ``true``
-
-::
-
 	'log_rotate_size' => false,
 
 Enables log rotation and limits the total size of logfiles. The default is 0,
