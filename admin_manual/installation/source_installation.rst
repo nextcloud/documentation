@@ -313,9 +313,27 @@ Additional Apache Configurations
 Pretty URLs
 -----------
 
-Pretty URLs are created automatically when ``.htaccess`` is writable by the
-HTTP user, ``mod_env`` and ``mod_rewrite`` are installed, and
-``'overwrite.cli.url'`` in your ``config.php`` is set to any non-null value.
+Pretty URLs remove the ``index.php``-part in all Nextcloud URLs, for example
+in sharing links like ``https://example.org/nextcloud/index.php/s/Sv1b7krAUqmF8QQ```,
+making URLs shorter and thus prettier.
+
+``mod_env`` and ``mod_rewrite`` must be installed on your webserver and the :file:`.htaccess`
+must be writable by the HTTP user. Then you can set in the :file:`config.php` two variables::
+
+ 'overwrite.cli.url' => 'https://example.org/nextcloud',
+ 'htaccess.RewriteBase' => '/nextcloud',
+
+if your setup is available on ``https://example.org/nextcloud`` or::
+
+ 'overwrite.cli.url' => 'https://example.org',
+ 'htaccess.RewriteBase' => '/',
+
+if it isn't installed in a subfolder. Finally run this occ-command to update
+your .htaccess file::
+
+     sudo -u www-data php /var/www/nextcloud/occ maintenance:update:htaccess
+
+After each update, these changes are automatically applied to the ``.htaccess``-file.
 
 .. _enabling_ssl_label:
 
