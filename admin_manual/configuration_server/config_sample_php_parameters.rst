@@ -1093,6 +1093,14 @@ See command line (occ) methods ``ldap:show-remnants`` and ``user:delete``
 
 Defaults to ``51`` minutes
 
+::
+
+	'sort_groups_by_name' => false,
+
+Sort groups in the user settings by name instead of the user count
+
+By enabling this the user count beside the group name is disabled as well.
+
 Comments
 --------
 
