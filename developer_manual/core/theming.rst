@@ -91,8 +91,7 @@ If you want to do a quick exchange like (1) it's important to know the size of t
 
 The (main) pictures that can be found inside Nextcloud standard theming are the following:
 
-* The logo at the login-page above the credentials-box: 	        …/nextcloud/themes/default/core/img/logo.svg
-* The logo that's always in the left upper corner after login:   …/nextcloud/themes/default/core/img/logo-wide.svg
+* The logo at the login-page above the credentials-box and in the header: 	        …/nextcloud/themes/default/core/img/logo.svg
 
 Inserting your new logo
 -----------------------
