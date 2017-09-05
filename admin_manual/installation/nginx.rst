@@ -108,6 +108,9 @@ webroot of your nginx installation. In this example it is
       # This module is currently not supported.
       #pagespeed off;
 
+      error_page 403 /core/templates/403.php;
+      error_page 404 /core/templates/404.php;
+
       location / {
           rewrite ^ /index.php$uri;
       }
@@ -251,6 +254,9 @@ your nginx installation.
           # Uncomment if your server is build with the ngx_pagespeed module
           # This module is currently not supported.
           #pagespeed off;
+
+          error_page 403 /nextcloud/core/templates/403.php;
+          error_page 404 /nextcloud/core/templates/404.php;
 
           location /nextcloud {
               rewrite ^ /nextcloud/index.php$uri;
