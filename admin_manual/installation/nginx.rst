@@ -108,6 +108,9 @@ webroot of your nginx installation. In this example it is
       # This module is currently not supported.
       #pagespeed off;
 
+      error_page 403 /core/templates/403.php;
+      error_page 404 /core/templates/404.php;
+
       location / {
           rewrite ^ /index.php$uri;
       }
@@ -119,7 +122,7 @@ webroot of your nginx installation. In this example it is
           deny all;
       }
 
-      location ~ ^/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater/.+|ocs-provider/.+)\.php(?:$|/) {
+      location ~ ^/(?:index|remote|public|cron|core/ajax/update|core/templates/403|core/templates/404|status|ocs/v[12]|updater/.+|ocs-provider/.+)\.php(?:$|/) {
           fastcgi_split_path_info ^(.+\.php)(/.*)$;
           include fastcgi_params;
           fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
@@ -252,6 +255,9 @@ your nginx installation.
           # This module is currently not supported.
           #pagespeed off;
 
+          error_page 403 /nextcloud/core/templates/403.php;
+          error_page 404 /nextcloud/core/templates/404.php;
+
           location /nextcloud {
               rewrite ^ /nextcloud/index.php$uri;
           }
@@ -263,7 +269,7 @@ your nginx installation.
               deny all;
           }
 
-          location ~ ^/nextcloud/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater/.+|ocs-provider/.+)\.php(?:$|/) {
+          location ~ ^/nextcloud/(?:index|remote|public|cron|core/ajax/update|core/templates/403|core/templates/404|status|ocs/v[12]|updater/.+|ocs-provider/.+)\.php(?:$|/) {
               fastcgi_split_path_info ^(.+\.php)(/.*)$;
               include fastcgi_params;
               fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
