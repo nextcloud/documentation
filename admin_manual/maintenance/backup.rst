@@ -1,6 +1,6 @@
-====================
-Backing up Nextcloud
-====================
+======
+Backup
+======
 
 To backup an Nextcloud installation there are four main things you need to retain:
 
@@ -28,7 +28,7 @@ MySQL/MariaDB
 MySQL or MariaDB, which is a drop-in MySQL replacement, is the recommended 
 database engine. To backup MySQL/MariaDB::
 
-    mysqldump --lock-tables -h [server] -u [username] -p[password] [db_name] > nextcloud-sqlbkp_`date +"%Y%m%d"`.bak
+    mysqldump --single-transaction -h [server] -u [username] -p[password] [db_name] > nextcloud-sqlbkp_`date +"%Y%m%d"`.bak
 
 SQLite
 ^^^^^^

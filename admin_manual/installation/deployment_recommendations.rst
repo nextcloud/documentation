@@ -1,6 +1,6 @@
-====================================
-Nextcloud Deployment Recommendations
-====================================
+==========================
+Deployment Recommendations
+==========================
 
 What is the best way to install and maintain Nextcloud? The answer to that is
 *"it depends"* because every Nextcloud customer has their own
@@ -414,7 +414,7 @@ Provider setup:
 * Least load to Apache servers (2-n)
 * Memcached/Redis for shared session storage (2-n)
 * Database cluster with single Master, multiple slaves and proxy to split
-  requests accordingly (2-n) - HAProxy or `MaxScale`_ are possible proxy
+  requests accordingly (2-n) - `MaxScale`_ is a possible proxy
   solutions to load balance the writes to the master and reads to the slaves
   (see "Database load balancer" below)
 * GPFS or Ceph via phprados (2-n, 3 to be safe, Ceph 10+ nodes to see speed
@@ -455,8 +455,6 @@ Database load balancer
 When Galera cluster is used as DB cluster solution, we recommend to use
 `MaxScale`_ as load balancer infront of the cluster to distribute writes to
 the master node and reads to the slaves.
-
-As alternative also `HAProxy can be used as load balancer for the DB`_.
 
 Software Considerations
 -----------------------
@@ -553,11 +551,11 @@ References
 
 .. TODO ON RELEASE: Update version number below on release
 .. _Maintenance:
-   https://docs.nextcloud.org/server/11/admin_manual/maintenance/index.html
+   https://docs.nextcloud.org/server/12/admin_manual/maintenance/index.html
 .. _User Authentication with LDAP:
-   https://docs.nextcloud.org/server/11/admin_manual/configuration_user/user_auth_ldap.html
+   https://docs.nextcloud.org/server/12/admin_manual/configuration_user/user_auth_ldap.html
 .. _Configuring Memory Caching:
-   https://docs.nextcloud.org/server/11/admin_manual/configuration_server/caching_configuration.html
+   https://docs.nextcloud.org/server/12/admin_manual/configuration_server/caching_configuration.html
 .. _Nextcloud Server or Enterprise Edition:
    https://nextcloud.com/enterprise/
 
@@ -579,8 +577,6 @@ References
    http://galeracluster.com/documentation-webpages/isolationlevels.html#understanding-isolation-levels
 .. _contact the Nextcloud team:
    https://nextcloud.com/contact/
-.. _HAProxy can be used as load balancer for the DB:
-   https://severalnines.com/blog/avoiding-deadlocks-galera-set-haproxy-single-node-writes-and-multi-node-reads
 .. _MaxScale:
    https://mariadb.com/products/mariadb-maxscale
 .. _HAProxy:

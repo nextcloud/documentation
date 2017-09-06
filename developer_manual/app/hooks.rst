@@ -14,7 +14,7 @@ Hooks are used to execute code before or after an event has occurred. This is fo
     $app = new Application();
     $app->getContainer()->query('UserHooks')->register();
 
-The hook logic should be in a separate class that is being registered in the :doc:`container`
+The hook logic should be in a separate class that is being registered in the :doc:`container`:
 
 .. code-block:: php
 
@@ -108,7 +108,7 @@ Hooks available in scope **\\OC\\User**:
 * **preCreateUser** (string $uid, string $password)
 * **postCreateUser** (\\OC\\User\\User $user)
 * **preLogin** (string $user, string $password)
-* **postLogin** (\\OC\\User\\User $user)
+* **postLogin** (\\OC\\User\\User $user, string $password)
 * **logout** ()
 
 UserManager

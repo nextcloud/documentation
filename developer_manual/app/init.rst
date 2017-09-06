@@ -13,7 +13,7 @@ The :file:`appinfo/app.php` is the first file that is loaded and executed in Nex
     \OC::$server->getNavigationManager()->add(function () {
         $urlGenerator = \OC::$server->getURLGenerator();
         return [
-            // the string under which your app will be referenced in nextcloud
+            // the string under which your app will be referenced in Nextcloud
             'id' => 'myapp',
 
             // sorting weight for the navigation. The higher the number, the higher

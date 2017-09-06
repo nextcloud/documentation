@@ -1,6 +1,6 @@
-===================
-Restoring Nextcloud
-===================
+================
+Restoring Backup
+================
 
 To restore a Nextcloud installation there are four main things you need to
 restore:
@@ -15,6 +15,9 @@ restore:
 
 When you have completed your restoration, see the ``Setting Strong Directory
 Permissions`` section of :doc:`../installation/installation_wizard`.
+
+Also make sure to run the :ref:`maintenance:data-fingerprint <maintenance_commands_label>` command
+afterwards, to ensure your sync clients can recover from the restored backup.
 
 Restore Folders
 ---------------

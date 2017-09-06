@@ -1,6 +1,6 @@
-=======================
-Nextcloud Server Tuning
-=======================
+=============
+Server Tuning
+=============
 
 Using cron to perform background jobs
 -------------------------------------
@@ -73,8 +73,6 @@ Enable HTTP2 for faster loading
 
 HTTP2 has `huge speed improvements <https://www.troyhunt.com/i-wanna-go-fast-https-massive-speed-advantage/>`_ over HTTP with multiple request. Most `browsers already support HTTP2 over SSL (HTTPS) <http://caniuse.com/#feat=http2>`_. So refer to your server manual for guides on how to use HTTP2.
 
-.. _opcache:
-
 Enable PHP OPcache
 ------------------
 
@@ -82,7 +80,7 @@ The `OPcache <http://php.net/manual/en/intro.opcache.php>`_ improves the perform
 
 .. code:: ini
 
-  opcache.enable=On
+  opcache.enable=1
   opcache.enable_cli=1
   opcache.interned_strings_buffer=8
   opcache.max_accelerated_files=10000

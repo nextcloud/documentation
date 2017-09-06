@@ -9,7 +9,7 @@ Getting PHPUnit
 
 Nextcloud uses PHPUnit >= 4.8 for unit testing.
 
-To install it, either get it via your packagemanager::
+To install it, either get it via your package manager::
 
   sudo apt-get install phpunit
 
@@ -19,7 +19,7 @@ or install it manually::
   chmod +x phpunit.phar
   sudo mv phpunit.phar /usr/local/bin/phpunit
 
-After the installation the ''phpunit'' command is available::
+After the installation the **phpunit** command is available::
 
   phpunit --version
 
@@ -34,13 +34,13 @@ Writing PHP unit tests
 
 To get started, do the following:
  - Create a directory called ``tests`` in the top level of your application
- - Create a php file in the directory and ``require_once`` your class which you want to test.
+ - Create a PHP file in the directory and ``require_once`` your class which you want to test
 
-Then you can simply run the created test with phpunit.
+Then you can simply run the created test with **phpunit**.
 
-.. note:: If you use Nextcloud functions in your class under test (i.e: OC::getUser()) you'll need to bootstrap Nextcloud or use dependency injection.
+.. note:: If you use Nextcloud functions in your class under test (i.e., OC::getUser()) you'll need to bootstrap Nextcloud or use dependency injection.
 
-.. note:: You'll most likely run your tests under a different user than the Web server. This might cause problems with your PHP settings (i.e: open_basedir) and requires you to adjust your configuration.
+.. note:: You'll most likely run your tests under a different user than the Web server. This might cause problems with your PHP settings (i.e., open_basedir) and requires you to adjust your configuration.
 
 An example for a simple test would be:
 
@@ -84,7 +84,7 @@ In :file:`/srv/http/nextcloud/apps/myapp/` you run the test with::
   phpunit tests/testaddtwo.php
 
 
-Make sure to extend the ``\Test\TestCase`` class with your test and always call the parent methods,
+Make sure to extend the ``\Test\TestCase`` class with your test and always call the parent methods
 when overwriting ``setUp()``, ``setUpBeforeClass()``, ``tearDown()`` or ``tearDownAfterClass()`` method
 from the TestCase. These methods set up important stuff and clean up the system after the test,
 so the next test can run without side effects, like remaining files and entries in the file cache, etc.
@@ -95,7 +95,7 @@ Bootstrapping Nextcloud
 ~~~~~~~~~~~~~~~~~~~~~~~
 If you use Nextcloud functions or classes in your code, you'll need to make them available to your test by bootstrapping Nextcloud.
 
-To do this, you'll need to provide the ``--bootstrap`` argument when running PHPUnit
+To do this, you'll need to provide the ``--bootstrap`` argument when running PHPUnit:
 
 :file:`/srv/http/nextcloud`::
 
@@ -138,7 +138,7 @@ Further Reading
 JavaScript unit testing for core
 --------------------------------
 
-JavaScript Unit testing for **core** and **core apps** is done using the `Karma <http://karma-runner.github.io>`_ test runner with `Jasmine <http://pivotal.github.io/jasmine/>`_.
+JavaScript Unit testing for **core** and **core apps** is done using the `Karma <http://karma-runner.github.io>`_ test runner with `Jasmine <https://jasmine.github.io/>`_.
 
 Installing Node JS
 ~~~~~~~~~~~~~~~~~~
@@ -177,9 +177,9 @@ Every time you reload the page, the unit tests will be relaunched and will outpu
 Unit test paths
 ~~~~~~~~~~~~~~~
 
-JavaScript unit test examples can be found in :file:`apps/files/tests/js/`
+JavaScript unit test examples can be found in :file:`apps/files/tests/js/`.
 
-Unit tests for the core app JavaScript code can be found in :file:`core/js/tests/specs`
+Unit tests for the core app JavaScript code can be found in :file:`core/js/tests/specs`.
 
 Documentation
 ~~~~~~~~~~~~~

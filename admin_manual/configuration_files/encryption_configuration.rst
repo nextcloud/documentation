@@ -146,7 +146,7 @@ storage mount, see :ref:`external_storage_mount_options_label`
 .. _enable-file-recovery-key:
 
 Enabling Users File Recovery Keys
-----------------------------------
+---------------------------------
 
 If you lose your Nextcloud password, then you lose access to your encrypted 
 files. If one of your users loses their Nextcloud password their files are 
@@ -213,11 +213,11 @@ The [module ID] is taken from the ``encryption:list-modules`` command.
 Encrypt all data files for all users. For performance reasons, when you enable 
 encryption on an Nextcloud server only new and changed files are encrypted. This 
 command gives you the option to encrypt all files. You must first put your 
-Nextcloud server into single-user mode to prevent any user activity until 
+Nextcloud server into maintenance mode to prevent any user activity until
 encryption is completed::
 
- occ maintenance:singleuser --on
- Single user mode is currently enabled
+ occ maintenance:mode --on
+ Maintenance mode is currently enabled
 
 Then run ``occ``::
 
@@ -267,14 +267,14 @@ Disabling Encryption
 
 You may disable encryption only with ``occ``. Make sure you have backups of all 
 encryption keys, including users'. Put your Nextcloud server into 
-single-user mode, and then disable your encryption module with this command::
+maintenance mode, and then disable your encryption module with this command::
 
- occ maintenance:singleuser --on
+ occ maintenance:mode --on
  occ encryption:disable
  
-Take it out of single-user mode when you are finished::
+Take it out of maintenance mode when you are finished::
 
- occ maintenance:singleuser --off
+ occ maintenance:mode --off
 
 Files Not Encrypted
 -------------------

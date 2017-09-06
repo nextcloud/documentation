@@ -4,7 +4,7 @@ Tutorial
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-This tutorial will outline how to create a very simple notes app. The finished app is available on `GitHub <https://github.com/owncloud/app-tutorial#tutorial>`_.
+This tutorial will outline how to create a very simple notes app. The finished app is available on `GitHub <https://github.com/nextcloud/app-tutorial#tutorial>`_.
 
 
 Setup
@@ -33,7 +33,7 @@ Now open another terminal window and start the development server::
 
 Afterwards a skeleton app can be created in the `app store <https://apps.nextcloud.com/developer/apps/generate>`_.
 
-Download the extracted the downloaded file and move it into your ``apps/`` directory. Afterwards the application can be enabled on the `apps page <http://localhost:8080/index.php/settings/apps>`_.
+Download the compressed file that contains the generated app and extract it into your ``apps/`` directory. Afterwards the application can be enabled on the `apps page <http://localhost:8080/index.php/settings/apps>`_.
 
 The first basic app is now available at ``http://localhost:8080/index.php/apps/yourappid/``
 
@@ -172,7 +172,7 @@ Since the route which returns the initial HTML has been taken care of, the contr
 
     }
 
-.. note:: The parameters are extracted from the request body and the url using the controller method's variable names. Since PHP does not support type hints for primitive types such as ints and booleans, we need to add them as annotations in the comments. In order to type cast a parameter to an int, add **@param int $parameterName**
+.. note:: The parameters are extracted from the request body and the URL using the controller method's variable names. Since PHP does not support type hints for primitive types such as ints and booleans, we need to add them as annotations in the comments. In order to type cast a parameter to an int, add **@param int $parameterName**
 
 Now the controller methods need to be connected to the corresponding URLs in the **ownnotes/appinfo/routes.php** file:
 
@@ -310,12 +310,12 @@ Entities are returned from so called :doc:`Mappers <database>`. Let's create one
     <?php
     namespace OCA\OwnNotes\Db;
 
-    use OCP\IDb;
+    use OCP\IDbConnection;
     use OCP\AppFramework\Db\Mapper;
 
     class NoteMapper extends Mapper {
 
-        public function __construct(IDb $db) {
+        public function __construct(IDbConnection $db) {
             parent::__construct($db, 'ownnotes_notes', '\OCA\OwnNotes\Db\Note');
         }
 
@@ -1045,7 +1045,7 @@ The template file **ownnotes/templates/part.navigation.php** contains the naviga
     <script id="navigation-tpl" type="text/x-handlebars-template">
         <li id="new-note"><a href="#"><?php p($l->t('Add note')); ?></a></li>
         {{#each notes}}
-            <li class="note with-menu {{#if active}}active{{/if}}"  data-id="{{ id }}">
+            <li class="note with-menu {{#if active}}active{{/if}}" data-id="{{ id }}">
                 <a href="#">{{ title }}</a>
                 <div class="app-navigation-entry-utils">
                     <ul>

@@ -188,14 +188,14 @@ path of your certificate as in this example::
 
  servercert /etc/davfs2/certs/mycertificate.pem
 
-Accessing Files Using Mac OS X
-------------------------------
+Accessing Files Using macOS
+---------------------------
 
-.. note:: The Mac OS X Finder suffers from a `series of implementation problems
+.. note:: The macOS Finder suffers from a `series of implementation problems
    <http://sabre.io/dav/clients/finder/>`_ and should only be used if the
    Nextcloud server runs on **Apache** and **mod_php**, or **Nginx 1.3.8+**.
 
-To access files through the Mac OS X Finder:
+To access files through the macOS Finder:
 
 1. Choose **Go > Connect to Server**.
 
@@ -207,7 +207,7 @@ To access files through the Mac OS X Finder:
      :alt: Screenshot of entering your Nextcloud server address on Mac OS X
 
   For example, the URL used to connect to the Nextcloud server
-  from the Mac OS X Finder is::
+  from the macOS Finder is::
 
     https://example.com/nextcloud/remote.php/dav/files/USERNAME/
 

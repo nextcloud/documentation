@@ -125,7 +125,7 @@ The container works in the following way:
       $c->query('AuthorService')
     );
 
-* The **AppName** is queried and returned from the baseclass
+* The **AppName** is queried and returned from the base class
 * The **Request** is queried and returned from the server container
 * **AuthorService** is queried::
 
@@ -294,7 +294,6 @@ Types:
 * **OCP\\AppFramework\\Utility\\IControllerMethodReflector**
 * **OCP\\Contacts\\IManager**
 * **OCP\\IDateTimeZone**
-* **OCP\\IDb**
 * **OCP\\IDBConnection**
 * **OCP\\Diagnostics\\IEventLogger**
 * **OCP\\Diagnostics\\IQueryLogger**

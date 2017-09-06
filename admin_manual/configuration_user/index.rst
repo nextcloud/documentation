@@ -13,4 +13,5 @@ User Management
     user_auth_ftp_smb_imap
     user_auth_ldap
     user_auth_ldap_cleanup
+    user_auth_ldap_api
     user_provisioning_api

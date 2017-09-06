@@ -1,6 +1,6 @@
-===============================
-Upgrade Nextcloud From Packages
-===============================
+====================
+Upgrade via Packages
+====================
 
    
 Upgrade Quickstart
@@ -48,8 +48,6 @@ using Snappy Base 16.04 as it's currently unreleased.
 * Make a :doc:`fresh backup <backup>`.
 * Upgrade your Nextcloud snap: sudo snap refresh nextcloud
 * Run :ref:`occ upgrade <command_line_upgrade_label>`.
-* :ref:`Apply strong permissions <strong_perms_label>` to your 
-  Nextcloud directories.
 * Take your Nextcloud server out of :ref:`maintenance mode 
   <maintenance_commands_label>`.  
 * Re-enable third-party apps.
@@ -78,14 +76,6 @@ user. This example is for Debian/Ubuntu::
 This example is for CentOS/RHEL/Fedora::
 
  sudo -u apache php occ upgrade 
-
-Setting Strong Directory Permissions
-------------------------------------
-
-After upgrading, verify that your Nextcloud directory permissions are set 
-according to :ref:`strong_perms_label`.
-
-If the upgrade fails, then you must try a manual upgrade.
 
    
 .. _skipped_release_upgrade_label:  

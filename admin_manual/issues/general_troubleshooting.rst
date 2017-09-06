@@ -37,7 +37,7 @@ configuration report with the :ref:`occ config command
 .. _FAQ page: https://help.nextcloud.com/c/faq
 .. _bugtracker: https://github.com/nextcloud/server/issues
 .. _webchat: http://webchat.freenode.net/?channels=nextcloud
-   https://docs.nextcloud.org/server/11/developer_manual/bugtracker/index.html
+   https://docs.nextcloud.org/server/12/developer_manual/bugtracker/index.html
 .. TODO ON RELEASE: Update version number above on release
 
 General Troubleshooting
@@ -261,8 +261,8 @@ and if running in a subfolder like ``nextcloud``:
 
 For the first case the :file:`.htaccess` file shipped with Nextcloud should do
 this work for your when running Apache. You only need to make sure that your
-Web server is using this file. When running NGINX please refer to
-:doc:`../installation/nginx_examples`.
+Web server is using this file. When running Nginx please refer to
+:doc:`../installation/nginx`.
 
 
 If your Nextcloud instance is installed in a subfolder called ``nextcloud`` and

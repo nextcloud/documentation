@@ -143,10 +143,17 @@ category
 --------
 Category on the app store. Can be one of the following:
 
+* auth
+* customization
+* files
+* games
+* integration
+* monitoring
 * multimedia
-* productivity
-* game
-* tool
+* office
+* organization
+* social
+* tools
 
 ocsid
 -----
@@ -175,7 +182,7 @@ specified. Valid values for the 'os' attribute are as returned by the PHP functi
 lib
 ===
 Defines a required PHP extension with required minimum and/or maximum version. The names for the libraries have to match the result as returned by the PHP function  `get_loaded_extensions <http://php.net/manual/en/function.get-loaded-extensions.php>`_.
-The explicit version of an extension is read from `phpversion <http://php.net/manual/de/function.phpversion.php>`_ - with some exception as to be read up in the `code base <https://github.com/nextcloud/server/blob/master/lib/private/App/PlatformRepository.php>`_
+The explicit version of an extension is read from `phpversion <http://php.net/manual/de/function.phpversion.php>`_ - with some exception as to be read up in the `code base <https://github.com/nextcloud/server/blob/master/lib/private/App/PlatformRepository.php>`_.
 
 os
 ==
@@ -185,7 +192,7 @@ owncloud
 ========
 **Required**: Defines minimum and maximum versions of the Nextcloud core. In case undefined the values will be taken from the tag `requiremin`_.
 
-.. note:: Currently this tag is also used to check for the nextcloud version number.
+.. note:: Currently this tag is also used to check for the Nextcloud version number.
           Thereby the following "translation" is made:
 
           * ownCloud 9.0 matches Nextcloud 9
@@ -211,7 +218,7 @@ In case the app has its own admin related settings, it needs to implement the \O
 Deprecated
 ----------
 
-The following sections are just listed for reference and should not be used because
+The following sections are just listed for reference and should not be used; they are deprecated and often not evaluated anymore (i.e., they are ignored).
 
 requiremin
 ==========

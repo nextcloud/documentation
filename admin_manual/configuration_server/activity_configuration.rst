@@ -30,3 +30,26 @@ Furthermore it is recommended to configure the background job ``Webcron`` or
 There is also a configuration option ``activity_expire_days`` available in your
 ``config.php`` (See :doc:`config_sample_php_parameters`) which allows
 you to clean-up older activies from the database.
+
+Better scheduling of activity emails
+------------------------------------
+
+In certain scenarios it makes sense to send the activity emails out more regularly,
+e.g. you want to send the hourly emails always at the full hour, daily emails before
+people start to work in the morning and weekly mails shall be send on monday morning,
+so people can read up when starting into the week.
+
+Therefor in Nextcloud 12 a console command was added to allow sending those emails
+intentionally. This allows to set up special cron jobs on your server with the known
+granularity, instead of relying on the Nextcloud cron feature which is not very flexible
+on scheduling.
+
+To implement the samples mentioned above, the following three entries are necessary::
+
+  # crontab -u www-data -e
+   0  *  *  *  *    php -f /var/www/nextcloud/occ activity:send-mails hourly
+  30  7  *  *  *    php -f /var/www/nextcloud/occ activity:send-mails daily
+  30  7  *  *  MON  php -f /var/www/nextcloud/occ activity:send-mails weekly
+
+If you want to manually send out all activity emails which are queued, you can run
+``occ activity:send-mails`` without any argument.

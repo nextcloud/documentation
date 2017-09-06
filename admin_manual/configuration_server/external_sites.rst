@@ -2,35 +2,46 @@
 Linking External Sites
 ======================
 
-You can embed external Web sites inside your Nextcloud pages with the External 
-Sites app, as this screenshot shows.
+You can embed external websites or documents inside your Nextcloud pages with the External
+sites app, as this screenshot shows.
 
 .. figure:: ../images/external-sites-1.png
-   :scale: 60%
+   :scale: 70%
 
    *Click to enlarge*
 
-This is useful for quick access to important Web pages such as the 
+This is useful for quick access to important pages such as the
 Nextcloud manuals and informational pages for your company, and for presenting 
 external pages inside your custom Nextcloud branding, if you use your own custom 
 themes.
 
-The External sites app is included in all versions of Nextcloud. Go to **Apps >  
-Not Enabled** to enable it. Then go to your Nextcloud Admin page to create your 
-links, which are saved automatically. There is a dropdown menu to select an 
-icon, but there is only one default icon so you don't have to select one. Hover 
-your cursor to the right of your links to make the trashcan icon appear when you 
+The External sites app is included in all versions of Nextcloud. Go to **Settings > Apps >
+Disabled apps** to enable it. Then go to your Nextcloud **Settings > Admin > Additional
+settings** to create your links, which are saved automatically.
+
+Each link can have a unique icon, icons are currently loaded from ``apps/external/img/``.
+If you select a language, the link will only be displayed for users with the selected language.
+This allows you to have different documentation links for users depending on their language.
+
+It is also possible to add links for a special device (recognized by the user agent).
+Currently the following options are available: All devices, Android app, iOS app, Desktop client and all others (Browsers).
+
+Hover your cursor over a row to make the trashcan icon appear when you
 want to remove them.
 
 .. figure:: ../images/external-sites-2.png
    :scale: 80%
 
    *Click to enlarge*
-   
-The links appear in the Nextcloud dropdown menu on the top left after 
-refreshing your page, and have globe icons.
+
+The links appear in the Nextcloud menu on the top or in the settings menu, after
+reloading the page.
 
 .. figure:: ../images/external-sites-3.png
+
+
+Configurations preventing embedding
+-----------------------------------
 
 Your links may or may not work correctly due to the various ways that Web 
 browsers and Web sites handle HTTP and HTTPS URLs, and because the External 

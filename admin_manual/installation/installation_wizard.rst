@@ -22,14 +22,11 @@ You're finished and can start using your new Nextcloud server.
 
 Of course, there is much more that you can do to set up your Nextcloud server for 
 best performance and security. In the following sections we will cover important 
-installation and post-installation steps. Note that you must follow the 
-instructions in :ref:`Setting Strong Permissions <strong_perms_label>` in order 
-to use the :doc:`occ Command <../configuration_server/occ_command>`.
+installation and post-installation steps.
 
 * :ref:`Data Directory Location <data_directory_location_label>`
 * :ref:`Database Choice <database_choice_label>`
 * :ref:`Trusted Domains <trusted_domains_label>`
-* :ref:`Setting Strong Permissions <strong_perms_label>`
 
 .. _data_directory_location_label:
 
@@ -49,8 +46,7 @@ Nextcloud data in a different location for other reasons (e.g. on a storage
 server). It is best to configure your data directory location at installation, 
 as it is difficult to move after installation. You may put it anywhere; in this 
 example is it located in ``/var/oc_data``. This directory must already exist, 
-and must be owned by your HTTP user (see 
-:ref:`strong_perms_label`).
+and must be owned by your HTTP user.
 
 .. _database_choice_label:
 
@@ -113,94 +109,3 @@ is not whitelisted the following error appears:
 .. figure:: images/install-wizard-a4.png
    :scale: 75%
    :alt: Error message when URL is not whitelisted
-  
-.. _strong_perms_label:
- 
-Setting Strong Directory Permissions
-------------------------------------
-
-For hardened security we recommend setting the permissions on your Nextcloud
-directories as strictly as possible. This should be done immediately after the
-initial installation and before running the setup. Your HTTP user must own the
-``config/``, ``data/`` and ``apps/`` directories so that you can configure
-Nextcloud, create, modify and delete your data files, and install apps via the
-Nextcloud Web interface.
-
-You can find your HTTP user in your HTTP server configuration files. Or you can 
-use :ref:`label-phpinfo` (Look for the **User/Group** line).
-
-* The HTTP user and group in Debian/Ubuntu is ``www-data``.
-* The HTTP user and group in Fedora/CentOS is ``apache``.
-* The HTTP user and group in Arch Linux is ``http``.
-* The HTTP user in openSUSE is ``wwwrun``, and the HTTP group is ``www``.
-
-.. note:: When using an NFS mount for the data directory, do not change its 
-   ownership from the default. The simple act of mounting the drive will set 
-   proper permissions for Nextcloud to write to the directory. Changing 
-   ownership as above could result in some issues if the NFS mount is 
-   lost.
-
-The easy way to set the correct permissions is to copy and run this script. 
-Replace the ``ocpath`` variable with the path to your Nextcloud directory, and 
-replace the ``htuser`` and ``htgroup`` variables with your HTTP user and group::
-
- #!/bin/bash
- ocpath='/var/www/nextcloud'
- datapath='/var/www/nextcloud/data'
- htuser='www-data'
- htgroup='www-data'
- rootuser='root'
-
- printf "Creating possible missing Directories\n"
- mkdir -p $ocpath/data
- mkdir -p $ocpath/updater
-
- printf "chmod Files and Directories\n"
- find ${ocpath}/ -type f -print0 | xargs -0 chmod 0640
- find ${ocpath}/ -type d -print0 | xargs -0 chmod 0750
-
- printf "chown Directories\n"
- chown -R ${rootuser}:${htgroup} ${ocpath}/
- chown -R ${htuser}:${htgroup} ${ocpath}/apps/
- chown -R ${htuser}:${htgroup} ${ocpath}/config/
- chown -R ${htuser}:${htgroup} ${datapath}
- chown -R ${htuser}:${htgroup} ${ocpath}/themes/
- chown -R ${htuser}:${htgroup} ${ocpath}/updater/
-
- chmod +x ${ocpath}/occ
-
- printf "chmod/chown .htaccess\n"
- if [ -f ${ocpath}/.htaccess ]
-  then
-   chmod 0644 ${ocpath}/.htaccess
-   chown ${rootuser}:${htgroup} ${ocpath}/.htaccess
- fi
- if [ -f ${datapath}/.htaccess ]
-  then
-   chmod 0644 ${datapath}/.htaccess
-   chown ${rootuser}:${htgroup} ${datapath}/.htaccess
- fi
- 
-If you have customized your Nextcloud installation and your filepaths are 
-different than the standard installation, then modify this script accordingly. 
-
-This lists the recommended modes and ownership for your Nextcloud directories 
-and files:
-
-* All files should be read-write for the file owner, read-only for the 
-  group owner, and zero for the world
-* All directories should be executable (because directories always need the 
-  executable bit set), read-write for the directory owner, and read-only for 
-  the group owner
-* The :file:`apps/` directory should be owned by ``[HTTP user]:[HTTP group]``
-* The :file:`config/` directory should be owned by ``[HTTP user]:[HTTP group]``
-* The :file:`themes/` directory should be owned by ``[HTTP user]:[HTTP group]``
-* The :file:`data/` directory should be owned by ``[HTTP user]:[HTTP group]``
-* The :file:`[ocpath]/.htaccess` file should be owned by ``root:[HTTP group]``
-* The :file:`data/.htaccess` file should be owned by ``root:[HTTP group]``
-* Both :file:`.htaccess` files are read-write file owner, read-only group and 
-  world
-
-These strong permissions prevent upgrading your Nextcloud server; 
-see :ref:`set_updating_permissions_label` for a script to quickly change 
-permissions to allow upgrading.

@@ -46,8 +46,7 @@ version branch in version.php to something else than "stable".
 Is Code Signing Mandatory For Apps?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Code signing is optional for all third-party applications. Applications
-with a tag of "Official" on apps.owncloud.com require code signing.
+Code signing is required for all applications on apps.nextcloud.com.
 
 .. _code_signing_fix_warning_label:
 
@@ -167,9 +166,9 @@ In above error output it can be seen that:
 2. In the Nextcloud core the unrequired extra file "/test.php" has been found.
 3. It was not possible to verify the signature of the calendar application.
 
-The solution is to upload the correct "index.php" and "version.php" files, and 
-delete the "test.php" file. For the calendar exception contact the developer of 
-the application. For other means on how to receive support please take a look at 
+The solution is to upload the correct "index.php" and "version.php" files, and
+delete the "test.php" file. For the calendar exception contact the developer of
+the application. For other means on how to receive support please take a look at
 https://nextcloud.com/support/. After fixing these problems verify by clicking
 "Rescan…".
 

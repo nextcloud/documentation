@@ -6,38 +6,38 @@ External API
 Introduction
 ------------
 The external API inside Nextcloud allows third party developers to access data
-provided by Nextcloud apps. Nextcloud follows the `OCS v1.7
-specification <http://www.freedesktop.org/wiki/Specifications/open-collaboration-services-1.7>`_ (draft).
+provided by Nextcloud apps. Nextcloud follows the `OpenCloudMesh
+specification <https://lukasreschke.github.io/OpenCloudMeshSpecification/>`_ (draft).
 
 Usage
 -----
 
 Registering Methods
 ~~~~~~~~~~~~~~~~~~~
-Methods are registered inside the :file:`appinfo/routes.php` using :php:class:`OCP\\API`
+Methods are registered inside the :file:`appinfo/routes.php` by returning an
+array holding the endpoint meta data.
 
 .. code-block:: php
 
   <?php
 
-  \OCP\API::register(
-      'get',
-      '/apps/yourapp/url',
-      function($urlParameters) {
-      	return new \OC_OCS_Result($data);
-      },
-      'yourapp',
-      \OC_API::ADMIN_AUTH
-  );
+  'ocs' => [
+      // Apps
+      ['name' => 'Bar#getFoo', 'url' => '/foobar', 'verb' => 'GET'],
+  ];
 
 Returning Data
 ~~~~~~~~~~~~~~
 Once the API backend has matched your URL, your callable function as defined in
-**$action** will be executed. This method is passed as array of parameters that you defined in **$url**. To return data back the the client, you should return an instance of :php:class:`OC_OCS_Result`. The API backend will then use this to construct the XML or JSON response.
+**BarController::getFoo** will be executed. The AppFramework will make sure that
+send parameters are provided to the method based on its declaration. To return
+data back to the client, you should return an instance of (a subclass of)
+:php:class:`OCP\AppFramework\Http\Response`, typically :php:class:`OCSResponse`.
+The API backend will then use this to construct the XML or JSON response.
 
 Authentication & Basics
 ~~~~~~~~~~~~~~~~~~~~~~~
-Because REST is stateless you have to send user and password each time you access the API. Therefore running Nextcloud **with SSL is highly recommended** otherwise **everyone in your network can log your credentials**::
+Because REST is stateless you have to send user and password each time you access the API. Therefore running Nextcloud **with SSL is highly recommended**; otherwise **everyone in your network can log your credentials**::
 
     https://user:password@example.com/ocs/v1.php/apps/yourapp
 

@@ -35,6 +35,7 @@
    backgroundjobs
    settings
    logging
+   repair
    testing
    publishing
    code_signing
@@ -47,7 +48,7 @@ App Development
 Intro
 =====
 
-Before you start, please check if there already is a similar app in the `App Store <https://apps.owncloud.com>`_ or the `GitHub organisation <https://github.com/nextcloud/>`_ that you could contribute to. Also, feel free to communicate your idea and plans in the `forum <https://help.nextcloud.com/>`_ so other contributors might join in.
+Before you start, please check if there already is a similar app in the `App Store <https://apps.nextcloud.com>`_ or the `GitHub organisation <https://github.com/nextcloud/>`_ that you could contribute to. Also, feel free to communicate your idea and plans in the `forum <https://help.nextcloud.com/>`_ so other contributors might join in.
 
 Then, please make sure you have set up a development environment:
 
@@ -148,6 +149,12 @@ Logging
 Log to the :file:`data/nextcloud.log`:
 
 * :doc:`logging`
+
+Repair steps
+------------
+Repair steps can be used to run code at various stages in app installation, uninstallation, migration ...
+
+* :doc:`repair`
 
 Testing
 -------

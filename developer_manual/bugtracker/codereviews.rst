@@ -10,7 +10,7 @@ Introduction
 
 In order to increase the code quality within Nextcloud, developers are requested
 to perform code reviews.  As we are now heavily using the GitHub platform these
-code review shall take place on GitHub as well.
+code reviews shall take place on GitHub as well.
 
 Precondition
 ------------
@@ -32,17 +32,18 @@ How will it work?
 #. Other developers (either named or at free will) have a look at the changes
    and are welcome to write comments within the comment field.
 #. In case the reviewer is okay with the changes and thinks all his comments and
-   suggestions have been take into account a :+1 on the comment will signal a positive
+   suggestions have been taken into account a :+1 on the comment will signal a positive
    review.
 #. Before a pull request will be merged into master or the corresponding
    branch at least 2 reviewers need to give :+1 score.
-#. Our `continuous integration server`_ will give an additional indicator for
-   the quality of the pull request.
+#. Our continuous integration server will give an additional indicator for
+   the quality of the pull request (the results can be accessed from the GitHub
+   interface for that pull request).
 
 Examples
 --------
-Read our `coding guidelines`_ for information on what a good pull request and
-good Nextcloud code looks like.
+Read our documentation about :doc:`../general/codingguidelines` for information
+on what a good pull request and good Nextcloud code looks like.
 
 These are two examples that are considered to be good examples of how pull
 requests should be handled
@@ -55,7 +56,5 @@ Questions?
 
 Feel free to drop a line on the `forums`_ or join us on `IRC`_.
 
-.. _continuous integration server: https://drone.weasel.rocks/
 .. _forums: https://help.nextcloud.com/
 .. _IRC: http://webchat.freenode.net/?channels=nextcloud-dev
-.. _coding guidelines: ../general/codingguidelines

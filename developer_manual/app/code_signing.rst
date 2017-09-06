@@ -45,8 +45,7 @@ version branch in version.php to something else than "stable".
 Is Code Signing Mandatory For Apps?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Code signing is optional for all third-party applications. Applications
-with a tag of "Official" on apps.owncloud.com require code signing.
+Code signing is required for all applications on apps.nextcloud.com.
 
 Technical details
 -----------------
@@ -59,7 +58,7 @@ private key.
 
 This Root Authority is only used for signing certificate signing requests (CSRs)
 for additional certificates. Certificates issued by the Root Authority must
-always to be limited to a specific scope, usually the application identifier.
+always be limited to a specific scope, usually the application identifier.
 This enforcement is done using the ``CN`` attribute of the certificate.
 
 Code signing is then done by creating a  ``signature.json`` file with the
@@ -122,16 +121,16 @@ examples will assume that you are trying to sign an application named
    your GitHub account to show your mail address in your profile. Nextcloud
    might ask you for further information to verify that you're the legitimate
    owner of the application. Make sure to keep the private key file (``contacts.key``)
-   secret and not disclose it to any third-parties.
+   secret and not disclose it to any third parties.
 3. Nextcloud will provide you with the signed certificate.
 4. Run ``./occ integrity:sign-app`` to sign your application, and specify
-   your private and the public key as well as the path to the application.
+   your private and public keys as well as the path to the application.
    A valid example looks like: ``./occ integrity:sign-app --privateKey=/Users/lukasreschke/contacts.key
    --certificate=/Users/lukasreschke/CA/contacts.crt --path=/Users/lukasreschke/Programming/contacts``
 
 The occ tool will store a ``signature.json`` file within the ``appinfo`` folder
 of your application. Then compress the application folder and upload it to
-apps.owncloud.com. Be aware that doing any changes to the application after it
+apps.nextcloud.com. Be aware that doing any changes to the application after it
 has been signed requires another signing. So if you do not want to have some
 files shipped remove them before running the signing command.
 
@@ -141,7 +140,7 @@ certificate.
 
 If you maintain an app together with multiple people it is recommended to
 designate a release manager responsible for the signing process as well
-as the uploading to apps.owncloud.com. If there are cases where this is not
+as the uploading to apps.nextcloud.com. If there are cases where this is not
 feasible and multiple certificates are required Nextcloud can create them on a
 case by case basis. We do not recommend developers to share their private key.
 
@@ -175,7 +174,7 @@ manual.
   - Another exception has prevented the code verification. There are currently
     these following exceptions:
 
-    - ``Signature data not found.```
+    - ``Signature data not found.``
 
       - The app has mandatory code signing enforced but no ``signature.json``
         file has been found in its ``appinfo`` folder.

@@ -7,8 +7,6 @@ limit up to what your filesystem and operating system allows. There are certain
 hard limits that cannot be exceeded:
 
 * < 2GB on 32Bit OS-architecture
-* < 2GB on Windows (32Bit and 64Bit)
-* < 2GB with Server Version 4.5 or older
 * < 2GB with IE6 - IE8
 * < 4GB with IE9 - IE11
 
@@ -82,7 +80,7 @@ nginx
 * `client_body_temp_path <http://nginx.org/en/docs/http/ngx_http_core_module.html#client_body_temp_path>`_
 
 Since nginx 1.7.11 a new config option `fastcgi_request_buffering
-<https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_request_buffering`_
+<https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_request_buffering>`_
 is availabe. Setting this option to ``fastcgi_request_buffering off;`` in your nginx config
 might help with timeouts during the upload. Furthermore it helps if you're running out of
 disc space on the tmp partition of your system.
@@ -162,7 +160,4 @@ To be able to use this input box you need to make sure that:
 * your Web server is able to use the ``.htaccess`` file shipped by Nextcloud (Apache only)
 * the user your Web server is running as has write permissions to the files ``.htaccess`` and ``.user.ini``
 
-:ref:`strong_perms_label` might prevent write access to these files. As an admin you need
-to decide between the ability to use the input box and a more secure Nextcloud installation
-where you need to manually modify the upload limits in the ``.htaccess`` and ``.user.ini``
-files described above.
+

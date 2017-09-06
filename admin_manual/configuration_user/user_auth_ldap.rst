@@ -389,8 +389,23 @@ Enable LDAP password changes per user:
   
   * Additional requirements for Active Directory:
 
-   * At least a 128-bit transport encryption must be used for the communication between Nextcloud and the LDAP server
+   * At least a 128-bit transport encryption must be used for the communication between Nextcloud and the LDAP server.
    * Make sure that the ``fUserPwdSupport`` char of the dSHeuristics is configured to employ the ``userPassword`` attribute as ``unicodePwd`` alias. While this is set accordingly on AD LDS by default, this is not the case on AD DS.
+
+Default password policy DN:
+  This feature requires OpenLDAP with ppolicy. The DN of a default password policy will be used for password expiry handling in the absence of any user specific password policy. Password expiry handling features the following:
+
+  * When a LDAP password is about to expire, display a warning message to the user showing the number of days left before it expires. Password expiry warnings are displayed through the notifications app for Nextcloud.
+
+  * Prompt LDAP users with expired passwords to reset their password during login, provided that an adequate number of grace logins is still available.
+
+  Leave the setting empty to keep password expiry handling disabled. 
+
+  For the password expiry handling feature to work, LDAP password changes per user must be enabled and the LDAP server must be running OpenLDAP with its ppolicy module configured accordingly.
+
+  * Example:
+
+    | *cn=default,ou=policies,dc=my-company,dc=com*
 
 
 Special Attributes

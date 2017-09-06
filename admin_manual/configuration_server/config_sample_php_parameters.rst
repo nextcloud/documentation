@@ -230,6 +230,18 @@ Defaults to ``en``
 
 ::
 
+	'force_language' => 'en',
+
+With this setting a language can be forced for all users. If a language is
+forced, the users are also unable to change their language in the personal
+settings. If users shall be unable to change their language, but users have
+different languages, this value can be set to ``true`` instead of a language
+code.
+
+Defaults to ``false``
+
+::
+
 	'defaultapp' => 'files',
 
 Set the default app to open on login. Use the app names as they appear in the
@@ -246,16 +258,6 @@ Defaults to ``files``
 
 ``true`` enables the Help menu item in the user menu (top right of the
 Nextcloud Web interface). ``false`` removes the Help item.
-
-::
-
-	'enable_avatars' => true,
-
-``true`` enables avatars, or user profile photos. These appear on the User
-page, on user's Personal pages and are used by some apps (contacts, mail,
-etc). ``false`` disables them.
-
-Defaults to ``true``
 
 ::
 
@@ -338,10 +340,12 @@ IMAP (OC_User_IMAP), SMB (OC_User_SMB), and FTP (OC_User_FTP).
 
 	'lost_password_link' => 'https://example.org/link/to/password/reset',
 
-If your user backend does not allow to reset the password (e.g. when it's a
+If your user backend does not allow password resets (e.g. when it's a
 read-only user backend like LDAP), you can specify a custom link, where the
 user is redirected to, when clicking the "reset password" link after a failed
 login-attempt.
+
+In case you do not want to provide any link, replace the url with 'disabled'
 
 Mail Parameters
 ---------------
@@ -543,12 +547,12 @@ accessible at. So if Nextcloud is accessible via "https://mycloud.org/nextcloud"
 the correct value would most likely be "/nextcloud". If Nextcloud is running
 under "https://mycloud.org/" then it would be "/".
 
-Note that above rule is not valid in every case, there are some rare setup
+Note that the above rule is not valid in every case, as there are some rare setup
 cases where this may not apply. However, to avoid any update problems this
 configuration value is explicitly opt-in.
 
-After setting this value run `occ maintenance:update:htaccess` and when following
-conditions are met Nextcloud uses URLs without index.php in it:
+After setting this value run `occ maintenance:update:htaccess`. Now, when the
+following conditions are met Nextcloud URLs won't contain `index.php`:
 
 - `mod_rewrite` is installed
 - `mod_env` is installed
@@ -861,14 +865,6 @@ debugging, as your logfile will become huge.
 
 ::
 
-	'cron_log' => true,
-
-Log successful cron runs.
-
-Defaults to ``true``
-
-::
-
 	'log_rotate_size' => false,
 
 Enables log rotation and limits the total size of logfiles. The default is 0,
@@ -1059,10 +1055,6 @@ concerns:
  - OC\\Preview\\TIFF
  - OC\\Preview\\Font
 
-.. note:: Troubleshooting steps for the MS Word previews are available
-   at the :doc:`../configuration_files/collaborative_documents_configuration`
-   section of the Administrators Manual.
-
 The following providers are not available in Microsoft Windows:
 
  - OC\\Preview\\Movie
@@ -1101,6 +1093,14 @@ See command line (occ) methods ``ldap:show-remnants`` and ``user:delete``
 
 Defaults to ``51`` minutes
 
+::
+
+	'sort_groups_by_name' => false,
+
+Sort groups in the user settings by name instead of the user count
+
+By enabling this the user count beside the group name is disabled as well.
+
 Comments
 --------
 
@@ -1123,9 +1123,18 @@ Defaults to ``\OC\Comments\ManagerFactory``
 
 Replaces the default System Tags Manager Factory. This can be utilized if an
 own or 3rdParty SystemTagsManager should be used that – for instance – uses the
-filesystem instead of the database to keep the comments.
+filesystem instead of the database to keep the tags.
 
 Defaults to ``\OC\SystemTag\ManagerFactory``
+
+::
+
+	'mail_template_class' => '\OC\Mail\EMailTemplate',
+
+Replaces the default mail template layout. This can be utilized if the
+options to modify the mail texts with the theming app is not enough.
+
+The class must extend  ``\OC\Mail\EMailTemplate``
 
 Maintenance
 -----------
@@ -1147,15 +1156,6 @@ are kicked out of Nextcloud instantly.
 
 Defaults to ``false``
 
-::
-
-	'singleuser' => false,
-
-When set to ``true``, the Nextcloud instance will be unavailable for all
-users who are not in the ``admin`` group.
-
-Defaults to ``false``
-
 SSL
 ---
 
@@ -1169,12 +1169,6 @@ SSL
 Extra SSL options to be used for configuration.
 
 Defaults to an empty array.
-
-::
-
-	'enable_certificate_management' => false,
-
-Allow the configuration of system wide trusted certificates
 
 Memory caching backend configuration
 ------------------------------------
@@ -1218,19 +1212,52 @@ Defaults to ``none``
 
 ::
 
-	'redis' => array(
+	'redis' => [
 		'host' => 'localhost', // can also be a unix domain socket: '/tmp/redis.sock'
 		'port' => 6379,
 		'timeout' => 0.0,
 		'password' => '', // Optional, if not defined no password will be used.
 		'dbindex' => 0, // Optional, if undefined SELECT will not run and will use Redis Server's default DB Index.
-	),
+	],
 
-Connection details for redis to use for memory caching.
+Connection details for redis to use for memory caching in a single server configuration.
 
 For enhanced security it is recommended to configure Redis
 to require a password. See http://redis.io/topics/security
 for more information.
+
+::
+
+	'redis.cluster' => [
+		'seeds' => [ // provide some/all of the cluster servers to bootstrap discovery, port required
+			'localhost:7000',
+			'localhost:7001'
+		],
+		'timeout' => 0.0,
+		'read_timeout' => 0.0,
+		'failover_mode' => \RedisCluster::FAILOVER_ERROR
+	],
+
+Connection details for a Redis Cluster
+
+Only for use with Redis Clustering, for Sentinel-based setups use the single
+server configuration above, and perform HA on the hostname.
+
+Redis Cluster support requires the php module phpredis in version 3.0.0 or
+higher for PHP 7+ or phpredis in version 2.2.8 for PHP 5.6.
+
+Available failover modes:
+ - \\RedisCluster::FAILOVER_NONE - only send commands to master nodes (default)
+ - \\RedisCluster::FAILOVER_ERROR - failover to slaves for read commands if master is unavailable (recommended)
+ - \\RedisCluster::FAILOVER_DISTRIBUTE - randomly distribute read commands across master and slaves
+
+WARNING: FAILOVER_DISTRIBUTE is a not recommended setting and we strongly
+suggest to not use it if you use Redis for file locking. Due to the way Redis
+is synchronised it could happen, that the read for an existing lock is
+scheduled to a slave that is not fully synchronised with the connected master
+which then causes a FileLocked exception.
+
+See https://redis.io/topics/cluster-spec for details about the Redis cluster
 
 ::
 
@@ -1300,7 +1327,7 @@ Using Object Store with Nextcloud
 	'objectstore' => [
 		'class' => 'OC\\Files\\ObjectStore\\Swift',
 		'arguments' => [
-			// trystack will user your facebook id as the user name
+			// trystack will use your facebook id as the user name
 			'username' => 'facebook100000123456789',
 			// in the trystack dashboard go to user -> settings -> API Password to
 			// generate a password
@@ -1352,10 +1379,24 @@ Global settings for Sharing
 	'sharing.managerFactory' => '\OC\Share20\ProviderFactory',
 
 Replaces the default Share Provider Factory. This can be utilized if
-own or 3rdParty Share Providers be used that – for instance – uses the
+own or 3rdParty Share Providers are used that – for instance – use the
 filesystem instead of the database to keep the share information.
 
 Defaults to ``\OC\Share20\ProviderFactory``
+
+::
+
+	'sharing.maxAutocompleteResults' => 0,
+
+Define max number of results returned by the user search for auto-completion
+Default is unlimited (value set to 0).
+
+::
+
+	'sharing.minSearchStringLength' => 0,
+
+Define the minimum length of the search string before we start auto-completion
+Default is no limit (value set to 0)
 
 All other configuration options
 -------------------------------
@@ -1382,16 +1423,23 @@ can be 'WAL' or 'DELETE' see for more details https://www.sqlite.org/wal.html
 
 	'mysql.utf8mb4' => false,
 
-If this setting is set to true MySQL can handle 4 byte characters instead of
-3 byte characters
+During setup, if requirements are met (see below), this setting is set to true
+and MySQL can handle 4 byte characters instead of 3 byte characters.
+
+If you want to convert an existing 3-byte setup into a 4-byte setup please
+set the parameters in MySQL as mentioned below and run the migration command:
+./occ db:convert-mysql-charset
+The config setting will be set automatically after a successful run.
+
+Consult the documentation for more details.
 
 MySQL requires a special setup for longer indexes (> 767 bytes) which are
 needed:
 
 [mysqld]
-innodb_large_prefix=true
-innodb_file_format=barracuda
-innodb_file_per_table=true
+innodb_large_prefix=ON
+innodb_file_format=Barracuda
+innodb_file_per_table=ON
 
 Tables will be created with
  * character set: utf8mb4
@@ -1404,8 +1452,6 @@ https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_lar
 https://mariadb.com/kb/en/mariadb/xtradbinnodb-server-system-variables/#innodb_large_prefix
 http://www.tocker.ca/2013/10/31/benchmarking-innodb-page-compression-performance.html
 http://mechanics.flite.com/blog/2014/07/29/using-innodb-large-prefix-to-avoid-error-1071/
-
-WARNING: EXPERIMENTAL
 
 ::
 
@@ -1616,7 +1662,7 @@ Defaults to ``true``
 
 	'filelocking.ttl' => 60*60,
 
-Set the time-to-live for locks in secconds.
+Set the lock's time-to-live in seconds.
 
 Any lock older than this will be automatically cleaned up.
 
@@ -1633,6 +1679,18 @@ Because most memcache backends can clean values without warning using redis
 is highly recommended to *avoid data loss*.
 
 Defaults to ``none``
+
+::
+
+	'filelocking.debug' => false,
+
+Enable locking debug logging
+
+Note that this can lead to a very large volume of log items being written which can lead
+to performance degradation and large log files on busy instance.
+
+Thus enabling this in production for longer periods of time is not recommended
+or should be used together with the ``log.condition`` setting.
 
 ::
 
@@ -1676,6 +1734,25 @@ configuration. DO NOT ADD THIS SWITCH TO YOUR CONFIGURATION!
 
 If you, brave person, have read until here be aware that you should not
 modify *ANY* settings in this file without reading the documentation.
+
+::
+
+	'lookup_server' => 'https://lookup.nextcloud.com',
+
+use a custom lookup server to publish user data
+
+::
+
+	'gs.enabled' => false,
+
+set to true if the server is used in a setup based on Nextcloud's Global Scale architecture
+
+::
+
+	'gs.federation' => 'internal',
+
+by default federation is only used internally in a Global Scale setup
+If you want to allow federation outside of your environment set it to 'global'
 
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.

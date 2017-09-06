@@ -8,6 +8,12 @@ might see, and what to do about them.
 
 .. figure:: ../images/security-setup-warning-1.png
 
+You can use the  `Nextcloud Security Scan <https://scan.nextcloud.com>`_ to see
+if your system is up to date and well secured. We have ran this scan over public
+IP addresses in the past to try and reach out to `extremely outdated systems <https://nextcloud.com/blog/nextcloud-releases-security-scanner-to-help-protect-private-clouds/>`_
+and might again in the future. Please, protect your privacy and keep your server
+up to date! Privacy means little without security.
+
 Cache Warnings
 --------------
 
@@ -53,7 +59,7 @@ describe how to enable HTTPS on the Apache and Nginx Web servers.
 
 :ref:`use_https_label`
 
-:doc:`../installation/nginx_examples`
+:doc:`../installation/nginx`
 
 The test with getenv(\"PATH\") only returns an empty response
 -------------------------------------------------------------

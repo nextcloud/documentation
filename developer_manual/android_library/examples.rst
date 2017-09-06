@@ -80,17 +80,17 @@ Code example
 
   private void startFolderCreation(String newFolderPath) {
     CreateRemoteFolderOperation createOperation = new CreateRemoteFolderOperation(newFolderPath, false);
-    createOperation.execute( mClient , this , mHandler);
+    createOperation.execute(mClient, this, mHandler);
   }
 
   @Override
   public void onRemoteOperationFinish(RemoteOperation operation, RemoteOperationResult result) {
     if (operation instanceof CreateRemoteFolderOperation) {
       if (result.isSuccess()) {
-      // do your stuff here
+        // do your stuff here
       }
     }
-    …
+    // …
   }
 
 Read folder
@@ -107,7 +107,7 @@ Code example
 .. code-block:: java
 
   private void startReadRootFolder() {
-    ReadRemoteFolderOperation refreshOperation = new ReadRemoteFolderOperation(FileUtils.PATH_SEPARATOR); 
+    ReadRemoteFolderOperation refreshOperation = new ReadRemoteFolderOperation(FileUtils.PATH_SEPARATOR);
     // root folder
     refreshOperation.execute(mClient, this, mHandler);
   }
@@ -121,7 +121,7 @@ Code example
         // do your stuff here
       }
     }
-    …
+    // …
   }
 
 Read file
@@ -148,7 +148,7 @@ Code example
         // do your stuff here
       }
     }
-    …
+    // …
   }
 
 Delete file or folder
@@ -164,7 +164,7 @@ Code example
 
   private void startRemoveFile(String filePath) {
     RemoveRemoteFileOperation removeOperation = new RemoveRemoteFileOperation(remotePath);
-    removeOperation.execute( mClient , this , mHandler);
+    removeOperation.execute(mClient, this, mHandler);
   }
 
   @Override
@@ -174,7 +174,7 @@ Code example
         // do your stuff here
       }
     }
-    …
+    // …
   }
 
 
@@ -197,7 +197,7 @@ Code example
   }
 
   @Override
-  public void onRemoteOperationFinish( RemoteOperation operation, RemoteOperationResult result) {
+  public void onRemoteOperationFinish(RemoteOperation operation, RemoteOperationResult result) {
     if (operation instanceof DownloadRemoteFileOperation) {
       if (result.isSuccess()) {
         // do your stuff here
@@ -206,7 +206,7 @@ Code example
   }
 
   @Override
-  public void onTransferProgress( long progressRate, long totalTransferredSoFar, long totalToTransfer, String fileName) {
+  public void onTransferProgress(long progressRate, long totalTransferredSoFar, long totalToTransfer, String fileName) {
   mHandler.post( new Runnable() {
     @Override
     public void run() {
@@ -227,8 +227,8 @@ Code example
 
 .. code-block:: java
 
-  private void startUpload (File fileToUpload, String remotePath, String mimeType) {
-    UploadRemoteFileOperation uploadOperation = new UploadRemoteFileOperation( fileToUpload.getAbsolutePath(), remotePath, mimeType);
+  private void startUpload(File fileToUpload, String remotePath, String mimeType) {
+    UploadRemoteFileOperation uploadOperation = new UploadRemoteFileOperation(fileToUpload.getAbsolutePath(), remotePath, mimeType);
     uploadOperation.addDatatransferProgressListener(this);
     uploadOperation.execute(mClient, this, mHandler);
   }
@@ -244,7 +244,7 @@ Code example
 
   @Override
   public void onTransferProgress(long progressRate, long totalTransferredSoFar, long totalToTransfer, String fileName) {
-    mHandler.post( new Runnable() {
+    mHandler.post(new Runnable() {
       @Override
       public void run() {
         // do your UI updates about progress here
@@ -269,24 +269,24 @@ Code example
 
   private void startFileMove(String filePath, String newFilePath, boolean overwrite) {
     MoveRemoteFileOperation moveOperation = new MoveRemoteFileOperation(filePath, newFilePath, overwrite);
-    moveOperation.execute( mClient , this , mHandler);
+    moveOperation.execute(mClient, this, mHandler);
   }
 
   @Override
   public void onRemoteOperationFinish(RemoteOperation operation, RemoteOperationResult result) {
     if (operation instanceof MoveRemoteFileOperation) {
       if (result.isSuccess()) {
-      // do your stuff here
+        // do your stuff here
 	  }
     }
-    …
+    // …
   }
 
 Read shared items by link
 -------------------------
 
 Get information about what files and folder are shared by link (the object
-mClient contains the information about the server url and account)
+mClient contains the information about the server URL and account).
 
 Code example
 ~~~~~~~~~~~~
@@ -295,16 +295,16 @@ Code example
 
   private void startAllSharesRetrieval() {
     GetRemoteSharesOperation getSharesOp = new GetRemoteSharesOperation();
-    getSharesOp.execute( mClient , this , mHandler);
+    getSharesOp.execute(mClient, this, mHandler);
   }
 
   @Override
-  public void onRemoteOperationFinish( RemoteOperation operation, RemoteOperationResult result) {
+  public void onRemoteOperationFinish(RemoteOperation operation, RemoteOperationResult result) {
     if (operation instanceof GetRemoteSharesOperation) {
       if (result.isSuccess()) {
         ArrayList< OCShare > shares = new ArrayList< OCShare >();
         for (Object obj: result.getData()) {
-          shares.add(( OCShare) obj);
+          shares.add((OCShare) obj);
         }
         // do your stuff here
       }
@@ -327,21 +327,21 @@ Code example
 
   private void startSharesRetrievalForFileOrFolder(String filePath, boolean getReshares) {
     GeteRemoteSharesForFileOperation operation = new GetRemoteSharesForFileOperation(filePath, getReshares, false);
-    operation.execute( mClient, this, mHandler);
+    operation.execute(mClient, this, mHandler);
   }
 
   private void startSharesRetrievalForFilesInFolder(String folderPath, boolean getReshares) {
     GetRemoteSharesForFileOperation operation = new GetRemoteSharesForFileOperation(folderPath, getReshares, true);
-    operation.execute( mClient, this, mHandler);
+    operation.execute(mClient, this, mHandler);
   }
 
   @Override
-  public void onRemoteOperationFinish( RemoteOperation operation, RemoteOperationResult result) {
+  public void onRemoteOperationFinish(RemoteOperation operation, RemoteOperationResult result) {
     if (operation instanceof GetRemoteSharesForFileOperation) {
       if (result.isSuccess()) {
         ArrayList< OCShare > shares = new ArrayList< OCShare >();
         for (Object obj: result.getData()) {
-          shares.add(( OCShare) obj);
+          shares.add((OCShare) obj);
         }
         // do your stuff here
      }
@@ -367,7 +367,7 @@ Code example
 
   private void startCreationOfPublicShareForFile(String filePath, String password) {
     CreateRemoteShareOperation operation = new CreateRemoteShareOperation(filePath, ShareType.PUBLIC_LINK, "", false, password, 1);
-    operation.execute( mClient , this , mHandler);
+    operation.execute(mClient, this, mHandler);
   }
 
   private void startCreationOfGroupShareForFile(String filePath, String groupId) {
@@ -381,10 +381,10 @@ Code example
   }
 
   @Override
-  public void onRemoteOperationFinish( RemoteOperation operation, RemoteOperationResult result) {
+  public void onRemoteOperationFinish(RemoteOperation operation, RemoteOperationResult result) {
     if (operation instanceof CreateRemoteShareOperation) {
       if (result.isSuccess()) {
-        OCShare share = (OCShare) result.getData ().get(0);
+        OCShare share = (OCShare) result.getData().get(0);
         // do your stuff here
       }
     }
@@ -405,14 +405,14 @@ Code example
 
   private void startShareRemoval(OCShare share) {
     RemoveRemoteShareOperation operation = new RemoveRemoteShareOperation((int) share.getIdRemoteShared());
-    operation.execute( mClient, this, mHandler);
+    operation.execute(mClient, this, mHandler);
   }
 
   @Override
-  public void onRemoteOperationFinish( RemoteOperation operation, RemoteOperationResult result) {
+  public void onRemoteOperationFinish(RemoteOperation operation, RemoteOperationResult result) {
     if (operation instanceof RemoveRemoteShareOperation) {
       if (result.isSuccess()) {
-      // do your stuff here
+        // do your stuff here
       }
     }
   }
@@ -425,6 +425,6 @@ Tips
 * Paths must not be on URL Encoding
 * Correct path: ``https://example.com/nextcloud/remote.php/dav/PopMusic``
 * Wrong path: ``https://example.com/nextcloud/remote.php/dav/Pop%20Music/``
-* There are some forbidden characters to be used in folder and files names on the server, same on the Nextcloud Android Library "\","/","<",">",":",""","|","?","*"
+* There are some forbidden characters to be used in folder and file names on the server, same on the Nextcloud Android Library "\","/","<",">",":",""","|","?","*"
 * Upload and download actions may be cancelled thanks to the objects uploadOperation.cancel(), downloadOperation.cancel()
-* Unit tests, before launching unit tests you have to enter your account information (server url, user and password) on TestActivity.java
+* Unit tests, before launching unit tests you have to enter your account information (server URL, user and password) on TestActivity.java

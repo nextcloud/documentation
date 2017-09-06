@@ -58,7 +58,7 @@ An attacker might now easily send the user a link to::
 
 to overtake the user account. The same problem occurs when outputting content from the database or any other location that is writable by users.
 
-Another attack vector that is often overlooked is XSS in **href** attributes. HTML allows to execute javascript in href attributes like this::
+Another attack vector that is often overlooked is XSS in **href** attributes. HTML allows to execute JavaScript in href attributes like this::
 
     <a href="javascript:alert('xss')">
 
@@ -246,4 +246,4 @@ Always validate the URL before redirecting if the requested URL is on the same d
 
 Getting help
 ------------
-If you need help to ensure that a function is secure please ask on our `mailing list <https://mailman.owncloud.org/mailman/listinfo/devel>`_ or on our IRC channel **#nextcloud-dev** on **irc.freenode.net**.
+If you need help to ensure that a function is secure please ask on our `forum <https://help.nextcloud.com>`_ or on our IRC channel **#nextcloud-dev** on **irc.freenode.net**.

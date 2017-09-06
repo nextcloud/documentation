@@ -1,9 +1,6 @@
-=============================================================
-Nextcloud |version| Server Administration Manual Introduction
-=============================================================
-
+============
 Introduction
-------------
+============
 
 Welcome to the Nextcloud Server Administration Guide. This guide describes
 administration tasks for Nextcloud, the flexible open source file synchronization
@@ -22,8 +19,8 @@ Nextcloud server is available:
 See :doc:`../release_notes` for more information on the different Nextcloud
 editions.
 
-Nextcloud Videos and Blogs
---------------------------
+Videos and Blogs
+----------------
 
 See the `official Nextcloud channel
 <https://www.youtube.com/channel/UCQjN5Fs5QSz1loJqLb5bkew>`_
@@ -45,8 +42,8 @@ respective manuals:
 * `Nextcloud Android App`_
 * `Nextcloud iOS App`_
 
-.. _`Nextcloud User Manual`: https://docs.nextcloud.com/server/11/user_manual/
-.. _`Nextcloud/ownCloud Desktop Client`: https://doc.owncloud.org/desktop/2.2/
+.. _`Nextcloud User Manual`: https://docs.nextcloud.com/server/12/user_manual/
+.. _`Nextcloud/ownCloud Desktop Client`: https://doc.owncloud.org/desktop/2.3/
 .. _`Nextcloud Android App`: https://docs.nextcloud.com/android/
 .. _`Nextcloud iOS App`: https://docs.nextcloud.com/ios/
 

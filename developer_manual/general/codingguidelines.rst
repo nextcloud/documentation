@@ -7,12 +7,12 @@ General
 -------
 
 * Ideally, discuss your plans on the `forums <https://help.nextcloud.com>`_ to see if others want to work with you on it
-* We use `Github <https://github.com/nextcloud>`_, please get an account there and clone the repositories you want to work on
+* We use `GitHub <https://github.com/nextcloud>`_, please get an account there and clone the repositories you want to work on
 * Fixes go directly to master, nevertheless they need to be tested thoroughly.
 * New features are always developed in a branch and only merged to master once they are fully done.
 * Software should work. We only put features into master when they are complete. It's better to not have a feature instead of having one that works poorly.
 * It is best to start working based on an issue - create one if there is none. You describe what you want to do, ask feedback on the direction you take it and take it from there.
-* When you are finished, use the merge request function on Github to create a pull request. The other developers will look at it and give you feedback. You can signify that your PR is ready for review by adding the label "5 - ready for review" to it. You can also post your merge request to the mailing list to let people know. See `the code review page for more information <../bugtracker/codereviews.html>`_
+* When you are finished, use the merge request function on GitHub to create a pull request. The other developers will look at it and give you feedback. You can signify that your PR is ready for review by adding the label "5 - ready for review" to it. You can also post your merge request to the mailing list to let people know. See `the code review page for more information <../bugtracker/codereviews.html>`_
 * It is key to keep changes separate and small. The bigger and more hairy a PR grows, the harder it is to get it in. So split things up where you can in smaller changes - if you need a small improvement like a API addition for a big feature addition, get it in first rather than adding it to the big piece of work!
 * Decisions are made by consensus. We strive for making the best technical decisions and as nobody can know everything, we collaborate. That means a first negative comment might not be the final word, neither is positive feedback an immediate GO. Nextcloud is built out of modular pieces (apps) and maintainers have a strong influence. In case of disagreement we consult other seasoned contributors.
 
@@ -28,14 +28,14 @@ The most important labels and their meaning:
 * #design - this needs help from the design team or is a design-related issue/pull request
 * #technical debt - this issue or PR is about `technical debt <http://en.wikipedia.org/wiki/Technical_debt>`_
 * #starter issue - these are issues which are relatively easy to solve and ideal for people who want to learn how to code in Nextcloud
-* #needs info - this issue needs further information from the reporter, see `triaging <../bugtracker/triaging.html>`_
+* #needs info - this issue needs further information from the reporter, see :doc:`../bugtracker/triaging`
 * #high #medium #low signify how important the bug is.
 * Tags showing the state of the issue or PR, numbered 0-4:
- * #0 - Needs triage - ready to start development on this
- * #1 - To develop - ready to start development on this
- * #2 - Developing - development in progress
- * #3 - To Review - ready for review
- * #4 - To Release - reviewed PR that awaits unfreeze of a branch to get merged
+  * #0 - Needs triage - ready to start development on this
+  * #1 - To develop - ready to start development on this
+  * #2 - Developing - development in progress
+  * #3 - To Review - ready for review
+  * #4 - To Release - reviewed PR that awaits unfreeze of a branch to get merged
 * Feature tags: #feature: something. These tags indicate the features across apps and components which are impacted by the issue or which the PR is related to
 
 If you want a label not in the list above, please first discuss on the mailing list.
@@ -131,7 +131,7 @@ All API methods need to be marked with `PHPDoc <http://en.wikipedia.org/wiki/PHP
 
 Objects, Functions, Arrays & Variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Use Pascal case for Objects, Camel case for functions and variables. If you set
+Use *UpperCamelCase* for Objects, *lowerCamelCase* for functions and variables. If you set
 a default function/method parameter, do not use spaces. Do not prepend private
 class members with underscores.
 
@@ -332,7 +332,7 @@ This is how you'd do inheritance in JavaScript:
 
 Objects, Functions & Variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Use Pascal case for Objects, Camel case for functions and variables.
+Use *UpperCamelCase* for Objects, *lowerCamelCase* for functions and variables.
 
 .. code-block:: javascript
 

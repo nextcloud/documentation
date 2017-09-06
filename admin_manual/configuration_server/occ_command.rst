@@ -44,8 +44,7 @@ occ Command Directory
 Run occ As Your HTTP User
 -------------------------
 
-The HTTP user is different on the various Linux distributions. See 
-:ref:`strong_perms_label` to learn how to find your HTTP user.
+The HTTP user is different on the various Linux distributions:
    
 * The HTTP user and group in Debian/Ubuntu is www-data.
 * The HTTP user and group in Fedora/CentOS is apache.
@@ -538,7 +537,7 @@ see a list of modules only if you have enabled the Encryption app. Use
 ``encryption:set-default-module [module name]`` to set your desired module.
 
 ``encryption:encrypt-all`` encrypts all data files for all users. You must first 
-put your Nextcloud server into :ref:`single-user 
+put your Nextcloud server into :ref:`maintenance
 mode<maintenance_commands_label>` to prevent any user activity until encryption 
 is completed.
 
@@ -548,12 +547,12 @@ user::
  sudo -u www-data php occ encryption:decrypt freda
 
 Users must have enabled recovery keys on their Personal pages. You must first 
-put your Nextcloud server into :ref:`single-user 
+put your Nextcloud server into :ref:`maintenance
 mode <maintenance_commands_label>` to prevent any user activity until 
 decryption is completed.
 
 Use ``encryption:disable`` to disable your encryption module. You must first put 
-your Nextcloud server into :ref:`single-user mode <maintenance_commands_label>` 
+your Nextcloud server into :ref:`maintenance mode <maintenance_commands_label>`
 to prevent any user activity.
 
 ``encryption:enable-master-key`` creates a new master key, which is used for all 
@@ -713,7 +712,7 @@ Verify your app::
   sudo -u www-data php occ integrity:check-app --path=/pathto/app appname
   
 When it returns nothing, your app is signed correctly. When it returns a message then there is an error. See `Code Signing 
-<https://docs.nextcloud.org/server/11/developer_manual/app/code_signing.html#how-to-get-your-app-signed>`_ in the Developer manual for more detailed information.
+<https://docs.nextcloud.org/server/12/developer_manual/app/code_signing.html#how-to-get-your-app-signed>`_ in the Developer manual for more detailed information.
 .. TODO ON RELEASE: Update version number above on release
 
 ``integrity:sign-core`` is for Nextcloud core developers only.
@@ -864,12 +863,12 @@ Use these commands when you upgrade Nextcloud, manage encryption, perform
 backups and other tasks that require locking users out until you are finished::
 
  maintenance
-  maintenance:mimetype:update-db       Update database mimetypes and update 
-                                       filecache
-  maintenance:mimetype:update-js       Update mimetypelist.js
-  maintenance:mode                     set maintenance mode
-  maintenance:repair                   repair this installation
-  maintenance:singleuser               set single user mode
+  maintenance:data-fingerprint        update the systems data-fingerprint after a backup is restored
+  maintenance:mimetype:update-db      Update database mimetypes and update filecache
+  maintenance:mimetype:update-js      Update mimetypelist.js
+  maintenance:mode                    set maintenance mode
+  maintenance:repair                  repair this installation
+  maintenance:update:htaccess         Updates the .htaccess file
 
 ``maintenance:mode`` locks the sessions of all logged-in users, including 
 administrators, and displays a status screen warning that the server is in 
@@ -879,18 +878,10 @@ logged-in users must refresh their Web browsers to continue working::
 
  sudo -u www-data php occ maintenance:mode --on
  sudo -u www-data php occ maintenance:mode --off
- 
-Putting your Nextcloud server into single-user mode allows admins to log in and 
-work, but not ordinary users. This is useful for performing maintenance and 
-troubleshooting on a running server::
 
- sudo -u www-data php occ maintenance:singleuser --on
- Single user mode enabled
-   
-Turn it off when you're finished::
-
- sudo -u www-data php occ maintenance:singleuser --off
- Single user mode disabled
+After restoring a backup of your data directory or the database, you should always
+call ``maintenance:data-fingerprint`` once. This changes the ETag for all files
+in the communication with sync clients, allowing them to realize a file was modified.
 
 The ``maintenance:repair`` command runs automatically during upgrades to clean 
 up the database, so while you can run it manually there usually isn't a need 
@@ -1132,9 +1123,7 @@ You can install Nextcloud entirely from the command line. After downloading the
 tarball and copying Nextcloud into the appropriate directories you can use ``occ`` 
 commands in place of running the graphical Installation Wizard.
 
-Apply correct permissions to your Nextcloud directories; see 
-:ref:`strong_perms_label`. Then choose your ``occ`` options. This lists your 
-available options::
+Then choose your ``occ`` options. This lists your available options::
 
  sudo -u www-data php /var/www/nextcloud/occ
  Nextcloud is not installed - only a limited number of commands are available

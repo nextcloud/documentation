@@ -15,5 +15,4 @@ Installation
    php_56_installation
    php_70_installation
    selinux_configuration
-   nginx_examples
-   nginx_nextcloud_9x
+   nginx

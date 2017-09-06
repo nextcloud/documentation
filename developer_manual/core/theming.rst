@@ -1,26 +1,20 @@
 Theming Nextcloud
 =================
 Themes can be used to customize the look and feel of Nextcloud.
-Themes can relate to the following topics of Nextcloud:
 
-* Theming the web-frontend
-* Theming the desktop client
-
-This documentation contains only the Web-frontend adaptations so far.
-
+.. note:: This is an advanced way of theming Nextcloud; the Nextcloud team recommends instead the use of the `theming app <../../admin_manual/configuration_server/theming.html>` which, when enabled, can be accessed from the Admin settings.
 
 Getting started
 ===============
-A good idea getting starting with a dynamically created website is to inspect it with **web developer tools**, that are found in almost any browser. They show the generated HTML and the CSS Code, that the client/browser is receiving:
-With this facts you can easily determine, where the following object-related attributes for the phenomenons are settled:
+A good idea to get started with a dynamically created website is to inspect it with **web developer tools**, that are found in almost any browser. They show the generated HTML and the CSS Code that the client/browser is receiving:
+With this facts you can easily determine where the following object-related attributes for the phenomenons are settled:
 
 * place
 * colour
 * links
 * graphics
 
-The next thing you should do, before starting any changes is:
-Make a backup of your current theme(s) e.g.:
+The next thing you should do, before starting any changes, is to make a backup of your current theme(s), e.g.:
 
 * cd …/nextcloud/themes
 * cp -r example mytheme
@@ -30,13 +24,13 @@ Creating and activating a new theme
 ===================================
 There are two basic ways of creating new themings:
 
-* Doing all new from scratch
-* Starting from an existing theme or the example theme and doing everything step by step and more experimentally
+* doing all new from scratch
+* starting from an existing theme or the example theme and doing everything step by step and more experimentally
 
-Depending on how you created your new theme it will be necessary to
+Depending on how you created your new theme it will be necessary to:
 
-* put a new theme into the /themes -folder. The theme can be activated by putting ``'theme' => 'MyTheme'``, into the ``/config/config.php`` file.
-* make your changes in the ``/themes/MyTheme`` -folder
+* put a new theme into the /themes folder. The theme can be activated by putting ``'theme' => 'MyTheme'`` into the ``/config/config.php`` file.
+* make your changes in the ``/themes/MyTheme`` folder
 * make sure that the theming app is disabled
 
 
@@ -52,13 +46,16 @@ for example in /nextcloud/core/ and /nextcloud/settings/ in these sub folders:
 * js = JavaScripts
 * img = images
 * l10n = translation files
-* templates = php and html template files
+* templates = PHP and HTML template files
 
 .. _notes-for-updates:
 
 
 Notes for Updates
 =================
+
+.. note:: With Nextcloud 12, CSS files have been merged into one server.css so in order to keep your theme working you should consolidate your existing css styles into a server.css file. As for the example theme the styles.css file has been renamed to server.css.
+
 It is not recommended to the user to perform adaptations inside the
 folder ``/themes/example`` because files inside this folder might get
 replaced during the next Nextcloud update process.
@@ -90,20 +87,19 @@ If you want to do a quick exchange like (1) it's important to know the size of t
 
 * Go to the place in the filesystem, that has been shown by the web developer tool/s
 * You can look up sizing in most cases via the file properties inside your file-manager
-* Create an own picture/logo with the same size then
+* Create an own picture/logo with the same size as the original photo
 
-The (main) pictures, that can be found inside Nextcloud standard theming are the following:
+The (main) pictures that can be found inside Nextcloud standard theming are the following:
 
-* The logo at the login-page above the credentials-box: 	        …/nextcloud/themes/default/core/img/logo.svg
-* The logo, that's always in the left upper corner after login:   …/nextcloud/themes/default/core/img/logo-wide.svg
+* The logo at the login-page above the credentials-box and in the header: 	        …/nextcloud/themes/default/core/img/logo.svg
 
 Inserting your new logo
 -----------------------
 Inserting a new logo into an existing theme is as simple as replacing the old logo with the new (generated) one.
-You can use: scalable vector graphics (.svg) or common graphics formats for the internet such as portable network graphics (.png) or .jepg
+You can use: scalable vector graphics (.svg) or common graphics formats for the Internet such as portable network graphics (.png) or .jpeg.
 Just insert the new created picture by using the unchanged name of the old picture.
 
-The app icons can also be overwritten in a theme. To change for example the app icon of the activity app you need to overwrite it by saving the new image to …/nextcloud/themes/default/apps/activity/img/activity.svg
+The app icons can also be overwritten in a theme. To change for example the app icon of the activity app you need to overwrite it by saving the new image to …/nextcloud/themes/default/apps/activity/img/activity.svg.
 
 Changing favicon
 ----------------
@@ -117,6 +113,31 @@ To customize favicon for MyTheme:
 
 Changing the default colours
 ----------------------------
+
+You can inject custom variables into the SCSS generator to apply colors to the default css code by adding the following method to defaults.php:
+
+.. code-block:: php
+
+    public function getScssVariables() {
+        return [
+            'color-primary' => '#745bca'
+        ];
+    }
+
+
+The following variables can be overwritten:
+
+* color-main-text
+* color-main-background
+* color-primary
+* color-primary-text
+* color-error
+* color-warning
+* color-success
+* color-loading
+* color-loading-dark
+* color-box-shadow
+
 With a web-developer tool like Mozilla-Inspector, you also get easily displayed the color of the background you clicked on.
 On the top of the login page you can see a case- distinguished setting for different browsers:
 
@@ -134,10 +155,10 @@ On the top of the login page you can see a case- distinguished setting for diffe
     background: linear-gradient(top, #33537a 0%,#1d2d42 100%); /* W3C */
   }
 
-The different background-assignments indicate the headers for a lot of different browser types. What you most likely want to do is change the #35537a (lighter blue) and #ld2d42 (dark blue) color to the colours of our choice. In some older and other browsers, there is just one color, but in the rest showing gradients is possible.
-The login page background is a horizontal gradient. The first hex number, #35537a, is the top color of the gradient at the login screen. The second hex number, #ld2d42 is the bottom color of the gradient at the login screen.
+The different background-assignments indicate the headers for a lot of different browser types. What you most likely want to do is change the #35537a (lighter blue) and #ld2d42 (dark blue) color to the colours of our choice. In some older and other browsers there is just one color, but in the rest showing gradients is possible.
+The login page background is a horizontal gradient. The first hex number, #35537a, is the top color of the gradient at the login screen. The second hex number, #ld2d42, is the bottom color of the gradient at the login screen.
 The gradient in top of the normal view after login is also defined by these CSS-settings, so that they take effect in logged in situation as well.
-Change these colors to the hex color of your choice:
+Change these colors to the hex color of your choice.
 As usual:
 
 * the first two figures give the intensity of the red channel,
@@ -156,7 +177,7 @@ How to change translations
 
 You can override the translation of single strings within your theme. Simply
 create the same folder structure within your theme folder for the language file
-you want to override. Only the changed strings need to be added to that file for
+you want to override. Only the changed strings need to be added to that file; for
 all other terms the shipped translation will be used.
 
 If you want to override the translation of the term "Download" within the
@@ -190,6 +211,15 @@ Both files (``.js`` and ``.json``) are needed with the same translations,
 because the first is needed to enable translations in the JavaScript code and
 the second one is read by the PHP code and provides the data for translated
 terms in there.
+
+How to update custom mimetype icons
+===================================
+
+The following command is required to run after adding custom mimetype icons to your theme:
+
+.. code-block:: bash
+
+    sudo -u www-data php occ maintenance:mimetype:update-js
 
 
 How to change names, slogans and URLs

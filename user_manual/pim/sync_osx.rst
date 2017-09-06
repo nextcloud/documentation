@@ -46,5 +46,5 @@ There is also an easy `HOWTO`_ in the forum.
 
 
 .. _HOWTO: https://forum.owncloud.org/viewtopic.php?f=3&t=132
-.. _Troubleshooting Contacts & Calendar: https://docs.nextcloud.org/server/11/admin_manual/issues/index.html#troubleshooting-contacts-calendar
+.. _Troubleshooting Contacts & Calendar: https://docs.nextcloud.org/server/12/admin_manual/issues/index.html#troubleshooting-contacts-calendar
 .. TODO ON RELEASE: Update version number above on release

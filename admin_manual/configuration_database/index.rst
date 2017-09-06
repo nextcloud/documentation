@@ -7,3 +7,4 @@ Database Configuration
 
     db_conversion.rst
     linux_database_configuration.rst
+    mysql_4byte_support

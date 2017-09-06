@@ -1,6 +1,6 @@
-==============
-Usermanagement
-==============
+===============
+User Management
+===============
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 

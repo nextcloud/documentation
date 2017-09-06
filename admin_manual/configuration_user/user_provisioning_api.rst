@@ -20,8 +20,8 @@ All POST requests require the ``Content-Type: application/x-www-form-urlencoded`
 Instruction Set For Users
 =========================
 
-**users / adduser**
--------------------
+Add a new user
+--------------
 
 Create a new user on the Nextcloud server. Authentication is done by sending a 
 basic HTTP authentication header.
@@ -49,7 +49,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
  <?xml version="1.0"?>
  <ocs>
@@ -61,8 +61,8 @@ XML Output
   <data/>
  </ocs>
 
-**users / getusers**
---------------------
+Search/get users
+----------------
 
 Retrieves a list of users from the Nextcloud server. Authentication is done by 
 sending a Basic HTTP Authorization header.
@@ -87,7 +87,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -102,8 +102,8 @@ XML Output
     </data>
   </ocs>
 
-**users / getuser**
--------------------
+Get data of a single user
+-------------------------
 
 Retrieves information about a single user. Authentication is done by sending a 
 Basic HTTP Authorization header.
@@ -125,7 +125,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -134,14 +134,24 @@ XML Output
       <status>ok</status>
     </meta>
     <data>
-      <email>frank@example.org</email>
-      <quota>0</quota>
       <enabled>true</enabled>
+      <id>Frank</id>
+      <quota>0</quota>
+      <email>frank@example.org</email>
+      <displayname>Frank K.</displayname>
+      <phone>0123 / 456 789</phone>
+      <address>Foobar 12, 12345 Town</address>
+      <website>https://nextcloud.com</website>
+      <twitter>Nextcloud</twitter>
+      <groups>
+       <element>group1</element>
+       <element>group2</element>
+      </groups>
     </data>
   </ocs>
 
-**users / edituser**
---------------------
+Edit data of a single user
+--------------------------
 
 Edits attributes related to a user. Users are able to edit email, displayname 
 and password; admins can also edit the quota value. Authentication is done by 
@@ -150,7 +160,18 @@ sending a Basic HTTP Authorization header.
 **Syntax: ocs/v1.php/cloud/users/{userid}**
 
 * HTTP method: PUT
-* PUT argument: key, the field to edit (email, quota, display, password)
+* PUT argument: key, the field to edit:
+
+  + email
+  + quota
+  + displayname
+  + display (**deprecated** use `displayname` instead)
+  + phone
+  + address
+  + website
+  + twitter
+  + password
+
 * PUT argument: value, the new value for the field
 
 Status codes:
@@ -173,7 +194,7 @@ Examples
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -184,8 +205,8 @@ XML Output
     <data/>
   </ocs>
 
-**users / disableuser**
------------------------
+Disable a user
+--------------
 
 Disables a user on the Nextcloud server so that the user cannot login anymore.
 Authentication is done by sending a Basic HTTP Authorization header.
@@ -208,7 +229,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -220,8 +241,8 @@ XML Output
     <data/>
   </ocs>
 
-**users / enableuser**
-----------------------
+Enable a user
+-------------
 
 Enables a user on the Nextcloud server so that the user can login again.
 Authentication is done by sending a Basic HTTP Authorization header.
@@ -244,7 +265,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -256,8 +277,8 @@ XML Output
     <data/>
   </ocs>
 
-**users / deleteuser**
-----------------------
+Delete a user
+-------------
 
 Deletes a user from the Nextcloud server. Authentication is done by sending a 
 Basic HTTP Authorization header.
@@ -280,7 +301,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -291,8 +312,8 @@ XML Output
     <data/>
   </ocs>
 
-**users / getgroups**
----------------------
+Get user´s groups
+-----------------
 
 Retrieves a list of groups the specified user is a member of. Authentication is 
 done by sending a Basic HTTP Authorization header.
@@ -314,7 +335,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -330,8 +351,8 @@ XML Output
     </data>
   </ocs>
 
-**users / addtogroup**
-----------------------
+Add user to group
+-----------------
 
 Adds the specified user to the specified group. Authentication is done by 
 sending a Basic HTTP Authorization header.
@@ -360,7 +381,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -371,8 +392,8 @@ XML Output
     <data/>
   </ocs>
 
-**users / removefromgroup**
----------------------------
+Remove user from group
+----------------------
 
 Removes the specified user from the specified group. Authentication is done by 
 sending a Basic HTTP Authorization header.
@@ -402,7 +423,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -413,8 +434,8 @@ XML Output
     <data/>
   </ocs>
   
-**users / createsubadmin**
---------------------------
+Promote user to subadmin
+------------------------
 
 Makes a user the subadmin of a group. Authentication is done by sending a Basic 
 HTTP Authorization header.
@@ -443,7 +464,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -454,8 +475,8 @@ XML Output
     <data/>
   </ocs>
 
-**users / removesubadmin**
---------------------------
+Demote user from subadmin
+-------------------------
 
 Removes the subadmin rights for the user specified from the group specified. 
 Authentication is done by sending a Basic HTTP Authorization header.
@@ -484,7 +505,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -495,8 +516,8 @@ XML Output
     <data/>
   </ocs>
   
-**users / getsubadmingroups**
------------------------------
+Get user´s subadmin groups
+--------------------------
 
 Returns the groups in which the user is a subadmin. Authentication is done by 
 sending a Basic HTTP Authorization header.
@@ -521,7 +542,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -534,12 +555,49 @@ XML Output
       <element>testgroup</element>
     </data>
   </ocs>  
-  
+
+Resend the welcome email
+------------------------
+
+The request to this endpoint triggers the welcome email for this user again.
+
+**Syntax: ocs/v1.php/cloud/users/{userid}/welcome**
+
+* HTTP method: POST
+
+Status codes:
+
+* 100 - successful
+* 101 - email address not available
+* 102 - sending email failed
+
+Example
+^^^^^^^
+
+  * POST
+    ``https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/welcome``
+  * Sends the welcome email to ``Frank``
+
+XML Output
+^^^^^^^^^^
+
+.. code-block:: xml
+
+  <?xml version="1.0"?>
+  <ocs>
+    <meta>
+        <status>ok</status>
+        <statuscode>100</statuscode>
+      <message/>
+    </meta>
+    <data/>
+  </ocs>
+
 Instruction Set For Groups
 ==========================  
 
-**groups / getgroups**
-----------------------
+Search/get groups
+-----------------
 
 Retrieves a list of groups from the Nextcloud server. Authentication is done by 
 sending a Basic HTTP Authorization header.
@@ -564,7 +622,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -579,8 +637,8 @@ XML Output
     </data>
   </ocs>
 
-**groups / addgroup**
----------------------
+Create a group
+--------------
 
 Adds a new group. Authentication is done by
 sending a Basic HTTP Authorization header.
@@ -607,7 +665,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -618,8 +676,8 @@ XML Output
     <data/>
   </ocs>
 
-**groups / getgroup**
----------------------
+Get members of a group
+----------------------
 
 Retrieves a list of group members. Authentication is done by sending a Basic 
 HTTP Authorization header.
@@ -641,7 +699,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -656,8 +714,8 @@ XML Output
     </data>
   </ocs>
   
-**groups / getsubadmins**
--------------------------
+Get subadmins of a group
+------------------------
 
 Returns subadmins of the group. Authentication is done by
 sending a Basic HTTP Authorization header.
@@ -682,7 +740,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -696,8 +754,8 @@ XML Output
     </data>
   </ocs>  
 
-**groups / deletegroup**
-------------------------
+Delete a group
+--------------
 
 Removes a group. Authentication is done by
 sending a Basic HTTP Authorization header.
@@ -721,7 +779,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -731,12 +789,12 @@ XML Output
     </meta>
     <data/>
   </ocs>
-  
-Instruction Set For Apps
-=========================  
 
-**apps / getapps**
-------------------
+Instruction Set For Apps
+========================
+
+Getlist of apps
+---------------
 
 Returns a list of apps installed on the Nextcloud server. Authentication is done 
 by sending a Basic HTTP Authorization 
@@ -761,7 +819,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -777,8 +835,8 @@ XML Output
     </data>
   </ocs>
 
-**apps / getappinfo**
----------------------
+Get app info
+------------
 
 Provides information on a specific application. Authentication is done by 
 sending a Basic HTTP Authorization header.
@@ -800,7 +858,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -831,8 +889,8 @@ XML Output
     </data>
   </ocs>
 
-**apps / enable**
------------------
+Enable an app
+-------------
 
 Enable an app.  Authentication is done by sending a Basic HTTP Authorization 
 header.
@@ -854,7 +912,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -864,8 +922,8 @@ XML Output
     </meta>
   </ocs>
 
-**apps / disable**
-------------------
+Disable an app
+--------------
 
 Disables the specified app. Authentication is
 done by sending a Basic HTTP Authorization header.
@@ -888,7 +946,7 @@ Example
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>

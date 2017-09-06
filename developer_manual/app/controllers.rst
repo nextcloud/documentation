@@ -319,7 +319,7 @@ Cookies can be set or modified directly on the response class:
 
 Responses
 =========
-Similar to how every controller receives a request object, every controller method has to to return a Response. This can be in the form of a Response subclass or in the form of a value that can be handled by a registered responder.
+Similar to how every controller receives a request object, every controller method has to return a Response. This can be in the form of a Response subclass or in the form of a value that can be handled by a registered responder.
 
 JSON
 ----
@@ -342,7 +342,7 @@ Returning JSON is simple, just pass an array to a JSONResponse:
 
     }
 
-Because returning JSON is such an common task, there's even a shorter way to do this:
+Because returning JSON is such a common task, there's even a shorter way to do this:
 
 .. code-block:: php
 
@@ -525,7 +525,7 @@ A file download can be triggered by returning a DownloadResponse:
 
 Creating custom responses
 -------------------------
-If no premade Response fits the needed usecase, its possible to extend the Response baseclass and custom Response. The only thing that needs to be implemented is the **render** method which returns the result as string.
+If no premade Response fits the needed usecase, it is possible to extend the Response base class and custom Response. The only thing that needs to be implemented is the **render** method which returns the result as string.
 
 Creating a custom XMLResponse class could look like this:
 
@@ -600,7 +600,7 @@ If you want to use a custom, lazily rendered response simply implement the inter
 Modifying the Content Security Policy
 -------------------------------------
 
-By default Nextcloud disables all resources which are not served on the same domain, forbids cross domain requests and disables inline CSS and JavaScript by setting a `Content Security Policy <https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy>`_. However if an app relies on thirdparty media or other features which are forbidden by the current policy the policy can be relaxed.
+By default Nextcloud disables all resources which are not served on the same domain, forbids cross domain requests and disables inline CSS and JavaScript by setting a `Content Security Policy <https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy>`_. However if an app relies on third-party media or other features which are forbidden by the current policy the policy can be relaxed.
 
 .. note:: Double check your content and edge cases before you relax the policy! Also read the `documentation provided by MDN <https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy>`_
 
@@ -653,7 +653,7 @@ OCS
 ---
 .. note:: This is purely for compatibility reasons. If you are planning to offer an external API, go for a :doc:`api` instead.
 
-In order to ease migration from OCS API routes to the App Framework, an additional controller and response have been added. To migrate your API you can use the **OCP\\AppFramework\\OCSController** baseclass and return your data in the form of a DataResponse in the following way:
+In order to ease migration from OCS API routes to the App Framework, an additional controller and response have been added. To migrate your API you can use the **OCP\\AppFramework\\OCSController** base class and return your data in the form of a DataResponse in the following way:
 
 
 .. code-block:: php
@@ -729,9 +729,6 @@ Each response subclass has access to the **setStatus** method which lets you set
 
     }
 
-
-
-
 Authentication
 ==============
 By default every controller method enforces the maximum security, which is:
@@ -745,7 +742,7 @@ Most of the time though it makes sense to also allow normal users to access the 
 To turn off checks the following *Annotations* can be added before the controller:
 
 * **@NoAdminRequired**: Also users that are not admins can access the page
-* **@NoCSRFRequired**: Don't check the CSRF token (use this wisely since you might create a security hole, to understand what it does see :doc:`../general/security`)
+* **@NoCSRFRequired**: Don't check the CSRF token (use this wisely since you might create a security hole; to understand what it does see :doc:`../general/security`)
 * **@PublicPage**: Everyone can access the page without having to log in
 
 A controller method that turns off all checks would look like this:
@@ -771,4 +768,76 @@ A controller method that turns off all checks would look like this:
 
     }
 
+Rate limiting
+=============
+Nextcloud supports rate limiting on a controller method basis. By default controller methods are not rate limited. Rate limiting should be used on expensive or security sensitive functions (e.g. password resets) to increase the overall security of your application.
 
+The native rate limiting will return a 429 status code to clients when the limit is reached and a default Nextcloud error page. When implementing rate limiting in your application, you should thus consider handling error situations where a 429 is returned by Nextcloud.
+
+To enable rate limiting the following *Annotations* can be added to the controller:
+
+* **@UserRateThrottle(limit=int, period=int)**: The rate limiting that is applied to logged-in users. If not specified Nextcloud will fallback to AnonUserRateThrottle.
+* **@AnonRateThrottle(limit=int, period=int)**: The rate limiting that is applied to guests.
+
+A controller method that would allow five requests for logged-in users and one request for anonymous users within the last 100 seconds would look as following:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\IRequest;
+    use OCP\AppFramework\Controller;
+
+    class PageController extends Controller {
+
+        /**
+         * @PublicPage
+         * @UserRateThrottle(limit=5, period=100)
+         * @AnonRateThrottle(limit=1, period=100)
+         */
+        public function rateLimitedForAll() {
+
+        }
+    }
+
+Brute-force protection
+======================
+
+Nextcloud supports brute-force protection on an action basis. By default controller methods are not protected. Brute-force protection should be used on security sensitive functions (e.g. login attempts) to increase the overall security of your application.
+
+The native brute-force protection will slow down requests if too many violations have been found. This slow down will be applied to all requests against a brute-force protected controller with the same action from the affected IP.
+
+To enable brute force protection the following *Annotation* can be added to the controller:
+
+* **@BruteForceProtection(action=string)**: "string" is the name of the action. Such as "login" or "reset". Brute-force attempts are on a per-action basis; this means if a violation for the "login" action is triggered, other actions such as "reset" or "foobar" are not affected.
+
+Then the **throttle()** method has to be called on the response in case of a violation. Doing so will increase the throttle counter and make following requests slower.
+
+A controller method that would employ brute-force protection with an action of "foobar" would look as following:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\IRequest;
+    use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\TemplateResponse;
+
+    class PageController extends Controller {
+
+        /**
+         * @BruteForceProtection(action=foobar)
+         */
+        public function rateLimitedForAll() {
+            $templateResponse = new TemplateResponse(…);
+            // In case of a violation increase the throttle counter
+            // note that $this->auth->isSuccessful here is just an
+            // example.
+            if(!$this->auth->isSuccessful()) {
+                 $templateResponse->throttle();
+            }
+            return $templateResponse;
+        }
+    }

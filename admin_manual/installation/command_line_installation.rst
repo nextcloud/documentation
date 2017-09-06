@@ -1,6 +1,6 @@
-==========================================
-Installing Nextcloud from the Command Line
-==========================================
+============================
+Installing from Command Line
+============================
 
 It is now possible to install Nextcloud entirely from the command line. This is 
 convenient for scripted operations, headless servers, and sysadmins who prefer 
@@ -37,11 +37,6 @@ Supported databases are::
  - oci (Oracle 11g currently only possible if you contact us at https://nextcloud.com/enterprise as part of a subscription)
  
 See :ref:`command_line_installation_label` for more information.
-
-Finally, apply the correct strong permissions to your Nextcloud files and 
-directories (see :ref:`strong_perms_label`). This is an extremely important 
-step. It helps protect your Nextcloud installation, and ensures that it will run 
-correctly.
 
 BINLOG_FORMAT = STATEMENT
 -------------------------
