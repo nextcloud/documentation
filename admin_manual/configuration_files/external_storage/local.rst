@@ -12,9 +12,15 @@ of your Nextcloud ``data/`` directory. This directory must be readable and
 writable by your HTTP server user. These ownership and permission examples 
 are on Ubuntu Linux::
 
- sudo -u www-data chown -R www-data:www-data /localdir
- sudo -u www-data chmod -R 0750 /localdir
- 
+ sudo chown -R www-data:www-data /path/to/localdir
+ sudo chmod -R 0750 /path/to/localdir
+
+Important: If you use consecutive commands, make sure, you are user ``www-data``::
+
+ sudo -u www-data bash
+ cd /path/to/localdir
+ mkdir data
+
 In the **Folder name** field enter the folder name that you want to appear on 
 your Nextcloud Files page.
 
