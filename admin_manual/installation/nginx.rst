@@ -41,6 +41,7 @@ webroot of your nginx installation. In this example it is
 
   server {
       listen 80;
+      listen [::]:80;
       server_name cloud.example.com;
       # enforce https
       return 301 https://$server_name$request_uri;
@@ -48,6 +49,7 @@ webroot of your nginx installation. In this example it is
 
   server {
       listen 443 ssl http2;
+      listen [::]:443 ssl http2;
       server_name cloud.example.com;
 
       ssl_certificate /etc/ssl/nginx/cloud.example.com.crt;
@@ -185,6 +187,7 @@ your nginx installation.
 
   server {
       listen 80;
+      listen [::]:80;
       server_name cloud.example.com;
       # enforce https
       return 301 https://$server_name$request_uri;
@@ -192,6 +195,7 @@ your nginx installation.
 
   server {
       listen 443 ssl http2;
+      listen [::]:443 ssl http2;
       server_name cloud.example.com;
 
       ssl_certificate /etc/ssl/nginx/cloud.example.com.crt;
