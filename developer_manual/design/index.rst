@@ -6,3 +6,4 @@ Design Guidelines
    :maxdepth: 2
 
    navigation
+   popovermenu
