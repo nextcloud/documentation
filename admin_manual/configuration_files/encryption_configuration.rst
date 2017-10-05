@@ -240,18 +240,20 @@ View current location of keys::
  occ encryption:show-key-storage-root
  Current key storage root:  default storage location (data/) 
 
-Move keys to a different root folder, either locally or on a different server. 
+Move keys to a different folder, either locally or on a different server. 
 The folder must already exist, be owned by root and your HTTP group, and be 
-restricted to root and your HTTP group. This example is for Ubuntu Linux. Note 
-that the new folder is relative to your ``occ`` directory::
+restricted to root and your HTTP group. Further the folder needs to be located
+somewhere in your Nextcloud data folder, either physically, or as a mount. 
+This example is for Ubuntu Linux. Note that the new folder is relative to your ``occ`` directory::
 
- mkdir /etc/keys
- chown -R root:www-data /etc/keys
- chmod -R 0770 /etc/keys
- occ encryption:change-key-storage-root ../../../etc/keys
+ cd /your/nextcloud/data
+ mkdir keys
+ chown -R root:www-data keys
+ chmod -R 0770 keys
+ occ encryption:change-key-storage-root keys
  Start to move keys:
     4 [============================]
- Key storage root successfully changed to ../../../etc/keys
+ Key storage root successfully changed to keys
  
 Create a new master key. Use this when you have a single-sign on 
 infrastructure.  Use this only on fresh installations with no existing data, or 
