@@ -9,7 +9,7 @@ App Navigation
 Introduction
 =============
 
-The main navigation menu represent the most important part of your app.
+The main navigation menu represents the main navigation of your app.
 
 It needs to be:
 
@@ -17,7 +17,7 @@ It needs to be:
 * Simple
 * Responsive
 
-Nextcloud provide a very organized way of building menus.
+Nextcloud provides a very organized way of building menus.
 We implemented various essential functions and provide easy way of using them.
 
 .. figure:: ../images/navigation.png
@@ -44,12 +44,12 @@ Basic layout
 Utils
 ======
 
-Each entry is allowed to have a counter and/or a button for user interraction.
+Each entry is allowed to have a counter and/or a button for user interaction.
 
 * The ``app-navigation-entry-utils`` snippet need to be placed right next to the main link of your entry.
 * Maximum **two** items are allowed into the utils section. You can have:
-    * Two buttons
-    * One button and one counter
+	* Two buttons
+	* One button and one counter
 * You **can't** have more than two buttons, if you need more, you need to add a menu.
 * The order of the button and the counter are **not** interchangeable. You need to put the counter before the menu.
 
@@ -69,7 +69,7 @@ Each entry is allowed to have a counter and/or a button for user interraction.
 Menu
 ^^^^^
 
-If you need to add a few interractions for your entry, you can put everything in a popover menu.
+If you need to add a few interactions for your entry, you can put everything in a popover menu.
 The menu needs to be placed after the ``app-navigation-entry-utils``.
 
 For the global rules and/or layout, you can check the dedicated :ref:`popover menu section <popovermenu>`.
