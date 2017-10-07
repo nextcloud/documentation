@@ -22,11 +22,12 @@ We implemented various essential functions and provide easy way of using them.
 
 .. figure:: ../images/navigation.png
    :alt: Navigation screenshot
+   :align: right
 
 Basic layout
 =============
 
-.. code-block:: html
+.. code:: html
 
 	<div id="app-navigation">
 	    <ul>
@@ -48,12 +49,13 @@ Each entry is allowed to have a counter and/or a button for user interaction.
 
 * The ``app-navigation-entry-utils`` snippet need to be placed right next to the main link of your entry.
 * Maximum **two** items are allowed into the utils section. You can have:
-	* Two buttons
-	* One button and one counter
+	* Two :ref:`buttons <navigation_buttons>`
+	* One :ref:`button <navigation_buttons>` and one :ref:`button <navigation_counter>`
 * You **can't** have more than two buttons, if you need more, you need to add a menu.
 * The order of the button and the counter are **not** interchangeable. You need to put the counter before the menu.
 
-.. code-block:: html
+.. code:: html
+   :class: with-figure
 
 	<div class="app-navigation-entry-utils">
 	    <ul>
@@ -67,7 +69,7 @@ Each entry is allowed to have a counter and/or a button for user interaction.
 .. _navigation_menu:
 
 Menu
-^^^^^
+^^^^^^
 
 If you need to add a few interactions for your entry, you can put everything in a popover menu.
 The menu needs to be placed after the ``app-navigation-entry-utils``.
@@ -76,8 +78,9 @@ For the global rules and/or layout, you can check the dedicated :ref:`popover me
 
 .. figure:: ../images/navigation-menu.png
    :alt: Navigation menu
+   :align: right
 
-.. code-block:: html
+.. code:: html
 
 	<div class="app-navigation-entry-menu">
 	    <ul>
@@ -102,6 +105,8 @@ For the global rules and/or layout, you can check the dedicated :ref:`popover me
 	    </ul>
 	</div>
 
+.. _navigation_counter:
+
 Counter
 ^^^^^^^^
 
@@ -110,10 +115,38 @@ Do not change the alignment of the text. If you're using
 
 .. figure:: ../images/navigation-counter.png
    :alt: Navigation entry with counter
+   :align: right
 
-.. code-block:: html
+.. code:: html
 
 	<li class="app-navigation-entry-utils-counter">1</li>
+
+.. _navigation_buttons:
+
+Buttons
+^^^^^^^^^
+
+The same way we display the menu three-dot-icon button, you're allowed to use up to 2 buttons in a single entry.
+
+* The icon class goes directly on the ``button`` element.
+* If no class is set, the three-dot-icon will be used by default
+
+.. figure:: ../images/navigation-buttons.png
+   :alt: Navigation entry with counter
+   :align: right
+
+.. code:: html
+
+	<div class="app-navigation-entry-utils">
+	    <ul>
+	        <li class="app-navigation-entry-utils-menu-button">
+	            <button class="icon-edit"></button>
+	        </li>
+	        <li class="app-navigation-entry-utils-menu-button">
+	            <button class="icon-delete"></button>
+	        </li>
+	    </ul>
+	</div>
 
 Drag and drop
 ==============
@@ -121,7 +154,7 @@ The class which should be applied to a first level element **li** that hosts or 
 This will cause the hovered entry to slide down giving a visual hint that it can accept the dragged element.
 In case of jQuery UI's droppable feature, the **hoverClass** option should be set to the **drag-and-drop** class.
 
-.. code-block:: html
+.. code:: html
 
 	<div id="app-navigation">
 	    <ul>

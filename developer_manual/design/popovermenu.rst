@@ -18,7 +18,7 @@ This is exactly the same as the :ref:`navigation menu <navigation_menu>`. The on
 Basic layout
 =============
 
-.. code-block:: html
+.. code:: html
 
 	<div class="popovermenu">
 	    <ul>
