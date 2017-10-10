@@ -1,7 +1,7 @@
 .. sectionauthor:: John Molakvoæ <skjnldsv@protonmail.com>
 .. codeauthor:: John Molakvoæ <skjnldsv@protonmail.com>
-..  _progress:
+..  _html:
 
 ===============
-Progress bar
+Html elements
 ===============
