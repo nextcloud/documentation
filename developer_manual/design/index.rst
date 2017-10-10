@@ -9,5 +9,4 @@ Design Guidelines
    settings
    content
    popovermenu
-   progress
-   checkboxes
+   html
