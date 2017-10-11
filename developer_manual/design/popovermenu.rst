@@ -13,37 +13,41 @@ This is a quick menu that open on click. For menus, we use the three-dot-icon.
 
 This is exactly the same as the :ref:`navigation menu <navigation_menu>`. The only difference is the popovermenu class.
 
-.. image:: ../images/popovermenu.png
-
 Basic layout
 =============
 
+.. rst-class:: figure-with-code
+
+.. figure:: ../images/popovermenu.png
+   :alt: Popover image example
 .. code:: html
 
-	<div class="popovermenu">
-	    <ul>
-	        <li>
-	            <a href="#" class="icon-details">
-	                <span>Details</span>
-	            </a>
-	        </li>
-	        <li>
-	            <button class="icon-details">
-	                <span>Details</span>
-	            </button>
-	        </li>
-	        <li>
-	            <button>
-	                <span class="icon-details"></span><span>Details</span>
-	            </button>
-	        </li>
-	        <li>
-	            <a>
-	                <span class="icon-details"></span><span>Details</span>
-	            </a>
-	        </li>
-	    <ul>
-	</div>
+    <div class="popovermenu">
+        <ul>
+            <li>
+                <a href="#" class="icon-details">
+                    <span>Details</span>
+                </a>
+            </li>
+            <li>
+                <button class="icon-details">
+                    <span>Details</span>
+                </button>
+            </li>
+            <li>
+                <button>
+                    <span class="icon-details"></span>
+                    <span>Details</span>
+                </button>
+            </li>
+            <li>
+                <a>
+                    <span class="icon-details"></span>
+                    <span>Details</span>
+                </a>
+            </li>
+        <ul>
+    </div>
 
 Technical details
 ==================
