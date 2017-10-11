@@ -187,7 +187,7 @@ The opening of the menu is activated and animated by the class ``open`` on the m
     * If your top-level link is only used as a header, the **entire** ``a`` needs to be used to toggle the ``open`` class.
     * If your top-level link is used to redirect the user or to trigger something else, you **need** to add the collapsible button and use it as the ``open`` class toggle trigger.
 
-.. figure:: ../images/navigation-collapsible.png
+.. figure:: ../images/navigation-collapsible.*
    :alt: Collapsible navigation entry
    :figclass: figure-with-code
 
