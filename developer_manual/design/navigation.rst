@@ -209,11 +209,84 @@ The opening of the menu is activated and animated by the class ``open`` on the m
 Entry bullet
 =============
 
+Every entry can have a colored marker in front of it.
+We call it a `bullet`.
+
+* You can **not** combine an icon with a bullet.
+* You need to use the CSS to define the bullet color.
+
+.. figure:: ../images/navigation-bullet.png
+   :alt: Navigation entry with bullet
+   :figclass: figure-with-code
+
+.. code:: html
+
+    <li>
+        <div class="app-navigation-entry-bullet"></div>
+        <a href="#">Entry with bullet</a>
+    </li>
+
 Undo entry
 ===========
 
+* Undo entries can be used on any level you want.
+* When an entry is deleted, please use the usual **7 seconds delay feedback** before final deletion.
+* Please use the sentence *Deleted XXXX* as the feedback message.
+* You need to use the ``deleted`` class to trigger the animated hide/show of the undo entry.
+
+.. figure:: ../images/navigation-undo.*
+   :alt: Navigation entry with undo action
+   :figclass: figure-with-code
+
+.. code:: html
+
+    <li class="deleted">
+        <a href="#" class="hidden">Important entry</a>
+        <div class="app-navigation-entry-utils">
+            <ul>
+                <li class="app-navigation-entry-utils-menu-button">
+                    <button class="icon-delete"></button>
+                </li>
+            </ul>
+        </div>
+        <div class="app-navigation-entry-deleted">
+            <div class="app-navigation-entry-deleted-description">Deleted important entry</div>
+            <button class="app-navigation-entry-deleted-button icon-history" title="Undo"></button>
+        </div>
+    </li>
+
 Edit entry
 ===========
+
+* Editable entries can be used on any level you want.
+* You can replace the ``form`` by a ``div`` if you wish to do your request with JS.
+* You need to use the ``editing`` class to trigger the animated hide/show of the input.
+* You're allowed to use only one submit input. It **must** be the validation button.
+* The input **must** have the same value as the entry link text.
+
+.. figure:: ../images/navigation-edit.*
+   :alt: Navigation entry with undo action
+   :figclass: figure-with-code
+
+.. code:: html
+
+    <li class="editing">
+        <a href="#" class="icon-folder">Folder entry</a>
+        <div class="app-navigation-entry-utils">
+            <ul>
+                <li class="app-navigation-entry-utils-menu-button">
+                    <button class="icon-rename"></button>
+                </li>
+            </ul>
+        </div>
+        <div class="app-navigation-entry-edit">
+            <form>
+                <input type="text" value="Folder entry">
+                <input type="submit" value="" class="icon-close">
+                <input type="submit" value="" class="icon-checkmark">
+            </form>
+        </div>
+    </li>
 
 Pinned entry
 =============
