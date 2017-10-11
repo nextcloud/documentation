@@ -265,7 +265,7 @@ Edit entry
 * The input **must** have the same value as the entry link text.
 
 .. figure:: ../images/navigation-edit.*
-   :alt: Navigation entry with undo action
+   :alt: Editable navigation entry
    :figclass: figure-with-code
 
 .. code:: html
@@ -290,3 +290,28 @@ Edit entry
 
 Pinned entry
 =============
+
+Every top-level entry can be `pinned` at the bottom.
+
+* All the pinned entries can be mixed between non-pinned entries.
+* All the pinned entries **must** have the ``pinned`` class.
+* The **first** pinned entry **must** also have the ``first-pinned`` class.
+
+.. figure:: ../images/navigation-pinned.png
+  :alt: Pinned navigation entries
+  :figclass: figure-with-code
+
+.. code:: html
+
+    <ul>
+        <li><a href="#">Non-pinned entry</a></li>
+        <li><a href="#">Non-pinned entry</a></li>
+        <li class="pinned first-pinned">
+            <a href="#">Pinned entry</a>
+        </li>
+        <li class="pinned"><a href="#">Pinned entry</a></li>
+        <li><a href="#">Non-pinned entry</a></li>
+        <li><a href="#">Non-pinned entry</a></li>
+        <li class="pinned"><a href="#">Pinned entry</a></li>
+        <li class="pinned"><a href="#">Pinned entry</a></li>
+    </ul>
