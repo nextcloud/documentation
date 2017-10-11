@@ -16,10 +16,10 @@ This is exactly the same as the :ref:`navigation menu <navigation_menu>`. The on
 Basic layout
 =============
 
-.. rst-class:: figure-with-code
-
 .. figure:: ../images/popovermenu.png
    :alt: Popover image example
+   :figclass: figure-with-code
+
 .. code:: html
 
     <div class="popovermenu">
