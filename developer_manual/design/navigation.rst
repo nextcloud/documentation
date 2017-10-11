@@ -28,7 +28,7 @@ Basic layout
 
 .. figure:: ../images/navigation.png
    :alt: Navigation screenshot
-   
+
 .. code:: html
 
     <div id="app-navigation">
@@ -193,7 +193,7 @@ The opening of the menu is activated and animated by the class ``open`` on the m
 
 .. rst-class:: figure-with-code
 
-.. figure:: ../images/navigation-collapsible.gif
+.. figure:: ../images/navigation-collapsible.*
    :alt: Collapsible navigation entry
 
 .. code:: html
