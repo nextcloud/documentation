@@ -20,13 +20,15 @@ It needs to be:
 Nextcloud provides a very organized way of building menus.
 We implemented various essential functions and provide easy way of using them.
 
-.. figure:: ../images/navigation.png
-   :alt: Navigation screenshot
-   :align: right
 
 Basic layout
 =============
 
+.. rst-class:: figure-with-code
+
+.. figure:: ../images/navigation.png
+   :alt: Navigation screenshot
+   
 .. code:: html
 
     <div id="app-navigation">
@@ -55,7 +57,6 @@ Each entry is allowed to have a counter and/or a button for user interaction.
 * The order of the button and the counter are **not** interchangeable. You need to put the counter before the menu.
 
 .. code:: html
-   :class: with-figure
 
     <div class="app-navigation-entry-utils">
         <ul>
@@ -76,9 +77,10 @@ The menu needs to be placed after the ``app-navigation-entry-utils``.
 
 For the global rules and/or layout, you can check the dedicated :ref:`popover menu section <popovermenu>`.
 
+.. rst-class:: figure-with-code
+
 .. figure:: ../images/navigation-menu.png
    :alt: Navigation menu
-   :align: right
 
 .. code:: html
 
@@ -113,9 +115,10 @@ Counter
 If you need to add a counter to your menu entry, you can simply use this structure.
 Do not change the alignment of the text. If you're using
 
+.. rst-class:: figure-with-code
+
 .. figure:: ../images/navigation-counter.png
    :alt: Navigation entry with counter
-   :align: right
 
 .. code:: html
 
@@ -131,9 +134,10 @@ The same way we display the menu three-dot-icon button, you're allowed to use up
 * The icon class goes directly on the ``button`` element.
 * If no class is set, the three-dot-icon will be used by default
 
+.. rst-class:: figure-with-code
+
 .. figure:: ../images/navigation-buttons.png
    :alt: Navigation entry with counter
-   :align: right
 
 .. code:: html
 
@@ -187,9 +191,10 @@ The opening of the menu is activated and animated by the class ``open`` on the m
     * If your top-level link is only used as a header, the **entire** ``a`` needs to be used to toggle the ``open`` class.
     * If your top-level link is used to redirect the user or to trigger something else, you **need** to add the collapsible button and use it as the ``open`` class toggle trigger.
 
+.. rst-class:: figure-with-code
+
 .. figure:: ../images/navigation-collapsible.gif
    :alt: Collapsible navigation entry
-   :align: right
 
 .. code:: html
 
