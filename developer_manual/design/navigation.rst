@@ -24,10 +24,9 @@ We implemented various essential functions and provide easy way of using them.
 Basic layout
 =============
 
-.. rst-class:: figure-with-code
-
 .. figure:: ../images/navigation.png
    :alt: Navigation screenshot
+   :figclass: figure-with-code
 
 .. code:: html
 
@@ -77,10 +76,9 @@ The menu needs to be placed after the ``app-navigation-entry-utils``.
 
 For the global rules and/or layout, you can check the dedicated :ref:`popover menu section <popovermenu>`.
 
-.. rst-class:: figure-with-code
-
 .. figure:: ../images/navigation-menu.png
    :alt: Navigation menu
+   :figclass: figure-with-code
 
 .. code:: html
 
@@ -115,10 +113,9 @@ Counter
 If you need to add a counter to your menu entry, you can simply use this structure.
 Do not change the alignment of the text. If you're using
 
-.. rst-class:: figure-with-code
-
 .. figure:: ../images/navigation-counter.png
    :alt: Navigation entry with counter
+   :figclass: figure-with-code
 
 .. code:: html
 
@@ -134,10 +131,9 @@ The same way we display the menu three-dot-icon button, you're allowed to use up
 * The icon class goes directly on the ``button`` element.
 * If no class is set, the three-dot-icon will be used by default
 
-.. rst-class:: figure-with-code
-
 .. figure:: ../images/navigation-buttons.png
    :alt: Navigation entry with counter
+   :figclass: figure-with-code
 
 .. code:: html
 
@@ -191,10 +187,9 @@ The opening of the menu is activated and animated by the class ``open`` on the m
     * If your top-level link is only used as a header, the **entire** ``a`` needs to be used to toggle the ``open`` class.
     * If your top-level link is used to redirect the user or to trigger something else, you **need** to add the collapsible button and use it as the ``open`` class toggle trigger.
 
-.. rst-class:: figure-with-code
-
-.. figure:: ../images/navigation-collapsible.*
+.. figure:: ../images/navigation-collapsible.png
    :alt: Collapsible navigation entry
+   :figclass: figure-with-code
 
 .. code:: html
 
