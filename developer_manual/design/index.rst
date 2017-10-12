@@ -10,3 +10,4 @@ Design Guidelines
    content
    popovermenu
    html
+   icons
