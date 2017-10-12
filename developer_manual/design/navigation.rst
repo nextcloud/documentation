@@ -43,6 +43,14 @@ Basic layout
         </ul>
     </div>
 
+
+Basic rules
+=============
+
+* You can **not** change the default padding of the navigation elements.
+* We encourage you to add icons on every top-level item of your navigation for accessibility.
+* Do **not** override the default structure and/or CSS. Everything has been carefully tuned.
+
 Utils
 ======
 
@@ -318,3 +326,9 @@ Every top-level entry can be `pinned` at the bottom.
         <li class="pinned"><a href="#">Pinned entry</a></li>
         <li class="pinned"><a href="#">Pinned entry</a></li>
     </ul>
+
+Various informations
+=====================
+
+* You can add the ``icon-loading-small`` class to any ``li`` element to set it in a `loading` state.
+* Every element as a ``min-height`` of 44px.
