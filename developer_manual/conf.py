@@ -292,3 +292,12 @@ epub_copyright = u'2012-2017, The Nextcloud developers'
 
 # Include todos?
 todo_include_todos = True
+
+
+from sphinx.builders.html import StandaloneHTMLBuilder
+StandaloneHTMLBuilder.supported_image_types = [
+    'image/svg+xml',
+    'image/gif',
+    'image/png',
+    'image/jpeg'
+]

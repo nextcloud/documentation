@@ -20,7 +20,7 @@ Basic layout
    :alt: Popover image example
    :figclass: figure-with-code
 
-.. code:: html
+.. code-block:: html
 
     <div class="popovermenu">
         <ul>

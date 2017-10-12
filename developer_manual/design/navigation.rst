@@ -28,7 +28,7 @@ Basic layout
    :alt: Navigation screenshot
    :figclass: figure-with-code
 
-.. code:: html
+.. code-block:: html
 
     <div id="app-navigation">
         <ul>
@@ -55,7 +55,7 @@ Each entry is allowed to have a counter and/or a button for user interaction.
 * You **can't** have more than two buttons, if you need more, you need to add a menu.
 * The order of the button and the counter are **not** interchangeable. You need to put the counter before the menu.
 
-.. code:: html
+.. code-block:: html
 
     <div class="app-navigation-entry-utils">
         <ul>
@@ -80,7 +80,7 @@ For the global rules and/or layout, you can check the dedicated :ref:`popover me
    :alt: Navigation menu
    :figclass: figure-with-code
 
-.. code:: html
+.. code-block:: html
 
     <div class="app-navigation-entry-menu">
         <ul>
@@ -117,7 +117,7 @@ Do not change the alignment of the text. If you're using
    :alt: Navigation entry with counter
    :figclass: figure-with-code
 
-.. code:: html
+.. code-block:: html
 
     <li class="app-navigation-entry-utils-counter">1</li>
 
@@ -135,7 +135,7 @@ The same way we display the menu three-dot-icon button, you're allowed to use up
    :alt: Navigation entry with counter
    :figclass: figure-with-code
 
-.. code:: html
+.. code-block:: html
 
     <div class="app-navigation-entry-utils">
         <ul>
@@ -154,7 +154,7 @@ The class which should be applied to a first level element **li** that hosts or 
 This will cause the hovered entry to slide down giving a visual hint that it can accept the dragged element.
 In case of jQuery UI's droppable feature, the **hoverClass** option should be set to the **drag-and-drop** class.
 
-.. code:: html
+.. code-block:: html
 
     <div id="app-navigation">
         <ul>
@@ -191,10 +191,13 @@ The opening of the menu is activated and animated by the class ``open`` on the m
    :alt: Collapsible navigation entry
    :figclass: figure-with-code
 
-.. code:: html
+.. code-block:: html
 
     <li class="collapsible open">
-        <button class="collapse"></button> This is optional
+
+        <!-- This is optional -->
+        <button class="collapse"></button>
+
         <a href="#" class="icon-folder">Folder collapsed menu</a>
         <ul>
             <li><a href="#">Simple entry</a></li>
@@ -219,7 +222,7 @@ We call it a `bullet`.
    :alt: Navigation entry with bullet
    :figclass: figure-with-code
 
-.. code:: html
+.. code-block:: html
 
     <li>
         <div class="app-navigation-entry-bullet"></div>
@@ -238,7 +241,7 @@ Undo entry
    :alt: Navigation entry with undo action
    :figclass: figure-with-code
 
-.. code:: html
+.. code-block:: html
 
     <li class="deleted">
         <a href="#" class="hidden">Important entry</a>
@@ -268,7 +271,7 @@ Edit entry
    :alt: Editable navigation entry
    :figclass: figure-with-code
 
-.. code:: html
+.. code-block:: html
 
     <li class="editing">
         <a href="#" class="icon-folder">Folder entry</a>
@@ -301,7 +304,7 @@ Every top-level entry can be `pinned` at the bottom.
   :alt: Pinned navigation entries
   :figclass: figure-with-code
 
-.. code:: html
+.. code-block:: html
 
     <ul>
         <li><a href="#">Non-pinned entry</a></li>
