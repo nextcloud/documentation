@@ -5,3 +5,6 @@
 ========
 Icons
 ========
+
+ .. include:: icons.txt
+    :class: icons-flex
