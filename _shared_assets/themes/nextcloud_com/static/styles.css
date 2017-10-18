@@ -1076,7 +1076,8 @@ img.desaturate {
 h1:hover a.headerlink,
 h2:hover a.headerlink,
 h3:hover a.headerlink,
-h4:hover a.headerlink {
+h4:hover a.headerlink,
+.phpdoctorst dt:hover a.headerlink {
     display: inline;
 }
 a.headerlink {
@@ -1212,33 +1213,6 @@ li > dl > dt {
 
 /* API doc styles */
 
-/** Hacky way to display visibility since sphinx-phpdomain currently doesn't seem support them */
-
-.public:before {
-  content: 'public ';
-}
-.private:before {
-  content: 'private ';
-}
-.protected:before {
-  content: 'protected ';
-}
-.final dt:before{
-  content: 'final ';
-}
-.abstract dt:before {
-  content: 'abstract ';
-}
-
-/* Apply rtd default styling to prepended visibility strings */
-.public:before, .private:before {
-  float: left;
-}
-.abstract dt:before,
-.final dt:before {
-  padding-right: 10px;
-}
-
 dl.class dt,
 dl.interface dt,
 dl.trait dt {
@@ -1255,18 +1229,6 @@ dl.trait dt {
   background-color: #eeeeee;
   font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
   font-size: 90%;
-}
-.method:before,
-.class:before,
-.interface:before,
-.trait:before,
-.namespace:before {
-  padding-left: 10px;
-  padding-top: 1px;
-  background-color: #eeeeee;
-  font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
-  font-size: 90%;
-  margin-right: 10px;
 }
 .method > dt code,
 .class > dt code,
