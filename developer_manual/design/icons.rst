@@ -6,5 +6,7 @@
 Icons
 ========
 
+White icons only have a grey background on this documentation page for readability purposes.
+
  .. include:: icons.txt
     :class: icons-flex
