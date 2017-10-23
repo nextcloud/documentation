@@ -31,7 +31,7 @@ for i, line in enumerate(lines):
 
 result = ""
 for icon, path in sorted(icons.items()):
-	result += ".. figure:: " + path[3:-3]+"*\n   :height: 32\n\n   " + icon[1:] + "\n\n"
+	result += ".. figure:: " + path[3:-3]+"*\n   :height: 32\n   :width: 32\n\n   " + icon[1:] + "\n\n"
 	os.system('inkscape -z '+path[3:]+' -e '+path[3:-3]+'png')
 
 f = open('icons.txt', 'w')
