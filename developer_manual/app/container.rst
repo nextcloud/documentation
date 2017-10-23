@@ -11,6 +11,8 @@ If you are unfamiliar with this pattern, watch the following videos:
 * `Dependency Injection and the art of Services and Containers Tutorial <http://www.youtube.com/watch?v=DcNtg4_i-2w>`_
 * `Google Clean Code Talks <http://www.youtube.com/watch?v=RlfLCWKxHJ0>`_
 
+.. _dependency-injection:
+
 Dependency Injection
 ====================
 Dependency Injection sounds pretty complicated but it just means: Don't put new dependencies in your constructor or methods but pass them in. So this:
