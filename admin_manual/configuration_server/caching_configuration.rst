@@ -155,6 +155,17 @@ recommended if Redis is running on the same system as Nextcloud) use this exampl
 
 Only "host" and "port" variables are required, the other ones are optional.
 
+For the Redis side, you may need to add your web server user to the redis group::
+
+  usermod -a -G redis www-data
+
+If you were to use the Unix socket example right above, you'd edit and set the following lines in ``/etc/redis/redis.conf``::
+
+  port 0
+  unixsocket /var/run/redis/redis.sock
+  unixsocketperm 770
+  requirepass secret
+
 Redis is very configurable; consult `the Redis documentation 
 <http://redis.io/documentation>`_ to learn more.
 
