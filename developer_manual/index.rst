@@ -16,6 +16,7 @@ Table of Contents
 
     general/index
     app/index
+    design/index
     android_library/index
     client_apis/index
     core/index
