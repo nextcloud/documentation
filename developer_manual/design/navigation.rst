@@ -51,8 +51,8 @@ Basic rules
 * We encourage you to add icons on every top-level item of your navigation for accessibility.
 * Do **not** override the default structure and/or CSS. Everything has been carefully tuned.
 
-Utils
-======
+Utils: menu, counter & buttons
+===============================
 
 Each entry is allowed to have a counter and/or a button for user interaction.
 
@@ -113,6 +113,40 @@ For the global rules and/or layout, you can check the dedicated :ref:`popover me
         </ul>
     </div>
 
+The menu is hidden by default and has to be triggered by adding the ``open`` class to the ``app-navigation-entry-menu`` div.
+In case of AngularJS the following small directive can be added to handle all the display and click logic out of the box:
+
+.. code-block:: js
+
+    app.run(function ($document, $rootScope) {
+        'use strict';
+        $document.click(function (event) {
+            $rootScope.$broadcast('documentClicked', event);
+        });
+    });
+
+    app.directive('appNavigationEntryUtils', function () {
+        'use strict';
+        return {
+            restrict: 'C',
+            link: function (scope, elm) {
+                var menu = elm.siblings('.app-navigation-entry-menu');
+                var button = $(elm)
+                    .find('.app-navigation-entry-utils-menu-button button');
+
+                button.click(function () {
+                    menu.toggleClass('open');
+                });
+
+                scope.$on('documentClicked', function (scope, event) {
+                    if (event.target !== button[0]) {
+                        menu.removeClass('open');
+                    }
+                });
+            }
+        };
+    });
+
 .. _navigation_counter:
 
 Counter
@@ -128,6 +162,26 @@ Do not change the alignment of the text. If you're using
 .. code-block:: html
 
     <li class="app-navigation-entry-utils-counter">1</li>
+
+The count should be limitted to 999 and turn to 999+ if any higher number is given. If AngularJS is used the following filter can be used to get the correct behaviour:
+
+.. code-block:: js
+
+    app.filter('counterFormatter', function () {
+        'use strict';
+        return function (count) {
+            if (count > 999) {
+                return '999+';
+            }
+            return count;
+        };
+    });
+
+Use it like this:
+
+.. code-block:: html
+
+    <li class="app-navigation-entry-utils-counter">{{ count | counterFormatter }}</li>
 
 .. _navigation_buttons:
 
