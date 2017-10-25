@@ -1,4 +1,4 @@
-# global configuration for every documentation added at the end 
+# global configuration for every documentation added at the end
 
 import os
 
@@ -10,15 +10,15 @@ copyright = u'2012-2017, The Nextcloud developers'
 # built documents.
 #
 # The short X.Y version.
-version = '12'
+version = '13'
 # The full version, including alpha/beta/rc tags.
-release = '12'
+release = '13'
 
 
 # substitutions go here
 rst_epilog =  '.. |version| replace:: %s' % version
 
 html_context = {
-	'doc_versions': ['11', '12'],
+	'doc_versions': ['11', '12', '13'],
 	'current_doc': os.path.basename(os.getcwd()),
 }
