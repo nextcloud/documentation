@@ -1076,8 +1076,7 @@ img.desaturate {
 h1:hover a.headerlink,
 h2:hover a.headerlink,
 h3:hover a.headerlink,
-h4:hover a.headerlink,
-.phpdoctorst dt:hover a.headerlink {
+h4:hover a.headerlink {
     display: inline;
 }
 a.headerlink {
@@ -1220,23 +1219,40 @@ dl.trait dt {
   margin-bottom: 20px;
 }
 
-.method > dt,
-.class > dt,
-.interface > dt,
-.trait > dt,
-.namespace > dt {
-  padding: 3px;
-  background-color: #eeeeee;
-  font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
-  font-size: 90%;
+.phpdoctorst dd .field-list {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  background-color:#f4f4f4;
 }
+
 .method > dt code,
 .class > dt code,
 .interface > dt code,
 .trait > dt code,
 .namespace > dt code {
-  background-color: #eeeeee;
   font-size: 100%;
+  color: #333;
+  background-color: transparent;
+  font-family: 'Open Sans', Frutiger, Calibri, 'Myriad Pro', Myriad, sans-serif !important;
+}
+
+.method > dt,
+.class > dt,
+.interface > dt,
+.trait > dt,
+.namespace > dt {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  font-style: normal !important;
+  font-size: 120%;
+}
+
+.method > dt em,
+.class > dt em,
+.interface > dt em,
+.trait > dt em,
+.namespace > dt em {
+  font-style: normal !important;
 }
 
 /* Hide Fqsn */
@@ -1248,13 +1264,6 @@ dl.trait dt {
   content: '$';
 }
 
-.method {
-  margin-bottom: 30px;
-}
-.method dd {
-  padding: 10px;
-}
-
 .phpdoctorst th.field-name {
   width: 200px;
 }
@@ -1262,6 +1271,10 @@ dl.trait dt {
 .phpdoctorst .field-body ul {
   padding-left: 0;
   list-style-type: none;
+  margin: 0;
+}
+.phpdoctorst .field-body p {
+  margin: 0;
 }
 
 .phpdoctorst .line-block {
@@ -1269,4 +1282,18 @@ dl.trait dt {
 }
 .phpdoctorst .line-block .line-block {
   margin-left: 15px;
+}
+
+.phpdoctorst .deprecated > dt span,
+.phpdoctorst .deprecated > dt code,
+.phpdoctorst .deprecated > dt em {
+      text-decoration: line-through;
+}
+
+.phpdoctorst dt:hover a.headerlink {
+  display: inline;
+}
+
+.method {
+  border-bottom: 1px solid #aaa;
 }
