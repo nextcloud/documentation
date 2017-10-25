@@ -144,10 +144,16 @@
   <div class="content row">
   <main class="main">
     <div class="row page-content-header">
-      <div class="col-md-6">
+      <div class="col-md-8">
         <h1><a href="{{ pathto(master_doc) }}">{{ project|e }}</a></h1>
+        <div class="doc-version-switch">
+          Versions: 
+        {%- for v in doc_versions %}
+          <a href="https://docs.nextcloud.com/server/{{ v }}/{{current_doc}}/{{pagename}}.html" {% if version == v %} class="current-doc"{% endif %}>{{v}}</a>
+        {%- endfor %}
+        </div>
       </div>
-      <div class="col-md-5 col-md-offset-1">
+      <div class="col-md-4">
       {% if theme_show_search %}
         <form class="headersearch" style="margin: 16px 0;" action="{{ pathto('search') }}" method="get">
         <input type="text" value="" name="q" id="q" class="form-control" /> 

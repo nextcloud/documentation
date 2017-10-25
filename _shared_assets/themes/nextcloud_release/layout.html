@@ -100,25 +100,23 @@
 <div class="wrap container not-front">
   <div class="content row">
   <main class="main">
-    <div class="row page-content-header">
-      <div class="col-md-5 col-md-offset-7">
-      {% if theme_show_search %}
-        <form class="headersearch" style="margin-bottom:-3px;" action="{{ pathto('search') }}" method="get">
-        <input type="text" value="" name="q" id="q" class="form-control" /> 
-        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
-        </form>
-      {% endif %}
-      </div>
-    </div>
     {% block sidebartoc %}
 			<div class="row">
 				<div class="col-md-3">
 					<div class="sidebar">
+            <h1>{{ project|e }}</h1>
+            {% if theme_show_search %}
+            <div class="sidebar-search">
+              <form class="headersearch" action="{{ pathto('search') }}" method="get">
+                <input type="text" value="" name="q" id="q" class="form-control" /> 
+                <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+              </form>
+            </div>
+            {% endif %}
 							<div class="menu-support-container">
 								<ul id="menu-support" class="menu">
 									<ul>
-										
-<li><a href="{{ pathto(master_doc) }}">Table of Contents</a></li>
+                    <li><a href="{{ pathto(master_doc) }}">Table of Contents</a></li>
 									</ul>
                   {{ toctree(maxdepth=3) }}
 								</ul>
