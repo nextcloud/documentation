@@ -1,72 +1,48 @@
-===============================
-Using two-factor authentication
-===============================
+=============
+使用双重身份认证
+=============
 
-Two-factor authentication (2FA) is a way to protect your Nextcloud account
-against unauthorized access. It works by requiring two different 'proofs' of
-your identity. For example, *something you know* (like a password) and 
-*something you have* like a physical key. Typically, the first factor is a
-password like you already have and the second can be a text message you
-receive or a code you generate on your phone or another device
-(*something you have*). Nextcloud supports a variety of 2nd factors and
-more can be added.
+双重身份验证（2FA）是保护您的Nextcloud帐户免受未经授权的访问的一种方式。它需要您的身份的两个不同的“证明”。例如，你熟悉的（如密码）和物理键盘。 通常，第一验证因素是您已经拥有的密码，第二验证因素可以是您收到的短信，或您在手机或其他设备上生成的代码（您拥有的）。Nextcloud支持各种第二验证因素，还可以添加更多种。
 
-Once a two-factor authentication app has been enabled by your administrator
-you can enable and configure it in :doc:`userpreferences`. Below you can
-see how.
+双重身份验证（2FA）是保护您的Nextcloud帐户免受未经授权的访问的一种方式。它需要您的身份的两个不同的“证明”。例如，你熟悉的（如密码）和物理键盘。 通常，第一验证因素是您已经拥有的密码，第二验证因素可以是您收到的短信，或您在手机或其他设备上生成的代码（您拥有的）。Nextcloud支持各种第二验证因素，还可以添加更多种。
 
-Configuring two-factor authentication
+配置双重身份验证
 =====================================
-In your Personal Settings look up the Second-factor Auth setting. In this
-example this is TOTP, a Google Authenticator compatible time based code.
+在您的个人设置中，查看第二验证因素身份验证设置。 在这个例子中，这是TOTP，一个Google Authenticator兼容的基于时间的代码。
 
 .. figure:: images/totp_enable.png
-     :alt: TOTP configuration.
+     :alt: TOTP 配置
 
-You will see your secret and a QR code which can be scanned by the TOTP app
-on your phone (or another device). Depending on the app or tool, type in the
-code or scan the QR and your device will show a login code which changes
-every 30 seconds.
+您将看到您的秘密和QR码，可以通过手机（或其他设备）上的TOTP应用扫描。 根据应用程序或工具，输入代码或扫描QR，您的设备将显示每30秒更改的登录代码。
 
-Recovery codes in case you lost your 2nd factor
+为双重验证生成恢复码
 ===============================================
-You should always generate backup codes for 2FA. If your 2nd factor device
-gets stolen or is not working, you will be able to use one of these codes to
-unlock your account. It effectively functions as a backup 2nd factor. To
-get the backup codes, go to your Personal Settings and look under Second-factor
-Auth settings. Choose *Generate backup codes*.
+您应该始终为双重认证生成恢复码。如果您的双重认证设备被盗或无法使用，您将可以使用其中恢复码解锁您的帐户。它作为双重身份验证的备用是有效的。要获取恢复码，请转到您的个人设置，然后查看第二验证因素身份验证设置。选择生成 *恢复码*。
+
 
 .. figure:: images/2fa_backupcode_1.png
-     :alt: 2FA backup code generator
+     :alt: 生成双重身份验证恢复码
 
-You will then be presented with a list of one-time-use backup codes.
+然后看到一次性备用码的列表。
      
 .. figure:: images/2fa_backupcode_2.png
-     :alt: 2FA backup codes
+     :alt: 双重身份验证码
 
-You should put these codes in a safe spot, somewhere you can find them. Don't
-put them together with your 2nd factor like your mobile phone but make sure that
-if you lose one, you still have the other. Keeping them at home is probably
-the best thing to do.
 
-Logging in with two-factor authentication
+你应该把这些代码放在一个你可以找到的安全地方，不要把它们与你的手机的第二验证因素放在一起，但要确保如果你丢失了一个，你还有另一个。把他们放在家里可能是最好的选择。
+
+使用双重身份验证登录
 =========================================
-After you have logged out and need to log in again, you will see a request to
-enter the TOTP code in your browser. Just enter your code:
+在您注销并需要重新登录后，您将看到在浏览器中输入TOTP代码的请求。 只需输入您的代码：
   
 .. figure:: images/totp_login_2.png
-     :alt: Entering TOTP code at login.
+     :alt: 在登录时输入TOTP码 
 
-If the code was correct you will be redirected to your Nextcloud account.
+如果代码正确，您将被重定向到您的Nextcloud帐户。
 
-.. note:: Since the code is time-based, it’s important that your server’s and
-  your smartphone’s clock are almost in sync. A time drift of a few seconds
-  won’t be a problem.
+.. 提示:: 由于代码是基于时间的，因此您的服务器和智能手机的时钟保持几乎同步很重要。几秒钟的时间漂移不会是一个问题。
 
-Using client applications with two-factor authentication
+使用客户端应用程序进行双重身份验证
 ========================================================
-Once you have enabled 2FA, your clients will no longer be able to connect with
-just your password unless they also have support for two-factor authentication.
-To solve this, you should generate device specific passwords for them. See 
-:doc:`session_management` for more information on how to do this.
+一旦启用了双重身份验证，您的客户端如果只使用单一密码无法连接，除非他们也支持双重身份验证。要解决这个问题，你应该为它们生成特定于设备的密码。有关如何执行此操作的更多信息，请参阅管理已连接的浏览器和设备。
 
