@@ -1,44 +1,32 @@
-=====================================
-Manage Connected Browsers and Devices
-=====================================
+==================
+管理连接的浏览器和设备
+==================
 
-The personal settings page allows you to have an overview on the connected
-browsers and devices.
+在个人设置页面会对连接的浏览器和设备生成概要列表。
 
-Managing Connected Browsers
+管理连接的浏览器
 ===========================
-In the list of connected browsers you see which browsers connected to your
-account recently:
+在连接的浏览器列表中，您会看到最近连接到您帐户的浏览器:
 
 .. figure:: images/settings_sessions.png
      :alt: List of browser sessions.
 
-You can use the trash icon to disconnect any of the browsers in the list.
+您可以使用回收站图标来断开列表中的任何浏览器。
 
-Managing Devices
+设备管理
 ================
-In the list of connected devices you see all the devices and clients you
-generated a device password for and their last activity:
+在已连接的设备列表中，您可以看到所有设备和客户端生成了设备名称及其最近的活动情况：
 
 .. figure:: images/settings_devices.png
-     :alt: List of connected devices.
+     :alt: 已连接设备列表。
 
-You can use the trash icon to disconnect any of the devices in the list.
+您可以使用回收站图标来断开列表中的任何浏览器。
 
-At the bottom of the list you find a button to create a new device-specific
-password. You can choose a name to identify the token later. The generated
-password is used for configuring the new client. Ideally, generate individual
-tokens for every device you connect to your account, so you can disconnect
-those individually if necessary.
+在列表的底部找到创建新的设备专用密码的按钮。您可以选择一个名称为了以后识别该令牌。生成的密码用于配置新客户端。理想情况下，为连接到您的帐户的每个设备生成单独令牌，以便您可以根据需要单独断开连接。
 
 .. figure:: images/settings_devices_add.png
-     :alt: Adding a new device.
+     :alt: 增加新设备。
 
-.. note:: You have only access to the device password when creating it,
-   Nextcloud will not save the plain password, hence it's recommended to
-   enter the password on the new client immediately.
+.. 提示:: 在列表的底部找到创建新的设备专用密码的按钮。您可以选择一个名称为了以后识别该令牌。生成的密码用于配置新客户端。理想情况下，为连接到您的帐户的每个设备生成单独令牌，以便您可以根据需要单独断开连接。
 
-
-.. note:: If you are :doc:`user_2fa` for your account,
-   device-specific passwords are the only way to configure clients. The
-   client will deny connections of clients using your login password then.
+.. 提示:: 如果您为帐户使用双重身份验证，则设备专用密码是配置客户端的唯一方法。客户端将拒绝使用您的登录密码的连接。
