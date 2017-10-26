@@ -1,26 +1,17 @@
 .. _index:
 
 ============================================
-Nextcloud |version| User Manual Introduction
+Nextcloud |version| 用户手册介绍
 ============================================
 
-**Welcome to Nextcloud: A safe home for all your data.**
+**欢迎使用Nextcloud: 给您所有的数据一个安全的家**
 
-Nextcloud is open source file sync and share software for everyone from
-individuals operating the free Nextcloud Server in the privacy of their own 
-home, to large enterprises and service providers supported by the Nextcloud
-Enterprise Subscription. Nextcloud provides a safe, secure, and compliant 
-file synchronization and sharing solution on servers that you control.
+Nextcloud是一款开放源代码的文件同步和共享软件，从个人家庭到购买Nextcloud订阅服务的大型企业均适用。Nextcloud提供一个在您控制下的安全、可靠、兼容的文件同步和共享解决方案。
 
-You can share one or more files and folders on your computer, and synchronize 
-them with your Nextcloud server. Place files in your local shared directories, 
-and those files are immediately synchronized to the server and to other devices 
-using the Nextcloud / ownCloud Desktop Sync Client, Android app, or iOS app. To
-learn more about the Nextcloud desktop and mobile clients, please refer to 
-their respective manuals:
+您可以在计算机上共享一个或多个文件和文件夹，并将其与Nextcloud服务器同步。 将文件放在本地共享目录中，并使用Nextcloud/ownCloud桌面同步客户端、Android应用程序或iOS应用程序立即将这些文件同步到服务器和其他设备。 要了解有关Nextcloud桌面和移动客户端的更多信息，请参阅各自的手册：
 
-* `Nextcloud/ownCloud Desktop Client`_
-* `Nextcloud Android App`_
+* `Nextcloud/ownCloud 桌面客户端`_
+* `Nextcloud 安卓应用程序`_
 
-.. _`Nextcloud/ownCloud Desktop Client`: https://doc.owncloud.org/desktop/2.2/
-.. _`Nextcloud Android App`: https://docs.nextcloud.org/android/
+.. _`Nextcloud/ownCloud 桌面客户端`: https://doc.owncloud.org/desktop/2.2/
+.. _`Nextcloud 安卓应用程序`: https://docs.nextcloud.org/android/
