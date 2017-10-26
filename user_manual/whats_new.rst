@@ -1,25 +1,25 @@
 ===========================================
-What's New for Users in Nextcloud |version|
+Nextcloud |version|的用户程序鞥下说明
 ===========================================
 
-1. Easier way to select a new app
+1. 选择新的应用程序更加容易
 
    .. figure:: images/apps_menu.png
-      :alt: screenshot of apps menu at top-left of Nextcloud Web GUI
+      :alt: 在Nextcloud Web界面的的左上部的应用程序菜单截图
       
-2. New Contacts menu to reach your colleagues or friends easier
+2. 新的联系人菜单使得找到您的同事和朋友更加容易
 
    .. figure:: images/contacts_menu.png
-      :alt: screenshot of contacts menu at top-right of Nextcloud Web GUI
+      :alt: 在Nextcloud Web界面的的右上部的联系人菜单截图
 
-3. A contact popup menu over avatars everywhere
+3. 联系人下拉菜单无处不在
 
    .. figure:: images/contacts_popup.png
-      :alt: screenshot of popup over avatar
+      :alt: 弹出窗口的头像的截图
 
-4. Ability to sent multiple unique sharing links each with their own settings, by entering email addresses (the recipient will receive an email)
+4. 通过输入电子邮件地址（收件人将收到一封电子邮件），能够发送多个唯一的共享链接，每个都有自己的设置
 
    .. figure:: images/multi_sharing.png
-      :alt: screenshot of multiple sharing links
+      :alt: 多个共享链接的截图
 
-5. Many other improvements and new apps, like screensharing in Video calls, new Circles app for user defined groups, push notifications, notifications of file changes even when shared to another server, undo removal of files from a shared folder even if the removal was done by a recipient, directly sharing to social media and much more.
+5. 许多其他改进和新应用程序，如视频通话中的屏幕分享，用户定义组的新Circles应用程序，推送通知，甚至在共享到其他服务器时的文件更改通知，即使由收件人删除是也可从共享文件夹中撤销删除文件，直接分享到社交媒体等等。
