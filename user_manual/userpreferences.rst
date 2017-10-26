@@ -1,45 +1,42 @@
-========================
-Setting Your Preferences
-========================
+============
+设置您的首选项
+============
 
-As a user, you can manage your personal settings.
+作为用户，您可以管理您的个人设置。
 
-To access your personal settings:
+作为用户，您可以管理您的个人设置：
 
-1. Clicking on your username in the top, right corner of your Nextcloud instance.
+1. 单击您的Nextcloud实例顶部右上角的用户名。个人设置菜单打开。
 
-   The Personal Settings Menu opens.
+  个人设置菜单打开。
 
    .. figure:: images/oc_personal_settings_dropdown.png
-      :alt: screenshot of user menu at top-right of Nextcloud Web GUI
+      :alt: 在 Nextcloud Web界面的右侧上方的用户菜单截图
 
-   *Personal Settings Menu*
+   *个人设置菜单*
 
-2. Choose *Personal* from the drop down menu.
+2. 下拉菜单中选择*Personal* 
 
    .. figure:: images/personal_settings.png
-      :alt: screenshot of user's Personal settings page
+      :alt: 用户个人设置界面截图
 
-.. note:: If you are an administrator, you can also manage users and administer
-   the server. These links do not appear to a non-admin user.
+.. note:: 如果您是管理员，您还可以管理用户并管理服务器。 这些链接不会显示给非管理员用户。
 
-The options listed in the Personal Settings Page depend on the applications that
-are enabled by the administrator. Some of the features you will see
-include the following.
+个人设置页面中列出的选项取决于管理员启用的应用程序。 您将看到的包括以下内容的一些特性。
 
-* Usage and available quota.
-* Manage your profile picture.
-* Full name. You can make this anything you want, as it is separate from your
-  Nextcloud login name, which is unique and cannot be changed.
-* Email address.
-* Lists your Group memberships.
-* Manage your password.
+
+* 空间使用情况及可用配额。
+* 管理您的个人头像
+* 全名。你可以做任何你喜欢的。因为它是独立于您的Nextcloud登录名，而登录名是唯一的，不能改变。
+* 电子邮件地址。
+* 列出您的群组成员资格。
+* 管理您的密码
 * :doc:`user_2fa`.
 * :doc:`userpreferences`.
-* Choose the language for your Nextcloud interface.
-* Links to desktop and mobile apps.
-* Manage your Activity stream and notifications.
-* Default folder to save new documents to.
-* Your Federated sharing ID.
-* Social sharing links.
-* Nextcloud version.
+* 更改Nextcloud界面的语言。
+* 提供Nextcloud桌面和移动客户端下载链接。
+* 管理您的活动流和通知。
+* 用于保存新文档的默认文件夹。
+* 您的联合共享ID。
+* 社交共享链接。
+* Nextcloud版本。
