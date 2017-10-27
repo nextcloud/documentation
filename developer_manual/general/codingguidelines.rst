@@ -250,7 +250,7 @@ with ``Data``.
 
 JavaScript
 ----------
-In general take a look at `JSLint <http://www.jslint.com/lint.html>`_ without the whitespace rules.
+In general take a look at `JSLint <http://www.jslint.com>`_ without the whitespace rules.
 
 * Use a :file:`js/main.js` or :file:`js/app.js` where your program is started
 * Complete every statement with a **;**
