@@ -96,7 +96,7 @@ Files and folders can also be accessed by id, by calling the **getById** method 
         }
 
         public function getContent($id) {
-            // check if file exists and write to it if possible
+            // check if file exists and read from it if possible
             try {
                 $file = $this->storage->getById($id);
                 if($file instanceof \OCP\Files\File) {
