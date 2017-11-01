@@ -1,109 +1,102 @@
-======================
-Using the Contacts App
-======================
+==================
+使用联系人应用程序
+==================
 
-The Contacts app is not enabled by default in Nextcloud |version| and needs to
-be installed separately from our App Store.
+默认情况下，Nextcloud |version| 中的“Contacts联系人”应用程序未启用，需要单独启用。
 
-The Nextcloud Contacts app is similar to other mobile contact applications, but
-with more functionality. When you first access the Contacts app, a default
-address book becomes available.
+Nextcloud Contacts应用程序与其他移动联系人应用程序类似，但是具有更多的功能。当您首次访问联系人应用程序时，默认通讯录变得可用。
 
 .. figure:: ../images/contacts_empty.png
 
- **Contacts app (empty)**
+ **Contacts app应用程序 (empty)**
 
-Adding Contacts
----------------
-You can add contacts using one of the following methods:
+增加联系人
+----------
+您可以通过以下方法中的一种增加联系人。
 
-* Import contacts using a Variant Call Format (VCF) file
+ * 使用Variant Call Format (VCF)文件导入联系人
 
-* Add contacts manually
+ * 手动增加联系人 
 
-Importing Contacts
-~~~~~~~~~~~~~~~~~~
+导入联系人
+~~~~~~~~~~
 
-The fastest way to add contacts is through the use of a Variant Call Format
-(VCF) file.
+增加联系人最快的方法是使用Variant Call Format (VCF)格式文件。 
 
-To import contacts using a VCF file:
+使用VCF文件导入联系人:
 
-1. At the bottom of the Contacts app information field, locate the gear button.
+ 1. 位于齿轮设置按钮的底部有Contacts联系人应用程序信息。
 
   .. figure:: ../images/contact_bottombar.png
 
-  **Contact settings gear button**
+  **联系人设置齿轮按钮**
 
-2. Click the gear button. The Contacts app upload field opens.
+ 2. 点击齿轮按钮。联系人应用程序大连上传区域。 
 
 .. figure:: ../images/contact_uploadbutton.png
 
-**Contacts app upload field**
+**Contacts应用程序上传区域**
 
-Creating Contacts Manually
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+手动创建联系人
+~~~~~~~~~~~~~~
 
-The Contacts app enables you to create contacts manually.
+您可以手动创建联系人。
 
-To create a new contact:
+创建一个新的联系人:
 
-1. Click the ``+ New contact`` button.
+ 1. 点击``+新联系人``按钮。
 
-   An empty new contact configuration opens in the Application View field.
+  
+  在应用程序视图区域中将打开一个空的新联系人配置。
 
   .. figure:: ../images/contact_new.png
 
-2. Specify the new contact information. Changes that you made are implemented immediately.
+ 2. 指定新的联系人信息。您所做的更改将立即生效。 
 
-Edit or Remove Contact Information
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+编辑或者移除联系人信息
+~~~~~~~~~~~~~~~~~~~~~~
 
-The Contacts app enables you to edit or remove contact information.
+联系人应用程序使您能够编辑或删除联系人信息。
 
-To edit or remove contact information:
+为了编辑或者移除联系人信息:
 
-1. Navigate to the specific contact that you want to modify.
+ 1. 导航到要修改的特定联系人。 
 
-2. Select the information in the field that you want to edit or remove.
+ 2. 在需要编辑或者要移除的联系人区域选择相关信息。
 
-3. Make your modifications or click on the trash bin.
+ 3. 进行修改或者点击回收站。
 
-Changes or removals that you made to any contact information are implemented immediately.
+您对任何联系信息所做的更改或删除都会立即生效。
 
-Contact Picture
-~~~~~~~~~~~~~~~
+联系人图片
+~~~~~~~~~~
 
-To define a contact picture, click on the upload button:
+点击上传按钮来定义联系人图片:
 
 .. figure:: ../images/contact_picture.png
 
-  **Contact picture (upload button)**
+  **联系人图片(上传按钮)**
 
-After you have set a contact picture, it will look like that:
+在设置联系人图片后，效果如下:
 
 .. figure:: ../images/contact_picture_set.png
 
-  **Contact picture (set)**
+  **联系人图片 (设置)**
 
-If you want to upload a new one, remove it, view it in full size or download it
-click on the contacts picture.
+如果要上传新的，请将其删除，查看完整尺寸或下载点击联系人图片。
 
 .. figure:: ../images/contact_picture_options.png
 
-Adding and Managing Address Books
----------------------------------
+增加或者管理联系人地址薄
+------------------------
 
-Clicking on the settings (gear) button at the bottom of the Apps Information
-field provides access to the Contact app settings. This field shows all
-available address books, certain options for each address book, and enables you
-to create new address books, simply by specifying an address books name.
+点击应用信息底部的设置（齿轮）按钮区域提供对联系人应用程序设置的访问。此字段显示所有
+可用的通讯录，每个通讯录的特定选项，并使您能够通过指定地址簿名称来创建新的地址簿。
 
 .. figure:: ../images/contact_manageaddressbook.png
 
-   **Add address book in the contacts settings**
+   **在联系人设置中增加地址簿**
 
-The Contacts settings also enables you to share, export and delete address
-books. You will also find the CardDAV URLs there.
-See :doc:`index` for more details about syncing your adress books
-with iOS, macOS, Thunderbird and other CardDAV clients.
+联系人设置还使您能够共享，导出和删地址簿。您还会在那里找到CardDAV的URL网址。
+
+有关同步地址簿与iOS，macOS，Thunderbird等CardDAV客户端的更多详细信息，请参阅:doc:`index`。

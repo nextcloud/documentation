@@ -1,217 +1,169 @@
-======================================================
-Accessing your Files Using the Nextcloud Web Interface
-======================================================
+=================================
+使用Nextcloud web界面访问您的文件
+=================================
 
-You can access your Nextcloud files with the Nextcloud Web interface and create,
-preview, edit, delete, share, and re-share files. Your Nextcloud administrator
-has the option to disable these features, so if any of them are missing on your
-system ask your server administrator.
+您可以使用Nextcloud Web界面访问您的Nextcloud文件，并创建、预览、编辑、删除、共享和重新共享文件。 您的Nextcloud管理员可以选择禁用这些功能，因此如果系统中缺少任何功能，请咨询服务器管理员。
+
 
 .. figure:: ../images/users-files.png
-   :alt: The Files view screen.
+   :alt: 文件视图截屏
 
-Tagging Files
+给文件打标签
 -------------
 
-You can assign tags to files. To create tags, open a file to the Details view.
-Then type your tags. To enter more than one tag press the return key after
-creating each tag. All tags are system tags, and are shared by all users on your
-Nextcloud server.
+您可以为文件分配标签。 要创建标签，请将文件打开到“详细信息”视图。 然后键入您的标签。 创建每个标签后按回车键可以输入多个标签。 所有标签都是系统标签，并由您的Nextcloud服务器上的所有用户共享。
 
 .. figure:: ../images/files_page-7.png
-   :alt: Creating file tags.
+   :alt: 创建文件标签。
 
-Then use the Tags filter on the left sidebar to filter files by tags.
+然后使用左侧栏上的“标签”过滤器按标签过滤文件。
 
 .. figure:: ../images/files_page-8.png
-   :alt: Viewing file tags.
+   :alt: 查看文件标签。 
 
-Comments
+评论
 --------
 
-Use the Details view to add and read comments on any file or folder. Comments
-are visible to everyone who has access to the file.
+使用“详细信息”视图在任何文件或文件夹中添加和阅读评论。每个有权访问该文件的人都可以看到评论。
 
-.. figure:: ../images/file_menu_comments_2.png
-   :alt: Creating and viewing comments.
+figure:: ../images/file_menu_comments_2.png
+   :alt: 创建和查看评论。 
 
-Video Player
-------------
+视频播放器
+----------
 
-You can play videos in Nextcloud with the Video Player app by simply clicking on
-the file. Video streaming by the native Nextcloud video player depends on your Web browser
-and the video format. If your Nextcloud administrator has enabled video
-streaming, and it doesn't work in your Web browser, it may be a browser issue. See https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility for supported multimedia formats in Web browsers.
+您可以通过简单地点击该文件，在Video Player应用程序中播放Nextcloud中的视频。Nextcloud视频播放器依赖于您的web浏览器和视频格式。如果您的Nextcloud管理员开启了视频播放器但是不能在您的浏览器中播放，这可能是浏览器的问题。查看https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility来获得浏览器支持的多媒体格式。
 
 .. figure:: ../images/video_player_2.png
-   :alt: Watching a movie.
+   :alt: 观看电影。
 
-File Controls
--------------
+文件控制
+--------
 
-Nextcloud can display thumbnail previews for image files, MP3 covers,
-and text files, if this enabled by your server administrator. Hover your cursor
-over a file or folder to expose the controls for the following operations:
+如果服务器管理员启用，Nextcloud可以显示图像文件、MP3封面和文本文件的缩略图预览。 将光标悬停在文件或文件夹上，以显示以下操作的控件：
 
-Favorites
-  Click the star to the left of the file icon to mark it as a favorite, and
-  quickly find all of your favorites with the Favorites filter on the left
-  sidebar.
+收藏
+  点击文件图标左侧的星标将其标记为收藏夹，并使用左侧栏上的收藏夹过滤器快速找到所有收藏。
 
 .. figure:: ../images/files_page-1.png
-   :alt: Marking Favorite files.
+   :alt: 收藏文件。
 
-Share
-  Share the file or folder with a group or other users, and create public
-  shares with hyperlinks. You can also see who you have shared with already,
-  and revoke shares by clicking the trash can icon.
+共享
+  与组或其他用户共享文件或文件夹，并使用超链接创建公共共享。 您还可以查看您已经分享的人，以及通过点击回收站图标撤消共享。
 
-.. note:: Since version 9.0, you can see all re-shares of your original file shares.
+.. 提示:: 从9.0版本开始，您可以看到原始共享的所有重新共享用户。
 
-  If username auto-completion
-  is enabled, when you start typing the user or group name Nextcloud will
-  automatically complete it for you. If your administrator has enabled email
-  notifications, you can send an email notification of the new share from the
-  sharing screen.
+  如果启用了用户名自动完成功能，当您开始输入用户名或组名称时，Nextcloud将自动为您完成。如果您的管理员启用了电子邮件通知，您可以从共享屏幕发送新共享的电子邮件通知。
 
 .. figure:: ../images/files_page-2.png
-   :alt: Sharing files.
+   :alt: 共享文件。
 
-You have five share permissions:
+共有5种共享权限设置：
 
-* Can share; allows the users you share with to re-share.
-* Can edit; allows the users you share with to edit your shared files, and to collaborate using the Documents app.
-* Create; allows the users you share with to create new files and add them to the share.
-* Change; allows uploading a new version of a shared file and replacing it.
-* Delete; allows the users you share with to delete shared files.
+* 可以再次共享： 允许您共享的用户再次共享给其他用户。
+* 可以编辑：允许您共享的用户编辑共享文件、使用文档编辑应用进行协作。
+* 创建：允许您共享的用户创建新文件和增加它们进行共享。
+* 变更：运行上传一个新版本共享文件代替原文件。
+* 删除：允许您共享的用户删除共享文件。
 
-Overflow Menu
-  The Overflow menu (three dots) displays file details, and allows you to
-  rename, download, or delete files.
+扩展菜单：
+  扩展菜单(三个点) 显示文件详细信息、允许您重命名、下载和删除文件。
 
 .. figure:: ../images/files_page-3.png
-   :alt: Overflow menu.
+   :alt: 扩展菜单。 
 
-   The Details view shows Activities, Sharing, and Versions information.
+   详细信息视图显示活动，共享和版本信息。
 
 .. figure:: ../images/files_page-4.png
-   :alt: Details screen.
+   :alt: 详细信息图。 
 
-The **Settings** gear icon at the lower left allows you to show or hide hidden
-files in your Nextcloud Web interface. These are also called dotfiles, because
-they are prefixed with a dot, e.g. ``.mailfile``. The dot tells your operating
-system to hide these files in your file browsers, unless you choose to display
-them. Usually these are configuration files, so having the option to hide them
-reduces clutter.
+左下角的**设置**齿轮图标允许您在Nextcloud Web界面中显示或隐藏隐藏的文件。这些也称为dotfiles，因为它们以点为前缀，例如``.mailfile``。该点告诉您的操作系统将这些文件隐藏在文件浏览器中，除非您选择显示它们。 通常这些都是配置文件，因此可以选择隐藏它们会减少混乱。
 
 .. figure:: ../images/hidden_files.png
-   :alt: Hiding or displaying hidden files.
+   :alt: 隐藏或者显示隐藏文件。
 
-Previewing Files
-----------------
+文件预览
+--------
 
-You can display uncompressed text files, OpenDocument files, videos, and image
-files in the Nextcloud embedded viewers by clicking on the file name. There may
-be other file types you can preview if your Nextcloud administrator has enabled
-them. If Nextcloud cannot display a file, it starts a download process and
-downloads the file to your computer.
+您可以通过单击文件名，在Nextcloud嵌入式查看器中显示未压缩的文本文件、OpenDocument文件、视频和图像文件。 如果您的Nextcloud管理员启用了它们，可能还有其他可以预览的文件类型。 如果Nextcloud无法显示文件，则会启动下载进程并将文件下载到计算机。
 
-Navigating Inside Your Nextcloud
---------------------------------
+在您的NextCloud内进行导航
+-------------------------
 
-Navigating through folders in Nextcloud is as simple as clicking on a folder to
-open it and using the back button on your browser to move to a previous level.
-Nextcloud also provides a navigation bar at the top of the Files field for quick
-navigation.
+在Nextcloud中浏览文件夹与点击文件夹打开一样简单，并使用浏览器上的后退按钮移动到上一级。 Nextcloud还在“文件”字段的顶部提供了一个导航栏。
 
-Sharing Status Icons
---------------------
-
-Any folder that has been shared is marked with the ``Shared`` overlay icon.
-Public link shares are marked with a chain link. Un-shared folders are blank.
-
-.. figure:: ../images/files_page-5.png
-   :alt: Share status icons.
-
-Creating or Uploading Files and Directories
--------------------------------------------
-
-Upload or create new files or folders directly in an Nextcloud folder by clicking
-on the *New* button in the Files app.
-
-.. figure:: ../images/files_page-6.png
-   :alt: The New file/folder/upload menu.
-
-The *New* button provides the following options:
-
-Up arrow
-  Upload files from your computer into Nextcloud. You can also upload files by
-  dragging and dropping them from your file manager.
-
-Text file
-  Creates a new text file and adds the file to your current folder.
-
-Folder
-  Creates a new folder in the current folder.
-
-Selecting Files or Folders
---------------------------
-
-You can select one or more files or folders by clicking on their checkboxes. To
-select all files in the current directory, click on the checkbox located at the
-top of the files listing.
-
-When you select multiple files, you can delete all of them, or download them as
-a ZIP file by using the ``Delete`` or ``Download`` buttons that appear at the
-top.
-
-.. note:: If the ``Download`` button is not visible, the administrator has
-   disabled this feature.
-
-Filtering the Files View
-------------------------
-
-The left sidebar on the Files page contains several filters for quickly sorting
-and managing your files.
-
-All files
-  The default view; displays all files that you have access to.
-
-Favorites
-  Files or folders marked with the yellow star.
-
-Shared with you
-  Displays all files shared with you by another user or group.
-
-Shared with others
-  Displays all files that you have shared with other users or groups.
-
-Shared by link
-  Displays all files that are shared by you via public link.
-
-External Storage (optional)
-  Files that you have access to on external storage devices and services such
-  as Dropbox, Google, and Amazon S3.
-
-Moving Files
+共享状态图标
 ------------
 
-You can move files and folders by dragging and dropping them into any directory.
+已共享的任何文件夹都标有``共享``覆盖图标。公共链接共享标记有链接链接。未共享的文件夹为空。
+
+.. figure:: ../images/files_page-5.png
+   :alt: 共享状态图标。 
+
+创建或上传文件和文件夹
+-------------------------------------------
+
+直接在Nextcloud 文件应用中点击**新建**按钮来上传或者创建新文件或目录。
+
+.. figure:: ../images/files_page-6.png
+   :alt: 新建文件、新建文件夹、上传菜单。 
+
+  *新建*按钮提供以下选项: 
+
+上箭头:
+  将文件从计算机上传到Nextcloud。 您还可以通过从文件管理器拖放文件来上传文件。
+
+文本文件:
+  在当前文件夹新建文本文件。
+
+文件夹
+  在当前文件夹新建文件夹。
+
+选择文件或文件夹
+----------------
+
+您可以通过点击其复选框来选择一个或多个文件或文件夹。 要选择当前目录中的所有文件，请单击位于文件列表顶部的复选框。
+
+当您选择多个文件时，您可以删除所有这些文件，或使用顶部显示的**删除**按钮删除，可以使用**下载**按钮将其作为ZIP文件下载。
+
+.. 提示:: 如果``下载``按钮不可见，是因为管理员已经禁用了这个特性。 
+
+文件过滤视图
+------------
+
+“文件”页面上的左侧边栏包含几个用于快速排序和管理文件的过滤器。
+
+全部文件：
+  默认视图；显示您有权访问的所有文件。
+
+收藏:
+  被黄色星标记的文件或文件夹。
+
+收到分享:
+  显示其他用户或组与您分享的全部文件。
+
+您分享的文件:
+  显示全部您和其他用户和组共享的所有文件。
+
+分享链接的文件:
+  显示所有您通过公开链接分享的文件。
+
+外部存储（可选）:
+  您可以访问外部存储设备和服务（如Dropbox，Google和Amazon S3）上的文件。
+
+移动文件
+------------
+
+您可以通过拖拽方式移动文件和文件夹到任何其他文件夹。
 
 
-Change in Share Expiration Date
--------------------------------
+共享文件过期日期的变更：
+-----------------------
 
-In older versions of Nextcloud, you could set an expiration date on both local
-and public shares. Now you can set an expiration date only on public shares,
-and local shares do not expire when public shares expire. The only way to
-"expire" a local share is to click the trash can icon to un-share your files.
+在老的Nextcloud版本中，您可以同时设置本地用户和公开用户的共享过期日期。现在当公开共享没有过期，而本地共享已经过期，只可设置公开链接的过期日期。**过期**本地共享的唯一方法是单击回收站图标以取消共享您的文件。
 
-Creating or Connecting to a Federation Share Link
--------------------------------------------------
+创建或者连接到联合云链接
+------------------------
 
-Federated Cloud Sharing allows you to mount file shares from remote Nextcloud
-servers, and manage them just like a local share. In Nextcloud 9 the process for
-creating a new sharing link is easier and more streamlined. See
-:doc:`federated_cloud_sharing` to learn to how to create and connect to new
-Federated Cloud shares.
+联合云共享允许您从远程Nextcloud服务器挂载文件共享，并像本地共享一样进行管理。 在Nextcloud 9中，创建新的共享链接的过程更简单、更快速。请参阅:doc:`使用联合云共享`进一步学习如何创建和连接到新的联合云共享。
+

@@ -1,6 +1,5 @@
-======================
-Using the Calendar App
-======================
+================
+使用日历应用程序
+================
 
-The Calendar app is not enabled by default in Nextcloud |version| and needs to
-be enabled separately. 
+默认情况下，Nextcloud |version| 中的“Calendar日历”应用程序未启用，需要单独启用。

@@ -1,56 +1,33 @@
-======================
-Managing Deleted Files
-======================
+==============
+已删除文件管理
+==============
 
-When you delete a file in Nextcloud, it is not immediately deleted permanently.
-Instead, it is moved into the trash bin. It is not permanently deleted until
-you manually delete it, or when the Deleted Files app deletes it to make room
-for new files.
+当您删除Nextcloud中的文件时，它不会立即被永久删除。相反，它被移动到回收站中。它不会被永久删除，直到您手动删除它，或者“已删除的文件”应用程序为新文件腾出空间而删除它。
 
-Find your deleted files by clicking on the **Deleted files**
-button on the Files page of the Nextcloud Web interface. You'll have options to
-either restore or permanently delete files.
+通过单击Nextcloud Web界面的“文件”页面上的**已删除的文件**按钮找到已删除的文件。您可以选择还原或永久删除文件。
 
-Quotas
-------
+配额
+----
 
-Deleted files are not counted against your storage quota. Only your personal
-files count against your quota, not files which were shared with you.
-(See :doc:`quota` to learn more about quotas.)
+删除的文件不会计入您的存储配额。只有您的个人文件才计入您的配额，而与您共享的文件不计入配额。 (查看`存储配额`部分了解有关配额的更多知识)
 
-What Happens When Shared Files Are Deleted
-------------------------------------------
+当共享文件被删除时会发生什么
+----------------------------
 
-Deleting files gets a little complicated when they are shared files, as this
-scenario illustrates:
+共享文件的删除有些复杂，情况如下所示:
 
-1. User1 shares a folder "test" with User2 and User3
-2. User2 (the recipient) deletes a file/folder "sub" inside of "test"
-3. The folder "sub" will be moved to the trashbin of both User1 (owner) and
-   User2 (recipient)
-4. But User3 will not have a copy of "sub" in her trash bin
+  1. User1与User2及User3共享了 “test”文件
+  2. User2 (共享接收者) 删除了“test”中的文件或者文件"sub
+  3. 文件夹“sub”将被移动到User1（所有者）和User2（共享接收者）的回收站
+  4. 但是User3的回收站中并没有“sub”的拷贝
 
-When User1 deletes "sub" then it is moved to User1's trash bin. It is
-deleted from User2 and User3, but not placed in their trash bins.
+当User1删除“sub”时，它被移动到User1的回收站中。从User2和User3中删除，但不会放在他们的回收站中。
 
-When you share files, other users may copy, rename, move, and share them with
-other people, just as they can for any computer files; Nextcloud does not have
-magic powers to prevent this.
+当您共享文件时，其他用户可能会复制、重命名、移动和与其他人共享，就像他们可以对任何计算机文件一样; Nextcloud没有魔力来防止这种情况。
 
-How the Deleted Files app Manages Storage Space
------------------------------------------------
+“已删除的文件”应用程序如何管理存储空间
+--------------------------------------
 
-To ensure that users do not run over their storage quotas, the Deleted Files
-app allocates a maximum of 50% of their currently available free space to
-deleted files. If your deleted files exceed this limit, Nextcloud deletes the
-oldest files (files with the oldest timestamps from when they were deleted)
-until it meets the memory usage limit again.
+为了确保用户不会超过其存储配额，“已删除的文件”应用程序最多可以将50％的当前可用空间分配给已删除的文件。 如果您删除的文件超过此限制，Nextcloud将删除最旧的文件（删除时间最早的文件），直到再次满足存储使用限制为止。
 
-Nextcloud checks the age of deleted files every time new files are added to the
-deleted files. By default, deleted files stay in the trash bin for 180 days. The
-Nextcloud server administrator can adjust this value in the ``config.php`` file
-by setting the ``trashbin_retention_obligation`` value. Files older than the
-``trashbin_retention_obligation`` value will be deleted permanently.
-Additionally, Nextcloud calculates the maximum available space every time a new
-file is added. If the deleted files exceed the new maximum allowed space
-Nextcloud will expire old deleted files until the limit is met once again.
+每次将新文件添加到已删除的文件中时，Nextcloud会检查已删除文件的存放时长。 默认情况下，已删除的文件将保留在回收站中180天。 Nextcloud服务器管理员可以通过设置``config.php``中的``trashbin_retention_obligation``值。超过``trashbin_retention_obligation``值的文件将被永久删除。此外，Nextcloud每次添加新文件时都会计算最大可用空间。如果已删除的文件超过新的最大允许空间，Nextcloud会将旧的已删除文件设置过期，直到再次达到限制。

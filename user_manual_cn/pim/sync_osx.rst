@@ -1,50 +1,38 @@
-Synchronizing with OS X
-=======================
+与OS X同步
+==========
 
-To use Nextcloud with iCal you will need to use the following URL::
+要使用NextCloud与iCal，您将需要使用以下URL地址::
 
     https://example.com/remote.php/dav/principals/users/USERNAME/
 
-The setup is basically the same as with iOS using the path ``https://example.com/remote.php/dav/principals/users/USERNAME/``
-to sync with Nextcloud. For OS X 10.7 Lion and 10.8 Mountain Lion everything works
-fine, but OS X 10.6 (Snow Leopard) and older needs some fiddling to work. A user
-contributed the following:
+iOS设置基本与要同步的Nextcloud路径设置相同``https://yourserver.workfile.cn/remote.php/dav/principals/users/USERNAME``。对于OS X 10.7 Lion 和10.8 Mountain Lion 所有一切工作得很好, 但是对于OS X 10.6 (Snow Leopard)和更老的版本需要进行些些操作。用户贡献了以下内容:
 
-#. Make sure, "Addressbook" is not running. If it is, select the windows and press
-Command + Q to terminate it.
-#. Navigate to **/Users/YOUR\_USERNAME/Library/Application Support/AddressBook/Sources**.
-If you already have some kind of addressbook set up, it is likely you will see
-some folders named like this **BEA92826-FBF3-4E53-B5C6-ED7C2B454430**.
-Note down what folders there are now and leave the window open.
-#. Open "Addressbook" and try to add a new CardDav addressbook. At this point, it
-does not matter what information you enter. It will come up with the same error
-message you mentioned before when you click "Create". Ignore it and click "Create"
-again. A non-functional addressbook will be added.
-#. Close "Addressbook" again using Command + Q
-#. Go back to the folder window from step 2. You will now see a newly created folder
-with another long string as its name.
-#. Navigate to the newly created folder and edit the **Configuration.plist** with
-your favorite text editor.
-#. Search for a section looking like this::
+ #. 确认“地址簿”不能工作。如果是，请选择窗口，然后按Command + Q终止它。
+ #. 前往“/Users/YOUR_USERNAME/Library/Application Support/AddressBook/Sources”文件夹。如果您已经设置了某种地址簿，可能会看到一些名为**BEA92826-FBF3-4E53-B5C6-ED7C2B454430**的文件夹。注意现在有什么文件夹，让窗口保持打开状态。
+ #. 打开“地址簿”，并尝试添加一个新的CardDav地址簿。在这一点上，输入的信息无关紧要。当您点击“创建”时，会出现与之前提到的相同的错误消息。忽略它，然后再次单击“创建”。将添加非功能地址簿。
+ #. 再次使用Command + Q
+ #. 关闭“地址簿”。返回步骤2中的文件夹窗口。现在，您将看到一个新创建的文件夹，其中包含另一个长字符串作为其名称。
+ #. 前往新创建的文件夹，并使用自己喜欢的文本编辑器编辑Configuration.plist。
+ #. 搜索这样的部分::
 
     <key>servername</key> <string>https://:0(null)</string> <key>username</key> <string>Whatever_you_entered_before</string>
 
-8. Make it look like this. Please note that the :443 after **example.com** is important::
+ #. 使它看起来像这样。请注意：443之后的**example.com**很重要：
 
     <key>servername</key <string>https://example.com:443/nextcloud/remote.php/dav/principals/users/USERNAME</string> <key>username</key <string>username</string>
 
-9. Save the file and open addressbook again. It will not work yet.
+ #. 保存文件并再次打开地址簿，这还不行。
 
-10. Open the preferences for your Nextcloud CardDAV-Account and enter your password.
+ #. 打开您的Nextcloud CardDAV帐户的首选项并输入您的密码。11.您可能需要再次重新启动地址簿。之后，它应该工作。
 
-11. You may have to restart addressbook once more. After this, it should work.
+ #. 您可能需要再次重新启动地址簿。之后，它应该正常工作。
 
-If it's still not working, have a look at the :doc:`troubleshooting` and
-`Troubleshooting Contacts & Calendar`_ guides.
+如果仍然不能正常工作，查看:doc:`故障排查`和
+`联系人和日历故障排查`_ 指南。
 
-There is also an easy `HOWTO`_ in the forum.
+论坛中也有容易使用的`如何操作`_。
 
 
-.. _HOWTO: https://forum.owncloud.org/viewtopic.php?f=3&t=132
-.. _Troubleshooting Contacts & Calendar: https://docs.nextcloud.org/server/12/admin_manual/issues/index.html#troubleshooting-contacts-calendar
+.. _如何操作: https://forum.owncloud.org/viewtopic.php?f=3&t=132
+.. _联系人和日历故障排查: https://docs.nextcloud.org/server/12/admin_manual/issues/index.html#troubleshooting-contacts-calendar
 .. TODO ON RELEASE: Update version number above on release

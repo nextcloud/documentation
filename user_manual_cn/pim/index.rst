@@ -2,9 +2,7 @@
 Contacts & Calendar
 ===================
 
-The Contacts, Calendar, and Mail apps are not included in Nextcloud 10.
-You may easily install them by clicking the Enable button on
-their respective Apps > Productivity entries.
+Nextcloud10中不包括联系人，日历和邮件应用程序。您可以通过单击其各自的“应用程序”>“生产力”条目上的启用按钮轻松安装它们。
 
 .. toctree::
    :maxdepth: 1
