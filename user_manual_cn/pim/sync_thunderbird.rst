@@ -59,7 +59,7 @@ https://cloud.nextcloud.com/remote.php/dav/addressbooks/users/daniel/Thunderbird
 
 .. image:: ../images/new_calendar.png
 
-4. 选择**CalDAV**并填写空白的信息: 
+4. 选择 **CalDAV**并填写空白的信息: 
 
 .. image:: ../images/CalDAV_calendar.png
 
