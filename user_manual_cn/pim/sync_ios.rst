@@ -9,7 +9,7 @@ iOS - iPhone/iPad同步
  #. 选择“添加账户”。
  #. 选择“其他”账户类型。
  #. 选择“添加CAlDAV账户”。
- #. 服务器：填写``example.com/remote.php/dav/principals/users/USERNAME/``
+ #. 服务器：填写 ``example.com/remote.php/dav/principals/users/USERNAME/``
  #. 输入您的“用户名”和“密码”。
  #. 选择“下一步”。
  #. 如果您的服务器不支持SSL，将会显示一条警告，选择继续。
