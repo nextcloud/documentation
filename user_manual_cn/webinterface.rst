@@ -56,7 +56,7 @@ Nextcloud用户界面包括以下区域和功能:
   * 管理动态通知
   * 联合云ID和社交网络按钮
   * 用于外部存储的SSL证书管理
-  * SSL certificate manager for external storages
+  * 外部存储的SSL证书管理器
   * 您的双重 认证设置
   * Nextcloud版本信息
 
