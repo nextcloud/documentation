@@ -55,7 +55,7 @@ https://cloud.nextcloud.com/remote.php/dav/addressbooks/users/daniel/Thunderbird
 
  2. 转到雷鸟Thunderbird的日历视图，右键单击左侧的日历菜单（日历的名称） **新建日历**。
 
-3. 选择 **保存在网络上**。
+ 3. 选择 **保存在网络上**。
 
 .. image:: ../images/new_calendar.png
 
