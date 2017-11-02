@@ -24,8 +24,7 @@
      :alt: 生成双重身份验证恢复码
 
 然后看到一次性备用码的列表。
-
-     
+  
 .. figure:: images/2fa_backupcode_2.png
      :alt: 双重身份验证码
 
