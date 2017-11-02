@@ -44,9 +44,9 @@ https://cloud.nextcloud.com/remote.php/dav/addressbooks/users/daniel/Thunderbird
 日历
 ----
 
- 1. 在您的操作系统中安装`雷鸟Thunderbird邮件客户端程序 <https://www.mozilla.org/en-US/thunderbird/>`_，Linux操作系统已经内置。 
+ 1. 在您的操作系统中安装 `雷鸟Thunderbird邮件客户端程序 <https://www.mozilla.org/en-US/thunderbird/>`_，Linux操作系统已经内置。 
 
- 2. `Thunderbird Lightning <https://addons.mozilla.org/en-US/thunderbird/addon/lightning/>`_ 。
+ 2. `Lightning扩展应用 <https://addons.mozilla.org/en-US/thunderbird/addon/lightning/>`_ 。
 
 一旦您安装了Lighning和Thunderbird就这样操作:
 
@@ -55,7 +55,7 @@ https://cloud.nextcloud.com/remote.php/dav/addressbooks/users/daniel/Thunderbird
 
  2. 转到雷鸟Thunderbird的日历视图，右键单击左侧的日历菜单（日历的名称）**新建日历**。
 
-3. 选择**保存在网络上**。
+3. 选择 **保存在网络上**。
 
 .. image:: ../images/new_calendar.png
 
