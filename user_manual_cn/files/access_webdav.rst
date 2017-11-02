@@ -8,9 +8,9 @@ Nextcloud完全支持WebDAV协议，您可以通过WebDAV与您的Nextcloud文�
 Nextcloud桌面和移动客户端
 -------------------------
 
-将桌面PC与您的Nextcloud服务器同步的推荐方法是使用 `Nextcloud/Owncloud同步客户端<https://nextcloud.com/install/#install-clients>`_。您可以将客户端配置为将文件保存在所需的任何本地目录中，并可选择Nextcloud服务器上要同步的目录。客户端显示当前连接状态并记录所有活动，因此您始终知道哪些远程文件已下载到您的PC，您可以验证在本地PC上创建和更新的文件是否与服务器正确同步。
+将桌面PC与您的Nextcloud服务器同步的推荐方法是使用 `Nextcloud/Owncloud同步客户端<https://nextcloud.com/install/#install-clients>`_ 。您可以将客户端配置为将文件保存在所需的任何本地目录中，并可选择Nextcloud服务器上要同步的目录。客户端显示当前连接状态并记录所有活动，因此您始终知道哪些远程文件已下载到您的PC，您可以验证在本地PC上创建和更新的文件是否与服务器正确同步。
 
-建议与您Nextcloud服务器和安卓、苹果IOS设备的方法是使用 `移动App应用<https://nextcloud.com/install/>`_。
+建议与您Nextcloud服务器和安卓、苹果IOS设备的方法是使用 `移动App应用<https://nextcloud.com/install/>`_ 。
 
 要使用移动应用连接到您的Nextcloud服务器，请仅使用基本URL和文件夹::
 
