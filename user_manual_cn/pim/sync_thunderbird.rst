@@ -53,7 +53,7 @@ https://cloud.nextcloud.com/remote.php/dav/addressbooks/users/daniel/Thunderbird
  1. 转到您的Nextcloud日历，然后单击要同步显示的日历的3个点菜单，显示类似于如下的URL:
      https://cloud.nextcloud.com/remote.php/dav/calendars/daniel/personal/
 
- 2. 转到雷鸟Thunderbird的日历视图，右键单击左侧的日历菜单（日历的名称）**新建日历**。
+ 2. 转到雷鸟Thunderbird的日历视图，右键单击左侧的日历菜单（日历的名称） **新建日历**。
 
 3. 选择 **保存在网络上**。
 
