@@ -5,7 +5,7 @@
 
     https://example.com/remote.php/dav/principals/users/USERNAME/
 
-iOS设置基本与要同步的Nextcloud路径设置相同``https://yourserver.workfile.cn/remote.php/dav/principals/users/USERNAME``。对于OS X 10.7 Lion 和10.8 Mountain Lion 所有一切工作得很好, 但是对于OS X 10.6 (Snow Leopard)和更老的版本需要进行些些操作。用户贡献了以下内容:
+iOS设置基本与要同步的Nextcloud路径设置相同 ``https://yourserver.workfile.cn/remote.php/dav/principals/users/USERNAME``。对于OS X 10.7 Lion 和10.8 Mountain Lion 所有一切工作得很好, 但是对于OS X 10.6 (Snow Leopard)和更老的版本需要进行些些操作。用户贡献了以下内容:
 
  #. 确认“地址簿”不能工作。如果是，请选择窗口，然后按Command + Q终止它。
  #. 前往“/Users/YOUR_USERNAME/Library/Application Support/AddressBook/Sources”文件夹。如果您已经设置了某种地址簿，可能会看到一些名为**BEA92826-FBF3-4E53-B5C6-ED7C2B454430**的文件夹。注意现在有什么文件夹，让窗口保持打开状态。
