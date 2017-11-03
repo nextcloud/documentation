@@ -115,17 +115,17 @@ UTF-8，**没有BOM**。在Nextcloud Web图形界面中创建的文件可以正�
  * **description_link**: 专辑中的一个标记文件，将在信息框中解析并显示，而不是描述。 
  * **copyright**: markdown标记格式字符串。支持外部资源。 
  * **copyright_link**: 专辑本身中的任何文件（例如copyright.html），当用户点击链接时将被下载。
- * **inherit**: 如果希望子文件夹继承此部分配置，请设置为**yes**。 
+ * **inherit**: 如果希望子文件夹继承此部分配置，请设置为 **yes** 。 
 
 查看markdown标记语法：`<http://www.markitdown.net/markdown>`_。
 
-.. note:: 如果使用 **copyright_link** 变量，不要在 `copyright`中增加链接。
+.. note:: 如果使用 **copyright_link** 变量，不要在 `copyright` 中增加链接。
 
 **排序**
 
- * **排序**: 按照**日期**或者**名称**排序。 **日期**只适合文件。
+ * **排序**: 按照 **日期**或者 **名称**排序。 **日期**只适合文件。
  * **sort_order**: **asc**或者 **des** (正序或者倒叙)。
- * **inherit**: 如果希望子文件夹继承此部分配置，请设置为**yes**。
+ * **inherit**: 如果希望子文件夹继承此部分配置，请设置为 **yes**。
 
 提示
 ----
