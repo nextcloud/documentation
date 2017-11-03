@@ -25,7 +25,7 @@ WebDAV配置
 
 如果您愿意，还可以使用WebDAV协议将桌面PC连接到Nextcloud服务器，而不是使用特殊的客户端应用程序。 Web分布式创作和版本控制（WebDAV）是一种超文本传输协议（HTTP）扩展，可以轻松地在Web服务器上创建，读取和编辑文件。 使用WebDAV，您可以以与任何远程网络共享相同的方式访问Linux，Mac OS X和Windows上的Nextcloud共享，并保持同步。
 
-.. 提示::  在下面的示例中, 您需要用您的Nexcloud服务器安装地址替换 **example.com/**。
+.. 提示:: 在下面的示例中, 您需要用您的Nexcloud服务器安装地址替换 **example.com/**。
 
 使用Linux访问文件
 ----------------
@@ -35,11 +35,11 @@ WebDAV配置
 Nautilus文件管理器 
 ^^^^^^^^^^^^^^^^^^^^^
 
-在Nautilus文件管理器中使用 ``davs://``协议:
+在Nautilus文件管理器中使用 ``davs://`` 协议:
 
   davs://example.com/nextcloud/remote.php/dav/files/USERNAME/
 
-.. 提示::  如果服务器连接不是安全的HTTPS，使用 `dav://` 代替 `davs://` 。
+.. 提示:: 如果服务器连接不是安全的HTTPS，使用 `dav://` 代替 `davs://` 。
 
 .. image:: ../images/webdav_gnome3_nautilus.png
    :alt: 配置Nautilus文件管理器使用WebDAV的截图
@@ -96,7 +96,7 @@ Nautilus文件管理器
     mkdir ~/nextcloud
     mkdir ~/.davfs2
 
-5. 复制``/etc/davfs2/secrets``到 ``~/.davfs2`` ::
+5. 复制 ``/etc/davfs2/secrets``到 ``~/.davfs2`` ::
 
     cp  /etc/davfs2/secrets ~/.davfs2/secrets
 
@@ -105,7 +105,7 @@ Nautilus文件管理器
     chown <username>:<username> ~/.davfs2/secrets
     chmod 600 ~/.davfs2/secrets
 
-7. 将您的Nextcloud登录凭证添加到 ``secrets`` 文件末尾，使用您的Nextcloud服务器URL和您的Nextcloud用户名和密码：
+7. 将您的Nextcloud登录凭证添加到 ``secrets``文件末尾，使用您的Nextcloud服务器URL和您的Nextcloud用户名和密码：
 
     example.com/nextcloud/remote.php/dav/files/USERNAME/ <username> <password>
 
@@ -153,15 +153,15 @@ Nautilus文件管理器
 使用macOS访问Nextcloud文件
 ---------------------------
 
-.. 提示:: macOS Finder遇到`一系列实现问题<http://sabre.io/dav/clients/finder/>`_，需要在Nextcloud服务器运行**Apache**和**mod_php**，**Nginx 1.3.8以上版本**。  
+.. 提示:: macOS Finder遇到`一系列实现问题 <http://sabre.io/dav/clients/finder/>`_，需要在Nextcloud服务器运行 **Apache**和 **mod_php**， **Nginx 1.3.8以上版本**。
 
 通过 macOS Finde访问文件:
 
-1. 选择**前往** > **链接服务器**。
+1. 选择 **前往** > **链接服务器**。
 
    "连接服务器"窗口打开。
 
-2. 在**服务器地址**中输入Nextcloud服务器地址。 
+2. 在 **服务器地址**中输入Nextcloud服务器地址。 
 
   .. image:: ../images/osx_webdav1.png
      :alt: 在Mac OS X上输入 Nextcloud 服务器地址
@@ -224,7 +224,7 @@ Nautilus文件管理器
 
 1. 打开Windows资源管理器。
 
-2. 在**我的电脑**右键下拉菜单单击打开**映射网络驱动器...**。
+2. 在 **我的电脑**右键下拉菜单单击打开 **映射网络驱动器...**。
 
 3. 选择需要映射到Nextcloud的本地网络驱动器。
 
@@ -234,7 +234,7 @@ Nautilus文件管理器
 
     https://example.com/nextcloud/remote.php/dav/files/USERNAME/
 
-.. 提示::  对于受SSL保护的服务器，请在**登录时重新连接**，以确保在后续重现启动时映射是持久的。如果要以其他用户身份连接到Nextcloud服务器，请使用**连接其他凭据连接**。
+.. 提示::  对于受SSL保护的服务器，请在**登录时重新连接**，以确保在后续重现启动时映射是持久的。如果要以其他用户身份连接到Nextcloud服务器，请使用 **连接其他凭据连接**。
 
 .. figure:: ../images/explorer_webdav.png
    :scale: 80%
@@ -328,7 +328,7 @@ KB2123563_文章记录了已知的问题及解决方案。
   #. 通过您喜爱的Web浏览器转到您的Nextcloud实例。
   #. 点击浏览，直到浏览器状态行中的证书错误。
   #. 查看证书，然后从“详细信息”选项卡中选择“复制到文件”。
-  #. 使用任意名称保存到桌面，例如``myNextcloud.pem``。
+  #. 使用任意名称保存到桌面，例如 ``myNextcloud.pem``。
   #. 开始，运行，MMC。
   #. 文件，添加/删除管理单元。
   #. 选择证书，单击添加，我的用户帐户，然后单击完成，然后单击确定。
