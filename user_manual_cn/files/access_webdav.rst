@@ -25,7 +25,7 @@ WebDAV配置
 
 如果您愿意，还可以使用WebDAV协议将桌面PC连接到Nextcloud服务器，而不是使用特殊的客户端应用程序。 Web分布式创作和版本控制（WebDAV）是一种超文本传输协议（HTTP）扩展，可以轻松地在Web服务器上创建，读取和编辑文件。 使用WebDAV，您可以以与任何远程网络共享相同的方式访问Linux，Mac OS X和Windows上的Nextcloud共享，并保持同步。
 
-.. 提示::  在下面的示例中, 您需要用您的Nexcloud服务器安装地址替换 **example.com**。
+.. 提示::  在下面的示例中, 您需要用您的Nexcloud服务器安装地址替换 **example.com/**。
 
 使用Linux访问文件
 ----------------
@@ -39,7 +39,7 @@ Nautilus文件管理器
 
   davs://example.com/nextcloud/remote.php/dav/files/USERNAME/
 
-.. 提示::  如果服务器连接不是安全的HTTPS，使用 `dav://`代替 `davs://`。
+.. 提示::  如果服务器连接不是安全的HTTPS，使用 `dav://` 代替 `davs://` 。
 
 .. image:: ../images/webdav_gnome3_nautilus.png
    :alt: 配置Nautilus文件管理器使用WebDAV的截图
@@ -47,7 +47,7 @@ Nautilus文件管理器
 在KDE中使用Dolphin 文件管理器
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-使用KDE中的Dolphin文件管理器访问您的Nextcloud文件, 使用``webdav://``协议::
+使用KDE中的Dolphin文件管理器访问您的Nextcloud文件, 使用 ``webdav://``协议::
 
     webdav://example.com/nextcloud/remote.php/dav/files/USERNAME/
 
