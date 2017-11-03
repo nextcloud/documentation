@@ -39,7 +39,7 @@ Nautilus文件管理器
 
   davs://example.com/nextcloud/remote.php/dav/files/USERNAME/
 
-.. 提示:: 如果服务器连接不是安全的HTTPS，使用 `dav://` 代替 `davs://` 。
+.. 提示:: 如果服务器连接不是安全的HTTPS，使用 `dav://`代替 `davs://` 。
 
 .. image:: ../images/webdav_gnome3_nautilus.png
    :alt: 配置Nautilus文件管理器使用WebDAV的截图
@@ -153,7 +153,7 @@ Nautilus文件管理器
 使用macOS访问Nextcloud文件
 ---------------------------
 
-.. 提示:: macOS Finder遇到`一系列实现问题 <http://sabre.io/dav/clients/finder/>`_，需要在Nextcloud服务器运行 **Apache**和 **mod_php**， **Nginx 1.3.8以上版本**。
+.. 提示:: macOS Finder遇到 `一系列实现问题 <http://sabre.io/dav/clients/finder/>`_，需要在Nextcloud服务器运行 **Apache**和 **mod_php**， **Nginx 1.3.8以上版本**。
 
 通过 macOS Finde访问文件:
 
@@ -351,7 +351,7 @@ Windows 7中使用Web Client上传时间超过30分钟时，您无法下载超�
 解决方法
 ^^^^^^^^
 
- 解决方法记录在KB2668751_文章中。
+ 解决方法记录在 KB2668751_ 文章中。
 
 
 通过cURL访问Nextcloud文件
