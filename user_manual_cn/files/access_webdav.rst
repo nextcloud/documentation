@@ -8,15 +8,15 @@ Nextcloud完全支持WebDAV协议，您可以通过WebDAV与您的Nextcloud文�
 Nextcloud桌面和移动客户端
 -------------------------
 
-将桌面PC与您的Nextcloud服务器同步的推荐方法是使用`Nextcloud/Owncloud同步客户端 <https://nextcloud.com/install/#install-clients>`_。您可以将客户端配置为将文件保存在所需的任何本地目录中，并可选择Nextcloud服务器上要同步的目录。客户端显示当前连接状态并记录所有活动，因此您始终知道哪些远程文件已下载到您的PC，您可以验证在本地PC上创建和更新的文件是否与服务器正确同步。
+将桌面PC与您的Nextcloud服务器同步的推荐方法是使用 `Nextcloud/Owncloud同步客户端 <https://nextcloud.com/install/#install-clients>`_。您可以将客户端配置为将文件保存在所需的任何本地目录中，并可选择Nextcloud服务器上要同步的目录。客户端显示当前连接状态并记录所有活动，因此您始终知道哪些远程文件已下载到您的PC，您可以验证在本地PC上创建和更新的文件是否与服务器正确同步。
 
-建议与您Nextcloud服务器和安卓、苹果IOS设备的方法是使用`移动App应用 <https://nextcloud.com/install/>`_。
+建议与您Nextcloud服务器和安卓、苹果IOS设备的方法是使用 `移动App应用 <https://nextcloud.com/install/>`_。
 
-要使用移动应用连接到您的Nextcloud服务器，请仅使用基本URL和文件夹::
+要使用移动应用连接到您的Nextcloud服务器，请只使用基本URL和文件夹::
 
     example.com/nextcloud
 
-除了由Nextcloud或ownCloud提供的移动应用程序，您还可以使用其他应用程序使用WebDAV从您的移动设备连接到Nextcloud。`WebDAV Navigator`_是个优秀的专有的App ，适`安卓设备`_和`iPhone`_。 在这些设备上使用的URL地址是:
+除了由Nextcloud或ownCloud提供的移动应用程序，您还可以使用其他应用程序使用WebDAV从您的移动设备连接到Nextcloud。 `WebDAV Navigator`_ 是个优秀的专有的App ，适 `安卓设备`_和`iPhone`_ 。在这些设备上使用的URL地址是:
     
     example.com/nextcloud/remote.php/dav/files/USERNAME/
 
@@ -25,9 +25,7 @@ WebDAV配置
 
 如果您愿意，还可以使用WebDAV协议将桌面PC连接到Nextcloud服务器，而不是使用特殊的客户端应用程序。 Web分布式创作和版本控制（WebDAV）是一种超文本传输协议（HTTP）扩展，可以轻松地在Web服务器上创建，读取和编辑文件。 使用WebDAV，您可以以与任何远程网络共享相同的方式访问Linux，Mac OS X和Windows上的Nextcloud共享，并保持同步。
 
-
-
-.. 提示::  在下面的示例中, 您需要用您的Nexcloud服务器安装地址替换**example.com**。
+.. 提示::  在下面的示例中, 您需要用您的Nexcloud服务器安装地址替换 **example.com**。
 
 使用Linux访问文件
 ----------------
@@ -37,11 +35,11 @@ WebDAV配置
 Nautilus文件管理器 
 ^^^^^^^^^^^^^^^^^^^^^
 
-在Nautilus文件管理器中使用``davs://``协议:
+在Nautilus文件管理器中使用 ``davs://``协议:
 
   davs://example.com/nextcloud/remote.php/dav/files/USERNAME/
 
-.. 提示::  如果服务器连接不是安全的HTTPS，使用`dav://`代替`davs://`。
+.. 提示::  如果服务器连接不是安全的HTTPS，使用 `dav://`代替 `davs://`。
 
 .. image:: ../images/webdav_gnome3_nautilus.png
    :alt: 配置Nautilus文件管理器使用WebDAV的截图
@@ -68,7 +66,7 @@ Nautilus文件管理器
 
     * 用户名：您的Nextcloud登录名，例如admin。
 
-    * 服务器：Nextcloud服务域名, 例如**example.com** (开头不包括**http://**，结尾不包括目录)。
+    * 服务器：Nextcloud服务域名, 例如 **example.com** (开头不包括 **http://**，结尾不包括目录)。
 
     * 文件夹： 输入路径 nextcloud/remote.php/dav/files/USERNAME/。
 
@@ -81,7 +79,7 @@ Nautilus文件管理器
 
 您可以从Linux命令行创建WebDAV挂载。 如果您喜欢以与任何其它远程文件系统挂载相同的方式访问Nextcloud，这将非常有用。 以下示例显示如何创建个人挂载并在每次登录到Linux计算机时自动安装。
 
-1. 安装``davfs2`` WebDAV文件系统驱动，这将允许您像其它远程文件系统一样挂载 WebDAV共享。在Debian/Ubuntu中安装使用以下命令:: 
+1. 安装 ``davfs2`` WebDAV文件系统驱动，这将允许您像其它远程文件系统一样挂载 WebDAV共享。在Debian/Ubuntu中安装使用以下命令:: 
 
     apt-get install davfs2
 
@@ -89,11 +87,11 @@ Nautilus文件管理器
 
     yum install davfs2
 
-3. 增加用户到``davfs2``组::
+3. 增加用户到 ``davfs2``组::
 
     usermod -aG davfs2 <username>
 
-3. 然后在用户家目录中创建``nextcloud``挂载目录, 为个人的配置文件创建``.davfs2/``目录::
+3. 然后在用户家目录中创建 ``nextcloud``挂载目录, 为个人的配置文件创建 ``.davfs2/``目录::
 
     mkdir ~/nextcloud
     mkdir ~/.davfs2
