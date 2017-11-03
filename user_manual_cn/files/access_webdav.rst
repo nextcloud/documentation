@@ -91,12 +91,12 @@ Nautilus文件管理器
 
     usermod -aG davfs2 <username>
 
-4. 然后在用户家目录中创建 ``nextcloud``挂载目录, 为个人的配置文件创建 ``.davfs2/`` 目录::
+4. 然后在用户家目录中创建 ``nextcloud`` 挂载目录, 为个人的配置文件创建 ``.davfs2/`` 目录::
 
     mkdir ~/nextcloud
     mkdir ~/.davfs2
 
-5. 复制``/etc/davfs2/secrets``到``~/.davfs2``::
+5. 复制``/etc/davfs2/secrets``到 ``~/.davfs2`` ::
 
     cp  /etc/davfs2/secrets ~/.davfs2/secrets
 
@@ -105,11 +105,11 @@ Nautilus文件管理器
     chown <username>:<username> ~/.davfs2/secrets
     chmod 600 ~/.davfs2/secrets
 
-7. 将您的Nextcloud登录凭证添加到``secrets``文件末尾，使用您的Nextcloud服务器URL和您的Nextcloud用户名和密码：
+7. 将您的Nextcloud登录凭证添加到 ``secrets`` 文件末尾，使用您的Nextcloud服务器URL和您的Nextcloud用户名和密码：
 
     example.com/nextcloud/remote.php/dav/files/USERNAME/ <username> <password>
 
-8. 在``/etc/fstab``中增加挂载配置::
+8. 在 ``/etc/fstab`` 中增加挂载配置::
 
     example.com/nextcloud/remote.php/dav/files/USERNAME/ /home/<username>/nextcloud
     davfs user,rw,auto 0 0
@@ -123,7 +123,7 @@ Nautilus文件管理器
     umount ~/nextcloud
 
 
-现在每次登录到您的Linux系统时，您的Nextcloud共享通过WebDAV自动挂载``~/nextcloud``目录中。如果您喜欢手动挂载，请在``/etc/fstab``中将``auto``更改为``noauto``。
+现在每次登录到您的Linux系统时，您的Nextcloud共享通过WebDAV自动挂载 ``~/nextcloud`` 目录中。如果您喜欢手动挂载，请在 ``/etc/fstab`` 中将 ``auto`` 更改为 ``noauto`` 。
     
 
 已知的问题
@@ -135,7 +135,7 @@ Nautilus文件管理器
 
 解决方法
 ^^^^^^^^
-如果在目录中创建文件时遇到问题，请编辑``/etc/davfs2/davfs2.conf``并添加::
+如果在目录中创建文件时遇到问题，请编辑 ``/etc/davfs2/davfs2.conf`` 并添加::
 
     use_locks 0
 
@@ -146,7 +146,7 @@ Nautilus文件管理器
 解决方法
 ^^^^^^^^
 
-如果您使用自签名证书，您将收到警告。要更改此警告，您需要配置``davfs2``认可您的证书。将``mycertificate.pem``复制到``/etc/davfs2/certs/``。然后编辑``/etc/davfs2/davfs2.conf``并取消注释行``servercert``。现在添加证书的路径，如本例所示::
+如果您使用自签名证书，您将收到警告。要更改此警告，您需要配置 ``davfs2`` 认可您的证书。将 ``mycertificate.pem`` 复制到 ``/etc/davfs2/certs/`` 。然后编辑 ``/etc/davfs2/davfs2.conf`` 并取消注释行 ``servercert`` 。现在添加证书的路径，如本例所示::
 
  servercert /etc/davfs2/certs/mycertificate.pem
 
@@ -172,18 +172,18 @@ Nautilus文件管理器
 
   .. image:: ../images/osx_webdav2.png
 
-3. 点击 **连接**.
+3. 点击 **连接**。
 
   设备将连接到服务器。 
 
-有关如何使用Mac OS X连接到外部服务器的详细信息，查看`参数文档
+有关如何使用Mac OS X连接到外部服务器的详细信息，查看 `参数文档
 <http://docs.info.apple.com/article.html?path=Mac/10.6/en/8160.html>`_ 。
 
 
 使用微软Windows访问Nextcloud文件
 --------------------------------
 
-最好从`WebDAV项目页面 <http://www.webdav.org/projects/>`_选择合适的WebDAV客户端。
+最好从 `WebDAV项目页面 <http://www.webdav.org/projects/>`_ 选择合适的WebDAV客户端。
 
 如果您必须使用原生的Windows实现，则可以将Nextcloud映射到新的驱动器。 映射到驱动器可以以文件存储在映射网络驱动器中的方式浏览存储在Nextcloud服务器上的文件。
 
@@ -228,7 +228,7 @@ Nautilus文件管理器
 
 3. 选择需要映射到Nextcloud的本地网络驱动器。
 
-4. 指定您的Nextcloud实例的地址，接着输入**/remote.php/dav/files/USERNAME/**。
+4. 指定您的Nextcloud实例的地址，接着输入 **/remote.php/dav/files/USERNAME/**。
 
   例如::
 
@@ -240,14 +240,14 @@ Nautilus文件管理器
    :scale: 80%
    :alt: 在Windows资源管理器映射WebDAV的截图。 
 
-5. 单击``完成``按钮。
+5. 单击 ``完成`` 按钮。
 
   Windows资源管理器映射了网络驱动器，使您的Nextcloud实例可用。
 
 使用Cyberduck访问文件
 --------------------
 
-`Cyberduck <https://cyberduck.io/?l=en>`_是一款开源的FTP、SFTP、WebDAV、OpenStack Swift和Amazon S3浏览器，专为Mac OS X和Windows上的文件传输而设。 
+`Cyberduck <https://cyberduck.io/?l=en>`_ 是一款开源的FTP、SFTP、WebDAV、OpenStack Swift和Amazon S3浏览器，专为Mac OS X和Windows上的文件传输而设。 
 
 .. 提示::  示例使用Cyberduck版本为4.2.1。
 
@@ -291,7 +291,7 @@ Windows WebDAV客户端可能不支持加密连接的服务器名称指示（SNI
 解决方法2
 ^^^^^^^^^^
 
-Windows WebDAV客户端可能不支持TLSv1.1 / TSLv1.2连接。 如果您将服务器配置限制为仅提供TLSv1.1及更高版本，则与服务器的连接可能会失败。 有关详细信息，请参阅WinHTTP_文档。
+Windows WebDAV客户端可能不支持TLSv1.1 / TLSv1.2连接。 如果您将服务器配置限制为仅提供TLSv1.1及更高版本，则与服务器的连接可能会失败。 有关详细信息，请参阅WinHTTP_文档。
 
 .. _WinHTTP: https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features
 
@@ -303,9 +303,9 @@ Windows WebDAV客户端可能不支持TLSv1.1 / TSLv1.2连接。 如果您将服
 解决方法
 ^^^^^^^^
 
-Windows限制从WebDAV共享传输的文件的最大值。您可以**修改**增加**HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters的FileSizeLimitInBytes**值。
+Windows限制从WebDAV共享传输的文件的最大值。您可以 **修改**增加**HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters的FileSizeLimitInBytes**值。
 
-要将限制增加到最大值4GB，请选择**十进制**，输入值为**4294967295**，然后重新启动Windows或重新启动**WebClient**服务。
+要将限制增加到最大值4GB，请选择 **十进制**，输入值为 **4294967295**，然后重新启动Windows或重新启动 **WebClient**服务。
 
 问题
 ^^^^
@@ -366,7 +366,7 @@ Windows 7中使用Web Client上传时间超过30分钟时，您无法下载超�
 	$ curl -u user:pass -X MKCOL "https://example.com/nextcloud/remote.php/dav/files/USERNAME/$(date '+%d-%b-%Y')"
 
 
-在目录中上传``error.log``:
+在目录中上传 ``error.log``:
 
 .. code-block:: bash
 
