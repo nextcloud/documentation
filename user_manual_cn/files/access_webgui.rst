@@ -107,7 +107,7 @@ figure:: ../images/file_menu_comments_2.png
 .. figure:: ../images/files_page-6.png
    :alt: 新建文件、新建文件夹、上传菜单。 
 
-  *新建*按钮提供以下选项: 
+  *新建* 按钮提供以下选项: 
 
 上箭头:
   将文件从计算机上传到Nextcloud。 您还可以通过从文件管理器拖放文件来上传文件。
