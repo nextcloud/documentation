@@ -16,7 +16,7 @@ Nextcloud桌面和移动客户端
 
     example.com/nextcloud
 
-除了由Nextcloud或ownCloud提供的移动应用程序，您还可以使用其他应用程序使用WebDAV从您的移动设备连接到Nextcloud。 `WebDAV Navigator`_ 是个优秀的专有的App ，适 `安卓设备`_和`iPhone`_ 。在这些设备上使用的URL地址是:
+除了由Nextcloud或ownCloud提供的移动应用程序，您还可以使用其他应用程序使用WebDAV从您的移动设备连接到Nextcloud。 `WebDAV Navigator`_ 是个优秀的专有的App，适 `安卓设备`_和 `iPhone`_ 。在这些设备上使用的URL地址是:
     
     example.com/nextcloud/remote.php/dav/files/USERNAME/
 
