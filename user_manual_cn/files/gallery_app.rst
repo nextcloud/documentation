@@ -16,7 +16,7 @@
 自定义配置
 ----------
 
-您可以使用名为**gallery.cnf**的简单文本文件来自定义图库相册，其使用`Yaml <https://en.wikipedia.org/wiki/YAML>`_标记语言构造参数。您可以有多个**gallery.cnf**文件; 你需要一个在您自己的根Nextcloud文件夹（您的Home文件夹）中定义全局功能。然后如果要在不同专辑中定义不同的行为，则可使用单个专辑**gallery.cnf**文件。
+您可以使用名为 **gallery.cnf** 的简单文本文件来自定义图库相册，其使用 `Yaml <https://en.wikipedia.org/wiki/YAML>`_ 标记语言构造参数。您可以有多个 **gallery.cnf** 文件; 你需要一个在您自己的根Nextcloud文件夹（您的Home文件夹）中定义全局功能。然后如果要在不同专辑中定义不同的行为，则可使用单个专辑 **gallery.cnf** 文件。
 
 功能特性
 ^^^^^^^^
@@ -42,7 +42,7 @@
 配置
 ^^^^
 
-配置文件的名字必须为**gallery.cnf**。 您可能有多个专辑的**gallery.cnf**文件。要启用全局功能，请将其放置在您的顶级文件夹中，该文件夹通过家图标在Web GUI中标识。（将存放在``data/<user>/files/``中）。参考:ref:`<supported_variables_label>`在**全局功能**部分的示例。
+配置文件的名字必须为 **gallery.cnf** 。 您可能有多个专辑的 **gallery.cnf** 文件。要启用全局功能，请将其放置在您的顶级文件夹中，该文件夹通过家图标在Web GUI中标识。（将存放在``data/<user>/files/``中）。参考:ref:`<supported_variables_label>`在 **全局功能** 部分的示例。
 
 .. 提示:: 更改配置后，需要刷新浏览器以查看更改。 
 
@@ -58,9 +58,9 @@ UTF-8，**没有BOM**。在Nextcloud Web图形界面中创建的文件可以正�
 
 空格长度使用两个空格。**不要使用tab制表符**。
 
-如果报错，请查阅`YAML格式文档<https://symfony.com/doc/current/components/yaml/yaml_format.html>`_。 
+如果报错，请查阅 `YAML格式文档 <https://symfony.com/doc/current/components/yaml/yaml_format.html>`_。 
 
-一个`gallery.cnf`示例::
+一个 `gallery.cnf` 示例::
 
   # Gallery configuration file
   # Created on 31 Jan 2016 by Nextcloud User
@@ -93,17 +93,17 @@ UTF-8，**没有BOM**。在Nextcloud Web图形界面中创建的文件可以正�
 
 将其放在您的Nextcloud根文件夹中，这是您的主文件夹。
 
- * **external_shares**: 如果要加载存储在外部位置的图像，请使用**files_external**应用程序，在根配置文件中设置为**yes**。
+ * **external_shares**: 如果要加载存储在外部位置的图像，请使用 **files_external** 应用程序，在根配置文件中设置为 **yes** 。
 
- * **native_svg**: 在根配置文件中设置为**yes**，以便在浏览器中显示SVG图像。如果您的SVG文件不能完全可信，则可能会导致安全风险。
+ * **native_svg**: 在根配置文件中设置为 **yes**，以便在浏览器中显示SVG图像。如果您的SVG文件不能完全可信，则可能会导致安全风险。
 
- * **background_colour_toggle**: 在根配置文件中设置为**yes**，以启用在透明图像上的黑白背景之间切换的按钮。
+ * **background_colour_toggle**: 在根配置文件中设置为 **yes**，以启用在透明图像上的黑白背景之间切换的按钮。
 
-.. 提示:: 外部共享比本地共享慢20-50倍。准备好等待很长时间才能看到共享相册中包含的所有图像。
+.. note:: 外部共享比本地共享慢20-50倍。准备好等待很长时间才能看到共享相册中包含的所有图像。
 
 **专辑配置**
 
-可以使用以下配置部分单独配置每张专辑。使用**inherit**参数将配置传递给子专辑。
+可以使用以下配置部分单独配置每张专辑。使用 **inherit**参数将配置传递给子专辑。
 
 **设计**
 
@@ -119,7 +119,7 @@ UTF-8，**没有BOM**。在Nextcloud Web图形界面中创建的文件可以正�
 
 查看markdown标记语法：`<http://www.markitdown.net/markdown>`_。
 
-.. 提示:: 如果使用**copyright_link**变量，不要在`copyright`中增加链接。
+.. note:: 如果使用**copyright_link**变量，不要在`copyright`中增加链接。
 
 **排序**
 
