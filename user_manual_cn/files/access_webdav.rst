@@ -154,7 +154,7 @@ Nautilus文件管理器
 ---------------------------
 
 .. note::
- macOS Finder遇到 `一系列实现问题 <http://sabre.io/dav/clients/finder/>`_，需要在Nextcloud服务器运行 **Apache**和 **mod_php**， **Nginx 1.3.8以上版本**。
+ macOS Finder遇到 `一系列实现问题 <http://sabre.io/dav/clients/finder/>`_，需要在Nextcloud服务器运行 **Apache** 和 **mod_php**， **Nginx 1.3.8以上版本**。
 
 通过 macOS Finde访问文件:
 
