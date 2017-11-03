@@ -6,7 +6,7 @@ Nextcloud包含一个加密应用程序，当您的Nextcloud管理员启用后�
 
 其主要目的是加密连接到您的Nextcloud服务器（如Dropbox和Google Drive）的远程存储服务上的文件。这是一种简单而无缝的方式来保护远程存储上的文件。您可以通过常规方式通过Nextcloud共享您的远程文件，但是您无法直接从Dropbox，Google Drive或任何远程服务共享您的加密文件，因为加密密钥存储在您的Nextcloud服务器上，并且永远不会暴露到外部服务提供商。
 
-如果您的Nextcloud服务器未连接到任何远程存储服务，那么最好使用其它形式的加密，如文件级或全盘加密。因为密钥保存在您的Nextcloud服务器上，您的Nextcloud管理员可能会窥探您的文件，如果服务器遭到入侵，入侵者可能会访问您的文件。（阅读`Nextcloud如何使用加密来保护您的数据<https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your-data/>`_了解更多信息。）
+如果您的Nextcloud服务器未连接到任何远程存储服务，那么最好使用其它形式的加密，如文件级或全盘加密。因为密钥保存在您的Nextcloud服务器上，您的Nextcloud管理员可能会窥探您的文件，如果服务器遭到入侵，入侵者可能会访问您的文件。（阅读 `Nextcloud如何使用加密来保护您的数据 <https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your-data/>`_ 了解更多信息。）
 
 加密问答
 --------
@@ -14,8 +14,8 @@ Nextcloud包含一个加密应用程序，当您的Nextcloud管理员启用后�
 如何关闭加密？
 ^^^^^^^^^^^^^
 
-禁用加密的唯一方法是`"decrypt all"
-<https://docs.nextcloud.org/server/12/admin_manual/configuration_server/occ_command.html#encryption-label>`_。
+禁用加密的唯一方法是 `"decrypt all" 
+<https://docs.nextcloud.org/server/12/admin_manual/configuration_server/occ_command.html#encryption-label>`_ 。
 
 .. TODO ON RELEASE: Update version number above on release
 
@@ -24,16 +24,16 @@ Nextcloud包含一个加密应用程序，当您的Nextcloud管理员启用后�
 是否可以使用恢复密钥禁用加密？
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-可以，*如果*每个用户使用`文件恢复密钥
-<https://docs.nextcloud.com/server/12/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_，`"decrypt all"
-<https://docs.nextcloud.org/server/12/admin_manual/configuration_server/occ_command.html#encryption-label>`_将解密所有文件。
+可以， *如果* 每个用户使用 `文件恢复密钥 
+<https://docs.nextcloud.com/server/12/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_ ， `"decrypt all" 
+<https://docs.nextcloud.org/server/12/admin_manual/configuration_server/occ_command.html#encryption-label>`_ 将解密所有文件。
 
 .. TODO ON RELEASE: Update version number above on release
 
 没有用户密码可以禁用加密吗？
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-如果您没有用户密码或者`文件恢复密钥<https://docs.nextcloud.com/server/12/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_.
+如果您没有用户密码或者 `文件恢复密钥   <https://docs.nextcloud.com/server/12/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_ 。
 
 .. TODO ON RELEASE: Update version number above on release
 
@@ -63,7 +63,7 @@ Nextcloud加密十分容易设置使用的，您可以使用以下的选项。
 .. figure:: ../images/encryption2.png
 
 
-.. 提示::您永远不要丢失您的Nextcloud密码，因为您将无法访问您的文件。虽然您的Nextcloud管理员可以启用可选的恢复选项; 请参阅“恢复密钥密码”部分（以下）了解此信息。 
+.. note::您永远不要丢失您的Nextcloud密码，因为您将无法访问您的文件。虽然您的Nextcloud管理员可以启用可选的恢复选项; 请参阅“恢复密钥密码”部分（以下）了解此信息。 
 
 共享加密文件
 ------------
