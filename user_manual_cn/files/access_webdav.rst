@@ -25,7 +25,7 @@ WebDAV配置
 
 如果您愿意，还可以使用WebDAV协议将桌面PC连接到Nextcloud服务器，而不是使用特殊的客户端应用程序。 Web分布式创作和版本控制（WebDAV）是一种超文本传输协议（HTTP）扩展，可以轻松地在Web服务器上创建，读取和编辑文件。 使用WebDAV，您可以以与任何远程网络共享相同的方式访问Linux，Mac OS X和Windows上的Nextcloud共享，并保持同步。
 
-.. notes:: 在下面的示例中, 您需要用您的Nexcloud服务器安装地址替换 **example.com/**。
+.. note:: 在下面的示例中, 您需要用您的Nexcloud服务器安装地址替换 **example.com/**。
 
 使用Linux访问文件
 ----------------
@@ -39,7 +39,7 @@ Nautilus文件管理器
 
   davs://example.com/nextcloud/remote.php/dav/files/USERNAME/
 
-.. 提示:: 如果服务器连接不是安全的HTTPS，使用 `dav://`代替 `davs://` 。
+.. note:: 如果服务器连接不是安全的HTTPS，使用 `dav://`代替 `davs://` 。
 
 .. image:: ../images/webdav_gnome3_nautilus.png
    :alt: 配置Nautilus文件管理器使用WebDAV的截图
@@ -153,7 +153,7 @@ Nautilus文件管理器
 使用macOS访问Nextcloud文件
 ---------------------------
 
-.. 提示::
+.. note::
  macOS Finder遇到 `一系列实现问题 <http://sabre.io/dav/clients/finder/>`_，需要在Nextcloud服务器运行 **Apache**和 **mod_php**， **Nginx 1.3.8以上版本**。
 
 通过 macOS Finde访问文件:
@@ -188,7 +188,7 @@ Nautilus文件管理器
 
 如果您必须使用原生的Windows实现，则可以将Nextcloud映射到新的驱动器。 映射到驱动器可以以文件存储在映射网络驱动器中的方式浏览存储在Nextcloud服务器上的文件。
 
-.. 提示:: 在映射驱动器之前, 必须允许Windows注册表使用基本身份验证。过程记录在KB841215，在Windows XP/Server 2003和Windows Vista/7不同。请按照知识库文章继续操作，如果运行Windows 7，请遵循Vista说明。 
+.. note:: 在映射驱动器之前, 必须允许Windows注册表使用基本身份验证。过程记录在KB841215，在Windows XP/Server 2003和Windows Vista/7不同。请按照知识库文章继续操作，如果运行Windows 7，请遵循Vista说明。 
 
 .. _KB841215: https://support.microsoft.com/kb/841215
 
@@ -211,7 +211,7 @@ Nautilus文件管理器
 
 计算机将您的Nextcloud帐户的文件映射到驱动器Z。
 
-.. 提示:: 
+.. note:: 
  虽然不推荐，您也可以使用HTTP挂载Nextcloud服务器，使连接未加密。如果您在公共场所在设备上使用HTTP连接，建议您使用VPN隧道技术来提供必要的安全。
 
 另一种命令语法是::
@@ -236,7 +236,7 @@ Nautilus文件管理器
 
     https://example.com/nextcloud/remote.php/dav/files/USERNAME/
 
-.. 提示:: 
+.. note:: 
  对于受SSL保护的服务器，请在**登录时重新连接**，以确保在后续重现启动时映射是持久的。如果要以其他用户身份连接到Nextcloud服务器，请使用 **连接其他凭据连接**。
 
 .. figure:: ../images/explorer_webdav.png
@@ -252,7 +252,7 @@ Nautilus文件管理器
 
 `Cyberduck <https://cyberduck.io/?l=en>`_ 是一款开源的FTP、SFTP、WebDAV、OpenStack Swift和Amazon S3浏览器，专为Mac OS X和Windows上的文件传输而设。 
 
-.. 提示:: 
+.. note:: 
  示例使用Cyberduck版本为4.2.1。
 
 为了使用Cyberduck:
@@ -423,6 +423,6 @@ Windows 7中使用Web Client上传时间超过30分钟时，您无法下载超�
 .. _KB2668751: https://support.microsoft.com/kb/2668751
 .. _KB2123563: https://support.microsoft.com/kb/2123563
 .. _WebDAV Navigator: http://seanashton.net/webdav/
-.. _Android devices: https://play.google.com/store/apps/details?id=com.schimera.webdavnavlite
-.. _iPhones: https://itunes.apple.com/app/webdav-navigator/id382551345
+.. _安卓设备: https://play.google.com/store/apps/details?id=com.schimera.webdavnavlite
+.. _iPhone: https://itunes.apple.com/app/webdav-navigator/id382551345
 .. _BlackBerry devices: http://appworld.blackberry.com/webstore/content/46816
