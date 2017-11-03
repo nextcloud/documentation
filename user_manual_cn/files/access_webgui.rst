@@ -104,10 +104,9 @@ figure:: ../images/file_menu_comments_2.png
 
 直接在Nextcloud 文件应用中点击 **新建** 按钮来上传或者创建新文件或目录。
 
-.. figure:: ../images/files_page-6.png
-   :alt: 新建文件、新建文件夹、上传菜单。 
+.. figure:: ../images/files_page-6.png 
 
-  *新建* 按钮提供以下选项: 
+*新建* 按钮提供以下选项: 
 
 上箭头:
   将文件从计算机上传到Nextcloud。 您还可以通过从文件管理器拖放文件来上传文件。
