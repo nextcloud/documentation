@@ -87,7 +87,7 @@ Nautilus文件管理器
 
     yum install davfs2
 
-3. 增加用户到 ``davfs2``组::
+3. 增加用户到 ``davfs2`` 组::
 
     usermod -aG davfs2 <username>
 
