@@ -226,7 +226,7 @@ Nautilus文件管理器
 
 1. 打开Windows资源管理器。
 
-2. 在 **我的电脑**右键下拉菜单单击打开 **映射网络驱动器...**。
+2. 在 **我的电脑** 右键下拉菜单单击打开 **映射网络驱动器...**。
 
 3. 选择需要映射到Nextcloud的本地网络驱动器。
 
@@ -237,7 +237,7 @@ Nautilus文件管理器
     https://example.com/nextcloud/remote.php/dav/files/USERNAME/
 
 .. note:: 
- 对于受SSL保护的服务器，请在**登录时重新连接**，以确保在后续重现启动时映射是持久的。如果要以其他用户身份连接到Nextcloud服务器，请使用 **连接其他凭据连接**。
+ 对于受SSL保护的服务器，请在 **登录时重新连接** ，以确保在后续重现启动时映射是持久的。如果要以其他用户身份连接到Nextcloud服务器，请使用 **连接其他凭据连接** 。
 
 .. figure:: ../images/explorer_webdav.png
    :scale: 80%
