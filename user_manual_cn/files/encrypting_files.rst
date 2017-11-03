@@ -25,7 +25,7 @@ Nextcloud包含一个加密应用程序，当您的Nextcloud管理员启用后�
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 可以， *如果* 每个用户使用 `文件恢复密钥 
-<https://docs.nextcloud.com/server/12/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_ ， `"decrypt all" 
+<https://docs.nextcloud.com/server/12/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_ "decrypt all" 
 <https://docs.nextcloud.org/server/12/admin_manual/configuration_server/occ_command.html#encryption-label>`_ 将解密所有文件。
 
 .. TODO ON RELEASE: Update version number above on release
@@ -33,7 +33,7 @@ Nextcloud包含一个加密应用程序，当您的Nextcloud管理员启用后�
 没有用户密码可以禁用加密吗？
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-如果您没有用户密码或者 `文件恢复密钥   <https://docs.nextcloud.com/server/12/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_ 。
+如果您没有用户密码或者 `文件恢复密钥 <https://docs.nextcloud.com/server/12/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_ 。
 
 .. TODO ON RELEASE: Update version number above on release
 

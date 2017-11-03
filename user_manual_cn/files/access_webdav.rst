@@ -2,7 +2,7 @@
 使用WebDAV访问Nextcloud文件
 ==========================
 
-Nextcloud完全支持WebDAV协议，您可以通过WebDAV与您的Nextcloud文件进行连接和同步。 在本章中，您将学习如何通过WebDAV将Linux，Mac OS X，Windows和移动设备连接到Nextcloud服务器。 在配置WebDAV之前，让我们快速了解一下将客户端设备连接到Nextcloud服务器的推荐方法。
+Nextcloud完全支持WebDAV协议，您可以通过WebDAV与您的Nextcloud文件进行连接和同步。 在本章中，您将学习如何通过WebDAV将Linux，Mac OS X，Windows和移动设备连接到Nextcloud服务器。在配置WebDAV之前，让我们快速了解一下将客户端设备连接到Nextcloud服务器的推荐方法。
 
 
 Nextcloud桌面和移动客户端
@@ -96,7 +96,7 @@ Nautilus文件管理器
     mkdir ~/nextcloud
     mkdir ~/.davfs2
 
-5. 复制 ``/etc/davfs2/secrets``到 ``~/.davfs2`` ::
+5. 复制 ``/etc/davfs2/secrets`` 到 ``~/.davfs2`` ::
 
     cp  /etc/davfs2/secrets ~/.davfs2/secrets
 
@@ -105,7 +105,7 @@ Nautilus文件管理器
     chown <username>:<username> ~/.davfs2/secrets
     chmod 600 ~/.davfs2/secrets
 
-7. 将您的Nextcloud登录凭证添加到 ``secrets``文件末尾，使用您的Nextcloud服务器URL和您的Nextcloud用户名和密码：
+7. 将您的Nextcloud登录凭证添加到 ``secrets`` 文件末尾，使用您的Nextcloud服务器URL和您的Nextcloud用户名和密码：
 
     example.com/nextcloud/remote.php/dav/files/USERNAME/ <username> <password>
 
@@ -156,13 +156,13 @@ Nautilus文件管理器
 .. note::
  macOS Finder遇到 `一系列实现问题 <http://sabre.io/dav/clients/finder/>`_，需要在Nextcloud服务器运行 **Apache** 和 **mod_php**， **Nginx 1.3.8以上版本**。
 
-通过 macOS Finde访问文件:
+通过 macOS Finder访问文件:
 
 1. 选择 **前往** > **链接服务器**。
 
    "连接服务器"窗口打开。
 
-2. 在 **服务器地址**中输入Nextcloud服务器地址。 
+2. 在 **服务器地址** 中输入Nextcloud服务器地址。 
 
   .. image:: ../images/osx_webdav1.png
      :alt: 在Mac OS X上输入 Nextcloud 服务器地址
@@ -204,10 +204,11 @@ Nautilus文件管理器
     net use Z: https://<drive_path>/remote.php/dav/files/USERNAME/ /user:youruser
     yourpassword
 
-  <drive_path>您的Nextcloud服务器地址。
+  <drive_path>是您的Nextcloud服务器地址。
 
-例如: ``net use Z: https://example.com/nextcloud/remote.php/dav/files/USERNAME/
-/user:youruser yourpassword``
+例如::
+ net use Z: https://example.com/nextcloud/remote.php/dav/files/USERNAME/
+/user:youruser yourpassword
 
 计算机将您的Nextcloud帐户的文件映射到驱动器Z。
 
@@ -226,7 +227,7 @@ Nautilus文件管理器
 
 1. 打开Windows资源管理器。
 
-2. 在 **我的电脑** 右键下拉菜单单击打开 **映射网络驱动器...**。
+2. 在 **我的电脑** 右键下拉菜单单击打开 **映射网络驱动器......**
 
 3. 选择需要映射到Nextcloud的本地网络驱动器。
 
@@ -307,7 +308,7 @@ Windows WebDAV客户端可能不支持TLSv1.1 / TLSv1.2连接。 如果您将服
 解决方法
 ^^^^^^^^
 
-Windows限制从WebDAV共享传输的文件的最大值。您可以 **修改** 增加   **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters的FileSizeLimitInBytes** 值。
+Windows限制从WebDAV共享传输的文件的最大值。您可以 **修改** 增加 **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters的FileSizeLimitInBytes** 值。
 
 要将限制增加到最大值4GB，请选择 **十进制** ，输入值为 **4294967295** ，然后重新启动Windows或重新启动 **WebClient** 服务。
 
@@ -319,7 +320,7 @@ Windows限制从WebDAV共享传输的文件的最大值。您可以 **修改** �
 解决办法
 ^^^^^^^^
 
-KB2123563_文章记录了已知的问题及解决方案。
+KB2123563_ 文章记录了已知的问题及解决方案。
 
 问题
 ^^^^^^^

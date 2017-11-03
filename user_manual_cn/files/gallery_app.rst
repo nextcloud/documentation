@@ -42,7 +42,7 @@
 配置
 ^^^^
 
-配置文件的名字必须为 **gallery.cnf** 。 您可能有多个专辑的 **gallery.cnf** 文件。要启用全局功能，请将其放置在您的顶级文件夹中，该文件夹通过家图标在Web GUI中标识。（将存放在``data/<user>/files/``中）。参考:ref: `<supported_variables_label>` 在 **全局功能** 部分的示例。
+配置文件的名字必须为 **gallery.cnf** 。 您可能有多个专辑的 **gallery.cnf** 文件。要启用全局功能，请将其放置在您的顶级文件夹中，该文件夹通过家图标在Web GUI中标识。（将存放在 ``data/<user>/files/`` 中）。参考 :ref: `<supported_variables_label>` 在 **全局功能** 部分的示例。
 
 .. note:: 更改配置后，需要刷新浏览器以查看更改。 
 

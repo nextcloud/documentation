@@ -44,7 +44,7 @@ iOS - iPhone/iPad同步
    - 端口改为80。
    - 返回账户信息，点击保存。
 
-现在应该可以在您的iPhone的通讯录中找到您的联系人。如果仍然不正常，查看 :doc:`故障排查`和`联系人和日历故障排查`_ 指南.
+现在应该可以在您的iPhone的通讯录中找到您的联系人。如果仍然不正常，查看 :doc: `故障排查`_ 和`联系人和日历故障排查`_ 指南.
 
 .. _联系人和日历故障排查: https://docs.nextcloud.org/server/12/admin_manual/issues/index.html#troubleshooting-contacts-calendar
 .. TODO ON RELEASE: Update version number above on release

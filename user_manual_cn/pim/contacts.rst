@@ -99,4 +99,4 @@ Nextcloud Contacts应用程序与其他移动联系人应用程序类似，但�
 
 联系人设置还使您能够共享，导出和删地址簿。您还会在那里找到CardDAV的URL网址。
 
-有关同步地址簿与iOS，macOS，Thunderbird等CardDAV客户端的更多详细信息，请参阅:doc:`index`。
+有关同步地址簿与iOS，macOS，Thunderbird等CardDAV客户端的更多详细信息，请参阅 :doc:`index`。
