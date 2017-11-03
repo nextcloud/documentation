@@ -25,7 +25,8 @@ WebDAV配置
 
 如果您愿意，还可以使用WebDAV协议将桌面PC连接到Nextcloud服务器，而不是使用特殊的客户端应用程序。 Web分布式创作和版本控制（WebDAV）是一种超文本传输协议（HTTP）扩展，可以轻松地在Web服务器上创建，读取和编辑文件。 使用WebDAV，您可以以与任何远程网络共享相同的方式访问Linux，Mac OS X和Windows上的Nextcloud共享，并保持同步。
 
-.. 提示:: 在下面的示例中, 您需要用您的Nexcloud服务器安装地址替换 **example.com/**。
+.. 提示::
+ 在下面的示例中, 您需要用您的Nexcloud服务器安装地址替换 **example.com/**。
 
 使用Linux访问文件
 ----------------
@@ -153,7 +154,8 @@ Nautilus文件管理器
 使用macOS访问Nextcloud文件
 ---------------------------
 
-.. 提示:: macOS Finder遇到 `一系列实现问题 <http://sabre.io/dav/clients/finder/>`_，需要在Nextcloud服务器运行 **Apache**和 **mod_php**， **Nginx 1.3.8以上版本**。
+.. 提示::
+ macOS Finder遇到 `一系列实现问题 <http://sabre.io/dav/clients/finder/>`_，需要在Nextcloud服务器运行 **Apache**和 **mod_php**， **Nginx 1.3.8以上版本**。
 
 通过 macOS Finde访问文件:
 
@@ -210,7 +212,8 @@ Nautilus文件管理器
 
 计算机将您的Nextcloud帐户的文件映射到驱动器Z。
 
-.. 提示::  虽然不推荐，您也可以使用HTTP挂载Nextcloud服务器，使连接未加密。如果您在公共场所在设备上使用HTTP连接，建议您使用VPN隧道技术来提供必要的安全。
+.. 提示:: 
+ 虽然不推荐，您也可以使用HTTP挂载Nextcloud服务器，使连接未加密。如果您在公共场所在设备上使用HTTP连接，建议您使用VPN隧道技术来提供必要的安全。
 
 另一种命令语法是::
 
@@ -234,7 +237,8 @@ Nautilus文件管理器
 
     https://example.com/nextcloud/remote.php/dav/files/USERNAME/
 
-.. 提示::  对于受SSL保护的服务器，请在**登录时重新连接**，以确保在后续重现启动时映射是持久的。如果要以其他用户身份连接到Nextcloud服务器，请使用 **连接其他凭据连接**。
+.. 提示:: 
+ 对于受SSL保护的服务器，请在**登录时重新连接**，以确保在后续重现启动时映射是持久的。如果要以其他用户身份连接到Nextcloud服务器，请使用 **连接其他凭据连接**。
 
 .. figure:: ../images/explorer_webdav.png
    :scale: 80%
@@ -249,7 +253,8 @@ Nautilus文件管理器
 
 `Cyberduck <https://cyberduck.io/?l=en>`_ 是一款开源的FTP、SFTP、WebDAV、OpenStack Swift和Amazon S3浏览器，专为Mac OS X和Windows上的文件传输而设。 
 
-.. 提示::  示例使用Cyberduck版本为4.2.1。
+.. 提示:: 
+ 示例使用Cyberduck版本为4.2.1。
 
 为了使用Cyberduck:
 
