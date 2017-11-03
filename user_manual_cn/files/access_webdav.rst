@@ -47,7 +47,7 @@ Nautilus文件管理器
 在KDE中使用Dolphin 文件管理器
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-使用KDE中的Dolphin文件管理器访问您的Nextcloud文件, 使用 ``webdav://``协议::
+使用KDE中的Dolphin文件管理器访问您的Nextcloud文件, 使用 ``webdav://`` 协议::
 
     webdav://example.com/nextcloud/remote.php/dav/files/USERNAME/
 
@@ -91,34 +91,34 @@ Nautilus文件管理器
 
     usermod -aG davfs2 <username>
 
-3. 然后在用户家目录中创建 ``nextcloud``挂载目录, 为个人的配置文件创建 ``.davfs2/``目录::
+4. 然后在用户家目录中创建 ``nextcloud``挂载目录, 为个人的配置文件创建 ``.davfs2/`` 目录::
 
     mkdir ~/nextcloud
     mkdir ~/.davfs2
 
-4. 复制``/etc/davfs2/secrets``到``~/.davfs2``::
+5. 复制``/etc/davfs2/secrets``到``~/.davfs2``::
 
     cp  /etc/davfs2/secrets ~/.davfs2/secrets
 
-5. 设置所有者和读写权限:
+6. 设置所有者和读写权限:
 
     chown <username>:<username> ~/.davfs2/secrets
     chmod 600 ~/.davfs2/secrets
 
-6. 将您的Nextcloud登录凭证添加到``secrets``文件末尾，使用您的Nextcloud服务器URL和您的Nextcloud用户名和密码：
+7. 将您的Nextcloud登录凭证添加到``secrets``文件末尾，使用您的Nextcloud服务器URL和您的Nextcloud用户名和密码：
 
     example.com/nextcloud/remote.php/dav/files/USERNAME/ <username> <password>
 
-7. 在``/etc/fstab``中增加挂载配置::
+8. 在``/etc/fstab``中增加挂载配置::
 
     example.com/nextcloud/remote.php/dav/files/USERNAME/ /home/<username>/nextcloud
     davfs user,rw,auto 0 0
 
-8. 然后通过运行以下命令来测试挂载和认证。如果配置正确，您将不需要root权限:
+9. 然后通过运行以下命令来测试挂载和认证。如果配置正确，您将不需要root权限:
     
    mount ~/nextcloud
 
-9. 您也可以卸载: 
+10. 您也可以卸载: 
 
     umount ~/nextcloud
 
