@@ -307,9 +307,9 @@ Windows WebDAV客户端可能不支持TLSv1.1 / TLSv1.2连接。 如果您将服
 解决方法
 ^^^^^^^^
 
-Windows限制从WebDAV共享传输的文件的最大值。您可以 **修改**增加   **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters的FileSizeLimitInBytes** 值。
+Windows限制从WebDAV共享传输的文件的最大值。您可以 **修改** 增加   **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters的FileSizeLimitInBytes** 值。
 
-要将限制增加到最大值4GB，请选择 **十进制**，输入值为 **4294967295**，然后重新启动Windows或重新启动 **WebClient**服务。
+要将限制增加到最大值4GB，请选择 **十进制** ，输入值为 **4294967295** ，然后重新启动Windows或重新启动 **WebClient** 服务。
 
 问题
 ^^^^
