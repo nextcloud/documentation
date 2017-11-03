@@ -32,7 +32,7 @@ figure:: ../images/file_menu_comments_2.png
 视频播放器
 ----------
 
-您可以通过简单地点击该文件，在Video Player应用程序中播放Nextcloud中的视频。Nextcloud视频播放器依赖于您的web浏览器和视频格式。如果您的Nextcloud管理员开启了视频播放器但是不能在您的浏览器中播放，这可能是浏览器的问题。查看https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility来获得浏览器支持的多媒体格式。
+您可以通过简单地点击该文件，在Video Player应用程序中播放Nextcloud中的视频。Nextcloud视频播放器依赖于您的web浏览器和视频格式。如果您的Nextcloud管理员开启了视频播放器但是不能在您的浏览器中播放，这可能是浏览器的问题。查看https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility 来获得浏览器支持的多媒体格式。
 
 .. figure:: ../images/video_player_2.png
    :alt: 观看电影。
@@ -51,7 +51,7 @@ figure:: ../images/file_menu_comments_2.png
 共享
   与组或其他用户共享文件或文件夹，并使用超链接创建公共共享。 您还可以查看您已经分享的人，以及通过点击回收站图标撤消共享。
 
-.. 提示:: 从9.0版本开始，您可以看到原始共享的所有重新共享用户。
+.. note:: 从9.0版本开始，您可以看到原始共享的所有重新共享用户。
 
   如果启用了用户名自动完成功能，当您开始输入用户名或组名称时，Nextcloud将自动为您完成。如果您的管理员启用了电子邮件通知，您可以从共享屏幕发送新共享的电子邮件通知。
 
@@ -124,9 +124,9 @@ figure:: ../images/file_menu_comments_2.png
 
 您可以通过点击其复选框来选择一个或多个文件或文件夹。 要选择当前目录中的所有文件，请单击位于文件列表顶部的复选框。
 
-当您选择多个文件时，您可以删除所有这些文件，或使用顶部显示的**删除**按钮删除，可以使用**下载**按钮将其作为ZIP文件下载。
+当您选择多个文件时，您可以删除所有这些文件，或使用顶部显示的 **删除**按钮删除，可以使用 **下载**按钮将其作为ZIP文件下载。
 
-.. 提示:: 如果``下载``按钮不可见，是因为管理员已经禁用了这个特性。 
+.. note:: 如果``下载``按钮不可见，是因为管理员已经禁用了这个特性。 
 
 文件过滤视图
 ------------
