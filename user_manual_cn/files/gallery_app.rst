@@ -44,7 +44,7 @@
 
 配置文件的名字必须为 **gallery.cnf** 。 您可能有多个专辑的 **gallery.cnf** 文件。要启用全局功能，请将其放置在您的顶级文件夹中，该文件夹通过家图标在Web GUI中标识。（将存放在``data/<user>/files/``中）。参考:ref: `<supported_variables_label>` 在 **全局功能** 部分的示例。
 
-.. 提示:: 更改配置后，需要刷新浏览器以查看更改。 
+.. note:: 更改配置后，需要刷新浏览器以查看更改。 
 
 格式
 ^^^^
@@ -119,7 +119,7 @@ UTF-8，**没有BOM**。在Nextcloud Web图形界面中创建的文件可以正�
 
 查看markdown标记语法：`<http://www.markitdown.net/markdown>`_。
 
-.. note:: 如果使用 **copyright_link**变量，不要在`copyright`中增加链接。
+.. note:: 如果使用 **copyright_link** 变量，不要在 `copyright`中增加链接。
 
 **排序**
 
