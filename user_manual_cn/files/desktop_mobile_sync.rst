@@ -16,6 +16,6 @@ Nextcloud桌面同步客户端可以连接到您的Nextcloud服务器。您可�
 移动客户端
 ----------
 
-访问您的Nextcloud Web界面中的个人页面，以查找Android和iOS移动同步客户端的下载链接。 或者访 `Nextcloud下载页面<https://nextcloud.com/install/>`_ 。
+访问您的Nextcloud Web界面中的个人页面，以查找Android和iOS移动同步客户端的下载链接。 或者访 `Nextcloud下载页面  <https://nextcloud.com/install/>`_ 。
 
-访问 `Nextcloud文档页面<https://docs.nextcloud.org/>`_ 来阅读用户手册。
+访问 `Nextcloud文档页面 <https://docs.nextcloud.org/>`_ 来阅读用户手册。
