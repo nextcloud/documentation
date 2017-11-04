@@ -21,6 +21,8 @@ Please use the html5 ``progress`` element.
 
     <progress value="42.79" max="100"></progress>
 
+.. _checkboxes-and-radios:
+
 Checkboxes and radios
 ======================
 
