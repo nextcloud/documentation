@@ -129,8 +129,7 @@ your nginx installation.
           # have those duplicated to the ones above)
           # Before enabling Strict-Transport-Security headers please read into 
           # this topic first.
-          # add_header Strict-Transport-Security "max-age=15768000; 
-          #  includeSubDomains; preload;";
+          # add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
           #
           # WARNING: Only add the preload option once you read about
           # the consequences in https://hstspreload.org/. This option
@@ -184,8 +183,7 @@ your nginx installation.
       # Add headers to serve security related headers
       # Before enabling Strict-Transport-Security headers please read into this 
       # topic first.
-      #add_header Strict-Transport-Security "max-age=15768000; 
-      # includeSubDomains; preload;";
+      #add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
       add_header X-Content-Type-Options nosniff;
       add_header X-Frame-Options "SAMEORIGIN";
       add_header X-XSS-Protection "1; mode=block";
