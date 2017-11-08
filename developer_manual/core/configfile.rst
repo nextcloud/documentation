@@ -113,7 +113,7 @@ App config
 Using alternative app directories
 ---------------------------------
 
-Nextcloud can be set to use a custom app directory in /config/config.php. Customise the following code and add it to your config file:
+Nextcloud can be set to use a custom app directory in /config/config.php. Customize the following code and add it to your config file:
 
 .. code-block:: php
 
