@@ -460,7 +460,7 @@ Internal Username:
   services.
 
   You can override all of this with the Internal Username setting. Leave it
-  empty for default behaviour. Changes will affect only newly mapped LDAP users.
+  empty for default behavior. Changes will affect only newly mapped LDAP users.
 
   * Example: *uid*
 
@@ -471,7 +471,7 @@ Override UUID detection
 
   You can override the setting and pass an attribute of your choice. You must
   make sure that the attribute of your choice can be fetched for both users and
-  groups and it is unique. Leave it empty for default behaviour. Changes will
+  groups and it is unique. Leave it empty for default behavior. Changes will
   have effect only on newly mapped LDAP users and groups. It also will
   have effect when a user's or group's DN changes and an old UUID was cached,
   which will result in a new user. Because of this, the setting should be

@@ -107,7 +107,7 @@ Debugging Sync Issues
 .. warning:: The data directory on the server is exclusive to Nextcloud and must 
    not be modified manually.
 
-Disregarding this can lead to unwanted behaviours like:
+Disregarding this can lead to unwanted behaviors like:
 
 * Problems with sync clients
 * Undetected changes due to caching in the database
