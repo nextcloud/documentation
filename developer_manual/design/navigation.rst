@@ -163,7 +163,7 @@ Do not change the alignment of the text. If you're using
 
     <li class="app-navigation-entry-utils-counter">1</li>
 
-The count should be limitted to 999 and turn to 999+ if any higher number is given. If AngularJS is used the following filter can be used to get the correct behaviour:
+The count should be limitted to 999 and turn to 999+ if any higher number is given. If AngularJS is used the following filter can be used to get the correct behavior:
 
 .. code-block:: js
 
