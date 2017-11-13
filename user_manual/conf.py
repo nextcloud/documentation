@@ -29,7 +29,7 @@ from conf import *
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.todo', 'rst2pdf.pdfbuilder']
+extensions = ['sphinx.ext.todo', 'rst2pdf.pdfbuilder', 'sphinx.ext.intersphinx']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['../_shared_assets/templates']
@@ -295,3 +295,12 @@ epub_copyright = u'2012-2017, The Nextcloud developers'
 
 # Include todos?
 todo_include_todos = True
+
+# substitutions go here
+rst_epilog =  '.. |version| replace:: %s' % version
+
+intersphinx_mapping = {
+  'admin_manual': ('https://docs.nextcloud.com/server/%s/admin_manual/' % (version), '../admin_manual/_build/html/com/objects.inv'),
+  'developer_manual': ('https://docs.nextcloud.com/server/%s/developer_manual/' % (version), '../developer_manual/_build/html/com/objects.inv'),
+}
+

@@ -2,7 +2,7 @@ Theming Nextcloud
 =================
 Themes can be used to customize the look and feel of Nextcloud.
 
-.. note:: This is an advanced way of theming Nextcloud; the Nextcloud team recommends instead the use of the `theming app <../../admin_manual/configuration_server/theming.html>` which, when enabled, can be accessed from the Admin settings.
+.. note:: This is an advanced way of theming Nextcloud; the Nextcloud team recommends instead the use of the :doc:`configuration_server/theming` app which, when enabled, can be accessed from the Admin settings.
 
 Getting started
 ===============
