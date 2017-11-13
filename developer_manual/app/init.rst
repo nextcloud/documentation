@@ -4,34 +4,29 @@ Navigation and Pre-App configuration
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-The :file:`appinfo/app.php` is the first file that is loaded and executed in Nextcloud. Depending on the purpose of the app it usually just contains the navigation setup, and maybe :doc:`backgroundjobs` and :doc:`hooks` registrations. This is how an example :file:`appinfo/app.php` could look like:
+
+Adding a navigation entry
+=========================
+
+Navigation entries for apps can be created by adding a navigation section to the :file:`appinfo/info.xml` file, containing the name, order and route the navigation entry should link to. For details on the XML schema check the `app store documentation <https://nextcloudappstore.readthedocs.io/en/latest/developer.html#info-xml>`_.
+
+.. code-block:: xml
+
+    <navigation>
+        <name>MyApp</name>
+        <route>myapp.page.index</route>
+        <order>0</order>
+    </navigation>
+
+
+Further pre-app configuration
+=============================
+
+The :file:`appinfo/app.php` is the first file that is loaded and executed in Nextcloud. Depending on the purpose of the app it is usually used to setup things that need to be available on every request to the server, like :doc:`backgroundjobs` and :doc:`hooks` registrations. This is how an example :file:`appinfo/app.php` could look like:
 
 .. code-block:: php
     
     <?php
-
-    \OC::$server->getNavigationManager()->add(function () {
-        $urlGenerator = \OC::$server->getURLGenerator();
-        return [
-            // the string under which your app will be referenced in Nextcloud
-            'id' => 'myapp',
-
-            // sorting weight for the navigation. The higher the number, the higher
-            // will it be listed in the navigation
-            'order' => 10,
-
-            // the route that will be shown on startup
-            'href' => $urlGenerator->linkToRoute('myapp.page.index'),
-
-            // the icon that will be shown in the navigation
-            // this file needs to exist in img/
-            'icon' => $urlGenerator->imagePath('myapp', 'app.svg'),
-
-            // the title of your application. This will be used in the
-            // navigation or on the settings page of your app
-            'name' => \OC::$server->getL10N('myapp')->t('My App'),
-        ];
-    });
 
     // execute OCA\MyApp\BackgroundJob\Task::run when cron is called
     \OC::$server->getJobList()->add('OCA\MyApp\BackgroundJob\Task');
@@ -48,3 +43,35 @@ Although it is also possible to include :doc:`js` or :doc:`css` for other apps b
 
     \OCP\Util::addScript('myapp', 'script');  // include js/script.js for every app
     \OCP\Util::addStyle('myapp', 'style');  // include css/style.css for every app
+
+Best practice
+=============
+A common way to have a cleaner code structure is to create a class Application in :file:`lib/AppInfo/Application.php` that will then execute your setup of hooks or background tasks. You can then just call it in your :file:`appinfo/app.php`. That way you can also make use of Nextclouds dependency injection feature and properly test those methods.
+
+
+appinfo/app.php
+---------------
+
+.. code-block:: php
+
+    <?php
+
+    $app = new \OCA\MyApp\AppInfo\Application();
+    $app->registerHooks();
+
+
+lib/AppInfo/Application.php
+---------------------------
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\AppInfo;
+
+    class Application extends App {
+        
+        public function registerHooks() {
+            \OCP\Util::connectHook('OC_User', 'pre_deleteUser', 'OCA\MyApp\Hooks\User', 'deleteUser');
+        }
+
+    }

@@ -506,7 +506,7 @@ master-slave setup.
 
 What about the other DBMS?
 
-* Sqlite is adequate for simple testing, and for low-load single-user
+* SQLite is adequate for simple testing, and for low-load single-user
   deployments. It is not adequate for production systems.
 * Microsoft SQL Server is not a supported option.
 * For Oracle DB support please `contact the Nextcloud team`_ to get more

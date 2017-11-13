@@ -1,8 +1,8 @@
 ============================
-Upgrade via build-in Updater
+Upgrade via built-in updater
 ============================
 
-The build-in updater automates many of the steps of upgrading an Nextcloud
+The built-in updater automates many of the steps of upgrading an Nextcloud
 installation. It is useful for installations that do not have root access,
 such as shared hosting, for installations with a smaller number of users
 and data, and it automates updating
@@ -16,10 +16,10 @@ and data, and it automates updating
    issue can be resolved without downgrading.
 
 You should maintain regular backups (see :doc:`backup`), and make a backup
-before every update. The build-in updater does not backup your database or data
+before every update. The built-in updater does not backup your database or data
 directory.
 
-What does the Updater do?
+What does the updater do?
 -------------------------
 
 .. note::
@@ -28,7 +28,7 @@ What does the Updater do?
    The command line mode provides a way to do this right after the code was
    successfully replaced.
 
-The build-in updater performs these operations:
+The built-in updater performs these operations:
 
 * **Check for expected files:** checks if only the expected files of a
   Nextcloud installation are present, because it turned out that some files
@@ -66,10 +66,10 @@ The build-in updater performs these operations:
   linked page or to the command line to finish the upgrade by executing the
   migration steps.
 
-Using the web based Updater
+Using the web based updater
 ---------------------------
 
-Using the build-in Updater to update your Nextcloud installation is just a few
+Using the built-in updater to update your Nextcloud installation is just a few
 steps:
 
 1.  You should see a notification at the top of any Nextcloud page when there is
@@ -154,7 +154,7 @@ This is how the command line based update would continue:
     Maintenance mode is kept active
     Reset log level
 
-Using the command line based Updater
+Using the command line based updater
 ------------------------------------
 
 The command line based updater works in the exact same way the web based

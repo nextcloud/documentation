@@ -4,55 +4,22 @@ Routing
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-Routes map a URL and a method to a controller method. Routes are defined inside :file:`appinfo/routes.php` by passing a configuration array to the registerRoutes method. An example route would look like this:
+Routes map a URL and a method to a controller method. Routes are defined inside :file:`appinfo/routes.php` by returning them as an array:
 
 .. code-block:: php
 
     <?php
-    namespace OCA\MyApp\AppInfo;
-
-    $application = new Application();
-    $application->registerRoutes($this, array(
-        'routes' => array(
-            array('name' => 'page#index', 'url' => '/', 'verb' => 'GET'),
-        )
-    ));
+    return [
+        'routes' => [
+            ['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
+        ],
+    ];
 
 
 The route array contains the following parts:
 
 * **url**: The URL that is matched after */index.php/apps/myapp*
-* **name**: The controller and the method to call; *page#index* is being mapped to *PageController->index()*, *articles_api#drop_latest* would be mapped to *ArticlesApiController->dropLatest()*. The controller that matches the page#index name would have to be registered in the following way inside :file:`appinfo/application.php`:
-
-  .. code-block:: php
-
-        <?php
-        namespace OCA\MyApp\AppInfo;
-
-        use \OCP\AppFramework\App;
-
-        use \OCA\MyApp\Controller\PageController;
-
-
-        class Application extends App {
-
-            public function __construct(array $urlParams=array()){
-                parent::__construct('myapp', $urlParams);
-
-                $container = $this->getContainer();
-
-                /**
-                 * Controllers
-                 */
-                $container->registerService('PageController', function($c) {
-                    return new PageController(
-                        $c->query('AppName'),
-                        $c->query('Request')
-                    );
-                });
-            }
-
-        }
+* **name**: The controller and the method to call; *page#index* is being mapped to *PageController->index()*, *articles_api#drop_latest* would be mapped to *ArticlesApiController->dropLatest()*. The controller in the example above would be stored in :file:`lib/Controller/PageController.php`.
 * **method** (Optional, defaults to GET): The HTTP method that should be matched, (e.g. GET, POST, PUT, DELETE, HEAD, OPTIONS, PATCH)
 * **requirements** (Optional): lets you match and extract URLs that have slashes in them (see :ref:`matching-suburls`)
 * **postfix** (Optional): lets you define a route id postfix. Since each route name will be transformed to a route id (**page#method** -> **myapp.page.method**) and the route id can only exist once you can use the postfix option to alter the route id creation by adding a string to the route id, e.g., **'name' => 'page#method', 'postfix' => 'test'** will yield the route id **myapp.page.methodtest**. This makes it possible to add more than one route/URL for a controller method
@@ -150,75 +117,34 @@ To prevent repetition, it's possible to define resources. The following routes:
 .. code-block:: php
 
     <?php
-    namespace OCA\MyApp\AppInfo;
-
-    $application = new Application();
-    $application->registerRoutes($this, array(
-        'routes' => array(
-            array('name' => 'author#index', 'url' => '/authors', 'verb' => 'GET'),
-            array('name' => 'author#show', 'url' => '/authors/{id}', 'verb' => 'GET'),
-            array('name' => 'author#create', 'url' => '/authors', 'verb' => 'POST'),
-            array('name' => 'author#update', 'url' => '/authors/{id}', 'verb' => 'PUT'),
-            array('name' => 'author#destroy', 'url' => '/authors/{id}', 'verb' => 'DELETE'),
+    return [
+        'routes' => [
+            ['name' => 'author#index', 'url' => '/authors', 'verb' => 'GET'],
+            ['name' => 'author#show', 'url' => '/authors/{id}', 'verb' => 'GET'],
+            ['name' => 'author#create', 'url' => '/authors', 'verb' => 'POST'],
+            ['name' => 'author#update', 'url' => '/authors/{id}', 'verb' => 'PUT'],
+            ['name' => 'author#destroy', 'url' => '/authors/{id}', 'verb' => 'DELETE'],
             // your other routes here
-        )
-    ));
+        ],
+    ];
 
 can be abbreviated by using the **resources** key:
 
 .. code-block:: php
 
     <?php
-    namespace OCA\MyApp\AppInfo;
-
-    $application = new Application();
-    $application->registerRoutes($this, array(
-        'resources' => array(
-            'author' => array('url' => '/authors')
-        ),
-        'routes' => array(
+    return [
+        'resources' => [
+            'author' => [url' => '/authors'],
+        ],
+        'routes' => [
             // your other routes here
-        )
-    ));
+        ],
+    ];
 
 Using the URLGenerator
 ========================
-Sometimes it is useful to turn a route into a URL to make the code independent from the URL design or to generate a URL for an image in **img/**. For that specific use case, the ServerContainer provides a service that can be used in your container:
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\AppInfo;
-
-    use \OCP\AppFramework\App;
-
-    use \OCA\MyApp\Controller\PageController;
-
-
-    class Application extends App {
-
-        public function __construct(array $urlParams=array()){
-            parent::__construct('myapp', $urlParams);
-
-            $container = $this->getContainer();
-
-            /**
-             * Controllers
-             */
-            $container->registerService('PageController', function($c) {
-                return new PageController(
-                    $c->query('AppName'),
-                    $c->query('Request'),
-
-                    // inject the URLGenerator into the page controller
-                    $c->query('ServerContainer')->getURLGenerator()
-                );
-            });
-        }
-
-    }
-
-Inside the PageController the URL generator can now be used to generate a URL for a redirect:
+Sometimes it is useful to turn a route into a URL to make the code independent from the URL design or to generate a URL for an image in **img/**. Inside the PageController the URL generator can be injected by adding it to the constructor, which will allow to use it to generate a URL for a redirect. For more details on that see the :ref:`dependency-injection` reference.
 
 .. code-block:: php
 

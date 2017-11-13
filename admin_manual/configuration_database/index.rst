@@ -5,6 +5,7 @@ Database Configuration
 .. toctree::
     :maxdepth: 2
 
-    db_conversion.rst
-    linux_database_configuration.rst
+    db_conversion
+    linux_database_configuration
     mysql_4byte_support
+    bigint_identifiers

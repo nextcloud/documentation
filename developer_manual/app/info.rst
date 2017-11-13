@@ -4,253 +4,368 @@ App Metadata
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-The :file:`appinfo/info.xml` contains metadata about the app:
+The :file:`appinfo/info.xml` contains metadata about the app. A detailed documentation can be found at the `app store documentation <https://nextcloudappstore.readthedocs.io/en/latest/developer.html#info-xml>`_.
+
+The info.xml is validated using an XML Schema which can be accessed `online <https://apps.nextcloud.com/schema/apps/info.xsd>`_.
+
+A minimum valid **info.xml** would look like this:
 
 .. code-block:: xml
 
-  <?xml version="1.0"?>
-  <info>
-      <id>yourappname</id>
-      <name>Your App</name>
-      <description>Your App description</description>
-      <version>1.0</version>
-      <licence>AGPL</licence>
-      <author>Your Name</author>
-      <namespace>YourAppsNamespace</namespace>
+    <?xml version="1.0"?>
+    <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+        <id>news</id>
+        <name>News</name>
+        <summary>An RSS/Atom feed reader</summary>
+        <description>An RSS/Atom feed reader</description>
+        <version>8.8.2</version>
+        <licence>agpl</licence>
+        <author>Bernhard Posselt</author>
+        <category>multimedia</category>
+        <bugs>https://github.com/nextcloud/news/issues</bugs>
+        <dependencies>
+            <nextcloud min-version="10"/>
+        </dependencies>
+    </info>
 
-      <types>
-          <filesystem/>
-      </types>
+A full blown example would look like this (needs to be utf-8 encoded):
 
+.. code-block:: xml
 
-      <documentation>
-          <user>https://docs.nextcloud.org</user>
-          <admin>https://docs.nextcloud.org</admin>
-          <developer>https://docs.nextcloud.org</developer>
-      </documentation>
+    <?xml version="1.0"?>
+    <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+        <id>news</id>
+        <name lang="de">Nachrichten</name>
+        <name>News</name>
+        <summary lang="en">An RSS/Atom feed reader</summary>
+        <description lang="en"># Description\nAn RSS/Atom feed reader</description>
+        <description lang="de"><![CDATA[# Beschreibung\nEine Nachrichten App, welche mit [RSS/Atom](https://en.wikipedia.org/wiki/RSS) umgehen kann]]></description>
+        <version>8.8.2</version>
+        <licence>agpl</licence>
+        <author mail="mail@provider.com" homepage="http://example.com">Bernhard Posselt</author>
+        <author>Alessandro Cosentino</author>
+        <author>Jan-Christoph Borchardt</author>
+        <documentation>
+            <user>https://github.com/nextcloud/news/wiki#user-documentation</user>
+            <admin>https://github.com/nextcloud/news#readme</admin>
+            <developer>https://github.com/nextcloud/news/wiki#developer-documentation</developer>
+        </documentation>
+        <category>multimedia</category>
+        <category>tools</category>
+        <website>https://github.com/nextcloud/news</website>
+        <discussion>https://your.forum.com</discussion>
+        <bugs>https://github.com/nextcloud/news/issues</bugs>
+        <repository>https://github.com/nextcloud/news</repository>
+        <screenshot small-thumbnail="https://example.com/1-small.png">https://example.com/1.png</screenshot>
+        <screenshot>https://example.com/2.jpg</screenshot>
+        <dependencies>
+            <php min-version="5.6" min-int-size="64"/>
+            <database min-version="9.4">pgsql</database>
+            <database>sqlite</database>
+            <database min-version="5.5">mysql</database>
+            <command>grep</command>
+            <command>ls</command>
+            <lib min-version="2.7.8">libxml</lib>
+            <lib>curl</lib>
+            <lib>SimpleXML</lib>
+            <lib>iconv</lib>
+            <nextcloud min-version="9" max-version="10"/>
+        </dependencies>
+        <background-jobs>
+            <job>OCA\DAV\CardDAV\Sync\SyncJob</job>
+        </background-jobs>
+        <repair-steps>
+            <pre-migration>
+                <step>OCA\DAV\Migration\Classification</step>
+            </pre-migration>
+            <post-migration>
+                <step>OCA\DAV\Migration\Classification</step>
+            </post-migration>
+            <live-migration>
+                <step>OCA\DAV\Migration\GenerateBirthdays</step>
+            </live-migration>
+            <install>
+                <step>OCA\DAV\Migration\GenerateBirthdays</step>
+            </install>
+            <uninstall>
+                <step>OCA\DAV\Migration\GenerateBirthdays</step>
+            </uninstall>
+        </repair-steps>
+        <two-factor-providers>
+            <provider>OCA\AuthF\TwoFactor\Provider</provider>
+        </two-factor-providers>
+        <commands>
+            <command>A\Php\Class</command>
+        </commands>
+        <settings>
+            <admin>OCA\Theming\Settings\Admin</admin>
+            <admin-section>OCA\Theming\Settings\Section</admin-section>
+        </settings>
+        <activity>
+            <settings>
+                <setting>OCA\Files\Activity\Settings\FavoriteAction</setting>
+                <setting>OCA\Files\Activity\Settings\FileChanged</setting>
+                <setting>OCA\Files\Activity\Settings\FileCreated</setting>
+                <setting>OCA\Files\Activity\Settings\FileDeleted</setting>
+                <setting>OCA\Files\Activity\Settings\FileFavorite</setting>
+                <setting>OCA\Files\Activity\Settings\FileRestored</setting>
+            </settings>
 
-      <category>tool</category>
+            <filters>
+                <filter>OCA\Files\Activity\Filter\FileChanges</filter>
+                <filter>OCA\Files\Activity\Filter\Favorites</filter>
+            </filters>
 
-      <website>https://example.org</website>
+            <providers>
+                <provider>OCA\Files\Activity\FavoriteProvider</provider>
+                <provider>OCA\Files\Activity\Provider</provider>
+            </providers>
+        </activity>
+        <navigations>
+            <navigation role="admin">
+                <id>files</id>
+                <name>Files</name>
+                <route>files.view.index</route>
+                <order>0</order>
+                <icon>app.svg</icon>
+                <type>link</type>
+            </navigation>
+        </navigations>
+        <collaboration>
+            <plugins>
+                <plugin type="collaborator-search" share-type="SHARE_TYPE_CIRCLE">OCA\Circles\Collaboration\v1\CollaboratorSearchPlugin</plugin>
+            </plugins>
+        </collaboration>
+    </info>
 
-      <bugs>https://github.com/nextcloud/theapp/issues</bugs>
-
-      <repository type="git">https://github.com/nextcloud/theapp.git</repository>
-
-      <ocsid>1234</ocsid>
-
-      <dependencies>
-          <php min-version="5.6" max-version="7.1"/>
-          <database>sqlite</database>
-          <database>mysql</database>
-          <command os="linux">grep</command>
-          <command os="windows">notepad.exe</command>
-          <lib min-version="1.2">xml</lib>
-          <lib max-version="2.0">intl</lib>
-          <lib>curl</lib>
-          <os>Linux</os>
-          <owncloud min-version="6.0.4" max-version="8"/>
-      </dependencies>
-      
-      <settings>
-          <admin-section>OCA\YourAppsNamespace\Settings\AdminSection</admin-section>
-          <admin>OCA\YourAppsNamespace\Settings\AdminSettings</admin>
-      </settings>
-
-      <!-- deprecated, just for reference -->
-      <requiremin>5</requiremin>
-      <public>
-          <file id="caldav">appinfo/caldav.php</file>
-      </public>
-
-      <remote>
-          <file id="caldav">appinfo/caldav.php</file>
-      </remote>
-
-      <standalone />
-
-      <default_enable />
-      <shipped>true</shipped>
-      <!-- end deprecated -->
-  </info>
+The following tags are validated and used in the following way:
 
 id
---
-**Required**: This field contains the internal app name, and has to be the same as the folder name of the app. This id needs to be unique in Nextcloud, meaning no other app should have this id.
-
+    * required
+    * must contain only lowercase ASCII characters and underscore
+    * must match the first folder in the archive
+    * will be used to identify the app
 name
-----
-**Required**: This is the human-readable name/title of the app that will be displayed in the app overview page.
-
+    * required
+    * must occur at least once with **lang="en"** or no lang attribute
+    * can be translated by using multiple elements with different **lang** attribute values, language code needs to be set **lang** attribute
+    * will be rendered on the app detail page
+summary
+    * optional
+    * if not provided the description element's text will be used
+    * must occur at least once with **lang="en"** or no lang attribute
+    * can be translated by using multiple elements with different **lang** attribute values, language code needs to be set **lang** attribute
+    * will be rendered on the app list page as short description
 description
------------
-**Required**: This contains the description of the app which will be shown in the app overview page.
-
+    * required
+    * must occur at least once with **lang="en"** or no lang attribute
+    * can contain Markdown
+    * can be translated by using multiple elements with different **lang** attribute values, language code needs to be set **lang** attribute
+    * will be rendered on the app detail page
 version
--------
-Contains the version of your app.
-
+    * required
+    * must be a `semantic version <http://semver.org/>`_ without build metadata, e.g. 9.0.1 or 9.1.0-alpha.1
 licence
--------
-**Required**: The licence of the app. This licence must be compatible with the AGPL and **must not be proprietary**, for instance:
-
-* AGPL 3 (recommended)
-* MIT
-
+    * required
+    * must contain **agpl**, **mpl*** and/or **apache** as the only valid values. These refer to the AGPLv3, MPL 2.0 and Apache License 2.0
 author
-------
-**Required**: The name of the app author or authors.
-
-namespace
----------
-Required if routes.php returns an array. If your app is namespaced like **\\OCA\\MyApp\\Controller\\PageController** the required namespace value is **MyApp**. If not given it tries to default to the first letter upper cased app id, e.g. **myapp** would be tried under **Myapp**
-
-types
------
-Nextcloud allows to specify four kind of ``types``. Currently supported ``types``:
-
-* **prelogin**: apps which need to load on the login page
-
-* **filesystem**: apps which provide filesystem functionality (e.g. files sharing app)
-
-* **authentication**: apps which provide authentication backends
-
-* **logging**: apps which implement a logging system
-
-* **prevent_group_restriction**: apps which can not be enabled for specific groups (e.g. notifications app).
-
-.. note::
-
-  Due to technical reasons apps of any type listed above can not be enabled for specific groups only.
-
-documentation
--------------
-Link to 'admin', 'user', 'developer' documentation
-
-website
--------
-Link to project web page
-
-repository
-----------
-Link to the version control repo
-
-bugs
-----
-Link to the bug tracker
-
+    * required
+    * can occur multiple times with different authors
+    * can contain a **mail** attribute which must be an email
+    * can contain a **homepage** which must be an URL
+    * will not (yet) be rendered on the App Store
+    * will be provided through the REST API
+documentation/user
+    * optional
+    * must contain an URL to the user documentation
+    * will be rendered on the app detail page
+documentation/admin
+    * optional
+    * must contain an URL to the admin documentation
+    * will be rendered on the app detail page
+documentation/developer
+    * optional
+    * must contain an URL to the developer documentation
+    * will be rendered on the app detail page
 category
---------
-Category on the app store. Can be one of the following:
+    * optional
+    * if not provided the category **tools** will be used
+    * must contain one of the following values:
 
-* auth
-* customization
-* files
-* games
-* integration
-* monitoring
-* multimedia
-* office
-* organization
-* social
-* tools
+       * **customization**
+       * **files**
+       * **games**
+       * **integration**
+       * **monitoring**
+       * **multimedia**
+       * **office**
+       * **organization**
+       * **security**
+       * **social**
+       * **tools**
 
-ocsid
------
-The app's id on the app store, e.g.: https://apps.owncloud.com/content/show.php/QOwnNotes?content=168497 would have the ocsid **168497**. If given helps users to install and update the same app from the app store
+    * old categories are migrated:
 
-Dependencies
-------------
-All tags within the dependencies tag define a set of requirements which have to be fulfilled in order to operate
-properly. As soon as one of these requirements is not met the app cannot be installed.
+       * **auth** will be converted to **security**
 
-php
-===
-Defines the minimum and the maximum version of PHP which is required to run this app.
+    * can occur more than once with different categories
+website
+    * optional
+    * must contain an URL to the project's homepage
+    * will be rendered on the app detail page
+discussion
+    * optional
+    * must contain an URL to the project's discussion page/forum
+    * will be rendered on the app detail page as the "ask question or discuss" button
+    * if absent, it will default to our forum at https://help.nextcloud.com/ and create a new category in the apps category
+bugs
+    * required
+    * must contain an URL to the project's bug tracker
+    * will be rendered on the app detail page
+repository
+    * optional
+    * must contain an URL to the project's repository
+    * can contain a **type** attribute, **git**, **mercurial**, **subversion** and **bzr** are allowed values, defaults to **git**
+    * currently not used
+screenshot
+    * optional
+    * must contain an HTTPS URL to an image
+    * can contain a **small-thumbnail** attribute which must contain an https url to an image. This image will be used as small preview (e.g. on the app list overview). Keep it small so it renders fast
+    * will be rendered on the app list and detail page in the given order
+dependencies/php
+    * optional
+    * can contain a **min-version** attribute (maximum 3 digits separated by dots)
+    * can contain a **max-version** attribute (maximum 3 digits separated by dots)
+    * can contain a **min-int-size** attribute, 32 or 64 are allowed as valid values
+    * will be rendered on the app releases page
+dependencies/database
+    * optional
+    * must contain the database name as text, **sqlite**, **pgsql** and **mysql** are allowed as valid values
+    * can occur multiple times with different databases
+    * can contain a **min-version** attribute (maximum 3 digits separated by dots)
+    * can contain a **max-version** attribute (maximum 3 digits separated by dots)
+    * will be rendered on the app releases page
+dependencies/command
+    * optional
+    * must contain a linux command as text value
+    * can occur multiple times with different commands
+    * will be rendered on the app releases page
+dependencies/lib
+    * optional
+    * will be rendered on the app releases page
+    * must contain a required php extension
+    * can occur multiple times with different php extensions
+    * can contain a **min-version** attribute (maximum 3 digits separated by dots)
+    * can contain a **max-version** attribute (maximum 3 digits separated by dots)
+dependencies/nextcloud
+    * required on Nextcloud 11 or higher
+    * if absent white-listed owncloud versions will be taken from the owncloud element (see below)
+    * must contain a **min-version** attribute (maximum 3 digits separated by dots)
+    * can contain a **max-version** attribute (maximum 3 digits separated by dots)
+background-jobs/job
+    * optional
+    * must contain a php class which is run as background jobs
+    * will not be used, only validated
+repair-steps/pre-migration/step
+    * optional
+    * must contain a php class which is run before executing database migrations
+    * will not be used, only validated
+repair-steps/post-migration/step
+    * optional
+    * must contain a php class which is run after executing database migrations
+    * will not be used, only validated
+repair-steps/live-migration/step
+    * optional
+    * must contain a php class which is run after executing post-migration jobs
+    * will not be used, only validated
+repair-steps/install/step
+    * optional
+    * must contain a php class which is run after installing the app
+    * will not be used, only validated
+repair-steps/uninstall/step
+    * optional
+    * must contain a php class which is run after uninstalling the app
+    * will not be used, only validated
+two-factor-providers/provider
+    * optional
+    * must contain a php class which is registered as two factor auth provider
+    * will not be used, only validated
+commands/command
+    * optional
+    * must contain a php class which is registered as occ command
+    * will not be used, only validated
+activity/settings/setting
+    * optional
+    * must contain a php class which implements OCP\Activity\ISetting and is used to add additional settings ui elements to the activity app
+activity/filters/filter
+    * optional
+    * must contain a php class which implements OCP\Activity\IFilter and is used to add additional filters to the activity app
+activity/providers/provider
+    * optional
+    * must contain a php class which implements OCP\Activity\IProvider and is used to react to events from the activity app
+settings/admin
+    * optional
+    * must contain a php class which implements OCP\Settings\ISettings and returns the form to render for the global settings area
+settings/admin-section
+    * optional
+    * must contain a php class which implements OCP\Settings\ISection and returns data to render navigation entries in the global settings area
+navigations
+    * optional
+    * must contain at least one navigation element
+navigations/navigation
+    * required
+    * must contain a name and route element
+    * denotes a navigation entry
+    * role denotes the visibility, all means everyone can see it, admin means only an admin can see the navigation entry, defaults to all
+navigations/navigation/id
+    * optional
+    * the app id
+    * you can also create entries for other apps by setting an id other than your app one's
+navigations/navigation/name
+    * required
+    * will be displayed below the navigation entry icon
+    * will be translated by the default translation tools
+navigations/navigation/route
+    * required
+    * name of the route that will be used to generate the link
+navigations/navigation/icon
+    * optional
+    * name of the icon which is looked up in the app's **img/** folder
+    * defaults to app.svg
+navigations/navigation/order
+    * optional
+    * used to sort the navigation entries
+    * a higher order number means that the entry will be ordered further to the bottom
+navigations/navigation/type
+    * optional
+    * can be either link or settings
+    * link means that the entry is added to the default app menu
+    * settings means that the entry is added to the right-side menu which also contains the personal, admin, users, help and logout entry
+collaboration
+    * optional
+    * can contain plugins for collaboration search (e.g. supplying share dialog)
+collaboration/plugins
+    * optional
+    * must contain at least one plugin
+collaboration/plugins/plugin
+    * required
+    * the PHP class name of the plugin
+    * must contain **type** attribute (currently only *collaboration-search*). The class must implement OCP\Collaboration\Collaborators\ISearchPlugin.
+    * must contain **share-type** attribute, according to the specific \OCP\Share constants
 
-database
-========
-Each supported database has to be listed in here. Valid values are sqlite, mysql, pgsql, oci and mssql. In the future
-it will be possible to specify versions here as well.
-In case no database is specified it is assumed that all databases are supported.
+The following character maximum lengths are enforced:
 
-command
-=======
-Defines a command line tool to be available. With the attribute 'os' the required operating system for this tool can be
-specified. Valid values for the 'os' attribute are as returned by the PHP function `php_uname <http://php.net/manual/en/function.php-uname.php>`_.
+* All description Strings are database text fields and therefore not limited in size
+* All other Strings have a maximum of 256 characters
 
-lib
-===
-Defines a required PHP extension with required minimum and/or maximum version. The names for the libraries have to match the result as returned by the PHP function  `get_loaded_extensions <http://php.net/manual/en/function.get-loaded-extensions.php>`_.
-The explicit version of an extension is read from `phpversion <http://php.net/manual/de/function.phpversion.php>`_ - with some exception as to be read up in the `code base <https://github.com/nextcloud/server/blob/master/lib/private/App/PlatformRepository.php>`_.
+The following elements are either deprecated or for internal use only and will fail the validation if present:
 
-os
-==
-Defines the required target operating system the app can run on. Valid values are as returned by the PHP function `php_uname <http://php.net/manual/en/function.php-uname.php>`_.
-
-owncloud
-========
-**Required**: Defines minimum and maximum versions of the Nextcloud core. In case undefined the values will be taken from the tag `requiremin`_.
-
-.. note:: Currently this tag is also used to check for the Nextcloud version number.
-          Thereby the following "translation" is made:
-
-          * ownCloud 9.0 matches Nextcloud 9
-          * ownCloud 9.1 matches Nextcloud 10
-          * ownCloud 9.2 matches Nextcloud 11
-
-settings
---------
-
-When your app has admin settings, this is the place to register the corresponding classes.
-
-admin-section
-=============
-
-In case the app needs to register a new section on the admin settings page, it needs to implement the \OCP\Settings\ISection interface. The implementing class needs to be specified here.
-
-admin
-=====
-
-In case the app has its own admin related settings, it needs to implement the \OCP\Settings\ISettings interface. The implementing class needs to be specified here.
-          
-          
-Deprecated
-----------
-
-The following sections are just listed for reference and should not be used; they are deprecated and often not evaluated anymore (i.e., they are ignored).
-
-requiremin
-==========
-Deprecated in favor of the **<dependencies>** tag.
-
-public
-======
-Used to provide a public interface (requires no login) for the app. The id is appended to the URL **/index.php/public**. Example with id set to 'calendar'::
-
-    /index.php/public/calendar
-
-Also take a look at :doc:`../core/externalapi`.
-
-remote
-======
-Same as public but requires login. The id is appended to the URL **/index.php/remote**. Example with id set to 'calendar'::
-
-    /index.php/remote/calendar
-
-Also take a look at :doc:`../core/externalapi`.
-
-
-standalone
-==========
-Can be set to true to indicate that this app is a webapp. This can be used to tell GNOME Web for instance to treat this like a native application.
-
-default_enable
-==============
-**Core apps only**: Used to tell Nextcloud to enable them after the installation.
-
-shipped
-=======
-**Core apps only**: Used to tell Nextcloud that the app is in the standard release.
-
-Please note that if this attribute is set to *FALSE* or not set at all, every time you disable the application, all the files of the application itself will be *REMOVED* from the server!
+* **standalone**
+* **default_enable**
+* **shipped**
+* **public**
+* **remote**
+* **requiremin**
+* **requiremax**

@@ -33,6 +33,7 @@ $mapping = array(
     'admin-php-opcache'       => '/admin_manual/configuration_server/server_tuning.html#enable-php-opcache',
     'admin-mysql-utf8mb4'     => '/admin_manual/configuration_database/mysql_4byte_support.html',
     'admin-update'            => '/admin_manual/maintenance/update.html',
+    'admin-theming-icons'     => '/admin_manual/configuration_server/theming.html#theming-of-icons',
     
     'developer-code-integrity'=> '/developer_manual/app/code_signing.html',
     'developer-theming'       => '/developer_manual/core/theming.html',

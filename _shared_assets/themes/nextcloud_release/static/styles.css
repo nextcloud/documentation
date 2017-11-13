@@ -290,6 +290,25 @@ div.thumbnail > img {
 
 /* -- Start specific css for documentation -- */
 
+.sidebar h1 {
+  font-size: 1.5em;
+  margin: 0;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+.sidebar-search form {
+  display: flex;
+  width: 100%;
+}
+.sidebar-search input,
+.sidebar-search button {
+  margin: 10px;
+}
+.sidebar-search input {
+  flex-grow: 1;
+  margin-right: 0;
+}
+
 ul#menu-support.menu {
   padding-left: 0;
 }
@@ -307,12 +326,6 @@ ul#menu-support.menu ul ul {
 /* square bullets for the third level entries */
 ul#menu-support.menu ul ul ul {
   list-style-type: square;
-}
-/* having a separator between each elements of the top list and
-   between above the top of the third level list */
-ul#menu-support.menu > ul > li,
-ul#menu-support.menu ul ul ul {
-  border-top: 1px solid #EFEFEF;
 }
 /* set to default padding for the sublist of the current entry */
 ul#menu-support.menu ul > li.current > ul {
@@ -347,25 +360,14 @@ ul#menu-support.menu > ul li.toctree-l1.current {
     padding-right: 0;
 }
 
-#menu-support > ul > li:nth-child(odd) {
+#menu-support > ul > li {
     border-top: 1px solid #ccc;
+}
+
+#menu-support > ul:last-child {
     border-bottom: 1px solid #ccc;
 }
 
-#menu-support > ul > li:last-child {
-    border-bottom: 0;
-}
-
-#menu-support > ul > .current {
-    border: 1px solid #999 !important;
-    border-right: 0 !important;
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
-}
-
-#menu-support > ul > .current + li{
-    border-top: 0;
-}
 #menu-support ul ul {
     padding-left: 27px;
 }
@@ -482,4 +484,15 @@ li.next {
 
 li.next {
   float: right;
+}
+
+.not-front .content.row,
+.content > .main > .row {
+  margin-top: 0;
+}
+.page-content {
+  margin-top: 10px;
+}
+.content > .main > .row .sidebar {
+  border-right: 1px solid #ccc;
 }
