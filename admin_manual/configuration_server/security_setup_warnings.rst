@@ -106,7 +106,7 @@ or Federated Cloud Sharing will not work reliably."
 system or features such as installing and updating apps via the app store or Federated 
 Cloud Sharing will not work reliably."
 
-There are known bugs in older OpenSSL and NSS versions leading to misbehaviour in 
+There are known bugs in older OpenSSL and NSS versions leading to misbehavior in 
 combination with remote hosts using SNI. A technology used by most of the HTTPS
 websites. To ensure that Nextcloud will work properly you need to update OpenSSL
 to at least 1.0.2b or 1.0.1d. For NSS the patch version depends on your distribution

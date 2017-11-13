@@ -312,7 +312,7 @@ XML Output
     <data/>
   </ocs>
 
-Get user´s groups
+Get user's groups
 -----------------
 
 Retrieves a list of groups the specified user is a member of. Authentication is 
@@ -516,7 +516,7 @@ XML Output
     <data/>
   </ocs>
   
-Get user´s subadmin groups
+Get user's subadmin groups
 --------------------------
 
 Returns the groups in which the user is a subadmin. Authentication is done by 
