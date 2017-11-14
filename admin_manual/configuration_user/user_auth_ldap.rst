@@ -89,6 +89,8 @@ User DN:
   Example:
 
   * *uid=nextcloudsystemuser,cn=sysusers,dc=my-company,dc=com*
+  
+  You can get the user DN for a specific user with this Powershell command: ```dsquery user -name [user]```
 
 Password:
   The password for the user given above. Empty for anonymous access.
