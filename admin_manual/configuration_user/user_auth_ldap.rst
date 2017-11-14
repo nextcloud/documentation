@@ -526,6 +526,32 @@ a look at the logs for further details."
 When the configuration test reports success, save your settings and check if the
 users and groups are fetched correctly on the Users page.
 
+Additional configuration options via occ
+----------------------------------------
+
+Few configuration settings can only be set on command line via ``occ``.
+
+Attribute Update Interval
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The LDAP backend will update user information that is used within Nextcloud
+with the values provided by the LDAP server. For instance these are email,
+quota or the avatar. This happens on every login, the first detection of a user
+from LDAP and regularly by a background job.
+
+The interval value determines the time between updates of the values and is
+used to avoid frequent overhead, including time-expensive write actions to
+the database.
+
+The interval is described in seconds and it defaults to 86400 equalling a day.
+It is not a per-configuration option.
+
+The value can be modified by::
+
+  sudo -u www-data php occ config:app:set user_ldap updateAttributesInterval --value=86400
+
+A value of 0 will update it on every of the named occasions.
+
 Nextcloud Avatar integration
 ----------------------------
 
