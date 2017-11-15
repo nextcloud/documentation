@@ -1,3 +1,4 @@
+=============================
 Automatic Configuration Setup
 =============================
 
@@ -30,7 +31,8 @@ Automatic Configurations Examples
 The following sections provide sample automatic configuration examples and what information is requested at the end of the configuration.
 
 Data Directory
-~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^
+
 Using the following parameter settings, the "Finish setup" screen requests database and admin credentials settings.
 
 ::
@@ -42,7 +44,8 @@ Using the following parameter settings, the "Finish setup" screen requests datab
 
 
 SQLite Database
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
+
 Using the following parameter settings, the "Finish setup" screen requests data directory and admin credentials settings.
 
 ::
@@ -55,7 +58,8 @@ Using the following parameter settings, the "Finish setup" screen requests data 
     );
 
 MySQL Database
-~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^
+
 Using the following parameter settings, the "Finish setup" screen requests data directory and admin credentials settings.
 
 ::
@@ -75,7 +79,8 @@ Using the following parameter settings, the "Finish setup" screen requests data 
    :doc:`../configuration_database/linux_database_configuration`.
 
 PostgreSQL Database
-~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
+
 Using the following parameter settings, the "Finish setup" screen requests data directory and admin credentials settings.
 
 ::
@@ -95,7 +100,7 @@ Using the following parameter settings, the "Finish setup" screen requests data 
    :doc:`../configuration_database/linux_database_configuration`.
 
 All Parameters
-~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^
 
 Using the following parameter settings, because all parameters are already configured in the file, the Nextcloud installation skips the "Finish setup" screen.
 

@@ -68,7 +68,7 @@ Common misconfigurations
 ------------------------
 
 Blocking user groups
-====================
+^^^^^^^^^^^^^^^^^^^^
 
 When trying to deny access to a group of users, make sure that sharing does not
 allow them to create a way back in. When users are able to create a public link,
@@ -81,7 +81,7 @@ for all users that are ``not member of`` a group, that contains all users of
 your installation.
 
 External storage
-================
+^^^^^^^^^^^^^^^^
 
 While access to files in external storages is not possible via Nextcloud, users
 that have direct access to the external storage, can of course change files

@@ -17,14 +17,14 @@ Common misconfigurations
 ------------------------
 
 Public collaborative tag
-========================
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Similar to :doc:`access_control` retention should use ``restricted`` or ``invisible``
 tags. Otherwise any user can remove the tag and the file is not removed after the given
 period. Use :doc:`automated_tagging` to assign such tags to newly uploaded files.
 
 File age
-========
+^^^^^^^^
 
 Currently retention is based on the creation date of the file. The sync client sends
 the **original** creation date to the server, while uploading through the web interface

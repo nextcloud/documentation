@@ -1,3 +1,4 @@
+===========================
 Reverse Proxy Configuration
 ===========================
 
@@ -53,7 +54,7 @@ Example
 -------
 
 Multiple Domains Reverse SSL Proxy
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you want to access your Nextcloud installation **http://domain.tld/nextcloud**
 via a multiple domains reverse SSL proxy

@@ -23,7 +23,7 @@ requires that you install and set up the server software first.
 .. _db-transaction-label:
 
 Database "READ COMMITED" transaction isolation level
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 As discussed above Nextcloud is using the ``TRANSACTION_READ_COMMITTED`` transaction isolation
 level. Some database configurations are enforcing other transaction isolation levels. To avoid
@@ -37,7 +37,7 @@ Parameters
 For setting up Nextcloud to use any database, use the instructions in :doc:`../installation/installation_wizard`. You should not have to edit the respective values in the :file:`config/config.php`.  However, in special cases (for example, if you want to connect your Nextcloud instance to a database created by a previous installation of Nextcloud), some modification might be required.
 
 Configuring a MySQL or MariaDB Database
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you decide to use a MySQL or MariaDB database, ensure the following:
 
@@ -107,7 +107,7 @@ this:
 
 
 PostgreSQL Database
-~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
 
 If you decide to use a PostgreSQL database make sure that you have installed
 and enabled the PostgreSQL extension in PHP. The PHP configuration in :file:`/etc/php5/conf.d/pgsql.ini` could look
@@ -207,7 +207,7 @@ Troubleshooting
 ---------------
 
 How to workaround General error: 2006 MySQL server has gone away
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The database request takes too long and therefore the MySQL server times out. Its
 also possible that the server is dropping a packet that is too large. Please
@@ -220,7 +220,7 @@ systems Nextcloud is providing a ``dbdriveroptions`` configuration option within
 Please refer to :doc:`../configuration_server/config_sample_php_parameters` for an example.
 
 How can I find out if my MySQL/PostgreSQL server is reachable?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To check the server's network availability, use the ping command on
 the server's host name (db.server.com in this example)::
@@ -238,7 +238,7 @@ For a more detailed check whether the access to the database server software
 itself works correctly, see the next question.
 
 How can I find out if a created user can access a database?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The easiest way to test if a database can be accessed is by starting the
 command line interface:
@@ -287,7 +287,7 @@ the respective host name::
 
 
 Useful SQL commands
-~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
 
 **Show Database Users**::
 

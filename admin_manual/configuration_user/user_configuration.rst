@@ -59,7 +59,7 @@ User accounts have the following properties:
   storage in user quotas.
 
 Creating a New User
-~~~~~~~~~~~~~~~~~~~
+-------------------
 
 To create a user account:
 
@@ -84,7 +84,7 @@ Set the **Send email to new user**-checkbox allows you to leave the **Password**
 field empty. The user will get an activation-email to set his own password.
 
 Reset a User's Password
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
 You cannot recover a user's password, but you can set a new one:
 
@@ -98,7 +98,7 @@ password resets. Please see
 :doc:`../configuration_files/encryption_configuration`.
 
 Renaming a User
-~~~~~~~~~~~~~~~
+---------------
 
 Each Nextcloud user has two names: a unique **Login Name** used for
 authentication, and a **Full Name**, which is their display name. You can edit
@@ -112,7 +112,7 @@ To set or change a user's display name:
 
 
 Granting Administrator Privileges to a User
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------------------
 
 Nextcloud has two types of administrators: **Super Administrators** and **Group
 Administrators**. Group administrators have the rights to create, edit and
@@ -129,7 +129,7 @@ a user, simply add them to the ``admin`` group.
 
 
 Managing Groups
-~~~~~~~~~~~~~~~
+---------------
 
 You can assign new users to groups when you create them, and create new groups
 when you create new users. You may also use the **Add Group** button at the top
@@ -137,7 +137,7 @@ of the left pane to create new groups. New group members will immediately
 have access to file shares that belong to their new groups.
 
 Setting Storage Quotas
-~~~~~~~~~~~~~~~~~~~~~~
+----------------------
 
 Click the gear on the lower left pane to set a default storage quota. This is
 automatically applied to new users. You may assign a different quota to any user
@@ -177,7 +177,7 @@ When a user creates a public share via URL, and allows uploads, any uploaded
 files count against that user's quota.
 
 Disable and Enable users
-~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------
 
 .. figure:: ../images/users-actions.png
 
@@ -195,7 +195,7 @@ Enabling users is as easy as disabling them. Just click on the "..."-menu, and
 select **Enable**.
 
 Deleting users
-~~~~~~~~~~~~~~
+--------------
 
 .. figure:: ../images/users-actions.png
 

@@ -48,7 +48,8 @@ The following is currently required if you're running Nextcloud together with a 
 * "READ COMMITED" transaction isolation level (See: :ref:`db-transaction-label`)
 
 Emoji (UTF8 4-byte) support with MySQL / MariaDB
-================================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 If you want to use UTF8 4-byte characters such as Emojis on your server, the database needs to be created with character set ``utf8mb4`` and collate ``utf8mb4_general_ci``, e.g.::
 
   CREATE DATABASE nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;

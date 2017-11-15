@@ -1,3 +1,4 @@
+========================
 Defining Background Jobs
 ========================
 A system like Nextcloud sometimes requires tasks to be done on a regular basis
@@ -33,7 +34,7 @@ default method is to use AJAX.  However, the recommended method is to use cron.
 The following sections describe the differences between each method.
 
 AJAX
-~~~~
+^^^^
 
 The AJAX scheduling method is the default option.  Unfortunately, however, it is
 also the least reliable. Each time a user visits the Nextcloud page, a single
@@ -47,7 +48,7 @@ requires regular visits to the page for it to be triggered.
    preferred.
 
 Webcron
-~~~~~~~
+^^^^^^^
 
 By registering your Nextcloud ``cron.php`` script address at an external webcron
 service (for example, easyCron_), you ensure that background jobs are executed
@@ -57,7 +58,7 @@ access your server using the Internet. For example::
   URL to call: http[s]://<domain-of-your-server>/nextcloud/cron.php
 
 Cron
-~~~~
+^^^^
 
 Using the operating system cron feature is the preferred method for executing
 regular tasks.  This method enables the execution of scheduled jobs without the
@@ -85,7 +86,7 @@ You can verify if the cron job has been added and scheduled by executing::
 .. _easyCron: http://www.easycron.com/
 
 systemd
-~~~~~~~
+^^^^^^^
 
 If systemd is installed on the system, a systemd timer could be an alternative to a cronjob.
 

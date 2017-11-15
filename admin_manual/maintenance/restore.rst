@@ -33,9 +33,6 @@ install and data folder) to your Nextcloud environment. You could use this comma
 Restore Database
 ----------------
 
-Clean Database Before Restoring
-===============================
-
 .. warning:: Before restoring a backup you need to make sure to delete all existing database tables.
 
 The easiest way to do this is to drop and recreate the database.
@@ -63,7 +60,7 @@ PostgreSQL
     PGPASSWORD="password" psql -h [server] -U [username] -d nextcloud -c "CREATE DATABASE \"nextcloud\";"
 
 Restoring
-=========
+---------
 
 .. note:: This guide assumes that your previous backup is called
    "nextcloud-sqlbkp.bak"
