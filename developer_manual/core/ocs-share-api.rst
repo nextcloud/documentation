@@ -146,7 +146,7 @@ Create a new Federated Cloud Share
 ----------------------------------
 
 Creating a federated cloud share can be done via the local share endpoint, using
-(int) 6 as a shareType and the `Federated Cloud ID <https://nextcloud.comg/federation/>`_
+(int) 6 as a shareType and the `Federated Cloud ID <https://nextcloud.com/federation/>`_
 of the share recipient as shareWith. See `Create a new Share`_ for more information.
 
 
