@@ -18,7 +18,7 @@ At each layer the goal is to provide the ability to scale, and providing a high
 availability while maintaining the needed level of performance.
 
 Application Layer
-=================
+-----------------
 
 For the application layer of this reference architecture we used Oracle
 Enterprise Linux as the front end servers to host the Nextcloud code.  In this
@@ -69,7 +69,7 @@ the IP address should one fail.
 .. management upon further testing.
 
 Database Layer
-==============
+--------------
 
 For the purposes of this example, we have chosen a MySQL cluster using the NDB
 Storage engine.  The cluster was configured based on the documentation found
@@ -99,7 +99,7 @@ In this example we have also added a second HAProxy server with Heartbeat to pre
 We have also implemented NIC bonding to load balance the traffic across multiple physical NICs.
 
 Storage Layer
-=============
+-------------
 
 Storage was deployed using the Red Hat Storage server with the GlusterFS
 (pre-configured as part of the Red Hat Storage Server offering).

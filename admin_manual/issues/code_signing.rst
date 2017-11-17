@@ -218,7 +218,7 @@ The following errors can be encountered when trying to verify a code signature.
   - Another exception has prevented the code verification. There are currently
     these following exceptions:
 
-    - ``Signature data not found.```
+    - ``Signature data not found.``
 
       - The app has mandatory code signing enforced but no ``signature.json``
         file has been found in its ``appinfo`` folder.

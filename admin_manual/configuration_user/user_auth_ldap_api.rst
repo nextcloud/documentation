@@ -1,11 +1,9 @@
-======================
-LDAP Configuration API
-======================
+==========================
+The LDAP Configuration API
+==========================
 
-Any used method requires the a header "OCS-APIREQUEST" set to "true". And any method takes an optional "format" parameter, which accepts "xml" (default) or "json".
+All methods require that the "OCS-APIREQUEST" header be set to "true".  Methods take an optional "format" parameter, which may be "xml" (the default) or "json".
 
-Methods
-=======
 
 Creating a configuration
 ------------------------
@@ -190,7 +188,7 @@ XML Output
   </ocs>
 
 Configuration Keys
-==================
+------------------
 
 +-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
 | Key                           | Mode | Required | Description                                                                                                           |

@@ -31,7 +31,7 @@ defaults, and therefore it is usually unnecessary to adjust those configuration
 values. 
 
 Disabling previews:
-~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
 
 Under certain circumstances, for example if the server has limited 
 resources, you might want to consider disabling the generation of previews. 
@@ -47,7 +47,7 @@ Set the configuration option ``enable_previews`` in config.php to ``false``:
     'enable_previews' => false,
 
 Maximum preview size:
-~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^
 
 There are two configuration options to set the maximum size of a preview.
 
@@ -70,7 +70,7 @@ to a maximum size of 100×100px:
 'preview_max_x' represents the x-axis and 'preview_max_y' represents the y-axis.
 
 Maximum scale factor:
-~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^
 
 If a lot of small pictures are stored on the Nextcloud instance and the preview 
 system generates blurry previews, you might want to consider setting a maximum 

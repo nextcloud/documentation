@@ -1,8 +1,7 @@
 ====================
 Upgrade via Packages
 ====================
-
-   
+  
 Upgrade Quickstart
 ------------------
 

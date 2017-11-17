@@ -12,7 +12,7 @@ and verifies that all adjustments to the server work with the theming. It
 covers also most use cases like replacing the name, logos and colors.
 
 Theming app
-===========
+-----------
 
 Check in the apps management that the theming app is enabled. Then the
 administrator settings show a section where you can modify the appearance of
@@ -34,7 +34,7 @@ Log in page
 .. figure:: ../configuration_server/images/theming-log-in-page.png
 
 Theming of icons
-================
+----------------
 
 Nextcloud will automatically generate favicons and home screen icons
 depending on the current app and theming color. 
@@ -45,7 +45,7 @@ This requires the following additional dependencies:
  - SVG support for imagick (e.g. `libmagickcore5-extra`)
 
 Theming of mobile app URLs and IDs
-==================================
+----------------------------------
 
 The themes supported to change the URLs to the mobile apps (Android & iOS) that
 is shown when the web UI is opened on one of those devices. Then there was a

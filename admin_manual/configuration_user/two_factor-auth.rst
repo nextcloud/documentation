@@ -11,7 +11,8 @@ Developers can `built new two-factor provider apps <https://docs.nextcloud.com/s
 .. TODO ON RELEASE: Update version number above on release
 
 Enabling Two Factor Authentication
-==================================
+----------------------------------
+
 You can enable 2FA by installing and enabling a 2FA app like TOTP which works
 with Google Authenticator and compatible apps. The apps are available in the
 Nextcloud App store so by navigating there and clicking **enable** for the app

@@ -1,3 +1,4 @@
+===================
 Email Configuration
 ===================
 
@@ -137,7 +138,8 @@ If you prefer, you may set your mail server parameters in ``config/config.php``.
 The following examples are for SMTP, PHP, Sendmail, and Qmail.
 
 SMTP
-~~~~
+^^^^
+
 If you want to send email using a local or remote SMTP server it is necessary
 to enter the name or IP address of the server, optionally followed by a colon
 separated port number, e.g. **:425**. If this value is not given the default
@@ -184,6 +186,7 @@ the following two variants:
 
 SSL
 ^^^
+
 A secure connection will be initiated using the outdated SMTPS protocol
 which uses the port 465/tcp:
 
@@ -231,7 +234,8 @@ and password and can optionally choose between the authentication types
     "mail_smtppassword" => "password",
 
 PHP mail
-~~~~~~~~
+^^^^^^^^
+
 If you want to use PHP mail it is necessary to have an installed and working
 email system on your server. Which program in detail is used to send email is
 defined by the configuration settings in the **php.ini** file. (On \*nix
@@ -253,7 +257,8 @@ email out of the box.
     "mail_smtppassword" => "",
 
 Sendmail
-~~~~~~~~
+^^^^^^^^
+
 If you want to use the well known Sendmail program to send email, it is
 necessary to have an installed and working email system on your \*nix server.
 The sendmail binary (**/usr/sbin/sendmail**) is usually part of that system.
@@ -274,7 +279,7 @@ Nextcloud should be able to send email out of the box.
     "mail_smtppassword" => "",
 
 qmail
-~~~~~
+^^^^^
 
 If you want to use the qmail program to send email, it is necessary to have an
 installed and working qmail email system on your server. The sendmail binary

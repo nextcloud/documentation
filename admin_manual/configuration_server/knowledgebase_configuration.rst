@@ -1,3 +1,4 @@
+============================
 Knowledge Base Configuration
 ============================
 The usage of Nextcloud is more or less self explaining but nevertheless a user

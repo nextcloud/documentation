@@ -29,7 +29,7 @@ installation needs to be tweaked a bit.
 Now you should be able to use Emojis in your file names, calendar events, comments and many more.
 
 MariaDB support
-===============
+---------------
 
 .. note:: This is even more **experimental**.
 

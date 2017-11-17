@@ -314,7 +314,7 @@ Pretty URLs
 -----------
 
 Pretty URLs remove the ``index.php``-part in all Nextcloud URLs, for example
-in sharing links like ``https://example.org/nextcloud/index.php/s/Sv1b7krAUqmF8QQ```,
+in sharing links like ``https://example.org/nextcloud/index.php/s/Sv1b7krAUqmF8QQ``,
 making URLs shorter and thus prettier.
 
 ``mod_env`` and ``mod_rewrite`` must be installed on your webserver and the :file:`.htaccess`

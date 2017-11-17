@@ -14,7 +14,7 @@ to be monitored, and provide guidance on what to look for in Nextcloud in an
 enterprise installation.
 
 Nextcloud Deployment Architecture
-=================================
+---------------------------------
 
 Before discussing how to monitor Nextcloud, it is important to understand the architecture of a
 typical Nextcloud deployment. These monitoring best practices are developed based on the use of load
@@ -26,7 +26,7 @@ operations are available, and that Nextcloud is simply a new target for these to
 
 
 The Important Components of Nextcloud
-=====================================
+-------------------------------------
 
 Nextcloud is a PHP application that depends on a filesystem for file storage, and a database for storing
 user and file meta data, as well as some application specific information.
@@ -38,7 +38,7 @@ there through the layers of infrastructure.
 
 
 Status.php
-----------
+^^^^^^^^^^
 
 Nextcloud provides a very simple mechanism for determining if an application server is up and functioning –
 call the status.php file on each Nextcloud server. This file can be found in the root Nextcloud directory on
@@ -55,7 +55,7 @@ server is operating properly.
 
 
 Nextcloud.log
--------------
+^^^^^^^^^^^^^
 
 Nextcloud also provides a built in logging function. If the Nextcloud logging application
 is enabled, this file will track user logins and shared file activity. If these logging applications are
@@ -66,28 +66,26 @@ in the log file, this should be integrated with an enterprise log manager.
 
 Logfile entries that start with the keyword “Error” should be logged and reported to Nextcloud support.
 
-Apache
-^^^^^^
+**Apache**
 
 The apache error and access log should also be monitored. Significant spontaneous changes of the number
 of requests per second should also be monitored and looked into.
 
 
-Database server
-^^^^^^^^^^^^^^^
+**Database server**
 
 The load and general health of the database server or cluster has to be monitored also.
 All mysql vendors provide tools to monitor this.
 
 
 Clustered Filesystem
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 The available space of the filesystem should be monitored to prevent a full Nextcloud. This functionality is
 provided by the operating-system and/or the cluster filesystem vendor.
 
 Load Balancer
--------------
+^^^^^^^^^^^^^
 
 The load balancer is monitoring the health of the application servers and is distributing the traffic in
 the optimal way. The application-servers should also be monitored to detect long lasting OS or

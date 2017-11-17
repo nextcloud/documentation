@@ -1,14 +1,13 @@
-===========================
+===============
 Primary Storage
-===========================
+===============
 
 It's possible to use an object store as primary storage, this replaces the default
 way of storing files in :code:`nextcloud/data` (note that the data directory might still be used
 for other reasons)
 
----------------------------
 Implications
----------------------------
+------------
 
 When using an object store as primary storage, Nextcloud assumes exclusive access
 over the bucket being used.
@@ -22,9 +21,8 @@ Because of this primary object stores usually perform better than when using the
 object store as external storage but it restricts being able to access the files from
 outside of Nextcloud.
 
----------------------------
 Configuring
----------------------------
+-----------
 
 Primary object stores need to be configured in :code:`config.php` by specifying the objectstore
 backend and any backend specific configuration.
@@ -43,9 +41,8 @@ The configuration has the following structure.
 		),
 	),
 
-~~~~~~~~~~~~~~~
 Openstack Swift
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
 
 The Swift backend mounts a container on an OpenStack Object Storage server into the virtual filesystem. The class to be used is :code:`\\OC\\Files\\ObjectStore\\Swift`
 
@@ -70,7 +67,6 @@ The Swift backend mounts a container on an OpenStack Object Storage server into 
 		),
 	),
 
----------
 Amazon S3
 ---------
 
@@ -104,7 +100,6 @@ but can be used with non-Amazon servers where the DNS infrastructure cannot be c
 requests will be made with http://bucket.hostname.domain/, but with path style enabled,
 requests are made with http://hostname.domain/bucket instead.
 
----------------------------
 Multibucket Object Store
 ---------------------------
 

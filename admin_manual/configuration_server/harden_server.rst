@@ -27,7 +27,7 @@ Operating system
 .. _dev-urandom-label:
 
 Give PHP read access to ``/dev/urandom``
-****************************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Nextcloud uses a `RFC 4086 ("Randomness Requirements for Security")`_ compliant 
 mixer to generate cryptographically secure pseudo-random numbers. This means 
@@ -42,7 +42,7 @@ a way that PHP is able to read random data from it.
    make sure to include ``/dev/urandom``.
 
 Enable hardening modules such as SELinux
-****************************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It is highly recommended to enable hardening modules such as SELinux where 
 possible. See :doc:`../installation/selinux_configuration` to learn more about 
@@ -52,7 +52,7 @@ Deployment
 ----------
 
 Place data directory outside of the web root
-********************************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It is highly recommended to place your data directory outside of the Web root 
 (i.e. outside of ``/var/www``). It is easiest to do this on a new 
@@ -63,7 +63,7 @@ installation.
 .. installation; see :doc:``
 
 Disable preview image generation
-********************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Nextcloud is able to generate preview images of common filetypes such as images 
 or text files. By default the preview generation for some file types that we 
@@ -90,7 +90,7 @@ How to setup HTTPS on your Web server depends on your setup; please consult the
 documentation for your HTTP server. The following examples are for Apache.
 
 Redirect all unencrypted traffic to HTTPS
-*****************************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To redirect all HTTP traffic to HTTPS administrators are encouraged to issue a 
 permanent redirect using the 301 status code. When using Apache this can be 
@@ -105,7 +105,7 @@ configuration::
 .. _enable-hsts-label:
 
 Enable HTTP Strict Transport Security
-*************************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 While redirecting all traffic to HTTPS is good, it may not completely prevent 
 man-in-the-middle attacks. Thus administrators are encouraged to set the HTTP 
@@ -139,7 +139,7 @@ If you have subdomains not accessible via HTTPS, remove ``includeSubdomains;``.
 This requires the ``mod_headers`` extension in Apache.
 
 Proper SSL configuration
-************************
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Default SSL configurations by Web servers are often not state-of-the-art, and 
 require fine-tuning for an optimal performance and security experience. The 

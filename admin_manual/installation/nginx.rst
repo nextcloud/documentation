@@ -316,7 +316,7 @@ Tips and Tricks
 ---------------
 
 Suppressing Log Messages
-========================
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you're seeing meaningless messages in your logfile, for example ``client
 denied by server configuration: /var/www/data/htaccesstest.txt``, add this section to
@@ -331,7 +331,7 @@ your nginx configuration to suppress them:
         }
 
 JavaScript (.js) or CSS (.css) files not served properly
-========================================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A common issue with custom nginx configs is that JavaScript (.js)
 or CSS (.css) files are not served properly leading to a 404 (File not found)

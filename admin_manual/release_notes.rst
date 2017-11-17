@@ -10,7 +10,7 @@ A detailed log of all changes can be found in the official `Changelog
 versions linked.
 
 Updates to Nginx configuration
-==============================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * In the Nginx configuration the Same-Origin header was removed. This is now
   handled in PHP and keeping it will result in a wrong header. Please remove
@@ -27,7 +27,7 @@ Common questions
 ----------------
 
 Could not install core app bundle
-=================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following error message is shown during the update: "Repair warning: Could
 not install core app bundle: Could not download app <app>".
@@ -39,7 +39,7 @@ The instance will work fine, but the features that are usually provided by this
 app are not available.
 
 Theming changes
-===============
+---------------
 
 With Nextcloud 12, CSS files have been merged into one server.css so in order
 to keep your theme working you should consolidate your existing css styles into
