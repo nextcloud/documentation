@@ -1,3 +1,4 @@
+========
 Examples
 ========
 
@@ -8,7 +9,7 @@ Start using the library; it is needed to init the object mClient that will be
 in charge of keeping the communication with the server.
 
 Code example
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 .. code-block:: java
 
@@ -45,7 +46,7 @@ Authentication on the app is possible by 3 different methods:
 * Cookie (SAML-based single-sign-on)
 
 Code example
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 .. code-block:: java
 
@@ -74,7 +75,7 @@ Create a new folder on the cloud server, the info needed to be sent is the path
 of the new folder.
 
 Code example
-~~~~~~~~~~~~
+^^^^^^^^^^^^
    
 .. code-block:: java
 
@@ -102,7 +103,7 @@ content of the root folder.  As answer of this method, it will be received an
 array with all the files and folders stored in the selected folder.
 
 Code example
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 .. code-block:: java
 
@@ -131,7 +132,7 @@ Get information related to a certain file or folder, information obtained is:
 ``filePath``, ``filename``, ``isDirectory``, ``size`` and ``date``.
 
 Code example
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 .. code-block:: java
 
@@ -158,7 +159,7 @@ Delete a file or folder on the cloud server. The info needed is the path of
 folder/file to be deleted.
 
 Code example
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 .. code-block:: java
 
@@ -186,7 +187,7 @@ file on the server and targetDirectory, path where the file will be stored on
 the device.
 
 Code example
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 .. code-block:: java
 
@@ -223,7 +224,7 @@ where the file is stored on the device, remotePath, path where the file will be
 stored on the server and mimeType.
 
 Code example
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 .. code-block:: java
 
@@ -263,7 +264,7 @@ When the parameter 'overwrite' is set to 'true', the file or folder is moved eve
 used by a different file or folder. This one will be replaced by the former.
 
 Code example
-~~~~~~~~~~~~
+^^^^^^^^^^^^
    
 .. code-block:: java
 
@@ -289,7 +290,7 @@ Get information about what files and folder are shared by link (the object
 mClient contains the information about the server URL and account).
 
 Code example
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 .. code-block:: java
 
@@ -321,7 +322,7 @@ Boolean variable, getReshares, come from the Sharing api, from the moment it is
 not in use within the Nextcloud Android library.
 
 Code example
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 .. code-block:: java
 
@@ -361,7 +362,7 @@ within the Nextcloud Android library.
 
 
 Code example
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 .. code-block:: java
 
@@ -399,7 +400,7 @@ Stop sharing by link a file or a folder from your cloud server.
 The info needed is the object OCShare that you want to stop sharing by link.
 
 Code example
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 .. code-block:: java
 

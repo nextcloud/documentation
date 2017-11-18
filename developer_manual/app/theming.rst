@@ -7,7 +7,7 @@ Theming support
 The Nextcloud theming app offers some tools for app developers to ensure that apps also match the themed look.
 
 CSS classes
-===========
+-----------
 
 * **.nc-theming-main-background** Background in theming color
 * **.nc-theming-main-text** Text in theming color
@@ -15,7 +15,7 @@ CSS classes
 
 
 JavaScript
-==========
+----------
 
 When the theming app is enabled, it provides the **OCA.Theming** object. It can
 be used to handle themed instances differently.
@@ -35,7 +35,7 @@ The following information is available:
 * **OCA.Theming.url**  Instance web address
 
 Icons
-=====
+-----
 
 The theming app will automatically generate favicons and home screen icons for
 each app by using the icon `img/app.svg` inside of the app folder. Any custom

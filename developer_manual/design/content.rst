@@ -2,6 +2,6 @@
 .. codeauthor:: John Molakvoæ <skjnldsv@protonmail.com>
 ..  _content:
 
-===============
+============
 Main content
-===============
+============

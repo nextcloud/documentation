@@ -1,3 +1,4 @@
+=========
 Debugging
 =========
 
@@ -70,7 +71,7 @@ Once you are familiar with how your debugging client works, you can start debugg
 For debugging scripts on the command line, like ``occ`` or unit tests, set the ``XDEBUG_CONFIG`` environment variable.
 
 
-Debugging Javascript
+Debugging JavaScript
 --------------------
 
 By default all Javascript files in Nextcloud are minified (compressed) into a single file without whitespace. To prevent this, see Debug mode.

@@ -5,13 +5,15 @@ Changelog
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
 Deprecations
-============
+------------
+
 This is a deprecation roadmap which lists all current deprecation targets and will be updated from release to release. This lists the year when a specific method or class will be removed.
 
 .. note:: Deprecations on interfaces also affect the implementing classes!
 
 2018
-----
+^^^^
+
 * **OCP\\App::setActiveNavigationEntry** has been deprecated in favour of **\\OCP\\INavigationManager**
 * **OCP\\BackgroundJob::registerJob** has been deprecated in favour of **OCP\\BackgroundJob\\IJobList**
 * **OCP\\Contacts** functions has been deprecated in favour of **\\OCP\\Contacts\\IManager**
@@ -43,7 +45,8 @@ This is a deprecation roadmap which lists all current deprecation targets and wi
 
 
 2017
-----
+^^^^
+
 * **OCP\\IDb**: This interface and the implementing classes will be removed in favor of **OCP\\IDbConnection**. Various layers in between have also been removed to be consistent with the PDO classes. This leads to the following changes:
 
  * Replace all calls on the db using **getInsertId** with **lastInsertId**
@@ -52,7 +55,8 @@ This is a deprecation roadmap which lists all current deprecation targets and wi
  * The **execute** method on **OCP\\AppFramework\\Db\\Mapper** no longer returns an instance of **OC_DB_StatementWrapper** but an instance of **PDOStatement**
 
 2016
-----
+^^^^
+
 * The following methods have been moved into the **OCP\\Template::<method>** class instead of being namespaced directly:
 
  * **OCP\\image_path**
@@ -69,5 +73,6 @@ This is a deprecation roadmap which lists all current deprecation targets and wi
 * `OCP\\AppFramework\\Controller <https://github.com/nextcloud/server/blob/stable9/lib/public/appframework/controller.php>`_: methods **params**, **getParams**, **method**, **getUploadedFile**, **env**, **cookie**, **render**
 
 2015
-----
+^^^^
+
 * `\\OC\\Preferences <https://github.com/nextcloud/server/commit/909a53e087b7815ba9cd814eb6c22845ef5b48c7>`_ and `\\OC_Preferences <https://github.com/nextcloud/server/commit/4df7c0a1ed52ed1922116686cb5ad8da2544c997>`_

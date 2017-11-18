@@ -1,3 +1,4 @@
+====================
 Library Installation
 ====================
 
@@ -25,7 +26,7 @@ There are different methods to add an external library to a project, we will des
 
 
 Add the library as a Gradle dependency
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Simply open your::
 
@@ -39,7 +40,7 @@ and add the dependency::
 
 
 Add the library project to your project as a Git submodule
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Basically get the code and compile it having it integrated via a Git submodule.
 

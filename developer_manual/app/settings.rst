@@ -15,7 +15,7 @@ For example, in the **Sharing** section are only settings (built-in and of apps)
 related to sharing.
 
 Settings Form
-=============
+-------------
 
 For the settings form, three things are necessary:
 
@@ -200,7 +200,7 @@ implementation of the **user_ldap** app.
 
 
 Section
-=======
+-------
 
 It is also possible that an app registers its own section. This should be done
 only if there is not fitting corresponding section and the apps settings form
@@ -263,7 +263,7 @@ An example implementation of the ISection interface:
 Also the section must be registered in the app's info.xml.
 
 Personal
---------
+^^^^^^^^
 
 Registering personal settings follows and old style yet. Within the app
 intialisation (e.g. in appinfo/app.php) a method must be called:

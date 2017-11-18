@@ -1,3 +1,4 @@
+=================
 Theming Nextcloud
 =================
 Themes can be used to customize the look and feel of Nextcloud.
@@ -5,7 +6,8 @@ Themes can be used to customize the look and feel of Nextcloud.
 .. note:: This is an advanced way of theming Nextcloud; the Nextcloud team recommends instead the use of the :doc:`configuration_server/theming` app which, when enabled, can be accessed from the Admin settings.
 
 Getting started
-===============
+---------------
+
 A good idea to get started with a dynamically created website is to inspect it with **web developer tools**, that are found in almost any browser. They show the generated HTML and the CSS Code that the client/browser is receiving:
 With this facts you can easily determine where the following object-related attributes for the phenomenons are settled:
 
@@ -21,7 +23,8 @@ The next thing you should do, before starting any changes, is to make a backup o
 
 
 Creating and activating a new theme
-===================================
+-----------------------------------
+
 There are two basic ways of creating new themings:
 
 * doing all new from scratch
@@ -35,7 +38,8 @@ Depending on how you created your new theme it will be necessary to:
 
 
 Structure
-=========
+---------
+
 The folder structure of a theme is exactly the same as the main Nextcloud
 structure. You can override js files, images, translations and templates with
 own versions. CSS files are loaded additionally to the default files so you can
@@ -52,7 +56,7 @@ for example in /nextcloud/core/ and /nextcloud/settings/ in these sub folders:
 
 
 Notes for Updates
-=================
+-----------------
 
 .. note:: With Nextcloud 12, CSS files have been merged into one server.css so in order to keep your theme working you should consolidate your existing css styles into a server.css file. As for the example theme the styles.css file has been renamed to server.css.
 
@@ -74,15 +78,18 @@ But this is unlikely and will be mentioned in the Nextcloud release notes if it 
 
 
 How to change images and the logo
-=================================
+---------------------------------
+
 A new logo which you may want to insert can be added as follows:
 
 Figure out the path of the old logo
------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Replace the old picture, which position you found out as described under 1.3. by adding an extension in case you want to re-use it later.
 
 Creating an own logo
---------------------
+^^^^^^^^^^^^^^^^^^^^
+
 If you want to do a quick exchange like (1) it's important to know the size of the picture before you start creating an own logo:
 
 * Go to the place in the filesystem, that has been shown by the web developer tool/s
@@ -94,7 +101,8 @@ The (main) pictures that can be found inside Nextcloud standard theming are the 
 * The logo at the login-page above the credentials-box and in the header: 	        …/nextcloud/themes/default/core/img/logo.svg
 
 Inserting your new logo
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
+
 Inserting a new logo into an existing theme is as simple as replacing the old logo with the new (generated) one.
 You can use: scalable vector graphics (.svg) or common graphics formats for the Internet such as portable network graphics (.png) or .jpeg.
 Just insert the new created picture by using the unchanged name of the old picture.
@@ -102,7 +110,8 @@ Just insert the new created picture by using the unchanged name of the old pictu
 The app icons can also be overwritten in a theme. To change for example the app icon of the activity app you need to overwrite it by saving the new image to …/nextcloud/themes/default/apps/activity/img/activity.svg.
 
 Changing favicon
-----------------
+^^^^^^^^^^^^^^^^
+
 For compatibility with older browsers, favicon (the image that appears in your browser tab) uses .../nextcloud/core/img/favicon.ico.
 
 To customize favicon for MyTheme:
@@ -112,7 +121,7 @@ To customize favicon for MyTheme:
 * Include .../nextcloud/themes/MyTheme/core/img/favicon.svg and favicon.png to cover any future updates to favicon handling.
 
 Changing the default colours
-----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can inject custom variables into the SCSS generator to apply colors to the default css code by adding the following method to defaults.php:
 
@@ -172,7 +181,8 @@ Save the file and refresh the browser for the changes to take effect.
 
 
 How to change translations
-==========================
+--------------------------
+
 .. versionadded 8.0
 
 You can override the translation of single strings within your theme. Simply
@@ -213,7 +223,7 @@ the second one is read by the PHP code and provides the data for translated
 terms in there.
 
 How to update custom mimetype icons
-===================================
+-----------------------------------
 
 The following command is required to run after adding custom mimetype icons to your theme:
 
@@ -223,7 +233,8 @@ The following command is required to run after adding custom mimetype icons to y
 
 
 How to change names, slogans and URLs
-=====================================
+-------------------------------------
+
 The Nextcloud theming allows a lot of the names that are shown on the web interface to be changed. It's also possible to change the URLs to the documentation or the Android/iOS apps.
 
 This can be done with a file named ``defaults.php`` within the root of the theme. You can find it in the example theme (*/themes/example/defaults.php*). In there you need to specify a class named ``OC_Theme`` and need to implement the methods you want to overwrite:
@@ -270,7 +281,8 @@ One exception is the method ``buildDocLinkToKey`` which gets passed in a key as 
 
 
 Testing the new theme out
-=========================
+-------------------------
+
 There are different options for doing so:
 
 * If you're using a tool like the Inspector tools inside Mozilla, you can test out the CSS-Styles immediately inside the css-attributes, while looking at them.

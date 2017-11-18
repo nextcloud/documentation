@@ -26,7 +26,8 @@ To create a controller, simply extend the Controller class and create a method t
 
 
 Connecting a controller and a route
-===================================
+-----------------------------------
+
 To connect a controller and a route the controller has to be registered in the :doc:`container` like this:
 
 .. code-block:: php
@@ -83,7 +84,8 @@ This name is processed in the following way:
 * Now retrieve the service listed under **AuthorApiController** from the container, look up the parameters of the **someMethod** method in the request, cast them if there are PHPDoc type annotations and execute the **someMethod** method on the controller with those parameters.
 
 Getting request parameters
-==========================
+--------------------------
+
 Parameters can be passed in many ways:
 
 * Extracted from the URL using curly braces like **{key}** inside the URL (see :doc:`routes`)
@@ -135,7 +137,8 @@ It is also possible to set default parameter values by using PHP default method 
 
 
 Casting parameters
-------------------
+^^^^^^^^^^^^^^^^^^
+
 URL, GET and application/x-www-form-urlencoded have the problem that every parameter is a string, meaning that::
 
     ?doMore=false
@@ -176,7 +179,8 @@ The following types will be cast:
 
 
 JSON parameters
----------------
+^^^^^^^^^^^^^^^
+
 It is possible to pass JSON using a POST, PUT or PATCH request. To do that the **Content-Type** header has to be set to **application/json**. The JSON is being parsed as an array and the first level keys will be used to pass in the arguments, e.g.::
 
     POST /index.php/apps/myapp/authors
@@ -210,7 +214,8 @@ It is possible to pass JSON using a POST, PUT or PATCH request. To do that the *
     }
 
 Reading headers, files, cookies and environment variables
----------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Headers, files, cookies and environment variables can be accessed directly from the request object:
 
 .. code-block:: php
@@ -236,7 +241,8 @@ Why should those values be accessed from the request object and not from the glo
 
 
 Reading and writing session variables
--------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 To set, get or modify session variables, the ISession object has to be injected into the controller.
 
 Then session variables can be accessed like this:
@@ -277,7 +283,8 @@ Then session variables can be accessed like this:
 
 
 Setting cookies
----------------
+^^^^^^^^^^^^^^^
+
 Cookies can be set or modified directly on the response class:
 
 .. code-block:: php
@@ -318,11 +325,13 @@ Cookies can be set or modified directly on the response class:
 
 
 Responses
-=========
+---------
+
 Similar to how every controller receives a request object, every controller method has to return a Response. This can be in the form of a Response subclass or in the form of a value that can be handled by a registered responder.
 
 JSON
-----
+^^^^
+
 Returning JSON is simple, just pass an array to a JSONResponse:
 
 .. code-block:: php
@@ -362,7 +371,8 @@ Because returning JSON is such a common task, there's even a shorter way to do t
 Why does this work? Because the dispatcher sees that the controller did not return a subclass of a Response and asks the controller to turn the value into a Response. That's where responders come in.
 
 Responders
-----------
+^^^^^^^^^^
+
 Responders are short functions that take a value and return a response. They are used to return different kinds of responses based on a **format** parameter which is supplied by the client. Think of an API that is able to return both XML and JSON depending on if you call the URL with::
 
     ?format=xml
@@ -447,7 +457,8 @@ Because returning values works fine in case of a success but not in case of fail
 
 
 Templates
----------
+^^^^^^^^^
+
 A :doc:`template <templates>` can be rendered by returning a TemplateResponse. A TemplateResponse takes the following parameters:
 
 * **appName**: tells the template engine in which app the template should be located
@@ -481,7 +492,8 @@ A :doc:`template <templates>` can be rendered by returning a TemplateResponse. A
     }
 
 Redirects
----------
+^^^^^^^^^
+
 A redirect can be achieved by returning a RedirectResponse:
 
 .. code-block:: php
@@ -501,7 +513,8 @@ A redirect can be achieved by returning a RedirectResponse:
     }
 
 Downloads
----------
+^^^^^^^^^
+
 A file download can be triggered by returning a DownloadResponse:
 
 .. code-block:: php
@@ -524,7 +537,8 @@ A file download can be triggered by returning a DownloadResponse:
     }
 
 Creating custom responses
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
 If no premade Response fits the needed usecase, it is possible to extend the Response base class and custom Response. The only thing that needs to be implemented is the **render** method which returns the result as string.
 
 Creating a custom XMLResponse class could look like this:
@@ -554,7 +568,7 @@ Creating a custom XMLResponse class could look like this:
     }
 
 Streamed and lazily rendered responses
---------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 By default all responses are rendered at once and sent as a string through middleware. In certain cases this is not a desirable behavior, for instance if you want to stream a file in order to save memory. To do that use the now available **OCP\\AppFramework\\Http\\StreamResponse** class:
 
@@ -598,7 +612,7 @@ If you want to use a custom, lazily rendered response simply implement the inter
 .. note:: Because this code is rendered after several usually built in helpers, you need to take care of errors and proper HTTP caching by yourself.
 
 Modifying the Content Security Policy
--------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 By default Nextcloud disables all resources which are not served on the same domain, forbids cross domain requests and disables inline CSS and JavaScript by setting a `Content Security Policy <https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy>`_. However if an app relies on third-party media or other features which are forbidden by the current policy the policy can be relaxed.
 
@@ -650,7 +664,8 @@ The following policy for instance allows images, audio and videos from other dom
 
 
 OCS
----
+^^^
+
 .. note:: This is purely for compatibility reasons. If you are planning to offer an external API, go for a :doc:`api` instead.
 
 In order to ease migration from OCS API routes to the App Framework, an additional controller and response have been added. To migrate your API you can use the **OCP\\AppFramework\\OCSController** base class and return your data in the form of a DataResponse in the following way:
@@ -702,7 +717,8 @@ Inside these are normal routes.
 Now your method will be reachable via ``<server>/ocs/v2.php/apps/<APPNAME>/api/v1/shares``
 
 Handling errors
----------------
+^^^^^^^^^^^^^^^
+
 Sometimes a request should fail, for instance if an author with id 1 is requested but does not exist. In that case use an appropriate `HTTP error code <https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error>`_ to signal the client that an error occurred.
 
 Each response subclass has access to the **setStatus** method which lets you set an HTTP status code. To return a JSONResponse signaling that the author with id 1 has not been found, use the following code:
@@ -730,7 +746,8 @@ Each response subclass has access to the **setStatus** method which lets you set
     }
 
 Authentication
-==============
+--------------
+
 By default every controller method enforces the maximum security, which is:
 
 * Ensure that the user is admin
@@ -769,7 +786,8 @@ A controller method that turns off all checks would look like this:
     }
 
 Rate limiting
-=============
+-------------
+
 Nextcloud supports rate limiting on a controller method basis. By default controller methods are not rate limited. Rate limiting should be used on expensive or security sensitive functions (e.g. password resets) to increase the overall security of your application.
 
 The native rate limiting will return a 429 status code to clients when the limit is reached and a default Nextcloud error page. When implementing rate limiting in your application, you should thus consider handling error situations where a 429 is returned by Nextcloud.
@@ -802,7 +820,7 @@ A controller method that would allow five requests for logged-in users and one r
     }
 
 Brute-force protection
-======================
+----------------------
 
 Nextcloud supports brute-force protection on an action basis. By default controller methods are not protected. Brute-force protection should be used on security sensitive functions (e.g. login attempts) to increase the overall security of your application.
 

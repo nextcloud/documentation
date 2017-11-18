@@ -41,7 +41,8 @@ The config that allows the app to set global, app and user settings can be injec
     }
 
 System values
-=============
+-------------
+
 System values are saved in the :file:`config/config.php` and allow the app to modify and read the global configuration: 
 
 .. code-block:: php
@@ -74,7 +75,8 @@ System values are saved in the :file:`config/config.php` and allow the app to mo
 
 
 App values
-==========
+----------
+
 App values are saved in the database per app and are useful for setting global app settings: 
 
 .. code-block:: php
@@ -106,7 +108,8 @@ App values are saved in the database per app and are useful for setting global a
     }
 
 User values
-===========
+-----------
+
 User values are saved in the database per user and app and are good for saving user specific app settings: 
 
 .. code-block:: php

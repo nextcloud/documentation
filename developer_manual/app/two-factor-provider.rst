@@ -10,7 +10,8 @@ code was taken from the `two-factor test app`_.
 .. _`two-factor test app`: https://github.com/ChristophWurst/twofactor_test
 
 Implementing a simple two-factor auth provider
-==============================================
+----------------------------------------------
+
 Two-factor auth providers must implement the ``OCP\Authentication\TwoFactorAuth\IProvider`` interface. The
 example below shows a minimalistic example of such a provider.
 
@@ -94,7 +95,8 @@ example below shows a minimalistic example of such a provider.
 	}
 
 Registering a two-factor auth provider
-======================================
+--------------------------------------
+
 You need to inform the Nextcloud core that the app provides two-factor auth functionality. Two-factor
 providers are registered via ``info.xml``.
 

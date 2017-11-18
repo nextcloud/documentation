@@ -68,7 +68,8 @@ The hook logic should be in a separate class that is being registered in the :do
     }
 
 Available hooks
-===============
+---------------
+
 The scope is the first parameter that is passed to the **listen** method, the second parameter is the method and the third one the callback that should be executed once the hook is being called, e.g.:
 
 .. code-block:: php
@@ -95,7 +96,8 @@ Hooks can also be removed by using the **removeListener** method on the object:
 The following hooks are available:
 
 Session
--------
+^^^^^^^
+
 Injectable from the ServerContainer by calling the method **getUserSession()**. 
 
 Hooks available in scope **\\OC\\User**:
@@ -112,7 +114,8 @@ Hooks available in scope **\\OC\\User**:
 * **logout** ()
 
 UserManager
------------
+^^^^^^^^^^^
+
 Injectable from the ServerContainer by calling the method **getUserManager()**. 
 
 Hooks available in scope **\\OC\\User**:
@@ -125,7 +128,8 @@ Hooks available in scope **\\OC\\User**:
 * **postCreateUser** (\\OC\\User\\User $user, string $password)
 
 GroupManager
-------------
+^^^^^^^^^^^^
+
 Hooks available in scope **\\OC\\Group**:
 
 * **preAddUser** (\\OC\\Group\\Group $group, \\OC\\User\\User $user)
@@ -138,7 +142,8 @@ Hooks available in scope **\\OC\\Group**:
 * **postCreate** (\\OC\\Group\\Group $group)
 
 Filesystem Root
----------------
+^^^^^^^^^^^^^^^
+
 Injectable from the ServerContainer by calling the method **getRootFolder()**, **getUserFolder()** or **getAppFolder()**.
 
 Filesystem hooks available in scope **\\OC\\Files**:
@@ -157,7 +162,8 @@ Filesystem hooks available in scope **\\OC\\Files**:
 * **postRename** (\\OCP\\Files\\Node $source, \\OCP\\Files\\Node $target)
 
 Filesystem Scanner
-------------------
+^^^^^^^^^^^^^^^^^^
+
 Filesystem scanner hooks available in scope **\\OC\\Files\\Utils\\Scanner**:
 
 * **scanFile** (string $absolutePath)

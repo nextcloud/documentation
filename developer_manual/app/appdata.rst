@@ -35,7 +35,7 @@ Usage is almost trivial when your app is using the AppFramework.
 This gives your controller access to the IAppData simple filesystem of your app.
 
 The Simple Filesystem
-=====================
+---------------------
 
 The `IAppData` uses the simple filesystem. This is a very simplified filesystem that will allow for easy
 mapping to for example memcaches. The filesystem has three elements: `root`, `folder`, `file`.

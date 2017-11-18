@@ -16,7 +16,8 @@ you can enable and configure it in :doc:`userpreferences`. Below you can
 see how.
 
 Configuring two-factor authentication
-=====================================
+-------------------------------------
+
 In your Personal Settings look up the Second-factor Auth setting. In this
 example this is TOTP, a Google Authenticator compatible time based code.
 
@@ -29,7 +30,8 @@ code or scan the QR and your device will show a login code which changes
 every 30 seconds.
 
 Recovery codes in case you lost your 2nd factor
-===============================================
+-----------------------------------------------
+
 You should always generate backup codes for 2FA. If your 2nd factor device
 gets stolen or is not working, you will be able to use one of these codes to
 unlock your account. It effectively functions as a backup 2nd factor. To
@@ -50,7 +52,8 @@ if you lose one, you still have the other. Keeping them at home is probably
 the best thing to do.
 
 Logging in with two-factor authentication
-=========================================
+-----------------------------------------
+
 After you have logged out and need to log in again, you will see a request to
 enter the TOTP code in your browser. Just enter your code:
   
@@ -64,7 +67,8 @@ If the code was correct you will be redirected to your Nextcloud account.
   won’t be a problem.
 
 Using client applications with two-factor authentication
-========================================================
+--------------------------------------------------------
+
 Once you have enabled 2FA, your clients will no longer be able to connect with
 just your password unless they also have support for two-factor authentication.
 To solve this, you should generate device specific passwords for them. See 

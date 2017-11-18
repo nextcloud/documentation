@@ -2,9 +2,9 @@
 .. codeauthor:: John Molakvoæ <skjnldsv@protonmail.com>
 ..  _settings:
 
-===============
+========
 Settings
-===============
+========
 
 To create a settings area create a div with the id ``app-settings`` inside the ``app-navigation`` div.
 

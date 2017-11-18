@@ -6,7 +6,8 @@ The personal settings page allows you to have an overview on the connected
 browsers and devices.
 
 Managing Connected Browsers
-===========================
+---------------------------
+
 In the list of connected browsers you see which browsers connected to your
 account recently:
 
@@ -16,7 +17,8 @@ account recently:
 You can use the trash icon to disconnect any of the browsers in the list.
 
 Managing Devices
-================
+----------------
+
 In the list of connected devices you see all the devices and clients you
 generated a device password for and their last activity:
 

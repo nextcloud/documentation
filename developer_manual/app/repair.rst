@@ -11,7 +11,8 @@ steps because they are frequently used to fix things automatically.
 
 
 Creating a repair step
-======================
+----------------------
+
 A repair step is an implementation of the  ``OCP\Migration\IRepairStep`` interface.
 By convention these classes are placed in the **lib/Migration** directory.
 The following repairstep will log a message when executed.
@@ -50,7 +51,8 @@ The following repairstep will log a message when executed.
   }
 
 Outputting information
-~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^
+
 A repair step can generate information while running, using the
 ``OCP\Migration\IOutput`` parameter to the ``run`` method.
 Using the ``info`` and ``warning`` methods a message can be shown in the console.
@@ -78,7 +80,8 @@ The following function will sleep for 10 seconds and show the progress:
   }
 
 Register a repair-step
-======================
+----------------------
+
 To register a repair-step in Nextcloud you have to define the repair-setp in the ``info.xml``
 file. The following example registers a repair-step which will be executed after installation
 of the app:
@@ -101,7 +104,8 @@ of the app:
 
 
 Repair-step types
-=================
+-----------------
+
 The following repair steps are available:
 
 * ``install`` This repair step will be executed when installing the app. This means it is executed every time the app is enabled (using the Web interface or the CLI).

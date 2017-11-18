@@ -26,7 +26,7 @@ The route array contains the following parts:
 * **defaults** (Optional): If this setting is given, a default value will be assumed for each URL parameter which is not present. The default values are passed in as a key => value par array
 
 Extracting values from the URL
-==============================
+------------------------------
 
 It is possible to extract values from the URL to allow RESTful URL design. To extract a value, you have to wrap it inside curly braces:
 
@@ -53,7 +53,8 @@ The identifier used inside the route is being passed into controller method by r
 .. _matching-suburls:
 
 Matching subURLs
-================
+----------------
+
 Sometimes it is needed to match more than one URL fragment. An example would be to match a request for all URLs that start with **OPTIONS /index.php/apps/myapp/api**. To do this, use the **requirements** parameter in your route which is an array containing pairs of **'key' => 'regex'**:
 
 .. code-block:: php
@@ -76,7 +77,8 @@ Sometimes it is needed to match more than one URL fragment. An example would be 
     }
 
 Default values for subURL
-==========================
+-------------------------
+
 Apart from matching requirements, a subURL may also have a default value. Say you want to support pagination (a 'page' parameter) for your **/posts** subURL that displays posts entries list. You may set a default value for the 'page' parameter, that will be used if not already set in the URL. Use the **defaults** parameter in your route which is an array containing pairs of **'urlparameter' => 'defaultvalue'**:
 
 .. code-block:: php
@@ -103,7 +105,8 @@ Apart from matching requirements, a subURL may also have a default value. Say yo
     }
 
 Registering resources
-=====================
+---------------------
+
 When dealing with resources, writing routes can become quite repetitive since most of the time routes for the following tasks are needed:
 
 * Get all entries
@@ -143,7 +146,8 @@ can be abbreviated by using the **resources** key:
     ];
 
 Using the URLGenerator
-========================
+----------------------
+
 Sometimes it is useful to turn a route into a URL to make the code independent from the URL design or to generate a URL for an image in **img/**. Inside the PageController the URL generator can be injected by adding it to the constructor, which will allow to use it to generate a URL for a redirect. For more details on that see the :ref:`dependency-injection` reference.
 
 .. code-block:: php

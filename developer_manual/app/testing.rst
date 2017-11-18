@@ -9,7 +9,8 @@ All PHP classes can be tested with `PHPUnit <http://phpunit.de/>`_, JavaScript c
 
 
 PHP
-===
+---
+
 The PHP tests go into the **tests/** directory and PHPUnit can be run with::
 
     phpunit tests/

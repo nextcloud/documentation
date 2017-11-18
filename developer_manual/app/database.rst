@@ -42,7 +42,8 @@ Inside your database layer class you can now start running queries like:
 
 
 Mappers
-=======
+-------
+
 The aforementioned example is the most basic way to write a simple database query but the more queries amass, the more code has to be written and the harder it will become to maintain it.
 
 To generalize and simplify the problem, split code into resources and create an **Entity** and a **Mapper** class for it. The mapper class provides a way to run SQL queries and maps the result onto the related entities.
@@ -89,7 +90,7 @@ To create a mapper, inherit from the mapper base class and call the parent const
 
 
         public function authorNameCount($name) {
-            $sql = 'SELECT COUNT(*) AS `count` FROM `*PREFIX*myapp_authors` ' .
+            $sql = 'SELECT COUNT(*) AS `count` FROM `PREFIXmyapp_authors` ' .
                 'WHERE `name` = ?';
             $stmt = $this->execute($sql, [$name]);
 
@@ -113,7 +114,8 @@ or::
 
 
 Entities
-========
+--------
+
 Entities are data objects that carry all the table's information for one row. Every Entity has an **id** field by default that is set to the integer type. Table rows are mapped from lower case and underscore separated names to *lowerCamelCase* attributes:
 
 * **Table column name**: phone_number
@@ -140,7 +142,8 @@ Entities are data objects that carry all the table's information for one row. Ev
     }
 
 Types
------
+^^^^^
+
 The following properties should be annotated by types, to not only assure that the types are converted correctly for storing them in the database (e.g. PHP casts false to the empty string which fails on PostgreSQL) but also for casting them when they are retrieved from the database.
 
 The following types can be added for a field:
@@ -150,7 +153,8 @@ The following types can be added for a field:
 * boolean
 
 Accessing attributes
---------------------
+^^^^^^^^^^^^^^^^^^^^
+
 Since all attributes should be protected, getters and setters are automatically generated for you:
 
 
@@ -173,7 +177,7 @@ Since all attributes should be protected, getters and setters are automatically 
     $author->getPhoneNumber()  // null
 
 Custom attribute to database column mapping
--------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 By default each attribute will be mapped to a database column by a certain convention, e.g. **phoneNumber**
 will be mapped to the column **phone_number** and vice versa. Sometimes it is needed though to map attributes to
@@ -215,7 +219,8 @@ mapping, simply override the **columnToProperty** and **propertyToColumn** metho
 
 
 Slugs
------
+^^^^^
+
 Slugs are used to identify resources in the URL by a string rather than integer id. Since the URL allows only certain values, the entity base class provides a slugify method for it:
 
 .. code-block:: php
