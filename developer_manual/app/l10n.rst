@@ -7,7 +7,8 @@ Translation
 Nextcloud's translation system is powered by `Transifex <https://www.transifex.com/nextcloud/>`_. To start translating sign up and enter a group. If your community app should be added to Transifex contact one of the translation teams `in the forums <https://help.nextcloud.com/c/translations>`_ to set it up for you.
 
 PHP
-===
+---
+
 Should it ever be needed to use localized strings on the server-side, simply inject the L10N service from the ServerContainer into the needed constructor:
 
 
@@ -86,7 +87,8 @@ Strings can then be translated in the following way:
 
 
 Templates
-=========
+---------
+
 In every template the global variable **$l** can be used to translate the strings using its methods **t()** and **n()**:
 
 .. code-block:: php
@@ -96,7 +98,8 @@ In every template the global variable **$l** can be used to translate the string
     <button><?php p($l->t('Hide')); ?></button>
 
 JavaScript
-==========
+----------
+
 There is a global function **t()** available for translating strings. The first argument is your app name, the second argument is the string to translate.
 
 .. code-block:: js
@@ -106,7 +109,8 @@ There is a global function **t()** available for translating strings. The first 
 For advanced usage, refer to the source code **core/js/l10n.js**; **t()** is bind to **OC.L10N.translate()**.
 
 Hints
-=====
+-----
+
 In case some translation strings may be translated wrongly because they have multiple meanings, you can add hints which will be shown in the Transifex web-interface:
 
 .. code-block:: php
@@ -121,7 +125,7 @@ In case some translation strings may be translated wrongly because they have mul
     </ul>
 
 Creating your own translatable files
-====================================
+------------------------------------
 
 If Transifex is not the right choice or the app is not accepted for translation,
 generate the gettext strings by yourself by creating an :file:`l10n/` directory

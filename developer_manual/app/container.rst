@@ -14,7 +14,8 @@ If you are unfamiliar with this pattern, watch the following videos:
 .. _dependency-injection:
 
 Dependency Injection
-====================
+--------------------
+
 Dependency Injection sounds pretty complicated but it just means: Don't put new dependencies in your constructor or methods but pass them in. So this:
 
 .. code-block:: php
@@ -51,7 +52,8 @@ would turn into this by using Dependency Injection:
 
 
 Using a container
-=================
+-----------------
+
 Passing dependencies into the constructor rather than instantiating them in the constructor has the following drawback: Every line in the source code where **new AuthorMapper** is being used has to be changed, once a new constructor argument is being added to it.
 
 The solution for this particular problem is to limit the **new AuthorMapper** to one file, the container. The container contains all the factories for creating these objects and is configured in :file:`lib/AppInfo/Application.php`.
@@ -114,7 +116,7 @@ To add the app's classes simply open the :file:`lib/AppInfo/Application.php` and
   }
 
 How the container works
-=======================
+-----------------------
 
 The container works in the following way:
 
@@ -154,12 +156,13 @@ So basically the container is used as a giant factory to build all the classes t
 
 
 Use automatic dependency assembly (recommended)
-===============================================
+-----------------------------------------------
 
 In Nextcloud it is possible to omit the **lib/AppInfo/Application.php** and use automatic dependency assembly instead.
 
 How does automatic assembly work
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Automatic assembly creates new instances of classes just by looking at the class name and its constructor parameters. For each constructor parameter the type or the variable name is used to query the container, e.g.:
 
 * **SomeType $type** will use **$container->query('SomeType')**
@@ -198,7 +201,7 @@ So basically the following is now possible:
 .. note:: $AppName is resolved because the container registered a parameter under the key 'AppName' which will return the app id. The lookup is case sensitive so while $AppName will work correctly, using $appName as a constructor parameter will fail.
 
 How does it affect the request lifecycle
-----------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * A request comes in
 * All apps' **routes.php** files are loaded
@@ -211,7 +214,8 @@ How does it affect the request lifecycle
 * If the entry does not exist, the container is queried for OCA\\AppName\\Controller\\PageController and if no entry exists, the container tries to create the class by using reflection on its constructor parameters
 
 How does this affect controllers
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 The only thing that needs to be done to add a route and a controller method is now:
 
 **myapp/appinfo/routes.php**
@@ -244,7 +248,8 @@ There is no need to wire up anything in **lib/AppInfo/Application.php**. Everyth
 
 
 How to deal with interface and primitive type parameters
---------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Interfaces and primitive types can not be instantiated, so the container can not automatically assemble them. The actual implementation needs to be wired up in the container:
 
 .. code-block:: php
@@ -275,7 +280,8 @@ Interfaces and primitive types can not be instantiated, so the container can not
   }
 
 Predefined core services
-------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^
+
 The following parameter names and type hints can be used to inject core services instead of using **$container->getServer()->getServiceX()**
 
 Parameters:
@@ -322,7 +328,8 @@ Types:
 * **OCP\\IUserSession**
 
 How to enable it
-----------------
+^^^^^^^^^^^^^^^^
+
 To make use of this new feature, the following things have to be done:
 
 * **appinfo/info.xml** requires to provide another field called **namespace** where the namespace of the app is defined. The required namespace is the one which comes after the top level namespace **OCA\\**, e.g.: for **OCA\\MyBeautifulApp\\Some\\OtherClass** the needed namespace would be **MyBeautifulApp** and would be added to the info.xml in the following way:
@@ -348,7 +355,8 @@ To make use of this new feature, the following things have to be done:
 .. note:: A namespace tag is required because you can not deduce the namespace from the app id
 
 Which classes should be added
-=============================
+-----------------------------
+
 In general all of the app's controllers need to be registered inside the container. Then the following question is: What goes into the constructor of the controller? Pass everything into the controller constructor that matches one of the following criteria:
 
 * It does I/O (database, write/read to files)

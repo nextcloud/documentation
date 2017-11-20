@@ -1,3 +1,4 @@
+===================
 Development process
 ===================
 
@@ -14,7 +15,7 @@ The following list shows what the labels mean in the life-cycle and will
 hopefully help you decide how to label an issue.
 
 Backlog
-~~~~~~~
+^^^^^^^
 
 Why do we have it?
   To keep us focused on finishing issues that we started, new issues will be
@@ -38,7 +39,7 @@ Who is Assigned?
   to determine the responsible developer.
 
 Concept
-~~~~~~~
+^^^^^^^
 
 Why do we have it?
   Our think before you act phase serves two purposes. A Bug is in the concept
@@ -67,7 +68,7 @@ Who is Assigned?
   The maintainer that feels responsible for the issue.
 
 To Develop
-~~~~~~~~~~
+^^^^^^^^^^
 
 Why do we have it?
   Now that we have a plan, any developer can pick an issue from this column and
@@ -90,7 +91,7 @@ Who is Assigned?
   No one. Especially not if you are working on something else!
 
 Developing
-~~~~~~~~~~
+^^^^^^^^^^
 
 Why do we have it?
   This is where the magic happens. If it’s a Bug the fix will be submitted as a
@@ -115,7 +116,7 @@ Who is Assigned?
   The most active developer should assign himself.
 
 To Review
-~~~~~~~~~
+^^^^^^^^^
 
 Why do we have it?
   Instead of directly committing to master we agree that **a second set of eyes
@@ -138,7 +139,7 @@ Who is Assigned?
   No one. Especially not if you are working on something else!
 
 Reviewing
-~~~~~~~~~
+^^^^^^^^^
 
 Why do we have it?
   With the Gherkin Scenario from the Concept Phase reviewers have a checklist to
@@ -163,7 +164,7 @@ Who is Assigned?
   The most active reviewer should assign himself.
 
 To Release
-~~~~~~~~~~
+^^^^^^^^^^
 
 Why do we have it?
   This is a list of issues that will make it into the next release. It serves
@@ -202,7 +203,7 @@ Other Labels
 ------------
 
 Priority Labels
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
 
 * Panic should be used with caution. It is reserved for Bugs that would result
   in the loss of files or other user data. An Enhancement marked as Panic is
@@ -223,21 +224,21 @@ Priority Labels
   it to the developer in charge of that part.
 
 App Labels
-~~~~~~~~~~
+^^^^^^^^^^
 
 In the apps repository there are labels like ``app:gallery`` and
 ``app:calendar``. The ``app:`` prefix is used to allow developers to filter
 issues related to a specific app.
 
 Resolution Status
-~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^
 
 * Fixed – Should be assigned to issues in to Release
 * Won’t fix – Reason is given as a comment
 * Duplicate – Corresponding bug is given in a comment (using #guthubissuenumber)
 
 Misc Labels
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 * Needs info – Either from a developer or the bug reporter. This is nearly as
   severe as Panic, because no further action can be taken

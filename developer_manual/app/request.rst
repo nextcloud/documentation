@@ -14,7 +14,8 @@ A typical HTTP request consists of the following:
 The following sections will present an overview over how that request is being processed to provide an in depth view over how Nextcloud works. If you are not interested in the internals or don't want to execute anything before and after your controller, feel free to skip this section and continue directly with defining :doc:`your app's routes <routes>`.
 
 Front controller
-================
+----------------
+
 In the beginning, all requests are sent to Nextcloud's :file:`index.php` which in turn executes :file:`lib/base.php`. This file inspects the HTTP headers, abstracts away differences between different Web servers and initializes the basic classes. Afterwards the basic apps are being loaded in the following order:
 
 * Authentication backends
@@ -31,11 +32,13 @@ Afterwards the following steps are performed:
 * Execute the router
 
 Router
-======
+------
+
 The router parses the :doc:`app's routing files <routes>` (:file:`appinfo/routes.php`), inspects the request's **method** and **url**, queries the controller from the :doc:`container` and then passes control to the dispatcher. The dispatcher is responsible for running the hooks (called Middleware) before and after the controller, executing the controller method and rendering the output.
 
 Middleware
-==========
+----------
+
 A :doc:`Middleware <middleware>` is a convenient way to execute common tasks such as custom authentication before or after a :doc:`controller method <controllers>` is being run. You can execute code at the following locations:
 
 * before the call of the controller method
@@ -44,11 +47,12 @@ A :doc:`Middleware <middleware>` is a convenient way to execute common tasks suc
 * before the output is rendered
 
 Container
-=========
+---------
+
 The :doc:`container` is the place where you define all of your classes and in particular all of your controllers. The container is responsible for assembling all of your objects (instantiating your classes) that should only have one single instance without relying on globals or singletons. If you want to know more about why you should use it and what the benefits are, read up on the topic in :doc:`container`.
 
 Controller
-==========
+----------
 
 The :doc:`controller <controllers>` contains the code that you actually want to run after a request has come in. Think of it like a callback that is executed if everything before went fine. 
 

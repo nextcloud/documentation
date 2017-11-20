@@ -1,3 +1,4 @@
+============
 Unit-Testing
 ============
 
@@ -5,7 +6,7 @@ PHP unit testing
 ----------------
 
 Getting PHPUnit
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
 
 Nextcloud uses PHPUnit >= 4.8 for unit testing.
 
@@ -30,7 +31,7 @@ And you can update it using::
 You can find more information in the PHPUnit documentation: https://phpunit.de/manual/current/en/installation.html
 
 Writing PHP unit tests
-~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^
 
 To get started, do the following:
  - Create a directory called ``tests`` in the top level of your application
@@ -92,7 +93,7 @@ so the next test can run without side effects, like remaining files and entries 
 For more resources on PHPUnit visit: http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html
 
 Bootstrapping Nextcloud
-~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^
 If you use Nextcloud functions or classes in your code, you'll need to make them available to your test by bootstrapping Nextcloud.
 
 To do this, you'll need to provide the ``--bootstrap`` argument when running PHPUnit:
@@ -115,7 +116,7 @@ adjust your php.ini and file rights.
   su -c "chmod a+w data/nextcloud.log"
 
 Running unit tests for the Nextcloud core project
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The core project provides a script that runs all the core unit tests using different database backends like sqlite, mysql, pgsql, oci (for Oracle)::
 
   ./autotest.sh
@@ -129,7 +130,7 @@ To run a specific test suite (note that the test file path is relative to the "t
   ./autotest.sh sqlite lib/share/share.php
 
 Further Reading
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
 - http://googletesting.blogspot.de/2008/08/by-miko-hevery-so-you-decided-to.html
 - http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html
 - http://www.youtube.com/watch?v=4E4672CS58Q&feature=bf_prev&list=PLBDAB2BA83BB6588E
@@ -141,7 +142,7 @@ JavaScript unit testing for core
 JavaScript Unit testing for **core** and **core apps** is done using the `Karma <http://karma-runner.github.io>`_ test runner with `Jasmine <https://jasmine.github.io/>`_.
 
 Installing Node JS
-~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^
 
 To run the JavaScript unit tests you will need to install **Node JS**.
 
@@ -151,7 +152,7 @@ After that you will need to setup the **Karma** test environment.
 The easiest way to do this is to run the automatic test script first, see next section.
 
 Running all tests
-~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^
 
 To run all tests, just run::
 
@@ -160,7 +161,7 @@ To run all tests, just run::
 This will also automatically set up your test environment.
 
 Debugging tests in the browser
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To debug tests in the browser, you need to run **Karma** in browser mode::
 
@@ -175,14 +176,14 @@ An empty page will appear, from which you must open the browser console (F12 in 
 Every time you reload the page, the unit tests will be relaunched and will output the results in the browser console.
 
 Unit test paths
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
 
 JavaScript unit test examples can be found in :file:`apps/files/tests/js/`.
 
 Unit tests for the core app JavaScript code can be found in :file:`core/js/tests/specs`.
 
 Documentation
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
 
 Here are some useful links about how to write unit tests with Jasmine and Sinon:
 

@@ -1,3 +1,4 @@
+===================
 Security Guidelines
 ===================
 
@@ -11,6 +12,7 @@ This guideline highlights some of the most common security problems and how to p
 
 SQL Injection
 -------------
+
 `SQL Injection <http://en.wikipedia.org/wiki/SQL_injection>`_ occurs when SQL query strings are concatenated with variables.
 
 To prevent this, always use prepared queries:
@@ -43,7 +45,7 @@ Despite the fact that Nextcloud uses Content-Security-Policy to prevent the exec
 To prevent XSS in your app you have to sanitize the templates and all JavaScripts which performs a DOM manipulation.
 
 Templates
-~~~~~~~~~
+^^^^^^^^^
 
 Let's assume you use the following example in your application:
 
@@ -68,7 +70,7 @@ To prevent XSS in your app, **never use echo, print() or <\%=** - use **p()** in
 .. note:: Should you ever require to print something unescaped, double check if it is really needed. If there is no other way (e.g. when including of subtemplates) use `print_unescaped`  with care.
 
 JavaScript
-~~~~~~~~~~
+^^^^^^^^^^
 
 Avoid manipulating the HTML directly via JavaScript, this often leads to XSS since people often forget to sanitize variables:
 
@@ -109,6 +111,7 @@ This is already built into Nextcloud if :php:class:`OC_Template`.
 
 Code executions / File inclusions
 ---------------------------------
+
 Code Execution means that an attacker is able to include an arbitrary PHP file. This PHP file runs with all the privileges granted to the normal application and can do an enormous amount of damage.
 
 Code executions and file inclusions can be easily prevented by **never** allowing user-input to run through the following functions:
@@ -132,6 +135,7 @@ Code executions and file inclusions can be easily prevented by **never** allowin
 
 Directory Traversal
 -------------------
+
 Very often developers forget about sanitizing the file path (removing all \\ and /), this allows an attacker to traverse through directories on the server which opens several potential attack vendors including privilege escalations, code executions or file disclosures.
 
 **DON'T**
@@ -211,6 +215,7 @@ Always store user data or configuration files in safe locations, e.g. **nextclou
 
 Cross site request forgery
 --------------------------
+
 Using `CSRF <http://en.wikipedia.org/wiki/Cross-site_request_forgery>`_ one can trick a user into executing a request that he did not want to make. Thus every POST and GET request needs to be protected against it. The only places where no CSRF checks are needed are in the main template, which is rendering the application, or in externally callable interfaces.
 
 .. note:: Submitting a form is also a POST/GET request!
@@ -226,6 +231,7 @@ If you are using the App Framework, every controller method is automatically che
 
 Unvalidated redirects
 ---------------------
+
 This is more of an annoyance than a critical security vulnerability since it may be used for social engineering or phishing.
 
 Always validate the URL before redirecting if the requested URL is on the same domain or an allowed resource.
@@ -246,4 +252,5 @@ Always validate the URL before redirecting if the requested URL is on the same d
 
 Getting help
 ------------
+
 If you need help to ensure that a function is secure please ask on our `forum <https://help.nextcloud.com>`_ or on our IRC channel **#nextcloud-dev** on **irc.freenode.net**.

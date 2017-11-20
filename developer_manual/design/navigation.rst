@@ -7,7 +7,7 @@ App Navigation
 ===============
 
 Introduction
-=============
+------------
 
 The main navigation menu represents the main navigation of your app.
 
@@ -22,7 +22,7 @@ We implemented various essential functions and provide easy way of using them.
 
 
 Basic layout
-=============
+------------
 
 .. figure:: ../images/navigation.png
    :alt: Navigation screenshot
@@ -45,14 +45,14 @@ Basic layout
 
 
 Basic rules
-=============
+-----------
 
 * You can **not** change the default padding of the navigation elements.
 * We encourage you to add icons on every top-level item of your navigation for accessibility.
 * Do **not** override the default structure and/or CSS. Everything has been carefully tuned.
 
 Utils: menu, counter & buttons
-===============================
+------------------------------
 
 Each entry is allowed to have a counter and/or a button for user interaction.
 
@@ -77,7 +77,7 @@ Each entry is allowed to have a counter and/or a button for user interaction.
 .. _navigation_menu:
 
 Menu
-^^^^^^
+^^^^
 
 If you need to add a few interactions for your entry, you can put everything in a popover menu.
 The menu needs to be placed after the ``app-navigation-entry-utils``.
@@ -150,7 +150,7 @@ In case of AngularJS the following small directive can be added to handle all th
 .. _navigation_counter:
 
 Counter
-^^^^^^^^
+^^^^^^^
 
 If you need to add a counter to your menu entry, you can simply use this structure.
 Do not change the alignment of the text. If you're using
@@ -186,7 +186,7 @@ Use it like this:
 .. _navigation_buttons:
 
 Buttons
-^^^^^^^^^
+^^^^^^^
 
 The same way we display the menu three-dot-icon button, you're allowed to use up to 2 buttons in a single entry.
 
@@ -211,7 +211,8 @@ The same way we display the menu three-dot-icon button, you're allowed to use up
     </div>
 
 Drag and drop
-==============
+-------------
+
 The class which should be applied to a first level element **li** that hosts or can host a second level is **drag-and-drop**.
 This will cause the hovered entry to slide down giving a visual hint that it can accept the dragged element.
 In case of jQuery UI's droppable feature, the **hoverClass** option should be set to the **drag-and-drop** class.
@@ -232,7 +233,7 @@ In case of jQuery UI's droppable feature, the **hoverClass** option should be se
     </div>
 
 Collapsible entry
-==================
+-----------------
 
 By default, all sub-entries are shown.
 This behavior can be changed by creating a collapsible menu.
@@ -272,7 +273,7 @@ The opening of the menu is activated and animated by the class ``open`` on the m
     </li>
 
 Entry bullet
-=============
+------------
 
 Every entry can have a colored marker in front of it.
 We call it a `bullet`.
@@ -292,7 +293,7 @@ We call it a `bullet`.
     </li>
 
 Undo entry
-===========
+----------
 
 * Undo entries can be used on any level you want.
 * When an entry is deleted, please use the usual **7 seconds delay feedback** before final deletion.
@@ -321,7 +322,7 @@ Undo entry
     </li>
 
 Edit entry
-===========
+----------
 
 * Editable entries can be used on any level you want.
 * You can replace the ``form`` by a ``div`` if you wish to do your request with JS.
@@ -354,7 +355,7 @@ Edit entry
     </li>
 
 Pinned entry
-=============
+------------
 
 Every top-level entry can be `pinned` at the bottom.
 
@@ -381,8 +382,8 @@ Every top-level entry can be `pinned` at the bottom.
         <li class="pinned"><a href="#">Pinned entry</a></li>
     </ul>
 
-Various informations
-=====================
+Various information
+-------------------
 
 * You can add the ``icon-loading-small`` class to any ``li`` element to set it in a `loading` state.
 * Every element as a ``min-height`` of 44px as that is the minimum recommended touch target. It also helps with clickability and separation on desktop environments.

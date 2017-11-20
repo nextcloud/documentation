@@ -40,7 +40,8 @@ Filesystem classes can be injected from the ServerContainer by calling the metho
     }
 
 Writing to a file
-=================
+-----------------
+
 
 All methods return a Folder object on which files and folders can be accessed, or filesystem operations can be performed relatively to their root. For instance for writing to file:`nextcloud/data/myfile.txt` you should get the root folder and use:
 
@@ -78,7 +79,7 @@ All methods return a Folder object on which files and folders can be accessed, o
     }
 
 Reading from a file
-===================
+-------------------
 
 Files and folders can also be accessed by id, by calling the **getById** method on the folder.
 

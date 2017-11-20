@@ -1,5 +1,6 @@
+==================================================
 Thunderbird - Synchronize Addressbook and Calendar
-=====================================
+==================================================
 
 Addressbook
 -----------
@@ -41,7 +42,7 @@ You'll see your address book populate from Nextcloud!
 The rest of the details of dealing with Thunderbird CardBook are left to the reader... 
 
 Calendar
------------
+--------
 
 - `Thunderbird <https://www.mozilla.org/en-US/thunderbird/>`_ for your OS unless it comes with your OS distribution (Linux)
 - `Lightning <https://addons.mozilla.org/en-US/thunderbird/addon/lightning/>`_ (a Thunderbird calendar add-on.)

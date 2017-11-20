@@ -9,14 +9,14 @@ Development Environment
 Please follow the steps on this page to set up your development environment.
 
 Set up Web server and database
-==============================
+------------------------------
 
 First `set up your Web server and database <https://docs.nextcloud.org/server/12/admin_manual/installation/index.html>`_ (**Section**: Manual Installation - Prerequisites).
 
 .. TODO ON RELEASE: Update version number above on release
 
 Get the source
-==============
+--------------
 
 There are two ways to obtain Nextcloud sources:
 
@@ -28,7 +28,7 @@ There are two ways to obtain Nextcloud sources:
 To check out the source from `GitHub`_ you will need to install Git (see `Setting up Git <https://help.github.com/articles/set-up-git>`_ from the GitHub help)
 
 Gather information about server setup
--------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To get started the basic Git repositories need to cloned into the Web server's directory. Depending on the distribution this will either be
 
@@ -45,7 +45,7 @@ Then identify the user and group the Web server is running as and the Apache use
 * **wwwrun**
 
 Check out the code
-------------------
+^^^^^^^^^^^^^^^^^^
 
 The following commands are using **/var/www** as the Web server's directory and **www-data** as user name and group.
 
@@ -78,7 +78,8 @@ or::
 After the clone Open http://localhost/core (or the corresponding URL) in your web browser to set up your instance.
 
 Enabling debug mode
--------------------
+^^^^^^^^^^^^^^^^^^^
+
 .. _debugmode:
 
 .. note:: Do not enable this for production! This can create security problems and is only meant for debugging and development!
@@ -92,7 +93,7 @@ To disable JavaScript and CSS caching debugging has to be enabled by setting ``d
   );
 
 Keep the code up-to-date
-------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you have more than one repository cloned, it can be time consuming to do the same the action to all repositories one by one. To solve this, you can use the following command template::
 

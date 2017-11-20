@@ -6,7 +6,7 @@ Navigation and Pre-App configuration
 
 
 Adding a navigation entry
-=========================
+-------------------------
 
 Navigation entries for apps can be created by adding a navigation section to the :file:`appinfo/info.xml` file, containing the name, order and route the navigation entry should link to. For details on the XML schema check the `app store documentation <https://nextcloudappstore.readthedocs.io/en/latest/developer.html#info-xml>`_.
 
@@ -20,7 +20,7 @@ Navigation entries for apps can be created by adding a navigation section to the
 
 
 Further pre-app configuration
-=============================
+-----------------------------
 
 The :file:`appinfo/app.php` is the first file that is loaded and executed in Nextcloud. Depending on the purpose of the app it is usually used to setup things that need to be available on every request to the server, like :doc:`backgroundjobs` and :doc:`hooks` registrations. This is how an example :file:`appinfo/app.php` could look like:
 
@@ -45,12 +45,13 @@ Although it is also possible to include :doc:`js` or :doc:`css` for other apps b
     \OCP\Util::addStyle('myapp', 'style');  // include css/style.css for every app
 
 Best practice
-=============
+-------------
+
 A common way to have a cleaner code structure is to create a class Application in :file:`lib/AppInfo/Application.php` that will then execute your setup of hooks or background tasks. You can then just call it in your :file:`appinfo/app.php`. That way you can also make use of Nextclouds dependency injection feature and properly test those methods.
 
 
 appinfo/app.php
----------------
+^^^^^^^^^^^^^^^
 
 .. code-block:: php
 
@@ -61,7 +62,7 @@ appinfo/app.php
 
 
 lib/AppInfo/Application.php
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
 

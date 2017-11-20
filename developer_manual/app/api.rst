@@ -48,7 +48,8 @@ Keep in mind that multiple apps will likely depend on the API interface once it 
     /index.php/apps/myapp/api/1.0/resource
 
 Modifying the CORS headers
-==========================
+--------------------------
+
 By default the following values will be used for the preflighted OPTIONS request:
 
 * **Access-Control-Allow-Methods**: 'PUT, POST, GET, DELETE, PATCH'

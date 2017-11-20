@@ -46,7 +46,7 @@ App Development
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
 Intro
-=====
+-----
 
 Before you start, please check if there already is a similar app in the `App Store <https://apps.nextcloud.com>`_ or the `GitHub organisation <https://github.com/nextcloud/>`_ that you could contribute to. Also, feel free to communicate your idea and plans in the `forum <https://help.nextcloud.com/>`_ so other contributors might join in.
 
@@ -72,7 +72,8 @@ For enhanced security it is also possible to sign your code:
 * :doc:`code_signing`
 
 App development
-===============
+---------------
+
 Take a look at the changes in this version:
 
 * :doc:`changelog`
@@ -88,7 +89,8 @@ Inner parts of an app:
 * :doc:`classloader`
 
 Requests
---------
+^^^^^^^^
+
 How a request is being processed:
 
 * :doc:`request`
@@ -98,7 +100,8 @@ How a request is being processed:
 * :doc:`controllers` | :doc:`api`
 
 View
-----
+^^^^
+
 The app's presentation layer:
 
 * :doc:`templates`
@@ -108,7 +111,8 @@ The app's presentation layer:
 * :doc:`theming`
 
 Storage
--------
+^^^^^^^
+
 Create database tables, run Sql queries, store/retrieve configuration information and access the filesystem:
 
 * :doc:`schema`
@@ -117,7 +121,8 @@ Create database tables, run Sql queries, store/retrieve configuration informatio
 * :doc:`filesystem`
 
 Authentication & Users
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^
+
 Creating, deleting, updating, searching, login and logout:
 
 * :doc:`users`
@@ -127,43 +132,50 @@ Writing a two-factor auth provider:
 * :doc:`two-factor-provider`
 
 Hooks
------
+^^^^^
+
 Listen on events like user creation and execute code:
 
 * :doc:`hooks`
 
 Background Jobs
----------------
+^^^^^^^^^^^^^^^
+
 Periodically run code in the background:
 
 * :doc:`backgroundjobs`
 
 Settings
----------------
+^^^^^^^^
+
 An app can register both admin settings as well as personal settings:
 
 * :doc:`settings`
 
 Logging
--------
+^^^^^^^
+
 Log to the :file:`data/nextcloud.log`:
 
 * :doc:`logging`
 
 Repair steps
-------------
+^^^^^^^^^^^^
+
 Repair steps can be used to run code at various stages in app installation, uninstallation, migration ...
 
 * :doc:`repair`
 
 Testing
--------
+^^^^^^^
+
 Write automated tests to ensure stability and ease maintenance:
 
 * :doc:`testing`
 
 PHPDoc Class Documentation
---------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Nextcloud class and function documentation:
 
 * `Nextcloud App API <https://api.owncloud.org/namespaces/OCP.html>`_

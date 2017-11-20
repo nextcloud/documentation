@@ -1,3 +1,4 @@
+==========================
 Performance Considerations
 ==========================
 
@@ -9,6 +10,7 @@ This document introduces some common considerations and tips on improving perfor
 
 Database performance
 --------------------
+
 The database plays an important role in Nextcloud performance. The general rule is: database queries are very bad and should be avoided if possible. The reasons for that are:
 
 * Roundtrips: Bigger Nextcloud installations have the database not installed on the application server but on a remote dedicated database server. The problem is that database queries then go over the network. These roundtrips can add up significantly if you have a lot of queries.
@@ -53,7 +55,7 @@ If you increase the long_query_time to 100 and add log-queries-not-using-indexes
   long_query_time=100
 
 Measuring performance
-~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^
 
 If you do bigger changes in the architecture or the database structure you should always double check the positive or negative performance impact. There are a `few nice small scripts <https://github.com/owncloud/administration/tree/master/performance-tests>`_ that can be used for this.
 
@@ -61,4 +63,5 @@ The recommendation is to automatically do 10000 PROPFINDs or file uploads, measu
 
 Getting help
 ------------
+
 If you need help with performance or other issues please ask on our `forums <https://help.nextcloud.com>`_ or on our IRC channel **#nextcloud-dev** on **irc.freenode.net**.

@@ -1,3 +1,4 @@
+===========
 Translation
 ===========
 
@@ -16,19 +17,19 @@ You shall never split sentences!
 --------------------------------
 
 Reason:
-~~~~~~~
+^^^^^^^
 
 Translators lose the context and they have no chance to possibly re-arrange words.
 
 Example:
-~~~~~~~~
+^^^^^^^^
 
 .. code-block:: php
 
   <?php p($l->t('Select file from')) . ' '; ?><a href='#' id="browselink"><?php p($l->t('local filesystem'));?></a><?php p($l->t(' or ')); ?><a href='#' id="cloudlink"><?php p($l->t('cloud'));?></a>
 
 Translators will translate:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * Select file from
 * local filesystem
@@ -38,12 +39,12 @@ Translators will translate:
 Translating these individual strings results in  ``local filesystem`` and ``cloud`` losing case. The two white spaces surrounding ``or`` will get lost while translating as well. For languages that have a different grammatical order it prevents the translators from reordering the sentence components.
 
 HTML on translation string:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 HTML tags in translation strings is ugly but usually translators can handle this.
 
 What about variable in the strings?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you need to add variables to the translation strings do it like this:
 
@@ -63,7 +64,7 @@ Multiple nightly jobs have been setup in order to synchronize translations - it'
 #. Finally the changes are pushed to Git.
 
 Please follow the steps below to add translation support to your app:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Create a folder ``l10n``.
 #. Create the file ``ignorelist`` which can contain files which shall not be scanned during step 4.

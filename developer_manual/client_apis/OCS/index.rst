@@ -9,7 +9,6 @@ This document provides a quick overview of the OCS API endpoints supported in Ne
 All requests need to provide authentication information, either as a Basic Auth header or by passing a set of valid session cookies, if not stated otherwise.
 
 
---------------------------
 Testing requests with curl
 --------------------------
 
@@ -23,7 +22,6 @@ For example: you can perform a :code:`GET` request to get information about a us
     curl -u username:password -X GET 'https://cloud.example.com/ocs/v1.php/...' -H "OCS-APIRequest: true"
 
 
--------------
 User metadata
 -------------
 
@@ -66,7 +64,6 @@ This request returns the available metadata of a user. Admin users can see the i
 	</ocs>
 
 
-----------------
 Capabilities API
 ----------------
 
