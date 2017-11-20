@@ -32,7 +32,7 @@ archive <https://nextcloud.com/install/>`_.
 
 .. _vm_label:
 
-Installing on Windows (Virtual Machine)
+Installing on Windows (virtual machine)
 ---------------------------------------
 
 If you are using Windows, the easiest way to get Nextcloud up an running is using our Virtual Machine. The VM is mainly maintainted by Tech and Me and are offered in several different versions. The main version is for VMware version 10 and comes in different sizes. The standard size is 20 GB, but you can also download a 500 GB and a 1 TB version. Tech and Me also provides a Hyper-V version for all Hyper-V users.
@@ -43,7 +43,7 @@ Of course you can also install it on other OSes than Windows and you are not lim
 
 .. _snaps_label:
 
-Installing via Snap Packages
+Installing via Snap packages
 ----------------------------
 
 A snap is a zip file containing an application together with its dependencies,
@@ -63,7 +63,7 @@ To install the Nextcloud Snap Package, run the following command in a terminal::
 
 .. _prerequisites_label:
 
-Prerequisites for Manual Installation
+Prerequisites for manual installation
 -------------------------------------
 
 The Nextcloud .tar archive contains all of the required PHP modules. This
@@ -148,7 +148,7 @@ If ``mod_webdav`` is enabled you must disable it for Nextcloud. (See
  
 .. _ubuntu_installation_label:  
 
-Example Installation on Ubuntu 16.04 LTS Server
+Example installation on Ubuntu 16.04 LTS server
 -----------------------------------------------
 
 On a machine running a pristine Ubuntu 16.04 LTS server, you have two options:
@@ -240,7 +240,7 @@ See :ref:`db-binlog-label`.
 
 .. _apache_configuration_label:
    
-Apache Web Server Configuration
+Apache Web server configuration
 -------------------------------
 
 On Debian, Ubuntu, and their derivatives, Apache installs with a useful
@@ -267,7 +267,7 @@ Then create a symlink to :file:`/etc/apache2/sites-enabled`::
 
   ln -s /etc/apache2/sites-available/nextcloud.conf /etc/apache2/sites-enabled/nextcloud.conf
  
-Additional Apache Configurations
+Additional Apache configurations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * For Nextcloud to work correctly, we need the module ``mod_rewrite``. Enable
@@ -360,7 +360,7 @@ the default site. Open a terminal and run::
     
 .. _installation_wizard_label:
     
-Installation Wizard
+Installation wizard
 -------------------
 
 After restarting Apache you must complete your installation by running either 
@@ -380,7 +380,7 @@ To use the graphical Installation Wizard see :doc:`installation_wizard`.
 
 .. _selinux_tips_label:
 
-SELinux Configuration Tips
+SELinux configuration tips
 --------------------------
 
 See :doc:`selinux_configuration` for a suggested configuration for
@@ -388,7 +388,7 @@ SELinux-enabled distributions such as Fedora and CentOS.
 
 .. _php_ini_tips_label:
 
-php.ini Configuration Notes
+php.ini configuration notes
 ---------------------------
 
 Keep in mind that changes to ``php.ini`` may have to be configured on more than one
@@ -410,7 +410,7 @@ ini file. This can be the case, for example, for the ``date.timezone`` setting.
 
 .. _php_fpm_tips_label:
 
-php-fpm Configuration Notes
+php-fpm configuration notes
 ---------------------------
 
 **Security: Use at least PHP >= 5.6.6**
@@ -481,7 +481,7 @@ be set in the ``nextcloud/.user.ini`` file.
 
 .. _other_HTTP_servers_label:
 
-Other Web Servers
+Other Web servers
 -----------------
 
 :doc:`nginx`

@@ -4,7 +4,7 @@ App store publishing
 
 .. sectionauthor:: Jos Poortvliet <jospoortvliet@gmail.com>
 
-The Nextcloud App Store
+The Nextcloud app store
 -----------------------
 The Nextcloud app store is built into Nextcloud to allow you to get your apps to users as easily and safely as possible. The app store and the process of publishing apps aims to be:
 

@@ -1,5 +1,5 @@
 =================
-LDAP User Cleanup
+LDAP user cleanup
 =================
 
 LDAP User Cleanup is a new feature in the ``LDAP user and group backend`` 
@@ -62,7 +62,7 @@ This example shows what the table of users marked as ``deleted`` looks like::
 Then you can run ``sudo -u www-data php occ user:delete aaliyah_brown`` to delete 
 user aaliyah_brown. You must use the user's Nextcloud name.
 
-Deleting Local Nextcloud Users
+Deleting local Nextcloud users
 ------------------------------
 
 You may also use ``occ user:delete [user]`` to remove a local Nextcloud user; 

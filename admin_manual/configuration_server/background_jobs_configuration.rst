@@ -1,5 +1,5 @@
 ========================
-Defining Background Jobs
+Defining background jobs
 ========================
 A system like Nextcloud sometimes requires tasks to be done on a regular basis
 without the need for user interaction or hindering Nextcloud performance. For
@@ -26,7 +26,7 @@ You can choose between the following options:
 -   Webcron
 -   Cron
 
-Cron Jobs
+Cron jobs
 ---------
 
 You can schedule cron jobs in three ways -- using AJAX, Webcron, or cron. The

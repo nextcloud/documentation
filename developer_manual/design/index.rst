@@ -1,5 +1,5 @@
 =================
-Design Guidelines
+Design guidelines
 =================
 
 .. toctree::

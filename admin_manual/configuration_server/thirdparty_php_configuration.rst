@@ -1,10 +1,10 @@
 ================================
-Using Third Party PHP Components
+Using third party PHP components
 ================================
 
 Nextcloud uses some third party PHP components to provide some of its functionality. These components are part of the software package and are contained in the **/3rdparty** folder.
 
-Managing Third Party Parameters
+Managing third party parameters
 -------------------------------
 
 When using third party components, keep the following parameters in mind:

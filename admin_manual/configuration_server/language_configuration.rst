@@ -1,5 +1,5 @@
 ======================
-Language Configuration
+Language configuration
 ======================
 
 Default language

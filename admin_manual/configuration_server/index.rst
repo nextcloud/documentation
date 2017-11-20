@@ -1,5 +1,5 @@
 ====================
-Server Configuration
+Server configuration
 ====================
 
 .. toctree::

@@ -1,12 +1,12 @@
 ===========================
-Reverse Proxy Configuration
+Reverse proxy configuration
 ===========================
 
 Nextcloud can be run through a reverse proxy, which can cache static assets such
 as images, CSS or JS files, move the load of handling HTTPS to a different
 server or load balance between multiple servers.
 
-Defining Trusted Proxies
+Defining trusted proxies
 ------------------------
 
 For security, you must explicitly define the proxy servers that Nextcloud is to
@@ -29,7 +29,7 @@ to spoof their IP address as visible to Nextcloud, even when going through the
 trusted proxy! The correct value for this parameter is dependent on your
 proxy software.
 
-Overwrite Parameters
+Overwrite parameters
 --------------------
 
 The automatic hostname, protocol or webroot detection of Nextcloud can fail in
@@ -53,7 +53,7 @@ access.
 Example
 -------
 
-Multiple Domains Reverse SSL Proxy
+Multiple domains reverse SSL proxy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you want to access your Nextcloud installation **http://domain.tld/nextcloud**

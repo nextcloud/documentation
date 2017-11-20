@@ -1,5 +1,5 @@
 ==============
-Supported Apps
+Supported apps
 ==============
 
 Below is the list of apps supported for Nextcloud |version|. Supported here means that we'll accept bugreports and resolve them in these apps with regard to functionality and compatibility with Nextcloud |version|. To get access to work-arounds, long term support, priority bug fixing and custom consulting, contact Nextcloud GmbH.

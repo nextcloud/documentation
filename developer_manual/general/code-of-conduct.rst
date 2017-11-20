@@ -1,5 +1,5 @@
 =========================
-Community Code of Conduct
+Community code of conduct
 =========================
 
 Preamble:

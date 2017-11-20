@@ -1,5 +1,5 @@
 ======================
-Database Configuration
+Database configuration
 ======================
 
 .. toctree::

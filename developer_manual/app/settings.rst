@@ -14,7 +14,7 @@ anymore, but divided into sections, where related settings forms are grouped.
 For example, in the **Sharing** section are only settings (built-in and of apps)
 related to sharing.
 
-Settings Form
+Settings form
 -------------
 
 For the settings form, three things are necessary:

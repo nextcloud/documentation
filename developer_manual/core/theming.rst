@@ -55,7 +55,7 @@ for example in /nextcloud/core/ and /nextcloud/settings/ in these sub folders:
 .. _notes-for-updates:
 
 
-Notes for Updates
+Notes for updates
 -----------------
 
 .. note:: With Nextcloud 12, CSS files have been merged into one server.css so in order to keep your theme working you should consolidate your existing css styles into a server.css file. As for the example theme the styles.css file has been renamed to server.css.

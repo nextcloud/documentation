@@ -1,5 +1,5 @@
 ==========================================
-External Storage Authentication mechanisms
+External Storage authentication mechanisms
 ==========================================
 
 Nextcloud storage backends accept one or more authentication schemes such as
@@ -12,7 +12,7 @@ behavior.
 .. figure:: images/authentication-types.png
    :alt: Authentication types
 
-Special Mechanisms
+Special mechanisms
 ------------------
 
 The **None** authentication mechanism requires no configuration parameters, and
@@ -23,7 +23,7 @@ parameters, but is used as a placeholder for legacy storages that have not been
 migrated to the new system and do not take advantage of generic authentication
 mechanisms. The authentication parameters are provided directly by the backend.
 
-Password-based Mechanisms
+Password-based mechanisms
 -------------------------
 
 The **Username and password** mechanism requires a manually-defined username and
@@ -51,7 +51,7 @@ The **Global credentials** mechanism uses the general input field for "Global
 credentials" in the external storage settings section as source for the
 credentials instead of individual credentials for a mount point.
 
-Public-key Mechanisms
+Public-key mechanisms
 ---------------------
 
 Currently only the RSA mechanism is implemented, where a public/private

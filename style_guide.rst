@@ -1,5 +1,5 @@
 =============================
-Nextcloud Manuals Style Guide
+Nextcloud manuals style guide
 =============================
 
 *This is a work in progress*
@@ -24,20 +24,20 @@ features of a GUI administration form use the exact literal names of buttons,
 form fields, and menus. Specify if menus are dropdown, right-click, 
 left-click, or mouseover.
 
-Page Filenames
+Page filenames
 --------------
 
 Use lowercase filenames with underscores, for example file_name_config.rst.
 
-Page Titles and Headings
+Page titles and headings
 ------------------------
 
 There are many ways to markup headings and subheadings. This is the official 
-Nextcloud way. Use title case. Three levels is enough; if you find that you want more, 
+Nextcloud way. Use sentence case. Three levels is enough; if you find that you want more, 
 then re-think the organization of your text::
 
  ==============
- Page Title, h1
+ Page title, h1
  ==============
 
  Subhead, h2
@@ -49,7 +49,7 @@ then re-think the organization of your text::
 This is how they render:
 
 ==============
-Page Title, h1
+Page title, h1
 ==============
 
 Subhead, h2
@@ -58,7 +58,7 @@ Subhead, h2
 Subhead, h3
 ^^^^^^^^^^^
 
-Labels and Code
+Labels and code
 ---------------
 
 Elements in a GUI configuration form are in bold, and should be described as 

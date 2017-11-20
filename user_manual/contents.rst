@@ -1,7 +1,7 @@
 .. _contents:
 
 =================
-Table of Contents
+Table of contents
 =================
 
 .. toctree::

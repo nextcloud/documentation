@@ -1,5 +1,5 @@
 ============================
-Configuring the Activity App
+Configuring the activity app
 ============================
 
 You can configure your Nextcloud server to automatically send out e-mail notifications
@@ -13,13 +13,13 @@ to your users for various events like:
 Users can see actions (delete, add, modify) that happen to files they have access to.
 Sharing actions are only visible to the sharer and sharee.
 
-Enabling the Activity App
+Enabling the activity app
 -------------------------
 
 The Activity App is shipped and enabled by default. If it is not enabled
 simply go to your Nextcloud Apps page to enable it.
 
-Configuring your Nextcloud for the Activity App
+Configuring your Nextcloud for the activity app
 -----------------------------------------------
 
 To configure your Nextcloud to send out e-mail notifications a working

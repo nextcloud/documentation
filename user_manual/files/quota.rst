@@ -1,5 +1,5 @@
 =============
-Storage Quota
+Storage quota
 =============
 
 Your Nextcloud admin has the option to set a storage quota on users. Look at 

@@ -1,5 +1,5 @@
 ============
-App Metadata
+App metadata
 ============
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>

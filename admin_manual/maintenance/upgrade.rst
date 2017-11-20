@@ -1,5 +1,5 @@
 ==============
-How to Upgrade
+How to upgrade
 ==============
 
 There are three ways to upgrade your Nextcloud server:
@@ -35,7 +35,7 @@ installations may take several hours to complete the upgrade.
    file a support ticket (if you have paid support) or ask for help in the
    Nextcloud forums to see if your issue can be resolved without downgrading.
 
-Update Notifications
+Update notifications
 --------------------
 
 Nextcloud has an update notification app, that informs the administrator about

@@ -48,7 +48,7 @@ is a few steps on the originating server.
 
 You may disconnect the share at any time by clicking the trash can icon.
 
-Configuring Trusted Nextcloud Servers
+Configuring trusted Nextcloud servers
 -------------------------------------
 
 You may create a list of trusted Nextcloud servers for Federation sharing. This 
@@ -66,7 +66,7 @@ exchanged. A red light means the connection failed.
 
 .. _label-public-link-share:
 
-Creating Federation Shares via Public Link Share
+Creating Federation Shares via public Link Share
 ------------------------------------------------
 
 Check the ``Share Link`` checkbox to expose more sharing options (which are 
@@ -97,7 +97,7 @@ federated cloud share link by clicking the **Add remote share** button.
 Un-check the ``Share Link`` checkbox to disable any federated cloud share 
 created this way.
 
-Configuration Tips
+Configuration tips
 ------------------
 
 The Sharing section on your Admin page allows you to control how your users 

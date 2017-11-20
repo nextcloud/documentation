@@ -1,5 +1,5 @@
 ================================
-Scaling Across Multiple Machines
+Scaling across multiple machines
 ================================
 
 .. toctree::
@@ -17,7 +17,7 @@ three main elements of an Nextcloud deployment:
 At each layer the goal is to provide the ability to scale, and providing a high
 availability while maintaining the needed level of performance.
 
-Application Layer
+Application layer
 -----------------
 
 For the application layer of this reference architecture we used Oracle
@@ -68,7 +68,7 @@ the IP address should one fail.
 .. Nextcloud application servers, with details to be filled in around session
 .. management upon further testing.
 
-Database Layer
+Database layer
 --------------
 
 For the purposes of this example, we have chosen a MySQL cluster using the NDB
@@ -98,7 +98,7 @@ following:
 In this example we have also added a second HAProxy server with Heartbeat to prevent any single point of failure.
 We have also implemented NIC bonding to load balance the traffic across multiple physical NICs.
 
-Storage Layer
+Storage layer
 -------------
 
 Storage was deployed using the Red Hat Storage server with the GlusterFS

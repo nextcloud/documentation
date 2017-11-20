@@ -1,5 +1,5 @@
 ==========================
-Configuring Single-Sign-On
+Configuring single-sign-on
 ==========================
 
 Using the SSO & SAML app of your Nextcloud you can make it easily possible to integrate your existing Single-Sign-On

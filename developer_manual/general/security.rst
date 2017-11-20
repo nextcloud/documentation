@@ -1,5 +1,5 @@
 ===================
-Security Guidelines
+Security guidelines
 ===================
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>, Lukas Reschke <lukas@statuscode.ch>
@@ -10,7 +10,7 @@ This guideline highlights some of the most common security problems and how to p
 
 .. note:: All App Framework security features depend on the call of the controller through :php:meth:`OCA\\AppFramework\\App::main`. If the controller method is executed directly, no security checks are being performed!
 
-SQL Injection
+SQL injection
 -------------
 
 `SQL Injection <http://en.wikipedia.org/wiki/SQL_injection>`_ occurs when SQL query strings are concatenated with variables.
@@ -109,7 +109,7 @@ To prevent such attacks Nextcloud sends the `X-Frame-Options` header to all temp
 
 This is already built into Nextcloud if :php:class:`OC_Template`.
 
-Code executions / File inclusions
+Code executions / file inclusions
 ---------------------------------
 
 Code Execution means that an attacker is able to include an arbitrary PHP file. This PHP file runs with all the privileges granted to the normal application and can do an enormous amount of damage.
@@ -133,7 +133,7 @@ Code executions and file inclusions can be easily prevented by **never** allowin
 
 .. note:: If you have to pass user input to a potentially dangerous function, double check to be sure that there is no other way. If it is not possible otherwise sanitize every user parameter and ask people to audit your sanitize function.
 
-Directory Traversal
+Directory traversal
 -------------------
 
 Very often developers forget about sanitizing the file path (removing all \\ and /), this allows an attacker to traverse through directories on the server which opens several potential attack vendors including privilege escalations, code executions or file disclosures.
@@ -158,7 +158,7 @@ Very often developers forget about sanitizing the file path (removing all \\ and
 .. note:: PHP also interprets the backslash (\\) in paths, don't forget to replace it too!
 
 
-Shell Injection
+Shell injection
 ---------------
 
 `Shell Injection <http://en.wikipedia.org/wiki/Code_injection#Shell_injection>`_ occurs if PHP code executes shell commands (e.g. running a latex compiler). Before doing this, check if there is a PHP library that already provides the needed functionality. If you really need to execute a command be aware that you have to escape every user parameter passed to one of these functions:
@@ -193,7 +193,7 @@ PHP offers the following functions to escape user input:
   <?php
   system('ls '.escapeshellarg($_GET['dir']));
 
-Auth bypass / Privilege escalations
+Auth bypass / privilege escalations
 -----------------------------------
 
 Auth bypass/privilege escalations happen when a user is able to perform unauthorized actions.

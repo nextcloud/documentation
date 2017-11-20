@@ -1,5 +1,5 @@
 ========================
-Setting Your Preferences
+Setting your preferences
 ========================
 
 As a user, you can manage your personal settings.

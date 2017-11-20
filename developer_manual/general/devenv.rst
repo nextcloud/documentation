@@ -3,7 +3,7 @@
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
 =======================
-Development Environment
+Development environment
 =======================
 
 Please follow the steps on this page to set up your development environment.

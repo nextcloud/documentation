@@ -1,5 +1,5 @@
 ========================
-User Password Policy App
+User password policy app
 ========================
 
 A password policy is a set of rules designed to enhance computer security by encouraging users to employ strong passwords and use them properly. 

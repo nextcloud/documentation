@@ -1,5 +1,5 @@
 ====================
-Library Installation
+Library installation
 ====================
 
 Obtaining the library

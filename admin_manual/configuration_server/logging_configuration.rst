@@ -1,5 +1,5 @@
 =====================
-Logging Configuration
+Logging configuration
 =====================
 
 Use your Nextcloud log to review system status, or to help debug problems. You may adjust logging levels, and choose between using the Nextcloud log or your syslog.

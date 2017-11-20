@@ -1,5 +1,5 @@
 ===============
-Version Control
+Version control
 ===============
 
 Nextcloud supports simple version control system for files. Versioning creates

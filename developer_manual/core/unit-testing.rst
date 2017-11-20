@@ -129,7 +129,7 @@ To run a specific test suite (note that the test file path is relative to the "t
 
   ./autotest.sh sqlite lib/share/share.php
 
-Further Reading
+Further reading
 ^^^^^^^^^^^^^^^
 - http://googletesting.blogspot.de/2008/08/by-miko-hevery-so-you-decided-to.html
 - http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html

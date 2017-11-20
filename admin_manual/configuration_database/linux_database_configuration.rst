@@ -1,5 +1,5 @@
 ======================
-Database Configuration
+Database configuration
 ======================
 
 Nextcloud requires a database in which administrative data is stored. The following databases are currently supported:
@@ -36,7 +36,7 @@ Parameters
 ----------
 For setting up Nextcloud to use any database, use the instructions in :doc:`../installation/installation_wizard`. You should not have to edit the respective values in the :file:`config/config.php`.  However, in special cases (for example, if you want to connect your Nextcloud instance to a database created by a previous installation of Nextcloud), some modification might be required.
 
-Configuring a MySQL or MariaDB Database
+Configuring a MySQL or MariaDB database
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you decide to use a MySQL or MariaDB database, ensure the following:
@@ -106,7 +106,7 @@ this:
     "dbtableprefix" => "oc_",
 
 
-PostgreSQL Database
+PostgreSQL database
 ^^^^^^^^^^^^^^^^^^^
 
 If you decide to use a PostgreSQL database make sure that you have installed
@@ -206,7 +206,7 @@ this:
 Troubleshooting
 ---------------
 
-How to workaround General error: 2006 MySQL server has gone away
+How to workaround general error: 2006 MySQL server has gone away
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The database request takes too long and therefore the MySQL server times out. Its

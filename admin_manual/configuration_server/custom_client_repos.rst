@@ -1,5 +1,5 @@
 ===================================
-Custom Client Download Repositories
+Custom client download repositories
 ===================================
 
 You may configure the URLs to your own download repositories for your Nextcloud 

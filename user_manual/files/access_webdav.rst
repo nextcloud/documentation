@@ -1,5 +1,5 @@
 ======================================
-Accessing Nextcloud Files Using WebDAV
+Accessing Nextcloud files using WebDAV
 ======================================
 
 Nextcloud fully supports the WebDAV protocol, and you can connect and synchronize
@@ -8,7 +8,7 @@ connect Linux, Mac OS X, Windows, and mobile devices to your Nextcloud server vi
 WebDAV. Before we get into configuring WebDAV, let's take a quick look at the
 recommended way of connecting client devices to your Nextcloud servers.
 
-Nextcloud Desktop and Mobile Clients
+Nextcloud Desktop and mobile clients
 ------------------------------------
 
 The recommended method for keeping your desktop PC synchronized with your
@@ -35,7 +35,7 @@ a good (proprietary) app for `Android devices`_ and `iPhones`_. The URL to use o
 
     example.com/nextcloud/remote.php/dav/files/USERNAME/
 
-WebDAV Configuration
+WebDAV configuration
 --------------------
 
 If you prefer, you may also connect your desktop PC to your Nextcloud server by
@@ -48,12 +48,12 @@ Windows in the same way as any remote network share, and stay synchronized.
 .. note:: In the following examples, You must adjust **example.com/** to the
    URL of your Nextcloud server installation.
 
-Accessing Files Using Linux
+Accessing files using Linux
 ---------------------------
 
 You can access files in Linux operating systems using the following methods.
 
-Nautilus File Manager
+Nautilus file manager
 ^^^^^^^^^^^^^^^^^^^^^
 
 Use the ``davs://`` protocol to connect the Nautilus file manager to your
@@ -67,7 +67,7 @@ Nextcloud share::
 .. image:: ../images/webdav_gnome3_nautilus.png
    :alt: screenshot of configuring Nautilus file manager to use WebDAV
 
-Accessing Files with KDE and Dolphin File Manager
+Accessing files with KDE and Dolphin file manager
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To access your Nextcloud files using the Dolphin file manager in KDE, use
@@ -99,7 +99,7 @@ You can create a permanent link to your Nextcloud server:
 #. (Optional) Provide any special settings or an SSL certificate in the "Port &
    Encrypted" checkbox.
 
-Creating WebDAV Mounts on the Linux Command Line
+Creating WebDAV mounts on the Linux command line
 ------------------------------------------------
 
 You can create WebDAV mounts from the Linux command line. This is useful if you
@@ -159,7 +159,7 @@ Now every time you login to your Linux system your Nextcloud share should
 automatically mount via WebDAV in your ``~/nextcloud`` directory. If you prefer
 to mount it manually, change ``auto`` to ``noauto`` in ``/etc/fstab``.
 
-Known Issues
+Known issues
 ------------
 
 Problem
@@ -188,7 +188,7 @@ path of your certificate as in this example::
 
  servercert /etc/davfs2/certs/mycertificate.pem
 
-Accessing Files Using macOS
+Accessing files using macOS
 ---------------------------
 
 .. note:: The macOS Finder suffers from a `series of implementation problems
@@ -221,7 +221,7 @@ For added details about how to connect to an external server using Mac OS X,
 check the `vendor documentation
 <http://docs.info.apple.com/article.html?path=Mac/10.6/en/8160.html>`_ .
 
-Accessing Files Using Microsoft Windows
+Accessing files using Microsoft Windows
 ---------------------------------------
 
 It is best to use a suitable WebDAV client from the
@@ -243,7 +243,7 @@ Nextcloud to one or more directories of your local hard drive.
 
 .. _KB841215: https://support.microsoft.com/kb/841215
 
-Mapping Drives With the Command Line
+Mapping drives with the command line
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following example shows how to map a drive using the command line. To map
@@ -273,7 +273,7 @@ An alternative command syntax is::
   net use Z: \\example.com@ssl\nextcloud\remote.php\dav /user:youruser
   yourpassword
 
-Mapping Drives With Windows Explorer
+Mapping drives with Windows Explorer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To map a drive using the Microsoft Windows Explorer:
@@ -303,7 +303,7 @@ To map a drive using the Microsoft Windows Explorer:
   Windows Explorer maps the network drive, making your Nextcloud instance
   available.
 
-Accessing Files Using Cyberduck
+Accessing files using Cyberduck
 -------------------------------
 
 `Cyberduck <https://cyberduck.io/?l=en>`_ is an open source FTP and SFTP,
@@ -345,7 +345,7 @@ To access the public share, open::
 in a WebDAV client, use the share token as username and the (optional) share password
 as password.
 
-Known Problems
+Known problems
 --------------
 
 Problem
@@ -439,7 +439,7 @@ Solution
 Workarounds are documented in the KB2668751_ article.
 
 
-Accessing Files Using cURL
+Accessing files using cURL
 --------------------------
 
 Since WebDAV is an extension of HTTP cURL can be used to script file operations.

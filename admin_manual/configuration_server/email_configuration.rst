@@ -1,5 +1,5 @@
 ===================
-Email Configuration
+Email configuration
 ===================
 
 Nextcloud is capable of sending password reset emails, notifying users of new 
@@ -27,7 +27,7 @@ or Sendmail when your mail server is on the same machine as Nextcloud.
    drop-in Sendmail replacement such as Postfix, Exim, or Courier. All of 
    these include a ``sendmail`` binary, and are freely-interchangeable.
 
-Configuring an SMTP Server
+Configuring an SMTP server
 --------------------------
 
 You need the following information from your mailserver administrator to 
@@ -57,7 +57,7 @@ configured on your Personal page. The test message says::
   Nextcloud
   a safe home for all your data
 
-Configuring PHP and Sendmail
+Configuring PHP and sendmail
 ----------------------------
 
 Configuring PHP or Sendmail requires only that you select one of them, and then 
@@ -76,7 +76,7 @@ passing through PHP, and you can control all of your mail server options in one
 place, in your mail server configuration.
 
 
-Using Email Templates
+Using email templates
 ---------------------
 
 Another useful new feature is editable email templates. Now you can edit 
@@ -131,7 +131,7 @@ tiniest coding error will break the template.
    can copy and paste them to a text editor for modification and then copy and 
    paste them back to the template text box for use when you are done.
 
-Setting Mail Server Parameters in config.php
+Setting mail server parameters in config.php
 --------------------------------------------
 
 If you prefer, you may set your mail server parameters in ``config/config.php``. 
@@ -300,7 +300,7 @@ be able to send email out of the box.
     "mail_smtpname"     => "",
     "mail_smtppassword" => "",
 
-Send a Test Email
+Send a test email
 -----------------
 
 To test your email configuration, save your email address in your personal
@@ -426,7 +426,7 @@ using the ``telnet`` command.
   221 smtp.domain.dom closing connection
   Connection closed by foreign host.
 
-Enabling Debug Mode
+Enabling debug mode
 -------------------
 
 If you are unable to send email, it might be useful to activate further debug

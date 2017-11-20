@@ -1,5 +1,5 @@
 ======================
-Previews Configuration
+Previews configuration
 ======================
 
 The Nextcloud thumbnail system generates previews of files for all 

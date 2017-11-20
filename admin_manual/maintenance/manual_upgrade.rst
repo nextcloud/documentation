@@ -1,5 +1,5 @@
 ================
-Upgrade Manually
+Upgrade manually
 ================
 
 Always start by making a fresh backup and disabling all 3rd party apps.
@@ -59,7 +59,7 @@ verify the version number. Check your other settings to make sure they're
 correct. Go to the Apps page and review the core apps to make sure the right 
 ones are enabled. Re-enable your third-party apps.
 
-Previous Nextcloud Releases
+Previous Nextcloud releases
 ---------------------------
 
 You'll find previous Nextcloud releases in the `Nextcloud Server Changelog 

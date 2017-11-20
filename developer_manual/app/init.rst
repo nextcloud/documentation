@@ -1,5 +1,5 @@
 ====================================
-Navigation and Pre-App configuration
+Navigation and pre-app configuration
 ====================================
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>

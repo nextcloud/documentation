@@ -1,5 +1,5 @@
 ===================
-Contacts & Calendar
+Contacts & calendar
 ===================
 
 The Contacts, Calendar, and Mail apps are not included in Nextcloud 10.

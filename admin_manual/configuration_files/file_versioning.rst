@@ -1,5 +1,5 @@
 ===================================
-Controlling File Versions and Aging
+Controlling file versions and aging
 ===================================
 
 The Versions app (files_versions) expires old file versions automatically to 

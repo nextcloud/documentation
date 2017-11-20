@@ -1,5 +1,5 @@
 ==================================
-Desktop and Mobile Synchronization
+Desktop and mobile synchronization
 ==================================
 
 For synchronizing files with your desktop computer, we recommend using the
@@ -20,7 +20,7 @@ Its usage is documented separately in the `Nextcloud/ownCloud Desktop Client Man
 .. _Nextcloud Desktop Client Manual: https://docs.nextcloud.org/
 .. _Nextcloud Sync Client: https://nextcloud.com/install/#install-clients
 
-Mobile Clients
+Mobile clients
 --------------
 
 Visit your Personal page in your Nextcloud Web interface to find download links

@@ -1,5 +1,5 @@
 ==========================
-Instruction Set For Groups
+Instruction set for groups
 ==========================  
 
 Search/get groups
@@ -25,7 +25,7 @@ Example
   * GET ``http://admin:secret@example.com/ocs/v1.php/cloud/groups?search=adm``
   * Returns list of groups matching the search string.
 
-XML Output
+XML output
 ^^^^^^^^^^
 
 .. code-block:: xml
@@ -68,7 +68,7 @@ Example
     groupid="newgroup"``
   * Adds a new group called ``newgroup``
 
-XML Output
+XML output
 ^^^^^^^^^^
 
 .. code-block:: xml
@@ -102,7 +102,7 @@ Example
   * POST ``http://admin:secret@example.com/ocs/v1.php/cloud/groups/admin``
   * Returns a list of users in the ``admin`` group
 
-XML Output
+XML output
 ^^^^^^^^^^
 
 .. code-block:: xml
@@ -143,7 +143,7 @@ Example
     ``https://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup/subadmins``
   * Return the subadmins of the group: ``mygroup``
 
-XML Output
+XML output
 ^^^^^^^^^^
 
 .. code-block:: xml
@@ -182,7 +182,7 @@ Example
   * DELETE ``http://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup``
   * Delete the group ``mygroup``
 
-XML Output
+XML output
 ^^^^^^^^^^
 
 .. code-block:: xml

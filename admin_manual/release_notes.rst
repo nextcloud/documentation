@@ -1,5 +1,5 @@
 =============
-Release Notes
+Release notes
 =============
 
 Changes in Nextcloud |version|

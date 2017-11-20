@@ -23,7 +23,7 @@ The External storage support application is enabled on your Apps page.
 .. figure:: external_storage/images/enable-app.png
    :alt: Enable external storage on your Apps page.
 
-Storage Configuration
+Storage configuration
 ---------------------
 
 To create a new external storage mount, select an available backend from the
@@ -55,7 +55,7 @@ re-check your configuration and network availability.
 If there is an error on the storage, it will be marked as unavailable for ten 
 minutes. To re-check it, click the colored icon or reload your Admin page.
 
-User and Group Permissions
+User and group permissions
 --------------------------
 
 A storage configured in a user's Personal settings is available only to the user 
@@ -68,7 +68,7 @@ the **Available for** field.
 
 .. _external_storage_mount_options_label:
 
-Mount Options
+Mount options
 -------------
 
 Hover your cursor to the right of any storage configuration to expose
@@ -90,7 +90,7 @@ and the previous shares become available again. Sharing is disabled by default.
 .. figure:: external_storage/images/mount_options.png
    :alt: Additional mount options exposed on mouseover.
 
-Using Self-Signed Certificates
+Using self-signed certificates
 ------------------------------
 
 When using self-signed certificates for external storage mounts the certificate
@@ -122,7 +122,7 @@ may provide their own backends, which are not listed here.
 .. note:: A non-blocking or correctly configured SELinux setup is needed
    for these backends to work. Please refer to the :ref:`selinux-config-label`.
 
-Allow Users to Mount External Storage
+Allow users to mount external Storage
 -------------------------------------
 
 Check **Enable User External Storage** to allow your users to mount their own 
@@ -133,7 +133,7 @@ on your network!
 .. figure:: external_storage/images/user_mounts.png
    :alt: Checkboxes to allow users to mount external storage services.
 
-Adding Files to External Storages
+Adding files to external storages
 ---------------------------------
 
 We recommend configuring the background job **Webcron** or

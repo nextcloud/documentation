@@ -1,5 +1,5 @@
 =======================
-Providing Default Files
+Providing default files
 =======================
 
 You may distribute a set of default files and folders to all users by placing

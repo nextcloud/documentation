@@ -1,5 +1,5 @@
 ===========================================
-User Authentication with IMAP, SMB, and FTP
+User authentication with IMAP, SMB, and FTP
 ===========================================
 
 You may configure additional user backends
