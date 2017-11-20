@@ -1,5 +1,5 @@
 =================================================
-Configuring External Storage (Configuration File)
+Configuring External Storage (configuration file)
 =================================================
 
 Starting with Nextcloud 9.0, the :file:`data/mount.json` file for configuring 

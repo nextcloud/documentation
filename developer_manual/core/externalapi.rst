@@ -13,7 +13,7 @@ specification <https://lukasreschke.github.io/OpenCloudMeshSpecification/>`_ (dr
 Usage
 -----
 
-Registering Methods
+Registering methods
 ^^^^^^^^^^^^^^^^^^^
 
 Methods are registered inside the :file:`appinfo/routes.php` by returning an
@@ -28,7 +28,7 @@ array holding the endpoint meta data.
       ['name' => 'Bar#getFoo', 'url' => '/foobar', 'verb' => 'GET'],
   ];
 
-Returning Data
+Returning data
 ^^^^^^^^^^^^^^
 
 Once the API backend has matched your URL, your callable function as defined in
@@ -38,7 +38,7 @@ data back to the client, you should return an instance of (a subclass of)
 :php:class:`OCP\AppFramework\Http\Response`, typically :php:class:`OCSResponse`.
 The API backend will then use this to construct the XML or JSON response.
 
-Authentication & Basics
+Authentication & basics
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 Because REST is stateless you have to send user and password each time you access the API. Therefore running Nextcloud **with SSL is highly recommended**; otherwise **everyone in your network can log your credentials**::

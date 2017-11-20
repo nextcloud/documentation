@@ -1,5 +1,5 @@
 =============================
-iOS - Synchronize iPhone/iPad
+iOS - synchronize iPhone/iPad
 =============================
 
 Calendar

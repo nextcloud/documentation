@@ -1,8 +1,8 @@
 ===================
-Installation Wizard
+Installation wizard
 ===================
 
-Quick Start
+Quick start
 -----------
 
 When Nextcloud prerequisites are fulfilled and all Nextcloud files are installed, 
@@ -30,7 +30,7 @@ installation and post-installation steps.
 
 .. _data_directory_location_label:
 
-Data Directory Location
+Data directory location
 -----------------------
 
 Click **Storage and Database** to expose additional installation configuration 
@@ -50,7 +50,7 @@ and must be owned by your HTTP user.
 
 .. _database_choice_label:
 
-Database Choice
+Database choice
 ---------------
 
 SQLite is the default database for Nextcloud Server and it is good only for
@@ -84,7 +84,7 @@ Now we will look at some important post-installation steps.
 
 .. _trusted_domains_label: 
 
-Trusted Domains
+Trusted domains
 ---------------
 
 All URLs used to access your Nextcloud server must be whitelisted in your 

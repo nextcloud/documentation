@@ -3,7 +3,7 @@
 ..  _navigation:
 
 ===============
-App Navigation
+App navigation
 ===============
 
 Introduction

@@ -1,5 +1,5 @@
 =====================
-Using the occ Command
+Using the occ command
 =====================
 
 Nextcloud's ``occ`` command (origins from "ownCloud Console") is Nextcloud's command-line
@@ -12,7 +12,7 @@ setting, and more.
 run it as your HTTP user** to ensure that the correct permissions are maintained 
 on your Nextcloud files and directories.
 
-occ Command Directory
+occ command Directory
 ---------------------
 
 * :ref:`http_user_label`
@@ -41,7 +41,7 @@ occ Command Directory
 
 .. _http_user_label:
 
-Run occ As Your HTTP User
+Run occ as your HTTP user
 -------------------------
 
 The HTTP user is different on the various Linux distributions:
@@ -179,7 +179,7 @@ shell's profile (eg. ``~/.bash_profile`` or ``~/.zshrc``).
 
 .. _apps_commands_label:
 
-Apps Commands
+Apps commands
 -------------
 
 The ``app`` commands list, enable, and disable apps::
@@ -234,7 +234,7 @@ You can get the full filepath to an app::
 
 .. _background_jobs_selector_label:   
    
-Background Jobs Selector
+Background jobs selector
 ------------------------
 
 Use the ``background`` command to select which scheduler you want to use for 
@@ -260,7 +260,7 @@ See :doc:`../configuration_server/background_jobs_configuration` to learn more.
 
 .. _config_commands_label:
 
-Config Commands
+Config commands
 ---------------
 
 The ``config`` commands are used to configure the Nextcloud server::
@@ -304,7 +304,7 @@ It is also possible to import remote files, by piping the input::
   directly. Use the ``occ app:enable``, ``occ app:disable`` and ``occ update``
   commands instead.  
 
-Getting a Single Configuration Value
+Getting a single configuration value
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 These commands get the value of a single app or system configuration::
@@ -315,7 +315,7 @@ These commands get the value of a single app or system configuration::
   sudo -u www-data php occ config:app:get activity installed_version
   2.2.1
 
-Setting a Single Configuration Value
+Setting a single configuration value
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 These commands set the value of a single app or system configuration::
@@ -352,7 +352,7 @@ When you want to e.g. disable the maintenance mode run the following command::
   Nextcloud is in maintenance mode - no app have been loaded
   System config value maintenance set to boolean false
 
-Setting an array Configuration Value
+Setting an array configuration value
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Some configurations (e.g. the trusted domain setting) are an array of data.
@@ -376,7 +376,7 @@ set::
   nextcloud.local
   example.com
 
-Deleting a Single Configuration Value
+Deleting a single configuration value
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 These commands delete the configuration of an app or system configuration::
@@ -398,7 +398,7 @@ before. If you want to be notified in that case, set the
   
 .. _dav_label:  
    
-Dav Commands
+Dav commands
 ------------
   
 A set of commands to create addressbooks, calendars, and to 
@@ -457,7 +457,7 @@ addressbook::
 
 .. _database_conversion_label:  
   
-Database Conversion
+Database conversion
 -------------------
 
 The SQLite database is good for testing, and for Nextcloud servers with small 
@@ -568,7 +568,7 @@ See :doc:`../configuration_files/encryption_configuration` to learn more.
  
 .. _federation_sync_label:
  
-Federation Sync
+Federation sync
 ---------------
 
 .. note::
@@ -588,7 +588,7 @@ to synchronize federated servers::
 
 .. _file_operations_label:
 
-File Operations
+File operations
 ---------------
 
 ``occ`` has three commands for managing files in Nextcloud::
@@ -658,7 +658,7 @@ before removing a user::
 
 .. _files_external_label:
 
-Files External
+Files external
 --------------
 
 .. note::
@@ -692,7 +692,7 @@ and to copy external mount configurations to another Nextcloud server.
 
 .. _integrity_check_label:
 
-Integrity Check
+Integrity check
 ---------------
 
 Apps which have an official tag MUST be code signed with Nextcloud. Unsigned official apps won't be installable anymore. Code signing is optional for all third-party applications::
@@ -721,7 +721,7 @@ See :doc:`../issues/code_signing` to learn more.
 
 .. _create_javascript_translation_files_label:
  
-l10n, Create Javascript Translation Files for Apps
+l10n, create JavaScript translation files for apps
 --------------------------------------------------
 
 This command is for app developers to update their translation mechanism from
@@ -729,7 +729,7 @@ ownCloud 7 to Nextcloud.
 
 .. _ldap_commands_label: 
  
-LDAP Commands
+LDAP commands
 -------------
 
 .. note::
@@ -828,7 +828,7 @@ documented in :doc:`../configuration_user/user_auth_ldap_cleanup`.
 
 .. _logging_commands_label:
 
-Logging Commands
+Logging commands
 ----------------
 
 These commands view and configure your Nextcloud logging preferences::
@@ -856,7 +856,7 @@ are ``owncloud``, ``Warning``, and ``UTC``. Available options are:
 
 .. _maintenance_commands_label:
    
-Maintenance Commands
+Maintenance commands
 --------------------
 
 Use these commands when you upgrade Nextcloud, manage encryption, perform 
@@ -955,7 +955,7 @@ This example removes the deleted files of users molly and freda::
 
 .. _user_commands_label: 
  
-User Commands
+User commands
 -------------
 
 The ``user`` commands create and remove users, reset passwords, display a simple 
@@ -1113,7 +1113,7 @@ You can delete versions for specific users in a space-delimited list::
  
 .. _command_line_installation_label: 
  
-Command Line Installation
+Command line installation
 -------------------------
 
 These commands are available only after you have downloaded and unpacked the 
@@ -1202,7 +1202,7 @@ Supported databases are::
  
 .. _command_line_upgrade_label: 
    
-Command Line Upgrade
+Command line upgrade
 --------------------
 
 These commands are available only after you have downloaded upgraded packages or 
@@ -1276,7 +1276,7 @@ or to use in a bug report::
 
 .. _two_factor_auth_label:
 
-Two-factor Authentication
+Two-factor authentication
 -------------------------
 If a two-factor provider app is enabled, it is enabled for all users by default
 (though the provider can decide whether or not the user has to pass the challenge).
@@ -1292,7 +1292,7 @@ To re-enable two-factor auth again use the following commmand::
 
 .. _disable_user_label:
 
-Disable Users
+Disable users
 -------------
 Admins can disable users via the occ command too::
 

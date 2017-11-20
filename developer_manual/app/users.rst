@@ -1,5 +1,5 @@
 ===============
-User Management
+User management
 ===============
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
@@ -105,7 +105,7 @@ Users can be modified by getting a user by the userId or by a search pattern. Th
         }
     }
 
-User Session Information
+User session information
 ------------------------
 
 To login, logout or getting the currently logged in user, the UserSession has to be injected from the ServerContainer:

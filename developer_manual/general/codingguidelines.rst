@@ -1,5 +1,5 @@
 =================================
-Coding Style & General Guidelines
+Coding style & general guidelines
 =================================
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
@@ -57,7 +57,7 @@ Coding
 * Check these `database performance tips <https://mailman.owncloud.org/pipermail/devel/2014-June/000262.html>`_
 * When you ``git pull``, always ``git pull --rebase`` to avoid generating extra commits like: *merged master into master*
 
-License Headers
+License headers
 ---------------
 
 Nextcloud is licensed under the `GNU AGPLv3 <https://www.gnu.org/licenses/agpl>`_. From June, 16 2016 on we switched to "GNU AGPLv3 or any later version" for better long-term maintainability. If you create a new file please use this header:
@@ -134,7 +134,7 @@ All API methods need to be marked with `PHPDoc <http://en.wikipedia.org/wiki/PHP
     // ...
   }
 
-Objects, Functions, Arrays & Variables
+Objects, functions, arrays & variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Use *UpperCamelCase* for Objects, *lowerCamelCase* for functions and variables. If you set
@@ -179,7 +179,7 @@ Here's why:
 
   ?>
 
-Control Structures
+Control structures
 ^^^^^^^^^^^^^^^^^^
 
 * Always use { } for one line ifs
@@ -300,7 +300,7 @@ In general take a look at `JSLint <http://www.jslint.com>`_ without the whitespa
       ...
   };
 
-Objects & Inheritance
+Objects & inheritance
 ^^^^^^^^^^^^^^^^^^^^^
 
 Try to use OOP in your JavaScript to make your code reusable and flexible.
@@ -341,7 +341,7 @@ This is how you'd do inheritance in JavaScript:
   // childobject
   child.sayHello();
 
-Objects, Functions & Variables
+Objects, functions & variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Use *UpperCamelCase* for Objects, *lowerCamelCase* for functions and variables.
@@ -385,7 +385,7 @@ Here's why:
 
   ' \t\r\n ' == 0     // true
 
-Control Structures
+Control structures
 ^^^^^^^^^^^^^^^^^^
 
 * Always use { } for one line ifs

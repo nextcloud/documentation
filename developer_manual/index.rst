@@ -1,14 +1,14 @@
 .. _contents:
 
 =================================
-Nextcloud Developer Documentation
+Nextcloud developer documentation
 =================================
 
 .. _Nextcloud App Store: https://apps.nextcloud.com/
 .. _Translation: https://www.transifex.com/nextcloud/
 .. _Documentation: https://github.com/nextcloud/documentation#nextcloud-documentation
 
-Table of Contents
+Table of contents
 -----------------
 
 .. toctree::

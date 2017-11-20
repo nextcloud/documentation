@@ -1,7 +1,7 @@
 .. _index:
 
 ============================================
-Nextcloud |version| User Manual Introduction
+Nextcloud |version| user manual introduction
 ============================================
 
 **Welcome to Nextcloud: A safe home for all your data.**

@@ -1,5 +1,5 @@
 ====================
-Two-factor Providers
+Two-factor providers
 ====================
 
 .. sectionauthor:: Christoph Wurst <christoph@owncloud.com>

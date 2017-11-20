@@ -1,5 +1,5 @@
 ============
-Code Signing
+Code signing
 ============
 
 .. sectionauthor:: Lukas Reschke <lukas@nextcloud.com>
@@ -16,14 +16,14 @@ updates were a significant source of errors when updating Nextcloud.
 FAQ
 ---
 
-Why Did Nextcloud Add Code Signing?
+Why did Nextcloud add code signing?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 By supporting Code Signing we add another layer of security by ensuring that
 nobody other than authorized persons can push updates for applications, and
 ensuring proper upgrades.
 
-Do We Lock Down Nextcloud?
+Do we lock down Nextcloud?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Nextcloud project is open source and always will be. We do not want to
@@ -32,7 +32,7 @@ upgrades will not prevent Nextcloud from running, but will display a warning on
 the Admin page. For applications that are not tagged "Official" the code signing
 process is optional.
 
-Not Open Source Anymore?
+Not open source anymore?
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Nextcloud project is open source and always will be. The code signing
@@ -43,14 +43,14 @@ been set to stable.
 For custom distributions of Nextcloud it is recommended to change the release
 version branch in version.php to something else than "stable".
 
-Is Code Signing Mandatory For Apps?
+Is code signing mandatory for apps?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Code signing is required for all applications on apps.nextcloud.com.
 
 .. _code_signing_fix_warning_label:
 
-Fixing Invalid Code Integrity Messages
+Fixing invalid code integrity messages
 --------------------------------------
 
 A code integrity error message ("There were problems with the code integrity

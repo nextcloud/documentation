@@ -1,8 +1,8 @@
 ====================
-Mimetypes Management
+Mimetypes management
 ====================
 
-Mimetype Aliases
+Mimetype aliases
 ----------------
 
 Nextcloud allows you to create aliases for mimetypes, so that you can display 

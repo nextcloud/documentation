@@ -12,7 +12,7 @@ All calls to OCS endpoints require the ``OCS-APIRequest`` header to be set to ``
 Local Shares
 ------------
 
-Get All Shares
+Get all Shares
 ^^^^^^^^^^^^^^
 
 Get all shares from the user.

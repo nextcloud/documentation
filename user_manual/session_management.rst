@@ -1,11 +1,11 @@
 =====================================
-Manage Connected Browsers and Devices
+Manage connected browsers and devices
 =====================================
 
 The personal settings page allows you to have an overview on the connected
 browsers and devices.
 
-Managing Connected Browsers
+Managing connected browsers
 ---------------------------
 
 In the list of connected browsers you see which browsers connected to your
@@ -16,7 +16,7 @@ account recently:
 
 You can use the trash icon to disconnect any of the browsers in the list.
 
-Managing Devices
+Managing devices
 ----------------
 
 In the list of connected devices you see all the devices and clients you

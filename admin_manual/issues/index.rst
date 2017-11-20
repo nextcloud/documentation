@@ -1,5 +1,5 @@
 ==========================
-Issues and Troubleshooting
+Issues and troubleshooting
 ========================== 
 
 .. toctree::

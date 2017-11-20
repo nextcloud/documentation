@@ -1,5 +1,5 @@
 ========================
-Making Anonymous Uploads
+Making anonymous uploads
 ========================
 
 You may create your own special upload directories so that other people can upload
@@ -9,7 +9,7 @@ They will not be allowed to see the contents of this directory, or to make any
 changes. This is an excellent alternative to sending large attachments via email,
 using an FTP server, or using commercial file-sharing services.
 
-Setting Up Your Own File Drop
+Setting up your own file drop
 -----------------------------
 
 Go to Files and create or choose the folder, the anonymous upload should be
@@ -25,7 +25,7 @@ Now you can send the link to the upload folder manually or by using the
 Nextcloud send function, if your administrator has enabled it.
 
 
-Uploading Files
+Uploading files
 ---------------
 
 Using the anonymous upload function is simple. You receive a link to the upload

@@ -1,5 +1,5 @@
 ====================
-Files Access Control
+Files access control
 ====================
 
 Nextcloud's File Access Control app enables administrators to create and

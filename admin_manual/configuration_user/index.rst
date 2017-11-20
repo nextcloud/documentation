@@ -1,5 +1,5 @@
 ===============
-User Management
+User management
 ===============
 
 .. toctree::

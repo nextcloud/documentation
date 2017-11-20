@@ -1,5 +1,5 @@
 ======================================================
-Accessing your Files Using the Nextcloud Web Interface
+Accessing your files using the Nextcloud Web interface
 ======================================================
 
 You can access your Nextcloud files with the Nextcloud Web interface and create,
@@ -10,7 +10,7 @@ system ask your server administrator.
 .. figure:: ../images/users-files.png
    :alt: The Files view screen.
 
-Tagging Files
+Tagging files
 -------------
 
 You can assign tags to files. To create tags, open a file to the Details view.
@@ -35,7 +35,7 @@ are visible to everyone who has access to the file.
 .. figure:: ../images/file_menu_comments_2.png
    :alt: Creating and viewing comments.
 
-Video Player
+Video player
 ------------
 
 You can play videos in Nextcloud with the Video Player app by simply clicking on
@@ -46,7 +46,7 @@ streaming, and it doesn't work in your Web browser, it may be a browser issue. S
 .. figure:: ../images/video_player_2.png
    :alt: Watching a movie.
 
-File Controls
+File controls
 -------------
 
 Nextcloud can display thumbnail previews for image files, MP3 covers,
@@ -107,7 +107,7 @@ reduces clutter.
 .. figure:: ../images/hidden_files.png
    :alt: Hiding or displaying hidden files.
 
-Previewing Files
+Previewing files
 ----------------
 
 You can display uncompressed text files, OpenDocument files, videos, and image
@@ -116,7 +116,7 @@ be other file types you can preview if your Nextcloud administrator has enabled
 them. If Nextcloud cannot display a file, it starts a download process and
 downloads the file to your computer.
 
-Navigating Inside Your Nextcloud
+Navigating inside your Nextcloud
 --------------------------------
 
 Navigating through folders in Nextcloud is as simple as clicking on a folder to
@@ -124,7 +124,7 @@ open it and using the back button on your browser to move to a previous level.
 Nextcloud also provides a navigation bar at the top of the Files field for quick
 navigation.
 
-Sharing Status Icons
+Sharing status icons
 --------------------
 
 Any folder that has been shared is marked with the ``Shared`` overlay icon.
@@ -133,7 +133,7 @@ Public link shares are marked with a chain link. Un-shared folders are blank.
 .. figure:: ../images/files_page-5.png
    :alt: Share status icons.
 
-Creating or Uploading Files and Directories
+Creating or uploading files and directories
 -------------------------------------------
 
 Upload or create new files or folders directly in an Nextcloud folder by clicking
@@ -154,7 +154,7 @@ Text file
 Folder
   Creates a new folder in the current folder.
 
-Selecting Files or Folders
+Selecting files or folders
 --------------------------
 
 You can select one or more files or folders by clicking on their checkboxes. To
@@ -168,7 +168,7 @@ top.
 .. note:: If the ``Download`` button is not visible, the administrator has
    disabled this feature.
 
-Filtering the Files View
+Filtering the files view
 ------------------------
 
 The left sidebar on the Files page contains several filters for quickly sorting
@@ -193,13 +193,13 @@ External Storage (optional)
   Files that you have access to on external storage devices and services such
   as Dropbox, Google, and Amazon S3.
 
-Moving Files
+Moving files
 ------------
 
 You can move files and folders by dragging and dropping them into any directory.
 
 
-Change in Share Expiration Date
+Change in share expiration date
 -------------------------------
 
 In older versions of Nextcloud, you could set an expiration date on both local
@@ -207,7 +207,7 @@ and public shares. Now you can set an expiration date only on public shares,
 and local shares do not expire when public shares expire. The only way to
 "expire" a local share is to click the trash can icon to un-share your files.
 
-Creating or Connecting to a Federation Share Link
+Creating or connecting to a Federation Share link
 -------------------------------------------------
 
 Federated Cloud Sharing allows you to mount file shares from remote Nextcloud

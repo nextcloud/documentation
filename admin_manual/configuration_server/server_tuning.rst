@@ -1,5 +1,5 @@
 =============
-Server Tuning
+Server tuning
 =============
 
 Using cron to perform background jobs
@@ -29,7 +29,7 @@ configure Nextcloud for MySQL or MariaDB. If your installation is already runnin
 SQLite then it is possible to convert to MySQL or MariaDB using the steps provided
 in :doc:`../configuration_database/db_conversion`.
 
-Using Redis-based Transactional File Locking
+Using Redis-based transactional file locking
 --------------------------------------------
 
 File locking is enabled by default, using the database locking backend. This 
@@ -37,7 +37,7 @@ places a significant load on your database. See the section
 :doc:`../configuration_files/files_locking_transactional` for how to
 configure Nextcloud to use Redis-based Transactional File Locking.
 
-SSL / Encryption App
+SSL / encryption app
 --------------------
 
 SSL (HTTPS) and file encryption/decryption can be offloaded to a processor's 

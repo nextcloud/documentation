@@ -1,5 +1,5 @@
 ======================
-Help and Communication
+Help and communication
 ======================
 
 .. toctree::

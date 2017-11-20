@@ -8,7 +8,7 @@ information. In any case remember this page as the documentation on how it
 should be done. Nothing here is set in stone, so if you think something should
 be changed please discuss it on the `forums`_.
 
-The Labels
+The labels
 ----------
 
 The following list shows what the labels mean in the life-cycle and will
@@ -67,7 +67,7 @@ When can I pull?
 Who is Assigned?
   The maintainer that feels responsible for the issue.
 
-To Develop
+To develop
 ^^^^^^^^^^
 
 Why do we have it?
@@ -115,7 +115,7 @@ When can I pull?
 Who is Assigned?
   The most active developer should assign himself.
 
-To Review
+To review
 ^^^^^^^^^
 
 Why do we have it?
@@ -163,7 +163,7 @@ When can I pull?
 Who is Assigned?
   The most active reviewer should assign himself.
 
-To Release
+To release
 ^^^^^^^^^^
 
 Why do we have it?
@@ -199,10 +199,10 @@ repositories. If for some reason Drone cannot be used for the review you will
 find yourself in the very uncomfortable situation where you release half tested
 code that will hopefully not eat user data. Seriously! Write Gherkin scenarios!
 
-Other Labels
+Other labels
 ------------
 
-Priority Labels
+Priority labels
 ^^^^^^^^^^^^^^^
 
 * Panic should be used with caution. It is reserved for Bugs that would result
@@ -223,21 +223,21 @@ Priority Labels
   describe the functionality as a Gherkin scenario and either fix it or assign
   it to the developer in charge of that part.
 
-App Labels
+App labels
 ^^^^^^^^^^
 
 In the apps repository there are labels like ``app:gallery`` and
 ``app:calendar``. The ``app:`` prefix is used to allow developers to filter
 issues related to a specific app.
 
-Resolution Status
+Resolution status
 ^^^^^^^^^^^^^^^^^
 
 * Fixed – Should be assigned to issues in to Release
 * Won’t fix – Reason is given as a comment
 * Duplicate – Corresponding bug is given in a comment (using #guthubissuenumber)
 
-Misc Labels
+Misc labels
 ^^^^^^^^^^^
 
 * Needs info – Either from a developer or the bug reporter. This is nearly as
@@ -245,7 +245,7 @@ Misc Labels
 * L18n – A translation issue; go see our `Transifex`_
 * Junior Job – The issue is considered a good starting point to get involved in Nextcloud development
 
-Milestones equal Releases
+Milestones equal releases
 -------------------------
 
 Releases are planned via milestones which contain all the Enhancements and Bugs

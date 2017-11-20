@@ -1,5 +1,5 @@
 =======================
-General Troubleshooting
+General troubleshooting
 =======================
 
 If you have trouble installing, configuring or maintaining Nextcloud, please 
@@ -40,7 +40,7 @@ configuration report with the :ref:`occ config command
    https://docs.nextcloud.org/server/12/developer_manual/bugtracker/index.html
 .. TODO ON RELEASE: Update version number above on release
 
-General Troubleshooting
+General troubleshooting
 -----------------------
 
 Check the Nextcloud :doc:`../installation/system_requirements`, especially 
@@ -56,7 +56,7 @@ different issues. Always disable 3rd party apps before upgrades, and for
 troubleshooting. Please refer to the :ref:`apps_commands_label` on how
 to disable an app from command line.
 
-Nextcloud Logfiles
+Nextcloud logfiles
 ^^^^^^^^^^^^^^^^^^
 
 In a standard Nextcloud installation the log level is set to ``Normal``. To find 
@@ -79,7 +79,7 @@ the `Firebug extension <https://getfirebug.com/>`_.
 
 .. _label-phpinfo:
    
-PHP Version and Information
+PHP version and information
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You will need to know your PHP version and configurations. To do this, create a 
@@ -101,7 +101,7 @@ When you are finished reviewing your information you must delete
 ``phpinfo.php``, or move it outside of your Web directory, because it is a 
 security risk to expose such sensitive data.
 
-Debugging Sync Issues
+Debugging sync issues
 ^^^^^^^^^^^^^^^^^^^^^
 
 .. warning:: The data directory on the server is exclusive to Nextcloud and must 
@@ -232,7 +232,7 @@ There is also a well maintained FAQ thread available at the `ownCloud Forums
 <https://forum.owncloud.org/viewtopic.php?f=17&t=7536>`_
 which contains various additional information about WebDAV problems.
 
-Troubleshooting Contacts & Calendar
+Troubleshooting contacts & calendar
 -----------------------------------
 
 .. _service-discovery-label:
@@ -283,7 +283,7 @@ instead of e.g.
 There are also several techniques to remedy this, which are described extensively at 
 the `Sabre DAV website <http://sabre.io/dav/service-discovery/>`_.
 
-Unable to update Contacts or Events
+Unable to update contacts or events
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you get an error like:

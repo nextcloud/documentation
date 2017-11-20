@@ -1,5 +1,5 @@
 ========================
-Encryption Configuration
+Encryption configuration
 ========================
 
 The primary purpose of the Nextcloud server-side encryption is to protect users' 
@@ -73,7 +73,7 @@ storage.
    <https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your- 
    data/>`_ for more information.
    
-Before Enabling Encryption
+Before enabling encryption
 --------------------------
 
 Plan very carefully before enabling encryption because it is not reversible via 
@@ -85,7 +85,7 @@ You have more options via the ``occ`` command (see :ref:`occ_encryption_label`)
 
 .. _enable_encryption_label:
 
-Enabling Encryption
+Enabling encryption
 -------------------
 
 Nextcloud encryption consists of two parts. The base encryption system is 
@@ -116,7 +116,7 @@ storage.
 
 .. figure:: images/encryption15.png
 
-Sharing Encrypted Files
+Sharing encrypted files
 -----------------------
 
 After encryption is enabled your users must also log out and log back in to 
@@ -133,7 +133,7 @@ individual shares.
 
 .. figure:: images/encryption9.png
 
-Encrypting External Mountpoints
+Encrypting external mountpoints
 -------------------------------
 
 You and your users can encrypt individual external mountpoints. You must have 
@@ -145,7 +145,7 @@ storage mount, see :ref:`external_storage_mount_options_label`
 
 .. _enable-file-recovery-key:
 
-Enabling Users File Recovery Keys
+Enabling users file recovery keys
 ---------------------------------
 
 If you lose your Nextcloud password, then you lose access to your encrypted 
@@ -176,7 +176,7 @@ You may change your Recovery Key password.
 
 .. _occ_encryption_label:
 
-occ Encryption Commands
+occ encryption commands
 -----------------------
 
 If you have shell access you may use the ``occ`` command to perform encryption 
@@ -264,7 +264,7 @@ disable it::
 
  occ encryption:enable-master-key
  
-Disabling Encryption
+Disabling encryption
 --------------------
 
 You may disable encryption only with ``occ``. Make sure you have backups of all 
@@ -278,7 +278,7 @@ Take it out of maintenance mode when you are finished::
 
  occ maintenance:mode --off
 
-Files Not Encrypted
+Files not encrypted
 -------------------
 
 Only the data in the files in ``data/user/files`` are encrypted, and not the 
@@ -295,7 +295,7 @@ filenames or folder structures. These files are never encrypted:
 There may be other files that are not encrypted; only files that are exposed to 
 third-party storage providers are guaranteed to be encrypted.
 
-LDAP and Other External User Back-ends
+LDAP and other external user back-ends
 --------------------------------------
 
 If you use an external user back-end, such as an LDAP or Samba server, and you 

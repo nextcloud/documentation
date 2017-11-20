@@ -611,7 +611,7 @@ If you want to use a custom, lazily rendered response simply implement the inter
 
 .. note:: Because this code is rendered after several usually built in helpers, you need to take care of errors and proper HTTP caching by yourself.
 
-Modifying the Content Security Policy
+Modifying the content security policy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 By default Nextcloud disables all resources which are not served on the same domain, forbids cross domain requests and disables inline CSS and JavaScript by setting a `Content Security Policy <https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy>`_. However if an app relies on third-party media or other features which are forbidden by the current policy the policy can be relaxed.

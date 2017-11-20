@@ -1,5 +1,5 @@
 ============================
-Knowledge Base Configuration
+Knowledge base configuration
 ============================
 The usage of Nextcloud is more or less self explaining but nevertheless a user
 might run into a problem where he needs to consult the documentation or knowledge base. To ease access to the Nextcloud

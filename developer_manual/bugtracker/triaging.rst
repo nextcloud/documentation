@@ -1,5 +1,5 @@
 ======================
-Nextcloud Bug Triaging
+Nextcloud bug triaging
 ======================
 
 .. toctree::

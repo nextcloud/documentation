@@ -1,13 +1,13 @@
 .. _webdavindex:
 
-===============================
-WebDAV Client API's
-===============================
+==================
+WebDAV client APIs
+==================
 
 This document provides a quick overview of the WebDAV operations supported in Nextcloud, to keep things readable it won't go into many details
 for each operation, further information for each operation can be found in the corresponding rfc where applicable
 
-WebDAV Basics
+WebDAV basics
 -------------
 
 The base url for all WebDAV operations for a Nextcloud instance is :code:`/remote.php/dav`.
@@ -37,7 +37,7 @@ For example: you can perform a :code:`PROPFIND` request to find files in a folde
      </d:propfind>'
 
 
-Listing Folders (rfc4918_)
+Listing folders (rfc4918_)
 --------------------------
 
 The contents of a folder can be listed by sending a :code:`PROPFIND` request to the folder.

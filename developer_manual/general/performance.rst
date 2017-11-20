@@ -1,5 +1,5 @@
 ==========================
-Performance Considerations
+Performance considerations
 ==========================
 
 .. sectionauthor:: Frank Karlitschek <frank@karlitschek.com>

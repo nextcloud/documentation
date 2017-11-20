@@ -41,7 +41,7 @@
    code_signing
 
 ===============
-App Development
+App development
 ===============
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
@@ -120,7 +120,7 @@ Create database tables, run Sql queries, store/retrieve configuration informatio
 * :doc:`configuration`
 * :doc:`filesystem`
 
-Authentication & Users
+Authentication & users
 ^^^^^^^^^^^^^^^^^^^^^^
 
 Creating, deleting, updating, searching, login and logout:
@@ -138,7 +138,7 @@ Listen on events like user creation and execute code:
 
 * :doc:`hooks`
 
-Background Jobs
+Background jobs
 ^^^^^^^^^^^^^^^
 
 Periodically run code in the background:
@@ -173,7 +173,7 @@ Write automated tests to ensure stability and ease maintenance:
 
 * :doc:`testing`
 
-PHPDoc Class Documentation
+PHPDoc class documentation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Nextcloud class and function documentation:

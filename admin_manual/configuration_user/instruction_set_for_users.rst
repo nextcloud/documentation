@@ -1,5 +1,5 @@
 =========================
-Instruction Set For Users
+Instruction set for users
 =========================
 
 Add a new user
@@ -28,7 +28,7 @@ Example
   userid="Frank" -d password="frankspassword"``
 * Creates the user ``Frank`` with password ``frankspassword``
 
-XML Output
+XML output
 ^^^^^^^^^^
 
 .. code-block:: xml
@@ -66,7 +66,7 @@ Example
 * GET ``http://admin:secret@example.com/ocs/v1.php/cloud/users?search=Frank``
 * Returns list of users matching the search string.
 
-XML Output
+XML output
 ^^^^^^^^^^
 
 .. code-block:: xml
@@ -104,7 +104,7 @@ Example
   * GET ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank``
   * Returns information on the user ``Frank``
 
-XML Output
+XML output
 ^^^^^^^^^^
 
 .. code-block:: xml
@@ -173,7 +173,7 @@ Examples
     key="quota" -d value="100MB"``
   * Updates the quota for the user ``Frank``
   
-XML Output
+XML output
 ^^^^^^^^^^
 
 .. code-block:: xml
@@ -208,7 +208,7 @@ Example
   * PUT ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/disable``
   * Disables the user ``Frank``
 
-XML Output
+XML output
 ^^^^^^^^^^
 
 .. code-block:: xml
@@ -244,7 +244,7 @@ Example
   * PUT ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/enable``
   * Enables the user ``Frank``
 
-XML Output
+XML output
 ^^^^^^^^^^
 
 .. code-block:: xml
@@ -280,7 +280,7 @@ Example
   * DELETE ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank``
   * Deletes the user ``Frank``
 
-XML Output
+XML output
 ^^^^^^^^^^
 
 .. code-block:: xml
@@ -314,7 +314,7 @@ Example
   * GET  ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups``
   * Retrieves a list of groups of which ``Frank`` is a member
 
-XML Output
+XML output
 ^^^^^^^^^^
 
 .. code-block:: xml
@@ -360,7 +360,7 @@ Example
     -d groupid="newgroup"``
   * Adds the user ``Frank`` to the group ``newgroup``
 
-XML Output
+XML output
 ^^^^^^^^^^
 
 .. code-block:: xml
@@ -402,7 +402,7 @@ Example
     groupid="newgroup"``
   * Removes the user ``Frank`` from the group ``newgroup``
 
-XML Output
+XML output
 ^^^^^^^^^^
 
 .. code-block:: xml
@@ -443,7 +443,7 @@ Example
     -d groupid="group"``
   * Makes the user ``Frank`` a subadmin of the ``group`` group
 
-XML Output
+XML output
 ^^^^^^^^^^
 
 .. code-block:: xml
@@ -484,7 +484,7 @@ Example
     -d groupid="oldgroup"``
   * Removes ``Frank's`` subadmin rights from the ``oldgroup`` group
 
-XML Output
+XML output
 ^^^^^^^^^^
 
 .. code-block:: xml
@@ -521,7 +521,7 @@ Example
     ``https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins``
   * Returns the groups of which ``Frank`` is a subadmin
 
-XML Output
+XML output
 ^^^^^^^^^^
 
 .. code-block:: xml
@@ -560,7 +560,7 @@ Example
     ``https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/welcome``
   * Sends the welcome email to ``Frank``
 
-XML Output
+XML output
 ^^^^^^^^^^
 
 .. code-block:: xml

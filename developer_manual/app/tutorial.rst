@@ -38,7 +38,7 @@ Download the compressed file that contains the generated app and extract it into
 
 The first basic app is now available at ``http://localhost:8080/index.php/apps/yourappid/``
 
-Routes & Controllers
+Routes & controllers
 --------------------
 
 A typical web application consists of server side and client side code. The glue between those two parts are the URLs. In case of the notes app the following URLs will be used:
@@ -336,7 +336,7 @@ Entities are returned from so called :doc:`Mappers <database>`. Let's create one
 
 .. note:: The first parent constructor parameter is the database layer, the second one is the database table and the third is the entity on which the result should be mapped onto. Insert, delete and update methods are already implemented.
 
-Connect Database & Controllers
+Connect database & controllers
 ------------------------------
 
 The mapper which provides the database access is finished and can be passed into the controller.
@@ -671,7 +671,7 @@ Writing a test for the controller (recommended)
 
 Tests are essential for having happy users and a carefree life. No one wants their users to rant about your app breaking their Nextcloud or being buggy. To do that you need to test your app. Since this amounts to a ton of repetitive tasks, we need to automate the tests.
 
-Unit Tests
+Unit tests
 ^^^^^^^^^^
 
 A unit test is a test that tests a class in isolation. It is very fast and catches most of the bugs, so we want many unit tests.
@@ -812,7 +812,7 @@ If `PHPUnit is installed <https://phpunit.de/>`_ we can run the tests inside **o
 
 .. note:: You need to adjust the **ownnotes/tests/Unit/Controller/PageControllerTest** file to get the tests passing: remove the **testEcho** method since that method is no longer present in your **PageController** and do not test the user id parameters since they are not passed anymore
 
-Integration Tests
+Integration tests
 -----------------
 
 Integration tests are slow and need a fully working instance but make sure that our classes work well together. Instead of mocking out all classes and parameters we can decide whether to use full instances or replace certain classes. Because they are slow we don't want as many integration tests as unit tests.

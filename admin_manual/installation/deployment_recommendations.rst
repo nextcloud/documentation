@@ -1,5 +1,5 @@
 ==========================
-Deployment Recommendations
+Deployment recommendations
 ==========================
 
 What is the best way to install and maintain Nextcloud? The answer to that is
@@ -8,7 +8,7 @@ particular needs and IT infrastructure. Nextcloud and the LAMP stack are
 highly-configurable, so we will present three typical scenarios and make
 best-practice recommendations for both software and hardware.
 
-General Recommendations
+General recommendations
 -----------------------
 
 .. note:: Whatever the size of your organization, always keep one thing in mind:
@@ -36,7 +36,7 @@ keep individual Nextcloud instances to a manageable size.
    scale better under load and limited RAM restrictions:
    http://blog.bitnami.com/2014/06/performance-enhacements-for-apache-and.html
 
-Small Workgroups or Departments
+Small workgroups or departments
 -------------------------------
 
 * Number of users
@@ -50,7 +50,7 @@ Small Workgroups or Departments
    interruption of service. Alternate backup scheme on other filesystems:
    nightly backups with service interruption.
 
-Recommended System Requirements
+Recommended system requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 One machine running the application server, Web server, database server and
@@ -123,7 +123,7 @@ Authentication via an existing LDAP or Active Directory server.
 * Storage
    Local storage.
 
-Mid-sized Enterprises
+Mid-sized enterprises
 ---------------------
 
 * Number of users
@@ -136,7 +136,7 @@ Mid-sized Enterprises
    Every component is fully redundant and can fail without service interruption.
    Backups without service interruption
 
-Recommended System Requirements
+Recommended system requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 2 to 4 application servers.
@@ -247,7 +247,7 @@ Authentication via an existing LDAP or Active Directory server.
    Use an off-the-shelf NFS solution, such as IBM Elastic Storage or RedHat
    Ceph.
 
-Large Enterprises and Service Providers
+Large enterprises and service providers
 ---------------------------------------
 
 * Number of users
@@ -260,7 +260,7 @@ Large Enterprises and Service Providers
    Every component is fully redundant and can fail without service interruption.
    Backups without service interruption
 
-Recommended System Requirements
+Recommended system requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 4 to 20 application/Web servers.
@@ -376,7 +376,7 @@ Authentication via an existing LDAP or Active Directory server, or SAML.
    Storage or RedHAT Ceph. Optionally, an S3 compatible object store can also
    be used.
 
-Hardware Considerations
+Hardware considerations
 -----------------------
 
 * Solid-state drives (SSDs) for I/O.
@@ -384,7 +384,7 @@ Hardware Considerations
 * Multiple network interfaces to distribute server synchronisation and backend
   traffic across multiple subnets.
 
-Single Machine / Scale-Up Deployment
+Single machine / scale-up deployment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The single-machine deployment is widely used in the community.
@@ -404,7 +404,7 @@ Cons:
   single machine will not scale; I/O performance decreases and becomes a
   bottleneck with multiple up- and downloads, even with solid-state drives.
 
-Scale-Out Deployment
+Scale-Out deployment
 ^^^^^^^^^^^^^^^^^^^^
 
 Provider setup:
@@ -433,13 +433,13 @@ Cons:
 * Currently DB filecache table will grow rapidly, making migrations painful in
   case the table is altered.
 
-What About Nginx / PHP-FPM?
+What about Nginx / PHP-FPM?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Could be used instead of HAproxy as the load balancer.
 But on uploads stores the whole file on disk before handing it over to PHP-FPM.
 
-A Single Master DB is Single Point of Failure, Does Not Scale
+A single master DB is single point of failure, does not scale
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When master fails another slave can become master.
@@ -456,10 +456,10 @@ When Galera cluster is used as DB cluster solution, we recommend to use
 `MaxScale`_ as load balancer infront of the cluster to distribute writes to
 the master node and reads to the slaves.
 
-Software Considerations
+Software considerations
 -----------------------
 
-Operating System
+Operating system
 ^^^^^^^^^^^^^^^^
 
 We are dependent on distributions that offer an easy way to install the various
@@ -476,7 +476,7 @@ best option, as Nginx does not support all features necessary for enterprise
 deployments. Mod_php is recommended instead of PHP_FPM, because in scale-out
 deployments separate PHP pools are simply not necessary.
 
-Relational Database
+Relational database
 ^^^^^^^^^^^^^^^^^^^
 
 More often than not the customer already has an opinion on what database to

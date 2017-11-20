@@ -1,5 +1,5 @@
 ===================
-Nginx Configuration
+Nginx configuration
 ===================
 
 This page covers example Nginx configurations to use with running an Nextcloud
@@ -312,10 +312,10 @@ your nginx installation.
       }
   }
 
-Tips and Tricks
+Tips and tricks
 ---------------
 
-Suppressing Log Messages
+Suppressing log messages
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you're seeing meaningless messages in your logfile, for example ``client

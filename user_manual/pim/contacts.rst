@@ -1,5 +1,5 @@
 ======================
-Using the Contacts App
+Using the contacts app
 ======================
 
 The Contacts app is not enabled by default in Nextcloud |version| and needs to
@@ -13,7 +13,7 @@ address book becomes available.
 
  **Contacts app (empty)**
 
-Adding Contacts
+Adding contacts
 ---------------
 You can add contacts using one of the following methods:
 
@@ -91,7 +91,7 @@ click on the contacts picture.
 
 .. figure:: ../images/contact_picture_options.png
 
-Adding and Managing Address Books
+Adding and managing address books
 ---------------------------------
 
 Clicking on the settings (gear) button at the bottom of the Apps Information

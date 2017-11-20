@@ -13,7 +13,7 @@
    ocs-share-api
 
 =================
-Core Development
+Core development
 =================
 
 Intro

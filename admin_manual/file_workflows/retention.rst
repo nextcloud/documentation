@@ -1,5 +1,5 @@
 ==================
-Retention of Files
+Retention of files
 ==================
 
 Nextcloud's Files Retention app allows to automatically delete files that

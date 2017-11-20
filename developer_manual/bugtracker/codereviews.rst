@@ -1,5 +1,5 @@
 ======================
-Code Reviews on GitHub
+Code reviews on GitHub
 ======================
 
   Given enough eyeballs, all bugs are shallow

@@ -1,5 +1,5 @@
 =========================
-Two Factor Authentication
+Two factor authentication
 =========================
 
 Starting with Nextcloud 10, it is possible to use two factor authentication
@@ -10,7 +10,7 @@ SMS 2-factor and `U2F <https://en.wikipedia.org/wiki/Universal_2nd_Factor>`_.
 Developers can `built new two-factor provider apps <https://docs.nextcloud.com/server/12/developer_manual/app/two-factor-provider.html>`_.
 .. TODO ON RELEASE: Update version number above on release
 
-Enabling Two Factor Authentication
+Enabling two factor authentication
 ----------------------------------
 
 You can enable 2FA by installing and enabling a 2FA app like TOTP which works

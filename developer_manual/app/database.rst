@@ -1,5 +1,5 @@
 ===============
-Database Access
+Database access
 ===============
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>

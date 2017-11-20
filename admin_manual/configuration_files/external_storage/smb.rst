@@ -69,7 +69,7 @@ You can find the mount id for a specific storage using ``occ files_external:list
 On default this command shows no output, can you see the list of detected changes by
 passing the ``-v`` option to the command.
 
-SMB Authentication
+SMB authentication
 ^^^^^^^^^^^^^^^^^^
 
 In some cases (such as when using login credentials) it's not possible to read the

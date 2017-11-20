@@ -1,8 +1,8 @@
 ====================
-Upgrade via Packages
+Upgrade via packages
 ====================
   
-Upgrade Quickstart
+Upgrade quickstart
 ------------------
 
 One effective, if unofficial method for keeping Nextcloud current on Linux servers is by configuring 
@@ -51,7 +51,7 @@ using Snappy Base 16.04 as it's currently unreleased.
   <maintenance_commands_label>`.  
 * Re-enable third-party apps.
 
-Upgrade Tips
+Upgrade tips
 ------------
 
 Upgrading Nextcloud from a Snap is just like upgrading any snap package.
@@ -79,7 +79,7 @@ This example is for CentOS/RHEL/Fedora::
    
 .. _skipped_release_upgrade_label:  
    
-Upgrading Across Skipped Releases
+Upgrading across skipped releases
 ---------------------------------
 
 It is best to update your Nextcloud installation with every new point release, 

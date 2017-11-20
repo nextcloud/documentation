@@ -1,5 +1,5 @@
 ======================
-Warnings on Admin Page
+Warnings on admin page
 ======================
 
 Your Nextcloud server has a built-in configuration checker, and it reports its 
@@ -14,7 +14,7 @@ IP addresses in the past to try and reach out to `extremely outdated systems <ht
 and might again in the future. Please, protect your privacy and keep your server
 up to date! Privacy means little without security.
 
-Cache Warnings
+Cache warnings
 --------------
 
 "No memory cache has been configured. To enhance your performance please 

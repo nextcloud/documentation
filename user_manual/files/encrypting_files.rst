@@ -1,5 +1,5 @@
 ===============================
-Encrypting Your Nextcloud Files
+Encrypting your Nextcloud files
 ===============================
 
 Nextcloud includes an Encryption app, and when it is enabled by your Nextcloud
@@ -30,7 +30,7 @@ to learn more.)
 Encryption FAQ
 --------------
 
-How Can Encryption Be Disabled?
+How can encryption be disabled?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The only way to disable encryption is to run the `"decrypt all"
@@ -40,7 +40,7 @@ The only way to disable encryption is to run the `"decrypt all"
 
 script, which decrypts all files and disables encryption.
 
-Is It Possible To Disable Encryption With The Recovery Key?
+Is it possible to disable encryption with the recovery key?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Yes, *if* every user uses the `file recovery key
@@ -49,7 +49,7 @@ Yes, *if* every user uses the `file recovery key
 
 .. TODO ON RELEASE: Update version number above on release
 
-Can Encryption Be Disabled Without The User’s Password?
+Can encryption be disabled without the user's password?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you don't have the users password or `file recovery key
@@ -61,19 +61,19 @@ then there is no way to decrypt all files. What's
 more, running it on login would be dangerous, because you would most likely run
 into timeouts.
 
-Is It Planned To Move This To The Next User Login Or A Background Job?
+Is it planned to move this to the next user login or a background job?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If we did that, then we would need to store your login password in the database.
 This could be seen as a security issue, so nothing like that is planned.
 
-Is Group Sharing Possible With The Recovery Key?
+Is group Sharing possible with the recovery key?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you mean adding users to groups and make it magically work? No. This only
 works with the master key.
 
-Using Encryption
+Using encryption
 ----------------
 
 Nextcloud encryption is pretty much set it and forget it, but you have a few
@@ -97,7 +97,7 @@ files you have, and then you are returned to your default Nextcloud page.
    Nextcloud administrator may enable; see the Recovery Key Password section
    (below) to learn about this.
 
-Sharing Encrypted Files
+Sharing encrypted files
 -----------------------
 
 Only users who have private encryption keys have access to shared encrypted
@@ -114,7 +114,7 @@ re-share the file. For group shares, share with any individuals who can't access
 the share. This updates the encryption, and then the share owner can remove the
 individual shares.
 
-Recovery Key Password
+Recovery key password
 ^^^^^^^^^^^^^^^^^^^^^
 
 If your Nextcloud administrator has enabled the recovery key feature, you can
@@ -126,7 +126,7 @@ restore your files if you lose your login password.
 
 .. figure:: ../images/encryption3.png
 
-Files Not Encrypted
+Files not encrypted
 -------------------
 
 Only the data in your files is encrypted, and not the filenames or folder
@@ -141,7 +141,7 @@ structures. These files are never encrypted:
 There may be other files that are not encrypted; only files that are exposed to
 third-party storage providers are guaranteed to be encrypted.
 
-Change Private Key Password
+Change private key password
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This option is only available if your log-in password, but not your encryption

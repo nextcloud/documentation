@@ -1,5 +1,5 @@
 ===============================
-Migrating to a Different Server
+Migrating to a different server
 ===============================
 
 

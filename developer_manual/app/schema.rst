@@ -1,5 +1,5 @@
 ===============
-Database Schema
+Database schema
 ===============
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
