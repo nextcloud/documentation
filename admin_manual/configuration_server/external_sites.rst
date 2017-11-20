@@ -15,22 +15,21 @@ Nextcloud manuals and informational pages for your company, and for presenting
 external pages inside your custom Nextcloud branding, if you use your own custom 
 themes.
 
-The External sites app is included in all versions of Nextcloud. Go to **Settings > Apps >
-Disabled apps** to enable it. Then go to your Nextcloud **Settings > Admin > Additional
-settings** to create your links, which are saved automatically.
+The External sites app can be easily installed from the app store. Go to **Settings > Apps >
+Customization** to enable it. Then go to your Nextcloud **Settings > Administration > External sites** to create your
+links, which are saved automatically.
 
-Each link can have a unique icon, icons are currently loaded from ``apps/external/img/``.
+Each link can have a unique icon, which can be uploaded in the admin settings.
 If you select a language, the link will only be displayed for users with the selected language.
 This allows you to have different documentation links for users depending on their language.
 
 It is also possible to add links for a special device (recognized by the user agent).
 Currently the following options are available: All devices, Android app, iOS app, Desktop client and all others (Browsers).
 
-Hover your cursor over a row to make the trashcan icon appear when you
-want to remove them.
+Starting with Nextcloud 13, it is also possible to add links only for members of a given group.
 
 .. figure:: ../images/external-sites-2.png
-   :scale: 80%
+   :scale: 50%
 
    *Click to enlarge*
 
@@ -66,5 +65,5 @@ On this page, X-Frame-Options prevents the embedding.
 
 .. figure:: ../images/external-sites-5.png
 
-There isn't much you can do about these issues, but if you're curious you can 
-see what is happening.
+**New:** With Nextcloud 13 a redirect option was added, so such websites can still be added for quick access.
+Instead of embedding the website the user will be redirected to it instead.
