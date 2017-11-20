@@ -90,7 +90,7 @@ To create a mapper, inherit from the mapper base class and call the parent const
 
 
         public function authorNameCount($name) {
-            $sql = 'SELECT COUNT(*) AS `count` FROM `PREFIXmyapp_authors` ' .
+            $sql = 'SELECT COUNT(*) AS `count` FROM `*PREFIX*myapp_authors` ' .
                 'WHERE `name` = ?';
             $stmt = $this->execute($sql, [$name]);
 
