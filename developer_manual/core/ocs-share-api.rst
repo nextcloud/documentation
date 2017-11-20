@@ -10,10 +10,10 @@ The base URL for all calls to the share API is: *<nextcloud_base_url>/ocs/v2.php
 All calls to OCS endpoints require the ``OCS-APIRequest`` header to be set to ``true``.
 
 Local Shares
-============
+------------
 
 Get All Shares
---------------
+^^^^^^^^^^^^^^
 
 Get all shares from the user.
 
@@ -28,7 +28,7 @@ Statuscodes:
 * 404 - couldn't fetch shares
 
 Get Shares from a specific file or folder
------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Get all shares from a given file/folder.
 
@@ -50,7 +50,7 @@ Statuscodes:
 * 404 - file doesn't exist
 
 Get information about a known Share
------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Get information about a given share.
 
@@ -67,7 +67,7 @@ Statuscodes:
 * 404 - share doesn't exist
 
 Create a new Share
-------------------
+^^^^^^^^^^^^^^^^^^
 
 Share a file/folder with a user/group or as public link.
 
@@ -93,7 +93,7 @@ Statuscodes:
 * 404 - file couldn't be shared
 
 Delete Share
-------------
+^^^^^^^^^^^^
 
 Remove the given share.
 
@@ -108,7 +108,7 @@ Statuscodes:
 * 404 - file couldn't be deleted
 
 Update Share
-------------
+^^^^^^^^^^^^
 
 Update a given share. Only one value can be updated per request.
 
@@ -135,7 +135,7 @@ Statuscodes:
 
 
 Federated Cloud Shares
-======================
+----------------------
 
 Both the sending and the receiving instance need to have federated cloud sharing
 enabled and configured. See `Configuring Federated Cloud Sharing <https://docs.nextcloud.org/server/12/admin_manual/configuration_files/federated_cloud_sharing_configuration.html>`_.
@@ -143,7 +143,7 @@ enabled and configured. See `Configuring Federated Cloud Sharing <https://docs.n
 .. TODO ON RELEASE: Update version number above on release
 
 Create a new Federated Cloud Share
-----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Creating a federated cloud share can be done via the local share endpoint, using
 (int) 6 as a shareType and the `Federated Cloud ID <https://nextcloud.com/federation/>`_
@@ -151,7 +151,7 @@ of the share recipient as shareWith. See `Create a new Share`_ for more informat
 
 
 List accepted Federated Cloud Shares
-------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Get all federated cloud shares the user has accepted.
 
@@ -165,7 +165,7 @@ Statuscodes:
 * 100 - successful
 
 Get information about a known Federated Cloud Share
----------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Get information about a given received federated cloud that was sent from a remote instance.
 
@@ -182,7 +182,7 @@ Statuscodes:
 * 404 - share doesn't exist
 
 Delete an accepted Federated Cloud Share
-----------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Locally delete a received federated cloud share that was sent from a remote instance.
 
@@ -199,7 +199,7 @@ Statuscodes:
 * 404 - share doesn't exist
 
 List pending Federated Cloud Shares
------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Get all pending federated cloud shares the user has received.
 
@@ -213,7 +213,7 @@ Statuscodes:
 * 100 - successful
 
 Accept a pending Federated Cloud Share
---------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Locally accept a received federated cloud share that was sent from a remote instance.
 
@@ -230,7 +230,7 @@ Statuscodes:
 * 404 - share doesn't exist
 
 Decline a pending Federated Cloud Share
----------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Locally decline a received federated cloud share that was sent from a remote instance.
 

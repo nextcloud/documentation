@@ -2,19 +2,19 @@
 .. codeauthor:: John Molakvoæ <skjnldsv@protonmail.com>
 ..  _popovermenu:
 
-===============
+============
 Popover Menu
-===============
+============
 
 What is a popover menu
-=======================
+----------------------
 
 This is a quick menu that open on click. For menus, we use the three-dot-icon.
 
 This is exactly the same as the :ref:`navigation menu <navigation_menu>`. The only difference is the popovermenu class.
 
 Basic layout
-=============
+------------
 
 .. figure:: ../images/popovermenu.png
    :alt: Popover image example
@@ -62,7 +62,7 @@ Basic layout
     </div>
 
 Technical details
-==================
+-----------------
 
 * The only allowed menu items elements are **a**, **button** and **span** for the checkbox and radio only.
 * You can mix between a and button on the same menu (in case of form or direct link) like the example above
@@ -78,7 +78,8 @@ Technical details
 .. image:: ../images/popover-position.png
 
 Alignment
-==========
+---------
+
 If you want to align your menu, you can add the class to the main popovermenu div.
 
 * Center: ``menu-center``

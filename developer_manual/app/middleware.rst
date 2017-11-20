@@ -76,7 +76,8 @@ The middleware can be registered in the :doc:`container` and added using the **r
 
 
 Parsing annotations 
-===================
+-------------------
+
 Sometimes it is useful to conditionally execute code before or after a controller method. This can be done by defining custom annotations. An example would be to add a custom authentication method or simply add an additional header to the response. To access the parsed annotations, inject the **ControllerMethodReflector** class:
 
 .. code-block:: php

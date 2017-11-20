@@ -1,3 +1,4 @@
+=================================
 Coding Style & General Guidelines
 =================================
 
@@ -18,6 +19,7 @@ General
 
 Labels
 ------
+
 We assign labels to issues and pull requests to make it easy to find them and to signal what needs to be done. Some of these are assigned by the developers, others by QA, bug triagers, project lead or maintainers and so on. It is not desired that users/reporters of bugs assign labels themselves, unless they are developers/contributors to Nextcloud.
 
 The most important labels and their meaning:
@@ -42,6 +44,7 @@ If you want a label not in the list above, please first discuss on the mailing l
 
 Coding
 ------
+
 * Maximum line-length of 80 characters
 * Use tabs to indent
 * A tab is 4 spaces wide
@@ -86,6 +89,7 @@ If you edit an existing file please add a copyright notice with your name, if yo
 
 User interface
 --------------
+
 * Software should get out of the way. Do things automatically instead of offering configuration options.
 * Software should be easy to use. Show only the most important elements. Secondary elements only on hover or via Advanced function.
 * User data is sacred. Provide undo instead of asking for confirmation - `which might be dismissed <http://www.alistapart.com/articles/neveruseawarning/>`_
@@ -97,6 +101,7 @@ User interface
 
 PHP
 ---
+
 The Nextcloud coding style guide is based on `PEAR Coding Standards <http://pear.php.net/manual/en/standards.php>`_.
 
 Always use::
@@ -131,6 +136,7 @@ All API methods need to be marked with `PHPDoc <http://en.wikipedia.org/wiki/PHP
 
 Objects, Functions, Arrays & Variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Use *UpperCamelCase* for Objects, *lowerCamelCase* for functions and variables. If you set
 a default function/method parameter, do not use spaces. Do not prepend private
 class members with underscores.
@@ -157,6 +163,7 @@ class members with underscores.
 
 Operators
 ^^^^^^^^^
+
 Use **===** and **!==** instead of **==** and **!=**.
 
 Here's why:
@@ -174,6 +181,7 @@ Here's why:
 
 Control Structures
 ^^^^^^^^^^^^^^^^^^
+
 * Always use { } for one line ifs
 * Split long ifs into multiple lines
 * Always use break in switch statements and prevent a default block with warnings if it shouldn't be accessed
@@ -220,6 +228,7 @@ Control Structures
 
 Unit tests
 ^^^^^^^^^^
+
 Unit tests must always extend the ``\Test\TestCase`` class, which takes care
 of cleaning up the installation after the test.
 
@@ -250,6 +259,7 @@ with ``Data``.
 
 JavaScript
 ----------
+
 In general take a look at `JSLint <http://www.jslint.com>`_ without the whitespace rules.
 
 * Use a :file:`js/main.js` or :file:`js/app.js` where your program is started
@@ -292,6 +302,7 @@ In general take a look at `JSLint <http://www.jslint.com>`_ without the whitespa
 
 Objects & Inheritance
 ^^^^^^^^^^^^^^^^^^^^^
+
 Try to use OOP in your JavaScript to make your code reusable and flexible.
 
 This is how you'd do inheritance in JavaScript:
@@ -332,6 +343,7 @@ This is how you'd do inheritance in JavaScript:
 
 Objects, Functions & Variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Use *UpperCamelCase* for Objects, *lowerCamelCase* for functions and variables.
 
 .. code-block:: javascript
@@ -353,6 +365,7 @@ Use *UpperCamelCase* for Objects, *lowerCamelCase* for functions and variables.
 
 Operators
 ^^^^^^^^^
+
 Use **===** and **!==** instead of **==** and **!=**.
 
 Here's why:
@@ -374,6 +387,7 @@ Here's why:
 
 Control Structures
 ^^^^^^^^^^^^^^^^^^
+
 * Always use { } for one line ifs
 * Split long ifs into multiple lines
 * Always use break in switch statements and prevent a default block with warnings if it shouldn't be accessed
@@ -417,6 +431,7 @@ Control Structures
 
 CSS
 ---
+
 Take a look at the `Writing Tactical CSS & HTML <http://www.youtube.com/watch?v=hou2wJCh3XE&feature=plcp>`_ video on YouTube.
 
 Don't bind your CSS too much to your HTML structure and try to avoid IDs. Also try to make your CSS reusable by grouping common attributes into classes.

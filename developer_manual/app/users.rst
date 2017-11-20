@@ -41,7 +41,8 @@ Users can be managed using the UserManager which is injected from the ServerCont
 
 
 Creating users
-==============
+--------------
+
 Creating a user is done by passing a username and password to the create method:
 
 .. code-block:: php
@@ -64,7 +65,8 @@ Creating a user is done by passing a username and password to the create method:
     }
 
 Modifying users
-===============
+---------------
+
 Users can be modified by getting a user by the userId or by a search pattern. The returned user objects can then be used to:
 
 * Delete them
@@ -104,7 +106,8 @@ Users can be modified by getting a user by the userId or by a search pattern. Th
     }
 
 User Session Information
-========================
+------------------------
+
 To login, logout or getting the currently logged in user, the UserSession has to be injected from the ServerContainer:
 
 .. code-block:: php
@@ -170,4 +173,3 @@ Then users can be logged in by using:
         }
 
     }
-

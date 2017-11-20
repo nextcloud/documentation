@@ -28,7 +28,7 @@ Printing values is done by using the **p()** function, printing HTML is done by 
 
   
 Including templates
-===================
+-------------------
 
 Templates can also include other templates by using the **$this->inc('templateName')** method. 
 
@@ -48,7 +48,8 @@ The parent variables will also be available in the included templates, but shoul
   <?php print_unescaped($this->inc('other_template', array('variable' => 'value'))); ?>
 
 Including CSS and JavaScript
-============================
+----------------------------
+
 To include CSS or JavaScript use the **style** and **script** functions:
 
 .. code-block:: php
@@ -59,7 +60,8 @@ To include CSS or JavaScript use the **style** and **script** functions:
 
 
 Including images
-================
+----------------
+
 To generate links to images use the **image_path** function:
 
 .. code-block:: php

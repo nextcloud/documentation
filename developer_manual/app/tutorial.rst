@@ -8,7 +8,8 @@ This tutorial will outline how to create a very simple notes app. The finished a
 
 
 Setup
-=====
+-----
+
 First the :doc:`development environment <../general/devenv>` needs to be set up. This can be done by either `downloading the zip from the website <https://nextcloud.com/install/>`_ or cloning it directly from GitHub::
 
    git clone git@github.com:nextcloud/server.git --branch $BRANCH
@@ -38,7 +39,8 @@ Download the compressed file that contains the generated app and extract it into
 The first basic app is now available at ``http://localhost:8080/index.php/apps/yourappid/``
 
 Routes & Controllers
-====================
+--------------------
+
 A typical web application consists of server side and client side code. The glue between those two parts are the URLs. In case of the notes app the following URLs will be used:
 
 * **GET /**: Returns the interface in HTML
@@ -205,7 +207,8 @@ Since those 5 routes are so common, they can be abbreviated by adding a resource
     ];
 
 Database
-========
+--------
+
 Now that the routes are set up and connected the notes should be saved in the database. To do that first create a :doc:`database schema <schema>` by creating **ownnotes/appinfo/database.xml**:
 
 .. code-block:: xml
@@ -334,7 +337,8 @@ Entities are returned from so called :doc:`Mappers <database>`. Let's create one
 .. note:: The first parent constructor parameter is the database layer, the second one is the database table and the third is the entity on which the result should be mapped onto. Insert, delete and update methods are already implemented.
 
 Connect Database & Controllers
-==============================
+------------------------------
+
 The mapper which provides the database access is finished and can be passed into the controller.
 
 You can pass in the mapper by adding it as a type hinted parameter. Nextcloud will figure out how to :doc:`assemble them by itself <container>`. Additionally we want to know the userId of the currently logged in user. Simply add a **$UserId** parameter to the constructor (case sensitive!). To do that open **ownnotes/lib/Controller/NoteController.php** and change it to the following:
@@ -439,7 +443,8 @@ You can pass in the mapper by adding it as a type hinted parameter. Nextcloud wi
 This is all that is needed on the server side. Now let's progress to the client side.
 
 Making things reusable and decoupling controllers from the database
-===================================================================
+-------------------------------------------------------------------
+
 Let's say our app is now on the app store and and we get a request that we should save the files in the filesystem which requires access to the filesystem.
 
 The filesystem API is quite different from the database API and throws different exceptions, which means we need to rewrite everything in the **NoteController** class to use it. This is bad because a controller's only responsibility should be to deal with incoming Http requests and return Http responses. If we need to change the controller because the data storage was changed the code is probably too tightly coupled and we need to add another layer in between. This layer is called **Service**.
@@ -662,11 +667,13 @@ Now we can wire up the trait and the service inside the **NoteController**:
 Great! Now the only reason that the controller needs to be changed is when request/response related things change.
 
 Writing a test for the controller (recommended)
-===============================================
+-----------------------------------------------
+
 Tests are essential for having happy users and a carefree life. No one wants their users to rant about your app breaking their Nextcloud or being buggy. To do that you need to test your app. Since this amounts to a ton of repetitive tasks, we need to automate the tests.
 
 Unit Tests
-----------
+^^^^^^^^^^
+
 A unit test is a test that tests a class in isolation. It is very fast and catches most of the bugs, so we want many unit tests.
 
 Because Nextcloud uses :doc:`Dependency Injection <container>` to assemble your app, it is very easy to write unit tests by passing mocks into the constructor. A simple test for the update method can be added by adding this to **ownnotes/tests/Unit/Controller/NoteControllerTest.php**:
@@ -807,6 +814,7 @@ If `PHPUnit is installed <https://phpunit.de/>`_ we can run the tests inside **o
 
 Integration Tests
 -----------------
+
 Integration tests are slow and need a fully working instance but make sure that our classes work well together. Instead of mocking out all classes and parameters we can decide whether to use full instances or replace certain classes. Because they are slow we don't want as many integration tests as unit tests.
 
 In our case we want to create an integration test for the udpate method without mocking out the **NoteMapper** class so we actually write to the existing database.
@@ -881,7 +889,8 @@ To run the integration tests change into the **ownnotes** directory and run::
     phpunit -c phpunit.integration.xml
 
 Adding a RESTful API (optional)
-===============================
+-------------------------------
+
 A :doc:`RESTful API <api>` allows other apps such as Android or iPhone apps to access and change your notes. Since syncing is a big core component of Nextcloud it is a good idea to add (and document!) your own RESTful API.
 
 Because we put our logic into the **NoteService** class it is very easy to reuse it. The only pieces that need to be changed are the annotations which disable the CSRF check (not needed for a REST call usually) and add support for `CORS <https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS>`_ so your API can be accessed from other webapps.
@@ -1021,7 +1030,8 @@ Since the **NoteApiController** is basically identical to the **NoteController**
     }
 
 Adding JavaScript and CSS
-=========================
+-------------------------
+
 To create a modern webapp you need to write :doc:`JavaScript<js>`. You can use any JavaScript framework but for this tutorial we want to keep it as simple as possible and therefore only include the templating library `handlebarsjs <http://handlebarsjs.com/>`_. `Download the file <http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v2.0.0.js>`_ into **ownnotes/js/handlebars.js** and include it at the very top of **ownnotes/templates/main.php** before the other scripts and styles:
 
 .. code-block:: php
@@ -1032,7 +1042,8 @@ To create a modern webapp you need to write :doc:`JavaScript<js>`. You can use a
 .. note:: jQuery is included by default on every page.
 
 Creating a navigation
-=====================
+---------------------
+
 The template file **ownnotes/templates/part.navigation.php** contains the navigation. Nextcloud defines many handy :doc:`CSS styles <css>` which we are going to reuse to style the navigation. Adjust the file to contain only the following code:
 
 .. note:: **$l->t()** is used to make your strings :doc:`translatable <l10n>` and **p()** is used :doc:`to print escaped HTML <templates>`
@@ -1065,7 +1076,8 @@ The template file **ownnotes/templates/part.navigation.php** contains the naviga
     <ul></ul>
 
 Creating the content
-====================
+--------------------
+
 The template file **ownnotes/templates/part.content.php** contains the content. It will just be a textarea and a button, so replace the content with the following:
 
 .. code-block:: php
@@ -1082,7 +1094,7 @@ The template file **ownnotes/templates/part.content.php** contains the content. 
     <div id="editor"></div>
 
 Wiring it up
-============
+------------
 
 When the page is loaded we want all the existing notes to load. Furthermore we want to display the current note when you click on it in the navigation, a note should be deleted when we click the deleted button and clicking on **New note** should create a new note. To do that open **ownnotes/js/script.js** and replace the example code with the following:
 
@@ -1294,7 +1306,8 @@ When the page is loaded we want all the existing notes to load. Furthermore we w
 
 
 Apply finishing touches
-=======================
+-----------------------
+
 Now the only thing left is to style the textarea in a nicer fashion. To do that open **ownnotes/css/style.css** and replace the content with the following :doc:`CSS <css>` code:
 
 .. code-block:: css

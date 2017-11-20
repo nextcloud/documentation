@@ -9,7 +9,7 @@ Nextcloud Developer Documentation
 .. _Documentation: https://github.com/nextcloud/documentation#nextcloud-documentation
 
 Table of Contents
-=================
+-----------------
 
 .. toctree::
     :maxdepth: 2

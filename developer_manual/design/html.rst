@@ -2,12 +2,12 @@
 .. codeauthor:: John Molakvoæ <skjnldsv@protonmail.com>
 ..  _html:
 
-===============
+=============
 Html elements
-===============
+=============
 
 Progress bar
-=============
+------------
 
 Nextcloud support and provides an already themed progress bar.
 
@@ -24,7 +24,7 @@ Please use the html5 ``progress`` element.
 .. _checkboxes-and-radios:
 
 Checkboxes and radios
-======================
+---------------------
 
 As default html5 checkboxes & radios are **not** customizable, we created an override using label and ``::after`` elements.
 
@@ -76,4 +76,4 @@ Requirements:
 
 
 Buttons
-==================
+-------
