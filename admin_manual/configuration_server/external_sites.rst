@@ -1,5 +1,5 @@
 ======================
-Linking External Sites
+Linking external sites
 ======================
 
 You can embed external websites or documents inside your Nextcloud pages with the External

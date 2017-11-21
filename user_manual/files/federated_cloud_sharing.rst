@@ -6,7 +6,7 @@ Federation Sharing allows you to mount file shares from remote Nextcloud servers
 creating your own cloud of Nextclouds. You can create direct share links with 
 users on other Nextcloud servers.
 
-Creating a New Federation Share
+Creating a new Federation Share
 -------------------------------
 
 Federation sharing is enabled on new or upgraded Nextcloud installations
@@ -28,7 +28,7 @@ Click the Share button anytime to see who you have shared your file with. Remove
 your linked share anytime by clicking the trash can icon. This only unlinks the 
 share, and does not delete any files.
 
-Creating a New Federated Cloud Share via Email
+Creating a new Federated Cloud Share via email
 ----------------------------------------------
 
 Use this method when you are sharing with users on ownCloud 8.x and older.

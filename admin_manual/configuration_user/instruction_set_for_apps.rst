@@ -1,5 +1,5 @@
 ========================
-Instruction Set For Apps
+Instruction set for apps
 ========================
 
 Getlist of apps
@@ -25,7 +25,7 @@ Example
   * GET ``http://admin:secret@example.com/ocs/v1.php/cloud/apps?filter=enabled``
   * Gets enabled apps
 
-XML Output
+XML output
 ^^^^^^^^^^
 
 .. code-block:: xml
@@ -64,7 +64,7 @@ Example
   * GET ``http://admin:secret@example.com/ocs/v1.php/cloud/apps/files``
   * Get app info for the ``files`` app
 
-XML Output
+XML output
 ^^^^^^^^^^
 
 .. code-block:: xml
@@ -118,7 +118,7 @@ Example
   * POST ``http://admin:secret@example.com/ocs/v1.php/cloud/apps/files_texteditor``
   * Enable the ``files_texteditor`` app
 
-XML Output
+XML output
 ^^^^^^^^^^
 
 .. code-block:: xml
@@ -152,7 +152,7 @@ Example
   * DELETE ``http://admin:secret@example.com/ocs/v1.php/cloud/apps/files_texteditor``
   * Disable the ``files_texteditor`` app
 
-XML Output
+XML output
 ^^^^^^^^^^
 
 .. code-block:: xml

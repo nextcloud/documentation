@@ -1,5 +1,5 @@
 ==============================
-General Contributor Guidelines
+General contributor guidelines
 ==============================
 
 .. toctree::

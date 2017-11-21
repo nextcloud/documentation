@@ -1,5 +1,5 @@
 =============================
-User Authentication with LDAP
+User authentication with LDAP
 =============================
 
 Nextcloud ships with an LDAP application to allow LDAP users (including Active
@@ -44,7 +44,7 @@ The LDAP configuration panel has four tabs. A correctly completed first tab
 the configuration is correct. Hover your cursor over the fields to see some
 pop-up tooltips.
 
-Server Tab
+Server tab
 ^^^^^^^^^^
 
 Start with the Server tab. You may configure multiple servers if you have them.
@@ -104,7 +104,7 @@ Base DN:
 
   * *dc=my-company,dc=com*
 
-Users Tab
+Users tab
 ^^^^^^^^^
 
 Use this to control which LDAP users are listed as Nextcloud users on your
@@ -142,7 +142,7 @@ x users found:
   This is an indicator that tells you approximately how many users will be
   listed in Nextcloud. The number updates automatically after any changes.
 
-Login Attributes Tab
+Login attributes tab
 ^^^^^^^^^^^^^^^^^^^^
 
 The settings in the Login Attributes tab determine which LDAP users can log in to
@@ -191,7 +191,7 @@ Edit LDAP Query:
      ((&(objectClass=inetOrgPerson)(memberOf=cn=nextcloudusers,ou=groups,
      dc=example,dc=com)(|(uid=%uid)(mail=%uid)))
 
-Groups Tab
+Groups tab
 ^^^^^^^^^^
 
 By default, no LDAP groups will be available in Nextcloud. The settings in the
@@ -226,7 +226,7 @@ y groups found:
   The number updates automatically after any change.
 
 
-Advanced Settings
+Advanced settings
 -----------------
 
 The LDAP Advanced Setting section contains options that are not needed for a
@@ -240,7 +240,7 @@ The Advanced Settings are structured into three parts:
 * Directory Settings
 * Special Attributes
 
-Connection Settings
+Connection settings
 ^^^^^^^^^^^^^^^^^^^
 
 .. figure:: ../images/ldap-advanced-1-connection.png
@@ -296,7 +296,7 @@ operates.
 
 .. _ldap_directory_settings:
 
-Directory Settings
+Directory settings
 ^^^^^^^^^^^^^^^^^^
 
 .. figure:: ../images/ldap-advanced-2-directory.png
@@ -408,7 +408,7 @@ Default password policy DN:
     | *cn=default,ou=policies,dc=my-company,dc=com*
 
 
-Special Attributes
+Special attributes
 ^^^^^^^^^^^^^^^^^^
 
 .. figure:: ../images/ldap-advanced-3-attributes.png
@@ -448,7 +448,7 @@ In migrated Nextcloud installations the old behavior still applies, which is usi
 
   sudo -u www-data php occ config:app:set user_ldap enforce_home_folder_naming_rule --value=1
 
-Expert Settings
+Expert settings
 ---------------
 
 .. figure:: ../images/ldap-expert.png
@@ -531,7 +531,7 @@ Additional configuration options via occ
 
 Few configuration settings can only be set on command line via ``occ``.
 
-Attribute Update Interval
+Attribute update interval
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The LDAP backend will update user information that is used within Nextcloud
@@ -552,7 +552,7 @@ The value can be modified by::
 
 A value of 0 will update it on every of the named occasions.
 
-Nextcloud Avatar integration
+Nextcloud avatar integration
 ----------------------------
 
 Nextcloud supports user profile pictures, which are also called avatars. If a user
@@ -576,10 +576,10 @@ Nextcloud avatar replaces it.
 Photos served from LDAP are automatically cropped and resized in Nextcloud. This
 affects only the presentation, and the original image is not changed.
 
-Troubleshooting, Tips and Tricks
+Troubleshooting, tips and tricks
 --------------------------------
 
-SSL Certificate Verification (LDAPS, TLS)
+SSL certificate verification (LDAPS, TLS)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A common mistake with SSL certificates is that they may not be known to PHP.
@@ -598,7 +598,7 @@ Compared to earlier Nextcloud versions, no further tweaks need to be done to
 make Nextcloud work with Active Directory. Nextcloud will automatically find the
 correct configuration in the set-up process.
 
-memberOf / Read MemberOf permissions
+memberOf / read memberof permissions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you want to use ``memberOf`` within your filter you might need to give your
@@ -606,7 +606,7 @@ querying user the permissions to use it. For Microsoft Active Directory this
 is described `here <https://serverfault.com/questions/167371/what-permissions-are
 -required-for-enumerating-users-groups-in-active-directory/167401#167401>`_.
 
-Duplicating Server Configurations
+Duplicating server configurations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In case you have a working configuration and want to create a similar one or
@@ -638,12 +638,12 @@ This error message means one of the following:
    LDAP server than what is returned. You should then enabled pagination on
    your LDAP server to import all available users.
 
-Nextcloud LDAP Internals
+Nextcloud LDAP internals
 ------------------------
 
 Some parts of how the LDAP backend works are described here.
 
-User and Group Mapping
+User and group mapping
 ^^^^^^^^^^^^^^^^^^^^^^
 
 In Nextcloud the user or group name is used to have all relevant information in
@@ -698,7 +698,7 @@ each request will always be directed to the right server unless a user is
 defunct, for example due to a server migration or unreachable server. In this
 case the other servers will also receive the request.
 
-Handling with Backup Server
+Handling with backup server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When Nextcloud is not able to contact the main LDAP server, Nextcloud assumes it

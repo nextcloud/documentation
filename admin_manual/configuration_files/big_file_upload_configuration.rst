@@ -16,7 +16,7 @@ filesystem.
 .. note:: The Nextcloud sync client is not affected by these upload limits
    as it is uploading files in smaller chunks.
 
-System Configuration
+System configuration
 --------------------
 
 * Make sure that the latest version of PHP (at least 5.6.6) is installed
@@ -26,7 +26,7 @@ System Configuration
   the average number of users uploading at the same time is 100: temp space has 
   to hold at least 10x100 GB
 
-Configuring Your Web server
+Configuring your Web server
 ---------------------------
 
 .. note:: Nextcloud comes with its own ``nextcloud/.htaccess`` file. Because ``php-fpm``

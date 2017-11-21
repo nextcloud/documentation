@@ -1,5 +1,5 @@
 ===========================
-The Nextcloud Web Interface
+The Nextcloud Web interface
 ===========================
 
 You can connect to your Nextcloud server using any Web browser; just point it to
@@ -15,7 +15,7 @@ browsers are:
   .. figure:: images/login_page.png
      :alt: Nextcloud login screen.
 
-Navigating the Main User Interface
+Navigating the main user interface
 ----------------------------------
 
 By default, the Nextcloud Web interface opens to your Files page. You can add,

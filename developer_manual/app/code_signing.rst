@@ -1,5 +1,5 @@
 ============
-Code Signing
+Code signing
 ============
 
 .. sectionauthor:: Lukas Reschke <lukas@nextcloud.com>
@@ -15,14 +15,14 @@ updates were a significant source of errors when updating Nextcloud.
 FAQ
 ---
 
-Why Did Nextcloud Add Code Signing?
+Why did Nextcloud add code signing?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 By supporting Code Signing we add another layer of security by ensuring that
 nobody other than authorized persons can push updates for applications, and
 ensuring proper upgrades.
 
-Do We Lock Down Nextcloud?
+Do we lock down Nextcloud?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Nextcloud project is open source and always will be. We do not want to make
@@ -31,7 +31,7 @@ upgrades will not prevent Nextcloud from running, but will display a warning on
 the Admin page. For applications that are not tagged "Official" the code signing
 process is optional.
 
-Not Open Source Anymore?
+Not open source anymore?
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Nextcloud project is open source and always will be. The code signing
@@ -42,7 +42,7 @@ been set to stable.
 For custom distributions of Nextcloud it is recommended to change the release
 version branch in version.php to something else than "stable".
 
-Is Code Signing Mandatory For Apps?
+Is code signing mandatory for apps?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Code signing is required for all applications on apps.nextcloud.com.
@@ -100,7 +100,7 @@ Having the certificate bundled within the ``signature.json`` file has the
 advantage that even if a developer loses their certificate, future updates can
 still be ensured by having a new certificate issued.
 
-How Code Signing Affects Apps in the App Store
+How code signing affects apps in the app store
 ----------------------------------------------
 
 - Apps which have an ``official`` tag **MUST** be code signed.
@@ -108,7 +108,7 @@ How Code Signing Affects Apps in the App Store
 - Apps which have been signed in a previous release **MUST** be code-signed in
   all future releases as well, otherwise the update will be refused.
 
-How to Get Your App Signed
+How to get your app signed
 --------------------------
 
 The following commands require that you have OpenSSL installed on your machine.

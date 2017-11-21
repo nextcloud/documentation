@@ -1,5 +1,5 @@
 ======================
-Background Jobs (Cron)
+Background jobs (Cron)
 ======================
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>

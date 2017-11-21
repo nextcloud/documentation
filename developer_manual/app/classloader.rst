@@ -8,7 +8,7 @@ The classloader is provided by Nextcloud and loads all your classes automaticall
 
 .. versionadded:: 10
 
-PSR-4 Autoloading
+PSR-4 autoloading
 -----------------
 
 Since Nextcloud 10 there is a PSR-4 autoloader in place. The namespace **\\OCA\\MyApp**
@@ -34,7 +34,7 @@ info.xml in the following way:
 A second PSR-4 root is available when running tests. **\\OCA\\MyApp\\Tests** is
 thereby mapped to :file:`/apps/myapp/tests/`.
 
-Legacy Autoloading
+Legacy autoloading
 ------------------
 
 The legacy classloader, deprecated since 10, is still in place and works like this:

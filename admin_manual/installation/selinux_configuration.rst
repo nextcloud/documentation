@@ -1,7 +1,7 @@
 .. _selinux-config-label:
 
 =====================
-SELinux Configuration
+SELinux configuration
 =====================
 
 When you have SELinux enabled on your Linux distribution, you may run into

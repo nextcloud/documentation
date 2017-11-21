@@ -1,16 +1,16 @@
 ============================
-Installing and Managing Apps
+Installing and managing apps
 ============================
 
 After installing Nextcloud, you may provide added functionality by installing
 applications.
 
-Supported Apps
+Supported apps
 --------------
 
 See :doc:`apps_supported` for a list of supported apps.
 
-Viewing Enabled Apps
+Viewing enabled apps
 --------------------
 
 During the Nextcloud installation, some apps are enabled by default. To see which
@@ -23,7 +23,7 @@ You will see which apps are enabled, not enabled, and recommended. You'll also
 see additional filters, such as Multimedia, Productivity, and Tool for finding
 more apps quickly.
 
-Managing Apps
+Managing apps
 -------------
 
 In the Apps page you can enable or disable applications. Some apps have
@@ -31,7 +31,7 @@ configurable options on the Apps page, such as **Enable only for specific
 groups**, but mainly they are enabled or disabled here, and are configured on
 your Nextcloud Admin page, Personal page, or in ``config.php``.
 
-Adding Third Party Apps
+Adding third party apps
 -----------------------
 
 Some apps are developed and supported by Nextcloud directly. These have an
@@ -52,7 +52,7 @@ API. If they are then they will not be installed.
    <https://docs.nextcloud.org/server/12/developer_manual/app/index.html>`_.
 .. TODO ON RELEASE: Update version number above on release
 
-Using Custom App Directories
+Using custom app directories
 ----------------------------
 
 Use the **apps_paths** array in ``config.php`` to set any custom apps directory
@@ -82,7 +82,7 @@ in that folder.
         ),
     ),
 
-Using Your Own Appstore
+Using your own appstore
 -----------------------
 
 You can enable the installation of apps from your own apps store. This requires that you

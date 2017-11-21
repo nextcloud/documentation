@@ -19,7 +19,7 @@ Nextcloud server is available:
 See :doc:`../release_notes` for more information on the different Nextcloud
 editions.
 
-Videos and Blogs
+Videos and blogs
 ----------------
 
 See the `official Nextcloud channel
@@ -29,7 +29,7 @@ on YouTube for tutorials, overviews, and conference videos.
 Visit `Nextcloud Planet <https://nextcloud.com/news/>`_ for news and developer
 blogs.
 
-Target Audience
+Target audience
 ---------------
 
 This guide is for users who want to install, administer, and

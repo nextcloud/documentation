@@ -1,5 +1,5 @@
 ===================
-System Requirements
+System requirements
 ===================
 
 Memory
@@ -9,7 +9,7 @@ Memory requirements for running an Nextcloud server are greatly variable,
 depending on the numbers of users and files, and volume of server activity. 
 Nextcloud needs a minimum of 128MB RAM, and we recommend a minimum of 512MB.
 
-Recommended Setup for Running Nextcloud
+Recommended setup for running Nextcloud
 ---------------------------------------
 
 For best performance, stability, support, and full functionality we recommend:
@@ -19,7 +19,7 @@ For best performance, stability, support, and full functionality we recommend:
 * PHP 7.0 +
 * Apache 2.4 with mod_php
 
-Supported Platforms
+Supported platforms
 -------------------
 
 * Server: Linux (Debian 7, SUSE Linux Enterprise Server 11 SP3 & 12, 
@@ -38,7 +38,7 @@ Supported Platforms
 See :doc:`source_installation` for minimum software versions for installing 
 Nextcloud.
 
-Database Requirements for MySQL / MariaDB
+Database requirements for MySQL / MariaDB
 -----------------------------------------
 
 The following is currently required if you're running Nextcloud together with a MySQL / MariaDB database:

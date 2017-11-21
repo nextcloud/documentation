@@ -1,7 +1,7 @@
 .. _androidindex:
 
 ===============================
-Android Application Development
+Android application development
 ===============================
 Nextcloud provides an official Nextcloud Android client, which gives its users
 access to their files on their Nextcloud. It also includes functionality like
@@ -10,7 +10,7 @@ automatically uploading pictures and videos to Nextcloud.
 For third party application developers, Nextcloud offers the Nextcloud Android
 library under the MIT license.
 
-Android Nextcloud Client development
+Android Nextcloud client development
 ------------------------------------
 
 If you are interested in working on the Nextcloud Android client, you can find
@@ -21,7 +21,7 @@ setup and process of contribution is
 You might want to start with doing one or two `starter issues <https://github.com/nextcloud/android/issues?q=is%3Aopen+is%3Aissue+label%3A%22starter+issue%22>`_
 to get into the code and note our :doc:`../general/index`.
 
-Nextcloud Android Library
+Nextcloud Android library
 -------------------------
 
 This document will describe how to the use Nextcloud Android Library.  The

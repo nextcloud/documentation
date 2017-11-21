@@ -1,5 +1,5 @@
 ============================
-Configuring External Storage
+Configuring external Storage
 ============================
 
 The External Storage application allows you to mount external storage services, 

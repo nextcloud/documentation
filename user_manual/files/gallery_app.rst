@@ -1,5 +1,5 @@
 ===========
-Gallery App
+Gallery app
 ===========
 
 The Pictures app has been rewritten and improved, and is now called the Gallery
@@ -23,7 +23,7 @@ the bottom right, and a close button at the top right.
 .. figure:: ../images/gallery-2.png
    :alt: Gallery in slideshow mode.
 
-Custom Configuration
+Custom configuration
 --------------------
 
 You may customize a Gallery album with a simple text file named
@@ -112,7 +112,7 @@ Here is an example `gallery.cnf`::
 
 .. _supported_variables_label:
 
-Supported Variables
+Supported variables
 ^^^^^^^^^^^^^^^^^^^
 
 **Global Features**
@@ -237,7 +237,7 @@ You can add standard configuration items to the same configuration file::
   features:
   native_svg: yes
 
-Possible Future Extensions
+Possible future extensions
 --------------------------
 
 Different sorting parameters for albums.

@@ -1,5 +1,5 @@
 ============================
-Considerations on Monitoring
+Considerations on monitoring
 ============================
 
 .. toctree::
@@ -13,7 +13,7 @@ The purpose of this section is to outline the components of Nextcloud that need
 to be monitored, and provide guidance on what to look for in Nextcloud in an
 enterprise installation.
 
-Nextcloud Deployment Architecture
+Nextcloud deployment architecture
 ---------------------------------
 
 Before discussing how to monitor Nextcloud, it is important to understand the architecture of a
@@ -25,7 +25,7 @@ It is assumed that specific enterprise tools (monitoring, log management, etc) t
 operations are available, and that Nextcloud is simply a new target for these tools.
 
 
-The Important Components of Nextcloud
+The important components of Nextcloud
 -------------------------------------
 
 Nextcloud is a PHP application that depends on a filesystem for file storage, and a database for storing
@@ -78,13 +78,13 @@ The load and general health of the database server or cluster has to be monitore
 All mysql vendors provide tools to monitor this.
 
 
-Clustered Filesystem
+Clustered filesystem
 ^^^^^^^^^^^^^^^^^^^^
 
 The available space of the filesystem should be monitored to prevent a full Nextcloud. This functionality is
 provided by the operating-system and/or the cluster filesystem vendor.
 
-Load Balancer
+Load balancer
 ^^^^^^^^^^^^^
 
 The load balancer is monitoring the health of the application servers and is distributing the traffic in

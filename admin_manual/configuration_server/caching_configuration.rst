@@ -1,5 +1,5 @@
 ==========================
-Configuring Memory Caching
+Configuring memory caching
 ==========================
 
 You can significantly improve your Nextcloud server performance with memory 
@@ -158,24 +158,24 @@ Only "host" and "port" variables are required, the other ones are optional.
 Redis is very configurable; consult `the Redis documentation 
 <http://redis.io/documentation>`_ to learn more.
 
-Cache Directory Location
+Cache Directory location
 ------------------------
 
 The cache directory defaults to ``data/$user/cache`` where ``$user`` is the 
 current user. You may use the ``'cache_path'`` directive in ``config.php``
 (See :doc:`config_sample_php_parameters`) to select a different location.
 
-Recommendations Based on Type of Deployment
+Recommendations based on type of deployment
 -------------------------------------------
 
-Small/Private Home Server
+Small/Private home server
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Only use APCu::
 
     'memcache.local' => '\OC\Memcache\APCu',
 
-Small Organization, Single-server Setup
+Small organization, single-server setup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Use APCu for local caching, Redis for file locking::
@@ -187,7 +187,7 @@ Use APCu for local caching, Redis for file locking::
        'port' => 6379,
         ),
 
-Large Organization, Clustered Setup
+Large organization, clustered setup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Use Redis for everything except local memcache::
@@ -200,7 +200,7 @@ Use Redis for everything except local memcache::
        'port' => 6379,
         ),
 
-Additional notes for Redis vs. APCu on Memory Caching
+Additional notes for Redis vs. APCu on memory caching
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 APCu is faster at local caching than Redis. If you have enough memory, use APCu for Memory Caching
@@ -208,7 +208,7 @@ and Redis for File Locking. If you are low on memory, use Redis for both.
 
 ..  _install_redis_label:     
 
-Additional Redis Installation Help
+Additional Redis installation help
 ----------------------------------
 
 If your version of Mint or Ubuntu does not package the required version of 

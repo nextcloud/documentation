@@ -1,5 +1,5 @@
 ========================
-Converting Database Type
+Converting database type
 ========================
 
 You can convert a SQLite database to a more performing MySQL, MariaDB or 
@@ -41,7 +41,7 @@ with the question ``Continue with the conversion?``
 On success the converter will automatically configure the new database in your 
 Nextcloud config ``config.php``.
 
-Unconvertible Tables
+Unconvertible tables
 --------------------
 
 If you updated your Nextcloud installation there might exist old tables, which 

@@ -1,5 +1,5 @@
 ==================
-Large File Uploads
+Large file uploads
 ==================
 
 When uploading files through the web client, Nextcloud is limited by PHP and

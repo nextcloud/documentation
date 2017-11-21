@@ -63,7 +63,7 @@ Configure your sharing policy on your Admin page in the Sharing section.
 
 .. _transfer_userfiles_label:   
 
-Transferring Files to Another User
+Transferring files to another user
 ----------------------------------
 
 You may transfer files from one user to another with ``occ``. This is useful 
@@ -77,7 +77,7 @@ Trashbin contents are not transferred::
 (See :doc:`../configuration_server/occ_command` for a complete ``occ`` 
 reference.) 
    
-Creating Persistent File Shares
+Creating persistent file Shares
 -------------------------------
 
 When a user is deleted, their files are also deleted. As you can imagine, this 
@@ -96,7 +96,7 @@ edits them.
    
 .. _password_policy_label:
 
-Share Link Password Policy
+Share link password policy
 --------------------------
 
 Nextcloud users have the option of enabling the Share Link Password 

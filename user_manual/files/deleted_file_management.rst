@@ -1,5 +1,5 @@
 ======================
-Managing Deleted Files
+Managing deleted files
 ======================
 
 When you delete a file in Nextcloud, it is not immediately deleted permanently.
@@ -18,7 +18,7 @@ Deleted files are not counted against your storage quota. Only your personal
 files count against your quota, not files which were shared with you.
 (See :doc:`quota` to learn more about quotas.)
 
-What Happens When Shared Files Are Deleted
+What happens when shared files are deleted
 ------------------------------------------
 
 Deleting files gets a little complicated when they are shared files, as this
@@ -37,7 +37,7 @@ When you share files, other users may copy, rename, move, and share them with
 other people, just as they can for any computer files; Nextcloud does not have
 magic powers to prevent this.
 
-How the Deleted Files app Manages Storage Space
+How the deleted files app manages storage space
 -----------------------------------------------
 
 To ensure that users do not run over their storage quotas, the Deleted Files

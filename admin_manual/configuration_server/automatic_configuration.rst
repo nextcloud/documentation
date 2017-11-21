@@ -1,5 +1,5 @@
 =============================
-Automatic Configuration Setup
+Automatic configuration setup
 =============================
 
 If you need to install Nextcloud on multiple servers, you normally do not want
@@ -25,7 +25,7 @@ When configuring parameters, you must understand that two parameters are named d
 | dbpass         | dbpassword    |
 +----------------+---------------+
 
-Automatic Configurations Examples
+Automatic configurations examples
 ---------------------------------
 
 The following sections provide sample automatic configuration examples and what information is requested at the end of the configuration.
@@ -43,7 +43,7 @@ Using the following parameter settings, the "Finish setup" screen requests datab
     );
 
 
-SQLite Database
+SQLite database
 ^^^^^^^^^^^^^^^
 
 Using the following parameter settings, the "Finish setup" screen requests data directory and admin credentials settings.
@@ -57,7 +57,7 @@ Using the following parameter settings, the "Finish setup" screen requests data 
       "dbtableprefix" => "",
     );
 
-MySQL Database
+MySQL database
 ^^^^^^^^^^^^^^
 
 Using the following parameter settings, the "Finish setup" screen requests data directory and admin credentials settings.
@@ -78,7 +78,7 @@ Using the following parameter settings, the "Finish setup" screen requests data 
    creating the  database user and database in advance, as described in 
    :doc:`../configuration_database/linux_database_configuration`.
 
-PostgreSQL Database
+PostgreSQL database
 ^^^^^^^^^^^^^^^^^^^
 
 Using the following parameter settings, the "Finish setup" screen requests data directory and admin credentials settings.
@@ -99,7 +99,7 @@ Using the following parameter settings, the "Finish setup" screen requests data 
    creating the database user and database in advance, as described in 
    :doc:`../configuration_database/linux_database_configuration`.
 
-All Parameters
+All parameters
 ^^^^^^^^^^^^^^
 
 Using the following parameter settings, because all parameters are already configured in the file, the Nextcloud installation skips the "Finish setup" screen.

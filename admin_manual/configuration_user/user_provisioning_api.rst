@@ -1,5 +1,5 @@
 =====================
-User Provisioning API
+User provisioning API
 =====================
 
 The Provisioning API application enables a set of APIs that external systems can use to create, 

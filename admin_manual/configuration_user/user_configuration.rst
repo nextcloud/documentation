@@ -1,5 +1,5 @@
 ===============
-User Management
+User management
 ===============
 
 On the User management page of your Nextcloud Web UI you can:
@@ -58,7 +58,7 @@ User accounts have the following properties:
   cannot upload or sync data. You have the the option to include external
   storage in user quotas.
 
-Creating a New User
+Creating a new user
 -------------------
 
 To create a user account:
@@ -83,7 +83,7 @@ Admin page (see :doc:`../configuration_server/email_configuration`).
 Set the **Send email to new user**-checkbox allows you to leave the **Password**
 field empty. The user will get an activation-email to set his own password.
 
-Reset a User's Password
+Reset a user's password
 -----------------------
 
 You cannot recover a user's password, but you can set a new one:
@@ -97,7 +97,7 @@ If you have encryption enabled, there are special considerations for user
 password resets. Please see
 :doc:`../configuration_files/encryption_configuration`.
 
-Renaming a User
+Renaming a user
 ---------------
 
 Each Nextcloud user has two names: a unique **Login Name** used for
@@ -111,7 +111,7 @@ To set or change a user's display name:
 * Enter the user's new display name
 
 
-Granting Administrator Privileges to a User
+Granting administrator privileges to a user
 -------------------------------------------
 
 Nextcloud has two types of administrators: **Super Administrators** and **Group
@@ -128,7 +128,7 @@ access and modify all settings. To assign the **Super Administrators** role to
 a user, simply add them to the ``admin`` group.
 
 
-Managing Groups
+Managing groups
 ---------------
 
 You can assign new users to groups when you create them, and create new groups
@@ -136,7 +136,7 @@ when you create new users. You may also use the **Add Group** button at the top
 of the left pane to create new groups. New group members will immediately
 have access to file shares that belong to their new groups.
 
-Setting Storage Quotas
+Setting Storage quotas
 ----------------------
 
 Click the gear on the lower left pane to set a default storage quota. This is
@@ -176,7 +176,7 @@ against quotas.
 When a user creates a public share via URL, and allows uploads, any uploaded
 files count against that user's quota.
 
-Disable and Enable users
+Disable and enable users
 ------------------------
 
 .. figure:: ../images/users-actions.png

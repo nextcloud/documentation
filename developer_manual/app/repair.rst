@@ -1,5 +1,5 @@
 ============
-Repair Steps
+Repair steps
 ============
 
 Repair steps are methods which are executed by Nextcloud on certain

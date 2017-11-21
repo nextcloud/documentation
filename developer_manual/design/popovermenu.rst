@@ -3,7 +3,7 @@
 ..  _popovermenu:
 
 ============
-Popover Menu
+Popover menu
 ============
 
 What is a popover menu

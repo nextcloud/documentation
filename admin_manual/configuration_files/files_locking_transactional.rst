@@ -1,5 +1,5 @@
 ==========================
-Transactional File Locking
+Transactional file locking
 ==========================
 
 Nextcloud's Transactional File Locking mechanism locks files to avoid

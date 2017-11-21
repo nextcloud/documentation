@@ -1,5 +1,5 @@
 ========================================
-Configuring the ClamAV Antivirus Scanner
+Configuring the ClamAV antivirus scanner
 ========================================
 
 You can configure your Nextcloud server to automatically run a virus scan on
@@ -75,7 +75,7 @@ the ``clamd`` service file and start ``clamd``::
 That should take care of everything. Enable verbose logging in ``scan.conf``
 and ``freshclam.conf`` until it is running the way you want.
 
-Enabling the Antivirus App for Files
+Enabling the antivirus app for files
 ------------------------------------
 
 Place the ``files_antivirus`` app into the ``apps`` directory of your Nextcloud

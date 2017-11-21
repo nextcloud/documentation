@@ -1,5 +1,5 @@
 ================
-Restoring Backup
+Restoring backup
 ================
 
 To restore a Nextcloud installation there are four main things you need to
@@ -19,7 +19,7 @@ Permissions`` section of :doc:`../installation/installation_wizard`.
 Also make sure to run the :ref:`maintenance:data-fingerprint <maintenance_commands_label>` command
 afterwards, to ensure your sync clients can recover from the restored backup.
 
-Restore Folders
+Restore folders
 ---------------
 
 .. note:: This guide assumes that your previous backup is called
@@ -30,7 +30,7 @@ install and data folder) to your Nextcloud environment. You could use this comma
 
     rsync -Aax nextcloud-dirbkp/ nextcloud/
 
-Restore Database
+Restore database
 ----------------
 
 .. warning:: Before restoring a backup you need to make sure to delete all existing database tables.

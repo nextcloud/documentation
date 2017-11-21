@@ -1,5 +1,5 @@
 ===============================
-Hardening and Security Guidance
+Hardening and security guidance
 ===============================
 
 Nextcloud aims to ship with secure defaults that do not need to get modified by 
@@ -12,7 +12,7 @@ in a Linux environment.
    critical security-relevant options are missing. However, it is still up to 
    the server administrator to review and maintain system security.
    
-Limit on Password Length
+Limit on password length
 ------------------------
 
 Nextcloud uses the bcrypt algorithm, and thus for security and performance 
@@ -172,7 +172,7 @@ are accessible from the Nextcloud network. If you do not want this you need to
 ensure that your Nextcloud is properly installed in a segregated network and proper 
 firewall rules are in place.
 
-Serve security related Headers by the Web server
+Serve security related headers by the Web server
 ------------------------------------------------
 
 Basic security headers are served by Nextcloud already in a default environment. 

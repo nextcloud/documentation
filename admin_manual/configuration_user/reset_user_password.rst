@@ -1,5 +1,5 @@
 =========================
-Resetting a User Password
+Resetting a user password
 =========================
 
 The Nextcloud login screen displays a **Wrong password. Reset it?** message 
