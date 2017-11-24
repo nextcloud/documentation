@@ -222,22 +222,6 @@ Now download the archive of the latest Nextcloud version:
 On other HTTP servers it is recommended to install Nextcloud outside of the
 document root.
 
-.. _binlog_format_label:
-
-BINLOG_FORMAT = STATEMENT
--------------------------
-
-If your Nextcloud installation fails and you see this in your Nextcloud log::
-
- An unhandled exception has been thrown: exception ‘PDOException’ with message
- 'SQLSTATE[HY000]: General error: 1665 Cannot execute statement: impossible to
- write to binary log since BINLOG_FORMAT = STATEMENT and at least one table
- uses a storage engine limited to row-based logging. InnoDB is limited to
- row-logging when transaction isolation level is READ COMMITTED or READ
- UNCOMMITTED.'
-
-See :ref:`db-binlog-label`.
-
 .. _apache_configuration_label:
    
 Apache Web server configuration
