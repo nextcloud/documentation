@@ -22,8 +22,8 @@ requires that you install and set up the server software first.
 
 .. _db-transaction-label:
 
-Database "READ COMMITED" transaction isolation level
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Database "READ COMMITTED" transaction isolation level
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 As discussed above Nextcloud is using the ``TRANSACTION_READ_COMMITTED`` transaction isolation
 level. Some database configurations are enforcing other transaction isolation levels. To avoid
