@@ -3,7 +3,7 @@
 ..  _html:
 
 =============
-Html elements
+HTML elements
 =============
 
 Progress bar
