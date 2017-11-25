@@ -2,9 +2,9 @@
 .. codeauthor:: John Molakvoæ <skjnldsv@protonmail.com>
 ..  _html:
 
-===============
-Html elements
-===============
+=============
+HTML elements
+=============
 
 Progress bar
 =============
