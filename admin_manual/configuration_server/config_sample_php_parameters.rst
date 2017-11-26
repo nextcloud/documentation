@@ -1253,8 +1253,8 @@ Available failover modes:
 
 WARNING: FAILOVER_DISTRIBUTE is a not recommended setting and we strongly
 suggest to not use it if you use Redis for file locking. Due to the way Redis
-is synchronized it could happen, that the read for an existing lock is
-scheduled to a slave that is not fully synchronized with the connected master
+is synchronised it could happen, that the read for an existing lock is
+scheduled to a slave that is not fully synchronised with the connected master
 which then causes a FileLocked exception.
 
 See https://redis.io/topics/cluster-spec for details about the Redis cluster
