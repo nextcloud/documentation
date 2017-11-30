@@ -11,20 +11,19 @@ recommended way of connecting client devices to your Nextcloud servers.
 Nextcloud Desktop and mobile clients
 ------------------------------------
 
-The recommended method for keeping your desktop PC synchronized with your
-Nextcloud server is by using the `Nextcloud/ownCloud sync clients
-<https://nextcloud.com/install/#install-clients>`_. You can configure the client
-to save files in any local directory you want, and you choose which directories
-on the Nextcloud server to sync with. The client displays the current connection
-status and logs all activity, so you always know which remote files have been
-downloaded to your PC, and you can verify that files created and updated on your
-local PC are properly synchronized with the server.
+The recommended way to synchronize a desktop PC with a Nextcloud server is by 
+using `Nextcloud/ownCloud sync clients <https://nextcloud.com/install/#install-clients>`_. You can configure the 
+client to save files in any local directory and you can choose which 
+directories on the Nextcloud server to sync with. The client displays the
+current connection status and logs all activity, so you always know which 
+remote files have been downloaded to your PC and you can verify that files 
+created and updated on your local PC are properly synchronized with the server.
 
-The recommended method for syncing your Nextcloud server with Android and
+The recommended way to synchronize Nextcloud server with Android and
 Apple iOS devices is by using the `mobile apps
 <https://nextcloud.com/install/>`_.
 
-To connect to your Nextcloud server with the mobile apps, use the
+To connect your mobile app to a Nextcloud server use the
 base URL and folder only::
 
     example.com/nextcloud

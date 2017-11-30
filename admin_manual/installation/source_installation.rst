@@ -35,11 +35,21 @@ archive <https://nextcloud.com/install/>`_.
 Installing on Windows (virtual machine)
 ---------------------------------------
 
-If you are using Windows, the easiest way to get Nextcloud up an running is using our Virtual Machine. The VM is mainly maintainted by Tech and Me and are offered in several different versions. The main version is for VMware version 10 and comes in different sizes. The standard size is 20 GB, but you can also download a 500 GB and a 1 TB version. Tech and Me also provides a Hyper-V version for all Hyper-V users.
+If you are using Windows, the easiest way to get Nextcloud up and running is
+using a `Nextcloud virtual machine (VM) <https://github.com/nextcloud/vm>`_.
+The VMs are maintained by `Tech and Me <https://www.techandme.se/>`_ and
+several different versions are offered. The main version is for VMware version
+10 and it comes in different sizes. The standard size is 20 GB but you can also
+download a 500 GB or a 1 TB version. Tech and Me also provides a Hyper-V
+version for Hyper-V users.
 
-You can find complete instructions and downloads here: https://github.com/nextcloud/vm or here https://www.techandme.se/nextcloud-vm/
+For complete instructions and downloads see:
 
-Of course you can also install it on other OSes than Windows and you are not limited to any OS really as long as your hypervisor can mount OVA, VMDK, or VHD.
+- https://github.com/nextcloud/vm 
+- https://www.techandme.se/nextcloud-vm/
+
+.. note:: You can install the VM on OSes other than Windows as long as
+your hypervisor can mount OVA, VMDK, or VHD VM formats.
 
 .. _snaps_label:
 
