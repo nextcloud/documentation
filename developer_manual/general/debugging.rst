@@ -73,7 +73,7 @@ For debugging scripts on the command line, like ``occ`` or unit tests, set the `
 Debugging Javascript
 --------------------
 
-By default all Javascript files in Nextcloud are minified (compressed) into a single file without whitespace. To prevent this, see Debug mode.
+By default all JavaScript files in Nextcloud are minified (compressed) into a single file without whitespace. To prevent this, see Debug mode.
 
 
 Debugging HTML and templates

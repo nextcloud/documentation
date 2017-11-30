@@ -240,7 +240,7 @@ Troubleshooting Contacts & Calendar
 Service discovery
 ^^^^^^^^^^^^^^^^^
 
-Some clients - especially on iOS/Mac OS X - have problems finding the proper
+Some clients - especially on iOS/macOS - have problems finding the proper
 sync URL, even when explicitly configured to use it.
 
 If you want to use CalDAV or CardDAV clients together with Nextcloud it is

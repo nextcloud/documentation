@@ -145,7 +145,7 @@ would be the final relative path.
     /** @var $l \OCP\IL10N */
     /** @var $_ array */
 
-    script('myappid', 'admin');         // adds a Javascript file
+    script('myappid', 'admin');         // adds a JavaScript file
     style('survey_client', 'admin');    // adds a CSS file
     ?>
 
