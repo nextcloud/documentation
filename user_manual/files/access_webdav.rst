@@ -4,7 +4,7 @@ Accessing Nextcloud files using WebDAV
 
 Nextcloud fully supports the WebDAV protocol, and you can connect and synchronize
 with your Nextcloud files over WebDAV. In this chapter you will learn how to
-connect Linux, Mac OS X, Windows, and mobile devices to your Nextcloud server via
+connect Linux, macOS, Windows, and mobile devices to your Nextcloud server via
 WebDAV. Before we get into configuring WebDAV, let's take a quick look at the
 recommended way of connecting client devices to your Nextcloud servers.
 
@@ -41,7 +41,7 @@ If you prefer, you may also connect your desktop PC to your Nextcloud server by
 using the WebDAV protocol rather than using a special client application. Web
 Distributed Authoring and Versioning (WebDAV) is a Hypertext Transfer Protocol
 (HTTP) extension that makes it easy to create, read, and edit files on Web
-servers. With WebDAV you can access your Nextcloud shares on Linux, Mac OS X and
+servers. With WebDAV you can access your Nextcloud shares on Linux, macOS and
 Windows in the same way as any remote network share, and stay synchronized.
 
 .. note:: In the following examples, You must adjust **example.com/** to the
@@ -203,7 +203,7 @@ To access files through the macOS Finder:
 2. Specify the address of the server in the **Server Address** field.
 
   .. image:: ../images/osx_webdav1.png
-     :alt: Screenshot of entering your Nextcloud server address on Mac OS X
+     :alt: Screenshot of entering your Nextcloud server address on macOS
 
   For example, the URL used to connect to the Nextcloud server
   from the macOS Finder is::
@@ -216,7 +216,7 @@ To access files through the macOS Finder:
 
   The device connects to the server.
 
-For added details about how to connect to an external server using Mac OS X,
+For added details about how to connect to an external server using macOS,
 check the `vendor documentation
 <http://docs.info.apple.com/article.html?path=Mac/10.6/en/8160.html>`_ .
 
@@ -307,7 +307,7 @@ Accessing files using Cyberduck
 
 `Cyberduck <https://cyberduck.io/?l=en>`_ is an open source FTP and SFTP,
 WebDAV, OpenStack Swift, and Amazon S3 browser designed for file transfers on
-Mac OS X and Windows.
+macOS and Windows.
 
 .. note:: This example uses Cyberduck version 4.2.1.
 
