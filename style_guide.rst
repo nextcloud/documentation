@@ -119,8 +119,9 @@ form on the Nextcloud admin page, narrow your Web browser to fold the fields
 into a smaller space, because a long skinny graphic is not very readable. Think 
 square.
 
-All images must have alt tags, which are brief and descriptive, and figure 
-numbers. Sphinx RST markup does not have a tag for figure numbers, so you must 
+Both images and figures must have brief and descriptive alt tags and all 
+figures must have captions with figure numbers. Sphinx RST markup does not 
+have a tag for figure numbers, so you must 
 use the caption element. You may use simple numbering like "Figure 1, Figure 2", 
 or add a caption. Captions must follow a blank line and be italicized, like this example::
 

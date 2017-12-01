@@ -3,7 +3,7 @@ Desktop and mobile synchronization
 ==================================
 
 For synchronizing files with your desktop computer, we recommend using the
-`Nextcloud Sync Client`_ for Windows, Mac OS X and Linux.
+`Nextcloud Sync Client`_ for Windows, macOS and Linux.
 
 
 The Nextcloud Desktop Sync Client enables you to connect to your Nextcloud Server.

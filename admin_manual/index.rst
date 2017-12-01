@@ -5,7 +5,7 @@ Introduction
 Welcome to the Nextcloud Server Administration Guide. This guide describes
 administration tasks for Nextcloud, the flexible open source file synchronization
 and sharing solution. Nextcloud includes the Nextcloud server, which runs on
-Linux, client applications for Microsoft Windows, Mac OS X and Linux, and mobile
+Linux, client applications for Microsoft Windows, macOS and Linux, and mobile
 clients for the Android and Apple iOS operating systems.
 
 Current editions of Nextcloud manuals are always available online at

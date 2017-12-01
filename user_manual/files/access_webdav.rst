@@ -4,27 +4,26 @@ Accessing Nextcloud files using WebDAV
 
 Nextcloud fully supports the WebDAV protocol, and you can connect and synchronize
 with your Nextcloud files over WebDAV. In this chapter you will learn how to
-connect Linux, Mac OS X, Windows, and mobile devices to your Nextcloud server via
+connect Linux, macOS, Windows, and mobile devices to your Nextcloud server via
 WebDAV. Before we get into configuring WebDAV, let's take a quick look at the
 recommended way of connecting client devices to your Nextcloud servers.
 
 Nextcloud Desktop and mobile clients
 ------------------------------------
 
-The recommended method for keeping your desktop PC synchronized with your
-Nextcloud server is by using the `Nextcloud/ownCloud sync clients
-<https://nextcloud.com/install/#install-clients>`_. You can configure the client
-to save files in any local directory you want, and you choose which directories
-on the Nextcloud server to sync with. The client displays the current connection
-status and logs all activity, so you always know which remote files have been
-downloaded to your PC, and you can verify that files created and updated on your
-local PC are properly synchronized with the server.
+The recommended way to synchronize a desktop PC with a Nextcloud server is by 
+using `Nextcloud/ownCloud sync clients <https://nextcloud.com/install/#install-clients>`_. You can configure the 
+client to save files in any local directory and you can choose which 
+directories on the Nextcloud server to sync with. The client displays the
+current connection status and logs all activity, so you always know which 
+remote files have been downloaded to your PC and you can verify that files 
+created and updated on your local PC are properly synchronized with the server.
 
-The recommended method for syncing your Nextcloud server with Android and
+The recommended way to synchronize Nextcloud server with Android and
 Apple iOS devices is by using the `mobile apps
 <https://nextcloud.com/install/>`_.
 
-To connect to your Nextcloud server with the mobile apps, use the
+To connect your mobile app to a Nextcloud server use the
 base URL and folder only::
 
     example.com/nextcloud
@@ -42,7 +41,7 @@ If you prefer, you may also connect your desktop PC to your Nextcloud server by
 using the WebDAV protocol rather than using a special client application. Web
 Distributed Authoring and Versioning (WebDAV) is a Hypertext Transfer Protocol
 (HTTP) extension that makes it easy to create, read, and edit files on Web
-servers. With WebDAV you can access your Nextcloud shares on Linux, Mac OS X and
+servers. With WebDAV you can access your Nextcloud shares on Linux, macOS and
 Windows in the same way as any remote network share, and stay synchronized.
 
 .. note:: In the following examples, You must adjust **example.com/** to the
@@ -204,7 +203,7 @@ To access files through the macOS Finder:
 2. Specify the address of the server in the **Server Address** field.
 
   .. image:: ../images/osx_webdav1.png
-     :alt: Screenshot of entering your Nextcloud server address on Mac OS X
+     :alt: Screenshot of entering your Nextcloud server address on macOS
 
   For example, the URL used to connect to the Nextcloud server
   from the macOS Finder is::
@@ -217,7 +216,7 @@ To access files through the macOS Finder:
 
   The device connects to the server.
 
-For added details about how to connect to an external server using Mac OS X,
+For added details about how to connect to an external server using macOS,
 check the `vendor documentation
 <http://docs.info.apple.com/article.html?path=Mac/10.6/en/8160.html>`_ .
 
@@ -308,7 +307,7 @@ Accessing files using Cyberduck
 
 `Cyberduck <https://cyberduck.io/?l=en>`_ is an open source FTP and SFTP,
 WebDAV, OpenStack Swift, and Amazon S3 browser designed for file transfers on
-Mac OS X and Windows.
+macOS and Windows.
 
 .. note:: This example uses Cyberduck version 4.2.1.
 
