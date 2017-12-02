@@ -760,6 +760,19 @@ Defaults to ``true``
 
 ::
 
+	'check_data_directory_permissions' => true,
+
+In rare setups (e.g. on Openshift or docker on windows) the permissions check
+might block the installation while the underlying system offers no means to
+"correct" the permissions. In this case, set the value to false.
+
+In regular cases, if issues with permissions are encountered they should be
+adjusted accordingly. Changing the flag is discouraged.
+
+Defaults to ``true``
+
+::
+
 	'config_is_read_only' => false,
 
 In certain environments it is desired to have a read-only configuration file.
