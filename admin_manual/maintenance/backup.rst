@@ -6,8 +6,26 @@ To backup an Nextcloud installation there are four main things you need to retai
 
 #. The config folder
 #. The data folder
-#. The database
 #. The theme folder
+#. The database
+
+Maintenance mode
+----------------
+
+``maintenance:mode`` locks the sessions of logged-in users and prevents new logins in order to prevent inconsistencies of your data. You must run ``occ`` as the HTTP user, like this example on Ubuntu Linux::
+
+ $ sudo -u www-data php occ maintenance:mode --on
+
+You may also put your server into this mode by editing :file:`config/config.php`.
+Change ``"maintenance" => false`` to ``"maintenance" => true``:
+
+::
+
+   <?php
+
+    "maintenance" => true,
+
+Don't forget to change it back to ``false`` when you are finished.
 
 Backup Folders
 --------------
