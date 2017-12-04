@@ -375,18 +375,18 @@ Group Member association:
   have a very valid reason and know what you are doing.
 
   * Example: *uniquemember*
-  
+
 Enable LDAP password changes per user:
-  Allow LDAP users to change their password and allow Super Administrators and Group Administrators to change the password of their LDAP users. 
-  
+  Allow LDAP users to change their password and allow Super Administrators and Group Administrators to change the password of their LDAP users.
+
   To enable this feature, the following requirements have to be met:
-  
+
   * General requirements:
 
-   * Access control policies must be configured on the LDAP server to grant permissions for password changes.
+   * Access control policies must be configured on the LDAP server to grant permissions for password changes. The User DN as configured in *Server Settings* needs to have write permissions in order to update the userPassword attribute.
    * Passwords are sent in plaintext to the LDAP server. Therefore, transport encryption must be used for the communication between Nextcloud and the LDAP server, e.g. employ LDAPS.
    * Enabling password hashing on the LDAP server is highly recommended. While Active Directory stores passwords in a one-way format by default, OpenLDAP users could configure the ``ppolicy_hash_cleartext`` directive of the ppolicy overlay that ships with OpenLDAP.
-  
+
   * Additional requirements for Active Directory:
 
    * At least a 128-bit transport encryption must be used for the communication between Nextcloud and the LDAP server.
@@ -399,7 +399,7 @@ Default password policy DN:
 
   * Prompt LDAP users with expired passwords to reset their password during login, provided that an adequate number of grace logins is still available.
 
-  Leave the setting empty to keep password expiry handling disabled. 
+  Leave the setting empty to keep password expiry handling disabled.
 
   For the password expiry handling feature to work, LDAP password changes per user must be enabled and the LDAP server must be running OpenLDAP with its ppolicy module configured accordingly.
 
