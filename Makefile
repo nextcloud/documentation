@@ -18,7 +18,7 @@ user-manual-de-html:
 	cd user_manual_de && make html
 	@echo "User manual de build finished; HTML is updated"
 
-developer-manual-html:
+developer-manual-html: api-docs
 	rm -rf developer_manual/_build/html/com
 	cd developer_manual && make html
 	@echo "Developer manual build finished; HTML is updated"
@@ -46,7 +46,7 @@ api-docs: clean-api-docs
 	cd build && php generateApiDoc.php
 	
 clean: clean-api-docs
-	rm -r admin_manual/_build developer_manual/_build developer_manual/api user_manual/_build user_manual_de_/_build
+	rm -r admin_manual/_build developer_manual/_build user_manual/_build user_manual_de_/_build
 
 clean-api-docs:
-	rm -fr developer_manual/api/
+	rm -r developer_manual/api/
