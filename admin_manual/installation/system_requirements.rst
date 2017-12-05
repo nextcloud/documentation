@@ -16,7 +16,7 @@ For best performance, stability, support, and full functionality we recommend:
 
 * Red Hat Enterprise Linux 7
 * MySQL/MariaDB
-* PHP 5.4 +
+* PHP 5.4 + (PHP 7.1 + not supported)
 * Apache 2.4 with mod_php
 
 Supported Platforms
@@ -28,7 +28,7 @@ Supported Platforms
 * Web server: Apache 2 with mod_php
 * Databases: MySQL/MariaDB 5.5+; PostgreSQL; Oracle 11g (currently only possible 
   if you `contact us <https://nextcloud.com/enterprise>` as part of a subscription)
-* PHP 5.4 + required
+* PHP 5.4 + required (PHP 7.1 + not supported)
 * Hypervisors: Hyper-V, VMware ESX, Xen, KVM
 * Desktop: Windows XP SP3 (EoL Q2 2015), Windows 7+, Mac OS X 10.7+ (64-bit 
   only), Linux (CentOS 6.5, 7 (7 is 64-bit only), Ubuntu 12.04 LTS, 14.04 LTS, 
