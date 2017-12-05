@@ -49,4 +49,4 @@ clean: clean-api-docs
 	rm -r admin_manual/_build developer_manual/_build user_manual/_build user_manual_de_/_build
 
 clean-api-docs:
-	rm -r developer_manual/api/
+	-rm -r developer_manual/api/
