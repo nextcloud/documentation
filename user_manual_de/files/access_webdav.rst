@@ -240,10 +240,7 @@ externen Server finden Sie in der `Dokumentation des Herstellers
 Dateizugriff unter Microsoft Windows
 ------------------------------------
 
-Am besten verwenden Sie einen geeigneten WebDAV-Client von der
-`WebDAV Projektseite <http://www.webdav.org/projects/>`_.
-
-Wenn Sie die native Windows-Implementierung verwenden müssen, können Sie
+Wenn Sie die native Windows-Implementierung verwenden, können Sie
 Nextcloud einem neuen Laufwerk zuordnen. Die Zuordnung zu einem Laufwerk
 ermöglicht es Ihnen Dateien, die auf einem Nextcloud-Server gespeichert sind,
 genau wie gewöhnliche Speichermedien zu verwenden.
