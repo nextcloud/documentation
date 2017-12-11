@@ -223,10 +223,7 @@ check the `vendor documentation
 Accessing files using Microsoft Windows
 ---------------------------------------
 
-It is best to use a suitable WebDAV client from the
-`WebDAV Project page <http://www.webdav.org/projects/>`_ .
-
-If you must use the native Windows implementation, you can map Nextcloud to a new
+If you use the native Windows implementation, you can map Nextcloud to a new
 drive. Mapping to a drive enables you to browse files stored on an Nextcloud
 server the way you would files stored in a mapped network drive.
 
