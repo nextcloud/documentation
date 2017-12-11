@@ -47,7 +47,7 @@ If you decide to use a MySQL or MariaDB database, ensure the following:
 
 .. note:: MariaDB is backwards compatible with MySQL.  All instructions work for both. You will not need to replace mysql with anything.
 
-The PHP configuration in :file:`/etc/php5/conf.d/mysql.ini` could look like this:
+The PHP configuration in :file:`/etc/php7/conf.d/mysql.ini` could look like this:
 
 ::
 
@@ -110,7 +110,7 @@ PostgreSQL database
 ^^^^^^^^^^^^^^^^^^^
 
 If you decide to use a PostgreSQL database make sure that you have installed
-and enabled the PostgreSQL extension in PHP. The PHP configuration in :file:`/etc/php5/conf.d/pgsql.ini` could look
+and enabled the PostgreSQL extension in PHP. The PHP configuration in :file:`/etc/php7/conf.d/pgsql.ini` could look
 like this:
 
 ::
