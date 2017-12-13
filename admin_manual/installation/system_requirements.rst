@@ -25,7 +25,7 @@ Supported Platforms
 * Server: Linux (Debian 7, SUSE Linux Enterprise Server 11 SP3 & 12, 
   Red Hat Enterprise Linux/CentOS 6.5 and 7 (7 is 64-bit only), Ubuntu 14.04 LTS, 16.04 LTS)
 * Web server: Apache 2 (mod_php, php-fpm) or Nginx (php-fpm) 
-* Databases: MySQL/MariaDB 5.5+; PostgreSQL; Oracle 11g (currently only possible 
+* Databases: MySQL/MariaDB 5.5+; PostgreSQL 9.x (10 is supported with Nextcloud 13+); Oracle 11g (currently only possible
   if you `contact us <https://nextcloud.com/enterprise>` as part of a subscription)
 * PHP 5.6 + required (PHP 7.2 not supported)
 * Hypervisors: Hyper-V, VMware ESX, Xen, KVM
