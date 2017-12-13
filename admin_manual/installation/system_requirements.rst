@@ -26,7 +26,7 @@ Supported Platforms
   Red Hat Enterprise Linux/Centos 6.5 and 7 (7 is 64-bit only), Ubuntu 12.04 
   LTS, 14.04 LTS, 14.10)
 * Web server: Apache 2 with mod_php
-* Databases: MySQL/MariaDB 5.5+; PostgreSQL; Oracle 11g (currently only possible 
+* Databases: MySQL/MariaDB 5.5+; PostgreSQL 9.x (10 is supported with Nextcloud 13+); Oracle 11g (currently only possible
   if you `contact us <https://nextcloud.com/enterprise>` as part of a subscription)
 * PHP 5.4 + required (PHP 7.1 + not supported)
 * Hypervisors: Hyper-V, VMware ESX, Xen, KVM
