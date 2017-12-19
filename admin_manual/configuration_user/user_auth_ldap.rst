@@ -376,6 +376,13 @@ Group Member association:
 
   * Example: *uniquemember*
 
+Nested groups:
+  Enable group member retrieval from sub groups.
+
+  To allow user listing and login from nested groups, please see **User listing
+  and login per nested groups** in the section **Troubleshooting, Tips and
+  Tricks**.
+
 Enable LDAP password changes per user:
   Allow LDAP users to change their password and allow Super Administrators and Group Administrators to change the password of their LDAP users.
 
@@ -605,6 +612,22 @@ If you want to use ``memberOf`` within your filter you might need to give your
 querying user the permissions to use it. For Microsoft Active Directory this
 is described `here <https://serverfault.com/questions/167371/what-permissions-are
 -required-for-enumerating-users-groups-in-active-directory/167401#167401>`_.
+
+User listing and login per nested groups
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When it is intended to allow user listing and login based on a specific group
+having subgroups ("nested groups"), checking **Nested groups** on **Directory
+Settings** is not enough. Also the User (and Login) filter need to be changed,
+by specifying the ``LDAP_MATCHING_RULE_IN_CHAIN`` matching rule. Change the
+filter parts containing the *memberof* condition according to this example:
+
+   * (memberof=cn=Nextcloud Users Group,ou=Groups,…)
+
+to
+
+   * (memberof:1.2.840.113556.1.4.1941:=cn=Nextcloud Users Group,ou=Groups,…)
+
 
 Duplicating server configurations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
