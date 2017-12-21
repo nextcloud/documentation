@@ -90,7 +90,8 @@ The S3 backend mounts a bucket on an Amazon S3 Storage or compatible server into
 			'use_ssl' => true,
 			'region' => 'optional',
 			// required for some non amazon s3 implementations
-			'use_path_style'=>true
+			'use_path_style' => true,
+			'legacy_auth' => false
 		),
 	),
 
@@ -103,6 +104,9 @@ usually don't require the region to be set.
 but can be used with non-Amazon servers where the DNS infrastructure cannot be controlled. Ordinarily,
 requests will be made with http://bucket.hostname.domain/, but with path style enabled,
 requests are made with http://hostname.domain/bucket instead.
+
+:code:`legacy_auth` is only required for S3 servers that only implement version 2 authentication,
+on default version 4 authentication will be used.
 
 ---------------------------
 Multibucket Object Store
