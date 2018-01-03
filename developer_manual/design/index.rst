@@ -8,6 +8,7 @@ Design guidelines
    navigation
    settings
    content
+   list
    popovermenu
    html
    icons
