@@ -17,7 +17,6 @@ Basic layout
 
 .. figure:: ../images/list.png
    :alt: Content list screenshot
-   :figclass: figure-with-code
 
 .. code-block:: html
 
