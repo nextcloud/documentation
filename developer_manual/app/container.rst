@@ -109,7 +109,7 @@ To add the app's classes simply open the :file:`lib/AppInfo/Application.php` and
        */
       $container->registerService('AuthorMapper', function($c){
         return new AuthorMapper(
-          $c->query('ServerContainer')->getDb()
+          $c->query('ServerContainer')->getDatabaseConnection()
         );
       });
     }
@@ -143,7 +143,7 @@ The container works in the following way:
 
     $container->registerService('AuthorMappers', function($c){
       return new AuthorService(
-        $c->query('ServerContainer')->getDb()
+        $c->query('ServerContainer')->getDatabaseConnection()
       );
     });
 
