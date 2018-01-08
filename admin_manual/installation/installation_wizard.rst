@@ -45,7 +45,7 @@ are using an HTTP server other than Apache, or you may wish to store your
 Nextcloud data in a different location for other reasons (e.g. on a storage 
 server). It is best to configure your data directory location at installation, 
 as it is difficult to move after installation. You may put it anywhere; in this 
-example is it located in ``/var/oc_data``. This directory must already exist, 
+example is it located in ``/opt/nextcloud/``. This directory must already exist, 
 and must be owned by your HTTP user.
 
 .. _database_choice_label:
