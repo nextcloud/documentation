@@ -1007,17 +1007,6 @@ Defaults to ``2048``
 
 ::
 
-	'preview_max_scale_factor' => 10,
-
-If a lot of small pictures are stored on the Nextcloud instance and the
-preview system generates blurry previews, you might want to consider setting
-a maximum scale factor. By default, pictures are upscaled to 10 times the
-original size. A value of ``1`` or ``null`` disables scaling.
-
-Defaults to ``2``
-
-::
-
 	'preview_max_filesize_image' => 50,
 
 max file size for generating image previews with imagegd (default behavior)
