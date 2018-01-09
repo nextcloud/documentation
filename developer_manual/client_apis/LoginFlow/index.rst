@@ -46,6 +46,9 @@ On the final login the server will do a redirect to a url of the following forma
 
 	nc://login/server:<server>&user:<username>&password:<password>
 
+* server: The address of the server to connect to. The server may specify a protocol (http or https). If no protocol is specified the client will assume https.
+* username: The username that the client must use to login
+* password: The password that the client must use to login and store securely
 
 This information will be used by the client to create a new account.
 After this the webview is destroyed including all the state the webview holds.
