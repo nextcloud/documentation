@@ -16,7 +16,7 @@ Opening the webview
 The client should open a webview to :code:`<server>/index.php/login/flow`. Be sure to set the :code:`OCS-APIREQUEST`
 header to :code:`true`.
 
-The client will register an URL handler to catch urls of the :code:`nc` protocol. This is required the obtain the
+The client will register an URL handler to catch urls of the :code:`nc` protocol. This is required to obtain the
 credentials in the final stage.
 
 This should be a one time webview. Which means:
@@ -24,15 +24,15 @@ This should be a one time webview. Which means:
 * Passwords should not be stored
 * No state should be preserved after the webview has terminated
 
-To have a good user experince please to considet he following things:
-* set the proper :code:`ACCEPT_LANGUAGE` header
+To have a good user experince please consider the following things:
+* set a proper :code:`ACCEPT_LANGUAGE` header
 * set a proper :code:`USER_AGENT` header
 
 
 Login in the user
 -----------------
 
-The user will now see a webpage telling them they will grant access to :code:`USER_AGENT`. When they follow the setps
+The user will now see a webpage telling them they will grant access to :code:`USER_AGENT`. When they follow the steps
 they will be asked to login. If they have two factor authentication enabled they will require this to login. But since
 this is all in the webview itself the client does not need to care about this.
 
