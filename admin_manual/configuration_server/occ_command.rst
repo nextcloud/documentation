@@ -21,6 +21,7 @@ occ command Directory
 * :ref:`config_commands_label`
 * :ref:`dav_label`
 * :ref:`database_conversion_label`
+* :ref:`database_add_indices_label`
 * :ref:`encryption_label`
 * :ref:`federation_sync_label`
 * :ref:`file_operations_label`
@@ -486,6 +487,17 @@ This is example converts SQLite to MySQL/MariaDB::
 
 For a more detailed explanation see 
 :doc:`../configuration_database/db_conversion`
+
+.. _database_add_indices_label:
+
+Add missing indices
+-------------------
+
+It might happen that we add from time to time new indices to already existing database tables,
+for example to improve performance. In order to check your database for missing indices run
+following command:
+
+ sudo -u www-data php occ db:add-missing-indices
 
 .. _encryption_label:
 
