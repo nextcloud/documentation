@@ -229,6 +229,15 @@ To prevent CSRF in an app, be sure to call the following method at the top of al
 
 If you are using the App Framework, every controller method is automatically checked for CSRF unless you explicitly exclude it by setting the @NoCSRFRequired annotation before the controller method, see :doc:`../app/controllers`
 
+When using forms in your app or theme, you need to supply a csrf-token to be checked when submitting the form. Insert a token like this:
+
+.. code-block:: php
+  
+  <form action="/index.php/apps/myapp" method="post">
+    <input type="hidden" name="requesttoken" value="<?php echo $_['requesttoken']; ?>" />
+  </form>
+  
+
 Unvalidated redirects
 ---------------------
 
