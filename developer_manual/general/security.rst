@@ -233,8 +233,13 @@ When using forms in your app or theme, you need to supply a csrf-token to be che
 
 .. code-block:: php
   
-  <form action="/index.php/apps/myapp" method="post">
-    <input type="hidden" name="requesttoken" value="<?php echo $_['requesttoken']; ?>" />
+  <?php $urlGenerator = \OC::$server->getURLGenerator(); ?>
+  <form action="<?php echo $urlGenerator->linkToRoute('appname.page.pagename'); ?>" method="post">
+    <label>Item name<br />
+      <input type="text" name="name" placeholder="My item" />
+    </label>
+    <input type="hidden" name="requesttoken" value="<?php p($_['requesttoken']); ?>" />
+    <button type="submit" class="btn primary">Add</button>
   </form>
   
 
