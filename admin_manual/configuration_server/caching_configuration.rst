@@ -93,7 +93,7 @@ Restart your Web server, add the appropriate entries to your
 for the local cache, Memcached as the distributed memcache, and lists all the 
 servers in the shared cache pool with their port numbers::
 
- 'memcache.local' => '\OC\Memcache\APCu',
+ 'memcache.local' => '\OC\Memcache\Memcached',
  'memcache.distributed' => '\OC\Memcache\Memcached',
  'memcached_servers' => array(
       array('localhost', 11211),
