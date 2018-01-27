@@ -12,31 +12,31 @@ Nextcloud needs a minimum of 128MB RAM, and we recommend a minimum of 512MB.
 Recommended setup for running Nextcloud
 ---------------------------------------
 
-For best performance, stability, support, and full functionality we recommend:
+For best performance, stability, and functionality we recommend:
 
 * Red Hat Enterprise Linux 7 / Ubuntu 16.04 LTS
 * MySQL/MariaDB
 * PHP 7.0 +
 * Apache 2.4 with mod_php
 
-Supported platforms
--------------------
+Working platforms
+-----------------
 
-* Server: Linux (Debian 7, SUSE Linux Enterprise Server 11 SP3 & 12, 
+* Server: Linux (Debian 8/9, SUSE Linux Enterprise Server 11 SP3 & 12, 
   Red Hat Enterprise Linux/CentOS 6.5 and 7 (7 is 64-bit only), Ubuntu 14.04 LTS, 16.04 LTS)
 * Web server: Apache 2 (mod_php, php-fpm) or Nginx (php-fpm) 
 * Databases: MySQL/MariaDB 5.5+; PostgreSQL 9, 10; Oracle 11g (currently only possible 
-  if you `contact us <https://nextcloud.com/enterprise>` as part of a subscription)
+  as part of an `enterprise subscription <https://nextcloud.com/enterprise>`) 
 * PHP 5.6 + required
 * Hypervisors: Hyper-V, VMware ESX, Xen, KVM
-* Desktop: Windows XP SP3 (EoL Q2 2015), Windows 7+, Mac OS X 10.7+ (64-bit 
-  only), Linux (CentOS 6.5, 7 (7 is 64-bit only), Ubuntu 12.04 LTS, 14.04 LTS, 
-  14.10, Fedora 20, 21, openSUSE 12.3, 13, Debian 7 & 8).
-* Mobile apps: iOS 7+, Android 4+
-* Web browser: IE11+, Microsoft Edge, Firefox 14+, Chrome 18+, Safari 7+
+* Desktop: Windows 7+, Mac OS X 10.7+ (64-bit only), Linux ( CentOS 6.5, 7 (7 is 64-bit only),
+  Ubuntu 14.04 LTS, 16.04 LTS, 16.10+, Fedora 21+, openSUSE 13+, Debian 8+).
+* Mobile apps: iOS 7+, Android 5+
+* Web browser: IE11+, Microsoft Edge, Firefox 15+, Chrome 20+, Safari 7+
 
 See :doc:`source_installation` for minimum software versions for installing 
-Nextcloud.
+Nextcloud. If you encounter problems, check our `home user forums <https://help.nextcloud.com>`
+or `enterprise support portal <https://portal.nextcloud.com.>`
 
 Database requirements for MySQL / MariaDB
 -----------------------------------------
