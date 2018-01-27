@@ -19,6 +19,8 @@ For best performance, stability, and functionality we recommend:
 * PHP 7.0 +
 * Apache 2.4 with mod_php
 
+For a Nextcloud installation with efficient and reliable scaling over ~100 users, see our `deployment recommendations <https://portal.nextcloud.com/article/nextcloud-deployment-recommendations-7.html>`
+
 Working platforms
 -----------------
 
