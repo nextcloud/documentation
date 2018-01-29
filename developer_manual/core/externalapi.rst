@@ -48,6 +48,10 @@ The output defaults to XML. If you want to get JSON append this to the URL::
 
     ?format=json
 
+Or set the proper Accept header::
+
+    Accept: application/json
+
 Output from the application is wrapped inside a **data** element:
 
 **XML**:
