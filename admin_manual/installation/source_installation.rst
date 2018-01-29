@@ -451,6 +451,14 @@ confirm your paths, for example::
 If any of your system environment variables are not present in the file then
 you must add them.
 
+Alternatively it is possible to use the enviornemt variables of your system by modifying 
+
+    /etc/php/7.0/fpm/pool.d/www.conf
+   
+and uncommenting the line
+
+    clear_env = no
+
 When you are using shared hosting or a control panel to manage your `Nextcloud VM
 <https://github.com/nextcloud/vm>`_ or server, the configuration files are almost
 certain to be located somewhere else, for security and flexibility reasons, so
