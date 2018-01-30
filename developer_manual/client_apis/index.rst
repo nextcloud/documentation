@@ -24,10 +24,17 @@ Other OCS API documentations:
 * `Notifications API - Register a device for push notifications <https://github.com/nextcloud/notifications/blob/5a2d3607952bad675e4057620a9c7de8a7f84f0b/docs/push-v3.md>`_
 
 
+Login Flow
+----------
+
+Clients can obtain an apptoken via the login flow.  See :doc:`LoginFlow/index`
+
+
 .. toctree::
     :maxdepth: 2
     :hidden:
 
     WebDAV/index
     OCS/index
+    LoginFlow/index
 
