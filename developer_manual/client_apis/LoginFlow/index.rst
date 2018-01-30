@@ -53,4 +53,4 @@ On the final login the server will do a redirect to a url of the following forma
 This information will be used by the client to create a new account.
 After this the webview is destroyed including all the state the webview holds.
 
-.. note:: On nextcloud 12 the returned server is just the server address without any possible subfolder. This is corrected in Nextcloud 13.
+.. note:: On Nextcloud 12 the returned server is just the server address without any possible subfolder. This is corrected in Nextcloud 13.
