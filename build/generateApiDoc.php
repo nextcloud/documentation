@@ -39,6 +39,6 @@ $apiDocBuilder = new ApiDocBuilder($nextcloudSource, $destinationDirectory);
 $apiDocBuilder->setVerboseOutput(true);
 $apiDocBuilder->addExtension(\JuliusHaertl\PHPDocToRst\Extension\InterfaceImplementors::class);
 $apiDocBuilder->addExtension(\JuliusHaertl\PHPDocToRst\Extension\NoPrivateExtension::class);
-$apiDocBuilder->addExtension(\JuliusHaertl\PHPDocToRst\Extension\GithubLocationExtension::class, [__DIR__ . '/server/', 'https://github.com/nextcloud/server', 'master']);
+$apiDocBuilder->addExtension(\JuliusHaertl\PHPDocToRst\Extension\GithubLocationExtension::class, [__DIR__ . '/server/', 'https://github.com/nextcloud/server', 'stable13']);
 $apiDocBuilder->build();
 
