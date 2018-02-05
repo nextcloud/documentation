@@ -29,7 +29,7 @@ from conf import *
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinxcontrib.phpdomain', 'sphinx.ext.todo', 'rst2pdf.pdfbuilder', 'sphinx.ext.intersphinx']
+extensions += ['sphinxcontrib.phpdomain', 'sphinx.ext.todo', 'rst2pdf.pdfbuilder', 'sphinx.ext.intersphinx']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['../_shared_assets/templates']
@@ -292,3 +292,5 @@ intersphinx_mapping = {
   'user_manual': ('https://docs.nextcloud.com/server/%s/user_manual/' % (version), '../user_manual/_build/html/com/objects.inv'),
   'developer_manual': ('https://docs.nextcloud.com/server/%s/developer_manual/' % (version), '../developer_manual/_build/html/com/objects.inv'),
 }
+
+current_docs = 'admin_manual'

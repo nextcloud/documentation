@@ -29,7 +29,7 @@ from conf import *
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.todo', 'rst2pdf.pdfbuilder']
+extensions += ['sphinx.ext.todo', 'rst2pdf.pdfbuilder']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['../_shared_assets/templates']
@@ -295,3 +295,5 @@ epub_copyright = u'2012-2017, Die Nextcloud Entwickler'
 
 # Include todos?
 todo_include_todos = True
+
+current_docs = 'user_manual_de'
