@@ -91,7 +91,7 @@ The following properties are supported:
 - :code:`{http://owncloud.org/ns}owner-display-name` The display name of the owner of a shared file
 - :code:`{http://owncloud.org/ns}share-types`
 - :code:`{http://owncloud.org/ns}checksums`
-- :code:`{http://owncloud.org/ns}has-preview`
+- :code:`{http://nextcloud.org/ns}has-preview`
 - :code:`{http://owncloud.org/ns}size` Unlike :code:`getcontentlength`, this property also works for folders reporting the size of everything in the folder.
 
 Getting properties for just the folder
