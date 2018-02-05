@@ -10,7 +10,8 @@ WebDAV
 ------
 WebDAV is the main api for file related operations, it supports listing directories, downloading an uploading files, manipulating tags and favorites and more.
 
-An overview of how to use the various WebDAV api's can be found at :doc:`WebDAV/index`
+An overview of how to use the various WebDAV api's can be found at :doc:`WebDAV/index`, additionally Nextcloud implements rfc5323_ to allow searching the filesystem
+more information about how to use WebDAV search can be found at :doc:`WebDAV/search`.
 
 
 OCS
@@ -23,6 +24,7 @@ Other OCS API documentations:
 * `Notifications API <https://github.com/nextcloud/notifications/blob/master/docs/ocs-endpoint-v2.md>`_
 * `Notifications API - Register a device for push notifications <https://github.com/nextcloud/notifications/blob/5a2d3607952bad675e4057620a9c7de8a7f84f0b/docs/push-v3.md>`_
 
+.. _rfc5323: _https://tools.ietf.org/html/rfc5323
 
 Login Flow
 ----------
