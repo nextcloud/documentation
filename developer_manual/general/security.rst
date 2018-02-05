@@ -233,6 +233,18 @@ When using forms in your app or theme, you need to supply a csrf-token to be che
 
 .. code-block:: php
   
+  // in itemController.php
+  ...
+  function renderItemTemplate() {
+    ...
+    return new TemplateResponse('appname', 'itemTemplate', array(
+      'items' => ...,
+      'requesttoken' => (\OC::$server->getSession()) ? \OCP\Util::callRegister() : ''
+    ));
+  }
+  ...
+
+  // in itemTemplate.php
   <?php $urlGenerator = \OC::$server->getURLGenerator(); ?>
   <form action="<?php p($urlGenerator->linkToRoute('appname.page.pagename')); ?>" method="post">
     <label>Item name<br />
@@ -241,7 +253,9 @@ When using forms in your app or theme, you need to supply a csrf-token to be che
     <input type="hidden" name="requesttoken" value="<?php p($_['requesttoken']); ?>" />
     <button type="submit" class="btn primary">Add</button>
   </form>
-  
+
+
+Note that the template variable *requesttoken* is prefilled for every template, though this is nothing you can rely on to exist in the future. Also note that a request token will expire after a while. If you want users to be able to submit an already loaded form after a very long time, consider fetching a new requesttoken via AJAX every once in a while.
 
 Unvalidated redirects
 ---------------------
