@@ -37,6 +37,7 @@ Clients can obtain an apptoken via the login flow.  See :doc:`LoginFlow/index`
     :hidden:
 
     WebDAV/index
+    WebDAV/search
     OCS/index
     LoginFlow/index
 
