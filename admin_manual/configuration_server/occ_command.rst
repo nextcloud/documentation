@@ -186,6 +186,7 @@ Apps commands
 The ``app`` commands list, enable, and disable apps::
 
  app
+  app:install      install selected app
   app:check-code   check code to be compliant
   app:disable      disable an app
   app:enable       enable an app
