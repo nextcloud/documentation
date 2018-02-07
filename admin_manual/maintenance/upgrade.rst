@@ -39,7 +39,7 @@ Update notifications
 --------------------
 
 Nextcloud has an update notification app, that informs the administrator about
-the availablilty of an update. Then you decide which update method to use.
+the availability of an update. Then you decide which update method to use.
 
 .. figure:: images/2-updates.png
    :alt: Both update notifications displayed on Admin page.
@@ -95,7 +95,7 @@ Then change it back to ``false`` when you are finished.
 Manual steps during upgrade
 ---------------------------
 
-Some opertation can be quite time consuming. Therefore we decided not to add them
+Some operation can be quite time consuming. Therefore we decided not to add them
 the the normal upgrade process. We recommend to run them manually after the upgrade
 was completed. Below you find a list of this commands.
 
