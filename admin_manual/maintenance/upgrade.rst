@@ -91,3 +91,22 @@ Change ``"maintenance" => false`` to ``"maintenance" => true``:
     "maintenance" => true,
 
 Then change it back to ``false`` when you are finished.
+
+Manual steps during upgrade
+---------------------------
+
+Some opertation can be quite time consuming. Therefore we decided not to add them
+the the normal upgrade process. We recommend to run them manually after the upgrade
+was completed. Below you find a list of this commands.
+
+Upgrading to Nextcloud 13
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+With Nextcloud 13 we added a new index to the share table which should result in
+significant performance improvements:
+
+ $ sudo -u www-data php occ db:add-missing-indice
+
+With Nextcloud 13 we switched to bigint for the file ID's in the file cache table
+
+ $ sudo -u www-data php occ db:convert-filecache-bigint 
