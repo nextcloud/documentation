@@ -34,6 +34,7 @@ $mapping = array(
     'admin-update'            => '/admin_manual/maintenance/update.html',
     'admin-theming-icons'     => '/admin_manual/configuration_server/theming.html#theming-of-icons',
     
+    'developer-manual'        => '/developer_manual',
     'developer-code-integrity'=> '/developer_manual/app/code_signing.html',
     'developer-theming'       => '/developer_manual/core/theming.html',
 
