@@ -28,7 +28,6 @@ $mapping = array(
     'admin-code-integrity'    => '/admin_manual/issues/code_signing.html',
     'admin-setup-well-known-URL' => '/admin_manual/issues/general_troubleshooting.html#service-discovery',
     'admin-backup'            => '/admin_manual/maintenance/backup.html',
-    'admin-monitoring'        => '/admin_manual/operations/considerations_on_monitoring.html',
     'admin-sso'               => '/admin_manual/configuration_server/sso_configuration.html',
     'admin-php-opcache'       => '/admin_manual/configuration_server/server_tuning.html#enable-php-opcache',
     'admin-mysql-utf8mb4'     => '/admin_manual/configuration_database/mysql_4byte_support.html',
