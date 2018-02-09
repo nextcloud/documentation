@@ -103,10 +103,10 @@ Upgrading to Nextcloud 13
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 With Nextcloud 13 we added a new index to the share table which should result in
-significant performance improvements:
+significant performance improvements::
 
  $ sudo -u www-data php occ db:add-missing-indice
 
-With Nextcloud 13 we switched to bigint for the file ID's in the file cache table
+With Nextcloud 13 we switched to bigint for the file ID's in the file cache table::
 
  $ sudo -u www-data php occ db:convert-filecache-bigint 
