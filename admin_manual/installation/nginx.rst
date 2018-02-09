@@ -363,3 +363,16 @@ block shown above not located **below** the:
 
 block. Other custom configurations like caching JavaScript (.js)
 or CSS (.css) files via gzip could also cause such issues.
+
+Duplicated headers in response
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+NextCloud sets some security headers within PHP by default. If they are also 
+set by nginx this will cause duplicated headers and the NectCloud status 
+check may display some errors, that the headers are not configured as recommend.
+
+To avoid duplicated headers in responses, use the ``fastcgi_hide_header`` option:
+
+.. code-block:: nginx
+
+        fastcgi_hide_header X-XSS-Protection;
