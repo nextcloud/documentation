@@ -10,13 +10,12 @@ server. This page is community-maintained. (Thank you, contributors!)
    **ssl_certificate_key** to suit your needs.
 -  Make sure your SSL certificates are readable by the server (see `nginx HTTP
    SSL Module documentation <http://wiki.nginx.org/HttpSslModule>`_).
--  ``add_header`` statements are only taken from the current level and are not
-   cascaded from or to a different level. All necessary ``add_header``
-   statements must be defined in each level needed. For better readability it
-   is possible to move *common* add header statements into a separate file
-   and include that file wherever necessary. However, each ``add_header``
-   statement must be written in a single line to prevent connection problems
-   with sync clients.
+-  The ``add_header`` directives are only inherited from the previous level if 
+   there are no ``add_header`` directives defined on the current level. For 
+   better readability it is possible to move *common* add header statements 
+   into a separate file and include that file wherever necessary. However, 
+   each ``add_header`` statement must be written in a single line to prevent 
+   connection problems with sync clients.
 -  Be careful about line breaks if you copy the examples, as long lines may be
    broken for page formatting.
 -  Some environments might need a ``cgi.fix_pathinfo`` set to ``1`` in their
@@ -61,8 +60,7 @@ webroot of your nginx installation. In this example it is
       # Add headers to serve security related headers
       # Before enabling Strict-Transport-Security headers please read into this
       # topic first.
-      # add_header Strict-Transport-Security "max-age=15768000;
-      # includeSubDomains; preload;";
+      # add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
       #
       # WARNING: Only add the preload option once you read about
       # the consequences in https://hstspreload.org/. This option
@@ -74,12 +72,17 @@ webroot of your nginx installation. In this example it is
       add_header X-Robots-Tag none;
       add_header X-Download-Options noopen;
       add_header X-Permitted-Cross-Domain-Policies none;
+      fastcgi_hide_header X-Content-Type-Options;
+      fastcgi_hide_header X-XSS-Protection;
+      fastcgi_hide_header X-Robots-Tag;
+      fastcgi_hide_header X-Download-Options;
+      fastcgi_hide_header X-Permitted-Cross-Domain-Policies;
 
       # Remove X-Powered-By, which is an information leak
       fastcgi_hide_header X-Powered-By;
 
       # Path to the root of your installation
-      root /var/www/nextcloud/;
+      root /var/www/nextcloud;
 
       location = /robots.txt {
           allow all;
@@ -219,12 +222,17 @@ your nginx installation.
       add_header X-Robots-Tag none;
       add_header X-Download-Options noopen;
       add_header X-Permitted-Cross-Domain-Policies none;
+      fastcgi_hide_header X-Content-Type-Options;
+      fastcgi_hide_header X-XSS-Protection;
+      fastcgi_hide_header X-Robots-Tag;
+      fastcgi_hide_header X-Download-Options;
+      fastcgi_hide_header X-Permitted-Cross-Domain-Policies;
 
       # Remove X-Powered-By, which is an information leak
       fastcgi_hide_header X-Powered-By;
 
       # Path to the root of your installation
-      root /var/www/;
+      root /var/www;
 
       location = /robots.txt {
           allow all;
