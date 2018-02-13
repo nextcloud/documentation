@@ -30,7 +30,6 @@ Below is the list of apps supported for Nextcloud |version|. Supported here mean
 * Gallery
 * Logreader
 * Lookup Server Connector
-* Nextant
 * Nextcloud Announcements
 * Notifications
 * Object Storage (Swift)
@@ -46,7 +45,7 @@ Below is the list of apps supported for Nextcloud |version|. Supported here mean
 * User External
 * User LDAP
 * User Shibboleth/SAML
-* Video Calls (former Spreed)
+* Talk
 * WebDAV Endpoint (handles old and new webdav endpoints)
 * Workflow Engine (cannot be disabled)
 
