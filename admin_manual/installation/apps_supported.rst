@@ -30,7 +30,6 @@ Below is the list of apps supported for Nextcloud |version|. Supported here mean
 * Gallery
 * Logreader
 * Lookup Server Connector
-* Nextant
 * Nextcloud Announcements
 * Notifications
 * Object Storage (Swift)
