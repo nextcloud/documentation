@@ -14,11 +14,10 @@ computer, it will flow across the others using these desktop sync clients.
 You will always
 have your latest files with you wherever you are.
 
-Its usage is documented separately in the `Nextcloud/ownCloud Desktop Client Manual`_.
+Its usage is documented separately in the `Nextcloud Desktop Client Manual`_.
 
-.. _`Nextcloud/ownCloud Desktop Client Manual`: https://doc.owncloud.org/desktop/2.2/
-.. _Nextcloud Desktop Client Manual: https://docs.nextcloud.org/
-.. _Nextcloud Sync Client: https://nextcloud.com/install/#install-clients
+.. _`Nextcloud Desktop Client Manual`: https://docs.nextcloud.com/desktop/
+.. _`Nextcloud Sync Client`: https://nextcloud.com/install/#install-clients
 
 Mobile clients
 --------------
@@ -27,5 +26,5 @@ Visit your Personal page in your Nextcloud Web interface to find download links
 for Android and iOS mobile sync clients. Or, visit the `Nextcloud download page
 <https://nextcloud.com/install/>`_.
 
-Visit the `Nextcloud documentation page <https://docs.nextcloud.org/>`_ to read
+Visit the `Nextcloud documentation page <https://docs.nextcloud.com/>`_ to read
 the user manuals.
