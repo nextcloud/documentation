@@ -83,7 +83,7 @@ You can verify if the cron job has been added and scheduled by executing::
 
 .. note:: Please refer to the crontab man page for the exact command syntax.
 
-.. _easyCron: http://www.easycron.com/
+.. _easyCron: https://www.easycron.com/
 
 systemd
 ^^^^^^^
