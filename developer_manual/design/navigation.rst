@@ -2,9 +2,60 @@
 .. codeauthor:: John Molakvoæ <skjnldsv@protonmail.com>
 ..  _navigation:
 
+..  _newbutton:
+
 ===============
-App navigation
+Introduction
 ===============
+
+The navigation section of any nextcloud app is the left sidebar.
+It is basically composed of
+
+* a 'new' button
+* a menu
+* a settings area
+
+The 'new' button and the settings area are optional.
+
+
+===============
+New button
+===============
+
+Introduction
+-------------
+
+A 'new' button is just a stylised button located above the navigation part of your app.
+It can be tied to whatever you want as long as it follow those simple rules.
+The goal is to have an homogeneity of design across all apps using this button.
+
+Basic layout
+-------------
+
+.. figure:: ../images/newbutton.png
+   :alt: Navigation with a new button
+   :figclass: figure-with-code
+
+.. code-block:: html
+
+    <div id="app-navigation">
+        <div class="app-navigation-new">
+            <button type="button" class="icon-add">Add user</button>
+        </div>
+    </div>
+
+Rules
+------
+
+* Stay simple, don't use overcomplicated text in this button.
+* Avoid using sentences longer than one line.
+* Do not edit the styling of this button.
+
+..  _appnavigation:
+
+=====================
+App navigation menu
+=====================
 
 Introduction
 ------------
@@ -387,3 +438,43 @@ Various information
 
 * You can add the ``icon-loading-small`` class to any ``li`` element to set it in a `loading` state.
 * Every element as a ``min-height`` of 44px as that is the minimum recommended touch target. It also helps with clickability and separation on desktop environments.
+
+..  _settings:
+
+=========
+Settings
+=========
+
+Introduction
+-------------
+
+To create a settings area create a div with the id ``app-settings`` inside the ``app-navigation`` div.
+
+* The data attribute ``data-apps-slide-toggle`` slides up a target area using a jQuery selector and hides the area if the user clicks outside of it.
+* Max height of the settings area is 300px. Do **not** change that.
+* Keep it clear, organized and simple.
+
+Basic layout
+-------------
+
+.. figure:: ../images/settings.*
+   :alt: Settings
+   :figclass: figure-with-code
+
+.. code-block:: html
+
+    <div id="app-navigation">
+
+        <!-- Your navigation here -->
+
+        <div id="app-settings">
+            <div id="app-settings-header">
+                <button class="settings-button"
+                        data-apps-slide-toggle="#app-settings-content"
+                ><?php p($l->t('Settings'));?></button>
+            </div>
+            <div id="app-settings-content">
+                <!-- Your settings in here -->
+            </div>
+        </div>
+    </div>
