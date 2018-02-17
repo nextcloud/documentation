@@ -42,6 +42,10 @@ Basic layout
         <div class="app-navigation-new">
             <button type="button" class="icon-add">Add user</button>
         </div>
+
+        <!-- Your navigation here -->
+        <!-- Your settings here -->
+
     </div>
 
 Rules
@@ -82,6 +86,9 @@ Basic layout
 .. code-block:: html
 
     <div id="app-navigation">
+
+        <!-- Your 'new' button here -->
+
         <ul>
             <li><a href="#">First level entry</a></li>
             <li>
@@ -92,6 +99,9 @@ Basic layout
                 </ul>
             </li>
         </ul>
+
+        <!-- Your settings here -->
+
     </div>
 
 
@@ -465,16 +475,18 @@ Basic layout
 
     <div id="app-navigation">
 
+        <!-- Your 'new' button here -->
         <!-- Your navigation here -->
 
         <div id="app-settings">
             <div id="app-settings-header">
                 <button class="settings-button"
-                        data-apps-slide-toggle="#app-settings-content"
-                ><?php p($l->t('Settings'));?></button>
+                        data-apps-slide-toggle="#app-settings-content">
+                    Settings
+                </button>
             </div>
             <div id="app-settings-content">
-                <!-- Your settings in here -->
+                <!-- Your settings content here -->
             </div>
         </div>
     </div>
