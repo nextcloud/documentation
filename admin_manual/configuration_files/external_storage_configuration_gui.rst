@@ -103,15 +103,16 @@ Available storage backends
 --------------------------
 
 The following backends are provided by the external storages app. Other apps
-may provide their own backends, which are not listed here.
+may provide their own backends, which are not listed here. Google Drive and Dropbox
+were moved to external apps which are still in development (Github-Repos for `Google Drive 
+<https://github.com/owncloud/files_external_gdrive>`_ and `Dropbox 
+<https://github.com/icewind1991/files_external_dropbox>`_).
 
 .. toctree::
     :maxdepth: 1
 
     external_storage/amazons3
-    external_storage/dropbox
     external_storage/ftp
-    external_storage/google
     external_storage/local
     external_storage/nextcloud
     external_storage/openstack
