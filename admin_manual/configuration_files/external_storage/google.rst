@@ -2,6 +2,8 @@
 Google Drive
 ============
 
+.. warning:: An app for Google Drive support is still in development for NC 13: https://github.com/owncloud/files_external_gdrive
+
 Nextcloud uses OAuth 2.0 to connect to Google Drive. This requires configuration
 through Google to get an app ID and app secret, as Nextcloud registers itself
 as an app.
