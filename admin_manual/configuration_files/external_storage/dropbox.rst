@@ -2,6 +2,8 @@
 Dropbox
 =======
 
+.. warning:: An app for Dropbox support is still in development for NC 13: https://github.com/icewind1991/files_external_dropbox
+
 While Dropbox supports the newer OAuth 2.0, Nextcloud uses OAuth 1.0, so you can
 safely ignore any references to OAuth 2.0 in the Dropbox configuration.
 
