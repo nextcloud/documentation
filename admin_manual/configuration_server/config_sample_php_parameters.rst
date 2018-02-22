@@ -92,17 +92,17 @@ during installation and update, so you shouldn't need to change it.
 
 ::
 
-	'dbtype' => 'sqlite',
+	'dbtype' => 'sqlite3',
 
 Identifies the database used with this installation. See also config option
 ``supportedDatabases``
 
 Available:
-	- sqlite (SQLite3)
+	- sqlite3 (SQLite3)
 	- mysql (MySQL/MariaDB)
 	- pgsql (PostgreSQL)
 
-Defaults to ``sqlite``
+Defaults to ``sqlite3``
 
 ::
 
