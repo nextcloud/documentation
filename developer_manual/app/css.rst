@@ -10,13 +10,13 @@ The CSS files reside in the **css/** folder and should be included in the templa
 
   <?php
   // include one file
-  style('myapp', 'style');  // adds css/style.css
+  style('myapp', 'style');  // adds css/style.(s)css
 
   // include multiple files for the same app
-  style('myapp', array('style', 'navigation'));  // adds css/style.css, css/navigation.css
+  style('myapp', array('style', 'navigation'));  // adds css/style.(s)css, css/navigation.(s)css
 
-  // include vendor file (also allows vendor syntax)
-  vendor_style('myapp', 'style');  // adds vendor/style.css
+  // include vendor file (also allows array syntax)
+  vendor_style('myapp', 'style');  // adds vendor/style.(s)css
 
 .. note:: Since the version 12 of Nextcloud, we support ``SCSS`` natively.
    You can migrate your files by simply renaming your ``.css`` files to ``.scss``.
