@@ -20,6 +20,10 @@ Status codes:
 * 101 - invalid input data
 * 102 - username already exists
 * 103 - unknown error occurred whilst adding the user
+* 104 - group does not exist
+* 105 - insufficient privileges for group
+* 106 - no group specified (required for subadmins)
+* 107 - all errors that contain a hint - for example "Password is among the 1,000,000 most common ones. Please make it unique." (this code was added in 12.0.6 & 13.0.1)
 
 Example
 ^^^^^^^
@@ -27,6 +31,8 @@ Example
 * POST ``http://admin:secret@example.com/ocs/v1.php/cloud/users -d 
   userid="Frank" -d password="frankspassword"``
 * Creates the user ``Frank`` with password ``frankspassword``
+* optionally groups can be specified by one or more ``groups[]`` query parameters:
+  ``URL -d groups[]="admin" -D groups[]="Team1"``
 
 XML output
 ^^^^^^^^^^
