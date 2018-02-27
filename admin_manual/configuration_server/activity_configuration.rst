@@ -11,7 +11,7 @@ to your users for various events like:
 * A file or folder has been deleted
 
 Users can see actions (delete, add, modify) that happen to files they have access to.
-Sharing actions are only visible to the sharer and share.
+Sharing actions are only visible to the sharer and sharee.
 
 Enabling the activity app
 -------------------------
