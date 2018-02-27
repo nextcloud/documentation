@@ -491,6 +491,49 @@ A :doc:`template <templates>` can be rendered by returning a TemplateResponse. A
 
     }
 
+Public page templates
+^^^^^^^^^^^^^^^^^^^^^
+
+For public pages, that are rendered to users who are not logged in to the
+Nextcloud instance, a :any:`PublicTemplateResponse <OCP\\AppFramework\\Http\\Template\\PublicTemplateResponse>` should be used, to load the
+correct base template. It also allows adding an optional set of actions that
+will be shown in the top right corner of the public page.
+
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Template\SimpleMenuAction;
+    use OCP\AppFramework\Http\Template\PublicTemplateResponse;
+
+    class PageController extends Controller {
+
+        public function index() {
+            $template = PublicTemplateResponse($this->appName, 'main', []);
+            $template->setHeaderTitle('Public page');
+            $template->setHeaderDetails('some details');
+            $response->setHeaderActions([
+                new SimpleMenuAction('download', 'Label 1', 'icon-css-class1', 'link-url', 0),
+                new SimpleMenuAction('share', 'Label 2', 'icon-css-class2', 'link-url', 10),
+            ]);
+            return $template;
+        }
+
+    }
+
+The header title and subtitle will be rendered in the header, next to the logo.
+The action with the highest priority (lowest number) will be used as the
+primary action, others will shown in the popover menu on demand.
+
+A :any:`SimpleMenuAction <OCP\\AppFramework\\Http\\Template\\SimpleMenuAction>` will be a link with an icon added to the menu. App
+developers can implement their own types of menu renderings by adding a custom
+class implementing the :any:`IMenuAction <OCP\\AppFramework\\Http\\Template\\IMenuAction>` interface.
+
+
+
 Redirects
 ^^^^^^^^^
 
