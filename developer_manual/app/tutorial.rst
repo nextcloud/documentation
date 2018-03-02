@@ -824,7 +824,7 @@ To do that create a new file called **ownnotes/tests/Integration/NoteIntegration
 
     use OCA\OwnNotes\Db\Note;
 
-    class NoteIntregrationTest extends TestCase {
+    class NoteIntegrationTest extends TestCase {
 
         private $controller;
         private $mapper;
