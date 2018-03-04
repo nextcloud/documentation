@@ -47,7 +47,7 @@ oldest files (files with the oldest timestamps from when they were deleted)
 until it meets the memory usage limit again.
 
 Nextcloud checks the age of deleted files every time new files are added to the
-deleted files. By default, deleted files stay in the trash bin for 180 days. The
+deleted files. By default, deleted files stay in the trash bin for 30 days. The
 Nextcloud server administrator can adjust this value in the ``config.php`` file
 by setting the ``trashbin_retention_obligation`` value. Files older than the
 ``trashbin_retention_obligation`` value will be deleted permanently.
