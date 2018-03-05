@@ -22,11 +22,11 @@ installation needs to be tweaked a bit.
 
 5. Set the ``mysql.utf8mb4`` config to true in your config.php::
 
-    $ sudo -u www-data occ config:system:set mysql.utf8mb4 --type boolean --value="true"
+    $ sudo -u www-data php occ config:system:set mysql.utf8mb4 --type boolean --value="true"
 
 6. Convert all existing tables to the new collation by running the repair step::
 
-    $ sudo -u www-data occ maintenance:repair
+    $ sudo -u www-data php occ maintenance:repair
 
 Now you should be able to use Emojis in your file names, calendar events, comments and many more.
 
