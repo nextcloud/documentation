@@ -62,7 +62,6 @@ body {
 
 h1, h2, h3 {
     font-weight: 300;
-    margin-top: 40px !important;
 }
 h1 {
     font-size: 45px;
@@ -74,6 +73,12 @@ h2 {
 h3 {
     font-size: 22px;
     margin: 12px 0;
+}
+
+.content h1,
+.content h2,
+.content h3 {
+    margin-top: 40px !important;
 }
 
 img {
@@ -256,34 +261,95 @@ i[class*='icon-'] {
 }
 
 /*  the footer */
-
-footer {
-    background-color: white;
+/* https://raw.githubusercontent.com/nextcloud/nextcloud.com/master/assets/css/modules/footer.css */
+.copyright {
+    /* footer fix */
+    clear: both;
 }
+/*Colors*/
+/*Shadows*/
+/*Breakpoints*/
+footer.page-footer {
+  background-color: #2a2a36; }
+  footer.page-footer h1 {
+    margin-top: 70px;
+    font-size: 19px;
+    font-weight: bold;
+    line-height: 1.8;
+    letter-spacing: -0.9px;
+    color: #8e8e8e; }
+  footer.page-footer ul {
+    list-style-type: none;
+    padding-left: 0; }
+  footer.page-footer li {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #ffffff;
+    width: 140px;
+    margin-top: 0; }
+    footer.page-footer li a {
+      color: #ffffff;
+      position: relative; }
+      footer.page-footer li a:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: white;
+        visibility: hidden;
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transition: all 0.2s ease-in-out 0s;
+        transition: all 0.2s ease-in-out 0s; }
+      footer.page-footer li a:hover {
+        color: #ffffff;
+        text-decoration: none; }
+        footer.page-footer li a:hover:before {
+          visibility: visible;
+          -webkit-transform: scaleX(1);
+          transform: scaleX(1); }
+  footer.page-footer p {
+    padding-top: 50px;
+    padding-bottom: 30px;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #ffffff; }
+    @media (max-width: 768px) {
+      footer.page-footer p {
+        float: left;
+        padding-left: 15px; } }
+    footer.page-footer p a {
+      color: #ffffff; }
+      footer.page-footer p a:hover {
+        color: #ffffff; }
+  @media (min-width: 768px) and (max-width: 1600px) {
+    footer.page-footer .container {
+      width: 90%;
+      max-width: 900px; } }
 
-div.footer-text {
-    color: #555;
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-div.footer-social-icons > div {
-    text-align: center;
-    margin: 50px 17px -20px -14px;
-}
-
-div.footer-social-icons> div > a:hover {
-    opacity: 0.8;
-}
-
-div.footer-social-icons img {
-    margin: 0 30px 30px 0;
-}
-
-footer div.footer-nav>h4 {
-    font-size: 1.125em;
-    color: #949494;
-}
+@media (max-width: 768px) {
+  footer.page-footer {
+    height: 100%;
+    padding-top: 40px;
+    padding-bottom: 40px; }
+    footer.page-footer h1 {
+      margin-top: 30px;
+      font-size: 19px;
+      font-weight: bold;
+      line-height: 1.8;
+      letter-spacing: -0.9px;
+      color: #8e8e8e; }
+    footer.page-footer ul {
+      list-style-type: none;
+      padding-left: 0; }
+    footer.page-footer li {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #ffffff;
+      width: 140px;
+      margin-top: 0; } }
 
 div.thumbnail > img {
     margin-bottom: 0;
