@@ -519,7 +519,6 @@ Encryption
                                        disable it again.
   encryption:encrypt-all               Encrypt all files for all users
   encryption:list-modules              List all available encryption modules
-  encryption:migrate                   initial migration to encryption 2.0
   encryption:set-default-module        Set the encryption default module
   encryption:show-key-storage-root     Show current key storage root
   encryption:status                    Lists the current status of encryption
@@ -573,9 +572,6 @@ user data instead of individual user keys. This is especially useful to enable
 single-sign on. Use this only on fresh installations with no existing data, or 
 on systems where encryption has not already been enabled. It is not possible to 
 disable it.
-
-``encryption:migrate`` migrates encryption keys after a major Nextcloud version 
-upgrade. You may optionally specify individual users in a space-delimited list.
 
 See :doc:`../configuration_files/encryption_configuration` to learn more.
  
