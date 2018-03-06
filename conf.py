@@ -1,14 +1,15 @@
 # global configuration for every documentation added at the end
 
-import os, sys
+import os, sys, datetime
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 sys.path.insert(0, os.path.abspath(dir_path + '/_ext'))
+now = datetime.datetime.now()
 
 extensions = ['edit_on_github']
 
 # General information about the project.
-copyright = u'2012-2017, The Nextcloud developers'
+copyright = str(now.year) + ' Nextcloud GmbH'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
