@@ -8,14 +8,14 @@
 Introduction
 ===============
 
-The navigation section of any nextcloud app is the left sidebar.
+The navigation section of any Nextcloud app is the left sidebar.
 It is basically composed of
 
-* a 'new' button
+* a primary action button
 * a menu
 * a settings area
 
-The 'new' button and the settings area are optional.
+The primary action button and the settings area are optional.
 
 
 ===============
@@ -25,8 +25,7 @@ New button
 Introduction
 -------------
 
-A 'new' button is just a stylised button located above the navigation part of your app.
-It can be tied to whatever you want as long as it follow those simple rules.
+A primary action button is just a stylised button located above the navigation part of your app.
 The goal is to have an homogeneity of design across all apps using this button.
 
 Basic layout
@@ -40,7 +39,9 @@ Basic layout
 
     <div id="app-navigation">
         <div class="app-navigation-new">
-            <button type="button" class="icon-add">Add user</button>
+            <button type="button" class="icon-add">
+                Add user
+            </button>
         </div>
 
         <!-- Your navigation here -->
@@ -54,6 +55,7 @@ Rules
 * Stay simple, don't use overcomplicated text in this button.
 * Avoid using sentences longer than one line.
 * Do not edit the styling of this button.
+* Only **one** button is allowed here.
 
 ..  _appnavigation:
 
@@ -87,7 +89,7 @@ Basic layout
 
     <div id="app-navigation">
 
-        <!-- Your 'new' button here -->
+        <!-- Your primary action button here -->
 
         <ul>
             <li><a href="#">First level entry</a></li>
@@ -475,7 +477,7 @@ Basic layout
 
     <div id="app-navigation">
 
-        <!-- Your 'new' button here -->
+        <!-- Your primary action button here -->
         <!-- Your navigation here -->
 
         <div id="app-settings">
