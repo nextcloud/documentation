@@ -60,13 +60,22 @@ Basic layout
            </li>
             <li>
                 <span class="menuitem">
-                    <span class="icon icon-folder"></span>
+                    <span class="icon icon-user"></span>
                     <form>
-                            <input id="input-folder" type="text" value="New folder">
+                            <input id="input-folder" type="text" value="new email">
                             <input type="submit" value=" " class="primary icon-checkmark-white">
                     </form>
                 </span>
             </li>
+             <li>
+                 <span class="menuitem">
+                     <span class="icon icon-folder"></span>
+                     <form>
+                             <input id="input-folder" type="text" value="New folder">
+                             <input type="submit" value=" " class="icon-confirm">
+                     </form>
+                 </span>
+             </li>
         <ul>
     </div>
 
