@@ -6,7 +6,7 @@ Since Nextcloud 13 big integers are used to store identifiers and auto-increment
 Because changing columns on huge tables can take quite a while (up to hours or days), the update from
 Nextcloud 12 or earlier did not perform this migration on the filecache and activity table.
 
-To make it easy to force the update on that tables too, we added a console command, which can be used
+To make it easy to force the update on those tables too, we've added a console command, which can be used
 to migrate the remaining columns to bigints.
 
 The command can safely be executed. It will show a success message when there is nothing to do::
