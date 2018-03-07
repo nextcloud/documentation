@@ -9,7 +9,6 @@ refer to our community support channels:
    The Nextcloud forums have a `FAQ page`_ where each topic corresponds
    to typical mistakes or frequently occurring issues
 
-* `The Nextcloud forums`_
 *  The Nextcloud IRC chat channel ``irc://#nextcloud@freenode.net`` on 
    freenode.net, also accessible via `webchat`_
 
