@@ -29,7 +29,7 @@ Supported platforms
   if you `contact us <https://nextcloud.com/enterprise>` as part of a subscription)
 * PHP 5.6 + required (up to PHP 7.2)
 * Hypervisors: Hyper-V, VMware ESX, Xen, KVM
-* Desktop: Windows XP SP3 (EoL Q2 2015), Windows 7+, Mac OS X 10.10+ (64-bit 
+* Desktop: Windows XP SP3 (EoL Q2 2015), Windows 7+, macOS 10.10+ (64-bit 
   only), Linux (CentOS 6.5, 7 (7 is 64-bit only), Ubuntu 12.04 LTS, 14.04 LTS, 
   14.10, Fedora 20, 21, openSUSE 12.3, 13, Debian 7 & 8).
 * Mobile apps: iOS 7+, Android 4+
