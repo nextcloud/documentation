@@ -95,15 +95,3 @@ automatically become owned by the owner of the share regardless of who adds or
 edits them.   
    
 .. _password_policy_label:
-
-Share link password policy
---------------------------
-
-Nextcloud users have the option of enabling the Share Link Password 
-Policy app. This allows you to enforce password length, required characters, 
-define special characters, and expiration dates on share links.
-
-.. figure:: images/sharing-files-2.png
-
-Note that you cannot use Emojis as special characters with MySQL, as it 
-supports UTF8 characters only of 1-3 bytes, and emojis require 4 bytes.
