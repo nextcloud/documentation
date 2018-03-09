@@ -90,5 +90,3 @@ appropriate permissions on it, and then no matter which users come and go, the
 file shares will remain. Because all files added to the share, or edited in it, 
 automatically become owned by the owner of the share regardless of who adds or 
 edits them.   
-   
-.. _password_policy_label:
