@@ -16,9 +16,6 @@ Nextcloud users. You have control of a number of user permissions on file shares
 * Allow email notifications of new public shares
 * Exclude groups from creating shares
 
-.. note:: Nextcloud includes a Share Link Password Policy app; see 
-   :ref:`password_policy_label`.
-
 Configure your sharing policy on your Admin page in the Sharing section.
 
 .. figure:: images/sharing-files-1.png
