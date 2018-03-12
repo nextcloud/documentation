@@ -225,7 +225,7 @@ For the config.php portion we have used the following configuration:
 ::
 
  <?php
- $CONFIG = array (
+  $CONFIG = array (
   'instanceid' => '[IGNORE_THIS_PART]',
   'passwordsalt' => '[IGNORE_THIS_PART]',
   'secret' => '[IGNORE_THIS_PART]',
