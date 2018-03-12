@@ -290,7 +290,7 @@ you can set the following parameters inside the :file:`config/config.php`.
 ::
 
   <?php
-  $CONFIG = array (
+   $CONFIG = array (
     'trusted_proxies'   => ['10.0.0.1'],
     'overwritehost'     => 'ssl-proxy.tld',
     'overwriteprotocol' => 'https',
