@@ -23,12 +23,8 @@ utilize the following configuration on the reverse proxy server:
     listen 80;
 	  server_name nextcloud.domain.com;
 
-	return 301 https://$server_name$request_uri;
-  location /.well-known {
-    root /var/www/nextcloud/;
-    allow all;
-  }
-  }
+ ...
+ }
 
  server {
 	listen 443 ssl;
@@ -39,12 +35,6 @@ utilize the following configuration on the reverse proxy server:
 
 	client_max_body_size 0;
 	underscores_in_headers on;
-
-	ssl on;
-        ssl_certificate /etc/letsencrypt/live/nextcloud.domain.com/fullchain.pem; # managed by Certbot
-        ssl_certificate_key /etc/letsencrypt/live/nextcloud.domain.com/privkey.pem; # managed by Certbot
-        include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
-        ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
 
 	ssl_stapling on;
 	ssl_stapling_verify on;
@@ -226,9 +216,7 @@ For the config.php portion we have used the following configuration:
 
  <?php
   $CONFIG = array (
-  'instanceid' => '[IGNORE_THIS_PART]',
-  'passwordsalt' => '[IGNORE_THIS_PART]',
-  'secret' => '[IGNORE_THIS_PART]',
+ ...
   'trusted_domains' =>
   array (
     0 => 'nextcloud.domain.com',
@@ -237,27 +225,7 @@ For the config.php portion we have used the following configuration:
   'overwrite.cli.url' => 'https://nextcloud.domain.com',
   'overwritehost'     => 'nextcloud.domain',
   'overwriteprotocol' => 'https',
-  'datadirectory' => '/usr/share/nginx/nextcloud/data',
-  'dbtype' => 'mysql',
-  'version' => '13.0.0.14',
-  'dbname' => 'cloud',
-  'dbhost' => 'localhost',
-  'dbport' => '',
-  'dbtableprefix' => 'oc_',
-  'mysql.utf8mb4' => true,
-  'dbuser' => 'oc_superoffice',
-  'dbpassword' => '[IGNORE_THIS_PART]',
-  'installed' => true,
-  'mail_smtpmode' => 'smtp',
-  'mail_smtpauthtype' => 'LOGIN',
-  'mail_smtpsecure' => 'ssl',
-  'mail_from_address' => 'nextcloud',
-  'mail_domain' => 'domain.com',
-  'mail_smtpauth' => 1,
-  'mail_smtphost' => 'smtp.domain.com',
-  'mail_smtpport' => '465',
-  'mail_smtpname' => 'nextcloud@domain.com',
-  'mail_smtppassword' => [IGNORE_THIS_PART]',
+   ...
     );
 
 Please take note that most details written in the config.php file will be done by Nextcloud itself but it is important to add:
