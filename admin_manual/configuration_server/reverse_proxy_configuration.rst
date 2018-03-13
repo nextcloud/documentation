@@ -23,7 +23,10 @@ utilize the following configuration on the reverse proxy server:
     listen 80;
 	  server_name nextcloud.domain.com;
 
- ...
+	return 301 https://$server_name$request_uri;
+  	location /.well-known {
+    	root /var/www/cloud-mega/;
+    	allow all;
  }
 
  server {
