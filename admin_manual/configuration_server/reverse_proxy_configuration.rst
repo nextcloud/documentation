@@ -65,11 +65,11 @@ you can set the following parameters inside the :file:`config/config.php`.
 
   <?php
   $CONFIG = array (
-    "trusted_proxies"   => ['10.0.0.1'],
-    "overwritehost"     => "ssl-proxy.tld",
-    "overwriteprotocol" => "https",
-    "overwritewebroot"  => "/domain.tld/nextcloud",
-    "overwritecondaddr" => "^10\.0\.0\.1$",
+    'trusted_proxies'   => ['10.0.0.1'],
+    'overwritehost'     => 'ssl-proxy.tld',
+    'overwriteprotocol' => 'https',
+    'overwritewebroot'  => '/domain.tld/nextcloud',
+    'overwritecondaddr' => '^10\.0\.0\.1$',
   );
 
 .. note:: If you want to use the SSL proxy during installation you have to

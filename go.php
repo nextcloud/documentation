@@ -28,13 +28,13 @@ $mapping = array(
     'admin-code-integrity'    => '/admin_manual/issues/code_signing.html',
     'admin-setup-well-known-URL' => '/admin_manual/issues/general_troubleshooting.html#service-discovery',
     'admin-backup'            => '/admin_manual/maintenance/backup.html',
-    'admin-monitoring'        => '/admin_manual/operations/considerations_on_monitoring.html',
     'admin-sso'               => '/admin_manual/configuration_server/sso_configuration.html',
     'admin-php-opcache'       => '/admin_manual/configuration_server/server_tuning.html#enable-php-opcache',
     'admin-mysql-utf8mb4'     => '/admin_manual/configuration_database/mysql_4byte_support.html',
     'admin-update'            => '/admin_manual/maintenance/update.html',
     'admin-theming-icons'     => '/admin_manual/configuration_server/theming.html#theming-of-icons',
     
+    'developer-manual'        => '/developer_manual',
     'developer-code-integrity'=> '/developer_manual/app/code_signing.html',
     'developer-theming'       => '/developer_manual/core/theming.html',
 

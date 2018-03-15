@@ -423,14 +423,15 @@ variables in the appropropriate ``php-fpm`` ini/config file.
 
 Here are some example root paths for these ini/config files:
 
-+--------------------+-----------------------+
-| Ubuntu/Mint        | CentOS/Red Hat/Fedora |
-+--------------------+-----------------------+
-| ``/etc/php5/fpm/`` | ``/etc/php-fpm.d/``   |
-+--------------------+-----------------------+
++-----------------------+-----------------------+
+| Ubuntu/Mint           | CentOS/Red Hat/Fedora |
++-----------------------+-----------------------+
+| ``/etc/php5/fpm/`` or | ``/etc/php-fpm.d/``   |
+| ``/etc/php/7.0/fpm/`` |                       |
++-----------------------+-----------------------+
 
 In both examples, the ini/config file is called ``www.conf``, and depending on
-the distro version or customizations you have made, it may be in a subdirectory.
+the distro version or customizations you have made, it may be in a subdirectory such as ``pool.d``.
 
 Usually, you will find some or all of the environment variables
 already in the file, but commented out like this::

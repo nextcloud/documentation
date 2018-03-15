@@ -109,6 +109,8 @@ Just insert the new created picture by using the unchanged name of the old pictu
 
 The app icons can also be overwritten in a theme. To change for example the app icon of the activity app you need to overwrite it by saving the new image to …/nextcloud/themes/default/apps/activity/img/activity.svg.
 
+After overwriting the icons, it may be necessary to update the image cache. This is done by executing ``sudo -u www-data php occ maintenance:theme:update``
+
 Changing favicon
 ^^^^^^^^^^^^^^^^
 

@@ -35,6 +35,7 @@ Working platforms
 * Mobile apps: iOS 9+ (10+ for Talk), Android 4.x+ (5.0+ for Talk)
 * Web browser: Recent version of IE11+, Microsoft Edge, Firefox, Chrome, Safari or browers based on those. Talk requires Firefox 31+ and Chrome38+
 
+
 See :doc:`source_installation` for minimum software versions for installing 
 Nextcloud. If you encounter problems, visit the `home user forums <https://help.nextcloud.com>`
 or `enterprise support portal <https://portal.nextcloud.com.>`
@@ -44,9 +45,9 @@ Database requirements for MySQL / MariaDB
 
 The following is currently required if you're running Nextcloud together with a MySQL / MariaDB database:
 
-* Disabled or BINLOG_FORMAT = MIXED configured Binary Logging
 * InnoDB storage engine (MyISAM is not supported)
 * "READ COMMITED" transaction isolation level (See: :ref:`db-transaction-label`)
+* Disabled or BINLOG_FORMAT = ROW configured Binary Logging (See: https://dev.mysql.com/doc/refman/5.7/en/innodb-transaction-isolation-levels.html)
 
 Emoji (UTF8 4-byte) support with MySQL / MariaDB
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

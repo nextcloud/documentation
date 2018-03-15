@@ -186,6 +186,7 @@ Apps commands
 The ``app`` commands list, enable, and disable apps::
 
  app
+  app:install      install selected app
   app:check-code   check code to be compliant
   app:disable      disable an app
   app:enable       enable an app
@@ -880,6 +881,7 @@ backups and other tasks that require locking users out until you are finished::
   maintenance:mimetype:update-js      Update mimetypelist.js
   maintenance:mode                    set maintenance mode
   maintenance:repair                  repair this installation
+  maintenance:theme:update            Apply custom theme changes
   maintenance:update:htaccess         Updates the .htaccess file
 
 ``maintenance:mode`` locks the sessions of all logged-in users, including 
@@ -906,6 +908,8 @@ with changed mimetypes found in ``config/mimetypemapping.json``. Run this
 command after modifying ``config/mimetypemapping.json``. If you change a 
 mimetype, run ``maintenance:mimetype:update-db --repair-filecache`` to apply the 
 change to existing files.
+
+Run the ``maintenance:theme:update`` command if the icons of your custom theme are not updated correctly. This updates the mimetypelist.js and cleares the image cache.
 
 .. _security_commands_label:
 

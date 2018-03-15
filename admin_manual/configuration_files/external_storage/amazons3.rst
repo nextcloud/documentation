@@ -29,6 +29,9 @@ the DNS infrastructure cannot be controlled. Ordinarily, requests will be
 made with ``http://bucket.hostname.domain/``, but with path style enabled,
 requests are made with ``http://hostname.domain/bucket`` instead.
 
+**Legacy authentication** is only required for S3 servers that only implement version 2 authentication,
+on default version 4 authentication will be used.
+
 See :doc:`../external_storage_configuration_gui` for additional mount 
 options and information.
 
