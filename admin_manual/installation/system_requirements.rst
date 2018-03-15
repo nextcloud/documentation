@@ -28,7 +28,7 @@ Working platforms
 * Web server: Apache 2.4 (mod_php, php-fpm) or Nginx (php-fpm) 
 * Databases: MySQL or MariaDB 5.5+; PostgreSQL 9, 10; Oracle 11g (currently only possible 
   as part of an `enterprise subscription <https://nextcloud.com/enterprise>`) 
-* PHP 7.0, 7.1 or 7.2 required
+* PHP 5.6, 7.0, 7.1 or 7.2 required
 * Hypervisors: Hyper-V, VMware ESX, Xen or KVM
 * Desktop: Windows 7+, Mac OS X 10.7+ (64-bit only), Linux (CentOS 6.5, 7 - 64-bit only),
   Ubuntu 14.04 LTS, 16.04 LTS, 16.10+, Fedora 21+, openSUSE 13+ and LEAP 41.1+, SLE 11 SP3+ Debian 8+).
