@@ -15,5 +15,4 @@ Table of contents
     configuration_database/index
     configuration_mimetypes/index
     maintenance/index
-    operations/index
     issues/index
