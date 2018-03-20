@@ -16,7 +16,6 @@ archive <https://nextcloud.com/install/>`_.
 * :ref:`snaps_label`
 * :ref:`prerequisites_label`
 * :ref:`ubuntu_installation_label`
-* :ref:`binlog_format_label`
 * :ref:`apache_configuration_label`
 * :ref:`pretty_urls_label`
 * :ref:`enabling_ssl_label`
@@ -49,7 +48,7 @@ For complete instructions and downloads see:
 - https://www.techandme.se/nextcloud-vm/
 
 .. note:: You can install the VM on OSes other than Windows as long as
-your hypervisor can mount OVA, VMDK, or VHD VM formats.
+   your hypervisor can mount OVA, VMDK, or VHD VM formats.
 
 .. _snaps_label:
 
@@ -484,6 +483,3 @@ Other Web servers
 
 `Other HTTP servers (Nextcloud)
 <https://github.com/nextcloud/documentation/wiki/Alternate-Web-server-notes>`_
-
-
-
