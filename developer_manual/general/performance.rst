@@ -32,7 +32,7 @@ With MySQL it is very easy with just a bit of configuration:
 If you put this into your my.cnf file, every query that takes longer than one second is logged to a logfile::
 
   slow_query_log = 1
-  slow_query_log = /var/log/mysql/mysql-slow.log
+  slow_query_log_file = /var/log/mysql/mysql-slow.log
   long_query_time=1
 
 If a query takes more than a second we have a serious problem of course. You can watch it with `tail -f /var/log/mysql/mysql-slow.log` while using Nextcloud.
@@ -42,7 +42,7 @@ If a query takes more than a second we have a serious problem of course. You can
 If you reduce the long_query_time to zero then every statement is logged. This is super helpful to see what is going on. Just do a `tail -f` on the logfile and click around in the interface or access the WebDAV interface::
 
   slow_query_log = 1
-  slow_query_log = /var/log/mysql/mysql-slow.log
+  slow_query_log_file = /var/log/mysql/mysql-slow.log
   long_query_time=0
 
 3. log queries without an index.
@@ -51,7 +51,7 @@ If you increase the long_query_time to 100 and add log-queries-not-using-indexes
 
   log-queries-not-using-indexes
   slow_query_log = 1
-  slow_query_log = /var/log/mysql/mysql-slow.log
+  slow_query_log_file = /var/log/mysql/mysql-slow.log
   long_query_time=100
 
 Measuring performance
