@@ -23,7 +23,7 @@ To prevent this, always use prepared queries:
   $params = array(1);
   $result = $query->execute($params);
 
-If the App Framework is used, write SQL queries like this in the a class that extends the Mapper:
+If the App Framework is used, write SQL queries like this in a class that extends the Mapper:
 
 .. code-block:: php
 
@@ -105,7 +105,7 @@ Clickjacking
 
 To prevent such attacks Nextcloud sends the `X-Frame-Options` header to all template responses. Don't remove this header if you don't really need it!
 
-This is already built into Nextcloud if :php:class:`OC_Template`.
+This is already built into Nextcloud in :php:class:`OC_Template`.
 
 Code executions / File inclusions
 ---------------------------------
@@ -132,7 +132,8 @@ Code executions and file inclusions can be easily prevented by **never** allowin
 
 Directory Traversal
 -------------------
-Very often developers forget about sanitizing the file path (removing all \\ and /), this allows an attacker to traverse through directories on the server which opens several potential attack vendors including privilege escalations, code executions or file disclosures.
+
+Very often developers forget about sanitizing the file path (removing all \\ and /), this allows an attacker to traverse through directories on the server which opens several potential attack vectors including privilege escalations, code executions or file disclosures.
 
 **DON'T**
 
