@@ -233,24 +233,12 @@ When using forms in your app or theme, you need to supply a csrf-token to be che
 
 .. code-block:: php
   
-  // in itemController.php
-  ...
-  function renderItemTemplate() {
-    ...
-    return new TemplateResponse('appname', 'itemTemplate', array(
-      'items' => ...,
-      'requesttoken' => (\OC::$server->getSession()) ? \OCP\Util::callRegister() : ''
-    ));
-  }
-  ...
-
   // in itemTemplate.php
   <?php $urlGenerator = \OC::$server->getURLGenerator(); ?>
+  <?php $CSRFToken = \OCP\Util::callRegister(); ?>
   <form action="<?php p($urlGenerator->linkToRoute('appname.page.pagename')); ?>" method="post">
-    <label>Item name<br />
-      <input type="text" name="name" placeholder="My item" />
-    </label>
-    <input type="hidden" name="requesttoken" value="<?php p($_['requesttoken']); ?>" />
+    ...
+    <input type="hidden" name="requesttoken" value="<?php p($CSRFToken); ?>" />
     <button type="submit" class="btn primary">Add</button>
   </form>
 
