@@ -16,7 +16,7 @@ You need the following information:
 
 *    Folder name for your local mountpoint.
 *    Host: The URL of the Samba server.
-*    Username: The username or domain/username used to login to the Samba 
+*    Username: The username or ``domain\username`` (see below) used to login to the Samba 
      server.
 *    Password: the password to login to the Samba server.
 *    Share: The share on the Samba server to mount.
