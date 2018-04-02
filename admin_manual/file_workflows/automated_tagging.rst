@@ -35,3 +35,10 @@ Available rules
 ---------------
 
 The available rules can be seen in the access control section: :ref:`available-rules-label`.
+
+Executing actions
+-----------------
+
+It is possible to execute actions like ```convert to PDF``` based on assigned tags. Nextcloud
+GmbH assists customers in this with hands-on help and documentation on our
+`customer portal <https://portal.nextcloud.com>`_.
