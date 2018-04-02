@@ -5,13 +5,17 @@ Retention of files
 Nextcloud's Files Retention app allows to automatically delete files that
 are tagged with a collaborative tag and have a certain age.
 
-Sample
-------
+Example
+-------
+
+After installing the Retention app as described in
+:doc:`../installation/apps_management_installation`
+navigate to the configuration and locate the Workflow settings.
 
     .. figure:: images/retention_sample.png
        :alt: Sample rule to delete files after 14 days.
 
-The rule from the sample will delete all files tagged with ``Temporary file`` after 14 days.
+The rule from the example will delete all files tagged with ``Temporary file`` after 14 days.
 
 Common misconfigurations
 ------------------------
