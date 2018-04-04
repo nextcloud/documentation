@@ -6,7 +6,6 @@ Design guidelines
    :maxdepth: 2
 
    navigation
-   settings
    content
    list
    popovermenu
