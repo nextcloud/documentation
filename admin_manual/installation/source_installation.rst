@@ -451,7 +451,7 @@ confirm your paths, for example::
 If any of your system environment variables are not present in the file then
 you must add them.
 
-Alternatively it is possible to use the enviornemt variables of your system by modifying 
+Alternatively it is possible to use the environemt variables of your system by modifying 
 
     /etc/php/7.0/fpm/pool.d/www.conf
    
