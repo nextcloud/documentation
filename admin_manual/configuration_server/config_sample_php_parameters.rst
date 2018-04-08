@@ -92,17 +92,17 @@ during installation and update, so you shouldn't need to change it.
 
 ::
 
-	'dbtype' => 'sqlite',
+	'dbtype' => 'sqlite3',
 
 Identifies the database used with this installation. See also config option
 ``supportedDatabases``
 
 Available:
-	- sqlite (SQLite3)
+	- sqlite3 (SQLite3)
 	- mysql (MySQL/MariaDB)
 	- pgsql (PostgreSQL)
 
-Defaults to ``sqlite``
+Defaults to ``sqlite3``
 
 ::
 
@@ -910,6 +910,8 @@ Some of the Nextcloud code may be stored in alternate locations.
 		'https://play.google.com/store/apps/details?id=com.nextcloud.client',
 	'customclient_ios' =>
 		'https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8',
+	'customclient_ios_appid' =>
+			'1125420102',
 
 This section is for configuring the download links for Nextcloud clients, as
 seen in the first-run wizard and on Personal pages.
@@ -917,7 +919,8 @@ seen in the first-run wizard and on Personal pages.
 Defaults to
 * Desktop client: ``https://nextcloud.com/install/#install-clients``
 * Android client: ``https://play.google.com/store/apps/details?id=com.nextcloud.client``
-* iOS client    : ``https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8``
+* iOS client: ``https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8``
+ *iOS client app id: ``1125420102``
 
 Apps
 ----
@@ -1377,6 +1380,29 @@ filesystem and encryption will cause severe overhead because key files need
 to be fetched in addition to any requested file.
 
 One way to test is applying for a trystack account at http://trystack.org/
+
+::
+
+	'objectstore' => [
+		'class' => 'OC\\Files\\ObjectStore\\Swift',
+		'arguments' => [
+			'autocreate' => true,
+			'user' => [
+				'name' => 'swift',
+				'password' => 'swift',
+				'domain' => [
+					'name' => 'default',
+				],
+			],
+			'tenantName' => 'service',
+			'serviceName' => 'swift',
+			'region' => 'regionOne',
+			'url' => "http://yourswifthost:5000/v3",
+			'bucket' => 'nextcloud',
+		],
+	],
+
+To use swift V3
 
 Sharing
 -------

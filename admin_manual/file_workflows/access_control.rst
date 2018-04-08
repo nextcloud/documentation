@@ -21,6 +21,9 @@ If access to a file has been denied for a user, the user can not:
 
 Examples
 --------
+After installing the File Access Control app as described in
+:doc:`../installation/apps_management_installation`
+navigate to the configuration and locate the File Access Control settings.
 
     .. figure:: images/files_access_control_sample_rules.png
        :alt: Sample rules to block on user group, time and IP base.
