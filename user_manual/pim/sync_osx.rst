@@ -2,7 +2,9 @@
 Synchronizing with macOS
 ========================
 
-With Nextcloud 13 and its CalDAV-backend, syncing your Calendars with your macOS-device is easy.
+With Nextcloud 14 and its CalDAV-backend, syncing your Calendars with your macOS-device is easy.
+
+.. TODO ON RELEASE: Update version number above on release
 
 To use Nextcloud with macOS Calendar you will need to use the following steps:
 
