@@ -14,5 +14,6 @@ their respective Apps > Productivity entries.
    sync_ios
    sync_osx
    sync_thunderbird
+   sync_kde
    troubleshooting
 
