@@ -79,57 +79,9 @@ place, in your mail server configuration.
 Using email templates
 ---------------------
 
-Another useful new feature is editable email templates. Now you can edit 
-Nextcloud's email templates on your Admin page. These are your available 
-templates:
-
-* Sharing email (HTML) -- HTML version of emails notifying users of new file 
-  shares
-
-* Sharing email  (plain text fallback) -- Plain text email notifying users of new file shares
-
-* Lost password mail -- Password reset email for users who lose their passwords.
-
-* Activity notification mail -- Notification of activities that users have 
-  enabled in the Notifications section of their Personal pages.
-
-In addition to providing the email templates, this feature enables you to apply 
-any preconfigured themes to the email.
-
-To modify an email template to users:
-
-1. Access the Admin page.
-
-2. Scroll to the Mail templates section.
-
-3. Select a template from the drop-down menu.
-
-4. Make any desired modifications to the template.
-
-The templates are written in PHP and HTML, and are already loaded with the 
-relevant variables such as username, share links, and filenames. You can, if you 
-are careful, edit these even without knowing PHP or HTML; don't touch any of the 
-code, but you can edit the text portions of the messages. For example, this the 
-lost password mail template:
-
-::
-
-  <?php
-  
-     echo str_replace('{link}', $_['link'], $l->t('Use the following link to
-     reset your password: {link}'));
-
-You could change the text portion of the template, ``Use the following link to 
-reset your password:`` to say something else, such as ``Click the following link 
-to reset your password. If you did not ask for a password reset, ignore this 
-message.``
-
-Again, be very careful to change nothing but the message text, because the 
-tiniest coding error will break the template.
-
-.. note:: You can edit the templates directly in the template text box, or you 
-   can copy and paste them to a text editor for modification and then copy and 
-   paste them back to the template text box for use when you are done.
+With Nextcloud 12 we have introduced a new way of customizing email templates.
+You will find the documentation in our support portal:
+`support portal <https://portal.nextcloud.com/article/customized-email-templates-29.html>`_
 
 Setting mail server parameters in config.php
 --------------------------------------------
