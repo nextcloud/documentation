@@ -29,13 +29,13 @@ include the following:
 
 * Usage and available quota
 * Manage your profile picture
-* Full name. You can make this anything you want, as it is separate from your
-  Nextcloud login name, which is unique and cannot be changed.
+* Full name (You can make this anything you want, as it is separate from your
+  Nextcloud login name, which is unique and cannot be changed)
 * Email address
 * List of your Group memberships
 * Change your password
-* :doc:`user_2fa`.
-* :doc:`userpreferences`.
+* :doc:`user_2fa`
+* :doc:`userpreferences`
 * Choose the language for your Nextcloud interface
 * Links to desktop and mobile apps
 * Manage your Activity stream and notifications
