@@ -886,7 +886,7 @@ debugging, as your logfile will become huge.
 
 ::
 
-	'log_rotate_size' => false,
+	'log_rotate_size' => 100 * 1024 * 1024,
 
 Enables log rotation and limits the total size of logfiles. The default is 0,
 or no rotation. Specify a size in bytes, for example 104857600 (100 megabytes
@@ -894,7 +894,7 @@ or no rotation. Specify a size in bytes, for example 104857600 (100 megabytes
 old logfile reaches your limit. If a rotated log file is already present, it
 will be overwritten.
 
-Defaults to ``0`` (no rotation)
+Defaults to 100 MB
 
 Alternate Code Locations
 ------------------------
