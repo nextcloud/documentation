@@ -96,7 +96,7 @@ Modifying the look of emails beyond the theming app capabilities
 
 You can now overwrite templates by writing a class that implements the template interface 
 (or extends it to not need to copy over everything). Easiest way is then put this class into 
-an app and load it (so you do not need to patch it in on every update).
+an app and load it (so you do not need to patch it on every update).
 
 This is the interface of the class that needs to be implemented: https://github.com/nextcloud/server/blob/master/lib/public/Mail/IEMailTemplate.php
 
