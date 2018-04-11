@@ -79,57 +79,59 @@ place, in your mail server configuration.
 Using email templates
 ---------------------
 
-Another useful new feature is editable email templates. Now you can edit 
-Nextcloud's email templates on your Admin page. These are your available 
-templates:
+We removed the template editor in Nextcloud 12 because we changed how emails
+are generated. While the customization capabilities offered by the template editor
+were easy to use, they often resulted in broken emails. To fix this, we designed a
+much easier mechanism that automatically generates emails which follow the theme
+settings and look the same in all the different email clients out there.
 
-* Sharing email (HTML) -- HTML version of emails notifying users of new file 
-  shares
+.. note:: If, for some reason, you need text-only emails, consider simply configuring
+   this on the client side or let the receiving (or even sending) mail server drop the
+   HTML part. Note that there is no security impact from **sending** HTML emails, just
+   from displaying them and thus any security risk can only be mitigated by disabling
+   showing HTML on the client (or removing the HTML part in the mail server).
 
-* Sharing email  (plain text fallback) -- Plain text email notifying users of new file shares
+Modifying the look of emails beyond the theming app capabilities
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* Lost password mail -- Password reset email for users who lose their passwords.
+You can now overwrite templates by writing a class that implements the template interface 
+(or extends it to not need to copy over everything). Easiest way is then put this class into 
+an app and load it (so you do not need to patch it on every update).
 
-* Activity notification mail -- Notification of activities that users have 
-  enabled in the Notifications section of their Personal pages.
+This is the interface of the class that needs to be implemented: https://github.com/nextcloud/server/blob/master/lib/public/Mail/IEMailTemplate.php
 
-In addition to providing the email templates, this feature enables you to apply 
-any preconfigured themes to the email.
+That is the implementation that could be extended and used to see how it works: https://github.com/nextcloud/server/blob/master/lib/private/Mail/EMailTemplate.php
 
-To modify an email template to users:
+An example from `a GitHub issue <https://portal.nextcloud.com/article/customized-email-templates-29.html>`_:
 
-1. Access the Admin page.
+1. Look at the source code of extended class `OC\Mail\EMailTemplate::class <https://github.com/nextcloud/server/blob/master/lib/private/Mail/EMailTemplate.php>`_
 
-2. Scroll to the Mail templates section.
+2. Then override what you need in your own `OC\Mail\EMailTemplate::class` extension
 
-3. Select a template from the drop-down menu.
+**Example:**
 
-4. Make any desired modifications to the template.
+Let's assume that we need to override the email header::
 
-The templates are written in PHP and HTML, and are already loaded with the 
-relevant variables such as username, share links, and filenames. You can, if you 
-are careful, edit these even without knowing PHP or HTML; don't touch any of the 
-code, but you can edit the text portions of the messages. For example, this the 
-lost password mail template:
+   <?php
 
-::
+   namespace \OCA\MyApp;
 
-  <?php
-  
-     echo str_replace('{link}', $_['link'], $l->t('Use the following link to
-     reset your password: {link}'));
+   use OC\Mail\EMailTemplate;
 
-You could change the text portion of the template, ``Use the following link to 
-reset your password:`` to say something else, such as ``Click the following link 
-to reset your password. If you did not ask for a password reset, ignore this 
-message.``
+   class MyClass extends EMailTemplate
+   {
+      protected $header = <<<EOF 
+         <table align="center" class="wrapper">
+               // your theme email header modification
+         </table>
+      EOF;
+   }
 
-Again, be very careful to change nothing but the message text, because the 
-tiniest coding error will break the template.
+3. Then in ``config/config.php`` change ``mail_template_class`` to your class namespace::
 
-.. note:: You can edit the templates directly in the template text box, or you 
-   can copy and paste them to a text editor for modification and then copy and 
-   paste them back to the template text box for use when you are done.
+   'mail_template_class' => 'OCA\\MyApp\\MyClass',
+
+You will find a detailed step by step guide in our `support portal <https://portal.nextcloud.com/article/customized-email-templates-29.html>`_.
 
 Setting mail server parameters in config.php
 --------------------------------------------
