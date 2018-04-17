@@ -69,6 +69,9 @@ To install the Nextcloud Snap Package, run the following command in a terminal::
    that powers snaps, and it offers a new way to package, distribute, update and
    run OS components and applications on a Linux system. See more about snaps on
    `snapcraft.io <http://snapcraft.io/>`_.
+   
+.. note:: The snap package version of Nextcloud may deviate from the current stable
+   version.  
 
 .. _prerequisites_label:
 
