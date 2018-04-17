@@ -33,6 +33,7 @@ $mapping = array(
     'admin-mysql-utf8mb4'     => '/admin_manual/configuration_database/mysql_4byte_support.html',
     'admin-update'            => '/admin_manual/maintenance/update.html',
     'admin-theming-icons'     => '/admin_manual/configuration_server/theming.html#theming-of-icons',
+    'admin-trusted-domains'   => '/admin_manual/installation/installation_wizard.html#trusted-domains',
     
     'developer-code-integrity'=> '/developer_manual/app/code_signing.html',
     'developer-theming'       => '/developer_manual/core/theming.html',
