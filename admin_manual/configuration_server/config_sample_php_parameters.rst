@@ -474,6 +474,22 @@ the SMTP server.
 
 Default to ``''`` (empty string)
 
+::
+
+	'mail_template_class' => '\OC\Mail\EMailTemplate',
+
+Replaces the default mail template layout. This can be utilized if the
+options to modify the mail texts with the theming app is not enough.
+
+The class must extend  ``\OC\Mail\EMailTemplate``
+
+::
+
+	'mail_send_plaintext_only' => false,
+
+Email will be send by default with an HTML and a plain text body. This option
+allows to only send plain text emails.
+
 Proxy Configurations
 --------------------
 
@@ -1139,15 +1155,6 @@ own or 3rdParty SystemTagsManager should be used that – for instance – uses 
 filesystem instead of the database to keep the tags.
 
 Defaults to ``\OC\SystemTag\ManagerFactory``
-
-::
-
-	'mail_template_class' => '\OC\Mail\EMailTemplate',
-
-Replaces the default mail template layout. This can be utilized if the
-options to modify the mail texts with the theming app is not enough.
-
-The class must extend  ``\OC\Mail\EMailTemplate``
 
 Maintenance
 -----------
