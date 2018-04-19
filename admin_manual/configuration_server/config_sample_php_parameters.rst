@@ -92,17 +92,17 @@ during installation and update, so you shouldn't need to change it.
 
 ::
 
-	'dbtype' => 'sqlite3',
+	'dbtype' => 'sqlite',
 
 Identifies the database used with this installation. See also config option
 ``supportedDatabases``
 
 Available:
-	- sqlite3 (SQLite3)
+	- sqlite (SQLite3)
 	- mysql (MySQL/MariaDB)
 	- pgsql (PostgreSQL)
 
-Defaults to ``sqlite3``
+Defaults to ``sqlite``
 
 ::
 
@@ -481,6 +481,22 @@ This depends on ``mail_smtpauth``. Specify the password for authenticating to
 the SMTP server.
 
 Default to ``''`` (empty string)
+
+::
+
+	'mail_template_class' => '\OC\Mail\EMailTemplate',
+
+Replaces the default mail template layout. This can be utilized if the
+options to modify the mail texts with the theming app is not enough.
+
+The class must extend  ``\OC\Mail\EMailTemplate``
+
+::
+
+	'mail_send_plaintext_only' => false,
+
+Email will be send by default with an HTML and a plain text body. This option
+allows to only send plain text emails.
 
 Proxy Configurations
 --------------------
@@ -910,8 +926,6 @@ Some of the Nextcloud code may be stored in alternate locations.
 		'https://play.google.com/store/apps/details?id=com.nextcloud.client',
 	'customclient_ios' =>
 		'https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8',
-	'customclient_ios_appid' =>
-			'1125420102',
 
 This section is for configuring the download links for Nextcloud clients, as
 seen in the first-run wizard and on Personal pages.
@@ -919,8 +933,7 @@ seen in the first-run wizard and on Personal pages.
 Defaults to
 * Desktop client: ``https://nextcloud.com/install/#install-clients``
 * Android client: ``https://play.google.com/store/apps/details?id=com.nextcloud.client``
-* iOS client: ``https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8``
- *iOS client app id: ``1125420102``
+* iOS client    : ``https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8``
 
 Apps
 ----
@@ -1140,15 +1153,6 @@ filesystem instead of the database to keep the tags.
 
 Defaults to ``\OC\SystemTag\ManagerFactory``
 
-::
-
-	'mail_template_class' => '\OC\Mail\EMailTemplate',
-
-Replaces the default mail template layout. This can be utilized if the
-options to modify the mail texts with the theming app is not enough.
-
-The class must extend  ``\OC\Mail\EMailTemplate``
-
 Maintenance
 -----------
 
@@ -1257,7 +1261,7 @@ Only for use with Redis Clustering, for Sentinel-based setups use the single
 server configuration above, and perform HA on the hostname.
 
 Redis Cluster support requires the php module phpredis in version 3.0.0 or
-higher.
+higher for PHP 7+ or phpredis in version 2.2.8 for PHP 5.6.
 
 Available failover modes:
  - \\RedisCluster::FAILOVER_NONE - only send commands to master nodes (default)
@@ -1380,29 +1384,6 @@ filesystem and encryption will cause severe overhead because key files need
 to be fetched in addition to any requested file.
 
 One way to test is applying for a trystack account at http://trystack.org/
-
-::
-
-	'objectstore' => [
-		'class' => 'OC\\Files\\ObjectStore\\Swift',
-		'arguments' => [
-			'autocreate' => true,
-			'user' => [
-				'name' => 'swift',
-				'password' => 'swift',
-				'domain' => [
-					'name' => 'default',
-				],
-			],
-			'tenantName' => 'service',
-			'serviceName' => 'swift',
-			'region' => 'regionOne',
-			'url' => "http://yourswifthost:5000/v3",
-			'bucket' => 'nextcloud',
-		],
-	],
-
-To use swift V3
 
 Sharing
 -------
