@@ -754,13 +754,6 @@ Defaults to ``true``
 
 ::
 
-	'check_for_working_webdav' => true,
-
-Allows Nextcloud to verify a working WebDAV connection. This is done by
-attempting to make a WebDAV request from PHP.
-
-::
-
 	'check_for_working_wellknown_setup' => true,
 
 Allows Nextcloud to verify a working .well-known URL redirects. This is done
