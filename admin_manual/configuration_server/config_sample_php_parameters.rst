@@ -1394,10 +1394,18 @@ One way to test is applying for a trystack account at http://trystack.org/
 					'name' => 'default',
 				],
 			],
+			'scope' => [
+				'project' => [
+					'name' => 'service',
+					'domain' => [
+						'name' => 'default',
+					],
+				],
+			],
 			'tenantName' => 'service',
 			'serviceName' => 'swift',
 			'region' => 'regionOne',
-			'url' => "http://yourswifthost:5000/v3",
+			'url' => 'http://yourswifthost:5000/v3',
 			'bucket' => 'nextcloud',
 		],
 	],
