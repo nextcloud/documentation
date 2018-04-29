@@ -90,9 +90,9 @@ systemd
 
 If systemd is installed on the system, a systemd timer could be an alternative to a cronjob.
 
-This approach requires two files: **nextcloudcron.service** and **nextcloudcron.timer**. Create these two files in ``/etc/systemd/system/``.
+This approach requires two files: **nextcloud.service** and **nextcloud.timer**. Create these two files in ``/etc/systemd/system/``.
 
-**nextcloudcron.service** should look like this::
+**nextcloud.service** should look like this::
 
   [Unit]
   Description=Nextcloud cron.php job
@@ -106,7 +106,7 @@ This approach requires two files: **nextcloudcron.service** and **nextcloudcron.
 
 Replace the user ``www-data`` with the user of your http server and ``/var/www/nextcloud/cron.php`` with the location of **cron.php** in your nextcloud directory.
 
-**nextcloudcron.timer** should look like this::
+**nextcloud.timer** should look like this::
 
   [Unit]
   Description=Run Nextcloud cron.php every 15 minutes
@@ -114,7 +114,7 @@ Replace the user ``www-data`` with the user of your http server and ``/var/www/n
   [Timer]
   OnBootSec=5min
   OnUnitActiveSec=15min
-  Unit=nextcloudcron.service
+  Unit=nextcloud.service
   
   [Install]
   WantedBy=timers.target
@@ -123,7 +123,7 @@ The important parts in the timer-unit are ``OnBootSec`` and ``OnUnitActiveSec``.
 
 Now all that is left is to start and enable the timer by running these commands::
 
-  systemctl start nextcloudcron.timer
-  systemctl enable nextcloudcron.timer
+  systemctl start nextcloud.timer
+  systemctl enable nextcloud.timer
 
 .. note:: Select the option ``Cron`` in the admin menu for background jobs. if left on ``AJAX`` it would execute the AJAX job on every page load.
