@@ -26,6 +26,7 @@ The LDAP application supports:
   port number
 * Only read access to your LDAP (edit or delete of users on your LDAP is not
   supported)
+* Optional: Allow users to change their LDAP password from Nextcloud
 
 .. warning:: The LDAP app is not compatible with the ``User backend using remote
    HTTP servers`` app. You cannot use both of them at the same time.
