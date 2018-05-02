@@ -9,5 +9,5 @@ NC_BRANCH="${1:-master}"
 if [ -d server/.git ]; then
     cd server && git fetch &&  git checkout $NC_BRANCH && git reset --hard origin/$NC_BRANCH 
 else
-    git clone https://github.com/nextcloud/server server
+    git clone https://github.com/nextcloud/server server --depth 1
 fi;
