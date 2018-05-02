@@ -226,7 +226,7 @@ Do not change the alignment of the text. If you're using
 
     <li class="app-navigation-entry-utils-counter">1</li>
 
-The count should be limitted to 999 and turn to 999+ if any higher number is given. If AngularJS is used the following filter can be used to get the correct behavior:
+The counter should be limited to 999 and turn to 999+ if any higher number is given. If AngularJS is used the following filter can be used to get the correct behavior:
 
 .. code-block:: js
 
@@ -245,6 +245,19 @@ Use it like this:
 .. code-block:: html
 
     <li class="app-navigation-entry-utils-counter">{{ count | counterFormatter }}</li>
+
+Highlighted counter
+"""""""""""""""""""
+
+The counter can also be highlighted to attract some focus, e.g. for unread chat messages
+
+.. figure:: ../images/navigation-counter-highlighted.png
+   :alt: Navigation entry with highlighted counter
+   :figclass: figure-with-code
+
+.. code-block:: html
+
+    <li class="app-navigation-entry-utils-counter"><span class="highlighted">1</span></li>
 
 .. _navigation_buttons:
 
