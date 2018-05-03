@@ -194,7 +194,7 @@ The counter can also be highlighted to attract some focus, e.g. for unread chat 
 
 .. code-block:: html
 
-    <li class="app-navigation-entry-utils-counter"><span class="highlighted">1</span></li>
+    <li class="app-navigation-entry-utils-counter highlighted"><span>99+</span></li>
 
 .. _navigation_buttons:
 
