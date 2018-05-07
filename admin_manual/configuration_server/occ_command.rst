@@ -173,7 +173,7 @@ To enable it, you have to run **one** of the following commands::
 This will allow you to use autocompletion with the full path ``/var/www/html/nextcloud/occ <tab>``.
 
 If you also want to use autocompletion on occ from within the directory without using the full path,
-you need to specify ``--programm occ`` after the ``--generate-hook``.
+you need to specify ``--program occ`` after the ``--generate-hook``.
 
 If you want the completion to apply automatically for all new shell sessions, add the command to your
 shell's profile (eg. ``~/.bash_profile`` or ``~/.zshrc``).
