@@ -360,7 +360,7 @@ zuzugreifen.
 
 Um geteilte Inhalte einzusehen, öffnen Sie::
 
-  https://example.com/nextcloud/public.php/dav
+  https://example.com/nextcloud/public.php/webdav
 
 verwenden Sie das Freigabe-Token als Benutzername und optional das
 Freigabekennwort als Kennwort.
