@@ -1,463 +1,164 @@
-===================
-Nginx configuration
-===================
-
-This page covers example Nginx configurations to use with running an Nextcloud
-server. This page is community-maintained. (Thank you, contributors!)
-
--  You need to insert the following code into **your Nginx configuration file.**
--  Adjust **server_name**, **root**, **ssl_certificate** and
-   **ssl_certificate_key** to suit your needs.
--  Make sure your SSL certificates are readable by the server (see `nginx HTTP
-   SSL Module documentation <http://wiki.nginx.org/HttpSslModule>`_).
--  ``add_header`` statements are only taken from the current level and are not
-   cascaded from or to a different level. All necessary ``add_header``
-   statements must be defined in each level needed. For better readability it
-   is possible to move *common* add header statements into a separate file
-   and include that file wherever necessary. However, each ``add_header``
-   statement must be written in a single line to prevent connection problems
-   with sync clients.
--  Be careful about line breaks if you copy the examples, as long lines may be
-   broken for page formatting.
--  Some environments might need a ``cgi.fix_pathinfo`` set to ``1`` in their
-   ``php.ini``.
-
-Thanks to `@josh4trunks <https://github.com/josh4trunks>`_ for providing /
-creating these configuration examples.
-
-Nextcloud in the webroot of nginx
----------------------------------
-
-The following configuration should be used when Nextcloud is placed in the
-webroot of your nginx installation. In this example it is
-``/var/www/nextcloud`` and it is accessed via ``http(s)://cloud.example.com``
-
-.. code-block:: nginx
-
-  upstream php-handler {
-      server 127.0.0.1:9000;
-      #server unix:/var/run/php5-fpm.sock;
-  }
-
-  server {
-      listen 80;
-      listen [::]:80;
-      server_name cloud.example.com;
-      # enforce https
-      return 301 https://$server_name$request_uri;
-  }
-
-  server {
-      listen 443 ssl http2;
-      listen [::]:443 ssl http2;
-      server_name cloud.example.com;
-
-      ssl_certificate /etc/ssl/nginx/cloud.example.com.crt;
-      ssl_certificate_key /etc/ssl/nginx/cloud.example.com.key;
-
-      # Add headers to serve security related headers
-      # Before enabling Strict-Transport-Security headers please read into this
-      # topic first.
-      # add_header Strict-Transport-Security "max-age=15768000;
-      # includeSubDomains; preload;";
-      #
-      # WARNING: Only add the preload option once you read about
-      # the consequences in https://hstspreload.org/. This option
-      # will add the domain to a hardcoded list that is shipped
-      # in all major browsers and getting removed from this list
-      # could take several months.
-      add_header X-Content-Type-Options nosniff;
-      add_header X-XSS-Protection "1; mode=block";
-      add_header X-Robots-Tag none;
-      add_header X-Download-Options noopen;
-      add_header X-Permitted-Cross-Domain-Policies none;
-
-      # Path to the root of your installation
-      root /var/www/nextcloud/;
-
-      location = /robots.txt {
-          allow all;
-          log_not_found off;
-          access_log off;
-      }
-
-      # The following 2 rules are only needed for the user_webfinger app.
-      # Uncomment it if you're planning to use this app.
-      #rewrite ^/.well-known/host-meta /public.php?service=host-meta last;
-      #rewrite ^/.well-known/host-meta.json /public.php?service=host-meta-json
-      # last;
-
-      location = /.well-known/carddav {
-        return 301 $scheme://$host/remote.php/dav;
-      }
-      location = /.well-known/caldav {
-        return 301 $scheme://$host/remote.php/dav;
-      }
-
-      # set max upload size
-      client_max_body_size 512M;
-      fastcgi_buffers 64 4K;
-
-      # Enable gzip but do not remove ETag headers
-      gzip on;
-      gzip_vary on;
-      gzip_comp_level 4;
-      gzip_min_length 256;
-      gzip_proxied expired no-cache no-store private no_last_modified no_etag auth;
-      gzip_types application/atom+xml application/javascript application/json application/ld+json application/manifest+json application/rss+xml application/vnd.geo+json application/vnd.ms-fontobject application/x-font-ttf application/x-web-app-manifest+json application/xhtml+xml application/xml font/opentype image/bmp image/svg+xml image/x-icon text/cache-manifest text/css text/plain text/vcard text/vnd.rim.location.xloc text/vtt text/x-component text/x-cross-domain-policy;
-
-      # Uncomment if your server is build with the ngx_pagespeed module
-      # This module is currently not supported.
-      #pagespeed off;
-
-      location / {
-          rewrite ^ /index.php$uri;
-      }
-
-      location ~ ^/(?:build|tests|config|lib|3rdparty|templates|data)/ {
-          deny all;
-      }
-      location ~ ^/(?:\.|autotest|occ|issue|indie|db_|console) {
-          deny all;
-      }
-
-      location ~ ^/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater/.+|ocs-provider/.+)\.php(?:$|/) {
-          fastcgi_split_path_info ^(.+\.php)(/.*)$;
-          include fastcgi_params;
-          fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-          fastcgi_param PATH_INFO $fastcgi_path_info;
-          fastcgi_param HTTPS on;
-          #Avoid sending the security headers twice
-          fastcgi_param modHeadersAvailable true;
-          fastcgi_param front_controller_active true;
-          fastcgi_pass php-handler;
-          fastcgi_intercept_errors on;
-          fastcgi_request_buffering off;
-      }
-
-      location ~ ^/(?:updater|ocs-provider)(?:$|/) {
-          try_files $uri/ =404;
-          index index.php;
-      }
-
-      # Adding the cache control header for js and css files
-      # Make sure it is BELOW the PHP block
-      location ~ \.(?:css|js|woff|svg|gif)$ {
-          try_files $uri /index.php$uri$is_args$args;
-          add_header Cache-Control "public, max-age=15778463";
-          # Add headers to serve security related headers (It is intended to
-          # have those duplicated to the ones above)
-          # Before enabling Strict-Transport-Security headers please read into
-          # this topic first.
-          # add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
-          #
-          # WARNING: Only add the preload option once you read about
-          # the consequences in https://hstspreload.org/. This option
-          # will add the domain to a hardcoded list that is shipped
-          # in all major browsers and getting removed from this list
-          # could take several months.
-          add_header X-Content-Type-Options nosniff;
-          add_header X-XSS-Protection "1; mode=block";
-          add_header X-Robots-Tag none;
-          add_header X-Download-Options noopen;
-          add_header X-Permitted-Cross-Domain-Policies none;
-          # Optional: Don't log access to assets
-          access_log off;
-      }
-
-      location ~ \.(?:png|html|ttf|ico|jpg|jpeg)$ {
-          try_files $uri /index.php$uri$is_args$args;
-          # Optional: Don't log access to other assets
-          access_log off;
-      }
-  }
-
-Nextcloud in a subdir of nginx
-------------------------------
-
-The following config should be used when Nextcloud is placed within a subdir of
-your nginx installation.
-
-.. code-block:: nginx
-
-  upstream php-handler {
-      server 127.0.0.1:9000;
-      #server unix:/var/run/php5-fpm.sock;
-  }
-
-  server {
-      listen 80;
-      listen [::]:80;
-      server_name cloud.example.com;
-      # enforce https
-      return 301 https://$server_name$request_uri;
-  }
-
-  server {
-      listen 443 ssl http2;
-      listen [::]:443 ssl http2;
-      server_name cloud.example.com;
-
-      ssl_certificate /etc/ssl/nginx/cloud.example.com.crt;
-      ssl_certificate_key /etc/ssl/nginx/cloud.example.com.key;
-
-      # Add headers to serve security related headers
-      # Before enabling Strict-Transport-Security headers please read into this
-      # topic first.
-      #add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
-      add_header X-Content-Type-Options nosniff;
-      add_header X-XSS-Protection "1; mode=block";
-      add_header X-Robots-Tag none;
-      add_header X-Download-Options noopen;
-      add_header X-Permitted-Cross-Domain-Policies none;
-
-      # Path to the root of your installation
-      root /var/www/;
-
-      location = /robots.txt {
-          allow all;
-          log_not_found off;
-          access_log off;
-      }
-
-      # The following 2 rules are only needed for the user_webfinger app.
-      # Uncomment it if you're planning to use this app.
-      # rewrite ^/.well-known/host-meta /nextcloud/public.php?service=host-meta
-      # last;
-      #rewrite ^/.well-known/host-meta.json
-      # /nextcloud/public.php?service=host-meta-json last;
-
-      location = /.well-known/carddav {
-        return 301 $scheme://$host/nextcloud/remote.php/dav;
-      }
-      location = /.well-known/caldav {
-        return 301 $scheme://$host/nextcloud/remote.php/dav;
-      }
-
-      location /.well-known/acme-challenge { }
-
-      location ^~ /nextcloud {
-
-          # set max upload size
-          client_max_body_size 512M;
-          fastcgi_buffers 64 4K;
-
-          # Enable gzip but do not remove ETag headers
-          gzip on;
-          gzip_vary on;
-          gzip_comp_level 4;
-          gzip_min_length 256;
-          gzip_proxied expired no-cache no-store private no_last_modified no_etag auth;
-          gzip_types application/atom+xml application/javascript application/json application/ld+json application/manifest+json application/rss+xml application/vnd.geo+json application/vnd.ms-fontobject application/x-font-ttf application/x-web-app-manifest+json application/xhtml+xml application/xml font/opentype image/bmp image/svg+xml image/x-icon text/cache-manifest text/css text/plain text/vcard text/vnd.rim.location.xloc text/vtt text/x-component text/x-cross-domain-policy;
-
-          # Uncomment if your server is build with the ngx_pagespeed module
-          # This module is currently not supported.
-          #pagespeed off;
-
-          location /nextcloud {
-              rewrite ^ /nextcloud/index.php$uri;
-          }
-
-          location ~ ^/nextcloud/(?:build|tests|config|lib|3rdparty|templates|data)/ {
-              deny all;
-          }
-          location ~ ^/nextcloud/(?:\.|autotest|occ|issue|indie|db_|console) {
-              deny all;
-          }
-
-          location ~ ^/nextcloud/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater/.+|ocs-provider/.+)\.php(?:$|/) {
-              fastcgi_split_path_info ^(.+\.php)(/.*)$;
-              include fastcgi_params;
-              fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-              fastcgi_param PATH_INFO $fastcgi_path_info;
-              fastcgi_param HTTPS on;
-              #Avoid sending the security headers twice
-              fastcgi_param modHeadersAvailable true;
-              fastcgi_param front_controller_active true;
-              fastcgi_pass php-handler;
-              fastcgi_intercept_errors on;
-              fastcgi_request_buffering off;
-          }
-
-          location ~ ^/nextcloud/(?:updater|ocs-provider)(?:$|/) {
-              try_files $uri/ =404;
-              index index.php;
-          }
-
-          # Adding the cache control header for js and css files
-          # Make sure it is BELOW the PHP block
-          location ~ \.(?:css|js|woff|svg|gif)$ {
-              try_files $uri /nextcloud/index.php$uri$is_args$args;
-              add_header Cache-Control "public, max-age=15778463";
-              # Add headers to serve security related headers  (It is intended
-              # to have those duplicated to the ones above)
-              # Before enabling Strict-Transport-Security headers please read
-              # into this topic first.
-              # add_header Strict-Transport-Security "max-age=15768000;
-              # includeSubDomains; preload;";
-              add_header X-Content-Type-Options nosniff;
-              add_header X-XSS-Protection "1; mode=block";
-              add_header X-Robots-Tag none;
-              add_header X-Download-Options noopen;
-              add_header X-Permitted-Cross-Domain-Policies none;
-              # Optional: Don't log access to assets
-              access_log off;
-          }
-
-          location ~ \.(?:png|html|ttf|ico|jpg|jpeg)$ {
-              try_files $uri /nextcloud/index.php$uri$is_args$args;
-              # Optional: Don't log access to other assets
-              access_log off;
-          }
-      }
-  }
-
-Nextcloud behind reverse proxy
-------------------------------
-
-  server {
-   listen 80;
-   server_name nextcloud.domain.com;
-
-   # Add headers to serve security related headers
-   add_header X-Content-Type-Options nosniff;
-   add_header X-Frame-Options "SAMEORIGIN";
-   add_header X-XSS-Protection "1; mode=block";
-   add_header X-Robots-Tag none;
-   add_header X-Download-Options noopen;
-   add_header X-Permitted-Cross-Domain-Policies none;
-
-   # Path to the root of your installation
-   root /usr/share/nginx/nextcloud/;
-
-   location = /robots.txt {
-       allow all;
-       log_not_found off;
-       access_log off;
-   }
-
-
-
-   # The following 2 rules are only needed for the user_webfinger app.
-   # Uncomment it if you're planning to use this app.
-   #rewrite ^/.well-known/host-meta /public.php?service=host-meta last;
-   #rewrite ^/.well-known/host-meta.json /public.php?service=host-meta-json
-   # last;
-
-   location = /.well-known/carddav {
-       return 301 $scheme://$host/remote.php/dav;
-   }
-   location = /.well-known/caldav {
-      return 301 $scheme://$host/remote.php/dav;
-   }
-
-   location ~ /.well-known/acme-challenge {
-     allow all;
-   }
-
-   # set max upload size
-   client_max_body_size 512M;
-   fastcgi_buffers 64 4K;
-
-   # Disable gzip to avoid the removal of the ETag header
-   gzip off;
-
-   # Uncomment if your server is build with the ngx_pagespeed module
-   # This module is currently not supported.
-   #pagespeed off;
-
-   error_page 403 /core/templates/403.php;
-   error_page 404 /core/templates/404.php;
-
-   location / {
-      rewrite ^ /index.php$uri;
-   }
-
-   location ~ ^/(?:build|tests|config|lib|3rdparty|templates|data)/ {
-      deny all;
-   }
-   location ~ ^/(?:\.|autotest|occ|issue|indie|db_|console) {
-      deny all;
-    }
-
-   location ~ ^/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater/.+|ocs-provider/.+|core/templates/40[34])\.php(?:$|/) {
-      include fastcgi_params;
-      fastcgi_split_path_info ^(.+\.php)(/.*)$;
-      fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-      fastcgi_param PATH_INFO $fastcgi_path_info;
-      #Avoid sending the security headers twice
-      fastcgi_param modHeadersAvailable true;
-      fastcgi_param front_controller_active true;
-      fastcgi_pass unix:/run/php/php7.2-fpm.sock;
-      fastcgi_intercept_errors on;
-      fastcgi_request_buffering off;
-   }
-
-   location ~ ^/(?:updater|ocs-provider)(?:$|/) {
-      try_files $uri/ =404;
-      index index.php;
-   }
-
-   # Adding the cache control header for js and css files
-   # Make sure it is BELOW the PHP block
-   location ~* \.(?:css|js)$ {
-       try_files $uri /index.php$uri$is_args$args;
-       add_header Cache-Control "public, max-age=7200";
-       # Add headers to serve security related headers (It is intended to
-       # have those duplicated to the ones above)
-       add_header X-Content-Type-Options nosniff;
-       add_header X-Frame-Options "SAMEORIGIN";
-       add_header X-XSS-Protection "1; mode=block";
-       add_header X-Robots-Tag none;
-       add_header X-Download-Options noopen;
-       add_header X-Permitted-Cross-Domain-Policies none;
-       # Optional: Don't log access to assets
-       access_log off;
-  }
-
-  location ~* \.(?:svg|gif|png|html|ttf|woff|ico|jpg|jpeg)$ {
-       try_files $uri /index.php$uri$is_args$args;
-       # Optional: Don't log access to other assets
-       access_log off;
-  }
-  }
-
-Tips and tricks
----------------
-
-Suppressing log messages
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-If you're seeing meaningless messages in your logfile, for example ``client
-denied by server configuration: /var/www/data/htaccesstest.txt``, add this section to
-your nginx configuration to suppress them:
-
-.. code-block:: nginx
-
-        location = /data/htaccesstest.txt {
-          allow all;
-          log_not_found off;
-          access_log off;
-        }
-
-JavaScript (.js) or CSS (.css) files not served properly
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-A common issue with custom nginx configs is that JavaScript (.js)
-or CSS (.css) files are not served properly leading to a 404 (File not found)
-error on those files and a broken webinterface.
-
-This could be caused by the:
-
-.. code-block:: nginx
-
-        location ~* \.(?:css|js)$ {
-
-block shown above not located **below** the:
-
-.. code-block:: nginx
-
-        location ~ \.php(?:$|/) {
-
-block. Other custom configurations like caching JavaScript (.js)
-or CSS (.css) files via gzip could also cause such issues.
+===========================
+Reverse proxy configuration
+===========================
+
+Nextcloud can be run through a reverse proxy, which can cache static assets such
+as images, CSS or JS files, move the load of handling HTTPS to a different
+server or load balance between multiple servers.
+In this example, we will be assuming that we are using NGiNX and Certbot.
+
+Setting up Reverse Proxy
+------------------------
+
+All requests will initially be received by the reverse proxy which will then
+perform SSL termination and route the request to the correct server. SSL
+certificate is managed by Certbot.
+
+We will need to configure the reverse proxy to handle the requests. So we will
+utilize the following configuration on the reverse proxy server:
+
+::
+
+ server {
+    listen 80;
+	  server_name nextcloud.domain.com;
+
+	return 301 https://$server_name$request_uri;
+  	location /.well-known {
+    	root /var/www/cloud-mega/;
+    	allow all;
+ }
+
+ server {
+	listen 443 ssl;
+	server_name nextcloud.domain.com;
+
+	access_log /var/log/nginx/nextcloud.domain.com.access.log;
+	error_log /var/log/nginx/nextcloud.domain.com.error.log;
+
+	client_max_body_size 0;
+	underscores_in_headers on;
+
+	ssl_stapling on;
+	ssl_stapling_verify on;
+
+	location / {
+		proxy_headers_hash_max_size 512;
+		proxy_headers_hash_bucket_size 64;
+		proxy_set_header Host $host;
+		proxy_set_header X-Forwarded-Proto $scheme;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+		add_header Front-End-Https on;
+		# whatever the IP of your cloud server is
+		proxy_pass http://IP_OF_NEXTCLOUD_SERVER;
+	}
+ }
+
+Defining trusted proxies
+------------------------
+
+For security, you must explicitly define the proxy servers that Nextcloud is to
+trust. Connections from trusted proxies will be specially treated to get the
+real client information, for use in access control and logging. Parameters are
+configured in :file:`config/config.php`
+
+Set the **trusted_proxies** parameter as an array of IP address to define the
+servers Nextcloud should trust as proxies. This parameter provides protection
+against client spoofing, and you should secure those servers as you would your
+Nextcloud server.
+
+A reverse proxy can define HTTP headers with the original client IP address,
+and Nextcloud can use those headers to retrieve that IP address. Nextcloud uses
+the de-facto standard header 'X-Forwarded-For' by default, but this can be
+configured with the **forwarded_for_headers** parameter. This parameter is an
+array of PHP lookup strings, for example 'X-Forwarded-For' becomes
+'HTTP_X_FORWARDED_FOR'. Incorrectly setting this parameter may allow clients
+to spoof their IP address as visible to Nextcloud, even when going through the
+trusted proxy! The correct value for this parameter is dependent on your
+proxy software.
+
+Overwrite parameters
+--------------------
+
+The automatic hostname, protocol or webroot detection of Nextcloud can fail in
+certain reverse proxy situations. This configuration allows the automatic detection
+to be manually overridden.
+
+If Nextcloud fails to automatically detect the hostname, protocol or webroot
+you can use the **overwrite** parameters inside the :file:`config/config.php`.
+The **overwritehost** parameter is used to set the hostname of the proxy. You
+can also specify a port. The **overwriteprotocol** parameter is used to set the
+protocol of the proxy. You can choose between the two options **http** and
+**https**. The **overwritewebroot** parameter is used to set the absolute web
+path of the proxy to the Nextcloud folder. When you want to keep the automatic
+detection of one of the three parameters you can leave the value empty or don't
+set it. The **overwritecondaddr** parameter is used to overwrite the values
+dependent on the remote address. The value must be a **regular expression** of
+the IP addresses of the proxy. This is useful when you use a reverse SSL proxy
+only for https access and you want to use the automatic detection for http
+access.
+
+Nextcloud Configuration
+------------------------
+On the server that Nextcloud will be installed utilize the NGiNX behind reverse proxy _config: https://docs.nextcloud.com/server/13/admin_manual/installation/nginx.html#nginx-behind-reverse-proxy
+
+For the config.php portion we have used the following configuration:
+
+::
+
+ <?php
+  $CONFIG = array (
+ ...
+  'trusted_domains' =>
+  array (
+    0 => 'nextcloud.domain.com',
+  ),
+  'trusted_proxies'   => ['IP_OF_REVERSE_PROXY'],
+  'overwrite.cli.url' => 'https://nextcloud.domain.com',
+  'overwritehost'     => 'nextcloud.domain',
+  'overwriteprotocol' => 'https',
+   ...
+    );
+
+Please take note that most details written in the config.php file will be done by Nextcloud itself but it is important to add:
+
+::
+
+  'trusted_proxies'   => ['IP_OF_REVERSE_PROXY'],
+  'overwrite.cli.url' => 'https://nextcloud.domain.com',
+  'overwritehost'     => 'nextcloud.domain',
+  'overwriteprotocol' => 'https',
+
+This will set for Nextcloud to trust the reverse proxy and properly function. Because we do not have additional websites or Nextcloud websites running on the same server we do not have to set the specific directory:
+
+::
+
+    'overwritecondaddr' => '^10\.0\.0\.1$',
+
+Example
+-------
+
+Multiple domains reverse SSL proxy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you want to access your Nextcloud installation **http://domain.tld/nextcloud**
+via a multiple domains reverse SSL proxy
+**https://ssl-proxy.tld/domain.tld/nextcloud** with the IP address **10.0.0.1**
+you can set the following parameters inside the :file:`config/config.php`.
+
+::
+
+  <?php
+   $CONFIG = array (
+    'trusted_proxies'   => ['10.0.0.1'],
+    'overwritehost'     => 'ssl-proxy.tld',
+    'overwriteprotocol' => 'https',
+    'overwritewebroot'  => '/domain.tld/nextcloud',
+    'overwritecondaddr' => '^10\.0\.0\.1$',
+  );
+
+.. note:: If you want to use the SSL proxy during installation you have to
+  create the :file:`config/config.php` otherwise you have to extend the existing
+  **$CONFIG** array.
