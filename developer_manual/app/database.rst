@@ -15,6 +15,7 @@ Inside your database layer class you can now start running queries like:
 
     namespace OCA\MyApp\Db;
 
+    use OCP\DB\QueryBuilder\IQueryBuilder;
     use OCP\IDBConnection;
 
     class AuthorDAO {
@@ -26,15 +27,18 @@ Inside your database layer class you can now start running queries like:
         }
 
         public function find($id) {
-            $sql = 'SELECT * FROM `*PREFIX*myapp_authors` ' .
-                'WHERE `id` = ?';
-            $stmt = $this->db->prepare($sql);
-            $stmt->bindParam(1, $id, \PDO::PARAM_INT);
-            $stmt->execute();
+            $qb = $this->db->getQueryBuilder();
 
-            $row = $stmt->fetch();
+            $qb->select('*')
+               ->from('myapp_authors')
+               ->where(
+                   $qb->expr()->eq('id', $qb->createNamedParameter($id, IQueryBuilder::PARAM_INT))
+               );
 
-            $stmt->closeCursor();
+            $cursor = $qb->execute();
+            $row = $cursor->fetch();
+            $cursor->closeCursor();
+
             return $row;
         }
 
