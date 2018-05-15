@@ -967,10 +967,9 @@ Defaults to ``false``
 Previews
 --------
 
-Nextcloud supports previews of image files, the covers of MP3 files, and text
-files. These options control enabling and disabling previews, and thumbnail
-size.
-
+Nextcloud supports previews of images, PDF documents and text documents.
+Previews will show up on the right hand when the "share" link is clicked.
+Previews are not full renderings of the image from within Nextcloud.
 
 ::
 
@@ -979,7 +978,7 @@ size.
 By default, Nextcloud can generate previews for the following filetypes:
 
 - Image files
-- Covers of MP3 files
+- PDF documents
 - Text documents
 
 Valid values are ``true``, to enable previews, or
@@ -1290,16 +1289,16 @@ Server details for one or more memcached servers to use for memory caching.
 		\Memcached::OPT_SEND_TIMEOUT =>    50,
 		\Memcached::OPT_RECV_TIMEOUT =>    50,
 		\Memcached::OPT_POLL_TIMEOUT =>    50,
-	
+
 		// Enable compression
 		\Memcached::OPT_COMPRESSION =>          true,
-	
+
 		// Turn on consistent hashing
 		\Memcached::OPT_LIBKETAMA_COMPATIBLE => true,
-	
+
 		// Enable Binary Protocol
 		\Memcached::OPT_BINARY_PROTOCOL =>      true,
-	
+
 		// Binary serializer vill be enabled if the igbinary PECL module is available
 		//\Memcached::OPT_SERIALIZER => \Memcached::SERIALIZER_IGBINARY,
 	),
