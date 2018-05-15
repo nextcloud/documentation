@@ -33,6 +33,10 @@ modules must be installed and present. Certain files require a separated
 application to be installed within the browser or for a specific php module
 to be installed in order to generate the preview.
 
+Image Files = PHP Imagick modules
+Movies = FFmpeg or avconv
+PDF Documents = Browser PDF viewer
+Document Files = Onlyoffice or Libreoffice
 
 Parameters
 ----------
