@@ -45,7 +45,7 @@ version for Hyper-V users.
 
 For complete instructions and downloads see:
 
-- https://github.com/nextcloud/vm 
+- https://github.com/nextcloud/vm
 - https://www.techandme.se/nextcloud-vm/
 
 .. note:: You can install the VM on OSes other than Windows as long as
@@ -155,8 +155,8 @@ You don’t need the WebDAV module for your Web server (i.e. Apache’s
 SabreDAV.
 If ``mod_webdav`` is enabled you must disable it for Nextcloud. (See
 :ref:`apache_configuration_label` for an example configuration.)
- 
-.. _ubuntu_installation_label:  
+
+.. _ubuntu_installation_label:
 
 Example installation on Ubuntu 16.04 LTS server
 -----------------------------------------------
@@ -175,6 +175,12 @@ terminal::
     apt-get install apache2 mariadb-server libapache2-mod-php7.0
     apt-get install php7.0-gd php7.0-json php7.0-mysql php7.0-curl php7.0-mbstring
     apt-get install php7.0-intl php7.0-mcrypt php-imagick php7.0-xml php7.0-zip
+
+.. note:: If installing from MariaDB from Ubuntu's repositories, there will be
+          no prompt to create a password for the root user. Please run
+          "mysql_secure_installation" command after the installation to set
+          the root user password. Without doing this, there will be no root
+          password, just hit enter when prompted.
 
 * This installs the packages for the Nextcloud core system.
   ``libapache2-mod-php7.0`` provides the following PHP extensions: ``bcmath bz2
@@ -199,19 +205,19 @@ Now download the archive of the latest Nextcloud version:
 * Download its corresponding checksum file, e.g. nextcloud-x.y.z.tar.bz2.md5,
   or nextcloud-x.y.z.tar.bz2.sha256.
 * Verify the MD5 or SHA256 sum::
-   
+
     md5sum -c nextcloud-x.y.z.tar.bz2.md5 < nextcloud-x.y.z.tar.bz2
     sha256sum -c nextcloud-x.y.z.tar.bz2.sha256 < nextcloud-x.y.z.tar.bz2
     md5sum  -c nextcloud-x.y.z.zip.md5 < nextcloud-x.y.z.zip
     sha256sum  -c nextcloud-x.y.z.zip.sha256 < nextcloud-x.y.z.zip
-    
+
 * You may also verify the PGP signature::
-    
+
     wget https://download.nextcloud.com/server/releases/nextcloud-x.y.z.tar.bz2.asc
     wget https://nextcloud.com/nextcloud.asc
     gpg --import nextcloud.asc
     gpg --verify nextcloud-x.y.z.tar.bz2.asc nextcloud-x.y.z.tar.bz2
- 
+
 * Now you can extract the archive contents. Run the appropriate unpacking
   command for your archive type::
 
@@ -226,14 +232,14 @@ Now download the archive of the latest Nextcloud version:
 
   where ``/path/to/webserver/document-root`` is replaced by the
   document root of your Web server::
-    
+
     cp -r nextcloud /var/www
 
 On other HTTP servers it is recommended to install Nextcloud outside of the
 document root.
 
 .. _apache_configuration_label:
-   
+
 Apache Web server configuration
 -------------------------------
 
@@ -241,9 +247,9 @@ On Debian, Ubuntu, and their derivatives, Apache installs with a useful
 configuration so all you have to do is create a
 :file:`/etc/apache2/sites-available/nextcloud.conf` file with these lines in
 it, replacing the **Directory** and other filepaths with your own filepaths::
-   
+
   Alias /nextcloud "/var/www/nextcloud/"
-   
+
   <Directory /var/www/nextcloud/>
     Options +FollowSymlinks
     AllowOverride All
@@ -256,11 +262,11 @@ it, replacing the **Directory** and other filepaths with your own filepaths::
    SetEnv HTTP_HOME /var/www/nextcloud
 
   </Directory>
- 
+
 Then create a symlink to :file:`/etc/apache2/sites-enabled`::
 
   ln -s /etc/apache2/sites-available/nextcloud.conf /etc/apache2/sites-enabled/nextcloud.conf
- 
+
 Additional Apache configurations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -268,16 +274,16 @@ Additional Apache configurations
   it by running::
 
     a2enmod rewrite
- 
+
   Additional recommended modules are ``mod_headers``, ``mod_env``, ``mod_dir`` and ``mod_mime``::
- 
+
     a2enmod headers
     a2enmod env
     a2enmod dir
     a2enmod mime
- 
+
   If you're running ``mod_fcgi`` instead of the standard ``mod_php`` also enable::
- 
+
     a2enmod setenvif
 
 * You must disable any server-configured authentication for Nextcloud, as it
@@ -301,9 +307,9 @@ Additional Apache configurations
 * If you're running Nextcloud in a subdirectory and want to use CalDAV or
   CardDAV clients make sure you have configured the correct
   :ref:`service-discovery-label` URLs.
- 
-.. _pretty_urls_label:  
- 
+
+.. _pretty_urls_label:
+
 Pretty URLs
 -----------
 
@@ -350,20 +356,20 @@ the default site. Open a terminal and run::
           plan to make your Nextcloud server publicly accessible. You might
           want to consider getting a certificate signed by a commercial signing
           authority. Check with your domain name registrar or hosting service
-          for good deals on commercial certificates.   
-    
+          for good deals on commercial certificates.
+
 .. _installation_wizard_label:
-    
+
 Installation wizard
 -------------------
 
-After restarting Apache you must complete your installation by running either 
-the graphical Installation Wizard, or on the command line with the ``occ`` 
-command. To enable this, change the ownership on your Nextcloud directories to 
+After restarting Apache you must complete your installation by running either
+the graphical Installation Wizard, or on the command line with the ``occ``
+command. To enable this, change the ownership on your Nextcloud directories to
 your HTTP user:
 
  chown -R www-data:www-data /var/www/nextcloud/
- 
+
 .. note:: Admins of SELinux-enabled distributions may need to write new SELinux
    rules to complete their Nextcloud installation; see
    :ref:`selinux_tips_label`.
@@ -483,6 +489,3 @@ Other Web servers
 
 `Other HTTP servers (Nextcloud)
 <https://github.com/nextcloud/documentation/wiki/Alternate-Web-server-notes>`_
-
-
-
