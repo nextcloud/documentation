@@ -2,7 +2,7 @@
 Previews configuration
 ======================
 
-The Nextcloud thumbnail system generates previews of files for all 
+The Nextcloud thumbnail system generates previews of files for all
 Nextcloud apps that display files, such as Files and Gallery.
 
 The following image shows some examples of previews of various file types.
@@ -20,23 +20,34 @@ By default, Nextcloud can generate previews for the following filetypes:
           of other file types such as PDF, SVG or various office documents.
           Due to security concerns those providers have been disabled by
           default and are considered unsupported.
-          While those providers are still available, we discourage enabling 
-          them, and they are not documented.
+          While those providers are still available, we discourage enabling
+          them, and they are not documented. Administrators should be aware
+          that these previews are generated using PHP libraries written in
+          C which might be vulnerable to attack vectors.
+
+Required Modules
+----------
+
+In order for Nextcloud to generate previews for certain files, additional
+modules must be installed and present. Certain files require a separated
+application to be installed within the browser or for a specific php module
+to be installed in order to generate the preview.
+
 
 Parameters
 ----------
 
-Please notice that the Nextcloud preview system comes already with sensible 
-defaults, and therefore it is usually unnecessary to adjust those configuration 
-values. 
+Please notice that the Nextcloud preview system comes already with sensible
+defaults, and therefore it is usually unnecessary to adjust those configuration
+values.
 
 Disabling previews:
 ^^^^^^^^^^^^^^^^^^^
 
-Under certain circumstances, for example if the server has limited 
-resources, you might want to consider disabling the generation of previews. 
-Note that if you do this all previews in all apps are disabled, including 
-the Gallery app, and will display generic icons instead of 
+Under certain circumstances, for example if the server has limited
+resources, you might want to consider disabling the generation of previews.
+Note that if you do this all previews in all apps are disabled, including
+the Gallery app, and will display generic icons instead of
 thumbnails.
 
 Set the configuration option ``enable_previews`` in config.php to ``false``:
@@ -72,8 +83,8 @@ to a maximum size of 100×100px:
 Maximum scale factor:
 ^^^^^^^^^^^^^^^^^^^^^
 
-If a lot of small pictures are stored on the Nextcloud instance and the preview 
-system generates blurry previews, you might want to consider setting a maximum 
+If a lot of small pictures are stored on the Nextcloud instance and the preview
+system generates blurry previews, you might want to consider setting a maximum
 scale factor. By default, pictures are upscaled to 10 times the original size:
 
 ::
@@ -88,7 +99,7 @@ If you want to disable scaling at all, you can set the config value to '1':
   <?php
     'preview_max_scale_factor' => 1,
 
-If you want to disable the maximum scaling factor, you can set the config value 
+If you want to disable the maximum scaling factor, you can set the config value
 to 'null':
 
 ::
