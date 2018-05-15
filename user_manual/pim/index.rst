@@ -11,6 +11,7 @@ their respective Apps > Productivity entries.
 
    contacts
    calendar
+   sync_android
    sync_ios
    sync_osx
    sync_thunderbird
