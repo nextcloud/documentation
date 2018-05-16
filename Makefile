@@ -40,7 +40,7 @@ developer-manual-pdf:
 	@echo "Developer manual build finished; PDF is updated"
 
 api-docs: clean-api-docs
-	cd build && sh get-server-sources.sh stable13
+	cd build && sh get-server-sources.sh master
 	mkdir -p developer_manual/api/
 	cd build && composer install && composer update
 	cd build && php generateApiDoc.php
