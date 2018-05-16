@@ -15,6 +15,7 @@ Inside your database layer class you can now start running queries like:
 
     namespace OCA\MyApp\Db;
 
+    use OCP\DB\QueryBuilder\IQueryBuilder;
     use OCP\IDBConnection;
 
     class AuthorDAO {
@@ -25,16 +26,19 @@ Inside your database layer class you can now start running queries like:
             $this->db = $db;
         }
 
-        public function find($id) {
-            $sql = 'SELECT * FROM `*PREFIX*myapp_authors` ' .
-                'WHERE `id` = ?';
-            $stmt = $this->db->prepare($sql);
-            $stmt->bindParam(1, $id, \PDO::PARAM_INT);
-            $stmt->execute();
+        public function find(int $id) {
+            $qb = $this->db->getQueryBuilder();
 
-            $row = $stmt->fetch();
+            $qb->select('*')
+               ->from('myapp_authors')
+               ->where(
+                   $qb->expr()->eq('id', $qb->createNamedParameter($id, IQueryBuilder::PARAM_INT))
+               );
 
-            $stmt->closeCursor();
+            $cursor = $qb->execute();
+            $row = $cursor->fetch();
+            $cursor->closeCursor();
+
             return $row;
         }
 
@@ -62,10 +66,11 @@ To create a mapper, inherit from the mapper base class and call the parent const
 
     namespace OCA\MyApp\Db;
 
+    use OCP\DB\QueryBuilder\IQueryBuilder;
     use OCP\IDBConnection;
-    use OCP\AppFramework\Db\Mapper;
+    use OCP\AppFramework\Db\QBMapper;
 
-    class AuthorMapper extends Mapper {
+    class AuthorMapper extends QBMapper {
 
         public function __construct(IDBConnection $db) {
             parent::__construct($db, 'myapp_authors');
@@ -76,26 +81,44 @@ To create a mapper, inherit from the mapper base class and call the parent const
          * @throws \OCP\AppFramework\Db\DoesNotExistException if not found
          * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException if more than one result
          */
-        public function find($id) {
-            $sql = 'SELECT * FROM `*PREFIX*myapp_authors` ' .
-                'WHERE `id` = ?';
-            return $this->findEntity($sql, [$id]);
+        public function find(int $id) {
+            $qb = $this->db->getQueryBuilder();
+
+            $qb->select('*')
+               ->from('myapp_authors')
+               ->where(
+                   $qb->expr()->eq('id', $qb->createNamedParameter($id, IQueryBuilder::PARAM_INT))
+               );
+
+            return $this->findEntity($qb);
         }
 
 
         public function findAll($limit=null, $offset=null) {
-            $sql = 'SELECT * FROM `*PREFIX*myapp_authors`';
-            return $this->findEntities($sql, $limit, $offset);
+            $qb = $this->db->getQueryBuilder();
+
+            $qb->select('*')
+               ->from('myapp_authors')
+               ->setMaxResults($limit)
+               ->setFirstResult($offset);
+
+            return $this->findEntities($sql);
         }
 
 
         public function authorNameCount($name) {
-            $sql = 'SELECT COUNT(*) AS `count` FROM `*PREFIX*myapp_authors` ' .
-                'WHERE `name` = ?';
-            $stmt = $this->execute($sql, [$name]);
+            $qb = $this->db->getQueryBuilder();
 
-            $row = $stmt->fetch();
-            $stmt->closeCursor();
+            $qb->selectAlias($qb->createFunction('COUNT(*)'), 'count')
+               ->from('myapp_authors')
+               ->where(
+                   $qb->expr()->eq('name', $qb->createNamedParameter($name, IQueryBuilder::PARAM_STR))
+               );
+
+            $cursor = $qb->execute();
+            $row = $cursor->fetch();
+            $cursor->closeCursor();
+
             return $row['count'];
         }
 
