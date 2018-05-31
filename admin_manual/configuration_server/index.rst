@@ -21,5 +21,6 @@ Server configuration
    automatic_configuration
    server_tuning
    theming
+   oauth2
 
 .. Intentional disabled antivirus_configuration
