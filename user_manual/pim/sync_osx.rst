@@ -13,7 +13,7 @@ To use Nextcloud with macOS Calendar you will need to use the following steps:
 3. Open the system prefrenences of your macOS-device
 4. Navigate to "Online-Accounts"
 5. Click on "Add another account..." and click on "CalDAV-Account"
-6. Select "Manually" as Account-Type and type in your username or email-adress of your Nextcloud-instance as username, and your app-passoword/token or password as password.
+6. Select "Manually" as Account-Type and type in your username or email-adress of your Nextcloud-instance as username, and your app-password/token or password as password.
 7. Paste the previous copied (step 2) iOS/macOS CalDAV adress into the server adress field and click on "Login".
 
 You can now select, with which applications you want to use this CalDAV resource. In the most cases, this will be "Calendar", sometimes you may also want to use it for your Tasks and reminders.
