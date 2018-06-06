@@ -49,23 +49,29 @@ Check out the code
 
 The following commands are using **/var/www** as the Web server's directory and **www-data** as user name and group.
 
-After the development tool installation make the directory writable::
+After the development tool installation make the directory writable so you install the code as your regular user, and don't need root privileges::
 
   sudo chmod o+rw /var/www
 
-Then install Nextcloud from Git::
+Then install Nextcloud at the root of your site from Git::
 
-  git clone git@github.com:nextcloud/server.git /var/www/<folder>
-  cd /var/www/<folder> 
+  git clone https://github.com/nextcloud/server.git /var/www/
+  cd /var/www
   git submodule update --init
 
-where <folder> is the folder where you want to install Nextcloud.
+If you like to install Nextcloud at a sub-folder, replace `/var/www` with `/var/www/<folder>`.
+
+Create the data and the config folders::
+
+  cd /var/www
+  mkdir data
+  mkdir config
 
 Adjust rights::
 
-  sudo chown -R www-data:www-data /var/www/core/data/
+  cd /var/www
+  sudo chown -R www-data:www-data config data apps
   sudo chmod o-rw /var/www
-
 
 Finally restart the Web server (this might vary depending on your distribution)::
 
@@ -73,9 +79,13 @@ Finally restart the Web server (this might vary depending on your distribution):
 
 or::
 
+  sudo systemctl restart apache2.service
+
+or::
+
   sudo /etc/init.d/apache2 restart
 
-After the clone Open http://localhost/core (or the corresponding URL) in your web browser to set up your instance.
+Now access the installation at http://localhost/ (or the corresponding URL) in your web browser to set up your instance.
 
 Enabling debug mode
 ^^^^^^^^^^^^^^^^^^^
