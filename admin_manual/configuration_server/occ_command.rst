@@ -358,16 +358,17 @@ Setting an array configuration value
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Some configurations (e.g. the trusted domain setting) are an array of data.
-In order to set (and also get) the value of one key, you can specify multiple
-``config`` names separated by spaces::
+In this case, ``config:system:get`` for this key will return multiple values::
 
   sudo -u www-data php occ config:system:get trusted_domains
   localhost
   nextcloud.local
   sample.tld
 
-To replace ``sample.tld`` with ``example.com`` trusted_domains => 2 needs to be
-set::
+To set one of multiple values, you need to specify the array index as the
+second ``name`` in the ``config:system:set`` command, separated by a
+space. For example, to replace ``sample.tld`` with ``example.com``,
+``trusted_domains => 2`` needs to be set::
 
   sudo -u www-data php occ config:system:set trusted_domains 2 
   --value=example.com
@@ -377,6 +378,30 @@ set::
   localhost
   nextcloud.local
   example.com
+
+Setting a hierarchical configuration value
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Some configurations use hierarchical data. For example, the settings
+for the Redis cache would look like this in the ``config.php`` file::
+
+  'redis' => array(
+    'host' => '/var/run/redis/redis.sock',
+    'port' => 0,
+    'dbindex' => 0,
+    'password' => 'secret',
+    'timeout' => 1.5,
+  )
+
+Setting such hierarchical values works similarly to setting an array
+value above. For this Redis example, use the following commands::
+
+  sudo -u www-data php occ config:system:set redis host \
+  --value=/var/run/redis/redis.sock
+  sudo -u www-data php occ config:system:set redis port --value=0
+  sudo -u www-data php occ config:system:set redis dbindex --value=0
+  sudo -u www-data php occ config:system:set redis password --value=secret
+  sudo -u www-data php occ config:system:set redis timeout --value=1.5
 
 Deleting a single configuration value
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
