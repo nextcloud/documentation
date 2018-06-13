@@ -8,6 +8,12 @@ connect Linux, macOS, Windows, and mobile devices to your Nextcloud server via
 WebDAV. Before we get into configuring WebDAV, let's take a quick look at the
 recommended way of connecting client devices to your Nextcloud servers.
 
+.. note:: In the following examples, You must adjust **example.com/** to the
+   URL of your Nextcloud server installation. And USERNAME is the userid of the
+   connecting user.
+
+   See the webdav url (bottom left, settings) on your Nextcloud.
+
 Nextcloud Desktop and mobile clients
 ------------------------------------
 
@@ -43,9 +49,6 @@ Distributed Authoring and Versioning (WebDAV) is a Hypertext Transfer Protocol
 (HTTP) extension that makes it easy to create, read, and edit files on Web
 servers. With WebDAV you can access your Nextcloud shares on Linux, macOS and
 Windows in the same way as any remote network share, and stay synchronized.
-
-.. note:: In the following examples, You must adjust **example.com/** to the
-   URL of your Nextcloud server installation.
 
 Accessing files using Linux
 ---------------------------
