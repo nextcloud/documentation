@@ -58,6 +58,11 @@ example, in CentOS 6.5 with SCL-PHP56 installed, the command looks like this::
 
   sudo -u apache /opt/rh/php56/root/usr/bin/php /var/www/html/nextcloud/occ
 
+.. note:: Although the following examples make use of the ``sudo -u ... /path/to/php /path/to/occ`` method, your environment may require use of a different wrapper utility than ``sudo`` to execute the command as the appropriate user. Other common wrappers:
+
+  * ``su --command '/path/to/php ...' username`` -- Note here that the target user specification comes at the end, and the command to execute is specified first.
+  * ``runuser --user username -- /path/to/php ...`` -- This wrapper might be used in container contexts (ex: Docker / ``arm32v7/nextcloud``) where both ``sudo`` and ``su`` wrapper utilities cannot be used.
+
 Running ``occ`` with no options lists all commands and options, like this 
 example on Ubuntu::
 
@@ -155,8 +160,8 @@ and ``encryption:list-modules``
 Enabling autocompletion
 -----------------------
 
-.. note:: This currently only works, if the user you use to execute the occ commands has a profile.
-  ``www-data`` in most cases is ``nologon`` and therefor can **not** use this.
+.. note:: Command autocompletion currently only works if the user you use to execute the occ commands has a profile.
+  ``www-data`` in most cases is ``nologon`` and therefor **cannot** use this feature.
 
 Since Nextcloud 11 autocompletion is available for bash (and bash based consoles).
 To enable it, you have to run **one** of the following commands::
