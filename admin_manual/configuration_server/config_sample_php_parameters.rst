@@ -1798,6 +1798,20 @@ set to true if the server is used in a setup based on Nextcloud's Global Scale a
 by default federation is only used internally in a Global Scale setup
 If you want to allow federation outside of your environment set it to 'global'
 
+::
+
+	'csrf.optout' => array(
+		'/^WebDAVFS/', // OS X Finder
+		'/^Microsoft-WebDAV-MiniRedir/', // Windows webdav drive
+	),
+
+List of incompatible user agents opted out from Same Site Cookie Protection.
+
+Some user agents are notorious and don't really properly follow HTTP
+specifications. For those, have an opt-out.
+
+WARNING: only use this if you know what you are doing
+
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
 
