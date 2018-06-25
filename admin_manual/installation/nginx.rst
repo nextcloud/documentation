@@ -111,7 +111,7 @@ webroot of your nginx installation. In this example it is
       #pagespeed off;
 
       location / {
-          rewrite ^ /index.php$uri;
+          rewrite ^ /index.php$request_uri;
       }
 
       location ~ ^/(?:build|tests|config|lib|3rdparty|templates|data)/ {
@@ -143,7 +143,7 @@ webroot of your nginx installation. In this example it is
       # Adding the cache control header for js and css files
       # Make sure it is BELOW the PHP block
       location ~ \.(?:css|js|woff|svg|gif)$ {
-          try_files $uri /index.php$uri$is_args$args;
+          try_files $uri /index.php$request_uri;
           add_header Cache-Control "public, max-age=15778463";
           # Add headers to serve security related headers (It is intended to
           # have those duplicated to the ones above)
@@ -166,7 +166,7 @@ webroot of your nginx installation. In this example it is
       }
 
       location ~ \.(?:png|html|ttf|ico|jpg|jpeg)$ {
-          try_files $uri /index.php$uri$is_args$args;
+          try_files $uri /index.php$request_uri;
           # Optional: Don't log access to other assets
           access_log off;
       }
@@ -255,7 +255,7 @@ your nginx installation.
           #pagespeed off;
 
           location /nextcloud {
-              rewrite ^ /nextcloud/index.php$uri;
+              rewrite ^ /nextcloud/index.php$request_uri;
           }
 
           location ~ ^/nextcloud/(?:build|tests|config|lib|3rdparty|templates|data)/ {
@@ -287,7 +287,7 @@ your nginx installation.
           # Adding the cache control header for js and css files
           # Make sure it is BELOW the PHP block
           location ~ \.(?:css|js|woff|svg|gif)$ {
-              try_files $uri /nextcloud/index.php$uri$is_args$args;
+              try_files $uri /nextcloud/index.php$request_uri;
               add_header Cache-Control "public, max-age=15778463";
               # Add headers to serve security related headers  (It is intended
               # to have those duplicated to the ones above)
@@ -305,7 +305,7 @@ your nginx installation.
           }
 
           location ~ \.(?:png|html|ttf|ico|jpg|jpeg)$ {
-              try_files $uri /nextcloud/index.php$uri$is_args$args;
+              try_files $uri /nextcloud/index.php$request_uri;
               # Optional: Don't log access to other assets
               access_log off;
           }
