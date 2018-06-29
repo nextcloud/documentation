@@ -19,15 +19,15 @@ notification at the top of your Nextcloud Web interface. When you click the
 notification it brings you here, to this page.
 
 **It is best to keep your Nextcloud server upgraded regularly**, and to install 
-all point releases and major releases without skipping any of them, as skipping 
-releases increases the risk of errors. Major releases are 9, 10, and
-11. Point releases are intermediate releases for each major release. For
-example, 9.0.52 and 10.0.2 are point releases. **Skipping major releases is not
+all point releases and major releases. Major releases are 11, 12, and 13.
+Point releases are intermediate releases for each major release. For example,
+13.0.4 and 12.0.9 are point releases. **Skipping major releases is not
 supported.**
 
 **Upgrading is disruptive**. Your Nextcloud server will be put into maintenance
 mode, so your users will be locked out until the upgrade is completed. Large
-installations may take several hours to complete the upgrade.
+installations may take several hours to complete the upgrade. Nevertheless usual
+upgrade times even for bigger installations are in the range of a few minutes.
 
 .. warning:: **Downgrading is not supported** and risks corrupting your data! If
    you want to revert to an older Nextcloud version, make a new, fresh
