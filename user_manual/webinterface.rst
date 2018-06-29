@@ -12,6 +12,9 @@ browsers are:
 * **Internet Explorer** 11+
 * **Microsoft Edge**
 
+.. note:: If you want to use Nextcloud Talk you need to run Mozilla Firefox 52
+   or later or Google Chrome/Chromium 49 or later.
+
   .. figure:: images/login_page.png
      :alt: Nextcloud login screen.
 
@@ -63,12 +66,11 @@ The Nextcloud user interface contains the following fields and functions:
 * **Gallery** button (8). This looks like four little squares, and takes you
   directly to your image gallery.
 
-* **Personal Settings** menu (9): Click on the gear icon or your profile picture,
-  located to the right of the Search field, to open your Personal Settings
-  dropdown menu. Your Personal page provides the following settings and features:
+* **Settings** menu (9): Click on your profile picture,
+  located to the right of the Search field, to open your Settings
+  dropdown menu. Your Settings page provides the following settings and features:
 
   * Links to download desktop and mobile apps
-  * Re-run the First Run Wizard
   * Server usage and space availability
   * Password management
   * Name, email, and profile picture settings
@@ -77,7 +79,7 @@ The Nextcloud user interface contains the following fields and functions:
   * Interface language settings
   * Manage notifications
   * Federated Cloud ID and social media-sharing buttons
-  * SSL certificate manager for external storages
+  * SSL/TLS certificate manager for external storages
   * Your Two-factor Settings
   * Nextcloud Version information
 
