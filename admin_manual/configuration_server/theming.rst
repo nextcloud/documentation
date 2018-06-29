@@ -2,60 +2,62 @@
 Theming
 =======
 
-Nextcloud has two ways of theming. There is a theming app that provides a web
-UI to set up theming. The second option allows to overwrite most of the files
-but a customized theme needs to be created and maintained. For more information on
-this check out the `developers documentation <../../developer_manual/core/theming.html>`_.
+With our theming feature you are able to customize the look and feel of your
+Nextcloud instance according to the corporate design of your organization by
+replacing Nextcloud logo and color with your own assets.
 
-We recommend to use the theming app, because the Nextcloud team maintains this
-and verifies that all adjustments to the server work with the theming. It
-covers also most use cases like replacing the name, logos and colors.
+.. note:: Nextcloud also provides an more advanced but unmaintained theming which
+   allows you to overwrite most of the servers code. For more information on
+   this check out the `developers documentation <../../developer_manual/core/theming.html>`_.
 
-Theming app
------------
+The theming-app is enabled by default so the section should appear by default in
+your admin-settings. If not, check in the apps management that this app is enabled.
 
-Check in the apps management that the theming app is enabled. Then the
-administrator settings show a section where you can modify the appearance of
-your Nextcloud:
+Modify the appearance of Nextcloud
+----------------------------------
 
-* Name 
-* Web Address 
+You can change the following parameters of the look and feel on your instance:
+
+* Name (e.g. ACME Inc. Cloud)
+* Web Address (e.g. https://acme.inc/)
 * Slogan
 * Color: The color of header bar, checkboxes and folder icon
 * Logo: The logo will appear in the header and on the log in page. Default has 62/34 px.
-* Log in image: The background image of the log in page
-
+* Login image: The background image of the login page
+* Additional legal links (Legal notice and Privacy policy link)
 
 .. figure:: ../configuration_server/images/theming.png
-
-
-Log in page   
-
-.. figure:: ../configuration_server/images/theming-log-in-page.png
 
 Theming of icons
 ----------------
 
-Nextcloud will automatically generate favicons and home screen icons
-depending on the current app and theming color. 
+According to the parameters you have set, Nextcloud will automatically generate
+favicons and a header logo depending on the current logo and theming color.
 
 This requires the following additional dependencies:
 
- - PHP module imagick
- - SVG support for imagick (e.g. `libmagickcore5-extra`)
+ - PHP module ``imagick``
+ - SVG support for imagick (e.g. ``libmagickcore5-extra``)
 
-Theming of mobile app URLs and IDs
-----------------------------------
+.. note:: In the advanced options of the theming-app you are able to set a custom
+   header logo and Favicon in case you do not want to use the same logo resources
+   you have set above or you do not want to install the mentioned dependencies.
 
-The themes supported to change the URLs to the mobile apps (Android & iOS) that
-is shown when the web UI is opened on one of those devices. Then there was a
+Branded clients
+---------------
+
+.. note:: Nextcloud GmbH provides branding services, delivering sync clients (mobile
+and desktop) which use your corporate identity and are pre-configured to help your
+users get up and running in no time. If you are interested in our advanced branding &
+support subscription, `contact our sales team <https://nextcloud.com/enterprise/>`_.
+
+The theming-app supports to change the URLs to the mobile apps (Android & iOS) that
+is shown when the webinterface is opened on one of those devices. Then there was a
 header shown, that redirects the user to the app in the app store. By default
 this redirects to the Nextcloud apps. In some cases it is wanted that this
 links to branded versions of those apps. In those cases the IDs and URLs can be
-set via the occ command::
+set via the ``occ``-command::
 
     occ config:app:set theming AndroidClientUrl --value "https://play.google.com/store/apps/details?id=com.nextcloud.client"
     occ config:app:set theming iTunesAppId --value "1125420102"
     occ config:app:set theming iOSClientUrl --value "https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8"
-
-This feature was added in version 12.0.1 and 13.
