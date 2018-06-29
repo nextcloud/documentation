@@ -6,10 +6,6 @@ With our theming feature you are able to customize the look and feel of your
 Nextcloud instance according to the corporate design of your organization by
 replacing Nextcloud logo and color with your own assets.
 
-.. note:: Nextcloud also provides an more advanced but unmaintained theming which
-   allows you to overwrite most of the servers code. For more information on
-   this check out the `developers documentation <../../developer_manual/core/theming.html>`_.
-
 The theming-app is enabled by default so the section should appear by default in
 your admin-settings. If not, check in the apps management that this app is enabled.
 
@@ -25,6 +21,7 @@ You can change the following parameters of the look and feel on your instance:
 * Logo: The logo will appear in the header and on the log in page. Default has 62/34 px.
 * Login image: The background image of the login page
 * Additional legal links (Legal notice and Privacy policy link)
+* Custom header logo and favicon as alternative to auto-generation based on logo
 
 .. figure:: ../configuration_server/images/theming.png
 
@@ -40,8 +37,8 @@ This requires the following additional dependencies:
  - SVG support for imagick (e.g. ``libmagickcore5-extra``)
 
 .. note:: In the advanced options of the theming-app you are able to set a custom
-   header logo and Favicon in case you do not want to use the same logo resources
-   you have set above or you do not want to install the mentioned dependencies.
+   favicon in case you do not want to use the same logo resources you have set above
+   or you do not want to install the mentioned dependencies.
 
 Branded clients
 ---------------
