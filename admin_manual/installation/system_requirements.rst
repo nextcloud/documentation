@@ -5,8 +5,8 @@ System requirements
 Memory
 ------
 
-Memory requirements for running an Nextcloud server are greatly variable, 
-depending on the numbers of users and files, and volume of server activity. 
+Memory requirements for running an Nextcloud server are greatly variable,
+depending on the numbers of users and files, and volume of server activity.
 Nextcloud needs a minimum of 128MB RAM, and we recommend a minimum of 512MB.
 
 Recommended setup for running Nextcloud
@@ -25,18 +25,18 @@ Working platforms
 -----------------
 
 * Server: GNU/Linux (Debian 8 (Jessie), 9 (Stretch), SUSE Linux Enterprise Server 11 SP3 & 12, openSUSE LEAP 42.1 or newer,  Red Hat Enterprise Linux/CentOS 6.5 and 7 (7 is 64-bit only), Ubuntu 14.04 (Trusty) LTS, 16.04 (Xenial) LTS, 18.04 (Bionic) LTS)
-* Web server: Apache 2.4 (mod_php, php-fpm) or Nginx (php-fpm) 
-* Databases: MySQL or MariaDB 5.5+; PostgreSQL 9, 10; Oracle 11g (currently only possible 
+* Web server: Apache 2.4 (mod_php, php-fpm) or Nginx (php-fpm)
+* Databases: MySQL or MariaDB 5.5+; PostgreSQL 9, 10; Oracle 11g (currently only possible
   as part of an `enterprise subscription <https://nextcloud.com/enterprise>`_)
 * PHP 5.6, 7.0, 7.1 or 7.2 required
 * Hypervisors: Hyper-V, VMware ESX, Xen or KVM
 * Desktop: Windows 7+, Mac OS X 10.7+ (64-bit only), Linux (CentOS 6.5, 7 - 64-bit only),
   Ubuntu 14.04 LTS, 16.04 LTS, 16.10+, Fedora 21+, openSUSE 13+ and LEAP 41.1+, SLE 11 SP3+ Debian 8+).
 * Mobile apps: iOS 9+ (10+ for Talk), Android 4.x+ (5.0+ for Talk)
-* Web browser: Recent version of IE11+, Microsoft Edge, Firefox, Chrome, Safari or browers based on those. Talk requires Firefox 31+ and Chrome38+
+* Web browser: Recent version of IE11+, Microsoft Edge, Mozilla Firefox, Google Chrome/Chromium, Safari or browers based on those. Nextcloud Talk requires Mozilla Firefox 52 or later or Chrome 49 or later.
 
 
-See :doc:`source_installation` for minimum software versions for installing 
+See :doc:`source_installation` for minimum software versions for installing
 Nextcloud. If you encounter problems, visit the `home user forums <https://help.nextcloud.com>`_
 or `enterprise support portal <https://portal.nextcloud.com>`_.
 
