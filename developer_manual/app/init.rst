@@ -68,6 +68,8 @@ lib/AppInfo/Application.php
 
     <?php
     namespace OCA\MyApp\AppInfo;
+    
+    use OCP\AppFramework\App;
 
     class Application extends App {
         
