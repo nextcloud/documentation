@@ -35,6 +35,7 @@
    backgroundjobs
    settings
    logging
+   migrations
    repair
    testing
    publishing
@@ -159,10 +160,17 @@ Log to the :file:`data/nextcloud.log`:
 
 * :doc:`logging`
 
+Migrations
+^^^^^^^^^^
+
+Migrations can be used to do database changes which are allowing apps a more granular updating mechanism:
+
+* :doc:`migrations`
+
 Repair steps
 ^^^^^^^^^^^^
 
-Repair steps can be used to run code at various stages in app installation, uninstallation, migration ...
+Repair steps can be used to run code at various stages in app installation, uninstallation, migration and more:
 
 * :doc:`repair`
 
