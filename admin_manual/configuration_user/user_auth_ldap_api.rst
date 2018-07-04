@@ -223,6 +223,8 @@ Configuration keys
 +-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
 | ldapUserDisplayName2          | rw   | no       | Additional attribute, if set show on brackets next to the main attribute                                              |
 +-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapUserAvatarRule            | rw   | no       | Specify the avatar integration behavior, possible values: "default", "none", "data:$ATTRIBUTENAME"                    |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
 | ldapGidNumber                 | rw   | no       | group ID attribute, needed for primary groups on OpenLDAP (and compatible)                                            |
 +-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
 | ldapUserFilterObjectclass     | rw   | no       | set by the Settings Wizard (web UI)                                                                                   |
