@@ -13,14 +13,14 @@ full details of the api can be found at rfc5323_.
 Making search requests
 ----------------------
 
-Search requests can be made by sending a :code:`SEARCH` http request to :code:`cloud.example.com/remote.php/dav`
+Search requests can be made by sending a :code:`SEARCH` http request to :code:`https://cloud.example.com/remote.php/dav/`
 with a content type of :code:`text/xml` and the query as xml in the request body.
 
 For example, to search for text files for the user 'test':
 
 .. code-block:: bash
 
-    curl -u username:password 'https://cloud.example.com/remote.php/dav/files/username/folder' -X SEARCH -u test:test -H "content-Type: text/xml" --data '<?xml version="1.0" encoding="UTF-8"?>
+    curl -u username:password 'https://cloud.example.com/remote.php/dav/' -X SEARCH -u test:test -H "content-Type: text/xml" --data '<?xml version="1.0" encoding="UTF-8"?>
      <d:searchrequest xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns">
          <d:basicsearch>
              <d:select>
