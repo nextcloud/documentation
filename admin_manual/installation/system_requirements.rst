@@ -14,8 +14,8 @@ For best performance, stability and functionality we have documented some recomm
 +------------------+-----------------------------------------------------------------------+
 | Platform         | Options                                                               |
 +==================+=======================================================================+
-| Operating System | - **Ubuntu 14.04/16.04/18.04 LTS** (recommended)                      |
-|                  | - **Red Hat Enterprise Linux 6.5/7** (recommended)                    |
+| Operating System | - **Ubuntu** 14.04/**16.04/18.04 LTS** (recommended)                  |
+|                  | - **Red Hat Enterprise Linux** 6.5/**7** (recommended)                |
 |                  | - Debian 8 (Jessie), 9 (Strech)                                       |
 |                  | - SUSE Linux Enterprise Server 11 with SP3 & 12                       |
 |                  | - openSUSE Leap 42.1+                                                 |
@@ -30,8 +30,8 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - nginx with ``php-fpm``                                              |
 +------------------+-----------------------------------------------------------------------+
 | PHP Runtime      | - 5.6                                                                 |
-|                  | - 7.0 (recommended)                                                   |
-|                  | - 7.1 (recommended)                                                   |
+|                  | - **7.0** (recommended)                                               |
+|                  | - **7.1** (recommended)                                               |
 |                  | - 7.2                                                                 |
 +------------------+-----------------------------------------------------------------------+
 
