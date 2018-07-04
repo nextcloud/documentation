@@ -21,8 +21,6 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - openSUSE Leap 42.1+                                                 |
 |                  | - CentOS 7                                                            |
 +------------------+-----------------------------------------------------------------------+
-| Memory           | - **Apache 2.4 with ``mod_php``, ``php-fpm``** (recommended)          |
-+------------------+-----------------------------------------------------------------------+
 | Database         | - **MySQL or MariaDB 5.5+** (recommended)                             |
 |                  | - Oracle Database 11g (*only as part of an enterprise subscription*)  |                                                
 |                  | - PostgreSQL 9/10                                                     |
