@@ -580,6 +580,31 @@ Nextcloud avatar replaces it.
 Photos served from LDAP are automatically cropped and resized in Nextcloud. This
 affects only the presentation, and the original image is not changed.
 
+Use a specific attribute or turn of loading of images
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It is possible to turn off the avatar integration or specify a single,
+different attribute to read the image from. It is expected to contain image
+data just like *jpegPhoto* or *thumbnailPhoto* do.
+
+The behaviour can be changed using the occ command line tool only. Essentially
+those options are available:
+
+* The default behaviour as described above should be used
+
+  ``occ ldap:set-config "s01" "ldapUserAvatarRule" "default"``
+
+* User images shall not be fetched from LDAP
+
+  ``occ ldap:set-config "s01" "ldapUserAvatarRule" "none"``
+
+* The image should be read from the attribute "selfiePhoto"
+
+  ``occ ldap:set-config "s01" "ldapUserAvatarRule" "data:selfiePhoto"``
+
+The "s01" refers to the configuration ID as can be retrieved per
+``occ ldap:show-config``.
+
 Troubleshooting, tips and tricks
 --------------------------------
 
