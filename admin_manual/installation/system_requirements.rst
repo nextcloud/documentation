@@ -36,11 +36,6 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - 7.1 (recommended)                                                   |
 |                  | - 7.2                                                                 |
 +------------------+-----------------------------------------------------------------------+
-| *Hypervisors*    | - Hyper-V                                                             |
-|                  | - VMWare ESX                                                          |
-|                  | - Xen                                                                 |
-|                  | - KVM                                                                 |
-+------------------+-----------------------------------------------------------------------+
 
 See :doc:`source_installation` for minimum PHP-modules and additional software for installing Nextcloud.
 
