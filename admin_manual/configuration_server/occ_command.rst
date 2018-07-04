@@ -874,11 +874,11 @@ These commands view and configure your Nextcloud logging preferences::
 
  log
   log:manage     manage logging configuration
-  log:owncloud   manipulate Nextcloud logging backend
+  log:file   manipulate Nextcloud logging backend
 
-Run ``log:owncloud`` to see your current logging status::
+Run ``log:file`` to see your current logging status::
 
- sudo -u www-data php occ log:owncloud 
+ sudo -u www-data php occ log:file 
  Log backend Nextcloud: enabled
  Log file: /opt/nextcloud/data/nextcloud.log
  Rotate at: disabled
@@ -888,9 +888,9 @@ different log file path. Set your rotation by log file size in bytes with
 ``--rotate-size``; 0 disables rotation. 
 
 ``log:manage`` sets your logging backend, log level, and timezone. The defaults 
-are ``owncloud``, ``Warning``, and ``UTC``. Available options are:
+are ``file``, ``warning``, and ``UTC``. Available options are:
 
-* --backend [owncloud, syslog, errorlog]
+* --backend [file, syslog, errorlog]
 * --level [debug, info, warning, error]
 
 .. _maintenance_commands_label:
