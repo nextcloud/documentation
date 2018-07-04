@@ -2,65 +2,97 @@
 System requirements
 ===================
 
-Memory
+Server
 ------
 
+For best performance, stability and functionality we have documented some recommendations for running a Nextcloud server. Running Nextcloud with PHP on Windows or macOS is unsupported and will not work as .
+
+.. note:: If you plan a setup for your organization and you rely on professional deployment consulting (e.g. efficient and
+          reliable scaling) and support, we strogly recommend you to check out our `enterprise support
+          <https://nextcloud.com/enterprise/>`_.
+
++------------------+-----------------------------------------------------------------------+
+| Platform         | Options                                                               |
++==================+=======================================================================+
+| Operating System | - **Ubuntu 16.04/18.04 LTS** (recommended)                            |
+|                  | - **Red Hat Enterprise Linux 7** (recommended)                        |
+|                  | - Debian 8 (Jessie), 9 (Strech)                                       |
+|                  | - SUSE Linux Enterprise Server 11 with SP3 & 12                       |
+|                  | - openSUSE Leap 42.1+                                                 |
+|                  | - CentOS 7                                                            |
++------------------+-----------------------------------------------------------------------+
+| Memory           | - **Apache 2.4 with ``mod_php``, ``php-fpm``** (recommended)          |
++------------------+-----------------------------------------------------------------------+
+| Database         | - **MySQL or MariaDB 5.5+** (recommended)                             |
+|                  | - Oracle Database 11g (*only as part of an enterprise subscription*)  |                                                
+|                  | - PostgreSQL 9/10                                                     |
+|                  | - SQLite (*only recommended for testing and minimal-instances*)       |                                                     
++------------------+-----------------------------------------------------------------------+
+| Web server       | - **Apache 2.4 with ``mod_php``, ``php-fpm``** (recommended)          |
+|                  | - nginx with ``php-fpm``                                              |
++------------------+-----------------------------------------------------------------------+
+| PHP Runtime      | - 7.0                                                                 |
+|                  | - 7.1                                                                 |
+|                  | - 7.2                                                                 |
++------------------+-----------------------------------------------------------------------+
+| *Hypervisors*    | - Hyper-V                                                             |
+|                  | - VMWare ESX                                                          |
+|                  | - Xen                                                                 |
+|                  | - KVM                                                                 |
++------------------+-----------------------------------------------------------------------+
+
+See :doc:`source_installation` for minimum PHP-modules and additional software for installing Nextcloud.
+
+Memory
+^^^^^^
+
 Memory requirements for running an Nextcloud server are greatly variable,
-depending on the numbers of users and files, and volume of server activity.
-Nextcloud needs a minimum of 128MB RAM, and we recommend a minimum of 512MB.
+depending on the numbers of users, apps, files and volume of server activity.
 
-Recommended setup for running Nextcloud
----------------------------------------
-
-For best performance, stability, and functionality, recommendations are:
-
-* Red Hat Enterprise Linux 7 / Ubuntu 16.04 LTS
-* MySQL/MariaDB
-* PHP 7.0, 7.1 or 7.2.
-* Apache 2.4 with mod_php
-
-For a Nextcloud installation with efficient and reliable scaling over ~100 users, see the `deployment recommendations <https://portal.nextcloud.com/article/nextcloud-deployment-recommendations-7.html>`_.
-
-Working platforms
------------------
-
-* Server: GNU/Linux (Debian 8 (Jessie), 9 (Stretch), SUSE Linux Enterprise Server 11 SP3 & 12, openSUSE LEAP 42.1 or newer,  Red Hat Enterprise Linux/CentOS 6.5 and 7 (7 is 64-bit only), Ubuntu 14.04 (Trusty) LTS, 16.04 (Xenial) LTS, 18.04 (Bionic) LTS)
-* Web server: Apache 2.4 (mod_php, php-fpm) or Nginx (php-fpm)
-* Databases: MySQL or MariaDB 5.5+; PostgreSQL 9, 10; Oracle 11g (currently only possible
-  as part of an `enterprise subscription <https://nextcloud.com/enterprise>`_)
-* PHP 5.6, 7.0, 7.1 or 7.2 required
-* Hypervisors: Hyper-V, VMware ESX, Xen or KVM
-* Desktop: Windows 7+, Mac OS X 10.7+ (64-bit only), Linux (CentOS 6.5, 7 - 64-bit only),
-  Ubuntu 14.04 LTS, 16.04 LTS, 16.10+, Fedora 21+, openSUSE 13+ and LEAP 41.1+, SLE 11 SP3+ Debian 8+).
-* Mobile apps: iOS 9+ (10+ for Talk), Android 4.x+ (5.0+ for Talk)
-* Web browser: Recent version of IE11+, Microsoft Edge, Mozilla Firefox, Google Chrome/Chromium, Safari or browers based on those. Nextcloud Talk requires Mozilla Firefox 52 or later or Chrome 49 or later.
-
-
-See :doc:`source_installation` for minimum software versions for installing
-Nextcloud. If you encounter problems, visit the `home user forums <https://help.nextcloud.com>`_
-or `enterprise support portal <https://portal.nextcloud.com>`_.
+Nextcloud needs a minimum of **128MB** RAM, and we recommend a minimum of **512MB**.
 
 Database requirements for MySQL / MariaDB
------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following is currently required if you're running Nextcloud together with a MySQL / MariaDB database:
 
 * InnoDB storage engine (MyISAM is not supported)
 * "READ COMMITED" transaction isolation level (See: :ref:`db-transaction-label`)
 * Disabled or BINLOG_FORMAT = ROW configured Binary Logging (See: https://dev.mysql.com/doc/refman/5.7/en/binary-log-formats.html)
+* For **Emoji (UTF8 4-byte) support** see :doc:`../configuration_database/mysql_4byte_support`
 
-Emoji (UTF8 4-byte) support with MySQL / MariaDB
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Desktop client
+--------------
 
-If you want to use UTF8 4-byte characters such as Emojis on your server, the database needs to be created with character set ``utf8mb4`` and collate ``utf8mb4_general_ci``, e.g.::
+We strongly recommend using the latest version of your operating system to get the full and most stable experience out
+of our clients.
 
-  CREATE DATABASE nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+* **Windows** 7+
+* **macOS** Lion (10.7)+ (64-bit only)
+* **Linux** (CentOS 6.5+, Ubuntu 14.04+, Fedora 21+, openSUSE 13, SUSE Linux Enterprise 11 SP3+, Debian 8 (Jessie)+, Red Hat   
+  Enterprise Linux 7)
 
-Additionally the following InnoDB settings need to be set::
+Mobile apps
+-----------
 
-  [mysqld]
-  innodb_large_prefix=on
-  innodb_file_format=barracuda
-  innodb_file_per_table=true
+We strongly recommend using the latest version of your mobile operating system to get the full and most stable experience out
+of our mobile apps.
 
-See :doc:`../configuration_database/mysql_4byte_support` for more information.
+- **iOS** 9.x+
+- **Android** 4.x+
+
+.. note:: Nextcloud Talk requires iOS 9.x+ or Android 5.x+.
+
+Webbrowser
+----------
+
+For best experience with the Nextcloud webinterface, we recommend you to use the latest and supported version of a browser from this list, or one based on those:
+
+- Microsoft **Internet Explorer 11** (latest version)
+- Microsoft **Edge**
+- Mozilla **Firefox**
+- Google **Chrome**/Chromium
+- Apple **Safari**
+
+.. note:: If you want to use Nextcloud Talk you should use Mozilla Firefox 52+ or Google Chrome/Chromium 49+ to have the full
+          experience with video calls and screensharing. Google Chrome/Chromium requires a additional plugin for screensharing
