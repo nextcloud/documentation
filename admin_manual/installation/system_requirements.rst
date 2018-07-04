@@ -5,7 +5,8 @@ System requirements
 Server
 ------
 
-For best performance, stability and functionality we have documented some recommendations for running a Nextcloud server. Running Nextcloud with PHP on Windows or macOS is unsupported and will not work as .
+For best performance, stability and functionality we have documented some recommendations for running a Nextcloud server.
+The Nextcloud server is not compatible with Windows and macOS.
 
 .. note:: If you plan a setup for your organization and you rely on professional deployment consulting (e.g. efficient and
           reliable scaling) and support, we strongly recommend you to check out our `enterprise support
@@ -26,7 +27,7 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - PostgreSQL 9/10                                                     |
 |                  | - SQLite (*only recommended for testing and minimal-instances*)       |             
 +------------------+-----------------------------------------------------------------------+
-| Web server       | - **Apache 2.4 with ``mod_php``, ``php-fpm``** (recommended)          |
+| Webserver        | - **Apache 2.4 with ``mod_php``, ``php-fpm``** (recommended)          |
 |                  | - nginx with ``php-fpm``                                              |
 +------------------+-----------------------------------------------------------------------+
 | PHP Runtime      | - **7.0**                                                             |
