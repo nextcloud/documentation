@@ -9,9 +9,8 @@ create separate Nextcloud user accounts for them. You will manage their Nextclou
 group memberships, quotas, and sharing permissions just like any other Nextcloud
 user.
 
-.. note:: The PHP LDAP module is required; this is supplied by ``php5-ldap`` on
-   Debian/Ubuntu, and ``php-ldap`` on CentOS/Red Hat/Fedora. PHP 5.6+ is
-   required in Nextcloud.
+.. note:: The PHP LDAP module is required; this is supplied by ``php-ldap`` on
+   most distributions.
 
 The LDAP application supports:
 
@@ -27,9 +26,6 @@ The LDAP application supports:
 * Only read access to your LDAP (edit or delete of users on your LDAP is not
   supported)
 * Optional: Allow users to change their LDAP password from Nextcloud
-
-.. warning:: The LDAP app is not compatible with the ``User backend using remote
-   HTTP servers`` app. You cannot use both of them at the same time.
 
 .. note:: A non-blocking or correctly configured SELinux setup is needed
    for the LDAP backend to work. Please refer to the :ref:`selinux-config-label`.
