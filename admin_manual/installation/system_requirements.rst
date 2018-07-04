@@ -22,16 +22,16 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - CentOS 7                                                            |
 +------------------+-----------------------------------------------------------------------+
 | Database         | - **MySQL or MariaDB 5.5+** (recommended)                             |
-|                  | - Oracle Database 11g (*only as part of an enterprise subscription*)  |                                                
+|                  | - Oracle Database 11g (*only as part of an enterprise subscription*)  |
 |                  | - PostgreSQL 9/10                                                     |
-|                  | - SQLite (*only recommended for testing and minimal-instances*)       |                                                     
+|                  | - SQLite (*only recommended for testing and minimal-instances*)       |             
 +------------------+-----------------------------------------------------------------------+
 | Web server       | - **Apache 2.4 with ``mod_php``, ``php-fpm``** (recommended)          |
 |                  | - nginx with ``php-fpm``                                              |
 +------------------+-----------------------------------------------------------------------+
-| PHP Runtime      | - 7.0                                                                 |
-|                  | - 7.1                                                                 |
-|                  | - 7.2                                                                 |
+| PHP Runtime      | - **7.0**                                                             |
+|                  | - **7.1**                                                             |
+|                  | - **7.2**                                                             |
 +------------------+-----------------------------------------------------------------------+
 
 See :doc:`source_installation` for minimum PHP-modules and additional software for installing Nextcloud.
