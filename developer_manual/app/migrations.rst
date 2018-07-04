@@ -133,5 +133,6 @@ Nextcloud in debug mode:
   in another branch. Since you can’t change this retroactive, we recommend to
   leave enough space in between and therefor map the numbers to 3 digits:
   `1.0.x => 1000`, `2.34.x => 2034`, etc.
+* `migrations:generate-from-schema`: Create a migration from the current `info.xml`.
 * `migrations:migrate`: Execute a migration to a specified or the latest available version.
 * `migrations:status`: View the status of a set of migrations.
