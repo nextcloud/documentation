@@ -75,7 +75,7 @@ of our mobile apps.
 - **iOS** 9.x+
 - **Android** 4.x+
 
-.. note:: Nextcloud Talk requires iOS 9.x+ or Android 5.x+.
+.. note:: The separate Nextcloud Talk app requires iOS 9.x+ or Android 5.x+.
 
 Webbrowser
 ----------
@@ -88,5 +88,6 @@ For best experience with the Nextcloud webinterface, we recommend you to use the
 - Google **Chrome**/Chromium
 - Apple **Safari**
 
-.. note:: If you want to use Nextcloud Talk you should use Mozilla Firefox 52+ or Google Chrome/Chromium 49+ to have the full
-          experience with video calls and screensharing. Google Chrome/Chromium requires a additional plugin for screensharing
+.. note:: If you want to use Nextcloud Talk you should use Mozilla **Firefox** 52+ or Google **Chrome**/Chromium 49+ to have 
+          the full experience with video calls and screensharing. Google Chrome/Chromium requires a additional plugin for 
+          screensharing.
