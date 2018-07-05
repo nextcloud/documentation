@@ -13,7 +13,7 @@ Add an OAuth2 Application
 
 Head over to your Administrator Security Settings. Here you can add a new ``OAuth2`` client.
 
-.. figure:: ../images/oauth2-settings.png
+.. figure:: images/oauth2-settings.png
 
 Enter the name of your application and provide a redirection url.
 You should now have a Client Identifier and Secret. Enter those into your ``OAuth2`` client.
