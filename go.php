@@ -4,6 +4,7 @@
 ############## Adjust when editing docs ##################
 
 $mapping = array(
+    'admin-antivirus-configuration'     => '/admin_manual/configuration_server/antivirus_configuration.html',
     'admin-db-conversion'     => '/admin_manual/configuration_database/db_conversion.html',
     'admin-encryption'        => '/admin_manual/configuration_files/encryption_configuration.html',
     'admin-external-storage'  => '/admin_manual/configuration_files/external_storage_configuration_gui.html',
