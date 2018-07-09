@@ -41,6 +41,57 @@ Configuring a MySQL or MariaDB database
 
 If you decide to use a MySQL or MariaDB database, ensure the following:
 
+* The transaction isolation level is set to "READ-COMMITED" in your MariaDB server configuration :file:`/etc/mysql/my.cnf` to persist even after a restart of your database server.
+
+  Verify the **transaction_isolation** and **binlog_format**:
+
+::
+
+  [mysqld]
+  ...
+  transaction_isolation = READ-COMMITTED
+  binlog_format = ROW
+  ...
+
+Your :file:`/etc/mysql/my.cnf` could look like this:
+
+::
+  
+  [server]
+  skip-name-resolve
+  innodb_buffer_pool_size = 128M
+  innodb_buffer_pool_instances = 1
+  innodb_flush_log_at_trx_commit = 2
+  innodb_log_buffer_size = 32M
+  innodb_max_dirty_pages_pct = 90
+  query_cache_type = 1
+  query_cache_limit = 2M
+  query_cache_min_res_unit = 2k
+  query_cache_size = 64M
+  tmp_table_size= 64M
+  max_heap_table_size= 64M
+  slow-query-log = 1
+  slow-query-log-file = /var/log/mysql/slow.log
+  long_query_time = 1
+  
+  [client-server]
+  !includedir /etc/mysql/conf.d/
+  !includedir /etc/mysql/mariadb.conf.d/
+
+  [client]
+  default-character-set = utf8mb4
+
+  [mysqld]
+  character-set-server = utf8mb4
+  collation-server = utf8mb4_general_ci
+  transaction_isolation = READ-COMMITTED
+  binlog_format = ROW
+  innodb_large_prefix=on
+  innodb_file_format=barracuda
+  innodb_file_per_table=1
+
+Please refer to the `MySQL manual <https://mariadb.com/kb/en/library/set-transaction/#read-committed>`_.
+
 * That you have installed and enabled the pdo_mysql extension in PHP
 
 * That the **mysql.default_socket** points to the correct socket (if the database runs on the same server as Nextcloud).
