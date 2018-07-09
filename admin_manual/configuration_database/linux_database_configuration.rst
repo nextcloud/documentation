@@ -49,8 +49,8 @@ If you decide to use a MySQL or MariaDB database, ensure the following:
 
   [mysqld]
   ...
-  transaction_isolation = **READ-COMMITTED**
-  binlog_format = **ROW**
+  transaction_isolation = READ-COMMITTED
+  binlog_format = ROW
   ...
 
 Your :file:`/etc/mysql/my.cnf` could look like this:
@@ -85,8 +85,8 @@ Your :file:`/etc/mysql/my.cnf` could look like this:
   character-set-server = utf8mb4
   collation-server = utf8mb4_general_ci
   transaction_isolation = READ-COMMITTED
-  **binlog_format = ROW**
-  **innodb_large_prefix=on**
+  binlog_format = ROW
+  innodb_large_prefix=on
   innodb_file_format=barracuda
   innodb_file_per_table=1
 
