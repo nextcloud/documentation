@@ -134,10 +134,24 @@ Then a **mysql>** or **MariaDB [root]>** prompt will appear. Now enter the follo
   CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
   CREATE DATABASE IF NOT EXISTS nextcloud;
   GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER, CREATE TEMPORARY TABLES ON nextcloud.* TO 'username'@'localhost' IDENTIFIED BY 'password';
+  FLUSH privileges;
 
 You can quit the prompt by entering::
 
   quit
+
+If you prefer UTF8MB4 as your preferred collation setting instead:
+
+::
+
+CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+CREATE DATABASE IF NOT EXISTS nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+GRANT ALL PRIVILEGES on nextcloud.* to 'username'@'localhost';
+FLUSH privileges;
+
+You can quit the prompt by entering::
+
+  quit;
 
 An Nextcloud instance configured with MySQL would contain the hostname on which
 the database is running, a valid username and password to access it, and the
@@ -156,6 +170,10 @@ this:
     "dbhost"        => "localhost",
     "dbtableprefix" => "oc_",
 
+In case of UTF8MB4 you will also find::
+
+    "mysql.utf8mb4" => true,
+    
 
 PostgreSQL database
 ^^^^^^^^^^^^^^^^^^^
