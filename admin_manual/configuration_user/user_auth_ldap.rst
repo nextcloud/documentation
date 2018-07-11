@@ -583,6 +583,8 @@ affects only the presentation, and the original image is not changed.
 Use a specific attribute or turn of loading of images
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. note:: This feature was added to 13.0.5 and 14.0.0.
+
 It is possible to turn off the avatar integration or specify a single,
 different attribute to read the image from. It is expected to contain image
 data just like *jpegPhoto* or *thumbnailPhoto* do.
