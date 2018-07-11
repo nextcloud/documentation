@@ -140,14 +140,14 @@ You can quit the prompt by entering::
 
   quit
 
-If you prefer UTF8MB4 as your preferred collation setting instead:
+If you prefer UTF8MB4 as your database collation setting:
 
 ::
 
-CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
-CREATE DATABASE IF NOT EXISTS nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-GRANT ALL PRIVILEGES on nextcloud.* to 'username'@'localhost';
-FLUSH privileges;
+  CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+  CREATE DATABASE IF NOT EXISTS nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+  GRANT ALL PRIVILEGES on nextcloud.* to 'username'@'localhost';
+  FLUSH privileges;
 
 You can quit the prompt by entering::
 
