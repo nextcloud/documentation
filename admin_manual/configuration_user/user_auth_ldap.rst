@@ -9,9 +9,8 @@ create separate Nextcloud user accounts for them. You will manage their Nextclou
 group memberships, quotas, and sharing permissions just like any other Nextcloud
 user.
 
-.. note:: The PHP LDAP module is required; this is supplied by ``php5-ldap`` on
-   Debian/Ubuntu, and ``php-ldap`` on CentOS/Red Hat/Fedora. PHP 5.6+ is
-   required in Nextcloud.
+.. note:: The PHP LDAP module is required; this is supplied by ``php-ldap`` on
+   most distributions.
 
 The LDAP application supports:
 
@@ -27,9 +26,6 @@ The LDAP application supports:
 * Only read access to your LDAP (edit or delete of users on your LDAP is not
   supported)
 * Optional: Allow users to change their LDAP password from Nextcloud
-
-.. warning:: The LDAP app is not compatible with the ``User backend using remote
-   HTTP servers`` app. You cannot use both of them at the same time.
 
 .. note:: A non-blocking or correctly configured SELinux setup is needed
    for the LDAP backend to work. Please refer to the :ref:`selinux-config-label`.
@@ -583,6 +579,31 @@ Nextcloud avatar replaces it.
 
 Photos served from LDAP are automatically cropped and resized in Nextcloud. This
 affects only the presentation, and the original image is not changed.
+
+Use a specific attribute or turn of loading of images
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It is possible to turn off the avatar integration or specify a single,
+different attribute to read the image from. It is expected to contain image
+data just like *jpegPhoto* or *thumbnailPhoto* do.
+
+The behaviour can be changed using the occ command line tool only. Essentially
+those options are available:
+
+* The default behaviour as described above should be used
+
+  ``occ ldap:set-config "s01" "ldapUserAvatarRule" "default"``
+
+* User images shall not be fetched from LDAP
+
+  ``occ ldap:set-config "s01" "ldapUserAvatarRule" "none"``
+
+* The image should be read from the attribute "selfiePhoto"
+
+  ``occ ldap:set-config "s01" "ldapUserAvatarRule" "data:selfiePhoto"``
+
+The "s01" refers to the configuration ID as can be retrieved per
+``occ ldap:show-config``.
 
 Troubleshooting, tips and tricks
 --------------------------------
