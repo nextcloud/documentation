@@ -38,13 +38,11 @@ user interface, and desktop and mobile clients, please refer to their
 respective manuals:
 
 * `Nextcloud User Manual`_
-* `Nextcloud/ownCloud Desktop Client`_
+* `Nextcloud Desktop Client`_
 * `Nextcloud Android App`_
-* `Nextcloud iOS App`_
 
 .. _`Nextcloud User Manual`: https://docs.nextcloud.com/server/12/user_manual/
-.. _`Nextcloud/ownCloud Desktop Client`: https://doc.owncloud.org/desktop/2.3/
+.. _`Nextcloud Desktop Client`: https://docs.nextcloud.com/desktop/2.3/
 .. _`Nextcloud Android App`: https://docs.nextcloud.com/android/
-.. _`Nextcloud iOS App`: https://docs.nextcloud.com/ios/
 
 .. TODO ON RELEASE: Update version number above on release
