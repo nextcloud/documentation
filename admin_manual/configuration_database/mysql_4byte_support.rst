@@ -35,7 +35,7 @@ MariaDB support
 
 1. Follow MySQL steps 1, 2 and 3
 
-2. Figure out whether the file formate was changed to Barracuda::
+2. Figure out whether the file format was changed to Barracuda::
 
     MariaDB> SELECT NAME, SPACE, FILE_FORMAT FROM INFORMATION_SCHEMA.INNODB_SYS_TABLES WHERE NAME like "nextcloud%";
 
@@ -54,5 +54,4 @@ This will return an SQL command for each table in the nextcloud database. The ro
 
 Replace oc_tablename with the failing table. If there are too many (did not happen here), SQL commands can be generated in a batch (task for the reader).
 
-Now everything should be fine and the MySQL instructions should be proceeded.
-
+Now everything should be fine and the MySQL instructions can be followed.
