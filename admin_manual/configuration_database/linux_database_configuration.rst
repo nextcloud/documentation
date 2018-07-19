@@ -56,7 +56,7 @@ If you decide to use a MySQL or MariaDB database, ensure the following:
 Your :file:`/etc/mysql/my.cnf` could look like this:
 
 ::
-  
+
   [server]
   skip-name-resolve
   innodb_buffer_pool_size = 128M
@@ -73,7 +73,7 @@ Your :file:`/etc/mysql/my.cnf` could look like this:
   slow-query-log = 1
   slow-query-log-file = /var/log/mysql/slow.log
   long_query_time = 1
-  
+
   [client-server]
   !includedir /etc/mysql/conf.d/
   !includedir /etc/mysql/mariadb.conf.d/
@@ -173,7 +173,7 @@ this:
 In case of UTF8MB4 you will also find::
 
     "mysql.utf8mb4" => true,
-    
+
 
 PostgreSQL database
 ^^^^^^^^^^^^^^^^^^^
@@ -212,7 +212,7 @@ You can quit the prompt by entering::
 
   \q
 
-An Nextcloud instance configured with PostgreSQL would contain the path to the socket on
+A Nextcloud instance configured with PostgreSQL would contain the path to the socket on
 which the database is running as the hostname, the system username the PHP process is using,
 and an empty password to access it, and the name of the database. The :file:`config/config.php` as
 created by the :doc:`../installation/installation_wizard` would therefore contain entries like
@@ -229,7 +229,7 @@ this:
     "dbhost"        => "/var/run/postgresql",
     "dbtableprefix" => "oc_",
 
-.. note:: The host actually points to the socket that is used to connect to the database. Using localhost here will not work if postgreSQL is configured to use peer authentication. Also note, that no password is specified, because this authentication method doesn't use a password.
+.. note:: The host actually points to the socket that is used to connect to the database. Using localhost here will not work if postgreSQL is configured to use peer authentication. Also note that no password is specified, because this authentication method doesn't use a password.
 
 If you use another authentication method (not peer), you'll need to use the following steps to get the database setup:
 Now you need to create a database user and the database itself by using the
@@ -253,7 +253,7 @@ You can quit the prompt by entering::
 
   \q
 
-An Nextcloud instance configured with PostgreSQL would contain the hostname on
+A Nextcloud instance configured with PostgreSQL would contain the hostname on
 which the database is running, a valid username and password to access it, and
 the name of the database. The :file:`config/config.php` as created by the
 :doc:`../installation/installation_wizard` would therefore contain entries like
@@ -275,10 +275,10 @@ this:
 Troubleshooting
 ---------------
 
-How to workaround general error: 2006 MySQL server has gone away
+How to work around "general error: 2006 MySQL server has gone away"
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The database request takes too long and therefore the MySQL server times out. Its
+The database request takes too long and therefore the MySQL server times out. It's
 also possible that the server is dropping a packet that is too large. Please
 refer to the manual of your database for how to raise the configuration options
 ``wait_timeout`` and/or ``max_allowed_packet``.
@@ -309,7 +309,7 @@ itself works correctly, see the next question.
 How can I find out if a created user can access a database?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The easiest way to test if a database can be accessed is by starting the
+The easiest way to test if a database is accessible is by starting the
 command line interface:
 
 **MySQL**:
