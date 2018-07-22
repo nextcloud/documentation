@@ -2,55 +2,64 @@
 Installing and managing apps
 ============================
 
-After installing Nextcloud, you may provide added functionality by installing
-applications.
+Nextcloud apps can enhance, customize or even restrict the features and experience
+you and your users has with the Nextcloud server. Next to default enabled functions
+like Files, Activity and Gallery there are other apps like Calendar, Contacts,
+Talk and more which are enhancing the features of your Nextcloud server.
 
-Supported apps
---------------
+After installing the Nextcloud server, you might want to consider about enabling,
+disabling or even restricting some apps to groups depending on your and your users
+needs.
 
-See :doc:`apps_supported` for a list of supported apps.
+Apps management
+---------------
 
-Viewing enabled apps
---------------------
-
-During the Nextcloud installation, some apps are enabled by default. To see which
-apps are enabled go to your Apps page.
-
-.. figure:: ../images/oc_admin_app_page.png
+.. figure:: /images/apps_overview.png
    :alt: Apps page for enabling and disabling apps.
 
-You will see which apps are enabled, not enabled, and recommended. You'll also
-see additional filters, such as Multimedia, Productivity, and Tool for finding
-more apps quickly.
+During the Nextcloud server installation, some apps are enabled by default.
+To see which apps are enabled go to your Apps page.
+
+Those apps are supported and developed by Nextcloud GmbH directly and
+have an **Official**-tag. See :doc:`apps_supported` for a list of supported apps.
+
+.. note:: To get access to work-arounds, long-term-support, priority bug fixing
+          and custom consulting for supported apps, contact our `sales team <https://nextcloud.com/enterprise/>`_.
+
+Apps with **Approved** tag are community-developed and were uploaded in the
+`Nextcloud App Store <https://apps.nextcloud.com>`_.
+
+.. note:: If you would like to develop your own Nextcloud app, you can find out
+          more information in our `developer manual <https://docs.nextcloud.com/server/14/go.php?to=developer-manual>`_.
+.. TODO ON RELEASE: Update version number above on release
+
+All apps need to be licensed under AGPLv3+ or any compatible license.
 
 Managing apps
 -------------
 
+.. figure:: /images/apps_store.png
+   :alt: App store page for installing, enabling and disabling apps.
+
+You will see which apps are enabled, disabled and available. You'll also
+see additional app bundles and filters, such as Customization, Security and
+Monitoring for finding more apps quickly.
+
 In the Apps page you can enable or disable applications. Some apps have
 configurable options on the Apps page, such as **Enable only for specific
-groups**, but mainly they are enabled or disabled here, and are configured on
-your Nextcloud Admin page, Personal page, or in ``config.php``.
+groups**, but mainly they are enabled or disabled here, and are configured in
+your Nextcloud settings (admin and/or user-settings) or in the ``config.php``.
 
-Adding third party apps
------------------------
+Click the app name to view a description of the app and any of the app settings
+in the Application View field. Clicking the **Enable** button will enable the app.
+If the app is not part of the Nextcloud installation, it will be downloaded from
+the app store, installed and enabled.
 
-Some apps are developed and supported by Nextcloud directly. These have an
-**Official** tag. Apps with the **Approved** tag are community-developed and
-supported; they are maintained by trusted developers, and are under active
-development. Only **Official** and **Approved** apps are linked on the Apps
-page by default.
+Using private API
+-----------------
 
-Click the app name to view a description of the app and any of the app settings in the Application View field.  Clicking the **Enable** button will enable the app.  If the app is not part of the Nextcloud installation, it will be downloaded from the app store, installed and enabled.
-
-Sometimes the installation of a third-party app fails silently, possibly because
-``'appcodechecker' => true,`` is enabled in ``config.php``. When ``appcodechecker`` is
-enabled it checks if third-party apps are using the private API, rather than the public
-API. If they are then they will not be installed.
-
-.. note:: If you would like to create or add your own Nextcloud app, please
-   refer to the `developer manual
-   <https://docs.nextcloud.org/server/12/developer_manual/app/index.html>`_.
-.. TODO ON RELEASE: Update version number above on release
+If private API, rather than the public APIs are used in a third-party app, the
+installation fails, if ``'appcodechecker' => true,`` is set in ``config.php``.
 
 Using custom app directories
 ----------------------------
