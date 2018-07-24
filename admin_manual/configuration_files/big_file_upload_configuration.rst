@@ -37,8 +37,8 @@ Set the following two parameters inside the corresponding php.ini file (see the
 **Loaded Configuration File** section of :ref:`label-phpinfo` to find your 
 relevant php.ini files) ::
 
- php_value upload_max_filesize = 16G
- php_value post_max_size = 16G
+ php_value upload_max_filesize 16G
+ php_value post_max_size 16G
 
 Adjust these values for your needs. If you see PHP timeouts in your logfiles, 
 increase the timeout values, which are in seconds::
