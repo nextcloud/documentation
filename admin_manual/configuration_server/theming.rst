@@ -44,9 +44,9 @@ Branded clients
 ---------------
 
 .. note:: Nextcloud GmbH provides branding services, delivering sync clients (mobile
-and desktop) which use your corporate identity and are pre-configured to help your
-users get up and running in no time. If you are interested in our advanced branding &
-support subscription, `contact our sales team <https://nextcloud.com/enterprise/>`_.
+   and desktop) which use your corporate identity and are pre-configured to help your
+   users get up and running in no time. If you are interested in our advanced branding &
+   support subscription, `contact our sales team <https://nextcloud.com/enterprise/>`_.
 
 The theming-app supports to change the URLs to the mobile apps (Android & iOS) that
 is shown when the webinterface is opened on one of those devices. Then there was a

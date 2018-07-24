@@ -90,7 +90,7 @@ Your :file:`/etc/mysql/my.cnf` could look like this:
   innodb_file_format=barracuda
   innodb_file_per_table=1
 
-Please refer to the `MySQL manual <https://mariadb.com/kb/en/library/set-transaction/#read-committed>`_.
+Please refer to the `page in the MySQL manual <https://mariadb.com/kb/en/library/set-transaction/#read-committed>`_.
 
 * That you have installed and enabled the pdo_mysql extension in PHP
 
@@ -276,7 +276,7 @@ Troubleshooting
 ---------------
 
 How to work around "general error: 2006 MySQL server has gone away"
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The database request takes too long and therefore the MySQL server times out. It's
 also possible that the server is dropping a packet that is too large. Please
