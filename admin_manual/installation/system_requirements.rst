@@ -17,7 +17,7 @@ The Nextcloud server is not compatible with Windows and macOS.
 +==================+=======================================================================+
 | Operating System | - **Ubuntu** 14.04/**16.04/18.04 LTS** (recommended)                  |
 |                  | - **Red Hat Enterprise Linux** 6.5/**7** (recommended)                |
-|                  | - Debian 8 (Jessie), 9 (Stretch)                                       |
+|                  | - Debian 8 (Jessie), 9 (Stretch)                                      |
 |                  | - SUSE Linux Enterprise Server 11 with SP3 & 12                       |
 |                  | - openSUSE Leap 42.1+                                                 |
 |                  | - CentOS 6.5/7                                                        |
