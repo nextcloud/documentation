@@ -27,7 +27,7 @@ The Nextcloud server is not compatible with Windows and macOS.
 |                  | - PostgreSQL 9/10                                                     |
 |                  | - SQLite (*only recommended for testing and minimal-instances*)       |
 +------------------+-----------------------------------------------------------------------+
-| Webserver        | - **Apache 2.4 with** ``mod_php`` **and** ``php-fpm`` (recommended)   |
+| Webserver        | - **Apache 2.4 with** ``mod_php`` **or** ``php-fpm`` (recommended)    |
 |                  | - nginx with ``php-fpm``                                              |
 +------------------+-----------------------------------------------------------------------+
 | PHP Runtime      | - 5.6                                                                 |
