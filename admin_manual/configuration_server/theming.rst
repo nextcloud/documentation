@@ -59,3 +59,11 @@ set via the occ command::
     occ config:app:set theming iOSClientUrl --value "https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8"
 
 This feature was added in version 12.0.1 and 13.
+
+Branded clients
+---------------
+
+.. note:: Nextcloud GmbH provides branding services, delivering sync clients (mobile
+   and desktop) which use your corporate identity and are pre-configured to help your
+   users get up and running in no time. If you are interested in our advanced branding &
+   support subscription, `contact our sales team <https://nextcloud.com/enterprise/>`_.
