@@ -1,6 +1,6 @@
-=====================
-Config.php Parameters
-=====================
+========================
+Configuration Parameters
+========================
 
 Nextcloud uses the ``config/config.php`` file to control server operations.
 ``config/config.sample.php`` lists all the configurable parameters within
