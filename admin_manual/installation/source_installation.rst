@@ -84,7 +84,7 @@ If you get a result, the module is present.
 
 Required:
 
-* PHP (>= 5.6, 7.0 or 7.1)
+* PHP (>= 5.6, 7.0, 7.1 or 7.2)
 * PHP module ctype
 * PHP module dom
 * PHP module GD
