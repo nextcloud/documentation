@@ -52,6 +52,9 @@ webroot of your nginx installation. In this example it is
       listen [::]:443 ssl http2;
       server_name cloud.example.com;
 
+      # Use Mozilla's guidelines for SSL/TLS settings
+      # https://mozilla.github.io/server-side-tls/ssl-config-generator/
+      # NOTE: some settings below might be redundant
       ssl_certificate /etc/ssl/nginx/cloud.example.com.crt;
       ssl_certificate_key /etc/ssl/nginx/cloud.example.com.key;
 
@@ -71,6 +74,9 @@ webroot of your nginx installation. In this example it is
       add_header X-Robots-Tag none;
       add_header X-Download-Options noopen;
       add_header X-Permitted-Cross-Domain-Policies none;
+
+      # Remove X-Powered-By, which is an information leak
+      fastcgi_hide_header X-Powered-By;
 
       # Path to the root of your installation
       root /var/www/nextcloud/;
@@ -198,6 +204,9 @@ your nginx installation.
       listen [::]:443 ssl http2;
       server_name cloud.example.com;
 
+      # Use Mozilla's guidelines for SSL/TLS settings
+      # https://mozilla.github.io/server-side-tls/ssl-config-generator/
+      # NOTE: some settings below might be redundant
       ssl_certificate /etc/ssl/nginx/cloud.example.com.crt;
       ssl_certificate_key /etc/ssl/nginx/cloud.example.com.key;
 
@@ -210,6 +219,9 @@ your nginx installation.
       add_header X-Robots-Tag none;
       add_header X-Download-Options noopen;
       add_header X-Permitted-Cross-Domain-Policies none;
+
+      # Remove X-Powered-By, which is an information leak
+      fastcgi_hide_header X-Powered-By;
 
       # Path to the root of your installation
       root /var/www/;
