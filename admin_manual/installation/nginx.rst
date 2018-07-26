@@ -79,6 +79,9 @@ webroot of your nginx installation. In this example it is
       # Remove X-Powered-By, which is an information leak
       fastcgi_hide_header X-Powered-By;
 
+      # Remove X-Powered-By, which is an information leak
+      fastcgi_hide_header X-Powered-By;
+
       # Path to the root of your installation
       root /var/www/nextcloud/;
 
@@ -223,6 +226,9 @@ your nginx installation.
       add_header X-Download-Options noopen;
       add_header X-Permitted-Cross-Domain-Policies none;
       add_header Referrer-Policy no-referrer;
+
+      # Remove X-Powered-By, which is an information leak
+      fastcgi_hide_header X-Powered-By;
 
       # Remove X-Powered-By, which is an information leak
       fastcgi_hide_header X-Powered-By;
