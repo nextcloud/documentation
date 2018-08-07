@@ -7,20 +7,25 @@ import re
 import os
 
 iconregex = re.compile("(\.icon-[a-z-]*)")
-pathregex = r"url\('([a-z-./]*\.svg)"
+pathregex = r"url\(\"([a-z0-9-./]+)"
 
 os.system('rm -R ./img/')
 os.system('rm icons.txt')
 os.system('wget https://github.com/nextcloud/server/archive/master.zip')
 os.system("unzip -p master.zip 'server-master/core/css/icons.scss' > icons.scss")
+os.system("unzip -p master.zip 'server-master/core/css/functions.scss' > functions.scss")
+os.system("unzip -p master.zip 'server-master/core/css/variables.scss' > variables.scss")
 os.system("unzip -u master.zip 'server-master/core/img/*'")
+os.system('echo \'$webroot:"";@import "functions";@import "variables";@import "icons";\' | sass --scss -s > icons.css')
 os.system('mv ./server-master/core/img .')
 os.system('rm master.zip')
+os.system('rm *.scss')
+os.system('rm -R ./.sass-cache/')
 os.system('rm -R ./server-master/')
 
 icons = {}
 
-scss = open('icons.scss')
+scss = open('icons.css')
 lines = scss.readlines()
 
 for i, line in enumerate(lines):
@@ -31,9 +36,12 @@ for i, line in enumerate(lines):
 
 result = ""
 for icon, path in sorted(icons.items()):
-	result += ".. figure:: " + path[3:-3]+"*\n   :height: 32\n   :width: 32\n\n   " + icon[1:] + "\n\n"
-	os.system('inkscape -z '+path[3:]+' -e '+path[3:-3]+'png')
+	path = path.split('/')
+	localpath = '/'.join(path[3:5])
+	result += ".. figure:: img/" + localpath + "*\n   :height: 32\n   :width: 32\n\n   " + icon[1:] + "\n\n"
+	os.system('inkscape -z img/' + localpath + '.svg -e img/' + localpath + '.png')
 
 f = open('icons.txt', 'w')
 f.write(result);
 f.close()
+os.system('rm *.css')
