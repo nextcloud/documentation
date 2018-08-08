@@ -235,3 +235,12 @@ On CentOS and Fedora, the ``yum`` command shows available and installed version
 information::
 
  yum search php-pecl-redis
+
+Enable Caching
+^^^^^^^^^^^^^^
+
+Depending on your configuration and PHP version, you should add 
+`apc.enable_cli=1
+in your `/etc/php/7.2/cli/php.ini` or in your `/etc/php/7.2/mods-available/apcu.ini`
+
+In addition, OPcache should be configured in `/etc/php/7.2/fpm/php.ini` or in `/etc/php/7.2/apache2/php.ini` according to your setup and the `Nexcloud instructions <https://docs.nextcloud.com/server/13/admin_manual/configuration_server/server_tuning.html?highlight=opcache#enable-php-opcache>`_.
