@@ -10,7 +10,7 @@ Address book and Calendar
 #. Select "Connexion with URL and username"
 #. For URL, type ``https://www.yournextcloud.com/remote.php/dav``
 #. Then your Nextcloud credentials
-#. Click ``Conect``
+#. Click ``Connect``
 #. Important: Enter your email address as DAVdroid account name (mandatory if you want to be able to send calendar invitation)
 #. Chose the option ``Groups are categories for each of the contacts``
 #. Select the data you want to sync
