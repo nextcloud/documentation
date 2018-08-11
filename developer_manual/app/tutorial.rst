@@ -12,6 +12,7 @@ Setup
 First the :doc:`development environment <../general/devenv>` needs to be set up. This can be done by either `downloading the zip from the website <https://nextcloud.com/install/>`_ or cloning it directly from GitHub::
 
    git clone git@github.com:nextcloud/server.git --branch $BRANCH
+   cd server
    git submodule update --init
 
 .. note:: ``$BRANCH`` is the desired Nextcloud branch (e.g. ``stable9`` for Nextcloud 9, ``stable10`` for Nextcloud 10, ..., ``master`` for the upcoming release)
