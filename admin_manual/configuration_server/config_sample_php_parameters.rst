@@ -925,11 +925,11 @@ Some of the Nextcloud code may be stored in alternate locations.
 This section is for configuring the download links for Nextcloud clients, as
 seen in the first-run wizard and on Personal pages.
 
-Defaults to
-* Desktop client: ``https://nextcloud.com/install/#install-clients``
-* Android client: ``https://play.google.com/store/apps/details?id=com.nextcloud.client``
-* iOS client: ``https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8``
- *iOS client app id: ``1125420102``
+Defaults to:
+ - Desktop client: ``https://nextcloud.com/install/#install-clients``
+ - Android client: ``https://play.google.com/store/apps/details?id=com.nextcloud.client``
+ - iOS client: ``https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8``
+ - iOS client app id: ``1125420102``
 
 Apps
 ----
@@ -1192,7 +1192,6 @@ Available cache backends:
 * ``\OC\Memcache\ArrayCache`` In-memory array-based backend (not recommended)
 * ``\OC\Memcache\Memcached``  Memcached backend
 * ``\OC\Memcache\Redis``      Redis backend
-* ``\OC\Memcache\XCache``     XCache backend
 
 Advice on choosing between the various backends:
 
