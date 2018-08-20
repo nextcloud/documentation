@@ -246,6 +246,31 @@ Defaults to ``false``
 
 ::
 
+	'default_locale' => 'en_US',
+
+This sets the default locale on your Nextcloud server, using ISO_639
+language codes such as ``en`` for English, ``de`` for German, and ``fr`` for
+French, and ISO-3166 country codes such as ``GB``, ``US``, ``CA``, as defined
+in RFC 5646. It overrides automatic locale detection on public pages like
+login or shared items. User's locale preferences configured under "personal
+-> locale" override this setting after they have logged in.
+
+Defaults to ``en``
+
+::
+
+	'force_locale' => 'en_US',
+
+With this setting a locale can be forced for all users. If a locale is
+forced, the users are also unable to change their locale in the personal
+settings. If users shall be unable to change their locale, but users have
+different languages, this value can be set to ``true`` instead of a locale
+code.
+
+Defaults to ``false``
+
+::
+
 	'defaultapp' => 'files',
 
 Set the default app to open on login. Use the app names as they appear in the
@@ -389,16 +414,11 @@ Defaults to ``false``
 
 ::
 
-	'mail_smtpmode' => 'php',
+	'mail_smtpmode' => 'smtp',
 
-Which mode to use for sending mail: ``sendmail``, ``smtp``, ``qmail`` or
-``php``.
+Which mode to use for sending mail: ``sendmail``, ``smtp`` or ``qmail``.
 
 If you are using local or remote SMTP, set this to ``smtp``.
-
-If you are using PHP mail you must have an installed and working email system
-on the server. The program used to send email is defined in the ``php.ini``
-file.
 
 For the ``sendmail`` option you need an installed and working email system on
 the server, with ``/usr/sbin/sendmail`` installed on your Unix system.
@@ -406,7 +426,7 @@ the server, with ``/usr/sbin/sendmail`` installed on your Unix system.
 For ``qmail`` the binary is /var/qmail/bin/sendmail, and it must be installed
 on your Unix system.
 
-Defaults to ``php``
+Defaults to ``smtp``
 
 ::
 
@@ -810,12 +830,17 @@ Logging
 
 	'log_type' => 'file',
 
-By default the Nextcloud logs are sent to the ``nextcloud.log`` file in the
-default Nextcloud data directory.
+This parameter determines where the Nextcloud logs are sent.
 
-If syslogging is desired, set this parameter to ``syslog``.
-Setting this parameter to ``errorlog`` will use the PHP error_log function
-for logging.
+``file``: the logs are written to file ``nextcloud.log`` in the default
+Nextcloud data directory. The log file can be changed with parameter
+``logfile``.
+``syslog``: the logs are sent to the system log. This requires a syslog daemon
+to be active.
+``errorlog``: the logs are sent to the PHP ``error_log`` function.
+``systemd``: the logs are sent to the Systemd journal. This requires a system
+that runs Systemd and the Systemd journal. The PHP extension ``systemd``
+must be installed and active.
 
 Defaults to ``file``
 
@@ -823,7 +848,8 @@ Defaults to ``file``
 
 	'logfile' => '/var/log/nextcloud.log',
 
-Log file path for the Nextcloud logging type.
+Name of the file to which the Nextcloud logs are written if parameter
+``log_type`` is set to ``file``.
 
 Defaults to ``[datadirectory]/nextcloud.log``
 
@@ -842,7 +868,8 @@ Defaults to ``2``
 
 If you maintain different instances and aggregate the logs, you may want
 to distinguish between them. ``syslog_tag`` can be set per instance
-with a unique id. Only available if ``log_type`` is set to ``syslog``.
+with a unique id. Only available if ``log_type`` is set to ``syslog`` or
+``systemd``.
 
 The default value is ``Nextcloud``.
 
@@ -925,11 +952,11 @@ Some of the Nextcloud code may be stored in alternate locations.
 This section is for configuring the download links for Nextcloud clients, as
 seen in the first-run wizard and on Personal pages.
 
-Defaults to:
- - Desktop client: ``https://nextcloud.com/install/#install-clients``
- - Android client: ``https://play.google.com/store/apps/details?id=com.nextcloud.client``
- - iOS client: ``https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8``
- - iOS client app id: ``1125420102``
+Defaults to
+* Desktop client: ``https://nextcloud.com/install/#install-clients``
+* Android client: ``https://play.google.com/store/apps/details?id=com.nextcloud.client``
+* iOS client: ``https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8``
+ *iOS client app id: ``1125420102``
 
 Apps
 ----
@@ -1039,7 +1066,7 @@ Defaults to ``''`` (empty string)
 
 	'preview_office_cl_parameters' =>
 		' --headless --nologo --nofirststartwizard --invisible --norestore '.
-		'--convert-to pdf --outdir ',
+		'--convert-to png --outdir ',
 
 Use this if LibreOffice/OpenOffice requires additional arguments.
 
