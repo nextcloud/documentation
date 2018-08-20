@@ -1,6 +1,6 @@
-====================
-Synchronize Android 
-====================
+===================
+Synchronize Android
+===================
 
 Address book and Calendar
 -------------------------
