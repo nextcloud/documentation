@@ -12,6 +12,18 @@ The server will automatically compile, cache and and serve it.
 The priority goes to the scss file. So having two file with the same name and a ``scss`` & ``css`` extension
 will ensure a retro compatibility with <12 versions as scss files will be ignored by the server.
 
+..  _cssvars:
+
+=============
+CSS variables
+=============
+
+Since Nextcloud 14 app developers should use CSS4 variables for using the values that Nextcloud defines. This way you can be sure that the theming and accessibility app can dynamically adjust the values to their needs.
+
+A list of available variables is available in the server repo:
+https://github.com/nextcloud/server/blob/master/core/css/css-variables.scss
+
+
 ..  _cssicons:
 
 =============
