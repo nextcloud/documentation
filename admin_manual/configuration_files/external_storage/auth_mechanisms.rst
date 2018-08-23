@@ -4,7 +4,7 @@ External Storage authentication mechanisms
 
 Nextcloud storage backends accept one or more authentication schemes such as
 passwords, OAuth, or token-based, to name a few examples. Each authentication
-scheme may be implemented by multiple authentication mechanisms. Different
+scheme may be implemented by combining multiple authentication mechanisms. Different
 mechanisms require different configuration parameters, depending on their
 behavior.
 
