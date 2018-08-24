@@ -34,6 +34,7 @@ occ command Directory
 * :ref:`security_commands_label`
 * :ref:`trashbin_label`
 * :ref:`user_commands_label`
+* :ref:`_group_commands_label`
 * :ref:`versions_label`
 * :ref:`command_line_installation_label`
 * :ref:`command_line_upgrade_label`
@@ -1120,7 +1121,65 @@ authentication servers such as LDAP::
  |                  |    |
  | user directories | 2  |
  +------------------+----+
- 
+
+.. _group_commands_label:
+
+Group commands
+-------------
+
+The ``group`` commands create and remove groups, add and remove users in
+groups, display a list of all users in a group::
+
+ group
+  group:add                           add a group
+  group:delete                        remove a group
+  group:adduser                       add a user to a group
+  group:removeuser                    remove a user from a group
+  group:list                          list configured groups
+
+
+You can create a new group with the ``group:add`` command. The syntax is::
+
+ group:add [gid]
+
+The ``gid`` corresponds to the group name you entering after clicking
+"Add group" on the Users page in your Nextcloud Web UI. This example adds new
+group "beer"::
+
+ sudo -u www-data php occ group:add beer
+
+Add an existing user to the specified group with the ``group:adduser``
+command. The syntax is::
+
+ group:adduser [gid] [uid]
+
+This example adds the user "denis" to the existing group "beer"::
+
+ sudo -u www-data php occ group:adduser beer denis
+
+You can remove user from the group with the ``group:removeuser`` command.
+This example removes the existing user "denis" from the existing
+group "beer"::
+
+ sudo -u www-data php occ group:removeuser beer denis
+
+Remove a group with the ``group:delete`` command. Removing a group doesn't
+remove users in a group. You cannot remove the "admin" group. This example
+removes the existing group "beer"::
+
+ sudo -u www-data php occ group:delete beer
+
+List configured groups via the ``group:list`` command. The syntax is::
+
+ group:list [-l|--limit] [-o|--offset] [--output="..."]
+
+``limit`` allows you to specify the number of groups to retrieve.
+
+``offset`` is an offset for retrieving groups.
+
+``output`` specifies the output format (plain, json or json_pretty). Default is
+plain.
+
 .. _versions_label:
  
 Versions
