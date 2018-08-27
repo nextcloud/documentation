@@ -8,6 +8,7 @@
    :hidden:
 
    changelog
+   appenv
    tutorial
    startapp
    init
@@ -54,6 +55,7 @@ Before you start, please check if there already is a similar app in the `App Sto
 Then, please make sure you have set up a development environment:
 
 * :doc:`../general/devenv`
+* :doc:`appenv`
 
 Before starting to write an app please read the security and coding guidelines:
 
