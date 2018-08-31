@@ -243,7 +243,7 @@ Start off by installing a CentOS 7 minimal install. This should provide a suffic
 First install some dependencies you will be needing during installation, but which will also be useful in every day use situations::
 
     yum install -y epel-release yum-utils unzip curl wget \
-    bash-completion policycoreutils-python mlocate
+    bash-completion policycoreutils-python mlocate bzip2
 
 Now make sure your system is up to date::
 
