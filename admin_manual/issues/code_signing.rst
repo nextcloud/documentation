@@ -48,6 +48,11 @@ Is code signing mandatory for apps?
 
 Code signing is required for all applications on apps.nextcloud.com.
 
+How do I sign my code?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For a signed commit add ``-s`` option. Alternatively, add ``Signed-off-by: John Doe <doe@example.com>`` in the commit message. 
+
 .. _code_signing_fix_warning_label:
 
 Fixing invalid code integrity messages
