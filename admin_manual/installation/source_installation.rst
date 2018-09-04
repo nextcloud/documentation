@@ -84,7 +84,7 @@ If you get a result, the module is present.
 
 Required:
 
-* PHP (>= 5.6, 7.0, 7.1 or 7.2)
+* PHP (>= 7.0, 7.1 or 7.2)
 * PHP module ctype
 * PHP module dom
 * PHP module GD
@@ -405,12 +405,6 @@ ini file. This can be the case, for example, for the ``date.timezone`` setting.
 
 php-fpm configuration notes
 ---------------------------
-
-**Security: Use at least PHP >= 5.6.6**
-
-Due to `a bug with security implications <https://bugs.php.net/bug.php?id=64938>`_
-in older PHP releases with the handling of XML data you are highly encouraged to run
-at least PHP 5.6.6 when in a threaded environment.
 
 **System environment variables**
 
