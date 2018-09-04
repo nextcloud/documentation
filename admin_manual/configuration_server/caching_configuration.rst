@@ -219,8 +219,7 @@ These instructions are adaptable for any distro that does not package the
 supported version, or that does not package Redis at all, such as SUSE Linux 
 Enterprise Server and Red Hat Enterprise Linux.
 
-The Redis PHP module must be at least version 2.2.6. Please note that
-the Redis PHP module versions 2.2.x will only work for PHP 5.6.x.
+The Redis PHP module must be at least version 2.2.6.
 
 For PHP 7.0 and PHP 7.1 use Redis PHP module 3.1.x or later.
   

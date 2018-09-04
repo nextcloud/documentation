@@ -19,7 +19,7 @@ filesystem.
 System configuration
 --------------------
 
-* Make sure that the latest version of PHP (at least 5.6.6) is installed
+* Make sure that the latest version of PHP is installed
 * Disable user quotas, which makes them unlimited
 * Your temp file or partition has to be big enough to hold multiple 
   parallel uploads from multiple users; e.g. if the max upload size is 10GB and 
