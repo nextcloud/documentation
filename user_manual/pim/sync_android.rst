@@ -18,5 +18,5 @@ Address book and Calendar
 
 You should now find your contacts in the address book of your Android. If it's still not working, have a look at the `Troubleshooting Contacts & Calendar`_ guides.
 
-.. _Troubleshooting Contacts & Calendar: https://docs.nextcloud.org/server/13/admin_manual/issues/index.html#troubleshooting-contacts-calendar
+.. _Troubleshooting Contacts & Calendar: https://docs.nextcloud.org/server/14/admin_manual/issues/index.html#troubleshooting-contacts-calendar
 .. TODO ON RELEASE: Update version number above on release
