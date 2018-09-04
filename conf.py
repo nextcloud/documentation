@@ -16,15 +16,15 @@ copyright = str(now.year) + ' Nextcloud GmbH'
 # built documents.
 #
 # The short X.Y version.
-version = '13'
+version = '14'
 # The full version, including alpha/beta/rc tags.
-release = '13'
+release = '14'
 
 # substitutions go here
 rst_epilog =  '.. |version| replace:: %s' % version
 
 html_context = {
-	'doc_versions': ['11', '12', '13'],
+	'doc_versions': ['11', '12', '13', '14'],
 	'current_doc': os.path.basename(os.getcwd()),
 }
 

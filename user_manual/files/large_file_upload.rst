@@ -15,7 +15,7 @@ set by your administrator):
 * Contact your administrator to request an increase in these variables
 
 * Refer to the section in the `Admin Documentation
-  <https://docs.nextcloud.org/server/12/admin_manual/configuration_files/
+  <https://docs.nextcloud.org/server/14/admin_manual/configuration_files/
   big_file_upload_configuration.html>`_ that describes how to manage file
   upload size limits.
 
