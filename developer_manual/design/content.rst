@@ -40,7 +40,7 @@ Your application will be directly injected into the ``#content`` div.
 				<div class="app-content-list">
 					<!-- app list -->
 				</div>
-				<div class="app-content-detail"></div>
+				<div class="app-content-details"></div>
 				<!-- app content -->
 			</div>
 		</div>
