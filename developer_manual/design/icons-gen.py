@@ -38,7 +38,7 @@ result = ""
 for icon, path in sorted(icons.items()):
 	path = path.split('/')
 	localpath = '/'.join(path[3:5])
-	result += ".. figure:: img/" + localpath + "*\n   :height: 32\n   :width: 32\n\n   " + icon[1:] + "\n\n"
+	result += ".. figure:: img/" + localpath + ".*\n   :height: 32\n   :width: 32\n\n   " + icon[1:] + "\n\n"
 	os.system('inkscape -z img/' + localpath + '.svg -e img/' + localpath + '.png')
 
 f = open('icons.txt', 'w')
