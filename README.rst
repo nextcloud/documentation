@@ -163,7 +163,7 @@ Process
 4. Wrap text lines at 80 chars, apply markup fixes
 
 Icons
-^^^^^^^
+^^^^^
 To compile and update the icons list in the designer manual, you will also need
 1. inkscape
 2. sass
