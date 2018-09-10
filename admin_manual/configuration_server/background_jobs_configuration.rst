@@ -55,7 +55,7 @@ service (for example, easyCron_), you ensure that background jobs are executed
 regularly. To use this type of service with your server, you must be able to
 access your server using the Internet. For example::
 
-  URL to call: http[s]://<domain-of-your-server>/nextcloud/cron.php
+  URL to call: http[s]://<domain-of-your-server>/cron.php
 
 Cron
 ^^^^
