@@ -1,7 +1,7 @@
 all: html pdf
 
 html: admin-manual-html user-manual-html user-manual-de-html developer-manual-html
-pdf: admin-manual-pdf user-manual-pdf user-manual-de-pdf developer-manual-pdf
+pdf: admin-manual-pdf user-manual-pdf user-manual-de-pdf
 
 admin-manual-html:
 	rm -rf admin_manual/_build/html/com
@@ -34,10 +34,6 @@ user-manual-pdf:
 user-manual-de-pdf:
 	cd user_manual_de && make latexpdf
 	@echo "User manual de build finished; PDF is updated"
-
-developer-manual-pdf:
-	cd developer_manual && make latexpdf
-	@echo "Developer manual build finished; PDF is updated"
 
 api-docs: clean-api-docs
 	cd build && sh get-server-sources.sh master
