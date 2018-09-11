@@ -168,6 +168,8 @@ webroot of your nginx installation. In this example it is
           add_header X-Robots-Tag none;
           add_header X-Download-Options noopen;
           add_header X-Permitted-Cross-Domain-Policies none;
+          add_header Referrer-Policy no-referrer;
+
           # Optional: Don't log access to assets
           access_log off;
       }
@@ -314,6 +316,8 @@ your nginx installation.
               add_header X-Robots-Tag none;
               add_header X-Download-Options noopen;
               add_header X-Permitted-Cross-Domain-Policies none;
+              add_header Referrer-Policy no-referrer;
+
               # Optional: Don't log access to assets
               access_log off;
           }
