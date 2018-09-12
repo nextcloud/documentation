@@ -92,6 +92,7 @@ Required:
 * PHP module JSON
 * PHP module libxml (Linux package libxml2 must be >=2.7.0)
 * PHP module mbstring
+* PHP module openssl
 * PHP module posix
 * PHP module SimpleXML
 * PHP module XMLReader
@@ -114,7 +115,6 @@ Database connectors (pick the one for your database:)
 * PHP module intl (increases language translation performance and fixes sorting
   of non-ASCII characters)
 * PHP module mcrypt (increases file encryption performance)
-* PHP module openssl (required for accessing HTTPS resources)
 
 Required for specific apps:
 
