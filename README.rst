@@ -103,9 +103,8 @@ The openSUSE way
 * sudo zypper in texlive-threeparttable
 * sudo zypper in texlive-wrapfig
 * sudo zypper in texlive-multirow
-* cd user_manual
-* make latexpdf
-* okular _build/latex/NextcloudUserManual.pdf
+* make user-manual-pdf
+* okular user_manual/_build/latex/NextcloudUserManual.pdf
 
 The Debian/Ubuntu way
 ~~~~~~~~~~~~~~~~~~~~~
@@ -116,9 +115,9 @@ The Debian/Ubuntu way
 * sudo apt-get install texlive-fonts-recommended
 * sudo apt-get install texlive-latex-extra
 * sudo apt-get install texlive-latex-recommended
-* cd user_manual
-* make latexpdf
-* evince _build/latex/NextcloudUserManual.pdf
+* sudo apt-get install latexmk
+* make user-manual-pdf
+* evince user_manual/_build/latex/NextcloudUserManual.pdf
 
 The Arch Linux way
 ~~~~~~~~~~~~~~~~~~
@@ -127,9 +126,8 @@ The Arch Linux way
 * sudo pacman -S texlive-latexextra
 * sudo pip2 install rst2pdf sphinxcontrib-phpdomain
 * sudo ln -s /usr/bin/sphinx-build2 /usr/bin/sphinx-build
-* cd user_manual
-* make latexpdf
-* PDFVIEWER _build/latex/NextcloudUserManual.pdf
+* make user-manual-pdf
+* PDFVIEWER user_manual/_build/latex/NextcloudUserManual.pdf
 
 Windows
 ^^^^^^^
