@@ -34,7 +34,7 @@ occ command Directory
 * :ref:`security_commands_label`
 * :ref:`trashbin_label`
 * :ref:`user_commands_label`
-* :ref:`_group_commands_label`
+* :ref:`group_commands_label`
 * :ref:`versions_label`
 * :ref:`command_line_installation_label`
 * :ref:`command_line_upgrade_label`
@@ -1125,7 +1125,7 @@ authentication servers such as LDAP::
 .. _group_commands_label:
 
 Group commands
--------------
+--------------
 
 The ``group`` commands create and remove groups, add and remove users in
 groups, display a list of all users in a group::
