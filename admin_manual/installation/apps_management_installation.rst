@@ -14,7 +14,7 @@ needs.
 Apps management
 ---------------
 
-.. figure:: /images/apps_overview.png
+.. figure:: images/apps_overview.png
    :alt: Apps page for enabling and disabling apps.
 
 During the Nextcloud server installation, some apps are enabled by default.
@@ -38,7 +38,7 @@ All apps need to be licensed under AGPLv3+ or any compatible license.
 Managing apps
 -------------
 
-.. figure:: /images/apps_store.png
+.. figure:: images/apps_store.png
    :alt: App store page for installing, enabling and disabling apps.
 
 You will see which apps are enabled, disabled and available. You'll also
