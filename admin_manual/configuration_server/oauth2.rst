@@ -23,6 +23,8 @@ Please provide the OAuth2 application the following details:
 Authorization endpoint: SERVER/apps/oauth2/authorize
 Token endpoint: SERVER/apps/oauth2/api/v1/token
 
+Note that the SERVER portion must include `index.php` at the end if pretty URL is not configured.
+
 The access token
 ----------------
 
