@@ -48,7 +48,7 @@ Address book
    -  Change port to 80.
    -  Go back to account information and hit Save.
 
-Now should now find your contacts in the address book of your iPhone.
+You should now find your contacts in the address book of your iPhone.
 If it's still not working, have a look at the :doc:`troubleshooting`
 and `Troubleshooting Contacts & Calendar`_ guides.
 
