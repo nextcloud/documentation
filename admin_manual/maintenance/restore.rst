@@ -13,10 +13,8 @@ restore:
 .. note:: You must have both the database and data directory. You cannot
    complete restoration unless you have both of these.
 
-When you have completed your restoration, see the ``Setting Strong Directory
-Permissions`` section of :doc:`../installation/installation_wizard`.
-
-Also make sure to run the :ref:`maintenance:data-fingerprint <maintenance_commands_label>` command
+When you have completed your restoration, also make sure to run the
+:ref:`maintenance:data-fingerprint <maintenance_commands_label>` command
 afterwards, to ensure your sync clients can recover from the restored backup.
 
 Restore folders
