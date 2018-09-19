@@ -344,6 +344,10 @@ To access the public share, open::
 in a WebDAV client, use the share token as username and the (optional) share password
 as password.
 
+.. note:: ``Settings → Administration → Sharing → Allow users on this
+   server to send shares to other servers`` needs to be enabled in order
+   to make this feature work.
+
 Known problems
 --------------
 
