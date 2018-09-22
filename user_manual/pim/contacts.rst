@@ -17,17 +17,17 @@ Adding contacts
 ---------------
 You can add contacts using one of the following methods:
 
-* Import contacts using a Variant Call Format (VCF) file
+* Import contacts using a Virtual Contact File (VCF/Vcard) file
 
 * Add contacts manually
 
 Importing Contacts
 ~~~~~~~~~~~~~~~~~~
 
-The fastest way to add contacts is through the use of a Variant Call Format
-(VCF) file.
+The fastest way to add contacts is through the use of a Virtual Contact File
+(VCF/Vcard) file.
 
-To import contacts using a VCF file:
+To import contacts using a VCF/Vcard file:
 
 1. At the bottom of the Contacts app information field, locate the gear button.
 
