@@ -15,7 +15,7 @@ See the table below for a version map, where migrating is easily possible:
 +-------------------+-----------------+
 | ownCloud          | Nextcloud       |
 +===================+=================+
-| 10.0.2 or earlier | 12.0.1 or later |
+| 10.0.1 or later   | 12.0.1 or later |
 +-------------------+-----------------+
 | 10.0.0            | 12.0.0          |
 +-------------------+-----------------+
