@@ -318,7 +318,7 @@ must be writable by the HTTP user. Then you can set in the :file:`config.php` tw
 
 if your setup is available on ``https://example.org/nextcloud`` or::
 
- 'overwrite.cli.url' => 'https://example.org',
+ 'overwrite.cli.url' => 'https://example.org/',
  'htaccess.RewriteBase' => '/',
 
 if it isn't installed in a subfolder. Finally run this occ-command to update
