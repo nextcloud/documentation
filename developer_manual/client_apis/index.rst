@@ -13,6 +13,8 @@ WebDAV is the main api for file related operations, it supports listing director
 An overview of how to use the various WebDAV api's can be found at :doc:`WebDAV/index`, additionally Nextcloud implements rfc5323_ to allow searching the filesystem
 more information about how to use WebDAV search can be found at :doc:`WebDAV/search`.
 
+Clients can also access :doc:`WebDAV/versions` and :dock:`WebDAV/trashbin` via webdav to integrate with this.
+
 
 OCS
 ---
@@ -38,6 +40,8 @@ Clients can obtain an apptoken via the login flow.  See :doc:`LoginFlow/index`
 
     WebDAV/index
     WebDAV/search
+    WebDAV/trashbin
+    WebDAV/versions
     OCS/index
     LoginFlow/index
 
