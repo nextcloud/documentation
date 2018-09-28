@@ -1313,10 +1313,9 @@ List all options, like this example on CentOS Linux::
 
  sudo -u apache php occ upgrade -h
  Usage:
- upgrade [--no-app-disable]
+ upgrade [--quiet]
 
  Options:
- --no-app-disable       skips the disable of third party apps
  --help (-h)            Display this help message.
  --quiet (-q)           Do not output any message.
  --verbose (-v|vv|vvv)  Increase the verbosity of messages: 1 for normal output, 
