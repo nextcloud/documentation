@@ -256,9 +256,9 @@ it, replacing the **Directory** and other filepaths with your own filepaths::
 
   </Directory>
  
-Then create a symlink to :file:`/etc/apache2/sites-enabled`::
+Then enable the newly created site::
 
-  ln -s /etc/apache2/sites-available/nextcloud.conf /etc/apache2/sites-enabled/nextcloud.conf
+  a2ensite nextcloud.conf
  
 Additional Apache configurations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
