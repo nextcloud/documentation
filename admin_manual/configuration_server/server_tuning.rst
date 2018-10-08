@@ -8,6 +8,17 @@ Using cron to perform background jobs
 See :doc:`background_jobs_configuration` for a description and the 
 benefits.
 
+Reducing system load
+--------------------
+
+High system load will slow down Nextcloud and might also lead to other unwanted side 
+effects. To reduce load you should first identify the source. Tools such as htop, 
+iotop or [glances](https://nicolargo.github.io/glances/) will help to identify the 
+process or the drive that slows down your system. First you should make sure that 
+you installed/assigned enough RAM. Swap usage should be prevented by all means.
+If you run your database inside a VM, you should not store it inside a VM image file.
+Better put it on a dedicated block device to reduce abstraction layers.
+
 .. _caching:
 
 Caching
