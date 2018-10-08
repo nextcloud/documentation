@@ -52,7 +52,7 @@ following lines. (beware that this is the block for mysqld not mysql)
 .. code:: ini
 
   [mysqld]
-  innodb_buffer_pool_size=1073741824
+  innodb_buffer_pool_size=1G
   innodb_io_capacity=4000
 
 Using Redis-based transactional file locking
@@ -116,7 +116,6 @@ MySQL cache following values in your ``www.conf`` file should work:
   pm.start_servers = 12
   pm.min_spare_servers = 6
   pm.max_spare_servers = 18
-  pm.process_idle_timeout = 60s
   
 Depending on your current PHP version you should find this file e.g. under ``/etc/php/7.2/fpm/pool.d/www.conf``
 
