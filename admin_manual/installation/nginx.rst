@@ -95,7 +95,7 @@ webroot of your nginx installation. In this example it is
       # last;
 
       # Uncomment this line to enable webfinger (used by ActivityPub)
-      rewrite ^/.well-known/webfinger /public.php?service=webfinger last;
+      #rewrite ^/.well-known/webfinger /public.php?service=webfinger last;
       
       location = /.well-known/carddav {
         return 301 $scheme://$host/remote.php/dav;
