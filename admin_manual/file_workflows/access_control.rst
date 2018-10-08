@@ -107,6 +107,7 @@ option.
             The best way to do this is with the :doc:`automated_tagging`.
 
 * **File mimetype:** The mimetype of the file, e.g. ``text/plain``
+* **File name:** The name of the file (``is`` and ``is not`` are case-insensitive)
 * **File size:** The size of the file (*Only available on upload*)
 
 * **Request remote address:** An IP range (either v4 or v6) for the accessing user
