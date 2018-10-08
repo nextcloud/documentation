@@ -11,13 +11,14 @@ benefits.
 Reducing system load
 --------------------
 
-High system load will slow down Nextcloud and might also lead to other unwanted side 
-effects. To reduce load you should first identify the source. Tools such as htop, 
-iotop or [glances](https://nicolargo.github.io/glances/) will help to identify the 
-process or the drive that slows down your system. First you should make sure that 
-you installed/assigned enough RAM. Swap usage should be prevented by all means.
-If you run your database inside a VM, you should not store it inside a VM image file.
-Better put it on a dedicated block device to reduce abstraction layers.
+High system load will slow down Nextcloud and might also lead to other unwanted 
+side effects. To reduce load you should first identify the source of the problem. 
+Tools such as htop, iotop or `glances <https://nicolargo.github.io/glances/>`_ 
+will help to identify the process or the drive that slows down your system. First 
+you should make sure that you installed/assigned enough RAM. Swap usage should be 
+prevented by all means. If you run your database inside a VM, you should not 
+store it inside a VM image file. Better put it on a dedicated block device to 
+reduce latency due to multiple abstraction layers.
 
 .. _caching:
 
@@ -39,6 +40,20 @@ See the section :doc:`../configuration_database/linux_database_configuration` fo
 configure Nextcloud for MySQL or MariaDB. If your installation is already running on
 SQLite then it is possible to convert to MySQL or MariaDB using the steps provided
 in :doc:`../configuration_database/db_conversion`.
+
+In smaller installations you might not want to set up a separate cache. However 
+you can still tune your database. The following example is suited for a database 
+smaller than 1GB. MySQL will consume up to 1GB of RAM for caching. Please make 
+sure that your system has sufficient free RAM after the change, so that it does 
+not start to use your swap partition, when it receives a burst of requests. In 
+the given example your ``/etc/mysql/conf.d/mysql.cnf`` might contain the 
+following lines. (beware that this is the block for mysqld not mysql)
+
+.. code:: ini
+
+  [mysqld]
+  innodb_buffer_pool_size=1073741824
+  innodb_io_capacity=4000
 
 Using Redis-based transactional file locking
 --------------------------------------------
@@ -83,6 +98,27 @@ Enable HTTP2 for faster loading
 -------------------------------
 
 HTTP2 has `huge speed improvements <https://www.troyhunt.com/i-wanna-go-fast-https-massive-speed-advantage/>`_ over HTTP with multiple request. Most `browsers already support HTTP2 over SSL (HTTPS) <http://caniuse.com/#feat=http2>`_. So refer to your server manual for guides on how to use HTTP2.
+
+Tune PHP-FPM
+------------
+
+If you are using a default installation of php-fpm you might have noticed 
+excessive load times on the web interface or even sync issues. This is due 
+to the fact that each simultaneous request of an element is handled by a 
+separate PHP-FPM process. So even on a small installation you should allow 
+more processes to run. For example on a machine with 4GB of RAM and 1GB of 
+MySQL cache following values in your ``www.conf`` file should work:
+
+.. code:: ini
+
+  pm = dynamic
+  pm.max_children = 120
+  pm.start_servers = 12
+  pm.min_spare_servers = 6
+  pm.max_spare_servers = 18
+  pm.process_idle_timeout = 60s
+  
+Depending on your current PHP version you should find this file e.g. under ``/etc/php/7.2/fpm/pool.d/www.conf``
 
 Enable PHP OPcache
 ------------------
