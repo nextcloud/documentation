@@ -186,6 +186,8 @@ These include:
 	- Instructs search machines to not index these pages.
 - ``X-Frame-Options: SAMEORIGIN``
 	- Prevents embedding of the Nextcloud instance within an iframe from other domains to prevent Clickjacking and other similar attacks.
+- ``Referrer-Policy: no-referrer``
+	- The default `no-referrer` policy instructs the browser not to send referrer information along with requests to any origin.
 
 These headers are hard-coded into the Nextcloud server, and need no intervention 
 by the server administrator.
