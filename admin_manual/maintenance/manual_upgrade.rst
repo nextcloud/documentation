@@ -13,7 +13,7 @@ Always start by making a fresh backup and disabling all 3rd party apps.
    .. note:: To unpack your new tarball, run:
       unzip nextcloud-[version].zip
       or
-      
+      tar -xjf nextcloud-[version].tar.bz2
     
 
 3. Stop your Web server.
