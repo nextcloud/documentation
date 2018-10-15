@@ -77,10 +77,11 @@ of our mobile apps.
 
 .. note:: The separate Nextcloud Talk app requires iOS 9.x+ or Android 5.x+.
 
-Webbrowser
-----------
+Web browser
+-----------
 
-For best experience with the Nextcloud webinterface, we recommend you to use the latest and supported version of a browser from this list, or one based on those:
+For the best experience with the Nextcloud web interface, we recommend that you use the latest and supported version
+of a browser from this list, or one based on those:
 
 - Microsoft **Internet Explorer 11** (latest version)
 - Microsoft **Edge**
