@@ -855,6 +855,14 @@ Defaults to ``[datadirectory]/nextcloud.log``
 
 ::
 
+	'logfilemode' => 0640,
+
+Log file mode for the Nextcloud loggin type in octal notation.
+
+Defaults to 0640 (writeable by user, readable by group).
+
+::
+
 	'loglevel' => 2,
 
 Loglevel to start logging at. Valid values are: 0 = Debug, 1 = Info, 2 =
@@ -1078,6 +1086,7 @@ Defaults to ``''`` (empty string)
 		'OC\Preview\PNG',
 		'OC\Preview\JPEG',
 		'OC\Preview\GIF',
+		'OC\Preview\HEIC',
 		'OC\Preview\BMP',
 		'OC\Preview\XBitmap',
 		'OC\Preview\MP3',
@@ -1117,6 +1126,7 @@ Defaults to the following providers:
 
  - OC\\Preview\\BMP
  - OC\\Preview\\GIF
+ - OC\\Preview\\HEIC
  - OC\\Preview\\JPEG
  - OC\\Preview\\MarkDown
  - OC\\Preview\\MP3
@@ -1697,7 +1707,7 @@ Headers that should be trusted as client IP address in combination with
 If set incorrectly, a client can spoof their IP address as visible to
 Nextcloud, bypassing access controls and making logs useless!
 
-Defaults to ``'HTTP_X_FORWARED_FOR'``
+Defaults to ``'HTTP_X_FORWARDED_FOR'``
 
 ::
 
@@ -1837,6 +1847,15 @@ Some user agents are notorious and don't really properly follow HTTP
 specifications. For those, have an opt-out.
 
 WARNING: only use this if you know what you are doing
+
+::
+
+	'simpleSignUpLink.shown' => true,
+
+By default there is on public pages a link shown that allows users to
+learn about the "simple sign up" - see https://nextcloud.com/signup/
+
+If this is set to "false" it will not show the link.
 
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
