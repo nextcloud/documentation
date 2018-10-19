@@ -638,7 +638,10 @@ File operations
   files:scan                 rescan filesystem
   files:transfer-ownership   All files and folders are moved to another 
                              user - shares are moved as well.
- 
+
+Scan
+^^^^
+
 The ``files:scan`` command scans for new files and updates the file cache. You 
 may rescan all files, per-user, a space-delimited list of users, and limit the 
 search path. If not using ``--quiet``, statistics will be shown at the end of 
@@ -687,13 +690,24 @@ path component given.
 The ``--path``, ``--all`` and ``[user_id]`` parameters and are exclusive - only 
 one must be specified.
 
+Cleanup
+^^^^^^^
+
 ``files:cleanup`` tidies up the server's file cache by deleting all file 
 entries that have no matching entries in the storage table. 
+
+Transfer
+^^^^^^^^
 
 You may transfer all files and shares from one user to another. This is useful 
 before removing a user::
 
  sudo -u www-data php occ files:transfer-ownership <source-user>
+ <destination-user>
+ 
+It is also possible to transfer only one directory along with it's contents. This can be useful to restructure your organization or quotas. The ``--path`` argument is given as the path to the directory as seen from the source user::
+
+ sudo -u www-data php occ files:transfer-ownership --path="path_to_dir" <source-user>
  <destination-user>
 
 .. _files_external_label:
