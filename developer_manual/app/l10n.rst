@@ -124,6 +124,21 @@ In case some translation strings may be translated wrongly because they have mul
         </li>
     </ul>
 
+Ignoring files from translation tool
+------------------------------------
+
+The translation tool scrapes the source code for method calls to  **t()**
+or **n()** to extract the strings that should be translated. If you check
+in minified JS code for example then those method names are also quite
+common and could cause wrong extractions. For this reason we allow to
+specify a list of files that the translation tool will not scrape for
+strings. You simply need to add a file named :file:`.l10nignore` into
+the root folder of your app and specify the files one per line::
+
+    # compiled vue templates
+    js/bruteforcesettings.js
+
+
 Creating your own translatable files
 ------------------------------------
 
