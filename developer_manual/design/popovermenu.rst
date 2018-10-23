@@ -76,7 +76,7 @@ Basic layout
                      </form>
                  </span>
              </li>
-        <ul>
+        </ul>
     </div>
 
 Technical details

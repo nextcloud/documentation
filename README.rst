@@ -160,5 +160,13 @@ Process
 3. Move the resulting ``rst`` files in place and reference them
 4. Wrap text lines at 80 chars, apply markup fixes
 
+Icons
+^^^^^
+To compile and update the icons list in the designer manual, you will also need
+1. inkscape
+2. sass
+3. unzip
+4. wget
+
 .. _CC BY 3.0: http://creativecommons.org/licenses/by/3.0/deed.en_US
 .. _`Xcode command line tools`: http://stackoverflow.com/questions/9329243/xcode-4-4-and-later-install-command-line-tools
