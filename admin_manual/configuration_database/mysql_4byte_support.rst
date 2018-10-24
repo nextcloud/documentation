@@ -5,24 +5,30 @@ Enabling MySQL 4-byte support
 In order to use Emojis (textbased smilies) on your Nextcloud server with a MySQL database, the
 installation needs to be tweaked a bit.
 
-1. Update your Nextcloud server to Nextcloud 11 or later.
-2. Make sure the following InnoDB settings are set on your MySQL server::
+1. Make sure the following InnoDB settings are set on your MySQL server:
 
-    [mysqld]
-    innodb_large_prefix=true
-    innodb_file_format=barracuda
-    innodb_file_per_table=1
+   a. MySQL 8.0 or later::
 
-3. Restart the MySQL server in case you changed the configuration in step 2.
-4. Change your databases character set and collation::
+        [mysqld]
+        innodb_file_per_table=1
+
+   b. MySQL older than 8.0::
+
+        [mysqld]
+        innodb_large_prefix=true
+        innodb_file_format=barracuda
+        innodb_file_per_table=1
+
+2. Restart the MySQL server in case you changed the configuration in step 1.
+3. Change your databases character set and collation::
 
     ALTER DATABASE nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
-5. Set the ``mysql.utf8mb4`` config to true in your config.php::
+4. Set the ``mysql.utf8mb4`` config to true in your config.php::
 
     $ sudo -u www-data php occ config:system:set mysql.utf8mb4 --type boolean --value="true"
 
-6. Convert all existing tables to the new collation by running the repair step::
+5. Convert all existing tables to the new collation by running the repair step::
 
     $ sudo -u www-data php occ maintenance:repair
 
@@ -31,15 +37,33 @@ Now you should be able to use Emojis in your file names, calendar events, commen
 MariaDB support
 ---------------
 
-.. note:: This is even more **experimental**.
+MariaDB 10.3 or later
+=====================
+1. Make sure the following InnoDB settings are set on your MariaDB server::
 
-1. Follow MySQL steps 1, 2 and 3
+    [mysqld]
+    innodb_file_per_table=1
 
-2. Figure out whether the file format was changed to Barracuda::
+2. Continue at step 2 of the MySQL instructions.
+
+
+MariaDB 10.2 or earlier
+=======================
+
+1. Make sure the following InnoDB settings are set on your MySQL server::
+
+    [mysqld]
+    innodb_large_prefix=true
+    innodb_file_format=barracuda
+    innodb_file_per_table=1
+
+2. Restart the MariaDB server in case you changed the configuration in step 1.
+
+3. Figure out whether the file format was changed to Barracuda::
 
     MariaDB> SELECT NAME, SPACE, FILE_FORMAT FROM INFORMATION_SCHEMA.INNODB_SYS_TABLES WHERE NAME like "nextcloud%";
 
-If the file format is "Barracuda" for every single table, nothing is left to do. Continue with the MySQL instructions. While testing, all tables' file format was "Antelope".
+If the file format is "Barracuda" for every single table, nothing special is left to do. Continue with the MySQL instructions at step 3. While testing, all tables' file format was "Antelope".
 
 3. The tables needs to be migrated to "Barracuda" manually, one by one. SQL commands can be created easily, however::
 
@@ -54,4 +78,4 @@ This will return an SQL command for each table in the nextcloud database. The ro
 
 Replace oc_tablename with the failing table. If there are too many (did not happen here), SQL commands can be generated in a batch (task for the reader).
 
-Now everything should be fine and the MySQL instructions can be followed.
+5. Now everything should be fine and the MySQL instructions can be followed from step 3 onwards
