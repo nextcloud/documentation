@@ -702,13 +702,11 @@ Transfer
 You may transfer all files and shares from one user to another. This is useful 
 before removing a user::
 
- sudo -u www-data php occ files:transfer-ownership <source-user>
- <destination-user>
+ sudo -u www-data php occ files:transfer-ownership <source-user> <destination-user>
  
 It is also possible to transfer only one directory along with it's contents. This can be useful to restructure your organization or quotas. The ``--path`` argument is given as the path to the directory as seen from the source user::
 
- sudo -u www-data php occ files:transfer-ownership --path="path_to_dir" <source-user>
- <destination-user>
+ sudo -u www-data php occ files:transfer-ownership --path="path_to_dir" <source-user> <destination-user>
 
 .. _files_external_label:
 
