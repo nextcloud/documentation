@@ -594,6 +594,10 @@ put your Nextcloud server into :ref:`maintenance
 mode <maintenance_commands_label>` to prevent any user activity until 
 decryption is completed.
 
+Note that if you do not have master key/recovery key enabled, you can ONLY
+decrypt files per user, one user at a time and NOT when in maintenance mode.
+You will need the users' password to decrypt the files.
+
 Use ``encryption:disable`` to disable your encryption module. You must first put 
 your Nextcloud server into :ref:`maintenance mode <maintenance_commands_label>`
 to prevent any user activity.
