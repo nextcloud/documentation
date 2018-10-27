@@ -37,6 +37,11 @@ The Nextcloud server is not compatible with Windows and macOS.
 
 See :doc:`source_installation` for minimum PHP-modules and additional software for installing Nextcloud.
 
+Virtual Machine
+^^^^^^
+
+You can also run it as a VM. Check here for supported hypervisors: https://www.hanssonit.se/nextcloud-vm/
+
 Memory
 ^^^^^^
 
