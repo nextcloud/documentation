@@ -7,8 +7,8 @@ Addressbook
 
 As someone who is new to Nextcloud and new to CardBook here is what you need in excruciating pithy detail to make this work:
 
-- `Thunderbird <https://www.mozilla.org/en-US/thunderbird/>`_ for your OS unless it comes with your OS distribution (Linux)
-- `CardBook <https://addons.mozilla.org/en-US/thunderbird/addon/cardbook/>`_ (a Thunderbird contacts add-on.)
+- `Thunderbird <https://www.thunderbird.net/>`_ for your OS unless it comes with your OS distribution (Linux)
+- `CardBook <https://addons.thunderbird.net/en-US/thunderbird/addon/cardbook/>`_ (a Thunderbird contacts add-on.)
 
 Once you've installed CardBook and Thunderbird do like this:
 
@@ -44,7 +44,7 @@ The rest of the details of dealing with Thunderbird CardBook are left to the rea
 Calendar
 --------
 
-- `Thunderbird <https://www.mozilla.org/en-US/thunderbird/>`_ for your OS unless it comes with your OS distribution (Linux)
+- `Thunderbird <https://www.thunderbird.net/>`_ for your OS unless it comes with your OS distribution (Linux)
 - `Lightning <https://addons.mozilla.org/en-US/thunderbird/addon/lightning/>`_ (a Thunderbird calendar add-on.)
 
 Once you've installed Lighning and Thunderbird do like this:
