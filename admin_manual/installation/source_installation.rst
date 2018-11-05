@@ -35,12 +35,32 @@ Installing on Windows (virtual machine)
 ---------------------------------------
 
 If you are using Windows, the easiest way to get Nextcloud up and running is
-using a `Nextcloud virtual machine (VM) <https://github.com/nextcloud/vm>`_.
-The VMs are maintained by `T&M Hansson IT <https://www.hanssonit.se/>`_ and
-several different versions are offered. The main version is for VMware version
-10 and it comes in different sizes. The standard size is 40 GB but you can also
-download a 500 GB, 1 TB, or a 2 TB version. T&M Hansson IT also provides a Hyper-V
-version for Hyper-V users.
+using a virtual machine (VM). There are two options:
+
+* Enterprise/SMB appliance
+
+Nextcloud GmbH maintains a free appliance built on the 
+`Univention Corporate Server (UCS) <https://www.univention.com/products/univention-app-center/app-catalog/nextcloud/>`_
+with easy graphical setup and web-based administration. It includes user
+management via LDAP, can replace an existing Active Directory setup and
+has optional ONLYOFFICE and Collabora Online integration, with many more applications
+available for easy and quick install.
+
+It can be installed on hardware or ran in a virtual machine using VirtualBox,
+VMWare (ESX) and KVM images.
+
+Download the the Appliance here:
+
+- `Univention Corporate Server (UCS) <https://www.univention.com/products/univention-app-center/app-catalog/nextcloud/>`_
+
+
+* Home user/SMB appliance
+
+A `community VM <https://github.com/nextcloud/vm >`_ is maintained by
+`T&M Hansson IT <https://www.hanssonit.se/>`_ and several different versions are
+offered. The main version is for VMware version 10 and it comes in different sizes.
+The standard size is 40 GB but you can also download a 500 GB, 1 TB, or a 2 TB version.
+T&M Hansson IT also provides a Hyper-V version for Hyper-V users.
 
 For complete instructions and downloads see:
 
