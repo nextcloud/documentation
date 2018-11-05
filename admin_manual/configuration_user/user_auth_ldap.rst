@@ -682,6 +682,11 @@ This error message means one of the following:
 #. No pagination is used and this indicates that there are more results on the
    LDAP server than what is returned. You should then enabled pagination on
    your LDAP server to import all available users.
+#. A request to LDAP was sent, which limited the amount of results. This happens
+   anywhere where pagination is used, but also in the LDAP wizard. Since PHP's
+   LDAP module sends this messages as errors, we could only decide to silence
+   all error output, or none. Therefore it is inevitable that the message appears
+   in the log from time to time. Please ignore it.
 
 Nextcloud LDAP internals
 ------------------------
