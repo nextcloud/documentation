@@ -60,9 +60,11 @@ recommend :doc:`MySQL/MariaDB <system_requirements>`. Your database and PHP
 connectors must be installed before you run the Installation Wizard. When
 you install Nextcloud from packages all the necessary dependencies will be
 satisfied (see :doc:`source_installation` for a detailed listing of required
-and optional PHP modules). You will need the root database login, or any
-administrator login that has permissions to create and modify databases, and
-then enter any name you want for your Nextcloud database.
+and optional PHP modules). You will need the root database login, or any 
+administrator login , and then enter any name you want for your Nextcloud database.
+Be careful your administrator login needs to have the permissions to create
+and modify databases and he needs to have the permissions to grant permissions
+to other users.
 
 After you enter your root or administrator login for your database, the 
 installer creates a special database user with privileges limited to the 
