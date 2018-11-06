@@ -2,6 +2,9 @@
 Synchronizing with macOS
 ========================
 
+Calendar
+--------
+
 With Nextcloud 14+ and its CalDAV-backend, syncing your Calendars with your macOS-device is easy.
 
 To use Nextcloud with macOS Calendar you will need to use the following steps:
@@ -15,3 +18,6 @@ To use Nextcloud with macOS Calendar you will need to use the following steps:
 7. Paste the previous copied (step 2) iOS/macOS CalDAV address into the server address field and click on "Login".
 
 You can now select, with which applications you want to use this CalDAV resource. In the most cases, this will be "Calendar", sometimes you may also want to use it for your Tasks and reminders.
+
+Contacts
+--------
