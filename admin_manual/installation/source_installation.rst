@@ -67,7 +67,7 @@ The VM is made with VMware version 10 and it comes in different sizes and versio
 - 1 TB (VMware & VirtualBox)
 - 2 TB (VMware & VirtualBox)
 
-You can find all th different version `here <https://shop.hanssonit.se/product-category/virtual-machine/nextcloud-vm/>`_.
+You can find all the different version `here <https://shop.hanssonit.se/product-category/virtual-machine/nextcloud-vm/>`_.
 
 For complete instructions and downloads see:
 
