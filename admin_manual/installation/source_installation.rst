@@ -247,7 +247,7 @@ First install some dependencies you will be needing during installation, but whi
 
 Now make sure your system is up to date::
 
-    yum update
+    yum update -y
 
 **Apache**::
 
@@ -281,7 +281,7 @@ Next install the PHP modules needed for this install. Remember, because this is 
 
     yum install -y php72w php72w-cli php72w-common php72w-curl php72w-gd \
     php72w-mbstring php72w-mysqlnd php72w-process php72w-xml php72w-zip \
-    php72w-opcache.x86_64 php72w-pecl-apcu.x86_64 php72w-intl php72w-pecl-redis
+    php72w-opcache php72w-pecl-apcu php72w-intl php72w-pecl-redis
 
 **Database**
 
@@ -331,6 +331,10 @@ For the sake of the walk-through, we grabbed the latest version of Nextcloud in 
 Copy the content over to the root directory of your webserver. In our case, we are using apache so it will be ``/var/www/html/``::
 
     cp -R nextcloud/ /var/www/html/
+    
+During the install process, no data folder is created, so we will create one manually to help with the installation wizard::
+
+    mkdir /var/www/html/nextcloud/data
 
 Make sure that apache has read and write access to the whole nextcloud folder::
 
@@ -339,6 +343,11 @@ Make sure that apache has read and write access to the whole nextcloud folder::
 Restart apache::
 
     systemctl restart httpd.service
+
+Create a firewall rule for access to apache::
+
+    firewall-cmd --zone=public --add-service=http --permanent
+    firewall-cmd --reload
 
 **Redis**::
 
@@ -358,7 +367,7 @@ The following commands only refers to this tutorial::
   semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/.user.ini'
   semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/3rdparty/aws/aws-sdk-php/src/data/logs(/.*)?'
 
-  restorecon -Rv '/var/www/html/nextcloud/'
+  restorecon -R '/var/www/html/nextcloud/'
 
   setsebool -P httpd_can_network_connect on
 
