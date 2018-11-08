@@ -56,7 +56,7 @@ Download the the Appliance here:
 
 * **Home User/SME appliance**
 
-The `Official Nextcloud VM <https://github.com/nextcloud/vm/>`_ is maintained by
+The `Nextcloud VM <https://github.com/nextcloud/vm/>`_ is maintained by
 `T&M Hansson IT <https://www.hanssonit.se/nextcloud-vm/>`_ and several different versions are
 offered. Collabora, OnlyOffice, Full Text Search and other apps can easily be installed with the included scripts which you can choose to run during the first setup, or download them later and run it afterwards. You can find all the currently available automated app installations `here <https://github.com/nextcloud/vm/tree/master/apps/>`_.
 
@@ -71,8 +71,8 @@ You can find all the different version `here <https://shop.hanssonit.se/product-
 
 For complete instructions and downloads see:
 
-- `Official Nextcloud VM (Github) <https://github.com/nextcloud/vm/>`_
-- `Official Nextcloud VM (T&M Hansson IT) <https://www.hanssonit.se/nextcloud-vm/>`_
+- `Nextcloud VM (Github) <https://github.com/nextcloud/vm/>`_
+- `Nextcloud VM (T&M Hansson IT) <https://www.hanssonit.se/nextcloud-vm/>`_
 
 .. note:: You can install the VM on several different operating systems as long as you can mount OVA, VMDK, or VHD/VHDX VM in your hypervisor. If you are using KVM then you need to install the VM from the scripts on Github. You can follow the instructions `here <https://github.com/nextcloud/vm#build-your-own-vm-or-install-on-a-vps>`_.
    
