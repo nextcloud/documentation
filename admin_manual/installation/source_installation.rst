@@ -37,7 +37,7 @@ Installing on Windows (virtual machine)
 If you are using Windows, the easiest way to get Nextcloud up and running is
 using a virtual machine (VM). There are two options:
 
-* Enterprise/SMB appliance
+* **Enterprise/SME appliance**
 
 Nextcloud GmbH maintains a free appliance built on the 
 `Univention Corporate Server (UCS) <https://www.univention.com/products/univention-app-center/app-catalog/nextcloud/>`_
@@ -54,22 +54,28 @@ Download the the Appliance here:
 - `Univention Corporate Server (UCS) <https://www.univention.com/products/univention-app-center/app-catalog/nextcloud/>`_
 
 
-* Home user/SMB appliance
+* **Home User/SME appliance**
 
-A `community VM <https://github.com/nextcloud/vm >`_ is maintained by
-`T&M Hansson IT <https://www.hanssonit.se/>`_ and several different versions are
-offered. The main version is for VMware version 10 and it comes in different sizes.
-The standard size is 40 GB but you can also download a 500 GB, 1 TB, or a 2 TB version.
-T&M Hansson IT also provides a Hyper-V version for Hyper-V users.
+The `Nextcloud VM <https://github.com/nextcloud/vm/>`_ is maintained by
+`T&M Hansson IT <https://www.hanssonit.se/nextcloud-vm/>`_ and several different versions are
+offered. Collabora, OnlyOffice, Full Text Search and other apps can easily be installed with the included scripts which you can choose to run during the first setup, or download them later and run it afterwards. You can find all the currently available automated app installations `here <https://github.com/nextcloud/vm/tree/master/apps/>`_.
+
+The VM is made with VMware version 10 and it comes in different sizes and versions:
+
+- 40 GB (Hyper-V)
+- 500 GB (VMware & VirtualBox)
+- 1 TB (VMware & VirtualBox)
+- 2 TB (VMware & VirtualBox)
+
+You can find all the different version `here <https://shop.hanssonit.se/product-category/virtual-machine/nextcloud-vm/>`_.
 
 For complete instructions and downloads see:
 
-- https://github.com/nextcloud/vm 
-- https://www.hanssonit.se/nextcloud-vm/
+- `Nextcloud VM (Github) <https://github.com/nextcloud/vm/>`_
+- `Nextcloud VM (T&M Hansson IT) <https://www.hanssonit.se/nextcloud-vm/>`_
 
-.. note:: You can install the VM on OSes other than Windows as long as
-   your hypervisor can mount OVA, VMDK, or VHD/VHDX VM formats.
-
+.. note:: You can install the VM on several different operating systems as long as you can mount OVA, VMDK, or VHD/VHDX VM in your hypervisor. If you are using KVM then you need to install the VM from the scripts on Github. You can follow the instructions `here <https://github.com/nextcloud/vm#build-your-own-vm-or-install-on-a-vps>`_.
+   
 .. _snaps_label:
 
 Installing via Snap packages
