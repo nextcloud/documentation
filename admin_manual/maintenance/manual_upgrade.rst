@@ -12,6 +12,8 @@ Always start by making a fresh backup and disabling all 3rd party apps.
    
    .. note:: To unpack your new tarball, run:
       unzip nextcloud-[version].zip
+      or
+      tar -xjf nextcloud-[version].tar.bz2
     
 
 3. Stop your Web server.
@@ -19,11 +21,11 @@ Always start by making a fresh backup and disabling all 3rd party apps.
 4. Rename your current Nextcloud directory, for example ``nextcloud-old``.
 
 5. Unpacking the new archive creates a new ``nextcloud`` directory populated 
-   with your new server files. Copy this directory and its contents to the 
-   original location of your old server, for example ``/var/www/``, so that 
+   with your new server files. Move this directory and its contents to the 
+   original location of your old server. For example ``/var/www/``, so that 
    once again you have ``/var/www/nextcloud``.
 
-6. Copy the ``config.php`` file from your old Nextcloud directory to your new 
+6. Copy the ``config/config.php`` file from your old Nextcloud directory to your new 
    Nextcloud directory.
 
 7. If you keep your ``data/`` directory in your ``nextcloud/`` directory, copy 
@@ -36,6 +38,7 @@ Always start by making a fresh backup and disabling all 3rd party apps.
    directory to see if they are there. If not, copy them from your old ``apps/``
    directory to your new one. Make sure the directory permissions of your third
    party application directories are the same as for the other ones.
+   ## THIS APPS part IS INSUFFICIENTLY DOCUMENTED (needs better instructions)
    
 9. Adjust file ownership and permissions::
 
@@ -45,10 +48,12 @@ Always start by making a fresh backup and disabling all 3rd party apps.
 
 10. Restart your Web server.
 
-11. Now launch the upgrade from the command  line using ``occ``, like this 
+11. Now launch the upgrade from the command line using ``occ``, like this 
     example on Ubuntu Linux::
     
      sudo -u www-data php occ upgrade
+     
+    (!) this MUST be executed from within your nextcloud installation directory
      
 12. The upgrade operation takes a few minutes to a few hours, depending on the 
     size of your installation. When it is finished you will see a success 
