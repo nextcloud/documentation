@@ -36,21 +36,47 @@ Installing on Windows (virtual machine)
 ---------------------------------------
 
 If you are using Windows, the easiest way to get Nextcloud up and running is
-using a `Nextcloud virtual machine (VM) <https://github.com/nextcloud/vm>`_.
-The VMs are maintained by `Tech and Me <https://www.techandme.se/>`_ and
-several different versions are offered. The main version is for VMware version
-10 and it comes in different sizes. The standard size is 20 GB but you can also
-download a 500 GB or a 1 TB version. Tech and Me also provides a Hyper-V
-version for Hyper-V users.
+using a virtual machine (VM). There are two options:
+
+* **Enterprise/SME appliance**
+
+Nextcloud GmbH maintains a free appliance built on the 
+`Univention Corporate Server (UCS) <https://www.univention.com/products/univention-app-center/app-catalog/nextcloud/>`_
+with easy graphical setup and web-based administration. It includes user
+management via LDAP, can replace an existing Active Directory setup and
+has optional ONLYOFFICE and Collabora Online integration, with many more applications
+available for easy and quick install.
+
+It can be installed on hardware or ran in a virtual machine using VirtualBox,
+VMWare (ESX) and KVM images.
+
+Download the the Appliance here:
+
+- `Univention Corporate Server (UCS) <https://www.univention.com/products/univention-app-center/app-catalog/nextcloud/>`_
+
+
+* **Home User/SME appliance**
+
+The `Nextcloud VM <https://github.com/nextcloud/vm/>`_ is maintained by
+`T&M Hansson IT <https://www.hanssonit.se/nextcloud-vm/>`_ and several different versions are
+offered. Collabora, OnlyOffice, Full Text Search and other apps can easily be installed with the included scripts which you can choose to run during the first setup, or download them later and run it afterwards. You can find all the currently available automated app installations `here <https://github.com/nextcloud/vm/tree/master/apps/>`_.
+
+The VM is made with VMware version 10 and it comes in different sizes and versions:
+
+- 40 GB (Hyper-V)
+- 500 GB (VMware & VirtualBox)
+- 1 TB (VMware & VirtualBox)
+- 2 TB (VMware & VirtualBox)
+
+You can find all the different version `here <https://shop.hanssonit.se/product-category/virtual-machine/nextcloud-vm/>`_.
 
 For complete instructions and downloads see:
 
-- https://github.com/nextcloud/vm
-- https://www.techandme.se/nextcloud-vm/
+- `Nextcloud VM (Github) <https://github.com/nextcloud/vm/>`_
+- `Nextcloud VM (T&M Hansson IT) <https://www.hanssonit.se/nextcloud-vm/>`_
 
-.. note:: You can install the VM on OSes other than Windows as long as
-   your hypervisor can mount OVA, VMDK, or VHD VM formats.
-
+.. note:: You can install the VM on several different operating systems as long as you can mount OVA, VMDK, or VHD/VHDX VM in your hypervisor. If you are using KVM then you need to install the VM from the scripts on Github. You can follow the instructions `here <https://github.com/nextcloud/vm#build-your-own-vm-or-install-on-a-vps>`_.
+   
 .. _snaps_label:
 
 Installing via Snap packages
@@ -85,7 +111,7 @@ If you get a result, the module is present.
 
 Required:
 
-* PHP (>= 5.6, 7.0, 7.1 or 7.2)
+* PHP (>= 7.0, 7.1 or 7.2)
 * PHP module ctype
 * PHP module dom
 * PHP module GD
@@ -93,6 +119,7 @@ Required:
 * PHP module JSON
 * PHP module libxml (Linux package libxml2 must be >=2.7.0)
 * PHP module mbstring
+* PHP module openssl
 * PHP module posix
 * PHP module SimpleXML
 * PHP module XMLReader
@@ -115,7 +142,6 @@ Database connectors (pick the one for your database:)
 * PHP module intl (increases language translation performance and fixes sorting
   of non-ASCII characters)
 * PHP module mcrypt (increases file encryption performance)
-* PHP module openssl (required for accessing HTTPS resources)
 
 Required for specific apps:
 
@@ -415,11 +441,11 @@ it, replacing the **Directory** and other filepaths with your own filepaths::
    SetEnv HTTP_HOME /var/www/nextcloud
 
   </Directory>
+ 
+Then enable the newly created site::
 
-Then create a symlink to :file:`/etc/apache2/sites-enabled`::
-
-  ln -s /etc/apache2/sites-available/nextcloud.conf /etc/apache2/sites-enabled/nextcloud.conf
-
+  a2ensite nextcloud.conf
+ 
 Additional Apache configurations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -478,7 +504,7 @@ must be writable by the HTTP user. Then you can set in the :file:`config.php` tw
 
 if your setup is available on ``https://example.org/nextcloud`` or::
 
- 'overwrite.cli.url' => 'https://example.org',
+ 'overwrite.cli.url' => 'https://example.org/',
  'htaccess.RewriteBase' => '/',
 
 if it isn't installed in a subfolder. Finally run this occ-command to update
@@ -565,12 +591,6 @@ ini file. This can be the case, for example, for the ``date.timezone`` setting.
 
 php-fpm configuration notes
 ---------------------------
-
-**Security: Use at least PHP >= 5.6.6**
-
-Due to `a bug with security implications <https://bugs.php.net/bug.php?id=64938>`_
-in older PHP releases with the handling of XML data you are highly encouraged to run
-at least PHP 5.6.6 when in a threaded environment.
 
 **System environment variables**
 

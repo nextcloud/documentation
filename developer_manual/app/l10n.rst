@@ -4,7 +4,7 @@ Translation
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-Nextcloud's translation system is powered by `Transifex <https://www.transifex.com/nextcloud/>`_. To start translating sign up and enter a group. If your community app should be added to Transifex contact one of the translation teams `in the forums <https://help.nextcloud.com/c/translations>`_ to set it up for you.
+Nextcloud's translation system is powered by `Transifex <https://www.transifex.com/nextcloud/>`_. To start translating sign up and enter a group. If your community app should be translated by the `Nextcloud community on Transifex <https://www.transifex.com/nextcloud/nextcloud/dashboard/>`_ just follow the setup section below.
 
 PHP
 ---
@@ -124,43 +124,91 @@ In case some translation strings may be translated wrongly because they have mul
         </li>
     </ul>
 
+Ignoring files from translation tool
+------------------------------------
+
+The translation tool scrapes the source code for method calls to  **t()**
+or **n()** to extract the strings that should be translated. If you check
+in minified JS code for example then those method names are also quite
+common and could cause wrong extractions. For this reason we allow to
+specify a list of files that the translation tool will not scrape for
+strings. You simply need to add a file named :file:`.l10nignore` into
+the root folder of your app and specify the files one per line::
+
+    # compiled vue templates
+    js/bruteforcesettings.js
+
+
 Creating your own translatable files
 ------------------------------------
 
 If Transifex is not the right choice or the app is not accepted for translation,
-generate the gettext strings by yourself by creating an :file:`l10n/` directory
-in the app folder and executing::
+generate the gettext strings by yourself by executing our
+`translation tool <https://github.com/nextcloud/docker-ci/tree/master/translations/translationtool>`_
+in the app folder::
 
 
-    cd /srv/http/nextcloud/apps/myapp/l10n
-    perl l10n.pl read myapp
+    cd /srv/http/nextcloud/apps/myapp
+    translationtool.phar create-pot-files
 
-The translation script requires **Locale::PO** and **gettext**, installable via::
+The translation tool requires **gettext**, installable via::
 
-    apt-get install liblocale-po-perl gettext
+    apt-get install gettext
 
-The above script generates a template that can be used to translate all strings
-of an app. This template is located in the folder :file:`template/` with the
+The above tool generates a template that can be used to translate all strings
+of an app. This template is located in the folder :file:`translationfiles/template/` with the
 name :file:`myapp.pot`. It can be used by your favored translation tool which
 then creates a :file:`.po` file. The :file:`.po` file needs to be placed in a
 folder named like the language code with the app name as filename - for example
-:file:`l10n/es/myapp.po`. After this step the perl script needs to be invoked to
+:file:`translationfiles/es/myapp.po`. After this step the tool needs to be invoked to
 transfer the po file into our own fileformat that is more easily readable by
 the server code::
 
-    perl l10n.pl write myapp
+    translationtool.phar convert-po-files
 
 Now the following folder structure is available::
 
     myapp/l10n
-    |-- es
-    |   |-- myapp.po
     |-- es.js
     |-- es.json
-    |-- es.php
-    |-- l10n.pl
+    myapp/translationfiles
+    |-- es
+    |   |-- myapp.po
     |-- templates
         |-- myapp.pot
 
-You then just need the :file:`.php`, :file:`.json` and :file:`.js` files for a
-working localized app.
+You then just need the :file:`.json` and :file:`.js` files for a working localized app.
+
+Setup of the transifex sync
+---------------------------
+
+To setup the transifex sync within the Nextcloud community you need to add first the
+transifex config to your app folder at :file:`.tx/config` (please replace **MYAPP** with your apps id)::
+
+    [main]
+    host = https://www.transifex.com
+    lang_map = bg_BG: bg, cs_CZ: cs, fi_FI: fi, hu_HU: hu, nb_NO: nb, sk_SK: sk, th_TH: th, ja_JP: ja
+
+    [nextcloud.MYAPP]
+    file_filter = translationfiles/<lang>/MYAPP.po
+    source_file = translationfiles/templates/MYAPP.pot
+    source_lang = en
+    type = PO
+
+Then create a folder :file:`l10n` and a file :file:`l10n/.gitkeep` to create an
+empty folder which later holds the translations.
+
+Now the GitHub account `@nextcloud-bot <https://github.com/nextcloud-bot>`_ needs
+to get write access to your repository. It will run every night and only push
+commits to the master branch once there is an update to the translation. In general
+you should enable the `protected branches feature <https://help.github.com/articles/configuring-protected-branches/>`_
+at least for the master branch.
+
+For the sync job there is a `configuration file <https://github.com/nextcloud/docker-ci/blob/master/translations/config.json>`_
+available in our docker-ci repository. Adding there the repo owner and repo name
+to the section named **app** via pull request is enough. Once this change is in
+one member of the sysadmin team will deploy it to the sync server and the job
+will then run once a day.
+
+If you need help then just `open a ticket with the request <https://github.com/nextcloud/docker-ci/issues/new>`_
+and we can also guide you through the steps.

@@ -103,9 +103,8 @@ The openSUSE way
 * sudo zypper in texlive-threeparttable
 * sudo zypper in texlive-wrapfig
 * sudo zypper in texlive-multirow
-* cd user_manual
-* make latexpdf
-* okular _build/latex/NextcloudUserManual.pdf
+* make user-manual-pdf
+* okular user_manual/_build/latex/NextcloudUserManual.pdf
 
 The Debian/Ubuntu way
 ~~~~~~~~~~~~~~~~~~~~~
@@ -116,9 +115,9 @@ The Debian/Ubuntu way
 * sudo apt-get install texlive-fonts-recommended
 * sudo apt-get install texlive-latex-extra
 * sudo apt-get install texlive-latex-recommended
-* cd user_manual
-* make latexpdf
-* evince _build/latex/NextcloudUserManual.pdf
+* sudo apt-get install latexmk
+* make user-manual-pdf
+* evince user_manual/_build/latex/NextcloudUserManual.pdf
 
 The Arch Linux way
 ~~~~~~~~~~~~~~~~~~
@@ -127,9 +126,8 @@ The Arch Linux way
 * sudo pacman -S texlive-latexextra
 * sudo pip2 install rst2pdf sphinxcontrib-phpdomain
 * sudo ln -s /usr/bin/sphinx-build2 /usr/bin/sphinx-build
-* cd user_manual
-* make latexpdf
-* PDFVIEWER _build/latex/NextcloudUserManual.pdf
+* make user-manual-pdf
+* PDFVIEWER user_manual/_build/latex/NextcloudUserManual.pdf
 
 Windows
 ^^^^^^^
@@ -161,6 +159,14 @@ Process
 2. Run ``odt2sphinx my.docx``
 3. Move the resulting ``rst`` files in place and reference them
 4. Wrap text lines at 80 chars, apply markup fixes
+
+Icons
+^^^^^
+To compile and update the icons list in the designer manual, you will also need
+1. inkscape
+2. sass
+3. unzip
+4. wget
 
 .. _CC BY 3.0: http://creativecommons.org/licenses/by/3.0/deed.en_US
 .. _`Xcode command line tools`: http://stackoverflow.com/questions/9329243/xcode-4-4-and-later-install-command-line-tools

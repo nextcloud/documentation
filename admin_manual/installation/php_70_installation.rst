@@ -2,9 +2,7 @@
 Installing PHP 7.0 on RHEL 7 and CentOS 7
 =========================================
 
-PHP 5.4 has been end-of-life since September 2015 and is no longer supported by the PHP team. RHEL 7 still ships with PHP 5.4, and Red Hat supports it. Nextcloud 11+ requires PHP 5.6 or better, so upgrading to 5.6 is required. For more information see :ref:`label-php56installation`. However, it is highly recommended to upgrade to PHP 7.0+ for best security and performance. 
-
-**Before upgrading, evaluate all of your PHP apps for compatibility with PHP 7.0.**
+PHP 5.4 has been end-of-life since September 2015 and is no longer supported by the PHP team. RHEL 7 still ships with PHP 5.4, and Red Hat supports it. Nextcloud 14+ requires PHP 7.0 or newer, so upgrading to 7.0 is required.
 
 RHEL 7 Upgrade to PHP 7.0
 -------------------------
@@ -48,8 +46,6 @@ CentOS 7 Upgrade to PHP 7.0
 ---------------------------
 
 To upgrade to PHP 7.0, use the Red Hat Software Collections (SCL) repository.
-
-**Before upgrading, evaluate all of your PHP apps for compatibility with PHP 7.0.**
 
 Follow these steps to install PHP 7.0 from SCL. First install the SCL repository::
 

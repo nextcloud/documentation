@@ -40,7 +40,7 @@ e.g. you want to send the hourly emails always at the full hour, daily emails be
 people start to work in the morning and weekly mails shall be send on monday morning,
 so people can read up when starting into the week.
 
-Therefor in Nextcloud 12 a console command was added to allow sending those emails
+Therefore in Nextcloud 12 a console command was added to allow sending those emails
 intentionally. This allows to set up special cron jobs on your server with the known
 granularity, instead of relying on the Nextcloud cron feature which is not very flexible
 on scheduling.

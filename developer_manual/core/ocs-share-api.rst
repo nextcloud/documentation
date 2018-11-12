@@ -123,6 +123,7 @@ Update a given share. Only one value can be updated per request.
   upload for public shares.
 * PUT Arguments: expireDate - (string) set a expire date for public link
   shares. This argument expects a well formatted date string, e.g. 'YYYY-MM-DD'
+* PUT Arguments: note - (string) Adds a note for the share recipient.
 
 .. note:: Only one of the update parameters can be specified at once.
 
@@ -138,7 +139,7 @@ Federated Cloud Shares
 ----------------------
 
 Both the sending and the receiving instance need to have federated cloud sharing
-enabled and configured. See `Configuring Federated Cloud Sharing <https://docs.nextcloud.org/server/12/admin_manual/configuration_files/federated_cloud_sharing_configuration.html>`_.
+enabled and configured. See `Configuring Federated Cloud Sharing <https://docs.nextcloud.org/server/14/admin_manual/configuration_files/federated_cloud_sharing_configuration.html>`_.
 
 .. TODO ON RELEASE: Update version number above on release
 

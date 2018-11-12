@@ -34,7 +34,7 @@ occ command Directory
 * :ref:`security_commands_label`
 * :ref:`trashbin_label`
 * :ref:`user_commands_label`
-* :ref:`_group_commands_label`
+* :ref:`group_commands_label`
 * :ref:`versions_label`
 * :ref:`command_line_installation_label`
 * :ref:`command_line_upgrade_label`
@@ -55,9 +55,9 @@ The HTTP user is different on the various Linux distributions:
 
 If your HTTP server is configured to use a different PHP version than the 
 default (/usr/bin/php), ``occ`` should be run with the same version. For 
-example, in CentOS 6.5 with SCL-PHP56 installed, the command looks like this::
+example, in CentOS 6.5 with SCL-PHP70 installed, the command looks like this::
 
-  sudo -u apache /opt/rh/php56/root/usr/bin/php /var/www/html/nextcloud/occ
+  sudo -u apache /opt/rh/php70/root/usr/bin/php /var/www/html/nextcloud/occ
 
 .. note:: Although the following examples make use of the ``sudo -u ... /path/to/php /path/to/occ`` method, your environment may require use of a different wrapper utility than ``sudo`` to execute the command as the appropriate user. Other common wrappers:
 
@@ -594,6 +594,10 @@ put your Nextcloud server into :ref:`maintenance
 mode <maintenance_commands_label>` to prevent any user activity until 
 decryption is completed.
 
+Note that if you do not have master key/recovery key enabled, you can ONLY
+decrypt files per user, one user at a time and NOT when in maintenance mode.
+You will need the users' password to decrypt the files.
+
 Use ``encryption:disable`` to disable your encryption module. You must first put 
 your Nextcloud server into :ref:`maintenance mode <maintenance_commands_label>`
 to prevent any user activity.
@@ -638,7 +642,10 @@ File operations
   files:scan                 rescan filesystem
   files:transfer-ownership   All files and folders are moved to another 
                              user - shares are moved as well.
- 
+
+Scan
+^^^^
+
 The ``files:scan`` command scans for new files and updates the file cache. You 
 may rescan all files, per-user, a space-delimited list of users, and limit the 
 search path. If not using ``--quiet``, statistics will be shown at the end of 
@@ -687,14 +694,23 @@ path component given.
 The ``--path``, ``--all`` and ``[user_id]`` parameters and are exclusive - only 
 one must be specified.
 
+Cleanup
+^^^^^^^
+
 ``files:cleanup`` tidies up the server's file cache by deleting all file 
 entries that have no matching entries in the storage table. 
+
+Transfer
+^^^^^^^^
 
 You may transfer all files and shares from one user to another. This is useful 
 before removing a user::
 
- sudo -u www-data php occ files:transfer-ownership <source-user>
- <destination-user>
+ sudo -u www-data php occ files:transfer-ownership <source-user> <destination-user>
+ 
+It is also possible to transfer only one directory along with it's contents. This can be useful to restructure your organization or quotas. The ``--path`` argument is given as the path to the directory as seen from the source user::
+
+ sudo -u www-data php occ files:transfer-ownership --path="path_to_dir" <source-user> <destination-user>
 
 .. _files_external_label:
 
@@ -752,7 +768,7 @@ Verify your app::
   sudo -u www-data php occ integrity:check-app --path=/pathto/app appname
   
 When it returns nothing, your app is signed correctly. When it returns a message then there is an error. See `Code Signing 
-<https://docs.nextcloud.org/server/12/developer_manual/app/code_signing.html#how-to-get-your-app-signed>`_ in the Developer manual for more detailed information.
+<https://docs.nextcloud.org/server/14/developer_manual/app/code_signing.html#how-to-get-your-app-signed>`_ in the Developer manual for more detailed information.
 .. TODO ON RELEASE: Update version number above on release
 
 ``integrity:sign-core`` is for Nextcloud core developers only.
@@ -1122,10 +1138,8 @@ authentication servers such as LDAP::
  | user directories | 2  |
  +------------------+----+
 
-.. _group_commands_label:
-
 Group commands
--------------
+--------------
 
 The ``group`` commands create and remove groups, add and remove users in
 groups, display a list of all users in a group::
@@ -1313,10 +1327,9 @@ List all options, like this example on CentOS Linux::
 
  sudo -u apache php occ upgrade -h
  Usage:
- upgrade [--no-app-disable]
+ upgrade [--quiet]
 
  Options:
- --no-app-disable       skips the disable of third party apps
  --help (-h)            Display this help message.
  --quiet (-q)           Do not output any message.
  --verbose (-v|vv|vvv)  Increase the verbosity of messages: 1 for normal output, 
