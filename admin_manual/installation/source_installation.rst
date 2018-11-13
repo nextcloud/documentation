@@ -16,6 +16,7 @@ archive <https://nextcloud.com/install/>`_.
 * :ref:`snaps_label`
 * :ref:`prerequisites_label`
 * :ref:`ubuntu_installation_label`
+* :ref:`centos7_installation_label`
 * :ref:`apache_configuration_label`
 * :ref:`pretty_urls_label`
 * :ref:`enabling_ssl_label`
@@ -174,8 +175,8 @@ You don’t need the WebDAV module for your Web server (i.e. Apache’s
 SabreDAV.
 If ``mod_webdav`` is enabled you must disable it for Nextcloud. (See
 :ref:`apache_configuration_label` for an example configuration.)
- 
-.. _ubuntu_installation_label:  
+
+.. _ubuntu_installation_label:
 
 Example installation on Ubuntu 16.04 LTS server
 -----------------------------------------------
@@ -218,19 +219,19 @@ Now download the archive of the latest Nextcloud version:
 * Download its corresponding checksum file, e.g. nextcloud-x.y.z.tar.bz2.md5,
   or nextcloud-x.y.z.tar.bz2.sha256.
 * Verify the MD5 or SHA256 sum::
-   
+
     md5sum -c nextcloud-x.y.z.tar.bz2.md5 < nextcloud-x.y.z.tar.bz2
     sha256sum -c nextcloud-x.y.z.tar.bz2.sha256 < nextcloud-x.y.z.tar.bz2
     md5sum  -c nextcloud-x.y.z.zip.md5 < nextcloud-x.y.z.zip
     sha256sum  -c nextcloud-x.y.z.zip.sha256 < nextcloud-x.y.z.zip
-    
+
 * You may also verify the PGP signature::
-    
+
     wget https://download.nextcloud.com/server/releases/nextcloud-x.y.z.tar.bz2.asc
     wget https://nextcloud.com/nextcloud.asc
     gpg --import nextcloud.asc
     gpg --verify nextcloud-x.y.z.tar.bz2.asc nextcloud-x.y.z.tar.bz2
- 
+
 * Now you can extract the archive contents. Run the appropriate unpacking
   command for your archive type::
 
@@ -245,14 +246,173 @@ Now download the archive of the latest Nextcloud version:
 
   where ``/path/to/webserver/document-root`` is replaced by the
   document root of your Web server::
-    
+
     cp -r nextcloud /var/www
 
 On other HTTP servers it is recommended to install Nextcloud outside of the
 document root.
 
+.. _centos7_installation_label:
+
+Example installation on CentOS 7 server
+-----------------------------------------------
+In this install tutorial we will be deploying CentOS 7.5, PHP 7.2, MariaDB, Redis as memcache and Nextcloud running on Apache.
+
+Start off by installing a CentOS 7 minimal install. This should provide a sufficient platform to run a successful Nextcloud instance.
+
+First install some dependencies you will be needing during installation, but which will also be useful in every day use situations::
+
+    yum install -y epel-release yum-utils unzip curl wget \
+    bash-completion policycoreutils-python mlocate bzip2
+
+Now make sure your system is up to date::
+
+    yum update -y
+
+**Apache**::
+
+    yum install -y httpd
+
+Create a virtualhost file and add the following content to it::
+
+    vi /etc/httpd/conf.d/nextcloud.conf
+
+    <VirtualHost *:80>
+      DocumentRoot /var/www/html/
+      ServerName  your.server.com
+
+    <Directory "/var/www/html/">
+      Require all granted
+      AllowOverride All
+      Options FollowSymLinks MultiViews
+    </Directory>
+    </VirtualHost>
+
+Make sure the apache web service is enabled and started::
+
+    systemctl enable httpd.service
+    systemctl start httpd.service
+
+**PHP**:
+
+Next install the PHP modules needed for this install. Remember, because this is a limited basic install, we only install the neccessary modules, not all of them. If you are making a more complete install, please refer to PHP module list at the top of this page.::
+
+    rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+
+    yum install -y php72w php72w-cli php72w-common php72w-curl php72w-gd \
+    php72w-mbstring php72w-mysqlnd php72w-process php72w-xml php72w-zip \
+    php72w-opcache php72w-pecl-apcu php72w-intl php72w-pecl-redis
+
+**Database**
+
+As mentioned, we will be using MySQL/MariaDB as our database.::
+
+    yum install -y mariadb mariadb-server
+
+Make sure the database service is enabled to start at boot time.::
+
+    systemctl enable mariadb.service
+    systemctl start mariadb.service
+
+There is already an extensive document on database configuration which you can find here: :doc:`..admin_manual/configuration_server/automatic_configuration.rst` Please follow all instructions there and then head back here.
+
+**Installing Nextcloud**
+
+Nearly there, so keep at it, you are doing great!
+
+Now download the archive of the latest Nextcloud version:
+
+* Go to the `Nextcloud Download Page <https://nextcloud.com/install>`_.
+* Go to **Download Nextcloud Server > Download > Archive file for
+  server owners** and download either the tar.bz2 or .zip archive.
+* This downloads a file named nextcloud-x.y.z.tar.bz2 or nextcloud-x.y.z.zip
+  (where x.y.z is the version number).
+* Download its corresponding checksum file, e.g. nextcloud-x.y.z.tar.bz2.md5,
+  or nextcloud-x.y.z.tar.bz2.sha256.
+* Verify the MD5 or SHA256 sum::
+
+    md5sum -c nextcloud-x.y.z.tar.bz2.md5 < nextcloud-x.y.z.tar.bz2
+    sha256sum -c nextcloud-x.y.z.tar.bz2.sha256 < nextcloud-x.y.z.tar.bz2
+    md5sum  -c nextcloud-x.y.z.zip.md5 < nextcloud-x.y.z.zip
+    sha256sum  -c nextcloud-x.y.z.zip.sha256 < nextcloud-x.y.z.zip
+
+* You may also verify the PGP signature::
+
+    wget https://download.nextcloud.com/server/releases/nextcloud-x.y.z.tar.bz2.asc
+    wget https://nextcloud.com/nextcloud.asc
+    gpg --import nextcloud.asc
+    gpg --verify nextcloud-x.y.z.tar.bz2.asc nextcloud-x.y.z.tar.bz2
+
+
+For the sake of the walk-through, we grabbed the latest version of Nextcloud in the form a zip file, confirmed the download with the above-mentioned command, and now we will extract it::
+
+    unzip nextcloud-*.zip
+
+Copy the content over to the root directory of your webserver. In our case, we are using apache so it will be ``/var/www/html/``::
+
+    cp -R nextcloud/ /var/www/html/
+    
+During the install process, no data folder is created, so we will create one manually to help with the installation wizard::
+
+    mkdir /var/www/html/nextcloud/data
+
+Make sure that apache has read and write access to the whole nextcloud folder::
+
+    chown -R apache.apache /var/www/html/nextcloud
+
+Restart apache::
+
+    systemctl restart httpd.service
+
+Create a firewall rule for access to apache::
+
+    firewall-cmd --zone=public --add-service=http --permanent
+    firewall-cmd --reload
+
+**Redis**::
+
+    yum install -y redis
+    systemctl enable redis.service
+    systemctl start redis.service
+
+**SELinux**
+
+Again, there is an extensive write-up done on SELinux which can be found at :doc:`../installation/selinux_configuration`, so if you are using SELinux in Enforcing mode, please run the commands suggested on that page.
+The following commands only refers to this tutorial::
+
+  semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/data(/.*)?'
+  semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/config(/.*)?'
+  semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/apps(/.*)?'
+  semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/.htaccess'
+  semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/.user.ini'
+  semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/3rdparty/aws/aws-sdk-php/src/data/logs(/.*)?'
+
+  restorecon -R '/var/www/html/nextcloud/'
+
+  setsebool -P httpd_can_network_connect on
+
+If you need more SELinux configs, refer to the above-mentioned URL, return to this tutorial.
+
+Once done with with SELinux, please head over to ``http://your.server.com/nextcloud`` and follow the steps as found :doc:`../installation/installation_wizard`, where it will explain to you exactly how to proceed with the final part of the install, which is done as admin user through your web browser.
+
+.. note:: If you use this tutorial, and you see warnings in the web browser after installation about ``OPcache`` not being enabled or configured correctly, you need to make the suggested changes in ``/etc/php.d/opcache.ini`` for the errors to disappear. These warnings will be on the Admin page, under Basic settings.
+
+Because we used ``Redis`` as a memcache, you will need a config similar to the following example in ``/var/www/html/nextcloud/config/config.php`` which is auto-generated when you run the online installation wizard mentioned earlier.
+
+Example config::
+
+  'memcache.distributed' => '\OC\Memcache\Redis',
+  'memcache.locking' => '\OC\Memcache\Redis',
+  'memcache.local' => '\OC\Memcache\APCu',
+  'redis' => array(
+    'host' => 'localhost',
+    'port' => 6379,
+      ),
+
+Remember, this tutorial is only for a basic setup of Nextcloud 13 on CentOS 7, with PHP 7.2. If you are going to use more features like LDAP or Single Sign On, you will need additional PHP modules as well as extra configurations. So please visit the rest of the Admin manual, :doc:`..admin_manual/index.rst`, for detailed descriptions on how to get this done.
+
 .. _apache_configuration_label:
-   
+
 Apache Web server configuration
 -------------------------------
 
@@ -260,9 +420,9 @@ On Debian, Ubuntu, and their derivatives, Apache installs with a useful
 configuration so all you have to do is create a
 :file:`/etc/apache2/sites-available/nextcloud.conf` file with these lines in
 it, replacing the **Directory** and other filepaths with your own filepaths::
-   
+
   Alias /nextcloud "/var/www/nextcloud/"
-   
+
   <Directory /var/www/nextcloud/>
     Options +FollowSymlinks
     AllowOverride All
@@ -287,16 +447,16 @@ Additional Apache configurations
   it by running::
 
     a2enmod rewrite
- 
+
   Additional recommended modules are ``mod_headers``, ``mod_env``, ``mod_dir`` and ``mod_mime``::
- 
+
     a2enmod headers
     a2enmod env
     a2enmod dir
     a2enmod mime
- 
+
   If you're running ``mod_fcgi`` instead of the standard ``mod_php`` also enable::
- 
+
     a2enmod setenvif
 
 * You must disable any server-configured authentication for Nextcloud, as it
@@ -320,9 +480,9 @@ Additional Apache configurations
 * If you're running Nextcloud in a subdirectory and want to use CalDAV or
   CardDAV clients make sure you have configured the correct
   :ref:`service-discovery-label` URLs.
- 
-.. _pretty_urls_label:  
- 
+
+.. _pretty_urls_label:
+
 Pretty URLs
 -----------
 
@@ -369,20 +529,20 @@ the default site. Open a terminal and run::
           plan to make your Nextcloud server publicly accessible. You might
           want to consider getting a certificate signed by a commercial signing
           authority. Check with your domain name registrar or hosting service
-          for good deals on commercial certificates.   
-    
+          for good deals on commercial certificates.
+
 .. _installation_wizard_label:
-    
+
 Installation wizard
 -------------------
 
-After restarting Apache you must complete your installation by running either 
-the graphical Installation Wizard, or on the command line with the ``occ`` 
-command. To enable this, change the ownership on your Nextcloud directories to 
+After restarting Apache you must complete your installation by running either
+the graphical Installation Wizard, or on the command line with the ``occ``
+command. To enable this, change the ownership on your Nextcloud directories to
 your HTTP user:
 
  chown -R www-data:www-data /var/www/nextcloud/
- 
+
 .. note:: Admins of SELinux-enabled distributions may need to write new SELinux
    rules to complete their Nextcloud installation; see
    :ref:`selinux_tips_label`.
@@ -471,10 +631,10 @@ confirm your paths, for example::
 If any of your system environment variables are not present in the file then
 you must add them.
 
-Alternatively it is possible to use the environemt variables of your system by modifying 
+Alternatively it is possible to use the environemt variables of your system by modifying
 
     /etc/php/7.0/fpm/pool.d/www.conf
-   
+
 and uncommenting the line
 
     clear_env = no
