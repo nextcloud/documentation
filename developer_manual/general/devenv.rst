@@ -6,7 +6,8 @@
 Development environment
 =======================
 
-Please follow the steps on this page to set up your development environment.
+Please follow the steps on this page to set up your development environment. If you only want to work on a Nextcloud app
+and not the core server you can also use simplified setup available through docker. See :doc:`../app/appenv`.
 
 Set up Web server and database
 ------------------------------
