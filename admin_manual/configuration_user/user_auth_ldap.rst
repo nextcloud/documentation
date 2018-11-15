@@ -667,22 +667,6 @@ In case you have a working configuration and want to create a similar one or
 
 Now you can modify and enable the configuration.
 
-"Sizelimit exceeded" message in logs
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-  ldap_search(): Partial search results returned: Sizelimit exceeded at
-  apps/user_ldap/lib/LDAP.php#256
-
-This error message means one of the following:
-
-#. Pagination of the results is used for communicating with the LDAP server
-   (pagination is by default enabled in OpenLDAP and AD), but there are more
-   results to return than what the pagination limit is set to. If there are no
-   users missing in you setup then you can ignore this error message for now.
-#. No pagination is used and this indicates that there are more results on the
-   LDAP server than what is returned. You should then enabled pagination on
-   your LDAP server to import all available users.
-
 Nextcloud LDAP internals
 ------------------------
 
