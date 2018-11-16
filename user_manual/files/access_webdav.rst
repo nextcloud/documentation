@@ -75,7 +75,7 @@ Accessing files with KDE and Dolphin file manager
 To access your Nextcloud files using the Dolphin file manager in KDE, use
 the ``webdav://`` protocol::
 
-    webdav://example.com/nextcloud/remote.php/dav/files/USERNAME/
+    webdav://example.com/remote.php/webdav
 
 .. image:: ../images/webdav_dolphin.png
    :alt: screenshot of configuring Dolphin file manager to use WebDAV
@@ -95,7 +95,7 @@ You can create a permanent link to your Nextcloud server:
 
    * Server: The Nextcloud domain name, for example **example.com** (without
      **http://** before or directories afterwards).
-   * Folder -- Enter the path ``nextcloud/remote.php/dav/files/USERNAME/``.
+   * Folder -- Enter the path ``remote.php/webdav/``.
 #. (Optional) Check the "Create icon checkbox" for a bookmark to appear in the
    Places column.
 #. (Optional) Provide any special settings or an SSL certificate in the "Port &
