@@ -33,7 +33,7 @@ the new location. It is also assumed that the authentication method
     Web server as well as PHP for Nextcloud (e.g. permissions or file upload size
     limits) and make sure the PHP version matches Nextcloud supported
     configuration and all relevant PHP extensions are installed. Also set up
-    the database and make sure it is an Nextcloud supported configuration. If
+    the database and make sure it is a Nextcloud supported configuration. If
     your original machine was installed recently just copying that base
     configuration is a safe best practice.
 
