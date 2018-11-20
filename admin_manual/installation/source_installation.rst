@@ -415,7 +415,7 @@ Example config::
     'port' => 6379,
       ),
 
-Remember, this tutorial is only for a basic setup of Nextcloud 13 on CentOS 7, with PHP 7.2. If you are going to use more features like LDAP or Single Sign On, you will need additional PHP modules as well as extra configurations. So please visit the rest of the Admin manual, :doc:`..admin_manual/index.rst`, for detailed descriptions on how to get this done.
+Remember, this tutorial is only for a basic setup of Nextcloud on CentOS 7, with PHP 7.2. If you are going to use more features like LDAP or Single Sign On, you will need additional PHP modules as well as extra configurations. So please visit the rest of the Admin manual, :doc:`..admin_manual/index.rst`, for detailed descriptions on how to get this done.
 
 .. _apache_configuration_label:
 
