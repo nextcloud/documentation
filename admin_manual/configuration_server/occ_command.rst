@@ -1395,14 +1395,22 @@ Two-factor authentication
 If a two-factor provider app is enabled, it is enabled for all users by default
 (though the provider can decide whether or not the user has to pass the challenge).
 In the case of an user losing access to the second factor (e.g. lost phone with
-two-factor SMS verification), the admin can temporarily disable the two-factor
+two-factor SMS verification), the admin can try to disable the two-factor
 check for that user via the occ command::
 
- sudo -u www-data php occ twofactor:disable <username>
+ sudo -u www-data php occ twofactor:disable <uid> <provider_id>
+
+.. note:: This is not supported by all providers. For those that don't support
+  this operation, the `Two-Factor Admin Support app <https://apps.nextcloud.com/apps/twofactor_admin>`_
+  should be used where users get a one-time code to log into their account.
 
 To re-enable two-factor auth again use the following commmand::
 
- sudo -u www-data php occ twofactor:enable <username>
+ sudo -u www-data php occ twofactor:enable <uid> <provider_id>
+
+.. note:: This is not supported by all providers. For those that don't support
+  this operation, the `Two-Factor Admin Support app <https://apps.nextcloud.com/apps/twofactor_admin>`_
+  should be used where users get a one-time code to log into their account.
 
 .. _disable_user_label:
 
