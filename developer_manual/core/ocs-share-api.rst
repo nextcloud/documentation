@@ -77,7 +77,7 @@ Share a file/folder with a user/group or as public link.
 * POST Arguments: path - (string) path to the file/folder which should be shared
 * POST Arguments: shareType - (int) 0 = user; 1 = group; 3 = public link; 6 = federated cloud share
 * POST Arguments: shareWith - (string) user / group id with which the file should be shared
-* POST Arguments: publicUpload - (boolean) allow public upload to a public shared folder (true/false)
+* POST Arguments: publicUpload - (string) allow public upload to a public shared folder (true/false)
 * POST Arguments: password - (string) password to protect public link Share with
 * POST Arguments: permissions - (int) 1 = read; 2 = update; 4 = create; 8 = delete;
   16 = share; 31 = all (default: 31, for public shares: 1)
@@ -119,7 +119,7 @@ Update a given share. Only one value can be updated per request.
 * PUT Arguments: permissions - (int) update permissions (see "Create share"
   above)
 * PUT Arguments: password - (string) updated password for public link Share
-* PUT Arguments: publicUpload - (boolean) enable (true) /disable (false) public
+* PUT Arguments: publicUpload - (string) enable (true) /disable (false) public
   upload for public shares.
 * PUT Arguments: expireDate - (string) set a expire date for public link
   shares. This argument expects a well formatted date string, e.g. 'YYYY-MM-DD'
