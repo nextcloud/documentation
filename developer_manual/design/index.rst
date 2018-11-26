@@ -3,7 +3,7 @@ Design guidelines
 =================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    navigation
    content
