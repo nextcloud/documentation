@@ -33,4 +33,4 @@ Nextcloud server you will have to send the proper authorization header.
 
 Authorization: Bearer <TOKEN>
 
-Note that apache by default strips this. Make sure you have ``mod_rewrite`` and ``mod_env`` enabled.
+Note that apache by default strips this. Make sure you have ``mod_headers``, ``mod_rewrite`` and ``mod_env`` enabled.
