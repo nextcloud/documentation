@@ -20,6 +20,7 @@ $mapping = array(
     'admin-install'           => '/admin_manual/installation/index.html',
     'admin-ldap'              => '/admin_manual/configuration_user/user_auth_ldap.html',
     'admin-mysql-utf8mb4'     => '/admin_manual/configuration_database/mysql_4byte_support.html',
+    'admin-nginx'             => '/admin_manual/installation/nginx.html',
     'admin-performance'       => '/admin_manual/configuration_server/server_tuning.html',
     'admin-php-fpm'           => '/admin_manual/installation/source_installation.html#php-fpm-tips-label',
     'admin-php-opcache'       => '/admin_manual/configuration_server/server_tuning.html#enable-php-opcache',
