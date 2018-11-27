@@ -44,3 +44,24 @@ those individually if necessary.
 .. note:: If you are :doc:`user_2fa` for your account,
    device-specific passwords are the only way to configure clients. The
    client will deny connections of clients using your login password then.
+
+Device-specific passwords and password changes
+----------------------------------------------
+
+The behaviour of device-specific passwords during changes of the main password
+changed in different versions of Nextcloud.
+
+Up to Nextcloud 13
+	Device-specific passwords are removed on password change and also are
+	removed once they are not valid anymore if an external user backend is
+	used.
+
+Nextcloud 14
+	For local user backend the device-specific passwords are updated properly
+	and continue to work. For external user backends (like LDAP/AD) the
+	device-specific passwords are still removed.
+
+Starting with Nextcloud 15
+	For password changes in external user backends the device-specific passwords
+	are marked as invalid and once a login of the user account with the main
+	password happens all device-specific passwords are updated and work again.
