@@ -120,6 +120,7 @@ Required:
 * PHP module XMLWriter
 * PHP module zip
 * PHP module zlib
+* PHP module session
 
 Database connectors (pick the one for your database:)
 
