@@ -315,3 +315,5 @@ StandaloneHTMLBuilder.supported_image_types = [
 
 # Generate the versions list
 html_context['versions'] = generateVersionsDocs(current_docs)
+html_context['theme_vcs_pageview_mode'] += current_docs
+
