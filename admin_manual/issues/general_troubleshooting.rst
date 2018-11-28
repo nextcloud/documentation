@@ -302,6 +302,36 @@ Misconfigured Web server
   Your Web server is misconfigured and blocks the needed DAV methods.
   Please refer to :ref:`trouble-webdav-label` above for troubleshooting steps.
 
+Troubleshooting data-directory
+------------------------------
+
+If you have a fresh install, consider reinstalling with your preferred directory location.
+
+Unofficially moving the data directory can be done as follows:
+
+1. Make sure no cron jobs are running
+2. Stop apache
+3. Move /data to the new location
+4. Change the config.php entry
+5. Edit the database: In oc_storages change the path on the local::/old-data-dir/ entry
+6. Ensure permissions are still correct
+7. Restart apache
+
+.. warning
+   However this is not supported and you risk breaking your database. 
+   
+For a safe moving of data directory, supported by Nextcloud, recommended actions are:
+
+1. Make sure no cron jobs are running
+2. Stop apache
+3. Move /data to the new location
+4. Create a symlink from the original location to the new location
+5. Ensure permissions are still correct
+6. Restart apache
+
+.. warning
+   Note, you may need to configure your webserver to support symlinks.
+
 Other issues
 ------------
 
