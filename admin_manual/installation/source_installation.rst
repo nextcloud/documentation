@@ -57,9 +57,9 @@ Download the the Appliance here:
 
 * **Home User/SME appliance**
 
-The `Nextcloud VM <https://github.com/nextcloud/vm/>`_ is maintained by
-`T&M Hansson IT <https://www.hanssonit.se/nextcloud-vm/>`_ and several different versions are
-offered. Collabora, OnlyOffice, Full Text Search and other apps can easily be installed with the included scripts which you can choose to run during the first setup, or download them later and run it afterwards. You can find all the currently available automated app installations `here <https://github.com/nextcloud/vm/tree/master/apps/>`_.
+The `Nextcloud VM <https://github.com/nextcloud/vm/>` is maintained by
+`T&M Hansson IT <https://www.hanssonit.se/nextcloud-vm/>` and several different versions are
+offered. Collabora, OnlyOffice, Full Text Search and other apps can easily be installed with the included scripts which you can choose to run during the first setup, or download them later and run it afterwards. You can find all the currently available automated app installations `here <https://github.com/nextcloud/vm/tree/master/apps/>`.
 
 The VM is made with VMware version 10 and it comes in different sizes and versions:
 
@@ -75,7 +75,7 @@ For complete instructions and downloads see:
 - `Nextcloud VM (Github) <https://github.com/nextcloud/vm/>`_
 - `Nextcloud VM (T&M Hansson IT) <https://www.hanssonit.se/nextcloud-vm/>`_
 
-.. note:: You can install the VM on several different operating systems as long as you can mount OVA, VMDK, or VHD/VHDX VM in your hypervisor. If you are using KVM then you need to install the VM from the scripts on Github. You can follow the instructions `here <https://github.com/nextcloud/vm#build-your-own-vm-or-install-on-a-vps>`_.
+.. note:: You can install the VM on several different operating systems as long as you can mount OVA, VMDK, or VHD/VHDX VM in your hypervisor. If you are using KVM then you need to install the VM from the scripts on Github. You can follow the instructions `here <https://github.com/nextcloud/vm#build-your-own-vm-or-install-on-a-vps>`.
    
 .. _snaps_label:
 
@@ -320,8 +320,6 @@ Make sure the database service is enabled to start at boot time.::
     systemctl enable mariadb.service
     systemctl start mariadb.service
 
-There is already an extensive document on database configuration which you can find here: :doc:`..admin_manual/configuration_server/automatic_configuration.rst` Please follow all instructions there and then head back here.
-
 **Installing Nextcloud**
 
 Nearly there, so keep at it, you are doing great!
@@ -415,7 +413,7 @@ Example config::
     'port' => 6379,
       ),
 
-Remember, this tutorial is only for a basic setup of Nextcloud on CentOS 7, with PHP 7.2. If you are going to use more features like LDAP or Single Sign On, you will need additional PHP modules as well as extra configurations. So please visit the rest of the Admin manual, :doc:`..admin_manual/index.rst`, for detailed descriptions on how to get this done.
+Remember, this tutorial is only for a basic setup of Nextcloud on CentOS 7, with PHP 7.2. If you are going to use more features like LDAP or Single Sign On, you will need additional PHP modules as well as extra configurations. So please visit the rest of the Admin manual, :doc:`../index`, for detailed descriptions on how to get this done.
 
 .. _apache_configuration_label:
 
