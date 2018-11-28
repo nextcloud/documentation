@@ -47,9 +47,7 @@ def generateVersionsDocs(current_docs):
 	versions_doc.append(tuple(('latest', 'https://docs.nextcloud.com/server/%s/%s' % ('latest', current_docs))))
 	return versions_doc
 
-if version_stable == version:
-	github_branch = 'stable%s' % version_stable
-elif isinstance(version, int):
+if version.isdigit():
 	github_branch = 'stable%s' % version
 else:
 	github_branch = 'master'
