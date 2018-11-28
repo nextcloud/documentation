@@ -37,22 +37,19 @@ rst_epilog =  '.. |version| replace:: %s' % version
 
 # building the versions list
 def generateVersionsDocs(current_docs):
-	version_start = 12
-	version_stable = 16 # INCREASE THIS NUMBER TO THE LATEST STABLE INT
+	version_start = 13		# THIS IS THE SUPPORTED VERSION NUMBER
+	version_stable = 15		# INCREASE THIS NUMBER TO THE LATEST STABLE VERSION NUMBER
 	versions_doc = []
-	for v in range(version_start, version_stable):
+	for v in range(version_start, version_stable + 1):
 		url = 'https://docs.nextcloud.com/server/%s/%s' % (str(v), current_docs)
 		versions_doc.append(tuple((v, url)))
-	versions_doc.append(tuple((version, 'https://docs.nextcloud.com/server/%s/%s' % (version, current_docs))))
+	versions_doc.append(tuple(('stable', 'https://docs.nextcloud.com/server/%s/%s' % ('stable', current_docs))))
+	versions_doc.append(tuple(('latest', 'https://docs.nextcloud.com/server/%s/%s' % ('latest', current_docs))))
 	return versions_doc
 
 html_context = {
 	'current_version': version,
 	'READTHEDOCS': True,
-	'downloads': [
-		('User Manual', 'https://docs.nextcloud.com/server/%s/Nextcloud_User_Manual.pdf' % version),
-		('Administration Manual', 'https://docs.nextcloud.com/server/%s/Nextcloud_Server_Administration_Manual.pdf' % version)
-	],
 	'extra_css_files': ['_static/custom.css']
 }
 
