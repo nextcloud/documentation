@@ -4,7 +4,7 @@ Templates
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-Nextcloud provides its own templating system which is basically plain PHP with some additional functions and preset variables. All the parameters which have been passed from the :doc:`controller <controllers>` are available in an array called **$_[]**, e.g.::
+Nextcloud provides its own templating system which is basically plain PHP with some additional functions and preset variables. All the parameters which have been passed from the :doc:`controller <../requests/controllers>` are available in an array called **$_[]**, e.g.::
     
     array('key' => 'something')
 

@@ -145,6 +145,7 @@ can be abbreviated by using the **resources** key:
         ],
     ];
 
+
 Using the URLGenerator
 ----------------------
 
@@ -189,7 +190,7 @@ Sometimes it is useful to turn a route into a URL to make the code independent f
 
     }
 
-URLGenerator is case sensitive, so **appName** must match **exactly** the name you use in :doc:`configuration <configuration>`.
+URLGenerator is case sensitive, so **appName** must match **exactly** the name you use in :doc:`configuration <../storage/configuration>`.
 If you use a CamelCase name as *myCamelCaseApp*,
 
 .. code-block:: php

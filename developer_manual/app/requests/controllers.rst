@@ -459,7 +459,7 @@ Because returning values works fine in case of a success but not in case of fail
 Templates
 ^^^^^^^^^
 
-A :doc:`template <templates>` can be rendered by returning a TemplateResponse. A TemplateResponse takes the following parameters:
+A :doc:`template <../view/templates>` can be rendered by returning a TemplateResponse. A TemplateResponse takes the following parameters:
 
 * **appName**: tells the template engine in which app the template should be located
 * **templateName**: the name of the template inside the template/ folder without the .php extension
@@ -802,7 +802,7 @@ Most of the time though it makes sense to also allow normal users to access the 
 To turn off checks the following *Annotations* can be added before the controller:
 
 * **@NoAdminRequired**: Also users that are not admins can access the page
-* **@NoCSRFRequired**: Don't check the CSRF token (use this wisely since you might create a security hole; to understand what it does see :doc:`../general/security`)
+* **@NoCSRFRequired**: Don't check the CSRF token (use this wisely since you might create a security hole; to understand what it does see :doc:`../../general/security`)
 * **@PublicPage**: Everyone can access the page without having to log in
 
 A controller method that turns off all checks would look like this:

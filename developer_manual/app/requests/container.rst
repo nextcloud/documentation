@@ -120,7 +120,7 @@ How the container works
 
 The container works in the following way:
 
-* :doc:`A request comes in and is matched against a route <request>` (for the AuthorController in this case)
+* :doc:`A request comes in and is matched against a route <routes>` (for the AuthorController in this case)
 * The matched route queries **AuthorController** service from the container::
 
     return new AuthorController(
