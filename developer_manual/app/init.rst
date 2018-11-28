@@ -35,7 +35,7 @@ The :file:`appinfo/app.php` is the first file that is loaded and executed in Nex
     \OCP\Util::connectHook('OC_User', 'pre_deleteUser', 'OCA\MyApp\Hooks\User', 'deleteUser');
 
 
-Although it is also possible to include :doc:`js` or :doc:`css` for other apps by placing the **addScript** or **addStyle** functions inside this file, it is strongly discouraged, because the file is loaded on each request (also such requests that do not return HTML, but e.g. json or webdav).
+Although it is also possible to include :doc:`view/js` or :doc:`view/css` for other apps by placing the **addScript** or **addStyle** functions inside this file, it is strongly discouraged, because the file is loaded on each request (also such requests that do not return HTML, but e.g. json or webdav).
 
 .. code-block:: php
 

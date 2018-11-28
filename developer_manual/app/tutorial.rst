@@ -73,7 +73,7 @@ On the client side we can call these URLs with the following jQuery code:
         // handle failure
     });
 
-On the server side we need to register a callback that is executed once the request comes in. The callback itself will be a method on a :doc:`controller <controllers>` and the controller will be connected to the URL with a :doc:`route <routes>`. The controller and route for the page are already set up in **ownnotes/appinfo/routes.php**:
+On the server side we need to register a callback that is executed once the request comes in. The callback itself will be a method on a :doc:`controller <requests/controllers>` and the controller will be connected to the URL with a :doc:`route <requests/routes>`. The controller and route for the page are already set up in **ownnotes/appinfo/routes.php**:
 
 .. code-block:: php
 
@@ -82,9 +82,9 @@ On the server side we need to register a callback that is executed once the requ
         ['name' => 'page#index', 'url' => '/', 'verb' => 'GET']
     ]];
 
-This route calls the controller **OCA\\OwnNotes\\PageController->index()** method which is defined in **ownnotes/lib/Controller/PageController.php**. The controller returns a :doc:`template <templates>`, in this case **ownnotes/templates/main.php**:
+This route calls the controller **OCA\\OwnNotes\\PageController->index()** method which is defined in **ownnotes/lib/Controller/PageController.php**. The controller returns a :doc:`template <view/templates>`, in this case **ownnotes/templates/main.php**:
 
-.. note:: @NoAdminRequired and @NoCSRFRequired in the comments above the method turn off security checks, see :doc:`controllers`
+.. note:: @NoAdminRequired and @NoCSRFRequired in the comments above the method turn off security checks, see :doc:`requests/controllers`
 
 .. code-block:: php
 
@@ -210,7 +210,7 @@ Since those 5 routes are so common, they can be abbreviated by adding a resource
 Database
 --------
 
-Now that the routes are set up and connected the notes should be saved in the database. To do that first create a :doc:`database schema <schema>` by creating **ownnotes/appinfo/database.xml**:
+Now that the routes are set up and connected the notes should be saved in the database. To do that first create a :doc:`database schema <storage/schema>` by creating **ownnotes/appinfo/database.xml**:
 
 .. code-block:: xml
 
@@ -276,7 +276,7 @@ To create the tables in the database, the :doc:`version tag <info>` in **ownnote
 
 Reload the page to trigger the database migration.
 
-Now that the tables are created we want to map the database result to a PHP object to be able to control data. First create an :doc:`entity <database>` in **ownnotes/lib/Db/Note.php**:
+Now that the tables are created we want to map the database result to a PHP object to be able to control data. First create an :doc:`entity <storage/database>` in **ownnotes/lib/Db/Note.php**:
 
 
 .. code-block:: php
@@ -307,7 +307,7 @@ Now that the tables are created we want to map the database result to a PHP obje
 
 We also define a **jsonSerializable** method and implement the interface to be able to transform the entity to JSON easily.
 
-Entities are returned from so called :doc:`Mappers <database>`. Let's create one in **ownnotes/lib/Db/NoteMapper.php** and add a **find** and **findAll** method:
+Entities are returned from so called :doc:`Mappers <storage/database>`. Let's create one in **ownnotes/lib/Db/NoteMapper.php** and add a **find** and **findAll** method:
 
 .. code-block:: php
 
@@ -342,7 +342,7 @@ Connect database & controllers
 
 The mapper which provides the database access is finished and can be passed into the controller.
 
-You can pass in the mapper by adding it as a type hinted parameter. Nextcloud will figure out how to :doc:`assemble them by itself <container>`. Additionally we want to know the userId of the currently logged in user. Simply add a **$UserId** parameter to the constructor (case sensitive!). To do that open **ownnotes/lib/Controller/NoteController.php** and change it to the following:
+You can pass in the mapper by adding it as a type hinted parameter. Nextcloud will figure out how to :doc:`assemble them by itself <requests/container>`. Additionally we want to know the userId of the currently logged in user. Simply add a **$UserId** parameter to the constructor (case sensitive!). To do that open **ownnotes/lib/Controller/NoteController.php** and change it to the following:
 
 .. code-block:: php
 
@@ -677,7 +677,7 @@ Unit tests
 
 A unit test is a test that tests a class in isolation. It is very fast and catches most of the bugs, so we want many unit tests.
 
-Because Nextcloud uses :doc:`Dependency Injection <container>` to assemble your app, it is very easy to write unit tests by passing mocks into the constructor. A simple test for the update method can be added by adding this to **ownnotes/tests/Unit/Controller/NoteControllerTest.php**:
+Because Nextcloud uses :doc:`Dependency Injection <requests/container>` to assemble your app, it is very easy to write unit tests by passing mocks into the constructor. A simple test for the update method can be added by adding this to **ownnotes/tests/Unit/Controller/NoteControllerTest.php**:
 
 .. code-block:: php
 
@@ -895,7 +895,7 @@ To run the integration tests change into the **ownnotes** directory and run::
 Adding a RESTful API (optional)
 -------------------------------
 
-A :doc:`RESTful API <api>` allows other apps such as Android or iPhone apps to access and change your notes. Since syncing is a big core component of Nextcloud it is a good idea to add (and document!) your own RESTful API.
+A :doc:`RESTful API <requests/api>` allows other apps such as Android or iPhone apps to access and change your notes. Since syncing is a big core component of Nextcloud it is a good idea to add (and document!) your own RESTful API.
 
 Because we put our logic into the **NoteService** class it is very easy to reuse it. The only pieces that need to be changed are the annotations which disable the CSRF check (not needed for a REST call usually) and add support for `CORS <https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS>`_ so your API can be accessed from other webapps.
 
@@ -1036,7 +1036,7 @@ Since the **NoteApiController** is basically identical to the **NoteController**
 Adding JavaScript and CSS
 -------------------------
 
-To create a modern webapp you need to write :doc:`JavaScript<js>`. You can use any JavaScript framework but for this tutorial we want to keep it as simple as possible and therefore only include the templating library `handlebarsjs <http://handlebarsjs.com/>`_. `Download the file <http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v2.0.0.js>`_ into **ownnotes/js/handlebars.js** and include it at the very top of **ownnotes/templates/main.php** before the other scripts and styles:
+To create a modern webapp you need to write :doc:`JavaScript<view/js>`. You can use any JavaScript framework but for this tutorial we want to keep it as simple as possible and therefore only include the templating library `handlebarsjs <http://handlebarsjs.com/>`_. `Download the file <http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v2.0.0.js>`_ into **ownnotes/js/handlebars.js** and include it at the very top of **ownnotes/templates/main.php** before the other scripts and styles:
 
 .. code-block:: php
 
@@ -1048,9 +1048,9 @@ To create a modern webapp you need to write :doc:`JavaScript<js>`. You can use a
 Creating a navigation
 ---------------------
 
-The template file **ownnotes/templates/part.navigation.php** contains the navigation. Nextcloud defines many handy :doc:`CSS styles <css>` which we are going to reuse to style the navigation. Adjust the file to contain only the following code:
+The template file **ownnotes/templates/part.navigation.php** contains the navigation. Nextcloud defines many handy :doc:`CSS styles <view/css>` which we are going to reuse to style the navigation. Adjust the file to contain only the following code:
 
-.. note:: **$l->t()** is used to make your strings :doc:`translatable <l10n>` and **p()** is used :doc:`to print escaped HTML <templates>`
+.. note:: **$l->t()** is used to make your strings :doc:`translatable <view/l10n>` and **p()** is used :doc:`to print escaped HTML <view/templates>`
 
 .. code-block:: php
 
@@ -1312,7 +1312,7 @@ When the page is loaded we want all the existing notes to load. Furthermore we w
 Apply finishing touches
 -----------------------
 
-Now the only thing left is to style the textarea in a nicer fashion. To do that open **ownnotes/css/style.css** and replace the content with the following :doc:`CSS <css>` code:
+Now the only thing left is to style the textarea in a nicer fashion. To do that open **ownnotes/css/style.css** and replace the content with the following :doc:`CSS <view/css>` code:
 
 .. code-block:: css
 

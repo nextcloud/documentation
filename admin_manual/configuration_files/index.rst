@@ -10,6 +10,7 @@ File sharing and management
     federated_cloud_sharing_configuration
     big_file_upload_configuration
     default_files_configuration
+    primary_storage
     external_storage_configuration_gui
     external_storage_configuration
     external_storage/auth_mechanisms

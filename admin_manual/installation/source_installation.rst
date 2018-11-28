@@ -321,8 +321,6 @@ Make sure the database service is enabled to start at boot time.::
     systemctl enable mariadb.service
     systemctl start mariadb.service
 
-There is already an extensive document on database configuration which you can find here: :doc:`..admin_manual/configuration_server/automatic_configuration.rst` Please follow all instructions there and then head back here.
-
 **Installing Nextcloud**
 
 Nearly there, so keep at it, you are doing great!
@@ -416,7 +414,7 @@ Example config::
     'port' => 6379,
       ),
 
-Remember, this tutorial is only for a basic setup of Nextcloud on CentOS 7, with PHP 7.2. If you are going to use more features like LDAP or Single Sign On, you will need additional PHP modules as well as extra configurations. So please visit the rest of the Admin manual, :doc:`..admin_manual/index.rst`, for detailed descriptions on how to get this done.
+Remember, this tutorial is only for a basic setup of Nextcloud on CentOS 7, with PHP 7.2. If you are going to use more features like LDAP or Single Sign On, you will need additional PHP modules as well as extra configurations. So please visit the rest of the Admin manual, :doc:`../index`, for detailed descriptions on how to get this done.
 
 .. _apache_configuration_label:
 
