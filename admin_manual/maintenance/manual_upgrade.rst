@@ -34,11 +34,12 @@ Always start by making a fresh backup and disabling all 3rd party apps.
    because its location is configured in your original ``config.php``, and 
    none of the upgrade steps touch it.
 
-8. If you are using 3rd party applications, look in your new ``nextcloud/apps/`` 
-   directory to see if they are there. If not, copy them from your old ``apps/``
-   directory to your new one. Make sure the directory permissions of your third
-   party application directories are the same as for the other ones.
-   ## THIS APPS part IS INSUFFICIENTLY DOCUMENTED (needs better instructions)
+8. If you are using 3rd party application, it may not always be available in your
+   upgraded/new Nextcloud instance. To check this, compare a list of the apps in
+   the new ``nextcloud/apps/`` folder to a list of the of the apps in your
+   backed-up/old ``nextcloud/apps/`` folder. If you find 3rd party apps in the
+   old folder that needs to be in the new/upgraded instance, simply copy them over
+   and ensure the permissions are set up as shown below.
   
 9. If you are using 3rd party theme make sure to copy it from your ``themes/``
    directory to your new one. It is possible you will have to make some
