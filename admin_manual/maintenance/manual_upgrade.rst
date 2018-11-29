@@ -40,7 +40,7 @@ Always start by making a fresh backup and disabling all 3rd party apps.
    party application directories are the same as for the other ones.
    ## THIS APPS part IS INSUFFICIENTLY DOCUMENTED (needs better instructions)
   
-9. If you are using 3rd party theme make sure to copy it from your ``theme/``
+9. If you are using 3rd party theme make sure to copy it from your ``themes/``
    directory to your new one. It is possible you will have to make some
    modifications to it after the upgrade.
    
