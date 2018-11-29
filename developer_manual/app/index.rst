@@ -7,6 +7,7 @@ App development
 
    intro
    tutorial
+   npm
    requests/index
    view/index
    storage/index
