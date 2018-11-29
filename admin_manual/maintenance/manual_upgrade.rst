@@ -34,29 +34,33 @@ Always start by making a fresh backup and disabling all 3rd party apps.
    because its location is configured in your original ``config.php``, and 
    none of the upgrade steps touch it.
 
-8. If you are using 3rd party applications, it may not always be available in your
+8. If you are using 3rd party application, it may not always be available in your
    upgraded/new Nextcloud instance. To check this, compare a list of the apps in
    the new ``nextcloud/apps/`` folder to a list of the of the apps in your 
    backed-up/old ``nextcloud/apps/`` folder. If you find 3rd party apps in the 
    old folder that needs to be in the new/upgraded instance, simply copy them over 
    and ensure the permissions are set up as shown below.
-      
-9. Adjust file ownership and permissions::
+  
+9. If you are using 3rd party theme make sure to copy it from your ``themes/``
+   directory to your new one. It is possible you will have to make some
+   modifications to it after the upgrade.
+   
+10. Adjust file ownership and permissions::
 
      chown -R www-data:www-data nextcloud
      find nextcloud/ -type d -exec chmod 750 {} \;
      find nextcloud/ -type f -exec chmod 640 {} \;
 
-10. Restart your Web server.
+11. Restart your Web server.
 
-11. Now launch the upgrade from the command line using ``occ``, like this 
+12. Now launch the upgrade from the command line using ``occ``, like this 
     example on Ubuntu Linux::
     
      sudo -u www-data php occ upgrade
      
     (!) this MUST be executed from within your nextcloud installation directory
      
-12. The upgrade operation takes a few minutes to a few hours, depending on the 
+13. The upgrade operation takes a few minutes to a few hours, depending on the 
     size of your installation. When it is finished you will see a success 
     message, or an error message that will tell where it went wrong.
 
