@@ -39,7 +39,7 @@ Always start by making a fresh backup and disabling all 3rd party apps.
    the new ``nextcloud/apps/`` folder to a list of the of the apps in your 
    backed-up/old ``nextcloud/apps/`` folder. If you find 3rd party apps in the 
    old folder that needs to be in the new/upgraded instance, simply copy them over 
-   and insure the permissions are set up as shown in step 9.
+   and ensure the permissions are set up as shown below.
       
 9. Adjust file ownership and permissions::
 
