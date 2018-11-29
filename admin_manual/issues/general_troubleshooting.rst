@@ -231,35 +231,36 @@ There is also a well maintained FAQ thread available at the `ownCloud Forums
 <https://forum.owncloud.org/viewtopic.php?f=17&t=7536>`_
 which contains various additional information about WebDAV problems.
 
-Troubleshooting contacts & calendar
------------------------------------
-
 .. _service-discovery-label:
 
 Service discovery
-^^^^^^^^^^^^^^^^^
+-----------------
 
 Some clients - especially on iOS/macOS - have problems finding the proper
 sync URL, even when explicitly configured to use it.
 
-If you want to use CalDAV or CardDAV clients together with Nextcloud it is
-important to have a correct working setup of the following URLs:
+If you want to use CalDAV or CardDAV clients or other clients that require service discovery
+together with Nextcloud it is important to have a correct working setup of the following
+URLs:
 
 | ``https://example.com/.well-known/carddav``
 | ``https://example.com/.well-known/caldav``
+| ``https://example.com/.well-known/webfinger``
 |
 
-Those need to be redirecting your clients to the correct DAV endpoints. If
-running Nextcloud at the document root of your Web server the correct URL is:
+Those need to be redirecting your clients to the correct endpoints. If Nextcloud
+is running at the document root of your Web server the correct URL is:
 
-``https://example.com/remote.php/dav``
+``https://example.com/remote.php/dav`` for CardDAV and CalDAV and
+``https://example.com/public.php?service=webfinger``
 
 and if running in a subfolder like ``nextcloud``:
 
 ``https://example.com/nextcloud/remote.php/dav``
+``https://example.com/nextcloud/public.php?service=webfinger``
 
 For the first case the :file:`.htaccess` file shipped with Nextcloud should do
-this work for your when running Apache. You need to make sure that your
+this work for you when you're running Apache. You need to make sure that your
 Web server is using this file. Additionally, you need the mod_rewrite Apache
 module installed to process these redirects. When running Nginx please refer to
 :doc:`../installation/nginx`.
@@ -269,8 +270,13 @@ If your Nextcloud instance is installed in a subfolder called ``nextcloud`` and
 you're running Apache create or edit the :file:`.htaccess` file within the
 document root of your Web server and add the following lines::
 
-    Redirect 301 /.well-known/carddav /nextcloud/remote.php/dav
-    Redirect 301 /.well-known/caldav /nextcloud/remote.php/dav
+    RewriteRule ^\.well-known/host-meta /nextcloud/public.php?service=host-meta [QSA,L]
+    RewriteRule ^\.well-known/host-meta\.json /nextcloud/public.php?service=host-meta-json [QSA,L]
+    RewriteRule ^\.well-known/webfinger /nextcloud/public.php?service=webfinger [QSA,L]
+    RewriteRule ^\.well-known/carddav /nextcloud/remote.php/dav/ [R=301,L]
+    RewriteRule ^\.well-known/caldav /nextcloud/remote.php/dav/ [R=301,L]
+
+Make sure to change /nextcloud to the actual subfolder your Nextcloud instance is running in.
 
 Now change the URL in the client settings to just use:
 
@@ -280,8 +286,11 @@ instead of e.g.
 
 ``https://example.com/nextcloud/remote.php/dav/principals/username``.
 
-There are also several techniques to remedy this, which are described extensively at 
+There are also several techniques to remedy this, which are described extensively at
 the `Sabre DAV website <http://sabre.io/dav/service-discovery/>`_.
+
+Troubleshooting contacts & calendar
+-----------------------------------
 
 Unable to update contacts or events
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
