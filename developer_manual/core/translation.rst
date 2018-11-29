@@ -48,9 +48,17 @@ What about variable in the strings?
 
 If you need to add variables to the translation strings do it like this:
 
+PHP:
+
 .. code-block:: php
 
   $l->t('%s is available. Get <a href="%s">more information</a>', array($data['versionstring'], $data['web']));
+
+JavaScript:
+
+.. code-block:: javascript
+
+  t(appName, '{name} is available. Get <a href="{link}">more information</a>', {name: 'Nextcloud 16', link: '...'});
 
 Automated synchronization of translations
 -----------------------------------------
