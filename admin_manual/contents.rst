@@ -9,6 +9,7 @@ Table of contents
     release_notes
     installation/index
     configuration_server/index
+    apps_management
     configuration_user/index
     configuration_files/index
     file_workflows/index
