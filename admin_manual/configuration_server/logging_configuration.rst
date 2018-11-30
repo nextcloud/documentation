@@ -4,8 +4,8 @@ Logging configuration
 
 Use your Nextcloud log to review system status, or to help debug problems. You may adjust logging levels, and choose between using the Nextcloud log or your syslog.
 
-Parameters
-----------
+Log level
+---------
 
 Logging levels range from **DEBUG**, which logs all activity, to **FATAL**, which logs only fatal errors.
 
@@ -19,8 +19,11 @@ By default the log level is set to **2** (WARN). Use **DEBUG** when you have a p
 
 Logging level parameters are set in the :file:`config/config.php` file.
 
-Nextcloud
-~~~~~~~~~
+Log type
+--------
+
+file
+~~~~
 
 All log information will be written to a separate log file which can be
 viewed using the log viewer on your Admin page. By default, a log
@@ -35,7 +38,7 @@ date format in the example below, the date/time format will be written in the fo
 
 ::
 
-    "log_type" => "owncloud",
+    "log_type" => "file",
     "logfile" => "nextcloud.log",
     "loglevel" => "3",
     "logdateformat" => "F d, Y H:i:s",
