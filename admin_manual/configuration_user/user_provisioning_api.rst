@@ -11,7 +11,7 @@ info, and to enable or disable an app remotely. HTTP
 requests can be used via a Basic Auth header to perform any of the functions 
 listed above. The Provisioning API app is enabled by default.
 
-The base URL for all calls to the share API is **nextcloud_base_url/ocs/v1.php/cloud**.
+The base URL for all calls to the share API is ``https://cloud.example.com/ocs/v1.php/cloud``.
 
 All calls to OCS endpoints require the ``OCS-APIRequest`` header to be set to ``true``.
 
