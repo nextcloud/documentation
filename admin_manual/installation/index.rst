@@ -10,7 +10,6 @@ Installation
    source_installation
    installation_wizard
    command_line_installation
-   apps_management_installation
    apps_supported
    php_70_installation
    selinux_configuration
