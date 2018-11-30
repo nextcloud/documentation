@@ -18,7 +18,6 @@ Server configuration
    harden_server
    antivirus_configuration
    reverse_proxy_configuration
-   thirdparty_php_configuration
    automatic_configuration
    server_tuning
    theming
