@@ -33,6 +33,7 @@ The Nextcloud server is not compatible with Windows and macOS.
 | PHP Runtime      | - **7.0**                                                             |
 |                  | - **7.1**                                                             |
 |                  | - **7.2**                                                             |
+|                  | - **7.3**                                                             |
 +------------------+-----------------------------------------------------------------------+
 
 See :doc:`source_installation` for minimum PHP-modules and additional software for installing Nextcloud.
