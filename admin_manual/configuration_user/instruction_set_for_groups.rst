@@ -21,9 +21,11 @@ Status codes:
 
 Example
 ^^^^^^^
+::
 
-  * GET ``http://admin:secret@example.com/ocs/v1.php/cloud/groups?search=adm``
-  * Returns list of groups matching the search string.
+  $ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/groups?search=adm
+
+* Returns list of groups matching the search string.
 
 XML output
 ^^^^^^^^^^
@@ -63,10 +65,11 @@ Status codes:
 
 Example
 ^^^^^^^
+::
 
-  * POST ``http://admin:secret@example.com/ocs/v1.php/cloud/groups -d 
-    groupid="newgroup"``
-  * Adds a new group called ``newgroup``
+  $ curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/groups -d groupid="newgroup"
+
+* Adds a new group called ``newgroup``
 
 XML output
 ^^^^^^^^^^
@@ -98,9 +101,11 @@ Status codes:
 
 Example
 ^^^^^^^
+::
 
-  * POST ``http://admin:secret@example.com/ocs/v1.php/cloud/groups/admin``
-  * Returns a list of users in the ``admin`` group
+  $ curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/groups/admin
+
+* Returns a list of users in the ``admin`` group
 
 XML output
 ^^^^^^^^^^
@@ -138,10 +143,11 @@ Status codes:
 
 Example
 ^^^^^^^
+::
 
-  * GET 
-    ``https://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup/subadmins``
-  * Return the subadmins of the group: ``mygroup``
+  $ curl -X GET https://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup/subadmins
+
+* Return the subadmins of the group: ``mygroup``
 
 XML output
 ^^^^^^^^^^
@@ -178,9 +184,11 @@ Status codes:
 
 Example
 ^^^^^^^
+::
 
-  * DELETE ``http://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup``
-  * Delete the group ``mygroup``
+  $ curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup
+
+* Delete the group ``mygroup``
 
 XML output
 ^^^^^^^^^^

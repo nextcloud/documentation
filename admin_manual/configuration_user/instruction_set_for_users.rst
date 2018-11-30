@@ -27,9 +27,10 @@ Status codes:
 
 Example
 ^^^^^^^
+::
 
-* POST ``http://admin:secret@example.com/ocs/v1.php/cloud/users -d 
-  userid="Frank" -d password="frankspassword"``
+  $ curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/users -d userid="Frank" -d password="frankspassword"
+
 * Creates the user ``Frank`` with password ``frankspassword``
 * optionally groups can be specified by one or more ``groups[]`` query parameters:
   ``URL -d groups[]="admin" -D groups[]="Team1"``
@@ -68,8 +69,10 @@ Status codes:
 
 Example
 ^^^^^^^
+::
 
-* GET ``http://admin:secret@example.com/ocs/v1.php/cloud/users?search=Frank``
+  $ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/users?search=Frank
+
 * Returns list of users matching the search string.
 
 XML output
@@ -107,8 +110,11 @@ Status codes:
 Example
 ^^^^^^^
 
-  * GET ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank``
-  * Returns information on the user ``Frank``
+::
+
+  $ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank
+
+* Returns information on the user ``Frank``
 
 XML output
 ^^^^^^^^^^
@@ -171,13 +177,17 @@ Status codes:
 Examples
 ^^^^^^^^
 
-  * PUT ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -d 
-    key="email" -d value="franksnewemail@example.org"``
-  * Updates the email address for the user ``Frank``
-  
-  * PUT ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -d 
-    key="quota" -d value="100MB"``
-  * Updates the quota for the user ``Frank``
+::
+
+  $ curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -d key="email" -d value="franksnewemail@example.org"
+
+* Updates the email address for the user ``Frank``
+
+::
+
+  $ curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -d key="quota" -d value="100MB"
+
+* Updates the quota for the user ``Frank``
   
 XML output
 ^^^^^^^^^^
@@ -211,8 +221,11 @@ Statuscodes:
 Example
 ^^^^^^^
 
-  * PUT ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/disable``
-  * Disables the user ``Frank``
+::
+
+  $ curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/disable
+
+* Disables the user ``Frank``
 
 XML output
 ^^^^^^^^^^
@@ -247,8 +260,11 @@ Statuscodes:
 Example
 ^^^^^^^
 
-  * PUT ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/enable``
-  * Enables the user ``Frank``
+::
+
+  $ curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/enable
+
+* Enables the user ``Frank``
 
 XML output
 ^^^^^^^^^^
@@ -283,8 +299,11 @@ Statuscodes:
 Example
 ^^^^^^^
 
-  * DELETE ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank``
-  * Deletes the user ``Frank``
+::
+
+  $ curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank
+
+* Deletes the user ``Frank``
 
 XML output
 ^^^^^^^^^^
@@ -317,8 +336,11 @@ Status codes:
 Example
 ^^^^^^^
 
-  * GET  ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups``
-  * Retrieves a list of groups of which ``Frank`` is a member
+::
+
+  $ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups
+
+* Retrieves a list of groups of which ``Frank`` is a member
 
 XML output
 ^^^^^^^^^^
@@ -362,9 +384,11 @@ Status codes:
 Example
 ^^^^^^^
 
-  * POST ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups 
-    -d groupid="newgroup"``
-  * Adds the user ``Frank`` to the group ``newgroup``
+::
+
+  $ curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups -d groupid="newgroup"
+
+* Adds the user ``Frank`` to the group ``newgroup``
 
 XML output
 ^^^^^^^^^^
@@ -403,10 +427,11 @@ Status codes:
 Example
 ^^^^^^^
 
-  * DELETE 
-    ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups -d 
-    groupid="newgroup"``
-  * Removes the user ``Frank`` from the group ``newgroup``
+::
+
+  $ curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups -d groupid="newgroup"
+
+* Removes the user ``Frank`` from the group ``newgroup``
 
 XML output
 ^^^^^^^^^^
@@ -444,10 +469,11 @@ Status codes:
 Example
 ^^^^^^^
 
-  * POST 
-    ``https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins 
-    -d groupid="group"``
-  * Makes the user ``Frank`` a subadmin of the ``group`` group
+::
+
+  $ curl -X POST https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins -d groupid="group"
+
+* Makes the user ``Frank`` a subadmin of the ``group`` group
 
 XML output
 ^^^^^^^^^^
@@ -485,10 +511,11 @@ Status codes:
 Example
 ^^^^^^^
 
-  * DELETE 
-    ``https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins 
-    -d groupid="oldgroup"``
-  * Removes ``Frank's`` subadmin rights from the ``oldgroup`` group
+::
+
+  $ curl -X DELETE https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins -d groupid="oldgroup"
+
+* Removes ``Frank's`` subadmin rights from the ``oldgroup`` group
 
 XML output
 ^^^^^^^^^^
@@ -523,9 +550,11 @@ Status codes:
 Example
 ^^^^^^^
 
-  * GET 
-    ``https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins``
-  * Returns the groups of which ``Frank`` is a subadmin
+::
+
+  $ curl -X GET https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins
+
+* Returns the groups of which ``Frank`` is a subadmin
 
 XML output
 ^^^^^^^^^^
@@ -562,9 +591,11 @@ Status codes:
 Example
 ^^^^^^^
 
-  * POST
-    ``https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/welcome``
-  * Sends the welcome email to ``Frank``
+::
+
+  $ curl -X POST https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/welcome
+
+* Sends the welcome email to ``Frank``
 
 XML output
 ^^^^^^^^^^

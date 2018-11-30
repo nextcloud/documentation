@@ -21,9 +21,11 @@ Status codes:
 
 Example
 ^^^^^^^
+::
 
-  * GET ``http://admin:secret@example.com/ocs/v1.php/cloud/apps?filter=enabled``
-  * Gets enabled apps
+  $ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/apps?filter=enabled
+
+* Gets enabled apps
 
 XML output
 ^^^^^^^^^^
@@ -60,9 +62,11 @@ Status codes:
 
 Example
 ^^^^^^^
+::
 
-  * GET ``http://admin:secret@example.com/ocs/v1.php/cloud/apps/files``
-  * Get app info for the ``files`` app
+  $ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/apps/files
+
+* Get app info for the ``files`` app
 
 XML output
 ^^^^^^^^^^
@@ -114,9 +118,11 @@ Status codes:
 
 Example
 ^^^^^^^
+::
 
-  * POST ``http://admin:secret@example.com/ocs/v1.php/cloud/apps/files_texteditor``
-  * Enable the ``files_texteditor`` app
+  $ curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/apps/files_texteditor
+
+* Enable the ``files_texteditor`` app
 
 XML output
 ^^^^^^^^^^
@@ -148,9 +154,11 @@ Status codes:
 
 Example
 ^^^^^^^
+::
 
-  * DELETE ``http://admin:secret@example.com/ocs/v1.php/cloud/apps/files_texteditor``
-  * Disable the ``files_texteditor`` app
+  $ curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/apps/files_texteditor
+
+* Disable the ``files_texteditor`` app
 
 XML output
 ^^^^^^^^^^
