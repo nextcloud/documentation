@@ -36,7 +36,7 @@ This requires the following additional dependencies:
  - PHP module ``imagick``
  - SVG support for imagick (e.g. ``libmagickcore5-extra``)
 
-.. note:: In the advanced options of the theming-app you are able to set a custom
+.. note:: In the advanced options of the theming app you are able to set a custom
    favicon in case you do not want to use the same logo resources you have set above
    or you do not want to install the mentioned dependencies.
 
@@ -48,7 +48,7 @@ Branded clients
    users get up and running in no time. If you are interested in our advanced branding &
    support subscription, `contact our sales team <https://nextcloud.com/enterprise/>`_.
 
-The theming-app supports to change the URLs to the mobile apps (Android & iOS) that
+The theming app supports to change the URLs to the mobile apps (Android & iOS) that
 is shown when the webinterface is opened on one of those devices. Then there was a
 header shown, that redirects the user to the app in the app store. By default
 this redirects to the Nextcloud apps. In some cases it is wanted that this
