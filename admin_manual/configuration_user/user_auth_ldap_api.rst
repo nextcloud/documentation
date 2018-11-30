@@ -18,7 +18,10 @@ basic HTTP authentication header.
 Example
 ^^^^^^^
 
-* POST ``https://admin:secret@example.com/ocs/v2.php/apps/user_ldap/api/v1/config`` -H "OCS-APIREQUEST: true"
+:: 
+
+  $ curl -X POST https://admin:secret@example.com/ocs/v2.php/apps/user_ldap/api/v1/config -H "OCS-APIREQUEST: true"
+
 * Creates a new, empty configuration
 
 XML output
@@ -51,7 +54,10 @@ Deletes a given LDAP configuration. Authentication is done by sending a basic HT
 Example
 ^^^^^^^
 
-* DELETE ``https://admin:secret@example.com/ocs/v2.php/apps/user_ldap/api/v1/config/s02 -H "OCS-APIREQUEST: true"``
+:: 
+
+  $ curl -X DELETE ``https://admin:secret@example.com/ocs/v2.php/apps/user_ldap/api/v1/config/s02 -H "OCS-APIREQUEST: true"
+
 * deletes the LDAP configuration
 
 XML output
@@ -83,7 +89,10 @@ Returns all keys and values of the specified LDAP configuration. Authentication 
 Example
 ^^^^^^^
 
-* GET ``https://admin:secret@example.com/ocs/v2.php/apps/user_ldap/api/v1/config/s02?showPassword=1 -H "OCS-APIREQUEST: true"``
+:: 
+
+  $ curl -X GET https://admin:secret@example.com/ocs/v2.php/apps/user_ldap/api/v1/config/s02?showPassword=1 -H "OCS-APIREQUEST: true"
+
 * fetches the LDAP configuration
 
 XML output
@@ -169,8 +178,11 @@ Updates a configuration with the provided values. Authentication is done by send
 Example
 ^^^^^^^
 
-* PUT ``https://admin:secret@example.com/ocs/v2.php/apps/user_ldap/api/v1/config/s01 -H "OCS-APIREQUEST: true" -d "configData[ldapHost]=ldap%3A%2F%2Fldap.server.tld &configData[ldapPort]=389"``
-* fetches the LDAP configuration
+:: 
+
+  $ curl -X PUT https://admin:secret@example.com/ocs/v2.php/apps/user_ldap/api/v1/config/s01 -H "OCS-APIREQUEST: true" -d "configData[ldapHost]=ldap%3A%2F%2Fldap.server.tld &configData[ldapPort]=389"
+
+* updates the LDAP configuration
 
 XML output
 ^^^^^^^^^^
