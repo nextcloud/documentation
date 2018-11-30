@@ -12,20 +12,6 @@ This document provides a complete walk-through for installing Nextcloud on
 Ubuntu 16.04 LTS Server with Apache and MariaDB, using `the Nextcloud .tar
 archive <https://nextcloud.com/install/>`_.
 
-* :ref:`vm_label`
-* :ref:`snaps_label`
-* :ref:`prerequisites_label`
-* :ref:`ubuntu_installation_label`
-* :ref:`centos7_installation_label`
-* :ref:`apache_configuration_label`
-* :ref:`pretty_urls_label`
-* :ref:`enabling_ssl_label`
-* :ref:`installation_wizard_label`
-* :ref:`selinux_tips_label`
-* :ref:`php_ini_tips_label`
-* :ref:`php_fpm_tips_label`
-* :ref:`other_HTTP_servers_label`
-
 .. note:: Admins of SELinux-enabled distributions such as CentOS, Fedora, and
    Red Hat Enterprise Linux may need to set new rules to enable installing
    Nextcloud. See :ref:`selinux_tips_label` for a suggested configuration.
