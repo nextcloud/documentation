@@ -349,7 +349,7 @@ During the install process, no data folder is created, so we will create one man
 
 Make sure that apache has read and write access to the whole nextcloud folder::
 
-    chown -R apache.apache /var/www/html/nextcloud
+    chown -R apache:apache /var/www/html/nextcloud
 
 Restart apache::
 
