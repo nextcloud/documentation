@@ -8,10 +8,10 @@ to set up each instance separately as described in
 For this reason, Nextcloud provides an automatic configuration feature.
 
 To take advantage of this feature, you must create a configuration file, called
-:file:`../nextcloud/config/autoconfig.php`, and set the file parameters as required.
+:file:`config/autoconfig.php`, and set the file parameters as required.
 You can specify any number of parameters in this file.  Any unspecified parameters appear on the "Finish setup" screen when you first launch Nextcloud.
 
-The :file:`../nextcloud/config/autoconfig.php` is automatically removed after the initial configuration has been applied.
+The :file:`config/autoconfig.php` is automatically removed after the initial configuration has been applied.
 
 Parameters
 ----------
@@ -38,9 +38,9 @@ Using the following parameter settings, the "Finish setup" screen requests datab
 ::
 
     <?php
-    $AUTOCONFIG = array(
+    $AUTOCONFIG = [
       "directory"     => "/www/htdocs/nextcloud/data",
-    );
+    ];
 
 
 SQLite database
@@ -51,11 +51,11 @@ Using the following parameter settings, the "Finish setup" screen requests data 
 ::
 
     <?php
-    $AUTOCONFIG = array(
+    $AUTOCONFIG = [
       "dbtype"        => "sqlite",
       "dbname"        => "nextcloud",
       "dbtableprefix" => "",
-    );
+    ];
 
 MySQL database
 ^^^^^^^^^^^^^^
