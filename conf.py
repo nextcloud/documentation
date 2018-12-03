@@ -18,7 +18,7 @@ copyright = str(now.year) + ' Nextcloud GmbH'
 # built documents.
 #
 # The short X.Y version.
-version = 'latest'
+version = '15'
 # The full version, including alpha/beta/rc tags.
 release = version
 
