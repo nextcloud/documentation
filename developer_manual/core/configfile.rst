@@ -1,6 +1,6 @@
-==========
-App config
-==========
+==================
+Configuration file
+==================
 
 .. code-block:: php
 
