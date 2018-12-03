@@ -20,10 +20,10 @@ You should now have a Client Identifier and Secret. Enter those into your ``OAut
 
 Please provide the OAuth2 application the following details:
 
-Authorization endpoint: SERVER/apps/oauth2/authorize
-Token endpoint: SERVER/apps/oauth2/api/v1/token
+* Authorization endpoint: ``https://cloud.example.org/apps/oauth2/authorize``
+* Token endpoint: ``https://cloud.example.org/apps/oauth2/api/v1/token``
 
-Note that the SERVER portion must include `index.php` at the end if pretty URL is not configured.
+Note that you must include ``index.php`` if pretty URL is not configured - i.e. ``https://cloud.example.org/index.php/apps/oauth2/api/v1/token``.
 
 The access token
 ----------------

@@ -2,11 +2,10 @@
 Linking external sites
 ======================
 
-You can embed external websites or documents inside your Nextcloud pages with the External
-sites app, as this screenshot shows.
+You can embed external websites or documents inside your Nextcloud pages with the **External
+sites** app, as this screenshot shows.
 
 .. figure:: ../images/external-sites-1.png
-   :scale: 70%
 
    *Click to enlarge*
 
@@ -26,10 +25,9 @@ This allows you to have different documentation links for users depending on the
 It is also possible to add links for a special device (recognized by the user agent).
 Currently the following options are available: All devices, Android app, iOS app, Desktop client and all others (Browsers).
 
-Starting with Nextcloud 13, it is also possible to add links only for members of a given group.
+It is also possible to add links only for members of a given group.
 
 .. figure:: ../images/external-sites-2.png
-   :scale: 50%
 
    *Click to enlarge*
 
@@ -65,5 +63,5 @@ On this page, X-Frame-Options prevents the embedding.
 
 .. figure:: ../images/external-sites-5.png
 
-**New:** With Nextcloud 13 a redirect option was added, so such websites can still be added for quick access.
-Instead of embedding the website the user will be redirected to it instead.
+There is also a redirect option, which allows that those websites can still be added for quick access.
+Instead of embedding the website the user will be redirected to it.

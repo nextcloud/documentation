@@ -25,9 +25,9 @@ of memcache that best fits your needs. The supported caching backends are:
 
 * `APCu <https://pecl.php.net/package/APCu>`_, APCu 4.0.6 and up required.
    A local cache for systems.
-* `Memcached <http://www.memcached.org/>`_ 
-   Distributed cache for multi-server Nextcloud installations.
 * `Redis <http://redis.io/>`_, PHP module 2.2.6 and up required.
+   For local and distributed caching as well as transactional file locking.
+* `Memcached <http://www.memcached.org/>`_
    For distributed caching.
    
 Memcaches must be explicitly configured in Nextcloud by installing
@@ -42,17 +42,9 @@ active by running :ref:`label-phpinfo`.
 APCu
 ----
 
-PHP 5.5 and up include the Zend OPcache in core, and on most Linux 
-distributions it is enabled by default. However, it does 
-not bundle a data cache. APCu is a data cache, and it is available in most 
+APCu is a data cache, and it is available in most
 Linux distributions. On Red Hat/CentOS/Fedora systems install
 ``php-pecl-apcu``. On Debian/Ubuntu/Mint systems install ``php-apcu``.
-On Ubuntu 14.04 LTS, the APCu version (4.0.2) is too old to use with Nextcloud (requires 4.0.6+).
-You may install 4.0.7 from Ubuntu backports with this command::
-
-  apt-get install php5-apcu/trusty-backports
-   
-Then restart your Web server.
 
 After restarting your Web server, add this line to your ``config.php`` file::
 
@@ -60,51 +52,10 @@ After restarting your Web server, add this line to your ``config.php`` file::
  
 Refresh your Nextcloud admin page, and the cache warning should disappear.  
 
-Memcached
----------
-
-Memcached is a reliable oldtimer for shared caching on distributed servers, 
-and performs well with Nextcloud with one exception: it is not suitable to use 
-with :doc:`Transactional File Locking <../configuration_files/files_locking_transactional>`
-because it does not store locks, and data can disappear from the cache at any time
-(Redis is the best memcache for this). 
-
-.. note:: Be sure to install the **memcached** PHP module, and not memcache, as 
-   in the following examples. Nextcloud supports only the **memcached** PHP 
-   module.
-
-Setting up Memcached is easy. On Debian/Ubuntu/Mint install ``memcached`` and 
-``php5-memcached``. The installer will automatically start ``memcached`` and 
-configure it to launch at startup.
-
-On Red Hat/CentOS/Fedora install ``memcached`` and 
-``php-pecl-memcached``. It will not start automatically, so you must use 
-your service manager to start ``memcached``, and to launch it at boot as a 
-daemon.
- 
-You can verify that the Memcached daemon is running with ``ps ax``::
-
- ps ax | grep memcached
- 19563 ? Sl 0:02 /usr/bin/memcached -m 64 -p 11211 -u memcache -l 
- 127.0.0.1
-
-Restart your Web server, add the appropriate entries to your 
-``config.php``, and refresh your Nextcloud admin page. This example uses APCu 
-for the local cache, Memcached as the distributed memcache, and lists all the 
-servers in the shared cache pool with their port numbers::
-
- 'memcache.local' => '\OC\Memcache\APCu',
- 'memcache.distributed' => '\OC\Memcache\Memcached',
- 'memcached_servers' => array(
-      array('localhost', 11211),
-      array('server1.example.com', 11211),
-      array('server2.example.com', 11211), 
-      ), 
-
 Redis
 -----
 
-Redis is an excellent modern memcache to use for both distributed caching, and 
+Redis is an excellent modern memcache to use for both local and distributed caching, and
 as a local cache for :doc:`Transactional File Locking 
 <../configuration_files/files_locking_transactional>` because it guarantees 
 that cached objects are available for as long as they are needed.
@@ -128,13 +79,13 @@ You can verify that the Redis daemon is running with ``ps ax``::
  
 Restart your Web server, add the appropriate entries to your ``config.php``, and 
 refresh your Nextcloud admin page. This example ``config.php`` configuration uses 
-Redis for the local server cache::
+Redis for the distributed server cache::
 
-  'memcache.local' => '\OC\Memcache\Redis',
-  'redis' => array(
+  'memcache.distributed' => '\OC\Memcache\Redis',
+  'redis' => [
        'host' => 'localhost',
        'port' => 6379,
-        ),
+  ],
 
 For best performance, use Redis for file locking by adding this::
 
@@ -145,18 +96,61 @@ recommended if Redis is running on the same system as Nextcloud) use this exampl
 ``config.php`` configuration::
 
   'memcache.local' => '\OC\Memcache\Redis',
-  'redis' => array(
-       'host' => '/var/run/redis/redis.sock',
-       'port' => 0,
-       'dbindex' => 0,
+  'memcache.distributed' => '\OC\Memcache\Redis',
+  'redis' => [
+       'host'     => '/var/run/redis/redis.sock',
+       'port'     => 0,
+       'dbindex'  => 0,
        'password' => 'secret',
-       'timeout' => 1.5,
-        ),
+       'timeout'  => 1.5,
+  ],
 
 Only "host" and "port" variables are required, the other ones are optional.
 
 Redis is very configurable; consult `the Redis documentation 
 <http://redis.io/documentation>`_ to learn more.
+
+
+Memcached
+---------
+
+Memcached is a reliable oldtimer for shared caching on distributed servers,
+and performs well with Nextcloud with one exception: it is not suitable to use
+with :doc:`Transactional File Locking <../configuration_files/files_locking_transactional>`
+because it does not store locks, and data can disappear from the cache at any time
+(Redis is the best memcache for this).
+
+.. note:: Be sure to install the **memcached** PHP module, and not memcache, as
+   in the following examples. Nextcloud supports only the **memcached** PHP
+   module.
+
+Setting up Memcached is easy. On Debian/Ubuntu/Mint install ``memcached`` and
+``php-memcached``. The installer will automatically start ``memcached`` and
+configure it to launch at startup.
+
+On Red Hat/CentOS/Fedora install ``memcached`` and
+``php-pecl-memcached``. It will not start automatically, so you must use
+your service manager to start ``memcached``, and to launch it at boot as a
+daemon.
+
+You can verify that the Memcached daemon is running with ``ps ax``::
+
+ ps ax | grep memcached
+ 19563 ? Sl 0:02 /usr/bin/memcached -m 64 -p 11211 -u memcache -l
+ 127.0.0.1
+
+Restart your Web server, add the appropriate entries to your
+``config.php``, and refresh your Nextcloud admin page. This example uses APCu
+for the local cache, Memcached as the distributed memcache, and lists all the
+servers in the shared cache pool with their port numbers::
+
+ 'memcache.local' => '\OC\Memcache\APCu',
+ 'memcache.distributed' => '\OC\Memcache\Memcached',
+ 'memcached_servers' => [
+      [ 'localhost', 11211 ],
+      [ 'server1.example.com', 11211 ],
+      [ 'server2.example.com', 11211 ],
+  ],
 
 Cache Directory location
 ------------------------
@@ -175,30 +169,18 @@ Only use APCu::
 
     'memcache.local' => '\OC\Memcache\APCu',
 
-Small organization, single-server setup
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Use APCu for local caching, Redis for file locking::
-
- 'memcache.local' => '\OC\Memcache\APCu',
- 'memcache.locking' => '\OC\Memcache\Redis',
-  'redis' => array(
-       'host' => 'localhost',
-       'port' => 6379,
-        ),
-
-Large organization, clustered setup
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Organizations with single-server and clustered setups
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Use Redis for everything except local memcache::
 
+  'memcache.local' => '\OC\Memcache\APCu',
   'memcache.distributed' => '\OC\Memcache\Redis',
   'memcache.locking' => '\OC\Memcache\Redis',
-  'memcache.local' => '\OC\Memcache\APCu',
-  'redis' => array(
+  'redis' => [
        'host' => 'localhost',
        'port' => 6379,
-        ),
+  ],
 
 Additional notes for Redis vs. APCu on memory caching
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -212,7 +194,7 @@ Additional Redis installation help
 ----------------------------------
 
 If your version of Mint or Ubuntu does not package the required version of 
-``php5-redis``, then try `this Redis guide on Tech and Me 
+``php-redis``, then try `this Redis guide on Tech and Me
 <https://www.techandme.se/install-redis-cache-on-ubuntu-server-with-php-7-and-nextcloud/>`_ for a complete Redis installation on Ubuntu 14.04 using PECL. 
 These instructions are adaptable for any distro that does not package the 
 supported version, or that does not package Redis at all, such as SUSE Linux 
@@ -225,9 +207,9 @@ For PHP 7.0 and PHP 7.1 use Redis PHP module 3.1.x or later.
 See `<https://pecl.php.net/package/redis>`_
 
 On Debian/Mint/Ubuntu, use ``apt-cache`` to see the available 
-``php5-redis`` version, or the version of your installed package::
+``php-redis`` version, or the version of your installed package::
 
- apt-cache policy php5-redis
+ apt-cache policy php-redis
  
 On CentOS and Fedora, the ``yum`` command shows available and installed version 
 information::

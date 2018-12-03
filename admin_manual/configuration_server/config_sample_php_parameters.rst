@@ -13,6 +13,9 @@ is usually not necessary to edit ``config/config.php``.
    use a special value for a parameter. **Do not copy everything from**
    ``config/config.sample.php`` **. Only enter the parameters you wish to modify!**
 
+Multiple config.php file
+------------------------
+
 Nextcloud supports loading configuration parameters from multiple files.
 You can add arbitrary files ending with :file:`.config.php` in the :file:`config/`
 directory, for example you could place your email server configuration

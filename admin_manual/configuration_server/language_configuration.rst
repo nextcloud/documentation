@@ -15,8 +15,6 @@ starts with a given language, you can set a **default_language** parameter in th
 
 ::
 
-  <?php
-
     "default_language" => "en",
 
 
@@ -28,8 +26,6 @@ their language in the personal settings. You can set a **force_language** parame
 in the :file:`config/config.php`.
 
 ::
-
-  <?php
 
     "force_language" => "en",
 

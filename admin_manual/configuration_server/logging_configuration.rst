@@ -4,8 +4,8 @@ Logging configuration
 
 Use your Nextcloud log to review system status, or to help debug problems. You may adjust logging levels, and choose between using the Nextcloud log or your syslog.
 
-Parameters
-----------
+Log level
+---------
 
 Logging levels range from **DEBUG**, which logs all activity, to **FATAL**, which logs only fatal errors.
 
@@ -17,10 +17,13 @@ Logging levels range from **DEBUG**, which logs all activity, to **FATAL**, whic
 
 By default the log level is set to **2** (WARN). Use **DEBUG** when you have a problem to diagnose, and then reset your log level to a less-verbose level as **DEBUG** outputs a lot of information, and can affect your server performance.
 
-Logging level parameters are set in the :file:`config/config.php` file, or on the Admin page of your Nextcloud Web GUI.
+Logging level parameters are set in the :file:`config/config.php` file.
 
-Nextcloud
-~~~~~~~~~
+Log type
+--------
+
+file
+~~~~
 
 All log information will be written to a separate log file which can be
 viewed using the log viewer on your Admin page. By default, a log
@@ -28,14 +31,14 @@ file named **nextcloud.log** will be created in the directory which has
 been configured by the **datadirectory** parameter in :file:`config/config.php`.
 
 The desired date format can optionally be defined using the **logdateformat** parameter in :file:`config/config.php`.
-By default the `PHP date function`_ parameter "*c*" is used, and therefore the
-date/time is written in the format "*2013-01-10T15:20:25+02:00*". By using the
+By default the `PHP date function`_ parameter ``c`` is used, and therefore the
+date/time is written in the format ``2013-01-10T15:20:25+02:00``. By using the
 date format in the example below, the date/time format will be written in the format
-"*January 10, 2013 15:20:25*".
+``January 10, 2013 15:20:25``.
 
 ::
 
-    "log_type" => "owncloud",
+    "log_type" => "file",
     "logfile" => "nextcloud.log",
     "loglevel" => "3",
     "logdateformat" => "F d, Y H:i:s",
