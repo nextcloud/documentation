@@ -1,6 +1,6 @@
-============================
-Installing and managing apps
-============================
+===============
+Apps management
+===============
 
 Nextcloud apps can enhance, customize or even restrict the features and experience
 you and your users has with the Nextcloud server. Next to default enabled functions
@@ -11,8 +11,8 @@ After installing the Nextcloud server, you might want to consider about enabling
 disabling or even restricting some apps to groups depending on your and your users
 needs.
 
-Apps management
----------------
+Apps
+----
 
 .. figure:: images/apps_overview.png
    :alt: Apps page for enabling and disabling apps.
@@ -21,7 +21,7 @@ During the Nextcloud server installation, some apps are enabled by default.
 To see which apps are enabled go to your Apps page.
 
 Those apps are supported and developed by Nextcloud GmbH directly and
-have an **Official**-tag. See :doc:`apps_supported` for a list of supported apps.
+have an **Official**-tag. See :doc:`installation/apps_supported` for a list of supported apps.
 
 .. note:: To get access to work-arounds, long-term-support, priority bug fixing
           and custom consulting for supported apps, contact our `sales team <https://nextcloud.com/enterprise/>`_.
@@ -76,20 +76,18 @@ in that folder.
 
 ::
 
-  <?php
-
-    "apps_paths" => array (
-        0 => array (
-                "path"     => OC::$SERVERROOT."/apps",
+    "apps_paths" => [
+        [
+                "path"     => OC::$SERVERROOT . "/apps",
                 "url"      => "/apps",
                 "writable" => false,
-        ),
-        1 => array (
-                "path"     => OC::$SERVERROOT."/apps2",
+        ],
+        [
+                "path"     => OC::$SERVERROOT . "/apps2",
                 "url"      => "/apps2",
                 "writable" => true,
-        ),
-    ),
+        ],
+    ],
 
 Using your own appstore
 -----------------------
@@ -109,8 +107,6 @@ To enable installation from your own apps store:
    server must use :abbr:`OCS (Open Collaboration Services)`.
 
 ::
-
-  <?php
 
     "appstoreenabled" => true,
     "appstoreurl" => "https://api.nextcloud.com/v1",

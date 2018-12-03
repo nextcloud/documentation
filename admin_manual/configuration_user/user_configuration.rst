@@ -149,7 +149,9 @@ You now have a configurable option in ``config.php`` that controls whether
 external storage is counted against user's quotas. This is still
 experimental, and may not work as expected. The default is to not count
 external storage as part of user storage quotas. If you prefer to include it,
-then change the default ``false`` to ``true``.::
+then change the default ``false`` to ``true``.
+
+::
 
    'quota_include_external_storage' => false,
 

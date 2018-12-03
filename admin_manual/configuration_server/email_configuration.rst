@@ -13,7 +13,7 @@ or it may be a remote server.
 
 .. figure:: ../images/smtp-config-wizard.png
 
-With the new wizard, connecting Nextcloud to your mail server is fast and easy.
+With the wizard, connecting Nextcloud to your mail server is fast and easy.
 The wizard fills in the values in ``config/config.php``, so you may use either
 or both as you prefer.
 
@@ -67,10 +67,7 @@ of your mail server options in one place, in your mail server configuration then
 Using email templates
 ---------------------
 
-We removed the template editor in Nextcloud 12 because we changed how emails
-are generated. While the customization capabilities offered by the template editor
-were easy to use, they often resulted in broken emails. To fix this, we designed a
-much easier mechanism that automatically generates emails which follow the theme
+We designed a mechanism that generates emails which follow the theming
 settings and look the same in all the different email clients out there.
 
 .. note:: If, for some reason, you need text-only emails, consider simply configuring
@@ -82,9 +79,9 @@ settings and look the same in all the different email clients out there.
 Modifying the look of emails beyond the theming app capabilities
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can now overwrite templates by writing a class that implements the template interface
-(or extends it to not need to copy over everything). Easiest way is then put this class into
-an app and load it (so you do not need to patch it on every update).
+You can overwrite templates by writing a class that implements the template interface
+(or extends it to not need to copy over everything). Easiest way is to then put this class into
+an app and load it so you do not need to patch it on every update.
 
 This is the interface of the class that needs to be implemented: https://github.com/nextcloud/server/blob/master/lib/public/Mail/IEMailTemplate.php
 
@@ -92,9 +89,9 @@ That is the implementation that could be extended and used to see how it works: 
 
 An example from `a GitHub issue <https://portal.nextcloud.com/article/customized-email-templates-29.html>`_:
 
-1. Look at the source code of extended class `OC\Mail\EMailTemplate::class <https://github.com/nextcloud/server/blob/master/lib/private/Mail/EMailTemplate.php>`_
+1. Look at the source code of extended class `OC\\Mail\\EMailTemplate::class <https://github.com/nextcloud/server/blob/master/lib/private/Mail/EMailTemplate.php>`_
 
-2. Then override what you need in your own `OC\Mail\EMailTemplate::class` extension
+2. Then override what you need in your own `OC\\Mail\\EMailTemplate::class` extension
 
 **Example:**
 
@@ -138,16 +135,12 @@ port 25/tcp will be used unless you change that by modifying the
 
 ::
 
-  <?php
-
     "mail_smtpmode"     => "smtp",
     "mail_smtphost"     => "smtp.server.dom:425",
 
 or
 
 ::
-
-  <?php
 
     "mail_smtpmode"     => "smtp",
     "mail_smtphost"     => "smtp.server.dom",
@@ -158,16 +151,12 @@ necessary that you increase the SMTP timeout to e.g. 30s:
 
 ::
 
-  <?php
-
     "mail_smtptimeout"  => 30,
 
 If the SMTP server accepts insecure connections, the default setting can be
 used:
 
 ::
-
-  <?php
 
   "mail_smtpsecure"   => '',
 
@@ -182,8 +171,6 @@ which uses the port 465/tcp:
 
 ::
 
-  <?php
-
     "mail_smtphost"     => "smtp.server.dom:465",
     "mail_smtpsecure"   => 'ssl',
 
@@ -194,8 +181,6 @@ uses the default port 25/tcp:
 
 ::
 
-  <?php
-
     "mail_smtphost"     => "smtp.server.dom",
     "mail_smtpsecure"   => 'tls',
 
@@ -203,8 +188,6 @@ And finally it is necessary to configure if the SMTP server requires
 authentication, if not, the default values can be taken as is.
 
 ::
-
-  <?php
 
     "mail_smtpauth"     => false,
     "mail_smtpname"     => "",
@@ -215,8 +198,6 @@ and password and can optionally choose between the authentication types
 **LOGIN** (default) or **PLAIN**.
 
 ::
-
-  <?php
 
     "mail_smtpauth"     => true,
     "mail_smtpauthtype" => "LOGIN",
@@ -232,8 +213,6 @@ The sendmail binary (**/usr/sbin/sendmail**) is usually part of that system.
 Nextcloud should be able to send email out of the box.
 
 ::
-
-  <?php
 
     "mail_smtpmode"     => "sendmail",
     "mail_smtphost"     => "127.0.0.1",
@@ -254,8 +233,6 @@ installed on your server will then be used to send email. Nextcloud should
 be able to send email out of the box.
 
 ::
-
-  <?php
 
     "mail_smtpmode"     => "qmail",
     "mail_smtphost"     => "127.0.0.1",
@@ -279,11 +256,9 @@ Troubleshooting
 ---------------
 
 If you are unable to send email, try turning on debugging. Do this by enabling
-the ``mail_smtpdebug parameter`` in ``config/config.php``.
+the ``mail_smtpdebug`` parameter in ``config/config.php``.
 
 ::
-
-  <?php
 
     "mail_smtpdebug" => true;
 
@@ -294,13 +269,11 @@ the ``mail_smtpdebug parameter`` in ``config/config.php``.
 **Question**: Why is my web domain different from my mail domain?
 
 **Answer**: The default domain name used for the sender address is the hostname
-where your Nextcloud installation is served.  If you have a different mail domain
+where your Nextcloud installation is served. If you have a different mail domain
 name you can override this behavior by setting the following configuration
 parameter:
 
 ::
-
-  <?php
 
     "mail_domain" => "example.com",
 
@@ -397,11 +370,9 @@ Enabling debug mode
 -------------------
 
 If you are unable to send email, it might be useful to activate further debug
-messages by enabling the mail_smtpdebug parameter:
+messages by enabling the ``mail_smtpdebug`` parameter:
 
 ::
-
-  <?php
 
     "mail_smtpdebug" => true,
 

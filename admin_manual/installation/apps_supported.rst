@@ -6,7 +6,7 @@ Below is the list of apps supported for Nextcloud |version|. Supported here mean
 
 * Activity
 * Admin Audit Log
-* AntiVirus
+* Antivirus
 * Calendar
 * Circles
 * Collaborative Tags

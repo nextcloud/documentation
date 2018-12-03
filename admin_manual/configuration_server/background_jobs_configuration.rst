@@ -12,7 +12,7 @@ shell-based scripts that are scheduled to run periodically at fixed times,
 dates, or intervals.   ``cron.php`` is an Nextcloud internal process that runs
 such background jobs on demand.
 
-Nextcloud plug-in applications register actions with ``cron.php`` automatically
+Nextcloud apps register actions with ``cron.php`` automatically
 to take care of typical housekeeping operations, such as garbage collecting of
 temporary files or checking for newly updated files using ``filescan()`` for
 externally mounted file systems.
@@ -64,17 +64,17 @@ Using the operating system cron feature is the preferred method for executing
 regular tasks.  This method enables the execution of scheduled jobs without the
 inherent limitations the Web server might have.
 
-To run a cron job on a \*nix system, every 15 minutes, under the default Web
+To run a cron job on a \*nix system, every 5 minutes, under the default Web
 server user (often, ``www-data`` or ``wwwrun``), you must set up the following
 cron job to call the **cron.php** script::
 
   # crontab -u www-data -e
-  */15  *  *  *  * php -f /var/www/nextcloud/cron.php
+  */5  *  *  *  * php -f /var/www/nextcloud/cron.php
 
 You can verify if the cron job has been added and scheduled by executing::
 
   # crontab -u www-data -l
-  */15  *  *  *  * php -f /var/www/nextcloud/cron.php
+  */5  *  *  *  * php -f /var/www/nextcloud/cron.php
 
 .. note:: You have to replace the path ``/var/www/nextcloud/cron.php`` with the
           path to your current Nextcloud installation.
@@ -109,21 +109,21 @@ Replace the user ``www-data`` with the user of your http server and ``/var/www/n
 **nextcloudcron.timer** should look like this::
 
   [Unit]
-  Description=Run Nextcloud cron.php every 15 minutes
+  Description=Run Nextcloud cron.php every 5 minutes
   
   [Timer]
   OnBootSec=5min
-  OnUnitActiveSec=15min
+  OnUnitActiveSec=5min
   Unit=nextcloudcron.service
   
   [Install]
   WantedBy=timers.target
 
-The important parts in the timer-unit are ``OnBootSec`` and ``OnUnitActiveSec``.``OnBootSec`` will start the timer 5 minutes after boot, otherwise you would have to start it manually after every boot. ``OnUnitActiveSec`` will set a 15 minute timer after the service-unit was last activated.
+The important parts in the timer-unit are ``OnBootSec`` and ``OnUnitActiveSec``.``OnBootSec`` will start the timer 5 minutes after boot, otherwise you would have to start it manually after every boot. ``OnUnitActiveSec`` will set a 5 minute timer after the service-unit was last activated.
 
 Now all that is left is to start and enable the timer by running these commands::
 
   systemctl start nextcloudcron.timer
   systemctl enable nextcloudcron.timer
 
-.. note:: Select the option ``Cron`` in the admin menu for background jobs. if left on ``AJAX`` it would execute the AJAX job on every page load.
+.. note:: Selecting the option ``Cron`` in the admin menu for background jobs is not mandatory, because once `cron.php` is executed from the command line or cron service it will set it automatically to ``Cron``.g

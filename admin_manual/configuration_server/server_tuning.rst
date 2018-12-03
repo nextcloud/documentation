@@ -13,7 +13,8 @@ Reducing system load
 
 High system load will slow down Nextcloud and might also lead to other unwanted 
 side effects. To reduce load you should first identify the source of the problem. 
-Tools such as htop, iotop or `glances <https://nicolargo.github.io/glances/>`_ 
+Tools such as htop, iotop, `netdata <https://my-netdata.io>`_ or
+`glances <https://nicolargo.github.io/glances/>`_
 will help to identify the process or the drive that slows down your system. First 
 you should make sure that you installed/assigned enough RAM. Swap usage should be 
 prevented by all means. If you run your database inside a VM, you should not 

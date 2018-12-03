@@ -12,10 +12,10 @@ The normal ways to recover a lost password are:
 2. Ask another Nextcloud server admin to reset it for you.
 
 If neither of these is an option, then you have a third option, and that is 
-using the ``occ`` command. ``occ`` is in the ``nextcloud`` directory, for 
-example ``/var/www/nextcloud/occ``. ``occ`` has a command for resetting all 
-user passwords, ``user:resetpassword``. It is best to run ``occ`` as the HTTP 
-user, as in this example on Ubuntu Linux::
+using the ``occ`` command. See :doc:`../configuration_server/occ_command` to
+learn more about using the ``occ`` command.
+
+::
 
  $ sudo -u www-data php /var/www/nextcloud/occ user:resetpassword admin
  Enter a new password: 
@@ -24,13 +24,3 @@ user, as in this example on Ubuntu Linux::
  
 If your Nextcloud username is not ``admin``, then substitute your Nextcloud 
 username.
-
-You can find your HTTP user in your HTTP configuration file. These are the 
-default Apache HTTP user:group on Linux distros:
-
-* Centos, Red Hat, Fedora: apache:apache
-* Debian, Ubuntu, Linux Mint: www-data:www-data
-* openSUSE: wwwrun:www
-
-See :doc:`../configuration_server/occ_command` to learn more about using the 
-``occ`` command.

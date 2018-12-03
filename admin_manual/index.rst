@@ -39,10 +39,8 @@ respective manuals:
 
 * `Nextcloud User Manual`_
 * `Nextcloud Desktop Client`_
-* `Nextcloud Android App`_
 
-.. _`Nextcloud User Manual`: https://docs.nextcloud.com/server/14/user_manual/
+.. _`Nextcloud User Manual`: https://docs.nextcloud.com/server/latest/user_manual/
 .. _`Nextcloud Desktop Client`: https://docs.nextcloud.com/desktop/2.3/
-.. _`Nextcloud Android App`: https://docs.nextcloud.com/android/
 
 .. TODO ON RELEASE: Update version number above on release
