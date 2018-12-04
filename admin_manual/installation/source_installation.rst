@@ -43,9 +43,9 @@ Download the the Appliance here:
 
 * **Home User/SME appliance**
 
-The `Nextcloud VM <https://github.com/nextcloud/vm/>`_ is maintained by
+The `Nextcloud VM`_ is maintained by
 `T&M Hansson IT <https://www.hanssonit.se/nextcloud-vm/>`_ and several different versions are
-offered. Collabora, OnlyOffice, Full Text Search and other apps can easily be installed with the included scripts which you can choose to run during the first setup, or download them later and run it afterwards. You can find all the currently available automated app installations `here <https://github.com/nextcloud/vm/tree/master/apps/>`_.
+offered. Collabora, OnlyOffice, Full Text Search and other apps can easily be installed with the included scripts which you can choose to run during the first setup, or download them later and run it afterwards. You can find all the currently available automated app installations `on GitHub <https://github.com/nextcloud/vm/tree/master/apps/>`_.
 
 The VM is made with VMware version 10 and it comes in different sizes and versions:
 
@@ -61,7 +61,7 @@ For complete instructions and downloads see:
 - `Nextcloud VM (Github) <https://github.com/nextcloud/vm/>`_
 - `Nextcloud VM (T&M Hansson IT) <https://www.hanssonit.se/nextcloud-vm/>`_
 
-.. note:: You can install the VM on several different operating systems as long as you can mount OVA, VMDK, or VHD/VHDX VM in your hypervisor. If you are using KVM then you need to install the VM from the scripts on Github. You can follow the instructions `here <https://github.com/nextcloud/vm#build-your-own-vm-or-install-on-a-vps>`_.
+.. note:: You can install the VM on several different operating systems as long as you can mount OVA, VMDK, or VHD/VHDX VM in your hypervisor. If you are using KVM then you need to install the VM from the scripts on Github. You can follow the `instructions in the README <https://github.com/nextcloud/vm#build-your-own-vm-or-install-on-a-vps>`_.
    
 .. _snaps_label:
 
@@ -624,8 +624,8 @@ and uncommenting the line
 
     clear_env = no
 
-When you are using shared hosting or a control panel to manage your `Nextcloud VM
-<https://github.com/nextcloud/vm>`_ or server, the configuration files are almost
+When you are using shared hosting or a control panel to manage your `Nextcloud VM`_
+or server, the configuration files are almost
 certain to be located somewhere else, for security and flexibility reasons, so
 check your documentation for the correct locations.
 
@@ -651,8 +651,9 @@ be set in the ``nextcloud/.user.ini`` file.
 Other Web servers
 -----------------
 
-:doc:`nginx`
+* :doc:`nginx`
+* `Other HTTP servers (Nextcloud) <https://github.com/nextcloud/documentation/wiki/Alternate-Web-server-notes>`_
 
 
-`Other HTTP servers (Nextcloud)
-<https://github.com/nextcloud/documentation/wiki/Alternate-Web-server-notes>`_
+.. _Nextcloud VM:
+  https://github.com/nextcloud/vm
