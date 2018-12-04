@@ -645,8 +645,8 @@ and uncommenting the line
 
     clear_env = no
 
-When you are using shared hosting or a control panel to manage your `Nextcloud VM
-<https://github.com/nextcloud/vm>`_ or server, the configuration files are almost
+When you are using shared hosting or a control panel to manage your `Nextcloud VM`_
+or server, the configuration files are almost
 certain to be located somewhere else, for security and flexibility reasons, so
 check your documentation for the correct locations.
 
@@ -672,8 +672,9 @@ be set in the ``nextcloud/.user.ini`` file.
 Other Web servers
 -----------------
 
-:doc:`nginx`
+* :doc:`nginx`
+* `Other HTTP servers (Nextcloud) <https://github.com/nextcloud/documentation/wiki/Alternate-Web-server-notes>`_
 
 
-`Other HTTP servers (Nextcloud)
-<https://github.com/nextcloud/documentation/wiki/Alternate-Web-server-notes>`_
+.. _Nextcloud VM:
+  https://github.com/nextcloud/vm
