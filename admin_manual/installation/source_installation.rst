@@ -107,6 +107,7 @@ Required:
 
 * PHP (>= 7.0, 7.1 or 7.2)
 * PHP module ctype
+* PHP module curl
 * PHP module dom
 * PHP module GD
 * PHP module iconv
@@ -115,12 +116,12 @@ Required:
 * PHP module mbstring
 * PHP module openssl
 * PHP module posix
+* PHP module session
 * PHP module SimpleXML
 * PHP module XMLReader
 * PHP module XMLWriter
 * PHP module zip
 * PHP module zlib
-* PHP module session
 
 Database connectors (pick the one for your database:)
 
@@ -130,13 +131,10 @@ Database connectors (pick the one for your database:)
 
 *Recommended* packages:
 
-* PHP module curl (highly recommended, some functionality, e.g. HTTP user
-  authentication, depends on this)
 * PHP module fileinfo (highly recommended, enhances file analysis performance)
 * PHP module bz2 (recommended, required for extraction of apps)
 * PHP module intl (increases language translation performance and fixes sorting
   of non-ASCII characters)
-* PHP module mcrypt (increases file encryption performance)
 
 Required for specific apps:
 
