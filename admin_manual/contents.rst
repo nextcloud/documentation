@@ -7,6 +7,7 @@ Table of contents
      
     index 
     release_notes
+    release_schedule
     installation/index
     configuration_server/index
     apps_management
