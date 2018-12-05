@@ -53,7 +53,7 @@ OpenStack Swift
 ~~~~~~~~~~~~~~~
 
 The OpenStack Swift backend mounts a container on an OpenStack Object Storage
-erver into the virtual filesystem.
+server into the virtual filesystem.
 
 The class to be used is :code:`\\OC\\Files\\ObjectStore\\Swift`
 
