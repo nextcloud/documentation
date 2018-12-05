@@ -31,6 +31,7 @@ archive <https://nextcloud.com/install/>`_.
    Nextcloud. See :ref:`selinux_tips_label` for a suggested configuration.
 
 .. _vm_label:
+
 Installing on Windows (virtual machine)
 ---------------------------------------
 
