@@ -2,11 +2,13 @@
 Maintenance and release schedule
 ================================
 
-This page should give an overview of the currently supported and released versions and how releases are scheduled.
+This page gives an overview of the currently supported and released versions as well as basic release scheduling.
 
 +--------+-------------------+------------------+-------------------------+---------------------------+
 |        | release date      | end of life      | latest version          | next version              |
 +========+===================+==================+=========================+===========================+
+| **15** | 2018-12-10        | 2019-09          | **15.0.0** (2018-12-10) | *15.0.1 (2019-01-10)*     |
++--------+-------------------+------------------+-------------------------+---------------------------+
 | **14** | 2018-09-10        | 2019-09          | **14.0.4** (2018-11-22) | *14.0.5 (2019-01-10)*     |
 +--------+-------------------+------------------+-------------------------+---------------------------+
 | **13** | 2018-02-06        | 2019-02          | **13.0.8** (2018-11-22) | *13.0.9 (2019-01-10)*     |
@@ -23,10 +25,9 @@ This page should give an overview of the currently supported and released versio
 Major releases
 --------------
 
-Major releases are typically scheduled for once every 4 months with the first 10 weeks being the development phase and then having a freeze phase with four beta release, two RCs and one final each one with an interval of 1 week. Specific dates for each release can be found on `GitHub <https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule>`_.
+Major releases are typically scheduled once every 4 months with the first 10 weeks being the development phase followed by freeze phase with four beta release, two RCs and one final each one with an interval of 1 week. Specific dates for each release can be found on `GitHub <https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule>`_.
 
-Major releases are meant to be actively maintained for at least one year after their release. For longer support intervals check out the `Nextcloud Subscription <https://nextcloud.com/enterprise/>`_ offered by `Nextcloud GmbH <https://nextcloud.com>`_.
-
+Major releases are planned to be actively maintained for at least 8 months after their release. For long term support options up to 10 years check out the `Nextcloud Subscription <https://nextcloud.com/enterprise/>`_ offered by `Nextcloud GmbH <https://nextcloud.com>`_.
 
 Maintenance releases
 --------------------
