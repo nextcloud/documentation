@@ -47,7 +47,7 @@ On the final login the server will do a redirect to a url of the following forma
 	nc://login/server:<server>&user:<loginname>&password:<password>
 
 * server: The address of the server to connect to. The server may specify a protocol (http or https). If no protocol is specified the client will assume https.
-* loginname: The username that the client must use to login. **Note:** Keep in mind that this is the loginname and could be different from the username. For example the email address could be used to login but not for generating the webdav URL. You could fetch the actual username from the OCS API endpoint ... .
+* loginname: The username that the client must use to login. **Note:** Keep in mind that this is the loginname and could be different from the username. For example the email address could be used to login but not for generating the webdav URL. You could fetch the actual username from the OCS API endpoint :code:`<server>/ocs/v1.php/cloud/user`.
 * password: The password that the client must use to login and store securely
 
 This information will be used by the client to create a new account.
