@@ -89,6 +89,7 @@ First, make sure that the following are installed:
   on Mac: ``sudo easy_install Sphinx``
 * Sphinx PHPDomain (e.g. ``sudo easy_install sphinxcontrib-phpdomain``)
 * rst2pdf (e.g. ``sudo easy_install rst2pdf``)
+* svgexport ``npm install svgexport -g`` (to build the dev manual)
 
 ...then enter any manual directory, then run ``make html``. The result can
 be found in the ``_build/html`` subdirectory.  PDFs can be built with the
