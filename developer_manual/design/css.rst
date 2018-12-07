@@ -2,9 +2,9 @@
 .. codeauthor:: John Molakvoæ <skjnldsv@protonmail.com>
 ..  _css:
 
-=============
+====
 SCSS
-=============
+====
 
 Since the version 12 of Nextcloud, we support ``SCSS`` natively.
 You can migrate your files by simply renaming your ``.css`` files to ``.scss``.
@@ -14,7 +14,7 @@ will ensure a retro compatibility with <12 versions as scss files will be ignore
 
 ..  _cssvars:
 
-=============
+
 CSS variables
 =============
 
@@ -26,9 +26,9 @@ https://github.com/nextcloud/server/blob/master/core/css/css-variables.scss
 
 ..  _cssicons:
 
-=============
-Icons
-=============
+
+Scss icons mixins
+=================
 
 Since nextcloud 14, we added some scss mixins and functions to add and manage svg icons.
 

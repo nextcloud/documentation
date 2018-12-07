@@ -6,16 +6,18 @@
 Icons
 =====
 
+
+List of available icons
+=======================
+
 White icons only have a grey background on this documentation page for readability purposes.
 
  .. include:: icons.txt
-    :class: icons-flex
 
 ..  _svgcolorapi:
 
-=====================
 Svg color api
-=====================
+=============
 
 More informations about scss and this api: :ref:`scss mixins and functions <cssicons>`
 
