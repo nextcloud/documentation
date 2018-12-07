@@ -21,7 +21,7 @@
  *
  */
 
-/*
+/**
  * This is a short example on how you can generate the API documentation for Nextcloud
  */
 
