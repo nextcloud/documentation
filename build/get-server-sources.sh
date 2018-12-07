@@ -6,6 +6,10 @@
 
 NC_BRANCH="${1:-master}"
 
+printf "\n\n"
+echo Fetching source for $NC_BRANCH
+printf "\n"
+
 if [ -d server/.git ]; then
     cd server && git fetch &&  git checkout $NC_BRANCH && git reset --hard origin/$NC_BRANCH 
 else
