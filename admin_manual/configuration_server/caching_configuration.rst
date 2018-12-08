@@ -60,6 +60,11 @@ After restarting your Web server, add this line to your ``config.php`` file::
  
 Refresh your Nextcloud admin page, and the cache warning should disappear.  
 
+.. warning:: APCu is disabled by default on CLI which could cause issues with nextcloud's
+   cron jobs. Please make sure you set the ``apc.enable_cli`` to ``1`` on your ``php.ini``
+   config file.
+
+
 Memcached
 ---------
 
@@ -100,6 +105,7 @@ servers in the shared cache pool with their port numbers::
       array('server1.example.com', 11211),
       array('server2.example.com', 11211), 
       ), 
+
 
 Redis
 -----
