@@ -26,6 +26,17 @@ include __DIR__ . '/vendor/autoload.php';
 use Leafo\ScssPhp\Compiler;
 use Leafo\ScssPhp\Formatter\Crunched;
 
+function command_exist($cmd) {
+    $return = shell_exec(sprintf("which %s", escapeshellarg($cmd)));
+    return !empty($return);
+}
+
+// You need svgexport to run this script
+if (!command_exist('svgexport')) {
+	print("\n\nYou need svgexport to run this script.  Please install it with `npm install svgexport -g`\n\n");
+	exit(1);
+}
+
 $sourceDirectory = __DIR__ . '/server';
 $destinationDirectory = __DIR__ . '/../developer_manual/design/';
 
