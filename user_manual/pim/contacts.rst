@@ -41,6 +41,8 @@ To import contacts using a VCF/Vcard file:
 
 **Contacts app upload field**
 
+.. note:: The Contacts app only supports import of vCards version 3.0 and 4.0.
+
 Creating Contacts Manually
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
