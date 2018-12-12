@@ -91,8 +91,7 @@ webroot of your nginx installation. In this example it is
       # The following 2 rules are only needed for the user_webfinger app.
       # Uncomment it if you're planning to use this app.
       #rewrite ^/.well-known/host-meta /public.php?service=host-meta last;
-      #rewrite ^/.well-known/host-meta.json /public.php?service=host-meta-json
-      # last;
+      #rewrite ^/.well-known/host-meta.json /public.php?service=host-meta-json last;
 
       location = /.well-known/carddav {
         return 301 $scheme://$host/remote.php/dav;
