@@ -6,8 +6,16 @@
 
 NC_BRANCH="${1:-master}"
 
+printf "\n\n"
+echo Fetching source for $NC_BRANCH
+printf "\n"
+
 if [ -d server/.git ]; then
-    cd server && git fetch &&  git checkout $NC_BRANCH && git reset --hard origin/$NC_BRANCH 
+    cd server
+    git remote set-branches --add origin $NC_BRANCH
+    git fetch
+    git checkout $NC_BRANCH
+    git reset --hard origin/$NC_BRANCH 
 else
-    git clone https://github.com/nextcloud/server server --depth 1
+    git clone https://github.com/nextcloud/server server --depth 1 --branch $NC_BRANCH
 fi;
