@@ -54,12 +54,17 @@ $compiledScss = $scss->compile(
 	'@import "variables.scss";' .
 	'@import "functions.scss";' .
 	// override the path generator function
-	'@function icon-color-path($icon, $dir, $color, $version: 1, $core: false) {
-		$color: remove-hash-from-color($color);
+	'@mixin icon-color($icon, $dir, $color, $version: 1, $core: false) {
+		// remove # from color
+		// inspect cast int to string
+		$index: str-index(inspect($color), \'#\');
+		@if $index {
+			$color: str-slice(inspect($color), 2);
+		}
 		@if $core {
-			@return "/core/img/#{$dir}/#{$icon}";
+			background-image: url("/core/img/#{$dir}/#{$icon}");
 		} @else {
-			@return "/apps/#{$dir}/img/#{$icon}";
+			background-image: url("/apps/#{$dir}/img/#{$icon}");
 		}
 	}'.
 	'@import "icons.scss";'
