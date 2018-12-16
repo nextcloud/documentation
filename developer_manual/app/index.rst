@@ -25,6 +25,7 @@ App development
    notifications
    logging
    repair
+   publicpage
    testing
    ../api
 
