@@ -559,16 +559,17 @@ ini file. This can be the case, for example, for the ``date.timezone`` setting.
 **php.ini - used by the Web server:**
 ::
 
-   /etc/php5/apache2/php.ini
+   /etc/php/7.0/apache2/php.ini
  or
-   /etc/php5/fpm/php.ini
+   /etc/php/7.0/fpm/php.ini
  or ...
 
 **php.ini - used by the php-cli and so by Nextcloud CRON jobs:**
 ::
 
-  /etc/php5/cli/php.ini
+  /etc/php/7.0/cli/php.ini
 
+.. note:: Path names have to be set in respect of the installed PHP (>= 7.0, 7.1 or 7.2) as applicable.
 
 .. _php_fpm_tips_label:
 
@@ -586,9 +587,9 @@ variables in the appropropriate ``php-fpm`` ini/config file.
 Here are some example root paths for these ini/config files:
 
 +-----------------------+-----------------------+
-| Ubuntu/Mint           | CentOS/Red Hat/Fedora |
+| Debian/Ubuntu/Mint    | CentOS/Red Hat/Fedora |
 +-----------------------+-----------------------+
-| ``/etc/php5/fpm/`` or | ``/etc/php-fpm.d/``   |
+|                       | ``/etc/php-fpm.d/``   |
 | ``/etc/php/7.0/fpm/`` |                       |
 +-----------------------+-----------------------+
 
