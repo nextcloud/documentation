@@ -122,7 +122,7 @@ Setting mail server parameters in config.php
 --------------------------------------------
 
 If you prefer, you may set your mail server parameters in ``config/config.php``.
-The following examples are for SMTP, PHP, Sendmail, and Qmail.
+The following examples are for SMTP, Sendmail, and Qmail.
 
 SMTP
 ^^^^
@@ -203,6 +203,13 @@ and password and can optionally choose between the authentication types
     "mail_smtpauthtype" => "LOGIN",
     "mail_smtpname"     => "username",
     "mail_smtppassword" => "password",
+
+Advanced users can add additional stream options in ``config/config.php``,
+which maps directly to `Swift Mailer's <https://swiftmailer.symfony.com/>`_
+``streamOptions`` configuration parameter:
+::
+
+    "mail_smtpstreamoptions" => array(),
 
 Sendmail
 ^^^^^^^^
@@ -365,6 +372,20 @@ using the ``telnet`` command.
   QUIT                                          # <<< enter this command
   221 smtp.domain.dom closing connection
   Connection closed by foreign host.
+
+**Question**: How can I send mail when using self-signed certificates if
+remote SMTP server do not have options to allow this on their side?
+
+**Answer**: If you are having remote SMTP setup, you can try adding this
+to your ``config/config.php``::
+
+    "mail_smtpstreamoptions" => array(
+        'ssl' => array(
+            'allow_self_signed' => true,
+            'verify_peer' => false,
+            'verify_peer_name' => false
+        )
+    ),
 
 Enabling debug mode
 -------------------
