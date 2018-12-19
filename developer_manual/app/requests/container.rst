@@ -4,7 +4,9 @@ Container
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-The App Framework assembles the application by using a container based on the software pattern `Dependency Injection <https://en.wikipedia.org/wiki/Dependency_injection>`_. This makes the code easier to test and thus easier to maintain.
+The App Framework assembles the application by using a container based on the
+software pattern `Dependency Injection <https://en.wikipedia.org/wiki/Dependency_injection>`_.
+This makes the code easier to test and thus easier to maintain.
 
 If you are unfamiliar with this pattern, watch the following videos:
 
@@ -16,7 +18,8 @@ If you are unfamiliar with this pattern, watch the following videos:
 Dependency injection
 --------------------
 
-Dependency Injection sounds pretty complicated but it just means: Don't put new dependencies in your constructor or methods but pass them in. So this:
+Dependency Injection sounds pretty complicated but it just means: Don't put
+new dependencies in your constructor or methods but pass them in. So this:
 
 .. code-block:: php
 
@@ -54,12 +57,21 @@ would turn into this by using Dependency Injection:
 Using a container
 -----------------
 
-Passing dependencies into the constructor rather than instantiating them in the constructor has the following drawback: Every line in the source code where **new AuthorMapper** is being used has to be changed, once a new constructor argument is being added to it.
+.. note:: Please do use automatic dependency injection (see below). For most
+apps there is no need to register services manually.
 
-The solution for this particular problem is to limit the **new AuthorMapper** to one file, the container. The container contains all the factories for creating these objects and is configured in :file:`lib/AppInfo/Application.php`.
+Passing dependencies into the constructor rather than instantiating them in the
+constructor has the following drawback: Every line in the source code where
+**new AuthorMapper** is being used has to be changed, once a new constructor
+argument is being added to it.
+
+The solution for this particular problem is to limit the **new AuthorMapper** to
+one file, the container. The container contains all the factories for creating
+these objects and is configured in :file:`lib/AppInfo/Application.php`.
 
 
-To add the app's classes simply open the :file:`lib/AppInfo/Application.php` and use the **registerService** method on the container object:
+To add the app's classes simply open the :file:`lib/AppInfo/Application.php` and
+use the **registerService** method on the container object:
 
 .. code-block:: php
 
