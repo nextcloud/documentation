@@ -1,6 +1,9 @@
-===============
-Database schema
-===============
+============================
+Database schema (deprecated)
+============================
+
+.. note:: Using the database.xml schema file is deprecated. You should migrate
+to using :ref:`Databse Migrations app_db_migrations`.
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
