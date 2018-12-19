@@ -119,11 +119,12 @@ Replace the user ``www-data`` with the user of your http server and ``/var/www/n
   [Install]
   WantedBy=timers.target
 
-The important parts in the timer-unit are ``OnBootSec`` and ``OnUnitActiveSec``.``OnBootSec`` will start the timer 5 minutes after boot, otherwise you would have to start it manually after every boot. ``OnUnitActiveSec`` will set a 5 minute timer after the service-unit was last activated.
+The important parts in the timer-unit are ``OnBootSec`` and ``OnUnitActiveSec``. ``OnBootSec`` will start the timer 5 minutes after boot, otherwise you would have to start it manually after every boot. ``OnUnitActiveSec`` will set a 5 minute timer after the service-unit was last activated.
 
-Now all that is left is to start and enable the timer by running these commands::
+Now all that is left is to start and enable the timer by running this command::
 
-  systemctl start nextcloudcron.timer
-  systemctl enable nextcloudcron.timer
+  systemctl enable --now nextcloudcron.timer
+
+When the option ``--now`` is used with ``enable``, the resp. unit will also be started.
 
 .. note:: Selecting the option ``Cron`` in the admin menu for background jobs is not mandatory, because once `cron.php` is executed from the command line or cron service it will set it automatically to ``Cron``.g
