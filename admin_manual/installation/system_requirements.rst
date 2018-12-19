@@ -15,7 +15,7 @@ The Nextcloud server is not compatible with Windows and macOS.
 +------------------+-----------------------------------------------------------------------+
 | Platform         | Options                                                               |
 +==================+=======================================================================+
-| Operating System | - **Ubuntu 16.04/18.04 LTS** (recommended)                            |
+| Operating System | - **Ubuntu 18.04 LTS** (recommended)                                  |
 |                  | - **Red Hat Enterprise Linux 7** (recommended)                        |
 |                  | - Debian 8 (Jessie), 9 (Stretch)                                      |
 |                  | - SUSE Linux Enterprise Server 11 with SP3 & 12                       |
@@ -30,8 +30,7 @@ The Nextcloud server is not compatible with Windows and macOS.
 | Webserver        | - **Apache 2.4 with** ``mod_php`` **or** ``php-fpm`` (recommended)    |
 |                  | - nginx with ``php-fpm``                                              |
 +------------------+-----------------------------------------------------------------------+
-| PHP Runtime      | - **7.0**                                                             |
-|                  | - **7.1**                                                             |
+| PHP Runtime      | - **7.1**                                                             |
 |                  | - **7.2**                                                             |
 |                  | - **7.3**                                                             |
 +------------------+-----------------------------------------------------------------------+
