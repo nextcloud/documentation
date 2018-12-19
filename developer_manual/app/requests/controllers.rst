@@ -28,40 +28,10 @@ To create a controller, simply extend the Controller class and create a method t
 Connecting a controller and a route
 -----------------------------------
 
-To connect a controller and a route the controller has to be registered in the :doc:`container` like this:
+If you use a proper namespace for your app (see :ref:`app_classloader`) Nextcloud
+will resolve your controller and its dependencies automatically.
 
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\AppInfo;
-
-    use OCP\AppFramework\App;
-
-    use OCA\MyApp\Controller\AuthorApiController;
-
-
-    class Application extends App {
-
-        public function __construct(array $urlParams=array()){
-            parent::__construct('myapp', $urlParams);
-
-            $container = $this->getContainer();
-
-            /**
-             * Controllers
-             */
-            $container->registerService('AuthorApiController', function($c) {
-                return new AuthorApiController(
-                    $c->query('AppName'),
-                    $c->query('Request')
-                );
-            });
-        }
-    }
-
-Every controller needs the app name and the request object passed into their parent constructor, which can easily be injected like shown in the example code above. The important part is not the class name but rather the string which is passed in as the first parameter of the **registerService** method.
-
-The other part is the route name. An example route name would look like this::
+An example route name would look like this::
 
     author_api#some_method
 
