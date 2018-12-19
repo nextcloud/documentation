@@ -2,6 +2,9 @@
 Migrations
 ==========
 
+.. app_db_migrations:
+
+
 In the past, apps had a `appinfo/database.xml`-file which holds their database schema
 for installation and update and was a functional method for installing apps which
 had some trouble with upgrading apps (e.g. apps were not able to rename columns
@@ -115,6 +118,22 @@ With this the old column gets removed.
 
           return $schema;
   }
+
+Migrate from database.xml
+-------------------------
+
+To migrate your app from a `database.xml` file to migrations run:
+
+.. code-block:: bash
+  php ./occ migrations:generate-from-schema <app_id> <version>
+
+This will create a new file under `lib/Migration` with that results in the
+same database table(s) as your database.xml file.
+
+For version you should use the your app versions. So if you app is at version
+1.2.3 user 010203.
+
+Don't forget to remove your `database.xml` file.
 
 Console commands
 ----------------
