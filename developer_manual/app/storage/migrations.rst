@@ -127,7 +127,7 @@ To migrate your app from a `database.xml` file to migrations run:
 .. code-block:: bash
   php ./occ migrations:generate-from-schema <app_id> <version>
 
-This will create a new file under `lib/Migration` with that results in the
+This will create a new file under `lib/Migration` that results in the
 same database table(s) as your database.xml file.
 
 For version you should use the your app versions. So if you app is at version
