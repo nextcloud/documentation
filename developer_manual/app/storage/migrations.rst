@@ -131,7 +131,7 @@ This will create a new file under `lib/Migration` that results in the
 same database table(s) as your database.xml file.
 
 For version you should use the your app versions. So if you app is at version
-1.2.3 user 010203.
+1.2.3 use 010203.
 
 Don't forget to remove your `database.xml` file.
 
