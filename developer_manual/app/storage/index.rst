@@ -10,3 +10,4 @@ Storage and database
    database
    configuration
    filesystem
+   appdata
