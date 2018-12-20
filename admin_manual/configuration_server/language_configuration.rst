@@ -60,10 +60,10 @@ If you want to force a specific locale, users will no longer be able to change
 their locale in the personal settings. You can set a **force_locale** parameter
 in the :file:`config/config.php`.
 
-'::
+::
 
     "force_locale" => "en_US",
 
-.. note:: Please check `Transifex language codes
-   <https://www.transifex.com/explore/languages/>`_ for the list of valid locale
-   codes (aside the language, between parentheses).
+.. note:: Please check `the list of MomentJS supported locales
+   <https://github.com/moment/moment/tree/2.18.1/locale>`_ for the list of valid
+   locales.
