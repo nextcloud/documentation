@@ -294,11 +294,11 @@ How can I find out if my MySQL/PostgreSQL server is reachable?
 To check the server's network availability, use the ping command on
 the server's host name (db.server.com in this example)::
 
-  ping db.server.dom
+  ping db.server.com
 
 ::
 
-  PING db.server.dom (ip-address) 56(84) bytes of data.
+  PING db.server.com (ip-address) 56(84) bytes of data.
   64 bytes from your-server.local.lan (192.168.1.10): icmp_req=1 ttl=64 time=3.64 ms
   64 bytes from your-server.local.lan (192.168.1.10): icmp_req=2 ttl=64 time=0.055 ms
   64 bytes from your-server.local.lan (192.168.1.10): icmp_req=3 ttl=64 time=0.062 ms
