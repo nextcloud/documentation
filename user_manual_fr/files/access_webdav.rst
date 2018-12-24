@@ -1,501 +1,471 @@
-========================================
-Zugriff auf Nextcloud-Dateien mit WebDAV
-========================================
+======================================
+Accessing Nextcloud files using WebDAV
+======================================
 
-Nextcloud hat volle Unterstützung für das WebDAV-Protokoll. Sie können eine
-Verbindung zu Ihren Nextcloud-Dateien über WebDAV herstellen und diese
-synchronisieren. In folgenden Kapitel erfahren Sie, wie Sie Linux, Mac OS X,
-Windows und mobile Geräte über WebDAV zu Ihrem Nextcloud-Server verbinden.
-Bevor mit der Konfiguration von WebDAV angefangen wird, wird ein kurzer Einblick
-auf die empfohlene Art der Verbindung von Client-Geräten mit Ihren
-Nextcloud-Servern gegeben.
+Nextcloud fully supports the WebDAV protocol, and you can connect and synchronize
+with your Nextcloud files over WebDAV. In this chapter you will learn how to
+connect Linux, macOS, Windows, and mobile devices to your Nextcloud server via
+WebDAV. Before we get into configuring WebDAV, let's take a quick look at the
+recommended way of connecting client devices to your Nextcloud servers.
 
-Nextcloud Desktop und Mobile Clients
+.. note:: In the following examples, You must adjust **example.com/** to the
+   URL of your Nextcloud server installation. And USERNAME is the userid of the
+   connecting user.
+
+   See the webdav url (bottom left, settings) on your Nextcloud.
+
+Nextcloud Desktop and mobile clients
 ------------------------------------
 
-Die empfohlene Methode, um Ihren Desktop-PC mit Ihrem Nextcloud-Server zu
-synchronisieren, ist die Verwendung der `Nextcloud/ownCloud Sync-Clients
-<https://nextcloud.com/install/#install-clients>`_. Sie können den Client so
-konfigurieren, dass Dateien in einem beliebigen lokalen Ordner gespeichert
-werden. Sie können auch auswählen, welche Ordner des Nextcloud-Servers
-synchronisiert werden soll. Der Client zeigt den aktuellen Verbindungsstatus an
-und protokolliert alle Aktivitäten, sodass Sie immer wissen, welche
-entfernte Dateien auf Ihren PC heruntergeladen wurden. Sie können auch überprüfen,
-ob die auf Ihrem lokalen PC erstellten und aktualisierten Dateien ordnungsgemäß
-mit dem Server synchronisiert wurden. Die empfohlene Methode zur Synchronisation
-Ihres Nextcloud-Servers mit Android- und Apple iOS-Geräten ist die Verwendung
-der `mobilen Apps <https://nextcloud.com/install/>`_.
+The recommended way to synchronize a desktop PC with a Nextcloud server is by 
+using `Nextcloud/ownCloud sync clients <https://nextcloud.com/install/#install-clients>`_. You can configure the 
+client to save files in any local directory and you can choose which 
+directories on the Nextcloud server to sync with. The client displays the
+current connection status and logs all activity, so you always know which 
+remote files have been downloaded to your PC and you can verify that files 
+created and updated on your local PC are properly synchronized with the server.
 
-Für die Verbindung zu einem Netxtcloud-Server mit Mobile-Apps, wird folgende
-URL inklusive dem Ordnernamen benötigt::
+The recommended way to synchronize Nextcloud server with Android and
+Apple iOS devices is by using the `mobile apps
+<https://nextcloud.com/install/>`_.
+
+To connect your mobile app to a Nextcloud server use the
+base URL and folder only::
 
     example.com/nextcloud
 
-Neben den von Nextcloud oder ownCloud bereitgestellten mobilen Apps
-können Sie mit WebDAV auch andere Apps nutzen, um sich mit
-Ihrem Nextcloud-Server zu verbinden. `WebDAV Navigator`_ ist eine gute
-(proprietäre) App für `Android Geräte`_ und `iPhones`_.
-
-Die zu verwendende Adresse lautet::
+In addition to the mobile apps provided by Nextcloud or ownCloud, you can use other apps to
+connect to Nextcloud from your mobile device using WebDAV. `WebDAV Navigator`_ is
+a good (proprietary) app for `Android devices`_ and `iPhones`_. The URL to use on these is::
 
     example.com/nextcloud/remote.php/dav/files/USERNAME/
 
-WebDAV-Konfiguration
+WebDAV configuration
 --------------------
 
-Über das WebDAV-Protokoll können Sie Ihren Desktop-PC mit Ihrem Nextcloud-Server
-verbinden. Anstatt eine spezielle Client-Anwendung, kann das WebDAV-Protokoll
-verwendet werden. Web Distributed Authoring and Versioning (WebDAV) ist eine
-Hypertext Transfer Protocol (HTTP) Erweiterung, die es einfach macht, Dateien
-auf Webservern zu erstellen, zu lesen und zu bearbeiten. Mit WebDAV haben Sie
-eine weitere Option auf Ihre Nextcloud-Freigaben zuzugreifen. Unter Linux,
-Mac OS X und Windows funktioniert die Verbindung wie mit jeder entfernten
-Netzwerkfreigabe.
+If you prefer, you may also connect your desktop PC to your Nextcloud server by
+using the WebDAV protocol rather than using a special client application. Web
+Distributed Authoring and Versioning (WebDAV) is a Hypertext Transfer Protocol
+(HTTP) extension that makes it easy to create, read, and edit files on Web
+servers. With WebDAV you can access your Nextcloud shares on Linux, macOS and
+Windows in the same way as any remote network share, and stay synchronized.
 
-.. note:: In den folgenden Beispielen müssen Sie **example.com/** an die URL
-   Ihrer Nextcloud-Serverinstallation anpassen.
+Accessing files using Linux
+---------------------------
 
-Dateizugriff unter Linux
-------------------------
+You can access files in Linux operating systems using the following methods.
 
-Sie können auf Nextcloud-Dateien in Linux-Betriebssystemen zugreifen, indem
-Sie folgenden Optionen wählen.
-
-Nautilus-Dateimanager
+Nautilus file manager
 ^^^^^^^^^^^^^^^^^^^^^
 
-Benutzen Sie das ``davs://`` Protokoll, um Ihre Nextcloud-Freigaben mit dem
-Nautilus-Dateimanager zu verbinden::
+Use the ``davs://`` protocol to connect the Nautilus file manager to your
+Nextcloud share::
 
   davs://example.com/nextcloud/remote.php/dav/files/USERNAME/
 
-.. note:: Nutzen Sie `dav://` anstelle `davs://` wenn Ihr Server HTTPS nicht
-   unterstützt.
+.. note:: If your server connection is not HTTPS-secured, use `dav://` instead
+   of `davs://`.
 
 .. image:: ../images/webdav_gnome3_nautilus.png
-   :alt: WebDAV-Konfiguration mit dem Nautilus-Dateimanager
+   :alt: screenshot of configuring Nautilus file manager to use WebDAV
 
-Dateizugriff unter KDE mit dem Dolphin-Dateimanager
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Accessing files with KDE and Dolphin file manager
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Benutzen Sie das ``webdav://`` Protokoll um Ihre Nextcloud-Freigaben unter KDE
-mit dem Dolphin-Dateimanager zu verbinden::
+To access your Nextcloud files using the Dolphin file manager in KDE, use
+the ``webdav://`` protocol::
 
     webdav://example.com/nextcloud/remote.php/dav/files/USERNAME/
 
 .. image:: ../images/webdav_dolphin.png
-   :alt: WebDAV-Konfiguration mit dem Dolphin-Dateimanager
+   :alt: screenshot of configuring Dolphin file manager to use WebDAV
 
-Sie können einen permanenten Link zu Ihrem Nextcloud-Server erstellen:
+You can create a permanent link to your Nextcloud server:
 
-#. Öffnen Sie Dolphin und klicken Sie auf "Netzwerk" im linken Fensterbereich
-   unter "Persönliche Ordner".
-#. Klicken Sie auf das Symbol mit der Aufschrift **Netzwerkordner hinzufügen**.
-#. Wenn WebDAV nicht ausgewählt ist, wählen Sie es aus.
-#. Klicken Sie auf **Weiter**.
-#. Geben Sie die folgenden Einstellungen ein:
+#. Open Dolphin and click "Network" in the left hand "Places" column.
+#. Click on the icon labeled **Add a Network Folder**.
+   The resulting dialog should appear with WebDAV already selected.
+#. If WebDAV is not selected, select it.
+#. Click **Next**.
+#. Enter the following settings:
 
-   * Name: Der Name, den Sie im Bereich **Persönliche Ordner** als Lesezeichen
-     sehen möchten, z.B. Nextcloud.
-   * Benutzer: Der Nextcloud-Benutzername, mit dem Sie sich angemeldet haben,
-     z.B. "admin".
-   * Server: Der Nextcloud-Domain, z.B. **example.com** (ohne
-     **http://** davor oder den weiterführenden Ordner).
-   * Ordner -- Geben Sie diesen Pfad ein:
-     ``nextcloud/remote.php/dav/files/USERNAME/``.
-#. (Optional) Aktivieren Sie das Kontrollkästchen "Symbol für diesen
-   Netzwerkordner anlegen", damit ein Lesezeichen in der Spalte "Persönliche
-   Ordner" angelegt wird.
-#. (Optional) Aktivieren Sie das Kontrollkästchen "Verschlüsselung verwenden",
-   um HTTPS zu verwenden.
+   * Name: The name you want to see in the **Places** bookmark, for example Nextcloud.
 
-Erstellen von WebDAV-Verbindungen im Linux Terminal
----------------------------------------------------
+   * User: The Nextcloud username you used to log in, for example admin.
 
-Sie können WebDAV-Verbindungen über ein Linux Terminal erstellen. Dies ist
-nützlich, wenn Sie auf Nextcloud genauso wie auf alle anderen entfernten
-Dateisysteme zugreifen möchten. Im folgenden Beispiel wird gezeigt, wie Sie
-eine Verbindung herstellen und diese bei jedem Systemneustart automatisch auf
-Ihrem Linux-Computer eingebunden wird.
+   * Server: The Nextcloud domain name, for example **example.com** (without
+     **http://** before or directories afterwards).
+   * Folder -- Enter the path ``nextcloud/remote.php/dav/files/USERNAME/``.
+#. (Optional) Check the "Create icon checkbox" for a bookmark to appear in the
+   Places column.
+#. (Optional) Provide any special settings or an SSL certificate in the "Port &
+   Encrypted" checkbox.
 
-1. Installieren Sie zunächst für das WebDAV-Dateisystem den Treiber ``davfs2``.
-   Dieser Treiber erlaubt Ihnen Verbindungen zu WebDAV-Freigaben herzustellen.
-   Folgende Anweisung installiert den Treiber unter Debian/Ubuntu::
+Creating WebDAV mounts on the Linux command line
+------------------------------------------------
+
+You can create WebDAV mounts from the Linux command line. This is useful if you
+prefer to access Nextcloud the same way as any other remote filesystem mount.
+The following example shows how to create a personal mount and have it mounted
+automatically every time you log in to your Linux computer.
+
+1. Install the ``davfs2`` WebDAV filesystem driver, which allows you to mount
+   WebDAV shares just like any other remote filesystem. Use this command to
+   install it on Debian/Ubuntu::
 
     apt-get install davfs2
 
-2. Für CentOS, Fedora und openSUSE wird folgendes Kommando verwendet::
+2. Use this command to install it on CentOS, Fedora, and openSUSE::
 
     yum install davfs2
 
-3. Den Linuxbenutzer der WebDAV-Gruppe ``davfs2`` hinzufügen::
+3. Add yourself to the ``davfs2`` group::
 
     usermod -aG davfs2 <username>
 
-3. Im nächsten Schritt wird der Ordner ``nextcloud`` und ``.davfs2`` in
-   Ihrem Benutzer-Verzeichis erstellt. Dieser Ordner wird in den weiteren
-   Schritten mit Ihrer Nextcloud verbunden. Geben Sie zunächst Folgendes ein::
+3. Then create an ``nextcloud`` directory in your home directory for the
+   mountpoint, and ``.davfs2/`` for your personal configuration file::
 
     mkdir ~/nextcloud
     mkdir ~/.davfs2
 
-4. Kopieren Sie ``/etc/davfs2/secrets`` nach ``~/.davfs2``::
+4. Copy ``/etc/davfs2/secrets`` to ``~/.davfs2``::
 
-    cp /etc/davfs2/secrets ~/.davfs2/secrets
+    cp  /etc/davfs2/secrets ~/.davfs2/secrets
 
-5. Setzen Sie den Dateieigentümer und den Lese-/Schreibzugriff auf folgende Datei::
+5. Set yourself as the owner and make the permissions read-write owner only::
 
-    chown <username>:<username>  ~/.davfs2/secrets
+    chown <username>:<username> ~/.davfs2/secrets
     chmod 600 ~/.davfs2/secrets
 
-6. Fügen Sie Ihre Nextcloud-Anmeldeinformationen an das Ende der ``secrets``
-   Datei, mit Ihrer Nextcloud Server-Adresse, sowie Ihrem Nextcloud
-   Benutzernamen und Passwort ein.
+6. Add your Nextcloud login credentials to the end of the ``secrets`` file,
+   using your Nextcloud server URL and your Nextcloud username and password::
 
     example.com/nextcloud/remote.php/dav/files/USERNAME/ <username> <password>
 
-7. Für die automatische Einbindung beim Systemstart muss Folgendes in
-   ``/etc/fstab`` eingetragen werden::
+7. Add the mount information to ``/etc/fstab``::
 
     example.com/nextcloud/remote.php/dav/files/USERNAME/ /home/<username>/nextcloud
     davfs user,rw,auto 0 0
 
-8. Wenn Nextcloud mit folgendem Befehl eingebunden wird, benötigen Sie keine
-   Root-Rechte::
+8. Then test that it mounts and authenticates by running the following
+   command. If you set it up correctly you won't need root permissions::
 
     mount ~/nextcloud
 
-9. WebDAV-Verbindung mit Nextcloud ausbinden::
+9. You should also be able to unmount it::
 
     umount ~/nextcloud
 
-Bei jedem Neustart sollte Ihr Linux-System automatisch eine Verbindung zu Ihrem
-Nextcloud-Server herstellen. Dabei wird über WebDAV der Nextcloud-Server in den
-"nextcloud" Ordner auf Ihrem Linux-System eingebunden. Für eine manuelle
-Einbindung genügt es, das Attribut in ``/etc/fstab`` von ``auto`` auf ``noauto``
-zu setzen.
+Now every time you login to your Linux system your Nextcloud share should
+automatically mount via WebDAV in your ``~/nextcloud`` directory. If you prefer
+to mount it manually, change ``auto`` to ``noauto`` in ``/etc/fstab``.
 
-Bekannte Probleme
------------------
+Known issues
+------------
 
 Problem
 ^^^^^^^
-Resource temporarily unavailable / Ressource vorübergehend nicht verfügbar
+Resource temporarily unavailable
 
-Lösung
-^^^^^^
-Wenn Sie Probleme beim Erstellen einer Datei im Ordner haben, bearbeiten
-Sie ``/etc/davfs2/davfs2.conf`` und fügen Folgendes hinzu::
+Solution
+^^^^^^^^
+If you experience trouble when you create a file in the directory,
+edit ``/etc/davfs2/davfs2.conf`` and add::
 
     use_locks 0
 
 Problem
 ^^^^^^^
-Zertifikatswarnung
+Certificate warnings
 
-Lösung
-^^^^^^
-Wenn Sie ein selbstsigniertes Zertifikat verwenden, erhalten Sie eine Warnung.
-Um dies zu ändern, müssen Sie ``davfs2`` konfigurieren, damit das Zertifikat von
-Ihrem System erkannt wird. Kopieren Sie zunächst ``mycertificate.pem`` nach
-``/etc/davfs2/certs/``. Editieren Sie nun ``/etc/davfs2/davfs2.conf`` und
-kommentieren die Zeile ``servercert`` aus und fügen den Dateipfad hinzu::
+Solution
+^^^^^^^^
 
- servercert   /etc/davfs2/certs/mycertificate.pem
+If you use a self-signed certificate, you will get a warning. To
+change this, you need to configure ``davfs2`` to recognize your certificate.
+Copy ``mycertificate.pem`` to ``/etc/davfs2/certs/``. Then edit
+``/etc/davfs2/davfs2.conf`` and uncomment the line ``servercert``. Now add the
+path of your certificate as in this example::
 
-Dateizugriff unter Mac OS X
+ servercert /etc/davfs2/certs/mycertificate.pem
+
+Accessing files using macOS
 ---------------------------
 
-.. note:: Da der Mac OS X Finder `eine Reihe von Implementierungsproblemen
-   <http://sabre.io/dav/clients/finder/>`_ besitzt, sollte dieser nur genutzt
-   werden, wenn der Nextcloud-Server unter **Apache** mit **mod_php**, oder
-   **Nginx 1.3.8+** läuft.
+.. note:: The macOS Finder suffers from a `series of implementation problems
+   <http://sabre.io/dav/clients/finder/>`_ and should only be used if the
+   Nextcloud server runs on **Apache** and **mod_php**, or **Nginx 1.3.8+**.
 
-Zugriff auf Dateien über den Mac OS X Finder:
+To access files through the macOS Finder:
 
-1. Wählen Sie **Gehe zu > Mit Server verbinden**.
+1. Choose **Go > Connect to Server**.
 
-  Das Fenster "Mit Server verbinden" öffnet sich.
+  The "Connect to Server" window opens.
 
-2. Geben Sie nun die **Serveradresse** ein.
+2. Specify the address of the server in the **Server Address** field.
 
   .. image:: ../images/osx_webdav1.png
-     :alt: Eingabe der Serveradresse im Mac OS X Finder
+     :alt: Screenshot of entering your Nextcloud server address on macOS
 
-  Beispiel: Die URL, die für die Verbindung zum Nextcloud-Server vom Mac OS X
-  Finder verwendet wird, ist::
+  For example, the URL used to connect to the Nextcloud server
+  from the macOS Finder is::
 
     https://example.com/nextcloud/remote.php/dav/files/USERNAME/
 
   .. image:: ../images/osx_webdav2.png
 
-3. Drücken Sie nun auf **Verbinden**.
+3. Click **Connect**.
 
-  Ihr Mac stellt nun eine Verbindung zum Nextcloud-Server her.
+  The device connects to the server.
 
-Weitere Informationen zum Herstellen einer Verbindung unter Mac OS X zu einem
-externen Server finden Sie in der `Dokumentation des Herstellers
+For added details about how to connect to an external server using macOS,
+check the `vendor documentation
 <http://docs.info.apple.com/article.html?path=Mac/10.6/en/8160.html>`_ .
 
-Dateizugriff unter Microsoft Windows
-------------------------------------
+Accessing files using Microsoft Windows
+---------------------------------------
 
-Wenn Sie die native Windows-Implementierung verwenden, können Sie
-Nextcloud einem neuen Laufwerk zuordnen. Die Zuordnung zu einem Laufwerk
-ermöglicht es Ihnen Dateien, die auf einem Nextcloud-Server gespeichert sind,
-genau wie gewöhnliche Speichermedien zu verwenden.
+If you use the native Windows implementation, you can map Nextcloud to a new
+drive. Mapping to a drive enables you to browse files stored on an Nextcloud
+server the way you would files stored in a mapped network drive.
 
-Die Verwendung dieser Funktion erfordert eine Netzwerkverbindung. Wenn Sie Ihre
-Dateien lokal speichern möchten, verwenden Sie den Desktop Client. Der Desktop
-Client synchronisiert ein oder mehrere Ordner Ihrer Nextcloud auf die
-lokale Festplatte.
+Using this feature requires network connectivity. If you want to store your
+files offline, use the Desktop Client to sync all files on your
+Nextcloud to one or more directories of your local hard drive.
 
-.. note:: Vor dem Verbinden des Laufwerks müssen Sie die Verwendung der
-   Standardauthentifizierung in der Windows-Registry zulassen. Das Verfahren
-   ist in KB841215_ dokumentiert und unterscheidet sich zwischen
-   Windows XP/Server 2003 und Windows Vista/7. Bitte folgen Sie dem Knowledge
-   Base Artikel, bevor Sie fortfahren und befolgen Sie die Anweisungen von
-   Vista, wenn Sie Windows 7 nutzen.
+.. note:: Prior to mapping your drive, you must permit the use of Basic
+  Authentication in the Windows Registry. The procedure is documented in
+  KB841215_ and differs between Windows XP/Server 2003 and Windows Vista/7.
+  Please follow the Knowledge Base article before proceeding, and follow the
+  Vista instructions if you run Windows 7.
 
-.. _KB841215: http://support.microsoft.com/kb/841215
+.. _KB841215: https://support.microsoft.com/kb/841215
 
-Zuordnen von Laufwerken mit der Kommandozeile
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Mapping drives with the command line
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Das folgende Beispiel zeigt, wie Sie ein Laufwerk mithilfe der Kommandozeile
-einbinden:
+The following example shows how to map a drive using the command line. To map
+the drive:
 
-1. Öffnen Sie die Kommandozeile in Windows.
-2. Um dem Computer ein "Z"-Laufwerk zuzuordnen, geben Sie die folgende Zeile in
-   der Kommandozeile ein.::
+1. Open a command prompt in Windows.
+2. Enter the following line in the command prompt to map to the computer Z
+   drive::
 
-    net use Z: https://<domain>/remote.php/dav/files/USERNAME/ /user:youruser
+    net use Z: https://<drive_path>/remote.php/dav/files/USERNAME/ /user:youruser
     yourpassword
 
-  Der Platzhalter <domain> ist die URL zu Ihrem Nextcloud-Server.
+  where <drive_path> is the URL to your Nextcloud server.
 
-Ein Beispiel: ``net use Z: https://example.com/nextcloud/remote.php/dav/files/USERNAME/
+For example: ``net use Z: https://example.com/nextcloud/remote.php/dav/files/USERNAME/
 /user:youruser yourpassword``
 
-  Der Computer ordnet die Dateien Ihres Nextcloud-Servers dem Laufwerkbuchstaben
-  "Z" zu.
+  The computer maps the files of your Nextcloud account to the drive letter Z.
 
-.. note:: Obwohl nicht empfohlen, können Sie auch den Nextcloud-Server mit HTTP
-   einbinden – wodurch die Verbindung unverschlüsselt bleibt. Wenn Sie
-   HTTP-Verbindungen auf Geräten verwenden möchten, benötigen Sie
-   Sicherheitsvorkehrungen. Daher empfehlen wir dringend an öffentlichen
-   Internetanbindungen, einen VPN-Tunnel zu verwenden.
+.. note:: Though not recommended, you can also mount the Nextcloud server
+     using HTTP, leaving the connection unencrypted. If you plan to use HTTP
+     connections on devices while in a public place, we strongly recommend using a
+     VPN tunnel to provide the necessary security.
 
-Alternativ können Sie Folgendes in die Kommandozeile eingeben::
+An alternative command syntax is::
 
   net use Z: \\example.com@ssl\nextcloud\remote.php\dav /user:youruser
   yourpassword
 
-Laufwerke mit dem Windows-Explorer einbinden
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Mapping drives with Windows Explorer
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-So ordnen Sie ein Laufwerk mithilfe des Microsoft Windows-Explorer zu:
+To map a drive using the Microsoft Windows Explorer:
 
-1. Öffnen Sie den Windows-Explorer und wechseln Sie im oberen Dateiregister
-   zu **Computer**.
-2. Klicken Sie auf **Netzlaufwerk verbinden**. Es öffnet sich nun ein Fenster.
-3. Wählen Sie einen Laufwerkbuchstaben aus, dem Sie Nextcloud zuordnen möchten.
-4. Geben Sie die Adresse Ihres Nextcloud-Server an, gefolgt von
+1. Migrate to your computer in Windows Explorer.
+2. Right-click on **Computer** entry and select **Map network drive...** from
+   the drop-down menu.
+3. Choose a local network drive to which you want to map Nextcloud.
+4. Specify the address to your Nextcloud instance, followed by
    **/remote.php/dav/files/USERNAME/**.
 
-  Zum Beispiel::
+  For example::
 
     https://example.com/nextcloud/remote.php/dav/files/USERNAME/
 
-.. note:: Bei SSL-geschützten Servern überprüfen Sie die Option **Verbindung bei
-   Anmeldung wiederherstellen**, um sicherzustellen, dass das Mapping nach
-   Systemneustarts weiterhin besteht. Wenn Sie eine Verbindung zum
-   Nextcloud-Server mit anderen Benutzerdaten herstellen möchten, aktivieren
-   Sie die Option **Verbindung mit anderen Anmeldeinformationen herstellen**.
+.. note:: For SSL protected servers, check **Reconnect at logon** to ensure
+     that the mapping is persistent upon subsequent reboots. If you want to
+     connect to the Nextcloud server as a different user, check **Connect using
+     different credentials**.
 
 .. figure:: ../images/explorer_webdav.png
    :scale: 80%
-   :alt: WebDAV mit Windows-Explorer einbinden
+   :alt: screenshot of mapping WebDAV on Windows Explorer
 
-5. Klicken Sie nun auf ``Fertig stellen``.
+5. Click the ``Finish`` button.
 
-  Der Windows-Explorer fügt nun Ihren Nextcloud-Server als Netzlaufwerk hinzu.
+  Windows Explorer maps the network drive, making your Nextcloud instance
+  available.
 
-Dateizugriff mit Cyberduck
---------------------------
+Accessing files using Cyberduck
+-------------------------------
 
-`Cyberduck <https://cyberduck.io/?l=de>`_ ist ein quelloffenes (S)FTP, WebDAV,
-OpenStack Swift und Amazon S3 Dateibrowser, um Dateien zwischen Mac OS X und
-Windows auszutauschen.
+`Cyberduck <https://cyberduck.io/?l=en>`_ is an open source FTP and SFTP,
+WebDAV, OpenStack Swift, and Amazon S3 browser designed for file transfers on
+macOS and Windows.
 
-.. note:: Dieses Beispiel nutzt Cyberduck in Version 4.2.1.
+.. note:: This example uses Cyberduck version 4.2.1.
 
-Um Cyberduck zu nutzen ist Folgendes einzustellen:
+To use Cyberduck:
 
-1. Geben Sie einen Server ohne führende Protokollinformationen an. Zum Beispiel:
+1. Specify a server without any leading protocol information. For example:
 
   ``example.com``
 
-2. Geben Sie den entsprechenden Port an. Der von Ihnen gewählte Port hängt davon
-   ab, ob Ihr Nextcloud-Server SSL unterstützt oder nicht. Cyberduck erfordert,
-   dass Sie einen anderen Verbindungstyp wählen, wenn Sie SSL verwenden möchten.
-   Zum Beispiel:
+2. Specify the appropriate port. The port you choose depends on whether or not
+your Nextcloud server supports SSL. Cyberduck requires that you select a
+different connection type if you plan to use SSL. For example:
 
-  80 (für WebDAV)
+  80 (for WebDAV)
 
-  443 (für WebDAV über HTTPS)
+  443 (for WebDAV (HTTPS/SSL))
 
-3. Verwenden Sie im Dropdown-Menü 'Erweiterte Optionen', um den Rest Ihrer
-   WebDAV-URL in das Feld 'Pfad' einzufügen. Zum Beispiel:
+3. Use the 'More Options' drop-down menu to add the rest of your WebDAV URL into
+the 'Path' field. For example:
 
   ``remote.php/dav/files/USERNAME/``
 
-Jetzt ermöglicht Cyberduck den Dateizugriff auf Ihren Nextcloud-Server.
+Now Cyberduck enables file access to the Nextcloud server.
 
-Zugang zu öffentlichen Freigaben über WebDAV
---------------------------------------------
+Accessing public shares over WebDAV
+-----------------------------------
 
-Nextcloud bietet die Möglichkeit, auf öffentliche Freigaben über WebDAV
-zuzugreifen.
+Nextcloud provides the possibility to access public shares over WebDAV.
 
-Um geteilte Inhalte einzusehen, öffnen Sie::
+To access the public share, open::
 
   https://example.com/nextcloud/public.php/webdav
 
-verwenden Sie das Freigabe-Token als Benutzername und optional das
-Freigabekennwort als Kennwort.
+in a WebDAV client, use the share token as username and the (optional) share password
+as password.
 
-Bekannte Probleme
------------------
+.. note:: ``Settings → Administration → Sharing → Allow users on this
+   server to send shares to other servers`` needs to be enabled in order
+   to make this feature work.
+
+Known problems
+--------------
 
 Problem
 ^^^^^^^
-Windows verbindet sich nicht über HTTPS.
+Windows does not connect using HTTPS.
 
-Lösung 1
-^^^^^^^^
+Solution 1
+^^^^^^^^^^
 
-Der Windows WebDAV-Client unterstützt möglicherweise nicht die
-Server Name Indication (SNI) bei HTTPS-Verbindungen. Wenn Sie einen Fehler beim
-Installieren einer mit SSL/TLS verschlüsselten Nextcloud-Instanz feststellen,
-wenden Sie sich an Ihren Server-Provider, um eine dedizierte IP-Adresse für
-Ihren Server zu erhalten.
+The Windows WebDAV Client might not support Server Name Indication (SNI) on
+encrypted connections. If you encounter an error mounting an SSL-encrypted
+Nextcloud instance, contact your provider about assigning a dedicated IP address
+for your SSL-based server.
 
-Lösung 2
-^^^^^^^^
+Solution 2
+^^^^^^^^^^
 
-Der Windows-WebDAV-Client unterstützt möglicherweise keine TLSv1.1 / TLSv1.2
-Verbindungen. Wenn Sie in Ihrem Server ausschließlich TLSv1.1 und höher
-verwenden, schlägt die Verbindung möglicherweise fehl. Weitere Informationen
-finden Sie in der WinHTTP_ Dokumentation.
+The Windows WebDAV Client might not support TSLv1.1 / TSLv1.2 connections. If
+you have restricted your server config to only provide TLSv1.1 and above the
+connection to your server might fail. Please refer to the WinHTTP_ documentation
+for further information.
 
 .. _WinHTTP: https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features
 
 Problem
 ^^^^^^^
 
-Sie erhalten folgende Fehlermeldung: **Error 0x800700DF: The file size
+You receive the following error message: **Error 0x800700DF: The file size
 exceeds the limit allowed and cannot be saved.**
 
-Lösung
-^^^^^^
+Solution
+^^^^^^^^
 
-Windows beschränkt die maximale Größe einer Datei, die von einer WebDAV-Freigabe
-übertragen werden kann. Sie können den Wert **FileSizeLimitInBytes** in
+Windows limits the maximum size a file transferred from or to a WebDAV share
+may have.  You can increase the value **FileSizeLimitInBytes** in
 **HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters**
-nach einem Klick auf **Modify** erhöhen.
+by clicking on **Modify**.
 
-Um den maximalen Wert auf 4GB zu erhöhen, wählen Sie **Decimal** und geben
-folgenden Wert ein: **4294967295**. Um die Änderungen zu übernehmen, muss Windows
-oder der Dienst **WebClient** neu gestart werden.
-
-Problem
-^^^^^^^
-
-Der Zugriff auf Ihre Dateien aus Microsoft Office über WebDAV schlägt fehl.
-
-Lösung
-^^^^^^
-
-Bekannte Probleme und deren Lösungen sind im Artikel KB2123563_ dokumentiert.
+To increase the limit to the maximum value of 4GB, select **Decimal**, enter a
+value of **4294967295**, and reboot Windows or restart the **WebClient**
+service.
 
 Problem
 ^^^^^^^
 
-Nextcloud kann mit selbstsigniertem Zertifikat nicht als WebDAV-Laufwerk
-in Windows eingebunden werden.
+Accessing your files from Microsoft Office via WebDAV fails.
 
-Lösung
-^^^^^^
+Solution
+^^^^^^^^
 
-  #. Öffnen Sie die Nextcloud Web-Oberfläche über einen Web-Browser
-  #. In der Statuszeile des Browsers wird ein Zertifikatsfehler angezeigt.
-  #. Öffnen Sie das Zertifikat und wechseln auf der Registerkarte zu "Details".
-     Kopieren oder exportieren Sie die Datei.
-  #. Speichern Sie die Datei auf dem Desktop unter einem beliebigen Namen, z.B.
-     ``myNextcloud.pem``.
-  #. Drücken Sie die Windows-Taste und tippen **MMC** ein. Die Windows-Suche
-     findet ein Programm namens "mmc.exe". Öffnen Sie die
-     Microsoft-Management-Console.
-  #. Gehen Sie nun auf "Datei" und dann auf "Snap-In hinzufügen/entfernen".
-  #. Fügen Sie unter "verfügbare Snap-Ins" die Auswahl "Zertifikate" dem
-     Konsolenstamm hinzu. Wählen Sie dazu "Eigenes Benutzerkonto" aus.
-  #. Navigieren Sie auf der linken Seitenleiste über "Vertrauenswürdige
-     Stammzertifizierungsstellen" zu "Zertifikate".
-  #. Nach einem rechten Mausklick auf den Ordner Zertifikate, öffnet sich eine
-     Auswahl. Klicken Sie über "Alle Aufgaben" auf "Importieren".
-  #. Wählen Sie nun das zuvor gespeicherte Zertifikat von Ihrem Desktop aus.
-  #. Nun wird der Punkt "Alle Zertifikate in folgendem Speicher speichern"
-     gewählt und auf das Feld "Durchsuchen" gedrückt.
-  #. In diesem Schritt wird zuerst auf "Physischen Speicher anzeigen" geklickt.
-     Im oberen Feld wird zu "Vertrauenswürdige Stammzertifizierungsstellen"
-     navigiert und "Lokaler Computer" ausgewählt. Mit einem Klick auf "Weiter"
-     kann der Import "Fertig gestellt" werden.
-  #. Nachdem die Liste aktualisiert wurde, sollte das Zertifikat in der Liste
-     angezeigt werden.
-  #. Öffnen Sie Ihren Browser und navigieren Sie zu den "Einstellungen" und
-     bereinigen Sie die Browser Historie/Chronik.
-  #. Wechseln Sie nun zu der Windows Systemeinstellung in "Internetoptionen".
-     Im Reiter "Inhalt" drücken Sie auf "SSL-Status löschen".
-  #. Abschließend öffnen Sie den Browser.
+Known problems and their solutions are documented in the KB2123563_ article.
+
+Problem
+^^^^^^^
+Cannot map Nextcloud as a WebDAV drive in Windows using self-signed certificate.
+
+Solution
+^^^^^^^^
+
+  #. Go to the your Nextcloud instance via your favorite Web browser.
+  #. Click through until you get to the certificate error in the browser status
+     line.
+  #. View the cert, then from the Details tab, select Copy to File.
+  #. Save to the desktop with an arbitrary name, for example ``myNextcloud.pem``.
+  #. Start, Run, MMC.
+  #. File, Add/Remove Snap-In.
+  #. Select Certificates, Click Add, My User Account, then Finish, then OK.
+  #. Dig down to Trust Root Certification Authorities, Certificates.
+  #. Right-Click Certificate, Select All Tasks, Import.
+  #. Select the Save Cert from the Desktop.
+  #. Select Place all Certificates in the following Store, Click Browse,
+  #. Check the Box that says Show Physical Stores, Expand out Trusted Root
+     Certification Authorities, and select Local Computer there, click OK,
+     Complete the Import.
+  #. Check the list to make sure it shows up. You will probably need to Refresh
+     before you see it. Exit MMC.
+  #. Open Browser, select Tools, Delete Browsing History.
+  #. Select all but In Private Filtering Data, complete.
+  #. Go to Internet Options, Content Tab, Clear SSL State.
+  #. Close browser, then re-open and test.
 
 Problem
 ^^^^^^^
 
-Der Upload mit dem Web-Client unter Windows 7 dauert länger als 30 Minuten,
-oder Sie können nicht mehr als 50 MB herunterladen.
+You cannot download more than 50 MB or upload large Files when the upload takes
+longer than 30 minutes using Web Client in Windows 7.
 
-Lösung
-^^^^^^
+Solution
+^^^^^^^^
 
-Bekannte Probleme und deren Lösungen sind im Artikel KB2668751_ dokumentiert.
+Workarounds are documented in the KB2668751_ article.
 
 
-Dateizugriff mit cURL
----------------------
+Accessing files using cURL
+--------------------------
 
-Da WebDAV eine Erweiterung von HTTP cURL ist, können Scriptdateien verwendet
-werden.
+Since WebDAV is an extension of HTTP cURL can be used to script file operations.
 
-Erstellen Sie einen Ordner mit dem aktuellen Datum als Namen:
+To create a folder with the current date as name:
 
 .. code-block:: bash
 
 	$ curl -u user:pass -X MKCOL "https://example.com/nextcloud/remote.php/dav/files/USERNAME/$(date '+%d-%b-%Y')"
 
-Laden Sie eine Datei ``error.log`` in einen Ordner hoch:
+To upload a file ``error.log`` into that directory:
 
 .. code-block:: bash
 
 	$ curl -u user:pass -T error.log "https://example.com/nextcloud/remote.php/dav/files/USERNAME/$(date '+%d-%b-%Y')/error.log"
 
-Verschieben Sie eine Datei:
+To move a file:
 
 .. code-block:: bash
 
 	$ curl -u user:pass -X MOVE --header 'Destination: https://example.com/nextcloud/remote.php/dav/files/USERNAME/target.jpg' https://example.com/nextcloud/remote.php/dav/files/USERNAME/source.jpg
 
-Erhalten Sie die Eigenschaften von Dateien im Stammordner:
+To get the properties of files in the root folder:
 
 .. code-block:: bash
 
@@ -536,6 +506,6 @@ Erhalten Sie die Eigenschaften von Dateien im Stammordner:
 .. _KB2668751: https://support.microsoft.com/kb/2668751
 .. _KB2123563: https://support.microsoft.com/kb/2123563
 .. _WebDAV Navigator: http://seanashton.net/webdav/
-.. _Android Geräte: https://play.google.com/store/apps/details?id=com.schimera.webdavnavlite
+.. _Android devices: https://play.google.com/store/apps/details?id=com.schimera.webdavnavlite
 .. _iPhones: https://itunes.apple.com/app/webdav-navigator/id382551345
-.. _BlackBerry Geräte: http://appworld.blackberry.com/webstore/content/46816
+.. _BlackBerry devices: http://appworld.blackberry.com/webstore/content/46816

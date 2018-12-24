@@ -1,26 +1,26 @@
 .. _index:
 
-====================================
-Nextcloud |version| Benutzerhandbuch
-====================================
+============================================
+Nextcloud |version| user manual introduction
+============================================
 
-**Willkommen bei Nextcloud: Einem sicheren Ort für all Ihre Daten.**
+**Welcome to Nextcloud: A safe home for all your data.**
 
-Nextcloud ist eine Open-Source Software, die das Synchronisieren und Teilen Ihrer
-Daten einfach macht. Der kostenlose Nextcloud-Server kann von Ihnen persönlich,
-bis hin zu großen Unternehmen verwendet werden. Mit Nextcloud können Sie einfach
-und sicher Dateien über Ihren eigenen Server synchronisieren und teilen.
+Nextcloud is open source file sync and share software for everyone from
+individuals operating the free Nextcloud Server in the privacy of their own
+home, to large enterprises and service providers supported by the Nextcloud
+Enterprise Subscription. Nextcloud provides a safe, secure, and compliant
+file synchronization and sharing solution on servers that you control.
 
-Teilen Sie einzelne Dateien oder ganze Ordner von Ihrem Computer und synchronisieren
-Sie diese über Ihren Nextcloud-Server. Legen Sie Dateien in geteilten Ordner ab,
-um diese automatisch zu Ihrem Nextcloud-Server zu synchronisieren und von dort
-auf andere Computer und Mobilgeräte, die den Nextcloud / ownCloud Desktop Sync Client
-oder die Android / iOS Mobile-App installiert haben.
-Mehr über die Nextcloud Desktop- und Mobile-Apps können Sie im entsprechenden
-Benutzerhandbuch lernen:
+You can share one or more files and folders on your computer, and synchronize
+them with your Nextcloud server. Place files in your local shared directories,
+and those files are immediately synchronized to the server and to other devices
+using the Nextcloud Desktop Sync Client, Android app, or iOS app. To
+learn more about the Nextcloud desktop and mobile clients, please refer to
+their respective manuals:
 
-* `Nextcloud/ownCloud Desktop Client`_
+* `Nextcloud Desktop Client`_
 * `Nextcloud Android App`_
 
-.. _`Nextcloud/ownCloud Desktop Client`: https://doc.owncloud.org/desktop/2.2/
-.. _`Nextcloud Android App`: https://docs.nextcloud.org/android/
+.. _`Nextcloud Desktop Client`: https://docs.nextcloud.com/desktop/2.3/
+.. _`Nextcloud Android App`: https://docs.nextcloud.com/android/

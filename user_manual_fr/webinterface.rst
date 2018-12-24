@@ -1,82 +1,86 @@
-============================
-Die Nextcloud Web-Oberfläche
-============================
+===========================
+The Nextcloud Web interface
+===========================
 
-Nextcloud kann über jeden Web-Browser verwendet werden; öffnen Sie einfach die URL
-Ihres Nextcloud-Servers und melden sich mit Ihrem Benutzernamen und Password an.
-Es werden folgende Browser unterstützt:
+You can connect to your Nextcloud server using any Web browser; just point it to
+your Nextcloud server and enter your username and password. Supported Web
+browsers are:
 
-* Firefox 14+
-* Chrome 18+
-* Safari 7+
-* IE11+
-* Microsoft Edge
+* **Mozilla Firefox** 14+
+* **Google Chrome/Chromium** 18+
+* **Safari** 7+
+* **Internet Explorer** 11+
+* **Microsoft Edge**
 
-  .. figure:: images/oc_connect.png
-     :alt: Nextcloud Login-Bildschirm.
+.. note:: If you want to use Nextcloud Talk you need to run Mozilla Firefox 52
+   or later or Google Chrome/Chromium 49 or later.
 
-.. note:: Sind Apps wie z.B. ``files_external`` oder ``encryption`` aktiviert,
-   wird die **Angemeldet bleiben** Checkbox nicht angezeigt.
+  .. figure:: images/login_page.png
+     :alt: Nextcloud login screen.
 
-Navigieren auf der Web-Oberfläche
----------------------------------
+Navigating the main user interface
+----------------------------------
 
-Die Standard-Applikation der Web-Oberfläche ist die "Dateien"-App. Diese wird
-nach einem erfolgreichen Login automatisch geöffnet und erlaubt das Hinzufügen,
-Löschen und Teilen Ihrer Dateien.
+By default, the Nextcloud Web interface opens to your Files page. You can add,
+remove, and share files, and make changes based on the access privileges set by
+you (if you are administering the server) or by your server administrator.
 
 .. figure:: images/files_page.png
      :scale: 75%
-     :alt: Die "Dateien"-App.
+     :alt: The main Files view.
 
-Die Web-Oberfläche enthält folgende Bereiche und Funktionen:
+The Nextcloud user interface contains the following fields and functions:
 
-* **App-Auswahl Menü**: Dieses Menü befindet sich in der oberen linken Ecke.
-  Mit einem Klick auf den Pfeil öffnet sich ein Dropdown-Menü mit allen aktuell
-  aktivierten Apps. Mit einem Klick auf eine Applikation, wird diese geöffnet.
+* **Apps Selection Menu** (1): Located in the upper left corner, you'll find all
+  your apps which are available on your instance of Nextcloud. Clicking on an
+  apps icon will redirect you to the app.
 
-* **App-Informationen**-Bereich: In der linken Seitenleiste sind Applikations-
-  spezifische Filter und Aufgaben zu finden. Die "Dateien"-App zeigt in der linken
-  Seitenleiste diverse Filter, die das schnelle Finden von Dateien erleichtern.
-  So lassen sich beispielsweise schnell die "mit Ihnen geteilten" und "von Ihnen
-  geteilten" Dateien auflisten. Andere Apps haben andere Seitenleisten.
+* **Apps Information** field (2): Located in the left sidebar, this provides
+  filters and tasks associated with your selected app. For example, when you
+  are using the Files apps you have a special set of filters for quickly
+  finding your files, such as files that have been shared with you, and files
+  that you have shared with others. You'll see different items for other apps.
 
-* **Applikations**-Bereich: In der Mitte der Nextcloud Web-Oberfläche ist die
-  eigentliche Applikation zu sehen. In der "Dateien"-App werden hier z.B. Ihre
-  Dateien und Ordner angezeigt.
+* **Application View** (3): The main central field in the Nextcloud user interface.
+  This field displays the contents or user features of your selected app.
 
-* **Navigationsleiste**: Unmittelbar über dem Applikations-Bereich befindet sich
-  die Navigationsleiste, die z.B. wie in der "Dateien"-App eine "Brotkrumennavigation"
-  enthält, um schnell zwischen Ordnerhierarchien zu wechseln.
+* **Navigation Bar** (4): Located over the main viewing window (the Application
+  View), this bar provides a type of breadcrumbs navigation that enables you to
+  migrate to higher levels of the folder hierarchy up to the root level (home).
 
-* **New**-Button: Dieser Button befindet sich in der Navigationsleiste und erlaubt
-  das Hochladen sowie Erstellen neuer Dateien und Ordnern.
+* **New** button (5): Located in the Navigation Bar, the ``New`` button
+  enables you to create new files, new folders, or upload files.
 
-.. note:: Dateien können auch per Drag & Drop hochgeladen werden. Diese Funktion wird
-   momentan nur von Chromium-basierenden Browsern unterstützt.
+.. note:: You can also drag and drop files from your file manager into the
+   Files Application View to upload them to your instance. Currently,
+   the only Web browsers that support drag-and-drop folders are Chrome and
+   Chromium.
 
-* **Suchen**-Feld: In der oberen rechten Ecke lassen sich über die Suche z.B. Dateien
-  und Ordner finden.
+* **Search** field (6): Click on the magnifier in the upper right hand corner of
+  to search for files.
 
-* **Galerie**-Button: Dieser Button sieht aus wie vier kleine Quadrate und springt mit
-  einem Klick auf ihn direkt zu Ihrer Bilder-Galerie.
+* **Contacts Menu** (7): Gives you an overview about your contacts and users on
+  your server. Dependent on the given details and available apps, you can
+  directly start a video call with them or send emails.
 
-+ **Persönliche Einstellungen**-Menü: Klicken Sie auf Ihren Benutzernamen in der oberen
-  rechten Ecke und wählen "Persönlich", um Ihre persönlichen Einstellungen zu öffnen.
-  Dort können Sie folgende Funktionen und Einstellungen vorfinden:
+* **Gallery** button (8). This looks like four little squares, and takes you
+  directly to your image gallery.
 
-  * Links zu den Desktop- und Mobil-Applikationen
-  * Den Einrichtungsassistenten erneut anzeigen
-  * Aktuell verbrauchten und insgesamt verfügbaren Speicherplatz einsehen
-  * Password-Verwaltung
-  * Name, E-Mail Adresse sowie Profilbild Einstellungen
-  * Verbundene Browser und Geräte verwalten
-  * Gruppen-Mitgliedschaften verwalten
-  * Sprache der Oberfläche ändern
-  * Benachrichtigungen verwalten
-  * Federated Cloud-ID
-  * Social Media Buttons zum Teilen
-  * SSL-Zertifikats-Manager
-  * Nextcloud Versions-Informationen
+* **Settings** menu (9): Click on your profile picture,
+  located to the right of the Search field, to open your Settings
+  dropdown menu. Your Settings page provides the following settings and features:
 
-Unter :doc:`userpreferences` können Sie mehr über diese Einstellungen erfahren.
+  * Links to download desktop and mobile apps
+  * Server usage and space availability
+  * Password management
+  * Name, email, and profile picture settings
+  * Manage connected browsers and devices
+  * Group memberships
+  * Interface language settings
+  * Manage notifications
+  * Federated Cloud ID and social media-sharing buttons
+  * SSL/TLS certificate manager for external storages
+  * Your Two-factor Settings
+  * Nextcloud Version information
+
+See :doc:`userpreferences` section to learn more about these settings.

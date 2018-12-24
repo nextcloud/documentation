@@ -1,10 +1,13 @@
 ============================
-Einrichten externer Speicher
+Configuring external Storage
 ============================
 
-Mithilfe der "Externe Speicher"-App können Sie externen Speicher von z.B. Google Drive,
-Dropbox, Amazon S3, SMB/CIFS Fileservern sowie FTP-Servern in Ihre Nextcloud einbinden.
-Ihr Nextcloud-Administrator kann einstellen, welche dieser Anbieter verwendet werden
-können. Mehr dazu finden Sie unter `Externen Speicher verwalten (GUI) <https://docs.nextcloud.org/server/14/admin_manual/configuration_files/external_storage_configuration_gui.html>`_.
+The External Storage application allows you to mount external storage services, 
+such as Google Drive, Dropbox, Amazon S3, SMB/CIFS fileservers, and FTP servers 
+in Nextcloud. Your Nextcloud server administrator controls which of these are 
+available to you. Please see `Configuring External Storage (GUI) 
+<https://docs.nextcloud.org/server/14/admin_manual/configuration_files/
+external_storage_configuration_gui.html>`_ in the Nextcloud Administrator's 
+manual for configuration howtos and examples.
 
 .. TODO ON RELEASE: Update version number above on release

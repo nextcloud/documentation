@@ -1,35 +1,36 @@
-==================
-Speicherkontingent
-==================
+=============
+Storage quota
+=============
 
-Ihr Nextcloud-Administrator kann individuell für jeden Nutzer den zur Verfügung
-gestellten Speicherplatz anpassen. Unter Ihren "Persönliche Einstellungen" können
-Sie den Ihnen zugeteilten und bisher genutzten Speicherplatz einsehen.
+Your Nextcloud admin has the option to set a storage quota on users. Look at 
+the top of your Personal page to see what your quota is, and how much you have 
+used.
 
 .. figure:: ../images/quota1.png
 
-Es kann hilfreich sein zu verstehen, wie der verfügbare Speicherplatz berechnet wird.
+It may be helpful to understand how your quota is calculated. 
 
-Metadaten (Miniaturansichten, temporäre Daten, Caches, kryptografische Schlüssel)
-belegen ungefähr 10% des Speichers, werden aber nicht vom Speicherkontingent eines
-Nutzers abgezogen. Apps wie z.B. die "Kalender"- oder "Kontakte"-App speichern Daten
-in der Nextcloud Datenbank. Diese Daten zählen ebenfalls nicht zum benutzten
-Speicherplatz eines Nutzers.
+Metadata (thumbnails, temporary files, cache, and encryption keys) takes up 
+about 10% of disk space, but is not counted against user quotas. Some apps 
+store information in the database, such as the Calendar and Contacts apps. This 
+data is excluded from your quota.
 
-Geteilte Dateien zählen zum Speicherkontingent des Nutzers, der diese Dateien geteilt
-hat. Wenn das Hochladen in geteilten Ordner erlaubt wird, zählen alle neu
-hochgeladenen und editierten Dateien ebenfalls zum Speicherkontingent des Nutzers,
-der diesen Ordner geteilt hat.
+When other users share files with you, the shared files count against the 
+original share owner's quota. When you share a folder and allow other users or 
+groups to upload files to it, all uploaded and edited files count against your 
+quota. When you re-share files shared with you, the re-share still counts 
+against the quota of the original share owner.
 
-Verschlüsselte Dateien sind etwas größer als unverschlüsselte Dateien; es wird
-lediglich die Größe der unverschlüsselten Originaldatei mit dem Speicherkontingent
-verrechnet.
+Encrypted files are a little larger than unencrypted files; the unencrypted size 
+is calculated against your quota.
 
-Gelöschte Dateien, die sich noch im Papierkorb befinden, zählen nicht zum genutzten
-Speicherplatz. Die Größe des Papierkorbs ist auf 50% des Speicherkontingent eines
-Nutzers festgelegt. Dateien werden nach 30 Tagen aus dem Papierkorb gelöscht.
-Wenn die maximale Größe des Papierkorbs überschritten wird, werden nach und nach
-die ältesten Dateien von dort endgültig gelöscht.
+Deleted files that are still in the trash bin do not count against quotas. The 
+trash bin is set at 50% of quota. Deleted file aging is set at 30 days. When 
+deleted files exceed 50% of quota then the oldest files are removed until the 
+total is below 50%.
 
-Alle mit der Versionsverwaltung erstellten Versionen einer Datei werden nicht
-zum Speicherkontingent dazugezählt.
+When version control is enabled, the older file versions are not counted against 
+quotas.
+
+If you create a public share via URL, and allow uploads, any uploaded files 
+count against your quota.

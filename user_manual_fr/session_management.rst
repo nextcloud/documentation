@@ -1,47 +1,67 @@
-=======================================
-Verbundene Browser und Geräte verwalten
-=======================================
+=====================================
+Manage connected browsers and devices
+=====================================
 
-In Ihren persönlichen Einstellungen finden Sie eine Übersicht aller verbundenen
-Browser und Geräten.
+The personal settings page allows you to have an overview on the connected
+browsers and devices.
 
-Verbundene Browser verwalten
-============================
-In der Liste der verbundenen Browser sind alle Browser gelistet, von welchen Sie
-sich in letzter Zeit in Ihren Account eingeloggt haben.
+Managing connected browsers
+---------------------------
+
+In the list of connected browsers you see which browsers connected to your
+account recently:
 
 .. figure:: images/settings_sessions.png
-     :alt: Liste der Browser-Sitzungen.
+     :alt: List of browser sessions.
 
-Um die Sitzung eines Browsers zu schließen, klicken Sie einfach auf das Papierkorb-
-Symbol neben einem Eintrag in der Liste.
+You can use the trash icon to disconnect any of the browsers in the list.
 
-Verbundene Geräte verwalten
-===========================
-In der Liste verbundener Geräte sind alle Geräte und Clients zu sehen, für welche
-Sie ein App-Passwort erstellt haben.
+Managing devices
+----------------
+
+In the list of connected devices you see all the devices and clients you
+generated a device password for and their last activity:
 
 .. figure:: images/settings_devices.png
-     :alt: Liste der verbundenen Geräte.
+     :alt: List of connected devices.
 
-Mit einem Klick auf das Papierkorb-Symbol können Sie die Verbindung zu einem Gerät
-trennen.
+You can use the trash icon to disconnect any of the devices in the list.
 
-Unter der Liste finden Sie einen Button, mit welchem Sie ein Geräte-spezifisches
-Passwort generieren können. Sie können diesem Passwort (oder auch "Token") einen
-Namen geben, um dieses später leichter wiederzufinden. Dieses Passwort / Token wird
-verwendet, um neue Clients zu verbinden. Im Idealfall generieren Sie für jedes
-Gerät, von dem Sie sich in Ihren Account anmelden, einen eigenen Token. Dies macht
-es später einfacher, einzelne Geräte aus Ihrem Account abzumelden.
+At the bottom of the list you find a button to create a new device-specific
+password. You can choose a name to identify the token later. The generated
+password is used for configuring the new client. Ideally, generate individual
+tokens for every device you connect to your account, so you can disconnect
+those individually if necessary.
 
 .. figure:: images/settings_devices_add.png
-     :alt: Neues Gerät hinzufügen.
+     :alt: Adding a new device.
 
-.. note:: Das Geräte-spezifische Passwort wird nur einmalig angezeigt. Es ist später
-   nicht möglich, es erneut anzuzeigen. Wir empfehlen, das Passwort direkt nach
-   Erstellen am neuen Gerät einzugeben.
+.. note:: You have only access to the device password when creating it,
+   Nextcloud will not save the plain password, hence it's recommended to
+   enter the password on the new client immediately.
 
 
-.. note:: Falls Sie :doc:`user_2fa`, sind Geräte- spezifische Passwörter die einzige
-   Möglichkeit, um neue Clients hinzuzufügen. Clients können dann nicht mit Ihrem
-   Login-Passwort verwendet werden.
+.. note:: If you are :doc:`user_2fa` for your account,
+   device-specific passwords are the only way to configure clients. The
+   client will deny connections of clients using your login password then.
+
+Device-specific passwords and password changes
+----------------------------------------------
+
+The behaviour of device-specific passwords during changes of the main password
+changed in different versions of Nextcloud.
+
+Up to Nextcloud 13
+	Device-specific passwords are removed on password change and also are
+	removed once they are not valid anymore if an external user backend is
+	used.
+
+Nextcloud 14
+	For local user backend the device-specific passwords are updated properly
+	and continue to work. For external user backends (like LDAP/AD) the
+	device-specific passwords are still removed.
+
+Starting with Nextcloud 15
+	For password changes in external user backends the device-specific passwords
+	are marked as invalid and once a login of the user account with the main
+	password happens all device-specific passwords are updated and work again.

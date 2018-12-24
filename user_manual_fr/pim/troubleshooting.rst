@@ -1,17 +1,17 @@
-==============
-Fehlerbehebung
-==============
+===============
+Troubleshooting
+===============
 
 BlackBerry OS 10.2
 ------------------
 
-BlackBerry OS bis Version 10.2.2102 kommt mit ``https://`` in URLs nicht zurecht.
-Der Login wird unter Verwendung einer solchen URL immer fehlschlagen.
-
-Verwenden Sie statt (mit ``https://``)::
+BlackBerry OS up to 10.2.2102 does not accept a URL with protocol ``https://`` 
+in front of the server address. It will always tell you that it cannot login on 
+your server. So instead of writing::
 
     https://example.com/remote.php/dav/principals/users/USERNAME/
-
-die URL ohne ``https://``::
+    
+in the server address field, you have to write::
 
     example.com/remote.php/dav/principals/users/USERNAME/
+    

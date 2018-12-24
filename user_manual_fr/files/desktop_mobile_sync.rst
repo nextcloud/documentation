@@ -1,26 +1,27 @@
-===============================================
-Synchronisieren mit der Desktop- und Mobile-App
-===============================================
+==================================
+Desktop and mobile synchronization
+==================================
 
-Um Dateien mit Ihrem Desktop-Computer zu synchronisieren, empfehlen wir den
-`Nextcloud Desktop Client`_ für Windows, Mac OS X und Linux zu verwenden.
+For synchronizing files with your desktop computer, we recommend using the
+`Nextcloud Sync Client`_ for Windows, macOS and Linux.
 
 
-Mit dem Nextcloud Desktop Sync Client können Sie sich mit Ihrem privaten Nextcloud-Server
-verbinden. Sie können Ordner in Ihrem Home-Verzeichnis erstellen und den Inhalt dieser
-Ordner über Ihren Nextcloud-Server synchronisieren. Ziehen Sie einfach Dateien in diese
-Ordner und der Desktop Sync Client übernimmt den Rest. Änderungen an diesen Dateien werden
-automatisch zwischen allen Clients synchronisiert. Somit haben Sie immer überall die aktuellste
-Version einer Datei.
+The Nextcloud Desktop Sync Client enables you to connect to your Nextcloud Server.
+You can create folders in your home directory, and keep the contents of those
+folders synced with your Nextcloud server. Simply copy a file into the directory
+and the Nextcloud desktop client does the rest. Make a change to the files on one
+computer, it will flow across the others using these desktop sync clients.
+You will always
+have your latest files with you wherever you are.
 
-Zur Dokumentation des `Nextcloud Desktop Client`_.
+Its usage is documented separately in the `Nextcloud Desktop Client Manual`_.
 
-.. _Nextcloud Desktop Client: https://nextcloud.com/install/
-.. _Nextcloud Desktop Client Handbuch: https://docs.nextcloud.org/
+.. _`Nextcloud Desktop Client Manual`: https://docs.nextcloud.com/desktop/2.3
+.. _`Nextcloud Sync Client`: https://nextcloud.com/install/#install-clients
 
-Mobile-App
-----------
+Mobile clients
+--------------
 
-Öffnen Sie "Persönlich" in der Nextcloud Web-Oberfläche. Dort werden Ihnen Links zum
-Herunterladen der Android und iOS Applikationen angezeigt. Diese Links können Sie auch
-unter der `Nextcloud Downloadseite <https://nextcloud.com/install/>`_ vorfinden.
+Visit your Personal page in your Nextcloud Web interface to find download links
+for Android and iOS mobile sync clients. Or, visit the `Nextcloud download page
+<https://nextcloud.com/install/>`_.

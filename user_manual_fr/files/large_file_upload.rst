@@ -1,20 +1,22 @@
-========================
-Hochladen großer Dateien
-========================
+==================
+Large file uploads
+==================
 
-Beim Hochladen von Dateien über den Web-Browser wird Nextcloud durch PHP- und
-Apache-Konfigurationen begrenzt. Standardmäßig erlaubt PHP nur 2 Megabyte große
-Dateien hochzuladen. Da diese standard-Größe sehr klein ist, können viele Ihrer
-Daten nicht hochgeladen werden. Ihr Nextcloud-Server-Administrator muss daher
-die maximale Größe für Dateien neu einstellen.
+When uploading files through the web client, Nextcloud is limited by PHP and
+Apache configurations. By default, PHP is configured for only 2 megabyte
+uploads. As this default upload limit is not entirely useful, we recommend that
+your Nextcloud admin increase the Nextcloud variables to sizes appropriate for
+users.
 
-Nur der Server-Administrator ist berechtigt, Nextcloud-Variablen zu ändern. Wenn
-größere Dateien hochgeladen werden sollen, als von der Standardeinstellung oder
-der vom Administrator festgelegten Größe erlaubt wird:
+Modifying certain Nextcloud variables requires administrative access. If you
+require larger upload limits than have been provided by the default (or already
+set by your administrator):
 
-* Wenden Sie sich an Ihren Administrator, um eine Erhöhung dieser Variablen
-  anzufordern
+* Contact your administrator to request an increase in these variables
 
-* Lesen Sie den Abschnitt in der `Admin-Dokumentation <https://docs.nextcloud.org/server/14/admin_manual/configuration_files/big_file_upload_configuration.html>`_ , in dem beschrieben wird, wie die Größenbeschränkungen für die Dateigröße zu verwalten sind.
+* Refer to the section in the `Admin Documentation
+  <https://docs.nextcloud.org/server/14/admin_manual/configuration_files/
+  big_file_upload_configuration.html>`_ that describes how to manage file
+  upload size limits.
 
 .. TODO ON RELEASE: Update version number above on release

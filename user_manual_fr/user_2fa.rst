@@ -1,76 +1,83 @@
-=======================================
-Zwei-Faktor-Authentifizierung verwenden
-=======================================
+===============================
+Using two-factor authentication
+===============================
 
-Die Zwei-Faktor-Authentifizierung ("2FA") hilft Ihnen, Ihren Nextcloud-Account
-gegen unbefugten Zugriff besser zu schützen. Dies funktioniert wie folgt:
-Es werden zum Anmelden zwei verschiedene Identitätsnachweise ("Faktoren")
-benötigt; z.B. etwas, das Sie *wissen* (wie ein Passwort) und etwas, das Sie
-*haben* (etwa einen Hardware-Token). Der erste Faktor ist für gewöhnlich Ihr
-Passwort. Der zweite Faktor kann z.B. eine Textnachricht sein, die Sie auf
-Ihr Handy erhalten. So müsste ein Angreifer neben Ihrem Passwort auch noch
-Zugriff auf Ihr Handy haben. Nextcloud unterstützt von Haus aus bereits
-einige Zweitfaktoren. Weitere können einfach hinzugefügt werden.
+Two-factor authentication (2FA) is a way to protect your Nextcloud account
+against unauthorized access. It works by requiring two different 'proofs' of
+your identity. For example, *something you know* (like a password) and 
+*something you have* like a physical key. Typically, the first factor is a
+password like you already have and the second can be a text message you
+receive or a code you generate on your phone or another device
+(*something you have*). Nextcloud supports a variety of 2nd factors and
+more can be added.
 
-Sobald die "Zwei-Faktor-Authentifizierung"-App von Ihrem Nextcloud-Administrator
-aktiviert wurde, können Sie diesen in Ihren persönlichen Einstellungen aktivieren
-und konfigurieren: :doc:`userpreferences`
+Once a two-factor authentication app has been enabled by your administrator
+you can enable and configure it in :doc:`userpreferences`. Below you can
+see how.
 
-Konfiguration der Zwei-Faktor-Authentifizierung
-===============================================
+Configuring two-factor authentication
+-------------------------------------
 
-Suchen Sie in Ihren persönlichen Einstellungen nach der "Zwei-Faktor-Authentifizierung".
-In diesem Beispiel hier wird "TOTP", eine mit dem Google Authenticator kompatible
-Zwei-Faktor-Authentifizierung verwendet.
+In your Personal Settings look up the Second-factor Auth setting. In this
+example this is TOTP, a Google Authenticator compatible time-based code.
 
 .. figure:: images/totp_enable.png
-     :alt: TOTP-Konfiguration.
+     :alt: TOTP configuration.
 
-Sobald aktiviert, wird Ihnen ein "TOTP-Schlüssel" und QR-Code angezeigt. Den QR-Code
-können Sie mit einer TOTP-App auf Ihrem Smartphone oder anderen Gerät scannen.
-Alternativ können Sie auch den "TOTP-Schlüssel" eingeben. Ihr Gerät wird nun einen
-Authentifizierungscode anzeigen. Dieser wird sich alle 30 Sekunden ändern.
+You will see your secret and a QR code which can be scanned by the TOTP app
+on your phone (or another device). Depending on the app or tool, type in the
+code or scan the QR and your device will show a login code which changes
+every 30 seconds.
 
-Backup-Codes erstellen
-======================
-Für den Fall, dass Sie Zugriff auf den Zweitfaktor verlieren, sollten Sie immer auch
-einen / mehrere Backup-Code/s erstellen. Diesen können anstelle des zweiten Faktors
-verwendet werden, z.B. wenn Ihr Smartphone mit der TOTP-App gestohlen wird. Diese
-Backup-Codes können in Ihren persönlichen Einstellungen mit Klick auf *Backup-Codes erstellen*
-generiert werden.
+Recovery codes in case you lost your 2nd factor
+-----------------------------------------------
+
+You should always generate backup codes for 2FA. If your 2nd factor device
+gets stolen or is not working, you will be able to use one of these codes to
+unlock your account. It effectively functions as a backup 2nd factor. To
+get the backup codes, go to your Personal Settings and look under Second-factor
+Auth settings. Choose *Generate backup codes*.
 
 .. figure:: images/2fa_backupcode_1.png
-     :alt: 2FA Backup-Codes erstellen
+     :alt: 2FA backup code generator
 
-Es wird Ihnen nun eine Liste an Backup-Codes angezeigt. Jeder dieser Codes ist nur
-ein mal gültig.
-
+You will then be presented with a list of one-time-use backup codes.
+     
 .. figure:: images/2fa_backupcode_2.png
-     :alt: 2FA Backup-Codes
+     :alt: 2FA backup codes
 
-Diese Backup-Codes sollten an einem sicheren Ort (z.B. Zuhause) aufbewahrt werden. Sie
-sollten nicht auf dem Gerät gespeichert werden, auf welchem Ihre TOTP-App installiert ist.
-Wenn dieses Gerät verloren geht, wären auch Ihre Backup-Codes nicht mehr erreichbar.
+You should put these codes in a safe spot, somewhere you can find them. Don't
+put them together with your 2nd factor like your mobile phone but make sure that
+if you lose one, you still have the other. Keeping them at home is probably
+the best thing to do.
 
-Anmelden mithilfe der Zwei-Faktor-Authentifizierung
-===================================================
-Nachdem Sie die Zwei-Faktor-Authentifizierung aktiviert und sich von Nextcloud abgemeldet
-haben, werden Sie nach Eingabe Ihres Benutzernamen und Passworts auch nach einem
-TOTP-Schlüssel gefragt. Lassen Sie diesen von Ihrer TOTP-App generieren.
+Logging in with two-factor authentication
+-----------------------------------------
+
+After you have logged out and need to log in again, you will see a request to
+enter the TOTP code in your browser. If you enable not only the TOTP factor
+but another one, you will see a selection screen on which you can choose
+two-factor method for this login. Select TOTP.
+
+.. figure:: images/totp_login_1.png
+     :alt: Choosing a two-factor authentication method.
+
+Now, just enter your code:
 
 .. figure:: images/totp_login_2.png
-     :alt: TOTP-Schlüssel.
+     :alt: Entering TOTP code at login.
 
-Wenn der TOTP-Schlüssel gültig ist, werden Sie wie gewohnt zu Ihrem Nextcloud-Account weitergeleitet.
+If the code was correct you will be redirected to your Nextcloud account.
 
-.. note:: Da TOTP ein zeitbasierendes System ist, ist es wichtig, dass sowohl die Uhr Ihres
-   Nextcloud-Servers als auch die Uhr Ihres Smartphones nahezu identisch sind. Eine Zeitverschiebung
-   von wenigen Sekunden ist kein Problem.
+.. note:: Since the code is time-based, it’s important that your server’s and
+  your smartphone’s clock are almost in sync. A time drift of a few seconds
+  won’t be a problem.
 
-Client-Applikationen mit der Zwei-Faktor-Authentifizierung verwenden
-====================================================================
-Sobald die Zwei-Faktor-Authentifizierung aktiviert ist, können sich Ihre Clients nicht mehr nur mit
-einem Passwort anmelden. Falls Ihr Client eine Zwei-Faktor-Authentifizierung unterstützt, werden
-Sie wie beim Anmelden über die Nextcloud Web-Oberfläche nach einem zusätzlichen TOTP-Schlüssel
-gefragt. Unterstützt Ihr Client die Zwei-Faktor-Authentifizierung nicht, müssen Sie ein
-"App-Passwort" für ihn generieren. Nähere Informationen dazu finden Sie unter :doc:`session_management`.
+Using client applications with two-factor authentication
+--------------------------------------------------------
+
+Once you have enabled 2FA, your clients will no longer be able to connect with
+just your password unless they also have support for two-factor authentication.
+To solve this, you should generate device specific passwords for them. See 
+:doc:`session_management` for more information on how to do this.
+

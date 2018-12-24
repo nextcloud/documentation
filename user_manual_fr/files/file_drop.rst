@@ -1,41 +1,42 @@
-===========================
-Anonymes Hochladen erlauben
-===========================
+========================
+Making anonymous uploads
+========================
 
-Ordner in Nextcloud können als eine Art Briefkasten verwendet werden: Andere,
-nicht zwingend registrierte Nutzer, können Dateien in diesen Ordner hochladen, ohne
-die bisher hochgeladenen Dateien einsehen oder ändern zu können.
-Dies ist eine tolle Alternative zu großen Mail-Anhängen, FTP-Servern oder
-kommerziellen File-Sharing Anbietern.
+You may create your own special upload directories so that other people can upload
+files to you without having to log in to the server, and without being an Nextcloud
+user.
+They will not be allowed to see the contents of this directory, or to make any
+changes. This is an excellent alternative to sending large attachments via email,
+using an FTP server, or using commercial file-sharing services.
 
-Einen Datei-Briefkasten einrichten
-----------------------------------
+Setting up your own file drop
+-----------------------------
 
-Öffnen Sie die "Dateien"-App und wählen Sie den als Briefkasten zu konfigurierenden
-Ordner, in den anonym Dateien hochgeladen werden sollen.
+Go to Files and create or choose the folder, the anonymous upload should be
+made to.
 
 .. image:: ../images/anonym_click_sharing.png
 
-Klicken Sie "Link teilen", "Hochladen und Bearbeiten erlauben" und
-"Dateien ablegen (nur Hochladen)".
+Check Share Link, Allow editing, Hide file listing.
 
 .. image:: ../images/anonym_hide_file_listing.png
 
-Sie können nun den Link zu diesem Ordner teilen oder dafür die Teilen-Funktion
-verwenden, sollte diese von Ihrem Administrator freigeschaltet worden sein.
+Now you can send the link to the upload folder manually or by using the
+Nextcloud send function, if your administrator has enabled it.
 
 
-Dateien hochladen
------------------
+Uploading files
+---------------
 
-Anonym Dateien hochzuladen ist einfach: Öffnen Sie den geteilten Link und wählen Sie
-"Dateien auswählen".
+Using the anonymous upload function is simple. You receive a link to the upload
+folder, click the link, and then you'll see an Nextcloud page with a **Click to
+upload** button.
 
 .. image:: ../images/anonym_upload.png
 
-Dies öffnet die Dateiauswahl, in der Sie die hochzuladenden Dateien oder Ordner
-auswählen können. Die Objekte können auch per Drag & Drop ausgewählt werden.
+This opens a file picker, and you select the file or directory you want to
+upload. You're also able to just drop files into the window.
 
-Bereits hochgeladene Dateien werden unter "Hochgeladene Dateien" angezeigt.
+When your upload is completed, the filenames are listed:
 
 .. image:: ../images/anonym_uploaded_files.png

@@ -1,47 +1,57 @@
-iOS - Mit iPhone/iPad synchronisieren
-=====================================
+=============================
+iOS - synchronize iPhone/iPad
+=============================
 
-Kalender
+Calendar
 --------
 
-#. Öffnen Sie die "Einstellungen"-App auf Ihrem iOS-Gerät.
-#. Wählen Sie "Mail, Kontakte, Kalender".
-#. Klicken Sie auf "Account hinzufügen".
-#. Wählen Sie "Andere" als Account-Typ.
-#. Wählen Sie "CalDAV-Account hinzufügen".
-#. Als Server verwenden Sie: ``example.com/remote.php/dav/principals/users/USERNAME/``
-#. Geben Sie Ihren Nextcloud Benutzernamen und Ihr Passwort ein.
-#. Klicken Sie "Weiter".
-#. Falls Ihr Server keine verschlüsselte Verbindung unterstützt, wird Ihnen eine entsprechende Fehlermeldung angezeigt. Bestätige Sie mit "OK".
-#. Wenn die Accountdaten nicht verifiziert werden können, führen Sie folgende Schritte durch:
+#. Open the settings application.
+#. Select Mail, Contacts, Calendars.
+#. Select Add Account.
+#. Select Other as account type.
+#. Select Add CalDAV account.
+#. For server, type ``example.com/remote.php/dav/principals/users/USERNAME/``
+#. Enter your user name and password.
+#. Select Next.
+#. If your server does not support SSL, a warning will be displayed.
+   Select Continue.
+#. If the iPhone is unable to verify the account information perform the
+   following steps:
 
-   -  Klicken Sie auf "OK".
-   -  Öffnen Sie "Erweiterte Einstellungen".
-   -  Falls Ihr Server keine verschlüsselte Verbindung unterstützt, deaktivieren Sie "SSL verwenden".
-   -  Ändern Sie "Port" auf "80".
-   -  Gehen Sie zurück zu den Account-Informationen und klicken Sie "Speichern".
+   -  Select OK.
+   -  Select advanced settings.
+   -  If your server does not support SSL, make sure Use SSL is set to OFF.
+   -  Change port to 80.
+   -  Go back to account information and hit Save.
 
-Ihr Kalender wird nun mit und über Nextcloud synchronisiert.
+Your calendar will now be visible in the Calendar application
 
 
-Adressbuch
-----------
+Address book
+------------
 
-#. Öffnen Sie die "Einstellungen"-App auf Ihrem iOS-Gerät.
-#. Wählen Sie "Mail, Kontakte, Kalender".
-#. Klicken Sie auf "Account hinzufügen".
-#. Wählen Sie "Andere" als Account-Typ.
-#. Wählen Sie "CardDAV-Account hinzufügen".
-#. Als Server verwenden Sie: ``example.com/remote.php/dav/principals/users/USERNAME/``
-#. Geben Sie Ihren Nextcloud Benutzernamen und Ihr Passwort ein.
-#. Klicken Sie "Weiter".
-#. Falls Ihr Server keine verschlüsselte Verbindung unterstützt, wird Ihnen eine entsprechende Fehlermeldung angezeigt. Bestätige Sie mit "OK".
-#. Wenn die Accountdaten nicht verifiziert werden können, führen Sie folgende Schritte durch:
+#. Open the settings application.
+#. Select Mail, Contacts, Calendars.
+#. Select Add Account.
+#. Select Other as account type.
+#. Select Add CardDAV account.
+#. For server, type ``example.com/remote.php/dav/principals/users/USERNAME/``
+#. Enter your user name and password.
+#. Select Next.
+#. If your server does not support SSL, a warning will be displayed.
+   Select Continue.
+#. If the iPhone is unable to verify the account information perform the
+   following:
 
-   -  Klicken Sie auf "OK".
-   -  Öffnen Sie "Erweiterte Einstellungen".
-   -  Falls Ihr Server keine verschlüsselte Verbindung unterstützt, deaktivieren Sie "SSL verwenden".
-   -  Ändern Sie "Port" auf "80".
-   -  Gehen Sie zurück zu den Account-Informationen und klicken Sie "Speichern".
+   -  Select OK.
+   -  Select advanced settings.
+   -  If your server does not support SSL, make sure Use SSL is set to OFF.
+   -  Change port to 80.
+   -  Go back to account information and hit Save.
 
-Ihr Adressbuch wird nun mit und über Nextcloud synchronisiert.
+You should now find your contacts in the address book of your iPhone.
+If it's still not working, have a look at the :doc:`troubleshooting`
+and `Troubleshooting Contacts & Calendar`_ guides.
+
+.. _Troubleshooting Contacts & Calendar: https://docs.nextcloud.org/server/14/admin_manual/issues/index.html#troubleshooting-contacts-calendar
+.. TODO ON RELEASE: Update version number above on release

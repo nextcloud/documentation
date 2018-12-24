@@ -1,98 +1,92 @@
 ===========
-Galerie-App
+Gallery app
 ===========
 
-Die "Bilder"-App wurde umgeschrieben, verbessert und wird nun die "Galerie"-App
-genannt. Es werden nun mehrere Bildformate, sowie Sortierung, Zoom und Scrollen
-unterstützt. Erweiterte Anpassungen können über eine einfache Textdatei
-erstellt werden.
+The Pictures app has been rewritten and improved, and is now called the Gallery
+app. It supports more image formats, sorting, zoom, and scrolling. It also
+supports advanced customizations via a simple text file.
 
-Auf Ihrer Nextcloud-Hauptseite befindet sich in der rechten oberen Ecke unter
-dem Benutzernamen ein kleines Symbol, mit dem schnell zwischen der Galerie und der
-Dateiansicht gewechselt werden kann. Die "Galerie"-App findet automatisch alle
-Bilder in Ihren Nextcloud-Ordnern und erstellt eine Miniaturansicht inklusive
-dem Ordnernamen. Klicken Sie auf die Ordner mit der Miniaturansicht, um die
-Ordner mit den Inhalten zu öffnen. Mit den beiden Symbole an der linken oberen
-Ecke, lässt sich der Inhalt alphabetisch oder nach Datum sortieren.
+On your main Nextcloud Files page, click the little icon at the top right,
+underneath your username, to open your Gallery. The Gallery app automatically
+finds all images in your Nextcloud folders, and overlays the thumbnails with the
+folder names. Click on the folder thumbnails to open the folders. At the top
+left you have two sorting options, alphabetical and by date.
 
 .. figure:: ../images/gallery-1.png
-   :alt: Galerie und Miniaturansichten.
+   :alt: Gallery folder thumbnails.
 
-Öffnen Sie die "Dateien"-App und wählen Sie ein beliebiges Bild, um es im
-Diashow-Modus anzusehen. Der Diashow-Modus hat folgenden Funktionen:
-Tasten am linken und rechten Rand um zwischen den Bildern zu wechseln, eine
-Diashow-Taste an der unteren rechten Ecke, sowie Tasten zum Löschen oder
-Verlassen des Diashow-Modus in der oberen rechten Ecke.
+After entering any folder, click on any image to open it in slideshow mode.
+This has the following features: a download button at the top center, forward
+and back buttons at the right and left sides, an automatic slideshow button at
+the bottom right, and a close button at the top right.
 
 .. figure:: ../images/gallery-2.png
-   :alt: Galerie Diashow-Modus.
+   :alt: Gallery in slideshow mode.
 
-Benutzerdefinierte Konfiguration
---------------------------------
+Custom configuration
+--------------------
 
-Ein Galerie-Album kann mit einer einfachen Textdatei namens **gallery.cnf**
-angepasst werden. Die Konfigurations-Datei wird mit der Markup-Sprache `Yaml
-<https://en.wikipedia.org/wiki/YAML>`_ erstellt. Es können mehrere
-**gallery.cnf** erstellt werden. Eine im Stammordner die globale Funktionen
-definiert und weitere jeweils in ihren Unterordner.
+You may customize a Gallery album with a simple text file named
+**gallery.cnf**, which contains parameters structured using the
+`Yaml <https://en.wikipedia.org/wiki/YAML>`_ markup language. You may have
+multiple **gallery.cnf** files; you need one in your own root Nextcloud folder
+(your Home folder) that defines global features, and then you may have
+individual per-album **gallery.cnf** files if you want to define different
+behaviors in different albums.
 
-Eigenschaften
-^^^^^^^^^^^^^
+Features
+^^^^^^^^
 
-Die folgenden allgemeinen Funktionen sind derzeit implementiert:
+The following general features are currently implemented:
 
-* Native SVG-Unterstützung.
-* Zugang zu externen Freigaben.
+* Native SVG support.
+* Access to external shares.
 
-Die folgenden Album-Funktionen sind derzeit implementiert:
+The following album features are currently implemented:
 
-* Hinzufügen eines Links zu einer Datei mit einer Beschreibung.
-* Die Eingabe einer einfachen Copyright-Erklärung direkt in der Konfigurationsdatei.
-* Hinzufügen eines Links zu einer Datei, die eine Copyright-Erklärung enthält.
-* Definieren der Sortierung und Reihenfolge.
-* Definieren der Hintergrundfarbe.
-* Definieren, ob Unteralben die Konfiguration übernehmen.
+* Adding a link to a file containing a description.
+* Typing a simple copyright statement directly in the configuration file.
+* Adding a link to a file containing a copyright statement.
+* Defining a sort type and order.
+* Defining the colour of the background.
+* Defining if sub-albums will inherit the configuration.
 
-Die folgenden Diashow-Funktionen sind derzeit implementiert:
+The following slideshow features are currently implemented:
 
-* Eine Taste, die den Hintergrund im Diashow-Modus auf schwarz oder weiß setzt.
-  (für Bilder mit transparenten Hintergründen)
+* Showing a button which lets you pick which background, either black or
+  white, to use for the picture you are currently viewing (for images with
+  transparent backgrounds).
 
-Konfiguration
-^^^^^^^^^^^^^
+Setup
+^^^^^
 
-Die Konfigurationsdatei muss **gallery.cnf** lauten, damit diese vom System
-erkannt wird. Um die globale Funktionen zu aktivieren, platzieren Sie eine Datei
-im Stammordner. Der Stammordner ist in der Web-Oberfläche durch das Haus-Symbol
-dargestellt. Weitere Konfigurationsdateien können einzeln auf Unterordner verteilt
-werden.
+The configuration file has to be named **gallery.cnf**. You may have multiple
+per-album **gallery.cnf** files. To enable global features, place one in your
+top-level folder, which is symbolised in the Web GUI by the home icon. (This
+puts it in ``data/<user>/files/``.) See :ref:`an example below
+<supported_variables_label>` in the **Global features** section.
 
-(Dies wird in ``data/<benutzer>/files/`` abgelegt.) Siehe :ref:`Beispiel unten
-<supported_variables_label>` in dem Abschnitt **Globale Funktionen**.
-
-.. note:: Damit die Änderungen übernommen werden, muss die Nextcloud-Seite
-   neu geladen werden.
-
+.. note:: You need to refresh your browser after changing your configuration to
+   see your changes.
 
 Format
 ^^^^^^
 
-UTF-8, **ohne BOM**. Eine von der Nextcloud Web-Oberfläche erstellte Datei
-funktioniert.
+UTF-8, **without BOM**. A file created from within the Nextcloud Web GUI works.
 
-Grundgerüst
-^^^^^^^^^^^
+Structure
+^^^^^^^^^
 
-Sie sollten einen Kommentar in die Datei einfügen, um deren Nutzen kurz zu
-erklären. Kommentare beginnen mit einem "#".
+You should include a comment in the file, so that people stumbling upon
+the file know what it's for. Comments start with #.
 
-Der Abstand wird mit 2 Leerzeichen erstellt. **Verwenden Sie keine Tabulatoren.**
+Spacing is created using 2 spaces. **Do not use tabs.**
 
-Ein Blick in die Dokumentation für die `YAML Formatierung
-<http://symfony.com/doc/current/components/yaml/yaml_format.html>`_ hilft Fehler
-zu beheben.
+Take a look at the `YAML Format documentation
+<https://symfony.com/doc/current/components/yaml/yaml_format.html>`_ if you are
+getting error messages.
 
-Ein Beispiel für die `gallery.cnf`::
+Here is an example `gallery.cnf`::
 
   # Gallery configuration file
   # Created on 31 Jan 2016 by Nextcloud User
@@ -107,7 +101,7 @@ Ein Beispiel für die `gallery.cnf`::
    description: This is an **album description** which is only shown if there
    is no `description_link`
    description_link: readme.md
-   copyright: Copyright 2003-2016 [interfaSys sàrl](http://www.interfasys.ch),
+   copyright: Copyright 2003-2016 [interfaSys sàrl](https://www.interfasys.ch),
    Switzerland
    copyright_link: copyright.md
    inherit: yes
@@ -118,111 +112,103 @@ Ein Beispiel für die `gallery.cnf`::
 
 .. _supported_variables_label:
 
-Unterstützte Variablen
-^^^^^^^^^^^^^^^^^^^^^^
+Supported variables
+^^^^^^^^^^^^^^^^^^^
 
-**Globale Funktionen**
+**Global Features**
 
-Legen Sie diese in Ihrem Stammordner der Nextcloud ab.
+Place this in your root Nextcloud folder, which is your Home folder.
 
-* **external_shares**: Bei der Verwendung der **files_external**-App,
-  können Sie den Wert in ihrer globalen-Konfigurationsdatei auf **yes**
-  setzen, um Bilder aus externen Speichern zu laden.
-* **native_svg**: Sollen SVG-Bilder im Web-Browser angezeigt werden, setzen Sie
-  den Wert in ihrer globalen-Konfigurationsdatei auf **yes**. Dies kann ein
-  Sicherheitsrisiko darstellen, wenn Sie Ihren SVG-Dateien nicht vollständig
-  vertrauen können.
-* **background_colour_toggle**: Möchten Sie den Hintergrund für transparente
-  Bilder im Diashow-Modus mit einem Knopfdruck zwischen schwarz und weiß
-  umschalten, setzen Sie den Wert in ihrer globalen-Konfigurationsdatei auf
-  **yes**.
+* **external_shares**: Set to **yes** in your root configuration file if you
+  want to load images stored on external locations, when using the
+  **files_external** app.
+* **native_svg**: Set to **yes** in your root configuration file to enable
+  rendering SVG images in your browser. This may represent a security risk if
+  you can't fully trust your SVG files.
+* **background_colour_toggle**: Set to **yes** in your root configuration file
+  to enable a button that toggles between black and white backgrounds on
+  transparent images.
 
-.. note:: Externe Freigaben sind 20-50 Mal langsamer als lokale Freigaben.
-   Die Wartezeit kann sehr lange sein, bis schließlich alle Bilder aus externen
-   Quellen angezeigt werden.
+.. note:: External shares are 20-50 times slower than local shares. Be prepared
+   to wait a long time before being able to see all the images contained in a
+   shared album.
 
-**Album-Konfiguration**
+**Album Configuration**
 
-Jedes Album kann mit den folgenden Konfigurationsvariablen personalisiert werden.
-Verwenden Sie den Parameter **inherit**, um Konfigurationen an Unteralben
-weiterzugeben.
+Each album can be individually configured using the following configuration
+sections. Use the **inherit** parameter to pass configurations on to
+sub-albums.
 
 **Design**
 
-* **background**: definiert die Farbe des Hintergrunds der Bilderwand in der
-  "Galerie"-App, wobei die RGB-hexadezimale (**"#ffa033"**) Darstellung einer
-  Farbe verwendet wird. Die Farbe wird vom System nicht erkannnt,
-  wenn keine Anführungszeichen um den Wert gesetzt werden. Bei Verwendung
-  dieser Funktion wird dringend empfohlen, das benutzerdefinierte Design mit
-  einem CSS Ladeindikator zu erweitern. `Dieses Farbrad <http://paletton.com/>`_
-  zeigt Ihnen die RGB-Werte für die gewünschte Farbe an.
-* **inherit**: Auf **yes** setzen, wenn Unterordner diesen Teil der
-  Konfiguration übernehmen sollen.
+* **background**: Defines the colour of the background of the photowall
+  using the RGB hexadecimal representation of that colour. For example:
+  **"#ffa033"**. You must use quotes around the value or it will
+  be ignored. It is strongly recommended to use a custom theme, with a CSS
+  loading spinner if you intend to use this feature. You can use `this colour
+  wheel <http://paletton.com/>`_ to find a colour you like.
+* **inherit**: Set to **yes** if you want sub-folders to inherit this part of
+  the configuration.
 
-**Album-Darstellung**
+**Album Presentation**
 
-* **description**: Ein mit Markdown formatierter String, der in der Info-Box
-  angezeigt wird. Er kann sich über mehrere Zeilen mit den Yaml-Markern
-  ausbreiten.
-* **description_link**: Eine Markdown-Datei, die sich innerhalb des Albums
-  befindet, die wiederum analysiert und in der Info-Box anstelle der
-  normalen Beschreibung angezeigt wird.
-* **copyright**: Eine mit Markdown formatierte Zeichenfolge. Links zu externen
-  Ressourcen werden hierbei unterstützt.
-* **copyright_link**: Jede Datei (z.B. copyright.html) wird aus einem Album
-  automatisch heruntergeladen, wenn der Benutzer auf den Link klickt.
-* **inherit**: Auf **yes** setzen, wenn Unterordner diesen Teil der
-  Konfiguration übernehmen sollen.
+* **description**: A markdown-formatted string which will be displayed in the
+  info box. It can spread over multiple lines using the Yaml markers.
+* **description_link**: A markdown file located within the album which will
+  be parsed and displayed in the info box instead of the description.
+* **copyright**: A markdown-formatted string. This supports links to external
+  resources.
+* **copyright_link**: Any file (e.g. copyright.html), in the album itself,
+  which will be downloaded when the user clicks on the link
+* **inherit**: Set to **yes** if you want sub-folders to inherit this part of
+  the configuration.
 
-Siehe `<http://www.markitdown.net/markdown>`_ für die Markdown-Syntax.
+See `<http://www.markitdown.net/markdown>`_ for the markdown syntax.
 
-.. note:: Wenn Sie die **copyright_link** Variable nutzen, fügen Sie keine
-   weiteren Links in "copyright" hinzu.
+.. note:: Do not add links to your `copyright` string if you use the
+   **copyright_link** variable.
 
-**Sortieren**
+**Sorting**
 
-* **sorting**: **date** oder **name**. **date** funktioniert nur für Dateien.
-* **sort_order**: **asc** oder **des** (aufsteigend / absteigend).
-* **inherit**: Auf **yes** setzen, wenn Unterordner diesen Teil der
-  Konfiguration übernehmen sollen.
+* **sorting**: **date** or **name**. **date** only works for files.
+* **sort_order**: **asc** or **des** (Ascending or descending).
+* **inherit**: Set to **yes** if you want sub-folders to inherit this part of
+  the configuration.
 
-Anmerkungen
------------
+Notes
+-----
 
-* Wenn nur die Sortiervariable **type** gesetzt ist, wird die
-  standard-Sortierreihenfolge verwendet.
-* Wenn nur die Sortiervariable **order** gefunden wurde, wird die
-  Sortierkonfiguration ignoriert und das Skript sucht nach einer gültigen
-  Konfiguration in den höheren Ordnern.
-* Um eine Funktion wie natives SVG in einer öffentlichen Freigabe zu aktivieren,
-  müssen Sie in diesem Ordner eine Konfigurationsdatei erstellen, die diese
-  Funktion enthält.
-* Wenn Sie einen Ordner öffentlich freigeben, vergessen Sie nicht, alle Dateien,
-  die Sie verknüpfen (z.B. description.md oder copyright.md) innerhalb des
-  freigegebenen Ordners hinzuzufügen. Benutzer, die im übergeordneten Ordner
-  gespeichert sind, haben ansonsten auf Dateien keinen Zugriff.
-* Mit der Option einen ganzen Ordner als Archiv herunterzuladen, bietet es
-  sich an, alle Dateien in einen freigegebenen Ordner zu bündeln. Dies ist
-  komfortabler als eine separate Konfigurationsdatei anzulegen.
+* When only the sort **type** variable has been set, the default sort order
+  will be used.
+* When only the sort **order** variable has been found, the sort configuration
+  will be ignored and the script will keep looking for a valid configuration in
+  upper folders.
+* To enable a feature such as native SVG in a public share, you need to create
+  in that folder a configuration file containing that feature.
+* If you share a folder publicly, don't forget to add all the files you link to
+  (e.g. ``description.md`` or ``copyright.md``) inside the shared folder as
+  the user won't have access to files stored in the parent folder.
+* Since people can download a whole folder as an archive, it's usually best to
+  include all files within a shared folder, rather than adding text directly
+  in the configuration file.
 
-Beispiele
----------
+Examples
+--------
 
-**Einfaches Sortieren**
+**Sorting Only**
 
-Gilt nur für den aktuellen Ordner::
+Applies to the current folder only::
 
- # Galerie-Konfigurationsdatei
+ # Gallery configuration file
    sorting:
    type: date
    order: asc
 
-Kurze Beschreibung und Verweis auf das Copyright-Dokument, gilt für den
-aktuellen Ordner und alle seine Unterordner. Die nächsten Zeilen zeigen die
-Syntax, die Sie verwenden können, um eine Beschreibung über mehrere Zeilen
-zu erweitern::
+Short description and link to copyright document, applies to the current folder
+and all of its sub-folders. This also shows you the syntax you can use to
+spread a description over multiple lines::
 
- # Galerie-Konfigurationsdatei
+ # Gallery configuration file
    information:
    description: | # La Maison Bleue, Winter '16
      This is our Winter 2016 collection shot in **Kyoto**
@@ -231,29 +217,28 @@ zu erweitern::
    copyright_link: copyright_2015_lmb.html
    inherit: yes
 
-**Bilder von externen Nextcloud-Instanzen laden**
+**Load Images From External Clouds**
 
-.. note:: Funktionen können nur im Stammordner definiert werden.
+.. note:: Features can only be defined in the root folder.
 
-Sie können Elemente der Standardkonfiguration zu derselben Konfigurationsdatei
-hinzufügen::
+You can add standard configuration items to the same configuration file::
 
- # Galerie-Konfigurationsdatei
+ # Gallery configuration file
    features:
    external_shares: yes
 
-**Aktivieren von systemeigenem SVG**
+**Enabling native SVG**
 
-.. note:: Spezielle Funktionen können nur im Stammordner definiert werden.
+.. note:: Special features can only be defined in the root folder.
 
-Sie können Elemente der Standardkonfiguration zu derselben Konfigurationsdatei
-hinzufügen::
+You can add standard configuration items to the same configuration file::
 
- # Galerie-Konfigurationsdatei
+ # Gallery configuration file
   features:
   native_svg: yes
 
-Mögliche zukünftige Erweiterungen
----------------------------------
+Possible future extensions
+--------------------------
 
-Verschiedene Sortierparameter für Alben.
+Different sorting parameters for albums.
+
