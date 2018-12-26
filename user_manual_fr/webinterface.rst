@@ -1,10 +1,10 @@
-===========================
-The Nextcloud Web interface
-===========================
+============================
+L'interface web de Nextcloud
+============================
 
-You can connect to your Nextcloud server using any Web browser; just point it to
-your Nextcloud server and enter your username and password. Supported Web
-browsers are:
+Vous pouvez vous connecter à votre serveur Nextcloud server en utilisant un navgateur Web ; 
+vous devez juste accéder à l'URL de votre serveur Nexcloud et saisir votre dientifiant et 
+votre mot de passe. Les navigateurs Web supportés sont :
 
 * **Mozilla Firefox** 14+
 * **Google Chrome/Chromium** 18+
@@ -12,30 +12,31 @@ browsers are:
 * **Internet Explorer** 11+
 * **Microsoft Edge**
 
-.. note:: If you want to use Nextcloud Talk you need to run Mozilla Firefox 52
-   or later or Google Chrome/Chromium 49 or later.
+.. note:: Si vous souhaitez utiliser Nextcloud Talk, vous devez disposer au minimum 
+   de Mozilla Firefox 52 ou de Google Chrome/Chromium 49.
 
   .. figure:: images/login_page.png
-     :alt: Nextcloud login screen.
+     :alt: Ecran de connexion Nextcloud.
 
-Navigating the main user interface
-----------------------------------
+Navigation dans la fenêtre par défaut
+-------------------------------------
 
-By default, the Nextcloud Web interface opens to your Files page. You can add,
-remove, and share files, and make changes based on the access privileges set by
-you (if you are administering the server) or by your server administrator.
+Par défaut, l'interface Web de Nextcloud Web affiche la page "Fichiers". Vous pouvez ajouter, 
+retirer et partager des fichiers ; vous pouvez modifier les droits d'accès de vos fichiers 
+si vous êtes propriétaire du fichier ou si vous avez les droits Administrateur sur le serveur.
 
 .. figure:: images/files_page.png
      :scale: 75%
-     :alt: The main Files view.
+     :alt: La vue Fichiers.
 
-The Nextcloud user interface contains the following fields and functions:
+L'interface utilisateur de Nextcloud permet d'accéder aux champs ou aux fonctions suivants :
 
-* **Apps Selection Menu** (1): Located in the upper left corner, you'll find all
-  your apps which are available on your instance of Nextcloud. Clicking on an
-  apps icon will redirect you to the app.
-
-* **Apps Information** field (2): Located in the left sidebar, this provides
+* **Le menu d'accès aux Applications** (1): situé en haut à gauche, il vous affiche la liste des
+  applications disponibles pour votre instance (en fonction de la largeur de l'écran, certaines 
+  appications seront accèssibles par un sous-menu.
+  En cliquant sur l'application choisie, vous serez redirigé vers l'application.
+  
+* **Menu application** (2): Ce menu est situé sur la left sidebar, this provides
   filters and tasks associated with your selected app. For example, when you
   are using the Files apps you have a special set of filters for quickly
   finding your files, such as files that have been shared with you, and files
@@ -44,17 +45,15 @@ The Nextcloud user interface contains the following fields and functions:
 * **Application View** (3): The main central field in the Nextcloud user interface.
   This field displays the contents or user features of your selected app.
 
-* **Navigation Bar** (4): Located over the main viewing window (the Application
+* **La barre de navigation** (4): Located over the main viewing window (the Application
   View), this bar provides a type of breadcrumbs navigation that enables you to
   migrate to higher levels of the folder hierarchy up to the root level (home).
 
-* **New** button (5): Located in the Navigation Bar, the ``New`` button
-  enables you to create new files, new folders, or upload files.
+* **Le bouton Nouveau (+)** (5): Situé dans la barre de n@vigation, le bouton ``Nouveau``      
+  permet de créer de nouveaux fichiers, de nouveaus dossiers ou de téléverser des fichiers.
+  
+.. note:: Vous pouvez aussi utiliser la fonction glisser/déposer de votre gestionnaire de fichier.
 
-.. note:: You can also drag and drop files from your file manager into the
-   Files Application View to upload them to your instance. Currently,
-   the only Web browsers that support drag-and-drop folders are Chrome and
-   Chromium.
 
 * **Search** field (6): Click on the magnifier in the upper right hand corner of
   to search for files.
