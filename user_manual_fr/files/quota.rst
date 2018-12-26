@@ -1,36 +1,22 @@
 =============
-Storage quota
+Quota d'espace utilisable
 =============
 
-Your Nextcloud admin has the option to set a storage quota on users. Look at 
-the top of your Personal page to see what your quota is, and how much you have 
-used.
+L'administrateur de l'instance Nextcloud a un option pour régler la quota d'espace utilisable par les utilisateurs.Regardez sur la page de votre profil pour savoir l'espace que l'administrateur vous a donné et l'espace que vous avez déjà utilisé.
 
 .. figure:: ../images/quota1.png
 
-It may be helpful to understand how your quota is calculated. 
+Il serait intéressant de savoir maintenant comment votre quota est calculé.
 
-Metadata (thumbnails, temporary files, cache, and encryption keys) takes up 
-about 10% of disk space, but is not counted against user quotas. Some apps 
-store information in the database, such as the Calendar and Contacts apps. This 
-data is excluded from your quota.
+Les metadonnées (vignettes, fichiers temporaires, cache et clés de chiffrement) occupent environ 10 % de l'espace disque, mais ne sont pas prises en compte dans les quotas d'utilisateurs. Certaines applications stockent des informations dans la base de données, comme les applications Calendrier et Contacts.
+Ces données sont exclues de votre quota.
 
-When other users share files with you, the shared files count against the 
-original share owner's quota. When you share a folder and allow other users or 
-groups to upload files to it, all uploaded and edited files count against your 
-quota. When you re-share files shared with you, the re-share still counts 
-against the quota of the original share owner.
+Quand d'autres personnes partagent des fichiers avec vous, la taille de ces fichiers est amputé au quota de celui qui a partagé le fichier original. Lorsque vous partagez un dossier et que vous autorisez d'autres utilisateurs ou groupes à y télécharger des fichiers, tous les fichiers téléchargés et modifiés sont amputés à votre quota. Lorsque vous partagez à nouveau des fichiers déjà partagés avec vous, la taille de ceux-ci est amputée quand même au quota du propriétaire original de ces fichiers.
 
-Encrypted files are a little larger than unencrypted files; the unencrypted size 
-is calculated against your quota.
+Les fichiers chiffrés sont un peu plus grand que des fichiers qui ont été déchiffrés; la taille de ce "déchiffrement" est calculé en fonction de votre quota
 
-Deleted files that are still in the trash bin do not count against quotas. The 
-trash bin is set at 50% of quota. Deleted file aging is set at 30 days. When 
-deleted files exceed 50% of quota then the oldest files are removed until the 
-total is below 50%.
+Les fichiers qui ont été supprimés, mais qui sont encore dans la corbeille, ne sont pas amputé aux quotas. La corbeille a un taille qui est celle de la moitié du quota de l'utilisateur. La durée avant suppression définitive des fichiers de la corbeille est fixée à 30 jours. Quand es fichiers supprimés dépassent la taille de la corbeille, alors, les fichiers les plus anciens sont supprimés, jusqu'a ce que le total soit en dessous de 50%.
 
-When version control is enabled, the older file versions are not counted against 
-quotas.
+Quand le contrôle de version est activé, les anciennes versions du fichiers ne sont pas amputés aux quotas.
 
-If you create a public share via URL, and allow uploads, any uploaded files 
-count against your quota.
+Si vous partagez le fichiers publiquement à travers une URL, tous les fichiers téléversés sont amputés à votre quota.

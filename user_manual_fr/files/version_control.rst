@@ -1,18 +1,19 @@
 ===============
-Version control
+Le contrôle de version
 ===============
 
-Nextcloud supports simple version control system for files. Versioning creates
-backups of files which are accessible via the Versions tab on the Details
-sidebar. This tab contains the history of the file where you can roll back a
-file to any previous version. Changes made at intervals greater than two minutes
-are saved in **data/[user]/versions**.
+Nextcloud supporte le contrôle de version pour les fichiers.
+Le contrôle de version crée des sauvegardes des différents fichiers qui son accessible via l'onglet "Versions sur la bar de détail.
+Cet onglet contiens l'historique du fichier dans lequel vous pouvez rétrograder un fichier à n'importe quelle version antérieure
+Les changement faits à des intervalle de plus de 2 minutes sont sauvegardés dans **data/[user]/versions**.
 
 .. figure:: ../images/files_versioning.png
 
-To restore a specific version of a file, click the circular arrow to the left.
-Click on the timestamp to download it.
+Pour restaurer une version spécifique d'un fichier, cliquez sur la flèche  vers la gauche
+To restore a specific version of a file, cliquez sur la flèche circulaire vers la gauche.
+Cliquez sur l'horodatage pour le télécharger.
 
+Les versions plus anciennes se suppriment automatiquement, 
 The versioning app expires old versions automatically to make sure that
 the user doesn't run out of space. This pattern is used to delete
 old versions:

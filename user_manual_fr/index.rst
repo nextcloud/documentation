@@ -1,11 +1,13 @@
 .. _index:
 
 ============================================
-Nextcloud |version| user manual introduction
+Manuel utilisateur de Nextcloud |version| : Introduction
 ============================================
 
-**Welcome to Nextcloud: A safe home for all your data.**
+**Bienvenue dans Nextcloud : Un espace sécurisé pour toutes vos données.**
 
+Nextcloud est un logiciel open source de partage et de synchonisation de fichier
+qu'il s'agisse pour de particuliers exploitant
 Nextcloud is open source file sync and share software for everyone from
 individuals operating the free Nextcloud Server in the privacy of their own
 home, to large enterprises and service providers supported by the Nextcloud
