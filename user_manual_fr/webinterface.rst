@@ -13,7 +13,7 @@ votre mot de passe. Les navigateurs Web supportés sont :
 * **Microsoft Edge**
 
 .. note:: Si vous souhaitez utiliser Nextcloud Talk, vous devez disposer au minimum 
-   de Mozilla Firefox 52 ou de Google Chrome/Chromium 49.
+de Mozilla Firefox 52 ou de Google Chrome/Chromium 49.
 
   .. figure:: images/login_page.png
      :alt: Ecran de connexion Nextcloud.
@@ -31,55 +31,49 @@ si vous êtes propriétaire du fichier ou si vous avez les droits Administrateur
 
 L'interface utilisateur de Nextcloud permet d'accéder aux champs ou aux fonctions suivants :
 
-* **Le menu d'accès aux Applications** (1): situé en haut à gauche, il vous affiche la liste des
+* **Le menu d'accès aux Applications** (1) : situé en haut à gauche, il vous affiche la liste des
   applications disponibles pour votre instance (en fonction de la largeur de l'écran, certaines 
   appications seront accèssibles par un sous-menu.
   En cliquant sur l'application choisie, vous serez redirigé vers l'application.
   
-* **Menu application** (2): Ce menu est situé sur la left sidebar, this provides
-  filters and tasks associated with your selected app. For example, when you
-  are using the Files apps you have a special set of filters for quickly
-  finding your files, such as files that have been shared with you, and files
-  that you have shared with others. You'll see different items for other apps.
+* **Menu application** (2) : Ce menu est situé à gauche de l'écran ; il propose des filtres
+  et des actions associées avec l'applicaton sélectionnée. 
+  Par exemple, quand vous utuiliser l'application Fichiers, vous avez un ensemble de filtres qui vous permettent
+  de retrouver rapidement des sélections de fichiers comme : les fichiers que vous avez partagé avec d'autres,
+  les fichiers qu'on à partagé avec vous ou vos fichiers préférés. Les options sont différentes pour chaque application.
 
-* **Application View** (3): The main central field in the Nextcloud user interface.
-  This field displays the contents or user features of your selected app.
+* **La vue centrale de l'application** (3) : Cette zone centrale affiche le contenu spécifique à l'application sélectionnée.
 
-* **La barre de navigation** (4): Located over the main viewing window (the Application
-  View), this bar provides a type of breadcrumbs navigation that enables you to
-  migrate to higher levels of the folder hierarchy up to the root level (home).
+* **La barre de navigation** (4) : Situé directement au dessus de la zone centrale, cette barre propose un fil d'ariane
+  qui permet de revenir à un niveau de dossier suppérieur ou à la racine de l'arborescence de fichiers.
 
-* **Le bouton Nouveau (+)** (5): Situé dans la barre de n@vigation, le bouton ``Nouveau``      
-  permet de créer de nouveaux fichiers, de nouveaus dossiers ou de téléverser des fichiers.
+* **Le bouton Nouveau (+)** (5) : Situé dans la barre de n@vigation, le bouton ``Nouveau``      
+  permet de créer de nouveaux fichiers, de nouveaux dossiers ou de téléverser des fichiers.
   
 .. note:: Vous pouvez aussi utiliser la fonction glisser/déposer de votre gestionnaire de fichier.
 
+* **Recherche** (6) : Cliquez sur la loupe en haut à droite pour accéder au module de recherche à l'intérieur des fichiers.
 
-* **Search** field (6): Click on the magnifier in the upper right hand corner of
-  to search for files.
-
-* **Contacts Menu** (7): Gives you an overview about your contacts and users on
+* **Contacts** (7) : Donne la liste de vos contacts et des utilisateurs sur le serveur.
+  Selon les données enregistrée sur votre contact et les application disponnibles, vous pourrez démarrer une conférence web ou envoyer un email.
+  sur le serveurs about your contacts and users on
   your server. Dependent on the given details and available apps, you can
   directly start a video call with them or send emails.
 
-* **Gallery** button (8). This looks like four little squares, and takes you
-  directly to your image gallery.
+* **Gallerie** (8) : l'activation de ce bouton affiche l'ensemble des photos auxquelles vous avez accès sur le serveur.
 
-* **Settings** menu (9): Click on your profile picture,
-  located to the right of the Search field, to open your Settings
-  dropdown menu. Your Settings page provides the following settings and features:
-
-  * Links to download desktop and mobile apps
-  * Server usage and space availability
-  * Password management
-  * Name, email, and profile picture settings
+* **Paramètres** (9) : Cliquez sur votre photo de profil, située en haut à droite de l'écrant et vous verrez le menu paramères s'afficher :
+  * Liens de téléchargement des applications mobiles ou desktop (synchro)
+  * Taux d'utilisation du serveur et espace disque disponible
+  * Gestion du mot de passe
+  * Paramétrage Nom, email, et photo de profil
   * Manage connected browsers and devices
-  * Group memberships
-  * Interface language settings
-  * Manage notifications
-  * Federated Cloud ID and social media-sharing buttons
-  * SSL/TLS certificate manager for external storages
-  * Your Two-factor Settings
-  * Nextcloud Version information
+  * Gestion des groupes
+  * Paramétrage de la langue
+  * Gestion des notifications
+  * Fédération de cloud (ID) et partage via les réseaux sociaux
+  * Gestion des certificats SSL/TLS pour les stockages externes
+  * Autentification à deux facteurs
+  * n° de version de Nextcloud
 
-See :doc:`userpreferences` section to learn more about these settings.
+Voir :doc:`userpreferences` pour en savoir plus sur les paramètres.
