@@ -12,8 +12,7 @@ votre mot de passe. Les navigateurs Web supportés sont :
 * **Internet Explorer** 11+
 * **Microsoft Edge**
 
-.. note:: Si vous souhaitez utiliser Nextcloud Talk, vous devez disposer au minimum 
-de Mozilla Firefox 52 ou de Google Chrome/Chromium 49.
+.. note:: Si vous souhaitez utiliser Nextcloud Talk, vous devez disposer au minimum de Mozilla Firefox 52 ou de Google Chrome/Chromium 49.
 
   .. figure:: images/login_page.png
      :alt: Ecran de connexion Nextcloud.
