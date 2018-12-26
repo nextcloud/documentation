@@ -53,6 +53,7 @@ L'interface utilisateur de Nextcloud permet d'accéder aux champs ou aux fonctio
 * **Gallerie** (8) : l'activation de ce bouton affiche l'ensemble des photos auxquelles vous avez accès sur le serveur.
 
 * **Paramètres** (9) : Cliquez sur votre photo de profil, située en haut à droite de l'écran et vous verrez le menu paramètres s'afficher :
+
    * Liens de téléchargement des applications mobiles ou desktop (synchro)
    * Taux d'utilisation du serveur et espace disque disponible
    * Gestion du mot de passe
