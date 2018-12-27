@@ -85,6 +85,22 @@ You can verify if the cron job has been added and scheduled by executing::
 
 .. _easyCron: https://www.easycron.com/
 
+Docker
+^^^^^^
+
+On a docker setup, you must attache the running container and invoke the cron.php.
+
+The command looks like this when your nextcloud container was names "my-nextcloud-tld"::
+
+  docker exec -ti $(docker ps  \
+  --filter "Name=my-nextcloud-tld" \
+  --format "{{.Names}}") \
+  su -c "/usr/local/bin/php cron.php" -s /bin/sh www-data
+
+
+Make sure that the container name is unique. Otherwise the filter in the subshell will 
+operate as a wildcard filter and the command will invoke in all matched containers.
+
 systemd
 ^^^^^^^
 
