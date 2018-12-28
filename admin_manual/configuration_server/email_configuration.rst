@@ -67,7 +67,7 @@ of your mail server options in one place, in your mail server configuration then
 Using email templates
 ---------------------
 
-We removed the template editor in Nextcloud 12 because we changed how emails
+We removed the template editor in Nextcloud 14 because we changed how emails
 are generated. While the customization capabilities offered by the template editor
 were easy to use, they often resulted in broken emails. To fix this, we designed a
 much easier mechanism that automatically generates emails which follow the theme
