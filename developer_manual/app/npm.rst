@@ -6,7 +6,7 @@ The node package manager ``npm`` is a widely used tool to manage JavaScript depe
 order to make the project setup easier for everybody, we recommend to follow the convention
 of typical scripts like ``build``, ``watch`` and ``test`` in the ``package.json`` file.
 
-You can find more info about this convention on blog posts like `this https://www.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/`_.
+You can find more info about this convention on blog posts like this `https://www.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/`_.
 
 npm build
 ---------
