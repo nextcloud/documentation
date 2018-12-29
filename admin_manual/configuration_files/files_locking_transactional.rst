@@ -62,7 +62,7 @@ supported memcaches.
 If you are on Ubuntu you can follow `this guide
 <https://www.techandme.se/how-to-configure-redis-cache-in-ubuntu-14-04-with-owncloud/>`_ for a complete installation from scratch.
 
-Learn more about Reds at `Redis <http://redis.io/>`_. Memcached, the popular
+Learn more about Redis at `Redis <http://redis.io/>`_. Memcached, the popular
 distributed memory caching system, is not suitable for the new file locking
 because it is not designed to store locks, and data can disappear from the cache
 at any time. Redis is a key-value store, and it guarantees that cached objects
