@@ -92,7 +92,7 @@ On a docker setup, you must attache the running container and invoke the cron.ph
 
 The command looks like this when your nextcloud container was names "my-nextcloud-tld"::
 
-  docker exec -ti $(docker ps  \
+  docker exec $(docker ps  \
   --filter "Name=my-nextcloud-tld" \
   --format "{{.Names}}") \
   su -c "/usr/local/bin/php cron.php" -s /bin/sh www-data
