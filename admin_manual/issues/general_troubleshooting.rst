@@ -281,6 +281,8 @@ document root of your Web server and add the following lines::
 
 Make sure to change /nextcloud to the actual subfolder your Nextcloud instance is running in.
 
+If you are running NGINX, make sure ``location = /.well-known/carddav {`` and ``location = /.well-known/caldav {`` are properly configured as described in :doc:`../installation/nginx`, adapt to use a subfolder if necessary. 
+
 Now change the URL in the client settings to just use:
 
 ``https://example.com``
