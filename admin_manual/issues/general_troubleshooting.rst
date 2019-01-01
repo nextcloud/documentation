@@ -270,11 +270,14 @@ If your Nextcloud instance is installed in a subfolder called ``nextcloud`` and
 you're running Apache create or edit the :file:`.htaccess` file within the
 document root of your Web server and add the following lines::
 
-    RewriteRule ^\.well-known/host-meta /nextcloud/public.php?service=host-meta [QSA,L]
-    RewriteRule ^\.well-known/host-meta\.json /nextcloud/public.php?service=host-meta-json [QSA,L]
-    RewriteRule ^\.well-known/webfinger /nextcloud/public.php?service=webfinger [QSA,L]
-    RewriteRule ^\.well-known/carddav /nextcloud/remote.php/dav/ [R=301,L]
-    RewriteRule ^\.well-known/caldav /nextcloud/remote.php/dav/ [R=301,L]
+    <IfModule mod_rewrite.c>
+      RewriteEngine on
+      RewriteRule ^\.well-known/host-meta /nextcloud/public.php?service=host-meta [QSA,L]
+      RewriteRule ^\.well-known/host-meta\.json /nextcloud/public.php?service=host-meta-json [QSA,L]
+      RewriteRule ^\.well-known/webfinger /nextcloud/public.php?service=webfinger [QSA,L]
+      RewriteRule ^\.well-known/carddav /nextcloud/remote.php/dav/ [R=301,L]
+      RewriteRule ^\.well-known/caldav /nextcloud/remote.php/dav/ [R=301,L]
+    </IfModule>
 
 Make sure to change /nextcloud to the actual subfolder your Nextcloud instance is running in.
 
