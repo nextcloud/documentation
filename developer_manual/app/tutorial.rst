@@ -97,7 +97,7 @@ This route calls the controller **OCA\\OwnNotes\\PageController->index()** metho
 
     class PageController extends Controller {
 
-        public function __construct($AppName, IRequest $request){
+        public function __construct(string $AppName, IRequest $request){
             parent::__construct($AppName, $request);
         }
 
@@ -123,7 +123,7 @@ Since the route which returns the initial HTML has been taken care of, the contr
 
     class NoteController extends Controller {
 
-        public function __construct($AppName, IRequest $request){
+        public function __construct(string $AppName, IRequest $request){
             parent::__construct($AppName, $request);
         }
 
@@ -139,7 +139,7 @@ Since the route which returns the initial HTML has been taken care of, the contr
          *
          * @param int $id
          */
-        public function show($id) {
+        public function show(int $id) {
             // empty for now
         }
 
@@ -149,7 +149,7 @@ Since the route which returns the initial HTML has been taken care of, the contr
          * @param string $title
          * @param string $content
          */
-        public function create($title, $content) {
+        public function create(string $title, string $content) {
             // empty for now
         }
 
@@ -160,7 +160,7 @@ Since the route which returns the initial HTML has been taken care of, the contr
          * @param string $title
          * @param string $content
          */
-        public function update($id, $title, $content) {
+        public function update(int $id, string $title, string $content) {
             // empty for now
         }
 
@@ -169,7 +169,7 @@ Since the route which returns the initial HTML has been taken care of, the contr
          *
          * @param int $id
          */
-        public function destroy($id) {
+        public function destroy(int $id) {
             // empty for now
         }
 
@@ -210,50 +210,64 @@ Since those 5 routes are so common, they can be abbreviated by adding a resource
 Database
 --------
 
-Now that the routes are set up and connected the notes should be saved in the database. To do that first create a :doc:`database schema <storage/schema>` by creating **ownnotes/appinfo/database.xml**:
+Now that the routes are set up and connected the notes should be saved in the
+ database. To do that first create a :doc:`database migration <storage/migration>`
+ by creating a file **ownnotes/lib/Migration/VersionXXYYZZDateYYYYMMDDHHSSAA**,
+ so for example **ownnotes/lib/Migration/Version000000Date20181224140601**""
 
-.. code-block:: xml
+.. code-block:: php
 
-    <database>
-        <name>*dbname*</name>
-        <create>true</create>
-        <overwrite>false</overwrite>
-        <charset>utf8</charset>
-        <table>
-            <name>*dbprefix*ownnotes_notes</name>
-            <declaration>
-                <field>
-                    <name>id</name>
-                    <type>integer</type>
-                    <notnull>true</notnull>
-                    <autoincrement>true</autoincrement>
-                    <unsigned>true</unsigned>
-                    <primary>true</primary>
-                    <length>8</length>
-                </field>
-                <field>
-                    <name>title</name>
-                    <type>text</type>
-                    <length>200</length>
-                    <default></default>
-                    <notnull>true</notnull>
-                </field>
-                <field>
-                    <name>user_id</name>
-                    <type>text</type>
-                    <length>200</length>
-                    <default></default>
-                    <notnull>true</notnull>
-                </field>
-                <field>
-                    <name>content</name>
-                    <type>clob</type>
-                    <default></default>
-                    <notnull>true</notnull>
-                </field>
-            </declaration>
-        </table>
-    </database>
+    <?php
+
+      namespace OCA\Notes\Migration;
+
+      use Closure;
+      use OCP\DB\ISchemaWrapper;
+      use OCP\Migration\SimpleMigrationStep;
+      use OCP\Migration\IOutput;
+
+      class Version000000Date20181224140601 extends SimpleMigrationStep {
+
+          /**
+            * @param IOutput $output
+            * @param Closure $schemaClosure The `\Closure` returns a `ISchemaWrapper`
+            * @param array $options
+            * @return null|ISchemaWrapper
+           */
+           public function changeSchema(IOutput $output, Closure $schemaClosure, array $options) {
+              /** @var ISchemaWrapper $schema */
+              $schema = $schemaClosure();
+
+              if (!$schema->hasTable('notes_meta')) {
+                  $table = $schema->createTable('notes_meta');
+                  $table->addColumn('id', 'integer', [
+                      'autoincrement' => true,
+                      'notnull' => true,
+                  ]);
+                  $table->addColumn('file_id', 'integer', [
+                      'notnull' => true,
+                  ]);
+                  $table->addColumn('user_id', 'string', [
+                      'notnull' => true,
+                      'length' => 64,
+                  ]);
+                  $table->addColumn('last_update', 'integer', [
+                      'notnull' => true,
+                  ]);
+                  $table->addColumn('etag', 'string', [
+                      'notnull' => true,
+                      'length' => 32,
+                  ]);
+
+                  $table->setPrimaryKey(['id']);
+                  $table->addIndex(['file_id'], 'notes_meta_file_id_index');
+                  $table->addIndex(['user_id'], 'notes_meta_user_id_index');
+                  $table->addUniqueIndex(['file_id', 'user_id'], 'notes_meta_file_user_index');
+              }
+
+              return $schema;
+          }
+      }
 
 To create the tables in the database, the :doc:`version tag <info>` in **ownnotes/appinfo/info.xml** needs to be increased:
 
@@ -315,22 +329,38 @@ Entities are returned from so called :doc:`Mappers <storage/database>`. Let's cr
     namespace OCA\OwnNotes\Db;
 
     use OCP\IDbConnection;
-    use OCP\AppFramework\Db\Mapper;
+    use OCP\AppFramework\Db\QBMapper;
 
-    class NoteMapper extends Mapper {
+    class NoteMapper extends QBMapper {
 
         public function __construct(IDbConnection $db) {
-            parent::__construct($db, 'ownnotes_notes', '\OCA\OwnNotes\Db\Note');
+            parent::__construct($db, 'ownnotes_notes', Note::class);
         }
 
-        public function find($id, $userId) {
-            $sql = 'SELECT * FROM *PREFIX*ownnotes_notes WHERE id = ? AND user_id = ?';
-            return $this->findEntity($sql, [$id, $userId]);
+        public function find(int $id, string $userId) {
+            $qb = $this->db->getQueryBuilder();
+
+		        $qb->select('*')
+			         ->from($this->getTableName())
+			         ->where(
+				         $qb->expr()->eq('id', $qb->createNamedParameter($id))
+			         )->andWhere(
+                 $qb->expr()->eq('user_id', $qb->createNamedParameter($userId))
+               );
+
+            return $this->findEntity($qb);
         }
 
-        public function findAll($userId) {
-            $sql = 'SELECT * FROM *PREFIX*ownnotes_notes WHERE user_id = ?';
-            return $this->findEntities($sql, [$userId]);
+        public function findAll(string $userId) {
+            $qb = $this->db->getQueryBuilder();
+
+            $qb->select('*')
+               ->from($this->getTableName())
+               ->where(
+                $qb->expr()->eq('user_id', $qb->createNamedParameter($userId))
+               );
+
+            return $this->findEntities($qb);
         }
 
     }
@@ -364,7 +394,7 @@ You can pass in the mapper by adding it as a type hinted parameter. Nextcloud wi
         private $mapper;
         private $userId;
 
-        public function __construct($AppName, IRequest $request, NoteMapper $mapper, $UserId){
+        public function __construct(string $AppName, IRequest $request, NoteMapper $mapper, $UserId){
             parent::__construct($AppName, $request);
             $this->mapper = $mapper;
             $this->userId = $UserId;
@@ -382,7 +412,7 @@ You can pass in the mapper by adding it as a type hinted parameter. Nextcloud wi
          *
          * @param int $id
          */
-        public function show($id) {
+        public function show(int $id) {
             try {
                 return new DataResponse($this->mapper->find($id, $this->userId));
             } catch(Exception $e) {
@@ -396,7 +426,7 @@ You can pass in the mapper by adding it as a type hinted parameter. Nextcloud wi
          * @param string $title
          * @param string $content
          */
-        public function create($title, $content) {
+        public function create(string $title, string $content) {
             $note = new Note();
             $note->setTitle($title);
             $note->setContent($content);
@@ -411,7 +441,7 @@ You can pass in the mapper by adding it as a type hinted parameter. Nextcloud wi
          * @param string $title
          * @param string $content
          */
-        public function update($id, $title, $content) {
+        public function update(int $id, string $title, string $content) {
             try {
                 $note = $this->mapper->find($id, $this->userId);
             } catch(Exception $e) {
@@ -427,7 +457,7 @@ You can pass in the mapper by adding it as a type hinted parameter. Nextcloud wi
          *
          * @param int $id
          */
-        public function destroy($id) {
+        public function destroy(int $id) {
             try {
                 $note = $this->mapper->find($id, $this->userId);
             } catch(Exception $e) {
@@ -474,7 +504,7 @@ Let's take the logic that was inside the controller and put it into a separate c
             $this->mapper = $mapper;
         }
 
-        public function findAll($userId) {
+        public function findAll(string $userId) {
             return $this->mapper->findAll($userId);
         }
 
@@ -487,7 +517,7 @@ Let's take the logic that was inside the controller and put it into a separate c
             }
         }
 
-        public function find($id, $userId) {
+        public function find(int $id, string $userId) {
             try {
                 return $this->mapper->find($id, $userId);
 
@@ -500,7 +530,7 @@ Let's take the logic that was inside the controller and put it into a separate c
             }
         }
 
-        public function create($title, $content, $userId) {
+        public function create(string $title, string $content, string $userId) {
             $note = new Note();
             $note->setTitle($title);
             $note->setContent($content);
@@ -508,7 +538,7 @@ Let's take the logic that was inside the controller and put it into a separate c
             return $this->mapper->insert($note);
         }
 
-        public function update($id, $title, $content, $userId) {
+        public function update(int $id, string $title, string $content, string $userId) {
             try {
                 $note = $this->mapper->find($id, $userId);
                 $note->setTitle($title);
@@ -519,7 +549,7 @@ Let's take the logic that was inside the controller and put it into a separate c
             }
         }
 
-        public function delete($id, $userId) {
+        public function delete(int $id, string $userId) {
             try {
                 $note = $this->mapper->find($id, $userId);
                 $this->mapper->delete($note);
@@ -604,7 +634,7 @@ Now we can wire up the trait and the service inside the **NoteController**:
 
         use Errors;
 
-        public function __construct($AppName, IRequest $request,
+        public function __construct(string $AppName, IRequest $request,
                                     NoteService $service, $UserId){
             parent::__construct($AppName, $request);
             $this->service = $service;
@@ -623,7 +653,7 @@ Now we can wire up the trait and the service inside the **NoteController**:
          *
          * @param int $id
          */
-        public function show($id) {
+        public function show(int $id) {
             return $this->handleNotFound(function () use ($id) {
                 return $this->service->find($id, $this->userId);
             });
@@ -635,7 +665,7 @@ Now we can wire up the trait and the service inside the **NoteController**:
          * @param string $title
          * @param string $content
          */
-        public function create($title, $content) {
+        public function create(string $title, string $content) {
             return $this->service->create($title, $content, $this->userId);
         }
 
@@ -646,7 +676,7 @@ Now we can wire up the trait and the service inside the **NoteController**:
          * @param string $title
          * @param string $content
          */
-        public function update($id, $title, $content) {
+        public function update(int $id, string $title, string $content) {
             return $this->handleNotFound(function () use ($id, $title, $content) {
                 return $this->service->update($id, $title, $content, $this->userId);
             });
@@ -657,7 +687,7 @@ Now we can wire up the trait and the service inside the **NoteController**:
          *
          * @param int $id
          */
-        public function destroy($id) {
+        public function destroy(int $id) {
             return $this->handleNotFound(function () use ($id) {
                 return $this->service->delete($id, $this->userId);
             });
