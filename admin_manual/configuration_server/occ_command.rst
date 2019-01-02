@@ -691,7 +691,7 @@ Example::
 In the example above, the user_id ``alice`` is determined implicitly from the 
 path component given.
 
-The ``--path``, ``--all`` and ``[user_id]`` parameters and are exclusive - only 
+The ``--path``, ``--all`` and ``[user_id]`` parameters are exclusive - only 
 one must be specified.
 
 Cleanup
