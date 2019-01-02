@@ -8,7 +8,7 @@ Le client Nextcloud Desktop Sync vous permet de vous connecter à votre serveur 
 
 Son utilisation est documentée séparément dans le `manuel du client bureau de Nexcloud_.
 
-.. _`Manuel du client bureau de Nextcloue`: https://docs.nextcloud.com/desktop/2.3
+.. _`Manuel du client bureau de Nextcloud`: https://docs.nextcloud.com/desktop/2.3
 .. _`Client de synchronisation Nextcloud`: https://nextcloud.com/install/#install-clients
 
 Les clients sur mobile.
