@@ -1,8 +1,8 @@
 .. _webdavversions:
 
-==================
-WebDAV Versions
-==================
+========
+Versions
+========
 
 Nextcloud makes the versions of files available via the webdav endpoint.
 
@@ -19,6 +19,5 @@ The name is the timestamp of the version.
 Restoring a version
 ---------------------------
 
-To restore a version all that needs to be done is to move a version 
+To restore a version all that needs to be done is to move a version
 the special restore folder at :code:`https://cloud.example.com/remote.php/dav/versions/USER/restore`
-
