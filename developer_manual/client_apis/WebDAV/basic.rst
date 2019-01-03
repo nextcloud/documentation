@@ -1,8 +1,8 @@
 .. _webdavindex:
 
-==================
-WebDAV client APIs
-==================
+==========
+Basic APIs
+==========
 
 This document provides a quick overview of the WebDAV operations supported in Nextcloud, to keep things readable it won't go into many details
 for each operation, further information for each operation can be found in the corresponding rfc where applicable
