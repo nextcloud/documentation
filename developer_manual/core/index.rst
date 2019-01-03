@@ -10,7 +10,6 @@
    theming
    externalapi
    ocs-share-api
-   chunking
 
 =================
 Core development
