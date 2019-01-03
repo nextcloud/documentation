@@ -28,7 +28,7 @@ To create a controller, simply extend the Controller class and create a method t
 Connecting a controller and a route
 -----------------------------------
 
-If you use a proper namespace for your app (see :ref:`app_classloader`) Nextcloud
+If you use a proper namespace for your app (see :ref:`appclassloader`) Nextcloud
 will resolve your controller and its dependencies automatically.
 
 An example route name would look like this::
