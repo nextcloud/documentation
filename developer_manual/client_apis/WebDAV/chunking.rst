@@ -1,6 +1,6 @@
-============
-Chunking API
-============
+===================
+Chunked file upload
+===================
 
 .. sectionauthor:: Roeland Jago Douma <roeland@famdouma.nl>
 

@@ -1,8 +1,8 @@
 .. _webdavsearch:
 
-==================
-WebDAV Search
-==================
+======
+Search
+======
 
 Nextcloud implements rfc5323_ WebDAV search to allow clients to search for files on the server.
 WebDAV search allows for fairly complex search queries with filtering and sorting on multiple properties.
