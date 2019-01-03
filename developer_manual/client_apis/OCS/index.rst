@@ -72,9 +72,9 @@ Clients can obtain capabilities provided by the Nextcloud server and its apps vi
 .. code::
 
 	GET /ocs/v1.php/cloud/capabilities
-	
-	
-	
+
+
+
 .. code:: xml
 
     <?xml version="1.0"?>
@@ -102,8 +102,8 @@ Clients can obtain capabilities provided by the Nextcloud server and its apps vi
       </capabilities>
      </data>
     </ocs>
-     
-	
+
+
 Theming capabilities
 --------------------
 
@@ -123,3 +123,8 @@ Values of the theming app are exposed though the capabilities API, allowing clie
 
 The background value can either be an URL to the background image or a hex color value.
 
+Notifications
+-------------
+
+There is also the `Notifications API <https://github.com/nextcloud/notifications/blob/master/docs/ocs-endpoint-v2.md>`_
+As well as documentation on how to `Register a device for push notifications <https://github.com/nextcloud/notifications/blob/5a2d3607952bad675e4057620a9c7de8a7f84f0b/docs/push-v3.md>`_
