@@ -10,3 +10,4 @@ Webdav
     search
     trashbin
     versions
+    chunking
