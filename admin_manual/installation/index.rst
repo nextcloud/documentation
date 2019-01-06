@@ -11,6 +11,6 @@ Installation
    installation_wizard
    command_line_installation
    apps_supported
-   php_70_installation
+   php_72_installation
    selinux_configuration
    nginx
