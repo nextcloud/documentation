@@ -1,217 +1,214 @@
 ======================================================
-Accessing your files using the Nextcloud Web interface
-======================================================
+Accéder à vos fichiers à l'aide de l'interface Web Nextcloud
+=============================================== ====
 
-You can access your Nextcloud files with the Nextcloud Web interface and create,
-preview, edit, delete, share, and re-share files. Your Nextcloud administrator
-has the option to disable these features, so if any of them are missing on your
-system ask your server administrator.
+Vous pouvez accéder à vos fichiers Nextcloud avec l’interface Web Nextcloud et créer,
+prévisualiser, éditer, supprimer, partager et re-partager des fichiers. Votre administrateur Nextcloud
+a la possibilité de désactiver ces fonctionnalités, donc si certaines d’entre elles sont manquantes sur votre
+système demandez à votre administrateur de serveur.
 
 .. figure:: ../images/users-files.png
-   :alt: The Files view screen.
+   :alt: L'écran d'affichage des fichiers.
 
-Tagging files
+Balisage de fichiers
 -------------
 
-You can assign tags to files. To create tags, open a file to the Details view.
-Then type your tags. To enter more than one tag press the return key after
-creating each tag. All tags are system tags, and are shared by all users on your
-Nextcloud server.
+Vous pouvez attribuer des balises aux fichiers. Pour créer des balises, ouvrez un fichier dans la vue Détails.
+Puis indiquez vostre balise. Pour entrer plusieurs balises, appuyez sur la touche Retour après avoir
+créer chaque balise. Toutes les balises sont des balises système et sont partagées par tous les utilisateurs de votre
+Serveur Nextcloud.
 
 .. figure:: ../images/files_page-7.png
-   :alt: Creating file tags.
+   :alt: Création de balises de fichiers.
 
 Then use the Tags filter on the left sidebar to filter files by tags.
 
 .. figure:: ../images/files_page-8.png
-   :alt: Viewing file tags.
+   :alt: Voir les balises de fichiers.
 
-Comments
+commentaires
 --------
 
-Use the Details view to add and read comments on any file or folder. Comments
-are visible to everyone who has access to the file.
+Utilisez la vue Détails pour ajouter et lire des commentaires sur n’importe quel fichier ou dossier. commentaires
+sont visibles pour tous ceux qui ont accès au fichier.
 
 .. figure:: ../images/file_menu_comments_2.png
-   :alt: Creating and viewing comments.
+   :alt: Création et affichage de commentaires.
 
-Video player
+Lecteur vidéo
 ------------
 
-You can play videos in Nextcloud with the Video Player app by simply clicking on
-the file. Video streaming by the native Nextcloud video player depends on your Web browser
-and the video format. If your Nextcloud administrator has enabled video
-streaming, and it doesn't work in your Web browser, it may be a browser issue. See https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility for supported multimedia formats in Web browsers.
+Vous pouvez lire des vidéos dans Nextcloud avec l'application Video Player en cliquant simplement sur
+le fichier. La diffusion vidéo par le lecteur vidéo natif Nextcloud dépend de votre navigateur Web
+et le format vidéo. Si votre administrateur Nextcloud a activé la vidéo
+en streaming, et si cela ne fonctionne pas dans votre navigateur Web, il se peut que cela soit un problème de navigateur. Voir https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility pour connaître les formats multimédias pris en charge dans les navigateurs Web.
 
 .. figure:: ../images/video_player_2.png
-   :alt: Watching a movie.
+   :alt: Regarder une vidéo.
 
-File controls
+Contrôles de fichiers
 -------------
 
-Nextcloud can display thumbnail previews for image files, MP3 covers,
-and text files, if this enabled by your server administrator. Hover your cursor
-over a file or folder to expose the controls for the following operations:
+Nextcloud peut afficher des aperçus miniatures pour des fichiers image, des jaquettes MP3,
+et les fichiers texte, si cela est activé par votre administrateur de serveur. Survolez votre curseur
+sur un fichier ou un dossier pour exposer les contrôles des opérations suivantes:
 
-Favorites
-  Click the star to the left of the file icon to mark it as a favorite, and
-  quickly find all of your favorites with the Favorites filter on the left
-  sidebar.
+Favoris
+  Cliquez sur l'étoile à gauche de l'icône du fichier pour le marquer comme favori, puis
+  retrouvez rapidement tous vos favoris avec le filtre Favoris sur la gauche
+  barre latérale.
 
 .. figure:: ../images/files_page-1.png
-   :alt: Marking Favorite files.
+   :alt: Marquage des fichiers favoris.
 
-Share
-  Share the file or folder with a group or other users, and create public
-  shares with hyperlinks. You can also see who you have shared with already,
-  and revoke shares by clicking the trash can icon.
+Partager
+  Partagez le fichier ou le dossier avec un groupe ou d’autres utilisateurs et créez un partage public
+  avec hyperlien. Vous pouvez également voir avec qui vous avez déjà partagé,
+  et révoquer des partages en cliquant sur l'icône de la corbeille.
 
-.. note:: Since version 9.0, you can see all re-shares of your original file shares.
+.. note:: Depuis la version 9.0, vous pouvez voir tous les re-partages de vos partages de fichiers d'origine.
 
-  If username auto-completion
-  is enabled, when you start typing the user or group name Nextcloud will
-  automatically complete it for you. If your administrator has enabled email
-  notifications, you can send an email notification of the new share from the
-  sharing screen.
+  Si le remplissage automatique des nom d'utilisateur 
+  est activé, lorsque vous commencez à taper le nom de l'utilisateur ou du groupe, Nextcloud le
+  complète automatiquement pour vous. Si votre administrateur a activé les notifications par 
+  courrier électronique, vous pouvez envoyer une notification par e-mail du nouveau partage à partir de
+  l'écran de partage.
 
 .. figure:: ../images/files_page-2.png
-   :alt: Sharing files.
+   :alt: Partage de fichiers.
 
-You have five share permissions:
+Vous disposez de cinq autorisations de partage:
 
-* Can share; allows the users you share with to re-share.
-* Can edit; allows the users you share with to edit your shared files, and to collaborate using the Documents app.
-* Create; allows the users you share with to create new files and add them to the share.
-* Change; allows uploading a new version of a shared file and replacing it.
-* Delete; allows the users you share with to delete shared files.
+* Peut partager; permet aux utilisateurs avec qui vous partagez de partager à nouveau.
+* Peut éditer; permet aux utilisateurs avec lesquels vous partagez de modifier vos fichiers partagés et de collaborer à l'aide de l'application Documents.
+* Créer; permet aux utilisateurs avec lesquels vous partagez de créer de nouveaux fichiers et de les ajouter au partage.
+* Changement; permet de télécharger une nouvelle version d'un fichier partagé et de le remplacer.
+* Effacer; permet aux utilisateurs avec lesquels vous partagez de supprimer des fichiers partagés.
 
-Overflow Menu
-  The Overflow menu (three dots) displays file details, and allows you to
-  rename, download, or delete files.
+Menu détail
+  Le menu détail (trois points) affiche les détails du fichier et vous permet de
+  renommer, télécharger ou supprimer des fichiers.
 
 .. figure:: ../images/files_page-3.png
-   :alt: Overflow menu.
+   :alt: Menu détail.
 
-   The Details view shows Activities, Sharing, and Versions information.
+   La vue Détails affiche les informations sur les activités, le partage et les versions.
 
 .. figure:: ../images/files_page-4.png
-   :alt: Details screen.
+   :alt: Ecran détails .
 
-The **Settings** gear icon at the lower left allows you to show or hide hidden
-files in your Nextcloud Web interface. These are also called dotfiles, because
-they are prefixed with a dot, e.g. ``.mailfile``. The dot tells your operating
-system to hide these files in your file browsers, unless you choose to display
-them. Usually these are configuration files, so having the option to hide them
-reduces clutter.
+L'icône d'engrenage ** Paramètres ** en bas à gauche vous permet d'afficher ou de masquer les fichiers masquées
+dans votre interface Web Nextcloud. Ceux-ci sont également appelés fichiers de points, parce qu'
+ils sont précédés d’un point, par exemple `` .mailfile``. Le point indique votre opération
+système pour masquer ces fichiers dans vos navigateurs, sauf si vous choisissez de les afficher. 
+Il s’agit généralement de fichiers de configuration, ce qui vous permet de réduire leur exposition.
 
 .. figure:: ../images/hidden_files.png
-   :alt: Hiding or displaying hidden files.
+   :alt: Masquer ou afficher des fichiers cachés.
 
-Previewing files
+Prévisualisation des fichiers
 ----------------
 
-You can display uncompressed text files, OpenDocument files, videos, and image
-files in the Nextcloud embedded viewers by clicking on the file name. There may
-be other file types you can preview if your Nextcloud administrator has enabled
-them. If Nextcloud cannot display a file, it starts a download process and
-downloads the file to your computer.
+Vous pouvez afficher des fichiers texte non compressés, des fichiers OpenDocument, des vidéos et des images
+dans les visualiseurs intégrés Nextcloud en cliquant sur le nom du fichier.
+Vous pouvez prévisualiser d’autres types de fichiers si votre administrateur Nextcloud l'a autorisé.
+Si Nextcloud ne peut pas afficher un fichier, il lance un processus de téléchargement et
+télécharge le fichier sur votre ordinateur.
 
-Navigating inside your Nextcloud
+Naviguer dans votre Nextcloud
 --------------------------------
 
-Navigating through folders in Nextcloud is as simple as clicking on a folder to
-open it and using the back button on your browser to move to a previous level.
-Nextcloud also provides a navigation bar at the top of the Files field for quick
-navigation.
+Naviguer dans les dossiers de Nextcloud est aussi simple que de cliquer sur un dossier pour l'ouvrir
+et utilisez le bouton retour de votre navigateur pour passer au niveau précédent.
+Nextcloud fournit également une barre de navigation en haut du champ Fichiers pour une consultation rapide.
 
-Sharing status icons
+Partage des icônes d'état
 --------------------
 
-Any folder that has been shared is marked with the ``Shared`` overlay icon.
-Public link shares are marked with a chain link. Un-shared folders are blank.
+Tout dossier partagé est identifié par l'icône ``Partagé``.
+Les partages de liens publics sont marqués d'un lien avec une chaîne. Les dossiers non partagés sont vides.
 
 .. figure:: ../images/files_page-5.png
-   :alt: Share status icons.
+   :alt: Partage des icônes d'état.
 
-Creating or uploading files and directories
+Création ou téléchargement de fichiers et de répertoires
 -------------------------------------------
 
-Upload or create new files or folders directly in an Nextcloud folder by clicking
-on the *New* button in the Files app.
+Téléchargez ou créez de nouveaux fichiers ou dossiers directement dans un dossier Nextcloud en cliquant sur
+sur le bouton * Nouveau * dans l'application Fichiers.
 
 .. figure:: ../images/files_page-6.png
-   :alt: The New file/folder/upload menu.
+   :alt: Le nouveau fichier / dossier / menu de téléchargement.
 
-The *New* button provides the following options:
+Le bouton * Nouveau * fournit les options suivantes:
 
-Up arrow
-  Upload files from your computer into Nextcloud. You can also upload files by
-  dragging and dropping them from your file manager.
+Flèche vers le haut
+  Téléchargez des fichiers de votre ordinateur vers Nextcloud. Vous pouvez également télécharger des fichiers par
+  glisser/déposer depuis votre gestionnaire de fichiers.
 
-Text file
-  Creates a new text file and adds the file to your current folder.
+Fichier texte
+  Crée un nouveau fichier texte et ajoute le fichier à votre dossier actuel.
 
-Folder
-  Creates a new folder in the current folder.
+Dossier
+  Crée un nouveau dossier dans le dossier actuel.
 
-Selecting files or folders
+Sélection de fichiers ou de dossiers
 --------------------------
 
-You can select one or more files or folders by clicking on their checkboxes. To
-select all files in the current directory, click on the checkbox located at the
-top of the files listing.
+Vous pouvez sélectionner un ou plusieurs fichiers ou dossiers en cliquant sur leurs cases à cocher. Pour
+sélectionner tous les fichiers du répertoire actuel, cochez la case située en haut de la liste des fichiers.
 
-When you select multiple files, you can delete all of them, or download them as
-a ZIP file by using the ``Delete`` or ``Download`` buttons that appear at the
-top.
+Lorsque vous sélectionnez plusieurs fichiers, vous pouvez tous les supprimer ou les télécharger en tant que fichier
+ZIP en utilisant les boutons ``Supprimer`` ou ``Télécharger`` qui apparaissent en Haut.
 
-.. note:: If the ``Download`` button is not visible, the administrator has
-   disabled this feature.
+.. note:: Si le bouton ``Télécharger`` n'est pas visible, l'administrateur a
+   désactivé cette fonctionnalité.
 
-Filtering the files view
+
+Filtrer la vue des fichiers
 ------------------------
 
-The left sidebar on the Files page contains several filters for quickly sorting
-and managing your files.
+La barre latérale gauche de la page Fichiers contient plusieurs filtres pour un tri rapide
+et gérer vos fichiers.
 
-All files
-  The default view; displays all files that you have access to.
+Tous les fichiers
+  La vue par défaut; affiche tous les fichiers auxquels vous avez accès.
 
-Favorites
-  Files or folders marked with the yellow star.
+Favoris
+  Fichiers ou dossiers marqués d'une étoile jaune.
 
-Shared with you
-  Displays all files shared with you by another user or group.
+Partagé avec vous
+  Affiche tous les fichiers partagés avec vous par un autre utilisateur ou groupe.
 
-Shared with others
-  Displays all files that you have shared with other users or groups.
+Partagé avec d'autres
+  Affiche tous les fichiers que vous avez partagés avec d'autres utilisateurs ou groupes.
 
-Shared by link
-  Displays all files that are shared by you via public link.
+Partagé par lien
+  Affiche tous les fichiers que vous partagez via un lien public.
 
-External Storage (optional)
-  Files that you have access to on external storage devices and services such
-  as Dropbox, Google, and Amazon S3.
+Stockage externe (facultatif)
+  Les fichiers auxquels vous avez accès sur des périphériques de stockage externes et des services tels que
+  Dropbox, Google et Amazon S3.
 
-Moving files
+Déplacement de fichiers
 ------------
 
-You can move files and folders by dragging and dropping them into any directory.
+Vous pouvez déplacer des fichiers et des dossiers en les faisant glisser dans un répertoire.
 
 
-Change in share expiration date
+Changement de date d'expiration de l'action
 -------------------------------
 
-In older versions of Nextcloud, you could set an expiration date on both local
-and public shares. Now you can set an expiration date only on public shares,
-and local shares do not expire when public shares expire. The only way to
-"expire" a local share is to click the trash can icon to un-share your files.
+Dans les anciennes versions de Nextcloud, vous pouviez définir une date d’expiration pour les partage locaux
+et les partages publiques. Maintenant, vous ne pouvez définir une date d'expiration uniquement que sur les partages publique,
+et les partages locaux n'expirent pas lorsque les partages publique expirent. Le seul moyen de faire
+"Expirer" un partage local consiste à cliquer sur l'icône de la corbeille pour annuler le partage de vos fichiers.
 
-Creating or connecting to a Federation Share link
+Création ou connexion à un lien de partage de fédération
 -------------------------------------------------
 
-Federated Cloud Sharing allows you to mount file shares from remote Nextcloud
-servers, and manage them just like a local share. In Nextcloud 9 the process for
-creating a new sharing link is easier and more streamlined. See
-:doc:`federated_cloud_sharing` to learn to how to create and connect to new
-Federated Cloud shares.
+Federated Cloud Sharing vous permet de monter des partages de fichiers à partir d'un Nextcloud distant
+et de les gérer comme un partage local. Dans Nextcloud |version|, le processus de
+création d'un nouveau lien de partage est plus facile et plus simple. Voir
+:doc:`federated_cloud_sharing` apprendre à créer et se connecter à de nouveaux
+Partages Federated Cloud.
