@@ -1,56 +1,55 @@
 ======================
-Managing deleted files
-======================
+Gérer les fichiers supprimés
+=======================
 
-When you delete a file in Nextcloud, it is not immediately deleted permanently.
-Instead, it is moved into the trash bin. It is not permanently deleted until
-you manually delete it, or when the Deleted Files app deletes it to make room
-for new files.
+Lorsque vous supprimez un fichier dans Nextcloud, il n'est pas immédiatement supprimé de manière permanente.
+Au lieu de cela, il est déplacé dans la corbeille. Il est définitivement supprimé lorsque
+vous le supprimez manuellement ou lorsque l'application Supprimée les supprime pour faire de la place
+pour les nouveaux fichiers.
 
-Find your deleted files by clicking on the **Deleted files**
-button on the Files page of the Nextcloud Web interface. You'll have options to
-either restore or permanently delete files.
+Trouvez vos fichiers supprimés en cliquant sur le bouton ** Fichiers supprimés **
+de la page Fichiers de l'interface Web Nextcloud. Vous aurez des options pour
+soit restaurer ou supprimer définitivement des fichiers.
 
-Quotas
+Les quotas
 ------
 
-Deleted files are not counted against your storage quota. Only your personal
-files count against your quota, not files which were shared with you.
-(See :doc:`quota` to learn more about quotas.)
+Les fichiers supprimés ne sont pas comptabilisés dans votre quota de stockage. Seulement vos fichiers personnel
+sont comptabilisés dans votre quota et non les fichiers partagés avec vous.
+(Voir :doc:`quota` pour en savoir plus sur les quotas.)
 
-What happens when shared files are deleted
+Que se passe-t-il lorsque des fichiers partagés sont supprimés?
 ------------------------------------------
 
-Deleting files gets a little complicated when they are shared files, as this
-scenario illustrates:
+La suppression de fichiers devient un peu compliquée quand il s’agit de fichiers partagés, 
+ce scénario l'illustre:
 
-1. User1 shares a folder "test" with User2 and User3
-2. User2 (the recipient) deletes a file/folder "sub" inside of "test"
-3. The folder "sub" will be moved to the trashbin of both User1 (owner) and
-   User2 (recipient)
-4. But User3 will not have a copy of "sub" in her trash bin
+1. Utilisateur1 partage un dossier "test" avec Utilisateur2 et Utilisateur3
+2. Utilisateur2 (le destinataire) supprime un fichier / un sous-dossier à l'intérieur de "test"
+3. Le sous-dossier sera déplacé vers la corbeille de Utilisateur1 (propriétaire) et
+   Utilisateur2 (destinataire)
+4. Mais Utilisateur3 n'aura pas une copie du sous-dossier dans sa corbeille
 
-When User1 deletes "sub" then it is moved to User1's trash bin. It is
-deleted from User2 and User3, but not placed in their trash bins.
+Lorsque Utilisateur1 supprime le sous-dossier, il est déplacé vers la corbeille de Utilisateur1. Il est
+supprimé de Utilisateur2 et Utilisateur3, mais non placé dans leur corbeille.
 
-When you share files, other users may copy, rename, move, and share them with
-other people, just as they can for any computer files; Nextcloud does not have
-magic powers to prevent this.
+Lorsque vous partagez des fichiers, d'autres utilisateurs peuvent les copier, les renommer, les déplacer et les partager avec
+d'autres personnes, comme elles le peuvent pour tous les fichiers informatiques; Nextcloud n'a pas de
+pouvoirs magiques pour empêcher cela.
 
-How the deleted files app manages storage space
+Comment l'application de fichiers supprimés gère l'espace de stockage
 -----------------------------------------------
 
-To ensure that users do not run over their storage quotas, the Deleted Files
-app allocates a maximum of 50% of their currently available free space to
-deleted files. If your deleted files exceed this limit, Nextcloud deletes the
-oldest files (files with the oldest timestamps from when they were deleted)
-until it meets the memory usage limit again.
+Pour vous assurer que les utilisateurs ne dépassent pas leurs quotas de stockage, le programme Fichiers supprimés
+alloue un maximum de 50% de l’espace libre disponible au fichiers supprimés. 
+Si vos fichiers supprimés dépassent cette limite, Nextcloud supprime les
+fichiers les plus anciens (fichiers avec les horodatages les plus anciens depuis leur suppression)
+jusqu'à ce qu'il respecte à nouveau la limite d'utilisation de la mémoire.
 
-Nextcloud checks the age of deleted files every time new files are added to the
-deleted files. By default, deleted files stay in the trash bin for 30 days. The
-Nextcloud server administrator can adjust this value in the ``config.php`` file
-by setting the ``trashbin_retention_obligation`` value. Files older than the
-``trashbin_retention_obligation`` value will be deleted permanently.
-Additionally, Nextcloud calculates the maximum available space every time a new
-file is added. If the deleted files exceed the new maximum allowed space
-Nextcloud will expire old deleted files until the limit is met once again.
+Nextcloud vérifie l’âge des fichiers supprimés chaque fois que de nouveaux fichiers sont ajoutés à la liste des
+fichiers supprimés. Par défaut, les fichiers supprimés restent dans la corbeille pendant 30 jours. 
+L’administrateur du serveur Nextcloud peut ajuster cette valeur dans le fichier ``config.php``
+en définissant la valeur ``trashbin_retention_obligation``. 
+En outre, Nextcloud calcule l'espace disponible maximal chaque fois qu'un nouveau
+fichier est ajouté. Si les fichiers supprimés dépassent le nouvel espace maximum autorisé
+Nextcloud expirera les anciens fichiers supprimés jusqu'à ce que la limite soit atteinte à nouveau.
