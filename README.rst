@@ -19,7 +19,7 @@ This repository hosts three manuals:
 * **Administration Manual**
 * **Developers Manual**
 
-Please work in the appropriate branch: ``stable``-branches are for the respective release (e.g. 12.0 or 13.0), ``master`` is version 14.0.
+Please work in the appropriate branch: ``stable``-branches are for the respective release (e.g. 14.0 or 15.0), ``master`` is the latest version.
 
 Please wrap lines at 80 characters.
 
