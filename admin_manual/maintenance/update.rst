@@ -2,7 +2,7 @@
 Upgrade via built-in updater
 ============================
 
-The built-in updater automates many of the steps of upgrading an Nextcloud
+The built-in updater automates many of the steps of upgrading a Nextcloud
 installation. It is useful for installations that do not have root access,
 such as shared hosting, for installations with a smaller number of users
 and data, and it automates updating
