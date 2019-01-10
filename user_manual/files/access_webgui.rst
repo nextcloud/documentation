@@ -136,7 +136,7 @@ Public link shares are marked with a chain link. Un-shared folders are blank.
 Creating or uploading files and directories
 -------------------------------------------
 
-Upload or create new files or folders directly in an Nextcloud folder by clicking
+Upload or create new files or folders directly in a Nextcloud folder by clicking
 on the *New* button in the Files app.
 
 .. figure:: ../images/files_page-6.png
