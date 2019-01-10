@@ -41,7 +41,7 @@ See :doc:`source_installation` for minimum PHP-modules and additional software f
 Memory
 ^^^^^^
 
-Memory requirements for running an Nextcloud server are greatly variable,
+Memory requirements for running a Nextcloud server are greatly variable,
 depending on the numbers of users, apps, files and volume of server activity.
 
 Nextcloud needs a minimum of **128MB** RAM, and we recommend a minimum of **512MB**.

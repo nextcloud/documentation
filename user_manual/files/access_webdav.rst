@@ -123,7 +123,7 @@ automatically every time you log in to your Linux computer.
 
     usermod -aG davfs2 <username>
 
-3. Then create an ``nextcloud`` directory in your home directory for the
+3. Then create a ``nextcloud`` directory in your home directory for the
    mountpoint, and ``.davfs2/`` for your personal configuration file::
 
     mkdir ~/nextcloud
@@ -227,7 +227,7 @@ Accessing files using Microsoft Windows
 ---------------------------------------
 
 If you use the native Windows implementation, you can map Nextcloud to a new
-drive. Mapping to a drive enables you to browse files stored on an Nextcloud
+drive. Mapping to a drive enables you to browse files stored on a Nextcloud
 server the way you would files stored in a mapped network drive.
 
 Using this feature requires network connectivity. If you want to store your
