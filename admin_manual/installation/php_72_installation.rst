@@ -2,7 +2,7 @@
 Installing PHP 7.2 on RHEL 7 and CentOS 7
 =========================================
 
-PHP 5.4 has been end-of-life since September 2015 and is no longer supported by the PHP team. RHEL 7 still ships with PHP 5.4, and Red Hat supports it. Nextcloud 14+ requires PHP 7.0 or newer, so upgrading to 7.0 or newer is required.
+PHP 5.4 has been end-of-life since September 2015 and is no longer supported by the PHP team. RHEL 7 still ships with PHP 5.4, and Red Hat supports it. However, seeing as PHP 7.0 has also now reached EOL, and from Nextcloud 14 onwards the Nextcloud team suggests using PHP 7.1+, it is strongly advised to upgrade your PHP version to 7.2.
 
 RHEL 7 Upgrade to PHP 7.2
 -------------------------
@@ -23,10 +23,13 @@ If you are using the Nextcloud LDAP app, you need this module::
 
  yum install rh-php72-php-ldap
 
-Disable loading the old PHP Apache modules by changing their names::
+Disable loading the old PHP Apache modules by changing their names, for example::
 
  mv /etc/httpd/conf.d/php.conf /etc/httpd/conf.d/php54.off
  mv /etc/httpd/conf.modules.d/10-php.conf /etc/httpd/conf.modules.d/10-php54.off
+
+Note: change your version number in the above command to correspond to the current php
+version installed, for example "php70.off"
 
 Symlink the PHP 7.2 Apache modules into place::
 
@@ -36,12 +39,12 @@ Symlink the PHP 7.2 Apache modules into place::
 
 Then restart Apache::
 
- service httpd restart
+ systemctl restart httpd.service
 
 Verify with ``phpinfo`` that your Apache server is using PHP 7.2 and loading the 
 correct modules; see :ref:`label-phpinfo` to learn how to use ``phpinfo``.
 
-If there is no requirement for php 5.4, you can remove it:
+If there is no requirement for your old PHP installation, you can remove it:
 
  yum remove php*
  rm /etc/httpd/conf.modules.d/10-php54.off /etc/httpd/conf.d/php54.off 
@@ -49,6 +52,10 @@ If there is no requirement for php 5.4, you can remove it:
 After uninstalling, you can symlink the PHP 7.2 binary to use the short path (e.g. for cron)::
 
  ln -s /opt/rh/rh-php72/root/usr/bin/php /usr/bin/php
+
+Any changes to the configuration of the previous used php installation don't apply to the new installation. Required changes for the new installation can be configured here::
+
+ /etc/opt/rh/rh-php72/
 
 
 CentOS 7 Upgrade to PHP 7.2
@@ -72,10 +79,13 @@ If you are using the Nextcloud LDAP app, you need this module::
 
  yum install rh-php72-php-ldap
 
-Disable loading the old PHP Apache modules by changing their names::
+Disable loading the old PHP Apache modules by changing their names, for example::
 
  mv /etc/httpd/conf.d/php.conf /etc/httpd/conf.d/php54.off
  mv /etc/httpd/conf.modules.d/10-php.conf /etc/httpd/conf.modules.d/10-php54.off
+
+Note: change your version number in the above command to correspond to the current php
+version installed, for example "php70.off"
 
 Symlink the PHP 7.2 Apache modules into place::
 
@@ -85,12 +95,12 @@ Symlink the PHP 7.2 Apache modules into place::
 
 Then restart Apache::
 
- service httpd restart
+ systemctl restart httpd.service
 
 Verify with ``phpinfo`` that your Apache server is using PHP 7.2 and loading the 
 correct modules; see :ref:`label-phpinfo` to learn how to use ``phpinfo``.
 
-If there is no requirement for php 5.4, you can remove it:
+If there is no requirement for your old PHP installation, you can remove it:
 
  yum remove php*
  rm /etc/httpd/conf.modules.d/10-php54.off /etc/httpd/conf.d/php54.off 
@@ -98,3 +108,7 @@ If there is no requirement for php 5.4, you can remove it:
 After uninstalling, you can symlink the PHP 7.2 binary to use the short path (e.g. for cron)::
 
  ln -s /opt/rh/rh-php72/root/usr/bin/php /usr/bin/php
+
+Any changes to the configuration of the previous used php installation don't apply to the new installation. Required changes for the new installation can be configured here::
+
+ /etc/opt/rh/rh-php72/
