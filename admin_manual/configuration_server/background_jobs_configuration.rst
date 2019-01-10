@@ -9,7 +9,7 @@ interaction.
 
 These jobs are typically referred to as *cron jobs*.  Cron jobs are commands or
 shell-based scripts that are scheduled to run periodically at fixed times,
-dates, or intervals.   ``cron.php`` is an Nextcloud internal process that runs
+dates, or intervals.   ``cron.php`` is a Nextcloud internal process that runs
 such background jobs on demand.
 
 Nextcloud apps register actions with ``cron.php`` automatically
