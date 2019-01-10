@@ -5,7 +5,7 @@ Synchronize Android
 Address book and Calendar
 -------------------------
 
-#. Install DAVdroid (possibly through F-Droid)
+#. Install DAVx⁵ (possibly through F-Droid or Google Play Store (latter wil set you back $3,99)
 #. Create a new account ("+" button)
 #. Select "Connexion with URL and username"
 #. For URL, type ``https://www.yournextcloud.com/remote.php/dav``
