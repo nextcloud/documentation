@@ -1,54 +1,50 @@
 ======================
-Using the contacts app
+Utiliser l'application contacts
 ======================
 
-The Contacts app is not enabled by default in Nextcloud |version| and needs to
-be installed separately from our App Store.
+L'application Contacts n'est pas activée par défaut dans Nextcloud |version| et doit être installée depuis notre App Store.
 
-The Nextcloud Contacts app is similar to other mobile contact applications, but
-with more functionality. When you first access the Contacts app, a default
-address book becomes available.
+L'application Contacts Nextcloud est similaire à d'autres applications mobiles de contacts, mais avec plus de fonctionnalités. Quand vous accédez la première fois à l'application Contacts, le carnet d'adresse par défaut devient disponible.
 
 .. figure:: ../images/contacts_empty.png
 
- **Contacts app (empty)**
+ **Application Contacts (vide)**
 
-Adding contacts
+Ajouter des contacts
 ---------------
-You can add contacts using one of the following methods:
+Vous pouvez ajouter des contacts suivant les méthodes suivantes:
 
-* Import contacts using a Virtual Contact File (VCF/Vcard) file
+* Importer des contacts en utilisant un fichier de type Virtual Contact File (VCF/Vcard)
 
-* Add contacts manually
+* Ajouter des contacts manuellement
 
-Importing Contacts
+Importer des contacts
 ~~~~~~~~~~~~~~~~~~
 
-The fastest way to add contacts is through the use of a Virtual Contact File
-(VCF/Vcard) file.
+La façon la plus rapide d'ajouter des contacts est d'utiliser un fichier de type Virtual Contact File (VCF/Vcard)
 
-To import contacts using a VCF/Vcard file:
+Pour importer des contacts avec un fichier VCF/Vcard:
 
-1. At the bottom of the Contacts app information field, locate the gear button.
+1. En bas de la zone d'information de l'application Contacts, localisez le bouton "Paramètres".
 
   .. figure:: ../images/contact_bottombar.png
 
-  **Contact settings gear button**
+  **Bouton paramètres de Contact**
 
-2. Click the gear button. The Contacts app upload field opens.
+2. Cliquez sur le bouton. Le bouton import apparaît.
 
 .. figure:: ../images/contact_uploadbutton.png
 
-**Contacts app upload field**
+**Importation de contacts**
 
-.. note:: The Contacts app only supports import of vCards version 3.0 and 4.0.
+.. note:: L'application Contacts ne supporte que l'importation de vCards versions 3.0 et 4.0.
 
-Creating Contacts Manually
+Créer manuellement des contacts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Contacts app enables you to create contacts manually.
+L'application Contacts vous permets de créer des contacts manuellement.
 
-To create a new contact:
+Pour créer un nouveau contact:
 
 1. Click the ``+ New contact`` button.
 
