@@ -39,69 +39,62 @@ Pour importer des contacts avec un fichier VCF/Vcard:
 
 .. note:: L'application Contacts ne supporte que l'importation de vCards versions 3.0 et 4.0.
 
-Créer manuellement des contacts
+Ajouter manuellement des contacts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 L'application Contacts vous permets de créer des contacts manuellement.
 
-Pour créer un nouveau contact:
+Pour ajouter un nouveau contact:
 
-1. Click the ``+ New contact`` button.
+1. Cliquez sur le bouton ``+ Nouveau contact``.
 
-   An empty new contact configuration opens in the Application View field.
+   Un nouveau contact vide s'ouvre dans la zone de visualisation de l'Application.
 
   .. figure:: ../images/contact_new.png
 
-2. Specify the new contact information. Changes that you made are implemented immediately.
+2. Renseignez les informations du contact. Les changements sont directement pris en compte.
 
-Edit or Remove Contact Information
+Modifier ou supprimer un contact
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Contacts app enables you to edit or remove contact information.
+L'application Contacts vous permets de modifier ou supprimer des contacts.
 
-To edit or remove contact information:
+Pour modifier ou supprimer un contact:
 
-1. Navigate to the specific contact that you want to modify.
+1. Naviguez vers le contact que vous voulez modifier.
 
-2. Select the information in the field that you want to edit or remove.
+2. Selectionnez le champ d'information que vous voulez modifier ou enlever.
 
-3. Make your modifications or click on the trash bin.
+3. Faites vos modifications ou cliquez sur le bouton "Corbeille".
 
-Changes or removals that you made to any contact information are implemented immediately.
+Les changements ou les suppressions sont directement pris en compte.
 
-Contact Picture
+Image du contact
 ~~~~~~~~~~~~~~~
 
-To define a contact picture, click on the upload button:
-
+Pour définir l'image d'un contact, cliquez sur le bouton "Téléverser une nouvelle image"
 .. figure:: ../images/contact_picture.png
 
-  **Contact picture (upload button)**
+  **Image du contact (téléversement)**
 
-After you have set a contact picture, it will look like that:
+Après avoir défini une image, le bouton vas prendre cette forme:
 
 .. figure:: ../images/contact_picture_set.png
 
-  **Contact picture (set)**
+  **Image du contact (définie)**
 
-If you want to upload a new one, remove it, view it in full size or download it
-click on the contacts picture.
+Si vous voulez en téléverser une nouvelle, l'enlever, la voir en taille réelle ou la télécharger, cliquez sur l'image du contact..
 
 .. figure:: ../images/contact_picture_options.png
 
-Adding and managing address books
+Ajouter et gérer les carnets d'adresse
 ---------------------------------
 
-Clicking on the settings (gear) button at the bottom of the Apps Information
-field provides access to the Contact app settings. This field shows all
-available address books, certain options for each address book, and enables you
-to create new address books, simply by specifying an address books name.
+Cliquez sur le bouton "paramères" en bas de la zone d'information de l'application Contacts pour ouvrir les paramètres. Cette zone affiche tous les carnets d'adresse, certaines options pour chaque carnet d'adresse, et vous permets d'ajouter de nouveaux carnets d'adresse, simplement en renseignant un nom de carnet d'adresse.
 
 .. figure:: ../images/contact_manageaddressbook.png
 
-   **Add address book in the contacts settings**
+   **Ajouter un carnet d'adresse dans les paramètres de Contacts**
 
-The Contacts settings also enables you to share, export and delete address
-books. You will also find the CardDAV URLs there.
-See :doc:`index` for more details about syncing your adress books
-with iOS, macOS, Thunderbird and other CardDAV clients.
+Les paramètres de Contacts vous permettent aussi de partager, d'exporter ou de supprimer un carnet d'adresse. Vous y trouverez aussi les URLs CardDAV.
+Voir :doc:`index` pour plus de détails sur la synchronisation des carnets d'adresse avec les clients iOS, macOS, Thunderbird et autres clients CardDAV.
