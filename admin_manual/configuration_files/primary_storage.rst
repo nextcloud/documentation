@@ -120,7 +120,7 @@ The class to be used is :code:`\\OC\\Files\\ObjectStore\\S3`
 Multibucket Object Store
 ------------------------
 
-It's possible to configure Nextcloud to distribute it's data over multiple buckets
+It's possible to configure Nextcloud to distribute its data over multiple buckets
 for scalability purpose. You can find out more information about upscaling with
 object storage and Nextcloud in the
 `Nextcloud customer portal <https://portal.nextcloud.com/article/object-store-as-primary-storage-16.html>`_.
