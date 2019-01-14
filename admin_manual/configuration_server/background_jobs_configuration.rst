@@ -127,4 +127,4 @@ Now all that is left is to start and enable the timer by running this command::
 
 When the option ``--now`` is used with ``enable``, the resp. unit will also be started.
 
-.. note:: Selecting the option ``Cron`` in the admin menu for background jobs is not mandatory, because once `cron.php` is executed from the command line or cron service it will set it automatically to ``Cron``.g
+.. note:: Selecting the option ``Cron`` in the admin menu for background jobs is not mandatory, because once `cron.php` is executed from the command line or cron service it will set it automatically to ``Cron``.
