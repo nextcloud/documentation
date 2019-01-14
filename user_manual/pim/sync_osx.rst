@@ -5,18 +5,17 @@ Synchronizing with macOS
 Setup your Accounts
 -------------------
 
-Adding your Calendar and Contacts resources from Nextcloud Groupware to macOS
-native applications is easy. In the following steps you will add your server
-resources for **CalDAV** (Calendar) and **CardDAV** (Contacts) to your Nextcloud.
+In the following steps you will add your server resources for **CalDAV** (Calendar) 
+and **CardDAV** (Contacts) to your Nextcloud.
 
 1. Open the **system preferences** of your macOS device
 
-2. Navigate to **Online-Accounts**
+2. Navigate to **Internet Accounts**
 
 .. figure:: /images/macos_1.png
 
-3. Click on **Add Other Account...** and click on **CalDAV-Account** for Calendar
-   or **CardDAV-Account** for Contacts.
+3. Click on **Add Other Account...** and click on **CalDAV Account** for Calendar
+   or **CardDAV Account** for Contacts.
 
 .. figure:: /images/macos_2.png
 
@@ -26,8 +25,8 @@ resources for **CalDAV** (Calendar) and **CardDAV** (Contacts) to your Nextcloud
 4. Select **Advanced** as Account-Type and type in your respective credentials:
 
    **Username**: Your Nextcloud username or email
-   **Passwort**: Your generated App-password/token
-   **Server Adress**: URL of your Nextcloud server (e.g. https://cloud.example.com)
+   **Password**: Your generated App-password/token (`App-password/token <https://docs.nextcloud.com/server/stable/user_manual/session_management.html#managing-devices>`_)
+   **Server Address**: URL of your Nextcloud server (e.g. https://cloud.example.com)
    **Server Path:** /remote.php/dav/principals/users/[your_username]
    **Port:** 443
    **Use SSL:** Yes
