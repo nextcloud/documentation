@@ -44,7 +44,7 @@ Then restart Apache::
 Verify with ``phpinfo`` that your Apache server is using PHP 7.2 and loading the 
 correct modules; see :ref:`label-phpinfo` to learn how to use ``phpinfo``.
 
-If there is no requirement for your old PHP installation, you can remove it:
+If there is no requirement for your old PHP installation, you can remove it::
 
  yum remove php*
  rm /etc/httpd/conf.modules.d/10-php54.off /etc/httpd/conf.d/php54.off 
@@ -100,7 +100,7 @@ Then restart Apache::
 Verify with ``phpinfo`` that your Apache server is using PHP 7.2 and loading the 
 correct modules; see :ref:`label-phpinfo` to learn how to use ``phpinfo``.
 
-If there is no requirement for your old PHP installation, you can remove it:
+If there is no requirement for your old PHP installation, you can remove it::
 
  yum remove php*
  rm /etc/httpd/conf.modules.d/10-php54.off /etc/httpd/conf.d/php54.off 
