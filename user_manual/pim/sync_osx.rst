@@ -2,16 +2,50 @@
 Synchronizing with macOS
 ========================
 
-With Nextcloud 14+ and its CalDAV-backend, syncing your Calendars with your macOS-device is easy.
+Setup your Accounts
+-------------------
 
-To use Nextcloud with macOS Calendar you will need to use the following steps:
+In the following steps you will add your server resources for **CalDAV** (Calendar) 
+and **CardDAV** (Contacts) to your Nextcloud.
 
-1. Open the Calendar-app in your Nextcloud (https://cloud.example.com/apps/calendar)
-2. Navigate into the app-settings (lower left corner) and copy the iOS/macOS CalDAV address provided there
-3. Open the system preferences of your macOS-device
-4. Navigate to "Online-Accounts"
-5. Click on "Add another account..." and click on "CalDAV-Account"
-6. Select "Manually" as Account-Type and type in your username or email-address of your Nextcloud-instance as username, and your app-password/token or password as password.
-7. Paste the previous copied (step 2) iOS/macOS CalDAV address into the server address field and click on "Login".
+1. Open the **system preferences** of your macOS device
 
-You can now select, with which applications you want to use this CalDAV resource. In the most cases, this will be "Calendar", sometimes you may also want to use it for your Tasks and reminders.
+2. Navigate to **Internet Accounts**
+
+.. figure:: /images/macos_1.png
+
+3. Click on **Add Other Account...** and click on **CalDAV Account** for Calendar
+   or **CardDAV Account** for Contacts.
+
+.. figure:: /images/macos_2.png
+
+.. note:: You can not setup Calendar/Contacts together. You need to setup them
+          in **separate accounts**.
+
+4. Select **Advanced** as Account-Type and type in your respective credentials:
+
+   **Username**: Your Nextcloud username or email
+   **Password**: Your generated App-password/token (`App-password/token <https://docs.nextcloud.com/server/stable/user_manual/session_management.html#managing-devices>`_)
+   **Server Address**: URL of your Nextcloud server (e.g. https://cloud.example.com)
+   **Server Path:** /remote.php/dav/principals/users/[your_username]
+   **Port:** 443
+   **Use SSL:** Yes
+
+.. figure:: /images/macos_3.png
+
+5. Click on **Sign In**.
+
+**For CalDAV (Calendar):** You can now select, with which applications you want
+to use this resource. In the most cases, this will be the "Calendar" application,
+sometimes you may also want to use it for your **Tasks and reminders**.
+
+.. figures:: /images/macos_4.png
+
+Troubleshooting
+---------------
+
+- macOS does **not** support syncing CalDAV/CardDAV over non-encrypted **http://**
+  connections. Make sure you have https:// enabled and configured on server- and
+  client-side.
+
+- **Self-signed certificates** need to be properly set up in the macOS keychain.
