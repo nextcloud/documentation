@@ -87,7 +87,7 @@ Redis for the distributed server cache::
 
   'memcache.distributed' => '\OC\Memcache\Redis',
   'redis' => [
-       'host' => 'localhost',
+       'host' => 'redis-host.example.com',
        'port' => 6379,
   ],
 
@@ -151,7 +151,7 @@ servers in the shared cache pool with their port numbers::
  'memcache.local' => '\OC\Memcache\APCu',
  'memcache.distributed' => '\OC\Memcache\Memcached',
  'memcached_servers' => [
-      [ 'localhost', 11211 ],
+      [ 'server0.example.com', 11211 ],
       [ 'server1.example.com', 11211 ],
       [ 'server2.example.com', 11211 ],
   ],
@@ -182,7 +182,7 @@ Use Redis for everything except local memcache::
   'memcache.distributed' => '\OC\Memcache\Redis',
   'memcache.locking' => '\OC\Memcache\Redis',
   'redis' => [
-       'host' => 'localhost',
+       'host' => 'redis-host.example.com',
        'port' => 6379,
   ],
 
