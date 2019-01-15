@@ -3,8 +3,7 @@ Contacts & agenda
 ===================
 
 Les applciations Contacts, Agenda et Mail ne sont pas installées dans Nextcloud |version|.
-You may easily install them by clicking the Enable button on
-their respective Apps > Productivity entries.
+Vous pouvez les installer facilement en cliquant sur le bouton Activer dans leur entrée respective du menu Applications.
 
 .. toctree::
    :maxdepth: 1
