@@ -58,6 +58,11 @@ Assembling the chunk on the server is a matter of initiating a move from the cli
 ``curl -X MOVE -u roeland:pass --header 'Destination:https://server/remote.php/dav/files/roeland/dest/file.zip' https://server/remote.php/dav/uploads/roeland/myapp-e1663913-4423-4efe-a9cd-26e7beeca3c0/.file``
 
 The server will now assemble the chunks and move the final file to the folder ``dest/file.zip``.
+
+If a modification time should be set, you can by adding it as header with date as unixtime:
+``curl -X MOVE -u roeland:pass --header 'X-OC-Mtime:1547545326' --header 'Destination:https://server/remote.php/dav/files/roeland/dest/file.zip' https://server/remote.php/dav/uploads/roeland/myapp-e1663913-4423-4efe-a9cd-26e7beeca3c0/.file``" 
+Otherwise the current upload date will be used as modification date.
+
 The chunks and the upload folder will be deleted afterwards.
 
 Aborting the upload
