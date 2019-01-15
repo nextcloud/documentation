@@ -11,12 +11,12 @@ to migrate the remaining columns to bigints.
 
 The command can safely be executed. It will show a success message when there is nothing to do::
 
-    sudo -u www-data ./occ db:convert-filecache-bigint
+    sudo -u www-data php occ db:convert-filecache-bigint
     All tables already up to date!
 
 or otherwise ask for confirmation, before performing the heavy actions::
 
-    sudo -u www-data ./occ db:convert-filecache-bigint
+    sudo -u www-data php occ db:convert-filecache-bigint
     This can take up to hours, depending on the number of files in your instance!
     Continue with the conversion (y/n)? [n]
 
