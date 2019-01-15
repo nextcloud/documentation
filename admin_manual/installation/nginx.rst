@@ -120,15 +120,15 @@ webroot of your nginx installation. In this example it is
           rewrite ^ /index.php$request_uri;
       }
 
-      location ~ ^/(?:build|tests|config|lib|3rdparty|templates|data)/ {
+      location ~ ^\/(?:build|tests|config|lib|3rdparty|templates|data)\/ {
           deny all;
       }
-      location ~ ^/(?:\.|autotest|occ|issue|indie|db_|console) {
+      location ~ ^\/(?:\.|autotest|occ|issue|indie|db_|console) {
           deny all;
       }
 
-      location ~ ^/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater/.+|ocs-provider/.+)\.php(?:$|/) {
-          fastcgi_split_path_info ^(.+?\.php)(/.*)$;
+      location ~ ^\/(?:index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|ocs-provider\/.+)\.php(?:$|\/) {
+          fastcgi_split_path_info ^(.+?\.php)(\/.*|)$;
           include fastcgi_params;
           fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
           fastcgi_param PATH_INFO $fastcgi_path_info;
@@ -141,7 +141,7 @@ webroot of your nginx installation. In this example it is
           fastcgi_request_buffering off;
       }
 
-      location ~ ^/(?:updater|ocs-provider)(?:$|/) {
+      location ~ ^\/(?:updater|ocs-provider)(?:$|\/) {
           try_files $uri/ =404;
           index index.php;
       }
@@ -273,15 +273,15 @@ your nginx installation.
               rewrite ^ /nextcloud/index.php$request_uri;
           }
 
-          location ~ ^/nextcloud/(?:build|tests|config|lib|3rdparty|templates|data)/ {
+          location ~ ^\/nextcloud\/(?:build|tests|config|lib|3rdparty|templates|data)\/ {
               deny all;
           }
-          location ~ ^/nextcloud/(?:\.|autotest|occ|issue|indie|db_|console) {
+          location ~ ^\/nextcloud\/(?:\.|autotest|occ|issue|indie|db_|console) {
               deny all;
           }
 
-          location ~ ^/nextcloud/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater/.+|ocs-provider/.+)\.php(?:$|/) {
-              fastcgi_split_path_info ^(.+?\.php)(/.*)$;
+          location ~ ^\/nextcloud\/(?:index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|ocs-provider\/.+)\.php(?:$|\/) {
+              fastcgi_split_path_info ^(.+?\.php)(\/.*|)$;
               include fastcgi_params;
               fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
               fastcgi_param PATH_INFO $fastcgi_path_info;
@@ -294,14 +294,14 @@ your nginx installation.
               fastcgi_request_buffering off;
           }
 
-          location ~ ^/nextcloud/(?:updater|ocs-provider)(?:$|/) {
+          location ~ ^\/nextcloud\/(?:updater|ocs-provider)(?:$|\/) {
               try_files $uri/ =404;
               index index.php;
           }
 
           # Adding the cache control header for js and css files
           # Make sure it is BELOW the PHP block
-          location ~ \.(?:css|js|woff2?|svg|gif)$ {
+          location ~ ^\/nextcloud\/.+[^\/]\.(?:css|js|woff2?|svg|gif)$ {
               try_files $uri /nextcloud/index.php$request_uri;
               add_header Cache-Control "public, max-age=15778463";
               # Add headers to serve security related headers  (It is intended
@@ -321,7 +321,7 @@ your nginx installation.
               access_log off;
           }
 
-          location ~ \.(?:png|html|ttf|ico|jpg|jpeg)$ {
+          location ~ ^\/nextcloud\/.+[^\/]\.(?:png|html|ttf|ico|jpg|jpeg)$ {
               try_files $uri /nextcloud/index.php$request_uri;
               # Optional: Don't log access to other assets
               access_log off;
@@ -364,7 +364,7 @@ block shown above not located **below** the:
 
 .. code-block:: nginx
 
-        location ~ \.php(?:$|/) {
+        location ~ \.php(?:$|\/) {
 
 block. Other custom configurations like caching JavaScript (.js)
 or CSS (.css) files via gzip could also cause such issues.
