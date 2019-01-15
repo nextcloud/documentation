@@ -39,6 +39,11 @@ You may use both a local and a distributed cache. Recommended caches are APCu
 and Redis. After installing and enabling your chosen memcache, verify that it is 
 active by running :ref:`label-phpinfo`.
 
+.. note:: If you run multiple web servers and enable a distributed cache in
+    your ``config.php`` (``memcache.distributed``) or a file locking provider
+    (``memcache.locking``) you need to make sure that they are referring to the
+    very same memcache server and not to ``localhost`` or a unix socket.
+
 APCu
 ----
 
@@ -59,8 +64,8 @@ Refresh your Nextcloud admin page, and the cache warning should disappear.
 Redis
 -----
 
-Redis is an excellent modern memcache to use for both local and distributed caching, and
-as a local cache for :doc:`Transactional File Locking 
+Redis is an excellent modern memcache to use for distributed caching, and
+as a key-value store for :doc:`Transactional File Locking
 <../configuration_files/files_locking_transactional>` because it guarantees 
 that cached objects are available for as long as they are needed.
 
@@ -99,7 +104,7 @@ If you want to connect to Redis configured to listen on an Unix socket (which is
 recommended if Redis is running on the same system as Nextcloud) use this example
 ``config.php`` configuration::
 
-  'memcache.local' => '\OC\Memcache\Redis',
+  'memcache.local' => '\OC\Memcache\APCu',
   'memcache.distributed' => '\OC\Memcache\Redis',
   'redis' => [
        'host'     => '/var/run/redis/redis.sock',
@@ -203,8 +208,6 @@ If your version of Mint or Ubuntu does not package the required version of
 These instructions are adaptable for any distro that does not package the 
 supported version, or that does not package Redis at all, such as SUSE Linux 
 Enterprise Server and Red Hat Enterprise Linux.
-
-The Redis PHP module must be at least version 2.2.6.
 
 For PHP 7.0 and PHP 7.1 use Redis PHP module 3.1.x or later.
   
