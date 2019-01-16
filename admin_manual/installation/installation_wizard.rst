@@ -98,6 +98,7 @@ and domain names. A typical configuration looks like this::
     0 => 'localhost', 
     1 => 'server1.example.com', 
     2 => '192.168.1.50',
+    3 => '[fe80::1:50]',
  ),
 
 The loopback address, ``127.0.0.1``, is automatically whitelisted, so as long 
