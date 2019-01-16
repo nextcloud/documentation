@@ -50,8 +50,8 @@ Contacts
    -  Go back to account information and hit Save.
 
 You should now find your contacts in the address book of your iPhone.
-If it's still not working, have a look at the :doc:`troubleshooting`
-and `Troubleshooting Contacts & Calendar`_ guides.
+If it's still not working, have a look at the `Troubleshooting Contacts & Calendar`_
+guide.
 
 .. _Troubleshooting Contacts & Calendar: https://docs.nextcloud.org/server/14/admin_manual/issues/index.html#troubleshooting-contacts-calendar
 .. TODO ON RELEASE: Update version number above on release
