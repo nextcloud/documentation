@@ -12,12 +12,12 @@ and **CardDAV** (Contacts) to your Nextcloud.
 
 2. Navigate to **Internet Accounts**
 
-.. figure:: /images/macos_1.png
+.. figure:: ./images/macos_1.png
 
 3. Click on **Add Other Account...** and click on **CalDAV Account** for Calendar
    or **CardDAV Account** for Contacts.
 
-.. figure:: /images/macos_2.png
+.. figure:: ./images/macos_2.png
 
 .. note:: You can not setup Calendar/Contacts together. You need to setup them
           in **separate accounts**.
@@ -31,7 +31,7 @@ and **CardDAV** (Contacts) to your Nextcloud.
    **Port:** 443
    **Use SSL:** Yes
 
-.. figure:: /images/macos_3.png
+.. figure:: ./images/macos_3.png
 
 5. Click on **Sign In**.
 
@@ -39,7 +39,7 @@ and **CardDAV** (Contacts) to your Nextcloud.
 to use this resource. In the most cases, this will be the "Calendar" application,
 sometimes you may also want to use it for your **Tasks and reminders**.
 
-.. figures:: /images/macos_4.png
+.. figure:: ./images/macos_4.png
 
 Troubleshooting
 ---------------

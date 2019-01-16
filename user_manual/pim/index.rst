@@ -22,4 +22,3 @@ You can find out more about Nextcloud Groupware `on our website <https://nextclo
    sync_thunderbird
    sync_kde
    sync_windows10
-   troubleshooting
