@@ -30,7 +30,7 @@ To check out the source from `GitHub`_ you will need to install Git (see `Settin
 Gather information about server setup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To get started the basic Git repositories need to cloned into the Web server's directory. Depending on the distribution this will either be
+To get started the basic Git repositories need to be cloned into the Web server's directory. Depending on the distribution this will either be
 
 * **/var/www**
 * **/var/www/html**
