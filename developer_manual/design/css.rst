@@ -6,11 +6,11 @@
 SCSS
 ====
 
-Since the version 12 of Nextcloud, we support ``SCSS`` natively.
+Since version 12 of Nextcloud, we support SCSS natively.
 You can migrate your files by simply renaming your ``.css`` files to ``.scss``.
-The server will automatically compile, cache and and serve it.
-The priority goes to the scss file. So having two file with the same name and a ``scss`` & ``css`` extension
-will ensure a retro compatibility with <12 versions as scss files will be ignored by the server.
+The server will automatically compile, cache and serve it.
+The SCSS file is prioritized. Having two files with the same name and a ``scss`` & ``css`` extension
+will ensure backwards compatibility with <12 versions as scss files will be ignored by the server.
 
 ..  _cssvars:
 
@@ -18,22 +18,22 @@ will ensure a retro compatibility with <12 versions as scss files will be ignore
 CSS variables
 =============
 
-Since Nextcloud 14 app developers should use CSS4 variables for using the values that Nextcloud defines. This way you can be sure that the theming and accessibility app can dynamically adjust the values to their needs.
+Since Nextcloud 14, app developers should use CSS4 variables so you get the values which Nextcloud defines. This way you can be sure that the theming and accessibility app can dynamically adjust the values.
 
-A list of available variables is available in the server repo:
+A list of available variables is listed in the server repository:
 https://github.com/nextcloud/server/blob/master/core/css/css-variables.scss
 
 
 ..  _cssicons:
 
 
-Scss icons mixins
-=================
+SCSS icon mixins
+================
 
-Since nextcloud 14, we added some scss mixins and functions to add and manage svg icons.
+Since Nextcloud 14, we added some SCSS mixins and functions to add and manage SVG icons.
 
-This function need to be use to add a background-image. It create a list of every icons used in nextcloud and create an associated list of variables.
-This allow us to revert the colours of the svgs when using the dark theme.
+These functions need to be used to add the icons via background-image. They create a list of every icon used in Nextcloud and create an associated list of variables.
+This allows us to invert the colors of the SVGs when using the dark theme.
 
 .. code-block:: scss
 
@@ -62,10 +62,10 @@ This allow us to revert the colours of the svgs when using the dark theme.
 		// background-image: var(--icon-folder)
 	}
 
-More informations about the :ref:`svg color api <svgcolorapi>`.
+More information about the :ref:`svg color api <svgcolorapi>`.
 
 
-The ``icon-black-white`` mixin is a shortand to the ``icon-color`` function but it generates twwo set of icons with the suffixe ``-white`` and without (default black).
+The ``icon-black-white`` mixin is a shortand for the ``icon-color`` function but it generates two sets of icons with the suffix ``-white`` and without (default black).
 
 
 .. code-block:: scss
