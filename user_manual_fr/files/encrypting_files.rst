@@ -1,15 +1,9 @@
 =============================================
-Encrypting your Nextcloud files on the server
+Chiffrer vos fichiers nextcloud sur le serveur
 =============================================
 
-Nextcloud includes a server side Encryption app, and when it is enabled by
-your Nextcloud administrator all of your Nextcloud data files are automatically
-encrypted on the server.
-Encryption is server-wide, so when it is enabled you cannot choose to keep your
-files unencrypted. You don't have to do anything special, as it uses your
-Nextcloud login as the password for your unique private encryption key. Just log
-in and out and manage and share your files as you normally do, and you can
-still change your password whenever you want.
+Nextcloud inclut une application de chiffrement côté serveur, et lorsqu'elle est activée par votre administrateur Nextcloud, tous vos fichiers Nextcloud sont automatiquement chiffrés sur le serveur.
+Le chiffrement s'applique à l'ensemble du serveur, de sorte que lorsqu'il est activé, vous ne pouvez pas refuser de chiffrer un fichier. Vous n'avez rien à faire de spécial, car il utilise vos identifiants Nextcloud comme mot de passe p comme clef privée de chiffrement unique. Il vous suffit de vous connecter, de vous déconnecter, de gérer et de partager vos fichiers comme vous le faites normalement. Vous pourrez toujours changer votre mot de passe quand vous le souhaiterez.
 
 Its main purpose is to encrypt files on remote storage services that are
 connected to your Nextcloud server, such as Dropbox and Google Drive. This is an
@@ -27,20 +21,16 @@ compromised the intruder may get access to your files. (Read
 `Encryption in Nextcloud <https://nextcloud.com/blog/encryption-in-nextcloud/>`_
 to learn more.)
 
-Encryption FAQ
+Chiffrement : FAQ
 --------------
 
-How can encryption be disabled?
+Comment enlever la fonctionnalité de chiffrement ?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The only way to disable encryption is to run the `"decrypt all"
-<https://docs.nextcloud.org/server/14/admin_manual/configuration_server/occ_command.html#encryption-label>`_.
+La seule façon de déactiver la fonctionnalité de chiffremebtn est de lancer le script `"decrypt all"<https://docs.nextcloud.org/server/14/admin_manual/configuration_server/occ_command.html#encryption-label>`_.
+qui va ainsi déchiffrer tous vos fichiers et désactiver la fonctionnalité de chiffrement.
 
-.. TODO ON RELEASE: Update version number above on release
-
-script, which decrypts all files and disables encryption.
-
-Is it possible to disable encryption with the recovery key?
+Est-il possible de déactiver le chiffrement avec la clef de récupération ?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Yes, *if* every user uses the `file recovery key
@@ -97,7 +87,7 @@ files you have, and then you are returned to your default Nextcloud page.
    Nextcloud administrator may enable; see the Recovery Key Password section
    (below) to learn about this.
 
-Sharing encrypted files
+Partage de fichiers chiffrés.
 -----------------------
 
 Only users who have private encryption keys have access to shared encrypted
@@ -126,24 +116,23 @@ restore your files if you lose your login password.
 
 .. figure:: ../images/encryption3.png
 
-Files not encrypted
+Fichiers qui ne sont pas chiffrés
 -------------------
 
-Only the data in your files is encrypted, and not the filenames or folder
-structures. These files are never encrypted:
+Seul les données dans vos fichiers sont chiffrées, contrairement aux noms ou à l'arborescence de ceux-ci. Ces fichiers ne sont jamais chiffrés :
 
-- Old files in the trash bin.
-- Image thumbnails from the Gallery app.
-- Previews from the Files app.
-- The search index from the full text search app.
-- Third-party app data
+- Les vieux fichiers se trouvent dans la corbeille
+- Vignettes des images de l'application Gallery.
+- Les prévisualisations de l'application Fichiers
+- L'index de recherche de l'application de recherche
+- Les données d'applications tierces.
 
-There may be other files that are not encrypted; only files that are exposed to
-third-party storage providers are guaranteed to be encrypted.
+Il peut y avoir d'autre fichiers non chiffrés; seuls les fichiers qui sont exposés à des fournisseurs de stockage tiers sont garantis chiffrés.
 
-Change private key password
+Changer le mot de passe de la clef privée
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Cette option n'est disponible que si votre mot de passe de connexion, pas celui de la clef de chiffrement, a été changé par votre administrateur.
 This option is only available if your log-in password, but not your encryption
 password, was changed by your administrator. This can occur if your Nextcloud
 provider uses an external user back-end (for example, LDAP) and changed your

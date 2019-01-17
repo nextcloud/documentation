@@ -1,17 +1,16 @@
 ===============
-Troubleshooting
+Problèmes connus
 ===============
 
 BlackBerry OS 10.2
 ------------------
 
-BlackBerry OS up to 10.2.2102 does not accept a URL with protocol ``https://`` 
-in front of the server address. It will always tell you that it cannot login on 
-your server. So instead of writing::
+Les versions de BlackBerry OS au dessus de la 10.2.2102 n'accepte plus le
+protocole avec ``https://`` en face d'adresse du serveur. Le programme va
+constamment vous dire qu'il ne peut pas se connecter au serveur. Donc, au lieuu d'écrire :
 
     https://example.com/remote.php/dav/principals/users/USERNAME/
-    
-in the server address field, you have to write::
+
+dans le champ d'adresse du serveur, vous pouvez écrire :
 
     example.com/remote.php/dav/principals/users/USERNAME/
-    

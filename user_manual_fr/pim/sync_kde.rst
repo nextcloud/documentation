@@ -1,32 +1,32 @@
 =======================================
-Synchronizing with KDE PIM
+Synchronisation avec KDE PIM
 =======================================
 
-KOrganizer and KAddressbook can synchronize data with a Nextcloud server.
+KOrganizer et KAddressbook peuvent synchoniser les données avec le serveur Nextcloud.
 
-This can be done by following these steps:
+On peut le faire en suivent ces différentes étapes :
 
-1. Open KOrganizer and in the calendar list (bottom left) right-click and choose ``Add Calendar``
+1. Ouvrez Lorganizer et dans les liste des calendriers (en bas à gauche) faîtes un clik droit et choisissez ``Ajouter un calendrier``.
 
 .. image:: ../images/KOrganizer_add_calendar.png
 
-2. In the resulting list of resources, pick ``DAV groupware resource``
+2. Dans les résultats des ressources disponibles, choisissez ``DAV groupware resource``.
 
 .. image:: ../images/korganizer_resource_choice.png
 
-3. Enter your user name and password, or, if you have two-factor authentication enabled, use an App Password. Then click next.
+3. Entrer votre nom d'utilisateur et votre mot de passe, ou, si vous avez activé l'authentification à double-facteur, utilisez un App Mot de passe. Ensuite, cliquez sur "suivant".
 
 .. image:: ../images/korganizer_credentials.png
 
-To create an App Password if you have two-factor authentication:
+Pour créer un Application Mot de passe si vous avez activé l'authentification à double-facteurs :
 
-    * in Nextcloud, go to your user settings and look under security.
-    * Look for the button ``create new App password`` and before it, enter a unique name, like ``KOrganizer on my laptop``
+    * dans Nextcloud, allez dans vos paramètres utilisateur et regarder dans l'onglet "Sécurité"
+    * Recherchez le boutton ``create new App password`` et avant lui, entrer un nom unique d'identification comme ``KOrganizerLook sur mon bureau``.
 
     .. image:: ../images/app_password_naming.png
 
-    * then click ``create new App password``. Copy-paste the password!
-
+    * Ensuirte cliquez sur ``create new App password``. Copiez/collez le mot de passe.
+    
 .. image:: ../images/app_password_created.png
 
 4. As Groupware Server, choose ownCloud or Nextcloud in the drop-down menu. Click next.
@@ -37,7 +37,7 @@ To create an App Password if you have two-factor authentication:
 
 .. image:: ../images/KOrganizer_server_address.png
 
-6. You can now test the connection. If it does not work, you can go back and try to fix it with other settings.
+6. Vous pouvez maintenant tester votrec connexion. Si cela ne fonctionne pas, vous pouvez revenir en arrière et essayer de résoudre le problème en changeant certains paramètres.
 
 .. image:: ../images/KOrganizer_test1.png
 
@@ -49,10 +49,10 @@ To create an App Password if you have two-factor authentication:
 
 .. image:: ../images/KOrganizer_pick_resources.png
 
-done
+Terminé
 ~~~~
 
-After a few seconds to minutes (the sync can take a while on a slow connection) KOrganizer will show your calendars and KAddressBook will show your contacts!
+Après quelques seconde ou quelques minutes (le temps de la synchronisation peut s'avérer long avec une connexion lente) KOrganizer va vous montrer vos calendriers et KAddressBook vos contacts !
 
 .. image:: ../images/KOrganizer.png
 .. image:: ../images/KAddressBook.png

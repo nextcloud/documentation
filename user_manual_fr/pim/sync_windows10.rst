@@ -1,32 +1,32 @@
 ======================================
-Synchronizing with Windows 10 Calendar
+Synchronisation avec le calendrier Windows 10
 ======================================
 
-1. In your browser, navigate to the Nextcloud Calendar app. Under "Settings & import", copy the "iOS/macOS CalDAV Address" into your clipboard.
+1. Dans votre navigateur, accédez à l'application Calendrier Nextcloud. Sous "Paramètres et importation", copiez l'"Adresse CalDAV iOS/macOS" dans votre presse-papiers.
 
-2. Launch the Windows 10 Calendar app. Then, click the settings icon (gear icon) and select "Manage accounts".
- 
-3. Click "Add account" and choose "iCloud".
+2. Lancez l'application Calendrier Windows 10. Ensuite, cliquez sur l'icône des paramètres (icone avec un engrenage) et sélectionnez "Gérer les comptes".
 
-4. Enter an email, username and password. None of this information has to be valid-it will all be changed in the upcoming steps.
+3. Cliquez sur "Ajouter un compte" et choisissez "iCloud".
 
-5. Click "Done". A message should appear indicating the settings were saved successfully.
+4. Entrez un courriel, un nom d'utilisateur et un mot de passe. Aucune de ces informations n'a besoin d'être valide - elles seront toutes modifiées au cours des prochaines étapes.
 
-6. In the "Manage Accounts" menu, click on  the iCloud account created in previous steps, and select "Change settings". Then, click on "Change mailbox sync settings".
+5. Cliquez sur "Terminé". Un message devrait apparaître indiquant que les réglages ont été sauvegardés avec succès.
 
-7. Scroll to the bottom of the dialog box, select "Advanced mailbox settings".  Paste your CalDAV URL in the field labelled "Calendar server (CalDAV)".
+6. Dans le menu "Gérer les comptes", cliquez sur le compte iCloud créé lors des étapes précédentes et sélectionnez "Modifier les paramètres". Cliquez ensuite sur "Modifier les paramètres de synchronisation de la boîte aux lettres".
 
-8. Click "Done". Enter your Nextcloud username and password in the appropriate fields, and change the account name to whatever you prefer (e. g. "Nextcloud Calendar"). Click "Save".
+7. Faites défiler jusqu'en bas de la boîte de dialogue, sélectionnez "Paramètres avancés de la boîte aux lettres".  Collez l'URL de votre CalDAV dans le champ "Calendar server (CalDAV)".
+
+8. Cliquez sur "Terminé". Entrez votre nom d'utilisateur et votre mot de passe Nextcloud dans les champs appropriés, et changez le nom de votre compte comme vous le souhaitez (par exemple "Nextcloud Calendar"). Cliquez sur "Enregistrer".
 
 
 
-After following all these steps, your Nextcloud calendar should synchronize. If not, check your username and password. Otherwise, repeat these steps.
+Après avoir suivi toutes ces étapes, votre calendrier Nextcloud devrait se synchroniser. Sinon, vérifiez votre nom d'utilisateur et votre mot de passe. Sinon, répétez ces étapes.
 
-**NOTE: You will not be able to synchronize your calendar if you have two-factor authentication enabled. Follow the steps below to get an app password that can be used with the Calendar client app:**
+**REMARQUE : Vous ne pourrez pas synchroniser votre calendrier si l'authentification à deux facteurs est activée. Suivez les étapes ci-dessous pour obtenir un mot de passe d'application qui peut être utilisé avec l'application Calendar client:**
 
-1. Log into Nextcloud. Click on your user icon, then click on "settings".  
+1. Connectez-vous à Nextcloud. Cliquez sur votre icône d'utilisateur, puis cliquez sur "Paramètres".
 
-2. Click on "Security", then locate a button labeled "Generate app password". Next to this button, enter "Windows 10 Calendar app". Then, click the button and copy and paste the password. Use this password instead of your Nextcloud password for Step 8.
+2. Cliquez sur "Sécurité", puis localisez un bouton intitulé "Générer mot de passe de l'application". A côté de ce bouton, entrez "Windows 10 Calendar app". Ensuite, cliquez sur le bouton et copiez et collez le mot de passe. Utilisez ce mot de passe au lieu de votre mot de passe Nextcloud pour l'étape 8.
 
-Special thanks to this Reddit user for their post:
-https://www.reddit.com/r/Nextcloud/comments/5rcypb/using_the_windows_10_calendar_application_with/
+Un merci spécial à cet utilisateur de Reddit pour sa contribution :
+https://www.reddit.com/r/Nextcloud/comments/5rcypb/using_the_windows_10_calendar_application_with_with/
