@@ -1,6 +1,6 @@
-=======================================
+==========================
 Synchronizing with KDE PIM
-=======================================
+==========================
 
 KOrganizer and KAddressbook can synchronize data with a Nextcloud server.
 

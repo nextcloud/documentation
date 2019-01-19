@@ -1,8 +1,8 @@
 .. _webdavtrashbin:
 
-==================
-WebDAV Trashbin
-==================
+========
+Trashbin
+========
 
 Nextcloud makes the trashbin of a user available via the webdav endpoint.
 
@@ -41,4 +41,3 @@ Emptying the trashbin
 ---------------------
 
 Perform a delete on `https://cloud.example.com/remote.php/dav/trashbin/USER/trash`
-

@@ -19,7 +19,7 @@ This repository hosts three manuals:
 * **Administration Manual**
 * **Developers Manual**
 
-Please work in the appropriate branch: ``stable``-branches are for the respective release (e.g. 12.0 or 13.0), ``master`` is version 14.0.
+Please work in the appropriate branch: ``stable``-branches are for the respective release (e.g. 14.0 or 15.0), ``master`` is the latest version.
 
 Please wrap lines at 80 characters.
 
@@ -119,16 +119,6 @@ The Debian/Ubuntu way
 * sudo apt-get install latexmk
 * make user-manual-pdf
 * evince user_manual/_build/latex/NextcloudUserManual.pdf
-
-The Arch Linux way
-~~~~~~~~~~~~~~~~~~
-* sudo pacman -S python2-sphinx
-* sudo pacman -S extra/texlive-core
-* sudo pacman -S texlive-latexextra
-* sudo pip2 install rst2pdf sphinxcontrib-phpdomain
-* sudo ln -s /usr/bin/sphinx-build2 /usr/bin/sphinx-build
-* make user-manual-pdf
-* PDFVIEWER user_manual/_build/latex/NextcloudUserManual.pdf
 
 Windows
 ^^^^^^^

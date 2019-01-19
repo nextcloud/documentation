@@ -34,7 +34,7 @@ Show user backend, Send email to new users,** and **Show email address**.
 User accounts have the following properties:
 
 *Login Name (Username)*
-  The unique ID of an Nextcloud user, and it cannot be changed.
+  The unique ID of a Nextcloud user, and it cannot be changed.
 
 *Full Name*
   The user's display name that appears on file shares, the Nextcloud Web

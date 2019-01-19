@@ -58,7 +58,7 @@ Using a container
 -----------------
 
 .. note:: Please do use automatic dependency injection (see below). For most
-apps there is no need to register services manually.
+    apps there is no need to register services manually.
 
 Passing dependencies into the constructor rather than instantiating them in the
 constructor has the following drawback: Every line in the source code where

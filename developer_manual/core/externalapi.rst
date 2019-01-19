@@ -23,9 +23,11 @@ array holding the endpoint meta data.
 
   <?php
 
-  'ocs' => [
+  return [
+    'ocs' => [
       // Apps
       ['name' => 'Bar#getFoo', 'url' => '/foobar', 'verb' => 'GET'],
+    ],
   ];
 
 Returning data
@@ -33,18 +35,30 @@ Returning data
 
 Once the API backend has matched your URL, your callable function as defined in
 **BarController::getFoo** will be executed. The AppFramework will make sure that
-send parameters are provided to the method based on its declaration. To return
-data back to the client, you should return an instance of (a subclass of)
-:php:class:`OCP\AppFramework\Http\Response`, typically :php:class:`OCSResponse`.
-The API backend will then use this to construct the XML or JSON response.
+send parameters are provided to the method based on its declaration.
+
+Be sure to extend the ``OCP\AppFramework\OCSController`` from the AppFramework.
+Your functions then should returns a ``OCP\AppFramework\Http\DataResponse``. The
+AppFramework will then take care formatting the response properly.
+
+Exceptions
+^^^^^^^^^^
+
+To throw an exception to the user in the OCS response. You can throw an
+``OCP\AppFramework\OCS\OCSException``. You can set the message and code.
+
+There are 3 commonly used exceptions already available:
+
+* ``OCSBadRequestException``
+* ``OCSForbiddenException``
+* ``OCSNotFoundException``
 
 Authentication & basics
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Because REST is stateless you have to send user and password each time you access the API. Therefore running Nextcloud **with SSL is highly recommended**; otherwise **everyone in your network can log your credentials**::
+The requests to the OCS endpoint often have to be authenticated.
 
-    https://user:password@example.com/ocs/v1.php/apps/yourapp
-
+    ``curl -u user:password https://example.com/ocs/v2.php/apps/yourapp/foobar``
 
 Output
 ^^^^^^

@@ -138,7 +138,7 @@ can be abbreviated by using the **resources** key:
     <?php
     return [
         'resources' => [
-            'author' => [url' => '/authors'],
+            'author' => ['url' => '/authors'],
         ],
         'routes' => [
             // your other routes here

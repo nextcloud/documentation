@@ -1,9 +1,9 @@
-==================================================
-Thunderbird - synchronize addressbook and calendar
-==================================================
+==============================
+Synchronizing with Thunderbird
+==============================
 
-Addressbook
------------
+Contacts
+--------
 
 As someone who is new to Nextcloud and new to CardBook here is what you need in excruciating pithy detail to make this work:
 
@@ -35,11 +35,11 @@ https://cloud.nextcloud.com/remote.php/dav/addressbooks/users/daniel/Thunderbird
 .. image:: ../images/addressbook_name.png
 
 5. Once installed, synchronize your addressbook by clicking "Synchronize" in the top left corner of CardBook.
-You'll see your address book populate from Nextcloud! 
+You'll see your address book populate from Nextcloud!
 
 .. image:: ../images/synchronize_cardbook.png
 
-The rest of the details of dealing with Thunderbird CardBook are left to the reader... 
+The rest of the details of dealing with Thunderbird CardBook are left to the reader...
 
 Calendar
 --------
@@ -62,4 +62,4 @@ https://cloud.nextcloud.com/remote.php/dav/calendars/daniel/personal/
 
 .. image:: ../images/CalDAV_calendar.png
 
-The rest of the details of dealing with Thunderbird Calendar are left to the reader... 
+The rest of the details of dealing with Thunderbird Calendar are left to the reader...

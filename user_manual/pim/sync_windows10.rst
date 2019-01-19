@@ -1,11 +1,14 @@
-======================================
-Synchronizing with Windows 10 Calendar
-======================================
+=============================
+Synchronizing with Windows 10
+=============================
+
+Calendar
+--------
 
 1. In your browser, navigate to the Nextcloud Calendar app. Under "Settings & import", copy the "iOS/macOS CalDAV Address" into your clipboard.
 
 2. Launch the Windows 10 Calendar app. Then, click the settings icon (gear icon) and select "Manage accounts".
- 
+
 3. Click "Add account" and choose "iCloud".
 
 4. Enter an email, username and password. None of this information has to be valid-it will all be changed in the upcoming steps.
@@ -24,7 +27,7 @@ After following all these steps, your Nextcloud calendar should synchronize. If 
 
 **NOTE: You will not be able to synchronize your calendar if you have two-factor authentication enabled. Follow the steps below to get an app password that can be used with the Calendar client app:**
 
-1. Log into Nextcloud. Click on your user icon, then click on "settings".  
+1. Log into Nextcloud. Click on your user icon, then click on "settings".
 
 2. Click on "Security", then locate a button labeled "Generate app password". Next to this button, enter "Windows 10 Calendar app". Then, click the button and copy and paste the password. Use this password instead of your Nextcloud password for Step 8.
 

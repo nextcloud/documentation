@@ -11,7 +11,7 @@ After :doc:`you've set up the development environment <../general/devenv>` chang
 
     cd /var/www/nextcloud/apps
 
-Then create a skeleton app in the `app store <https://apps.nextcloud.com/developer/apps/generate>`_.
+Then create a skeleton app in the `app store <https://apps.nextcloud.com/developer/apps/generate>`_. This doesn't publish anything on the appstore yet, it just gives you a download.
 
 Enable the app
 --------------
