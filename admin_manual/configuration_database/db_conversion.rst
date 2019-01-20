@@ -69,5 +69,6 @@ Here is a list of known old tables:
 * oc_media_songs
 * oc_media_users
 * oc_permissions
+* oc_privatedata
 * oc_queuedtasks
 * oc_sharing
