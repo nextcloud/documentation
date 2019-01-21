@@ -1,6 +1,6 @@
-=======================================
+============================
 Synchronisation avec KDE PIM
-=======================================
+============================
 
 KOrganizer et KAddressbook peuvent synchoniser les données avec le serveur Nextcloud.
 
@@ -26,7 +26,7 @@ Pour créer un Application Mot de passe si vous avez activé l'authentification 
     .. image:: ../images/app_password_naming.png
 
     * Ensuirte cliquez sur ``create new App password``. Copiez/collez le mot de passe.
-    
+
 .. image:: ../images/app_password_created.png
 
 4. As Groupware Server, choose ownCloud or Nextcloud in the drop-down menu. Click next.
