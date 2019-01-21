@@ -42,6 +42,7 @@ $mapping = array(
     'developer-manual'        => '/developer_manual',
     'developer-theming'       => '/developer_manual/core/theming.html',
 
+    'user-2fa'                => '/user_manual/user_2fa.html',
     'user-encryption'         => '/user_manual/files/encrypting_files.html',
     'user-files'              => '/user_manual/files/index.html',
     'user-manual'             => '/user_manual',
