@@ -20,5 +20,11 @@ or otherwise ask for confirmation, before performing the heavy actions::
     This can take up to hours, depending on the number of files in your instance!
     Continue with the conversion (y/n)? [n]
 
+in a shared hosting environment you can add
+
+    --no-interaction
+
+as an argument to suppress the confirmation.
+
 .. note:: Similar to a normal update, you should shutdown your apache or nginx server or enable maintenance
           mode before running the command to avoid issues with your sync clients.
