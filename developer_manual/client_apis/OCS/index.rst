@@ -123,6 +123,25 @@ Values of the theming app are exposed though the capabilities API, allowing clie
 
 The background value can either be an URL to the background image or a hex color value.
 
+Direct Download
+---------------
+
+It might be requierd to give a 3rd party access to a file however you do not
+want to hand over credentials to the 3rd party. An example of this is playing
+files in an external media player on mobile devices.
+
+To solve this issue there is a way to request a unique public link to a single.
+This link will be valid for 24 hours after wards it will be removed.
+
+To obtain a direct link:
+
+.. code::
+
+	POST /ocs/v2.php/apps/dav/api/v1/direct
+
+With the :code:`fileId` in the body (so :code:`fileId=42` for example).
+This will then return you the link to use to obtain the file.
+
 Notifications
 -------------
 
