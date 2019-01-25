@@ -1138,6 +1138,8 @@ authentication servers such as LDAP::
  | user directories | 2  |
  +------------------+----+
 
+.. _group_commands_label: 
+
 Group commands
 -------------
 
