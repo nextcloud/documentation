@@ -19,7 +19,7 @@ If a public page is password protected by default we will show the normal authen
 page to enter the password.
 
 A public page can also call other endpoints. These endpoints operate very similarly
-witht he difference that if the user is not properly authenticated it will throw a 404.
+with the difference that if the user is not properly authenticated it will throw a 404.
 
 It is required that you have a parameter (probaby in your url) with the ``token``. As an example
 your ``routes.php`` could look like:
