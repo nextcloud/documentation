@@ -434,16 +434,14 @@ before. If you want to be notified in that case, set the
 Dav commands
 ------------
   
-A set of commands to create addressbooks, calendars, and to 
-migrate addressbooks from 8.2 when you upgrade to 9.0::
+A set of commands to create and manage addressbooks and calendars::
 
  dav
   dav:create-addressbook        Create a dav addressbook
   dav:create-calendar           Create a dav calendar
-  dav:migrate-addressbooks      Migrate addressbooks from the contacts  
-                                app to core
-  dav:migrate-calendars         Migrate calendars from the calendar app to 
-                                core
+  dav:list-calendars            List all calendars of a user
+  dav:move-calendar             Move a calendar from an user to another
+  dav:remove-invalid-shares     Remove invalid dav shares
   dav:sync-birthday-calendar    Synchronizes the birthday calendar
   dav:sync-system-addressbook   Synchronizes users to the system 
                                 addressbook
@@ -461,21 +459,20 @@ This example creates a new calendar for molly::
  
 Molly will immediately see these on her Calendar and Contacts pages.
 
-In 9.0, the CalDAV server has been integrated into core. Your existing 
-calendars and contacts should migrate automatically when you upgrade. If 
-something goes wrong you can try a manual migration. First delete any 
-partially-migrated calendars or addressbooks. Then run this 
-command to migrate user's contacts::
+``dav:lists-calendars [user]`` will display a table listing the calendars for an given user. 
+This example will list all calendars for user annie::
 
- sudo -u www-data php occ dav:migrate-addressbooks [user]
+ sudo -u www-data php occ dav:list-calendars annie
  
-Run this command to migrate calendars::
+``dav::move-calendar [name] [sourceuid] [destinationuid]`` allows the admin
+to move a calendar named ``name`` from an user ``sourceuid`` to the user 
+``destinationuid``. You can use the force option `-f` to enforce the move if there
+are conflicts with existing shares.
+This example will move calendar named personal from user dennis to user sabine::
+ 
+ sudo -u www-data php occ dav:move-calendar personal dennis sabine
 
- sudo -u www-data php occ dav:migrate-calendars [user]
- 
-See `ownCloud 9.0 - calendar migration analysis
-<http://morrisjobke.de/2016/03/07/ownCloud-9.0-calendar-migration-analysis/>`_ 
-for help with troubleshooting and reporting problems. 
+``dav:remove-invalid-shares`` will remove invalid shares created by a bug into the calendar app
 
 ``dav:sync-birthday-calendar`` adds all birthdays to your calendar from 
 addressbooks shared with you. This example syncs to your calendar from user 
