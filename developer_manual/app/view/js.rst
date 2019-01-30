@@ -93,3 +93,48 @@ Extending the "new" menu in the files app
 This will register a new menu entry in the "New" menu of the files app. The
 method ``attach()`` is called once the menu is built. This usually happens right
 after the click on the button.
+
+
+Loading initial state
+---------------------
+
+Often apps have some kind of initial state. Often the first thing a script does
+is querying an endpoint to obtain this initial state. This makes the user
+experience sub optimal as they have to wait for yet another request to finish
+loading.
+
+To provide the initial state in a standardized way quickly to the javascript
+Nextcloud provides an API. The API consists of a PHP part (that supplies the state)
+and a JS part (that fetches and parses the state).
+
+Providing the initial state with PHP
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Providing state in PHP is done via the ``\OCP\IInitialStateService``. This service
+has two methods you can use to provide the initial state.
+
+* ``provideInitialState(string $appName, string $key, $data)``: Use this method
+if you know for sure your state will be used. For example on the settings page
+of your app.
+* ``provideLazyInitialState(string $appName, string $key, Closure $closure)``:
+Use this method if you want to inject your state on a general page. For example
+the initial state of the notifications app. The callback will be invoked if and only if a template is rendered.
+
+You call both methods with the name of your app and a key. This is to scope
+the states properly. You will need both when retrieving the initial state in
+javascript.
+
+The data for the initial state is converted to JSON. So be sure that the
+data you provide (either in $data or as a return from the $closure) can be converted
+to JSON.
+
+Obtaining the initial state in JavaScript
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+To obtain the initial state in your JavaScript you have to only call one
+function
+
+.. code-block:: js
+
+    const state = OCP.InitialState.loadState('MyApp', 'MyState');
+
+Now state will contain the provided state which you can use as any variable. It
+is as simple as that.
