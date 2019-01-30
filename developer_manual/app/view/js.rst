@@ -117,7 +117,7 @@ if you know for sure your state will be used. For example on the settings page
 of your app.
 * ``provideLazyInitialState(string $appName, string $key, Closure $closure)``:
 Use this method if you want to inject your state on a general page. For example
-the initial state of the notifications app.
+the initial state of the notifications app. The callback will be invoked if and only if a template is rendered.
 
 You call both methods with the name of your app and a key. This is to scope
 the states properly. You will need both when retrieving the initial state in
