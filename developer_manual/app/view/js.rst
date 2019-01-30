@@ -104,7 +104,7 @@ experience sub optimal as they have to wait for yet another request to finish
 loading.
 
 To provide the initial state in a standardized way quickly to the javascript
-Nextcloud provides an API. The API consists of a PHP part (that supllies the state)
+Nextcloud provides an API. The API consists of a PHP part (that supplies the state)
 and a JS part (that fetches and parses the state).
 
 Providing the initial state with PHP
