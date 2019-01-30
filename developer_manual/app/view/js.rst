@@ -95,7 +95,7 @@ method ``attach()`` is called once the menu is built. This usually happens right
 after the click on the button.
 
 
-Loading Initial state
+Loading initial state
 ---------------------
 
 Often apps have some kind of initial state. Often the first thing a script does
