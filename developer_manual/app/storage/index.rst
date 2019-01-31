@@ -3,7 +3,7 @@ Storage and database
 ====================
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    migrations
    schema
