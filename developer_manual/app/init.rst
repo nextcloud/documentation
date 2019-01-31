@@ -25,7 +25,7 @@ Further pre-app configuration
 The :file:`appinfo/app.php` is the first file that is loaded and executed in Nextcloud. Depending on the purpose of the app it is usually used to setup things that need to be available on every request to the server, like :doc:`backgroundjobs` and :doc:`hooks` registrations. This is how an example :file:`appinfo/app.php` could look like:
 
 .. code-block:: php
-    
+
     <?php
 
     // execute OCA\MyApp\BackgroundJob\Task::run when cron is called
@@ -35,14 +35,31 @@ The :file:`appinfo/app.php` is the first file that is loaded and executed in Nex
     \OCP\Util::connectHook('OC_User', 'pre_deleteUser', 'OCA\MyApp\Hooks\User', 'deleteUser');
 
 
-Although it is also possible to include :doc:`view/js` or :doc:`view/css` for other apps by placing the **addScript** or **addStyle** functions inside this file, it is strongly discouraged, because the file is loaded on each request (also such requests that do not return HTML, but e.g. json or webdav).
+Initialization events
+---------------------
+
+Often apps do not need to load their JavaScript and CSS on every page. For this
+purpose there are several events emitted that an app can act upon.
+
+* `OCA\Files::loadAdditionalScripts` (string): loaded on the files list page
+* `OCA\Files_Sharing::loadAdditionalScripts` (string): loaded on the public sharing page
+* `OCA\Files_Sharing::loadAdditionalScripts::publicShareAuth` (string): loaded on the public share authentication page
+* `OCP\AppFramework\Http\TemplateResponse::EVENT_LOAD_ADDITIONAL_SCRIPTS` (constant): loaded when a template response is finished
+* `OCP\AppFramework\Http\TemplateResponse::EVENT_LOAD_ADDITIONAL_SCRIPTS_LOGGEDIN` (constant): loaded when a template response is finished for a logged in user
 
 .. code-block:: php
 
     <?php
 
-    \OCP\Util::addScript('myapp', 'script');  // include js/script.js for every app
-    \OCP\Util::addStyle('myapp', 'style');  // include css/style.css for every app
+    $dispatcher = \OC::$server->getEventDispatcher();
+
+    $dispatcher->addListener(
+        OCP\AppFramework\Http\TemplateResponse::EVENT_LOAD_ADDITIONAL_SCRIPTS,
+        function() {
+            \OCP\Util::addScript('myapp', 'script');
+            \OCP\Util::addStyle('myapp', 'style');
+        }
+    );
 
 Best practice
 -------------
@@ -68,11 +85,11 @@ lib/AppInfo/Application.php
 
     <?php
     namespace OCA\MyApp\AppInfo;
-    
+
     use OCP\AppFramework\App;
 
     class Application extends App {
-        
+
         public function registerHooks() {
             \OCP\Util::connectHook('OC_User', 'pre_deleteUser', 'OCA\MyApp\Hooks\User', 'deleteUser');
         }
