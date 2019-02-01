@@ -2,8 +2,8 @@
 Using the calendar app
 ======================
 
-The Calendar app is not enabled by default and needs to be installed separately
-from our App Store. Find out more about installing and managing apps over here.
+.. note:: The calendar app is not enabled by default and needs to be installed
+          separately from our App Store. Please ask your Administrator for it.
 
 The Nextcloud Calendar app works similar to other calendar applications you can
 sync your Nextcloud calendars and events with.
@@ -43,34 +43,26 @@ previous calendar, creating a new calendar is the way you should go.
 
 .. figure:: ../images/calendar_create.png
 
-1. Click on ``+ New Calendar`  in the left sidebar.
+1. Click on `+ New Calendar` in the left sidebar.
 
 2. Type in a name for your new calendar, e.g. "Work", "Home" or "Studies".
 
-3. After clicking on the checkmark, your new calendar is created and can be synced
-across your devices, filled with new events and shared with your friends and colleagues.
+3. After clicking on the checkmark, your new calendar is created and can be
+synced across your devices, filled with new events and shared with your friends
+and colleagues.
 
-Edit a Calendar
-~~~~~~~~~~~~~~~
+Edit, Download or Delete a Calendar
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Sometimes you may want to change the color or the entire name of a previous
-imported or created calendar.
+imported or created calendar. If you do not longer need the whole calendar at
+all you can also delete it from your Nextcloud server.
 
-.. figure:: ../images/calendar_edit.png
+.. figure:: ../images/calendar_edit-export-delete.png
 
 1. Click on the three-dot-menu of the respective calendar.
 
-2. Select ``Edit``
-
-Export a Calendar
-~~~~~~~~~~~~~~~~~
-
-TBD
-
-Delete a Calendar
-~~~~~~~~~~~~~~~~~
-
-TBD
+2. Select `Edit`, `Download` or `Delete`.
 
 Subscribe to a Calendar
 ~~~~~~~~~~~~~~~~~~~~~~~
