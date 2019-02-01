@@ -1,6 +1,6 @@
-===========================
-Reverse proxy configuration
-===========================
+=============
+Reverse proxy
+=============
 
 Nextcloud can be run through a reverse proxy, which can cache static assets such
 as images, CSS or JS files, move the load of handling HTTPS to a different

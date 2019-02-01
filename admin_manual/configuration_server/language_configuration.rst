@@ -1,6 +1,6 @@
-======================
-Language configuration
-======================
+=================
+Language & Locale
+=================
 
 Default language
 ----------------

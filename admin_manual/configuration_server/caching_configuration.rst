@@ -1,6 +1,6 @@
-==========================
-Configuring memory caching
-==========================
+==============
+Memory caching
+==============
 
 You can significantly improve your Nextcloud server performance with memory 
 caching, where frequently-requested objects are stored in memory for faster 

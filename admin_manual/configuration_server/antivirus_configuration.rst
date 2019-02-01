@@ -1,6 +1,6 @@
-===============================
-Antivirus scanner configuration
-===============================
+=================
+Antivirus scanner
+=================
 
 You can configure your Nextcloud server to automatically run a virus scan on
 newly-uploaded files with the Antivirus app for Files. The Antivirus app for
