@@ -34,7 +34,7 @@ favicons and a header logo depending on the current logo and theming color.
 This requires the following additional dependencies:
 
  - PHP module ``imagick``
- - SVG support for imagick (e.g. ``libmagickcore5-extra``)
+ - SVG support for imagick (e.g. ``libmagickcore-6.q16-3-extra`` on Debian 9 and Ubuntu 18.04)
 
 .. note:: In the advanced options of the theming app you are able to set a custom
    favicon in case you do not want to use the same logo resources you have set above
