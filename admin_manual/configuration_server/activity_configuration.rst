@@ -1,6 +1,6 @@
-============================
-Configuring the activity app
-============================
+============
+Activity app
+============
 
 You can configure your Nextcloud server to automatically send out e-mail notifications
 to your users for various events like:

@@ -1,6 +1,6 @@
-========================
-Defining background jobs
-========================
+===============
+Background jobs
+===============
 A system like Nextcloud sometimes requires tasks to be done on a regular basis
 without the need for user interaction or hindering Nextcloud performance. For
 that purpose, as a system administrator, you can define background jobs (for

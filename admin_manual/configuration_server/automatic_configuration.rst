@@ -1,6 +1,6 @@
-=============================
-Automatic configuration setup
-=============================
+===============
+Automatic setup
+===============
 
 If you need to install Nextcloud on multiple servers, you normally do not want
 to set up each instance separately as described in 

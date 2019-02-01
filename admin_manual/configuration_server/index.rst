@@ -1,6 +1,6 @@
-====================
-Server configuration
-====================
+=======================
+Nextcloud configuration
+=======================
 
 .. toctree::
    :maxdepth: 2

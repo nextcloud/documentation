@@ -1,6 +1,6 @@
-============
-Installation
-============
+=====================================
+Installation and server configuration
+=====================================
 
 .. toctree::
    :maxdepth: 2
