@@ -14,3 +14,4 @@ Installation
    php_72_installation
    selinux_configuration
    nginx
+   server_tuning

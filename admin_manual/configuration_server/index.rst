@@ -19,7 +19,6 @@ Server configuration
    antivirus_configuration
    reverse_proxy_configuration
    automatic_configuration
-   server_tuning
    theming
    oauth2
 
