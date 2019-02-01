@@ -5,7 +5,7 @@ Server tuning
 Using cron to perform background jobs
 -------------------------------------
 
-See :doc:`background_jobs_configuration` for a description and the 
+See :doc:`../configuration_server/background_jobs_configuration` for a description and the
 benefits.
 
 Reducing system load
@@ -28,7 +28,7 @@ Caching
 
 Caching improves performance by storing data, code, and other objects in memory. 
 Memory cache configuration for the Nextcloud server must be installed and configured.
-See :doc:`caching_configuration`.
+See :doc:`../configuration_server/caching_configuration`.
 
 Using MariaDB/MySQL instead of SQLite
 -------------------------------------

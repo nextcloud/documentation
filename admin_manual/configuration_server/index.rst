@@ -1,6 +1,6 @@
-====================
-Server configuration
-====================
+=======================
+Nextcloud configuration
+=======================
 
 .. toctree::
    :maxdepth: 2
@@ -15,11 +15,9 @@ Server configuration
    external_sites
    language_configuration
    logging_configuration
-   harden_server
    antivirus_configuration
    reverse_proxy_configuration
    automatic_configuration
-   server_tuning
    theming
    oauth2
 
