@@ -13,6 +13,10 @@ You can specify any number of parameters in this file.  Any unspecified paramete
 
 The :file:`config/autoconfig.php` is automatically removed after the initial configuration has been applied.
 
+.. note:: Keep in mind that the automatic configuration does not eliminate the need for
+   creating the  database user and database in advance, as described in
+   :doc:`../configuration_database/linux_database_configuration`.
+
 Parameters
 ----------
 When configuring parameters, you must understand that two parameters are named differently in this configuration file when compared to the standard :file:`config.php` file.
@@ -73,10 +77,6 @@ Using the following parameter settings, the "Finish setup" screen requests data 
       "dbhost"        => "localhost",
       "dbtableprefix" => "",
     );
-
-.. note:: Keep in mind that the automatic configuration does not eliminate the need for 
-   creating the  database user and database in advance, as described in 
-   :doc:`../configuration_database/linux_database_configuration`.
 
 PostgreSQL database
 ^^^^^^^^^^^^^^^^^^^
