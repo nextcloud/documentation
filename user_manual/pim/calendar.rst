@@ -11,7 +11,7 @@ sync your Nextcloud calendars and events with.
 When you first access the Calendar app, a default first calendar will be
 pre-generated for you.
 
-.. figure:: ../images/calendar_empty.png
+.. figure:: ./images/calendar_application.png
 
 Managing your calendars
 -----------------------
@@ -22,7 +22,7 @@ Import a Calendar
 If you want to transfer your calendar and their respective events to your Nextcloud
 instance, importing is the best way to do so.
 
-.. figure:: ../images/calendar_import.png
+.. figure:: ./images/calendar_settings.png
 
 1. Click on the settings-icon labeled with "Settings & Import" at the left-bottom.
 
@@ -33,7 +33,7 @@ local device to upload.
 is.
 
 .. note:: The Nextcloud Calendar application only supports iCalendar-compatible
-          ``.ics`-files, defined in RFC 2445.
+          `.ics`-files, defined in RFC 2445.
 
 Create a new Calendar
 ~~~~~~~~~~~~~~~~~~~~~
@@ -55,14 +55,20 @@ Edit, Download or Delete a Calendar
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Sometimes you may want to change the color or the entire name of a previous
-imported or created calendar. If you do not longer need the whole calendar at
-all you can also delete it from your Nextcloud server.
+imported or created calendar. You may also want to export it to your local
+hard drive or delete it forever.
 
-.. figure:: ../images/calendar_edit-export-delete.png
+.. note:: Please keep in mind that deleting a calendar is a irreversible action.
+          After deletion, there is no way of restoring the calendar unless you
+          have a local backup.
+
+.. figure:: ./images/calendar_dropdown.png
 
 1. Click on the three-dot-menu of the respective calendar.
 
-2. Select `Edit`, `Download` or `Delete`.
+.. figure:: ./images/calendar_editing.png
+
+2. Click on `Edit`, `Download` or `Delete`.
 
 Subscribe to a Calendar
 ~~~~~~~~~~~~~~~~~~~~~~~
