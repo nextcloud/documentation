@@ -18,8 +18,7 @@ allow access against the owners will.
 Example
 -------
 
-After installing the Files automated tagging app as described in
-:doc:`../installation/apps_management_installation`
+After installing the Files automated tagging app as described in :doc:`../apps_management`
 navigate to the configuration and locate the Workflow settings.
 
     .. figure:: images/automated_tagging_sample_rule.png

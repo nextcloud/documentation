@@ -8,8 +8,7 @@ are tagged with a collaborative tag and have a certain age.
 Example
 -------
 
-After installing the Retention app as described in
-:doc:`../installation/apps_management_installation`
+After installing the Retention app as described in :doc:`../apps_management`
 navigate to the configuration and locate the Workflow settings.
 
     .. figure:: images/retention_sample.png

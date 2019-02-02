@@ -1,6 +1,6 @@
-=============================
-Automatic configuration setup
-=============================
+===============
+Automatic setup
+===============
 
 If you need to install Nextcloud on multiple servers, you normally do not want
 to set up each instance separately as described in 
@@ -12,6 +12,10 @@ To take advantage of this feature, you must create a configuration file, called
 You can specify any number of parameters in this file.  Any unspecified parameters appear on the "Finish setup" screen when you first launch Nextcloud.
 
 The :file:`config/autoconfig.php` is automatically removed after the initial configuration has been applied.
+
+.. note:: Keep in mind that the automatic configuration does not eliminate the need for
+   creating the  database user and database in advance, as described in
+   :doc:`../configuration_database/linux_database_configuration`.
 
 Parameters
 ----------
@@ -73,10 +77,6 @@ Using the following parameter settings, the "Finish setup" screen requests data 
       "dbhost"        => "localhost",
       "dbtableprefix" => "",
     );
-
-.. note:: Keep in mind that the automatic configuration does not eliminate the need for 
-   creating the  database user and database in advance, as described in 
-   :doc:`../configuration_database/linux_database_configuration`.
 
 PostgreSQL database
 ^^^^^^^^^^^^^^^^^^^

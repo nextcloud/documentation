@@ -264,7 +264,7 @@ The other two commands are:
 * ``background:cron``
 * ``background:webcron``
 
-See :doc:`../configuration_server/background_jobs_configuration` to learn more.
+See :doc:`background_jobs_configuration` to learn more.
 
 .. _config_commands_label:
 

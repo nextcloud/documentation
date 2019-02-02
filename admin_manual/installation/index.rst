@@ -1,6 +1,6 @@
-============
-Installation
-============
+=====================================
+Installation and server configuration
+=====================================
 
 .. toctree::
    :maxdepth: 2
@@ -14,3 +14,5 @@ Installation
    php_72_installation
    selinux_configuration
    nginx
+   harden_server
+   server_tuning
