@@ -6,7 +6,6 @@ Server
 ------
 
 For best performance, stability and functionality we have documented some recommendations for running a Nextcloud server.
-The Nextcloud server is not compatible with Windows and macOS.
 
 .. note:: If you plan a setup for your organization and you rely on professional deployment consulting (e.g. efficient and
           reliable scaling) and support, we strongly recommend you to check out our `enterprise support
@@ -30,9 +29,9 @@ The Nextcloud server is not compatible with Windows and macOS.
 | Webserver        | - **Apache 2.4 with** ``mod_php`` **or** ``php-fpm`` (recommended)    |
 |                  | - nginx with ``php-fpm``                                              |
 +------------------+-----------------------------------------------------------------------+
-| PHP Runtime      | - **7.1**                                                             |
-|                  | - **7.2**                                                             |
-|                  | - **7.3**                                                             |
+| PHP Runtime      | - 7.1                                                                 |
+|                  | - **7.2** (*recommended*)                                             |
+|                  | - **7.3** (*recommended*)                                             |
 +------------------+-----------------------------------------------------------------------+
 
 See :doc:`source_installation` for minimum PHP-modules and additional software for installing Nextcloud.
