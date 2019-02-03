@@ -26,14 +26,14 @@ instance, importing is the best way to do so.
 
 1. Click on the settings-icon labeled with `Settings & Import` at the left-bottom.
 
-2. After clicking on `+ Import Calendar` you can select a calendar file from your
-local device to upload.
+2. After clicking on `+ Import Calendar` you can select one or more calendar files
+   from your local device to upload.
 
 3. The upload can take some time and depends on how big the calendar you import
-is.
+   is.
 
 .. note:: The Nextcloud Calendar application only supports iCalendar-compatible
-          `.ics`-files, defined in RFC 2445.
+          `.ics`-files, defined in RFC 5545.
 
 Create a new Calendar
 ~~~~~~~~~~~~~~~~~~~~~
@@ -48,8 +48,8 @@ previous calendar, creating a new calendar is the way you should go.
 2. Type in a name for your new calendar, e.g. "Work", "Home" or "Studies".
 
 3. After clicking on the checkmark, your new calendar is created and can be
-synced across your devices, filled with new events and shared with your friends
-and colleagues.
+   synced across your devices, filled with new events and shared with your friends
+   and colleagues.
 
 Edit, Download or Delete a Calendar
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -132,12 +132,9 @@ Birthday calendar
 -----------------
 
 The birthday calendar is a auto-generated calendar which will automatically
-fetch the birthdays from your contacts.
-
-- You can not delete this calendar by your own. It will be re-generated after
-  some minutes.
-- The only way to edit this calendar is by filing your contacts with birthday
-  dates. You can not directly edit this calendar from the calendar-app.
+fetch the birthdays from your contacts. The only way to edit this calendar is by
+filing your contacts with birthday dates. You can not directly edit this calendar
+from the calendar-app.
 
 .. note:: If you do not see the birthday calendar, your Administrator may has
           disabled this for your server.
