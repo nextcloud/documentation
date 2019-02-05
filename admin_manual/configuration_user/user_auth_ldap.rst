@@ -751,3 +751,11 @@ is offline and will not try to connect again for the time specified in **Cache
 Time-To-Live**. If you have a backup server configured Nextcloud will connect to
 it instead. When you have scheduled downtime, check **Disable Main Server**  to
 avoid unnecessary connection attempts.
+
+Note
+----
+
+When a LDAP object's name or surname, that is display name attribute, by default 
+"displayname", is left empty, Nextcloud will treat it as an empty object, therefore
+no results from this user or AD-Object will be shown to avoid gathering of 
+technical accounts.
