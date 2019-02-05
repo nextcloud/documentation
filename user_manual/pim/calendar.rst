@@ -11,7 +11,7 @@ sync your Nextcloud calendars and events with.
 When you first access the Calendar app, a default first calendar will be
 pre-generated for you.
 
-.. figure:: ./images/calendar_application.png
+.. figure:: images/calendar_application.png
 
 Managing your calendars
 -----------------------
@@ -22,7 +22,8 @@ Import a Calendar
 If you want to transfer your calendar and their respective events to your Nextcloud
 instance, importing is the best way to do so.
 
-.. figure:: ./images/calendar_settings.png
+.. figure:: images/calendar_settings.png
+            :scale: 50%
 
 1. Click on the settings-icon labeled with ``Settings & Import`` at the left-bottom.
 
@@ -41,7 +42,7 @@ Create a new Calendar
 If you plan to setup a new calendar without transferring any old data from your
 previous calendar, creating a new calendar is the way you should go.
 
-.. figure:: ../images/calendar_create.gif
+.. figure:: images/calendar_create.gif
 
 1. Click on ``+ New Calendar`` in the left sidebar.
 
@@ -62,11 +63,13 @@ hard drive or delete it forever.
           After deletion, there is no way of restoring the calendar unless you
           have a local backup.
 
-.. figure:: ./images/calendar_dropdown.png
+.. figure:: images/calendar_dropdown.png
+            :scale: 50%
 
 1. Click on the three-dot-menu of the respective calendar.
 
-.. figure:: ./images/calendar_editing.png
+.. figure:: images/calendar_editing.png
+            :scale: 50%
 
 2. Click on ``Edit``, ``Download`` or ``Delete``.
 
@@ -93,11 +96,11 @@ Events can be created by clicking in the area when the event is scheduled.
 In the day- and week-view of the calendar you just click, pull and left your
 cursor over the area when the event is taking place.
 
-.. figure:: ./images/calendar_new-event_week.gif
+.. figure:: images/calendar_new-event_week.gif
 
 The month-view only requires a single click into the area of the specific day.
 
-.. figure:: ./images/calendar_new-event_month.gif
+.. figure:: images/calendar_new-event_month.gif
 
 After that, you can type in the events name (e.g. **Meeting with Lukas**), choose
 the calendar in which you want to choose the event (e.g. **Personal**, **Work**)
@@ -107,7 +110,7 @@ If you want to edit advanced details such as the **Location**, a **Description**
 **Attendees**, **Reminders** or to set the event as a repeating-event click on
 the ``More...``-button to open the advanced sidebar-editor.
 
-.. figure:: ./images/calendar/new-event_sidebar.png
+.. figure:: images/calendar/new-event_sidebar.png
 
 .. note:: If you always want to open the advanced sidebar-editor instead of the
           simple event editor popup, you can set a ``Skip simple event
