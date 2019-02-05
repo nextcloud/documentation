@@ -24,16 +24,16 @@ instance, importing is the best way to do so.
 
 .. figure:: ./images/calendar_settings.png
 
-1. Click on the settings-icon labeled with `Settings & Import` at the left-bottom.
+1. Click on the settings-icon labeled with ``Settings & Import`` at the left-bottom.
 
-2. After clicking on `+ Import Calendar` you can select one or more calendar files
+2. After clicking on ``+ Import Calendar`` you can select one or more calendar files
    from your local device to upload.
 
 3. The upload can take some time and depends on how big the calendar you import
    is.
 
 .. note:: The Nextcloud Calendar application only supports iCalendar-compatible
-          `.ics`-files, defined in RFC 5545.
+          ``.ics``-files, defined in RFC 5545.
 
 Create a new Calendar
 ~~~~~~~~~~~~~~~~~~~~~
@@ -43,7 +43,7 @@ previous calendar, creating a new calendar is the way you should go.
 
 .. figure:: ../images/calendar_create.png
 
-1. Click on `+ New Calendar` in the left sidebar.
+1. Click on ``+ New Calendar`` in the left sidebar.
 
 2. Type in a name for your new calendar, e.g. "Work", "Home" or "Studies".
 
@@ -68,7 +68,7 @@ hard drive or delete it forever.
 
 .. figure:: ./images/calendar_editing.png
 
-2. Click on `Edit`, `Download` or `Delete`.
+2. Click on ``Edit``, ``Download`` or ``Delete``.
 
 Subscribe to a Calendar
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -78,7 +78,7 @@ supporting this interoperable standard (RFC 5545) we made Nextcloud calendar
 compatible to Google Calendar, Apple iCloud and many other calendar-servers
 you can exchange your calendars with.
 
-1. Click on `+ New Subscription` in the left sidebar.
+1. Click on ``+ New Subscription`` in the left sidebar.
 2. Type in the link of the shared calendar you want to subscribe to.
 
 Finished. Your calendar subscriptions will be updated regularly.
@@ -105,27 +105,27 @@ check and concretize the time span or set the event as all-day event.
 
 If you want to edit advanced details such as the **Location**, a **Description**,
 **Attendees**, **Reminders** or to set the event as a repeating-event click on
-the `More...`-button to open the advanced sidebar-editor.
+the ``More...``-button to open the advanced sidebar-editor.
 
 .. figure:: ./images/calendar/new-event_sidebar.png
 
 .. note:: If you always want to open the advanced sidebar-editor instead of the
-          simple event editor popup, you can set a `Skip simple event
-          editor`-checkmark in the `Settings & Import`-section of the app.
+          simple event editor popup, you can set a ``Skip simple event
+          editor``-checkmark in the ``Settings & Import``-section of the app.
 
-Clicking on the blue `Create`-button will finally create the event.
+Clicking on the blue ``Create``-button will finally create the event.
 
 Edit or Delete an event
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 If you want to edit or delete a specific event, you just need to click on it.
 After that you will be able to re-set all of the events details and open the
-advanced sidebar-editor by clicking on `More...`.
+advanced sidebar-editor by clicking on ``More...``.
 
-Clicking on the blue `Update`-button will update the event. Clicking on the
-`Cancel`-button will not save your edits.
+Clicking on the blue ``Update``-button will update the event. Clicking on the
+``Cancel``-button will not save your edits.
 
-If you click on the red `Delete`-button the event will be removed from your
+If you click on the red ``Delete``-button the event will be removed from your
 calendar.
 
 Birthday calendar
