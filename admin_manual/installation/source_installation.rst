@@ -292,7 +292,7 @@ Next install the PHP modules needed for this install. Remember, because this is 
 
     yum install -y php72w php72w-cli php72w-common php72w-curl php72w-gd \
     php72w-mbstring php72w-mysqlnd php72w-process php72w-xml php72w-zip \
-    php72w-opcache php72w-pecl-apcu php72w-intl php72w-pecl-redis
+    php72w-opcache php72w-pecl-apcu php72w-intl php72w-pecl-redis php72w-pecl-imagick
 
 **Database**
 
