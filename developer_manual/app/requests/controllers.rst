@@ -482,7 +482,7 @@ will be shown in the top right corner of the public page.
     class PageController extends Controller {
 
         public function index() {
-            $template = PublicTemplateResponse($this->appName, 'main', []);
+            $template = new PublicTemplateResponse($this->appName, 'main', []);
             $template->setHeaderTitle('Public page');
             $template->setHeaderDetails('some details');
             $response->setHeaderActions([
