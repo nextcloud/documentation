@@ -60,7 +60,7 @@ The class to be used is :code:`\\OC\\Files\\ObjectStore\\Swift`
 ::
 
 	'objectstore' => array(
-		'class' => 'OC\\Files\\ObjectStore\\Swift',
+		'class' => '\\OC\\Files\\ObjectStore\\Swift',
 		'arguments' => array(
 			'username' => 'username',
 			'password' => 'Secr3tPaSSWoRdt7',
@@ -91,7 +91,7 @@ The class to be used is :code:`\\OC\\Files\\ObjectStore\\S3`
 ::
 
 	'objectstore' => array(
-		'class' => 'OC\\Files\\ObjectStore\\S3',
+		'class' => '\\OC\\Files\\ObjectStore\\S3',
 		'arguments' => array(
 			'bucket' => 'nextcloud',
 			'autocreate' => true,
