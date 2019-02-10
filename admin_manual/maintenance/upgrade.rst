@@ -96,7 +96,7 @@ Manual steps during upgrade
 ---------------------------
 
 Some operation can be quite time consuming. Therefore we decided not to add them
-the the normal upgrade process. We recommend to run them manually after the upgrade
+to the normal upgrade process. We recommend to run them manually after the upgrade
 was completed. Below you find a list of this commands.
 
 Upgrading to Nextcloud 13
