@@ -41,7 +41,7 @@ Create a new Calendar
 If you plan to setup a new calendar without transferring any old data from your
 previous calendar, creating a new calendar is the way you should go.
 
-.. figure:: ../images/calendar_create.png
+.. figure:: ../images/calendar_create.gif
 
 1. Click on `+ New Calendar` in the left sidebar.
 
