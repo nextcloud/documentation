@@ -110,8 +110,6 @@ If you want to edit advanced details such as the **Location**, a **Description**
 **Attendees**, **Reminders** or to set the event as a repeating-event click on
 the ``More...``-button to open the advanced sidebar-editor.
 
-.. figure:: images/calendar/new-event_sidebar.png
-
 .. note:: If you always want to open the advanced sidebar-editor instead of the
           simple event editor popup, you can set a ``Skip simple event
           editor``-checkmark in the ``Settings & Import``-section of the app.
