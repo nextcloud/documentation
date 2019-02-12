@@ -13,7 +13,7 @@ To upgrade to PHP 7.2, you must use the Software Collections (SCL) repository to
  
 Then install PHP 7.2 and these modules::
 
- yum install rh-php72 rh-php72-php rh-php72-php-gd rh-php72-php-mbstring rh-php72-php-intl
+ yum install rh-php72 rh-php72-php rh-php72-php-gd rh-php72-php-mbstring rh-php72-php-intl rh-php72-php-pecl-apcu
 
 You must also install the updated database module for your database. This installs the new PHP 7.2 module for MySQL/MariaDB:: 
 
