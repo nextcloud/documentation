@@ -69,5 +69,6 @@ Here is a list of known old tables:
 * oc_media_songs
 * oc_media_users
 * oc_permissions
+* oc_privatedata - this table was later added again by the app `privatedata` (https://apps.nextcloud.com/apps/privatedata) and is safe to be removed if that app is not enabled
 * oc_queuedtasks
 * oc_sharing
