@@ -289,11 +289,21 @@ Make sure the apache web service is enabled and started::
 
 Next install the PHP modules needed for this install. Remember, because this is a limited basic install, we only install the neccessary modules, not all of them. If you are making a more complete install, please refer to PHP module list at the top of this page.::
 
-    rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+    yum install -y centos-release-scl
+    yum install -y rh-php72 rh-php72-php rh-php72-php-gd rh-php72-php-mbstring \
+    rh-php72-php-intl rh-php72-php-pecl-apcu rh-php72-php-mysqlnd rh-php72-php-pecl-redis \
+    rh-php72-php-opcache rh-php72-php-imagick
 
-    yum install -y php72w php72w-cli php72w-common php72w-curl php72w-gd \
-    php72w-mbstring php72w-mysqlnd php72w-process php72w-xml php72w-zip \
-    php72w-opcache php72w-pecl-apcu php72w-intl php72w-pecl-redis php72w-pecl-imagick
+Next you will need to create a few symlinks::
+
+    ln -s /opt/rh/httpd24/root/etc/httpd/conf.d/rh-php72-php.conf /etc/httpd/conf.d/
+    ln -s /opt/rh/httpd24/root/etc/httpd/conf.modules.d/15-rh-php72-php.conf /etc/httpd/conf.modules.d/
+    ln -s /opt/rh/httpd24/root/etc/httpd/modules/librh-php72-php7.so /etc/httpd/modules/
+    
+This next symlink will give you the opportunity to be able to invoke ``php`` from anywhere in terminal, including for ``occ`` commands::
+
+    ln -s /opt/rh/rh-php72/root/bin/php /usr/bin/php
+
 
 **Database**
 
@@ -305,6 +315,8 @@ Make sure the database service is enabled to start at boot time.::
 
     systemctl enable mariadb.service
     systemctl start mariadb.service
+
+After you have done this, make sure you create a database with a username and password so that Nextcloud will have access to it. In the docs, refer to the Database configuration part, specifically about MariaDB. There is a complete write-up on how to setup the database.
 
 **Installing Nextcloud**
 
@@ -385,7 +397,7 @@ If you need more SELinux configs, refer to the above-mentioned URL, return to th
 
 Once done with with SELinux, please head over to ``http://your.server.com/nextcloud`` and follow the steps as found :doc:`../installation/installation_wizard`, where it will explain to you exactly how to proceed with the final part of the install, which is done as admin user through your web browser.
 
-.. note:: If you use this tutorial, and you see warnings in the web browser after installation about ``OPcache`` not being enabled or configured correctly, you need to make the suggested changes in ``/etc/php.d/opcache.ini`` for the errors to disappear. These warnings will be on the Admin page, under Basic settings.
+.. note:: If you use this tutorial, and you see warnings in the web browser after installation about ``OPcache`` not being enabled or configured correctly, you need to make the suggested changes in ``/etc/opt/rh/rh-php72/php.d/10-opcache.ini`` for the errors to disappear. These warnings will be on the Admin page, under Basic settings.
 
 Because we used ``Redis`` as a memcache, you will need a config similar to the following example in ``/var/www/html/nextcloud/config/config.php`` which is auto-generated when you run the online installation wizard mentioned earlier.
 
