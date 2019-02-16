@@ -125,7 +125,7 @@ VirtualHost file::
 
 .. warning::
    We recommend the additional setting ``; preload`` to be added to that header.
-   Then the domain will be added to an hardcoded list that is shipped with all
+   Then the domain will be added to a hardcoded list that is shipped with all
    major browsers and enforce HTTPS upon those domains. See the `HSTS preload
    website for more information <https://hstspreload.org/>`_. Due to the policy
    of this list you need to add it to the above example for yourself once you
