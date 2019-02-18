@@ -130,7 +130,7 @@ webroot of your nginx installation. In this example it is
           deny all;
       }
 
-      location ~ ^\/(?:index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|ocs-provider\/.+)\.php(?:$|\/) {
+      location ~ ^\/(?:index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|ocs-provider\/.+|ocm-provider\/.+)\.php(?:$|\/) {
           fastcgi_split_path_info ^(.+?\.php)(\/.*|)$;
           include fastcgi_params;
           fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
@@ -144,7 +144,7 @@ webroot of your nginx installation. In this example it is
           fastcgi_request_buffering off;
       }
 
-      location ~ ^\/(?:updater|ocs-provider)(?:$|\/) {
+      location ~ ^\/(?:updater|ocs-provider|ocm-provider)(?:$|\/) {
           try_files $uri/ =404;
           index index.php;
       }
@@ -287,7 +287,7 @@ your nginx installation.
               deny all;
           }
 
-          location ~ ^\/nextcloud\/(?:index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|ocs-provider\/.+)\.php(?:$|\/) {
+          location ~ ^\/nextcloud\/(?:index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|ocs-provider\/.+|ocm-provider\/.+)\.php(?:$|\/) {
               fastcgi_split_path_info ^(.+?\.php)(\/.*|)$;
               include fastcgi_params;
               fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
@@ -301,7 +301,7 @@ your nginx installation.
               fastcgi_request_buffering off;
           }
 
-          location ~ ^\/nextcloud\/(?:updater|ocs-provider)(?:$|\/) {
+          location ~ ^\/nextcloud\/(?:updater|ocs-provider|ocm-provider)(?:$|\/) {
               try_files $uri/ =404;
               index index.php;
           }
