@@ -34,21 +34,15 @@ Overwrite parameters
 
 The automatic hostname, protocol or webroot detection of Nextcloud can fail in
 certain reverse proxy situations. This configuration allows the automatic detection
-to be manually overridden.
+to be manually overridden. If Nextcloud fails to automatically detect the hostname, protocol 
+or webroot you can use the **overwrite** parameters inside the :file:`config/config.php`.
 
-If Nextcloud fails to automatically detect the hostname, protocol or webroot
-you can use the **overwrite** parameters inside the :file:`config/config.php`.
-The **overwritehost** parameter is used to set the hostname of the proxy. You
-can also specify a port. The **overwriteprotocol** parameter is used to set the
-protocol of the proxy. You can choose between the two options **http** and
-**https**. The **overwritewebroot** parameter is used to set the absolute web
-path of the proxy to the Nextcloud folder. When you want to keep the automatic
-detection of one of the three parameters you can leave the value empty or don't
-set it. The **overwritecondaddr** parameter is used to overwrite the values
-dependent on the remote address. The value must be a **regular expression** of
-the IP addresses of the proxy. This is useful when you use a reverse SSL proxy
-only for https access and you want to use the automatic detection for http
-access.
+* :file:`overwritehost` set the hostname of the proxy. You can also specify a port.
+* :file:`overwriteprotocol` set the protocol of the proxy. You can choose between the two options **http** and **https**.
+* :file:`overwritewebroot` set the absolute web path of the proxy to the Nextcloud folder.
+* :file:`overwritecondaddr` overwrite the values dependent on the remote address. The value must be a **regular expression** of the IP addresses of the proxy. This is useful when you use a reverse SSL proxy only for https access and you want to use the automatic detection for http access.
+
+Leave the value empty or omit the parameter to keep the automatic detection.
 
 Example
 -------
