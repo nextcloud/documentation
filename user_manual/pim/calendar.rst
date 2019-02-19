@@ -42,7 +42,9 @@ Create a new Calendar
 If you plan to setup a new calendar without transferring any old data from your
 previous calendar, creating a new calendar is the way you should go.
 
-.. figure:: images/calendar_create.gif
+.. only:: html
+
+  .. figure:: images/calendar_create.gif
 
 1. Click on ``+ New Calendar`` in the left sidebar.
 
@@ -96,11 +98,15 @@ Events can be created by clicking in the area when the event is scheduled.
 In the day- and week-view of the calendar you just click, pull and left your
 cursor over the area when the event is taking place.
 
-.. figure:: images/calendar_new-event_week.gif
+.. only:: html
+
+  .. figure:: images/calendar_new-event_week.gif
 
 The month-view only requires a single click into the area of the specific day.
 
-.. figure:: images/calendar_new-event_month.gif
+.. only:: html
+
+  .. figure:: images/calendar_new-event_month.gif
 
 After that, you can type in the events name (e.g. **Meeting with Lukas**), choose
 the calendar in which you want to choose the event (e.g. **Personal**, **Work**)
