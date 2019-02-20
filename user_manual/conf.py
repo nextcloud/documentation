@@ -183,10 +183,7 @@ latex_elements = {
 #'pointsize': '10pt',
 
 # Additional stuff for the LaTeX preamble.
-'preamble': '\usepackage{epstopdf}\
-\
-\epstopdfDeclareGraphicsRule{.gif}{png}{.png}{convert gif:#1 png:\OutputFile}\
-\AppendGraphicsExtensions{.gif}',
+#'preamble': '',
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
