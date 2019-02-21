@@ -1067,6 +1067,15 @@ Defaults to ``50`` megabytes
 
 ::
 
+	'jpeg_quality' => 90,
+	
+By default Nextcloud generates previews with a JPEG quality of 90 %.
+If you want to save disk space and network traffic, lower this value to about 70-50.
+
+Defaults to ``90`` %
+
+::
+
 	'preview_libreoffice_path' => '/usr/bin/libreoffice',
 
 custom path for LibreOffice/OpenOffice binary
