@@ -299,8 +299,8 @@ pages), and ``false`` prevents them from changing their display names.
 
 	'remember_login_cookie_lifetime' => 60*60*24*15,
 
-Lifetime of the remember login cookie, which is set when the user clicks
-the ``remember`` checkbox on the login screen.
+Lifetime of the remember login cookie. This should be larger than the
+session_lifetime. If it is set to 0 remember me is disabled.
 
 Defaults to ``60*60*24*15`` seconds (15 days)
 
@@ -517,6 +517,20 @@ The class must extend  ``\OC\Mail\EMailTemplate``
 
 Email will be send by default with an HTML and a plain text body. This option
 allows to only send plain text emails.
+
+::
+
+	'mail_sendmailmode' => 'smtp',
+
+Which mode is used for sendmail/qmail: ``smtp`` or ``pipe``.
+
+For ``smtp`` the sendmail binary is started with the parameter ``-bs``:
+  - Use the SMTP protocol on standard input and output.
+
+For ``pipe`` the binary is started with the parameters ``-t``:
+  - Read message from STDIN and extract recipients.
+
+Defaults to ``smtp``
 
 Proxy Configurations
 --------------------
@@ -1078,6 +1092,7 @@ Defaults to ``''`` (empty string)
 		'OC\Preview\PNG',
 		'OC\Preview\JPEG',
 		'OC\Preview\GIF',
+		'OC\Preview\HEIC',
 		'OC\Preview\BMP',
 		'OC\Preview\XBitmap',
 		'OC\Preview\MP3',
@@ -1117,6 +1132,7 @@ Defaults to the following providers:
 
  - OC\\Preview\\BMP
  - OC\\Preview\\GIF
+ - OC\\Preview\\HEIC
  - OC\\Preview\\JPEG
  - OC\\Preview\\MarkDown
  - OC\\Preview\\MP3
@@ -1697,7 +1713,7 @@ Headers that should be trusted as client IP address in combination with
 If set incorrectly, a client can spoof their IP address as visible to
 Nextcloud, bypassing access controls and making logs useless!
 
-Defaults to ``'HTTP_X_FORWARED_FOR'``
+Defaults to ``'HTTP_X_FORWARDED_FOR'``
 
 ::
 
@@ -1837,6 +1853,15 @@ Some user agents are notorious and don't really properly follow HTTP
 specifications. For those, have an opt-out.
 
 WARNING: only use this if you know what you are doing
+
+::
+
+	'simpleSignUpLink.shown' => true,
+
+By default there is on public pages a link shown that allows users to
+learn about the "simple sign up" - see https://nextcloud.com/signup/
+
+If this is set to "false" it will not show the link.
 
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
