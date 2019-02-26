@@ -8,17 +8,16 @@ Themes can be used to customize the look and feel of Nextcloud.
 Getting started
 ---------------
 
-A good idea to get started with a dynamically created website is to inspect it with **web developer tools**, that are found in almost any browser. They show the generated HTML and the CSS Code that the client/browser is receiving:
-With this facts you can easily determine where the following object-related attributes for the phenomenons are settled:
+A good idea to get started with a dynamically created website is to inspect it with **web developer tools**, that are found in almost any browser. They show the generated HTML and the CSS Code that the client/browser is receiving. With these facts, you can easily determine where the following object-related attributes are set:
 
 * place
 * colour
 * links
 * graphics
 
-The next thing you should do, before starting any changes, is to make a backup of your current theme(s), e.g.:
+The next thing you should do, before making any changes, is to make a backup of your current theme(s). To do this, change to your Nextcloud installation directory and make a copy of the theme directory, e.g.:
 
-* cd …/nextcloud/themes
+* cd nextcloud/themes
 * cp -r example mytheme
 
 
