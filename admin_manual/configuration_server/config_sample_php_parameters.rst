@@ -302,8 +302,8 @@ pages), and ``false`` prevents them from changing their display names.
 
 	'remember_login_cookie_lifetime' => 60*60*24*15,
 
-Lifetime of the remember login cookie, which is set when the user clicks
-the ``remember`` checkbox on the login screen.
+Lifetime of the remember login cookie. This should be larger than the
+session_lifetime. If it is set to 0 remember me is disabled.
 
 Defaults to ``60*60*24*15`` seconds (15 days)
 
@@ -520,6 +520,20 @@ The class must extend  ``\OC\Mail\EMailTemplate``
 
 Email will be send by default with an HTML and a plain text body. This option
 allows to only send plain text emails.
+
+::
+
+	'mail_sendmailmode' => 'smtp',
+
+Which mode is used for sendmail/qmail: ``smtp`` or ``pipe``.
+
+For ``smtp`` the sendmail binary is started with the parameter ``-bs``:
+  - Use the SMTP protocol on standard input and output.
+
+For ``pipe`` the binary is started with the parameters ``-t``:
+  - Read message from STDIN and extract recipients.
+
+Defaults to ``smtp``
 
 Proxy Configurations
 --------------------
@@ -774,6 +788,27 @@ Supported values:
 Is Nextcloud connected to the Internet or running in a closed network?
 
 Defaults to ``true``
+
+::
+
+	'connectivity_check_domains' => array(
+		'www.nextcloud.com',
+		'www.startpage.com',
+		'www.eff.org',
+		'www.edri.org'
+	),
+
+Which domains to request to determine the availability of an Internet
+connection. If none of these hosts are reachable, the administration panel
+will show a warning. Set to an empty list to not do any such checks (warning
+will still be shown).
+
+Defaults to the following domains:
+
+ - www.nextcloud.com
+ - www.startpage.com
+ - www.eff.org
+ - www.edri.org
 
 ::
 
@@ -1691,12 +1726,27 @@ lose this string there will be data corruption.
 
 ::
 
-	'trusted_proxies' => array('203.0.113.45', '198.51.100.128'),
+	'trusted_proxies' => array('203.0.113.45', '198.51.100.128', '192.168.2.0/24'),
 
 List of trusted proxy servers
 
-If you configure these also consider setting `forwarded_for_headers` which
-otherwise defaults to `HTTP_X_FORWARDED_FOR` (the `X-Forwarded-For` header).
+You may set this to an array containing a combination of
+- IPv4 addresses, e.g. `192.168.2.123`
+- IPv4 ranges in CIDR notation, e.g. `192.168.2.0/24`
+- IPv6 addresses, e.g. `fd9e:21a7:a92c:2323::1`
+
+_(CIDR notation for IPv6 is currently work in progress and thus not
+available as of yet)_
+
+When an incoming request's `REMOTE_ADDR` matches any of the IP addresses
+specified here, it is assumed to be a proxy instead of a client. Thus, the
+client IP will be read from the HTTP header specified in
+`forwarded_for_headers` instead of from `REMOTE_ADDR`.
+
+So if you configure `trusted_proxies`, also consider setting
+`forwarded_for_headers` which otherwise defaults to `HTTP_X_FORWARDED_FOR`
+(the `X-Forwarded-For` header).
+
 Defaults to an empty array.
 
 ::
@@ -1859,6 +1909,17 @@ By default there is on public pages a link shown that allows users to
 learn about the "simple sign up" - see https://nextcloud.com/signup/
 
 If this is set to "false" it will not show the link.
+
+::
+
+	'login_form_autocomplete' => true,
+
+By default autocompletion is enabled for the login form on Nextcloud's login page.
+
+While this is enabled, browsers are allowed to "remember" login names and such.
+Some companies require it to be disabled to comply with their security policy.
+
+Simply set this property to "false", if you want to turn this feature off.
 
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
