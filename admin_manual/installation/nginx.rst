@@ -375,8 +375,8 @@ block shown above not located **below** the:
 block. Other custom configurations like caching JavaScript (.js)
 or CSS (.css) files via gzip could also cause such issues.
 
-Contacts only syncing the first addressbook with OSX
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Contacts only syncing the first addressbook with macOS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Comment out any of those lines if you have them set on your nginx config:
 .. code-block:: nginx
