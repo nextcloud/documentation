@@ -374,3 +374,14 @@ block shown above not located **below** the:
 
 block. Other custom configurations like caching JavaScript (.js)
 or CSS (.css) files via gzip could also cause such issues.
+
+Contacts only syncing the first addressbook with OSX
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Comment out any of those lines if you have them set on your nginx config:
+.. code-block:: nginx
+
+        error_page 403 /core/templates/403.php;
+        error_page 404 /core/templates/404.php;
+        
+2. Change ``fastcgi_intercept_errors`` from ``on`` to ``off``.
