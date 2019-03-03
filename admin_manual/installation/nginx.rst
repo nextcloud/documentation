@@ -256,7 +256,8 @@ your nginx installation.
         return 301 $scheme://$host/nextcloud/remote.php/dav;
       }
       location ~/(ocm-provider|ocs-provider)/ {
-        return 301 $scheme://$host/nextcloud/$1/;
+      location ~ ^\/(?:ocm-provider|ocs-provider).* {
+        rewrite ^ /nextcloud$request_uri;
       }
 
       location /.well-known/acme-challenge { }
