@@ -766,6 +766,7 @@ Verify your app::
   
 When it returns nothing, your app is signed correctly. When it returns a message then there is an error. See `Code Signing 
 <https://docs.nextcloud.org/server/15/developer_manual/app/code_signing.html#how-to-get-your-app-signed>`_ in the Developer manual for more detailed information.
+.. TODO ON RELEASE: Update version number above on release
 
 ``integrity:sign-core`` is for Nextcloud core developers only.
 
