@@ -366,3 +366,6 @@ block shown above not located **below** the:
 
 block. Other custom configurations like caching JavaScript (.js)
 or CSS (.css) files via gzip could also cause such issues.
+
+Another cause of this issue could be not properly including mimetypes in the
+http block, as shown `here. <https://www.nginx.com/resources/wiki/start/topics/examples/full/>`_
