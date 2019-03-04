@@ -155,12 +155,12 @@ Get a file by id.
                 </d:scope>
             </d:from>
             <d:where>
-                <d:like>
+                <d:eq>
                     <d:prop>
-                        <d:fileid/>
+                        <oc:fileid/>
                     </d:prop>
                     <d:literal>12345</d:literal>
-                </d:like>
+                </d:eq>
             </d:where>
             <d:orderby/>
         </d:basicsearch>
@@ -212,4 +212,4 @@ Get all png and jpg files over 10MB.
         </d:basicsearch>
     </d:searchrequest>
 
-.. _rfc5323: _https://tools.ietf.org/html/rfc5323
+.. _rfc5323: https://tools.ietf.org/html/rfc5323
