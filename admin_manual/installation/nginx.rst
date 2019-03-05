@@ -3,7 +3,8 @@ Nginx configuration
 ===================
 
 This page covers example Nginx configurations to use with running a Nextcloud
-server. This page is community-maintained. (Thank you, contributors!)
+server. These configurations examples were originaly provided by
+`@josh4trunks <https://github.com/josh4trunks>`_ and are community-maintained. (Thank you contributors!)
 
 -  You need to insert the following code into **your Nginx configuration file.**
 -  Adjust **server_name**, **root**, **ssl_certificate** and
@@ -21,9 +22,6 @@ server. This page is community-maintained. (Thank you, contributors!)
    broken for page formatting.
 -  Some environments might need a ``cgi.fix_pathinfo`` set to ``1`` in their
    ``php.ini``.
-
-Thanks to `@josh4trunks <https://github.com/josh4trunks>`_ for providing /
-creating these configuration examples.
 
 Nextcloud in the webroot of nginx
 ---------------------------------
