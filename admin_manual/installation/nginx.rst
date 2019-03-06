@@ -3,7 +3,7 @@ Nginx configuration
 ===================
 
 This page covers example Nginx configurations to use with running a Nextcloud
-server. These configurations examples were originaly provided by
+server. These configurations examples were originally provided by
 `@josh4trunks <https://github.com/josh4trunks>`_ and are community-maintained. (Thank you contributors!)
 
 -  You need to insert the following code into **your Nginx configuration file.**
