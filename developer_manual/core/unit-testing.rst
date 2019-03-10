@@ -117,7 +117,7 @@ adjust your php.ini and file rights.
 
 Running unit tests for the Nextcloud core project
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The core project provides a script that runs all the core unit tests using different database backends like sqlite, mysql, pgsql, oci (for Oracle)::
+The core project provides a script that runs all the core unit tests using different database backends like sqlite, mysql, pgsql, oci (for Oracle). A database oc_testuser which can be accessed with user oc_testuser and password ownloud is expected::
 
   ./autotest.sh
 
