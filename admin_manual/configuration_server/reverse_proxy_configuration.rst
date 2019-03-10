@@ -44,6 +44,32 @@ or webroot you can use the **overwrite** parameters inside the :file:`config/con
 
 Leave the value empty or omit the parameter to keep the automatic detection.
 
+Service Discovery
+-----------------
+
+The redirects for CalDAV or CardDAV does not work if Nextcloud is running behind a
+reverse proxy. The recommended solution is that your reverse proxy does the redirects.
+
+Apache2
+^^^^^^^
+::
+
+  RewriteEngine On
+  RewriteRule ^/\.well-known/carddav https://%{SERVER_NAME}/remote.php/dav/ [R=301,L]
+  RewriteRule ^/\.well-known/caldav https://%{SERVER_NAME}/remote.php/dav/ [R=301,L]
+
+Thanks to `@ffried <https://github.com/ffried>`_ for apache2 example.
+
+Traefik
+^^^^^^^
+::
+
+  traefik.frontend.redirect.permanent: 'true'
+  traefik.frontend.redirect.regex: https://(.*)/.well-known/(card|cal)dav
+  traefik.frontend.redirect.replacement: https://$$1/remote.php/dav/
+
+Thanks to `@pauvos <https://github.com/pauvos>`_ for traefik example.
+
 Example
 -------
 
