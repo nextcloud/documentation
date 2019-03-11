@@ -190,9 +190,10 @@ Create a "filetypes" drrectory in your custom theme folder:
 
 Edit the filetype icon .svg files that you want to revise and place them in your new "filetypes" directory.
 
-Run this command from root of app:
-.. code-block:: php
+Run this command from hase directory of your app:
+```php
 ./occ maintenance:mimetype:update-js
+```
 
 This will instruct app to use revised icons from your themes folder.
 
