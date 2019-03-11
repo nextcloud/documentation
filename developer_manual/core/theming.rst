@@ -184,7 +184,7 @@ Changing file/folder type icons
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The core filetype icons are located in /core/img/filetypes/ directory.  
-Create a "filetypes" drrectory in your custom theme folder: 
+Create a "filetypes" directory in your custom theme folder: 
 /themes/mytheme/core/img/filetypes/    
 
 Edit the filetype icon .svg files that you want to revise and place them in your new "filetypes" directory.
