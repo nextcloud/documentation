@@ -44,8 +44,8 @@ sometimes you may also want to use it for your **Tasks and reminders**.
 Troubleshooting
 ---------------
 
-- macOS does **not** support syncing CalDAV/CardDAV over non-encrypted **http://**
-  connections. Make sure you have https:// enabled and configured on server- and
+- macOS does **not** support syncing CalDAV/CardDAV over non-encrypted ``http://``
+  connections. Make sure you have ``https://`` enabled and configured on server- and
   client-side.
 
 - **Self-signed certificates** need to be properly set up in the macOS keychain.
