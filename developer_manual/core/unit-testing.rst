@@ -117,7 +117,22 @@ adjust your php.ini and file rights.
 
 Running unit tests for the Nextcloud core project
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The core project provides a script that runs all the core unit tests using different database backends like sqlite, mysql, pgsql, oci (for Oracle)::
+The core project provides core unit tests using different database backends like sqlite, mysql, pgsql, oci (for Oracle).
+Every database to test needs to accesible either
+
+- natively, setup with
+
+  - Host: localhost
+  - Database: oc_autotest
+  - User: oc_autotest
+  - Password: owncloud
+  
+- or via docker by setting the USEDOCKER environment variable. 
+
+Notes on how to setup databases for this test can be found in https://github.com/nextcloud/server/blob/master/autotest.sh.
+
+
+To run tests for all database engines::
 
   ./autotest.sh
 
