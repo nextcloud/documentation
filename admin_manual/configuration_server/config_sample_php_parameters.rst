@@ -361,19 +361,6 @@ Defaults to ``core/skeleton`` in the Nextcloud directory.
 
 ::
 
-	'user_backends' => array(
-		array(
-			'class' => 'OC_User_IMAP',
-			'arguments' => array('{imap.gmail.com:993/imap/ssl}INBOX')
-		)
-	),
-
-The ``user_backends`` app (which needs to be enabled first) allows you to
-configure alternate authentication backends. Supported backends are:
-IMAP (OC_User_IMAP), SMB (OC_User_SMB), and FTP (OC_User_FTP).
-
-::
-
 	'lost_password_link' => 'https://example.org/link/to/password/reset',
 
 If your user backend does not allow password resets (e.g. when it's a
