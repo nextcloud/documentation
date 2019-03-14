@@ -2,21 +2,27 @@
 The Nextcloud Web interface
 ===========================
 
-You can connect to your Nextcloud server using any Web browser; just point it to
-your Nextcloud server and enter your username and password. Supported Web
-browsers are:
+You can connect to your Nextcloud server using any Web browser. Just point it to
+your Nextcloud server URL (e.g. cloud.example.com) and enter your username and password. 
 
-* **Mozilla Firefox** 14+
-* **Google Chrome/Chromium** 18+
-* **Safari** 7+
-* **Internet Explorer** 11+
-* **Microsoft Edge**
-
-.. note:: If you want to use Nextcloud Talk you need to run Mozilla Firefox 52
-   or later or Google Chrome/Chromium 49 or later.
-
-  .. figure:: images/login_page.png
+.. figure:: images/login_page.png
      :alt: Nextcloud login screen.
+
+Web browser requirements
+------------------------
+
+For the best experience with the Nextcloud web interface, we recommend that you use the 
+latest and supported version of a browser from this list:
+
+* Microsoft **Internet Explorer**
+* Microsoft **Edge**
+* Mozilla **Firefox**
+* Google **Chrome**/Chromium
+* Apple **Safari**
+
+.. note:: If you want to use Nextcloud Talk you need to run Mozilla **Firefox** 52+
+   or Google **Chrome**/Chromium 49+ to have the full experience with video calls and 
+   screensharing. Google **Chrome**/Chromium requires a additional plugin for screensharing.
 
 Navigating the main user interface
 ----------------------------------
