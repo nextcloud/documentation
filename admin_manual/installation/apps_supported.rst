@@ -58,7 +58,6 @@ Nextcloud Groupware
 * [Calendar](https://github.com/nextcloud/calendar)
 * [Contacts](https://github.com/nextcloud/contacts)
 
-
 Nextcloud Talk
 --------------
 
