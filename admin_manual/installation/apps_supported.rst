@@ -13,7 +13,7 @@ Nextcloud Files
 * [Auditing / Logging](https://github.com/nextcloud/server/tree/master/apps/admin_audit)
 * [Antivirus for files](https://github.com/nextcloud/files_antivirus)
 * [Circles](https://github.com/nextcloud/circles)
-* Collaborative Tags
+* [Collaborative Tags](https://github.com/nextcloud/server/tree/master/apps/systemtags)
 * [Comments](https://github.com/nextcloud/server/tree/master/apps/comments)
 * [Default encryption module](https://github.com/nextcloud/server/tree/master/apps/encryption)
 * [External Sites](https://github.com/nextcloud/external)
@@ -46,8 +46,7 @@ Nextcloud Files
     * [Twitter](https://github.com/nextcloud/socialsharing/tree/master/socialsharing_twitter)
 * [SharePoint Backend](https://github.com/nextcloud/sharepoint/blob/master/appinfo/info.xml)
 * [Theming](https://github.com/nextcloud/server/tree/master/apps/theming)
-* Update Notifications
-* [User External](https://github.com/nextcloud/user_external)
+* [Update Notifications](https://github.com/nextcloud/server/tree/master/apps/updatenotification)
 * [LDAP user and group backend](https://github.com/nextcloud/server/blob/master/apps/user_ldap)
 * [SSO & SAML authentication](https://github.com/nextcloud/user_saml)
 * [WebDAV endpoint](https://github.com/nextcloud/server/blob/master/apps/dav)
