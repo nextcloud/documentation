@@ -14,3 +14,4 @@ Please make sure you have set up a :ref:`devenv`.
    theming
    externalapi
    ocs-share-api
+   ocs-sharee-api
