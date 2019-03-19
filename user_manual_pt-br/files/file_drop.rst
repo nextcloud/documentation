@@ -1,42 +1,42 @@
 ========================
-Making anonymous uploads
+Fazendo uploads anônimos
 ========================
 
-You may create your own special upload directories so that other people can upload
-files to you without having to log in to the server, and without being a Nextcloud
-user.
-They will not be allowed to see the contents of this directory, or to make any
-changes. This is an excellent alternative to sending large attachments via email,
-using an FTP server, or using commercial file-sharing services.
+Você pode criar seus próprios diretórios de upload especiais para que
+outras pessoas possam fazer o upload arquivos para você sem ter que
+efetuar login no servidor e sem ser um usuário do Nextcloud.
 
-Setting up your own file drop
------------------------------
+Eles não poderão ver o conteúdo desse diretório ou fazer alterações.
+Essa é uma excelente alternativa ao envio de anexos grandes por email,
+usando um servidor FTP ou usando serviços comerciais de compartilhamento de arquivos.
 
-Go to Files and create or choose the folder, the anonymous upload should be
-made to.
+Configurando o seu próprio envio de arquivo
+-------------------------------------------
+
+Ir para arquivos e criar ou escolher a pasta, o upload anônimo deve ser feito para.
 
 .. image:: ../images/anonym_click_sharing.png
 
-Check Share Link, Allow editing, Hide file listing.
+Verificar link de compartilhamento, Permitir edição, Ocultar listagem de arquivos.
 
 .. image:: ../images/anonym_hide_file_listing.png
 
-Now you can send the link to the upload folder manually or by using the
-Nextcloud send function, if your administrator has enabled it.
+Agora você pode enviar o link para a pasta de upload manualmente ou usando
+a função de envio Nextcloud, se o seu administrador a tiver ativado.
 
 
-Uploading files
----------------
+Upload de arquivos
+------------------
 
-Using the anonymous upload function is simple. You receive a link to the upload
-folder, click the link, and then you'll see a Nextcloud page with a **Click to
-upload** button.
+Usar a função de upload anônimo é simples. Você recebe um link para a
+pasta de upload, clica no link e, em seguida, verá uma página do
+Nextcloud com um botão **Clique para fazer o upload**.
 
 .. image:: ../images/anonym_upload.png
 
-This opens a file picker, and you select the file or directory you want to
-upload. You're also able to just drop files into the window.
+Isso abre um seletor de arquivos e você seleciona o arquivo ou diretório que deseja
+enviar. Você também pode simplesmente soltar arquivos na janela.
 
-When your upload is completed, the filenames are listed:
+Quando seu upload é concluído, os nomes dos arquivos são listados:
 
 .. image:: ../images/anonym_uploaded_files.png

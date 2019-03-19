@@ -1,25 +1,25 @@
-===========================================
-What's new for users in Nextcloud |version|
-===========================================
+=========================================================
+O que há de novo para os usuários no Nextcloud |version|
+=========================================================
 
-1. Easier way to select a new app
+1. Maneira mais fácil de selecionar um novo aplicativo
 
    .. figure:: images/apps_menu.png
-      :alt: screenshot of apps menu at top-left of Nextcloud Web GUI
+      :alt: captura de tela do menu de aplicativos no canto superior esquerdo da GUI da Web do Nextcloud
       
-2. New Contacts menu to reach your colleagues or friends easier
+2. Novo menu de contatos para alcançar seus colegas ou amigos mais facilmente
 
    .. figure:: images/contacts_menu.png
-      :alt: screenshot of contacts menu at top-right of Nextcloud Web GUI
+      :alt: captura de tela do menu de contatos na parte superior direita da GUI da Web do Nextcloud
 
-3. A contact popup menu over avatars everywhere
+3. Um menu pop-up de contato sobre avatares em todos os lugares
 
    .. figure:: images/contacts_popup.png
-      :alt: screenshot of popup over avatar
+      :alt: captura de tela do pop-up do avatar
 
-4. Ability to send multiple unique sharing links each with their own settings, by entering email addresses (the recipient will receive an email)
+4. Capacidade de enviar vários links de compartilhamento exclusivos, cada um com suas próprias configurações, inserindo endereços de e-mail (o destinatário receberá um e-mail)
 
    .. figure:: images/multi_sharing.png
-      :alt: screenshot of multiple sharing links
+      :alt: captura de tela de vários links de compartilhamento
 
-5. Many other improvements and new apps, like screensharing in Video calls, new Circles app for user defined groups, push notifications, notifications of file changes even when shared to another server, undo removal of files from a shared folder even if the removal was done by a recipient, directly sharing to social media and much more.
+5. Muitas outras melhorias e novos aplicativos, como compartilhamento de tela em chamadas de vídeo, novo aplicativo Circles para grupos definidos pelo usuário, notificações push, notificações de alterações de arquivo, mesmo quando compartilhadas com outro servidor, desfazem a remoção de arquivos de uma pasta compartilhada, mesmo se a remoção feito por um destinatário, compartilhando diretamente para mídias sociais e muito mais.

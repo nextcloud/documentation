@@ -1,57 +1,57 @@
-======================
-Synchronizing with iOS
-======================
+========================
+Sincronizando com o iOS
+========================
 
-Calendar
+Calendário
+----------
+
+#. Abra o aplicativo de configurações.
+#. Selecione Correio, Contatos, Calendários.
+#. Selecione Adicionar conta.
+#. Selecione Outro como tipo de conta.
+#. Selecione Adicionar conta CalDAV.
+#. Para o servidor, digite ``example.com/remote.php/dav/principals/users/USERNAME/``
+#. Digite seu nome de usuário e senha.
+#. Selecione Próximo.
+#. Se o seu servidor não suportar SSL, um aviso será exibido.
+   Selecione Continuar.
+#. Se o iPhone não puder verificar as informações da conta, execute as seguintes etapas:
+
+
+   - Selecione OK.
+   - Selecione configurações avançadas.
+   - Se o seu servidor não suportar SSL, certifique-se de que Usar SSL esteja definido como DESLIGADO.
+   - Altere a porta para 80.
+   - Volte para as informações da conta e clique em Salvar.
+
+Seu calendário agora ficará visível no aplicativo Calendário
+
+
+Contatos
 --------
 
-#. Open the settings application.
-#. Select Mail, Contacts, Calendars.
-#. Select Add Account.
-#. Select Other as account type.
-#. Select Add CalDAV account.
-#. For server, type ``example.com/remote.php/dav/principals/users/USERNAME/``
-#. Enter your user name and password.
-#. Select Next.
-#. If your server does not support SSL, a warning will be displayed.
-   Select Continue.
-#. If the iPhone is unable to verify the account information perform the
-   following steps:
+#. Abra o aplicativo de configurações.
+#. Selecione Correio, Contatos, Calendários.
+#. Selecione Adicionar conta.
+#. Selecione Outro como tipo de conta.
+#. Selecione Adicionar conta CardDAV.
+#. Para o servidor, digite ``example.com/remote.php/dav/principals/users/USERNAME/``
+#. Digite seu nome de usuário e senha.
+#. Selecione Próximo.
+#. Se o seu servidor não suportar SSL, um aviso será exibido.
+   Selecione Continuar.
+#. Se o iPhone não puder verificar as informações da conta, execute o
+   Segue:
 
-   -  Select OK.
-   -  Select advanced settings.
-   -  If your server does not support SSL, make sure Use SSL is set to OFF.
-   -  Change port to 80.
-   -  Go back to account information and hit Save.
+   - Selecione OK.
+   - Selecione configurações avançadas.
+   - Se o seu servidor não suportar SSL, certifique-se de que Usar SSL esteja definido como DESLIGADO.
+   - Altere a porta para 80.
+   - Volte para as informações da conta e clique em Salvar.
 
-Your calendar will now be visible in the Calendar application
+Agora você deve encontrar seus contatos no catálogo de endereços do seu iPhone.
+Se ainda não estiver funcionando, dê uma olhada no `Troubleshooting Contacts & Calendar`_
+guia.
 
-
-Contacts
---------
-
-#. Open the settings application.
-#. Select Mail, Contacts, Calendars.
-#. Select Add Account.
-#. Select Other as account type.
-#. Select Add CardDAV account.
-#. For server, type ``example.com/remote.php/dav/principals/users/USERNAME/``
-#. Enter your user name and password.
-#. Select Next.
-#. If your server does not support SSL, a warning will be displayed.
-   Select Continue.
-#. If the iPhone is unable to verify the account information perform the
-   following:
-
-   -  Select OK.
-   -  Select advanced settings.
-   -  If your server does not support SSL, make sure Use SSL is set to OFF.
-   -  Change port to 80.
-   -  Go back to account information and hit Save.
-
-You should now find your contacts in the address book of your iPhone.
-If it's still not working, have a look at the `Troubleshooting Contacts & Calendar`_
-guide.
-
-.. _Troubleshooting Contacts & Calendar: https://docs.nextcloud.org/server/14/admin_manual/issues/index.html#troubleshooting-contacts-calendar
-.. TODO ON RELEASE: Update version number above on release
+.. _Solução de problemas de contatos e agenda: https://docs.nextcloud.org/server/14/admin_manual/issues/index.html#troubleshooting-contacts-calendar
+.. TODO ON RELEASE: Atualize o número da versão acima no lançamento

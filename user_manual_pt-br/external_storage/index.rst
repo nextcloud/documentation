@@ -1,6 +1,6 @@
-================
-External Storage
-================
+======================
+Armazenamento externo
+======================
 
 .. toctree::
    :maxdepth: 1

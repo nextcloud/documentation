@@ -1,111 +1,112 @@
-======================
-Using the contacts app
-======================
+=================================
+Usando o aplicativo de contatos
+=================================
 
-The Contacts app is not enabled by default in Nextcloud |version| and needs to
-be installed separately from our App Store.
+O aplicativo Contatos não está ativado por padrão em Nextcloud | version | e precisa
+ser instalado separadamente da nossa App Store.
 
-The Nextcloud Contacts app is similar to other mobile contact applications, but
-with more functionality. When you first access the Contacts app, a default
-address book becomes available.
+O aplicativo Contatos Nextcloud é semelhante a outros aplicativos de contato móvel, porem
+com mais funcionalidade. Quando você acessa pela primeira vez o aplicativo Contatos, um padrão
+O livro de endereços fica disponível.
 
 .. figure:: ../images/contacts_empty.png
 
- **Contacts app (empty)**
+  **Aplicativo de contatos (vazio)**
 
-Adding contacts
----------------
-You can add contacts using one of the following methods:
+Adicionando contatos
+---------------------
 
-* Import contacts using a Virtual Contact File (VCF/Vcard) file
+Você pode adicionar contatos usando um dos seguintes métodos:
 
-* Add contacts manually
+* Importar contatos usando um arquivo de arquivo de contato virtual (VCF / Vcard)
 
-Importing Contacts
-~~~~~~~~~~~~~~~~~~
+* Adicionar contatos manualmente
 
-The fastest way to add contacts is through the use of a Virtual Contact File
-(VCF/Vcard) file.
+Importando Contatos
+~~~~~~~~~~~~~~~~~~~
 
-To import contacts using a VCF/Vcard file:
+A maneira mais rápida de adicionar contatos é através do uso de um arquivo de contato virtual
+(VCF / Vcard).
 
-1. At the bottom of the Contacts app information field, locate the gear button.
+Para importar contatos usando um arquivo VCF / Vcard:
+
+1. Na parte inferior do campo Informações do aplicativo Contatos, localize o botão de engrenagem.
 
   .. figure:: ../images/contact_bottombar.png
 
-  **Contact settings gear button**
+  **Botão de engrenagem das configurações de contato**
 
-2. Click the gear button. The Contacts app upload field opens.
+2. Clique no botão de engrenagem. O campo de upload do aplicativo Contatos é aberto.
 
 .. figure:: ../images/contact_uploadbutton.png
 
-**Contacts app upload field**
+**Campo de upload do aplicativo de contatos**
 
-.. note:: The Contacts app only supports import of vCards version 3.0 and 4.0.
+.. note:: O aplicativo Contatos suporta apenas a importação de vCards versão 3.0 e 4.0.
 
-Creating Contacts Manually
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Criando contatos manualmente
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Contacts app enables you to create contacts manually.
+O aplicativo Contatos permite que você crie contatos manualmente.
 
-To create a new contact:
+Para criar um novo contato:
 
-1. Click the ``+ New contact`` button.
+1. Clique no botão ``+ Novo contato``.
 
-   An empty new contact configuration opens in the Application View field.
+   Uma nova configuração de contato vazia é aberta no campo Application View.
 
   .. figure:: ../images/contact_new.png
 
-2. Specify the new contact information. Changes that you made are implemented immediately.
+2. 2. Especifique as novas informações de contato. As alterações são feitas imediatamente.
 
-Edit or Remove Contact Information
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Editar ou remover informações de contato
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Contacts app enables you to edit or remove contact information.
+O aplicativo Contatos permite editar ou remover informações de contato.
 
-To edit or remove contact information:
+Para editar ou remover informações de contato:
 
-1. Navigate to the specific contact that you want to modify.
+1. Navegue até o contato específico que você deseja modificar.
 
-2. Select the information in the field that you want to edit or remove.
+2. Selecione as informações no campo que você deseja editar ou remover.
 
-3. Make your modifications or click on the trash bin.
+3. Faça suas modificações ou clique na lixeira.
 
-Changes or removals that you made to any contact information are implemented immediately.
+Mudanças ou remoções são feitas imediatamente.
 
-Contact Picture
-~~~~~~~~~~~~~~~
+Imagem de contato
+~~~~~~~~~~~~~~~~~
 
-To define a contact picture, click on the upload button:
+Para definir uma foto de contato, clique no botão de upload:
 
 .. figure:: ../images/contact_picture.png
 
-  **Contact picture (upload button)**
+    **Imagem de contato (botão de upload)**
 
-After you have set a contact picture, it will look like that:
+Depois de ter uma foto de contato, será semelhante a:
 
 .. figure:: ../images/contact_picture_set.png
 
-  **Contact picture (set)**
+  **Imagem de contato (definida)**
 
-If you want to upload a new one, remove it, view it in full size or download it
-click on the contacts picture.
+Se você quiser fazer o upload de um novo, remova-o, visualize-o no tamanho original ou baixe-o
+clique na foto dos contatos.
 
 .. figure:: ../images/contact_picture_options.png
 
-Adding and managing address books
----------------------------------
+Adicionando e gerenciando catálogos de endereços
+-------------------------------------------------
 
-Clicking on the settings (gear) button at the bottom of the Apps Information
-field provides access to the Contact app settings. This field shows all
-available address books, certain options for each address book, and enables you
-to create new address books, simply by specifying an address books name.
+Clicando no botão de configurações (engrenagem) na parte inferior das informações do aplicativo
+campo fornece acesso às configurações do aplicativo Contato. Este campo mostra todos
+livros de endereços disponíveis e permite-lhe
+para criar novos catálogos de endereços, simplesmente especificando um nome de catálogo de endereços.
 
 .. figure:: ../images/contact_manageaddressbook.png
 
-   **Add address book in the contacts settings**
+   **Adicione o catálogo de endereços nas configurações de contatos**
 
-The Contacts settings also enables you to share, export and delete address
-books. You will also find the CardDAV URLs there.
-See :doc:`index` for more details about syncing your adress books
-with iOS, macOS, Thunderbird and other CardDAV clients.
+As Configurações de Contatos também permitem compartilhar, exportar e excluir catálogos
+de endereços. Então você quer encontrar os URLs CardDAV lá.
+Veja :doc:`index` para mais detalhes sobre como sincronizar seus livros de endereços
+com iOS, macOS, Thunderbird e outros clientes CardDAV.

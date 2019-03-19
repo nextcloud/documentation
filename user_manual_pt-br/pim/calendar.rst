@@ -1,147 +1,145 @@
-======================
-Using the calendar app
-======================
+==================================
+Usando o aplicativo de calendário
+==================================
 
-.. note:: The calendar app is not enabled by default and needs to be installed
-          separately from our App Store. Please ask your Administrator for it.
+.. note:: O aplicativo de calendário não está habilitado por padrão e precisa ser instalado
+          separadamente da nossa App Store. Por favor, pergunte ao seu administrador por isso.
 
-The Nextcloud Calendar app works similar to other calendar applications you can
-sync your Nextcloud calendars and events with.
+O aplicativo Agenda do Nextcloud pode sincronizar seus calendários e eventos com Nextcloud.
 
-When you first access the Calendar app, a default first calendar will be
-pre-generated for you.
+Quando você acessar pela primeira vez o aplicativo Agenda, um primeiro calendário padrão será
+pré-gerado para você.
 
 .. figure:: images/calendar_application.png
 
-Managing your calendars
------------------------
+Gerenciando seus calendários
+----------------------------
 
-Import a Calendar
-~~~~~~~~~~~~~~~~~
+Importar um calendário
+~~~~~~~~~~~~~~~~~~~~~~
 
-If you want to transfer your calendar and their respective events to your Nextcloud
-instance, importing is the best way to do so.
+Se você deseja transferir seu calendário e seus respectivos eventos para o seu Nextcloud
+Por exemplo, a importação é a melhor maneira de fazer isso.
 
 .. figure:: images/calendar_settings.png
             :scale: 50%
 
-1. Click on the settings-icon labeled with ``Settings & Import`` at the left-bottom.
+1. Clique no ícone de configurações rotulado com ``Configurações & Importar`` no canto inferior esquerdo.
 
-2. After clicking on ``+ Import Calendar`` you can select one or more calendar files
-   from your local device to upload.
+2. Depois de clicar em ``+ Importar Calendário`` você pode selecionar um ou mais arquivos de calendário
+   do seu dispositivo local para fazer o upload.
 
-3. The upload can take some time and depends on how big the calendar you import
-   is.
+3. O upload pode levar algum tempo e depende do tamanho da agenda que você importa.
 
-.. note:: The Nextcloud Calendar application only supports iCalendar-compatible
-          ``.ics``-files, defined in RFC 5545.
+.. note:: O aplicativo Calendário do Nextcloud suporta apenas arquivos ``.ics`` compatíveis
+          com o iCalendar, definidos no RFC 5545.
 
-Create a new Calendar
-~~~~~~~~~~~~~~~~~~~~~
+Criar um novo calendário
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you plan to setup a new calendar without transferring any old data from your
-previous calendar, creating a new calendar is the way you should go.
+Se você planeja configurar um novo calendário sem transferir dados antigos do seu
+calendário anterior, criar um novo calendário é o caminho que você deve ir.
 
 .. only:: html
 
   .. figure:: images/calendar_create.gif
 
-1. Click on ``+ New Calendar`` in the left sidebar.
+1. Clique em `+ Novo Calendário`` na barra lateral esquerda.
 
-2. Type in a name for your new calendar, e.g. "Work", "Home" or "Studies".
+2. Digite um nome para seu novo calendário, por exemplo, "Trabalho", "Casa" ou "Estudos".
 
-3. After clicking on the checkmark, your new calendar is created and can be
-   synced across your devices, filled with new events and shared with your friends
-   and colleagues.
+3. Depois de clicar na marca de seleção, seu novo calendário é criado e pode ser
+   sincronizado nos seus dispositivos, preenchido com novos eventos e compartilhado com seus amigos
+   e colegas.
 
-Edit, Download or Delete a Calendar
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Editar, baixar ou excluir um calendário
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Sometimes you may want to change the color or the entire name of a previous
-imported or created calendar. You may also want to export it to your local
-hard drive or delete it forever.
+Às vezes, você pode querer alterar a cor ou o nome inteiro de um calendário anterior importado
+ou criado. Você pode querer exportá-lo para o seu disco rígido local ou excluí-lo para sempre.
 
-.. note:: Please keep in mind that deleting a calendar is a irreversible action.
-          After deletion, there is no way of restoring the calendar unless you
-          have a local backup.
+.. note:: Por favor tenha em mente que apagar um calendário é uma ação irreversível.
+          Após a exclusão, não há como restaurar o calendário, a menos que você
+          tenha um backup local.
 
 .. figure:: images/calendar_dropdown.png
             :scale: 50%
 
-1. Click on the three-dot-menu of the respective calendar.
+1. Clique no menu de três pontos do respectivo calendário.
 
 .. figure:: images/calendar_editing.png
             :scale: 50%
 
-2. Click on ``Edit``, ``Download`` or ``Delete``.
+2. Clique em ``Editar``, ``Download`` or ``Delete``.
 
-Subscribe to a Calendar
-~~~~~~~~~~~~~~~~~~~~~~~
+Inscrever-se em um calendário
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can subscribe to iCal calendars directly inside of your Nextcloud. By
-supporting this interoperable standard (RFC 5545) we made Nextcloud calendar
-compatible to Google Calendar, Apple iCloud and many other calendar-servers
-you can exchange your calendars with.
+Você pode se inscrever nos calendários do iCal diretamente dentro
+do seu Nextcloud. Ao suportar este padrão interoperável (RFC 5545),
+tornamos o calendário do Nextcloud compatível com o Google Calendar,
+o Apple iCloud e muitos outros servidores de calendário com os
+quais você pode trocar seus calendários.
 
-1. Click on ``+ New Subscription`` in the left sidebar.
-2. Type in the link of the shared calendar you want to subscribe to.
+1. Clique em `+Nova Subscricao`` na barra lateral esquerda.
+2. Digite o link da agenda compartilhada na qual você deseja se inscrever.
 
-Finished. Your calendar subscriptions will be updated regularly.
+Tudo pronto! Suas inscrições de calendário serão atualizadas regularmente.
 
-Managing Events
----------------
+Gerenciando Eventos
+--------------------
 
-Create a new event
-~~~~~~~~~~~~~~~~~~
+Crie um novo evento
+~~~~~~~~~~~~~~~~~~~~
 
-Events can be created by clicking in the area when the event is scheduled.
-In the day- and week-view of the calendar you just click, pull and left your
-cursor over the area when the event is taking place.
+Eventos podem ser criados clicando na área quando o evento é agendado.
+Na visão diária e semanal do calendário, basta clicar, puxar e deixar
+o cursor sobre a área quando o evento estiver ocorrendo.
 
 .. only:: html
 
   .. figure:: images/calendar_new-event_week.gif
 
-The month-view only requires a single click into the area of the specific day.
+A visualização mensal requer apenas um clique na área do dia específico.
 
 .. only:: html
 
   .. figure:: images/calendar_new-event_month.gif
 
-After that, you can type in the events name (e.g. **Meeting with Lukas**), choose
-the calendar in which you want to choose the event (e.g. **Personal**, **Work**)
-check and concretize the time span or set the event as all-day event.
+Depois disso, você pode digitar o nome do evento (por exemplo, **Reunião com Luke**), escolha
+o calendário em que você deseja escolher o evento (por exemplo, **Pessoal**, **Trabalho**)
+verificar e concretizar o intervalo de tempo ou definir o evento como o evento durante todo o dia.
 
-If you want to edit advanced details such as the **Location**, a **Description**,
-**Attendees**, **Reminders** or to set the event as a repeating-event click on
-the ``More...``-button to open the advanced sidebar-editor.
+Se você quiser editar detalhes avançados, pesquise como **Local**, **Descrição**,
+**Participantes**, **Lembretes** ou para definir o evento como um evento repetitivo, clique em
+o botão ``Mais ...`` para abrir o editor da barra lateral avançada.
 
-.. note:: If you always want to open the advanced sidebar-editor instead of the
-          simple event editor popup, you can set a ``Skip simple event
-          editor``-checkmark in the ``Settings & Import``-section of the app.
+.. note:: Se você quiser editar ou excluir um evento específico, basta clicar nele.
+          Depois que você estiver pronto para redefinir todos os detalhes e abrir
+          o editor da barra lateral, clique em ``Mais ...``.
 
-Clicking on the blue ``Create``-button will finally create the event.
+Clicar no botão azul ``Criar`` finalmente criará o evento.
 
-Edit or Delete an event
-~~~~~~~~~~~~~~~~~~~~~~~
+Editar ou excluir um evento
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you want to edit or delete a specific event, you just need to click on it.
-After that you will be able to re-set all of the events details and open the
-advanced sidebar-editor by clicking on ``More...``.
+Se você quiser editar ou excluir um evento específico, basta clicar nele.
+Depois que você estiver pronto para redefinir todos os detalhes e abrir o
+editor da barra lateral, clique em ``Mais ...``.
 
-Clicking on the blue ``Update``-button will update the event. Clicking on the
-``Cancel``-button will not save your edits.
+Clicar no botão ``Atualizar`` azul atualizará o evento. Clicando no
+O botão ``Cancelar`` não salva suas edições.
 
-If you click on the red ``Delete``-button the event will be removed from your
-calendar.
+Se você clicar no botão ``Delete`` vermelho, o evento será removido do seu
+calendário.
 
-Birthday calendar
------------------
+Calendário de aniversário
+-------------------------
 
-The birthday calendar is a auto-generated calendar which will automatically
-fetch the birthdays from your contacts. The only way to edit this calendar is by
-filing your contacts with birthday dates. You can not directly edit this calendar
-from the calendar-app.
+O calendário de aniversários é um calendário gerado automaticamente que automaticamente
+busque os aniversários de seus contatos. A única maneira de editar este calendário é
+arquivando seus contatos com datas de aniversário. Você não pode editar diretamente
+este calendário a partir do aplicativo de calendário.
 
-.. note:: If you do not see the birthday calendar, your Administrator may has
-          disabled this for your server.
+.. note:: Se você não ver o calendário de aniversários, seu administrador poderá
+           ter desativado isso para o seu servidor.
