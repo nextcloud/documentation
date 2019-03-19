@@ -1,65 +1,65 @@
-==============================
-Synchronizing with Thunderbird
-==============================
+================================
+Sincronizando com o Thunderbird
+================================
 
-Contacts
+Contatos
 --------
 
-As someone who is new to Nextcloud and new to CardBook here is what you need in excruciating pithy detail to make this work:
+Como alguém que é novo no Nextcloud e novo no CardBook este é o trabalho duro que você precisa fazer:
 
-- `Thunderbird <https://www.thunderbird.net/>`_ for your OS unless it comes with your OS distribution (Linux)
-- `CardBook <https://addons.thunderbird.net/en-US/thunderbird/addon/cardbook/>`_ (a Thunderbird contacts add-on.)
+- `Thunderbird <https://www.thunderbird.net/>`_ para o seu sistema operacional, a menos que ele venha com a distribuição do sistema operacional (Linux)
+- `CardBook <https://addons.thunderbird.net/en-US/thunderbird/addon/cardbook/>`_ (um complemento de contatos do Thunderbird.)
 
-Once you've installed CardBook and Thunderbird do like this:
+Depois de instalar o CardBook e o Thunderbird, faça o seguinte:
 
-1. In the bottom left of the Contacts View (in Nextcloud contatcs) look for a little impeller symbol that looks like this:
+1. No canto inferior esquerdo da Visualização de Contatos (em Nextcloud contatcs) procure por um pequeno símbolo de impulsor semelhante a este:
 
 .. image:: ../images/contacts_link.png
 
-which will display and URL that looks something like this:
+que mostrará algo assim:
 https://cloud.nextcloud.com/remote.php/dav/addressbooks/users/daniel/Thunderbird/
 
-2. Cardbook is found in the upper right corner of Thunderbird:
+2. O Cardbook é encontrado no canto superior direito do Thunderbird:
 
 .. image:: ../images/cardbook_icon.png
 
-3. In the Thunderbird Cardbook add-on:
+3. No complemento do Thunderbird Cardbook:
 
    -  "Adressbook > New Adressbook **Remote** > Next
-   -  Fill in your information
+   - Preencha suas informações
 
 .. image:: ../images/new_addressbook.png
 
-4. Validate your settings and click Next, then choose the name of the addressbook and click Next again.
+4. Valide suas configurações, clique em Avançar, escolha o nome do bloco de endereços e clique em Avançar novamente.
 
 .. image:: ../images/addressbook_name.png
 
-5. Once installed, synchronize your addressbook by clicking "Synchronize" in the top left corner of CardBook.
-You'll see your address book populate from Nextcloud!
+5. Uma vez instalado, sincronize seu livro de endereços clicando em "Sincronizar" no canto superior esquerdo do CardBook.
+Você verá sua lista de endereços preencher a partir do Nextcloud!
 
 .. image:: ../images/synchronize_cardbook.png
 
-The rest of the details of dealing with Thunderbird CardBook are left to the reader...
+O resto dos detalhes de lidar com o Thunderbird CardBook são deixados para o leitor ...
 
-Calendar
---------
+Calendário
+----------
 
-- `Thunderbird <https://www.thunderbird.net/>`_ for your OS unless it comes with your OS distribution (Linux)
-- `Lightning <https://addons.mozilla.org/en-US/thunderbird/addon/lightning/>`_ (a Thunderbird calendar add-on.)
+- `Thunderbird <https://www.thunderbird.net/>`_ para o seu sistema operacional, a menos que ele venha com a distribuição do sistema operacional (Linux)
+- `Lightning <https://addons.mozilla.org/en-US/thunderbird/addon/lightning/>`_ (um complemento do calendário do Thunderbird.)
 
-Once you've installed Lighning and Thunderbird do like this:
+Depois de instalar o Lighning e o Thunderbird, faça o seguinte:
 
-1. Go to your Nextcloud Calendar and click on the 3 dotted menu for the calendar that you want to synchronize which will display and URL that looks something like this:
+1. Vá para o seu Calendário Nextcloud e clique no menu de 3 pontos para o calendário que você deseja sincronizar, que será exibido assim:
 https://cloud.nextcloud.com/remote.php/dav/calendars/daniel/personal/
 
-2. Go to the calendar view in Thunderbird and right click in the calendar menu to the left (where the names of the calendars are) to add a **New Calendar**.
+2. Vá para a visualização de calendário no Thunderbird e clique com o botão direito do mouse no calendário à esquerda (onde estão os nomes dos calendários) para adicionar um **Novo Calendário**.
 
-3. Choose **On the network**
+3. Escolha **On the network**
 
 .. image:: ../images/new_calendar.png
 
-4. Choose **CalDAV** and fill in the missing information:
+4. Escolha **CalDAV** e preencha as informações que faltam:
 
 .. image:: ../images/CalDAV_calendar.png
 
-The rest of the details of dealing with Thunderbird Calendar are left to the reader...
+O resto do calendário do Thunderbird é deixado para o leitor ...

@@ -1,22 +1,21 @@
-==================
-Large file uploads
-==================
+===========================
+Uploads de arquivos grandes
+===========================
 
-When uploading files through the web client, Nextcloud is limited by PHP and
-Apache configurations. By default, PHP is configured for only 2 megabyte
-uploads. As this default upload limit is not entirely useful, we recommend that
-your Nextcloud admin increase the Nextcloud variables to sizes appropriate for
-users.
+Ao carregar arquivos através do web client, o Nextcloud é limitado por configurações
+PHP e Apache. Por padrão, o PHP é configurado para uploads de apenas 2 megabytes.
+Como esse limite de upload padrão não é totalmente útil, recomendamos que o
+administrador do Nextcloud aumente as variáveis Nextcloud para tamanhos apropriados
+aos usuários.
 
-Modifying certain Nextcloud variables requires administrative access. If you
-require larger upload limits than have been provided by the default (or already
-set by your administrator):
+Modificar certas variáveis do Nextcloud requer acesso administrativo. Se você
+precisar de limites de upload maiores do que os fornecidos pelo padrão
+(ou já definidos pelo seu administrador):
 
-* Contact your administrator to request an increase in these variables
+* Entre em contato com seu administrador para solicitar um aumento nessas variáveis
 
-* Refer to the section in the `Admin Documentation
-  <https://docs.nextcloud.org/server/14/admin_manual/configuration_files/
-  big_file_upload_configuration.html>`_ that describes how to manage file
-  upload size limits.
+* Consulte a seção na `Documentação do Administrador <https://docs.nextcloud.org/server/14/
+  admin_manual/configuration_files/big_file_upload_configuration.html>`_ que descreve como
+  gerenciar arquivos limites de tamanho de upload.
 
 .. TODO ON RELEASE: Update version number above on release

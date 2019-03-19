@@ -1,33 +1,32 @@
-===============
-Version control
-===============
+===================
+Controle de versão
+===================
 
-Nextcloud supports simple version control system for files. Versioning creates
-backups of files which are accessible via the Versions tab on the Details
-sidebar. This tab contains the history of the file where you can roll back a
-file to any previous version. Changes made at intervals greater than two minutes
-are saved in **data/[user]/versions**.
+Nextcloud suporta sistema de controle de versão simples para arquivos.
+O controle de versão cria backups de arquivos que são acessíveis
+através da guia Versões na barra lateral Detalhes. Essa guia contém
+o histórico do arquivo em que você pode reverter um arquivo para
+qualquer versão anterior. Alterações feitas em mais de dois minutos
+são salvos em **data / [user] / versions**.
 
 .. figure:: ../images/files_versioning.png
 
-To restore a specific version of a file, click the circular arrow to the left.
-Click on the timestamp to download it.
+Para restaurar uma versão específica de um arquivo, clique na seta circular à esquerda.
+Clique no timestamp para fazer o download.
 
-The versioning app expires old versions automatically to make sure that
-the user doesn't run out of space. This pattern is used to delete
-old versions:
+O aplicativo de controle de versão garante automaticamente que o usuário não
+fique sem espaço. Este padrão é usado para excluir versões antigas:
 
-* For the first second we keep one version
-* For the first 10 seconds Nextcloud keeps one version every 2 seconds
-* For the first minute Nextcloud keeps one version every 10 seconds
-* For the first hour Nextcloud keeps one version every minute
-* For the first 24 hours Nextcloud keeps one version every hour
-* For the first 30 days Nextcloud keeps one version every day
-* After the first 30 days Nextcloud keeps one version every week
+* Para o primeiro segundo, mantemos uma versão
+* Nos primeiros 10 segundos, o Nextcloud mantém uma versão a cada 2 segundos
+* Para o primeiro minuto, o Nextcloud mantém uma versão a cada 10 segundos
+* Durante a primeira hora, o Nextcloud mantém uma versão a cada minuto
+* Nas primeiras 24 horas, o Nextcloud mantém uma versão a cada hora
+* Nos primeiros 30 dias, o Nextcloud mantém uma versão todos os dias
+* Após os primeiros 30 dias, o Nextcloud mantém uma versão toda semana
 
-The versions are adjusted along this pattern every time a new version gets
-created.
+As versões são ajustadas ao longo desse padrão toda vez que uma nova versão é criada.
 
-The version app never uses more that 50% of the user's currently available free
-space. If the stored versions exceed this limit, Nextcloud deletes the oldest
-versions until it meets the disk space limit again.
+O aplicativo de versão usa 50% do espaço livre atualmente disponível do usuário.
+Se as versões armazenadas excederem esse limite, o Nextcloud excluirá a versão
+mais antiga até atingir o limite de espaço em disco novamente.

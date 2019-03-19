@@ -1,44 +1,44 @@
-==============================
-Synchronizing with KDE Kontact
-==============================
+===================================
+Sincronizando com o Kontact do KDE
+===================================
 
-KOrganizer and KAddressBook can synchronize your calendar, contacts and tasks with a Nextcloud server.
+O KOrganizer e o KAddressBook podem sincronizar seu calendário, contatos e tarefas com um servidor Nextcloud.
 
-This can be done by following these steps:
+Isso pode ser feito seguindo estas etapas:
 
-1. Open KOrganizer and in the calendar list (bottom left) right-click and choose ``Add Calendar``.
+1. Abra o KOrganizer e na lista de calendários (canto inferior esquerdo) clique com o botão direito e escolha ``Add Calendar``.
 
 .. image:: ../images/KOrganizer_add_calendar.png
 
-2. In the resulting list of resources, pick ``DAV groupware resource``.
+2. Na lista de recursos resultante, escolha ``DAV groupware resource``.
 
 .. image:: ../images/korganizer_resource_choice.png
 
-3. Enter your username. As password, you need to generate an app-password/token (`Learn more <https://docs.nextcloud.com/server/stable/user_manual/session_management.html#managing-devices>`_).
+3. Digite seu nome de usuário. Como senha, você precisa gerar um app-password/token (`Aprenda mais <https://docs.nextcloud.com/server/stable/user_manual/session_management.html#managing-devices>` _).
 
 .. image:: ../images/korganizer_credentials.png
 
-4. Choose ``ownCloud`` or ``Nextcloud`` as Groupware server option.
+4. Escolha ``ownCloud`` ou ``Nextcloud`` como opção do servidor Groupware.
 
 .. image:: ../images/KOrganizer_groupware_server.png
 
-5. Enter your Nextcloud server URL and, if needed, installation path (anything that comes after the first /, for example ``mynextcloud`` in ``https://exampe.com/mynextcloud``). Then click next.
+5. Insira sua URL do servidor Nextcloud e, se necessário, o caminho da instalação (qualquer coisa que venha depois da primeira /, por exemplo, ``mynextcloud`` em ``https://exampe.com/mynextcloud``). Então clique em próximo.
 
 .. image:: ../images/KOrganizer_server_address.png
 
-6. You can now test the connection, which can take some time for the initial connection. If it does not work, you can go back and try to fix it with other settings.
+6. Agora você pode testar a conexão, o que pode levar algum tempo para a conexão inicial. Se isso não funcionar, você pode voltar e tentar corrigi-lo com outras configurações.
 
 .. image:: ../images/KOrganizer_test1.png
 
 .. image:: ../images/KOrganizer_test2.png
 
-7. Pick a name for this resource, for example ``Work`` or ``Home``. By default, both CalDAV (Calendar) and CardDAV (Contacts) are synced. 
+7. Escolha um nome para este recurso, por exemplo, ``Work`` ou ``Home``. Por padrão, tanto o CalDAV (Calendar) quanto o CardDAV (Contacts) são sincronizados.
 
-.. note:: You can set a manual refresh rate four your calendar and contacts resources. By default this setting is set to 5 minutes and should be fine for the most use cases. You may want to change this for saving your power or cellular data plan.  that you can update with a right-click on the item in the calendar list and when you create a new appointment it is synced to Nextcloud right away.
+.. note:: Você pode definir uma taxa de atualização manual de quatro seus recursos de agenda e contatos. Por padrão, essa configuração é definida para 5 minutos e deve ser adequada para a maioria dos casos de uso. Você pode querer mudar isso para salvar seu poder ou plano de dados de celular. que você pode atualizar clicando com o botão direito do mouse no item da lista de calendários e, quando você cria um novo compromisso, ele é sincronizado com o Nextcloud imediatamente.
 
 .. image:: ../images/KOrganizer_pick_resources.png
 
-8. After a few seconds to minutes depending on your internet connection, you will finde your calendars and contacts inside the KDE Kontact applications KOrganizer and KAddressBook!
+8. Após alguns segundos ou minutos, dependendo da sua conexão com a Internet, você encontrará seus calendários e contatos dentro dos aplicativos do KDE Kontact, KOrganizer e KAddressBook!
 
 .. image:: ../images/KOrganizer.png
 .. image:: ../images/KAddressBook.png

@@ -1,5 +1,5 @@
 =======================
-Files & synchronization
+Arquivos e sincronização
 =======================
 
 .. toctree::

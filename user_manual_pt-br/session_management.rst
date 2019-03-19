@@ -1,67 +1,67 @@
-=====================================
-Manage connected browsers and devices
-=====================================
+================================================
+Gerenciar navegadores e dispositivos conectados
+================================================
 
-The personal settings page allows you to have an overview on the connected
-browsers and devices.
+A página de configurações pessoais permite que você tenha uma visão geral
+dos navegadores e dispositivos conectados.
 
-Managing connected browsers
----------------------------
+Gerenciando navegadores conectados
+----------------------------------
 
-In the list of connected browsers you see which browsers connected to your
-account recently:
+Na lista de navegadores conectados, você vê quais navegadores conectados
+à sua conta recentemente:
 
 .. figure:: images/settings_sessions.png
-     :alt: List of browser sessions.
+     :alt: Lista de sessões do navegador.
 
-You can use the trash icon to disconnect any of the browsers in the list.
+Você pode usar o ícone da lixeira para desconectar qualquer um dos navegadores da lista.
 
-Managing devices
-----------------
+Gerenciando dispositivos
+------------------------
 
-In the list of connected devices you see all the devices and clients you
-generated a device password for and their last activity:
+Na lista de dispositivos conectados, você vê todos os dispositivos
+e clientes para os quais você gerou uma senha de dispositivo e sua última atividade:
 
 .. figure:: images/settings_devices.png
-     :alt: List of connected devices.
+     :alt: Lista de dispositivos conectados.
 
-You can use the trash icon to disconnect any of the devices in the list.
+Você pode usar o ícone da lixeira para desconectar qualquer um dos dispositivos da lista.
 
-At the bottom of the list you find a button to create a new device-specific
-password. You can choose a name to identify the token later. The generated
-password is used for configuring the new client. Ideally, generate individual
-tokens for every device you connect to your account, so you can disconnect
-those individually if necessary.
+Na parte inferior da lista, você encontra um botão para criar uma nova senha
+específica do dispositivo. Você pode escolher um nome para identificar o
+token mais tarde. A senha gerada é usada para configurar o novo cliente.
+Idealmente, gere tokens individuais para cada dispositivo conectado à sua
+conta, para que você possa desconectá-los individualmente, se necessário.
 
 .. figure:: images/settings_devices_add.png
-     :alt: Adding a new device.
+     :alt: Adicionando um novo dispositivo.
 
-.. note:: You have only access to the device password when creating it,
-   Nextcloud will not save the plain password, hence it's recommended to
-   enter the password on the new client immediately.
+.. note:: Você só tem acesso à senha do aparelho ao criá-lo, o Nextcloud não
+   irá salvar a senha simples, por isso é recomendado inserir a senhano novo
+   cliente imediatamente.
 
+.. note:: Se você está :doc:`user_2fa` para sua conta, as senhas específicas
+   do dispositivo são a única maneira de configurar clientes. O cliente
+   negará conexões de clientes usando sua senha de login.
 
-.. note:: If you are :doc:`user_2fa` for your account,
-   device-specific passwords are the only way to configure clients. The
-   client will deny connections of clients using your login password then.
+Senhas específicas do dispositivo e alterações de senha
+-------------------------------------------------------
 
-Device-specific passwords and password changes
-----------------------------------------------
+O comportamento das senhas específicas do dispositivo durante as alterações
+da senha principal foi alterado em diferentes versões do Nextcloud.
 
-The behaviour of device-specific passwords during changes of the main password
-changed in different versions of Nextcloud.
-
-Up to Nextcloud 13
-	Device-specific passwords are removed on password change and also are
-	removed once they are not valid anymore if an external user backend is
-	used.
+Até Nextcloud 13
+    As senhas específicas do dispositivo são removidas na alteração de senha
+    e também são removidas quando não são mais válidas se um back-end de
+    usuário externo for usado.
 
 Nextcloud 14
-	For local user backend the device-specific passwords are updated properly
-	and continue to work. For external user backends (like LDAP/AD) the
-	device-specific passwords are still removed.
+    Para o usuário local backend, as senhas específicas do dispositivo são
+    atualizadas corretamente e continuam funcionando. Para back-ends de usuários
+    externos (como LDAP / AD), as senhas específicas do dispositivo ainda são removidas.
 
-Starting with Nextcloud 15
-	For password changes in external user backends the device-specific passwords
-	are marked as invalid and once a login of the user account with the main
-	password happens all device-specific passwords are updated and work again.
+Começando com o Nextcloud 15
+    Para alterações de senha em backends de usuário externo, as senhas específicas
+    do dispositivo são marcadas como inválidas e, depois que um login da conta do
+    usuário com a senha principal ocorrer, todas as senhas específicas do dispositivo
+    serão atualizadas e funcionarão novamente.

@@ -1,153 +1,163 @@
-=============================================
-Encrypting your Nextcloud files on the server
-=============================================
+===================================================
+Criptografando seus arquivos Nextcloud no servidor
+===================================================
 
-Nextcloud includes a server side Encryption app, and when it is enabled by
-your Nextcloud administrator all of your Nextcloud data files are automatically
-encrypted on the server.
-Encryption is server-wide, so when it is enabled you cannot choose to keep your
-files unencrypted. You don't have to do anything special, as it uses your
-Nextcloud login as the password for your unique private encryption key. Just log
-in and out and manage and share your files as you normally do, and you can
-still change your password whenever you want.
+O Nextcloud inclui um aplicativo de criptografia do lado do servidor e, quando ativado por
+seu administrador do Nextcloud todos os seus arquivos de dados do Nextcloud são automaticamente
+criptografado no servidor.
+A criptografia é em todo o servidor, portanto, quando ativada, você não pode optar por manter
+arquivos não criptografados. Você não precisa fazer nada de especial, pois usa o seu
+Login do Nextcloud como a senha da sua chave de criptografia privada exclusiva. Basta entrar e
+sair e gerenciar e compartilhar seus arquivos como você faz normalmente, e você pode
+ainda mude sua senha sempre que quiser.
 
-Its main purpose is to encrypt files on remote storage services that are
-connected to your Nextcloud server, such as Dropbox and Google Drive. This is an
-easy and seamless way to protect your files on remote storage. You can share
-your remote files through Nextcloud in the usual way, however you cannot share
-your encrypted files directly from Dropbox, Google Drive, or whatever remote
-service you are using, because the encryption keys are stored on your Nextcloud
-server, and are never exposed to outside service providers.
+Seu objetivo principal é criptografar arquivos em serviços de armazenamento remoto que são
+conectado ao seu servidor Nextcloud, como o Dropbox e o Google Drive. Isto é um
+maneira fácil e perfeita para proteger seus arquivos em armazenamento remoto. Você pode compartilhar
+seus arquivos remotos através do Nextcloud da maneira usual, mas você não pode compartilhar
+seus arquivos criptografados diretamente do Dropbox, do Google Drive ou de qualquer outro controle remoto
+serviço que você está usando, porque as chaves de criptografia são armazenadas em seu servidor Nextcloud e
+nunca são expostas a provedores de serviços externos.
 
-If your Nextcloud server is not connected to any remote storage services, then
-it is better to use some other form of encryption such as file-level or whole
-disk encryption. Because the keys are kept on your Nextcloud server, it is
-possible for your Nextcloud admin to snoop in your files, and if the server is
-compromised the intruder may get access to your files. (Read
-`Encryption in Nextcloud <https://nextcloud.com/blog/encryption-in-nextcloud/>`_
-to learn more.)
+Se o seu servidor Nextcloud não estiver conectado a nenhum serviço de armazenamento remoto,
+é melhor usar alguma outra forma de criptografia, como criptografia de disco no nível de arquivo ou
+inteiro. Como as chaves são mantidas no seu servidor Nextcloud, é
+possível para o administrador do Nextcloud bisbilhotar seus arquivos, e se o servidor estiver
+comprometido o intruso pode obter acesso aos seus arquivos. (Ler
+`Criptografia em Nextcloud <https://nextcloud.com/blog/encryption-in-nextcloud/>`_
+aprender mais.)
 
-Encryption FAQ
---------------
+Perguntas frequentes sobre criptografia
+----------------------------------------
 
-How can encryption be disabled?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Como a criptografia pode ser desativada?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The only way to disable encryption is to run the `"decrypt all"
+A única maneira de desabilitar a criptografia é executar o `"decrypt all"
 <https://docs.nextcloud.org/server/14/admin_manual/configuration_server/occ_command.html#encryption-label>`_.
 
-.. TODO ON RELEASE: Update version number above on release
+.. TODO ON RELEASE: Atualize o número da versão acima no lançamento
 
-script, which decrypts all files and disables encryption.
+script, que descriptografa todos os arquivos e desabilita a criptografia.
 
-Is it possible to disable encryption with the recovery key?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+É possível desabilitar a criptografia com a chave de recuperação?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Yes, *if* every user uses the `file recovery key
+Sim, *se* todo usuário usar a `chave de recuperação de arquivo
 <https://docs.nextcloud.com/server/14/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_,  `"decrypt all"
-<https://docs.nextcloud.org/server/14/admin_manual/configuration_server/occ_command.html#encryption-label>`_ will use it to decrypt all files.
+<https://docs.nextcloud.org/server/14/admin_manual/configuration_server/occ_command.html#encryption-label>`_ irá usá-lo para descriptografar todos os arquivos.
 
-.. TODO ON RELEASE: Update version number above on release
+.. TODO ON RELEASE: Atualize o número da versão acima no lançamento
 
-Can encryption be disabled without the user's password?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+A criptografia pode ser desativada sem a senha do usuário?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you don't have the users password or `file recovery key
+Se você não tiver a senha do usuário ou a `chave de recuperação de arquivo
 <https://docs.nextcloud.com/server/14/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_.
 
-.. TODO ON RELEASE: Update version number above on release
+.. TODO ON RELEASE: Atualize o número da versão acima no lançamento
 
-then there is no way to decrypt all files. What's
-more, running it on login would be dangerous, because you would most likely run
-into timeouts.
+então não há como descriptografar todos os arquivos.
+Além do mais, executá-lo no login seria perigoso, porque
+você provavelmente se depararia com timeouts.
 
-Is it planned to move this to the next user login or a background job?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+É planejado para mover isso para o próximo login de usuário ou um trabalho em segundo plano?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If we did that, then we would need to store your login password in the database.
-This could be seen as a security issue, so nothing like that is planned.
+Se fizéssemos isso, precisaríamos armazenar sua senha de login no banco de dados.
+Isso pode ser visto como um problema de segurança, então nada disso está planejado.
 
-Is group Sharing possible with the recovery key?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+O compartilhamento de grupo é possível com a chave de recuperação?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you mean adding users to groups and make it magically work? No. This only
-works with the master key.
+Se você quer dizer adicionar usuários a grupos e fazer isso funcionar magicamente? Não. Isso só
+funciona com a chave mestra.
 
-Using encryption
-----------------
+Usando criptografia
+-------------------
 
-Nextcloud encryption is pretty much set it and forget it, but you have a few
-options you can use.
+Criptografia NextCloud é muito bem definida, voce pode configurar e esquecer,
+mas você tem algumas opções que você pode usar.
 
-When your Nextcloud admin enables encryption for the first time, you must log
-out and then log back in to create your encryption keys and encrypt your files.
-When encryption has been enabled on your Nextcloud server you will see a yellow
-banner on your Files page warning you to log out and then log back in.
+Quando o administrador do Nextcloud permite a criptografia pela primeira vez,
+você deve efetuar logout e, em seguida, efetuar login novamente para criar
+suas chaves de criptografia e criptografar seus arquivos. Quando a criptografia
+tiver sido habilitada no seu servidor Nextcloud, você verá um banner amarelo na
+sua página de Arquivos avisando para você sair e depois fazer o login novamente.
 
 .. figure:: ../images/encryption1.png
 
-When you log back in it takes a few minutes to work, depending on how many
-files you have, and then you are returned to your default Nextcloud page.
+Quando você faz o login, leva alguns minutos para funcionar, dependendo de quantos
+arquivos que você tem e, em seguida, retornará à sua página Nextcloud padrão.
 
 .. figure:: ../images/encryption2.png
 
 
-.. note:: You must never lose your Nextcloud password, because you will lose
-   access to your files. Though there is an optional recovery option that your
-   Nextcloud administrator may enable; see the Recovery Key Password section
-   (below) to learn about this.
+.. note:: Você nunca deve perder sua senha do Nextcloud, porque você perderá
+   acesso aos seus arquivos. Embora exista uma opção de recuperação opcional que o seu
+   O administrador do Nextcloud pode ativar; veja a seção Senha da chave de recuperação
+   (abaixo) para aprender sobre isso.
 
-Sharing encrypted files
------------------------
+Compartilhando arquivos criptografados
+--------------------------------------
 
-Only users who have private encryption keys have access to shared encrypted
-files and folders. Users who have not yet created their private encryption keys
-will not have access to encrypted shared files; they will see folders and
-filenames, but will not be able to open or download the files. They will see a
-yellow warning banner that says "Encryption App is enabled but your keys are not
-initialized, please log-out and log-in again."
+Somente usuários que possuem chaves de criptografia privadas têm acesso a
+arquivos e pastas criptografados compartilhados. Os usuários que ainda não
+criaram suas chaves de criptografia privadas não terão acesso a arquivos
+compartilhados criptografados; eles verão pastas e nomes de arquivos, mas
+não poderão abrir ou baixar os arquivos. Eles verão um banner de aviso
+amarelo que diz "O aplicativo de criptografia está habilitado, mas suas
+chaves não estão inicializadas, faça o logout e faça o login novamente."
 
-Share owners may need to re-share files after encryption is enabled; users
-trying to access the share will see a message advising them to ask the share
-owner to re-share the file with them. For individual shares, un-share and
-re-share the file. For group shares, share with any individuals who can't access
-the share. This updates the encryption, and then the share owner can remove the
-individual shares.
+Os proprietários de compartilhamentos podem precisar compartilhar
+novamente os arquivos depois que a criptografia estiver ativada; os
+usuários que tentam acessar o compartilhamento verão uma mensagem
+avisando-os para solicitar ao proprietário do compartilhamento que
+compartilhe novamente o arquivo com eles. Para compartilhamentos
+individuais, descompartilhe e compartilhe novamente o arquivo. Para
+compartilhamentos de grupo, compartilhe com qualquer pessoa que não
+possa acessar o compartilhamento. Isso atualiza a criptografia e, em
+seguida, o proprietário do compartilhamento pode remover os
+compartilhamentos individuais.
 
-Recovery key password
-^^^^^^^^^^^^^^^^^^^^^
+Senha da chave de recuperação
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If your Nextcloud administrator has enabled the recovery key feature, you can
-choose to use this feature for your account. If you enable "Password recovery"
-the administrator can read your data with a special password. This feature
-enables the administrator to recover your files in the event you lose your
-Nextcloud password. If the recovery key is not enabled, then there is no way to
-restore your files if you lose your login password.
+Se o seu administrador do Nextcloud tiver ativado o recurso de chave
+de recuperação, você poderá optar por usar esse recurso para sua
+conta. Se você ativar "Recuperação de senha", o administrador poderá
+ler seus dados com uma senha especial. Esse recurso permite que o
+administrador recupere seus arquivos caso você perca sua senha do
+Nextcloud. Se a chave de recuperação não estiver ativada, não será
+possível restaurar seus arquivos se você perder sua senha de login.
 
 .. figure:: ../images/encryption3.png
 
-Files not encrypted
--------------------
+Arquivos não criptografados
+----------------------------
 
-Only the data in your files is encrypted, and not the filenames or folder
-structures. These files are never encrypted:
+Somente os dados em seus arquivos são criptografados e não os nomes de arquivos ou pastas
+estruturas. Esses arquivos nunca são criptografados:
 
-- Old files in the trash bin.
-- Image thumbnails from the Gallery app.
-- Previews from the Files app.
-- The search index from the full text search app.
-- Third-party app data
+- Arquivos antigos na lixeira.
+- Miniaturas de imagem do aplicativo Gallery.
+- Pré-visualizações do aplicativo Arquivos.
+- O índice de pesquisa do aplicativo de pesquisa de texto completo.
+- dados de aplicativos de terceiros
 
-There may be other files that are not encrypted; only files that are exposed to
-third-party storage providers are guaranteed to be encrypted.
+Pode haver outros arquivos que não são criptografados;
+Somente os arquivos que são expostos a provedores de
+armazenamento de terceiros têm a garantia de serem criptografados
 
-Change private key password
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Alterar senha da chave privada
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This option is only available if your log-in password, but not your encryption
-password, was changed by your administrator. This can occur if your Nextcloud
-provider uses an external user back-end (for example, LDAP) and changed your
-login password using that back-end configuration. In this case, you can set
-your encryption password to your new login password by providing your old and
-new login password. The Encryption app works only if your login password and
-your encryption password are identical.
+Esta opção só estará disponível se sua senha de login, mas não sua
+senha de criptografia, tiver sido alterada pelo seu administrador.
+Isso pode ocorrer se seu provedor do Nextcloud usar um backend de
+usuário externo (por exemplo, LDAP) e tiver alterado sua senha de
+login usando essa configuração de backend. Nesse caso, você pode
+definir sua senha de criptografia para sua nova senha de login,
+fornecendo sua antiga e nova senha de login. O aplicativo de
+criptografia funciona somente se sua senha de login e sua senha
+de criptografia forem idênticas.

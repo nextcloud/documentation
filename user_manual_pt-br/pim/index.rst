@@ -2,14 +2,15 @@
 Groupware
 =========
 
-Nextcloud Groupware is a bundle of apps which is consisting of an **Mail**-client
-(IMAP/POP3) and a **Calendar** and **Contacts** server (CalDAV/CardDAV) with the
-respective web interfaces.
+O Nextcloud Groupware é um pacote de aplicativos que consiste em um servidor
+**Mail** - cliente (IMAP / POP3) e um **Agenda** e **Contatos**
+(CalDAV / CardDAV) com as respectivas interfaces da web.
 
-We complete those productivity tools with **Deck**, a project management tool
-which allows you to create Kanban-style task boards and share them with your team.
+Completamos essas ferramentas de produtividade com o **Deck**, uma ferramenta
+de gerenciamento de projetos que permite criar painéis de tarefas no
+estilo Kanban e compartilhá-los com sua equipe.
 
-You can find out more about Nextcloud Groupware `on our website <https://nextcloud.com/groupware/>`_.
+Você pode descobrir mais sobre o Nextcloud Groupware `em nosso site <https://nextcloud.com/groupware/>`_.
 
 .. toctree::
    :maxdepth: 1
