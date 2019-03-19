@@ -1,8 +1,8 @@
 .. _ocsapiindex:
 
-=========
-OCS API's
-=========
+========
+OCS APIs
+========
 
 This document provides a quick overview of the OCS API endpoints supported in Nextcloud.
 
