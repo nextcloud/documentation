@@ -253,10 +253,6 @@ your nginx installation.
       location = /.well-known/caldav {
         return 301 $scheme://$host/nextcloud/remote.php/dav;
       }
-      
-      location ~ ^\/(?:ocm-provider|ocs-provider).* {
-        rewrite ^ /nextcloud$request_uri;
-      }
 
       location /.well-known/acme-challenge { }
 
