@@ -3,7 +3,8 @@ Nginx configuration
 ===================
 
 This page covers example Nginx configurations to use with running a Nextcloud
-server. This page is community-maintained. (Thank you, contributors!)
+server. These configurations examples were originally provided by
+`@josh4trunks <https://github.com/josh4trunks>`_ and are community-maintained. (Thank you contributors!)
 
 -  You need to insert the following code into **your Nginx configuration file.**
 -  Adjust **server_name**, **root**, **ssl_certificate** and
@@ -21,9 +22,6 @@ server. This page is community-maintained. (Thank you, contributors!)
    broken for page formatting.
 -  Some environments might need a ``cgi.fix_pathinfo`` set to ``1`` in their
    ``php.ini``.
-
-Thanks to `@josh4trunks <https://github.com/josh4trunks>`_ for providing /
-creating these configuration examples.
 
 Nextcloud in the webroot of nginx
 ---------------------------------
@@ -130,7 +128,7 @@ webroot of your nginx installation. In this example it is
           deny all;
       }
 
-      location ~ ^\/(?:index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|ocs-provider\/.+|ocm-provider\/.+)\.php(?:$|\/) {
+      location ~ ^\/(?:index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|oc[ms]-provider\/.+)\.php(?:$|\/) {
           fastcgi_split_path_info ^(.+?\.php)(\/.*|)$;
           include fastcgi_params;
           fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
@@ -144,7 +142,7 @@ webroot of your nginx installation. In this example it is
           fastcgi_request_buffering off;
       }
 
-      location ~ ^\/(?:updater|ocs-provider|ocm-provider)(?:$|\/) {
+      location ~ ^\/(?:updater|oc[ms]-provider)(?:$|\/) {
           try_files $uri/ =404;
           index index.php;
       }
@@ -291,7 +289,7 @@ your nginx installation.
               deny all;
           }
 
-          location ~ ^\/nextcloud\/(?:index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|ocs-provider\/.+|ocm-provider\/.+)\.php(?:$|\/) {
+          location ~ ^\/nextcloud\/(?:index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|oc[ms]-provider\/.+)\.php(?:$|\/) {
               fastcgi_split_path_info ^(.+?\.php)(\/.*|)$;
               include fastcgi_params;
               fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
@@ -305,7 +303,7 @@ your nginx installation.
               fastcgi_request_buffering off;
           }
 
-          location ~ ^\/nextcloud\/(?:updater|ocs-provider|ocm-provider)(?:$|\/) {
+          location ~ ^\/nextcloud\/(?:updater|oc[ms]-provider)(?:$|\/) {
               try_files $uri/ =404;
               index index.php;
           }
