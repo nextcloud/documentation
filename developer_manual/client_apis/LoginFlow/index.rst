@@ -54,3 +54,33 @@ This information will be used by the client to create a new account.
 After this the webview is destroyed including all the state the webview holds.
 
 .. note:: On Nextcloud 12 the returned server is just the server address without any possible subfolder. This is corrected in Nextcloud 13.
+
+
+Converting to app passwords
+---------------------------
+
+Old configurations of clients might still be using username and passwords. The login flow ensures that each device has an unique app password. In order to facilitate transparent migration to app passwords there is an endpoint that can be called by client.
+
+If the client is authenticated with an app password a 403 will be returned. If the client is authenticating with a real password an app password will be generated and returned.
+
+The user agent header will be used to name the app password.
+
+.. code-block:: bash
+
+     curl -u username:password -H 'OCS-APIRequest: true' https://cloud.example.com/ocs/v2.php/core/getapppassword
+
+The response would look (in XML) something like:
+
+.. code-block:: xml
+        <?xml version="1.0"?>
+        <ocs>
+                <meta>
+                        <status>ok</status>
+                        <statuscode>200</statuscode>
+                        <message>OK</message>
+                </meta>
+                <data>
+                        <apppassword>M1DqHwuZWwjEC3ku7gJsspR7bZXopwf01kj0XGppYVzEkGtbZBRaXlOUxFZdbgJ6Zk9OwG9x</apppassword>
+                </data>
+        </ocs>
+
