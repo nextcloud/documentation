@@ -210,11 +210,11 @@ To access files through the macOS Finder:
 2. The **Connect to Server...** window opens.
 
   .. image:: ../images/osx_webdav2.png
-     :alt: Screenshot: Enter Nextcloud server address in “Connect to Server” dialog box
+     :alt: Screenshot: Enter Nextcloud server address in “Connect to Server...” dialog box
 
 3. Enter your Nexcloud server’s WebDAV address in the **Server Address:** field, ie:
 
-    https://cloud.nextcloud.com/nextcloud/remote.php/dav/files/USERNAME/
+    https://cloud.nextcloud.com/remote.php/dav/files/USERNAME/
 
 4. Click **Connect**. The WebDAV server will appear on the Desktop as a shared disk drive.
 
