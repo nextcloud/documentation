@@ -198,35 +198,26 @@ path of your certificate as in this example::
 Accessing files using macOS
 ---------------------------
 
-.. note:: The macOS Finder suffers from a `series of implementation problems
-   <http://sabre.io/dav/clients/finder/>`_ and should only be used if the
-   Nextcloud server runs on **Apache** and **mod_php**, or **Nginx 1.3.8+**.
+.. note:: The macOS Finder suffers from a `series of implementation problems <http://sabre.io/dav/clients/finder/>`_ and should only be used if the Nextcloud server runs on **Apache** and **mod_php**, or **Nginx 1.3.8+**. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like `Cyberduck <http://sabre.io/dav/clients/finder/>`_ and `Filezilla <https://filezilla-project.org>`_. Commercial clients include `Mountain Duck <https://mountainduck.io/>`_, `Forklift <https://binarynights.com/>`_, `Transmit <https://panic.com/>`_, and `Commander One <https://mac.eltima.com/>`_.
 
 To access files through the macOS Finder:
 
-1. Choose **Go > Connect to Server**.
-
-  The "Connect to Server" window opens.
-
-2. Specify the address of the server in the **Server Address** field.
+1. From the Finder’s top menu bar, choose **Go > Connect to Server...**
 
   .. image:: ../images/osx_webdav1.png
      :alt: Screenshot of entering your Nextcloud server address on macOS
 
-  For example, the URL used to connect to the Nextcloud server
-  from the macOS Finder is::
-
-    https://example.com/nextcloud/remote.php/dav/files/USERNAME/
+2. The **Connect to Server...** window opens.
 
   .. image:: ../images/osx_webdav2.png
+     :alt: Screenshot: Enter Nextcloud server address in “Connect to Server” dialog box
 
-3. Click **Connect**.
+3. Enter your Nexcloud server’s WebDAV address in the **Server Address:** field, ie:
 
-  The device connects to the server.
+    https://cloud.nextcloud.com/nextcloud/remote.php/dav/files/USERNAME/
 
-For added details about how to connect to an external server using macOS,
-check the `vendor documentation
-<http://docs.info.apple.com/article.html?path=Mac/10.6/en/8160.html>`_ .
+4. Click **Connect**. The WebDAV server will appear on the Desktop as a shared disk drive.
+
 
 Accessing files using Microsoft Windows
 ---------------------------------------
@@ -310,7 +301,7 @@ To map a drive using the Microsoft Windows Explorer:
 Accessing files using Cyberduck
 -------------------------------
 
-`Cyberduck <https://cyberduck.io/?l=en>`_ is an open source FTP and SFTP,
+`Cyberduck <https://cyberduck.io/>`_ is an open source FTP and SFTP,
 WebDAV, OpenStack Swift, and Amazon S3 browser designed for file transfers on
 macOS and Windows.
 
