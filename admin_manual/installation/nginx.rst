@@ -42,7 +42,7 @@ webroot of your nginx installation. In this example it is
       listen [::]:80;
       server_name cloud.example.com;
       # enforce https
-      return 301 https://$server_name$request_uri;
+      return 301 https://$server_name:443$request_uri;
   }
 
   server {
@@ -95,10 +95,10 @@ webroot of your nginx installation. In this example it is
       # rewrite ^/.well-known/webfinger /public.php?service=webfinger last;
 
       location = /.well-known/carddav {
-        return 301 $scheme://$host/remote.php/dav;
+        return 301 $scheme://$host:$server_port/remote.php/dav;
       }
       location = /.well-known/caldav {
-        return 301 $scheme://$host/remote.php/dav;
+        return 301 $scheme://$host:$server_port/remote.php/dav;
       }
 
       # set max upload size
@@ -199,7 +199,7 @@ your nginx installation.
       listen [::]:80;
       server_name cloud.example.com;
       # enforce https
-      return 301 https://$server_name$request_uri;
+      return 301 https://$server_name:443$request_uri;
   }
 
   server {
@@ -248,10 +248,10 @@ your nginx installation.
       # rewrite ^/.well-known/webfinger /nextcloud/public.php?service=webfinger last;
 
       location = /.well-known/carddav {
-        return 301 $scheme://$host/nextcloud/remote.php/dav;
+        return 301 $scheme://$host:$server_port/nextcloud/remote.php/dav;
       }
       location = /.well-known/caldav {
-        return 301 $scheme://$host/nextcloud/remote.php/dav;
+        return 301 $scheme://$host:$server_port/nextcloud/remote.php/dav;
       }
 
       location /.well-known/acme-challenge { }
