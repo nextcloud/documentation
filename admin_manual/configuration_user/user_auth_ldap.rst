@@ -272,6 +272,15 @@ Disable Main Server:
 
 Turn off SSL certificate validation:
   Turns off SSL certificate checking. Use it for testing only!
+  *Note*: The effect of this setting depdends on the PHP system configuration.
+  It does for example not work with the
+  [official Nextcloud container image](https://github.com/nextcloud/docker).
+  To disable certificate verification for a particular use, append the following
+  configuration line to your `/etc/ldap/ldap.conf`:
+
+  ```
+  TLS_REQCERT ALLOW
+  ```
 
 Cache Time-To-Live:
   A cache is introduced to avoid unnecessary LDAP traffic, for example caching
@@ -755,7 +764,7 @@ avoid unnecessary connection attempts.
 Note
 ----
 
-When a LDAP object's name or surname, that is display name attribute, by default 
+When a LDAP object's name or surname, that is display name attribute, by default
 "displayname", is left empty, Nextcloud will treat it as an empty object, therefore
-no results from this user or AD-Object will be shown to avoid gathering of 
+no results from this user or AD-Object will be shown to avoid gathering of
 technical accounts.
