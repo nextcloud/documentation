@@ -248,10 +248,10 @@ your nginx installation.
       # rewrite ^/.well-known/webfinger /nextcloud/public.php?service=webfinger last;
 
       location = /.well-known/carddav {
-        return 301 $scheme://$host/nextcloud/remote.php/dav;
+        return 301 $scheme://$http_host/nextcloud/remote.php/dav;
       }
       location = /.well-known/caldav {
-        return 301 $scheme://$host/nextcloud/remote.php/dav;
+        return 301 $scheme://$http_host/nextcloud/remote.php/dav;
       }
 
       location /.well-known/acme-challenge { }
