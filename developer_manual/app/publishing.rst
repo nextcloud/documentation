@@ -91,7 +91,7 @@ To deliver on the promises above, we have two simple rules.
 
 We want to make sure that when you find other things in life which are more urgent or otherwise are unable to help your project anymore, it does not become 'dead code' as long as there are people who want to keep it alive. This is not fair to users, who would be forced to remove the app and install another.
 
-Please note that the role of a maintainer is not to be the most active or prolific contributor to a project! Worlds' `most famous maintainer of an open source project <https://en.wikipedia.org/wiki/Linus_Torvalds>`_ has not appeared in the top-100 of contributors by lines of code for decades, yet he runs the largest single software development project in the history of mankind. Being friendly, welcoming and responsive are what it takes to be a successful maintainer. Not being the most brilliant developer ever, or spending nights and weekends coding!
+Please note that the role of a maintainer is not to be the most active or prolific contributor to a project! Being friendly, welcoming and responsive are what it takes to be a successful maintainer. Not being the most brilliant developer ever, or spending nights and weekends coding!
 
 The goal of these rules is simple: help your project be more successful. We also suggest you watch this talk by `Jan about building a great community. <https://www.youtube.com/watch?v=UtAoRIKVpW4>`_
 
