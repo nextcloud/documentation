@@ -70,15 +70,15 @@ Respect the users
 
 Apps which break the guidelines will lose their 'approved' or 'official' state; and might be blocked from the app store altogether. This also has repercussions for the author, especially in case of security concerns, he/she might find themselves blocked from submitting applications.
 
-Putting your repo in the Nextcloud Project
+Moving your repo to the Nextcloud organization
 ------------------------------------------
-We're always delighted to hear app develpers are interested in moving their app into the Nextcloud Project in `github.com/nextcloud <https://github.com/nextcloud>`_! There are benefits for users and developers in being there. However, it comes with some requirements as well.
+We're always delighted to hear app developers are interested in moving their app to the Nextcloud organization at `github.com/nextcloud <https://github.com/nextcloud>`_! There are benefits for users and developers in being there. However, it comes with some requirements as well.
 
 Benefits
 ^^^^^^^^
 
 * You can use the tools and bots we have set up, including translations and such
-* Everybody in the Nextcloud project can more easily contribute
+* Everybody in the Nextcloud organization can contribute more easily
 * Your visibility to app developers increases
 * Users can expect apps in our project to be better maintained
 
@@ -86,7 +86,7 @@ Requirements
 ^^^^^^^^^^^^
 To deliver on the promises above, we have two simple rules.
 
-* You participate in our `collaborative development model <../general/code-of-conduct.html>`_
+* You work and communicate according to the values of our `Code of Conduct <../general/code-of-conduct.html>`_
 * When you are no longer active, our admins can decide to hand over maintainership to another contributor
 
 We want to make sure that when you find other things in life which are more urgent or otherwise are unable to help your project anymore, it does not become 'dead code' as long as there are people who want to keep it alive. This is not fair to users, who would be forced to remove the app and install another.
@@ -98,4 +98,4 @@ The goal of these rules is simple: help your project be more successful. We also
 How to move
 ^^^^^^^^^^^
 
-To move into our github repo, just ask any of our contributors, `especially those who are admin. <https://github.com/orgs/nextcloud/people?utf8=%E2%9C%93&query=+role%3Aowner>`_ They will be happy to help!
+To move your repository to our Github organization, just ask any of our contributors, `especially those who are admin. <https://github.com/orgs/nextcloud/people?utf8=%E2%9C%93&query=+role%3Aowner>`_ They will be happy to help!
