@@ -141,7 +141,11 @@ automaticamente sempre que você efetuar login no seu computador Linux.
 6. Adicione suas credenciais de login do Nextcloud ao final do arquivo ``secrets``,
    usando sua URL do servidor Nextcloud e seu nome de usuário e senha Nextcloud::
 
-    example.com/nextcloud/remote.php/dav/files/USERNAME/ <username> <password>
+    https://example.com/nextcloud/remote.php/dav/files/USERNAME/ <username> <password>
+    or
+    $PathToMountPoint $USERNAME $PASSWORD
+    for example
+    /home/user/nextcloud john 1234
 
 7. Adicione as informações de montagem ao ``/etc/fstab``::
 
