@@ -1,13 +1,13 @@
 kind: pipeline
-name: build-viewer
+name: documentation-build
 
 steps:
 - name: documentation
-    image: nextcloudci/documentation:documentation-9
-    commands:
-        - npm install svgexport -g
-        - pip2 install -r requirements.txt
-        - make all
+  image: nextcloudci/documentation:documentation-9
+  commands:
+    - npm install svgexport -g
+    - pip2 install -r requirements.txt
+    - make all
 
 trigger:
   branch:
