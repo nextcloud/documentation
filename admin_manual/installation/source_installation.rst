@@ -63,10 +63,11 @@ offered. Collabora, OnlyOffice, Full Text Search and other apps can easily be in
 
 The VM is made with VMware version 10 and it comes in different sizes and versions:
 
-- 40 GB (Hyper-V)
-- 500 GB (VMware & VirtualBox)
-- 1 TB (VMware & VirtualBox)
+- 40 GB (VMware, VirtualBox, Hyper-V)
+- 500 GB (VMware, VirtualBox, Hyper-V)
+- 1 TB (VMware, VirtualBox, Hyper-V)
 - 2 TB (VMware & VirtualBox)
+- Custom size? Please `ask us <https://www.hanssonit.se/#contact>`_.
 
 You can find all the different version `here <https://shop.hanssonit.se/product-category/virtual-machine/nextcloud-vm/>`_.
 
