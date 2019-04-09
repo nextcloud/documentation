@@ -28,7 +28,7 @@ Our community is made up of several groups of individuals and organizations whic
 * Contributors, or those who add value to the project through improving Nextcloud software and its services
 * Users, or those who add value to the project through their support as consumers of Nextcloud software
 
-This Code of Conduct reflects the agreed standards of behavior for members of the Nextcloud community, in any forum, mailing list, wiki, web site, IRC channel, public meeting or private correspondence within the context of the Nextcloud team and its services. The community acts according to the standards written down in this Code of Conduct and will defend these standards for the benefit of the community. Leaders of any group, such as moderators of mailing lists, IRC channels, forums, etc., will exercise the right to suspend access to any person who persistently breaks our shared Code of Conduct.
+This Code of Conduct reflects the agreed standards of behavior for members of the Nextcloud community, in any forum, mailing list, web site, IRC channel, public meeting or private correspondence within the context of the Nextcloud team and its services. The community acts according to the standards written down in this Code of Conduct and will defend these standards for the benefit of the community. Leaders of any group, such as moderators of mailing lists, IRC channels, forums, etc., will exercise the right to suspend access to any person who persistently breaks our shared Code of Conduct.
 
 Be considerate
 --------------
