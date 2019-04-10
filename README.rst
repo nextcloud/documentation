@@ -3,11 +3,7 @@ Nextcloud Documentation
 =======================
 
 Documentation is published on `<https://docs.nextcloud.com>`_.
-
-The `documentation Wiki <https://github.com/nextcloud/documentation/wiki>`_ is
-available for tips, tricks, edge cases, and anyone who wants to contribute more
-easily, without having to learn Git and Sphinx.
-
+To edit it yourself, you need to tinker a bit with Git and Sphinx.
 See the `Style Guide <https://github.com/nextcloud/documentation/blob/master/style_guide.rst>`_ for formatting and style conventions.
 
 Manuals
