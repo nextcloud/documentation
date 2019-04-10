@@ -665,7 +665,6 @@ Other Web servers
 -----------------
 
 * :doc:`nginx`
-* `Other HTTP servers (Nextcloud) <https://github.com/nextcloud/documentation/wiki/Alternate-Web-server-notes>`_
 
 
 .. _Nextcloud VM:
