@@ -30,6 +30,8 @@ Status codes:
 * 105 - insufficient privileges for group
 * 106 - no group specified (required for subadmins)
 * 107 - all errors that contain a hint - for example "Password is among the 1,000,000 most common ones. Please make it unique." (this code was added in 12.0.6 & 13.0.1)
+* 108 - password and email empty. Must set password or an email
+* 109 - invitation email cannot be send
 
 Example
 ^^^^^^^
