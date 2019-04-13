@@ -225,3 +225,18 @@ To execute this, run the command with the ``--no-interaction`` option. (i.e.
 .. image:: images/updater-cli-8-no-interaction.png
    :class: terminal-image
 
+Setting up a cron job to automatically update Nextcloud
+-------------------------------------------------------
+
+Edit the cron file for the web server user Nextcloud runs under (in this case www-data):
+
+``sudo -u www-data crontab -e``
+
+Add the following entry: 
+
+``15 5 * * * php -f /var/www/nextcloud/updater/updater.phar -- --no-interaction``
+
+Note the extra ``--`` needed to pass the ``--no-interaction`` argument. The ``15 5 * * *`` at the start tells cron to check for updates every morning at 15 minutes past 5.
+
+.. image:: images/updater-crontab.png
+   :class: crontab-image
