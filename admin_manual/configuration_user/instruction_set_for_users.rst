@@ -12,7 +12,13 @@ basic HTTP authentication header.
 
 * HTTP method: POST
 * POST argument: userid - string, the required username for the new user
-* POST argument: password - string, the required password for the new user
+* POST argument: password - string, the password for the new user, leave empty to send welcome mail
+* POST argument: displayName - string, the display name for the new user
+* POST argument: email - string, the email for the nex user, required if password empty
+* POST argulent: groups - array, the groups for the new user
+* POST argument: subadmin - array, the groups in wich the new user is subadmin
+* POST argument: quota - string, quota for the new user
+* POST argument: language - string, language for the new user
 
 Status codes:
 
@@ -24,6 +30,8 @@ Status codes:
 * 105 - insufficient privileges for group
 * 106 - no group specified (required for subadmins)
 * 107 - all errors that contain a hint - for example "Password is among the 1,000,000 most common ones. Please make it unique." (this code was added in 12.0.6 & 13.0.1)
+* 108 - password and email empty. Must set password or an email
+* 109 - invitation email cannot be send
 
 Example
 ^^^^^^^
