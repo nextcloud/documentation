@@ -37,13 +37,13 @@ License
 All documentation in this repository is licensed under the Creative Commons
 Attribution 3.0 Unported license (`CC BY 3.0`_).
 
-.. _CC BY 3.0: http://creativecommons.org/licenses/by/3.0/deed.en_US
+.. _CC BY 3.0: https://creativecommons.org/licenses/by/3.0/deed.en_US
 
 Style
 -----
 
 Source files are written using the `Sphinx Documentation Generator
-<http://sphinx.pocoo.org/>`_. The syntax follows the `reStructuredText
+<https://www.sphinx-doc.org/en/master/>`_. The syntax follows the `reStructuredText
 <http://docutils.sourceforge.net/rst.html>`_ style, and can also be edited
 from GitHub.
 
@@ -166,5 +166,5 @@ To compile and update the icons list in the designer manual, you will also need
 3. unzip
 4. wget
 
-.. _CC BY 3.0: http://creativecommons.org/licenses/by/3.0/deed.en_US
-.. _`Xcode command line tools`: http://stackoverflow.com/questions/9329243/xcode-4-4-and-later-install-command-line-tools
+.. _CC BY 3.0: https://creativecommons.org/licenses/by/3.0/deed.en_US
+.. _`Xcode command line tools`: https://stackoverflow.com/questions/9329243/xcode-install-command-line-tools
