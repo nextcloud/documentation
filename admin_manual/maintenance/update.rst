@@ -229,20 +229,26 @@ Setting up a cron job to automatically update Nextcloud
 -------------------------------------------------------
 
 .. warning::
-   Configuring a cron job to update automatically in the background is done at your own risk.
+   Configuring a cron job to update automatically in the background is done at
+   your own risk.
 
    While efforts are made to ensure compatibility no assurances are given.
 
-   There is a trade off between quicker updates offering potentially better security vs a prompt awareness of issues when updating manually.
+   There is a trade off between quicker updates offering potentially better
+   security vs a prompt awareness of issues when updating manually.
 
-   Major version updates involve more changes and may be riskier. Nextcloud defaults to the 'Stable' channel but also provides a 'Production' channel which will delay updates to the latest major release.
+   Major version updates involve more changes and may be riskier. Nextcloud
+   defaults to the 'Stable' channel but also provides a 'Production' channel
+   which will delay updates to the latest major release.
 
-   This setting can be configured from the Administration's Overview page in Nextcloud Settings.
+   This setting can be configured from the Administration's Overview page in
+   Nextcloud Settings.
 
    .. image:: images/updater-channel.png
    :class: select-channel-image
 
-Edit the cron file for the web server user Nextcloud runs under (in this case www-data):
+Edit the cron file for the web server user Nextcloud runs under (in this case
+www-data):
 
 ``sudo -u www-data crontab -e``
 
@@ -250,7 +256,9 @@ Add the following entry:
 
 ``15 5 * * * php -f /var/www/nextcloud/updater/updater.phar -- --no-interaction``
 
-Note the extra ``--`` needed to pass the ``--no-interaction`` argument. The ``15 5 * * *`` at the start tells cron to check for updates every morning at 15 minutes past 5.
+Note the extra ``--`` needed to pass the ``--no-interaction`` argument.
+The ``15 5 * * *`` at the start tells cron to check for updates every morning 
+at 15 minutes past 5.
 
 .. image:: images/updater-crontab.png
    :class: crontab-image
