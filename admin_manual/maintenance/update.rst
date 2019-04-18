@@ -225,40 +225,60 @@ To execute this, run the command with the ``--no-interaction`` option. (i.e.
 .. image:: images/updater-cli-8-no-interaction.png
    :class: terminal-image
 
-Setting up a cron job to automatically update Nextcloud
--------------------------------------------------------
+Updating Nextcloud automatically in the background
+--------------------------------------------------
+
+Configuring Nextcloud to update automatically involves a trade off between
+quicker updates offering potentially better security, versus prompt awareness of
+any potential issues if updating manually.
 
 .. warning::
    Configuring a cron job to update automatically in the background is done at
    your own risk.
 
-   While efforts are made to ensure compatibility no assurances are given.
+   While efforts are made to ensure compatibility between versions no assurances
+   are given.
 
-   There is a trade off between quicker updates offering potentially better
-   security vs a prompt awareness of issues when updating manually.
+Updating between major releases of Nextcloud involves more changes and therefore
+should be considered riskier. By default Nextcloud is set to the 'Stable'
+channel for updates but also offers a 'Production' channel. This channel
+installs regular updates as usual but tells Nextcloud to hold off on updating to
+the next major version, typically until the second minor release (x.0.2).
 
-   Major version updates involve more changes and may be riskier. Nextcloud
-   defaults to the 'Stable' channel but also provides a 'Production' channel
-   which will delay updates to the latest major release.
+If choosing to configure automatic updates altering the update channel is
+recommended and can be configured from the Administration's Overview page in
+Nextcloud Settings.
 
-   This setting can be configured from the Administration's Overview page in
-   Nextcloud Settings.
+.. image:: images/updater-channel.png
+   :class: update-channel-image
 
-   .. image:: images/updater-channel.png
-   :class: select-channel-image
+**Cron**
 
-Edit the cron file for the web server user Nextcloud runs under (in this case
-www-data):
+Edit the cron file for the web server user Nextcloud runs under, in this case
+www-data:
 
 ``sudo -u www-data crontab -e``
 
-Add the following entry:
+Add the following entry, replacing /var/www/nextcloud with your installation
+location if different:
 
-``15 5 * * * php -f /var/www/nextcloud/updater/updater.phar -- --no-interaction``
-
-Note the extra ``--`` needed to pass the ``--no-interaction`` argument.
-The ``15 5 * * *`` at the start tells cron to check for updates every morning 
-at 15 minutes past 5.
+``20 5 * * * php -f /var/www/nextcloud/updater/updater.phar -- --no-interaction``
 
 .. image:: images/updater-crontab.png
    :class: crontab-image
+
+.. note::
+  An extra ``--`` is needed by PHP to pass the ``--no-interaction`` argument to
+  the script.
+
+
+**Systemd**
+
+Alternatively, you may wish to configure a systemd timer, rather than a cron job.
+
+A good introduction on how to do this can be found on the
+:doc:`background jobs configuration <../configuration_server/background_jobs_configuration>` page.
+
+The main things to adapt would be the service name, setting ``OnUnitActiveSec=1d``
+and changing ``ExecStart`` to:
+``php -f /var/www/nextcloud/updater/updater.phar -- --no-interaction``
