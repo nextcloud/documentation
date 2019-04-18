@@ -228,11 +228,25 @@ To execute this, run the command with the ``--no-interaction`` option. (i.e.
 Setting up a cron job to automatically update Nextcloud
 -------------------------------------------------------
 
+.. warning::
+   Configuring a cron job to update automatically in the background is done at your own risk.
+
+   While efforts are made to ensure compatibility no assurances are given.
+
+   There is a trade off between quicker updates offering potentially better security vs a prompt awareness of issues when updating manually.
+
+   Major version updates involve more changes and may be riskier. Nextcloud defaults to the 'Stable' channel but also provides a 'Production' channel which will delay updates to the latest major release.
+
+   This setting can be configured from the Administration's Overview page in Nextcloud Settings.
+
+   .. image:: images/updater-channel.png
+   :class: select-channel-image
+
 Edit the cron file for the web server user Nextcloud runs under (in this case www-data):
 
 ``sudo -u www-data crontab -e``
 
-Add the following entry: 
+Add the following entry:
 
 ``15 5 * * * php -f /var/www/nextcloud/updater/updater.phar -- --no-interaction``
 
