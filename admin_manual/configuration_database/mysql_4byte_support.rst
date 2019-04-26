@@ -11,6 +11,15 @@ installation needs to be tweaked a bit.
 
         [mysqld]
         innodb_file_per_table=1
+        
+      Note:
+            mysql> show variables like 'innodb_file_per_table';
+            +-----------------------+-------+
+            | Variable_name         | Value |
+            +-----------------------+-------+
+            | innodb_file_per_table | ON    |
+            +-----------------------+-------+
+            1 row in set (0.00 sec)
 
    b. MySQL older than 8.0::
 
