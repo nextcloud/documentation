@@ -34,6 +34,10 @@ installation needs to be tweaked a bit.
 
 Now you should be able to use Emojis in your file names, calendar events, comments and many more.
 
+.. note::
+
+    Also make sure your backup strategy still work. If you use ``mysqldump`` make sure to add the ``--default-character-set=utf8mb4`` option. Otherwise your backups are broken and restoring them will result in ``?`` instead of the emojis, making files inaccessible.
+
 MariaDB support
 ---------------
 
