@@ -16,7 +16,7 @@ archive <https://nextcloud.com/install/>`_.
    Red Hat Enterprise Linux may need to set new rules to enable installing
    Nextcloud. See :ref:`selinux_tips_label` for a suggested configuration.
    
-You can also use the `Nextcloud VM scripts <https://github.com/nextcloud/vm/>`_ to install directly on a clean Ubuntu Server. It will setup everything for you and include scripts for automated installtion of apps like; Collabora, OnlyOffice, Talk and so on.
+You can also use the `Nextcloud VM scripts <https://github.com/nextcloud/vm/>`_ to install directly on a clean Ubuntu Server. It will setup everything for you and include scripts for automated installation of apps like; Collabora, OnlyOffice, Talk and so on.
 
 .. _vm_label:
 
