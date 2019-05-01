@@ -49,7 +49,7 @@ management via LDAP, can replace an existing Active Directory setup and
 has optional ONLYOFFICE and Collabora Online integration, with many more applications
 available for easy and quick install.
 
-It can be installed on hardware or ran in a virtual machine using VirtualBox,
+It can be installed on hardware or run in a virtual machine using VirtualBox,
 VMWare (ESX) and KVM images.
 
 Download the the Appliance here:
