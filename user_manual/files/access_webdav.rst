@@ -139,13 +139,13 @@ automatically every time you log in to your Linux computer.
     chmod 600 ~/.davfs2/secrets
 
 6. Add your Nextcloud login credentials to the end of the ``secrets`` file,
-   using your Nextcloud server URL and your Nextcloud username and password::
+   using your Nextcloud server URL and your Nextcloud username and password (storing your password unencrypted is insecure, so you can omit it)::
 
-    example.com/nextcloud/remote.php/dav/files/USERNAME/ <username> <password>
+    /home/<username>/nextcloud <username> <password>
 
 7. Add the mount information to ``/etc/fstab``::
 
-    example.com/nextcloud/remote.php/dav/files/USERNAME/ /home/<username>/nextcloud
+    https://example.com/nextcloud/remote.php/dav/files/USERNAME/ /home/<username>/nextcloud
     davfs user,rw,auto 0 0
 
 8. Then test that it mounts and authenticates by running the following
