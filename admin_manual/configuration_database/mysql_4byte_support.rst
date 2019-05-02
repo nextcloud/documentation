@@ -13,6 +13,7 @@ installation needs to be tweaked a bit.
         innodb_file_per_table=1
         
       Note::
+      
             mysql> show variables like 'innodb_file_per_table';
             +-----------------------+-------+
             | Variable_name         | Value |
