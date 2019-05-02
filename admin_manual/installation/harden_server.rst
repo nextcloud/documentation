@@ -207,3 +207,16 @@ security headers are shipped.
 .. _Mozilla SSL Configuration Generator: https://mozilla.github.io/server-side-tls/ssl-config-generator/
 .. _Qualys SSL Labs Tests: https://www.ssllabs.com/ssltest/
 .. _RFC 4086 ("Randomness Requirements for Security"): https://tools.ietf.org/html/rfc4086#section-5.2
+
+Connections to remote servers
+-----------------------------
+
+Some Nextcloud functionality requires connecting to remote servers. Depending on your server setup those are possible connections:
+
+- www.nextcloud.com, www.startpage.com, www.eff.org, www.edri.org for checking the internet connection
+- apps.nextcloud.com for the available apps
+- updates.nextcloud.com for Nextcloud updates
+- lookup.nextcloud.com For updating and lookup in the federated sharing addressbook
+- push-notifications.nextcloud.com for sending push notifications to mobile clients
+- surveyserver.nextcloud.com if the admin has agreed to share anonymized data
+- Any remote Nextcloud server that is connected with federated sharing
