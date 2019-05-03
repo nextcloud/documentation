@@ -126,7 +126,7 @@ The background value can either be an URL to the background image or a hex color
 Direct Download
 ---------------
 
-It might be requierd to give a 3rd party access to a file however you do not
+It might be required to give a 3rd party access to a file however you do not
 want to hand over credentials to the 3rd party. An example of this is playing
 files in an external media player on mobile devices.
 
