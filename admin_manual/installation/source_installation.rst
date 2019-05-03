@@ -262,7 +262,7 @@ Now make sure your system is up to date::
 
     yum update -y
 
-**Apache**::
+**Apache**
 
     yum install -y httpd
 
@@ -286,7 +286,7 @@ Make sure the apache web service is enabled and started::
     systemctl enable httpd.service
     systemctl start httpd.service
 
-**PHP**:
+**PHP**
 
 Next install the PHP modules needed for this install. Remember, because this is a limited basic install, we only install the neccessary modules, not all of them. If you are making a more complete install, please refer to PHP module list at the top of this page.::
 
@@ -319,6 +319,14 @@ Make sure the database service is enabled to start at boot time.::
 
 After you have done this, make sure you create a database with a username and password so that Nextcloud will have access to it. In the docs, refer to the Database configuration part, specifically about MariaDB. There is a complete write-up on how to setup the database.
 
+
+**Redis**
+
+    yum install -y redis
+    systemctl enable redis.service
+    systemctl start redis.service
+
+    
 **Installing Nextcloud**
 
 Nearly there, so keep at it, you are doing great!
@@ -371,12 +379,6 @@ Create a firewall rule for access to apache::
 
     firewall-cmd --zone=public --add-service=http --permanent
     firewall-cmd --reload
-
-**Redis**::
-
-    yum install -y redis
-    systemctl enable redis.service
-    systemctl start redis.service
 
 **SELinux**
 
