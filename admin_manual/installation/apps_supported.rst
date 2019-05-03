@@ -22,6 +22,7 @@ Nextcloud Files
 * `Files <https://github.com/nextcloud/server/tree/master/apps/files>`_
 * `Files access control <https://github.com/nextcloud/files_accesscontrol>`_
 * `Files Automated Tagging <https://github.com/nextcloud/files_automatedtagging>`_
+* `Group folders <https://github.com/nextcloud/groupfolders>`_
 * `External storage support <https://github.com/nextcloud/server/tree/master/apps/files_external>`_
 * `PDF Viewer <https://github.com/nextcloud/files_pdfviewer>`_
 * `File sharing <https://github.com/nextcloud/server/tree/master/apps/files_sharing>`_
