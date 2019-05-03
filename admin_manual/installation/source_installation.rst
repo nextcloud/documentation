@@ -267,21 +267,8 @@ Now make sure your system is up to date::
 **Apache**
 
     yum install -y httpd
-
-Create a virtualhost file and add the following content to it::
-
-    vi /etc/httpd/conf.d/nextcloud.conf
-
-    <VirtualHost *:80>
-      DocumentRoot /var/www/html/
-      ServerName  your.server.com
-
-    <Directory "/var/www/html/">
-      Require all granted
-      AllowOverride All
-      Options FollowSymLinks MultiViews
-    </Directory>
-    </VirtualHost>
+    
+See :ref:`apache-web-server-configuration` for details.
 
 Make sure the apache web service is enabled and started::
 
@@ -431,7 +418,8 @@ it, replacing the **Directory** and other filepaths with your own filepaths::
   Alias /nextcloud "/var/www/nextcloud/"
 
   <Directory /var/www/nextcloud/>
-    Options +FollowSymlinks
+    Require all granted
+    Options FollowSymlinks MultiViews
     AllowOverride All
 
    <IfModule mod_dav.c>
@@ -446,6 +434,27 @@ it, replacing the **Directory** and other filepaths with your own filepaths::
 Then enable the newly created site::
 
   a2ensite nextcloud.conf
+  
+
+On CentOS/RHEL, create a virtualhost :file:`/etc/httpd/conf.d/nextcloud.conf`and add the following content to it:
+
+    <VirtualHost *:80>
+        
+        DocumentRoot /var/www/nextcloud/
+        ServerName  your.server.com
+
+        <Directory "/var/www/nextcloud/">
+            
+            Require all granted
+            AllowOverride All
+            Options FollowSymLinks MultiViews
+            
+            <IfModule mod_dav.c>
+                Dav off
+            </IfModule>
+            
+        </Directory>
+    </VirtualHost>
  
 Additional Apache configurations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
