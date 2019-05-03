@@ -61,4 +61,4 @@ Nextcloud Groupware
 Nextcloud Talk
 --------------
 
-** `Talk <https://github.com/nextcloud/spreed>`_
+* `Talk <https://github.com/nextcloud/spreed>`_
