@@ -100,7 +100,7 @@ If you get a result, the module is present.
 
 Required:
 
-* PHP (7.0, 7.1, 7.2 or 7.3)
+* PHP (7.1, 7.2 or 7.3)
 * PHP module ctype
 * PHP module curl
 * PHP module dom
