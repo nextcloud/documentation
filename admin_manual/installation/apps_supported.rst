@@ -23,6 +23,7 @@ Nextcloud Files
 * `Files access control <https://github.com/nextcloud/files_accesscontrol>`_
 * `Files Automated Tagging <https://github.com/nextcloud/files_automatedtagging>`_
 * `Group folders <https://github.com/nextcloud/groupfolders>`_
+* `Guests <https://github.com/nextcloud/guests>`_
 * `External storage support <https://github.com/nextcloud/server/tree/master/apps/files_external>`_
 * `PDF Viewer <https://github.com/nextcloud/files_pdfviewer>`_
 * `File sharing <https://github.com/nextcloud/server/tree/master/apps/files_sharing>`_
@@ -47,6 +48,7 @@ Nextcloud Files
     * `Twitter <https://github.com/nextcloud/socialsharing/tree/master/socialsharing_twitter>`_
 * `SharePoint Backend <https://github.com/nextcloud/sharepoint/blob/master/appinfo/info.xml>`_
 * `Theming <https://github.com/nextcloud/server/tree/master/apps/theming>`_
+* `Terms of Service <https://github.com/nextcloud/terms_of_service/>`_
 * `Update Notifications <https://github.com/nextcloud/server/tree/master/apps/updatenotification>`_
 * `LDAP user and group backend <https://github.com/nextcloud/server/blob/master/apps/user_ldap>`_
 * `SSO & SAML authentication <https://github.com/nextcloud/user_saml>`_
