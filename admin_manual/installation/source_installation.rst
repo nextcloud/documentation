@@ -100,7 +100,7 @@ If you get a result, the module is present.
 
 Required:
 
-* PHP (>= 7.0, 7.1 or 7.2)
+* PHP (7.1, 7.2 or 7.3)
 * PHP module ctype
 * PHP module curl
 * PHP module dom
@@ -264,31 +264,18 @@ Now make sure your system is up to date::
 
     yum update -y
 
-**Apache**::
+**Apache**
 
     yum install -y httpd
-
-Create a virtualhost file and add the following content to it::
-
-    vi /etc/httpd/conf.d/nextcloud.conf
-
-    <VirtualHost *:80>
-      DocumentRoot /var/www/html/
-      ServerName  your.server.com
-
-    <Directory "/var/www/html/">
-      Require all granted
-      AllowOverride All
-      Options FollowSymLinks MultiViews
-    </Directory>
-    </VirtualHost>
+    
+See :ref:`apache-web-server-configuration` for details.
 
 Make sure the apache web service is enabled and started::
 
     systemctl enable httpd.service
     systemctl start httpd.service
 
-**PHP**:
+**PHP**
 
 Next install the PHP modules needed for this install. Remember, because this is a limited basic install, we only install the neccessary modules, not all of them. If you are making a more complete install, please refer to PHP module list at the top of this page.::
 
@@ -321,6 +308,14 @@ Make sure the database service is enabled to start at boot time.::
 
 After you have done this, make sure you create a database with a username and password so that Nextcloud will have access to it. In the docs, refer to the Database configuration part, specifically about MariaDB. There is a complete write-up on how to setup the database.
 
+
+**Redis**
+
+    yum install -y redis
+    systemctl enable redis.service
+    systemctl start redis.service
+
+    
 **Installing Nextcloud**
 
 Nearly there, so keep at it, you are doing great!
@@ -374,12 +369,6 @@ Create a firewall rule for access to apache::
     firewall-cmd --zone=public --add-service=http --permanent
     firewall-cmd --reload
 
-**Redis**::
-
-    yum install -y redis
-    systemctl enable redis.service
-    systemctl start redis.service
-
 **SELinux**
 
 Again, there is an extensive write-up done on SELinux which can be found at :doc:`../installation/selinux_configuration`, so if you are using SELinux in Enforcing mode, please run the commands suggested on that page.
@@ -429,7 +418,8 @@ it, replacing the **Directory** and other filepaths with your own filepaths::
   Alias /nextcloud "/var/www/nextcloud/"
 
   <Directory /var/www/nextcloud/>
-    Options +FollowSymlinks
+    Require all granted
+    Options FollowSymlinks MultiViews
     AllowOverride All
 
    <IfModule mod_dav.c>
@@ -444,6 +434,27 @@ it, replacing the **Directory** and other filepaths with your own filepaths::
 Then enable the newly created site::
 
   a2ensite nextcloud.conf
+  
+
+On CentOS/RHEL, create a virtualhost :file:`/etc/httpd/conf.d/nextcloud.conf`and add the following content to it:
+
+    <VirtualHost *:80>
+        
+        DocumentRoot /var/www/nextcloud/
+        ServerName  your.server.com
+
+        <Directory "/var/www/nextcloud/">
+            
+            Require all granted
+            AllowOverride All
+            Options FollowSymLinks MultiViews
+            
+            <IfModule mod_dav.c>
+                Dav off
+            </IfModule>
+            
+        </Directory>
+    </VirtualHost>
  
 Additional Apache configurations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
