@@ -6,7 +6,7 @@ The node package manager ``npm`` is a widely used tool to manage JavaScript depe
 order to make the project setup easier for everybody, we recommend to follow the convention
 of typical scripts like ``build``, ``watch`` and ``test`` in the ``package.json`` file.
 
-You can find more info about this convention on blog posts like this `https://www.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/`_.
+You can find more info about this convention on blog posts like this `<https://www.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/>`_.
 
 npm build
 ---------
@@ -33,7 +33,7 @@ For apps that use webpack, this might look like this:
 
 You can then run ``npm build`` in your app's root directory to invoke the build process.
 
-See the `npm-build docs https://docs.npmjs.com/cli/build`_ for more info.
+See the `npm-build docs <https://docs.npmjs.com/cli/build>`_ for more info.
 
 npm run dev, npm run watch
 --------------------------
@@ -75,7 +75,7 @@ test command(s) like this:
     }
   }
 
-More info about this command can be found in the `npm-test documentation https://docs.npmjs.com/cli/test`_.
+More info about this command can be found in the `npm-test documentation <https://docs.npmjs.com/cli/test>`_.
 
 npm run lint (optional)
 -----------------------
