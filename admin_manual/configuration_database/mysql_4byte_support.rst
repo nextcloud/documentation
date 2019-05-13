@@ -84,7 +84,7 @@ If the file format is "Barracuda" for every single table, nothing special is lef
     MariaDB> USE INFORMATION_SCHEMA;
     MariaDB> SELECT CONCAT("ALTER TABLE `", TABLE_SCHEMA,"`.`", TABLE_NAME, "` ROW_FORMAT=DYNAMIC;") AS MySQLCMD FROM TABLES WHERE TABLE_SCHEMA = "nextcloud";
 
-This will return an SQL command for each table in the nextcloud database. The rows can be quickly copied into a text editor, the "|"s replaced and the SQL commands copied back to the MariaDB shell. If no error appeared (in doubt check step 2) all is done and nothing is left to do here. It can be proceded with the MySQL steps.
+This will return an SQL command for each table in the nextcloud database. The rows can be quickly copied into a text editor, the "|"s replaced and the SQL commands copied back to the MariaDB shell. If no error appeared (in doubt check step 2) all is done and nothing is left to do here. It can be proceded with the MySQL instructions from step 3 onwards.
 
 5. It is possible, however, that some tables cannot be altered. The operations fails with: "ERROR 1478 (HY000): Table storage engine 'InnoDB' does not support the create option 'ROW_FORMAT'". In that case the failing tables have a SPACE value of 0 in step 2. It basically means that the table does not have an index file of its own, which is required for the Barracuda format. This can be solved with a slightly different SQL command::
 
