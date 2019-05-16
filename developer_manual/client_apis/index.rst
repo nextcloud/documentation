@@ -10,3 +10,4 @@ Client APIs
     WebDAV/index
     OCS/index
     LoginFlow/index
+    RemoteWipe/index
