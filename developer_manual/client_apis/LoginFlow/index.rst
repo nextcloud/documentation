@@ -84,3 +84,27 @@ The response would look (in XML) something like:
                 </data>
         </ocs>
 
+
+Deleting an app password
+------------------------
+
+When an account on a client is removed for housekeeping it is desired to destroy the apptoken in use.
+This can be done by a simple call:
+
+.. code-block:: bash
+        curl -u username:app-password -X DELETE -H 'OCS-APIREQUEST: true'  http://localhost/ocs/v2.php/core/apppassword
+
+The response should be a plain OCS response with a status 200
+
+.. code-block:: xml
+        <?xml version="1.0"?>
+        <ocs>
+                <meta>
+                        <status>ok</status>
+                        <statuscode>200</statuscode>
+                        <message>OK</message>
+                </meta>
+                <data/>
+        </ocs>
+
+If a non 200 status code is returned the client should still proceed with removing the account.
