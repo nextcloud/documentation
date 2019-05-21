@@ -77,7 +77,7 @@ MariaDB 10.2 or earlier
 
     MariaDB> SELECT NAME, SPACE, FILE_FORMAT FROM INFORMATION_SCHEMA.INNODB_SYS_TABLES WHERE NAME like "nextcloud%";
 
-If the file format is "Barracuda" for every single table, nothing special is left to do. Continue with the MySQL instructions at step 3. While testing, all tables' file format was "Antelope".
+If the file format is "Barracuda" for every single table or if the query set is empty, nothing special is left to do. Continue with the MySQL instructions at step 3. While testing, all tables' file format was "Antelope".
 
 4. The tables needs to be migrated to "Barracuda" manually, one by one. SQL commands can be created easily, however::
 
