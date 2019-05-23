@@ -8,6 +8,7 @@ App development
    intro
    tutorial
    npm
+   makefile
    requests/index
    view/index
    storage/index
