@@ -311,6 +311,8 @@ After you have done this, make sure you create a database with a username and pa
 
 **Redis**
 
+Install as usual:
+
     yum install -y redis
     systemctl enable redis.service
     systemctl start redis.service
@@ -438,23 +440,18 @@ Then enable the newly created site::
 
 On CentOS/RHEL, create a virtualhost :file:`/etc/httpd/conf.d/nextcloud.conf`and add the following content to it:
 
-    <VirtualHost *:80>
-        
-        DocumentRoot /var/www/nextcloud/
-        ServerName  your.server.com
-
-        <Directory "/var/www/nextcloud/">
-            
-            Require all granted
-            AllowOverride All
-            Options FollowSymLinks MultiViews
-            
-            <IfModule mod_dav.c>
-                Dav off
-            </IfModule>
-            
-        </Directory>
-    </VirtualHost>
+<VirtualHost *:80>
+    DocumentRoot /var/www/nextcloud/
+    ServerName  your.server.com
+    <Directory /var/www/nextcloud/>
+        Require all granted
+        AllowOverride All
+        Options FollowSymLinks MultiViews
+        <IfModule mod_dav.c>
+            Dav off
+        </IfModule>
+    </Directory>
+</VirtualHost>
  
 Additional Apache configurations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
