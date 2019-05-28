@@ -342,7 +342,7 @@ the command from, use::
 
   psql -Uusername -dnextcloud
 
-To access a MySQL installation on a different machine, add the -h option with
+To access a PostgreSQL installation on a different machine, add the -h option with
 the respective host name::
 
   psql -Uusername -dnextcloud -h HOSTNAME
