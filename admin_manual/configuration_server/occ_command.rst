@@ -984,18 +984,18 @@ Trashbin
   This command is only available when the "Deleted files" app
   (``files_trashbin``) is enabled.
 
-The ``trashbin:cleanup`` command removes the deleted files of the specified 
-users in a space-delimited list, or all users if none are specified.
+The ``trashbin:cleanup  [--all-users] [--] [<user_id>...]`` command removes the deleted files of the specified 
+users in a space-delimited list, or all users if --all-users is specified.
 
 ::
  
  trashbin
-  trashbin:cleanup   Remove deleted files
+  trashbin:cleanup  [--all-users] [--] [<user_id>...]  Remove deleted files
   
 This example removes the deleted files of all users::  
   
-  sudo -u www-data php occ trashbin:cleanup 
-  Remove all deleted files
+  sudo -u www-data php occ trashbin:cleanup --all-users 
+  Remove all deleted files for all users
   Remove deleted files for users on backend Database
    freda
    molly
