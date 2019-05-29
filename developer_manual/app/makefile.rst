@@ -6,7 +6,7 @@
 Makefile
 ========
 
-To ease our developement, we aime to have the same script naming convention.
+To ease our developement, we aim to have the same script naming convention.
 For the npm scripts names and config, please check the :ref:`npm section <npm>`
 
 
