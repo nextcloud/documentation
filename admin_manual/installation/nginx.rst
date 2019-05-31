@@ -95,10 +95,10 @@ webroot of your nginx installation. In this example it is
       # rewrite ^/.well-known/webfinger /public.php?service=webfinger last;
 
       location = /.well-known/carddav {
-        return 301 $scheme://$host/remote.php/dav;
+        return 301 $scheme://$host/nextcloud/remote.php/dav;
       }
       location = /.well-known/caldav {
-        return 301 $scheme://$host/remote.php/dav;
+        return 301 $scheme://$host/nextcloud/remote.php/dav;
       }
 
       # set max upload size
