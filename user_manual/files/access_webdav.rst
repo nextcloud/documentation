@@ -13,6 +13,8 @@ recommended way of connecting client devices to your Nextcloud servers.
    connecting user.
 
    See the webdav url (bottom left, settings) on your Nextcloud.
+   
+.. note:: In the following examples, you must use an app-password for login, which you can generated in your security options.
 
 Nextcloud Desktop and mobile clients
 ------------------------------------
