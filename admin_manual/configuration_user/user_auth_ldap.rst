@@ -589,8 +589,8 @@ Nextcloud avatar replaces it.
 Photos served from LDAP are automatically cropped and resized in Nextcloud. This
 affects only the presentation, and the original image is not changed.
 
-Use a specific attribute or turn of loading of images
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Use a specific attribute or turn off loading of images
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It is possible to turn off the avatar integration or specify a single,
 different attribute to read the image from. It is expected to contain image
