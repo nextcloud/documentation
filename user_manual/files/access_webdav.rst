@@ -239,13 +239,14 @@ Using this feature requires network connectivity. If you want to store your
 files offline, use the Desktop Client to sync all files on your
 Nextcloud to one or more directories of your local hard drive.
 
-.. note:: Prior to mapping your drive, you must permit the use of Basic
-  Authentication in the Windows Registry. The procedure is documented in
-  KB841215_ and differs between Windows XP/Server 2003 and Windows Vista/7.
-  Please follow the Knowledge Base article before proceeding, and follow the
-  Vista instructions if you run Windows 7.
-
-.. _KB841215: https://support.microsoft.com/kb/841215
+.. note:: Prior to mapping your drive, you must permit the use of Basic 
+Authentication in the Windows Registry: launch „regedit“ and navigate to 
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters. 
+Create or edit the DWORD value „BasicAuthLevel“ (Windows Vista, 7 and 8) or 
+„UseBasicAuth“ (Windows XP and Windows Server 2003) and set its value data 
+to 1 for SSL connections. Value 0 means that Basic Authentication is disabled, 
+a value of 2 allows both SSL and non-SSL connections (not recommended). 
+Then exit Registry Editor, and restart the computer.
 
 Mapping drives with the command line
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
