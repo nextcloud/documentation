@@ -11,6 +11,7 @@ können diese Apps aber mit einem Klick auf "Aktivieren" unter Apps -> Produktiv
    contacts
    calendar
    sync_ios
+   sync_android
    sync_osx
    sync_thunderbird
    troubleshooting
