@@ -14,7 +14,8 @@ trust. Connections from trusted proxies will be specially treated to get the
 real client information, for use in access control and logging. Parameters are
 configured in :file:`config/config.php`
 
-Set the **trusted_proxies** parameter as an array of IP address to define the
+Set the **trusted_proxies** parameter as an array of IPv4 addresses, 
+IPv4 ranges in CIDR notation or IPv6 addresses to define the
 servers Nextcloud should trust as proxies. This parameter provides protection
 against client spoofing, and you should secure those servers as you would your
 Nextcloud server.
