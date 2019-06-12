@@ -2,7 +2,7 @@
 SFTP
 ====
 
-Nextcloud's SFTP (FTP over an SSH tunnel) backend supports both password and 
+Nextcloud's SFTP (SSH File Transfer Protocol) backend supports both password and 
 public key authentication. 
 
 The **Host** field is required; a port can be specified as part of the **Host** 
