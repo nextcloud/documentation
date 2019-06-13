@@ -1628,6 +1628,8 @@ Defaults to ``array('.htaccess')``
 
 Define a default folder for shared files and folders other than root.
 
+Changes to this value will only have effect on new shares.
+
 Defaults to ``/``
 
 ::
