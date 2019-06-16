@@ -33,3 +33,15 @@ After following all these steps, your Nextcloud calendar should synchronize. If 
 
 Special thanks to this Reddit user for their post:
 https://www.reddit.com/r/Nextcloud/comments/5rcypb/using_the_windows_10_calendar_application_with/
+
+
+Contacts
+--------
+
+1. Repeat steps 1 - 7 from the Calendar instructions. If you already have setup the Calendar synchronization, you can use the same account for this.
+
+2. In the "Advanced mailbox settings". Paste your CalDAV URL in the field labelled "Contact server (CardDAV)".
+
+3. Replace the path "principals" within the URL with "addressbooks"
+
+4. Click "Done". Enter your Nextcloud username and password in the appropriate fields, and change the account name to whatever you prefer (e. g. "Nextcloud"). Click "Save".
