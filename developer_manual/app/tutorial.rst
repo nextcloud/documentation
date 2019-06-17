@@ -212,8 +212,8 @@ Database
 
 Now that the routes are set up and connected the notes should be saved in the
 database. To do that first create a :doc:`database migration <storage/migrations>`
-by creating a file **ownnotes/lib/Migration/VersionXXYYZZDateYYYYMMDDHHSSAA**,
-so for example **ownnotes/lib/Migration/Version000000Date20181224140601**""
+by creating a file **ownnotes/lib/Migration/VersionXXYYZZDateYYYYMMDDHHSSAA.php**,
+so for example **ownnotes/lib/Migration/Version000000Date20181224140601.php**""
 
 .. code-block:: php
 
