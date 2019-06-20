@@ -275,7 +275,7 @@ For example: ``net use Z: https://example.com/nextcloud/remote.php/dav/files/USE
 
 An alternative command syntax is::
 
-  net use Z: \\example.com@ssl\nextcloud\remote.php\dav /user:youruser
+  net use Z: \\example.com@ssl\DavWWWRoot\nextcloud\remote.php\dav\files\youruser /user:youruser
   yourpassword
 
 Mapping drives with Windows Explorer
@@ -288,7 +288,7 @@ To map a drive using the Microsoft Windows Explorer:
    the drop-down menu.
 3. Choose a local network drive to which you want to map Nextcloud.
 4. Specify the address to your Nextcloud instance, followed by
-   **/remote.php/dav/files/USERNAME/**.
+   **\DavWWWRoot\nextcloud\remote.php\dav\files\USERNAME**.
 
   For example::
 
@@ -406,6 +406,12 @@ Solution
 ^^^^^^^^
 
 Known problems and their solutions are documented in the KB2123563_ article.
+
+Solution 2
+^^^^^^^^^^
+
+Go to the Windows services manager and check that the "WebClient" service 
+it's on "Automatic" startup type and that it's currently in "Running" status.
 
 Problem
 ^^^^^^^
