@@ -145,9 +145,9 @@ webroot of your nginx installation. In this example it is
           index index.php;
       }
 
-      # Adding the cache control header for js and css files
+      # Adding the cache control header for js, css and map files
       # Make sure it is BELOW the PHP block
-      location ~ \.(?:css|js|woff2?|svg|gif)$ {
+      location ~ \.(?:css|js|woff2?|svg|gif|map)$ {
           try_files $uri /index.php$request_uri;
           add_header Cache-Control "public, max-age=15778463";
           # Add headers to serve security related headers (It is intended to
@@ -298,9 +298,9 @@ your nginx installation.
               index index.php;
           }
 
-          # Adding the cache control header for js and css files
+          #  Adding the cache control header for js, css and map files
           # Make sure it is BELOW the PHP block
-          location ~ ^\/nextcloud\/.+[^\/]\.(?:css|js|woff2?|svg|gif)$ {
+          location ~ ^\/nextcloud\/.+[^\/]\.(?:css|js|woff2?|svg|gif|map)$ {
               try_files $uri /nextcloud/index.php$request_uri;
               add_header Cache-Control "public, max-age=15778463";
               # Add headers to serve security related headers  (It is intended
