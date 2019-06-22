@@ -21,7 +21,7 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - openSUSE Leap 42.1+                                                 |
 |                  | - CentOS 7                                                            |
 +------------------+-----------------------------------------------------------------------+
-| Database         | - **MySQL or MariaDB 5.5+** (recommended)                             |
+| Database         | - **MySQL 5.x or MariaDB 5.5+** (recommended)                         |
 |                  | - Oracle Database 11g (*only as part of an enterprise subscription*)  |
 |                  | - PostgreSQL 9/10                                                     |
 |                  | - SQLite (*only recommended for testing and minimal-instances*)       |             
