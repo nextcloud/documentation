@@ -78,6 +78,7 @@ Using client applications with two-factor authentication
 
 Once you have enabled 2FA, your clients will no longer be able to connect with
 just your password unless they also have support for two-factor authentication.
+One example of a client which don't support 2FA include the Calendar app on MacOS.
 To solve this, you should generate device specific passwords for them. See 
 :doc:`session_management` for more information on how to do this.
 
