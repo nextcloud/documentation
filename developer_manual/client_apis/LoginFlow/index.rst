@@ -72,6 +72,7 @@ The user agent header will be used to name the app password.
 The response would look (in XML) something like:
 
 .. code-block:: xml
+
         <?xml version="1.0"?>
         <ocs>
                 <meta>
@@ -92,11 +93,13 @@ When an account on a client is removed for housekeeping it is desired to destroy
 This can be done by a simple call:
 
 .. code-block:: bash
+
         curl -u username:app-password -X DELETE -H 'OCS-APIREQUEST: true'  http://localhost/ocs/v2.php/core/apppassword
 
 The response should be a plain OCS response with a status 200
 
 .. code-block:: xml
+
         <?xml version="1.0"?>
         <ocs>
                 <meta>
