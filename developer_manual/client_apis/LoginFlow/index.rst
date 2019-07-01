@@ -72,6 +72,7 @@ The user agent header will be used to name the app password.
 The response would look (in XML) something like:
 
 .. code-block:: xml
+
         <?xml version="1.0"?>
         <ocs>
                 <meta>
