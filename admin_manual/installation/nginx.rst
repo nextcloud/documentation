@@ -66,13 +66,13 @@ webroot of your nginx installation. In this example it is
       # will add the domain to a hardcoded list that is shipped
       # in all major browsers and getting removed from this list
       # could take several months.
-      add_header X-Content-Type-Options nosniff;
-      add_header X-XSS-Protection "1; mode=block";
-      add_header X-Robots-Tag none;
-      add_header X-Download-Options noopen;
-      add_header X-Permitted-Cross-Domain-Policies none;
       add_header Referrer-Policy no-referrer;
+      add_header X-Content-Type-Options nosniff;
+      add_header X-Download-Options noopen;
       add_header X-Frame-Options "SAMEORIGIN";
+      add_header X-Permitted-Cross-Domain-Policies none;
+      add_header X-Robots-Tag none;
+      add_header X-XSS-Protection "1; mode=block";
 
       # Remove X-Powered-By, which is an information leak
       fastcgi_hide_header X-Powered-By;
@@ -164,13 +164,13 @@ webroot of your nginx installation. In this example it is
           # will add the domain to a hardcoded list that is shipped
           # in all major browsers and getting removed from this list
           # could take several months.
-          add_header X-Content-Type-Options nosniff;
-          add_header X-XSS-Protection "1; mode=block";
-          add_header X-Robots-Tag none;
-          add_header X-Download-Options noopen;
-          add_header X-Permitted-Cross-Domain-Policies none;
           add_header Referrer-Policy no-referrer;
+          add_header X-Content-Type-Options nosniff;
+          add_header X-Download-Options noopen;
           add_header X-Frame-Options "SAMEORIGIN";
+          add_header X-Permitted-Cross-Domain-Policies none;
+          add_header X-Robots-Tag none;
+          add_header X-XSS-Protection "1; mode=block";
 
           # Optional: Don't log access to assets
           access_log off;
@@ -219,13 +219,13 @@ your nginx installation.
       # Before enabling Strict-Transport-Security headers please read into this
       # topic first.
       #add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
-      add_header X-Content-Type-Options nosniff;
-      add_header X-XSS-Protection "1; mode=block";
-      add_header X-Robots-Tag none;
-      add_header X-Download-Options noopen;
-      add_header X-Permitted-Cross-Domain-Policies none;
       add_header Referrer-Policy no-referrer;
+      add_header X-Content-Type-Options nosniff;
+      add_header X-Download-Options noopen;
       add_header X-Frame-Options "SAMEORIGIN";
+      add_header X-Permitted-Cross-Domain-Policies none;
+      add_header X-Robots-Tag none;
+      add_header X-XSS-Protection "1; mode=block";
 
       # Remove X-Powered-By, which is an information leak
       fastcgi_hide_header X-Powered-By;
@@ -317,13 +317,13 @@ your nginx installation.
               # Before enabling Strict-Transport-Security headers please read
               # into this topic first.
               # add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
-              add_header X-Content-Type-Options nosniff;
-              add_header X-XSS-Protection "1; mode=block";
-              add_header X-Robots-Tag none;
-              add_header X-Download-Options noopen;
-              add_header X-Permitted-Cross-Domain-Policies none;
               add_header Referrer-Policy no-referrer;
+              add_header X-Content-Type-Options nosniff;
+              add_header X-Download-Options noopen;
               add_header X-Frame-Options "SAMEORIGIN";
+              add_header X-Permitted-Cross-Domain-Policies none;
+              add_header X-Robots-Tag none;
+              add_header X-XSS-Protection "1; mode=block";
 
               # Optional: Don't log access to assets
               access_log off;
