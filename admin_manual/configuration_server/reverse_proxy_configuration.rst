@@ -61,8 +61,8 @@ Apache2
 
 Thanks to `@ffried <https://github.com/ffried>`_ for apache2 example.
 
-Traefik
-^^^^^^^
+Traefik v1.x configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 ::
 
   traefik.frontend.redirect.permanent: 'true'
@@ -70,6 +70,17 @@ Traefik
   traefik.frontend.redirect.replacement: https://$$1/remote.php/dav/
 
 Thanks to `@pauvos <https://github.com/pauvos>`_ for traefik example.
+
+Traefik v2.x middleware configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  traefik.http.middlewares.nextcloud-dav-redirect.redirectregex.permanent=true
+  traefik.http.middlewares.nextcloud-dav-redirect.redirectregex.regex=https://(.*)/.well-known/(card|cal)dav
+  traefik.http.middlewares.nextcloud-dav-redirect.redirectregex.replacement=https://$$1/remote.php/dav/
+  
+Thanks to `@josefglatz <https://github.com/josefglatz>`_ for traefik v2 example.
 
 Example
 -------
