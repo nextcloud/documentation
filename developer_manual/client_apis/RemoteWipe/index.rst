@@ -23,6 +23,7 @@ token parameter to the apptoken.
 In case the client gets back a 200 status code and a JSON array with wipe set to true like:
 
 .. code-block:: json
+
         {
                 "wipe":true
         }
