@@ -64,6 +64,10 @@ MariaDB 10.3 or later
 MariaDB 10.2 or earlier
 =======================
 
+.. note::
+
+    All mysql statements have to be executed as privileged database user. (Using "normal" nextcloud database user will result in empty query sets due to missing privileges for INFORMATION_SCHEMA database.)
+
 1. Make sure the following InnoDB settings are set on your MySQL server::
 
     [mysqld]
