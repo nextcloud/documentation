@@ -86,7 +86,7 @@ Figure out the path of the old logo
 
 Replace the old picture, which position you found out as described under 1.3. by adding an extension in case you want to re-use it later.
 
-Creating an own logo
+Creating your own logo
 ^^^^^^^^^^^^^^^^^^^^
 
 If you want to do a quick exchange like (1) it's important to know the size of the picture before you start creating an own logo:
@@ -179,6 +179,23 @@ Save your CSS-file and refresh to see the new login screen.
 The other major color scheme is the blue header bar on the main navigation page once you log in to Nextcloud.
 This color we will change with the above as well.
 Save the file and refresh the browser for the changes to take effect.
+
+Changing file/folder type icons
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The core filetype icons are located in /core/img/filetypes/ directory.  
+Create a "filetypes" directory in your custom theme folder: 
+/themes/mytheme/core/img/filetypes/    
+
+Edit the filetype icon .svg files that you want to revise and place them in your new "filetypes" directory.
+
+Run this command from hase directory of your app:
+```php
+./occ maintenance:mimetype:update-js
+```
+
+This will instruct app to use revised icons from your themes folder.
+
 
 
 How to change translations
