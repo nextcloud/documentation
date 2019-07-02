@@ -28,7 +28,7 @@ Nextcloud in the webroot of nginx
 
 The following configuration should be used when Nextcloud is placed in the
 webroot of your nginx installation. In this example it is
-``/var/www/nextcloud`` and it is accessed via ``http(s)://cloud.example.com``
+``/var/www/nextcloud`` and it is accessed via ``http(s)://cloud.example.com/``
 
 .. code-block:: nginx
 
@@ -77,7 +77,7 @@ webroot of your nginx installation. In this example it is
       fastcgi_hide_header X-Powered-By;
 
       # Path to the root of your installation
-      root /var/www/nextcloud/;
+      root /var/www/nextcloud;
 
       location = /robots.txt {
           allow all;
@@ -235,7 +235,7 @@ your nginx installation.
       fastcgi_hide_header X-Powered-By;
 
       # Path to the root of your installation
-      root /var/www/;
+      root /var/www;
 
       location = /robots.txt {
           allow all;
@@ -396,9 +396,9 @@ If you after fresh installation (Centos 7 with nginx) have problem with first lo
 .. code-block:: bash
 
     tail /var/www/nextcloud/data/nextcloud.log
-    tail /var/log/nginx/access.log 
+    tail /var/log/nginx/access.log
     tail /var/log/nginx/error.log
-    
+
 If you just see some correct requests in access log, but no login happens, you check access rights for php session and wsdlcache directory. Try to check permissions and execute change if needed:
 
 .. code-block:: bash
