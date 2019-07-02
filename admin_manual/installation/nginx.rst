@@ -59,7 +59,7 @@ webroot of your nginx installation. In this example it is
       # Add headers to serve security related headers
       # Before enabling Strict-Transport-Security headers please read into this
       # topic first.
-      # add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
+      #add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
       #
       # WARNING: Only add the preload option once you read about
       # the consequences in https://hstspreload.org/. This option
@@ -92,7 +92,7 @@ webroot of your nginx installation. In this example it is
 
       # The following rule is only needed for the Social app.
       # Uncomment it if you're planning to use this app.
-      # rewrite ^/.well-known/webfinger /public.php?service=webfinger last;
+      #rewrite ^/.well-known/webfinger /public.php?service=webfinger last;
 
       location = /.well-known/carddav {
         return 301 $scheme://$host/remote.php/dav;
@@ -134,8 +134,9 @@ webroot of your nginx installation. In this example it is
           fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
           fastcgi_param PATH_INFO $fastcgi_path_info;
           fastcgi_param HTTPS on;
-          #Avoid sending the security headers twice
+          # Avoid sending the security headers twice
           fastcgi_param modHeadersAvailable true;
+          # Enable pretty urls
           fastcgi_param front_controller_active true;
           fastcgi_pass php-handler;
           fastcgi_intercept_errors on;
@@ -156,7 +157,7 @@ webroot of your nginx installation. In this example it is
           # have those duplicated to the ones above)
           # Before enabling Strict-Transport-Security headers please read into
           # this topic first.
-          # add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
+          #add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
           #
           # WARNING: Only add the preload option once you read about
           # the consequences in https://hstspreload.org/. This option
@@ -217,6 +218,12 @@ your nginx installation.
       # Before enabling Strict-Transport-Security headers please read into this
       # topic first.
       #add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
+      #
+      # WARNING: Only add the preload option once you read about
+      # the consequences in https://hstspreload.org/. This option
+      # will add the domain to a hardcoded list that is shipped
+      # in all major browsers and getting removed from this list
+      # could take several months.
       add_header X-Content-Type-Options nosniff;
       add_header X-XSS-Protection "1; mode=block";
       add_header X-Robots-Tag none;
@@ -238,14 +245,12 @@ your nginx installation.
 
       # The following 2 rules are only needed for the user_webfinger app.
       # Uncomment it if you're planning to use this app.
-      # rewrite ^/.well-known/host-meta /nextcloud/public.php?service=host-meta
-      # last;
-      #rewrite ^/.well-known/host-meta.json
-      # /nextcloud/public.php?service=host-meta-json last;
+      #rewrite ^/.well-known/host-meta /nextcloud/public.php?service=host-meta last;
+      #rewrite ^/.well-known/host-meta.json /nextcloud/public.php?service=host-meta-json last;
 
       # The following rule is only needed for the Social app.
       # Uncomment it if you're planning to use this app.
-      # rewrite ^/.well-known/webfinger /nextcloud/public.php?service=webfinger last;
+      #rewrite ^/.well-known/webfinger /nextcloud/public.php?service=webfinger last;
 
       location = /.well-known/carddav {
         return 301 $scheme://$host/nextcloud/remote.php/dav;
@@ -291,8 +296,9 @@ your nginx installation.
               fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
               fastcgi_param PATH_INFO $fastcgi_path_info;
               fastcgi_param HTTPS on;
-              #Avoid sending the security headers twice
+              # Avoid sending the security headers twice
               fastcgi_param modHeadersAvailable true;
+              # Enable pretty urls
               fastcgi_param front_controller_active true;
               fastcgi_pass php-handler;
               fastcgi_intercept_errors on;
@@ -304,7 +310,7 @@ your nginx installation.
               index index.php;
           }
 
-          #  Adding the cache control header for js, css and map files
+          # Adding the cache control header for js, css and map files
           # Make sure it is BELOW the PHP block
           location ~ ^\/nextcloud\/.+[^\/]\.(?:css|js|woff2?|svg|gif|map)$ {
               try_files $uri /nextcloud/index.php$request_uri;
@@ -313,7 +319,13 @@ your nginx installation.
               # to have those duplicated to the ones above)
               # Before enabling Strict-Transport-Security headers please read
               # into this topic first.
-              # add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
+              #add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
+              #
+              # WARNING: Only add the preload option once you read about
+              # the consequences in https://hstspreload.org/. This option
+              # will add the domain to a hardcoded list that is shipped
+              # in all major browsers and getting removed from this list
+              # could take several months.
               add_header X-Content-Type-Options nosniff;
               add_header X-XSS-Protection "1; mode=block";
               add_header X-Robots-Tag none;
