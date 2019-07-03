@@ -59,19 +59,20 @@ webroot of your nginx installation. In this example it is
       # Add headers to serve security related headers
       # Before enabling Strict-Transport-Security headers please read into this
       # topic first.
-      #add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
+      #add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;" always;
       #
       # WARNING: Only add the preload option once you read about
       # the consequences in https://hstspreload.org/. This option
       # will add the domain to a hardcoded list that is shipped
       # in all major browsers and getting removed from this list
       # could take several months.
-      add_header X-Content-Type-Options nosniff;
-      add_header X-XSS-Protection "1; mode=block";
-      add_header X-Robots-Tag none;
-      add_header X-Download-Options noopen;
-      add_header X-Permitted-Cross-Domain-Policies none;
-      add_header Referrer-Policy no-referrer;
+      add_header Referrer-Policy "no-referrer" always;
+      add_header X-Content-Type-Options "nosniff" always;
+      add_header X-Download-Options "noopen" always;
+      add_header X-Frame-Options "SAMEORIGIN" always;
+      add_header X-Permitted-Cross-Domain-Policies "none" always;
+      add_header X-Robots-Tag "none" always;
+      add_header X-XSS-Protection "1; mode=block" always;
 
       # Remove X-Powered-By, which is an information leak
       fastcgi_hide_header X-Powered-By;
@@ -157,19 +158,20 @@ webroot of your nginx installation. In this example it is
           # have those duplicated to the ones above)
           # Before enabling Strict-Transport-Security headers please read into
           # this topic first.
-          #add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
+          #add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;" always;
           #
           # WARNING: Only add the preload option once you read about
           # the consequences in https://hstspreload.org/. This option
           # will add the domain to a hardcoded list that is shipped
           # in all major browsers and getting removed from this list
           # could take several months.
-          add_header X-Content-Type-Options nosniff;
-          add_header X-XSS-Protection "1; mode=block";
-          add_header X-Robots-Tag none;
-          add_header X-Download-Options noopen;
-          add_header X-Permitted-Cross-Domain-Policies none;
-          add_header Referrer-Policy no-referrer;
+          add_header Referrer-Policy "no-referrer" always;
+          add_header X-Content-Type-Options "nosniff" always;
+          add_header X-Download-Options "noopen" always;
+          add_header X-Frame-Options "SAMEORIGIN" always;
+          add_header X-Permitted-Cross-Domain-Policies "none" always;
+          add_header X-Robots-Tag "none" always;
+          add_header X-XSS-Protection "1; mode=block" always;
 
           # Optional: Don't log access to assets
           access_log off;
@@ -217,7 +219,7 @@ your nginx installation.
       # Add headers to serve security related headers
       # Before enabling Strict-Transport-Security headers please read into this
       # topic first.
-      #add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
+      #add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;" always;
       #
       # WARNING: Only add the preload option once you read about
       # the consequences in https://hstspreload.org/. This option
@@ -319,7 +321,7 @@ your nginx installation.
               # to have those duplicated to the ones above)
               # Before enabling Strict-Transport-Security headers please read
               # into this topic first.
-              #add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
+              #add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;" always;
               #
               # WARNING: Only add the preload option once you read about
               # the consequences in https://hstspreload.org/. This option
