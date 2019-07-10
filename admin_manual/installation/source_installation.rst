@@ -68,7 +68,7 @@ The VM is made with VMware version 10 and it comes in different sizes and versio
 - 40 GB (VMware, VirtualBox, Hyper-V)
 - 500 GB (VMware, VirtualBox, Hyper-V)
 - 1 TB (VMware, VirtualBox, Hyper-V)
-- 2 TB (VMware & VirtualBox)
+- 2 TB (VMware & VirtualBox, Hyper-V)
 - Custom size? Please `ask us <https://www.hanssonit.se/#contact>`_.
 
 You can find all the different version `here <https://shop.hanssonit.se/product-category/virtual-machine/nextcloud-vm/>`_.
@@ -189,12 +189,27 @@ If ``mod_webdav`` is enabled you must disable it for Nextcloud. (See
 Example installation on Ubuntu 18.04 LTS server
 -----------------------------------------------
 
-On a machine running a pristine Ubuntu 18.04 LTS server, you have two options:
+On a machine running a pristine Ubuntu 18.04 LTS server, you have three options:
 
-You can either install the Nextcloud `Snap Package <http://snapcraft.io/>`_, just run the
+**Bash scripts**
+
+One of the easiest ways of insalling is to use the Nextcloud VM scripts. It's basically just two steps:
+
+1. Download the latest `installation script <https://github.com/nextcloud/vm/blob/master/nextcloud_install_production.sh/>`_.
+2. Run the script with::
+
+    sudo bash nextcloud_install_production.sh
+
+A guided setup will follow and the only thing you have to do it to follow the on screen instructions, when given to you.
+
+**Snap package**
+
+Another very easy way is to install the Nextcloud `Snap Package <http://snapcraft.io/>`_, just run the
 following command in a terminal::
 
     sudo snap install nextcloud
+
+**Debian packages**
 
 Or you can use .deb packages to install the required and recommended modules for a typical Nextcloud
 installation, using Apache and MariaDB, by issuing the following commands in a
