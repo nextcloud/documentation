@@ -775,7 +775,6 @@ Supported values:
   - ``daily``
   - ``beta``
   - ``stable``
-  - ``production``
 
 ::
 
