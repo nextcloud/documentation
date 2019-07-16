@@ -10,3 +10,6 @@ Client APIs
     WebDAV/index
     OCS/index
     LoginFlow/index
+    ocs-share-api
+    ocs-sharee-api
+    
