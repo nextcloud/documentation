@@ -75,3 +75,8 @@ In the 'Application.php' the event and the listening class are connected. The cl
 
 
 This provides a clear interface and contract between the emitted event and the listening services.
+
+Available Events
+----------------
+
+'OCP\Security\CSP\AddContentSecurityPolicyEvent': This event is emitted so apps can modify the CSP provided by nextcloud. For example if more domains can be used to connect to.
