@@ -20,6 +20,7 @@ App development
    users
    two-factor-provider
    hooks
+   events
    backgroundjobs
    settings
    notifications
