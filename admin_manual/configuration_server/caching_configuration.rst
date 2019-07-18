@@ -116,6 +116,13 @@ recommended if Redis is running on the same system as Nextcloud) use this exampl
 
 Only "host" and "port" variables are required, the other ones are optional.
 
+Be sure to set the right permissions on redis.sock so that your webserver can
+read and write to it. This might require settingt them to `777` in the Redis
+configuration file, typically ``/etc/redis/default.config```::
+
+  unixsocket /var/run/redis/redis.sock
+  unixsocketperm 777
+
 Redis is very configurable; consult `the Redis documentation 
 <http://redis.io/documentation>`_ to learn more.
 
