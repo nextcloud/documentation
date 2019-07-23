@@ -145,3 +145,24 @@ Notifications
 
 There is also the `Notifications API <https://github.com/nextcloud/notifications/blob/master/docs/ocs-endpoint-v2.md>`_
 As well as documentation on how to `Register a device for push notifications <https://github.com/nextcloud/notifications/blob/5a2d3607952bad675e4057620a9c7de8a7f84f0b/docs/push-v3.md>`_
+
+Auto-complete and user search
+-----------------------------
+
+It is possible to search for users using the auto-complete API, used to auto-complete usernames in comments, chat or to find guest accounts. The code is here:
+
+https://github.com/nextcloud/server/blob/master/core/Controller/AutoCompleteController.php#L69
+
+an example curl command would be:
+
+.. code::
+
+     curl -i -u master -X GET -H "OCS-APIRequest: true" 'https://my.nextcloud/ocs/v2.php/core/autocomplete/get?search=JOANNE%40EMAIL.ISP&itemType=%20&itemId=%20&shareTypes[]=8&limit=2'
+
+That would look for JOANNE@EMAIL.ISP as guest user. Maximum 2 results to be returned for a regular user, the shareTypes array would carry only "0". itemType and itemId are left (set to a white space), essentially they are to give context about the use case, so sorters can do their work (like who commented last). It  can be an option for filtering on a later stage but you can also leave them out:
+
+.. code::
+
+     curl -i -u master -X GET -H "OCS-APIRequest: true" 'https://my.nextcloud/ocs/v2.php/core/autocomplete/get?search=JOANNE%40EMAIL.ISP&shareTypes[]=8&limit=2'
+
+The shareType would default to regular users if you left it out), the limit defaults to 10.
