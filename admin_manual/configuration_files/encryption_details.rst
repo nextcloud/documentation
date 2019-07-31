@@ -16,6 +16,8 @@ These conventions apply throughout this document:
 - Static strings are denoted as ``"some string"``.
 - The concatenation of strings is denoted as ``$variable."some string"``.
 
+.. note:: This document describes the server-side encryption scheme as implemented by Nextcloud 16. Previous versions of Nextcloud implemented slightly different schemes which Nextcloud still supports for backwards compatibility. Files that have been encrypted by a recent version of Nextcloud should follow the structure documented below. However, files that have been encrypted by previous versions of Nextcloud may have slightly different structures.
+
 Key type: master key
 --------------------
 
