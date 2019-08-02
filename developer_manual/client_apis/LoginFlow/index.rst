@@ -113,3 +113,49 @@ The response should be a plain OCS response with a status 200
         </ocs>
 
 If a non 200 status code is returned the client should still proceed with removing the account.
+
+Login flow v2
+-------------
+
+While the login flow works very nice in a lot of cases there are especially on dekstop application certain hurdles. Special proxy configuration, client side certificates and the likes can cause trouble. To solve this we have come up with a second login flow that uses the users default webbrowser to authenticate. Thus ensuring that if they can login via the web they can also login in the client.
+
+The login flow v2 is available since Nextcloud 16. So check the status.php if it can be used on a given server.
+
+To initiate a login do an anonymous POST request
+
+
+.. code-block:: bash
+
+        curl -X POST https://cloud.example.com/index.php/login/v2
+
+This will return a json object like
+
+.. code-block:: json
+
+        {
+            "poll":{
+                "token":"mQUYQdffOSAMJYtm8pVpkOsVqXt5hglnuSpO5EMbgJMNEPFGaiDe8OUjvrJ2WcYcBSLgqynu9jaPFvZHMl83ybMvp6aDIDARjTFIBpRWod6p32fL9LIpIStvc6k8Wrs1",
+                "endpoint":"https:\/\/cloud.example.com\/login\/v2\/poll"
+            },
+            "login":"https:\/\/cloud.example.com\/login\/v2\/flow\/guyjGtcKPTKCi4epIRIupIexgJ8wNInMFSfHabACRPZUkmEaWZSM54bFkFuzWksbps7jmTFQjeskLpyJXyhpHlgK8sZBn9HXLXjohIx5iXgJKdOkkZTYCzUWHlsg3YFg"
+        }
+
+The url in login should be opened in the default browser, this is where the user will follow the login procedure.
+The program should directly start polling the poll endpoint:
+
+.. code-block:: bash
+
+        curl -X POST https://cloud.example.com/login/v2/poll -d "token=mQUYQdffOSAMJYtm8pVpkOsVqXt5hglnuSpO5EMbgJMNEPFGaiDe8OUjvrJ2WcYcBSLgqynu9jaPFvZHMl83ybMvp6aDIDARjTFIBpRWod6p32fL9LIpIStvc6k8Wrs1"
+
+This will return a 404 until authentication is done. Once a 200 is returned it is another json object.
+
+.. code-block:: json
+
+        {
+            "server":"https:\/\/cloud.example.com",
+            "loginName":"username",
+            "appPassword":"yKTVA4zgxjfivy52WqD8kW3M2pKGQr6srmUXMipRdunxjPFripJn0GMfmtNOqOolYSuJ6sCN"
+        }
+
+Use the server and the provided credentials to connect.
+Note that the 200 will only be returned once.
