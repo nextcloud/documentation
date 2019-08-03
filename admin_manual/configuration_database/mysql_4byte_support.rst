@@ -65,6 +65,10 @@ installation needs to be tweaked a bit.
 6. Convert all existing tables to the new collation by running the repair step::
 
     $ sudo -u www-data php occ maintenance:repair
+    
+.. note::
+   
+    The repair command might fail the migration of oc_activity table. If it does, change the types of the ``message`` and ``file`` columns to ``text`` as suggested on this `issue<https://github.com/nextcloud/server/issues/15648#issuecomment-494825914>`_.
 
 Now you should be able to use Emojis in your file names, calendar events, comments and many more.
 
