@@ -134,7 +134,7 @@ VirtualHost file::
    all installed browsers.
 
 This example configuration will make all subdomains only accessible via HTTPS.
-If you have subdomains not accessible via HTTPS, remove ``includeSubdomains;``.
+If you have subdomains not accessible via HTTPS, remove ``includeSubDomains``.
 
 This requires the ``mod_headers`` extension in Apache.
 
