@@ -123,7 +123,7 @@ Depending on your current PHP version you should find this file e.g. under ``/et
 Enable PHP OPcache
 ------------------
 
-The `OPcache <http://php.net/manual/en/intro.opcache.php>`_ improves the performance of PHP applications by caching precompiled bytecode. We recommend at least following settings:
+The `OPcache <http://php.net/manual/en/intro.opcache.php>`_ improves the performance of PHP applications by caching precompiled bytecode. We recommend at least the following settings:
 
 .. code:: ini
 
