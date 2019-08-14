@@ -31,4 +31,22 @@ Following ``config.php`` can be used::
       'failover_mode' => \RedisCluster::FAILOVER_ERROR,
    ],
 
+Collabora without SSL
+-----
 
+1) start Collabora
+    - docker run -p 127.0.0.1:9980:9980 -e 'domain=172.17.0.1' -e 'username=admin' -e 'password=487903ffcf4' -e extra_params='--o:ssl.enable=false' --restart always --cap-add MKNOD collabora/code
+    - 172.17.0.1 is localhost, which is default by Docker
+    - get IP of Collabora container: docker inspect --format='{{ .NetworkSettings.IPAddress }}' $containerName
+
+2) configure Nextcloud
+    - go to your local cloud (e.g. 172.17.0.1/nc) -> Settings -> Collabora
+        - set URL to IP you found out above, e.g: http://172.17.0.2:9980
+        - check "Disable certificate verification (insecure)
+
+3) use
+    - please note that you cannot use it with localhost, but you have to enter a valid IP address of localhost
+    - with this approach you can also use it with mobile clients
+4) troubleshoot
+    - http://172.17.0.2:9980/hosting/capabilities should give you:
+    {"convert-to":{"available":false},"hasMobileSupport":true,"hasTemplateSaveAs":true,"productName":"Collabora Online Development Edition"}
