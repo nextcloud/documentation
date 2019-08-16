@@ -16,7 +16,7 @@ Calendar
 
 Your calendar will now be visible in the Calendar application
 
-Beginning with iOS 12 an SSL encryption is necessary. Therefore do not disable SSL  
+Beginning with iOS 12 an SSL encryption is necessary. Therefore do not disable SSL
   (For this reason a certificate is required at your domain, https://letsencrypt.org/ will do)
 
 
@@ -36,7 +36,7 @@ Contacts
 
 You should now find your contacts in the address book of your iPhone.
 
-Beginning with iOS 12 an SSL encryption is necessary. Therefore do not disable SSL  
+Beginning with iOS 12 an SSL encryption is necessary. Therefore do not disable SSL
   (For this reason a certificate is required at your domain, https://letsencrypt.org/ will do).  
 
 If it's still not working, have a look at the `Troubleshooting Contacts & Calendar`_
