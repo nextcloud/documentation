@@ -1,0 +1,35 @@
+=======================
+Projects
+=======================
+
+Users can add files, chats and other items to projects. The various apps will present these items in a list, allowing users to immediately jump to them. Projects are Nextcloud wide, that is, when a user shares files that are part of a project, the other user can see the project with the shared files. A click on any of the items in a project leads right to it, be it a chat, a file or a task.
+
+Create a new project
+-------------------------------
+
+A new project can be created by linking two items together. Start off by opening a file or folders sharing sidebar. 
+
+.. figure:: ../images/projects1.png
+
+After clicking the *Add to a project* section and selecting the type of item you want to link with the current file/folder a selector will open that allows you selecting a Talk room for example.
+
+.. figure:: ../images/projects2.png
+
+Once the item has been selected a new project is being created and listed in the sharing tab of the sidebar. The same project will also appear in the sharing sidebar of the linked items.
+
+.. figure:: ../images/projects3.png
+
+The list entry shows quick links to a limited number of items. By opening the context menu, the project can be renamed and the full list of items can be expanded.
+
+
+Adding more entries to a project
+----------------------------------------------
+
+If another item should be added to an already existing project this can be done by searching for the project name in the *Add to a project* picker.
+
+.. figure:: ../images/projects4.png
+
+Visibility of projects
+----------------------
+
+Projects do not influence the access to the different items. Users will only see projects of other users if they have access to all containing items.
