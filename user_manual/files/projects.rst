@@ -11,7 +11,7 @@ A new project can be created by linking two items together. Start off by opening
 
 .. figure:: ../images/projects1.png
 
-After clicking the *Add to a project* section and selecting the type of item you want to link with the current file/folder a selector will open that allows you selecting a Talk room for example.
+After clicking the *Add to a project* section and selecting the type of item you want to link with the current file/folder a selector will open that allows you selecting a Talk conversation for example.
 
 .. figure:: ../images/projects2.png
 
