@@ -16,4 +16,5 @@ Files & synchronization
    large_file_upload
    quota
    version_control
+   projects
 
