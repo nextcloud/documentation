@@ -82,6 +82,12 @@ Building
 
 To change into this environment you need to run `pipenv shell` to launch the shell and to exit you can use either `exit` or `Ctrl` + `D`.
 
+When editing the documentation installing `sphinx-autobuild` though pip can be helpful. This will watch file changes and automatically reload the html preview:
+
+1. Install `pip2 install sphinx-autobuild`
+2. Enter the documentation section `cd user_manual`
+3. Watch for file changes `make SPHINXBUILD=sphinx-autobuild html`
+4. Open http://127.0.0.1:8000 in the browser and start editing
 
 Icons
 -----
