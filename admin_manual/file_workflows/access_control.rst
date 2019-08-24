@@ -17,7 +17,7 @@ If access to a file has been denied for a user, the user can not:
 * Modify the files
 * Delete the file
 * Download the file
-* Syncronise the file with clients, such as the Nextcloud desktop and mobile clients
+* Synchronize the file with clients, such as the Nextcloud desktop and mobile clients
 
 Examples
 --------
