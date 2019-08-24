@@ -96,6 +96,7 @@ This approach requires two files: **nextcloudcron.service** and **nextcloudcron.
 
   [Unit]
   Description=Nextcloud cron.php job
+  After=mysql.service
   
   [Service]
   User=www-data
