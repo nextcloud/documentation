@@ -105,7 +105,8 @@ This approach requires two files: **nextcloudcron.service** and **nextcloudcron.
   [Install]
   WantedBy=basic.target
 
-Replace the user ``www-data`` with the user of your http server and ``/var/www/nextcloud/cron.php`` with the location of **cron.php** in your nextcloud directory.
+Replace the user ``www-data`` with the user of your http server and ``/var/www/nextcloud/cron.php`` with the location of **cron.php** in your nextcloud directory.  
+Replace ``mysql.service`` with the name of the database service you are using. Note: ``mysql.service`` controls both the actual MySQL as well as MariaDB on Ubuntu so you can use the above line for either. For PostgreSQL you could use ``After=postgresql.service``. In the case of SQLite simply omit the line.
 
 **nextcloudcron.timer** should look like this::
 
