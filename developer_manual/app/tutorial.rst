@@ -213,61 +213,56 @@ Database
 Now that the routes are set up and connected the notes should be saved in the
 database. To do that first create a :doc:`database migration <storage/migrations>`
 by creating a file **notestutorial/lib/Migration/VersionXXYYZZDateYYYYMMDDHHSSAA.php**,
-so for example **notestutorial/lib/Migration/Version000000Date20181224140601.php**""
+so for example **notestutorial/lib/Migration/Version000000Date20181013124731.php**""
 
 .. code-block:: php
 
     <?php
 
-      namespace OCA\Notes\Migration;
+      namespace OCA\NotesTutorial\Migration;
 
       use Closure;
       use OCP\DB\ISchemaWrapper;
       use OCP\Migration\SimpleMigrationStep;
       use OCP\Migration\IOutput;
 
-      class Version000000Date20181224140601 extends SimpleMigrationStep {
+      class Version1400Date20181013124731 extends SimpleMigrationStep {
 
-          /**
-            * @param IOutput $output
-            * @param Closure $schemaClosure The `\Closure` returns a `ISchemaWrapper`
-            * @param array $options
-            * @return null|ISchemaWrapper
-           */
-           public function changeSchema(IOutput $output, Closure $schemaClosure, array $options) {
-              /** @var ISchemaWrapper $schema */
-              $schema = $schemaClosure();
+        /**
+        * @param IOutput $output
+        * @param Closure $schemaClosure The `\Closure` returns a `ISchemaWrapper`
+        * @param array $options
+        * @return null|ISchemaWrapper
+        */
+        public function changeSchema(IOutput $output, Closure $schemaClosure, array $options) {
+            /** @var ISchemaWrapper $schema */
+            $schema = $schemaClosure();
 
-              if (!$schema->hasTable('notes_meta')) {
-                  $table = $schema->createTable('notes_meta');
-                  $table->addColumn('id', 'integer', [
-                      'autoincrement' => true,
-                      'notnull' => true,
-                  ]);
-                  $table->addColumn('file_id', 'integer', [
-                      'notnull' => true,
-                  ]);
-                  $table->addColumn('user_id', 'string', [
-                      'notnull' => true,
-                      'length' => 64,
-                  ]);
-                  $table->addColumn('last_update', 'integer', [
-                      'notnull' => true,
-                  ]);
-                  $table->addColumn('etag', 'string', [
-                      'notnull' => true,
-                      'length' => 32,
-                  ]);
+            if (!$schema->hasTable('notestutorial')) {
+                $table = $schema->createTable('notestutorial');
+                $table->addColumn('id', 'integer', [
+                    'autoincrement' => true,
+                    'notnull' => true,
+                ]);
+                $table->addColumn('title', 'string', [
+                    'notnull' => true,
+                    'length' => 200
+                ]);
+                $table->addColumn('user_id', 'string', [
+                    'notnull' => true,
+                    'length' => 200,
+                ]);
+                $table->addColumn('content', 'text', [
+                    'notnull' => true,
+                    'default' => ''
+                ]);
 
-                  $table->setPrimaryKey(['id']);
-                  $table->addIndex(['file_id'], 'notes_meta_file_id_index');
-                  $table->addIndex(['user_id'], 'notes_meta_user_id_index');
-                  $table->addUniqueIndex(['file_id', 'user_id'], 'notes_meta_file_user_index');
-              }
-
-              return $schema;
-          }
-      }
+                $table->setPrimaryKey(['id']);
+                $table->addIndex(['user_id'], 'notestutorial_user_id_index');
+            }
+            return $schema;
+        }
+    }
 
 To create the tables in the database, the :doc:`version tag <info>` in **notestutorial/appinfo/info.xml** needs to be increased:
 
