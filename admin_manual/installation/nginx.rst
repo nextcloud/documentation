@@ -179,6 +179,12 @@ webroot of your nginx installation. In this example it is
 
       location ~ \.(?:png|html|ttf|ico|jpg|jpeg|bcmap)$ {
           try_files $uri /index.php$request_uri;
+          
+          # Optional: enable browser caching for thumbnails
+          # Makes page loads really snappy for low power servers
+          # but potentially slightly outdated
+          add_header Cache-Control "public, max-age=86400";
+          
           # Optional: Don't log access to other assets
           access_log off;
       }
