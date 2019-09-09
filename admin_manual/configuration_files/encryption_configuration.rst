@@ -212,14 +212,9 @@ The [module ID] is taken from the ``encryption:list-modules`` command.
 
 Encrypt all data files for all users. For performance reasons, when you enable 
 encryption on a Nextcloud server only new and changed files are encrypted. This 
-command gives you the option to encrypt all files. You must first put your 
-Nextcloud server into maintenance mode to prevent any user activity until
-encryption is completed::
+command gives you the option to encrypt all files. 
 
- occ maintenance:mode --on
- Maintenance mode is currently enabled
-
-Then run ``occ``::
+Run ``occ``::
 
  occ encryption:encrypt-all
  
