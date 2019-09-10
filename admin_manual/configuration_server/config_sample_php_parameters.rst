@@ -1674,6 +1674,18 @@ Defaults to ``false``
 
 ::
 
+	'external_storage.auth_availability_delay' => 1800,
+
+When an external storage is unavailable for some reasons, it will be flagged
+as such for 10 minutes. When the trigger is a failed authentication attempt
+the delay is higher and can be controlled with this option. The motivation
+is to make account lock outs at Active Directories (and compatible) more
+unlikely.
+
+Defaults to ``1800`` (seconds)
+
+::
+
 	'filesystem_check_changes' => 0,
 
 Specifies how often the local filesystem (the Nextcloud data/ directory, and
