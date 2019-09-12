@@ -69,11 +69,18 @@ server user (often, ``www-data`` or ``wwwrun``), you must set up the following
 cron job to call the **cron.php** script::
 
   # crontab -u www-data -e
+
+And append this line::
+
   */5  *  *  *  * php -f /var/www/nextcloud/cron.php
 
 You can verify if the cron job has been added and scheduled by executing::
 
   # crontab -u www-data -l
+
+Which returns::
+
+  [snip]
   */5  *  *  *  * php -f /var/www/nextcloud/cron.php
 
 .. note:: You have to replace the path ``/var/www/nextcloud/cron.php`` with the
