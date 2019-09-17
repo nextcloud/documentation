@@ -16,9 +16,9 @@ First the :doc:`development environment <../general/devenv>` needs to be set up.
    cd server
    git submodule update --init
 
-.. note:: ``$BRANCH`` is the desired Nextcloud branch (e.g. ``stable9`` for Nextcloud 9, ``stable10`` for Nextcloud 10, ..., ``master`` for the upcoming release)
+.. note:: ``$BRANCH`` is the desired Nextcloud branch (e.g. ``stable17`` for Nextcloud 17, ``master`` for the upcoming release)
 
-First you want to enable debug mode to get proper error messages. To do that set ``debug`` to ``true`` in the **nextcloud/config/config.php** file::
+First you want to enable debug mode to get proper error messages. To do that set ``debug`` to ``true`` in the **config/config.php** file::
 
     <?php
     $CONFIG = array (
@@ -26,7 +26,7 @@ First you want to enable debug mode to get proper error messages. To do that set
         ... configuration goes here ...
     );
 
-.. note:: PHP errors are logged to **nextcloud/data/nextcloud.log**
+.. note:: PHP errors are logged to **data/nextcloud.log**
 
 Now open another terminal window and start the development server::
 
@@ -56,7 +56,7 @@ On the client side we can call these URLs with the following jQuery code:
 .. code-block:: js
 
     // example for calling the PUT /notes/1 URL
-    var baseUrl = OC.generateUrl('/apps/ownnotes');
+    var baseUrl = OC.generateUrl('/apps/notestutorial');
     var note = {
         title: 'New note',
         content: 'This is the note text'
@@ -73,7 +73,7 @@ On the client side we can call these URLs with the following jQuery code:
         // handle failure
     });
 
-On the server side we need to register a callback that is executed once the request comes in. The callback itself will be a method on a :doc:`controller <requests/controllers>` and the controller will be connected to the URL with a :doc:`route <requests/routes>`. The controller and route for the page are already set up in **ownnotes/appinfo/routes.php**:
+On the server side we need to register a callback that is executed once the request comes in. The callback itself will be a method on a :doc:`controller <requests/controllers>` and the controller will be connected to the URL with a :doc:`route <requests/routes>`. The controller and route for the page are already set up in **notestutorial/appinfo/routes.php**:
 
 .. code-block:: php
 
@@ -82,14 +82,14 @@ On the server side we need to register a callback that is executed once the requ
         ['name' => 'page#index', 'url' => '/', 'verb' => 'GET']
     ]];
 
-This route calls the controller **OCA\\OwnNotes\\PageController->index()** method which is defined in **ownnotes/lib/Controller/PageController.php**. The controller returns a :doc:`template <view/templates>`, in this case **ownnotes/templates/main.php**:
+This route calls the controller **OCA\\notestutorial\\PageController->index()** method which is defined in **notestutorial/lib/Controller/PageController.php**. The controller returns a :doc:`template <view/templates>`, in this case **notestutorial/templates/main.php**:
 
 .. note:: @NoAdminRequired and @NoCSRFRequired in the comments above the method turn off security checks, see :doc:`requests/controllers`
 
 .. code-block:: php
 
    <?php
-    namespace OCA\OwnNotes\Controller;
+    namespace OCA\NotesTutorial\Controller;
 
     use OCP\IRequest;
     use OCP\AppFramework\Http\TemplateResponse;
@@ -106,17 +106,17 @@ This route calls the controller **OCA\\OwnNotes\\PageController->index()** metho
          * @NoCSRFRequired
          */
         public function index() {
-            return new TemplateResponse('ownnotes', 'main');
+            return new TemplateResponse('notestutorial', 'main');
         }
 
     }
 
-Since the route which returns the initial HTML has been taken care of, the controller which handles the AJAX requests for the notes needs to be set up. Create the following file: **ownnotes/lib/Controller/NoteController.php** with the following content:
+Since the route which returns the initial HTML has been taken care of, the controller which handles the AJAX requests for the notes needs to be set up. Create the following file: **notestutorial/lib/Controller/NoteController.php** with the following content:
 
 .. code-block:: php
 
    <?php
-    namespace OCA\OwnNotes\Controller;
+    namespace OCA\NotesTutorial\Controller;
 
     use OCP\IRequest;
     use OCP\AppFramework\Controller;
@@ -177,7 +177,7 @@ Since the route which returns the initial HTML has been taken care of, the contr
 
 .. note:: The parameters are extracted from the request body and the URL using the controller method's variable names. Since PHP does not support type hints for primitive types such as ints and booleans, we need to add them as annotations in the comments. In order to type cast a parameter to an int, add **@param int $parameterName**
 
-Now the controller methods need to be connected to the corresponding URLs in the **ownnotes/appinfo/routes.php** file:
+Now the controller methods need to be connected to the corresponding URLs in the **notestutorial/appinfo/routes.php** file:
 
 .. code-block:: php
 
@@ -212,76 +212,71 @@ Database
 
 Now that the routes are set up and connected the notes should be saved in the
 database. To do that first create a :doc:`database migration <storage/migrations>`
-by creating a file **ownnotes/lib/Migration/VersionXXYYZZDateYYYYMMDDHHSSAA.php**,
-so for example **ownnotes/lib/Migration/Version000000Date20181224140601.php**""
+by creating a file **notestutorial/lib/Migration/VersionXXYYZZDateYYYYMMDDHHSSAA.php**,
+so for example **notestutorial/lib/Migration/Version000000Date20181013124731.php**""
 
 .. code-block:: php
 
     <?php
 
-      namespace OCA\Notes\Migration;
+      namespace OCA\NotesTutorial\Migration;
 
       use Closure;
       use OCP\DB\ISchemaWrapper;
       use OCP\Migration\SimpleMigrationStep;
       use OCP\Migration\IOutput;
 
-      class Version000000Date20181224140601 extends SimpleMigrationStep {
+      class Version1400Date20181013124731 extends SimpleMigrationStep {
 
-          /**
-            * @param IOutput $output
-            * @param Closure $schemaClosure The `\Closure` returns a `ISchemaWrapper`
-            * @param array $options
-            * @return null|ISchemaWrapper
-           */
-           public function changeSchema(IOutput $output, Closure $schemaClosure, array $options) {
-              /** @var ISchemaWrapper $schema */
-              $schema = $schemaClosure();
+        /**
+        * @param IOutput $output
+        * @param Closure $schemaClosure The `\Closure` returns a `ISchemaWrapper`
+        * @param array $options
+        * @return null|ISchemaWrapper
+        */
+        public function changeSchema(IOutput $output, Closure $schemaClosure, array $options) {
+            /** @var ISchemaWrapper $schema */
+            $schema = $schemaClosure();
 
-              if (!$schema->hasTable('notes_meta')) {
-                  $table = $schema->createTable('notes_meta');
-                  $table->addColumn('id', 'integer', [
-                      'autoincrement' => true,
-                      'notnull' => true,
-                  ]);
-                  $table->addColumn('file_id', 'integer', [
-                      'notnull' => true,
-                  ]);
-                  $table->addColumn('user_id', 'string', [
-                      'notnull' => true,
-                      'length' => 64,
-                  ]);
-                  $table->addColumn('last_update', 'integer', [
-                      'notnull' => true,
-                  ]);
-                  $table->addColumn('etag', 'string', [
-                      'notnull' => true,
-                      'length' => 32,
-                  ]);
+            if (!$schema->hasTable('notestutorial')) {
+                $table = $schema->createTable('notestutorial');
+                $table->addColumn('id', 'integer', [
+                    'autoincrement' => true,
+                    'notnull' => true,
+                ]);
+                $table->addColumn('title', 'string', [
+                    'notnull' => true,
+                    'length' => 200
+                ]);
+                $table->addColumn('user_id', 'string', [
+                    'notnull' => true,
+                    'length' => 200,
+                ]);
+                $table->addColumn('content', 'text', [
+                    'notnull' => true,
+                    'default' => ''
+                ]);
 
-                  $table->setPrimaryKey(['id']);
-                  $table->addIndex(['file_id'], 'notes_meta_file_id_index');
-                  $table->addIndex(['user_id'], 'notes_meta_user_id_index');
-                  $table->addUniqueIndex(['file_id', 'user_id'], 'notes_meta_file_user_index');
-              }
+                $table->setPrimaryKey(['id']);
+                $table->addIndex(['user_id'], 'notestutorial_user_id_index');
+            }
+            return $schema;
+        }
+    }
 
-              return $schema;
-          }
-      }
-
-To create the tables in the database, the :doc:`version tag <info>` in **ownnotes/appinfo/info.xml** needs to be increased:
+To create the tables in the database, the :doc:`version tag <info>` in **notestutorial/appinfo/info.xml** needs to be increased:
 
 .. code-block:: xml
 
     <?xml version="1.0"?>
     <info>
-        <id>ownnotes</id>
-        <name>Own Notes</name>
+        <id>notestutorial</id>
+        <name>Notes Tutorial</name>
         <description>My first Nextcloud app</description>
         <licence>AGPL</licence>
         <author>Your Name</author>
         <version>0.0.2</version>
-        <namespace>OwnNotes</namespace>
+        <namespace>notestutorial</namespace>
         <category>tool</category>
         <dependencies>
             <owncloud min-version="8" />
@@ -290,13 +285,13 @@ To create the tables in the database, the :doc:`version tag <info>` in **ownnote
 
 Reload the page to trigger the database migration.
 
-Now that the tables are created we want to map the database result to a PHP object to be able to control data. First create an :doc:`entity <storage/database>` in **ownnotes/lib/Db/Note.php**:
+Now that the tables are created we want to map the database result to a PHP object to be able to control data. First create an :doc:`entity <storage/database>` in **notestutorial/lib/Db/Note.php**:
 
 
 .. code-block:: php
 
     <?php
-    namespace OCA\OwnNotes\Db;
+    namespace OCA\NotesTutorial\Db;
 
     use JsonSerializable;
 
@@ -321,12 +316,12 @@ Now that the tables are created we want to map the database result to a PHP obje
 
 We also define a **jsonSerializable** method and implement the interface to be able to transform the entity to JSON easily.
 
-Entities are returned from so called :doc:`Mappers <storage/database>`. Let's create one in **ownnotes/lib/Db/NoteMapper.php** and add a **find** and **findAll** method:
+Entities are returned from so called :doc:`Mappers <storage/database>`. Let's create one in **notestutorial/lib/Db/NoteMapper.php** and add a **find** and **findAll** method:
 
 .. code-block:: php
 
     <?php
-    namespace OCA\OwnNotes\Db;
+    namespace OCA\NotesTutorial\Db;
 
     use OCP\IDbConnection;
     use OCP\AppFramework\Db\QBMapper;
@@ -334,7 +329,7 @@ Entities are returned from so called :doc:`Mappers <storage/database>`. Let's cr
     class NoteMapper extends QBMapper {
 
         public function __construct(IDbConnection $db) {
-            parent::__construct($db, 'ownnotes_notes', Note::class);
+            parent::__construct($db, 'notestutorial_notes', Note::class);
         }
 
         public function find(int $id, string $userId) {
@@ -372,12 +367,12 @@ Connect database & controllers
 
 The mapper which provides the database access is finished and can be passed into the controller.
 
-You can pass in the mapper by adding it as a type hinted parameter. Nextcloud will figure out how to :doc:`assemble them by itself <requests/container>`. Additionally we want to know the userId of the currently logged in user. Simply add a **$UserId** parameter to the constructor (case sensitive!). To do that open **ownnotes/lib/Controller/NoteController.php** and change it to the following:
+You can pass in the mapper by adding it as a type hinted parameter. Nextcloud will figure out how to :doc:`assemble them by itself <requests/container>`. Additionally we want to know the userId of the currently logged in user. Simply add a **$UserId** parameter to the constructor (case sensitive!). To do that open **notestutorial/lib/Controller/NoteController.php** and change it to the following:
 
 .. code-block:: php
 
    <?php
-    namespace OCA\OwnNotes\Controller;
+    namespace OCA\NotesTutorial\Controller;
 
     use Exception;
 
@@ -386,8 +381,8 @@ You can pass in the mapper by adding it as a type hinted parameter. Nextcloud wi
     use OCP\AppFramework\Http\DataResponse;
     use OCP\AppFramework\Controller;
 
-    use OCA\OwnNotes\Db\Note;
-    use OCA\OwnNotes\Db\NoteMapper;
+    use OCA\NotesTutorial\Db\Note;
+    use OCA\NotesTutorial\Db\NoteMapper;
 
     class NoteController extends Controller {
 
@@ -480,20 +475,20 @@ Let's say our app is now on the app store and and we get a request that we shoul
 
 The filesystem API is quite different from the database API and throws different exceptions, which means we need to rewrite everything in the **NoteController** class to use it. This is bad because a controller's only responsibility should be to deal with incoming Http requests and return Http responses. If we need to change the controller because the data storage was changed the code is probably too tightly coupled and we need to add another layer in between. This layer is called **Service**.
 
-Let's take the logic that was inside the controller and put it into a separate class inside **ownnotes/lib/Service/NoteService.php**:
+Let's take the logic that was inside the controller and put it into a separate class inside **notestutorial/lib/Service/NoteService.php**:
 
 .. code-block:: php
 
     <?php
-    namespace OCA\OwnNotes\Service;
+    namespace OCA\NotesTutorial\Service;
 
     use Exception;
 
     use OCP\AppFramework\Db\DoesNotExistException;
     use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 
-    use OCA\OwnNotes\Db\Note;
-    use OCA\OwnNotes\Db\NoteMapper;
+    use OCA\NotesTutorial\Db\Note;
+    use OCA\NotesTutorial\Db\NoteMapper;
 
 
     class NoteService {
@@ -561,44 +556,44 @@ Let's take the logic that was inside the controller and put it into a separate c
 
     }
 
-Following up create the exceptions in **ownnotes/lib/Service/ServiceException.php**:
+Following up create the exceptions in **notestutorial/lib/Service/ServiceException.php**:
 
 .. code-block:: php
 
     <?php
-    namespace OCA\OwnNotes\Service;
+    namespace OCA\NotesTutorial\Service;
 
     use Exception;
 
     class ServiceException extends Exception {}
 
-and **ownnotes/lib/Service/NotFoundException.php**:
+and **notestutorial/lib/Service/NotFoundException.php**:
 
 .. code-block:: php
 
     <?php
-    namespace OCA\OwnNotes\Service;
+    namespace OCA\NotesTutorial\Service;
 
     class NotFoundException extends ServiceException {}
 
 
 Remember how we had all those ugly try catches that where checking for **DoesNotExistException** and simply returned a 404 response? Let's also put this into a reusable class. In our case we chose a `trait <http://php.net/manual/en/language.oop5.traits.php>`_ so we can inherit methods without having to add it to our inheritance hierarchy. This will be important later on when you've got controllers that inherit from the **ApiController** class instead.
 
-The trait is created in **ownnotes/lib/Controller/Errors.php**:
+The trait is created in **notestutorial/lib/Controller/Errors.php**:
 
 
 .. code-block:: php
 
     <?php
 
-    namespace OCA\OwnNotes\Controller;
+    namespace OCA\NotesTutorial\Controller;
 
     use Closure;
 
     use OCP\AppFramework\Http;
     use OCP\AppFramework\Http\DataResponse;
 
-    use OCA\OwnNotes\Service\NotFoundException;
+    use OCA\NotesTutorial\Service\NotFoundException;
 
 
     trait Errors {
@@ -619,13 +614,13 @@ Now we can wire up the trait and the service inside the **NoteController**:
 .. code-block:: php
 
     <?php
-    namespace OCA\OwnNotes\Controller;
+    namespace OCA\NotesTutorial\Controller;
 
     use OCP\IRequest;
     use OCP\AppFramework\Http\DataResponse;
     use OCP\AppFramework\Controller;
 
-    use OCA\OwnNotes\Service\NoteService;
+    use OCA\NotesTutorial\Service\NoteService;
 
     class NoteController extends Controller {
 
@@ -707,19 +702,19 @@ Unit tests
 
 A unit test is a test that tests a class in isolation. It is very fast and catches most of the bugs, so we want many unit tests.
 
-Because Nextcloud uses :doc:`Dependency Injection <requests/container>` to assemble your app, it is very easy to write unit tests by passing mocks into the constructor. A simple test for the update method can be added by adding this to **ownnotes/tests/Unit/Controller/NoteControllerTest.php**:
+Because Nextcloud uses :doc:`Dependency Injection <requests/container>` to assemble your app, it is very easy to write unit tests by passing mocks into the constructor. A simple test for the update method can be added by adding this to **notestutorial/tests/Unit/Controller/NoteControllerTest.php**:
 
 .. code-block:: php
 
     <?php
-    namespace OCA\OwnNotes\Tests\Unit\Controller;
+    namespace OCA\NotesTutorial\Tests\Unit\Controller;
 
     use PHPUnit_Framework_TestCase;
 
     use OCP\AppFramework\Http;
     use OCP\AppFramework\Http\DataResponse;
 
-    use OCA\OwnNotes\Service\NotFoundException;
+    use OCA\NotesTutorial\Service\NotFoundException;
 
 
     class NoteControllerTest extends PHPUnit_Framework_TestCase {
@@ -731,11 +726,11 @@ Because Nextcloud uses :doc:`Dependency Injection <requests/container>` to assem
 
         public function setUp() {
             $this->request = $this->getMockBuilder('OCP\IRequest')->getMock();
-            $this->service = $this->getMockBuilder('OCA\OwnNotes\Service\NoteService')
+            $this->service = $this->getMockBuilder('OCA\NotesTutorial\Service\NoteService')
                 ->disableOriginalConstructor()
                 ->getMock();
             $this->controller = new NoteController(
-                'ownnotes', $this->request, $this->service, $this->userId
+                'notestutorial', $this->request, $this->service, $this->userId
             );
         }
 
@@ -774,13 +769,13 @@ We can and should also create a test for the **NoteService** class:
 .. code-block:: php
 
     <?php
-    namespace OCA\OwnNotes\Tests\Unit\Service;
+    namespace OCA\NotesTutorial\Tests\Unit\Service;
 
     use PHPUnit_Framework_TestCase;
 
     use OCP\AppFramework\Db\DoesNotExistException;
 
-    use OCA\OwnNotes\Db\Note;
+    use OCA\NotesTutorial\Db\Note;
 
     class NoteServiceTest extends PHPUnit_Framework_TestCase {
 
@@ -789,7 +784,7 @@ We can and should also create a test for the **NoteService** class:
         private $userId = 'john';
 
         public function setUp() {
-            $this->mapper = $this->getMockBuilder('OCA\OwnNotes\Db\NoteMapper')
+            $this->mapper = $this->getMockBuilder('OCA\NotesTutorial\Db\NoteMapper')
                 ->disableOriginalConstructor()
                 ->getMock();
             $this->service = new NoteService($this->mapper);
@@ -823,7 +818,7 @@ We can and should also create a test for the **NoteService** class:
 
 
         /**
-         * @expectedException OCA\OwnNotes\Service\NotFoundException
+         * @expectedException OCA\NotesTutorial\Service\NotFoundException
          */
         public function testUpdateNotFound() {
             // test the correct status code if no note is found
@@ -837,11 +832,11 @@ We can and should also create a test for the **NoteService** class:
 
     }
 
-If `PHPUnit is installed <https://phpunit.de/>`_ we can run the tests inside **ownnotes/** with the following command::
+If `PHPUnit is installed <https://phpunit.de/>`_ we can run the tests inside **notestutorial/** with the following command::
 
     phpunit
 
-.. note:: You need to adjust the **ownnotes/tests/Unit/Controller/PageControllerTest** file to get the tests passing: remove the **testEcho** method since that method is no longer present in your **PageController** and do not test the user id parameters since they are not passed anymore
+.. note:: You need to adjust the **notestutorial/tests/Unit/Controller/PageControllerTest** file to get the tests passing: remove the **testEcho** method since that method is no longer present in your **PageController** and do not test the user id parameters since they are not passed anymore
 
 Integration tests
 -----------------
@@ -850,18 +845,18 @@ Integration tests are slow and need a fully working instance but make sure that 
 
 In our case we want to create an integration test for the udpate method without mocking out the **NoteMapper** class so we actually write to the existing database.
 
-To do that create a new file called **ownnotes/tests/Integration/NoteIntegrationTest.php** with the following content:
+To do that create a new file called **notestutorial/tests/Integration/NoteIntegrationTest.php** with the following content:
 
 .. code-block:: php
 
     <?php
-    namespace OCA\OwnNotes\Tests\Integration\Controller;
+    namespace OCA\NotesTutorial\Tests\Integration\Controller;
 
     use OCP\AppFramework\Http\DataResponse;
     use OCP\AppFramework\App;
     use Test\TestCase;
 
-    use OCA\OwnNotes\Db\Note;
+    use OCA\NotesTutorial\Db\Note;
 
     /**
      * @group DB
@@ -874,7 +869,7 @@ To do that create a new file called **ownnotes/tests/Integration/NoteIntegration
 
         public function setUp() {
             parent::setUp();
-            $app = new App('ownnotes');
+            $app = new App('notestutorial');
             $container = $app->getContainer();
 
             // only replace the user id
@@ -883,11 +878,11 @@ To do that create a new file called **ownnotes/tests/Integration/NoteIntegration
             });
 
             $this->controller = $container->query(
-                'OCA\OwnNotes\Controller\NoteController'
+                'OCA\NotesTutorial\Controller\NoteController'
             );
 
             $this->mapper = $container->query(
-                'OCA\OwnNotes\Db\NoteMapper'
+                'OCA\NotesTutorial\Db\NoteMapper'
             );
         }
 
@@ -918,7 +913,7 @@ To do that create a new file called **ownnotes/tests/Integration/NoteIntegration
 
     }
 
-To run the integration tests change into the **ownnotes** directory and run::
+To run the integration tests change into the **notestutorial** directory and run::
 
     phpunit -c phpunit.integration.xml
 
@@ -929,18 +924,18 @@ A :doc:`RESTful API <requests/api>` allows other apps such as Android or iPhone 
 
 Because we put our logic into the **NoteService** class it is very easy to reuse it. The only pieces that need to be changed are the annotations which disable the CSRF check (not needed for a REST call usually) and add support for `CORS <https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS>`_ so your API can be accessed from other webapps.
 
-With that in mind create a new controller in **ownnotes/lib/Controller/NoteApiController.php**:
+With that in mind create a new controller in **notestutorial/lib/Controller/NoteApiController.php**:
 
 .. code-block:: php
 
     <?php
-    namespace OCA\OwnNotes\Controller;
+    namespace OCA\NotesTutorial\Controller;
 
     use OCP\IRequest;
     use OCP\AppFramework\Http\DataResponse;
     use OCP\AppFramework\ApiController;
 
-    use OCA\OwnNotes\Service\NoteService;
+    use OCA\NotesTutorial\Service\NoteService;
 
     class NoteApiController extends ApiController {
 
@@ -1041,14 +1036,14 @@ All that is left is to connect the controller to a route and enable the built in
 
 You can test the API by running a GET request with **curl**::
 
-    curl -u user:password http://localhost:8080/index.php/apps/ownnotes/api/0.1/notes
+    curl -u user:password http://localhost:8080/index.php/apps/notestutorial/api/0.1/notes
 
-Since the **NoteApiController** is basically identical to the **NoteController**, the unit test for it simply inherits its tests from the **NoteControllerTest**. Create the file **ownnotes/tests/Unit/Controller/NoteApiControllerTest.php**:
+Since the **NoteApiController** is basically identical to the **NoteController**, the unit test for it simply inherits its tests from the **NoteControllerTest**. Create the file **notestutorial/tests/Unit/Controller/NoteApiControllerTest.php**:
 
 .. code-block:: php
 
     <?php
-    namespace OCA\OwnNotes\Tests\Unit\Controller;
+    namespace OCA\NotesTutorial\Tests\Unit\Controller;
 
     require_once __DIR__ . '/NoteControllerTest.php';
 
@@ -1057,328 +1052,34 @@ Since the **NoteApiController** is basically identical to the **NoteController**
         public function setUp() {
             parent::setUp();
             $this->controller = new NoteApiController(
-                'ownnotes', $this->request, $this->service, $this->userId
+                'notestutorial', $this->request, $this->service, $this->userId
             );
         }
 
     }
 
-Adding JavaScript and CSS
--------------------------
+Building the frontend
+---------------------
 
-To create a modern webapp you need to write :doc:`JavaScript<view/js>`. You can use any JavaScript framework but for this tutorial we want to keep it as simple as possible and therefore only include the templating library `handlebarsjs <http://handlebarsjs.com/>`_. `Download the file <http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v2.0.0.js>`_ into **ownnotes/js/handlebars.js** and include it at the very top of **ownnotes/templates/main.php** before the other scripts and styles:
+To create a modern webapp you need to write :doc:`JavaScript<view/js>`. You can use any JavaScript framework, but this tutorial focusses on a simple frontend using Vue.js. For a more detail introduction to Vue.js please head over to the `official documentation <https://vuejs.org/v2/guide/>`_.
+
+The source files of our frontend will be stored in the **src/** directory. We use webpack for bundling the files and output of that will be stored in **js/notestutorial.js**.
+
+The template of our view will be very simple due to the fact that Vue.js is taking care of all frontend rendering. We only need to load the main script bundle and add a div that will be replaced by our Vue app at runtime:
 
 .. code-block:: php
 
     <?php
-    script('ownnotes', 'handlebars');
+    script('notestutorial', 'notestutorial');
 
-.. note:: jQuery is included by default on every page.
+    <div id="content"></div>
 
-Creating a navigation
----------------------
+* `package.json <https://github.com/nextcloud/app-tutorial/blob/master/package.json>`_ Listing the dependencies of our frontend app
+* `webpack.common.js <https://github.com/nextcloud/app-tutorial/blob/master/webpack.common.js>`_ Webpack configuration for building the javascript code
 
-The template file **ownnotes/templates/part.navigation.php** contains the navigation. Nextcloud defines many handy :doc:`CSS styles <view/css>` which we are going to reuse to style the navigation. Adjust the file to contain only the following code:
+The frontend source code will consist of two files:
 
-.. note:: **$l->t()** is used to make your strings :doc:`translatable <view/l10n>` and **p()** is used :doc:`to print escaped HTML <view/templates>`
-
-.. code-block:: php
-
-    <!-- translation strings -->
-    <div style="display:none" id="new-note-string"><?php p($l->t('New note')); ?></div>
-
-    <script id="navigation-tpl" type="text/x-handlebars-template">
-        <li id="new-note"><a href="#"><?php p($l->t('Add note')); ?></a></li>
-        {{#each notes}}
-            <li class="note with-menu {{#if active}}active{{/if}}" data-id="{{ id }}">
-                <a href="#">{{ title }}</a>
-                <div class="app-navigation-entry-utils">
-                    <ul>
-                        <li class="app-navigation-entry-utils-menu-button svg"><button></button></li>
-                    </ul>
-                </div>
-
-                <div class="app-navigation-entry-menu">
-                    <ul>
-                        <li><button class="delete icon-delete svg" title="delete"></button></li>
-                    </ul>
-                </div>
-            </li>
-        {{/each}}
-    </script>
-
-    <ul></ul>
-
-Creating the content
---------------------
-
-The template file **ownnotes/templates/part.content.php** contains the content. It will just be a textarea and a button, so replace the content with the following:
-
-.. code-block:: php
-
-    <script id="content-tpl" type="text/x-handlebars-template">
-        {{#if note}}
-            <div class="input"><textarea>{{ note.content }}</textarea></div>
-            <div class="save"><button><?php p($l->t('Save')); ?></button></div>
-        {{else}}
-            <div class="input"><textarea disabled></textarea></div>
-            <div class="save"><button disabled><?php p($l->t('Save')); ?></button></div>
-        {{/if}}
-    </script>
-    <div id="editor"></div>
-
-Wiring it up
-------------
-
-When the page is loaded we want all the existing notes to load. Furthermore we want to display the current note when you click on it in the navigation, a note should be deleted when we click the deleted button and clicking on **New note** should create a new note. To do that open **ownnotes/js/script.js** and replace the example code with the following:
-
-.. code-block:: js
-
-    (function (OC, window, $, undefined) {
-    'use strict';
-
-    $(document).ready(function () {
-
-    var translations = {
-        newNote: $('#new-note-string').text()
-    };
-
-    // this notes object holds all our notes
-    var Notes = function (baseUrl) {
-        this._baseUrl = baseUrl;
-        this._notes = [];
-        this._activeNote = undefined;
-    };
-
-    Notes.prototype = {
-        load: function (id) {
-            var self = this;
-            this._notes.forEach(function (note) {
-                if (note.id === id) {
-                    note.active = true;
-                    self._activeNote = note;
-                } else {
-                    note.active = false;
-                }
-            });
-        },
-        getActive: function () {
-            return this._activeNote;
-        },
-        removeActive: function () {
-            var index;
-            var deferred = $.Deferred();
-            var id = this._activeNote.id;
-            this._notes.forEach(function (note, counter) {
-                if (note.id === id) {
-                    index = counter;
-                }
-            });
-
-            if (index !== undefined) {
-                // delete cached active note if necessary
-                if (this._activeNote === this._notes[index]) {
-                    delete this._activeNote;
-                }
-
-                this._notes.splice(index, 1);
-
-                $.ajax({
-                    url: this._baseUrl + '/' + id,
-                    method: 'DELETE'
-                }).done(function () {
-                    deferred.resolve();
-                }).fail(function () {
-                    deferred.reject();
-                });
-            } else {
-                deferred.reject();
-            }
-            return deferred.promise();
-        },
-        create: function (note) {
-            var deferred = $.Deferred();
-            var self = this;
-            $.ajax({
-                url: this._baseUrl,
-                method: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify(note)
-            }).done(function (note) {
-                self._notes.push(note);
-                self._activeNote = note;
-                self.load(note.id);
-                deferred.resolve();
-            }).fail(function () {
-                deferred.reject();
-            });
-            return deferred.promise();
-        },
-        getAll: function () {
-            return this._notes;
-        },
-        loadAll: function () {
-            var deferred = $.Deferred();
-            var self = this;
-            $.get(this._baseUrl).done(function (notes) {
-                self._activeNote = undefined;
-                self._notes = notes;
-                deferred.resolve();
-            }).fail(function () {
-                deferred.reject();
-            });
-            return deferred.promise();
-        },
-        updateActive: function (title, content) {
-            var note = this.getActive();
-            note.title = title;
-            note.content = content;
-
-            return $.ajax({
-                url: this._baseUrl + '/' + note.id,
-                method: 'PUT',
-                contentType: 'application/json',
-                data: JSON.stringify(note)
-            });
-        }
-    };
-
-    // this will be the view that is used to update the html
-    var View = function (notes) {
-        this._notes = notes;
-    };
-
-    View.prototype = {
-        renderContent: function () {
-            var source = $('#content-tpl').html();
-            var template = Handlebars.compile(source);
-            var html = template({note: this._notes.getActive()});
-
-            $('#editor').html(html);
-
-            // handle saves
-            var textarea = $('#app-content textarea');
-            var self = this;
-            $('#app-content button').click(function () {
-                var content = textarea.val();
-                var title = content.split('\n')[0]; // first line is the title
-
-                self._notes.updateActive(title, content).done(function () {
-                    self.render();
-                }).fail(function () {
-                    alert('Could not update note, not found');
-                });
-            });
-        },
-        renderNavigation: function () {
-            var source = $('#navigation-tpl').html();
-            var template = Handlebars.compile(source);
-            var html = template({notes: this._notes.getAll()});
-
-            $('#app-navigation ul').html(html);
-
-            // create a new note
-            var self = this;
-            $('#new-note').click(function () {
-                var note = {
-                    title: translations.newNote,
-                    content: ''
-                };
-
-                self._notes.create(note).done(function() {
-                    self.render();
-                    $('#editor textarea').focus();
-                }).fail(function () {
-                    alert('Could not create note');
-                });
-            });
-
-            // show app menu
-            $('#app-navigation .app-navigation-entry-utils-menu-button').click(function () {
-                var entry = $(this).closest('.note');
-                entry.find('.app-navigation-entry-menu').toggleClass('open');
-            });
-
-            // delete a note
-            $('#app-navigation .note .delete').click(function () {
-                var entry = $(this).closest('.note');
-                entry.find('.app-navigation-entry-menu').removeClass('open');
-
-                self._notes.removeActive().done(function () {
-                    self.render();
-                }).fail(function () {
-                    alert('Could not delete note, not found');
-                });
-            });
-
-            // load a note
-            $('#app-navigation .note > a').click(function () {
-                var id = parseInt($(this).parent().data('id'), 10);
-                self._notes.load(id);
-                self.render();
-                $('#editor textarea').focus();
-            });
-        },
-        render: function () {
-            this.renderNavigation();
-            this.renderContent();
-        }
-    };
-
-    var notes = new Notes(OC.generateUrl('/apps/ownnotes/notes'));
-    var view = new View(notes);
-    notes.loadAll().done(function () {
-        view.render();
-    }).fail(function () {
-        alert('Could not load notes');
-    });
-
-
-    });
-
-    })(OC, window, jQuery);
-
-
-Apply finishing touches
------------------------
-
-Now the only thing left is to style the textarea in a nicer fashion. To do that open **ownnotes/css/style.css** and replace the content with the following :doc:`CSS <view/css>` code:
-
-.. code-block:: css
-
-    #app-content-wrapper {
-        height: 100%;
-    }
-
-    #editor {
-        height: 100%;
-        width: 100%;
-    }
-
-    #editor .input {
-        height: calc(100% - 51px);
-        width: 100%;
-    }
-
-    #editor .save {
-        height: 50px;
-        width: 100%;
-        text-align: center;
-        border-top: 1px solid #ccc;
-        background-color: #fafafa;
-    }
-
-    #editor textarea {
-        height: 100%;
-        width: 100%;
-        border: 0;
-        margin: 0;
-        border-radius: 0;
-        overflow-y: auto;
-    }
-
-    #editor button {
-        height: 44px;
-    }
+* `main.js <https://github.com/nextcloud/app-tutorial/blob/master/src/main.js>`_ which is the main entry point of our javascript code that gets loaded when the page is opened
+* `App.vue <https://github.com/nextcloud/app-tutorial/blob/master/src/App.vue>`_ which is our one single file component that takes care of all logic inside of the Vue app. Our example app contains some additional comments to explain how the frontend is build.
 
 Congratulations! You've written your first Nextcloud app. You can now either try to further improve the tutorial notes app or start writing your own app.
