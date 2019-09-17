@@ -75,8 +75,8 @@ Share a file/folder with a user/group or as public link.
 * Method: POST
 
 * POST Arguments: path - (string) path to the file/folder which should be shared
-* POST Arguments: shareType - (int) 0 = user; 1 = group; 3 = public link; 6 = federated cloud share
-* POST Arguments: shareWith - (string) user / group id with which the file should be shared
+* POST Arguments: shareType - (int) 0 = user; 1 = group; 3 = public link; 4 = email; 6 = federated cloud share; 7 = circle; 10 = Talk conversation
+* POST Arguments: shareWith - (string) user / group id / email address / circleID / conversation name with which the file should be shared
 * POST Arguments: publicUpload - (string) allow public upload to a public shared folder (true/false)
 * POST Arguments: password - (string) password to protect public link Share with
 * POST Arguments: permissions - (int) 1 = read; 2 = update; 4 = create; 8 = delete;
