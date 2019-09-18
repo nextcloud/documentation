@@ -155,6 +155,9 @@ then change the default ``false`` to ``true``.
 
    'quota_include_external_storage' => false,
 
+.. note:: If an external storage is defined as root, the quota will not
+   be calculable and will be **ignored**.
+
 Metadata (such as thumbnails, temporary files, and encryption keys) takes up
 about 10% of disk space, but is not counted against user quotas. Users can check
 their used and available space on their Personal pages. Only files that
