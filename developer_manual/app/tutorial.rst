@@ -832,7 +832,7 @@ We can and should also create a test for the **NoteService** class:
 
     }
 
-If `PHPUnit is installed <https://phpunit.de/>`_ we can run the tests inside **notestutorial/** with the following command::
+If `PHPUnit in version 8 is installed <https://phpunit.de/>`_ we can run the tests inside **notestutorial/** with the following command::
 
     phpunit
 
