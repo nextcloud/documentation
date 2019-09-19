@@ -65,3 +65,5 @@ If required, the name and path of the audit log file can be customized by using 
 
 
 .. _PHP date function: http://www.php.net/manual/en/function.date.php
+
+Find detailed documentation on auditable events for enterprises in our `customer portal <https://portal.nextcloud.com/article/using-the-audit-log-44.html>`_.
