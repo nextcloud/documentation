@@ -101,8 +101,9 @@ This approach requires two files: **nextcloudcron.service** and **nextcloudcron.
   User=www-data
   ExecStart=/usr/bin/php -f /var/www/nextcloud/cron.php            
 
-Replace the user ``www-data`` with the user of your http server and ``/var/www/nextcloud/cron.php`` with the location of **cron.php** in your nextcloud directory.  
-Note that the **.service** unit file does not need an ``[Install]`` section. Please check your setup because we recommended it in earlier versions of this admin manual.  
+Replace the user ``www-data`` with the user of your http server and ``/var/www/nextcloud/cron.php`` with the location of **cron.php** in your nextcloud directory.
+
+Note that the **.service** unit file does not need an ``[Install]`` section. Please check your setup because we recommended it in earlier versions of this admin manual.
 
 **nextcloudcron.timer** should look like this::
 
