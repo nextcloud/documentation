@@ -451,6 +451,7 @@ A set of commands to create and manage addressbooks and calendars::
   dav:list-calendars            List all calendars of a user
   dav:move-calendar             Move a calendar from an user to another
   dav:remove-invalid-shares     Remove invalid dav shares
+  dav:send-event-reminders      Sends event reminders
   dav:sync-birthday-calendar    Synchronizes the birthday calendar
   dav:sync-system-addressbook   Synchronizes users to the system 
                                 addressbook
@@ -482,6 +483,11 @@ This example will move calendar named personal from user dennis to user sabine::
  sudo -u www-data php occ dav:move-calendar personal dennis sabine
 
 ``dav:remove-invalid-shares`` will remove invalid shares created by a bug into the calendar app
+
+``dav:send-event-reminders`` is a command that should be called regularly through a dedicated
+cron job to send event reminder notifications.
+
+See :doc:`../groupware/calendar` for more information on how to use this command.
 
 ``dav:sync-birthday-calendar`` adds all birthdays to your calendar from 
 addressbooks shared with you. This example syncs to your calendar from user 
