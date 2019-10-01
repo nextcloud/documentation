@@ -73,6 +73,19 @@ If the code was correct you will be redirected to your Nextcloud account.
   your smartphone’s clock are almost in sync. A time drift of a few seconds
   won’t be a problem.
 
+Using two-factor authentication with hardware tokens
+----------------------------------------------------
+You can use two-factor authentication based on hardware tokens. The following devices are known to work:
+
+*    OTP based:
+
+     *    `Nitrokey Pro <https://nitrokey.com>`_
+     *    `Nitrokey Storage <https://nitrokey.com>`_
+
+*    U2F based:
+
+     *    `Nitrokey FIDO U2F <https://nitrokey.com>`_
+
 Using client applications with two-factor authentication
 --------------------------------------------------------
 
