@@ -159,3 +159,41 @@ This will return a 404 until authentication is done. Once a 200 is returned it i
 
 Use the server and the provided credentials to connect.
 Note that the 200 will only be returned once.
+
+CSRF Check
+-------------
+Some actions require a CSRF token check. These checks are usually applied with PUT, PATCH, POST or DELETE verbs. In case a controller/action does **NOT** require a CSRF token it contains:
+
+.. code-block:: bash
+
+	@NoCSRFRequired
+
+In case this is missing it does require a CSRF token. This can be verified by accessing the controller source.
+
+The actual token can be obtained by calling the following URL. **This is only valid for within the session**.
+
+.. code-block:: bash
+
+	/index.php/csrftoken
+
+
+The content response contains the token.
+
+.. code-block:: json
+
+	{
+		"token":"Abc123"
+	}
+
+Now whenever you are about to call some action that requires CSRF check make sure you have the following header set with the token:
+
+.. code-block:: bash
+
+	requesttoken
+
+Sample request with CSRF token:
+
+.. code-block:: bash
+
+	curl -u username:password -X PUT 'https://cloud.example.com/ocs/v1.php/...' -H "OCS-APIRequest: true" -H "requesttoken: Abc123"
+
