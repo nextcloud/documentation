@@ -77,14 +77,14 @@ Using two-factor authentication with hardware tokens
 ----------------------------------------------------
 You can use two-factor authentication based on hardware tokens. The following devices are known to work:
 
-*    OTP based:
+*    TOTP based:
 
-     *    `Nitrokey Pro <https://nitrokey.com>`_
-     *    `Nitrokey Storage <https://nitrokey.com>`_
+     *    `Nitrokey Pro <https://shop.nitrokey.com/shop/product/nitrokey-pro-2>`_
+     *    `Nitrokey Storage <https://shop.nitrokey.com/shop>`_
 
-*    U2F based:
+*    FIDO U2F based:
 
-     *    `Nitrokey FIDO U2F <https://nitrokey.com>`_
+     *    `Nitrokey FIDO U2F <https://shop.nitrokey.com/shop/product/nitrokey-fido-u2f-20>`_
 
 Using client applications with two-factor authentication
 --------------------------------------------------------
