@@ -905,7 +905,7 @@ different log file path. Set your rotation by log file size in bytes with
 are ``file``, ``warning``, and ``UTC``. Available options are:
 
 * --backend [file, syslog, errorlog, systemd]
-* --level [debug, info, warning, error]
+* --level [debug, info, warning, error, fatal]
 
 .. _maintenance_commands_label:
    
