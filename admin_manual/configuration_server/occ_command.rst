@@ -241,8 +241,6 @@ You can get the full filepath to an app::
     sudo -u www-data php occ app:getpath notifications
     /var/www/nextcloud/apps/notifications
 
-.. _background_jobs_selector_label:   
-   
 To update an app, for instance Contacts::
     
     sudo -u www-data php occ app:update contacts 
@@ -250,6 +248,8 @@ To update an app, for instance Contacts::
 To update all apps::
     
     sudo -u www-data php occ app:update --all
+
+.. _background_jobs_selector_label:   
 
 Background jobs selector
 ------------------------
