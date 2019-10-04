@@ -15,11 +15,11 @@ For best performance, stability and functionality we have documented some recomm
 | Platform         | Options                                                               |
 +==================+=======================================================================+
 | Operating System | - **Ubuntu 18.04 LTS** (recommended)                                  |
-|                  | - **Red Hat Enterprise Linux 7** (recommended)                        |
-|                  | - Debian 8 (Jessie), 9 (Stretch)                                      |
-|                  | - SUSE Linux Enterprise Server 11 with SP3 & 12                       |
+|                  | - **Red Hat Enterprise Linux 8** (recommended)                        |
+|                  | - Debian 10 (Buster)                                                  |
+|                  | - SUSE Linux Enterprise Server 15                                     |
 |                  | - openSUSE Leap 42.1+                                                 |
-|                  | - CentOS 7                                                            |
+|                  | - CentOS 8                                                            |
 +------------------+-----------------------------------------------------------------------+
 | Database         | - **MySQL or MariaDB 5.5+** (recommended)                             |
 |                  | - Oracle Database 11g (*only as part of an enterprise subscription*)  |
