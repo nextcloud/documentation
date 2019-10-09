@@ -1,3 +1,5 @@
+.. _serverconf_reverseproxy:
+
 =============
 Reverse proxy
 =============
