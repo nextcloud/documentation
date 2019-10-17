@@ -4,6 +4,7 @@
 ############## Adjust when editing docs ##################
 
 $mapping = array(
+    'admin-2fa'               => '/admin_manual/configuration_user/two_factor-auth.html',
     'admin-antivirus-configuration'     => '/admin_manual/configuration_server/antivirus_configuration.html',
     'admin-background-jobs'   => '/admin_manual/configuration_server/background_jobs_configuration.html',
     'admin-backup'            => '/admin_manual/maintenance/backup.html',
@@ -33,10 +34,12 @@ $mapping = array(
     'admin-sharing-federated' => '/admin_manual/configuration_files/federated_cloud_sharing_configuration.html',
     'admin-source_install'    => '/admin_manual/installation/source_installation.html',
     'admin-sso'               => '/admin_manual/configuration_server/sso_configuration.html',
+    'admin-theming'           => '/admin_manual/configuration_server/theming.html',
     'admin-theming-icons'     => '/admin_manual/configuration_server/theming.html#theming-of-icons',
     'admin-transactional-locking' => '/admin_manual/configuration_files/files_locking_transactional.html',
     'admin-trusted-domains'   => '/admin_manual/installation/installation_wizard.html#trusted-domains',
     'admin-update'            => '/admin_manual/maintenance/update.html',
+    'admin-warnings'          => '/admin_manual/configuration_server/security_setup_warnings.html',
     
     'developer-code-integrity'=> '/developer_manual/app/code_signing.html',
     'developer-manual'        => '/developer_manual',
