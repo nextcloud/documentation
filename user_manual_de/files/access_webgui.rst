@@ -5,8 +5,8 @@ Dateizugriff mit der Nextcloud Web-Oberfläche
 Sie können über die Nextcloud Web-Oberfläche Dateien erstellen, bestehende
 Dateien bearbeiten, löschen, freigegeben oder bereits geteilte Inhalte
 weiterleiten. Ihr Nextcloud-Administrator hat die Möglichkeit, diese
-Funktionen zu deaktivieren. Wenn Funktionen bei Ihnen fehlen sollten, sollte
-Ihr Administrator kontaktiert werden.
+Funktionen zu deaktivieren. Wenn Funktionen bei Ihnen fehlen sollten, sollten Sie
+Ihren Administrator kontaktieren.
 
 .. figure:: ../images/files_page.png
    :alt: Die Dateiansicht.
@@ -173,9 +173,9 @@ Dateien und Ordner auswählen
 ----------------------------
 
 Es können eine oder mehrere Dateien oder Ordner ausgewählt werden, indem auf die
-entsprechende Kontrollkästchen geklickt wird. Um alle Dateien im aktuellen
-Ordner auszuwählen, wird auf das obere Kontrollkästchen an der Dateiliste
-geklickt.
+entsprechenden Kontrollkästchen vor dem jeweiligen Ordner bzw. der jeweiligen Datei
+geklickt wird. Um alle Dateien im aktuellen Ordner auszuwählen, muss auf das obere
+Kontrollkästchen über der Dateiliste geklickt werden.
 
 Wenn Sie mehrere Dateien selektieren, können Sie die Auswahl löschen oder als
 ZIP-Datei herunterladen. Mit der Auswahl erscheint oben die Schaltflächen
