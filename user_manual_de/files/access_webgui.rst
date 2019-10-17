@@ -5,8 +5,8 @@ Dateizugriff mit der Nextcloud Web-Oberfläche
 Sie können über die Nextcloud Web-Oberfläche Dateien erstellen, bestehende
 Dateien bearbeiten, löschen, freigegeben oder bereits geteilte Inhalte
 weiterleiten. Ihr Nextcloud-Administrator hat die Möglichkeit, diese
-Funktionen zu deaktivieren. Wenn Funktionen bei Ihnen fehlen sollten, sollte
-Ihr Administrator kontaktiert werden.
+Funktionen zu deaktivieren. Wenn Funktionen bei Ihnen fehlen sollten, sollten
+Sie Ihren Administrator kontaktieren.
 
 .. figure:: ../images/files_page.png
    :alt: Die Dateiansicht.
