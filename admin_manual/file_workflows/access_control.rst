@@ -105,7 +105,10 @@ option.
             otherwise any user can remove the tag to access the file again.
             The best way to do this is with the :doc:`automated_tagging`.
 
-* **File mimetype:** The mimetype of the file, e.g. ``text/plain``
+* **File MIME type:** The MIME type of the file, e.g. ``text/plain`` for a text file or ``httpd/unix-directory`` for a folder.
+
+  .. note:: see `mimetypealiases.dist.json <https://github.com/nextcloud/server/blob/master/resources/config/mimetypealiases.dist.json>`_ for a full list of possible MIME types.
+
 * **File name:** The name of the file (``is`` and ``is not`` are case-insensitive)
 * **File size:** The size of the file (*Only available on upload*)
 
