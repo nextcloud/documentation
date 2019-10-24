@@ -119,7 +119,7 @@ webroot of your nginx installation. In this example it is
       #pagespeed off;
 
       location / {
-          rewrite ^ /index.php$request_uri;
+          rewrite ^ /index.php;
       }
 
       location ~ ^\/(?:build|tests|config|lib|3rdparty|templates|data)\/ {
@@ -131,6 +131,7 @@ webroot of your nginx installation. In this example it is
 
       location ~ ^\/(?:index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|oc[ms]-provider\/.+)\.php(?:$|\/) {
           fastcgi_split_path_info ^(.+?\.php)(\/.*|)$;
+          try_files $fastcgi_script_name =404;
           include fastcgi_params;
           fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
           fastcgi_param PATH_INFO $fastcgi_path_info;
@@ -283,7 +284,7 @@ your nginx installation.
           #pagespeed off;
 
           location /nextcloud {
-              rewrite ^ /nextcloud/index.php$request_uri;
+              rewrite ^ /nextcloud/index.php;
           }
 
           location ~ ^\/nextcloud\/(?:build|tests|config|lib|3rdparty|templates|data)\/ {
@@ -295,6 +296,7 @@ your nginx installation.
 
           location ~ ^\/nextcloud\/(?:index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|oc[ms]-provider\/.+)\.php(?:$|\/) {
               fastcgi_split_path_info ^(.+?\.php)(\/.*|)$;
+              try_files $fastcgi_script_name =404;
               include fastcgi_params;
               fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
               fastcgi_param PATH_INFO $fastcgi_path_info;
