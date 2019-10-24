@@ -79,7 +79,7 @@ You can use two-factor authentication based on hardware tokens. The following de
 
 *    TOTP based:
 
-     *    `Nitrokey Pro <https://shop.nitrokey.com/shop/product/nitrokey-pro-2>`_
+     *    `Nitrokey Pro <https://shop.nitrokey.com/shop/product/nitrokey-pro-2-3>`_
      *    `Nitrokey Storage <https://shop.nitrokey.com/shop>`_
 
 *    FIDO U2F based:
