@@ -130,10 +130,11 @@ webroot of your nginx installation. In this example it is
 
       location ~ ^\/(?:index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|oc[ms]-provider\/.+)\.php(?:$|\/) {
           fastcgi_split_path_info ^(.+?\.php)(\/.*|)$;
+          set $path_info $fastcgi_path_info;
           try_files $fastcgi_script_name =404;
           include fastcgi_params;
           fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-          fastcgi_param PATH_INFO $fastcgi_path_info;
+          fastcgi_param PATH_INFO $path_info;
           fastcgi_param HTTPS on;
           # Avoid sending the security headers twice
           fastcgi_param modHeadersAvailable true;
@@ -293,10 +294,11 @@ your nginx installation.
 
           location ~ ^\/nextcloud\/(?:index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|oc[ms]-provider\/.+)\.php(?:$|\/) {
               fastcgi_split_path_info ^(.+?\.php)(\/.*|)$;
+              set $path_info $fastcgi_path_info;
               try_files $fastcgi_script_name =404;
               include fastcgi_params;
               fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-              fastcgi_param PATH_INFO $fastcgi_path_info;
+              fastcgi_param PATH_INFO $path_info;
               fastcgi_param HTTPS on;
               # Avoid sending the security headers twice
               fastcgi_param modHeadersAvailable true;
