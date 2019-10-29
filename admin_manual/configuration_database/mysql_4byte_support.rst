@@ -53,7 +53,7 @@ installation needs to be tweaked a bit.
         innodb_file_format=barracuda
         innodb_file_per_table=1
 
-3. Open a shell, change dir (change ``/var/www/nextcloud`` to your nextcloud location if needed), and put your nextcloud instance in maintenance mode, if it isn't already::
+3. Open a shell, change dir (adjust ``/var/www/nextcloud`` to your nextcloud location if needed), and put your nextcloud instance in maintenance mode, if it isn't already::
   
    $ cd /var/www/nextcloud
    $ sudo -u www-data php occ maintenance:mode --on
