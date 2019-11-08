@@ -24,3 +24,5 @@ their respective manuals:
 
 .. _`Nextcloud Desktop Client`: https://docs.nextcloud.com/desktop/2.3/
 .. _`Nextcloud Android App`: https://docs.nextcloud.com/android/
+
+`Help translate <https://www.transifex.com/indiehosters/nextcloud-user-documentation/>`_.
