@@ -73,6 +73,15 @@ Traefik
 
 Thanks to `@pauvos <https://github.com/pauvos>`_ for traefik example.
 
+HAProxy
+^^^^^^^
+::
+
+  acl dav path /.well-known/carddav /.well-known/caldav
+  redirect location /remote.php/dav/ if dav
+
+This can be placed in either the frontend or the backend, depending on what works best for your configuration.
+
 Example
 -------
 
