@@ -22,14 +22,11 @@ and **CardDAV** (Contacts) to your Nextcloud.
 .. note:: You can not setup Calendar/Contacts together. You need to setup them
           in **separate accounts**.
 
-4. Select **Advanced** as Account-Type and type in your respective credentials:
+4. Select **Manual** as Account-Type and type in your respective credentials:
 
    **Username**: Your Nextcloud username or email
    **Password**: Your generated App-password/token (`App-password/token <https://docs.nextcloud.com/server/stable/user_manual/session_management.html#managing-devices>`_)
    **Server Address**: URL of your Nextcloud server (e.g. https://cloud.example.com)
-   **Server Path:** /remote.php/dav/principals/users/[your_username]
-   **Port:** 443
-   **Use SSL:** Yes
 
 .. figure:: ./images/macos_3.png
 
