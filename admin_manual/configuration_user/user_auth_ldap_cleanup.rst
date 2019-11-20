@@ -59,6 +59,13 @@ This example shows what the table of users marked as ``deleted`` looks like::
  | aaliyah_kunze   | aaliyah kunze   | aaliyah_kunze    | uid=aaliyah_kunze,ou=people,dc=com   |
  +-----------------+-----------------+------------------+--------------------------------------+
 
+Following flags can be specified additionally:
+
+*--short-date*: formats the dates for ``Last login`` and ``Detected on`` in a short Y-m-d format (e.g. 2019-01-14)
+
+*--json--*: instead of a table, the output is json-encoded. This makes it easy to process the data programmatically.
+
+
 Then you can run ``sudo -u www-data php occ user:delete aaliyah_brown`` to delete 
 user aaliyah_brown. You must use the user's Nextcloud name.
 
