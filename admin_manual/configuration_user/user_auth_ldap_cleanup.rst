@@ -33,7 +33,12 @@ users and your ``ldapUserCleanupInterval`` is 20 minutes, the process will
 examine the first 50 users, then 20 minutes later the next 50 users, and 20 
 minutes later the next 50, and so on.
 
-There are two ``occ`` commands to use for examining a table of users marked as 
+The amount of users to check can be set to a custom value via occ command. The
+following example sets it to 300:
+
+``sudo -u www-data php occ config:app:set --value=300 user_ldap cleanUpJobChunkSize``
+
+There are two ``occ`` commands to use for examining a table of users marked as
 deleted, and then manually deleting them.  The ``occ`` command is in your 
 Nextcloud directory, for example ``/var/www/nextcloud/occ``, and it must be run as 
 your HTTP user. To learn more about ``occ``, see 
