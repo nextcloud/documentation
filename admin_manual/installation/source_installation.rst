@@ -105,7 +105,7 @@ Required:
 * PHP module curl
 * PHP module dom
 * PHP module GD
-* PHP module hash
+* PHP module hash (only on FreeBSD)
 * PHP module iconv
 * PHP module JSON
 * PHP module libxml (Linux package libxml2 must be >=2.7.0)
