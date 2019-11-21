@@ -451,8 +451,8 @@ Defaults to ``10`` seconds
 
 	'mail_smtpsecure' => '',
 
-This depends on ``mail_smtpmode``. Specify when you are using ``ssl`` or
-``tls``, or leave empty for no encryption.
+This depends on ``mail_smtpmode``. Specify when you are using ``ssl`` for SSL/TLS or
+``tls`` for STARTTLS, or leave empty for no encryption.
 
 Defaults to ``''`` (empty string)
 
