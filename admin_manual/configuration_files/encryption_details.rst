@@ -31,12 +31,12 @@ The public sharing key is used to secure files that have been publicly shared. T
 Key type: recovery key
 ----------------------
 
-The recovery key is used to provide a restore mechanism in cases where the user key encryption is enabled and users have lost their passwords. The recovery key is protected by a recovery password that the server administrator should store securely. The advantage of the recovery key is that files can be recovered but has the disadvantage that the server administrator is able to decrypt user files without knowing any user password.
+The recovery key is used to provide a restore mechanism in cases where the user key encryption is enabled, where the administrator has enabled the recovery key feature and the user has opted into using the recovery key feature. The recovery key can then be used to restore files when users have lost their passwords. The recovery key is protected by a recovery password that the server administrator should store securely. The advantage of the recovery key is that files can be recovered but has the disadvantage that the server administrator is able to decrypt user files without knowing any user password.
 
 Key type: user key
 ------------------
 
-While the user key encryption has been enabled by default in older versions of Nextcloud it now has to be enabled explictly in newer versions including Nextcloud 16 by calling ``./occ encryption:disable-master-key``. With user key encryption enabled all users have their own user keys that are used to secure the files handled by Nextcloud. The user keys are protected by the user passwords. The advantage is that the server administrator is not able to decrypt user files without knowing any user password - unless the file is publicly shared or a recovery key is defined - but has the disadvantage that files are permanently lost if the users forget their user passwords - unless the files are (publicly) shared or a recovery key is defined.
+While the user key encryption has been enabled by default in older versions of Nextcloud it now has to be enabled explicitly in newer versions including Nextcloud 16 by calling ``./occ encryption:disable-master-key``. With user key encryption enabled all users have their own user keys that are used to secure the files handled by Nextcloud. The user keys are protected by the user passwords. The advantage is that the server administrator is not able to decrypt user files without knowing any user password - unless the file is publicly shared or a recovery key is defined - but has the disadvantage that files are permanently lost if the users forget their user passwords - unless the files are (publicly) shared or a recovery key is defined.
 
 .. _file_type_public_key_file_label:
 
