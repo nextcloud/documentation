@@ -119,7 +119,7 @@ If the file format is "Barracuda" for every single table, nothing special is lef
 4. The tables needs to be migrated to "Barracuda" manually, one by one. SQL commands can be created easily, however::
 
     MariaDB> USE INFORMATION_SCHEMA;
-    MariaDB> SELECT CONCAT("ALTER TABLE `", TABLE_SCHEMA,"`.`", TABLE_NAME, "` ROW_FORMAT=DYNAMIC;") AS MySQLCMD FROM TABLES WHERE TABLE_SCHEMA = "nextcloud";
+    MariaDB> SELECT CONCAT("ALTER TABLE `", TABLE_SCHEMA,"`.`", TABLE_NAME, "` ROW_FORMAT=DYNAMIC;") AS MySQLCMD FROM TABLES WHERE TABLE_SCHEMA LIKE "nextcloud%";
 
 This will return an SQL command for each table in the nextcloud database. The rows can be quickly copied into a text editor, the "|"s replaced and the SQL commands copied back to the MariaDB shell. If no error appeared (in doubt check step 2) all is done and nothing is left to do here. It can be proceded with the MySQL instructions from step 3 onwards.
 
