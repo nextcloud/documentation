@@ -22,5 +22,5 @@ Thank you for helping Nextcloud by reporting bugs. Before submitting an issue, p
 
 .. _Issue submission guidelines: https://github.com/nextcloud/server/blob/master/.github/CONTRIBUTING.md#submitting-issues
 .. _Server repository: https://github.com/nextcloud/server/issues
-.. _Client repository: https://github.com/nextcloud/client_theming/issues
+.. _Client repository: https://github.com/nextcloud/desktop/issues
 .. _main GitHub organization: https://github.com/nextcloud
