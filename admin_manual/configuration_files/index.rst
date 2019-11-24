@@ -15,6 +15,7 @@ File sharing and management
     external_storage_configuration
     external_storage/auth_mechanisms
     encryption_configuration
+    encryption_details
     files_locking_transactional
     previews_configuration
     file_versioning
