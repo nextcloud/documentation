@@ -69,7 +69,6 @@ webroot of your nginx installation. In this example it is
       add_header Referrer-Policy "no-referrer" always;
       add_header X-Content-Type-Options "nosniff" always;
       add_header X-Download-Options "noopen" always;
-      add_header X-Frame-Options "SAMEORIGIN" always;
       add_header X-Permitted-Cross-Domain-Policies "none" always;
       add_header X-Robots-Tag "none" always;
       add_header X-XSS-Protection "1; mode=block" always;
@@ -170,7 +169,6 @@ webroot of your nginx installation. In this example it is
           add_header Referrer-Policy "no-referrer" always;
           add_header X-Content-Type-Options "nosniff" always;
           add_header X-Download-Options "noopen" always;
-          add_header X-Frame-Options "SAMEORIGIN" always;
           add_header X-Permitted-Cross-Domain-Policies "none" always;
           add_header X-Robots-Tag "none" always;
           add_header X-XSS-Protection "1; mode=block" always;
@@ -231,7 +229,6 @@ your nginx installation.
       add_header Referrer-Policy "no-referrer" always;
       add_header X-Content-Type-Options "nosniff" always;
       add_header X-Download-Options "noopen" always;
-      add_header X-Frame-Options "SAMEORIGIN" always;
       add_header X-Permitted-Cross-Domain-Policies "none" always;
       add_header X-Robots-Tag "none" always;
       add_header X-XSS-Protection "1; mode=block" always;
@@ -336,7 +333,6 @@ your nginx installation.
               add_header Referrer-Policy "no-referrer" always;
               add_header X-Content-Type-Options "nosniff" always;
               add_header X-Download-Options "noopen" always;
-              add_header X-Frame-Options "SAMEORIGIN" always;
               add_header X-Permitted-Cross-Domain-Policies "none" always;
               add_header X-Robots-Tag "none" always;
               add_header X-XSS-Protection "1; mode=block" always;
