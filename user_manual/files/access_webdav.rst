@@ -8,9 +8,9 @@ connect Linux, macOS, Windows, and mobile devices to your Nextcloud server via
 WebDAV. Before we get into configuring WebDAV, let's take a quick look at the
 recommended way of connecting client devices to your Nextcloud servers.
 
-.. note:: In the following examples, You must adjust **example.com/** to the
-   URL of your Nextcloud server installation. And USERNAME is the userid of the
-   connecting user.
+.. note:: In the following examples, you should replace **example.com/nextcloud** with the
+   URL of your Nextcloud server (omit the directory part if the installation is 
+   in the root of your domain), and "USERNAME" with the username of the connecting user.
 
    See the webdav url (bottom left, settings) on your Nextcloud.
 
