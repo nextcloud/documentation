@@ -47,7 +47,7 @@ html:   html-com
 html-all: html-release html-com
 
 html-release:
-	$(SPHINXBUILD) -b html -D html_theme='nextcloud_release' $(ALLSPHINXOPTS) $(BUILDDIR)/html/release
+	$(SPHINXBUILD) -b html -D html_theme='sphinx_rtd_theme' $(ALLSPHINXOPTS) $(BUILDDIR)/html/release
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html/release."
 
