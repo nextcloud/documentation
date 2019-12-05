@@ -71,7 +71,7 @@ OnlyOffice
 docker run --name=ONLYOFFICEDOCKER -i -t -d -p 4433:443 -e JWT_ENABLED='true' -e JWT_SECRET='secret' --restart=always -v /tmp/oo/:/var/www/onlyoffice/Data onlyoffice/documentserver
 
 3) go into docker:
-- docker exec -it /bin/bash ONLYOFFICEDOCKER
+- docker exec -it ONLYOFFICEDOCKER /bin/bash
 - apt-get update
 - apt-get install vim -y
 - vim ./etc/onlyoffice/documentserver/default.json
