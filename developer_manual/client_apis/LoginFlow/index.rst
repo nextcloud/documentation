@@ -5,7 +5,7 @@ Login Flow
 ==========
 
 This document provides a quick overview of the new login flow that should be used by clients to obtain
-login credentials. This will assure that each client gets it own set of credentials. This has several advantages:
+login credentials. This will assure that each client gets its own set of credentials. This has several advantages:
 
 1. The client never stores the password of the user
 2. The user can revoke on a per client basis from the web
