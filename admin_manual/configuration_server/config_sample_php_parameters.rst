@@ -1515,6 +1515,15 @@ Default is unlimited (value set to 0).
 Define the minimum length of the search string before we start auto-completion
 Default is no limit (value set to 0)
 
+::
+
+	'sharing.interal_shares_accepted' => false,
+
+Starting with Nextcloud 18 also internal shares have to be accepted. Setting
+this setting to true forces all internal shares to be accepted directly.
+
+(resulting in pre 18 behavior).
+
 All other configuration options
 -------------------------------
 
