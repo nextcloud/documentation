@@ -180,7 +180,7 @@ On a machine running a pristine Ubuntu 18.04 LTS server, you have three options:
 
 **Bash scripts**
 
-One of the easiest ways of insalling is to use the Nextcloud VM scripts. It's basically just two steps:
+One of the easiest ways of installing is to use the Nextcloud VM scripts. It's basically just two steps:
 
 1. Download the latest `installation script <https://github.com/nextcloud/vm/blob/master/nextcloud_install_production.sh/>`_.
 2. Run the script with::
