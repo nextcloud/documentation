@@ -11,8 +11,10 @@ Installation and server configuration
    installation_wizard
    command_line_installation
    apps_supported
-   php_72_installation
    selinux_configuration
    nginx
    harden_server
    server_tuning
+
+   example_ubuntu
+   example_centos
