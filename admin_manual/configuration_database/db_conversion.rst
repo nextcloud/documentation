@@ -24,6 +24,7 @@ The Options
 * ``--password="mysql_user_password"``    password for the new database. If omitted the tool will ask you (optional)
 * ``--clear-schema``                      clear schema (optional)
 * ``--all-apps``                          by default, tables for enabled apps are converted, use to convert also tables of deactivated apps (optional)
+* ``-n, --no-interaction``                Do not ask any interactive question
 
 *Note:* The converter searches for apps in your configured app folders and uses
 the schema definitions in the apps to create the new table. So tables of removed
