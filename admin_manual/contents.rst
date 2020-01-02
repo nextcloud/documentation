@@ -7,13 +7,14 @@ Table of contents
      
     index 
     release_notes
+    release_schedule
     installation/index
     configuration_server/index
+    apps_management
     configuration_user/index
     configuration_files/index
     file_workflows/index
     configuration_database/index
     configuration_mimetypes/index
     maintenance/index
-    operations/index
     issues/index

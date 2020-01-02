@@ -15,11 +15,16 @@ This is especially useful for retention and :doc:`access_control`, so people
 that got the files shared can not remove the tag to stop the retention or
 allow access against the owners will.
 
+Example
+-------
+
+After installing the Files automated tagging app as described in :doc:`../apps_management`
+navigate to the configuration and locate the Workflow settings.
 
     .. figure:: images/automated_tagging_sample_rule.png
-       :alt: Sample rule to assign a restricted tag.
+       :alt: Example rule to assign a restricted tag.
 
-In the sample you can see a simple rule with only one condition.
+In the example you can see a simple rule with only one condition.
 It will tag all files with the restricted tag ``Protected file`` that are
 uploaded into a folder that is tagged with ``Protect content``. No user can
 remove the tag ``Protected file`` and therefor access control and retention
@@ -29,3 +34,10 @@ Available rules
 ---------------
 
 The available rules can be seen in the access control section: :ref:`available-rules-label`.
+
+Executing actions
+-----------------
+
+It is possible to execute actions like ```convert to PDF``` based on assigned tags. Nextcloud
+GmbH assists customers in this with hands-on help and documentation on our
+`customer portal <https://portal.nextcloud.com>`_.

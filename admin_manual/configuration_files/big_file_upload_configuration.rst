@@ -19,7 +19,7 @@ filesystem.
 System configuration
 --------------------
 
-* Make sure that the latest version of PHP (at least 5.6.6) is installed
+* Make sure that the latest version of PHP is installed
 * Disable user quotas, which makes them unlimited
 * Your temp file or partition has to be big enough to hold multiple 
   parallel uploads from multiple users; e.g. if the max upload size is 10GB and 
@@ -37,8 +37,8 @@ Set the following two parameters inside the corresponding php.ini file (see the
 **Loaded Configuration File** section of :ref:`label-phpinfo` to find your 
 relevant php.ini files) ::
 
- php_value upload_max_filesize = 16G
- php_value post_max_size = 16G
+ php_value upload_max_filesize 16G
+ php_value post_max_size 16G
 
 Adjust these values for your needs. If you see PHP timeouts in your logfiles, 
 increase the timeout values, which are in seconds::
@@ -84,10 +84,6 @@ Since nginx 1.7.11 a new config option `fastcgi_request_buffering
 is availabe. Setting this option to ``fastcgi_request_buffering off;`` in your nginx config
 might help with timeouts during the upload. Furthermore it helps if you're running out of
 disc space on the tmp partition of your system.
-
-For more info how to configure nginx to raise the upload limits see also `this
-<https://github.com/owncloud/documentation/wiki/Uploading-files-up-to-16GB#configuring-nginx>`_
-wiki entry.
 
 .. note:: Make sure that ``client_body_temp_path`` points to a partition with 
    adequate space for your upload file size, and on the same partition as
@@ -140,24 +136,5 @@ make sure it is not too
 low. This setting needs to be configured to at least the time (in seconds) that
 the longest upload will take. If unsure remove this completely from your
 configuration to reset it to the default shown in the ``config.sample.php``.
-
-Configuring upload limits within the GUI
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If all prerequisites described in this documentation are in place an admin can change the
-upload limits on demand by using the ``File handling`` input box within the administrative
-backend of Nextcloud.
-
-.. figure:: images/admin_filehandling-1.png
-
-Depending on your environment you might get an insufficient permissions message shown for
-this input box.
-
-.. figure:: images/admin_filehandling-2.png
-
-To be able to use this input box you need to make sure that:
-
-* your Web server is able to use the ``.htaccess`` file shipped by Nextcloud (Apache only)
-* the user your Web server is running as has write permissions to the files ``.htaccess`` and ``.user.ini``
 
 

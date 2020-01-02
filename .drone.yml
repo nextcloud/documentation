@@ -1,5 +1,18 @@
-pipeline:
-    documentation:
-        image: nextcloudci/documentation:documentation-5
-        commands:
-            - make all
+kind: pipeline
+name: documentation
+
+steps:
+- name: documentation
+  image: nextcloudci/documentation:documentation-9
+  commands:
+    - npm install svgexport -g
+    - pip2 install -r requirements.txt
+    - make all
+
+trigger:
+  branch:
+  - master
+  - stable*
+  event:
+  - pull_request
+  - push

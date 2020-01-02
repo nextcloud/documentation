@@ -12,10 +12,8 @@ versions linked.
 Updates to Nginx configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* In the Nginx configuration the Same-Origin header was removed. This is now
-  handled in PHP and keeping it will result in a wrong header. Please remove
-  those lines in your Nginx config:
-  ``add_header X-Frame-Options "SAMEORIGIN";``
+* In the Nginx configuration the Same-Origin header was added. Please add
+  this line to your Nginx config: ``add_header X-Frame-Options "SAMEORIGIN" always;``
   See :doc:`installation/nginx`
 * For improvements in serving HTTP requests the Nginx configuration now has
   HTTP 2 enabled. Please update your Nginx config accordingly. See

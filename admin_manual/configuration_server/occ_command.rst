@@ -34,6 +34,7 @@ occ command Directory
 * :ref:`security_commands_label`
 * :ref:`trashbin_label`
 * :ref:`user_commands_label`
+* :ref:`group_commands_label`
 * :ref:`versions_label`
 * :ref:`command_line_installation_label`
 * :ref:`command_line_upgrade_label`
@@ -54,9 +55,14 @@ The HTTP user is different on the various Linux distributions:
 
 If your HTTP server is configured to use a different PHP version than the 
 default (/usr/bin/php), ``occ`` should be run with the same version. For 
-example, in CentOS 6.5 with SCL-PHP56 installed, the command looks like this::
+example, in CentOS 6.5 with SCL-PHP70 installed, the command looks like this::
 
-  sudo -u apache /opt/rh/php56/root/usr/bin/php /var/www/html/nextcloud/occ
+  sudo -u apache /opt/rh/php70/root/usr/bin/php /var/www/html/nextcloud/occ
+
+.. note:: Although the following examples make use of the ``sudo -u ... /path/to/php /path/to/occ`` method, your environment may require use of a different wrapper utility than ``sudo`` to execute the command as the appropriate user. Other common wrappers:
+
+  * ``su --command '/path/to/php ...' username`` -- Note here that the target user specification comes at the end, and the command to execute is specified first.
+  * ``runuser --user username -- /path/to/php ...`` -- This wrapper might be used in container contexts (ex: Docker / ``arm32v7/nextcloud``) where both ``sudo`` and ``su`` wrapper utilities cannot be used.
 
 Running ``occ`` with no options lists all commands and options, like this 
 example on Ubuntu::
@@ -155,8 +161,8 @@ and ``encryption:list-modules``
 Enabling autocompletion
 -----------------------
 
-.. note:: This currently only works, if the user you use to execute the occ commands has a profile.
-  ``www-data`` in most cases is ``nologon`` and therefor can **not** use this.
+.. note:: Command autocompletion currently only works if the user you use to execute the occ commands has a profile.
+  ``www-data`` in most cases is ``nologon`` and therefor **cannot** use this feature.
 
 Since Nextcloud 11 autocompletion is available for bash (and bash based consoles).
 To enable it, you have to run **one** of the following commands::
@@ -173,7 +179,7 @@ To enable it, you have to run **one** of the following commands::
 This will allow you to use autocompletion with the full path ``/var/www/html/nextcloud/occ <tab>``.
 
 If you also want to use autocompletion on occ from within the directory without using the full path,
-you need to specify ``--programm occ`` after the ``--generate-hook``.
+you need to specify ``--program occ`` after the ``--generate-hook``.
 
 If you want the completion to apply automatically for all new shell sessions, add the command to your
 shell's profile (eg. ``~/.bash_profile`` or ``~/.zshrc``).
@@ -186,11 +192,13 @@ Apps commands
 The ``app`` commands list, enable, and disable apps::
 
  app
+  app:install      install selected app
   app:check-code   check code to be compliant
   app:disable      disable an app
   app:enable       enable an app
-  app:getpath      Get an absolute path to the app directory
-  app:list         List all available apps
+  app:getpath      get an absolute path to the app directory
+  app:list         list all available apps
+  app:update       update an app or all apps 
 
 List all of your installed apps, and show whether they are 
 enabled or disabled::
@@ -233,8 +241,16 @@ You can get the full filepath to an app::
     sudo -u www-data php occ app:getpath notifications
     /var/www/nextcloud/apps/notifications
 
+To update an app, for instance Contacts::
+    
+    sudo -u www-data php occ app:update contacts 
+
+To update all apps::
+    
+    sudo -u www-data php occ app:update --all
+
 .. _background_jobs_selector_label:   
-   
+
 Background jobs selector
 ------------------------
 
@@ -257,7 +273,7 @@ The other two commands are:
 * ``background:cron``
 * ``background:webcron``
 
-See :doc:`../configuration_server/background_jobs_configuration` to learn more.
+See :doc:`background_jobs_configuration` to learn more.
 
 .. _config_commands_label:
 
@@ -357,16 +373,17 @@ Setting an array configuration value
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Some configurations (e.g. the trusted domain setting) are an array of data.
-In order to set (and also get) the value of one key, you can specify multiple
-``config`` names separated by spaces::
+In this case, ``config:system:get`` for this key will return multiple values::
 
   sudo -u www-data php occ config:system:get trusted_domains
   localhost
   nextcloud.local
   sample.tld
 
-To replace ``sample.tld`` with ``example.com`` trusted_domains => 2 needs to be
-set::
+To set one of multiple values, you need to specify the array index as the
+second ``name`` in the ``config:system:set`` command, separated by a
+space. For example, to replace ``sample.tld`` with ``example.com``,
+``trusted_domains => 2`` needs to be set::
 
   sudo -u www-data php occ config:system:set trusted_domains 2 
   --value=example.com
@@ -376,6 +393,30 @@ set::
   localhost
   nextcloud.local
   example.com
+
+Setting a hierarchical configuration value
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Some configurations use hierarchical data. For example, the settings
+for the Redis cache would look like this in the ``config.php`` file::
+
+  'redis' => array(
+    'host' => '/var/run/redis/redis.sock',
+    'port' => 0,
+    'dbindex' => 0,
+    'password' => 'secret',
+    'timeout' => 1.5,
+  )
+
+Setting such hierarchical values works similarly to setting an array
+value above. For this Redis example, use the following commands::
+
+  sudo -u www-data php occ config:system:set redis host \
+  --value=/var/run/redis/redis.sock
+  sudo -u www-data php occ config:system:set redis port --value=0
+  sudo -u www-data php occ config:system:set redis dbindex --value=0
+  sudo -u www-data php occ config:system:set redis password --value=secret
+  sudo -u www-data php occ config:system:set redis timeout --value=1.5
 
 Deleting a single configuration value
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -402,16 +443,14 @@ before. If you want to be notified in that case, set the
 Dav commands
 ------------
   
-A set of commands to create addressbooks, calendars, and to 
-migrate addressbooks from 8.2 when you upgrade to 9.0::
+A set of commands to create and manage addressbooks and calendars::
 
  dav
   dav:create-addressbook        Create a dav addressbook
   dav:create-calendar           Create a dav calendar
-  dav:migrate-addressbooks      Migrate addressbooks from the contacts  
-                                app to core
-  dav:migrate-calendars         Migrate calendars from the calendar app to 
-                                core
+  dav:list-calendars            List all calendars of a user
+  dav:move-calendar             Move a calendar from an user to another
+  dav:remove-invalid-shares     Remove invalid dav shares
   dav:sync-birthday-calendar    Synchronizes the birthday calendar
   dav:sync-system-addressbook   Synchronizes users to the system 
                                 addressbook
@@ -429,21 +468,20 @@ This example creates a new calendar for molly::
  
 Molly will immediately see these on her Calendar and Contacts pages.
 
-In 9.0, the CalDAV server has been integrated into core. Your existing 
-calendars and contacts should migrate automatically when you upgrade. If 
-something goes wrong you can try a manual migration. First delete any 
-partially-migrated calendars or addressbooks. Then run this 
-command to migrate user's contacts::
+``dav:lists-calendars [user]`` will display a table listing the calendars for an given user. 
+This example will list all calendars for user annie::
 
- sudo -u www-data php occ dav:migrate-addressbooks [user]
+ sudo -u www-data php occ dav:list-calendars annie
  
-Run this command to migrate calendars::
+``dav::move-calendar [name] [sourceuid] [destinationuid]`` allows the admin
+to move a calendar named ``name`` from an user ``sourceuid`` to the user 
+``destinationuid``. You can use the force option `-f` to enforce the move if there
+are conflicts with existing shares.
+This example will move calendar named personal from user dennis to user sabine::
+ 
+ sudo -u www-data php occ dav:move-calendar personal dennis sabine
 
- sudo -u www-data php occ dav:migrate-calendars [user]
- 
-See `ownCloud 9.0 - calendar migration analysis
-<http://morrisjobke.de/2016/03/07/ownCloud-9.0-calendar-migration-analysis/>`_ 
-for help with troubleshooting and reporting problems. 
+``dav:remove-invalid-shares`` will remove invalid shares created by a bug into the calendar app
 
 ``dav:sync-birthday-calendar`` adds all birthdays to your calendar from 
 addressbooks shared with you. This example syncs to your calendar from user 
@@ -518,7 +556,6 @@ Encryption
                                        disable it again.
   encryption:encrypt-all               Encrypt all files for all users
   encryption:list-modules              List all available encryption modules
-  encryption:migrate                   initial migration to encryption 2.0
   encryption:set-default-module        Set the encryption default module
   encryption:show-key-storage-root     Show current key storage root
   encryption:status                    Lists the current status of encryption
@@ -563,6 +600,10 @@ put your Nextcloud server into :ref:`maintenance
 mode <maintenance_commands_label>` to prevent any user activity until 
 decryption is completed.
 
+Note that if you do not have master key/recovery key enabled, you can ONLY
+decrypt files per user, one user at a time and NOT when in maintenance mode.
+You will need the users' password to decrypt the files.
+
 Use ``encryption:disable`` to disable your encryption module. You must first put 
 your Nextcloud server into :ref:`maintenance mode <maintenance_commands_label>`
 to prevent any user activity.
@@ -572,9 +613,6 @@ user data instead of individual user keys. This is especially useful to enable
 single-sign on. Use this only on fresh installations with no existing data, or 
 on systems where encryption has not already been enabled. It is not possible to 
 disable it.
-
-``encryption:migrate`` migrates encryption keys after a major Nextcloud version 
-upgrade. You may optionally specify individual users in a space-delimited list.
 
 See :doc:`../configuration_files/encryption_configuration` to learn more.
  
@@ -610,7 +648,10 @@ File operations
   files:scan                 rescan filesystem
   files:transfer-ownership   All files and folders are moved to another 
                              user - shares are moved as well.
- 
+
+Scan
+^^^^
+
 The ``files:scan`` command scans for new files and updates the file cache. You 
 may rescan all files, per-user, a space-delimited list of users, and limit the 
 search path. If not using ``--quiet``, statistics will be shown at the end of 
@@ -656,17 +697,26 @@ Example::
 In the example above, the user_id ``alice`` is determined implicitly from the 
 path component given.
 
-The ``--path``, ``--all`` and ``[user_id]`` parameters and are exclusive - only 
+The ``--path``, ``--all`` and ``[user_id]`` parameters are exclusive - only 
 one must be specified.
+
+Cleanup
+^^^^^^^
 
 ``files:cleanup`` tidies up the server's file cache by deleting all file 
 entries that have no matching entries in the storage table. 
 
+Transfer
+^^^^^^^^
+
 You may transfer all files and shares from one user to another. This is useful 
 before removing a user::
 
- sudo -u www-data php occ files:transfer-ownership <source-user>
- <destination-user>
+ sudo -u www-data php occ files:transfer-ownership <source-user> <destination-user>
+ 
+It is also possible to transfer only one directory along with it's contents. This can be useful to restructure your organization or quotas. The ``--path`` argument is given as the path to the directory as seen from the source user::
+
+ sudo -u www-data php occ files:transfer-ownership --path="path_to_dir" <source-user> <destination-user>
 
 .. _files_external_label:
 
@@ -724,7 +774,7 @@ Verify your app::
   sudo -u www-data php occ integrity:check-app --path=/pathto/app appname
   
 When it returns nothing, your app is signed correctly. When it returns a message then there is an error. See `Code Signing 
-<https://docs.nextcloud.org/server/12/developer_manual/app/code_signing.html#how-to-get-your-app-signed>`_ in the Developer manual for more detailed information.
+<https://docs.nextcloud.org/server/15/developer_manual/app/code_signing.html#how-to-get-your-app-signed>`_ in the Developer manual for more detailed information.
 .. TODO ON RELEASE: Update version number above on release
 
 ``integrity:sign-core`` is for Nextcloud core developers only.
@@ -847,11 +897,11 @@ These commands view and configure your Nextcloud logging preferences::
 
  log
   log:manage     manage logging configuration
-  log:owncloud   manipulate Nextcloud logging backend
+  log:file   manipulate Nextcloud logging backend
 
-Run ``log:owncloud`` to see your current logging status::
+Run ``log:file`` to see your current logging status::
 
- sudo -u www-data php occ log:owncloud 
+ sudo -u www-data php occ log:file 
  Log backend Nextcloud: enabled
  Log file: /opt/nextcloud/data/nextcloud.log
  Rotate at: disabled
@@ -861,10 +911,10 @@ different log file path. Set your rotation by log file size in bytes with
 ``--rotate-size``; 0 disables rotation. 
 
 ``log:manage`` sets your logging backend, log level, and timezone. The defaults 
-are ``owncloud``, ``Warning``, and ``UTC``. Available options are:
+are ``file``, ``warning``, and ``UTC``. Available options are:
 
-* --backend [owncloud, syslog, errorlog]
-* --level [debug, info, warning, error]
+* --backend [file, syslog, errorlog, systemd]
+* --level [debug, info, warning, error, fatal]
 
 .. _maintenance_commands_label:
    
@@ -880,6 +930,7 @@ backups and other tasks that require locking users out until you are finished::
   maintenance:mimetype:update-js      Update mimetypelist.js
   maintenance:mode                    set maintenance mode
   maintenance:repair                  repair this installation
+  maintenance:theme:update            Apply custom theme changes
   maintenance:update:htaccess         Updates the .htaccess file
 
 ``maintenance:mode`` locks the sessions of all logged-in users, including 
@@ -906,6 +957,8 @@ with changed mimetypes found in ``config/mimetypemapping.json``. Run this
 command after modifying ``config/mimetypemapping.json``. If you change a 
 mimetype, run ``maintenance:mimetype:update-db --repair-filecache`` to apply the 
 change to existing files.
+
+Run the ``maintenance:theme:update`` command if the icons of your custom theme are not updated correctly. This updates the mimetypelist.js and cleares the image cache.
 
 .. _security_commands_label:
 
@@ -940,18 +993,18 @@ Trashbin
   This command is only available when the "Deleted files" app
   (``files_trashbin``) is enabled.
 
-The ``trashbin:cleanup`` command removes the deleted files of the specified 
-users in a space-delimited list, or all users if none are specified.
+The ``trashbin:cleanup  [--all-users] [--] [<user_id>...]`` command removes the deleted files of the specified 
+users in a space-delimited list, or all users if --all-users is specified.
 
 ::
  
  trashbin
-  trashbin:cleanup   Remove deleted files
+  trashbin:cleanup  [--all-users] [--] [<user_id>...]  Remove deleted files
   
 This example removes the deleted files of all users::  
   
-  sudo -u www-data php occ trashbin:cleanup 
-  Remove all deleted files
+  sudo -u www-data php occ trashbin:cleanup --all-users 
+  Remove all deleted files for all users
   Remove deleted files for users on backend Database
    freda
    molly
@@ -1090,7 +1143,65 @@ authentication servers such as LDAP::
  |                  |    |
  | user directories | 2  |
  +------------------+----+
- 
+
+.. _group_commands_label: 
+
+Group commands
+--------------
+
+The ``group`` commands create and remove groups, add and remove users in
+groups, display a list of all users in a group::
+
+ group
+  group:add                           add a group
+  group:delete                        remove a group
+  group:adduser                       add a user to a group
+  group:removeuser                    remove a user from a group
+  group:list                          list configured groups
+
+
+You can create a new group with the ``group:add`` command. The syntax is::
+
+ group:add [gid]
+
+The ``gid`` corresponds to the group name you entering after clicking
+"Add group" on the Users page in your Nextcloud Web UI. This example adds new
+group "beer"::
+
+ sudo -u www-data php occ group:add beer
+
+Add an existing user to the specified group with the ``group:adduser``
+command. The syntax is::
+
+ group:adduser [gid] [uid]
+
+This example adds the user "denis" to the existing group "beer"::
+
+ sudo -u www-data php occ group:adduser beer denis
+
+You can remove user from the group with the ``group:removeuser`` command.
+This example removes the existing user "denis" from the existing
+group "beer"::
+
+ sudo -u www-data php occ group:removeuser beer denis
+
+Remove a group with the ``group:delete`` command. Removing a group doesn't
+remove users in a group. You cannot remove the "admin" group. This example
+removes the existing group "beer"::
+
+ sudo -u www-data php occ group:delete beer
+
+List configured groups via the ``group:list`` command. The syntax is::
+
+ group:list [-l|--limit] [-o|--offset] [--output="..."]
+
+``limit`` allows you to specify the number of groups to retrieve.
+
+``offset`` is an offset for retrieving groups.
+
+``output`` specifies the output format (plain, json or json_pretty). Default is
+plain.
+
 .. _versions_label:
  
 Versions
@@ -1224,10 +1335,9 @@ List all options, like this example on CentOS Linux::
 
  sudo -u apache php occ upgrade -h
  Usage:
- upgrade [--no-app-disable]
+ upgrade [--quiet]
 
  Options:
- --no-app-disable       skips the disable of third party apps
  --help (-h)            Display this help message.
  --quiet (-q)           Do not output any message.
  --verbose (-v|vv|vvv)  Increase the verbosity of messages: 1 for normal output, 
@@ -1293,14 +1403,22 @@ Two-factor authentication
 If a two-factor provider app is enabled, it is enabled for all users by default
 (though the provider can decide whether or not the user has to pass the challenge).
 In the case of an user losing access to the second factor (e.g. lost phone with
-two-factor SMS verification), the admin can temporarily disable the two-factor
+two-factor SMS verification), the admin can try to disable the two-factor
 check for that user via the occ command::
 
- sudo -u www-data php occ twofactor:disable <username>
+ sudo -u www-data php occ twofactor:disable <uid> <provider_id>
+
+.. note:: This is not supported by all providers. For those that don't support
+  this operation, the `Two-Factor Admin Support app <https://apps.nextcloud.com/apps/twofactor_admin>`_
+  should be used where users get a one-time code to log into their account.
 
 To re-enable two-factor auth again use the following commmand::
 
- sudo -u www-data php occ twofactor:enable <username>
+ sudo -u www-data php occ twofactor:enable <uid> <provider_id>
+
+.. note:: This is not supported by all providers. For those that don't support
+  this operation, the `Two-Factor Admin Support app <https://apps.nextcloud.com/apps/twofactor_admin>`_
+  should be used where users get a one-time code to log into their account.
 
 .. _disable_user_label:
 

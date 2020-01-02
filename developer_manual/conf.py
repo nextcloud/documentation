@@ -103,10 +103,10 @@ html_theme_path = ['../_shared_assets/themes']
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'nextcloud_com'
-html_theme_options = {
-#    "rightsidebar": "true",
-}
+# html_theme = 'sphinx_rtd_theme'
+# html_theme_options = {
+# #    "rightsidebar": "true",
+# }
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
 #html_title = None
@@ -183,7 +183,7 @@ latex_elements = {
 #'pointsize': '10pt',
 
 # Additional stuff for the LaTeX preamble.
-'preamble': '\extrafloats{100}\maxdeadcycles=500',
+'preamble': '\extrafloats{100}\maxdeadcycles=500\DeclareUnicodeCharacter{274C}{\sffamily X}',
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
@@ -312,3 +312,7 @@ StandaloneHTMLBuilder.supported_image_types = [
     'image/png',
     'image/jpeg'
 ]
+
+# Generate the versions list
+html_context['versions'] = generateVersionsDocs(current_docs)
+html_context['theme_vcs_pageview_mode'] += current_docs

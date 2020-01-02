@@ -17,10 +17,12 @@ If access to a file has been denied for a user, the user can not:
 * Modify the files
 * Delete the file
 * Download the file
-* Syncronise the file with clients, such as the Nextcloud desktop and mobile clients
+* Synchronize the file with clients, such as the Nextcloud desktop and mobile clients
 
 Examples
 --------
+After installing the File Access Control app as described in :doc:`../apps_management`
+navigate to the configuration and locate the File Access Control settings.
 
     .. figure:: images/files_access_control_sample_rules.png
        :alt: Sample rules to block on user group, time and IP base.
@@ -103,7 +105,11 @@ option.
             otherwise any user can remove the tag to access the file again.
             The best way to do this is with the :doc:`automated_tagging`.
 
-* **File mimetype:** The mimetype of the file, e.g. ``text/plain``
+* **File MIME type:** The MIME type of the file, e.g. ``text/plain`` for a text file or ``httpd/unix-directory`` for a folder.
+
+  .. note:: see `mimetypealiases.dist.json <https://github.com/nextcloud/server/blob/master/resources/config/mimetypealiases.dist.json>`_ for a full list of possible MIME types.
+
+* **File name:** The name of the file (``is`` and ``is not`` are case-insensitive)
 * **File size:** The size of the file (*Only available on upload*)
 
 * **Request remote address:** An IP range (either v4 or v6) for the accessing user

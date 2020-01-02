@@ -1,6 +1,6 @@
-============================
-Configuring the activity app
-============================
+============
+Activity app
+============
 
 You can configure your Nextcloud server to automatically send out e-mail notifications
 to your users for various events like:
@@ -30,7 +30,7 @@ Furthermore it is recommended to configure the background job ``Webcron`` or
 
 There is also a configuration option ``activity_expire_days`` available in your
 ``config.php`` (See :doc:`config_sample_php_parameters`) which allows
-you to clean-up older activies from the database.
+you to clean-up older activities from the database.
 
 Better scheduling of activity emails
 ------------------------------------
@@ -40,7 +40,7 @@ e.g. you want to send the hourly emails always at the full hour, daily emails be
 people start to work in the morning and weekly mails shall be send on monday morning,
 so people can read up when starting into the week.
 
-Therefor in Nextcloud 12 a console command was added to allow sending those emails
+Therefore in Nextcloud 12 a console command was added to allow sending those emails
 intentionally. This allows to set up special cron jobs on your server with the known
 granularity, instead of relying on the Nextcloud cron feature which is not very flexible
 on scheduling.

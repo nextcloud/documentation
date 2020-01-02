@@ -23,7 +23,7 @@ When writing your own tests, please ensure that PHPUnit bootstraps from :file:`t
 
 PHP classes should be tested by accessing them from the container to ensure that the container is wired up properly. Services that should be mocked can be replaced directly in the container.
 
-A test for the **AuthorStorage** class in :doc:`filesystem`:
+A test for the **AuthorStorage** class in :doc:`storage/filesystem`:
 
 .. code-block:: php
 

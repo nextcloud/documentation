@@ -1,14 +1,14 @@
-==================================================
-Thunderbird - synchronize addressbook and calendar
-==================================================
+==============================
+Synchronizing with Thunderbird
+==============================
 
-Addressbook
------------
+Contacts
+--------
 
 As someone who is new to Nextcloud and new to CardBook here is what you need in excruciating pithy detail to make this work:
 
-- `Thunderbird <https://www.mozilla.org/en-US/thunderbird/>`_ for your OS unless it comes with your OS distribution (Linux)
-- `CardBook <https://addons.mozilla.org/en-US/thunderbird/addon/cardbook/>`_ (a Thunderbird contacts add-on.)
+- `Thunderbird <https://www.thunderbird.net/>`_ for your OS unless it comes with your OS distribution (Linux)
+- `CardBook <https://addons.thunderbird.net/en-US/thunderbird/addon/cardbook/>`_ (a Thunderbird contacts add-on.)
 
 Once you've installed CardBook and Thunderbird do like this:
 
@@ -35,16 +35,16 @@ https://cloud.nextcloud.com/remote.php/dav/addressbooks/users/daniel/Thunderbird
 .. image:: ../images/addressbook_name.png
 
 5. Once installed, synchronize your addressbook by clicking "Synchronize" in the top left corner of CardBook.
-You'll see your address book populate from Nextcloud! 
+You'll see your address book populate from Nextcloud!
 
 .. image:: ../images/synchronize_cardbook.png
 
-The rest of the details of dealing with Thunderbird CardBook are left to the reader... 
+The rest of the details of dealing with Thunderbird CardBook are left to the reader...
 
 Calendar
 --------
 
-- `Thunderbird <https://www.mozilla.org/en-US/thunderbird/>`_ for your OS unless it comes with your OS distribution (Linux)
+- `Thunderbird <https://www.thunderbird.net/>`_ for your OS unless it comes with your OS distribution (Linux)
 - `Lightning <https://addons.mozilla.org/en-US/thunderbird/addon/lightning/>`_ (a Thunderbird calendar add-on.)
 
 Once you've installed Lighning and Thunderbird do like this:
@@ -62,4 +62,4 @@ https://cloud.nextcloud.com/remote.php/dav/calendars/daniel/personal/
 
 .. image:: ../images/CalDAV_calendar.png
 
-The rest of the details of dealing with Thunderbird Calendar are left to the reader... 
+The rest of the details of dealing with Thunderbird Calendar are left to the reader...

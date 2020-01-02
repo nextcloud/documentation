@@ -19,7 +19,7 @@ Configuring two-factor authentication
 -------------------------------------
 
 In your Personal Settings look up the Second-factor Auth setting. In this
-example this is TOTP, a Google Authenticator compatible time based code.
+example this is TOTP, a Google Authenticator compatible time-based code.
 
 .. figure:: images/totp_enable.png
      :alt: TOTP configuration.
@@ -55,8 +55,15 @@ Logging in with two-factor authentication
 -----------------------------------------
 
 After you have logged out and need to log in again, you will see a request to
-enter the TOTP code in your browser. Just enter your code:
-  
+enter the TOTP code in your browser. If you enable not only the TOTP factor
+but another one, you will see a selection screen on which you can choose
+two-factor method for this login. Select TOTP.
+
+.. figure:: images/totp_login_1.png
+     :alt: Choosing a two-factor authentication method.
+
+Now, just enter your code:
+
 .. figure:: images/totp_login_2.png
      :alt: Entering TOTP code at login.
 
@@ -65,6 +72,19 @@ If the code was correct you will be redirected to your Nextcloud account.
 .. note:: Since the code is time-based, it’s important that your server’s and
   your smartphone’s clock are almost in sync. A time drift of a few seconds
   won’t be a problem.
+
+Using two-factor authentication with hardware tokens
+----------------------------------------------------
+You can use two-factor authentication based on hardware tokens. The following devices are known to work:
+
+*    TOTP based:
+
+     *    `Nitrokey Pro <https://shop.nitrokey.com/shop/product/nitrokey-pro-2-3>`_
+     *    `Nitrokey Storage <https://shop.nitrokey.com/shop>`_
+
+*    FIDO U2F based:
+
+     *    `Nitrokey FIDO U2F <https://shop.nitrokey.com/shop/product/nitrokey-fido-u2f-20>`_
 
 Using client applications with two-factor authentication
 --------------------------------------------------------

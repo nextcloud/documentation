@@ -3,11 +3,7 @@ Nextcloud Documentation
 =======================
 
 Documentation is published on `<https://docs.nextcloud.com>`_.
-
-The `documentation Wiki <https://github.com/nextcloud/documentation/wiki>`_ is
-available for tips, tricks, edge cases, and anyone who wants to contribute more
-easily, without having to learn Git and Sphinx.
-
+To edit it yourself, you need to tinker a bit with Git and Sphinx.
 See the `Style Guide <https://github.com/nextcloud/documentation/blob/master/style_guide.rst>`_ for formatting and style conventions.
 
 Manuals
@@ -19,7 +15,7 @@ This repository hosts three manuals:
 * **Administration Manual**
 * **Developers Manual**
 
-Please work in the appropriate branch: ``stable``-branches are for the respective release (e.g. 11.0 or 12.0), ``master`` is version 13.0.
+Please work in the appropriate branch: ``stable``-branches are for the respective release (e.g. 14.0 or 15.0), ``master`` is the latest version.
 
 Please wrap lines at 80 characters.
 
@@ -41,13 +37,13 @@ License
 All documentation in this repository is licensed under the Creative Commons
 Attribution 3.0 Unported license (`CC BY 3.0`_).
 
-.. _CC BY 3.0: http://creativecommons.org/licenses/by/3.0/deed.en_US
+.. _CC BY 3.0: https://creativecommons.org/licenses/by/3.0/deed.en_US
 
 Style
 -----
 
 Source files are written using the `Sphinx Documentation Generator
-<http://sphinx.pocoo.org/>`_. The syntax follows the `reStructuredText
+<https://www.sphinx-doc.org/en/master/>`_. The syntax follows the `reStructuredText
 <http://docutils.sourceforge.net/rst.html>`_ style, and can also be edited
 from GitHub.
 
@@ -78,89 +74,30 @@ the official repository.
 Building
 --------
 
-Linux / OS X
-^^^^^^^^^^^^
+1. Install `pipenv` - https://pipenv.readthedocs.io/en/latest/
+2. Create a Python 2 environment (typically inside this repository): `pipenv --two`
+3. Change into the environment: `pipenv shell`
+4. Install the dependencies `pip2 install -r requirements.txt`
+5. Now you can use `make ...` to build all the stuff - for example `make html` to build the HTML flavor of all manuals
 
-First, make sure that the following are installed:
+To change into this environment you need to run `pipenv shell` to launch the shell and to exit you can use either `exit` or `Ctrl` + `D`.
 
-* Python 2 (2.6.0 or better, Python 3 is not yet supported!)
-* Python Image Library (PIL) - (the package is called something like ``python-pillow``)
-* Sphinx (e.g. ``sudo yum install python-sphinx``),
-  on Mac: ``sudo easy_install Sphinx``
-* Sphinx PHPDomain (e.g. ``sudo easy_install sphinxcontrib-phpdomain``)
-* rst2pdf (e.g. ``sudo easy_install rst2pdf``)
+When editing the documentation installing `sphinx-autobuild` though pip can be helpful. This will watch file changes and automatically reload the html preview:
 
-...then enter any manual directory, then run ``make html``. The result can
-be found in the ``_build/html`` subdirectory.  PDFs can be built with the
-``make latexpdf`` command and are found in _build/latex/ directory.
+1. Install `pip2 install sphinx-autobuild`
+2. Enter the documentation section `cd user_manual`
+3. Watch for file changes `make SPHINXBUILD=sphinx-autobuild html`
+4. Open http://127.0.0.1:8000 in the browser and start editing
 
-The openSUSE way
-~~~~~~~~~~~~~~~~
-* sudo zypper in python-Sphinx
-* sudo zypper in python-rst2pdf
-* sudo zypper in python-sphinxcontrib-phpdomain # requires repository "devel:languages:python"
-* sudo zypper in pdfjam   # pull in latexpdf and all of texlive
-* sudo zypper in texlive-threeparttable
-* sudo zypper in texlive-wrapfig
-* sudo zypper in texlive-multirow
-* cd user_manual
-* make latexpdf
-* okular _build/latex/NextcloudUserManual.pdf
+Icons
+-----
 
-The Debian/Ubuntu way
-~~~~~~~~~~~~~~~~~~~~~
-* sudo apt-get install python-pil
-* sudo apt-get install python-sphinx
-* sudo apt-get install python-sphinxcontrib.phpdomain
-* sudo apt-get install rst2pdf
-* sudo apt-get install texlive-fonts-recommended
-* sudo apt-get install texlive-latex-extra
-* sudo apt-get install texlive-latex-recommended
-* cd user_manual
-* make latexpdf
-* evince _build/latex/NextcloudUserManual.pdf
+To compile and update the icons list in the designer manual, you will also need
 
-The Arch Linux way
-~~~~~~~~~~~~~~~~~~
-* sudo pacman -S python2-sphinx
-* sudo pacman -S extra/texlive-core
-* sudo pacman -S texlive-latexextra
-* sudo pip2 install rst2pdf sphinxcontrib-phpdomain
-* sudo ln -s /usr/bin/sphinx-build2 /usr/bin/sphinx-build
-* cd user_manual
-* make latexpdf
-* PDFVIEWER _build/latex/NextcloudUserManual.pdf
+1. inkscape
+2. sass
+3. unzip
+4. wget
 
-Windows
-^^^^^^^
-
-Running ``setup.cmd`` will install Python 2.7 and install all dependencies.
-
-Enter any manual and clicking the "Build HTML" shortcut will create a HTML
-build. Likewise, "Build PDF" will build the PDF using the more lightweight,
-but feature-incomplete RST2PDF tool. The results are in ``_build/html`` and
-``_build/pdf`` respectively.
-
-Importing Word and OpenDocument files
--------------------------------------
-
-Sometimes, existing documentation might be in Word or LibreOffice documents. To
-make it part of this documentation collection, follow these steps:
-
-Prerequisites
-^^^^^^^^^^^^^
-
-1. Install Python 2.x
-2. Install odt2sphinx (``easy_install odt2sphinx``)
-3. Install GCC/clang (`Xcode command line tools`_ required on Mac OS)
-
-Process
-^^^^^^^
-
-1. ``doc/docx`` files need to be stored as odt first
-2. Run ``odt2sphinx my.docx``
-3. Move the resulting ``rst`` files in place and reference them
-4. Wrap text lines at 80 chars, apply markup fixes
-
-.. _CC BY 3.0: http://creativecommons.org/licenses/by/3.0/deed.en_US
-.. _`Xcode command line tools`: http://stackoverflow.com/questions/9329243/xcode-4-4-and-later-install-command-line-tools
+.. _CC BY 3.0: https://creativecommons.org/licenses/by/3.0/deed.en_US
+.. _`Xcode command line tools`: https://stackoverflow.com/questions/9329243/xcode-install-command-line-tools

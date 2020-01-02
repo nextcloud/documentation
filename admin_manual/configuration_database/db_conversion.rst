@@ -2,16 +2,16 @@
 Converting database type
 ========================
 
-You can convert a SQLite database to a more performing MySQL, MariaDB or 
-PostgreSQL database with the Nextcloud command line tool. SQLite is good for 
-testing and simple single-user Nextcloud servers, but it does not scale for 
+You can convert a SQLite database to a better performing MySQL, MariaDB or
+PostgreSQL database with the Nextcloud command line tool. SQLite is good for
+testing and simple single-user Nextcloud servers, but it does not scale for
 multiple-user production users.
 
 
 Run the conversion
 ------------------
 
-First setup the new database, here called "new_db_name".
+First set up the new database, here called "new_db_name".
 In Nextcloud root folder call
 
 ::
@@ -25,8 +25,8 @@ The Options
 * ``--clear-schema``                      clear schema (optional)
 * ``--all-apps``                          by default, tables for enabled apps are converted, use to convert also tables of deactivated apps (optional)
 
-*Note:* The converter searches for apps in your configured app folders and uses 
-the schema definitions in the apps to create the new table. So tables of removed 
+*Note:* The converter searches for apps in your configured app folders and uses
+the schema definitions in the apps to create the new table. So tables of removed
 apps will not be converted even with option ``--all-apps``
 
 For example
@@ -35,17 +35,17 @@ For example
 
   php occ db:convert-type --all-apps mysql oc_mysql_user 127.0.0.1 new_db_name
 
-To successfully proceed with the conversion, you must type ``yes`` when prompted 
+To successfully proceed with the conversion, you must type ``yes`` when prompted
 with the question ``Continue with the conversion?``
 
-On success the converter will automatically configure the new database in your 
+On success the converter will automatically configure the new database in your
 Nextcloud config ``config.php``.
 
-Unconvertible tables
+Inconvertible tables
 --------------------
 
-If you updated your Nextcloud installation there might exist old tables, which 
-are not used anymore. The converter will tell you which ones.
+If you updated your Nextcloud instance, there might be remnants of old tables
+which are not used any more. The updater will tell you which ones these are.
 
 ::
 
@@ -69,5 +69,6 @@ Here is a list of known old tables:
 * oc_media_songs
 * oc_media_users
 * oc_permissions
+* oc_privatedata - this table was later added again by the app `privatedata` (https://apps.nextcloud.com/apps/privatedata) and is safe to be removed if that app is not enabled
 * oc_queuedtasks
 * oc_sharing

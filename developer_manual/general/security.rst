@@ -25,7 +25,7 @@ To prevent this, always use prepared queries:
   $params = array(1);
   $result = $query->execute($params);
 
-If the App Framework is used, write SQL queries like this in the a class that extends the Mapper:
+If the App Framework is used, write SQL queries like this in a class that extends the Mapper:
 
 .. code-block:: php
 
@@ -107,7 +107,7 @@ Clickjacking
 
 To prevent such attacks Nextcloud sends the `X-Frame-Options` header to all template responses. Don't remove this header if you don't really need it!
 
-This is already built into Nextcloud if :php:class:`OC_Template`.
+This is already built into Nextcloud in :php:class:`OC_Template`.
 
 Code executions / file inclusions
 ---------------------------------
@@ -136,7 +136,7 @@ Code executions and file inclusions can be easily prevented by **never** allowin
 Directory traversal
 -------------------
 
-Very often developers forget about sanitizing the file path (removing all \\ and /), this allows an attacker to traverse through directories on the server which opens several potential attack vendors including privilege escalations, code executions or file disclosures.
+Very often developers forget about sanitizing the file path (removing all \\ and /), this allows an attacker to traverse through directories on the server which opens several potential attack vectors including privilege escalations, code executions or file disclosures.
 
 **DON'T**
 
@@ -204,7 +204,7 @@ Nextcloud offers three simple checks:
 * **OCP\\JSON::checkAdminUser()**: Checks if the logged in user has admin privileges
 * **OCP\\JSON::checkSubAdminUser()**: Checks if the logged in user has group admin privileges
 
-Using the App Framework, these checks are already automatically performed for each request and have to be explicitly turned off by using annotations above your controller method,  see :doc:`../app/controllers`.
+Using the App Framework, these checks are already automatically performed for each request and have to be explicitly turned off by using annotations above your controller method,  see :doc:`../app/requests/controllers`.
 
 Additionally always check if the user has the right to perform that action. (e.g. a user should not be able to delete other users' bookmarks).
 
@@ -227,7 +227,7 @@ To prevent CSRF in an app, be sure to call the following method at the top of al
   <?php
   OCP\JSON::callCheck();
 
-If you are using the App Framework, every controller method is automatically checked for CSRF unless you explicitly exclude it by setting the @NoCSRFRequired annotation before the controller method, see :doc:`../app/controllers`
+If you are using the App Framework, every controller method is automatically checked for CSRF unless you explicitly exclude it by setting the @NoCSRFRequired annotation before the controller method, see :doc:`../app/requests/controllers`
 
 Unvalidated redirects
 ---------------------

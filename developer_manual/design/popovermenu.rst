@@ -58,7 +58,25 @@ Basic layout
                    <label for="radio1">Select</label>
                </span>
            </li>
-        <ul>
+            <li>
+                <span class="menuitem">
+                    <span class="icon icon-user"></span>
+                    <form>
+                            <input id="input-folder" type="text" value="new email">
+                            <input type="submit" value=" " class="primary icon-checkmark-white">
+                    </form>
+                </span>
+            </li>
+             <li>
+                 <span class="menuitem">
+                     <span class="icon icon-folder"></span>
+                     <form>
+                             <input id="input-folder" type="text" value="New folder">
+                             <input type="submit" value=" " class="icon-confirm">
+                     </form>
+                 </span>
+             </li>
+        </ul>
     </div>
 
 Technical details
@@ -74,6 +92,8 @@ Technical details
 * The required **right** distance to the border (or padding, whatever you want to use) of the three-dot icon should be 14px (5 for menu margin and 6 for arrow position)
 * The ``span`` element **must** have the ``menuitem`` class.
 * The checkbox/radio must use the :ref:`nextcloud custom <checkboxes-and-radios>`
+* The form element is optionnal if you're using inputs.
+* Supported inputs are all text based ones and buttons type ones
 
 .. image:: ../images/popover-position.png
 

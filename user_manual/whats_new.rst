@@ -17,7 +17,7 @@ What's new for users in Nextcloud |version|
    .. figure:: images/contacts_popup.png
       :alt: screenshot of popup over avatar
 
-4. Ability to sent multiple unique sharing links each with their own settings, by entering email addresses (the recipient will receive an email)
+4. Ability to send multiple unique sharing links each with their own settings, by entering email addresses (the recipient will receive an email)
 
    .. figure:: images/multi_sharing.png
       :alt: screenshot of multiple sharing links

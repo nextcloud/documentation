@@ -1,6 +1,6 @@
-=====================
-Config.php Parameters
-=====================
+========================
+Configuration Parameters
+========================
 
 Nextcloud uses the ``config/config.php`` file to control server operations.
 ``config/config.sample.php`` lists all the configurable parameters within
@@ -12,6 +12,9 @@ is usually not necessary to edit ``config/config.php``.
    Only manually add configuration parameters to ``config/config.php`` if you need to
    use a special value for a parameter. **Do not copy everything from**
    ``config/config.sample.php`` **. Only enter the parameters you wish to modify!**
+
+Multiple config.php file
+------------------------
 
 Nextcloud supports loading configuration parameters from multiple files.
 You can add arbitrary files ending with :file:`.config.php` in the :file:`config/`
@@ -92,17 +95,17 @@ during installation and update, so you shouldn't need to change it.
 
 ::
 
-	'dbtype' => 'sqlite',
+	'dbtype' => 'sqlite3',
 
 Identifies the database used with this installation. See also config option
 ``supportedDatabases``
 
 Available:
-	- sqlite (SQLite3)
+	- sqlite3 (SQLite3)
 	- mysql (MySQL/MariaDB)
 	- pgsql (PostgreSQL)
 
-Defaults to ``sqlite``
+Defaults to ``sqlite3``
 
 ::
 
@@ -246,6 +249,31 @@ Defaults to ``false``
 
 ::
 
+	'default_locale' => 'en_US',
+
+This sets the default locale on your Nextcloud server, using ISO_639
+language codes such as ``en`` for English, ``de`` for German, and ``fr`` for
+French, and ISO-3166 country codes such as ``GB``, ``US``, ``CA``, as defined
+in RFC 5646. It overrides automatic locale detection on public pages like
+login or shared items. User's locale preferences configured under "personal
+-> locale" override this setting after they have logged in.
+
+Defaults to ``en``
+
+::
+
+	'force_locale' => 'en_US',
+
+With this setting a locale can be forced for all users. If a locale is
+forced, the users are also unable to change their locale in the personal
+settings. If users shall be unable to change their locale, but users have
+different languages, this value can be set to ``true`` instead of a locale
+code.
+
+Defaults to ``false``
+
+::
+
 	'defaultapp' => 'files',
 
 Set the default app to open on login. Use the app names as they appear in the
@@ -274,8 +302,8 @@ pages), and ``false`` prevents them from changing their display names.
 
 	'remember_login_cookie_lifetime' => 60*60*24*15,
 
-Lifetime of the remember login cookie, which is set when the user clicks
-the ``remember`` checkbox on the login screen.
+Lifetime of the remember login cookie. This should be larger than the
+session_lifetime. If it is set to 0 remember me is disabled.
 
 Defaults to ``60*60*24*15`` seconds (15 days)
 
@@ -333,19 +361,6 @@ Defaults to ``core/skeleton`` in the Nextcloud directory.
 
 ::
 
-	'user_backends' => array(
-		array(
-			'class' => 'OC_User_IMAP',
-			'arguments' => array('{imap.gmail.com:993/imap/ssl}INBOX')
-		)
-	),
-
-The ``user_backends`` app (which needs to be enabled first) allows you to
-configure alternate authentication backends. Supported backends are:
-IMAP (OC_User_IMAP), SMB (OC_User_SMB), and FTP (OC_User_FTP).
-
-::
-
 	'lost_password_link' => 'https://example.org/link/to/password/reset',
 
 If your user backend does not allow password resets (e.g. when it's a
@@ -389,16 +404,11 @@ Defaults to ``false``
 
 ::
 
-	'mail_smtpmode' => 'php',
+	'mail_smtpmode' => 'smtp',
 
-Which mode to use for sending mail: ``sendmail``, ``smtp``, ``qmail`` or
-``php``.
+Which mode to use for sending mail: ``sendmail``, ``smtp`` or ``qmail``.
 
 If you are using local or remote SMTP, set this to ``smtp``.
-
-If you are using PHP mail you must have an installed and working email system
-on the server. The program used to send email is defined in the ``php.ini``
-file.
 
 For the ``sendmail`` option you need an installed and working email system on
 the server, with ``/usr/sbin/sendmail`` installed on your Unix system.
@@ -406,7 +416,7 @@ the server, with ``/usr/sbin/sendmail`` installed on your Unix system.
 For ``qmail`` the binary is /var/qmail/bin/sendmail, and it must be installed
 on your Unix system.
 
-Defaults to ``php``
+Defaults to ``smtp``
 
 ::
 
@@ -441,8 +451,8 @@ Defaults to ``10`` seconds
 
 	'mail_smtpsecure' => '',
 
-This depends on ``mail_smtpmode``. Specify when you are using ``ssl`` or
-``tls``, or leave empty for no encryption.
+This depends on ``mail_smtpmode``. Specify when you are using ``ssl`` for SSL/TLS or
+``tls`` for STARTTLS, or leave empty for no encryption.
 
 Defaults to ``''`` (empty string)
 
@@ -481,6 +491,45 @@ This depends on ``mail_smtpauth``. Specify the password for authenticating to
 the SMTP server.
 
 Default to ``''`` (empty string)
+
+::
+
+	'mail_template_class' => '\OC\Mail\EMailTemplate',
+
+Replaces the default mail template layout. This can be utilized if the
+options to modify the mail texts with the theming app is not enough.
+
+The class must extend  ``\OC\Mail\EMailTemplate``
+
+::
+
+	'mail_send_plaintext_only' => false,
+
+Email will be send by default with an HTML and a plain text body. This option
+allows to only send plain text emails.
+
+::
+
+	'mail_smtpstreamoptions' => array(),
+
+This depends on ``mail_smtpmode``. Array of additional streams options that
+will be passed to underlying Swift mailer implementation.
+
+Defaults to an empty array.
+
+::
+
+	'mail_sendmailmode' => 'smtp',
+
+Which mode is used for sendmail/qmail: ``smtp`` or ``pipe``.
+
+For ``smtp`` the sendmail binary is started with the parameter ``-bs``:
+  - Use the SMTP protocol on standard input and output.
+
+For ``pipe`` the binary is started with the parameters ``-t``:
+  - Read message from STDIN and extract recipients.
+
+Defaults to ``smtp``
 
 Proxy Configurations
 --------------------
@@ -726,7 +775,6 @@ Supported values:
   - ``daily``
   - ``beta``
   - ``stable``
-  - ``production``
 
 ::
 
@@ -738,10 +786,24 @@ Defaults to ``true``
 
 ::
 
-	'check_for_working_webdav' => true,
+	'connectivity_check_domains' => array(
+		'www.nextcloud.com',
+		'www.startpage.com',
+		'www.eff.org',
+		'www.edri.org'
+	),
 
-Allows Nextcloud to verify a working WebDAV connection. This is done by
-attempting to make a WebDAV request from PHP.
+Which domains to request to determine the availability of an Internet
+connection. If none of these hosts are reachable, the administration panel
+will show a warning. Set to an empty list to not do any such checks (warning
+will still be shown).
+
+Defaults to the following domains:
+
+ - www.nextcloud.com
+ - www.startpage.com
+ - www.eff.org
+ - www.edri.org
 
 ::
 
@@ -801,12 +863,17 @@ Logging
 
 	'log_type' => 'file',
 
-By default the Nextcloud logs are sent to the ``nextcloud.log`` file in the
-default Nextcloud data directory.
+This parameter determines where the Nextcloud logs are sent.
 
-If syslogging is desired, set this parameter to ``syslog``.
-Setting this parameter to ``errorlog`` will use the PHP error_log function
-for logging.
+``file``: the logs are written to file ``nextcloud.log`` in the default
+Nextcloud data directory. The log file can be changed with parameter
+``logfile``.
+``syslog``: the logs are sent to the system log. This requires a syslog daemon
+to be active.
+``errorlog``: the logs are sent to the PHP ``error_log`` function.
+``systemd``: the logs are sent to the Systemd journal. This requires a system
+that runs Systemd and the Systemd journal. The PHP extension ``systemd``
+must be installed and active.
 
 Defaults to ``file``
 
@@ -814,9 +881,18 @@ Defaults to ``file``
 
 	'logfile' => '/var/log/nextcloud.log',
 
-Log file path for the Nextcloud logging type.
+Name of the file to which the Nextcloud logs are written if parameter
+``log_type`` is set to ``file``.
 
 Defaults to ``[datadirectory]/nextcloud.log``
+
+::
+
+	'logfilemode' => 0640,
+
+Log file mode for the Nextcloud loggin type in octal notation.
+
+Defaults to 0640 (writeable by user, readable by group).
 
 ::
 
@@ -833,7 +909,8 @@ Defaults to ``2``
 
 If you maintain different instances and aggregate the logs, you may want
 to distinguish between them. ``syslog_tag`` can be set per instance
-with a unique id. Only available if ``log_type`` is set to ``syslog``.
+with a unique id. Only available if ``log_type`` is set to ``syslog`` or
+``systemd``.
 
 The default value is ``Nextcloud``.
 
@@ -886,7 +963,7 @@ debugging, as your logfile will become huge.
 
 ::
 
-	'log_rotate_size' => false,
+	'log_rotate_size' => 100 * 1024 * 1024,
 
 Enables log rotation and limits the total size of logfiles. The default is 0,
 or no rotation. Specify a size in bytes, for example 104857600 (100 megabytes
@@ -894,7 +971,7 @@ or no rotation. Specify a size in bytes, for example 104857600 (100 megabytes
 old logfile reaches your limit. If a rotated log file is already present, it
 will be overwritten.
 
-Defaults to ``0`` (no rotation)
+Defaults to 100 MB
 
 Alternate Code Locations
 ------------------------
@@ -910,14 +987,17 @@ Some of the Nextcloud code may be stored in alternate locations.
 		'https://play.google.com/store/apps/details?id=com.nextcloud.client',
 	'customclient_ios' =>
 		'https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8',
+	'customclient_ios_appid' =>
+			'1125420102',
 
 This section is for configuring the download links for Nextcloud clients, as
 seen in the first-run wizard and on Personal pages.
 
-Defaults to
-* Desktop client: ``https://nextcloud.com/install/#install-clients``
-* Android client: ``https://play.google.com/store/apps/details?id=com.nextcloud.client``
-* iOS client    : ``https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8``
+Defaults to:
+ - Desktop client: ``https://nextcloud.com/install/#install-clients``
+ - Android client: ``https://play.google.com/store/apps/details?id=com.nextcloud.client``
+ - iOS client: ``https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8``
+ - iOS client app id: ``1125420102``
 
 Apps
 ----
@@ -1027,7 +1107,7 @@ Defaults to ``''`` (empty string)
 
 	'preview_office_cl_parameters' =>
 		' --headless --nologo --nofirststartwizard --invisible --norestore '.
-		'--convert-to pdf --outdir ',
+		'--convert-to png --outdir ',
 
 Use this if LibreOffice/OpenOffice requires additional arguments.
 
@@ -1039,6 +1119,7 @@ Defaults to ``''`` (empty string)
 		'OC\Preview\PNG',
 		'OC\Preview\JPEG',
 		'OC\Preview\GIF',
+		'OC\Preview\HEIC',
 		'OC\Preview\BMP',
 		'OC\Preview\XBitmap',
 		'OC\Preview\MP3',
@@ -1078,6 +1159,7 @@ Defaults to the following providers:
 
  - OC\\Preview\\BMP
  - OC\\Preview\\GIF
+ - OC\\Preview\\HEIC
  - OC\\Preview\\JPEG
  - OC\\Preview\\MarkDown
  - OC\\Preview\\MP3
@@ -1137,15 +1219,6 @@ filesystem instead of the database to keep the tags.
 
 Defaults to ``\OC\SystemTag\ManagerFactory``
 
-::
-
-	'mail_template_class' => '\OC\Mail\EMailTemplate',
-
-Replaces the default mail template layout. This can be utilized if the
-options to modify the mail texts with the theming app is not enough.
-
-The class must extend  ``\OC\Mail\EMailTemplate``
-
 Maintenance
 -----------
 
@@ -1189,7 +1262,6 @@ Available cache backends:
 * ``\OC\Memcache\ArrayCache`` In-memory array-based backend (not recommended)
 * ``\OC\Memcache\Memcached``  Memcached backend
 * ``\OC\Memcache\Redis``      Redis backend
-* ``\OC\Memcache\XCache``     XCache backend
 
 Advice on choosing between the various backends:
 
@@ -1241,11 +1313,12 @@ for more information.
 	'redis.cluster' => [
 		'seeds' => [ // provide some/all of the cluster servers to bootstrap discovery, port required
 			'localhost:7000',
-			'localhost:7001'
+			'localhost:7001',
 		],
 		'timeout' => 0.0,
 		'read_timeout' => 0.0,
-		'failover_mode' => \RedisCluster::FAILOVER_ERROR
+		'failover_mode' => \RedisCluster::FAILOVER_ERROR,
+		'password' => '', // Optional, if not defined no password will be used.
 	],
 
 Connection details for a Redis Cluster
@@ -1268,6 +1341,9 @@ scheduled to a slave that is not fully synchronized with the connected master
 which then causes a FileLocked exception.
 
 See https://redis.io/topics/cluster-spec for details about the Redis cluster
+
+Authentication works with phpredis version 4.2.1+. See
+https://github.com/phpredis/phpredis/commit/c5994f2a42b8a348af92d3acb4edff1328ad8ce1
 
 ::
 
@@ -1378,6 +1454,37 @@ to be fetched in addition to any requested file.
 
 One way to test is applying for a trystack account at http://trystack.org/
 
+::
+
+	'objectstore' => [
+		'class' => 'OC\\Files\\ObjectStore\\Swift',
+		'arguments' => [
+			'autocreate' => true,
+			'user' => [
+				'name' => 'swift',
+				'password' => 'swift',
+				'domain' => [
+					'name' => 'default',
+				],
+			],
+			'scope' => [
+				'project' => [
+					'name' => 'service',
+					'domain' => [
+						'name' => 'default',
+					],
+				],
+			],
+			'tenantName' => 'service',
+			'serviceName' => 'swift',
+			'region' => 'regionOne',
+			'url' => 'http://yourswifthost:5000/v3',
+			'bucket' => 'nextcloud',
+		],
+	],
+
+To use swift V3
+
 Sharing
 -------
 
@@ -1407,6 +1514,15 @@ Default is unlimited (value set to 0).
 
 Define the minimum length of the search string before we start auto-completion
 Default is no limit (value set to 0)
+
+::
+
+	'sharing.interal_shares_accepted' => false,
+
+Starting with Nextcloud 18 also internal shares have to be accepted. Setting
+this setting to true forces all internal shares to be accepted directly.
+
+(resulting in pre 18 behavior).
 
 All other configuration options
 -------------------------------
@@ -1520,6 +1636,8 @@ Defaults to ``array('.htaccess')``
 
 Define a default folder for shared files and folders other than root.
 
+Changes to this value will only have effect on new shares.
+
 Defaults to ``/``
 
 ::
@@ -1562,6 +1680,18 @@ EXPERIMENTAL: option whether to include external storage in quota
 calculation, defaults to false.
 
 Defaults to ``false``
+
+::
+
+	'external_storage.auth_availability_delay' => 1800,
+
+When an external storage is unavailable for some reasons, it will be flagged
+as such for 10 minutes. When the trigger is a failed authentication attempt
+the delay is higher and can be controlled with this option. The motivation
+is to make account lock outs at Active Directories (and compatible) more
+unlikely.
+
+Defaults to ``1800`` (seconds)
 
 ::
 
@@ -1618,12 +1748,27 @@ lose this string there will be data corruption.
 
 ::
 
-	'trusted_proxies' => array('203.0.113.45', '198.51.100.128'),
+	'trusted_proxies' => array('203.0.113.45', '198.51.100.128', '192.168.2.0/24'),
 
 List of trusted proxy servers
 
-If you configure these also consider setting `forwarded_for_headers` which
-otherwise defaults to `HTTP_X_FORWARDED_FOR` (the `X-Forwarded-For` header).
+You may set this to an array containing a combination of
+- IPv4 addresses, e.g. `192.168.2.123`
+- IPv4 ranges in CIDR notation, e.g. `192.168.2.0/24`
+- IPv6 addresses, e.g. `fd9e:21a7:a92c:2323::1`
+
+_(CIDR notation for IPv6 is currently work in progress and thus not
+available as of yet)_
+
+When an incoming request's `REMOTE_ADDR` matches any of the IP addresses
+specified here, it is assumed to be a proxy instead of a client. Thus, the
+client IP will be read from the HTTP header specified in
+`forwarded_for_headers` instead of from `REMOTE_ADDR`.
+
+So if you configure `trusted_proxies`, also consider setting
+`forwarded_for_headers` which otherwise defaults to `HTTP_X_FORWARDED_FOR`
+(the `X-Forwarded-For` header).
+
 Defaults to an empty array.
 
 ::
@@ -1637,7 +1782,7 @@ Headers that should be trusted as client IP address in combination with
 If set incorrectly, a client can spoof their IP address as visible to
 Nextcloud, bypassing access controls and making logs useless!
 
-Defaults to ``'HTTP_X_FORWARED_FOR'``
+Defaults to ``'HTTP_X_FORWARDED_FOR'``
 
 ::
 
@@ -1763,6 +1908,40 @@ set to true if the server is used in a setup based on Nextcloud's Global Scale a
 
 by default federation is only used internally in a Global Scale setup
 If you want to allow federation outside of your environment set it to 'global'
+
+::
+
+	'csrf.optout' => array(
+		'/^WebDAVFS/', // OS X Finder
+		'/^Microsoft-WebDAV-MiniRedir/', // Windows webdav drive
+	),
+
+List of incompatible user agents opted out from Same Site Cookie Protection.
+
+Some user agents are notorious and don't really properly follow HTTP
+specifications. For those, have an opt-out.
+
+WARNING: only use this if you know what you are doing
+
+::
+
+	'simpleSignUpLink.shown' => true,
+
+By default there is on public pages a link shown that allows users to
+learn about the "simple sign up" - see https://nextcloud.com/signup/
+
+If this is set to "false" it will not show the link.
+
+::
+
+	'login_form_autocomplete' => true,
+
+By default autocompletion is enabled for the login form on Nextcloud's login page.
+
+While this is enabled, browsers are allowed to "remember" login names and such.
+Some companies require it to be disabled to comply with their security policy.
+
+Simply set this property to "false", if you want to turn this feature off.
 
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.

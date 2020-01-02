@@ -34,7 +34,7 @@ Show user backend, Send email to new users,** and **Show email address**.
 User accounts have the following properties:
 
 *Login Name (Username)*
-  The unique ID of an Nextcloud user, and it cannot be changed.
+  The unique ID of a Nextcloud user, and it cannot be changed.
 
 *Full Name*
   The user's display name that appears on file shares, the Nextcloud Web
@@ -149,9 +149,14 @@ You now have a configurable option in ``config.php`` that controls whether
 external storage is counted against user's quotas. This is still
 experimental, and may not work as expected. The default is to not count
 external storage as part of user storage quotas. If you prefer to include it,
-then change the default ``false`` to ``true``.::
+then change the default ``false`` to ``true``.
+
+::
 
    'quota_include_external_storage' => false,
+
+.. note:: If an external storage is defined as root, the quota will not
+   be calculable and will be **ignored**.
 
 Metadata (such as thumbnails, temporary files, and encryption keys) takes up
 about 10% of disk space, but is not counted against user quotas. Users can check

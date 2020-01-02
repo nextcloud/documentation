@@ -1,9 +1,9 @@
-========================================
-Configuring the ClamAV antivirus scanner
-========================================
+=================
+Antivirus scanner
+=================
 
 You can configure your Nextcloud server to automatically run a virus scan on
-newly-uploaded files with the Antivirus App for Files. The Antivirus App for
+newly-uploaded files with the Antivirus app for Files. The Antivirus app for
 Files integrates the open source anti-virus engine `ClamAV
 <http://www.clamav.net/index.html>`_  with Nextcloud. ClamAV detects all forms
 of malware including Trojan horses, viruses, and worms, and it operates on all
@@ -15,7 +15,7 @@ intervals.
 ClamAV runs on Linux and any Unix-type operating system, and Microsoft Windows.
 However, it has only been tested with Nextcloud on Linux, so these instructions
 are for Linux systems. You must first install ClamAV, and then install and
-configure the Antivirus App for Files on Nextcloud.
+configure the Antivirus app for Files on Nextcloud.
 
 Installing ClamAV
 -----------------
@@ -35,8 +35,8 @@ it's a good idea to review the ClamAV documentation and your settings in
 ``/etc/clamav/``. Enable verbose logging in both ``clamd.conf`` and
 ``freshclam.conf`` until you get any kinks worked out.
 
-Red Hat 7, CentOS 7
-  On Red Hat 7 and related systems you must install the Extra Packages for
+RedHat Enterprise Linux 7, CentOS 7
+  On RedHat Enterprise Linux 7 and related systems you must install the Extra Packages for
   Enterprise Linux (EPEL) repository, and then install ClamAV::
 
    yum install epel-release

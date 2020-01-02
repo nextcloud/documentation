@@ -1,12 +1,11 @@
+.. _appclassloader:
+
 ===========
 Classloader
 ===========
-
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
 The classloader is provided by Nextcloud and loads all your classes automatically. The only thing left to include by yourself are 3rdparty libraries. Those should be loaded in :file:`lib/AppInfo/Application.php`.
-
-.. versionadded:: 10
 
 PSR-4 autoloading
 -----------------
@@ -33,35 +32,3 @@ info.xml in the following way:
 
 A second PSR-4 root is available when running tests. **\\OCA\\MyApp\\Tests** is
 thereby mapped to :file:`/apps/myapp/tests/`.
-
-Legacy autoloading
-------------------
-
-The legacy classloader, deprecated since 10, is still in place and works like this:
-
-* Take the full qualifier of a class::
-
-    \OCA\MyApp\Controller\PageController
-
-* If it starts with \\OCA include file from the apps directory
-* Cut off \\OCA::
-
-    \MyApp\Controller\PageController
-
-* Convert all charactes to lowercase::
-
-    \myapp\controller\pagecontroller
-
-* Replace \\ with /::
-
-    /myapp/controller/pagecontroller
-
-* Append .php::
-
-    /myapp/controller/pagecontroller.php
-
-* Prepend /apps because of the **OCA** namespace and include the file::
-
-    require_once '/apps/myapp/controller/pagecontroller.php';
-
-**In other words**: In order for the PageController class to be autoloaded, the class **\\OCA\\MyApp\\Controller\\PageController** needs to be stored in the :file:`/apps/myapp/controller/pagecontroller.php` 

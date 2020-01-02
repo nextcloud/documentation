@@ -8,6 +8,12 @@ connect Linux, macOS, Windows, and mobile devices to your Nextcloud server via
 WebDAV. Before we get into configuring WebDAV, let's take a quick look at the
 recommended way of connecting client devices to your Nextcloud servers.
 
+.. note:: In the following examples, you should replace **example.com/nextcloud** with the
+   URL of your Nextcloud server (omit the directory part if the installation is 
+   in the root of your domain), and "USERNAME" with the username of the connecting user.
+
+   See the webdav url (bottom left, settings) on your Nextcloud.
+
 Nextcloud Desktop and mobile clients
 ------------------------------------
 
@@ -43,9 +49,6 @@ Distributed Authoring and Versioning (WebDAV) is a Hypertext Transfer Protocol
 (HTTP) extension that makes it easy to create, read, and edit files on Web
 servers. With WebDAV you can access your Nextcloud shares on Linux, macOS and
 Windows in the same way as any remote network share, and stay synchronized.
-
-.. note:: In the following examples, You must adjust **example.com/** to the
-   URL of your Nextcloud server installation.
 
 Accessing files using Linux
 ---------------------------
@@ -120,7 +123,7 @@ automatically every time you log in to your Linux computer.
 
     usermod -aG davfs2 <username>
 
-3. Then create an ``nextcloud`` directory in your home directory for the
+3. Then create a ``nextcloud`` directory in your home directory for the
    mountpoint, and ``.davfs2/`` for your personal configuration file::
 
     mkdir ~/nextcloud
@@ -132,18 +135,23 @@ automatically every time you log in to your Linux computer.
 
 5. Set yourself as the owner and make the permissions read-write owner only::
 
-    chown <username>:<username> ~/.davfs2/secrets
+    chown <linux_username>:<linux_username> ~/.davfs2/secrets
     chmod 600 ~/.davfs2/secrets
 
 6. Add your Nextcloud login credentials to the end of the ``secrets`` file,
    using your Nextcloud server URL and your Nextcloud username and password::
 
-    example.com/nextcloud/remote.php/dav/files/USERNAME/ <username> <password>
+    https://example.com/nextcloud/remote.php/dav/files/USERNAME/ <username> <password>
+    or
+    $PathToMountPoint $USERNAME $PASSWORD
+    for example
+    /home/user/nextcloud john 1234
 
 7. Add the mount information to ``/etc/fstab``::
 
-    example.com/nextcloud/remote.php/dav/files/USERNAME/ /home/<username>/nextcloud
+    https://example.com/nextcloud/remote.php/dav/files/USERNAME/ /home/<linux_username>/nextcloud
     davfs user,rw,auto 0 0
+    
 
 8. Then test that it mounts and authenticates by running the following
    command. If you set it up correctly you won't need root permissions::
@@ -190,54 +198,44 @@ path of your certificate as in this example::
 Accessing files using macOS
 ---------------------------
 
-.. note:: The macOS Finder suffers from a `series of implementation problems
-   <http://sabre.io/dav/clients/finder/>`_ and should only be used if the
-   Nextcloud server runs on **Apache** and **mod_php**, or **Nginx 1.3.8+**.
+.. note:: The macOS Finder suffers from a `series of implementation problems <http://sabre.io/dav/clients/finder/>`_ and should only be used if the Nextcloud server runs on **Apache** and **mod_php**, or **Nginx 1.3.8+**. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like `Cyberduck <https://cyberduck.io/>`_ (see instructions `here <https://docs.nextcloud.com/server/stable/user_manual/files/access_webdav.html#accessing-files-using-cyberduck>`_) and `Filezilla <https://filezilla-project.org>`_. Commercial clients include `Mountain Duck <https://mountainduck.io/>`_, `Forklift <https://binarynights.com/>`_, `Transmit <https://panic.com/>`_, and `Commander One <https://mac.eltima.com/>`_.
 
 To access files through the macOS Finder:
 
-1. Choose **Go > Connect to Server**.
-
-  The "Connect to Server" window opens.
-
-2. Specify the address of the server in the **Server Address** field.
+1. From the Finder’s top menu bar, choose **Go > Connect to Server...**
 
   .. image:: ../images/osx_webdav1.png
      :alt: Screenshot of entering your Nextcloud server address on macOS
 
-  For example, the URL used to connect to the Nextcloud server
-  from the macOS Finder is::
+2. When the **Connect to Server...** window opens, enter your Nexcloud server’s WebDAV address in the **Server Address:** field, ie:
 
-    https://example.com/nextcloud/remote.php/dav/files/USERNAME/
+    https://cloud.YOURDOMAIN.com/remote.php/dav/files/USERNAME/
 
   .. image:: ../images/osx_webdav2.png
+     :alt: Screenshot: Enter Nextcloud server address in “Connect to Server...” dialog box
 
-3. Click **Connect**.
+3. Click **Connect**. Your WebDAV server should appear on the Desktop as a shared disk drive.
 
-  The device connects to the server.
-
-For added details about how to connect to an external server using macOS,
-check the `vendor documentation
-<http://docs.info.apple.com/article.html?path=Mac/10.6/en/8160.html>`_ .
 
 Accessing files using Microsoft Windows
 ---------------------------------------
 
 If you use the native Windows implementation, you can map Nextcloud to a new
-drive. Mapping to a drive enables you to browse files stored on an Nextcloud
+drive. Mapping to a drive enables you to browse files stored on a Nextcloud
 server the way you would files stored in a mapped network drive.
 
 Using this feature requires network connectivity. If you want to store your
 files offline, use the Desktop Client to sync all files on your
 Nextcloud to one or more directories of your local hard drive.
 
-.. note:: Prior to mapping your drive, you must permit the use of Basic
-  Authentication in the Windows Registry. The procedure is documented in
-  KB841215_ and differs between Windows XP/Server 2003 and Windows Vista/7.
-  Please follow the Knowledge Base article before proceeding, and follow the
-  Vista instructions if you run Windows 7.
-
-.. _KB841215: https://support.microsoft.com/kb/841215
+.. note:: Prior to mapping your drive, you must permit the use of Basic 
+Authentication in the Windows Registry: launch „regedit“ and navigate to 
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters. 
+Create or edit the DWORD value „BasicAuthLevel“ (Windows Vista, 7 and 8) or 
+„UseBasicAuth“ (Windows XP and Windows Server 2003) and set its value data 
+to 1 for SSL connections. Value 0 means that Basic Authentication is disabled, 
+a value of 2 allows both SSL and non-SSL connections (not recommended). 
+Then exit Registry Editor, and restart the computer.
 
 Mapping drives with the command line
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -302,7 +300,7 @@ To map a drive using the Microsoft Windows Explorer:
 Accessing files using Cyberduck
 -------------------------------
 
-`Cyberduck <https://cyberduck.io/?l=en>`_ is an open source FTP and SFTP,
+`Cyberduck <https://cyberduck.io/>`_ is an open source FTP and SFTP,
 WebDAV, OpenStack Swift, and Amazon S3 browser designed for file transfers on
 macOS and Windows.
 
@@ -336,10 +334,14 @@ Nextcloud provides the possibility to access public shares over WebDAV.
 
 To access the public share, open::
 
-  https://example.com/nextcloud/public.php/dav
+  https://example.com/nextcloud/public.php/webdav
 
 in a WebDAV client, use the share token as username and the (optional) share password
 as password.
+
+.. note:: ``Settings → Administration → Sharing → Allow users on this
+   server to send shares to other servers`` needs to be enabled in order
+   to make this feature work.
 
 Known problems
 --------------

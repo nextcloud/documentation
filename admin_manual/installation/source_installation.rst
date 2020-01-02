@@ -2,74 +2,23 @@
 Installation on Linux
 =====================
 
-If there are no packages for your Linux distribution, you have the option to
-install `Snap Packages <http://snapcraft.io/docs/core/install/>`_. See
-:ref:`snaps_label`
-
 In case you prefer installing from the source tarball, you can setup Nextcloud
 from scratch using a classic LAMP stack (Linux, Apache, MySQL/MariaDB, PHP).
 This document provides a complete walk-through for installing Nextcloud on
-Ubuntu 16.04 LTS Server with Apache and MariaDB, using `the Nextcloud .tar
-archive <https://nextcloud.com/install/>`_.
-
-* :ref:`vm_label`
-* :ref:`snaps_label`
-* :ref:`prerequisites_label`
-* :ref:`ubuntu_installation_label`
-* :ref:`binlog_format_label`
-* :ref:`apache_configuration_label`
-* :ref:`pretty_urls_label`
-* :ref:`enabling_ssl_label`
-* :ref:`installation_wizard_label`
-* :ref:`selinux_tips_label`
-* :ref:`php_ini_tips_label`
-* :ref:`php_fpm_tips_label`
-* :ref:`other_HTTP_servers_label`
+Ubuntu 18.04 LTS Server with Apache and MariaDB, using `the Nextcloud .tar
+archive <https://nextcloud.com/install/>`_. This method is recommended to install Nextcloud.
 
 .. note:: Admins of SELinux-enabled distributions such as CentOS, Fedora, and
    Red Hat Enterprise Linux may need to set new rules to enable installing
    Nextcloud. See :ref:`selinux_tips_label` for a suggested configuration.
 
-.. _vm_label:
 
-Installing on Windows (virtual machine)
----------------------------------------
+If you prefer a more automated installation of Nextcloud and there are no packages for your Linux distribution, you have the option to
+install the community `Snap Packages <http://snapcraft.io/docs/core/install/>`_. See
+:ref:`snaps_label` You can also use the `Nextcloud VM scripts <https://github.com/nextcloud/vm/>`_ to install directly on a clean Ubuntu Server. It will setup everything for you and include scripts for automated installation of apps like; Collabora, OnlyOffice, Talk and so on. Please note that those two options are not officially supported by Nextcloud GmbH.
 
-If you are using Windows, the easiest way to get Nextcloud up and running is
-using a `Nextcloud virtual machine (VM) <https://github.com/nextcloud/vm>`_.
-The VMs are maintained by `Tech and Me <https://www.techandme.se/>`_ and
-several different versions are offered. The main version is for VMware version
-10 and it comes in different sizes. The standard size is 20 GB but you can also
-download a 500 GB or a 1 TB version. Tech and Me also provides a Hyper-V
-version for Hyper-V users.
 
-For complete instructions and downloads see:
-
-- https://github.com/nextcloud/vm 
-- https://www.techandme.se/nextcloud-vm/
-
-.. note:: You can install the VM on OSes other than Windows as long as
-your hypervisor can mount OVA, VMDK, or VHD VM formats.
-
-.. _snaps_label:
-
-Installing via Snap packages
-----------------------------
-
-A snap is a zip file containing an application together with its dependencies,
-and a description of how it should safely be run on your system, especially
-the different ways it should talk to other software. Most importantly snaps are
-designed to be secure, sandboxed, containerized applications isolated from the
-underlying system and from other applications.
-
-To install the Nextcloud Snap Package, run the following command in a terminal::
-
-    sudo snap install nextcloud
-
-.. note:: The `snapd technology <http://snapcraft.io/docs/core/>`_ is the core
-   that powers snaps, and it offers a new way to package, distribute, update and
-   run OS components and applications on a Linux system. See more about snaps on
-   `snapcraft.io <http://snapcraft.io/>`_.
+This installation guide is giving a general overview of required dependencies and their configuration. For a distribution specific setup guide have a look at the :doc:`./example_ubuntu` and :doc:`./example_centos`.
 
 .. _prerequisites_label:
 
@@ -85,15 +34,19 @@ If you get a result, the module is present.
 
 Required:
 
-* PHP (>= 5.6, 7.0 or 7.1)
+* PHP (7.1, 7.2 or 7.3)
 * PHP module ctype
+* PHP module curl
 * PHP module dom
 * PHP module GD
+* PHP module hash (only on FreeBSD)
 * PHP module iconv
 * PHP module JSON
 * PHP module libxml (Linux package libxml2 must be >=2.7.0)
 * PHP module mbstring
+* PHP module openssl
 * PHP module posix
+* PHP module session
 * PHP module SimpleXML
 * PHP module XMLReader
 * PHP module XMLWriter
@@ -108,14 +61,10 @@ Database connectors (pick the one for your database:)
 
 *Recommended* packages:
 
-* PHP module curl (highly recommended, some functionality, e.g. HTTP user
-  authentication, depends on this)
 * PHP module fileinfo (highly recommended, enhances file analysis performance)
 * PHP module bz2 (recommended, required for extraction of apps)
 * PHP module intl (increases language translation performance and fixes sorting
   of non-ASCII characters)
-* PHP module mcrypt (increases file encryption performance)
-* PHP module openssl (required for accessing HTTPS resources)
 
 Required for specific apps:
 
@@ -155,85 +104,9 @@ You don’t need the WebDAV module for your Web server (i.e. Apache’s
 SabreDAV.
 If ``mod_webdav`` is enabled you must disable it for Nextcloud. (See
 :ref:`apache_configuration_label` for an example configuration.)
- 
-.. _ubuntu_installation_label:  
-
-Example installation on Ubuntu 16.04 LTS server
------------------------------------------------
-
-On a machine running a pristine Ubuntu 16.04 LTS server, you have two options:
-
-You can either install the Nextcloud `Snap Package <http://snapcraft.io/>`_, just run the
-following command in a terminal::
-
-    sudo snap install nextcloud
-
-Or you can use .deb packages to install the required and recommended modules for a typical Nextcloud
-installation, using Apache and MariaDB, by issuing the following commands in a
-terminal::
-
-    apt-get install apache2 mariadb-server libapache2-mod-php7.0
-    apt-get install php7.0-gd php7.0-json php7.0-mysql php7.0-curl php7.0-mbstring
-    apt-get install php7.0-intl php7.0-mcrypt php-imagick php7.0-xml php7.0-zip
-
-* This installs the packages for the Nextcloud core system.
-  ``libapache2-mod-php7.0`` provides the following PHP extensions: ``bcmath bz2
-  calendar Core ctype date dba dom ereg exif fileinfo filter ftp gettext hash
-  iconv libxml mhash openssl pcre Phar posix Reflection session shmop
-  SimpleXML soap sockets SPL standard sysvmsg sysvsem sysvshm tokenizer wddx
-  xmlreader xmlwriter zlib``. If you are planning
-  on running additional apps, keep in mind that they might require additional
-  packages.  See :ref:`prerequisites_label` for details.
-
-* At the installation of the MySQL/MariaDB server, you will be prompted to
-  create a root password. Be sure to remember your password as you will need it
-  during Nextcloud database setup.
-
-Now download the archive of the latest Nextcloud version:
-
-* Go to the `Nextcloud Download Page <https://nextcloud.com/install>`_.
-* Go to **Download Nextcloud Server > Download > Archive file for
-  server owners** and download either the tar.bz2 or .zip archive.
-* This downloads a file named nextcloud-x.y.z.tar.bz2 or nextcloud-x.y.z.zip
-  (where x.y.z is the version number).
-* Download its corresponding checksum file, e.g. nextcloud-x.y.z.tar.bz2.md5,
-  or nextcloud-x.y.z.tar.bz2.sha256.
-* Verify the MD5 or SHA256 sum::
-   
-    md5sum -c nextcloud-x.y.z.tar.bz2.md5 < nextcloud-x.y.z.tar.bz2
-    sha256sum -c nextcloud-x.y.z.tar.bz2.sha256 < nextcloud-x.y.z.tar.bz2
-    md5sum  -c nextcloud-x.y.z.zip.md5 < nextcloud-x.y.z.zip
-    sha256sum  -c nextcloud-x.y.z.zip.sha256 < nextcloud-x.y.z.zip
-    
-* You may also verify the PGP signature::
-    
-    wget https://download.nextcloud.com/server/releases/nextcloud-x.y.z.tar.bz2.asc
-    wget https://nextcloud.com/nextcloud.asc
-    gpg --import nextcloud.asc
-    gpg --verify nextcloud-x.y.z.tar.bz2.asc nextcloud-x.y.z.tar.bz2
- 
-* Now you can extract the archive contents. Run the appropriate unpacking
-  command for your archive type::
-
-    tar -xjf nextcloud-x.y.z.tar.bz2
-    unzip nextcloud-x.y.z.zip
-
-* This unpacks to a single ``nextcloud`` directory. Copy the Nextcloud directory
-  to its final destination. When you are running the Apache HTTP server you may
-  safely install Nextcloud in your Apache document root::
-
-    cp -r nextcloud /path/to/webserver/document-root
-
-  where ``/path/to/webserver/document-root`` is replaced by the
-  document root of your Web server::
-    
-    cp -r nextcloud /var/www
-
-On other HTTP servers it is recommended to install Nextcloud outside of the
-document root.
 
 .. _apache_configuration_label:
-   
+
 Apache Web server configuration
 -------------------------------
 
@@ -241,26 +114,46 @@ On Debian, Ubuntu, and their derivatives, Apache installs with a useful
 configuration so all you have to do is create a
 :file:`/etc/apache2/sites-available/nextcloud.conf` file with these lines in
 it, replacing the **Directory** and other filepaths with your own filepaths::
-   
-  Alias /nextcloud "/var/www/nextcloud/"
-   
-  <Directory /var/www/nextcloud/>
-    Options +FollowSymlinks
-    AllowOverride All
 
-   <IfModule mod_dav.c>
-    Dav off
-   </IfModule>
+    Alias /nextcloud "/var/www/nextcloud/"
 
-   SetEnv HOME /var/www/nextcloud
-   SetEnv HTTP_HOME /var/www/nextcloud
+    <Directory /var/www/nextcloud/>
+      Require all granted
+      Options FollowSymlinks MultiViews
+      AllowOverride All
 
-  </Directory>
- 
-Then create a symlink to :file:`/etc/apache2/sites-enabled`::
+     <IfModule mod_dav.c>
+      Dav off
+     </IfModule>
 
-  ln -s /etc/apache2/sites-available/nextcloud.conf /etc/apache2/sites-enabled/nextcloud.conf
- 
+     SetEnv HOME /var/www/nextcloud
+     SetEnv HTTP_HOME /var/www/nextcloud
+
+    </Directory>
+
+Then enable the newly created site::
+
+    a2ensite nextcloud.conf
+
+
+On CentOS/RHEL, create a virtualhost :file:`/etc/httpd/conf.d/nextcloud.conf` and add the following content to it::
+
+    <VirtualHost *:80>
+      DocumentRoot /var/www/nextcloud/
+      ServerName  your.server.com
+
+      <Directory "/var/www/nextcloud/">
+        Require all granted
+        AllowOverride All
+        Options FollowSymLinks MultiViews
+
+        <IfModule mod_dav.c>
+          Dav off
+        </IfModule>
+
+      </Directory>
+    </VirtualHost>
+
 Additional Apache configurations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -268,16 +161,16 @@ Additional Apache configurations
   it by running::
 
     a2enmod rewrite
- 
+
   Additional recommended modules are ``mod_headers``, ``mod_env``, ``mod_dir`` and ``mod_mime``::
- 
+
     a2enmod headers
     a2enmod env
     a2enmod dir
     a2enmod mime
- 
+
   If you're running ``mod_fcgi`` instead of the standard ``mod_php`` also enable::
- 
+
     a2enmod setenvif
 
 * You must disable any server-configured authentication for Nextcloud, as it
@@ -296,14 +189,14 @@ Additional Apache configurations
 
 * Now restart Apache::
 
-     service apache2 restart
+    service apache2 restart
 
 * If you're running Nextcloud in a subdirectory and want to use CalDAV or
   CardDAV clients make sure you have configured the correct
   :ref:`service-discovery-label` URLs.
- 
-.. _pretty_urls_label:  
- 
+
+.. _pretty_urls_label:
+
 Pretty URLs
 -----------
 
@@ -314,18 +207,18 @@ making URLs shorter and thus prettier.
 ``mod_env`` and ``mod_rewrite`` must be installed on your webserver and the :file:`.htaccess`
 must be writable by the HTTP user. Then you can set in the :file:`config.php` two variables::
 
- 'overwrite.cli.url' => 'https://example.org/nextcloud',
- 'htaccess.RewriteBase' => '/nextcloud',
+    'overwrite.cli.url' => 'https://example.org/nextcloud',
+    'htaccess.RewriteBase' => '/nextcloud',
 
 if your setup is available on ``https://example.org/nextcloud`` or::
 
- 'overwrite.cli.url' => 'https://example.org',
- 'htaccess.RewriteBase' => '/',
+    'overwrite.cli.url' => 'https://example.org/',
+    'htaccess.RewriteBase' => '/',
 
 if it isn't installed in a subfolder. Finally run this occ-command to update
 your .htaccess file::
 
-     sudo -u www-data php /var/www/nextcloud/occ maintenance:update:htaccess
+    sudo -u www-data php /var/www/nextcloud/occ maintenance:update:htaccess
 
 After each update, these changes are automatically applied to the ``.htaccess``-file.
 
@@ -342,28 +235,28 @@ Apache installed under Ubuntu comes already set-up with a simple
 self-signed certificate. All you have to do is to enable the ssl module and
 the default site. Open a terminal and run::
 
-     a2enmod ssl
-     a2ensite default-ssl
-     service apache2 reload
+    a2enmod ssl
+    a2ensite default-ssl
+    service apache2 reload
 
 .. note:: Self-signed certificates have their drawbacks - especially when you
           plan to make your Nextcloud server publicly accessible. You might
           want to consider getting a certificate signed by a commercial signing
           authority. Check with your domain name registrar or hosting service
-          for good deals on commercial certificates.   
-    
+          for good deals on commercial certificates.
+
 .. _installation_wizard_label:
-    
+
 Installation wizard
 -------------------
 
-After restarting Apache you must complete your installation by running either 
-the graphical Installation Wizard, or on the command line with the ``occ`` 
-command. To enable this, change the ownership on your Nextcloud directories to 
-your HTTP user:
+After restarting Apache you must complete your installation by running either
+the graphical Installation Wizard, or on the command line with the ``occ``
+command. To enable this, change the ownership on your Nextcloud directories to
+your HTTP user::
 
- chown -R www-data:www-data /var/www/nextcloud/
- 
+    chown -R www-data:www-data /var/www/nextcloud/
+
 .. note:: Admins of SELinux-enabled distributions may need to write new SELinux
    rules to complete their Nextcloud installation; see
    :ref:`selinux_tips_label`.
@@ -391,27 +284,23 @@ ini file. This can be the case, for example, for the ``date.timezone`` setting.
 **php.ini - used by the Web server:**
 ::
 
-   /etc/php5/apache2/php.ini
- or
-   /etc/php5/fpm/php.ini
- or ...
+    /etc/php/7.2/apache2/php.ini
+  or
+    /etc/php/7.2/fpm/php.ini
+  or ...
 
 **php.ini - used by the php-cli and so by Nextcloud CRON jobs:**
 ::
 
-  /etc/php5/cli/php.ini
+    /etc/php/7.2/cli/php.ini
 
+.. note:: Path names have to be set in respect of the installed PHP
+          (>= 7.0, 7.1, 7.2 or 7.3) as applicable.
 
 .. _php_fpm_tips_label:
 
 php-fpm configuration notes
 ---------------------------
-
-**Security: Use at least PHP >= 5.6.6**
-
-Due to `a bug with security implications <https://bugs.php.net/bug.php?id=64938>`_
-in older PHP releases with the handling of XML data you are highly encouraged to run
-at least PHP 5.6.6 when in a threaded environment.
 
 **System environment variables**
 
@@ -423,14 +312,14 @@ variables in the appropropriate ``php-fpm`` ini/config file.
 
 Here are some example root paths for these ini/config files:
 
-+--------------------+-----------------------+
-| Ubuntu/Mint        | CentOS/Red Hat/Fedora |
-+--------------------+-----------------------+
-| ``/etc/php5/fpm/`` | ``/etc/php-fpm.d/``   |
-+--------------------+-----------------------+
++-----------------------+-----------------------+
+| Debian/Ubuntu/Mint    | CentOS/Red Hat/Fedora |
++-----------------------+-----------------------+
+| ``/etc/php/7.2/fpm/`` | ``/etc/php-fpm.d/``   |
++-----------------------+-----------------------+
 
 In both examples, the ini/config file is called ``www.conf``, and depending on
-the distro version or customizations you have made, it may be in a subdirectory.
+the distro version or customizations you have made, it may be in a subdirectory such as ``pool.d``.
 
 Usually, you will find some or all of the environment variables
 already in the file, but commented out like this::
@@ -444,15 +333,23 @@ already in the file, but commented out like this::
 Uncomment the appropriate existing entries. Then run ``printenv PATH`` to
 confirm your paths, for example::
 
-        $ printenv PATH
-        /home/user/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:
-        /sbin:/bin:/
+    $ printenv PATH
+    /home/user/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:
+    /sbin:/bin:/
 
 If any of your system environment variables are not present in the file then
 you must add them.
 
-When you are using shared hosting or a control panel to manage your `Nextcloud VM
-<https://github.com/nextcloud/vm>`_ or server, the configuration files are almost
+Alternatively it is possible to use the environemt variables of your system by modifying::
+
+    /etc/php/7.2/fpm/pool.d/www.conf
+
+and uncommenting the line::
+
+    clear_env = no
+
+When you are using shared hosting or a control panel to manage your `Nextcloud VM`_
+or server, the configuration files are almost
 certain to be located somewhere else, for security and flexibility reasons, so
 check your documentation for the correct locations.
 
@@ -478,11 +375,90 @@ be set in the ``nextcloud/.user.ini`` file.
 Other Web servers
 -----------------
 
-:doc:`nginx`
+* :doc:`nginx`
+
+.. _vm_label:
+
+Installing on Windows (virtual machine)
+---------------------------------------
+
+If you are using Windows, the easiest way to get Nextcloud up and running is
+using a virtual machine (VM). There are two options:
+
+* **Enterprise/SME appliance**
+
+Nextcloud GmbH maintains a free appliance built on the
+`Univention Corporate Server (UCS) <https://www.univention.com/products/univention-app-center/app-catalog/nextcloud/>`_
+with easy graphical setup and web-based administration. It includes user
+management via LDAP, can replace an existing Active Directory setup and
+has optional ONLYOFFICE and Collabora Online integration, with many more applications
+available for easy and quick install.
+
+It can be installed on hardware or run in a virtual machine using VirtualBox,
+VMWare (ESX) and KVM images.
+
+Download the the Appliance here:
+
+- `Univention Corporate Server (UCS) <https://www.univention.com/products/univention-app-center/app-catalog/nextcloud/>`_
 
 
-`Other HTTP servers (Nextcloud)
-<https://github.com/nextcloud/documentation/wiki/Alternate-Web-server-notes>`_
+* **Home User/SME appliance**
+
+The `Nextcloud VM`_ is maintained by
+`T&M Hansson IT <https://www.hanssonit.se/nextcloud-vm/>`_ and several different versions are
+offered. Collabora, OnlyOffice, Full Text Search and other apps can easily be installed with the included scripts which you can choose to run during the first setup, or download them later and run it afterwards. You can find all the currently available automated app installations `on GitHub <https://github.com/nextcloud/vm/tree/master/apps/>`_.
+
+The VM is made with VMware version 10 and it comes in different sizes and versions:
+
+- 40 GB (VMware, VirtualBox, Hyper-V)
+- 500 GB (VMware, VirtualBox, Hyper-V)
+- 1 TB (VMware, VirtualBox, Hyper-V)
+- 2 TB (VMware & VirtualBox, Hyper-V)
+- Custom size? Please `ask us <https://www.hanssonit.se/#contact>`_.
+
+You can find all the different version `here <https://shop.hanssonit.se/product-category/virtual-machine/nextcloud-vm/>`_.
+
+For complete instructions and downloads see:
+
+- `Nextcloud VM (Github) <https://github.com/nextcloud/vm/>`_
+- `Nextcloud VM (T&M Hansson IT) <https://www.hanssonit.se/nextcloud-vm/>`_
+
+.. note:: You can install the VM on several different operating systems as long as you can mount OVA, VMDK, or VHD/VHDX VM in your hypervisor. If you are using KVM then you need to install the VM from the scripts on Github. You can follow the `instructions in the README <https://github.com/nextcloud/vm#build-your-own-vm-or-install-on-a-vps>`_.
+
+.. _snaps_label:
+
+Installing via Snap packages
+----------------------------
+
+A snap is a zip file containing an application together with its dependencies,
+and a description of how it should safely be run on your system, especially
+the different ways it should talk to other software. Most importantly snaps are
+designed to be secure, sandboxed, containerized applications isolated from the
+underlying system and from other applications.
+
+To install the Nextcloud Snap Package, run the following command in a terminal::
+
+    sudo snap install nextcloud
+
+.. note:: The `snapd technology <http://snapcraft.io/docs/core/>`_ is the core
+   that powers snaps, and it offers a new way to package, distribute, update and
+   run OS components and applications on a Linux system. See more about snaps on
+   `snapcraft.io <http://snapcraft.io/>`_.
+
+   On a machine running a pristine Ubuntu 18.04 LTS server, you have three options:
+
+Installation via install script
+-------------------------------
+
+One of the easiest ways of installing is to use the Nextcloud VM scripts. It's basically just two steps:
+
+1. Download the latest `installation script <https://github.com/nextcloud/vm/blob/master/nextcloud_install_production.sh/>`_.
+2. Run the script with::
+
+    sudo bash nextcloud_install_production.sh
+
+A guided setup will follow and the only thing you have to do it to follow the on screen instructions, when given to you.
 
 
-
+.. _Nextcloud VM:
+    https://github.com/nextcloud/vm

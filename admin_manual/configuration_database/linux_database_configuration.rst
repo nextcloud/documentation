@@ -41,6 +41,57 @@ Configuring a MySQL or MariaDB database
 
 If you decide to use a MySQL or MariaDB database, ensure the following:
 
+* The transaction isolation level is set to "READ-COMMITED" in your MariaDB server configuration :file:`/etc/mysql/my.cnf` to persist even after a restart of your database server.
+
+  Verify the **transaction_isolation** and **binlog_format**:
+
+::
+
+  [mysqld]
+  ...
+  transaction_isolation = READ-COMMITTED
+  binlog_format = ROW
+  ...
+
+Your :file:`/etc/mysql/my.cnf` could look like this:
+
+::
+
+  [server]
+  skip-name-resolve
+  innodb_buffer_pool_size = 128M
+  innodb_buffer_pool_instances = 1
+  innodb_flush_log_at_trx_commit = 2
+  innodb_log_buffer_size = 32M
+  innodb_max_dirty_pages_pct = 90
+  query_cache_type = 1
+  query_cache_limit = 2M
+  query_cache_min_res_unit = 2k
+  query_cache_size = 64M
+  tmp_table_size= 64M
+  max_heap_table_size= 64M
+  slow-query-log = 1
+  slow-query-log-file = /var/log/mysql/slow.log
+  long_query_time = 1
+
+  [client-server]
+  !includedir /etc/mysql/conf.d/
+  !includedir /etc/mysql/mariadb.conf.d/
+
+  [client]
+  default-character-set = utf8mb4
+
+  [mysqld]
+  character-set-server = utf8mb4
+  collation-server = utf8mb4_general_ci
+  transaction_isolation = READ-COMMITTED
+  binlog_format = ROW
+  innodb_large_prefix=on
+  innodb_file_format=barracuda
+  innodb_file_per_table=1
+
+Please refer to the `page in the MySQL manual <https://mariadb.com/kb/en/library/set-transaction/#read-committed>`_.
+
 * That you have installed and enabled the pdo_mysql extension in PHP
 
 * That the **mysql.default_socket** points to the correct socket (if the database runs on the same server as Nextcloud).
@@ -81,12 +132,13 @@ Then a **mysql>** or **MariaDB [root]>** prompt will appear. Now enter the follo
 ::
 
   CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
-  CREATE DATABASE IF NOT EXISTS nextcloud;
-  GRANT ALL PRIVILEGES ON nextcloud.* TO 'username'@'localhost' IDENTIFIED BY 'password';
+  CREATE DATABASE IF NOT EXISTS nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+  GRANT ALL PRIVILEGES on nextcloud.* to 'username'@'localhost';
+  FLUSH privileges;
 
 You can quit the prompt by entering::
 
-  quit
+  quit;
 
 An Nextcloud instance configured with MySQL would contain the hostname on which
 the database is running, a valid username and password to access it, and the
@@ -104,6 +156,10 @@ this:
     "dbpassword"    => "password",
     "dbhost"        => "localhost",
     "dbtableprefix" => "oc_",
+
+In case of UTF8MB4 you will also find::
+
+    "mysql.utf8mb4" => true,
 
 
 PostgreSQL database
@@ -143,7 +199,7 @@ You can quit the prompt by entering::
 
   \q
 
-An Nextcloud instance configured with PostgreSQL would contain the path to the socket on
+A Nextcloud instance configured with PostgreSQL would contain the path to the socket on
 which the database is running as the hostname, the system username the PHP process is using,
 and an empty password to access it, and the name of the database. The :file:`config/config.php` as
 created by the :doc:`../installation/installation_wizard` would therefore contain entries like
@@ -160,7 +216,7 @@ this:
     "dbhost"        => "/var/run/postgresql",
     "dbtableprefix" => "oc_",
 
-.. note:: The host actually points to the socket that is used to connect to the database. Using localhost here will not work if postgreSQL is configured to use peer authentication. Also note, that no password is specified, because this authentication method doesn't use a password.
+.. note:: The host actually points to the socket that is used to connect to the database. Using localhost here will not work if postgreSQL is configured to use peer authentication. Also note that no password is specified, because this authentication method doesn't use a password.
 
 If you use another authentication method (not peer), you'll need to use the following steps to get the database setup:
 Now you need to create a database user and the database itself by using the
@@ -184,7 +240,7 @@ You can quit the prompt by entering::
 
   \q
 
-An Nextcloud instance configured with PostgreSQL would contain the hostname on
+A Nextcloud instance configured with PostgreSQL would contain the hostname on
 which the database is running, a valid username and password to access it, and
 the name of the database. The :file:`config/config.php` as created by the
 :doc:`../installation/installation_wizard` would therefore contain entries like
@@ -206,10 +262,10 @@ this:
 Troubleshooting
 ---------------
 
-How to workaround general error: 2006 MySQL server has gone away
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+How to work around "general error: 2006 MySQL server has gone away"
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The database request takes too long and therefore the MySQL server times out. Its
+The database request takes too long and therefore the MySQL server times out. It's
 also possible that the server is dropping a packet that is too large. Please
 refer to the manual of your database for how to raise the configuration options
 ``wait_timeout`` and/or ``max_allowed_packet``.
@@ -225,11 +281,11 @@ How can I find out if my MySQL/PostgreSQL server is reachable?
 To check the server's network availability, use the ping command on
 the server's host name (db.server.com in this example)::
 
-  ping db.server.dom
+  ping db.server.com
 
 ::
 
-  PING db.server.dom (ip-address) 56(84) bytes of data.
+  PING db.server.com (ip-address) 56(84) bytes of data.
   64 bytes from your-server.local.lan (192.168.1.10): icmp_req=1 ttl=64 time=3.64 ms
   64 bytes from your-server.local.lan (192.168.1.10): icmp_req=2 ttl=64 time=0.055 ms
   64 bytes from your-server.local.lan (192.168.1.10): icmp_req=3 ttl=64 time=0.062 ms
@@ -240,7 +296,7 @@ itself works correctly, see the next question.
 How can I find out if a created user can access a database?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The easiest way to test if a database can be accessed is by starting the
+The easiest way to test if a database is accessible is by starting the
 command line interface:
 
 **MySQL**:
@@ -273,7 +329,7 @@ the command from, use::
 
   psql -Uusername -dnextcloud
 
-To access a MySQL installation on a different machine, add the -h option with
+To access a PostgreSQL installation on a different machine, add the -h option with
 the respective host name::
 
   psql -Uusername -dnextcloud -h HOSTNAME

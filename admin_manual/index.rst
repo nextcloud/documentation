@@ -16,9 +16,6 @@ Nextcloud server is available:
 * As a free, full featured community-supported server, with all enterprise features.
 * Or with full enterprise support, including phone and email access to Nextcloud developers.
 
-See :doc:`../release_notes` for more information on the different Nextcloud
-editions.
-
 Videos and blogs
 ----------------
 
@@ -38,13 +35,9 @@ user interface, and desktop and mobile clients, please refer to their
 respective manuals:
 
 * `Nextcloud User Manual`_
-* `Nextcloud/ownCloud Desktop Client`_
-* `Nextcloud Android App`_
-* `Nextcloud iOS App`_
+* `Nextcloud Desktop Client`_
 
-.. _`Nextcloud User Manual`: https://docs.nextcloud.com/server/12/user_manual/
-.. _`Nextcloud/ownCloud Desktop Client`: https://doc.owncloud.org/desktop/2.3/
-.. _`Nextcloud Android App`: https://docs.nextcloud.com/android/
-.. _`Nextcloud iOS App`: https://docs.nextcloud.com/ios/
+.. _`Nextcloud User Manual`: https://docs.nextcloud.com/server/latest/user_manual/
+.. _`Nextcloud Desktop Client`: https://docs.nextcloud.com/desktop/2.6/
 
 .. TODO ON RELEASE: Update version number above on release

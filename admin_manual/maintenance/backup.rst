@@ -2,7 +2,7 @@
 Backup
 ======
 
-To backup an Nextcloud installation there are four main things you need to retain:
+To backup a Nextcloud installation there are four main things you need to retain:
 
 #. The config folder
 #. The data folder
@@ -33,7 +33,7 @@ Backup folders
 Simply copy your config, data and theme folders (or even your whole Nextcloud install and data folder) to a place outside of
 your Nextcloud environment. You could use this command::
 
-    rsync -avx nextcloud/ nextcloud-dirbkp_`date +"%Y%m%d"`/
+    rsync -Aavx nextcloud/ nextcloud-dirbkp_`date +"%Y%m%d"`/
 
 Backup database
 ---------------

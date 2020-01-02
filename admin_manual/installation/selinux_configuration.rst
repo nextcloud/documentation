@@ -17,6 +17,7 @@ in these examples for your installation::
  semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/apps(/.*)?'
  semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/.htaccess'
  semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/.user.ini'
+ semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/3rdparty/aws/aws-sdk-php/src/data/logs(/.*)?'
 
  restorecon -Rv '/var/www/html/nextcloud/'
 
@@ -134,4 +135,3 @@ It is much stronger security to have a more fine-grained ruleset as in the
 examples at the beginning, so use this only for testing and troubleshooting. It
 has a similar effect to disabling SELinux, so don't use it on production
 systems.
-

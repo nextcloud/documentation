@@ -2,18 +2,27 @@
 The Nextcloud Web interface
 ===========================
 
-You can connect to your Nextcloud server using any Web browser; just point it to
-your Nextcloud server and enter your username and password. Supported Web
-browsers are:
+You can connect to your Nextcloud server using any Web browser. Just point it to
+your Nextcloud server URL (e.g. cloud.example.com) and enter your username and password. 
 
-* **Mozilla Firefox** 14+
-* **Google Chrome/Chromium** 18+
-* **Safari** 7+
-* **Internet Explorer** 11+
-* **Microsoft Edge**
-
-  .. figure:: images/login_page.png
+.. figure:: images/login_page.png
      :alt: Nextcloud login screen.
+
+Web browser requirements
+------------------------
+
+For the best experience with the Nextcloud web interface, we recommend that you use the 
+latest and supported version of a browser from this list:
+
+* Microsoft **Internet Explorer**
+* Microsoft **Edge**
+* Mozilla **Firefox**
+* Google **Chrome**/Chromium
+* Apple **Safari**
+
+.. note:: If you want to use Nextcloud Talk you need to run Mozilla **Firefox** 52+
+   or Google **Chrome**/Chromium 49+ to have the full experience with video calls and 
+   screensharing. Google **Chrome**/Chromium requires a additional plugin for screensharing.
 
 Navigating the main user interface
 ----------------------------------
@@ -63,12 +72,11 @@ The Nextcloud user interface contains the following fields and functions:
 * **Gallery** button (8). This looks like four little squares, and takes you
   directly to your image gallery.
 
-* **Personal Settings** menu (9): Click on the gear icon or your profile picture,
-  located to the right of the Search field, to open your Personal Settings
-  dropdown menu. Your Personal page provides the following settings and features:
+* **Settings** menu (9): Click on your profile picture,
+  located to the right of the Search field, to open your Settings
+  dropdown menu. Your Settings page provides the following settings and features:
 
   * Links to download desktop and mobile apps
-  * Re-run the First Run Wizard
   * Server usage and space availability
   * Password management
   * Name, email, and profile picture settings
@@ -77,7 +85,7 @@ The Nextcloud user interface contains the following fields and functions:
   * Interface language settings
   * Manage notifications
   * Federated Cloud ID and social media-sharing buttons
-  * SSL certificate manager for external storages
+  * SSL/TLS certificate manager for external storages
   * Your Two-factor Settings
   * Nextcloud Version information
 

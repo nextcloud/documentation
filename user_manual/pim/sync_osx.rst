@@ -1,51 +1,48 @@
-=======================
-Synchronizing with OS X
-=======================
+========================
+Synchronizing with macOS
+========================
 
-To use Nextcloud with iCal you will need to use the following URL::
+Setup your Accounts
+-------------------
 
-    https://example.com/remote.php/dav/principals/users/USERNAME/
+In the following steps you will add your server resources for **CalDAV** (Calendar) 
+and **CardDAV** (Contacts) to your Nextcloud.
 
-The setup is basically the same as with iOS using the path ``https://example.com/remote.php/dav/principals/users/USERNAME/``
-to sync with Nextcloud. For OS X 10.7 Lion and 10.8 Mountain Lion everything works
-fine, but OS X 10.6 (Snow Leopard) and older needs some fiddling to work. A user
-contributed the following:
+1. Open the **system preferences** of your macOS device
 
-#. Make sure, "Addressbook" is not running. If it is, select the windows and press
-Command + Q to terminate it.
-#. Navigate to **/Users/YOUR\_USERNAME/Library/Application Support/AddressBook/Sources**.
-If you already have some kind of addressbook set up, it is likely you will see
-some folders named like this **BEA92826-FBF3-4E53-B5C6-ED7C2B454430**.
-Note down what folders there are now and leave the window open.
-#. Open "Addressbook" and try to add a new CardDav addressbook. At this point, it
-does not matter what information you enter. It will come up with the same error
-message you mentioned before when you click "Create". Ignore it and click "Create"
-again. A non-functional addressbook will be added.
-#. Close "Addressbook" again using Command + Q
-#. Go back to the folder window from step 2. You will now see a newly created folder
-with another long string as its name.
-#. Navigate to the newly created folder and edit the **Configuration.plist** with
-your favorite text editor.
-#. Search for a section looking like this::
+2. Navigate to **Internet Accounts**
 
-    <key>servername</key> <string>https://:0(null)</string> <key>username</key> <string>Whatever_you_entered_before</string>
+.. figure:: ./images/macos_1.png
 
-8. Make it look like this. Please note that the :443 after **example.com** is important::
+3. Click on **Add Other Account...** and click on **CalDAV Account** for Calendar
+   or **CardDAV Account** for Contacts.
 
-    <key>servername</key <string>https://example.com:443/nextcloud/remote.php/dav/principals/users/USERNAME</string> <key>username</key <string>username</string>
+.. figure:: ./images/macos_2.png
 
-9. Save the file and open addressbook again. It will not work yet.
+.. note:: You can not setup Calendar/Contacts together. You need to setup them
+          in **separate accounts**.
 
-10. Open the preferences for your Nextcloud CardDAV-Account and enter your password.
+4. Select **Manual** as Account-Type and type in your respective credentials:
 
-11. You may have to restart addressbook once more. After this, it should work.
+   **Username**: Your Nextcloud username or email
+   **Password**: Your generated App-password/token (`App-password/token <https://docs.nextcloud.com/server/stable/user_manual/session_management.html#managing-devices>`_)
+   **Server Address**: URL of your Nextcloud server (e.g. https://cloud.example.com)
 
-If it's still not working, have a look at the :doc:`troubleshooting` and
-`Troubleshooting Contacts & Calendar`_ guides.
+.. figure:: ./images/macos_3.png
 
-There is also an easy `HOWTO`_ in the forum.
+5. Click on **Sign In**.
 
+**For CalDAV (Calendar):** You can now select, with which applications you want
+to use this resource. In the most cases, this will be the "Calendar" application,
+sometimes you may also want to use it for your **Tasks and reminders**.
 
-.. _HOWTO: https://forum.owncloud.org/viewtopic.php?f=3&t=132
-.. _Troubleshooting Contacts & Calendar: https://docs.nextcloud.org/server/12/admin_manual/issues/index.html#troubleshooting-contacts-calendar
-.. TODO ON RELEASE: Update version number above on release
+.. figure:: ./images/macos_4.png
+
+Troubleshooting
+---------------
+
+- macOS does **not** support syncing CalDAV/CardDAV over non-encrypted ``http://``
+  connections. Make sure you have ``https://`` enabled and configured on server- and
+  client-side.
+
+- **Self-signed certificates** need to be properly set up in the macOS keychain.

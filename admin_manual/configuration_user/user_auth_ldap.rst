@@ -9,9 +9,8 @@ create separate Nextcloud user accounts for them. You will manage their Nextclou
 group memberships, quotas, and sharing permissions just like any other Nextcloud
 user.
 
-.. note:: The PHP LDAP module is required; this is supplied by ``php5-ldap`` on
-   Debian/Ubuntu, and ``php-ldap`` on CentOS/Red Hat/Fedora. PHP 5.6+ is
-   required in Nextcloud.
+.. note:: The PHP LDAP module is required; this is supplied by ``php-ldap`` on
+   most distributions.
 
 The LDAP application supports:
 
@@ -26,9 +25,7 @@ The LDAP application supports:
   port number
 * Only read access to your LDAP (edit or delete of users on your LDAP is not
   supported)
-
-.. warning:: The LDAP app is not compatible with the ``User backend using remote
-   HTTP servers`` app. You cannot use both of them at the same time.
+* Optional: Allow users to change their LDAP password from Nextcloud
 
 .. note:: A non-blocking or correctly configured SELinux setup is needed
    for the LDAP backend to work. Please refer to the :ref:`selinux-config-label`.
@@ -275,6 +272,15 @@ Disable Main Server:
 
 Turn off SSL certificate validation:
   Turns off SSL certificate checking. Use it for testing only!
+  *Note*: The effect of this setting depdends on the PHP system configuration.
+  It does for example not work with the
+  [official Nextcloud container image](https://github.com/nextcloud/docker).
+  To disable certificate verification for a particular use, append the following
+  configuration line to your `/etc/ldap/ldap.conf`:
+
+  ```
+  TLS_REQCERT ALLOW
+  ```
 
 Cache Time-To-Live:
   A cache is introduced to avoid unnecessary LDAP traffic, for example caching
@@ -583,6 +589,31 @@ Nextcloud avatar replaces it.
 Photos served from LDAP are automatically cropped and resized in Nextcloud. This
 affects only the presentation, and the original image is not changed.
 
+Use a specific attribute or turn off loading of images
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It is possible to turn off the avatar integration or specify a single,
+different attribute to read the image from. It is expected to contain image
+data just like *jpegPhoto* or *thumbnailPhoto* do.
+
+The behaviour can be changed using the occ command line tool only. Essentially
+those options are available:
+
+* The default behaviour as described above should be used
+
+  ``occ ldap:set-config "s01" "ldapUserAvatarRule" "default"``
+
+* User images shall not be fetched from LDAP
+
+  ``occ ldap:set-config "s01" "ldapUserAvatarRule" "none"``
+
+* The image should be read from the attribute "selfiePhoto"
+
+  ``occ ldap:set-config "s01" "ldapUserAvatarRule" "data:selfiePhoto"``
+
+The "s01" refers to the configuration ID as can be retrieved per
+``occ ldap:show-config``.
+
 Troubleshooting, tips and tricks
 --------------------------------
 
@@ -644,22 +675,6 @@ In case you have a working configuration and want to create a similar one or
 #. Click on **Save**
 
 Now you can modify and enable the configuration.
-
-"Sizelimit exceeded" message in logs
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-  ldap_search(): Partial search results returned: Sizelimit exceeded at
-  apps/user_ldap/lib/LDAP.php#256
-
-This error message means one of the following:
-
-#. Pagination of the results is used for communicating with the LDAP server
-   (pagination is by default enabled in OpenLDAP and AD), but there are more
-   results to return than what the pagination limit is set to. If there are no
-   users missing in you setup then you can ignore this error message for now.
-#. No pagination is used and this indicates that there are more results on the
-   LDAP server than what is returned. You should then enabled pagination on
-   your LDAP server to import all available users.
 
 Nextcloud LDAP internals
 ------------------------
@@ -729,3 +744,11 @@ is offline and will not try to connect again for the time specified in **Cache
 Time-To-Live**. If you have a backup server configured Nextcloud will connect to
 it instead. When you have scheduled downtime, check **Disable Main Server**  to
 avoid unnecessary connection attempts.
+
+Note
+----
+
+When a LDAP object's name or surname, that is display name attribute, by default
+"displayname", is left empty, Nextcloud will treat it as an empty object, therefore
+no results from this user or AD-Object will be shown to avoid gathering of
+technical accounts.
