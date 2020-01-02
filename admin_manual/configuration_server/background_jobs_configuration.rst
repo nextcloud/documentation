@@ -100,11 +100,10 @@ This approach requires two files: **nextcloudcron.service** and **nextcloudcron.
   [Service]
   User=www-data
   ExecStart=/usr/bin/php -f /var/www/nextcloud/cron.php            
-  
-  [Install]
-  WantedBy=basic.target
 
 Replace the user ``www-data`` with the user of your http server and ``/var/www/nextcloud/cron.php`` with the location of **cron.php** in your nextcloud directory.
+
+Note that the **.service** unit file does not need an ``[Install]`` section. Please check your setup because we recommended it in earlier versions of this admin manual.
 
 **nextcloudcron.timer** should look like this::
 
@@ -125,6 +124,6 @@ Now all that is left is to start and enable the timer by running this command::
 
   systemctl enable --now nextcloudcron.timer
 
-When the option ``--now`` is used with ``enable``, the resp. unit will also be started.
+When the option ``--now`` is used with ``enable``, the respective unit will also be started.
 
 .. note:: Selecting the option ``Cron`` in the admin menu for background jobs is not mandatory, because once `cron.php` is executed from the command line or cron service it will set it automatically to ``Cron``.
