@@ -11,13 +11,7 @@ terminal::
     apt-get install php7.2-gd php7.2-json php7.2-mysql php7.2-curl php7.2-mbstring
     apt-get install php7.2-intl php-imagick php7.2-xml php7.2-zip
 
-* This installs the packages for the Nextcloud core system.
-  ``libapache2-mod-php7.2`` provides the following PHP extensions::
-
-    bcmath bz2 calendar Core ctype date dba dom ereg exif fileinfo filter ftp gettext
-    hash iconv libxml mhash openssl pcre Phar posix Reflection session shmop SimpleXML
-    soap sockets SPL standard sysvmsg sysvsem sysvshm tokenizer wddx xmlreader xmlwriter zlib
-
+* This installs the packages for the Nextcloud core system. 
   If you are planning on running additional apps, keep in mind that they might require additional
   packages.  See :ref:`prerequisites_label` for details.
 
