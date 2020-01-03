@@ -57,6 +57,10 @@ server into the virtual filesystem.
 
 The class to be used is :code:`\\OC\\Files\\ObjectStore\\Swift`
 
+Both openstack v2 and v3 authentication are supported,
+
+V2 Authentication:
+
 ::
 
 	'objectstore' => array(
@@ -76,6 +80,28 @@ The class to be used is :code:`\\OC\\Files\\ObjectStore\\Swift`
 			// The Interface / url Type, optional
 			'urlType' => 'internal'
 		),
+	),
+
+V3 Authentication:
+
+::
+
+	'objectstore' => array(
+		'class' => 'OC\\Files\\ObjectStore\\Swift',
+		'arguments' => array(
+			'autocreate' => true,
+			'user' => [
+				'name' => 'swift',
+				'password' => 'Secr3tPaSSWoRdt7',
+				'domain' => [
+					'name' => 'default'
+				]
+			],
+			'serviceName' => 'swift',
+			'region' => 'regionOne',
+			'url' => "http://example.com/v3",
+			'bucket' => 'nextcloud'
+		)
 	),
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
