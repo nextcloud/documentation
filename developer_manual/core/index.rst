@@ -12,3 +12,4 @@ Please make sure you have set up a :ref:`devenv`.
    translation
    unit-testing
    externalapi
+   ../how_to/index

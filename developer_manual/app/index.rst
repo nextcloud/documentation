@@ -29,5 +29,6 @@ App development
    publicpage
    testing
    ../api
+   how_to
 
 
