@@ -52,10 +52,10 @@ This request returns the available metadata of a user. Admin users can see the i
 			<subadmin/>
 			<quota>
 				<free>20632824998</free>
-   				<used>842011482</used>
-   				<total>21474836480</total>
-   				<relative>3.92</relative>
-   				<quota>21474836480</quota>
+				<used>842011482</used>
+				<total>21474836480</total>
+				<relative>3.92</relative>
+				<quota>21474836480</quota>
 			</quota>
 			<email>user@foo.de</email>
 			<displayname>John Doe</displayname>
@@ -71,10 +71,10 @@ This request returns the available metadata of a user. Admin users can see the i
 			</groups>
 			<language>de</language>
 			<locale>de_DE</locale>
-  			<backendCapabilities>
-   				<setDisplayName>1</setDisplayName>
-   				<setPassword>1</setPassword>
-  			</backendCapabilities>
+			<backendCapabilities>
+				<setDisplayName>1</setDisplayName>
+				<setPassword>1</setPassword>
+			</backendCapabilities>
 		</data>
 	</ocs>
 
@@ -100,7 +100,7 @@ This request returns a list containing all user IDs. Only admin users can query 
 			<totalitems></totalitems>
 			<itemsperpage></itemsperpage>
 		</meta>
- 		<data>
+		<data>
 			<users>
 				<element>1st_user</element>
 				<element>2nd_user</element>
