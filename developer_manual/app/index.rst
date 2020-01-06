@@ -24,6 +24,7 @@ App development
    backgroundjobs
    settings
    notifications
+   flow
    logging
    repair
    publicpage
