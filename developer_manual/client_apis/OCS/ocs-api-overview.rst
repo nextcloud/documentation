@@ -125,32 +125,32 @@ Clients can obtain capabilities provided by the Nextcloud server and its apps vi
 
 .. code:: xml
 
-    <?xml version="1.0"?>
-    <ocs>
-     <meta>
-      <status>ok</status>
-      <statuscode>100</statuscode>
-      <message>OK</message>
-      <totalitems></totalitems>
-      <itemsperpage></itemsperpage>
-     </meta>
-     <data>
-      <version>
-       <major>17</major>
-       <minor>0</minor>
-       <micro>2</micro>
-       <string>17.0.2</string>
-       <edition></edition>
-       <extendedSupport></extendedSupport>
-      </version>
-      <capabilities>
-       <core>
-        <pollinterval>60</pollinterval>
-        <webdav-root>remote.php/webdav</webdav-root>
-       </core>
-      </capabilities>
-     </data>
-    </ocs>
+	<?xml version="1.0"?>
+	<ocs>
+		<meta>
+			<status>ok</status>
+			<statuscode>100</statuscode>
+			<message>OK</message>
+			<totalitems></totalitems>
+			<itemsperpage></itemsperpage>
+		</meta>
+		<data>
+			<version>
+				<major>17</major>
+				<minor>0</minor>
+				<micro>2</micro>
+				<string>17.0.2</string>
+				<edition></edition>
+				<extendedSupport></extendedSupport>
+			</version>
+			<capabilities>
+				<core>
+					<pollinterval>60</pollinterval>
+					<webdav-root>remote.php/webdav</webdav-root>
+				</core>
+			</capabilities>
+		</data>
+	</ocs>
 
 
 Theming capabilities
@@ -160,18 +160,18 @@ Values of the theming app are exposed through the capabilities API, allowing cli
 
 .. code:: xml
 
-    <theming>
-        <name>Nextcloud</name>
-        <url>https://nextcloud.com</url>
-        <slogan>A safe home for all your data</slogan>
-        <color>#0082c9</color>
-	<color-text>#ffffff</color-text>
-	<color-element>#006295</color-element>
-        <logo>http://cloud.example.com/index.php/apps/theming/logo?v=1</logo>
-        <background>http://cloud.example.com/index.php/apps/theming/logo?v=1</background>
-	<background-plain></background-plain>
-	<background-default></background-default>
-    </theming>
+	<theming>
+		<name>Nextcloud</name>
+		<url>https://nextcloud.com</url>
+		<slogan>A safe home for all your data</slogan>
+		<color>#0082c9</color>
+		<color-text>#ffffff</color-text>
+		<color-element>#006295</color-element>
+		<logo>http://cloud.example.com/index.php/apps/theming/logo?v=1</logo>
+		<background>http://cloud.example.com/index.php/apps/theming/logo?v=1</background>
+		<background-plain></background-plain>
+		<background-default></background-default>
+	</theming>
 
 
 The background value can either be an URL to the background image or a hex color value.
