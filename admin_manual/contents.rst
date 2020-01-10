@@ -18,3 +18,4 @@ Table of contents
     configuration_mimetypes/index
     maintenance/index
     issues/index
+    gdpr/index
