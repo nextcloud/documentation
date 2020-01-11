@@ -1380,7 +1380,7 @@ Server details for one or more memcached servers to use for memory caching.
 		//\Memcached::OPT_SERIALIZER => \Memcached::SERIALIZER_IGBINARY,
 	),
 
-Connection options for memcached, see http://apprize.info/php/scaling/15.html
+Connection options for memcached
 
 ::
 
