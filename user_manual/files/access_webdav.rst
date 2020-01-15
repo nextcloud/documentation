@@ -425,17 +425,6 @@ Solution
   #. Go to Internet Options, Content Tab, Clear SSL State.
   #. Close browser, then re-open and test.
 
-Problem
-^^^^^^^
-
-You cannot download more than 50 MB or upload large Files when the upload takes
-longer than 30 minutes using Web Client in Windows 7.
-
-Solution
-^^^^^^^^
-
-Workarounds are documented in the KB2668751_ article.
-
 
 Accessing files using cURL
 --------------------------
