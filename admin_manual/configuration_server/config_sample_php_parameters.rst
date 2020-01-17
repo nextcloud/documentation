@@ -1517,12 +1517,17 @@ Default is no limit (value set to 0)
 
 ::
 
-	'sharing.interal_shares_accepted' => false,
+	'sharing.enable_share_accept' => false,
 
-Starting with Nextcloud 18 also internal shares have to be accepted. Setting
-this setting to true forces all internal shares to be accepted directly.
+Set to true to enable that internal shares need to be accepted by the users by default.
 
-(resulting in pre 18 behavior).
+Users can change this for their account in their personal sharing settings
+
+::
+
+	'sharing.force_share_accept' => false,
+
+Set to true to enforce that internal shares need to be accepted
 
 All other configuration options
 -------------------------------
