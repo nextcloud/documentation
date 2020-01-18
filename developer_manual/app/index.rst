@@ -20,7 +20,6 @@ App development
    publishing
    users
    two-factor-provider
-   hooks
    events
    backgroundjobs
    settings
