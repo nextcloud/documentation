@@ -18,7 +18,7 @@ user-manual-de-html:
 	cd user_manual_de && make html
 	@echo "User manual de build finished; HTML is updated"
 
-developer-manual-html: api-docs icons-docs
+developer-manual-html: icons-docs
 	rm -rf developer_manual/_build/html/com
 	cd developer_manual && make html
 	@echo "Developer manual build finished; HTML is updated"
@@ -35,22 +35,13 @@ user-manual-de-pdf:
 	cd user_manual_de && make latexpdf
 	@echo "User manual de build finished; PDF is updated"
 
-api-docs: clean-api-docs
-	cd build && sh get-server-sources.sh $(DRONE_BRANCH)
-	mkdir -p developer_manual/api/
-	cd build && composer install && composer update
-	cd build && php generateApiDoc.php
-
 icons-docs: clean-icons-docs
 	cd build && sh get-server-sources.sh $(DRONE_BRANCH)
 	cd build && composer install && composer update
 	cd build && php generateIconsDoc.php
-	
-clean: clean-api-docs clean-icons-docs
-	rm -r admin_manual/_build developer_manual/_build user_manual/_build user_manual_de_/_build
 
-clean-api-docs:
-	rm -rf developer_manual/api/
+clean: clean-icons-docs
+	rm -r admin_manual/_build developer_manual/_build user_manual/_build user_manual_de_/_build
 
 clean-icons-docs:
 	rm -rf developer_manual/design/img/
