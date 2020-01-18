@@ -7,6 +7,7 @@ App development
 
    intro
    tutorial
+   upgrade-guide
    npm
    requests/index
    view/index
