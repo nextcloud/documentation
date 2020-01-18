@@ -9,6 +9,7 @@ App development
    tutorial
    upgrade-guide
    npm
+   javascript-apis
    requests/index
    view/index
    storage/index
