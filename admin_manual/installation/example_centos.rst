@@ -22,7 +22,7 @@ Apache
 
     yum install -y httpd
 
-See :ref:`apache-web-server-configuration` for details.
+See :ref:`apache_configuration_label` for details.
 
 Make sure the apache web service is enabled and started::
 
@@ -63,7 +63,7 @@ Command to install the yum-utils package (for the yum-config-manager command):
 
     dnf install yum-utils
 
-You want a single version which means replacing base packages from the distribution. Packages have the same name than the base repository, ie php-*. Some common dependencies are available in remi-safe repository, which is enabled by default.
+You want a single version which means replacing base packages from the distribution. Packages have the same name than the base repository, ie php-\*. Some common dependencies are available in remi-safe repository, which is enabled by default.
 
 You have to enable the module stream for 7.4:
 
@@ -117,7 +117,7 @@ Improve MariaDB security.::
 
 After you have done this, make sure you create a database with a username and password so that 
 Nextcloud will have access to it. For further details on database setup and configuration,
- see the :doc:`../configuration_database/linux_database_configuration` documentation.
+see the :doc:`../configuration_database/linux_database_configuration` documentation.
 
 
 Redis
