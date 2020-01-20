@@ -10,9 +10,9 @@ In order to use Emojis (textbased smilies) on your Nextcloud server with a MySQL
 installation needs to be tweaked a bit.
 
 1. Make sure your database is set to use the Barracuda InnoDB file format:
-   
+
    Login to your mysql database and run::
-   
+
          mysql> show variables like 'innodb_file_format';
          +--------------------+-----------+
          | Variable_name      | Value     |
@@ -20,13 +20,13 @@ installation needs to be tweaked a bit.
          | innodb_file_format | Barracuda |
          +--------------------+-----------+
          1 row in set (0.00 sec)
-      
+
    If your `innodb_file_format` is set as 'Antelope' you must upgrade your file format using::
-     
+
          mysql> SET GLOBAL innodb_file_format=Barracuda;
-     
+
    .. note::
-   
+
          On some shared hosts, you may not have the permissions to upgrade the InnoDB file format, meaning you are unable to use utf8mb4
 
 2. Make sure the following InnoDB settings are set on your MySQL server:
@@ -35,9 +35,9 @@ installation needs to be tweaked a bit.
 
         [mysqld]
         innodb_file_per_table=1
-        
+
       Note::
-      
+
             mysql> show variables like 'innodb_file_per_table';
             +-----------------------+-------+
             | Variable_name         | Value |
@@ -65,6 +65,10 @@ installation needs to be tweaked a bit.
 6. Convert all existing tables to the new collation by running the repair step::
 
     $ sudo -u www-data php occ maintenance:repair
+
+.. note::
+
+    This will also change the `ROW_FORMAT` to `COMPRESSED` for your tables, to make sure the used database storage size is not getting out of hand.
 
 Now you should be able to use Emojis in your file names, calendar events, comments and many more.
 
