@@ -75,16 +75,16 @@ Building
 --------
 
 1. Install `pipenv` - https://pipenv.readthedocs.io/en/latest/
-2. Create a Python 2 environment (typically inside this repository): `pipenv --two`
+2. Create a Python environment (typically inside this repository): `pipenv --three`
 3. Change into the environment: `pipenv shell`
-4. Install the dependencies `pip2 install -r requirements.txt`
+4. Install the dependencies `pip install -r requirements.txt`
 5. Now you can use `make ...` to build all the stuff - for example `make html` to build the HTML flavor of all manuals
 
 To change into this environment you need to run `pipenv shell` to launch the shell and to exit you can use either `exit` or `Ctrl` + `D`.
 
 When editing the documentation installing `sphinx-autobuild` though pip can be helpful. This will watch file changes and automatically reload the html preview:
 
-1. Install `pip2 install sphinx-autobuild`
+1. Install `pip install sphinx-autobuild`
 2. Enter the documentation section `cd user_manual`
 3. Watch for file changes `make SPHINXBUILD=sphinx-autobuild html`
 4. Open http://127.0.0.1:8000 in the browser and start editing
