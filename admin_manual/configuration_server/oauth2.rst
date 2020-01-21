@@ -34,3 +34,10 @@ Nextcloud server you will have to send the proper authorization header.
 Authorization: Bearer <TOKEN>
 
 Note that apache by default strips this. Make sure you have ``mod_headers``, ``mod_rewrite`` and ``mod_env`` enabled.
+
+Security considerations
+-----------------------
+
+Nextcloud ``OAuth2`` implementation currently does not support scoped access. This means that every token has full access to the complete account including read and write permission to the stored files. It is essential to store the ``OAuth2`` tokens in a safe way! 
+
+Without scopes and restrictable access it is not recommended to use a Nextcloud instance as a user authentication service.
