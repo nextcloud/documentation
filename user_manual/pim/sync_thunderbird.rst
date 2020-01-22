@@ -2,8 +2,29 @@
 Synchronizing with Thunderbird
 ==============================
 
-Contacts
+The easiest way: Contacts and calendars with TBSync
 --------
+
+To synchronize your calendars and contacts with Thunderbird, you need to have three add-ons installed:
+
+1. The Lightning calendar <https://addons.thunderbird.net/de/thunderbird/addon/lightning/>
+2. TBSync <https://addons.thunderbird.net/de/thunderbird/addon/tbsync/> and 
+3. The TBSync provider for CalDAV and CardDAV <https://addons.thunderbird.net/de/thunderbird/addon/dav-4-tbsync/>
+
+Once you have these add-ons in place, if you are on Windows, go to Extras/Synchronisation settings (TBSync) or Edit/Synchronisation settings (TBSync) if on Linux
+
+* In the account manager choose "Add account/ CalDAV / CardDAV account"
+* In the next window, go with the default called "Automatic configuration" and click "next"
+* Enter an an account name (your choice), user name, password and the URL of your Nextcloud and click "next"
+* In the next window, TBSync should have autodiscovered the CalDAV and CardDAV addresses. Click "Finish".
+* Now check the box "Enable and synchronizes this account". TBSync will find all address books and calenders your account has access to on the server
+* Check the box next to each calender and address book you want to have synchronised, also set how often you want them to be synchronised and push the button "sychronise now"
+* After the first successful synchronisation is complete, you can close the window. Henceforth, TBSync will do the work for you. You are done and can skip the next sections (unless you need a more advanced address book)
+
+
+Alternative: Using the CardBook add-on (Contacts only)
+--------
+CardBook is a more advanced alternative to the built-in Thunderbird address book, which speaks CardDAV out of the box.
 
 As someone who is new to Nextcloud and new to CardBook here is what you need in excruciating pithy detail to make this work:
 
@@ -41,7 +62,7 @@ You'll see your address book populate from Nextcloud!
 
 The rest of the details of dealing with Thunderbird CardBook are left to the reader...
 
-Calendar
+The old method: Manually subscribing to calendars
 --------
 
 - `Thunderbird <https://www.thunderbird.net/>`_ for your OS unless it comes with your OS distribution (Linux)
