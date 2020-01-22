@@ -73,7 +73,7 @@ installation needs to be tweaked a bit.
 
 .. note::
 
-    This will alos change the `ROW_FORMAT` to `COMPRESSED` for your tables, to make sure the used database storage size is not getting out of hand.
+    This will also change the `ROW_FORMAT` to `COMPRESSED` for your tables, to make sure the used database storage size is not getting out of hand.
 
 8. Disable maintenance mode::
 
