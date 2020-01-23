@@ -2,7 +2,7 @@
 Synchronizing with Thunderbird
 ==============================
 
-Thunderbird <https://www.thunderbird.net> is a feature-rich and stable mail client that can be turned into a full-fledged PIM. However, it lacks support  for address book synchronisation via CardDAV and it also lacks the ability to automatically discover calendars and address books available on the server. Therefore, to synchronise with Nextcloud, add-ons are required:
+Thunderbird <https://www.thunderbird.net> is a feature-rich and stable mail client that can be turned into a full-fledged PIM. However, it lacks support  for address book synchronisation via CardDAV and it also lacks the ability to automatically discover calendars and address books available on the server. Therefore, to synchronise with Nextcloud, add-ons are required, which can be easily installed through Thunderbird's add-on manager:
  
 
 Recommended method: Using TBSync
@@ -10,9 +10,9 @@ Recommended method: Using TBSync
 
 For this method, you need to have three add-ons installed:
 
-1. The Lightning calendar <https://addons.thunderbird.net/de/thunderbird/addon/lightning/>
-2. TBSync <https://addons.thunderbird.net/de/thunderbird/addon/tbsync/> and 
-3. The TBSync provider for CalDAV and CardDAV <https://addons.thunderbird.net/de/thunderbird/addon/dav-4-tbsync/>
+1. The `Lightning calendar <https://addons.thunderbird.net/de/thunderbird/addon/lightning/>`_
+2. `TBSync <https://addons.thunderbird.net/de/thunderbird/addon/tbsync/>`_ and
+3. The `TBSync provider for CalDAV and CardDAV <https://addons.thunderbird.net/de/thunderbird/addon/dav-4-tbsync/>`_
 
 When they are installed, if you are on Windows, go to **Extras**/**Synchronisation settings (TBSync)** or **Edit/Synchronisation settings (TBSync)** if on Linux
 
@@ -27,7 +27,7 @@ When they are installed, if you are on Windows, go to **Extras**/**Synchronisati
 
 Alternative: Using the CardBook add-on (Contacts only)
 ------------------------------------------------------
-CardBook <https://addons.thunderbird.net/de/thunderbird/addon/cardbook/> is an advanced alternative to Thunderbird's address book, which supports CardDAV. You can have TBSync and CardBook installed in parallel.
+`CardBook <https://addons.thunderbird.net/de/thunderbird/addon/cardbook/>`_ is an advanced alternative to Thunderbird's address book, which supports CardDAV. You can have TBSync and CardBook installed in parallel.
 Once you've installed CardBook and Thunderbird do like this:
 
 1. In the bottom left of the Contacts View (in Nextcloud contatcs) look for a little impeller symbol that looks like this:
