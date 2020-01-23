@@ -18,8 +18,8 @@ When they are installed, if you are on Windows, go to **Extras**/**Synchronisati
 
 * In the account manager choose "**Add account** / **CalDAV / CardDAV account**"
 * In the next window, go with the default called **Automatic configuration** and click **next**
-* Enter an an **account name**, which you can freely choose, **user name**, **password** and the **URL of your server** and click *next*
-* In the next window, TBSync should have autodiscovered the CalDAV and CardDAV addresses. When it has, click *Finish*.
+* Enter an an **account name**, which you can freely choose, **user name**, **password** and the **URL of your server** and click **next**
+* In the next window, TBSync should have autodiscovered the CalDAV and CardDAV addresses. When it has, click **Finish**.
 * Now check the box **Enable and synchronizes this account**. TBSync will discover all address books and calenders your account has access to on the server
 * Check the box next to each calender and address book you want to have synchronised, also set how often you want them to be synchronised and push the button **sychronise now**
 * After the first successful synchronisation is complete, you can close the window. Henceforth, TBSync will do the work for you. You are done and can skip the next sections (unless you need a more advanced address book)
