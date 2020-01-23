@@ -2,11 +2,11 @@
 Synchronizing with Thunderbird
 ==============================
 
-`Thunderbird <https://www.thunderbird.net>`_ is a feature-rich and mature mail client that can be turned into a full-fledged PIM. However, it lacks support  for address book synchronisation via CardDAV and it also lacks the ability to automatically discover calendars and address books available on the server. Therefore, to synchronise with Nextcloud, add-ons are required, which can be easily installed through Thunderbird's add-on manager:
+`Thunderbird <https://www.thunderbird.net>`_ is a feature-rich and mature mail client that can be turned into a full-fledged PIM. However, it lacks support  for address book synchronisation via CardDAV and it also lacks the ability to automatically discover calendars and address books available on the server. Therefore, to synchronise with Nextcloud, add-ons are required, which can be easily installed through Thunderbird's add-on manager.
  
 
-Recommended method: Using TBSync
---------------------------------
+Recommended method
+------------------
 
 For this method, you need to have three add-ons installed:
 
