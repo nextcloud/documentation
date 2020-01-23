@@ -23,7 +23,7 @@ Once you have these add-ons in place, if you are on Windows, go to Extras/Synchr
 
 
 Alternative: Using the CardBook add-on (Contacts only)
---------
+------------------------------------------------------
 CardBook is a more advanced alternative to the built-in Thunderbird address book, which speaks CardDAV out of the box.
 
 As someone who is new to Nextcloud and new to CardBook here is what you need in excruciating pithy detail to make this work:
