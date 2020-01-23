@@ -3,7 +3,7 @@ Synchronizing with Thunderbird
 ==============================
 
 The easiest way: Contacts and calendars with TBSync
---------
+---------------------------------------------------
 
 To synchronize your calendars and contacts with Thunderbird, you need to have three add-ons installed:
 
