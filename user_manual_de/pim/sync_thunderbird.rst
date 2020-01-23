@@ -17,7 +17,7 @@ Für diese Methode müssen drei Erweiterungen installiert werden:
 
 Nach der Installation, wählen Sie auf Windows **Extras**/**Synchronisationseinstellungen (TBSync)**, unter Linux **Bearbeiten/Synchronisationseinstellungen (TBSync)**.
 
-* Im Accountmanager wählen Sie "**Konto-Aktionen** / ''Neues Konto hinzufügen** / **CardDAV & CalDAV**"
+* Im Accountmanager wählen Sie "**Konto-Aktionen** / **Neues Konto hinzufügen** / **CardDAV & CalDAV**"
 * Im nächsten Fenster, wählen Sie **Automatische Konfiguration** und klicken Sie auf **weiter**
 * Füllen Sie die Felder **Kontoname** (frei wählbar), **Benutzername**, **Passwort** und **Serveradresse** aus und klicken Sie auf and click **weiter**
 * Im nächsten Fenster zeigt TBSync die automatisch entdeckten CalDAV- und CardDAV-Adressen. Klicken sie auf **Fertigstellen**.
