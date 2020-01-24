@@ -27,7 +27,7 @@ Nach der Installation, wählen Sie auf Windows **Extras**/**Synchronisationseins
 
 
 Alternative: Die Erweiterung CardBook (Nur Kontakte)
-------------------------------------------------------
+----------------------------------------------------
 `CardBook <https://addons.thunderbird.net/de/thunderbird/addon/cardbook/>`_ ist eine fortgeschrittene Alternative zu Thunderbirds Adressbuch, das CardDAV direkt unterstützt. TBSync und CardBook können gleichzeitig installiert sein.
 1. Das Symbol für Cardbook finden Sie oben rechts in Thunderbird:
 
@@ -43,4 +43,3 @@ Alternative: Die Erweiterung CardBook (Nur Kontakte)
 3. Klicken Sie auf "Überprüfen", danach auf "weiter, danach wählen Sie alle Adressbücher, die synchronisiert werden sollen.
 
 .. image:: ../../user_manual/images/addressbook_name.png
-
