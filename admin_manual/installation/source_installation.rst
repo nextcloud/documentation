@@ -119,15 +119,12 @@ it, replacing the **Directory** and other filepaths with your own filepaths::
 
     <Directory /var/www/nextcloud/>
       Require all granted
-      Options FollowSymlinks MultiViews
       AllowOverride All
+      Options FollowSymLinks MultiViews
 
-     <IfModule mod_dav.c>
-      Dav off
-     </IfModule>
-
-     SetEnv HOME /var/www/nextcloud
-     SetEnv HTTP_HOME /var/www/nextcloud
+      <IfModule mod_dav.c>
+        Dav off
+      </IfModule>
 
     </Directory>
 
@@ -142,7 +139,7 @@ On CentOS/RHEL, create a virtualhost :file:`/etc/httpd/conf.d/nextcloud.conf` an
       DocumentRoot /var/www/nextcloud/
       ServerName  your.server.com
 
-      <Directory "/var/www/nextcloud/">
+      <Directory /var/www/nextcloud/>
         Require all granted
         AllowOverride All
         Options FollowSymLinks MultiViews
