@@ -247,12 +247,12 @@ the drive:
 2. Enter the following line in the command prompt to map to the computer Z
    drive::
 
-    net use Z: https://<drive_path>/remote.php/dav/files/USERNAME/ /user:youruser
+    net use Z: https://<drive_path>/remote.php/webdav/files/USERNAME/ /user:youruser
     yourpassword
 
   where <drive_path> is the URL to your Nextcloud server.
 
-For example: ``net use Z: https://example.com/nextcloud/remote.php/dav/files/USERNAME/
+For example: ``net use Z: https://example.com/nextcloud/remote.php/webdav/files/USERNAME/
 /user:youruser yourpassword``
 
   The computer maps the files of your Nextcloud account to the drive letter Z.
@@ -264,7 +264,7 @@ For example: ``net use Z: https://example.com/nextcloud/remote.php/dav/files/USE
 
 An alternative command syntax is::
 
-  net use Z: \\example.com@ssl\nextcloud\remote.php\dav /user:youruser
+  net use Z: \\example.com@ssl\nextcloud\remote.php\webdav /user:youruser
   yourpassword
 
 Mapping drives with Windows Explorer
@@ -277,11 +277,11 @@ To map a drive using the Microsoft Windows Explorer:
    the drop-down menu.
 3. Choose a local network drive to which you want to map Nextcloud.
 4. Specify the address to your Nextcloud instance, followed by
-   **/remote.php/dav/files/USERNAME/**.
+   **/remote.php/webdav/files/USERNAME/**.
 
   For example::
 
-    https://example.com/nextcloud/remote.php/dav/files/USERNAME/
+    https://example.com/nextcloud/remote.php/webdav/files/USERNAME/
 
 .. note:: For SSL protected servers, check **Reconnect at logon** to ensure
      that the mapping is persistent upon subsequent reboots. If you want to
