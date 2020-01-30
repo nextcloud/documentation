@@ -1,6 +1,6 @@
 ===============================
 Synchronisation mit Thunderbird
-==============================
+===============================
 
 `Thunderbird <https://www.thunderbird.net>`_ ist ein funktionsreiches und stabiles Mailprogrammm, das in einen vollwertigen PIM (persönlichen Informationsmanager) verwandelt werden kann. 
 Jedoch hat es von Hause aus keine Unterstützung für die Synchronisation von Addressbüchern via CardDAV und beherrscht das automatische Entdecken von Adressbüchern und Kalendern auf dem Server nicht.
