@@ -10,31 +10,26 @@ As someone who is new to Nextcloud and new to CardBook here is what you need in 
 - `Thunderbird <https://www.thunderbird.net/>`_ for your OS unless it comes with your OS distribution (Linux)
 - `CardBook <https://addons.thunderbird.net/en-US/thunderbird/addon/cardbook/>`_ (a Thunderbird contacts add-on.)
 
-Once you've installed CardBook and Thunderbird do like this:
-
-1. In the bottom left of the Contacts View (in Nextcloud contatcs) look for a little impeller symbol that looks like this:
-
-.. image:: ../images/contacts_link.png
-
-which will display and URL that looks something like this:
-https://cloud.nextcloud.com/remote.php/dav/addressbooks/users/daniel/Thunderbird/
-
-2. Cardbook is found in the upper right corner of Thunderbird:
+Using the CardBook add-on (Contacts only)
+-----------------------------------------
+`CardBook <https://addons.thunderbird.net/de/thunderbird/addon/cardbook/>`_ is an advanced alternative to Thunderbird's address book, which supports CardDAV. You can have TBSync and CardBook installed in parallel.
+ 
+1. Cardbook is found in the upper right corner of Thunderbird:
 
 .. image:: ../images/cardbook_icon.png
 
-3. In the Thunderbird Cardbook add-on:
+2. In the Thunderbird Cardbook add-on:
 
    -  "Adressbook > New Adressbook **Remote** > Next
-   -  Fill in your information
+   -  Fill in the address of your Nextcloud server, your user name and password
 
 .. image:: ../images/new_addressbook.png
 
-4. Validate your settings and click Next, then choose the name of the addressbook and click Next again.
+4. Click on "Validate", click Next, then choose the name of the addressbook and click Next again.
 
 .. image:: ../images/addressbook_name.png
 
-5. Once installed, synchronize your addressbook by clicking "Synchronize" in the top left corner of CardBook.
+5. When you are finished, CardBook synchronizes your addressbooks. You can always trigger a synchronisation manually by clicking "Synchronize" in the top left corner of CardBook.
 You'll see your address book populate from Nextcloud!
 
 .. image:: ../images/synchronize_cardbook.png
@@ -63,3 +58,7 @@ https://cloud.nextcloud.com/remote.php/dav/calendars/daniel/personal/
 .. image:: ../images/CalDAV_calendar.png
 
 The rest of the details of dealing with Thunderbird Calendar are left to the reader...
+
+Fix for Thunderbird 60
+----------------------
+If you are still using Thunderbird 60, you need to change a configuration setting to make CalDAV/CardDAV work around Thunderbird bug `#1468918 <https://bugzilla.mozilla.org/show_bug.cgi?id=1468912>`_ as described `here <https://help.nextcloud.com/t/thunderbird-60-problems-with-address-and-calendar-sync/35773>`_ 
