@@ -45,7 +45,6 @@ Alternative: Using the CardBook add-on (Contacts only)
 .. image:: ../images/addressbook_name.png
 
 5. When you are finished, CardBook synchronizes your addressbooks. You can always trigger a synchronisation manually by clicking "Synchronize" in the top left corner of CardBook.
-You'll see your address book populate from Nextcloud!
 
 .. image:: ../images/synchronize_cardbook.png
 
@@ -65,8 +64,6 @@ https://cloud.nextcloud.com/remote.php/dav/calendars/daniel/personal/
 4. Choose **CalDAV** and fill in the missing information:
 
 .. image:: ../images/CalDAV_calendar.png
-
-The rest of the details of dealing with Thunderbird Calendar are left to the reader...
 
 Fix for Thunderbird 60
 ----------------------
