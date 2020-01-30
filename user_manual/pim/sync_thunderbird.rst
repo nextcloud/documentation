@@ -2,35 +2,32 @@
 Synchronizing with Thunderbird
 ==============================
 
-The easiest way: Contacts and calendars with TBSync
----------------------------------------------------
+`Thunderbird <https://www.thunderbird.net>`_ is a feature-rich and mature mail client that can be turned into a full-fledged PIM. However, it lacks support  for address book synchronisation via CardDAV and it also lacks the ability to automatically discover calendars and address books available on the server. Therefore, to synchronise with Nextcloud, add-ons are required, which can be easily installed through Thunderbird's add-on manager.
+ 
 
-To synchronize your calendars and contacts with Thunderbird, you need to have three add-ons installed:
+Recommended method
+------------------
 
-1. The Lightning calendar <https://addons.thunderbird.net/de/thunderbird/addon/lightning/>
-2. TBSync <https://addons.thunderbird.net/de/thunderbird/addon/tbsync/> and 
-3. The TBSync provider for CalDAV and CardDAV <https://addons.thunderbird.net/de/thunderbird/addon/dav-4-tbsync/>
+For this method, you need to have three add-ons installed:
 
-Once you have these add-ons in place, if you are on Windows, go to Extras/Synchronisation settings (TBSync) or Edit/Synchronisation settings (TBSync) if on Linux
+1. The `Lightning calendar <https://addons.thunderbird.net/de/thunderbird/addon/lightning/>`_
+2. `TBSync <https://addons.thunderbird.net/de/thunderbird/addon/tbsync/>`_ and
+3. The `TBSync provider for CalDAV and CardDAV <https://addons.thunderbird.net/de/thunderbird/addon/dav-4-tbsync/>`_
 
-* In the account manager choose "Add account/ CalDAV / CardDAV account"
-* In the next window, go with the default called "Automatic configuration" and click "next"
-* Enter an an account name (your choice), user name, password and the URL of your Nextcloud and click "next"
-* In the next window, TBSync should have autodiscovered the CalDAV and CardDAV addresses. Click "Finish".
-* Now check the box "Enable and synchronizes this account". TBSync will find all address books and calenders your account has access to on the server
-* Check the box next to each calender and address book you want to have synchronised, also set how often you want them to be synchronised and push the button "sychronise now"
+When they are installed, if you are on Windows, go to **Extras**/**Synchronisation settings (TBSync)** or **Edit/Synchronisation settings (TBSync)** if on Linux
+
+* In the account manager choose "**Add account** / **CalDAV / CardDAV account**"
+* In the next window, go with the default called **Automatic configuration** and click **next**
+* Enter an an **account name**, which you can freely choose, **user name**, **password** and the **URL of your server** and click **next**
+* In the next window, TBSync should have autodiscovered the CalDAV and CardDAV addresses. When it has, click **Finish**.
+* Now check the box **Enable and synchronizes this account**. TBSync will discover all address books and calenders your account has access to on the server
+* Check the box next to each calender and address book you want to have synchronised, also set how often you want them to be synchronised and push the button **sychronise now**
 * After the first successful synchronisation is complete, you can close the window. Henceforth, TBSync will do the work for you. You are done and can skip the next sections (unless you need a more advanced address book)
 
 
 Alternative: Using the CardBook add-on (Contacts only)
 ------------------------------------------------------
-CardBook is a more advanced alternative to the built-in Thunderbird address book, which speaks CardDAV out of the box.
-
-As someone who is new to Nextcloud and new to CardBook here is what you need in excruciating pithy detail to make this work:
-
-- `Thunderbird <https://www.thunderbird.net/>`_ for your OS unless it comes with your OS distribution (Linux)
-- `CardBook <https://addons.thunderbird.net/en-US/thunderbird/addon/cardbook/>`_ (a Thunderbird contacts add-on.)
-
+`CardBook <https://addons.thunderbird.net/de/thunderbird/addon/cardbook/>`_ is an advanced alternative to Thunderbird's address book, which supports CardDAV. You can have TBSync and CardBook installed in parallel.
 Once you've installed CardBook and Thunderbird do like this:
 
 1. In the bottom left of the Contacts View (in Nextcloud contatcs) look for a little impeller symbol that looks like this:
@@ -64,11 +61,7 @@ The rest of the details of dealing with Thunderbird CardBook are left to the rea
 
 The old method: Manually subscribing to calendars
 -------------------------------------------------
-
-- `Thunderbird <https://www.thunderbird.net/>`_ for your OS unless it comes with your OS distribution (Linux)
-- `Lightning <https://addons.mozilla.org/en-US/thunderbird/addon/lightning/>`_ (a Thunderbird calendar add-on.)
-
-Once you've installed Lighning and Thunderbird do like this:
+This method is only needed if you don't want to install TBSync.
 
 1. Go to your Nextcloud Calendar and click on the 3 dotted menu for the calendar that you want to synchronize which will display and URL that looks something like this:
 https://cloud.nextcloud.com/remote.php/dav/calendars/daniel/personal/
