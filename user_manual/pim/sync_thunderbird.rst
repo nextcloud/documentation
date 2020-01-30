@@ -14,11 +14,11 @@ Using the CardBook add-on (Contacts only)
 -----------------------------------------
 `CardBook <https://addons.thunderbird.net/de/thunderbird/addon/cardbook/>`_ is an advanced alternative to Thunderbird's address book, which supports CardDAV. You can have TBSync and CardBook installed in parallel.
  
-1. Cardbook is found in the upper right corner of Thunderbird:
+1. Click the Cardbook icon in the upper right corner of Thunderbird:
 
 .. image:: ../images/cardbook_icon.png
 
-2. In the Thunderbird Cardbook add-on:
+2. In Cardbook:
 
    -  "Adressbook > New Adressbook **Remote** > Next
    -  Fill in the address of your Nextcloud server, your user name and password
@@ -33,8 +33,6 @@ Using the CardBook add-on (Contacts only)
 You'll see your address book populate from Nextcloud!
 
 .. image:: ../images/synchronize_cardbook.png
-
-The rest of the details of dealing with Thunderbird CardBook are left to the reader...
 
 Calendar
 --------
