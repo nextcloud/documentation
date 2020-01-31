@@ -64,15 +64,15 @@ Using the operating system cron feature is the preferred method for executing
 regular tasks.  This method enables the execution of scheduled jobs without the
 inherent limitations the Web server might have.
 
-To run a cron job on a \*nix system, every 5 minutes, under the default Web
+To run a cron job on a \*nix system, every 15 minutes, under the default Web
 server user (often, ``www-data`` or ``wwwrun``), you must set up the following
 cron job to call the **cron.php** script::
 
   # crontab -u www-data -e
 
-And append this line::
+And append this line (you may need to adjust it to your needs, see below)::
 
-  */5  *  *  *  * php -f /var/www/nextcloud/cron.php
+  */15  *  *  *  * php -f /var/www/nextcloud/cron.php
 
 You can verify if the cron job has been added and scheduled by executing::
 
@@ -81,7 +81,13 @@ You can verify if the cron job has been added and scheduled by executing::
 Which returns::
 
   [snip]
-  */5  *  *  *  * php -f /var/www/nextcloud/cron.php
+  */15  *  *  *  * php -f /var/www/nextcloud/cron.php
+
+Now, restart cron, for example with this command (other options may be available on your operating system)::
+
+  # service cron restart
+
+.. note:: You may need to adjust the number of minutes to your specific needs.
 
 .. note:: You have to replace the path ``/var/www/nextcloud/cron.php`` with the
           path to your current Nextcloud installation.
@@ -115,11 +121,11 @@ Note that the **.service** unit file does not need an ``[Install]`` section. Ple
 **nextcloudcron.timer** should look like this::
 
   [Unit]
-  Description=Run Nextcloud cron.php every 5 minutes
+  Description=Run Nextcloud cron.php every 15 minutes
   
   [Timer]
-  OnBootSec=5min
-  OnUnitActiveSec=5min
+  OnBootSec=15min
+  OnUnitActiveSec=15min
   Unit=nextcloudcron.service
   
   [Install]
