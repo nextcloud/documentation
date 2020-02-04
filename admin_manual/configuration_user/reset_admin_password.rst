@@ -24,3 +24,15 @@ learn more about using the ``occ`` command.
  
 If your Nextcloud username is not ``admin``, then substitute your Nextcloud 
 username.
+
+In the official Docker image of Nextcloud, the ``occ`` command would be:
+
+::
+
+ $ sudo docker exec -u www-data -it nextcloud /bin/bash
+ www-data@:~/html$ php /var/www/html/occ user:resetpassword admin
+ Enter a new password: 
+ Confirm the new password: 
+ Successfully reset password for
+
+New password must comply with the `password policy <https://docs.nextcloud.com/server/stable/admin_manual/configuration_user/user_password_policy.html>`_.
