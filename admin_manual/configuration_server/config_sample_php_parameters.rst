@@ -1620,9 +1620,20 @@ The Web server user must have write access to this directory.
 Hashing
 -------
 
+
+::
+
+	'hashing_default_password' => false,
+
+By default Nextcloud will use the Argon2 password hashing if available.
+
+However if for whatever reason you want to stick with the PASSWORD_DEFAULT
+of your php version. Then set the setting to true.
+
 Nextcloud uses the Argon2 algorithm (with PHP >= 7.2) to create hashes by its
 own and exposes its configuration options as following. More information can
 be found at: https://www.php.net/manual/en/function.password-hash.php
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 ::
