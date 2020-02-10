@@ -1,6 +1,6 @@
 all: html pdf upload-user-manual-strings-transifex
 
-html: admin-manual-html user-manual-html user-manual-de-html developer-manual-html
+html: admin-manual-html user-manual-html developer-manual-html
 pdf: admin-manual-pdf user-manual-pdf user-manual-de-pdf
 
 admin-manual-html:
@@ -13,12 +13,7 @@ user-manual-html:
 	cd user_manual && make html
 	@echo "User manual build finished; HTML is updated"
 
-user-manual-de-html:
-	rm -rf user_manual_de/_build/html/com
-	cd user_manual_de && make html
-	@echo "User manual de build finished; HTML is updated"
-
-developer-manual-html: icons-docs
+developer-manual-html: api-docs icons-docs
 	rm -rf developer_manual/_build/html/com
 	cd developer_manual && make html
 	@echo "Developer manual build finished; HTML is updated"
@@ -34,9 +29,6 @@ user-manual-pdf:
 upload-user-manual-strings-transifex:
 	cd user_manual && make gettext && tx push --source
 	@echo "English Strings for user manual have been uploaded to transifex, ready to be translated!"
-user-manual-de-pdf:
-	cd user_manual_de && make latexpdf
-	@echo "User manual de build finished; PDF is updated"
 
 icons-docs: clean-icons-docs
 	cd build && sh get-server-sources.sh $(DRONE_BRANCH)
