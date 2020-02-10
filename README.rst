@@ -71,6 +71,13 @@ your username). You will then be able to make changes easily. Once done,
 you can create a pull request and get the changes reviewed and back into
 the official repository.
 
+Translations
+------------
+
+[Help translate the documentation](https://www.transifex.com/indiehosters/nextcloud-user-documentation/dashboard/).
+
+For developers that want to ease the translation process, please read [this documentation](https://docs.transifex.com/integrations/sphinx-doc).
+
 Building
 --------
 

@@ -13,6 +13,7 @@ PAPEROPT_letter = -D latex_paper_size=letter
 ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 # the i18n builder cannot share the environment and doctrees with the others
 I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
+LANGS = en fr cs
 
 .PHONY: help clean html dirhtml singlehtml pickle json htmlhelp qthelp devhelp epub latex latexpdf text man changes linkcheck doctest gettext
 
@@ -42,19 +43,29 @@ help:
 clean:
 	-rm -rf $(BUILDDIR)/*
 
-html:   html-com
+html:
+	make html-all merge-folders
 
-html-all: html-release html-com
+html-all: $(foreach lang, $(LANGS), html-lang-$(lang))
 
-html-release:
-	$(SPHINXBUILD) -b html -D html_theme='sphinx_rtd_theme' $(ALLSPHINXOPTS) $(BUILDDIR)/html/release
-	@echo
-	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html/release."
+html-lang-%:
+	make get-translated-strings-$*
+	$(SPHINXBUILD) -b html -D html_theme='sphinx_rtd_theme' -D language=$* $(ALLSPHINXOPTS) $(BUILDDIR)/html/$*
+	@echo "Build finished for LANG=$*. The HTML pages are in $(BUILDDIR)/html/$*."
 
-html-com:
-	$(SPHINXBUILD) -b html -D html_theme='sphinx_rtd_theme' $(ALLSPHINXOPTS) $(BUILDDIR)/html/com
-	@echo
-	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html/com."
+get-translated-strings-%:
+	@if [ "$*" != "en" ]; then tx pull -l $*; fi;
+	@echo "Got all latest translated strings from transifex for LANG $*."
+
+merge-folders:
+	mv $(BUILDDIR)/html/en/_static .
+	mv $(BUILDDIR)/html/en/_images .
+	cd $(BUILDDIR)/html/ && rm -rf `find -type d -name _static`
+	cd $(BUILDDIR)/html/ && rm -rf `find -type d -name _images`
+	mv ./_images $(BUILDDIR)/html/
+	mv ./_static $(BUILDDIR)/html/
+	cd $(BUILDDIR)/html/ && find ./ -type f -exec sed -i -e 's/_images/..\/_images/g' {} \;
+	cd $(BUILDDIR)/html/ && find ./ -type f -exec sed -i -e 's/_static/..\/_static/g' {} \;
 
 dirhtml:
 	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml
