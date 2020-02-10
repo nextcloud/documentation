@@ -158,6 +158,9 @@ html_static_path = ['../_shared_assets/static']
 # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
 html_show_sphinx = False
 
+# If true, the reST sources are included in the HTML build as _sources/name. The default is True.
+html_copy_source = False
+
 # If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
 #html_show_copyright = True
 
