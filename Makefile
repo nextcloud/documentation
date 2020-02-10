@@ -9,7 +9,7 @@ admin-manual-html:
 	@echo "Admin manual build finished; HTML is updated"
 
 user-manual-html:
-	rm -rf user_manual/_build/html/com
+	rm -rf user_manual/_build/html
 	cd user_manual && make html
 	@echo "User manual build finished; HTML is updated"
 
