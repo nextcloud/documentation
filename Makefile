@@ -1,4 +1,4 @@
-all: html pdf
+all: html pdf upload-user-manual-strings-transifex
 
 html: admin-manual-html user-manual-html user-manual-de-html developer-manual-html
 pdf: admin-manual-pdf user-manual-pdf user-manual-de-pdf
@@ -31,6 +31,9 @@ user-manual-pdf:
 	cd user_manual && make latexpdf
 	@echo "User manual build finished; PDF is updated"
 
+upload-user-manual-strings-transifex:
+	cd user_manual && make gettext && tx push --source
+	@echo "English Strings for user manual have been uploaded to transifex, ready to be translated!"
 user-manual-de-pdf:
 	cd user_manual_de && make latexpdf
 	@echo "User manual de build finished; PDF is updated"
