@@ -55,14 +55,17 @@ Strings can then be translated in the following way:
         }
 
         public sayHello() {
+            // Simple string
             return $this->l->t('Hello');
         }
 
         public function getAuthorName($name) {
+            // String using a parameter
             return $this->l->t('Getting author %1$s', [$name]);
         }
 
         public function getAuthors($count, $city) {
+            // Translation with plural
             return $this->l->n(
                 '%n author is currently in the city %1$s',  // singular string
                 '%n authors are currently in the city %1$s',  // plural string
@@ -72,6 +75,21 @@ Strings can then be translated in the following way:
         }
     }
 
+Correct plurals
+"""""""""""""""
+
+If you use a plural, you **must** also use the ``%n`` placeholder. The placeholder defines the plural and the word without the number preceding is wrong. If you don't know/have a number for your translation, e.g. because you don't know how many items are going to be selected, just use an undefined plural. They exist in every language and have one form. They do not follow the normal plural pattern.
+
+Example:
+
+.. code-block:: php
+
+    // BAD: Plural without count
+    $title = $l->n('Import calendar', 'Import calendars', $selectionLength)
+    // BETTER: Plural has count, but disrupting to read and unnecessary information
+    $title = $l->n('Import %n calendar', 'Import %n calendars', $selectionLength)
+    // BEST: Simple string with undefined plural
+    $title = $l->t('Import calendars')
 
 
 Templates
