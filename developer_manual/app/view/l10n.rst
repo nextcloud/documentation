@@ -16,42 +16,8 @@ In order to make your app translatable (internationalization), you should use Ne
 PHP
 ^^^
 
-Should it ever be needed to use localized strings on the server-side, simply inject the L10N service from the ServerContainer into the needed constructor:
+If localized strings are used in the backend code, simply inject the``OCP\IL10N`` class into your service via type hinting it in the constructor. You will automatically get the language object containing the translations of your app:
 
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\AppInfo;
-
-    use \OCP\AppFramework\App;
-
-    use \OCA\MyApp\Service\AuthorService;
-
-
-    class Application extends App {
-
-        public function __construct(array $urlParams=array()){
-            parent::__construct('myapp', $urlParams);
-
-            $container = $this->getContainer();
-
-            /**
-             * Controllers
-             */
-            $container->registerService('AuthorService', function($c) {
-                return new AuthorService(
-                    $c->query('L10N')
-                );
-            });
-
-            $container->registerService('L10N', function($c) {
-                return $c->query('ServerContainer')->getL10N($c->query('AppName'));
-            });
-        }
-    }
-
-Strings can then be translated in the following way:
 
 .. code-block:: php
 
@@ -63,30 +29,45 @@ Strings can then be translated in the following way:
 
     class AuthorService {
 
-        private $trans;
+        /** @var IL10N */
+        private $l;
 
-        public function __construct(IL10N $trans) {
-            $this->trans = $trans;
+        public function __construct(IL10N $l) {
+            $this->l = $l;
         }
 
+        …
+    }
+
+Strings can then be translated in the following way:
+
+.. code-block:: php
+
+    <?php
+    …
+
+    class AuthorService {
+
+        …
+
         public function getLanguageCode() {
-            return $this->trans->getLanguageCode();
+            return $this->l->getLanguageCode();
         }
 
         public sayHello() {
-            return $this->trans->t('Hello');
+            return $this->l->t('Hello');
         }
 
         public function getAuthorName($name) {
-            return $this->trans->t('Getting author %s', [$name]);
+            return $this->l->t('Getting author %1$s', [$name]);
         }
 
         public function getAuthors($count, $city) {
-            return $this->trans->n(
-                '%n author is currently in the city %s',  // singular string
-                '%n authors are currently in the city %s',  // plural string
-                $count,
-                [$city]
+            return $this->l->n(
+                '%n author is currently in the city %1$s',  // singular string
+                '%n authors are currently in the city %1$s',  // plural string
+                $count, // number to decide which plural to use
+                [$city] // further parameters are possible
             );
         }
     }
@@ -100,7 +81,7 @@ In every template the global variable **$l** can be used to translate the string
 
 .. code-block:: php
 
-    <div><?php p($l->t('Showing %s files', $_['count'])); ?></div>
+    <div><?php p($l->t('Showing %$1s files', $_['count'])); ?></div>
 
     <button><?php p($l->t('Hide')); ?></button>
 
@@ -111,27 +92,30 @@ For the right date format use ``<?php p($l->l('date', time()));?>``.
 JavaScript
 ^^^^^^^^^^
 
-There is a global function **t()** available for translating strings. The first argument is your app name, the second argument is the string to translate.
+There are global functions **t()** and **n()** available for translating strings in javascript code. They differ a bit in terms of usage compared to php:
+
+* First argument is the appId e.g. ``'myapp'``
+* Placeholders (apart from the count in plurals) use single-mustache brackets with meaning-full descriptors.
+* The parameter list is an object with the descriptors as key.
 
 .. code-block:: js
 
-    t(appName, 'Hello World!');
-    t(appName, '{name} is available. Get <a href="{link}">more information</a>', {name: 'Nextcloud 16', link: '...'});
-
-For advanced usage, refer to the source code **core/js/l10n.js**; **t()** is bind to **OC.L10N.translate()**.
+    t('myapp', 'Hello World!');
+    t('myapp', '{name} is available. Get {linkstart}more information{linkend}}', {name: 'Nextcloud 16', linkstart: '<a href="...">', linkend: '</a>'});
 
 
 
 Important notes
 ^^^^^^^^^^^^^^^
 
+Please also look through the following steps to improve your strings and make them better translatable by others
 
-Splitting senteces
-""""""""""""""""""
+Improving your translations
+"""""""""""""""""""""""""""
 
-You shall never split sentences! Otherwise, translators lose the context and they have no chance to possibly re-arrange words.
+You shall **never split** sentences and **never concatenate** two translations (e.g. "Enable" and "dark mode" can not be combined to "Enable dark mode", because languages might have to use different cases)! Translators lose the context and they have no chance to possibly re-arrange words/parts as needed.
 
-Example:
+Bad example:
 
 .. code-block:: php
 
@@ -146,7 +130,25 @@ Translators will translate:
 
 Translating these individual strings results in  ``local filesystem`` and ``cloud`` losing case. The two white spaces surrounding ``or`` will get lost while translating as well. For languages that have a different grammatical order it prevents the translators from reordering the sentence components.
 
+So the following code is a bit better, but suffers from another issue:
 
+.. code-block:: php
+
+  <?php p($l->t('Select file from <a href="#" id="browselink">local filesystem</a> or <a href="#" id="cloudlink">cloud</a>'));?>
+
+In this case the translators can re-arrange as they like, but have to deal with your markup and can mess it up easily. It is better to **keep the markup out** of your code, so the following translation is even better:
+
+.. code-block:: php
+
+  <?php p($l->t('Select file from %slocal filesystem%s or %scloud%s', ['<a href="#" id="browselink">', '</a>', '<a href="#" id="cloudlink">', '</a>']));?>
+
+But there is one last problem with this. In case the language has to turn things around, your code will still insert the parameters in the given order and they can not re-order them. To prevent this last hurdle simply **use positioned placeholders** like ``%1$s``:
+
+.. code-block:: php
+
+  <?php p($l->t('Select file from %1$slocal filesystem%2$s or %3$scloud%4$s', ['<a href="#" id="browselink">', '</a>', '<a href="#" id="cloudlink">', '</a>']));?>
+
+This allows translators to have the cloudlink before the browselink in case the language is e.g. right-to-left.
 
 Hints
 """""
