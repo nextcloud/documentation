@@ -186,11 +186,13 @@ webroot of your nginx installation. In this example it is
       }
   }
 
-Nextcloud in a subdir of nginx
-------------------------------
+Nextcloud in a subdir of the nginx webroot
+------------------------------------------
 
 The following config should be used when Nextcloud is placed within a subdir of
-your nginx installation.
+the webroot of your nginx installation.
+In this example the it is
+``/var/www`` and it is accessed via ``http(s)://cloud.example.com/nextcloud/``
 
 .. code-block:: nginx
 
