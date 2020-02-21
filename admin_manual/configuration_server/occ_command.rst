@@ -196,8 +196,9 @@ The ``app`` commands list, enable, and disable apps::
   app:check-code   check code to be compliant
   app:disable      disable an app
   app:enable       enable an app
-  app:getpath      Get an absolute path to the app directory
-  app:list         List all available apps
+  app:getpath      get an absolute path to the app directory
+  app:list         list all available apps
+  app:update       update an app or all apps 
 
 List all of your installed apps, and show whether they are 
 enabled or disabled::
@@ -240,8 +241,16 @@ You can get the full filepath to an app::
     sudo -u www-data php occ app:getpath notifications
     /var/www/nextcloud/apps/notifications
 
+To update an app, for instance Contacts::
+    
+    sudo -u www-data php occ app:update contacts 
+
+To update all apps::
+    
+    sudo -u www-data php occ app:update --all
+
 .. _background_jobs_selector_label:   
-   
+
 Background jobs selector
 ------------------------
 
