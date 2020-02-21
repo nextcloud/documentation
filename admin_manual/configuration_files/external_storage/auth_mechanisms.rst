@@ -35,8 +35,9 @@ credentials of the user to connect to the storage. These are not stored anywhere
 on the server, but rather in the user session, giving increased security. The
 drawbacks are that sharing is disabled when this mechanism is in use, as
 Nextcloud has no access to the storage credentials, and background file scanning
-does not work. Other services that might request the file tough a different request 
-like Collabora Online or OnlyOffice will also not be able to open files in that case.
+does not work. Other services that might request the file through a different
+request like Collabora Online or OnlyOffice will also not be able to open files
+in that case.
 
 The **Log-in credentials, save in database** mechanism uses the Nextcloud login
 credentials of the user to connect to the storage. These are stored in the
