@@ -6,6 +6,8 @@ The primary purpose of the Nextcloud server-side encryption is to protect users'
 files on remote storage, such as Dropbox and Google Drive, and to do it easily 
 and seamlessly from within Nextcloud.
 
+However, there are many downsides of the server-side encryption in Nextcloud, e.g., many useful apps may not work (properly) and the speed of synchronisation between clients and server may be very slow. Hence, think twice before you enable encryption, especially since disabling encryption can cause a loss of all your data.
+
 In Nextcloud 9.0 the server-side encryption separates encryption of local and 
 remote storage. This allows you to encrypt remote storage, such as Dropbox and 
 Google, without having to also encrypt your home storage on your Nextcloud 
@@ -262,16 +264,14 @@ disable it::
 Disabling encryption
 --------------------
 
-You may disable encryption only with ``occ``. Make sure you have backups of all 
-encryption keys, including users'. Put your Nextcloud server into 
-maintenance mode, and then disable your encryption module with this command::
+Disabling the encryption may result in a complete loss of all your data, so be careful!
+You can disable encryption only with ``occ``. 
+Make sure you have backups of all encryption keys, including users', as well as a backup of the database. 
+Also make sure that you are not in maintenance mode while decrypting.
 
- occ maintenance:mode --on
- occ encryption:disable
+ occ encryption:decrypt-all
  
-Take it out of maintenance mode when you are finished::
-
- occ maintenance:mode --off
+Afterwards you need to disable the ``default encryption module``. 
 
 Files not encrypted
 -------------------
