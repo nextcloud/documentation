@@ -35,5 +35,5 @@ If you are behind a reverse proxy or load balancer it is important you make sure
 setup properly. Especially the **trusted_proxies** and **forwarded_for_headers**
 `config.php` variables need to be set correctly. Otherwise it can happen
 that Nextcloud actually starts throttling all traffic coming from the reverse
-proxy or load balancer. For more information see serverconf_reverseproxy_.
+proxy or load balancer. For more information see :doc:`reverse_proxy_configuration`.
 
