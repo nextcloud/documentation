@@ -83,7 +83,7 @@ SAML setup with onelogin
 
 
 Collabora without SSL
------
+---------------------
 
 **1) Start Collabora in a docker container**
 
@@ -141,7 +141,7 @@ docker run --name=ONLYOFFICEDOCKER -i -t -d -p 4433:443 -e JWT_ENABLED='true' -e
     - change token -> inbox -> header to "AuthorizationJWT"
     - change token -> outbox -> header to "AuthorizationJWT"
 - Add the following to your config.php:
-    
+
     ::
 
         'onlyoffice' => array (

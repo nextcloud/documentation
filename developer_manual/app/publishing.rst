@@ -71,7 +71,7 @@ Respect the users
 Apps which break the guidelines will lose their 'approved' or 'official' state; and might be blocked from the app store altogether. This also has repercussions for the author, especially in case of security concerns, he/she might find themselves blocked from submitting applications.
 
 Moving your repo to the Nextcloud organization
-------------------------------------------
+----------------------------------------------
 We're always delighted to hear app developers are interested in moving their app to the Nextcloud organization at `github.com/nextcloud <https://github.com/nextcloud>`_! There are benefits for users and developers in being there. However, it comes with some requirements as well.
 
 Benefits

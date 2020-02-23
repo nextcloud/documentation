@@ -50,7 +50,7 @@ This package provides information about the current user and session.
 
 
 ``@nextcloud/axios``
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 
 This package provides an `Axios <https://www.npmjs.com/package/axios>`_ HTTP client instance, ready to send request to the Nextcloud server. If you use this instance you do not have to care about authentication and special headers.
 `Read the full documentation <https://nextcloud.github.io/nextcloud-axios/>`_
