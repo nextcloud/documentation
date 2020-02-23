@@ -115,7 +115,7 @@ Collabora without SSL
 OnlyOffice
 ----------
 
-1) Create self signed cert, should be on a permanent path::
+1. Create self signed cert, should be on a permanent path::
 
     mkdir -p /tmp/oo/certs
     cd /tmp/oo/certs
@@ -128,19 +128,23 @@ OnlyOffice
     chmod 400 onlyoffice.csr
     chmod 400 dhparam.pem
 
-2) Start docker, important: do not use certs folder, but parent folder:
-docker run --name=ONLYOFFICEDOCKER -i -t -d -p 4433:443 -e JWT_ENABLED='true' -e JWT_SECRET='secret' --restart=always -v /tmp/oo/:/var/www/onlyoffice/Data onlyoffice/documentserver
+2. Start docker, important: do not use certs folder, but parent folder::
 
-3) go into docker:
-- docker exec -it ONLYOFFICEDOCKER /bin/bash
-- apt-get update
-- apt-get install vim -y
-- vim ./etc/onlyoffice/documentserver/default.json
-    - change rejectUnauthorized to false
-- vim /etc/onlyoffice/documentserver/local.json
-    - change token -> inbox -> header to "AuthorizationJWT"
-    - change token -> outbox -> header to "AuthorizationJWT"
-- Add the following to your config.php:
+    docker run --name=ONLYOFFICEDOCKER -i -t -d -p 4433:443 \
+    -e JWT_ENABLED='true' -e JWT_SECRET='secret' --restart=always \
+    -v /tmp/oo/:/var/www/onlyoffice/Data onlyoffice/documentserver
+
+3. Go into docker container:
+
+    - docker exec -it ONLYOFFICEDOCKER /bin/bash
+    - apt-get update
+    - apt-get install vim -y
+    - vim /etc/onlyoffice/documentserver/default.json
+        - change rejectUnauthorized to false
+    - vim /etc/onlyoffice/documentserver/local.json
+        - change token -> inbox -> header to "AuthorizationJWT"
+        - change token -> outbox -> header to "AuthorizationJWT"
+    - Add the following to your config.php
 
     ::
 
@@ -150,13 +154,13 @@ docker run --name=ONLYOFFICEDOCKER -i -t -d -p 4433:443 -e JWT_ENABLED='true' -e
             'jwt_header' => 'AuthorizationJWT'
         ),
 
-- test with local ip: https://localhost:4433
+Test with local ip: https://localhost:4433
     - accept cert warning
     - verify that "Document Server is running" is shown
 
-- on Nextcloud
+Test with Nextcloud
     - download & enable OnlyOffice app
-    -  configure:
+    - configure:
         - Document Editing Service address: https://localhost:4433/
         - Secret key : secret (as above)
         - Document Editing Service address for internal requests from the server: https://localhost:4433/
