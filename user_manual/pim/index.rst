@@ -21,4 +21,5 @@ You can find out more about Nextcloud Groupware `on our website <https://nextclo
    sync_osx
    sync_thunderbird
    sync_kde
+   sync_gnome
    sync_windows10
