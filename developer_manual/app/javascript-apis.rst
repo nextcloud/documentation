@@ -45,94 +45,67 @@ The rest of this section will cover a rough overview of which packages are provi
 ``@nextcloud/auth``
 ^^^^^^^^^^^^^^^^^^^
 
-This package provides information about the current user and session.
-`Read the full documentation <https://nextcloud.github.io/nextcloud-auth/>`_
-
+This package provides information about the current user and session. Documentation: https://nextcloud.github.io/nextcloud-auth/
 
 ``@nextcloud/axios``
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 
-This package provides an `Axios <https://www.npmjs.com/package/axios>`_ HTTP client instance, ready to send request to the Nextcloud server. If you use this instance you do not have to care about authentication and special headers.
-`Read the full documentation <https://nextcloud.github.io/nextcloud-axios/>`_
-
+This package provides an `Axios <https://www.npmjs.com/package/axios>`_ HTTP client instance, ready to send request to the Nextcloud server. If you use this instance you do not have to care about authentication and special headers. Documentation: https://nextcloud.github.io/nextcloud-axios/
 
 ``@nextcloud/event-bus``
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-This package provides a simple event bus implementation that integrates with server and other apps. Thus it is one of the recommended ways of inter-app communication.
-`Read the full documentation <https://nextcloud.github.io/nextcloud-event-bus/>`_
-
+This package provides a simple event bus implementation that integrates with server and other apps. Thus it is one of the recommended ways of inter-app communication. Documentation: https://nextcloud.github.io/nextcloud-event-bus/
 
 ``@nextcloud/dialogs``
 ^^^^^^^^^^^^^^^^^^^^^^
 
-This package provides access to UI dialogs in Nextcloud.
-`Read the full documentation <https://nextcloud.github.io/nextcloud-dialogs/>`_
-
+This package provides access to UI dialogs in Nextcloud. Documentation: https://nextcloud.github.io/nextcloud-dialogs/
 
 ``@nextcloud/files``
 ^^^^^^^^^^^^^^^^^^^^
 
-This package provides helper functions around the Files app.
-`Read the full documentation <https://nextcloud.github.io/nextcloud-files/>`_
-
+This package provides helper functions around the Files app. Documentation: https://nextcloud.github.io/nextcloud-files/
 
 ``@nextcloud/initial-state``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This package provides the counterpart for the `\OCP\IInitialStateService` on the back-end. Use it to retreive your stored data on page load.
-`Read the full documentation <https://nextcloud.github.io/nextcloud-initial-state/>`_
-
+This package provides the counterpart for the `\OCP\IInitialStateService` on the back-end. Use it to retreive your stored data on page load. Documentation: https://nextcloud.github.io/nextcloud-initial-state/
 
 ``@nextcloud/l10n``
 ^^^^^^^^^^^^^^^^^^^
 
-This package provides everything around localization, like access to the current user's locale and translation helpers.
-`Read the full documentation <https://nextcloud.github.io/nextcloud-l10n/>`_
-
+This package provides everything around localization, like access to the current user's locale and translation helpers. Documentation: https://nextcloud.github.io/nextcloud-l10n/
 
 ``@nextcloud/logger``
 ^^^^^^^^^^^^^^^^^^^^^
 
-This package provides a unified logging helper that adds app names, severity and other context to log messages. Use it to enhance the output of your app's logs, useful for development and triaging bug reports.
-`Read the full documentation <https://nextcloud.github.io/nextcloud-logger/>`_
-
+This package provides a unified logging helper that adds app names, severity and other context to log messages. Use it to enhance the output of your app's logs, useful for development and triaging bug reports. Documentation: https://nextcloud.github.io/nextcloud-logger/
 
 ``@nextcloud/moment``
 ^^^^^^^^^^^^^^^^^^^^^
 
-This package provides a modified version of `moment.js <https://momentjs.com/>`_ with the current user's locale set.
-`Read the full documentation <https://nextcloud.github.io/nextcloud-moment/>`_
-
+This package provides a modified version of `moment.js <https://momentjs.com/>`_ with the current user's locale set. Documentation: https://nextcloud.github.io/nextcloud-moment/
 
 ``@nextcloud/password-confirmation``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This package makes it possible to ask a user for confirmation on actions that have a `@PasswordConfirmationRequired` set on the controller method. Use it for critical actions.
-`Read the full documentation <https://nextcloud.github.io/nextcloud-password-confirmation/>`_
-
+This package makes it possible to ask a user for confirmation on actions that have a `@PasswordConfirmationRequired` set on the controller method. Use it for critical actions. Documentation: https://nextcloud.github.io/nextcloud-password-confirmation/
 
 ``@nextcloud/paths``
 ^^^^^^^^^^^^^^^^^^^^
 
-This package provides various helpers for file and folder paths.
-`Read the full documentation <https://nextcloud.github.io/nextcloud-paths/>`_
-
+This package provides various helpers for file and folder paths. Documentation: https://nextcloud.github.io/nextcloud-paths/
 
 ``@nextcloud/router``
 ^^^^^^^^^^^^^^^^^^^^^
 
-This package provides helpers to generate URLs, e.g. to access assets and REST APIs of your app or the Nextcloud server.
-`Read the full documentation <https://nextcloud.github.io/nextcloud-router/>`_
-
+This package provides helpers to generate URLs, e.g. to access assets and REST APIs of your app or the Nextcloud server. Documentation: https://nextcloud.github.io/nextcloud-router/
 
 ``@nextcloud/vue``
 ^^^^^^^^^^^^^^^^^^
 
-This package provides lots of nextcloud components allowing you to quickly build UIs..
-`Read the full documentation <https://nextcloud-vue-components.netlify.com/>`_
-
-
+This package provides lots of nextcloud components allowing you to quickly build UIs. Documentation: https://nextcloud-vue-components.netlify.com/
 
 Global variables
 ----------------

@@ -399,7 +399,7 @@ Another cause of this issue could be not properly including mimetypes in the
 http block, as shown `here. <https://www.nginx.com/resources/wiki/start/topics/examples/full/>`_
 
 Upload of files greater than 10 MiB fails
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you configure nginx (globally) to block all requests to (hidden) dot files,
 it may be not possible to upload files greater than 10 MiB using the webpage

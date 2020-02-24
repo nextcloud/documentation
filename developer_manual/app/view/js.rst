@@ -112,12 +112,10 @@ Providing the initial state with PHP
 Providing state in PHP is done via the ``\OCP\IInitialStateService``. This service
 has two methods you can use to provide the initial state.
 
-* ``provideInitialState(string $appName, string $key, $data)``: Use this method
-if you know for sure your state will be used. For example on the settings page
-of your app.
+* ``provideInitialState(string $appName, string $key, $data)``:
+  If you know for sure your state will be used. For example on the settings page of your app.
 * ``provideLazyInitialState(string $appName, string $key, Closure $closure)``:
-Use this method if you want to inject your state on a general page. For example
-the initial state of the notifications app. The callback will be invoked if and only if a template is rendered.
+  If you want to inject your state on a general page. For example the initial state of the notifications app. The callback will be invoked if and only if a template is rendered.
 
 You call both methods with the name of your app and a key. This is to scope
 the states properly. You will need both when retrieving the initial state in

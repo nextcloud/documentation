@@ -22,7 +22,7 @@ OCP event dispatcher
 This mechanism is a versatile and typed approach to events in Nextcloud's php code. It uses objects rather than just passing primitives or untyped arrays. This should help provide a better developer experience while lowering the risk of unexpected changes in the API that are hard to find after the initial implementation.
 
 Naming scheme
-^^^^^^^^^^^^^
+`````````````
 
 The name should reflect the subject and the actions. Prefixing event classes with `Event` makes it easier to recognize their purpose.
 
@@ -35,7 +35,7 @@ Thus `BeforeUserCreatedEvent` is emitted *before* the user data is written to th
 .. note:: Although you may chose to name your event classes differently, sticking to the convention will allow Nextcloud developers understand each other's apps more easily.
 
 Writing events
-^^^^^^^^^^^^^^
+``````````````
 
 As a rule events are dedicated classes extending ``\OCP\EventDispatcher\Event``.
 
@@ -75,7 +75,7 @@ The event above allows signalling that *something happened*. But in many cases y
     }
 
 Writing a listener
-^^^^^^^^^^^^^^^^^^
+``````````````````
 
 A listener can be a simple callback function (or anything else that is `callable <https://www.php.net/manual/en/language.types.callable.php>`_, or a dedicated class.
 
@@ -163,7 +163,7 @@ In the ``Application.php`` the event and the listener class are connected. The c
 .. note:: The listener is resolved via the DI container, therefore you can add a constructor and type-hint services required for processing the event.
 
 Available Events
-^^^^^^^^^^^^^^^^
+````````````````
 
 ``\OCP\Security\CSP\AddContentSecurityPolicyEvent``
 ***************************************************
@@ -253,7 +253,7 @@ The hook logic should be in a separate class that is being registered in the :do
     }
 
 Available hooks
-***************
+```````````````
 
 The scope is the first parameter that is passed to the **listen** method, the second parameter is the method and the third one the callback that should be executed once the hook is being called, e.g.:
 
@@ -281,7 +281,7 @@ Hooks can also be removed by using the **removeListener** method on the object:
 The following hooks are available:
 
 Session
-*******
+```````
 
 Injectable from the ServerContainer by calling the method **getUserSession()**. 
 
@@ -299,7 +299,7 @@ Hooks available in scope **\\OC\\User**:
 * **logout** ()
 
 UserManager
-***********
+```````````
 
 Injectable from the ServerContainer by calling the method **getUserManager()**.
 
@@ -313,7 +313,7 @@ Hooks available in scope **\\OC\\User**:
 * **postCreateUser** (\\OC\\User\\User $user, string $password)
 
 GroupManager
-^^^^^^^^^^^^
+````````````
 
 Hooks available in scope **\\OC\\Group**:
 
@@ -327,7 +327,7 @@ Hooks available in scope **\\OC\\Group**:
 * **postCreate** (\\OC\\Group\\Group $group)
 
 Filesystem root
-^^^^^^^^^^^^^^^
+```````````````
 
 Injectable from the ServerContainer by calling the method **getRootFolder()**, **getUserFolder()** or **getAppFolder()**.
 
@@ -347,7 +347,7 @@ Filesystem hooks available in scope **\\OC\\Files**:
 * **postRename** (\\OCP\\Files\\Node $source, \\OCP\\Files\\Node $target)
 
 Filesystem scanner
-^^^^^^^^^^^^^^^^^^
+``````````````````
 
 Filesystem scanner hooks available in scope **\\OC\\Files\\Utils\\Scanner**:
 
