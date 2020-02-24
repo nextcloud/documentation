@@ -69,6 +69,8 @@ Nextcloud share::
 .. image:: ../images/webdav_gnome3_nautilus.png
    :alt: screenshot of configuring Nautilus file manager to use WebDAV
 
+If you `configure your Nextcloud account in the GNOME Control Center <../pim/sync_gnome.html>`_ , your files will automatically be mounted by Nautilus as a WebDAV share.
+
 Accessing files with KDE and Dolphin file manager
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
