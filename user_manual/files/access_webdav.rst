@@ -58,8 +58,13 @@ You can access files in Linux operating systems using the following methods.
 Nautilus file manager
 ^^^^^^^^^^^^^^^^^^^^^
 
-Use the ``davs://`` protocol to connect the Nautilus file manager to your
-Nextcloud share::
+**When you configure your Nextcloud account in the** `GNOME Control Center
+<../pim/sync_gnome.html>`_, **your files will automatically be mounted
+by Nautilus as a WebDAV share, unless you deselect file access.**
+
+You can also mount your Nextcloud files manually. Use the ``davs://``
+protocol to connect the Nautilus file manager to your Nextcloud
+share::
 
   davs://example.com/nextcloud/remote.php/dav/files/USERNAME/
 
@@ -69,7 +74,8 @@ Nextcloud share::
 .. image:: ../images/webdav_gnome3_nautilus.png
    :alt: screenshot of configuring Nautilus file manager to use WebDAV
 
-If you `configure your Nextcloud account in the GNOME Control Center <../pim/sync_gnome.html>`_ , your files will automatically be mounted by Nautilus as a WebDAV share.
+.. note:: The same method works for other file managers that use GVfs,
+	  such as MATE's Caja and Cinnamon's Nepomuk.
 
 Accessing files with KDE and Dolphin file manager
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
