@@ -36,7 +36,7 @@ With the Nextcloud mobile app
 3. Now, DAVx⁵ will open Nextcloud's Webflow login window, where you
    will have to enter your credendials and grant access.
 4. After this, DAVx⁵ will close and the Nextcloud app reappears. In
-   order to finish setup, you have to manually launch the DAVx⁵ again.
+   order to finish setup, you have to manually launch DAVx⁵ again.
 5. Tap on the icon for the account DAVx⁵ has just created, when requested grant DAVx⁵ access
    to your calendars and contacts, optionally install `OpenTasks
    <https://play.google.com/store/apps/details?id=org.dmfs.tasks>`_  and
