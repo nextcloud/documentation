@@ -36,8 +36,8 @@ html_logo = "../_shared_assets/static/logo-white.png"
 rst_epilog =  '.. |version| replace:: %s' % version
 
 # building the versions list
-version_start = 15		# THIS IS THE SUPPORTED VERSION NUMBER
-version_stable = 17		# INCREASE THIS NUMBER TO THE LATEST STABLE VERSION NUMBER
+version_start = 16		# THIS IS THE SUPPORTED VERSION NUMBER
+version_stable = 18		# INCREASE THIS NUMBER TO THE LATEST STABLE VERSION NUMBER
 def generateVersionsDocs(current_docs):
 	versions_doc = []
 	for v in range(version_start, version_stable + 1):
