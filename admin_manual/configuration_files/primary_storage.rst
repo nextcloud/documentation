@@ -86,22 +86,37 @@ V3 Authentication:
 
 ::
 
-	'objectstore' => array(
+	'objectstore' =>
+	array (
 		'class' => 'OC\\Files\\ObjectStore\\Swift',
-		'arguments' => array(
+		'arguments' =>
+		array (
 			'autocreate' => true,
-			'user' => [
+			'user' =>
+			array (
 				'name' => 'swift',
 				'password' => 'Secr3tPaSSWoRdt7',
-				'domain' => [
-					'name' => 'default'
-				]
-			],
+				'domain' =>
+				array (
+					'name' => 'Default',
+				),
+			),
+			'scope' =>
+			array (
+				'project' =>
+				array (
+					'name' => 'OS_PROJECT_NAME',
+					'domain' =>
+					array (
+						'name' => 'Default',
+					),
+				),
+			),
 			'serviceName' => 'swift',
 			'region' => 'regionOne',
-			'url' => "http://example.com/v3",
-			'bucket' => 'nextcloud'
-		)
+			'url' => 'http://example.com/v3',
+			'bucket' => 'nextcloud',
+		),
 	),
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
