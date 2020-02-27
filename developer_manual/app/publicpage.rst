@@ -4,7 +4,7 @@ Public Pages
 
 A lot of apps in Nextcloud want to expose public pages in some form. This can
 be to share files, a calendar or anything else. To ensure all those pages
-benefit fromt he security enhancements we add we created simple controlers
+benefit from the security enhancements we add we created simple controlers
 for app developers to use.
 
 Concept
