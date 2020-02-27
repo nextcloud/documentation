@@ -466,7 +466,7 @@ This example creates a new calendar for molly::
 
  sudo -u www-data php occ dav:create-calendar molly mollycal
  
-Molly will immediately see these on her Calendar and Contacts pages.
+Molly will immediately see these on their Calendar and Contacts pages.
 
 ``dav:lists-calendars [user]`` will display a table listing the calendars for an given user. 
 This example will list all calendars for user annie::
@@ -1045,7 +1045,7 @@ memberships with the ``user:add`` command. The syntax is::
 
 The ``display-name`` corresponds to the **Full Name** on the Users page in your 
 Nextcloud Web UI, and the ``uid`` is their **Username**, which is their 
-login name. This example adds new user Layla Smith, and adds her to the 
+login name. This example adds new user Layla Smith, and adds them to the 
 **users** and **db-admins** groups. Any groups that do not exist are created:: 
  
  sudo -u www-data php occ user:add --display-name="Layla Smith" 

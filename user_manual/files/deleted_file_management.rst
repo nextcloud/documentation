@@ -28,7 +28,7 @@ scenario illustrates:
 2. User2 (the recipient) deletes a file/folder "sub" inside of "test"
 3. The folder "sub" will be moved to the trashbin of both User1 (owner) and
    User2 (recipient)
-4. But User3 will not have a copy of "sub" in her trash bin
+4. But User3 will not have a copy of "sub" in their trash bin
 
 When User1 deletes "sub" then it is moved to User1's trash bin. It is
 deleted from User2 and User3, but not placed in their trash bins.

@@ -68,7 +68,7 @@ Respect the users
 * Apps must respect user privacy. IF user data is sent anywhere, this must be clearly explained and be kept to a minimum for the functioning of an app. Use proper security measures when needed.
 * App authors must provide means to contact them, be it through a bug tracker, forum or mail.
 
-Apps which break the guidelines will lose their 'approved' or 'official' state; and might be blocked from the app store altogether. This also has repercussions for the author, especially in case of security concerns, he/she might find themselves blocked from submitting applications.
+Apps which break the guidelines will lose their 'approved' or 'official' state; and might be blocked from the app store altogether. This also has repercussions for the author, especially in case of security concerns, they might find themselves blocked from submitting applications.
 
 Moving your repo to the Nextcloud organization
 ----------------------------------------------

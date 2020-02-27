@@ -23,7 +23,7 @@ reviewed!
 How will it work?
 -----------------
 
-#. A developer will submit his changes on GitHub via a pull request (PR).
+#. A developer will submit their changes on GitHub via a pull request (PR).
    `GitHub:help - using pull requests <https://help.GitHub.com/articles/using-pull-requests>`_
 #. Within the pull request the developer could already name other developers (using
    @GitHubusername) and ask them for review.
@@ -32,7 +32,7 @@ How will it work?
    PR author had indicated.
 #. Other developers (either named or at free will) have a look at the changes
    and are welcome to write comments within the comment field.
-#. In case the reviewer is okay with the changes and thinks all his comments and
+#. In case the reviewer is okay with the changes and thinks all their comments and
    suggestions have been taken into account a :+1 on the comment will signal a positive
    review.
 #. Before a pull request will be merged into master or the corresponding
