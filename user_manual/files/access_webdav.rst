@@ -9,7 +9,7 @@ WebDAV. Before we get into configuring WebDAV, let's take a quick look at the
 recommended way of connecting client devices to your Nextcloud servers.
 
 .. note:: In the following examples, you should replace **example.com/nextcloud** with the
-   URL of your Nextcloud server (omit the directory part if the installation is 
+   URL of your Nextcloud server (omit the directory part if the installation is
    in the root of your domain), and "USERNAME" with the username of the connecting user.
 
    See the webdav url (bottom left, settings) on your Nextcloud.
@@ -17,12 +17,12 @@ recommended way of connecting client devices to your Nextcloud servers.
 Nextcloud Desktop and mobile clients
 ------------------------------------
 
-The recommended way to synchronize a desktop PC with a Nextcloud server is by 
-using `Nextcloud/ownCloud sync clients <https://nextcloud.com/install/#install-clients>`_. You can configure the 
-client to save files in any local directory and you can choose which 
+The recommended way to synchronize a desktop PC with a Nextcloud server is by
+using `Nextcloud/ownCloud sync clients <https://nextcloud.com/install/#install-clients>`_. You can configure the
+client to save files in any local directory and you can choose which
 directories on the Nextcloud server to sync with. The client displays the
-current connection status and logs all activity, so you always know which 
-remote files have been downloaded to your PC and you can verify that files 
+current connection status and logs all activity, so you always know which
+remote files have been downloaded to your PC and you can verify that files
 created and updated on your local PC are properly synchronized with the server.
 
 The recommended way to synchronize Nextcloud server with Android and
@@ -68,6 +68,8 @@ Nextcloud share::
 
 .. image:: ../images/webdav_gnome3_nautilus.png
    :alt: screenshot of configuring Nautilus file manager to use WebDAV
+
+If you `configure your Nextcloud account in the GNOME Control Center <../pim/sync_gnome.html>`_ , your files will automatically be mounted by Nautilus as a WebDAV share.
 
 Accessing files with KDE and Dolphin file manager
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -151,7 +153,7 @@ automatically every time you log in to your Linux computer.
 
     https://example.com/nextcloud/remote.php/dav/files/USERNAME/ /home/<linux_username>/nextcloud
     davfs user,rw,auto 0 0
-    
+
 
 8. Then test that it mounts and authenticates by running the following
    command. If you set it up correctly you won't need root permissions::
@@ -229,15 +231,14 @@ files offline, use the Desktop Client to sync all files on your
 Nextcloud to one or more directories of your local hard drive.
 
 .. note:: Windows 10 now defaults to allow Basic Authentication if HTTPS is 
-enabled prior to mapping your drive. On older versions of Windows you must 
-permit the use of Basic Authentication in the Windows Registry: 
-Launch „regedit“ and navigate to 
-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters. 
-Create or edit the DWORD value „BasicAuthLevel“ (Windows Vista, 7 and 8) or 
-„UseBasicAuth“ (Windows XP and Windows Server 2003) and set its value data 
-to 1 for SSL connections. Value 0 means that Basic Authentication is disabled, 
-a value of 2 allows both SSL and non-SSL connections (not recommended). 
-Then exit Registry Editor, and restart the computer.
+    enabled prior to mapping your drive, you must permit the use of Basic
+    Authentication in the Windows Registry: launch „regedit“ and navigate to
+    HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters.
+    Create or edit the DWORD value „BasicAuthLevel“ (Windows Vista, 7 and 8) or
+    „UseBasicAuth“ (Windows XP and Windows Server 2003) and set its value data
+    to 1 for SSL connections. Value 0 means that Basic Authentication is disabled,
+    a value of 2 allows both SSL and non-SSL connections (not recommended).
+    Then exit Registry Editor, and restart the computer.
 
 Mapping drives with the command line
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

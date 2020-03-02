@@ -179,18 +179,20 @@ webroot of your nginx installation. In this example it is
           access_log off;
       }
 
-      location ~ \.(?:png|html|ttf|ico|jpg|jpeg|bcmap)$ {
+      location ~ \.(?:png|html|ttf|ico|jpg|jpeg|bcmap|mp4|webm)$ {
           try_files $uri /index.php$request_uri;
           # Optional: Don't log access to other assets
           access_log off;
       }
   }
 
-Nextcloud in a subdir of nginx
-------------------------------
+Nextcloud in a subdir of the nginx webroot
+------------------------------------------
 
 The following config should be used when Nextcloud is placed within a subdir of
-your nginx installation.
+the webroot of your nginx installation.
+In this example the webroot is located at
+``/var/www`` and the Nextcloud instance is accessed via ``http(s)://cloud.example.com/nextcloud/``
 
 .. code-block:: nginx
 
@@ -345,7 +347,7 @@ your nginx installation.
               access_log off;
           }
 
-          location ~ ^\/nextcloud\/.+[^\/]\.(?:png|html|ttf|ico|jpg|jpeg|bcmap)$ {
+          location ~ ^\/nextcloud\/.+[^\/]\.(?:png|html|ttf|ico|jpg|jpeg|bcmap|mp4|webm)$ {
               try_files $uri /nextcloud/index.php$request_uri;
               # Optional: Don't log access to other assets
               access_log off;
@@ -397,7 +399,7 @@ Another cause of this issue could be not properly including mimetypes in the
 http block, as shown `here. <https://www.nginx.com/resources/wiki/start/topics/examples/full/>`_
 
 Upload of files greater than 10 MiB fails
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you configure nginx (globally) to block all requests to (hidden) dot files,
 it may be not possible to upload files greater than 10 MiB using the webpage

@@ -5,19 +5,14 @@ Settings
 .. sectionauthor:: Arthur Schiwon <blizzz@arthur-schiwon.de>
 
 An app can register both admin settings as well as personal settings.
-
-Admin
------
-
-For Nextcloud 10 the admin settings page got reworked. It is not a long list
-anymore, but divided into sections, where related settings forms are grouped.
+Settings are devided into sections to group similar settings together.
 For example, in the **Sharing** section are only settings (built-in and of apps)
 related to sharing.
 
 Settings form
 -------------
 
-For the settings form, three things are necessary:
+For the settings to show up, three things are necessary:
 
 1. A class implementing ``\OCP\Settings\ISettings``
 2. A template
@@ -207,11 +202,9 @@ only if there is not fitting corresponding section and the apps settings form
 takes a lot of screen estate. Otherwise, register to "additional".
 
 Basically, it works the same way as with the settings form. There are only two
-differences. First, the interface that must be implemented is ``\OCP\Settings\ISection``.
+differences. First, the interface that must be implemented is ``\OCP\Settings\IIconSection``.
 
-Second, a template is not necessary.
-
-An example implementation of the ISection interface:
+An example implementation of the IIconSection interface:
 
 .. code-block:: php
 
@@ -219,15 +212,19 @@ An example implementation of the ISection interface:
     namespace OCA\YourAppNamespace\Settings;
 
     use OCP\IL10N;
-    use OCP\Settings\ISection;
+    use OCP\Settings\IIconSection;
 
-    class AdminSection implements ISection {
+    class AdminSection implements IIconSection {
 
             /** @var IL10N */
             private $l;
 
-            public function __construct(IL10N $l) {
+            /** @var IURLGenerator */
+            private $urlGenerator;
+
+            public function __construct(IL10N $l, IURLGenerator $urlGenerator) {
                     $this->l = $l;
+                    $this->urlGenerator = $urlGenerator;
             }
 
             /**
@@ -258,20 +255,31 @@ An example implementation of the ISection interface:
                     return 80;
             }
 
+            /**
+             * @return The relative path to a an icon describing the section
+             */
+            public function getIcon() {
+                    return $this->urlGenerator->imagePath('yourapp', 'icon.svg');
+            }
+
     }
 
 Also the section must be registered in the app's info.xml.
 
-Personal
-^^^^^^^^
+Registering Settings and Sections
+---------------------------------
 
-Registering personal settings follows and old style yet. Within the app
-intialisation (e.g. in appinfo/app.php) a method must be called:
+As mentioned already both Settings and Sections should be registered in the info.xml of your app
+This is rather straight forward as you can see in the code snipplet below
 
-.. code-block:: php
+.. code-block:: xml
 
-    <?php
-    \OCP\App::registerPersonal('yourappid', 'personal');
+    ...
+    <settings>
+        <admin>OCA\YourAppNamespace\Settings\Admin</admin>
+        <admin-section>OCA\YourAppNamespace\Settings\AdminSection</admin-section>
+        <personal>OCA\YourAppNamespace\Settings\Personal</personal>
+        <personal-section>OCA\YourAppNamespace\Settings\PersonalSection</personal-section>
+    </settings>
+    ...
 
-Upon opening the personal page, Nextcloud will look for ``personal.php`` script,
-execute it and print the output.

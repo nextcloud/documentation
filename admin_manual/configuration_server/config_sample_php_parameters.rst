@@ -1617,6 +1617,53 @@ use.
 
 The Web server user must have write access to this directory.
 
+Hashing
+-------
+
+
+::
+
+	'hashing_default_password' => false,
+
+By default Nextcloud will use the Argon2 password hashing if available.
+
+However if for whatever reason you want to stick with the PASSWORD_DEFAULT
+of your php version. Then set the setting to true.
+
+Nextcloud uses the Argon2 algorithm (with PHP >= 7.2) to create hashes by its
+own and exposes its configuration options as following. More information can
+be found at: https://www.php.net/manual/en/function.password-hash.php
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+::
+
+	'hashingMemoryCost' => PASSWORD_ARGON2_DEFAULT_MEMORY_COST,
+
+The allowed maximum memory in KiB to be used by the algorithm for computing a
+hash. The smallest possible value is 8. Values that undershoot the minimum
+will be ignored in favor of the default.
+
+::
+
+	'hashingTimeCost' => PASSWORD_ARGON2_DEFAULT_TIME_COST,
+
+The allowed maximum time in seconds that can be used by the algorithm for
+computing a hash. The value must be an integer, and the minimum value is 1.
+
+Values that undershoot the minimum will be ignored in favor of the default.
+
+::
+
+	'hashingThreads' => PASSWORD_ARGON2_DEFAULT_THREADS,
+
+The allowed number of CPU threads that can be used by the algorithm for
+computing a hash. The value must be an integer, and the minimum value is 1.
+
+Rationally it does not help to provide a number higher than the available
+threads on the machine. Values that undershoot the minimum will be ignored
+in favor of the default.
+
 ::
 
 	'hashingCost' => 10,

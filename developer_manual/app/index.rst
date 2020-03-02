@@ -9,6 +9,7 @@ App development
    tutorial
    upgrade-guide
    npm
+   javascript-apis
    requests/index
    view/index
    storage/index
@@ -30,6 +31,5 @@ App development
    publicpage
    testing
    ../api
-   how_to
 
 
