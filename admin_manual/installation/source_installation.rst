@@ -444,6 +444,29 @@ To install the Nextcloud Snap Package, run the following command in a terminal::
 
    On a machine running a pristine Ubuntu 18.04 LTS server, you have three options:
 
+Installation via web installer on a VPS or web space
+----------------------------------------------------
+
+When you don't have access to the command line, for example at a web hosting or VMPS, 
+an easy option is to use our web installer. This script can be found on our
+`server installation page here. <https://nextcloud.com/install/#instructions-server>`_
+
+The script checks the dependencies, downloads Nextcloud from the official server,
+unpacks it with the right permissions and the right user account. Finally, you will be
+redirected to the Nextcloud installer. Here a quick how-to:
+
+1. Get the file from the installation page
+2. Upload setup-nextcloud.php to your web space
+3. Point your web browser to setup-nextcloud.php on your webspace
+4. Follow the instructions and configure Nextcloud
+5. Login to your newly created Nextcloud instance!
+
+.. note:: that the installer uses the same Nextcloud version as available for the built
+   in updater in Nextcloud. After a major release it can take up to a month before
+   it becomes available through the web installer and the updater. This is done to
+   spread the deployment of new major releases out over time.
+
+
 Installation via install script
 -------------------------------
 
