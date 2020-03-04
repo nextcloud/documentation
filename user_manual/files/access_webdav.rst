@@ -112,7 +112,7 @@ How to create a permanent link to your Nextcloud server:
 Creating WebDAV mounts on the Linux command line
 ------------------------------------------------
 
-You can create WebDAV mounts from the Linux command line. This is useful if you
+This is useful if you
 prefer to access Nextcloud the same way as any other remote filesystem mount.
 The following example shows how to create a personal mount and have it mounted
 automatically every time you log in to your Linux computer.
