@@ -88,7 +88,7 @@ the ``webdav://`` protocol::
 .. image:: ../images/webdav_dolphin.png
    :alt: screenshot of configuring Dolphin file manager to use WebDAV
 
-You can create a permanent link to your Nextcloud server:
+How to create a permanent link to your Nextcloud server:
 
 #. Open Dolphin and click "Network" in the left hand "Places" column.
 #. Click on the icon labeled **Add a Network Folder**.
