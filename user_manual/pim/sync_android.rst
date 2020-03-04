@@ -27,14 +27,12 @@ Contacts and Calendar
 With the Nextcloud mobile app
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Install `DAVx⁵ (formerly known as DAVDroid)
-   <https://www.davx5.com/download/>`_ on your Android device, `from
-   Google Play store <https://play.google.com/store/apps/details?id=at.bitfire.davdroid>`_ or `from F-Droid
-   <https://f-droid.org/de/packages/at.bitfire.davdroid/>`_
-2. In the Nextcloud mobile, go
+1. Install `DAVx⁵ <https://www.davx5.com/download/>`_ (formerly known as DAVDroid)
+ on your Android device, `from Google Play store <https://play.google.com/store/apps/details?id=at.bitfire.davdroid>`_ or `from F-Droid <https://f-droid.org/de/packages/at.bitfire.davdroid/>`_
+2. In Nextcloud mobile, go
    to **Settings** / **More**, tap on "**Sync caldendars & contacts**"
 3. Now, DAVx⁵ will open Nextcloud's Webflow login window, where you
-   will have to enter your credendials and grant access.
+   will have to enter your credentials and grant access.
 4. After this, DAVx⁵ will close and the Nextcloud app reappears. In
    order to finish setup, you have to manually launch DAVx⁵ again.
 5. Tap on the icon for the account DAVx⁵ has just created, when requested grant DAVx⁵ access
@@ -43,7 +41,7 @@ With the Nextcloud mobile app
    grant DAVx⁵ access to your tasks, too.
 6. When you tap the icon for the account DAVx⁵ has set up, it will
    discover the available address books and calendars. Choose which
-   ones you want to synchronize and finishish.
+   ones you want to synchronize and finish.
 
 
 Without the Nextcloud mobile app
@@ -51,7 +49,7 @@ Without the Nextcloud mobile app
 If you don't want to install the Nextcloud mobile app, the following
 steps are required after installing DAVx⁵
 
-1. Install `DAVx⁵ (formerly known as DAVDroid) <https://www.davx5.com/download/>`_ on your Android device, `from
+1. Install `DAVx⁵ <https://www.davx5.com/download/>`_  (formerly known as DAVDroid) on your Android device, `from
    Google Play store <https://play.google.com/store/apps/details?id=at.bitfire.davdroid>`_ or `from F-Droid
    <https://f-droid.org/de /packages/at.bitfire.davdroid/>`_.
 2. Optionally install `OpenTasks <https://play.google.com/store/apps/details?id=org.dmfs.tasks>`_.
