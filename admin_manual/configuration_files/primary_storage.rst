@@ -91,7 +91,7 @@ V3 Authentication:
 		'arguments' => [
 			'autocreate' => true,
 			'user' => [
-				'name' => 'swift',
+				'name' => 'UserName',
 				'password' => 'Secr3tPaSSWoRdt7',
 				'domain' => [
 					'name' => 'Default',
@@ -99,7 +99,7 @@ V3 Authentication:
 			],
 			'scope' => [
 				'project' => [
-					'name' => 'OS_PROJECT_NAME',
+					'name' => 'TenantName',
 					'domain' => [
 						'name' => 'Default',
 					],
