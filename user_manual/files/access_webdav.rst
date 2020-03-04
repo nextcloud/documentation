@@ -77,6 +77,7 @@ share::
 .. note:: The same method works for other file managers that use GVfs,
 	  such as MATE's Caja and Cinnamon's Nepomuk.
 
+
 Accessing files with KDE and Dolphin file manager
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
