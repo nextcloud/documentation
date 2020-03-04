@@ -549,7 +549,7 @@ base URL and folder only::
 
     example.com/nextcloud
 
-In addition to the mobile apps provided by Nextcloud or ownCloud, you can use other apps to
+In addition to the mobile apps provided by Nextcloud, you can use other apps to
 connect to Nextcloud from your mobile device using WebDAV. `WebDAV Navigator`_ is
 a good (proprietary) app for `Android devices`_ and `iPhones`_. The URL to use on these is::
 
