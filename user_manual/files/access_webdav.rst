@@ -512,6 +512,7 @@ To get the properties of files in the root folder:
 .. _Android devices: https://play.google.com/store/apps/details?id=com.schimera.webdavnavlite
 .. _iPhones: https://itunes.apple.com/app/webdav-navigator/id382551345
 .. _BlackBerry devices: http://appworld.blackberry.com/webstore/content/46816
+
 ======================================
 Accessing Nextcloud files using WebDAV
 ======================================
