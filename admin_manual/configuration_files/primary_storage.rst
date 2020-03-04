@@ -91,12 +91,20 @@ V3 Authentication:
 		'arguments' => array(
 			'autocreate' => true,
 			'user' => [
-				'name' => 'swift',
+				'name' => 'UserName',
 				'password' => 'Secr3tPaSSWoRdt7',
 				'domain' => [
 					'name' => 'default'
 				]
 			],
+			'scope' => [
+                        	'project' => [
+                                	'name' => 'TenantName',
+                                	'domain' => [
+                                        	'name' => 'Default',
+                                	],
+                        	],
+                	],
 			'serviceName' => 'swift',
 			'region' => 'regionOne',
 			'url' => "http://example.com/v3",
