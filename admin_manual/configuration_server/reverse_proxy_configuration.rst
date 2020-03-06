@@ -75,6 +75,7 @@ Thanks to `@pauvos <https://github.com/pauvos>`_ for traefik example.
 
 HAProxy
 ^^^^^^^
+::
 
   acl url_discovery path /.well-known/caldav /.well-known/carddav
   http-request redirect location /remote.php/dav/ code 301 if url_discovery
