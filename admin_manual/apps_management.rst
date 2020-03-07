@@ -103,10 +103,14 @@ To enable installation from your own apps store:
 
 2. Set the **appstoreurl** to the URL of your Nextcloud apps store.
 
-   This parameter is used to set the http path to the Nextcloud apps store. The appstore
-   server must use :abbr:`OCS (Open Collaboration Services)`.
+   This parameter is used to set the http path to the Nextcloud apps store.
 
 ::
 
     "appstoreenabled" => true,
-    "appstoreurl" => "https://api.nextcloud.com/v1",
+    "appstoreurl" => "https://my.appstore.instance/v1",
+
+
+By default the apps store is enabled and configured to use ``https://apps.nextcloud.com/api/v1`` as apps store url. Nextcloud will fetch ``apps.json`` and ``categories.json`` from there. To use the defaults again remove **appstoreenabled** and **appstoreurl** from the configuration. 
+
+Example: If ``categories.json`` is available at ``https://apps.nextcloud.com/api/v1/categories.json`` the apps store url is ``https://apps.nextcloud.com/api/v1``.
