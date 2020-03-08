@@ -370,7 +370,7 @@ for your SSL-based server.
 Solution 2
 ^^^^^^^^^^
 
-The Windows WebDAV Client might not support TSLv1.1 / TSLv1.2 connections. If
+The Windows WebDAV Client might not support TLSv1.1 / TLSv1.2 connections. If
 you have restricted your server config to only provide TLSv1.1 and above the
 connection to your server might fail. Please refer to the WinHTTP_ documentation
 for further information.
