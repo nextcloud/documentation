@@ -63,8 +63,8 @@ Apache2
 
 Thanks to `@ffried <https://github.com/ffried>`_ for apache2 example.
 
-Traefik
-^^^^^^^
+Traefik 1
+^^^^^^^^^
 ::
 
   traefik.frontend.redirect.permanent: 'true'
@@ -72,6 +72,16 @@ Traefik
   traefik.frontend.redirect.replacement: https://$$1/remote.php/dav/
 
 Thanks to `@pauvos <https://github.com/pauvos>`_ for traefik example.
+
+Traefik 2
+^^^^^^^^^
+::
+
+  [http.middlewares]
+    [http.middlewares.nextcloud-redirectregex.redirectRegex]
+      permanent = true
+      regex = "https://(.*)/.well-known/(card|cal)dav"
+      replacement = "https://${1}/remote.php/dav/"
 
 HAProxy
 ^^^^^^^
