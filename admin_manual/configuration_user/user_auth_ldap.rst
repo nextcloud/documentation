@@ -489,6 +489,11 @@ Internal Username:
 
   You can override all of this with the Internal Username setting. Leave it
   empty for default behavior. Changes will affect only newly mapped LDAP users.
+  
+  When configuring this, be aware that the username in Nextcloud is considered 
+  immutable and cannot be changed afterwards. This can cause issues when using
+  an attribute that might change, e.g. the email address of a user that will 
+  get changed during name change.
 
   * Example: *uid*
 
