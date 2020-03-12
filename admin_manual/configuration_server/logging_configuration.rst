@@ -40,7 +40,7 @@ date format in the example below, the date/time format will be written in the fo
 
     "log_type" => "file",
     "logfile" => "nextcloud.log",
-    "loglevel" => "3",
+    "loglevel" => 3,
     "logdateformat" => "F d, Y H:i:s",
 
 syslog
@@ -52,7 +52,7 @@ All log information will be sent to your default syslog daemon.
 
     "log_type" => "syslog",
     "logfile" => "",
-    "loglevel" => "3",
+    "loglevel" => 3,
 
 Admin audit log
 ---------------
