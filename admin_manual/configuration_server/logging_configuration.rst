@@ -57,13 +57,21 @@ All log information will be sent to your default syslog daemon.
 Admin audit log
 ---------------
 
+If ``loglevel`` in ``config.php`` is set to ``2`` or higher, audit logging needs to be triggered explicitly by adding the follwing setting to to ``config.php``:
+
+::
+
+	'log.condition' => [
+		'apps' => ['admin_audit'],
+	],
+
+
 If required, the name and path of the audit log file can be customized by using the following command:
 
 ::
 
     occ config:app:set admin_audit logfile --value=/var/log/nextcloud/audit.log
 
+Find detailed documentation on auditable events for enterprises in our `customer portal <https://portal.nextcloud.com/article/using-the-audit-log-44.html>`_.
 
 .. _PHP date function: http://www.php.net/manual/en/function.date.php
-
-Find detailed documentation on auditable events for enterprises in our `customer portal <https://portal.nextcloud.com/article/using-the-audit-log-44.html>`_.
