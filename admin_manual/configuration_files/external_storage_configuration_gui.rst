@@ -102,11 +102,7 @@ for more information.
 Available storage backends
 --------------------------
 
-The following backends are provided by the external storages app. Other apps
-may provide their own backends, which are not listed here. Google Drive and Dropbox
-were moved to external apps which are still in development (Github-Repos for `Google Drive 
-<https://github.com/owncloud/files_external_gdrive>`_ and `Dropbox 
-<https://github.com/icewind1991/files_external_dropbox>`_).
+The following backends are provided by the external storages app.
 
 .. toctree::
     :maxdepth: 1

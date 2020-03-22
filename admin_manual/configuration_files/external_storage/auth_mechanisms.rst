@@ -64,15 +64,3 @@ can be regenerated with a button in the GUI.
 
 .. figure:: images/auth_rsa.png
    :alt: Form on admin page for generating RSA keys.
-
-OAuth
------
-
-OAuth 1.0 and OAuth 2.0 are both implemented, but currently limited to the
-Dropbox and Google Drive backends respectively. These mechanisms require
-additional configuration at the service provider, where an app ID and app
-secret are provided and then entered into Nextcloud. Then Nextcloud can
-perform an authentication request, establishing the storage connection.
-
-.. figure:: images/dropbox-oc.png
-   :alt: Dropbox storage mount configuration.
