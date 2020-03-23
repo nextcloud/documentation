@@ -638,6 +638,12 @@ For example, try accessing resources by leaving out `index.php` in the URL.
 
 The URL of your proxy server, for example ``proxy.example.com:8081``.
 
+Note: Guzzle (the http library used by Nextcloud) is reading the environment
+variables HTTP_PROXY (only for cli request), HTTPS_PROXY, and NO_PROXY by default.
+
+If you configure proxy with Nextcloud any default configuration by Guzzle
+is overwritten. Make sure to set ``proxyexclude`` accordingly if necessary.
+
 Defaults to ``''`` (empty string)
 
 ::
@@ -649,6 +655,19 @@ The optional authentication for the proxy to use to connect to the internet.
 The format is: ``username:password``.
 
 Defaults to ``''`` (empty string)
+
+::
+
+	'proxyexclude' => [],
+
+List of host names that should not be proxied to.
+
+For example: ``['.mit.edu', 'foo.com']``.
+
+Hint: Use something like ``explode(',', getenv('NO_PROXY'))`` to sync this
+value with the global NO_PROXY option.
+
+Defaults to empty array.
 
 Deleted Items (trash bin)
 -------------------------
