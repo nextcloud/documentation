@@ -54,7 +54,7 @@ GitHub offers several search queries which can be useful to find a list of bugs 
 * `Least commented issues <https://github.com/search?q=is%3Aissue+user%3Anextcloud+is%3Aopen+no%3Aassignee+no%3Amilestone+no%3Alabel+sort%3Acomments-asc+>`_
 * `Bugs which need info <https://github.com/search?q=is%3Aissue+user%3Anextcloud+is%3Aopen+label%3A%22Needs+info%22+sort%3Acreated-asc+>`_
 
-But there are more methods. For example, if you are a user of Nextcloud with a specific setup like using nginx as Web server or Dropbox as storage, or using the encryption app, you could look for bugs with these keywords. You can then use your knowledge of your installation and your installation itself to see if bugs are (still) valid or reproduce them.
+But there are more methods. For example, if you are a user of Nextcloud with a specific setup like using nginx as Web server, a custom external storage or using the encryption app, you could look for bugs with these keywords. You can then use your knowledge of your installation and your installation itself to see if bugs are (still) valid or reproduce them.
 
 Once you have picked an issue, add a comment that you've started triaging:
 
