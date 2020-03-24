@@ -12,12 +12,12 @@ in and out and manage and share your files as you normally do, and you can
 still change your password whenever you want.
 
 Its main purpose is to encrypt files on remote storage services that are
-connected to your Nextcloud server, such as Dropbox and Google Drive. This is an
+connected to your Nextcloud serve. This is an
 easy and seamless way to protect your files on remote storage. You can share
 your remote files through Nextcloud in the usual way, however you cannot share
-your encrypted files directly from Dropbox, Google Drive, or whatever remote
-service you are using, because the encryption keys are stored on your Nextcloud
-server, and are never exposed to outside service providers.
+your encrypted files directly from the remote service you are using, because
+the encryption keys are stored on your Nextcloud server, and are never exposed
+to outside service providers.
 
 If your Nextcloud server is not connected to any remote storage services, then
 it is better to use some other form of encryption such as file-level or whole
