@@ -12,16 +12,21 @@ Configure your sharing policy on your Admin page in the Sharing section.
 
 * Check ``Allow apps to use the Share API`` to enable users to share files. If 
   this is not checked, no users can create file shares.
+* Check ``Set default expiration date for shares`` to set a default expiration date
+  on local user and group shares.
+* Check ``Enforce expiration date`` to always enforce the configured expiration date
+  on local user and group shares. Users will not be able to adjust or remove the expiration date.
 * Check ``Allow users to share via link`` to enable creating public shares for  
   people who are not Nextcloud users via hyperlink.
-* Check ``Allow public uploads`` to allow anyone to upload files to 
-  public shares.
+* Check ``Allow public uploads`` to allow anyone to upload files to public shares.
 * Check ``Always ask for a password`` to proactively ask a user to set a password
   for a share link.
 * Check ``Enforce password protection`` to force users to set a password on all 
   public share links. This does not apply to local user and group shares.
-* Check ``Set default expiration date`` to set a default expiration date on 
+* Check ``Set default expiration date for link shares`` to set a default expiration date on 
   public shares.
+* Check ``Enforce expiration date`` to always enforce the configured expiration date
+  on public shares. Users will not be able to adjust or remove the expiration date.
 * Check ``Allow resharing`` to enable users to re-share files shared with them.
 * Check ``Allow sharing with groups`` to enable users to share with groups.
 * Check ``Restrict users to only share with users in their groups`` to confine 
@@ -39,11 +44,13 @@ Configure your sharing policy on your Admin page in the Sharing section.
   groups can still receive shares, but not create any.
 * Check ``Allow username autocompletion in share dialog`` to enable 
   auto-completion of Nextcloud usernames.
+* Check ``Restrict username autocompletion to users within the same groups`` to limit
+  username autocompletion to users from within the same groups as the share owner.
 * Check ``Show disclaimer text on the public link upload page`` to set and show
   a disclaimer text on public links with hidden file lists.
 
 With ``Default share permissions`` you are able to set the default permissions 
-for user-shares (``Create``, ``Change``, ``Delete`` and ``Share``) without
+for user-shares (``Create``, ``Change``, ``Delete`` and ``Reshare``) without
 forcing them.
 
 .. note:: Nextcloud does not preserve the mtime (modification time) of 
