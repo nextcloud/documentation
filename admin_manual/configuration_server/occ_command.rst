@@ -466,7 +466,7 @@ This example creates a new calendar for molly::
 
  sudo -u www-data php occ dav:create-calendar molly mollycal
  
-Molly will immediately see these on their Calendar and Contacts pages.
+Molly will immediately see these in the Calendar and Contacts apps.
 
 ``dav:lists-calendars [user]`` will display a table listing the calendars for an given user. 
 This example will list all calendars for user annie::
