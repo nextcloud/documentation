@@ -81,7 +81,7 @@ information. You may edit this email using the email template editor on your
 Admin page (see :doc:`../configuration_server/email_configuration`).
 
 Set the **Send email to new user**-checkbox allows you to leave the **Password**
-field empty. The user will get an activation-email to set his own password.
+field empty. The user will get an activation-email to set their own password.
 
 Reset a user's password
 -----------------------
@@ -186,13 +186,13 @@ Disable and enable users
 
 .. figure:: ../images/users-actions.png
 
-Sometimes you may want to disable a user without permanently deleting his
+Sometimes you may want to disable a user without permanently deleting their
 settings and files. The user can be activated any time again, without data-loss.
 
 Hover your cursor over their name on the **Users** page until the "..."-menu icon
 appears at the far right. After clicking on it, you will see the **Disable** option.
 
-The user will not longer be able to access his Nextcloud until you enable him again.
+The user will not longer be able to access their Nextcloud until you enable them again.
 Keep in mind that the files, which were shared by this user will not longer be accessible.
 
 You will find all disabled users in the **disabled**-section on the left pane.
@@ -206,7 +206,7 @@ Deleting users
 
 Deleting a user is easy: hover your cursor over their name on the **Users** page
 until the "..."-menu icon appears at the far right. After clicking on it, you will
-see the **Delete** option. Clicking on it, delets a user with all his data immediately.
+see the **Delete** option. Clicking on it, delets a user with all their data immediately.
 
 You'll see an undo button at the top of the page, which remains for some seconds.
 When the undo button is gone you cannot recover the deleted user.

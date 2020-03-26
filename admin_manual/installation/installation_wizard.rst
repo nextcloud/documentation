@@ -63,7 +63,7 @@ satisfied (see :doc:`source_installation` for a detailed listing of required
 and optional PHP modules). You will need the root database login, or any 
 administrator login , and then enter any name you want for your Nextcloud database.
 Be careful your administrator login needs to have the permissions to create
-and modify databases and he needs to have the permissions to grant permissions
+and modify databases and they needs to have the permissions to grant permissions
 to other users.
 
 After you enter your root or administrator login for your database, the 

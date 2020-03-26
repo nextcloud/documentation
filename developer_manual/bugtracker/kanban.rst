@@ -77,7 +77,7 @@ Why do we have it?
 
 What does a developer think?
   "Nice! I can safely implement it that way because more than one person has put
-  his brain to the task of coming up with a good solution. Here! Me! I’ll do
+  their brain to the task of coming up with a good solution. Here! Me! I’ll do
   it!"
 
 When can I pull?
@@ -144,7 +144,7 @@ Reviewing
 Why do we have it?
   With the Gherkin Scenario from the Concept Phase reviewers have a checklist to
   test if a Bug has been solved and if an Enhancement works as expected. **The
-  most eager reviewer we have is Drone**. When it comes to testing he soldiers
+  most eager reviewer we have is Drone**. When it comes to testing they soldier
   on going through the different combinations of platform, Web server and
   database.
 
