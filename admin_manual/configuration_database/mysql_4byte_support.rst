@@ -2,6 +2,12 @@
 Enabling MySQL 4-byte support
 =============================
 
+MySQL
+---------------
+
+.. note::
+    See below if you are using MariaDB
+
 .. note::
 
     Be sure to backup your database before performing this database upgrade.
