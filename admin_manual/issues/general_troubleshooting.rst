@@ -293,6 +293,21 @@ instead of e.g.
 There are also several techniques to remedy this, which are described extensively at
 the `Sabre DAV website <http://sabre.io/dav/service-discovery/>`_.
 
+Troubleshooting sharing
+-----------------------------------
+
+Users' Federated Cloud IDs not updated after a domain name change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. run Database query
+
+| ``DELETE FROM oc_cards_properties WHERE name = 'CLOUD' AND addressbookid = (select id from oc_addressbooks where principaluri = 'principals/system/system' AND uri = 'system');``
+
+2. run occ commands
+
+| ``occ dav:sync-system-addressbook``
+| ``occ federation:sync-addressbooks``
+
 Troubleshooting contacts & calendar
 -----------------------------------
 
