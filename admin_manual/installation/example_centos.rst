@@ -2,7 +2,7 @@
 
 Example installation on CentOS 8
 ================================
-In this install tutorial we will be deploying CentOS 8, PHP 7.2, MariaDB, Redis as memcache and Nextcloud running on Apache.
+In this install tutorial we will be deploying CentOS 8, PHP 7.4, MariaDB, Redis as memcache and Nextcloud running on Apache.
 
 Start off by installing a CentOS 8 minimal install. This should provide a sufficient platform to run a successful Nextcloud instance.
 
@@ -78,7 +78,7 @@ You have to enable the module stream for 7.4:
 Installing PHP and the required modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Next install the PHP modules needed for this install. Remember, because this is a limited basic install, we only install the neccessary modules, not all of them. If you are making a more complete install, please refer to PHP module list at the top of this page.::
+Next install the PHP modules needed for this install. Remember, because this is a limited basic install, we only install the neccessary modules, not all of them. If you are making a more complete install, please refer to PHP module list in the source installation documentation, :doc:`../installation/source_installation`::
 
     yum install -y php php-gd php-mbstring php-intl \
         php-pecl-apcu php-mysqlnd php-opcache php-json php-zip
@@ -203,7 +203,7 @@ If you need more SELinux configs, refer to the above-mentioned URL, return to th
 
 Once done with with SELinux, please head over to ``http://your.server.com/nextcloud`` and follow the steps as found :doc:`../installation/installation_wizard`, where it will explain to you exactly how to proceed with the final part of the install, which is done as admin user through your web browser.
 
-.. note:: If you use this tutorial, and you see warnings in the web browser after installation about ``OPcache`` not being enabled or configured correctly, you need to make the suggested changes in ``/etc/opt/rh/rh-php72/php.d/10-opcache.ini`` for the errors to disappear. These warnings will be on the Admin page, under Basic settings.
+.. note:: If you use this tutorial, and you see warnings in the web browser after installation about ``OPcache`` not being enabled or configured correctly, you need to make the suggested changes in ``/etc/opt/rh/rh-php74/php.d/10-opcache.ini`` for the errors to disappear. These warnings will be on the Admin page, under Basic settings.
 
 Because we used ``Redis`` as a memcache, you will need a config similar to the following example in ``/var/www/html/nextcloud/config/config.php`` which is auto-generated when you run the online installation wizard mentioned earlier.
 
@@ -217,4 +217,4 @@ Example config::
       'port' => 6379,
     ),
 
-Remember, this tutorial is only for a basic setup of Nextcloud on CentOS 8, with PHP 7.2. If you are going to use more features like LDAP or Single Sign On, you will need additional PHP modules as well as extra configurations. So please visit the rest of the Admin manual, :doc:`../index`, for detailed descriptions on how to get this done.
+Remember, this tutorial is only for a basic setup of Nextcloud on CentOS 8, with PHP 7.4. If you are going to use more features like LDAP or Single Sign On, you will need additional PHP modules as well as extra configurations. So please visit the rest of the Admin manual, :doc:`../index`, for detailed descriptions on how to get this done.
