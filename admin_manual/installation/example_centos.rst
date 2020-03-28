@@ -80,8 +80,8 @@ Installing PHP and the required modules
 
 Next install the PHP modules needed for this install. Remember, because this is a limited basic install, we only install the neccessary modules, not all of them. If you are making a more complete install, please refer to PHP module list in the source installation documentation, :doc:`../installation/source_installation`.::
 
-    dnf install -y php74 php74-php-gd php74-php-mbstring php74-php-intl php74-php-pecl-apcu\
-         php74-php-mysqlnd php74-php-opcache php74-php-json php74-php-zip
+    dnf install -y php php-gd php-mbstring php-intl php-pecl-apcu\
+         php-mysqlnd php-opcache php-json php-zip
 
 
 Manually building redis/imagick (optional)
