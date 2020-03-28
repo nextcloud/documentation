@@ -8,19 +8,19 @@ Start off by installing a CentOS 8 minimal install. This should provide a suffic
 
 First install some dependencies you will be needing during installation, but which will also be useful in every day use situations::
 
-    yum install -y epel-release yum-utils unzip curl wget \
+    dnf install -y epel-release yum-utils unzip curl wget \
     bash-completion policycoreutils-python-utils mlocate bzip2
 
 Now make sure your system is up to date::
 
-    yum update -y
+    dnf update -y
 
 Apache
 ------
 
 ::
 
-    yum install -y httpd
+    dnf install -y httpd
 
 See :ref:`apache_configuration_label` for details.
 
@@ -78,20 +78,23 @@ You have to enable the module stream for 7.4:
 Installing PHP and the required modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Next install the PHP modules needed for this install. Remember, because this is a limited basic install, we only install the neccessary modules, not all of them. If you are making a more complete install, please refer to PHP module list in the source installation documentation, :doc:`../installation/source_installation`::
+Next install the PHP modules needed for this install. Remember, because this is a limited basic install, we only install the neccessary modules, not all of them. If you are making a more complete install, please refer to PHP module list in the source installation documentation, :doc:`../installation/source_installation`.::
 
-    yum install -y php php-gd php-mbstring php-intl \
-        php-pecl-apcu php-mysqlnd php-opcache php-json php-zip
+    dnf install -y php74 php74-php-gd php74-php-mbstring php74-php-intl php74-php-pecl-apcu\
+         php74-php-mysqlnd php74-php-opcache php74-php-json php74-php-zip
 
 
 Manually building redis/imagick (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    yum install -y php-pear gcc curl-devel php-devel zlib-devel pcre-devel make
+    dnf install -y php-pear gcc curl-devel php-devel zlib-devel pcre-devel make
+    
     pecl install redis
 
-    yum config-manager --set-enabled PowerTools
-    yum install -y Imagemagick ImageMagick-devel
+    dnf config-manager --set-enabled PowerTools
+
+    dnf install -y Imagemagick ImageMagick-devel
+    
     pecl install imagick
 
 After installing the extensions make sure to load the extensions in your php.ini file with:
@@ -104,7 +107,7 @@ Database
 
 As mentioned, we will be using MySQL/MariaDB as our database.::
 
-    yum install -y mariadb mariadb-server
+    dnf install -y mariadb mariadb-server
 
 Make sure the database service is enabled to start at boot time.::
 
@@ -125,7 +128,7 @@ Redis
 
 ::
 
-    yum install -y redis
+    dnf install -y redis
     systemctl enable redis.service
     systemctl start redis.service
 
