@@ -2,7 +2,7 @@
 
 Example installation on CentOS 8
 ================================
-In this install tutorial we will be deploying CentOS 8, PHP 7.2, MariaDB, Redis as memcache and Nextcloud running on Apache.
+In this install tutorial we will be deploying CentOS 8, PHP 7.4, MariaDB, Redis as memcache and Nextcloud running on Apache.
 
 Start off by installing a CentOS 8 minimal install. This should provide a sufficient platform to run a successful Nextcloud instance.
 
@@ -78,7 +78,7 @@ You have to enable the module stream for 7.4:
 Installing PHP and the required modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Next install the PHP modules needed for this install. Remember, because this is a limited basic install, we only install the neccessary modules, not all of them. If you are making a more complete install, please refer to PHP module list at the top of this page.::
+Next install the PHP modules needed for this install. Remember, because this is a limited basic install, we only install the neccessary modules, not all of them. If you are making a more complete install, please refer to PHP module list in the source installation documentation, :doc:`../installation/source_installation`::
 
     yum install -y php php-gd php-mbstring php-intl \
         php-pecl-apcu php-mysqlnd php-opcache php-json php-zip
