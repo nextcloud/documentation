@@ -69,7 +69,7 @@ exchanged. A red light means the connection failed.
 Creating Federation Shares via public Link Share
 ------------------------------------------------
 
-Check the ``Share Link`` checkbox to expose more sharing options (which are 
+Check the ``Share link`` entry to expose more sharing options (which are 
 described more fully in :doc:`file_sharing_configuration`). You may create a 
 Federation share by allowing Nextcloud to create a public link for you, and then 
 email it to the person you want to create the share with.
@@ -90,11 +90,11 @@ server, and then press the return key.
 .. figure:: images/create_public_share-9.png
 
 Your recipient has to take one more step, and that is to confirm creating the 
-federated cloud share link by clicking the **Add remote share** button.
+federated cloud share link by clicking the **Accept** button.
 
 .. figure:: images/create_public_share-10.png
 
-Un-check the ``Share Link`` checkbox to disable any federated cloud share 
+Un-check the ``Share link`` checkbox to disable any federated cloud share 
 created this way.
 
 Configuration tips
