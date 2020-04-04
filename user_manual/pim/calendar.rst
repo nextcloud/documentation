@@ -1,5 +1,5 @@
 ======================
-Using the calendar app
+Using the Calendar app
 ======================
 
 .. note:: The calendar app is not enabled by default and needs to be installed
@@ -84,9 +84,11 @@ compatible to Google Calendar, Apple iCloud and many other calendar-servers
 you can exchange your calendars with.
 
 1. Click on ``+ New Subscription`` in the left sidebar.
-2. Type in the link of the shared calendar you want to subscribe to.
+2. Type in or paste the link of the shared calendar you want to subscribe to.
 
 Finished. Your calendar subscriptions will be updated regularly.
+
+.. note:: Subscriptions are refreshed every week by default. Your admin may have changed this setting.
 
 Managing Events
 ---------------
@@ -135,6 +137,40 @@ Clicking on the blue ``Update``-button will update the event. Clicking on the
 If you click on the red ``Delete``-button the event will be removed from your
 calendar.
 
+Invite attendees to an event
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You may add attendees to an event to let them know they're invited. They will receive an email confirmation and will be able to confirm or cancel their participation to the event.
+Attendees may be other users on your Nextcloud instances, contacts in your addressbooks and direct email addresses. You also may change the level of participation per-attendees, or disable email confirmation for a specific attendee.
+
+  .. figure:: images/calendar_event_invitation_level.png
+
+Setup Reminders
+~~~~~~~~~~~~~~~
+
+You can set up reminders to be notified before an event occurs. Currently supported notification methods are :
+
+* Email notifications
+* Nextcloud notifications
+
+You may set reminders at a time relative to the event or at a specific date.
+
+.. figure:: images/calendar_event_reminders.png
+
+.. note:: Only the calendar owner and people or groups with whom the calendar is shared with write access will get notifications. If you don't get any notifications but think you should, your Administrator could also have disabled this for your server.
+
+.. note:: If you synchronize your calendar with mobile devices or other 3rd-party
+          clients, notifications may also show up there.
+
+Add recurring options
+~~~~~~~~~~~~~~~~~~~~~
+
+An event may be set as "recurring", so that it can happen every day, week, month or year. Specific rules can be added to set which day of the week the event happens or more complex rules, such as every fourth Wednesday of each month.
+
+You can also tell when the recurrence ends.
+
+.. figure:: images/calendar_event_repeat.png
+
 Birthday calendar
 -----------------
 
@@ -143,5 +179,5 @@ fetch the birthdays from your contacts. The only way to edit this calendar is by
 filing your contacts with birthday dates. You can not directly edit this calendar
 from the calendar-app.
 
-.. note:: If you do not see the birthday calendar, your Administrator may has
+.. note:: If you do not see the birthday calendar, your Administrator may have
           disabled this for your server.
