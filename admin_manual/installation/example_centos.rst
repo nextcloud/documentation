@@ -44,13 +44,6 @@ Setting up remirepo with PHP 7.4
 
 More details can be found on ``https://blog.remirepo.net/pages/Config-en``
 
-Command to install the EPEL repository configuration package:
-
-::
-
-    dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-
-
 Command to install the Remi repository configuration package:
 
 ::
