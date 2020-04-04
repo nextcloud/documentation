@@ -84,15 +84,22 @@ Next install the PHP modules needed for this install. Remember, because this is 
         php-pecl-apcu php-mysqlnd php-opcache php-json php-zip
 
 
+
 Manually building redis/imagick (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    yum install -y php-pear gcc curl-devel php-devel zlib-devel pcre-devel make
+::
+
+    yum install -y php-pear gcc curl-devel zlib-devel pcre-devel make
     pecl install redis
 
+
+::
+
     yum config-manager --set-enabled PowerTools
-    yum install -y Imagemagick ImageMagick-devel
+    yum install -y Imagemagick ImageMagick-devel php-devel
     pecl install imagick
+
 
 After installing the extensions make sure to load the extensions in your php.ini file with:
 
