@@ -16,3 +16,5 @@ Contacts and Calendar
 
 .. note:: Enter your email address as DAVx⁵ account name (mandatory if you want 
    to be able to send calendar invitation)
+
+.. tip:: DAVx⁵ lists the calendar subscriptions made through the Nextcloud Calendar app, but you need to install the `ICSx⁵ (formerly known as ICSDroid) <https://icsx5.bitfire.at/>`_ app on your Android device, `from the Google Play Store <https://play.google.com/store/apps/details?id=at.bitfire.icsdroid>`_ or `from F-Droid <https://f-droid.org/packages/at.bitfire.icsdroid/>`_ to sync them.
