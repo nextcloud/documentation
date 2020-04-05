@@ -75,13 +75,29 @@ hard drive or delete it forever.
 
 2. Click on ``Edit``, ``Download`` or ``Delete``.
 
+Sharing calendars
+~~~~~~~~~~~~~~~~~
+
+You may share your calendar with other users or groups. Calendars may be shared with write access or read-only. When sharing a calendar with write access, users with whom the calendar is shared will be able to create new events into the calendar as well as edit and delete existing ones.
+
+.. note:: Calendar shares currently can't be accepted or rejected. If you want to stop having a calendar that someone shared with you, you can click on the 3-dot menu next to the calendar in the calendar list and click on "Unshare from me".
+
+Publishing a calendar
+~~~~~~~~~~~~~~~~~~~~~
+
+Calendars can be published through a public link to make them viewable (read-only) to external users. You may create a public link by opening the share menu for a calendar and clicking on « + » next to « Share link ». Once created you can copy the public link to your clipboard or send it through email.
+
+There's also an « embedding code » that provides an HTML iframe to embed your calendar into public pages.
+
+On the public page, users are able to get the subscription link for the calendar and download the whole calendar directly.
+
 Subscribe to a Calendar
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 You can subscribe to iCal calendars directly inside of your Nextcloud. By
 supporting this interoperable standard (RFC 5545) we made Nextcloud calendar
 compatible to Google Calendar, Apple iCloud and many other calendar-servers
-you can exchange your calendars with.
+you can exchange your calendars with, including subscription links from calendar published on other Nextcloud instances, as described above.
 
 1. Click on ``+ New Subscription`` in the left sidebar.
 2. Type in or paste the link of the shared calendar you want to subscribe to.
@@ -131,11 +147,11 @@ If you want to edit or delete a specific event, you just need to click on it.
 After that you will be able to re-set all of the events details and open the
 advanced sidebar-editor by clicking on ``More...``.
 
-Clicking on the blue ``Update``-button will update the event. Clicking on the
-``Cancel``-button will not save your edits.
+Clicking on the blue ``Update``-button will update the event. To cancel your changes, click on the close icon on top right of the popup or sidebar editor.
 
-If you click on the red ``Delete``-button the event will be removed from your
-calendar.
+If you open the sidebar view and click the three dot menu next to the event name, you have an option to export the event as an ``.ics`` file or remove the event from your calendar.
+
+  .. figure:: images/calendar_event_menu.png
 
 Invite attendees to an event
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -144,6 +160,10 @@ You may add attendees to an event to let them know they're invited. They will re
 Attendees may be other users on your Nextcloud instances, contacts in your addressbooks and direct email addresses. You also may change the level of participation per-attendees, or disable email confirmation for a specific attendee.
 
   .. figure:: images/calendar_event_invitation_level.png
+
+.. tip:: When adding other Nextcloud users as attendees to an event, you may access their FreeBusy information if it's available, helping you to determine when is the best time slot for your event.
+
+.. attention:: Only the calendar owner can send out invitations, the sharees are not able to do that, whether they have write access to the event's calendar or not.
 
 Setup Reminders
 ~~~~~~~~~~~~~~~

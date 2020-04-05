@@ -48,7 +48,10 @@ If you don't use this dedicated command, the reminders will just be send as soon
 FreeBusy
 --------
 
-Nextcloud returns FreeBusy information.
+When logged-in, Nextcloud can return FreeBusy information for all users of the instance, to know when they are available so that you can schedule an event at the right time.
+If you don't wish for users to have this possibility, you can disable FreeBusy for the whole instance with the following setting::
+
+ php occ config:app:set dav disableFreeBusy --value yes
 
 Subscriptions
 ----------------------
