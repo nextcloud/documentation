@@ -2,25 +2,25 @@
 
 Example installation on CentOS 8
 ================================
-In this install tutorial we will be deploying CentOS 8, PHP 7.2, MariaDB, Redis as memcache and Nextcloud running on Apache.
+In this install tutorial we will be deploying CentOS 8, PHP 7.4, MariaDB, Redis as memcache and Nextcloud running on Apache.
 
 Start off by installing a CentOS 8 minimal install. This should provide a sufficient platform to run a successful Nextcloud instance.
 
 First install some dependencies you will be needing during installation, but which will also be useful in every day use situations::
 
-    yum install -y epel-release yum-utils unzip curl wget \
+    dnf install -y epel-release yum-utils unzip curl wget \
     bash-completion policycoreutils-python-utils mlocate bzip2
 
 Now make sure your system is up to date::
 
-    yum update -y
+    dnf update -y
 
 Apache
 ------
 
 ::
 
-    yum install -y httpd
+    dnf install -y httpd
 
 See :ref:`apache-web-server-configuration` for details.
 
@@ -78,20 +78,20 @@ You have to enable the module stream for 7.4:
 Installing PHP and the required modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Next install the PHP modules needed for this install. Remember, because this is a limited basic install, we only install the neccessary modules, not all of them. If you are making a more complete install, please refer to PHP module list at the top of this page.::
+Next install the PHP modules needed for this install. Remember, because this is a limited basic install, we only install the neccessary modules, not all of them. If you are making a more complete install, please refer to PHP module list in the source installation documentation, :doc:`../installation/source_installation`.::
 
-    yum install -y php php-gd php-mbstring php-intl \
+    dnf install -y php php-gd php-mbstring php-intl \
         php-pecl-apcu php-mysqlnd php-opcache php-json php-zip
 
 
 Manually building redis/imagick (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    yum install -y php-pear gcc curl-devel php-devel zlib-devel pcre-devel make
+    dnf install -y php-pear gcc curl-devel php-devel zlib-devel pcre-devel make
     pecl install redis
 
-    yum config-manager --set-enabled PowerTools
-    yum install -y Imagemagick ImageMagick-devel
+    dnf config-manager --set-enabled PowerTools
+    dnf install -y Imagemagick ImageMagick-devel
     pecl install imagick
 
 After installing the extensions make sure to load the extensions in your php.ini file with:
@@ -104,7 +104,7 @@ Database
 
 As mentioned, we will be using MySQL/MariaDB as our database.::
 
-    yum install -y mariadb mariadb-server
+    dnf install -y mariadb mariadb-server
 
 Make sure the database service is enabled to start at boot time.::
 
@@ -125,7 +125,7 @@ Redis
 
 ::
 
-    yum install -y redis
+    dnf install -y redis
     systemctl enable redis.service
     systemctl start redis.service
 
@@ -217,4 +217,4 @@ Example config::
       'port' => 6379,
     ),
 
-Remember, this tutorial is only for a basic setup of Nextcloud on CentOS 8, with PHP 7.2. If you are going to use more features like LDAP or Single Sign On, you will need additional PHP modules as well as extra configurations. So please visit the rest of the Admin manual, :doc:`../index`, for detailed descriptions on how to get this done.
+Remember, this tutorial is only for a basic setup of Nextcloud on CentOS 8, with PHP 7.4. If you are going to use more features like LDAP or Single Sign On, you will need additional PHP modules as well as extra configurations. So please visit the rest of the Admin manual, :doc:`../index`, for detailed descriptions on how to get this done.
