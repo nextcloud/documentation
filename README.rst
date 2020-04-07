@@ -71,6 +71,20 @@ your username). You will then be able to make changes easily. Once done,
 you can create a pull request and get the changes reviewed and back into
 the official repository.
 
+When editing either on your own local PC or on Github, be sure to sign of
+commits, to certify adherence to the Developer Certificate of Origin,
+see https://github.com/probot/dco . Your commit messages need to have, 
+the name and email address of the contributor.
+
+  Signed-off-by: Awesome Contributor <awesome.contributor@reach.me>
+  
+If using the command line and your name and email are configured, you can use 
+
+  git commit -s -m 'Commit message'
+  
+In both settings be sure that your email address matches that in your Github profile,
+which if you have privacy enabled will be github.username@users.noreply.github.com
+
 Building
 --------
 
