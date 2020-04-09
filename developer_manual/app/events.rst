@@ -165,10 +165,105 @@ In the ``Application.php`` the event and the listener class are connected. The c
 Available Events
 ^^^^^^^^^^^^^^^^
 
+Here you find an overview of the public events that can be consumed in apps. See their source files for more details.
+
+``\OCP\User\Events\BeforeUserLoggedInWithCookieEvent``
+******************************************************
+
+*Available in Nextcloud 18 and later.*
+
+Emitted before a user is logged in via remember-me cookies.
+
+``\OCP\User\Events\UserLoggedInWithCookieEvent``
+************************************************
+
+Emitted when a user has been succesfully logged in via remember-me cookies.
+
+*Available in Nextcloud 18 and later.*
+
+``\OCP\User\Events\BeforePasswordUpdatedEvent``
+***********************************************
+
+*Available in Nextcloud 18 and later.*
+
+Emitted before the user password is updated.
+
+``\OCP\User\Events\PasswordUpdatedEvent``
+*****************************************
+
+*Available in Nextcloud 18 and later.*
+
+Emitted when the user password has been updated.
+
+``\OCP\User\Events\BeforeUserCreatedEvent``
+*******************************************
+
+*Available in Nextcloud 18 and later.*
+
+Emitted before a new user is created on the back-end.
+
+``\OCP\User\Events\UserCreatedEvent``
+*************************************
+
+*Available in Nextcloud 18 and later.*
+
+Emitted when a new user has been created on the back-end.
+
+``\OCP\User\Events\BeforeUserDeletedEvent``
+*******************************************
+
+*Available in Nextcloud 18 and later.*
+
+Emitted before a user is logged out.
+
+``\OCP\User\Events\UserDeletedEvent``
+*************************************
+
+*Available in Nextcloud 18 and later.*
+
+Emitted when a user has been logged out successfully.
+
+``\OCP\User\Events\BeforeUserLoggedInEvent``
+********************************************
+
+*Available in Nextcloud 18 and later.*
+
+``\OCP\User\Events\BeforeUserLoggedOutEvent``
+*********************************************
+
+*Available in Nextcloud 18 and later.*
+
+``\OCP\User\Events\CreateUserEvent``
+************************************
+
+*Available in Nextcloud 18 and later.*
+
+``\OCP\User\Events\PostLoginEvent``
+***********************************
+
+*Available in Nextcloud 18 and later.*
+
+``\OCP\User\Events\UserChangedEvent``
+*************************************
+
+*Available in Nextcloud 18 and later.*
+
+``\OCP\User\Events\UserLoggedInEvent``
+**************************************
+
+*Available in Nextcloud 18 and later.*
+
+``\OCP\User\Events\UserLoggedOutEvent``
+***************************************
+
+*Available in Nextcloud 18 and later.*
+
 ``\OCP\Security\CSP\AddContentSecurityPolicyEvent``
 ***************************************************
 
-This event is emitted so apps can modify the CSP provided by nextcloud. For example if more domains can be used to connect to.
+*Available in Nextcloud 17 and later.*
+
+This event is emitted so apps can modify the CSP provided by nextcloud. For example if more domains can be used to connect to. Added in Nextcloud 17.
 
 
 Symfony event dispatcher
