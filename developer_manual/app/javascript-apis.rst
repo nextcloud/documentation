@@ -107,6 +107,27 @@ This package provides helpers to generate URLs, e.g. to access assets and REST A
 
 This package provides lots of nextcloud components allowing you to quickly build UIs. Documentation: https://nextcloud-vue-components.netlify.com/
 
+Events
+------
+
+Network state changes
+^^^^^^^^^^^^^^^^^^^^^
+
+Your app can react to lost network connectivity, e.g. to gracefully handle this state where no server interaction is possible. Since the communication with the server mostly requires a valid CSRF token, you might not want to send any request before the token was udpated. Nextcloud can notify you when this has happened. Use the ``@nextcloud/event-bus`` to listen for the ``networkOnline`` and ``networkOffline`` events:
+
+.. code-block:: js
+
+  import { subscribe } from '@nextcloud/event-bus'
+
+  subscribe('networkOffline', () => console.info("we're offline"))
+  subscribe('networkOnline', (event) => {
+      if (event.successful) {
+          console.info("we're back online, the token was updated")
+      } else {
+          console.info("we're back online, but the token might not be up to date")
+      }
+  })
+
 Global variables
 ----------------
 
