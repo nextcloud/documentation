@@ -6,6 +6,17 @@ Once you've created and published the first version of your app, you will want t
 
 This document will cover the most important changes in Nextcloud, as well as some guides on how to upgrade existing apps.
 
+Upgrading to Nextcloud 19
+-------------------------
+
+Back-end changes
+^^^^^^^^^^^^^^^^
+
+Symfony update
+**************
+
+Symfony was updated to `v4.4 <https://github.com/symfony/symfony/blob/4.4/CHANGELOG-4.4.md>`_. The most important change for apps is to return an int value from CLI commands. Returning null (explicitly or implicitly) won't be allowed in future versions of Symfony.
+
 Upgrading to Nextcloud 18
 -------------------------
 
