@@ -118,10 +118,6 @@ webroot of your nginx installation. In this example it is
       # This module is currently not supported.
       #pagespeed off;
 
-      location / {
-          rewrite ^ /index.php;
-      }
-
       location ~ ^\/(?:build|tests|config|lib|3rdparty|templates|data)\/ {
           deny all;
       }
@@ -179,10 +175,17 @@ webroot of your nginx installation. In this example it is
           access_log off;
       }
 
-      location ~ \.(?:png|html|ttf|ico|jpg|jpeg|bcmap|mp4|webm)$ {
-          try_files $uri /index.php$request_uri;
-          # Optional: Don't log access to other assets
-          access_log off;
+      location / {
+          location ~ \.(?:png|html|ttf|ico|jpg|jpeg|bcmap|mp4|webm)$ {
+              # Optional: Don't log access to other assets
+              access_log off;
+          }
+
+          try_files $uri @fallback;
+      }
+
+      location @fallback {
+          rewrite ^ /index.php;
       }
   }
 
