@@ -30,6 +30,7 @@ App development
    repair
    publicpage
    testing
+   coding-style
    ../api
 
 
