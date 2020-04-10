@@ -34,6 +34,19 @@ Deprecated global variables
 * ``OC.webroot``: use ``getRootUrl`` from https://www.npmjs.com/package/@nextcloud/router
 * ``OCP.Toast.*``: use https://www.npmjs.com/package/@nextcloud/dialogs
 
+Removed globals
+***************
+
+* ``getURLParameter``
+* ``formatDate``
+* ``humanFileSize``
+* ``relative_modified_date``
+
+Removed libraries
+*****************
+
+* ``marked``
+
 Back-end changes
 ^^^^^^^^^^^^^^^^
 
