@@ -42,6 +42,25 @@ Symfony update
 
 Symfony was updated to `v4.4 <https://github.com/symfony/symfony/blob/4.4/CHANGELOG-4.4.md>`_. The most important change for apps is to return an int value from CLI commands. Returning null (explicitly or implicitly) won't be allowed in future versions of Symfony.
 
+Deprecation of injection of named services
+******************************************
+
+Apps had been able to query core services like the implementation of the interface ``\OCP\ITagManager`` as ``TagManager``. To unify the service resolution with type hints for the constructor injection, the named resolution is deprecated, logs warnings and will be removed in the future. Use the fully-qualifier class name (with the `::class` constant) instead:
+
+If you had
+
+.. code-block:: php
+
+  $tagManager = \OC::$server->query('TagManager');
+
+change your code to
+
+.. code-block:: php
+
+  $tagManager = \OC::$server->query(\OCP\ITagManager::class);
+
+On constructor arguments you should always type-hint the service by its interface. If you do so already, nothing changes for you.
+
 New APIs
 ********
 
