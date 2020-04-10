@@ -9,6 +9,14 @@ This document will cover the most important changes in Nextcloud, as well as som
 Upgrading to Nextcloud 19
 -------------------------
 
+Front-end changes
+^^^^^^^^^^^^^^^^^
+
+jQuery deprecation
+******************
+
+As of Nextcloud 19, the global `jquery` and `$` are deprecated for apps. While the library won't be removed immediately to give developers time to adapt, we encourage you to either replace it with another library or simply use a bundling tool like webpack to scope it to your own. The library will be upgraded in Nextcloud in future versions of Nextcloud and there are breaking changes in the newer versions of jQuery.
+
 Back-end changes
 ^^^^^^^^^^^^^^^^
 
@@ -16,6 +24,7 @@ Symfony update
 **************
 
 Symfony was updated to `v4.4 <https://github.com/symfony/symfony/blob/4.4/CHANGELOG-4.4.md>`_. The most important change for apps is to return an int value from CLI commands. Returning null (explicitly or implicitly) won't be allowed in future versions of Symfony.
+
 
 Upgrading to Nextcloud 18
 -------------------------
