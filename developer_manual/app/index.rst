@@ -31,6 +31,7 @@ App development
    publicpage
    testing
    coding-style
+   psr
    ../api
 
 
