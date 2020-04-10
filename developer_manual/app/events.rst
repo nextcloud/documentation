@@ -167,6 +167,32 @@ Available Events
 
 Here you find an overview of the public events that can be consumed in apps. See their source files for more details.
 
+``\OCP\Authentication\Events\LoginFailedEvent``
+***********************************************
+
+*Available in Nextcloud 19 and later.*
+
+Emitted when the authentication fails, but only if the login name can be associated with an existing user.
+
+``\OCP\Contacts\Events\ContactInteractedWithEvent``
+***************************************************
+
+*Available in Nextcloud 19 and later.*
+
+Event emitted by apps whenever there was an interaction with another user or contact.
+
+``\OCP\Mail\Events\BeforeMessageSent``
+**************************************
+
+*Available in Nextcloud 19 and later.*
+
+Emitted before a system mail is sent. It can be used to alter the message.
+
+``\OCP\Share\Events\VerifyMountPointEvent``
+*******************************************
+
+*Available in Nextcloud 19 and later.*
+
 ``\OCP\User\Events\BeforeUserLoggedInWithCookieEvent``
 ******************************************************
 
