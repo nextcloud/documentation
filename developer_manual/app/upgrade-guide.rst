@@ -92,7 +92,7 @@ New APIs
 Changed APIs
 ************
 
-* ``\OCP\User\Events\BeforeUserLoggedInEvent::getUsername`` now correctly returns a string and not an `\OCP\IUser`
+* ``\OCP\User\Events\BeforeUserLoggedInEvent::getUsername`` now correctly returns a string and not an ``\OCP\IUser``
 
 
 Upgrading to Nextcloud 18
