@@ -17,6 +17,23 @@ jQuery deprecation
 
 As of Nextcloud 19, the global `jquery` and `$` are deprecated for apps. While the library won't be removed immediately to give developers time to adapt, we encourage you to either replace it with another library or simply use a bundling tool like webpack to scope it to your own. The library will be upgraded in Nextcloud in future versions of Nextcloud and there are breaking changes in the newer versions of jQuery.
 
+Deprecated global variables
+***************************
+
+* ``OC.currentUser``: use ``getCurrentUser`` from https://www.npmjs.com/package/@nextcloud/auth
+* ``OC.filePath``: use ``generateFilePath`` from https://www.npmjs.com/package/@nextcloud/router
+* ``OC.generateUrl``: use ``generateUrl`` from https://www.npmjs.com/package/@nextcloud/router
+* ``OC.get``: use https://lodash.com/docs#get
+* ``OC.getCurrentUser``: use ``getCurrentUser`` from https://www.npmjs.com/package/@nextcloud/auth
+* ``OC.getRootPath``: use ``getRootUrl`` from https://www.npmjs.com/package/@nextcloud/router
+* ``OC.imagePath``: use ``imagePath`` from https://www.npmjs.com/package/@nextcloud/router
+* ``OC.linkTo``: use ``linkTo`` from https://www.npmjs.com/package/@nextcloud/router
+* ``OC.linkToOCS``: use ``generateOcsUrl`` from https://www.npmjs.com/package/@nextcloud/router
+* ``OC.linkToRemote``: use ``generateRemoteUrl`` from https://www.npmjs.com/package/@nextcloud/router
+* ``OC.set``: use ``generateFilePath`` from use https://lodash.com/docs#set
+* ``OC.webroot``: use ``getRootUrl`` from https://www.npmjs.com/package/@nextcloud/router
+* ``OCP.Toast.*``: use https://www.npmjs.com/package/@nextcloud/dialogs
+
 Back-end changes
 ^^^^^^^^^^^^^^^^
 
