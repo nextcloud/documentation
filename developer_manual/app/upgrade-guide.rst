@@ -42,7 +42,20 @@ CSS
 Deprecated global variables
 ***************************
 
+* ``Backbone``: ship your own.
+* ``Clipboard``: ship your own.
+* ``ClipboardJs``: ship your own.
 * ``DOMPurify``: ship your own.
+* ``Handlebars``: ship your own.
+* ``jstimezonedetect``: ship your own.
+* ``jstz``: ship your own.
+* ``md5``: ship your own.
+* ``moment``: ship your own.
+* ``OC.basename``: use ``getCurrentUser`` from https://www.npmjs.com/package/@nextcloud/paths
+* ``OC.dirname``: use ``dirname`` from https://www.npmjs.com/package/@nextcloud/paths
+* ``OC.encodePath``: use ``encodePath`` from https://www.npmjs.com/package/@nextcloud/paths
+* ``OC.isSamePath``: use ``isSamePath`` from https://www.npmjs.com/package/@nextcloud/paths
+* ``OC.joinPaths``: use ``joinPaths`` from https://www.npmjs.com/package/@nextcloud/paths
 
 Back-end changes
 ^^^^^^^^^^^^^^^^
