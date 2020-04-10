@@ -42,6 +42,26 @@ Symfony update
 
 Symfony was updated to `v4.4 <https://github.com/symfony/symfony/blob/4.4/CHANGELOG-4.4.md>`_. The most important change for apps is to return an int value from CLI commands. Returning null (explicitly or implicitly) won't be allowed in future versions of Symfony.
 
+New APIs
+********
+
+* ``\OCP\Authentication\Events\LoginFailedEvent`` class added
+* ``\OCP\Comments\IComment::getReferenceId`` method added
+* ``\OCP\Comments\IComment::setReferenceId`` method added
+* ``\OCP\Contacts\Events\ContactInteractedWithEvent`` class added
+* ``\OCP\EventDispatcher\IEventDispatcher::removeListener`` method added
+* ``\OCP\ITags::TAG_FAVORITE`` constant added
+* ``\OCP\Mail\Events\BeforeMessageSent`` class added
+* ``\OCP\Lock\LockedException::getExistingLock`` method added
+* ``\OCP\Share\Events\VerifyMountPointEvent`` class added
+* ``\OCP\Share\IManager::allowEnumeration`` method added
+* ``\OCP\Share\IManager::limitEnumerationToGroups`` method added
+
+Changed APIs
+************
+
+* ``\OCP\User\Events\BeforeUserLoggedInEvent::getUsername`` now correctly returns a string and not an `\OCP\IUser`
+
 
 Upgrading to Nextcloud 18
 -------------------------
