@@ -90,6 +90,18 @@ HAProxy
   acl url_discovery path /.well-known/caldav /.well-known/carddav
   http-request redirect location /remote.php/dav/ code 301 if url_discovery
 
+NGINX
+^^^^^^^
+::
+
+    location /.well-known/carddav {
+        return 301 $scheme://$host/remote.php/dav;
+    }
+    
+    location /.well-known/caldav {
+        return 301 $scheme://$host/remote.php/dav;
+    }
+
 Example
 -------
 
