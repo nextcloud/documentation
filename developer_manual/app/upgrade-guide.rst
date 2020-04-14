@@ -9,6 +9,8 @@ This document will cover the most important changes in Nextcloud, as well as som
 Upgrading to Nextcloud 19
 -------------------------
 
+.. note:: Critical changes were collected `on Github <https://github.com/nextcloud/server/issues/18479>`_. See the original ticket for links to the pull requests and tickets.
+
 Front-end changes
 ^^^^^^^^^^^^^^^^^
 
@@ -30,7 +32,7 @@ Deprecated global variables
 * ``OC.linkTo``: use ``linkTo`` from https://www.npmjs.com/package/@nextcloud/router
 * ``OC.linkToOCS``: use ``generateOcsUrl`` from https://www.npmjs.com/package/@nextcloud/router
 * ``OC.linkToRemote``: use ``generateRemoteUrl`` from https://www.npmjs.com/package/@nextcloud/router
-* ``OC.set``: use ``generateFilePath`` from use https://lodash.com/docs#set
+* ``OC.set``: use https://lodash.com/docs#set
 * ``OC.webroot``: use ``getRootUrl`` from https://www.npmjs.com/package/@nextcloud/router
 * ``OCP.Toast.*``: use https://www.npmjs.com/package/@nextcloud/dialogs
 
@@ -120,7 +122,7 @@ Deprecated global variables
 * ``jstz``: ship your own.
 * ``md5``: ship your own.
 * ``moment``: ship your own.
-* ``OC.basename``: use ``getCurrentUser`` from https://www.npmjs.com/package/@nextcloud/paths
+* ``OC.basename``: use ``basename`` from https://www.npmjs.com/package/@nextcloud/paths
 * ``OC.dirname``: use ``dirname`` from https://www.npmjs.com/package/@nextcloud/paths
 * ``OC.encodePath``: use ``encodePath`` from https://www.npmjs.com/package/@nextcloud/paths
 * ``OC.isSamePath``: use ``isSamePath`` from https://www.npmjs.com/package/@nextcloud/paths
