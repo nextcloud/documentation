@@ -300,3 +300,15 @@ both their old and new passwords to do this. If you have enabled the Recovery
 Key then you can change a user's password in the Nextcloud Users panel to match 
 their back-end password, and then, of course, notify the user and give them 
 their new password.
+
+Troubleshooting
+---------------
+
+Invalid private key for encryption app
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This `issue <https://github.com/nextcloud/server/issues/8546>`_ is being worked
+on. In the meantime there is a 
+`workaround <https://github.com/nextcloud/server/issues/8546#issuecomment-514139714>`_
+which unfortunately is only suitable for administrators comfortable with the
+command line.
