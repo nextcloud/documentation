@@ -55,7 +55,7 @@ the new location. It is also assumed that the authentication method
     otherwise the clients will re-download all the files after the migration.
     Depending on the original installation method and the OS the files are
     located in different locations. On the new system make sure to pick the
-    appropriate locations. If you change any paths, make sure to adopt the paths
+    appropriate locations. If you change any paths, make sure to adapt the paths
     in the Nextcloud config.php file. Note: This step might take several hours,
     depending on your installation.
 
