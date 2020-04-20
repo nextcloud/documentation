@@ -8,7 +8,7 @@ like Files, Activity and Photos there are other apps like Calendar, Contacts,
 Talk and more which are enhancing the features of your Nextcloud server.
 
 After installing the Nextcloud server, you might want to consider about enabling,
-disabling or even restricting some apps to groups depending on your and your users
+disabling or even restricting some apps to groups depending on your and your users'
 needs.
 
 Apps
