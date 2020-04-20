@@ -71,8 +71,7 @@ the **Available for** field.
 Mount options
 -------------
 
-Hover your cursor to the right of any storage configuration to expose
-the settings button and trashcan. Click the trashcan to delete the
+The Overflow menu (three dots) exposes the settings and trashcan. Click the trashcan to delete the
 mountpoint. The settings button allows you to configure each storage mount
 individually with the following options:
 
@@ -80,6 +79,8 @@ individually with the following options:
 * Previews
 * Enable Sharing
 * Filesystem check frequency (Never, Once per direct access)
+* Mac NFD Compatability
+* Read Only
 
 The **Encryption** checkbox is visible only when the Encryption app is enabled. 
 
