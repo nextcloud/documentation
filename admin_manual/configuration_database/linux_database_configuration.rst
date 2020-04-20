@@ -41,7 +41,7 @@ Configuring a MySQL or MariaDB database
 
 If you decide to use a MySQL or MariaDB database, ensure the following:
 
-* The transaction isolation level is set to "READ-COMMITED" in your MariaDB server configuration :file:`/etc/mysql/my.cnf` to persist even after a restart of your database server.
+* The transaction isolation level is set to "READ-COMMITTED" in your MariaDB server configuration :file:`/etc/mysql/my.cnf` to persist even after a restart of your database server.
 
   Verify the **transaction_isolation** and **binlog_format**:
 
