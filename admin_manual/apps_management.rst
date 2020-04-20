@@ -4,7 +4,7 @@ Apps management
 
 Nextcloud apps can enhance, customize or even restrict the features and experience
 you and your users has with the Nextcloud server. Next to default enabled functions
-like Files, Activity and Gallery there are other apps like Calendar, Contacts,
+like Files, Activity and Photos there are other apps like Calendar, Contacts,
 Talk and more which are enhancing the features of your Nextcloud server.
 
 After installing the Nextcloud server, you might want to consider about enabling,
