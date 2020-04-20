@@ -13,5 +13,5 @@ Client APIs
     RemoteWipe/index
     ocs-share-api
     ocs-sharee-api
-    activity
+    activity-api
     
