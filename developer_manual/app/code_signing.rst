@@ -28,7 +28,7 @@ Do we lock down Nextcloud?
 The Nextcloud project is open source and always will be. We do not want to make
 it more difficult for our users to run Nextcloud. Any code signing errors on
 upgrades will not prevent Nextcloud from running, but will display a warning on
-the Admin page. For applications that are not tagged "Official" the code signing
+the Admin page. For applications that are not tagged "Featured" the code signing
 process is optional.
 
 Not open source anymore?
@@ -103,8 +103,8 @@ still be ensured by having a new certificate issued.
 How code signing affects apps in the app store
 ----------------------------------------------
 
-- Apps which have an ``official`` tag **MUST** be code signed.
-  Unsigned ``official`` apps won't be installable anymore.
+- Apps which have a ``Featured`` tag **MUST** be code signed.
+  Unsigned ``Featured`` apps won't be installable anymore.
 - Apps which have been signed in a previous release **MUST** be code-signed in
   all future releases as well, otherwise the update will be refused.
 
