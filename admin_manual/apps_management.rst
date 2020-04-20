@@ -21,7 +21,7 @@ During the Nextcloud server installation, some apps are enabled by default.
 To see which apps are enabled go to your Apps page.
 
 Those apps are supported and developed by Nextcloud GmbH directly and
-have an **Official**-tag. See :doc:`installation/apps_supported` for a list of supported apps.
+have an **Featured**-tag. See :doc:`installation/apps_supported` for a list of supported apps.
 
 .. note:: To get access to work-arounds, long-term-support, priority bug fixing
           and custom consulting for supported apps, contact our `sales team <https://nextcloud.com/enterprise/>`_.
