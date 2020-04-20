@@ -30,7 +30,7 @@ have an **Featured**-tag. See :doc:`installation/apps_supported` for a list of s
           more information in our `developer manual <https://docs.nextcloud.com/server/latest/go.php?to=developer-manual>`_.
 .. TODO ON RELEASE: Update version number above on release
 
-All apps need to be licensed under AGPLv3+ or any compatible license.
+All apps must be licensed under AGPLv3+ or any compatible license.
 
 Managing apps
 -------------
