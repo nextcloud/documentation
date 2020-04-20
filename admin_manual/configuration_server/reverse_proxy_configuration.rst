@@ -91,7 +91,7 @@ HAProxy
   http-request redirect location /remote.php/dav/ code 301 if url_discovery
 
 NGINX
-^^^^^^^
+^^^^^
 ::
 
     location /.well-known/carddav {
