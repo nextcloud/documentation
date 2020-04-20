@@ -12,5 +12,5 @@ Client APIs
     LoginFlow/index
     ocs-share-api
     ocs-sharee-api
-    activity
+    activity-api
     
