@@ -26,9 +26,6 @@ have an **Official**-tag. See :doc:`installation/apps_supported` for a list of s
 .. note:: To get access to work-arounds, long-term-support, priority bug fixing
           and custom consulting for supported apps, contact our `sales team <https://nextcloud.com/enterprise/>`_.
 
-Apps with **Approved** tag are community-developed and were uploaded in the
-`Nextcloud App Store <https://apps.nextcloud.com>`_.
-
 .. note:: If you would like to develop your own Nextcloud app, you can find out
           more information in our `developer manual <https://docs.nextcloud.com/server/14/go.php?to=developer-manual>`_.
 .. TODO ON RELEASE: Update version number above on release
