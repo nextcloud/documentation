@@ -8,7 +8,7 @@ like Files, Activity and Gallery there are other apps like Calendar, Contacts,
 Talk and more which are enhancing the features of your Nextcloud server.
 
 After installing the Nextcloud server, you might want to consider about enabling,
-disabling or even restricting some apps to groups depending on your and your users
+disabling or even restricting some apps to groups depending on your and your users'
 needs.
 
 Apps
@@ -21,19 +21,19 @@ During the Nextcloud server installation, some apps are enabled by default.
 To see which apps are enabled go to your Apps page.
 
 Those apps are supported and developed by Nextcloud GmbH directly and
-have an **Official**-tag. See :doc:`installation/apps_supported` for a list of supported apps.
+have an **Featured**-tag. See :doc:`installation/apps_supported` for a list of supported apps.
+
+.. note:: Your Nextcloud server needs to be able to communicate with 
+          ``https://apps.nextcloud.com`` to list and download apps. Please make sure to whitelist this target in your firewall or proxy if necessary_.
 
 .. note:: To get access to work-arounds, long-term-support, priority bug fixing
           and custom consulting for supported apps, contact our `sales team <https://nextcloud.com/enterprise/>`_.
 
-Apps with **Approved** tag are community-developed and were uploaded in the
-`Nextcloud App Store <https://apps.nextcloud.com>`_.
-
 .. note:: If you would like to develop your own Nextcloud app, you can find out
-          more information in our `developer manual <https://docs.nextcloud.com/server/14/go.php?to=developer-manual>`_.
+          more information in our `developer manual <https://docs.nextcloud.com/server/latest/go.php?to=developer-manual>`_.
 .. TODO ON RELEASE: Update version number above on release
 
-All apps need to be licensed under AGPLv3+ or any compatible license.
+All apps must be licensed under AGPLv3+ or any compatible license.
 
 Managing apps
 -------------
