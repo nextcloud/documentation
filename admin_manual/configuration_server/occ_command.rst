@@ -757,7 +757,7 @@ and to copy external mount configurations to another Nextcloud server.
 Integrity check
 ---------------
 
-Apps which have an official tag MUST be code signed with Nextcloud. Unsigned official apps won't be installable anymore. Code signing is optional for all third-party applications::
+Apps which have a ``Featured`` tag MUST be code signed with Nextcloud. Unsigned featured apps won't be installable anymore. Code signing is optional for all third-party applications::
 
  integrity
   integrity:check-app                 Check app integrity using a signature.
