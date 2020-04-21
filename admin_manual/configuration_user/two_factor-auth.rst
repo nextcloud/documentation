@@ -5,7 +5,7 @@ Two-factor authentication
 Two-factor authentication adds an additional layer of security to user accounts. In order to log
 in on an account with two-factor authentication (2FA) enabled, it is necessary to provide both the
 login password and another factor. 2FA in Nextcloud is pluggable, meaning that they are not part
-of the Nextcloud Server component but provided by official and 3rd-party Nextcloud apps.
+of the Nextcloud Server component but provided by featured and 3rd-party Nextcloud apps.
 
 
 Several 2FA apps are already available including
