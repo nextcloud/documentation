@@ -19,10 +19,9 @@ Set the :file:`trusted_proxies` parameter as an array of:
 * IPv4 ranges in CIDR notation
 * IPv6 addresses
 * host to resolve
-to define the
-servers Nextcloud should trust as proxies. This parameter provides protection
-against client spoofing, and you should secure those servers as you would your
-Nextcloud server.
+to define the servers Nextcloud should trust as proxies. This parameter
+provides protection against client spoofing, and you should secure those
+servers as you would your Nextcloud server.
 
 A reverse proxy can define HTTP headers with the original client IP address,
 and Nextcloud can use those headers to retrieve that IP address. Nextcloud uses
