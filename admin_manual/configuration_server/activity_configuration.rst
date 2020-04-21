@@ -29,8 +29,25 @@ Furthermore it is recommended to configure the background job ``Webcron`` or
 ``Cron`` as described in :doc:`background_jobs_configuration`.
 
 There is also a configuration option ``activity_expire_days`` available in your
-``config.php`` (See :doc:`config_sample_php_parameters`) which allows
+``config.php`` (See :ref:`label-activity-app-config`) which allows
 you to clean-up older activities from the database.
+
+.. _label-activities-groupfolders:
+
+Activities in groupfolders
+--------------------------
+
+By default activities in groupfolders are only generated for the current user.
+This is due to the logic of groupfolders. There is a config flag
+``activity_use_cached_mountpoints`` that makes activities in groupfolders work
+like in normal shares when set to ``true``.
+
+.. warning::
+
+    This config option comes with the following limitations::
+
+    1. Users that had access to a groupfolder, share or external storage can see activities in their stream and emails that happen after they are removed until they login again
+    2. Users that are newly added to a groupfolder, share or external storage can not see activities in their stream nor emails that happen after they are added until they login again
 
 Better scheduling of activity emails
 ------------------------------------

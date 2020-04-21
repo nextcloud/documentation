@@ -92,6 +92,11 @@ This example is from a new Nextcloud installation using MariaDB::
 App config options
 ------------------
 
+.. _label-activity-app-config:
+
+Activity app
+^^^^^^^^^^^^
+
 Retention for activities of the activity app:
 
 
@@ -104,6 +109,6 @@ which are older then the number of days that is set for ``activity_expire_days``
 
 ::
 
-	'wnd.logging.enable' => true,
+	'activity_use_cached_mountpoints' => false,
 
-This enables debug logs for the windows_network_drive app.
+Before enabling this, read the warning in :ref:`label-activities-groupfolders`
