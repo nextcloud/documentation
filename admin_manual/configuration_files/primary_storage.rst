@@ -41,12 +41,12 @@ The configuration has the following structure:
 
 ::
 
-	'objectstore' => array(
+	'objectstore' => [
 		'class' => 'Object\\Storage\\Backend\\Class',
-		'arguments' => array(
+		'arguments' => [
 			...
-		),
-	),
+		],
+	],
 
 ~~~~~~~~~~~~~~~
 OpenStack Swift
@@ -57,11 +57,15 @@ server into the virtual filesystem.
 
 The class to be used is :code:`\\OC\\Files\\ObjectStore\\Swift`
 
+Both openstack v2 and v3 authentication are supported,
+
+V2 Authentication:
+
 ::
 
-	'objectstore' => array(
+	'objectstore' => [
 		'class' => '\\OC\\Files\\ObjectStore\\Swift',
-		'arguments' => array(
+		'arguments' => [
 			'username' => 'username',
 			'password' => 'Secr3tPaSSWoRdt7',
 			// the container to store the data in
@@ -75,8 +79,38 @@ The class to be used is :code:`\\OC\\Files\\ObjectStore\\Swift`
 			'serviceName' => 'swift',
 			// The Interface / url Type, optional
 			'urlType' => 'internal'
-		),
-	),
+		],
+	],
+
+V3 Authentication:
+
+::
+
+	'objectstore' => [
+		'class' => 'OC\\Files\\ObjectStore\\Swift',
+		'arguments' => [
+			'autocreate' => true,
+			'user' => [
+				'name' => 'swift',
+				'password' => 'Secr3tPaSSWoRdt7',
+				'domain' => [
+					'name' => 'Default',
+				],
+			],
+			'scope' => [
+				'project' => [
+					'name' => 'OS_PROJECT_NAME',
+					'domain' => [
+						'name' => 'Default',
+					],
+				],
+			],
+			'serviceName' => 'swift',
+			'region' => 'regionOne',
+			'url' => 'http://example.com/v3',
+			'bucket' => 'nextcloud',
+		],
+	],
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Simple Storage Service (S3)
@@ -90,9 +124,9 @@ The class to be used is :code:`\\OC\\Files\\ObjectStore\\S3`
 
 ::
 
-	'objectstore' => array(
+	'objectstore' => [
 		'class' => '\\OC\\Files\\ObjectStore\\S3',
-		'arguments' => array(
+		'arguments' => [
 			'bucket' => 'nextcloud',
 			'autocreate' => true,
 			'key'    => 'EJ39ITYZEUH5BGWDRUFY',
@@ -103,8 +137,8 @@ The class to be used is :code:`\\OC\\Files\\ObjectStore\\S3`
 			'region' => 'optional',
 			// required for some non Amazon S3 implementations
 			'use_path_style'=>true
-		),
-	),
+		],
+	],
 
 .. note:: Not all configuration options are required for all S3 servers. Overriding
           the hostname, port and region of your S3 server is only required for
