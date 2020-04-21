@@ -6,23 +6,23 @@ The primary purpose of the Nextcloud server-side encryption is to protect users'
 files on remote storage, such as Dropbox and Google Drive, and to do it easily 
 and seamlessly from within Nextcloud.
 
-In Nextcloud 9.0 the server-side encryption separates encryption of local and 
+In Nextcloud 9.0, server-side encryption separates encryption of local and 
 remote storage. This allows you to encrypt remote storage, such as Dropbox and 
 Google, without having to also encrypt your home storage on your Nextcloud 
 server.
 
-.. note:: Starting with Nextcloud 9.0 we support Authenticated Encryption for all
+.. note:: Starting with Nextcloud 9.0 Authenticated Encryption is supported for all
    newly encrypted files. See https://hackerone.com/reports/108082 for more 
    technical information about the impact.
    
-   For maximum security make sure to configure external storage with "Check for 
+   For maximum security, make sure to configure external storage with "Check for 
    changes: Never". This will let Nextcloud ignore new files not added via Nextcloud, 
    so a malicious external storage administrator could not add new files to the 
    storage without your knowledge. Of course, this is not wise if your external 
    storage is subject to legitimate external changes.
 
 Nextcloud server-side encryption encrypts files stored on the Nextcloud server, 
-and files on remote storage that is connected to your Nextcloud server. 
+and files on remote storage connected to your Nextcloud server. 
 Encryption and decryption are performed on the Nextcloud server. All files sent 
 to remote storage will be encrypted by the Nextcloud server, and upon retrieval, 
 decrypted before serving them to you and anyone you have shared them with.
@@ -32,14 +32,13 @@ decrypted before serving them to you and anyone you have shared them with.
    storage quotas. User's quotas are based on the unencrypted file size, and 
    not the encrypted file size.
 
-When files on external storage are encrypted in Nextcloud, you cannot share them 
-directly from the external storage services, but only through Nextcloud sharing 
-because the key to decrypt the data never leaves the Nextcloud server.
+Files on external storage encrypted in Nextcloud must be shared directly from
+Nextcloud as the decryption key never leaves the Nextcloud server.
 
 Nextcloud's server-side encryption generates a strong encryption key, which is 
-unlocked by user's passwords. Your users don't need to track an extra 
-password, but simply log in as they normally do. It encrypts only the contents 
-of files, and not filenames and directory structures.
+unlocked by user's passwords. Users don't need to track an extra 
+password - simply log in as normal. Only the content of files is
+encrypted (not filenames and directory structures).
 
 You should regularly backup all encryption keys to prevent permanent data loss. 
 The encryption keys are stored in the following directories:
@@ -77,7 +76,7 @@ Before enabling encryption
 --------------------------
 
 Plan very carefully before enabling encryption because it is not reversible via 
-the Nextcloud Web interface. If you lose your encryption keys your files are not 
+the Nextcloud Web interface. If you lose your encryption keys, your files are not 
 recoverable. Always have backups of your encryption keys stored in a safe 
 location, and consider enabling all recovery options.
 
@@ -211,7 +210,7 @@ module is OC_DEFAULT_MODULE)::
 The [module ID] is taken from the ``encryption:list-modules`` command.
 
 Encrypt all data files for all users. For performance reasons, when you enable 
-encryption on a Nextcloud server only new and changed files are encrypted. This 
+encryption on a Nextcloud server, only new and changed files are encrypted. This 
 command gives you the option to encrypt all files. 
 
 Run ``occ``::
