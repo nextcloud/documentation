@@ -919,8 +919,8 @@ different log file path. Set your rotation by log file size in bytes with
 ``log:manage`` sets your logging backend, log level, and timezone. The defaults 
 are ``file``, ``warning``, and ``UTC``. Available options are:
 
-* --backend [file, syslog, errorlog, systemd]
-* --level [debug, info, warning, error, fatal]
+* ``--backend [file, syslog, errorlog, systemd]``
+* ``--level [debug|info|warning|error|fatal]``
 
 .. _maintenance_commands_label:
    
