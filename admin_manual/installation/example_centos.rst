@@ -80,6 +80,8 @@ Next install the PHP modules needed for this install. Remember, because this is 
 Manually building redis/imagick (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
     dnf install -y php-pear gcc curl-devel php-devel zlib-devel pcre-devel make
     
     pecl install redis
