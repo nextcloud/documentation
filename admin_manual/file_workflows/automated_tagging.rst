@@ -30,8 +30,8 @@ uploaded into a folder that is tagged with ``Protect content``. No user can
 remove the tag ``Protected file`` and therefor access control and retention
 both work fine without users being able to work around them.
 
-In this case folder will be also tagged, to avoid this, simply modify the rule
-to exclude Directory ``httpd/unix-directory`` from it.
+In this case folder will be also tagged with tag ``Protected file``, to avoid
+this, simply modify the rule to exclude Directory ``httpd/unix-directory`` from it.
 
     .. figure:: images/automated_tagging_sample_rule_exclude_folder.png
        :alt: Example rule to assign a restricted tag except to Directory.
