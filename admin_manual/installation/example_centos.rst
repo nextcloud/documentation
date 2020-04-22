@@ -80,6 +80,8 @@ Next install the PHP modules needed for this install. Remember, because this is 
 Manually building redis/imagick (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
     dnf install -y php-pear gcc curl-devel php-devel zlib-devel pcre-devel make
     
     pecl install redis
@@ -91,6 +93,8 @@ Manually building redis/imagick (optional)
     pecl install imagick
 
 After installing the extensions make sure to load the extensions in your php.ini file with:
+
+::
 
     extension=redis.so
     extension=imagick.so
