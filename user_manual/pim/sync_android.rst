@@ -64,11 +64,12 @@ steps are required after installing DAVx⁵
 7. Select the data you want to sync.
 8. When requested, grant access permissions to DAVx⁵ for your
    contacts, calendars and optionally tasks.
-   
-.. note:: Enter your email address as DAVx⁵ account name (mandatory if you want 
+
+.. note:: Enter your email address as DAVx⁵ account name (mandatory if you want
    to be able to send calendar invitation) If your email address is
    registered in your Nextcloud preferences and you have set up your
    account using the Nextcloud mobile app, this should be aready the case.
 
 
-   
+.. tip:: DAVx⁵ lists the calendar subscriptions made through the Nextcloud Calendar app, but you need to install the `ICSx⁵ (formerly known as ICSDroid) <https://icsx5.bitfire.at/>`_ app on your Android device, `from the Google Play Store <https://play.google.com/store/apps/details?id=at.bitfire.icsdroid>`_ or `from F-Droid <https://f-droid.org/packages/at.bitfire.icsdroid/>`_ to sync them.
+
