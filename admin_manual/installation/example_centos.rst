@@ -94,6 +94,8 @@ Manually building redis/imagick (optional)
 
 After installing the extensions make sure to load the extensions in your php.ini file with:
 
+::
+
     extension=redis.so
     extension=imagick.so
 
