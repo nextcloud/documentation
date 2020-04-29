@@ -17,10 +17,12 @@ real client information, for use in access control and logging. Parameters are
 configured in :file:`config/config.php`
 
 Set the :file:`trusted_proxies` parameter as an array of:
+
 * IPv4 addresses, 
 * IPv4 ranges in CIDR notation
 * IPv6 addresses
 * host to resolve
+
 to define the servers Nextcloud should trust as proxies. This parameter
 provides protection against client spoofing, and you should secure those
 servers as you would your Nextcloud server.
