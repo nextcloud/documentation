@@ -31,7 +31,7 @@ For best performance, stability and functionality we have documented some recomm
 +------------------+-----------------------------------------------------------------------+
 | PHP Runtime      | - 7.2                                                                 |
 |                  | - **7.3** (*recommended*)                                             |
-|                  | - **7.4** (*recommended*)                                             |
+|                  | - 7.4                                                                 |
 +------------------+-----------------------------------------------------------------------+
 
 See :doc:`source_installation` for minimum PHP-modules and additional software for installing Nextcloud.
