@@ -539,7 +539,7 @@ Add missing indices
 
 It might happen that we add from time to time new indices to already existing database tables,
 for example to improve performance. In order to check your database for missing indices run
-following command:
+following command::
 
  sudo -u www-data php occ db:add-missing-indices
 
