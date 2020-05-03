@@ -35,12 +35,10 @@ If you get a result, the module is present.
 Required:
 
 * PHP (7.2, 7.3 or 7.4)
-* PHP module bcmath
 * PHP module ctype
 * PHP module curl
 * PHP module dom
 * PHP module GD
-* PHP module gmp
 * PHP module hash (only on FreeBSD)
 * PHP module iconv
 * PHP module JSON
@@ -75,9 +73,11 @@ Required for specific apps:
   :doc:`../configuration_files/external_storage/smb`)
 * PHP module ftp (for FTP storage / external user authentication)
 * PHP module imap (for external user authentication)
+* PHP module bcmath (for  passwordless login)
+* PHP module gmp (for passwordless login)
 
 Recommended for specific apps (*optional*):
-
+* PHP module gmp (for SFTP storage)
 * PHP module exif (for image rotation in pictures app)
 
 For enhanced server performance (*optional*) select one of the following
