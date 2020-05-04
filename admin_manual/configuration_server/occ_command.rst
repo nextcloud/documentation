@@ -318,7 +318,7 @@ It is also possible to import remote files, by piping the input::
 
   While it is possible to update/set/delete the versions and installation
   statuses of apps and Nextcloud itself, it is **not** recommended to do this
-  directly. Use the ``occ app:enable``, ``occ app:disable`` and ``occ update``
+  directly. Use the ``occ app:enable``, ``occ app:disable`` and ``occ app:update``
   commands instead.  
 
 Getting a single configuration value
