@@ -70,7 +70,7 @@ This package provides helper functions around the Files app. Documentation: http
 ``@nextcloud/initial-state``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This package provides the counterpart for the `\OCP\IInitialStateService` on the back-end. Use it to retreive your stored data on page load. Documentation: https://nextcloud.github.io/nextcloud-initial-state/
+This package provides the counterpart for the `\\OCP\\IInitialStateService` on the back-end. Use it to retrieve your stored data on page load. Documentation: https://nextcloud.github.io/nextcloud-initial-state/
 
 ``@nextcloud/l10n``
 ^^^^^^^^^^^^^^^^^^^
@@ -131,7 +131,7 @@ Your app can react to lost network connectivity, e.g. to gracefully handle this 
 Global variables
 ----------------
 
-There are also global variables that acted as APIs in the past. The use of these variables is dicouraged, as they lead to script loading order problems and the dependency hell, making it hard for the server component to update libraries.
+There are also global variables that acted as APIs in the past. The use of these variables is discouraged, as they lead to script loading order problems and the dependency hell, making it hard for the server component to update libraries.
 
 .. note:: Be careful with accessing global variables as their availability depends on the order in which scripts are loaded. Thus they might not have been assigned yet when your script runs. Use the document ``load`` event to wait until all scripts have been loaded and executed.
 
