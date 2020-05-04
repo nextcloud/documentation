@@ -683,7 +683,7 @@ Available values:
     automatically, delete other files anytime if space needed
 * ``D1, D2``
     keep files and folders in the trash bin for at least D1 days and
-    delete when exceeds D2 days (note: files will not be deleted automatically if space is needed)
+    delete when exceeds D2 days
 * ``disabled``
     trash bin auto clean disabled, files and folders will be kept forever
 
@@ -1517,12 +1517,17 @@ Default is no limit (value set to 0)
 
 ::
 
-	'sharing.interal_shares_accepted' => false,
+	'sharing.enable_share_accept' => false,
 
-Starting with Nextcloud 18 also internal shares have to be accepted. Setting
-this setting to true forces all internal shares to be accepted directly.
+Set to true to enable that internal shares need to be accepted by the users by default.
 
-(resulting in pre 18 behavior).
+Users can change this for their account in their personal sharing settings
+
+::
+
+	'sharing.force_share_accept' => false,
+
+Set to true to enforce that internal shares need to be accepted
 
 All other configuration options
 -------------------------------
@@ -1611,6 +1616,53 @@ restricted, or if external storages which do not support streaming are in
 use.
 
 The Web server user must have write access to this directory.
+
+Hashing
+-------
+
+
+::
+
+	'hashing_default_password' => false,
+
+By default Nextcloud will use the Argon2 password hashing if available.
+
+However if for whatever reason you want to stick with the PASSWORD_DEFAULT
+of your php version. Then set the setting to true.
+
+Nextcloud uses the Argon2 algorithm (with PHP >= 7.2) to create hashes by its
+own and exposes its configuration options as following. More information can
+be found at: https://www.php.net/manual/en/function.password-hash.php
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+::
+
+	'hashingMemoryCost' => PASSWORD_ARGON2_DEFAULT_MEMORY_COST,
+
+The allowed maximum memory in KiB to be used by the algorithm for computing a
+hash. The smallest possible value is 8. Values that undershoot the minimum
+will be ignored in favor of the default.
+
+::
+
+	'hashingTimeCost' => PASSWORD_ARGON2_DEFAULT_TIME_COST,
+
+The allowed maximum time in seconds that can be used by the algorithm for
+computing a hash. The value must be an integer, and the minimum value is 1.
+
+Values that undershoot the minimum will be ignored in favor of the default.
+
+::
+
+	'hashingThreads' => PASSWORD_ARGON2_DEFAULT_THREADS,
+
+The allowed number of CPU threads that can be used by the algorithm for
+computing a hash. The value must be an integer, and the minimum value is 1.
+
+Rationally it does not help to provide a number higher than the available
+threads on the machine. Values that undershoot the minimum will be ignored
+in favor of the default.
 
 ::
 
