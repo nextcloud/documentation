@@ -683,7 +683,7 @@ Available values:
     automatically, delete other files anytime if space needed
 * ``D1, D2``
     keep files and folders in the trash bin for at least D1 days and
-    delete when exceeds D2 days (note: files will not be deleted automatically if space is needed)
+    delete when exceeds D2 days
 * ``disabled``
     trash bin auto clean disabled, files and folders will be kept forever
 
@@ -1602,6 +1602,43 @@ restricted, or if external storages which do not support streaming are in
 use.
 
 The Web server user must have write access to this directory.
+
+Hashing
+-------
+
+Nextcloud uses the Argon2 algorithm (available with PHP >= 7.2 if compiled
+with it) to create hashes by its own and exposes its configuration options as
+following. The default depends on the PHP build. More information can be
+found at: https://www.php.net/manual/en/function.password-hash.php
+
+
+::
+
+	'hashingMemoryCost' => 65536,
+
+The allowed maximum memory in KiB to be used by the algorithm for computing a
+hash. The smallest possible value is 8. Values that undershoot the minimum
+will be ignored in favor of the default.
+
+::
+
+	'hashingTimeCost' => 4,
+
+The allowed maximum time in seconds that can be used by the algorithm for
+computing a hash. The value must be an integer, and the minimum value is 1.
+
+Values that undershoot the minimum will be ignored in favor of the default.
+
+::
+
+	'hashingThreads' => 1,
+
+The allowed number of CPU threads that can be used by the algorithm for
+computing a hash. The value must be an integer, and the minimum value is 1.
+
+Rationally it does not help to provide a number higher than the available
+threads on the machine. Values that undershoot the minimum will be ignored
+in favor of the default.
 
 ::
 
