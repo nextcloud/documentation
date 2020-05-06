@@ -73,11 +73,12 @@ Required for specific apps:
   :doc:`../configuration_files/external_storage/smb`)
 * PHP module ftp (for FTP storage / external user authentication)
 * PHP module imap (for external user authentication)
+* PHP module bcmath (for passwordless login)
+* PHP module gmp (for passwordless login)
 
 Recommended for specific apps (*optional*):
-
-* PHP module exif (for image rotation in pictures app)
 * PHP module gmp (for SFTP storage)
+* PHP module exif (for image rotation in pictures app)
 
 For enhanced server performance (*optional*) select one of the following
 memcaches:
