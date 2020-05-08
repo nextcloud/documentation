@@ -99,14 +99,17 @@ Some operation can be quite time consuming. Therefore we decided not to add them
 to the normal upgrade process. We recommend to run them manually after the upgrade
 was completed. Below you find a list of this commands.
 
-Upgrading to Nextcloud 13
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Long running migration steps
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-With Nextcloud 13 we added a new index to the share table which should result in
-significant performance improvements::
+From time to time we do some changes to the database layout that take a lot of time,
+but can be executed while Nextcloud stays online. Thus we moved them into a separate
+command that an administrator can execute on the CLI without the need to lock the
+instance into maintenance mode (at least for some of them). The instance will also
+work without those changes applied, but performance is improved significantly by them.
+There is also always an hint in the setup checks of the admin settings web interface.
 
- $ sudo -u www-data php occ db:add-missing-indice
+Those include for example::
 
-With Nextcloud 13 we switched to bigint for the file ID's in the file cache table::
-
- $ sudo -u www-data php occ db:convert-filecache-bigint 
+ $ sudo -u www-data php occ db:add-missing-columns
+ $ sudo -u www-data php occ db:add-missing-indices
