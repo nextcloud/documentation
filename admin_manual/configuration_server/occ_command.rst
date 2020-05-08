@@ -1038,6 +1038,7 @@ report showing how many users you have, and when a user was last logged in::
   user:disable                        disables the specified user
   user:enable                         enables the specified user
   user:lastseen                       shows when the user was logged in last time
+  user:list                           shows list of all registered users
   user:report                         shows how many users have access
   user:resetpassword                  Resets the password of the named user
   user:setting                        Read and modify user settings
