@@ -443,8 +443,6 @@ To install the Nextcloud Snap Package, run the following command in a terminal::
    run OS components and applications on a Linux system. See more about snaps on
    `snapcraft.io <http://snapcraft.io/>`_.
 
-   On a machine running a pristine Ubuntu 18.04 LTS server, you have three options:
-
 Installation via web installer on a VPS or web space
 ----------------------------------------------------
 
