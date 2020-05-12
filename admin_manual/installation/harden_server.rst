@@ -147,9 +147,12 @@ available SSL ciphers and options depend completely on your environment and
 thus giving a generic recommendation is not really possible.
 
 We recommend using the `Mozilla SSL Configuration Generator`_ to generate a 
-suitable configuration suited for your environment, and the free `Qualys SSL Labs Tests`_
-gives good guidance on whether your SSL server is correctly
-configured.
+suitable configuration suited for your environment. To verify your
+configuration you can use the free `Web TLS Profiler`_ service.
+This service gives detailed error messages, if your server's TLS settings deviate
+from the Mozilla Configuration. Another useful tool to check your server's
+TLS configuration is the free `Qualys SSL Labs Test`_ which provides general 
+information about the TLS settings.
 
 Also ensure that HTTP compression is disabled to mitigate the BREACH attack.
 
@@ -205,7 +208,8 @@ static resource served by the Web server and verify that the above mentioned
 security headers are shipped.
 
 .. _Mozilla SSL Configuration Generator: https://mozilla.github.io/server-side-tls/ssl-config-generator/
-.. _Qualys SSL Labs Tests: https://www.ssllabs.com/ssltest/
+.. _Qualys SSL Labs Test: https://www.ssllabs.com/ssltest/
+.. _Web TLS Profiler: https://tlsprofiler.danielfett.de/
 .. _RFC 4086 ("Randomness Requirements for Security"): https://tools.ietf.org/html/rfc4086#section-5.2
 
 Connections to remote servers
