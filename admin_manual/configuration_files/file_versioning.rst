@@ -17,7 +17,7 @@ pattern used to delete old versions:
 The versions are adjusted along this pattern every time a new version is 
 created.
 
-The Versions app never uses more that 50% of the user's currently available 
+The Versions app never uses more than 50% of the user's currently available 
 free space. If the stored versions exceed this limit, Nextcloud deletes the 
 oldest file versions until it meets the disk space limit again.
 
