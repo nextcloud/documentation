@@ -71,7 +71,7 @@ Mobile apps
 We strongly recommend using the latest version of your mobile operating system to get the full and most stable experience out
 of our mobile apps.
 
-- **iOS** 10.x+
+- **iOS** 11.x+
 - **Android** 4.x+
 
 .. note:: The separate Nextcloud Talk app requires iOS 10.x+ or Android 5.x+.
