@@ -46,7 +46,7 @@ Server tab
 
 Start with the Server tab. You may configure multiple servers if you have them.
 
-.. note:: Do not configure any failover LDAP hosts here. See :ref:`.. _advanced_settings_label:` for instructions instead.
+.. note:: Do not configure any failover LDAP hosts here. See :ref:`advanced_settings_label` for instructions instead.
 
 At a minimum you must supply the LDAP server's hostname. If your server requires
 authentication, enter your credentials on this tab. Nextcloud will then attempt
