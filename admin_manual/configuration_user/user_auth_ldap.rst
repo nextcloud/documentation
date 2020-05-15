@@ -45,6 +45,9 @@ Server tab
 ^^^^^^^^^^
 
 Start with the Server tab. You may configure multiple servers if you have them.
+
+.. note:: Do not configure any failover LDAP hosts here. See :ref:`advanced_settings_label` for instructions instead.
+
 At a minimum you must supply the LDAP server's hostname. If your server requires
 authentication, enter your credentials on this tab. Nextcloud will then attempt
 to auto-detect the server's port and base DN. The base DN and port are
@@ -222,6 +225,7 @@ y groups found:
   This tells you approximately how many groups will be available in Nextcloud.
   The number updates automatically after any change.
 
+.. _advanced_settings_label:
 
 Advanced settings
 -----------------
