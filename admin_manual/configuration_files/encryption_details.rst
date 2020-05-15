@@ -38,6 +38,8 @@ Key type: user key
 
 While the user key encryption has been enabled by default in older versions of Nextcloud it now has to be enabled explicitly in newer versions including Nextcloud 16 by calling ``./occ encryption:disable-master-key``. With user key encryption enabled all users have their own user keys that are used to secure the files handled by Nextcloud. The user keys are protected by the user passwords. The advantage is that the server administrator is not able to decrypt user files without knowing any user password - unless the file is publicly shared or a recovery key is defined - but has the disadvantage that files are permanently lost if the users forget their user passwords - unless the files are (publicly) shared or a recovery key is defined.
 
+.. note:: This method cannot be used with SAML authentication, because Nextcloud does not get a hold of any credentials whatsoever and therefore cannot use any users' passwords for encryption.
+
 .. _file_type_public_key_file_label:
 
 File type: public key file
