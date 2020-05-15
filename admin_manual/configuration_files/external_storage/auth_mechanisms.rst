@@ -32,10 +32,15 @@ setup of the mount point.
 
 The **Log-in credentials, save in session** mechanism uses the Nextcloud login
 credentials of the user to connect to the storage. These are not stored anywhere
-on the server, but rather in the user session, giving increased security. The
-drawbacks are that sharing is disabled when this mechanism is in use, as
-Nextcloud has no access to the storage credentials, and background file scanning
-does not work.
+on the server, but rather in the user session, giving increased security.
+This method has some important drawbacks, since Nextcloud has no access to the storage 
+credentials and therefore cannot perform any background tasks on the storage:
+
+* Sharing is disabled
+* Background file scanning does not work
+* Desktop and mobile clients that use tokens to authenticate can not access those shares
+* Other services that might request the file through a different request like Collabora Online or OnlyOffice will not be able to open files from that storage
+* The method cannot be used with SAML authentication, because Nextcloud does not get a hold of any credentials whatsoever
 
 The **Log-in credentials, save in database** mechanism uses the Nextcloud login
 credentials of the user to connect to the storage. These are stored in the
