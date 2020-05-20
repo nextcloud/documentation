@@ -22,6 +22,15 @@ Logging level parameters are set in the :file:`config/config.php` file.
 Log type
 --------
 
+errorlog
+~~~~~~~~
+
+All log information will be sent to PHP ``error_log()``.
+
+::
+
+    "log_type" => "errorlog",
+
 file
 ~~~~
 
@@ -53,6 +62,15 @@ All log information will be sent to your default syslog daemon.
     "log_type" => "syslog",
     "logfile" => "",
     "loglevel" => 3,
+
+systemd
+~~~~~~~
+
+All log information will be sent to Systemd journal. Requires `php-systemd <https://github.com/systemd/php-systemd>`_ extension.
+
+::
+
+    "log_type" => "systemd",
 
 Admin audit log
 ---------------
