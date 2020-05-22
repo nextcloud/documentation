@@ -60,6 +60,3 @@ would protect the login route:
         GssapiLocalName on #strips @REALM from the username
         Require valid-user
      </Location>
-
-.. warning:: If this authentication approach is used clients do require an application specific password for authentication.
-             A better integration into our desktop and mobile clients is considered for the future though.
