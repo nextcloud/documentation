@@ -13,7 +13,7 @@ The following providers are supported and tested at the moment:
     - Shibboleth
     - Active Directory Federation Services (ADFS)
 - Authentication via Environment Variable
-    - Kerberos (mod_auth_kerb)
+    - Kerberos (mod_auth_gssapi)
     - Any other provider that authenticates using the environment variable
 
 While theoretically any other authentication provider implementing either one of those standards is compatible, we like
@@ -46,24 +46,20 @@ use an service provider incompatible with SAML such as Kerberos or don't want to
 To enable that choose the "Environment variable" authentication provider in the application and then specify the environment
 variable. (e.g. `REMOTE_USER` for Kerberos)
 
-Once done you also need to protect the login route properly. On an Apache server with mod_auth_kerb the following configuration
+Once done you also need to protect the login route properly. On an Apache server with mod_auth_gssapi the following configuration
 would protect the login route:
 
 .. code-block:: apache
 
-    <Location "/index.php/apps/user_saml/saml/login">
-    	AuthType Kerberos
-    	AuthName "Kerberos Login"
-    	KrbServiceName HTTP
-    	KrbMethodNegotiate On
-    	KrbMethodK5Passwd Off
-    	KrbSaveCredentials Off
-    	KrbVerifyKDC On
-    	KrbAuthRealms NEXTCLOUD-AD.LOCAL
-    	Krb5KeyTab /etc/apache2/webpage.HTTP.keytab
-    	Require valid-user
-    </Location>
-
+     <Location "/index.php/apps/user_saml/saml/login">
+        AuthName "Kerberos Login"
+        AuthType GSSAPI
+        GssapiCredStore keytab:/path/to/keytab
+        GssapiAllowedMech krb5
+        #GssapiAcceptorName http@nextcloud.example.com #Only required if you have multiple SPNs in your keytab
+        GssapiLocalName on #strips @REALM from the username
+        Require valid-user
+     </Location>
 
 .. warning:: If this authentication approach is used clients do require an application specific password for authentication.
              A better integration into our desktop and mobile clients is considered for the future though.
