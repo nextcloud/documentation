@@ -129,7 +129,7 @@ webroot of your nginx installation. In this example it is
           deny all;
       }
 
-      location ~ ^\/(?:index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|oc[ms]-provider\/.+)\.php(?:$|\/) {
+      location ~ ^\/(?:index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|oc[ms]-provider\/.+|.+\/richdocumentscode\/proxy)\.php(?:$|\/) {
           fastcgi_split_path_info ^(.+?\.php)(\/.*|)$;
           set $path_info $fastcgi_path_info;
           try_files $fastcgi_script_name =404;
@@ -297,7 +297,7 @@ In this example the webroot is located at
               deny all;
           }
 
-          location ~ ^\/nextcloud\/(?:index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|oc[ms]-provider\/.+)\.php(?:$|\/) {
+          location ~ ^\/nextcloud\/(?:index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|oc[ms]-provider\/.+|.+\/richdocumentscode\/proxy)\.php(?:$|\/) {
               fastcgi_split_path_info ^(.+?\.php)(\/.*|)$;
               set $path_info $fastcgi_path_info;
               try_files $fastcgi_script_name =404;
