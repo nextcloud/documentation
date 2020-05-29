@@ -13,7 +13,7 @@ npm build
 
 Once ``npm install`` (``npm i`` for short) has been run to install all dependencies specified
 on ``package.json``, one typically has to build the project. Building can happen with tools like
-Webpack, Grunt or similar. To unify the build command across Nextcoud apps, just add the build
+Webpack, Grunt or similar. To unify the build command across Nextcloud apps, just add the build
 command(s) as ``build`` script to your.
 
 For apps that use webpack, this might look like this:
