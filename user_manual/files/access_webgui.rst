@@ -198,20 +198,10 @@ Moving files
 
 You can move files and folders by dragging and dropping them into any directory.
 
-
-Change in share expiration date
--------------------------------
-
-In older versions of Nextcloud, you could set an expiration date on both local
-and public shares. Now you can set an expiration date only on public shares,
-and local shares do not expire when public shares expire. The only way to
-"expire" a local share is to click the trash can icon to un-share your files.
-
 Creating or connecting to a Federation Share link
 -------------------------------------------------
 
 Federated Cloud Sharing allows you to mount file shares from remote Nextcloud
-servers, and manage them just like a local share. In Nextcloud 9 the process for
-creating a new sharing link is easier and more streamlined. See
-:doc:`federated_cloud_sharing` to learn to how to create and connect to new
+servers and manage them just like a local share. See
+:doc:`sharing` to learn to how to create and connect to new
 Federated Cloud shares.
