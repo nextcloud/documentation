@@ -15,6 +15,6 @@ der vom Administrator festgelegten Größe erlaubt wird:
 * Wenden Sie sich an Ihren Administrator, um eine Erhöhung dieser Variablen
   anzufordern
 
-* Lesen Sie den Abschnitt in der `Admin-Dokumentation <https://docs.nextcloud.org/server/14/admin_manual/configuration_files/big_file_upload_configuration.html>`_ , in dem beschrieben wird, wie die Größenbeschränkungen für die Dateigröße zu verwalten sind.
+* Lesen Sie den Abschnitt in der `Admin-Dokumentation <https://docs.nextcloud.org/server/latest/admin_manual/configuration_files/big_file_upload_configuration.html>`_ , in dem beschrieben wird, wie die Größenbeschränkungen für die Dateigröße zu verwalten sind.
 
 .. TODO ON RELEASE: Update version number above on release
