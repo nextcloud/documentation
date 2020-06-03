@@ -45,7 +45,7 @@ intentionally. This allows to set up special cron jobs on your server with the k
 granularity, instead of relying on the Nextcloud cron feature which is not very flexible
 on scheduling.
 
-To implement the samples mentioned above, the following three entries are necessary::
+To implement the samples mentioned above, the following three entries are necessary:
 
   # crontab -u www-data -e
    0  *  *  *  *    php -f /var/www/nextcloud/occ activity:send-mails hourly
