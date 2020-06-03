@@ -37,7 +37,7 @@ Como a criptografia pode ser desativada?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A única maneira de desabilitar a criptografia é executar o `"decrypt all"
-<https://docs.nextcloud.org/server/14/admin_manual/configuration_server/occ_command.html#encryption-label>`_.
+<https://docs.nextcloud.org/server/latest/admin_manual/configuration_server/occ_command.html#encryption-label>`_.
 
 .. TODO ON RELEASE: Atualize o número da versão acima no lançamento
 
@@ -47,8 +47,8 @@ script, que descriptografa todos os arquivos e desabilita a criptografia.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Sim, *se* todo usuário usar a `chave de recuperação de arquivo
-<https://docs.nextcloud.com/server/14/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_,  `"decrypt all"
-<https://docs.nextcloud.org/server/14/admin_manual/configuration_server/occ_command.html#encryption-label>`_ irá usá-lo para descriptografar todos os arquivos.
+<https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_,  `"decrypt all"
+<https://docs.nextcloud.org/server/latest/admin_manual/configuration_server/occ_command.html#encryption-label>`_ irá usá-lo para descriptografar todos os arquivos.
 
 .. TODO ON RELEASE: Atualize o número da versão acima no lançamento
 
@@ -56,7 +56,7 @@ A criptografia pode ser desativada sem a senha do usuário?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Se você não tiver a senha do usuário ou a `chave de recuperação de arquivo
-<https://docs.nextcloud.com/server/14/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_.
+<https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_.
 
 .. TODO ON RELEASE: Atualize o número da versão acima no lançamento
 
