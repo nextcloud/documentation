@@ -44,7 +44,7 @@ like in normal shares when set to ``true``.
 
 .. warning::
 
-    This config option comes with the following limitations::
+    This config option comes with the following limitations:
 
     1. Users that had access to a groupfolder, share or external storage can see activities in their stream and emails that happen after they are removed until they login again
     2. Users that are newly added to a groupfolder, share or external storage can not see activities in their stream nor emails that happen after they are added until they login again
