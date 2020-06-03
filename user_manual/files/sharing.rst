@@ -20,7 +20,7 @@ Public link shares
 
 You can share files and folders via public links.
 
-A random 15-digit token will be created. The link will look like ``https://cloud.mydomain.org/s/yxcFKRWBJqYYzp4``.
+A random 15-digit token will be created. The link will look like ``https://cloud.example.com/s/yxcFKRWBJqYYzp4``.
 
 A number of options are available for public *folder* shares:
 
@@ -97,7 +97,7 @@ Federation sharing is enabled by default. Follow these steps to create a new sha
 Go to your ``Files`` page and click the Share icon on the file or directory 
 you want to share. In the sidebar enter the username and URL of the remote user
 in this form: ``<username>@<nc-server-url>``. In this example, that is
-``Lucy@cloud.lucysdomain.org``.
+``bob@cloud.example.com``.
 
 .. figure:: ../images/share-federation-1.png
 
