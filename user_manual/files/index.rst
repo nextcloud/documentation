@@ -17,4 +17,5 @@ Files & synchronization
    quota
    version_control
    projects
+   transfer_ownership
 

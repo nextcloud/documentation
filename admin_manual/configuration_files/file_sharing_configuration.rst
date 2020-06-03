@@ -71,6 +71,10 @@ Trashbin contents are not transferred::
  
 (See :doc:`../configuration_server/occ_command` for a complete ``occ`` 
 reference.) 
+
+Users may also transfer files or folders selectively by themselves.
+See `user documentation <https://docs.nextcloud.com/server/latest/user_manual/files/transfer_ownership.html>`_ for details.
+
    
 Creating persistent file Shares
 -------------------------------
