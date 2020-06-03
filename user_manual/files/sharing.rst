@@ -12,7 +12,7 @@ Nextcloud users can share files and folders. Possible targets are
 * users or groups on federated Nextcloud servers
 
 .. note:: Some options may note be available due to administrative configuration.
-   See <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/file_sharing_configuration.html> for details.
+   See :doc:`admin documentation <../../admin_manual/configuration_files/file_sharing_configuration>` for details.
 
 
 Public link shares
