@@ -53,5 +53,5 @@ Agora você deve encontrar seus contatos no catálogo de endereços do seu iPhon
 Se ainda não estiver funcionando, dê uma olhada no `Troubleshooting Contacts & Calendar`_
 guia.
 
-.. _Solução de problemas de contatos e agenda: https://docs.nextcloud.org/server/14/admin_manual/issues/index.html#troubleshooting-contacts-calendar
+.. _Solução de problemas de contatos e agenda: https://docs.nextcloud.org/server/latest/admin_manual/issues/index.html#troubleshooting-contacts-calendar
 .. TODO ON RELEASE: Atualize o número da versão acima no lançamento
