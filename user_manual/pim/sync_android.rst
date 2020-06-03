@@ -5,8 +5,8 @@ Synchronizing with Android
 Files and notifications
 -----------------------
 
-1. Install the Nextcloud Android client `from F-Droid <https://f-droid.org/de/packages/com.nextcloud.client/>`_ or `Google
-   Play Store <https://play.google.com/store/apps/details?id=com.nextcloud.client>`_
+1. Install the Nextcloud Android client `from F-Droid <https://f-droid.org/de/packages/com.nextcloud.client/>`_ or 
+   `Google Play Store <https://play.google.com/store/apps/details?id=com.nextcloud.client>`_
 2. Start the app. There are two ways of setting it up:
 
    *Either*: enter
