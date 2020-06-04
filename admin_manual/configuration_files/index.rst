@@ -12,7 +12,6 @@ File sharing and management
     default_files_configuration
     primary_storage
     external_storage_configuration_gui
-    external_storage_configuration
     external_storage/auth_mechanisms
     encryption_configuration
     encryption_details
