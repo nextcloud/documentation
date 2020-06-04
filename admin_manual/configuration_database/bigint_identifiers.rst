@@ -2,12 +2,10 @@
 BigInt (64bit) identifiers
 ==========================
 
-Since Nextcloud 13 big integers are used to store identifiers and auto-increment keys in the database.
-Because changing columns on huge tables can take quite a while (up to hours or days), the update from
-Nextcloud 12 or earlier did not perform this migration on the filecache and activity table.
-
-To make it easy to force the update on those tables too, we've added a console command, which can be used
-to migrate the remaining columns to bigints.
+Nextcloud uses big integers to store identifiers and auto-increment keys in the database.
+Because changing columns on huge tables can take quite a while (up to hours or days) 
+depending on the number of files in the Nextcloud instance, this migration on the filecache- 
+and activity tablehas to be triggered manually by a console command.
 
 The command can safely be executed. It will show a success message when there is nothing to do::
 
@@ -25,5 +23,5 @@ to suppress the confirmation message append ``--no-interaction`` to the argument
     sudo -u www-data php occ db:convert-filecache-bigint --no-interaction
 
 
-.. note:: Similar to a normal update, you should shutdown your apache or nginx server or enable maintenance
+.. note:: Similar to a normal update, you should shutdown your Apache or nginx server or enable maintenance
           mode before running the command to avoid issues with your sync clients.
