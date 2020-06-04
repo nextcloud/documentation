@@ -20,7 +20,7 @@ by a background task. See :doc:`../configuration_server/occ_command` section Dav
 
 Reminder notifications
 ----------------------
-Since version 17, Nextcloud handles sending notifications for events.
+Nextcloud handles sending notifications for events.
 
 Nextcloud currently handles two types of reminder notifications: Build-in Nextcloud notifications and
 email notifications. For the emails to be send, you'll need a configured email server.

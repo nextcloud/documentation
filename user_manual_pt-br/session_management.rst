@@ -53,19 +53,7 @@ Senhas específicas do dispositivo e alterações de senha
 O comportamento das senhas específicas do dispositivo durante as alterações
 da senha principal foi alterado em diferentes versões do Nextcloud.
 
-Até Nextcloud 13
-    As senhas específicas do dispositivo são removidas na alteração de senha
-    e também são removidas quando não são mais válidas se um back-end de
-    usuário externo for usado.
-
-Nextcloud 14
-    Para o usuário local backend, as senhas específicas do dispositivo são
-    atualizadas corretamente e continuam funcionando. Para back-ends de usuários
-    externos (como LDAP / AD), as senhas específicas do dispositivo ainda são 
-    removidas.
-
-Começando com o Nextcloud 15
-    Para alterações de senha em backends de usuário externo, as senhas 
-    específicas do dispositivo são marcadas como inválidas e, depois que um 
-    login da conta do usuário com a senha principal ocorrer, todas as senhas 
-    específicas do dispositivo serão atualizadas e funcionarão novamente.
+Para alterações de senha em backends de usuário externo, as senhas 
+específicas do dispositivo são marcadas como inválidas e, depois que um 
+login da conta do usuário com a senha principal ocorrer, todas as senhas 
+específicas do dispositivo serão atualizadas e funcionarão novamente.

@@ -6,17 +6,10 @@ The External Storage Support application enables you to mount external storage
 services and devices as secondary Nextcloud storage devices. You may also allow 
 users to mount their own external storage services.
 
-Nextcloud 9.0 introduces a new set of :ref:`occ commands for managing external storage <files_external_label>`.
-
-Also new in 9.0 is an option for the Nextcloud admin to enable or disable sharing 
-on individual external mountpoints (see 
-:ref:`external_storage_mount_options_label`). Sharing on such mountpoints is 
-disabled by default.
+For configuration of external storages via occ command, see :ref:`occ documentation <files_external_label>`.
 
 Enabling External Storage Support
 ---------------------------------
-
-.. warning:: Enabling this app will disable the **Stay logged in** checkbox on the login page.
 
 The External storage support application is enabled on your Apps page.
 

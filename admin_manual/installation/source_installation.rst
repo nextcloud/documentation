@@ -405,15 +405,9 @@ The `Nextcloud VM`_ is maintained by
 `T&M Hansson IT <https://www.hanssonit.se/nextcloud-vm/>`_ and several different versions are
 offered. Collabora, OnlyOffice, Full Text Search and other apps can easily be installed with the included scripts which you can choose to run during the first setup, or download them later and run it afterwards. You can find all the currently available automated app installations `on GitHub <https://github.com/nextcloud/vm/tree/master/apps/>`_.
 
-The VM is made with VMware version 10 and it comes in different sizes and versions:
+The VM comes in different sizes and versions.
 
-- 40 GB (VMware, VirtualBox, Hyper-V)
-- 500 GB (VMware, VirtualBox, Hyper-V)
-- 1 TB (VMware, VirtualBox, Hyper-V)
-- 2 TB (VMware & VirtualBox, Hyper-V)
-- Custom size? Please `ask us <https://www.hanssonit.se/#contact>`_.
-
-You can find all the different version `here <https://shop.hanssonit.se/product-category/virtual-machine/nextcloud-vm/>`_.
+You can find all the available versions `here <https://shop.hanssonit.se/product-category/virtual-machine/nextcloud-vm/>`_.
 
 For complete instructions and downloads see:
 
