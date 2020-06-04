@@ -724,6 +724,9 @@ It is also possible to transfer only one directory along with it's contents. Thi
 
  sudo -u www-data php occ files:transfer-ownership --path="path_to_dir" <source-user> <destination-user>
 
+Users may also transfer files or folders selectively by themselves.
+See `user documentation <https://docs.nextcloud.com/server/latest/user_manual/files/transfer_ownership.html>`_ for details.
+
 .. _files_external_label:
 
 Files external
