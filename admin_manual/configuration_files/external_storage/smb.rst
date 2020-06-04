@@ -49,7 +49,7 @@ See :doc:`auth_mechanisms` for more information on authentication schemes.
 SMB update notifications
 ------------------------
 
-Starting with Nextcloud 10, Nextcloud can use smb update notifications to
+Nextcloud can use smb update notifications to
 listen for changes made to a configured SMB/CIFS storage and detect external
 changes made to the storage in near real-time.
 

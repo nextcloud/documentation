@@ -66,7 +66,7 @@ Share
   shares with hyperlinks. You can also see who you have shared with already,
   and revoke shares by clicking the trash can icon.
 
-.. note:: Since version 9.0, you can see all re-shares of your original file shares.
+.. note:: You can also see all re-shares of your original file shares.
 
   If username auto-completion
   is enabled, when you start typing the user or group name Nextcloud will
@@ -211,7 +211,5 @@ Creating or connecting to a Federation Share link
 -------------------------------------------------
 
 Federated Cloud Sharing allows you to mount file shares from remote Nextcloud
-servers, and manage them just like a local share. In Nextcloud 9 the process for
-creating a new sharing link is easier and more streamlined. See
-:doc:`federated_cloud_sharing` to learn to how to create and connect to new
-Federated Cloud shares.
+servers, and manage them just like a local share. See :doc:`federated_cloud_sharing` 
+to learn to how to create and connect to new Federated Cloud shares.
