@@ -10,7 +10,7 @@ The classloader is provided by Nextcloud and loads all your classes automaticall
 PSR-4 autoloading
 -----------------
 
-Since Nextcloud 10 there is a PSR-4 autoloader in place. The namespace **\\OCA\\MyApp**
+Nextcloud uses a PSR-4 autoloader. The namespace **\\OCA\\MyApp**
 is mapped to :file:`/apps/myapp/lib/`. Afterwards normal PSR-4 rules apply, so
 a folder is a namespace section in the same casing and the class name matches
 the file name.

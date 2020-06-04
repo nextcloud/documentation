@@ -214,7 +214,5 @@ Criando ou conectando-se a um link de compartilhamento de federação
 --------------------------------------------------------------------
 
 O Federated Cloud Sharing permite montar compartilhamentos de arquivos a partir do Nextcloud remoto
-servidores e gerenciá-los como um compartilhamento local. Em Nextcloud 9 o processo para
-criar um novo link de compartilhamento é mais fácil e simplificado. Vejo
-: doc: `federated_cloud_sharing` para aprender como criar e conectar-se a novos
-Compartilhamentos da nuvem federada.
+servidores e gerenciá-los como um compartilhamento local. Vejo : doc: `federated_cloud_sharing` 
+para aprender como criar e conectar-se a novos Compartilhamentos da nuvem federada.

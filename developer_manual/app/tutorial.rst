@@ -16,7 +16,7 @@ First the :doc:`development environment <../general/devenv>` needs to be set up.
    cd server
    git submodule update --init
 
-.. note:: ``$BRANCH`` is the desired Nextcloud branch (e.g. ``stable17`` for Nextcloud 17, ``master`` for the upcoming release)
+.. note:: ``$BRANCH`` is the desired Nextcloud branch (e.g. ``stable19`` for Nextcloud 19, ``master`` for the upcoming release)
 
 First you want to enable debug mode to get proper error messages. To do that set ``debug`` to ``true`` in the **config/config.php** file::
 
