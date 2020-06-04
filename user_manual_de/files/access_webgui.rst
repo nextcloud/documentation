@@ -75,8 +75,7 @@ Teilen
   wem diese geteilt wurden. Um die Freigabe aufzuheben genügt ein Mausklick auf
   das Papierkorb-Symbol.
 
-.. note:: Seit Version 9.0, können alle wiederholt geteilte Inhalte der
-   ursprünglichen Dateifreigabe eingesehen werden.
+.. note:: Auch alle Weiterverteilungen einer ursprünglichen Dateifreigabe können eingesehen werden.
 
   Wenn die automatische Wortvervollständigung des Benutzernamen aktiviert ist,
   wird mit der Eingabe eines Benutzernamens oder des Gruppennamens das Wort
@@ -230,6 +229,4 @@ Erstellen oder Verbinden mit einer Federated Link-Freigabe
 
 Mithilfe von Federated Cloud Freigaben können Dateifreigaben von entfernten
 Nextcloud-Servern hinzugefügt und diese wie eine lokale Freigabe verwaltet
-werden. Ab Nextcloud 9 ist die Einbindung in ein Verbund mit neuen
-Freigabeverbindungen einfacher und effizienter. Siehe
-:doc:`federated_cloud_sharing` für den Umgang mit Federated Cloud Freigaben.
+werden. Siehe :doc:`federated_cloud_sharing` für den Umgang mit Federated Cloud Freigaben.

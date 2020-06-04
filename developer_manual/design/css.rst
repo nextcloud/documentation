@@ -6,7 +6,7 @@
 SCSS
 ====
 
-Since version 12 of Nextcloud, we support SCSS natively.
+Nextcloud supports SCSS natively.
 You can migrate your files by simply renaming your ``.css`` files to ``.scss``.
 The server will automatically compile, cache and serve it.
 The SCSS file is prioritized. Having two files with the same name and a ``scss`` & ``css`` extension
@@ -18,7 +18,7 @@ will ensure backwards compatibility with <12 versions as scss files will be igno
 CSS variables
 =============
 
-Since Nextcloud 14, app developers should use CSS4 variables so you get the values which Nextcloud defines. This way you can be sure that the theming and accessibility app can dynamically adjust the values.
+App developers should use CSS4 variables so you get the values which Nextcloud defines. This way you can be sure that the theming and accessibility app can dynamically adjust the values.
 
 A list of available variables is listed in the server repository:
 https://github.com/nextcloud/server/blob/master/core/css/css-variables.scss
@@ -30,7 +30,7 @@ https://github.com/nextcloud/server/blob/master/core/css/css-variables.scss
 SCSS icon mixins
 ================
 
-Since Nextcloud 14, we added some SCSS mixins and functions to add and manage SVG icons.
+Some SCSS mixins and functions are employed to add and manage SVG icons.
 
 These functions need to be used to add the icons via background-image. They create a list of every icon used in Nextcloud and create an associated list of variables.
 This allows us to invert the colors of the SVGs when using the dark theme.
