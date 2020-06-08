@@ -8,6 +8,7 @@ App development
    intro
    tutorial
    upgrade-guide
+   bootstrap
    npm
    requests/index
    view/index
