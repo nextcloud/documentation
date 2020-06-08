@@ -60,38 +60,3 @@ purpose there are several events emitted that an app can act upon.
             \OCP\Util::addStyle('myapp', 'style');
         }
     );
-
-Best practice
--------------
-
-A common way to have a cleaner code structure is to create a class Application in :file:`lib/AppInfo/Application.php` that will then execute your setup of hooks or background tasks. You can then just call it in your :file:`appinfo/app.php`. That way you can also make use of Nextclouds dependency injection feature and properly test those methods.
-
-
-appinfo/app.php
-^^^^^^^^^^^^^^^
-
-.. code-block:: php
-
-    <?php
-
-    $app = new \OCA\MyApp\AppInfo\Application();
-    $app->registerHooks();
-
-
-lib/AppInfo/Application.php
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\AppInfo;
-
-    use OCP\AppFramework\App;
-
-    class Application extends App {
-
-        public function registerHooks() {
-            \OCP\Util::connectHook('OC_User', 'pre_deleteUser', 'OCA\MyApp\Hooks\User', 'deleteUser');
-        }
-
-    }
