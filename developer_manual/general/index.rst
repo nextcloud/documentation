@@ -11,4 +11,3 @@ General contributor guidelines
    codingguidelines
    performance
    debugging
-   backporting
