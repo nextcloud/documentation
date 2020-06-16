@@ -34,7 +34,7 @@ webroot of your nginx installation. In this example it is
 
   upstream php-handler {
       server 127.0.0.1:9000;
-      #server unix:/var/run/php/php7.2-fpm.sock;
+      #server unix:/var/run/php/php7.4-fpm.sock;
   }
 
   server {
@@ -198,7 +198,7 @@ In this example the webroot is located at
 
   upstream php-handler {
       server 127.0.0.1:9000;
-      #server unix:/var/run/php/php7.2-fpm.sock;
+      #server unix:/var/run/php/php7.4-fpm.sock;
   }
 
   server {
