@@ -95,7 +95,9 @@ MariaDB 10.3 or later
     [mysqld]
     innodb_file_per_table=1
 
-2. Continue at step 2 of the MySQL instructions.
+2. Restart the MariaDB server.
+
+3. Continue at step 3 of the **MySQL** instructions.
 
 
 MariaDB 10.2 or earlier
@@ -112,7 +114,7 @@ MariaDB 10.2 or earlier
     innodb_file_format=barracuda
     innodb_file_per_table=1
 
-2. Restart the MariaDB server in case you changed the configuration in step 1.
+2. Restart the MariaDB server.
 
 3. Figure out whether the file format was changed to Barracuda::
 
@@ -133,4 +135,4 @@ This will return an SQL command for each table in the nextcloud database. The ro
 
 Replace oc_tablename with the failing table. If there are too many (did not happen here), SQL commands can be generated in a batch (task for the reader).
 
-6. Now everything should be fine and the MySQL instructions can be followed from step 3 onwards
+6. Now everything should be fine and the MySQL instructions can be followed from step 3 onwards.
