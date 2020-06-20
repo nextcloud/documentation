@@ -45,7 +45,7 @@ your job class of choice.
             parent::setInterval(3600);
         }
 
-        public static function run($arguments) {
+        protected function run($arguments) {
             $this->myService->doCron($arguments['uid']);
         }
 
