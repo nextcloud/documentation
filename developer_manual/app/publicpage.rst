@@ -74,6 +74,7 @@ As said the PublicShareController is a very basic controller. You need to implem
 
 		/**
 		 * Your normal controller function
+		 * @PublicPage
 		 */
 		public function get() {
 			// Work your magic
