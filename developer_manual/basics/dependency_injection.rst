@@ -1,6 +1,6 @@
-=========
-Container
-=========
+====================
+Dependency injection
+====================
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 

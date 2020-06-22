@@ -1,6 +1,6 @@
-==========
-Middleware
-==========
+===========
+Middlewares
+===========
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
