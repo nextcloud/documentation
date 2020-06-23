@@ -18,6 +18,7 @@ Digging deeper
    publicpage
    repair
    rest_apis
+   search
    settings
    testing
    two-factor-provider
