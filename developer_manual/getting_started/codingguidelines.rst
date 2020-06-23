@@ -103,7 +103,7 @@ User interface
 PHP
 ---
 
-The Nextcloud coding style guide is based on `PEAR Coding Standards <http://pear.php.net/manual/en/standards.php>`_.
+Starting with Nextcloud 19 there is a shared `PHP Coding Standards Fixer <https://github.com/FriendsOfPhp/PHP-CS-Fixer>`_ configuration you can use to automatically format your app's source code. For full details see the `repository on Github <https://github.com/nextcloud/coding-standard/>`_.
 
 Always use::
 
@@ -261,12 +261,10 @@ with ``Data``.
 JavaScript
 ----------
 
-In general take a look at `JSLint <http://www.jslint.com>`_ without the whitespace rules.
+There is a shared configuration for `eslint <https://eslint.org/>`_ that you can use to automatically format your Nextcloud apps's JavaScript code. It consists of two parts: a `config package <https://github.com/nextcloud/eslint-config>`_ that contains the formatting preferences and a `plugin <https://github.com/nextcloud/eslint-plugin>`_ to detect deprecated and removed APIs in your code. See their readmes for instructions.
 
 * Use a :file:`js/main.js` or :file:`js/app.js` where your program is started
-* Complete every statement with a **;**
-* Use **var** to limit variable to local scope
-* To keep your code local, wrap everything in a self executing function. To access global objects or export things to the global namespace, pass all global objects to the self executing function.
+* Use **const** or **let** to limit variable to local scope
 * Use JavaScript strict mode
 * Use a global namespace object where you bind publicly used functions and objects to
 

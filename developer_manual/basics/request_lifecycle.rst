@@ -5,10 +5,7 @@ Request lifecycle
 .. toctree::
    :maxdepth: 1
 
-   routes
-   middleware
    container
-   controllers
    api
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>, Morris Jobke <hey@morrisjobke.de>

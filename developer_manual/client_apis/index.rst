@@ -1,12 +1,13 @@
 .. _apiindex:
 
-===============================
-Client APIs
-===============================
+=======================
+Clients and Client APIs
+=======================
 
 .. toctree::
     :maxdepth: 2
 
+    android_library/index
     WebDAV/index
     OCS/index
     LoginFlow/index

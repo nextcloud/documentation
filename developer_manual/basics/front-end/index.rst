@@ -1,6 +1,6 @@
-====
-View
-====
+=========
+Front-end
+=========
 
 .. toctree::
    :maxdepth: 2

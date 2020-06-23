@@ -1,6 +1,6 @@
-===========
-RESTful API
-===========
+=========
+REST APIs
+=========
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 

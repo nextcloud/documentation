@@ -1,8 +1,8 @@
 .. _androidindex:
 
-===============================
-Android application development
-===============================
+=======
+Android
+=======
 Nextcloud provides an official Nextcloud Android client, which gives its users
 access to their files on their Nextcloud. It also includes functionality like
 automatically uploading pictures and videos to Nextcloud.

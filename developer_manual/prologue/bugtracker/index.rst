@@ -7,7 +7,6 @@ Bugtracker
    :hidden:
 
    codereviews
-   kanban
    triaging
 
 Thank you for helping Nextcloud by reporting bugs. Before submitting an issue, please read

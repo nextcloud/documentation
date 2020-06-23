@@ -1,6 +1,6 @@
 .. only:: html
 
-    API Documentation
+    API documentation
     =================
 
 
