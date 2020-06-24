@@ -89,21 +89,20 @@ in that folder.
         ],
     ],
 
-Using your own appstore
------------------------
+Using a self hosted apps store
+------------------------------
 
-You can enable the installation of apps from your own apps store. This requires that you
-can write to at least one of the configured apps directories.
+Enables the installation of apps from a self hosted apps store. Requires that at least one of the configured apps directories is writeable.
 
-To enable installation from your own apps store:
+To enable a self hosted apps store:
 
 1. Set the **appstoreenabled** parameter to "true".
 
-   This parameter is used to enable your apps store in Nextcloud.
+   This parameter is used to enable the apps store in Nextcloud.
 
 2. Set the **appstoreurl** to the URL of your Nextcloud apps store.
 
-   This parameter is used to set the http path to the Nextcloud apps store.
+   This parameter is used to set the http path to your self hosted Nextcloud apps store.
 
 ::
 
