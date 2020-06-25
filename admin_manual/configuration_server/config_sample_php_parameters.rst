@@ -1062,6 +1062,16 @@ Defaults to ``true``
 
 ::
 
+	'appstoreurl' => 'https://apps.nextcloud.com/api/v1',
+
+Enables the installation of apps from a self hosted apps store.
+
+Requires that at least one of the configured apps directories is writeable.
+
+Defaults to ``https://apps.nextcloud.com/api/v1``
+
+::
+
 	'apps_paths' => [
 		[
 			'path'=> '/var/www/nextcloud/apps',
