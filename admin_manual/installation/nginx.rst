@@ -179,7 +179,7 @@ webroot of your nginx installation. In this example it is
           access_log off;
       }
 
-      location ~ \.(?:png|html|ttf|ico|jpg|jpeg|bcmap|mp4|webm)$ {
+      location ~ \.(?:png|html|ttf|ico|jpg|jpeg|bcmap|mp4|webm|mp3|ogg|wav)$ {
           try_files $uri /index.php$request_uri;
           # Optional: Don't log access to other assets
           access_log off;
@@ -347,7 +347,7 @@ In this example the webroot is located at
               access_log off;
           }
 
-          location ~ ^\/nextcloud\/.+[^\/]\.(?:png|html|ttf|ico|jpg|jpeg|bcmap|mp4|webm)$ {
+          location ~ ^\/nextcloud\/.+[^\/]\.(?:png|html|ttf|ico|jpg|jpeg|bcmap|mp4|webm|mp3|ogg|wav)$ {
               try_files $uri /nextcloud/index.php$request_uri;
               # Optional: Don't log access to other assets
               access_log off;
