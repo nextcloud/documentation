@@ -82,13 +82,13 @@ Manually building redis/imagick (optional)
 
 ::
 
+    dnf config-manager --set-enabled PowerTools
+    
     dnf install -y php-pear gcc curl-devel php-devel zlib-devel pcre-devel make
     
     pecl install redis
-
-    dnf config-manager --set-enabled PowerTools
-
-    dnf install -y Imagemagick ImageMagick-devel
+    
+    dnf install -y ImageMagick ImageMagick-devel
     
     pecl install imagick
 
