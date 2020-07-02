@@ -13,6 +13,7 @@ Table of contents
     core/index
     design/index
     android_library/index
+    android_sso/index
     client_apis/index
     bugtracker/index
     commun/index

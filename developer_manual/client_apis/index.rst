@@ -8,6 +8,7 @@ Clients and Client APIs
     :maxdepth: 2
 
     android_library/index
+    android_sso/index
     WebDAV/index
     OCS/index
     LoginFlow/index

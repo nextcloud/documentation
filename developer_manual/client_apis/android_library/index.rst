@@ -34,10 +34,16 @@ application with Nextcloud.
 
 The tool needed is any IDE for Android; the preferred IDE at the moment is Android Studio.
 
+Nextcloud Android Single-Sign-on
+--------------------------------
+
+This library allows you to use accounts as well as the network stack provided by the [nextcloud android client](https://play.google.com/store/apps/details?id=com.nextcloud.client). Therefore you as a developer don't need to worry about asking the user for credentials as well as you don't need to worry about self-signed ssl certificates, two factor authentication, save credential storage etc.
+
+*Please note that the user needs to install the [nextcloud android client](https://play.google.com/store/apps/details?id=com.nextcloud.client) in order to use those features.* While this might seem like a "no-go" for some developers, we still think that using this library is worth consideration as it makes the account handling much faster and safer.
+
 .. toctree::
    :maxdepth: 2
    :hidden:
 
    library_installation
    examples
-
