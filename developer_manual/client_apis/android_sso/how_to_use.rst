@@ -2,7 +2,8 @@
 How to use this library
 =======================
 
-### 1) Add this library to your project
+1) Add this library to your project
+-----------------------------------
 
 ```gradle
 repositories {
@@ -23,7 +24,8 @@ compileOptions {
 
 We use some features from Java 8, so your project needs also to be compiled with (at least) this version.
 
-### 2) To choose an account, include the following code in your login dialog:
+2) To choose an account, include the following code in your login dialog:
+-------------------------------------------------------------------------
 
 From an Activity
 
@@ -47,7 +49,8 @@ private void openAccountChooser() {
     }
 }
 ```
-### 3) To handle the result of the Account Chooser, include the following:
+3) To handle the result of the Account Chooser, include the following:
+----------------------------------------------------------------------
 
 From an Activity
 
@@ -144,7 +147,8 @@ public void onRequestPermissionsResult(int requestCode, @NonNull String[] permis
 // Complete example: https://github.com/nextcloud/news-android/blob/890828441ba0c8a9b90afe56f3e08ed63366ece5/News-Android-App/src/main/java/de/luhmer/owncloudnewsreader/LoginDialogActivity.java#L470-L475
 ```
 
-### 4) How to get account information?
+4) How to get account information?
+----------------------------------
 
 ```java
 // If you stored the "default" account using setCurrentAccount(…) you can get the account by using the following line:
@@ -159,7 +163,8 @@ ssoAccount.token;
 ssoAccount.url;
 ```
 
-### 5) How to make a network request?
+5) How to make a network request?
+---------------------------------
 
 You'll notice that there is an callback parameter in the constructor of the `NextcloudAPI`.
 
@@ -297,7 +302,8 @@ public class MyActivity extends AppCompatActivity {
 ```
 
 
-6) WebDAV
+WebDAV
+------
 
 The following WebDAV Methods are supported: `PROPFIND` / `MKCOL`
 
@@ -315,7 +321,8 @@ NextcloudRequest nextcloudRequest = new NextcloudRequest.Builder()
         .build();
 ```
 
-## Flow Diagram
+Flow Diagram
+------------
 
 Note that the "Make network request" section in the diagram only shows the workflow if you use the "retrofit" api.
 
