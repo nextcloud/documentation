@@ -55,8 +55,6 @@ On the final login the server will do a redirect to a url of the following forma
 This information will be used by the client to create a new account.
 After this the webview is destroyed including all the state the webview holds.
 
-.. note:: On Nextcloud 12 the returned server is just the server address without any possible subfolder. This is corrected in Nextcloud 13.
-
 
 Converting to app passwords
 ---------------------------
@@ -118,8 +116,6 @@ Login flow v2
 -------------
 
 While the login flow works very nice in a lot of cases there are especially on dekstop application certain hurdles. Special proxy configuration, client side certificates and the likes can cause trouble. To solve this we have come up with a second login flow that uses the users default webbrowser to authenticate. Thus ensuring that if they can login via the web they can also login in the client.
-
-The login flow v2 is available since Nextcloud 16. So check the status.php if it can be used on a given server.
 
 To initiate a login do an anonymous POST request
 

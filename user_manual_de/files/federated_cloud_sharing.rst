@@ -11,7 +11,7 @@ Eine neue Federated Freigabe erstellen
 
 Die Federated Freigabe wird standardmäßig bei neuen oder aktualisierten
 Nextcloud-Installationen aktiviert. Gehen Sie folgendermaßen vor, um eine neue
-Freigabe mit anderen Nextcloud-Servern oder ownCloud-Servern ab Version 9 zu
+Freigabe mit anderen Nextcloud-Servern oder ownCloud-Servern zu
 erstellen:
 
 1. Gehen Sie in der linken Seitenleiste auf ``Alle Dateien`` und klicken Sie
