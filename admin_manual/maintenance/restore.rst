@@ -44,7 +44,7 @@ MySQL is the recommended database engine. To restore MySQL::
    mysql -h [server] -u [username] -p[password] -e "DROP DATABASE nextcloud"
    mysql -h [server] -u [username] -p[password] -e "CREATE DATABASE nextcloud"
 
-If you use UTF8 with multibyte support (e.g. for emoijs in filenames), use::
+If you use UTF8 with multibyte support (e.g. for emojis in filenames), use::
 
    mysql -h [server] -u [username] -p[password] -e "DROP DATABASE nextcloud"
    mysql -h [server] -u [username] -p[password] -e "CREATE DATABASE nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci"
