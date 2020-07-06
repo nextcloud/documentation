@@ -15,9 +15,14 @@ if (VersionCheckHelper.verifyMinVersion(context, MIN_NEXTCLOUD_FILES_APP_VERSION
 Nextcloud Conference 2018 Talk (5min)
 -------------------------------------
 
-[![Nextcloud Single Sign On for Android David Luhmer](https://img.youtube.com/vi/gnLOwmrJLUw/0.jpg)](https://www.youtube.com/watch?v=gnLOwmrJLUw)
+.. youtube:: gnLOwmrJLUw
+    width=600
+    height=400
+    someOtherParam=value
 
 Video
 -----
 
-![](https://user-images.githubusercontent.com/4489723/41563281-75cbc196-734f-11e8-8b22-7b906363e34a.gif)
+.. image:: https://user-images.githubusercontent.com/4489723/41563281-75cbc196-734f-11e8-8b22-7b906363e34a.gif
+  :width: 400
+  :alt: Android Single Sign On
