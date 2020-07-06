@@ -166,12 +166,18 @@ Values of the theming app are exposed through the capabilities API, allowing cli
 		<slogan>A safe home for all your data</slogan>
 		<color>#0082c9</color>
 		<color-text>#ffffff</color-text>
-		<color-element>#006295</color-element>
+		<color-element>#0082c9</color-element>
+		<color-element-bright>#aaaaaa</color-element-bright>
+		<color-element-dark>#555555</color-element-dark>
 		<logo>http://cloud.example.com/index.php/apps/theming/logo?v=1</logo>
 		<background>http://cloud.example.com/index.php/apps/theming/logo?v=1</background>
 		<background-plain></background-plain>
 		<background-default></background-default>
 	</theming>
+
+For elements like radio buttons, input borders and more, instead of the primary ``color`` value, the ``color-element-bright`` should be used on bright background and ``color-element-dark`` on dark background.
+This when the primary color is e.g. set to ``#000000`` the ``color-elemenet-dark`` will be set to ``#555555`` so items are still visible. In the Nextcloud web UI only the top header uses ``color``, everything else uses ``color-element-*``.
+Text and icons on these elements should use ``color-text``.
 
 
 The background value can either be an URL to the background image or a hex color value.
