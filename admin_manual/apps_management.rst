@@ -89,6 +89,13 @@ in that folder.
         ],
     ],
 
+.. note:: Apps paths can be located outside the server root.  However, for any
+   **path** outside the server root, you need to create a symlink in  the server
+   root that points **url** to **path**.
+   For instance, if **path** is ``/var/local/lib/nextcloud/apps``, and **url**
+   is ``/apps2``, then you would do this in the server root:
+   ``ln -sf /var/local/lib/nextcloud/apps ./apps2``
+
 Using a self hosted apps store
 ------------------------------
 
