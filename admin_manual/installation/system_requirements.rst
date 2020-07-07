@@ -53,6 +53,7 @@ The following is currently required if you're running Nextcloud together with a 
 * "READ COMMITED" transaction isolation level (See: :ref:`db-transaction-label`)
 * Disabled or BINLOG_FORMAT = ROW configured Binary Logging (See: https://dev.mysql.com/doc/refman/5.7/en/binary-log-formats.html)
 * For **Emoji (UTF8 4-byte) support** see :doc:`../configuration_database/mysql_4byte_support`
+* Please make sure to create a database and a database user before installing Nextcloud. Nextcloud will not create the database by their own.
 
 Desktop client
 --------------
