@@ -14,8 +14,7 @@ archive <https://nextcloud.com/install/>`_. This method is recommended to instal
 
 
 If you prefer a more automated installation of Nextcloud and there are no packages for your Linux distribution, you have the option to
-install the community `Snap Packages <http://snapcraft.io/docs/core/install/>`_. See
-:ref:`snaps_label` You can also use the `Nextcloud VM scripts <https://github.com/nextcloud/vm/>`_ to install directly on a clean Ubuntu Server. It will setup everything for you and include scripts for automated installation of apps like; Collabora, OnlyOffice, Talk and so on. Please note that those two options are not officially supported by Nextcloud GmbH.
+install the community `Snap Package <https://snapcraft.io/nextcloud>`_. This includes a full production-ready stack, will maintain your HTTPS certificates for you, and will automatically update as needed to stay secure. You can also use the `Nextcloud VM scripts <https://github.com/nextcloud/vm/>`_ to install directly on a clean Ubuntu Server. It will setup everything for you and include scripts for automated installation of apps like; Collabora, OnlyOffice, Talk and so on. Please note that those two options are not officially supported by Nextcloud GmbH.
 
 
 This installation guide is giving a general overview of required dependencies and their configuration. For a distribution specific setup guide have a look at the :doc:`./example_ubuntu` and :doc:`./example_centos`.
