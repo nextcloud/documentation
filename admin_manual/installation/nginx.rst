@@ -105,13 +105,17 @@ webroot of your nginx installation. In this example it is
       # `/updater`, `/ocm-provider`, `/ocs-provider`), and thus
       # `try_files $uri $uri/ /index.php$request_uri`
       # always provides the desired behaviour.
-      index index.php index.html index.htm /index.php$request_uri;
+      index index.php index.html /index.php$request_uri;
       
       # Default Cache-Control policy
       expires 1m;
       
       # Rule borrowed from `.htaccess` to handle Microsoft DAV clients
-      if ( $http_user_agent ~ DavClnt ) { rewrite ^/$ /remote.php/webdav/ redirect; }
+      location = / {
+          if ( $http_user_agent ~ DavClnt ) {
+              return 302 /remote.php/webdav/$is_args$args;
+          }
+      }
       
       location = /robots.txt {
           allow all;
@@ -120,8 +124,9 @@ webroot of your nginx installation. In this example it is
       }
       
       # Make a regex exception for `/.well-known` so that clients can still
-      # access it despite the existence of the regex rule `location ~ /\.`
-      # which would otherwise handle requests for `/.well-known`.
+      # access it despite the existence of the regex rule
+      # `location ~ /(\.|autotest|...)` which would otherwise handle requests
+      # for `/.well-known`.
       location ^~ /.well-known {
           # The following 6 rules are borrowed from `.htaccess`
       
@@ -136,11 +141,7 @@ webroot of your nginx installation. In this example it is
       
       # Rules borrowed from `.htaccess` to hide certain paths from clients
       location ~ ^/(build|tests|config|lib|3rdparty|templates|data)($|/)  { return 404; }
-      location ~ ^/(autotest|occ|issue|indie|db_|console)                 { return 404; }
-      
-      # Respond with HTTP 404 to *all* requests for hidden files;
-      # not just hidden files that reside in the root directory.
-      location ~ /\. { return 404; }
+      location ~ ^/(\.|autotest|occ|issue|indie|db_|console)              { return 404; }
       
       # Ensure this block, which passes PHP files to the PHP process, is above the blocks
       # which handle static assets (as seen below). If this block is not declared first,
@@ -166,13 +167,13 @@ webroot of your nginx installation. In this example it is
       }
       
       location ~ \.(css|js|svg|gif)$ {
-          try_files $uri $uri/ /index.php$request_uri;
+          try_files $uri /index.php$request_uri;
           expires 6M;         # Cache-Control policy borrowed from `.htaccess`
           access_log off;     # Optional: Don't log access to assets
       }
       
       location ~ \.woff2?$ {
-          try_files $uri $uri/ /index.php$request_uri;
+          try_files $uri /index.php$request_uri;
           expires 7d;         # Cache-Control policy borrowed from `.htaccess`
           access_log off;     # Optional: Don't log access to assets
       }
@@ -195,6 +196,7 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
 - The string ``/nextcloud`` is prepended to all prefix paths.
 - The URI ``/nextcloud`` is *aliased* to ``/var/www/nextcloud``, rather than the domain itself being *rooted* at ``/var/www/nextcloud``.
 - The blocks that handle requests for paths outside of ``/nextcloud``, i.e. ``/robots.txt``, ``/.well-known``, and hidden files, are pulled out of the ``location ~ ^/nextcloud($|/)`` block.
+- The block which handles `/.well-known` doesn't need a regex exception, since the rule which prevents users from accessing hidden folders at the root of the NextCloud installation no longer matches that path.
 
 .. code-block:: nginx
 
@@ -237,11 +239,8 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
           log_not_found off;
           access_log off;
       }
-      
-      # Make a regex exception for `/.well-known` so that clients can still
-      # access it despite the existence of the regex rule `location ~ /\.`
-      # which would otherwise handle requests for `/.well-known`.
-      location ^~ /.well-known {
+
+      location /.well-known {
           # The following 6 rules are borrowed from `.htaccess`
 
           rewrite ^/\.well-known/host-meta\.json  /nextcloud/public.php?service=host-meta-json    last;
@@ -254,11 +253,6 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
 
           try_files $uri $uri/ /nextcloud/index.php$request_uri;
       }
-      
-      # Respond with HTTP 404 to *all* requests for hidden files;
-      # not just hidden files that reside in the root directory of
-      # the NextCloud installation.
-      location ~ /\. { return 404; }
       
       location ~ ^/nextcloud($|/) {
           # set max upload size
@@ -303,17 +297,21 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
           # `/updater`, `/ocm-provider`, `/ocs-provider`), and thus
           # `try_files $uri $uri/ /nextcloud/index.php$request_uri`
           # always provides the desired behaviour.
-          index index.php index.html index.htm /nextcloud/index.php$request_uri;
+          index index.php index.html /nextcloud/index.php$request_uri;
           
           # Default Cache-Control policy
           expires 1m;
 
           # Rule borrowed from `.htaccess` to handle Microsoft DAV clients
-          if ( $http_user_agent ~ DavClnt ) { rewrite ^/nextcloud/?$ /nextcloud/remote.php/webdav/ redirect; }
+          location = /nextcloud {
+              if ( $http_user_agent ~ DavClnt ) {
+                  return 302 /nextcloud/remote.php/webdav/$is_args$args;
+              }
+          }
           
           # Rules borrowed from `.htaccess` to hide certain paths from clients
           location ~ ^/nextcloud/(build|tests|config|lib|3rdparty|templates|data)($|/)    { return 404; }
-          location ~ ^/nextcloud/(autotest|occ|issue|indie|db_|console)                   { return 404; }
+          location ~ ^/nextcloud/(\.|autotest|occ|issue|indie|db_|console)                { return 404; }
           
           # Ensure this block, which passes PHP files to the PHP process, is above the blocks
           # which handle static assets (as seen below). If this block is not declared first,
@@ -339,13 +337,13 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
           }
           
           location ~ \.(css|js|svg|gif)$ {
-              try_files $uri $uri/ /nextcloud/index.php$request_uri;
+              try_files $uri /nextcloud/index.php$request_uri;
               expires 6M;         # Cache-Control policy borrowed from `.htaccess`
               access_log off;     # Optional: Don't log access to assets
           }
           
           location ~ \.woff2?$ {
-              try_files $uri $uri/ /nextcloud/index.php$request_uri;
+              try_files $uri /nextcloud/index.php$request_uri;
               expires 7d;         # Cache-Control policy borrowed from `.htaccess`
               access_log off;     # Optional: Don't log access to assets
           }
