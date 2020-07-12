@@ -7,9 +7,10 @@ You can use .deb packages to install the required and recommended modules for a 
 installation, using Apache and MariaDB, by issuing the following commands in a
 terminal::
 
-    apt install apache2 mariadb-server libapache2-mod-php7.4
-    apt install php7.4-gd php7.4-mysql php7.4-curl php7.4-mbstring php7.4-intl
-    apt install php7.4-gmp php7.4-bcmath php-imagick php7.4-xml php7.4-zip
+    sudo apt update
+    sudo apt install apache2 mariadb-server libapache2-mod-php7.4
+    sudo apt install php7.4-gd php7.4-mysql php7.4-curl php7.4-mbstring php7.4-intl
+    sudo apt install php7.4-gmp php7.4-bcmath php-imagick php7.4-xml php7.4-zip
 
 * This installs the packages for the Nextcloud core system. 
   If you are planning on running additional apps, keep in mind that they might require additional
@@ -21,7 +22,8 @@ when you login for the first time.
 
 To start the MySQL command line mode use the following command and press the enter key when prompted for a password::
 
-  mysql -uroot -p
+  sudo /etc/init.d/mysql start
+  sudo mysql -uroot -p
 
 Then a **MariaDB [root]>** prompt will appear. Now enter the following lines, replacing username and password with appropriate values, and confirm them with the enter key:
 
