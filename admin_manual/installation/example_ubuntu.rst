@@ -64,7 +64,7 @@ Now download the archive of the latest Nextcloud version:
 * Now you can extract the archive contents. Run the appropriate unpacking
   command for your archive type::
 
-    tar -xjfv nextcloud-x.y.z.tar.bz2
+    tar -xvf nextcloud-x.y.z.tar.bz2
     unzip nextcloud-x.y.z.zip
 
 * This unpacks to a single ``nextcloud`` directory. Copy the Nextcloud directory
