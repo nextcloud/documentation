@@ -167,12 +167,19 @@ Available Events
 
 Here you find an overview of the public events that can be consumed in apps. See their source files for more details.
 
-``\OCP\AppFramework\Http\Events\BeforeTemplateRenderedEvent``
-***********************************************
+``\OCA\Files_Sharing\Event\BeforeTemplateRenderedEvent``
+********************************************************
 
 *Available in Nextcloud 20 and later.*
 
-Emitted before the rendering step of each TemplateResponse.
+Emitted before the rendering step of the public share page happens. The event holds a flag that specifies if it is the authentication page of a public share.
+
+``\OCP\AppFramework\Http\Events\BeforeTemplateRenderedEvent``
+*************************************************************
+
+*Available in Nextcloud 20 and later.*
+
+Emitted before the rendering step of each TemplateResponse. The event holds a flag that specifies if an user is logged in.
 
 ``\OCP\Authentication\Events\LoginFailedEvent``
 ***********************************************
