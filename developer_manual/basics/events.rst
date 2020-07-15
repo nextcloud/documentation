@@ -167,6 +167,13 @@ Available Events
 
 Here you find an overview of the public events that can be consumed in apps. See their source files for more details.
 
+``\OCP\AppFramework\Http\Events\BeforeTemplateRenderedEvent``
+***********************************************
+
+*Available in Nextcloud 20 and later.*
+
+Emitted before the rendering step of each TemplateResponse.
+
 ``\OCP\Authentication\Events\LoginFailedEvent``
 ***********************************************
 
