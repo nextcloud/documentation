@@ -95,3 +95,12 @@ to 'null':
 
   <?php
     'preview_max_scale_factor' => null,
+
+JPEG quality setting:
+^^^^^^^^^^^^^^^^^^^^^
+
+Default JPEG quality setting for preview images is '90'. You can change this with
+
+:: 
+
+  occ config:app:set preview jpeg_quality --value="60"
