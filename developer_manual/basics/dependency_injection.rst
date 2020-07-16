@@ -28,6 +28,7 @@ new dependencies in your constructor or methods but pass them in. So this:
   // without dependency injection
   class AuthorMapper {
 
+    /** @var IDBConnection */
     private $db;
 
     public function __construct() {
@@ -42,12 +43,15 @@ would turn into this by using Dependency Injection:
 
   <?php
 
+  use OCP\IDBConnection;
+
   // with dependency injection
   class AuthorMapper {
 
+    /** @var IDBConnection */
     private $db;
 
-    public function __construct($db) {
+    public function __construct(IDBConnection $db) {
       $this->db = $db;
     }
 
@@ -69,6 +73,9 @@ The solution for this particular problem is to limit the **new AuthorMapper** to
 one file, the container. The container contains all the factories for creating
 these objects and is configured in :file:`lib/AppInfo/Application.php`.
 
+Nextcloud 20 and later uses the :ref:`PSR-11 standard <psr11>` for the container interface, so working
+with the container might feel familiar if you've worked with other php applications
+before that also adhere to the convention.
 
 To add the app's classes simply open the :file:`lib/AppInfo/Application.php` and
 use the **registerService** method on the container object:
@@ -79,11 +86,12 @@ use the **registerService** method on the container object:
 
   namespace OCA\MyApp\AppInfo;
 
-  use \OCP\AppFramework\App;
+  use OCP\AppFramework\App;
 
-  use \OCA\MyApp\Controller\AuthorController;
-  use \OCA\MyApp\Service\AuthorService;
-  use \OCA\MyApp\Db\AuthorMapper;
+  use OCA\MyApp\Controller\AuthorController;
+  use OCA\MyApp\Service\AuthorService;
+  use OCA\MyApp\Db\AuthorMapper;
+  use Psr\Container\ContainerInterface;
 
   class Application extends App {
 
@@ -99,29 +107,29 @@ use the **registerService** method on the container object:
       /**
        * Controllers
        */
-      $container->registerService('AuthorController', function($c){
+      $container->registerService('AuthorController', function(ContainerInterface $c){
         return new AuthorController(
-          $c->query('AppName'),
-          $c->query('Request'),
-          $c->query('AuthorService')
+          $c->get('AppName'),
+          $c->get('Request'),
+          $c->get('AuthorService')
         );
       });
 
       /**
        * Services
        */
-      $container->registerService('AuthorService', function($c){
+      $container->registerService('AuthorService', function(ContainerInterface $c){
         return new AuthorService(
-          $c->query('AuthorMapper')
+          $c->get('AuthorMapper')
         );
       });
 
       /**
        * Mappers
        */
-      $container->registerService('AuthorMapper', function($c){
+      $container->registerService('AuthorMapper', function(ContainerInterface $c){
         return new AuthorMapper(
-          $c->query('ServerContainer')->getDatabaseConnection()
+          $c->get('ServerContainer')->getDatabaseConnection()
         );
       });
     }
@@ -136,26 +144,26 @@ The container works in the following way:
 * The matched route queries **AuthorController** service from the container::
 
     return new AuthorController(
-      $c->query('AppName'),
-      $c->query('Request'),
-      $c->query('AuthorService')
+      $c->get('AppName'),
+      $c->get('Request'),
+      $c->get('AuthorService')
     );
 
 * The **AppName** is queried and returned from the base class
 * The **Request** is queried and returned from the server container
 * **AuthorService** is queried::
 
-    $container->registerService('AuthorService', function($c){
+    $container->registerService('AuthorService', function(ContainerInterface $c){
       return new AuthorService(
-        $c->query('AuthorMapper')
+        $c->get('AuthorMapper')
       );
     });
 
 * **AuthorMapper** is queried::
 
-    $container->registerService('AuthorMappers', function($c){
+    $container->registerService('AuthorMappers', function(ContainerInterface $c){
       return new AuthorService(
-        $c->query('ServerContainer')->getDatabaseConnection()
+        $c->get('ServerContainer')->getDatabaseConnection()
       );
     });
 
@@ -170,15 +178,15 @@ So basically the container is used as a giant factory to build all the classes t
 Use automatic dependency assembly (recommended)
 -----------------------------------------------
 
-In Nextcloud it is possible to omit the **lib/AppInfo/Application.php** and use automatic dependency assembly instead.
+In Nextcloud it is possible to build classes and their dependencies without having to explicitly register them on the container, as long as the container can `reflect <reflection>`_ the constructor and look up the parameters by their type. This concept is widely known as *auto-wiring*.
 
-How does automatic assembly work
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+How does auto-wiring work
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Automatic assembly creates new instances of classes just by looking at the class name and its constructor parameters. For each constructor parameter the type or the variable name is used to query the container, e.g.:
+Automatic assembly creates new instances of classes just by looking at the class name and its constructor parameters. For each constructor parameter the type or the argument name is used to query the container, e.g.:
 
-* **SomeType $type** will use **$container->query('SomeType')**
-* **$variable** will use **$container->query('variable')**
+* **SomeType $type** will use **$container->get('SomeType')**
+* **$variable** will use **$container->get('variable')**
 
 If all constructor parameters are resolved, the class will be created, saved as a service and returned.
 
@@ -203,12 +211,12 @@ So basically the following is now possible:
 
   $app = new \OCP\AppFramework\App('myapp');
 
-  $class2 = $app->getContainer()->query('OCA\MyApp\MyTestClass2');
+  $class2 = $app->getContainer()->get('OCA\MyApp\MyTestClass2');
 
   $class2 instanceof MyTestClass2;  // true
   $class2->class instanceof MyTestClass;  // true
   $class2->appName === 'appname';  // true
-  $class2 === $app->getContainer()->query('OCA\MyApp\MyTestClass2');  // true
+  $class2 === $app->getContainer()->get('OCA\MyApp\MyTestClass2');  // true
 
 .. note:: $AppName is resolved because the container registered a parameter under the key 'AppName' which will return the app id. The lookup is case sensitive so while $AppName will work correctly, using $appName as a constructor parameter will fail.
 
@@ -223,7 +231,7 @@ How does it affect the request lifecycle
 
 * A request is matched for the route, e.g. with the name **page#index**
 * The appropriate container is being queried for the entry PageController (to keep backwards compatibility)
-* If the entry does not exist, the container is queried for OCA\\AppName\\Controller\\PageController and if no entry exists, the container tries to create the class by using reflection on its constructor parameters
+* If the entry does not exist, the container is queried for OCA\\AppName\\Controller\\PageController and if no entry exists, the container tries to create the class by using `reflection`_ on its constructor parameters
 
 How does this affect controllers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -284,8 +292,8 @@ Interfaces and primitive types can not be instantiated, so the container can not
           $container->registerParameter('TableName', 'my_app_table');
 
           // the interface is called IAuthorMapper and AuthorMapper implements it
-          $container->registerService('OCA\MyApp\Db\IAuthorMapper', function ($c) {
-              return $c->query('OCA\MyApp\Db\AuthorMapper');
+          $container->registerService('OCA\MyApp\Db\IAuthorMapper', function (ContainerInterface $c) {
+              return $c->get('OCA\MyApp\Db\AuthorMapper');
           });
       }
 
@@ -380,3 +388,5 @@ What not to inject:
 
 * It is pure data and has methods that only act upon it (arrays, data objects)
 * It is a `pure function <http://en.wikipedia.org/wiki/Pure_function>`_
+
+.. _`reflection`: https://www.php.net/manual/en/book.reflection.php
