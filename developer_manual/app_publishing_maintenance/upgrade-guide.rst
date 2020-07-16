@@ -6,6 +6,59 @@ Once you've created and published the first version of your app, you will want t
 
 This document will cover the most important changes in Nextcloud, as well as some guides on how to upgrade existing apps.
 
+Upgrading to Nextcloud 20
+-------------------------
+
+.. note:: Critical changes were collected `on Github <https://github.com/nextcloud/server/issues/20953>`_. See the original ticket for links to the pull requests and tickets.
+
+Back-end changes
+^^^^^^^^^^^^^^^^
+
+.. _upgrade-psr11:
+
+PSR-11 integration
+******************
+
+Nextcloud 20 is the first major release of Nextcloud that brings full compatibility with :ref:`psr11`. From this point on it is highly recommended to use this interface mainly as the old ``\OCP\AppFramework\IAppContainer``, ``\OCP\IContainer`` and ``\OCP\IServerContainer`` got deprecated with this change.
+
+If your app requires Nextcloud 20 or later, you can replace any of the old type hints with one of ``\Psr\Container\ContainerInterface`` and replace calls of ``query`` with ``get``, e.g. on the closures used when registering services:
+
+.. code-block:: php
+
+  // old
+  $container->registerService('DecryptAll', function (IAppContainer $c) {
+    return new DecryptAll(
+      $c->query('Util'),
+      $c->query(KeyManager::class),
+      $c->query('Crypt'),
+      $c->query(ISession::class)
+    )
+  })
+
+becomes
+
+.. code-block:: php
+
+  // new
+  $container->registerService('DecryptAll', function (ContainerInterface $c) {
+    return new DecryptAll(
+      $c->get('Util'),
+      $c->get(KeyManage::class'),
+      $c->get('Crypt'),
+      $c->get(ISession::class)
+    )
+  })
+
+.. note:: For a smoother transition, the old interfaces were changed so they are based on ``ContainerInterface``, hence you can use ``has`` and ``get`` on ``IContainer`` and sub types.
+
+Deprecated APIs
+***************
+
+* ``\OCP\AppFramework\IAppContainer``: see :ref:`upgrade-psr11`
+* ``\OCP\IContainer``: see :ref:`upgrade-psr11`
+* ``\OCP\IServerContainer``: see :ref:`upgrade-psr11`
+
+
 Upgrading to Nextcloud 19
 -------------------------
 
