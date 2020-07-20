@@ -99,7 +99,7 @@ to 'null':
 JPEG quality setting:
 ^^^^^^^^^^^^^^^^^^^^^
 
-Default JPEG quality setting for preview images is '90'. You can change this with
+Default JPEG quality setting for preview images is '90'. Change this with:
 
 :: 
 
