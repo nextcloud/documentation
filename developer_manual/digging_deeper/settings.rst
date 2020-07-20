@@ -212,6 +212,7 @@ An example implementation of the IIconSection interface:
     namespace OCA\YourAppNamespace\Settings;
 
     use OCP\IL10N;
+    use OCP\IURLGenerator;
     use OCP\Settings\IIconSection;
 
     class AdminSection implements IIconSection {
