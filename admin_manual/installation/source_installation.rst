@@ -76,6 +76,7 @@ Required for specific apps:
 * PHP module gmp (for passwordless login)
 
 Recommended for specific apps (*optional*):
+
 * PHP module gmp (for SFTP storage)
 * PHP module exif (for image rotation in pictures app)
 
