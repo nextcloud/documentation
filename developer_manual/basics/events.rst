@@ -167,6 +167,13 @@ Available Events
 
 Here you find an overview of the public events that can be consumed in apps. See their source files for more details.
 
+``\OCA\DAV\Events\SabrePluginAuthInitEvent``
+********************************************************
+
+*Available in Nextcloud 20 and later.*
+
+This event is triggered during the setup of the SabreDAV server to allow the registration of additional authentication backends.
+
 ``\OCA\Files_Sharing\Event\BeforeTemplateRenderedEvent``
 ********************************************************
 
