@@ -85,6 +85,14 @@ If using the command line and your name and email are configured, you can use
 In both settings be sure that your email address matches that in your Github profile,
 which if you have privacy enabled will be github.username@users.noreply.github.com
 
+
+Translations
+------------
+
+[Help translate the documentation](https://www.transifex.com/indiehosters/nextcloud-user-documentation/dashboard/).
+
+For developers that want to ease the translation process, please read [this documentation](https://docs.transifex.com/integrations/sphinx-doc).
+
 Building
 --------
 
