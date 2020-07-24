@@ -1,0 +1,19 @@
+name: L10n
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  user_manual:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ammaraskar/sphinx-action@master
+      with:
+        docs-folder: "user_manual/"
+        pre-build-command: pip install -r requirements.txt
+        build-command: make gettext
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Adds Or Updates catalog templates (POT files fetched automatically by transifex)
