@@ -1,0 +1,1649 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020 Nextcloud GmbH
+# This file is distributed under the same license as the Nextcloud latest User Manual package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Nextcloud latest User Manual latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-24 16:01+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../files/access_webdav.rst:3
+msgid "Accessing Nextcloud files using WebDAV"
+msgstr ""
+
+#: ../../files/access_webdav.rst:5
+msgid "Nextcloud fully supports the WebDAV protocol, and you can connect and synchronize with your Nextcloud files over WebDAV. In this chapter you will learn how to connect Linux, macOS, Windows, and mobile devices to your Nextcloud server via WebDAV. Before we get into configuring WebDAV, let's take a quick look at the recommended way of connecting client devices to your Nextcloud servers."
+msgstr ""
+
+#: ../../files/access_webdav.rst:11
+msgid "In the following examples, you should replace **example.com/nextcloud** with the URL of your Nextcloud server (omit the directory part if the installation is in the root of your domain), and \"USERNAME\" with the username of the connecting user."
+msgstr ""
+
+#: ../../files/access_webdav.rst:15
+msgid "See the webdav url (bottom left, settings) on your Nextcloud."
+msgstr ""
+
+#: ../../files/access_webdav.rst:18
+msgid "Nextcloud Desktop and mobile clients"
+msgstr ""
+
+#: ../../files/access_webdav.rst:20
+msgid "The recommended way to synchronize a desktop PC with a Nextcloud server is by using `Nextcloud/ownCloud sync clients <https://nextcloud.com/install/#install-clients>`_. You can configure the client to save files in any local directory and you can choose which directories on the Nextcloud server to sync with. The client displays the current connection status and logs all activity, so you always know which remote files have been downloaded to your PC and you can verify that files created and updated on your local PC are properly synchronized with the server."
+msgstr ""
+
+#: ../../files/access_webdav.rst:28
+msgid "The recommended way to synchronize Nextcloud server with Android and Apple iOS devices is by using the `mobile apps <https://nextcloud.com/install/>`_."
+msgstr ""
+
+#: ../../files/access_webdav.rst:32
+msgid "To connect your mobile app to a Nextcloud server use the base URL and folder only::"
+msgstr ""
+
+#: ../../files/access_webdav.rst:37
+msgid "In addition to the mobile apps provided by Nextcloud or ownCloud, you can use other apps to connect to Nextcloud from your mobile device using WebDAV. `WebDAV Navigator`_ is a good (proprietary) app for `Android devices`_ and `iPhones`_. The URL to use on these is::"
+msgstr ""
+
+#: ../../files/access_webdav.rst:44
+msgid "WebDAV configuration"
+msgstr ""
+
+#: ../../files/access_webdav.rst:46
+msgid "If you prefer, you may also connect your desktop PC to your Nextcloud server by using the WebDAV protocol rather than using a special client application. Web Distributed Authoring and Versioning (WebDAV) is a Hypertext Transfer Protocol (HTTP) extension that makes it easy to create, read, and edit files on Web servers. With WebDAV you can access your Nextcloud shares on Linux, macOS and Windows in the same way as any remote network share, and stay synchronized."
+msgstr ""
+
+#: ../../files/access_webdav.rst:54
+msgid "Accessing files using Linux"
+msgstr ""
+
+#: ../../files/access_webdav.rst:56
+msgid "You can access files in Linux operating systems using the following methods."
+msgstr ""
+
+#: ../../files/access_webdav.rst:59
+msgid "Nautilus file manager"
+msgstr ""
+
+#: ../../files/access_webdav.rst:61
+msgid "**When you configure your Nextcloud account in the** `GNOME Control Center <../pim/sync_gnome.html>`_, **your files will automatically be mounted by Nautilus as a WebDAV share, unless you deselect file access.**"
+msgstr ""
+
+#: ../../files/access_webdav.rst:65
+msgid "You can also mount your Nextcloud files manually. Use the ``davs://`` protocol to connect the Nautilus file manager to your Nextcloud share::"
+msgstr ""
+
+#: ../../files/access_webdav.rst:71
+msgid "If your server connection is not HTTPS-secured, use `dav://` instead of `davs://`."
+msgstr ""
+
+#: ../../files/access_webdav.rst:77
+msgid "The same method works for other file managers that use GVfs, such as MATE's Caja and Cinnamon's Nepomuk."
+msgstr ""
+
+#: ../../files/access_webdav.rst:82
+msgid "Accessing files with KDE and Dolphin file manager"
+msgstr ""
+
+#: ../../files/access_webdav.rst:84
+msgid "To access your Nextcloud files using the Dolphin file manager in KDE, use the ``webdav://`` protocol::"
+msgstr ""
+
+#: ../../files/access_webdav.rst:92
+msgid "You can create a permanent link to your Nextcloud server:"
+msgstr ""
+
+#: ../../files/access_webdav.rst:94
+msgid "Open Dolphin and click \"Network\" in the left hand \"Places\" column."
+msgstr ""
+
+#: ../../files/access_webdav.rst:95
+msgid "Click on the icon labeled **Add a Network Folder**. The resulting dialog should appear with WebDAV already selected."
+msgstr ""
+
+#: ../../files/access_webdav.rst:97
+msgid "If WebDAV is not selected, select it."
+msgstr ""
+
+#: ../../files/access_webdav.rst:98
+msgid "Click **Next**."
+msgstr ""
+
+#: ../../files/access_webdav.rst:99
+msgid "Enter the following settings:"
+msgstr ""
+
+#: ../../files/access_webdav.rst:101
+msgid "Name: The name you want to see in the **Places** bookmark, for example Nextcloud."
+msgstr ""
+
+#: ../../files/access_webdav.rst:103
+msgid "User: The Nextcloud username you used to log in, for example admin."
+msgstr ""
+
+#: ../../files/access_webdav.rst:105
+msgid "Server: The Nextcloud domain name, for example **example.com** (without **http://** before or directories afterwards)."
+msgstr ""
+
+#: ../../files/access_webdav.rst:107
+msgid "Folder -- Enter the path ``nextcloud/remote.php/dav/files/USERNAME/``."
+msgstr ""
+
+#: ../../files/access_webdav.rst:108
+msgid "(Optional) Check the \"Create icon checkbox\" for a bookmark to appear in the Places column."
+msgstr ""
+
+#: ../../files/access_webdav.rst:110
+msgid "(Optional) Provide any special settings or an SSL certificate in the \"Port & Encrypted\" checkbox."
+msgstr ""
+
+#: ../../files/access_webdav.rst:114
+msgid "Creating WebDAV mounts on the Linux command line"
+msgstr ""
+
+#: ../../files/access_webdav.rst:116
+msgid "You can create WebDAV mounts from the Linux command line. This is useful if you prefer to access Nextcloud the same way as any other remote filesystem mount. The following example shows how to create a personal mount and have it mounted automatically every time you log in to your Linux computer."
+msgstr ""
+
+#: ../../files/access_webdav.rst:121
+msgid "Install the ``davfs2`` WebDAV filesystem driver, which allows you to mount WebDAV shares just like any other remote filesystem. Use this command to install it on Debian/Ubuntu::"
+msgstr ""
+
+#: ../../files/access_webdav.rst:127
+msgid "Use this command to install it on CentOS, Fedora, and openSUSE::"
+msgstr ""
+
+#: ../../files/access_webdav.rst:131
+msgid "Add yourself to the ``davfs2`` group::"
+msgstr ""
+
+#: ../../files/access_webdav.rst:135
+msgid "Then create a ``nextcloud`` directory in your home directory for the mountpoint, and ``.davfs2/`` for your personal configuration file::"
+msgstr ""
+
+#: ../../files/access_webdav.rst:141
+msgid "Copy ``/etc/davfs2/secrets`` to ``~/.davfs2``::"
+msgstr ""
+
+#: ../../files/access_webdav.rst:145
+msgid "Set yourself as the owner and make the permissions read-write owner only::"
+msgstr ""
+
+#: ../../files/access_webdav.rst:150
+msgid "Add your Nextcloud login credentials to the end of the ``secrets`` file, using your Nextcloud server URL and your Nextcloud username and password::"
+msgstr ""
+
+#: ../../files/access_webdav.rst:159
+msgid "Add the mount information to ``/etc/fstab``::"
+msgstr ""
+
+#: ../../files/access_webdav.rst:165
+msgid "Then test that it mounts and authenticates by running the following command. If you set it up correctly you won't need root permissions::"
+msgstr ""
+
+#: ../../files/access_webdav.rst:170
+msgid "You should also be able to unmount it::"
+msgstr ""
+
+#: ../../files/access_webdav.rst:174
+msgid "Now every time you login to your Linux system your Nextcloud share should automatically mount via WebDAV in your ``~/nextcloud`` directory. If you prefer to mount it manually, change ``auto`` to ``noauto`` in ``/etc/fstab``."
+msgstr ""
+
+#: ../../files/access_webdav.rst:179
+msgid "Known issues"
+msgstr ""
+
+#: ../../files/access_webdav.rst:182
+#: ../../files/access_webdav.rst:193
+#: ../../files/access_webdav.rst:361
+#: ../../files/access_webdav.rst:383
+#: ../../files/access_webdav.rst:401
+#: ../../files/access_webdav.rst:411
+#: ../../files/access_webdav.rst:440
+msgid "Problem"
+msgstr ""
+
+#: ../../files/access_webdav.rst:183
+msgid "Resource temporarily unavailable"
+msgstr ""
+
+#: ../../files/access_webdav.rst:186
+#: ../../files/access_webdav.rst:197
+#: ../../files/access_webdav.rst:389
+#: ../../files/access_webdav.rst:406
+#: ../../files/access_webdav.rst:415
+#: ../../files/access_webdav.rst:446
+msgid "Solution"
+msgstr ""
+
+#: ../../files/access_webdav.rst:187
+msgid "If you experience trouble when you create a file in the directory, edit ``/etc/davfs2/davfs2.conf`` and add::"
+msgstr ""
+
+#: ../../files/access_webdav.rst:194
+msgid "Certificate warnings"
+msgstr ""
+
+#: ../../files/access_webdav.rst:199
+msgid "If you use a self-signed certificate, you will get a warning. To change this, you need to configure ``davfs2`` to recognize your certificate. Copy ``mycertificate.pem`` to ``/etc/davfs2/certs/``. Then edit ``/etc/davfs2/davfs2.conf`` and uncomment the line ``servercert``. Now add the path of your certificate as in this example::"
+msgstr ""
+
+#: ../../files/access_webdav.rst:208
+msgid "Accessing files using macOS"
+msgstr ""
+
+#: ../../files/access_webdav.rst:210
+msgid "The macOS Finder suffers from a `series of implementation problems <http://sabre.io/dav/clients/finder/>`_ and should only be used if the Nextcloud server runs on **Apache** and **mod_php**, or **Nginx 1.3.8+**. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like `Cyberduck <https://cyberduck.io/>`_ (see instructions `here <https://docs.nextcloud.com/server/stable/user_manual/files/access_webdav.html#accessing-files-using-cyberduck>`_) and `Filezilla <https://filezilla-project.org>`_. Commercial clients include `Mountain Duck <https://mountainduck.io/>`_, `Forklift <https://binarynights.com/>`_, `Transmit <https://panic.com/>`_, and `Commander One <https://mac.eltima.com/>`_."
+msgstr ""
+
+#: ../../files/access_webdav.rst:212
+msgid "To access files through the macOS Finder:"
+msgstr ""
+
+#: ../../files/access_webdav.rst:214
+msgid "From the Finder’s top menu bar, choose **Go > Connect to Server...**"
+msgstr ""
+
+#: ../../files/access_webdav.rst:219
+msgid "When the **Connect to Server...** window opens, enter your Nextcloud server’s WebDAV address in the **Server Address:** field, ie:"
+msgstr ""
+
+#: ../../files/access_webdav.rst:221
+msgid "https://cloud.YOURDOMAIN.com/remote.php/dav/files/USERNAME/"
+msgstr ""
+
+#: ../../files/access_webdav.rst:226
+msgid "Click **Connect**. Your WebDAV server should appear on the Desktop as a shared disk drive."
+msgstr ""
+
+#: ../../files/access_webdav.rst:230
+msgid "Accessing files using Microsoft Windows"
+msgstr ""
+
+#: ../../files/access_webdav.rst:232
+msgid "If you use the native Windows implementation, you can map Nextcloud to a new drive. Mapping to a drive enables you to browse files stored on a Nextcloud server the way you would files stored in a mapped network drive."
+msgstr ""
+
+#: ../../files/access_webdav.rst:236
+msgid "Using this feature requires network connectivity. If you want to store your files offline, use the Desktop Client to sync all files on your Nextcloud to one or more directories of your local hard drive."
+msgstr ""
+
+#: ../../files/access_webdav.rst:240
+msgid "Windows 10 now defaults to allow Basic Authentication if HTTPS is enabled prior to mapping your drive. On older versions of Windows, you must permit the use of Basic Authentication in the Windows Registry: launch „regedit“ and navigate to HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters. Create or edit the DWORD value „BasicAuthLevel“ (Windows Vista, 7 and 8) or „UseBasicAuth“ (Windows XP and Windows Server 2003) and set its value data to 1 for SSL connections. Value 0 means that Basic Authentication is disabled, a value of 2 allows both SSL and non-SSL connections (not recommended). Then exit Registry Editor, and restart the computer."
+msgstr ""
+
+#: ../../files/access_webdav.rst:252
+msgid "Mapping drives with the command line"
+msgstr ""
+
+#: ../../files/access_webdav.rst:254
+msgid "The following example shows how to map a drive using the command line. To map the drive:"
+msgstr ""
+
+#: ../../files/access_webdav.rst:257
+msgid "Open a command prompt in Windows."
+msgstr ""
+
+#: ../../files/access_webdav.rst:258
+msgid "Enter the following line in the command prompt to map to the computer Z drive::"
+msgstr ""
+
+#: ../../files/access_webdav.rst:264
+msgid "where <drive_path> is the URL to your Nextcloud server."
+msgstr ""
+
+#: ../../files/access_webdav.rst:266
+msgid "For example: ``net use Z: https://example.com/nextcloud/remote.php/dav/files/USERNAME/ /user:youruser yourpassword``"
+msgstr ""
+
+#: ../../files/access_webdav.rst:269
+msgid "The computer maps the files of your Nextcloud account to the drive letter Z."
+msgstr ""
+
+#: ../../files/access_webdav.rst:271
+msgid "Though not recommended, you can also mount the Nextcloud server using HTTP, leaving the connection unencrypted. If you plan to use HTTP connections on devices while in a public place, we strongly recommend using a VPN tunnel to provide the necessary security."
+msgstr ""
+
+#: ../../files/access_webdav.rst:276
+msgid "An alternative command syntax is::"
+msgstr ""
+
+#: ../../files/access_webdav.rst:282
+msgid "Mapping drives with Windows Explorer"
+msgstr ""
+
+#: ../../files/access_webdav.rst:284
+msgid "To map a drive using the Microsoft Windows Explorer:"
+msgstr ""
+
+#: ../../files/access_webdav.rst:286
+msgid "Migrate to your computer in Windows Explorer."
+msgstr ""
+
+#: ../../files/access_webdav.rst:287
+msgid "Right-click on **Computer** entry and select **Map network drive...** from the drop-down menu."
+msgstr ""
+
+#: ../../files/access_webdav.rst:289
+msgid "Choose a local network drive to which you want to map Nextcloud."
+msgstr ""
+
+#: ../../files/access_webdav.rst:290
+msgid "Specify the address to your Nextcloud instance, followed by **/remote.php/dav/files/USERNAME/**."
+msgstr ""
+
+#: ../../files/access_webdav.rst:293
+msgid "For example::"
+msgstr ""
+
+#: ../../files/access_webdav.rst:297
+msgid "For SSL protected servers, check **Reconnect at logon** to ensure that the mapping is persistent upon subsequent reboots. If you want to connect to the Nextcloud server as a different user, check **Connect using different credentials**."
+msgstr ""
+
+#: ../../files/access_webdav.rst:306
+msgid "Click the ``Finish`` button."
+msgstr ""
+
+#: ../../files/access_webdav.rst:308
+msgid "Windows Explorer maps the network drive, making your Nextcloud instance available."
+msgstr ""
+
+#: ../../files/access_webdav.rst:312
+msgid "Accessing files using Cyberduck"
+msgstr ""
+
+#: ../../files/access_webdav.rst:314
+msgid "`Cyberduck <https://cyberduck.io/>`_ is an open source FTP and SFTP, WebDAV, OpenStack Swift, and Amazon S3 browser designed for file transfers on macOS and Windows."
+msgstr ""
+
+#: ../../files/access_webdav.rst:318
+msgid "This example uses Cyberduck version 4.2.1."
+msgstr ""
+
+#: ../../files/access_webdav.rst:320
+msgid "To use Cyberduck:"
+msgstr ""
+
+#: ../../files/access_webdav.rst:322
+msgid "Specify a server without any leading protocol information. For example:"
+msgstr ""
+
+#: ../../files/access_webdav.rst:324
+msgid "``example.com``"
+msgstr ""
+
+#: ../../files/access_webdav.rst:326
+msgid "2. Specify the appropriate port. The port you choose depends on whether or not your Nextcloud server supports SSL. Cyberduck requires that you select a different connection type if you plan to use SSL. For example:"
+msgstr ""
+
+#: ../../files/access_webdav.rst:330
+msgid "80 (for WebDAV)"
+msgstr ""
+
+#: ../../files/access_webdav.rst:332
+msgid "443 (for WebDAV (HTTPS/SSL))"
+msgstr ""
+
+#: ../../files/access_webdav.rst:334
+msgid "3. Use the 'More Options' drop-down menu to add the rest of your WebDAV URL into the 'Path' field. For example:"
+msgstr ""
+
+#: ../../files/access_webdav.rst:337
+msgid "``remote.php/dav/files/USERNAME/``"
+msgstr ""
+
+#: ../../files/access_webdav.rst:339
+msgid "Now Cyberduck enables file access to the Nextcloud server."
+msgstr ""
+
+#: ../../files/access_webdav.rst:342
+msgid "Accessing public shares over WebDAV"
+msgstr ""
+
+#: ../../files/access_webdav.rst:344
+msgid "Nextcloud provides the possibility to access public shares over WebDAV."
+msgstr ""
+
+#: ../../files/access_webdav.rst:346
+msgid "To access the public share, open::"
+msgstr ""
+
+#: ../../files/access_webdav.rst:350
+msgid "in a WebDAV client, use the share token as username and the (optional) share password as password."
+msgstr ""
+
+#: ../../files/access_webdav.rst:353
+msgid "``Settings → Administration → Sharing → Allow users on this server to send shares to other servers`` needs to be enabled in order to make this feature work."
+msgstr ""
+
+#: ../../files/access_webdav.rst:358
+msgid "Known problems"
+msgstr ""
+
+#: ../../files/access_webdav.rst:362
+msgid "Windows does not connect using HTTPS."
+msgstr ""
+
+#: ../../files/access_webdav.rst:365
+msgid "Solution 1"
+msgstr ""
+
+#: ../../files/access_webdav.rst:367
+msgid "The Windows WebDAV Client might not support Server Name Indication (SNI) on encrypted connections. If you encounter an error mounting an SSL-encrypted Nextcloud instance, contact your provider about assigning a dedicated IP address for your SSL-based server."
+msgstr ""
+
+#: ../../files/access_webdav.rst:373
+msgid "Solution 2"
+msgstr ""
+
+#: ../../files/access_webdav.rst:375
+msgid "The Windows WebDAV Client might not support TLSv1.1 / TLSv1.2 connections. If you have restricted your server config to only provide TLSv1.1 and above the connection to your server might fail. Please refer to the WinHTTP_ documentation for further information."
+msgstr ""
+
+#: ../../files/access_webdav.rst:385
+msgid "You receive the following error message: **Error 0x800700DF: The file size exceeds the limit allowed and cannot be saved.**"
+msgstr ""
+
+#: ../../files/access_webdav.rst:391
+msgid "Windows limits the maximum size a file transferred from or to a WebDAV share may have.  You can increase the value **FileSizeLimitInBytes** in **HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\WebClient\\\\Parameters** by clicking on **Modify**."
+msgstr ""
+
+#: ../../files/access_webdav.rst:396
+msgid "To increase the limit to the maximum value of 4GB, select **Decimal**, enter a value of **4294967295**, and reboot Windows or restart the **WebClient** service."
+msgstr ""
+
+#: ../../files/access_webdav.rst:403
+msgid "Accessing your files from Microsoft Office via WebDAV fails."
+msgstr ""
+
+#: ../../files/access_webdav.rst:408
+msgid "Known problems and their solutions are documented in the KB2123563_ article."
+msgstr ""
+
+#: ../../files/access_webdav.rst:412
+msgid "Cannot map Nextcloud as a WebDAV drive in Windows using self-signed certificate."
+msgstr ""
+
+#: ../../files/access_webdav.rst:417
+msgid "Go to the your Nextcloud instance via your favorite Web browser."
+msgstr ""
+
+#: ../../files/access_webdav.rst:418
+msgid "Click through until you get to the certificate error in the browser status line."
+msgstr ""
+
+#: ../../files/access_webdav.rst:420
+msgid "View the cert, then from the Details tab, select Copy to File."
+msgstr ""
+
+#: ../../files/access_webdav.rst:421
+msgid "Save to the desktop with an arbitrary name, for example ``myNextcloud.pem``."
+msgstr ""
+
+#: ../../files/access_webdav.rst:422
+msgid "Start, Run, MMC."
+msgstr ""
+
+#: ../../files/access_webdav.rst:423
+msgid "File, Add/Remove Snap-In."
+msgstr ""
+
+#: ../../files/access_webdav.rst:424
+msgid "Select Certificates, Click Add, My User Account, then Finish, then OK."
+msgstr ""
+
+#: ../../files/access_webdav.rst:425
+msgid "Dig down to Trust Root Certification Authorities, Certificates."
+msgstr ""
+
+#: ../../files/access_webdav.rst:426
+msgid "Right-Click Certificate, Select All Tasks, Import."
+msgstr ""
+
+#: ../../files/access_webdav.rst:427
+msgid "Select the Save Cert from the Desktop."
+msgstr ""
+
+#: ../../files/access_webdav.rst:428
+msgid "Select Place all Certificates in the following Store, Click Browse,"
+msgstr ""
+
+#: ../../files/access_webdav.rst:429
+msgid "Check the Box that says Show Physical Stores, Expand out Trusted Root Certification Authorities, and select Local Computer there, click OK, Complete the Import."
+msgstr ""
+
+#: ../../files/access_webdav.rst:432
+msgid "Check the list to make sure it shows up. You will probably need to Refresh before you see it. Exit MMC."
+msgstr ""
+
+#: ../../files/access_webdav.rst:434
+msgid "Open Browser, select Tools, Delete Browsing History."
+msgstr ""
+
+#: ../../files/access_webdav.rst:435
+msgid "Select all but In Private Filtering Data, complete."
+msgstr ""
+
+#: ../../files/access_webdav.rst:436
+msgid "Go to Internet Options, Content Tab, Clear SSL State."
+msgstr ""
+
+#: ../../files/access_webdav.rst:437
+msgid "Close browser, then re-open and test."
+msgstr ""
+
+#: ../../files/access_webdav.rst:442
+msgid "You cannot download more than 50 MB or upload large Files when the upload takes longer than 30 minutes using Web Client in Windows 7."
+msgstr ""
+
+#: ../../files/access_webdav.rst:448
+msgid "Workarounds are documented in the KB2668751_ article."
+msgstr ""
+
+#: ../../files/access_webdav.rst:452
+msgid "Accessing files using cURL"
+msgstr ""
+
+#: ../../files/access_webdav.rst:454
+msgid "Since WebDAV is an extension of HTTP cURL can be used to script file operations."
+msgstr ""
+
+#: ../../files/access_webdav.rst:456
+msgid "To create a folder with the current date as name:"
+msgstr ""
+
+#: ../../files/access_webdav.rst:462
+msgid "To upload a file ``error.log`` into that directory:"
+msgstr ""
+
+#: ../../files/access_webdav.rst:468
+msgid "To move a file:"
+msgstr ""
+
+#: ../../files/access_webdav.rst:474
+msgid "To get the properties of files in the root folder:"
+msgstr ""
+
+#: ../../files/access_webgui.rst:3
+msgid "Accessing your files using the Nextcloud Web interface"
+msgstr ""
+
+#: ../../files/access_webgui.rst:5
+msgid "You can access your Nextcloud files with the Nextcloud Web interface and create, preview, edit, delete, share, and re-share files. Your Nextcloud administrator has the option to disable these features, so if any of them are missing on your system ask your server administrator."
+msgstr ""
+
+#: ../../files/access_webgui.rst:14
+msgid "Tagging files"
+msgstr ""
+
+#: ../../files/access_webgui.rst:16
+msgid "You can assign tags to files. To create tags, open a file to the Details view. Then type your tags. To enter more than one tag press the return key after creating each tag. All tags are system tags, and are shared by all users on your Nextcloud server."
+msgstr ""
+
+#: ../../files/access_webgui.rst:24
+msgid "Then use the Tags filter on the left sidebar to filter files by tags."
+msgstr ""
+
+#: ../../files/access_webgui.rst:30
+msgid "Comments"
+msgstr ""
+
+#: ../../files/access_webgui.rst:32
+msgid "Use the Details view to add and read comments on any file or folder. Comments are visible to everyone who has access to the file."
+msgstr ""
+
+#: ../../files/access_webgui.rst:39
+msgid "Video player"
+msgstr ""
+
+#: ../../files/access_webgui.rst:41
+msgid "You can play videos in Nextcloud with the Video Player app by simply clicking on the file. Video streaming by the native Nextcloud video player depends on your Web browser and the video format. If your Nextcloud administrator has enabled video streaming, and it doesn't work in your Web browser, it may be a browser issue. See https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility for supported multimedia formats in Web browsers."
+msgstr ""
+
+#: ../../files/access_webgui.rst:50
+msgid "File controls"
+msgstr ""
+
+#: ../../files/access_webgui.rst:52
+msgid "Nextcloud can display thumbnail previews for image files, MP3 covers, and text files, if this enabled by your server administrator. Hover your cursor over a file or folder to expose the controls for the following operations:"
+msgstr ""
+
+#: ../../files/access_webgui.rst:59
+#: ../../files/access_webgui.rst:181
+msgid "Favorites"
+msgstr ""
+
+#: ../../files/access_webgui.rst:57
+msgid "Click the star to the left of the file icon to mark it as a favorite, and quickly find all of your favorites with the Favorites filter on the left sidebar."
+msgstr ""
+
+#: ../../files/access_webgui.rst:67
+msgid "Share"
+msgstr ""
+
+#: ../../files/access_webgui.rst:65
+msgid "Share the file or folder with a group or other users, and create public shares with hyperlinks. You can also see who you have shared with already, and revoke shares by clicking the trash can icon."
+msgstr ""
+
+#: ../../files/access_webgui.rst:69
+msgid "You can also see all re-shares of your original file shares."
+msgstr ""
+
+#: ../../files/access_webgui.rst:71
+msgid "If username auto-completion is enabled, when you start typing the user or group name Nextcloud will automatically complete it for you. If your administrator has enabled email notifications, you can send an email notification of the new share from the sharing screen."
+msgstr ""
+
+#: ../../files/access_webgui.rst:80
+msgid "You have five share permissions:"
+msgstr ""
+
+#: ../../files/access_webgui.rst:82
+msgid "Can share; allows the users you share with to re-share."
+msgstr ""
+
+#: ../../files/access_webgui.rst:83
+msgid "Can edit; allows the users you share with to edit your shared files, and to collaborate using the Documents app."
+msgstr ""
+
+#: ../../files/access_webgui.rst:84
+msgid "Create; allows the users you share with to create new files and add them to the share."
+msgstr ""
+
+#: ../../files/access_webgui.rst:85
+msgid "Change; allows uploading a new version of a shared file and replacing it."
+msgstr ""
+
+#: ../../files/access_webgui.rst:86
+msgid "Delete; allows the users you share with to delete shared files."
+msgstr ""
+
+#: ../../files/access_webgui.rst:90
+msgid "Overflow Menu"
+msgstr ""
+
+#: ../../files/access_webgui.rst:89
+msgid "The Overflow menu (three dots) displays file details, and allows you to rename, download, or delete files."
+msgstr ""
+
+#: ../../files/access_webgui.rst:95
+msgid "The Details view shows Activities, Sharing, and Versions information."
+msgstr ""
+
+#: ../../files/access_webgui.rst:100
+msgid "The **Settings** gear icon at the lower left allows you to show or hide hidden files in your Nextcloud Web interface. These are also called dotfiles, because they are prefixed with a dot, e.g. ``.mailfile``. The dot tells your operating system to hide these files in your file browsers, unless you choose to display them. Usually these are configuration files, so having the option to hide them reduces clutter."
+msgstr ""
+
+#: ../../files/access_webgui.rst:111
+msgid "Previewing files"
+msgstr ""
+
+#: ../../files/access_webgui.rst:113
+msgid "You can display uncompressed text files, OpenDocument files, videos, and image files in the Nextcloud embedded viewers by clicking on the file name. There may be other file types you can preview if your Nextcloud administrator has enabled them. If Nextcloud cannot display a file, it starts a download process and downloads the file to your computer."
+msgstr ""
+
+#: ../../files/access_webgui.rst:120
+msgid "Navigating inside your Nextcloud"
+msgstr ""
+
+#: ../../files/access_webgui.rst:122
+msgid "Navigating through folders in Nextcloud is as simple as clicking on a folder to open it and using the back button on your browser to move to a previous level. Nextcloud also provides a navigation bar at the top of the Files field for quick navigation."
+msgstr ""
+
+#: ../../files/access_webgui.rst:128
+msgid "Sharing status icons"
+msgstr ""
+
+#: ../../files/access_webgui.rst:130
+msgid "Any folder that has been shared is marked with the ``Shared`` overlay icon. Public link shares are marked with a chain link. Un-shared folders are blank."
+msgstr ""
+
+#: ../../files/access_webgui.rst:137
+msgid "Creating or uploading files and directories"
+msgstr ""
+
+#: ../../files/access_webgui.rst:139
+msgid "Upload or create new files or folders directly in a Nextcloud folder by clicking on the *New* button in the Files app."
+msgstr ""
+
+#: ../../files/access_webgui.rst:145
+msgid "The *New* button provides the following options:"
+msgstr ""
+
+#: ../../files/access_webgui.rst:149
+msgid "Up arrow"
+msgstr ""
+
+#: ../../files/access_webgui.rst:148
+msgid "Upload files from your computer into Nextcloud. You can also upload files by dragging and dropping them from your file manager."
+msgstr ""
+
+#: ../../files/access_webgui.rst:152
+msgid "Text file"
+msgstr ""
+
+#: ../../files/access_webgui.rst:152
+msgid "Creates a new text file and adds the file to your current folder."
+msgstr ""
+
+#: ../../files/access_webgui.rst:155
+msgid "Folder"
+msgstr ""
+
+#: ../../files/access_webgui.rst:155
+msgid "Creates a new folder in the current folder."
+msgstr ""
+
+#: ../../files/access_webgui.rst:158
+msgid "Selecting files or folders"
+msgstr ""
+
+#: ../../files/access_webgui.rst:160
+msgid "You can select one or more files or folders by clicking on their checkboxes. To select all files in the current directory, click on the checkbox located at the top of the files listing."
+msgstr ""
+
+#: ../../files/access_webgui.rst:164
+msgid "When you select multiple files, you can delete all of them, or download them as a ZIP file by using the ``Delete`` or ``Download`` buttons that appear at the top."
+msgstr ""
+
+#: ../../files/access_webgui.rst:168
+msgid "If the ``Download`` button is not visible, the administrator has disabled this feature."
+msgstr ""
+
+#: ../../files/access_webgui.rst:172
+msgid "Filtering the files view"
+msgstr ""
+
+#: ../../files/access_webgui.rst:174
+msgid "The left sidebar on the Files page contains several filters for quickly sorting and managing your files."
+msgstr ""
+
+#: ../../files/access_webgui.rst:178
+msgid "All files"
+msgstr ""
+
+#: ../../files/access_webgui.rst:178
+msgid "The default view; displays all files that you have access to."
+msgstr ""
+
+#: ../../files/access_webgui.rst:181
+msgid "Files or folders marked with the yellow star."
+msgstr ""
+
+#: ../../files/access_webgui.rst:184
+msgid "Shared with you"
+msgstr ""
+
+#: ../../files/access_webgui.rst:184
+msgid "Displays all files shared with you by another user or group."
+msgstr ""
+
+#: ../../files/access_webgui.rst:187
+msgid "Shared with others"
+msgstr ""
+
+#: ../../files/access_webgui.rst:187
+msgid "Displays all files that you have shared with other users or groups."
+msgstr ""
+
+#: ../../files/access_webgui.rst:190
+msgid "Shared by link"
+msgstr ""
+
+#: ../../files/access_webgui.rst:190
+msgid "Displays all files that are shared by you via public link."
+msgstr ""
+
+#: ../../files/access_webgui.rst:194
+msgid "External Storage (optional)"
+msgstr ""
+
+#: ../../files/access_webgui.rst:193
+msgid "Files that you have access to on external storage devices and services such as Amazon S3, SMB/CIFS, ftp..."
+msgstr ""
+
+#: ../../files/access_webgui.rst:197
+msgid "Moving files"
+msgstr ""
+
+#: ../../files/access_webgui.rst:199
+msgid "You can move files and folders by dragging and dropping them into any directory."
+msgstr ""
+
+#: ../../files/access_webgui.rst:203
+msgid "Change in share expiration date"
+msgstr ""
+
+#: ../../files/access_webgui.rst:205
+msgid "In older versions of Nextcloud, you could set an expiration date on both local and public shares. Now you can set an expiration date only on public shares, and local shares do not expire when public shares expire. The only way to \"expire\" a local share is to click the trash can icon to un-share your files."
+msgstr ""
+
+#: ../../files/access_webgui.rst:211
+msgid "Creating or connecting to a Federation Share link"
+msgstr ""
+
+#: ../../files/access_webgui.rst:213
+msgid "Federated Cloud Sharing allows you to mount file shares from remote Nextcloud servers, and manage them just like a local share. See :doc:`federated_cloud_sharing` to learn to how to create and connect to new Federated Cloud shares."
+msgstr ""
+
+#: ../../files/deleted_file_management.rst:3
+msgid "Managing deleted files"
+msgstr ""
+
+#: ../../files/deleted_file_management.rst:5
+msgid "When you delete a file in Nextcloud, it is not immediately deleted permanently. Instead, it is moved into the trash bin. It is not permanently deleted until you manually delete it, or when the Deleted Files app deletes it to make room for new files."
+msgstr ""
+
+#: ../../files/deleted_file_management.rst:10
+msgid "Find your deleted files by clicking on the **Deleted files** button on the Files page of the Nextcloud Web interface. You'll have options to either restore or permanently delete files."
+msgstr ""
+
+#: ../../files/deleted_file_management.rst:15
+msgid "Quotas"
+msgstr ""
+
+#: ../../files/deleted_file_management.rst:17
+msgid "Deleted files are not counted against your storage quota. Only your personal files count against your quota, not files which were shared with you. (See :doc:`quota` to learn more about quotas.)"
+msgstr ""
+
+#: ../../files/deleted_file_management.rst:22
+msgid "What happens when shared files are deleted"
+msgstr ""
+
+#: ../../files/deleted_file_management.rst:24
+msgid "Deleting files gets a little complicated when they are shared files, as this scenario illustrates:"
+msgstr ""
+
+#: ../../files/deleted_file_management.rst:27
+msgid "User1 shares a folder \"test\" with User2 and User3"
+msgstr ""
+
+#: ../../files/deleted_file_management.rst:28
+msgid "User2 (the recipient) deletes a file/folder \"sub\" inside of \"test\""
+msgstr ""
+
+#: ../../files/deleted_file_management.rst:29
+msgid "The folder \"sub\" will be moved to the trashbin of both User1 (owner) and User2 (recipient)"
+msgstr ""
+
+#: ../../files/deleted_file_management.rst:31
+msgid "But User3 will not have a copy of \"sub\" in their trash bin"
+msgstr ""
+
+#: ../../files/deleted_file_management.rst:33
+msgid "When User1 deletes \"sub\" then it is moved to User1's trash bin. It is deleted from User2 and User3, but not placed in their trash bins."
+msgstr ""
+
+#: ../../files/deleted_file_management.rst:36
+msgid "When you share files, other users may copy, rename, move, and share them with other people, just as they can for any computer files; Nextcloud does not have magic powers to prevent this."
+msgstr ""
+
+#: ../../files/deleted_file_management.rst:41
+msgid "How the deleted files app manages storage space"
+msgstr ""
+
+#: ../../files/deleted_file_management.rst:43
+msgid "To ensure that users do not run over their storage quotas, the Deleted Files app allocates a maximum of 50% of their currently available free space to deleted files. If your deleted files exceed this limit, Nextcloud deletes the oldest files (files with the oldest timestamps from when they were deleted) until it meets the memory usage limit again."
+msgstr ""
+
+#: ../../files/deleted_file_management.rst:49
+msgid "Nextcloud checks the age of deleted files every time new files are added to the deleted files. By default, deleted files stay in the trash bin for 30 days. The Nextcloud server administrator can adjust this value in the ``config.php`` file by setting the ``trashbin_retention_obligation`` value. Files older than the ``trashbin_retention_obligation`` value will be deleted permanently. Additionally, Nextcloud calculates the maximum available space every time a new file is added. If the deleted files exceed the new maximum allowed space Nextcloud will expire old deleted files until the limit is met once again."
+msgstr ""
+
+#: ../../files/deleted_file_management.rst:58
+#: ../../files/quota.rst:32
+msgid "Your administrator may have configured the trash bin retention period to override the storage space management. See `admin documentation <https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#deleted-items-trash-bin>`_ for more details."
+msgstr ""
+
+#: ../../files/desktop_mobile_sync.rst:3
+msgid "Desktop and mobile synchronization"
+msgstr ""
+
+#: ../../files/desktop_mobile_sync.rst:5
+msgid "For synchronizing files with your desktop computer, we recommend using the `Nextcloud Sync Client`_ for Windows, macOS and Linux."
+msgstr ""
+
+#: ../../files/desktop_mobile_sync.rst:9
+msgid "The Nextcloud Desktop Sync Client enables you to connect to your Nextcloud Server. You can create folders in your home directory, and keep the contents of those folders synced with your Nextcloud server. Simply copy a file into the directory and the Nextcloud desktop client does the rest. Make a change to the files on one computer, it will flow across the others using these desktop sync clients. You will always have your latest files with you wherever you are."
+msgstr ""
+
+#: ../../files/desktop_mobile_sync.rst:17
+msgid "Its usage is documented separately in the `Nextcloud Desktop Client Manual`_."
+msgstr ""
+
+#: ../../files/desktop_mobile_sync.rst:23
+msgid "Mobile clients"
+msgstr ""
+
+#: ../../files/desktop_mobile_sync.rst:25
+msgid "Visit your Personal page in your Nextcloud Web interface to find download links for Android and iOS mobile sync clients. Or, visit the `Nextcloud download page <https://nextcloud.com/install/>`_."
+msgstr ""
+
+#: ../../files/encrypting_files.rst:3
+msgid "Encrypting your Nextcloud files on the server"
+msgstr ""
+
+#: ../../files/encrypting_files.rst:5
+msgid "Nextcloud includes a server side Encryption app, and when it is enabled by your Nextcloud administrator all of your Nextcloud data files are automatically encrypted on the server. Encryption is server-wide, so when it is enabled you cannot choose to keep your files unencrypted. You don't have to do anything special, as it uses your Nextcloud login as the password for your unique private encryption key. Just log in and out and manage and share your files as you normally do, and you can still change your password whenever you want."
+msgstr ""
+
+#: ../../files/encrypting_files.rst:14
+msgid "Its main purpose is to encrypt files on remote storage services that are connected to your Nextcloud serve. This is an easy and seamless way to protect your files on remote storage. You can share your remote files through Nextcloud in the usual way, however you cannot share your encrypted files directly from the remote service you are using, because the encryption keys are stored on your Nextcloud server, and are never exposed to outside service providers."
+msgstr ""
+
+#: ../../files/encrypting_files.rst:22
+msgid "If your Nextcloud server is not connected to any remote storage services, then it is better to use some other form of encryption such as file-level or whole disk encryption. Because the keys are kept on your Nextcloud server, it is possible for your Nextcloud admin to snoop in your files, and if the server is compromised the intruder may get access to your files. (Read `Encryption in Nextcloud <https://nextcloud.com/blog/encryption-in-nextcloud/>`_ to learn more.)"
+msgstr ""
+
+#: ../../files/encrypting_files.rst:31
+msgid "Encryption FAQ"
+msgstr ""
+
+#: ../../files/encrypting_files.rst:34
+msgid "How can encryption be disabled?"
+msgstr ""
+
+#: ../../files/encrypting_files.rst:36
+msgid "The only way to disable encryption is to run the `\"decrypt all\" <https://docs.nextcloud.org/server/latest/admin_manual/configuration_server/occ_command.html#encryption-label>`_."
+msgstr ""
+
+#: ../../files/encrypting_files.rst:41
+msgid "script, which decrypts all files and disables encryption."
+msgstr ""
+
+#: ../../files/encrypting_files.rst:44
+msgid "Is it possible to disable encryption with the recovery key?"
+msgstr ""
+
+#: ../../files/encrypting_files.rst:46
+msgid "Yes, *if* every user uses the `file recovery key <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_,  `\"decrypt all\" <https://docs.nextcloud.org/server/latest/admin_manual/configuration_server/occ_command.html#encryption-label>`_ will use it to decrypt all files."
+msgstr ""
+
+#: ../../files/encrypting_files.rst:53
+msgid "Can encryption be disabled without the user's password?"
+msgstr ""
+
+#: ../../files/encrypting_files.rst:55
+msgid "If you don't have the users password or `file recovery key <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_."
+msgstr ""
+
+#: ../../files/encrypting_files.rst:60
+msgid "then there is no way to decrypt all files. What's more, running it on login would be dangerous, because you would most likely run into timeouts."
+msgstr ""
+
+#: ../../files/encrypting_files.rst:65
+msgid "Is it planned to move this to the next user login or a background job?"
+msgstr ""
+
+#: ../../files/encrypting_files.rst:67
+msgid "If we did that, then we would need to store your login password in the database. This could be seen as a security issue, so nothing like that is planned."
+msgstr ""
+
+#: ../../files/encrypting_files.rst:71
+msgid "Is group Sharing possible with the recovery key?"
+msgstr ""
+
+#: ../../files/encrypting_files.rst:73
+msgid "If you mean adding users to groups and make it magically work? No. This only works with the master key."
+msgstr ""
+
+#: ../../files/encrypting_files.rst:77
+msgid "Using encryption"
+msgstr ""
+
+#: ../../files/encrypting_files.rst:79
+msgid "Nextcloud encryption is pretty much set it and forget it, but you have a few options you can use."
+msgstr ""
+
+#: ../../files/encrypting_files.rst:82
+msgid "When your Nextcloud admin enables encryption for the first time, you must log out and then log back in to create your encryption keys and encrypt your files. When encryption has been enabled on your Nextcloud server you will see a yellow banner on your Files page warning you to log out and then log back in."
+msgstr ""
+
+#: ../../files/encrypting_files.rst:89
+msgid "When you log back in it takes a few minutes to work, depending on how many files you have, and then you are returned to your default Nextcloud page."
+msgstr ""
+
+#: ../../files/encrypting_files.rst:95
+msgid "You must never lose your Nextcloud password, because you will lose access to your files. Though there is an optional recovery option that your Nextcloud administrator may enable; see the Recovery Key Password section (below) to learn about this."
+msgstr ""
+
+#: ../../files/encrypting_files.rst:101
+msgid "Sharing encrypted files"
+msgstr ""
+
+#: ../../files/encrypting_files.rst:103
+msgid "Only users who have private encryption keys have access to shared encrypted files and folders. Users who have not yet created their private encryption keys will not have access to encrypted shared files; they will see folders and filenames, but will not be able to open or download the files. They will see a yellow warning banner that says \"Encryption App is enabled but your keys are not initialized, please log-out and log-in again.\""
+msgstr ""
+
+#: ../../files/encrypting_files.rst:110
+msgid "Share owners may need to re-share files after encryption is enabled; users trying to access the share will see a message advising them to ask the share owner to re-share the file with them. For individual shares, un-share and re-share the file. For group shares, share with any individuals who can't access the share. This updates the encryption, and then the share owner can remove the individual shares."
+msgstr ""
+
+#: ../../files/encrypting_files.rst:118
+msgid "Recovery key password"
+msgstr ""
+
+#: ../../files/encrypting_files.rst:120
+msgid "If your Nextcloud administrator has enabled the recovery key feature, you can choose to use this feature for your account. If you enable \"Password recovery\" the administrator can read your data with a special password. This feature enables the administrator to recover your files in the event you lose your Nextcloud password. If the recovery key is not enabled, then there is no way to restore your files if you lose your login password."
+msgstr ""
+
+#: ../../files/encrypting_files.rst:130
+msgid "Files not encrypted"
+msgstr ""
+
+#: ../../files/encrypting_files.rst:132
+msgid "Only the data in your files is encrypted, and not the filenames or folder structures. These files are never encrypted:"
+msgstr ""
+
+#: ../../files/encrypting_files.rst:135
+msgid "Old files in the trash bin."
+msgstr ""
+
+#: ../../files/encrypting_files.rst:136
+msgid "Image thumbnails from the Gallery app."
+msgstr ""
+
+#: ../../files/encrypting_files.rst:137
+msgid "Previews from the Files app."
+msgstr ""
+
+#: ../../files/encrypting_files.rst:138
+msgid "The search index from the full text search app."
+msgstr ""
+
+#: ../../files/encrypting_files.rst:139
+msgid "Third-party app data"
+msgstr ""
+
+#: ../../files/encrypting_files.rst:141
+msgid "There may be other files that are not encrypted; only files that are exposed to third-party storage providers are guaranteed to be encrypted."
+msgstr ""
+
+#: ../../files/encrypting_files.rst:145
+msgid "Change private key password"
+msgstr ""
+
+#: ../../files/encrypting_files.rst:147
+msgid "This option is only available if your log-in password, but not your encryption password, was changed by your administrator. This can occur if your Nextcloud provider uses an external user back-end (for example, LDAP) and changed your login password using that back-end configuration. In this case, you can set your encryption password to your new login password by providing your old and new login password. The Encryption app works only if your login password and your encryption password are identical."
+msgstr ""
+
+#: ../../files/federated_cloud_sharing.rst:3
+msgid "Using Federation Shares"
+msgstr ""
+
+#: ../../files/federated_cloud_sharing.rst:5
+msgid "Federation Sharing allows you to mount file shares from remote Nextcloud servers, in effect creating your own cloud of Nextclouds. You can create direct share links with users on other Nextcloud servers."
+msgstr ""
+
+#: ../../files/federated_cloud_sharing.rst:10
+msgid "Creating a new Federation Share"
+msgstr ""
+
+#: ../../files/federated_cloud_sharing.rst:12
+msgid "Federation sharing is enabled on new or upgraded Nextcloud installations by default. Follow these steps to create a new share with other Nextcloud or ownCloud 9+ servers:"
+msgstr ""
+
+#: ../../files/federated_cloud_sharing.rst:15
+msgid "1. Go to your ``Files`` page and click the Share icon on the file or directory you want to share. In the sidebar enter the username and URL of the remote user in this form: ``<username>@<oc-server-url>``. In this example, that is ``layla@remote-server/nextcloud``. The form automatically echoes the address that you type and labels it as \"remote\". Click on the label."
+msgstr ""
+
+#: ../../files/federated_cloud_sharing.rst:23
+msgid "2. When your local Nextcloud server makes a successful connection with the remote Nextcloud server you'll see a confirmation. Your only share option is **Can edit**."
+msgstr ""
+
+#: ../../files/federated_cloud_sharing.rst:27
+msgid "Click the Share button anytime to see who you have shared your file with. Remove your linked share anytime by clicking the trash can icon. This only unlinks the share, and does not delete any files."
+msgstr ""
+
+#: ../../files/federated_cloud_sharing.rst:32
+msgid "Creating a new Federated Cloud Share via email"
+msgstr ""
+
+#: ../../files/federated_cloud_sharing.rst:34
+msgid "Use this method when you are sharing with users on ownCloud 8.x and older."
+msgstr ""
+
+#: ../../files/federated_cloud_sharing.rst:36
+msgid "What if you do not know the username or URL? Then you can have Nextcloud create the link for you and email it to your recipient."
+msgstr ""
+
+#: ../../files/federated_cloud_sharing.rst:41
+msgid "When your recipient receives your email they will have to take a number of steps to complete the share link. First they must open the link you sent them in a Web browser, and then click the **Add to your Nextcloud** button."
+msgstr ""
+
+#: ../../files/federated_cloud_sharing.rst:47
+msgid "The **Add to your Nextcloud** button changes to a form field, and your recipient needs to enter the URL of their Nextcloud or ownCloud server in this field and press the return key, or click the arrow."
+msgstr ""
+
+#: ../../files/federated_cloud_sharing.rst:53
+msgid "Next, they will see a dialog asking to confirm. All they have to do is click the **Add remote share** button and they're finished."
+msgstr ""
+
+#: ../../files/federated_cloud_sharing.rst:56
+msgid "Remove your linked share anytime by clicking the trash can icon. This only unlinks the share, and does not delete any files."
+msgstr ""
+
+#: ../../files/file_drop.rst:3
+msgid "Making anonymous uploads"
+msgstr ""
+
+#: ../../files/file_drop.rst:5
+msgid "You may create your own special upload directories so that other people can upload files to you without having to log in to the server, and without being a Nextcloud user. They will not be allowed to see the contents of this directory, or to make any changes. This is an excellent alternative to sending large attachments via email, using an FTP server, or using commercial file-sharing services."
+msgstr ""
+
+#: ../../files/file_drop.rst:13
+msgid "Setting up your own file drop"
+msgstr ""
+
+#: ../../files/file_drop.rst:15
+msgid "Go to Files and create or choose the folder, the anonymous upload should be made to."
+msgstr ""
+
+#: ../../files/file_drop.rst:20
+msgid "Check Share Link, Allow editing, Hide file listing."
+msgstr ""
+
+#: ../../files/file_drop.rst:24
+msgid "Now you can send the link to the upload folder manually or by using the Nextcloud send function, if your administrator has enabled it."
+msgstr ""
+
+#: ../../files/file_drop.rst:29
+msgid "Uploading files"
+msgstr ""
+
+#: ../../files/file_drop.rst:31
+msgid "Using the anonymous upload function is simple. You receive a link to the upload folder, click the link, and then you'll see a Nextcloud page with a **Click to upload** button."
+msgstr ""
+
+#: ../../files/file_drop.rst:37
+msgid "This opens a file picker, and you select the file or directory you want to upload. You're also able to just drop files into the window."
+msgstr ""
+
+#: ../../files/file_drop.rst:40
+msgid "When your upload is completed, the filenames are listed:"
+msgstr ""
+
+#: ../../files/gallery_app.rst:3
+msgid "Gallery app"
+msgstr ""
+
+#: ../../files/gallery_app.rst:5
+msgid "The Pictures app has been rewritten and improved, and is now called the Gallery app. It supports more image formats, sorting, zoom, and scrolling. It also supports advanced customizations via a simple text file."
+msgstr ""
+
+#: ../../files/gallery_app.rst:9
+msgid "On your main Nextcloud Files page, click the little icon at the top right, underneath your username, to open your Gallery. The Gallery app automatically finds all images in your Nextcloud folders, and overlays the thumbnails with the folder names. Click on the folder thumbnails to open the folders. At the top left you have two sorting options, alphabetical and by date."
+msgstr ""
+
+#: ../../files/gallery_app.rst:18
+msgid "After entering any folder, click on any image to open it in slideshow mode. This has the following features: a download button at the top center, forward and back buttons at the right and left sides, an automatic slideshow button at the bottom right, and a close button at the top right."
+msgstr ""
+
+#: ../../files/gallery_app.rst:27
+msgid "Custom configuration"
+msgstr ""
+
+#: ../../files/gallery_app.rst:29
+msgid "You may customize a Gallery album with a simple text file named **gallery.cnf**, which contains parameters structured using the `Yaml <https://en.wikipedia.org/wiki/YAML>`_ markup language. You may have multiple **gallery.cnf** files; you need one in your own root Nextcloud folder (your Home folder) that defines global features, and then you may have individual per-album **gallery.cnf** files if you want to define different behaviors in different albums."
+msgstr ""
+
+#: ../../files/gallery_app.rst:38
+msgid "Features"
+msgstr ""
+
+#: ../../files/gallery_app.rst:40
+msgid "The following general features are currently implemented:"
+msgstr ""
+
+#: ../../files/gallery_app.rst:42
+msgid "Native SVG support."
+msgstr ""
+
+#: ../../files/gallery_app.rst:43
+msgid "Access to external shares."
+msgstr ""
+
+#: ../../files/gallery_app.rst:45
+msgid "The following album features are currently implemented:"
+msgstr ""
+
+#: ../../files/gallery_app.rst:47
+msgid "Adding a link to a file containing a description."
+msgstr ""
+
+#: ../../files/gallery_app.rst:48
+msgid "Typing a simple copyright statement directly in the configuration file."
+msgstr ""
+
+#: ../../files/gallery_app.rst:49
+msgid "Adding a link to a file containing a copyright statement."
+msgstr ""
+
+#: ../../files/gallery_app.rst:50
+msgid "Defining a sort type and order."
+msgstr ""
+
+#: ../../files/gallery_app.rst:51
+msgid "Defining the colour of the background."
+msgstr ""
+
+#: ../../files/gallery_app.rst:52
+msgid "Defining if sub-albums will inherit the configuration."
+msgstr ""
+
+#: ../../files/gallery_app.rst:54
+msgid "The following slideshow features are currently implemented:"
+msgstr ""
+
+#: ../../files/gallery_app.rst:56
+msgid "Showing a button which lets you pick which background, either black or white, to use for the picture you are currently viewing (for images with transparent backgrounds)."
+msgstr ""
+
+#: ../../files/gallery_app.rst:61
+msgid "Setup"
+msgstr ""
+
+#: ../../files/gallery_app.rst:63
+msgid "The configuration file has to be named **gallery.cnf**. You may have multiple per-album **gallery.cnf** files. To enable global features, place one in your top-level folder, which is symbolised in the Web GUI by the home icon. (This puts it in ``data/<user>/files/``.) See :ref:`an example below <supported_variables_label>` in the **Global features** section."
+msgstr ""
+
+#: ../../files/gallery_app.rst:69
+msgid "You need to refresh your browser after changing your configuration to see your changes."
+msgstr ""
+
+#: ../../files/gallery_app.rst:73
+msgid "Format"
+msgstr ""
+
+#: ../../files/gallery_app.rst:75
+msgid "UTF-8, **without BOM**. A file created from within the Nextcloud Web GUI works."
+msgstr ""
+
+#: ../../files/gallery_app.rst:78
+msgid "Structure"
+msgstr ""
+
+#: ../../files/gallery_app.rst:80
+msgid "You should include a comment in the file, so that people stumbling upon the file know what it's for. Comments start with #."
+msgstr ""
+
+#: ../../files/gallery_app.rst:83
+msgid "Spacing is created using 2 spaces. **Do not use tabs.**"
+msgstr ""
+
+#: ../../files/gallery_app.rst:85
+msgid "Take a look at the `YAML Format documentation <https://symfony.com/doc/current/components/yaml/yaml_format.html>`_ if you are getting error messages."
+msgstr ""
+
+#: ../../files/gallery_app.rst:89
+msgid "Here is an example `gallery.cnf`::"
+msgstr ""
+
+#: ../../files/gallery_app.rst:116
+msgid "Supported variables"
+msgstr ""
+
+#: ../../files/gallery_app.rst:118
+msgid "**Global Features**"
+msgstr ""
+
+#: ../../files/gallery_app.rst:120
+msgid "Place this in your root Nextcloud folder, which is your Home folder."
+msgstr ""
+
+#: ../../files/gallery_app.rst:122
+msgid "**external_shares**: Set to **yes** in your root configuration file if you want to load images stored on external locations, when using the **files_external** app."
+msgstr ""
+
+#: ../../files/gallery_app.rst:125
+msgid "**native_svg**: Set to **yes** in your root configuration file to enable rendering SVG images in your browser. This may represent a security risk if you can't fully trust your SVG files."
+msgstr ""
+
+#: ../../files/gallery_app.rst:128
+msgid "**background_colour_toggle**: Set to **yes** in your root configuration file to enable a button that toggles between black and white backgrounds on transparent images."
+msgstr ""
+
+#: ../../files/gallery_app.rst:132
+msgid "External shares are 20-50 times slower than local shares. Be prepared to wait a long time before being able to see all the images contained in a shared album."
+msgstr ""
+
+#: ../../files/gallery_app.rst:136
+msgid "**Album Configuration**"
+msgstr ""
+
+#: ../../files/gallery_app.rst:138
+msgid "Each album can be individually configured using the following configuration sections. Use the **inherit** parameter to pass configurations on to sub-albums."
+msgstr ""
+
+#: ../../files/gallery_app.rst:142
+msgid "**Design**"
+msgstr ""
+
+#: ../../files/gallery_app.rst:144
+msgid "**background**: Defines the colour of the background of the photowall using the RGB hexadecimal representation of that colour. For example: **\"#ffa033\"**. You must use quotes around the value or it will be ignored. It is strongly recommended to use a custom theme, with a CSS loading spinner if you intend to use this feature. You can use `this colour wheel <http://paletton.com/>`_ to find a colour you like."
+msgstr ""
+
+#: ../../files/gallery_app.rst:150
+#: ../../files/gallery_app.rst:163
+#: ../../files/gallery_app.rst:175
+msgid "**inherit**: Set to **yes** if you want sub-folders to inherit this part of the configuration."
+msgstr ""
+
+#: ../../files/gallery_app.rst:153
+msgid "**Album Presentation**"
+msgstr ""
+
+#: ../../files/gallery_app.rst:155
+msgid "**description**: A markdown-formatted string which will be displayed in the info box. It can spread over multiple lines using the Yaml markers."
+msgstr ""
+
+#: ../../files/gallery_app.rst:157
+msgid "**description_link**: A markdown file located within the album which will be parsed and displayed in the info box instead of the description."
+msgstr ""
+
+#: ../../files/gallery_app.rst:159
+msgid "**copyright**: A markdown-formatted string. This supports links to external resources."
+msgstr ""
+
+#: ../../files/gallery_app.rst:161
+msgid "**copyright_link**: Any file (e.g. copyright.html), in the album itself, which will be downloaded when the user clicks on the link"
+msgstr ""
+
+#: ../../files/gallery_app.rst:166
+msgid "See `<http://www.markitdown.net/markdown>`_ for the markdown syntax."
+msgstr ""
+
+#: ../../files/gallery_app.rst:168
+msgid "Do not add links to your `copyright` string if you use the **copyright_link** variable."
+msgstr ""
+
+#: ../../files/gallery_app.rst:171
+msgid "**Sorting**"
+msgstr ""
+
+#: ../../files/gallery_app.rst:173
+msgid "**sorting**: **date** or **name**. **date** only works for files."
+msgstr ""
+
+#: ../../files/gallery_app.rst:174
+msgid "**sort_order**: **asc** or **des** (Ascending or descending)."
+msgstr ""
+
+#: ../../files/gallery_app.rst:179
+msgid "Notes"
+msgstr ""
+
+#: ../../files/gallery_app.rst:181
+msgid "When only the sort **type** variable has been set, the default sort order will be used."
+msgstr ""
+
+#: ../../files/gallery_app.rst:183
+msgid "When only the sort **order** variable has been found, the sort configuration will be ignored and the script will keep looking for a valid configuration in upper folders."
+msgstr ""
+
+#: ../../files/gallery_app.rst:186
+msgid "To enable a feature such as native SVG in a public share, you need to create in that folder a configuration file containing that feature."
+msgstr ""
+
+#: ../../files/gallery_app.rst:188
+msgid "If you share a folder publicly, don't forget to add all the files you link to (e.g. ``description.md`` or ``copyright.md``) inside the shared folder as the user won't have access to files stored in the parent folder."
+msgstr ""
+
+#: ../../files/gallery_app.rst:191
+msgid "Since people can download a whole folder as an archive, it's usually best to include all files within a shared folder, rather than adding text directly in the configuration file."
+msgstr ""
+
+#: ../../files/gallery_app.rst:196
+msgid "Examples"
+msgstr ""
+
+#: ../../files/gallery_app.rst:198
+msgid "**Sorting Only**"
+msgstr ""
+
+#: ../../files/gallery_app.rst:200
+msgid "Applies to the current folder only::"
+msgstr ""
+
+#: ../../files/gallery_app.rst:207
+msgid "Short description and link to copyright document, applies to the current folder and all of its sub-folders. This also shows you the syntax you can use to spread a description over multiple lines::"
+msgstr ""
+
+#: ../../files/gallery_app.rst:220
+msgid "**Load Images From External Clouds**"
+msgstr ""
+
+#: ../../files/gallery_app.rst:222
+msgid "Features can only be defined in the root folder."
+msgstr ""
+
+#: ../../files/gallery_app.rst:224
+#: ../../files/gallery_app.rst:234
+msgid "You can add standard configuration items to the same configuration file::"
+msgstr ""
+
+#: ../../files/gallery_app.rst:230
+msgid "**Enabling native SVG**"
+msgstr ""
+
+#: ../../files/gallery_app.rst:232
+msgid "Special features can only be defined in the root folder."
+msgstr ""
+
+#: ../../files/gallery_app.rst:241
+msgid "Possible future extensions"
+msgstr ""
+
+#: ../../files/gallery_app.rst:243
+msgid "Different sorting parameters for albums."
+msgstr ""
+
+#: ../../files/index.rst:3
+msgid "Files & synchronization"
+msgstr ""
+
+#: ../../files/large_file_upload.rst:3
+msgid "Large file uploads"
+msgstr ""
+
+#: ../../files/large_file_upload.rst:5
+msgid "When uploading files through the web client, Nextcloud is limited by PHP and Apache configurations. By default, PHP is configured for only 2 megabyte uploads. As this default upload limit is not entirely useful, we recommend that your Nextcloud admin increase the Nextcloud variables to sizes appropriate for users."
+msgstr ""
+
+#: ../../files/large_file_upload.rst:11
+msgid "Modifying certain Nextcloud variables requires administrative access. If you require larger upload limits than have been provided by the default (or already set by your administrator):"
+msgstr ""
+
+#: ../../files/large_file_upload.rst:15
+msgid "Contact your administrator to request an increase in these variables"
+msgstr ""
+
+#: ../../files/large_file_upload.rst:17
+msgid "Refer to the section in the `Admin Documentation <https://docs.nextcloud.org/server/latest/admin_manual/configuration_files/ big_file_upload_configuration.html>`_ that describes how to manage file upload size limits."
+msgstr ""
+
+#: ../../files/projects.rst:3
+msgid "Projects"
+msgstr ""
+
+#: ../../files/projects.rst:5
+msgid "Users can associate files, chats and other items with each other in projects. The various apps will present these items in a list, allowing users to immediately jump to them. Projects are Nextcloud wide. When a user shares a file that is part of a project, the share recipient can see that project, too. A click on any of the items in a project leads right to it, be it a chat, a file or a task."
+msgstr ""
+
+#: ../../files/projects.rst:8
+msgid "Create a new project"
+msgstr ""
+
+#: ../../files/projects.rst:10
+msgid "A new project can be created by linking two items together. Start off by opening a file or folders sharing sidebar."
+msgstr ""
+
+#: ../../files/projects.rst:14
+msgid "Click *Add to a project* and select the type of item you want to link with the current file/folder. A selector will open that allows you selecting a Talk conversation for example."
+msgstr ""
+
+#: ../../files/projects.rst:18
+msgid "Once the item has been selected a new project is being created and listed in the sharing tab of the sidebar. The same project will also appear in the sharing sidebar of the linked items."
+msgstr ""
+
+#: ../../files/projects.rst:22
+msgid "The list entry shows quick links to a limited number of items. By opening the context menu, the project can be renamed and the full list of items can be expanded."
+msgstr ""
+
+#: ../../files/projects.rst:26
+msgid "Adding more entries to a project"
+msgstr ""
+
+#: ../../files/projects.rst:28
+msgid "If another item should be added to an already existing project this can be done by searching for the project name in the *Add to a project* picker."
+msgstr ""
+
+#: ../../files/projects.rst:33
+msgid "Visibility of projects"
+msgstr ""
+
+#: ../../files/projects.rst:35
+msgid "Projects do not influence the access and visibility of the different items. Users will only see projects of other users if they have access to all contained items."
+msgstr ""
+
+#: ../../files/quota.rst:3
+msgid "Storage quota"
+msgstr ""
+
+#: ../../files/quota.rst:5
+msgid "Your Nextcloud admin has the option to set a storage quota on users. Look at the top of your Personal page to see what your quota is, and how much you have used."
+msgstr ""
+
+#: ../../files/quota.rst:11
+msgid "It may be helpful to understand how your quota is calculated."
+msgstr ""
+
+#: ../../files/quota.rst:13
+msgid "Metadata (thumbnails, temporary files, cache, and encryption keys) takes up about 10% of disk space, but is not counted against user quotas. Some apps store information in the database, such as the Calendar and Contacts apps. This data is excluded from your quota."
+msgstr ""
+
+#: ../../files/quota.rst:18
+msgid "When other users share files with you, the shared files count against the original share owner's quota. When you share a folder and allow other users or groups to upload files to it, all uploaded and edited files count against your quota. When you re-share files shared with you, the re-share still counts against the quota of the original share owner."
+msgstr ""
+
+#: ../../files/quota.rst:24
+msgid "Encrypted files are a little larger than unencrypted files; the unencrypted size is calculated against your quota."
+msgstr ""
+
+#: ../../files/quota.rst:27
+msgid "Deleted files that are still in the trash bin do not count against quotas. The trash bin is set at 50% of quota. Deleted file aging is set at 30 days. When deleted files exceed 50% of quota then the oldest files are removed until the total is below 50%."
+msgstr ""
+
+#: ../../files/quota.rst:35
+msgid "When version control is enabled, the older file versions are not counted against quotas."
+msgstr ""
+
+#: ../../files/quota.rst:38
+msgid "If you create a public share via URL and allow uploads, any uploaded files count against your quota."
+msgstr ""
+
+#: ../../files/transfer_ownership.rst:3
+msgid "Transfer Ownership"
+msgstr ""
+
+#: ../../files/transfer_ownership.rst:5
+msgid "Users can transfer the ownership of files and folders to other users. Share ownerships of those transfered files/folders will also be transferred."
+msgstr ""
+
+#: ../../files/transfer_ownership.rst:8
+msgid "Navigate to *Settings* > *Personal* > *Sharing* > *Files*"
+msgstr ""
+
+#: ../../files/transfer_ownership.rst:9
+msgid "Click on *Choose file or folder to transfer* >> A file picker opens, showing all files and folders in the user's account"
+msgstr ""
+
+#: ../../files/transfer_ownership.rst:10
+msgid "Pick a file or folder and click on *Choose* >> The chosen file or folder name gets displayed"
+msgstr ""
+
+#: ../../files/transfer_ownership.rst:11
+msgid "Click on *Change* to change the choice if necessary"
+msgstr ""
+
+#: ../../files/transfer_ownership.rst:12
+msgid "Pick a new owner by typing their name into the search field next to *New owner*"
+msgstr ""
+
+#: ../../files/transfer_ownership.rst:13
+msgid "Click on *Transfer*"
+msgstr ""
+
+#: ../../files/transfer_ownership.rst:15
+msgid "The username autocompletion or listing may be limited due to administrative visibility configuration. See `admin documentation <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/file_sharing_configuration.html>`_ for details."
+msgstr ""
+
+#: ../../files/transfer_ownership.rst:18
+msgid "The target user receives a notification where they are being asked whether to accept or reject the incoming transfer."
+msgstr ""
+
+#: ../../files/transfer_ownership.rst:23
+msgid "If accepted, the target user finds the transferred files and folders in their root under a folder *Transferred from [user] on [timestamp]*"
+msgstr ""
+
+#: ../../files/transfer_ownership.rst:25
+msgid "The source user gets informed about the acceptance or rejection by a notification"
+msgstr ""
+
+#: ../../files/version_control.rst:3
+msgid "Version control"
+msgstr ""
+
+#: ../../files/version_control.rst:5
+msgid "Nextcloud supports simple version control system for files. Versioning creates backups of files which are accessible via the Versions tab on the Details sidebar. This tab contains the history of the file where you can roll back a file to any previous version. Changes made at intervals greater than two minutes are saved in **data/[user]/versions**."
+msgstr ""
+
+#: ../../files/version_control.rst:13
+msgid "To restore a specific version of a file, click the circular arrow to the left. Click on the timestamp to download it."
+msgstr ""
+
+#: ../../files/version_control.rst:16
+msgid "The versioning app expires old versions automatically to make sure that the user doesn't run out of space. This pattern is used to delete old versions:"
+msgstr ""
+
+#: ../../files/version_control.rst:20
+msgid "For the first second we keep one version"
+msgstr ""
+
+#: ../../files/version_control.rst:21
+msgid "For the first 10 seconds Nextcloud keeps one version every 2 seconds"
+msgstr ""
+
+#: ../../files/version_control.rst:22
+msgid "For the first minute Nextcloud keeps one version every 10 seconds"
+msgstr ""
+
+#: ../../files/version_control.rst:23
+msgid "For the first hour Nextcloud keeps one version every minute"
+msgstr ""
+
+#: ../../files/version_control.rst:24
+msgid "For the first 24 hours Nextcloud keeps one version every hour"
+msgstr ""
+
+#: ../../files/version_control.rst:25
+msgid "For the first 30 days Nextcloud keeps one version every day"
+msgstr ""
+
+#: ../../files/version_control.rst:26
+msgid "After the first 30 days Nextcloud keeps one version every week"
+msgstr ""
+
+#: ../../files/version_control.rst:28
+msgid "The versions are adjusted along this pattern every time a new version gets created."
+msgstr ""
+
+#: ../../files/version_control.rst:31
+msgid "The version app never uses more that 50% of the user's currently available free space. If the stored versions exceed this limit, Nextcloud deletes the oldest versions until it meets the disk space limit again."
+msgstr ""
