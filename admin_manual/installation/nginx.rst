@@ -76,11 +76,11 @@ webroot of your nginx installation. In this example it is
       gzip_proxied expired no-cache no-store private no_last_modified no_etag auth;
       gzip_types application/atom+xml application/javascript application/json application/ld+json application/manifest+json application/rss+xml application/vnd.geo+json application/vnd.ms-fontobject application/x-font-ttf application/x-web-app-manifest+json application/xhtml+xml application/xml font/opentype image/bmp image/svg+xml image/x-icon text/cache-manifest text/css text/plain text/vcard text/vnd.rim.location.xloc text/vtt text/x-component text/x-cross-domain-policy;
 
-      # Pagespeed is not supported by NextCloud, so if your server is built
+      # Pagespeed is not supported by Nextcloud, so if your server is built
       # with the `ngx_pagespeed` module, uncomment this line to disable it.
       #pagespeed off;
       
-      # HTTP response headers borrowed from NextCloud `.htaccess`
+      # HTTP response headers borrowed from Nextcloud `.htaccess`
       add_header Referrer-Policy                      "no-referrer"   always;
       add_header X-Content-Type-Options               "nosniff"       always;
       add_header X-Download-Options                   "noopen"        always;
@@ -188,7 +188,7 @@ Nextcloud in a subdir of the nginx webroot
 
 The following config should be used when Nextcloud is placed within a subdir of
 the webroot of your nginx installation.
-In this example the NextCloud files are located at
+In this example the Nextcloud files are located at
 ``/var/www/nextcloud`` and the Nextcloud instance is accessed via ``http(s)://cloud.example.com/nextcloud/``.
 The configuration differs from the "Nextcloud in webroot" configuration above in the following ways:
 
@@ -196,7 +196,7 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
 - The string ``/nextcloud`` is prepended to all prefix paths.
 - The URI ``/nextcloud`` is *aliased* to ``/var/www/nextcloud``, rather than the domain itself being *rooted* at ``/var/www/nextcloud``.
 - The blocks that handle requests for paths outside of ``/nextcloud``, i.e. ``/robots.txt``, ``/.well-known``, and hidden files, are pulled out of the ``location ~ ^/nextcloud($|/)`` block.
-- The block which handles `/.well-known` doesn't need a regex exception, since the rule which prevents users from accessing hidden folders at the root of the NextCloud installation no longer matches that path.
+- The block which handles `/.well-known` doesn't need a regex exception, since the rule which prevents users from accessing hidden folders at the root of the Nextcloud installation no longer matches that path.
 
 .. code-block:: nginx
 
@@ -267,11 +267,11 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
           gzip_proxied expired no-cache no-store private no_last_modified no_etag auth;
           gzip_types application/atom+xml application/javascript application/json application/ld+json application/manifest+json application/rss+xml application/vnd.geo+json application/vnd.ms-fontobject application/x-font-ttf application/x-web-app-manifest+json application/xhtml+xml application/xml font/opentype image/bmp image/svg+xml image/x-icon text/cache-manifest text/css text/plain text/vcard text/vnd.rim.location.xloc text/vtt text/x-component text/x-cross-domain-policy;
 
-          # Pagespeed is not supported by NextCloud, so if your server is built
+          # Pagespeed is not supported by Nextcloud, so if your server is built
           # with the `ngx_pagespeed` module, uncomment this line to disable it.
           #pagespeed off;
           
-          # HTTP response headers borrowed from NextCloud `.htaccess`
+          # HTTP response headers borrowed from Nextcloud `.htaccess`
           add_header Referrer-Policy                      "no-referrer"   always;
           add_header X-Content-Type-Options               "nosniff"       always;
           add_header X-Download-Options                   "noopen"        always;
