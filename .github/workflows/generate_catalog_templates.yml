@@ -2,7 +2,10 @@ name: L10n
 on:
   push:
     branches:
-      - master
+    - master
+    paths:
+    - 'user_manual/**'
+    - '!user_manual/locale/**'
 
 jobs:
   user_manual:
@@ -16,6 +19,6 @@ jobs:
         build-command: make gettext
     - uses: peter-evans/create-pull-request@v3
       with:
-        commit-message: Adds Or Updates catalog templates (POT files fetched automatically by transifex)
+        commit-message: Updates catalog templates (POT files fetched automatically by transifex)
         title: l10n
         branch: update-l10n
