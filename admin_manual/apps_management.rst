@@ -24,7 +24,7 @@ Those apps are supported and developed by Nextcloud GmbH directly and
 have an **Featured**-tag. See :doc:`installation/apps_supported` for a list of supported apps.
 
 .. note:: Your Nextcloud server needs to be able to communicate with 
-          ``https://apps.nextcloud.com`` to list and download apps. Please make sure to whitelist this target in your firewall or proxy if necessary_.
+          ``https://apps.nextcloud.com`` to list and download apps. Please make sure to whitelist this target in your firewall or proxy if necessary.
 
 .. note:: To get access to work-arounds, long-term-support, priority bug fixing
           and custom consulting for supported apps, contact our `sales team <https://nextcloud.com/enterprise/>`_.
@@ -89,21 +89,27 @@ in that folder.
         ],
     ],
 
-Using your own appstore
------------------------
+.. note:: Apps paths can be located outside the server root.  However, for any
+   **path** outside the server root, you need to create a symlink in  the server
+   root that points **url** to **path**.
+   For instance, if **path** is ``/var/local/lib/nextcloud/apps``, and **url**
+   is ``/apps2``, then you would do this in the server root:
+   ``ln -sf /var/local/lib/nextcloud/apps ./apps2``
 
-You can enable the installation of apps from your own apps store. This requires that you
-can write to at least one of the configured apps directories.
+Using a self hosted apps store
+------------------------------
 
-To enable installation from your own apps store:
+Enables the installation of apps from a self hosted apps store. Requires that at least one of the configured apps directories is writeable.
+
+To enable a self hosted apps store:
 
 1. Set the **appstoreenabled** parameter to "true".
 
-   This parameter is used to enable your apps store in Nextcloud.
+   This parameter is used to enable the apps store in Nextcloud.
 
 2. Set the **appstoreurl** to the URL of your Nextcloud apps store.
 
-   This parameter is used to set the http path to the Nextcloud apps store.
+   This parameter is used to set the http path to your self hosted Nextcloud apps store.
 
 ::
 

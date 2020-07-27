@@ -68,7 +68,7 @@ Running ``occ`` with no options lists all commands and options, like this
 example on Ubuntu::
 
  sudo -u www-data php occ 
- Nextcloud version 9.0.0
+ Nextcloud version 19.0.0
 
  Usage:
   command [options] [arguments]
@@ -103,14 +103,14 @@ Run it with the ``-h`` option for syntax help::
 Display your Nextcloud version::
 
  sudo -u www-data php occ -V
-   Nextcloud version 9.0.0
+   Nextcloud version 19.0.0
    
 Query your Nextcloud server status::
 
  sudo -u www-data php occ status
    - installed: true
-   - version: 9.0.0.19
-   - versionstring: 9.0.0
+   - version: 19.0.0.12
+   - versionstring: 19.0.0
    - edition: 
 
 ``occ`` has options, commands, and arguments. Options and arguments are 
@@ -142,15 +142,15 @@ The ``status`` command from above has an option to define the output format.
 The default is plain text, but it can also be ``json``::
 
  sudo -u www-data php occ status --output=json
- {"installed":true,"version":"9.0.0.19","versionstring":"9.0.0","edition":""}
+ {"installed":true,"version":"19.0.0.9","versionstring":"19.0.0","edition":""}
 
 or ``json_pretty``::
 
  sudo -u www-data php occ status --output=json_pretty
  {
     "installed": true,
-    "version": "9.0.0.19",
-    "versionstring": "9.0.0",
+    "version": "19.0.0.12",
+    "versionstring": "19.0.0",
     "edition": ""
  }
 
@@ -164,7 +164,7 @@ Enabling autocompletion
 .. note:: Command autocompletion currently only works if the user you use to execute the occ commands has a profile.
   ``www-data`` in most cases is ``nologon`` and therefor **cannot** use this feature.
 
-Since Nextcloud 11 autocompletion is available for bash (and bash based consoles).
+Autocompletion is available for bash (and bash based consoles).
 To enable it, you have to run **one** of the following commands::
 
  # BASH ~4.x, ZSH
@@ -198,7 +198,8 @@ The ``app`` commands list, enable, and disable apps::
   app:enable       enable an app
   app:getpath      get an absolute path to the app directory
   app:list         list all available apps
-  app:update       update an app or all apps 
+  app:update       update an app or all apps
+  app:remove       disable and remove an app
 
 List all of your installed apps, and show whether they are 
 enabled or disabled::
@@ -327,7 +328,7 @@ Getting a single configuration value
 These commands get the value of a single app or system configuration::
 
   sudo -u www-data php occ config:system:get version
-  9.0.0.19
+  19.0.0.12
 
   sudo -u www-data php occ config:app:get activity installed_version
   2.2.1
@@ -724,6 +725,9 @@ It is also possible to transfer only one directory along with it's contents. Thi
 
  sudo -u www-data php occ files:transfer-ownership --path="path_to_dir" <source-user> <destination-user>
 
+Users may also transfer files or folders selectively by themselves.
+See `user documentation <https://docs.nextcloud.com/server/latest/user_manual/files/transfer_ownership.html>`_ for details.
+
 .. _files_external_label:
 
 Files external
@@ -780,7 +784,7 @@ Verify your app::
   sudo -u www-data php occ integrity:check-app --path=/pathto/app appname
   
 When it returns nothing, your app is signed correctly. When it returns a message then there is an error. See `Code Signing 
-<https://docs.nextcloud.org/server/15/developer_manual/app/code_signing.html#how-to-get-your-app-signed>`_ in the Developer manual for more detailed information.
+<https://docs.nextcloud.org/server/latest/developer_manual/app/code_signing.html#how-to-get-your-app-signed>`_ in the Developer manual for more detailed information.
 .. TODO ON RELEASE: Update version number above on release
 
 ``integrity:sign-core`` is for Nextcloud core developers only.
@@ -1105,7 +1109,7 @@ You can delete users::
 View a user's most recent login::   
    
  sudo -u www-data php occ user:lastseen layla 
-   layla's last login: 09.01.2015 18:46
+   layla's last login: 09.01.2020 18:46
 
 Read user settings::
 
@@ -1257,7 +1261,7 @@ Then choose your ``occ`` options. This lists your available options::
 
  sudo -u www-data php /var/www/nextcloud/occ
  Nextcloud is not installed - only a limited number of commands are available
- Nextcloud version 9.0.0
+ Nextcloud version 19.0.0
 
  Usage:
   [options] command [arguments]

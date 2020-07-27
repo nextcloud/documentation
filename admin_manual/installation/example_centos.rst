@@ -88,7 +88,7 @@ Manually building redis/imagick (optional)
 
     dnf config-manager --set-enabled PowerTools
 
-    dnf install -y Imagemagick ImageMagick-devel
+    dnf install -y ImageMagick ImageMagick-devel
     
     pecl install imagick
 

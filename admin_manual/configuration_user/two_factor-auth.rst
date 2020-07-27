@@ -13,7 +13,7 @@ Several 2FA apps are already available including
 a Telegram/Signal/SMS gateway and `U2F <https://en.wikipedia.org/wiki/Universal_2nd_Factor>`_. 
 
 
-Developers can `build new two-factor provider apps <https://docs.nextcloud.com/server/14/developer_manual/app/two-factor-provider.html>`_.
+Developers can `build new two-factor provider apps <https://docs.nextcloud.com/server/latest/developer_manual/app/two-factor-provider.html>`_.
 
 .. TODO ON RELEASE: Update version number above on release
 
@@ -27,7 +27,7 @@ you want, 2FA will be installed and enabled on your Nextcloud server.
 
 .. figure:: ../images/2fa-app-install.png
 
-Once 2FA has been enabled, users have to `activate it in their personal settings. <https://docs.nextcloud.com/server/14/user_manual/user_2fa.html>`_
+Once 2FA has been enabled, users have to `activate it in their personal settings. <https://docs.nextcloud.com/server/latest/user_manual/user_2fa.html>`_
 
 .. TODO ON RELEASE: Update version number above on release
 
@@ -36,7 +36,7 @@ Enforcing two-factor authentication
 -----------------------------------
 
 By default 2FA is *optional*, hence users are given the choice whether to enable
-it for their account. Since Nextcloud 15, admins may enforce the use of 2FA.
+it for their account. Admins may enforce the use of 2FA.
 
 
 Enforcement is possible systemwide (all users), for selected groups only and can

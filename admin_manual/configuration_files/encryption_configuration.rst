@@ -6,12 +6,12 @@ The primary purpose of the Nextcloud server-side encryption is to protect users'
 files on remote storage, such as Dropbox and Google Drive, and to do it easily 
 and seamlessly from within Nextcloud.
 
-In Nextcloud 9.0 the server-side encryption separates encryption of local and 
-remote storage. This allows you to encrypt remote storage, such as Dropbox and 
+Server-side encryption separates encryption of local and remote storage. 
+This allows you to encrypt remote storage, such as Dropbox and 
 Google, without having to also encrypt your home storage on your Nextcloud 
 server.
 
-.. note:: Starting with Nextcloud 9.0 we support Authenticated Encryption for all
+.. note:: Nextcloud supports Authenticated Encryption for all
    newly encrypted files. See https://hackerone.com/reports/108082 for more 
    technical information about the impact.
    

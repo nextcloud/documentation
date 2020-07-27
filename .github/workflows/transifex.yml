@@ -1,0 +1,24 @@
+name: Transifex
+on: pull_request
+
+jobs:
+  approve:
+    runs-on: ubuntu-latest
+    name: Approve
+    steps:
+      - uses: hmarr/auto-approve-action@v2.0.0
+        if: github.actor == 'Transifex-localization-platform[bot]' || github.actor == 'transifex-integration[bot]'
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+
+  automerge:
+    runs-on: ubuntu-latest
+    name: Auto-merge
+    steps:
+      - uses: pascalgn/automerge-action@v0.8.5
+        if: github.actor == 'Transifex-localization-platform[bot]' || github.actor == 'transifex-integration[bot]'
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          MERGE_LABELS: ""
+          MERGE_RETRIES: 6
+          MERGE_RETRY_SLEEP: 30000

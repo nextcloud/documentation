@@ -178,6 +178,5 @@ Creating or connecting to a Federation Share link
 -------------------------------------------------
 
 Federated Cloud Sharing allows you to mount file shares from remote Nextcloud
-servers and manage them just like a local share. See
-:doc:`sharing` to learn to how to create and connect to new
-Federated Cloud shares.
+servers, and manage them just like a local share. See :doc:`federated_cloud_sharing` 
+to learn to how to create and connect to new Federated Cloud shares.

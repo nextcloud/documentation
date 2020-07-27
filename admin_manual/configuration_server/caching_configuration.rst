@@ -59,7 +59,7 @@ Refresh your Nextcloud admin page, and the cache warning should disappear.
 
 .. warning:: APCu is disabled by default on CLI which could cause issues with nextcloud's
    cron jobs. Please make sure you set the ``apc.enable_cli`` to ``1`` on your ``php.ini``
-   config file.
+   config file or append ``--define apc.enable_cli=1`` to the cron job call.
 
 Redis
 -----

@@ -1,0 +1,24 @@
+name: L10n
+on:
+  push:
+    branches:
+    - master
+    paths:
+    - 'user_manual/**'
+    - '!user_manual/locale/**'
+
+jobs:
+  user_manual:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ammaraskar/sphinx-action@master
+      with:
+        docs-folder: "user_manual/"
+        pre-build-command: pip install -r requirements.txt
+        build-command: make gettext
+    - uses: peter-evans/create-pull-request@v3
+      with:
+        commit-message: Updates catalog templates (POT files fetched automatically by transifex)
+        title: l10n
+        branch: update-l10n
