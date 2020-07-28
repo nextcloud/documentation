@@ -1,0 +1,936 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020 Nextcloud GmbH
+# This file is distributed under the same license as the Nextcloud latest User Manual package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Pavel Borecki <pavel.borecki@gmail.com>, 2020
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Nextcloud latest User Manual latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-27 14:38+0200\n"
+"PO-Revision-Date: 2019-11-07 20:29+0000\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2020\n"
+"Language-Team: Czech (https://www.transifex.com/nextcloud/teams/64236/cs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+
+#: ../../files/access_webdav.rst:3
+msgid "Accessing Nextcloud files using WebDAV"
+msgstr "Přístup k souborům v Nextcloud prostřednictvím protokolu WebDAV"
+
+#: ../../files/access_webdav.rst:5
+msgid ""
+"Nextcloud fully supports the WebDAV protocol, and you can connect and "
+"synchronize with your Nextcloud files over WebDAV. In this chapter you will "
+"learn how to connect Linux, macOS, Windows, and mobile devices to your "
+"Nextcloud server via WebDAV. Before we get into configuring WebDAV, let's "
+"take a quick look at the recommended way of connecting client devices to "
+"your Nextcloud servers."
+msgstr ""
+"Nexcloud plně podporuje WebDAV protokol a proto ho můžete použít pro "
+"připojení se a synchronizaci se svými soubory na Nexcloud. V této kapitole "
+"se naučíte jak připojit Linux, macOS, Windows a mobilní zařízení k vámi "
+"využívanému Nextcloud serveru prostřednictvím WebDAV. Než se pustíme do "
+"nastavování WebDAV, podívejme se na doporučený způsob připojování "
+"klientských zařízení k Nexcloud serverům."
+
+#: ../../files/access_webdav.rst:11
+msgid ""
+"In the following examples, you should replace **example.com/nextcloud** with"
+" the URL of your Nextcloud server (omit the directory part if the "
+"installation is in the root of your domain), and \"USERNAME\" with the "
+"username of the connecting user."
+msgstr ""
+
+#: ../../files/access_webdav.rst:15
+msgid "See the webdav url (bottom left, settings) on your Nextcloud."
+msgstr "Viz url webdav (vlevo dole, nastavení) ve vašem Nextcloud."
+
+#: ../../files/access_webdav.rst:18
+msgid "Nextcloud Desktop and mobile clients"
+msgstr "Nextcloud klienti pro desktopové a mobilní platformy"
+
+#: ../../files/access_webdav.rst:20
+msgid ""
+"The recommended way to synchronize a desktop PC with a Nextcloud server is "
+"by using `Nextcloud/ownCloud sync clients <https://nextcloud.com/install"
+"/#install-clients>`_. You can configure the client to save files in any "
+"local directory and you can choose which directories on the Nextcloud server"
+" to sync with. The client displays the current connection status and logs "
+"all activity, so you always know which remote files have been downloaded to "
+"your PC and you can verify that files created and updated on your local PC "
+"are properly synchronized with the server."
+msgstr ""
+"Doporučeným způsobem, jak synchronizovat svůj osobní počítač s Nextcloud "
+"serverem je pomocí `Nextcloud/ownCloud synchronizačních klientů "
+"<https://nextcloud.com/install/#install-clients>`_. Klienty je možné "
+"nastavit, aby ukládaly soubory v libovolném adresáři v počítači a můžete "
+"zvolit, se kterými adresáři na Nextcloud serveru synchronizovat. Klient "
+"zobrazuje stav stávajícího spojení a zaznamenává veškerou aktivitu, takže "
+"vždy víte, které soubory z protějšku byly staženy na počítač a můžete "
+"ověřit, že soubory vytvořené/aktualizované na počítači jsou správně "
+"synchronizovány na server."
+
+#: ../../files/access_webdav.rst:28
+msgid ""
+"The recommended way to synchronize Nextcloud server with Android and Apple "
+"iOS devices is by using the `mobile apps <https://nextcloud.com/install/>`_."
+msgstr ""
+"Doporučený způsob, jak synchronizovat Nextcloud server s Android a Apple iOS"
+" zařízeními je pomocí `mobilních aplikací "
+"<https://nextcloud.com/install/>`_."
+
+#: ../../files/access_webdav.rst:32
+msgid ""
+"To connect your mobile app to a Nextcloud server use the base URL and folder"
+" only::"
+msgstr ""
+"Pro připojení mobilní aplikace k Nextcloud serveru použijte pouze základ URL"
+" a složku::"
+
+#: ../../files/access_webdav.rst:37
+msgid ""
+"In addition to the mobile apps provided by Nextcloud or ownCloud, you can "
+"use other apps to connect to Nextcloud from your mobile device using WebDAV."
+" `WebDAV Navigator`_ is a good (proprietary) app for `Android devices`_ and "
+"`iPhones`_. The URL to use on these is::"
+msgstr ""
+"Kromě mobilních aplikací, poskytovaných Nextcloud nebo ownCloud, je pro "
+"připojení se k Nexcloud z mobilního zařízení možné použít i ostatní aplikace"
+" pomocí WebDAV. `WebDAV Navigator`_ je dobrá (ale proprietářní) aplikace pro"
+" `Android zařízení`_ a `iPhony`_. URL adresa, kterou takto použít je::"
+
+#: ../../files/access_webdav.rst:44
+msgid "WebDAV configuration"
+msgstr "Nastavení pro WebDAV"
+
+#: ../../files/access_webdav.rst:46
+msgid ""
+"If you prefer, you may also connect your desktop PC to your Nextcloud server"
+" by using the WebDAV protocol rather than using a special client "
+"application. Web Distributed Authoring and Versioning (WebDAV) is a "
+"Hypertext Transfer Protocol (HTTP) extension that makes it easy to create, "
+"read, and edit files on Web servers. With WebDAV you can access your "
+"Nextcloud shares on Linux, macOS and Windows in the same way as any remote "
+"network share, and stay synchronized."
+msgstr ""
+"Pokud upřednostňujete, můžete namísto speciální klientské aplikace svůj "
+"osobní počítač propojit s Nexcloud také pomocí protokolu WebDAV. Web "
+"Distributed Authoring and Versioning (WebDAV) je rozšířením protokolu "
+"Hypertext Transfer Protocol (HTTP), které usnadňuje vytváření, čtení a "
+"upravování souborů na webových serverech. S WebDAV můžete přistupovat k "
+"Nextcloud sdílením z Linuxu, macOS a Windows stejným způsobem jako k "
+"ostatním síťovým sdílením a být synchronizováni."
+
+#: ../../files/access_webdav.rst:54
+msgid "Accessing files using Linux"
+msgstr "Přístup k souborům ze systému Linux"
+
+#: ../../files/access_webdav.rst:56
+msgid ""
+"You can access files in Linux operating systems using the following methods."
+msgstr ""
+"Z linuxových systémů můžete k souborům přistupovat následujícími způsoby."
+
+#: ../../files/access_webdav.rst:59
+msgid "Nautilus file manager"
+msgstr "Správce souborů Nautilus"
+
+#: ../../files/access_webdav.rst:61
+msgid ""
+"**When you configure your Nextcloud account in the** `GNOME Control Center "
+"<../pim/sync_gnome.html>`_, **your files will automatically be mounted by "
+"Nautilus as a WebDAV share, unless you deselect file access.**"
+msgstr ""
+
+#: ../../files/access_webdav.rst:65
+msgid ""
+"You can also mount your Nextcloud files manually. Use the ``davs://`` "
+"protocol to connect the Nautilus file manager to your Nextcloud share::"
+msgstr ""
+
+#: ../../files/access_webdav.rst:71
+msgid ""
+"If your server connection is not HTTPS-secured, use `dav://` instead of "
+"`davs://`."
+msgstr ""
+"Pokud připojení k vašemu serveru není zabezpečené pomocí HTTPS, použitje "
+"`dav://` namísto `davs://`."
+
+#: ../../files/access_webdav.rst:77
+msgid ""
+"The same method works for other file managers that use GVfs, such as MATE's "
+"Caja and Cinnamon's Nepomuk."
+msgstr ""
+
+#: ../../files/access_webdav.rst:82
+msgid "Accessing files with KDE and Dolphin file manager"
+msgstr ""
+"Přístup k souborům z desktopového prostředí KDE (prostřednictvím správce "
+"souborů Dolphin)"
+
+#: ../../files/access_webdav.rst:84
+msgid ""
+"To access your Nextcloud files using the Dolphin file manager in KDE, use "
+"the ``webdav://`` protocol::"
+msgstr ""
+"Pro přístup k vašim souborům v Nextcloud pomocí správce souborů Dolphin z "
+"desktopového prostředí KDE, použijte protokol ``webdav://``::"
+
+#: ../../files/access_webdav.rst:92
+msgid "You can create a permanent link to your Nextcloud server:"
+msgstr "Můžete vytvořit permanentní odkaz na vámi používaný Nextcloud server:"
+
+#: ../../files/access_webdav.rst:94
+msgid "Open Dolphin and click \"Network\" in the left hand \"Places\" column."
+msgstr "Otevřete Dolphin a ve sloupci „Místa“ (vlevo) klikněte na „Síť“."
+
+#: ../../files/access_webdav.rst:95
+msgid ""
+"Click on the icon labeled **Add a Network Folder**. The resulting dialog "
+"should appear with WebDAV already selected."
+msgstr ""
+"Klikněte na ikonu označenou jako **Přidat síťovou složku**. Výsledný dialog "
+"by se měl objevit s už vybraným WebDAV."
+
+#: ../../files/access_webdav.rst:97
+msgid "If WebDAV is not selected, select it."
+msgstr "Pokud WebDAV není vybraný, vyberte ho."
+
+#: ../../files/access_webdav.rst:98
+msgid "Click **Next**."
+msgstr "Klikněte na **Další**."
+
+#: ../../files/access_webdav.rst:99
+msgid "Enter the following settings:"
+msgstr "Zadejte následující nastavení:"
+
+#: ../../files/access_webdav.rst:101
+msgid ""
+"Name: The name you want to see in the **Places** bookmark, for example "
+"Nextcloud."
+msgstr ""
+"Název: Název pod kterým chcete, aby se se zobrazovalo jako záložka v "
+"**Umístění**, například Nextcloud."
+
+#: ../../files/access_webdav.rst:103
+msgid "User: The Nextcloud username you used to log in, for example admin."
+msgstr ""
+"Uživatel: Uživatelské jméno, kterým se hlásíte do Nexcloud, například admin."
+
+#: ../../files/access_webdav.rst:105
+msgid ""
+"Server: The Nextcloud domain name, for example **example.com** (without "
+"**http://** before or directories afterwards)."
+msgstr ""
+"Server: Název domény s Nextcloud, například **example.com** (bez **http://**"
+" na začátku nebo složek za)."
+
+#: ../../files/access_webdav.rst:107
+msgid "Folder -- Enter the path ``nextcloud/remote.php/dav/files/USERNAME/``."
+msgstr ""
+"Složka -- Zadejte popis umístění "
+"``nextcloud/remote.php/dav/files/UZIVATELSKEJMENO/``."
+
+#: ../../files/access_webdav.rst:108
+msgid ""
+"(Optional) Check the \"Create icon checkbox\" for a bookmark to appear in "
+"the Places column."
+msgstr ""
+"(Volitelné) Aby se ve sloupci Místa objevila záložka, zaškrtněte „Vytvořit "
+"ikonu“."
+
+#: ../../files/access_webdav.rst:110
+msgid ""
+"(Optional) Provide any special settings or an SSL certificate in the \"Port "
+"& Encrypted\" checkbox."
+msgstr ""
+"(Volitelné) Poskytovat speciální nastavení nebo SSL certifikát v zaškrtávací"
+" kolonce „Port a šifrováno“."
+
+#: ../../files/access_webdav.rst:114
+msgid "Creating WebDAV mounts on the Linux command line"
+msgstr "Vytváření WebDAV připojení z linuxového příkazového řádku"
+
+#: ../../files/access_webdav.rst:116
+msgid ""
+"You can create WebDAV mounts from the Linux command line. This is useful if "
+"you prefer to access Nextcloud the same way as any other remote filesystem "
+"mount. The following example shows how to create a personal mount and have "
+"it mounted automatically every time you log in to your Linux computer."
+msgstr ""
+"WebDAV připojení (mount) je možné vytvářet z příkazového řádku. Toto se "
+"hodí, pokud chcete k Nexcloud přistupovat stejným způsobem, jako k "
+"jakémukoli na dálku připojenému souborovému systému. Následující příklad "
+"ukazuje jak vytvořit osobní připojení a zařídit to tak, aby bylo automaticky"
+" připojené pokaždé, když se přihlásíte do systému."
+
+#: ../../files/access_webdav.rst:121
+msgid ""
+"Install the ``davfs2`` WebDAV filesystem driver, which allows you to mount "
+"WebDAV shares just like any other remote filesystem. Use this command to "
+"install it on Debian/Ubuntu::"
+msgstr ""
+"Nainstalujte ovladač WebDAV souborového systému ``davfs2``, což vám umožní "
+"připojit WebDAV sdílení jako kterýkoli jiný vzdálený souborový systém. Pro "
+"instalaci na v Debian/Ubuntu::"
+
+#: ../../files/access_webdav.rst:127
+msgid "Use this command to install it on CentOS, Fedora, and openSUSE::"
+msgstr "Pro instalaci na CentOS, Fedora a openSUSE použijte tento příkaz::"
+
+#: ../../files/access_webdav.rst:131
+msgid "Add yourself to the ``davfs2`` group::"
+msgstr "Přidejte se do skupiny ``davfs2``::"
+
+#: ../../files/access_webdav.rst:135
+msgid ""
+"Then create a ``nextcloud`` directory in your home directory for the "
+"mountpoint, and ``.davfs2/`` for your personal configuration file::"
+msgstr ""
+"Poté ve svém domovském adresáři vytvořte adresáře ``nextcloud`` (bude "
+"sloužit jako přípojný bod), a ``.davfs2/`` (pro soubor s osobním "
+"nastavením)::"
+
+#: ../../files/access_webdav.rst:141
+msgid "Copy ``/etc/davfs2/secrets`` to ``~/.davfs2``::"
+msgstr "Zkopírujte ``/etc/davfs2/secrets`` do ``~/.davfs2``::"
+
+#: ../../files/access_webdav.rst:145
+msgid ""
+"Set yourself as the owner and make the permissions read-write owner only::"
+msgstr ""
+"Nastavte sami sebe jako vlastníka a oprávnění pro čtení-zápis nastavte pouze"
+" na vlastníka::"
+
+#: ../../files/access_webdav.rst:150
+msgid ""
+"Add your Nextcloud login credentials to the end of the ``secrets`` file, "
+"using your Nextcloud server URL and your Nextcloud username and password::"
+msgstr ""
+"Své přihlašovací údaje do Nexcloud přidejte na konec souboru ``secrets`` s "
+"použitím URL adresy Nexcloud serveru a vašeho Nexcloud uživatelského jména a"
+" hesla::"
+
+#: ../../files/access_webdav.rst:159
+msgid "Add the mount information to ``/etc/fstab``::"
+msgstr "Přidejte údaje o připojení (mount) do souboru ``/etc/fstab``::"
+
+#: ../../files/access_webdav.rst:165
+msgid ""
+"Then test that it mounts and authenticates by running the following command."
+" If you set it up correctly you won't need root permissions::"
+msgstr ""
+"Poté vyzkoušejte, že se připojuje (mount) a ověřuje spuštěním následujícího "
+"příkazu. Pokud jste vše nastavili správně, nebude zapotřebí oprávnění "
+"správce systému::"
+
+#: ../../files/access_webdav.rst:170
+msgid "You should also be able to unmount it::"
+msgstr "Měli byste také být schopní ho odpojit (unmount)::"
+
+#: ../../files/access_webdav.rst:174
+msgid ""
+"Now every time you login to your Linux system your Nextcloud share should "
+"automatically mount via WebDAV in your ``~/nextcloud`` directory. If you "
+"prefer to mount it manually, change ``auto`` to ``noauto`` in "
+"``/etc/fstab``."
+msgstr ""
+"Nyní pokaždé, když se přihlásíte do svého linuxového systému, vaše Nextcloud"
+" sdílení by mělo být automaticky připojeno (mount) prostřednictvím WebDAV do"
+" adresáře ``~/nextcloud``. Pokud chcete připojovat ručně, změňte v souboru s"
+" nastaveními ``/etc/fstab`` na příslušném řádku hodnotu ``auto`` na "
+"``noauto``."
+
+#: ../../files/access_webdav.rst:179
+msgid "Known issues"
+msgstr "Známé problémy"
+
+#: ../../files/access_webdav.rst:182 ../../files/access_webdav.rst:193
+#: ../../files/access_webdav.rst:361 ../../files/access_webdav.rst:383
+#: ../../files/access_webdav.rst:401 ../../files/access_webdav.rst:411
+#: ../../files/access_webdav.rst:440
+msgid "Problem"
+msgstr "Problém"
+
+#: ../../files/access_webdav.rst:183
+msgid "Resource temporarily unavailable"
+msgstr "Prostředek dočasně nedostupný"
+
+#: ../../files/access_webdav.rst:186 ../../files/access_webdav.rst:197
+#: ../../files/access_webdav.rst:389 ../../files/access_webdav.rst:406
+#: ../../files/access_webdav.rst:415 ../../files/access_webdav.rst:446
+msgid "Solution"
+msgstr "Řešení"
+
+#: ../../files/access_webdav.rst:187
+msgid ""
+"If you experience trouble when you create a file in the directory, edit "
+"``/etc/davfs2/davfs2.conf`` and add::"
+msgstr ""
+"Pokud narážíte na problémy při vytváření souboru v adresáři, přidejte do "
+"souboru ``/etc/davfs2/davfs2.conf`` toto::"
+
+#: ../../files/access_webdav.rst:194
+msgid "Certificate warnings"
+msgstr "Varování ohledně certifikátu"
+
+#: ../../files/access_webdav.rst:199
+msgid ""
+"If you use a self-signed certificate, you will get a warning. To change "
+"this, you need to configure ``davfs2`` to recognize your certificate. Copy "
+"``mycertificate.pem`` to ``/etc/davfs2/certs/``. Then edit "
+"``/etc/davfs2/davfs2.conf`` and uncomment the line ``servercert``. Now add "
+"the path of your certificate as in this example::"
+msgstr ""
+"Pokud používáte sám sebou podepsaný certifikát, obdržíte varování. To je "
+"možné změnit, nastavením ``davfs2`` tak, aby uznávalo váš certifikát. "
+"Zkopírujte ``mujcertifikat.pem`` do ``/etc/davfs2/certs/``. Poté upravte "
+"``/etc/davfs2/davfs2.conf`` a odkomentujte řádek ``servercert``. Nyní "
+"přidejte popis umístění vašeho certifikátu, jako v této ukázce::"
+
+#: ../../files/access_webdav.rst:208
+msgid "Accessing files using macOS"
+msgstr "Přístup k souborům ze systému macOS"
+
+#: ../../files/access_webdav.rst:210
+msgid ""
+"The macOS Finder suffers from a `series of implementation problems "
+"<http://sabre.io/dav/clients/finder/>`_ and should only be used if the "
+"Nextcloud server runs on **Apache** and **mod_php**, or **Nginx 1.3.8+**. "
+"Alternative macOS-compatible clients capable of accessing WebDAV shares "
+"include open source apps like `Cyberduck <https://cyberduck.io/>`_ (see "
+"instructions `here "
+"<https://docs.nextcloud.com/server/stable/user_manual/files/access_webdav.html"
+"#accessing-files-using-cyberduck>`_) and `Filezilla <https://filezilla-"
+"project.org>`_. Commercial clients include `Mountain Duck "
+"<https://mountainduck.io/>`_, `Forklift <https://binarynights.com/>`_, "
+"`Transmit <https://panic.com/>`_, and `Commander One "
+"<https://mac.eltima.com/>`_."
+msgstr ""
+"Aplikace Finder v rámci macOS má `vícero implementačních problémů "
+"<http://sabre.io/dav/clients/finder/>`_ a měla by být používán pouze pro "
+"Nextcloud servery, provozované na webovém serveru **Apache** s **mod_php**, "
+"nebo **Nginx 1.3.8 a novějším**. Mezi alternativní klienty, kompatibilní s "
+"macOS, schopné přistupovat k WebDAV sdílením patří open source aplikace jako"
+" `Cyberduck <https://cyberduck.io/>`_ (viz pokyny `zde "
+"<https://docs.nextcloud.com/server/stable/user_manual/files/access_webdav.html"
+"#accessing-files-using-cyberduck>`_) a `Filezilla <https://filezilla-"
+"project.org>`_. Mezi komerční klienty patří `Mountain Duck "
+"<https://mountainduck.io/>`_, `Forklift <https://binarynights.com/>`_, "
+"`Transmit <https://panic.com/>`_, a `Commander One "
+"<https://mac.eltima.com/>`_."
+
+#: ../../files/access_webdav.rst:212
+msgid "To access files through the macOS Finder:"
+msgstr "Pro přístup k souborům z macOS Finder:"
+
+#: ../../files/access_webdav.rst:214
+msgid "From the Finder’s top menu bar, choose **Go > Connect to Server...**"
+msgstr ""
+"Z nabídky v horní nabídce Finderu zvolte **Přejít na > Připojit k serveru…**"
+
+#: ../../files/access_webdav.rst:219
+msgid ""
+"When the **Connect to Server...** window opens, enter your Nextcloud "
+"server’s WebDAV address in the **Server Address:** field, ie:"
+msgstr ""
+
+#: ../../files/access_webdav.rst:221
+msgid "https://cloud.YOURDOMAIN.com/remote.php/dav/files/USERNAME/"
+msgstr ""
+"https://cloud.VASEDOMENA.KONCOVKA/remote.php/dav/files/UZIVATELSKEJMENO/"
+
+#: ../../files/access_webdav.rst:226
+msgid ""
+"Click **Connect**. Your WebDAV server should appear on the Desktop as a "
+"shared disk drive."
+msgstr ""
+"Klikněte na **Připojit**. Vámi používaný WebDAV server by se měl objevit na "
+"Ploše jako sdílená jednotka."
+
+#: ../../files/access_webdav.rst:230
+msgid "Accessing files using Microsoft Windows"
+msgstr "Přístup k souborům ze systému Microsoft Windows"
+
+#: ../../files/access_webdav.rst:232
+msgid ""
+"If you use the native Windows implementation, you can map Nextcloud to a new"
+" drive. Mapping to a drive enables you to browse files stored on a Nextcloud"
+" server the way you would files stored in a mapped network drive."
+msgstr ""
+"Pokud používáte nativní implementaci ve Windows, je možné namapovat Nexcloud"
+" jako nový disk. Mapování na jednotku umožní procházet soubory, nacházející "
+"se na Nexcloud serveru stejně, jako v případě souborů, nacházejících se na "
+"namapovaném síťovém disku."
+
+#: ../../files/access_webdav.rst:236
+msgid ""
+"Using this feature requires network connectivity. If you want to store your "
+"files offline, use the Desktop Client to sync all files on your Nextcloud to"
+" one or more directories of your local hard drive."
+msgstr ""
+"Použití této funkce vyžaduje připojení k síti. Pokud chcete ukládat své "
+"soubory offline, použijte desktopového klienta pro synchronizování všech "
+"souborů na vámi využívané instanci Nexcloud na úložiště ve vašem počítači."
+
+#: ../../files/access_webdav.rst:240
+msgid ""
+"Windows 10 now defaults to allow Basic Authentication if HTTPS is enabled "
+"prior to mapping your drive. On older versions of Windows, you must permit "
+"the use of Basic Authentication in the Windows Registry: launch „regedit“ "
+"and navigate to "
+"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters."
+" Create or edit the DWORD value „BasicAuthLevel“ (Windows Vista, 7 and 8) or"
+" „UseBasicAuth“ (Windows XP and Windows Server 2003) and set its value data "
+"to 1 for SSL connections. Value 0 means that Basic Authentication is "
+"disabled, a value of 2 allows both SSL and non-SSL connections (not "
+"recommended). Then exit Registry Editor, and restart the computer."
+msgstr ""
+
+#: ../../files/access_webdav.rst:252
+msgid "Mapping drives with the command line"
+msgstr "Mapování jednotek z příkazového řádku"
+
+#: ../../files/access_webdav.rst:254
+msgid ""
+"The following example shows how to map a drive using the command line. To "
+"map the drive:"
+msgstr ""
+"Následující příklad zobrazuje jak namapovat jednotku z příkazového řádku. "
+"Pro namapování jednotky:"
+
+#: ../../files/access_webdav.rst:257
+msgid "Open a command prompt in Windows."
+msgstr "Ve Windows otevřete příkazový řádek."
+
+#: ../../files/access_webdav.rst:258
+msgid ""
+"Enter the following line in the command prompt to map to the computer Z "
+"drive::"
+msgstr ""
+"Pro namapování jednotky Z v počítači zadejte do příkazového řádku "
+"následující::"
+
+#: ../../files/access_webdav.rst:264
+msgid "where <drive_path> is the URL to your Nextcloud server."
+msgstr "kde <drive_path> je URL adresa vašeho Nextcloud serveru."
+
+#: ../../files/access_webdav.rst:266
+msgid ""
+"For example: ``net use Z: "
+"https://example.com/nextcloud/remote.php/dav/files/USERNAME/ /user:youruser "
+"yourpassword``"
+msgstr ""
+"Například: ``net use Z: "
+"https://example.com/nextcloud/remote.php/dav/files/UZIVATELSKEJMENO/ "
+"/user:vaseuzivatelskejmeno vaseheslo``"
+
+#: ../../files/access_webdav.rst:269
+msgid ""
+"The computer maps the files of your Nextcloud account to the drive letter Z."
+msgstr ""
+"Počítač namapuje soubory z vašeho Nextcloud účtu na jednotku s písmenkem Z."
+
+#: ../../files/access_webdav.rst:271
+msgid ""
+"Though not recommended, you can also mount the Nextcloud server using HTTP, "
+"leaving the connection unencrypted. If you plan to use HTTP connections on "
+"devices while in a public place, we strongly recommend using a VPN tunnel to"
+" provide the necessary security."
+msgstr ""
+"Ačkoli to není doporučeno, je také možné připojit Nextcloud server pomocí "
+"HTTP a spojení tak ponechat nešifrované. Pokud plánujete použít HTTP "
+"připojení na zařízení z veřejné sítě, důrazně doporučujeme použít VPN tunel,"
+" aby bylo zajištěno nezbytné zabezpečení."
+
+#: ../../files/access_webdav.rst:276
+msgid "An alternative command syntax is::"
+msgstr "Alternativní forma zápisu příkazu je::"
+
+#: ../../files/access_webdav.rst:282
+msgid "Mapping drives with Windows Explorer"
+msgstr "Mapování disků s Windows Explorer"
+
+#: ../../files/access_webdav.rst:284
+msgid "To map a drive using the Microsoft Windows Explorer:"
+msgstr "Pro namapování disku pomocí Microsoft Windows Explorer:"
+
+#: ../../files/access_webdav.rst:286
+msgid "Migrate to your computer in Windows Explorer."
+msgstr "Ve Průzkumníku Windows přejděte na Tento počítač."
+
+#: ../../files/access_webdav.rst:287
+msgid ""
+"Right-click on **Computer** entry and select **Map network drive...** from "
+"the drop-down menu."
+msgstr ""
+"Klikněte pravým tlačítkem na položku **Počítač** a z rozbalovací nabídky "
+"vyberte **Namapovat síťovou jednotku…**."
+
+#: ../../files/access_webdav.rst:289
+msgid "Choose a local network drive to which you want to map Nextcloud."
+msgstr "Zvolte místní síťový disk, na který chcete Nextcloud namapovat."
+
+#: ../../files/access_webdav.rst:290
+msgid ""
+"Specify the address to your Nextcloud instance, followed by "
+"**/remote.php/dav/files/USERNAME/**."
+msgstr ""
+"Zadejte adresu vámi používané instance Nextloud, následovanou "
+"**/remote.php/dav/files/UZIVATELSKEJMENO/**."
+
+#: ../../files/access_webdav.rst:293
+msgid "For example::"
+msgstr "Například::"
+
+#: ../../files/access_webdav.rst:297
+msgid ""
+"For SSL protected servers, check **Reconnect at logon** to ensure that the "
+"mapping is persistent upon subsequent reboots. If you want to connect to the"
+" Nextcloud server as a different user, check **Connect using different "
+"credentials**."
+msgstr ""
+"Pro servery, chráněné pomocí SSL, zaškrtněte **Znovu připojit při přihlášení"
+" se**, abyste zajistili, že mapování zůstane zachováno po následných "
+"restartech počítače. Pokud se chcete k Nexcloud serveru připojit jako jiný "
+"uživatel (než kterým jste právě přihlášeni do systému), zaškrtněte "
+"**Připojit se pomocí jiných přihlašovacích údajů**."
+
+#: ../../files/access_webdav.rst:306
+msgid "Click the ``Finish`` button."
+msgstr "Klikněte na ``Dokončit``."
+
+#: ../../files/access_webdav.rst:308
+msgid ""
+"Windows Explorer maps the network drive, making your Nextcloud instance "
+"available."
+msgstr ""
+"Průzkumník Windows namapuje síťovou jednotku, čímž zpřístupní vámi "
+"využívanou instanci Nexcloud."
+
+#: ../../files/access_webdav.rst:312
+msgid "Accessing files using Cyberduck"
+msgstr "Přístup k souborům pomocí nástroje Cyberduck"
+
+#: ../../files/access_webdav.rst:314
+msgid ""
+"`Cyberduck <https://cyberduck.io/>`_ is an open source FTP and SFTP, WebDAV,"
+" OpenStack Swift, and Amazon S3 browser designed for file transfers on macOS"
+" and Windows."
+msgstr ""
+"`Cyberduck <https://cyberduck.io/>`_ je open source prohlížeč FTP a SFTP, "
+"WebDAV, OpenStack Swift, a Amazon S3, navržený pro přenosy souborů v macOS a"
+" Windows."
+
+#: ../../files/access_webdav.rst:318
+msgid "This example uses Cyberduck version 4.2.1."
+msgstr "V tomto příkladu je použito Cyberduck verze 4.2.1."
+
+#: ../../files/access_webdav.rst:320
+msgid "To use Cyberduck:"
+msgstr "Pro použití Cyberduck:"
+
+#: ../../files/access_webdav.rst:322
+msgid ""
+"Specify a server without any leading protocol information. For example:"
+msgstr "Zadejte server bez uvedení protokolu. Například:"
+
+#: ../../files/access_webdav.rst:324
+msgid "``example.com``"
+msgstr "``example.com``"
+
+#: ../../files/access_webdav.rst:326
+msgid ""
+"2. Specify the appropriate port. The port you choose depends on whether or "
+"not your Nextcloud server supports SSL. Cyberduck requires that you select a"
+" different connection type if you plan to use SSL. For example:"
+msgstr ""
+"2. Zadejte příslušný port. Volba portu závisí na tom, zda vámi používaný "
+"Nextcloud server podporuje SSL. Cyberduck vyžaduje, abyste pokud plánujete "
+"použít SSL, vybrali jiný typ připojení. Například:"
+
+#: ../../files/access_webdav.rst:330
+msgid "80 (for WebDAV)"
+msgstr "80 (pro WebDAV)"
+
+#: ../../files/access_webdav.rst:332
+msgid "443 (for WebDAV (HTTPS/SSL))"
+msgstr "443 (pro WebDAV (HTTPS/SSL))"
+
+#: ../../files/access_webdav.rst:334
+msgid ""
+"3. Use the 'More Options' drop-down menu to add the rest of your WebDAV URL "
+"into the 'Path' field. For example:"
+msgstr ""
+"3. Použijte rozbalovací nabídku „Další možnosti“ a přidejte zbytek vaší "
+"WebDAV URL do kolonky „Popis umístění“. Například:"
+
+#: ../../files/access_webdav.rst:337
+msgid "``remote.php/dav/files/USERNAME/``"
+msgstr "``remote.php/dav/files/UZIVATELSKEJMENO/``"
+
+#: ../../files/access_webdav.rst:339
+msgid "Now Cyberduck enables file access to the Nextcloud server."
+msgstr "Nyní Cyberduck zapne přístup k souborům na Nextcloud serveru."
+
+#: ../../files/access_webdav.rst:342
+msgid "Accessing public shares over WebDAV"
+msgstr "Přístup k veřejným odkazům prostřednictvím WebDAV"
+
+#: ../../files/access_webdav.rst:344
+msgid ""
+"Nextcloud provides the possibility to access public shares over WebDAV."
+msgstr ""
+"Nextcloud poskytuje možnost přistupovat k veřejným sdílením prostřednictvím "
+"WebDAV."
+
+#: ../../files/access_webdav.rst:346
+msgid "To access the public share, open::"
+msgstr "Pro přístup k veřejnému sdílení, otevřete::"
+
+#: ../../files/access_webdav.rst:350
+msgid ""
+"in a WebDAV client, use the share token as username and the (optional) share"
+" password as password."
+msgstr ""
+"Ve WebDAV klientovi použijte token sdílení jako uživatelské jméno a "
+"(volitelné) heslo ke sdílení jako heslo."
+
+#: ../../files/access_webdav.rst:353
+msgid ""
+"``Settings → Administration → Sharing → Allow users on this server to send "
+"shares to other servers`` needs to be enabled in order to make this feature "
+"work."
+msgstr ""
+"Aby tato funkce byla k dispozici, je třeba zapnout v ``Nastavení → Správa → "
+"Sdílení → Umožnit uživatelům na tomto serveru posílat sdílení na ostatní "
+"servery``."
+
+#: ../../files/access_webdav.rst:358
+msgid "Known problems"
+msgstr "Známé problémy"
+
+#: ../../files/access_webdav.rst:362
+msgid "Windows does not connect using HTTPS."
+msgstr "Windows se nepřipojují s použitím HTTPS."
+
+#: ../../files/access_webdav.rst:365
+msgid "Solution 1"
+msgstr "Řešení 1"
+
+#: ../../files/access_webdav.rst:367
+msgid ""
+"The Windows WebDAV Client might not support Server Name Indication (SNI) on "
+"encrypted connections. If you encounter an error mounting an SSL-encrypted "
+"Nextcloud instance, contact your provider about assigning a dedicated IP "
+"address for your SSL-based server."
+msgstr ""
+"WebDAV klient, vestavěný v systému Windows, nemusí u šifrovaných spojení "
+"podporovat Server Name Indication (SNI). Pokud se setkáte s chybou při SSL "
+"šifrovaném připojování k instance Nexcloud, obraťte se na svého "
+"poskytovatele se žádostí o přidělení vyhrazené IP adresy pro váš na SSL "
+"založený server."
+
+#: ../../files/access_webdav.rst:373
+msgid "Solution 2"
+msgstr "Jiné řešení"
+
+#: ../../files/access_webdav.rst:375
+msgid ""
+"The Windows WebDAV Client might not support TLSv1.1 / TLSv1.2 connections. "
+"If you have restricted your server config to only provide TLSv1.1 and above "
+"the connection to your server might fail. Please refer to the WinHTTP_ "
+"documentation for further information."
+msgstr ""
+
+#: ../../files/access_webdav.rst:385
+msgid ""
+"You receive the following error message: **Error 0x800700DF: The file size "
+"exceeds the limit allowed and cannot be saved.**"
+msgstr ""
+"Obdržíte následující chybové hlášení: **Chyba 0x800700DF: Velikost souboru "
+"překračuje umožněný limit a není proto možné ho uložit.**"
+
+#: ../../files/access_webdav.rst:391
+msgid ""
+"Windows limits the maximum size a file transferred from or to a WebDAV share"
+" may have.  You can increase the value **FileSizeLimitInBytes** in "
+"**HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\WebClient\\\\Parameters**"
+" by clicking on **Modify**."
+msgstr ""
+"Systém Windows omezuje maximální velikost, jakou může mít soubor přenášený z"
+" nebo na WebDAV sdílení.  Tuto hodnotu je možné zvýšit a to úpravou v "
+"registrech, konkrétně klíče **FileSizeLimitInBytes** v "
+"**HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\WebClient\\\\Parameters**,"
+" kliknutím na **Změnit**."
+
+#: ../../files/access_webdav.rst:396
+msgid ""
+"To increase the limit to the maximum value of 4GB, select **Decimal**, enter"
+" a value of **4294967295**, and reboot Windows or restart the **WebClient** "
+"service."
+msgstr ""
+"Pro zvýšení limitu na maximální hodnotu 4GB, vyberte **Desítková**, zadejte "
+"hodnotu **4294967295** a restartujte počítač nebo jen systémovou službu "
+"**WebClient**."
+
+#: ../../files/access_webdav.rst:403
+msgid "Accessing your files from Microsoft Office via WebDAV fails."
+msgstr ""
+"Přístup k vašim souborům z Microsoft Office prostřednictvím WebDAV se "
+"nedaří."
+
+#: ../../files/access_webdav.rst:408
+msgid ""
+"Known problems and their solutions are documented in the KB2123563_ article."
+msgstr "Známé problémy a jejich řešení jsou popsány ve článku KB2123563_ ."
+
+#: ../../files/access_webdav.rst:412
+msgid ""
+"Cannot map Nextcloud as a WebDAV drive in Windows using self-signed "
+"certificate."
+msgstr ""
+"V systému Windows není možné namapovat jako WebDAV disk Nextcloud, na kterém"
+" je používán sám sebou podepsaný certifikát."
+
+#: ../../files/access_webdav.rst:417
+msgid "Go to the your Nextcloud instance via your favorite Web browser."
+msgstr ""
+"Přejděte do své instance Nextcloud ze svého oblíbeného webového prohlížeče."
+
+#: ../../files/access_webdav.rst:418
+msgid ""
+"Click through until you get to the certificate error in the browser status "
+"line."
+msgstr ""
+"Proklikejte se až obdržíte chybu certifikátu ve stavovém řádku prohlížeče."
+
+#: ../../files/access_webdav.rst:420
+msgid "View the cert, then from the Details tab, select Copy to File."
+msgstr ""
+"Zobrazte certifikát a pak na panelu Podrobnosti vyberte Zkopírovat do "
+"souboru."
+
+#: ../../files/access_webdav.rst:421
+msgid ""
+"Save to the desktop with an arbitrary name, for example ``myNextcloud.pem``."
+msgstr ""
+"Uložte na plochu pod libovolným názvem, například ``mujNextcloud.pem``."
+
+#: ../../files/access_webdav.rst:422
+msgid "Start, Run, MMC."
+msgstr "Start, Spustit, MMC."
+
+#: ../../files/access_webdav.rst:423
+msgid "File, Add/Remove Snap-In."
+msgstr "Soubor, Přidat/odebrat snap-in."
+
+#: ../../files/access_webdav.rst:424
+msgid "Select Certificates, Click Add, My User Account, then Finish, then OK."
+msgstr ""
+"Vyberte Certifikáty, klikněte na Přidat, Můj uživatelský účet, pak Dokončit,"
+" pak OK."
+
+#: ../../files/access_webdav.rst:425
+msgid "Dig down to Trust Root Certification Authorities, Certificates."
+msgstr "Až po důvěryhodné kořenové certifikační autority, certifikáty. "
+
+#: ../../files/access_webdav.rst:426
+msgid "Right-Click Certificate, Select All Tasks, Import."
+msgstr ""
+"Klikněte na certifikát pravým tlačítkem, vyberte Všechny úlohy, Import."
+
+#: ../../files/access_webdav.rst:427
+msgid "Select the Save Cert from the Desktop."
+msgstr "Vyberte Uložit certifkát z desktopu."
+
+#: ../../files/access_webdav.rst:428
+msgid "Select Place all Certificates in the following Store, Click Browse,"
+msgstr ""
+"Vyberte „Umístit veškeré certifikáty do následujícího úložiště“, pak "
+"klikněte na Procházet,"
+
+#: ../../files/access_webdav.rst:429
+msgid ""
+"Check the Box that says Show Physical Stores, Expand out Trusted Root "
+"Certification Authorities, and select Local Computer there, click OK, "
+"Complete the Import."
+msgstr ""
+"Zaškrtněte kolonku která říká „Zobrazit fyzická úložiště“, rozbalte "
+"„Důvěryhodné kořenové certifikační autority“ a vyberte zde „Tento počítač“, "
+"pak klikněte na OK a import tak dokončete."
+
+#: ../../files/access_webdav.rst:432
+msgid ""
+"Check the list to make sure it shows up. You will probably need to Refresh "
+"before you see it. Exit MMC."
+msgstr ""
+"Ověřte, že se na seznamu objevilo. Nejspíš pro to bude třeba nechat Znovu "
+"načíst. Ukončete MMC konzoli."
+
+#: ../../files/access_webdav.rst:434
+msgid "Open Browser, select Tools, Delete Browsing History."
+msgstr ""
+"Otevřete webový prohlížeč, vyberte Nástroje a v nich Smazat historii "
+"prohlížení."
+
+#: ../../files/access_webdav.rst:435
+msgid "Select all but In Private Filtering Data, complete."
+msgstr "Vybrat všechny kromě v soukromí filtrovaných dat, dokončeno."
+
+#: ../../files/access_webdav.rst:436
+msgid "Go to Internet Options, Content Tab, Clear SSL State."
+msgstr "Jděte do možností Internetu, panel Obsah, Vyčistit stav SSL."
+
+#: ../../files/access_webdav.rst:437
+msgid "Close browser, then re-open and test."
+msgstr "Zavřete prohlížeč, pak o znovu otevřete a vyzkoušejte."
+
+#: ../../files/access_webdav.rst:442
+msgid ""
+"You cannot download more than 50 MB or upload large Files when the upload "
+"takes longer than 30 minutes using Web Client in Windows 7."
+msgstr ""
+"V případě webového klienta ve Windows 7 není možné stáhnout si položky "
+"větší, než 50 MB nebo nahrát velké soubory, kdy odeslání trvá déle než 30 "
+"minut."
+
+#: ../../files/access_webdav.rst:448
+msgid "Workarounds are documented in the KB2668751_ article."
+msgstr "Obejití problému jsou popsány v článku KB2668751_ ."
+
+#: ../../files/access_webdav.rst:452
+msgid "Accessing files using cURL"
+msgstr "Přístup k souborů pomocí cURL"
+
+#: ../../files/access_webdav.rst:454
+msgid ""
+"Since WebDAV is an extension of HTTP cURL can be used to script file "
+"operations."
+msgstr ""
+"Protože WebDAV je rozšířením HTTP protokolu, lze pro naskriptování operací "
+"se soubory použít cURL."
+
+#: ../../files/access_webdav.rst:456
+msgid "To create a folder with the current date as name:"
+msgstr "Pro vytvoření složky, nazvanou podle stávajícího data:"
+
+#: ../../files/access_webdav.rst:462
+msgid "To upload a file ``error.log`` into that directory:"
+msgstr "Pro nahrání souboru ``error.log`` do tohoto adresáře:"
+
+#: ../../files/access_webdav.rst:468
+msgid "To move a file:"
+msgstr "Pro přesunutí souboru:"
+
+#: ../../files/access_webdav.rst:474
+msgid "To get the properties of files in the root folder:"
+msgstr "Pro získání vlastností souborů v kořenové složce:"
