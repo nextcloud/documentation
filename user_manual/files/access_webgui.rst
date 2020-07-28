@@ -61,30 +61,6 @@ Favorites
 .. figure:: ../images/files_page-1.png
    :alt: Marking Favorite files.
 
-Share
-  Share the file or folder with a group or other users, and create public
-  shares with hyperlinks. You can also see who you have shared with already,
-  and revoke shares by clicking the trash can icon.
-
-.. note:: You can also see all re-shares of your original file shares.
-
-  If username auto-completion
-  is enabled, when you start typing the user or group name Nextcloud will
-  automatically complete it for you. If your administrator has enabled email
-  notifications, you can send an email notification of the new share from the
-  sharing screen.
-
-.. figure:: ../images/files_page-2.png
-   :alt: Sharing files.
-
-You have five share permissions:
-
-* Can share; allows the users you share with to re-share.
-* Can edit; allows the users you share with to edit your shared files, and to collaborate using the Documents app.
-* Create; allows the users you share with to create new files and add them to the share.
-* Change; allows uploading a new version of a shared file and replacing it.
-* Delete; allows the users you share with to delete shared files.
-
 Overflow Menu
   The Overflow menu (three dots) displays file details, and allows you to
   rename, download, or delete files.
@@ -197,15 +173,6 @@ Moving files
 ------------
 
 You can move files and folders by dragging and dropping them into any directory.
-
-
-Change in share expiration date
--------------------------------
-
-In older versions of Nextcloud, you could set an expiration date on both local
-and public shares. Now you can set an expiration date only on public shares,
-and local shares do not expire when public shares expire. The only way to
-"expire" a local share is to click the trash can icon to un-share your files.
 
 Creating or connecting to a Federation Share link
 -------------------------------------------------

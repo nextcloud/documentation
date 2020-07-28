@@ -11,7 +11,7 @@ Files & synchronization
    deleted_file_management
    desktop_mobile_sync
    encrypting_files
-   federated_cloud_sharing
+   sharing
    file_drop
    large_file_upload
    quota

@@ -58,6 +58,9 @@ forcing them.
    `Wrong folder date when syncing 
    <https://github.com/owncloud/core/issues/7009>`_ for discussion of this.
 
+.. note:: There are more sharing options on config.php level available: 
+   :ref:`Configuration Parameters<configPHP_Sharing>`
+
 .. _transfer_userfiles_label:   
 
 Transferring files to another user
