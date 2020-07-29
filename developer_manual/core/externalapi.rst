@@ -7,8 +7,8 @@ External API
 Introduction
 ------------
 The external API inside Nextcloud allows third party developers to access data
-provided by Nextcloud apps. Nextcloud follows the `OpenCloudMesh
-specification <https://lukasreschke.github.io/OpenCloudMeshSpecification/>`_ (draft).
+provided by Nextcloud apps. Nextcloud follows the `Open Collaboration Services
+specification <https://open-collaboration-services.org>`_.
 
 Usage
 -----
