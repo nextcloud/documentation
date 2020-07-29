@@ -117,3 +117,13 @@ The statuscode can be any of the following numbers:
 * **997** - not authorized
 * **998** - not found
 * **999** - unknown error
+
+Changing API and backwards compatibility
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+We aim to keep our API as stable as possible to avoid breaking third-party apps.
+Before an API is allowed to be removed, it should be marked as deprecated for at
+least 2 years (6 Nextcloud releases) before it gets removed.
+
+Changing the API `should be discussed in a github issue in our server repo
+<https://github.com/nextcloud/server/issues>`_. A pull request is most welcome.
