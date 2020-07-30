@@ -13,6 +13,7 @@ PAPEROPT_letter = -D latex_paper_size=letter
 ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 # the i18n builder cannot share the environment and doctrees with the others
 I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
+LANGS = $(shell touch locale/en && ls locale | grep -v source && rm locale/en) # this trick to add en in the list of langs
 
 .PHONY: help clean html dirhtml singlehtml pickle json htmlhelp qthelp devhelp epub latex latexpdf text man changes linkcheck doctest gettext
 
@@ -41,20 +42,34 @@ help:
 
 clean:
 	-rm -rf $(BUILDDIR)/*
+	git clean -d -f ./locale/
+	git checkout locale
+	git checkout ./_templates/versions.html
 
-html:   html-com
+html:
+	../build/change_file_extension.sh
+	make versions-template-all html-all merge-folders
 
-html-all: html-release html-com
+versions-template-all: $(foreach lang, $(LANGS), add-lang-to-versions-template-$(lang))
 
-html-release:
-	$(SPHINXBUILD) -b html -D html_theme='sphinx_rtd_theme' $(ALLSPHINXOPTS) $(BUILDDIR)/html/release
-	@echo
-	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html/release."
+add-lang-to-versions-template-%:
+	sed -i '/Here goes the Langs/i <dd><a href="/$*/">$*</a></dd>' ./_templates/versions.html
 
-html-com:
-	$(SPHINXBUILD) -b html -D html_theme='sphinx_rtd_theme' $(ALLSPHINXOPTS) $(BUILDDIR)/html/com
-	@echo
-	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html/com."
+html-all: $(foreach lang, $(LANGS), html-lang-$(lang))
+
+html-lang-%:    
+	$(SPHINXBUILD) -b html -D html_theme='sphinx_rtd_theme' -D language=$* $(ALLSPHINXOPTS) $(BUILDDIR)/html/$*
+	@echo "Build finished for LANG=$*. The HTML pages are in $(BUILDDIR)/html/$*."
+
+merge-folders:
+	mv $(BUILDDIR)/html/en/_static/ .
+	mv $(BUILDDIR)/html/en/_images/ .
+	cd $(BUILDDIR)/html/ && rm -rf `find -type d -name _static`
+	cd $(BUILDDIR)/html/ && rm -rf `find -type d -name _images`
+	mv ./_static $(BUILDDIR)/html/
+	mv ./_images $(BUILDDIR)/html/
+	cd $(BUILDDIR)/html/ && find ./ -type f -exec sed -i -e 's/_images/..\/_images/g' {} \;
+	cd $(BUILDDIR)/html/ && find ./ -type f -exec sed -i -e 's/_static/..\/_static/g' {} \;
 
 dirhtml:
 	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml
