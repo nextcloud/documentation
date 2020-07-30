@@ -215,7 +215,8 @@ security headers are shipped.
 Connections to remote servers
 -----------------------------
 
-Some Nextcloud functionality requires connecting to remote servers. Depending on your server setup those are possible connections:
+Some Nextcloud functionality requires connecting to remote servers. Depending on 
+your server setup those are possible connections:
 
 - www.nextcloud.com, www.startpage.com, www.eff.org, www.edri.org for checking the internet connection
 - apps.nextcloud.com for the available apps
@@ -224,3 +225,65 @@ Some Nextcloud functionality requires connecting to remote servers. Depending on
 - push-notifications.nextcloud.com for sending push notifications to mobile clients
 - surveyserver.nextcloud.com if the admin has agreed to share anonymized data
 - Any remote Nextcloud server that is connected with federated sharing
+
+Setup fail2ban
+--------------
+
+Exposing your server to the internet will inevitably lead to the exposure of the 
+services running on the internet-exposed ports to brute force login attempts.
+
+Fail2ban is a service that uses iptables to automatically drop connections for a
+pre-defined amount of time from IPs that continuously failed to authenticate to 
+the configured services.
+
+In order to setup fail2ban, you first need to download and install it on your
+server. Downloads for several distributions can be found on `fail2ban download
+page`_. It is often available from most distributions' package managers (e.g.
+``apt-get``).
+
+The standard path for fail2ban's configuration is ``/etc/fail2ban``.
+
+Setup a filter and a jail for Nextcloud
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A filter defines regex rules to identify when users fail to authenticate on 
+Nextcloud's user interface, WebDAV, or use an untrusted domain to access the 
+server.
+
+Create a file in ``/etc/fail2ban/filter.d`` named ``nextcloud.conf`` with the 
+following contents::
+
+  [Definition]
+  _groupsre = (?:(?:,?\s*"\w+":(?:"[^"]+"|\w+))*)
+  failregex = ^\{%(_groupsre)s,?\s*"remoteAddr":"<HOST>"%(_groupsre)s,?\s*"message":"Login failed:
+              ^\{%(_groupsre)s,?\s*"remoteAddr":"<HOST>"%(_groupsre)s,?\s*"message":"Trusted domain error.
+  datepattern = ,?\s*"time"\s*:\s*"%%Y-%%m-%%d[T ]%%H:%%M:%%S(%%z)?"
+
+The jail file defines how to handle the failed authentication attempts found by 
+the Nextcloud filter.
+
+Create a file in ``/etc/fail2ban/jail.d`` named ``nextcloud.local`` with the 
+following contents::
+
+  [nextcloud]
+  backend = auto
+  enabled = true
+  port = 80,443
+  protocol = tcp
+  filter = nextcloud
+  maxretry = 3
+  bantime = 86400
+  findtime = 43200
+  logpath = /path/to/data/directory/nextcloud.log
+
+Ensure to replace ``logpath`` with your installation's ``nextcloud.log`` 
+location. If you are using ports other than ``80`` and ``443`` for your 
+Web server you should replace those too. The ``bantime`` and ``findtime`` are 
+defined in seconds.
+
+Restart the fail2ban service. You can check the status of your Nextcloud jail by 
+running::
+
+  fail2ban-client status nextcloud
+
+.. _fail2ban download page: https://www.fail2ban.org/wiki/index.php/Downloads
