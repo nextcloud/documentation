@@ -32,7 +32,7 @@ from conf import *
 extensions += ['sphinx.ext.todo', 'rst2pdf.pdfbuilder', 'sphinx.ext.intersphinx']
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['../_shared_assets/templates']
+templates_path = ['../_shared_assets/templates', '_templates']
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -314,4 +314,5 @@ html_context['versions'] = generateVersionsDocs(current_docs)
 html_context['theme_vcs_pageview_mode'] += current_docs
 
 # translation
+locale_dirs = ['locale/']   # path is example but recommended.
 gettext_compact = False     # optional.
