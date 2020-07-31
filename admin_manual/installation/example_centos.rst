@@ -76,28 +76,13 @@ Next install the PHP modules needed for this install. Remember, because this is 
     dnf install -y php php-gd php-mbstring php-intl php-pecl-apcu\
          php-mysqlnd php-opcache php-json php-zip
 
-
-Manually building redis/imagick (optional)
+Installing optional modules redis/imagick
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
-    dnf install -y php-pear gcc curl-devel php-devel zlib-devel pcre-devel make
+    dnf install -y php-redis php-imagick
     
-    pecl install redis
-
-    dnf config-manager --set-enabled PowerTools
-
-    dnf install -y ImageMagick ImageMagick-devel
-    
-    pecl install imagick
-
-After installing the extensions make sure to load the extensions in your php.ini file with:
-
-::
-
-    extension=redis.so
-    extension=imagick.so
 
 Database
 --------
