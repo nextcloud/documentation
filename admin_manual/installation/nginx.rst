@@ -147,7 +147,7 @@ webroot of your nginx installation. In this example it is
       # which handle static assets (as seen below). If this block is not declared first,
       # then Nginx will encounter an infinite rewriting loop when it prepends `/index.php`
       # to the URI, resulting in a HTTP 500 error response.
-      location ~ \.php($|/) {
+      location ~ \.php(?:$|/) {
           fastcgi_split_path_info ^(.+?\.php)(/.*)$;
           set $path_info $fastcgi_path_info;
           
@@ -317,7 +317,7 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
           # which handle static assets (as seen below). If this block is not declared first,
           # then Nginx will encounter an infinite rewriting loop when it prepends
           # `/nextcloud/index.php` to the URI, resulting in a HTTP 500 error response.
-          location ~ \.php($|/) {
+          location ~ \.php(?:$|/) {
               fastcgi_split_path_info ^(.+?\.php)(/.*)$;
               set $path_info $fastcgi_path_info;
               
