@@ -11,13 +11,6 @@ server. These configurations examples were originally provided by
    **ssl_certificate_key** to suit your needs.
 -  Make sure your SSL certificates are readable by the server (see `nginx HTTP
    SSL Module documentation <http://wiki.nginx.org/HttpSslModule>`_).
--  ``add_header`` statements are only taken from the current level and are not
-   cascaded from or to a different level. All necessary ``add_header``
-   statements must be defined in each level needed. For better readability it
-   is possible to move *common* add header statements into a separate file
-   and include that file wherever necessary. However, each ``add_header``
-   statement must be written in a single line to prevent connection problems
-   with sync clients.
 -  Be careful about line breaks if you copy the examples, as long lines may be
    broken for page formatting.
 -  Some environments might need a ``cgi.fix_pathinfo`` set to ``1`` in their
@@ -112,7 +105,7 @@ webroot of your nginx installation. In this example it is
       
       # Rule borrowed from `.htaccess` to handle Microsoft DAV clients
       location = / {
-          if ( $http_user_agent ~ DavClnt ) {
+          if ( $http_user_agent ~ ^DavClnt ) {
               return 302 /remote.php/webdav/$is_args$args;
           }
       }
@@ -135,22 +128,22 @@ webroot of your nginx installation. In this example it is
           rewrite ^/\.well-known/webfinger        /public.php?service=webfinger       last;
           rewrite ^/\.well-known/nodeinfo         /public.php?service=nodeinfo        last;
           
-          location /.well-known/carddav   { return 301 /remote.php/dav/; }
-          location /.well-known/caldav    { return 301 /remote.php/dav/; }
+          location = /.well-known/carddav     { return 301 /remote.php/dav/; }
+          location = /.well-known/caldav      { return 301 /remote.php/dav/; }
 
           try_files $uri $uri/ =404;
       }
       
       # Rules borrowed from `.htaccess` to hide certain paths from clients
-      location ~ ^/(build|tests|config|lib|3rdparty|templates|data)($|/)  { return 404; }
-      location ~ ^/(\.|autotest|occ|issue|indie|db_|console)              { return 404; }
+      location ~ ^/(?:build|tests|config|lib|3rdparty|templates|data)($|/)  { return 404; }
+      location ~ ^/(?:\.|autotest|occ|issue|indie|db_|console)              { return 404; }
       
       # Ensure this block, which passes PHP files to the PHP process, is above the blocks
       # which handle static assets (as seen below). If this block is not declared first,
       # then Nginx will encounter an infinite rewriting loop when it prepends `/index.php`
       # to the URI, resulting in a HTTP 500 error response.
-      location ~ \.php($|/) {
-          fastcgi_split_path_info ^(.+?\.php)(/.*|)$;
+      location ~ \.php(?:$|/) {
+          fastcgi_split_path_info ^(.+?\.php)(/.*)$;
           set $path_info $fastcgi_path_info;
           
           try_files $fastcgi_script_name =404;
@@ -168,7 +161,7 @@ webroot of your nginx installation. In this example it is
           fastcgi_request_buffering off;
       }
       
-      location ~ \.(css|js|svg|gif)$ {
+      location ~ \.(?:css|js|svg|gif)$ {
           try_files $uri /index.php$request_uri;
           expires 6M;         # Cache-Control policy borrowed from `.htaccess`
           access_log off;     # Optional: Don't log access to assets
@@ -250,8 +243,8 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
           rewrite ^/\.well-known/webfinger        /nextcloud/public.php?service=webfinger         last;
           rewrite ^/\.well-known/nodeinfo         /nextcloud/public.php?service=nodeinfo          last;
 
-          location /.well-known/carddav   { return 301 /nextcloud/remote.php/dav/; }
-          location /.well-known/caldav    { return 301 /nextcloud/remote.php/dav/; }
+          location = /.well-known/carddav   { return 301 /nextcloud/remote.php/dav/; }
+          location = /.well-known/caldav    { return 301 /nextcloud/remote.php/dav/; }
 
           try_files $uri $uri/ =404;
       }
@@ -306,21 +299,21 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
 
           # Rule borrowed from `.htaccess` to handle Microsoft DAV clients
           location = /nextcloud {
-              if ( $http_user_agent ~ DavClnt ) {
+              if ( $http_user_agent ~ ^DavClnt ) {
                   return 302 /nextcloud/remote.php/webdav/$is_args$args;
               }
           }
           
           # Rules borrowed from `.htaccess` to hide certain paths from clients
-          location ~ ^/nextcloud/(build|tests|config|lib|3rdparty|templates|data)($|/)    { return 404; }
-          location ~ ^/nextcloud/(\.|autotest|occ|issue|indie|db_|console)                { return 404; }
+          location ~ ^/nextcloud/(?:build|tests|config|lib|3rdparty|templates|data)($|/)    { return 404; }
+          location ~ ^/nextcloud/(?:\.|autotest|occ|issue|indie|db_|console)                { return 404; }
           
           # Ensure this block, which passes PHP files to the PHP process, is above the blocks
           # which handle static assets (as seen below). If this block is not declared first,
           # then Nginx will encounter an infinite rewriting loop when it prepends
           # `/nextcloud/index.php` to the URI, resulting in a HTTP 500 error response.
-          location ~ \.php($|/) {
-              fastcgi_split_path_info ^(.+?\.php)(/.*|)$;
+          location ~ \.php(?:$|/) {
+              fastcgi_split_path_info ^(.+?\.php)(/.*)$;
               set $path_info $fastcgi_path_info;
               
               try_files $fastcgi_script_name =404;
@@ -338,7 +331,7 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
               fastcgi_request_buffering off;
           }
           
-          location ~ \.(css|js|svg|gif)$ {
+          location ~ \.(?:css|js|svg|gif)$ {
               try_files $uri /nextcloud/index.php$request_uri;
               expires 6M;         # Cache-Control policy borrowed from `.htaccess`
               access_log off;     # Optional: Don't log access to assets
