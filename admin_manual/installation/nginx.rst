@@ -137,6 +137,8 @@ webroot of your nginx installation. In this example it is
           
           location /.well-known/carddav   { return 301 /remote.php/dav/; }
           location /.well-known/caldav    { return 301 /remote.php/dav/; }
+
+          try_files $uri $uri/ =404;
       }
       
       # Rules borrowed from `.htaccess` to hide certain paths from clients
@@ -251,10 +253,10 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
           location /.well-known/carddav   { return 301 /nextcloud/remote.php/dav/; }
           location /.well-known/caldav    { return 301 /nextcloud/remote.php/dav/; }
 
-          try_files $uri $uri/ /nextcloud/index.php$request_uri;
+          try_files $uri $uri/ =404;
       }
       
-      location ~ ^/nextcloud($|/) {
+      location ^~ /nextcloud {
           # set max upload size
           client_max_body_size 512M;
           fastcgi_buffers 64 4K;
