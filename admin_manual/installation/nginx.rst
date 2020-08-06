@@ -135,7 +135,7 @@ webroot of your nginx installation. In this example it is
       }
       
       # Rules borrowed from `.htaccess` to hide certain paths from clients
-      location ~ ^/(?:build|tests|config|lib|3rdparty|templates|data)($|/)  { return 404; }
+      location ~ ^/(?:build|tests|config|lib|3rdparty|templates|data)(?:$|/)  { return 404; }
       location ~ ^/(?:\.|autotest|occ|issue|indie|db_|console)              { return 404; }
       
       # Ensure this block, which passes PHP files to the PHP process, is above the blocks
@@ -305,7 +305,7 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
           }
           
           # Rules borrowed from `.htaccess` to hide certain paths from clients
-          location ~ ^/nextcloud/(?:build|tests|config|lib|3rdparty|templates|data)($|/)    { return 404; }
+          location ~ ^/nextcloud/(?:build|tests|config|lib|3rdparty|templates|data)(?:$|/)    { return 404; }
           location ~ ^/nextcloud/(?:\.|autotest|occ|issue|indie|db_|console)                { return 404; }
           
           # Ensure this block, which passes PHP files to the PHP process, is above the blocks
