@@ -135,8 +135,8 @@ webroot of your nginx installation. In this example it is
           rewrite ^/\.well-known/webfinger        /public.php?service=webfinger       last;
           rewrite ^/\.well-known/nodeinfo         /public.php?service=nodeinfo        last;
           
-          location /.well-known/carddav   { return 301 /remote.php/dav/; }
-          location /.well-known/caldav    { return 301 /remote.php/dav/; }
+          location = /.well-known/carddav   { return 301 /remote.php/dav/; }
+          location = /.well-known/caldav    { return 301 /remote.php/dav/; }
       }
       
       # Rules borrowed from `.htaccess` to hide certain paths from clients
@@ -248,8 +248,8 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
           rewrite ^/\.well-known/webfinger        /nextcloud/public.php?service=webfinger         last;
           rewrite ^/\.well-known/nodeinfo         /nextcloud/public.php?service=nodeinfo          last;
 
-          location /.well-known/carddav   { return 301 /nextcloud/remote.php/dav/; }
-          location /.well-known/caldav    { return 301 /nextcloud/remote.php/dav/; }
+          location = /.well-known/carddav   { return 301 /nextcloud/remote.php/dav/; }
+          location = /.well-known/caldav    { return 301 /nextcloud/remote.php/dav/; }
 
           try_files $uri $uri/ /nextcloud/index.php$request_uri;
       }
