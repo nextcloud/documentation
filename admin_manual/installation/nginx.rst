@@ -187,10 +187,10 @@ In this example the Nextcloud files are located at
 ``/var/www/nextcloud`` and the Nextcloud instance is accessed via ``http(s)://cloud.example.com/nextcloud/``.
 The configuration differs from the "Nextcloud in webroot" configuration above in the following ways:
 
-- All requests for ``/nextcloud`` are encapsulated within a single ``location`` block, namely ``location ~ ^/nextcloud($|/)``.
+- All requests for ``/nextcloud`` are encapsulated within a single ``location`` block, namely ``location ^~ /nextcloud``.
 - The string ``/nextcloud`` is prepended to all prefix paths.
 - The URI ``/nextcloud`` is *aliased* to ``/var/www/nextcloud``, rather than the domain itself being *rooted* at ``/var/www/nextcloud``.
-- The blocks that handle requests for paths outside of ``/nextcloud``, i.e. ``/robots.txt``, ``/.well-known``, and hidden files, are pulled out of the ``location ~ ^/nextcloud($|/)`` block.
+- The blocks that handle requests for paths outside of ``/nextcloud``, i.e. ``/robots.txt``, ``/.well-known``, and hidden files, are pulled out of the ``location ^~ /nextcloud`` block.
 - The block which handles `/.well-known` doesn't need a regex exception, since the rule which prevents users from accessing hidden folders at the root of the Nextcloud installation no longer matches that path.
 
 .. code-block:: nginx
