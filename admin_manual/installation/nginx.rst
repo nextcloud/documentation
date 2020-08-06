@@ -112,7 +112,7 @@ webroot of your nginx installation. In this example it is
       
       # Rule borrowed from `.htaccess` to handle Microsoft DAV clients
       location = / {
-          if ( $http_user_agent ~ DavClnt ) {
+          if ( $http_user_agent ~ ^DavClnt ) {
               return 302 /remote.php/webdav/$is_args$args;
           }
       }
@@ -140,15 +140,15 @@ webroot of your nginx installation. In this example it is
       }
       
       # Rules borrowed from `.htaccess` to hide certain paths from clients
-      location ~ ^/(build|tests|config|lib|3rdparty|templates|data)($|/)  { return 404; }
-      location ~ ^/(\.|autotest|occ|issue|indie|db_|console)              { return 404; }
+      location ~ ^/(?:build|tests|config|lib|3rdparty|templates|data)($|/)  { return 404; }
+      location ~ ^/(?:\.|autotest|occ|issue|indie|db_|console)              { return 404; }
       
       # Ensure this block, which passes PHP files to the PHP process, is above the blocks
       # which handle static assets (as seen below). If this block is not declared first,
       # then Nginx will encounter an infinite rewriting loop when it prepends `/index.php`
       # to the URI, resulting in a HTTP 500 error response.
       location ~ \.php($|/) {
-          fastcgi_split_path_info ^(.+?\.php)(/.*|)$;
+          fastcgi_split_path_info ^(.+?\.php)(/.*)$;
           set $path_info $fastcgi_path_info;
           
           try_files $fastcgi_script_name =404;
@@ -166,7 +166,7 @@ webroot of your nginx installation. In this example it is
           fastcgi_request_buffering off;
       }
       
-      location ~ \.(css|js|svg|gif)$ {
+      location ~ \.(?:css|js|svg|gif)$ {
           try_files $uri /index.php$request_uri;
           expires 6M;         # Cache-Control policy borrowed from `.htaccess`
           access_log off;     # Optional: Don't log access to assets
@@ -304,21 +304,21 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
 
           # Rule borrowed from `.htaccess` to handle Microsoft DAV clients
           location = /nextcloud {
-              if ( $http_user_agent ~ DavClnt ) {
+              if ( $http_user_agent ~ ^DavClnt ) {
                   return 302 /nextcloud/remote.php/webdav/$is_args$args;
               }
           }
           
           # Rules borrowed from `.htaccess` to hide certain paths from clients
-          location ~ ^/nextcloud/(build|tests|config|lib|3rdparty|templates|data)($|/)    { return 404; }
-          location ~ ^/nextcloud/(\.|autotest|occ|issue|indie|db_|console)                { return 404; }
+          location ~ ^/nextcloud/(?:build|tests|config|lib|3rdparty|templates|data)($|/)    { return 404; }
+          location ~ ^/nextcloud/(?:\.|autotest|occ|issue|indie|db_|console)                { return 404; }
           
           # Ensure this block, which passes PHP files to the PHP process, is above the blocks
           # which handle static assets (as seen below). If this block is not declared first,
           # then Nginx will encounter an infinite rewriting loop when it prepends
           # `/nextcloud/index.php` to the URI, resulting in a HTTP 500 error response.
           location ~ \.php($|/) {
-              fastcgi_split_path_info ^(.+?\.php)(/.*|)$;
+              fastcgi_split_path_info ^(.+?\.php)(/.*)$;
               set $path_info $fastcgi_path_info;
               
               try_files $fastcgi_script_name =404;
@@ -336,7 +336,7 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
               fastcgi_request_buffering off;
           }
           
-          location ~ \.(css|js|svg|gif)$ {
+          location ~ \.(?:css|js|svg|gif)$ {
               try_files $uri /nextcloud/index.php$request_uri;
               expires 6M;         # Cache-Control policy borrowed from `.htaccess`
               access_log off;     # Optional: Don't log access to assets
