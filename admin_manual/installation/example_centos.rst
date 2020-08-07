@@ -21,8 +21,26 @@ Apache
 ::
 
     dnf install -y httpd
+    
+Create a virtualhost in ``/etc/httpd/conf.d/nextcloud.conf`` and add the following content to it:
 
-See :ref:`apache_configuration_label` for details.
+::
+
+  <VirtualHost *:80>
+    DocumentRoot /var/www/html/nextcloud/
+    ServerName  your.server.com
+
+    <Directory /var/www/html/nextcloud/>
+      Require all granted
+      AllowOverride All
+      Options FollowSymLinks MultiViews
+
+      <IfModule mod_dav.c>
+        Dav off
+      </IfModule>
+
+    </Directory>
+  </VirtualHost>
 
 Make sure the apache web service is enabled and started::
 
