@@ -41,6 +41,9 @@ Create a virtualhost in ``/etc/httpd/conf.d/nextcloud.conf`` and add the followi
 
     </Directory>
   </VirtualHost>
+  
+  
+See :ref:`apache_configuration_label` for further details.
 
 Make sure the apache web service is enabled and started::
 
