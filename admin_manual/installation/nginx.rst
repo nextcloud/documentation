@@ -189,7 +189,7 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
 
 - All requests for ``/nextcloud`` are encapsulated within a single ``location`` block, namely ``location ^~ /nextcloud``.
 - The string ``/nextcloud`` is prepended to all prefix paths.
-- The URI ``/nextcloud`` is *aliased* to ``/var/www/nextcloud``, rather than the domain itself being *rooted* at ``/var/www/nextcloud``.
+- The root of the domain is mapped to ``/var/www`` rather than ``/var/www/nextcloud``, so that the URI ``/nextcloud`` is mapped to the server directory ``/var/www/nextcloud``.
 - The blocks that handle requests for paths outside of ``/nextcloud`` (i.e. ``/robots.txt`` and ``/.well-known``) are pulled out of the ``location ^~ /nextcloud`` block.
 - The block which handles `/.well-known` doesn't need a regex exception, since the rule which prevents users from accessing hidden folders at the root of the Nextcloud installation no longer matches that path.
 
@@ -228,6 +228,9 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
       # in all major browsers and getting removed from this list
       # could take several months.
       #add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;" always;
+
+      # Path to the root of the domain
+      root /var/www;
       
       location = /robots.txt {
           allow all;
@@ -277,10 +280,6 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
           
           # Remove X-Powered-By, which is an information leak
           fastcgi_hide_header X-Powered-By;
-          
-          # Path to the root of your installation
-          # Notice that this is an `alias` directive, not a `root` directive
-          alias /var/www/nextcloud;
           
           # Specify how to handle directories -- specifying `/nextcloud/index.php$request_uri`
           # here as the fallback means that Nginx always exhibits the desired behaviour
