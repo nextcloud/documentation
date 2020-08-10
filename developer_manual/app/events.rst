@@ -243,6 +243,8 @@ Event to allow to register the direct editor.
 
 *Available in Nextcloud 18 and later.*
 
+Deprecated in 20.0.0 - it can't be guaranteed that this event is triggered in all case (e.g. for LDAP users this isn't possible)
+
 ``\OCP\Group\Events\GroupCreatedEvent``
 ***************************************
 
