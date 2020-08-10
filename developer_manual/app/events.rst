@@ -167,6 +167,135 @@ Available Events
 
 Here you find an overview of the public events that can be consumed in apps. See their source files for more details.
 
+``\OCA\Files\Event\LoadAdditionalScriptsEvent``
+***********************************************
+
+*Available in Nextcloud 17 and later.*
+
+This event is triggered when the files app is rendered. It canb e used to add additional scripts to the files app.
+
+``\OCA\Viewer\Event\LoadViewer``
+********************************
+
+*Available in Nextcloud 17 and later.*
+
+This event is triggered whenever the viewer is loaded and extensions should be loaded.
+
+``\OCP\DirectEditing\RegisterDirectEditorEvent``
+************************************************
+
+*Available in Nextcloud 18 and later.*
+
+Event to allow to register the direct editor.
+
+``\OCP\Files\Events\BeforeFileScannedEvent``
+********************************************
+
+*Available in Nextcloud 18 and later.*
+
+``\OCP\Files\Events\BeforeFolderScannedEvent``
+**********************************************
+
+*Available in Nextcloud 18 and later.*
+
+``\OCP\Files\Events\FileCacheUpdated``
+**************************************
+
+*Available in Nextcloud 18 and later.*
+
+``\OCP\Files\Events\FileScannedEvent``
+**************************************
+
+*Available in Nextcloud 18 and later.*
+
+``\OCP\Files\Events\FolderScannedEvent``
+****************************************
+
+*Available in Nextcloud 18 and later.*
+
+``\OCP\Files\Events\NodeAddedToCache``
+**************************************
+
+*Available in Nextcloud 18 and later.*
+
+``\OCP\Files\Events\NodeRemovedFromCache``
+******************************************
+
+*Available in Nextcloud 18 and later.*
+
+``\OCP\Group\Events\BeforeGroupCreatedEvent``
+*********************************************
+
+*Available in Nextcloud 18 and later.*
+
+``\OCP\Group\Events\BeforeGroupDeletedEvent``
+*********************************************
+
+*Available in Nextcloud 18 and later.*
+
+``\OCP\Group\Events\BeforeUserAddedEvent``
+******************************************
+
+*Available in Nextcloud 18 and later.*
+
+``\OCP\Group\Events\BeforeUserRemovedEvent``
+********************************************
+
+*Available in Nextcloud 18 and later.*
+
+Deprecated in 20.0.0 - it can't be guaranteed that this event is triggered in all case (e.g. for LDAP users this isn't possible)
+
+``\OCP\Group\Events\GroupCreatedEvent``
+***************************************
+
+*Available in Nextcloud 18 and later.*
+
+``\OCP\Group\Events\GroupDeletedEvent``
+***************************************
+
+*Available in Nextcloud 18 and later.*
+
+``\OCP\Group\Events\UserAddedEvent``
+************************************
+
+*Available in Nextcloud 18 and later.*
+
+``\OCP\Group\Events\UserRemovedEvent``
+**************************************
+
+*Available in Nextcloud 18 and later.*
+
+``\OCP\Security\CSP\AddContentSecurityPolicyEvent``
+***************************************************
+
+*Available in Nextcloud 17 and later.*
+
+Allows to inject something into the default content policy. This is for example useful when you're injecting Javascript code into a view belonging to another controller and cannot modify its Content-Security-Policy itself. Note that the adjustment is only applied to applications that use AppFramework controllers.
+
+WARNING: Using this API incorrectly may make the instance more insecure. Do think twice before adding whitelisting resources. Please do also note that it is not possible to use the `disallowXYZ` functions.
+
+``\OCP\Security\Events\GenerateSecurePasswordEvent``
+****************************************************
+
+*Available in Nextcloud 18 and later.*
+
+``\OCP\Security\Events\ValidatePasswordPolicyEvent``
+****************************************************
+
+*Available in Nextcloud 18 and later.*
+
+``\OCP\Security\FeaturePolicy\AddFeaturePolicyEvent``
+****************************************************
+
+*Available in Nextcloud 17 and later.*
+
+Event that allows to register a feature policy header to a request.
+
+``\OCP\Share\Events\ShareCreatedEvent``
+*******************************************
+
+*Available in Nextcloud 18 and later.*
+
 ``\OCP\User\Events\BeforeUserLoggedInWithCookieEvent``
 ******************************************************
 
@@ -177,9 +306,9 @@ Emitted before a user is logged in via remember-me cookies.
 ``\OCP\User\Events\UserLoggedInWithCookieEvent``
 ************************************************
 
-Emitted when a user has been succesfully logged in via remember-me cookies.
-
 *Available in Nextcloud 18 and later.*
+
+Emitted when a user has been succesfully logged in via remember-me cookies.
 
 ``\OCP\User\Events\BeforePasswordUpdatedEvent``
 ***********************************************
@@ -214,14 +343,10 @@ Emitted when a new user has been created on the back-end.
 
 *Available in Nextcloud 18 and later.*
 
-Emitted before a user is logged out.
-
 ``\OCP\User\Events\UserDeletedEvent``
 *************************************
 
 *Available in Nextcloud 18 and later.*
-
-Emitted when a user has been logged out successfully.
 
 ``\OCP\User\Events\BeforeUserLoggedInEvent``
 ********************************************
@@ -232,6 +357,8 @@ Emitted when a user has been logged out successfully.
 *********************************************
 
 *Available in Nextcloud 18 and later.*
+
+Emitted before a user is logged out.
 
 ``\OCP\User\Events\CreateUserEvent``
 ************************************
@@ -258,13 +385,22 @@ Emitted when a user has been logged out successfully.
 
 *Available in Nextcloud 18 and later.*
 
-``\OCP\Security\CSP\AddContentSecurityPolicyEvent``
-***************************************************
+Emitted when a user has been logged out successfully.
 
-*Available in Nextcloud 17 and later.*
+``\OCP\WorkflowEngine\RegisterChecksEvent``
+***************************************
 
-This event is emitted so apps can modify the CSP provided by nextcloud. For example if more domains can be used to connect to. Added in Nextcloud 17.
+*Available in Nextcloud 18 and later.*
 
+``\OCP\WorkflowEngine\RegisterEntitiesEvent``
+***************************************
+
+*Available in Nextcloud 18 and later.*
+
+``\OCP\WorkflowEngine\RegisterOperationsEvent``
+***************************************
+
+*Available in Nextcloud 18 and later.*
 
 Symfony event dispatcher
 ------------------------
