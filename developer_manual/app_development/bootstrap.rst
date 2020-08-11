@@ -63,6 +63,9 @@ The class **must** extend ``OCP\AppFramework\App`` and it may optionally impleme
         public function register(IRegistrationContext $context): void {
             // ... registration logic goes here ...
 
+            // Register the composer autoloader for packages shipped by this app, if applicable
+            @include_once __DIR__ . '/../../vendor/autoload.php'
+
             $context->registerEventListener(
                 BeforeUserDeletedEvent::class,
                 UserDeletedListener::class
@@ -121,7 +124,7 @@ app.php (deprecated)
 --------------------
 
 Nextcloud will ``require_once`` every installed and enabled app's ``appinfo/app.php`` file if it exists. The app can use
-this file to run registrations of services, event listeners and similar.
+this file to run registrations of autoloaders, services, event listeners and similar.
 
 To leverage the advantages of object-oriented programming, it's recommended to put the logic into an :ref:`Application<application-php>`
 class and query an instance like
@@ -131,5 +134,8 @@ class and query an instance like
     <?php
 
     declare(strict_types=1);
+
+    // Register the composer autoloader for packages shipped by this app, if applicable
+    @include_once __DIR__ . '/../vendor/autoload.php'
 
     $app = \OC::$server->query(\OCA\MyApp\AppInfo\Application::class);
