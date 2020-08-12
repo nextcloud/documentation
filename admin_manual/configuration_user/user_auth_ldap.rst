@@ -703,12 +703,19 @@ Those mappings are done in the database table ``ldap_user_mapping`` and
 if something else is specified in *User Home Folder Naming Rule*), which
 contains files and meta data.
 
-As of Nextcloud 5 the internal user name and a visible display name are separated.
+The internal user name and a visible display name are separated.
 This is not the case for group names, yet, i.e. a group name cannot be altered.
 
 That means that your LDAP configuration should be good and ready before putting
 it into production. The mapping tables are filled early, but as long as you are
 testing, you can empty the tables any time. Do not do this in production.
+
+The attributes of users are fetched on demand (i.e. for sharing autocompletion
+or in the user management) and then stored inside the Nextcloud database to
+allow a better performance on our side. They are typically checked twice a day
+in batches from all users again. Beside that they are also refreshed during a
+login for this user or can be fetched manually via the occ command 
+``occ ldap:check-user --update USERID`` where ``USERID`` is Nextcloud's user id.
 
 Caching
 ^^^^^^^
@@ -738,7 +745,7 @@ job which keeps the ``user-group-mappings`` up-to-date, and always in cache.
 Under normal circumstances, all users are never loaded at the same time.
 Typically the loading of users happens while page results are generated, in
 steps of 30 until the limit is reached or no results are left. For this to
-work on an oC-Server and LDAP-Server, **Paged Results** must be supported.
+work on a Nextcloud-Server and LDAP-Server, **Paged Results** must be supported.
 
 Nextcloud remembers which user belongs to which LDAP-configuration. That means
 each request will always be directed to the right server unless a user is
