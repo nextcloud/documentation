@@ -2091,3 +2091,18 @@ which are older then the number of days that is set for ``activity_expire_days``
 	'activity_use_cached_mountpoints' => false,
 
 Before enabling this, read the warning in :ref:`label-activities-groupfolders`
+
+Settings app
+^^^^^^^^^^^^
+
+If an email address of a user is changed by an admin, then it triggers an email
+to the user that states "Your email address on URL was changed by an
+administrator.". In some cases this should not be triggered, because it was a
+normal maintenance change. To disable this specific email the appconfig option
+``disable_email.email_address_changed_by_admin`` can be set to ``yes``::
+
+	occ config:app:set settings disable_email.email_address_changed_by_admin --value yes
+
+To disable this behaviour change it to any other value or delete the app config::
+
+	occ config:app:delete settings disable_email.email_address_changed_by_admin
