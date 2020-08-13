@@ -16,6 +16,9 @@ navigate to the configuration and locate the Workflow settings.
 
 The rule from the example will delete all files tagged with ``Temporary file`` after 14 days.
 
+While creating a rule you can use the "Notify users a day before retention will delete a file" option to
+make sure the the users will get a notification before a file gets deleted.
+
 Common misconfigurations
 ------------------------
 
