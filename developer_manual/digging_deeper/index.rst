@@ -23,3 +23,4 @@ Digging deeper
    testing
    two-factor-provider
    users
+   dashboard
