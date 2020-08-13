@@ -67,7 +67,7 @@ Distinguish between max expire date and default expire date
 -----------------------------------------------------------
 
 The expire date which can be set and enforced in the settings above are the hard limit and the
-default value at the same time. Sometimes admins want o have a moderate default expire date,
+default value at the same time. Sometimes admins want to have a moderate default expire date,
 for example 7 days but  make sure that the user can't extend it to more than 14 days.
 
 In order to do so the user can set a enforced expire date in the settings as described above
