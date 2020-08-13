@@ -216,6 +216,11 @@ Emitted before the rendering step of each TemplateResponse. The event holds a fl
 
 Emitted when the authentication fails, but only if the login name can be associated with an existing user.
 
+``\OCP\Authentication\TwoFactorAuth\TwoFactorProviderDisabled``
+***********************************************
+
+*Available in Nextcloud 20 and later.*
+
 ``\OCP\Contacts\Events\ContactInteractedWithEvent``
 ***************************************************
 
