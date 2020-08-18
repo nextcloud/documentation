@@ -4,8 +4,8 @@ BigInt (64bit) identifiers
 
 Nextcloud uses big integers to store identifiers and auto-increment keys in the database.
 Because changing columns on huge tables can take quite a while (up to hours or days) 
-depending on the number of files in the Nextcloud instance, this migration on the filecache- 
-and activity tablehas to be triggered manually by a console command.
+depending on the number of files in the Nextcloud instance, this migration on the filecache 
+and activity table has to be triggered manually by a console command.
 
 The command can safely be executed. It will show a success message when there is nothing to do::
 
