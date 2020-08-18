@@ -8,9 +8,8 @@ The App Framework assembles the application by using a container based on the
 software pattern `Dependency Injection <https://en.wikipedia.org/wiki/Dependency_injection>`_.
 This makes the code easier to test and thus easier to maintain.
 
-If you are unfamiliar with this pattern, watch the following videos:
+If you are unfamiliar with this pattern, watch the following video:
 
-* `Dependency Injection and the art of Services and Containers Tutorial <http://www.youtube.com/watch?v=DcNtg4_i-2w>`_
 * `Google Clean Code Talks <http://www.youtube.com/watch?v=RlfLCWKxHJ0>`_
 
 .. _dependency-injection:
