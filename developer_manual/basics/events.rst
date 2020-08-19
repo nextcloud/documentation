@@ -167,12 +167,166 @@ Available Events
 
 Here you find an overview of the public events that can be consumed in apps. See their source files for more details.
 
+``\OCA\DAV\Events\AddressBookCreatedEvent``
+*******************************************
+
+*Available in Nextcloud 20 and later.*
+
+This event is triggered when a user creates a new address-book.
+
+``\OCA\DAV\Events\AddressBookDeletedEvent``
+*******************************************
+
+*Available in Nextcloud 20 and later.*
+
+This event is triggered when a user deletes an address-book.
+
+``\OCA\DAV\Events\AddressBookShareUpdatedEvent``
+************************************************
+
+*Available in Nextcloud 20 and later.*
+
+This event is triggered when a user shares or unshares an address-book.
+
+``\OCA\DAV\Events\AddressBookUpdatedEvent``
+*******************************************
+
+*Available in Nextcloud 20 and later.*
+
+This event is triggered when a user updates an address-book.
+
+``\OCA\DAV\Events\CachedCalendarObjectCreatedEvent``
+****************************************************
+
+*Available in Nextcloud 20 and later.*
+
+This event is triggered when a cached calendar object is being created while fetching a calendar-subscription.
+
+``\OCA\DAV\Events\CachedCalendarObjectDeletedEvent``
+****************************************************
+
+*Available in Nextcloud 20 and later.*
+
+This event is triggered when a cached calendar object is being deleted while fetching a calendar-subscription.
+
+``\OCA\DAV\Events\CachedCalendarObjectUpdatedEvent``
+****************************************************
+
+*Available in Nextcloud 20 and later.*
+
+This event is triggered when a cached calendar object is being updated while fetching a calendar-subscription.
+
+``\OCA\DAV\Events\CalendarCreatedEvent``
+****************************************
+
+*Available in Nextcloud 20 and later.*
+
+This event is triggered when a user creates a new calendar.
+
+``\OCA\DAV\Events\CalendarDeletedEvent``
+****************************************
+
+*Available in Nextcloud 20 and later.*
+
+This event is triggered when a user deletes a calendar.
+
+``\OCA\DAV\Events\CalendarObjectCreatedEvent``
+**********************************************
+
+*Available in Nextcloud 20 and later.*
+
+This event is triggered when a user creates a calendar-object.
+
+``\OCA\DAV\Events\CalendarObjectDeletedEvent``
+**********************************************
+
+*Available in Nextcloud 20 and later.*
+
+This event is triggered when a user deletes a calendar-object.
+
+``\OCA\DAV\Events\CalendarObjectUpdatedEvent``
+**********************************************
+
+*Available in Nextcloud 20 and later.*
+
+This event is triggered when a user updates a calendar-object.
+
+``\OCA\DAV\Events\CalendarPublishedEvent``
+******************************************
+
+*Available in Nextcloud 20 and later.*
+
+This event is triggered when a user publishes a calendar.
+
+``\OCA\DAV\Events\CalendarShareUpdatedEvent``
+*********************************************
+
+*Available in Nextcloud 20 and later.*
+
+This event is triggered when a user shares or unshares a calendar.
+
+``\OCA\DAV\Events\CalendarUnpublishedEvent``
+********************************************
+
+*Available in Nextcloud 20 and later.*
+
+This event is triggered when a user unpublishes calendar.
+
+``\OCA\DAV\Events\CalendarUpdatedEvent``
+****************************************
+
+*Available in Nextcloud 20 and later.*
+
+This event is triggered when a user updates a calendar.
+
+``\OCA\DAV\Events\CardCreatedEvent``
+************************************
+
+*Available in Nextcloud 20 and later.*
+
+This event is triggered when a user creates a new card in an address-book.
+
+``\OCA\DAV\Events\CardDeletedEvent``
+************************************
+
+*Available in Nextcloud 20 and later.*
+
+This event is triggered when a user deletes a card in an address-book.
+
+``\OCA\DAV\Events\CardUpdatedEvent``
+************************************
+
+*Available in Nextcloud 20 and later.*
+
+This event is triggered when a user updates a card in an address-book.
+
 ``\OCA\DAV\Events\SabrePluginAuthInitEvent``
 ********************************************
 
 *Available in Nextcloud 20 and later.*
 
 This event is triggered during the setup of the SabreDAV server to allow the registration of additional authentication backends.
+
+``\OCA\DAV\Events\SubscriptionCreatedEvent``
+********************************************
+
+*Available in Nextcloud 20 and later.*
+
+This event is triggered when a user creates a new calendar-subscription.
+
+``\OCA\DAV\Events\SubscriptionDeletedEvent``
+********************************************
+
+*Available in Nextcloud 20 and later.*
+
+This event is triggered when a user deletes a calendar-subscription.
+
+``\OCA\DAV\Events\SubscriptionUpdatedEvent``
+********************************************
+
+*Available in Nextcloud 20 and later.*
+
+This event is triggered when a user deletes a calendar-subscription.
 
 ``\OCA\FederatedFileSharing\Events\FederatedShareAddedEvent``
 *************************************************************
