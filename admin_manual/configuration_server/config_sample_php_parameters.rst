@@ -1571,6 +1571,12 @@ Users can change this for their account in their personal sharing settings
 
 Set to true to enforce that internal shares need to be accepted
 
+::
+
+	'sharing.enable_share_mail' => true,
+
+Set to false to stop sending a mail when users receive a share
+
 All other configuration options
 -------------------------------
 
