@@ -302,6 +302,10 @@ Now that the tables are created we want to map the database result to a PHP obje
         protected $title;
         protected $content;
         protected $userId;
+        
+        public function __construct() {
+            $this->addType('id','integer');
+        }
 
         public function jsonSerialize() {
             return [
