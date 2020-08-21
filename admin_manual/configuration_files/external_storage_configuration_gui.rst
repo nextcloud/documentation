@@ -75,7 +75,8 @@ individually with the following options:
 * Mac NFD Compatability
 * Read Only
 
-The **Encryption** checkbox is visible only when the Encryption app is enabled. 
+The **Encryption** checkbox is visible only when the Encryption app is enabled. Note that server-side
+encryption is not available for other Nextcloud servers used as external storage.
 
 **Enable Sharing** allows the Nextcloud admin to enable or disable sharing on individual mountpoints.
 When sharing is disabled the shares are retained internally, so that you can re-enable sharing
