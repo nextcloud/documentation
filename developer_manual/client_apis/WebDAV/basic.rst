@@ -131,7 +131,7 @@ A folder can be created by sending a :code:`MKCOL` request to the folder.
 Deleting files and folders (rfc4918_)
 -------------------------------------
 
-A file or folder can be created by sending a :code:`DELETE` request to the file or folder.
+A file or folder can be deleted by sending a :code:`DELETE` request to the file or folder.
 
 .. code::
 
