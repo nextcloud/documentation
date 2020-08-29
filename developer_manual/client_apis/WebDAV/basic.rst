@@ -93,6 +93,7 @@ The following properties are supported:
 - :code:`{http://owncloud.org/ns}checksums`
 - :code:`{http://nextcloud.org/ns}has-preview`
 - :code:`{http://owncloud.org/ns}size` Unlike :code:`getcontentlength`, this property also works for folders reporting the size of everything in the folder.
+- :code:`{http://nextcloud.org/ns}rich-workspace` this property is provided by the text app
 
 Getting properties for just the folder
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
