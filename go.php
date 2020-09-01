@@ -33,6 +33,7 @@ $mapping = array(
     'admin-sharing'           => '/admin_manual/configuration_files/file_sharing_configuration.html',
     'admin-sharing-federated' => '/admin_manual/configuration_files/federated_cloud_sharing_configuration.html',
     'admin-source_install'    => '/admin_manual/installation/source_installation.html',
+    'admin-sse-legacy-format' => '/admin_manual/configuration_files/encryption_migration.html',
     'admin-sso'               => '/admin_manual/configuration_server/sso_configuration.html',
     'admin-theming'           => '/admin_manual/configuration_server/theming.html',
     'admin-theming-icons'     => '/admin_manual/configuration_server/theming.html#theming-of-icons',
