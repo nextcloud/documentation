@@ -5,7 +5,7 @@ Cookies
 .. sectionauthor:: Björn Schießle <bjoern@nextcloud.com>
 .. _cookies:
 
-Nextcloud only stores cookies needed for Nextcloud to work properly. All cookies comes from your Nextcloud server directly, no 3rd-party cookies will be send to your system. Regarding GDPR, `only data which contain personal data are relevant`_.
+Nextcloud only stores cookies needed for Nextcloud to work properly. All cookies comes from your Nextcloud server directly, no 3rd-party cookies will be sent to your system. Regarding GDPR, `only data which contain personal data are relevant`_.
 
 .. _`only data which contain personal data are relevant`: https://gdpr-info.eu/recitals/no-26/
 
@@ -28,5 +28,5 @@ Cookies stored by Nextcloud
                        - remember token                       
 ====================  ====================================  ================
 
-The same-site cookies are used to determine how a request reaches the Nextcloud server. We use to prevest CSRF attacks. No identifable information is stored in those.
-The rest of the cookies are strickly used to identify the user to the system.
+The same-site cookies are used to determine how a request reaches the Nextcloud server. We use them to prevent CSRF attacks. No identifable information is stored in those.
+The rest of the cookies are strictly used to identify the user to the system.
