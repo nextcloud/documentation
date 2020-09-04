@@ -104,7 +104,7 @@ If you want to connect to Redis configured to listen on an Unix socket (which is
 recommended if Redis is running on the same system as Nextcloud) use this example
 ``config.php`` configuration::
 
-  'memcache.local' => '\OC\Memcache\APCu',
+  'memcache.local' => '\OC\Memcache\Redis',
   'memcache.distributed' => '\OC\Memcache\Redis',
   'redis' => [
        'host'     => '/var/run/redis/redis.sock',
