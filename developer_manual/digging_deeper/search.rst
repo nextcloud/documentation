@@ -142,9 +142,9 @@ The result is encapsulated in the ``SearchResult`` class that offers two static 
 
     namespace OCA\MyApp\Search;
 
-    use OCP\Search\ASearchResultEntry;
+    use OCP\Search\SearchResultEntry;
 
-    class MySearchResultEntry extends ASearchResultEntry {}
+    class MySearchResultEntry extends SearchResultEntry {}
 
 
 The above snippet shows this implementation of a result entry. Again, this class should be saved to ``lib/Search`` in the app directory.
@@ -183,7 +183,7 @@ Next, you'll see a dummy provider that returns a static set of results using the
         }
 
         public function search(IUser $user, ISearchQuery $query): SearchResult {
-            return MySearchResultEntry::complete(
+            return SearchResult::complete(
                 $this->l10n->t('My app'),
                 [
                     new MySearchResultEntry(
