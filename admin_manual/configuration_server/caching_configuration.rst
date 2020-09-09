@@ -107,7 +107,7 @@ recommended if Redis is running on the same system as Nextcloud) use this exampl
   'memcache.local' => '\OC\Memcache\APCu',
   'memcache.distributed' => '\OC\Memcache\Redis',
   'redis' => [
-       'host'     => '/var/run/redis/redis.sock',
+       'host'     => '/run/redis/redis-server.sock',
        'port'     => 0,
        'dbindex'  => 0,
        'password' => 'secret',
@@ -115,6 +115,8 @@ recommended if Redis is running on the same system as Nextcloud) use this exampl
   ],
 
 Only "host" and "port" variables are required, the other ones are optional.
+
+Update the redis configuration in ``/etc/redis/redis.conf`` accordingly: uncomment Unix socket options and ensure the "socket" and "port" settings match your Nextcloud configuration.
 
 Be sure to set the right permissions on redis.sock so that your webserver can
 read and write to it. For this you typically have to add the webserver user
