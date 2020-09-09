@@ -288,7 +288,7 @@ todo_include_todos = True
 
 # allow to reference other documenation
 intersphinx_mapping = {
-  'user_manual': ('https://docs.nextcloud.com/server/%s/user_manual/' % (version), '../user_manual/_build/html/com/objects.inv'),
+  'user_manual': ('https://docs.nextcloud.com/server/%s/user_manual/en/' % (version), '../user_manual/_build/html/en/objects.inv'),
   'developer_manual': ('https://docs.nextcloud.com/server/%s/developer_manual/' % (version), '../developer_manual/_build/html/com/objects.inv'),
 }
 
