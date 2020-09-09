@@ -46,16 +46,16 @@ $mapping = array(
     'developer-manual'        => '/developer_manual',
     'developer-theming'       => '/developer_manual/core/theming.html',
 
-    'user-2fa'                => '/user_manual/user_2fa.html',
-    'user-encryption'         => '/user_manual/files/encrypting_files.html',
-    'user-files'              => '/user_manual/files/index.html',
-    'user-manual'             => '/user_manual',
-    'user-sharing-federated'  => '/user_manual/files/federated_cloud_sharing.html',
-    'user-sync-calendars'     => '/user_manual/pim/calendar.html',
-    'user-sync-contacts'      => '/user_manual/pim/contacts.html',
-    'user-trashbin'           => '/user_manual/files/deleted_file_management.html',
-    'user-versions'           => '/user_manual/files/version_control.html',
-    'user-webdav'             => '/user_manual/files/access_webdav.html',
+    'user-2fa'                => '/user_manual/en/user_2fa.html',
+    'user-encryption'         => '/user_manual/en/files/encrypting_files.html',
+    'user-files'              => '/user_manual/en/files/index.html',
+    'user-manual'             => '/user_manual/en',
+    'user-sharing-federated'  => '/user_manual/en/files/federated_cloud_sharing.html',
+    'user-sync-calendars'     => '/user_manual/en/pim/calendar.html',
+    'user-sync-contacts'      => '/user_manual/en/pim/contacts.html',
+    'user-trashbin'           => '/user_manual/en/files/deleted_file_management.html',
+    'user-versions'           => '/user_manual/en/files/version_control.html',
+    'user-webdav'             => '/user_manual/en/files/access_webdav.html',
 );
 
 ############# Do not edit below this line #################
