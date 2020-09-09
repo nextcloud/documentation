@@ -10,15 +10,17 @@
 # Aurélie V, 2019
 # polo lancien <polo.lancien@aliceadsl.fr>, 2019
 # Dominique Hebert <dominique@paquerette.eu>, 2019
+# RC, 2020
+# Meiling Meiling <meiling@courrier.dev>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud latest User Manual latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-27 14:38+0200\n"
+"POT-Creation-Date: 2020-07-28 07:41+0000\n"
 "PO-Revision-Date: 2019-11-07 20:29+0000\n"
-"Last-Translator: Dominique Hebert <dominique@paquerette.eu>, 2019\n"
+"Last-Translator: Meiling Meiling <meiling@courrier.dev>, 2020\n"
 "Language-Team: French (https://www.transifex.com/nextcloud/teams/64236/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -53,6 +55,10 @@ msgid ""
 "installation is in the root of your domain), and \"USERNAME\" with the "
 "username of the connecting user."
 msgstr ""
+"Dans les exemples suivants, vous devez remplacer **example.com/** par l'URL "
+"de votre serveur Nextcloud (sans le nom de dossier si l'installation est à "
+"la racine de votre domaine) et \"USERNAME\" par l'identifiant de la personne"
+" qui se connecte."
 
 #: ../../files/access_webdav.rst:15
 msgid "See the webdav url (bottom left, settings) on your Nextcloud."
@@ -159,12 +165,19 @@ msgid ""
 "<../pim/sync_gnome.html>`_, **your files will automatically be mounted by "
 "Nautilus as a WebDAV share, unless you deselect file access.**"
 msgstr ""
+"**Lorsque vous configurez votre compte Nextcloud dans le** `Centre de "
+"Contrôle GNONE <../pim/sync_gnome.html>`_, **vos fichiers seront "
+"automatiquement montés par Nautilus en tant que partage WebDAV, à moins que "
+"vous désélectionniez l'accès aux fichiers.**"
 
 #: ../../files/access_webdav.rst:65
 msgid ""
 "You can also mount your Nextcloud files manually. Use the ``davs://`` "
 "protocol to connect the Nautilus file manager to your Nextcloud share::"
 msgstr ""
+"Vous pouvez aussi monter vos fichiers Nextcloud manuellement. Utilisez le "
+"protocole ``davs://`` pour connecter le gestionnaire de fichier Nautilus à "
+"votre partage Nextcloud:: "
 
 #: ../../files/access_webdav.rst:71
 msgid ""
@@ -179,6 +192,8 @@ msgid ""
 "The same method works for other file managers that use GVfs, such as MATE's "
 "Caja and Cinnamon's Nepomuk."
 msgstr ""
+"Cette méthode fonctionne également pour les autres gestionnaires de fichiers"
+" qui utilisent GVfs, comme Caja de MATE ou Nepomuk de Cinnamon."
 
 #: ../../files/access_webdav.rst:82
 msgid "Accessing files with KDE and Dolphin file manager"
@@ -452,6 +467,9 @@ msgid ""
 "When the **Connect to Server...** window opens, enter your Nextcloud "
 "server’s WebDAV address in the **Server Address:** field, ie:"
 msgstr ""
+"Quand la fenêtre **Connexion au serveur...** s'ouvre, entrer l'adresse du "
+"WebDAV de votre serveur dans le champ **Adresse du serveur :**, par exemple "
+":"
 
 #: ../../files/access_webdav.rst:221
 msgid "https://cloud.YOURDOMAIN.com/remote.php/dav/files/USERNAME/"
@@ -504,6 +522,17 @@ msgid ""
 "disabled, a value of 2 allows both SSL and non-SSL connections (not "
 "recommended). Then exit Registry Editor, and restart the computer."
 msgstr ""
+"Par défaut, Windows 10 autorise désormais l'authentification basique si le "
+"HTTPS est activé avant le mappage de votre drive. Sur les anciennes versions"
+" de Windows, vous devez autoriser l'utilisation de l'authentification "
+"basique dans le registre Windows : lancez \"regedit\" et naviguez vers "
+"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters."
+" Créez ou modifiez la valeur DWORD \"BasicAuthLevel\" (Windows Vista, 7 et "
+"8) ou \"UseBasicAuth\" (Windows XP et Windows Server 2003) et réglez sa "
+"valeur à 1 pour les connexions SSL. La valeur 0 signifie que "
+"l'authentification basique est désactivée, la valeur 2 permet les connexions"
+" SSL et non-SSL (non recommandé). Ensuite, quittez l'éditeur de registre et "
+"redémarrez l'ordinateur."
 
 #: ../../files/access_webdav.rst:252
 msgid "Mapping drives with the command line"
@@ -765,6 +794,11 @@ msgid ""
 "the connection to your server might fail. Please refer to the WinHTTP_ "
 "documentation for further information."
 msgstr ""
+"Le client Windows WebDAV pourrait ne pas supporter les connections TLSv1.1 /"
+" TLSv1.2. Si vous avez restreint la configuration de votre serveur dans le "
+"but de fournir uniquement des connections TLSv1.1 et plus, la connexion à "
+"votre serveur pourrait échouer. Référez vous à la documentation WinHTTP_ "
+"pour plus d'informations."
 
 #: ../../files/access_webdav.rst:385
 msgid ""
