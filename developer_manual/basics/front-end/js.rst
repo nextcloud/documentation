@@ -34,14 +34,14 @@ listen to the ``OCA\Files::loadAdditionalScripts`` event:
 Sending the CSRF token
 ----------------------
 
-If any other JavaScript request library than jQuery is being used, the requests need to send the CSRF token as an HTTP header named **requesttoken**. The token is available in the global variable **oc_requesttoken**.
+If any other JavaScript request library than jQuery is being used, the requests need to send the CSRF token as an HTTP header named **requesttoken**. The token is available in the global variable **OC.requestToken**.
 
 For AngularJS the following lines would need to be added:
 
 .. code-block:: js
 
     var app = angular.module('MyApp', []).config(['$httpProvider', function($httpProvider) {
-        $httpProvider.defaults.headers.common.requesttoken = oc_requesttoken;
+        $httpProvider.defaults.headers.common.requesttoken = OC.requestToken;
     }]);
 
 
