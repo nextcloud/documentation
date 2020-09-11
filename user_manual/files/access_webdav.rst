@@ -50,6 +50,14 @@ Distributed Authoring and Versioning (WebDAV) is a Hypertext Transfer Protocol
 servers. With WebDAV you can access your Nextcloud shares on Linux, macOS and
 Windows in the same way as any remote network share, and stay synchronized.
 
+App Passwords
+--------------------
+
+Nextcloud supports generating unquie application password seprate from your user login. 
+If you are using a 3rd party authenication provider you will need to generate an application password for WebDAV.
+In Nextcloud’s web GUI, go to the user preferences, go to Security. Generate an App password.
+
+
 Accessing files using Linux
 ---------------------------
 
