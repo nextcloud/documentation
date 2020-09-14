@@ -8,9 +8,9 @@ Setup your Accounts
 In the following steps you will add your server resources for **CalDAV** (Calendar) 
 and **CardDAV** (Contacts) to your Nextcloud.
 
-1. Open the **system preferences** of your macOS device
+1. Open the **system preferences** of your macOS device.
 
-2. Navigate to **Internet Accounts**
+2. Navigate to **Internet Accounts**.
 
 .. figure:: ./images/macos_1.png
 
@@ -25,8 +25,8 @@ and **CardDAV** (Contacts) to your Nextcloud.
 4. Select **Manual** as Account-Type and type in your respective credentials:
 
    **Username**: Your Nextcloud username or email
-   **Password**: Your generated App-password/token (`App-password/token <https://docs.nextcloud.com/server/stable/user_manual/session_management.html#managing-devices>`_)
-   **Server Address**: URL of your Nextcloud server (e.g. https://cloud.example.com)
+   **Password**: Your generated App-password/token (`Learn more <https://docs.nextcloud.com/server/stable/user_manual/session_management.html#managing-devices>`_).
+   **Server Address**: URL of your Nextcloud server (e.g. https://cloud.example.com).
 
 .. figure:: ./images/macos_3.png
 
