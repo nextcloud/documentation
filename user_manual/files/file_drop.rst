@@ -29,8 +29,8 @@ Uploading files
 ---------------
 
 Using the anonymous upload function is simple. You receive a link to the upload
-folder, click the link, and then you'll see a Nextcloud page with a **Click to
-upload** button.
+folder, click the link, and then you'll see a Nextcloud page with a "**Click to
+upload**" button.
 
 .. image:: ../images/anonym_upload.png
 
