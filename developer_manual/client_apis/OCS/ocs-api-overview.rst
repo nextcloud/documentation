@@ -212,9 +212,9 @@ An example curl command would be:
 
      curl -i -u master -X GET -H "OCS-APIRequest: true" 'https://my.nextcloud/ocs/v2.php/core/autocomplete/get?search=JOANNE%40EMAIL.ISP&itemType=%20&itemId=%20&shareTypes[]=8&limit=2'
 
-That would look for JOANNE@EMAIL.ISP as guest user. Maximum 2 results to be returned
- for a regular user, the shareTypes array would carry only "0"
-. itemType and itemId are left (set to a white space), essentially they are to give context about the use case, so sorters can do their work (like who commented last). It  can be an option for filtering on a later stage but you can also leave them out:
+That would look for JOANNE@EMAIL.ISP as guest user. Maximum 2 results to be returned for a regular user, the shareTypes array would carry only "0".
+``itemType`` and ``itemId`` are left (set to a white space), essentially they are to give context about the use case, so sorters can do their work (like who 
+commented last). It can be an option for filtering on a later stage but you can also leave them out as per the below example.
 
 .. code::
 
