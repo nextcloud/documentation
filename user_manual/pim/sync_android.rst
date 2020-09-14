@@ -36,7 +36,7 @@ With the Nextcloud mobile app
    order to finish setup, you have to manually launch DAVx⁵ again.
 5. Tap on the icon for the account DAVx⁵ has just created, when requested grant DAVx⁵ access
    to your calendars and contacts. Optionally install `OpenTasks <https://play.google.com/store/apps/details?id=org.dmfs.tasks>`_  and
-   grant too DAVx⁵ access to your tasks.
+   grant DAVx⁵ access to your tasks, too.
 6. When you tap the icon for the account DAVx⁵ has set up, it will
    discover the available address books and calendars. Choose which
    ones you want to synchronize and finish.
@@ -68,4 +68,3 @@ steps are required after installing DAVx⁵
 
 
 .. tip:: DAVx⁵ lists the calendar subscriptions made through the Nextcloud Calendar app, but you need to install the `ICSx⁵ (formerly known as ICSDroid) <https://icsx5.bitfire.at/>`_ app on your Android device, `from the Google Play Store <https://play.google.com/store/apps/details?id=at.bitfire.icsdroid>`_ or `from F-Droid <https://f-droid.org/packages/at.bitfire.icsdroid/>`_ to sync them.
-
