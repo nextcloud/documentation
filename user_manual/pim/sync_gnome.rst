@@ -10,8 +10,8 @@ only while the computer is connected.
 
 This can be done by following these steps:
 
-1. In the GNOME settings, open Online Accounts 
-2. Under "add an account" pick ``Nextcloud``.
+1. In the GNOME settings, open Online Accounts.
+2. Under "Add an account" pick ``Nextcloud``.
 
 .. image:: ../images/gnome-online-accounts.png
 
@@ -26,7 +26,7 @@ This can be done by following these steps:
    
 .. image:: ../images/goa-nextcloud-select.png
 
-Nextcloud task, calendars and contacts should now be visibile in the
+Nextcloud tasks, calendars and contacts should now be visible in the
 Evolution PIM, the task, contacts and calendars app.
 
 Files will be shown as a WebDAV resource in the Nautilus file manager
