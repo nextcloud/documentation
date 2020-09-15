@@ -1527,8 +1527,6 @@ One way to test is applying for a trystack account at http://trystack.org/
 
 To use swift V3
 
-.. _configPHP_Sharing:
-
 Sharing
 -------
 
