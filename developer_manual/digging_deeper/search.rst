@@ -92,6 +92,7 @@ A **search provider** is a class the implements the interface ``\OCP\Search\IPro
 
     namespace OCA\MyApp\Search;
 
+    use OCA\MyApp\AppInfo\Application;
     use OCP\IUser;
     use OCP\Search\IProvider;
 
@@ -291,6 +292,7 @@ For **offset-based pagination** you return ``$query->getLimit()`` results and sp
     use OCP\IURLGenerator;
     use OCP\IUser;
     use OCP\Search\IProvider;
+    use OCP\Search\SearchResult;
 
     class Provider implements IProvider {
 
@@ -329,7 +331,7 @@ For **offset-based pagination** you return ``$query->getLimit()`` results and sp
 
             $data = []; // Fill this with $limit entries, where the first entry is row $offset
 
-            return MySearchResultEntry::complete(
+            return SearchResult::paginated(
                 $this->l10n->t('My app'),
                 $data,
                 $offset + $limit
@@ -357,6 +359,7 @@ For a **cursor-based pagination** a app-specific property is used to know a refe
     use OCP\IURLGenerator;
     use OCP\IUser;
     use OCP\Search\IProvider;
+    use OCP\Search\SearchResult;
 
     class Provider implements IProvider {
 
@@ -400,7 +403,7 @@ For a **cursor-based pagination** a app-specific property is used to know a refe
             }
             $last = end($data);
 
-            return MySearchResultEntry::complete(
+            return SearchResult::paginated(
                 $this->l10n->t('My app'),
                 $data,
                 $last->getCreatedAt()
