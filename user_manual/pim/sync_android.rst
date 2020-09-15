@@ -53,7 +53,7 @@ steps are required after installing DAVx⁵
 2. Optionally install `OpenTasks <https://play.google.com/store/apps/details?id=org.dmfs.tasks>`_.
 3. Create a new account ("+" button).
 4. Select **Connection with URL and username**.
-   **Base URL:** URL of your Nextcloud instance (e.g. ``https://sub.example.com/remote.php/dav``)
+   **Base URL:** URL of your Nextcloud instance (e.g. ``https://sub.example.com/remote.php/dav``) and 
    **Contact Group Method:** As credentials.
 5. Choose the option ``Groups are per-contact categories``.
 6. Click **Connect**.
