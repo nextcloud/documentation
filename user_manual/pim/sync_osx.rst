@@ -32,7 +32,7 @@ and **CardDAV** (Contacts) to your Nextcloud.
 
 5. Click on **Sign In**.
 
-**For CalDAV (Calendar):** You can now select, with which applications you want
+For **CalDAV (Calendar)**: You can now select, with which applications you want
 to use this resource. In the most cases, this will be the "Calendar" application,
 sometimes you may also want to use it for your **Tasks and reminders**.
 
