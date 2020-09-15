@@ -5,7 +5,7 @@ Synchronizing with Android
 Files and notifications
 -----------------------
 
-1. Install the Nextcloud Android client `Google Play Store <https://play.google.com/store/apps/details?id=com.nextcloud.client>`_ or 
+1. Install the Nextcloud Android client `from Google Play Store <https://play.google.com/store/apps/details?id=com.nextcloud.client>`_ or 
    `from F-Droid <https://f-droid.org/de/packages/com.nextcloud.client/>`_.
 2. Start the app. There are two ways of setting it up:
 
@@ -26,7 +26,7 @@ With the Nextcloud mobile app
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Install `DAVx⁵ (formerly known as DAVDroid) <https://www.davx5.com/download/>`_ on your Android device, 
-   `from Google Play store <https://play.google.com/store/apps/details?id=at.bitfire.davdroid>`_ or 
+   `from Google Play Store <https://play.google.com/store/apps/details?id=at.bitfire.davdroid>`_ or 
    `from F-Droid <https://f-droid.org/de/packages/at.bitfire.davdroid/>`_.
 2. In the Nextcloud mobile, go
    to **Settings** / **More**, tap on "**Sync calendars & contacts**".
@@ -48,7 +48,7 @@ If you don't want to install the Nextcloud mobile app, the following
 steps are required after installing DAVx⁵
 
 1. Install `DAVx⁵ (formerly known as DAVDroid) <https://www.davx5.com/download/>`_ on your Android device, 
-   `from Google Play store <https://play.google.com/store/apps/details?id=at.bitfire.davdroid>`_ or 
+   `from Google Play Store <https://play.google.com/store/apps/details?id=at.bitfire.davdroid>`_ or 
    `from F-Droid <https://f-droid.org/de /packages/at.bitfire.davdroid/>`_.
 2. Optionally install `OpenTasks <https://play.google.com/store/apps/details?id=org.dmfs.tasks>`_.
 3. Create a new account ("+" button).
