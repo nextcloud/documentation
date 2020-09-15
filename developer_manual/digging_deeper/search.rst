@@ -19,42 +19,64 @@ These two steps have to be run consecutively, but the individual requests in the
 Fetching provider IDs
 ^^^^^^^^^^^^^^^^^^^^^
 
-``GET https://cloud.domain/search/providers``
+``GET https://cloud.domain/ocs/v2.php/search/providers``
 
 This will return a structure like
 
 .. code-block:: json
 
-    [
-        "files",
-        "mail"
-    ]
+    {
+        "ocs": {
+            "meta": {
+                …
+            },
+            "data": [
+                {
+                    "id": "mail",
+                    "name": "Mail",
+                    "order": -50
+                },
+                {
+                    "id": "files",
+                    "name": "Files",
+                    "order": 5
+                }
+            ]
+        }
+    }
 
 Fetching individual search results
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``GET https://cloud.domain/search/providers/files/search?term=cat``
+``GET https://cloud.domain/ocs/v2.php/search/providers/files/search?term=cat``
 
 .. code-block:: json
 
     {
-        "name": "Files",
-        "isPaginated": false,
-        "entries": [
-            {
-                "thumbnailUrl": "/core/preview?x=32&y=32&fileId=9261",
-                "title": "my cute cats.jpg",
-                "subline": "/my cute cats.jpg",
-                "resourceUrl": "/apps/files/?dir=/&scrollto=my%20cute%20cats.jpg"
+        "ocs": {
+            "meta": {
+                …
             },
-            {
-                "thumbnailUrl": "/core/preview?x=32&y=32&fileId=1553",
-                "title": "cat (2).png",
-                "subline": "/cat (2).png",
-                "resourceUrl": "/apps/files/?dir=/&scrollto=cat%20%282%29.png"
+            "data": {
+                "name": "Files",
+                "isPaginated": false,
+                "entries": [
+                    {
+                        "thumbnailUrl": "/core/preview?x=32&y=32&fileId=9261",
+                        "title": "my cute cats.jpg",
+                        "subline": "/my cute cats.jpg",
+                        "resourceUrl": "/apps/files/?dir=/&scrollto=my%20cute%20cats.jpg"
+                    },
+                    {
+                        "thumbnailUrl": "/core/preview?x=32&y=32&fileId=1553",
+                        "title": "cat (2).png",
+                        "subline": "/cat (2).png",
+                        "resourceUrl": "/apps/files/?dir=/&scrollto=cat%20%282%29.png"
+                    }
+                ],
+                "cursor": null
             }
-        ],
-        "cursor": null
+        }
     }
 
 Search providers
@@ -91,7 +113,7 @@ A **search provider** is a class the implements the interface ``\OCP\Search\IPro
 
 The method ``getId`` returns a string idenfier of the registered provider. It has to be globally unique, hence must not conflict with any other apps. Therefore it's advised to use just the app ID (e.g. ``mail``) as ID or an ID that is prefixed with the app id, like ``mail_recipients``.
 
-The method ``search`` transforms a search request into a search result. 
+The method ``search`` transforms a search request into a search result.
 
 The class would typically be saved into a file in ``lib/Search`` of your app but you are free to put it elsewhere as long as it's loadable by Nextcloud's :ref:`dependency injection container<dependency-injection>`.
 
@@ -128,7 +150,7 @@ The provider class is registered via the :ref:`bootstrap mechanism<Bootstrapping
 Handling search requests
 ------------------------
 
-Search requests are processed in the ``search`` method. The ``$user`` object is the user who the result shall be generated for. ``$query``gives context information like the **search term**, the **sort order**, the **size limit** of a request and the **cursor** for follow-up request of paginated results.
+Search requests are processed in the ``search`` method. The ``$user`` object is the user who the result shall be generated for. ``$query`` gives context information like the **search term**, the **sort order**, the **size limit** of a request and the **cursor** for follow-up request of paginated results.
 
 The result is encapsulated in the ``SearchResult`` class that offers two static factory methods ``complete`` and ``paginated``. Both of these methods take an array of ``ASearchResultEntry`` objects. ``ASearchResultEntry`` is a static class that has be extended and used by the provider.
 
