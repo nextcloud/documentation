@@ -19,42 +19,64 @@ These two steps have to be run consecutively, but the individual requests in the
 Fetching provider IDs
 ^^^^^^^^^^^^^^^^^^^^^
 
-``GET https://cloud.domain/search/providers``
+``GET https://cloud.domain/ocs/v2.php/search/providers``
 
 This will return a structure like
 
 .. code-block:: json
 
-    [
-        "files",
-        "mail"
-    ]
+    {
+        "ocs": {
+            "meta": {
+                …
+            },
+            "data": [
+                {
+                    "id": "mail",
+                    "name": "Mail",
+                    "order": -50
+                },
+                {
+                    "id": "files",
+                    "name": "Files",
+                    "order": 5
+                }
+            ]
+        }
+    }
 
 Fetching individual search results
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``GET https://cloud.domain/search/providers/files/search?term=cat``
+``GET https://cloud.domain/ocs/v2.php/search/providers/files/search?term=cat``
 
 .. code-block:: json
 
     {
-        "name": "Files",
-        "isPaginated": false,
-        "entries": [
-            {
-                "thumbnailUrl": "/core/preview?x=32&y=32&fileId=9261",
-                "title": "my cute cats.jpg",
-                "subline": "/my cute cats.jpg",
-                "resourceUrl": "/apps/files/?dir=/&scrollto=my%20cute%20cats.jpg"
+        "ocs": {
+            "meta": {
+                …
             },
-            {
-                "thumbnailUrl": "/core/preview?x=32&y=32&fileId=1553",
-                "title": "cat (2).png",
-                "subline": "/cat (2).png",
-                "resourceUrl": "/apps/files/?dir=/&scrollto=cat%20%282%29.png"
+            "data": {
+                "name": "Files",
+                "isPaginated": false,
+                "entries": [
+                    {
+                        "thumbnailUrl": "/core/preview?x=32&y=32&fileId=9261",
+                        "title": "my cute cats.jpg",
+                        "subline": "/my cute cats.jpg",
+                        "resourceUrl": "/apps/files/?dir=/&scrollto=my%20cute%20cats.jpg"
+                    },
+                    {
+                        "thumbnailUrl": "/core/preview?x=32&y=32&fileId=1553",
+                        "title": "cat (2).png",
+                        "subline": "/cat (2).png",
+                        "resourceUrl": "/apps/files/?dir=/&scrollto=cat%20%282%29.png"
+                    }
+                ],
+                "cursor": null
             }
-        ],
-        "cursor": null
+        }
     }
 
 Search providers
@@ -70,6 +92,7 @@ A **search provider** is a class the implements the interface ``\OCP\Search\IPro
 
     namespace OCA\MyApp\Search;
 
+    use OCA\MyApp\AppInfo\Application;
     use OCP\IUser;
     use OCP\Search\IProvider;
 
@@ -77,6 +100,19 @@ A **search provider** is a class the implements the interface ``\OCP\Search\IPro
 
         public function getId(): string {
             return 'mysearchprovider';
+        }
+
+        public function getName(): string {
+            return $this->l->t('My custom group');
+        }
+
+        public function getOrder(string $route, array $routeParameters): int {
+            if (strpos($route, Application::APP_ID . '.') === 0) {
+                // Active app, prefer my results
+                return -1;
+            }
+
+            return 55;
         }
 
         public function search(IUser $user, ISearchQuery $query): SearchResult {
@@ -89,9 +125,11 @@ A **search provider** is a class the implements the interface ``\OCP\Search\IPro
         }
     }
 
-The method ``getId`` returns a string idenfier of the registered provider. It has to be globally unique, hence must not conflict with any other apps. Therefore it's advised to use just the app ID (e.g. ``mail``) as ID or an ID that is prefixed with the app id, like ``mail_recipients``.
+The method ``getId`` returns a string identifier of the registered provider. It has to be globally unique, hence must not conflict with any other apps. Therefore it's advised to use just the app ID (e.g. ``mail``) as ID or an ID that is prefixed with the app id, like ``mail_recipients``. ``getName`` is a translated name for your search results.
 
-The method ``search`` transforms a search request into a search result. 
+The ``getOrder`` method returns the order of the provider for the current page. With the route parameter you can check if the route is from your app and in that case use a negative value. Otherwise your app should use a value around 50.
+
+The method ``search`` transforms a search request into a search result.
 
 The class would typically be saved into a file in ``lib/Search`` of your app but you are free to put it elsewhere as long as it's loadable by Nextcloud's :ref:`dependency injection container<dependency-injection>`.
 
@@ -128,11 +166,11 @@ The provider class is registered via the :ref:`bootstrap mechanism<Bootstrapping
 Handling search requests
 ------------------------
 
-Search requests are processed in the ``search`` method. The ``$user`` object is the user who the result shall be generated for. ``$query``gives context information like the **search term**, the **sort order**, the **size limit** of a request and the **cursor** for follow-up request of paginated results.
+Search requests are processed in the ``search`` method. The ``$user`` object is the user who the result shall be generated for. ``$query`` gives context information like the **search term**, the **sort order**, the **route information**, the **size limit** of a request and the **cursor** for follow-up request of paginated results.
 
-The result is encapsulated in the ``SearchResult`` class that offers two static factory methods ``complete`` and ``paginated``. Both of these methods take an array of ``ASearchResultEntry`` objects. ``ASearchResultEntry`` is a static class that has be extended and used by the provider.
+The result is encapsulated in the ``SearchResult`` class that offers two static factory methods ``complete`` and ``paginated``. Both of these methods take an array of ``SearchResultEntry`` objects. ``SearchResultEntry`` is a static class that can be extended and used by the provider.
 
-.. note:: In most cases you don't have to add any methods or fieds to this new result entry type, but this API design was chosen so new optional properties can be added in the future without breaking the existing implementations in 3rd party apps.
+.. note:: In most cases you don't have to add any methods or fields to this new result entry type so you can directly use ``SearchResultEntry``, but this API design was chosen so new optional properties can be added in the future without breaking the existing implementations in 3rd party apps.
 
 .. code-block:: php
 
@@ -142,9 +180,9 @@ The result is encapsulated in the ``SearchResult`` class that offers two static 
 
     namespace OCA\MyApp\Search;
 
-    use OCP\Search\ASearchResultEntry;
+    use OCP\Search\SearchResultEntry;
 
-    class MySearchResultEntry extends ASearchResultEntry {}
+    class MySearchResultEntry extends SearchResultEntry {}
 
 
 The above snippet shows this implementation of a result entry. Again, this class should be saved to ``lib/Search`` in the app directory.
@@ -159,6 +197,7 @@ Next, you'll see a dummy provider that returns a static set of results using the
 
     namespace OCA\MyApp\Search;
 
+    use OCA\MyApp\AppInfo\Application;
     use OCP\IL10N;
     use OCP\IURLGenerator;
     use OCP\IUser;
@@ -182,8 +221,21 @@ Next, you'll see a dummy provider that returns a static set of results using the
             return 'mysearchprovider';
         }
 
+        public function getName(): string {
+            return $this->l->t('My app');
+        }
+
+        public function getOrder(string $route, array $routeParameters): int {
+            if (strpos($route, Application::APP_ID . '.') === 0) {
+                // Active app, prefer my results
+                return -1;
+            }
+
+            return 25;
+        }
+
         public function search(IUser $user, ISearchQuery $query): SearchResult {
-            return MySearchResultEntry::complete(
+            return SearchResult::complete(
                 $this->l10n->t('My app'),
                 [
                     new MySearchResultEntry(
@@ -213,6 +265,8 @@ Each of the result result entries has
 * A title, e.g. the name of a file
 * A subline, e.g. the path to a file
 * A resource URL that makes it possible to navigate to the details of this result
+* Optional icon CSS class that is applied then the thumbnail URL was not set
+* A boolean rounded, whether the thumbnail should be rounded, e.g. when it's an avatar
 
 Apps **may** return the full result in ``search``, but in most cases the size of the result set can become too big to fit into one HTTP request and is complicated to display to the user, hence the set should be split into chunks – it should be **paginated**.
 
@@ -233,10 +287,12 @@ For **offset-based pagination** you return ``$query->getLimit()`` results and sp
 
     namespace OCA\MyApp\Search;
 
+    use OCA\MyApp\AppInfo\Application;
     use OCP\IL10N;
     use OCP\IURLGenerator;
     use OCP\IUser;
     use OCP\Search\IProvider;
+    use OCP\Search\SearchResult;
 
     class Provider implements IProvider {
 
@@ -256,13 +312,26 @@ For **offset-based pagination** you return ``$query->getLimit()`` results and sp
             return 'mysearchprovider';
         }
 
+        public function getName(): string {
+            return $this->l->t('My app');
+        }
+
+        public function getOrder(string $route, array $routeParameters): int {
+            if (strpos($route, Application::APP_ID . '.') === 0) {
+                // Active app, prefer my results
+                return -1;
+            }
+
+            return 25;
+        }
+
         public function search(IUser $user, ISearchQuery $query): SearchResult {
             $offset = ($query->getCursor() ?? 0);
             $limit = $query->getLimit();
 
             $data = []; // Fill this with $limit entries, where the first entry is row $offset
 
-            return MySearchResultEntry::complete(
+            return SearchResult::paginated(
                 $this->l10n->t('My app'),
                 $data,
                 $offset + $limit
@@ -285,10 +354,12 @@ For a **cursor-based pagination** a app-specific property is used to know a refe
 
     namespace OCA\MyApp\Search;
 
+    use OCA\MyApp\AppInfo\Application;
     use OCP\IL10N;
     use OCP\IURLGenerator;
     use OCP\IUser;
     use OCP\Search\IProvider;
+    use OCP\Search\SearchResult;
 
     class Provider implements IProvider {
 
@@ -308,6 +379,19 @@ For a **cursor-based pagination** a app-specific property is used to know a refe
             return 'mysearchprovider';
         }
 
+        public function getName(): string {
+            return $this->l->t('My app');
+        }
+
+        public function getOrder(string $route, array $routeParameters): int {
+            if (strpos($route, Application::APP_ID . '.') === 0) {
+                // Active app, prefer my results
+                return -1;
+            }
+
+            return 25;
+        }
+
         public function search(IUser $user, ISearchQuery $query): SearchResult {
             $cursor = $query->getCursor();
             $limit = $query->getLimit();
@@ -319,7 +403,7 @@ For a **cursor-based pagination** a app-specific property is used to know a refe
             }
             $last = end($data);
 
-            return MySearchResultEntry::complete(
+            return SearchResult::paginated(
                 $this->l10n->t('My app'),
                 $data,
                 $last->getCreatedAt()
