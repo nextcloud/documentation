@@ -351,8 +351,8 @@ in a WebDAV client, use the share token as username and the (optional) share pas
 as password.
 
 .. note:: ``Settings → Administration → Sharing → Allow users on this
-   server to send shares to other servers`` needs to be enabled in order
-   to make this feature work.
+   server to send shares to other servers. This option also allows WebDAV access
+   to public shares`` needs to be enabled in order to make this feature work.
 
 Known problems
 --------------
