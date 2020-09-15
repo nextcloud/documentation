@@ -25,7 +25,7 @@ and **CardDAV** (Contacts) to your Nextcloud.
 4. Select **Manual** as Account-Type and type in your respective credentials:
 
    **Username**: Your Nextcloud username or email
-   **Password**: Your generated App-password/token (`Learn more <https://docs.nextcloud.com/server/stable/user_manual/session_management.html#managing-devices>`_).
+   **Password**: Your generated app-password/token (`Learn more <https://docs.nextcloud.com/server/stable/user_manual/session_management.html#managing-devices>`_).
    **Server Address**: URL of your Nextcloud server (e.g. https://cloud.example.com).
 
 .. figure:: ./images/macos_3.png
