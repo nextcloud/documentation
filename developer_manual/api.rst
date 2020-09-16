@@ -1,25 +1,9 @@
-.. only:: html
-
-    API Documentation
-    =================
+API reference
+=============
 
 
-    PHP public API
-    --------------
-    .. toctree::
-        :maxdepth: 1
+PHP public API
+--------------
 
-        /OCP namespace <api/OCP/index>
-
-
-    PHP class reference
-    -------------------
-
-    Please note that only APIs in \OCP namespace are considered to be public. The
-    following documentation is just for reference:
-
-    .. toctree::
-        :maxdepth: 1
-
-        / namespace <api/index>
-        /OC namespace <api/OC/index>
+The public API is contained in the OCP namespace. See the `OCP API reference
+<https://stable19--nextcloud-server.netlify.app/>`_ for further details.
