@@ -16,7 +16,7 @@ The Nextcloud app store is built into Nextcloud to allow you to get your apps to
 
 Getting an app approved
 -----------------------
-You can find documentation on getting apps in our app store `here. <http://nextcloudappstore.readthedocs.io/en/latest/developer.html#publishing-apps-on-the-app-store>`_
+You can find documentation on getting apps in our app store `here. <https://nextcloudappstore.readthedocs.io/en/latest/developer.html#publishing-apps-on-the-app-store>`_
 
 Using the code checker
 ^^^^^^^^^^^^^^^^^^^^^^

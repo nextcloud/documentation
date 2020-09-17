@@ -35,7 +35,7 @@ Using MariaDB/MySQL instead of SQLite
 
 MySQL or MariaDB are preferred because of the `performance limitations of 
 SQLite with highly concurrent applications 
-<http://www.sqlite.org/whentouse.html>`_, like Nextcloud.
+<https://www.sqlite.org/whentouse.html>`_, like Nextcloud.
 
 See the section :doc:`../configuration_database/linux_database_configuration` for how to
 configure Nextcloud for MySQL or MariaDB. If your installation is already running on
@@ -70,7 +70,7 @@ SSL / encryption app
 SSL (HTTPS) and file encryption/decryption can be offloaded to a processor's 
 AES-NI extension. This can both speed up these operations while lowering 
 processing overhead. This requires a processor with the `AES-NI instruction set 
-<http://wikipedia.org/wiki/AES_instruction_set>`_.
+<https://wikipedia.org/wiki/AES_instruction_set>`_.
 
 Here are some examples how to check if your CPU / environment supports the 
 AES-NI extension:
@@ -81,7 +81,7 @@ AES-NI extension:
 
 * Search eg. on the Intel web if the processor used supports the extension 
   `Intel Processor Feature Filter 
-  <http://ark.intel.com/MySearch.aspx?AESTech=true>`_ You may set a filter by 
+  <https://ark.intel.com/MySearch.aspx?AESTech=true>`_ You may set a filter by 
   ``"AES New Instructions"`` to get a reduced result set.
    
 * For versions of openssl >= 1.0.1, AES-NI does not work via an engine and 
@@ -98,7 +98,7 @@ AES-NI extension:
 Enable HTTP2 for faster loading
 -------------------------------
 
-HTTP2 has `huge speed improvements <https://www.troyhunt.com/i-wanna-go-fast-https-massive-speed-advantage/>`_ over HTTP with multiple request. Most `browsers already support HTTP2 over SSL (HTTPS) <http://caniuse.com/#feat=http2>`_. So refer to your server manual for guides on how to use HTTP2.
+HTTP2 has `huge speed improvements <https://www.troyhunt.com/i-wanna-go-fast-https-massive-speed-advantage/>`_ over HTTP with multiple request. Most `browsers already support HTTP2 over SSL (HTTPS) <https://caniuse.com/#feat=http2>`_. So refer to your server manual for guides on how to use HTTP2.
 
 Tune PHP-FPM
 ------------
@@ -123,7 +123,7 @@ Depending on your current PHP version you should find this file e.g. under ``/et
 Enable PHP OPcache
 ------------------
 
-The `OPcache <http://php.net/manual/en/intro.opcache.php>`_ improves the performance of PHP applications by caching precompiled bytecode. We recommend at least the following settings:
+The `OPcache <https://php.net/manual/en/intro.opcache.php>`_ improves the performance of PHP applications by caching precompiled bytecode. We recommend at least the following settings:
 
 .. code:: ini
 
@@ -134,4 +134,4 @@ The `OPcache <http://php.net/manual/en/intro.opcache.php>`_ improves the perform
   opcache.save_comments=1
   opcache.revalidate_freq=1
 
-For more details check out the `official documentation <http://php.net/manual/en/opcache.configuration.php>`_ or `this blog post about some recommended settings <https://www.scalingphpbook.com/blog/2014/02/14/best-zend-opcache-settings.html>`_.
+For more details check out the `official documentation <https://php.net/manual/en/opcache.configuration.php>`_ or `this blog post about some recommended settings <https://www.scalingphpbook.com/blog/2014/02/14/best-zend-opcache-settings.html>`_.

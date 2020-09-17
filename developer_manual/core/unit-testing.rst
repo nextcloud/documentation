@@ -90,7 +90,7 @@ when overwriting ``setUp()``, ``setUpBeforeClass()``, ``tearDown()`` or ``tearDo
 from the TestCase. These methods set up important stuff and clean up the system after the test,
 so the next test can run without side effects, like remaining files and entries in the file cache, etc.
 
-For more resources on PHPUnit visit: http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html
+For more resources on PHPUnit visit: https://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html
 
 Bootstrapping Nextcloud
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -146,9 +146,9 @@ To run a specific test suite (note that the test file path is relative to the "t
 
 Further reading
 ^^^^^^^^^^^^^^^
-- http://googletesting.blogspot.de/2008/08/by-miko-hevery-so-you-decided-to.html
-- http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html
-- http://www.youtube.com/watch?v=4E4672CS58Q&feature=bf_prev&list=PLBDAB2BA83BB6588E
+- https://googletesting.blogspot.de/2008/08/by-miko-hevery-so-you-decided-to.html
+- https://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html
+- https://www.youtube.com/watch?v=4E4672CS58Q&feature=bf_prev&list=PLBDAB2BA83BB6588E
 - Clean Code: A Handbook of Agile Software Craftsmanship (Robert C. Martin)
 
 JavaScript unit testing for core
@@ -161,7 +161,7 @@ Installing Node JS
 
 To run the JavaScript unit tests you will need to install **Node JS**.
 
-You can get it here: http://nodejs.org/
+You can get it here: https://nodejs.org/
 
 After that you will need to setup the **Karma** test environment.
 The easiest way to do this is to run the automatic test script first, see next section.
@@ -202,6 +202,6 @@ Documentation
 
 Here are some useful links about how to write unit tests with Jasmine and Sinon:
 
-- Karma test runner: http://karma-runner.github.io
-- Jasmine: http://pivotal.github.io/jasmine
+- Karma test runner: https://karma-runner.github.io/
+- Jasmine: https://pivotal.github.io/jasmine
 - Sinon (for mocking and stubbing): http://sinonjs.org/

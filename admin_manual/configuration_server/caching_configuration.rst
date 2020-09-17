@@ -27,7 +27,7 @@ of memcache that best fits your needs. The supported caching backends are:
    A local cache for systems.
 * `Redis <http://redis.io/>`_, PHP module 2.2.6 and up required.
    For local and distributed caching as well as transactional file locking.
-* `Memcached <http://www.memcached.org/>`_
+* `Memcached <https://www.memcached.org/>`_
    For distributed caching.
    
 Memcaches must be explicitly configured in Nextcloud by installing

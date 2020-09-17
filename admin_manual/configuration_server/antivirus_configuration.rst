@@ -5,7 +5,7 @@ Antivirus scanner
 You can configure your Nextcloud server to automatically run a virus scan on
 newly-uploaded files with the Antivirus app for Files. The Antivirus app for
 Files integrates the open source anti-virus engine `ClamAV
-<http://www.clamav.net/index.html>`_  with Nextcloud. ClamAV detects all forms
+<https://www.clamav.net/index.html>`_  with Nextcloud. ClamAV detects all forms
 of malware including Trojan horses, viruses, and worms, and it operates on all
 major file types including Windows, Linux, and Mac files, compressed files,
 executables, image files, Flash, PDF, and many others. ClamAV's Freshclam
