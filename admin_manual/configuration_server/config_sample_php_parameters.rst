@@ -987,7 +987,7 @@ Defaults to an empty array.
 
 	'logdateformat' => 'F d, Y H:i:s',
 
-This uses PHP.date formatting; see http://php.net/manual/en/function.date.php
+This uses PHP.date formatting; see https://php.net/manual/en/function.date.php
 
 Defaults to ISO 8601 ``2005-08-15T15:52:01+00:00`` - see \DateTime::ATOM
 (https://secure.php.net/manual/en/class.datetime.php#datetime.constants.atom)
@@ -997,7 +997,7 @@ Defaults to ISO 8601 ``2005-08-15T15:52:01+00:00`` - see \DateTime::ATOM
 	'logtimezone' => 'Europe/Berlin',
 
 The timezone for logfiles. You may change this; see
-http://php.net/manual/en/timezones.php
+https://php.net/manual/en/timezones.php
 
 Defaults to ``UTC``
 
