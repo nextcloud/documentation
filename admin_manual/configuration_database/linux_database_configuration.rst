@@ -4,8 +4,8 @@ Database configuration
 
 Nextcloud requires a database in which administrative data is stored. The following databases are currently supported:
 
-* `MySQL <http://www.mysql.com/>`_ / `MariaDB <https://mariadb.org/>`_
-* `PostgreSQL <http://www.postgresql.org/>`_
+* `MySQL <https://www.mysql.com/>`_ / `MariaDB <https://mariadb.org/>`_
+* `PostgreSQL <https://www.postgresql.org/>`_
 * `Oracle <http://www.oracle.com/>`_
 
 The MySQL or MariaDB databases are the recommended database engines.

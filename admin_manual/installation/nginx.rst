@@ -10,7 +10,7 @@ server. These configurations examples were originally provided by
 -  Adjust **server_name**, **root**, **ssl_certificate** and
    **ssl_certificate_key** to suit your needs.
 -  Make sure your SSL certificates are readable by the server (see `nginx HTTP
-   SSL Module documentation <http://wiki.nginx.org/HttpSslModule>`_).
+   SSL Module documentation <https://wiki.nginx.org/HttpSslModule>`_).
 -  Be careful about line breaks if you copy the examples, as long lines may be
    broken for page formatting.
 -  Some environments might need a ``cgi.fix_pathinfo`` set to ``1`` in their

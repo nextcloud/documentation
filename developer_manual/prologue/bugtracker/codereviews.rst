@@ -58,4 +58,4 @@ Questions?
 Feel free to drop a line on the `forums`_ or join us on `IRC`_.
 
 .. _forums: https://help.nextcloud.com/
-.. _IRC: http://webchat.freenode.net/?channels=nextcloud-dev
+.. _IRC: https://webchat.freenode.net/?channels=nextcloud-dev

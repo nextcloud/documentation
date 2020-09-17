@@ -13,7 +13,7 @@ This guideline highlights some of the most common security problems and how to p
 SQL injection
 -------------
 
-`SQL Injection <http://en.wikipedia.org/wiki/SQL_injection>`_ occurs when SQL query strings are concatenated with variables.
+`SQL Injection <https://en.wikipedia.org/wiki/SQL_injection>`_ occurs when SQL query strings are concatenated with variables.
 
 To prevent this, always use prepared queries:
 
@@ -38,7 +38,7 @@ If the App Framework is used, write SQL queries like this in a class that extend
 Cross site scripting
 --------------------
 
-`Cross site scripting <http://en.wikipedia.org/wiki/Cross-site_scripting>`_ happens when user input is passed directly to templates. A potential attacker might be able to inject HTML/JavaScript into the page to steal the users session, log keyboard entries, even perform DDOS attacks on other websites or other malicious actions.
+`Cross site scripting <https://en.wikipedia.org/wiki/Cross-site_scripting>`_ happens when user input is passed directly to templates. A potential attacker might be able to inject HTML/JavaScript into the page to steal the users session, log keyboard entries, even perform DDOS attacks on other websites or other malicious actions.
 
 Despite the fact that Nextcloud uses Content-Security-Policy to prevent the execution of inline JavaScript code developers are still required to prevent XSS. CSP is just another layer of defense that is not implemented in all web browsers.
 
@@ -103,7 +103,7 @@ It may also be wise to choose a proper JavaScript framework like AngularJS which
 Clickjacking
 ------------
 
-`Clickjacking <http://en.wikipedia.org/wiki/Clickjacking>`_ tricks the user to click into an invisible iframe to perform an arbitrary action (e.g. delete an user account)
+`Clickjacking <https://en.wikipedia.org/wiki/Clickjacking>`_ tricks the user to click into an invisible iframe to perform an arbitrary action (e.g. delete an user account)
 
 To prevent such attacks Nextcloud sends the `X-Frame-Options` header to all template responses. Don't remove this header if you don't really need it!
 
@@ -161,7 +161,7 @@ Very often developers forget about sanitizing the file path (removing all \\ and
 Shell injection
 ---------------
 
-`Shell Injection <http://en.wikipedia.org/wiki/Code_injection#Shell_injection>`_ occurs if PHP code executes shell commands (e.g. running a latex compiler). Before doing this, check if there is a PHP library that already provides the needed functionality. If you really need to execute a command be aware that you have to escape every user parameter passed to one of these functions:
+`Shell Injection <https://en.wikipedia.org/wiki/Code_injection#Shell_injection>`_ occurs if PHP code executes shell commands (e.g. running a latex compiler). Before doing this, check if there is a PHP library that already provides the needed functionality. If you really need to execute a command be aware that you have to escape every user parameter passed to one of these functions:
 
 * **exec()**
 * **shell_exec()**
@@ -216,7 +216,7 @@ Always store user data or configuration files in safe locations, e.g. **nextclou
 Cross site request forgery
 --------------------------
 
-Using `CSRF <http://en.wikipedia.org/wiki/Cross-site_request_forgery>`_ one can trick a user into executing a request that they did not want to make. Thus every POST and GET request needs to be protected against it. The only places where no CSRF checks are needed are in the main template, which is rendering the application, or in externally callable interfaces.
+Using `CSRF <https://en.wikipedia.org/wiki/Cross-site_request_forgery>`_ one can trick a user into executing a request that they did not want to make. Thus every POST and GET request needs to be protected against it. The only places where no CSRF checks are needed are in the main template, which is rendering the application, or in externally callable interfaces.
 
 .. note:: Submitting a form is also a POST/GET request!
 

@@ -256,7 +256,7 @@ make up the changelog for the release. Furthermore, HuBoard allows us to filter
 the Kanban board by Milestone, making it especially easy to focus on the current
 Release.
 
-.. _kanban board: http://en.wikipedia.org/wiki/Kanban_board
+.. _kanban board: https://en.wikipedia.org/wiki/Kanban_board
 .. _forums: https://help.nextcloud.org
 .. _Gherkin: https://github.com/cucumber/cucumber/wiki/Gherkin
 .. _existing ones: https://github.com/nextcloud/server/tree/master/build/integration/features
