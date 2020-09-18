@@ -26,7 +26,7 @@ Prerequisites for manual installation
 
 The Nextcloud .tar archive contains all of the required PHP modules. This
 section lists all required and optional PHP modules.  Consult the `PHP manual
-<http://php.net/manual/en/extensions.php>`_ for more information on modules.
+<https://php.net/manual/en/extensions.php>`_ for more information on modules.
 Your Linux distribution should have packages for all required modules. You can
 check the presence of a module by typing ``php -m | grep -i <module_name>``.
 If you get a result, the module is present.

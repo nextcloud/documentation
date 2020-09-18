@@ -28,7 +28,7 @@ The most important labels and their meaning:
 * #bug - this issue is a bug
 * #enhancement - this issue is a feature request/idea for improvement of Nextcloud
 * #design - this needs help from the design team or is a design-related issue/pull request
-* #technical debt - this issue or PR is about `technical debt <http://en.wikipedia.org/wiki/Technical_debt>`_
+* #technical debt - this issue or PR is about `technical debt <https://en.wikipedia.org/wiki/Technical_debt>`_
 * #good first issue - these are issues which are relatively easy to solve and ideal for people who want to learn how to code in Nextcloud
 * #needs info - this issue needs further information from the reporter, see :doc:`../bugtracker/triaging`
 * #high #medium #low signify how important the bug is.
@@ -82,7 +82,7 @@ Nextcloud is licensed under the `GNU AGPLv3 <https://www.gnu.org/licenses/agpl>`
    * GNU Affero General Public License for more details.
    *
    * You should have received a copy of the GNU Affero General Public License
-   * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+   * along with this program.  If not, see <https://www.gnu.org/licenses/>.
    *
    */
 
@@ -113,11 +113,11 @@ at the start of your php code. The final closing::
 
   ?>
 
-should not be used at the end of the file due to the `possible issue of sending white spaces <http://stackoverflow.com/questions/4410704/php-closing-tag>`_.
+should not be used at the end of the file due to the `possible issue of sending white spaces <https://stackoverflow.com/questions/4410704/php-closing-tag>`_.
 
 Comments
 ^^^^^^^^
-All API methods need to be marked with `PHPDoc <http://en.wikipedia.org/wiki/PHPDoc>`_ markup. An example would be:
+All API methods need to be marked with `PHPDoc <https://en.wikipedia.org/wiki/PHPDoc>`_ markup. An example would be:
 
 .. code-block:: php
 
@@ -431,7 +431,7 @@ Control structures
 CSS
 ---
 
-Take a look at the `Writing Tactical CSS & HTML <http://www.youtube.com/watch?v=hou2wJCh3XE&feature=plcp>`_ video on YouTube.
+Take a look at the `Writing Tactical CSS & HTML <https://www.youtube.com/watch?v=hou2wJCh3XE&feature=plcp>`_ video on YouTube.
 
 Don't bind your CSS too much to your HTML structure and try to avoid IDs. Also try to make your CSS reusable by grouping common attributes into classes.
 

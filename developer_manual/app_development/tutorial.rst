@@ -581,7 +581,7 @@ and **notestutorial/lib/Service/NotFoundException.php**:
     class NotFoundException extends ServiceException {}
 
 
-Remember how we had all those ugly try catches that where checking for **DoesNotExistException** and simply returned a 404 response? Let's also put this into a reusable class. In our case we chose a `trait <http://php.net/manual/en/language.oop5.traits.php>`_ so we can inherit methods without having to add it to our inheritance hierarchy. This will be important later on when you've got controllers that inherit from the **ApiController** class instead.
+Remember how we had all those ugly try catches that where checking for **DoesNotExistException** and simply returned a 404 response? Let's also put this into a reusable class. In our case we chose a `trait <https://php.net/manual/en/language.oop5.traits.php>`_ so we can inherit methods without having to add it to our inheritance hierarchy. This will be important later on when you've got controllers that inherit from the **ApiController** class instead.
 
 The trait is created in **notestutorial/lib/Controller/Errors.php**:
 

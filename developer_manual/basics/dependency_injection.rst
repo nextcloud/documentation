@@ -10,7 +10,7 @@ This makes the code easier to test and thus easier to maintain.
 
 If you are unfamiliar with this pattern, watch the following video:
 
-* `Google Clean Code Talks <http://www.youtube.com/watch?v=RlfLCWKxHJ0>`_
+* `Google Clean Code Talks <https://www.youtube.com/watch?v=RlfLCWKxHJ0>`_
 
 .. _dependency-injection:
 
@@ -380,12 +380,12 @@ In general all of the app's controllers need to be registered inside the contain
 
 * It does I/O (database, write/read to files)
 * It is a global (e.g. $_POST, etc. This is in the request class by the way)
-* The output does not depend on the input variables (also called `impure function <http://en.wikipedia.org/wiki/Pure_function>`_), e.g. time, random number generator
+* The output does not depend on the input variables (also called `impure function <https://en.wikipedia.org/wiki/Pure_function>`_), e.g. time, random number generator
 * It is a service, basically it would make sense to swap it out for a different object
 
 What not to inject:
 
 * It is pure data and has methods that only act upon it (arrays, data objects)
-* It is a `pure function <http://en.wikipedia.org/wiki/Pure_function>`_
+* It is a `pure function <https://en.wikipedia.org/wiki/Pure_function>`_
 
 .. _`reflection`: https://www.php.net/manual/en/book.reflection.php

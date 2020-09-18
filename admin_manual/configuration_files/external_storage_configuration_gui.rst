@@ -91,7 +91,7 @@ Using self-signed certificates
 When using self-signed certificates for external storage mounts the certificate
 must be imported into the personal settings of the user. Please refer to 
 `Nextcloud HTTPS External Mount 
-<http://ownclouden.blogspot.de/2014/11/owncloud-https-external-mount.html>`_
+<https://ownclouden.blogspot.de/2014/11/owncloud-https-external-mount.html>`_
 for more information.
 
 Available storage backends
