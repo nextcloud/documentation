@@ -43,3 +43,39 @@ mapping to for example memcaches. The filesystem has three elements: `root`, `fo
 The `root` can only contain folders. And each folder can only contain files. This is limited to keep
 things simple and to allow easy mapping to other backends. For example a sysadmin might chose to map the
 avatars to fast storage since they are used often.
+
+Root
+^^^^
+
+The root element can only contain folders. There are 3 things you
+can do on a root element:
+
+* `getFolder`: get the folder you request
+* `newFolder`: creates a new folder
+* `getDirectoryListing`: lists all the folders in this root
+
+Folder
+^^^^^^
+
+A folder has a bit more options.
+
+* `getDirectoryListing`: lists all the files in the folder
+* `fileExists`: check if a file exists
+* `getFile`: get a file
+* `newFile`: create a new file
+* `delete`: delete a folder and its content
+* `getName`: get the name of the folder
+
+File
+^^^^
+
+* `getName`: get the name of the file
+* `getSize`: get the size of the file
+* `getETag`: get the ETag of the file
+* `getMTime`: get the modification time of the file
+* `getContent`: get the content of the file
+* `putContent`: write content to the file
+* `delete`: delete the file
+* `getMimeType`: get the mimetype of the file
+* `read`: get a resource for reading the file
+* `write`: get a resoruce for writing to the file
