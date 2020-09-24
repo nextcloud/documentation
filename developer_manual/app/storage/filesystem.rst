@@ -6,38 +6,8 @@ Filesystem
 
 Because users can choose their storage backend, the filesystem should be accessed by using the appropriate filesystem classes.
 
-Filesystem classes can be injected from the ServerContainer by calling the method **getRootFolder()**, **getUserFolder()** or **getAppFolder()**:
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\AppInfo;
-
-    use \OCP\AppFramework\App;
-
-    use \OCA\MyApp\Storage\AuthorStorage;
-
-
-    class Application extends App {
-
-        public function __construct(array $urlParams=array()){
-            parent::__construct('myapp', $urlParams);
-
-            $container = $this->getContainer();
-
-            /**
-             * Storage Layer
-             */
-            $container->registerService('AuthorStorage', function($c) {
-                return new AuthorStorage($c->query('RootStorage'));
-            });
-
-            $container->registerService('RootStorage', function($c) {
-                return $c->query('ServerContainer')->getRootFolder();
-            });
-
-        }
-    }
+Filesystem classes can be injected automatically with dependency injection. This is the user filesystem.
+For a simplified filestystem for app specific data see `IAppData <../appdata.html>`_
 
 Writing to a file
 -----------------
@@ -50,22 +20,28 @@ All methods return a Folder object on which files and folders can be accessed, o
     <?php
     namespace OCA\MyApp\Storage;
 
+    use OCP\Files\IRootFolder
+
     class AuthorStorage {
 
+        /** @var IRootStorage */
         private $storage;
 
-        public function __construct($storage){
+        public function __construct(IRootFolder $storage){
             $this->storage = $storage;
         }
 
         public function writeTxt($content) {
+
+            $userFolder = $this->storage->getUserFolder('myUser');
+
             // check if file exists and write to it if possible
             try {
                 try {
-                    $file = $this->storage->get('/myfile.txt');
+                    $file = $userFolder->get('myfile.txt');
                 } catch(\OCP\Files\NotFoundException $e) {
-                    $this->storage->touch('/myfile.txt');
-                    $file = $this->storage->get('/myfile.txt');
+                    $userFolder->touch('myfile.txt');
+                    $file = $userFolder->get('myfile.txt');
                 }
 
                 // the id can be accessed by $file->getId();
@@ -88,18 +64,24 @@ Files and folders can also be accessed by id, by calling the **getById** method 
     <?php
     namespace OCA\MyApp\Storage;
 
+    use OCP\Files\IRootFolder
+
     class AuthorStorage {
 
+        /** @var IRootFolder */
         private $storage;
 
-        public function __construct($storage){
+        public function __construct(IRootFolder $storage){
             $this->storage = $storage;
         }
 
         public function getContent($id) {
+
+            $userFolder = $this->storage->getUserFolder('myUser');
+
             // check if file exists and read from it if possible
             try {
-                $file = $this->storage->getById($id);
+                $file = $userFolder->getById($id);
                 if($file instanceof \OCP\Files\File) {
                     return $file->getContent();
                 } else {
