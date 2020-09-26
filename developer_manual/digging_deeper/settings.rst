@@ -5,7 +5,7 @@ Settings
 .. sectionauthor:: Arthur Schiwon <blizzz@arthur-schiwon.de>
 
 An app can register both admin settings as well as personal settings.
-Settings are devided into sections to group similar settings together.
+Settings are divided into sections to group similar settings together.
 For example, in the **Sharing** section are only settings (built-in and of apps)
 related to sharing.
 
