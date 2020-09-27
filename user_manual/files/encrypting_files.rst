@@ -38,7 +38,7 @@ The only way to disable encryption is to run the `"decrypt all"
 
 .. TODO ON RELEASE: Update version number above on release
 
-script, which decrypts all files and disables encryption.
+Script, which decrypts all files and disables encryption.
 
 Is it possible to disable encryption with the recovery key?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
