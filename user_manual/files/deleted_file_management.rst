@@ -2,10 +2,9 @@
 Managing deleted files
 ======================
 
-When you delete a file in Nextcloud, it is not immediately deleted permanently.
-Instead, it is moved into the trash bin. It is not permanently deleted until
-you manually delete it, or when the Deleted Files app deletes it to make room
-for new files.
+When you delete a file in Nextcloud, it is not immediately deleted permanently,
+only moved into the trash bin. It is not permanently deleted until you manually
+delete it, or when the Deleted Files app deletes it to make room for new files.
 
 Find your deleted files by clicking on the **Deleted files**
 button on the Files page of the Nextcloud Web interface. You'll have options to
@@ -26,7 +25,7 @@ scenario illustrates:
 
 1. User1 shares a folder "test" with User2 and User3
 2. User2 (the recipient) deletes a file/folder "sub" inside of "test"
-3. The folder "sub" will be moved to the trashbin of both User1 (owner) and
+3. The folder "sub" will be moved to the trash bin of both User1 (owner) and
    User2 (recipient)
 4. But User3 will not have a copy of "sub" in their trash bin
 
