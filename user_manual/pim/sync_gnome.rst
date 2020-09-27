@@ -34,6 +34,6 @@ Files will be shown as a WebDAV resource in the Nautilus file manager
 dialogues). Documents should be integrated into the GNOME Documents
 app.
 
-All resourses should also be searchable from anywhere by pressing the Windows key and entering a
-search tearm. 
+All resources should also be searchable from anywhere by pressing the Windows key and entering a
+search term. 
 
