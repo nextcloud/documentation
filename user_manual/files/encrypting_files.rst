@@ -12,7 +12,7 @@ in and out and manage and share your files as you normally do, and you can
 still change your password whenever you want.
 
 Its main purpose is to encrypt files on remote storage services that are
-connected to your Nextcloud serve. This is an
+connected to your Nextcloud server. This is an
 easy and seamless way to protect your files on remote storage. You can share
 your remote files through Nextcloud in the usual way, however you cannot share
 your encrypted files directly from the remote service you are using, because
@@ -38,13 +38,13 @@ The only way to disable encryption is to run the `"decrypt all"
 
 .. TODO ON RELEASE: Update version number above on release
 
-script, which decrypts all files and disables encryption.
+Script, which decrypts all files and disables encryption.
 
 Is it possible to disable encryption with the recovery key?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Yes, *if* every user uses the `file recovery key
-<https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_,  `"decrypt all"
+<https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_, `"decrypt all"
 <https://docs.nextcloud.org/server/latest/admin_manual/configuration_server/occ_command.html#encryption-label>`_ will use it to decrypt all files.
 
 .. TODO ON RELEASE: Update version number above on release
@@ -53,13 +53,12 @@ Can encryption be disabled without the user's password?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you don't have the users password or `file recovery key
-<https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_.
+<https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_,
 
 .. TODO ON RELEASE: Update version number above on release
 
-then there is no way to decrypt all files. What's
-more, running it on login would be dangerous, because you would most likely run
-into timeouts.
+then there is no way to decrypt all files. What's more, running it on login
+would be dangerous, because you would most likely run into timeouts.
 
 Is it planned to move this to the next user login or a background job?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -138,14 +137,14 @@ structures. These files are never encrypted:
 - The search index from the full text search app.
 - Third-party app data
 
-There may be other files that are not encrypted; only files that are exposed to
-third-party storage providers are guaranteed to be encrypted.
+Only those files that are shared with third-party storage providers can
+be encrypted, the rest of the files may not be encrypted.
 
 Change private key password
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This option is only available if your log-in password, but not your encryption
-password, was changed by your administrator. This can occur if your Nextcloud
+This option is only available if the encryption password has not been changed by
+the administrator, but only the log-in password. This can occur if your Nextcloud
 provider uses an external user back-end (for example, LDAP) and changed your
 login password using that back-end configuration. In this case, you can set
 your encryption password to your new login password by providing your old and
