@@ -53,11 +53,11 @@ Can encryption be disabled without the user's password?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you don't have the users password or `file recovery key
-<https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_.
+<https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_,
 
 .. TODO ON RELEASE: Update version number above on release
 
-Then there is no way to decrypt all files. What's more, running it on login
+then there is no way to decrypt all files. What's more, running it on login
 would be dangerous, because you would most likely run into timeouts.
 
 Is it planned to move this to the next user login or a background job?
