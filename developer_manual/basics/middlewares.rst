@@ -87,21 +87,21 @@ Sometimes it is useful to conditionally execute code before or after a controlle
   namespace OCA\MyApp\Middleware;
 
   use \OCP\AppFramework\Middleware;
-  use \OCP\AppFramework\Utility\ControllerMethodReflector;
-  use \OCP\IRequest;
+  use \OCP\AppFramework\Utility\IControllerMethodReflector;
+  use \OCP\AppFramework\Http\Response;
 
   class HeaderMiddleware extends Middleware {
 
     private $reflector;
 
-    public function __construct(ControllerMethodReflector $reflector) {
+    public function __construct(IControllerMethodReflector $reflector) {
         $this->reflector = $reflector;
     }
 
     /**
      * Add custom header if @MyHeader is used
      */
-    public function afterController($controller, $methodName, IResponse $response){
+    public function afterController($controller, $methodName, Response $response){
         if($this->reflector->hasAnnotation('MyHeader')) {
             $response->addHeader('My-Header', 3);
         }
