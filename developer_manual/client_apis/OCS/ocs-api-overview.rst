@@ -190,7 +190,7 @@ want to hand over credentials to the 3rd party. An example of this is playing
 files in an external media player on mobile devices.
 
 To solve this issue there is a way to request a unique public link to a single file.
-This link will be valid for 24 hours afterwards it will be removed.
+This link will be valid for 8 hours afterwards it will be removed.
 
 To obtain a direct link:
 
