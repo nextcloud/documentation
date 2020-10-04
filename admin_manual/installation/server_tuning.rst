@@ -76,7 +76,7 @@ Here are some examples how to check if your CPU / environment supports the
 AES-NI extension:
 
 * For each CPU core present: ``grep flags /proc/cpuinfo`` or as a summary for 
-  all cores: ``grep -m 1 ^flags /proc/cpuinfo`` If the result contains any 
+  all cores: ``grep -m 1 '^flags' /proc/cpuinfo`` If the result contains any 
   ``aes``, the extension is present.   
 
 * Search eg. on the Intel web if the processor used supports the extension 
