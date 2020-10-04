@@ -135,6 +135,8 @@ For version you should use the your app versions. So if you app is at version
 
 Don't forget to remove your `database.xml` file.
 
+.. _migration_console_command:
+
 Console commands
 ----------------
 
