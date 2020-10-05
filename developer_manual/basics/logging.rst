@@ -4,7 +4,7 @@ Logging
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-The logger is present by default in the container. The app that is Logging is
+The logger is present by default in the container. The app that is logging is
 set automatically.
 
 The logger can be used in the following way:
@@ -14,21 +14,20 @@ The logger can be used in the following way:
     <?php
     namespace OCA\MyApp\Service;
 
-    use \OCP\ILogger;
-
+    use Psr\Log\LoggerInterface;
 
     class AuthorService {
 
         private $logger;
         private $appName;
 
-        public function __construct(ILogger $logger, string $appName){
+        public function __construct(LoggerInterface $logger, string $appName){
             $this->logger = $logger;
             $this->appName = $appName;
         }
 
         public function log($message) {
-            $this->logger->error($message, array('extra_context' => 'my extra context'));
+            $this->logger->error($message, ['extra_context' => 'my extra context']);
         }
 
     }
