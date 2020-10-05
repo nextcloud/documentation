@@ -11,15 +11,48 @@ Upgrading to Nextcloud 20
 
 .. note:: Critical changes were collected `on Github <https://github.com/nextcloud/server/issues/20953>`_. See the original ticket for links to the pull requests and tickets.
 
+Front-end changes
+^^^^^^^^^^^^^^^^^
+
+Body theme
+**********
+
+The body theme classes are now ``theme--highcontrast``, ``theme--dark`` and/or ``theme--light``.
+
+jQuery update
+*************
+
+jQuery was updated to v2.2. The most notable change is that ``$(document).ready(...)`` or ``$(...)`` for short fires sooner than before. Use the `DOMContentLoaded event <https://developer.mozilla.org/fr/docs/Web/Events/DOMContentLoaded>`_ instead.
+
+Search
+******
+
+The unified search replaces the traditional search input, hence ``OCA.Search`` became a noop. For backwards compatibility, the code will not raise any errors now, but it does not have any functionality.
+
+
 Back-end changes
 ^^^^^^^^^^^^^^^^
+
+App bootstrap logic
+*******************
+
+The code that initializes an app or anything that should run for every request and command is now moved to a dedicated and typed API. The ``appinfo/app.php`` is therefore obsolete and deprecated. See :ref:`bootstrapping<Bootstrapping>` for details.
+
+.. _upgrade-psr3:
+
+PSR-3 integration
+*****************
+
+Nextcloud 20 is the first major release of Nextcloud that brings full compatibility with :ref:`psr3`. From this point on it is highly recommended to use this interface mainly as the old ``\OCP\ILogger`` got deprecated with the last remaining changes. The majority of methods are identical between the Nextcloud-specific interface and the PSR one. Pay attention to usages of ``\OCP\ILogger::logException`` as that method does not exist on the PSR logger. However, you can specifcy an ``exception`` key in the ``$context`` argument of any ``\Psr\Log\LoggerInterface`` method and Nextcloud will format it like it did with the old ``logException``.
 
 .. _upgrade-psr11:
 
 PSR-11 integration
 ******************
 
-Nextcloud 20 is the first major release of Nextcloud that brings full compatibility with :ref:`psr11`. From this point on it is highly recommended to use this interface mainly as the old ``\OCP\AppFramework\IAppContainer``, ``\OCP\IContainer`` and ``\OCP\IServerContainer`` got deprecated with this change.
+Nextcloud 20 is the first major release of Nextcloud that brings full compatibility with :ref:`psr11`. From this point on it is highly recommended to use this interface mainly as the old ``\OCP\IContainer`` got deprecated with this change.
+
+The interfaces ``\OCP\AppFramework\IAppContainer`` and ``\OCP\IServerContainer`` will remain, but they won't extend the ``IContainer`` anymore once that interface gets removed. As a result, ``IAppContainer`` and ``IServerContainer`` will eventually become tagging interfaces with the sole purpose of making it possible to have either the app or server container injected explicitly.
 
 If your app requires Nextcloud 20 or later, you can replace any of the old type hints with one of ``\Psr\Container\ContainerInterface`` and replace calls of ``query`` with ``get``, e.g. on the closures used when registering services:
 
@@ -54,9 +87,44 @@ becomes
 Deprecated APIs
 ***************
 
-* ``\OCP\AppFramework\IAppContainer``: see :ref:`upgrade-psr11`
 * ``\OCP\IContainer``: see :ref:`upgrade-psr11`
-* ``\OCP\IServerContainer``: see :ref:`upgrade-psr11`
+* ``\OCP\ILogger``: see :ref:`upgrade-psr3`
+* ``\OCP\IServerContainer::getEventDispatcher``
+* ``\OC_App::registerLogIn()``: use :ref:`bootstrapping<Bootstrapping>` and ``\OCP\AppFramework\Bootstrap\IRegistrationContext::registerAlternativeLogin``
+* Event ``\OCA\DAV\CalDAV\CalDavBackend::createCachedCalendarObject``: listen to ``\OCA\DAV\Events\CachedCalendarObjectCreatedEvent``
+* Event ``\OCA\DAV\CalDAV\CalDavBackend::createCalendar``: listen to ``\OCA\DAV\Events\CalendarCreatedEvent``
+* Event ``\OCA\DAV\CalDAV\CalDavBackend::createCalendarObject``: listen to ``\OCA\DAV\Events\CalendarObjectCreatedEvent``
+* Event ``\OCA\DAV\CalDAV\CalDavBackend::createSubscription``: listen to ``\OCA\DAV\Events\SubscriptionCreatedEvent``
+* Event ``\OCA\DAV\CalDAV\CalDavBackend::deleteCachedCalendarObject``: listen to ``\OCA\DAV\Events\CachedCalendarObjectDeletedEvent``
+* Event ``\OCA\DAV\CalDAV\CalDavBackend::deleteCalendar``: listen to ``\OCA\DAV\Events\CalendarDeletedEvent``
+* Event ``\OCA\DAV\CalDAV\CalDavBackend::deleteCalendarObject``: listen to ``\OCA\DAV\Events\CalendarObjectDeletedEvent``
+* Event ``\OCA\DAV\CalDAV\CalDavBackend::deleteSubscription``: listen to ``\OCA\DAV\Events\SubscriptionDeletedEvent``
+* Event ``\OCA\DAV\CalDAV\CalDavBackend::publishCalendar``: listen to ``\OCA\DAV\Events\CalendarPublishedEvent``
+* Event ``\OCA\DAV\CalDAV\CalDavBackend::publishCalendar``: listen to ``\OCA\DAV\Events\CalendarUnpublishedEvent``
+* Event ``\OCA\DAV\CalDAV\CalDavBackend::updateCachedCalendarObject``: listen to ``\OCA\DAV\Events\CachedCalendarObjectUpdatedEvent``
+* Event ``\OCA\DAV\CalDAV\CalDavBackend::updateCalendar``: listen to ``\OCA\DAV\Events\CalendarUpdatedEvent``
+* Event ``\OCA\DAV\CalDAV\CalDavBackend::updateCalendarObject``: listen to ``\OCA\DAV\Events\CalendarObjectUpdatedEvent``
+* Event ``\OCA\DAV\CalDAV\CalDavBackend::updateShares``: listen to ``\OCA\DAV\Events\CalendarShareUpdatedEvent``
+* Event ``\OCA\DAV\CalDAV\CalDavBackend::updateSubscription``: listen to ``\OCA\DAV\Events\SubscriptionUpdatedEvent``
+* Event ``\\OCA\DAV\CardDAV\CardDavBackend::createCard``: listen to ``\OCA\DAV\Events\CardCreatedEvent``
+* Event ``\OCA\DAV\CardDAV\CardDavBackend::deleteCard``: listen to ``\OCA\DAV\Events\CardDeletedEvent``
+* Event ``\OCA\DAV\CardDAV\CardDavBackend::updateCard``: listen to ``\OCA\DAV\Events\CardUpdatedEvent``
+* Event ``\OCA\Files_Sharing::loadAdditionalScripts:: publicShareAuth``: listen to ``\OCA\Files_Sharing\Event\BeforeTemplateRenderedEvent``
+* Event ``\OCA\Files_Sharing::loadAdditionalScripts``: listen to ``\OCA\Files_Sharing\Event\BeforeTemplateRenderedEvent``
+* Event ``\OCA\User_LDAP\User\User::postLDAPBackendAdded``: listen to ``\OCA\User_LDAP\Events\UserBackendRegistered``
+* Event ``\OCA\User_LDAP\User\User::postLDAPBackendAdded``: listen to ``\OCA\User_LDAP\Events\GroupBackendRegistered``
+* Event ``\OCP\AppFramework\Http\StandaloneTemplateResponse::EVENT_LOAD_ADDITIONAL_SCRIPT``: listen to ``\OCP\AppFramework\Http\Events\BeforeTemplateRenderedEvent``
+* Event ``\OCP\AppFramework\Http\StandaloneTemplateResponse::EVENT_LOAD_ADDITIONAL_SCRIPTS_LOGGEDIN``: listen to ``\OCP\AppFramework\Http\Events\BeforeTemplateRenderedEvent``
+* Event ``\OCP\WorkflowEngine::loadAdditionalSettingScripts``: listen to ``\OCP\WorkflowEngine\Events\LoadSettingsScriptsEvent``
+
+
+Removed from public namespace
+*****************************
+
+* ``\OCP\IServerContainer::getAppFolder``
+* Hook ``\OCA\DAV\Connector\Sabre::authInit``: use the ``\OCA\DAV\Events\SabrePluginAuthInitEvent`` event instead
+* Event ``\OC_User::post_removeFromGroup``: listen to ``\OCP\Group\Events\UserRemovedEvent``
+* Event ``\OCA\DAV\Connector\Sabre::authInit``: listen to ``\OCA\DAV\Events\SabrePluginAuthInitEvent``
 
 
 Upgrading to Nextcloud 19
