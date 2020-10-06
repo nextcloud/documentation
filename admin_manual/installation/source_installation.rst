@@ -111,10 +111,20 @@ If ``mod_webdav`` is enabled you must disable it for Nextcloud. (See
 Apache Web server configuration
 -------------------------------
 
-On Debian, Ubuntu, and their derivatives, Apache installs with a useful
-configuration so all you have to do is create a
-:file:`/etc/apache2/sites-available/nextcloud.conf` file with these lines in
-it, replacing the **Directory** and other filepaths with your own filepaths::
+Configuring Apache requires the creation of a single configuration
+file. On Debian, Ubuntu, and their derivatives, this file will be
+:file:`/etc/apache2/sites-available/nextcloud.conf`. On Fedora,
+CentOS, RHEL, and similar systems, the configuration file will be
+:file:`/etc/httpd/conf.d/nextcloud.conf`.
+
+You can choose to install Nextcloud in a directory on an existing
+webserver, for example `https://www.example.com/nextcloud/`, or in a
+virtual host if you want Nextcloud to be accessible from its own
+subdomain such as `https://cloud.example.com/`.
+
+To use the directory-based installation, put the following in your
+:file:`nextcloud.conf` replacing the **Directory** and **Alias** filepaths
+with the filepaths appropriate for your system::
 
     Alias /nextcloud "/var/www/nextcloud/"
 
@@ -126,15 +136,12 @@ it, replacing the **Directory** and other filepaths with your own filepaths::
       <IfModule mod_dav.c>
         Dav off
       </IfModule>
-
     </Directory>
 
-Then enable the newly created site::
-
-    a2ensite nextcloud.conf
-
-
-On CentOS/RHEL, create a virtualhost :file:`/etc/httpd/conf.d/nextcloud.conf` and add the following content to it::
+To use the virtual host installation, put the following in your
+:file:`nextcloud.conf` replacing **ServerName**, as well as the
+**DocumentRoot** and **Directory** filepaths with values appropriate
+for your system::
 
     <VirtualHost *:80>
       DocumentRoot /var/www/nextcloud/
@@ -148,9 +155,15 @@ On CentOS/RHEL, create a virtualhost :file:`/etc/httpd/conf.d/nextcloud.conf` an
         <IfModule mod_dav.c>
           Dav off
         </IfModule>
-
       </Directory>
     </VirtualHost>
+
+
+On Debian, Ubuntu, and their derivatives, you should run the following
+command to enable the configuration::
+
+    a2ensite nextcloud.conf
+
 
 Additional Apache configurations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
