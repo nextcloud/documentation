@@ -89,6 +89,9 @@ Calendars can be published through a public link to make them viewable (read-onl
 
 There's also an « embedding code » that provides an HTML iframe to embed your calendar into public pages.
 
+Multiple calendars can be shared together by adding their unique tokens to the end of an embed link. Individual tokens can be found at the end of each calendar's public link. The full address will look like
+``https://cloud.example.com/index.php/apps/calendar/embed/token1-token2-token3``
+
 On the public page, users are able to get the subscription link for the calendar and download the whole calendar directly.
 
 Subscribe to a Calendar
