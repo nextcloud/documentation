@@ -24,7 +24,7 @@ This mechanism is a versatile and typed approach to events in Nextcloud's php co
 Naming scheme
 ^^^^^^^^^^^^^
 
-The name should reflect the subject and the actions. Prefixing event classes with `Event` makes it easier to recognize their purpose.
+The name should reflect the subject and the actions. Suffixing event classes with `Event` makes it easier to recognize their purpose.
 
 For example, if a user is created, a `UserCreatedEvent` will be emitted.
 
