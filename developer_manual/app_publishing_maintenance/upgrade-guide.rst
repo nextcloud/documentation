@@ -29,6 +29,10 @@ Search
 
 The unified search replaces the traditional search input, hence ``OCA.Search`` became a noop. For backwards compatibility, the code will not raise any errors now, but it does not have any functionality.
 
+Removed globals
+***************
+
+* ``escape-html``: use `the escape-html package <https://www.npmjs.com/package/escape-html>` or similar
 
 Back-end changes
 ^^^^^^^^^^^^^^^^
