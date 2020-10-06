@@ -34,6 +34,11 @@ Removed globals
 
 * ``escape-html``: use `the escape-html package <https://www.npmjs.com/package/escape-html>` or similar
 
+Removed jQuery plugins
+**********************
+
+* ``$.tipsy``
+
 Back-end changes
 ^^^^^^^^^^^^^^^^
 
