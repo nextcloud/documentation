@@ -14,7 +14,7 @@ For best performance, stability and functionality we have documented some recomm
 +------------------+-----------------------------------------------------------------------+
 | Platform         | Options                                                               |
 +==================+=======================================================================+
-| Operating System | - **Ubuntu 18.04 LTS** (recommended)                                  |
+| Operating System | - **Ubuntu 20.04 LTS** (recommended)                                  |
 |                  | - **Red Hat Enterprise Linux 8** (recommended)                        |
 |                  | - Debian 10 (Buster)                                                  |
 |                  | - SUSE Linux Enterprise Server 15                                     |
