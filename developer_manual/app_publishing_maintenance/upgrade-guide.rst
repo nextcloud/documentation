@@ -34,6 +34,12 @@ Removed globals
 
 * ``escape-html``: use `the escape-html package <https://www.npmjs.com/package/escape-html>` or similar
 
+Deprecated global variables
+***************************
+
+* ``humanFileSize``: use ``formatfilesize`` from https://www.npmjs.com/package/@nextcloud/files
+* ``OC.getCanonicalLocale``: use ``getCanonicalLocale`` from https://www.npmjs.com/package/@nextcloud/l10n
+
 Removed jQuery plugins
 **********************
 
