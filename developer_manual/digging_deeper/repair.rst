@@ -24,14 +24,14 @@ The following repairstep will log a message when executed.
 
   use OCP\Migration\IOutput;
   use OCP\Migration\IRepairStep;
-  use OCP\ILogger;
+  use Psr\Log\LoggerInterface;
 
   class MyRepairStep implements IRepairStep {
 
-  	/** @var ILogger */
+  	/** @var LoggerInterface */
   	protected $logger;
 
-  	public function __construct(ILogger $logger) {
+  	public function __construct(LoggerInterface $logger) {
   		$this->logger = $logger;
   	}
 

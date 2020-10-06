@@ -6,6 +6,8 @@ PSR
 
 On this page you find information about the implemented `php standards recommendations <https://www.php-fig.org/psr/>`_ in Nextcloud.
 
+.. _psr3:
+
 PSR-3: Logger Interface
 -----------------------
 
