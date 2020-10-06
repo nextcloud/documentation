@@ -264,11 +264,17 @@ so for example **notestutorial/lib/Migration/Version000000Date20181013124731.php
         }
     }
 
-To create the tables in the database, the :doc:`version tag <info>` in **notestutorial/appinfo/info.xml** needs to be increased:
+To create the tables in the database, run the :ref:`migration  <migration_console_command>` command::
+
+   php ./occ migrations:excute <appId> <versionNumber>
+
+   Example: sudo -u www-data php ./occ migrations:execute photos 000000Date20201002183800
+
+.. note:: to trigger the tabele creation/alteration when user updating the app, update the :doc:`version tag <info>` in **notestutorial/appinfo/info.xml** . migration will be executed when user reload page after app upgrade
 
 .. code-block:: xml
 
-    <?xml version="1.0"?>
+  <?xml version="1.0"?>
     <info>
         <id>notestutorial</id>
         <name>Notes Tutorial</name>
@@ -283,7 +289,6 @@ To create the tables in the database, the :doc:`version tag <info>` in **notestu
         </dependencies>
     </info>
 
-Reload the page to trigger the database migration.
 
 Now that the tables are created we want to map the database result to a PHP object to be able to control data. First create an :doc:`entity <storage/database>` in **notestutorial/lib/Db/Note.php**:
 
