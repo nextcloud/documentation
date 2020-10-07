@@ -102,7 +102,7 @@ To create a mapper, inherit from the mapper base class and call the parent const
                ->setMaxResults($limit)
                ->setFirstResult($offset);
 
-            return $this->findEntities($sql);
+            return $this->findEntities($qb);
         }
 
 
