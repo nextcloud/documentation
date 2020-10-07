@@ -105,6 +105,95 @@ Deprecated APIs
 * ``\OCP\IContainer``: see :ref:`upgrade-psr11`
 * ``\OCP\ILogger``: see :ref:`upgrade-psr3`
 * ``\OCP\IServerContainer::getEventDispatcher``
+* ``\OCP\IServerContainer::getCalendarManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getCalendarResourceBackendManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getCalendarRoomBackendManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getContactsManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getEncryptionManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getEncryptionFilesHelper``: have the interface injected instead
+* ``\OCP\IServerContainer::getEncryptionKeyStorage``: have the interface injected instead
+* ``\OCP\IServerContainer::getRequest``: have the interface injected instead
+* ``\OCP\IServerContainer::getPreviewManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getTagManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getSystemTagManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getSystemTagObjectMapper``: have the interface injected instead
+* ``\OCP\IServerContainer::getAvatarManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getRootFolder``
+* ``\OCP\IServerContainer::getUserManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getGroupManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getUserSession``: have the interface injected instead
+* ``\OCP\IServerContainer::getSession``: have the interface injected instead
+* ``\OCP\IServerContainer::getTwoFactorAuthManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getNavigationManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getConfig``: have the interface injected instead
+* ``\OCP\IServerContainer::getSystemConfig``: have the interface injected instead
+* ``\OCP\IServerContainer::getAppConfig``: have the interface injected instead
+* ``\OCP\IServerContainer::getL10NFactory``: have the interface injected instead
+* ``\OCP\IServerContainer::getL10N``: have the interface injected instead
+* ``\OCP\IServerContainer::getURLGenerator``: have the interface injected instead
+* ``\OCP\IServerContainer::getAppFetcher``: have the interface injected instead
+* ``\OCP\IServerContainer::getMemCacheFactory``: have the interface injected instead
+* ``\OCP\IServerContainer::getGetRedisFactory``: have the interface injected instead
+* ``\OCP\IServerContainer::getDatabaseConnection``: have the interface injected instead
+* ``\OCP\IServerContainer::getActivityManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getJobList``: have the interface injected instead
+* ``\OCP\IServerContainer::getLogger``: have the interface injected instead
+* ``\OCP\IServerContainer::getLogFactory``: have the interface injected instead
+* ``\OCP\IServerContainer::getRouter``: have the interface injected instead
+* ``\OCP\IServerContainer::getSearch``: have the interface injected instead
+* ``\OCP\IServerContainer::getSecureRandom``: have the interface injected instead
+* ``\OCP\IServerContainer::getCrypto``: have the interface injected instead
+* ``\OCP\IServerContainer::getHasher``: have the interface injected instead
+* ``\OCP\IServerContainer::getCredentialsManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getCertificateManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getHTTPClientService``: have the interface injected instead
+* ``\OCP\IServerContainer::createEventSource``
+* ``\OCP\IServerContainer::getEventLogger``: have the interface injected instead
+* ``\OCP\IServerContainer::getQueryLogger``: have the interface injected instead
+* ``\OCP\IServerContainer::getTempManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getAppManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getMailer``: have the interface injected instead
+* ``\OCP\IServerContainer::getWebRoot``: have the interface injected instead
+* ``\OCP\IServerContainer::getOcsClient``: have the interface injected instead
+* ``\OCP\IServerContainer::getDateTimeZone``: have the interface injected instead
+* ``\OCP\IServerContainer::getDateTimeFormatter``: have the interface injected instead
+* ``\OCP\IServerContainer::getMountProviderCollection``: have the interface injected instead
+* ``\OCP\IServerContainer::getIniWrapper``: have the interface injected instead
+* ``\OCP\IServerContainer::getCommandBus``: have the interface injected instead
+* ``\OCP\IServerContainer::getTrustedDomainHelper``: have the interface injected instead
+* ``\OCP\IServerContainer::getLockingProvider``: have the interface injected instead
+* ``\OCP\IServerContainer::getMountManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getUserMountCache``: have the interface injected instead
+* ``\OCP\IServerContainer::getMimeTypeDetector``: have the interface injected instead
+* ``\OCP\IServerContainer::getMimeTypeLoader``: have the interface injected instead
+* ``\OCP\IServerContainer::getCapabilitiesManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getNotificationManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getCommentsManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getThemingDefaults``: have the interface injected instead
+* ``\OCP\IServerContainer::getIntegrityCodeChecker``: have the interface injected instead
+* ``\OCP\IServerContainer::getSessionCryptoWrapper``: have the interface injected instead
+* ``\OCP\IServerContainer::getCsrfTokenManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getBruteForceThrottler``: have the interface injected instead
+* ``\OCP\IServerContainer::getContentSecurityPolicyManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getContentSecurityPolicyNonceManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getStoragesBackendService``: have the interface injected instead
+* ``\OCP\IServerContainer::getGlobalStoragesService``: have the interface injected instead
+* ``\OCP\IServerContainer::getUserGlobalStoragesService``: have the interface injected instead
+* ``\OCP\IServerContainer::getUserStoragesService``: have the interface injected instead
+* ``\OCP\IServerContainer::getShareManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getCollaboratorSearch``: have the interface injected instead
+* ``\OCP\IServerContainer::getAutoCompleteManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getLDAPProvider``: have the interface injected instead
+* ``\OCP\IServerContainer::getSettingsManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getAppDataDir``
+* ``\OCP\IServerContainer::getCloudIdManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getGlobalScaleConfig``: have the interface injected instead
+* ``\OCP\IServerContainer::getCloudFederationProviderManager``: have the interface injected instead
+* ``\OCP\IServerContainer::getRemoteApiFactory``: have the interface injected instead
+* ``\OCP\IServerContainer::getCloudFederationFactory``: have the interface injected instead
+* ``\OCP\IServerContainer::getRemoteInstanceFactory``: have the interface injected instead
+* ``\OCP\IServerContainer::getStorageFactory``: have the interface injected instead
+* ``\OCP\IServerContainer::getGeneratorHelper``: have the interface injected instead
 * ``\OC_App::registerLogIn()``: use :ref:`bootstrapping<Bootstrapping>` and ``\OCP\AppFramework\Bootstrap\IRegistrationContext::registerAlternativeLogin``
 * Event ``\OCA\DAV\CalDAV\CalDavBackend::createCachedCalendarObject``: listen to ``\OCA\DAV\Events\CachedCalendarObjectCreatedEvent``
 * Event ``\OCA\DAV\CalDAV\CalDavBackend::createCalendar``: listen to ``\OCA\DAV\Events\CalendarCreatedEvent``
