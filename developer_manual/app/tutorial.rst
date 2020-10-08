@@ -270,7 +270,7 @@ To create the tables in the database, run the :ref:`migration  <migration_consol
 
    Example: sudo -u www-data php ./occ migrations:execute photos 000000Date20201002183800
 
-.. note:: to trigger the tabele creation/alteration when user updating the app, update the :doc:`version tag <info>` in **notestutorial/appinfo/info.xml** . migration will be executed when user reload page after app upgrade
+.. note:: to trigger the table creation/alteration when user updating the app, update the :doc:`version tag <info>` in **notestutorial/appinfo/info.xml** . migration will be executed when user reload page after app upgrade
 
 .. code-block:: xml
 
@@ -325,7 +325,7 @@ Now that the tables are created we want to map the database result to a PHP obje
 
 We also define a **jsonSerializable** method and implement the interface to be able to transform the entity to JSON easily.
 
-Entities are returned from so called :doc:`Mappers <storage/database>`. Let's create one in **notestutorial/lib/Db/NoteMapper.php** and add a **find** and **findAll** method:
+Entities are returned from so-called :doc:`Mappers <storage/database>`. Let's create one in **notestutorial/lib/Db/NoteMapper.php** and add a **find** and **findAll** method:
 
 .. code-block:: php
 
@@ -480,7 +480,7 @@ This is all that is needed on the server side. Now let's progress to the client 
 Making things reusable and decoupling controllers from the database
 -------------------------------------------------------------------
 
-Let's say our app is now on the app store and and we get a request that we should save the files in the filesystem which requires access to the filesystem.
+Let's say our app is now on the app store and we get a request that we should save the files in the filesystem which requires access to the filesystem.
 
 The filesystem API is quite different from the database API and throws different exceptions, which means we need to rewrite everything in the **NoteController** class to use it. This is bad because a controller's only responsibility should be to deal with incoming Http requests and return Http responses. If we need to change the controller because the data storage was changed the code is probably too tightly coupled and we need to add another layer in between. This layer is called **Service**.
 
@@ -852,7 +852,7 @@ Integration tests
 
 Integration tests are slow and need a fully working instance but make sure that our classes work well together. Instead of mocking out all classes and parameters we can decide whether to use full instances or replace certain classes. Because they are slow we don't want as many integration tests as unit tests.
 
-In our case we want to create an integration test for the udpate method without mocking out the **NoteMapper** class so we actually write to the existing database.
+In our case we want to create an integration test for the update method without mocking out the **NoteMapper** class so we actually write to the existing database.
 
 To do that create a new file called **notestutorial/tests/Integration/NoteIntegrationTest.php** with the following content:
 
@@ -1070,7 +1070,7 @@ Since the **NoteApiController** is basically identical to the **NoteController**
 Building the frontend
 ---------------------
 
-To create a modern webapp you need to write :doc:`JavaScript<view/js>`. You can use any JavaScript framework, but this tutorial focusses on a simple frontend using Vue.js. For a more detail introduction to Vue.js please head over to the `official documentation <https://vuejs.org/v2/guide/>`_.
+To create a modern webapp you need to write :doc:`JavaScript<view/js>`. You can use any JavaScript framework, but this tutorial focusses on a simple frontend using Vue.js. For a more detailed introduction to Vue.js please head over to the `official documentation <https://vuejs.org/v2/guide/>`_.
 
 The source files of our frontend will be stored in the **src/** directory. We use webpack for bundling the files and output of that will be stored in **js/notestutorial.js**.
 
@@ -1089,6 +1089,6 @@ The template of our view will be very simple due to the fact that Vue.js is taki
 The frontend source code will consist of two files:
 
 * `main.js <https://github.com/nextcloud/app-tutorial/blob/master/src/main.js>`_ which is the main entry point of our javascript code that gets loaded when the page is opened
-* `App.vue <https://github.com/nextcloud/app-tutorial/blob/master/src/App.vue>`_ which is our one single file component that takes care of all logic inside of the Vue app. Our example app contains some additional comments to explain how the frontend is build.
+* `App.vue <https://github.com/nextcloud/app-tutorial/blob/master/src/App.vue>`_ which is our one single file component that takes care of all logic inside of the Vue app. Our example app contains some additional comments to explain how the frontend is built.
 
 Congratulations! You've written your first Nextcloud app. You can now either try to further improve the tutorial notes app or start writing your own app.
