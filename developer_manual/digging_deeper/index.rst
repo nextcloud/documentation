@@ -9,6 +9,7 @@ Digging deeper
    changelog
    debugging
    classloader
+   continuous_integration
    flow
    javascript-apis
    npm
