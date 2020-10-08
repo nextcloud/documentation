@@ -91,7 +91,7 @@ becomes
   $container->registerService('DecryptAll', function (ContainerInterface $c) {
     return new DecryptAll(
       $c->get('Util'),
-      $c->get(KeyManage::class'),
+      $c->get(KeyManager::class'),
       $c->get('Crypt'),
       $c->get(ISession::class)
     )
