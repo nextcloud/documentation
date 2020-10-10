@@ -19,8 +19,8 @@ The `Application` class is the main entry point of an app. This class is optiona
 to register any services or run some code for every request.
 
 
-Nextcloud will try to autoload the class from the namespace ``\OCA\<App namespace>\AppInfo\Application``, like e.g.
-``\OCA\Mail\AppInfo\Application``. The file will therefore be located at ``lib/AppInfo``.
+Nextcloud will try to autoload the class from the namespace ``\OCA\<App namespace>\AppInfo\Application``, like 
+``\OCA\MyApp\AppInfo\Application``, where *MyApp* would be the name of your app. The file will therefore have the location ``MyApp/lib/AppInfo/Application.php``. 
 
 .. code-block:: php
 
@@ -41,7 +41,7 @@ Nextcloud will try to autoload the class from the namespace ``\OCA\<App namespac
 
     }
 
-The class **must** extend ``OCP\AppFramework\App`` and it may optionally implement ``\OCP\AppFramework\Bootstrap\IBootstrap``:
+The class **must** extend ``OCP\AppFramework\App`` and may optionally implement ``\OCP\AppFramework\Bootstrap\IBootstrap``:
 
 .. code-block:: php
 
@@ -81,6 +81,8 @@ The class **must** extend ``OCP\AppFramework\App`` and it may optionally impleme
         }
 
     }
+    
+Note that the context's of the methods ``register`` and ``boot`` have different interfaces and thus have different capabilities appropriate for their stage.
 
 Bootstrapping process
 ---------------------
@@ -92,23 +94,23 @@ Nextcloud 20 and later
 **********************
 
 Nextcloud 20 is the first release with the interface ``\OCP\AppFramework\Bootstrap\IBootstrap``. This interface can be
-implemented by apps' Application class to signal that they want to act on the bootstrapping stages. The major difference
-between this and the old process is that the boostrapping is not performed in a sequence, but apps register and boot
-interleaved. This should ensure that an app that boots can rely on all other apps' registration to be finished.
+implemented by your app's ``Application`` class to signal that it wants to act on the bootstrapping stages. The major difference
+between this and the old process is that the boostrapping is not performed in sequence, but apps register and boot
+interleaved. This should ensure that an app that ``boot``s can rely on all other apps' registration to be finished.
 
-The overall process is as follows.
+The overall process is as follows:
 
-1) Each installed and enabled app that has an ``Application`` class class that implements ``IBootstrap``, the ``register``
+1) In each installed and enabled app that has an ``Application`` class that also implements ``IBootstrap``, the ``register``
    method will be called. This method receives a context argument via which the app can prime the dependency injection
-   container and register many other services lazily. The emphasis is on **lazyness**. At this very early stage of the
+   container and register other services lazily, e.g. by calling ``$context->registerService(...)``. The emphasis is on **lazyness**. At this very early stage of the
    process lifetime, no other apps nor all of the server components are ready. Therefore the app **must not** try to use
    anything except the API provided by the context. That shall ensure that all apps can safely run their registration logic
-   before any services are queried from the DI container or related code is run.
-2) Nextcloud will load groups of certain apps early, like filesystem or session apps, and other later. For this their optional
+   before any services are queried (instantiated) from the DI container or related code is run.
+2) Nextcloud will load groups of certain apps early, e.g. filesystem or session apps, and other later. For that purpose, their optional
    :ref:`app-php` will be included. As ``app.php`` is deprecated, apps should try not to rely on this step.
-3) Nextcloud will query the app's ``Application`` class (again), no matter if it implements ``IBootstrap`` or not.
+3) Nextcloud will query the app's ``Application`` class (again), no matter whether it implements ``IBootstrap`` or not.
 4) Nextcloud will invoke the ``boot`` method of every ``Application`` instance that implements ``IBootstrap``. At this stage
-   you may assume that all registrations via ``IBootstrap::register`` have been done.
+   you may assume that all registrations via ``IBootstrap::register`` have completed.
 
 Nextcloud 19 and older
 **********************
