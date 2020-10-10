@@ -103,7 +103,7 @@ Example
 ^^^^^^^
 ::
 
-  $ curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/groups/admin
+  $ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/groups/admin
 
 * Returns a list of users in the ``admin`` group
 
