@@ -32,12 +32,15 @@ With the Nextcloud mobile app
    to **Settings** / **More**, tap on "**Sync calendars & contacts**".
 3. Now, DAVx⁵ will open Nextcloud's Webflow login window, where you
    will have to enter your credentials and grant access.
-4. After this, DAVx⁵ will close and the Nextcloud app reappears. In
+4. DAVx⁵ will open and ask you to create an account. Set the account
+   name to one of your choosing, and set **Contact Group Method** to
+   **Groups are per-contact categories**.
+5. After this, DAVx⁵ will close and the Nextcloud app reappears. In
    order to finish setup, you have to manually launch DAVx⁵ again.
-5. Tap on the icon for the account DAVx⁵ has just created, when requested grant DAVx⁵ access
+6. Tap on the icon for the account DAVx⁵ has just created, when requested grant DAVx⁵ access
    to your calendars and contacts. Optionally install `OpenTasks <https://play.google.com/store/apps/details?id=org.dmfs.tasks>`_  and
    grant DAVx⁵ access to your tasks, too.
-6. When you tap the icon for the account DAVx⁵ has set up, it will
+7. When you tap the icon for the account DAVx⁵ has set up, it will
    discover the available address books and calendars. Choose which
    ones you want to synchronize and finish.
 
