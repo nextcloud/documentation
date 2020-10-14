@@ -201,6 +201,14 @@ The ``app`` commands list, enable, and disable apps::
   app:update       update an app or all apps
   app:remove       disable and remove an app
 
+Download and install an app::
+
+ sudo -u www-data php occ app:install twofactor_totp
+
+Install but don't enable::
+
+ sudo -u www-data php occ app:install --keep-disabled twofactor_totp
+
 List all of your installed apps, and show whether they are 
 enabled or disabled::
 
