@@ -20,7 +20,7 @@ to register any services or run some code for every request.
 
 
 Nextcloud will try to autoload the class from the namespace ``\OCA\<App namespace>\AppInfo\Application``, like 
-``\OCA\MyApp\AppInfo\Application``, where *MyApp* would be the name of your app. The file will therefore have the location ``MyApp/lib/AppInfo/Application.php``. 
+``\OCA\MyApp\AppInfo\Application``, where *MyApp* would be the name of your app. The file will therefore have the location ``myapp/lib/AppInfo/Application.php``. 
 
 .. code-block:: php
 
