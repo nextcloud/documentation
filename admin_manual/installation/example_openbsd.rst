@@ -1,5 +1,12 @@
 .. _openbsd_installation_label:
 
+==================================================================
+=								 =
+= Nextcloud does not have official OpenBSD or other *BSD support =
+=								 =
+==================================================================
+
+
 Example installation on OpenBSD
 ===============================
 
@@ -62,12 +69,6 @@ Create a virtualhost in ``/etc/httpd.conf`` and add the following content to it:
 	  }
 
 	  location "/nextcloud/core/*" {
-		  root "/nextcloud"
-		  request strip 1
-		  pass
-	  }
-
-	  location "/nextcloud/settings/*" {
 		  root "/nextcloud"
 		  request strip 1
 		  pass
@@ -196,7 +197,7 @@ Cron job
 
 We need to add the Nextcloud cron job to get some tasks done by adding this entry on your cronjob::
 
-  */15 * * * * /usr/bin/ftp -Vo - https://domain.tld/cron.php >/dev/null
+  */5 * * * * /usr/bin/ftp -Vo - https://domain.tld/cron.php >/dev/null
   
 Chroot
 ------
