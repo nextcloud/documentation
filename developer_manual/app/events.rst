@@ -562,6 +562,14 @@ Filesystem root
 
 Injectable from the ServerContainer by calling the method **getRootFolder()**, **getUserFolder()** or **getAppFolder()**.
 
+To enable these events for your app you should add the following to your `info.xml` file:
+
+.. code-block:: xml
+    
+    <types>
+        <filesystem/>
+    </types>
+
 Filesystem hooks available in scope **\\OC\\Files**:
 
 * **preWrite** (\\OCP\\Files\\Node $node)
