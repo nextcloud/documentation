@@ -3,7 +3,8 @@ Enabling MySQL 4-byte support
 =============================
 
 .. note::
-
+    Changing of innobd_file_format was depreciated in MySQL Version 8.0 (see dev.mysql.com (Server and Status Variables and Options added, depreciated, or removed in MySqL 8.0).
+    
     Be sure to backup your database before performing this database upgrade.
 
 In order to use Emojis (textbased smilies) on your Nextcloud server with a MySQL database, the
