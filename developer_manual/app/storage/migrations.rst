@@ -7,7 +7,7 @@ Migrations
 In the past, apps had a `appinfo/database.xml`-file which holds their database schema
 for installation and update and was a functional method for installing apps which
 had some trouble with upgrading apps (e.g. apps were not able to rename columns
-without loosing the data stored in the original column):
+without losing the data stored in the original column):
 
 .. code-block:: php
 
@@ -38,7 +38,7 @@ consist of 3 different methods:
 * Actual schema changes
 * Post schema changes
 
-Apps can have mutiple migrations, which allows a way more flexible updating process.
+Apps can have multiple migrations, which allows a way more flexible updating process.
 For example, you can rename a column while copying all the content with 3 steps
 packed in 2 migrations.
 
@@ -130,7 +130,7 @@ To migrate your app from a `database.xml` file to migrations run:
 This will create a new file under `lib/Migration` that results in the
 same database table(s) as your database.xml file.
 
-For version you should use the your app versions. So if you app is at version
+For version you should use your app versions. So if you app is at version
 1.2.3 use 010203.
 
 Don't forget to remove your `database.xml` file.
@@ -150,9 +150,9 @@ Nextcloud in debug mode:
   first one is the `appid`, the second one should be the `version`of your
   app as an integer. We recommend to use the major and minor digits of your apps
   version for that. This allows you to introduce a new migration in your branch
-  for a Nextcloud version if there is already an migration path for a newer one
+  for a Nextcloud version if there is already a migration path for a newer one
   in another branch. Since you can’t change this retroactive, we recommend to
-  leave enough space in between and therefor map the numbers to 3 digits:
+  leave enough space in between and therefore map the numbers to 3 digits:
   `1.0.x => 1000`, `2.34.x => 2034`, etc.
 * `migrations:generate-from-schema`: Create a migration from the old `database.xml`.
 * `migrations:migrate`: Execute a migration to a specified or the latest available version.
