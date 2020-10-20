@@ -10,7 +10,7 @@ Recommended method
 
 For this method, you need to have three add-ons installed:
 
-1. The `Lightning calendar <https://addons.thunderbird.net/de/thunderbird/addon/lightning/>`_
+1. The `Lightning calendar <https://addons.thunderbird.net/de/thunderbird/addon/lightning/>`_ (Only needed for Thunderbird versions up to 68)
 2. `TBSync <https://addons.thunderbird.net/de/thunderbird/addon/tbsync/>`_ and
 3. The `TBSync provider for CalDAV and CardDAV <https://addons.thunderbird.net/de/thunderbird/addon/dav-4-tbsync/>`_
 
