@@ -70,8 +70,7 @@ storage.
    termination and the Nextcloud code that encrypts and decrypts files. This is 
    also potentially exploitable by anyone with administrator access to your 
    server. Read `How Nextcloud uses encryption to protect your data 
-   <https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your- 
-   data/>`_ for more information.
+   <https://nextcloud.com/blog/encryption-in-nextcloud/>`_ for more information.
    
 Before enabling encryption
 --------------------------
