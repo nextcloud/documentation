@@ -9,7 +9,7 @@ Enabling MySQL 4-byte support
 In order to use Emojis (textbased smilies) on your Nextcloud server with a MySQL database, the
 installation needs to be tweaked a bit.
 
-1. Make sure your database is set to use the Barracuda InnoDB file format:
+1. Make sure your database is set to use the Barracuda InnoDB file format (this is only needed on MySQL 5.x and MariaDB < 10.3):
 
    Login to your mysql database and run::
 
