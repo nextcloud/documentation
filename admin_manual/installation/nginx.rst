@@ -174,7 +174,7 @@ webroot of your nginx installation. In this example it is
       }
       
       location / {
-          try_files $uri $uri/ /index.php$request_uri;
+          try_files  $uri/ /index.php$request_uri;
       }
   }
 
