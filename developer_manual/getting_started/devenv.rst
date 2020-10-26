@@ -87,6 +87,23 @@ or::
 
 Now access the installation at http://localhost/ (or the corresponding URL) in your web browser to set up your instance.
 
+Check out external shipped apps
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This optional step is especially necessary if you want to test upgrading, as the following apps are required to be present during an upgrade.
+
+Install the viewer app::
+
+  cd /var/www/apps
+  git clone https://github.com/nextcloud/viewer.git
+
+Make sure to use a version compatible with the server by checking out the matching tag.
+You can check the ``appinfo/info.xml`` of the app to see if its ``min-version`` field is compatible with the current server.
+
+When upgrading the server code you might need to upgrade the app code as well before running ``occ upgrade``.
+
+.. note:: The same applies to all the apps listed under ``alwaysEnabled`` in `shipped.json <https://github.com/nextcloud/server/blob/master/core/shipped.json#L49>`_ but most are already present in the server repository.
+
 Enabling debug mode
 ^^^^^^^^^^^^^^^^^^^
 
