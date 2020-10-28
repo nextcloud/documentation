@@ -161,6 +161,23 @@ In case of UTF8MB4 you will also find::
 
     "mysql.utf8mb4" => true,
 
+SSL for MySQL Database
+^^^^^^^^^^^^^^^^^^^^^^
+
+This just covers the SSL database configuration on the Nextcloud server. First you need to configure your database server accordingly.
+
+::
+
+  'dbdriveroptions' => [
+    1007 => '/../ssl-key.pem',
+    1008 => '/../ssl-cert.pem',
+    1009 => '/../ca-cert.pem',
+    1014 => true,
+  ],
+  
+Adjust the paths to the pem files for your environment.
+
+``1014 => true`` translates to ``MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => true``
 
 PostgreSQL database
 ^^^^^^^^^^^^^^^^^^^
