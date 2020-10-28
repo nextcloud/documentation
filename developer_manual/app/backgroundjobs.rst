@@ -10,7 +10,7 @@ jobs in Nextcloud that send out the activity emails. Or expire the trashbin.
 Types of background jobs
 ------------------------
 Nextcloud by default offers you two types of background jobs. The ``\OCP\BackgroundJob\QueuedJob``
-and ```\OCP\BackgroundJob\TimedJob``.
+and ``\OCP\BackgroundJob\TimedJob``.
 
 The ``QueuedJob`` is for one time jobs. This can for example be triggered by inserting
 a job because an event happened. The ``TimedJob`` has a method ``setInterval`` where
@@ -32,6 +32,7 @@ your job class of choice.
 
     use \OCA\MyApp\Service\SomeService;
     use \OCP\BackgroundJob\TimedJob;
+    use \OCP\AppFramework\Utility\ITimeFactory;
 
     class SomeTask extends TimedJob {
 
@@ -101,6 +102,7 @@ For example you could add or remove a certain job based on some controller:
     use \OCA\MyApp\Cron\SomeTask;
     use \OCP\AppFramework\Controller;
     use \OCP\BackgroundJob\IJobList;
+    use \OCP\IRequest;
 
     class SomeController extends Controller {
 
