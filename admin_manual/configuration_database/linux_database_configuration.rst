@@ -177,8 +177,6 @@ This just covers the SSL database configuration on the Nextcloud server. First y
   
 Adjust the paths to the pem files for your environment.
 
-``1014 => true`` translates to ``MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => true``
-
 PostgreSQL database
 ^^^^^^^^^^^^^^^^^^^
 
