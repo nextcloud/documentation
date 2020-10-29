@@ -481,6 +481,16 @@ Deprecated in 20.0.0 - it can't be guaranteed that this event is triggered in al
 
 *Available in Nextcloud 18 and later.*
 
+``\OCP\Group\Events\SubAdminAddedEvent``
+****************************************
+
+*Available in Nextcloud 21 and later.*
+
+``\OCP\Group\Events\SubAdminRemovedEvent``
+******************************************
+
+*Available in Nextcloud 21 and later.*
+
 ``\OCP\Group\Events\UserAddedEvent``
 ************************************
 
