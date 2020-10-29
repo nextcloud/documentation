@@ -349,6 +349,27 @@ This event is triggered when the files app is rendered. It canb e used to add ad
 
 Emitted before the rendering step of the public share page happens. The event holds a flag that specifies if it is the authentication page of a public share.
 
+``\OCA\Settings\Events\BeforeTemplateRenderedEvent``
+********************************************************
+
+*Available in Nextcloud 20 and later.*
+
+This event is triggered right before the user management template is rendered.
+
+``\OCA\User_LDAP\Events\GroupBackendRegistered``
+************************************************
+
+*Available in Nextcloud 20 and later.*
+
+This event is triggered right after the LDAP group backend is registered.
+
+``\OCA\User_LDAP\Events\UserBackendRegistered``
+************************************************
+
+*Available in Nextcloud 20 and later.*
+
+This event is triggered right after the LDAP user backend is registered.
+
 ``\OCA\Viewer\Event\LoadViewer``
 ********************************
 
