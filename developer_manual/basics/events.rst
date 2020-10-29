@@ -490,6 +490,7 @@ Deprecated in 20.0.0 - it can't be guaranteed that this event is triggered in al
 **************************************
 
 *Available in Nextcloud 18 and later.*
+
 ``\OCP\Mail\Events\BeforeMessageSent``
 **************************************
 
