@@ -58,7 +58,7 @@ Your :file:`/etc/mysql/my.cnf` could look like this:
 ::
 
   [server]
-  skip-name-resolve
+  skip_name_resolve = 1
   innodb_buffer_pool_size = 128M
   innodb_buffer_pool_instances = 1
   innodb_flush_log_at_trx_commit = 2
