@@ -58,7 +58,7 @@ Your :file:`/etc/mysql/my.cnf` could look like this:
 ::
 
   [server]
-  skip-name-resolve
+  skip_name_resolve = 1
   innodb_buffer_pool_size = 128M
   innodb_buffer_pool_instances = 1
   innodb_flush_log_at_trx_commit = 2
@@ -70,8 +70,8 @@ Your :file:`/etc/mysql/my.cnf` could look like this:
   query_cache_size = 64M
   tmp_table_size= 64M
   max_heap_table_size= 64M
-  slow-query-log = 1
-  slow-query-log-file = /var/log/mysql/slow.log
+  slow_query_log = 1
+  slow_query_log_file = /var/log/mysql/slow.log
   long_query_time = 1
 
   [client-server]
@@ -82,8 +82,8 @@ Your :file:`/etc/mysql/my.cnf` could look like this:
   default-character-set = utf8mb4
 
   [mysqld]
-  character-set-server = utf8mb4
-  collation-server = utf8mb4_general_ci
+  character_set_server = utf8mb4
+  collation_server = utf8mb4_general_ci
   transaction_isolation = READ-COMMITTED
   binlog_format = ROW
   innodb_large_prefix=on
