@@ -14,7 +14,8 @@ hard limits that cannot be exceeded:
 filesystem.
 
 .. note:: The Nextcloud sync client is not affected by these upload limits
-   as it is uploading files in smaller chunks.
+   as it is uploading files in smaller chunks. See `Client documentation <https://docs.nextcloud.com/desktop/3.0/advancedusage.html>`_
+   for more information on configuration options.
 
 System configuration
 --------------------
@@ -138,3 +139,13 @@ the longest upload will take. If unsure remove this completely from your
 configuration to reset it to the default shown in the ``config.sample.php``.
 
 
+Adjust chunk size on Nextcloud side
+-----------------------------------
+
+For upload performance improvements in environments with high upload bandwidth, the server's upload chunk size may be adjusted::
+
+ sudo -u www-data php occ config:app:set files max_chunk_size
+
+Put in a value in bytes or set ``--value 0`` for no chunking at all.
+
+Default is 10485760 (10 MB).
