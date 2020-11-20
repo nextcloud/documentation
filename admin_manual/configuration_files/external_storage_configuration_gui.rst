@@ -48,6 +48,23 @@ re-check your configuration and network availability.
 If there is an error on the storage, it will be marked as unavailable for ten 
 minutes. To re-check it, click the colored icon or reload your Admin page.
 
+Usage of variables for mount paths
+----------------------------------
+
+The external storage mounting mechanism accepts variables in the mount path.
+
+Use ``$user`` for automatic substitution with the logged in user's username.
+
+Use ``$home`` for automatic substitution with a configurable home directory variable
+(requires LDAP, see :ref:`LDAP_Special_Attributes` in the LDAP configuration documentation for details)
+
+In the following example, the mount point for a logged in user "alice" would substitute 
+to ``/opt/userDirectories/alice/myPictures``.
+
+.. figure:: external_storage/images/externalStorages_variables.png
+   :alt: External storage user variable substitution
+
+
 User and group permissions
 --------------------------
 
