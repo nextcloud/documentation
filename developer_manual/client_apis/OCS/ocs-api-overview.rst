@@ -77,6 +77,24 @@ This request returns the available metadata of a user. Admin users can see the i
 			</backendCapabilities>
 		</data>
 	</ocs>
+	
+User metadata - Avatar
+-------------
+
+Since: 11.0.2, 12.0.0
+
+This request returns the available avatar of a user. The avatar is always a square so PIXEL_SIZE is both height and width. 
+The version parameter is optional, the last version will be returned if ommited.
+
+.. code::
+
+	GET /avatar/USERID/PIXEL_SIZE?v=VERSION
+
+
+.. code:: text
+
+	Image blob
+	
 
 
 User metadata - List user IDs
