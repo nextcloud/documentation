@@ -665,7 +665,7 @@ File operations
                              user. Outgoing shares are moved as well.
                              Incoming shares are not moved because the sharing user 
                              holds the ownership of the respective files and therefore 
-                             owns the decision which actual persons to be shared with.
+                             owns the decision which actual users/groups to be shared with.
 
 Scan
 ^^^^
