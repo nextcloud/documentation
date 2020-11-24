@@ -661,8 +661,11 @@ File operations
  files
   files:cleanup              cleanup filecache
   files:scan                 rescan filesystem
-  files:transfer-ownership   All files and folders are moved to another 
-                             user - shares are moved as well.
+  files:transfer-ownership   All files' and folders' ownerships are moved to another 
+                             user. Outgoing shares are moved as well.
+                             Incoming shares are not moved because the sharing user 
+                             holds the ownership of the respective files and therefore 
+                             owns the decision which actual users/groups to be shared with.
 
 Scan
 ^^^^
