@@ -9,7 +9,7 @@ This document will cover the most important changes in Nextcloud, as well as som
 Upgrading to Nextcloud 20
 -------------------------
 
-.. note:: Critical changes were collected `on Github <https://github.com/nextcloud/server/issues/20953>`_. See the original ticket for links to the pull requests and tickets.
+.. note:: Critical changes were collected `on Github <https://github.com/nextcloud/server/issues/20953>`__. See the original ticket for links to the pull requests and tickets.
 
 Front-end changes
 ^^^^^^^^^^^^^^^^^
@@ -234,7 +234,7 @@ Removed from public namespace
 Upgrading to Nextcloud 19
 -------------------------
 
-.. note:: Critical changes were collected `on Github <https://github.com/nextcloud/server/issues/18479>`_. See the original ticket for links to the pull requests and tickets.
+.. note:: Critical changes were collected `on Github <https://github.com/nextcloud/server/issues/18479>`__. See the original ticket for links to the pull requests and tickets.
 
 Front-end changes
 ^^^^^^^^^^^^^^^^^
@@ -280,7 +280,7 @@ Back-end changes
 Symfony update
 **************
 
-Symfony was updated to `v4.4 <https://github.com/symfony/symfony/blob/4.4/CHANGELOG-4.4.md>`_. The most important change for apps is to return an int value from CLI commands. Returning null (explicitly or implicitly) won't be allowed in future versions of Symfony.
+Symfony was updated to `v4.4 <https://github.com/symfony/symfony/blob/4.4/CHANGELOG-4.4.md>`__. The most important change for apps is to return an int value from CLI commands. Returning null (explicitly or implicitly) won't be allowed in future versions of Symfony.
 
 Deprecation of injection of named services
 ******************************************
@@ -325,7 +325,7 @@ Changed APIs
 Upgrading to Nextcloud 18
 -------------------------
 
-.. note:: Critical changes were collected `on Github <https://github.com/nextcloud/server/issues/17131>`_. See the original ticket for links to the pull requests and tickets.
+.. note:: Critical changes were collected `on Github <https://github.com/nextcloud/server/issues/17131>`__. See the original ticket for links to the pull requests and tickets.
 
 Front-end changes
 ^^^^^^^^^^^^^^^^^
@@ -378,7 +378,7 @@ Behavioral changes
 Upgrading to Nextcloud 17
 -------------------------
 
-.. note:: Critical changes were collected `on Github <https://github.com/nextcloud/server/issues/15339>`_. See the original ticket for links to the pull requests and tickets.
+.. note:: Critical changes were collected `on Github <https://github.com/nextcloud/server/issues/15339>`__. See the original ticket for links to the pull requests and tickets.
 
 Front-end changes
 ^^^^^^^^^^^^^^^^^
@@ -440,7 +440,7 @@ Behavioral changes
 Upgrading to Nextcloud 16
 -------------------------
 
-.. note:: Critical changes were collected `on Github <https://github.com/nextcloud/server/issues/12915>`_. See the original ticket for links to the pull requests and tickets.
+.. note:: Critical changes were collected `on Github <https://github.com/nextcloud/server/issues/12915>`__. See the original ticket for links to the pull requests and tickets.
 
 Front-end changes
 ^^^^^^^^^^^^^^^^^
@@ -490,7 +490,7 @@ Removed APIs
 Upgrading to Nextcloud 15
 -------------------------
 
-.. note:: Critical changes were collected `on Github <https://github.com/nextcloud/server/issues/15339>`_. See the original ticket for links to the pull requests and tickets.
+.. note:: Critical changes were collected `on Github <https://github.com/nextcloud/server/issues/15339>`__. See the original ticket for links to the pull requests and tickets.
 
 Front-end changes
 ^^^^^^^^^^^^^^^^^
@@ -533,7 +533,7 @@ Removed APIs
 Upgrading to Nextcloud 14
 -------------------------
 
-.. note:: Critical changes were collected `on Github <https://github.com/nextcloud/server/issues/7827>`_. See the original ticket for links to the pull requests and tickets.
+.. note:: Critical changes were collected `on Github <https://github.com/nextcloud/server/issues/7827>`__. See the original ticket for links to the pull requests and tickets.
 
 General
 ^^^^^^^
