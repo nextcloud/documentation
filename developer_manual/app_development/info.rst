@@ -1,3 +1,5 @@
+.. _app metadata:
+
 ============
 App metadata
 ============
