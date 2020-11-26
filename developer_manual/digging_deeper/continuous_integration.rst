@@ -38,6 +38,32 @@ You can validate the ``info.xml`` :ref:`app metadata<app metadata>` file of an a
           xml-file: ./appinfo/info.xml
           xml-schema-file: ./info.xsd
 
+php
+^^^
+
+A lint of all php source files can find syntax errors that could crash the application in production. The github action below uses a test matrix of multiple php versions. Adjust it to the ones your app supports.
+
+.. code-block:: yaml
+
+  name: Lint
+  on: pull_request
+    php-linters:
+      runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          php-versions: [7.3, 7.4]
+      name: php${{ matrix.php-versions }} lint
+      steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Set up php${{ matrix.php-versions }}
+        uses: shivammathur/setup-php@master
+        with:
+          php-version: ${{ matrix.php-versions }}
+          coverage: none
+      - name: Lint
+        run: composer run lint
+
 
 Static analysis
 ---------------
