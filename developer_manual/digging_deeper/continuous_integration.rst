@@ -65,6 +65,45 @@ A lint of all php source files can find syntax errors that could crash the appli
         run: composer run lint
 
 
+App code checker
+----------------
+
+Nextcloud comes with an *app code checker* that analyzes the code of an app and warns if deprecated APIs are used and similar. Most of the checks can also be done with :ref:`static analysis and 3rd party tools<app-static-analysis>` but a few checks are currently only possible with this tool.
+
+The following Github action checks an app against the latest development version of Nextcloud, the `stable20` branch and the v20.0.0 release. Adjust this to your needs.
+
+.. code-block:: yaml
+
+  name: App code check
+  on: pull_request
+    app-code-check:
+      runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          nextcloud-versions: ['master', 'stable20', 'v20.0.0']
+      name: Nextcloud ${{ matrix.nextcloud-versions }} app code check
+      steps:
+      - name: Set up php7.4
+        uses: shivammathur/setup-php@master
+        with:
+          php-version: 7.4
+          extensions: ctype,curl,dom,gd,iconv,intl,json,mbstring,openssl,posix,sqlite,xml,zip
+          coverage: xdebug
+      - name: Checkout Nextcloud
+        run: git clone https://github.com/nextcloud/server.git --recursive --depth 1 -b ${{ matrix.nextcloud-versions }} nextcloud
+      - name: Run tests
+        run: php -f nextcloud/occ maintenance:install --database-name oc_autotest --database-user oc_autotest --admin-user admin --admin-pass admin --database sqlite --database-pass=''
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          path: nextcloud/apps/myapp
+      - name: Run tests
+        run: php -f nextcloud/occ app:check-code myapp
+
+.. note:: Replace ``myapp`` with the ID of the app.
+
+.. _app-static-analysis:
+
 Static analysis
 ---------------
 
