@@ -5,7 +5,7 @@ Classloader
 ===========
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-The classloader is provided by Nextcloud and loads all your classes automatically. The only thing left to include by yourself are 3rdparty libraries. Those should be loaded in :file:`lib/AppInfo/Application.php`.
+The classloader is provided by Nextcloud and loads all your classes automatically. See :ref:`the composer section<app-composer>` if you want to include and autoload 3rd party libraries.
 
 PSR-4 autoloading
 -----------------
