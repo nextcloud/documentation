@@ -82,6 +82,9 @@ webroot of your nginx installation. In this example it is
       add_header X-Robots-Tag                         "none"          always;
       add_header X-XSS-Protection                     "1; mode=block" always;
       
+      # Add HTTP Strict Transport Security (HSTS) Header
+      add_header Strict-Transport-Security "max-age=15552000; includeSubDomains; preload;";
+      
       # Remove X-Powered-By, which is an information leak
       fastcgi_hide_header X-Powered-By;
       
@@ -277,6 +280,9 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
           add_header X-Permitted-Cross-Domain-Policies    "none"          always;
           add_header X-Robots-Tag                         "none"          always;
           add_header X-XSS-Protection                     "1; mode=block" always;
+          
+          # Add HTTP Strict Transport Security (HSTS) Header
+          add_header Strict-Transport-Security "max-age=15552000; includeSubDomains; preload;";
           
           # Remove X-Powered-By, which is an information leak
           fastcgi_hide_header X-Powered-By;
