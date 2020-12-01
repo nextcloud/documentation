@@ -38,6 +38,7 @@ credentials and therefore cannot perform any background tasks on the storage:
 
 * Sharing is disabled
 * Background file scanning does not work
+* Background versions expiration does not work
 * Desktop and mobile clients that use tokens to authenticate can not access those shares
 * Other services that might request the file through a different request like Collabora Online or OnlyOffice will not be able to open files from that storage
 * The method cannot be used with SAML authentication, because Nextcloud does not get a hold of any credentials whatsoever
