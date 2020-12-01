@@ -739,6 +739,17 @@ It is also possible to transfer only one directory along with it's contents. Thi
 Users may also transfer files or folders selectively by themselves.
 See `user documentation <https://docs.nextcloud.com/server/latest/user_manual/en/files/transfer_ownership.html>`_ for details.
 
+.. _occ_sharing_label:
+
+Files Sharing
+-------------
+
+Commands for handling shares::
+
+ sharing
+  sharing:cleanup-remote-storages  Cleanup shared storage entries that have no matching entry in the shares_external table
+  sharing:expiration-notification  Notify share initiators when a share will expire the next day
+
 .. _files_external_label:
 
 Files external
