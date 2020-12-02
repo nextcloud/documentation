@@ -1263,7 +1263,7 @@ This example deletes all versions for all users::
 
 You can delete versions for specific users in a space-delimited list::
 
- sudo -u www-data php occ versions:cleanup
+ sudo -u www-data php occ versions:cleanup freda molly
  Delete versions of   freda
  Delete versions of   molly 
  
