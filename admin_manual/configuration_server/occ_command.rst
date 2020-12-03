@@ -193,7 +193,6 @@ The ``app`` commands list, enable, and disable apps::
 
  app
   app:install      install selected app
-  app:check-code   check code to be compliant
   app:disable      disable an app
   app:enable       enable an app
   app:getpath      get an absolute path to the app directory
@@ -223,27 +222,6 @@ Disable an app::
 
  sudo -u www-data php occ app:disable files_external
  files_external disabled   
-   
-``app:check-code`` has multiple checks: it checks if an app uses Nextcloud's 
-public API (``OCP``) or private API (``OC_``), and it also checks for deprecated 
-methods and the validity of the ``info.xml`` file. By default all checks are 
-enabled. The Activity app is an example of a correctly-formatted app::
-
- sudo -u www-data php occ app:check-code notifications
- App is compliant - awesome job!
-
-If your app has issues, you'll see output like this::
-
- sudo -u www-data php occ app:check-code foo_app
- Analysing /var/www/nextcloud/apps/files/foo_app.php
- 4 errors
-    line   45: OCP\Response - Static method of deprecated class must not be 
-    called
-    line   46: OCP\Response - Static method of deprecated class must not be 
-    called
-    line   47: OCP\Response - Static method of deprecated class must not be 
-    called
-    line   49: OC_Util - Static method of private class must not be called
 
 You can get the full filepath to an app::
     
@@ -1305,7 +1283,6 @@ Then choose your ``occ`` options. This lists your available options::
   list                  Lists commands
   status                show some status information
   app
-  app:check-code        check code to be compliant
   l10n
   l10n:createjs         Create javascript translation files for a given app
   maintenance

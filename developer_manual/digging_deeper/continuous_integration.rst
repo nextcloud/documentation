@@ -64,6 +64,7 @@ A lint of all php source files can find syntax errors that could crash the appli
       - name: Lint
         run: composer run lint
 
+.. _app-static-analysis:
 
 Static analysis
 ---------------
