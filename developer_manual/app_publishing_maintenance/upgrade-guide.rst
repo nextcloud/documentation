@@ -6,6 +6,19 @@ Once you've created and published the first version of your app, you will want t
 
 This document will cover the most important changes in Nextcloud, as well as some guides on how to upgrade existing apps.
 
+Upgrading to Nextcloud 21
+-------------------------
+
+.. note:: Critical changes were collected `on Github <https://github.com/nextcloud/server/issues/23210>`__. See the original ticket for links to the pull requests and tickets.
+
+General
+^^^^^^^
+
+App code checker deprecation
+****************************
+
+The app code checker (``occ app:check-code myapp``) is obsolute due to :ref:`static analysis<app-static-analysis>`. For Nextcloud 21 it will act as NOOP, meaning that you can still call the command but it will never fail. This allows you to still use it on CI if you test against 21, 20 and older releases. But prepare the switch to static analysis if you haven't already. Please also note that the app code checker hadn't received many updates recently, hence the number of issues it can detect is low.
+
 Upgrading to Nextcloud 20
 -------------------------
 
