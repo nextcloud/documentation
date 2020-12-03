@@ -76,7 +76,15 @@ Traefik
   traefik.frontend.redirect.regex: https://(.*)/.well-known/(card|cal)dav
   traefik.frontend.redirect.replacement: https://$$1/remote.php/dav/
 
-Thanks to `@pauvos <https://github.com/pauvos>`_ for traefik example.
+Using traefik.toml:
+::
+
+  [frontends.frontend1.redirect]
+    regex = "https://(.*)/.well-known/(card|cal)dav"
+    replacement = "https://$1/remote.php/dav/
+    permanent = true
+
+Thanks to `@pauvos <https://github.com/pauvos>`_ and `@mrtumnus <https://github.com/mrtumnus>`_ for traefik examples.
 
 Example
 -------
