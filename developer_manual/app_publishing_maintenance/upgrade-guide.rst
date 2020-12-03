@@ -17,7 +17,7 @@ General
 App code checker deprecation
 ****************************
 
-The app code checker (``occ app:check-code myapp``) is obsolute due to :ref:`static analysis<app-static-analysis>`. For Nextcloud 21 it will act as NOOP, meaning that you can still call the command but it will never fail. This allows you to still use it on CI if you test against 21, 20 and older releases. But prepare the switch to static analysis if you haven't already. Please also note that the app code checker hadn't received many updates recently, hence the number of issues it can detect is low.
+The app code checker (``occ app:check-code myapp``) is obsolete due to :ref:`static analysis<app-static-analysis>`. For Nextcloud 21 it will act as NOOP, meaning that you can still call the command but it will never fail. This allows you to still use it on CI if you test against 21, 20 and older releases. But prepare the switch to static analysis if you haven't already. Please also note that the app code checker hadn't received many updates recently, hence the number of issues it can detect is low.
 
 Upgrading to Nextcloud 20
 -------------------------
