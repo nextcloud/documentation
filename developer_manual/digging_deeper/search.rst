@@ -1,3 +1,5 @@
+.. _unified-search:
+
 ======
 Search
 ======
@@ -394,3 +396,19 @@ For a **cursor-based pagination** a app-specific property is used to know a refe
             );
         }
     }
+
+Optional attributes
+^^^^^^^^^^^^^^^^^^^
+
+The unified search is available via OCS, which means client application like the mobile apps can use it to get access to the server search mechanism. The default properties of a search result entry might be difficult to parse and interpret in those clients, hence it's possible to add optional string attributes to each entry.
+
+.. code-block:: php
+
+    <?php
+
+    $entry = new SearchResultEntry(/* same arguments as above */);
+    $entry->addAttribute("type", "deckCard");
+    $entry->addAttribute("cardId", "1234");
+    $entry->addAttribute("boardId", "567");
+
+.. note:: This method was added in Nextcloud 21. If your app also targets Nextcloud 20 you should either not use it or add a version check to invoke the method only conditionally.

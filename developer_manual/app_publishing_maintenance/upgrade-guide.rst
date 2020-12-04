@@ -40,7 +40,7 @@ jQuery was updated to v2.2. The most notable change is that ``$(document).ready(
 Search
 ******
 
-The unified search replaces the traditional search input, hence ``OCA.Search`` became a noop. For backwards compatibility, the code will not raise any errors now, but it does not have any functionality.
+The :ref:`unified search<unified-search>` replaces the traditional search input, hence ``OCA.Search`` became a noop. For backwards compatibility, the code will not raise any errors now, but it does not have any functionality.
 
 Removed globals
 ***************
