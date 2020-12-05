@@ -36,7 +36,7 @@ You should always generate backup codes for 2FA. If your 2nd factor device
 gets stolen or is not working, you will be able to use one of these codes to
 unlock your account. It effectively functions as a backup 2nd factor. To
 get the backup codes, go to your Personal Settings and look under Second-factor
-Auth settings. Choose *Generate backup codes*.
+Auth settings. Choose *Regenerate backup codes*.
 
 .. figure:: images/2fa_backupcode_1.png
      :alt: 2FA backup code generator
