@@ -2,7 +2,7 @@
 File Sharing
 ============
 
-Nextcloud users can share files and folders. Possible targets are
+Nextcloud users can share files and folders. Possible targets are:
 
 * public links
 * users
@@ -27,16 +27,16 @@ A number of options are available for public *folder* shares:
 .. figure:: ../images/sharing_public_folder.png
 
 * **Read only** to allow viewing and downloading
-* ** Allow upload and editing**
-* With ** File drop**, the sharee can only upload files to a folder without seeing the files that are already in that folder.
-* **Hide download** prevents the sharee from downloading
+* **Allow upload and editing**
+* With **File drop**, the share can only upload files to a folder without seeing the files that are already in that folder.
+* **Hide download** prevents the share from downloading
 * **Password protect**
 * **Set expiration date** will automatically disable the share
 * **Note to recipient**
 * **Unshare** to revert the share
 * **Add another link** to create multiple public links with different rights
 
-For public *file* shares, you may allow editing the file with one of Nextcloud's collaborative editing solutions.
+For public *file* shares, you may allow editing the file with one of Nextcloud's collaborative editing solutions:
 
 .. figure:: ../images/sharing_public_file.png
 
@@ -48,12 +48,12 @@ When sharing with users, groups, circles or members of a Talk conversation, righ
 
 .. figure:: ../images/sharing_internal.png
 
-As a sharee, you can configure if you automatically want to accept all incoming shares and have them added to your root folder, or if you 
+As a share, you can configure if you automatically want to accept all incoming shares and have them added to your root folder, or if you 
 want to be asked each time if you want to accept or decline the share.
 
 .. figure:: ../images/sharing_internal_acceptNotification.png
 
-For adjusting the acceptance setting, go to **Settings** > **Personal** > **Sharing**
+For adjusting the acceptance setting, go to **Settings** > **Personal** > **Sharing**:
 
 .. figure:: ../images/sharing_autoAcceptSetting.png
 
@@ -62,23 +62,23 @@ Others with access
 ------------------
 
 In order to find out if a file or folder is accessible to others through sharing of a superior folder 
-hierarchy level, click on **Others with access** in the sharing tab.
+hierarchy level, click on **Others with access** in the sharing tab:
 
 .. figure:: ../images/sharing_others-with-access__collapsed.png
 
 The list shows all users, groups, chats etc. that the current object has been given access to through
-sharing of a superior folder in the hierarchy.
+sharing of a superior folder in the hierarchy:
 
 .. figure:: ../images/sharing_others-with-access__details.png
 
-Click on the three dots to
+Click on the three dots to:
 
 * see who initiated the share
 * see where the share was initiated (click to navigate to the folder, as far as you have access there)
 * unshare the initial share (only accessible for the share owner)
 
 
-.. note:: This information is only visible to the owner of a file/folder or sharees with resharing rights.
+.. note:: This information is only visible to the owner of a file/folder or shares with resharing rights.
 
 
 ================
@@ -101,7 +101,7 @@ in this form: ``<username>@<nc-server-url>``. In this example, that is
 
 .. figure:: ../images/share-federation-1.png
 
-The sharee is receiving a notification in their Nextcloud, allowing them to either accept or decline the incoming share.
+The user is receiving a notification in their Nextcloud, allowing them to either accept or decline the incoming share.
 
 .. figure:: ../images/share-federation-2-notification.png
 
