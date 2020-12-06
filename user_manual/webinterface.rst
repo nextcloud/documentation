@@ -27,7 +27,7 @@ latest and supported version of a browser from this list:
 Navigating the main user interface
 ----------------------------------
 
-By default, the Nextcloud Web interface opens to your Dashboard or Files page. You can add,
+By default, the Nextcloud Web interface opens to your Dashboard or Files page. In Files you can add,
 remove, and share files, and make changes based on the access privileges set by
 you (if you are administering the server) or by your server administrator.
 
