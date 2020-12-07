@@ -12,7 +12,7 @@ recommended way of connecting client devices to your Nextcloud servers.
    URL of your Nextcloud server (omit the directory part if the installation is
    in the root of your domain), and "USERNAME" with the username of the connecting user.
 
-   See the webdav URL (bottom left in settings) on your Nextcloud.
+   See the WebDAV URL (bottom left in settings) on your Nextcloud.
 
 Nextcloud Desktop and mobile clients
 ------------------------------------
