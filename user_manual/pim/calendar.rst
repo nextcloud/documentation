@@ -2,14 +2,14 @@
 Using the Calendar app
 ======================
 
-.. note:: The calendar app is not enabled by default and needs to be installed
+.. note:: The Calendar app is not enabled by default and needs to be installed
           separately from our App Store. Please ask your Administrator for it.
 
 The Nextcloud Calendar app works similar to other calendar applications you can
 sync your Nextcloud calendars and events with.
 
 When you first access the Calendar app, a default first calendar will be
-pre-generated for you.
+pre-generated for you:
 
 .. figure:: images/calendar_application.png
 
@@ -20,14 +20,14 @@ Import a Calendar
 ~~~~~~~~~~~~~~~~~
 
 If you want to transfer your calendar and their respective events to your Nextcloud
-instance, importing is the best way to do so.
+instance, importing is the best way to do so:
 
 .. figure:: images/calendar_settings.png
             :scale: 50%
 
 1. Click on the settings-icon labeled with ``Settings & Import`` at the left-bottom.
 
-2. After clicking on ``+ Import Calendar`` you can select one or more calendar files
+2. After clicking on ``Import Calendar`` you can select one or more calendar files
    from your local device to upload.
 
 3. The upload can take some time and depends on how big the calendar you import
@@ -40,11 +40,7 @@ Create a new Calendar
 ~~~~~~~~~~~~~~~~~~~~~
 
 If you plan to setup a new calendar without transferring any old data from your
-previous calendar, creating a new calendar is the way you should go.
-
-.. only:: html
-
-  .. figure:: images/calendar_create.gif
+previous calendar, creating a new calendar is the way you should go:
 
 1. Click on ``+ New Calendar`` in the left sidebar.
 
@@ -53,27 +49,31 @@ previous calendar, creating a new calendar is the way you should go.
 3. After clicking on the checkmark, your new calendar is created and can be
    synced across your devices, filled with new events and shared with your friends
    and colleagues.
+   
+.. figure:: images/calendar_create.gif
 
 Edit, Download or Delete a Calendar
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Sometimes you may want to change the color or the entire name of a previous
 imported or created calendar. You may also want to export it to your local
-hard drive or delete it forever.
+hard drive or delete it forever:
 
-.. note:: Please keep in mind that deleting a calendar is a irreversible action.
-          After deletion, there is no way of restoring the calendar unless you
-          have a local backup.
+1. Click on the three-dot-menu of the respective calendar.
+
+2. Click on ``Edit name``, ``Download`` or ``Delete``:
 
 .. figure:: images/calendar_dropdown.png
             :scale: 50%
 
-1. Click on the three-dot-menu of the respective calendar.
+3. Click on ``Edit color``:
 
 .. figure:: images/calendar_editing.png
             :scale: 50%
 
-2. Click on ``Edit``, ``Download`` or ``Delete``.
+.. note:: Please keep in mind that deleting a calendar is a irreversible action.
+          After deletion, there is no way of restoring the calendar unless you
+          have a local backup.
 
 Sharing calendars
 ~~~~~~~~~~~~~~~~~
@@ -85,12 +85,12 @@ You may share your calendar with other users or groups. Calendars may be shared 
 Publishing a calendar
 ~~~~~~~~~~~~~~~~~~~~~
 
-Calendars can be published through a public link to make them viewable (read-only) to external users. You may create a public link by opening the share menu for a calendar and clicking on « + » next to « Share link ». Once created you can copy the public link to your clipboard or send it through email.
+Calendars can be published through a public link to make them viewable (read-only) to external users. You may create a public link by opening the share menu for a calendar and clicking on ``+`` next to ``Share link``. Once created you can copy the public link to your clipboard or send it through email.
 
-There's also an « embedding code » that provides an HTML iframe to embed your calendar into public pages.
+It is also possible to copy the embed code by clicking on ``Copy Embed Code``, which provides an HTML iframe to embed your calendar into public pages.
 
 Multiple calendars can be shared together by adding their unique tokens to the end of an embed link. Individual tokens can be found at the end of each calendar's public link. The full address will look like
-``https://cloud.example.com/index.php/apps/calendar/embed/token1-token2-token3``
+``https://cloud.example.com/index.php/apps/calendar/embed/token1-token2-token3``.
 
 On the public page, users are able to get the subscription link for the calendar and download the whole calendar directly.
 
@@ -117,17 +117,13 @@ Create a new event
 
 Events can be created by clicking in the area when the event is scheduled.
 In the day- and week-view of the calendar you just click, pull and left your
-cursor over the area when the event is taking place.
+cursor over the area when the event is taking place:
 
-.. only:: html
+.. figure:: images/calendar_new-event_week.gif
 
-  .. figure:: images/calendar_new-event_week.gif
+The month-view only requires a single click into the area of the specific day:
 
-The month-view only requires a single click into the area of the specific day.
-
-.. only:: html
-
-  .. figure:: images/calendar_new-event_month.gif
+.. figure:: images/calendar_new-event_month.gif
 
 After that, you can type in the events name (e.g. **Meeting with Lukas**), choose
 the calendar in which you want to choose the event (e.g. **Personal**, **Work**)
@@ -135,24 +131,24 @@ check and concretize the time span or set the event as all-day event.
 
 If you want to edit advanced details such as the **Location**, a **Description**,
 **Attendees**, **Reminders** or to set the event as a repeating-event click on
-the ``More...``-button to open the advanced sidebar-editor.
+the ``More`` button to open the advanced sidebar-editor.
 
 .. note:: If you always want to open the advanced sidebar-editor instead of the
-          simple event editor popup, you can set a ``Skip simple event
-          editor``-checkmark in the ``Settings & Import``-section of the app.
+          simple event editor popup, you can uncheck a ``Enable simplified editor``
+          in the ``Settings & Import`` of the app.
 
-Clicking on the blue ``Create``-button will finally create the event.
+Clicking on the ``Save`` button will finally create the event.
 
 Edit or Delete an event
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 If you want to edit or delete a specific event, you just need to click on it.
 After that you will be able to re-set all of the events details and open the
-advanced sidebar-editor by clicking on ``More...``.
+advanced sidebar-editor by clicking on ``More``.
 
 Clicking on the ``Update``-button will update the event. To cancel your changes, click on the close icon on top right of the popup or sidebar editor.
 
-If you open the sidebar view and click the three dot menu next to the event name, you have an option to export the event as an ``.ics`` file or remove the event from your calendar.
+If you open the sidebar view and click the three dot menu next to the event name, you have an option to export the event as an ``.ics`` file or remove the event from your calendar:
 
   .. figure:: images/calendar_event_menu.png
 
@@ -160,27 +156,27 @@ Invite attendees to an event
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You may add attendees to an event to let them know they're invited. They will receive an email confirmation and will be able to confirm or cancel their participation to the event.
-Attendees may be other users on your Nextcloud instances, contacts in your addressbooks and direct email addresses. You also may change the level of participation per-attendees, or disable email confirmation for a specific attendee.
+Attendees may be other users on your Nextcloud instances, contacts in your addressbooks and direct email addresses. You also may change the level of participation per-attendees, or disable email confirmation for a specific attendee:
 
   .. figure:: images/calendar_event_invitation_level.png
 
 .. tip:: When adding other Nextcloud users as attendees to an event, you may access their FreeBusy information if it's available, helping you to determine when is the best time slot for your event.
 
-.. attention:: Only the calendar owner can send out invitations, the sharees are not able to do that, whether they have write access to the event's calendar or not.
+.. attention:: Only the calendar owner can send out invitations, the users with a shared calendar are not able to do that, whether they have write access to the event's calendar or not.
 
 Setup Reminders
 ~~~~~~~~~~~~~~~
 
-You can set up reminders to be notified before an event occurs. Currently supported notification methods are :
+You can set up reminders to be notified before an event occurs. Currently supported notification methods are:
 
 * Email notifications
 * Nextcloud notifications
 
-You may set reminders at a time relative to the event or at a specific date.
+You may set reminders at a time relative to the event or at a specific date:
 
 .. figure:: images/calendar_event_reminders.png
 
-.. note:: Only the calendar owner and people or groups with whom the calendar is shared with write access will get notifications. If you don't get any notifications but think you should, your Administrator could also have disabled this for your server.
+.. note:: Only the calendar owner and people or groups with whom the calendar is shared with write access will get notifications. If you don't get any notifications but think you should, apparently your Administrator could have disabled this for your server.
 
 .. note:: If you synchronize your calendar with mobile devices or other 3rd-party
           clients, notifications may also show up there.
@@ -190,7 +186,7 @@ Add recurring options
 
 An event may be set as "recurring", so that it can happen every day, week, month or year. Specific rules can be added to set which day of the week the event happens or more complex rules, such as every fourth Wednesday of each month.
 
-You can also tell when the recurrence ends.
+You can also tell when the recurrence ends:
 
 .. figure:: images/calendar_event_repeat.png
 
