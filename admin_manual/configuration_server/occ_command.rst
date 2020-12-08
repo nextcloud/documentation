@@ -486,7 +486,9 @@ This example will list all calendars for user annie::
 ``dav::move-calendar [name] [sourceuid] [destinationuid]`` allows the admin
 to move a calendar named ``name`` from an user ``sourceuid`` to the user 
 ``destinationuid``. You can use the force option `-f` to enforce the move if there
-are conflicts with existing shares.
+are conflicts with existing shares. You can also use the `--force-rename` option to
+have the system generate a new calendar name in case it already exists on the destination user.
+
 This example will move calendar named personal from user dennis to user sabine::
  
  sudo -u www-data php occ dav:move-calendar personal dennis sabine
