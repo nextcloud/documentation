@@ -107,7 +107,7 @@ Adding and Managing Address Books
 ---------------------------------
 
 Clicking on the "Settings" (gear) button at the bottom of the left sidebar
-provides access to Contact app settings. This field shows all
+provides access to Contacts app settings. This field shows all
 available address books, certain options for each address book, and enables you
 to create new address books, simply by specifying an address books name.
 
