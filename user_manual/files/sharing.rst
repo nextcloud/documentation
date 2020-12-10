@@ -28,8 +28,8 @@ A number of options are available for public *folder* shares:
 
 * **Read only** to allow viewing and downloading
 * **Allow upload and editing**
-* With **File drop**, the share can only upload files to a folder without seeing the files that are already in that folder.
-* **Hide download** prevents the share from downloading
+* With **File drop**, the sharee can only upload files to a folder without seeing the files that are already in that folder.
+* **Hide download** prevents the sharee from downloading
 * **Password protect**
 * **Set expiration date** will automatically disable the share
 * **Note to recipient**
@@ -48,7 +48,7 @@ When sharing with users, groups, circles or members of a Talk conversation, righ
 
 .. figure:: ../images/sharing_internal.png
 
-As a share, you can configure if you automatically want to accept all incoming shares and have them added to your root folder, or if you 
+As a sharee, you can configure if you automatically want to accept all incoming shares and have them added to your root folder, or if you 
 want to be asked each time if you want to accept or decline the share.
 
 .. figure:: ../images/sharing_internal_acceptNotification.png
@@ -78,7 +78,7 @@ Click on the three dots to:
 * unshare the initial share (only accessible for the share owner)
 
 
-.. note:: This information is only visible to the owner of a file/folder or shares with resharing rights.
+.. note:: This information is only visible to the owner of a file/folder or sharees with resharing rights.
 
 
 ================
@@ -101,7 +101,7 @@ in this form: ``<username>@<nc-server-url>``. In this example, that is
 
 .. figure:: ../images/share-federation-1.png
 
-The user is receiving a notification in their Nextcloud, allowing them to either accept or decline the incoming share.
+The sharee is receiving a notification in their Nextcloud, allowing them to either accept or decline the incoming share.
 
 .. figure:: ../images/share-federation-2-notification.png
 
