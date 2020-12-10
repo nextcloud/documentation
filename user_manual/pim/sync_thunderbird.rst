@@ -35,7 +35,7 @@ Alternative: Using the CardBook add-on (Contacts only)
 
 2. In CardBook:
 
-   -  "Adress book > New Adress book **Remote** > Next
+   -  "Address book > New Address book **Remote** > Next
    -  Select **CardDAV**, fill in the address of your Nextcloud server, your user name and password
 
 .. image:: ../images/new_addressbook.png
