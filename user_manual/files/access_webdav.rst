@@ -68,8 +68,8 @@ share::
 
   davs://example.com/nextcloud/remote.php/dav/files/USERNAME/
 
-.. note:: If your server connection is not HTTPS-secured, use `dav://` instead
-   of `davs://`:
+.. note:: If your server connection is not HTTPS-secured, use ``dav://`` instead
+   of ``davs://``:
 
 .. image:: ../images/webdav_gnome3_nautilus.png
    :alt: screenshot of configuring Nautilus file manager to use WebDAV
