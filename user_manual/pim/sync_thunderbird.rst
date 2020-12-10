@@ -40,11 +40,11 @@ Alternative: Using the CardBook add-on (Contacts only)
 
 .. image:: ../images/new_addressbook.png
 
-4. Click on "Validate", click Next, then choose the name of the address book and click Next again.
+4. Click on "Validate", click Next, then choose the name of the address book and click Next again:
 
 .. image:: ../images/addressbook_name.png
 
-5. When you are finished, CardBook synchronizes your address books. You can always trigger a synchronisation manually by clicking "Synchronize" in the top left corner of CardBook.
+5. When you are finished, CardBook synchronizes your address books. You can always trigger a synchronisation manually by clicking "Synchronize" in the top left corner of CardBook:
 
 .. image:: ../images/synchronize_cardbook.png
 
@@ -58,7 +58,7 @@ This method is only needed if you don't want to install TBSync.
 
 2. Go to the calendar view in Thunderbird and right click in the calendar menu to the left (where the names of the calendars are) to add a **New Calendar**.
 
-3. Choose **On the network**:
+3. Choose **On the Network**:
 
 .. image:: ../images/new_calendar.png
 
