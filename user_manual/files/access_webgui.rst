@@ -167,7 +167,7 @@ Shared by link
 
 External Storage (optional)
   Files that you have access to on external storage devices and services such
-  as Amazon S3, SMB/CIFS, ftp...
+  as Amazon S3, SMB/CIFS, FTP…
 
 Moving files
 ------------
