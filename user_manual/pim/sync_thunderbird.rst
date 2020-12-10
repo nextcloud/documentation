@@ -53,7 +53,8 @@ The old method: Manually subscribing to calendars
 This method is only needed if you don't want to install TBSync.
 
 1. Go to your Nextcloud Calendar and click on the 3 dotted menu for the calendar that you want to synchronize which will display and URL that looks something like this:
-https://cloud.nextcloud.com/remote.php/dav/calendars/daniel/personal/ .
+
+   ``https://cloud.nextcloud.com/remote.php/dav/calendars/daniel/personal/``
 
 2. Go to the calendar view in Thunderbird and right click in the calendar menu to the left (where the names of the calendars are) to add a **New Calendar**.
 
