@@ -13,11 +13,11 @@ Setting up your own file drop
 -----------------------------
 
 Go to Files and create or choose the folder, the anonymous upload should be
-made to.
+made to:
 
 .. image:: ../images/anonym_click_sharing.png
 
-Check Share Link, Allow editing, Hide file listing.
+Check Share Link, Allow editing, Hide file listing:
 
 .. image:: ../images/anonym_hide_file_listing.png
 
@@ -30,7 +30,7 @@ Uploading files
 
 Using the anonymous upload function is simple. You receive a link to the upload
 folder, click the link, and then you'll see a Nextcloud page with a "**Click to
-upload**" button.
+upload**" button:
 
 .. image:: ../images/anonym_upload.png
 
