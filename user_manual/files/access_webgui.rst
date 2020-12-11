@@ -61,9 +61,6 @@ Favorites
    
   You can also quickly find all of your favorites with the Favorites filter on the left
   sidebar.
-  
-  .. figure:: ../images/files_page-9.png
-   :alt: Filtering Favorite files.
 
 Overflow Menu
   The Overflow menu (three dots) displays file details, and allows you to
