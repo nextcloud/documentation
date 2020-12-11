@@ -97,11 +97,11 @@ Federation sharing is enabled by default. Follow these steps to create a new sha
 Go to your ``Files`` page and click the Share icon on the file or directory 
 you want to share. In the sidebar enter the username and URL of the remote user
 in this form: ``<username>@<nc-server-url>``. In this example, that is
-``bob@cloud.example.com``.
+``bob@cloud.example.com``:
 
 .. figure:: ../images/share-federation-1.png
 
-The sharee is receiving a notification in their Nextcloud, allowing them to either accept or decline the incoming share.
+The sharee is receiving a notification in their Nextcloud, allowing them to either accept or decline the incoming share:
 
 .. figure:: ../images/share-federation-2-notification.png
 
