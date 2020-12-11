@@ -28,7 +28,7 @@ Custom configuration
 
 You may customize a Gallery album with a simple text file named
 **gallery.cnf**, which contains parameters structured using the
-`Yaml <https://en.wikipedia.org/wiki/YAML>`_ markup language. You may have
+`YAML <https://en.wikipedia.org/wiki/YAML>`_ markup language. You may have
 multiple **gallery.cnf** files; you need one in your own root Nextcloud folder
 (your Home folder) that defines global features, and then you may have
 individual per-album **gallery.cnf** files if you want to define different
@@ -39,23 +39,23 @@ Features
 
 The following general features are currently implemented:
 
-* Native SVG support.
-* Access to external shares.
+* Native SVG support
+* Access to external shares
 
 The following album features are currently implemented:
 
-* Adding a link to a file containing a description.
-* Typing a simple copyright statement directly in the configuration file.
-* Adding a link to a file containing a copyright statement.
-* Defining a sort type and order.
-* Defining the colour of the background.
-* Defining if sub-albums will inherit the configuration.
+* Adding a link to a file containing a description
+* Typing a simple copyright statement directly in the configuration file
+* Adding a link to a file containing a copyright statement
+* Defining a sort type and order
+* Defining the colour of the background
+* Defining if sub-albums will inherit the configuration
 
 The following slideshow features are currently implemented:
 
 * Showing a button which lets you pick which background, either black or
   white, to use for the picture you are currently viewing (for images with
-  transparent backgrounds).
+  transparent backgrounds)
 
 Setup
 ^^^^^
@@ -80,7 +80,7 @@ Structure
 You should include a comment in the file, so that people stumbling upon
 the file know what it's for. Comments start with #.
 
-Spacing is created using 2 spaces. **Do not use tabs.**
+Spacing is created using 2 spaces. **Do not use tabs**.
 
 Take a look at the `YAML Format documentation
 <https://symfony.com/doc/current/components/yaml/yaml_format.html>`_ if you are
@@ -121,13 +121,13 @@ Place this in your root Nextcloud folder, which is your Home folder.
 
 * **external_shares**: Set to **yes** in your root configuration file if you
   want to load images stored on external locations, when using the
-  **files_external** app.
+  **files_external** app
 * **native_svg**: Set to **yes** in your root configuration file to enable
-  rendering SVG images in your browser. This may represent a security risk if
-  you can't fully trust your SVG files.
+  rendering SVG images in your browser which this may represent a security risk if
+  you can't fully trust your SVG files
 * **background_colour_toggle**: Set to **yes** in your root configuration file
   to enable a button that toggles between black and white backgrounds on
-  transparent images.
+  transparent images
 
 .. note:: External shares are 20-50 times slower than local shares. Be prepared
    to wait a long time before being able to see all the images contained in a
@@ -142,26 +142,26 @@ sub-albums.
 **Design**
 
 * **background**: Defines the colour of the background of the photowall
-  using the RGB hexadecimal representation of that colour. For example:
-  **"#ffa033"**. You must use quotes around the value or it will
+  using the RGB hexadecimal representation of that colour, for example:
+  **"#ffa033"** in which you must use quotes around the value or it will
   be ignored. It is strongly recommended to use a custom theme, with a CSS
   loading spinner if you intend to use this feature. You can use `this colour
   wheel <http://paletton.com/>`_ to find a colour you like.
 * **inherit**: Set to **yes** if you want sub-folders to inherit this part of
-  the configuration.
+  the configuration
 
 **Album Presentation**
 
 * **description**: A markdown-formatted string which will be displayed in the
-  info box. It can spread over multiple lines using the Yaml markers.
+  info box and it can spread over multiple lines using the YAML markers
 * **description_link**: A markdown file located within the album which will
-  be parsed and displayed in the info box instead of the description.
-* **copyright**: A markdown-formatted string. This supports links to external
-  resources.
-* **copyright_link**: Any file (e.g. copyright.html), in the album itself,
+  be parsed and displayed in the info box instead of the description
+* **copyright**: A markdown-formatted string which this supports links to external
+  resources
+* **copyright_link**: Any file (e.g. copyright.html), in the album itself
   which will be downloaded when the user clicks on the link
 * **inherit**: Set to **yes** if you want sub-folders to inherit this part of
-  the configuration.
+  the configuration
 
 See `<http://www.markitdown.net/markdown>`_ for the markdown syntax.
 
@@ -170,27 +170,27 @@ See `<http://www.markitdown.net/markdown>`_ for the markdown syntax.
 
 **Sorting**
 
-* **sorting**: **date** or **name**. **date** only works for files.
-* **sort_order**: **asc** or **des** (Ascending or descending).
+* **sorting**: **name** or **date** which only works for files
+* **sort_order**: **asc** or **des** (Ascending or descending)
 * **inherit**: Set to **yes** if you want sub-folders to inherit this part of
-  the configuration.
+  the configuration
 
 Notes
 -----
 
 * When only the sort **type** variable has been set, the default sort order
-  will be used.
+  will be used
 * When only the sort **order** variable has been found, the sort configuration
   will be ignored and the script will keep looking for a valid configuration in
-  upper folders.
+  upper folders
 * To enable a feature such as native SVG in a public share, you need to create
-  in that folder a configuration file containing that feature.
+  in that folder a configuration file containing that feature
 * If you share a folder publicly, don't forget to add all the files you link to
   (e.g. ``description.md`` or ``copyright.md``) inside the shared folder as
-  the user won't have access to files stored in the parent folder.
+  the user won't have access to files stored in the parent folder
 * Since people can download a whole folder as an archive, it's usually best to
   include all files within a shared folder, rather than adding text directly
-  in the configuration file.
+  in the configuration file
 
 Examples
 --------
