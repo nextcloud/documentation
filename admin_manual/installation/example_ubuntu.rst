@@ -23,7 +23,7 @@ when you login for the first time.
 To start the MySQL command line mode use the following command and press the enter key when prompted for a password::
 
   sudo /etc/init.d/mysql start
-  sudo mysql -uroot -p
+  sudo mysql -u root -p
 
 Then a **MariaDB [root]>** prompt will appear. Now enter the following lines, replacing username and password with appropriate values, and confirm them with the enter key:
 
