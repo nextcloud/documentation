@@ -118,6 +118,8 @@ With this the old column gets removed.
           return $schema;
   }
 
+.. _migrate-database-xml:
+
 Migrate from database.xml
 -------------------------
 
