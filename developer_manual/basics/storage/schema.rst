@@ -1,3 +1,5 @@
+.. _database-xml:
+
 ============================
 Database schema (deprecated)
 ============================
