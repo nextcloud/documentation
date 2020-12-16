@@ -10,9 +10,9 @@ Recommended method
 
 For this method, you need to have three add-ons installed:
 
-1. The `Lightning calendar <https://addons.thunderbird.net/de/thunderbird/addon/lightning/>`_
-2. `TBSync <https://addons.thunderbird.net/de/thunderbird/addon/tbsync/>`_ and
-3. The `TBSync provider for CalDAV and CardDAV <https://addons.thunderbird.net/de/thunderbird/addon/dav-4-tbsync/>`_
+1. The `Lightning calendar <https://addons.thunderbird.net/en/thunderbird/addon/lightning/>`_
+2. `TBSync <https://addons.thunderbird.net/en/thunderbird/addon/tbsync/>`_ and
+3. The `TBSync provider for CalDAV and CardDAV <https://addons.thunderbird.net/en/thunderbird/addon/dav-4-tbsync/>`_
 
 When they are installed, if you are on Windows, go to **Extras**/**Synchronisation settings (TBSync)** or **Edit/Synchronisation settings (TBSync)** if on Linux
 
@@ -27,7 +27,7 @@ When they are installed, if you are on Windows, go to **Extras**/**Synchronisati
 
 Alternative: Using the CardBook add-on (Contacts only)
 ------------------------------------------------------
-`CardBook <https://addons.thunderbird.net/de/thunderbird/addon/cardbook/>`_ is an advanced alternative to Thunderbird's address book, which supports CardDAV. You can have TBSync and CardBook installed in parallel.
+`CardBook <https://addons.thunderbird.net/en/thunderbird/addon/cardbook/>`_ is an advanced alternative to Thunderbird's address book, which supports CardDAV. You can have TBSync and CardBook installed in parallel.
  
 1. Click the Cardbook icon in the upper right corner of Thunderbird:
 
