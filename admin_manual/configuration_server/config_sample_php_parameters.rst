@@ -1598,10 +1598,17 @@ Defaults to ``\OC\Share20\ProviderFactory``
 
 ::
 
-	'sharing.maxAutocompleteResults' => 0,
+	'sharing.maxAutocompleteResults' => 25,
 
-Define max number of results returned by the user search for auto-completion
-Default is unlimited (value set to 0).
+Define max number of results returned by the search for auto-completion of
+users, groups, etc. The value must not be lower than 0 (for unlimited).
+
+If more, different sources are requested (e.g. different user backends; or
+both users and groups), the value is applied per source and might not be
+truncated after collecting the results. I.e. more results can appear than
+configured here.
+
+Default is 25.
 
 ::
 
