@@ -266,7 +266,7 @@ Defaults to ``en``
 
 ::
 
-	'default_phone_region' => 'EN',
+	'default_phone_region' => 'GB',
 
 This sets the default region for phone numbers on your Nextcloud server,
 using ISO 3166-1 country codes such as ``DE`` for Germany, ``FR`` for France, …
