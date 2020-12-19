@@ -100,6 +100,11 @@ Enable HTTP2 for faster loading
 
 HTTP2 has `huge speed improvements <https://www.troyhunt.com/i-wanna-go-fast-https-massive-speed-advantage/>`_ over HTTP with multiple request. Most `browsers already support HTTP2 over SSL (HTTPS) <https://caniuse.com/#feat=http2>`_. So refer to your server manual for guides on how to use HTTP2.
 
+You can check if your application already uses HTTP2 or not by running the simple curl command
+
+..code:: sh
+  curl -I https://mywebsite.com/
+
 Tune PHP-FPM
 ------------
 
