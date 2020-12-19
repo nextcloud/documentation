@@ -64,6 +64,8 @@ Using the operating system cron feature is the preferred method for executing
 regular tasks.  This method enables the execution of scheduled jobs without the
 inherent limitations the Web server might have.
 
+.. note:: Please ensure that your cron.php file has executable permissions and is owned by the web server user, eg - www-data
+
 To run a cron job on a \*nix system, every 5 minutes, under the default Web
 server user (often, ``www-data`` or ``wwwrun``), you must set up the following
 cron job to call the **cron.php** script::
