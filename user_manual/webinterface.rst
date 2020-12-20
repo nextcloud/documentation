@@ -3,7 +3,7 @@ The Nextcloud Web interface
 ===========================
 
 You can connect to your Nextcloud server using any Web browser. Just point it to
-your Nextcloud server URL (e.g. cloud.example.com) and enter your username and password. 
+your Nextcloud server URL (e.g. cloud.example.com) and enter your username and password:
 
 .. figure:: images/login_page.png
      :alt: Nextcloud login screen.
@@ -27,13 +27,14 @@ latest and supported version of a browser from this list:
 Navigating the main user interface
 ----------------------------------
 
-By default, the Nextcloud Web interface opens to your Dashboard or Files page. In Files you can add,
-remove, and share files, and make changes based on the access privileges set by
-you (if you are administering the server) or by your server administrator.
+By default, the Nextcloud Web interface opens to your Dashboard or Files page:
 
 .. figure:: images/files_page.png
      :scale: 75%
      :alt: The main Files view.
+     
+In Files you can add, remove, and share files, and make changes based on the access privileges
+set by you (if you are administering the server) or by your server administrator.
 
 The Nextcloud user interface contains the following fields and functions:
 
