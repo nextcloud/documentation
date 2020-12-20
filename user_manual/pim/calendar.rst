@@ -71,7 +71,7 @@ hard drive or delete it forever:
 .. figure:: images/calendar_editing.png
             :scale: 50%
 
-.. note:: Please keep in mind that deleting a calendar is a irreversible action.
+.. note:: Please keep in mind that deleting a calendar is an irreversible action.
           After deletion, there is no way of restoring the calendar unless you
           have a local backup.
 
