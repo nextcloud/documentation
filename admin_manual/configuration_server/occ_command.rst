@@ -458,7 +458,7 @@ A set of commands to create and manage addressbooks and calendars::
   dav:create-addressbook        Create a dav addressbook
   dav:create-calendar           Create a dav calendar
   dav:list-calendars            List all calendars of a user
-  dav:move-calendar             Move a calendar from an user to another
+  dav:move-calendar             Move a calendar from a user to another
   dav:remove-invalid-shares     Remove invalid dav shares
   dav:send-event-reminders      Sends event reminders
   dav:sync-birthday-calendar    Synchronizes the birthday calendar
@@ -478,15 +478,17 @@ This example creates a new calendar for molly::
  
 Molly will immediately see these in the Calendar and Contacts apps.
 
-``dav:lists-calendars [user]`` will display a table listing the calendars for an given user. 
+``dav:lists-calendars [user]`` will display a table listing the calendars for a given user. 
 This example will list all calendars for user annie::
 
  sudo -u www-data php occ dav:list-calendars annie
  
 ``dav::move-calendar [name] [sourceuid] [destinationuid]`` allows the admin
-to move a calendar named ``name`` from an user ``sourceuid`` to the user 
+to move a calendar named ``name`` from a user ``sourceuid`` to the user 
 ``destinationuid``. You can use the force option `-f` to enforce the move if there
-are conflicts with existing shares.
+are conflicts with existing shares. The system will also generate a new unique
+calendar name in case there is a conflict over the destination user.
+
 This example will move calendar named personal from user dennis to user sabine::
  
  sudo -u www-data php occ dav:move-calendar personal dennis sabine
@@ -1436,7 +1438,7 @@ Two-factor authentication
 -------------------------
 If a two-factor provider app is enabled, it is enabled for all users by default
 (though the provider can decide whether or not the user has to pass the challenge).
-In the case of an user losing access to the second factor (e.g. lost phone with
+In the case of a user losing access to the second factor (e.g. lost phone with
 two-factor SMS verification), the admin can try to disable the two-factor
 check for that user via the occ command::
 
