@@ -1746,31 +1746,31 @@ be found at: https://www.php.net/manual/en/function.password-hash.php
 
 ::
 
+	'hashingThreads' => PASSWORD_ARGON2_DEFAULT_THREADS,
+
+The number of CPU threads to be used by the algorithm for computing a hash.
+
+The value must be an integer, and the minimum value is 1. Rationally it does
+not help to provide a number higher than the available threads on the machine.
+Values that undershoot the minimum will be ignored in favor of the minimum.
+
+::
+
 	'hashingMemoryCost' => PASSWORD_ARGON2_DEFAULT_MEMORY_COST,
 
-The allowed maximum memory in KiB to be used by the algorithm for computing a
-hash. The smallest possible value is 8. Values that undershoot the minimum
-will be ignored in favor of the default.
+The memory in KiB to be used by the algorithm for computing a hash. The value
+must be an integer, and the minimum value is 8 times the number of CPU threads.
+
+Values that undershoot the minimum will be ignored in favor of the minimum.
 
 ::
 
 	'hashingTimeCost' => PASSWORD_ARGON2_DEFAULT_TIME_COST,
 
-The allowed maximum time in seconds that can be used by the algorithm for
-computing a hash. The value must be an integer, and the minimum value is 1.
+The number of iterations that are used by the algorithm for computing a hash.
 
-Values that undershoot the minimum will be ignored in favor of the default.
-
-::
-
-	'hashingThreads' => PASSWORD_ARGON2_DEFAULT_THREADS,
-
-The allowed number of CPU threads that can be used by the algorithm for
-computing a hash. The value must be an integer, and the minimum value is 1.
-
-Rationally it does not help to provide a number higher than the available
-threads on the machine. Values that undershoot the minimum will be ignored
-in favor of the default.
+The value must be an integer, and the minimum value is 1. Values that
+undershoot the minimum will be ignored in favor of the minimum.
 
 ::
 
