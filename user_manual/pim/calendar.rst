@@ -147,7 +147,7 @@ If you want to edit or delete a specific event, you just need to click on it.
 After that you will be able to re-set all of the events details and open the
 advanced sidebar-editor by clicking on ``More...``.
 
-Clicking on the blue ``Update``-button will update the event. To cancel your changes, click on the close icon on top right of the popup or sidebar editor.
+Clicking on the ``Update``-button will update the event. To cancel your changes, click on the close icon on top right of the popup or sidebar editor.
 
 If you open the sidebar view and click the three dot menu next to the event name, you have an option to export the event as an ``.ics`` file or remove the event from your calendar.
 
