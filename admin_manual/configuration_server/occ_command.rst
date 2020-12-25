@@ -1306,7 +1306,6 @@ Display your ``maintenance:install`` options::
   --database-host          Hostname of the database (default: "localhost")
   --database-user          User name to connect to the database
   --database-pass          Password of the database user
-  --database-table-prefix  Prefix for all tables (default: oc_)
   --admin-user             User name of the admin account (default: "admin")
   --admin-pass             Password of the admin account
   --data-dir               Path to data directory (default: 
