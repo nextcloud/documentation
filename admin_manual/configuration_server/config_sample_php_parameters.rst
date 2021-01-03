@@ -1198,17 +1198,17 @@ Defaults to ``''`` (empty string)
 ::
 
 	'enabledPreviewProviders' => [
-		'OC\Preview\PNG',
-		'OC\Preview\JPEG',
+		'OC\Preview\BMP',
 		'OC\Preview\GIF',
 		'OC\Preview\HEIC',
-		'OC\Preview\BMP',
-		'OC\Preview\XBitmap',
-		'OC\Preview\MP3',
-		'OC\Preview\TXT',
-		'OC\Preview\MarkDown',
-		'OC\Preview\OpenDocument',
+		'OC\Preview\JPEG',
 		'OC\Preview\Krita',
+		'OC\Preview\MarkDown',
+		'OC\Preview\MP3',
+		'OC\Preview\OpenDocument',
+		'OC\Preview\PNG',
+		'OC\Preview\TXT',
+		'OC\Preview\XBitmap',
 	],
 
 Only register providers that have been explicitly enabled
@@ -1216,6 +1216,7 @@ Only register providers that have been explicitly enabled
 The following providers are disabled by default due to performance or privacy
 concerns:
 
+ - OC\\Preview\\Font
  - OC\\Preview\\Illustrator
  - OC\\Preview\\Movie
  - OC\\Preview\\MSOffice2003
@@ -1227,7 +1228,6 @@ concerns:
  - OC\\Preview\\StarOffice
  - OC\\Preview\\SVG
  - OC\\Preview\\TIFF
- - OC\\Preview\\Font
 
 
 Defaults to the following providers:
@@ -1236,13 +1236,13 @@ Defaults to the following providers:
  - OC\\Preview\\GIF
  - OC\\Preview\\HEIC
  - OC\\Preview\\JPEG
+ - OC\\Preview\\Krita
  - OC\\Preview\\MarkDown
  - OC\\Preview\\MP3
+ - OC\\Preview\\OpenDocument
  - OC\\Preview\\PNG
  - OC\\Preview\\TXT
  - OC\\Preview\\XBitmap
- - OC\\Preview\\OpenDocument
- - OC\\Preview\\Krita
 
 LDAP
 ----
