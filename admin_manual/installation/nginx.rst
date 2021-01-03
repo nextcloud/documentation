@@ -100,9 +100,6 @@ webroot of your nginx installation. In this example it is
       # always provides the desired behaviour.
       index index.php index.html /index.php$request_uri;
       
-      # Default Cache-Control policy
-      expires 1m;
-      
       # Rule borrowed from `.htaccess` to handle Microsoft DAV clients
       location = / {
           if ( $http_user_agent ~ ^DavClnt ) {
@@ -292,9 +289,6 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
           # `try_files $uri $uri/ /nextcloud/index.php$request_uri`
           # always provides the desired behaviour.
           index index.php index.html /nextcloud/index.php$request_uri;
-          
-          # Default Cache-Control policy
-          expires 1m;
 
           # Rule borrowed from `.htaccess` to handle Microsoft DAV clients
           location = /nextcloud {
