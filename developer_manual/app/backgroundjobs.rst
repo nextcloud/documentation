@@ -56,7 +56,7 @@ As you can see our dependency injection also works just fine for background jobs
 The ITimeFactory always needs to be passed to the parent constructor. Since it is
 required to be set.
 
-In this case it is a background job that runs every hour. And we take the ``uid`` arguemnt
+In this case it is a background job that runs every hour. And we take the ``uid`` argument
 to pass on to the service to run the background job.
 
 The ``run`` function is the main thing you need to implement and where all the
