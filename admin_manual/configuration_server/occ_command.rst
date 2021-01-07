@@ -934,7 +934,7 @@ These commands view and configure your Nextcloud logging preferences::
   log:file        manipulate Nextcloud logging backend
   log:manage      manage logging configuration
   log:tail        tail the nextcloud logfile [requires app "Log Reader" to be enabled]
-  log:watch       watch the nextcloud logfile [requires app "Log Reader" to be enabled]
+  log:watch       watch the nextcloud logfile live [requires app "Log Reader" to be enabled]
 
 Run ``log:file [--] [--enable] [--file] [--rotate-size]`` to see your current logging status::
 
