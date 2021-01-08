@@ -928,25 +928,28 @@ Logging commands
 These commands view and configure your Nextcloud logging preferences::
 
  log
-  log:manage     manage logging configuration
-  log:file   manipulate Nextcloud logging backend
+  log:file        manipulate Nextcloud logging backend
+  log:manage      manage logging configuration
+  log:tail        tail the nextcloud logfile [requires app "Log Reader" to be enabled]
+  log:watch       watch the nextcloud logfile live [requires app "Log Reader" to be enabled]
 
-Run ``log:file`` to see your current logging status::
+Run ``log:file [--] [--enable] [--file] [--rotate-size]`` to see your current logging status::
 
  sudo -u www-data php occ log:file 
  Log backend Nextcloud: enabled
  Log file: /opt/nextcloud/data/nextcloud.log
  Rotate at: disabled
 
-Use the ``--enable`` option to turn on logging. Use ``--file`` to set a 
-different log file path. Set your rotation by log file size in bytes with 
-``--rotate-size``; 0 disables rotation. 
+* ``--enable`` turns on logging.
+* ``--file`` sets a different log file path.
+* ``--rotate-size`` sets your rotation by log file size in bytes with; 0 disables rotation.
 
-``log:manage`` sets your logging backend, log level, and timezone. The defaults 
+``log:manage [--backend] [--level] [--timezone]`` sets your logging backend, log level, and timezone. The defaults 
 are ``file``, ``warning``, and ``UTC``. Available options are:
 
 * ``--backend [file, syslog, errorlog, systemd]``
 * ``--level [debug|info|warning|error|fatal]``
+* ``--timezone`` according to https://www.php.net/manual/en/timezones.php
 
 .. _maintenance_commands_label:
    
