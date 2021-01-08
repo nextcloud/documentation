@@ -45,8 +45,8 @@ Some (minor) breaking changes were inevitable. Here's the summary
 * ``$queryBuilder->execute()->errorCode()`` was removed from Doctrine
 * ``$queryBuilder->execute()->errorInfo()`` was removed from Doctrine
 * ``$queryBuilder->execute()->setFetchMode()`` was removed from Doctrine
-* ``$queryBuilder->prepare()->execute()`` previously returned ``false`` under some error conditions, it now always gives you an ``IResult`` or throws an exception
-* ``\Doctrine\DBAL\Types\Types`` was removed, which some apps used for column type constants in apps. Use ``\Doctrine\DBAL\Types\Type::*`` or inline the values.
+* ``$connection->prepare()->execute()`` previously returned ``false`` under some error conditions, it now always gives you an ``IResult`` or throws an exception
+* ``\Doctrine\DBAL\Types\Type`` was removed, which some apps used for column type constants in apps. Use ``\Doctrine\DBAL\Types\Types::*`` or inline the values.
 
 The details of this change can also be seen in the `pull request on Github <https://github.com/nextcloud/server/pull/24948>`__.
 
