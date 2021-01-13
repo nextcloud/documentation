@@ -1834,6 +1834,17 @@ Defaults to ``2.0.0``
 
 ::
 
+	'localstorage.allowsymlinks' => false,
+
+Option to allow local storage to contain symlinks.
+
+WARNING: Not recommended. This would make it possible for Nextcloud to access
+files outside the data directory and could be considered a security risk.
+
+Defaults to ``false``
+
+::
+
 	'quota_include_external_storage' => false,
 
 EXPERIMENTAL: option whether to include external storage in quota
