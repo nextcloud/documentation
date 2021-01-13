@@ -57,6 +57,8 @@ access your server using the Internet. For example::
 
   URL to call: http[s]://<domain-of-your-server>/nextcloud/cron.php
 
+.. _system-cron-configuration-label:
+
 Cron
 ^^^^
 
@@ -103,10 +105,10 @@ This approach requires two files: **nextcloudcron.service** and **nextcloudcron.
 
   [Unit]
   Description=Nextcloud cron.php job
-  
+
   [Service]
   User=www-data
-  ExecStart=/usr/bin/php -f /var/www/nextcloud/cron.php            
+  ExecStart=/usr/bin/php -f /var/www/nextcloud/cron.php
 
 Replace the user ``www-data`` with the user of your http server and ``/var/www/nextcloud/cron.php`` with the location of **cron.php** in your nextcloud directory.
 
@@ -116,12 +118,12 @@ Note that the **.service** unit file does not need an ``[Install]`` section. Ple
 
   [Unit]
   Description=Run Nextcloud cron.php every 5 minutes
-  
+
   [Timer]
   OnBootSec=5min
   OnUnitActiveSec=5min
   Unit=nextcloudcron.service
-  
+
   [Install]
   WantedBy=timers.target
 
