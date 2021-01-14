@@ -266,6 +266,17 @@ Defaults to ``en``
 
 ::
 
+	'default_phone_region' => 'GB',
+
+This sets the default region for phone numbers on your Nextcloud server,
+using ISO 3166-1 country codes such as ``DE`` for Germany, ``FR`` for France, …
+It is required to allow inserting phone numbers in the user profiles starting
+without the country code (e.g. +49 for Germany).
+
+No default value!
+
+::
+
 	'force_locale' => 'en_US',
 
 With this setting a locale can be forced for all users. If a locale is
@@ -278,15 +289,15 @@ Defaults to ``false``
 
 ::
 
-	'defaultapp' => 'files',
+	'defaultapp' => 'dashboard,files',
 
 Set the default app to open on login. Use the app names as they appear in the
 URL after clicking them in the Apps menu, such as documents, calendar, and
 gallery. You can use a comma-separated list of app names, so if the first
 app is not enabled for a user then Nextcloud will try the second one, and so
-on. If no enabled apps are found it defaults to the Files app.
+on. If no enabled apps are found it defaults to the dashboard app.
 
-Defaults to ``files``
+Defaults to ``dashboard,files``
 
 ::
 
@@ -1001,17 +1012,17 @@ Defaults to an empty array.
 
 	'logdateformat' => 'F d, Y H:i:s',
 
-This uses PHP.date formatting; see http://php.net/manual/en/function.date.php
+This uses PHP.date formatting; see https://www.php.net/manual/en/function.date.php
 
 Defaults to ISO 8601 ``2005-08-15T15:52:01+00:00`` - see \DateTime::ATOM
-(https://secure.php.net/manual/en/class.datetime.php#datetime.constants.atom)
+(https://www.php.net/manual/en/class.datetime.php#datetime.constants.atom)
 
 ::
 
 	'logtimezone' => 'Europe/Berlin',
 
 The timezone for logfiles. You may change this; see
-http://php.net/manual/en/timezones.php
+https://www.php.net/manual/en/timezones.php
 
 Defaults to ``UTC``
 
@@ -1415,8 +1426,8 @@ https://github.com/phpredis/phpredis/commit/c5994f2a42b8a348af92d3acb4edff1328ad
 
 	'memcached_servers' => [
 		// hostname, port and optional weight. Also see:
-		// http://www.php.net/manual/en/memcached.addservers.php
-		// http://www.php.net/manual/en/memcached.addserver.php
+		// https://www.php.net/manual/en/memcached.addservers.php
+		// https://www.php.net/manual/en/memcached.addserver.php
 		['localhost', 11211],
 		//array('other.host.local', 11211),
 	],
@@ -1587,10 +1598,17 @@ Defaults to ``\OC\Share20\ProviderFactory``
 
 ::
 
-	'sharing.maxAutocompleteResults' => 0,
+	'sharing.maxAutocompleteResults' => 25,
 
-Define max number of results returned by the user search for auto-completion
-Default is unlimited (value set to 0).
+Define max number of results returned by the search for auto-completion of
+users, groups, etc. The value must not be lower than 0 (for unlimited).
+
+If more, different sources are requested (e.g. different user backends; or
+both users and groups), the value is applied per source and might not be
+truncated after collecting the results. I.e. more results can appear than
+configured here.
+
+Default is 25.
 
 ::
 
@@ -1728,31 +1746,31 @@ be found at: https://www.php.net/manual/en/function.password-hash.php
 
 ::
 
+	'hashingThreads' => PASSWORD_ARGON2_DEFAULT_THREADS,
+
+The number of CPU threads to be used by the algorithm for computing a hash.
+
+The value must be an integer, and the minimum value is 1. Rationally it does
+not help to provide a number higher than the available threads on the machine.
+Values that undershoot the minimum will be ignored in favor of the minimum.
+
+::
+
 	'hashingMemoryCost' => PASSWORD_ARGON2_DEFAULT_MEMORY_COST,
 
-The allowed maximum memory in KiB to be used by the algorithm for computing a
-hash. The smallest possible value is 8. Values that undershoot the minimum
-will be ignored in favor of the default.
+The memory in KiB to be used by the algorithm for computing a hash. The value
+must be an integer, and the minimum value is 8 times the number of CPU threads.
+
+Values that undershoot the minimum will be ignored in favor of the minimum.
 
 ::
 
 	'hashingTimeCost' => PASSWORD_ARGON2_DEFAULT_TIME_COST,
 
-The allowed maximum time in seconds that can be used by the algorithm for
-computing a hash. The value must be an integer, and the minimum value is 1.
+The number of iterations that are used by the algorithm for computing a hash.
 
-Values that undershoot the minimum will be ignored in favor of the default.
-
-::
-
-	'hashingThreads' => PASSWORD_ARGON2_DEFAULT_THREADS,
-
-The allowed number of CPU threads that can be used by the algorithm for
-computing a hash. The value must be an integer, and the minimum value is 1.
-
-Rationally it does not help to provide a number higher than the available
-threads on the machine. Values that undershoot the minimum will be ignored
-in favor of the default.
+The value must be an integer, and the minimum value is 1. Values that
+undershoot the minimum will be ignored in favor of the minimum.
 
 ::
 
@@ -1813,6 +1831,17 @@ client may not function as expected, and could lead to permanent data loss for
 clients or other unexpected results.
 
 Defaults to ``2.0.0``
+
+::
+
+	'localstorage.allowsymlinks' => false,
+
+Option to allow local storage to contain symlinks.
+
+WARNING: Not recommended. This would make it possible for Nextcloud to access
+files outside the data directory and could be considered a security risk.
+
+Defaults to ``false``
 
 ::
 

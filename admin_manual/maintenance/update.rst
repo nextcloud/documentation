@@ -173,7 +173,7 @@ The steps are basically the same as for the web based updater:
 2. Instead of clicking that button you can now invoke the command line based
    updater by going into the `updater/` directory in the Nextcloud directory
    and executing the `updater.phar` as the web server user. (i.e.
-   ``sudo -u www-data php updater.phar``)
+   ``sudo -u www-data php /var/www/nextcloud/updater/updater.phar``)
 
 .. image:: images/updater-cli-2-start-updater.png
    :class: terminal-image
@@ -220,7 +220,7 @@ except an error occured during the ``occ upgrade`` or the replacement of the
 code.
 
 To execute this, run the command with the ``--no-interaction`` option. (i.e.
-``sudo -u www-data php updater.phar --no-interaction``)
+``sudo -u www-data php /var/www/nextcloud/updater/updater.phar --no-interaction``)
 
 .. image:: images/updater-cli-8-no-interaction.png
    :class: terminal-image

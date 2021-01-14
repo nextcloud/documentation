@@ -193,7 +193,6 @@ The ``app`` commands list, enable, and disable apps::
 
  app
   app:install      install selected app
-  app:check-code   check code to be compliant
   app:disable      disable an app
   app:enable       enable an app
   app:getpath      get an absolute path to the app directory
@@ -223,27 +222,6 @@ Disable an app::
 
  sudo -u www-data php occ app:disable files_external
  files_external disabled   
-   
-``app:check-code`` has multiple checks: it checks if an app uses Nextcloud's 
-public API (``OCP``) or private API (``OC_``), and it also checks for deprecated 
-methods and the validity of the ``info.xml`` file. By default all checks are 
-enabled. The Activity app is an example of a correctly-formatted app::
-
- sudo -u www-data php occ app:check-code notifications
- App is compliant - awesome job!
-
-If your app has issues, you'll see output like this::
-
- sudo -u www-data php occ app:check-code foo_app
- Analysing /var/www/nextcloud/apps/files/foo_app.php
- 4 errors
-    line   45: OCP\Response - Static method of deprecated class must not be 
-    called
-    line   46: OCP\Response - Static method of deprecated class must not be 
-    called
-    line   47: OCP\Response - Static method of deprecated class must not be 
-    called
-    line   49: OC_Util - Static method of private class must not be called
 
 You can get the full filepath to an app::
     
@@ -458,7 +436,7 @@ A set of commands to create and manage addressbooks and calendars::
   dav:create-addressbook        Create a dav addressbook
   dav:create-calendar           Create a dav calendar
   dav:list-calendars            List all calendars of a user
-  dav:move-calendar             Move a calendar from an user to another
+  dav:move-calendar             Move a calendar from a user to another
   dav:remove-invalid-shares     Remove invalid dav shares
   dav:send-event-reminders      Sends event reminders
   dav:sync-birthday-calendar    Synchronizes the birthday calendar
@@ -478,15 +456,17 @@ This example creates a new calendar for molly::
  
 Molly will immediately see these in the Calendar and Contacts apps.
 
-``dav:lists-calendars [user]`` will display a table listing the calendars for an given user. 
+``dav:lists-calendars [user]`` will display a table listing the calendars for a given user. 
 This example will list all calendars for user annie::
 
  sudo -u www-data php occ dav:list-calendars annie
  
 ``dav::move-calendar [name] [sourceuid] [destinationuid]`` allows the admin
-to move a calendar named ``name`` from an user ``sourceuid`` to the user 
+to move a calendar named ``name`` from a user ``sourceuid`` to the user 
 ``destinationuid``. You can use the force option `-f` to enforce the move if there
-are conflicts with existing shares.
+are conflicts with existing shares. The system will also generate a new unique
+calendar name in case there is a conflict over the destination user.
+
 This example will move calendar named personal from user dennis to user sabine::
  
  sudo -u www-data php occ dav:move-calendar personal dennis sabine
@@ -661,8 +641,12 @@ File operations
  files
   files:cleanup              cleanup filecache
   files:scan                 rescan filesystem
-  files:transfer-ownership   All files and folders are moved to another 
-                             user - shares are moved as well.
+  files:scan-app-data        rescan the AppData folder
+  files:transfer-ownership   All files' and folders' ownerships are moved to another 
+                             user. Outgoing shares are moved as well.
+                             Incoming shares are not moved because the sharing user 
+                             holds the ownership of the respective files and therefore 
+                             owns the decision which actual users/groups to be shared with.
 
 Scan
 ^^^^
@@ -715,6 +699,24 @@ path component given.
 The ``--path``, ``--all`` and ``[user_id]`` parameters are exclusive - only 
 one must be specified.
 
+Scan appdata
+^^^^^^^^^^^^^
+
+Appdata is a folder inside of the data directory which contains files that
+are shared between users and can be put there by the server or apps like
+avatar images, file previews and cached CSS files for example.
+
+Since the regular files scan only operates on user files the ``occ files:scan-app-data``
+command will check the appdata directory and make sure that the filecache is consistent
+with the files on the actual storage.::
+
+  Usage:
+    files:scan-app-data [options] [--] [<folder>]
+
+  Arguments:
+    folder                 The appdata subfolder to scan [default: ""]
+
+
 Cleanup
 ^^^^^^^
 
@@ -735,6 +737,17 @@ It is also possible to transfer only one directory along with it's contents. Thi
 
 Users may also transfer files or folders selectively by themselves.
 See `user documentation <https://docs.nextcloud.com/server/latest/user_manual/en/files/transfer_ownership.html>`_ for details.
+
+.. _occ_sharing_label:
+
+Files Sharing
+-------------
+
+Commands for handling shares::
+
+ sharing
+  sharing:cleanup-remote-storages  Cleanup shared storage entries that have no matching entry in the shares_external table
+  sharing:expiration-notification  Notify share initiators when a share will expire the next day
 
 .. _files_external_label:
 
@@ -915,25 +928,28 @@ Logging commands
 These commands view and configure your Nextcloud logging preferences::
 
  log
-  log:manage     manage logging configuration
-  log:file   manipulate Nextcloud logging backend
+  log:file        manipulate Nextcloud logging backend
+  log:manage      manage logging configuration
+  log:tail        tail the nextcloud logfile [requires app "Log Reader" to be enabled]
+  log:watch       watch the nextcloud logfile live [requires app "Log Reader" to be enabled]
 
-Run ``log:file`` to see your current logging status::
+Run ``log:file [--] [--enable] [--file] [--rotate-size]`` to see your current logging status::
 
  sudo -u www-data php occ log:file 
  Log backend Nextcloud: enabled
  Log file: /opt/nextcloud/data/nextcloud.log
  Rotate at: disabled
 
-Use the ``--enable`` option to turn on logging. Use ``--file`` to set a 
-different log file path. Set your rotation by log file size in bytes with 
-``--rotate-size``; 0 disables rotation. 
+* ``--enable`` turns on logging.
+* ``--file`` sets a different log file path.
+* ``--rotate-size`` sets your rotation by log file size in bytes with; 0 disables rotation.
 
-``log:manage`` sets your logging backend, log level, and timezone. The defaults 
+``log:manage [--backend] [--level] [--timezone]`` sets your logging backend, log level, and timezone. The defaults 
 are ``file``, ``warning``, and ``UTC``. Available options are:
 
 * ``--backend [file, syslog, errorlog, systemd]``
 * ``--level [debug|info|warning|error|fatal]``
+* ``--timezone`` according to https://www.php.net/manual/en/timezones.php
 
 .. _maintenance_commands_label:
    
@@ -1250,7 +1266,7 @@ This example deletes all versions for all users::
 
 You can delete versions for specific users in a space-delimited list::
 
- sudo -u www-data php occ versions:cleanup
+ sudo -u www-data php occ versions:cleanup freda molly
  Delete versions of   freda
  Delete versions of   molly 
  
@@ -1291,7 +1307,6 @@ Then choose your ``occ`` options. This lists your available options::
   list                  Lists commands
   status                show some status information
   app
-  app:check-code        check code to be compliant
   l10n
   l10n:createjs         Create javascript translation files for a given app
   maintenance
@@ -1313,7 +1328,6 @@ Display your ``maintenance:install`` options::
   --database-host          Hostname of the database (default: "localhost")
   --database-user          User name to connect to the database
   --database-pass          Password of the database user
-  --database-table-prefix  Prefix for all tables (default: oc_)
   --admin-user             User name of the admin account (default: "admin")
   --admin-pass             Password of the admin account
   --data-dir               Path to data directory (default: 
@@ -1422,7 +1436,7 @@ Two-factor authentication
 -------------------------
 If a two-factor provider app is enabled, it is enabled for all users by default
 (though the provider can decide whether or not the user has to pass the challenge).
-In the case of an user losing access to the second factor (e.g. lost phone with
+In the case of a user losing access to the second factor (e.g. lost phone with
 two-factor SMS verification), the admin can try to disable the two-factor
 check for that user via the occ command::
 

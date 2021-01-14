@@ -21,7 +21,7 @@ Nextcloud server.
 .. figure:: ../images/files_page-7.png
    :alt: Creating file tags.
 
-Then use the Tags filter on the left sidebar to filter files by tags.
+Then use the Tags filter on the left sidebar to filter files by tags:
 
 .. figure:: ../images/files_page-8.png
    :alt: Viewing file tags.
@@ -30,7 +30,7 @@ Comments
 --------
 
 Use the Details view to add and read comments on any file or folder. Comments
-are visible to everyone who has access to the file.
+are visible to everyone who has access to the file:
 
 .. figure:: ../images/file_menu_comments_2.png
    :alt: Creating and viewing comments.
@@ -54,21 +54,22 @@ and text files, if this enabled by your server administrator. Hover your cursor
 over a file or folder to expose the controls for the following operations:
 
 Favorites
-  Click the star to the left of the file icon to mark it as a favorite, and
-  quickly find all of your favorites with the Favorites filter on the left
-  sidebar.
-
-.. figure:: ../images/files_page-1.png
+  Click the star to the left of the file icon to mark it as a favorite:
+  
+  .. figure:: ../images/files_page-1.png
    :alt: Marking Favorite files.
+   
+  You can also quickly find all of your favorites with the Favorites filter on the left
+  sidebar.
 
 Overflow Menu
   The Overflow menu (three dots) displays file details, and allows you to
-  rename, download, or delete files.
+  rename, download, or delete files:
 
-.. figure:: ../images/files_page-3.png
+  .. figure:: ../images/files_page-3.png
    :alt: Overflow menu.
 
-   The Details view shows Activities, Sharing, and Versions information.
+  The Details view shows Activities, Sharing, and Versions information:
 
 .. figure:: ../images/files_page-4.png
    :alt: Details screen.
@@ -104,7 +105,7 @@ Sharing status icons
 --------------------
 
 Any folder that has been shared is marked with the ``Shared`` overlay icon.
-Public link shares are marked with a chain link. Un-shared folders are blank.
+Public link shares are marked with a chain link. Unshared folders are not marked:
 
 .. figure:: ../images/files_page-5.png
    :alt: Share status icons.
@@ -113,7 +114,7 @@ Creating or uploading files and directories
 -------------------------------------------
 
 Upload or create new files or folders directly in a Nextcloud folder by clicking
-on the *New* button in the Files app.
+on the *New* button in the Files app:
 
 .. figure:: ../images/files_page-6.png
    :alt: The New file/folder/upload menu.
@@ -167,7 +168,7 @@ Shared by link
 
 External Storage (optional)
   Files that you have access to on external storage devices and services such
-  as Amazon S3, SMB/CIFS, ftp...
+  as Amazon S3, SMB/CIFS, FTP…
 
 Moving files
 ------------

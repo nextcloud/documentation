@@ -70,13 +70,23 @@ Thanks to `@ffried <https://github.com/ffried>`_ for apache2 example.
 
 Traefik 1
 ^^^^^^^^^
+
+Using docker tags:
 ::
 
   traefik.frontend.redirect.permanent: 'true'
   traefik.frontend.redirect.regex: https://(.*)/.well-known/(card|cal)dav
   traefik.frontend.redirect.replacement: https://$$1/remote.php/dav/
 
-Thanks to `@pauvos <https://github.com/pauvos>`_ for traefik example.
+Using traefik.toml:
+::
+
+  [frontends.frontend1.redirect]
+    regex = "https://(.*)/.well-known/(card|cal)dav"
+    replacement = "https://$1/remote.php/dav/
+    permanent = true
+
+Thanks to `@pauvos <https://github.com/pauvos>`_ and `@mrtumnus <https://github.com/mrtumnus>`_ for traefik examples.
 
 Traefik 2
 ^^^^^^^^^
@@ -106,6 +116,19 @@ NGINX
     location /.well-known/caldav {
         return 301 $scheme://$host/remote.php/dav;
     }
+
+CADDY
+^^^^^
+::
+
+    subdomain.example.com {
+            reverse_proxy /.well-known/carddav {$NEXTCLOUD_HOST:localhost}/remote.php/dav
+
+            reverse_proxy /.well-known/caldav {$NEXTCLOUD_HOST:localhost}/remote.php/dav
+
+            reverse_proxy * {$NEXTCLOUD_HOST:localhost}
+    }
+
 
 Example
 -------

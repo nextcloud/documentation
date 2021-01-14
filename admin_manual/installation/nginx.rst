@@ -100,9 +100,6 @@ webroot of your nginx installation. In this example it is
       # always provides the desired behaviour.
       index index.php index.html /index.php$request_uri;
       
-      # Default Cache-Control policy
-      expires 1m;
-      
       # Rule borrowed from `.htaccess` to handle Microsoft DAV clients
       location = / {
           if ( $http_user_agent ~ ^DavClnt ) {
@@ -123,13 +120,10 @@ webroot of your nginx installation. In this example it is
       location ^~ /.well-known {
           # The following 6 rules are borrowed from `.htaccess`
       
-          rewrite ^/\.well-known/host-meta\.json  /public.php?service=host-meta-json  last;
-          rewrite ^/\.well-known/host-meta        /public.php?service=host-meta       last;
-          rewrite ^/\.well-known/webfinger        /public.php?service=webfinger       last;
-          rewrite ^/\.well-known/nodeinfo         /public.php?service=nodeinfo        last;
-          
           location = /.well-known/carddav     { return 301 /remote.php/dav/; }
           location = /.well-known/caldav      { return 301 /remote.php/dav/; }
+          # Anything else is dynamically handled by Nextcloud
+          location ^~ /.well-known            { return 301 /index.php$uri; }
 
           try_files $uri $uri/ =404;
       }
@@ -241,13 +235,11 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
       location /.well-known {
           # The following 6 rules are borrowed from `.htaccess`
 
-          rewrite ^/\.well-known/host-meta\.json  /nextcloud/public.php?service=host-meta-json    last;
-          rewrite ^/\.well-known/host-meta        /nextcloud/public.php?service=host-meta         last;
-          rewrite ^/\.well-known/webfinger        /nextcloud/public.php?service=webfinger         last;
-          rewrite ^/\.well-known/nodeinfo         /nextcloud/public.php?service=nodeinfo          last;
-
           location = /.well-known/carddav   { return 301 /nextcloud/remote.php/dav/; }
           location = /.well-known/caldav    { return 301 /nextcloud/remote.php/dav/; }
+
+          # Anything else is dynamically handled by Nextcloud
+          location ^~ /.well-known          { return 301 /nextcloud/index.php$uri; }
 
           try_files $uri $uri/ =404;
       }
@@ -292,9 +284,6 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
           # `try_files $uri $uri/ /nextcloud/index.php$request_uri`
           # always provides the desired behaviour.
           index index.php index.html /nextcloud/index.php$request_uri;
-          
-          # Default Cache-Control policy
-          expires 1m;
 
           # Rule borrowed from `.htaccess` to handle Microsoft DAV clients
           location = /nextcloud {

@@ -59,21 +59,20 @@ Then install Nextcloud at the root of your site from Git::
   cd /var/www
   git submodule update --init
 
-If you like to install Nextcloud at a sub-folder, replace `/var/www` with `/var/www/<folder>`.
+If you prefer to install Nextcloud in a sub-folder, replace `/var/www` with `/var/www/<folder>`.
 
-Create the data and the config folders::
+Create the data folder::
 
   cd /var/www
   mkdir data
-  mkdir config
 
-Adjust rights::
+Adjust permissions::
 
   cd /var/www
   sudo chown -R www-data:www-data config data apps
   sudo chmod o-rw /var/www
 
-Finally restart the Web server (this might vary depending on your distribution)::
+Finally, restart the Web server (this might vary depending on your distribution)::
 
   sudo systemctl restart httpd.service
 
@@ -111,7 +110,7 @@ Enabling debug mode
 
 .. note:: Do not enable this for production! This can create security problems and is only meant for debugging and development!
 
-To disable JavaScript and CSS caching debugging has to be enabled by setting ``debug`` to ``true`` in :file:`config/config.php`::
+To disable JavaScript and CSS caching, debugging has to be enabled by setting ``debug`` to ``true`` in :file:`config/config.php`::
 
   <?php
   $CONFIG = array (

@@ -1,3 +1,5 @@
+.. _unified-search:
+
 ======
 Search
 ======
@@ -168,26 +170,9 @@ Handling search requests
 
 Search requests are processed in the ``search`` method. The ``$user`` object is the user who the result shall be generated for. ``$query`` gives context information like the **search term**, the **sort order**, the **route information**, the **size limit** of a request and the **cursor** for follow-up request of paginated results.
 
-The result is encapsulated in the ``SearchResult`` class that offers two static factory methods ``complete`` and ``paginated``. Both of these methods take an array of ``SearchResultEntry`` objects. ``SearchResultEntry`` is a static class that can be extended and used by the provider.
+The result is encapsulated in the ``SearchResult`` class that offers two static factory methods ``complete`` and ``paginated``. Both of these methods take an array of ``SearchResultEntry`` objects.
 
-.. note:: In most cases you don't have to add any methods or fields to this new result entry type so you can directly use ``SearchResultEntry``, but this API design was chosen so new optional properties can be added in the future without breaking the existing implementations in 3rd party apps.
-
-.. code-block:: php
-
-    <?php
-
-    declare(strict_types=1);
-
-    namespace OCA\MyApp\Search;
-
-    use OCP\Search\SearchResultEntry;
-
-    class MySearchResultEntry extends SearchResultEntry {}
-
-
-The above snippet shows this implementation of a result entry. Again, this class should be saved to ``lib/Search`` in the app directory.
-
-Next, you'll see a dummy provider that returns a static set of results using the result entry class from above.
+Next, you'll see a dummy provider that returns a static set of results.
 
 .. code-block:: php
 
@@ -202,6 +187,7 @@ Next, you'll see a dummy provider that returns a static set of results using the
     use OCP\IURLGenerator;
     use OCP\IUser;
     use OCP\Search\IProvider;
+    use OCP\Search\SearchResultEntry;
 
     class Provider implements IProvider {
 
@@ -238,7 +224,7 @@ Next, you'll see a dummy provider that returns a static set of results using the
             return SearchResult::complete(
                 $this->l10n->t('My app'),
                 [
-                    new MySearchResultEntry(
+                    new SearchResultEntry(
                         $this->urlGenerator->linkToRoute(
                             'myapp.Preview.getPreviewByFileId',
                             [
@@ -410,3 +396,19 @@ For a **cursor-based pagination** a app-specific property is used to know a refe
             );
         }
     }
+
+Optional attributes
+^^^^^^^^^^^^^^^^^^^
+
+The unified search is available via OCS, which means client application like the mobile apps can use it to get access to the server search mechanism. The default properties of a search result entry might be difficult to parse and interpret in those clients, hence it's possible to add optional string attributes to each entry.
+
+.. code-block:: php
+
+    <?php
+
+    $entry = new SearchResultEntry(/* same arguments as above */);
+    $entry->addAttribute("type", "deckCard");
+    $entry->addAttribute("cardId", "1234");
+    $entry->addAttribute("boardId", "567");
+
+.. note:: This method was added in Nextcloud 21. If your app also targets Nextcloud 20 you should either not use it or add a version check to invoke the method only conditionally.

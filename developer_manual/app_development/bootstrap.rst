@@ -64,7 +64,7 @@ The class **must** extend ``OCP\AppFramework\App`` and may optionally implement 
             // ... registration logic goes here ...
 
             // Register the composer autoloader for packages shipped by this app, if applicable
-            @include_once __DIR__ . '/../../vendor/autoload.php'
+            include_once __DIR__ . '/../../vendor/autoload.php'
 
             $context->registerEventListener(
                 BeforeUserDeletedEvent::class,

@@ -18,14 +18,6 @@ Getting an app approved
 -----------------------
 You can find documentation on getting apps in our app store `here. <https://nextcloudappstore.readthedocs.io/en/latest/developer.html#publishing-apps-on-the-app-store>`_
 
-Using the code checker
-^^^^^^^^^^^^^^^^^^^^^^
-Before getting the app in the app store, it is best to check your app code with the code checker, and fix the issues found by the code checker.
-
-.. code-block:: bash
-
-  ./occ app:check-code <app_name>
-  
 Losing a rating
 ^^^^^^^^^^^^^^^
 Apps can lose their rating when:

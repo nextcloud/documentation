@@ -81,7 +81,7 @@ options you can use.
 When your Nextcloud admin enables encryption for the first time, you must log
 out and then log back in to create your encryption keys and encrypt your files.
 When encryption has been enabled on your Nextcloud server you will see a yellow
-banner on your Files page warning you to log out and then log back in.
+banner on your Files page warning you to log out and then log back in:
 
 .. figure:: ../images/encryption1.png
 

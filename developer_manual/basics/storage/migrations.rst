@@ -75,9 +75,9 @@ With this step the new column gets created:
 
 		      $table = $schema->getTable('twofactor_backupcodes');
 
-		      $table->addColumn('user_id', Type::STRING, [
+		      $table->addColumn('user_id', Types::STRING, [
 		              'notnull' => true,
-			            'length' => 64,
+		              'length' => 64,
 		      ]);
 
 		      return $schema;
@@ -117,6 +117,8 @@ With this the old column gets removed.
 
           return $schema;
   }
+
+.. _migrate-database-xml:
 
 Migrate from database.xml
 -------------------------

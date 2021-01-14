@@ -15,7 +15,16 @@ Configure your sharing policy on your Admin page in the Sharing section.
 * Check ``Set default expiration date for shares`` to set a default expiration date
   on local user and group shares.
 * Check ``Enforce expiration date`` to always enforce the configured expiration date
-  on local user and group shares. Users will not be able to adjust or remove the expiration date.
+  on local user and group shares.
+
+    .. note:: Users will not be able to set the expiration date further
+        in the future than the enforced expiration date, although they 
+        will be able to set a more recent date.
+        Also note that users will be able to update the expiration date again at
+        a later point. The expiration date is based on the current date and not on the share
+        creation date. The user will be able to extend the expiration date again whenever a
+        previous expiration date is close to be reached.
+
 * Check ``Allow users to share via link`` to enable creating public shares for  
   people who are not Nextcloud users via hyperlink.
 * Check ``Allow public uploads`` to allow anyone to upload files to public shares.
@@ -26,7 +35,16 @@ Configure your sharing policy on your Admin page in the Sharing section.
 * Check ``Set default expiration date for link shares`` to set a default expiration date on 
   public shares.
 * Check ``Enforce expiration date`` to always enforce the configured expiration date
-  on public shares. Users will not be able to adjust or remove the expiration date.
+  on public shares. 
+
+    .. note:: Users will not be able to set the expiration date further
+        in the future than the enforced expiration date, although they 
+        will be able to set a more recent date.
+        Also note that users will be able to update the expiration date again at
+        a later point. The expiration date is based on the current date and not on the share
+        creation date. The user will be able to extend the expiration date again whenever a
+        previous expiration date is close to be reached.
+
 * Check ``Allow resharing`` to enable users to re-share files shared with them.
 * Check ``Allow sharing with groups`` to enable users to share with groups.
 * Check ``Restrict users to only share with users in their groups`` to confine 

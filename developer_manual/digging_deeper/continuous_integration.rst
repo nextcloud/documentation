@@ -1,3 +1,5 @@
+.. _app-ci:
+
 ======================
 Continuous Integration
 ======================
@@ -11,6 +13,60 @@ We highly recommend setting up automated tests for your app, so that every chang
 * Unit testing: run unit tests for front-end and back-end where individual classes and components are tested in isolation
 * Integration testing: test components when they are combined
 
+Linting
+-------
+
+info.xml
+^^^^^^^^
+
+You can validate the ``info.xml`` :ref:`app metadata<app metadata>` file of an app with a simple github action:
+
+.. code-block:: yaml
+
+  name: Lint
+  on: pull_request
+
+  jobs:
+    xml-linters:
+      runs-on: ubuntu-latest
+      steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Download schema
+        run: wget https://apps.nextcloud.com/schema/apps/info.xsd
+      - name: Lint info.xml
+        uses: ChristophWurst/xmllint-action@v1
+        with:
+          xml-file: ./appinfo/info.xml
+          xml-schema-file: ./info.xsd
+
+php
+^^^
+
+A lint of all php source files can find syntax errors that could crash the application in production. The github action below uses a test matrix of multiple php versions. Adjust it to the ones your app supports.
+
+.. code-block:: yaml
+
+  name: Lint
+  on: pull_request
+    php-linters:
+      runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          php-versions: [7.3, 7.4]
+      name: php${{ matrix.php-versions }} lint
+      steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Set up php${{ matrix.php-versions }}
+        uses: shivammathur/setup-php@master
+        with:
+          php-version: ${{ matrix.php-versions }}
+          coverage: none
+      - name: Lint
+        run: composer run lint
+
+.. _app-static-analysis:
 
 Static analysis
 ---------------

@@ -244,19 +244,12 @@ URLs:
 
 | ``https://example.com/.well-known/carddav``
 | ``https://example.com/.well-known/caldav``
-| ``https://example.com/.well-known/webfinger``
 |
 
 Those need to be redirecting your clients to the correct endpoints. If Nextcloud
-is running at the document root of your Web server the correct URL is:
-
-``https://example.com/remote.php/dav`` for CardDAV and CalDAV and
-``https://example.com/public.php?service=webfinger``
-
-and if running in a subfolder like ``nextcloud``:
-
-``https://example.com/nextcloud/remote.php/dav``
-``https://example.com/nextcloud/public.php?service=webfinger``
+is running at the document root of your Web server the correct URL is 
+``https://example.com/remote.php/dav`` for CardDAV and CalDAV and if running in a
+subfolder like ``nextcloud``, then ``https://example.com/nextcloud/remote.php/dav``.
 
 For the first case the :file:`.htaccess` file shipped with Nextcloud should do
 this work for you when you're running Apache. You need to make sure that your
@@ -271,9 +264,6 @@ document root of your Web server and add the following lines::
 
     <IfModule mod_rewrite.c>
       RewriteEngine on
-      RewriteRule ^\.well-known/host-meta /nextcloud/public.php?service=host-meta [QSA,L]
-      RewriteRule ^\.well-known/host-meta\.json /nextcloud/public.php?service=host-meta-json [QSA,L]
-      RewriteRule ^\.well-known/webfinger /nextcloud/public.php?service=webfinger [QSA,L]
       RewriteRule ^\.well-known/carddav /nextcloud/remote.php/dav [R=301,L]
       RewriteRule ^\.well-known/caldav /nextcloud/remote.php/dav [R=301,L]
     </IfModule>

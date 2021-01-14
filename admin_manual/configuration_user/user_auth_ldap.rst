@@ -424,6 +424,7 @@ Default password policy DN:
 
     | *cn=default,ou=policies,dc=my-company,dc=com*
 
+.. _LDAP_Special_Attributes:
 
 Special attributes
 ^^^^^^^^^^^^^^^^^^

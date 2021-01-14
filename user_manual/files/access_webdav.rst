@@ -12,7 +12,7 @@ recommended way of connecting client devices to your Nextcloud servers.
    URL of your Nextcloud server (omit the directory part if the installation is
    in the root of your domain), and "USERNAME" with the username of the connecting user.
 
-   See the webdav url (bottom left, settings) on your Nextcloud.
+   See the WebDAV URL (bottom left in settings) on your Nextcloud.
 
 Nextcloud Desktop and mobile clients
 ------------------------------------
@@ -60,7 +60,7 @@ Nautilus file manager
 
 **When you configure your Nextcloud account in the** `GNOME Control Center
 <../pim/sync_gnome.html>`_, **your files will automatically be mounted
-by Nautilus as a WebDAV share, unless you deselect file access.**
+by Nautilus as a WebDAV share, unless you deselect file access**.
 
 You can also mount your Nextcloud files manually. Use the ``davs://``
 protocol to connect the Nautilus file manager to your Nextcloud
@@ -68,8 +68,8 @@ share::
 
   davs://example.com/nextcloud/remote.php/dav/files/USERNAME/
 
-.. note:: If your server connection is not HTTPS-secured, use `dav://` instead
-   of `davs://`.
+.. note:: If your server connection is not HTTPS-secured, use ``dav://`` instead
+   of ``davs://``:
 
 .. image:: ../images/webdav_gnome3_nautilus.png
    :alt: screenshot of configuring Nautilus file manager to use WebDAV
@@ -211,12 +211,12 @@ Accessing files using macOS
 
 To access files through the macOS Finder:
 
-1. From the Finder’s top menu bar, choose **Go > Connect to Server...**
+1. From the Finder’s top menu bar, choose **Go > Connect to Server…**:
 
   .. image:: ../images/osx_webdav1.png
      :alt: Screenshot of entering your Nextcloud server address on macOS
 
-2. When the **Connect to Server...** window opens, enter your Nextcloud server’s WebDAV address in the **Server Address:** field, ie:
+2. When the **Connect to Server…** window opens, enter your Nextcloud server’s WebDAV address in the **Server Address:** field, i.e.::
 
     https://cloud.YOURDOMAIN.com/remote.php/dav/files/USERNAME/
 
@@ -240,10 +240,10 @@ Nextcloud to one or more directories of your local hard drive.
 .. note:: Windows 10 now defaults to allow Basic Authentication if HTTPS is 
     enabled prior to mapping your drive. On older versions of Windows,
     you must permit the use of Basic Authentication in the Windows
-    Registry: launch „regedit“ and navigate to
+    Registry: launch “regedit“ and navigate to
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters.
-    Create or edit the DWORD value „BasicAuthLevel“ (Windows Vista, 7 and 8) or
-    „UseBasicAuth“ (Windows XP and Windows Server 2003) and set its value data
+    Create or edit the DWORD value “BasicAuthLevel“ (Windows Vista, 7 and 8) or
+    “UseBasicAuth“ (Windows XP and Windows Server 2003) and set its value data
     to 1 for SSL connections. Value 0 means that Basic Authentication is disabled,
     a value of 2 allows both SSL and non-SSL connections (not recommended).
     Then exit Registry Editor, and restart the computer.
@@ -284,7 +284,7 @@ Mapping drives with Windows Explorer
 To map a drive using the Microsoft Windows Explorer:
 
 1. Migrate to your computer in Windows Explorer.
-2. Right-click on **Computer** entry and select **Map network drive...** from
+2. Right-click on **Computer** entry and select **Map network drive…** from
    the drop-down menu.
 3. Choose a local network drive to which you want to map Nextcloud.
 4. Specify the address to your Nextcloud instance, followed by
@@ -324,15 +324,15 @@ To use Cyberduck:
   ``example.com``
 
 2. Specify the appropriate port. The port you choose depends on whether or not
-your Nextcloud server supports SSL. Cyberduck requires that you select a
-different connection type if you plan to use SSL. For example:
+   your Nextcloud server supports SSL. Cyberduck requires that you select a
+   different connection type if you plan to use SSL. For example:
 
   80 (for WebDAV)
 
   443 (for WebDAV (HTTPS/SSL))
 
 3. Use the 'More Options' drop-down menu to add the rest of your WebDAV URL into
-the 'Path' field. For example:
+   the 'Path' field. For example:
 
   ``remote.php/dav/files/USERNAME/``
 
@@ -350,9 +350,9 @@ To access the public share, open::
 in a WebDAV client, use the share token as username and the (optional) share password
 as password.
 
-.. note:: ``Settings → Administration → Sharing → Allow users on this
-   server to send shares to other servers. This option also allows WebDAV access
-   to public shares`` needs to be enabled in order to make this feature work.
+.. note:: **Settings** → **Administration** → **Sharing** → **Allow users on this
+   server to send shares to other servers**. This option also allows WebDAV access
+   to public shares needs to be enabled in order to make this feature work.
 
 Known problems
 --------------
@@ -372,7 +372,7 @@ for your SSL-based server.
 Solution 2
 ^^^^^^^^^^
 
-The Windows WebDAV Client might not support TLSv1.1 / TLSv1.2 connections. If
+The Windows WebDAV Client might not support TLSv1.1 and TLSv1.2 connections. If
 you have restricted your server config to only provide TLSv1.1 and above the
 connection to your server might fail. Please refer to the WinHTTP_ documentation
 for further information.
@@ -425,7 +425,7 @@ Solution
   #. Dig down to Trust Root Certification Authorities, Certificates.
   #. Right-Click Certificate, Select All Tasks, Import.
   #. Select the Save Cert from the Desktop.
-  #. Select Place all Certificates in the following Store, Click Browse,
+  #. Select Place all Certificates in the following Store, Click Browse.
   #. Check the Box that says Show Physical Stores, Expand out Trusted Root
      Certification Authorities, and select Local Computer there, click OK,
      Complete the Import.

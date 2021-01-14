@@ -8,14 +8,14 @@ To access your personal settings:
 
 1. Click on your profile picture in the top, right corner of your Nextcloud instance.
 
-   The Personal Settings Menu opens.
+   The Personal Settings Menu opens:
 
    .. figure:: images/oc_personal_settings_dropdown.png
       :alt: screenshot of user menu at top-right of Nextcloud Web GUI
 
    *Personal Settings Menu*
 
-2. Choose *Settings* from the drop down menu.
+2. Choose *Settings* from the drop down menu:
 
    .. figure:: images/personal_settings.png
       :alt: screenshot of user's Personal settings page
