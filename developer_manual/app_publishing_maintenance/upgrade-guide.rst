@@ -46,7 +46,7 @@ Some (minor) breaking changes were inevitable. Here's the summary
 * ``$queryBuilder->execute()->errorInfo()`` was removed from Doctrine
 * ``$queryBuilder->execute()->setFetchMode()`` was removed from Doctrine
 * ``$connection->prepare()->execute()`` previously returned ``false`` under some error conditions, it now always gives you an ``IResult`` or throws an exception
-* ``\Doctrine\DBAL\Types\Type::*`` type constants were moved, which some apps used for column type constants in apps. Use ``\Doctrine\DBAL\Types\Types::*`` or inline the values.
+* ``\Doctrine\DBAL\Types\Type::*`` type constants were moved, which some apps used for column type constants in apps. Use the new ``\OCP\DB\Types::*`` as a replacement.
 
 The details of this change can also be seen in the `pull request on Github <https://github.com/nextcloud/server/pull/24948>`__ and in the upstream `dbal 3.0.xx upgrade document <https://github.com/doctrine/dbal/blob/3.0.x/UPGRADE.md>`__.
 

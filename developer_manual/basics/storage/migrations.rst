@@ -75,7 +75,7 @@ With this step the new column gets created:
 
 		      $table = $schema->getTable('twofactor_backupcodes');
 
-		      $table->addColumn('user_id', Types::STRING, [
+		      $table->addColumn('user_id', \OCP\DB\Types::STRING, [
 		              'notnull' => true,
 		              'length' => 64,
 		      ]);
