@@ -106,9 +106,12 @@ This approach requires two files: **nextcloudcron.service** and **nextcloudcron.
   
   [Service]
   User=www-data
-  ExecStart=/usr/bin/php -f /var/www/nextcloud/cron.php            
+  ExecStart=/usr/bin/php -f /var/www/nextcloud/cron.php
+  KillMode=process
 
 Replace the user ``www-data`` with the user of your http server and ``/var/www/nextcloud/cron.php`` with the location of **cron.php** in your nextcloud directory.
+
+The ``KillMode=process`` setting is necessary for external programs that are started by the cron job to keep running after the cron job has finished. 
 
 Note that the **.service** unit file does not need an ``[Install]`` section. Please check your setup because we recommended it in earlier versions of this admin manual.
 
