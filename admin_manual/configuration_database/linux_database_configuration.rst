@@ -174,7 +174,7 @@ This just covers the SSL database configuration on the Nextcloud server. First y
     \PDO::MYSQL_ATTR_SSL_CA => '/../ca-cert.pem',
     \PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => true,
   ],
-  
+
 Adjust the paths to the pem files for your environment.
 
 PostgreSQL database
@@ -332,7 +332,7 @@ the respective host name::
   +---------------+--------+
   | Variable_name | Value  |
   +---------------+--------+
-  | version       | 5.1.67 |
+  | version       | 8.0.22 |
   +---------------+--------+
   1 row in set (0.00 sec)
   mysql> quit
