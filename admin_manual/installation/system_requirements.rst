@@ -21,16 +21,15 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - openSUSE Leap 42.1+                                                 |
 |                  | - CentOS 8                                                            |
 +------------------+-----------------------------------------------------------------------+
-| Database         | - **MySQL 5.7+ or MariaDB 10.2+** (recommended)                       |
+| Database         | - **MySQL 8.0+ or MariaDB 10.2+** (recommended)                       |
 |                  | - Oracle Database 11g (*only as part of an enterprise subscription*)  |
-|                  | - PostgreSQL 9.5/9.6/10/11                                            |
+|                  | - PostgreSQL 9.6/10/11                                                |
 |                  | - SQLite (*only recommended for testing and minimal-instances*)       |
 +------------------+-----------------------------------------------------------------------+
 | Webserver        | - **Apache 2.4 with** ``mod_php`` **or** ``php-fpm`` (recommended)    |
 |                  | - nginx with ``php-fpm``                                              |
 +------------------+-----------------------------------------------------------------------+
-| PHP Runtime      | - 7.2                                                                 |
-|                  | - **7.3** (*recommended*)                                             |
+| PHP Runtime      | - 7.3                                                                 |
 |                  | - **7.4** (*recommended*)                                             |
 +------------------+-----------------------------------------------------------------------+
 
@@ -88,6 +87,6 @@ of a browser from this list, or one based on those:
 - Google **Chrome**/Chromium
 - Apple **Safari**
 
-.. note:: If you want to use Nextcloud Talk you should use Mozilla **Firefox** 52+ or Google **Chrome**/Chromium 49+ to have 
-          the full experience with video calls and screensharing. Google Chrome/Chromium requires an additional plugin for 
+.. note:: If you want to use Nextcloud Talk you should use Mozilla **Firefox** 52+ or Google **Chrome**/Chromium 49+ to have
+          the full experience with video calls and screensharing. Google Chrome/Chromium requires an additional plugin for
           screensharing.

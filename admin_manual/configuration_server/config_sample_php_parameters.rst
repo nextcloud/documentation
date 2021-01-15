@@ -289,15 +289,15 @@ Defaults to ``false``
 
 ::
 
-	'defaultapp' => 'files',
+	'defaultapp' => 'dashboard,files',
 
 Set the default app to open on login. Use the app names as they appear in the
 URL after clicking them in the Apps menu, such as documents, calendar, and
 gallery. You can use a comma-separated list of app names, so if the first
 app is not enabled for a user then Nextcloud will try the second one, and so
-on. If no enabled apps are found it defaults to the Files app.
+on. If no enabled apps are found it defaults to the dashboard app.
 
-Defaults to ``files``
+Defaults to ``dashboard,files``
 
 ::
 
@@ -1012,17 +1012,17 @@ Defaults to an empty array.
 
 	'logdateformat' => 'F d, Y H:i:s',
 
-This uses PHP.date formatting; see http://php.net/manual/en/function.date.php
+This uses PHP.date formatting; see https://www.php.net/manual/en/function.date.php
 
 Defaults to ISO 8601 ``2005-08-15T15:52:01+00:00`` - see \DateTime::ATOM
-(https://secure.php.net/manual/en/class.datetime.php#datetime.constants.atom)
+(https://www.php.net/manual/en/class.datetime.php#datetime.constants.atom)
 
 ::
 
 	'logtimezone' => 'Europe/Berlin',
 
 The timezone for logfiles. You may change this; see
-http://php.net/manual/en/timezones.php
+https://www.php.net/manual/en/timezones.php
 
 Defaults to ``UTC``
 
@@ -1426,8 +1426,8 @@ https://github.com/phpredis/phpredis/commit/c5994f2a42b8a348af92d3acb4edff1328ad
 
 	'memcached_servers' => [
 		// hostname, port and optional weight. Also see:
-		// http://www.php.net/manual/en/memcached.addservers.php
-		// http://www.php.net/manual/en/memcached.addserver.php
+		// https://www.php.net/manual/en/memcached.addservers.php
+		// https://www.php.net/manual/en/memcached.addserver.php
 		['localhost', 11211],
 		//array('other.host.local', 11211),
 	],
@@ -1831,6 +1831,17 @@ client may not function as expected, and could lead to permanent data loss for
 clients or other unexpected results.
 
 Defaults to ``2.0.0``
+
+::
+
+	'localstorage.allowsymlinks' => false,
+
+Option to allow local storage to contain symlinks.
+
+WARNING: Not recommended. This would make it possible for Nextcloud to access
+files outside the data directory and could be considered a security risk.
+
+Defaults to ``false``
 
 ::
 

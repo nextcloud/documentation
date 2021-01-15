@@ -641,6 +641,7 @@ File operations
  files
   files:cleanup              cleanup filecache
   files:scan                 rescan filesystem
+  files:scan-app-data        rescan the AppData folder
   files:transfer-ownership   All files' and folders' ownerships are moved to another 
                              user. Outgoing shares are moved as well.
                              Incoming shares are not moved because the sharing user 
@@ -697,6 +698,24 @@ path component given.
 
 The ``--path``, ``--all`` and ``[user_id]`` parameters are exclusive - only 
 one must be specified.
+
+Scan appdata
+^^^^^^^^^^^^^
+
+Appdata is a folder inside of the data directory which contains files that
+are shared between users and can be put there by the server or apps like
+avatar images, file previews and cached CSS files for example.
+
+Since the regular files scan only operates on user files the ``occ files:scan-app-data``
+command will check the appdata directory and make sure that the filecache is consistent
+with the files on the actual storage.::
+
+  Usage:
+    files:scan-app-data [options] [--] [<folder>]
+
+  Arguments:
+    folder                 The appdata subfolder to scan [default: ""]
+
 
 Cleanup
 ^^^^^^^
@@ -909,25 +928,28 @@ Logging commands
 These commands view and configure your Nextcloud logging preferences::
 
  log
-  log:manage     manage logging configuration
-  log:file   manipulate Nextcloud logging backend
+  log:file        manipulate Nextcloud logging backend
+  log:manage      manage logging configuration
+  log:tail        tail the nextcloud logfile [requires app "Log Reader" to be enabled]
+  log:watch       watch the nextcloud logfile live [requires app "Log Reader" to be enabled]
 
-Run ``log:file`` to see your current logging status::
+Run ``log:file [--] [--enable] [--file] [--rotate-size]`` to see your current logging status::
 
  sudo -u www-data php occ log:file 
  Log backend Nextcloud: enabled
  Log file: /opt/nextcloud/data/nextcloud.log
  Rotate at: disabled
 
-Use the ``--enable`` option to turn on logging. Use ``--file`` to set a 
-different log file path. Set your rotation by log file size in bytes with 
-``--rotate-size``; 0 disables rotation. 
+* ``--enable`` turns on logging.
+* ``--file`` sets a different log file path.
+* ``--rotate-size`` sets your rotation by log file size in bytes with; 0 disables rotation.
 
-``log:manage`` sets your logging backend, log level, and timezone. The defaults 
+``log:manage [--backend] [--level] [--timezone]`` sets your logging backend, log level, and timezone. The defaults 
 are ``file``, ``warning``, and ``UTC``. Available options are:
 
 * ``--backend [file, syslog, errorlog, systemd]``
 * ``--level [debug|info|warning|error|fatal]``
+* ``--timezone`` according to https://www.php.net/manual/en/timezones.php
 
 .. _maintenance_commands_label:
    
@@ -1306,7 +1328,6 @@ Display your ``maintenance:install`` options::
   --database-host          Hostname of the database (default: "localhost")
   --database-user          User name to connect to the database
   --database-pass          Password of the database user
-  --database-table-prefix  Prefix for all tables (default: oc_)
   --admin-user             User name of the admin account (default: "admin")
   --admin-pass             Password of the admin account
   --data-dir               Path to data directory (default: 

@@ -25,3 +25,4 @@ Digging deeper
    two-factor-provider
    users
    dashboard
+   web_host_metadata
