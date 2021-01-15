@@ -29,7 +29,7 @@ For best performance, stability and functionality we have documented some recomm
 | Webserver        | - **Apache 2.4 with** ``mod_php`` **or** ``php-fpm`` (recommended)    |
 |                  | - nginx with ``php-fpm``                                              |
 +------------------+-----------------------------------------------------------------------+
-| PHP Runtime      | - **7.3** (*recommended*)                                             |
+| PHP Runtime      | - 7.3                                                                 |
 |                  | - **7.4** (*recommended*)                                             |
 +------------------+-----------------------------------------------------------------------+
 
@@ -87,6 +87,6 @@ of a browser from this list, or one based on those:
 - Google **Chrome**/Chromium
 - Apple **Safari**
 
-.. note:: If you want to use Nextcloud Talk you should use Mozilla **Firefox** 52+ or Google **Chrome**/Chromium 49+ to have 
-          the full experience with video calls and screensharing. Google Chrome/Chromium requires an additional plugin for 
+.. note:: If you want to use Nextcloud Talk you should use Mozilla **Firefox** 52+ or Google **Chrome**/Chromium 49+ to have
+          the full experience with video calls and screensharing. Google Chrome/Chromium requires an additional plugin for
           screensharing.

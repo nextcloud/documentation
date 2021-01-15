@@ -11,14 +11,14 @@ benefits.
 Reducing system load
 --------------------
 
-High system load will slow down Nextcloud and might also lead to other unwanted 
-side effects. To reduce load you should first identify the source of the problem. 
+High system load will slow down Nextcloud and might also lead to other unwanted
+side effects. To reduce load you should first identify the source of the problem.
 Tools such as htop, iotop, `netdata <https://my-netdata.io>`_ or
 `glances <https://nicolargo.github.io/glances/>`_
-will help to identify the process or the drive that slows down your system. First 
-you should make sure that you installed/assigned enough RAM. Swap usage should be 
-prevented by all means. If you run your database inside a VM, you should not 
-store it inside a VM image file. Better put it on a dedicated block device to 
+will help to identify the process or the drive that slows down your system. First
+you should make sure that you installed/assigned enough RAM. Swap usage should be
+prevented by all means. If you run your database inside a VM, you should not
+store it inside a VM image file. Better put it on a dedicated block device to
 reduce latency due to multiple abstraction layers.
 
 .. _caching:
@@ -26,15 +26,15 @@ reduce latency due to multiple abstraction layers.
 Caching
 -------
 
-Caching improves performance by storing data, code, and other objects in memory. 
+Caching improves performance by storing data, code, and other objects in memory.
 Memory cache configuration for the Nextcloud server must be installed and configured.
 See :doc:`../configuration_server/caching_configuration`.
 
 Using MariaDB/MySQL instead of SQLite
 -------------------------------------
 
-MySQL or MariaDB are preferred because of the `performance limitations of 
-SQLite with highly concurrent applications 
+MySQL or MariaDB are preferred because of the `performance limitations of
+SQLite with highly concurrent applications
 <https://www.sqlite.org/whentouse.html>`_, like Nextcloud.
 
 See the section :doc:`../configuration_database/linux_database_configuration` for how to
@@ -42,12 +42,12 @@ configure Nextcloud for MySQL or MariaDB. If your installation is already runnin
 SQLite then it is possible to convert to MySQL or MariaDB using the steps provided
 in :doc:`../configuration_database/db_conversion`.
 
-In smaller installations you might not want to set up a separate cache. However 
-you can still tune your database. The following example is suited for a database 
-smaller than 1GB. MySQL will consume up to 1GB of RAM for caching. Please make 
-sure that your system has sufficient free RAM after the change, so that it does 
-not start to use your swap partition, when it receives a burst of requests. In 
-the given example your ``/etc/mysql/conf.d/mysql.cnf`` might contain the 
+In smaller installations you might not want to set up a separate cache. However
+you can still tune your database. The following example is suited for a database
+smaller than 1GB. MySQL will consume up to 1GB of RAM for caching. Please make
+sure that your system has sufficient free RAM after the change, so that it does
+not start to use your swap partition, when it receives a burst of requests. In
+the given example your ``/etc/mysql/conf.d/mysql.cnf`` might contain the
 following lines. (beware that this is the block for mysqld not mysql)
 
 .. code:: ini
@@ -59,7 +59,7 @@ following lines. (beware that this is the block for mysqld not mysql)
 Using Redis-based transactional file locking
 --------------------------------------------
 
-File locking is enabled by default, using the database locking backend. This 
+File locking is enabled by default, using the database locking backend. This
 places a significant load on your database. See the section
 :doc:`../configuration_files/files_locking_transactional` for how to
 configure Nextcloud to use Redis-based Transactional File Locking.
@@ -67,34 +67,34 @@ configure Nextcloud to use Redis-based Transactional File Locking.
 SSL / encryption app
 --------------------
 
-SSL (HTTPS) and file encryption/decryption can be offloaded to a processor's 
-AES-NI extension. This can both speed up these operations while lowering 
-processing overhead. This requires a processor with the `AES-NI instruction set 
+SSL (HTTPS) and file encryption/decryption can be offloaded to a processor's
+AES-NI extension. This can both speed up these operations while lowering
+processing overhead. This requires a processor with the `AES-NI instruction set
 <https://wikipedia.org/wiki/AES_instruction_set>`_.
 
-Here are some examples how to check if your CPU / environment supports the 
+Here are some examples how to check if your CPU / environment supports the
 AES-NI extension:
 
-* For each CPU core present: ``grep flags /proc/cpuinfo`` or as a summary for 
-  all cores: ``grep -m 1 '^flags' /proc/cpuinfo`` If the result contains any 
-  ``aes``, the extension is present.   
+* For each CPU core present: ``grep flags /proc/cpuinfo`` or as a summary for
+  all cores: ``grep -m 1 '^flags' /proc/cpuinfo`` If the result contains any
+  ``aes``, the extension is present.
 
-* Search eg. on the Intel web if the processor used supports the extension 
-  `Intel Processor Feature Filter 
-  <https://ark.intel.com/MySearch.aspx?AESTech=true>`_ You may set a filter by 
+* Search eg. on the Intel web if the processor used supports the extension
+  `Intel Processor Feature Filter
+  <https://ark.intel.com/MySearch.aspx?AESTech=true>`_ You may set a filter by
   ``"AES New Instructions"`` to get a reduced result set.
-   
-* For versions of openssl >= 1.0.1, AES-NI does not work via an engine and 
-  will not show up in the ``openssl engine`` command. It is active by default 
-  on the supported hardware. You can check the openssl version via ``openssl 
+
+* For versions of openssl >= 1.0.1, AES-NI does not work via an engine and
+  will not show up in the ``openssl engine`` command. It is active by default
+  on the supported hardware. You can check the openssl version via ``openssl
   version -a``
-    
-* If your processor supports AES-NI but it does not show up eg via grep or 
+
+* If your processor supports AES-NI but it does not show up eg via grep or
   coreinfo, it is maybe disabled in the BIOS.
-  
-* If your environment runs virtualized, check the virtualization vendor for 
+
+* If your environment runs virtualized, check the virtualization vendor for
   support.
-  
+
 Enable HTTP2 for faster loading
 -------------------------------
 
@@ -108,11 +108,11 @@ You can check if your application already uses HTTP2 or not by running the simpl
 Tune PHP-FPM
 ------------
 
-If you are using a default installation of php-fpm you might have noticed 
-excessive load times on the web interface or even sync issues. This is due 
-to the fact that each simultaneous request of an element is handled by a 
-separate PHP-FPM process. So even on a small installation you should allow 
-more processes to run. For example on a machine with 4GB of RAM and 1GB of 
+If you are using a default installation of php-fpm you might have noticed
+excessive load times on the web interface or even sync issues. This is due
+to the fact that each simultaneous request of an element is handled by a
+separate PHP-FPM process. So even on a small installation you should allow
+more processes to run. For example on a machine with 4GB of RAM and 1GB of
 MySQL cache following values in your ``www.conf`` file should work:
 
 .. code:: ini
@@ -122,8 +122,8 @@ MySQL cache following values in your ``www.conf`` file should work:
   pm.start_servers = 12
   pm.min_spare_servers = 6
   pm.max_spare_servers = 18
-  
-Depending on your current PHP version you should find this file e.g. under ``/etc/php/7.2/fpm/pool.d/www.conf``
+
+Depending on your current PHP version you should find this file e.g. under ``/etc/php/7.4/fpm/pool.d/www.conf``
 
 Enable PHP OPcache
 ------------------
