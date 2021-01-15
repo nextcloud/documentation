@@ -37,6 +37,7 @@ Optimistically speaking, the database connection and the query builder should mo
 
 Some (minor) breaking changes were inevitable. Here's the summary
 
+* Many of the database connection methods have now a documented exception that can be thrown: ``\OCP\DB\Exception``. This also acts as a replacement for the removed ``\Doctrine\DBAL\DBALException``.
 * ``$queryBuilder->execute()->fetch()`` only has one argument now (there were three previously)
 * ``$queryBuilder->execute()->fetchColumn()`` has no more arguments and got also deprecated. Use ``fetchOne`` instead
 * ``$queryBuilder->execute()->bindParam()`` was removed because conceptually it does not make sense to bind a parameter *after* executing a query. Use ``bindParam`` on the ``IPeparedStatement`` instead.
@@ -45,7 +46,7 @@ Some (minor) breaking changes were inevitable. Here's the summary
 * ``$queryBuilder->execute()->errorCode()`` was removed from Doctrine
 * ``$queryBuilder->execute()->errorInfo()`` was removed from Doctrine
 * ``$queryBuilder->execute()->setFetchMode()`` was removed from Doctrine
-* ``$connection->prepare()->execute()`` previously returned ``false`` under some error conditions, it now always gives you an ``IResult`` or throws an exception
+* ``$connection->prepare()->execute()`` previously returned ``false`` under some error conditions, it now always gives you an ``IResult`` or throws a ``\OCP\DB\Exception``.
 * ``\Doctrine\DBAL\Types\Type::*`` type constants were moved, which some apps used for column type constants in apps. Use the new ``\OCP\DB\Types::*`` as a replacement.
 
 The details of this change can also be seen in the `pull request on Github <https://github.com/nextcloud/server/pull/24948>`__ and in the upstream `dbal 3.0.xx upgrade document <https://github.com/doctrine/dbal/blob/3.0.x/UPGRADE.md>`__.
