@@ -27,7 +27,7 @@ When they are installed, if you are on Windows, go to **Extras**/**Synchronisati
 
 Alternative: Using the CardBook add-on (Contacts only)
 ------------------------------------------------------
-`CardBook <https://addons.thunderbird.net/de/thunderbird/addon/cardbook/>`_ is an advanced alternative to Thunderbird's address book, which supports CardDAV. You can have TBSync and CardBook installed in parallel.
+`CardBook <https://addons.thunderbird.net/en/thunderbird/addon/cardbook/>`_ is an advanced alternative to Thunderbird's address book, which supports CardDAV. You can have TBSync and CardBook installed in parallel.
  
 1. Click the Cardbook icon in the upper right corner of Thunderbird:
 
