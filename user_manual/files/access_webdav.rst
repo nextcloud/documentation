@@ -447,7 +447,7 @@ Solution
 Problem
 ^^^^^^^
 
-You cannot download more than 50 MB or upload large Files when the upload takes
+You cannot download more than 50 MB or upload large files when the upload takes
 longer than 30 minutes using Web Client in Windows 7.
 
 Solution
