@@ -68,6 +68,12 @@ Apache2
 
 Thanks to `@ffried <https://github.com/ffried>`_ for apache2 example.
 
+nginx
+^^^^^
+::
+  rewrite ^/\.well-known/carddav https://$server_name/remote.php/dav/ redirect;
+  rewrite ^/\.well-known/caldav https://$server_name/remote.php/dav/ redirect;
+
 Traefik 1
 ^^^^^^^^^
 
