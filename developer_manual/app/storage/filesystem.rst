@@ -20,7 +20,7 @@ All methods return a Folder object on which files and folders can be accessed, o
     <?php
     namespace OCA\MyApp\Storage;
 
-    use OCP\Files\IRootFolder
+    use OCP\Files\IRootFolder;
 
     class AuthorStorage {
 
@@ -64,7 +64,7 @@ Files and folders can also be accessed by id, by calling the **getById** method 
     <?php
     namespace OCA\MyApp\Storage;
 
-    use OCP\Files\IRootFolder
+    use OCP\Files\IRootFolder;
 
     class AuthorStorage {
 
