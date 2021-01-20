@@ -107,6 +107,19 @@ NGINX
         return 301 $scheme://$host/remote.php/dav;
     }
 
+CADDY
+^^^^^
+::
+
+    subdomain.example.com {
+            reverse_proxy /.well-known/carddav {$NEXTCLOUD_HOST:localhost}/remote.php/dav
+
+            reverse_proxy /.well-known/caldav {$NEXTCLOUD_HOST:localhost}/remote.php/dav
+
+            reverse_proxy * {$NEXTCLOUD_HOST:localhost}
+    }
+
+
 Example
 -------
 
