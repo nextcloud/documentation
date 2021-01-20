@@ -78,6 +78,19 @@ Traefik
 
 Thanks to `@pauvos <https://github.com/pauvos>`_ for traefik example.
 
+CADDY
+^^^^^
+::
+
+    subdomain.example.com {
+            reverse_proxy /.well-known/carddav {$NEXTCLOUD_HOST:localhost}/remote.php/dav
+
+            reverse_proxy /.well-known/caldav {$NEXTCLOUD_HOST:localhost}/remote.php/dav
+
+            reverse_proxy * {$NEXTCLOUD_HOST:localhost}
+    }
+
+
 Example
 -------
 
