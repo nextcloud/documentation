@@ -117,6 +117,12 @@ NGINX
         return 301 $scheme://$host/remote.php/dav;
     }
 
+or
+
+::
+  rewrite ^/\.well-known/carddav https://$server_name/remote.php/dav/ redirect;
+  rewrite ^/\.well-known/caldav https://$server_name/remote.php/dav/ redirect;
+
 CADDY
 ^^^^^
 ::
