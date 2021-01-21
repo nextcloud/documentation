@@ -45,6 +45,11 @@ User accounts have the following properties:
   The admin sets the new user's first password. Both the user and the admin can
   change the user's password at anytime.
 
+*Email address*
+  You can set an email address for a user.
+  This address can be used when you first set-up an account so the user receive a mail asking him to create a password.
+  This address can be used for password reset request.
+
 *Groups*
   You may create groups, and assign group memberships to users. By default new
   users are not assigned to any groups.
