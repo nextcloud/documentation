@@ -164,6 +164,8 @@ In case of UTF8MB4 you will also find::
 SSL for MySQL Database
 ^^^^^^^^^^^^^^^^^^^^^^
 
+Enabling SSL is only necessary if your database does not reside on the same server as your Nextcloud instance.
+If you do not connect over localhost and need to allow remote connections then you should enable SSL.
 This just covers the SSL database configuration on the Nextcloud server. First you need to configure your database server accordingly.
 
 ::
