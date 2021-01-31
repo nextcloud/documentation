@@ -266,7 +266,7 @@ so for example **notestutorial/lib/Migration/Version000000Date20181013124731.php
 
 To create the tables in the database, run the :ref:`migration  <migration_console_command>` command::
 
-   php ./occ migrations:excute <appId> <versionNumber>
+   php ./occ migrations:execute <appId> <versionNumber>
 
    Example: sudo -u www-data php ./occ migrations:execute photos 000000Date20201002183800
 
