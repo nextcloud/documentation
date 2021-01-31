@@ -1,6 +1,6 @@
-========
-Calendar
-========
+=================
+Calendar / CalDAV
+=================
 
 Invitations
 -----------
@@ -16,7 +16,7 @@ Contacts that have a birthday date filled are automatically added as events to a
 If you deactivate this option, all users will no longer have this calendar.
 
 When activating this option, users birthday calendars won't be available right away because they need to be generated
-by a background task. See :doc:`../configuration_server/occ_command` section Dav commands.
+by a background task. See :doc:`../configuration_server/occ_command` section DAV commands.
 
 Reminder notifications
 ----------------------
@@ -31,8 +31,8 @@ Make sure the "Send notifications for events" and the "Enable notifications for 
 Background jobs
 ~~~~~~~~~~~~~~~
 Running background jobs can be an expensive task when there are a large number of events, reminders, event sharees and attendees. However, this needs to happen
-often enough so that the notifications are sent on time. To accomplish this you should use a dedicated occ command that runs
-more often than the standard cron system::
+often enough so that the notifications are sent on time. To accomplish this you should use a dedicated ``occ`` command that runs
+more often than the standard `cron`` system::
 
  # crontab -u www-data -e
  */5 * * * * php -f /var/www/nextcloud/occ dav:send-event-reminders
@@ -54,11 +54,13 @@ If you don't wish for users to have this capability, you can disable FreeBusy fo
  php occ config:app:set dav disableFreeBusy --value yes
 
 Subscriptions
-----------------------
+-------------
+
 Refresh rate
 ~~~~~~~~~~~~
 
-Calendar subscriptions are cached on server and refreshed periodically. The default refresh rate is one week, unless the subscription itself tells otherwise.
+Calendar subscriptions are cached on server and refreshed periodically.
+The default refresh rate is one week, unless the subscription itself tells otherwise.
 
 To set up a different default refresh rate, change the ``calendarSubscriptionRefreshRate`` option::
 
@@ -69,6 +71,7 @@ Where the value is a `DateInterval <https://www.php.net/manual/dateinterval.cons
 Allow subscriptions on local network
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Because of security issues, Nextcloud forbids subscriptions from local network hosts. If you need to allow this, change the following parameter to::
+Because of security issues, Nextcloud forbids subscriptions from local network hosts.
+If you need to allow this, change the following parameter to::
 
  php occ config:app:set dav webcalAllowLocalAccess --value yes
