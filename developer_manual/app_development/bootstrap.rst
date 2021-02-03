@@ -76,7 +76,7 @@ The class **must** extend ``OCP\AppFramework\App`` and may optionally implement 
             // ... boot logic goes here ...
 
             /** @var IManager $manager */
-            $manager = $context->getAppContainer()->query(IManager::class)
+            $manager = $context->getAppContainer()->query(IManager::class);
             $manager->registerNotifierService(Notifier::class);
         }
 
