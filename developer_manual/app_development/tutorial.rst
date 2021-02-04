@@ -332,12 +332,12 @@ Entities are returned from so-called :doc:`Mappers <storage/database>`. Let's cr
     <?php
     namespace OCA\NotesTutorial\Db;
 
-    use OCP\IDbConnection;
+    use OCP\IDBConnection;
     use OCP\AppFramework\Db\QBMapper;
 
     class NoteMapper extends QBMapper {
 
-        public function __construct(IDbConnection $db) {
+        public function __construct(IDBConnection $db) {
             parent::__construct($db, 'notestutorial_notes', Note::class);
         }
 
