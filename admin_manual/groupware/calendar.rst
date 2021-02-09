@@ -32,7 +32,7 @@ Background jobs
 ~~~~~~~~~~~~~~~
 Running background jobs can be an expensive task when there are a large number of events, reminders, event sharees and attendees. However, this needs to happen
 often enough so that the notifications are sent on time. To accomplish this you should use a dedicated ``occ`` command that runs
-more often than the standard `cron`` system::
+more often than the standard ``cron`` system::
 
  # crontab -u www-data -e
  */5 * * * * php -f /var/www/nextcloud/occ dav:send-event-reminders
