@@ -128,11 +128,10 @@ CADDY
 ::
 
     subdomain.example.com {
-            reverse_proxy /.well-known/carddav {$NEXTCLOUD_HOST:localhost}/remote.php/dav
+        rewrite /.well-known/carddav /remote.php/dav
+        rewrite /.well-known/caldav /remote.php/dav
 
-            reverse_proxy /.well-known/caldav {$NEXTCLOUD_HOST:localhost}/remote.php/dav
-
-            reverse_proxy * {$NEXTCLOUD_HOST:localhost}
+        reverse_proxy {$NEXTCLOUD_HOST:localhost}
     }
 
 
