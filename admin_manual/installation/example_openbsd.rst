@@ -1,10 +1,7 @@
 .. _openbsd_installation_label:
 
-==================================================================
-=								 =
-= Nextcloud does not have official OpenBSD or other *BSD support =
-=								 =
-==================================================================
+Nextcloud does not have official OpenBSD or other *BSD support
+==============================================================
 
 
 Example installation on OpenBSD
@@ -124,12 +121,14 @@ It is recommended to add opcache to it::
   opcache.max_accelerated_files=10000
   opcache.revalidate_freq=1
   opcache.save_comments=1
+  
 ::
 
 And increase some limits::
 
   post_max_size = 513M
   upload_max_filesize = 513M
+  
 ::
 
    
@@ -190,6 +189,7 @@ We installed redis before, we need to enable it and start it and also add it to 
       'timeout' => 0.0,
     ),
     ...
+    
 ::
 
 Cron job
