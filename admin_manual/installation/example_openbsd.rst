@@ -1,6 +1,6 @@
 .. _openbsd_installation_label:
 
-Nextcloud does not have official OpenBSD or other *BSD support
+Nextcloud does not have official OpenBSD or other BSDs support
 ==============================================================
 
 
