@@ -97,7 +97,6 @@ Create a virtualhost in ``/etc/httpd.conf`` and add the following content to it:
 	  }
   }
 
-::
 
 Make sure that httpd(8) is enabled and started::
 
@@ -122,15 +121,12 @@ It is recommended to add opcache to it::
   opcache.revalidate_freq=1
   opcache.save_comments=1
   
-::
 
 And increase some limits::
 
   post_max_size = 513M
   upload_max_filesize = 513M
   
-::
-
    
 We can enable the PHP modules with::
 
@@ -190,7 +186,6 @@ We installed redis before, we need to enable it and start it and also add it to 
     ),
     ...
     
-::
 
 Cron job
 --------
