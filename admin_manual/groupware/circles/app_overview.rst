@@ -26,7 +26,7 @@ The user that created the Circle is the first and only Member and will have Owne
 
 .. _app_overview_type_circles:
 
-The configuration is done by enabling/disabling some flag that define the way other people view and join the Circle:
+The configuration is done by enabling/disabling some flags that define the way other people view and join the Circle:
 
  - **Visible** (8): Visible to everyone, if not visible, people have to know its name to be able to find
    it.
