@@ -39,7 +39,7 @@ This is a list of those levels, in order of decreasing credibility:
   - contain a member that belongs to the Remote Instance,
   - one Circle from the Remote Instance is a Member of the local Circle.
 
-- **Passive**: like **External**, but only Members that belongs to the Remote Instance are shown to the Remote
+- **Passive**: like **External**, but only Members that belong to the Remote Instance are shown to the Remote
   Instance.
 
 
@@ -132,7 +132,6 @@ By default, the Circles App will use URL defined in ``config/config.php``: ``ove
 efficient in most of installation of Nextcloud. However, it might not works if the Nextcloud is behind a Proxy.
 
 [TODO] DEFINE PROCESS TO CONFIGURE AND TEST
-
 
 
 
