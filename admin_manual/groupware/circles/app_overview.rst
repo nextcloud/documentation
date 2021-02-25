@@ -15,7 +15,7 @@ Types of Circles
  `Personal Circle` are really specific and will be treated separately.
 
 
-When creating a Circle, its default configuration makes it 'Closed' and `Hidden`, meaning than no one
+When creating a Circle, its default configuration makes it 'Closed' and `Hidden`, meaning that no one
 can see it or join it but the Circle can already be used as an entity to share files and content.
 The user that created the Circle is the first and only Member and will have Owner rights that allows him/her to:
 
@@ -149,4 +149,3 @@ sensitive 15 character alphanumeric string.
 
 - **MemberID** identify a specific Member of a Circle. This ID is only used to manage/remove the rights of
   a member inside a Circle
-
