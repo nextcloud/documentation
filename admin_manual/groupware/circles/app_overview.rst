@@ -58,7 +58,7 @@ Mixed, those flags can generate some interesting configurations:
    will be generated.
 
  - **Friend** + **Invite** + **Request**: No one can join the Circle, but all members can request a moderator
-   to accept new Member. An invitation will be generated.
+   to accept new members. Invitations will be generated.
 
 
 Personal Circles
