@@ -17,7 +17,7 @@ Types of Circles
 
 When creating a Circle, its default configuration makes it 'Closed' and `Hidden`, meaning that no one
 can see it or join it but the Circle can already be used as an entity to share files and content.
-The user that created the Circle is the first and only Member and will have Owner rights that allows him/her to:
+The user that created the Circle is the first and only Member and will have Owner rights that allows them to:
 
 - add/remove Members,
 - edit members' Levels,
