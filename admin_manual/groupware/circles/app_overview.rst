@@ -74,7 +74,7 @@ System Circles
 ^^^^^^^^^^^^^^
 
 
-- **Single** (1): Circle that only contains a single Member. This circle have no configuration option available
+- **Single** (1): Circle that only contains a single Member. This circle has no configuration options available
   and it is only managed by the Circles App itself. It is used to generate a SingleId to identify a Member
   as FederatedUser.
   (cf. `FederatedUser <https://docs.nextcloud.com/server/latest/go.php?to=developer-manual>`)
