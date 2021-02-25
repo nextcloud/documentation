@@ -20,7 +20,7 @@ can see it or join it but the Circle can already be used as an entity to share f
 The user that created the Circle is the first and only Member and will have Owner rights that allows him/her to:
 
 - add/remove Members,
-- edit their Level,
+- edit members' Levels,
 - change the settings of the Circle,
 - change its configuration
 
