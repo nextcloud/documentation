@@ -46,7 +46,7 @@ This is a list of those levels, in order of decreasing credibility:
 Instance Identification
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-While the exchange of data about Federated Circles between 2 instances of Nextcloud is done using its
+While the exchange of data about Federated Circles between two instances of Nextcloud is done using its
 own protocol, the discovery of information relative to the configuration of each instances is done using the
 **Webfinger** protocol::
 
@@ -132,7 +132,6 @@ By default, the Circles App will use URL defined in ``config/config.php``: ``ove
 efficient in most of installation of Nextcloud. However, it might not works if the Nextcloud is behind a Proxy.
 
 [TODO] DEFINE PROCESS TO CONFIGURE AND TEST
-
 
 
 
