@@ -406,7 +406,7 @@ Defaults to ``core/skeleton`` in the Nextcloud directory.
 
 ::
 
-	'templatesdirectory' => '/path/to/nextcloud/templates',
+	'templatedirectory' => '/path/to/nextcloud/templates',
 
 The directory where the template files are located. These files will be
 copied to the template directory of new users. Leave empty to not copy any
