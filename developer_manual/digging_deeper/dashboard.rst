@@ -85,7 +85,7 @@ of the `load` method and will be called when the dashboard is loaded.
          * Execute widget bootstrap code like loading scripts and providing initial state
          */
         public function load(): void {
-            $initialStateService->provideInitialState('myapp', 'myData', []);
+            $this->initialStateService->provideInitialState('myapp', 'myData', []);
             \OCP\Util::addScript('myapp', 'dashboard');
         }
     }
