@@ -83,7 +83,7 @@ Decrease sync delay
 ^^^^^^^^^^^^^^^^^^^
 
 Any updates detected by the notify command will only be synced to the client after the Nextcloud cron job has been executed
-(usually every 15 minutes). If this interval is to high for your use case, you can decrease it by running ``occ files:scan --unscanned --all``
+(usually every 15 minutes). If this interval is too high for your use case, you can decrease it by running ``occ files:scan --unscanned --all``
 at the desired interval. Note that this might increase the server load and you'll need to ensure that there is no overlap between runs.
 
 Hidden files upload failure or not shown
