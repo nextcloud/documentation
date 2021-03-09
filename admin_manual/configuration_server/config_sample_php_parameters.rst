@@ -328,6 +328,9 @@ Defaults to ``60*60*24*15`` seconds (15 days)
 
 The lifetime of a session after inactivity.
 
+The maximum possible time is limited by the session.gc_maxlifetime php.ini setting
+which would overwrite this option if it is less than the value in the config.php
+
 Defaults to ``60*60*24`` seconds (24 hours)
 
 ::
@@ -389,6 +392,16 @@ Defaults to ``true``
 	'auth.webauthn.enabled' => true,
 
 By default WebAuthn is available but it can be explicitly disabled by admins
+
+::
+
+	'hide_login_form' => false,
+
+By default the login form is always available. There are cases (SSO) where an
+admin wants to avoid users entering their credentials to the system if the SSO
+app is unavailable.
+
+This will show an error. But the the direct login still works with adding ?direct=1
 
 ::
 
