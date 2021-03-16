@@ -28,7 +28,7 @@ Contacts
 
 .. image:: ../images/contacts_link.png
 
-which will display and URL that looks something like this:
+which will display a URL that looks something like this:
 https://cloud.nextcloud.com/remote.php/dav/addressbooks/users/daniel/Thunderbird/
 
 2. Launch the Windows 10 People app. Then, click the settings icon (gear icon) and select "Manage accounts".
