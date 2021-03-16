@@ -1,11 +1,11 @@
 .. _openbsd_installation_label:
 
-Nextcloud does not have official OpenBSD or other BSDs support
-==============================================================
-
-
 Example installation on OpenBSD
 ===============================
+
+.. warning::
+
+    Nextcloud does not have official OpenBSD or other BSDs support
 
 In this install tutorial we will be deploying Nextcloud on a minimal OpenBSD with our own httpd(8), PHP, PostgreSQL and redis (for -stable or -current are the same steps).
 
