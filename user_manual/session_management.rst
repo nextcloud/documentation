@@ -43,7 +43,7 @@ those individually if necessary.
 
 .. note:: If you are :doc:`user_2fa` for your account,
    device-specific passwords are the only way to configure clients. The
-   client will deny connections of clients using your login password then.
+   server will deny connections of clients using your login password then.
 
 Device-specific passwords and password changes
 ----------------------------------------------
