@@ -84,7 +84,7 @@ AES-NI extension:
   support.
 
 Enable HTTP/2 for faster loading
--------------------------------
+--------------------------------
 
 HTTP/2 has `huge speed improvements <https://www.troyhunt.com/i-wanna-go-fast-https-massive-speed-advantage/>`_ over HTTP with multiple request. Most `browsers already support HTTP/2 over TLS (HTTPS) <https://caniuse.com/#feat=http2>`_. Refer to your web server manual for guides on how to enable HTTP/2.
 
