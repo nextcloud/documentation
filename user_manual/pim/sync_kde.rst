@@ -38,7 +38,7 @@ This can be done by following these steps:
 
 .. note:: You can set a manual refresh rate for your calendar and contacts resources. By default this setting is set to 5 minutes and should be fine for the most use cases. When you create a new appointment it is synced to Nextcloud right away. You may want to change this for saving your power or cellular data plan, that you can update with a right-click on the item in the calendar list.
 
-8. After a few seconds to minutes depending on your internet connection, you will find your calendars and contacts inside the KDE Contact applications KOrganizer and KAddressBook:
+8. After a few seconds to minutes depending on your internet connection, you will find your calendars and contacts inside the KDE Kontact applications KOrganizer and KAddressBook:
 
 .. image:: ../images/KOrganizer.png
 .. image:: ../images/KAddressBook.png
