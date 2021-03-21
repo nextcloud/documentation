@@ -131,6 +131,23 @@ You might need to restart apache for the changes to take effect::
 Redis is very configurable; consult `the Redis documentation 
 <http://redis.io/documentation>`_ to learn more.
 
+**Using the Redis session handler:** If you are using Redis for locking and/or caching,
+you may also wish to use Redis for session management. Redis can be used for centralized
+session management across multiple Nextcloud application servers, unlike the standard
+`files` handler. If you use the Redis handler, though, you *MUST* ensure that session
+locking is enabled. As of this writing, the Redis session handler does *NOT* enable
+session locking by default, which can lead to session corruption in some Nextcloud apps
+that make heavy use of session writes such as Talk. In addition, even when session locking
+is enabled, if the application fails to acquire a lock, the Redis session handler does not
+currently return an error. Adding the following settings in your `php.ini` file will
+prevent session corruption when using Redis as your session handler: ::
+
+  redis.session.locking_enabled=1
+  redis.session.lock_retries=-1
+  redis.session.lock_wait_time=10000
+
+More information on configuration of phpredis session handler can be found on the
+`PhpRedis GitHub page <https://github.com/phpredis/phpredis>`_
 
 Memcached
 ---------
