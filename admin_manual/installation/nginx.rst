@@ -85,6 +85,10 @@ webroot of your nginx installation. In this example it is
       # Remove X-Powered-By, which is an information leak
       fastcgi_hide_header X-Powered-By;
       
+      # Disable buffering (and thus ignoring proxy_max_temp_file_size),
+      # allowing to download larger files without issues.
+      proxy_buffering off;
+      
       # Path to the root of your installation
       root /var/www/nextcloud;
       
@@ -273,6 +277,10 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
           # Remove X-Powered-By, which is an information leak
           fastcgi_hide_header X-Powered-By;
           
+          # Disable buffering (and thus ignoring proxy_max_temp_file_size),
+          # allowing to download larger files without issues.
+          proxy_buffering off;
+
           # Specify how to handle directories -- specifying `/nextcloud/index.php$request_uri`
           # here as the fallback means that Nginx always exhibits the desired behaviour
           # when a client requests a path that corresponds to a directory that exists
