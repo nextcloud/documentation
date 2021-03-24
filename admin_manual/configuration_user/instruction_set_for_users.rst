@@ -157,7 +157,7 @@ Edit data of a single user
 
 Edits attributes related to a user. Users are able to edit email, displayname
 and password; admins can also edit the quota value. Further restrictions may apply,
-check the :ref:`Editable data fields list <_editable_field_list>`. Authentication
+check the `List of editable data fields`_ endpoint. Authentication
 is done by sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}**
