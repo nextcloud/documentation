@@ -5,7 +5,7 @@ Instruction set for users
 Add a new user
 --------------
 
-Create a new user on the Nextcloud server. Authentication is done by sending a 
+Create a new user on the Nextcloud server. Authentication is done by sending a
 basic HTTP authentication header.
 
 **Syntax: ocs/v1.php/cloud/users**
@@ -61,7 +61,7 @@ XML output
 Search/get users
 ----------------
 
-Retrieves a list of users from the Nextcloud server. Authentication is done by 
+Retrieves a list of users from the Nextcloud server. Authentication is done by
 sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users**
@@ -104,7 +104,7 @@ XML output
 Get data of a single user
 -------------------------
 
-Retrieves information about a single user. Authentication is done by sending a 
+Retrieves information about a single user. Authentication is done by sending a
 Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}**
@@ -155,9 +155,10 @@ XML output
 Edit data of a single user
 --------------------------
 
-Edits attributes related to a user. Users are able to edit email, displayname 
-and password; admins can also edit the quota value. Authentication is done by 
-sending a Basic HTTP Authorization header.
+Edits attributes related to a user. Users are able to edit email, displayname
+and password; admins can also edit the quota value. Further restrictions may apply,
+check the `List of editable data fields`_ endpoint. Authentication
+is done by sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}**
 
@@ -196,7 +197,7 @@ Examples
   $ curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -d key="quota" -d value="100MB"
 
 * Updates the quota for the user ``Frank``
-  
+
 XML output
 ^^^^^^^^^^
 
@@ -210,6 +211,55 @@ XML output
     </meta>
     <data/>
   </ocs>
+
+.. _editable_field_list:
+
+List of editable data fields
+----------------------------
+
+Edits attributes related to a user. Users are able to edit email, displayname
+and password; admins can also edit the quota value. Authentication is done by
+sending a Basic HTTP Authorization header.
+
+**Syntax: ocs/v1.php/cloud/user/fields**
+
+* HTTP method: GET
+
+Status codes:
+
+* 100 - successful
+
+Examples
+^^^^^^^^
+
+::
+
+  $ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/user/fields
+
+* Gets the list of fields
+
+XML output
+^^^^^^^^^^
+
+.. code-block:: xml
+
+  <?xml version="1.0"?>
+  <ocs>
+   <meta>
+    <status>ok</status>
+    <statuscode>100</statuscode>
+    <message>OK</message>
+   </meta>
+   <data>
+    <element>displayname</element>
+    <element>email</element>
+    <element>phone</element>
+    <element>address</element>
+    <element>website</element>
+    <element>twitter</element>
+   </data>
+  </ocs>
+
 
 Disable a user
 --------------
@@ -292,7 +342,7 @@ XML output
 Delete a user
 -------------
 
-Deletes a user from the Nextcloud server. Authentication is done by sending a 
+Deletes a user from the Nextcloud server. Authentication is done by sending a
 Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}**
@@ -330,7 +380,7 @@ XML output
 Get user's groups
 -----------------
 
-Retrieves a list of groups the specified user is a member of. Authentication is 
+Retrieves a list of groups the specified user is a member of. Authentication is
 done by sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}/groups**
@@ -372,7 +422,7 @@ XML output
 Add user to group
 -----------------
 
-Adds the specified user to the specified group. Authentication is done by 
+Adds the specified user to the specified group. Authentication is done by
 sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}/groups**
@@ -415,7 +465,7 @@ XML output
 Remove user from group
 ----------------------
 
-Removes the specified user from the specified group. Authentication is done by 
+Removes the specified user from the specified group. Authentication is done by
 sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}/groups**
@@ -454,17 +504,17 @@ XML output
     </meta>
     <data/>
   </ocs>
-  
+
 Promote user to subadmin
 ------------------------
 
-Makes a user the subadmin of a group. Authentication is done by sending a Basic 
+Makes a user the subadmin of a group. Authentication is done by sending a Basic
 HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}/subadmins**
 
 * HTTP method: POST
-* POST argument: groupid, string - the group of which to make the user a 
+* POST argument: groupid, string - the group of which to make the user a
   subadmin
 
 Status codes:
@@ -500,13 +550,13 @@ XML output
 Demote user from subadmin
 -------------------------
 
-Removes the subadmin rights for the user specified from the group specified. 
+Removes the subadmin rights for the user specified from the group specified.
 Authentication is done by sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}/subadmins**
 
 * HTTP method: DELETE
-* DELETE argument: groupid, string - the group from which to remove the user's 
+* DELETE argument: groupid, string - the group from which to remove the user's
   subadmin rights
 
 Status codes:
@@ -538,11 +588,11 @@ XML output
     </meta>
     <data/>
   </ocs>
-  
+
 Get user's subadmin groups
 --------------------------
 
-Returns the groups in which the user is a subadmin. Authentication is done by 
+Returns the groups in which the user is a subadmin. Authentication is done by
 sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}/subadmins**
@@ -579,7 +629,7 @@ XML output
     <data>
       <element>testgroup</element>
     </data>
-  </ocs>  
+  </ocs>
 
 Resend the welcome email
 ------------------------
