@@ -6,7 +6,10 @@ A password policy is a set of rules designed to enhance computer security by enc
 
 In the security-section of your administrator-settings you can configure 
 
-* a minimal length of a password. Default is 10 characters.
+* a minimal length of a password. Default is 8 characters.
+* a password history
+* a password expiration period
+* a lockout policy
 * to forbid common passwords like 'password' or 'login'. 
 * to enforce upper and lower case characters
 * to enforce numeric characters
