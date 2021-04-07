@@ -63,8 +63,8 @@ The Nextcloud user interface contains the following fields and functions:
    the only Web browsers that support drag-and-drop folders are Chrome and
    Chromium.
 
-* **Search** field (6): Click on the magnifier in the upper right hand corner of
-  to search for files.
+* **Search** field (6): Click on the Magnifier in the upper right corner 
+  to search for files and entries of the current app.
 
 * **Contacts Menu** (7): Gives you an overview about your contacts and users on
   your server. Dependent on the given details and available apps, you can
