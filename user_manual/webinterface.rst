@@ -59,9 +59,7 @@ The Nextcloud user interface contains the following fields and functions:
   enables you to create new files, new folders, or upload files.
 
 .. note:: You can also drag and drop files from your file manager into the
-   Files Application View to upload them to your instance. Currently,
-   the only Web browsers that support drag-and-drop folders are Chrome and
-   Chromium.
+   Files Application View to upload them to your instance. 
 
 * **Search** field (6): Click on the magnifier in the upper right hand corner of
   to search for files.
