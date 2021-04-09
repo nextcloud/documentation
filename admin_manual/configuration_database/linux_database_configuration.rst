@@ -140,7 +140,7 @@ You can quit the prompt by entering::
 
   quit;
 
-An Nextcloud instance configured with MySQL would contain the hostname on which
+A Nextcloud instance configured with MySQL would contain the hostname on which
 the database is running, a valid username and password to access it, and the
 name of the database. The :file:`config/config.php` as created by the
 :doc:`../installation/installation_wizard` would therefore contain entries like
