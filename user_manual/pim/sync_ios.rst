@@ -5,11 +5,12 @@ Synchronizing with iOS
 Calendar
 --------
 
-#. Open the settings application.
-#. Select Passwords and Accounts.
+#. Open the Settings application.
+#. Select Calendar.
+#. Select Accounts.
 #. Select Add Account.
 #. Select Other as account type.
-#. Select Add CalDAV account.
+#. Under "CALENDARS", select Add CalDAV account.
 #. For server, type the domain name of your server i.e. ``example.com``.
 #. Enter your user name and password.
 #. Select Next.
@@ -23,11 +24,12 @@ Your calendar will now be visible in the Calendar application.
 Contacts
 --------
 
-#. Open the settings application.
-#. Select Passwords and Accounts.
+#. Open the Settings application.
+#. Select Contacts.
+#. Select Accounts.
 #. Select Add Account.
 #. Select Other as account type.
-#. Select Add CardDAV account.
+#. Unser "CONTACTS", select Add CardDAV Account.
 #. For server, type the domain name of your server i.e. ``example.com``.
 #. Enter your user name and password.
 #. Select Next.
