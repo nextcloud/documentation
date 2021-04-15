@@ -27,6 +27,7 @@ Contacts
 1. In the bottom left of the Contacts View (in Nextcloud Contacts) look for a little impeller symbol that looks like this:
 
 .. image:: ../images/contacts_link.png
+   :alt:
 
 which will display a URL that looks something like this:
 https://cloud.nextcloud.com/remote.php/dav/addressbooks/users/daniel/Thunderbird/

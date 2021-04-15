@@ -24,8 +24,8 @@ Examples
 After installing the File Access Control app as described in :doc:`../apps_management`
 navigate to the configuration and locate the File Access Control settings.
 
-    .. figure:: images/files_access_control_sample_rules.png
-       :alt: Sample rules to block on user group, time and IP base.
+    .. image:: images/files_access_control_sample_rules.png
+	   :alt:
 
 The first rule group ``Support only 9-5`` denies any access to files for users
 of the Support user group, between 5pm and 9am.
@@ -48,8 +48,8 @@ user could remove and reassign the tag.
 
 This example blocks access to any folder with the tag ``Confidential``.
 
-    .. figure:: images/files_access_control_collaborative_tags.png
-       :alt: Deny access based on collaborative tag
+    .. image:: images/files_access_control_collaborative_tags.png
+	   :alt:
 
 Prevent uploading of specific files
 -----------------------------------
@@ -63,8 +63,8 @@ used for the type of file you're trying to block.
 The following example prevents zip files from being uploaded by using the regular
 expression: ``/^application\/(zip|x-zip-compressed)$/i``
 
-    .. figure:: images/files_access_control_block_mimetype.png
-       :alt: Prevent upload based on mimetype
+    .. image:: images/files_access_control_block_mimetype.png
+	   :alt:
 
 Common misconfigurations
 ------------------------

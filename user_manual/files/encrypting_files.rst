@@ -77,12 +77,14 @@ out and then log back in to create your encryption keys and encrypt your files.
 When encryption has been enabled on your Nextcloud server you will see a yellow
 banner on your Files page warning you to log out and then log back in:
 
-.. figure:: ../images/encryption1.png
+.. image:: ../images/encryption1.png
+   :alt:
 
 When you log back in it takes a few minutes to work, depending on how many
 files you have, and then you are returned to your default Nextcloud page.
 
-.. figure:: ../images/encryption2.png
+.. image:: ../images/encryption2.png
+   :alt:
 
 
 .. note:: You must never lose your Nextcloud password, because you will lose
@@ -117,7 +119,8 @@ enables the administrator to recover your files in the event you lose your
 Nextcloud password. If the recovery key is not enabled, then there is no way to
 restore your files if you lose your login password.
 
-.. figure:: ../images/encryption3.png
+.. image:: ../images/encryption3.png
+   :alt:
 
 Files not encrypted
 -------------------

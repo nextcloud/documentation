@@ -18,18 +18,21 @@ On the User management page of your Nextcloud Web UI you can:
 
 The default view displays basic information about your users.
 
-.. figure:: ../images/users-config.png
+.. image:: ../images/users-config.png
+   :alt:
 
 The Group filters on the left sidebar lets you quickly filter users by their
 group memberships, and create new groups.
 
-.. figure:: ../images/users-config-1.png
+.. image:: ../images/users-config-1.png
+   :alt:
 
 Click the gear icon on the lower left sidebar to set a default storage quota,
 and to display additional fields: **Show storage location, Show last log in,
 Show user backend, Send email to new users,** and **Show email address**.
 
-.. figure:: ../images/users-config-2.png
+.. image:: ../images/users-config-2.png
+   :alt:
 
 User accounts have the following properties:
 
@@ -67,7 +70,8 @@ To create a user account:
 * Optionally, assign **Groups** memberships
 * Click the **Create** button
 
-.. figure:: ../images/users-create.png
+.. image:: ../images/users-create.png
+   :alt:
 
 Login names may contain letters (a-z, A-Z), numbers (0-9), dashes (-),
 underscores (_), periods (.) and at signs (@). After creating the user, you
@@ -121,7 +125,8 @@ system settings, or add or modify users in the groups that they are not **Group
 Administrators** for. Use the dropdown menus in the **Group Admin** column to
 assign group admin privileges.
 
-.. figure:: ../images/users-groups.png
+.. image:: ../images/users-groups.png
+   :alt:
 
 **Super Administrators** have full rights on your Nextcloud server, and can
 access and modify all settings. To assign the **Super Administrators** role to
@@ -184,7 +189,8 @@ files count against that user's quota.
 Disable and enable users
 ------------------------
 
-.. figure:: ../images/users-actions.png
+.. image:: ../images/users-actions.png
+   :alt:
 
 Sometimes you may want to disable a user without permanently deleting their
 settings and files. The user can be activated any time again, without data-loss.
@@ -202,7 +208,8 @@ select **Enable**.
 Deleting users
 --------------
 
-.. figure:: ../images/users-actions.png
+.. image:: ../images/users-actions.png
+   :alt:
 
 Deleting a user is easy: hover your cursor over their name on the **Users** page
 until the "..."-menu icon appears at the far right. After clicking on it, you will
@@ -212,7 +219,7 @@ You'll see an undo button at the top of the page, which remains for some seconds
 When the undo button is gone you cannot recover the deleted user.
 
 All of the files owned by the user are deleted as well, including all files they
-have shared. If you need to preserve the user's files and shares, you must first 
+have shared. If you need to preserve the user's files and shares, you must first
 download them from your Nextcloud Files page, which compresses them into a zip
 file, or use a sync client to copy them to your local computer. See
 :doc:`../configuration_files/file_sharing_configuration` to learn how to create
