@@ -11,8 +11,8 @@ Managing connected browsers
 In the list of connected browsers you see which browsers connected to your
 account recently:
 
-.. figure:: images/settings_sessions.png
-     :alt: List of browser sessions.
+.. image:: images/settings_sessions.png
+   :alt:
 
 You can use the trash icon to disconnect any of the browsers in the list.
 
@@ -22,8 +22,8 @@ Managing devices
 In the list of connected devices you see all the devices and clients you
 generated a device password for and their last activity:
 
-.. figure:: images/settings_devices.png
-     :alt: List of connected devices.
+.. image:: images/settings_devices.png
+   :alt:
 
 You can use the trash icon to disconnect any of the devices in the list.
 
@@ -33,8 +33,8 @@ password is used for configuring the new client. Ideally, generate individual
 tokens for every device you connect to your account, so you can disconnect
 those individually if necessary:
 
-.. figure:: images/settings_devices_add.png
-     :alt: Adding a new device.
+.. image:: images/settings_devices_add.png
+   :alt:
 
 .. note:: You have only access to the device password when creating it,
    Nextcloud will not save the plain password, hence it's recommended to

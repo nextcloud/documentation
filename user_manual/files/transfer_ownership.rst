@@ -2,7 +2,7 @@
 Transfer Ownership
 ==================
 
-Users can transfer the ownership of files and folders to other users. Share 
+Users can transfer the ownership of files and folders to other users. Share
 ownerships of those transfered files/folders will also be transferred.
 
 #. Navigate to *Settings* > *Personal* > *Sharing* > *Files*.
@@ -18,8 +18,9 @@ ownerships of those transfered files/folders will also be transferred.
 #. The target user receives a notification where they are being asked whether to
    accept or reject the incoming transfer.
 
-	.. figure:: ../images/transfer_ownership-accept.png
+	.. image:: ../images/transfer_ownership-accept.png
+	   :alt:
 
-#. If accepted, the target user finds the transferred files and folders in their 
+#. If accepted, the target user finds the transferred files and folders in their
    root under a folder *Transferred from [user] on [timestamp]*.
 #. The source user gets informed about the acceptance or rejection by a notification.

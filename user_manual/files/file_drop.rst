@@ -16,10 +16,12 @@ Go to Files and create or choose the folder, the anonymous upload should be
 made to:
 
 .. image:: ../images/anonym_click_sharing.png
+   :alt:
 
 Check Share Link, Allow editing, Hide file listing:
 
 .. image:: ../images/anonym_hide_file_listing.png
+   :alt:
 
 Now you can send the link to the upload folder manually or by using the
 Nextcloud send function, if your administrator has enabled it.
@@ -33,6 +35,7 @@ folder, click the link, and then you'll see a Nextcloud page with a "**Click to
 upload**" button:
 
 .. image:: ../images/anonym_upload.png
+   :alt:
 
 This opens a file picker, and you select the file or directory you want to
 upload. You're also able to just drop files into the window.
@@ -40,3 +43,4 @@ upload. You're also able to just drop files into the window.
 When your upload is completed, the filenames are listed:
 
 .. image:: ../images/anonym_uploaded_files.png
+   :alt:

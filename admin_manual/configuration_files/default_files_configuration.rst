@@ -19,10 +19,12 @@ affecting the originals.
 This screenshot shows a set of photos in the ``skeleton`` directory.
 
 .. image:: ../images/skeleton-files.png
+   :alt:
 
 They appear on the user's Nextcloud Files page just like any other files.
 
 .. image:: ../images/skeleton-files1.png
+   :alt:
 
 .. note:: Overwriting the files in ``core/skeleton`` is not recommended,
   because those changes will be overwritten on the next update of the Nextcloud

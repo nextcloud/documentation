@@ -11,7 +11,8 @@ existing mail server. You must have a functioning mail server for Nextcloud to b
 able to send emails. You may have a mail server on the same machine as Nextcloud,
 or it may be a remote server.
 
-.. figure:: ../images/smtp-config-wizard.png
+.. image:: ../images/smtp-config-wizard.png
+   :alt:
 
 With the wizard, connecting Nextcloud to your mail server is fast and easy.
 The wizard fills in the values in ``config/config.php``, so you may use either
@@ -43,7 +44,8 @@ connect Nextcloud to a remote SMTP server:
 
 * Login credentials (if required)
 
-.. figure:: ../images/smtp-config-smtp.png
+.. image:: ../images/smtp-config-smtp.png
+   :alt:
 
 Your changes are saved immediately, and you can click the Send Email button to
 test your configuration. This sends a test message to the email address you
