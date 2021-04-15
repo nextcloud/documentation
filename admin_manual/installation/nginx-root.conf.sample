@@ -91,6 +91,8 @@ server {
     # `location ~ /(\.|autotest|...)` which would otherwise handle requests
     # for `/.well-known`.
     location ^~ /.well-known {
+        absolute_redirect off;
+
         # The rules in this block are an adaptation of the rules
         # in `.htaccess` that concern `/.well-known`.
 
