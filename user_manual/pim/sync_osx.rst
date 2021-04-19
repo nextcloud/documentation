@@ -14,7 +14,7 @@ and **CardDAV** (Contacts) to your Nextcloud.
 
 .. figure:: ./images/macos_1.png
 
-3. Click on **Add Other Account...** and click on **CalDAV Account** for Calendar
+3. Click on **Add Other Account…** and click on **CalDAV Account** for Calendar
    or **CardDAV Account** for Contacts:
 
 .. figure:: ./images/macos_2.png
