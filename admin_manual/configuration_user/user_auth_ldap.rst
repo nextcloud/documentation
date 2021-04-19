@@ -53,8 +53,8 @@ authentication, enter your credentials on this tab. Nextcloud will then attempt
 to auto-detect the server's port and base DN. The base DN and port are
 mandatory, so if Nextcloud cannot detect them you must enter them manually.
 
-.. figure:: ../images/ldap-wizard-1-server.png
-   :alt: LDAP wizard, server tab
+.. image:: ../images/ldap-wizard-1-server.png
+   :alt:
 
 Server configuration:
   Configure one or more LDAP servers. Click the **Delete Configuration**
@@ -113,8 +113,8 @@ server use the **Login Attributes** tab. Those LDAP users who have access but ar
 as users (if there are any) will be hidden users. You may bypass the form fields
 and enter a raw LDAP filter if you prefer.
 
-.. figure:: ../images/ldap-wizard-2-user.png
-   :alt: User filter
+.. image:: ../images/ldap-wizard-2-user.png
+   :alt:
 
 Only those object classes:
   Nextcloud will determine the object classes that are typically available for
@@ -154,8 +154,8 @@ filter if you prefer.)
 You may override your User Filter settings on the Users tab by using a raw
 LDAP filter.
 
-.. figure:: ../images/ldap-wizard-3-login.png
-   :alt: Login filter
+.. image:: ../images/ldap-wizard-3-login.png
+   :alt:
 
 LDAP Username:
   If this value is checked, the login value will be compared to the username in
@@ -198,8 +198,8 @@ By default, no LDAP groups will be available in Nextcloud. The settings in the
 Groups tab determine which groups will be available in Nextcloud. You may
 also elect to enter a raw LDAP filter instead.
 
-.. figure:: ../images/ldap-wizard-4-group.png
-   :alt: Group filter
+.. image:: ../images/ldap-wizard-4-group.png
+   :alt:
 
 Only these object classes:
   Nextcloud will determine the object classes that are typically available for
@@ -244,8 +244,8 @@ The Advanced Settings are structured into three parts:
 Connection settings
 ^^^^^^^^^^^^^^^^^^^
 
-.. figure:: ../images/ldap-advanced-1-connection.png
-   :alt: Advanced settings
+.. image:: ../images/ldap-advanced-1-connection.png
+   :alt:
 
 Configuration Active:
   Enables or Disables the current configuration. By default, it is turned off.
@@ -309,8 +309,8 @@ operates.
 Directory settings
 ^^^^^^^^^^^^^^^^^^
 
-.. figure:: ../images/ldap-advanced-2-directory.png
-   :alt: Directory settings.
+.. image:: ../images/ldap-advanced-2-directory.png
+   :alt:
 
 User Display Name Field:
   The attribute that should be used as display name in Nextcloud.
@@ -429,8 +429,8 @@ Default password policy DN:
 Special attributes
 ^^^^^^^^^^^^^^^^^^
 
-.. figure:: ../images/ldap-advanced-3-attributes.png
-   :alt: Special Attributes.
+.. image:: ../images/ldap-advanced-3-attributes.png
+   :alt:
 
 Quota Field:
   Nextcloud can read an LDAP attribute and set the user quota according to its
@@ -469,8 +469,8 @@ In migrated Nextcloud installations the old behavior still applies, which is usi
 Expert settings
 ---------------
 
-.. figure:: ../images/ldap-expert.png
-   :alt: Expert settings.
+.. image:: ../images/ldap-expert.png
+   :alt:
 
 In the Expert Settings fundamental behavior can be adjusted to your needs. The
 configuration should be well-tested before starting production use.
@@ -494,10 +494,10 @@ Internal Username:
 
   You can override all of this with the Internal Username setting. Leave it
   empty for default behavior. Changes will affect only newly mapped LDAP users.
-  
-  When configuring this, be aware that the username in Nextcloud is considered 
+
+  When configuring this, be aware that the username in Nextcloud is considered
   immutable and cannot be changed afterwards. This can cause issues when using
-  an attribute that might change, e.g. the email address of a user that will 
+  an attribute that might change, e.g. the email address of a user that will
   get changed during name change.
 
   * Example: *uid*
@@ -584,8 +584,8 @@ server, it will be used as their avatar. In this case the user cannot alter thei
 avatar (on their Personal page) as it must be changed in LDAP. *jpegPhoto* is
 preferred over *thumbnailPhoto*.
 
-.. figure:: ../images/ldap-fetched-avatar.png
-   :alt: Profile picture fetched from LDAP.
+.. image:: ../images/ldap-fetched-avatar.png
+   :alt:
 
 If the *jpegPhoto* or *thumbnailPhoto* attribute is not set or empty, then
 users can upload and manage their avatars on their Nextcloud Personal pages.
@@ -715,7 +715,7 @@ The attributes of users are fetched on demand (i.e. for sharing autocompletion
 or in the user management) and then stored inside the Nextcloud database to
 allow a better performance on our side. They are typically checked twice a day
 in batches from all users again. Beside that they are also refreshed during a
-login for this user or can be fetched manually via the occ command 
+login for this user or can be fetched manually via the occ command
 ``occ ldap:check-user --update USERID`` where ``USERID`` is Nextcloud's user id.
 
 Caching

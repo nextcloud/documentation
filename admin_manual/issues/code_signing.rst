@@ -61,7 +61,7 @@ the following options:
 3. Trigger a rescan.
 
 .. image:: images/code-integrity-admin.png
-   :alt: Links for resolving code integrity warnings.
+   :alt:
 
 To debug issues caused by the code integrity check click on "List of invalid
 files...", and you will be shown a text document listing the different issues. The

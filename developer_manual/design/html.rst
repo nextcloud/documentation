@@ -13,9 +13,8 @@ Nextcloud support and provides an already themed progress bar.
 
 Please use the html5 ``progress`` element.
 
-.. figure:: ../images/progress.png
-   :alt: Progress html5
-   :figclass: figure-with-code
+.. image:: ../images/progress.png
+   :alt:
 
 .. code-block:: html
 
@@ -40,9 +39,8 @@ Requirements:
 * To use the white theme, you **need** to also add the ``checkbox--white`` or ``radio--white`` class.
 * Your label **must** have an associated text for accessibility.
 
-.. figure:: ../images/checkboxes.png
-   :alt: Nextcloud's themed checkboxes
-   :figclass: figure-with-code
+.. image:: ../images/checkboxes.png
+   :alt:
 
 .. code-block:: html
 
@@ -57,9 +55,8 @@ Requirements:
     <input type="checkbox" id="test4" class="checkbox">
     <label for="test4">Hovered</label><br>
 
-.. figure:: ../images/radios.png
-   :alt: Nextcloud's themed radios
-   :figclass: figure-with-code
+.. image:: ../images/radios.png
+   :alt:
 
 .. code-block:: html
 

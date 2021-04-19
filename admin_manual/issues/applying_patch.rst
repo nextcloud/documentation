@@ -42,6 +42,6 @@ If you found a related pull request on GitHub that solves your issue, or you wan
 4. In case you are on an older version, you might first need to go the the correct version of the patch.
 
 .. image:: images/getting-a-patch-from-github.png
-   :alt: backportbot-nextcloud linking to the pull request for an older version.
+   :alt:
 
 5. You can find it by looking for a link by the ``backportbot-nextcloud`` or a developer will leave a manual comment about the backport to an older Nextcloud version. For the example above you the pull request for Nextcloud 21 is at https://github.com/nextcloud/server/pull/26406 and the patch at https://github.com/nextcloud/server/pull/26406.patch
