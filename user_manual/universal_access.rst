@@ -19,7 +19,7 @@ Zoom and responsiveness
 
 The Nextcloud interface is fully responsive and usable on any size of screen.
 You can zoom in and out to fit the text and element size to your liking.
-The left navigation and right sidebar can be expanded or collapsed.
+The navigation and sidebar can be expanded or collapsed.
 
 
 Navigating via keyboard
