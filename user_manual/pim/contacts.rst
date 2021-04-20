@@ -6,12 +6,12 @@ The Contacts app is not enabled by default in Nextcloud |version| and needs to
 be installed separately from our App Store.
 
 The Nextcloud Contacts app is similar to other mobile contact applications, but
-with more functionality. 
+with more functionality.
 Let's run through basic features that will help you maintain your address book
-in the application. 
+in the application.
 
-Below, you will learn how to add contacts, edit or remove contacts, upload a 
-contact picture and manage your Contact app address books. 
+Below, you will learn how to add contacts, edit or remove contacts, upload a
+contact picture and manage your Contact app address books.
 
 
 Adding Contacts
@@ -19,13 +19,14 @@ Adding Contacts
 
 When you first access the Contacts app, an empty default address book becomes available:
 
-.. figure:: ../images/contacts_empty.png
+.. image:: ../images/contacts_empty.png
+   :alt:
 
   *Default Address Book (empty)*
 
 To add contacts into your address book, you can use one of the following methods:
 
-* Import contacts using a Virtual Contact File (VCF/Vcard) file 
+* Import contacts using a Virtual Contact File (VCF/Vcard) file
 * Add contacts manually
 
 The fastest way to add a contact is to use a Virtual Contact File
@@ -39,19 +40,19 @@ To Import Contacts Using a VCF/Vcard File:
 
 1. Find "Settings" at the bottom of the left sidebar, next to the gear button:
 
-	.. figure:: ../images/contact_bottombar.png 
-		:alt: Contact settings gear button
-  
+	.. image:: ../images/contact_bottombar.png
+	   :alt:
+
 2. Click the gear button. The Contacts app "Import" button will appear:
 
-	.. figure:: ../images/contact_uploadbutton.png
-		:alt: Contacts Upload Field
-  
+	.. image:: ../images/contact_uploadbutton.png
+	   :alt:
+
 .. note:: The Contacts app only supports import of vCards version 3.0 and 4.0.
 
-3. Click the "Import" button and upload your VCF/Vcard file. 
+3. Click the "Import" button and upload your VCF/Vcard file.
 
-After the import is complete, you will see your new contact in your address book. 
+After the import is complete, you will see your new contact in your address book.
 
 
 Adding Contacts Manually
@@ -64,9 +65,10 @@ To Create a New Contact:
 1. Click the ``+ New contact`` button.
 
    An empty new contact configuration opens in the Application View field:
-   
-  .. figure:: ../images/contact_new.png
-  
+
+  .. image:: ../images/contact_new.png
+     :alt:
+
 2. Specify the new contact information. Changes that you made are implemented immediately.
 
 
@@ -89,18 +91,19 @@ Contact Picture
 
 To add a picture for your new contacts, click on the upload button:
 
-.. figure:: ../images/contact_picture.png
-	:alt: Contact picture (upload button)
+.. image:: ../images/contact_picture.png
+   :alt:
 
 After you have set a contact picture, it will look like this:
 
-.. figure:: ../images/contact_picture_set.png
-	:alt: Contact picture (set)
+.. image:: ../images/contact_picture_set.png
+   :alt:
 
 If you want to upload a new one, remove it, view it in full size or download it,
 click on the contacts picture for the following options to appear:
 
-.. figure:: ../images/contact_picture_options.png
+.. image:: ../images/contact_picture_options.png
+   :alt:
 
 
 Adding and Managing Address Books
@@ -111,8 +114,8 @@ provides access to Contacts app settings. This field shows all
 available address books, certain options for each address book, and enables you
 to create new address books, simply by specifying an address books name:
 
-.. figure:: ../images/contact_manageaddressbook.png
-	:alt: Add address book in the contacts settings
+.. image:: ../images/contact_manageaddressbook.png
+   :alt:
 
 The Contacts settings is also where you can share, export and delete address
 books. You will find the CardDAV URLs there.

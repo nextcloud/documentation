@@ -13,7 +13,8 @@ Add an OAuth2 Application
 
 Head over to your Administrator Security Settings. Here you can add a new ``OAuth2`` client.
 
-.. figure:: images/oauth2-settings.png
+.. image:: images/oauth2-settings.png
+   :alt:
 
 Enter the name of your application and provide a redirection url.
 You should now have a Client Identifier and Secret. Enter those into your ``OAuth2`` client.
@@ -38,6 +39,6 @@ Note that apache by default strips this. Make sure you have ``mod_headers``, ``m
 Security considerations
 -----------------------
 
-Nextcloud ``OAuth2`` implementation currently does not support scoped access. This means that every token has full access to the complete account including read and write permission to the stored files. It is essential to store the ``OAuth2`` tokens in a safe way! 
+Nextcloud ``OAuth2`` implementation currently does not support scoped access. This means that every token has full access to the complete account including read and write permission to the stored files. It is essential to store the ``OAuth2`` tokens in a safe way!
 
 Without scopes and restrictable access it is not recommended to use a Nextcloud instance as a user authentication service.

@@ -7,8 +7,8 @@ preview, edit, delete, share, and re-share files. Your Nextcloud administrator
 has the option to disable these features, so if any of them are missing on your
 system ask your server administrator.
 
-.. figure:: ../images/users-files.png
-   :alt: The Files view screen.
+.. image:: ../images/users-files.png
+   :alt:
 
 Tagging files
 -------------
@@ -18,13 +18,13 @@ Then type your tags. To enter more than one tag press the return key after
 creating each tag. All tags are system tags, and are shared by all users on your
 Nextcloud server.
 
-.. figure:: ../images/files_page-7.png
-   :alt: Creating file tags.
+.. image:: ../images/files_page-7.png
+   :alt:
 
 Then use the Tags filter on the left sidebar to filter files by tags:
 
-.. figure:: ../images/files_page-8.png
-   :alt: Viewing file tags.
+.. image:: ../images/files_page-8.png
+   :alt:
 
 Comments
 --------
@@ -32,8 +32,8 @@ Comments
 Use the Details view to add and read comments on any file or folder. Comments
 are visible to everyone who has access to the file:
 
-.. figure:: ../images/file_menu_comments_2.png
-   :alt: Creating and viewing comments.
+.. image:: ../images/file_menu_comments_2.png
+   :alt:
 
 Video player
 ------------
@@ -43,8 +43,8 @@ the file. Video streaming by the native Nextcloud video player depends on your W
 and the video format. If your Nextcloud administrator has enabled video
 streaming, and it doesn't work in your Web browser, it may be a browser issue. See https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility for supported multimedia formats in Web browsers.
 
-.. figure:: ../images/video_player_2.png
-   :alt: Watching a movie.
+.. image:: ../images/video_player_2.png
+   :alt:
 
 File controls
 -------------
@@ -55,10 +55,10 @@ over a file or folder to expose the controls for the following operations:
 
 Favorites
   Click the star to the left of the file icon to mark it as a favorite:
-  
-  .. figure:: ../images/files_page-1.png
-   :alt: Marking Favorite files.
-   
+
+  .. image:: ../images/files_page-1.png
+     :alt:
+
   You can also quickly find all of your favorites with the Favorites filter on the left
   sidebar.
 
@@ -66,13 +66,13 @@ Overflow Menu
   The Overflow menu (three dots) displays file details, and allows you to
   rename, download, or delete files:
 
-  .. figure:: ../images/files_page-3.png
-   :alt: Overflow menu.
+  .. image:: ../images/files_page-3.png
+     :alt:
 
   The Details view shows Activities, Sharing, and Versions information:
 
-.. figure:: ../images/files_page-4.png
-   :alt: Details screen.
+.. image:: ../images/files_page-4.png
+   :alt:
 
 The **Settings** gear icon at the lower left allows you to show or hide hidden
 files in your Nextcloud Web interface. These are also called dotfiles, because
@@ -81,8 +81,8 @@ system to hide these files in your file browsers, unless you choose to display
 them. Usually these are configuration files, so having the option to hide them
 reduces clutter.
 
-.. figure:: ../images/hidden_files.png
-   :alt: Hiding or displaying hidden files.
+.. image:: ../images/hidden_files.png
+   :alt:
 
 Previewing files
 ----------------
@@ -107,8 +107,8 @@ Sharing status icons
 Any folder that has been shared is marked with the ``Shared`` overlay icon.
 Public link shares are marked with a chain link. Unshared folders are not marked:
 
-.. figure:: ../images/files_page-5.png
-   :alt: Share status icons.
+.. image:: ../images/files_page-5.png
+   :alt:
 
 Creating or uploading files and directories
 -------------------------------------------
@@ -116,8 +116,8 @@ Creating or uploading files and directories
 Upload or create new files or folders directly in a Nextcloud folder by clicking
 on the *New* button in the Files app:
 
-.. figure:: ../images/files_page-6.png
-   :alt: The New file/folder/upload menu.
+.. image:: ../images/files_page-6.png
+   :alt:
 
 The *New* button provides the following options:
 
@@ -179,5 +179,5 @@ Creating or connecting to a Federation Share link
 -------------------------------------------------
 
 Federated Cloud Sharing allows you to mount file shares from remote Nextcloud
-servers, and manage them just like a local share. See :doc:`federated_cloud_sharing` 
+servers, and manage them just like a local share. See :doc:`federated_cloud_sharing`
 to learn to how to create and connect to new Federated Cloud shares.

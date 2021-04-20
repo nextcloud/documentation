@@ -74,7 +74,7 @@ share::
    of ``davs://``:
 
 .. image:: ../images/webdav_gnome3_nautilus.png
-   :alt: screenshot of configuring Nautilus file manager to use WebDAV
+   :alt:
 
 .. note:: The same method works for other file managers that use GVfs,
 	  such as MATE's Caja and Cinnamon's Nepomuk.
@@ -89,7 +89,7 @@ the ``webdav://`` protocol::
     webdav://example.com/nextcloud/remote.php/dav/files/USERNAME/
 
 .. image:: ../images/webdav_dolphin.png
-   :alt: screenshot of configuring Dolphin file manager to use WebDAV
+   :alt:
 
 You can create a permanent link to your Nextcloud server:
 
@@ -216,14 +216,14 @@ To access files through the macOS Finder:
 1. From the Finder’s top menu bar, choose **Go > Connect to Server…**:
 
   .. image:: ../images/osx_webdav1.png
-     :alt: Screenshot of entering your Nextcloud server address on macOS
+     :alt:
 
 2. When the **Connect to Server…** window opens, enter your Nextcloud server’s WebDAV address in the **Server Address:** field, i.e.::
 
     https://cloud.YOURDOMAIN.com/remote.php/dav/files/USERNAME/
 
   .. image:: ../images/osx_webdav2.png
-     :alt: Screenshot: Enter Nextcloud server address in “Connect to Server...” dialog box
+     :alt:
 
 3. Click **Connect**. Your WebDAV server should appear on the Desktop as a shared disk drive.
 
@@ -239,7 +239,7 @@ Using this feature requires network connectivity. If you want to store your
 files offline, use the Desktop Client to sync all files on your
 Nextcloud to one or more directories of your local hard drive.
 
-.. note:: Windows 10 now defaults to allow Basic Authentication if HTTPS is 
+.. note:: Windows 10 now defaults to allow Basic Authentication if HTTPS is
     enabled prior to mapping your drive. On older versions of Windows,
     you must permit the use of Basic Authentication in the Windows
     Registry: launch “regedit“ and navigate to
@@ -301,9 +301,9 @@ To map a drive using the Microsoft Windows Explorer:
      connect to the Nextcloud server as a different user, check **Connect using
      different credentials**.
 
-.. figure:: ../images/explorer_webdav.png
+.. image:: ../images/explorer_webdav.png
    :scale: 80%
-   :alt: screenshot of mapping WebDAV on Windows Explorer
+   :alt:
 
 5. Click the ``Finish`` button.
 

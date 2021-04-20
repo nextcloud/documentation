@@ -9,16 +9,15 @@ Popover menu
 What is a popover menu
 ----------------------
 
-This is a quick menu that open on click. For menus, we use the three-dot-icon.
+This is a quick menu that opens on click. For menus, we use the three-dot-icon.
 
 This is exactly the same as the :ref:`navigation menu <navigation_menu>`. The only difference is the popovermenu class.
 
 Basic layout
 ------------
 
-.. figure:: ../images/popovermenu.png
-   :alt: Popover image example
-   :figclass: figure-with-code
+.. image:: ../images/popovermenu.png
+   :alt:
 
 .. code-block:: html
 
@@ -92,10 +91,11 @@ Technical details
 * The required **right** distance to the border (or padding, whatever you want to use) of the three-dot icon should be 14px (5 for menu margin and 6 for arrow position)
 * The ``span`` element **must** have the ``menuitem`` class.
 * The checkbox/radio must use the :ref:`nextcloud custom <checkboxes-and-radios>`
-* The form element is optionnal if you're using inputs.
+* The form element is optional if you're using inputs.
 * Supported inputs are all text based ones and buttons type ones
 
 .. image:: ../images/popover-position.png
+   :alt:
 
 Alignment
 ---------

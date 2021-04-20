@@ -23,7 +23,8 @@ You can change the following parameters of the look and feel on your instance:
 * Additional legal links (Legal notice and Privacy policy link)
 * Custom header logo and favicon as alternative to auto-generation based on logo
 
-.. figure:: ../configuration_server/images/theming.png
+.. image:: ../configuration_server/images/theming.png
+   :alt:
 
 Theming of icons
 ----------------
