@@ -24,14 +24,6 @@ server {
     ssl_certificate     /etc/ssl/nginx/cloud.example.com.crt;
     ssl_certificate_key /etc/ssl/nginx/cloud.example.com.key;
 
-    # HSTS settings
-    # WARNING: Only add the preload option once you read about
-    # the consequences in https://hstspreload.org/. This option
-    # will add the domain to a hardcoded list that is shipped
-    # in all major browsers and getting removed from this list
-    # could take several months.
-    #add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;" always;
-
     # Path to the root of the domain
     root /var/www;
 
@@ -72,6 +64,14 @@ server {
         # Pagespeed is not supported by Nextcloud, so if your server is built
         # with the `ngx_pagespeed` module, uncomment this line to disable it.
         #pagespeed off;
+
+        # HSTS settings
+        # WARNING: Only add the preload option once you read about
+        # the consequences in https://hstspreload.org/. This option
+        # will add the domain to a hardcoded list that is shipped
+        # in all major browsers and getting removed from this list
+        # could take several months.
+        #add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;" always;
 
         # HTTP response headers borrowed from Nextcloud `.htaccess`
         add_header Referrer-Policy                      "no-referrer"   always;
