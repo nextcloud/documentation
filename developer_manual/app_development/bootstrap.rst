@@ -54,17 +54,23 @@ The class **must** extend ``OCP\AppFramework\App`` and may optionally implement 
     use OCA\MyApp\Listeners\UserDeletedListener;
     use OCA\MyApp\Notifications\Notifier;
     use OCP\AppFramework\App;
+    use OCP\AppFramework\Bootstrap\IBootContext;
     use OCP\AppFramework\Bootstrap\IBootstrap;
+    use OCP\AppFramework\Bootstrap\IRegistrationContext;
     use OCP\Notification\IManager;
     use OCP\User\Events;
 
     class Application extends App implements IBootstrap {
 
+        public function __construct() {
+            parent::__construct('myapp');
+        }
+
         public function register(IRegistrationContext $context): void {
             // ... registration logic goes here ...
 
             // Register the composer autoloader for packages shipped by this app, if applicable
-            include_once __DIR__ . '/../../vendor/autoload.php'
+            include_once __DIR__ . '/../../vendor/autoload.php';
 
             $context->registerEventListener(
                 BeforeUserDeletedEvent::class,
@@ -138,6 +144,6 @@ class and query an instance like
     declare(strict_types=1);
 
     // Register the composer autoloader for packages shipped by this app, if applicable
-    @include_once __DIR__ . '/../vendor/autoload.php';
+    include_once __DIR__ . '/../vendor/autoload.php';
 
     $app = \OC::$server->query(\OCA\MyApp\AppInfo\Application::class);
