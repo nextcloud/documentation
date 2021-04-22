@@ -278,15 +278,15 @@ Defaults to ``false``
 
 ::
 
-	'defaultapp' => 'files',
+	'defaultapp' => 'dashboard,files',
 
 Set the default app to open on login. Use the app names as they appear in the
 URL after clicking them in the Apps menu, such as documents, calendar, and
 gallery. You can use a comma-separated list of app names, so if the first
 app is not enabled for a user then Nextcloud will try the second one, and so
-on. If no enabled apps are found it defaults to the Files app.
+on. If no enabled apps are found it defaults to the dashboard app.
 
-Defaults to ``files``
+Defaults to ``dashboard,files``
 
 ::
 
@@ -348,6 +348,20 @@ password for enhanced security. Users need to generate tokens in personal settin
 which can be used as passwords on their clients.
 
 Defaults to ``false``
+
+::
+
+	'token_auth_activity_update' => 60,
+
+The interval at which token activity should be updated.
+
+Increasing this value means that the last activty on the security page gets
+more outdated.
+
+Tokens are still checked every 5 minutes for validity
+max value: 300
+
+Defaults to ``300``
 
 ::
 
@@ -987,7 +1001,7 @@ Defaults to an empty array.
 
 	'logdateformat' => 'F d, Y H:i:s',
 
-This uses PHP.date formatting; see https://php.net/manual/en/function.date.php
+This uses PHP.date formatting; see http://php.net/manual/en/function.date.php
 
 Defaults to ISO 8601 ``2005-08-15T15:52:01+00:00`` - see \DateTime::ATOM
 (https://secure.php.net/manual/en/class.datetime.php#datetime.constants.atom)
@@ -997,7 +1011,7 @@ Defaults to ISO 8601 ``2005-08-15T15:52:01+00:00`` - see \DateTime::ATOM
 	'logtimezone' => 'Europe/Berlin',
 
 The timezone for logfiles. You may change this; see
-https://php.net/manual/en/timezones.php
+http://php.net/manual/en/timezones.php
 
 Defaults to ``UTC``
 
@@ -1714,31 +1728,31 @@ be found at: https://www.php.net/manual/en/function.password-hash.php
 
 ::
 
+	'hashingThreads' => PASSWORD_ARGON2_DEFAULT_THREADS,
+
+The number of CPU threads to be used by the algorithm for computing a hash.
+
+The value must be an integer, and the minimum value is 1. Rationally it does
+not help to provide a number higher than the available threads on the machine.
+Values that undershoot the minimum will be ignored in favor of the minimum.
+
+::
+
 	'hashingMemoryCost' => PASSWORD_ARGON2_DEFAULT_MEMORY_COST,
 
-The allowed maximum memory in KiB to be used by the algorithm for computing a
-hash. The smallest possible value is 8. Values that undershoot the minimum
-will be ignored in favor of the default.
+The memory in KiB to be used by the algorithm for computing a hash. The value
+must be an integer, and the minimum value is 8 times the number of CPU threads.
+
+Values that undershoot the minimum will be ignored in favor of the minimum.
 
 ::
 
 	'hashingTimeCost' => PASSWORD_ARGON2_DEFAULT_TIME_COST,
 
-The allowed maximum time in seconds that can be used by the algorithm for
-computing a hash. The value must be an integer, and the minimum value is 1.
+The number of iterations that are used by the algorithm for computing a hash.
 
-Values that undershoot the minimum will be ignored in favor of the default.
-
-::
-
-	'hashingThreads' => PASSWORD_ARGON2_DEFAULT_THREADS,
-
-The allowed number of CPU threads that can be used by the algorithm for
-computing a hash. The value must be an integer, and the minimum value is 1.
-
-Rationally it does not help to provide a number higher than the available
-threads on the machine. Values that undershoot the minimum will be ignored
-in favor of the default.
+The value must be an integer, and the minimum value is 1. Values that
+undershoot the minimum will be ignored in favor of the minimum.
 
 ::
 
@@ -1780,10 +1794,15 @@ Defaults to the theming app which is shipped since Nextcloud 9
 
 ::
 
-	'cipher' => 'AES-256-CFB',
+	'cipher' => 'AES-256-CTR',
 
-The default cipher for encrypting files. Currently AES-128-CFB and
-AES-256-CFB are supported.
+The default cipher for encrypting files. Currently supported are:
+ - AES-256-CTR
+ - AES-128-CTR
+ - AES-256-CFB
+ - AES-128-CFB
+
+Defaults to ``AES-256-CTR``
 
 ::
 
