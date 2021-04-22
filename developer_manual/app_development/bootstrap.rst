@@ -52,11 +52,12 @@ The class **must** extend ``OCP\AppFramework\App`` and may optionally implement 
     namespace OCA\MyApp\AppInfo;
 
     use OCA\MyApp\Listeners\UserDeletedListener;
-    use OCA\MyApp\Notification\Notifier;
+    use OCA\MyApp\Notifications\Notifier;
     use OCP\AppFramework\App;
     use OCP\AppFramework\Bootstrap\IBootContext;
     use OCP\AppFramework\Bootstrap\IBootstrap;
     use OCP\AppFramework\Bootstrap\IRegistrationContext;
+    use OCP\Notification\IManager;
     use OCP\User\Events;
 
     class Application extends App implements IBootstrap {
@@ -69,7 +70,7 @@ The class **must** extend ``OCP\AppFramework\App`` and may optionally implement 
             // ... registration logic goes here ...
 
             // Register the composer autoloader for packages shipped by this app, if applicable
-            @include_once __DIR__ . '/../../vendor/autoload.php';
+            include_once __DIR__ . '/../../vendor/autoload.php';
 
             $context->registerEventListener(
                 BeforeUserDeletedEvent::class,
@@ -81,7 +82,7 @@ The class **must** extend ``OCP\AppFramework\App`` and may optionally implement 
             // ... boot logic goes here ...
 
             /** @var IManager $manager */
-            $manager = \OC::$server->getNotificationManager();
+            $manager = $context->getAppContainer()->query(IManager::class);
             $manager->registerNotifierService(Notifier::class);
         }
 
@@ -143,6 +144,6 @@ class and query an instance like
     declare(strict_types=1);
 
     // Register the composer autoloader for packages shipped by this app, if applicable
-    @include_once __DIR__ . '/../vendor/autoload.php';
+    include_once __DIR__ . '/../vendor/autoload.php';
 
     $app = \OC::$server->query(\OCA\MyApp\AppInfo\Application::class);
