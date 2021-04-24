@@ -1,19 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2020 Nextcloud GmbH
+# Copyright (C) 2021 Nextcloud GmbH
 # This file is distributed under the same license as the Nextcloud latest User Manual package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
 # Andrey Atapin <atab@kirovedu.ru>, 2020
+# Nikita Epifanov, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud latest User Manual latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-05 20:47+0000\n"
+"POT-Creation-Date: 2021-04-19 08:14+0000\n"
 "PO-Revision-Date: 2019-11-07 20:29+0000\n"
-"Last-Translator: Andrey Atapin <atab@kirovedu.ru>, 2020\n"
+"Last-Translator: Nikita Epifanov, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/nextcloud/teams/64236/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -94,21 +95,19 @@ msgstr "Как можно отключить шифрование?"
 msgid ""
 "The only way to disable encryption is to run the `\"decrypt all\" "
 "<https://docs.nextcloud.org/server/latest/admin_manual/configuration_server/occ_command.html"
-"#encryption-label>`_."
+"#encryption-label>`_ script, which decrypts all files and disables "
+"encryption."
 msgstr ""
 "Единственный способ отключить шифрование - запустить `«дешифровать все» "
 "<https://docs.nextcloud.org/server/latest/admin_manual/configuration_server/occ_command.html"
-"#encryption-label>`_."
+"#encryption-label>`_ скрипт, который расшифровывает все файлы и отключает "
+"шифрование. ."
 
 #: ../../files/encrypting_files.rst:41
-msgid "Script, which decrypts all files and disables encryption."
-msgstr "Скрипт, который расшифровывает все файлы и отключает шифрование."
-
-#: ../../files/encrypting_files.rst:44
 msgid "Is it possible to disable encryption with the recovery key?"
 msgstr "Можно ли отключить шифрование с помощью ключа восстановления?"
 
-#: ../../files/encrypting_files.rst:46
+#: ../../files/encrypting_files.rst:43
 msgid ""
 "Yes, *if* every user uses the `file recovery key "
 "<https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html"
@@ -122,34 +121,29 @@ msgstr ""
 "<https://docs.nextcloud.org/server/latest/admin_manual/configuration_server/occ_command.html"
 "#encryption-label>`_ будет использовать его для дешифрования всех файлов."
 
-#: ../../files/encrypting_files.rst:53
+#: ../../files/encrypting_files.rst:50
 msgid "Can encryption be disabled without the user's password?"
 msgstr "Можно ли отключить шифрование без пароля пользователя?"
 
-#: ../../files/encrypting_files.rst:55
+#: ../../files/encrypting_files.rst:52
 msgid ""
 "If you don't have the users password or `file recovery key "
 "<https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html"
-"#enabling-users-file-recovery-keys>`_,"
+"#enabling-users-file-recovery-keys>`_, then there is no way to decrypt all "
+"files. What's more, running it on login would be dangerous, because you "
+"would most likely run into timeouts."
 msgstr ""
-"Если у вас нет пароля пользователя или `ключа восстановления файла  "
+"Если у вас нет пароля пользователя или `ключа восстановления файла "
 "<https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html"
-"#enabling-users-file-recovery-keys>`_,"
+"#enabling-users-file-recovery-keys>`_, тогда нет возможности расшифровать "
+"все файлы. Более того, запускать его при входе в систему было бы опасно, "
+"потому что вы, скорее всего, столкнулись бы с тайм-аутом."
 
-#: ../../files/encrypting_files.rst:60
-msgid ""
-"then there is no way to decrypt all files. What's more, running it on login "
-"would be dangerous, because you would most likely run into timeouts."
-msgstr ""
-"тогда нет возможности расшифровать все файлы. Более того, запускать его при "
-"входе в систему будет опасно, потому что вы, скорее всего, столкнетесь с "
-"таймаутами."
-
-#: ../../files/encrypting_files.rst:64
+#: ../../files/encrypting_files.rst:58
 msgid "Is it planned to move this to the next user login or a background job?"
 msgstr "Планируется ли реализовать это позже?"
 
-#: ../../files/encrypting_files.rst:66
+#: ../../files/encrypting_files.rst:60
 msgid ""
 "If we did that, then we would need to store your login password in the "
 "database. This could be seen as a security issue, so nothing like that is "
@@ -159,12 +153,12 @@ msgstr ""
 "базу данных. Это можно рассматривать как проблему безопасности, поэтому "
 "ничего подобного не планируется."
 
-#: ../../files/encrypting_files.rst:70
+#: ../../files/encrypting_files.rst:64
 msgid "Is group Sharing possible with the recovery key?"
 msgstr ""
 "Возможно ли совместное использование группы с помощью ключа восстановления?"
 
-#: ../../files/encrypting_files.rst:72
+#: ../../files/encrypting_files.rst:66
 msgid ""
 "If you mean adding users to groups and make it magically work? No. This only"
 " works with the master key."
@@ -172,11 +166,11 @@ msgstr ""
 "Если вы хотите добавить пользователей в группы и заставить их работать? Нет,"
 " это работает только с главным ключом."
 
-#: ../../files/encrypting_files.rst:76
+#: ../../files/encrypting_files.rst:70
 msgid "Using encryption"
 msgstr "Использование шифрования"
 
-#: ../../files/encrypting_files.rst:78
+#: ../../files/encrypting_files.rst:72
 msgid ""
 "Nextcloud encryption is pretty much set it and forget it, but you have a few"
 " options you can use."
@@ -184,13 +178,13 @@ msgstr ""
 "Шифрование Nextcloud в основном не требует настроек, но некоторые настройки "
 "вы можете менять."
 
-#: ../../files/encrypting_files.rst:81
+#: ../../files/encrypting_files.rst:75
 msgid ""
 "When your Nextcloud admin enables encryption for the first time, you must "
 "log out and then log back in to create your encryption keys and encrypt your"
 " files. When encryption has been enabled on your Nextcloud server you will "
 "see a yellow banner on your Files page warning you to log out and then log "
-"back in."
+"back in:"
 msgstr ""
 "Когда администратор Nextcloud впервые включает шифрование, вы должны выйти "
 "из системы, а затем снова войти в нее, чтобы создать ключи шифрования и "
@@ -198,7 +192,7 @@ msgstr ""
 "увидите желтый значок на странице «Файлы», предупреждающий вас о "
 "необходимости выйти из системы, а затем снова войти в нее."
 
-#: ../../files/encrypting_files.rst:88
+#: ../../files/encrypting_files.rst:83
 msgid ""
 "When you log back in it takes a few minutes to work, depending on how many "
 "files you have, and then you are returned to your default Nextcloud page."
@@ -207,7 +201,7 @@ msgstr ""
 "зависимости от того, сколько у вас файлов, а затем вы возвращаетесь на "
 "страницу по умолчанию Nextcloud."
 
-#: ../../files/encrypting_files.rst:94
+#: ../../files/encrypting_files.rst:90
 msgid ""
 "You must never lose your Nextcloud password, because you will lose access to"
 " your files. Though there is an optional recovery option that your Nextcloud"
@@ -219,11 +213,11 @@ msgstr ""
 "которую может включить администратор Nextcloud; см. раздел «Пароль ключа "
 "восстановления» (ниже), чтобы узнать об этом."
 
-#: ../../files/encrypting_files.rst:100
+#: ../../files/encrypting_files.rst:96
 msgid "Sharing encrypted files"
 msgstr "Совместное использование зашифрованных файлов"
 
-#: ../../files/encrypting_files.rst:102
+#: ../../files/encrypting_files.rst:98
 msgid ""
 "Only users who have private encryption keys have access to shared encrypted "
 "files and folders. Users who have not yet created their private encryption "
@@ -240,7 +234,7 @@ msgstr ""
 "«Приложение шифрования включено, но ваши ключи не инициализированы, "
 "пожалуйста, выйдите из системы и войдите снова»."
 
-#: ../../files/encrypting_files.rst:109
+#: ../../files/encrypting_files.rst:105
 msgid ""
 "Share owners may need to re-share files after encryption is enabled; users "
 "trying to access the share will see a message advising them to ask the share"
@@ -258,11 +252,11 @@ msgstr ""
 "обновляет шифрование, и затем владелец общего ресурса может удалить "
 "отдельные общие ресурсы."
 
-#: ../../files/encrypting_files.rst:117
+#: ../../files/encrypting_files.rst:113
 msgid "Recovery key password"
 msgstr "Восстановления ключа шифрования"
 
-#: ../../files/encrypting_files.rst:119
+#: ../../files/encrypting_files.rst:115
 msgid ""
 "If your Nextcloud administrator has enabled the recovery key feature, you "
 "can choose to use this feature for your account. If you enable \"Password "
@@ -279,11 +273,11 @@ msgstr ""
 "восстановления не активирован, восстановление файлов невозможно, если вы "
 "потеряете пароль для входа."
 
-#: ../../files/encrypting_files.rst:129
+#: ../../files/encrypting_files.rst:126
 msgid "Files not encrypted"
 msgstr "Файлы не зашифрованы"
 
-#: ../../files/encrypting_files.rst:131
+#: ../../files/encrypting_files.rst:128
 msgid ""
 "Only the data in your files is encrypted, and not the filenames or folder "
 "structures. These files are never encrypted:"
@@ -291,27 +285,27 @@ msgstr ""
 "Зашифрованы только данные в ваших файлах, а не имена файлов или структуры "
 "папок. Эти файлы никогда не шифруются:"
 
-#: ../../files/encrypting_files.rst:134
+#: ../../files/encrypting_files.rst:131
 msgid "Old files in the trash bin."
 msgstr "Старые файлы в корзине."
 
-#: ../../files/encrypting_files.rst:135
+#: ../../files/encrypting_files.rst:132
 msgid "Image thumbnails from the Gallery app."
 msgstr "Миниатюры изображений из приложения Галерея."
 
-#: ../../files/encrypting_files.rst:136
+#: ../../files/encrypting_files.rst:133
 msgid "Previews from the Files app."
 msgstr "Миниатюры предварительного просмотра из приложения Файлы."
 
-#: ../../files/encrypting_files.rst:137
+#: ../../files/encrypting_files.rst:134
 msgid "The search index from the full text search app."
 msgstr "Индекс поиска из приложения полнотекстового поиска."
 
-#: ../../files/encrypting_files.rst:138
+#: ../../files/encrypting_files.rst:135
 msgid "Third-party app data"
 msgstr "Данные сторонних приложений"
 
-#: ../../files/encrypting_files.rst:140
+#: ../../files/encrypting_files.rst:137
 msgid ""
 "Only those files that are shared with third-party storage providers can be "
 "encrypted, the rest of the files may not be encrypted."
@@ -319,11 +313,11 @@ msgstr ""
 "Только те файлы, которые используются сторонними поставщиками хранилищ, "
 "могут быть зашифрованы, остальные файлы могут быть не зашифрованы."
 
-#: ../../files/encrypting_files.rst:144
+#: ../../files/encrypting_files.rst:141
 msgid "Change private key password"
 msgstr "Изменить пароль закрытого ключа"
 
-#: ../../files/encrypting_files.rst:146
+#: ../../files/encrypting_files.rst:143
 msgid ""
 "This option is only available if the encryption password has not been "
 "changed by the administrator, but only the log-in password. This can occur "
