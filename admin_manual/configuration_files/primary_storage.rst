@@ -154,7 +154,31 @@ The class to be used is :code:`\\OC\\Files\\ObjectStore\\S3`
 Multibucket Object Store
 ------------------------
 
-It's possible to configure Nextcloud to distribute its data over multiple buckets
-for scalability purpose. You can find out more information about upscaling with
-object storage and Nextcloud in the
+It's possible to configure Nextcloud to distribute the data over multiple buckets
+for scalability purposes.
+
+To setup multiple buckets, use :code:`'objectstore_multibucket'` storage backend
+in :code:`config.php`:
+
+::
+
+	'objectstore_multibucket' => [
+		'class' => 'Object\\Storage\\Backend\\Class',
+		'arguments' => [
+			// optional, defaults to 64
+			'num_buckets' => 64,
+			// will be postfixed by an integer in the range from 0 to (num_nuckets-1)
+			'bucket' => 'nextcloud_',
+			...
+		],
+	],
+
+Multibucket object store backend maps every user to a range of buckets and saves
+all files for that user in their corresponding bucket.
+
+.. note:: While it is possible to change the number of buckets used by an existing Nextcloud
+          instance, the user-to-buckets mapping is only created once, so only newly created
+          users will be mapped to the updated range of buckets.
+
+You can find out more information about upscaling with object storage and Nextcloud in the
 `Nextcloud customer portal <https://portal.nextcloud.com/article/object-store-as-primary-storage-16.html>`_.
