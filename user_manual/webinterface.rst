@@ -5,28 +5,23 @@ The Nextcloud Web interface
 You can connect to your Nextcloud server using any Web browser. Just point it to
 your Nextcloud server URL (e.g. cloud.example.com) and enter your username and password:
 
-.. image:: images/login_page.png
-   :alt:
+.. figure:: images/login_page.png
+     :alt: Nextcloud login screen.
 
 Web browser requirements
 ------------------------
 
-For the best experience with the Nextcloud web interface, we recommend that you use the
+For the best experience with the Nextcloud web interface, we recommend that you use the 
 latest and supported version of a browser from this list:
 
-.. No need to translate
 * Microsoft **Internet Explorer**
-.. No need to translate
 * Microsoft **Edge**
-.. No need to translate
 * Mozilla **Firefox**
-.. No need to translate
 * Google **Chrome**/Chromium
-.. No need to translate
 * Apple **Safari**
 
 .. note:: If you want to use Nextcloud Talk you need to run Mozilla **Firefox** 52+
-   or Google **Chrome**/Chromium 49+ to have the full experience with video calls and
+   or Google **Chrome**/Chromium 49+ to have the full experience with video calls and 
    screensharing. Google **Chrome**/Chromium requires a additional plugin for screensharing.
 
 Navigating the main user interface
@@ -34,10 +29,10 @@ Navigating the main user interface
 
 By default, the Nextcloud Web interface opens to your Dashboard or Files page:
 
-.. image:: images/files_page.png
+.. figure:: images/files_page.png
      :scale: 75%
-   :alt:
-
+     :alt: The main Files view.
+     
 In Files you can add, remove, and share files, and make changes based on the access privileges
 set by you (if you are administering the server) or by your server administrator.
 

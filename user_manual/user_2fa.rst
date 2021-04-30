@@ -4,7 +4,7 @@ Using two-factor authentication
 
 Two-factor authentication (2FA) is a way to protect your Nextcloud account
 against unauthorized access. It works by requiring two different 'proofs' of
-your identity. For example, *something you know* (like a password) and
+your identity. For example, *something you know* (like a password) and 
 *something you have* like a physical key. Typically, the first factor is a
 password like you already have and the second can be a text message you
 receive or a code you generate on your phone or another device
@@ -21,8 +21,8 @@ Configuring two-factor authentication
 In your Personal Settings look up the Second-factor Auth setting. In this
 example this is TOTP, a Google Authenticator compatible time-based code:
 
-.. image:: images/totp_enable.png
-   :alt:
+.. figure:: images/totp_enable.png
+     :alt: TOTP configuration.
 
 You will see your secret and a QR code which can be scanned by the TOTP app
 on your phone (or another device). Depending on the app or tool, type in the
@@ -38,13 +38,13 @@ unlock your account. It effectively functions as a backup 2nd factor. To
 get the backup codes, go to your Personal Settings and look under Second-factor
 Auth settings. Choose *Generate backup codes*:
 
-.. image:: images/2fa_backupcode_1.png
-   :alt:
+.. figure:: images/2fa_backupcode_1.png
+     :alt: 2FA backup code generator
 
 You will then be presented with a list of one-time-use backup codes:
-
-.. image:: images/2fa_backupcode_2.png
-   :alt:
+     
+.. figure:: images/2fa_backupcode_2.png
+     :alt: 2FA backup codes
 
 You should put these codes in a safe spot, somewhere you can find them. Don't
 put them together with your 2nd factor like your mobile phone but make sure that
@@ -59,13 +59,13 @@ enter the TOTP code in your browser. If you enable not only the TOTP factor
 but another one, you will see a selection screen on which you can choose
 two-factor method for this login. Select TOTP:
 
-.. image:: images/totp_login_1.png
-   :alt:
+.. figure:: images/totp_login_1.png
+     :alt: Choosing a two-factor authentication method.
 
 Now, just enter your code:
 
-.. image:: images/totp_login_2.png
-   :alt:
+.. figure:: images/totp_login_2.png
+     :alt: Entering TOTP code at login.
 
 If the code was correct you will be redirected to your Nextcloud account.
 
@@ -91,5 +91,6 @@ Using client applications with two-factor authentication
 
 Once you have enabled 2FA, your clients will no longer be able to connect with
 just your password unless they also have support for two-factor authentication.
-To solve this, you should generate device specific passwords for them. See
+To solve this, you should generate device specific passwords for them. See 
 :doc:`session_management` for more information on how to do this.
+

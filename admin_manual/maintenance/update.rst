@@ -78,43 +78,37 @@ steps:
     section as well as the update notification is only available if the update
     notication app is enabled in the apps management.
 
-.. image:: images/updater-1-update-available.png
-   :alt:
+.. figure:: images/updater-1-update-available.png
 
 2.  Click the button "Open updater".
 
-.. image:: images/updater-2-open-updater.png
-   :alt:
+.. figure:: images/updater-2-open-updater.png
 
 3.  Verify the information that is shown and click the button "Start update"
     to start the update.
 
-.. image:: images/updater-3-running-step.png
-   :alt:
+.. figure:: images/updater-3-running-step.png
 
 4.  In case an error happens or the check failed the updater stops processing
     and gives feedback. You can now try to solve the problem and click the
     "Retry update" button. This will continue the update and re-run the failed
     step. It will not re-run the previous succeeded steps.
 
-.. image:: images/updater-4-failed-step.png
-   :alt:
+.. figure:: images/updater-4-failed-step.png
 
 5. In case you close the updater, before it finished you can just open the
    updater page again and proceed at the last succeeded step. Closing the web
    page will still execute the running step but will not continue with the next
    one, because this is triggered by the open updater page.
 
-.. image:: images/updater-5-continue-update.png
-   :alt:
+.. figure:: images/updater-5-continue-update.png
 
 6. Once all steps are executed the updater will ask you a final question:
    "Keep maintenance mode active?". This allows you to use either the web based
    upgrade page or the command line based upgrade procedure (``occ upgrade``).
    Command line access is required if the maintenance mode is kept active.
 
-.. image:: images/updater-6-maintenance-mode.png
-   :alt:
+.. figure:: images/updater-6-maintenance-mode.png
 
 7. Done. You now can continue either to the web based upgrade page or run
    ``occ upgrade``. The two examples "Web based upgrade" and "Command line
@@ -126,17 +120,14 @@ steps:
 This is how the web based update would continue:
 
 .. image:: images/updater-7-disable-maintenance.png
-   :alt:
 
 .. image:: images/updater-9-upgrade-page.png
-   :alt:
 
 **Command line based upgrade**
 
 This is how the command line based update would continue:
 
 .. image:: images/updater-8-keep-maintenance.png
-   :alt:
 
 
 .. code::
@@ -178,7 +169,6 @@ The steps are basically the same as for the web based updater:
     notication app is enabled in the apps management.
 
 .. image:: images/updater-1-update-available.png
-   :alt:
 
 2. Instead of clicking that button you can now invoke the command line based
    updater by going into the `updater/` directory in the Nextcloud directory
@@ -186,17 +176,14 @@ The steps are basically the same as for the web based updater:
    ``sudo -u www-data php /var/www/nextcloud/updater/updater.phar``)
 
 .. image:: images/updater-cli-2-start-updater.png
-   :alt:
    :class: terminal-image
 
 3.  Verify the information that is shown and enter "Y" to start the update.
 
 .. image:: images/updater-cli-3-running-step.png
-   :alt:
    :class: terminal-image
 
 .. image:: images/updater-cli-4-failed-step.png
-   :alt:
    :class: terminal-image
 
 4.  In case an error happens or the check failed the updater stops processing
@@ -205,7 +192,6 @@ The steps are basically the same as for the web based updater:
     It will not re-run the previous succeeded steps.
 
 .. image:: images/updater-cli-5-continue-update.png
-   :alt:
    :class: terminal-image
 
 6. Once all steps are executed the updater will ask you a final question:
@@ -215,14 +201,12 @@ The steps are basically the same as for the web based updater:
    `Please now execute "./occ upgrade" to finish the upgrade.`.
 
 .. image:: images/updater-cli-6-run-command.png
-   :alt:
    :class: terminal-image
 
 7. Once the ``occ upgrade`` is done you get asked if the maintenance mode
    should be kept active.
 
 .. image:: images/updater-cli-7-maintenance.png
-   :alt:
    :class: terminal-image
 
 Batch mode for command line based updater
@@ -239,5 +223,5 @@ To execute this, run the command with the ``--no-interaction`` option. (i.e.
 ``sudo -u www-data php /var/www/nextcloud/updater/updater.phar --no-interaction``)
 
 .. image:: images/updater-cli-8-no-interaction.png
-   :alt:
    :class: terminal-image
+

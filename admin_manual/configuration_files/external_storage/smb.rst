@@ -37,8 +37,8 @@ modified. This is concatenated with the username, so the backend gets
           ``libsmbclient-php``, a native PHP module for connecting to
           SMB servers.
 
-.. image:: images/smb.png
-   :alt:
+.. figure:: images/smb.png
+   :alt: Samba external storage configuration.
    :scale: 75%
 
 See :doc:`../external_storage_configuration_gui` for additional mount

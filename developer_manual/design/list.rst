@@ -15,8 +15,8 @@ We provide a standardized structure for this specific purpose.
 Basic layout
 =============
 
-.. image:: ../images/list.png
-   :alt:
+.. figure:: ../images/list.png
+   :alt: Content list screenshot
 
 .. code-block:: html
 
@@ -83,7 +83,7 @@ Rules and information
    * In case of a popovermenu, see the :ref:`popover menu <popovermenulist>`.
    * As always, the **JS** is still needed to toggle the ``open`` class on this menu
 * If you use the ``app-content-list`` standard, the ``app-content-details`` div will be hidden in mobile mode (full screen).
-  You will need to add the ``showdetails`` class to the ``app-content-list`` to show the main content.
+  You will need to add the ``showdetails`` class to the ``app-content-list`` to show the main content. 
   On mobile view, the whole list/details section (depending on which is shown) will scroll the body.
 
 .. _popovermenulist:
@@ -93,8 +93,9 @@ Popovermenu in item
 
 If you need a menu inside an item, you need to wrap it with the ``icon-more`` ``div`` inside a ``app-content-list-menu`` div.
 
-.. image:: ../images/list-menu.png
-   :alt:
+.. figure:: ../images/list-menu.png
+   :alt: Content list with menu
+   :figclass: figure-with-code
 
 .. code-block:: html
 
