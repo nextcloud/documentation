@@ -67,8 +67,7 @@ Much content from https://community.kde.org/Guidelines_and_HOWTOs/Bug_triaging
 
 The goal of triaging is to have only useful bug reports for the developers. And you don't have to know much to be able to judge at least some bug reports to be less than useful. There are duplications, incomplete reports and so on. Here is the work flow for each bug:
 
-.. image:: ../images/triageworkflow.png
-   :alt:
+.. figure:: ../images/triageworkflow.png
    :scale: 50
 
 Let's go over each step.
@@ -85,7 +84,7 @@ If you can't find anything, look in closed bug reports. The problem might be sol
 When the issue is a feature request, you can be helpful in the same way: merge related requests by adding information of one to the other and closing the first.
 
 .. note:: Be polite: when you need to request information or feedback be clear and polite, and you will get more information in less time. Think about how you'd like to be treated, were you to report a bug!
-.. note:: You can answer more quickly and friendly using one of `these templates <https://gist.github.com/jancborchardt/6155185#clean-up-inactive-issues>`_.
+.. note:: You can answer more quickly and friendly using one of `these templates <https://gist.github.com/jancborchardt/6155185#clean-up-inactive-issues>`_. 
 .. note:: Often our GitHub issue tracker is a place for discussions about solutions. Be friendly, inclusive and respect other people's position.
 
 Determining relevance of issue
@@ -130,3 +129,5 @@ Now, the developers can pick the issue up. Note that while we wish we would alwa
 
 
 **Credit:** this document is in debt to the extensive `KDE guide to bug triaging <https://community.kde.org/Guidelines_and_HOWTOs/Bug_triaging>`_.
+
+

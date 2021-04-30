@@ -14,8 +14,8 @@ needs.
 Apps
 ----
 
-.. image:: images/apps_overview.png
-   :alt:
+.. figure:: images/apps_overview.png
+   :alt: Apps page for enabling and disabling apps.
 
 During the Nextcloud server installation, some apps are enabled by default.
 To see which apps are enabled go to your Apps page.
@@ -23,7 +23,7 @@ To see which apps are enabled go to your Apps page.
 Those apps are supported and developed by Nextcloud GmbH directly and
 have an **Featured**-tag. See :doc:`installation/apps_supported` for a list of supported apps.
 
-.. note:: Your Nextcloud server needs to be able to communicate with
+.. note:: Your Nextcloud server needs to be able to communicate with 
           ``https://apps.nextcloud.com`` to list and download apps. Please make sure to whitelist this target in your firewall or proxy if necessary.
 
 .. note:: To get access to work-arounds, long-term-support, priority bug fixing
@@ -38,8 +38,8 @@ All apps must be licensed under AGPLv3+ or any compatible license.
 Managing apps
 -------------
 
-.. image:: images/apps_store.png
-   :alt:
+.. figure:: images/apps_store.png
+   :alt: App store page for installing, enabling and disabling apps.
 
 You will see which apps are enabled, disabled and available. You'll also
 see additional app bundles and filters, such as Customization, Security and
@@ -117,6 +117,6 @@ To enable a self hosted apps store:
     "appstoreurl" => "https://my.appstore.instance/v1",
 
 
-By default the apps store is enabled and configured to use ``https://apps.nextcloud.com/api/v1`` as apps store url. Nextcloud will fetch ``apps.json`` and ``categories.json`` from there. To use the defaults again remove **appstoreenabled** and **appstoreurl** from the configuration.
+By default the apps store is enabled and configured to use ``https://apps.nextcloud.com/api/v1`` as apps store url. Nextcloud will fetch ``apps.json`` and ``categories.json`` from there. To use the defaults again remove **appstoreenabled** and **appstoreurl** from the configuration. 
 
 Example: If ``categories.json`` is available at ``https://apps.nextcloud.com/api/v1/categories.json`` the apps store url is ``https://apps.nextcloud.com/api/v1``.

@@ -104,7 +104,7 @@ foreach($icons as $class => $icon) {
 		$outPath = $destinationDirectory . 'img/' . $path . '.png';
 
 		// filling the rst file
-		$rst .= ".. image:: img/$path.*\n";
+		$rst .= ".. figure:: img/$path.*\n";
 		if ($isWhite) {
 			$rst .= "   :class: white-icon\n";
 		}
@@ -118,7 +118,7 @@ foreach($icons as $class => $icon) {
 			print(" - creating dir $dir \n");
 			mkdir($dir, 0777, true);
 		}
-
+		
 		// ! can't use svg in rst
 		// copy original icon
 		// if (!@copy($sourceDirectory . $icon . '.svg', $destinationDirectory . 'img/' . $path . '.svg')) {
@@ -159,5 +159,7 @@ print(" - done! \n");
 
 // path = path.split('/')
 // 	localpath = '/'.join(path[3:5])
-// 	result += ".. image:: img/" + localpath + ".*\n   :height: 32\n   :width: 32\n\n   " + icon[1:] + "\n\n"
+// 	result += ".. figure:: img/" + localpath + ".*\n   :height: 32\n   :width: 32\n\n   " + icon[1:] + "\n\n"
 // 	os.system('inkscape -z img/' + localpath + '.svg -e img/' + localpath + '.png')
+
+

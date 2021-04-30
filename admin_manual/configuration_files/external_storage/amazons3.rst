@@ -17,7 +17,7 @@ access your S3 mount.
 The ``Enable SSL`` checkbox enables HTTPS connections; using HTTPS is always
 highly-recommended.
 
-.. image:: images/amazons3.png
+.. figure:: images/amazons3.png
    :alt:
 
 Optionally, you can override the hostname, port and region of your S3 server,
