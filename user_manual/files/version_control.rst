@@ -8,8 +8,7 @@ sidebar. This tab contains the history of the file where you can roll back a
 file to any previous version. Changes made at intervals greater than two minutes
 are saved in **data/[user]/files_versions**.
 
-.. image:: ../images/files_versioning.png
-   :alt:
+.. figure:: ../images/files_versioning.png
 
 To restore a specific version of a file, click the circular arrow to the left.
 Click on the timestamp to download it.

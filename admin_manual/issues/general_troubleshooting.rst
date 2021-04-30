@@ -91,8 +91,7 @@ contains just this line::
 Open this file in a Web browser by pointing your browser to
 ``localhost/phpinfo.php``:
 
-.. image:: ../images/phpinfo.png
-   :alt:
+.. figure:: ../images/phpinfo.png
 
 Your PHP version is at the top, and the rest of the page contains abundant
 system information such as active modules, active ``.ini`` files, and much more.

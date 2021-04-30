@@ -10,15 +10,15 @@ To access your personal settings:
 
    The Personal Settings Menu opens:
 
-   .. image:: images/oc_personal_settings_dropdown.png
-      :alt:
+   .. figure:: images/oc_personal_settings_dropdown.png
+      :alt: screenshot of user menu at top-right of Nextcloud Web GUI
 
    *Personal Settings Menu*
 
 2. Choose *Settings* from the drop down menu:
 
-   .. image:: images/personal_settings.png
-      :alt:
+   .. figure:: images/personal_settings.png
+      :alt: screenshot of user's Personal settings page
 
 .. note:: If you are an administrator, you can also manage users and administer
    the server. These links do not appear to a non-admin user.
