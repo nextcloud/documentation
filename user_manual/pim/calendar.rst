@@ -136,8 +136,8 @@ The month-view only requires a single click into the area of the specific day.
   .. image:: images/calendar_new-event_month.gif
      :alt:
 
-After that, you can type in the events name (e.g. **Meeting with Lukas**), choose
-the calendar in which you want to choose the event (e.g. **Personal**, **Work**)
+After that, you can type in the event's name (e.g. **Meeting with Lukas**), choose
+the calendar in which you want to choose the event (e.g. **Personal**, **Work**),
 check and concretize the time span or set the event as all-day event.
 
 If you want to edit advanced details such as the **Location**, a **Description**,
