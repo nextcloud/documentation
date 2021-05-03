@@ -43,7 +43,7 @@ Backup database
 MySQL/MariaDB
 ^^^^^^^^^^^^^
 
-MySQL or MariaDB, which is a drop-in MySQL replacement, is the recommended 
+MySQL or MariaDB, which is a drop-in MySQL replacement, is the recommended
 database engine. To backup MySQL/MariaDB::
 
     mysqldump --single-transaction -h [server] -u [username] -p[password] [db_name] > nextcloud-sqlbkp_`date +"%Y%m%d"`.bak
@@ -59,4 +59,3 @@ PostgreSQL
 ::
 
     PGPASSWORD="password" pg_dump [db_name] -h [server] -U [username] -f nextcloud-sqlbkp_`date +"%Y%m%d"`.bak
-
