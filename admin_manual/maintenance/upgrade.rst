@@ -18,11 +18,11 @@ When an update is available for your Nextcloud server, you will see a
 notification at the top of your Nextcloud Web interface. When you click the
 notification it brings you here, to this page.
 
-**It is best to keep your Nextcloud server upgraded regularly**, and to install
-all point releases and major releases.
-Major releases are 18, 19 or 20. Point releases are intermediate releases for each major release. For example 18.0.4 and 19.0.2 are point releases.
+**It is best to keep your Nextcloud server upgraded regularly**, and to install 
+all point releases and major releases. 
+Major releases are 18, 19 or 20. Point releases are intermediate releases for each major release. For example 18.0.4 and 19.0.2 are point releases. 
 
-Nextcloud must be upgraded step by step:
+Nextcloud must be upgraded step by step: 
   * Before you can upgrade to the next major release, Nextcloud upgrades to the latest point release.
   * Then run the upgrade again to upgrade to the next major release's latest point release.
   * **You cannot skip major releases.** Please re-run the upgrade until you have reached the highest available (or applicable) release.
@@ -45,11 +45,11 @@ Update notifications
 Nextcloud has an update notification app, that informs the administrator about
 the availability of an update. Then you decide which update method to use.
 
-.. image:: images/2-updates.png
-   :alt:
+.. figure:: images/2-updates.png
+   :alt: Both update notifications displayed on Admin page.
 
-The update notification is shown on every page, and the Updates section can be
-found on the admin page*
+   *Figure 1: The top banner is the update notification that is shown on every
+   page, and the Updates section can be found in the admin page*
 
 From there the web based updater can be used to fetch this new code. There is
 also an CLI based updater available, that does exactly the same as the web

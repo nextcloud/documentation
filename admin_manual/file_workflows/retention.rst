@@ -11,8 +11,8 @@ Example
 After installing the Retention app as described in :doc:`../apps_management`
 navigate to the configuration and locate the Workflow settings.
 
-    .. image:: images/retention_sample.png
-	   :alt:
+    .. figure:: images/retention_sample.png
+       :alt: Sample rule to delete files after 14 days.
 
 The rule from the example will delete all files tagged with ``Temporary file`` after 14 days.
 

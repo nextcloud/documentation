@@ -24,8 +24,7 @@ A random 15-digit token will be created. The link will look like ``https://cloud
 
 A number of options are available for public *folder* shares:
 
-.. image:: ../images/sharing_public_folder.png
-   :alt:
+.. figure:: ../images/sharing_public_folder.png
 
 * **Read only** to allow viewing and downloading
 * **Allow upload and editing**
@@ -39,8 +38,7 @@ A number of options are available for public *folder* shares:
 
 For public *file* shares, you may allow editing the file with one of Nextcloud's collaborative editing solutions:
 
-.. image:: ../images/sharing_public_file.png
-   :alt:
+.. figure:: ../images/sharing_public_file.png
 
 
 Internal shares with users and groups
@@ -48,35 +46,30 @@ Internal shares with users and groups
 
 When sharing with users, groups, circles or members of a Talk conversation, rights for the files or folder contents are adjustable:
 
-.. image:: ../images/sharing_internal.png
-   :alt:
+.. figure:: ../images/sharing_internal.png
 
-As a sharee, you can configure if you automatically want to accept all incoming shares and have them added to your root folder, or if you
+As a sharee, you can configure if you automatically want to accept all incoming shares and have them added to your root folder, or if you 
 want to be asked each time if you want to accept or decline the share.
 
-.. image:: ../images/sharing_internal_acceptNotification.png
-   :alt:
+.. figure:: ../images/sharing_internal_acceptNotification.png
 
 For adjusting the acceptance setting, go to **Settings** > **Personal** > **Sharing**:
 
-.. image:: ../images/sharing_autoAcceptSetting.png
-   :alt:
+.. figure:: ../images/sharing_autoAcceptSetting.png
 
 
 Others with access
 ------------------
 
-In order to find out if a file or folder is accessible to others through sharing of a superior folder
+In order to find out if a file or folder is accessible to others through sharing of a superior folder 
 hierarchy level, click on **Others with access** in the sharing tab:
 
-.. image:: ../images/sharing_others-with-access__collapsed.png
-   :alt:
+.. figure:: ../images/sharing_others-with-access__collapsed.png
 
 The list shows all users, groups, chats etc. that the current object has been given access to through
 sharing of a superior folder in the hierarchy:
 
-.. image:: ../images/sharing_others-with-access__details.png
-   :alt:
+.. figure:: ../images/sharing_others-with-access__details.png
 
 Click on the three dots to:
 
@@ -92,8 +85,8 @@ Click on the three dots to:
 Federated Shares
 ================
 
-Federation Sharing allows you to mount file shares from remote Nextcloud servers, in effect
-creating your own cloud of Nextclouds. You can create direct share links with
+Federation Sharing allows you to mount file shares from remote Nextcloud servers, in effect 
+creating your own cloud of Nextclouds. You can create direct share links with 
 users on other Nextcloud servers.
 
 Creating a new Federation Share
@@ -101,18 +94,16 @@ Creating a new Federation Share
 
 Federation sharing is enabled by default. Follow these steps to create a new share with other Nextcloud or ownCloud servers:
 
-Go to your ``Files`` page and click the Share icon on the file or directory
+Go to your ``Files`` page and click the Share icon on the file or directory 
 you want to share. In the sidebar enter the username and URL of the remote user
 in this form: ``<username>@<nc-server-url>``. In this example, that is
 ``bob@cloud.example.com``:
 
-.. image:: ../images/share-federation-1.png
-   :alt:
+.. figure:: ../images/share-federation-1.png
 
 The sharee is receiving a notification in their Nextcloud, allowing them to either accept or decline the incoming share:
 
-.. image:: ../images/share-federation-2-notification.png
-   :alt:
+.. figure:: ../images/share-federation-2-notification.png
 
 
 Adding a public share to your Nextcloud
@@ -121,5 +112,4 @@ Adding a public share to your Nextcloud
 Nextcloud public link share pages offer an option to add that file or folder as a federated share into your own Nextcloud instance.
 Just enter your ``<username>@<nc-server-url>`` just like shown for outbound shares above:
 
-.. image:: ../images/share-federation-3-public.png
-   :alt:
+.. figure:: ../images/share-federation-3-public.png

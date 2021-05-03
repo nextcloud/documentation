@@ -83,9 +83,9 @@ You can mount ClamAV Socket from the Docker Container to the host System as volu
 Also you need to edit config files as described above and added configuration for a local Socket. In this particular Image configuration parameters could be passed via ``CLAMD_SETTINGS_CSV``.
 
 For a Docker run this command::
-
+  
   docker run --name clamav -d -v /var/run/clamav/:/var/run/clamav/ -e CLAMD_SETTINGS_CSV="LocalSocket=/var/run/clamav/clamd.ctl" quay.io/ukhomeofficedigital/clamav:latest
-
+    
 For a Docker-compose use following settings::
 
   version: "3.6"
@@ -106,8 +106,7 @@ Place the ``files_antivirus`` app into the ``apps`` directory of your Nextcloud
 server. Then the app shows up on the Nextcloud Apps page where it simply can be
 enabled.
 
-.. image:: ../images/antivirus-app.png
-   :alt:
+.. figure:: ../images/antivirus-app.png
 
 Configuring ClamAV on Nextcloud
 -------------------------------
@@ -115,13 +114,11 @@ Configuring ClamAV on Nextcloud
 Next, go to your Nextcloud Admin page and set your Nextcloud logging level to
 Everything.
 
-.. image:: ../images/antivirus-logging.png
-   :alt:
+.. figure:: ../images/antivirus-logging.png
 
 Now find your Antivirus Configuration panel on your Admin page.
 
-.. image:: ../images/antivirus-config.png
-   :alt:
+.. figure:: ../images/antivirus-config.png
 
 ClamAV runs in one of three modes:
 
@@ -146,8 +143,7 @@ Daemon (Socket)
    netstat -a|grep clam
    unix 2 [ ACC ] STREAM LISTENING 15857 /var/run/clamav/clamd.ctl
 
-  .. image:: ../images/antivirus-daemon-socket.png
-   :alt:
+  .. figure:: ../images/antivirus-daemon-socket.png
 
   The ``Stream Length`` value sets the number of bytes read in one pass.
   10485760 bytes, or ten megabytes, is the default. This value should be
@@ -162,15 +158,13 @@ Daemon
   For the Daemon option you need the hostname or IP address of the remote
   server running ClamAV, and the server's port number.
 
-  .. image:: ../images/antivirus-daemon.png
-   :alt:
+  .. figure:: ../images/antivirus-daemon.png
 
 Executable
   The Executable option requires the path to ``clamscan``, which is the
   interactive ClamAV scanning command. Nextcloud should find it automatically.
 
-  .. image:: ../images/antivirus-executable.png
-   :alt:
+  .. figure:: ../images/antivirus-executable.png
 
 When you are satisfied with how ClamAV is operating, you might want to go
 back and change all of your logging to less verbose levels.

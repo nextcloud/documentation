@@ -11,8 +11,7 @@ sync your Nextcloud calendars and events with.
 When you first access the Calendar app, a default first calendar will be
 pre-generated for you.
 
-.. image:: images/calendar_application.png
-   :alt:
+.. figure:: images/calendar_application.png
 
 Managing your calendars
 -----------------------
@@ -23,8 +22,7 @@ Import a Calendar
 If you want to transfer your calendar and their respective events to your Nextcloud
 instance, importing is the best way to do so.
 
-.. image:: images/calendar_settings.png
-   :alt:
+.. figure:: images/calendar_settings.png
             :scale: 50%
 
 1. Click on the settings-icon labeled with ``Settings & Import`` at the left-bottom.
@@ -46,8 +44,7 @@ previous calendar, creating a new calendar is the way you should go.
 
 .. only:: html
 
-  .. image:: images/calendar_create.gif
-     :alt:
+  .. figure:: images/calendar_create.gif
 
 1. Click on ``+ New Calendar`` in the left sidebar.
 
@@ -68,14 +65,12 @@ hard drive or delete it forever.
           After deletion, there is no way of restoring the calendar unless you
           have a local backup.
 
-.. image:: images/calendar_dropdown.png
-   :alt:
+.. figure:: images/calendar_dropdown.png
             :scale: 50%
 
 1. Click on the three-dot-menu of the respective calendar.
 
-.. image:: images/calendar_editing.png
-   :alt:
+.. figure:: images/calendar_editing.png
             :scale: 50%
 
 2. Click on ``Edit``, ``Download`` or ``Delete``.
@@ -126,15 +121,13 @@ cursor over the area when the event is taking place.
 
 .. only:: html
 
-  .. image:: images/calendar_new-event_week.gif
-     :alt:
+  .. figure:: images/calendar_new-event_week.gif
 
 The month-view only requires a single click into the area of the specific day.
 
 .. only:: html
 
-  .. image:: images/calendar_new-event_month.gif
-     :alt:
+  .. figure:: images/calendar_new-event_month.gif
 
 After that, you can type in the event's name (e.g. **Meeting with Lukas**), choose
 the calendar in which you want to choose the event (e.g. **Personal**, **Work**),
@@ -161,8 +154,7 @@ Clicking on the ``Update``-button will update the event. To cancel your changes,
 
 If you open the sidebar view and click the three dot menu next to the event name, you have an option to export the event as an ``.ics`` file or remove the event from your calendar.
 
-  .. image:: images/calendar_event_menu.png
-     :alt:
+  .. figure:: images/calendar_event_menu.png
 
 Invite attendees to an event
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -170,8 +162,7 @@ Invite attendees to an event
 You may add attendees to an event to let them know they're invited. They will receive an email confirmation and will be able to confirm or cancel their participation to the event.
 Attendees may be other users on your Nextcloud instances, contacts in your addressbooks and direct email addresses. You also may change the level of participation per-attendees, or disable email confirmation for a specific attendee.
 
-  .. image:: images/calendar_event_invitation_level.png
-     :alt:
+  .. figure:: images/calendar_event_invitation_level.png
 
 .. tip:: When adding other Nextcloud users as attendees to an event, you may access their FreeBusy information if it's available, helping you to determine when is the best time slot for your event.
 
@@ -187,8 +178,7 @@ You can set up reminders to be notified before an event occurs. Currently suppor
 
 You may set reminders at a time relative to the event or at a specific date.
 
-.. image:: images/calendar_event_reminders.png
-   :alt:
+.. figure:: images/calendar_event_reminders.png
 
 .. note:: Only the calendar owner and people or groups with whom the calendar is shared with write access will get notifications. If you don't get any notifications but think you should, your Administrator could also have disabled this for your server.
 
@@ -202,8 +192,7 @@ An event may be set as "recurring", so that it can happen every day, week, month
 
 You can also tell when the recurrence ends.
 
-.. image:: images/calendar_event_repeat.png
-   :alt:
+.. figure:: images/calendar_event_repeat.png
 
 Birthday calendar
 -----------------
