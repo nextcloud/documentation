@@ -9,8 +9,8 @@ of the Nextcloud Server component but provided by featured and 3rd-party Nextclo
 
 
 Several 2FA apps are already available including
-`TOTP <https://en.wikipedia.org/wiki/Time-based_One-time_Password_Algorithm>`_, 
-a Telegram/Signal/SMS gateway and `U2F <https://en.wikipedia.org/wiki/Universal_2nd_Factor>`_. 
+`TOTP <https://en.wikipedia.org/wiki/Time-based_One-time_Password_Algorithm>`_,
+a Telegram/Signal/SMS gateway and `U2F <https://en.wikipedia.org/wiki/Universal_2nd_Factor>`_.
 
 
 Developers can `build new two-factor provider apps <https://docs.nextcloud.com/server/latest/developer_manual/app/two-factor-provider.html>`_.
@@ -25,7 +25,8 @@ with Google Authenticator and compatible apps. The apps are available in the
 Nextcloud App store so by navigating there and clicking **enable** for the app
 you want, 2FA will be installed and enabled on your Nextcloud server.
 
-.. figure:: ../images/2fa-app-install.png
+.. image:: ../images/2fa-app-install.png
+   :alt:
 
 Once 2FA has been enabled, users have to `activate it in their personal settings. <https://docs.nextcloud.com/server/latest/user_manual/en/user_2fa.html>`_
 
@@ -45,7 +46,8 @@ also be excluded for certain groups.
 
 These settings can be found in the administrator's security settings.
 
-.. figure:: ../images/2fa-admin-settings.png
+.. image:: ../images/2fa-admin-settings.png
+   :alt:
 
 When groups are selected/excluded, they use the following logic to determine if
 a user has 2FA enforced:

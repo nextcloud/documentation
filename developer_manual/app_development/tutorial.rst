@@ -33,6 +33,12 @@ Now open another terminal window and start the development server::
     cd nextcloud
     php -S localhost:8080
 
+*Alternative Setup*:
+Launch with podman (leaner than docker and allows you to run containers without being root):
+    podman run --name=nextcloud --replace=true -p 8080:80 -v /YOUR_FULL_PATH/apps:/var/www/html/custom_apps docker.io/nextcloud
+Launch with docker (not tested):
+    sudo docker run --name=nextcloud --replace=true -p 8080:80 -v /YOUR_FULL_PATH/apps:/var/www/html/custom_apps nextcloud
+
 Afterwards a skeleton app can be created in the `app store <https://apps.nextcloud.com/developer/apps/generate>`_.
 
 Download the compressed file that contains the generated app and extract it into your ``apps/`` directory. Afterwards the application can be enabled on the `apps page <http://localhost:8080/index.php/settings/apps>`_.
@@ -266,7 +272,7 @@ so for example **notestutorial/lib/Migration/Version000000Date20181013124731.php
 
 To create the tables in the database, run the :ref:`migration  <migration_console_command>` command::
 
-   php ./occ migrations:excute <appId> <versionNumber>
+   php ./occ migrations:execute <appId> <versionNumber>
 
    Example: sudo -u www-data php ./occ migrations:execute photos 000000Date20201002183800
 
@@ -332,12 +338,12 @@ Entities are returned from so-called :doc:`Mappers <storage/database>`. Let's cr
     <?php
     namespace OCA\NotesTutorial\Db;
 
-    use OCP\IDbConnection;
+    use OCP\IDBConnection;
     use OCP\AppFramework\Db\QBMapper;
 
     class NoteMapper extends QBMapper {
 
-        public function __construct(IDbConnection $db) {
+        public function __construct(IDBConnection $db) {
             parent::__construct($db, 'notestutorial_notes', Note::class);
         }
 

@@ -328,6 +328,9 @@ Defaults to ``60*60*24*15`` seconds (15 days)
 
 The lifetime of a session after inactivity.
 
+The maximum possible time is limited by the session.gc_maxlifetime php.ini setting
+which would overwrite this option if it is less than the value in the config.php
+
 Defaults to ``60*60*24`` seconds (24 hours)
 
 ::
@@ -392,6 +395,16 @@ By default WebAuthn is available but it can be explicitly disabled by admins
 
 ::
 
+	'hide_login_form' => false,
+
+By default the login form is always available. There are cases (SSO) where an
+admin wants to avoid users entering their credentials to the system if the SSO
+app is unavailable.
+
+This will show an error. But the the direct login still works with adding ?direct=1
+
+::
+
 	'skeletondirectory' => '/path/to/nextcloud/core/skeleton',
 
 The directory where the skeleton files are located. These files will be
@@ -406,7 +419,7 @@ Defaults to ``core/skeleton`` in the Nextcloud directory.
 
 ::
 
-	'templatesdirectory' => '/path/to/nextcloud/templates',
+	'templatedirectory' => '/path/to/nextcloud/templates',
 
 The directory where the template files are located. These files will be
 copied to the template directory of new users. Leave empty to not copy any
@@ -1828,10 +1841,15 @@ Defaults to the theming app which is shipped since Nextcloud 9
 
 ::
 
-	'cipher' => 'AES-256-CFB',
+	'cipher' => 'AES-256-CTR',
 
-The default cipher for encrypting files. Currently AES-128-CFB and
-AES-256-CFB are supported.
+The default cipher for encrypting files. Currently supported are:
+ - AES-256-CTR
+ - AES-128-CTR
+ - AES-256-CFB
+ - AES-128-CFB
+
+Defaults to ``AES-256-CTR``
 
 ::
 

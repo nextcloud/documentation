@@ -21,8 +21,8 @@ Example
 After installing the Files automated tagging app as described in :doc:`../apps_management`
 navigate to the configuration and locate the Workflow settings.
 
-    .. figure:: images/automated_tagging_sample_rule.png
-       :alt: Example rule to assign a restricted tag.
+    .. image:: images/automated_tagging_sample_rule.png
+	   :alt:
 
 In the example you can see a simple rule with only one condition.
 It will tag all files with the restricted tag ``Protected file`` that are
@@ -33,8 +33,8 @@ both work fine without users being able to work around them.
 In this case folder will be also tagged with tag ``Protected file``, to avoid
 this, simply modify the rule to exclude Directory ``httpd/unix-directory`` from it.
 
-    .. figure:: images/automated_tagging_sample_rule_exclude_folder.png
-       :alt: Example rule to assign a restricted tag except to Directory.
+    .. image:: images/automated_tagging_sample_rule_exclude_folder.png
+	   :alt:
 
 Available rules
 ---------------

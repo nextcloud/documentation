@@ -34,11 +34,8 @@ How can encryption be disabled?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The only way to disable encryption is to run the `"decrypt all"
-<https://docs.nextcloud.org/server/latest/admin_manual/configuration_server/occ_command.html#encryption-label>`_.
-
-.. TODO ON RELEASE: Update version number above on release
-
-Script, which decrypts all files and disables encryption.
+<https://docs.nextcloud.org/server/latest/admin_manual/configuration_server/occ_command.html#encryption-label>`_
+script, which decrypts all files and disables encryption.
 
 Is it possible to disable encryption with the recovery key?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -54,9 +51,6 @@ Can encryption be disabled without the user's password?
 
 If you don't have the users password or `file recovery key
 <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_,
-
-.. TODO ON RELEASE: Update version number above on release
-
 then there is no way to decrypt all files. What's more, running it on login
 would be dangerous, because you would most likely run into timeouts.
 
@@ -83,12 +77,14 @@ out and then log back in to create your encryption keys and encrypt your files.
 When encryption has been enabled on your Nextcloud server you will see a yellow
 banner on your Files page warning you to log out and then log back in:
 
-.. figure:: ../images/encryption1.png
+.. image:: ../images/encryption1.png
+   :alt:
 
 When you log back in it takes a few minutes to work, depending on how many
 files you have, and then you are returned to your default Nextcloud page.
 
-.. figure:: ../images/encryption2.png
+.. image:: ../images/encryption2.png
+   :alt:
 
 
 .. note:: You must never lose your Nextcloud password, because you will lose
@@ -123,7 +119,8 @@ enables the administrator to recover your files in the event you lose your
 Nextcloud password. If the recovery key is not enabled, then there is no way to
 restore your files if you lose your login password.
 
-.. figure:: ../images/encryption3.png
+.. image:: ../images/encryption3.png
+   :alt:
 
 Files not encrypted
 -------------------

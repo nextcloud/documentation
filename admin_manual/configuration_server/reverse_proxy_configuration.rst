@@ -21,7 +21,6 @@ Set the :file:`trusted_proxies` parameter as an array of:
 * IPv4 addresses, 
 * IPv4 ranges in CIDR notation
 * IPv6 addresses
-* host to resolve
 
 to define the servers Nextcloud should trust as proxies. This parameter
 provides protection against client spoofing, and you should secure those
@@ -120,19 +119,19 @@ NGINX
 or
 
 ::
+
   rewrite ^/\.well-known/carddav https://$server_name/remote.php/dav/ redirect;
   rewrite ^/\.well-known/caldav https://$server_name/remote.php/dav/ redirect;
 
-CADDY
+Caddy
 ^^^^^
 ::
 
     subdomain.example.com {
-            reverse_proxy /.well-known/carddav {$NEXTCLOUD_HOST:localhost}/remote.php/dav
+        rewrite /.well-known/carddav /remote.php/dav
+        rewrite /.well-known/caldav /remote.php/dav
 
-            reverse_proxy /.well-known/caldav {$NEXTCLOUD_HOST:localhost}/remote.php/dav
-
-            reverse_proxy * {$NEXTCLOUD_HOST:localhost}
+        reverse_proxy {$NEXTCLOUD_HOST:localhost}
     }
 
 

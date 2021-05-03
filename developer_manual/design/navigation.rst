@@ -31,9 +31,8 @@ The goal is to have an homogeneity of design across all apps using this button.
 Basic layout
 -------------
 
-.. figure:: ../images/newbutton.png
-   :alt: Navigation with a new button
-   :figclass: figure-with-code
+.. image:: ../images/newbutton.png
+   :alt:
 
 .. code-block:: html
 
@@ -81,9 +80,8 @@ We implemented various essential functions and provide easy way of using them.
 Basic layout
 ------------
 
-.. figure:: ../images/navigation.png
-   :alt: Navigation screenshot
-   :figclass: figure-with-code
+.. image:: ../images/navigation.png
+   :alt:
 
 .. code-block:: html
 
@@ -147,9 +145,8 @@ The menu needs to be placed after the ``app-navigation-entry-utils``.
 
 For the global rules and/or layout, you can check the dedicated :ref:`popover menu section <popovermenu>`.
 
-.. figure:: ../images/navigation-menu.png
-   :alt: Navigation menu
-   :figclass: figure-with-code
+.. image:: ../images/navigation-menu.png
+   :alt:
 
 .. code-block:: html
 
@@ -218,9 +215,8 @@ Counter
 If you need to add a counter to your menu entry, you can simply use this structure.
 Do not change the alignment of the text. If you're using
 
-.. figure:: ../images/navigation-counter.png
-   :alt: Navigation entry with counter
-   :figclass: figure-with-code
+.. image:: ../images/navigation-counter.png
+   :alt:
 
 .. code-block:: html
 
@@ -251,9 +247,8 @@ Highlighted counter
 
 The counter can also be highlighted to attract some focus, e.g. for unread chat messages
 
-.. figure:: ../images/navigation-counter-highlighted.png
-   :alt: Navigation entry with highlighted counter
-   :figclass: figure-with-code
+.. image:: ../images/navigation-counter-highlighted.png
+   :alt:
 
 .. code-block:: html
 
@@ -269,9 +264,8 @@ The same way we display the menu three-dot-icon button, you're allowed to use up
 * The icon class goes directly on the ``button`` element.
 * If no class is set, the three-dot-icon will be used by default
 
-.. figure:: ../images/navigation-buttons.png
-   :alt: Navigation entry with counter
-   :figclass: figure-with-code
+.. image:: ../images/navigation-buttons.png
+   :alt:
 
 .. code-block:: html
 
@@ -326,9 +320,8 @@ The opening of the menu is activated and animated by the class ``open`` on the m
     * If your top-level link is only used as a header, the **entire** ``a`` needs to be used to toggle the ``open`` class.
     * If your top-level link is used to redirect the user or to trigger something else, you **need** to add the collapsible button and use it as the ``open`` class toggle trigger.
 
-.. figure:: ../images/navigation-collapsible.*
-   :alt: Collapsible navigation entry
-   :figclass: figure-with-code
+.. image:: ../images/navigation-collapsible.*
+   :alt:
 
 .. code-block:: html
 
@@ -357,9 +350,8 @@ We call it a `bullet`.
 * You can **not** combine an icon with a bullet.
 * You need to use the CSS to define the bullet color.
 
-.. figure:: ../images/navigation-bullet.png
-   :alt: Navigation entry with bullet
-   :figclass: figure-with-code
+.. image:: ../images/navigation-bullet.png
+   :alt:
 
 .. code-block:: html
 
@@ -376,9 +368,8 @@ Undo entry
 * Please use the sentence *Deleted XXXX* as the feedback message.
 * You need to use the ``deleted`` class to trigger the animated hide/show of the undo entry.
 
-.. figure:: ../images/navigation-undo.*
-   :alt: Navigation entry with undo action
-   :figclass: figure-with-code
+.. image:: ../images/navigation-undo.*
+   :alt:
 
 .. code-block:: html
 
@@ -406,9 +397,8 @@ Edit entry
 * You're allowed to use only one submit input. It **must** be the validation button.
 * The input **must** have the same value as the entry link text.
 
-.. figure:: ../images/navigation-edit.*
-   :alt: Editable navigation entry
-   :figclass: figure-with-code
+.. image:: ../images/navigation-edit.*
+   :alt:
 
 .. code-block:: html
 
@@ -439,9 +429,8 @@ Every top-level entry can be `pinned` at the bottom.
 * All the pinned entries **must** have the ``pinned`` class.
 * The **first** pinned entry **must** also have the ``first-pinned`` class.
 
-.. figure:: ../images/navigation-pinned.png
-  :alt: Pinned navigation entries
-  :figclass: figure-with-code
+.. image:: ../images/navigation-pinned.png
+   :alt:
 
 .. code-block:: html
 
@@ -482,9 +471,8 @@ To create a settings area create a div with the id ``app-settings`` inside the `
 Basic layout
 -------------
 
-.. figure:: ../images/settings.*
-   :alt: Settings
-   :figclass: figure-with-code
+.. image:: ../images/settings.*
+   :alt:
 
 .. code-block:: html
 

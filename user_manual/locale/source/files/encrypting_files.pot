@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud latest User Manual latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-15 16:50+0000\n"
+"POT-Creation-Date: 2021-04-19 08:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,125 +41,117 @@ msgid "How can encryption be disabled?"
 msgstr ""
 
 #: ../../files/encrypting_files.rst:36
-msgid "The only way to disable encryption is to run the `\"decrypt all\" <https://docs.nextcloud.org/server/latest/admin_manual/configuration_server/occ_command.html#encryption-label>`_."
+msgid "The only way to disable encryption is to run the `\"decrypt all\" <https://docs.nextcloud.org/server/latest/admin_manual/configuration_server/occ_command.html#encryption-label>`_ script, which decrypts all files and disables encryption."
 msgstr ""
 
 #: ../../files/encrypting_files.rst:41
-msgid "Script, which decrypts all files and disables encryption."
-msgstr ""
-
-#: ../../files/encrypting_files.rst:44
 msgid "Is it possible to disable encryption with the recovery key?"
 msgstr ""
 
-#: ../../files/encrypting_files.rst:46
+#: ../../files/encrypting_files.rst:43
 msgid "Yes, *if* every user uses the `file recovery key <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_, `\"decrypt all\" <https://docs.nextcloud.org/server/latest/admin_manual/configuration_server/occ_command.html#encryption-label>`_ will use it to decrypt all files."
 msgstr ""
 
-#: ../../files/encrypting_files.rst:53
+#: ../../files/encrypting_files.rst:50
 msgid "Can encryption be disabled without the user's password?"
 msgstr ""
 
-#: ../../files/encrypting_files.rst:55
-msgid "If you don't have the users password or `file recovery key <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_,"
+#: ../../files/encrypting_files.rst:52
+msgid "If you don't have the users password or `file recovery key <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_, then there is no way to decrypt all files. What's more, running it on login would be dangerous, because you would most likely run into timeouts."
 msgstr ""
 
-#: ../../files/encrypting_files.rst:60
-msgid "then there is no way to decrypt all files. What's more, running it on login would be dangerous, because you would most likely run into timeouts."
-msgstr ""
-
-#: ../../files/encrypting_files.rst:64
+#: ../../files/encrypting_files.rst:58
 msgid "Is it planned to move this to the next user login or a background job?"
 msgstr ""
 
-#: ../../files/encrypting_files.rst:66
+#: ../../files/encrypting_files.rst:60
 msgid "If we did that, then we would need to store your login password in the database. This could be seen as a security issue, so nothing like that is planned."
 msgstr ""
 
-#: ../../files/encrypting_files.rst:70
+#: ../../files/encrypting_files.rst:64
 msgid "Is group Sharing possible with the recovery key?"
 msgstr ""
 
-#: ../../files/encrypting_files.rst:72
+#: ../../files/encrypting_files.rst:66
 msgid "If you mean adding users to groups and make it magically work? No. This only works with the master key."
 msgstr ""
 
-#: ../../files/encrypting_files.rst:76
+#: ../../files/encrypting_files.rst:70
 msgid "Using encryption"
 msgstr ""
 
-#: ../../files/encrypting_files.rst:78
+#: ../../files/encrypting_files.rst:72
 msgid "Nextcloud encryption is pretty much set it and forget it, but you have a few options you can use."
 msgstr ""
 
-#: ../../files/encrypting_files.rst:81
+#: ../../files/encrypting_files.rst:75
 msgid "When your Nextcloud admin enables encryption for the first time, you must log out and then log back in to create your encryption keys and encrypt your files. When encryption has been enabled on your Nextcloud server you will see a yellow banner on your Files page warning you to log out and then log back in:"
 msgstr ""
 
-#: ../../files/encrypting_files.rst:88
+#: ../../files/encrypting_files.rst:83
 msgid "When you log back in it takes a few minutes to work, depending on how many files you have, and then you are returned to your default Nextcloud page."
 msgstr ""
 
-#: ../../files/encrypting_files.rst:94
+#: ../../files/encrypting_files.rst:90
 msgid "You must never lose your Nextcloud password, because you will lose access to your files. Though there is an optional recovery option that your Nextcloud administrator may enable; see the Recovery Key Password section (below) to learn about this."
 msgstr ""
 
-#: ../../files/encrypting_files.rst:100
+#: ../../files/encrypting_files.rst:96
 msgid "Sharing encrypted files"
 msgstr ""
 
-#: ../../files/encrypting_files.rst:102
+#: ../../files/encrypting_files.rst:98
 msgid "Only users who have private encryption keys have access to shared encrypted files and folders. Users who have not yet created their private encryption keys will not have access to encrypted shared files; they will see folders and filenames, but will not be able to open or download the files. They will see a yellow warning banner that says \"Encryption App is enabled but your keys are not initialized, please log-out and log-in again.\""
 msgstr ""
 
-#: ../../files/encrypting_files.rst:109
+#: ../../files/encrypting_files.rst:105
 msgid "Share owners may need to re-share files after encryption is enabled; users trying to access the share will see a message advising them to ask the share owner to re-share the file with them. For individual shares, un-share and re-share the file. For group shares, share with any individuals who can't access the share. This updates the encryption, and then the share owner can remove the individual shares."
 msgstr ""
 
-#: ../../files/encrypting_files.rst:117
+#: ../../files/encrypting_files.rst:113
 msgid "Recovery key password"
 msgstr ""
 
-#: ../../files/encrypting_files.rst:119
+#: ../../files/encrypting_files.rst:115
 msgid "If your Nextcloud administrator has enabled the recovery key feature, you can choose to use this feature for your account. If you enable \"Password recovery\" the administrator can read your data with a special password. This feature enables the administrator to recover your files in the event you lose your Nextcloud password. If the recovery key is not enabled, then there is no way to restore your files if you lose your login password."
 msgstr ""
 
-#: ../../files/encrypting_files.rst:129
+#: ../../files/encrypting_files.rst:126
 msgid "Files not encrypted"
 msgstr ""
 
-#: ../../files/encrypting_files.rst:131
+#: ../../files/encrypting_files.rst:128
 msgid "Only the data in your files is encrypted, and not the filenames or folder structures. These files are never encrypted:"
 msgstr ""
 
-#: ../../files/encrypting_files.rst:134
+#: ../../files/encrypting_files.rst:131
 msgid "Old files in the trash bin."
 msgstr ""
 
-#: ../../files/encrypting_files.rst:135
+#: ../../files/encrypting_files.rst:132
 msgid "Image thumbnails from the Gallery app."
 msgstr ""
 
-#: ../../files/encrypting_files.rst:136
+#: ../../files/encrypting_files.rst:133
 msgid "Previews from the Files app."
 msgstr ""
 
-#: ../../files/encrypting_files.rst:137
+#: ../../files/encrypting_files.rst:134
 msgid "The search index from the full text search app."
 msgstr ""
 
-#: ../../files/encrypting_files.rst:138
+#: ../../files/encrypting_files.rst:135
 msgid "Third-party app data"
 msgstr ""
 
-#: ../../files/encrypting_files.rst:140
+#: ../../files/encrypting_files.rst:137
 msgid "Only those files that are shared with third-party storage providers can be encrypted, the rest of the files may not be encrypted."
 msgstr ""
 
-#: ../../files/encrypting_files.rst:144
+#: ../../files/encrypting_files.rst:141
 msgid "Change private key password"
 msgstr ""
 
-#: ../../files/encrypting_files.rst:146
+#: ../../files/encrypting_files.rst:143
 msgid "This option is only available if the encryption password has not been changed by the administrator, but only the log-in password. This can occur if your Nextcloud provider uses an external user back-end (for example, LDAP) and changed your login password using that back-end configuration. In this case, you can set your encryption password to your new login password by providing your old and new login password. The Encryption app works only if your login password and your encryption password are identical."
 msgstr ""

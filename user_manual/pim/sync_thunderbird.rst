@@ -3,7 +3,7 @@ Synchronizing with Thunderbird
 ==============================
 
 `Thunderbird <https://www.thunderbird.net>`_ is a feature-rich and mature mail client that can be turned into a full-fledged PIM. However, it lacks support  for address book synchronisation via CardDAV and it also lacks the ability to automatically discover calendars and address books available on the server. Therefore, to synchronise with Nextcloud, add-ons are required, which can be easily installed through Thunderbird's add-on manager.
- 
+
 
 Recommended method
 ------------------
@@ -28,10 +28,11 @@ When they are installed, if you are on Windows, go to **Extras**/**Synchronisati
 Alternative: Using the CardBook add-on (Contacts only)
 ------------------------------------------------------
 `CardBook <https://addons.thunderbird.net/en/thunderbird/addon/cardbook/>`_ is an advanced alternative to Thunderbird's address book, which supports CardDAV. You can have TBSync and CardBook installed in parallel.
- 
+
 1. Click the CardBook icon in the upper right corner of Thunderbird:
 
 .. image:: ../images/cardbook_icon.png
+   :alt:
 
 2. In CardBook:
 
@@ -39,14 +40,17 @@ Alternative: Using the CardBook add-on (Contacts only)
    -  Select **CardDAV**, fill in the address of your Nextcloud server, your user name and password
 
 .. image:: ../images/new_addressbook.png
+   :alt:
 
 4. Click on "Validate", click Next, then choose the name of the address book and click Next again:
 
 .. image:: ../images/addressbook_name.png
+   :alt:
 
 5. When you are finished, CardBook synchronizes your address books. You can always trigger a synchronisation manually by clicking "Synchronize" in the top left corner of CardBook:
 
 .. image:: ../images/synchronize_cardbook.png
+   :alt:
 
 The old method: Manually subscribing to calendars
 -------------------------------------------------
@@ -61,10 +65,12 @@ This method is only needed if you don't want to install TBSync.
 3. Choose **On the Network**:
 
 .. image:: ../images/new_calendar.png
+   :alt:
 
 4. Choose **CalDAV** and fill in the missing information:
 
 .. image:: ../images/CalDAV_calendar.png
+   :alt:
 
 Fix for Thunderbird 60
 ----------------------
