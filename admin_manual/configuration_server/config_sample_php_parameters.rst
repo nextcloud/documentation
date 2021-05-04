@@ -854,9 +854,7 @@ Defaults to ``false``
 	'updatechecker' => true,
 
 Check if Nextcloud is up-to-date and shows a notification if a new version is
-available. It sends current version, php version, installation and last update
-time and release channel to the updater server which responds with the latest
-available version based on those metrics.
+available.
 
 Defaults to ``true``
 
