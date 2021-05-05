@@ -57,8 +57,8 @@ Accessing files using Linux
 
 You can access files in Linux operating systems using the following methods.
 
-Nautilus file manager
-^^^^^^^^^^^^^^^^^^^^^
+Nautilus (or Pcmanfm) file manager
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **When you configure your Nextcloud account in the** `GNOME Control Center
 <../pim/sync_gnome.html>`_, **your files will automatically be mounted
@@ -68,7 +68,9 @@ You can also mount your Nextcloud files manually. Use the ``davs://``
 protocol to connect the Nautilus file manager to your Nextcloud
 share::
 
-  davs://example.com/nextcloud/remote.php/dav/files/USERNAME/
+  davs://example.com/remote.php/dav/files/USERNAME/
+  or
+  davs://USERNAME@example.com/remote.php/webdav
 
 .. note:: If your server connection is not HTTPS-secured, use ``dav://`` instead
    of ``davs://``:
