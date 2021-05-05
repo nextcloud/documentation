@@ -98,26 +98,24 @@ Please refer to the `page in the MySQL manual <https://mariadb.com/kb/en/library
 
 .. note:: MariaDB is backwards compatible with MySQL.  All instructions work for both. You will not need to replace mysql with anything.
 
-The PHP configuration in :file:`/etc/php7/conf.d/mysql.ini` could look like this:
+Enabling the pdo_mysql extension could be done in various ``php.ini`` files depending on your installation of PHP.
+This could be done within :file:`/etc/php/php7.2/fpm/php.ini` file if you are using php-fpm.
+On Ubuntu you might find :file:`/etc/php/php7.2/mods-available/pdo_mysql.ini` with the following:
 
 ::
 
-  # configuration for PHP MySQL module
+  ; configuration for php mysql module
+  ; priority=20
   extension=pdo_mysql.so
 
-  [mysql]
-  mysql.allow_local_infile=On
-  mysql.allow_persistent=On
-  mysql.cache_size=2000
-  mysql.max_persistent=-1
-  mysql.max_links=-1
-  mysql.default_port=
-  mysql.default_socket=/var/lib/mysql/mysql.sock  # Debian squeeze: /var/run/mysqld/mysqld.sock
-  mysql.default_host=
-  mysql.default_user=
-  mysql.default_password=
-  mysql.connect_timeout=60
-  mysql.trace_mode=Off
+Additionally you could have something like this in your ``php.ini`` configuration:
+
+::
+
+  [Pdo_mysql]
+  pdo_mysql.cache_size = 2000
+  ; Note: If pdo_mysql.default_socket is empty, it uses the value set in your MySQL server .cnf
+  pdo_mysql.default_socket=/var/run/mysqld/mysqld.sock
 
 Now you need to create a database user and the database itself by using the
 MySQL command line interface. The database tables will be created by Nextcloud
