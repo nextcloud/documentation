@@ -75,7 +75,7 @@ hard drive or delete it forever.
 
 2. Click on ``Edit``, ``Download`` or ``Delete``.
 
-.. note:: Please keep in mind that deleting a calendar is an irreversible action.
+.. note:: Please keep in mind that deleting a calendar is a irreversible action.
           After deletion, there is no way of restoring the calendar unless you
           have a local backup.
 
