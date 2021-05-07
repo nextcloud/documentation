@@ -391,7 +391,7 @@ Solution
 ^^^^^^^^
 
 Windows limits the maximum size a file transferred from or to a WebDAV share
-may have.  You can increase the value **FileSizeLimitInBytes** in
+may have. You can increase the value **FileSizeLimitInBytes** in
 **HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters**
 by clicking on **Modify**.
 
