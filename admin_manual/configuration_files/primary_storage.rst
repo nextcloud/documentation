@@ -27,6 +27,9 @@ Because of this primary object stores usually perform better than when using the
 object store as external storage but it restricts being able to access the files from
 outside of Nextcloud.
 
+.. warning:: Using an object store as primary storage will mean you are `unable to use
+	Nextcloud's server-side encryption functionality <https://github.com/nextcloud/server/issues/22077>`_.
+
 -------------
 Configuration
 -------------
