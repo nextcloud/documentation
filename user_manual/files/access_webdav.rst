@@ -231,9 +231,9 @@ To access files through the macOS Finder:
 Accessing files using Microsoft Windows
 ---------------------------------------
 
-If you use the native Windows implementation, you can map Nextcloud to a new
-drive. Mapping to a drive enables you to browse files stored on a Nextcloud
-server the way you would files stored in a mapped network drive.
+If you use the native Windows implementation of webdav, you can map Nextcloud to a new
+drive using Windows Explorer. Mapping to a drive enables you to browse files stored on a 
+Nextcloud server the way you would files stored in a mapped network drive.
 
 Using this feature requires network connectivity. If you want to store your
 files offline, use the Desktop Client to sync all files on your
