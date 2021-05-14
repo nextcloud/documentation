@@ -304,7 +304,7 @@ To map a drive using the Microsoft Windows Explorer:
 
     https://example.com/nextcloud/remote.php/dav/files/USERNAME/
 
-.. note:: For SSL protected servers, check **Reconnect at logon** to ensure
+.. note:: For SSL protected servers, check **Reconnect at sign-in** to ensure
      that the mapping is persistent upon subsequent reboots. If you want to
      connect to the Nextcloud server as a different user, check **Connect using
      different credentials**.
