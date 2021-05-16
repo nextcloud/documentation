@@ -151,7 +151,7 @@ Edit or Delete an event
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 If you want to edit or delete a specific event, you just need to click on it.
-After that you will be able to re-set all of the events details and open the
+After that you will be able to re-set all event details and open the
 advanced sidebar-editor by clicking on ``More...``.
 
 Clicking on the ``Update``-button will update the event. To cancel your changes, click on the close icon on top right of the popup or sidebar editor.
