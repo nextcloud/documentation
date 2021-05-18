@@ -6,7 +6,8 @@ Calendar
 --------
 
 #. Open the settings application.
-#. Select Passwords and Accounts.
+#. Select Calendar.
+#. Select Accounts.
 #. Select Add Account.
 #. Select Other as account type.
 #. Select Add CalDAV account.
@@ -24,7 +25,8 @@ Contacts
 --------
 
 #. Open the settings application.
-#. Select Passwords and Accounts.
+#. Select Contacts.
+#. Select Accounts.
 #. Select Add Account.
 #. Select Other as account type.
 #. Select Add CardDAV account.
