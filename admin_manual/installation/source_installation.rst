@@ -37,6 +37,7 @@ Required:
 * PHP module ctype
 * PHP module curl
 * PHP module dom
+* PHP module filter (only on Mageia and FreeBSD)
 * PHP module GD
 * PHP module hash (only on FreeBSD)
 * PHP module iconv
