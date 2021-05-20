@@ -245,7 +245,7 @@ Next, you'll see a dummy provider that returns a static set of results.
         }
     }
 
-Each of the result result entries has
+Each of the result entry has
 
 * A thumbnail or icon that is a (relative) URL
 * A title, e.g. the name of a file
