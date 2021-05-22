@@ -1749,7 +1749,7 @@ Defaults to the following databases:
 
 Override where Nextcloud stores temporary files. Useful in situations where
 the system temporary directory is on a limited space ramdisk or is otherwise
-restricted, or if external storages which do not support streaming are in
+restricted, or if external storage which do not support streaming are in
 use.
 
 The Web server user must have write access to this directory.
@@ -1904,7 +1904,7 @@ Defaults to ``1800`` (seconds)
 
 Specifies how often the local filesystem (the Nextcloud data/ directory, and
 NFS mounts in data/) is checked for changes made outside Nextcloud. This
-does not apply to external storages.
+does not apply to external storage.
 
 0 -> Never check the filesystem for outside changes, provides a performance
 increase when it's certain that no changes are made directly to the
