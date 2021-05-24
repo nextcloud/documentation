@@ -8,7 +8,7 @@ NGINX configuration
 .. note::
     This page covers example NGINX configurations to run a Nextcloud server.
     These configurations examples were originally provided by `@josh4trunks <https://github.com/josh4trunks>`_
-    and are exclusivelly community-maintained. (Thank you contributors!)
+    and are exclusively community-maintained. (Thank you contributors!)
 
 -  You need to insert the following code into **your Nginx configuration file.**
 -  Adjust **server_name**, **root**, **ssl_certificate** and
