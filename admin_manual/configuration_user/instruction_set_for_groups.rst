@@ -166,6 +166,49 @@ XML output
     </data>
   </ocs>  
 
+Edit data of a single group
+--------------------------
+
+Edits attributes related to a group. Authentication
+is done by sending a Basic HTTP Authorization header.
+
+**Syntax: ocs/v1.php/cloud/groups/{groupid}**
+
+* HTTP method: PUT
+* PUT argument: key, the field to edit:
+
+  + displayname
+
+* PUT argument: value, the new value for the field
+
+Status codes:
+
+* 100 - successful
+* 101 - not supported by backend
+
+Examples
+^^^^^^^^
+
+::
+
+  $ curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup -d key="displayname" -d value="My Group Name"
+
+* Updates the display name for the group ``mygroup``
+
+XML output
+^^^^^^^^^^
+
+.. code-block:: xml
+
+  <?xml version="1.0"?>
+  <ocs>
+    <meta>
+      <statuscode>100</statuscode>
+      <status>ok</status>
+    </meta>
+    <data/>
+  </ocs>
+
 Delete a group
 --------------
 
