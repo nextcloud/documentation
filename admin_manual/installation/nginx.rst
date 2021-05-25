@@ -1,10 +1,14 @@
 ===================
-Nginx configuration
+NGINX configuration
 ===================
 
-This page covers example Nginx configurations to use with running a Nextcloud
-server. These configurations examples were originally provided by
-`@josh4trunks <https://github.com/josh4trunks>`_ and are community-maintained. (Thank you contributors!)
+.. warning::
+    Please note that webservers other than Apache 2.x are not officially supported.
+
+.. note::
+    This page covers example NGINX configurations to run a Nextcloud server.
+    These configurations examples were originally provided by `@josh4trunks <https://github.com/josh4trunks>`_
+    and are exclusively community-maintained. (Thank you contributors!)
 
 -  You need to insert the following code into **your Nginx configuration file.**
 -  Adjust **server_name**, **root**, **ssl_certificate** and
@@ -16,7 +20,7 @@ server. These configurations examples were originally provided by
 -  Some environments might need a ``cgi.fix_pathinfo`` set to ``1`` in their
    ``php.ini``.
 
-Nextcloud in the webroot of nginx
+Nextcloud in the webroot of NGINX
 ---------------------------------
 
 The following configuration should be used when Nextcloud is placed in the
@@ -26,7 +30,7 @@ webroot of your nginx installation. In this example it is
 .. literalinclude:: nginx-root.conf.sample
    :language: nginx
 
-Nextcloud in a subdir of the nginx webroot
+Nextcloud in a subdir of the NGINX webroot
 ------------------------------------------
 
 The following config should be used when Nextcloud is placed within a subdir of
