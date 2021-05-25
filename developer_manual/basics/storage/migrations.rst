@@ -70,7 +70,7 @@ With this step the new column gets created:
 .. code-block:: php
 
    public function changeSchema(IOutput $output, \Closure $schemaClosure, array $options) {
-		      /** @var Schema $schema */
+		      /** @var ISchemaWrapper $schema */
 		      $schema = $schemaClosure();
 
 		      $table = $schema->getTable('twofactor_backupcodes');
@@ -109,7 +109,7 @@ With this the old column gets removed.
 .. code-block:: php
 
    public function changeSchema(IOutput $output, \Closure $schemaClosure, array $options) {
-          /** @var Schema $schema */
+          /** @var ISchemaWrapper $schema */
           $schema = $schemaClosure();
 
           $table = $schema->getTable('twofactor_backupcodes');
