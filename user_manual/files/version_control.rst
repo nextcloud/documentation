@@ -10,7 +10,7 @@ are saved in **data/[user]/files_versions**.
 
 .. figure:: ../images/files_versioning.png
 
-To restore a specific version of a file, click the circular arrow to the left.
+To restore a specific version of a file, click the circular arrow to the right.
 Click on the timestamp to download it.
 
 The versioning app expires old versions automatically to make sure that
@@ -28,6 +28,6 @@ old versions:
 The versions are adjusted along this pattern every time a new version gets
 created.
 
-The version app never uses more that 50% of the user's currently available free
+The version app never uses more than 50% of the user's currently available free
 space. If the stored versions exceed this limit, Nextcloud deletes the oldest
 versions until it meets the disk space limit again.
