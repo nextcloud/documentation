@@ -175,11 +175,11 @@ is done by sending a Basic HTTP Authorization header.
 **Syntax: ocs/v1.php/cloud/groups/{groupid}**
 
 * HTTP method: PUT
-* PUT argument: key, the field to edit:
+* PUT argument: key, string - the field to edit:
 
   + displayname
 
-* PUT argument: value, the new value for the field
+* PUT argument: value, string - the new value for the field
 
 Status codes:
 
