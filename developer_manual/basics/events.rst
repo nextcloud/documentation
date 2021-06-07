@@ -576,11 +576,6 @@ Emitted when a new user has been created on the back-end.
 
 Emitted before a user is logged out.
 
-``\OCP\User\Events\CreateUserEvent``
-************************************
-
-*Available in Nextcloud 18 and later.*
-
 ``\OCP\User\Events\PostLoginEvent``
 ***********************************
 
