@@ -57,8 +57,9 @@ server {
     }
 
     location ^~ /nextcloud {
-        # set max upload size
+        # set max upload size and increase upload timeout:
         client_max_body_size 512M;
+        client_body_timeout 300s;
         fastcgi_buffers 64 4K;
 
         # Enable gzip but do not remove ETag headers
