@@ -121,8 +121,10 @@ Log field breakdown
 * **app**: affected app (always admin_audit in audit.log)
 * **method**: HTTP method, for example GET, POST, PROPFIND, etc.  – empty on occ calls
 * **url**: request path (if applicable – empty on occ calls)
-* **message**: event information
+* **message**: event information message
 * **userAgent**: user agent (if applicable – empty on occ calls)
+* **exception**: Full exception with trace (if applicable)
+* **data** additional structured data (if applicable)
 * **version**: Nextcloud version at the time of request
 
 Empty value are written as two dashes: "--".
