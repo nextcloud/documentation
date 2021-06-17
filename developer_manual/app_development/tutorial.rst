@@ -278,6 +278,8 @@ To create the tables in the database, run the :ref:`migration  <migration_consol
 
 .. note:: to trigger the table creation/alteration when user updating the app, update the :doc:`version tag <info>` in **notestutorial/appinfo/info.xml** . migration will be executed when user reload page after app upgrade
 
+.. note:: to be able to access the occ migrations commands, please enable the debug flag in config.php
+
 .. code-block:: xml
 
   <?xml version="1.0"?>

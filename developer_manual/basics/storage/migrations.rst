@@ -118,32 +118,13 @@ With this the old column gets removed.
           return $schema;
   }
 
-.. _migrate-database-xml:
-
-Migrate from database.xml
--------------------------
-
-To migrate your app from a `database.xml` file to migrations run:
-
-.. code-block:: bash
-
-   php ./occ migrations:generate-from-schema <app_id> <version>
-
-This will create a new file under `lib/Migration` that results in the
-same database table(s) as your database.xml file.
-
-For version you should use your app versions. So if you app is at version
-1.2.3 use 010203.
-
-Don't forget to remove your `database.xml` file.
-
 .. _migration_console_command:
 
 Console commands
 ----------------
 
 There are some console commands, which should help developers to create or deal
-with migrations, which are sometimes only available if you are running your
+with migrations, which are only available if you are running your
 Nextcloud in debug mode:
 
 * `migrations:execute`: Executes a single migration version manually.
@@ -156,6 +137,5 @@ Nextcloud in debug mode:
   in another branch. Since you can’t change this retroactive, we recommend to
   leave enough space in between and therefore map the numbers to 3 digits:
   `1.0.x => 1000`, `2.34.x => 2034`, etc.
-* `migrations:generate-from-schema`: Create a migration from the old `database.xml`.
 * `migrations:migrate`: Execute a migration to a specified or the latest available version.
 * `migrations:status`: View the status of a set of migrations.
