@@ -6,6 +6,14 @@ Once you've created and published the first version of your app, you will want t
 
 This document will cover the most important changes in Nextcloud, as well as some guides on how to upgrade existing apps.
 
+Upgrading to Nextcloud 22
+-------------------------
+
+Removed support for database.xml
+********************************
+
+The support for an app's ``appinfo/database.xml`` has been removed.
+
 Upgrading to Nextcloud 21
 -------------------------
 
@@ -78,6 +86,11 @@ The original `PSR-0` standard was deprecated in 2014 and therefore the support f
 
 .. _`PSR-0`: https://www.php-fig.org/psr/psr-0/
 .. _`PSR-4`: https://www.php-fig.org/psr/psr-4/
+
+Last version with database.xml support and migration
+****************************************************
+
+Nextcloud 21 is the last major release that supports an app's ``appinfo/database.xml`` to define the database schema. This is your last chance to automatically convert this deprecated file into the new migration classes using ``occ migrations:generate-from-schema``.
 
 Replaced well-known handler API
 *******************************
