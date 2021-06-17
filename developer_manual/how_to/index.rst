@@ -13,7 +13,7 @@ First you need to install the `phpredis extension <https://github.com/phpredis/p
    pecl install redis
 
 Cluster
-~~~~~~~
+-------
 
 For a local Redis cluster setup there are some docker script collected in `this repository <https://github.com/Grokzen/docker-redis-cluster>`_. It boils down to clone the repo and run `make up`. Then the redis cluster is available at ``localhost:7000``.
 
@@ -165,3 +165,38 @@ Test with Nextcloud
         - Secret key : secret (as above)
         - Document Editing Service address for internal requests from the server: https://localhost:4433/
         - Server address for internal requests from the Document Editing Service: http://192.168.1.95/nc16/ (needs to be real IP address, as localhost points to docker)
+
+WebAuthn without SSL
+--------------------
+
+`Chrome has the option to test WebAuthn with a fake device.<https://developer.chrome.com/docs/devtools/webauthn/>`_ Browsers support WebAuthn on HTTPS protected sites and localhost domains. Unfortunately this is not supported by the used PHP library where the check for HTTPS needs to be commented for testing on non-HTTPS localhost development environments.
+
+::
+
+    diff --git a/web-auth/webauthn-lib/src/AuthenticatorAssertionResponseValidator.php b/web-auth/webauthn-lib/src/AuthenticatorAssertionResponseValidator.php
+    index 8400ba9c..49279cc7 100644
+    --- a/web-auth/webauthn-lib/src/AuthenticatorAssertionResponseValidator.php
+    +++ b/web-auth/webauthn-lib/src/AuthenticatorAssertionResponseValidator.php
+    @@ -152,7 +152,7 @@ class AuthenticatorAssertionResponseValidator
+                 Assertion::isArray($parsedRelyingPartyId, 'Invalid origin');
+                 if (!in_array($facetId, $securedRelyingPartyId, true)) {
+                     $scheme = $parsedRelyingPartyId['scheme'] ?? '';
+    -                Assertion::eq('https', $scheme, 'Invalid scheme. HTTPS required.');
+    +                #Assertion::eq('https', $scheme, 'Invalid scheme. HTTPS required.');
+                 }
+                 $clientDataRpId = $parsedRelyingPartyId['host'] ?? '';
+                 Assertion::notEmpty($clientDataRpId, 'Invalid origin rpId.');
+    diff --git a/web-auth/webauthn-lib/src/AuthenticatorAttestationResponseValidator.php b/web-auth/webauthn-lib/src/AuthenticatorAttestationResponseValidator.php
+    index f3e5a15d..3927bf23 100644
+    --- a/web-auth/webauthn-lib/src/AuthenticatorAttestationResponseValidator.php
+    +++ b/web-auth/webauthn-lib/src/AuthenticatorAttestationResponseValidator.php
+    @@ -150,7 +150,7 @@ class AuthenticatorAttestationResponseValidator
+     
+                 if (!in_array($facetId, $securedRelyingPartyId, true)) {
+                     $scheme = $parsedRelyingPartyId['scheme'] ?? '';
+    -                Assertion::eq('https', $scheme, 'Invalid scheme. HTTPS required.');
+    +                #Assertion::eq('https', $scheme, 'Invalid scheme. HTTPS required.');
+                 }
+     
+                 /* @see 7.1.6 */
+
