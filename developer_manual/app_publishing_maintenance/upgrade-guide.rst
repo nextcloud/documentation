@@ -79,11 +79,6 @@ The original `PSR-0` standard was deprecated in 2014 and therefore the support f
 .. _`PSR-0`: https://www.php-fig.org/psr/psr-0/
 .. _`PSR-4`: https://www.php-fig.org/psr/psr-4/
 
-Last version with database.xml support and migration
-****************************************************
-
-Nextcloud 21 is the last major release that supports an app's ``appinfo/database.xml`` to :ref:`define the database schema<database-xml>`. This is your last change to :ref:`automatically convert this deprecated file into the new migration classes<migrate-database-xml>`.
-
 Replaced well-known handler API
 *******************************
 
