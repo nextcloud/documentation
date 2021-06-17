@@ -173,10 +173,10 @@ WebAuthn without SSL
 
 ::
 
-    diff --git a/web-auth/webauthn-lib/src/AuthenticatorAssertionResponseValidator.php b/web-auth/webauthn-lib/src/AuthenticatorAssertionResponseValidator.php
+    diff --git a/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAssertionResponseValidator.php b/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAssertionResponseValidator.php
     index 8400ba9c..49279cc7 100644
-    --- a/web-auth/webauthn-lib/src/AuthenticatorAssertionResponseValidator.php
-    +++ b/web-auth/webauthn-lib/src/AuthenticatorAssertionResponseValidator.php
+    --- a/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAssertionResponseValidator.php
+    +++ b/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAssertionResponseValidator.php
     @@ -152,7 +152,7 @@ class AuthenticatorAssertionResponseValidator
                  Assertion::isArray($parsedRelyingPartyId, 'Invalid origin');
                  if (!in_array($facetId, $securedRelyingPartyId, true)) {
@@ -186,10 +186,10 @@ WebAuthn without SSL
                  }
                  $clientDataRpId = $parsedRelyingPartyId['host'] ?? '';
                  Assertion::notEmpty($clientDataRpId, 'Invalid origin rpId.');
-    diff --git a/web-auth/webauthn-lib/src/AuthenticatorAttestationResponseValidator.php b/web-auth/webauthn-lib/src/AuthenticatorAttestationResponseValidator.php
+    diff --git a/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAttestationResponseValidator.php b/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAttestationResponseValidator.php
     index f3e5a15d..3927bf23 100644
-    --- a/web-auth/webauthn-lib/src/AuthenticatorAttestationResponseValidator.php
-    +++ b/web-auth/webauthn-lib/src/AuthenticatorAttestationResponseValidator.php
+    --- a/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAttestationResponseValidator.php
+    +++ b/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAttestationResponseValidator.php
     @@ -150,7 +150,7 @@ class AuthenticatorAttestationResponseValidator
      
                  if (!in_array($facetId, $securedRelyingPartyId, true)) {
