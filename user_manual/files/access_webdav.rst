@@ -161,7 +161,7 @@ automatically every time you log in to your Linux computer.
 7. Add the mount information to ``/etc/fstab``::
 
     https://example.com/nextcloud/remote.php/dav/files/USERNAME/ /home/<linux_username>/nextcloud
-    davfs user,rw,auto 0 0
+    davfs user,rw,auto,_netdev 0 0
 
 
 8. Then test that it mounts and authenticates by running the following
