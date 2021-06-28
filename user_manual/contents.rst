@@ -12,6 +12,7 @@ Table of contents
     webinterface
     files/index
     pim/index
+    talk/index
     userpreferences
     universal_access
     user_2fa
