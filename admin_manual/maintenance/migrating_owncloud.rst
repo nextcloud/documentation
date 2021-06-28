@@ -32,7 +32,7 @@ See the table below for a version map, where migrating is easily possible:
 .. note:: While we understand, that you want to migrate as soon as possible,
           we also don't want to put your data at risk. Since we never know
           what ownCloud changes in a future release, we only allow migrations
-          from versions that where released before our last maintenance release,
+          from versions that were released before our last maintenance release,
           so we can at least perform some basic migration tests, before you
           migrate your production instance.
 
