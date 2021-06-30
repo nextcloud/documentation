@@ -360,6 +360,21 @@ For a safe moving of data directory, supported by Nextcloud, recommended actions
 .. warning
    Note, you may need to configure your webserver to support symlinks.
 
+Troubleshooting encryption
+--------------------------
+
+Problems when downloading or decrypting files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In some rare cases it can happen that encrypted files cannot be downloaded
+and return a "500 Internal Server Error". If the Nextcloud log contains an error about
+"Bad Signature", then the following command can be used to repair affected files:
+
+| ``occ encryption:fix-encrypted-version userId --path=/path/to/broken/file.txt``
+
+Replace "userId" and the path accordingly.
+The command will do a test decryption for all files and automatically repair the ones with a signature error.
+
 Other issues
 ------------
 
