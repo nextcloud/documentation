@@ -12,6 +12,7 @@ Table of contents
     webinterface
     files/index
     pim/index
+    talk/index 
     userpreferences
     user_2fa
     session_management
