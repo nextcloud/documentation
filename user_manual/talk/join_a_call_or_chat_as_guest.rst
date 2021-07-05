@@ -13,15 +13,15 @@ If you received a link to a chat conversation, you can open this in your browser
 
 .. image:: images/guest-view.png
 
-You can change your name using the edit button on the top-right by clicking the ``✏ Edit`` button.
+You can change your name using the edit button on the top-right by clicking the ``Edit`` button.
 
 .. image:: images/change-name.png
 
-Your camera and microphone settings can be found in the ``⚙ Settings`` menu. There you can also find a list of shortcuts you can use.
+Your camera and microphone settings can be found in the ``Settings`` menu. There you can also find a list of shortcuts you can use.
  
 .. image:: images/guest-settings.png
 
-You can start a call any time with the ``🎥 Start call`` button. Other participants will get notified and can join the call. If somebody else has started a call already, the button will change in a green ``🎥 Join call`` button.
+You can start a call any time with the ``Start call`` button. Other participants will get notified and can join the call. If somebody else has started a call already, the button will change in a green ``Join call`` button.
 
 .. image:: images/join-call.png
 
