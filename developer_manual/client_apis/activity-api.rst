@@ -1,1 +1,5 @@
-Find the documentation in the Activities repo here: `https://github.com/nextcloud/activity/blob/master/docs/endpoint-v2.md`
+============
+Activity API
+============
+
+Find the documentation in the `Activity app repo <https://github.com/nextcloud/activity/blob/master/docs/endpoint-v2.md>`__.
