@@ -92,7 +92,7 @@ Here you can configure the name, guest access, if the conversation is visible to
 Starting a call
 ---------------
 
-When you're in a conversation, you can start a call any time with the ``🎥 Start call`` button. Other participants will get notified and can join the call. If somebody else has started a call already, the button will change in a green ``🎥 Join call`` button.
+When you're in a conversation, you can start a call any time with the ``Start call`` button. Other participants will get notified and can join the call. If somebody else has started a call already, the button will change in a green ``Join call`` button.
 
 .. image:: images/join-call.png
 
