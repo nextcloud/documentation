@@ -29,6 +29,11 @@ The JSON log format no longer contains full exception in the message field, but 
 Front-end changes
 ^^^^^^^^^^^^^^^^^
 
+Scss variable and compilation deprecation
+*****************************************
+
+Nextcloud is slowly phasing out scss variables and the compilation of app style sheets. It's recommended that apps use their own compilation (e.g. through Webpack) to transform scss and similar to plain css. The ability of Nextcloud compiling scss for apps will be removed in the future. Subscribe to `Github ticket 9940 <https://github.com/nextcloud/server/issues/9940>`__ to get updates on how to best approach this. Right now some scss variables can be replaced with css variables. Other mechanisms like the icon generation still depend on the scss compilation by Nextcloud.
+
 Node.js upgrade
 ***************
 
