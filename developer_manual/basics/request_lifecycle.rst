@@ -2,12 +2,6 @@
 Request lifecycle
 =================
 
-.. toctree::
-   :maxdepth: 1
-
-   container
-   api
-
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>, Morris Jobke <hey@morrisjobke.de>
 
 A typical HTTP request consists of the following:

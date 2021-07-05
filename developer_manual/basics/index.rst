@@ -15,3 +15,4 @@ Basic concepts
    backgroundjobs
    logging
    storage/index
+   testing
