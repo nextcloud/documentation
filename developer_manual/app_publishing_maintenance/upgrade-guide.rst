@@ -24,7 +24,7 @@ See `the pull request on Github <https://github.com/nextcloud/server/pull/27113>
 Log format
 **********
 
-The JSON log format no longer contains full exception in the message field, but adds a separate exception entry is added and the existing message will only contain the exception message text. This might need adjustments by administrators when logs are extracted to external sources.
+The JSON log format no longer contains full exception in the message field, but a separate exception entry is added and the existing message will only contain the exception message text. This might need adjustments by administrators when logs are extracted to external sources.
 
 Front-end changes
 ^^^^^^^^^^^^^^^^^
