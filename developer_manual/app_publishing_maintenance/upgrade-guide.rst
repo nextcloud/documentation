@@ -39,6 +39,11 @@ IE11 removal
 
 Internet Explorer 11 was phased out over the past few releases and starting with Nextcloud 22 the front-end code isn't transpiled for IE11 any longer. You may also drop IE11 from your app as core components will possibly fail with this browser anyway.
 
+Deprecated global variables
+***************************
+
+* ``DOMPurify``: ship your own.
+
 Back-end changes
 ^^^^^^^^^^^^^^^^
 
@@ -47,6 +52,15 @@ Removed support for database.xml
 
 The support for an app's ``appinfo/database.xml`` has been removed.
 
+PSR events
+**********
+
+In order to bring Nextcloud APIs closer to :ref:`psr` the base event class no longer extends the old Symfony event class but only ``\Psr\EventDispatcher\StoppableEventInterface``. From an app's perspective this change is transparent.
+
+PSR container
+*************
+
+The :ref:`PSR 11 container interface <psr11>` was updated from version 1.0 to 1.1.
 
 LDAP factory availability
 *************************
@@ -67,7 +81,21 @@ When invalid username/password is sent to a Nextcloud API, Nextcloud will now re
 
 Removed APIs
 ************
+
+* ``\OC\Memcache\Factory::create``
 * ``\OCP\User``
+* ``\OCP\Util::isIe``
+
+Deprecated APIs
+***************
+
+* ``\OCP\Log\ILogFactory::getCustomLogger``: use ``\OCP\Log\ILogFactory::getCustomPsrLogger`` to get a customized :ref:`PSR3 <psr3>` logger
+* Event ``\OCP\IDBConnection::ADD_MISSING_INDEXES`` and the corresponding constant ``\OCP\IDBConnection::ADD_MISSING_INDEXES_EVENT``: internal event
+* Event ``\OCP\IDBConnection::CHECK_MISSING_INDEXES`` and the corresponding constant ``\OCP\IDBConnection::CHECK_MISSING_INDEXES_EVENT``: internal event
+* Event ``\OCP\IDBConnection::ADD_MISSING_PRIMARY_KEYS`` and the corresponding constant ``\OCP\IDBConnection::ADD_MISSING_PRIMARY_KEYS_EVENT``: internal event
+* Event ``\OCP\IDBConnection::CHECK_MISSING_PRIMARY_KEYS`` and the corresponding constant ``\OCP\IDBConnection::CHECK_MISSING_PRIMARY_KEYS_EVENT``: internal event
+* Event ``\OCP\IDBConnection::ADD_MISSING_COLUMNS_EVENT`` and the corresponding constant ``\OCP\IDBConnection::ADD_MISSING_COLUMNS``: internal event
+* Event ``\OCP\IDBConnection::CHECK_MISSING_COLUMNS`` and the corresponding constant ``\OCP\IDBConnection::CHECK_MISSING_COLUMNS``: internal event
 
 Upgrading to Nextcloud 21
 -------------------------
