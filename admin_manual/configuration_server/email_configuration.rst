@@ -43,6 +43,8 @@ connect Nextcloud to a remote SMTP server:
 
 * Login credentials (if required)
 
+.. note:: The ``overwrite.cli.url`` parameter from ``config.php`` will be used for the SMTP EHLO.
+
 .. figure:: ../images/smtp-config-smtp.png
 
 Your changes are saved immediately, and you can click the Send Email button to
