@@ -1,9 +1,12 @@
-## Comments
+########
+Comments
+########
 
 Comments have a PHP API within OCP and also via WebDAV. Basic documentation below.
 
 
-### Endpoint
+Endpoint
+^^^^^^^^
 
 The Comments resource has an endpoint:
 
@@ -27,7 +30,8 @@ The `CommentID` endpoint accepts:
 For a list of properties, see:
 `https://github.com/nextcloud/server/blob/master/apps/dav/lib/Comments/CommentNode.php#L108`
 
-### Examples of usage
+Examples
+********
 
 REPORT request:
 
