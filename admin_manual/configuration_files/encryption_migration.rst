@@ -18,6 +18,6 @@ On the command line run:
  occ encryption:scan:legacy-format
 
 The command will tell you if you can remove the legacy encryption mode.
-If so remove the `encryption.legacy_format_support` from your config.php or set it to `false`.
+If so set the `encryption.legacy_format_support` in your config.php to 'false'.
 
 
