@@ -10,4 +10,3 @@ Prologue
    bugtracker/index
    development_process
    security
-   performance
