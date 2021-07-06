@@ -1,3 +1,5 @@
+.. _Code-reviews:
+
 ======================
 Code reviews on GitHub
 ======================
