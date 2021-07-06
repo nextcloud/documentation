@@ -121,7 +121,7 @@ To review
 Why do we have it?
   Instead of directly committing to master we agree that **a second set of eyes
   will spot bugs** and increase our code quality and give us an opportunity to
-  learn from each other. See also our documentation about :doc:`codereviews`
+  learn from each other. See also our documentation about :ref:`code-reviews`
 
 What does a developer think?
   "I’ll check the Scenario described earlier works as expected. If necessary
