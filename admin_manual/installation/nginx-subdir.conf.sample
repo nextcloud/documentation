@@ -19,6 +19,9 @@ server {
     listen [::]:443 ssl http2;
     server_name cloud.example.com;
 
+    # Path to the root of the domain
+    root /var/www;
+
     # Use Mozilla's guidelines for SSL/TLS settings
     # https://mozilla.github.io/server-side-tls/ssl-config-generator/
     ssl_certificate     /etc/ssl/nginx/cloud.example.com.crt;
@@ -31,9 +34,6 @@ server {
     # in all major browsers and getting removed from this list
     # could take several months.
     #add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;" always;
-
-    # Path to the root of the domain
-    root /var/www;
 
     location = /robots.txt {
         allow all;
