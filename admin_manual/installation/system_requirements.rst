@@ -59,10 +59,17 @@ Desktop client
 We strongly recommend using the latest version of your operating system to get the full and most stable experience out
 of our clients.
 
-* **Windows** 7+
-* **macOS** Lion (10.7)+ (64-bit only)
-* **Linux** (CentOS 6.5+, Ubuntu 14.04+, Fedora 21+, openSUSE 13, SUSE Linux Enterprise 11 SP3+, Debian 8 (Jessie)+, Red Hat
-  Enterprise Linux 7)
+- Windows 10 minimum Version 1709 [SAC]
+- macOS 10.12+ (64-bit only)
+- Linux
+- FreeBSD
+
+.. NOTE::
+   For Windows 10 we support Semi-Anual Channel, no LTSB/LTSC or IoT Versions.
+   
+   For Windows we support Client Operating Systems only, no Windows Server Versions.
+   
+   For Linux distributions, we support, if technically feasible, the latest 2 versions per platform and the previous LTS.
 
 Mobile apps
 -----------
