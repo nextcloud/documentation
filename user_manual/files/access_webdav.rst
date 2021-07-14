@@ -242,12 +242,12 @@ Nextcloud to one or more directories of your local hard drive.
 .. note:: Windows 10 now defaults to allow Basic Authentication if HTTPS is 
     enabled prior to mapping your drive. On older versions of Windows,
     you must permit the use of Basic Authentication in the Windows
-    Registry: launch „regedit“ and navigate to
-    HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters.
-    Create or edit the DWORD value „BasicAuthLevel“ (Windows Vista, 7 and 8) or
-    „UseBasicAuth“ (Windows XP and Windows Server 2003) and set its value data
-    to 1 for SSL connections. Value 0 means that Basic Authentication is disabled,
-    a value of 2 allows both SSL and non-SSL connections (not recommended).
+    Registry: launch ``regedit`` and navigate to
+    ``HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters``.
+    Create or edit the ``DWORD`` value ``BasicAuthLevel`` (Windows Vista, 7 and 8) or
+    ``UseBasicAuth`` (Windows XP and Windows Server 2003) and set its value data
+    to ``1`` for SSL connections. Value ``0`` means that Basic Authentication is disabled,
+    a value of ``2`` allows both SSL and non-SSL connections (not recommended).
     Then exit Registry Editor, and restart the computer.
 
 Mapping drives with the command line
