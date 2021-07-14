@@ -81,7 +81,6 @@ Web browser
 For the best experience with the Nextcloud web interface, we recommend that you use the latest and supported version
 of a browser from this list, or one based on those:
 
-- Microsoft **Internet Explorer 11** (latest version)
 - Microsoft **Edge**
 - Mozilla **Firefox**
 - Google **Chrome**/Chromium
