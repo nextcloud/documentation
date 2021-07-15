@@ -262,15 +262,13 @@ Disabling encryption
 --------------------
 
 You may disable encryption only with ``occ``. Make sure you have backups of all 
-encryption keys, including users'. Put your Nextcloud server into 
-maintenance mode, and then disable your encryption module with this command::
+encryption keys, including users'. One can disable encryption with this set of
+commands. Please note that your instance will automatically be put into maintenance
+mode during the actual decryption of the files::
 
- occ maintenance:mode --on
+ occ encryption:decrypt-all
  occ encryption:disable
- 
-Take it out of maintenance mode when you are finished::
-
- occ maintenance:mode --off
+ occ app:disable encryption
 
 Files not encrypted
 -------------------
