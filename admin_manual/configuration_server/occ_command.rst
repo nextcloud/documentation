@@ -1000,12 +1000,18 @@ Run the ``maintenance:theme:update`` command if the icons of your custom theme a
 Security
 --------
 
-Use these commands to manage server-wide SSL certificates. These are useful when you create federation shares with other Nextcloud servers that use self-signed certificates::
+Use these commands to manage server-wide SSL certificates or reset bruteforce slow-downs. These are useful when you create federation shares with other Nextcloud servers that use self-signed certificates::
 
  security
+  security:bruteforce:reset     resets bruteforce attemps for given IP address
   security:certificates         list trusted certificates
   security:certificates:import  import trusted certificate
   security:certificates:remove  remove trusted certificate
+  
+Reset an IP::
+
+ sudo -u www-data php occ security:bruteforce:reset [IP address]
+
 
 This example lists your installed certificates::
 
