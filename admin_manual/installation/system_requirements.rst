@@ -59,7 +59,7 @@ Desktop client
 We strongly recommend using the latest version of your operating system to get the full and most stable experience out
 of our clients.
 
-* **Windows** 7+
+* **Windows** 8.1+
 * **macOS** Lion (10.7)+ (64-bit only)
 * **Linux** (CentOS 6.5+, Ubuntu 14.04+, Fedora 21+, openSUSE 13, SUSE Linux Enterprise 11 SP3+, Debian 8 (Jessie)+, Red Hat
   Enterprise Linux 7)
