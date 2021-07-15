@@ -111,8 +111,6 @@ Example log entries
 Log field breakdown
 ~~~~~~~~~~~~~~~~~~~
 
-* **0**: DEBUG: All activity; the most detailed logging.
-
 * **reqId** (request id): any log lines related to a single request have the same value
 * **level**: logged incident's level, always 1 in audit.log
 * **time**: date and time (format and timezone can be configured in config.php)
