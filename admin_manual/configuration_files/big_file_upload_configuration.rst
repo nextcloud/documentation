@@ -40,6 +40,11 @@ relevant php.ini files) ::
 
  php_value upload_max_filesize 16G
  php_value post_max_size 16G
+ 
+The ``upload_max_filesize`` and ``post_max_size`` settings may not apply to file uploads 
+through WebDAV single file PUT requests or `Chunked file uploads
+<https://docs.nextcloud.com/server/latest/developer_manual/client_apis/WebDAV/chunking.html>`_ 
+For those, PHP and webserver timeouts are the limiting factor on the upload size.
 
 Adjust these values for your needs. If you see PHP timeouts in your logfiles, 
 increase the timeout values, which are in seconds::
@@ -149,3 +154,14 @@ For upload performance improvements in environments with high upload bandwidth, 
 Put in a value in bytes or set ``--value 0`` for no chunking at all.
 
 Default is 10485760 (10 MB).
+
+
+Large file upload on object storage
+-----------------------------------
+
+`Chunked file uploads <https://docs.nextcloud.com/server/latest/developer_manual/client_apis/WebDAV/chunking.html>`_ 
+do have a larger space consumption on the temporary folder when processing those uploads
+on object storage as the individual chunks get downloaded from the storage and will be assembled
+to the actual file on the Nextcloud servers temporary directory. It is recommended to increase
+the size of your temp directory accordingly and also ensure that request timeouts are high
+enough for PHP, webservers or any load balancers involved.
