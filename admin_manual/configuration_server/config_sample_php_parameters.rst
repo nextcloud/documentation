@@ -1230,7 +1230,6 @@ Defaults to ``''`` (empty string)
 		'OC\Preview\PNG',
 		'OC\Preview\JPEG',
 		'OC\Preview\GIF',
-		'OC\Preview\HEIC',
 		'OC\Preview\BMP',
 		'OC\Preview\XBitmap',
 		'OC\Preview\MP3',
@@ -1246,6 +1245,7 @@ The following providers are disabled by default due to performance or privacy
 concerns:
 
  - OC\\Preview\\Illustrator
+ - OC\\Preview\\HEIC
  - OC\\Preview\\Movie
  - OC\\Preview\\MSOffice2003
  - OC\\Preview\\MSOffice2007
@@ -1263,7 +1263,6 @@ Defaults to the following providers:
 
  - OC\\Preview\\BMP
  - OC\\Preview\\GIF
- - OC\\Preview\\HEIC
  - OC\\Preview\\JPEG
  - OC\\Preview\\MarkDown
  - OC\\Preview\\MP3
@@ -1404,8 +1403,17 @@ Defaults to ``none``
 		'host' => 'localhost', // can also be a unix domain socket: '/tmp/redis.sock'
 		'port' => 6379,
 		'timeout' => 0.0,
+		'read_timeout' => 0.0,
+		'user' =>  '', // Optional, if not defined no password will be used.
 		'password' => '', // Optional, if not defined no password will be used.
 		'dbindex' => 0, // Optional, if undefined SELECT will not run and will use Redis Server's default DB Index.
+		// If redis in-transit encryption is enabled, provide certificates
+		// SSL context https://www.php.net/manual/en/context.ssl.php
+		'ssl_context' => [
+			'local_cert' => '/certs/redis.crt',
+			'local_pk' => '/certs/redis.key',
+			'cafile' => '/certs/ca.crt'
+		]
 	],
 
 Connection details for redis to use for memory caching in a single server configuration.
@@ -1413,6 +1421,9 @@ Connection details for redis to use for memory caching in a single server config
 For enhanced security it is recommended to configure Redis
 to require a password. See http://redis.io/topics/security
 for more information.
+
+We also support redis SSL/TLS encryption as of version 6.
+See https://redis.io/topics/encryption for more information.
 
 ::
 
@@ -1424,7 +1435,15 @@ for more information.
 		'timeout' => 0.0,
 		'read_timeout' => 0.0,
 		'failover_mode' => \RedisCluster::FAILOVER_ERROR,
+		'user' =>  '', // Optional, if not defined no password will be used.
 		'password' => '', // Optional, if not defined no password will be used.
+		// If redis in-transit encryption is enabled, provide certificates
+		// SSL context https://www.php.net/manual/en/context.ssl.php
+		'ssl_context' => [
+			'local_cert' => '/certs/redis.crt',
+			'local_pk' => '/certs/redis.key',
+			'cafile' => '/certs/ca.crt'
+		]
 	],
 
 Connection details for a Redis Cluster
