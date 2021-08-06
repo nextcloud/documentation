@@ -1789,7 +1789,14 @@ of your php version. Then set the setting to true.
 Nextcloud uses the Argon2 algorithm (with PHP >= 7.2) to create hashes by its
 own and exposes its configuration options as following. More information can
 be found at: https://www.php.net/manual/en/function.password-hash.php
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.. note::
+    In some case it can happen what when updating from PHP 7.2 to later
+    versions of PHP, that old passwords don't work anymore. This might be caused
+    by the fact that the new PHP version doesn't provide the Argon2 algorithm
+    anymore. On PHP 7.4, you will need to install php-sodium instead.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 ::
