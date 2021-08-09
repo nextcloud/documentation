@@ -30,7 +30,8 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - nginx with ``php-fpm``                                              |
 +------------------+-----------------------------------------------------------------------+
 | PHP Runtime      | - 7.3                                                                 |
-|                  | - **7.4** (*recommended*)                                             |
+|                  | - 7.4                                                                 |
+|                  | - **8.0** (*recommended*)                                             |
 +------------------+-----------------------------------------------------------------------+
 
 See :doc:`source_installation` for minimum PHP-modules and additional software for installing Nextcloud.
