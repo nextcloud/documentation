@@ -45,6 +45,33 @@ Inside your database layer class you can now start running queries like:
     }
 
 
+Transactions
+------------
+
+Database operations can be run in a transaction to commit or roll back a group of changes in an atomic fashion.
+
+.. code-block:: php
+
+    <?php
+
+    $this->db->startTransaction();
+
+    try {
+        // DB operations
+
+        $this->db->commit();
+    } catch (\Throwable $e) {
+        // Optional: handle the error
+
+        // Important: roll back (or commit) your changes when an error
+        //            happens, so this transaction ends
+        $this->db->rollBack();
+
+        throw $e;
+    }
+
+.. warning:: Omitting the error handling for transactions will lead to unexpected behavior as any database operations that come after your error will still run in your transaction and due to the lack of a commit PDO will automatically roll-back all changes at the end of the script.
+
 Mappers
 -------
 
