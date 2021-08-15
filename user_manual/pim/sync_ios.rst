@@ -11,7 +11,8 @@ Calendar
 #. Select Add Account.
 #. Select Other as account type.
 #. Select Add CalDAV account.
-#. For server, type the domain name of your server i.e. ``example.com``.
+#. For server, type the domain name of your server i.e. ``example.com/remote.php/dav/principals/users/USERNAME/``.
+#. iOS adds https:// in front of your domain automatically. In this case delete https:// again. 
 #. Enter your user name and password.
 #. Select Next.
 
@@ -30,7 +31,8 @@ Contacts
 #. Select Add Account.
 #. Select Other as account type.
 #. Select Add CardDAV account.
-#. For server, type the domain name of your server i.e. ``example.com``.
+#. For server, type the domain name of your server i.e. ``example.com/remote.php/dav/principals/users/USERNAME/``.
+#. iOS adds https:// in front of your domain automatically. In this case delete https:// again. 
 #. Enter your user name and password.
 #. Select Next.
 
