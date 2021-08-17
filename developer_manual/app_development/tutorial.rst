@@ -726,7 +726,7 @@ Because Nextcloud uses :doc:`Dependency Injection <requests/container>` to assem
     <?php
     namespace OCA\NotesTutorial\Tests\Unit\Controller;
 
-    use PHPUnit_Framework_TestCase;
+    use PHPUnit\Framework\TestCase;
 
     use OCP\AppFramework\Http;
     use OCP\AppFramework\Http\DataResponse;
@@ -734,7 +734,7 @@ Because Nextcloud uses :doc:`Dependency Injection <requests/container>` to assem
     use OCA\NotesTutorial\Service\NotFoundException;
 
 
-    class NoteControllerTest extends PHPUnit_Framework_TestCase {
+    class NoteControllerTest extends TestCase {
 
         protected $controller;
         protected $service;
@@ -788,13 +788,13 @@ We can and should also create a test for the **NoteService** class:
     <?php
     namespace OCA\NotesTutorial\Tests\Unit\Service;
 
-    use PHPUnit_Framework_TestCase;
+    use PHPUnit\Framework\TestCase;
 
     use OCP\AppFramework\Db\DoesNotExistException;
 
     use OCA\NotesTutorial\Db\Note;
 
-    class NoteServiceTest extends PHPUnit_Framework_TestCase {
+    class NoteServiceTest extends TestCase {
 
         private $service;
         private $mapper;
