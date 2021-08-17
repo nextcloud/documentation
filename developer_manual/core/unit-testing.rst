@@ -8,27 +8,9 @@ PHP unit testing
 Getting PHPUnit
 ^^^^^^^^^^^^^^^
 
-Nextcloud uses PHPUnit >= 4.8 for unit testing.
+Nextcloud uses PHPUnit >= 8.5 for unit testing.
 
-To install it, either get it via your package manager::
-
-  sudo apt-get install phpunit
-
-or install it manually::
-
-  wget https://phar.phpunit.de/phpunit.phar
-  chmod +x phpunit.phar
-  sudo mv phpunit.phar /usr/local/bin/phpunit
-
-After the installation the **phpunit** command is available::
-
-  phpunit --version
-
-And you can update it using::
-
-  phpunit --self-update
-
-You can find more information in the PHPUnit documentation: https://phpunit.de/manual/current/en/installation.html
+PHPUnit documentation: https://phpunit.de/documentation.html
 
 Writing PHP unit tests
 ^^^^^^^^^^^^^^^^^^^^^^
