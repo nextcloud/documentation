@@ -90,6 +90,8 @@ Which returns::
 
 .. note:: On some systems it might be required to call **php-cli** instead of **php**.
 
+.. note:: For some configurations, it might be neccessary to append ``--define apc.enable_cli=1`` to the cron command. Please refer to :doc:`the caching configuration page section APCu<./caching_configuration>`.
+
 .. note:: Please refer to the crontab man page for the exact command syntax.
 
 .. _easyCron: https://www.easycron.com/
