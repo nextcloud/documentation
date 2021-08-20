@@ -4,7 +4,7 @@ Nextcloud Flow
 
 Nextcloud Flow is a user-defined event-based workflow engine.
 
-Applications can expose entities with specific events on the one hand, and operations that act on these events on the other hand.
+Applications can expose entities with specific events on the one hand, and operations that act on these events on the other hand. A user defines a workflow rule that is triggered by a certain event which will then execute the operation based on user defined checks.
 
 An example flow might be converting Word documents into PDF when they are added to one folder, then move that Word document to another folder once it's finished. This workflow would deal with the file entity's create event and act on that file.
 
