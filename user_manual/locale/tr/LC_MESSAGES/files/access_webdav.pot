@@ -1,0 +1,973 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021 Nextcloud GmbH
+# This file is distributed under the same license as the Nextcloud latest User Manual package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Kaya Zeren <kayazeren@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Nextcloud latest User Manual latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-14 13:07+0000\n"
+"PO-Revision-Date: 2019-11-07 20:29+0000\n"
+"Last-Translator: Kaya Zeren <kayazeren@gmail.com>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/nextcloud/teams/64236/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../files/access_webdav.rst:3
+msgid "Accessing Nextcloud files using WebDAV"
+msgstr "WebDAV kullanarak Nextcloud dosyalarına erişmek"
+
+#: ../../files/access_webdav.rst:5
+msgid ""
+"Nextcloud fully supports the WebDAV protocol, and you can connect and "
+"synchronize with your Nextcloud files over WebDAV. In this chapter you will "
+"learn how to connect Linux, macOS, Windows, and mobile devices to your "
+"Nextcloud server via WebDAV. Before we get into configuring WebDAV, let's "
+"take a quick look at the recommended way of connecting client devices to "
+"your Nextcloud servers."
+msgstr ""
+"Nextcloud, WebDAV iletişim kuralını tam olarak destekler ve Nextcloud "
+"dosyalarınıza WebDAV üzerinden bağlanıp eşitlemenizi sağlar. Bu bölümde "
+"Linux, macOS, Windows ve mobil aygıtları WebDAV aracılığıyla Nextcloud "
+"sunucunuza nasıl bağlayacağınızı öğreneceksiniz. WebDAV yapılandırmasına "
+"başlamadan önce, istemci aygıtları Nextcloud sunucularınıza bağlamanın "
+"önerilen yoluna hızlı bir göz atalım."
+
+#: ../../files/access_webdav.rst:11
+msgid ""
+"In the following examples, you should replace **example.com/nextcloud** with"
+" the URL of your Nextcloud server (omit the directory part if the "
+"installation is in the root of your domain), and \"USERNAME\" with the "
+"username of the connecting user."
+msgstr ""
+"Aşağıdaki örneklerde, **example.com/nextcloud** yerine Nextcloud sunucunuzun"
+" adresini (kurulumunuz etki alanınızın kök klasöründeyse klasör bölümünü "
+"atlayın) ve \"KULLANICI ADI\" yerine bağlantı kuran kullanıcının kullanıcı "
+"adını yazmalısınız."
+
+#: ../../files/access_webdav.rst:15
+msgid "See the WebDAV URL (bottom left in settings) on your Nextcloud."
+msgstr "Nextcloud kopyanızdaki WebDAV adresine (ayarlarda sol altta) bakın."
+
+#: ../../files/access_webdav.rst:17
+msgid ""
+"In the following examples, you must use an app-password for login, which you"
+" can generate in your security settings."
+msgstr ""
+"Aşağıdaki örneklerde, oturum açmak için güvenlik ayarları bölümünüzden "
+"oluşturabileceğiniz bir uygulama parolası kullanmanız gerekir."
+
+#: ../../files/access_webdav.rst:20
+msgid "Nextcloud Desktop and mobile clients"
+msgstr "Nextcloud masaüstü ve mobil istemciler"
+
+#: ../../files/access_webdav.rst:22
+msgid ""
+"The recommended way to synchronize a desktop PC with a Nextcloud server is "
+"by using `Nextcloud/ownCloud sync clients <https://nextcloud.com/install"
+"/#install-clients>`_. You can configure the client to save files in any "
+"local directory and you can choose which directories on the Nextcloud server"
+" to sync with. The client displays the current connection status and logs "
+"all activity, so you always know which remote files have been downloaded to "
+"your PC and you can verify that files created and updated on your local PC "
+"are properly synchronized with the server."
+msgstr ""
+"Bir masaüstü bilgisayarı bir Nextcloud sunucusuyla eşitlemenin önerilen "
+"yolu, `Nextcloud/ownCloud eşitleme istemcilerini "
+"<https://nextcloud.com/install/#install-clients>`_ kullanmaktır. İstemciyi "
+"dosyaları herhangi bir yerel klasöre kaydedecek şekilde yapılandırabilir ve "
+"Nextcloud sunucusunda hangi klasörlerle eşitleneceğini seçebilirsiniz. "
+"İstemci var olan bağlantı durumunu görüntüler ve yapılan tüm işlemleri "
+"günlüğe kaydeder. Böylece her zaman bilgisayarınıza hangi uzak dosyaların "
+"indirildiğini bilirsiniz ve yerel bilgisayarınızda oluşturulan ve "
+"güncellenen dosyaların sunucu ile düzgün bir şekilde eşitlendiğini "
+"doğrulayabilirsiniz."
+
+#: ../../files/access_webdav.rst:30
+msgid ""
+"The recommended way to synchronize Nextcloud server with Android and Apple "
+"iOS devices is by using the `mobile apps <https://nextcloud.com/install/>`_."
+msgstr ""
+"Nextcloud sunucusunu Android ve Apple iOS aygıtlarıyla eşitlemenin önerilen "
+"yolu, `mobil uygulamaları <https://nextcloud.com/install/>` kullanmaktır."
+
+#: ../../files/access_webdav.rst:34
+msgid ""
+"To connect your mobile app to a Nextcloud server use the base URL and folder"
+" only::"
+msgstr ""
+"Mobil uygulamanız ile bir Nextcloud sunucusu arasında bağlantı kurmak için "
+"yalnız temel adresi ve klasörü kullanın::"
+
+#: ../../files/access_webdav.rst:39
+msgid ""
+"In addition to the mobile apps provided by Nextcloud or ownCloud, you can "
+"use other apps to connect to Nextcloud from your mobile device using WebDAV."
+" `WebDAV Navigator`_ is a good (proprietary) app for `Android devices`_ and "
+"`iPhones`_. The URL to use on these is::"
+msgstr ""
+"Nextcloud veya ownCloud tarafından sağlanan mobil uygulamalara ek olarak, "
+"diğer uygulamaları kullanmak için WebDAV kullanarak mobil aygıtınızdan "
+"Nextcloud bağlantısı kurabilirsiniz. `WebDAV Navigator`_ `Android "
+"aygıtları`_ ve `iPhone`_ için iyi (tescilli) bir uygulamadır. Bunlarda "
+"kullanılacak adres::"
+
+#: ../../files/access_webdav.rst:46
+msgid "WebDAV configuration"
+msgstr "WebDAV yapılandırması"
+
+#: ../../files/access_webdav.rst:48
+msgid ""
+"If you prefer, you may also connect your desktop PC to your Nextcloud server"
+" by using the WebDAV protocol rather than using a special client "
+"application. Web Distributed Authoring and Versioning (WebDAV) is a "
+"Hypertext Transfer Protocol (HTTP) extension that makes it easy to create, "
+"read, and edit files on Web servers. With WebDAV you can access your "
+"Nextcloud shares on Linux, macOS and Windows in the same way as any remote "
+"network share, and stay synchronized."
+msgstr ""
+"Dilerseniz masaüstü bilgisayarınızı, özel bir istemci uygulaması yerine "
+"WebDAV iletişim kuralını kullanarak da Nextcloud sunucunuza "
+"bağlayabilirsiniz. Web dağıtılmış yazma ve sürüm oluşturma (WebDAV), web "
+"sunucularında dosya oluşturmayı, okumayı ve düzenlemeyi kolaylaştıran bir "
+"hiper metin aktarımı iletişim kuralı (HTTP) uzantısıdır. WebDAV kullanarak, "
+"Linux, macOS ve Windows üzerindeki Nextcloud paylaşımlarınıza herhangi bir "
+"uzak ağ paylaşımıyla aynı şekilde erişebilir ve eşitleyebilirsiniz."
+
+#: ../../files/access_webdav.rst:56
+msgid "Accessing files using Linux"
+msgstr "Linux kullanarak dosyalara erişmek"
+
+#: ../../files/access_webdav.rst:58
+msgid ""
+"You can access files in Linux operating systems using the following methods."
+msgstr ""
+"Linux işletim sistemlerindeki dosyalara aşağıdaki yöntemleri kullanarak "
+"erişebilirsiniz."
+
+#: ../../files/access_webdav.rst:61
+msgid "Nautilus file manager"
+msgstr "Nautilus dosya yöneticisi"
+
+#: ../../files/access_webdav.rst:63
+msgid ""
+"**When you configure your Nextcloud account in the** `GNOME Control Center "
+"<../pim/sync_gnome.html>`_, **your files will automatically be mounted by "
+"Nautilus as a WebDAV share, unless you deselect file access**."
+msgstr ""
+"**Nextcloud hesabınızı `GNOME Control Center <../pim/sync_gnome.html>`_ "
+"içinden yapılandırdığınızda, **dosya erişimi seçeneğini kaldırmadığınızda, "
+"dosyalarınız Nautilus tarafından otomatik olarak bir WebDAV paylaşımı olarak"
+" eklenir**."
+
+#: ../../files/access_webdav.rst:67
+msgid ""
+"You can also mount your Nextcloud files manually. Use the ``davs://`` "
+"protocol to connect the Nautilus file manager to your Nextcloud share::"
+msgstr ""
+"Ayrıca Nextcloud dosyalarınızı el ile de ekleyebilirsiniz. Nautilus dosya "
+"yöneticisini Nextcloud paylaşımınıza bağlamak için ``davs://`` iletişim "
+"kuralını kullanın::"
+
+#: ../../files/access_webdav.rst:73
+msgid ""
+"If your server connection is not HTTPS-secured, use ``dav://`` instead of "
+"``davs://``:"
+msgstr ""
+"Sunucu bağlantınızın HTTPS ile güvenliği sağlanmamışsa, ``davs://`` yerine "
+"``dav://`` kullanın:"
+
+#: ../../files/access_webdav.rst:79
+msgid ""
+"The same method works for other file managers that use GVfs, such as MATE's "
+"Caja and Cinnamon's Nepomuk."
+msgstr ""
+"Aynı yöntem, MATE Caja ve Cinnamon Nepomuk gibi GVfs kullanan diğer dosya "
+"yöneticileri için de geçerlidir."
+
+#: ../../files/access_webdav.rst:84
+msgid "Accessing files with KDE and Dolphin file manager"
+msgstr "KDE ve Dolphin dosya yöneticisi ile dosyalara erişmek"
+
+#: ../../files/access_webdav.rst:86
+msgid ""
+"To access your Nextcloud files using the Dolphin file manager in KDE, use "
+"the ``webdav://`` protocol::"
+msgstr ""
+"KDE Dolphin dosya yöneticisini kullanarak Nextcloud dosyalarınıza erişmek "
+"için ``webdav://`` iletişim kuralını kullanın::"
+
+#: ../../files/access_webdav.rst:94
+msgid "You can create a permanent link to your Nextcloud server:"
+msgstr "Nextcloud sunucunuzla kalıcı bir bağlantı oluşturabilirsiniz:"
+
+#: ../../files/access_webdav.rst:96
+msgid "Open Dolphin and click \"Network\" in the left hand \"Places\" column."
+msgstr ""
+"Dolphin uygulamasını açın ve sol taraftaki \"Yerler\" sütunundaki \"Ağ\" "
+"üzerine tıklayın."
+
+#: ../../files/access_webdav.rst:97
+msgid ""
+"Click on the icon labeled **Add a Network Folder**. The resulting dialog "
+"should appear with WebDAV already selected."
+msgstr ""
+"**Ağ klasörü ekle** etiketli simgeye tıklayın. Açılan pencerede, WebDAV "
+"zaten seçilmiş olarak görünmelidir."
+
+#: ../../files/access_webdav.rst:99
+msgid "If WebDAV is not selected, select it."
+msgstr "WebDAV seçili değilse seçin."
+
+#: ../../files/access_webdav.rst:100
+msgid "Click **Next**."
+msgstr "**Sonraki** üzerine tıklayın."
+
+#: ../../files/access_webdav.rst:101
+msgid "Enter the following settings:"
+msgstr "Şu ayarları yazın:"
+
+#: ../../files/access_webdav.rst:103
+msgid ""
+"Name: The name you want to see in the **Places** bookmark, for example "
+"Nextcloud."
+msgstr "Ad: **Yerler** altında görmek istediğiniz ad. Örnek: Nextcloud."
+
+#: ../../files/access_webdav.rst:105
+msgid "User: The Nextcloud username you used to log in, for example admin."
+msgstr ""
+"Kullanıcı: Oturum açmak için kullanılacak Nextcloud kullanıcı adı. Örnek: "
+"admin."
+
+#: ../../files/access_webdav.rst:107
+msgid ""
+"Server: The Nextcloud domain name, for example **example.com** (without "
+"**http://** before or directories afterwards)."
+msgstr ""
+"Sunucu: Nextcloud etki alanı adı. Örnek: **websitem.com** (başında "
+"**http://** sonunda klasörler olmadan)."
+
+#: ../../files/access_webdav.rst:109
+msgid "Folder -- Enter the path ``nextcloud/remote.php/dav/files/USERNAME/``."
+msgstr ""
+"Klasör -- ``nextcloud/remote.php/dav/files/KULLANICIADI/`` yolunu yazın."
+
+#: ../../files/access_webdav.rst:110
+msgid ""
+"(Optional) Check the \"Create icon\" checkbox for a bookmark to appear in "
+"the Places column."
+msgstr ""
+"(İsteğe bağlı) Yerler sütununda bir yer işaretinin görüntülenmesi için "
+"\"Simge oluştur\" kutusunu işaretleyin."
+
+#: ../../files/access_webdav.rst:112
+msgid ""
+"(Optional) Provide any special settings or an SSL certificate in the \"Port "
+"& Encrypted\" checkbox."
+msgstr ""
+"(İsteğe bağlı) \"Kapı numarası ve şifreli\" kutusunda herhangi bir özel ayar"
+" veya bir SSL sertifikası belirtin."
+
+#: ../../files/access_webdav.rst:116
+msgid "Creating WebDAV mounts on the Linux command line"
+msgstr "Linux komut satırından WebDAV bağlantıları oluşturmak"
+
+#: ../../files/access_webdav.rst:118
+msgid ""
+"You can create WebDAV mounts from the Linux command line. This is useful if "
+"you prefer to access Nextcloud the same way as any other remote filesystem "
+"mount. The following example shows how to create a personal mount and have "
+"it mounted automatically every time you log in to your Linux computer."
+msgstr ""
+"Linux komut satırından da WebDAV bağlantıları oluşturabilirsiniz. Nextcloud "
+"üzerine diğer herhangi bir uzak dosya sistemi bağlamasıyla aynı şekilde "
+"erişmeyi yeğliyorsanız bu kullanım daha uygun olabilir. Aşağıdaki örnek, "
+"kişisel bir bağlamanın nasıl oluşturulacağını ve Linux bilgisayarınızda her "
+"oturum açtığınızda otomatik bağlanmayı gösterir."
+
+#: ../../files/access_webdav.rst:123
+msgid ""
+"Install the ``davfs2`` WebDAV filesystem driver, which allows you to mount "
+"WebDAV shares just like any other remote filesystem. Use this command to "
+"install it on Debian/Ubuntu::"
+msgstr ""
+"WebDAV paylaşımlarını diğer herhangi bir uzak dosya sistemi gibi bağlamanızı"
+" sağlayan ``davfs2`` WebDAV dosya sistemi sürücüsünü yükleyin. Debian/Ubuntu"
+" üzerine kurmak için şu komutu kullanın::"
+
+#: ../../files/access_webdav.rst:129
+msgid "Use this command to install it on CentOS, Fedora, and openSUSE::"
+msgstr "CentOS, Fedora ve openSUSE üzerine kurmak için şu komutu kullanın:"
+
+#: ../../files/access_webdav.rst:133
+msgid "Add yourself to the ``davfs2`` group::"
+msgstr "Kendinizi ``davfs2`` grubuna ekleyin::"
+
+#: ../../files/access_webdav.rst:137
+msgid ""
+"Then create a ``nextcloud`` directory in your home directory for the "
+"mountpoint, and ``.davfs2/`` for your personal configuration file::"
+msgstr ""
+"Ardından, bağlama noktası için ana klasörünüzde bir ``nextcloud`` klasörü ve"
+" kişisel yapılandırma dosyanız için de ``.davfs2/`` klasörü oluşturun::"
+
+#: ../../files/access_webdav.rst:143
+msgid "Copy ``/etc/davfs2/secrets`` to ``~/.davfs2``::"
+msgstr ""
+"``/etc/davfs2/secrets`` dosyasını ``~/.davfs2`` klasörüne kopyalayın::"
+
+#: ../../files/access_webdav.rst:147
+msgid ""
+"Set yourself as the owner and make the permissions read-write owner only::"
+msgstr ""
+"Dosyanın sahibi olarak kendinizi ayarlayın ve yalnız sahip için okuma ve "
+"yazma izinleri verin::"
+
+#: ../../files/access_webdav.rst:152
+msgid ""
+"Add your Nextcloud login credentials to the end of the ``secrets`` file, "
+"using your Nextcloud server URL and your Nextcloud username and password::"
+msgstr ""
+"Nextcloud oturum açma kimlik doğrulama bilgileriniz olan Nextcloud sunucu "
+"adresinizi, kullanıcı adınızı ve parolanızı ``secrets`` dosyasının sonuna "
+"ekleyin:"
+
+#: ../../files/access_webdav.rst:161
+msgid "Add the mount information to ``/etc/fstab``::"
+msgstr "Bağlama bilgilerini ``/etc/fstab`` dosyasına ekleyin::"
+
+#: ../../files/access_webdav.rst:167
+msgid ""
+"Then test that it mounts and authenticates by running the following command."
+" If you set it up correctly you won't need root permissions::"
+msgstr ""
+"Ardından, aşağıdaki komutu yürüterek bağlanmanın gerçekleştiğini ve kimliğin"
+" doğrulandığından emin olun. Doğru ayarlarsanız, root izinlerine gerek "
+"duyulmaz::"
+
+#: ../../files/access_webdav.rst:172
+msgid "You should also be able to unmount it::"
+msgstr "Ayrıca bağlanmayı sonlandırabilmelisiniz::"
+
+#: ../../files/access_webdav.rst:176
+msgid ""
+"Now every time you login to your Linux system your Nextcloud share should "
+"automatically mount via WebDAV in your ``~/nextcloud`` directory. If you "
+"prefer to mount it manually, change ``auto`` to ``noauto`` in "
+"``/etc/fstab``."
+msgstr ""
+"Artık Linux sisteminizde her oturum açtığınızda, Nextcloud paylaşımınız "
+"WebDAV aracılığıyla otomatik olarak ``~/nextcloud`` klasörünüze "
+"bağlanmalıdır. El ile bağlamayı yeğlerseniz, ``/etc/fstab`` içindeki "
+"``auto`` ögesini ``noauto`` olarak değiştirin."
+
+#: ../../files/access_webdav.rst:181
+msgid "Known issues"
+msgstr "Bilinen sorunlar"
+
+#: ../../files/access_webdav.rst:184 ../../files/access_webdav.rst:195
+#: ../../files/access_webdav.rst:363 ../../files/access_webdav.rst:385
+#: ../../files/access_webdav.rst:403 ../../files/access_webdav.rst:413
+#: ../../files/access_webdav.rst:442
+msgid "Problem"
+msgstr "Sorun"
+
+#: ../../files/access_webdav.rst:185
+msgid "Resource temporarily unavailable"
+msgstr "Kaynağa geçici olarak erişilemiyor"
+
+#: ../../files/access_webdav.rst:188 ../../files/access_webdav.rst:199
+#: ../../files/access_webdav.rst:391 ../../files/access_webdav.rst:408
+#: ../../files/access_webdav.rst:417 ../../files/access_webdav.rst:448
+msgid "Solution"
+msgstr "Çözüm"
+
+#: ../../files/access_webdav.rst:189
+msgid ""
+"If you experience trouble when you create a file in the directory, edit "
+"``/etc/davfs2/davfs2.conf`` and add::"
+msgstr ""
+"Klasörde bir dosya oluştururken sorun yaşarsanız, "
+"``/etc/davfs2/davfs2.conf`` dosyasını düzenleyin ve şunu ekleyin:"
+
+#: ../../files/access_webdav.rst:196
+msgid "Certificate warnings"
+msgstr "Sertifika uyarıları"
+
+#: ../../files/access_webdav.rst:201
+msgid ""
+"If you use a self-signed certificate, you will get a warning. To change "
+"this, you need to configure ``davfs2`` to recognize your certificate. Copy "
+"``mycertificate.pem`` to ``/etc/davfs2/certs/``. Then edit "
+"``/etc/davfs2/davfs2.conf`` and uncomment the line ``servercert``. Now add "
+"the path of your certificate as in this example::"
+msgstr ""
+"Kendinden imzalı bir sertifika kullanırsanız bir uyarı alırsınız. Bu durumu "
+"değiştirmek için ``davfs2`` yapılandırmanızı sertifikanızı tanıyacak şekilde"
+" değiştirmeniz gerekir. ``mycertificate.pem`` dosyasını "
+"``/etc/davfs2/certs/`` klasörüne kopyalayın. Ardından "
+"``/etc/davfs2/davfs2.conf`` dosyasını düzenleyin ve ``servercert`` satırının"
+" başındaki yorum işaretini kaldırın. Şimdi bu örnekte olduğu gibi "
+"sertifikanızın yolunu ekleyin::"
+
+#: ../../files/access_webdav.rst:210
+msgid "Accessing files using macOS"
+msgstr "macOS kullanarak dosyalara erişmek"
+
+#: ../../files/access_webdav.rst:212
+msgid ""
+"The macOS Finder suffers from a `series of implementation problems "
+"<http://sabre.io/dav/clients/finder/>`_ and should only be used if the "
+"Nextcloud server runs on **Apache** and **mod_php**, or **Nginx 1.3.8+**. "
+"Alternative macOS-compatible clients capable of accessing WebDAV shares "
+"include open source apps like `Cyberduck <https://cyberduck.io/>`_ (see "
+"instructions `here "
+"<https://docs.nextcloud.com/server/stable/user_manual/files/access_webdav.html"
+"#accessing-files-using-cyberduck>`_) and `Filezilla <https://filezilla-"
+"project.org>`_. Commercial clients include `Mountain Duck "
+"<https://mountainduck.io/>`_, `Forklift <https://binarynights.com/>`_, "
+"`Transmit <https://panic.com/>`_, and `Commander One "
+"<https://mac.eltima.com/>`_."
+msgstr ""
+"macOS Finder için `bir dizi uygulama sorunu vardır "
+"<http://sabre.io/dav/clients/finder/>`_ ve Nextcloud sunucusu yalnız "
+"**Apache** ve **mod_php** ya da **Nginx 1.3.8+** üzerinde çalışıyorsa "
+"kullanılmalıdır . WebDAV paylaşımlarına erişebilen alternatif macOS uyumlu "
+"istemciler, `Cyberduck <https://cyberduck.io/>`_  (buradaki yönergelere "
+"bakın <https://docs.nextcloud.com/server/stable/user_manual "
+"/files/access_webdav.html#accessing-files-using-cyberduck>`_) ve `Filezilla "
+"<https://filezilla-project.org>`_ gibi açık kaynaklı uygulamaları içerir. "
+"Ticari istemciler arasında ise `Mountain Duck <https://mountainduck.io/>`_, "
+"`Forklift <https://binarynights.com/>`_, `Transmit <https://panic.com/>`_ ve"
+" `Commander One <https://mac.eltima.com/>`_ bulunur."
+
+#: ../../files/access_webdav.rst:214
+msgid "To access files through the macOS Finder:"
+msgstr "Dosyalara macOS Finder üzerinden erişmek:"
+
+#: ../../files/access_webdav.rst:216
+msgid "From the Finder’s top menu bar, choose **Go > Connect to Server…**:"
+msgstr ""
+"Finder üst menü çubuğundan **Git > Sunucuya Bağlan…**' komutunu seçin:"
+
+#: ../../files/access_webdav.rst:221
+msgid ""
+"When the **Connect to Server…** window opens, enter your Nextcloud server’s "
+"WebDAV address in the **Server Address:** field, i.e.::"
+msgstr ""
+"**Sunucuya Bağlan…** penceresi açıldığında, **Sunucu Adresi:** alanına "
+"Nextcloud sunucunuzun WebDAV adresini yazın, yani::"
+
+#: ../../files/access_webdav.rst:228
+msgid ""
+"Click **Connect**. Your WebDAV server should appear on the Desktop as a "
+"shared disk drive."
+msgstr ""
+"**Bağlan**' üzerine tıklayın. WebDAV sunucunuz Masaüstünde paylaşılan bir "
+"disk sürücüsü olarak görünmelidir."
+
+#: ../../files/access_webdav.rst:232
+msgid "Accessing files using Microsoft Windows"
+msgstr "Dosyalara Microsoft Windows üzerinden erişmek"
+
+#: ../../files/access_webdav.rst:234
+msgid ""
+"If you use the native Windows implementation of WebDAV, you can map "
+"Nextcloud to a new drive using Windows Explorer. Mapping to a drive enables "
+"you to browse files stored on a Nextcloud server the way you would files "
+"stored in a mapped network drive."
+msgstr ""
+"Yerel Windows WebDAV uygulamasını kullanıyorsanız, Dosya Gezginini "
+"kullanarak Nextcloud sunucunuzu yeni bir sürücü olarak eşleyebilirsiniz. Bir"
+" sürücü eşlemek, bir Nextcloud sunucusunda depolanan dosyalara, eşlenmiş bir"
+" ağ sürücüsünde bulunan dosyalara yaptığınız gibi göz atabilmenizi sağlar."
+
+#: ../../files/access_webdav.rst:238
+msgid ""
+"Using this feature requires network connectivity. If you want to store your "
+"files offline, use the Desktop Client to sync all files on your Nextcloud to"
+" one or more directories of your local hard drive."
+msgstr ""
+"Bu özelliğin kullanılması için ağ bağlantısı gereklidir. Dosyalarınızı "
+"çevrimdışı olarak depolamak istiyorsanız, Nextcloud hesabınızdaki tüm "
+"dosyaları yerel sabit sürücünüzdeki bir veya daha fazla klasörle eşitlemek "
+"için Masaüstü istemcisini kullanın."
+
+#: ../../files/access_webdav.rst:242
+msgid ""
+"Windows 10 now defaults to allow Basic Authentication if HTTPS is enabled "
+"prior to mapping your drive. On older versions of Windows, you must permit "
+"the use of Basic Authentication in the Windows Registry: launch “regedit“ "
+"and navigate to "
+"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters."
+" Create or edit the DWORD value “BasicAuthLevel“ (Windows Vista, 7 and 8) or"
+" “UseBasicAuth“ (Windows XP and Windows Server 2003) and set its value data "
+"to 1 for SSL connections. Value 0 means that Basic Authentication is "
+"disabled, a value of 2 allows both SSL and non-SSL connections (not "
+"recommended). Then exit Registry Editor, and restart the computer."
+msgstr ""
+"Windows 10, sürücünüzü eşlemeden önce HTTPS etkinleştirilirse, artık "
+"varsayılan olarak temel kimlik doğrulamasına izin veriyor. Eski Windows "
+"sürümlerinde, Windows Kayıt Defteri içinde temel kimlik doğrulaması "
+"kullanımına izin vermelisiniz: “regedit” kayıt defterini düzenleme "
+"uygulamasını başlatın ve "
+"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters"
+" anahtarına gidin. \"BasicAuthLevel\" (Windows Vista, 7 ve 8) ya da "
+"\"UseBasicAuth\" (Windows XP ve Windows Server 2003) DWORD değerini "
+"oluşturun veya düzenleyin ve SSL bağlantıları için değer verisini 1 olarak "
+"ayarlayın. 0 değeri, temel kimlik doğrulamasının devre dışı bırakıldığı "
+"anlamına gelir. 2 değeri, hem SSL olan hem de SSL olmayan bağlantılara izin "
+"verir (önerilmez). Ardından kayıt defteri düzenleyicisi uygulamasından çıkın"
+" ve bilgisayarı yeniden başlatın."
+
+#: ../../files/access_webdav.rst:254
+msgid "Mapping drives with the command line"
+msgstr "Komut satırından sürücüleri eşleme"
+
+#: ../../files/access_webdav.rst:256
+msgid ""
+"The following example shows how to map a drive using the command line. To "
+"map the drive:"
+msgstr ""
+"Aşağıdaki örnek, bir sürücünün komut satırı kullanılarak nasıl eşleneceğini "
+"gösterir. Sürücüyü eşlemek için:"
+
+#: ../../files/access_webdav.rst:259
+msgid "Open a command prompt in Windows."
+msgstr "Windows komut istemini açın."
+
+#: ../../files/access_webdav.rst:260
+msgid ""
+"Enter the following line in the command prompt to map to the computer Z "
+"drive::"
+msgstr ""
+"Bilgisayarı Z sürücüsüyle eşlemek için komut istemine aşağıdaki satırı "
+"yazın:"
+
+#: ../../files/access_webdav.rst:266
+msgid "where <drive_path> is the URL to your Nextcloud server."
+msgstr "<drive_path>  Nextcloud sunucunuzun adresidir."
+
+#: ../../files/access_webdav.rst:268
+msgid ""
+"For example: ``net use Z: "
+"https://example.com/nextcloud/remote.php/dav/files/USERNAME/ /user:youruser "
+"yourpassword``"
+msgstr ""
+"Örneğin: ``net use Z: "
+"https://websitem.com/nextcloud/remote.php/dav/files/KULLANICIADI/ "
+"/user:kullaniciadiniz parolaniz``"
+
+#: ../../files/access_webdav.rst:271
+msgid ""
+"The computer maps the files of your Nextcloud account to the drive letter Z."
+msgstr ""
+"Bilgisayar, Nextcloud hesabınızın dosyalarını Z sürücü harfiyle eşler."
+
+#: ../../files/access_webdav.rst:273
+msgid ""
+"Though not recommended, you can also mount the Nextcloud server using HTTP, "
+"leaving the connection unencrypted. If you plan to use HTTP connections on "
+"devices while in a public place, we strongly recommend using a VPN tunnel to"
+" provide the necessary security."
+msgstr ""
+"Önerilmese de, Nextcloud sunucusunu HTTP kullanarak da bağlayabilir ve "
+"bağlantıyı şifrelenmemiş olarak bırakabilirsiniz. Herkese açık bir yerdeyken"
+" aygıtlarda HTTP bağlantılarını kullanmayı planlıyorsanız, gerekli güvenliği"
+" sağlamak için bir VPN tüneli kullanmanızı önemle öneririz."
+
+#: ../../files/access_webdav.rst:278
+msgid "An alternative command syntax is::"
+msgstr "Alternatif komut sözdizimi:"
+
+#: ../../files/access_webdav.rst:284
+msgid "Mapping drives with Windows Explorer"
+msgstr "Dosya Gezgini ile sürücüleri eşlemek"
+
+#: ../../files/access_webdav.rst:286
+msgid "To map a drive using the Microsoft Windows Explorer:"
+msgstr "Microsoft Dosya Gezginini kullanarak bir sürücüyü eşlemek için:"
+
+#: ../../files/access_webdav.rst:288
+msgid "Migrate to your computer in Windows Explorer."
+msgstr "Dosya Gezgininde bilgisayarınıza geçin."
+
+#: ../../files/access_webdav.rst:289
+msgid ""
+"Right-click on **Computer** entry and select **Map network drive…** from the"
+" drop-down menu."
+msgstr ""
+"**Bu bilgisayar** simgesine sağ tıklayın ve açılır menüden **Ağ sürücüsüne "
+"bağlan…** ögesini seçin."
+
+#: ../../files/access_webdav.rst:291
+msgid "Choose a local network drive to which you want to map Nextcloud."
+msgstr "Nextcloud eşlemesi için istediğiniz yerel ağ sürücüsünü seçin."
+
+#: ../../files/access_webdav.rst:292
+msgid ""
+"Specify the address to your Nextcloud instance, followed by "
+"**/remote.php/dav/files/USERNAME/**."
+msgstr ""
+"Nextcloud bulut sunucunuzun adresini yazın ve sonuna "
+"**/remote.php/dav/files/KULLANICIADI/** bölümünü ekleyin."
+
+#: ../../files/access_webdav.rst:295
+msgid "For example::"
+msgstr "Örnek:"
+
+#: ../../files/access_webdav.rst:299
+msgid ""
+"For SSL protected servers, check **Reconnect at sign-in** to ensure that the"
+" mapping is persistent upon subsequent reboots. If you want to connect to "
+"the Nextcloud server as a different user, check **Connect using different "
+"credentials**."
+msgstr ""
+"SSL ile korunan sunucular için, sonraki yeniden başlatmalarda eşlemenin "
+"kalıcı olacağından emin olmak için **Oturum açıldığında yeniden bağlan** "
+"seçeneğini işaretleyin. Nextcloud sunucusuna farklı bir kullanıcı olarak "
+"oturum açmak istiyorsanız, **Farklı kimlik bilgileri kullanarak bağlan** "
+"seçeneğini işaretleyin."
+
+#: ../../files/access_webdav.rst:308
+msgid "Click the ``Finish`` button."
+msgstr "``Son`` düğmesine tıklayın."
+
+#: ../../files/access_webdav.rst:310
+msgid ""
+"Windows Explorer maps the network drive, making your Nextcloud instance "
+"available."
+msgstr ""
+"Dosya Gezgini, ağ sürücüsünü eşleyerek Nextcloud kopyanızı kullanmanızı "
+"sağlar."
+
+#: ../../files/access_webdav.rst:314
+msgid "Accessing files using Cyberduck"
+msgstr "Cyberduck kullanarak dosyalara erişmek"
+
+#: ../../files/access_webdav.rst:316
+msgid ""
+"`Cyberduck <https://cyberduck.io/>`_ is an open source FTP and SFTP, WebDAV,"
+" OpenStack Swift, and Amazon S3 browser designed for file transfers on macOS"
+" and Windows."
+msgstr ""
+"`Cyberduck <https://cyberduck.io/>`_ macOS ve Windows üzerinde dosya "
+"aktarımları için tasarlanmış açık kaynaklı bir FTP ve SFTP, WebDAV, "
+"OpenStack Swift ve Amazon S3 tarayıcısıdır."
+
+#: ../../files/access_webdav.rst:320
+msgid "This example uses Cyberduck version 4.2.1."
+msgstr "Bu örnekte, Cyberduck 4.2.1 sürümü kullanılmıştır."
+
+#: ../../files/access_webdav.rst:322
+msgid "To use Cyberduck:"
+msgstr "Cyberduck kullanmak için:"
+
+#: ../../files/access_webdav.rst:324
+msgid ""
+"Specify a server without any leading protocol information. For example:"
+msgstr ""
+"Önünde bir iletişim kuralı bilgisi olmadan bir sunucu belirtin. Örneğin:"
+
+#: ../../files/access_webdav.rst:326
+msgid "``example.com``"
+msgstr "``websitem.com``"
+
+#: ../../files/access_webdav.rst:328
+msgid ""
+"Specify the appropriate port. The port you choose depends on whether or not "
+"your Nextcloud server supports SSL. Cyberduck requires that you select a "
+"different connection type if you plan to use SSL. For example:"
+msgstr ""
+"Uygun kapı numarasını belirtin. Seçtiğiniz kapı numarası, Nextcloud "
+"sunucunuzun SSL destekleyip desteklemediğine bağlı olarak değişir. "
+"Cyberduck, SSL kullanmayı planlıyorsanız farklı bir bağlantı türü seçmenizi "
+"gerektirir. Örneğin:"
+
+#: ../../files/access_webdav.rst:332
+msgid "80 (for WebDAV)"
+msgstr "80 (WebDAV için)"
+
+#: ../../files/access_webdav.rst:334
+msgid "443 (for WebDAV (HTTPS/SSL))"
+msgstr "443 (WebDAV (HTTPS/SSL) için)"
+
+#: ../../files/access_webdav.rst:336
+msgid ""
+"Use the 'More Options' drop-down menu to add the rest of your WebDAV URL "
+"into the 'Path' field. For example:"
+msgstr ""
+"WebDAV adresinizin kalanını 'Yol' alanına eklemek için 'Diğer Seçenekler' "
+"açılır menüsünü kullanın. Örneğin:"
+
+#: ../../files/access_webdav.rst:339
+msgid "``remote.php/dav/files/USERNAME/``"
+msgstr "``remote.php/dav/files/KULLANICIADI/``"
+
+#: ../../files/access_webdav.rst:341
+msgid "Now Cyberduck enables file access to the Nextcloud server."
+msgstr "Böylece Cyberduck, Nextcloud sunucusundaki dosyalara erişmiş olur."
+
+#: ../../files/access_webdav.rst:344
+msgid "Accessing public shares over WebDAV"
+msgstr "WebDAV üzerinden herkese açık paylaşımlara erişmek"
+
+#: ../../files/access_webdav.rst:346
+msgid ""
+"Nextcloud provides the possibility to access public shares over WebDAV."
+msgstr ""
+"Nextcloud, WebDAV üzerinden herkese açık paylaşımlara erişme olanağı sağlar."
+
+#: ../../files/access_webdav.rst:348
+msgid "To access the public share, open::"
+msgstr "Herkese açık paylaşıma erişmek için şunu açın::"
+
+#: ../../files/access_webdav.rst:352
+msgid ""
+"in a WebDAV client, use the share token as username and the (optional) share"
+" password as password."
+msgstr ""
+"bir WebDAV istemcisinde, kullanıcı adı olarak paylaşım kodunu ve parola "
+"olarak (isteğe bağlı) paylaşım parolasını kullanın."
+
+#: ../../files/access_webdav.rst:355
+msgid ""
+"**Settings** → **Administration** → **Sharing** → **Allow users on this "
+"server to send shares to other servers**. This option also allows WebDAV "
+"access to public shares needs to be enabled in order to make this feature "
+"work."
+msgstr ""
+"**Ayarlar** → **Yönetim** → **Paylaşım** → **Bu sunucudaki kullanıcılar "
+"diğer sunuculara paylaşım gönderebilsin** seçeneğini etkinleştirin. Bu "
+"seçenek ayrıca, bu özelliğin çalışması için herkese açık WebDAV erişiminin "
+"etkinleştirilmesini sağlar."
+
+#: ../../files/access_webdav.rst:360
+msgid "Known problems"
+msgstr "Bilinen sorunlar"
+
+#: ../../files/access_webdav.rst:364
+msgid "Windows does not connect using HTTPS."
+msgstr "Windows, HTTPS kullanarak bağlantı kuramıyor."
+
+#: ../../files/access_webdav.rst:367
+msgid "Solution 1"
+msgstr "1. çözüm"
+
+#: ../../files/access_webdav.rst:369
+msgid ""
+"The Windows WebDAV Client might not support Server Name Indication (SNI) on "
+"encrypted connections. If you encounter an error mounting an SSL-encrypted "
+"Nextcloud instance, contact your provider about assigning a dedicated IP "
+"address for your SSL-based server."
+msgstr ""
+"Windows WebDAV İstemcisi, şifreli bağlantılarda sunucu adı gösterimini (SNI)"
+" desteklemeyebilir. SSL ile şifrelenmiş bir Nextcloud kopyası kurarken bir "
+"hatayla karşılaşırsanız, SSL tabanlı sunucunuza bir sabit IP adresi ataması "
+"için hizmet sağlayıcınızla görüşün."
+
+#: ../../files/access_webdav.rst:375
+msgid "Solution 2"
+msgstr "2. çözüm"
+
+#: ../../files/access_webdav.rst:377
+msgid ""
+"The Windows WebDAV Client might not support TLSv1.1 and TLSv1.2 connections."
+" If you have restricted your server config to only provide TLSv1.1 and above"
+" the connection to your server might fail. Please refer to the WinHTTP_ "
+"documentation for further information."
+msgstr ""
+"Windows WebDAV İstemcisi, TLSv1.1 ve TLSv1.2 bağlantılarını "
+"desteklemeyebilir. Sunucu yapılandırmanızı yalnız TLSv1.1 ve üzerini sunacak"
+" şekilde kısıtladıysanız, sunucunuzla bağlantı kurulamayabilir. Ayrıntılı "
+"bilgi almak için WinHTTP_ belgelerine bakabilirsiniz."
+
+#: ../../files/access_webdav.rst:387
+msgid ""
+"You receive the following error message: **Error 0x800700DF: The file size "
+"exceeds the limit allowed and cannot be saved.**"
+msgstr ""
+"Şu hata iletisini görüyorsunuz: **Hata 0x800700DF: Dosya boyutu izin verilen"
+" sınırı aşıyor ve kaydedilemiyor.**"
+
+#: ../../files/access_webdav.rst:393
+msgid ""
+"Windows limits the maximum size a file transferred from or to a WebDAV share"
+" may have. You can increase the value **FileSizeLimitInBytes** in "
+"**HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\WebClient\\\\Parameters**"
+" by clicking on **Modify**."
+msgstr ""
+"Windows, WebDAV paylaşımı ile alınabilecek ya da gönderilebilecek bir "
+"dosyanın en büyük boyutunu sınırlar. **Değiştir** üzerine tıklayarak "
+"**HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\WebClient\\\\Parameters**"
+" altındaki **FileSizeLimitInBytes** değerini artırabilirsiniz."
+
+#: ../../files/access_webdav.rst:398
+msgid ""
+"To increase the limit to the maximum value of 4GB, select **Decimal**, enter"
+" a value of **4294967295**, and reboot Windows or restart the **WebClient** "
+"service."
+msgstr ""
+"Sınırı olabilecek en büyük 4 GB değerine çıkarmak için **Ondalık** seçin, "
+"**4294967295** değerini yazın ve Windows'u ya da **WebClient** hizmetini "
+"yeniden başlatın."
+
+#: ../../files/access_webdav.rst:405
+msgid "Accessing your files from Microsoft Office via WebDAV fails."
+msgstr ""
+"Dosyalarınıza WebDAV aracılığıyla Microsoft Office üzerinden erişilemiyor."
+
+#: ../../files/access_webdav.rst:410
+msgid ""
+"Known problems and their solutions are documented in the KB2123563_ article."
+msgstr ""
+"Bilinen sorunlara ve çözümlerine KB2123563_ makalesinde değinilmiştir."
+
+#: ../../files/access_webdav.rst:414
+msgid ""
+"Cannot map Nextcloud as a WebDAV drive in Windows using self-signed "
+"certificate."
+msgstr ""
+"Nextcloud kendinden imzalı sertifika kullanıyorken Windows üzerinde bir "
+"WebDAV sürücüsü olarak eşlenemiyor."
+
+#: ../../files/access_webdav.rst:419
+msgid "Go to the your Nextcloud instance via your favorite Web browser."
+msgstr "Kullanmayı yeğlediğiniz web tarayıcısı ile Nextcloud kopyanıza gidin."
+
+#: ../../files/access_webdav.rst:420
+msgid ""
+"Click through until you get to the certificate error in the browser status "
+"line."
+msgstr ""
+"Web tarayıcı durum satırında sertifika hatasına ulaşana kadar tıklayın."
+
+#: ../../files/access_webdav.rst:422
+msgid "View the cert, then from the Details tab, select Copy to File."
+msgstr ""
+"Sertifikayı görüntüleyin, Ayrıntılar sekmesinden Dosyaya Kopyala komutunu "
+"seçin."
+
+#: ../../files/access_webdav.rst:423
+msgid ""
+"Save to the desktop with an arbitrary name, for example ``myNextcloud.pem``."
+msgstr "Masaüstüne ``NextcloudSitem.pem`` gibi rastgele bir adla kaydedin."
+
+#: ../../files/access_webdav.rst:424
+msgid "Start, Run, MMC."
+msgstr "Başlat menüsünden MMC uygulamasını çalıştırın."
+
+#: ../../files/access_webdav.rst:425
+msgid "File, Add/Remove Snap-In."
+msgstr "Dosya, Ekle/Kaldır bileşenini açın."
+
+#: ../../files/access_webdav.rst:426
+msgid "Select Certificates, Click Add, My User Account, then Finish, then OK."
+msgstr ""
+"Sertifikalar bölümünü seçin, Sırasıyla Ekle, Kullanıcı Hesabım, Bitir "
+"veTamam üzerine tıklayın."
+
+#: ../../files/access_webdav.rst:427
+msgid "Dig down to Trust Root Certification Authorities, Certificates."
+msgstr "Güvenilen Kök Sertifika Yetkilileri, Sertifikalar bölümüne gidin."
+
+#: ../../files/access_webdav.rst:428
+msgid "Right-Click Certificate, Select All Tasks, Import."
+msgstr ""
+"Sertifikaya sağ tıklayın, Tüm Görevleri Seç, İçe Aktar üzerine tıklayın."
+
+#: ../../files/access_webdav.rst:429
+msgid "Select the Save Cert from the Desktop."
+msgstr "Masaüstüne kaydettiğiniz sertifika dosyasını seçin."
+
+#: ../../files/access_webdav.rst:430
+msgid "Select Place all Certificates in the following Store, Click Browse."
+msgstr ""
+"Tüm Sertifikaları Aşağıdaki Mağazaya Yerleştir komutunu seçin, Gözat üzerine"
+" tıklayın."
+
+#: ../../files/access_webdav.rst:431
+msgid ""
+"Check the Box that says Show Physical Stores, Expand out Trusted Root "
+"Certification Authorities, and select Local Computer there, click OK, "
+"Complete the Import."
+msgstr ""
+"Fiziksel Mağazaları Göster kutusunu işaretleyin, Güvenilir Kök Sertifika "
+"Yetkililerini genişletin ve oradan Yerel Bilgisayar seçin, içe aktarmayı "
+"tamamlamak içn Tamam üzerine tıklayın."
+
+#: ../../files/access_webdav.rst:434
+msgid ""
+"Check the list to make sure it shows up. You will probably need to Refresh "
+"before you see it. Exit MMC."
+msgstr ""
+"Yeni sertifikanın göründüğünden emin olmak için listeye bakın. Büyük "
+"olasılıkla sertifikanın listede görüntülenmesi için görünümü yenilemeniz "
+"gerekecek. MMC uygulamasından çıkın."
+
+#: ../../files/access_webdav.rst:436
+msgid "Open Browser, select Tools, Delete Browsing History."
+msgstr "Web tarayıcıyı açın, Araçlar, Tarama Geçmişini Sil komutunu seçin."
+
+#: ../../files/access_webdav.rst:437
+msgid "Select all but In Private Filtering Data, complete."
+msgstr "Özel süzme verileri dışında tümünü seçin, işlemi tamamlayın."
+
+#: ../../files/access_webdav.rst:438
+msgid "Go to Internet Options, Content Tab, Clear SSL State."
+msgstr ""
+"İnternet Seçenekleri, İçerik Sekmesi, SSL Durumunu Temizle komutunu seçin."
+
+#: ../../files/access_webdav.rst:439
+msgid "Close browser, then re-open and test."
+msgstr ""
+"Tarayıcıyı kapatın, ardından yeniden açın ve bağlantı kurmayı deneyin."
+
+#: ../../files/access_webdav.rst:444
+msgid ""
+"You cannot download more than 50 MB or upload large files when the upload "
+"takes longer than 30 minutes using Web Client in Windows 7."
+msgstr ""
+"Windows 7 üzerinde web istemcisini kullanarak, 50MB boyutundan büyük "
+"dosyaları indiremez ya da  yüklenmesi 30 dakikadan uzun süren büyük "
+"dosyaları yükleyemezsiniz."
+
+#: ../../files/access_webdav.rst:450
+msgid "Workarounds are documented in the KB2668751_ article."
+msgstr "Geçici çözümlere, KB2668751_ makalesinde değinilmiştir."
+
+#: ../../files/access_webdav.rst:454
+msgid "Accessing files using cURL"
+msgstr "cURL kullanarak dosyalara erişmek"
+
+#: ../../files/access_webdav.rst:456
+msgid ""
+"Since WebDAV is an extension of HTTP cURL can be used to script file "
+"operations."
+msgstr ""
+"WebDAV, bir HTTP cURL uzantısı olduğundan, otomatik dosya işlemleri için "
+"komut dosyası olarak kullanılabilir."
+
+#: ../../files/access_webdav.rst:458
+msgid "To create a folder with the current date as name:"
+msgstr "Adı geçerli tarih olan bir klasör oluşturmak için:"
+
+#: ../../files/access_webdav.rst:464
+msgid "To upload a file ``error.log`` into that directory:"
+msgstr "Bu klasöre ``error.log`` dosyasını yüklemek için:"
+
+#: ../../files/access_webdav.rst:470
+msgid "To move a file:"
+msgstr "Bir dosyayı taşımak için:"
+
+#: ../../files/access_webdav.rst:476
+msgid "To get the properties of files in the root folder:"
+msgstr "Kök klasördeki dosyaların özelliklerini almak için:"
