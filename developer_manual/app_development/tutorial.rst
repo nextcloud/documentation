@@ -12,9 +12,9 @@ Setup
 
 First the :doc:`development environment <../general/devenv>` needs to be set up. This can be done by either `downloading the zip from the website <https://nextcloud.com/install/>`_ or cloning it directly from GitHub::
 
-   git clone git@github.com:nextcloud/server.git --branch $BRANCH
-   cd server
-   git submodule update --init
+    git clone git@github.com:nextcloud/server.git --branch $BRANCH
+    cd server
+    git submodule update --init
 
 .. note:: ``$BRANCH`` is the desired Nextcloud branch (e.g. ``stable19`` for Nextcloud 19, ``master`` for the upcoming release)
 
@@ -33,11 +33,15 @@ Now open another terminal window and start the development server::
     cd nextcloud
     php -S localhost:8080
 
-*Alternative Setup*:
-Launch with podman (leaner than docker and allows you to run containers without being root):
-    podman run --name=nextcloud --replace=true -p 8080:80 -v /YOUR_FULL_PATH/apps:/var/www/html/custom_apps docker.io/nextcloud
-Launch with docker (not tested):
-    sudo docker run --name=nextcloud --replace=true -p 8080:80 -v /YOUR_FULL_PATH/apps:/var/www/html/custom_apps nextcloud
+*Alternative Setups*:
+
+Launch with podman (leaner than docker and allows you to run containers without being root)::
+
+    podman run --name=nextcloud --replace=true -p 8080:80 -v /absolute/path/to/apps:/var/www/html/custom_apps docker.io/nextcloud
+
+Launch with docker (not tested)::
+
+    sudo docker run --name=nextcloud -p 8080:80 -v /absolute/path/to/apps:/var/www/html/custom_apps nextcloud
 
 Afterwards a skeleton app can be created in the `app store <https://apps.nextcloud.com/developer/apps/generate>`_.
 
@@ -315,7 +319,7 @@ Now that the tables are created we want to map the database result to a PHP obje
         protected $title;
         protected $content;
         protected $userId;
-        
+
         public function __construct() {
             $this->addType('id','integer');
         }
