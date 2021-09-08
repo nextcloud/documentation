@@ -1681,6 +1681,12 @@ Set to true to enforce that internal shares need to be accepted
 
 ::
 
+	'sharing.allow_custom_share_folder' => true,
+
+Set to false to prevent users from setting a custom share_folder
+
+::
+
 	'sharing.enable_share_mail' => true,
 
 Set to false to stop sending a mail when users receive a share
