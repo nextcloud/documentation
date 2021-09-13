@@ -1,7 +1,7 @@
 Layout components
 =================
 
-All Nextcloud apps are built using individual reusable components for consistency and efficiency. Currently, these components are written in Vue and can be found at the `nextcloud-vue repository on Github <https://github.com/nextcloud/nextcloud-vue/>`_ with the documentation available at `the Nextcloud vue components style guide <https://nextcloud-vue-components.netlify.app/>`_
+All Nextcloud apps are built using individual reusable components for consistency and efficiency. Currently, these components are written in Vue and can be found at the `nextcloud-vue repository on Github <https://github.com/nextcloud/nextcloud-vue/>`_ with the documentation available at `the Nextcloud Vue components style guide <https://nextcloud-vue-components.netlify.app/>`_.
 
 .. _Navigation:
 
@@ -13,7 +13,7 @@ Navigation
    :alt: Contacts navigation
 
 
-The left navigation provides a way for users to move around different sections of your app. The navigation consists of 4 main elements:
+The left navigation provides a way for users to move around different sections of your app. The Vue component for the app navigation can be found `here <https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/AppNavigation?id=appnavigation-1>`_. The navigation consists of 4 main elements:
 
 
 * Main action button
@@ -58,7 +58,7 @@ Top-level navigation entries ideally have a suitable icon left next to them. Opt
 * a 3 dot action menu (seen in Mail)
 * a counter (seen in Contacts and Mail)
 
-A sublevel of navigation is possible, but can lead to entries being hard to discover. It is only advised if there is actually a hierarchy like for folders in Mail or News.
+A sublevel of navigation is possible, but can lead to entries being hard to discover. It is only advised if there is actually a hierarchy like for folders in Mail or News. `Link to navigation entries Vue component <https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/AppNavigation?id=appnavigationitem>`_.
 
 New item element
 ^^^^^^^^^^^^^^^^
@@ -74,6 +74,8 @@ Users can easily create a new item with a suitable name by using the new item el
 * "Add mailbox" in Mail
 * "New calendar" in Calendar
 
+`Link to new item Vue component <https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/AppNavigation?id=appnavigationnewitem>`_.
+
 .. _Settings:
 
 Settings
@@ -85,9 +87,9 @@ Settings
 
 The user-specific settings for your app may be shown in a settings modal, which can be accessed through a settings entry at the bottom of the navigation. Try to keep the settings to a minimum, as too many configurable options can be a burden to the user. If no settings are needed for the app, that is great and the settings modal can be omitted. Within the modal, categorizing your settings can sometimes offer a better experience if you have a lot of settings. If this is required, the categories are placed in the left of the settings modal.
 
-You can also include a "Help" as an entry in the settings of your app and provide some simple information about your app and how to use it. Some apps like Talk and Mail also include keyboard shortcuts.
+You can also include a "Help" as an entry in the settings of your app and provide some simple information about your app and how to use it. Some apps like Talk and Mail also include keyboard shortcuts. `Link to the settings Vue component <https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/AppNavigation?id=appnavigationsettings>`_.
 
-Also see: :ref:`Modal`
+Also see: :ref:`Modal` 
 
 List items
 ----------
@@ -103,12 +105,14 @@ List items can be used to display a collection of elements from which one can be
 * an :ref:`Action menu` which has commonly used actions for that type of item
 * a counter bubble: Talk for example uses an unread messages counter
 
+`Link to list item Vue component <https://nextcloud-vue-components.netlify.app/#/Components/List%20items>`_.
+
 .. _Content:
 
 Content
 -------
 
-The content section of your app takes up the most screen space, and is the core of what your app does. The content of every app is unique, but do make sure that it follows some basic rules like responsiveness, accessibility, and support in different languages so that it can be used by everyone. The layout of your content depends on what your app does, as the content of almost every Nextcloud app looks different.
+The content section of your app takes up the most screen space, and is the core of what your app does. The content of every app is unique, but do make sure that it follows some basic rules like responsiveness, accessibility, and support in different languages so that it can be used by everyone. The layout of your content depends on what your app does, as the content of almost every Nextcloud app looks different. The `appContent Vue component <https://nextcloud-vue-components.netlify.app/#/Components/App%20containers?id=appcontent>`_ should be used for the content of your app.
 
 Views
 ^^^^^
@@ -129,19 +133,17 @@ For text-based apps like chat, mails, and other paragraphs of text, the width of
 
 For every clickable element in your interface, make sure it has a minimum clickable area of at least 44px by 44px (48px for Android). Anything smaller than this will make your app inaccessible and difficult for users to use your app on mobile as they might miss while trying to tap on the element.
 
-While adding margins, padding and other spacing in your interface, use multiples of 4px.
+Spacing between elements in your app should be in multiples of 4px.
 
 .. _Sidebar:
 
 Sidebar
 -------
 
-Details of a particular entry in your content, as well as some actions associated with it, are shown in the right sidebar. In apps where the sidebar is used, it only opens when required. The sidebar is never used in the 3-column layout (Navigation + list + content). It contains the main information and sometimes a preview of the selected item, as well as a maximum of 3 possible tabs:
+Details of a particular entry in your content, as well as some actions associated with it, are shown in the right sidebar. In apps where the sidebar is used, it only opens when required. The sidebar is never used in the 3-column layout (Navigation + list + content). It contains the main information and sometimes a preview of the selected item, as well as a maximum of 3 possible tabs. `Link to sidebar Vue component <https://nextcloud-vue-components.netlify.app/#/Components/App%20containers?id=appsidebar>`_.
 
+Commonly used tabs in the sidebar are:
 
-* Details
-* Activity
-* Sharing
 
 Details
 ^^^^^^^
@@ -153,8 +155,6 @@ The details tab contains information about the entry it refers to, which is ofte
 
 Activity
 ^^^^^^^^
-
-[screenshot of Android activity tab]
 
 Major changes done to the selected item, as well as comments left by users, are shown in the activity tab. These details are shown by latest activity up top.
 

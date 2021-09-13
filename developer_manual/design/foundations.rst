@@ -2,7 +2,7 @@
 Foundations
 ===========
 
-There are several design elements that are common to all Nextcloud apps. If you are developing for a platform that has its own design specifications, it would be a good idea to keep those in mind while designing your app.
+There are several design elements that are common to all Nextcloud apps. If you are developing for a platform that has its own design specifications, for example Android, it would be a good idea to keep those in mind while designing your app.
 
 Color
 -----
@@ -80,7 +80,7 @@ In addition, a softer color is used for secondary text like sublines, timestamps
 * On web: var(--color-text-maxcontrast)
 * Android: uses default Material Design color "medium emphasis"
 * iOS: `secondaryLabel <https://developer.apple.com/documentation/uikit/uicolor/3173136-secondarylabel>`_
-* Desktop: default Qt guidelines
+* Desktop: `default Qt guidelines <https://doc.qt.io/qt-5/qpalette.html#ColorRole-enum>`_
 
 Status and indicators
 ^^^^^^^^^^^^^^^^^^^^^
@@ -110,14 +110,13 @@ While interface elements like buttons are colored differently depending on their
   * var(--color-warning)
   * var(--color-error)
 
-* Android: *
+* Android: Material Design guidelines
 * iOS: `Apple HIG colors <https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/>`_
 
   * success: systemGreen
-  * warning:
   * error: systemRed
 
-* Desktop: *
+* Desktop: `default Qt guidelines <https://doc.qt.io/qt-5/qpalette.html#ColorRole-enum>`_
 
 Typography
 ----------
@@ -137,7 +136,7 @@ The text sizes for the different platforms are:
 * Web: 15px for main text and sublines, **20px bold** for headings
 * Android: 14sp for main text, 16sp for headings
 * iOS: values from `Dynamic Type Sizes, for size Large (Default) <https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/typography#dynamic-type-sizes>`_
-* Desktop: default Qt guidelines
+* Desktop: `default Qt guidelines <https://doc.qt.io/qt-5/qpalette.html#ColorRole-enum>`_
 
 Icons
 -----

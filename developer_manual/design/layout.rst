@@ -10,7 +10,7 @@ While deciding how you want your app to look, there are a number of factors to c
 * Responsiveness for different browsers, browser sizes and devices
 * Typical interface patterns in other similar apps in the market
 
-While the arrangement of components in your app is dependent on what your app does, most Nextcloud apps typically have 3 levels of hierarchy. Some commonly used layouts are:
+The `content Vue component <https://nextcloud-vue-components.netlify.app/#/Components/App%20containers?id=content>`_ wraps your entire app. While the arrangement of components in your app is dependent on what your app does, most Nextcloud apps typically have 3 levels of hierarchy. Some commonly used layouts are:
 
 
 * Navigation → content → sidebar (and a couple of variations of it, e.g. without the sidebar)
