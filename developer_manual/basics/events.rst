@@ -530,14 +530,14 @@ WARNING: Using this API incorrectly may make the instance more insecure. Do thin
 *Available in Nextcloud 18 and later.*
 
 ``\OCP\Security\FeaturePolicy\AddFeaturePolicyEvent``
-****************************************************
+*****************************************************
 
 *Available in Nextcloud 17 and later.*
 
 Event that allows to register a feature policy header to a request.
 
 ``\OCP\Share\Events\ShareCreatedEvent``
-*******************************************
+***************************************
 
 *Available in Nextcloud 18 and later.*
 
@@ -643,24 +643,24 @@ Emitted before a user is logged out.
 Emitted when a user has been logged out successfully.
 
 ``\OCP\WorkflowEngine\LoadSettingsScriptsEvent``
-***************************************
+************************************************
 
 *Available in Nextcloud 20 and later.*
 
 Emitted when the workflow engine settings page is loaded.
 
 ``\OCP\WorkflowEngine\RegisterChecksEvent``
-***************************************
+*******************************************
 
 *Available in Nextcloud 18 and later.*
 
 ``\OCP\WorkflowEngine\RegisterEntitiesEvent``
-***************************************
+*********************************************
 
 *Available in Nextcloud 18 and later.*
 
 ``\OCP\WorkflowEngine\RegisterOperationsEvent``
-***************************************
+***********************************************
 
 *Available in Nextcloud 18 and later.*
 
@@ -776,7 +776,7 @@ The following hooks are available:
 Session
 ```````
 
-Injectable from the ServerContainer by calling the method **getUserSession()**. 
+Injectable from the ServerContainer by calling the method **getUserSession()**.
 
 Hooks available in scope **\\OC\\User**:
 
@@ -827,7 +827,7 @@ Injectable from the ServerContainer by calling the method **getRootFolder()**, *
 To enable these events for your app you should add the following to your `info.xml` file:
 
 .. code-block:: xml
-    
+
     <types>
         <filesystem/>
     </types>
