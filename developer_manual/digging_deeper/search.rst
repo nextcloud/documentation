@@ -30,7 +30,7 @@ This will return a structure like
     {
         "ocs": {
             "meta": {
-                …
+                "…": "…"
             },
             "data": [
                 {
@@ -57,7 +57,7 @@ Fetching individual search results
     {
         "ocs": {
             "meta": {
-                …
+                "…": "…"
             },
             "data": {
                 "name": "Files",
