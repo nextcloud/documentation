@@ -726,14 +726,20 @@ entries that have no matching entries in the storage table.
 Transfer
 ^^^^^^^^
 
-You may transfer all files and shares from one user to another. This is useful 
+You may transfer all files and shares from one user to another. This is useful
 before removing a user::
 
  sudo -u www-data php occ files:transfer-ownership <source-user> <destination-user>
- 
+
 It is also possible to transfer only one directory along with it's contents. This can be useful to restructure your organization or quotas. The ``--path`` argument is given as the path to the directory as seen from the source user::
 
  sudo -u www-data php occ files:transfer-ownership --path="path_to_dir" <source-user> <destination-user>
+
+In case the incoming shares must be transferred as well, use the argument ``--transfer-incoming-shares``::
+
+ sudo -u www-data php occ files:transfer-ownership --transfer-incoming-shares=1 --path="path_to_dir" <source-user> <destination-user>
+
+As an alternative, the system configuration option ``transferIncomingShares`` in config.php can be set to ``true`` to always transfer incoming shares.
 
 Users may also transfer files or folders selectively by themselves.
 See `user documentation <https://docs.nextcloud.com/server/latest/user_manual/en/files/transfer_ownership.html>`_ for details.
