@@ -1,0 +1,84 @@
+@startuml
+
+package "Nextcloud" {
+	node "OCS API - /index.php" {
+		[index.php] as index
+
+		node "Single Files" as singlefiles #Red {
+			[View.php (deprectated)]
+		}
+
+		node "AppFramwork" as appframework {
+
+			[server.php] as server
+
+			node "Files API" as fileapi {
+				[Modern API to manipulate users' files]
+				package "Interfaces" {
+					[IFile]
+					[IFolder]
+					[IStorage]
+					["..."]
+				}
+			}
+		}
+
+		node "Applications" as apps {
+			[activity]
+			[files_sharing]
+			[photos]
+			["..."]
+		}
+
+		index --> singlefiles
+		index --> server
+		server --> fileapi
+		server --> apps
+	}
+
+	node "DAV API - /remote.php" {
+		[remote.php] as remote
+
+		[server.php] as davserver
+
+		[Sabre DAV] as sabredav
+
+
+		package "DAV extensions" as davplugins {
+			[File]
+			[Chunk upload]
+			[Bundle upload]
+			[System tags]
+		}
+
+		remote --> davserver
+		davserver --> sabredav
+		sabredav --> davplugins
+	}
+}
+
+package Application {
+
+	package "./appinfo" as appinfo {
+		[info.xml]
+		[routes.php]
+	}
+
+	package "./lib" as lib {
+		package "./Controller" {
+			package "./...Controller" {
+				[Files used to render views in the browser]
+			}
+		}
+	}
+
+	package "./src" as src {
+
+	}
+
+	package "./l10n" as l10n {
+
+	}
+}
+
+@enduml
