@@ -37,7 +37,7 @@ Background color
 Nextcloud apps have a light and a dark theme, with appropriately chosen colors for all elements.
 
 
-* On web: var(--color-main-background)
+* On web: ``var(--color-main-background)``
 * Android: uses default Material Design colors
 * iOS: `systemBackground <https://developer.apple.com/documentation/uikit/uicolor/3173140-systembackground>`_
 * Desktop: default Qt guidelines
@@ -58,7 +58,7 @@ Text color
 This is the main color for the text in light theme, and in dark theme.
 
 
-* On web: var(--color-main-text)
+* On web: ``var(--color-main-text)``
 * Android: uses default Material Design color "high emphasis"
 * iOS: `label <https://developer.apple.com/documentation/uikit/uicolor/3173131-label>`_ (in UITextView, leave the default textColor)
 * Desktop: default Qt guidelines
@@ -77,7 +77,7 @@ This is the main color for the text in light theme, and in dark theme.
 In addition, a softer color is used for secondary text like sublines, timestamps, and similar.
 
 
-* On web: var(--color-text-maxcontrast)
+* On web:``var(--color-text-maxcontrast)``
 * Android: uses default Material Design color "medium emphasis"
 * iOS: `secondaryLabel <https://developer.apple.com/documentation/uikit/uicolor/3173136-secondarylabel>`_
 * Desktop: `default Qt guidelines <https://doc.qt.io/qt-5/qpalette.html#ColorRole-enum>`_
@@ -106,9 +106,9 @@ While interface elements like buttons are colored differently depending on their
 
 * On web:
 
-  * var(--color-success)
-  * var(--color-warning)
-  * var(--color-error)
+  * Success colour: ``var(--color-success)``
+  * Warning colour: ``var(--color-warning)``
+  * Error colour: ``var(--color-error)``
 
 * Android: Material Design guidelines
 * iOS: `Apple HIG colors <https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/>`_
@@ -144,7 +144,7 @@ Icons
 .. image:: ../images/material-icons.png
    :alt: Material icons
 
-Icons can be used to communicate the intent of an action, or to provide visual interest to the screen. We use monochrome icons on all platforms: `Material Design icons (default filled) <https://fonts.google.com/icons>`_ for web, Android, Windows and Linux, and `SF Symbols (default weight, scale and variant) <https://developer.apple.com/sf-symbols/>`_ for iOS and macOS.
+Icons can be used to communicate the intent of an action, or to provide visual interest to the screen. We use monochrome icons on all platforms: `Material Design icons (20 px default filled) <https://fonts.google.com/icons>`_ for web, Android, Windows and Linux, and `SF Symbols (default weight, scale and variant) <https://developer.apple.com/sf-symbols/>`_ for iOS and macOS.
 
 This is except for the icon of the app itself, which can be a custom icon.
 

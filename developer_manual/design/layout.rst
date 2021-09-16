@@ -26,7 +26,7 @@ Navigation → Content → Sidebar
 
 This layout is used in Files, Calendar, Deck, and Tasks.
 
-This layout has the [app navigation] on the left, the [main content] in the middle, and a [sidebar] on the right. The main content depends on the navigation, and the sidebar which is closed by default contains details of an item in the main content.
+This layout has the :ref:`Navigation` on the left, the :ref:`Content` in the middle, and a :ref:`Sidebar` on the right. The main content depends on the navigation, and the sidebar which is closed by default contains details of an item in the main content.
 
 For example, in the Files app, the files in the main content varies based on what is selected in the navigation. The sidebar would open when the user wants to see the details of a file.
 
@@ -52,7 +52,7 @@ Special case: list in navigation
    :alt: Talk layout
 
 
-Another variation of this layout is where the [list] of entries take up the left space instead of navigation, as seen in Talk. It shows the list of chats on the left, and the main content contains the messages in a chat, while opening the right sidebar shows the details of a chat like the description and participants. Talk also collapses the left list and right sidebar during a video call, so that the entire screen is taken up by just the call.
+Another variation of this layout is where the :ref:`List` of entries take up the left space instead of navigation, as seen in Talk. It shows the list of chats on the left, and the main content contains the messages in a chat, while opening the right sidebar shows the details of a chat like the description and participants. Talk also collapses the left list and right sidebar during a video call, so that the entire screen is taken up by just the call.
 
 Navigation → List → Content
 ---------------------------
@@ -64,7 +64,7 @@ Navigation → List → Content
 
 This layout is used in Mail and Contacts.
 
-In this layout, the 3 levels of hierarchy are shown by default. On the left there is the [app navigation], right next to it is a [list] of entries for the navigation chosen, and the main content is for the entry selected in the list.
+In this layout, the 3 levels of hierarchy are shown by default. On the left there is the :ref:`Navigation`, right next to it is a :ref:`List` of entries for the navigation chosen, and the main content is for the entry selected in the list.
 
 A good example of this layout is in the Mail app. The left navigation section contains the different inboxes and categories. The list then shows the emails of the selected inbox or folder and the main content shows the contents of the email which is currently open.
 
