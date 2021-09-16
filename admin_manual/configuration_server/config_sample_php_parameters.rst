@@ -1693,6 +1693,16 @@ Set to false to prevent users from setting a custom share_folder
 
 Set to false to stop sending a mail when users receive a share
 
+::
+
+	'transferIncomingShares' => false,
+
+Set to true to always transfer incoming shares by default
+when running "occ files:transfer-ownership".
+
+Defaults to false, so incoming shares are not transferred if not specifically requested
+by a command line argument.
+
 All other configuration options
 -------------------------------
 
