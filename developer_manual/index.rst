@@ -22,4 +22,5 @@ Table of contents
     digging_deeper/index
     app_publishing_maintenance/index
     design/index
+    html_css_design/index
     client_apis/index
