@@ -153,7 +153,7 @@ For upload performance improvements in environments with high upload bandwidth, 
 
 Put in a value in bytes or set ``--value 0`` for no chunking at all.
 
-Default is 10485760 (10 MB).
+Default is 10485760 (10 MiB).
 
 
 Large file upload on object storage
