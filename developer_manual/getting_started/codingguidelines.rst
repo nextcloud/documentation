@@ -103,7 +103,7 @@ User interface
 PHP
 ---
 
-Starting with Nextcloud 19 there is a shared `PHP Coding Standards Fixer <https://github.com/FriendsOfPhp/PHP-CS-Fixer>`_ configuration you can use to automatically format your app's source code. For full details see the `repository on Github <https://github.com/nextcloud/coding-standard/>`_.
+Starting with Nextcloud 19 there is a shared `PHP Coding Standards Fixer <https://github.com/FriendsOfPhp/PHP-CS-Fixer>`_ configuration you can use to automatically format your app's source code. For full details see the `repository on GitHub <https://github.com/nextcloud/coding-standard/>`_.
 
 Always use::
 

@@ -91,4 +91,4 @@ The goal of these rules is simple: help your project be more successful. We also
 How to move
 ^^^^^^^^^^^
 
-To move your repository to our Github organization, just ask any of our contributors, `especially those who are admin. <https://github.com/orgs/nextcloud/people?utf8=%E2%9C%93&query=+role%3Aowner>`_ They will be happy to help!
+To move your repository to our GitHub organization, just ask any of our contributors, `especially those who are admin. <https://github.com/orgs/nextcloud/people?utf8=%E2%9C%93&query=+role%3Aowner>`_ They will be happy to help!
