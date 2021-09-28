@@ -160,6 +160,11 @@ Using the command line based updater
 The command line based updater works in the exact same way the web based
 updater works. The steps and checks are the very same.
 
+.. warning:: APCu is disabled by default on CLI which could cause issues with nextcloud's
+   command line based updater. Please make sure you set the ``apc.enable_cli`` to ``1`` on your ``php.ini``
+   config file or append ``--define apc.enable_cli=1`` to the command line based updater call
+   (like ``sudo -u www-data php --define apc.enable_cli=1 /var/www/nextcloud/updater/updater.phar``).
+
 The steps are basically the same as for the web based updater:
 
 1.  You should see a notification at the top of any Nextcloud page when there is
