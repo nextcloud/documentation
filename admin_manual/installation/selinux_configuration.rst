@@ -29,6 +29,7 @@ this execute the following commands as root after uninstalling Nextcloud::
  semanage fcontext -d '/var/www/html/nextcloud/apps(/.*)?'
  semanage fcontext -d '/var/www/html/nextcloud/.htaccess'
  semanage fcontext -d '/var/www/html/nextcloud/.user.ini'
+ semanage fcontext -d '/var/www/html/nextcloud/3rdparty/aws/aws-sdk-php/src/data/logs(/.*)?'
 
  restorecon -Rv '/var/www/html/nextcloud/'
 
