@@ -149,9 +149,9 @@ Adjust chunk size on Nextcloud side
 
 For upload performance improvements in environments with high upload bandwidth, the server's upload chunk size may be adjusted::
 
- sudo -u www-data php occ config:app:set files max_chunk_size
+ sudo -u www-data php occ config:app:set files max_chunk_size --value 20971520
 
-Put in a value in bytes or set ``--value 0`` for no chunking at all.
+Put in a value in bytes (in this example, 20MB). Set ``--value 0`` for no chunking at all.
 
 Default is 10485760 (10 MB).
 
