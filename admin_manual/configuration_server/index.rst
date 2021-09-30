@@ -21,5 +21,6 @@ Nextcloud configuration
    automatic_configuration
    theming
    oauth2
+   admin_delegation_configuration
 
 .. Intentional disabled antivirus_configuration
