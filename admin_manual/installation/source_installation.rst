@@ -33,10 +33,11 @@ If you get a result, the module is present.
 
 Required:
 
-* PHP (7.2, 7.3 or 7.4)
+* PHP (7.3 or 7.4)
 * PHP module ctype
 * PHP module curl
 * PHP module dom
+* PHP module filter (only on Mageia and FreeBSD)
 * PHP module GD
 * PHP module hash (only on FreeBSD)
 * PHP module iconv
@@ -56,7 +57,7 @@ Database connectors (pick the one for your database:)
 
 * PHP module pdo_sqlite (>= 3, usually not recommended for performance reasons)
 * PHP module pdo_mysql (MySQL/MariaDB)
-* PHP module pdo_pgsql (requires PostgreSQL >= 9.0)
+* PHP module pdo_pgsql (PostgreSQL)
 
 *Recommended* packages:
 
@@ -99,6 +100,10 @@ For preview generation (*optional*):
 For command line processing (*optional*):
 
 * PHP module pcntl (enables command interruption by pressing ``ctrl-c``)
+
+For command line updater (*optional*):
+
+* PHP module phar (upgrades Nextcloud by running ``sudo -u www-data php /var/www/nextcloud/updater/updater.phar``)
 
 You don’t need the WebDAV module for your Web server (i.e. Apache’s
 ``mod_webdav``), as Nextcloud has a built-in WebDAV server of its own,
@@ -295,18 +300,18 @@ ini file. This can be the case, for example, for the ``date.timezone`` setting.
 **php.ini - used by the Web server:**
 ::
 
-    /etc/php/7.2/apache2/php.ini
+    /etc/php/7.4/apache2/php.ini
   or
-    /etc/php/7.2/fpm/php.ini
+    /etc/php/7.4/fpm/php.ini
   or ...
 
 **php.ini - used by the php-cli and so by Nextcloud CRON jobs:**
 ::
 
-    /etc/php/7.2/cli/php.ini
+    /etc/php/7.4/cli/php.ini
 
 .. note:: Path names have to be set in respect of the installed PHP
-          (>= 7.0, 7.1, 7.2 or 7.3) as applicable.
+          (>= 7.3 or 7.4) as applicable.
 
 .. _php_fpm_tips_label:
 
@@ -326,7 +331,7 @@ Here are some example root paths for these ini/config files:
 +-----------------------+-----------------------+
 | Debian/Ubuntu/Mint    | CentOS/Red Hat/Fedora |
 +-----------------------+-----------------------+
-| ``/etc/php/7.2/fpm/`` | ``/etc/php-fpm.d/``   |
+| ``/etc/php/7.4/fpm/`` | ``/etc/php-fpm.d/``   |
 +-----------------------+-----------------------+
 
 In both examples, the ini/config file is called ``www.conf``, and depending on
@@ -353,7 +358,7 @@ you must add them.
 
 Alternatively it is possible to use the environment variables of your system by modifying::
 
-    /etc/php/7.2/fpm/pool.d/www.conf
+    /etc/php/7.4/fpm/pool.d/www.conf
 
 and uncommenting the line::
 
@@ -372,7 +377,7 @@ The best way to check your settings is with :ref:`label-phpinfo`.
 
 If you want to increase the maximum upload size, you will also have to modify
 your ``php-fpm`` configuration and increase the ``upload_max_filesize`` and
-``post_max_size`` values. You will need to restart ``php5-fpm`` and your HTTP
+``post_max_size`` values. You will need to restart ``php-fpm`` and your HTTP
 server in order for these changes to be applied.
 
 **.htaccess notes for Apache**
@@ -425,10 +430,10 @@ You can find all the available versions `here <https://shop.hanssonit.se/product
 
 For complete instructions and downloads see:
 
-- `Nextcloud VM (Github) <https://github.com/nextcloud/vm/>`_
+- `Nextcloud VM (GitHub) <https://github.com/nextcloud/vm/>`_
 - `Nextcloud VM (T&M Hansson IT) <https://www.hanssonit.se/nextcloud-vm/>`_
 
-.. note:: You can install the VM on several different operating systems as long as you can mount OVA, VMDK, or VHD/VHDX VM in your hypervisor. If you are using KVM then you need to install the VM from the scripts on Github. You can follow the `instructions in the README <https://github.com/nextcloud/vm#build-your-own-vm-or-install-on-a-vps>`_.
+.. note:: You can install the VM on several different operating systems as long as you can mount OVA, VMDK, or VHD/VHDX VM in your hypervisor. If you are using KVM then you need to install the VM from the scripts on GitHub. You can follow the `instructions in the README <https://github.com/nextcloud/vm#build-your-own-vm-or-install-on-a-vps>`_.
 
 .. _snaps_label:
 
@@ -453,7 +458,7 @@ To install the Nextcloud Snap Package, run the following command in a terminal::
 Installation via web installer on a VPS or web space
 ----------------------------------------------------
 
-When you don't have access to the command line, for example at a web hosting or VMPS, 
+When you don't have access to the command line, for example at a web hosting or VMPS,
 an easy option is to use our web installer. This script can be found on our
 `server installation page here. <https://nextcloud.com/install/#instructions-server>`_
 

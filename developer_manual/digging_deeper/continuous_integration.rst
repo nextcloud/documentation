@@ -1,3 +1,5 @@
+.. _app-ci:
+
 ======================
 Continuous Integration
 ======================
@@ -11,6 +13,58 @@ We highly recommend setting up automated tests for your app, so that every chang
 * Unit testing: run unit tests for front-end and back-end where individual classes and components are tested in isolation
 * Integration testing: test components when they are combined
 
+You can find a list of available github workflow templates in our `nextcloud template repository <https://github.com/nextcloud/.github>`_.
+
+Linting
+-------
+
+info.xml
+^^^^^^^^
+
+You can validate the ``info.xml`` :ref:`app metadata<app metadata>` file of an app with a simple github action:
+
+.. code-block:: yaml
+
+  name: Lint
+  on: pull_request
+
+  jobs:
+    xml-linters:
+      runs-on: ubuntu-latest
+      steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Download schema
+        run: wget https://apps.nextcloud.com/schema/apps/info.xsd
+      - name: Lint info.xml
+        uses: ChristophWurst/xmllint-action@v1
+        with:
+          xml-file: ./appinfo/info.xml
+          xml-schema-file: ./info.xsd
+
+php
+^^^
+
+A lint of all php source files can find syntax errors that could crash the application in production. You can find the github actions in our `nextcloud template repository <https://github.com/nextcloud/.github>`_.
+You will also require the following lint script in your ``composer.json``:
+
+.. code-block:: json
+
+  {
+    "scripts": {
+      "lint": "find . -name \\*.php -not -path './vendor/*' -print0 | xargs -0 -n1 php -l"
+    }
+  }
+
+php-cs
+^^^^^^
+
+We encourage the usage of php-cs linting. You can find some documentation on how to set this up in the
+`nextcloud coding-standard repository <https://github.com/nextcloud/coding-standard>`_ as well as the
+relevant github actions in our `nextcloud template repository <https://github.com/nextcloud/.github>`_.
+
+
+.. _app-static-analysis:
 
 Static analysis
 ---------------
@@ -62,7 +116,7 @@ Static analysis
 .. Note:: The definition supresses usages of the global and static class ``OC`` like ``\OC::$server``, which is discouraged but still found in some apps. The doctrine supression is currently necessary as the database mappers and schema abstractions leak some of the 3rd party libraries of Nextcloud that are not known to Psalm.
 
 
-You can put this process into a Github Action that is run for every pull request.
+You can put this process into a GitHub Action that is run for every pull request.
 
 .. code-block:: yaml
 

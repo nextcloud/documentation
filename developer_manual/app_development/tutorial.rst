@@ -12,9 +12,9 @@ Setup
 
 First the :doc:`development environment <../general/devenv>` needs to be set up. This can be done by either `downloading the zip from the website <https://nextcloud.com/install/>`_ or cloning it directly from GitHub::
 
-   git clone git@github.com:nextcloud/server.git --branch $BRANCH
-   cd server
-   git submodule update --init
+    git clone git@github.com:nextcloud/server.git --branch $BRANCH
+    cd server
+    git submodule update --init
 
 .. note:: ``$BRANCH`` is the desired Nextcloud branch (e.g. ``stable19`` for Nextcloud 19, ``master`` for the upcoming release)
 
@@ -32,6 +32,16 @@ Now open another terminal window and start the development server::
 
     cd nextcloud
     php -S localhost:8080
+
+*Alternative Setups*:
+
+Launch with podman (leaner than docker and allows you to run containers without being root)::
+
+    podman run --name=nextcloud --replace=true -p 8080:80 -v /absolute/path/to/apps:/var/www/html/custom_apps docker.io/nextcloud
+
+Launch with docker (not tested)::
+
+    sudo docker run --name=nextcloud -p 8080:80 -v /absolute/path/to/apps:/var/www/html/custom_apps nextcloud
 
 Afterwards a skeleton app can be created in the `app store <https://apps.nextcloud.com/developer/apps/generate>`_.
 
@@ -266,11 +276,13 @@ so for example **notestutorial/lib/Migration/Version000000Date20181013124731.php
 
 To create the tables in the database, run the :ref:`migration  <migration_console_command>` command::
 
-   php ./occ migrations:excute <appId> <versionNumber>
+   php ./occ migrations:execute <appId> <versionNumber>
 
    Example: sudo -u www-data php ./occ migrations:execute photos 000000Date20201002183800
 
 .. note:: to trigger the table creation/alteration when user updating the app, update the :doc:`version tag <info>` in **notestutorial/appinfo/info.xml** . migration will be executed when user reload page after app upgrade
+
+.. note:: to be able to access the occ migrations commands, please enable the debug flag in config.php
 
 .. code-block:: xml
 
@@ -307,7 +319,7 @@ Now that the tables are created we want to map the database result to a PHP obje
         protected $title;
         protected $content;
         protected $userId;
-        
+
         public function __construct() {
             $this->addType('id','integer');
         }
@@ -332,12 +344,12 @@ Entities are returned from so-called :doc:`Mappers <storage/database>`. Let's cr
     <?php
     namespace OCA\NotesTutorial\Db;
 
-    use OCP\IDbConnection;
+    use OCP\IDBConnection;
     use OCP\AppFramework\Db\QBMapper;
 
     class NoteMapper extends QBMapper {
 
-        public function __construct(IDbConnection $db) {
+        public function __construct(IDBConnection $db) {
             parent::__construct($db, 'notestutorial_notes', Note::class);
         }
 
@@ -718,7 +730,7 @@ Because Nextcloud uses :doc:`Dependency Injection <requests/container>` to assem
     <?php
     namespace OCA\NotesTutorial\Tests\Unit\Controller;
 
-    use PHPUnit_Framework_TestCase;
+    use PHPUnit\Framework\TestCase;
 
     use OCP\AppFramework\Http;
     use OCP\AppFramework\Http\DataResponse;
@@ -726,7 +738,7 @@ Because Nextcloud uses :doc:`Dependency Injection <requests/container>` to assem
     use OCA\NotesTutorial\Service\NotFoundException;
 
 
-    class NoteControllerTest extends PHPUnit_Framework_TestCase {
+    class NoteControllerTest extends TestCase {
 
         protected $controller;
         protected $service;
@@ -780,13 +792,13 @@ We can and should also create a test for the **NoteService** class:
     <?php
     namespace OCA\NotesTutorial\Tests\Unit\Service;
 
-    use PHPUnit_Framework_TestCase;
+    use PHPUnit\Framework\TestCase;
 
     use OCP\AppFramework\Db\DoesNotExistException;
 
     use OCA\NotesTutorial\Db\Note;
 
-    class NoteServiceTest extends PHPUnit_Framework_TestCase {
+    class NoteServiceTest extends TestCase {
 
         private $service;
         private $mapper;

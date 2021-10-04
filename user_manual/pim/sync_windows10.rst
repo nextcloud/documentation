@@ -22,6 +22,33 @@ Calendar
 8. Click "Done". Enter your Nextcloud username and password in the appropriate fields, and change the account name to whatever you prefer (e. g. "Nextcloud Calendar"). Click "Save".
 
 
+Contacts
+--------
+1. In the bottom left of the Contacts View (in Nextcloud Contacts) look for a little impeller symbol that looks like this:
+
+.. image:: ../images/contacts_link.png
+
+which will display a URL that looks something like this:
+https://cloud.nextcloud.com/remote.php/dav/addressbooks/users/daniel/Thunderbird/
+
+2. Launch the Windows 10 People app. Then, click the settings icon (gear icon) and select "Manage accounts".
+
+3. Click "Add account" and choose "iCloud".
+
+4. Enter an email, username and password. None of this information has to be valid-it will all be changed in the upcoming steps.
+
+5. Click "Done". A message should appear indicating the settings were saved successfully.
+
+6. In the "Manage Accounts" menu, click on  the iCloud account created in previous steps, and select "Change settings". Then, click on "Change mailbox sync settings".
+
+7. Scroll to the bottom of the dialog box, select "Advanced mailbox settings". Paste your CalDAV URL in the field labelled "Contacts server (CalDAV)".
+
+8. Click "Done". Enter your Nextcloud username and password in the appropriate fields, and change the account name to whatever you prefer (e. g. "Nextcloud Contacts"). Click "Save".
+
+
+
+Troubleshooting
+---------------
 
 After following all these steps, your Nextcloud calendar should synchronize. If not, check your username and password. Otherwise, repeat these steps.
 

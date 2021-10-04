@@ -85,13 +85,13 @@ of the `load` method and will be called when the dashboard is loaded.
          * Execute widget bootstrap code like loading scripts and providing initial state
          */
         public function load(): void {
-            $initialStateService->provideInitialState('myapp', 'myData', []);
+            $this->initialStateService->provideInitialState('myapp', 'myData', []);
             \OCP\Util::addScript('myapp', 'dashboard');
         }
     }
 
 
-The class needs to be registered during the :ref:`app bootstrap<Bootstrapping>`.
+The `MyAppWidget` class needs to be registered during the :ref:`app bootstrap<Bootstrapping>`.
 
 .. code-block:: php
 
@@ -176,3 +176,57 @@ as plain JavaScript:
         })
     })
 
+
+Dashboard API for clients
+---------------------------------------
+
++++++++++++++++++
+Implement the API
++++++++++++++++++
+
+If you want your widget content to be accessible with the dashboard API for Nextcloud clients,
+it must implement the `OCP\\Dashboard\\IAPIWidget` interface rather than `OCP\\Dashboard\\IWidget`.
+This interface contains an extra `getItems` method which returns an array of `OCP\\Dashboard\Model\\WidgetItem` objects.
+
+.. code-block:: php
+
+    /**
+    * @inheritDoc
+    */
+    public function getItems(string $userId, ?string $since = null, int $limit = 7): array {
+        return $this->myService->getWidgetItems($userId, $since, $limit);
+    }
+
+
+`OCP\\Dashboard\Model\\WidgetItem` contains the item information. Its constructor is:
+
+.. code-block:: php
+
+    public function __construct(string $title = '',
+                                string $subtitle = '',
+                                string $link = '',
+                                string $iconUrl = '',
+                                string $sinceId = '');
+
+
+* title: The main widget text content
+* subtitle: The secondary text content
+* link: A link to the target resource
+* iconUrl: URL to a square icon (svg or jpg/png of at least 44x44px)
+* sinceId: Item ID or timestamp. The client will then send the latest known sinceId in next dashboard API request.
+
++++++++++++
+Use the API
++++++++++++
+
+From the client point of view, the dashboard widget items can then be obtained with this kind of request:
+
+.. code-block:: bash
+
+    curl -u user:passwd http://my.nc/ocs/v2.php/apps/dashboard/api/v1/widget-items \
+        -H Content-Type:application/json \
+        -X GET \
+        -d '{"sinceIds":{"myappwidgetid":"2021-03-22T15:01:10Z","my_other_appwidgetid":"333"}}'
+
+If your client periodically gets widget items content with this API,
+include the latest `sinceId` for each widget to avoid getting the items you already have.

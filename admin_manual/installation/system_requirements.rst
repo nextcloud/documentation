@@ -21,17 +21,17 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - openSUSE Leap 42.1+                                                 |
 |                  | - CentOS 8                                                            |
 +------------------+-----------------------------------------------------------------------+
-| Database         | - **MySQL 5.7+ or MariaDB 10.2+** (recommended)                       |
+| Database         | - **MySQL 8.0+ or MariaDB 10.2/10.3/10.4/10.5** (recommended)         |
 |                  | - Oracle Database 11g (*only as part of an enterprise subscription*)  |
-|                  | - PostgreSQL 9.5/9.6/10/11                                            |
+|                  | - PostgreSQL 9.6/10/11/12/13                                          |
 |                  | - SQLite (*only recommended for testing and minimal-instances*)       |
 +------------------+-----------------------------------------------------------------------+
 | Webserver        | - **Apache 2.4 with** ``mod_php`` **or** ``php-fpm`` (recommended)    |
 |                  | - nginx with ``php-fpm``                                              |
 +------------------+-----------------------------------------------------------------------+
-| PHP Runtime      | - 7.2                                                                 |
-|                  | - **7.3** (*recommended*)                                             |
-|                  | - **7.4** (*recommended*)                                             |
+| PHP Runtime      | - 7.3                                                                 |
+|                  | - 7.4                                                                 |
+|                  | - **8.0** (*recommended*)                                             |
 +------------------+-----------------------------------------------------------------------+
 
 See :doc:`source_installation` for minimum PHP-modules and additional software for installing Nextcloud.
@@ -60,7 +60,7 @@ Desktop client
 We strongly recommend using the latest version of your operating system to get the full and most stable experience out
 of our clients.
 
-* **Windows** 7+
+* **Windows** 8.1+
 * **macOS** Lion (10.7)+ (64-bit only)
 * **Linux** (CentOS 6.5+, Ubuntu 14.04+, Fedora 21+, openSUSE 13, SUSE Linux Enterprise 11 SP3+, Debian 8 (Jessie)+, Red Hat
   Enterprise Linux 7)
@@ -82,12 +82,11 @@ Web browser
 For the best experience with the Nextcloud web interface, we recommend that you use the latest and supported version
 of a browser from this list, or one based on those:
 
-- Microsoft **Internet Explorer 11** (latest version)
 - Microsoft **Edge**
 - Mozilla **Firefox**
 - Google **Chrome**/Chromium
 - Apple **Safari**
 
-.. note:: If you want to use Nextcloud Talk you should use Mozilla **Firefox** 52+ or Google **Chrome**/Chromium 49+ to have 
-          the full experience with video calls and screensharing. Google Chrome/Chromium requires an additional plugin for 
+.. note:: If you want to use Nextcloud Talk you should use Mozilla **Firefox** 52+ or Google **Chrome**/Chromium 49+ to have
+          the full experience with video calls and screensharing. Google Chrome/Chromium requires an additional plugin for
           screensharing.

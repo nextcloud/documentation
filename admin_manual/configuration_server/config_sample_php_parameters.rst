@@ -266,6 +266,17 @@ Defaults to ``en``
 
 ::
 
+	'default_phone_region' => 'GB',
+
+This sets the default region for phone numbers on your Nextcloud server,
+using ISO 3166-1 country codes such as ``DE`` for Germany, ``FR`` for France, …
+It is required to allow inserting phone numbers in the user profiles starting
+without the country code (e.g. +49 for Germany).
+
+No default value!
+
+::
+
 	'force_locale' => 'en_US',
 
 With this setting a locale can be forced for all users. If a locale is
@@ -278,15 +289,15 @@ Defaults to ``false``
 
 ::
 
-	'defaultapp' => 'files',
+	'defaultapp' => 'dashboard,files',
 
 Set the default app to open on login. Use the app names as they appear in the
 URL after clicking them in the Apps menu, such as documents, calendar, and
 gallery. You can use a comma-separated list of app names, so if the first
 app is not enabled for a user then Nextcloud will try the second one, and so
-on. If no enabled apps are found it defaults to the Files app.
+on. If no enabled apps are found it defaults to the dashboard app.
 
-Defaults to ``files``
+Defaults to ``dashboard,files``
 
 ::
 
@@ -316,6 +327,9 @@ Defaults to ``60*60*24*15`` seconds (15 days)
 	'session_lifetime' => 60 * 60 * 24,
 
 The lifetime of a session after inactivity.
+
+The maximum possible time is limited by the session.gc_maxlifetime php.ini setting
+which would overwrite this option if it is less than the value in the config.php
 
 Defaults to ``60*60*24`` seconds (24 hours)
 
@@ -381,6 +395,16 @@ By default WebAuthn is available but it can be explicitly disabled by admins
 
 ::
 
+	'hide_login_form' => false,
+
+By default the login form is always available. There are cases (SSO) where an
+admin wants to avoid users entering their credentials to the system if the SSO
+app is unavailable.
+
+This will show an error. But the the direct login still works with adding ?direct=1
+
+::
+
 	'skeletondirectory' => '/path/to/nextcloud/core/skeleton',
 
 The directory where the skeleton files are located. These files will be
@@ -392,6 +416,22 @@ If the directory does not exist, it falls back to non dialect (from ``de_DE``
 to ``de``). If that does not exist either, it falls back to ``default``
 
 Defaults to ``core/skeleton`` in the Nextcloud directory.
+
+::
+
+	'templatedirectory' => '/path/to/nextcloud/templates',
+
+The directory where the template files are located. These files will be
+copied to the template directory of new users. Leave empty to not copy any
+template files.
+
+``{lang}`` can be used as a placeholder for the language of the user.
+If the directory does not exist, it falls back to non dialect (from ``de_DE``
+to ``de``). If that does not exist either, it falls back to ``default``
+
+If this is not set creating a template directory will only happen if no custom
+``skeletondirectory`` is defined, otherwise the shipped templates will be used
+to create a template directory for the user.
 
 ::
 
@@ -814,7 +854,9 @@ Defaults to ``false``
 	'updatechecker' => true,
 
 Check if Nextcloud is up-to-date and shows a notification if a new version is
-available.
+available. It sends current version, php version, installation and last update
+time and release channel to the updater server which responds with the latest
+available version based on those metrics.
 
 Defaults to ``true``
 
@@ -1001,17 +1043,17 @@ Defaults to an empty array.
 
 	'logdateformat' => 'F d, Y H:i:s',
 
-This uses PHP.date formatting; see http://php.net/manual/en/function.date.php
+This uses PHP.date formatting; see https://www.php.net/manual/en/function.date.php
 
 Defaults to ISO 8601 ``2005-08-15T15:52:01+00:00`` - see \DateTime::ATOM
-(https://secure.php.net/manual/en/class.datetime.php#datetime.constants.atom)
+(https://www.php.net/manual/en/class.datetime.php#datetime.constants.atom)
 
 ::
 
 	'logtimezone' => 'Europe/Berlin',
 
 The timezone for logfiles. You may change this; see
-http://php.net/manual/en/timezones.php
+https://www.php.net/manual/en/timezones.php
 
 Defaults to ``UTC``
 
@@ -1190,7 +1232,6 @@ Defaults to ``''`` (empty string)
 		'OC\Preview\PNG',
 		'OC\Preview\JPEG',
 		'OC\Preview\GIF',
-		'OC\Preview\HEIC',
 		'OC\Preview\BMP',
 		'OC\Preview\XBitmap',
 		'OC\Preview\MP3',
@@ -1206,6 +1247,7 @@ The following providers are disabled by default due to performance or privacy
 concerns:
 
  - OC\\Preview\\Illustrator
+ - OC\\Preview\\HEIC
  - OC\\Preview\\Movie
  - OC\\Preview\\MSOffice2003
  - OC\\Preview\\MSOffice2007
@@ -1223,7 +1265,6 @@ Defaults to the following providers:
 
  - OC\\Preview\\BMP
  - OC\\Preview\\GIF
- - OC\\Preview\\HEIC
  - OC\\Preview\\JPEG
  - OC\\Preview\\MarkDown
  - OC\\Preview\\MP3
@@ -1364,8 +1405,17 @@ Defaults to ``none``
 		'host' => 'localhost', // can also be a unix domain socket: '/tmp/redis.sock'
 		'port' => 6379,
 		'timeout' => 0.0,
+		'read_timeout' => 0.0,
+		'user' =>  '', // Optional, if not defined no password will be used.
 		'password' => '', // Optional, if not defined no password will be used.
 		'dbindex' => 0, // Optional, if undefined SELECT will not run and will use Redis Server's default DB Index.
+		// If redis in-transit encryption is enabled, provide certificates
+		// SSL context https://www.php.net/manual/en/context.ssl.php
+		'ssl_context' => [
+			'local_cert' => '/certs/redis.crt',
+			'local_pk' => '/certs/redis.key',
+			'cafile' => '/certs/ca.crt'
+		]
 	],
 
 Connection details for redis to use for memory caching in a single server configuration.
@@ -1373,6 +1423,9 @@ Connection details for redis to use for memory caching in a single server config
 For enhanced security it is recommended to configure Redis
 to require a password. See http://redis.io/topics/security
 for more information.
+
+We also support redis SSL/TLS encryption as of version 6.
+See https://redis.io/topics/encryption for more information.
 
 ::
 
@@ -1384,7 +1437,15 @@ for more information.
 		'timeout' => 0.0,
 		'read_timeout' => 0.0,
 		'failover_mode' => \RedisCluster::FAILOVER_ERROR,
+		'user' =>  '', // Optional, if not defined no password will be used.
 		'password' => '', // Optional, if not defined no password will be used.
+		// If redis in-transit encryption is enabled, provide certificates
+		// SSL context https://www.php.net/manual/en/context.ssl.php
+		'ssl_context' => [
+			'local_cert' => '/certs/redis.crt',
+			'local_pk' => '/certs/redis.key',
+			'cafile' => '/certs/ca.crt'
+		]
 	],
 
 Connection details for a Redis Cluster
@@ -1415,8 +1476,8 @@ https://github.com/phpredis/phpredis/commit/c5994f2a42b8a348af92d3acb4edff1328ad
 
 	'memcached_servers' => [
 		// hostname, port and optional weight. Also see:
-		// http://www.php.net/manual/en/memcached.addservers.php
-		// http://www.php.net/manual/en/memcached.addserver.php
+		// https://www.php.net/manual/en/memcached.addservers.php
+		// https://www.php.net/manual/en/memcached.addserver.php
 		['localhost', 11211],
 		//array('other.host.local', 11211),
 	],
@@ -1587,10 +1648,17 @@ Defaults to ``\OC\Share20\ProviderFactory``
 
 ::
 
-	'sharing.maxAutocompleteResults' => 0,
+	'sharing.maxAutocompleteResults' => 25,
 
-Define max number of results returned by the user search for auto-completion
-Default is unlimited (value set to 0).
+Define max number of results returned by the search for auto-completion of
+users, groups, etc. The value must not be lower than 0 (for unlimited).
+
+If more, different sources are requested (e.g. different user backends; or
+both users and groups), the value is applied per source and might not be
+truncated after collecting the results. I.e. more results can appear than
+configured here.
+
+Default is 25.
 
 ::
 
@@ -1615,9 +1683,25 @@ Set to true to enforce that internal shares need to be accepted
 
 ::
 
+	'sharing.allow_custom_share_folder' => true,
+
+Set to false to prevent users from setting a custom share_folder
+
+::
+
 	'sharing.enable_share_mail' => true,
 
 Set to false to stop sending a mail when users receive a share
+
+::
+
+	'transferIncomingShares' => false,
+
+Set to true to always transfer incoming shares by default
+when running "occ files:transfer-ownership".
+
+Defaults to false, so incoming shares are not transferred if not specifically requested
+by a command line argument.
 
 All other configuration options
 -------------------------------
@@ -1627,11 +1711,21 @@ All other configuration options
 
 	'dbdriveroptions' => [
 		PDO::MYSQL_ATTR_SSL_CA => '/file/path/to/ca_cert.pem',
+		PDO::MYSQL_ATTR_SSL_KEY => '/file/path/to/mysql-client-key.pem',
+		PDO::MYSQL_ATTR_SSL_CERT => '/file/path/to/mysql-client-cert.pem',
+		PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
 		PDO::MYSQL_ATTR_INIT_COMMAND => 'SET wait_timeout = 28800'
 	],
 
 Additional driver options for the database connection, eg. to enable SSL
 encryption in MySQL or specify a custom wait timeout on a cheap hoster.
+
+When setting up TLS/SSL for encrypting the connections, you need to ensure that
+the passed keys and certificates are readable by the PHP process. In addition
+PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT might need to be set to false, if the
+database servers certificates CN does not match with the hostname used to connect.
+The standard behavior here is different from the MySQL/MariaDB CLI client, which
+does not verify the server cert except --ssl-verify-server-cert is passed manually.
 
 ::
 
@@ -1676,6 +1770,25 @@ http://mechanics.flite.com/blog/2014/07/29/using-innodb-large-prefix-to-avoid-er
 
 ::
 
+	'mysql.collation' => null,
+
+For search queries in the database, a default collation – depending on the
+character set – is chosen. In some cases a different behaviour is desired,
+for instances when a accent sensitive search is desired.
+
+MariaDB and MySQL have an overlap in available collations, but also
+incompatible ones, also depending on the version of the database server.
+
+This option allows to override the automatic choice. Example:
+
+'mysql.collation' => 'utf8mb4_0900_as_ci',
+
+This setting has no effect on setup or creating tables. In those cases
+always utf8[mb4]_bin is being used. This setting is only taken into
+consideration in SQL queries that utilize LIKE comparison operators.
+
+::
+
 	'supportedDatabases' => [
 		'sqlite',
 		'mysql',
@@ -1702,7 +1815,7 @@ Defaults to the following databases:
 
 Override where Nextcloud stores temporary files. Useful in situations where
 the system temporary directory is on a limited space ramdisk or is otherwise
-restricted, or if external storages which do not support streaming are in
+restricted, or if external storage which do not support streaming are in
 use.
 
 The Web server user must have write access to this directory.
@@ -1728,31 +1841,31 @@ be found at: https://www.php.net/manual/en/function.password-hash.php
 
 ::
 
+	'hashingThreads' => PASSWORD_ARGON2_DEFAULT_THREADS,
+
+The number of CPU threads to be used by the algorithm for computing a hash.
+
+The value must be an integer, and the minimum value is 1. Rationally it does
+not help to provide a number higher than the available threads on the machine.
+Values that undershoot the minimum will be ignored in favor of the minimum.
+
+::
+
 	'hashingMemoryCost' => PASSWORD_ARGON2_DEFAULT_MEMORY_COST,
 
-The allowed maximum memory in KiB to be used by the algorithm for computing a
-hash. The smallest possible value is 8. Values that undershoot the minimum
-will be ignored in favor of the default.
+The memory in KiB to be used by the algorithm for computing a hash. The value
+must be an integer, and the minimum value is 8 times the number of CPU threads.
+
+Values that undershoot the minimum will be ignored in favor of the minimum.
 
 ::
 
 	'hashingTimeCost' => PASSWORD_ARGON2_DEFAULT_TIME_COST,
 
-The allowed maximum time in seconds that can be used by the algorithm for
-computing a hash. The value must be an integer, and the minimum value is 1.
+The number of iterations that are used by the algorithm for computing a hash.
 
-Values that undershoot the minimum will be ignored in favor of the default.
-
-::
-
-	'hashingThreads' => PASSWORD_ARGON2_DEFAULT_THREADS,
-
-The allowed number of CPU threads that can be used by the algorithm for
-computing a hash. The value must be an integer, and the minimum value is 1.
-
-Rationally it does not help to provide a number higher than the available
-threads on the machine. Values that undershoot the minimum will be ignored
-in favor of the default.
+The value must be an integer, and the minimum value is 1. Values that
+undershoot the minimum will be ignored in favor of the minimum.
 
 ::
 
@@ -1794,10 +1907,15 @@ Defaults to the theming app which is shipped since Nextcloud 9
 
 ::
 
-	'cipher' => 'AES-256-CFB',
+	'cipher' => 'AES-256-CTR',
 
-The default cipher for encrypting files. Currently AES-128-CFB and
-AES-256-CFB are supported.
+The default cipher for encrypting files. Currently supported are:
+ - AES-256-CTR
+ - AES-128-CTR
+ - AES-256-CFB
+ - AES-128-CFB
+
+Defaults to ``AES-256-CTR``
 
 ::
 
@@ -1813,6 +1931,17 @@ client may not function as expected, and could lead to permanent data loss for
 clients or other unexpected results.
 
 Defaults to ``2.0.0``
+
+::
+
+	'localstorage.allowsymlinks' => false,
+
+Option to allow local storage to contain symlinks.
+
+WARNING: Not recommended. This would make it possible for Nextcloud to access
+files outside the data directory and could be considered a security risk.
+
+Defaults to ``false``
 
 ::
 
@@ -1841,7 +1970,7 @@ Defaults to ``1800`` (seconds)
 
 Specifies how often the local filesystem (the Nextcloud data/ directory, and
 NFS mounts in data/) is checked for changes made outside Nextcloud. This
-does not apply to external storages.
+does not apply to external storage.
 
 0 -> Never check the filesystem for outside changes, provides a performance
 increase when it's certain that no changes are made directly to the

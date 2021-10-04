@@ -64,7 +64,7 @@ Now download the archive of the latest Nextcloud version:
 * Now you can extract the archive contents. Run the appropriate unpacking
   command for your archive type::
 
-    tar -xjfv nextcloud-x.y.z.tar.bz2
+    tar -xjvf nextcloud-x.y.z.tar.bz2
     unzip nextcloud-x.y.z.zip
 
 * This unpacks to a single ``nextcloud`` directory. Copy the Nextcloud directory
@@ -80,3 +80,8 @@ Now download the archive of the latest Nextcloud version:
 
 On other HTTP servers it is recommended to install Nextcloud outside of the
 document root.
+
+Next steps
+----------
+
+After installing the prerequisites and extracting the nextcloud directory, you should follow the instructions for Apache configuration at :ref:`apache_configuration_label`. Once Apache is installed, you can optionally follow the :doc:`source_installation` guide from :ref:`pretty_urls_label` until :ref:`other_HTTP_servers_label`

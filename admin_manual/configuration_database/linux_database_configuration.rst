@@ -140,7 +140,7 @@ You can quit the prompt by entering::
 
   quit;
 
-An Nextcloud instance configured with MySQL would contain the hostname on which
+A Nextcloud instance configured with MySQL would contain the hostname on which
 the database is running, a valid username and password to access it, and the
 name of the database. The :file:`config/config.php` as created by the
 :doc:`../installation/installation_wizard` would therefore contain entries like
@@ -164,6 +164,8 @@ In case of UTF8MB4 you will also find::
 SSL for MySQL Database
 ^^^^^^^^^^^^^^^^^^^^^^
 
+Enabling SSL is only necessary if your database does not reside on the same server as your Nextcloud instance.
+If you do not connect over localhost and need to allow remote connections then you should enable SSL.
 This just covers the SSL database configuration on the Nextcloud server. First you need to configure your database server accordingly.
 
 ::
@@ -174,7 +176,7 @@ This just covers the SSL database configuration on the Nextcloud server. First y
     \PDO::MYSQL_ATTR_SSL_CA => '/../ca-cert.pem',
     \PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => true,
   ],
-  
+
 Adjust the paths to the pem files for your environment.
 
 PostgreSQL database
@@ -332,7 +334,7 @@ the respective host name::
   +---------------+--------+
   | Variable_name | Value  |
   +---------------+--------+
-  | version       | 5.1.67 |
+  | version       | 8.0.22 |
   +---------------+--------+
   1 row in set (0.00 sec)
   mysql> quit

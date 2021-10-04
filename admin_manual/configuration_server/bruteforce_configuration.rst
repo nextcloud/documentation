@@ -19,7 +19,7 @@ brute force protection kicking in.
 
 The maximum delay is 25 seconds.
 
-After a successfull login the attempts will be cleared. And once a user is
+After a successful login the attempts will be cleared. And once a user is
 properly authenticated they will not longer be hit by the delay.
 
 

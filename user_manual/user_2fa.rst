@@ -19,7 +19,7 @@ Configuring two-factor authentication
 -------------------------------------
 
 In your Personal Settings look up the Second-factor Auth setting. In this
-example this is TOTP, a Google Authenticator compatible time-based code.
+example this is TOTP, a Google Authenticator compatible time-based code:
 
 .. figure:: images/totp_enable.png
      :alt: TOTP configuration.
@@ -36,12 +36,12 @@ You should always generate backup codes for 2FA. If your 2nd factor device
 gets stolen or is not working, you will be able to use one of these codes to
 unlock your account. It effectively functions as a backup 2nd factor. To
 get the backup codes, go to your Personal Settings and look under Second-factor
-Auth settings. Choose *Generate backup codes*.
+Auth settings. Choose *Generate backup codes*:
 
 .. figure:: images/2fa_backupcode_1.png
      :alt: 2FA backup code generator
 
-You will then be presented with a list of one-time-use backup codes.
+You will then be presented with a list of one-time-use backup codes:
      
 .. figure:: images/2fa_backupcode_2.png
      :alt: 2FA backup codes
@@ -57,7 +57,7 @@ Logging in with two-factor authentication
 After you have logged out and need to log in again, you will see a request to
 enter the TOTP code in your browser. If you enable not only the TOTP factor
 but another one, you will see a selection screen on which you can choose
-two-factor method for this login. Select TOTP.
+two-factor method for this login. Select TOTP:
 
 .. figure:: images/totp_login_1.png
      :alt: Choosing a two-factor authentication method.
@@ -94,3 +94,9 @@ just your password unless they also have support for two-factor authentication.
 To solve this, you should generate device specific passwords for them. See 
 :doc:`session_management` for more information on how to do this.
 
+
+Considerations
+--------------
+
+If you use WebAuthn to login to your Nextcloud be sure to not use the same token for 2FA. As this
+would mean you are again only using a single factor.

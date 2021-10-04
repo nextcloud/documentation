@@ -9,4 +9,4 @@ OCS API
    ocs-api-overview
    ocs-share-api
    ocs-sharee-api
-
+   ocs-status-api

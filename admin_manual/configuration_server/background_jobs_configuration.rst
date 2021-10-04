@@ -57,6 +57,8 @@ access your server using the Internet. For example::
 
   URL to call: http[s]://<domain-of-your-server>/nextcloud/cron.php
 
+.. _system-cron-configuration-label:
+
 Cron
 ^^^^
 
@@ -88,6 +90,8 @@ Which returns::
 
 .. note:: On some systems it might be required to call **php-cli** instead of **php**.
 
+.. note:: For some configurations, it might be neccessary to append ``--define apc.enable_cli=1`` to the cron command. Please refer to :doc:`./caching_configuration` (section APCu).
+
 .. note:: Please refer to the crontab man page for the exact command syntax.
 
 .. _easyCron: https://www.easycron.com/
@@ -103,12 +107,15 @@ This approach requires two files: **nextcloudcron.service** and **nextcloudcron.
 
   [Unit]
   Description=Nextcloud cron.php job
-  
+
   [Service]
   User=www-data
-  ExecStart=/usr/bin/php -f /var/www/nextcloud/cron.php            
+  ExecStart=/usr/bin/php -f /var/www/nextcloud/cron.php
+  KillMode=process
 
 Replace the user ``www-data`` with the user of your http server and ``/var/www/nextcloud/cron.php`` with the location of **cron.php** in your nextcloud directory.
+
+The ``KillMode=process`` setting is necessary for external programs that are started by the cron job to keep running after the cron job has finished. 
 
 Note that the **.service** unit file does not need an ``[Install]`` section. Please check your setup because we recommended it in earlier versions of this admin manual.
 
@@ -116,12 +123,12 @@ Note that the **.service** unit file does not need an ``[Install]`` section. Ple
 
   [Unit]
   Description=Run Nextcloud cron.php every 5 minutes
-  
+
   [Timer]
   OnBootSec=5min
   OnUnitActiveSec=5min
   Unit=nextcloudcron.service
-  
+
   [Install]
   WantedBy=timers.target
 

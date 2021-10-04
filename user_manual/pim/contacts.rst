@@ -17,7 +17,7 @@ contact picture and manage your Contact app address books.
 Adding Contacts
 ---------------
 
-When you first access the Contacts app, an empty default address book becomes available.
+When you first access the Contacts app, an empty default address book becomes available:
 
 .. figure:: ../images/contacts_empty.png
 
@@ -37,12 +37,12 @@ Importing Virtual Contacts
 
 To Import Contacts Using a VCF/Vcard File:
 
-1. Find "Settings" at the bottom of the left sidebar, next to the gear button.
+1. Find "Settings" at the bottom of the left sidebar, next to the gear button:
 
 	.. figure:: ../images/contact_bottombar.png 
 		:alt: Contact settings gear button
   
-2. Click the gear button. The Contacts app "Import" button will appear.
+2. Click the gear button. The Contacts app "Import" button will appear:
 
 	.. figure:: ../images/contact_uploadbutton.png
 		:alt: Contacts Upload Field
@@ -63,7 +63,7 @@ To Create a New Contact:
 
 1. Click the ``+ New contact`` button.
 
-   An empty new contact configuration opens in the Application View field.
+   An empty new contact configuration opens in the Application View field:
    
   .. figure:: ../images/contact_new.png
   
@@ -107,9 +107,9 @@ Adding and Managing Address Books
 ---------------------------------
 
 Clicking on the "Settings" (gear) button at the bottom of the left sidebar
-provides access to Contact app settings. This field shows all
+provides access to Contacts app settings. This field shows all
 available address books, certain options for each address book, and enables you
-to create new address books, simply by specifying an address books name.
+to create new address books, simply by specifying an address books name:
 
 .. figure:: ../images/contact_manageaddressbook.png
 	:alt: Add address book in the contacts settings

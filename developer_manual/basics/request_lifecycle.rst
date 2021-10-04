@@ -2,12 +2,6 @@
 Request lifecycle
 =================
 
-.. toctree::
-   :maxdepth: 1
-
-   container
-   api
-
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>, Morris Jobke <hey@morrisjobke.de>
 
 A typical HTTP request consists of the following:
@@ -28,11 +22,11 @@ In the beginning, all requests are sent to Nextcloud's :file:`index.php` which i
 * Filesystem
 * Logging
 
-The type of the app is determined by inspecting the app's :doc:`configuration file <../info>` (:file:`appinfo/info.xml`). Loading apps means that the :doc:`main file <../init>` (:file:`appinfo/app.php`) of each installed app is being loaded and executed. That means that if you want to execute code before a specific app is being run, you can place code in your app's :doc:`../init` file.
+The type of the app is determined by inspecting the app's :doc:`configuration file <../info>` (:file:`appinfo/info.xml`). Loading apps means that the :doc:`main file <../app_development/init>` (:file:`appinfo/app.php`) of each installed app is being loaded and executed. That means that if you want to execute code before a specific app is being run, you can place code in your app's :doc:`../app_development/init` file.
 
 Afterwards the following steps are performed:
 
 * Try to authenticate the user
-* Load and execute all the remaining apps' :doc:`../init` files
+* Load and execute all the remaining apps' :doc:`../app_development/init` files
 * Load and run all the routes in the apps' :file:`appinfo/routes.php`
 * Execute the router

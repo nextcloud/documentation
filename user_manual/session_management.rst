@@ -31,7 +31,7 @@ At the bottom of the list you find a button to create a new device-specific
 password. You can choose a name to identify the token later. The generated
 password is used for configuring the new client. Ideally, generate individual
 tokens for every device you connect to your account, so you can disconnect
-those individually if necessary.
+those individually if necessary:
 
 .. figure:: images/settings_devices_add.png
      :alt: Adding a new device.
@@ -43,7 +43,7 @@ those individually if necessary.
 
 .. note:: If you are :doc:`user_2fa` for your account,
    device-specific passwords are the only way to configure clients. The
-   client will deny connections of clients using your login password then.
+   server will deny connections of clients using your login password then.
 
 Device-specific passwords and password changes
 ----------------------------------------------

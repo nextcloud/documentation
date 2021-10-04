@@ -48,7 +48,7 @@ With the Nextcloud mobile app
 Without the Nextcloud mobile app
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 If you don't want to install the Nextcloud mobile app, the following
-steps are required after installing DAVx⁵
+steps are required:
 
 1. Install `DAVx⁵ (formerly known as DAVDroid) <https://www.davx5.com/download/>`_ on your Android device, 
    `from Google Play Store <https://play.google.com/store/apps/details?id=at.bitfire.davdroid>`_ or 
@@ -57,7 +57,7 @@ steps are required after installing DAVx⁵
 3. Create a new account ("+" button).
 4. Select **Connection with URL and username**.
    **Base URL:** URL of your Nextcloud instance (e.g. ``https://sub.example.com/remote.php/dav``) and 
-   **Contact Group Method:** As credentials.
+   **Contact Group Method:** as credentials.
 5. Choose the option ``Groups are per-contact categories``.
 6. Click **Connect**.
 7. Select the data you want to sync.

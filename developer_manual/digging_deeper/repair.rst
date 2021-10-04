@@ -7,7 +7,7 @@ events which directly affect the app. You can use these repair steps to run
 code when your app is installed, uninstalled, upgraded etc. It's called repair
 steps because they are frequently used to fix things automatically.
 
-.. note:: Don't use the ``install.php``, ``update.php`` and ``preupdate.php`` files anymore! This method is deprecated and is known to cause issues.
+.. note:: Don't use the ``install.php`` files anymore! This method is deprecated and is known to cause issues.
 
 
 Creating a repair step

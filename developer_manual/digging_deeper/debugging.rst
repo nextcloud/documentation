@@ -2,6 +2,8 @@
 Debugging
 =========
 
+.. _debug-mode:
+
 Debug mode
 ----------
 

@@ -10,4 +10,4 @@ App development
    bootstrap
    info
    init
-   logging
+   dependency_management

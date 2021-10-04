@@ -21,7 +21,6 @@ Set the :file:`trusted_proxies` parameter as an array of:
 * IPv4 addresses, 
 * IPv4 ranges in CIDR notation
 * IPv6 addresses
-* host to resolve
 
 to define the servers Nextcloud should trust as proxies. This parameter
 provides protection against client spoofing, and you should secure those
@@ -70,13 +69,23 @@ Thanks to `@ffried <https://github.com/ffried>`_ for apache2 example.
 
 Traefik 1
 ^^^^^^^^^
+
+Using docker tags:
 ::
 
   traefik.frontend.redirect.permanent: 'true'
   traefik.frontend.redirect.regex: https://(.*)/.well-known/(card|cal)dav
-  traefik.frontend.redirect.replacement: https://$$1/remote.php/dav/
+  traefik.frontend.redirect.replacement: https://$1/remote.php/dav/
 
-Thanks to `@pauvos <https://github.com/pauvos>`_ for traefik example.
+Using traefik.toml:
+::
+
+  [frontends.frontend1.redirect]
+    regex = "https://(.*)/.well-known/(card|cal)dav"
+    replacement = "https://$1/remote.php/dav/
+    permanent = true
+
+Thanks to `@pauvos <https://github.com/pauvos>`_ and `@mrtumnus <https://github.com/mrtumnus>`_ for traefik examples.
 
 Traefik 2
 ^^^^^^^^^
@@ -106,6 +115,25 @@ NGINX
     location /.well-known/caldav {
         return 301 $scheme://$host/remote.php/dav;
     }
+
+or
+
+::
+
+  rewrite ^/\.well-known/carddav https://$server_name/remote.php/dav/ redirect;
+  rewrite ^/\.well-known/caldav https://$server_name/remote.php/dav/ redirect;
+
+Caddy
+^^^^^
+::
+
+    subdomain.example.com {
+        rewrite /.well-known/carddav /remote.php/dav
+        rewrite /.well-known/caldav /remote.php/dav
+
+        reverse_proxy {$NEXTCLOUD_HOST:localhost}
+    }
+
 
 Example
 -------

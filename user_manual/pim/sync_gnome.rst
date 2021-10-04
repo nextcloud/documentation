@@ -11,18 +11,19 @@ only while the computer is connected.
 This can be done by following these steps:
 
 1. In the GNOME settings, open Online Accounts.
-2. Under "Add an account" pick ``Nextcloud``.
+2. Under "Add an account" pick ``Nextcloud``:
 
 .. image:: ../images/gnome-online-accounts.png
 
 3. Enter your server URL, username and password. If you have enabled two
-   factor authentification, you need to generate an
-   app-password/token, because GNOME Online Accounts `doesn't support Nextcloud's webflow login yet <https://gitlab.gnome.org/GNOME/gnome-online-accounts/issues/81>`_. (`Learn more <https://docs.nextcloud.com/server/stable/user_manual/session_management.html#managing-devices>`_).
+   factor authentification, you need to generate an app-password/token, because GNOME Online Accounts
+   `doesn't support Nextcloud's webflow login yet <https://gitlab.gnome.org/GNOME/gnome-online-accounts/issues/81>`_
+   (`Learn more <https://docs.nextcloud.com/server/stable/user_manual/session_management.html#managing-devices>`_):
 
 .. image:: ../images/goa-add-nextcloud-account.png
    
 4. In the next window, select which resources GNOME should access and
-   press the cross in the top left to close.
+   press the cross in the top left to close:
    
 .. image:: ../images/goa-nextcloud-select.png
 

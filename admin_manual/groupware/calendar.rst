@@ -1,6 +1,6 @@
-========
-Calendar
-========
+=================
+Calendar / CalDAV
+=================
 
 Invitations
 -----------
@@ -16,7 +16,7 @@ Contacts that have a birthday date filled are automatically added as events to a
 If you deactivate this option, all users will no longer have this calendar.
 
 When activating this option, users birthday calendars won't be available right away because they need to be generated
-by a background task. See :doc:`../configuration_server/occ_command` section Dav commands.
+by a background task. See :doc:`../configuration_server/occ_command` section DAV commands.
 
 Reminder notifications
 ----------------------
@@ -30,9 +30,9 @@ Make sure the "Send notifications for events" and the "Enable notifications for 
 
 Background jobs
 ~~~~~~~~~~~~~~~
-As this can be a expensive task, depending on the number of events, reminders and event sharees and attendees that also needs to happen
-often enough so that the notifications are send on time, you can use a dedicated occ command that should be run
-more often than the standard cron system::
+Running background jobs can be an expensive task when there are a large number of events, reminders, event sharees and attendees. However, this needs to happen
+often enough so that the notifications are sent on time. To accomplish this you should use a dedicated ``occ`` command that runs
+more often than the standard ``cron`` system::
 
  # crontab -u www-data -e
  */5 * * * * php -f /var/www/nextcloud/occ dav:send-event-reminders
@@ -43,22 +43,24 @@ You'll also need to change the sending mode from ``background-job`` to ``occ``::
 
  php occ config:app:set dav sendEventRemindersMode --value occ
 
-If you don't use this dedicated command, the reminders will just be send as soon as possible when the background jobs run.
+If you don't use this dedicated command, the reminders will just be sent as soon as possible when the background jobs run.
 
 FreeBusy
 --------
 
 When logged-in, Nextcloud can return FreeBusy information for all users of the instance, to know when they are available so that you can schedule an event at the right time.
-If you don't wish for users to have this possibility, you can disable FreeBusy for the whole instance with the following setting::
+If you don't wish for users to have this capability, you can disable FreeBusy for the whole instance with the following setting::
 
  php occ config:app:set dav disableFreeBusy --value yes
 
 Subscriptions
-----------------------
+-------------
+
 Refresh rate
 ~~~~~~~~~~~~
 
-Calendar subscriptions are cached on server and refreshed periodically. The default refresh rate is of one week, unless the subscription itself tells otherwise.
+Calendar subscriptions are cached on server and refreshed periodically.
+The default refresh rate is one week, unless the subscription itself tells otherwise.
 
 To set up a different default refresh rate, change the ``calendarSubscriptionRefreshRate`` option::
 
@@ -69,6 +71,7 @@ Where the value is a `DateInterval <https://www.php.net/manual/dateinterval.cons
 Allow subscriptions on local network
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Because of security issues, Nextcloud forbids subscriptions from local network hosts. If you need to allow this, change the following parameter to::
+Because of security issues, Nextcloud forbids subscriptions from local network hosts.
+If you need to allow this, change the following parameter to::
 
  php occ config:app:set dav webcalAllowLocalAccess --value yes

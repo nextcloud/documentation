@@ -50,54 +50,54 @@ from GitHub.
 Editing
 -------
 
-Contributing to the documentation requires a Github account. Make sure you are
+Contributing to the documentation requires a GitHub account. Make sure you are
 working in the correct branch for your version of Nextcloud or client apps.
 If your edits pertain to multiple manual versions, be prepared to backport as
 needed.
 
 To edit a document, you can edit the .rst files on your local system, or work
-directly on Github. The latter is only suitable for small fixes and improvements
+directly on GitHub. The latter is only suitable for small fixes and improvements
 because substantial editing efforts can better be controlled on your local PC.
 
 The best way is to install a complete Sphinx build environment and work on your
 local PC. You will be able to make your own local builds, which is the fastest
 and best way to preview for errors. Sphinx will report syntax errors, missing
-images, and formatting errors. The Github preview is not complete and misses
+images, and formatting errors. The GitHub preview is not complete and misses
 many mistakes. Create a new branch against the master or stable branch you are
-editing, make your edits, then push your new branch to Github and open a new PR.
+editing, make your edits, then push your new branch to GitHub and open a new PR.
 
-To edit on Github, fork the repository (see top-right of the screen, under
+To edit on GitHub, fork the repository (see top-right of the screen, under
 your username). You will then be able to make changes easily. Once done,
 you can create a pull request and get the changes reviewed and back into
 the official repository.
 
-When editing either on your own local PC or on Github, be sure to sign of
+When editing either on your own local PC or on GitHub, be sure to sign of
 commits, to certify adherence to the Developer Certificate of Origin,
-see https://github.com/probot/dco . Your commit messages need to have, 
+see https://github.com/probot/dco . Your commit messages need to have,
 the name and email address of the contributor.
 
   Signed-off-by: Awesome Contributor <awesome.contributor@reach.me>
-  
-If using the command line and your name and email are configured, you can use 
+
+If using the command line and your name and email are configured, you can use
 
   git commit -s -m 'Commit message'
-  
-In both settings be sure that your email address matches that in your Github profile,
+
+In both settings be sure that your email address matches that in your GitHub profile,
 which if you have privacy enabled will be github.username@users.noreply.github.com
 
 
 Translations
 ------------
 
-[Help translate the documentation](https://www.transifex.com/nextcloud/nextcloud-user-documentation/dashboard/).
+`Help translate the documentation <https://www.transifex.com/nextcloud/nextcloud-user-documentation/dashboard/>`_.
 
-For developers that want to ease the translation process, please read [this documentation](https://docs.transifex.com/integrations/sphinx-doc).
+For developers that want to ease the translation process, please read `this documentation <https://docs.transifex.com/integrations/sphinx-doc>`_.
 
 Building
 --------
 
 1. Install `pipenv` - https://pipenv.readthedocs.io/en/latest/
-2. Create a Python environment (typically inside this repository): `pipenv --python 3.8`
+2. Create a Python environment (typically inside this repository): `pipenv --python 3.9`
 3. Change into the environment: `pipenv shell`
 4. Install the dependencies `pip install -r requirements.txt`
 5. Now you can use `make ...` to build all the stuff - for example `make html` to build the HTML flavor of all manuals

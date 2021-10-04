@@ -72,6 +72,63 @@ All log information will be sent to Systemd journal. Requires `php-systemd <http
 
     "log_type" => "systemd",
 
+Log fields explained
+--------------------
+
+Example log entries
+~~~~~~~~~~~~~~~~~~~
+
+::
+
+    {
+        "reqId":"TBsuA2uE86DiOD0S8f9j",
+        "level":1,
+        "time":"April 13, 2021 16:55:37",
+        "remoteAddr":"192.168.56.1",
+        "user":"admin",
+        "app":"admin_audit",
+        "method":"GET",
+        "url":"/ocs/v1.php/cloud/users?disabled",
+        "message":"Login successful: \"admin\"",
+        "userAgent":"curl/7.68.0",
+        "version":"21.0.1.1"
+    }
+
+    {
+        "reqId":"ByeDVLuwkXKMfLpBgvxC",
+        "level":2,
+        "time":"April 14, 2021 09:03:29",
+        "remoteAddr":"192.168.56.1",
+        "user":"--",
+        "app":"no app in context",
+        "method":"POST",
+        "url":"/login",
+        "message":"Login failed: asdf (Remote IP: 192.168.56.1)",
+        "userAgent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36",
+        "version":"21.0.1.1"
+    }
+
+Log field breakdown
+~~~~~~~~~~~~~~~~~~~
+
+* **0**: DEBUG: All activity; the most detailed logging.
+
+* **reqId** (request id): any log lines related to a single request have the same value
+* **level**: logged incident's level, always 1 in audit.log
+* **time**: date and time (format and timezone can be configured in config.php)
+* **remoteAddr**: the IP address of the user (if applicable  – empty for occ commands)
+* **user**: acting user's id (if applicable)
+* **app**: affected app (always admin_audit in audit.log)
+* **method**: HTTP method, for example GET, POST, PROPFIND, etc.  – empty on occ calls
+* **url**: request path (if applicable – empty on occ calls)
+* **message**: event information message
+* **userAgent**: user agent (if applicable – empty on occ calls)
+* **exception**: Full exception with trace (if applicable)
+* **data** additional structured data (if applicable)
+* **version**: Nextcloud version at the time of request
+
+Empty value are written as two dashes: "--".
+
 Admin audit log
 ---------------
 

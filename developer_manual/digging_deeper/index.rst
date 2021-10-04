@@ -21,7 +21,7 @@ Digging deeper
    rest_apis
    search
    settings
-   testing
    two-factor-provider
    users
    dashboard
+   web_host_metadata

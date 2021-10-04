@@ -13,7 +13,7 @@ Nextcloud Files
 * `Activity <https://github.com/nextcloud/activity>`_
 * `Auditing / Logging <https://github.com/nextcloud/server/tree/master/apps/admin_audit>`_
 * `Antivirus for files <https://github.com/nextcloud/files_antivirus>`_
-* `AppOrder <https://github.com/juliushaertl/apporder>`_
+* `Brute-force settings <https://github.com/nextcloud/bruteforcesettings>`_
 * `Circles <https://github.com/nextcloud/circles>`_
 * `Collaborative Tags <https://github.com/nextcloud/server/tree/master/apps/systemtags>`_
 * `Comments <https://github.com/nextcloud/server/tree/master/apps/comments>`_

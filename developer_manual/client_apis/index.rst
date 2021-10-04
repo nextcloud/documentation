@@ -12,7 +12,7 @@ Clients and Client APIs
     OCS/index
     LoginFlow/index
     RemoteWipe/index
-    ocs-share-api
-    ocs-sharee-api
+    OCS/ocs-share-api
+    OCS/ocs-sharee-api
     activity-api
     

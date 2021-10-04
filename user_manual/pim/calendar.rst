@@ -90,7 +90,14 @@ Calendars can be published through a public link to make them viewable (read-onl
 There's also an « embedding code » that provides an HTML iframe to embed your calendar into public pages.
 
 Multiple calendars can be shared together by adding their unique tokens to the end of an embed link. Individual tokens can be found at the end of each calendar's public link. The full address will look like
-``https://cloud.example.com/index.php/apps/calendar/embed/token1-token2-token3``
+``https://cloud.example.com/index.php/apps/calendar/embed/<token1>-<token2>-<token3>``
+
+To change the default view or date of an embedded calendar, you need to provide an url that look like ``https://cloud.example.com/index.php/apps/calendar/embed/<token>/<view>/<date>``.
+In this url you need to replace the following variables:
+
+- ``<token>`` with the calendar's token.
+- ``<view>`` with one of ``month``, ``week``, ``day``, ``listMonth``, ``listWeek``, ``listDay``. The default view is ``month`` and the normally used list is ``listMonth``.
+- ``<date>`` with ``now`` or any date with the following format ``<year>-<month>-<day>`` (e.g. ``2019-12-28``).
 
 On the public page, users are able to get the subscription link for the calendar and download the whole calendar directly.
 
@@ -129,8 +136,8 @@ The month-view only requires a single click into the area of the specific day.
 
   .. figure:: images/calendar_new-event_month.gif
 
-After that, you can type in the events name (e.g. **Meeting with Lukas**), choose
-the calendar in which you want to choose the event (e.g. **Personal**, **Work**)
+After that, you can type in the event's name (e.g. **Meeting with Lukas**), choose
+the calendar in which you want to choose the event (e.g. **Personal**, **Work**),
 check and concretize the time span or set the event as all-day event.
 
 If you want to edit advanced details such as the **Location**, a **Description**,
@@ -147,10 +154,10 @@ Edit or Delete an event
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 If you want to edit or delete a specific event, you just need to click on it.
-After that you will be able to re-set all of the events details and open the
-advanced sidebar-editor by clicking on ``More...``.
+After that you will be able to re-set all event details and open the
+advanced sidebar-editor by clicking on ``More``.
 
-Clicking on the blue ``Update``-button will update the event. To cancel your changes, click on the close icon on top right of the popup or sidebar editor.
+Clicking on the ``Update``-button will update the event. To cancel your changes, click on the close icon on top right of the popup or sidebar editor.
 
 If you open the sidebar view and click the three dot menu next to the event name, you have an option to export the event as an ``.ics`` file or remove the event from your calendar.
 
