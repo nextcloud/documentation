@@ -116,7 +116,7 @@ Static analysis
 .. Note:: The definition supresses usages of the global and static class ``OC`` like ``\OC::$server``, which is discouraged but still found in some apps. The doctrine supression is currently necessary as the database mappers and schema abstractions leak some of the 3rd party libraries of Nextcloud that are not known to Psalm.
 
 
-You can put this process into a Github Action that is run for every pull request.
+You can put this process into a GitHub Action that is run for every pull request.
 
 .. code-block:: yaml
 

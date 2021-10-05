@@ -430,10 +430,10 @@ You can find all the available versions `here <https://shop.hanssonit.se/product
 
 For complete instructions and downloads see:
 
-- `Nextcloud VM (Github) <https://github.com/nextcloud/vm/>`_
+- `Nextcloud VM (GitHub) <https://github.com/nextcloud/vm/>`_
 - `Nextcloud VM (T&M Hansson IT) <https://www.hanssonit.se/nextcloud-vm/>`_
 
-.. note:: You can install the VM on several different operating systems as long as you can mount OVA, VMDK, or VHD/VHDX VM in your hypervisor. If you are using KVM then you need to install the VM from the scripts on Github. You can follow the `instructions in the README <https://github.com/nextcloud/vm#build-your-own-vm-or-install-on-a-vps>`_.
+.. note:: You can install the VM on several different operating systems as long as you can mount OVA, VMDK, or VHD/VHDX VM in your hypervisor. If you are using KVM then you need to install the VM from the scripts on GitHub. You can follow the `instructions in the README <https://github.com/nextcloud/vm#build-your-own-vm-or-install-on-a-vps>`_.
 
 .. _snaps_label:
 
