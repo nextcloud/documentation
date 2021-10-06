@@ -477,6 +477,10 @@ redirected to the Nextcloud installer. Here a quick how-to:
    it becomes available through the web installer and the updater. This is done to
    spread the deployment of new major releases out over time.
 
+Installation on TrueNAS
+-----------------------
+
+See the `TrueNAS installation documentation <https://www.truenas.com/docs/core/solutions/integrations/nextcloud/>`_.
 
 Installation via install script
 -------------------------------
