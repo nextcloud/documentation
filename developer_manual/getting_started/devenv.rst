@@ -20,7 +20,7 @@ Get the source
 
 There are two ways to obtain Nextcloud sources:
 
-* Using the `stable version <https://docs.nextcloud.com//server/stable/admin_manual/installation/index.html>`_
+* Using the `stable version <https://docs.nextcloud.com/server/stable/admin_manual/installation/index.html>`_
 * Using the development version from `GitHub`_ which will be explained below.
 
 .. TODO ON RELEASE: Update version number above on release
