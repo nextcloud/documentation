@@ -214,7 +214,7 @@ So basically the following is now possible:
 
   $class2 instanceof MyTestClass2;  // true
   $class2->class instanceof MyTestClass;  // true
-  $class2->appName === 'appname';  // true
+  $class2->appName === 'myapp';  // true
   $class2 === $app->getContainer()->get('OCA\MyApp\MyTestClass2');  // true
 
 .. note:: $AppName is resolved because the container registered a parameter under the key 'AppName' which will return the app id. The lookup is case sensitive so while $AppName will work correctly, using $appName as a constructor parameter will fail.
