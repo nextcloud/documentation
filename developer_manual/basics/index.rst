@@ -14,5 +14,6 @@ Basic concepts
    front-end/index
    backgroundjobs
    logging
+   setting
    storage/index
    testing
