@@ -96,7 +96,7 @@ When you're in a conversation, you can start a call any time with the ``Start ca
 
 .. image:: images/join-call.png
 
-During a call, you can mute your microphone and disable your video with the buttons on your video on the bottom-right, or using the shortcuts ``m`` to mute audio and ``v`` to disable video. You can also use the space bar to toggle mute. When you are muted, pressing space will unmute you so you can speak until you let go of the space bar. If you are unmuted, pressing space will mute you until you let go.
+During a call, you can mute your microphone and disable your video with the buttons on your video on the bottom-right, or using the shortcuts ``M`` to mute audio and ``V`` to disable video. You can also use the space bar to toggle mute. When you are muted, pressing space will unmute you so you can speak until you let go of the space bar. If you are unmuted, pressing space will mute you until you let go.
 
 You can hide your video (useful during a screen share) with the little arrow just above the video stream. Bring it back with the little arrow again.
 
