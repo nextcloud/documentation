@@ -77,7 +77,7 @@ Here you can also create a direct link to the message or mark it unread so you w
 Managing a conversation
 ---------------
 
-You are always moderator in your new conversation. In the participant list on the right you can elevate other participants to moderators using the ``...`` menu  to the right of their user name, or remove them from the conversation. 
+You are always moderator in your new conversation. In the participant list on the right you can elevate other participants to moderators using the ``...`` menu to the right of their user name, or remove them from the conversation. 
 
 .. image:: images/participant-menu.png
 
