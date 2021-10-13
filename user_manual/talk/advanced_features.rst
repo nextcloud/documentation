@@ -26,7 +26,7 @@ You can choose to let the participants join the call at a specific time, or when
 Commands
 --------
 
-Nextcloud allows users to execute actions using commands. A command typically looks like
+Nextcloud allows users to execute actions using commands. A command typically looks like:
 
     ``/wiki airplanes``
 
