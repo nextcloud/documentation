@@ -1128,6 +1128,14 @@ Defaults to ``https://apps.nextcloud.com/api/v1``
 
 ::
 
+	'appsallowlist' => [],
+
+Filters allowed installable apps from the appstore.
+
+Empty array will prevent all apps from the store to be found.
+
+::
+
 	'apps_paths' => [
 		[
 			'path'=> '/var/www/nextcloud/apps',
