@@ -2142,7 +2142,7 @@ Disable background scanning of files
 
 By default, a background job runs every 10 minutes and execute a background
 scan to sync filesystem and database. Only users with unscanned files
-(size=0 in filecache) are included. Maximum 500 users per job.
+(size < 0 in filecache) are included. Maximum 500 users per job.
 
 Defaults to ``true``
 
