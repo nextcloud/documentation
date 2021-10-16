@@ -6,17 +6,17 @@
 # Translators:
 # Johannes Hauser, 2020
 # Joachim Sokolowski, 2021
-# Mark Ziegler <mark.ziegler@rakekniven.de>, 2021
 # Gustav Gyges, 2021
+# Mark Ziegler <mark.ziegler@rakekniven.de>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud latest User Manual latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-17 09:16+0000\n"
+"POT-Creation-Date: 2021-09-30 18:32+0200\n"
 "PO-Revision-Date: 2019-11-07 20:28+0000\n"
-"Last-Translator: Gustav Gyges, 2021\n"
+"Last-Translator: Mark Ziegler <mark.ziegler@rakekniven.de>, 2021\n"
 "Language-Team: German (https://www.transifex.com/nextcloud/teams/64236/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -228,15 +228,49 @@ msgid ""
 "Multiple calendars can be shared together by adding their unique tokens to "
 "the end of an embed link. Individual tokens can be found at the end of each "
 "calendar's public link. The full address will look like "
-"``https://cloud.example.com/index.php/apps/calendar/embed/token1-token2-token3``"
+"``https://cloud.example.com/index.php/apps/calendar/embed/<token1>-<token2>-<token3>``"
 msgstr ""
 "Mehrere Kalender können gemeinsam geteilt werden, indem ihre einzigartigen "
 "Tokens am Ende eines Einbettungs-Links angefügt werden. Individuelle Tokens "
 "finden Sie am Ende des öffentlichen Links eines jeden Kalenders. Die "
 "vollständige Adresse wird dann folgendermaßen aussehen "
-"``https://cloud.example.com/index.php/apps/calendar/embed/token1-token2-token3``"
+"``https://cloud.example.com/index.php/apps/calendar/embed/<token1>-<token2>-<token3>``"
 
 #: ../../pim/calendar.rst:95
+msgid ""
+"To change the default view or date of an embedded calendar, you need to "
+"provide an url that look like "
+"``https://cloud.example.com/index.php/apps/calendar/embed/<token>/<view>/<date>``."
+" In this url you need to replace the following variables:"
+msgstr ""
+"Um die Standardansicht oder das Datum eines eingebetteten Kalenders zu "
+"ändern, müssen Sie eine URL angeben, die wie "
+"``https://cloud.example.com/index.php/apps/calendar/embed/<token>/<view>/<date>``"
+" aussieht. In dieser URL müssen Sie die folgenden Variablen ersetzen:"
+
+#: ../../pim/calendar.rst:98
+msgid "``<token>`` with the calendar's token."
+msgstr "``<token>`` mit dem Token des Kalenders."
+
+#: ../../pim/calendar.rst:99
+msgid ""
+"``<view>`` with one of ``month``, ``week``, ``day``, ``listMonth``, "
+"``listWeek``, ``listDay``. The default view is ``month`` and the normally "
+"used list is ``listMonth``."
+msgstr ""
+"``<view>`` mit ``Monat``, ``Woche``, ``Tag``, ``listMonat``, ``listWoche``, "
+"``listTag``. Die Standardansicht ist ``Monat`` und die normalerweise "
+"verwendete Liste ist ``listMonat``."
+
+#: ../../pim/calendar.rst:100
+msgid ""
+"``<date>`` with ``now`` or any date with the following format "
+"``<year>-<month>-<day>`` (e.g. ``2019-12-28``)."
+msgstr ""
+"``<date>`` mit ``Jetzt`` oder irgendeinem Datum in folgendem Format "
+"``<year>-<month>-<day>`` (z. B. ``2019-12-28``)."
+
+#: ../../pim/calendar.rst:102
 msgid ""
 "On the public page, users are able to get the subscription link for the "
 "calendar and download the whole calendar directly."
@@ -244,11 +278,11 @@ msgstr ""
 "Auf der öffentlichen Seite können Benutzer den Abonnement-Link für den "
 "Kalender abrufen und den gesamten Kalender direkt herunterladen."
 
-#: ../../pim/calendar.rst:98
+#: ../../pim/calendar.rst:105
 msgid "Subscribe to a Calendar"
 msgstr "Kalender abonnieren"
 
-#: ../../pim/calendar.rst:100
+#: ../../pim/calendar.rst:107
 msgid ""
 "You can subscribe to iCal calendars directly inside of your Nextcloud. By "
 "supporting this interoperable standard (RFC 5545) we made Nextcloud calendar"
@@ -263,22 +297,22 @@ msgstr ""
 "auch Links zum Abonnieren von Kalendern, die auf anderen Nextcloud-"
 "Installationen veröffentlicht wurden, wie oben beschrieben."
 
-#: ../../pim/calendar.rst:105
+#: ../../pim/calendar.rst:112
 msgid "Click on ``+ New Subscription`` in the left sidebar."
 msgstr "Klicken Sie auf ``+ Neuer Kalender`` in der linken Seitenleiste."
 
-#: ../../pim/calendar.rst:106
+#: ../../pim/calendar.rst:113
 msgid ""
 "Type in or paste the link of the shared calendar you want to subscribe to."
 msgstr ""
 "Geben Sie den Link des geteilten Kalenders ein, den Sie abonnieren wollen, "
 "oder fügen Sie ihn ein."
 
-#: ../../pim/calendar.rst:108
+#: ../../pim/calendar.rst:115
 msgid "Finished. Your calendar subscriptions will be updated regularly."
 msgstr "Fertig. Ihre Kalenderabonnements werden regelmäßig aktualisiert."
 
-#: ../../pim/calendar.rst:110
+#: ../../pim/calendar.rst:117
 msgid ""
 "Subscriptions are refreshed every week by default. Your admin may have "
 "changed this setting."
@@ -286,15 +320,15 @@ msgstr ""
 "Abonnements werden standardmäßig wöchentlich aktualisiert, sofern Ihr Admin "
 "diese Einstellung nicht geändert hat."
 
-#: ../../pim/calendar.rst:113
+#: ../../pim/calendar.rst:120
 msgid "Managing Events"
 msgstr "Termine verwalten"
 
-#: ../../pim/calendar.rst:116
+#: ../../pim/calendar.rst:123
 msgid "Create a new event"
 msgstr "Neuen Termin erstellen"
 
-#: ../../pim/calendar.rst:118
+#: ../../pim/calendar.rst:125
 msgid ""
 "Events can be created by clicking in the area when the event is scheduled. "
 "In the day- and week-view of the calendar you just click, pull and left your"
@@ -305,7 +339,7 @@ msgstr ""
 "klicken, ziehen und bewegen Sie den Mauszeiger über den Bereich, in dem das "
 "Ereignis stattfindet."
 
-#: ../../pim/calendar.rst:126
+#: ../../pim/calendar.rst:133
 msgid ""
 "The month-view only requires a single click into the area of the specific "
 "day."
@@ -313,7 +347,7 @@ msgstr ""
 "Die Monatsansicht erfordert nur einen einzigen Klick in den Bereich des "
 "jeweiligen Tages."
 
-#: ../../pim/calendar.rst:132
+#: ../../pim/calendar.rst:139
 msgid ""
 "After that, you can type in the event's name (e.g. **Meeting with Lukas**), "
 "choose the calendar in which you want to choose the event (e.g. "
@@ -325,7 +359,7 @@ msgstr ""
 "**Arbeit**), das Zeitfenster prüfen und konkretisieren oder den Termin als "
 "ganztägig markieren."
 
-#: ../../pim/calendar.rst:136
+#: ../../pim/calendar.rst:143
 msgid ""
 "If you want to edit advanced details such as the **Location**, a "
 "**Description**, **Attendees**, **Reminders** or to set the event as a "
@@ -337,7 +371,7 @@ msgstr ""
 "festlegen möchten, klicken Sie auf die Schaltfläche `` Mehr ... `` zum "
 "Öffnen des erweiterten Seitenleisten-Editors."
 
-#: ../../pim/calendar.rst:140
+#: ../../pim/calendar.rst:147
 msgid ""
 "If you always want to open the advanced sidebar-editor instead of the simple"
 " event editor popup, you can set a ``Skip simple event editor``-checkmark in"
@@ -348,17 +382,17 @@ msgstr ""
 "\"Einstellungen & Import\" der App das Häkchen \"Einfachen Ereigniseditor "
 "überspringen\" setzen."
 
-#: ../../pim/calendar.rst:144
+#: ../../pim/calendar.rst:151
 msgid "Clicking on the blue ``Create``-button will finally create the event."
 msgstr ""
 "Durch Klicken auf die blaue ``Erstellen``-Schaltfläche wird der Termin "
 "endgültig erstellt."
 
-#: ../../pim/calendar.rst:147
+#: ../../pim/calendar.rst:154
 msgid "Edit or Delete an event"
 msgstr "Termin bearbeiten oder löschen"
 
-#: ../../pim/calendar.rst:149
+#: ../../pim/calendar.rst:156
 msgid ""
 "If you want to edit or delete a specific event, you just need to click on "
 "it. After that you will be able to re-set all event details and open the "
@@ -369,7 +403,7 @@ msgstr ""
 "den erweiterten Seitenleisten-Editor öffnen, indem Sie auf ``Mehr...`` "
 "klicken."
 
-#: ../../pim/calendar.rst:153
+#: ../../pim/calendar.rst:160
 msgid ""
 "Clicking on the ``Update``-button will update the event. To cancel your "
 "changes, click on the close icon on top right of the popup or sidebar "
@@ -379,7 +413,7 @@ msgstr ""
 "aktualisieren. Um Ihre Änderungen zu verwerfen, klicken Sie auf das "
 "Schließen-Symbol oben rechts im Popup- oder Seitenleisten-Editor."
 
-#: ../../pim/calendar.rst:155
+#: ../../pim/calendar.rst:162
 msgid ""
 "If you open the sidebar view and click the three dot menu next to the event "
 "name, you have an option to export the event as an ``.ics`` file or remove "
@@ -390,11 +424,11 @@ msgstr ""
 "``.ics``-Datei zu exportieren oder den Termin aus Ihrem Kalender zu "
 "entfernen."
 
-#: ../../pim/calendar.rst:160
+#: ../../pim/calendar.rst:167
 msgid "Invite attendees to an event"
 msgstr "Teilnehmer zu einem Termin einladen"
 
-#: ../../pim/calendar.rst:162
+#: ../../pim/calendar.rst:169
 msgid ""
 "You may add attendees to an event to let them know they're invited. They "
 "will receive an email confirmation and will be able to confirm or cancel "
@@ -411,7 +445,7 @@ msgstr ""
 "das Maß der Teilnahme auch benutzerspezifisch ändern oder die Bestätigung "
 "per E-Mail für einen bestimmten Teilnehmer deaktivieren."
 
-#: ../../pim/calendar.rst:167
+#: ../../pim/calendar.rst:174
 msgid ""
 "When adding other Nextcloud users as attendees to an event, you may access "
 "their FreeBusy information if it's available, helping you to determine when "
@@ -422,7 +456,7 @@ msgstr ""
 "Verfügbarkeit/Belegung zugreifen, damit Sie am besten beurteilen können, "
 "wann das beste Zeitfenster für diesen Termin ist. "
 
-#: ../../pim/calendar.rst:169
+#: ../../pim/calendar.rst:176
 msgid ""
 "Only the calendar owner can send out invitations, the sharees are not able "
 "to do that, whether they have write access to the event's calendar or not."
@@ -431,11 +465,11 @@ msgstr ""
 "können das nicht, egal ob sie Schreibzugriff auf den Kalender des "
 "Ereignisses haben oder nicht."
 
-#: ../../pim/calendar.rst:172
+#: ../../pim/calendar.rst:179
 msgid "Setup Reminders"
 msgstr "Erinnerungen einstellen"
 
-#: ../../pim/calendar.rst:174
+#: ../../pim/calendar.rst:181
 msgid ""
 "You can set up reminders to be notified before an event occurs. Currently "
 "supported notification methods are :"
@@ -444,22 +478,22 @@ msgstr ""
 "benachrichtigt werden. Derzeit werden folgende Benachrichtigungsarten "
 "unterstützt :"
 
-#: ../../pim/calendar.rst:176
+#: ../../pim/calendar.rst:183
 msgid "Email notifications"
 msgstr "E-Mail-Benachrichtigungen"
 
-#: ../../pim/calendar.rst:177
+#: ../../pim/calendar.rst:184
 msgid "Nextcloud notifications"
 msgstr "Nextcloud-Benachrichtigungen"
 
-#: ../../pim/calendar.rst:179
+#: ../../pim/calendar.rst:186
 msgid ""
 "You may set reminders at a time relative to the event or at a specific date."
 msgstr ""
 "Sie können Erinnerungen zu einem Zeitpunkt relativ zum Ereignis oder zu "
 "einem bestimmten Datum festlegen."
 
-#: ../../pim/calendar.rst:183
+#: ../../pim/calendar.rst:190
 msgid ""
 "Only the calendar owner and people or groups with whom the calendar is "
 "shared with write access will get notifications. If you don't get any "
@@ -471,7 +505,7 @@ msgstr ""
 "Wenn Sie trotzdem keine Benachrichtigungen bekommen, hat Ihr Administrator "
 "diese möglicherweise auf Ihrem Server abgestellt."
 
-#: ../../pim/calendar.rst:185
+#: ../../pim/calendar.rst:192
 msgid ""
 "If you synchronize your calendar with mobile devices or other 3rd-party "
 "clients, notifications may also show up there."
@@ -480,11 +514,11 @@ msgstr ""
 "Drittanbietern synchronisieren, werden dort möglicherweise auch die "
 "Benachrichtigungen angezeigt."
 
-#: ../../pim/calendar.rst:189
+#: ../../pim/calendar.rst:196
 msgid "Add recurring options"
 msgstr "Optionen für wiederkehrende Termine hinzufügen"
 
-#: ../../pim/calendar.rst:191
+#: ../../pim/calendar.rst:198
 msgid ""
 "An event may be set as \"recurring\", so that it can happen every day, week,"
 " month or year. Specific rules can be added to set which day of the week the"
@@ -497,15 +531,15 @@ msgstr ""
 "komplexere Bedingungen aufgestellt, wie z. B. jeder vierte Mittwoch im "
 "Monat."
 
-#: ../../pim/calendar.rst:193
+#: ../../pim/calendar.rst:200
 msgid "You can also tell when the recurrence ends."
 msgstr "Sie können auch eingeben, wann die Wiederholung enden soll."
 
-#: ../../pim/calendar.rst:198
+#: ../../pim/calendar.rst:205
 msgid "Birthday calendar"
 msgstr "Geburtstagskalender"
 
-#: ../../pim/calendar.rst:200
+#: ../../pim/calendar.rst:207
 msgid ""
 "The birthday calendar is a auto-generated calendar which will automatically "
 "fetch the birthdays from your contacts. The only way to edit this calendar "
@@ -517,7 +551,7 @@ msgstr ""
 "Geburtstage bei Ihren Kontakten eintragen. Direkt bearbeiten können Sie "
 "diesen Kalender nicht."
 
-#: ../../pim/calendar.rst:205
+#: ../../pim/calendar.rst:212
 msgid ""
 "If you do not see the birthday calendar, your Administrator may have "
 "disabled this for your server."
