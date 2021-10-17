@@ -221,7 +221,7 @@ in sharing links like ``https://example.org/nextcloud/index.php/s/Sv1b7krAUqmF8Q
 making URLs shorter and thus prettier.
 
 ``mod_env`` and ``mod_rewrite`` must be installed on your webserver and the :file:`.htaccess`
-must be writable by the HTTP user. Then you can set in the :file:`config.php` two variables::
+must be writable by the HTTP user. To enable ``mod_env`` and ``mod_rewrite``, run ``sudo a2enmod env`` and ``sudo a2enmod rewrite``. Then you can set in the :file:`config.php` two variables::
 
     'overwrite.cli.url' => 'https://example.org/nextcloud',
     'htaccess.RewriteBase' => '/nextcloud',
