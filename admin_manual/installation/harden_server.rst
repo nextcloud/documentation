@@ -11,9 +11,21 @@ in a Linux environment.
 .. note:: Nextcloud will warn you in the administration interface if some 
    critical security-relevant options are missing. However, it is still up to 
    the server administrator to review and maintain system security.
-   
+
+Passwords
+---------
+Storage of access tokens
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Upon successful authentication, Nextcloud issues an access token that clients will use for all future HTTP requests. This access token uniquely identifies a user and should not be stored on any system other than the client requesting it. The user password is also stored encrypted in the Nextcloud database. For encryption of the password, the token and an instance-specific secret is used.
+
+Leakage of the access token can have negative security consequences. Depending on the data access by the actor, the risk here is different:
+
+- An actor with access to only the access token can impersonate users and login as them.
+- An actor with access to the access token, the Nextcloud config file, and the Nextcloud database can decrypt user passwords stored in the database.
+
 Limit on password length
-------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Nextcloud uses the bcrypt algorithm, and thus for security and performance 
 reasons, e.g. Denial of Service as CPU demand increases exponentially, it only 
