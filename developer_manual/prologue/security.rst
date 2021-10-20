@@ -253,4 +253,4 @@ Always validate the URL before redirecting if the requested URL is on the same d
 Getting help
 ------------
 
-If you need help to ensure that a function is secure please ask on our `forum <https://help.nextcloud.com>`_ or on our IRC channel **#nextcloud-dev** on **irc.freenode.net**.
+If you need help to ensure that a function is secure please ask on our `forum <https://help.nextcloud.com>`_.
