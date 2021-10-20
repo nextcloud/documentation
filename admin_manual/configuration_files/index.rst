@@ -19,3 +19,4 @@ File sharing and management
     files_locking_transactional
     previews_configuration
     file_versioning
+    trashbin_configuration
