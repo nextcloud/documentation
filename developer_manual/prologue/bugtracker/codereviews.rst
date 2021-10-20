@@ -57,7 +57,6 @@ requests should be handled
 Questions?
 ----------
 
-Feel free to drop a line on the `forums`_ or join us on `IRC`_.
+Feel free to drop a line on the `forums`.
 
 .. _forums: https://help.nextcloud.com/
-.. _IRC: https://webchat.freenode.net/?channels=nextcloud-dev
