@@ -1,19 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2020 Nextcloud GmbH
+# Copyright (C) 2021 Nextcloud GmbH
 # This file is distributed under the same license as the Nextcloud latest User Manual package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
 # Chris Raymaekers <cray146@gmail.com>, 2021
+# Julia Boersma, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud latest User Manual latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-23 19:25+0000\n"
+"POT-Creation-Date: 2021-05-03 13:19+0000\n"
 "PO-Revision-Date: 2019-11-07 20:29+0000\n"
-"Last-Translator: Chris Raymaekers <cray146@gmail.com>, 2021\n"
+"Last-Translator: Julia Boersma, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/nextcloud/teams/64236/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -96,23 +97,21 @@ msgstr "Hoe kan versleuteling worden uitgeschakeld?"
 msgid ""
 "The only way to disable encryption is to run the `\"decrypt all\" "
 "<https://docs.nextcloud.org/server/latest/admin_manual/configuration_server/occ_command.html"
-"#encryption-label>`_."
+"#encryption-label>`_ script, which decrypts all files and disables "
+"encryption."
 msgstr ""
 "De enige manier om de encryptie uit te schakelen is door de `\"decrypt all\""
-" "
+" (alles decoderen) functie "
 "<https://docs.nextcloud.org/server/latest/admin_manual/configuration_server/occ_command.html"
-"#encryption-label>`_ uit te voeren."
+"#encryption-label>`_ uit te voeren. Dit decodeert alle bestanden en schakelt"
+" de encryptie uit."
 
 #: ../../files/encrypting_files.rst:41
-msgid "Script, which decrypts all files and disables encryption."
-msgstr "Script, dat alle bestanden decodeert en de encryptie uitschakelt."
-
-#: ../../files/encrypting_files.rst:44
 msgid "Is it possible to disable encryption with the recovery key?"
 msgstr ""
 "Is het mogelijk om de encryptie uit te schakelen met de herstelsleutel?"
 
-#: ../../files/encrypting_files.rst:46
+#: ../../files/encrypting_files.rst:43
 msgid ""
 "Yes, *if* every user uses the `file recovery key "
 "<https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html"
@@ -126,39 +125,34 @@ msgstr ""
 "<https://docs.nextcloud.org/server/latest/admin_manual/configuration_server/occ_command.html"
 "#encryption-label>`_ deze gebruiken om alle bestanden te decoderen."
 
-#: ../../files/encrypting_files.rst:53
+#: ../../files/encrypting_files.rst:50
 msgid "Can encryption be disabled without the user's password?"
 msgstr ""
 "Kan de encryptie worden uitgeschakeld zonder het wachtwoord van de "
 "gebruiker?"
 
-#: ../../files/encrypting_files.rst:55
+#: ../../files/encrypting_files.rst:52
 msgid ""
 "If you don't have the users password or `file recovery key "
 "<https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html"
-"#enabling-users-file-recovery-keys>`_,"
+"#enabling-users-file-recovery-keys>`_, then there is no way to decrypt all "
+"files. What's more, running it on login would be dangerous, because you "
+"would most likely run into timeouts."
 msgstr ""
-"Als je niet beschikt over het gebruikerswachtwoord of de `bestand "
-"herstelsleutel "
+"Als je het gebruikerswachtwoord of `bestandherstel sleutel "
 "<https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html"
-"#enabling-users-file-recovery-keys>`_,"
+"#enabling-users-file-recovery-keys>`_, niet meer hebt, dan is er geen manier"
+" om alle bestanden te decoderen. Bovendien zou het gevaarlijk zijn om het "
+"tijdens het inloggen uit te voeren, omdat dit hoogstwaarschijnlijk tot time-"
+"outs zou leiden."
 
-#: ../../files/encrypting_files.rst:60
-msgid ""
-"then there is no way to decrypt all files. What's more, running it on login "
-"would be dangerous, because you would most likely run into timeouts."
-msgstr ""
-"dan is er geen manier om alle bestanden te ontcijferen. Bovendien zou het "
-"gevaarlijk zijn om het te laten draaien bij het inloggen, omdat je dan "
-"waarschijnlijk in time-outs terecht zou komen."
-
-#: ../../files/encrypting_files.rst:64
+#: ../../files/encrypting_files.rst:58
 msgid "Is it planned to move this to the next user login or a background job?"
 msgstr ""
 "Is het gepland om dit te verplaatsen naar de volgende gebruikerslogin of een"
 " achtergrond job?"
 
-#: ../../files/encrypting_files.rst:66
+#: ../../files/encrypting_files.rst:60
 msgid ""
 "If we did that, then we would need to store your login password in the "
 "database. This could be seen as a security issue, so nothing like that is "
@@ -168,11 +162,11 @@ msgstr ""
 "moeten opslaan. Dit zou gezien kunnen worden als een veiligheidsprobleem, "
 "dus zoiets is niet gepland."
 
-#: ../../files/encrypting_files.rst:70
+#: ../../files/encrypting_files.rst:64
 msgid "Is group Sharing possible with the recovery key?"
 msgstr "Is groepsdeling mogelijk met de herstelsleutel?"
 
-#: ../../files/encrypting_files.rst:72
+#: ../../files/encrypting_files.rst:66
 msgid ""
 "If you mean adding users to groups and make it magically work? No. This only"
 " works with the master key."
@@ -180,11 +174,11 @@ msgstr ""
 "Als je bedoelt dat je gebruikers toevoegt aan groepen en het magisch laat "
 "werken? Nee. Dit werkt alleen met de hoofdsleutel."
 
-#: ../../files/encrypting_files.rst:76
+#: ../../files/encrypting_files.rst:70
 msgid "Using encryption"
 msgstr "Gebruik van encryptie"
 
-#: ../../files/encrypting_files.rst:78
+#: ../../files/encrypting_files.rst:72
 msgid ""
 "Nextcloud encryption is pretty much set it and forget it, but you have a few"
 " options you can use."
@@ -192,7 +186,7 @@ msgstr ""
 "Nextcloud versleuteling is zo ingesteld dat je het kan vergeten, maar je "
 "hebt een paar opties die je kunt gebruiken."
 
-#: ../../files/encrypting_files.rst:81
+#: ../../files/encrypting_files.rst:75
 msgid ""
 "When your Nextcloud admin enables encryption for the first time, you must "
 "log out and then log back in to create your encryption keys and encrypt your"
@@ -206,7 +200,7 @@ msgstr ""
 "Nextcloud-server zie je een gele banner op je Bestandenpagina die je "
 "aanmaant uit te loggen en vervolgens weer in te loggen:"
 
-#: ../../files/encrypting_files.rst:88
+#: ../../files/encrypting_files.rst:82
 msgid ""
 "When you log back in it takes a few minutes to work, depending on how many "
 "files you have, and then you are returned to your default Nextcloud page."
@@ -215,7 +209,7 @@ msgstr ""
 "van het aantal bestanden dat je hebt, en vervolgens word je teruggestuurd "
 "naar uw standaard Nextcloud pagina."
 
-#: ../../files/encrypting_files.rst:94
+#: ../../files/encrypting_files.rst:88
 msgid ""
 "You must never lose your Nextcloud password, because you will lose access to"
 " your files. Though there is an optional recovery option that your Nextcloud"
@@ -227,11 +221,11 @@ msgstr ""
 "Nextcloud-beheerder kan inschakelen; zie het gedeelte Herstel Sleutel "
 "Wachtwoord (hieronder) om hier meer over te weten te komen."
 
-#: ../../files/encrypting_files.rst:100
+#: ../../files/encrypting_files.rst:94
 msgid "Sharing encrypted files"
 msgstr "Het delen van gecodeerde bestanden"
 
-#: ../../files/encrypting_files.rst:102
+#: ../../files/encrypting_files.rst:96
 msgid ""
 "Only users who have private encryption keys have access to shared encrypted "
 "files and folders. Users who have not yet created their private encryption "
@@ -248,7 +242,7 @@ msgstr ""
 "de tekst \"Encryptie-applicatie is ingeschakeld, maar je sleutels zijn niet "
 "geïnitialiseerd, meld je alstublieft af en log opnieuw in\"."
 
-#: ../../files/encrypting_files.rst:109
+#: ../../files/encrypting_files.rst:103
 msgid ""
 "Share owners may need to re-share files after encryption is enabled; users "
 "trying to access the share will see a message advising them to ask the share"
@@ -266,11 +260,11 @@ msgstr ""
 "bijgewerkt en kan de eigenaar van de share de individuele shares "
 "verwijderen."
 
-#: ../../files/encrypting_files.rst:117
+#: ../../files/encrypting_files.rst:111
 msgid "Recovery key password"
 msgstr "Herstelsleutel wachtwoord"
 
-#: ../../files/encrypting_files.rst:119
+#: ../../files/encrypting_files.rst:113
 msgid ""
 "If your Nextcloud administrator has enabled the recovery key feature, you "
 "can choose to use this feature for your account. If you enable \"Password "
@@ -287,11 +281,11 @@ msgstr ""
 "Als de herstelsleutel niet is ingeschakeld, dan is er geen manier om jouw "
 "bestanden te herstellen als u uw login wachtwoord verliest."
 
-#: ../../files/encrypting_files.rst:129
+#: ../../files/encrypting_files.rst:123
 msgid "Files not encrypted"
 msgstr "Bestanden niet gecodeerd"
 
-#: ../../files/encrypting_files.rst:131
+#: ../../files/encrypting_files.rst:125
 msgid ""
 "Only the data in your files is encrypted, and not the filenames or folder "
 "structures. These files are never encrypted:"
@@ -299,27 +293,27 @@ msgstr ""
 "Alleen de gegevens in jouw bestanden zijn versleuteld, en niet de "
 "bestandsnamen of map structuren. Deze bestanden zijn nooit gecodeerd:"
 
-#: ../../files/encrypting_files.rst:134
+#: ../../files/encrypting_files.rst:128
 msgid "Old files in the trash bin."
 msgstr "Oude bestanden in de vuilnisbak."
 
-#: ../../files/encrypting_files.rst:135
+#: ../../files/encrypting_files.rst:129
 msgid "Image thumbnails from the Gallery app."
 msgstr "Afbeeldingsminiaturen van de Gallerie app."
 
-#: ../../files/encrypting_files.rst:136
+#: ../../files/encrypting_files.rst:130
 msgid "Previews from the Files app."
 msgstr "Previews van de Bestanden app."
 
-#: ../../files/encrypting_files.rst:137
+#: ../../files/encrypting_files.rst:131
 msgid "The search index from the full text search app."
 msgstr "De zoekindex van de volledige tekst zoekapplicatie."
 
-#: ../../files/encrypting_files.rst:138
+#: ../../files/encrypting_files.rst:132
 msgid "Third-party app data"
 msgstr "App-gegevens van derden"
 
-#: ../../files/encrypting_files.rst:140
+#: ../../files/encrypting_files.rst:134
 msgid ""
 "Only those files that are shared with third-party storage providers can be "
 "encrypted, the rest of the files may not be encrypted."
@@ -327,11 +321,11 @@ msgstr ""
 "Alleen de bestanden die worden gedeeld met externe opslagaanbieders kunnen "
 "worden gecodeerd, de rest van de bestanden kunnen niet worden gecodeerd."
 
-#: ../../files/encrypting_files.rst:144
+#: ../../files/encrypting_files.rst:138
 msgid "Change private key password"
 msgstr "Wijzig privé sleutelwachtwoord"
 
-#: ../../files/encrypting_files.rst:146
+#: ../../files/encrypting_files.rst:140
 msgid ""
 "This option is only available if the encryption password has not been "
 "changed by the administrator, but only the log-in password. This can occur "
