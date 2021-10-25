@@ -92,7 +92,7 @@ On some pages password authentication might be required (just like the when you
 share a file via public link with a password). In this case you need
 to extend a different provider.
 
-The AuthPublicShareController requiers in addition to the PublicShareController that
+The AuthPublicShareController requires in addition to the PublicShareController that
 you also implement the ``verifyPassword`` and ``showShare`` functions.
 
 .. code-block: php
@@ -148,7 +148,7 @@ you also implement the ``verifyPassword`` and ``showShare`` functions.
 
 
 Additionally you can overwrite the ``showAuthenticate`` and ``showAuthFailed`` functions
-if you do now want to use the default authentication pages.
+if you do not want to use the default authentication pages.
 
 The ``authFailed`` and ``authSucceeded`` functions can be overwritten as well and are
 called depending on the if authentication passed or not. You can handle additional logging
