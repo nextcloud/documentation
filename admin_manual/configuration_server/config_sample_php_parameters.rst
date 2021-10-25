@@ -118,7 +118,7 @@ Defaults to ``sqlite3``
 Your host server name, for example ``localhost``, ``hostname``,
 ``hostname.example.com``, or the IP address. To specify a port use
 ``hostname:####``; to specify a Unix socket use
-``localhost:/path/to/socket``.
+``/path/to/directory/containing/socket`` e.g. ``/run/postgresql/``.
 
 ::
 
@@ -1125,6 +1125,14 @@ Enables the installation of apps from a self hosted apps store.
 Requires that at least one of the configured apps directories is writeable.
 
 Defaults to ``https://apps.nextcloud.com/api/v1``
+
+::
+
+	'appsallowlist' => [],
+
+Filters allowed installable apps from the appstore.
+
+Empty array will prevent all apps from the store to be found.
 
 ::
 
@@ -2213,6 +2221,18 @@ While this is enabled, browsers are allowed to "remember" login names and such.
 Some companies require it to be disabled to comply with their security policy.
 
 Simply set this property to "false", if you want to turn this feature off.
+
+::
+
+	'files_no_background_scan' => false,
+
+Disable background scanning of files
+
+By default, a background job runs every 10 minutes and execute a background
+scan to sync filesystem and database. Only users with unscanned files
+(size < 0 in filecache) are included. Maximum 500 users per job.
+
+Defaults to ``true``
 
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.

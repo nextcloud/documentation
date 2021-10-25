@@ -42,7 +42,7 @@ It is possible to extract values from the URL to allow RESTful URL design. To ex
     // controller/authorcontroller.php
     class AuthorController {
 
-        public function show($id) {
+        public function show(string $id): Response {
             // $id is '3'
         }
 
@@ -70,7 +70,7 @@ Sometimes it is needed to match more than one URL fragment. An example would be 
     // controller/authorapicontroller.php
     class AuthorApiController {
 
-        public function cors($path) {
+        public function cors(string $path): Response {
             // $path will be 'my/route'
         }
 
@@ -98,7 +98,7 @@ Apart from matching requirements, a subURL may also have a default value. Say yo
     // controller/postcontroller.php
     class PostController
     {
-        public function index($page = 1)
+        public function index($page = 1): Response
         {
             // $page will be 1
         }
@@ -172,9 +172,9 @@ Sometimes it is useful to turn a route into a URL to make the code independent f
         }
 
         /**
-         * redirect to /apps/news/myapp/authors/3
+         * Redirects to /apps/news/myapp/authors/3
          */
-        public function redirect() {
+        public function redirect(): RedirectResponse {
             // route name: author_api#do_something
             // route url: /apps/news/myapp/authors/{id}
 

@@ -71,12 +71,13 @@ All those parameters can easily be accessed by adding them to the controller met
     namespace OCA\MyApp\Controller;
 
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Response;
 
     class PageController extends Controller {
 
         // this method will be executed with the id and name parameter taken
         // from the request
-        public function doSomething($id, $name) {
+        public function doSomething(string $id, string $name): Response {
 
         }
 
@@ -90,13 +91,14 @@ It is also possible to set default parameter values by using PHP default method 
     namespace OCA\MyApp\Controller;
 
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Response;
 
     class PageController extends Controller {
 
         /**
          * @param int $id
          */
-        public function doSomething($id, $name='john', $job='author') {
+        public function doSomething(int $id, string $name='john', string $job='author'): Response {
             // GET ?id=3&job=killer
             // $id = 3
             // $name = 'john'
@@ -124,6 +126,7 @@ would be passed in as the string *'false'* which is not what one would expect. T
     namespace OCA\MyApp\Controller;
 
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Response;
 
     class PageController extends Controller {
 
@@ -132,7 +135,7 @@ would be passed in as the string *'false'* which is not what one would expect. T
          * @param bool $doMore
          * @param float $value
          */
-        public function doSomething($id, $doMore, $value) {
+        public function doSomething(int $id, bool $doMore, float $value): Response {
             // GET /index.php/apps/myapp?id=3&doMore=false&value=3.5
             // => $id = 3
             //    $doMore = false
@@ -171,10 +174,11 @@ It is possible to pass JSON using a POST, PUT or PATCH request. To do that the *
     namespace OCA\MyApp\Controller;
 
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Response;
 
     class PageController extends Controller {
 
-        public function create($name, $number, $publisher, $customFields) {
+        public function create(string $name, int $number, string $publisher, array $customFields): Response {
             // $name = 'test'
             // $number = 3
             // $publisher = true
@@ -194,11 +198,12 @@ Headers, files, cookies and environment variables can be accessed directly from 
     namespace OCA\MyApp\Controller;
 
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Response;
     use OCP\IRequest;
 
     class PageController extends Controller {
 
-        public function someMethod() {
+        public function someMethod(): Response {
             $type = $this->request->getHeader('Content-Type');  // $_SERVER['HTTP_CONTENT_TYPE']
             $cookie = $this->request->getCookie('myCookie');  // $_COOKIES['myCookie']
             $file = $this->request->getUploadedFile('myfile');  // $_FILES['myfile']
@@ -227,6 +232,7 @@ Then session variables can be accessed like this:
     use OCP\ISession;
     use OCP\IRequest;
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Response;
 
     class PageController extends Controller {
 
@@ -241,7 +247,7 @@ Then session variables can be accessed like this:
          * The following annotation is only needed for writing session values
          * @UseSession
          */
-        public function writeASessionVariable() {
+        public function writeASessionVariable(): Response {
             // read a session variable
             $value = $this->session['value'];
 
@@ -274,7 +280,7 @@ Cookies can be set or modified directly on the response class:
          * Adds a cookie "foo" with value "bar" that expires after user closes the browser
          * Adds a cookie "bar" with value "foo" that expires 2015-01-01
          */
-        public function addCookie() {
+        public function addCookie(): TemplateResponse {
             $response = new TemplateResponse(...);
             $response->addCookie('foo', 'bar');
             $response->addCookie('bar', 'foo', new DateTime('2015-01-01 00:00'));
@@ -285,7 +291,7 @@ Cookies can be set or modified directly on the response class:
          * Invalidates the cookie "foo"
          * Invalidates the cookie "bar" and "bazinga"
          */
-        public function invalidateCookie() {
+        public function invalidateCookie(): TemplateResponse {
             $response = new TemplateResponse(...);
             $response->invalidateCookie('foo');
             $response->invalidateCookies(array('bar', 'bazinga'));
@@ -314,7 +320,7 @@ Returning JSON is simple, just pass an array to a JSONResponse:
 
     class PageController extends Controller {
 
-        public function returnJSON() {
+        public function returnJSON(): JSONResponse {
             $params = array('test' => 'hi');
             return new JSONResponse($params);
         }
@@ -332,7 +338,7 @@ Because returning JSON is such a common task, there's even a shorter way to do t
 
     class PageController extends Controller {
 
-        public function returnJSON() {
+        public function returnJSON(): array {
             return array('test' => 'hi');
         }
 
@@ -380,7 +386,7 @@ By default there is only a responder for JSON but more can be added easily:
 
     class PageController extends Controller {
 
-        public function returnHi() {
+        public function returnHi(): array {
 
             // XMLResponse has to be implemented
             $this->registerResponder('xml', function($value) {
@@ -415,7 +421,7 @@ Because returning values works fine in case of a success but not in case of fail
 
     class PageController extends Controller {
 
-        public function returnHi() {
+        public function returnHi(): DataResponse {
             try {
                 return new DataResponse(calculate_hi());
             } catch (\Exception $ex) {
@@ -453,7 +459,7 @@ A :doc:`template <../view/templates>` can be rendered by returning a TemplateRes
 
     class PageController extends Controller {
 
-        public function index() {
+        public function index(): TemplateResponse {
             $templateName = 'main';  // will use templates/main.php
             $parameters = array('key' => 'hi');
             return new TemplateResponse($this->appName, $templateName, $parameters);
@@ -481,7 +487,7 @@ will be shown in the top right corner of the public page.
 
     class PageController extends Controller {
 
-        public function index() {
+        public function index(): PublicTemplateResponse {
             $template = new PublicTemplateResponse($this->appName, 'main', []);
             $template->setHeaderTitle('Public page');
             $template->setHeaderDetails('some details');
@@ -519,7 +525,7 @@ A redirect can be achieved by returning a RedirectResponse:
 
     class PageController extends Controller {
 
-        public function toGoogle() {
+        public function toGoogle(): RedirectResponse {
             return new RedirectResponse('https://google.com');
         }
 
@@ -540,7 +546,7 @@ A file download can be triggered by returning a DownloadResponse:
 
     class PageController extends Controller {
 
-        public function downloadXMLFile() {
+        public function downloadXMLFile(): DownloadResponse {
             $path = '/some/path/to/file.xml';
             $contentType = 'application/xml';
 
@@ -572,7 +578,7 @@ Creating a custom XMLResponse class could look like this:
             $this->xml = $xml;
         }
 
-        public function render() {
+        public function render(): string {
             $root = new SimpleXMLElement('<root/>');
             array_walk_recursive($this->xml, array ($root, 'addChild'));
             return $xml->asXML();

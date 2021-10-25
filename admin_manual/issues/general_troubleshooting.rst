@@ -9,9 +9,6 @@ refer to our community support channels:
    The Nextcloud forums have a `FAQ page`_ where each topic corresponds
    to typical mistakes or frequently occurring issues
 
-*  The Nextcloud IRC chat channel ``irc://#nextcloud@freenode.net`` on
-   freenode.net, also accessible via `webchat`_
-
 Please understand that all these channels essentially consist of users like you
 helping each other out. Consider helping others out where you can, to contribute
 back for the help you get. This is the only way to keep a community like
@@ -35,8 +32,8 @@ configuration report with the :ref:`occ config command
 .. _the Nextcloud Forums: https://help.nextcloud.com
 .. _FAQ page: https://help.nextcloud.com/c/faq
 .. _bugtracker: https://github.com/nextcloud/server/issues
-.. _webchat: https://webchat.freenode.net/?channels=nextcloud
    https://docs.nextcloud.com/server/latest/developer_manual/prologue/bugtracker/index.html
+
 .. TODO ON RELEASE: Update version number above on release
 
 General troubleshooting

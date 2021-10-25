@@ -435,6 +435,7 @@ A set of commands to create and manage addressbooks and calendars::
  dav
   dav:create-addressbook        Create a dav addressbook
   dav:create-calendar           Create a dav calendar
+  dav:delete-calendar           Delete a dav calendar
   dav:list-calendars            List all calendars of a user
   dav:move-calendar             Move a calendar from a user to another
   dav:remove-invalid-shares     Remove invalid dav shares
@@ -455,6 +456,19 @@ This example creates a new calendar for molly::
  sudo -u www-data php occ dav:create-calendar molly mollycal
 
 Molly will immediately see these in the Calendar and Contacts apps.
+
+``dav:delete-calendar [--birthday] [-f|--force] <uid> [<name>]`` deletes the
+calendar named ``name`` (or the birthday calendar if ``--birthday`` is
+specified) of the user ``uid``. You can use the force option ``-f`` or
+``--force`` to delete the calendar instead of moving it to the trashbin.
+
+This example will delete the calendar mollycal of user molly::
+
+ sudo -u www-data php occ dav:delete-calendar molly mollycal
+
+This example will delete the birthday calendar of user molly::
+
+ sudo -u www-data php occ dav:delete-calendar --birthday molly
 
 ``dav:lists-calendars [user]`` will display a table listing the calendars for a given user.
 This example will list all calendars for user annie::

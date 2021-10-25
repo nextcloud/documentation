@@ -78,4 +78,4 @@ File
 * `delete`: delete the file
 * `getMimeType`: get the mimetype of the file
 * `read`: get a resource for reading the file
-* `write`: get a resoruce for writing to the file
+* `write`: get a resource for writing to the file
