@@ -257,7 +257,7 @@ the Kanban board by Milestone, making it especially easy to focus on the current
 Release.
 
 .. _kanban board: https://en.wikipedia.org/wiki/Kanban_board
-.. _forums: https://help.nextcloud.org
+.. _forums: https://help.nextcloud.com
 .. _Gherkin: https://github.com/cucumber/cucumber/wiki/Gherkin
 .. _existing ones: https://github.com/nextcloud/server/tree/master/build/integration/features
 .. _“Given … when … then …“: https://github.com/cucumber/cucumber/wiki/Given-When-Then
