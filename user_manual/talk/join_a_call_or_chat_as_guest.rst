@@ -13,7 +13,7 @@ If you received a link to a chat conversation, you can open this in your browser
 
 .. image:: images/guest-view.png
 
-You can change your name using the edit button on the top-right by clicking the ``Edit`` button.
+You can change your name by clicking the ``Edit`` button, located top-right.
 
 .. image:: images/change-name.png
 
