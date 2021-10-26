@@ -37,7 +37,7 @@ https://cloud.nextcloud.com/remote.php/dav/addressbooks/users/daniel/Thunderbird
 
 4. Enter an email, username and password. None of this information has to be valid-it will all be changed in the upcoming steps.
 
-5. Click "Done". A message should appear indicating the settings were saved successfully.
+5. Click "Sign in" and then "Done". A message should appear indicating the settings were saved successfully.
 
 6. In the "Manage Accounts" menu, click on  the iCloud account created in previous steps, and select "Change settings". Then, click on "Change mailbox sync settings".
 
