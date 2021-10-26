@@ -123,7 +123,7 @@ Create a new event
 ~~~~~~~~~~~~~~~~~~
 
 Events can be created by clicking in the area when the event is scheduled.
-In the day- and week-view of the calendar you just click, pull and left your
+In the day- and week-view of the calendar you just click, pull and release your
 cursor over the area when the event is taking place.
 
 .. only:: html
