@@ -36,7 +36,7 @@ Administrators can configure, enable and disable commands. Users can use the ``h
 
 .. image:: images/command-help.png
 
-Find more information in the `admin documentation for Talk. <https://nextcloud-talk.readthedocs.io/en/stable/commands/>`_
+Find more information in the `administrative documentation for Talk. <https://nextcloud-talk.readthedocs.io/en/stable/commands/>`_
 
 Talk from Files
 ---------------
