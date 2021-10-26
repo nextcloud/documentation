@@ -81,7 +81,7 @@ You are always moderator in your new conversation. In the participant list on th
 
 .. image:: images/participant-menu.png
 
-Moderators can configure the conversation. Select ``Configuration settings`` from the ``...`` menu  of the conversation on the top to access the settings.
+Moderators can configure the conversation. Select ``Configuration settings`` from the ``...`` menu of the conversation on the top to access the settings.
 
 .. image:: images/open-settings.png
 

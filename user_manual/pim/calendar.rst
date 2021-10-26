@@ -92,7 +92,7 @@ There's also an « embedding code » that provides an HTML iframe to embed you
 Multiple calendars can be shared together by adding their unique tokens to the end of an embed link. Individual tokens can be found at the end of each calendar's public link. The full address will look like
 ``https://cloud.example.com/index.php/apps/calendar/embed/<token1>-<token2>-<token3>``
 
-To change the default view or date of an embedded calendar, you need to provide an url that look like ``https://cloud.example.com/index.php/apps/calendar/embed/<token>/<view>/<date>``.
+To change the default view or date of an embedded calendar, you need to provide an URL that look like ``https://cloud.example.com/index.php/apps/calendar/embed/<token>/<view>/<date>``.
 In this url you need to replace the following variables:
 
 - ``<token>`` with the calendar's token.
@@ -123,7 +123,7 @@ Create a new event
 ~~~~~~~~~~~~~~~~~~
 
 Events can be created by clicking in the area when the event is scheduled.
-In the day- and week-view of the calendar you just click, pull and left your
+In the day- and week-view of the calendar you just click, pull and release your
 cursor over the area when the event is taking place.
 
 .. only:: html
