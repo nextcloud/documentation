@@ -17,7 +17,7 @@ Calendar
 
 6. In the "Manage Accounts" menu, click on  the iCloud account created in previous steps, and select "Change settings". Then, click on "Change mailbox sync settings".
 
-7. Scroll to the bottom of the dialog box, select "Advanced mailbox settings". Paste your CalDAV URL in the field labelled "Calendar server (CalDAV)".
+7. Scroll to the bottom of the dialog box, select "Advanced mailbox settings". Scroll once more to the bottom of the dialog box and paste your CalDAV URL in the field labelled "Calendar server (CalDAV)".
 
 8. Click "Done". Enter your Nextcloud username and password in the appropriate fields, and change the account name to whatever you prefer (e. g. "Nextcloud Calendar"). Click "Save".
 
