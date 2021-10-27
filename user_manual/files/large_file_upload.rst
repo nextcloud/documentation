@@ -2,7 +2,7 @@
 Large file uploads
 ==================
 
-When uploading files through the web client, Nextcloud is limited by PHP and Apache configurations. By default, PHP is configured for only 2 megabyte uploads. As this default upload limit is not entirely useful, we recommend that your Nextcloud admin increase the Nextcloud variables to sizes appropriate for users.
+When uploading files through the web client, Nextcloud is limited by PHP and Apache configurations. By default, PHP is configured for only 2 megabyte uploads. As this default upload limit is not entirely useful, we recommend that your Nextcloud administrator increase the Nextcloud variables to sizes appropriate for users.
 
 Modifying certain Nextcloud variables requires administrative access. If you require larger upload limits than have been provided by the default (or already set by your administrator):
 
