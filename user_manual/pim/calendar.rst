@@ -114,7 +114,7 @@ you can exchange your calendars with, including subscription links from calendar
 
 Finished. Your calendar subscriptions will be updated regularly.
 
-.. note:: Subscriptions are refreshed every week by default. Your admin may have changed this setting.
+.. note:: Subscriptions are refreshed every week by default. Your administrator may have changed this setting.
 
 Managing Events
 ---------------
