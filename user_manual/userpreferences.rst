@@ -21,7 +21,7 @@ To access your personal settings:
       :alt: screenshot of user's Personal settings page
 
 .. note:: If you are an administrator, you can also manage users and administer
-   the server. These links do not appear to a non-admin user.
+   the server. These links do not appear to a non-administrator user.
 
 The options listed in the Personal Settings Page depend on the applications that
 are enabled by the administrator. Some of the features you will see

@@ -22,7 +22,7 @@ to outside service providers.
 If your Nextcloud server is not connected to any remote storage services, then
 it is better to use some other form of encryption such as file-level or whole
 disk encryption. Because the keys are kept on your Nextcloud server, it is
-possible for your Nextcloud admin to snoop in your files, and if the server is
+possible for your Nextcloud administrator to snoop in your files, and if the server is
 compromised the intruder may get access to your files. (Read
 `Encryption in Nextcloud <https://nextcloud.com/blog/encryption-in-nextcloud/>`_
 to learn more.)
@@ -72,7 +72,7 @@ Using encryption
 Nextcloud encryption is pretty much set it and forget it, but you have a few
 options you can use.
 
-When your Nextcloud admin enables encryption for the first time, you must log
+When your Nextcloud administrator enables encryption for the first time, you must log
 out and then log back in to create your encryption keys and encrypt your files.
 When encryption has been enabled on your Nextcloud server you will see a yellow
 banner on your Files page warning you to log out and then log back in:

@@ -13,7 +13,7 @@ ownerships of those transfered files/folders will also be transferred.
 #. Click on *Transfer*.
 
 	.. note:: The username autocompletion or listing may be limited due to administrative visibility configuration.
-	   See `admin documentation <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/file_sharing_configuration.html>`_ for details.
+	   See `administrator documentation <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/file_sharing_configuration.html>`_ for details.
 
 #. The target user receives a notification where they are being asked whether to
    accept or reject the incoming transfer.
