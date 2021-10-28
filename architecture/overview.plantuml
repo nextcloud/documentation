@@ -6,6 +6,8 @@ package "Nextcloud" {
 
 		node "Single Files" as singlefiles #Red {
 			[View.php (deprectated)]
+			[Trashbin.php (deprectated)]
+			[OC_***.php (deprectated)]
 		}
 
 		node "AppFramwork" as appframework {
@@ -15,9 +17,10 @@ package "Nextcloud" {
 			node "Files API" as fileapi {
 				[Modern API to manipulate users' files]
 				package "Interfaces" {
-					[IFile]
-					[IFolder]
+					[IRootFolder]
 					[IStorage]
+					[IFolder]
+					[IFile]
 					["..."]
 				}
 			}
