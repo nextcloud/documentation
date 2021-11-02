@@ -1,10 +1,37 @@
 @startuml
 
 package "Nextcloud" {
-	node "OCS API - /index.php" {
+
+	node "Base (base.php) (a.k.a init/bootstrap)" as base {
+		[init() (include everywhere)] as base_init
+		[handleRequest() (used only by index.php)] as base_handleRequest
+
+		[/heartbeat]
+		[/disableapp]
+
+		[Session]
+		[IUser]
+		[SetupFS]
+		[OC_Apps (Load Application)] as apps_loader
+		[Load Config]
+	}
+
+	node "OCS API (REST API) - /ocs/v1.php" as ocs {
+
+	}
+
+	node "Main entry point (Web GUI) - /index.php" {
 		[index.php] as index
 
-		node "Single Files" as singlefiles #Red {
+		node "Routers" as routers {
+			[OC_Router]
+			[Router (app AppFramwork)]
+			[Router (symfony)] #Red
+		}
+
+		[OC::Server (server.php)] as oc_server
+
+		node "File View API (View.php)" as viewapi #Red {
 			[View.php (deprectated)]
 			[Trashbin.php (deprectated)]
 			[OC_***.php (deprectated)]
@@ -14,28 +41,54 @@ package "Nextcloud" {
 
 			[server.php] as server
 
-			node "Files API" as fileapi {
+			node "Files/Node API" as filenodeapi {
 				[Modern API to manipulate users' files]
 				package "Interfaces" {
 					[IRootFolder]
-					[IStorage]
 					[IFolder]
 					[IFile]
 					["..."]
 				}
 			}
+
+			node "DB" as db {
+				[Entity]
+				[Mapper]
+			}
 		}
 
-		node "Applications" as apps {
-			[activity]
-			[files_sharing]
-			[photos]
+		node "Storage API" as storageapi {
+			[IStorage]
+			[IScanner]
+			[ICache]
+			[IMountPoint]
+			[IWatcher]
+			[IUpdater]
 			["..."]
 		}
 
-		index --> singlefiles
-		index --> server
-		server --> fileapi
+		node "Hooks" as hooks {
+			node "OC_Hooks" as oc_hooks #Red {
+
+			}
+
+			node "Emitter" as emitter #Red {
+
+			}
+
+			node "EventDispatcher" as eventdispatcher {
+			}
+		}
+
+		index --> base_init
+		index --> base_handleRequest
+		index --> oc_server
+		oc_server --> viewapi
+		oc_server --> hooks
+		viewapi --> storageapi
+		filenodeapi --> storageapi
+		oc_server --> server
+		server --> filenodeapi
 		server --> apps
 	}
 
@@ -46,7 +99,6 @@ package "Nextcloud" {
 
 		[Sabre DAV] as sabredav
 
-
 		package "DAV extensions" as davplugins {
 			[File]
 			[Chunk upload]
@@ -54,13 +106,20 @@ package "Nextcloud" {
 			[System tags]
 		}
 
+		package "Sabre File API" as sabrefile {
+
+		}
+
+		sabrefile --> viewapi
 		remote --> davserver
+		filenodeapi --> viewapi
 		davserver --> sabredav
 		sabredav --> davplugins
+		davplugins --> sabrefile
 	}
 }
 
-package Application {
+package Application as apps {
 
 	package "./appinfo" as appinfo {
 		[info.xml]
