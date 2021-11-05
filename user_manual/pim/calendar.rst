@@ -175,6 +175,13 @@ Attendees may be other users on your Nextcloud instances, contacts in your addre
 
 .. attention:: Only the calendar owner can send out invitations, the sharees are not able to do that, whether they have write access to the event's calendar or not.
 
+Assign rooms and resources to an event
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Similar to attendees you can add rooms and resources to your events. The system will make sure that each room and resource is booked without conflict. The first time a user adds the room or resource to an event, it will show as accepted. Any further events at overlapping times will show the room or resource as rejected.
+
+.. note:: Rooms and resources are not managed by Nextcloud itself and the Calendar app will not allow you to add or change a resource. Your Administrator has to install and possibly configure resource back ends before you can use them as a user.
+
 Setup Reminders
 ~~~~~~~~~~~~~~~
 
