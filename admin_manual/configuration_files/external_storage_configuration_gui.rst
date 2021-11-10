@@ -19,6 +19,10 @@ The External storage support application is enabled on your Apps page.
 Storage configuration
 ---------------------
 
+To access the settings for configuring external storage mounts, click on your Profile icon
+in the top right and select settings from the dropdown.  On the left side under Administration
+select External Storage.
+
 To create a new external storage mount, select an available backend from the
 dropdown **Add storage**. Each backend has different required options, which 
 are configured in the configuration fields.
