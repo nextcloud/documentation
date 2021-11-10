@@ -4,6 +4,61 @@ Calendar integration
 
 On this page you can learn more about integrating with the Nextcloud calendar services.
 
+Calendar providers
+------------------
+
+Nextcloud apps can register calendars in addition to the internal calendars of the Nextcloud CalDAV back end. Calendars are only loaded on demand, therefore a lazy provider mechanism is used.
+
+To provide calendar(s) you have to write a class that implements the ``ICalendarProvider`` interface.
+
+.. code-block:: php
+
+    <?php
+
+    use OCP\Calendar\ICalendarProvider;
+
+    class CalendarProvider implements ICalendarProvider {
+
+        public function getCalendars(string $principalUri, array $calendarUris = []): array {
+            $calendars = [];
+            // TODO: Run app specific logic to find calendars that belong to
+            //       $principalUri and fill $calendars
+
+            // The provider can simple return an empty array if there is not
+            // a single calendar for the principal URI
+            if (empty($calendars)) {
+                return [];
+            }
+
+            // Return instances of \OCP\Calendar\ICalendar
+            return $calendars;
+        }
+    }
+
+This ``CalendarProvider`` class is then registered in the :ref:`register method of your Application class<Bootstrapping>` with ``$context->registerCalendarProvider(CalendarProvider::class);``.
+
+
+Write support
+~~~~~~~~~~~~~
+
+Calendars that only return `ICalendar` are implicitly read-only. If your app's calendars can be written to, you may implement the ``ICreateFromString``. It will allow other apps to write calendar objects to the calendar by passing the raw iCalendar data as string.
+
+.. code-block:: php
+
+    <?php
+
+    use OCP\Calendar\ICreateFromString;
+
+    class CalendarReadWrite implements ICreateFromString {
+
+        // ... other methods from ICalendar still have to be implemented ...
+
+        public function createFromString(string $name, string $calendarData): void {
+            // Write data to your calendar representation
+        }
+
+    }
+
 Resources
 ---------
 
