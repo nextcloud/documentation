@@ -37,6 +37,28 @@ To provide calendar(s) you have to write a class that implements the ``ICalendar
 
 This ``CalendarProvider`` class is then registered in the :ref:`register method of your Application class<Bootstrapping>` with ``$context->registerCalendarProvider(CalendarProvider::class);``.
 
+
+Write support
+~~~~~~~~~~~~~
+
+Calendars that only return `ICalendar` are implicitly read-only. If your app's calendars can be written to, you may implement the ``ICreateFromString``. It will allow other apps to write calendar objects to the calendar by passing the raw iCalendar data as string.
+
+.. code-block:: php
+
+    <?php
+
+    use OCP\Calendar\ICreateFromString;
+
+    class CalendarReadWrite implements ICreateFromString {
+
+        // ... other methods from ICalendar still have to be implemented ...
+
+        public function createFromString(string $name, string $calendarData): void {
+            // Write data to your calendar representation
+        }
+
+    }
+
 Resources
 ---------
 
