@@ -4,6 +4,102 @@ Calendar integration
 
 On this page you can learn more about integrating with the Nextcloud calendar services.
 
+Access calendars and events
+---------------------------
+
+Calendar objects
+~~~~~~~~~~~~~~~~
+
+You can query the contents of calendars in the back end through the calendar manager service. Queries are always scoped to a principal (user) but may follow further search criteria like string matches or date ranges.
+
+:ref:`Inject <dependency-injection>` the calendar manager into your class. Then you can use ``newQuery`` and ``searchForPrincipal`` to build and execute a search query.
+
+In the following example you see a basic use case of the calendar query API where specific user's calendar is searched for any events and tasks during a given duration.
+
+.. code-block:: php
+
+    <?php
+
+    use OCP\Calendar\IManager;
+
+    class MyService {
+
+        /** @var IManager */
+        private $calendarManager;
+
+        public function __construct(IManager $calendarManager) {
+            $this->calendarManager = $calendarManager;
+        }
+
+        public function searchInUserCalendar(string $uid,
+                                             string $calendarUri,
+                                             DateTimeImmutable $from,
+                                             DateTimeImmutable $to): void {
+            $principal = 'principals/users/' . $uid;
+
+            // Prepare the query
+            $query = $this->calendarManager->newQuery($principal);
+            $query->addSearchCalendar($uri);
+            $query->setTimerangeStart($from);
+            $query->setTimerangeEnd($to);
+
+            // Execute the query
+            $objects = $this->calendarManager->searchForPrincipal($query);
+        }
+
+    }
+
+Study the interface ``\OCP\Calendar\ICalendarQuery`` to learn more about other query options.
+
+Calendars
+~~~~~~~~~
+
+You can access calendars through the ``IManager``. :ref:`Inject <dependency-injection>` the service, then use the ``getCalendarsForPrincipal`` method.
+
+You can either query all calendars of the principal if you omit the second argument, or look for specific calendars only. See the examples below.
+
+.. code-block:: php
+
+    <?php
+
+    use OCP\Calendar\IManager;
+
+    class MyService {
+
+        /** @var IManager */
+        private $calendarManager;
+
+        public function __construct(IManager $calendarManager) {
+            $this->calendarManager = $calendarManager;
+        }
+
+        public function processCalendarData(string $uid): void {
+            $principal = 'principals/users/' . $uid;
+
+            // This will find all calendars of the principal
+            $calendars = $this->calendarManager->getCalendarsForPrincipal($principal);
+
+            // Work with calendars
+        }
+
+        public function processCalendarData(string $uid, string $calendarUri): void {
+            $principal = 'principals/users/' . $uid;
+
+            // This will only find specific calendars of the principal
+            $calendars = $this->calendarManager->getCalendarsForPrincipal(
+                $principal,
+                [$calendarUri]
+            );
+
+            // Check if the requested calendar was found and work with it
+        }
+
+    }
+
+The returned objects implement ``\OCP\Calendar\ICalendar``. Study the interface methods to discover what data is available.
+
+.. note:: All calendars are by default only readable, therefore ``ICalendar`` does not offer methods for mutation. Some of the calendars are mutable, however, and they may further extend the interface ``\OCP\Calendar\ICreateFromString``.
+
 Calendar providers
 ------------------
 
