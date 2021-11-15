@@ -40,6 +40,7 @@ occ command Directory
 * :ref:`command_line_upgrade_label`
 * :ref:`two_factor_auth_label`
 * :ref:`disable_user_label`
+* `Debugging`_
 
 .. _http_user_label:
 
@@ -1487,3 +1488,12 @@ Use the following command to enable the user again::
  sudo -u www-data php occ user:enable <username>
 
 Note that once users are disabled, their connected browsers will be disconnected.
+
+.. _occ_debugging:
+
+Debugging
+---------
+
+In certain situations it's necessary to generate debugging information, e.g. before submitting a bug report. You can run ``occ`` with debug logging::
+
+ sudo -u www-data NC_loglevel=0 php occ -h
