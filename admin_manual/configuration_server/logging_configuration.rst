@@ -130,7 +130,7 @@ Empty value are written as two dashes: "--".
 Admin audit log
 ---------------
 
-If ``loglevel`` in ``config.php`` is set to ``2`` or higher, audit logging needs to be triggered explicitly by adding the follwing setting to to ``config.php``:
+If ``loglevel`` in ``config.php`` is set to ``2`` or higher, audit logging needs to be triggered explicitly by adding the following setting to to ``config.php``:
 
 ::
 
