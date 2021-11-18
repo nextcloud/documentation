@@ -19,7 +19,7 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - Debian 10 (Buster)                                                  |
 |                  | - SUSE Linux Enterprise Server 15                                     |
 |                  | - openSUSE Leap 42.1+                                                 |
-|                  | - CentOS 8                                                            |
+|                  | - CentOS Stream                                                       |
 +------------------+-----------------------------------------------------------------------+
 | Database         | - **MySQL 8.0+ or MariaDB 10.2/10.3/10.4/10.5** (recommended)         |
 |                  | - Oracle Database 11g (*only as part of an enterprise subscription*)  |
