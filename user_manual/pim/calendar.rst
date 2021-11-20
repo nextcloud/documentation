@@ -175,7 +175,7 @@ Attendees may be other users on your Nextcloud instances, contacts in your addre
 
 .. attention:: Only the calendar owner can send out invitations, the sharees are not able to do that, whether they have write access to the event's calendar or not.
 
-.. attention:: The server admin needs to setup the e-mail server in the 'Basic settings' tab, as this mail will be used to send invitations.
+.. attention:: The server administration needs to setup the e-mail server in the 'Basic settings' tab, as this mail will be used to send invitations.
 
 Assign rooms and resources to an event
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
