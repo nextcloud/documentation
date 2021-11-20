@@ -31,7 +31,7 @@ Contacts
 which will display a URL that looks something like this:
 https://cloud.nextcloud.com/remote.php/dav/addressbooks/users/daniel/Thunderbird/
 
-2. Launch the Windows 10 People app. Then, click the settings icon (gear icon) and select "Manage accounts".
+2. Launch the Windows 10 Calendar app. Then, click the settings icon (gear icon) and select "Manage accounts".
 
 3. Click "Add account" and choose "iCloud".
 
