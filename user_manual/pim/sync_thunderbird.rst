@@ -8,11 +8,10 @@ Synchronizing with Thunderbird
 Recommended method
 ------------------
 
-For this method, you need to have three add-ons installed:
+For this method, you need to have two add-ons installed:
 
-1. The `Lightning calendar <https://addons.thunderbird.net/en/thunderbird/addon/lightning/>`_ (Only needed for Thunderbird versions up to 68).
-2. `TbSync <https://addons.thunderbird.net/en/thunderbird/addon/tbsync/>`_.
-3. The `TbSync provider for CalDAV and CardDAV <https://addons.thunderbird.net/en/thunderbird/addon/dav-4-tbsync/>`_.
+1. `TbSync <https://addons.thunderbird.net/en/thunderbird/addon/tbsync/>`_.
+2. The `TbSync provider for CalDAV and CardDAV <https://addons.thunderbird.net/en/thunderbird/addon/dav-4-tbsync/>`_.
 
 When they are installed, if you are on Windows, go to **Extras**/**Synchronisation settings (TbSync)** or **Edit/Synchronisation settings (TbSync)** if on Linux, and then:
 
