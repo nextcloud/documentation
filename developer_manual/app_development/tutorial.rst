@@ -79,7 +79,7 @@ On the client side we can call these URLs with the following jQuery code:
         // handle failure
     });
 
-On the server side we need to register a callback that is executed once the request comes in. The callback itself will be a method on a :doc:`controller <requests/controllers>` and the controller will be connected to the URL with a :doc:`route <requests/routes>`. The controller and route for the page are already set up in **notestutorial/appinfo/routes.php**:
+On the server side we need to register a callback that is executed once the request comes in. The callback itself will be a method on a :doc:`controller <../basics/controllers>` and the controller will be connected to the URL with a :doc:`route <../basics/controllers>`. The controller and route for the page are already set up in **notestutorial/appinfo/routes.php**:
 
 .. code-block:: php
 
@@ -90,7 +90,7 @@ On the server side we need to register a callback that is executed once the requ
 
 This route calls the controller **OCA\\notestutorial\\PageController->index()** method which is defined in **notestutorial/lib/Controller/PageController.php**. The controller returns a :doc:`template <view/templates>`, in this case **notestutorial/templates/main.php**:
 
-.. note:: @NoAdminRequired and @NoCSRFRequired in the comments above the method turn off security checks, see :doc:`requests/controllers`
+.. note:: @NoAdminRequired and @NoCSRFRequired in the comments above the method turn off security checks, see :doc:`../basics/controllers`
 
 .. code-block:: php
 
