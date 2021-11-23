@@ -750,7 +750,7 @@ It is also possible to transfer only one directory along with it's contents. Thi
 
  sudo -u www-data php occ files:transfer-ownership --path="path_to_dir" <source-user> <destination-user>
 
-In case the incoming shares must be transferred as well, use the argument ``--transfer-incoming-shares``::
+In case the incoming shares must be transferred as well, use the argument ``--transfer-incoming-shares`` with ``0`` or ``1`` as parameters ::
 
  sudo -u www-data php occ files:transfer-ownership --transfer-incoming-shares=1 --path="path_to_dir" <source-user> <destination-user>
 
