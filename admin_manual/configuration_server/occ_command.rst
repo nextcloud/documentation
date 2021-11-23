@@ -756,7 +756,7 @@ In case the incoming shares must be transferred as well, use the argument ``--tr
 
 As an alternative, the system configuration option ``transferIncomingShares`` in config.php can be set to ``true`` to always transfer incoming shares.
 
-The command line option ``--transfer-incoming-shares`` overwrites the config.php option ``transferIncomingShares``. For example, ``'transferIncomingShares => true`` can be overwritten by:
+The command line option ``--transfer-incoming-shares`` overwrites the config.php option ``transferIncomingShares``. For example, ``'transferIncomingShares => true`` can be overwritten by: ::
 
  sudo -u www-data php occ files:transfer-ownership --transfer-incoming-shares=0 <source-user> <destination-user>
 
