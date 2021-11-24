@@ -55,11 +55,12 @@ steps are required:
    `from F-Droid <https://f-droid.org/de /packages/at.bitfire.davdroid/>`_.
 2. Optionally install `OpenTasks <https://play.google.com/store/apps/details?id=org.dmfs.tasks>`_.
 3. Create a new account ("+" button).
-4. Select **Connection with URL and username**.
-   **Base URL:** URL of your Nextcloud instance (e.g. ``https://sub.example.com/remote.php/dav``) and 
-   **Contact Group Method:** as credentials.
-5. Choose the option ``Groups are per-contact categories``.
-6. Click **Connect**.
+4. Select **Connection with URL and username** and complete the form.
+   **Base URL** is the URL of your Nextcloud instance (e.g. ``https://sub.example.com/remote.php/dav``),
+   while **Username** and **Password** are your credentials.
+5. Click **Register**.
+6. In **Contact group method**, choose the option ``Groups are per-contact categories``; then select
+   **Create Account**.
 7. Select the data you want to sync.
 8. When requested, grant access permissions to DAVx⁵ for your
    contacts, calendars and optionally tasks.
