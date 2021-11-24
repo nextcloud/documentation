@@ -7,7 +7,7 @@ Create an app
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-After :doc:`you've set up the development environment <../general/devenv>` change into the Nextcloud apps directory::
+After :doc:`you've set up the development environment <../getting_started/devenv>` change into the Nextcloud apps directory::
 
     cd /var/www/nextcloud/apps
 

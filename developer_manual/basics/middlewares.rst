@@ -34,7 +34,7 @@ To generate your own middleware, simply inherit from the Middleware class and ov
 
   }
 
-The middleware can be registered in the :doc:`container` and added using the **registerMiddleware** method:
+The middleware can be registered in the :doc:`dependency_injection` and added using the **registerMiddleware** method:
 
 .. code-block:: php
 
