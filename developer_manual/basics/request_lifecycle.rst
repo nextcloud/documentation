@@ -11,7 +11,7 @@ A typical HTTP request consists of the following:
 * **A Method**: e.g. GET
 * **Request headers**: e.g. Accept: application/json
 
-The following sections will present an overview over how that request is being processed to provide an in depth view over how Nextcloud works. If you are not interested in the internals or don't want to execute anything before and after your controller, feel free to skip this section and continue directly with defining :doc:`your app's routes <routes>`.
+The following sections will present an overview over how that request is being processed to provide an in depth view over how Nextcloud works. If you are not interested in the internals or don't want to execute anything before and after your controller, feel free to skip this section and continue directly with defining :doc:`your app's routes <routing>`.
 
 Front controller
 ----------------
@@ -22,7 +22,7 @@ In the beginning, all requests are sent to Nextcloud's :file:`index.php` which i
 * Filesystem
 * Logging
 
-The type of the app is determined by inspecting the app's :doc:`configuration file <../info>` (:file:`appinfo/info.xml`). Loading apps means that the :doc:`main file <../app_development/init>` (:file:`appinfo/app.php`) of each installed app is being loaded and executed. That means that if you want to execute code before a specific app is being run, you can place code in your app's :doc:`../app_development/init` file.
+The type of the app is determined by inspecting the app's :doc:`configuration file <../app_development/info>` (:file:`appinfo/info.xml`). Loading apps means that the :doc:`main file <../app_development/init>` (:file:`appinfo/app.php`) of each installed app is being loaded and executed. That means that if you want to execute code before a specific app is being run, you can place code in your app's :doc:`../app_development/init` file.
 
 Afterwards the following steps are performed:
 
