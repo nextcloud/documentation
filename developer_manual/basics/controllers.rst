@@ -4,7 +4,7 @@ Controllers
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-Controllers are used to connect :doc:`routes <routes>` with app logic. Think of it as callbacks that are executed once a request has come in. Controllers are defined inside the **lib/Controller/** directory.
+Controllers are used to connect :doc:`routes <routing>` with app logic. Think of it as callbacks that are executed once a request has come in. Controllers are defined inside the **lib/Controller/** directory.
 
 To create a controller, simply extend the Controller class and create a method that should be executed on a request:
 
@@ -58,7 +58,7 @@ Getting request parameters
 
 Parameters can be passed in many ways:
 
-* Extracted from the URL using curly braces like **{key}** inside the URL (see :doc:`routes`)
+* Extracted from the URL using curly braces like **{key}** inside the URL (see :doc:`routing`)
 * Appended to the URL as a GET request (e.g. ?something=true)
 * application/x-www-form-urlencoded from a form or jQuery
 * application/json from a POST, PATCH or PUT request
@@ -429,7 +429,7 @@ Because returning values works fine in case of a success but not in case of fail
 Templates
 ^^^^^^^^^
 
-A :doc:`template <../view/templates>` can be rendered by returning a TemplateResponse. A TemplateResponse takes the following parameters:
+A :doc:`template <front-end/templates>` can be rendered by returning a TemplateResponse. A TemplateResponse takes the following parameters:
 
 * **appName**: tells the template engine in which app the template should be located
 * **templateName**: the name of the template inside the template/ folder without the .php extension
@@ -679,7 +679,7 @@ The following policy for instance allows images, audio and videos from other dom
 OCS
 ^^^
 
-.. note:: This is purely for compatibility reasons. If you are planning to offer an external API, go for a :doc:`api` instead.
+.. note:: This is purely for compatibility reasons. If you are planning to offer an external API, go for a :doc:`../digging_deeper/rest_apis` instead.
 
 In order to ease migration from OCS API routes to the App Framework, an additional controller and response have been added. To migrate your API you can use the **OCP\\AppFramework\\OCSController** base class and return your data in the form of a DataResponse in the following way:
 
@@ -772,7 +772,7 @@ Most of the time though it makes sense to also allow normal users to access the 
 To turn off checks the following *Annotations* can be added before the controller:
 
 * **@NoAdminRequired**: Also users that are not admins can access the page
-* **@NoCSRFRequired**: Don't check the CSRF token (use this wisely since you might create a security hole; to understand what it does see :doc:`../../general/security`)
+* **@NoCSRFRequired**: Don't check the CSRF token (use this wisely since you might create a security hole; to understand what it does see `CSRF in the security section <../prologue/security.html#cross-site-request-forgery>`__)
 * **@PublicPage**: Everyone can access the page without having to log in
 
 A controller method that turns off all checks would look like this:
