@@ -173,7 +173,7 @@ Attendees may be other users on your Nextcloud instances, contacts in your addre
 
   .. figure:: images/calendar_event_invitation_level.png
 
-.. tip:: When adding other Nextcloud users as attendees to an event, you may access their FreeBusy information if it's available, helping you to determine when is the best time slot for your event.
+.. tip:: When adding other Nextcloud users as attendees to an event, you may access their FreeBusy information if it's available, helping you to determine when is the best time slot for your event. Set your :ref:`working hours<calendar-working-hours>` to let others know when you are available.
 
 .. attention:: Only the calendar owner can send out invitations, the sharees are not able to do that, whether they have write access to the event's calendar or not.
 
@@ -209,6 +209,16 @@ An event may be set as "recurring", so that it can happen every day, week, month
 You can also tell when the recurrence ends.
 
 .. figure:: images/calendar_event_repeat.png
+
+
+.. _calendar-working-hours:
+
+Availability (Working Hours)
+----------------------------
+
+The general availability independent of scheduled events can be set in the groupware settings of Nextcloud. These settings will be reflected in the free-busy view when you :ref:`schedule a meeting with other people<calendar-attendees>` in Calendar. Some connected clients like Thunderbird will show this data as well.
+
+.. figure:: images/caldav_availability.png
 
 Birthday calendar
 -----------------
