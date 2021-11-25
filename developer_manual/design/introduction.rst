@@ -1,7 +1,5 @@
 ..  _navigation:
 
-..  _newbutton:
-
 ============
 Introduction
 ============

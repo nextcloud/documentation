@@ -102,7 +102,7 @@ Nextcloud 20 and later
 Nextcloud 20 is the first release with the interface ``\OCP\AppFramework\Bootstrap\IBootstrap``. This interface can be
 implemented by your app's ``Application`` class to signal that it wants to act on the bootstrapping stages. The major difference
 between this and the old process is that the boostrapping is not performed in sequence, but apps register and boot
-interleaved. This should ensure that an app that ``boot``s can rely on all other apps' registration to be finished.
+interleaved. This should ensure that an app that ``boot``\s can rely on all other apps' registration to be finished.
 
 The overall process is as follows:
 
