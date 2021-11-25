@@ -169,7 +169,7 @@ Test with Nextcloud
 WebAuthn without SSL
 --------------------
 
-`Chrome has the option to test WebAuthn with a fake device.<https://developer.chrome.com/docs/devtools/webauthn/>`_ Browsers support WebAuthn on HTTPS protected sites and localhost domains. Unfortunately this is not supported by the used PHP library where the check for HTTPS needs to be commented for testing on non-HTTPS localhost development environments.
+`Chrome has the option to test WebAuthn with a fake device <https://developer.chrome.com/docs/devtools/webauthn/>`__. Browsers support WebAuthn on HTTPS protected sites and localhost domains. Unfortunately this is not supported by the used PHP library where the check for HTTPS needs to be commented for testing on non-HTTPS localhost development environments.
 
 ::
 

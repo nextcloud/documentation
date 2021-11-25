@@ -33,62 +33,61 @@ For a list of properties, see:
 Examples
 ********
 
-REPORT request:
+REPORT request::
 
-```
-curl -u user:pwd -i --data-binary "@report.xml" -X REPORT -H "Content-Type: text/xml" http://test.nextcloud.bla/master/remote.php/dav/comments/files/2156
-```
+  curl -u user:pwd -i --data-binary "@report.xml" -X REPORT -H "Content-Type: text/xml" http://test.nextcloud.bla/master/remote.php/dav/comments/files/2156
 
 report.xml your receive:
 
-```
-<?xml version="1.0" encoding="utf-8" ?>
-<D:report xmlns:D="DAV:" xmlns:oc="http://owncloud.org/ns" >
-  <oc:limit>5</oc:limit>
-  <oc:offset>0</oc:offset>
-  <oc:datetime>2016-01-18 22:10:30</oc:datetime>
-</D:report>
-```
+.. code-block:: xml
+
+    <?xml version="1.0" encoding="utf-8" ?>
+    <D:report xmlns:D="DAV:" xmlns:oc="http://owncloud.org/ns" >
+      <oc:limit>5</oc:limit>
+      <oc:offset>0</oc:offset>
+      <oc:datetime>2016-01-18 22:10:30</oc:datetime>
+    </D:report>
+
 
 Example Output (without headers):
 
-```
-<?xml version="1.0"?>
-<d:multistatus xmlns:d="DAV:" xmlns:s="http://sabredav.org/ns" xmlns:cal="urn:ietf:params:xml:ns:caldav" xmlns:cs="http://calendarserver.org/ns/" xmlns:card="urn:ietf:params:xml:ns:carddav" xmlns:oc="http://owncloud.org/ns">
- <d:response>
-  <oc:comment>
-   <oc:id>3</oc:id>
-   <oc:parentId>0</oc:parentId>
-   <oc:topmostParentId>0</oc:topmostParentId>
-   <oc:childrenCount>0</oc:childrenCount>
-   <oc:message>first</oc:message>
-   <oc:verb>comment</oc:verb>
-   <oc:actorType>users</oc:actorType>
-   <oc:actorId>master</oc:actorId>
-   <oc:objectType>files</oc:objectType>
-   <oc:objectId>2156</oc:objectId>
-   <oc:creationDateTime>2016-01-18 22:01:16</oc:creationDateTime>
-   <oc:latestChildDateTime>2016-01-20 14:01:24</oc:latestChildDateTime>
-  </oc:comment>
- </d:response>
- <d:response>
-  <oc:comment>
-   <oc:id>2</oc:id>
-   <oc:parentId>0</oc:parentId>
-   <oc:topmostParentId>0</oc:topmostParentId>
-   <oc:childrenCount>0</oc:childrenCount>
-   <oc:message>first</oc:message>
-   <oc:verb>comment</oc:verb>
-   <oc:actorType>users</oc:actorType>
-   <oc:actorId>master</oc:actorId>
-   <oc:objectType>files</oc:objectType>
-   <oc:objectId>2156</oc:objectId>
-   <oc:creationDateTime>2016-01-18 22:01:12</oc:creationDateTime>
-   <oc:latestChildDateTime>2016-01-20 14:01:24</oc:latestChildDateTime>
-  </oc:comment>
- </d:response>
-</d:multistatus>
-```
+.. code-block:: xml
+
+  <?xml version="1.0"?>
+  <d:multistatus xmlns:d="DAV:" xmlns:s="http://sabredav.org/ns" xmlns:cal="urn:ietf:params:xml:ns:caldav" xmlns:cs="http://calendarserver.org/ns/" xmlns:card="urn:ietf:params:xml:ns:carddav" xmlns:oc="http://owncloud.org/ns">
+   <d:response>
+    <oc:comment>
+     <oc:id>3</oc:id>
+     <oc:parentId>0</oc:parentId>
+     <oc:topmostParentId>0</oc:topmostParentId>
+     <oc:childrenCount>0</oc:childrenCount>
+     <oc:message>first</oc:message>
+     <oc:verb>comment</oc:verb>
+     <oc:actorType>users</oc:actorType>
+     <oc:actorId>master</oc:actorId>
+     <oc:objectType>files</oc:objectType>
+     <oc:objectId>2156</oc:objectId>
+     <oc:creationDateTime>2016-01-18 22:01:16</oc:creationDateTime>
+     <oc:latestChildDateTime>2016-01-20 14:01:24</oc:latestChildDateTime>
+    </oc:comment>
+   </d:response>
+   <d:response>
+    <oc:comment>
+     <oc:id>2</oc:id>
+     <oc:parentId>0</oc:parentId>
+     <oc:topmostParentId>0</oc:topmostParentId>
+     <oc:childrenCount>0</oc:childrenCount>
+     <oc:message>first</oc:message>
+     <oc:verb>comment</oc:verb>
+     <oc:actorType>users</oc:actorType>
+     <oc:actorId>master</oc:actorId>
+     <oc:objectType>files</oc:objectType>
+     <oc:objectId>2156</oc:objectId>
+     <oc:creationDateTime>2016-01-18 22:01:12</oc:creationDateTime>
+     <oc:latestChildDateTime>2016-01-20 14:01:24</oc:latestChildDateTime>
+    </oc:comment>
+   </d:response>
+  </d:multistatus>
 
 If you want a real life example of use, the announcement center has comments implemented.
 See the comments related files in `https://github.com/nextcloud/announcementcenter/tree/master/js`
