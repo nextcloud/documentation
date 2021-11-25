@@ -163,6 +163,8 @@ If you open the sidebar view and click the three dot menu next to the event name
 
   .. figure:: images/calendar_event_menu.png
 
+.. _calendar-attendees:
+
 Invite attendees to an event
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -218,3 +220,47 @@ from the calendar-app.
 
 .. note:: If you do not see the birthday calendar, your Administrator may have
           disabled this for your server.
+
+Appointments
+------------
+
+As of Calendar v3 the app can generate appointment slots which other Nextcloud users but also people without an account on the instance can book. Appointments offer fine-granular control over when you are possibly free to meet up. This can eliminate the need to send emails back and forth to settle on a date and time.
+
+In this section we'll use the term *organizer* for the person who owns the calendar and sets up appointment slots. The *attendee* is the person who books one of the slots.
+
+Creating an appointment configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+As an organizer of appointments you open the main Calendar web UI. In the left sidebar you'll find a section for appointments, were you can open the dialogue to create a new one.
+
+One of the basic infos of every appointment is a title describing what the appointment is about, e.g. "One-on-one" when a user wants to offer colleagues a personal call. The duration of the appointment can be picked from a predefined list. Next, you can set the desired increment. The increment is the rate at which possible slots are available. For example, you could have one hour long slots, but you give them away at 30 minute increments so an attendee can book at 9:00AM but also at 9:30AM. Optional infos about location and a description give the attendees some more context.
+
+Every booked appointment will be written into one of your calendars, so you can chose which one that should be. Only slots that do not conflict with existing events in your calendars will be shown to attendees.
+
+Appointments can be *public* or *private*. Public appointments can be discovered through the profile page of a Nextcloud user. Private appointments are only accessible to the people who receive the secret URL.
+
+The organizer of an appointment can specify at which times of the week it's generally possible to book a slot. This could be the working hours but also any other customized schedule.
+
+Some appointments require time to prepare, e.g. when you meet at a venue and you have to drive there. The organizer can chose to select a time duration that must be free. Only slots that do not conflict with other events during the preparation time will be available. Moreover there is the option to specify a time after each appointment that has to be free.
+
+To prevent an attendee from booking too short notice it's possible to configure how soon the next possible appointment might take place.
+
+Setting a maximum number of slots per day can limit how many appointments are possibly booked by attendees.
+
+The configured appointment will then be listed in the left sidebar. You can copy its link and share it with the target attendees, or let them discover your public appointment via the profile page.
+
+Booking an appointment
+~~~~~~~~~~~~~~~~~~~~~~
+
+The booking page shows an attendee the title, location, description and length of an appointment. For a selected day there will be a list with all the possible time slots. On days with no available slots, too many conflicts or a reached daily maximum limit of already booked appointments, the list might be empty.
+
+For the booking users have to enter a name and an email address. Optionally they can also add a comment.
+
+To verify that the email is valid, a confirmation email will be sent. Only after clicking the confirmation link from the email the appointment booking will be finished. Until then the time slot might also be booked by another user who confirms their booking earlier. The system will detect the conflict and offer to pick a new time slot.
+
+Working with the booked appointment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Once the booking is done, the organizer will find an event in their calendar with the appointment details and the :ref:`attendee<calendar-attendees>`. As with any other event that has attendees, changes and cancellations will trigger a notification to the attendee's email.
+
+If attendees wish to cancel the appointment they have to get in contact with the organizer, so that the organizer can cancel or even delete the event.
