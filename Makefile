@@ -28,8 +28,13 @@ user-manual-pdf:
 	cd user_manual && make latexpdf
 	@echo "User manual build finished; PDF is updated"
 
-icons-docs: clean-icons-docs
+icons-docs: icons-docs-prepare
+	$(MAKE) icons-doc-run
+
+icons-docs-prepare: clean-icons-docs
 	cd build && sh get-server-sources.sh $(DRONE_BRANCH)
+
+icons-docs-run:
 	cd build && composer install && composer update
 	cd build && php generateIconsDoc.php
 

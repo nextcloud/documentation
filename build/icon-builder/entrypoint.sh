@@ -8,5 +8,5 @@ useradd -u $uid -m -g worker worker
 
 cd /work
 
-sudo -u worker make icons-docs
+sudo -u worker make icons-docs-run
 

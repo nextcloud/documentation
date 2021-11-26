@@ -35,9 +35,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+    - name: Get the date
+      id: get-date
+      shell: bash
+      run: >
+        echo "::set-output name=date::$(/bin/date -u "+%Y%W")"
+    - name: Preparation of icon generation
+      shell: bash
+      run: make icons-docs-prepare
+    - name: Download cached icons
+      uses: actions/cache@v2.1.7
+      id: cached-icons
+      with:
+        path: |
+          developer_manual/html_css_design/img
+          developer_manual/html_css_design/icons.txt
+        key: "icons-\
+          ${{ steps.get-date.outputs.date }}-\
+          ${{ hashFiles('Makefile', 'build/icon-builder/**', 'build/composer.json', 'build/generateIconsDoc.php', 'build/server/core/img/**') }}"
     - name: Build the icons
       shell: bash
       run: make icons-docs-docker
+      if: steps.cached-icons.outputs.cache-hit != 'true'
     - uses: ammaraskar/sphinx-action@master
       with:
         docs-folder: "developer_manual/"
