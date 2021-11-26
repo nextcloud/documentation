@@ -30,6 +30,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+    - name: Build the icons
+      shell: bash
+      run: make icons-docs-docker
     - uses: ammaraskar/sphinx-action@master
       with:
         docs-folder: "developer_manual/"
