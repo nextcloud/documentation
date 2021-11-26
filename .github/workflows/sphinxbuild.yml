@@ -17,6 +17,11 @@ jobs:
         docs-folder: "user_manual/"
         pre-build-command: pip install -r requirements.txt
         build-command: make html
+    - name: Upload static documentation
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        name: User manual.zip
+        path: "user_manual/_build/html"
   user_manual-en:
     runs-on: ubuntu-latest
     steps:
@@ -38,6 +43,11 @@ jobs:
         docs-folder: "developer_manual/"
         pre-build-command: pip install -r requirements.txt
         build-command: make html
+    - name: Upload static documentation
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        name: Developer manual.zip
+        path: "developer_manual/_build/html/com"
   admin_manual:
     runs-on: ubuntu-latest
     steps:
@@ -47,3 +57,8 @@ jobs:
         docs-folder: "admin_manual/"
         pre-build-command: pip install -r requirements.txt
         build-command: make html
+    - name: Upload static documentation
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        name: Administration manual.zip
+        path: "admin_manual/_build/html/com"
