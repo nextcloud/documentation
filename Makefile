@@ -1,3 +1,5 @@
+ICON_BUILDER_DOCKER_NAME=icon-docs-builder
+
 all: html pdf
 
 html: admin-manual-html user-manual-html developer-manual-html
@@ -31,8 +33,12 @@ icons-docs: clean-icons-docs
 	cd build && composer install && composer update
 	cd build && php generateIconsDoc.php
 
+icons-docs-docker:
+	docker build -t $(ICON_BUILDER_DOCKER_NAME) build/icon-builder
+	docker run --rm -i -v $(shell pwd):/work $(ICON_BUILDER_DOCKER_NAME)
+
 clean: clean-icons-docs
 	rm -r admin_manual/_build developer_manual/_build user_manual/_build user_manual_de_/_build
 
 clean-icons-docs:
-	rm -rf developer_manual/design/img/
+	rm -rf developer_manual/html_css_design/img/
