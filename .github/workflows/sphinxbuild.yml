@@ -55,7 +55,12 @@ jobs:
           developer_manual/html_css_design/icons.txt
         key: "icons-\
           ${{ steps.get-date.outputs.date }}-\
-          ${{ hashFiles('Makefile', 'build/icon-builder/**', 'build/composer.json', 'build/generateIconsDoc.php', 'build/server/core/img/**') }}"
+          ${{ hashFiles(\
+            'Makefile', \
+            '.github/workflows/sphinxbuild.yml', \
+            'build/icon-builder/**', 'build/composer.json', 'build/generateIconsDoc.php', \
+            'build/server/core/img/**'\
+          ) }}"
     - name: Build the icons
       shell: bash
       run: make icons-docs-docker
