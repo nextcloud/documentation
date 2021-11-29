@@ -96,8 +96,8 @@ Multiple calendars can be shared together by adding their unique tokens to the e
 To change the default view or date of an embedded calendar, you need to provide an URL that looks like ``https://cloud.example.com/index.php/apps/calendar/embed/<token>/<view>/<date>``.
 In this url you need to replace the following variables:
 
-- ``<token>`` with the calendar's token.
-- ``<view>`` with one of ``month``, ``week``, ``day``, ``listMonth``, ``listWeek``, ``listDay``. The default view is ``month`` and the normally used list is ``listMonth``.
+- ``<token>`` with the calendar's token,
+- ``<view>`` with one of ``month``, ``week``, ``day``, ``listMonth``, ``listWeek``, ``listDay``. The default view is ``month`` and the normally used list is ``listMonth``,
 - ``<date>`` with ``now`` or any date with the following format ``<year>-<month>-<day>`` (e.g. ``2019-12-28``).
 
 On the public page, users are able to get the subscription link for the calendar and download the whole calendar directly.
