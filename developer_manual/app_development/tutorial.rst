@@ -10,7 +10,7 @@ This tutorial will outline how to create a very simple notes app. The finished a
 Setup
 -----
 
-First the :doc:`development environment <../general/devenv>` needs to be set up. This can be done by either `downloading the zip from the website <https://nextcloud.com/install/>`_ or cloning it directly from GitHub::
+First the :doc:`development environment <../getting_started/devenv>` needs to be set up. This can be done by either `downloading the zip from the website <https://nextcloud.com/install/>`_ or cloning it directly from GitHub::
 
    git clone git@github.com:nextcloud/server.git --branch $BRANCH
    cd server
@@ -73,7 +73,7 @@ On the client side we can call these URLs with the following jQuery code:
         // handle failure
     });
 
-On the server side we need to register a callback that is executed once the request comes in. The callback itself will be a method on a :doc:`controller <requests/controllers>` and the controller will be connected to the URL with a :doc:`route <requests/routes>`. The controller and route for the page are already set up in **notestutorial/appinfo/routes.php**:
+On the server side we need to register a callback that is executed once the request comes in. The callback itself will be a method on a :doc:`controller <../basics/controllers>` and the controller will be connected to the URL with a :doc:`route <../basics/controllers>`. The controller and route for the page are already set up in **notestutorial/appinfo/routes.php**:
 
 .. code-block:: php
 
@@ -82,9 +82,9 @@ On the server side we need to register a callback that is executed once the requ
         ['name' => 'page#index', 'url' => '/', 'verb' => 'GET']
     ]];
 
-This route calls the controller **OCA\\notestutorial\\PageController->index()** method which is defined in **notestutorial/lib/Controller/PageController.php**. The controller returns a :doc:`template <view/templates>`, in this case **notestutorial/templates/main.php**:
+This route calls the controller **OCA\\notestutorial\\PageController->index()** method which is defined in **notestutorial/lib/Controller/PageController.php**. The controller returns a :doc:`template <../basics/front-end/templates>`, in this case **notestutorial/templates/main.php**:
 
-.. note:: @NoAdminRequired and @NoCSRFRequired in the comments above the method turn off security checks, see :doc:`requests/controllers`
+.. note:: **@NoAdminRequired** and **@NoCSRFRequired** in the comments above the method turn off security checks, see `Authentication on Controllers <../basics/controllers.html#authentication>`__
 
 .. code-block:: php
 
@@ -211,7 +211,7 @@ Database
 --------
 
 Now that the routes are set up and connected the notes should be saved in the
-database. To do that first create a :doc:`database migration <storage/migrations>`
+database. To do that first create a :doc:`database migration <../basics/storage/migrations>`
 by creating a file **notestutorial/lib/Migration/VersionXXYYZZDateYYYYMMDDHHSSAA.php**,
 so for example **notestutorial/lib/Migration/Version000000Date20181013124731.php**""
 
@@ -270,7 +270,7 @@ To create the tables in the database, run the :ref:`migration  <migration_consol
 
    Example: sudo -u www-data php ./occ migrations:execute photos 000000Date20201002183800
 
-.. note:: to trigger the table creation/alteration when user updating the app, update the :doc:`version tag <info>` in **notestutorial/appinfo/info.xml** . migration will be executed when user reload page after app upgrade
+.. note:: To trigger the table creation/alteration when user updating the app, update the :doc:`version tag <info>` in **notestutorial/appinfo/info.xml** . migration will be executed when user reload page after app upgrade
 
 .. code-block:: xml
 
@@ -290,7 +290,7 @@ To create the tables in the database, run the :ref:`migration  <migration_consol
     </info>
 
 
-Now that the tables are created we want to map the database result to a PHP object to be able to control data. First create an :doc:`entity <storage/database>` in **notestutorial/lib/Db/Note.php**:
+Now that the tables are created we want to map the database result to a PHP object to be able to control data. First create an :doc:`entity <../basics/storage/database>` in **notestutorial/lib/Db/Note.php**:
 
 
 .. code-block:: php
@@ -325,7 +325,7 @@ Now that the tables are created we want to map the database result to a PHP obje
 
 We also define a **jsonSerializable** method and implement the interface to be able to transform the entity to JSON easily.
 
-Entities are returned from so-called :doc:`Mappers <storage/database>`. Let's create one in **notestutorial/lib/Db/NoteMapper.php** and add a **find** and **findAll** method:
+Entities are returned from so-called :doc:`Mappers <../basics/storage/database>`. Let's create one in **notestutorial/lib/Db/NoteMapper.php** and add a **find** and **findAll** method:
 
 .. code-block:: php
 
@@ -376,7 +376,7 @@ Connect database & controllers
 
 The mapper which provides the database access is finished and can be passed into the controller.
 
-You can pass in the mapper by adding it as a type hinted parameter. Nextcloud will figure out how to :doc:`assemble them by itself <requests/container>`. Additionally we want to know the userId of the currently logged in user. Simply add a **$UserId** parameter to the constructor (case sensitive!). To do that open **notestutorial/lib/Controller/NoteController.php** and change it to the following:
+You can pass in the mapper by adding it as a type hinted parameter. Nextcloud will figure out how to :doc:`assemble them by itself <../basics/dependency_injection>`. Additionally we want to know the userId of the currently logged in user. Simply add a **$UserId** parameter to the constructor (case sensitive!). To do that open **notestutorial/lib/Controller/NoteController.php** and change it to the following:
 
 .. code-block:: php
 
@@ -711,7 +711,7 @@ Unit tests
 
 A unit test is a test that tests a class in isolation. It is very fast and catches most of the bugs, so we want many unit tests.
 
-Because Nextcloud uses :doc:`Dependency Injection <requests/container>` to assemble your app, it is very easy to write unit tests by passing mocks into the constructor. A simple test for the update method can be added by adding this to **notestutorial/tests/Unit/Controller/NoteControllerTest.php**:
+Because Nextcloud uses :doc:`Dependency Injection <../basics/dependency_injection>` to assemble your app, it is very easy to write unit tests by passing mocks into the constructor. A simple test for the update method can be added by adding this to **notestutorial/tests/Unit/Controller/NoteControllerTest.php**:
 
 .. code-block:: php
 
@@ -929,7 +929,7 @@ To run the integration tests change into the **notestutorial** directory and run
 Adding a RESTful API (optional)
 -------------------------------
 
-A :doc:`RESTful API <requests/api>` allows other apps such as Android or iPhone apps to access and change your notes. Since syncing is a big core component of Nextcloud it is a good idea to add (and document!) your own RESTful API.
+A :doc:`RESTful API <../digging_deeper/rest_apis>` allows other apps such as Android or iPhone apps to access and change your notes. Since syncing is a big core component of Nextcloud it is a good idea to add (and document!) your own RESTful API.
 
 Because we put our logic into the **NoteService** class it is very easy to reuse it. The only pieces that need to be changed are the annotations which disable the CSRF check (not needed for a REST call usually) and add support for `CORS <https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS>`_ so your API can be accessed from other webapps.
 
@@ -1070,7 +1070,7 @@ Since the **NoteApiController** is basically identical to the **NoteController**
 Building the frontend
 ---------------------
 
-To create a modern webapp you need to write :doc:`JavaScript<view/js>`. You can use any JavaScript framework, but this tutorial focusses on a simple frontend using Vue.js. For a more detailed introduction to Vue.js please head over to the `official documentation <https://vuejs.org/v2/guide/>`_.
+To create a modern webapp you need to write :doc:`JavaScript<../basics/front-end/js>`. You can use any JavaScript framework, but this tutorial focusses on a simple frontend using Vue.js. For a more detailed introduction to Vue.js please head over to the `official documentation <https://vuejs.org/v2/guide/>`_.
 
 The source files of our frontend will be stored in the **src/** directory. We use webpack for bundling the files and output of that will be stored in **js/notestutorial.js**.
 
