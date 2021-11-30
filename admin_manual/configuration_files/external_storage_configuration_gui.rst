@@ -119,7 +119,7 @@ The following backends are provided by the external storages app.
 .. toctree::
     :maxdepth: 1
 
-    external_storage/amazons3
+    external_storage/amazons3 and s3 compatible storage
     external_storage/ftp
     external_storage/local
     external_storage/nextcloud
