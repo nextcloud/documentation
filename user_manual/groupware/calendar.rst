@@ -2,19 +2,38 @@
 Using the Calendar app
 ======================
 
-.. note:: The calendar app is not enabled by default and needs to be installed
-          separately from our App Store. Please ask your Administrator for it.
+.. note:: The Calendar app comes installed with Nextcloud Hub by default, but can be disabled.
+          Please ask your Administrator for it.
 
 The Nextcloud Calendar app works similar to other calendar applications you can
 sync your Nextcloud calendars and events with.
 
-When you first access the Calendar app, a default first calendar will be
-pre-generated for you.
+When you first access the Calendar app, a default first calendar will be created for you.
 
 .. figure:: images/calendar_application.png
 
 Managing your calendars
 -----------------------
+
+Create a new Calendar
+~~~~~~~~~~~~~~~~~~~~~
+
+If you plan on setting up a new calendar without transferring any old data from your
+previous calendar, creating a new calendar is the way you should go.
+
+.. figure:: images/calendar_create_1.png
+            :scale: 80%
+
+1. Click on ``+ New Calendar`` in the left sidebar.
+
+2. Type in a name for your new calendar, e.g. "Work", "Home" or "Marketing planning".
+
+3. After clicking on the checkmark, your new calendar is created and can be
+   synced across your devices, filled with new events and shared with your friends
+   and colleagues.
+
+.. figure:: images/calendar_create_2.png
+            :scale: 80%
 
 Import a Calendar
 ~~~~~~~~~~~~~~~~~
@@ -23,7 +42,7 @@ If you want to transfer your calendar and their respective events to your Nextcl
 instance, importing is the best way to do so.
 
 .. figure:: images/calendar_settings.png
-            :scale: 50%
+            :scale: 80%
 
 1. Click on the settings-icon labeled with ``Settings & Import`` at the left-bottom.
 
@@ -35,24 +54,6 @@ instance, importing is the best way to do so.
 
 .. note:: The Nextcloud Calendar application only supports iCalendar-compatible
           ``.ics``-files, defined in RFC 5545.
-
-Create a new Calendar
-~~~~~~~~~~~~~~~~~~~~~
-
-If you plan to setup a new calendar without transferring any old data from your
-previous calendar, creating a new calendar is the way you should go.
-
-.. only:: html
-
-  .. figure:: images/calendar_create.gif
-
-1. Click on ``+ New Calendar`` in the left sidebar.
-
-2. Type in a name for your new calendar, e.g. "Work", "Home" or "Studies".
-
-3. After clicking on the checkmark, your new calendar is created and can be
-   synced across your devices, filled with new events and shared with your friends
-   and colleagues.
 
 Edit, Download or Delete a Calendar
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -66,21 +67,21 @@ hard drive or delete it forever.
           have a local backup.
 
 .. figure:: images/calendar_dropdown.png
-            :scale: 50%
+            :scale: 80%
 
 1. Click on the three-dot-menu of the respective calendar.
 
 .. figure:: images/calendar_editing.png
-            :scale: 50%
+            :scale: 80%
 
-2. Click on ``Edit``, ``Download`` or ``Delete``.
+2. Click on ``Edit name``, ``Edit color``, ``Download`` or ``Delete``.
 
 Sharing calendars
 ~~~~~~~~~~~~~~~~~
 
 You may share your calendar with other users or groups. Calendars may be shared with write access or read-only. When sharing a calendar with write access, users with whom the calendar is shared will be able to create new events into the calendar as well as edit and delete existing ones.
 
-.. note:: Calendar shares currently can't be accepted or rejected. If you want to stop having a calendar that someone shared with you, you can click on the 3-dot menu next to the calendar in the calendar list and click on "Unshare from me".
+.. note:: Calendar shares currently cannot be accepted or rejected. If you want to stop having a calendar that someone shared with you, you can click on the 3-dot menu next to the calendar in the calendar list and click on "Unshare from me". Calendars shared with a group cannot be unshared by individuals.
 
 Publishing a calendar
 ~~~~~~~~~~~~~~~~~~~~~
@@ -92,11 +93,11 @@ There's also an « embedding code » that provides an HTML iframe to embed you
 Multiple calendars can be shared together by adding their unique tokens to the end of an embed link. Individual tokens can be found at the end of each calendar's public link. The full address will look like
 ``https://cloud.example.com/index.php/apps/calendar/embed/<token1>-<token2>-<token3>``
 
-To change the default view or date of an embedded calendar, you need to provide an URL that look like ``https://cloud.example.com/index.php/apps/calendar/embed/<token>/<view>/<date>``.
+To change the default view or date of an embedded calendar, you need to provide an URL that looks like ``https://cloud.example.com/index.php/apps/calendar/embed/<token>/<view>/<date>``.
 In this url you need to replace the following variables:
 
-- ``<token>`` with the calendar's token.
-- ``<view>`` with one of ``month``, ``week``, ``day``, ``listMonth``, ``listWeek``, ``listDay``. The default view is ``month`` and the normally used list is ``listMonth``.
+- ``<token>`` with the calendar's token,
+- ``<view>`` with one of ``month``, ``week``, ``day``, ``listMonth``, ``listWeek``, ``listDay``. The default view is ``month`` and the normally used list is ``listMonth``,
 - ``<date>`` with ``now`` or any date with the following format ``<year>-<month>-<day>`` (e.g. ``2019-12-28``).
 
 On the public page, users are able to get the subscription link for the calendar and download the whole calendar directly.
@@ -128,54 +129,59 @@ cursor over the area when the event is taking place.
 
 .. only:: html
 
-  .. figure:: images/calendar_new-event_week.gif
+  .. figure:: images/calendar_new-event_week.png
 
-The month-view only requires a single click into the area of the specific day.
+The month-view only requires a single click into the area of the target day.
 
 .. only:: html
 
-  .. figure:: images/calendar_new-event_month.gif
+  .. figure:: images/calendar_new-event_month.png
 
 After that, you can type in the event's name (e.g. **Meeting with Lukas**), choose
-the calendar in which you want to choose the event (e.g. **Personal**, **Work**),
-check and concretize the time span or set the event as all-day event.
+the calendar in which you want to save the event to (e.g. **Personal**, **Work**),
+check and concretize the time span or set the event as an all-day event. Optionally
+you can specify a location and a description.
 
-If you want to edit advanced details such as the **Location**, a **Description**,
-**Attendees**, **Reminders** or to set the event as a repeating-event click on
-the ``More...``-button to open the advanced sidebar-editor.
+If you want to edit advanced details such as the **Attendees** or **Reminders**, or if you
+want to set the event as a repeating-event, click on the ``More`` button to open the advanced
+sidebar editor.
 
-.. note:: If you always want to open the advanced sidebar-editor instead of the
+.. note:: If you always want to open the advanced sidebar editor instead of the
           simple event editor popup, you can set a ``Skip simple event
-          editor``-checkmark in the ``Settings & Import``-section of the app.
+          editor`` checkmark in the ``Settings & Import`` section of the app.
 
-Clicking on the blue ``Create``-button will finally create the event.
+Clicking on the blue ``Create`` button will finally create the event.
 
-Edit or Delete an event
+Edit or delete an event
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 If you want to edit or delete a specific event, you just need to click on it.
 After that you will be able to re-set all event details and open the
 advanced sidebar-editor by clicking on ``More``.
 
-Clicking on the ``Update``-button will update the event. To cancel your changes, click on the close icon on top right of the popup or sidebar editor.
+Clicking on the ``Update`` button will update the event. To cancel your changes, click on the close icon on top right of the popup or sidebar editor.
 
 If you open the sidebar view and click the three dot menu next to the event name, you have an option to export the event as an ``.ics`` file or remove the event from your calendar.
 
   .. figure:: images/calendar_event_menu.png
+              :scale: 70%
+
+.. tip:: If you delete events they will go into your :ref:`trash bin<calendar-trash-bin>`. You can restore accidentally deleted events there.
 
 .. _calendar-attendees:
 
 Invite attendees to an event
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You may add attendees to an event to let them know they're invited. They will receive an email confirmation and will be able to confirm or cancel their participation to the event.
-Attendees may be other users on your Nextcloud instances, contacts in your addressbooks and direct email addresses. You also may change the level of participation per-attendees, or disable email confirmation for a specific attendee.
+You may add attendees to an event to let them know they're invited. They will receive an email invitation and will be able to confirm or cancel their participation to the event.
+Attendees may be other users on your Nextcloud instances, contacts in your address books and direct email addresses. You may also change the level of participation per attendees, or disable the email information for a specific attendee.
 
   .. figure:: images/calendar_event_invitation_level.png
+              :scale: 80%
 
-.. tip:: When adding other Nextcloud users as attendees to an event, you may access their FreeBusy information if it's available, helping you to determine when is the best time slot for your event. Set your :ref:`working hours<calendar-working-hours>` to let others know when you are available.
+.. tip:: When adding other Nextcloud users as attendees to an event, you may access their free-busy information if available, helping you determine when the best time slot for your event is. Set your :ref:`working hours<calendar-working-hours>` to let others know when you are available. Free-busy information is only available for other users on the same Nextcloud instance.
 
-.. attention:: Only the calendar owner can send out invitations, the sharees are not able to do that, whether they have write access to the event's calendar or not.
+.. attention:: Only the calendar owner can send out invitations. The sharees are not able to do that, whether they have write access to the event's calendar or not.
 
 .. attention:: The server administration needs to setup the e-mail server in the 'Basic settings' tab, as this mail will be used to send invitations.
 
@@ -186,10 +192,10 @@ Similar to attendees you can add rooms and resources to your events. The system 
 
 .. note:: Rooms and resources are not managed by Nextcloud itself and the Calendar app will not allow you to add or change a resource. Your Administrator has to install and possibly configure resource back ends before you can use them as a user.
 
-Setup Reminders
-~~~~~~~~~~~~~~~
+Set up reminders
+~~~~~~~~~~~~~~~~
 
-You can set up reminders to be notified before an event occurs. Currently supported notification methods are :
+You can set up reminders to be notified before an event occurs. Currently supported notification methods are:
 
 * Email notifications
 * Nextcloud notifications
@@ -197,6 +203,7 @@ You can set up reminders to be notified before an event occurs. Currently suppor
 You may set reminders at a time relative to the event or at a specific date.
 
 .. figure:: images/calendar_event_reminders.png
+              :scale: 80%
 
 .. note:: Only the calendar owner and people or groups with whom the calendar is shared with write access will get notifications. If you don't get any notifications but think you should, your Administrator could also have disabled this for your server.
 
@@ -211,7 +218,20 @@ An event may be set as "recurring", so that it can happen every day, week, month
 You can also tell when the recurrence ends.
 
 .. figure:: images/calendar_event_repeat.png
+              :scale: 80%
 
+.. _calendar-trash-bin:
+
+Trash bin
+~~~~~~~~~
+
+If you delete events, tasks or a calendar in Calendar, your data won't be gone yet. Instead, those items will be collected in a *trash bin*. This offers you to undo a deletion. After a period of 30 days those items will be deleted permanently. You can also permanently delete earlier if you wish.
+
+.. figure:: images/calendar_trash_bin.png
+
+The ``Empty trash bin`` buttons will wipe all trash bin contents in one step.
+
+.. tip:: The trash bin is only accessible from the Calendar app. Any connected application or app won't be able to display its contents. However, events, tasks and calendars deleted in connected applications or app will also end up in the trash bin.
 
 .. _calendar-working-hours:
 
