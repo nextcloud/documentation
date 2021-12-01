@@ -26,3 +26,4 @@ Digging deeper
    dashboard
    groupware/index
    web_host_metadata
+   status
