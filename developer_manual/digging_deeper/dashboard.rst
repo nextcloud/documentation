@@ -129,6 +129,7 @@ need to support older versions where the new app boostrap flow is not available,
 however this method is deprecated and will be removed once Nextcloud 19 is EOL.
 
 .. code-block:: php
+
     <?php
 
     use OCP\Dashboard\RegisterWidgetEvent;
