@@ -65,7 +65,7 @@ https://www.reddit.com/r/Nextcloud/comments/5rcypb/using_the_windows_10_calendar
 Contacts
 --------
 
-1. Repeat steps 1 - 7 from the Calendar instructions. If you already have setup the Calendar synchronization, you can use the same account for this.
+1. Repeat steps 1–7 from the Calendar instructions. If you already have setup the Calendar synchronization, you can use the same account for this.
 
 2. In the "Advanced mailbox settings" paste your CalDAV URL in the field labelled "Contacts server (CardDAV)".
 
