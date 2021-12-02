@@ -2,9 +2,11 @@
 Synchronizing with KDE Kontact
 ==============================
 
-KOrganizer and KAddressBook can synchronize your calendar, contacts and tasks with a Nextcloud server.
+KOrganizer, Kalendar and KAddressBook can synchronize your calendar, contacts and tasks with a Nextcloud server.
 
-This can be done by following these steps:
+This can be done by following these steps depending on if you use KOrganizer or Kalendar:
+
+In KOrganizer:
 
 1. Open KOrganizer and in the calendar list (bottom left) right-click and choose ``Add Calendar``:
 
@@ -14,11 +16,23 @@ This can be done by following these steps:
 
 .. image:: ../images/korganizer_resource_choice.png
 
+In Kalendar:
+
+1. Open Kalendar and in the menubar open the setting and then choose ``Calendar Sources`` -> ``Add Calendar``:
+
+.. image:: ../images/Kalendar_add_calendar.png
+
+2. In the resulting list of resources, pick ``DAV groupware resource``:
+
+.. image:: ../images/kalendar_resource_choice.png
+
+In KOrganizer and Kalendar:
+
 3. Enter your username. As password, you need to generate an app-password/token (`Learn more <https://docs.nextcloud.com/server/stable/user_manual/session_management.html#managing-devices>`_):
 
 .. image:: ../images/korganizer_credentials.png
 
-4. Choose ``ownCloud`` or ``Nextcloud`` as Groupware server option:
+4. Choose ``Nextcloud`` as Groupware server option:
 
 .. image:: ../images/KOrganizer_groupware_server.png
 
@@ -38,7 +52,9 @@ This can be done by following these steps:
 
 .. note:: You can set a manual refresh rate for your calendar and contacts resources. By default this setting is set to 5 minutes and should be fine for the most use cases. When you create a new appointment it is synced to Nextcloud right away. You may want to change this for saving your power or cellular data plan, so that you can update with a right-click on the item in the calendar list.
 
-8. After a few seconds to minutes depending on your internet connection, you will find your calendars and contacts inside the KDE Kontact applications KOrganizer and KAddressBook:
+8. After a few seconds to minutes depending on your internet connection, you will find your calendars and contacts inside the KDE Kontact applications KOrganizer, Kalendar and KAddressBook as well as Plasma calendar applet:
 
 .. image:: ../images/KOrganizer.png
+.. image:: ../images/KDEPlasma.png
+.. image:: ../images/kalendar_month_view.png
 .. image:: ../images/KAddressBook.png
