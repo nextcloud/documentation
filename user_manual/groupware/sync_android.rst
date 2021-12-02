@@ -29,7 +29,7 @@ With the Nextcloud mobile app
    `from Google Play Store <https://play.google.com/store/apps/details?id=at.bitfire.davdroid>`_ or 
    `from F-Droid <https://f-droid.org/de/packages/at.bitfire.davdroid/>`_.
 2. In the Nextcloud mobile, go
-   to **Settings** / **More**, tap on "**Sync calendars & contacts**".
+   to **Settings**/**More**, tap on "**Sync calendars & contacts**".
 3. Now, DAVx⁵ will open Nextcloud's Webflow login window, where you
    will have to enter your credentials and grant access.
 4. DAVx⁵ will open and ask you to create an account. Set the account
@@ -47,7 +47,7 @@ With the Nextcloud mobile app
 
 Without the Nextcloud mobile app
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-If you don't want to install the Nextcloud mobile app, the following
+If you do not want to install the Nextcloud mobile app, the following
 steps are required:
 
 1. Install `DAVx⁵ (formerly known as DAVDroid) <https://www.davx5.com/download/>`_ on your Android device, 
