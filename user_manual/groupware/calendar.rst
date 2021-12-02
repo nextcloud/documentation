@@ -225,7 +225,7 @@ You can also tell when the recurrence ends.
 Trash bin
 ~~~~~~~~~
 
-If you delete events, tasks or a calendar in Calendar, your data won't be gone yet. Instead, those items will be collected in a *trash bin*. This offers you to undo a deletion. After a period of 30 days those items will be deleted permanently. You can also permanently delete earlier if you wish.
+If you delete events, tasks or a calendar in Calendar, your data is not gone yet. Instead, those items will be collected in a *trash bin*. This offers you to undo a deletion. After a period which defaults to 30 days (your administration may have changed this setting), those items will be deleted permanently. You can also permanently delete items earlier if you wish.
 
 .. figure:: images/calendar_trash_bin.png
 
