@@ -33,7 +33,7 @@ If you get a result, the module is present.
 
 Required:
 
-* PHP (7.3 or 7.4)
+* PHP 7.3, 7.4 or **8.0** (*recommended*)
 * PHP module ctype
 * PHP module curl
 * PHP module dom
