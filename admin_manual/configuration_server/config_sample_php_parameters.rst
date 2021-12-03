@@ -2234,6 +2234,36 @@ scan to sync filesystem and database. Only users with unscanned files
 
 Defaults to ``true``
 
+::
+
+	'query_log_file' => '',
+
+Log all queries into a file
+
+Warning: This heavily decreases the performance of the server and is only
+meant to debug/profile the query interaction manually.
+Also, it might log sensitive data into a plain text file.
+
+::
+
+	'redis_log_file' => '',
+
+Log all redis requests into a file
+
+Warning: This heavily decreases the performance of the server and is only
+meant to debug/profile the redis interaction manually.
+Also, it might log sensitive data into a plain text file.
+
+::
+
+	'ldap_log_file' => '',
+
+Log all LDAP requests into a file
+
+Warning: This heavily decreases the performance of the server and is only
+meant to debug/profile the LDAP interaction manually.
+Also, it might log sensitive data into a plain text file.
+
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
 
