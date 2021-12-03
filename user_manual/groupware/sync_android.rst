@@ -52,7 +52,7 @@ steps are required:
 
 1. Install `DAVx⁵ (formerly known as DAVDroid) <https://www.davx5.com/download/>`_ on your Android device, 
    `from Google Play Store <https://play.google.com/store/apps/details?id=at.bitfire.davdroid>`_ or 
-   `from F-Droid <https://f-droid.org/de/packages/at.bitfire.davdroid/>`_.
+   `from F-Droid <https://f-droid.org/packages/at.bitfire.davdroid/>`_.
 2. Optionally install `OpenTasks <https://play.google.com/store/apps/details?id=org.dmfs.tasks>`_.
 3. Create a new account ("+" button).
 4. Select **Connection with URL and username**.
