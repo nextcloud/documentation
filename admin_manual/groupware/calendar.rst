@@ -76,6 +76,19 @@ If you need to allow this, change the following parameter to::
 
  php occ config:app:set dav webcalAllowLocalAccess --value yes
 
+Trash bin
+---------
+
+Nextcloud supports a calendar, events and tasks trash bin.
+
+The default delay before objects are purged from the trash bin is 30 days. A background job runs every 6 hours to clean up expired objects.
+
+To set up a different retention period, change the ``calendarRetentionObligation`` option::
+
+ php occ config:app:set dav calendarRetentionObligation --value=2592000
+
+Where the value is the number of seconds for the period. Setting the value to ``0`` disables the trash bin.
+
 Resources and rooms
 -------------------
 
