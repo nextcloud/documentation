@@ -27,3 +27,4 @@ Digging deeper
    groupware/index
    web_host_metadata
    status
+   security
