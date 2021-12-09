@@ -6,6 +6,31 @@ Once you've created and published the first version of your app, you will want t
 
 This document will cover the most important changes in Nextcloud, as well as some guides on how to upgrade existing apps.
 
+Upgrading to Nextcloud 24
+-------------------------
+
+.. note:: Critical changes were collected `on GitHub <https://github.com/nextcloud/server/issues/29914>`__. See the original ticket for links to the pull requests and tickets.
+
+Front-end changes
+^^^^^^^^^^^^^^^^^
+
+tbd
+
+Back-end changes
+^^^^^^^^^^^^^^^^
+
+tbd
+
+Changed APIs
+************
+
+tbd
+
+Removed APIs
+************
+
+tbd
+
 Upgrading to Nextcloud 23
 -------------------------
 
