@@ -1,3 +1,5 @@
+.. _app-store-publishing:
+
 ====================
 App store publishing
 ====================
