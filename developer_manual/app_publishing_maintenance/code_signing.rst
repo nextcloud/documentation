@@ -1,3 +1,5 @@
+.. _app-code-signing:
+
 ============
 Code signing
 ============
