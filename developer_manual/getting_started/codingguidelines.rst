@@ -55,7 +55,6 @@ Coding
 * No global variables or functions
 * Unit tests
 * HTML should be HTML5 compliant
-* Check these `database performance tips <https://mailman.owncloud.org/pipermail/devel/2014-June/000262.html>`_
 * When you ``git pull``, always ``git pull --rebase`` to avoid generating extra commits like: *merged master into master*
 
 License headers
