@@ -1974,6 +1974,19 @@ Defaults to ``1800`` (seconds)
 
 ::
 
+	'files_external_allow_create_new_local' => true,
+
+Allows to create external storages of type "Local" in the web interface and APIs.
+
+When disable, it is still possible to create local storages with occ using
+the following command:
+
+% php occ files_external:create /mountpoint local null::null -c datadir=/path/to/data
+
+Defaults to ``true``
+
+::
+
 	'filesystem_check_changes' => 0,
 
 Specifies how often the local filesystem (the Nextcloud data/ directory, and
