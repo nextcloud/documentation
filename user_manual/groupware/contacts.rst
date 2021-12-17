@@ -25,17 +25,17 @@ When you first access the Contacts app, an empty default address book becomes av
 
 To add contacts into your address book, you can use one of the following methods:
 
-* Import contacts using a Virtual Contact File (VCF/Vcard) file 
+* Import contacts using a Virtual Contact File (VCF/vCard) file 
 * Add contacts manually
 
 The fastest way to add a contact is to use a Virtual Contact File
-(VCF/Vcard) file.
+(VCF/vCard) file.
 
 
 Importing Virtual Contacts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To Import Contacts Using a VCF/Vcard File:
+To Import Contacts Using a VCF/vCard File:
 
 1. Find "Settings" at the bottom of the left sidebar, next to the gear button:
 
@@ -49,7 +49,7 @@ To Import Contacts Using a VCF/Vcard File:
   
 .. note:: The Contacts app only supports import of vCards version 3.0 and 4.0.
 
-3. Click the "Import" button and upload your VCF/Vcard file. 
+3. Click the "Import" button and upload your VCF/vCard file. 
 
 After the import is complete, you will see your new contact in your address book. 
 
