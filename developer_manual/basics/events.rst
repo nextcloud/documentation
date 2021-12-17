@@ -679,7 +679,7 @@ Hooks
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-Hooks are used to execute code before or after an event has occurred. This is for instance useful to run cleanup code after users, groups or files have been deleted. Hooks should be registered in the :doc:`app.php <init>`:
+Hooks are used to execute code before or after an event has occurred. This is for instance useful to run cleanup code after users, groups or files have been deleted. Hooks should be registered in the :doc:`app.php <../app_development/init>`:
 
 .. code-block:: php
 
@@ -689,7 +689,7 @@ Hooks are used to execute code before or after an event has occurred. This is fo
     $app = new Application();
     $app->getContainer()->query('UserHooks')->register();
 
-The hook logic should be in a separate class that is being registered in the :doc:`requests/container`:
+The hook logic should be in a separate class that is being registered in the `App contructor <dependency_injection.html#using-a-container>`__:
 
 .. code-block:: php
 

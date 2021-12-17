@@ -19,7 +19,7 @@ setup and process of contribution is
 `documented here <https://github.com/nextcloud/android/blob/master/SETUP.md>`_.
 
 You might want to start with doing one or two `good first issues <https://github.com/nextcloud/android/labels/good%20first%20issue>`_
-to get into the code and note our :doc:`../general/index`.
+to get into the code and note our :doc:`../../prologue/index`.
 
 For authentication, you can use our usual login flow, and in addition (or instead
 if you are OK for users to depend on our Files app) use the great

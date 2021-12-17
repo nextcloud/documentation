@@ -3,8 +3,6 @@ Layout components
 
 All Nextcloud apps are built using individual reusable components for consistency and efficiency. Currently, these components are written in Vue and can be found at the `nextcloud-vue repository on Github <https://github.com/nextcloud/nextcloud-vue/>`_ with the documentation available at `the Nextcloud Vue components style guide <https://nextcloud-vue-components.netlify.app/>`_.
 
-.. _Navigation:
-
 Navigation
 ----------
 

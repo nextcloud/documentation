@@ -12,7 +12,9 @@ WebDAV basics
 
 The base url for all WebDAV operations for a Nextcloud instance is :code:`/remote.php/dav`.
 
-All requests need to provide authentication information, either as a Basic Auth header or by passing a set of valid session cookies.
+All requests need to provide authentication information, either as a Basic Auth header or by passing a set of valid session cookies. 
+
+If your Nextcloud installation uses an external auth provider (such as an OIDC server) you may have to create an app password. To do that browse to your user Settings > Security and create one. It will provide a username and password which you can use within the Basic Auth header.
 
 Testing requests with curl
 --------------------------

@@ -1638,6 +1638,8 @@ use the occ command ``preview:repair``. For now this will only migrate
 previews that were generated before Nextcloud 19 in the flat
 ``appdata_INSTANCEID/previews/FILEID`` folder structure.
 
+.. _configPHP_Sharing:
+
 Sharing
 -------
 
@@ -1974,6 +1976,19 @@ Defaults to ``1800`` (seconds)
 
 ::
 
+	'files_external_allow_create_new_local' => true,
+
+Allows to create external storages of type "Local" in the web interface and APIs.
+
+When disable, it is still possible to create local storages with occ using
+the following command:
+
+% php occ files_external:create /mountpoint local null::null -c datadir=/path/to/data
+
+Defaults to ``true``
+
+::
+
 	'filesystem_check_changes' => 0,
 
 Specifies how often the local filesystem (the Nextcloud data/ directory, and
@@ -2233,6 +2248,36 @@ scan to sync filesystem and database. Only users with unscanned files
 (size < 0 in filecache) are included. Maximum 500 users per job.
 
 Defaults to ``true``
+
+::
+
+	'query_log_file' => '',
+
+Log all queries into a file
+
+Warning: This heavily decreases the performance of the server and is only
+meant to debug/profile the query interaction manually.
+Also, it might log sensitive data into a plain text file.
+
+::
+
+	'redis_log_file' => '',
+
+Log all redis requests into a file
+
+Warning: This heavily decreases the performance of the server and is only
+meant to debug/profile the redis interaction manually.
+Also, it might log sensitive data into a plain text file.
+
+::
+
+	'ldap_log_file' => '',
+
+Log all LDAP requests into a file
+
+Warning: This heavily decreases the performance of the server and is only
+meant to debug/profile the LDAP interaction manually.
+Also, it might log sensitive data into a plain text file.
 
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.

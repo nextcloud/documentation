@@ -11,7 +11,7 @@ Table of contents
     whats_new
     webinterface
     files/index
-    pim/index
+    groupware/index
     talk/index 
     userpreferences
     universal_access

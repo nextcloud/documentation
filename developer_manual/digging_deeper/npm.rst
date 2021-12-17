@@ -1,3 +1,5 @@
+.. _app-npm:
+
 ===
 NPM
 ===
@@ -7,6 +9,8 @@ order to make the project setup easier for everybody, we recommend to follow the
 of typical scripts like ``build``, ``watch`` and ``test`` in the ``package.json`` file.
 
 You can find more info about this convention on blog posts like this `<https://www.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/>`_.
+
+.. _app-npm-build:
 
 npm build
 ---------

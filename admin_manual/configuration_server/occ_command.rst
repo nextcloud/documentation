@@ -40,6 +40,7 @@ occ command Directory
 * :ref:`command_line_upgrade_label`
 * :ref:`two_factor_auth_label`
 * :ref:`disable_user_label`
+* `Debugging`_
 
 .. _http_user_label:
 
@@ -749,11 +750,15 @@ It is also possible to transfer only one directory along with it's contents. Thi
 
  sudo -u www-data php occ files:transfer-ownership --path="path_to_dir" <source-user> <destination-user>
 
-In case the incoming shares must be transferred as well, use the argument ``--transfer-incoming-shares``::
+In case the incoming shares must be transferred as well, use the argument ``--transfer-incoming-shares`` with ``0`` or ``1`` as parameters ::
 
  sudo -u www-data php occ files:transfer-ownership --transfer-incoming-shares=1 --path="path_to_dir" <source-user> <destination-user>
 
 As an alternative, the system configuration option ``transferIncomingShares`` in config.php can be set to ``true`` to always transfer incoming shares.
+
+The command line option ``--transfer-incoming-shares`` overwrites the config.php option ``transferIncomingShares``. For example, ``'transferIncomingShares => true`` can be overwritten by: ::
+
+ sudo -u www-data php occ files:transfer-ownership --transfer-incoming-shares=0 <source-user> <destination-user>
 
 Users may also transfer files or folders selectively by themselves.
 See `user documentation <https://docs.nextcloud.com/server/latest/user_manual/en/files/transfer_ownership.html>`_ for details.
@@ -1083,9 +1088,11 @@ report showing how many users you have, and when a user was last logged in::
 
  user
   user:add                            adds a user
+  user:add-app-password               adds a app password named "cli"
   user:delete                         deletes the specified user
   user:disable                        disables the specified user
   user:enable                         enables the specified user
+  user:info                           shows information about the specific user
   user:lastseen                       shows when the user was logged in last time
   user:list                           shows list of all registered users
   user:report                         shows how many users have access
@@ -1487,3 +1494,12 @@ Use the following command to enable the user again::
  sudo -u www-data php occ user:enable <username>
 
 Note that once users are disabled, their connected browsers will be disconnected.
+
+.. _occ_debugging:
+
+Debugging
+---------
+
+In certain situations it's necessary to generate debugging information, e.g. before submitting a bug report. You can run ``occ`` with debug logging::
+
+ sudo -u www-data NC_loglevel=0 php occ -h

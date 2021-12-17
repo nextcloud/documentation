@@ -22,7 +22,7 @@ their respective manuals:
 * `Nextcloud Desktop Client`_
 * `Nextcloud Android App`_
 
-.. _`Nextcloud Desktop Client`: https://docs.nextcloud.com/desktop/3.0/
+.. _`Nextcloud Desktop Client`: https://docs.nextcloud.com/desktop/latest/
 .. _`Nextcloud Android App`: https://docs.nextcloud.com/android/
 
 `Help translate <https://www.transifex.com/nextcloud/nextcloud-user-documentation/>`_.

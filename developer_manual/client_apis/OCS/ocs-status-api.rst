@@ -31,9 +31,12 @@ Set your own status
 * Endpoint: ``/status``
 * Data:
 
-    field | type | Description | Allowed values
-    ------|------|-------------|---------------|
-    ``statusType`` | string | New status for the authenticated user | ``online``, ``away``, ``dnd``, ``invisible``, ``offline`` | 
++---------------+--------+---------------------------------------+-----------------------------------------------------------+
+| field         | type   | Description                           | Allowed values                                            |
++---------------+--------+---------------------------------------+-----------------------------------------------------------+
+|``statusType`` | string | New status for the authenticated user | ``online``, ``away``, ``dnd``, ``invisible``, ``offline`` |
++---------------+--------+---------------------------------------+-----------------------------------------------------------+
+
 
 * Response:
     - Status code:
@@ -48,10 +51,12 @@ Set a custom message (predefined)
 * Endpoint: ``/message/predefined``
 * Data:
 
-    field | type | Description 
-    ------|------|------------
-    ``messageId`` | string | Message-Id of the predefined message
-    ``clearAt``   | int    | Unix Timestamp representing the time to clear the status
++---------------+--------+----------------------------------------------------------+
+| field         | type   | Description                                              |
++---------------+--------+----------------------------------------------------------+
+| ``messageId`` | string | Message-Id of the predefined message                     |
+| ``clearAt``   | int    | Unix Timestamp representing the time to clear the status |
++---------------+--------+----------------------------------------------------------+
 
 * Response:
     - Status code:
@@ -67,11 +72,13 @@ Set a custom message (user-defined)
 * Endpoint: ``/message/custom``
 * Data:
 
-    field | type | Description 
-    ------|------|------------
-    ``statusIcon`` | string/null | The icon picked by the user (must be an emoji, at most one)
-    ``message``    | string      | The custom message picked by the user
-    ``clearAt``    | int         | Unix Timestamp representing the time to clear the status
++----------------+-------------+-------------------------------------------------------------+
+| field          | type        | Description                                                 |
++----------------+-------------+-------------------------------------------------------------+
+| ``statusIcon`` | string/null | The icon picked by the user (must be an emoji, at most one) |
+| ``message``    | string      | The custom message picked by the user                       |
+| ``clearAt``    | int         | Unix Timestamp representing the time to clear the status    |
++----------------+-------------+-------------------------------------------------------------+
 
 * Response:
     - Status code:
@@ -118,10 +125,12 @@ Fetch a list of all set user-statuses
 * Endpoint: ``/``
 * Data:
 
-    field | type | Description 
-    ------|------|------------
-    ``limit``  | int | Limit for pagination
-    ``offset`` | int | Offset for pagination
++------------+------+-----------------------+
+| field      | type | Description           |
++------------+------+-----------------------+
+| ``limit``  | int  | Limit for pagination  |
+| ``offset`` | int  | Offset for pagination |
++------------+------+-----------------------+
 
 * Response:
     - Status code:

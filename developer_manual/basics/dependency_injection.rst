@@ -139,7 +139,7 @@ How the container works
 
 The container works in the following way:
 
-* :doc:`A request comes in and is matched against a route <routes>` (for the AuthorController in this case)
+* :doc:`A request comes in and is matched against a route <routing>` (for the AuthorController in this case)
 * The matched route queries **AuthorController** service from the container::
 
     return new AuthorController(
@@ -177,7 +177,7 @@ So basically the container is used as a giant factory to build all the classes t
 Use automatic dependency assembly (recommended)
 -----------------------------------------------
 
-In Nextcloud it is possible to build classes and their dependencies without having to explicitly register them on the container, as long as the container can `reflect <reflection>`_ the constructor and look up the parameters by their type. This concept is widely known as *auto-wiring*.
+In Nextcloud it is possible to build classes and their dependencies without having to explicitly register them on the container, as long as the container can `reflect <https://www.php.net/manual/en/book.reflection.php>`_ the constructor and look up the parameters by their type. This concept is widely known as *auto-wiring*.
 
 How does auto-wiring work
 ^^^^^^^^^^^^^^^^^^^^^^^^^

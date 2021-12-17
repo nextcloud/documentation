@@ -3,7 +3,7 @@ Digging deeper
 ==============
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    api
    changelog
@@ -24,4 +24,7 @@ Digging deeper
    two-factor-provider
    users
    dashboard
+   groupware/index
    web_host_metadata
+   status
+   security
