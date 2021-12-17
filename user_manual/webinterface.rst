@@ -15,14 +15,23 @@ For the best experience with the Nextcloud web interface, we recommend that you 
 latest and supported version of a browser from this list:
 
 .. No need to translate
+
 * Microsoft **Internet Explorer**
+
 .. No need to translate
+
 * Microsoft **Edge**
+
 .. No need to translate
+
 * Mozilla **Firefox**
+
 .. No need to translate
+
 * Google **Chrome**/Chromium
+
 .. No need to translate
+
 * Apple **Safari**
 
 .. note:: If you want to use Nextcloud Talk you need to run Mozilla **Firefox** 52+

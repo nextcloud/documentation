@@ -75,7 +75,7 @@ In the ``...`` menu you can also choose to reply privately. This will open a one
 Here you can also create a direct link to the message or mark it unread so you will scroll back there next time you enter the chat. When it is a file, you can view the file in Files.
 
 Managing a conversation
----------------
+-----------------------
 
 You are always moderator in your new conversation. In the participant list on the right you can elevate other participants to moderators using the ``...`` menu to the right of their user name, or remove them from the conversation. 
 

@@ -1638,6 +1638,8 @@ use the occ command ``preview:repair``. For now this will only migrate
 previews that were generated before Nextcloud 19 in the flat
 ``appdata_INSTANCEID/previews/FILEID`` folder structure.
 
+.. _configPHP_Sharing:
+
 Sharing
 -------
 

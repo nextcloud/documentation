@@ -1,8 +1,5 @@
 .. sectionauthor:: John Molakvoæ <skjnldsv@protonmail.com>
 .. codeauthor:: John Molakvoæ <skjnldsv@protonmail.com>
-..  _navigation:
-
-..  _newbutton:
 
 ===============
 Introduction
@@ -463,8 +460,6 @@ Various information
 
 * You can add the ``icon-loading-small`` class to any ``li`` element to set it in a `loading` state.
 * Every element as a ``min-height`` of 44px as that is the minimum recommended touch target. It also helps with clickability and separation on desktop environments.
-
-..  _settings:
 
 =========
 Settings
