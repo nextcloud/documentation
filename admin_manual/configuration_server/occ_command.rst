@@ -1088,9 +1088,11 @@ report showing how many users you have, and when a user was last logged in::
 
  user
   user:add                            adds a user
+  user:add-app-password               adds a app password named "cli"
   user:delete                         deletes the specified user
   user:disable                        disables the specified user
   user:enable                         enables the specified user
+  user:info                           shows information about the specific user
   user:lastseen                       shows when the user was logged in last time
   user:list                           shows list of all registered users
   user:report                         shows how many users have access
