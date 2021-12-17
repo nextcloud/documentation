@@ -17,6 +17,15 @@ jobs:
         docs-folder: "user_manual/"
         pre-build-command: pip install -r requirements.txt
         build-command: make html
+  user_manual-en:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: ammaraskar/sphinx-action@master
+      with:
+        docs-folder: "user_manual/"
+        pre-build-command: pip install -r requirements.txt
+        build-command: make html-lang-en
   developer_manual:
     runs-on: ubuntu-latest
     steps:
