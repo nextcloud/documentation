@@ -59,17 +59,8 @@ Desktop client
 We strongly recommend using the latest version of your operating system to get the full and most stable experience out
 of our clients.
 
-- Windows 10 minimum Version 1709 [SAC]
-- macOS 10.12+ (64-bit only)
-- Linux
-- FreeBSD
-
-.. NOTE::
-   For Windows 10 we support Semi-Anual Channel, no LTSB/LTSC or IoT Versions.
-   
-   For Windows we support Client Operating Systems only, no Windows Server Versions.
-   
-   For Linux distributions, we support, if technically feasible, the latest 2 versions per platform and the previous LTS.
+For detailed system requirements please see 
+https://docs.nextcloud.com/desktop/3.4/installing.html#system-requirements
 
 Mobile apps
 -----------
