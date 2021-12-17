@@ -1,4 +1,4 @@
-.. _Dependencymanagement:
+.. _app-dependencies:
 
 =====================
 Dependency management

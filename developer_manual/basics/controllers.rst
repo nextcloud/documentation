@@ -4,7 +4,7 @@ Controllers
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-Controllers are used to connect :doc:`routes <routes>` with app logic. Think of it as callbacks that are executed once a request has come in. Controllers are defined inside the **lib/Controller/** directory.
+Controllers are used to connect :doc:`routes <routing>` with app logic. Think of it as callbacks that are executed once a request has come in. Controllers are defined inside the **lib/Controller/** directory.
 
 To create a controller, simply extend the Controller class and create a method that should be executed on a request:
 
@@ -58,7 +58,7 @@ Getting request parameters
 
 Parameters can be passed in many ways:
 
-* Extracted from the URL using curly braces like **{key}** inside the URL (see :doc:`routes`)
+* Extracted from the URL using curly braces like **{key}** inside the URL (see :doc:`routing`)
 * Appended to the URL as a GET request (e.g. ?something=true)
 * application/x-www-form-urlencoded from a form or jQuery
 * application/json from a POST, PATCH or PUT request
@@ -71,12 +71,13 @@ All those parameters can easily be accessed by adding them to the controller met
     namespace OCA\MyApp\Controller;
 
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Response;
 
     class PageController extends Controller {
 
         // this method will be executed with the id and name parameter taken
         // from the request
-        public function doSomething($id, $name) {
+        public function doSomething(string $id, string $name): Response {
 
         }
 
@@ -90,13 +91,14 @@ It is also possible to set default parameter values by using PHP default method 
     namespace OCA\MyApp\Controller;
 
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Response;
 
     class PageController extends Controller {
 
         /**
          * @param int $id
          */
-        public function doSomething($id, $name='john', $job='author') {
+        public function doSomething(int $id, string $name='john', string $job='author'): Response {
             // GET ?id=3&job=killer
             // $id = 3
             // $name = 'john'
@@ -124,6 +126,7 @@ would be passed in as the string *'false'* which is not what one would expect. T
     namespace OCA\MyApp\Controller;
 
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Response;
 
     class PageController extends Controller {
 
@@ -132,7 +135,7 @@ would be passed in as the string *'false'* which is not what one would expect. T
          * @param bool $doMore
          * @param float $value
          */
-        public function doSomething($id, $doMore, $value) {
+        public function doSomething(int $id, bool $doMore, float $value): Response {
             // GET /index.php/apps/myapp?id=3&doMore=false&value=3.5
             // => $id = 3
             //    $doMore = false
@@ -171,10 +174,11 @@ It is possible to pass JSON using a POST, PUT or PATCH request. To do that the *
     namespace OCA\MyApp\Controller;
 
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Response;
 
     class PageController extends Controller {
 
-        public function create($name, $number, $publisher, $customFields) {
+        public function create(string $name, int $number, string $publisher, array $customFields): Response {
             // $name = 'test'
             // $number = 3
             // $publisher = true
@@ -194,11 +198,12 @@ Headers, files, cookies and environment variables can be accessed directly from 
     namespace OCA\MyApp\Controller;
 
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Response;
     use OCP\IRequest;
 
     class PageController extends Controller {
 
-        public function someMethod() {
+        public function someMethod(): Response {
             $type = $this->request->getHeader('Content-Type');  // $_SERVER['HTTP_CONTENT_TYPE']
             $cookie = $this->request->getCookie('myCookie');  // $_COOKIES['myCookie']
             $file = $this->request->getUploadedFile('myfile');  // $_FILES['myfile']
@@ -227,6 +232,7 @@ Then session variables can be accessed like this:
     use OCP\ISession;
     use OCP\IRequest;
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Response;
 
     class PageController extends Controller {
 
@@ -241,7 +247,7 @@ Then session variables can be accessed like this:
          * The following annotation is only needed for writing session values
          * @UseSession
          */
-        public function writeASessionVariable() {
+        public function writeASessionVariable(): Response {
             // read a session variable
             $value = $this->session['value'];
 
@@ -274,7 +280,7 @@ Cookies can be set or modified directly on the response class:
          * Adds a cookie "foo" with value "bar" that expires after user closes the browser
          * Adds a cookie "bar" with value "foo" that expires 2015-01-01
          */
-        public function addCookie() {
+        public function addCookie(): TemplateResponse {
             $response = new TemplateResponse(...);
             $response->addCookie('foo', 'bar');
             $response->addCookie('bar', 'foo', new DateTime('2015-01-01 00:00'));
@@ -285,7 +291,7 @@ Cookies can be set or modified directly on the response class:
          * Invalidates the cookie "foo"
          * Invalidates the cookie "bar" and "bazinga"
          */
-        public function invalidateCookie() {
+        public function invalidateCookie(): TemplateResponse {
             $response = new TemplateResponse(...);
             $response->invalidateCookie('foo');
             $response->invalidateCookies(array('bar', 'bazinga'));
@@ -314,7 +320,7 @@ Returning JSON is simple, just pass an array to a JSONResponse:
 
     class PageController extends Controller {
 
-        public function returnJSON() {
+        public function returnJSON(): JSONResponse {
             $params = array('test' => 'hi');
             return new JSONResponse($params);
         }
@@ -332,7 +338,7 @@ Because returning JSON is such a common task, there's even a shorter way to do t
 
     class PageController extends Controller {
 
-        public function returnJSON() {
+        public function returnJSON(): array {
             return array('test' => 'hi');
         }
 
@@ -380,7 +386,7 @@ By default there is only a responder for JSON but more can be added easily:
 
     class PageController extends Controller {
 
-        public function returnHi() {
+        public function returnHi(): array {
 
             // XMLResponse has to be implemented
             $this->registerResponder('xml', function($value) {
@@ -415,7 +421,7 @@ Because returning values works fine in case of a success but not in case of fail
 
     class PageController extends Controller {
 
-        public function returnHi() {
+        public function returnHi(): DataResponse {
             try {
                 return new DataResponse(calculate_hi());
             } catch (\Exception $ex) {
@@ -429,7 +435,7 @@ Because returning values works fine in case of a success but not in case of fail
 Templates
 ^^^^^^^^^
 
-A :doc:`template <../view/templates>` can be rendered by returning a TemplateResponse. A TemplateResponse takes the following parameters:
+A :doc:`template <front-end/templates>` can be rendered by returning a TemplateResponse. A TemplateResponse takes the following parameters:
 
 * **appName**: tells the template engine in which app the template should be located
 * **templateName**: the name of the template inside the template/ folder without the .php extension
@@ -453,7 +459,7 @@ A :doc:`template <../view/templates>` can be rendered by returning a TemplateRes
 
     class PageController extends Controller {
 
-        public function index() {
+        public function index(): TemplateResponse {
             $templateName = 'main';  // will use templates/main.php
             $parameters = array('key' => 'hi');
             return new TemplateResponse($this->appName, $templateName, $parameters);
@@ -465,7 +471,7 @@ Public page templates
 ^^^^^^^^^^^^^^^^^^^^^
 
 For public pages, that are rendered to users who are not logged in to the
-Nextcloud instance, a :any:`PublicTemplateResponse <OCP\\AppFramework\\Http\\Template\\PublicTemplateResponse>` should be used, to load the
+Nextcloud instance, a ``OCP\\AppFramework\\Http\\Template\\PublicTemplateResponse`` should be used, to load the
 correct base template. It also allows adding an optional set of actions that
 will be shown in the top right corner of the public page.
 
@@ -481,7 +487,7 @@ will be shown in the top right corner of the public page.
 
     class PageController extends Controller {
 
-        public function index() {
+        public function index(): PublicTemplateResponse {
             $template = new PublicTemplateResponse($this->appName, 'main', []);
             $template->setHeaderTitle('Public page');
             $template->setHeaderDetails('some details');
@@ -498,9 +504,9 @@ The header title and subtitle will be rendered in the header, next to the logo.
 The action with the highest priority (lowest number) will be used as the
 primary action, others will shown in the popover menu on demand.
 
-A :any:`SimpleMenuAction <OCP\\AppFramework\\Http\\Template\\SimpleMenuAction>` will be a link with an icon added to the menu. App
+A ``OCP\\AppFramework\\Http\\Template\\SimpleMenuAction`` will be a link with an icon added to the menu. App
 developers can implement their own types of menu renderings by adding a custom
-class implementing the :any:`IMenuAction <OCP\\AppFramework\\Http\\Template\\IMenuAction>` interface.
+class implementing the ``OCP\\AppFramework\\Http\\Template\\IMenuAction`` interface.
 
 
 
@@ -519,7 +525,7 @@ A redirect can be achieved by returning a RedirectResponse:
 
     class PageController extends Controller {
 
-        public function toGoogle() {
+        public function toGoogle(): RedirectResponse {
             return new RedirectResponse('https://google.com');
         }
 
@@ -540,7 +546,7 @@ A file download can be triggered by returning a DownloadResponse:
 
     class PageController extends Controller {
 
-        public function downloadXMLFile() {
+        public function downloadXMLFile(): DownloadResponse {
             $path = '/some/path/to/file.xml';
             $contentType = 'application/xml';
 
@@ -572,7 +578,7 @@ Creating a custom XMLResponse class could look like this:
             $this->xml = $xml;
         }
 
-        public function render() {
+        public function render(): string {
             $root = new SimpleXMLElement('<root/>');
             array_walk_recursive($this->xml, array ($root, 'addChild'));
             return $xml->asXML();
@@ -679,7 +685,7 @@ The following policy for instance allows images, audio and videos from other dom
 OCS
 ^^^
 
-.. note:: This is purely for compatibility reasons. If you are planning to offer an external API, go for a :doc:`api` instead.
+.. note:: This is purely for compatibility reasons. If you are planning to offer an external API, go for a :doc:`../digging_deeper/rest_apis` instead.
 
 In order to ease migration from OCS API routes to the App Framework, an additional controller and response have been added. To migrate your API you can use the **OCP\\AppFramework\\OCSController** base class and return your data in the form of a DataResponse in the following way:
 
@@ -772,7 +778,7 @@ Most of the time though it makes sense to also allow normal users to access the 
 To turn off checks the following *Annotations* can be added before the controller:
 
 * **@NoAdminRequired**: Also users that are not admins can access the page
-* **@NoCSRFRequired**: Don't check the CSRF token (use this wisely since you might create a security hole; to understand what it does see :doc:`../../general/security`)
+* **@NoCSRFRequired**: Don't check the CSRF token (use this wisely since you might create a security hole; to understand what it does see `CSRF in the security section <../prologue/security.html#cross-site-request-forgery>`__)
 * **@PublicPage**: Everyone can access the page without having to log in
 
 A controller method that turns off all checks would look like this:

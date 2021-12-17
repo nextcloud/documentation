@@ -174,6 +174,8 @@ Hints
 
 In case some translation strings may be translated wrongly because they have multiple meanings, you can add hints which will be shown in the Transifex web-interface:
 
+**PHP**
+
 .. code-block:: php
 
     <ul id="translations">
@@ -185,11 +187,39 @@ In case some translation strings may be translated wrongly because they have mul
         </li>
     </ul>
 
+**Javascript**
 
+.. code-block:: javascript
 
+    // TRANSLATORS name that is appended to copied files with the same name, will be put in parenthesis and appened with a number if it is the second+ copy
+    var copyNameLocalized = t('files', 'copy');
 
+**Vue**
 
+Currently, commenting in Vue files is not possible.
+Vue files are not read via gettext and synchronized with Transifex.
+As a small help, the file in question as well as the line of code is written in the translation comment (``// TRANSLATORS``).
 
+**C++ (Qt)**
+
+.. code-block:: c++
+
+    //: Example text: "Progress of sync process. Shows the currently synced filename"
+    fileProgressString = tr("Syncing %1").arg(allFilenames);
+
+**Android Strings**
+
+.. code-block:: xml
+
+    <!-- TRANSLATORS List of deck boards -->
+    <string name="simple_boards">Boards</string>
+
+**iOS**
+
+.. code-block:: swift
+
+    /* The title on the navigation bar of the Scanning screen. */
+    "wescan.scanning.title"             = "Scanning";
 
 Adding translations
 -------------------

@@ -17,10 +17,10 @@ Usage
 
 The idea is that apps install these packages via `npm` and bundle the code with tools like `Babel <https://babeljs.io/>`_, `Webpack <https://webpack.js.org/>`_ or `Parcel <https://parceljs.org/>`_. This ensures that an app runs the exact same code independent of the Nextcloud version and also reduces the chances of running into conflicts with other apps.
 
-For more details on the design considerations see `the discussion on Github <https://github.com/nextcloud/server/issues/15932>`_.
+For more details on the design considerations see `the discussion on GitHub <https://github.com/nextcloud/server/issues/15932>`_.
 
 
-.. note:: We highly recommend keeping packages up-to-date as they provide fixes and security patches. For apps with code hosted on Github we recommend the use of `Dependabot <https://dependabot.com/>`_.
+.. note:: We highly recommend keeping packages up-to-date as they provide fixes and security patches. For apps with code hosted on GitHub we recommend the use of `Dependabot <https://dependabot.com/>`_.
 
 
 Compatibility

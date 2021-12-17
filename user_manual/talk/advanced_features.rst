@@ -12,7 +12,7 @@ A moderator can add a Matterbridge connection in the chat conversation settings.
 
 .. image:: images/matterbridge-settings.png
 
-Each of the bridges has its own need in terms of configuration. Information for most is available on the Matterbridge wiki and can be accessed behind ``more information`` menu in the ... menu. You can also `access the wiki directly. <https://github.com/42wim/matterbridge/wiki>`_
+Each of the bridges has its own need in terms of configuration. Information for most is available on the Matterbridge wiki and can be accessed behind ``more information`` menu in the ``...`` menu. You can also `access the wiki directly. <https://github.com/42wim/matterbridge/wiki>`_
 
 Lobby
 -----
@@ -26,7 +26,7 @@ You can choose to let the participants join the call at a specific time, or when
 Commands
 --------
 
-Nextcloud allows users to execute actions using commands. A command typically looks like
+Nextcloud allows users to execute actions using commands. A command typically looks like:
 
     ``/wiki airplanes``
 
@@ -36,7 +36,7 @@ Administrators can configure, enable and disable commands. Users can use the ``h
 
 .. image:: images/command-help.png
 
-Find more information in the `admin documentation for Talk. <https://nextcloud-talk.readthedocs.io/en/stable/commands/>`_
+Find more information in the `administrative documentation for Talk. <https://nextcloud-talk.readthedocs.io/en/stable/commands/>`_
 
 Talk from Files
 ---------------

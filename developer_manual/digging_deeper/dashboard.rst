@@ -130,6 +130,8 @@ however this method is deprecated and will be removed once Nextcloud 19 is EOL.
 
 .. code-block:: php
 
+    <?php
+
     use OCP\Dashboard\RegisterWidgetEvent;
     use OCP\EventDispatcher\IEventDispatcher;
 

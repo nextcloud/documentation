@@ -30,7 +30,7 @@ This will return a structure like
     {
         "ocs": {
             "meta": {
-                …
+                "…": "…"
             },
             "data": [
                 {
@@ -57,7 +57,7 @@ Fetching individual search results
     {
         "ocs": {
             "meta": {
-                …
+                "…": "…"
             },
             "data": {
                 "name": "Files",
@@ -187,7 +187,9 @@ Next, you'll see a dummy provider that returns a static set of results.
     use OCP\IURLGenerator;
     use OCP\IUser;
     use OCP\Search\IProvider;
+    use OCP\Search\SearchResult;
     use OCP\Search\SearchResultEntry;
+    use OCP\Search\ISearchQuery;
 
     class Provider implements IProvider {
 
@@ -279,6 +281,7 @@ For **offset-based pagination** you return ``$query->getLimit()`` results and sp
     use OCP\IUser;
     use OCP\Search\IProvider;
     use OCP\Search\SearchResult;
+    use OCP\Search\ISearchQuery;
 
     class Provider implements IProvider {
 
@@ -346,6 +349,7 @@ For a **cursor-based pagination** a app-specific property is used to know a refe
     use OCP\IUser;
     use OCP\Search\IProvider;
     use OCP\Search\SearchResult;
+    use OCP\Search\ISearchQuery;
 
     class Provider implements IProvider {
 

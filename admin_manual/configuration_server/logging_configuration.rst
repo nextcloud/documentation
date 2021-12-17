@@ -111,8 +111,6 @@ Example log entries
 Log field breakdown
 ~~~~~~~~~~~~~~~~~~~
 
-* **0**: DEBUG: All activity; the most detailed logging.
-
 * **reqId** (request id): any log lines related to a single request have the same value
 * **level**: logged incident's level, always 1 in audit.log
 * **time**: date and time (format and timezone can be configured in config.php)
@@ -132,7 +130,7 @@ Empty value are written as two dashes: "--".
 Admin audit log
 ---------------
 
-If ``loglevel`` in ``config.php`` is set to ``2`` or higher, audit logging needs to be triggered explicitly by adding the follwing setting to to ``config.php``:
+If ``loglevel`` in ``config.php`` is set to ``2`` or higher, audit logging needs to be triggered explicitly by adding the following setting to to ``config.php``:
 
 ::
 
@@ -150,3 +148,8 @@ If required, the name and path of the audit log file can be customized by using 
 Find detailed documentation on auditable events for enterprises in our `customer portal <https://portal.nextcloud.com/article/using-the-audit-log-44.html>`_.
 
 .. _PHP date function: http://www.php.net/manual/en/function.date.php
+
+Temporary overrides
+-------------------
+
+You can run override the config.php log level of ``occ`` commands with as :ref:`documented here<occ_debugging>`.

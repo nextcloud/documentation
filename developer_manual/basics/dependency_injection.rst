@@ -139,7 +139,7 @@ How the container works
 
 The container works in the following way:
 
-* :doc:`A request comes in and is matched against a route <routes>` (for the AuthorController in this case)
+* :doc:`A request comes in and is matched against a route <routing>` (for the AuthorController in this case)
 * The matched route queries **AuthorController** service from the container::
 
     return new AuthorController(
@@ -177,7 +177,7 @@ So basically the container is used as a giant factory to build all the classes t
 Use automatic dependency assembly (recommended)
 -----------------------------------------------
 
-In Nextcloud it is possible to build classes and their dependencies without having to explicitly register them on the container, as long as the container can `reflect <reflection>`_ the constructor and look up the parameters by their type. This concept is widely known as *auto-wiring*.
+In Nextcloud it is possible to build classes and their dependencies without having to explicitly register them on the container, as long as the container can `reflect <https://www.php.net/manual/en/book.reflection.php>`_ the constructor and look up the parameters by their type. This concept is widely known as *auto-wiring*.
 
 How does auto-wiring work
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -210,12 +210,12 @@ So basically the following is now possible:
 
   $app = new \OCP\AppFramework\App('myapp');
 
-  $class2 = $app->getContainer()->get('OCA\MyApp\MyTestClass2');
+  $class2 = $app->getContainer()->get(MyTestClass2::class);
 
   $class2 instanceof MyTestClass2;  // true
   $class2->class instanceof MyTestClass;  // true
-  $class2->appName === 'appname';  // true
-  $class2 === $app->getContainer()->get('OCA\MyApp\MyTestClass2');  // true
+  $class2->appName === 'myname';  // true
+  $class2 === $app->getContainer()->get(MyTestClass2:class);  // true
 
 .. note:: $AppName is resolved because the container registered a parameter under the key 'AppName' which will return the app id. The lookup is case sensitive so while $AppName will work correctly, using $appName as a constructor parameter will fail.
 

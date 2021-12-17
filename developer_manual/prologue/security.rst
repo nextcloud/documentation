@@ -204,7 +204,7 @@ Nextcloud offers three simple checks:
 * **OCP\\JSON::checkAdminUser()**: Checks if the logged in user has admin privileges
 * **OCP\\JSON::checkSubAdminUser()**: Checks if the logged in user has group admin privileges
 
-Using the App Framework, these checks are already automatically performed for each request and have to be explicitly turned off by using annotations above your controller method,  see :doc:`../app/requests/controllers`.
+Using the App Framework, these checks are already automatically performed for each request and have to be explicitly turned off by using annotations above your controller method,  see :doc:`../basics/controllers`.
 
 Additionally always check if the user has the right to perform that action. (e.g. a user should not be able to delete other users' bookmarks).
 
@@ -227,7 +227,7 @@ To prevent CSRF in an app, be sure to call the following method at the top of al
   <?php
   OCP\JSON::callCheck();
 
-If you are using the App Framework, every controller method is automatically checked for CSRF unless you explicitly exclude it by setting the @NoCSRFRequired annotation before the controller method, see :doc:`../app/requests/controllers`
+If you are using the App Framework, every controller method is automatically checked for CSRF unless you explicitly exclude it by setting the @NoCSRFRequired annotation before the controller method, see :doc:`../basics/controllers`
 
 Unvalidated redirects
 ---------------------
@@ -253,4 +253,4 @@ Always validate the URL before redirecting if the requested URL is on the same d
 Getting help
 ------------
 
-If you need help to ensure that a function is secure please ask on our `forum <https://help.nextcloud.com>`_ or on our IRC channel **#nextcloud-dev** on **irc.freenode.net**.
+If you need help to ensure that a function is secure please ask on our `forum <https://help.nextcloud.com>`_.

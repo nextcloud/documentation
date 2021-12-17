@@ -169,10 +169,7 @@ description
 version
     * required
     * must be a `semantic version <http://semver.org/>`_ without build metadata, e.g. 9.0.1 or 9.1.0-alpha.1
-    * semantic version also means:
-
-        * when you add a new Nextcloud version as a supported version, you bump the minor version (second number)
-        * when you remove a Nextcloud version from the supported versions, you bump the major version (first number)
+    * :ref:`more info on app versioning <app-versioning>`
 
 licence
     * required

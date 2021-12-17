@@ -45,7 +45,7 @@ How will it work?
 
 Examples
 --------
-Read our documentation about :doc:`../general/codingguidelines` for information
+Read our documentation about :doc:`../../getting_started/codingguidelines` for information
 on what a good pull request and good Nextcloud code looks like.
 
 These are two examples that are considered to be good examples of how pull
@@ -57,7 +57,6 @@ requests should be handled
 Questions?
 ----------
 
-Feel free to drop a line on the `forums`_ or join us on `IRC`_.
+Feel free to drop a line on the `forums`.
 
 .. _forums: https://help.nextcloud.com/
-.. _IRC: https://webchat.freenode.net/?channels=nextcloud-dev

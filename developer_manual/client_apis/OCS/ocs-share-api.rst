@@ -83,6 +83,7 @@ Share a file/folder with a user/group or as public link.
   16 = share; 31 = all (default: 31, for public shares: 1)
 * POST Arguments: expireDate - (string) set a expire date for public link
   shares. This argument expects a well formatted date string, e.g. 'YYYY-MM-DD'
+* POST Arguments: note - (string) Adds a note for the share recipient.
 * Mandatory fields: shareType, path and shareWith for shareType 0 or 1.
 
 * Result: XML containing the share ID (int) of the newly created share
@@ -141,7 +142,7 @@ Federated Cloud Shares
 ----------------------
 
 Both the sending and the receiving instance need to have federated cloud sharing
-enabled and configured. See `Configuring Federated Cloud Sharing <https://docs.nextcloud.org/server/latest/admin_manual/configuration_files/federated_cloud_sharing_configuration.html>`_.
+enabled and configured. See `Configuring Federated Cloud Sharing <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/federated_cloud_sharing_configuration.html>`_.
 
 .. TODO ON RELEASE: Update version number above on release
 

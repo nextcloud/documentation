@@ -75,3 +75,30 @@ Because of security issues, Nextcloud forbids subscriptions from local network h
 If you need to allow this, change the following parameter to::
 
  php occ config:app:set dav webcalAllowLocalAccess --value yes
+
+Trash bin
+---------
+
+Nextcloud supports a calendar, events and tasks trash bin.
+
+The default delay before objects are purged from the trash bin is 30 days. A background job runs every 6 hours to clean up expired objects.
+
+To set up a different retention period, change the ``calendarRetentionObligation`` option::
+
+ php occ config:app:set dav calendarRetentionObligation --value=2592000
+
+Where the value is the number of seconds for the period. Setting the value to ``0`` disables the trash bin.
+
+Resources and rooms
+-------------------
+
+The Nextcloud CalDAV back end support resources and rooms. Resources and room can be booked for appointments and the system will schedule them so they can only be used once at a time. Those resources and rooms have to be provided by an app that provides a back end for this.
+
+Once a back end app is installed the app typically allows admins or even users to define the resources, but this is subject of the specific implementation.
+
+Nextcloud periodically queries all registered back ends. Therefore new and updated resources and rooms will show with a delay.
+
+Known back ends
+~~~~~~~~~~~~~~~
+
+* `Calendar Resource Management <https://github.com/nextcloud/calendar_resource_management>`_: database back end with CLI configuration for admins

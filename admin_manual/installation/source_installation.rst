@@ -33,7 +33,7 @@ If you get a result, the module is present.
 
 Required:
 
-* PHP (7.3 or 7.4)
+* PHP 7.3, 7.4 or **8.0** (*recommended*)
 * PHP module ctype
 * PHP module curl
 * PHP module dom
@@ -221,7 +221,7 @@ in sharing links like ``https://example.org/nextcloud/index.php/s/Sv1b7krAUqmF8Q
 making URLs shorter and thus prettier.
 
 ``mod_env`` and ``mod_rewrite`` must be installed on your webserver and the :file:`.htaccess`
-must be writable by the HTTP user. Then you can set in the :file:`config.php` two variables::
+must be writable by the HTTP user. To enable ``mod_env`` and ``mod_rewrite``, run ``sudo a2enmod env`` and ``sudo a2enmod rewrite``. Then you can set in the :file:`config.php` two variables::
 
     'overwrite.cli.url' => 'https://example.org/nextcloud',
     'htaccess.RewriteBase' => '/nextcloud',
@@ -430,10 +430,10 @@ You can find all the available versions `here <https://shop.hanssonit.se/product
 
 For complete instructions and downloads see:
 
-- `Nextcloud VM (Github) <https://github.com/nextcloud/vm/>`_
+- `Nextcloud VM (GitHub) <https://github.com/nextcloud/vm/>`_
 - `Nextcloud VM (T&M Hansson IT) <https://www.hanssonit.se/nextcloud-vm/>`_
 
-.. note:: You can install the VM on several different operating systems as long as you can mount OVA, VMDK, or VHD/VHDX VM in your hypervisor. If you are using KVM then you need to install the VM from the scripts on Github. You can follow the `instructions in the README <https://github.com/nextcloud/vm#build-your-own-vm-or-install-on-a-vps>`_.
+.. note:: You can install the VM on several different operating systems as long as you can mount OVA, VMDK, or VHD/VHDX VM in your hypervisor. If you are using KVM then you need to install the VM from the scripts on GitHub. You can follow the `instructions in the README <https://github.com/nextcloud/vm#build-your-own-vm-or-install-on-a-vps>`_.
 
 .. _snaps_label:
 
@@ -477,6 +477,10 @@ redirected to the Nextcloud installer. Here a quick how-to:
    it becomes available through the web installer and the updater. This is done to
    spread the deployment of new major releases out over time.
 
+Installation on TrueNAS
+-----------------------
+
+See the `TrueNAS installation documentation <https://www.truenas.com/docs/core/solutions/integrations/nextcloud/>`_.
 
 Installation via install script
 -------------------------------

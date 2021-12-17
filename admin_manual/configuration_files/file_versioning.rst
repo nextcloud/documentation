@@ -41,3 +41,15 @@ Additional options are:
 
 * ``disabled``  
     Disable the Versions app; no old file versions will be deleted.
+
+Background job
+--------------
+
+To delete expired versions a background jobs runs every 30 minutes. 
+It's possible to deactivate the background job and setup a (system) cron to expire the versions via occ.
+
+Deactivate background job: ``occ config:app:set --value=no files_versions background_job_expire_versions``
+
+Activate background job: ``occ config:app:delete files_versions background_job_expire_versions``
+
+Expire versions: ``occ versions:expire`` or ``occ versions:expire --quiet`` (without the progress bar)

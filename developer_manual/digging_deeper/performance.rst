@@ -64,4 +64,4 @@ The recommendation is to automatically do 10000 PROPFINDs or file uploads, measu
 Getting help
 ------------
 
-If you need help with performance or other issues please ask on our `forums <https://help.nextcloud.com>`_ or on our IRC channel **#nextcloud-dev** on **irc.freenode.net**.
+If you need help with performance or other issues please ask on our `forums <https://help.nextcloud.com>`_.

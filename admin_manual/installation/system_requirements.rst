@@ -19,9 +19,9 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - Debian 10 (Buster)                                                  |
 |                  | - SUSE Linux Enterprise Server 15                                     |
 |                  | - openSUSE Leap 42.1+                                                 |
-|                  | - CentOS 8                                                            |
+|                  | - CentOS Stream                                                       |
 +------------------+-----------------------------------------------------------------------+
-| Database         | - **MySQL 8.0+ or MariaDB 10.2+** (recommended)                       |
+| Database         | - **MySQL 8.0+ or MariaDB 10.2/10.3/10.4/10.5** (recommended)         |
 |                  | - Oracle Database 11g (*only as part of an enterprise subscription*)  |
 |                  | - PostgreSQL 9.6/10/11/12/13                                          |
 |                  | - SQLite (*only recommended for testing and minimal-instances*)       |
@@ -30,7 +30,8 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - nginx with ``php-fpm``                                              |
 +------------------+-----------------------------------------------------------------------+
 | PHP Runtime      | - 7.3                                                                 |
-|                  | - **7.4** (*recommended*)                                             |
+|                  | - 7.4                                                                 |
+|                  | - **8.0** (*recommended*)                                             |
 +------------------+-----------------------------------------------------------------------+
 
 See :doc:`source_installation` for minimum PHP-modules and additional software for installing Nextcloud.
@@ -68,10 +69,21 @@ Mobile apps
 We strongly recommend using the latest version of your mobile operating system to get the full and most stable experience out
 of our mobile apps.
 
+Files App
+^^^^^^^^^
+
 - **iOS** 11.x+
 - **Android** 4.x+
 
-.. note:: The separate Nextcloud Talk app requires iOS 10.x+ or Android 5.x+.
+Talk App
+^^^^^^^^
+
+- **iOS** 10.0+
+- **Android** 5.0+
+- **Nextcloud Server** 14.0+
+- **Nextcloud Talk** 4.0+
+
+.. note:: When using Nextcloud Talk 12.0+ please update the Android Talk App to the newest version (or at least to v12.1).
 
 Web browser
 -----------

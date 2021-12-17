@@ -6,10 +6,59 @@ Once you've created and published the first version of your app, you will want t
 
 This document will cover the most important changes in Nextcloud, as well as some guides on how to upgrade existing apps.
 
+Upgrading to Nextcloud 24
+-------------------------
+
+.. note:: Critical changes were collected `on GitHub <https://github.com/nextcloud/server/issues/29914>`__. See the original ticket for links to the pull requests and tickets.
+
+Front-end changes
+^^^^^^^^^^^^^^^^^
+
+tbd
+
+Back-end changes
+^^^^^^^^^^^^^^^^
+
+tbd
+
+Changed APIs
+************
+
+tbd
+
+Removed APIs
+************
+
+tbd
+
+Upgrading to Nextcloud 23
+-------------------------
+
+.. note:: Critical changes were collected `on GitHub <https://github.com/nextcloud/server/issues/27846>`__. See the original ticket for links to the pull requests and tickets.
+
+Back-end changes
+^^^^^^^^^^^^^^^^
+
+Changed APIs
+************
+
+* ``\OCP\User\Events\UserLoggedInEvent::getPassword`` is now nullable because logins are possible without a password in SSO setups
+
+Deprecated APIs
+***************
+
+* ``\OCP\Calendar\IManager::search``: use :ref:`the new calendar search API<calendar-search>`
+* ``\OCP\Calendar\IManager::isEnabled``: there is no replacement
+* ``\OCP\Calendar\IManager::registerCalendar``: use :ref:`calendar providers<calendar-providers>`
+* ``\OCP\Calendar\IManager::unregisterCalendar`` there is no replacement
+* ``\OCP\Calendar\IManager::register``: use :ref:`calendar providers<calendar-providers>`
+* ``\OCP\Calendar\IManager::getCalendars``: use :ref:`the new calendar API<calendar-access>`
+* ``\OCP\Calendar\IManager::clear``: there is no replacement
+
 Upgrading to Nextcloud 22
 -------------------------
 
-.. note:: Critical changes were collected `on Github <https://github.com/nextcloud/server/issues/26407>`__. See the original ticket for links to the pull requests and tickets.
+.. note:: Critical changes were collected `on GitHub <https://github.com/nextcloud/server/issues/26407>`__. See the original ticket for links to the pull requests and tickets.
 
 General
 ^^^^^^^
@@ -19,7 +68,7 @@ Migration commands
 
 The occ commands in the ``migration:*`` namespace are now only available in :ref:`debug mode<debug-mode>`.
 
-See `the pull request on Github <https://github.com/nextcloud/server/pull/27113>`__ for more information. If you thought you needed them, feel free to ping the author or a reviewer of the PR to solve the problem correctly. Running migrations directly mostly breaks the database status and is therefore only meant for debugging faulty migrations.
+See `the pull request on GitHub <https://github.com/nextcloud/server/pull/27113>`__ for more information. If you thought you needed them, feel free to ping the author or a reviewer of the PR to solve the problem correctly. Running migrations directly mostly breaks the database status and is therefore only meant for debugging faulty migrations.
 
 Log format
 **********
@@ -32,7 +81,7 @@ Front-end changes
 Scss variable and compilation deprecation
 *****************************************
 
-Nextcloud is slowly phasing out scss variables and the compilation of app style sheets. It's recommended that apps use their own compilation (e.g. through Webpack) to transform scss and similar to plain css. The ability of Nextcloud compiling scss for apps will be removed in the future. Subscribe to `Github ticket 9940 <https://github.com/nextcloud/server/issues/9940>`__ to get updates on how to best approach this. Right now some scss variables can be replaced with css variables. Other mechanisms like the icon generation still depend on the scss compilation by Nextcloud.
+Nextcloud is slowly phasing out scss variables and the compilation of app style sheets. It's recommended that apps use their own compilation (e.g. through Webpack) to transform scss and similar to plain css. The ability of Nextcloud compiling scss for apps will be removed in the future. Subscribe to `GitHub ticket 9940 <https://github.com/nextcloud/server/issues/9940>`__ to get updates on how to best approach this. Right now some scss variables can be replaced with css variables. Other mechanisms like the icon generation still depend on the scss compilation by Nextcloud.
 
 Node.js upgrade
 ***************
@@ -105,7 +154,7 @@ Deprecated APIs
 Upgrading to Nextcloud 21
 -------------------------
 
-.. note:: Critical changes were collected `on Github <https://github.com/nextcloud/server/issues/23210>`__. See the original ticket for links to the pull requests and tickets.
+.. note:: Critical changes were collected `on GitHub <https://github.com/nextcloud/server/issues/23210>`__. See the original ticket for links to the pull requests and tickets.
 
 General
 ^^^^^^^
@@ -115,7 +164,7 @@ The biggest change in Nextcloud 21 is the initial support for PHP 8 and the corr
 PHP 8 support
 *************
 
-Nextcloud 21 is the first major release that is compatible with the new PHP 8.0. As a consequence, some previously working syntax can cause problems when an app is deployed with PHP newer than 7.4. The full changelog can be found `on the php.net website <https://www.php.net/ChangeLog-8.php>`__. There is also a document for all breaking changes `on Github <https://github.com/php/php-src/blob/PHP-8.0/UPGRADING#L20>`__.
+Nextcloud 21 is the first major release that is compatible with the new PHP 8.0. As a consequence, some previously working syntax can cause problems when an app is deployed with PHP newer than 7.4. The full changelog can be found `on the php.net website <https://www.php.net/ChangeLog-8.php>`__. There is also a document for all breaking changes `on GitHub <https://github.com/php/php-src/blob/PHP-8.0/UPGRADING#L20>`__.
 
 To check compatibility automatically we recommend adding or updating the :ref:`app-ci` of your app so that linters, tests and static analysis can warn you about any problems before the app is shipped to users.
 
@@ -145,7 +194,7 @@ Some (minor) breaking changes were inevitable. Here's the summary
 * ``$connection->prepare()->execute()`` previously returned ``false`` under some error conditions, it now always gives you an ``IResult`` or throws a ``\OCP\DB\Exception``.
 * ``\Doctrine\DBAL\Types\Type::*`` type constants were moved, which some apps used for column type constants in apps. Use the new ``\OCP\DB\Types::*`` as a replacement.
 
-The details of this change can also be seen in the `pull request on Github <https://github.com/nextcloud/server/pull/24948>`__ and in the upstream `dbal 3.0.xx upgrade document <https://github.com/doctrine/dbal/blob/3.0.x/UPGRADE.md>`__.
+The details of this change can also be seen in the `pull request on GitHub <https://github.com/nextcloud/server/pull/24948>`__ and in the upstream `dbal 3.0.xx upgrade document <https://github.com/doctrine/dbal/blob/3.0.x/UPGRADE.md>`__.
 
 ``guzzlehttp/guzzle``
 =====================
@@ -188,7 +237,7 @@ There was an old, unused and inofficial mechanism to hook into well-known discov
 Upgrading to Nextcloud 20
 -------------------------
 
-.. note:: Critical changes were collected `on Github <https://github.com/nextcloud/server/issues/20953>`__. See the original ticket for links to the pull requests and tickets.
+.. note:: Critical changes were collected `on GitHub <https://github.com/nextcloud/server/issues/20953>`__. See the original ticket for links to the pull requests and tickets.
 
 Front-end changes
 ^^^^^^^^^^^^^^^^^
@@ -413,7 +462,7 @@ Removed from public namespace
 Upgrading to Nextcloud 19
 -------------------------
 
-.. note:: Critical changes were collected `on Github <https://github.com/nextcloud/server/issues/18479>`__. See the original ticket for links to the pull requests and tickets.
+.. note:: Critical changes were collected `on GitHub <https://github.com/nextcloud/server/issues/18479>`__. See the original ticket for links to the pull requests and tickets.
 
 Front-end changes
 ^^^^^^^^^^^^^^^^^
@@ -504,7 +553,7 @@ Changed APIs
 Upgrading to Nextcloud 18
 -------------------------
 
-.. note:: Critical changes were collected `on Github <https://github.com/nextcloud/server/issues/17131>`__. See the original ticket for links to the pull requests and tickets.
+.. note:: Critical changes were collected `on GitHub <https://github.com/nextcloud/server/issues/17131>`__. See the original ticket for links to the pull requests and tickets.
 
 Front-end changes
 ^^^^^^^^^^^^^^^^^
@@ -557,7 +606,7 @@ Behavioral changes
 Upgrading to Nextcloud 17
 -------------------------
 
-.. note:: Critical changes were collected `on Github <https://github.com/nextcloud/server/issues/15339>`__. See the original ticket for links to the pull requests and tickets.
+.. note:: Critical changes were collected `on GitHub <https://github.com/nextcloud/server/issues/15339>`__. See the original ticket for links to the pull requests and tickets.
 
 Front-end changes
 ^^^^^^^^^^^^^^^^^
@@ -612,14 +661,14 @@ Deprecations
 Behavioral changes
 ^^^^^^^^^^^^^^^^^^
 
-* LDAP: default value for ``ldapGroupMemberAssocAttr`` changed from ``uniqueMember`` to unset. On scripted setups, it has to be set if LDAP groups should be used within Nextcloud. 
+* LDAP: default value for ``ldapGroupMemberAssocAttr`` changed from ``uniqueMember`` to unset. On scripted setups, it has to be set if LDAP groups should be used within Nextcloud.
 * Provisioning API: creating users will return the assigned user ID as dataset, as in ``['id' => $userid]``.
 
 
 Upgrading to Nextcloud 16
 -------------------------
 
-.. note:: Critical changes were collected `on Github <https://github.com/nextcloud/server/issues/12915>`__. See the original ticket for links to the pull requests and tickets.
+.. note:: Critical changes were collected `on GitHub <https://github.com/nextcloud/server/issues/12915>`__. See the original ticket for links to the pull requests and tickets.
 
 Front-end changes
 ^^^^^^^^^^^^^^^^^
@@ -669,7 +718,7 @@ Removed APIs
 Upgrading to Nextcloud 15
 -------------------------
 
-.. note:: Critical changes were collected `on Github <https://github.com/nextcloud/server/issues/15339>`__. See the original ticket for links to the pull requests and tickets.
+.. note:: Critical changes were collected `on GitHub <https://github.com/nextcloud/server/issues/15339>`__. See the original ticket for links to the pull requests and tickets.
 
 Front-end changes
 ^^^^^^^^^^^^^^^^^
@@ -712,7 +761,7 @@ Removed APIs
 Upgrading to Nextcloud 14
 -------------------------
 
-.. note:: Critical changes were collected `on Github <https://github.com/nextcloud/server/issues/7827>`__. See the original ticket for links to the pull requests and tickets.
+.. note:: Critical changes were collected `on GitHub <https://github.com/nextcloud/server/issues/7827>`__. See the original ticket for links to the pull requests and tickets.
 
 General
 ^^^^^^^
@@ -812,7 +861,7 @@ Added APIs
 Changed APIs
 ************
 
-* OCS API `getGroup` method replaced by `getGroupUsers` #8904 
+* OCS API `getGroup` method replaced by `getGroupUsers` #8904
 
 
 Internal changes

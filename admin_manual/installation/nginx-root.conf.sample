@@ -30,8 +30,9 @@ server {
     # could take several months.
     #add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;" always;
 
-    # set max upload size
+    # set max upload size and increase upload timeout:
     client_max_body_size 512M;
+    client_body_timeout 300s;
     fastcgi_buffers 64 4K;
 
     # Enable gzip but do not remove ETag headers
@@ -40,7 +41,7 @@ server {
     gzip_comp_level 4;
     gzip_min_length 256;
     gzip_proxied expired no-cache no-store private no_last_modified no_etag auth;
-    gzip_types application/atom+xml application/javascript application/json application/ld+json application/manifest+json application/rss+xml application/vnd.geo+json application/vnd.ms-fontobject application/x-font-ttf application/x-web-app-manifest+json application/xhtml+xml application/xml font/opentype image/bmp image/svg+xml image/x-icon text/cache-manifest text/css text/plain text/vcard text/vnd.rim.location.xloc text/vtt text/x-component text/x-cross-domain-policy;
+    gzip_types application/atom+xml application/javascript application/json application/ld+json application/manifest+json application/rss+xml application/vnd.geo+json application/vnd.ms-fontobject application/wasm application/x-font-ttf application/x-web-app-manifest+json application/xhtml+xml application/xml font/opentype image/bmp image/svg+xml image/x-icon text/cache-manifest text/css text/plain text/vcard text/vnd.rim.location.xloc text/vtt text/x-component text/x-cross-domain-policy;
 
     # Pagespeed is not supported by Nextcloud, so if your server is built
     # with the `ngx_pagespeed` module, uncomment this line to disable it.
@@ -114,6 +115,9 @@ server {
     # then Nginx will encounter an infinite rewriting loop when it prepends `/index.php`
     # to the URI, resulting in a HTTP 500 error response.
     location ~ \.php(?:$|/) {
+        # Required for legacy support
+        rewrite ^/(?!index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|oc[ms]-provider\/.+|.+\/richdocumentscode\/proxy) /index.php$request_uri;
+
         fastcgi_split_path_info ^(.+?\.php)(/.*)$;
         set $path_info $fastcgi_path_info;
 
@@ -132,10 +136,14 @@ server {
         fastcgi_request_buffering off;
     }
 
-    location ~ \.(?:css|js|svg|gif)$ {
+    location ~ \.(?:css|js|svg|gif|png|jpg|ico|wasm|tflite)$ {
         try_files $uri /index.php$request_uri;
         expires 6M;         # Cache-Control policy borrowed from `.htaccess`
         access_log off;     # Optional: Don't log access to assets
+
+        location ~ \.wasm$ {
+            default_type application/wasm;
+        }
     }
 
     location ~ \.woff2?$ {

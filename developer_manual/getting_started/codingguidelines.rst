@@ -30,7 +30,7 @@ The most important labels and their meaning:
 * #design - this needs help from the design team or is a design-related issue/pull request
 * #technical debt - this issue or PR is about `technical debt <https://en.wikipedia.org/wiki/Technical_debt>`_
 * #good first issue - these are issues which are relatively easy to solve and ideal for people who want to learn how to code in Nextcloud
-* #needs info - this issue needs further information from the reporter, see :doc:`../bugtracker/triaging`
+* #needs info - this issue needs further information from the reporter, see :doc:`../../prologue/bugtracker/triaging`
 * #high #medium #low signify how important the bug is.
 * Tags showing the state of the issue or PR, numbered 0-4:
 
@@ -55,7 +55,6 @@ Coding
 * No global variables or functions
 * Unit tests
 * HTML should be HTML5 compliant
-* Check these `database performance tips <https://mailman.owncloud.org/pipermail/devel/2014-June/000262.html>`_
 * When you ``git pull``, always ``git pull --rebase`` to avoid generating extra commits like: *merged master into master*
 
 License headers
@@ -103,7 +102,7 @@ User interface
 PHP
 ---
 
-Starting with Nextcloud 19 there is a shared `PHP Coding Standards Fixer <https://github.com/FriendsOfPhp/PHP-CS-Fixer>`_ configuration you can use to automatically format your app's source code. For full details see the `repository on Github <https://github.com/nextcloud/coding-standard/>`_.
+Starting with Nextcloud 19 there is a shared `PHP Coding Standards Fixer <https://github.com/FriendsOfPhp/PHP-CS-Fixer>`_ configuration you can use to automatically format your app's source code. For full details see the `repository on GitHub <https://github.com/nextcloud/coding-standard/>`_.
 
 Always use::
 

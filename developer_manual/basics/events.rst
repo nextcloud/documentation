@@ -530,14 +530,14 @@ WARNING: Using this API incorrectly may make the instance more insecure. Do thin
 *Available in Nextcloud 18 and later.*
 
 ``\OCP\Security\FeaturePolicy\AddFeaturePolicyEvent``
-****************************************************
+*****************************************************
 
 *Available in Nextcloud 17 and later.*
 
 Event that allows to register a feature policy header to a request.
 
 ``\OCP\Share\Events\ShareCreatedEvent``
-*******************************************
+***************************************
 
 *Available in Nextcloud 18 and later.*
 
@@ -643,24 +643,24 @@ Emitted before a user is logged out.
 Emitted when a user has been logged out successfully.
 
 ``\OCP\WorkflowEngine\LoadSettingsScriptsEvent``
-***************************************
+************************************************
 
 *Available in Nextcloud 20 and later.*
 
 Emitted when the workflow engine settings page is loaded.
 
 ``\OCP\WorkflowEngine\RegisterChecksEvent``
-***************************************
+*******************************************
 
 *Available in Nextcloud 18 and later.*
 
 ``\OCP\WorkflowEngine\RegisterEntitiesEvent``
-***************************************
+*********************************************
 
 *Available in Nextcloud 18 and later.*
 
 ``\OCP\WorkflowEngine\RegisterOperationsEvent``
-***************************************
+***********************************************
 
 *Available in Nextcloud 18 and later.*
 
@@ -679,7 +679,7 @@ Hooks
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-Hooks are used to execute code before or after an event has occurred. This is for instance useful to run cleanup code after users, groups or files have been deleted. Hooks should be registered in the :doc:`app.php <init>`:
+Hooks are used to execute code before or after an event has occurred. This is for instance useful to run cleanup code after users, groups or files have been deleted. Hooks should be registered in the :doc:`app.php <../app_development/init>`:
 
 .. code-block:: php
 
@@ -689,7 +689,7 @@ Hooks are used to execute code before or after an event has occurred. This is fo
     $app = new Application();
     $app->getContainer()->query('UserHooks')->register();
 
-The hook logic should be in a separate class that is being registered in the :doc:`requests/container`:
+The hook logic should be in a separate class that is being registered in the `App contructor <dependency_injection.html#using-a-container>`__:
 
 .. code-block:: php
 
@@ -776,7 +776,7 @@ The following hooks are available:
 Session
 ```````
 
-Injectable from the ServerContainer by calling the method **getUserSession()**. 
+Injectable from the ServerContainer by calling the method **getUserSession()**.
 
 Hooks available in scope **\\OC\\User**:
 
@@ -827,7 +827,7 @@ Injectable from the ServerContainer by calling the method **getRootFolder()**, *
 To enable these events for your app you should add the following to your `info.xml` file:
 
 .. code-block:: xml
-    
+
     <types>
         <filesystem/>
     </types>

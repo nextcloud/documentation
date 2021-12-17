@@ -58,6 +58,11 @@ the new location. It is also assumed that the authentication method
     appropriate locations. If you change any paths, make sure to adapt the paths
     in the Nextcloud config.php file. Note: This step might take several hours,
     depending on your installation.
+	
+#.  Check the config.php file of the **ORIGINAL** system to see if it has
+    the ``data-fingerprint`` set to a non-empty value. If this is the case, make
+    sure to also run the ``maintenance:data-fingerprint`` command on the **NEW**
+    system, similarly to how it is required when performing a backup restoration (See :doc:`restore` for details).
 
 
 #.  While still having Nextcloud in maintenance mode (confirm!) and **BEFORE**
