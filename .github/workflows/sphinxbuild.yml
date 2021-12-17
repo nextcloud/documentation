@@ -17,7 +17,6 @@ jobs:
         docs-folder: "user_manual/"
         pre-build-command: pip install -r requirements.txt
         build-command: make html
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
   developer_manual:
     runs-on: ubuntu-latest
     steps:
@@ -27,7 +26,6 @@ jobs:
         docs-folder: "developer_manual/"
         pre-build-command: pip install -r requirements.txt
         build-command: make html
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
   admin_manual:
     runs-on: ubuntu-latest
     steps:
@@ -37,4 +35,3 @@ jobs:
         docs-folder: "admin_manual/"
         pre-build-command: pip install -r requirements.txt
         build-command: make html
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
