@@ -10,7 +10,7 @@ RUN apt-get update && \
     npm install -g svgexport
 
 # Install composer
-RUN curl https://raw.githubusercontent.com/composer/getcomposer.org/main/web/installer -qL | php -- --quiet && \
+RUN curl -qsSfL https://raw.githubusercontent.com/composer/getcomposer.org/main/web/installer | php -- --quiet && \
     mv composer.phar /usr/local/bin/composer
 
 COPY entrypoint.sh /entrypoint.sh
