@@ -40,7 +40,6 @@ Required:
 * PHP module filter (only on Mageia and FreeBSD)
 * PHP module GD
 * PHP module hash (only on FreeBSD)
-* PHP module iconv
 * PHP module JSON
 * PHP module libxml (Linux package libxml2 must be >=2.7.0)
 * PHP module mbstring
