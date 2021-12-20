@@ -102,15 +102,24 @@ more processes to run in parallel to handle the requests.
 Enable PHP OPcache
 ------------------
 
-The `OPcache <https://php.net/manual/en/intro.opcache.php>`_ improves the performance of PHP applications by caching precompiled bytecode. We recommend at least the following settings:
+The `OPcache <https://php.net/manual/en/intro.opcache.php>`_ improves the performance of PHP applications by caching precompiled bytecode. The default OPcache settings are usually sufficient for Nextcloud code to be fully cached. If any cache size limit is reached by more than 90%, the admin panel will show a related warning. Nextcloud strictly requires code comments to be preserved in opcode, which is the default. But in case PHP settings are changed on your system, you may need set the following:
 
 .. code:: ini
 
-  opcache.enable = 1
-  opcache.interned_strings_buffer = 8
-  opcache.max_accelerated_files = 10000
-  opcache.memory_consumption = 128
   opcache.save_comments = 1
-  opcache.revalidate_freq = 1
 
-For more details check out the `official documentation <https://php.net/manual/en/opcache.configuration.php>`_ or `this blog post about some recommended settings <https://www.scalingphpbook.com/blog/2014/02/14/best-zend-opcache-settings.html>`_.
+By default, cached scripts are revalidated on access to ensure that changes on disk take effect after at most ``2`` seconds. Since Nextcloud handles cache revalidation internally when required, the revalidation frequency can be reduced or completely disabled to enhance performance. Note, however, that it affects manual changes to scripts, including ``config.php``. To check for changes at most every ``60`` seconds, use the following setting:
+
+.. code:: ini
+
+  opcache.revalidate_freq = 60
+
+To disable the revalidation completely:
+
+.. code:: ini
+
+  opcache.validate_timestamps = 0
+
+Any change to ``config.php`` will then require either restarting PHP, manually clearing the cache, or invalidating this particular script.
+
+For more details check out the `official documentation <https://php.net/manual/en/opcache.configuration.php>`_. To monitor OPcache usage, clear individual or all cache entries, `opcache-gui <https://github.com/amnuts/opcache-gui>`_ can be used.
