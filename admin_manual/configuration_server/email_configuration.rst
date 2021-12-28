@@ -11,6 +11,10 @@ existing mail server. You must have a functioning mail server for Nextcloud to b
 able to send emails. You may have a mail server on the same machine as Nextcloud,
 or it may be a remote server.
 
+To access the setup page below log in with an Admin account.  Click on your Profile
+icon in the top right, and then click Settings.  On  the left sode under
+Administration and click Basic settings.
+
 .. figure:: ../images/smtp-config-wizard.png
 
 With the wizard, connecting Nextcloud to your mail server is fast and easy.
