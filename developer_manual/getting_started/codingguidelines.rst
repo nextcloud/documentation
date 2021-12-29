@@ -24,24 +24,30 @@ We assign labels to issues and pull requests to make it easy to find them and to
 
 The most important labels and their meaning:
 
-* #backport-request - the pull requests also needs to be applied to older Nextcloud versions
-* #bug - this issue is a bug
-* #enhancement - this issue is a feature request/idea for improvement of Nextcloud
-* #design - this needs help from the design team or is a design-related issue/pull request
-* #technical debt - this issue or PR is about `technical debt <https://en.wikipedia.org/wiki/Technical_debt>`_
-* #good first issue - these are issues which are relatively easy to solve and ideal for people who want to learn how to code in Nextcloud
-* #needs info - this issue needs further information from the reporter, see :doc:`../../prologue/bugtracker/triaging`
-* #high #medium #low signify how important the bug is.
 * Tags showing the state of the issue or PR, numbered 0-4:
 
-  * 0\. Needs triage - ready to start development on this
-  * 1\. to develop - ready to start development on this
-  * 2\. developing - development in progress
-  * 3\. to review - ready for review
-  * 4\. to release - reviewed PR that awaits unfreeze of a branch to get merged
-* Feature tags: #feature: something. These tags indicate the features across apps and components which are impacted by the issue or which the PR is related to
+  * ``0. to triage`` - issue or feature request needs to get triaged and approved for development
+  * ``1. to develop`` - ready to start development on this
+  * ``2. developing`` - development in progress
+  * ``3. to review`` - ready for review
+  * ``4. to release`` - reviewed PR that awaits unfreeze of a branch to get merged or has pending CI jobs
+  * ``needs info`` - this issue needs further information from the reporter, see :doc:`../../prologue/bugtracker/triaging`. This tag is typically combined with ``0. to triage`` to signal a bug report is not confirmed yet or a feature request has not been approved.
 
-If you want a label not in the list above, please first discuss on the mailing list.
+* Tags showing the type of issue or PR
+
+  * ``bug`` - this issue is a bug
+  * ``enhancement`` - this issue is a feature request/idea for improvement of Nextcloud
+  * ``technical debt`` - this issue or PR is about `technical debt <https://en.wikipedia.org/wiki/Technical_debt>`_
+
+* Tags that classify an issue or PR
+
+  * ``high``, ``medium`` and ``low`` – signify how important the bug is.
+  * ``regression`` - something that worked in a previous release but is now not working as expected or missing.
+  * ``feature: *``, e.g. ``feature: dav`` – these tags group tickets of specific feature or subsystems.
+  * ``design`` - this needs help from the design team or is a design-related issue/pull request
+  * ``good first issue`` - these are issues which are relatively easy to solve and ideal for people who want to learn how to code in Nextcloud
+
+* ``backport-request`` - the pull requests also needs to be applied to older Nextcloud versions. This tag is typically assigned by automation.
 
 Coding
 ------
