@@ -8,5 +8,4 @@ Prologue
    code-of-conduct
    help_communication
    bugtracker/index
-   development_process
    security
