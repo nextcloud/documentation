@@ -30,8 +30,8 @@ For apps that use webpack, this might look like this:
       "build": "webpack --node-env production --progress --hide-modules --config webpack.prod.js"
     },
     "devDependencies": {
-      "webpack": "^4.26.1",
-      "webpack-cli": "^3.1.2",
+      "webpack": "^5.65.0",
+      "webpack-cli": "^4.9.1",
     }
   }
 
@@ -58,8 +58,8 @@ This command should be added to ``package.json`` as ``dev``  and ``watch`` scrip
       "watch": "webpack --node-env development --progress --watch --config webpack.dev.js"
     },
     "devDependencies": {
-      "webpack": "^4.26.1",
-      "webpack-cli": "^3.1.2",
+      "webpack": "^5.65.0",
+      "webpack-cli": "^4.9.1",
     }
   }
 
