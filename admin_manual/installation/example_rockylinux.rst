@@ -215,7 +215,7 @@ If you need more SELinux configs, refer to the above-mentioned URL, return to th
 
 Once done with with SELinux, please head over to ``http://your.server.com/nextcloud`` and follow the steps as found :doc:`../installation/installation_wizard`, where it will explain to you exactly how to proceed with the final part of the install, which is done as admin user through your web browser.
 
-.. note:: If you use this tutorial, and you see warnings in the web browser after installation about ``OPcache`` not being enabled or configured correctly, you need to make the suggested changes in ``/etc/opt/rh/rh-php74/php.d/10-opcache.ini`` for the errors to disappear. These warnings will be on the Admin page, under Basic settings.
+.. note:: If you use this tutorial, and you see warnings in the web browser after installation about ``OPcache`` not being enabled or configured correctly, you need to make the suggested changes in ``/etc/php.d/10-opcache.ini`` for the errors to disappear. These warnings will be on the Admin page, under Basic settings.
 
 Because we used ``Redis`` as a memcache, you will need a config similar to the following example in ``/var/www/html/nextcloud/config/config.php`` which is auto-generated when you run the online installation wizard mentioned earlier.
 
