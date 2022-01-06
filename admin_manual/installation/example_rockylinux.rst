@@ -8,7 +8,11 @@ Start off by installing a Rocky Linux 9 minimal install. This should provide a s
 
 First install some dependencies you will be needing during installation, but which will also be useful in every day use situations::
 
-    dnf install -y epel-release yum-utils unzip curl wget \
+    dnf config-manager --set-enabled crb
+    dnf install -y \
+        https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm \
+        https://dl.fedoraproject.org/pub/epel/epel-next-release-latest-9.noarch.rpm
+    dnf install -y yum-utils unzip curl wget \
     bash-completion policycoreutils-python-utils mlocate bzip2
 
 Now make sure your system is up to date::
@@ -69,13 +73,14 @@ Command to install the Remi repository configuration package:
 
 ::
 
-    dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+    dnf install https://rpms.remirepo.net/enterprise/remi-release-9.rpm
+    dnf config-manager --set-enabled remi
 
 Command to install the yum-utils package (for the yum-config-manager command):
 
 ::
 
-    dnf install yum-utils
+    dnf install yum-utils -y
 
 You want a single version which means replacing base packages from the distribution. Packages have the same name than the base repository, ie php-\*. Some common dependencies are available in remi-safe repository, which is enabled by default.
 
@@ -83,6 +88,7 @@ You have to enable the module stream for 8.0:
 
 ::
 
+    dnf module list php
     dnf module reset php
     dnf module install php:remi-8.0
     dnf update
