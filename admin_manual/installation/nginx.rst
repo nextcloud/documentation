@@ -309,7 +309,7 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
           # `/nextcloud/index.php` to the URI, resulting in a HTTP 500 error response.
           location ~ \.php(?:$|/) {
               # Required for legacy support
-              rewrite ^/(?!index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|oc[ms]-provider\/.+|.+\/richdocumentscode\/proxy) /nextcloud/index.php$request_uri;
+              rewrite ^/nextcloud/(?!index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|oc[ms]-provider\/.+|.+\/richdocumentscode\/proxy) /nextcloud/index.php$request_uri;
 
               fastcgi_split_path_info ^(.+?\.php)(/.*)$;
               set $path_info $fastcgi_path_info;
