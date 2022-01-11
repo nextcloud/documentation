@@ -18,7 +18,7 @@ In KOrganizer:
 
 In Kalendar:
 
-1. Open Kalendar and in the menubar open the setting and then choose ``Calendar Sources`` -> ``Add Calendar``:
+1. Open Kalendar and in the menu bar open the setting and then choose ``Calendar Sources`` -> ``Add Calendar``:
 
 .. image:: ../images/Kalendar_add_calendar.png
 
