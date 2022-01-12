@@ -77,14 +77,14 @@ Using docker tags:
 ::
 
   traefik.frontend.redirect.permanent: 'true'
-  traefik.frontend.redirect.regex: https://(.*)/.well-known/(card|cal)dav
-  traefik.frontend.redirect.replacement: https://$1/remote.php/dav/
+  traefik.frontend.redirect.regex: 'https://(.*)/.well-known/(?:card|cal)dav'
+  traefik.frontend.redirect.replacement: 'https://$$1/remote.php/dav/'
 
 Using traefik.toml:
 ::
 
   [frontends.frontend1.redirect]
-    regex = "https://(.*)/.well-known/(card|cal)dav"
+    regex = "https://(.*)/.well-known/(?:card|cal)dav"
     replacement = "https://$1/remote.php/dav/
     permanent = true
 
