@@ -60,6 +60,7 @@ All log information will be sent to your default syslog daemon.
 ::
 
     "log_type" => "syslog",
+    "syslog_tag" => "Nextcloud",
     "logfile" => "",
     "loglevel" => 3,
 
@@ -71,6 +72,7 @@ All log information will be sent to Systemd journal. Requires `php-systemd <http
 ::
 
     "log_type" => "systemd",
+    "syslog_tag" => "Nextcloud",
 
 Log fields explained
 --------------------
