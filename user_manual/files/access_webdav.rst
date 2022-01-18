@@ -61,7 +61,7 @@ Nautilus file manager
 ^^^^^^^^^^^^^^^^^^^^^
 
 **When you configure your Nextcloud account in the** `GNOME Control Center
-<../pim/sync_gnome.html>`_, **your files will automatically be mounted
+<../groupware/sync_gnome.html>`_, **your files will automatically be mounted
 by Nautilus as a WebDAV share, unless you deselect file access**.
 
 You can also mount your Nextcloud files manually. Use the ``davs://``
