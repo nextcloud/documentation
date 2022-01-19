@@ -29,6 +29,7 @@ about what is going on in and around Nextcloud.
 Target audience
 ---------------
 
+
 This guide is for users who want to install, administer, and
 optimize their Nextcloud servers. To learn more about the Nextcloud Web
 user interface, and desktop and mobile clients, please refer to their
