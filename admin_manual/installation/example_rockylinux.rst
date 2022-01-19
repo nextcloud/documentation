@@ -1,8 +1,8 @@
 .. _rockylinux9_installation_label:
 
-Example installation on Rocky Linux 9
-=====================================
-In this install tutorial we will be deploying Rocky Linux 9, PHP 8.0, MariaDB, Redis as memcache and Nextcloud running on Apache.
+Example installation on RHEL/CentosStream/Rocky/Almalinux 9
+===========================================================
+In this install tutorial we will be deploying RHEL 9 / CentosStream 9 / Rocky Linux 9 / Almalinux 9, PHP 8.0, MariaDB, Redis as memcache and Nextcloud running on Apache.
 
 Start off by installing a Rocky Linux 9 minimal install. This should provide a sufficient platform to run a successful Nextcloud instance.
 
@@ -57,7 +57,7 @@ Make sure the apache web service is enabled and started::
 PHP
 ---
 
-.. note:: Rocky Linux 9 doesn't come with packages for the redis and imagick php extensions. 
+.. note:: RHEL 9 and its downstream Operating Systems do not come with packages for the redis and imagick php extensions. 
     Those can either be installed using pecl. Apart from the official PHP packages there are 3rdparty 
     repositories available at ``https://rpms.remirepo.net``. Using remirepo you can also install the 
     latest PHP version instead of the standard shipped one.
