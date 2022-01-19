@@ -77,15 +77,15 @@ Here you can also create a direct link to the message or mark it unread so you w
 Managing a conversation
 ---------------
 
-You are always moderator in your new conversation. In the participant list on the right you can elevate other participants to moderators using the ``...`` menu to the right of their user name, or remove them from the conversation. 
+You are always moderator in your new conversation. In the participant list you can promote other participants to moderators using the ``...`` menu to the right of their user name, assign them custom permissions or remove them from the conversation.
 
 .. image:: images/participant-menu.png
 
-Moderators can configure the conversation. Select ``Configuration settings`` from the ``...`` menu of the conversation on the top to access the settings.
+Moderators can configure the conversation. Select ``Configuration settings`` from the gear menu of the conversation on the top to access the settings.
 
 .. image:: images/open-settings.png
 
-Here you can configure the name, guest access, if the conversation is visible to others on the server and more.
+Here you can configure the description, guest access, if the conversation is visible to others on the server and more.
 
 .. image:: images/chat-room-settings.png
 
@@ -96,15 +96,13 @@ When you're in a conversation, you can start a call any time with the ``Start ca
 
 .. image:: images/join-call.png
 
-During a call, you can mute your microphone and disable your video with the buttons on your video on the bottom-right, or using the shortcuts ``M`` to mute audio and ``V`` to disable video. You can also use the space bar to toggle mute. When you are muted, pressing space will unmute you so you can speak until you let go of the space bar. If you are unmuted, pressing space will mute you until you let go.
+During a call, you can mute your microphone and disable your video with the buttons on the right side of the top bar, or using the shortcuts ``M`` to mute audio and ``V`` to disable video. You can also use the space bar to toggle mute. When you are muted, pressing space will unmute you so you can speak until you let go of the space bar. If you are unmuted, pressing space will mute you until you let go.
 
 You can hide your video (useful during a screen share) with the little arrow just above the video stream. Bring it back with the little arrow again.
 
-You can access your settings and choose a different webcam, microphone and other settings in the ``...`` menu  on your video.
+You can access your settings and choose a different webcam, microphone and other settings in the ``...`` menu in the top bar.
 
 .. image:: images/call-menu.png
-
-.. image:: images/call-settings.png
 
 .. image:: images/talk-settings.png
 
