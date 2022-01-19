@@ -47,6 +47,16 @@ Source files are written using the `Sphinx Documentation Generator
 <http://docutils.sourceforge.net/rst.html>`_ style, and can also be edited
 from GitHub.
 
+Structure
+---------
+
+Of course, think about structure. Keep in mind that we try NOT to move or rename
+pages once they are created! Lots of external sources link to our documentation,
+including the indexing by Google of course. So once you create a page with a certain
+name, it has to stay in that location and with that name. Think of it as API stability
+- we have to ensure things stay as they are as much as possible. Renaming or moving
+is only allowed in exceptional circumstances and only when a redirect is put in place.
+
 Editing
 -------
 
