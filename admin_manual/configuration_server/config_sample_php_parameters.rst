@@ -1779,7 +1779,7 @@ innodb_file_per_table=ON
 Tables will be created with
  * character set: utf8mb4
  * collation:     utf8mb4_bin
- * row_format:    compressed
+ * row_format:    dynamic
 
 See:
 https://dev.mysql.com/doc/refman/5.7/en/charset-unicode-utf8mb4.html
