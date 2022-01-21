@@ -444,6 +444,14 @@ login-attempt.
 
 In case you do not want to provide any link, replace the url with 'disabled'
 
+::
+
+	'logo_url' => 'https://example.org',
+
+URL to use as target for the logo link in the header (top-left logo)
+
+Defaults to the base URL of your Nextcloud instance
+
 Mail Parameters
 ---------------
 
