@@ -21,6 +21,10 @@ Important: If you use consecutive commands, make sure, you are user ``www-data``
  cd /path/to/localdir
  mkdir data
 
+If you have installed Nextcloud via snap, you need to run the following command::
+
+ sudo snap connect nextcloud:removable-media
+ 
 In the **Folder name** field enter the folder name that you want to appear on 
 your Nextcloud Files page.
 
