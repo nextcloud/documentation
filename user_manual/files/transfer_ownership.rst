@@ -2,7 +2,7 @@
 Transfer Ownership
 ==================
 
-Users can transfer the ownership of files and folders to other users. Share 
+Users can transfer the ownership of files and folders to other users. Sharing 
 ownerships of those transfered files/folders will also be transferred.
 
 #. Navigate to *Settings* > *Personal* > *Sharing* > *Files*.
