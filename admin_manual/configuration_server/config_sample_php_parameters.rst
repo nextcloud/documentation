@@ -990,6 +990,14 @@ Defaults to ``file``
 
 ::
 
+	'log_type_audit' => 'file',
+
+This parameter determines where the audit logs are sent. See ``log_type`` for more information.
+
+Defaults to ``file``
+
+::
+
 	'logfile' => '/var/log/nextcloud.log',
 
 Name of the file to which the Nextcloud logs are written if parameter
@@ -999,9 +1007,18 @@ Defaults to ``[datadirectory]/nextcloud.log``
 
 ::
 
+	'logfile_audit' => '/var/log/audit.log',
+
+Name of the file to which the audit logs are written if parameter
+``log_type`` is set to ``file``.
+
+Defaults to ``[datadirectory]/audit.log``
+
+::
+
 	'logfilemode' => 0640,
 
-Log file mode for the Nextcloud loggin type in octal notation.
+Log file mode for the Nextcloud logging type in octal notation.
 
 Defaults to 0640 (writeable by user, readable by group).
 
@@ -1024,6 +1041,17 @@ with a unique id. Only available if ``log_type`` is set to ``syslog`` or
 ``systemd``.
 
 The default value is ``Nextcloud``.
+
+::
+
+	'syslog_tag_audit' => 'Nextcloud',
+
+If you maintain different instances and aggregate the logs, you may want
+to distinguish between them. ``syslog_tag_audit`` can be set per instance
+with a unique id. Only available if ``log_type`` is set to ``syslog`` or
+``systemd``.
+
+The default value is the value of ``syslog_tag``.
 
 ::
 
