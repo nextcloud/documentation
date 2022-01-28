@@ -5,7 +5,7 @@ Profile
 The user profile presents the information of a user including their full name,
 profile picture, organisation, role, location, biography, headline, as well as
 actionable information that we call profile actions. These actions can include
-starting a `Nextcloud Talk <https://nextcloud.com/talk/>` chat with the user,
+starting a `Nextcloud Talk <https://nextcloud.com/talk/>`_ chat with the user,
 sending an email, visiting their website, opening their Twitter profile,
 calling their phone number, scheduling an appointment, and more.
 
@@ -14,7 +14,7 @@ App developers can integrate into profile and provide their own actions.
 Register a profile action
 -------------------------
 
-A profile action is represented by a class implementing the `OCP\\Profile\\ILinkAction`
+A profile action is represented by a class implementing the ``OCP\\Profile\\ILinkAction``
 interface. This class is instantiated whenever the user profile is loaded.
 
 .. code-block:: php
@@ -152,7 +152,7 @@ interface. This class is instantiated whenever the user profile is loaded.
         }
     }
 
-The `MyProfileAction` class needs to be registered during the :ref:`app bootstrap<Bootstrapping>`.
+The ``MyProfileAction`` class needs to be registered during the :ref:`app bootstrap<Bootstrapping>`.
 
 .. code-block:: php
 
