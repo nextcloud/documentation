@@ -28,3 +28,4 @@ Digging deeper
    web_host_metadata
    status
    security
+   profile
