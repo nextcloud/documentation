@@ -453,7 +453,7 @@ Workarounds are documented in the KB2668751_ article.
 Accessing files using cURL
 --------------------------
 
-Since WebDAV is an extension of HTTP cURL can be used to script file operations.
+Since WebDAV is an extension of HTTP, cURL can be used to script file operations.
 
 To create a folder with the current date as name:
 
