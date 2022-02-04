@@ -21,6 +21,7 @@ Digging deeper
    rest_apis
    search
    settings
+   talk
    two-factor-provider
    users
    dashboard
