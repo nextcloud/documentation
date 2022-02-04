@@ -12,4 +12,5 @@ Webdav
     trashbin
     versions
     chunking
+    bulkupload
     comments
