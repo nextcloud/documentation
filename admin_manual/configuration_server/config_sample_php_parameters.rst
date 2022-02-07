@@ -1909,7 +1909,7 @@ Values that undershoot the minimum will be ignored in favor of the minimum.
 
 	'hashingMemoryCost' => PASSWORD_ARGON2_DEFAULT_MEMORY_COST,
 
-The memory in KiB to be used by the algorithm for computing a hash. The value
+The memory in KB to be used by the algorithm for computing a hash. The value
 must be an integer, and the minimum value is 8 times the number of CPU threads.
 
 Values that undershoot the minimum will be ignored in favor of the minimum.

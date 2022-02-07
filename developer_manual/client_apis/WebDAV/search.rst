@@ -166,7 +166,7 @@ Get a file by id.
         </d:basicsearch>
     </d:searchrequest>
 
-Get all png and jpg files over 10MB.
+Get all png and jpg files over 10 MB.
 
 .. code-block:: xml
 

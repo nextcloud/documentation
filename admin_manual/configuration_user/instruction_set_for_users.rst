@@ -194,7 +194,7 @@ Examples
 
 ::
 
-  $ curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -d key="quota" -d value="100MB"
+  $ curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -d key="quota" -d value="100 MB"
 
 * Updates the quota for the user ``Frank``
 

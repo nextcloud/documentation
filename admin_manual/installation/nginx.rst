@@ -91,11 +91,11 @@ or CSS (.css) files via gzip could also cause such issues.
 Another cause of this issue could be not properly including mimetypes in the
 http block, as shown `here. <https://www.nginx.com/resources/wiki/start/topics/examples/full/>`_
 
-Upload of files greater than 10 MiB fails
+Upload of files greater than 10 MB fails
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you configure nginx (globally) to block all requests to (hidden) dot files,
-it may be not possible to upload files greater than 10 MiB using the webpage
+it may be not possible to upload files greater than 10 MB using the webpage
 due to Nextclouds requirement to upload the file to an url ending with ``/.file``.
 
 You may require to change:

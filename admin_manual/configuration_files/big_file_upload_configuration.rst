@@ -1,14 +1,14 @@
 ===========================
-Uploading big files > 512MB
+Uploading big files > 512 MB
 ===========================
 
-The default maximum file size for uploads is 512MB. You can increase this 
+The default maximum file size for uploads is 512 MB. You can increase this 
 limit up to what your filesystem and operating system allows. There are certain 
 hard limits that cannot be exceeded:
 
-* < 2GB on 32Bit OS-architecture
-* < 2GB with IE6 - IE8
-* < 4GB with IE9 - IE11
+* < 2 GB on 32Bit OS-architecture
+* < 2 GB with IE6 - IE8
+* < 4 GB with IE9 - IE11
 
 64-bit filesystems have much higher limits; consult the documentation for your 
 filesystem.
@@ -23,7 +23,7 @@ System configuration
 * Make sure that the latest version of PHP is installed
 * Disable user quotas, which makes them unlimited
 * Your temp file or partition has to be big enough to hold multiple 
-  parallel uploads from multiple users; e.g. if the max upload size is 10GB and 
+  parallel uploads from multiple users; e.g. if the max upload size is 10 GB and 
   the average number of users uploading at the same time is 100: temp space has 
   to hold at least 10x100 GB
 
@@ -99,7 +99,7 @@ disc space on the tmp partition of your system.
    
 If your site is behind a nginx frontend (for example a loadbalancer): 
 
-By default, downloads will be limited to 1GB due to ``proxy_buffering`` and ``proxy_max_temp_file_size`` on the frontend.
+By default, downloads will be limited to 1 GB due to ``proxy_buffering`` and ``proxy_max_temp_file_size`` on the frontend.
 
 * If you can access the frontend's configuration, disable `proxy_buffering <https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_buffering>`_ or increase `proxy_max_temp_file_size <https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_max_temp_file_size>`_ from the default 1GB.
 * If you do not have access to the frontend, set the `X-Accel-Buffering <https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_buffering>`_ header to ``add_header X-Accel-Buffering no;`` on your backend server.
@@ -151,9 +151,9 @@ For upload performance improvements in environments with high upload bandwidth, 
 
  sudo -u www-data php occ config:app:set files max_chunk_size --value 20971520
 
-Put in a value in bytes (in this example, 20MB). Set ``--value 0`` for no chunking at all.
+Put in a value in bytes (in this example, 20 MB). Set ``--value 0`` for no chunking at all.
 
-Default is 10485760 (10 MiB).
+Default is 10485760 (10 MB).
 
 
 Large file upload on object storage
