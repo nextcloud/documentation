@@ -139,3 +139,6 @@ Nextcloud in debug mode:
   `1.0.x => 1000`, `2.34.x => 2034`, etc.
 * `migrations:migrate`: Execute a migration to a specified or the latest available version.
 * `migrations:status`: View the status of a set of migrations.
+
+.. note:: After generating a migration, you might need to run `composer dump-autoload`
+   to be able to execute it.
