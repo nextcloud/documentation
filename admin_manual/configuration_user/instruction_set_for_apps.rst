@@ -2,7 +2,7 @@
 Instruction set for apps
 ========================
 
-Getlist of apps
+Get list of apps
 ---------------
 
 Returns a list of apps installed on the Nextcloud server. Authentication is done 
