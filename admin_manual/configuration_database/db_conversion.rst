@@ -5,7 +5,7 @@ Converting database type
 You can convert a SQLite database to a better performing MySQL, MariaDB or
 PostgreSQL database with the Nextcloud command line tool. SQLite is good for
 testing and simple single-user Nextcloud servers, but it does not scale for
-multiple-user production users.
+multiple-user production servers.
 
 
 Run the conversion
