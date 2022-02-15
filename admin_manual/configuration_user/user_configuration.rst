@@ -70,7 +70,7 @@ To create a user account:
 .. figure:: ../images/users-create.png
 
 Login names may contain letters (a-z, A-Z), numbers (0-9), dashes (-),
-underscores (_), periods (.) and at signs (@). After creating the user, you
+underscores (_), periods (.), spaces ( ) and at signs (@). After creating the user, you
 may fill in their **Full Name** if it is different than the login name, or
 leave it for the user to complete.
 
@@ -212,7 +212,7 @@ You'll see an undo button at the top of the page, which remains for some seconds
 When the undo button is gone you cannot recover the deleted user.
 
 All of the files owned by the user are deleted as well, including all files they
-have shared. If you need to preserve the user's files and shares, you must first 
+have shared. If you need to preserve the user's files and shares, you must first
 download them from your Nextcloud Files page, which compresses them into a zip
 file, or use a sync client to copy them to your local computer. See
 :doc:`../configuration_files/file_sharing_configuration` to learn how to create
