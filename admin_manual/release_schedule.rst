@@ -11,8 +11,6 @@ This page gives an overview of the currently supported and released versions as 
 +--------+-------------------+------------------+
 | **22** | 2021-07-06        | 2022-07          |
 +--------+-------------------+------------------+
-| **21** | 2021-02-22        | 2022-02          |
-+--------+-------------------+------------------+
 
 Find the detailed schedule for major and maintenance releases at: `GitHub <https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule>`_.
 
@@ -26,7 +24,7 @@ Major releases are planned to be actively maintained for at least 8 months after
 Maintenance releases
 --------------------
 
-Maintenance releases are scheduled in a 6 week cycle with one week before the release date having the freeze and RC 1.
+Maintenance releases are scheduled in a 4 week cycle with one week before the release date having the freeze and RC 1.
 
 Older versions
 --------------
@@ -34,6 +32,8 @@ Older versions
 +----------+----------------+-------------+-------------------------+
 |          | release date   | end of life | latest version          |
 +==========+================+=============+=========================+
+| **21**   | 2021-02-22     | 2022-02     | 21.0.9 (2022-02-15)     |
++----------+----------------+-------------+-------------------------+
 | **20**   | 2020-10-03     | 2021-10     | 20.0.14 (2021-11-11)    |
 +----------+----------------+-------------+-------------------------+
 | **19**   | 2020-06-03     | 2021-06     | 19.0.13 (2021-07-01)    |
