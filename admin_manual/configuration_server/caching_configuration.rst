@@ -149,6 +149,24 @@ prevent session corruption when using Redis as your session handler: ::
 More information on configuration of phpredis session handler can be found on the
 `PhpRedis GitHub page <https://github.com/phpredis/phpredis>`_
 
+**Connecting to Redis over TLS:** ::
+
+  'memcache.locking' => '\OC\Memcache\Redis',
+  'memcache.distributed' => '\OC\Memcache\Redis',
+  'memcache.local' =>'\OC\Memcache\Redis' ,
+  'redis' => [
+      'host' => 'tls://127.0.0.1',
+      'port' => 6379,
+      'user' => 'nextcloud',
+      'password' => 'password',
+      'ssl_context' => [
+          'local_cert' => '/certs/redis.crt',
+          'local_pk' => '/certs/redis.key',
+          'cafile' => '/certs/ca.crt',
+          'verify_peer_name' => false
+      ]
+  ]
+
 Memcached
 ---------
 
