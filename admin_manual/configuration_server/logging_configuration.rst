@@ -143,11 +143,19 @@ If ``loglevel`` in ``config.php`` is set to ``2`` or higher, audit logging needs
 	],
 
 
-If required, the name and path of the audit log file can be customized by using the following command:
+Similar to the normal logging, the audit log can be written to any of the existing logging mechanism in :file:`config/config.php`:
 
 ::
 
-    occ config:app:set admin_audit logfile --value=/var/log/nextcloud/audit.log
+	"log_type_audit" => "syslog",
+	"syslog_tag_audit" => "Nextcloud",
+	"logfile_audit" => "",
+
+Previously the logfile could be defined in the app config. This config is still used when the system config is not provided:
+
+::
+
+	occ config:app:set admin_audit logfile --value=/var/log/nextcloud/audit.log
 
 Find detailed documentation on auditable events for enterprises in our `customer portal <https://portal.nextcloud.com/article/using-the-audit-log-44.html>`_.
 
