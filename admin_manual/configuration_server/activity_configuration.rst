@@ -46,8 +46,9 @@ like in normal shares when set to ``true``.
 
     This config option comes with the following limitations:
 
-    1. Users that had access to a groupfolder, share or external storage can see activities in their stream and emails that happen after they are removed until they login again
-    2. Users that are newly added to a groupfolder, share or external storage can not see activities in their stream nor emails that happen after they are added until they login again
+    1. If "Advanced Permissions" (ACLs) are enabled in a groupfolder, the activities don't respect the permissions and therefore all users see all activities, even for files and directories they don't have access to. **This potentially leaks sensitive information!** See `this issue <https://github.com/nextcloud/groupfolders/issues/1057>`_ for more information.
+    2. Users that had access to a groupfolder, share or external storage can see activities in their stream and emails that happen after they are removed until they login again
+    3. Users that are newly added to a groupfolder, share or external storage can not see activities in their stream nor emails that happen after they are added until they login again
 
 Better scheduling of activity emails
 ------------------------------------
