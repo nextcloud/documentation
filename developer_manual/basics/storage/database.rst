@@ -72,6 +72,47 @@ Database operations can be run in a transaction to commit or roll back a group o
 
 .. warning:: Omitting the error handling for transactions will lead to unexpected behavior as any database operations that come after your error will still run in your transaction and due to the lack of a commit PDO will automatically roll-back all changes at the end of the script.
 
+In the context of a class you can use the ``TTransactional`` trait and move the unit of work into a closure.
+
+.. code-block:: php
+
+    <?php
+
+    use OCP\AppFramework\Db\TTransactional;
+    use OCP\IDBConnection;
+
+    class MyService() {
+
+        use TTransactional;
+
+        private IDBConnection $db;
+
+        public function __construct(IDBConnection $db) {
+            $this->db = $db;
+        }
+
+        public function doSomeWork(): void {
+            $this->atomic(function () {
+                // $this->db->...
+                // $this->db->...
+                // $this->db->...
+            }, $this->db);
+        }
+
+        /**
+         * It's also possible to get a result out of the closure
+         */
+        public function doSomeWorkWithResults(): int {
+            return $this->atomic(function () {
+                // $this->db->...
+                // $this->db->...
+                // $this->db->...
+
+                return 1;
+            }, $this->db);
+        }
+    }
+
 Mappers
 -------
 
