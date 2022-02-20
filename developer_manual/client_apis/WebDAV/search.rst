@@ -128,10 +128,12 @@ Search for all plain text files in the folder :code:`Documents`, sorted by size.
                 </d:like>
             </d:where>
             <d:orderby>
-                <d:prop>
-                    <oc:size/>
-                </d:prop>
-                <d:ascending/>
+                <d:order>
+                    <d:prop>
+                        <oc:size/>
+                    </d:prop>
+                    <d:ascending/>
+                </d:order>
             </d:orderby>
         </d:basicsearch>
     </d:searchrequest>
@@ -211,5 +213,46 @@ Get all png and jpg files over 10MB.
             <d:orderby/>
         </d:basicsearch>
     </d:searchrequest>
+    
+Search for all common files (no directories) and limit the result of the last 5 files with ordering, last modified
+
+.. code-block:: xml
+
+   <d:searchrequest xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns">
+       <d:basicsearch>
+           <d:select>
+               <d:prop>
+                   <oc:fileid/>
+                   <d:getcontenttype/>
+                   <d:getetag/>
+                   <oc:size/>
+                   <d:getlastmodified/>
+                   <d:resourcetype/>
+               </d:prop>
+           </d:select>
+           <d:from>
+               <d:scope>
+                   <d:href>/files/test</d:href>
+                   <d:depth>infinity</d:depth>
+               </d:scope>
+           </d:from>
+           <d:where>
+               <d:not>
+                   <d:is-collection/>
+               </d:not>
+           </d:where>
+           <d:orderby>
+              <d:order>
+                  <d:prop>
+                      <d:getlastmodified/>
+                  </d:prop>
+                  <d:descending/>
+               </d:order>
+           </d:orderby>
+           <d:limit>
+             <d:nresults>5</d:nresults>
+           </d:limit>
+      </d:basicsearch>
+  </d:searchrequest>
 
 .. _rfc5323: https://tools.ietf.org/html/rfc5323
