@@ -1246,9 +1246,11 @@ Defaults to ``4096``
 
 	'preview_max_filesize_image' => 50,
 
-max file size for generating image previews with imagegd (default behavior)
+Max file size for generating image previews with imagegd (default behavior).
+
 If the image is bigger, it'll try other preview generators, but will most
-likely show the default mimetype icon. Set to -1 for no limit.
+likely either show the default mimetype icon or not display the image at all.
+Set to ``-1`` for no limit and try to generate image previews on all file sizes.
 
 Defaults to ``50`` megabytes
 
@@ -1256,7 +1258,7 @@ Defaults to ``50`` megabytes
 
 	'preview_max_memory' => 128,
 
-max memory for generating image previews with imagegd (default behavior)
+Max memory for generating image previews with imagegd (default behavior).
 Reads the image dimensions from the header and assumes 32 bits per pixel.
 
 If creating the image would allocate more memory, preview generation will
