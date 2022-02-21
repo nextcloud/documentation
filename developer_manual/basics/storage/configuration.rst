@@ -43,13 +43,14 @@ The config that allows the app to set global, app and user settings can be injec
 System values
 -------------
 
-System values are saved in the :file:`config/config.php` and allow the app to modify and read the global configuration: 
+System values are saved in the :file:`config/config.php` and allow the app to modify and read the global configuration. Please note that **setSystemValue** might throw a **OCP\HintException** when the config file is read-only.
 
 .. code-block:: php
 
     <?php
     namespace OCA\MyApp\Service;
 
+    use \OCP\HintException;
     use \OCP\IConfig;
 
 
@@ -68,7 +69,11 @@ System values are saved in the :file:`config/config.php` and allow the app to mo
         }
 
         public function setSystemValue($key, $value) {
-            $this->config->setSystemValue($key, $value);
+            try {
+                $this->config->setSystemValue($key, $value);
+            } catch (HintException $e) {
+                // Handle exception, e.g. when config file is read-only
+            }
         }
 
     }
