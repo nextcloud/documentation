@@ -9,3 +9,4 @@ Database configuration
     linux_database_configuration
     mysql_4byte_support
     bigint_identifiers
+    splitting
