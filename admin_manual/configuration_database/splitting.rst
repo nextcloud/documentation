@@ -42,7 +42,15 @@ in case of the activity app these are:
 * ``oc_activity_mq``
 
 1. Enable maintenance mode
-2. Specify the desired configuration values
+2. Make sure optional database changes are applied:
+
+    1. ``occ db:convert-mysql-charset``
+    2. ``occ db:convert-filecache-bigint``
+    3. ``occ db:add-missing-indices``
+    4. ``occ db:add-missing-primary-keys``
+    5. ``occ db:add-missing-primary-keys``
+
+3. Specify the desired configuration values
 3. Copy the 2 tables to the new database
 4. Disable maintenance mode
 
