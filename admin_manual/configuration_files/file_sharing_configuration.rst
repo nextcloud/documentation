@@ -88,7 +88,7 @@ The expiration date which can be set and enforced in the settings above are the 
 default value at the same time. Sometimes admins want to have a moderate default expire date,
 for example 7 days but make sure that the user can't extend it to more than 14 days.
 
-In order to do so the user can set a enforced expiration date in the settings as described above
+In order to do so, set a enforced expiration date in the settings as described above
 and set the default value to something below the maximal possible expiration date with the following
 OCC commands::
 

@@ -73,7 +73,7 @@ SMB authentication
 ^^^^^^^^^^^^^^^^^^
 
 Update notifications are not supported when using 'Login credentials, save in session' authentication.
-Using login credentials is only supported with 'Login credentials, save in database'.
+Using update notifications is only supported with 'Login credentials, save in database'.
 
 Even when using 'Login credentials, save in database' or 'User entered, stored in database' authentication the notify process
 can not use the credentials saved to attach to the smb shares because the notify process does not run in the context of a specific user
