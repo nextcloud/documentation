@@ -386,6 +386,17 @@ Defaults to ``true``
 
 ::
 
+	'auth.authtoken.v1.disabled' => false,
+
+Whether the authtoken v1 provider should be skipped
+
+The v1 provider is deprecated and removed in Nextcloud 24 onwards. It can be
+disabled already when the instance was installed after Nextcloud 14.
+
+Defaults to ``false``
+
+::
+
 	'auth.webauthn.enabled' => true,
 
 By default WebAuthn is available but it can be explicitly disabled by admins
