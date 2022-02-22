@@ -19,12 +19,17 @@ externally mounted file systems.
 
 Parameters
 ----------
-In the admin settings menu you can configure how cron-jobs should be executed.
-You can choose between the following options:
 
--   AJAX
--   Webcron
--   Cron
+``maintenance_window_start``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In the ``config/config.php`` file you can specify this config.
+Some background jobs only run once a day. When an hour is defined (timezone is UTC)
+for this config, the background jobs which advertise themselves as not time sensitive
+will be delayed during the "working" hours and only run in the 4 hours after the given
+time. This is e.g. used for activity expiration, suspicious login training and update checks.
+
+A value of 1 e.g. will only run these background jobs between 01:00am UTC and 05:00am UTC.
 
 Cron jobs
 ---------
@@ -115,7 +120,7 @@ This approach requires two files: **nextcloudcron.service** and **nextcloudcron.
 
 Replace the user ``www-data`` with the user of your http server and ``/var/www/nextcloud/cron.php`` with the location of **cron.php** in your nextcloud directory.
 
-The ``KillMode=process`` setting is necessary for external programs that are started by the cron job to keep running after the cron job has finished. 
+The ``KillMode=process`` setting is necessary for external programs that are started by the cron job to keep running after the cron job has finished.
 
 Note that the **.service** unit file does not need an ``[Install]`` section. Please check your setup because we recommended it in earlier versions of this admin manual.
 
