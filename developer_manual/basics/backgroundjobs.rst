@@ -62,6 +62,25 @@ to pass on to the service to run the background job.
 The ``run`` function is the main thing you need to implement and where all the
 logic happens.
 
+Heavy load and time insensitive
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When the background job can impact the performance of the instance and is not time sensitive,
+e.g. when clearing old data, running training of AI models or similar things, consider flagging
+it as time insensitive in the constructor.
+
+.. code-block:: php
+
+    <?php
+
+    // Run once a day
+    parent::setInterval(24 * 3600);
+    // Delay until low-load time
+    parent::setTimeSensitivity(IJob::TIME_INSENSITIVE);
+
+This allows the Nextcloud to delay the job until a given nightly time window so the users
+are not that impacted by the heavy load of the background job.
+
 Registering a background job
 ----------------------------
 
@@ -77,7 +96,7 @@ You can register your jobs in your info.xml by addning;
 .. code-block:: xml
 
     <background-jobs>
-		  <job>OCA\MyApp\Cron\SomeTask</job>
+        <job>OCA\MyApp\Cron\SomeTask</job>
     </background-jobs>
 
 This will on install/update of the application add the job ``OCA\MyApp\Cron\SomeTask``.
