@@ -43,7 +43,7 @@ your job class of choice.
             $this->myService = $service;
 
             // Run once an hour
-            parent::setInterval(3600);
+            $this->setInterval(3600);
         }
 
         protected function run($arguments) {
@@ -65,18 +65,18 @@ logic happens.
 Heavy load and time insensitive
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When the background job can impact the performance of the instance and is not time sensitive,
-e.g. when clearing old data, running training of AI models or similar things, consider flagging
-it as time insensitive in the constructor.
+When the background job is a ``\OCP\BackgroundJob\TimedJob`` and can impact the performance of
+the instance and is not time sensitive, e.g. clearing old data, running training of AI models
+or similar things, consider flagging it as time insensitive in the constructor.
 
 .. code-block:: php
 
     <?php
 
     // Run once a day
-    parent::setInterval(24 * 3600);
+    $this->setInterval(24 * 3600);
     // Delay until low-load time
-    parent::setTimeSensitivity(IJob::TIME_INSENSITIVE);
+    $this->setTimeSensitivity(\OCP\BackgroundJob\IJob::TIME_INSENSITIVE);
 
 This allows the Nextcloud to delay the job until a given nightly time window so the users
 are not that impacted by the heavy load of the background job.
