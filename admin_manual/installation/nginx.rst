@@ -162,7 +162,7 @@ webroot of your nginx installation. In this example it is
           fastcgi_request_buffering off;
       }
       
-      location ~ \.(?:css|js|svg|gif)$ {
+      location ~ \.(?:css|js|svg|gif|map)$ {
           try_files $uri /index.php$request_uri;
           expires 6M;         # Cache-Control policy borrowed from `.htaccess`
           access_log off;     # Optional: Don't log access to assets
@@ -329,7 +329,7 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
               fastcgi_request_buffering off;
           }
           
-          location ~ \.(?:css|js|svg|gif)$ {
+          location ~ \.(?:css|js|svg|gif|map)$ {
               try_files $uri /nextcloud/index.php$request_uri;
               expires 6M;         # Cache-Control policy borrowed from `.htaccess`
               access_log off;     # Optional: Don't log access to assets
