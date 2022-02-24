@@ -20,7 +20,7 @@ For example, to search for text files for the user 'test':
 
 .. code-block:: bash
 
-    curl -u username:password 'https://cloud.example.com/remote.php/dav/' -X SEARCH -u test:test -H "content-Type: text/xml" --data '<?xml version="1.0" encoding="UTF-8"?>
+    curl -u test:password 'https://cloud.example.com/remote.php/dav/' -X SEARCH -H "content-Type: text/xml" --data '<?xml version="1.0" encoding="UTF-8"?>
      <d:searchrequest xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns">
          <d:basicsearch>
              <d:select>
