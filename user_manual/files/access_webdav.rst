@@ -511,7 +511,7 @@ To get the properties of files in the root folder:
     </d:multistatus>
 
 
-.. _KB2668751: https://support.microsoft.com/kb/2668751
+.. _KB2668751: https://web.archive.org/web/20211008025539/https://support.microsoft.com/en-us/topic/you-cannot-download-more-than-50-mb-or-upload-large-files-when-the-upload-takes-longer-than-30-minutes-using-web-client-in-windows-7-8709ae9d-e808-c5a0-95d0-9a7143c50b11
 .. _KB2123563: https://support.microsoft.com/kb/2123563
 .. _WebDAV Navigator: http://seanashton.net/webdav/
 .. _Android devices: https://play.google.com/store/apps/details?id=com.schimera.webdavnavlite
