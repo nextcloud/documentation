@@ -1,6 +1,6 @@
-===========================
+============================
 Uploading big files > 512 MB
-===========================
+============================
 
 The default maximum file size for uploads is 512 MB. You can increase this 
 limit up to what your filesystem and operating system allows. There are certain 
