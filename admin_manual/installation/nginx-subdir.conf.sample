@@ -137,7 +137,7 @@ server {
             fastcgi_max_temp_file_size 0;
         }
 
-        location ~ \.(?:css|js|svg|gif|png|jpg|ico|wasm|tflite)$ {
+        location ~ \.(?:css|js|svg|gif|png|jpg|ico|wasm|tflite|map)$ {
             try_files $uri /nextcloud/index.php$request_uri;
             expires 6M;         # Cache-Control policy borrowed from `.htaccess`
             access_log off;     # Optional: Don't log access to assets
