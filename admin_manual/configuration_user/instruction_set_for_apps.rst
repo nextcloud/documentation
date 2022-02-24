@@ -3,7 +3,7 @@ Instruction set for apps
 ========================
 
 Get list of apps
----------------
+----------------
 
 Returns a list of apps installed on the Nextcloud server. Authentication is done 
 by sending a Basic HTTP Authorization 
