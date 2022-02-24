@@ -17,6 +17,9 @@ server {
     listen [::]:443 ssl http2;
     server_name cloud.example.com;
 
+    # Path to the root of your installation
+    root /var/www/nextcloud;
+
     # Use Mozilla's guidelines for SSL/TLS settings
     # https://mozilla.github.io/server-side-tls/ssl-config-generator/
     ssl_certificate     /etc/ssl/nginx/cloud.example.com.crt;
@@ -58,9 +61,6 @@ server {
 
     # Remove X-Powered-By, which is an information leak
     fastcgi_hide_header X-Powered-By;
-
-    # Path to the root of your installation
-    root /var/www/nextcloud;
 
     # Specify how to handle directories -- specifying `/index.php$request_uri`
     # here as the fallback means that Nginx always exhibits the desired behaviour
