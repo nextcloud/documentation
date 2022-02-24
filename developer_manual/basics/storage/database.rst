@@ -54,7 +54,7 @@ Database operations can be run in a transaction to commit or roll back a group o
 
     <?php
 
-    $this->db->startTransaction();
+    $this->db->beginTransaction();
 
     try {
         // DB operations
