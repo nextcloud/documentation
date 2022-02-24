@@ -276,7 +276,7 @@ Disable Main Server:
 
 Turn off SSL certificate validation:
   Turns off SSL certificate checking. Use it for testing only!
-  *Note*: The effect of this setting depdends on the PHP system configuration.
+  *Note*: The effect of this setting depends on the PHP system configuration.
   It does for example not work with the
   [official Nextcloud container image](https://github.com/nextcloud/docker).
   To disable certificate verification for a particular use, append the following
