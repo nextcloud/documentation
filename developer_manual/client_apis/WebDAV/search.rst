@@ -212,4 +212,35 @@ Get all png and jpg files over 10MB.
         </d:basicsearch>
     </d:searchrequest>
 
+Get all files last modified after a given date.
+
+.. code-block:: xml
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <d:searchrequest xmlns:d="DAV:">
+        <d:basicsearch>
+            <d:select>
+                <d:prop>
+                    <d:displayname/>
+                    <d:getlastmodified />
+                </d:prop>
+            </d:select>
+            <d:from>
+                <d:scope>
+                    <d:href>/files/test</d:href>
+                    <d:depth>infinity</d:depth>
+                </d:scope>
+            </d:from>
+            <d:where>
+                <d:gt>
+                    <d:prop>
+                        <d:getlastmodified/>
+                    </d:prop>
+                    <d:literal>2021-01-01T17:00:00Z</d:literal>
+                </d:gt>
+            </d:where>
+            <d:orderby/>
+        </d:basicsearch>
+    </d:searchrequest>
+
 .. _rfc5323: https://tools.ietf.org/html/rfc5323
