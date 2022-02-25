@@ -217,5 +217,3 @@ download them from your Nextcloud Files page, which compresses them into a zip
 file, or use a sync client to copy them to your local computer. See
 :doc:`../configuration_files/file_sharing_configuration` to learn how to create
 persistent file shares that survive user deletions.
-
-.. note:: If you are using object storage such as OpenStack Swift or Amazon Simple Storage Service (S3) or any compatible S3-implementation (e.g. Minio or Ceph Object Gateway) as primary storage or external storage, you should first make sure the user's files have been deleted. Once a user is deleted, it is not possible to remove those objects from storage. 
