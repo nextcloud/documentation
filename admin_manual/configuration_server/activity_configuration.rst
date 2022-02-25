@@ -34,12 +34,12 @@ you to clean-up older activities from the database.
 
 .. _label-activities-groupfolders:
 
-Activities in groupfolders
---------------------------
+Activities in groupfolders or external storages
+-----------------------------------------------
 
-By default activities in groupfolders are only generated for the current user.
-This is due to the logic of groupfolders. There is a config flag
-``activity_use_cached_mountpoints`` that makes activities in groupfolders work
+By default activities in groupfolders or external storages are only generated for the current user.
+This is due to the logic of groupfolders and external storages. There is a config flag
+``activity_use_cached_mountpoints`` that makes activities in groupfolders and external storages work
 like in normal shares when set to ``true``.
 
 .. warning::
@@ -48,15 +48,6 @@ like in normal shares when set to ``true``.
 
     1. Users that had access to a groupfolder, share or external storage can see activities in their stream and emails that happen after they are removed until they login again
     2. Users that are newly added to a groupfolder, share or external storage can not see activities in their stream nor emails that happen after they are added until they login again
-
-.. _label-activities-externalstorages:
-
-Activities in external storages
--------------------------------
-
-When external storages have been configured in a way that multiple users have access to it,
-you can use the config flag ``activity_use_cached_mountpoints`` that makes activities
-with external storages work like in normal shares when set to ``true``.
 
 Better scheduling of activity emails
 ------------------------------------
