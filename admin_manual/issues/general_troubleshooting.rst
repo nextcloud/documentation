@@ -170,7 +170,7 @@ Web server and PHP modules
    may not work at all on Lighttpd.
 
 There are some Web server or PHP modules which are known to cause various
-problems like broken up-/downloads. The following shows a draft overview of
+problems like broken uploads/downloads. The following shows a draft overview of
 these modules:
 
 1. Apache
