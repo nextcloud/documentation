@@ -3,6 +3,12 @@ upstream php-handler {
     #server unix:/var/run/php/php7.4-fpm.sock;
 }
 
+# Set the `immutable` cache control options only for assets with a cache busting `v` argument
+map $arg_v $asset_immutable {
+    "" "";
+    default "immutable";
+}
+
 server {
     listen 80;
     listen [::]:80;
@@ -139,15 +145,11 @@ server {
 
         location ~ \.(?:css|js|svg|gif|png|jpg|ico|wasm|tflite|map)$ {
             try_files $uri /nextcloud/index.php$request_uri;
-            expires 6M;         # Cache-Control policy borrowed from `.htaccess`
+            add_header Cache-Control "public, max-age=15778463, $asset_immutable";
             access_log off;     # Optional: Don't log access to assets
 
             location ~ \.wasm$ {
                 default_type application/wasm;
-            }
-
-            location ~ \.(?:css|js|svg|gif|png|jpg|ico|wasm|tflite)(\?v=.*)?$ {
-                add_header Cache-Control "public, max-age=15778463, immutable";
             }
         }
 
