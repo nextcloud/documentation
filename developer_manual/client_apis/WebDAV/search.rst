@@ -217,7 +217,7 @@ Get all files last modified after a given date.
 .. code-block:: xml
 
     <?xml version="1.0" encoding="UTF-8"?>
-    <d:searchrequest xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns">
+    <d:searchrequest xmlns:d="DAV:">
         <d:basicsearch>
             <d:select>
                 <d:prop>
