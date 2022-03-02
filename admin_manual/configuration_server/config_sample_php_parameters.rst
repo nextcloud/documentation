@@ -1258,7 +1258,7 @@ Defaults to ``50`` megabytes
 
 	'preview_max_memory' => 128,
 
-Max memory for generating image previews with imagegd (default behavior).
+max memory for generating image previews with imagegd (default behavior)
 Reads the image dimensions from the header and assumes 32 bits per pixel.
 
 If creating the image would allocate more memory, preview generation will
