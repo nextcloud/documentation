@@ -34,12 +34,12 @@ you to clean-up older activities from the database.
 
 .. _label-activities-groupfolders:
 
-Activities in groupfolders
---------------------------
+Activities in groupfolders or external storages
+-----------------------------------------------
 
-By default activities in groupfolders are only generated for the current user.
-This is due to the logic of groupfolders. There is a config flag
-``activity_use_cached_mountpoints`` that makes activities in groupfolders work
+By default activities in groupfolders or external storages are only generated for the current user.
+This is due to the logic of groupfolders and external storages. There is a config flag
+``activity_use_cached_mountpoints`` that makes activities in groupfolders and external storages work
 like in normal shares when set to ``true``.
 
 .. warning::
