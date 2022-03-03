@@ -2342,6 +2342,22 @@ Warning: This heavily decreases the performance of the server and is only
 meant to debug/profile the LDAP interaction manually.
 Also, it might log sensitive data into a plain text file.
 
+::
+
+	'diagnostics.logging' => true,
+
+Enable diagnostics event logging
+
+If enabled the timings of common execution steps will be logged to the
+Nextcloud log at debug level. log.condition is useful to enable this on
+production systems to only log under some conditions
+
+::
+
+	'diagnostics.logging.threshold' => 0,
+
+Limit diagnostics event logging to events longer than the configured threshold in ms
+
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
 
