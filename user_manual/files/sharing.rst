@@ -29,7 +29,7 @@ A number of options are available for public *folder* shares:
 * **Read only** to allow viewing and downloading
 * **Allow upload and editing**
 * With **File drop**, the sharee can only upload files to a folder without seeing the files that are already in that folder.
-* **Hide download** prevents the sharee from downloading
+* **Hide download** hides the download buttons and the default browser right-click options in order to make downloading for the sharee harder
 * **Password protect**
 * **Set expiration date** will automatically disable the share
 * **Note to recipient**
