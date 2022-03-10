@@ -857,8 +857,6 @@ If `PHPUnit in version 8 is installed <https://phpunit.de/>`_ we can run the tes
 
     phpunit
 
-.. note:: You need to adjust the **notestutorial/tests/Unit/Controller/PageControllerTest** file to get the tests passing: remove the **testEcho** method since that method is no longer present in your **PageController** and do not test the user id parameters since they are not passed anymore
-
 Integration tests
 -----------------
 
