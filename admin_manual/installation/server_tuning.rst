@@ -123,3 +123,31 @@ To disable the revalidation completely:
 Any change to ``config.php`` will then require either restarting PHP, manually clearing the cache, or invalidating this particular script.
 
 For more details check out the `official documentation <https://php.net/manual/en/opcache.configuration.php>`_. To monitor OPcache usage, clear individual or all cache entries, `opcache-gui <https://github.com/amnuts/opcache-gui>`_ can be used.
+
+Previews
+--------
+
+It is possible to speed up preview generation using an
+external microservice: `Imaginary <https://github.com/h2non/imaginary>`.
+
+To do so, you will need to deploy the service and make sure that it is
+not accessible from outside of your servers. Then you can configure
+Nextcloud to use Imaginary by editing your `config.php`:
+
+.. code:: php
+
+    <?php
+    'enabledPreviewProviders' => [
+        'OC\Preview\MP3',
+        'OC\Preview\TXT',
+        'OC\Preview\MarkDown',
+        'OC\Preview\OpenDocument',
+        'OC\Preview\Krita',
+        'OC\Preview\Imaginary',
+    ],
+    'preview_imaginary_url' => 'http://<url of imaginary>',
+
+
+.. note::
+
+    For large instance, you should follow `Imaginary's scability recommandation <https://github.com/h2non/imaginary#scalability>`
