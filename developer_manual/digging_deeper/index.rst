@@ -25,6 +25,7 @@ Digging deeper
    two-factor-provider
    users
    dashboard
+   projects
    groupware/index
    web_host_metadata
    status
