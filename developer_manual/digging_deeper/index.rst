@@ -24,4 +24,5 @@ Digging deeper
    two-factor-provider
    users
    dashboard
+   projects
    web_host_metadata
