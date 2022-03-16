@@ -125,7 +125,7 @@ Console commands
 
 There are some console commands, which should help developers to create or deal
 with migrations, which are only available if you are running your
-Nextcloud in debug mode:
+Nextcloud **in debug mode**:
 
 * `migrations:execute`: Executes a single migration version manually.
 * `migrations:generate`:
