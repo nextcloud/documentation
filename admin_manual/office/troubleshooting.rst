@@ -4,12 +4,12 @@ Troubleshooting
 
 In case of connectivity issues, ensure that the following required connections are possible and not blocked by any firewall:
 
-- The users browser can reach both the Nextcloud Server as well as the Nextcloud Office server through HTTP(S)
-- The Nextcloud and the Nextcloud Office Server are using the same protocol
-- The Nextcloud server can reach the Nextcloud Office Server through HTTP(S)
-- The Nextcloud Office Server can reach the Nextcloud server through HTTP(S)
+- The users browser can reach both the Nextcloud Server as well as the Collabora Online server through HTTP(S)
+- The Nextcloud and the Collabora Online server are using the same protocol
+- The Nextcloud server can reach the Collabora Online server through HTTP(S)
+- The Collabora Online server can reach the Nextcloud server through HTTP(S)
 
-Both the Nextcloud log as well as the Nextcloud Office Server log may reveal more detailed error messages in case of connection issues.
+Both the Nextcloud log as well as the Collabora Online server log may reveal more detailed error messages in case of connection issues.
 
 - Verify connectivity from the browser:
     - https://office.example.com/hosting/capabilities

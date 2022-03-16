@@ -2,7 +2,7 @@
 Migration from Collabora Online
 ===============================
 
-Nextcloud Office is based on Collabora Online so for enabling all Nextcloud Office functionallity it would be enough to update to the most recent release. Nextcloud Office is available since CODE 21.11.
+Nextcloud Office is based on Collabora Online so for enabling all Nextcloud Office functionality it would be enough to update to the most recent release. Nextcloud Office is available since CODE 21.11.
 
 .. note::
     This upgrade guide is aimed for upgrading from CODE 6.4 to CODE 21.11.

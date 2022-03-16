@@ -34,6 +34,10 @@ Edit /etc/coolwsd/coolwsd.xml. Collabora Online (coolwsd) service runs via syste
 
 The default configuration is looking for an SSL certificate and key, which are not present, so probably it’s the best to disable SSL, and optionally enable SSL termination, then set up the reverse proxy.
 
+.. seealso::
+  Full configuration examples for reverse proxy setup can be found in the Collabora Online documentation:
+  https://sdk.collaboraonline.com/docs/installation/Proxy_settings.html
+
 
 .. code-block:: bash
 
@@ -41,6 +45,6 @@ The default configuration is looking for an SSL certificate and key, which are n
     sudo coolconfig set ssl.termination true
     sudo coolconfig set storage.wopi.host nextcloud.example.com
     sudo coolconfig set-admin-password
-    sudo systemctl restart loolwsd
-    systemctl status loolwsd
+    sudo systemctl restart coolwsd
+    systemctl status coolwsd
 
