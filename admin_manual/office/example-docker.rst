@@ -14,10 +14,12 @@ To install it the following dependencies are required:
 - A valid SSL certificate for your Nextcloud
 
 
-1. Install the Collabora Online server
+Install the Collabora Online server
 **************************************
 
-The following steps will download the Collabora Online docker, make sure to replace "cloud.nextcloud.com" with the host that your own Nextcloud runs on. Also make sure to escape all dots with double backslashes (\), since this string will be evaluated as a regular expression (and your bash 'eats' the first backslash.) If you want to use the docker container with more than one Nextcloud, you'll need to use 'domain=cloud\\.nextcloud\\.com\|second\\.nextcloud\\.com' instead. (All hosts are separated by \|.)
+The following steps will download the Collabora Online docker. Make sure to replace "cloud.example.com" with the host that your own Nextcloud runs on. Also make sure to escape all dots with double backslashes (`\\`), since this string will be evaluated as a regular expression (and your bash 'eats' the first backslash.) If you want to use the docker container with more than one Nextcloud, you'll need to use `domain=cloud\\.nextcloud\\.com\|second\\.nextcloud\\.com` instead. (All hosts are separated by `\|`.)
+
+.. code-block:: bash
 
     docker pull collabora/code
     docker run -t -d -p 127.0.0.1:9980:9980 \
@@ -28,7 +30,7 @@ The following steps will download the Collabora Online docker, make sure to repl
 
 That will be enough. Once you have done that the server will listen on "localhost:9980". Now we just need to configure the locally installed Apache reverse proxy.
 
-2. Install the Apache reverse proxy
+Install the Apache reverse proxy
 ***********************************
 
 On a recent Ubuntu or Debian this should be possible using:
@@ -42,57 +44,54 @@ Afterward, configure one VirtualHost properly to proxy the traffic. For security
 
 .. code-block:: apache2
 
-    <VirtualHost *:443>
-        ServerName office.example.com:443
+    ########################################
+    # Reverse proxy for Collabora Online
+    ########################################
 
-        # SSL configuration, you may want to take the easy route instead and use Lets Encrypt!
-        SSLEngine on
-        SSLCertificateFile /path/to/signed_certificate
-        SSLCertificateChainFile /path/to/intermediate_certificate
-        SSLCertificateKeyFile /path/to/private/key
-        SSLProtocol             all -SSLv2 -SSLv3
-        SSLCipherSuite ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:ECDHE-ECDSA-DES-CBC3-SHA:ECDHE-RSA-DES-CBC3-SHA:EDH-RSA-DES-CBC3-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:DES-CBC3-SHA:!DSS
-        SSLHonorCipherOrder     on
+    AllowEncodedSlashes NoDecode
+    SSLProxyEngine On
+    ProxyPreserveHost On
 
-        # Encoded slashes need to be allowed
-        AllowEncodedSlashes NoDecode
+    # cert is issued for collaboraonline.example.com and we proxy to localhost
+    SSLProxyVerify None
+    SSLProxyCheckPeerCN Off
+    SSLProxyCheckPeerName Off
 
-        # Container uses a unique non-signed certificate
-        SSLProxyEngine On
-        SSLProxyVerify None
-        SSLProxyCheckPeerCN Off
-        SSLProxyCheckPeerName Off
+    # static html, js, images, etc. served from coolwsd
+    # browser is the client part of Collabora Online
+    ProxyPass           /browser https://127.0.0.1:9980/browser retry=0
+    ProxyPassReverse    /browser https://127.0.0.1:9980/browser
 
-        # keep the host
-        ProxyPreserveHost On
+    # WOPI discovery URL
+    ProxyPass           /hosting/discovery https://127.0.0.1:9980/hosting/discovery retry=0
+    ProxyPassReverse    /hosting/discovery https://127.0.0.1:9980/hosting/discovery
 
-        # static html, js, images, etc. served from loolwsd
-        # loleaflet is the client part of LibreOffice Online
-        ProxyPass           /loleaflet https://127.0.0.1:9980/loleaflet retry=0
-        ProxyPassReverse    /loleaflet https://127.0.0.1:9980/loleaflet
+    # Capabilities
+    ProxyPass           /hosting/capabilities https://127.0.0.1:9980/hosting/capabilities retry=0
+    ProxyPassReverse    /hosting/capabilities https://127.0.0.1:9980/hosting/capabilities
 
-        # WOPI discovery URL
-        ProxyPass           /hosting/discovery https://127.0.0.1:9980/hosting/discovery retry=0
-        ProxyPassReverse    /hosting/discovery https://127.0.0.1:9980/hosting/discovery
+    # Main websocket
+    ProxyPassMatch      "/cool/(.*)/ws$"      wss://127.0.0.1:9980/cool/$1/ws nocanon
 
-        # Main websocket
-        ProxyPassMatch "/lool/(.*)/ws$" wss://127.0.0.1:9980/lool/$1/ws nocanon
+    # Admin Console websocket
+    ProxyPass           /cool/adminws wss://127.0.0.1:9980/cool/adminws
 
-        # Admin Console websocket
-        ProxyPass   /lool/adminws wss://127.0.0.1:9980/lool/adminws
+    # Download as, Fullscreen presentation and Image upload operations
+    ProxyPass           /cool https://127.0.0.1:9980/cool
+    ProxyPassReverse    /cool https://127.0.0.1:9980/cool
+    # Compatibility with integrations that use the /lool/convert-to endpoint
+    ProxyPass           /lool https://127.0.0.1:9980/cool
+    ProxyPassReverse    /lool https://127.0.0.1:9980/cool
 
-        # Download as, Fullscreen presentation and Image upload operations
-        ProxyPass           /lool https://127.0.0.1:9980/lool
-        ProxyPassReverse    /lool https://127.0.0.1:9980/lool
 
-        # Endpoint with information about availability of various features
-        ProxyPass           /hosting/capabilities https://127.0.0.1:9980/hosting/capabilities retry=0
-        ProxyPassReverse    /hosting/capabilities https://127.0.0.1:9980/hosting/capabilities
-    </VirtualHost>
-			
-After configuring these do restart your apache using /etc/init.d/apache2 restart.    
+After configuring these do restart your apache using ``systemctl restart apache2``.
 
-3. Configure the app in Nextcloud
+.. seealso::
+  Full configuration examples for reverse proxy setup can be found in the Collabora Online documentation:
+  https://sdk.collaboraonline.com/docs/installation/Proxy_settings.html
+
+
+Configure the app in Nextcloud
 *********************************
 
 Go to the Apps section and choose "Office & text"
@@ -106,13 +105,25 @@ Updating
 
 Occasionally, new versions of this docker image are released with security and feature updates. We will of course let you know when that happens! This is how you upgrade to a new version:
 
-grab new docker image:
-    docker pull collabora/code
-List docker images:
-    docker ps 
-from the output you can glean the Container ID of your Collabora Online docker image.
-stop and remove the Collabora Online docker image:
-    docker stop CONTAINER_ID 
-    docker rm CONTAINER_ID
-start the new image:
-    docker run -t -d -p 127.0.0.1:9980:9980 -e 'domain=cloud\\.nextcloud\\.com' --restart always --cap-add MKNOD collabora/code
+Update the docker image:
+    .. code-block:: bash
+
+        docker pull collabora/code
+
+List running docker containers:
+    .. code-block:: bash
+
+        docker ps 
+
+Stop and remove the Collabora Online container with the container id of the running one:
+    .. code-block:: bash
+
+        docker stop CONTAINER_ID
+        docker rm CONTAINER_ID
+
+Start the new container:
+    .. code-block:: bash
+
+        docker run -t -d -p 127.0.0.1:9980:9980 -e 'domain=cloud\\.example\\.com' \
+            --restart always --cap-add MKNOD collabora/code
+
