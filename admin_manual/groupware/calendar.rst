@@ -2,6 +2,18 @@
 Calendar / CalDAV
 =================
 
+Events
+------
+
+You can customize the events user interface.
+
+Hide export buttons
+~~~~~~~~~~~~~~~~~~~
+
+By default users can export their calendar data from the editor and the sidebar. Admins can disable this feature::
+
+ php occ config:app:set calendar hideEventExport --value=yes
+
 Invitations
 -----------
 Nextcloud can send invitations for event attendees if this option is activated.
