@@ -55,7 +55,7 @@ instance, importing is the best way to do so.
 .. note:: The Nextcloud Calendar application only supports iCalendar-compatible
           ``.ics``-files, defined in RFC 5545.
 
-Edit, Download or Delete a Calendar
+Edit, Export or Delete a Calendar
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Sometimes you may want to change the color or the entire name of a previous
@@ -74,7 +74,7 @@ hard drive or delete it forever.
 .. figure:: images/calendar_editing.png
             :scale: 80%
 
-2. Click on ``Edit name``, ``Edit color``, ``Download`` or ``Delete``.
+2. Click on *Edit name*, *Edit color*, *Export* or *Delete*.
 
 Sharing calendars
 ~~~~~~~~~~~~~~~~~
@@ -100,7 +100,7 @@ In this url you need to replace the following variables:
 - ``<view>`` with one of ``month``, ``week``, ``day``, ``listMonth``, ``listWeek``, ``listDay``. The default view is ``month`` and the normally used list is ``listMonth``,
 - ``<date>`` with ``now`` or any date with the following format ``<year>-<month>-<day>`` (e.g. ``2019-12-28``).
 
-On the public page, users are able to get the subscription link for the calendar and download the whole calendar directly.
+On the public page, users are able to get the subscription link for the calendar and export the whole calendar directly.
 
 Subscribe to a Calendar
 ~~~~~~~~~~~~~~~~~~~~~~~
