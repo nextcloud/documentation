@@ -1291,6 +1291,16 @@ Defaults to ``''`` (empty string)
 
 ::
 
+	'preview_imaginary_url' => 'http://previews_hpb:8088/',
+
+Set the URL of the Imaginary service to send image previews to.
+
+Also requires the OC\\Preview\\Imaginary provider to be enabled.
+
+See https://github.com/h2non/imaginary
+
+::
+
 	'enabledPreviewProviders' => [
 		'OC\Preview\PNG',
 		'OC\Preview\JPEG',
@@ -2362,6 +2372,14 @@ production systems to only log under some conditions
 	'diagnostics.logging.threshold' => 0,
 
 Limit diagnostics event logging to events longer than the configured threshold in ms
+
+::
+
+	'profile.enabled' => true,
+
+Enable profile globally
+
+Defaults to ``true``
 
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
