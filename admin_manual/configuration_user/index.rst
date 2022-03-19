@@ -4,7 +4,7 @@ User management
 
 .. toctree::
     :maxdepth: 2
-    
+
     user_configuration
     reset_admin_password
     reset_user_password
@@ -15,3 +15,4 @@ User management
     user_auth_ldap_cleanup
     user_auth_ldap_api
     user_provisioning_api
+    profile_configuration
