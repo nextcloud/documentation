@@ -155,3 +155,12 @@ This will return a 404 until authentication is done. Once a 200 is returned it i
 
 Use the server and the provided credentials to connect.
 Note that the 200 will only be returned once.
+
+
+Troubleshooting
+---------------
+
+Login name vs. email login
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Nextcloud allows authentication with user's *login name*, which can be their UID, an email address and similar. The identifier used for the session in which the user generates the app password will be stored into the database record of the generated app password. Therefore the identifier used in the web session that authorizes a client must match the identifier used in the connecting client.
