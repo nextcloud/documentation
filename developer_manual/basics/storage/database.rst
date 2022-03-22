@@ -322,3 +322,37 @@ Slugs are used to identify resources in the URL by a string rather than integer 
     $author->slugify('name');  // Some-thing
 
 
+Supporting more databases
+-------------------------
+
+Most queries should run fine on all supported databases, but if scaling is required and a database is split into a cluster and for some special database types more rules apply.
+You can specify your supported databases in the ``appinfo/info.xml`` of your app in the dependencies section:
+
+
+.. code-block:: xml
+
+    <database>pgsql</database>
+    <database>sqlite</database>
+    <database>mysql</database>
+
+When Oracle (``oci``) is supported (also when you don't list any databases), Nextcloud performs some additional tests on the schema which apply to databases in this case:
+
+* Table names can not be longer than 27 characters (including the ``oc_`` prefix)
+* Primary keys must have a custom index name when the table name is longer than 23 characters
+* Column names can not be longer than 30 characters
+* Index names can not be longer than 30 characters
+* Foreign key names can not be longer than 30 characters
+* Sequence names can not be longer than 30 characters
+* String columns can not be NotNull and have an empty string as default value when being added in a later migration
+* Boolean columns can not be NotNull
+
+Additionally we assume that Oracle support means you are interested in scaling and therefor check additional restrictions of other databases in clustered setups:
+
+* Galera Cluster: All tables must have a primary key
+
+On top of that there are some configs which influence the queries you can run. Known problems are:
+
+* MySQL deleting lot of entries - Use a ``LIMIT`` on the delete (not supported on other databases), see this `sample of the activity app <https://github.com/nextcloud/activity/blob/master/lib/Data.php#L385-L397>`_
+* MySQL ``ONLY_FULL_GROUP_BY`` - All values selected in a query with a ``GROUP BY`` need to be aggregated as per `MySQL manual <https://dev.mysql.com/doc/refman/8.0/en/sql-mode.html#sqlmode_only_full_group_by>`_
+
+It makes sense to apply the restrictions from the beginning already so you don't have to migrate your data and schema later on when you want to change the set of supported databases.
