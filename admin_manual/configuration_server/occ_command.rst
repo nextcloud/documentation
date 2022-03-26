@@ -330,7 +330,7 @@ These commands set the value of a single app or system configuration::
   System config value logtimezone set to Europe/Berlin
 
   sudo -u www-data php occ config:app:set files_sharing
-  incoming_server2server_share_enabled --value="yes" --type=boolean
+  incoming_server2server_share_enabled --value="yes"
   Config value incoming_server2server_share_enabled for app files_sharing set to yes
 
 The ``config:system:set`` command creates the value, if it does not already
