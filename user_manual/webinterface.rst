@@ -14,17 +14,6 @@ Web browser requirements
 For the best experience with the Nextcloud web interface, we recommend that you use the 
 latest and supported version of a browser from this list:
 
-.. No need to translate
-
-* Microsoft **Internet Explorer**
-
-.. No need to translate
-
-* Microsoft **Edge**
-
-.. No need to translate
-
-* Mozilla **Firefox**
 
 .. No need to translate
 
@@ -32,11 +21,22 @@ latest and supported version of a browser from this list:
 
 .. No need to translate
 
+* Mozilla **Firefox**
+
+.. No need to translate
+
 * Apple **Safari**
+
+.. No need to translate
+
+* Microsoft **Edge**
 
 .. note:: If you want to use Nextcloud Talk you need to run Mozilla **Firefox** 52+
    or Google **Chrome**/Chromium 49+ to have the full experience with video calls and 
    screensharing. Google **Chrome**/Chromium requires a additional plugin for screensharing.
+   
+.. note:: While we try our best to support it, we do **NOT** recommend the usage of microsoft Edge.
+   Microsoft **Internet Explorer** is **NOT** supported.
 
 Navigating the main user interface
 ----------------------------------
