@@ -344,6 +344,7 @@ When Oracle (``oci``) is supported (also when you don't list any databases), Nex
 * Foreign key names can not be longer than 30 characters
 * Sequence names can not be longer than 30 characters
 * String columns can not be NotNull and have an empty string as default value when being added in a later migration
+* String columns can not have a length longer than 4.000 characters, use text instead
 * Boolean columns can not be NotNull
 
 Additionally we assume that Oracle support means you are interested in scaling and therefor check additional restrictions of other databases in clustered setups:
