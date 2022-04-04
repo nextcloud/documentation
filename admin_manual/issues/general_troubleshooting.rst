@@ -138,8 +138,7 @@ Some common problems / error messages found in your logfiles as described above:
   ``data/nextcloud.log`` file. Some Apache modules like ``mod_fastcgi``, ``mod_fcgid``
   or ``mod_proxy_fcgi`` are not passing the needed authentication headers to
   PHP and so the login to Nextcloud via WebDAV, CalDAV and CardDAV clients is
-  failing. Information on how to correctly configure your environment can be
-  found at the `forums <https://forum.owncloud.org/viewtopic.php?f=17&t=30646>`_.
+  failing.
 
 Troubleshooting Web server and PHP problems
 -------------------------------------------
