@@ -24,8 +24,7 @@ latest and supported version of a browser from this list:
    or Google **Chrome**/Chromium 49+ to have the full experience with video calls and 
    screensharing. Google **Chrome**/Chromium requires a additional plugin for screensharing.
    
-.. note:: While we try our best to support it, we do **NOT** recommend the usage of microsoft Edge.
-   Microsoft **Internet Explorer** is **NOT** supported.
+.. note:: Microsoft **Internet Explorer** is **NOT** supported.
 
 Navigating the main user interface
 ----------------------------------
