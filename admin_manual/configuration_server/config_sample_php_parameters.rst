@@ -1117,6 +1117,16 @@ will be overwritten.
 
 Defaults to 100 MB
 
+::
+
+	'profiler' => false,
+
+Enable built-in profiler. Helpful when trying to debug performance
+issues.
+
+Note that this has a performance impact and shouldn't be enabled
+on production.
+
 Alternate Code Locations
 ------------------------
 
