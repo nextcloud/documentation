@@ -1793,6 +1793,12 @@ Set to false to stop sending a mail when users receive a share
 
 ::
 
+	'sharing.allow_disabled_password_enforcement_groups' => false,
+
+Set to true to enable the feature to add exceptions for share password enforcement
+
+::
+
 	'transferIncomingShares' => false,
 
 Set to true to always transfer incoming shares by default
