@@ -13,7 +13,7 @@ Several 2FA apps are already available including
 a Telegram/Signal/SMS gateway and `U2F <https://en.wikipedia.org/wiki/Universal_2nd_Factor>`_. 
 
 
-Developers can `build new two-factor provider apps <https://docs.nextcloud.com/server/latest/developer_manual/app/two-factor-provider.html>`_.
+Developers can `build new two-factor provider apps <https://docs.nextcloud.com/server/latest/developer_manual/digging_deeper/two-factor-provider.html>`_.
 
 .. TODO ON RELEASE: Update version number above on release
 
