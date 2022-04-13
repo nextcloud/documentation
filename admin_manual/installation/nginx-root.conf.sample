@@ -15,6 +15,9 @@ server {
     listen [::]:80;
     server_name cloud.example.com;
 
+    # Prevent nginx HTTP Server Detection
+    server_tokens off;
+
     # Enforce HTTPS
     return 301 https://$server_name$request_uri;
 }
@@ -31,6 +34,9 @@ server {
     # https://mozilla.github.io/server-side-tls/ssl-config-generator/
     ssl_certificate     /etc/ssl/nginx/cloud.example.com.crt;
     ssl_certificate_key /etc/ssl/nginx/cloud.example.com.key;
+
+    # Prevent nginx HTTP Server Detection
+    server_tokens off;
 
     # HSTS settings
     # WARNING: Only add the preload option once you read about
