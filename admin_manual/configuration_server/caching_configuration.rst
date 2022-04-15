@@ -85,7 +85,7 @@ You can verify that the Redis daemon is running with ``ps ax``::
  
  ps ax | grep redis
  22203 ? Ssl    0:00 /usr/bin/redis-server 127.0.0.1:6379 
- 
+
 Restart your Web server, add the appropriate entries to your ``config.php``, and 
 refresh your Nextcloud admin page. This example ``config.php`` configuration uses 
 Redis for the distributed server cache::
@@ -124,9 +124,15 @@ to the redis group::
 
   usermod -a -G redis www-data
 
-You might need to restart apache for the changes to take effect::
+And modify the ``unixsocketperm`` of the ``redis.conf`` accordingly::
+
+  unixsocketperm 770
+
+You might need to restart apache and redis for the changes to take effect::
 
  systemctl restart apache2
+ systemctl restart redis-server
+ systemctl restart redis
 
 Redis is very configurable; consult `the Redis documentation 
 <http://redis.io/documentation>`_ to learn more.
