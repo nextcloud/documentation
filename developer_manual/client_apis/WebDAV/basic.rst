@@ -71,6 +71,8 @@ You can request additional properties by sending a request body with the :code:`
 		<oc:comments-unread />
 		<oc:owner-display-name />
 		<oc:share-types />
+		<nc:contained-folder-count />
+		<nc:contained-file-count />
 	  </d:prop>
 	</d:propfind>
 
@@ -94,6 +96,8 @@ The following properties are supported:
 - :code:`{http://nextcloud.org/ns}has-preview`
 - :code:`{http://owncloud.org/ns}size` Unlike :code:`getcontentlength`, this property also works for folders reporting the size of everything in the folder.
 - :code:`{http://nextcloud.org/ns}rich-workspace` this property is provided by the text app
+- :code:`{http://nextcloud.org/ns}contained-folder-count` The number of folders directly contained in the folder (not recursively)
+- :code:`{http://nextcloud.org/ns}contained-file-count` The number of files directly contained in the folder (not recursively)
 
 Getting properties for just the folder
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
