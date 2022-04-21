@@ -1,11 +1,11 @@
 ==============
-User Migration
+User migration
 ==============
 
-The `User Migration app <https://apps.nextcloud.com/apps/user_migration>`_ may
+The `User migration app <https://apps.nextcloud.com/apps/user_migration>`_ may
 be installed to allow migration of user data.
 
-App developers can integrate into User Migration and provide ways to export
+App developers can integrate into User migration and provide ways to export
 and import the app data of a user.
 
 Register a migrator
