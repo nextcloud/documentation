@@ -122,7 +122,7 @@ whenever a user export or import begins.
     }
   }
 
-The ``MyAppMigrator`` class needs to be registered during the :ref:`app bootstrap<Bootstrapping>`
+The ``MyAppMigrator`` class needs to be registered during the :ref:`app bootstrap<Bootstrapping>`.
 
 .. code-block:: php
 
