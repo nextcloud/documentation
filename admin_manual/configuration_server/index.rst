@@ -21,5 +21,6 @@ Nextcloud configuration
    automatic_configuration
    theming
    oauth2
+   domain_change
 
 .. Intentional disabled antivirus_configuration
