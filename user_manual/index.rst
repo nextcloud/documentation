@@ -21,6 +21,5 @@ learn more about the Nextcloud desktop client, please refer to:
 * `Nextcloud Desktop Client`_
 
 .. _`Nextcloud Desktop Client`: https://docs.nextcloud.com/desktop/3.0/
-.. _`Nextcloud Android App`: https://docs.nextcloud.com/android/
 
 `Help translate <https://www.transifex.com/nextcloud/nextcloud-user-documentation/>`_.
