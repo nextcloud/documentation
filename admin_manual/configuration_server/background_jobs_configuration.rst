@@ -43,7 +43,7 @@ The following sections describe the differences between each method.
 AJAX
 ^^^^
 
-**Usecase: Single user instance**
+**Use case: Single user instance**
 
 The AJAX scheduling method is the default option. Unfortunately, however, it is
 also the least reliable. Each time a user visits the Nextcloud page, a single
@@ -59,7 +59,7 @@ requires regular visits to the page for it to be triggered.
 Webcron
 ^^^^^^^
 
-**Usecase: Very small instance** (1-5 users depending on the usage)
+**Use case: Very small instance** (1–5 users depending on the usage)
 
 By registering your Nextcloud ``cron.php`` script address at an external webcron
 service (for example, easyCron_), you ensure that background jobs are executed
