@@ -23,6 +23,8 @@ Parameters
 ``maintenance_window_start``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. note:: This setting is only taken into account in ``cron`` mode.
+
 In the ``config/config.php`` file you can specify this config.
 Some background jobs only run once a day. When an hour is defined (timezone is UTC)
 for this config, the background jobs which advertise themselves as not time sensitive
@@ -35,25 +37,29 @@ Cron jobs
 ---------
 
 You can schedule cron jobs in three ways -- using AJAX, Webcron, or cron. The
-default method is to use AJAX.  However, the recommended method is to use cron.
+default method is to use AJAX. However, the recommended method is to use cron.
 The following sections describe the differences between each method.
 
 AJAX
 ^^^^
 
-The AJAX scheduling method is the default option.  Unfortunately, however, it is
+**Usecase: Single user instance**
+
+The AJAX scheduling method is the default option. Unfortunately, however, it is
 also the least reliable. Each time a user visits the Nextcloud page, a single
 background job is executed. The advantage of this mechanism is that it does not
 require access to the system nor registration with a third party service. The
 disadvantage of this mechanism, when compared to the Webcron service, is that it
 requires regular visits to the page for it to be triggered.
 
-.. note:: Especially when using the Activity App or external storages, where new
-   files are added, updated or deleted one of the two methods below should be
-   preferred.
+.. warning:: Especially when using the Activity app or external storages, where new
+   files are added, updated or deleted, or when **multiple users** use the server, it
+   is recommended to use ``cron``.
 
 Webcron
 ^^^^^^^
+
+**Usecase: Very small instance** (1-5 users depending on the usage)
 
 By registering your Nextcloud ``cron.php`` script address at an external webcron
 service (for example, easyCron_), you ensure that background jobs are executed
@@ -61,6 +67,12 @@ regularly. To use this type of service with your server, you must be able to
 access your server using the Internet. For example::
 
   URL to call: http[s]://<domain-of-your-server>/nextcloud/cron.php
+
+.. warning:: Since WebCron is still executed via web, the webserver in most case limits the
+   resources on the execution. To avoid interrupts inside jobs only 1 jobs is executed
+   per call. When webcron is called once every 5 minutes this limits your instance to
+   288 background jobs per day, which is only suitable for very small instance.
+   For bigger instances it is recommended to use ``cron``.
 
 .. _system-cron-configuration-label:
 
