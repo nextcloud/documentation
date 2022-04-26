@@ -2,17 +2,7 @@
 Maintenance and release schedule
 ================================
 
-This page gives an overview of the currently supported and released versions as well as basic release scheduling.
-
-+--------+-------------------+------------------+
-|        | release date      | end of life      |
-+========+===================+==================+
-| **23** | 2021-11-30        | 2022-12          |
-+--------+-------------------+------------------+
-| **22** | 2021-07-06        | 2022-07          |
-+--------+-------------------+------------------+
-
-Find the detailed schedule for major and maintenance releases at: `GitHub <https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule>`_.
+You can find the detailed schedule for major and maintenance releases at: `detailed schedule <https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule>`_.
 
 Major releases
 --------------
