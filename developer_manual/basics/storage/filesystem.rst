@@ -7,7 +7,7 @@ Filesystem
 Because users can choose their storage backend, the filesystem should be accessed by using the appropriate filesystem classes.
 
 Filesystem classes can be injected automatically with dependency injection. This is the user filesystem.
-For a simplified filestystem for app specific data see `IAppData <../appdata.html>`_
+For a simplified filestystem for app specific data see `IAppData <appdata.html>`_
 
 Writing to a file
 -----------------
