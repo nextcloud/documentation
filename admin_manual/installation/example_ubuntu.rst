@@ -7,10 +7,9 @@ You can use .deb packages to install the required and recommended modules for a
 typical Nextcloud installation, using Apache and MariaDB, by issuing the
 following commands in a terminal::
 
-    sudo apt update
-    sudo apt install apache2 mariadb-server libapache2-mod-php8.1 php8.1-gd
-    sudo apt install php8.1-mysql php8.1-curl php8.1-mbstring php8.1-intl
-    sudo apt install php8.1-gmp php8.1-bcmath php-imagick php8.1-xml php8.1-zip
+    sudo apt update && sudo apt upgrade
+    sudo apt install apache2 mariadb-server libapache2-mod-php php-gd php-mysql \
+    php-curl php-mbstring php-intl php-gmp php-bcmath php-xml php-imagick php-zip
 
 * This installs the packages for the Nextcloud core system. 
   If you are planning on running additional apps, keep in mind that they might
@@ -20,10 +19,9 @@ Now you need to create a database user and the database itself by using the
 MySQL command line interface. The database tables will be created by Nextcloud
 when you login for the first time.
 
-To start the MySQL command line mode use the following command and press the
-Enter key when prompted for a password::
+To start the MySQL command line mode use the following command::
 
-  sudo mysql -uroot -p
+  sudo mysql
 
 Then a **MariaDB [root]>** prompt will appear. Now enter the following lines,
 replacing ``username`` and ``password`` with appropriate values, and confirm
