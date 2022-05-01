@@ -2028,6 +2028,15 @@ Defaults to the theming app which is shipped since Nextcloud 9
 
 ::
 
+	'enforce_theme' => '',
+
+Enforce the user theme. This will disable the user theming settings
+This must be a valid ITheme ID.
+
+E.g. light, dark, highcontrast, dark-highcontrast...
+
+::
+
 	'cipher' => 'AES-256-CTR',
 
 The default cipher for encrypting files. Currently supported are:
