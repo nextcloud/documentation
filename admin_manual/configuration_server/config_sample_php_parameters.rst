@@ -389,6 +389,17 @@ Defaults to ``true``
 
 ::
 
+	'auth.authtoken.v1.disabled' => false,
+
+Whether the authtoken v1 provider should be skipped
+
+The v1 provider is deprecated and removed in Nextcloud 24 onwards. It can be
+disabled already when the instance was installed after Nextcloud 14.
+
+Defaults to ``false``
+
+::
+
 	'auth.webauthn.enabled' => true,
 
 By default WebAuthn is available but it can be explicitly disabled by admins
@@ -901,6 +912,11 @@ connection. If none of these hosts are reachable, the administration panel
 will show a warning. Set to an empty list to not do any such checks (warning
 will still be shown).
 
+If no protocol is provided, both http and https will be tested.
+For example, 'http://www.nextcloud.com' and 'https://www.nextcloud.com'
+will be tested for 'www.nextcloud.com'
+If a protocol is provided, only this one will be tested.
+
 Defaults to the following domains:
 
  - www.nextcloud.com
@@ -982,6 +998,14 @@ Defaults to ``file``
 
 ::
 
+	'log_type_audit' => 'file',
+
+This parameter determines where the audit logs are sent. See ``log_type`` for more information.
+
+Defaults to ``file``
+
+::
+
 	'logfile' => '/var/log/nextcloud.log',
 
 Name of the file to which the Nextcloud logs are written if parameter
@@ -991,9 +1015,18 @@ Defaults to ``[datadirectory]/nextcloud.log``
 
 ::
 
+	'logfile_audit' => '/var/log/audit.log',
+
+Name of the file to which the audit logs are written if parameter
+``log_type`` is set to ``file``.
+
+Defaults to ``[datadirectory]/audit.log``
+
+::
+
 	'logfilemode' => 0640,
 
-Log file mode for the Nextcloud loggin type in octal notation.
+Log file mode for the Nextcloud logging type in octal notation.
 
 Defaults to 0640 (writeable by user, readable by group).
 
@@ -1016,6 +1049,17 @@ with a unique id. Only available if ``log_type`` is set to ``syslog`` or
 ``systemd``.
 
 The default value is ``Nextcloud``.
+
+::
+
+	'syslog_tag_audit' => 'Nextcloud',
+
+If you maintain different instances and aggregate the logs, you may want
+to distinguish between them. ``syslog_tag_audit`` can be set per instance
+with a unique id. Only available if ``log_type`` is set to ``syslog`` or
+``systemd``.
+
+The default value is the value of ``syslog_tag``.
 
 ::
 
@@ -1218,6 +1262,18 @@ Defaults to ``50`` megabytes
 
 ::
 
+	'preview_max_memory' => 128,
+
+max memory for generating image previews with imagegd (default behavior)
+Reads the image dimensions from the header and assumes 32 bits per pixel.
+
+If creating the image would allocate more memory, preview generation will
+be disabled and the default mimetype icon is shown. Set to -1 for no limit.
+
+Defaults to ``128`` megabytes
+
+::
+
 	'preview_libreoffice_path' => '/usr/bin/libreoffice',
 
 custom path for LibreOffice/OpenOffice binary
@@ -1353,6 +1409,21 @@ parameter to true. Please keep in mind that users who are already logged-in
 are kicked out of Nextcloud instantly.
 
 Defaults to ``false``
+
+::
+
+	'maintenance_window_start' => 1,
+
+UTC Hour for maintenance windows
+
+Some background jobs only run once a day. When an hour is defined for this config,
+the background jobs which advertise themselves as not time sensitive will be
+delayed during the "working" hours and only run in the 4 hours after the given time.
+This is e.g. used for activity expiration, suspicious login training and update checks.
+
+A value of 1 e.g. will only run these background jobs between 01:00am UTC and 05:00am UTC.
+
+Defaults to ``100`` which disables the feature
 
 SSL
 ---
@@ -1974,6 +2045,19 @@ Defaults to ``1800`` (seconds)
 
 ::
 
+	'files_external_allow_create_new_local' => true,
+
+Allows to create external storages of type "Local" in the web interface and APIs.
+
+When disable, it is still possible to create local storages with occ using
+the following command:
+
+% php occ files_external:create /mountpoint local null::null -c datadir=/path/to/data
+
+Defaults to ``true``
+
+::
+
 	'filesystem_check_changes' => 0,
 
 Specifies how often the local filesystem (the Nextcloud data/ directory, and
@@ -2231,6 +2315,44 @@ Disable background scanning of files
 By default, a background job runs every 10 minutes and execute a background
 scan to sync filesystem and database. Only users with unscanned files
 (size < 0 in filecache) are included. Maximum 500 users per job.
+
+Defaults to ``true``
+
+::
+
+	'query_log_file' => '',
+
+Log all queries into a file
+
+Warning: This heavily decreases the performance of the server and is only
+meant to debug/profile the query interaction manually.
+Also, it might log sensitive data into a plain text file.
+
+::
+
+	'redis_log_file' => '',
+
+Log all redis requests into a file
+
+Warning: This heavily decreases the performance of the server and is only
+meant to debug/profile the redis interaction manually.
+Also, it might log sensitive data into a plain text file.
+
+::
+
+	'ldap_log_file' => '',
+
+Log all LDAP requests into a file
+
+Warning: This heavily decreases the performance of the server and is only
+meant to debug/profile the LDAP interaction manually.
+Also, it might log sensitive data into a plain text file.
+
+::
+
+	'profile.enabled' => true,
+
+Enable profile globally
 
 Defaults to ``true``
 
