@@ -1746,6 +1746,21 @@ Defaults to ``\OC\Share20\ProviderFactory``
 
 ::
 
+	'sharing.enable_mail_link_password_expiration' => false,
+
+Enables expiration for link share passwords sent by email (sharebymail).
+
+The passwords will expire after the configured interval, the users can
+still request a new one in the public link page.
+
+::
+
+	'sharing.mail_link_password_expiration_interval' => 3600,
+
+Expiration interval for passwords, in seconds.
+
+::
+
 	'sharing.maxAutocompleteResults' => 25,
 
 Define max number of results returned by the search for auto-completion of
@@ -2396,6 +2411,18 @@ Limit diagnostics event logging to events longer than the configured threshold i
 Enable profile globally
 
 Defaults to ``true``
+
+::
+
+	'enable_file_metadata' => true,
+
+Enable file metadata collection
+
+This is helpful for the mobile clients and will enable a few optimization in
+the future for the preview generation.
+
+Note that when enabled, this data will be stored in the database and might increase
+the database storage.
 
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
