@@ -12,7 +12,6 @@ $mapping = array(
     'admin-code-integrity'    => '/admin_manual/issues/code_signing.html',
     'admin-config'            => '/admin_manual/configuration_server/config_sample_php_parameters.html',
     'admin-db-conversion'     => '/admin_manual/configuration_database/db_conversion.html',
-    'admin-dir_permissions'   => '/admin_manual/installation/installation_wizard.html#setting-strong-directory-permissions',
     'admin-email'             => '/admin_manual/configuration_server/email_configuration.html',
     'admin-encryption'        => '/admin_manual/configuration_files/encryption_configuration.html',
     'admin-external-storage'  => '/admin_manual/configuration_files/external_storage_configuration_gui.html',
