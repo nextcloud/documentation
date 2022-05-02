@@ -37,7 +37,7 @@ rst_epilog =  '.. |version| replace:: %s' % version
 
 # building the versions list
 version_start = 22		# THIS IS THE SUPPORTED VERSION NUMBER
-version_stable = 23		# INCREASE THIS NUMBER TO THE LATEST STABLE VERSION NUMBER
+version_stable = 24		# INCREASE THIS NUMBER TO THE LATEST STABLE VERSION NUMBER
 def generateVersionsDocs(current_docs):
 	versions_doc = []
 	for v in range(version_start, version_stable + 1):
@@ -46,7 +46,7 @@ def generateVersionsDocs(current_docs):
 	versions_doc.append(tuple(('stable', 'https://docs.nextcloud.com/server/%s/%s' % ('stable', current_docs))))
 	versions_doc.append(tuple(('latest', 'https://docs.nextcloud.com/server/%s/%s' % ('latest', current_docs))))
 	return versions_doc
-	
+
 if version.isdigit():
 	github_branch = 'stable%s' % version
 else:
