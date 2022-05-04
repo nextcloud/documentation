@@ -55,6 +55,8 @@ Increment the minor version number when
 * A new major version of Nextcloud will be supported
 * A new major or minor version of PHP will be supported
 * An additional database type is supported
+* A Nextcloud version that has reached EOL is dropped, e.g. when Nextcloud 19 is removed
+* A PHP version that has reached EOL is dropped, e.g. when PHP7.3 is removed
 * Any other change that keeps the app compatible with previously compatible environments (forward compatibility)
 
 .. tip:: Example: the app is at version 3.7.2. The next minor version will be 3.8.0.
@@ -64,8 +66,8 @@ Major update
 
 Increment the major version number when
 
-* The app drops support for a major version of Nextcloud, e.g. when Nextcloud 20 support is removed and the app now requires Nextcloud 21 or newer
-* The app drops support for a major or minor version of PHP, e.g. when PHP7.2 is removed and the app now requires PHP7.3 or newer
+* The app drops support for a major version of Nextcloud that hasn't reached EOL, e.g. when Nextcloud 23 support is removed and the app now requires Nextcloud 24 or newer
+* The app drops support for a major or minor version of PHP that hasn't rached EOL, e.g. when PHP8.0 is removed and the app now requires PHP8.1 or newer
 * A database type is no longer supported, e.g. when the maintainer decides to stop SQLite support
 * Any other change that makes the app incompatible with a previously compatible environment (breaking change)
 
