@@ -46,8 +46,8 @@ in case of the activity app these are:
 
     1. ``occ db:convert-mysql-charset``
     2. ``occ db:convert-filecache-bigint``
-    3. ``occ db:add-missing-indices``
-    4. ``occ db:add-missing-primary-keys``
+    3. ``occ db:add-missing-columns``
+    4. ``occ db:add-missing-indices``
     5. ``occ db:add-missing-primary-keys``
 
 3. Specify the desired configuration values
