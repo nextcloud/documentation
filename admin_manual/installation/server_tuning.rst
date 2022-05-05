@@ -128,7 +128,7 @@ Previews
 --------
 
 It is possible to speed up preview generation using an
-external microservice: `Imaginary <https://github.com/h2non/imaginary>`.
+external microservice: `Imaginary <https://github.com/h2non/imaginary>`_.
 
 To do so, you will need to deploy the service and make sure that it is
 not accessible from outside of your servers. Then you can configure
@@ -150,4 +150,4 @@ Nextcloud to use Imaginary by editing your `config.php`:
 
 .. note::
 
-    For large instance, you should follow `Imaginary's scability recommandation <https://github.com/h2non/imaginary#scalability>`
+    For large instance, you should follow `Imaginary's scability recommandation <https://github.com/h2non/imaginary#scalability>`_.
