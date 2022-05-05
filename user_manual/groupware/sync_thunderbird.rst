@@ -64,7 +64,3 @@ This method is only needed if you don't want to install TBSync.
 4. Choose **CalDAV** and fill in the missing information:
 
 .. image:: ../images/CalDAV_calendar.png
-
-Fix for Thunderbird 60
-----------------------
-If you are still using Thunderbird 60, you need to change a configuration setting to make CalDAV/CardDAV work around Thunderbird bug `#1468918 <https://bugzilla.mozilla.org/show_bug.cgi?id=1468912>`_ as described `here <https://help.nextcloud.com/t/thunderbird-60-problems-with-address-and-calendar-sync/35773>`_.
