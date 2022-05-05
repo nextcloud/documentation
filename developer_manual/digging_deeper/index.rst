@@ -32,3 +32,4 @@ Digging deeper
    security
    profile
    user_migration
+   profiler
