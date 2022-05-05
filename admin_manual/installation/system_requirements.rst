@@ -75,7 +75,7 @@ Files App
 ^^^^^^^^^
 
 - **iOS** 11.x+
-- **Android** 4.x+
+- **Android** 6.0+
 
 Talk App
 ^^^^^^^^
