@@ -2049,6 +2049,16 @@ Defaults to ``AES-256-CTR``
 
 ::
 
+	'encryption.use_legacy_base64_encoding' => false,
+
+Use the legacy base64 format for encrypted files instead of the more space-efficient
+binary format. The option affects only newly written files, existing encrypted files
+will not be touched and will remain readable whether they use the new format or not.
+
+Defaults to ``false``
+
+::
+
 	'minimum.supported.desktop.version' => '2.0.0',
 
 The minimum Nextcloud desktop client version that will be allowed to sync with
