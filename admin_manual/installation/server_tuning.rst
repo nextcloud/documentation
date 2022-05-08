@@ -150,4 +150,4 @@ Nextcloud to use Imaginary by editing your `config.php`:
 
 .. note::
 
-    For large instance, you should follow `Imaginary's scability recommandation <https://github.com/h2non/imaginary#scalability>`
+    For large instance, you should follow `Imaginary's scalability recommandation <https://github.com/h2non/imaginary#scalability>`
