@@ -1804,7 +1804,7 @@ the passed keys and certificates are readable by the PHP process. In addition
 PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT might need to be set to false, if the
 database servers certificates CN does not match with the hostname used to connect.
 The standard behavior here is different from the MySQL/MariaDB CLI client, which
-does not verify the server cert except --ssl-verify-server-cert is passed manually.
+does not verify the server cert except ``--ssl-verify-server-cert`` is passed manually.
 
 ::
 
