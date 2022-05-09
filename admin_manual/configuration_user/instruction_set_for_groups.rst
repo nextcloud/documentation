@@ -167,7 +167,7 @@ XML output
   </ocs>  
 
 Edit data of a single group
---------------------------
+---------------------------
 
 Edits attributes related to a group. Authentication
 is done by sending a Basic HTTP Authorization header.
