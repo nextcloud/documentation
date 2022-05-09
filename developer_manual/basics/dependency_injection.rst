@@ -393,3 +393,14 @@ What not to inject:
 * It is a `pure function <https://en.wikipedia.org/wiki/Pure_function>`_
 
 .. _`reflection`: https://www.php.net/manual/en/book.reflection.php
+
+
+Accessing the container from anywhere
+------------------------------------
+
+Sometimes it can be hard to inject some service inside legacy code, in these case
+you can use :code:`OCP\Server::get(MyService::class)`. This should only be used in
+the last resort, as this makes your code more complicated to unit test and is
+considered an anti-pattern.
+
+
