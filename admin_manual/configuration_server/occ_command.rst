@@ -905,13 +905,7 @@ use the ``--force`` option to force it to check all active LDAP connections::
  sudo -u www-data php occ ldap:check-user --force robert
 
 ``ldap:create-empty-config`` creates an empty LDAP configuration. The first
-one you create has no ``configID``, like this example::
-
- sudo -u www-data php occ ldap:create-empty-config
-   Created new configuration with configID ''
-
-This is a holdover from the early days, when there was no option to create
-additional configurations. The second, and all subsequent, configurations
+one you create has ``configID`` ``s01``, and all subsequent configurations
 that you create are automatically assigned IDs::
 
  sudo -u www-data php occ ldap:create-empty-config
