@@ -40,10 +40,10 @@ Required:
 * PHP module filter (only on Mageia and FreeBSD)
 * PHP module GD
 * PHP module hash (only on FreeBSD)
-* PHP module JSON
+* PHP module JSON (included with PHP >= 8.0)
 * PHP module libxml (Linux package libxml2 must be >=2.7.0)
 * PHP module mbstring
-* PHP module openssl
+* PHP module openssl (included with PHP >= 8.0)
 * PHP module posix
 * PHP module session
 * PHP module SimpleXML
