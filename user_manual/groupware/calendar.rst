@@ -97,7 +97,7 @@ To change the default view or date of an embedded calendar, you need to provide 
 In this url you need to replace the following variables:
 
 - ``<token>`` with the calendar's token,
-- ``<view>`` with one of ``month``, ``week``, ``day``, ``listMonth``, ``listWeek``, ``listDay``. The default view is ``month`` and the normally used list is ``listMonth``,
+- ``<view>`` with one of ``dayGridMonth``, ``timeGridWeek``, ``timeGridDay``, ``listMonth``, ``listWeek``, ``listDay``. The default view is ``dayGridMonth`` and the normally used list is ``listMonth``,
 - ``<date>`` with ``now`` or any date with the following format ``<year>-<month>-<day>`` (e.g. ``2019-12-28``).
 
 On the public page, users are able to get the subscription link for the calendar and export the whole calendar directly.
