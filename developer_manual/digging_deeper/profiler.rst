@@ -53,11 +53,12 @@ There is for the moment 4 views:
 
 1. The general request and response view
 2. The database queries view
-3. The Event view
+3. The event view
 4. The LDAP queries view
+4. The cache view
 
 
-The general request and response view
+The General Request and Response View
 .....................................
 
 .. image:: ../images/profiler-request.png
@@ -66,7 +67,7 @@ This view gives you general information about the request. For example,
 which Controller and method was used, what where the response headers, the
 request parameters, ...
 
-The database queries view
+The Database Queries View
 .........................
 
 This view gives you a list of all the database queries done for your request and
@@ -96,6 +97,13 @@ programe the more time is spent.
 
 .. image:: ../images/profiler-event.png
 
+The Cache View
+..............
+
+This view display all the access to the cache. It allows to detect cache hits and miss
+as well as getting an idea of the time spent on Redis.
+
+.. image:: ../images/profiler-cache.png
 
 Contributing
 ------------
