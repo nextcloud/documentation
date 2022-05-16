@@ -98,7 +98,7 @@ In this step the content gets copied from the old to the new column.
           $query = $this->db->getQueryBuilder();
           $query->update('twofactor_backupcodes')
                   ->set('user_id', 'uid');
-          $query->execute();
+          $query->executeStatement();
    }
 
 3. Migration 2: Schema change

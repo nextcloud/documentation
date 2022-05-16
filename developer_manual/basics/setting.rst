@@ -20,12 +20,8 @@ In our case we will create an admin section class in **<myapp>/lib/Sections/Note
     use OCP\Settings\IIconSection;
 
     class NotesAdmin extends IIconSection {
-
-        /** @var IL10N */
-        private $l;
- 
-        /** @var IURLGenerator */
-        private $urlGenerator;
+        private IL10N $l;
+        private IURLGenerator $urlGenerator;
 
         public function __construct(IL10N $l, IURLGenerator $urlGenerator) {
             $this->l = $l;
@@ -64,18 +60,8 @@ in *<myapp>/lib/Settings/NotesAdmin.php**.
     use OCP\Settings\ISettings;
 
     class NotesAdmin extends ISettings {
-
-        /** @var IL10N */
-        private $l;
- 
-        /** @var IURLGenerator */
-        private $urlGenerator;
-
-        /** @var IConfig */
-        private $config;
-
-        /** @var IL10N $l*/
-        private $l;
+        private IL10N $l;
+        private IConfig $config;
 
         public function __construct(IConfig $config, IL10N $l) {
             $this->config = $config;

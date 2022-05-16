@@ -37,15 +37,13 @@ It is possible to extract values from the URL to allow RESTful URL design. To ex
     // Request: GET /index.php/apps/myapp/authors/3
 
     // appinfo/routes.php
-    array('name' => 'author#show', 'url' => '/authors/{id}', 'verb' => 'GET'),
+    ['name' => 'author#show', 'url' => '/authors/{id}', 'verb' => 'GET'],
 
     // controller/authorcontroller.php
     class AuthorController {
-
         public function show(string $id): Response {
             // $id is '3'
         }
-
     }
 
 The identifier used inside the route is being passed into controller method by reflecting the method parameters. So basically if you want to get the value **{id}** in your method, you need to add **$id** to your method parameters.
@@ -69,11 +67,9 @@ Sometimes it is needed to match more than one URL fragment. An example would be 
 
     // controller/authorapicontroller.php
     class AuthorApiController {
-
         public function cors(string $path): Response {
             // $path will be 'my/route'
         }
-
     }
 
 Default values for subURL
@@ -96,10 +92,8 @@ Apart from matching requirements, a subURL may also have a default value. Say yo
     ),
 
     // controller/postcontroller.php
-    class PostController
-    {
-        public function index($page = 1): Response
-        {
+    class PostController {
+        public function index(int $page = 1): Response {
             // $page will be 1
         }
     }
@@ -165,7 +159,7 @@ Sometimes it is useful to turn a route into a URL to make the code independent f
 
         private $urlGenerator;
 
-        public function __construct($appName, IRequest $request,
+        public function __construct(string $appName, IRequest $request,
                                     IURLGenerator $urlGenerator) {
             parent::__construct($appName, $request);
             $this->urlGenerator = $urlGenerator;
@@ -181,13 +175,12 @@ Sometimes it is useful to turn a route into a URL to make the code independent f
             // # needs to be replaced with a . due to limitations and prefixed
             // with your app id
             $route = 'myapp.author_api.do_something';
-            $parameters = array('id' => 3);
+            $parameters = ['id' => 3];
 
             $url = $this->urlGenerator->linkToRoute($route, $parameters);
 
             return new RedirectResponse($url);
         }
-
     }
 
 URLGenerator is case sensitive, so **appName** must match **exactly** the name you use in :doc:`configuration <../basics/storage/configuration>`.

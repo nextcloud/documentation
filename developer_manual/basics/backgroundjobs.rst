@@ -30,13 +30,13 @@ your job class of choice.
     <?php
     namespace OCA\MyApp\Cron;
 
-    use \OCA\MyApp\Service\SomeService;
-    use \OCP\BackgroundJob\TimedJob;
-    use \OCP\AppFramework\Utility\ITimeFactory;
+    use OCA\MyApp\Service\SomeService;
+    use OCP\BackgroundJob\TimedJob;
+    use OCP\AppFramework\Utility\ITimeFactory;
 
     class SomeTask extends TimedJob {
 
-        private $myService;
+        private SomeService $myService;
 
         public function __construct(ITimeFactory $time, SomeService $service) {
             parent::__construct($time);
@@ -118,14 +118,14 @@ For example you could add or remove a certain job based on some controller:
     <?php
     namespace OCA\MyApp\Controller;
 
-    use \OCA\MyApp\Cron\SomeTask;
-    use \OCP\AppFramework\Controller;
-    use \OCP\BackgroundJob\IJobList;
-    use \OCP\IRequest;
+    use OCA\MyApp\Cron\SomeTask;
+    use OCP\AppFramework\Controller;
+    use OCP\BackgroundJob\IJobList;
+    use OCP\IRequest;
 
     class SomeController extends Controller {
 
-        private $jobList
+        private IJobList $jobList
 
         public function __construct(string $appName, IRequest $request, IJobList $jobList) {
             parent::__construct($appName, $request);
