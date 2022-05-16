@@ -17,9 +17,8 @@ The logger can be used in the following way:
     use Psr\Log\LoggerInterface;
 
     class AuthorService {
-
-        private $logger;
-        private $appName;
+        private LoggerInterface $logger;
+        private string $appName;
 
         public function __construct(LoggerInterface $logger, string $appName){
             $this->logger = $logger;
@@ -29,7 +28,6 @@ The logger can be used in the following way:
         public function log($message) {
             $this->logger->error($message, ['extra_context' => 'my extra context']);
         }
-
     }
 
 

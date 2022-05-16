@@ -12,10 +12,10 @@ The config that allows the app to set global, app and user settings can be injec
     <?php
     namespace OCA\MyApp\AppInfo;
 
-    use \OCP\AppFramework\App;
-
-    use \OCA\MyApp\Service\AuthorService;
-
+    use OCP\AppFramework\App;
+    use OCP\IConfig;
+    use OCP\IServerContainer;
+    use OCA\MyApp\Service\AuthorService;
 
     class Application extends App {
 
@@ -27,15 +27,11 @@ The config that allows the app to set global, app and user settings can be injec
             /**
              * Controllers
              */
-            $container->registerService('AuthorService', function($c) {
+            $container->registerService('AuthorService', function(IServerContainer $c): AuthorService {
                 return new AuthorService(
-                    $c->query('Config'),
-                    $c->query('AppName')
+                    $c->get(IConfig::class),
+                    $c->get('AppName')
                 );
-            });
-
-            $container->registerService('Config', function($c) {
-                return $c->query('ServerContainer')->getConfig();
             });
         }
     }
@@ -43,73 +39,68 @@ The config that allows the app to set global, app and user settings can be injec
 System values
 -------------
 
-System values are saved in the :file:`config/config.php` and allow the app to modify and read the global configuration. Please note that **setSystemValue** might throw a **OCP\HintException** when the config file is read-only.
+System values are saved in the :file:`config/config.php` and allow the app to modify and read the global configuration. Please note that ``setSystemValue`` might throw a ``OCP\HintException`` when the config file is read-only.
 
 .. code-block:: php
 
     <?php
     namespace OCA\MyApp\Service;
 
-    use \OCP\HintException;
-    use \OCP\IConfig;
-
+    use OCP\HintException;
+    use OCP\IConfig;
 
     class AuthorService {
+        private IConfig $config;
+        private string $appName;
 
-        private $config;
-        private $appName;
-
-        public function __construct(IConfig $config, $appName){
+        public function __construct(IConfig $config, string $appName){
             $this->config = $config;
             $this->appName = $appName;
         }
 
-        public function getSystemValue($key) {
+        public function getSystemValue(string $key) {
             return $this->config->getSystemValue($key);
         }
 
-        public function setSystemValue($key, $value) {
+        public function setSystemValue(string $key, $value): void {
             try {
                 $this->config->setSystemValue($key, $value);
             } catch (HintException $e) {
                 // Handle exception, e.g. when config file is read-only
             }
         }
-
     }
 
+.. note:: It's also possible to use ``getSystemValueBool``, ``getSystemValueString``, ``getSystemValueInt`` to get type hinted return values.
 
 App values
 ----------
 
-App values are saved in the database per app and are useful for setting global app settings: 
+App values are saved in the database per app and are useful for setting global app settings:
 
 .. code-block:: php
 
     <?php
     namespace OCA\MyApp\Service;
 
-    use \OCP\IConfig;
-
+    use OCP\IConfig;
 
     class AuthorService {
+        private IConfig $config;
+        private string $appName;
 
-        private $config;
-        private $appName;
-
-        public function __construct(IConfig $config, $appName){
+        public function __construct(IConfig $config, string $appName){
             $this->config = $config;
             $this->appName = $appName;
         }
 
-        public function getAppValue($key) {
+        public function getAppValue(string $key): string {
             return $this->config->getAppValue($this->appName, $key);
         }
 
-        public function setAppValue($key, $value) {
+        public function setAppValue(string $key, string $value): void {
             $this->config->setAppValue($this->appName, $key, $value);
         }
-
     }
 
 User values
@@ -122,25 +113,22 @@ User values are saved in the database per user and app and are good for saving u
     <?php
     namespace OCA\MyApp\Service;
 
-    use \OCP\IConfig;
-
+    use OCP\IConfig;
 
     class AuthorService {
+        private IConfig $config;
+        private string $appName;
 
-        private $config;
-        private $appName;
-
-        public function __construct(IConfig $config, $appName){
+        public function __construct(IConfig $config, string $appName){
             $this->config = $config;
             $this->appName = $appName;
         }
 
-        public function getUserValue($key, $userId) {
+        public function getUserValue(string $key, string $userId): string {
             return $this->config->getUserValue($userId, $this->appName, $key);
         }
 
-        public function setUserValue($key, $userId, $value) {
+        public function setUserValue(string $key, string $userId, string $value): void {
             $this->config->setUserValue($userId, $this->appName, $key, $value);
         }
-
     }

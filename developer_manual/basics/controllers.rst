@@ -15,13 +15,13 @@ To create a controller, simply extend the Controller class and create a method t
     namespace OCA\MyApp\Controller;
 
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Response;
 
     class AuthorController extends Controller {
 
-        public function index() {
+        public function index(): Response {
 
         }
-
     }
 
 
@@ -236,7 +236,7 @@ Then session variables can be accessed like this:
 
     class PageController extends Controller {
 
-        private $session;
+        private ISession $session;
 
         public function __construct($AppName, IRequest $request, ISession $session) {
             parent::__construct($AppName, $request);
@@ -571,7 +571,7 @@ Creating a custom XMLResponse class could look like this:
 
     class XMLResponse extends Response {
 
-        private $xml;
+        private array $xml;
 
         public function __construct(array $xml) {
             $this->addHeader('Content-Type', 'application/xml');
@@ -706,7 +706,7 @@ In order to ease migration from OCS API routes to the App Framework, an addition
          * @PublicPage
          * @CORS
          */
-        public function getShares() {
+        public function getShares(): DataResponse {
             return new DataResponse([
                 //Your data here
             ]);
@@ -761,7 +761,6 @@ Each response subclass has access to the **setStatus** method which lets you set
                 return new JSONResponse(array(), Http::STATUS_NOT_FOUND);
             }
         }
-
     }
 
 Authentication
@@ -801,7 +800,6 @@ A controller method that turns off all checks would look like this:
         public function freeForAll() {
 
         }
-
     }
 
 Rate limiting
@@ -867,7 +865,7 @@ A controller method that would employ brute-force protection with an action of "
         /**
          * @BruteForceProtection(action=foobar)
          */
-        public function rateLimitedForAll() {
+        public function rateLimitedForAll(): TemplateResponse {
             $templateResponse = new TemplateResponse(…);
             // In case of a violation increase the throttle counter
             // note that $this->auth->isSuccessful here is just an

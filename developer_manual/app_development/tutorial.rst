@@ -347,6 +347,9 @@ Entities are returned from so-called :doc:`Mappers <../basics/storage/database>`
     use OCP\IDBConnection;
     use OCP\AppFramework\Db\QBMapper;
 
+    /**
+     * @extends QBMapper<Note>
+     */
     class NoteMapper extends QBMapper {
 
         public function __construct(IDBConnection $db) {
@@ -356,13 +359,10 @@ Entities are returned from so-called :doc:`Mappers <../basics/storage/database>`
         public function find(int $id, string $userId) {
             $qb = $this->db->getQueryBuilder();
 
-		        $qb->select('*')
-			         ->from($this->getTableName())
-			         ->where(
-				         $qb->expr()->eq('id', $qb->createNamedParameter($id))
-			         )->andWhere(
-                 $qb->expr()->eq('user_id', $qb->createNamedParameter($userId))
-               );
+            $qb->select('*')
+                 ->from($this->getTableName())
+                 ->where($qb->expr()->eq('id', $qb->createNamedParameter($id)))
+                 ->andWhere($qb->expr()->eq('user_id', $qb->createNamedParameter($userId)));
 
             return $this->findEntity($qb);
         }
@@ -372,9 +372,7 @@ Entities are returned from so-called :doc:`Mappers <../basics/storage/database>`
 
             $qb->select('*')
                ->from($this->getTableName())
-               ->where(
-                $qb->expr()->eq('user_id', $qb->createNamedParameter($userId))
-               );
+               ->where($qb->expr()->eq('user_id', $qb->createNamedParameter($userId)));
 
             return $this->findEntities($qb);
         }
@@ -407,10 +405,10 @@ You can pass in the mapper by adding it as a type hinted parameter. Nextcloud wi
 
     class NoteController extends Controller {
 
-        private $mapper;
-        private $userId;
+        private NoteMapper $mapper;
+        private ?string $userId;
 
-        public function __construct(string $AppName, IRequest $request, NoteMapper $mapper, $UserId){
+        public function __construct(string $AppName, IRequest $request, NoteMapper $mapper, ?string $UserId = null){
             parent::__construct($AppName, $request);
             $this->mapper = $mapper;
             $this->userId = $UserId;
@@ -419,7 +417,7 @@ You can pass in the mapper by adding it as a type hinted parameter. Nextcloud wi
         /**
          * @NoAdminRequired
          */
-        public function index() {
+        public function index(): DataResponse {
             return new DataResponse($this->mapper->findAll($this->userId));
         }
 
@@ -428,7 +426,7 @@ You can pass in the mapper by adding it as a type hinted parameter. Nextcloud wi
          *
          * @param int $id
          */
-        public function show(int $id) {
+        public function show(int $id): DataResponse {
             try {
                 return new DataResponse($this->mapper->find($id, $this->userId));
             } catch(Exception $e) {
@@ -442,7 +440,7 @@ You can pass in the mapper by adding it as a type hinted parameter. Nextcloud wi
          * @param string $title
          * @param string $content
          */
-        public function create(string $title, string $content) {
+        public function create(string $title, string $content): DataResponse {
             $note = new Note();
             $note->setTitle($title);
             $note->setContent($content);
@@ -457,7 +455,7 @@ You can pass in the mapper by adding it as a type hinted parameter. Nextcloud wi
          * @param string $title
          * @param string $content
          */
-        public function update(int $id, string $title, string $content) {
+        public function update(int $id, string $title, string $content): DataResponse {
             try {
                 $note = $this->mapper->find($id, $this->userId);
             } catch(Exception $e) {
@@ -473,7 +471,7 @@ You can pass in the mapper by adding it as a type hinted parameter. Nextcloud wi
          *
          * @param int $id
          */
-        public function destroy(int $id) {
+        public function destroy(int $id): DataResponse {
             try {
                 $note = $this->mapper->find($id, $this->userId);
             } catch(Exception $e) {
@@ -514,16 +512,22 @@ Let's take the logic that was inside the controller and put it into a separate c
 
     class NoteService {
 
-        private $mapper;
+        private NoteMapper $mapper;
 
         public function __construct(NoteMapper $mapper){
             $this->mapper = $mapper;
         }
 
-        public function findAll(string $userId) {
+        /**
+         * @return Note[]
+         */
+        public function findAll(string $userId): array {
             return $this->mapper->findAll($userId);
         }
 
+        /**
+         * @return never
+         */
         private function handleException ($e) {
             if ($e instanceof DoesNotExistException ||
                 $e instanceof MultipleObjectsReturnedException) {
@@ -533,7 +537,7 @@ Let's take the logic that was inside the controller and put it into a separate c
             }
         }
 
-        public function find(int $id, string $userId) {
+        public function find(int $id, string $userId): Note {
             try {
                 return $this->mapper->find($id, $userId);
 
@@ -546,7 +550,7 @@ Let's take the logic that was inside the controller and put it into a separate c
             }
         }
 
-        public function create(string $title, string $content, string $userId) {
+        public function create(string $title, string $content, string $userId): Note {
             $note = new Note();
             $note->setTitle($title);
             $note->setContent($content);
@@ -554,7 +558,7 @@ Let's take the logic that was inside the controller and put it into a separate c
             return $this->mapper->insert($note);
         }
 
-        public function update(int $id, string $title, string $content, string $userId) {
+        public function update(int $id, string $title, string $content, string $userId): Note {
             try {
                 $note = $this->mapper->find($id, $userId);
                 $note->setTitle($title);
@@ -565,7 +569,7 @@ Let's take the logic that was inside the controller and put it into a separate c
             }
         }
 
-        public function delete(int $id, string $userId) {
+        public function delete(int $id, string $userId): Note {
             try {
                 $note = $this->mapper->find($id, $userId);
                 $this->mapper->delete($note);
@@ -619,7 +623,7 @@ The trait is created in **notestutorial/lib/Controller/Errors.php**:
 
     trait Errors {
 
-        protected function handleNotFound (Closure $callback) {
+        protected function handleNotFound (Closure $callback): DataResponse {
             try {
                 return new DataResponse($callback());
             } catch(NotFoundException $e) {
@@ -645,13 +649,13 @@ Now we can wire up the trait and the service inside the **NoteController**:
 
     class NoteController extends Controller {
 
-        private $service;
-        private $userId;
+        private NoteService $service;
+        private ?string $userId;
 
         use Errors;
 
         public function __construct(string $AppName, IRequest $request,
-                                    NoteService $service, $UserId){
+                                    NoteService $service, ?string $UserId = null) {
             parent::__construct($AppName, $request);
             $this->service = $service;
             $this->userId = $UserId;
@@ -660,7 +664,7 @@ Now we can wire up the trait and the service inside the **NoteController**:
         /**
          * @NoAdminRequired
          */
-        public function index() {
+        public function index(): DataResponse {
             return new DataResponse($this->service->findAll($this->userId));
         }
 
@@ -669,7 +673,7 @@ Now we can wire up the trait and the service inside the **NoteController**:
          *
          * @param int $id
          */
-        public function show(int $id) {
+        public function show(int $id): DataResponse {
             return $this->handleNotFound(function () use ($id) {
                 return $this->service->find($id, $this->userId);
             });
@@ -692,8 +696,8 @@ Now we can wire up the trait and the service inside the **NoteController**:
          * @param string $title
          * @param string $content
          */
-        public function update(int $id, string $title, string $content) {
-            return $this->handleNotFound(function () use ($id, $title, $content) {
+        public function update(int $id, string $title, string $content): DataResponse {
+            return $this->handleNotFound(function () use ($id, $title, $content): Note {
                 return $this->service->update($id, $title, $content, $this->userId);
             });
         }
@@ -703,8 +707,8 @@ Now we can wire up the trait and the service inside the **NoteController**:
          *
          * @param int $id
          */
-        public function destroy(int $id) {
-            return $this->handleNotFound(function () use ($id) {
+        public function destroy(int $id): DataResponse {
+            return $this->handleNotFound(function () use ($id): Note {
                 return $this->service->delete($id, $this->userId);
             });
         }
@@ -746,8 +750,8 @@ Because Nextcloud uses :doc:`Dependency Injection <../basics/dependency_injectio
         protected $request;
 
         public function setUp() {
-            $this->request = $this->getMockBuilder('OCP\IRequest')->getMock();
-            $this->service = $this->getMockBuilder('OCA\NotesTutorial\Service\NoteService')
+            $this->request = $this->getMockBuilder(OCP\IRequest::class)->getMock();
+            $this->service = $this->getMockBuilder(OCA\NotesTutorial\Service\NoteService::class)
                 ->disableOriginalConstructor()
                 ->getMock();
             $this->controller = new NoteController(
@@ -805,7 +809,7 @@ We can and should also create a test for the **NoteService** class:
         private $userId = 'john';
 
         public function setUp() {
-            $this->mapper = $this->getMockBuilder('OCA\NotesTutorial\Db\NoteMapper')
+            $this->mapper = $this->getMockBuilder(OCA\NotesTutorial\Db\NoteMapper::class)
                 ->disableOriginalConstructor()
                 ->getMock();
             $this->service = new NoteService($this->mapper);
@@ -876,15 +880,17 @@ To do that create a new file called **notestutorial/tests/Integration/NoteIntegr
     use Test\TestCase;
 
     use OCA\NotesTutorial\Db\Note;
+    use OCA\NotesTutorial\Controller\NoteController;
+    use OCA\NotesTutorial\Db\NoteMapper;
 
     /**
      * @group DB
      */
     class NoteIntegrationTest extends TestCase {
 
-        private $controller;
-        private $mapper;
-        private $userId = 'john';
+        private Notecontroller $controller;
+        private NoteMapper $mapper;
+        private string $userId = 'john';
 
         public function setUp() {
             parent::setUp();
@@ -896,13 +902,9 @@ To do that create a new file called **notestutorial/tests/Integration/NoteIntegr
                 return $this->userId;
             });
 
-            $this->controller = $container->query(
-                'OCA\NotesTutorial\Controller\NoteController'
-            );
+            $this->controller = $container->get(NoteController::class);
 
-            $this->mapper = $container->query(
-                'OCA\NotesTutorial\Db\NoteMapper'
-            );
+            $this->mapper = $container->get(NoteMapper::class);
         }
 
         public function testUpdate() {
@@ -960,13 +962,13 @@ With that in mind create a new controller in **notestutorial/lib/Controller/Note
 
     class NoteApiController extends ApiController {
 
-        private $service;
-        private $userId;
+        private NoteService $service;
+        private ?string $userId;
 
         use Errors;
 
         public function __construct($AppName, IRequest $request,
-                                    NoteService $service, $UserId){
+                                    NoteService $service, ?string $UserId = null) {
             parent::__construct($AppName, $request);
             $this->service = $service;
             $this->userId = $UserId;
