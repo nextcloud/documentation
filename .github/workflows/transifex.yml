@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Approve
     steps:
-      - uses: hmarr/auto-approve-action@v2.0.0
+      - uses: hmarr/auto-approve-action@v2.2.1
         if: github.actor == 'Transifex-localization-platform[bot]' || github.actor == 'transifex-integration[bot]'
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Auto-merge
     steps:
-      - uses: pascalgn/automerge-action@v0.8.5
+      - uses: pascalgn/automerge-action@v0.15.3
         if: github.actor == 'Transifex-localization-platform[bot]' || github.actor == 'transifex-integration[bot]'
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"

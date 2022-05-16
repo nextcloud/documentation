@@ -11,13 +11,13 @@ jobs:
   user_manual:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - uses: ammaraskar/sphinx-action@master
       with:
         docs-folder: "user_manual/"
         pre-build-command: pip install -r requirements.txt
         build-command: make gettext
-    - uses: peter-evans/create-pull-request@v3
+    - uses: peter-evans/create-pull-request@v4
       with:
         commit-message: Updates catalog templates (POT files fetched automatically by transifex)
         title: l10n
