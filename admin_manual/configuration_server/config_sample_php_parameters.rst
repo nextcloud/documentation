@@ -2404,6 +2404,8 @@ production systems to only log under some conditions
 
 Limit diagnostics event logging to events longer than the configured threshold in ms
 
+when set to 0 no diagnostics events will be logged
+
 ::
 
 	'profile.enabled' => true,
