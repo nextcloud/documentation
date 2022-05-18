@@ -40,8 +40,8 @@ You should now find your contacts in the address book of your iPhone.
   (For this reason a certificate is required at your domain, https://letsencrypt.org/ will do).
 
 
-If it's still not working, have a look at the `Troubleshooting Contacts & Calendar`_
-guide.
+If it's still not working, have a look at `Troubleshooting Contacts & Calendar`_ or `_Troubleshooting Service Discovery`_.
 
 .. _Troubleshooting Contacts & Calendar: https://docs.nextcloud.com/server/stable/admin_manual/issues/general_troubleshooting.html#troubleshooting-contacts-calendar
+.. _Troubleshooting Service Discovery: https://docs.nextcloud.com/server/stable/admin_manual/issues/general_troubleshooting.html#service-discovery
 .. TODO ON RELEASE: Update version number above on release
