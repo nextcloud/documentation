@@ -2447,6 +2447,22 @@ the future for the preview generation.
 Note that when enabled, this data will be stored in the database and might increase
 the database storage.
 
+::
+
+	'account_manager.default_property_scope' => []
+
+Allows to override the default scopes for Account data.
+
+The list of overridable properties and valid values for scopes are in
+OCP\\Accounts\\IAccountManager. Values added here are merged with
+default values, which are in OC\\Accounts\\AccountManager
+
+For instance, if the phone property should default to the private scope
+instead of the local one:
+[
+  \\OCP\\Accounts\\IAccountManager::PROPERTY_PHONE => \\OCP\\Accounts\\IAccountManager::SCOPE_PRIVATE
+]
+
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
 
