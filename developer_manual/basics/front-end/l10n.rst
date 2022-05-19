@@ -267,10 +267,33 @@ Add one more file called :file:`.l10nignore` in root of the repository and the f
 Mostly used to ignore packed js files.
 
 Now the GitHub account `@nextcloud-bot <https://github.com/nextcloud-bot>`_ needs
-to get write access to your repository. It will run every night and only push
-commits to the master branch once there is an update to the translation. In general
-you should enable the `protected branches feature <https://help.github.com/articles/configuring-protected-branches/>`_
-at least for the master branch.
+to get ``write`` access to your repository. It will run every night and only push
+commits to the following branches branch once there is an update to the translation:
+
+* main
+* master
+* stableX (X being the recent 3 versions of Nextcloud Server)
+
+You can overwrite this list by creating a file ``.tx/backport`` in your repository with the following content::
+
+    develop stable
+
+That would sync the translations for the branches (``main`` and ``master`` are added automatically):
+
+* main
+* master
+* develop
+* stable
+
+
+.. note::
+
+    In general you should enable the
+    `protected branches feature <https://help.github.com/articles/configuring-protected-branches/>`_
+    for those branches. If you do that, you need to grant the
+    `@nextcloud-bot <https://github.com/nextcloud-bot>`_ ``admin`` permissions,
+    but that is only possible for repositories owned by organizations.
+    You can `create your own organization <https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/creating-a-new-organization-from-scratch>`_
 
 For the sync job there is a `configuration file <https://github.com/nextcloud/docker-ci/blob/master/translations/config.json>`_
 available in our docker-ci repository. Adding there the repo owner and repo name
