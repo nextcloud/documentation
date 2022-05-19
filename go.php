@@ -12,6 +12,7 @@ $mapping = array(
     'admin-code-integrity'    => '/admin_manual/issues/code_signing.html',
     'admin-config'            => '/admin_manual/configuration_server/config_sample_php_parameters.html',
     'admin-db-conversion'     => '/admin_manual/configuration_database/db_conversion.html',
+    'admin-delegation'        => '/admin_manual/configuration_server/admin_delegation_configuration.html',
     'admin-email'             => '/admin_manual/configuration_server/email_configuration.html',
     'admin-encryption'        => '/admin_manual/configuration_files/encryption_configuration.html',
     'admin-external-storage'  => '/admin_manual/configuration_files/external_storage_configuration_gui.html',
@@ -40,7 +41,7 @@ $mapping = array(
     'admin-trusted-domains'   => '/admin_manual/installation/installation_wizard.html#trusted-domains',
     'admin-update'            => '/admin_manual/maintenance/update.html',
     'admin-warnings'          => '/admin_manual/configuration_server/security_setup_warnings.html',
-    'admin-delegation'        => '/admin_manual/configuration_server/admin_delegation_configuration.html',
+    'admin-workflowengine'    => '/admin_manual/file_workflows/index.html',
 
     'developer-code-integrity'=> '/developer_manual/app/code_signing.html',
     'developer-manual'        => '/developer_manual',
