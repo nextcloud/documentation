@@ -86,6 +86,11 @@ server {
         # with the `ngx_pagespeed` module, uncomment this line to disable it.
         #pagespeed off;
 
+        # The settings allows you to optimize the HTTP2 bandwitdth.
+        # See https://blog.cloudflare.com/delivering-http-2-upload-speed-improvements/
+        # for tunning hints
+        client_body_buffer_size 512k;
+
         # HTTP response headers borrowed from Nextcloud `.htaccess`
         add_header Referrer-Policy                      "no-referrer"   always;
         add_header X-Content-Type-Options               "nosniff"       always;
