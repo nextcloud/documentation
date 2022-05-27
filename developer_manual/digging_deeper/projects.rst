@@ -8,7 +8,7 @@ App developers can integrate into projects and provide their own entity types to
 
 
 Register a resource provider
----------------------------
+----------------------------
 
 Things like files, deck cards and talk rooms are called Resources in projects.
 In order to add your own resource type, we need to create a class implementing the
@@ -113,10 +113,10 @@ The `MyResourceProvider` class needs to be registered during the :ref:`app boots
             $context->injectFn(Closure::fromCallable([$this, 'registerCollaborationResources']));
         }
 
-        protected function registerCollaborationResources(IProviderManager $resourceManager, SymfonyAdapter $symfonyAdapter): void {
+        protected function registerCollaborationResources(IProviderManager $resourceManager, IEventDispatcher $eventDispatcher): void {
             $resourceManager->registerResourceProvider(ResourceProvider::class);
 
-            $symfonyAdapter->addListener('\OCP\Collaboration\Resources::loadAdditionalScripts', static function () {
+            $eventDispatcher->addListener(\OCP\Collaboration\Resources\LoadAdditionalScriptsEvent::class, static function () {
                 Util::addScript(self::APP_ID, 'collections');
             });
         }
@@ -175,12 +175,26 @@ as plain JavaScript:
 	})
 
 This will allow other apps to link to your items. We also want to link to other apps' items.
-Since all apps with projects support are listening on the above loadAdditionalScripts event,
+Since all apps with projects support are listening on the above LoadAdditionalScriptsEvent,
 we can simply dispatch it when we render our main page template.
+
 
 .. code-block:: php
 
-    \OC::$server->getEventDispatcher()->dispatch('\OCP\Collaboration\Resources::loadAdditionalScripts');
+	class MyController extends Controller {
+		private IEventDispatcher $eventDispatcher;
+
+		public function __construct(string $appName, IRequest $request, IEventDispatcher $eventDispatcher) {
+			parent::__construct($appName, $request);
+			$this->eventDispatcher = $eventDispatcher;
+		}
+
+		public function index() {
+			$this->eventDispatcher->dispatchTyped(new \OCP\Collaboration\Resources\LoadAdditionalScriptsEvent());
+			return new TemplateResponse('my_app', 'main');
+		}
+	}
+
 
 In our Vue app, we can then render the pre-built projects picker available in the npm package `nextcloud-vue-collections`.
 
