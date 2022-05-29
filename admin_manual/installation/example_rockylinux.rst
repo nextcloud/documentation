@@ -9,9 +9,7 @@ Start off by installing a Rocky Linux 9 minimal install. This should provide a s
 First install some dependencies you will be needing during installation, but which will also be useful in every day use situations::
 
     dnf config-manager --set-enabled crb
-    dnf install -y \
-        https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm \
-        https://dl.fedoraproject.org/pub/epel/epel-next-release-latest-9.noarch.rpm
+    dnf install -y epel-release
     dnf install -y yum-utils unzip curl wget \
     bash-completion policycoreutils-python-utils mlocate bzip2
 
