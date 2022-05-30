@@ -53,7 +53,7 @@ The Nextcloud user interface contains the following fields and functions:
 
 * **Apps Selection Menu** (1): Located in the upper left corner, you'll find all
   your apps which are available on your instance of Nextcloud. Clicking on an
-  apps icon will redirect you to the app.
+  app icon will redirect you to the app.
 
 * **Apps Information** field (2): Located in the left sidebar, this provides
   filters and tasks associated with your selected app. For example, when you
