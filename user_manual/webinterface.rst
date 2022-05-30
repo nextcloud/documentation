@@ -57,7 +57,7 @@ The Nextcloud user interface contains the following fields and functions:
 
 * **Apps Information** field (2): Located in the left sidebar, this provides
   filters and tasks associated with your selected app. For example, when you
-  are using the Files apps you have a special set of filters for quickly
+  are using the Files app you have a special set of filters for quickly
   finding your files, such as files that have been shared with you, and files
   that you have shared with others. You'll see different items for other apps.
 
