@@ -354,7 +354,8 @@ as password.
 
 .. note:: **Settings** → **Administration** → **Sharing** → **Allow users on this
    server to send shares to other servers**. This option also allows WebDAV access
-   to public shares needs to be enabled in order to make this feature work.
+   to public shares needs to be enabled in order to make this feature work,
+   except if cURL is being used (see below).
 
 Known problems
 --------------
@@ -454,6 +455,11 @@ Accessing files using cURL
 --------------------------
 
 Since WebDAV is an extension of HTTP, cURL can be used to script file operations.
+
+.. note:: **Settings** → **Administration** → **Sharing** → **Allow users on this
+   server to send shares to other servers**. If this option is disabled the
+   option ``--header "X-Requested-With: XMLHttpRequest"`` needs to be passed to
+   cURL.
 
 To create a folder with the current date as name:
 
