@@ -55,10 +55,12 @@ Make sure the apache web service is enabled and started::
 PHP
 ---
 
-.. note:: RHEL 9 and its downstream Operating Systems do not come with packages for the redis and imagick php extensions. 
+.. note:: RHEL 8 and its downstream Operating Systems do not come with packages for the redis and imagick php extensions. 
     Those can either be installed using pecl. Apart from the official PHP packages there are 3rdparty 
     repositories available at ``https://rpms.remirepo.net``. Using remirepo you can also install the 
-    latest PHP version instead of the standard shipped one.
+    latest PHP version instead of the standard shipped one. 
+    However, in RHEL 9 and its downstream Operating Systems, the redis and imagick php extensions is already available in EPEL.
+    So, you can also install them directly from EPEL without setting up Remi repository.
 
 
 
