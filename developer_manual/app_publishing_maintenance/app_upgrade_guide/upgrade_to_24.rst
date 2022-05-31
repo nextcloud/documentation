@@ -18,11 +18,6 @@ Make sure your ``appinfo/info.xml`` allows for Nextcloud 24.
 	  <nextcloud min-version="21" max-version="24" />
 	</dependencies>
 
-Front-end changes
------------------
-
-tbd
-
 
 PHP8.1
 ------
@@ -52,18 +47,3 @@ Nextcloud 24 is the first major Nextcloud release to work with PHP8.1. Follow th
 3. If you have :ref:`continuous integration <app-ci>` set up, extend your test matrix with PHP8.1 tests and linters.
 
 Information about code changes can be found on `php.net <https://www.php.net/migration81>`__ and `stitcher.io <https://stitcher.io/blog/new-in-php-81#breaking-changes>`__.
-
-Back-end changes
-----------------
-
-tbd
-
-Changed APIs
-^^^^^^^^^^^^
-
-tbd
-
-Removed APIs
-^^^^^^^^^^^^
-
-tbd
