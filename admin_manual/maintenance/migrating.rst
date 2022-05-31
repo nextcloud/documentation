@@ -40,7 +40,7 @@ the new location. It is also assumed that the authentication method
 
 #.  On the original machine then stop Nextcloud. First activate the
     maintenance mode. After waiting for 6-7 minutes for all sync clients to
-    register the server as in maintenance mode stop the application and/or
+    register the server is in maintenance mode stop the application and/or
     Web server that serves Nextcloud.
 
 
