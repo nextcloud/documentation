@@ -100,6 +100,10 @@ For command line processing (*optional*):
 
 * PHP module pcntl (enables command interruption by pressing ``ctrl-c``)
 
+.. note::
+   You also need to ensure that pcntl_signal and pcntl_signal_dispatch are not disabled
+   in your php.ini file.
+
 For command line updater (*optional*):
 
 * PHP module phar (upgrades Nextcloud by running ``sudo -u www-data php /var/www/nextcloud/updater/updater.phar``)
