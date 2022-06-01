@@ -1,4 +1,4 @@
-name: L10n
+name: Generate catalog templates (POT) files fetched automatically by transifex
 on:
   push:
     branches:
@@ -23,3 +23,16 @@ jobs:
         title: l10n
         branch: update-l10n
         signoff: true
+    - uses: pascalgn/automerge-action@v0.15.3
+      if: steps.cpr.outputs.pull-request-operation == 'created'
+      env:
+        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        MERGE_LABELS: ""
+        MERGE_RETRIES: 10
+        MERGE_RETRY_SLEEP: 60000
+        PULL_REQUEST: ${{ github.event.inputs.pull-request-number }}
+    - uses: hmarr/auto-approve-action@v2.2.1
+      if: steps.cpr.outputs.pull-request-operation == 'created'
+      with:
+        github-token: "${{ secrets.GITHUB_TOKEN }}"
+        pull-request-number: ${{ github.event.inputs.pull-request-number }}
