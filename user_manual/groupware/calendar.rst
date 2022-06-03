@@ -238,7 +238,7 @@ The ``Empty trash bin`` buttons will wipe all trash bin contents in one step.
 Responding to invitations
 -------------------------
 
-As of Calendar v3.1.0 you can respond to invitations inside the app. Click on the event and select your participation status. You can respond to an invitation by accepting, declining or accepting tentatively.
+You can directly respond to invitations inside the app. Click on the event and select your participation status. You can respond to an invitation by accepting, declining or accepting tentatively.
 
 .. figure:: images/calendar_accept_simple_editor.png
    :scale: 80%
