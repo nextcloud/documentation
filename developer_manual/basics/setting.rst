@@ -176,3 +176,20 @@ setting with annotations.
          ...
     }
 
+
+If you have several classes that implement `IDelegatedSettings` for a function. You must add them in the key "settings" and they must seperate with semi-colons.
+
+.. code-block:: php
+
+    <?php
+    class NotesSettingsController extends Controller {
+        /**
+         * Save settings
+         * @PasswordConfirmationRequired
+         * @AuthorizedAdminSetting(settings=OCA\NotesTutorial\Settings\NotesAdmin;OCA\NotesTutorial\Settings\NotesSubAdmin)
+         */
+         public function saveSettings($mySetting) {
+             ....
+         }
+         ...
+    }
