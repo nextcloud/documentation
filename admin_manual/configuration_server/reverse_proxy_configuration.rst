@@ -27,7 +27,7 @@ provides protection against client spoofing, and you should secure those
 servers as you would your Nextcloud server.
 
 .. note:: CIDR notation for IPv6 is currently work in progress and thus not
-available as of yet.
+  available as of yet.
 
 A reverse proxy can define HTTP headers with the original client IP address,
 and Nextcloud can use those headers to retrieve that IP address. Nextcloud uses
