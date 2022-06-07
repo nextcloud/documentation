@@ -5,7 +5,7 @@ Logging
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
 The logger is present by default in the container. The app that is logging is
-set automatically.
+set automatically. Nextcloud uses a :ref:`PSR3 <psr3>` logger.
 
 The logger can be used in the following way:
 
@@ -30,14 +30,14 @@ The logger can be used in the following way:
         }
     }
 
+In cases where you can not :ref:`inject <dependency-injection>` a logger into a class, you can use
+the ``\OCP\Log\logger`` function to acquire a logger instance. As a first argument you need to pass
+the app ID.
 
-The following methods are available:
+.. code-block:: php
 
-* **emergency**
-* **alert**
-* **critical**
-* **error**
-* **warning**
-* **notice**
-* **info**
-* **debug**
+    <?php
+
+    use function OCP\Log\logger;
+
+    logger('calendar')->warning('look, no dependency injection');
