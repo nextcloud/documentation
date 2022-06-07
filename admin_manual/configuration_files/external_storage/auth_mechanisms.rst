@@ -70,7 +70,7 @@ can be regenerated with a button in the GUI.
 After generating your keys, you need to copy your new public key to the
 destination server to ``.ssh/authorized_keys``.
 
-See :doc:`../sftp.rst` for additional information on how to set up certificate based authentication on SFTP.
+See :doc:`sftp.rst` for additional information on how to set up certificate based authentication on SFTP.
 
 .. figure:: images/auth_rsa.png
    :alt: Form on admin page for generating RSA keys.
