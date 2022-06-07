@@ -57,6 +57,9 @@ server {
         # The rules in this block are an adaptation of the rules
         # in the Nextcloud `.htaccess` that concern `/.well-known`.
 
+        location = /.well-known/webfinger { return 301 /nextcloud/index.php/.well-known/webfinger; }
+        location = /.well-known/nodeinfo { return 301 /nextcloud/index.php/.well-known/nodeinfo; }
+
         location = /.well-known/carddav { return 301 /nextcloud/remote.php/dav/; }
         location = /.well-known/caldav  { return 301 /nextcloud/remote.php/dav/; }
 
