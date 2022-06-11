@@ -1038,6 +1038,16 @@ Defaults to ``2``
 
 ::
 
+	'loglevel_frontend' => 2,
+
+Loglevel used by the frontend to start logging at. The same values as
+for ``loglevel`` can be used. If not set it defaults to the value
+configured for ``loglevel`` or Warning if that is not set either.
+
+Defaults to ``2``
+
+::
+
 	'syslog_tag' => 'Nextcloud',
 
 If you maintain different instances and aggregate the logs, you may want
@@ -2082,6 +2092,20 @@ WARNING: Not recommended. This would make it possible for Nextcloud to access
 files outside the data directory and could be considered a security risk.
 
 Defaults to ``false``
+
+::
+
+	'localstorage.umask' => 0022,
+
+Nextcloud overrides umask to ensure suitable access permissions
+regardless of webserver/php-fpm configuration and worker state.
+
+WARNING: Modifying this value has security implications and
+may soft-break the installation.
+
+Most installs shall not modify this value.
+
+Defaults to ``0022``
 
 ::
 
