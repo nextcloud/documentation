@@ -115,7 +115,7 @@ If a non 200 status code is returned the client should still proceed with removi
 Login flow v2
 -------------
 
-While the login flow works very nice in a lot of cases there are especially on dekstop application certain hurdles. Special proxy configuration, client side certificates and the likes can cause trouble. To solve this we have come up with a second login flow that uses the users default webbrowser to authenticate. Thus ensuring that if they can login via the web they can also login in the client.
+While the login flow works very nice in a lot of cases there are especially on desktop application certain hurdles. Special proxy configuration, client side certificates and the likes can cause trouble. To solve this we have come up with a second login flow that uses the users default webbrowser to authenticate. Thus ensuring that if they can login via the web they can also login in the client.
 
 To initiate a login do an anonymous POST request
 
