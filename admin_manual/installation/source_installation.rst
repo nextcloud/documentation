@@ -96,6 +96,10 @@ For preview generation (*optional*):
 * avconv or ffmpeg
 * OpenOffice or LibreOffice
 
+.. note::
+   If the preview generation of PDF files fails with a "not authorized" error message, you must adjust the imagick policy file.
+   See https://cromwell-intl.com/open-source/pdf-not-authorized.html
+
 For command line processing (*optional*):
 
 * PHP module pcntl (enables command interruption by pressing ``ctrl-c``)
