@@ -1583,7 +1583,8 @@ https://github.com/phpredis/phpredis/commit/c5994f2a42b8a348af92d3acb4edff1328ad
 ::
 
 	'memcached_servers' => [
-		// hostname, port and optional weight. Also see:
+		// hostname, port and optional weight
+		// or path and port 0 for unix socket. Also see:
 		// https://www.php.net/manual/en/memcached.addservers.php
 		// https://www.php.net/manual/en/memcached.addserver.php
 		['localhost', 11211],
