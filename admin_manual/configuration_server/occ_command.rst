@@ -1469,17 +1469,13 @@ check for that user via the occ command::
 
  sudo -u www-data php occ twofactor:disable <uid> <provider_id>
 
-.. note:: This is not supported by all providers. For those that don't support
-  this operation, the `Two-Factor Admin Support app <https://apps.nextcloud.com/apps/twofactor_admin>`_
-  should be used where users get a one-time code to log into their account.
+.. note:: This is not supported by all providers.
 
 To re-enable two-factor auth again use the following commmand::
 
  sudo -u www-data php occ twofactor:enable <uid> <provider_id>
 
-.. note:: This is not supported by all providers. For those that don't support
-  this operation, the `Two-Factor Admin Support app <https://apps.nextcloud.com/apps/twofactor_admin>`_
-  should be used where users get a one-time code to log into their account.
+.. note:: This is not supported by all providers.
 
 .. _disable_user_label:
 
