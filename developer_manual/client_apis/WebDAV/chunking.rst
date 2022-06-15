@@ -47,8 +47,8 @@ Where ``XXXXXXXXXXXXXXX`` is the start byte of the chunk (with leading zeros) an
 ``curl -X PUT -u roeland:pass https://server/remote.php/dav/uploads/roeland/myapp-e1663913-4423-4efe-a9cd-26e7beeca3c0/000000000000000-000000010485759 --data-binary @chunk1``
 ``curl -X PUT -u roeland:pass https://server/remote.php/dav/uploads/roeland/myapp-e1663913-4423-4efe-a9cd-26e7beeca3c0/000000010485760-000000015728640 --data-binary @chunk2``
 
-This will upload 2 chunks of a file. The first chunk is 10MB in size and the second
-chunk is 5MB in size.
+This will upload 2 chunks of a file. The first chunk is 10 MB in size and the second
+chunk is 5 MB in size.
 
 Assembling the chunks
 ^^^^^^^^^^^^^^^^^^^^^
