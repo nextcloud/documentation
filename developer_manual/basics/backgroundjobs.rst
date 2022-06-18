@@ -91,7 +91,7 @@ job needs to be registered.
 info.xml
 ^^^^^^^^
 
-You can register your jobs in your info.xml by addning;
+You can register your jobs in your info.xml by adding;
 
 .. code-block:: xml
 
