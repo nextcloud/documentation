@@ -1038,11 +1038,11 @@ This example lists your installed certificates::
 
 Import a new certificate::
 
- sudo -u www-data php occ security:import /path/to/certificate
+ sudo -u www-data php occ security:certificates:import /path/to/certificate
 
 Remove a certificate::
 
- sudo -u www-data php occ security:remove [certificate name]
+ sudo -u www-data php occ security:certificates:remove [certificate name]
 
 .. _trashbin_label:
 
