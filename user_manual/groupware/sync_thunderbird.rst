@@ -13,7 +13,8 @@ For this method, you need to have two add-ons installed:
 1. `TbSync <https://addons.thunderbird.net/en/thunderbird/addon/tbsync/>`_.
 2. The `TbSync provider for CalDAV and CardDAV <https://addons.thunderbird.net/en/thunderbird/addon/dav-4-tbsync/>`_.
 
-When they are installed, if you are on Windows, go to **Extras**/**Synchronisation settings (TbSync)** or **Edit/Synchronisation settings (TbSync)** if on Linux, and then:
+When they are installed, if you are on Windows, go to **Extras**/**Synchronisation settings (TbSync)** or **Edit/Synchronisation settings (TbSync)** if on Linux. These are in the menu bar. If the menu bar is hidden, press **ALT** to show it.
+Then, do this:
 
 * In the account manager choose "**Add account** / **CalDAV / CardDAV account**"
 * In the next window, go with the default called **Automatic configuration** and click **next**
