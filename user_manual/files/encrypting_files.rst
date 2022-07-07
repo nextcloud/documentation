@@ -8,7 +8,7 @@ encrypted on the server.
 Encryption is server-wide, so when it is enabled you cannot choose to keep your
 files unencrypted. You don't have to do anything special, as it uses your
 Nextcloud login as the password for your unique private encryption key. Just log
-in and out and manage and share your files as you normally do, and you can
+out and in and manage and share your files as you normally do, and you can
 still change your password whenever you want.
 
 Its main purpose is to encrypt files on remote storage services that are
