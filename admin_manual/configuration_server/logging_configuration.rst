@@ -159,6 +159,20 @@ Find detailed documentation on auditable events for enterprises in our `customer
 
 .. _PHP date function: http://www.php.net/manual/en/function.date.php
 
+Workflow log
+------------
+
+By default, the workflow log is stored to `flow.log` in the data folder.
+
+The path of the workflow log can be set as follows:
+
+::
+
+	occ config:app:set workflowengine logfile --value=/var/log/nextcloud/flow.log
+
+Set the value to `/dev/null` to avoid storing the log.
+
+
 Temporary overrides
 -------------------
 
