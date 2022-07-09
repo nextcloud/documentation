@@ -395,6 +395,22 @@ By default WebAuthn is available but it can be explicitly disabled by admins
 
 ::
 
+	'auth.storeCryptedPassword' => true,
+
+Whether encrypted password should be stored in the database
+
+The passwords are only decrypted using the login token stored uniquely in the
+clients and allow to connect to external storages, autoconfigure mail account in
+the mail app and periodically check if the password it still valid.
+
+This might be desirable to disable this functionality when using one time
+passwords or when having a password policy enforcing long passwords (> 300
+characters).
+
+By default the passwords are stored encrypted in the database.
+
+::
+
 	'hide_login_form' => false,
 
 By default the login form is always available. There are cases (SSO) where an
