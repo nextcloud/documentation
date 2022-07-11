@@ -15,7 +15,7 @@ For best performance, stability and functionality we have documented some recomm
 | Platform         | Options                                                               |
 +==================+=======================================================================+
 | Operating System | - **Ubuntu 20.04 LTS** (recommended)                                  |
-|                  | - **Red Hat Enterprise Linux 8** (recommended)                        |
+| (64bit)          | - **Red Hat Enterprise Linux 8** (recommended)                        |
 |                  | - Debian 10 (Buster)                                                  |
 |                  | - SUSE Linux Enterprise Server 15                                     |
 |                  | - openSUSE Leap 42.1+                                                 |
@@ -36,13 +36,17 @@ For best performance, stability and functionality we have documented some recomm
 
 See :doc:`source_installation` for minimum PHP-modules and additional software for installing Nextcloud.
 
+CPU Architecture and OS
+^^^^^^^^^^^^^^^^^^^^^^^
+A 64bit CPU and 64bit OS is required for Nextcloud to run well.
+
 Memory
 ^^^^^^
 
 Memory requirements for running a Nextcloud server are greatly variable,
 depending on the numbers of users, apps, files and volume of server activity.
 
-Nextcloud needs a minimum of **128MB** RAM, and we recommend a minimum of **512MB**.
+Nextcloud needs a minimum of **128MB** RAM per process, and we recommend a minimum of **512MB** RAM per process.
 
 Database requirements for MySQL / MariaDB
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
