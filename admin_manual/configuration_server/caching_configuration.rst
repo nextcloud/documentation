@@ -87,32 +87,120 @@ You can verify that the Redis daemon is running with ``ps ax``::
  22203 ? Ssl    0:00 /usr/bin/redis-server 127.0.0.1:6379 
  
 Restart your Web server, add the appropriate entries to your ``config.php``, and 
-refresh your Nextcloud admin page. This example ``config.php`` configuration uses 
-Redis for the distributed server cache::
+refresh your Nextcloud admin page.
 
-  'memcache.distributed' => '\OC\Memcache\Redis',
-  'redis' => [
-       'host' => 'redis-host.example.com',
-       'port' => 6379,
-  ],
+Redis configuration in Nextcloud (config.php)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For best performance, use Redis for file locking by adding this::
 
   'memcache.locking' => '\OC\Memcache\Redis',
 
+Further more, you can use Redis for the distributed server cache:: 
+
+  'memcache.distributed' => '\OC\Memcache\Redis',
+
+Additionally, you can use Redis for the local cache like so:: 
+
+  'memcache.local' => '\OC\Memcache\Redis',
+
+When using Redis for any of the above cache settings, you also need to
+specify either the ``redis`` or ``redis.cluster`` configuration in ``config.php``.
+
+The following options are available to configure when using a single redis server (all but ``host`` and ``port`` are optional. For the latter two see next sections)::
+
+   'memcache.locking' => '\OC\Memcache\Redis',
+   'memcache.distributed' => '\OC\Memcache\Redis',
+   'memcache.local' =>'\OC\Memcache\Redis' ,
+   'redis' => [
+      // 'host'      => see connection parameters below
+      // 'port'      => see connection parameters below
+     'user'          => 'nextcloud',
+     'password'      => 'password',
+     'dbindex'       => 0,
+     'timeout'       => 1.5,
+     'read_timeout'  => 1.5,
+   ]
+
+The following options are available to configure when using a redis cluster (all but ``seeds`` are optional)::
+
+   'memcache.locking' => '\OC\Memcache\Redis',
+   'memcache.distributed' => '\OC\Memcache\Redis',
+   'memcache.local' =>'\OC\Memcache\Redis' ,
+   'redis.cluster' => [
+      'seeds' => [ // provide some/all of the cluster servers to bootstrap discovery, port required
+         'cache-cluster:7000',
+         'cache-cluster:7001',
+         'cache-cluster:7002',
+         'cache-cluster:7003',
+         'cache-cluster:7004',
+         'cache-cluster:7005'
+      ],
+      'failover_mode'   => \RedisCluster::FAILOVER_ERROR
+      'timeout'         => 0.0,
+      'read_timeout'    => 0.0,
+      'user'            => 'nextcloud',
+      'password'        => 'password',
+      'dbindex'         => 0,
+   ]
+
+
+Connecting to Single Redis Server over TCP
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To connect to a remote or local Redis server over TCP use::
+
+   'redis' => [
+      'host' => 'redis-host.example.com',
+      'port' => 6379,
+   ],
+
+
+Connecting to single Redis server over TLS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+To connect via TCP over TLS, add the following  configuration::
+
+   'redis' => [
+      'host' => 'tls://127.0.0.1',
+      'port' => 6379,
+      'ssl_context' => [
+         'local_cert' => '/certs/redis.crt',
+         'local_pk' => '/certs/redis.key',
+         'cafile' => '/certs/ca.crt',
+         'verify_peer_name' => false
+      ]
+   ]
+
+
+Connecting to Redis cluster over TLS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+To connect via TCP over TLS, add the following  configuration::
+
+   'redis.cluster' => [
+      'seeds' => [ // provide some/all of the cluster servers to bootstrap discovery, port required
+         'cache-cluster:7000',
+         'cache-cluster:7001',
+      ],
+      'ssl_context' => [
+         'local_cert' => '/certs/redis.crt',
+         'local_pk' => '/certs/redis.key',
+         'cafile' => '/certs/ca.crt',
+         'verify_peer_name' => false
+      ]
+   ]
+
+
+Connecting to single Redis server over UNIX socket
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 If you want to connect to Redis configured to listen on an Unix socket (which is
 recommended if Redis is running on the same system as Nextcloud) use this example
 ``config.php`` configuration::
 
-  'memcache.local' => '\OC\Memcache\APCu',
-  'memcache.distributed' => '\OC\Memcache\Redis',
-  'redis' => [
-       'host'     => '/run/redis/redis-server.sock',
-       'port'     => 0,
-       'dbindex'  => 0,
-       'password' => 'secret',
-       'timeout'  => 1.5,
-  ],
+   'redis' => [
+      'host'     => '/run/redis/redis-server.sock',
+      'port'     => 0,
+   ],
 
 Only "host" and "port" variables are required, the other ones are optional.
 
@@ -131,7 +219,11 @@ You might need to restart apache for the changes to take effect::
 Redis is very configurable; consult `the Redis documentation 
 <http://redis.io/documentation>`_ to learn more.
 
-**Using the Redis session handler:** If you are using Redis for locking and/or caching,
+
+Using the Redis session handler
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you are using Redis for locking and/or caching,
 you may also wish to use Redis for session management. Redis can be used for centralized
 session management across multiple Nextcloud application servers, unlike the standard
 `files` handler. If you use the Redis handler, though, you *MUST* ensure that session
@@ -139,7 +231,7 @@ locking is enabled. As of this writing, the Redis session handler does *NOT* ena
 session locking by default, which can lead to session corruption in some Nextcloud apps
 that make heavy use of session writes such as Talk. In addition, even when session locking
 is enabled, if the application fails to acquire a lock, the Redis session handler does not
-currently return an error. Adding the following settings in your `php.ini` file will
+currently return an error. Adding the following settings in your ``php.ini`` file will
 prevent session corruption when using Redis as your session handler: ::
 
   redis.session.locking_enabled=1
@@ -149,23 +241,6 @@ prevent session corruption when using Redis as your session handler: ::
 More information on configuration of phpredis session handler can be found on the
 `PhpRedis GitHub page <https://github.com/phpredis/phpredis>`_
 
-**Connecting to Redis over TLS:** ::
-
-  'memcache.locking' => '\OC\Memcache\Redis',
-  'memcache.distributed' => '\OC\Memcache\Redis',
-  'memcache.local' =>'\OC\Memcache\Redis' ,
-  'redis' => [
-      'host' => 'tls://127.0.0.1',
-      'port' => 6379,
-      'user' => 'nextcloud',
-      'password' => 'password',
-      'ssl_context' => [
-          'local_cert' => '/certs/redis.crt',
-          'local_pk' => '/certs/redis.key',
-          'cafile' => '/certs/ca.crt',
-          'verify_peer_name' => false
-      ]
-  ]
 
 Memcached
 ---------
@@ -196,9 +271,13 @@ You can verify that the Memcached daemon is running with ``ps ax``::
  127.0.0.1
 
 Restart your Web server, add the appropriate entries to your
-``config.php``, and refresh your Nextcloud admin page. This example uses APCu
-for the local cache, Memcached as the distributed memcache, and lists all the
-servers in the shared cache pool with their port numbers::
+``config.php``, and refresh your Nextcloud admin page.
+
+Memcached configuration in Nextcloud (config.php)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This example uses APCu for the local cache, Memcached as the distributed memcache,
+and lists all the servers in the shared cache pool with their port numbers::
 
  'memcache.local' => '\OC\Memcache\APCu',
  'memcache.distributed' => '\OC\Memcache\Memcached',
