@@ -60,7 +60,7 @@ Database connectors (pick the one for your database:)
 
 *Recommended* packages:
 
-* PHP module fileinfo (highly recommended, enhances file analysis performance)
+* PHP module fileinfo (highly recommended, enhances file analysis performance; required to set custom theming images or if PHP module imagick with SVG support is installed)
 * PHP module bz2 (recommended, required for extraction of apps)
 * PHP module intl (increases language translation performance and fixes sorting
   of non-ASCII characters)
