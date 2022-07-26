@@ -30,12 +30,13 @@ whenever a user export or import begins.
   use OCP\UserMigration\IExportDestination;
   use OCP\UserMigration\IImportSource;
   use OCP\UserMigration\IMigrator;
+  use OCP\UserMigration\ISizeEstimationMigrator;
   use OCP\UserMigration\TMigratorBasicVersionHandling;
   use OCP\UserMigration\UserMigrationException;
   use Symfony\Component\Console\Output\OutputInterface;
   use Throwable;
 
-  class MyAppMigrator implements IMigrator {
+  class MyAppMigrator implements IMigrator, ISizeEstimationMigrator {
     use TMigratorBasicVersionHandling;
 
     private IMyAppManager $myAppManager;
@@ -52,6 +53,17 @@ whenever a user export or import begins.
     ) {
       $this->myAppManager = $myAppManager;
       $this->l10n = $l10n;
+    }
+
+    /**
+     * Returns an estimate of the exported data size in KiB.
+     * Should be fast, favor performance over accuracy.
+     *
+     * @since 25.0.0
+     */
+    public function getEstimatedExportSize(IUser $user): int {
+      $size = 100; // 100KiB for user data JSON
+      return $size;
     }
 
     /**
