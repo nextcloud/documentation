@@ -96,6 +96,25 @@ Redis for the distributed server cache::
        'port' => 6379,
   ],
 
+If your Redis instance is in cluster mode, ``redis.cluster`` is required. For Redis cluster mode use the following example ``config.php`` configuration::
+
+	'memcache.distributed' => '\\OC\\Memcache\\Redis',
+	'redis.cluster' => [
+		'seeds' => [ // provide some/all of the cluster servers to bootstrap discovery, port required
+			'cache-cluster:7000',
+			'cache-cluster:7001',
+			'cache-cluster:7002',
+			'cache-cluster:7003',
+			'cache-cluster:7004',
+			'cache-cluster:7005'
+		],
+		'timeout' => 0.0,
+		'read_timeout' => 0.0,
+		'failover_mode' => \RedisCluster::FAILOVER_ERROR
+	],
+   
+Note that in this example the port is required as part of the server URL. It is not necesarry to list all servers, for example when all servers are load balanced via the same DNS name, only that server name is required.
+
 For best performance, use Redis for file locking by adding this::
 
   'memcache.locking' => '\OC\Memcache\Redis',
