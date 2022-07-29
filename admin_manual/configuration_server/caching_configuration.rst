@@ -100,9 +100,11 @@ Further more, you can use Redis for the distributed server cache::
 
   'memcache.distributed' => '\OC\Memcache\Redis',
 
-Additionally, you can use Redis for the local cache like so:: 
+Additionally, you can use Redis for the local cache like so (see note below):: 
 
   'memcache.local' => '\OC\Memcache\Redis',
+
+.. note:: Using Redis for local cache on a multi-server setup can cause issues. Also, even on a single-server setup, APCu (see section above) should be faster.
 
 When using Redis for any of the above cache settings, you also need to
 specify either the ``redis`` or ``redis.cluster`` configuration in ``config.php``.
