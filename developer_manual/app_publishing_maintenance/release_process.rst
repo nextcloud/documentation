@@ -89,7 +89,18 @@ The release process is identical to the one of a final release, only the version
 
 .. tip:: Example: the app will be released as version 3.7.2. Therefore there might be a **v3.7.2-alpha.1**, **v3.7.2-beta.1**, **v3.7.2-rc.1**, **v3.7.2-rc.2** and the final **v3.7.2**.
 
+The updater channel defines if pre-releases are installed by the server. This setting can be found in the admin setting or in the ``config/config.php`` file. The server will install pre-releases if its update channel is set ``beta``, ``daily``, or ``git``. For all other settings, pre-releases will not be installed.
+
 .. tip:: Don't publish the pre-releases as nightly version on the app store or Nextcloud installations won't be able to update. Releasing with the suffix is sufficient to mark the release as not production ready and instances are still able to update to it.
+
+Nightly releases
+~~~~~~~~~~~~~~~~
+
+Additionally to publishing pre-releases, the maintainers can release nightly releases. These are considered even less stable than pre-releases. In the app store, such nightly releases are marked separately.
+
+Nightly releases will be automatically installed by servers if the update channels is set to ``daily`` or ``git``. Any other setting will make the server ignore nightly releases.
+
+.. tip:: The server uses internally the PHP function ``version_compare``. Consider the version number of a nightly version carefully, so that newly published (pre-) releases are considered newer than the nightly ones.
 
 The release
 -----------
