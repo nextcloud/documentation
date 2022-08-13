@@ -16,11 +16,29 @@ Then create a skeleton app in the `app store <https://apps.nextcloud.com/develop
 Edit an existing app
 --------------------
 
-Alternatively, if you would like to contribute to an existing app instead of creating a new one, first :doc:`set up the development environment <../getting_started/devenv>`, then change into the Nextcloud apps directory::
+Alternatively, if you would like to contribute to an existing app instead of creating a new one, first :doc:`set up the development environment <../getting_started/devenv>`, then create an `apps-extra` folder in the Nextcloud root directory::
 
-    cd /var/www/nextcloud/apps
+    cd /var/www/nextcloud/apps-extra
     
-Finally, clone the app to which you would like to contribute. For example:
+You can then configure Nextcloud to run apps from this directory, by changing your `app_paths` system config in your `config.php`
+
+    'apps_paths' => 
+    array (
+      0 => 
+      array (
+        'path' => '/var/www/html/apps',
+        'url' => '/apps',
+        'writable' => false,
+      ),
+      1 => 
+      array (
+        'path' => '/var/www/html/apps-extra',
+        'url' => '/apps-extra',
+        'writable' => false,
+      ),
+    ),
+    
+Finally, clone the app to which you would like to contribute inside the `apps-extra` folder. For example:
 
     git clone https://github.com/nextcloud/cookbook.git 
 
