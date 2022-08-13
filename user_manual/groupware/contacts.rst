@@ -11,7 +11,7 @@ Let's run through basic features that will help you maintain your address book
 in the application. 
 
 Below, you will learn how to add contacts, edit or remove contacts, upload a 
-contact picture and manage your Contacts app address books. 
+contact picture and manage your address books. 
 
 
 Adding Contacts
