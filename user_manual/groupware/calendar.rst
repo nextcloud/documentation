@@ -55,7 +55,7 @@ instance, importing is the best way to do so.
 .. note:: The Nextcloud Calendar application only supports iCalendar-compatible
           ``.ics``-files, defined in RFC 5545.
 
-Edit, Download or Delete a Calendar
+Edit, Export or Delete a Calendar
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Sometimes you may want to change the color or the entire name of a previous
@@ -74,7 +74,7 @@ hard drive or delete it forever.
 .. figure:: images/calendar_editing.png
             :scale: 80%
 
-2. Click on ``Edit name``, ``Edit color``, ``Download`` or ``Delete``.
+2. Click on *Edit name*, *Edit color*, *Export* or *Delete*.
 
 Sharing calendars
 ~~~~~~~~~~~~~~~~~
@@ -97,10 +97,10 @@ To change the default view or date of an embedded calendar, you need to provide 
 In this url you need to replace the following variables:
 
 - ``<token>`` with the calendar's token,
-- ``<view>`` with one of ``month``, ``week``, ``day``, ``listMonth``, ``listWeek``, ``listDay``. The default view is ``month`` and the normally used list is ``listMonth``,
+- ``<view>`` with one of ``dayGridMonth``, ``timeGridWeek``, ``timeGridDay``, ``listMonth``, ``listWeek``, ``listDay``. The default view is ``dayGridMonth`` and the normally used list is ``listMonth``,
 - ``<date>`` with ``now`` or any date with the following format ``<year>-<month>-<day>`` (e.g. ``2019-12-28``).
 
-On the public page, users are able to get the subscription link for the calendar and download the whole calendar directly.
+On the public page, users are able to get the subscription link for the calendar and export the whole calendar directly.
 
 Subscribe to a Calendar
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -183,7 +183,7 @@ Attendees may be other users on your Nextcloud instances, contacts in your addre
 
 .. attention:: Only the calendar owner can send out invitations. The sharees are not able to do that, whether they have write access to the event's calendar or not.
 
-.. attention:: The server administration needs to setup the e-mail server in the 'Basic settings' tab, as this mail will be used to send invitations.
+.. attention:: The server administration needs to setup the e-mail server in the ``Basic settings`` tab, as this mail will be used to send invitations.
 
 Assign rooms and resources to an event
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -234,6 +234,19 @@ The ``Empty trash bin`` buttons will wipe all trash bin contents in one step.
 .. tip:: The trash bin is only accessible from the Calendar app. Any connected application or app won't be able to display its contents. However, events, tasks and calendars deleted in connected applications or app will also end up in the trash bin.
 
 .. _calendar-working-hours:
+
+Responding to invitations
+-------------------------
+
+You can directly respond to invitations inside the app. Click on the event and select your participation status. You can respond to an invitation by accepting, declining or accepting tentatively.
+
+.. figure:: images/calendar_accept_simple_editor.png
+   :scale: 80%
+
+You can respond to an invitation from the sidebar too.
+
+.. figure:: images/calendar_accept_sidebar_editor.png
+   :scale: 80%
 
 Availability (Working Hours)
 ----------------------------

@@ -11,6 +11,10 @@ existing mail server. You must have a functioning mail server for Nextcloud to b
 able to send emails. You may have a mail server on the same machine as Nextcloud,
 or it may be a remote server.
 
+To access the setup page below log in with an admin account. Click on your avatar
+in the top right, and then click Settings. On the left side under Administration and
+click Basic settings.
+
 .. figure:: ../images/smtp-config-wizard.png
 
 With the wizard, connecting Nextcloud to your mail server is fast and easy.
@@ -168,7 +172,7 @@ the following two variants:
 SSL
 ^^^
 
-A secure connection will be initiated using the outdated SMTPS protocol
+A secure connection will be initiated using the SMTPS protocol
 which uses the port 465/tcp:
 
 ::
@@ -331,18 +335,20 @@ listening on localhost port 25.
 
 * 143/tcp/udp is unencrypted imap4
 
-* 465/tcp is encrypted ssmtp
+* 465/tcp is encrypted submissions
+
+* 587/tcp is opportunistically-encrypted submission
 
 * 993/tcp/udp is encrypted imaps
 
 * 995/tcp/udp is encrypted pop3s
 
 
-**Question**: How can I determine if the SMTP server supports the outdated SMTPS
+**Question**: How can I determine if the SMTP server supports the SMTPS
 protocol?
 
 **Answer**: A good indication that the SMTP server supports the SMTPS protocol
-is that it is listening on port **465**.
+is that it is listening on the `submissions` port **465**.
 
 **Question**: How can I determine what authorization and encryption protocols
 the mail server supports?

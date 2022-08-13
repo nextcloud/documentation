@@ -40,10 +40,10 @@ Required:
 * PHP module filter (only on Mageia and FreeBSD)
 * PHP module GD
 * PHP module hash (only on FreeBSD)
-* PHP module JSON
+* PHP module JSON (included with PHP >= 8.0)
 * PHP module libxml (Linux package libxml2 must be >=2.7.0)
 * PHP module mbstring
-* PHP module openssl
+* PHP module openssl (included with PHP >= 8.0)
 * PHP module posix
 * PHP module session
 * PHP module SimpleXML
@@ -60,7 +60,7 @@ Database connectors (pick the one for your database:)
 
 *Recommended* packages:
 
-* PHP module fileinfo (highly recommended, enhances file analysis performance)
+* PHP module fileinfo (highly recommended, enhances file analysis performance; required to set custom theming images or if PHP module imagick with SVG support is installed)
 * PHP module bz2 (recommended, required for extraction of apps)
 * PHP module intl (increases language translation performance and fixes sorting
   of non-ASCII characters)
@@ -96,9 +96,17 @@ For preview generation (*optional*):
 * avconv or ffmpeg
 * OpenOffice or LibreOffice
 
+.. note::
+   If the preview generation of PDF files fails with a "not authorized" error message, you must adjust the imagick policy file.
+   See https://cromwell-intl.com/open-source/pdf-not-authorized.html
+
 For command line processing (*optional*):
 
 * PHP module pcntl (enables command interruption by pressing ``ctrl-c``)
+
+.. note::
+   You also need to ensure that pcntl_signal and pcntl_signal_dispatch are not disabled
+   in your php.ini file.
 
 For command line updater (*optional*):
 

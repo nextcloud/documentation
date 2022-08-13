@@ -11,16 +11,24 @@ jobs:
   user_manual:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v3
     - uses: ammaraskar/sphinx-action@master
       with:
         docs-folder: "user_manual/"
         pre-build-command: pip install -r requirements.txt
         build-command: make html
+    - name: Pack  the results in local tar file
+      shell: bash
+      run: tar czf /tmp/documentation.tar.gz -C user_manual/_build/html .
+    - name: Upload static documentation
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        name: User manual.zip
+        path: "/tmp/documentation.tar.gz"
   user_manual-en:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v3
     - uses: ammaraskar/sphinx-action@master
       with:
         docs-folder: "user_manual/"
@@ -29,18 +37,34 @@ jobs:
   developer_manual:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v3
     - uses: ammaraskar/sphinx-action@master
       with:
         docs-folder: "developer_manual/"
         pre-build-command: pip install -r requirements.txt
         build-command: make html
+    - name: Pack the results in local tar file
+      shell: bash
+      run: tar czf /tmp/documentation.tar.gz -C developer_manual/_build/html/com .
+    - name: Upload static documentation
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        name: Developer manual.zip
+        path: "/tmp/documentation.tar.gz"
   admin_manual:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v3
     - uses: ammaraskar/sphinx-action@master
       with:
         docs-folder: "admin_manual/"
         pre-build-command: pip install -r requirements.txt
         build-command: make html
+    - name: Pack the results in local tar file
+      shell: bash
+      run: tar czf /tmp/documentation.tar.gz -C admin_manual/_build/html/com .
+    - name: Upload static documentation
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        name: Administration manual.zip
+        path: "/tmp/documentation.tar.gz"

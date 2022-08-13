@@ -61,7 +61,7 @@ Nautilus file manager
 ^^^^^^^^^^^^^^^^^^^^^
 
 **When you configure your Nextcloud account in the** `GNOME Control Center
-<../pim/sync_gnome.html>`_, **your files will automatically be mounted
+<../groupware/sync_gnome.html>`_, **your files will automatically be mounted
 by Nautilus as a WebDAV share, unless you deselect file access**.
 
 You can also mount your Nextcloud files manually. Use the ``davs://``
@@ -354,7 +354,8 @@ as password.
 
 .. note:: **Settings** → **Administration** → **Sharing** → **Allow users on this
    server to send shares to other servers**. This option also allows WebDAV access
-   to public shares needs to be enabled in order to make this feature work.
+   to public shares needs to be enabled in order to make this feature work,
+   except if cURL is being used (see below).
 
 Known problems
 --------------
@@ -453,7 +454,12 @@ Workarounds are documented in the KB2668751_ article.
 Accessing files using cURL
 --------------------------
 
-Since WebDAV is an extension of HTTP cURL can be used to script file operations.
+Since WebDAV is an extension of HTTP, cURL can be used to script file operations.
+
+.. note:: **Settings** → **Administration** → **Sharing** → **Allow users on this
+   server to send shares to other servers**. If this option is disabled the
+   option ``--header "X-Requested-With: XMLHttpRequest"`` needs to be passed to
+   cURL.
 
 To create a folder with the current date as name:
 
@@ -511,7 +517,7 @@ To get the properties of files in the root folder:
     </d:multistatus>
 
 
-.. _KB2668751: https://support.microsoft.com/kb/2668751
+.. _KB2668751: https://web.archive.org/web/20211008025539/https://support.microsoft.com/en-us/topic/you-cannot-download-more-than-50-mb-or-upload-large-files-when-the-upload-takes-longer-than-30-minutes-using-web-client-in-windows-7-8709ae9d-e808-c5a0-95d0-9a7143c50b11
 .. _KB2123563: https://support.microsoft.com/kb/2123563
 .. _WebDAV Navigator: http://seanashton.net/webdav/
 .. _Android devices: https://play.google.com/store/apps/details?id=com.schimera.webdavnavlite

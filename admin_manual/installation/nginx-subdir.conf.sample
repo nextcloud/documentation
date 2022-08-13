@@ -3,10 +3,19 @@ upstream php-handler {
     #server unix:/var/run/php/php7.4-fpm.sock;
 }
 
+# Set the `immutable` cache control options only for assets with a cache busting `v` argument
+map $arg_v $asset_immutable {
+    "" "";
+    default "immutable";
+}
+
 server {
     listen 80;
     listen [::]:80;
     server_name cloud.example.com;
+
+    # Prevent nginx HTTP Server Detection
+    server_tokens off;
 
     # Enforce HTTPS just for `/nextcloud`
     location /nextcloud {
@@ -19,10 +28,16 @@ server {
     listen [::]:443 ssl http2;
     server_name cloud.example.com;
 
+    # Path to the root of the domain
+    root /var/www;
+
     # Use Mozilla's guidelines for SSL/TLS settings
     # https://mozilla.github.io/server-side-tls/ssl-config-generator/
     ssl_certificate     /etc/ssl/nginx/cloud.example.com.crt;
     ssl_certificate_key /etc/ssl/nginx/cloud.example.com.key;
+
+    # Prevent nginx HTTP Server Detection
+    server_tokens off;
 
     # HSTS settings
     # WARNING: Only add the preload option once you read about
@@ -30,10 +45,7 @@ server {
     # will add the domain to a hardcoded list that is shipped
     # in all major browsers and getting removed from this list
     # could take several months.
-    #add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;" always;
-
-    # Path to the root of the domain
-    root /var/www;
+    #add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload" always;
 
     location = /robots.txt {
         allow all;
@@ -73,6 +85,11 @@ server {
         # Pagespeed is not supported by Nextcloud, so if your server is built
         # with the `ngx_pagespeed` module, uncomment this line to disable it.
         #pagespeed off;
+
+        # The settings allows you to optimize the HTTP2 bandwitdth.
+        # See https://blog.cloudflare.com/delivering-http-2-upload-speed-improvements/
+        # for tunning hints
+        client_body_buffer_size 512k;
 
         # HTTP response headers borrowed from Nextcloud `.htaccess`
         add_header Referrer-Policy                      "no-referrer"   always;
@@ -133,11 +150,13 @@ server {
 
             fastcgi_intercept_errors on;
             fastcgi_request_buffering off;
+
+            fastcgi_max_temp_file_size 0;
         }
 
-        location ~ \.(?:css|js|svg|gif|png|jpg|ico|wasm|tflite)$ {
+        location ~ \.(?:css|js|svg|gif|png|jpg|ico|wasm|tflite|map)$ {
             try_files $uri /nextcloud/index.php$request_uri;
-            expires 6M;         # Cache-Control policy borrowed from `.htaccess`
+            add_header Cache-Control "public, max-age=15778463, $asset_immutable";
             access_log off;     # Optional: Don't log access to assets
 
             location ~ \.wasm$ {

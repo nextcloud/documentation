@@ -55,6 +55,7 @@ Set a custom message (predefined)
 | field         | type   | Description                                              |
 +---------------+--------+----------------------------------------------------------+
 | ``messageId`` | string | Message-Id of the predefined message                     |
++---------------+--------+----------------------------------------------------------+
 | ``clearAt``   | int    | Unix Timestamp representing the time to clear the status |
 +---------------+--------+----------------------------------------------------------+
 
@@ -76,7 +77,9 @@ Set a custom message (user-defined)
 | field          | type        | Description                                                 |
 +----------------+-------------+-------------------------------------------------------------+
 | ``statusIcon`` | string/null | The icon picked by the user (must be an emoji, at most one) |
++----------------+-------------+-------------------------------------------------------------+
 | ``message``    | string      | The custom message picked by the user                       |
++----------------+-------------+-------------------------------------------------------------+
 | ``clearAt``    | int         | Unix Timestamp representing the time to clear the status    |
 +----------------+-------------+-------------------------------------------------------------+
 
@@ -129,6 +132,7 @@ Fetch a list of all set user-statuses
 | field      | type | Description           |
 +------------+------+-----------------------+
 | ``limit``  | int  | Limit for pagination  |
++------------+------+-----------------------+
 | ``offset`` | int  | Offset for pagination |
 +------------+------+-----------------------+
 

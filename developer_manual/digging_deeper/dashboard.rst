@@ -29,6 +29,9 @@ of the `load` method and will be called when the dashboard is loaded.
     use OCP\IUserSession;
 
     class MyAppWidget implements IWidget {
+        private IInitialStateService $initialStateService;
+        private IL10N $l10n;
+        private IURLGenerator $urlGenerator;
 
         public function __construct(
             IInitialStateService $initialStateService,
@@ -42,7 +45,6 @@ of the `load` method and will be called when the dashboard is loaded.
 
         /**
          * @return string Unique id that identifies the widget, e.g. the app id
-         * @since 20.0.0
          */
         public function getId(): string {
             return 'myappwidgetid';
@@ -50,7 +52,6 @@ of the `load` method and will be called when the dashboard is loaded.
 
         /**
          * @return string User facing title of the widget
-         * @since 20.0.0
          */
         public function getTitle(): string {
             return $this->l10n->t('My app');
@@ -59,7 +60,6 @@ of the `load` method and will be called when the dashboard is loaded.
         /**
          * @return int Initial order for widget sorting
          *   in the range of 10-100, 0-9 are reserved for shipped apps
-         * @since 20.0.0
          */
         public function getOrder(): int {
             return 0;
@@ -67,7 +67,6 @@ of the `load` method and will be called when the dashboard is loaded.
 
         /**
          * @return string css class that displays an icon next to the widget title
-         * @since 20.0.0
          */
         public function getIconClass(): string {
             return 'icon-class';
@@ -75,7 +74,6 @@ of the `load` method and will be called when the dashboard is loaded.
 
         /**
          * @return string|null The absolute url to the apps own view
-         * @since 20.0.0
          */
         public function getUrl(): ?string {
             return $this->urlGenerator->linkToRouteAbsolute('myapp.view.index');
@@ -141,8 +139,8 @@ however this method is deprecated and will be removed once Nextcloud 19 is EOL.
             $container = $this->getContainer();
 
             /** @var IEventDispatcher $dispatcher */
-            $dispatcher = $container->getServer()->query(IEventDispatcher::class);
-            $dispatcher->addListener(RegisterWidgetEvent::class, function (RegisterWidgetEvent $event) use ($container) {
+            $dispatcher = $container->getServer()->get(IEventDispatcher::class);
+            $dispatcher->addListener(RegisterWidgetEvent::class, function (RegisterWidgetEvent $event) use ($container): void {
                     \OCP\Util::addScript('myapp', 'dashboard');
                     $event->registerWidget(MyAppWidget::class);
             });

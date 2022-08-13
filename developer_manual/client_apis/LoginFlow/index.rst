@@ -115,7 +115,7 @@ If a non 200 status code is returned the client should still proceed with removi
 Login flow v2
 -------------
 
-While the login flow works very nice in a lot of cases there are especially on dekstop application certain hurdles. Special proxy configuration, client side certificates and the likes can cause trouble. To solve this we have come up with a second login flow that uses the users default webbrowser to authenticate. Thus ensuring that if they can login via the web they can also login in the client.
+While the login flow works very nice in a lot of cases there are especially on desktop application certain hurdles. Special proxy configuration, client side certificates and the likes can cause trouble. To solve this we have come up with a second login flow that uses the users default webbrowser to authenticate. Thus ensuring that if they can login via the web they can also login in the client.
 
 To initiate a login do an anonymous POST request
 
@@ -155,3 +155,12 @@ This will return a 404 until authentication is done. Once a 200 is returned it i
 
 Use the server and the provided credentials to connect.
 Note that the 200 will only be returned once.
+
+
+Troubleshooting
+---------------
+
+Login name vs. email login
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Nextcloud allows authentication with user's *login name*, which can be their UID, an email address and similar. The identifier used for the session in which the user generates the app password will be stored into the database record of the generated app password. Therefore the identifier used in the web session that authorizes a client must match the identifier used in the connecting client.

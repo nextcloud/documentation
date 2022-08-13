@@ -15,7 +15,7 @@ For best performance, stability and functionality we have documented some recomm
 | Platform         | Options                                                               |
 +==================+=======================================================================+
 | Operating System | - **Ubuntu 20.04 LTS** (recommended)                                  |
-|                  | - **Red Hat Enterprise Linux 8** (recommended)                        |
+| (64bit)          | - **Red Hat Enterprise Linux 8** (recommended)                        |
 |                  | - Debian 10 (Buster)                                                  |
 |                  | - SUSE Linux Enterprise Server 15                                     |
 |                  | - openSUSE Leap 42.1+                                                 |
@@ -23,18 +23,22 @@ For best performance, stability and functionality we have documented some recomm
 +------------------+-----------------------------------------------------------------------+
 | Database         | - **MySQL 8.0+ or MariaDB 10.2/10.3/10.4/10.5** (recommended)         |
 |                  | - Oracle Database 11g (*only as part of an enterprise subscription*)  |
-|                  | - PostgreSQL 9.6/10/11/12/13                                          |
+|                  | - PostgreSQL 10/11/12/13                                              |
 |                  | - SQLite (*only recommended for testing and minimal-instances*)       |
 +------------------+-----------------------------------------------------------------------+
 | Webserver        | - **Apache 2.4 with** ``mod_php`` **or** ``php-fpm`` (recommended)    |
 |                  | - nginx with ``php-fpm``                                              |
 +------------------+-----------------------------------------------------------------------+
-| PHP Runtime      | - 7.3                                                                 |
-|                  | - 7.4                                                                 |
+| PHP Runtime      | - 7.4                                                                 |
 |                  | - **8.0** (*recommended*)                                             |
+|                  | - 8.1                                                                 |
 +------------------+-----------------------------------------------------------------------+
 
 See :doc:`source_installation` for minimum PHP-modules and additional software for installing Nextcloud.
+
+CPU Architecture and OS
+^^^^^^^^^^^^^^^^^^^^^^^
+A 64bit CPU and 64bit OS is required for Nextcloud to run well.
 
 Memory
 ^^^^^^
@@ -42,7 +46,7 @@ Memory
 Memory requirements for running a Nextcloud server are greatly variable,
 depending on the numbers of users, apps, files and volume of server activity.
 
-Nextcloud needs a minimum of **128MB** RAM, and we recommend a minimum of **512MB**.
+Nextcloud needs a minimum of **128MB** RAM per process, and we recommend a minimum of **512MB** RAM per process.
 
 Database requirements for MySQL / MariaDB
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -74,13 +78,13 @@ of our mobile apps.
 Files App
 ^^^^^^^^^
 
-- **iOS** 11.x+
-- **Android** 4.x+
+- **iOS** 12.1+
+- **Android** 6.0+
 
 Talk App
 ^^^^^^^^
 
-- **iOS** 10.0+
+- **iOS** 12.0+
 - **Android** 5.0+
 - **Nextcloud Server** 14.0+
 - **Nextcloud Talk** 4.0+

@@ -19,13 +19,9 @@ In our case we will create an admin section class in **<myapp>/lib/Sections/Note
     use OCP\IURLGenerator;
     use OCP\Settings\IIconSection;
 
-    class NotesAdmin extends IIconSection {
-
-        /** @var IL10N */
-        private $l;
- 
-        /** @var IURLGenerator */
-        private $urlGenerator;
+    class NotesAdmin implements IIconSection {
+        private IL10N $l;
+        private IURLGenerator $urlGenerator;
 
         public function __construct(IL10N $l, IURLGenerator $urlGenerator) {
             $this->l = $l;
@@ -63,19 +59,9 @@ in *<myapp>/lib/Settings/NotesAdmin.php**.
     use OCP\IL10N;
     use OCP\Settings\ISettings;
 
-    class NotesAdmin extends ISettings {
-
-        /** @var IL10N */
-        private $l;
- 
-        /** @var IURLGenerator */
-        private $urlGenerator;
-
-        /** @var IConfig */
-        private $config;
-
-        /** @var IL10N $l*/
-        private $l;
+    class NotesAdmin implements ISettings {
+        private IL10N $l;
+        private IConfig $config;
 
         public function __construct(IConfig $config, IL10N $l) {
             $this->config = $config;
@@ -139,7 +125,7 @@ and implement two additional methods.
     use OCP\IL10N;
     use OCP\Settings\IDelegatedSettings;
 
-    class NotesAdmin extends IDelegatedSettings {
+    class NotesAdmin implements IDelegatedSettings {
 
         ...
 
@@ -176,3 +162,20 @@ setting with annotations.
          ...
     }
 
+
+If you have several classes that implement `IDelegatedSettings` for a function. You must add them in the key "settings" and they must seperate with semi-colons.
+
+.. code-block:: php
+
+    <?php
+    class NotesSettingsController extends Controller {
+        /**
+         * Save settings
+         * @PasswordConfirmationRequired
+         * @AuthorizedAdminSetting(settings=OCA\NotesTutorial\Settings\NotesAdmin;OCA\NotesTutorial\Settings\NotesSubAdmin)
+         */
+         public function saveSettings($mySetting) {
+             ....
+         }
+         ...
+    }

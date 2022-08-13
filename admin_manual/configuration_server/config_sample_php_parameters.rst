@@ -395,6 +395,22 @@ By default WebAuthn is available but it can be explicitly disabled by admins
 
 ::
 
+	'auth.storeCryptedPassword' => true,
+
+Whether encrypted password should be stored in the database
+
+The passwords are only decrypted using the login token stored uniquely in the
+clients and allow to connect to external storages, autoconfigure mail account in
+the mail app and periodically check if the password it still valid.
+
+This might be desirable to disable this functionality when using one time
+passwords or when having a password policy enforcing long passwords (> 300
+characters).
+
+By default the passwords are stored encrypted in the database.
+
+::
+
 	'hide_login_form' => false,
 
 By default the login form is always available. There are cases (SSO) where an
@@ -443,6 +459,14 @@ user is redirected to, when clicking the "reset password" link after a failed
 login-attempt.
 
 In case you do not want to provide any link, replace the url with 'disabled'
+
+::
+
+	'logo_url' => 'https://example.org',
+
+URL to use as target for the logo link in the header (top-left logo)
+
+Defaults to the base URL of your Nextcloud instance
 
 Mail Parameters
 ---------------
@@ -901,6 +925,11 @@ connection. If none of these hosts are reachable, the administration panel
 will show a warning. Set to an empty list to not do any such checks (warning
 will still be shown).
 
+If no protocol is provided, both http and https will be tested.
+For example, 'http://www.nextcloud.com' and 'https://www.nextcloud.com'
+will be tested for 'www.nextcloud.com'
+If a protocol is provided, only this one will be tested.
+
 Defaults to the following domains:
 
  - www.nextcloud.com
@@ -982,6 +1011,14 @@ Defaults to ``file``
 
 ::
 
+	'log_type_audit' => 'file',
+
+This parameter determines where the audit logs are sent. See ``log_type`` for more information.
+
+Defaults to ``file``
+
+::
+
 	'logfile' => '/var/log/nextcloud.log',
 
 Name of the file to which the Nextcloud logs are written if parameter
@@ -991,9 +1028,18 @@ Defaults to ``[datadirectory]/nextcloud.log``
 
 ::
 
+	'logfile_audit' => '/var/log/audit.log',
+
+Name of the file to which the audit logs are written if parameter
+``log_type`` is set to ``file``.
+
+Defaults to ``[datadirectory]/audit.log``
+
+::
+
 	'logfilemode' => 0640,
 
-Log file mode for the Nextcloud loggin type in octal notation.
+Log file mode for the Nextcloud logging type in octal notation.
 
 Defaults to 0640 (writeable by user, readable by group).
 
@@ -1008,6 +1054,16 @@ Defaults to ``2``
 
 ::
 
+	'loglevel_frontend' => 2,
+
+Loglevel used by the frontend to start logging at. The same values as
+for ``loglevel`` can be used. If not set it defaults to the value
+configured for ``loglevel`` or Warning if that is not set either.
+
+Defaults to ``2``
+
+::
+
 	'syslog_tag' => 'Nextcloud',
 
 If you maintain different instances and aggregate the logs, you may want
@@ -1016,6 +1072,17 @@ with a unique id. Only available if ``log_type`` is set to ``syslog`` or
 ``systemd``.
 
 The default value is ``Nextcloud``.
+
+::
+
+	'syslog_tag_audit' => 'Nextcloud',
+
+If you maintain different instances and aggregate the logs, you may want
+to distinguish between them. ``syslog_tag_audit`` can be set per instance
+with a unique id. Only available if ``log_type`` is set to ``syslog`` or
+``systemd``.
+
+The default value is the value of ``syslog_tag``.
 
 ::
 
@@ -1075,6 +1142,16 @@ old logfile reaches your limit. If a rotated log file is already present, it
 will be overwritten.
 
 Defaults to 100 MB
+
+::
+
+	'profiler' => false,
+
+Enable built-in profiler. Helpful when trying to debug performance
+issues.
+
+Note that this has a performance impact and shouldn't be enabled
+on production.
 
 Alternate Code Locations
 ------------------------
@@ -1210,11 +1287,25 @@ Defaults to ``4096``
 
 	'preview_max_filesize_image' => 50,
 
-max file size for generating image previews with imagegd (default behavior)
+Max file size for generating image previews with imagegd (default behavior).
+
 If the image is bigger, it'll try other preview generators, but will most
-likely show the default mimetype icon. Set to -1 for no limit.
+likely either show the default mimetype icon or not display the image at all.
+Set to ``-1`` for no limit and try to generate image previews on all file sizes.
 
 Defaults to ``50`` megabytes
+
+::
+
+	'preview_max_memory' => 128,
+
+max memory for generating image previews with imagegd (default behavior)
+Reads the image dimensions from the header and assumes 32 bits per pixel.
+
+If creating the image would allocate more memory, preview generation will
+be disabled and the default mimetype icon is shown. Set to -1 for no limit.
+
+Defaults to ``128`` megabytes
 
 ::
 
@@ -1233,6 +1324,16 @@ Defaults to ``''`` (empty string)
 Use this if LibreOffice/OpenOffice requires additional arguments.
 
 Defaults to ``''`` (empty string)
+
+::
+
+	'preview_imaginary_url' => 'http://previews_hpb:8088/',
+
+Set the URL of the Imaginary service to send image previews to.
+
+Also requires the OC\\Preview\\Imaginary provider to be enabled.
+
+See https://github.com/h2non/imaginary
 
 ::
 
@@ -1353,6 +1454,21 @@ parameter to true. Please keep in mind that users who are already logged-in
 are kicked out of Nextcloud instantly.
 
 Defaults to ``false``
+
+::
+
+	'maintenance_window_start' => 1,
+
+UTC Hour for maintenance windows
+
+Some background jobs only run once a day. When an hour is defined for this config,
+the background jobs which advertise themselves as not time sensitive will be
+delayed during the "working" hours and only run in the 4 hours after the given time.
+This is e.g. used for activity expiration, suspicious login training and update checks.
+
+A value of 1 e.g. will only run these background jobs between 01:00am UTC and 05:00am UTC.
+
+Defaults to ``100`` which disables the feature
 
 SSL
 ---
@@ -1483,7 +1599,8 @@ https://github.com/phpredis/phpredis/commit/c5994f2a42b8a348af92d3acb4edff1328ad
 ::
 
 	'memcached_servers' => [
-		// hostname, port and optional weight. Also see:
+		// hostname, port and optional weight
+		// or path and port 0 for unix socket. Also see:
 		// https://www.php.net/manual/en/memcached.addservers.php
 		// https://www.php.net/manual/en/memcached.addserver.php
 		['localhost', 11211],
@@ -1563,6 +1680,8 @@ Using Object Store with Nextcloud
 			'region' => 'RegionOne',
 			// The Identity / Keystone endpoint
 			'url' => 'http://8.21.28.222:5000/v2.0',
+			// uploadPartSize: size of the uploaded chunks, defaults to 524288000
+			'uploadPartSize' => 524288000,
 			// required on dev-/trystack
 			'tenantName' => 'facebook100000123456789',
 			// dev-/trystack uses swift by default, the lib defaults to 'cloudFiles'
@@ -1656,6 +1775,21 @@ Defaults to ``\OC\Share20\ProviderFactory``
 
 ::
 
+	'sharing.enable_mail_link_password_expiration' => false,
+
+Enables expiration for link share passwords sent by email (sharebymail).
+
+The passwords will expire after the configured interval, the users can
+still request a new one in the public link page.
+
+::
+
+	'sharing.mail_link_password_expiration_interval' => 3600,
+
+Expiration interval for passwords, in seconds.
+
+::
+
 	'sharing.maxAutocompleteResults' => 25,
 
 Define max number of results returned by the search for auto-completion of
@@ -1700,6 +1834,12 @@ Set to false to prevent users from setting a custom share_folder
 	'sharing.enable_share_mail' => true,
 
 Set to false to stop sending a mail when users receive a share
+
+::
+
+	'sharing.allow_disabled_password_enforcement_groups' => false,
+
+Set to true to enable the feature to add exceptions for share password enforcement
 
 ::
 
@@ -1767,7 +1907,7 @@ innodb_file_per_table=ON
 Tables will be created with
  * character set: utf8mb4
  * collation:     utf8mb4_bin
- * row_format:    compressed
+ * row_format:    dynamic
 
 See:
 https://dev.mysql.com/doc/refman/5.7/en/charset-unicode-utf8mb4.html
@@ -1915,6 +2055,15 @@ Defaults to the theming app which is shipped since Nextcloud 9
 
 ::
 
+	'enforce_theme' => '',
+
+Enforce the user theme. This will disable the user theming settings
+This must be a valid ITheme ID.
+
+E.g. light, dark, highcontrast, dark-highcontrast...
+
+::
+
 	'cipher' => 'AES-256-CTR',
 
 The default cipher for encrypting files. Currently supported are:
@@ -1924,6 +2073,16 @@ The default cipher for encrypting files. Currently supported are:
  - AES-128-CFB
 
 Defaults to ``AES-256-CTR``
+
+::
+
+	'encryption.use_legacy_base64_encoding' => false,
+
+Use the legacy base64 format for encrypted files instead of the more space-efficient
+binary format. The option affects only newly written files, existing encrypted files
+will not be touched and will remain readable whether they use the new format or not.
+
+Defaults to ``false``
 
 ::
 
@@ -1950,6 +2109,20 @@ WARNING: Not recommended. This would make it possible for Nextcloud to access
 files outside the data directory and could be considered a security risk.
 
 Defaults to ``false``
+
+::
+
+	'localstorage.umask' => 0022,
+
+Nextcloud overrides umask to ensure suitable access permissions
+regardless of webserver/php-fpm configuration and worker state.
+
+WARNING: Modifying this value has security implications and
+may soft-break the installation.
+
+Most installs shall not modify this value.
+
+Defaults to ``0022``
 
 ::
 
@@ -2276,6 +2449,60 @@ Log all LDAP requests into a file
 Warning: This heavily decreases the performance of the server and is only
 meant to debug/profile the LDAP interaction manually.
 Also, it might log sensitive data into a plain text file.
+
+::
+
+	'diagnostics.logging' => true,
+
+Enable diagnostics event logging
+
+If enabled the timings of common execution steps will be logged to the
+Nextcloud log at debug level. log.condition is useful to enable this on
+production systems to only log under some conditions
+
+::
+
+	'diagnostics.logging.threshold' => 0,
+
+Limit diagnostics event logging to events longer than the configured threshold in ms
+
+when set to 0 no diagnostics events will be logged
+
+::
+
+	'profile.enabled' => true,
+
+Enable profile globally
+
+Defaults to ``true``
+
+::
+
+	'enable_file_metadata' => true,
+
+Enable file metadata collection
+
+This is helpful for the mobile clients and will enable a few optimization in
+the future for the preview generation.
+
+Note that when enabled, this data will be stored in the database and might increase
+the database storage.
+
+::
+
+	'account_manager.default_property_scope' => []
+
+Allows to override the default scopes for Account data.
+
+The list of overridable properties and valid values for scopes are in
+OCP\\Accounts\\IAccountManager. Values added here are merged with
+default values, which are in OC\\Accounts\\AccountManager
+
+For instance, if the phone property should default to the private scope
+instead of the local one:
+[
+  \\OCP\\Accounts\\IAccountManager::PROPERTY_PHONE => \\OCP\\Accounts\\IAccountManager::SCOPE_PRIVATE
+]
 
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.

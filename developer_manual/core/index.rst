@@ -11,4 +11,5 @@ Please make sure you have set up a :ref:`devenv`.
 
    unit-testing
    externalapi
+   architecture/index
    ../how_to/index

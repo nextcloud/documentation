@@ -25,6 +25,18 @@ You can change the following parameters of the look and feel on your instance:
 
 .. figure:: ../configuration_server/images/theming.png
 
+Configure theming through CLI
+-----------------------------
+
+Theming configuration can also be adjusted through the ``occ theming:config`` command.
+
+The following values are available to be set through this:
+
+- name, url, imprintUrl, privacyUrl, slogan, color ``occ theming:config name "My Example Cloud"``
+- background, logo, favicon, logoheader ``occ theming:config logo /tmp/mylogo.png``
+
+.. note:: Images require to be read from a local file on the Nextcloud server
+
 Theming of icons
 ----------------
 

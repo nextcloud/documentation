@@ -9,4 +9,4 @@ App publishing and maintenance
    code_signing
    publishing
    release_automation
-   upgrade-guide
+   app_upgrade_guide/index

@@ -98,7 +98,7 @@ In this step the content gets copied from the old to the new column.
           $query = $this->db->getQueryBuilder();
           $query->update('twofactor_backupcodes')
                   ->set('user_id', 'uid');
-          $query->execute();
+          $query->executeStatement();
    }
 
 3. Migration 2: Schema change
@@ -125,7 +125,7 @@ Console commands
 
 There are some console commands, which should help developers to create or deal
 with migrations, which are only available if you are running your
-Nextcloud in debug mode:
+Nextcloud **in debug mode**:
 
 * `migrations:execute`: Executes a single migration version manually.
 * `migrations:generate`:
@@ -139,3 +139,6 @@ Nextcloud in debug mode:
   `1.0.x => 1000`, `2.34.x => 2034`, etc.
 * `migrations:migrate`: Execute a migration to a specified or the latest available version.
 * `migrations:status`: View the status of a set of migrations.
+
+.. note:: After generating a migration, you might need to run `composer dump-autoload`
+   to be able to execute it.

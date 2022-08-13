@@ -7,7 +7,7 @@ a web interface as well as mobile apps.
 
 You can find out more about Nextcloud Talk `on our website <https://nextcloud.com/talk/>`_.
 
-.. image:: images/talk-promoted-view.png
+.. image:: images/talk-grid-view.png
 
 .. toctree::
    :maxdepth: 1

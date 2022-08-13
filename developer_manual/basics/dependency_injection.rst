@@ -23,17 +23,15 @@ new dependencies in your constructor or methods but pass them in. So this:
 .. code-block:: php
 
   <?php
+  use OCP\IDBConnection;
 
   // without dependency injection
   class AuthorMapper {
-
-    /** @var IDBConnection */
-    private $db;
+    private IDBConnection $db;
 
     public function __construct() {
       $this->db = new Db();
     }
-
   }
 
 would turn into this by using Dependency Injection:
@@ -46,14 +44,11 @@ would turn into this by using Dependency Injection:
 
   // with dependency injection
   class AuthorMapper {
-
-    /** @var IDBConnection */
-    private $db;
+    private IDBConnection $db;
 
     public function __construct(IDBConnection $db) {
       $this->db = $db;
     }
-
   }
 
 
@@ -90,15 +85,16 @@ use the **registerService** method on the container object:
   use OCA\MyApp\Controller\AuthorController;
   use OCA\MyApp\Service\AuthorService;
   use OCA\MyApp\Db\AuthorMapper;
+  use OCP\IDBConnection;
+  use OCP\IServerContainer;
   use Psr\Container\ContainerInterface;
 
   class Application extends App {
 
-
     /**
      * Define your dependencies in here
      */
-    public function __construct(array $urlParams=array()){
+    public function __construct(array $urlParams = []){
       parent::__construct('myapp', $urlParams);
 
       $container = $this->getContainer();
@@ -106,29 +102,29 @@ use the **registerService** method on the container object:
       /**
        * Controllers
        */
-      $container->registerService('AuthorController', function(ContainerInterface $c){
+      $container->registerService(AuthorController::class, function(ContainerInterface $c): AuthorController {
         return new AuthorController(
           $c->get('AppName'),
-          $c->get('Request'),
-          $c->get('AuthorService')
+          $c->get(Request::class),
+          $c->get(AuthorService::class)
         );
       });
 
       /**
        * Services
        */
-      $container->registerService('AuthorService', function(ContainerInterface $c){
+      $container->registerService(AuthorService::class, function(ContainerInterface $c): AuthorService {
         return new AuthorService(
-          $c->get('AuthorMapper')
+          $c->get(AuthorMapper::class)
         );
       });
 
       /**
        * Mappers
        */
-      $container->registerService('AuthorMapper', function(ContainerInterface $c){
+      $container->registerService(AuthorMapper::class, function(ContainerInterface $c): AuthorMapper {
         return new AuthorMapper(
-          $c->get('ServerContainer')->getDatabaseConnection()
+          $c->get(IDBConnection::class)
         );
       });
     }
@@ -144,25 +140,25 @@ The container works in the following way:
 
     return new AuthorController(
       $c->get('AppName'),
-      $c->get('Request'),
-      $c->get('AuthorService')
+      $c->get(Request::class),
+      $c->get(AuthorService::class)
     );
 
 * The **AppName** is queried and returned from the base class
 * The **Request** is queried and returned from the server container
 * **AuthorService** is queried::
 
-    $container->registerService('AuthorService', function(ContainerInterface $c){
+    $container->registerService(AuthorService::class, function(ContainerInterface $c): AuthorService {
       return new AuthorService(
-        $c->get('AuthorMapper')
+        $c->get(AuthorMapper::class)
       );
     });
 
 * **AuthorMapper** is queried::
 
-    $container->registerService('AuthorMappers', function(ContainerInterface $c){
+    $container->registerService(AuthorMappers::class, function(ContainerInterface $c): AuthorMapper {
       return new AuthorService(
-        $c->get('ServerContainer')->getDatabaseConnection()
+        $c->get(IDBConnection::class)
       );
     });
 
@@ -184,7 +180,7 @@ How does auto-wiring work
 
 Automatic assembly creates new instances of classes just by looking at the class name and its constructor parameters. For each constructor parameter the type or the argument name is used to query the container, e.g.:
 
-* **SomeType $type** will use **$container->get('SomeType')**
+* **SomeType $type** will use **$container->get(SomeType::class)**
 * **$variable** will use **$container->get('variable')**
 
 If all constructor parameters are resolved, the class will be created, saved as a service and returned.
@@ -199,10 +195,10 @@ So basically the following is now possible:
   class MyTestClass {}
 
   class MyTestClass2 {
-      public $class;
-      public $appName;
+      public MyTestClass $class;
+      public string $appName;
 
-      public function __construct(MyTestClass $class, $AppName) {
+      public function __construct(MyTestClass $class, string $AppName) {
           $this->class = $class;
           $this->appName = $AppName;
       }
@@ -215,7 +211,7 @@ So basically the following is now possible:
   $class2 instanceof MyTestClass2;  // true
   $class2->class instanceof MyTestClass;  // true
   $class2->appName === 'myname';  // true
-  $class2 === $app->getContainer()->get(MyTestClass2:class);  // true
+  $class2 === $app->getContainer()->get(MyTestClass2::class);  // true
 
 .. note:: $AppName is resolved because the container registered a parameter under the key 'AppName' which will return the app id. The lookup is case sensitive so while $AppName will work correctly, using $appName as a constructor parameter will fail.
 
@@ -253,8 +249,10 @@ The only thing that needs to be done to add a route and a controller method is n
   <?php
   namespace OCA\MyApp\Controller;
 
+  use OCP\IRequest;
+
   class PageController {
-      public function __construct($AppName, \OCP\IRequest $request) {
+      public function __construct($AppName, IRequest $request) {
           parent::__construct($AppName, $request);
       }
 
@@ -277,12 +275,15 @@ Interfaces and primitive types can not be instantiated, so the container can not
 
   namespace OCA\MyApp\AppInfo;
 
+  use OCA\MyApp\Db\AuthorMapper;
+  use OCA\MyApp\Db\IAuthorMapper;
+
   class Application extends \OCP\AppFramework\App {
 
       /**
        * Define your dependencies in here
        */
-      public function __construct(array $urlParams=array()){
+      public function __construct(array $urlParams = []){
           parent::__construct('myapp', $urlParams);
 
           $container = $this->getContainer();
@@ -291,9 +292,12 @@ Interfaces and primitive types can not be instantiated, so the container can not
           $container->registerParameter('TableName', 'my_app_table');
 
           // the interface is called IAuthorMapper and AuthorMapper implements it
-          $container->registerService('OCA\MyApp\Db\IAuthorMapper', function (ContainerInterface $c) {
-              return $c->get('OCA\MyApp\Db\AuthorMapper');
+          $container->registerService(IAuthorMapper::class, function (ContainerInterface $c): AuthorMapper {
+              return $c->get(AuthorMapper::class);
           });
+
+          // Less verbose alternative
+          $container->registerAlias(IAuthorMapper::class, AuthorMapper::class);
       }
 
   }
@@ -389,3 +393,14 @@ What not to inject:
 * It is a `pure function <https://en.wikipedia.org/wiki/Pure_function>`_
 
 .. _`reflection`: https://www.php.net/manual/en/book.reflection.php
+
+
+Accessing the container from anywhere
+------------------------------------
+
+Sometimes it can be hard to inject some service inside legacy code, in these case
+you can use :code:`OCP\Server::get(MyService::class)`. This should only be used in
+the last resort, as this makes your code more complicated to unit test and is
+considered an anti-pattern.
+
+

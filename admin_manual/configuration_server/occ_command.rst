@@ -330,7 +330,7 @@ These commands set the value of a single app or system configuration::
   System config value logtimezone set to Europe/Berlin
 
   sudo -u www-data php occ config:app:set files_sharing
-  incoming_server2server_share_enabled --value="yes" --type=boolean
+  incoming_server2server_share_enabled --value="yes"
   Config value incoming_server2server_share_enabled for app files_sharing set to yes
 
 The ``config:system:set`` command creates the value, if it does not already
@@ -689,9 +689,9 @@ the scan::
 
 Verbosity levels of ``-vv`` or ``-vvv`` are automatically reset to ``-v``
 
-Note for option --unscanned:
+Note for option ``--unscanned``:
 In general there is a background job (through cron) that will do that scan periodically.
-The --unscanned option makes it possible to trigger this from the CLI.
+The ``--unscanned`` option makes it possible to trigger this from the CLI.
 
 When using the ``--path`` option, the path must consist of following
 components::
@@ -905,13 +905,7 @@ use the ``--force`` option to force it to check all active LDAP connections::
  sudo -u www-data php occ ldap:check-user --force robert
 
 ``ldap:create-empty-config`` creates an empty LDAP configuration. The first
-one you create has no ``configID``, like this example::
-
- sudo -u www-data php occ ldap:create-empty-config
-   Created new configuration with configID ''
-
-This is a holdover from the early days, when there was no option to create
-additional configurations. The second, and all subsequent, configurations
+one you create has ``configID`` ``s01``, and all subsequent configurations
 that you create are automatically assigned IDs::
 
  sudo -u www-data php occ ldap:create-empty-config
@@ -1044,11 +1038,11 @@ This example lists your installed certificates::
 
 Import a new certificate::
 
- sudo -u www-data php occ security:import /path/to/certificate
+ sudo -u www-data php occ security:certificates:import /path/to/certificate
 
 Remove a certificate::
 
- sudo -u www-data php occ security:remove [certificate name]
+ sudo -u www-data php occ security:certificates:remove [certificate name]
 
 .. _trashbin_label:
 
@@ -1475,17 +1469,13 @@ check for that user via the occ command::
 
  sudo -u www-data php occ twofactor:disable <uid> <provider_id>
 
-.. note:: This is not supported by all providers. For those that don't support
-  this operation, the `Two-Factor Admin Support app <https://apps.nextcloud.com/apps/twofactor_admin>`_
-  should be used where users get a one-time code to log into their account.
+.. note:: This is not supported by all providers.
 
 To re-enable two-factor auth again use the following commmand::
 
  sudo -u www-data php occ twofactor:enable <uid> <provider_id>
 
-.. note:: This is not supported by all providers. For those that don't support
-  this operation, the `Two-Factor Admin Support app <https://apps.nextcloud.com/apps/twofactor_admin>`_
-  should be used where users get a one-time code to log into their account.
+.. note:: This is not supported by all providers.
 
 .. _disable_user_label:
 

@@ -13,7 +13,7 @@ Several 2FA apps are already available including
 a Telegram/Signal/SMS gateway and `U2F <https://en.wikipedia.org/wiki/Universal_2nd_Factor>`_. 
 
 
-Developers can `build new two-factor provider apps <https://docs.nextcloud.com/server/latest/developer_manual/app/two-factor-provider.html>`_.
+Developers can `build new two-factor provider apps <https://docs.nextcloud.com/server/latest/developer_manual/digging_deeper/two-factor-provider.html>`_.
 
 .. TODO ON RELEASE: Update version number above on release
 
@@ -53,9 +53,3 @@ a user has 2FA enforced:
 * If no groups are selected, 2FA is enabled for everyone except members of the excluded groups
 * If groups are selected, 2FA is enabled for all members of these. If a user is both in a
   selected *and* excluded group, the selected takes precedence and 2FA is enforced.
-
-.. note:: Should users lose access to their second factor and backup codes,
-  they won't be able to log into their account anymore. As administrator, you
-  can use the `Two-Factor Admin Support app <https://apps.nextcloud.com/apps/twofactor_admin>`_
-  to generate a one-time code for them to log in and unlock their account.
-  You can find out more about the app in its `documentation <https://nextcloud-twofactor-admin.readthedocs.io/en/latest/>`_

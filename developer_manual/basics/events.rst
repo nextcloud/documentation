@@ -61,9 +61,7 @@ The event above allows signalling that *something happened*. But in many cases y
     use OCP\IUser;
 
     class UserCreatedEvent extends Event {
-
-        /** @var IUser */
-        private $user;
+        private IUser $user;
 
         public function __construct(IUser $user) {
             parent::__construct();
@@ -155,10 +153,9 @@ In the ``Application.php`` the event and the listener class are connected. The c
     class Application extends App {
         public function __construct() {
             parent::__construct('myapp');
-
-                /* @var IEventDispatcher $eventDispatcher */
-                $dispatcher = $this->getContainer()->query(IEventDispatcher::class);
-                $dispatcher->addServiceListener(AddEvent::class, AddTwoListener::class);
+            /* @var IEventDispatcher $eventDispatcher */
+            $dispatcher = $this->getContainer()->get(IEventDispatcher::class);
+            $dispatcher->addServiceListener(AddEvent::class, AddTwoListener::class);
         }
     }
 

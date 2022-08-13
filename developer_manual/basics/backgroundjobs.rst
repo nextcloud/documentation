@@ -30,20 +30,20 @@ your job class of choice.
     <?php
     namespace OCA\MyApp\Cron;
 
-    use \OCA\MyApp\Service\SomeService;
-    use \OCP\BackgroundJob\TimedJob;
-    use \OCP\AppFramework\Utility\ITimeFactory;
+    use OCA\MyApp\Service\SomeService;
+    use OCP\BackgroundJob\TimedJob;
+    use OCP\AppFramework\Utility\ITimeFactory;
 
     class SomeTask extends TimedJob {
 
-        private $myService;
+        private SomeService $myService;
 
         public function __construct(ITimeFactory $time, SomeService $service) {
             parent::__construct($time);
             $this->myService = $service;
 
             // Run once an hour
-            parent::setInterval(3600);
+            $this->setInterval(3600);
         }
 
         protected function run($arguments) {
@@ -62,6 +62,25 @@ to pass on to the service to run the background job.
 The ``run`` function is the main thing you need to implement and where all the
 logic happens.
 
+Heavy load and time insensitive
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When the background job is a ``\OCP\BackgroundJob\TimedJob`` and can impact the performance of
+the instance and is not time sensitive, e.g. clearing old data, running training of AI models
+or similar things, consider flagging it as time insensitive in the constructor.
+
+.. code-block:: php
+
+    <?php
+
+    // Run once a day
+    $this->setInterval(24 * 3600);
+    // Delay until low-load time
+    $this->setTimeSensitivity(\OCP\BackgroundJob\IJob::TIME_INSENSITIVE);
+
+This allows the Nextcloud to delay the job until a given nightly time window so the users
+are not that impacted by the heavy load of the background job.
+
 Registering a background job
 ----------------------------
 
@@ -72,12 +91,12 @@ job needs to be registered.
 info.xml
 ^^^^^^^^
 
-You can register your jobs in your info.xml by addning;
+You can register your jobs in your info.xml by adding;
 
 .. code-block:: xml
 
     <background-jobs>
-		  <job>OCA\MyApp\Cron\SomeTask</job>
+        <job>OCA\MyApp\Cron\SomeTask</job>
     </background-jobs>
 
 This will on install/update of the application add the job ``OCA\MyApp\Cron\SomeTask``.
@@ -99,14 +118,14 @@ For example you could add or remove a certain job based on some controller:
     <?php
     namespace OCA\MyApp\Controller;
 
-    use \OCA\MyApp\Cron\SomeTask;
-    use \OCP\AppFramework\Controller;
-    use \OCP\BackgroundJob\IJobList;
-    use \OCP\IRequest;
+    use OCA\MyApp\Cron\SomeTask;
+    use OCP\AppFramework\Controller;
+    use OCP\BackgroundJob\IJobList;
+    use OCP\IRequest;
 
     class SomeController extends Controller {
 
-        private $jobList
+        private IJobList $jobList
 
         public function __construct(string $appName, IRequest $request, IJobList $jobList) {
             parent::__construct($appName, $request);

@@ -2,6 +2,18 @@
 Calendar / CalDAV
 =================
 
+Events
+------
+
+You can customize the events user interface.
+
+Hide export buttons
+~~~~~~~~~~~~~~~~~~~
+
+By default users can export their calendar data from the editor and the sidebar. Admins can disable this feature::
+
+ php occ config:app:set calendar hideEventExport --value=yes
+
 Invitations
 -----------
 Nextcloud can send invitations for event attendees if this option is activated.
@@ -44,6 +56,17 @@ You'll also need to change the sending mode from ``background-job`` to ``occ``::
  php occ config:app:set dav sendEventRemindersMode --value occ
 
 If you don't use this dedicated command, the reminders will just be sent as soon as possible when the background jobs run.
+
+Event alarm types
+-----------------
+
+Nextcloud allows users to set notification and email reminders for events. Admins can enforce one of the two options::
+
+ occ config:app:set calendar forceEventAlarmType --value=EMAIL
+
+Allowed values are ``EMAIL`` (email) and ``DISPLAY`` (notification).
+
+.. note:: This only enforces alarm types for events created with the Nextcloud Calendar. This setting has no influence for other connected applications.
 
 FreeBusy
 --------

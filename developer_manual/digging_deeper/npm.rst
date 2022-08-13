@@ -27,11 +27,11 @@ For apps that use webpack, this might look like this:
   {
     "name": "myapp",
     "scripts": {
-      "build": "NODE_ENV=production webpack --progress --hide-modules --config webpack.prod.js"
+      "build": "webpack --node-env production --progress --hide-modules --config webpack.prod.js"
     },
     "devDependencies": {
-      "webpack": "^4.26.1",
-      "webpack-cli": "^3.1.2",
+      "webpack": "^5.65.0",
+      "webpack-cli": "^4.9.1",
     }
   }
 
@@ -53,13 +53,13 @@ This command should be added to ``package.json`` as ``dev``  and ``watch`` scrip
   {
     "name": "myapp",
     "scripts": {
-      "build": "NODE_ENV=production webpack --progress --hide-modules --config webpack.prod.js",
-      "dev": "NODE_ENV=development webpack --progress --config webpack.dev.js",
-      "watch": "NODE_ENV=development webpack --progress --watch --config webpack.dev.js"
+      "build": "webpack --node-env production --progress --hide-modules --config webpack.prod.js",
+      "dev": "webpack --node-env development --progress --config webpack.dev.js",
+      "watch": "webpack --node-env development --progress --watch --config webpack.dev.js"
     },
     "devDependencies": {
-      "webpack": "^4.26.1",
-      "webpack-cli": "^3.1.2",
+      "webpack": "^5.65.0",
+      "webpack-cli": "^4.9.1",
     }
   }
 

@@ -60,8 +60,6 @@ Create tasks from chat or share tasks in chat
 
 If Deck is installed, you can use the ``...`` menu of a chat message and turn the message into a Deck task.
 
-.. image:: images/chat-message-menu.png
-
 .. image:: images/deck-talk-create-card-menu.png
 
 .. image:: images/deck-talk-create-card-dialog.png

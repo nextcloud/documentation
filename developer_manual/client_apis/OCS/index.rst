@@ -11,3 +11,4 @@ OCS API
    ocs-sharee-api
    ocs-status-api
    ocs-recommendations-api
+   ocs-user-preferences-api

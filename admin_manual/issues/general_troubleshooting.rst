@@ -139,8 +139,7 @@ Some common problems / error messages found in your logfiles as described above:
   ``data/nextcloud.log`` file. Some Apache modules like ``mod_fastcgi``, ``mod_fcgid``
   or ``mod_proxy_fcgi`` are not passing the needed authentication headers to
   PHP and so the login to Nextcloud via WebDAV, CalDAV and CardDAV clients is
-  failing. Information on how to correctly configure your environment can be
-  found at the `forums <https://forum.owncloud.org/viewtopic.php?f=17&t=30646>`_.
+  failing.
 
 Troubleshooting Web server and PHP problems
 -------------------------------------------
@@ -170,7 +169,7 @@ Web server and PHP modules
    may not work at all on Lighttpd.
 
 There are some Web server or PHP modules which are known to cause various
-problems like broken up-/downloads. The following shows a draft overview of
+problems like broken uploads/downloads. The following shows a draft overview of
 these modules:
 
 1. Apache
@@ -261,10 +260,10 @@ document root of your Web server and add the following lines::
 
     <IfModule mod_rewrite.c>
       RewriteEngine on
-      RewriteRule ^\.well-known/carddav /nextcloud/remote.php/dav [R=301,L]
-      RewriteRule ^\.well-known/caldav /nextcloud/remote.php/dav [R=301,L]
-      RewriteRule ^\.well-known/webfinger /nextcloud/index.php/.well-known/webfinger [R=301,L]
-      RewriteRule ^\.well-known/nodeinfo /nextcloud/index.php/.well-known/nodeinfo [R=301,L]
+      RewriteRule ^/\.well-known/carddav /nextcloud/remote.php/dav [R=301,L]
+      RewriteRule ^/\.well-known/caldav /nextcloud/remote.php/dav [R=301,L]
+      RewriteRule ^/\.well-known/webfinger /nextcloud/index.php/.well-known/webfinger [R=301,L]
+      RewriteRule ^/\.well-known/nodeinfo /nextcloud/index.php/.well-known/nodeinfo [R=301,L]
     </IfModule>
 
 Make sure to change /nextcloud to the actual subfolder your Nextcloud instance is running in.

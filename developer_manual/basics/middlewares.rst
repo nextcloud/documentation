@@ -28,7 +28,7 @@ To generate your own middleware, simply inherit from the Middleware class and ov
       /**
        * this replaces "bad words" with "********" in the output
        */
-      public function beforeOutput($controller, $methodName, $output){
+      public function beforeOutput($controller, $methodName, $output) {
           return str_replace('bad words', '********', $output);
       }
 
@@ -42,16 +42,16 @@ The middleware can be registered in the :doc:`dependency_injection` and added us
 
   namespace OCA\MyApp\AppInfo;
 
-  use \OCP\AppFramework\App;
-
-  use \OCA\MyApp\Middleware\CensorMiddleware;
+  use OCP\AppFramework\App;
+  use OCP\IServerContainer;
+  use OCA\MyApp\Middleware\CensorMiddleware;
 
   class MyApp extends App {
 
       /**
        * Define your dependencies in here
        */
-      public function __construct(array $urlParams=array()){
+      public function __construct(array $urlParams = []) {
           parent::__construct('myapp', $urlParams);
   
           $container = $this->getContainer();
@@ -59,13 +59,12 @@ The middleware can be registered in the :doc:`dependency_injection` and added us
           /**
            * Middleware
            */
-          $container->registerService('CensorMiddleware', function($c){
+          $container->registerService(CensorMiddleware::class, function(IServerContainer $c): CensorMiddleware{
               return new CensorMiddleware();
           });
-      
+
           // executed in the order that it is registered
-          $container->registerMiddleware('CensorMiddleware');
-  
+          $container->registerMiddleware(CensorMiddleware::class);
       }
   }
 
@@ -86,9 +85,9 @@ Sometimes it is useful to conditionally execute code before or after a controlle
 
   namespace OCA\MyApp\Middleware;
 
-  use \OCP\AppFramework\Middleware;
-  use \OCP\AppFramework\Utility\IControllerMethodReflector;
-  use \OCP\AppFramework\Http\Response;
+  use OCP\AppFramework\Middleware;
+  use OCP\AppFramework\Utility\IControllerMethodReflector;
+  use OCP\AppFramework\Http\Response;
 
   class HeaderMiddleware extends Middleware {
 
@@ -101,13 +100,12 @@ Sometimes it is useful to conditionally execute code before or after a controlle
     /**
      * Add custom header if @MyHeader is used
      */
-    public function afterController($controller, $methodName, Response $response){
+    public function afterController($controller, $methodName, Response $response) {
         if($this->reflector->hasAnnotation('MyHeader')) {
             $response->addHeader('My-Header', 3);
         }
         return $response;
     }
-
   }
 
 Now adjust the container to inject the reflector:
@@ -118,9 +116,9 @@ Now adjust the container to inject the reflector:
 
   namespace OCA\MyApp\AppInfo;
 
-  use \OCP\AppFramework\App;
-
-  use \OCA\MyApp\Middleware\HeaderMiddleware;
+  use OCP\AppFramework\App;
+  use OCP\IServerContainer;
+  use OCA\MyApp\Middleware\HeaderMiddleware;
 
   class MyApp extends App {
 
@@ -135,12 +133,12 @@ Now adjust the container to inject the reflector:
           /**
            * Middleware
            */
-          $container->registerService('HeaderMiddleware', function($c){
-              return new HeaderMiddleware($c->query('ControllerMethodReflector'));
+          $container->registerService(HeaderMiddleware::class, function(IServerContainer $c): HeaderMiddleware {
+              return new HeaderMiddleware($c->get('ControllerMethodReflector'));
           });
 
           // executed in the order that it is registered
-          $container->registerMiddleware('HeaderMiddleware');
+          $container->registerMiddleware(HeaderMiddleware::class);
       }
 
   }

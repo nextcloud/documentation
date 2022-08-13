@@ -117,3 +117,6 @@ Those include for example::
 
  $ sudo -u www-data php occ db:add-missing-columns
  $ sudo -u www-data php occ db:add-missing-indices
+ $ sudo -u www-data php occ db:add-missing-primary-keys
+
+You can use the ``--dry-run`` option to output the SQL queries instead of executing them.

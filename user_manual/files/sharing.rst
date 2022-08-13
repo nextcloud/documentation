@@ -29,7 +29,7 @@ A number of options are available for public *folder* shares:
 * **Read only** to allow viewing and downloading
 * **Allow upload and editing**
 * With **File drop**, the sharee can only upload files to a folder without seeing the files that are already in that folder.
-* **Hide download** prevents the sharee from downloading
+* **Hide download** hides the download buttons and the default browser right-click options in order to make downloading for the sharee harder
 * **Password protect**
 * **Set expiration date** will automatically disable the share
 * **Note to recipient**
@@ -40,7 +40,7 @@ For public *file* shares, you may allow editing the file with one of Nextcloud's
 
 .. figure:: ../images/sharing_public_file.png
 
-.. note:: Password protection as well as file expiration are not propagated using Federated File Sharing in current Nextcloud releases. This will be adjusted in Nextcloud 22.
+.. note:: Password protection as well as file expiration are not propagated using Federated File Sharing in current Nextcloud releases. This has been adjusted in Nextcloud 22.
 
 Internal shares with users and groups
 -------------------------------------

@@ -44,6 +44,6 @@ include the following:
 * Social sharing links
 * Nextcloud version
 
-.. note:: Available options and settings depending on your administrators configuration.
-   If you are not able to change the password or the display-name in your personal settings,
+.. note:: Available options and settings depending on your administrator's configuration.
+   If you are not able to change the password or the display name in your personal settings,
    please contact your administrator for help.

@@ -55,6 +55,13 @@ in the Application View field. Clicking the **Enable** button will enable the ap
 If the app is not part of the Nextcloud installation, it will be downloaded from
 the app store, installed and enabled.
 
+App updates will also be offered to you on this page. Simply click on the **Update** 
+button to update a specific app or use the **Update all** button on top of the page to 
+update all apps.
+
+.. note:: **Beta releases**: You can also install beta releases of apps directly from here by 
+          switching your Nextcloud to the beta channel in the admin overview.
+
 Using private API
 -----------------
 
