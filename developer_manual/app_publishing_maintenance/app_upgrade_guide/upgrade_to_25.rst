@@ -23,7 +23,7 @@ SCSS support removal
 
 With 25, we removed the support for scss files provided by apps.
 Please handle your own compilation, move to a vue app or move back to css.
-See https://github.com/nextcloud/server/issues/32060
+See `Github issue <https://github.com/nextcloud/server/issues/32060>`_.
 
 Front-end changes
 -----------------
@@ -43,4 +43,4 @@ tbd
 Removed APIs
 ^^^^^^^^^^^^
 
-- Removed SVG colour api
+- Removed SVG colour API
