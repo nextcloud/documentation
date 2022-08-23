@@ -12,6 +12,13 @@ is usually not necessary to edit ``config/config.php``.
    Only manually add configuration parameters to ``config/config.php`` if you need to
    use a special value for a parameter. **Do not copy everything from**
    ``config/config.sample.php`` **. Only enter the parameters you wish to modify!**
+   
+   
+Environment Variables configuration
+------------------------
+
+If a config isn't present in ``config/config.php``, Nextcloud will attempt to get the configuration from the Environment by prepending ``NC_`` before it. For example, if you want to configure the ``default_phone_region`` configuration, you would have to start your application with ``NC_default_phone_region=BR``
+   
 
 Multiple config.php file
 ------------------------
