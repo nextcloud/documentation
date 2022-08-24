@@ -20,36 +20,19 @@ requires that you install and set up the server software first.
   scope of this document.  Please refer to the documentation for your specific
   database choice for instructions.
 
-.. _db-transaction-label:
-
-Database "READ COMMITTED" transaction isolation level
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-As discussed above Nextcloud is using the ``TRANSACTION_READ_COMMITTED`` transaction isolation
-level. Some database configurations are enforcing other transaction isolation levels. To avoid
-data loss under high load scenarios (e.g. by using the sync client with many clients/users and
-many parallel operations) you need to configure the transaction isolation level accordingly.
-Please refer to the `MySQL manual <https://dev.mysql.com/doc/refman/5.7/en/set-transaction.html>`_
-for detailed information.
-
-Parameters
-----------
-For setting up Nextcloud to use any database, use the instructions in :doc:`../installation/installation_wizard`. You should not have to edit the respective values in the :file:`config/config.php`.  However, in special cases (for example, if you want to connect your Nextcloud instance to a database created by a previous installation of Nextcloud), some modification might be required.
-
 Configuring a MySQL or MariaDB database
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you decide to use a MySQL or MariaDB database, ensure the following:
 
-* The transaction isolation level is set to "READ-COMMITTED" in your MariaDB server configuration :file:`/etc/mysql/my.cnf` to persist even after a restart of your database server.
+* The **binlog_format** is set to "ROW" or "MIXED" ("MIXED" is the default since MariaDB 10.2.4) in your MariaDB server configuration :file:`/etc/mysql/my.cnf` to persist even after a restart of your database server.
 
-  Verify the **transaction_isolation** and **binlog_format**:
+  Verify the **binlog_format**:
 
 ::
 
   [mysqld]
   ...
-  transaction_isolation = READ-COMMITTED
   binlog_format = ROW
   ...
 
@@ -84,7 +67,6 @@ Your :file:`/etc/mysql/my.cnf` could look like this:
   [mysqld]
   character_set_server = utf8mb4
   collation_server = utf8mb4_general_ci
-  transaction_isolation = READ-COMMITTED
   binlog_format = ROW
   innodb_large_prefix=on
   innodb_file_format=barracuda

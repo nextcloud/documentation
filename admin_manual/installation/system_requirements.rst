@@ -54,8 +54,7 @@ Database requirements for MySQL / MariaDB
 The following is currently required if you're running Nextcloud together with a MySQL / MariaDB database:
 
 * InnoDB storage engine (MyISAM is not supported)
-* "READ COMMITED" transaction isolation level (See: :ref:`db-transaction-label`)
-* Disabled or BINLOG_FORMAT = ROW configured Binary Logging (See: https://dev.mysql.com/doc/refman/5.7/en/binary-log-formats.html)
+* Disabled, BINLOG_FORMAT = ROW or BINLOG_FORMAT = MIXED configured Binary Logging (See: https://dev.mysql.com/doc/refman/5.7/en/binary-log-formats.html)
 * For **Emoji (UTF8 4-byte) support** see :doc:`../configuration_database/mysql_4byte_support`
 
 Desktop client
