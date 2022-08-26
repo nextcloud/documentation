@@ -2502,7 +2502,7 @@ the database storage.
 
 ::
 
-	'account_manager.default_property_scope' => []
+	'account_manager.default_property_scope' => [],
 
 Allows to override the default scopes for Account data.
 
@@ -2515,6 +2515,15 @@ instead of the local one:
 [
   \\OCP\\Accounts\\IAccountManager::PROPERTY_PHONE => \\OCP\\Accounts\\IAccountManager::SCOPE_PRIVATE
 ]
+
+::
+
+	'projects.enabled' => false,
+
+Enable the deprecated Projects feature,
+superseded by Related resources as of Nextcloud 25
+
+Defaults to ``false``
 
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
