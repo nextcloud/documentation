@@ -2525,6 +2525,14 @@ superseded by Related resources as of Nextcloud 25
 
 Defaults to ``false``
 
+::
+
+	'bulkupload.enabled' => true,
+
+Enable the bulk upload feature.
+
+Defaults to ``true``
+
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
 
