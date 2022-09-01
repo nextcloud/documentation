@@ -2533,6 +2533,14 @@ Enable the bulk upload feature.
 
 Defaults to ``true``
 
+::
+
+	'reference_opengraph' => true,
+
+Enables fetching open graph metadata from remote urls
+
+Defaults to ``true``
+
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
 
