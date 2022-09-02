@@ -5,23 +5,22 @@ Memory caching
 You can significantly improve your Nextcloud server performance with memory 
 caching, where frequently-requested objects are stored in memory for faster 
 retrieval. There are two types of caches to use: a PHP opcode cache, which is 
-commonly called *opcache*, and data caching for your Web server. If you do not 
-install and enable a local memcache you will see a warning on your Nextcloud 
-admin page. **A memcache is not required and you may safely ignore the warning 
-if you prefer.**
+commonly called *opcache*, and data cache for your web server, commonly called
+"memcache".
 
-.. note:: If you enable only a distributed cache in 
-   your ``config.php`` (``memcache.distributed``) and not a 
-   local cache (``memcache.local``) you will still see the cache warning.
+.. note:: If you do not install and enable a local memcache you will see a
+   warning on your Nextcloud admin page. **A memcache is not required and you
+   may safely ignore the warning if you prefer.** If you enable only a
+   distributed cache (``memcache.distributed``) in your ``config.php`` and not
+   a local cache (``memcache.local``) you will still see the cache warning.
 
-A PHP opcache stores compiled PHP scripts so they don't need to be re-compiled 
+A **PHP opcache** stores compiled PHP scripts so they don't need to be re-compiled 
 every time they are called. PHP bundles the Zend OPcache in core since version 
 5.5, so you don't need to install an opcache manually.
 
-Data caching is supplied by the user (APCu), Memcached or Redis.
-
-Nextcloud supports multiple memory caching backends, so you can choose the type 
-of memcache that best fits your needs. The supported caching backends are:
+**Data caching** is supplied by the user. Nextcloud supports multiple memory
+caching backends, so you can choose the type of memcache that best fits your
+needs. The supported caching backends are:
 
 * `APCu <https://pecl.php.net/package/APCu>`_, APCu 4.0.6 and up required.
    A local cache for systems.
@@ -30,19 +29,79 @@ of memcache that best fits your needs. The supported caching backends are:
 * `Memcached <https://www.memcached.org/>`_
    For distributed caching.
    
-Memcaches must be explicitly configured in Nextcloud by installing
+Data caches, or memcaches, must be explicitly configured in Nextcloud by installing
 and enabling your desired cache, and then adding the appropriate entry to 
 ``config.php`` (See :doc:`config_sample_php_parameters` for an overview of
 all possible config parameters).
 
+
+Recommendations based on type of deployment
+-------------------------------------------
+
 You may use both a local and a distributed cache. Recommended caches are APCu 
-and Redis. After installing and enabling your chosen memcache, verify that it is 
-active by running :ref:`label-phpinfo`.
+and Redis. After installing and enabling your chosen memcache (data cache),
+verify that it is active by running :ref:`label-phpinfo`.
+
+.. note:: See specific cache configuration options under the appropriate section further down.
+
+Small/Private home server
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Only use APCu::
+
+    'memcache.local' => '\OC\Memcache\APCu',
+
+Organizations with single-server
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Use Redis for everything except local memcache::
+
+  'memcache.local' => '\OC\Memcache\APCu',
+  'memcache.distributed' => '\OC\Memcache\Redis',
+  'memcache.locking' => '\OC\Memcache\Redis',
+  'redis' => [
+       'host' => 'localhost',
+       'port' => 6379,
+  ],
+
+Organizations with clustered setups
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Use APCu for local cache and either Redis cluster ...::
+
+  'memcache.local' => '\OC\Memcache\APCu',
+  'memcache.distributed' => '\OC\Memcache\Redis',
+  'memcache.locking' => '\OC\Memcache\Redis',
+  'redis.cluster' => [
+      'seeds' => [ // provide some/all of the cluster servers to bootstrap discovery, port required
+         'cache-cluster:7000',
+         'cache-cluster:7001',
+      ],
+   ]
+
+... or Memcached cluster ...::
+
+  'memcache.local' => '\OC\Memcache\APCu',
+  'memcache.distributed' => '\OC\Memcache\Memcached',
+  'memcache.locking' => '\OC\Memcache\Memcached',
+  'memcached_servers' => [
+      [ 'server1.example.com', 11211 ],
+      [ 'server2.example.com', 11211 ],
+   ],
+
+... for distrebuted and locking caches.
 
 .. note:: If you run multiple web servers and enable a distributed cache in
     your ``config.php`` (``memcache.distributed``) or a file locking provider
     (``memcache.locking``) you need to make sure that they are referring to the
-    very same memcache server and not to ``localhost`` or a unix socket.
+    very same memcache server/cluster and not to ``localhost`` or a unix socket.
+
+Additional notes for Redis vs. APCu on memory caching
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+APCu is faster at local caching than Redis. If you have enough memory, use APCu for Memory Caching
+and Redis for File Locking. If you are low on memory, use Redis for both.
+
 
 APCu
 ----
@@ -60,6 +119,7 @@ Refresh your Nextcloud admin page, and the cache warning should disappear.
 .. warning:: APCu is disabled by default on CLI which could cause issues with nextcloud's
    cron jobs. Please make sure you set the ``apc.enable_cli`` to ``1`` on your ``php.ini``
    config file or append ``--define apc.enable_cli=1`` to the cron job call.
+
 
 Redis
 -----
@@ -100,11 +160,11 @@ Additionally, you should use Redis for the distributed server cache::
 
   'memcache.distributed' => '\OC\Memcache\Redis',
 
-Additionally, you can use Redis for the local cache like so (see note below):: 
+Further more, you could use Redis for the local cache like so, but it's not recommended (see warning below):: 
 
   'memcache.local' => '\OC\Memcache\Redis',
 
-.. note:: Using Redis for local cache on a multi-server setup can cause issues. Also, even on a single-server setup, APCu (see section above) should be faster.
+.. warning:: Using Redis for local cache on a multi-server setup can cause issues. Also, even on a single-server setup, APCu (see section above) should be faster.
 
 When using Redis for any of the above cache settings, you also need to
 specify either the ``redis`` or ``redis.cluster`` configuration in ``config.php``.
@@ -146,7 +206,6 @@ The following options are available to configure when using a redis cluster (all
       'dbindex'         => 0,
    ]
 
-
 Connecting to single Redis server over TCP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -156,7 +215,6 @@ To connect to a remote or local Redis server over TCP use::
       'host' => 'redis-host.example.com',
       'port' => 6379,
    ],
-
 
 Connecting to single Redis server over TLS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -172,7 +230,6 @@ To connect via TCP over TLS, add the following  configuration::
          'verify_peer_name' => false
       ]
    ]
-
 
 Connecting to Redis cluster over TLS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -190,7 +247,6 @@ To connect via TCP over TLS, add the following  configuration::
          'verify_peer_name' => false
       ]
    ]
-
 
 Connecting to single Redis server over UNIX socket
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -221,7 +277,6 @@ You might need to restart apache for the changes to take effect::
 Redis is very configurable; consult `the Redis documentation 
 <http://redis.io/documentation>`_ to learn more.
 
-
 Using the Redis session handler
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -242,6 +297,31 @@ prevent session corruption when using Redis as your session handler: ::
 
 More information on configuration of phpredis session handler can be found on the
 `PhpRedis GitHub page <https://github.com/phpredis/phpredis>`_
+
+Additional Redis installation help
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If your version of **Mint** or **Ubuntu** does not package the required version of 
+``php-redis``, then try `this Redis guide on Tech and Me
+<https://www.techandme.se/install-redis-cache-on-ubuntu-server-with-php-7-and-nextcloud/>`_
+for a complete Redis installation on Ubuntu 14.04 using PECL. 
+These instructions are adaptable for **any distro** that does not package the 
+supported version, or that does not package Redis at all, such as **SUSE Linux 
+Enterprise Server** and **Red Hat Enterprise Linux**.
+
+For PHP 7.0 and PHP 7.1 use Redis PHP module 3.1.x or later.
+  
+See `<https://pecl.php.net/package/redis>`_
+
+On Debian/Mint/Ubuntu, use ``apt-cache`` to see the available 
+``php-redis`` version, or the version of your installed package::
+
+ apt-cache policy php-redis
+ 
+On CentOS and Fedora, the ``yum`` command shows available and installed version 
+information::
+
+ yum search php-pecl-redis
 
 
 Memcached
@@ -283,11 +363,13 @@ and lists all the servers in the shared cache pool with their port numbers::
 
  'memcache.local' => '\OC\Memcache\APCu',
  'memcache.distributed' => '\OC\Memcache\Memcached',
+ 'memcache.locking' => '\OC\Memcache\Memcached',
  'memcached_servers' => [
       [ 'server0.example.com', 11211 ],
       [ 'server1.example.com', 11211 ],
       [ 'server2.example.com', 11211 ],
   ],
+
 
 Cache Directory location
 ------------------------
@@ -295,58 +377,3 @@ Cache Directory location
 The cache directory defaults to ``data/$user/cache`` where ``$user`` is the 
 current user. You may use the ``'cache_path'`` directive in ``config.php``
 (See :doc:`config_sample_php_parameters`) to select a different location.
-
-Recommendations based on type of deployment
--------------------------------------------
-
-Small/Private home server
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Only use APCu::
-
-    'memcache.local' => '\OC\Memcache\APCu',
-
-Organizations with single-server and clustered setups
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Use Redis for everything except local memcache::
-
-  'memcache.local' => '\OC\Memcache\APCu',
-  'memcache.distributed' => '\OC\Memcache\Redis',
-  'memcache.locking' => '\OC\Memcache\Redis',
-  'redis' => [
-       'host' => 'redis-host.example.com',
-       'port' => 6379,
-  ],
-
-Additional notes for Redis vs. APCu on memory caching
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-APCu is faster at local caching than Redis. If you have enough memory, use APCu for Memory Caching
-and Redis for File Locking. If you are low on memory, use Redis for both.
-
-..  _install_redis_label:     
-
-Additional Redis installation help
-----------------------------------
-
-If your version of Mint or Ubuntu does not package the required version of 
-``php-redis``, then try `this Redis guide on Tech and Me
-<https://www.techandme.se/install-redis-cache-on-ubuntu-server-with-php-7-and-nextcloud/>`_ for a complete Redis installation on Ubuntu 14.04 using PECL. 
-These instructions are adaptable for any distro that does not package the 
-supported version, or that does not package Redis at all, such as SUSE Linux 
-Enterprise Server and Red Hat Enterprise Linux.
-
-For PHP 7.0 and PHP 7.1 use Redis PHP module 3.1.x or later.
-  
-See `<https://pecl.php.net/package/redis>`_
-
-On Debian/Mint/Ubuntu, use ``apt-cache`` to see the available 
-``php-redis`` version, or the version of your installed package::
-
- apt-cache policy php-redis
- 
-On CentOS and Fedora, the ``yum`` command shows available and installed version 
-information::
-
- yum search php-pecl-redis
