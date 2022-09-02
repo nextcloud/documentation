@@ -147,7 +147,7 @@ The following options are available to configure when using a redis cluster (all
    ]
 
 
-Connecting to Single Redis Server over TCP
+Connecting to single Redis server over TCP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To connect to a remote or local Redis server over TCP use::
