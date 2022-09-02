@@ -205,7 +205,6 @@ The following options are available to configure when using a redis cluster (all
       'password'        => 'password',
       'dbindex'         => 0,
    ]
-   
       
 .. note:: The port is required as part of the server URL. However, it is not necesarry to list all servers: for example, if all servers are load balanced via the same DNS name, only that server name is required.
 
