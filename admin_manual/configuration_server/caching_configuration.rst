@@ -96,7 +96,7 @@ For best performance, use Redis for file locking by adding this::
 
   'memcache.locking' => '\OC\Memcache\Redis',
 
-Further more, you can use Redis for the distributed server cache:: 
+Additionally, you should use Redis for the distributed server cache:: 
 
   'memcache.distributed' => '\OC\Memcache\Redis',
 
