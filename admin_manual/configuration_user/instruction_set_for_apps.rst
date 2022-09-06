@@ -94,6 +94,7 @@ XML output
       <author>Robin Appelman</author>
       <require>4.9</require>
       <shipped>true</shipped>
+      <active>true</active>
       <standalone></standalone>
       <default_enable></default_enable>
       <types>
