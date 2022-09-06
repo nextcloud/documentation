@@ -91,7 +91,7 @@ The release process is identical to the one of a final release, only the version
 
 The updater channel defines if pre-releases are installed by the server. This setting can be found in the admin setting or in the ``config/config.php`` file. The server will install pre-releases if its update channel is set ``beta``, ``daily``, or ``git``. For all other settings, pre-releases will not be installed.
 
-.. tip:: Don't publish the pre-releases as nightly version on the app store or Nextcloud installations won't be able to update. Releasing with the suffix is sufficient to mark the release as not production ready and instances are still able to update to it.
+.. tip:: Don't publish the pre-releases as nightly version on the app store or Nextcloud installations won't be able to update. Releasing with any (alpha-numeric) suffix is sufficient to mark the release as not production ready and instances are still able to update to it.
 
 Nightly releases
 ~~~~~~~~~~~~~~~~
