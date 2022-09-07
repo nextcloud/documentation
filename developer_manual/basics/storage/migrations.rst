@@ -118,6 +118,33 @@ With this the old column gets removed.
           return $schema;
   }
 
+Construction of migration classes
+---------------------------------
+
+All migration classes are constructed via :ref:`dependency-injection`. So if your migration
+steps need additional dependencies, these can be defined in the constructor of your migration 
+class. 
+
+**Example:** If your migration needs to execute SQL statements, inject a `OCP\\IDBConnection`
+instance into your migration class like this:
+
+.. code-block:: php
+        
+   class Version2404Date20220903071748 extends SimpleMigrationStep {
+ 
+      /** @var IDBConnection */
+      private $db;
+
+      public function __construct(IDBConnection $db) {
+         $this->db = $db;
+      }
+      
+      public function postSchemaChange(IOutput $output, \Closure $schemaClosure, array $options) {
+         $query = $this->db->getQueryBuilder();
+         // execute some SQL ...
+      }
+   }
+
 .. _migration_console_command:
 
 Console commands
@@ -128,6 +155,9 @@ with migrations, which are only available if you are running your
 Nextcloud in debug mode:
 
 * `migrations:execute`: Executes a single migration version manually.
+  The version argument is the class name of the migration, while the 
+  postfix "Version" is skipped. For example if your migration was named
+  `Version2404Date20220903071748` the version would be `2404Date20220903071748`.
 * `migrations:generate`:
   This is needed to create a new migration file. This takes 2 arguments,
   first one is the `appid`, the second one should be the `version`of your
