@@ -33,7 +33,7 @@ If you get a result, the module is present.
 
 Required:
 
-* PHP (see :doc:`system_requrements` for a list of supported versions)
+* PHP (see :doc:`./system_requirements.rst` for a list of supported versions)
 * PHP module ctype
 * PHP module curl
 * PHP module dom
