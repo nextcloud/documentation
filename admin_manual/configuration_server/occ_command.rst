@@ -1279,6 +1279,7 @@ when none are specified::
 
  versions
   versions:cleanup   Delete versions
+  versions:expire    Expires the users file versions
 
 This example deletes all versions for all users::
 
