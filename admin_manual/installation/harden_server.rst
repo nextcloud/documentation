@@ -299,3 +299,82 @@ running::
   fail2ban-client status nextcloud
 
 .. _fail2ban download page: https://www.fail2ban.org/wiki/index.php/Downloads
+
+CrowdSec
+^^^^^^^^
+
+Following Ibracorp's and CrowdSec's documentation at https://docs.ibracorp.io/crowdsec/crowdsec/unraid/traefik-bouncer/nextcloud-collection and https://hub.crowdsec.net/author/crowdsecurity/collections/nextcloud.
+
+The following captured from https://docs.crowdsec.net/docs/getting_started/install_crowdsec
+
+CrowdSec can be used with, or replace Fail2ban with the following.
+Install CrowdSec (Linux)
+
+For those that prefer hands-on approach, you can as well manually install crowdsec.
+Install our repositories#
+
+Installing our repositories allows you to access the latest packages of CrowdSec and bouncers.
+info
+
+We are using packagecloud.io service. While curl | sudo bash can be convenient for some, alternative installation methods are available.
+
+    Debian/Ubuntu
+    EL/Centos7
+    EL/Centos Stream 8
+    Amzn Linux 2
+    OpenWRT
+    CloudLinux
+
+curl -s https://packagecloud.io/install/repositories/crowdsec/crowdsec/script.deb.sh | sudo bash
+
+Install CrowdSec#
+
+    Debian/Ubuntu
+    EL/Centos7
+    EL/Centos Stream 8
+    Amzn Linux 2
+    OpenWRT
+    CloudLinux
+
+apt install crowdsec
+
+You now have CrowdSec running ! You can move forward and install a bouncer, or take a tour of the software beforehand !
+
+Directories:
+
+    The application lives in the folder \etc\crowdsec using less than 0.5 MBytes of storage.
+    The data is stored in the folder \lib\crowdsec\data and needs around 97 MBytes of storage.
+
+caution
+
+Keep in mind that a CrowdSec package is only in charge of the "detection", and won't block anything on its own. You need to deploy a bouncer to "apply" decisions.
+Install a bouncer#
+
+    Debian/Ubuntu
+    EL/Fedora/Centos7
+    EL/Fedora/Centos8
+    Amzn Linux 2
+    OpenWRT
+    CloudLinux
+
+apt install crowdsec-firewall-bouncer-iptables
+
+info
+
+While we're suggesting the most common firewall bouncer, check our hub for more of them. Find a bouncer directly for your application (nginx, php, wordpress) or your providers (cloudflare, AWS/GCP/...)
+Running CrowdSec on raspberry pi os/raspbian#
+
+Please keep in mind that raspberry pi OS is designed to work on all raspberry pi versions. Even if the port target is known as armhf, it's not exactly the same target as the debian named armhf port.
+
+The best way to have a CrowdSec version for such an architecture is to do:
+
+    install golang (all versions from 1.16 will do)
+    export GOARCH=arm
+    export CGO=1
+    Update the GOARCH variable in the Makefile to arm
+    install the arm gcc cross compiler (On debian the package is gcc-arm-linux-gnueabihf)
+    Compile CrowdSec using the usual make command
+
+If using Docker, use Ibracorp's documentation at https://docs.ibracorp.io/crowdsec/crowdsec/unraid/traefik-bouncer/nextcloud-collection
+
+Futhermore, continue at CrowdSec's hub to implement the collection https://hub.crowdsec.net/author/crowdsecurity/collections/nextcloud
