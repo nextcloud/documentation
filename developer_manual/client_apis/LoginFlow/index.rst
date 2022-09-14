@@ -143,6 +143,7 @@ The program should directly start polling the poll endpoint:
 
         curl -X POST https://cloud.example.com/login/v2/poll -d "token=mQUYQdffOSAMJYtm8pVpkOsVqXt5hglnuSpO5EMbgJMNEPFGaiDe8OUjvrJ2WcYcBSLgqynu9jaPFvZHMl83ybMvp6aDIDARjTFIBpRWod6p32fL9LIpIStvc6k8Wrs1"
 
+The token will be valid for 20 minutes.
 This will return a 404 until authentication is done. Once a 200 is returned it is another json object.
 
 .. code-block:: json
