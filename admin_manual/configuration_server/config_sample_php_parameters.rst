@@ -1902,8 +1902,8 @@ of your php version. Then set the setting to true.
 Nextcloud uses the Argon2 algorithm (with PHP >= 7.2) to create hashes by its
 own and exposes its configuration options as following. More information can
 be found at: https://www.php.net/manual/en/function.password-hash.php
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+----
 
 ::
 
