@@ -1857,6 +1857,16 @@ Set to false to prevent users from setting a custom share_folder
 
 ::
 
+	'share_folder' => '/',
+
+Define a default folder for shared files and folders other than root.
+
+Changes to this value will only have effect on new shares.
+
+Defaults to ``/``
+
+::
+
 	'sharing.enable_share_mail' => true,
 
 Set to false to stop sending a mail when users receive a share
@@ -2068,16 +2078,6 @@ with this name. ``.htaccess`` is blocked by default.
 WARNING: USE THIS ONLY IF YOU KNOW WHAT YOU ARE DOING.
 
 Defaults to ``array('.htaccess')``
-
-::
-
-	'share_folder' => '/',
-
-Define a default folder for shared files and folders other than root.
-
-Changes to this value will only have effect on new shares.
-
-Defaults to ``/``
 
 ::
 
