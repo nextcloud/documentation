@@ -800,7 +800,7 @@ The app allows for two settings, a minimum time for trash bin retention,
 and a maximum time for trash bin retention.
 
 Minimum time is the number of days a file will be kept, after which it
-_may be_ deleted. A file may be deleted after the minimum number of days
+*may be* deleted. A file may be deleted after the minimum number of days
 is expired if space is needed. The file will not be deleted if space is
 not needed.
 
@@ -812,8 +812,8 @@ Whether "space is needed" depends on whether a user quota is defined or not:
  * If a user quota is defined, 50% of the user's remaining quota space sets
    the limit for the trashbin.
 
-Maximum time is the number of days at which it is _guaranteed
-to be_ deleted. There is no further dependency on the available space.
+Maximum time is the number of days at which it is *guaranteed
+to be* deleted. There is no further dependency on the available space.
 
 Both minimum and maximum times can be set together to explicitly define
 file and folder deletion. For migration purposes, this setting is installed
@@ -2536,9 +2536,12 @@ default values, which are in OC\\Accounts\\AccountManager
 
 For instance, if the phone property should default to the private scope
 instead of the local one:
-[
-  \\OCP\\Accounts\\IAccountManager::PROPERTY_PHONE => \\OCP\\Accounts\\IAccountManager::SCOPE_PRIVATE
-]
+
+::
+
+	[
+	  \\OCP\\Accounts\\IAccountManager::PROPERTY_PHONE => \\OCP\\Accounts\\IAccountManager::SCOPE_PRIVATE
+	]
 
 ::
 
