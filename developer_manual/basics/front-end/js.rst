@@ -149,3 +149,21 @@ function
 
 Now state will contain the provided state which you can use as any variable. It
 is as simple as that.
+
+
+Keyboard shortcuts
+------------------
+
+In case you want to improve your user experience with keyboard shortcuts, make sure
+to not overwrite browser, operating system and other Nextcloud wide shortcuts.
+Also there is an accessibility setting for users to opt-out of **any** keyboard shortcuts
+Nextcloud wide. You can check the setting with the following function which returns a boolean
+(available in Nextcloud 25 and later):
+
+.. code-block:: js
+
+    OCP.Accessibility.disableKeyboardShortcuts();
+
+If that is the case, no additional shortcuts shall be registered by any app. Only space
+to toggle checkboxes and enter to submit the currently active buttons or links are okay,
+as any other shortcut might interfere with screenreaders and other accessibility tools.
