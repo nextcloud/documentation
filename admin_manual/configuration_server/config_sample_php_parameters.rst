@@ -2162,6 +2162,15 @@ Defaults to ``0022``
 
 ::
 
+	'localstorage.unlink_on_truncate' => false,
+
+This options allows storage systems that don't allow to modify existing files
+to overcome this limitation by removing the files before overwriting.
+
+Defaults to ``false``
+
+::
+
 	'quota_include_external_storage' => false,
 
 EXPERIMENTAL: option whether to include external storage in quota
