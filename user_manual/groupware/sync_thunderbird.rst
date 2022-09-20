@@ -2,7 +2,7 @@
 Synchronizing with Thunderbird
 ==============================
 
-`Thunderbird <https://www.thunderbird.net>`_ is a feature-rich and mature mail client that can be turned into a full-fledged PIM. Since version 102, it supports address book synchronisation via CardDAV and automatical discovering calendars and address books available on the server.
+`Thunderbird <https://www.thunderbird.net>`_ is a feature-rich and mature mail client that can be turned into a full-fledged PIM. Since version 102, it supports address book synchronisation via CardDAV and automatic discovering calendars and address books available on the server.
  
 
 Recommended method
