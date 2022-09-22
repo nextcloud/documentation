@@ -14,8 +14,9 @@ For best performance, stability and functionality we have documented some recomm
 +------------------+-----------------------------------------------------------------------+
 | Platform         | Options                                                               |
 +==================+=======================================================================+
-| Operating System | - **Ubuntu 20.04 LTS** (recommended)                                  |
-| (64bit)          | - **Red Hat Enterprise Linux 8** (recommended)                        |
+| Operating System | - **Ubuntu 22.04 LTS** (recommended)                                  |
+| (64bit)          | - Ubuntu 20.04 LTS                                                    |
+|                  | - **Red Hat Enterprise Linux 8** (recommended)                        |
 |                  | - Debian 10 (Buster)                                                  |
 |                  | - SUSE Linux Enterprise Server 15                                     |
 |                  | - openSUSE Leap 42.1+                                                 |
@@ -30,8 +31,8 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - nginx with ``php-fpm``                                              |
 +------------------+-----------------------------------------------------------------------+
 | PHP Runtime      | - 7.4                                                                 |
-|                  | - **8.0** (*recommended*)                                             |
-|                  | - 8.1                                                                 |
+|                  | - 8.0                                                                 |
+|                  | - **8.1** (*recommended*)                                             |
 +------------------+-----------------------------------------------------------------------+
 
 See :doc:`source_installation` for minimum PHP-modules and additional software for installing Nextcloud.
