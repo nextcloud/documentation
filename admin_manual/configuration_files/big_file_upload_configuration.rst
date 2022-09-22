@@ -65,6 +65,7 @@ Apache
 ^^^^^^
 * `LimitRequestBody <https://httpd.apache.org/docs/current/en/mod/core.html#limitrequestbody>`_
 * `SSLRenegBufferSize <https://httpd.apache.org/docs/current/mod/mod_ssl.html#sslrenegbuffersize>`_
+* `Timeout <https://httpd.apache.org/docs/current/mod/core.html#timeout>`_
 
 Apache with mod_fcgid
 ^^^^^^^^^^^^^^^^^^^^^
@@ -78,6 +79,10 @@ Apache with mod_fcgid
    
    Setting ``FcgidMaxRequestInMem`` significantly higher than normal may no longer be
    necessary, once bug #51747 is fixed.
+
+Apache with mod_proxy_fcgi
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+* `ProxyTimeout <https://httpd.apache.org/docs/current/mod/mod_proxy.html#proxytimeout>`_
 
 nginx
 ^^^^^
