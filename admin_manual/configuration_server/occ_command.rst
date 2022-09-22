@@ -741,12 +741,34 @@ entries that have no matching entries in the storage table.
 Transfer
 ^^^^^^^^
 
+The command ``occ files:transfer-ownership`` can be used to transfer files from one user to another::
+
+ Usage:
+   files:transfer-ownership [options] [--] <source-user> <destination-user>
+ 
+ Arguments:
+   source-user                                                owner of files which shall be moved
+   destination-user                                           user who will be the new owner of the files
+ 
+ Options:
+       --path=PATH                                            selectively provide the path to transfer. For example --path="folder_name" [default: ""]
+       --move                                                 move data from source user to root directory of destination user, which must be empty
+       --transfer-incoming-shares[=TRANSFER-INCOMING-SHARES]  transfer incoming user file shares to destination user. Usage: --transfer-incoming-shares=1 (value required) [default: "2"]
+
 You may transfer all files and shares from one user to another. This is useful
 before removing a user::
 
  sudo -u www-data php occ files:transfer-ownership <source-user> <destination-user>
 
-It is also possible to transfer only one directory along with it's contents. This can be useful to restructure your organization or quotas. The ``--path`` argument is given as the path to the directory as seen from the source user::
+The transferred files will appear inside a new sub-directory in the destination user's home.
+
+If the destination user has no files at all (empty home), it is possible to also transfer all the source user's files by passing ``--move``::
+
+ sudo -u www-data php occ files:transfer-ownership --move <source-user> <destination-user>
+
+In this case no sub-directory is created and all files will appear directly in the root of the user's home.
+
+It is also possible to transfer only one directory along with its contents. This can be useful to restructure your organization or quotas. The ``--path`` argument is given as the path to the directory as seen from the source user::
 
  sudo -u www-data php occ files:transfer-ownership --path="path_to_dir" <source-user> <destination-user>
 
