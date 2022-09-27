@@ -32,7 +32,7 @@ To enable it:
 Same thing here, if you lately want to add more calendar just redo the procedure.
 
 
-TBSync method
+Alternative: using the TbSync addon
 -------------
 
 For this method, you need to have two add-ons installed:
