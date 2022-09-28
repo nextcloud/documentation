@@ -301,20 +301,29 @@ running::
 .. _fail2ban download page: https://www.fail2ban.org/wiki/index.php/Downloads
 
 CrowdSec
-^^^^^^^^
+--------
 
-Following Ibracorp's and CrowdSec's documentation at https://docs.ibracorp.io/crowdsec/crowdsec/unraid/traefik-bouncer/nextcloud-collection and https://hub.crowdsec.net/author/crowdsecurity/collections/nextcloud.
+CrowdSec offers a crowd-based cybersecurity suite, designed to protect your online services, a dashboard to visualize & act upon threats and a TIP (Threat Intel Platform) to block IP known to carry aggressions.
 
-The following captured from https://docs.crowdsec.net/docs/getting_started/install_crowdsec
+CrowdSec is an open-source and collaborative security stack leveraging the crowd power. Analyze behaviors, respond to attacks & share signals across the community.
+    
+Setup CrowdSec
+^^^^^^^^^^^^^^
+
+Following Ibracorp's and CrowdSec's documentation at ``https://docs.ibracorp.io/crowdsec/crowdsec/unraid/traefik-bouncer/nextcloud-collection`` and ``https://hub.crowdsec.net/author/crowdsecurity/collections/nextcloud``.
+
+The following captured from ``https://docs.crowdsec.net/docs/getting_started/install_crowdsec``
 
 CrowdSec can be used with, or replace Fail2ban with the following.
+
 Install CrowdSec (Linux)
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For those that prefer hands-on approach, you can as well manually install crowdsec.
-Install our repositories#
+
+Install repositories
 
 Installing our repositories allows you to access the latest packages of CrowdSec and bouncers.
-info
 
 We are using packagecloud.io service. While curl | sudo bash can be convenient for some, alternative installation methods are available.
 
@@ -325,9 +334,9 @@ We are using packagecloud.io service. While curl | sudo bash can be convenient f
     OpenWRT
     CloudLinux
 
-curl -s https://packagecloud.io/install/repositories/crowdsec/crowdsec/script.deb.sh | sudo bash
+``curl -s https://packagecloud.io/install/repositories/crowdsec/crowdsec/script.deb.sh | sudo bash``
 
-Install CrowdSec#
+Install CrowdSec
 
     Debian/Ubuntu
     EL/Centos7
@@ -336,7 +345,7 @@ Install CrowdSec#
     OpenWRT
     CloudLinux
 
-apt install crowdsec
+``apt install crowdsec``
 
 You now have CrowdSec running ! You can move forward and install a bouncer, or take a tour of the software beforehand !
 
@@ -345,10 +354,10 @@ Directories:
     The application lives in the folder \etc\crowdsec using less than 0.5 MBytes of storage.
     The data is stored in the folder \lib\crowdsec\data and needs around 97 MBytes of storage.
 
-caution
-
 Keep in mind that a CrowdSec package is only in charge of the "detection", and won't block anything on its own. You need to deploy a bouncer to "apply" decisions.
-Install a bouncer#
+
+Install a bouncer
+^^^^^^^^^^^^^^^^^^
 
     Debian/Ubuntu
     EL/Fedora/Centos7
@@ -357,12 +366,12 @@ Install a bouncer#
     OpenWRT
     CloudLinux
 
-apt install crowdsec-firewall-bouncer-iptables
-
-info
+``apt install crowdsec-firewall-bouncer-iptables``
 
 While we're suggesting the most common firewall bouncer, check our hub for more of them. Find a bouncer directly for your application (nginx, php, wordpress) or your providers (cloudflare, AWS/GCP/...)
-Running CrowdSec on raspberry pi os/raspbian#
+
+Running CrowdSec on raspberry pi os/raspbian
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Please keep in mind that raspberry pi OS is designed to work on all raspberry pi versions. Even if the port target is known as armhf, it's not exactly the same target as the debian named armhf port.
 
@@ -375,6 +384,66 @@ The best way to have a CrowdSec version for such an architecture is to do:
     install the arm gcc cross compiler (On debian the package is gcc-arm-linux-gnueabihf)
     Compile CrowdSec using the usual make command
 
-If using Docker, use Ibracorp's documentation at https://docs.ibracorp.io/crowdsec/crowdsec/unraid/traefik-bouncer/nextcloud-collection
+``hhttps://docs.ibracorp.io/crowdsec/crowdsec/docker-compose``
+Docker CrowdSec Install
+^^^^^^^^^^^^^^^^^^^^^^^
 
-Futhermore, continue at CrowdSec's hub to implement the collection https://hub.crowdsec.net/author/crowdsecurity/collections/nextcloud
+Create CrowdSec shared log folder
+``sudo mkdir /var/log/crowdsec; sudo chown -R $USER:$USER /var/log/crowdsec``
+Create the CrowdSec appdata folder
+``sudo mkdir /opt/appdata/crowdsec``
+Create docker-compose.yml
+``version: "3.4"
+
+services:
+  crowdsec:
+    image: crowdsecurity/crowdsec
+    container_name: crowdsec
+    expose:
+      - 8080
+    environment:
+      PGID: "1000"
+    volumes:
+      - /opt/appdata/crowdsec/data:/var/lib/crowdsec/data
+      - /opt/appdata/crowdsec:/etc/crowdsec
+      - /var/log/auth.log:/var/log/auth.log:ro
+      - /var/log/crowdsec:/var/log/crowdsec:ro
+    restart: unless-stopped
+
+networks:
+  default:
+    external: true
+    name: proxy``
+    
+Start crowdsec
+``sudo docker-compose up -d``
+
+Docker Collection Install
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This assumes that you have CrowdSec Running, and now we are going to add the collection.
+     ^^^^^^^
+     
+Run a console command in your CrowdSec container
+``docker exec -it crowdsec sh`` ---- Replace ``crowdsec`` with your docker name
+
+``cscli collections install crowdsecurity/nextcloud``
+
+Map your nextcloud logs to crowdsec shared folder
+This assumes that you know how to enable logging, set your RP to allow real IP's in the logs and know how to troubleshoot.
+
+``/shared/crowdsec:/mnt/user/appdata/shared/crowdsec/``
+
+``docker-compose up -d nextcloud``
+
+Edit your acquis.yml file in your CrowdSec's appdata folder (appdata/crowdsec) to add these lines : (don't leave any empty spaces)
+
+---
+filenames:
+ - /var/log/crowdsec/nextcloud.log
+labels:
+  type: Nextcloud
+Now restart CrowdSec
+``docker-compose up -d crowdsec``
+
+Futhermore, continue at CrowdSec's hub to read about the collection ``https://hub.crowdsec.net/author/crowdsecurity/collections/nextcloud``
