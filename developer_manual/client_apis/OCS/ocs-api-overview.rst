@@ -25,7 +25,7 @@ User metadata
 
 Since: 11.0.2, 12.0.0
 
-This request returns the available metadata of a user. Admin users can see the information of all users, while a default user only can access it's own metadata.
+This request returns the available metadata of a user. Admin users can see the information of all users, while a default user only can access their own metadata.
 
 .. code::
 
