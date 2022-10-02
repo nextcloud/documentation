@@ -2,11 +2,38 @@
 Synchronizing with Thunderbird
 ==============================
 
-`Thunderbird <https://www.thunderbird.net>`_ is a feature-rich and mature mail client that can be turned into a full-fledged PIM. However, it lacks support  for address book synchronisation via CardDAV and it also lacks the ability to automatically discover calendars and address books available on the server. Therefore, to synchronise with Nextcloud, add-ons are required, which can be easily installed through Thunderbird's add-on manager.
+`Thunderbird <https://www.thunderbird.net>`_ is a feature-rich and mature mail client that can be turned into a full-fledged PIM. Since version 102, it supports address book synchronisation via CardDAV and automatic discovering calendars and address books available on the server.
  
 
 Recommended method
 ------------------
+
+Since Thunderbird 102, there is a native support for CardDAV protocol.
+
+To enable it:
+
+* On the address book view, click the down arrow near "**New Address Book**" and choose "**Add CardDAV Address Book**".
+* In the next window, type your **user name** and **URL of your server**.
+* The next window will ask your username and password for this account.
+* The previous window will be refreshed and ask you which address books you wish to sync.
+* Choose and then click **Continue**.
+
+If you later add a new Address Book you can redo all of those steps and only the books not already synchronized will be suggested.
+
+For calendars there is too a native support of CalDAV.
+
+To enable it:
+
+* Click on "**+**" near Agendas on the agendas page.
+* Choose "**On the network**" on the next window.
+* Type you "**user name**" and "**Url of the server**" and click on "Find Calendars".
+* Choose which agendas you want to add and click "**Subscribe**"
+
+Same thing here, if you lately want to add more calendar just redo the procedure.
+
+
+Alternative: using the TbSync addon
+-------------
 
 For this method, you need to have two add-ons installed:
 
