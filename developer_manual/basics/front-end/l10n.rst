@@ -251,14 +251,14 @@ To setup the transifex sync within the Nextcloud community you need to add first
 transifex config to your app folder at :file:`.tx/config` (please replace **MYAPP** with your apps id)::
 
     [main]
-    host = https://www.transifex.com
-    lang_map = bg_BG: bg, cs_CZ: cs, fi_FI: fi, hu_HU: hu, nb_NO: nb, sk_SK: sk, th_TH: th, ja_JP: ja
+    host     = https://www.transifex.com
+    lang_map = th_TH: th, ja_JP: ja, bg_BG: bg, cs_CZ: cs, fi_FI: fi, hu_HU: hu, nb_NO: nb, sk_SK: sk
 
-    [nextcloud.MYAPP]
+    [o:nextcloud:p:nextcloud:r:MYAPP]
     file_filter = translationfiles/<lang>/MYAPP.po
     source_file = translationfiles/templates/MYAPP.pot
     source_lang = en
-    type = PO
+    type        = PO
 
 Then create a folder :file:`l10n` and a file :file:`l10n/.gitkeep` to create an
 empty folder which later holds the translations.
