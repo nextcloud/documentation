@@ -23,7 +23,7 @@ to get into the code and note our :doc:`../../prologue/index`.
 
 For authentication, you can use our usual login flow, and in addition (or instead
 if you are OK for users to depend on our Files app) use the great
-`Android SingeSignOn library <https://github.com/nextcloud/Android-SingleSignOn/#how-to-use-this-library>`_
+`Android SingleSignOn library <https://github.com/nextcloud/Android-SingleSignOn/#how-to-use-this-library>`_
 
 Nextcloud Android library
 -------------------------
