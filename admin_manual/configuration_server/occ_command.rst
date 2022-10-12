@@ -40,6 +40,7 @@ occ command Directory
 * :ref:`command_line_upgrade_label`
 * :ref:`two_factor_auth_label`
 * :ref:`disable_user_label`
+* :ref:`system_tags_commands_label`
 * `Debugging`_
 
 .. _http_user_label:
@@ -1484,6 +1485,43 @@ Use the following command to enable the user again::
  sudo -u www-data php occ user:enable <username>
 
 Note that once users are disabled, their connected browsers will be disconnected.
+
+
+.. _system_tags_commands_label:
+
+System Tags
+-----------
+
+List tags::
+
+  sudo -u www-data php occ tag:list
+
+Add a tag::
+
+  sudo -u www-data php occ tag:add <name> <access>
+
+Edit a tag::
+
+  sudo -u www-data php occ tag:edit --name <name> --access <access> <id>
+
+`--name` and `--access` are optional. 
+
+Delete a tag::
+
+  sudo -u www-data php occ tag:delete <id>
+
+Access level
+
+========== ======== ==========
+Level      Visible¹ Assignable²    
+========== ======== ==========
+public     Yes      Yes
+restricted Yes      No
+invisible  No       No
+========== ======== ==========
+
+| ¹ User can see the tag
+| ² User can assign the tag to a file 
 
 .. _occ_debugging:
 
