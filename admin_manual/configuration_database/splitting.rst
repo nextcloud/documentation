@@ -51,8 +51,8 @@ in case of the activity app these are:
     5. ``occ db:add-missing-primary-keys``
 
 3. Specify the desired configuration values
-3. Copy the 2 tables to the new database
-4. Disable maintenance mode
+4. Copy the 2 tables to the new database
+5. Disable maintenance mode
 
 Migrations on updates
 ---------------------
