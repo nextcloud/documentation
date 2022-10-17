@@ -79,13 +79,13 @@ of our mobile apps.
 Files App
 ^^^^^^^^^
 
-- **iOS** 12.1+
+- **iOS** 14.0+
 - **Android** 6.0+
 
 Talk App
 ^^^^^^^^
 
-- **iOS** 12.0+
+- **iOS** 14.0+
 - **Android** 5.0+
 - **Nextcloud Server** 14.0+
 - **Nextcloud Talk** 4.0+
