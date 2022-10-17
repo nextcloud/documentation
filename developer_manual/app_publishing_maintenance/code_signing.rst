@@ -120,7 +120,7 @@ examples will assume that you are trying to sign an application named
 
 1. Generate a private key and CSR: ``openssl req -nodes -newkey rsa:4096 -keyout contacts.key -out contacts.csr -subj "/CN=contacts"``. Replace "contacts" with your application identifier.
 2. Post the CSR at https://github.com/nextcloud/app-certificate-requests, in a
-   new pull request whith the link of a public repository with the code of your
+   new pull request with the link of a public repository with the code of your
    app. Make sure to keep the private key file (``contacts.key``) secret and
    not disclose it to any third parties.
 3. Nextcloud will provide you with the signed certificate.
