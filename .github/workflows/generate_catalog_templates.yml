@@ -31,7 +31,7 @@ jobs:
         MERGE_RETRIES: 10
         MERGE_RETRY_SLEEP: 60000
         PULL_REQUEST: ${{ github.event.inputs.pull-request-number }}
-    - uses: hmarr/auto-approve-action@v2.2.1
+    - uses: hmarr/auto-approve-action@v3.0.0
       if: steps.cpr.outputs.pull-request-operation == 'created'
       with:
         github-token: "${{ secrets.GITHUB_TOKEN }}"
