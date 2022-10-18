@@ -12,12 +12,12 @@ After installing the Retention app as described in :doc:`../apps_management`
 navigate to the configuration and locate the Workflow settings.
 
     .. figure:: images/retention_sample.png
-       :alt: Sample rule to delete files after 14 days.
+       :alt: Sample rule to delete files after 14 days after creation.
 
-The rule from the example will delete all files tagged with ``Temporary file`` after 14 days.
+The rule from the example will delete all files tagged with ``Temporary file`` 14 days after the creation.
 
-While creating a rule you can use the "Notify users a day before retention will delete a file" option to
-make sure the the users will get a notification before a file gets deleted.
+You can also use the "Notify owner a day before a file is automatically deleted" option to
+make sure the file owner will get a notification before a file will be deleted.
 
 Common misconfigurations
 ------------------------
