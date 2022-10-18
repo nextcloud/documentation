@@ -30,8 +30,10 @@ Operations
 
 Operations are actions that users can configure to happen when specific events occur.
 
-An operation is a class implementing ISpecificOperation, IOperation or IComplexOperation. Specific operations can only act on one specific entity (e.g. a file), while normal operations can oact on all events. Complex operations do not listen on events but setup their own listener(s).
+An operation is a class implementing ISpecificOperation, IOperation or IComplexOperation. Specific operations can only act on one specific entity (e.g. a file), while normal operations can act on all events. Complex operations do not listen on events but setup their own listener(s).
 
+Your operation needs to implement ``validateOperation`` method, which will be called upon validating a flow configuration for your flow in the settings. The function must check that the configuration is correct and throw if that is not the case.
+Once your operation is configured by the user, its ``onEvent`` method will be called on any event it is configured for, even if the rules are not matching. So you need to use the ``$ruleMatcher`` parameter to loop through matching rules and check if there are any. For each match the 'operation' key in the array is what the user configured for this rule in the settings.
 
 Configuration Component
 =======================
