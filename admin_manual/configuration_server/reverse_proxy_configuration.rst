@@ -136,7 +136,20 @@ Caddy
 
         reverse_proxy {$NEXTCLOUD_HOST:localhost}
     }
+    
+Pomerium
+^^^^^^^^
+::
+    - from: https://subdomain.example.com
+      path: /.well-known/carddav
+      redirect:
+        path_redirect: /remote.php/dav/
+    - from: https://subdomain.example.com
+      path: /.well-known/caldav
+      redirect:
+        path_redirect: /remote.php/dav/
 
+Thanks to `@JeffMatson <https://github.com/JeffMatson>`_ for Pomerium example.
 
 Example
 -------
