@@ -673,20 +673,31 @@ search path. If not using ``--quiet``, statistics will be shown at the end of
 the scan::
 
  sudo -u www-data php occ files:scan --help
-   Usage:
-   files:scan [-p|--path="..."] [-q|--quiet] [-v|vv|vvv --verbose] [--all]
-   [user_id1] ... [user_idN]
+ Description:
+   rescan filesystem
+
+ Usage:
+   files:scan [options] [--] [<user_id>...]
 
  Arguments:
-   user_id               will rescan all files of the given user(s)
+   user_id                  will rescan all files of the given user(s)
 
  Options:
-   --path                limit rescan to the user/path given
-   --all                 will rescan all files of all known users
-   --quiet               suppress any output
-   --verbose             files and directories being processed are shown
-                         additionally during scanning
-   --unscanned           scan only previously unscanned files
+       --output[=OUTPUT]    Output format (plain, json or json_pretty, default is plain) [default: "plain"]
+   -p, --path=PATH          limit rescan to this path, eg. --path="/alice/files/Music", the user_id is determined by the path and the user_id parameter and --all are ignored
+       --generate-metadata  Generate metadata for all scanned files
+       --all                will rescan all files of all known users
+       --unscanned          only scan files which are marked as not fully scanned
+       --shallow            do not scan folders recursively
+       --home-only          only scan the home storage, ignoring any mounted external storage or share
+   -h, --help               Display help for the given command. When no command is given display help for the list command
+   -q, --quiet              Do not output any message
+   -V, --version            Display this application version
+       --ansi|--no-ansi     Force (or disable --no-ansi) ANSI output
+   -n, --no-interaction     Do not ask any interactive question
+       --no-warnings        Skip global warnings, show command output only
+   -v|vv|vvv, --verbose     Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+
 
 Verbosity levels of ``-vv`` or ``-vvv`` are automatically reset to ``-v``
 
@@ -1049,7 +1060,7 @@ Use these commands to manage server-wide SSL certificates or reset brute-force s
   security:certificates         list trusted certificates
   security:certificates:import  import trusted certificate
   security:certificates:remove  remove trusted certificate
-  
+
 Reset an IP::
 
  sudo -u www-data php occ security:bruteforce:reset [IP address]
