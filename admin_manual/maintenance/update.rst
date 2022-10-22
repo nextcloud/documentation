@@ -76,7 +76,7 @@ steps:
     a new update available. Go to the admin settings page and scroll to the
     section "Version". This section has a button to open the updater. This
     section as well as the update notification is only available if the update
-    notication app is enabled in the apps management.
+    notification app is enabled in the apps management.
 
 .. figure:: images/updater-1-update-available.png
 

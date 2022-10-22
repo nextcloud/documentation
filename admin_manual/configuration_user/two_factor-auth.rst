@@ -39,7 +39,7 @@ By default 2FA is *optional*, hence users are given the choice whether to enable
 it for their account. Admins may enforce the use of 2FA.
 
 
-Enforcement is possible systemwide (all users), for selected groups only and can
+Enforcement is possible system-wide (all users), for selected groups only and can
 also be excluded for certain groups.
 
 

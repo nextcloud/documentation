@@ -24,7 +24,7 @@ the new location. It is also assumed that the authentication method
 .. warning:: At NO TIME any changes to the **ORIGINAL** system are required
     **EXCEPT** putting Nextcloud into maintenance mode.
 
-    This ensures, should anything unforseen happen you can go
+    This ensures, should anything unforeseen happen you can go
     back to your existing installation and provide your users
     with a running Nextcloud while debugging the problem.
 
