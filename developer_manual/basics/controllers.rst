@@ -558,7 +558,7 @@ A file download can be triggered by returning a DownloadResponse:
 Creating custom responses
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If no premade Response fits the needed usecase, it is possible to extend the Response base class and custom Response. The only thing that needs to be implemented is the **render** method which returns the result as string.
+If no premade Response fits the needed use case, it is possible to extend the Response base class and custom Response. The only thing that needs to be implemented is the **render** method which returns the result as string.
 
 Creating a custom XMLResponse class could look like this:
 
@@ -716,7 +716,7 @@ In order to ease migration from OCS API routes to the App Framework, an addition
 
 The format parameter works out of the box, no intervention is required.
 
-In order to make routing work for OCS routes you need to add a seperate 'ocs' entry to the routing table of your app.
+In order to make routing work for OCS routes you need to add a separate 'ocs' entry to the routing table of your app.
 Inside these are normal routes.
 
 .. code-block:: php

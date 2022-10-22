@@ -4,7 +4,7 @@
 Bootstrapping
 =============
 
-Every php process has a relatively short lifespan that lasts as long as the HTTP request or the invokation of the command
+Every php process has a relatively short lifespan that lasts as long as the HTTP request or the invocation of the command
 line program. At the beginning of this lifespan, Nextcloud initializes its services. At the same time, any additional apps
 might want to register their services to Nextcloud as well. This event is called the *bootstrapping* and this chapter
 shall shed some light on how to hook into this with an app.
@@ -101,14 +101,14 @@ Nextcloud 20 and later
 
 Nextcloud 20 is the first release with the interface ``\OCP\AppFramework\Bootstrap\IBootstrap``. This interface can be
 implemented by your app's ``Application`` class to signal that it wants to act on the bootstrapping stages. The major difference
-between this and the old process is that the boostrapping is not performed in sequence, but apps register and boot
+between this and the old process is that the bootstrapping is not performed in sequence, but apps register and boot
 interleaved. This should ensure that an app that ``boot``\s can rely on all other apps' registration to be finished.
 
 The overall process is as follows:
 
 1) In each installed and enabled app that has an ``Application`` class that also implements ``IBootstrap``, the ``register``
    method will be called. This method receives a context argument via which the app can prime the dependency injection
-   container and register other services lazily, e.g. by calling ``$context->registerService(...)``. The emphasis is on **lazyness**. At this very early stage of the
+   container and register other services lazily, e.g. by calling ``$context->registerService(...)``. The emphasis is on **laziness**. At this very early stage of the
    process lifetime, no other apps nor all of the server components are ready. Therefore the app **must not** try to use
    anything except the API provided by the context. That shall ensure that all apps can safely run their registration logic
    before any services are queried (instantiated) from the DI container or related code is run.
@@ -123,7 +123,7 @@ Nextcloud 19 and older
 
 Nextcloud will load groups of certain apps early, like filesystem or session apps, and other later. For this their optional
 :ref:`app-php` will be included. The ``Application`` class is only queried for some requests, so there is no guarantee that
-its contstructor will be invoked.
+it's constructor will be invoked.
 
 
 .. _app-php:

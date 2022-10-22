@@ -30,7 +30,7 @@ The name should reflect the subject and the actions. Suffixing event classes wit
 
 For example, if a user is created, a `UserCreatedEvent` will be emitted.
 
-Events are ususally evmitted *after* the event has happened. If it's emitted before, it should be prefixed with `Before`.
+Events are usually evmitted *after* the event has happened. If it's emitted before, it should be prefixed with `Before`.
 
 Thus `BeforeUserCreatedEvent` is emitted *before* the user data is written to the database.
 
@@ -339,7 +339,7 @@ This event is triggered when a federated share is successfully added.
 
 *Available in Nextcloud 17 and later.*
 
-This event is triggered when the files app is rendered. It canb e used to add additional scripts to the files app.
+This event is triggered when the files app is rendered. It can be used to add additional scripts to the files app.
 
 ``\OCA\Files_Sharing\Event\BeforeTemplateRenderedEvent``
 ********************************************************
@@ -555,7 +555,7 @@ Emitted before a user is logged in via remember-me cookies.
 
 *Available in Nextcloud 18 and later.*
 
-Emitted when a user has been succesfully logged in via remember-me cookies.
+Emitted when a user has been successfully logged in via remember-me cookies.
 
 ``\OCP\User\Events\BeforePasswordUpdatedEvent``
 ***********************************************
@@ -681,7 +681,7 @@ Hooks are used to execute code before or after an event has occurred. This is fo
     $app = new Application();
     $app->getContainer()->query('UserHooks')->register();
 
-The hook logic should be in a separate class that is being registered in the `App contructor <dependency_injection.html#using-a-container>`__:
+The hook logic should be in a separate class that is being registered in the `App constructor <dependency_injection.html#using-a-container>`__:
 
 .. code-block:: php
 
