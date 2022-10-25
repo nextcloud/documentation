@@ -363,6 +363,19 @@ and return a "500 Internal Server Error". If the Nextcloud log contains an error
 Replace "userId" and the path accordingly.
 The command will do a test decryption for all files and automatically repair the ones with a signature error.
 
+Fair Use Policy
+---------------
+
+Nextcloud is open source and you can host it for free on your own instance.
+
+Nextcloud recommends against deploying an instance for more than 500 users without an Enterprise Subscription, because Nextcloud considers your instance with so many users mission-critical and we believe you and your users would have a better experience when the instance is officially supported by Nextcloud.
+
+Nextcloud Enterprise is pre-configured and optimized for the needs of professional organizations rather than home users. It comes with support, security and scaling benefits, compliance expertise, and access to other knowledge related to scaling, which guarantees the best experience for all and also reduces the load on the http://help.nextcloud.com forum about issues caused by wrong scaling.
+
+An additional consideration is technical. Nextcloud provides some infrastructure components for examples notification services and the app store. To ensure these resources do not get overloaded by administrators who run Nextcloud for hundreds of users without providing financial resources to Nextcloud in return, these components are limited and will not work for more than 500 users.
+
+We believe all organisations who run Nextcloud for hundreds of users should be officially supported. We have possibilities available for those organisations who lack the required financial resources. Examples are NGOs or small schools. Please reach out to talk about the possibilities through the `contact form on our site <https://nextcloud.com/contact/>`_.
+
 Other issues
 ------------
 
