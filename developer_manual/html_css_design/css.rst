@@ -65,7 +65,7 @@ This allows us to invert the colors of the SVGs when using the dark theme.
 More information about the :ref:`svg color api <svgcolorapi>`.
 
 
-The ``icon-black-white`` mixin is a shortand for the ``icon-color`` function but it generates two sets of icons with the suffix ``-white`` and without (default black).
+The ``icon-black-white`` mixin is a shorthand for the ``icon-color`` function but it generates two sets of icons with the suffix ``-white`` and without (default black).
 
 
 .. code-block:: scss

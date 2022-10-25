@@ -206,7 +206,7 @@ Deleting users
 
 Deleting a user is easy: hover your cursor over their name on the **Users** page
 until the "..."-menu icon appears at the far right. After clicking on it, you will
-see the **Delete** option. Clicking on it, delets a user with all their data immediately.
+see the **Delete** option. Clicking on it, deletes a user with all their data immediately.
 
 You'll see an undo button at the top of the page, which remains for some seconds.
 When the undo button is gone you cannot recover the deleted user.

@@ -88,4 +88,4 @@ If you'd like to override the value for one or several default visibility scopes
     \OCP\Accounts\IAccountManager::PROPERTY_ROLE => \OCP\Accounts\IAccountManager::SCOPE_FEDERATED
   ]
 
-In the above example, the phone and role properties are respectively overritten to the private and federated scopes. Note that these changes will only apply to *new* users, not existing ones.
+In the above example, the phone and role properties are respectively overwritten to the private and federated scopes. Note that these changes will only apply to *new* users, not existing ones.
