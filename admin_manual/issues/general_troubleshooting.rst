@@ -374,7 +374,7 @@ Nextcloud Enterprise is pre-configured and optimized for the needs of profession
 
 An additional consideration is technical. Nextcloud provides some infrastructure components for examples notification services and the app store. To ensure these resources do not get overloaded by administrators who run Nextcloud for hundreds of users without providing financial resources to Nextcloud in return, these components are limited and will not work for more than 500 users.
 
-We believe all organisations who run Nextcloud for hundreds of users should be officially supported. We have possibilities available for those organisations who lack the required financial resources. Examples are NGOs or small schools. Please reach out to talk about the possibilities through the contact form on our site.
+We believe all organisations who run Nextcloud for hundreds of users should be officially supported. We have possibilities available for those organisations who lack the required financial resources. Examples are NGOs or small schools. Please reach out to talk about the possibilities through the `contact form on our site <https://nextcloud.com/contact/>`_.
 
 Other issues
 ------------
