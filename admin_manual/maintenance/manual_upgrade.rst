@@ -72,7 +72,7 @@ Always start by making a fresh backup and disabling all 3rd party apps.
     size of your installation. When it is finished you will see a success 
     message, or an error message that will tell where it went wrong.
 
-15. Reenable the nextcloud cron-job. (See step 4 above.)
+15. Re-enable the nextcloud cron-job. (See step 4 above.)
 
      crontab -u www-data -e
 

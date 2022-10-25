@@ -28,5 +28,5 @@ Cookies stored by Nextcloud
                        - remember token                       
 ====================  ====================================  ================
 
-The same-site cookies are used to determine how a request reaches the Nextcloud server. We use them to prevent CSRF attacks. No identifable information is stored in those.
+The same-site cookies are used to determine how a request reaches the Nextcloud server. We use them to prevent CSRF attacks. No identifiable information is stored in those.
 The rest of the cookies are strictly used to identify the user to the system.
