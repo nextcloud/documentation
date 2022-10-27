@@ -184,8 +184,8 @@ PostgreSQL database
 
 In order to run Nextcloud securely on PostgreSQL, it is assumed that only 
 Nextcloud uses this database and thus only one user accesses the database.
-For further services and users, please create a separate database. 
-(Install a separate PostgreSQL instance.)
+For further services and users, we recommend to create a separate
+database or PostgreSQL instance.
 
 If you decide to use a PostgreSQL database make sure that you have installed
 and enabled the PostgreSQL extension in PHP. The PHP configuration in :file:`/etc/php7/conf.d/pgsql.ini` could look
