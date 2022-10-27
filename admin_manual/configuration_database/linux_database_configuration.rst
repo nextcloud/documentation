@@ -182,6 +182,11 @@ Adjust the paths to the pem files for your environment.
 PostgreSQL database
 ^^^^^^^^^^^^^^^^^^^
 
+In order to run Nextcloud securely on PostgreSQL, it is assumed that only 
+Nextcloud uses this database and thus only one user accesses the database.
+For further services and users, we recommend to create a separate
+database or PostgreSQL instance.
+
 If you decide to use a PostgreSQL database make sure that you have installed
 and enabled the PostgreSQL extension in PHP. The PHP configuration in :file:`/etc/php7/conf.d/pgsql.ini` could look
 like this:
@@ -210,7 +215,8 @@ Then a **template1=#** prompt will appear. Now enter the following lines and con
 ::
 
   CREATE USER username CREATEDB;
-  CREATE DATABASE nextcloud OWNER username;
+  CREATE DATABASE nextcloud OWNER username TEMPLATE template0 ENCODING 'UTF8';
+  GRANT CREATE ON SCHEMA public TO username;
 
 You can quit the prompt by entering::
 
@@ -248,10 +254,11 @@ Then a **postgres=#** prompt will appear. Now enter the following lines and conf
 
 ::
 
-  CREATE USER username WITH PASSWORD 'password';
-  CREATE DATABASE nextcloud TEMPLATE template0 ENCODING 'UNICODE';
+  CREATE USER username WITH PASSWORD 'password' CREATEDB;
+  CREATE DATABASE nextcloud TEMPLATE template0 ENCODING 'UTF8';
   ALTER DATABASE nextcloud OWNER TO username;
   GRANT ALL PRIVILEGES ON DATABASE nextcloud TO username;
+  GRANT ALL PRIVILEGES ON SCHEMA public TO username;
 
 You can quit the prompt by entering::
 
