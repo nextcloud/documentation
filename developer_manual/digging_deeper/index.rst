@@ -11,6 +11,7 @@ Digging deeper
    classloader
    continuous_integration
    flow
+   http_client
    javascript-apis
    npm
    notifications
