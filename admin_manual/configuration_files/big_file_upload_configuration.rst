@@ -14,7 +14,7 @@ hard limits that cannot be exceeded:
 filesystem.
 
 .. note:: The Nextcloud sync client is not affected by these upload limits
-   as it is uploading files in smaller chunks. See `Client documentation <https://docs.nextcloud.com/desktop/3.0/advancedusage.html>`_
+   as it is uploading files in smaller chunks. See `Client documentation <https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/index.html>`_
    for more information on configuration options.
 
 System configuration
