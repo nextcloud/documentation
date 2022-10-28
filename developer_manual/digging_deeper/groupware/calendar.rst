@@ -159,7 +159,13 @@ Calendars that only return `ICalendar` are implicitly read-only. If your app's c
             // Write data to your calendar representation
         }
 
+        public function handleIMipMessage(string $name, string $calendarData): void {
+            // Validation and write to your calendar representation
+        }
+
     }
+
+You must implement the ``handleIMipMessage`` method if your calendar is writable. You can find more infomation on the conditions that have to be fulfilled for iMIP data to be processed in the `RFC <https://www.rfc-editor.org/rfc/rfc6047>`_
 
 Resources
 ---------
