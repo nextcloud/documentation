@@ -366,15 +366,17 @@ The command will do a test decryption for all files and automatically repair the
 Fair Use Policy
 ---------------
 
-Nextcloud is open source and you can host it for free on your own instance.
+Nextcloud is open source and you can host it for free on your own server or at a provider.
 
-Nextcloud recommends against deploying an instance for more than 500 users without an Enterprise Subscription, because Nextcloud considers your instance with so many users mission-critical and we believe you and your users would have a better experience when the instance is officially supported by Nextcloud.
+Nextcloud recommends Using Nextcloud Enterprise for deploying instances with more than 500. With that size, issues like a broken server or a data leak become very serious.
 
-Nextcloud Enterprise is pre-configured and optimized for the needs of professional organizations rather than home users. It comes with support, security and scaling benefits, compliance expertise, and access to other knowledge related to scaling, which guarantees the best experience for all and also reduces the load on the http://help.nextcloud.com forum about issues caused by wrong scaling.
+If there is an issue with the server, 500 people can't work. A data leak would risk the data of many users. In short, the server should be considered mission-critical. We believe you and your users would have a better experience with Nextcloud Enterprise.
 
-An additional consideration is technical. Nextcloud provides some infrastructure components for examples notification services and the app store. To ensure these resources do not get overloaded by administrators who run Nextcloud for hundreds of users without providing financial resources to Nextcloud in return, these components are limited and will not work for more than 500 users.
+Nextcloud Enterprise is pre-configured and optimised for the needs of professional organisations rather than home users. It comes with support, security and scaling benefits, compliance expertise, and access to our knowledge about running a successful Nextcloud, to get the best possible experience for users and admins. This also reduces the load on our home user forum http://help.nextcloud.com from issues unique to big deployments.
 
-We believe all organisations who run Nextcloud for hundreds of users should be officially supported. We have possibilities available for those organisations who lack the required financial resources. Examples are NGOs or small schools. Please reach out to talk about the possibilities through the `contact form on our site <https://nextcloud.com/contact/>`_.
+Nextcloud provides some infrastructure components needed for Nextcloud servers to run reliably. This includes notification, our app store and more. To ensure these resources do not get overloaded by administrators who run Nextcloud for thousands of users without providing financial resources to Nextcloud in return, these components are limited and will not work for more than 500 users.
+
+We believe all organisations who run Nextcloud for hundreds of users should be officially supported. We know there can be financial restrictions for non-profit organisations and, as we want everybody to have a chance to get the most out of Nextcloud, we have special offers for NGOs, small schools and other non-profits. Please reach out to talk to us about what is possible through the `contact form on our site <https://nextcloud.com/contact/>`_ or ask your system administrator to reach out.
 
 Other issues
 ------------
