@@ -61,3 +61,15 @@ It's possible to adjust the defaults.
         [$alice, $bob],
         $broker->newConversationOptions()->setPublic()
     );
+
+Delete a conversation
+---------------------
+
+A conversation can be deleted by id (token).
+
+.. code-block:: php
+
+    <?php
+
+    /** @var \OCP\Talk\IBroker $broker */
+    $broker->deleteConversation('abc123');
