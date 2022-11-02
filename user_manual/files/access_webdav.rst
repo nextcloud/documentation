@@ -515,6 +515,40 @@ To get the properties of files in the root folder:
         </d:propstat>
       </d:response>
     </d:multistatus>
+    
+    
+    
+    
+Accessing files using WinSCP
+-------------------------------
+
+`WinSCP <https://winscp.net/eng/docs/introduction/>`_  is an open source free SFTP client, FTP client, WebDAV client, S3 client and SCP client for Windows. Its main function is file transfer between a local and a remote computer. Beyond this, WinSCP offers scripting and basic file manager functionality. 
+
+You can `download <https://winscp.net/eng/downloads.php/>`_ the portable version of WinSCP and run it on Linux through `Wine <https://wiki.winehq.org/Main_Page/>`_.
+
+To run WinSCP on Linux, download wine through your distribution's package manager, then run it via: wine WinSCP.exe.
+
+To connect to Nextcloud:
+
+* Start WinSCP
+* Press 'Session' in the menu
+* Press the 'New Session' menu option
+* Set the 'File protocol' dropdown to WebDAV
+* Set the 'Encryption' dropdown to TSL/SSL Implicit encryption
+* Fill in the hostname field: example.com
+* Fill in the username field: NEXTCLOUDUSERNAME
+* Fill in the password field: NEXTCLOUDPASSWORD
+* Press the 'Advanced...' button
+* Navigate to 'Environment', 'Directories' on the left side
+* Fill in the 'Remote directory' field with the following: /nextcloud/remote.php/dav/files/NEXTCLOUDUSERNAME/
+* Press the 'OK' button
+* Press the 'Save' button
+* Select the desired options and press the 'OK' button
+* Press the 'Login' button to connect to Nextcloud
+
+Note: at the time of writing (2022-11-02) WinSCP does not seem to understand Nextcloud `2fa <https://docs.nextcloud.com/server/latest/admin_manual/configuration_user/two_factor-auth.html/>`_, it will fail to connect with a 401 Unauthorized message.
+Workaround is to create a separate user without 2fa enabled.
+
 
 
 .. _KB2668751: https://web.archive.org/web/20211008025539/https://support.microsoft.com/en-us/topic/you-cannot-download-more-than-50-mb-or-upload-large-files-when-the-upload-takes-longer-than-30-minutes-using-web-client-in-windows-7-8709ae9d-e808-c5a0-95d0-9a7143c50b11
