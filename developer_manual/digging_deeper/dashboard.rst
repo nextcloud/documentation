@@ -147,9 +147,8 @@ however this method is deprecated and will be removed once Nextcloud 19 is EOL.
         }
     }
 
-++++++++++++++++++++++++++++++++
 The IConditionalWidget interface
-++++++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The IConditionalWidget interface adds the **isEnabled** method to provide the option for a widget to opt-out later.
 While registering the widget the information whether or not a widget should be displayed to the specific user might
@@ -203,9 +202,8 @@ those additional interfaces:
 * IOptionWidget to set additional options
 * IAPIWidget to actually provide the widget content (the item list)
 
-+++++++++++++++++++++++++++
 The IButtonWidget interface
-+++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 The IButtonWidget interface adds the **getWidgetButtons** method to provide a list of buttons
@@ -240,9 +238,8 @@ There are 3 types of buttons:
 		];
 	}
 
-+++++++++++++++++++++++++++
 The IIconWidget interface
-+++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The IIconWidget interface adds the **getIconUrl** method to provide the URL to the widget icon. In the following example
 it returns the URL to the img/app.svg file in your app.
@@ -255,9 +252,8 @@ it returns the URL to the img/app.svg file in your app.
 		);
 	}
 
-+++++++++++++++++++++++++++
 The IOptionWidget interface
-+++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The IOptionWidget interface adds the **getWidgetOptions** method to provide additional widget options. It returns
 a WidgetOptions object which only contains the **roundItemIcons** boolean value for now. This tells the clients if
@@ -269,9 +265,8 @@ the widget item icons should be rounded or kept as squares.
 		return new WidgetOptions(true);
 	}
 
-+++++++++++++++++++++++++++
 The IAPIWidget interface
-+++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you want your widget content to be accessible with the dashboard API for Nextcloud clients,
 it must implement the `OCP\\Dashboard\\IAPIWidget` interface rather than `OCP\\Dashboard\\IWidget`.
@@ -304,9 +299,8 @@ This interface contains an extra `getItems` method which returns an array of `OC
 * iconUrl: URL to a square icon (svg or jpg/png of at least 44x44px)
 * sinceId: Item ID or timestamp. The client will then send the latest known sinceId in next dashboard API request.
 
-+++++++++++
 Use the API
-+++++++++++
+^^^^^^^^^^^
 
 The list of enabled widgets can be requested like that:
 
