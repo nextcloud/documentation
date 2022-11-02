@@ -147,6 +147,21 @@ however this method is deprecated and will be removed once Nextcloud 19 is EOL.
         }
     }
 
+++++++++++++++++++++++++++++++++
+The IConditionalWidget interface
+++++++++++++++++++++++++++++++++
+
+The IConditionalWidget interface adds the **isEnabled** method to provide the option for a widget to opt-out later.
+While registering the widget the information whether or not a widget should be displayed to the specific user might
+not be available or to complex to calculate up front. In this case the IConditionalWidget allows you to check the
+conditions only when really needed.
+
+.. code-block:: php
+
+	public function isEnabled(): bool {
+		return false;
+	}
+
 
 Provide a user interface
 ------------------------
