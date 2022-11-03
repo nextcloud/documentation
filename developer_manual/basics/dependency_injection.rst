@@ -310,45 +310,52 @@ The following parameter names and type hints can be used to inject core services
 Parameters:
 
 * **AppName**: The app id
-* **WebRoot**: The path to the Nextcloud installation
 * **UserId**: The id of the current user
+* **WebRoot**: The path to the Nextcloud installation
+
+Aliases:
+* **appName**: resolves to ``AppName``
+* **Request**: resolves to ``\OCP\\IRequest``
+* **ServerContainer**: resolves to ``\OCP\IServerContainer``
+* **userId**: resolves to ``UserId``
+* **webRoot**: resolves to ``WebRoot``
 
 Types:
 
-* **OCP\\IAppConfig**
-* **OCP\\IAppManager**
-* **OCP\\IAvatarManager**
-* **OCP\\Activity\\IManager**
-* **OCP\\ICache**
-* **OCP\\ICacheFactory**
-* **OCP\\IConfig**
-* **OCP\\AppFramework\\Utility\\IControllerMethodReflector**
-* **OCP\\Contacts\\IManager**
-* **OCP\\IDateTimeZone**
-* **OCP\\IDBConnection**
-* **OCP\\Diagnostics\\IEventLogger**
-* **OCP\\Diagnostics\\IQueryLogger**
-* **OCP\\Files\\Config\\IMountProviderCollection**
-* **OCP\\Files\\IRootFolder**
-* **OCP\\IGroupManager**
-* **OCP\\IL10N**
-* **OCP\\ILogger**
-* **OCP\\BackgroundJob\\IJobList**
-* **OCP\\INavigationManager**
-* **OCP\\IPreview**
-* **OCP\\IRequest**
-* **OCP\\AppFramework\\Utility\\ITimeFactory**
-* **OCP\\ITagManager**
-* **OCP\\ITempManager**
-* **OCP\\Route\\IRouter**
-* **OCP\\ISearch**
-* **OCP\\ISearch**
-* **OCP\\Security\\ICrypto**
-* **OCP\\Security\\IHasher**
-* **OCP\\Security\\ISecureRandom**
-* **OCP\\IURLGenerator**
-* **OCP\\IUserManager**
-* **OCP\\IUserSession**
+* ``\OCP\IAppConfig``
+* ``\OCP\IAppManager``
+* ``\OCP\IAvatarManager``
+* ``\OCP\Activity\IManager``
+* ``\OCP\ICache``
+* ``\OCP\ICacheFactory``
+* ``\OCP\IConfig``
+* ``\OCP\AppFramework\Utility\IControllerMethodReflector``
+* ``\OCP\Contacts\IManager``
+* ``\OCP\IDateTimeZone``
+* ``\OCP\IDBConnection``
+* ``\OCP\Diagnostics\IEventLogger``
+* ``\OCP\Diagnostics\IQueryLogger``
+* ``\OCP\Files\Config\IMountProviderCollection``
+* ``\OCP\Files\IRootFolder``
+* ``\OCP\IGroupManager``
+* ``\OCP\IL10N``
+* ``\OCP\ILogger``
+* ``\OCP\BackgroundJob\IJobList``
+* ``\OCP\INavigationManager``
+* ``\OCP\IPreview``
+* ``\OCP\IRequest``
+* ``\OCP\AppFramework\Utility\ITimeFactory``
+* ``\OCP\ITagManager``
+* ``\OCP\ITempManager``
+* ``\OCP\Route\IRouter``
+* ``\OCP\ISearch``
+* ``\OCP\ISearch``
+* ``\OCP\Security\ICrypto``
+* ``\OCP\Security\IHasher``
+* ``\OCP\Security\ISecureRandom``
+* ``\OCP\IURLGenerator``
+* ``\OCP\IUserManager``
+* ``\OCP\IUserSession``
 
 How to enable it
 ^^^^^^^^^^^^^^^^
@@ -396,7 +403,7 @@ What not to inject:
 
 
 Accessing the container from anywhere
-------------------------------------
+-------------------------------------
 
 Sometimes it can be hard to inject some service inside legacy code, in these case
 you can use :code:`OCP\Server::get(MyService::class)`. This should only be used in
