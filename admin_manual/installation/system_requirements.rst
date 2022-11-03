@@ -15,7 +15,7 @@ For best performance, stability and functionality we have documented some recomm
 | Platform         | Options                                                               |
 +==================+=======================================================================+
 | Operating System | - **Ubuntu 22.04 LTS** (recommended)                                  |
-| (64bit)          | - Ubuntu 20.04 LTS                                                    |
+| (64-bit)         | - Ubuntu 20.04 LTS                                                    |
 |                  | - **Red Hat Enterprise Linux 8** (recommended)                        |
 |                  | - Debian 10 (Buster)                                                  |
 |                  | - SUSE Linux Enterprise Server 15                                     |
@@ -39,7 +39,7 @@ See :doc:`source_installation` for minimum PHP-modules and additional software f
 
 CPU Architecture and OS
 ^^^^^^^^^^^^^^^^^^^^^^^
-A 64bit CPU and 64bit OS is required for Nextcloud to run well.
+A 64-bit CPU and 64-bit OS is required for Nextcloud 26 and higher.
 
 Memory
 ^^^^^^
