@@ -30,7 +30,7 @@ The config that allows the app to set global, app and user settings can be injec
             $container->registerService('AuthorService', function(IServerContainer $c): AuthorService {
                 return new AuthorService(
                     $c->get(IConfig::class),
-                    $c->get('AppName')
+                    $c->get('appName')
                 );
             });
         }

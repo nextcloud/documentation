@@ -107,8 +107,8 @@ This route calls the controller **OCA\\notestutorial\\PageController->index()** 
 
     class PageController extends Controller {
 
-        public function __construct(string $AppName, IRequest $request){
-            parent::__construct($AppName, $request);
+        public function __construct(string $appName, IRequest $request){
+            parent::__construct($appName, $request);
         }
 
         /**
@@ -133,8 +133,8 @@ Since the route which returns the initial HTML has been taken care of, the contr
 
     class NoteController extends Controller {
 
-        public function __construct(string $AppName, IRequest $request){
-            parent::__construct($AppName, $request);
+        public function __construct(string $appName, IRequest $request){
+            parent::__construct($appName, $request);
         }
 
         /**
@@ -386,7 +386,7 @@ Connect database & controllers
 
 The mapper which provides the database access is finished and can be passed into the controller.
 
-You can pass in the mapper by adding it as a type hinted parameter. Nextcloud will figure out how to :doc:`assemble them by itself <../basics/dependency_injection>`. Additionally we want to know the userId of the currently logged in user. Simply add a **$UserId** parameter to the constructor (case sensitive!). To do that open **notestutorial/lib/Controller/NoteController.php** and change it to the following:
+You can pass in the mapper by adding it as a type hinted parameter. Nextcloud will figure out how to :doc:`assemble them by itself <../basics/dependency_injection>`. Additionally we want to know the userId of the currently logged in user. Simply add a **$userId** parameter to the constructor (case sensitive!). To do that open **notestutorial/lib/Controller/NoteController.php** and change it to the following:
 
 .. code-block:: php
 
@@ -408,10 +408,10 @@ You can pass in the mapper by adding it as a type hinted parameter. Nextcloud wi
         private NoteMapper $mapper;
         private ?string $userId;
 
-        public function __construct(string $AppName, IRequest $request, NoteMapper $mapper, ?string $UserId = null){
-            parent::__construct($AppName, $request);
+        public function __construct(string $appName, IRequest $request, NoteMapper $mapper, ?string $userId = null){
+            parent::__construct($appName, $request);
             $this->mapper = $mapper;
-            $this->userId = $UserId;
+            $this->userId = $userId;
         }
 
         /**
@@ -654,11 +654,11 @@ Now we can wire up the trait and the service inside the **NoteController**:
 
         use Errors;
 
-        public function __construct(string $AppName, IRequest $request,
-                                    NoteService $service, ?string $UserId = null) {
-            parent::__construct($AppName, $request);
+        public function __construct(string $appName, IRequest $request,
+                                    NoteService $service, ?string $userId = null) {
+            parent::__construct($appName, $request);
             $this->service = $service;
-            $this->userId = $UserId;
+            $this->userId = $userId;
         }
 
         /**
@@ -967,11 +967,11 @@ With that in mind create a new controller in **notestutorial/lib/Controller/Note
 
         use Errors;
 
-        public function __construct($AppName, IRequest $request,
-                                    NoteService $service, ?string $UserId = null) {
-            parent::__construct($AppName, $request);
+        public function __construct(string $appName, IRequest $request,
+                                    NoteService $service, ?string $userId = null) {
+            parent::__construct($appName, $request);
             $this->service = $service;
-            $this->userId = $UserId;
+            $this->userId = $userId;
         }
 
         /**

@@ -238,8 +238,8 @@ Then session variables can be accessed like this:
 
         private ISession $session;
 
-        public function __construct($AppName, IRequest $request, ISession $session) {
-            parent::__construct($AppName, $request);
+        public function __construct($appName, IRequest $request, ISession $session) {
+            parent::__construct($appName, $request);
             $this->session = $session;
         }
 
