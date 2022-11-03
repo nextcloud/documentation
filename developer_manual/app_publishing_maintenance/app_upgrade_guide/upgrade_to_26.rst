@@ -33,7 +33,10 @@ tbd
 Back-end changes
 ----------------
 
-tbd
+Dependency Injection Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+App container parameters with pascal case names ``AppName``, ``UserId`` and ``WebRoot`` are deprecated. Use the camel case variants ``appName``, ``userId`` and ``webRoot`` instead if you have them injected into one of your app classes.
 
 Changed APIs
 ^^^^^^^^^^^^

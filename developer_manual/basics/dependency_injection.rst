@@ -309,16 +309,16 @@ The following parameter names and type hints can be used to inject core services
 
 Parameters:
 
-* **AppName**: The app id
-* **UserId**: The id of the current user
-* **WebRoot**: The path to the Nextcloud installation
+* **appName**: The app id
+* **userId**: The id of the current user
+* **webRoot**: The path to the Nextcloud installation
 
 Aliases:
-* **appName**: resolves to ``AppName``
+* **AppName**: resolves to ``AppName`` (deprecated)
 * **Request**: resolves to ``\OCP\\IRequest``
 * **ServerContainer**: resolves to ``\OCP\IServerContainer``
-* **userId**: resolves to ``UserId``
-* **webRoot**: resolves to ``WebRoot``
+* **UserId**: resolves to ``UserId`` (deprecated)
+* **WebRoot**: resolves to ``WebRoot`` (deprecated)
 
 Types:
 
