@@ -546,8 +546,7 @@ To connect to Nextcloud:
 * Select the desired options and press the 'OK' button
 * Press the 'Login' button to connect to Nextcloud
 
-Note: at the time of writing (2022-11-02) WinSCP does not seem to understand Nextcloud `2fa <https://docs.nextcloud.com/server/latest/admin_manual/configuration_user/two_factor-auth.html/>`_, it will fail to connect with a 401 Unauthorized message.
-Workaround is to create a separate user without 2fa enabled.
+Note: it is recommended to use an app password for the password if you use TOTP, as WinSCP does not understand TOTP in Nextcloud at the time of writing (2022-11-07).
 
 
 
