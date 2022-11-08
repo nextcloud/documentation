@@ -110,8 +110,7 @@ our `nextcloud template repository <https://github.com/nextcloud/.github>`_.
 
 If you want to support multiple versions of Nextcloud server with a single app version, checkout this slightly
 `more complex action <https://github.com/nextcloud/.github/blob/master/workflow-templates/psalm-matrix.yml>`_.
-This creates a matrix, where the app is tested against ``dev-master``, the latest version of ``OCP`` found in the main
-branch of Nextcloud server, as well as ``dev-stable25``, ``dev-stable24`` and ``dev-stable23``, the currently supported
-stable branches. Adjust this to your needs.
+This creates a matrix, where the app is tested against ``dev-master``, the latest version of ``OCP`` found in the master
+branch of Nextcloud server, as well as other currently supported stable branches. Adjust this to your needs.
 
 .. _Psalm: https://psalm.dev/docs/
