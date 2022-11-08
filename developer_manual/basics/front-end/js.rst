@@ -150,6 +150,8 @@ function
 Now state will contain the provided state which you can use as any variable. It
 is as simple as that.
 
+.. _basics_frontend_javascript_keyboard_shortcuts:
+
 
 Keyboard shortcuts
 ------------------

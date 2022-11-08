@@ -23,7 +23,7 @@ SCSS support removal
 
 With 25, we removed the support for scss files provided by apps.
 Please handle your own compilation, move to a vue app or move back to css.
-See `Github issue <https://github.com/nextcloud/server/issues/32060>`_.
+See `Github issue #32060 <https://github.com/nextcloud/server/issues/32060>`_.
 
 Front-end changes
 -----------------
@@ -37,7 +37,7 @@ or not and maintaining a more detailed list is too much effort, we went for a gl
 public javascript API call to determine whether the user used the opt-out: ``OCP.Accessibility.disableKeyboardShortcuts()``.
 If that is the case, no additional shortcuts shall be registered by any app. Only ``space`` to toggle checkboxes and
 ``enter`` to submit the currently active buttons/links are okay to be used.
-See `Github issue <https://github.com/nextcloud/server/pull/34081>`_.
+See `Github issue #34081 <https://github.com/nextcloud/server/pull/34081>`_ and :ref:`JavaScript Frontend documentation <basics_frontend_javascript_keyboard_shortcuts>`.
 
 Back-end changes
 ----------------
