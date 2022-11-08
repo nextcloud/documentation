@@ -321,6 +321,37 @@ Slugs are used to identify resources in the URL by a string rather than integer 
     $author->setName('Some*thing');
     $author->slugify('name');  // Some-thing
 
+Table management tips
+-------------------------
+
+It makes sense to apply some general tips from the beginning, so you don't have to migrate your data and schema later on.
+
+1. Don't use table name longer than 23 characters. As Oracle is limited to 30 chars and we need 3 more for `oc_` at the beginning and 5 for the primary key suffix `_pkey`.
+
+2. Add an auto-incremented `id` column. This will ease the use of `QBMapper` + `Entity` approach:
+    - https://github.com/nextcloud/server/blob/master/lib/public/AppFramework/Db/QBMapper.php
+    - https://github.com/nextcloud/server/blob/master/lib/public/AppFramework/Db/Entity.php
+
+.. code-block:: php
+
+    $table->addColumn('id', Types::BIGINT, [
+        'autoincrement' => true,
+        'notnull' => true,
+        'length' => 20,
+        'unsigned' => true,
+    ]);
+
+3. Set a primary key to prevent errors in clustered setups. You can use the `id` field for that.
+
+.. code-block:: php
+
+    $table->setPrimaryKey(['id']);
+
+4. Manually set the name of your indexes. It will help you to manipulate them if needed in the future. Note that the names of the index are "global" database wide in some DBs. So having generic names can create conflicts.
+
+.. code-block:: php
+
+    $table->addUniqueIndex(['your', 'column', 'names', '...'], 'table_name_uniq_feature');
 
 Supporting more databases
 -------------------------
@@ -355,5 +386,3 @@ On top of that there are some configs which influence the queries you can run. K
 
 * MySQL deleting lot of entries - Use a ``LIMIT`` on the delete (not supported on other databases), see this `sample of the activity app <https://github.com/nextcloud/activity/blob/master/lib/Data.php#L385-L397>`_
 * MySQL ``ONLY_FULL_GROUP_BY`` - All values selected in a query with a ``GROUP BY`` need to be aggregated as per `MySQL manual <https://dev.mysql.com/doc/refman/8.0/en/sql-mode.html#sqlmode_only_full_group_by>`_
-
-It makes sense to apply the restrictions from the beginning already so you don't have to migrate your data and schema later on when you want to change the set of supported databases.
