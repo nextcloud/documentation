@@ -41,6 +41,10 @@ CPU Architecture and OS
 ^^^^^^^^^^^^^^^^^^^^^^^
 A 64-bit CPU and 64-bit OS is required for Nextcloud 26 and higher.
 
+Note: this means 32 bit systems are really no longer supported. For a long time this was still mostly-working but
+with this release, more and more functionality on 32bit systems will break and fixes are harder and harder so
+support is unlikely to come back.
+
 Memory
 ^^^^^^
 
