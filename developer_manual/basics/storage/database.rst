@@ -332,18 +332,20 @@ Slugs are used to identify resources in the URL by a string rather than integer 
     $author->slugify('name');  // Some-thing
 
 Table management tips
--------------------------
+---------------------
 
 It makes sense to apply some general tips from the beginning, so you don't have to migrate your data and schema later on.
 
-1. Don't use table name longer than 23 characters. As Oracle is limited to 30 chars and we need 3 more for `oc_` at the beginning and 5 for the primary key suffix `_pkey`.
+1. Don't use table name longer than 23 characters. As Oracle is limited to 30 chars and we need 3 more for ``oc_`` at the beginning and 5 for the primary key suffix ``_pkey``.
 
-2. Add an auto-incremented `id` column. This will ease the use of `QBMapper` + `Entity` approach:
+2. Add an auto-incremented ``id`` column. This will ease the use of ``QBMapper`` + ``Entity`` approach:
+
     - https://github.com/nextcloud/server/blob/master/lib/public/AppFramework/Db/QBMapper.php
     - https://github.com/nextcloud/server/blob/master/lib/public/AppFramework/Db/Entity.php
 
 .. code-block:: php
 
+    <?php
     $table->addColumn('id', Types::BIGINT, [
         'autoincrement' => true,
         'notnull' => true,
@@ -355,12 +357,14 @@ It makes sense to apply some general tips from the beginning, so you don't have 
 
 .. code-block:: php
 
+    <?php
     $table->setPrimaryKey(['id']);
 
-4. Manually set the name of your indexes. It will help you to manipulate them if needed in the future. Note that the names of the index are "global" database wide in some DBs. So having generic names can create conflicts.
+4. Manually set the name of your indexes. It will help you to manipulate them if needed in the future. Note that the names of the index are "global" database wide in some database platforms. So having generic names can create conflicts.
 
 .. code-block:: php
 
+    <?php
     $table->addUniqueIndex(['your', 'column', 'names', '...'], 'table_name_uniq_feature');
 
 Supporting more databases
