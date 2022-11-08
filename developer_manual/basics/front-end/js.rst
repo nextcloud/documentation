@@ -150,6 +150,8 @@ function
 Now state will contain the provided state which you can use as any variable. It
 is as simple as that.
 
+.. _basics_frontend_javascript_keyboard_shortcuts:
+
 
 Keyboard shortcuts
 ------------------
@@ -164,6 +166,6 @@ Nextcloud wide. You can check the setting with the following function which retu
 
     OCP.Accessibility.disableKeyboardShortcuts();
 
-If that is the case, no additional shortcuts shall be registered by any app. Only space
-to toggle checkboxes and enter to submit the currently active buttons or links are okay,
+If that is the case, no additional shortcuts shall be registered by any app. Only ``space``
+to toggle checkboxes and ``enter`` to submit the currently active buttons or links are okay,
 as any other shortcut might interfere with screenreaders and other accessibility tools.
