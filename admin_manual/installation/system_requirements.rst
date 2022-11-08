@@ -17,9 +17,9 @@ For best performance, stability and functionality we have documented some recomm
 | Operating System | - **Ubuntu 22.04 LTS** (recommended)                                  |
 | (64-bit)         | - Ubuntu 20.04 LTS                                                    |
 |                  | - **Red Hat Enterprise Linux 8** (recommended)                        |
-|                  | - Debian 10 (Buster)                                                  |
+|                  | - Debian 11 (Bullseye)                                                |
 |                  | - SUSE Linux Enterprise Server 15                                     |
-|                  | - openSUSE Leap 42.1+                                                 |
+|                  | - openSUSE Leap 15.4                                                  |
 |                  | - CentOS Stream                                                       |
 +------------------+-----------------------------------------------------------------------+
 | Database         | - **MySQL 8.0+ or MariaDB 10.2/10.3/10.4/10.5** (recommended)         |
