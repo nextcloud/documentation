@@ -42,15 +42,12 @@ See `Github issue <https://github.com/nextcloud/server/pull/34081>`_.
 Back-end changes
 ----------------
 
-christophwurst/nextcloud replaced
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``christophwurst/nextcloud`` replaced
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The `christophwurst/nextcloud <https://packagist.org/packages/christophwurst/nextcloud>`_ composer package was replaced
 with a now Nextcloud owned `nextcloud/ocp <https://packagist.org/packages/nextcloud/ocp>`_ package. The content is the
 same and all older versions were generated, so you can transition right away no matter which versions you support.
-We also have a GitHub Actions cron job template available at
-`https://github.com/nextcloud/.github/blob/master/workflow-templates/update-nextcloud-ocp.yml <https://github.com/nextcloud/.github/blob/master/workflow-templates/update-nextcloud-ocp.yml>`_
-which updates the packages every sunday, so you can make sure your app is still compatible with the latest OCP.
 
 Changed APIs
 ^^^^^^^^^^^^
