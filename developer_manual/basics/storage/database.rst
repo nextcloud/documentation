@@ -198,9 +198,13 @@ The following properties should be annotated by types, to not only assure that t
 
 The following types can be added for a field:
 
-* integer
-* float
-* boolean
+* ``integer``
+* ``float``
+* ``boolean``
+* ``string`` - For text and string columns
+* ``blob`` - For binary data or strings longer than
+* ``json`` - JSON data is automatically decoded on reading
+* ``datetime`` - Providing ``\DateTime()`` objects
 
 Accessing attributes
 ^^^^^^^^^^^^^^^^^^^^
