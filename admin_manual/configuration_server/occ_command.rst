@@ -757,11 +757,11 @@ The command ``occ files:transfer-ownership`` can be used to transfer files from 
 
  Usage:
    files:transfer-ownership [options] [--] <source-user> <destination-user>
- 
+
  Arguments:
    source-user                                                owner of files which shall be moved
    destination-user                                           user who will be the new owner of the files
- 
+
  Options:
        --path=PATH                                            selectively provide the path to transfer. For example --path="folder_name" [default: ""]
        --move                                                 move data from source user to root directory of destination user, which must be empty
@@ -796,6 +796,8 @@ The command line option ``--transfer-incoming-shares`` overwrites the config.php
 
 Users may also transfer files or folders selectively by themselves.
 See `user documentation <https://docs.nextcloud.com/server/latest/user_manual/en/files/transfer_ownership.html>`_ for details.
+
+.. TODO ON RELEASE: Update version number above on release
 
 .. _occ_sharing_label:
 
@@ -1544,7 +1546,7 @@ Edit a tag::
 
   sudo -u www-data php occ tag:edit --name <name> --access <access> <id>
 
-`--name` and `--access` are optional. 
+`--name` and `--access` are optional.
 
 Delete a tag::
 
@@ -1553,7 +1555,7 @@ Delete a tag::
 Access level
 
 ========== ======== ==========
-Level      Visible¹ Assignable²    
+Level      Visible¹ Assignable²
 ========== ======== ==========
 public     Yes      Yes
 restricted Yes      No
@@ -1561,7 +1563,7 @@ invisible  No       No
 ========== ======== ==========
 
 | ¹ User can see the tag
-| ² User can assign the tag to a file 
+| ² User can assign the tag to a file
 
 .. _occ_debugging:
 

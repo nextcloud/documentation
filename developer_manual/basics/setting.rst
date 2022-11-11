@@ -115,6 +115,8 @@ This is a feature that needs to be enabled for each admin setting class.
 To do so, the setting class needs to implement `IDelegatedSettings` instead of `ISettings`
 and implement two additional methods.
 
+.. TODO ON RELEASE: Update version number above on release
+
 .. code-block:: php
 
     <?php

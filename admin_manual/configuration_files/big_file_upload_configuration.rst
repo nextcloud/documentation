@@ -2,15 +2,15 @@
 Uploading big files > 512MB
 ===========================
 
-The default maximum file size for uploads is 512MB. You can increase this 
-limit up to what your filesystem and operating system allows. There are certain 
+The default maximum file size for uploads is 512MB. You can increase this
+limit up to what your filesystem and operating system allows. There are certain
 hard limits that cannot be exceeded:
 
 * < 2GB on 32Bit OS-architecture
 * < 2GB with IE6 - IE8
 * < 4GB with IE9 - IE11
 
-64-bit filesystems have much higher limits; consult the documentation for your 
+64-bit filesystems have much higher limits; consult the documentation for your
 filesystem.
 
 .. note:: The Nextcloud sync client is not affected by these upload limits
@@ -22,9 +22,9 @@ System configuration
 
 * Make sure that the latest version of PHP is installed
 * Disable user quotas, which makes them unlimited
-* Your temp file or partition has to be big enough to hold multiple 
-  parallel uploads from multiple users; e.g. if the max upload size is 10GB and 
-  the average number of users uploading at the same time is 100: temp space has 
+* Your temp file or partition has to be big enough to hold multiple
+  parallel uploads from multiple users; e.g. if the max upload size is 10GB and
+  the average number of users uploading at the same time is 100: temp space has
   to hold at least 10x100 GB
 
 Configuring your Web server
@@ -34,19 +34,21 @@ Configuring your Web server
    can't read PHP settings in ``.htaccess`` these settings must be set in the
    ``nextcloud/.user.ini`` file.
 
-Set the following two parameters inside the corresponding php.ini file (see the 
-**Loaded Configuration File** section of :ref:`label-phpinfo` to find your 
+Set the following two parameters inside the corresponding php.ini file (see the
+**Loaded Configuration File** section of :ref:`label-phpinfo` to find your
 relevant php.ini files) ::
 
  php_value upload_max_filesize 16G
  php_value post_max_size 16G
- 
-The ``upload_max_filesize`` and ``post_max_size`` settings may not apply to file uploads 
+
+The ``upload_max_filesize`` and ``post_max_size`` settings may not apply to file uploads
 through WebDAV single file PUT requests or `Chunked file uploads
-<https://docs.nextcloud.com/server/latest/developer_manual/client_apis/WebDAV/chunking.html>`_ 
+<https://docs.nextcloud.com/server/latest/developer_manual/client_apis/WebDAV/chunking.html>`_
 For those, PHP and webserver timeouts are the limiting factor on the upload size.
 
-Adjust these values for your needs. If you see PHP timeouts in your logfiles, 
+.. TODO ON RELEASE: Update version number above on release
+
+Adjust these values for your needs. If you see PHP timeouts in your logfiles,
 increase the timeout values, which are in seconds::
 
  php_value max_input_time 3600
@@ -76,7 +78,7 @@ Apache with mod_fcgid
    ``FcgidMaxRequestInMem`` still needs to be significantly increased from its default value
    to avoid the occurrence of segmentation faults when uploading big files. This is not a regular
    setting but serves as a workaround for `Apache with mod_fcgid bug #51747 <https://bz.apache.org/bugzilla/show_bug.cgi?id=51747>`_.
-   
+
    Setting ``FcgidMaxRequestInMem`` significantly higher than normal may no longer be
    necessary, once bug #51747 is fixed.
 
@@ -96,13 +98,13 @@ is available. Setting this option to ``fastcgi_request_buffering off;`` in your 
 might help with timeouts during the upload. Furthermore it helps if you're running out of
 disc space on the tmp partition of your system.
 
-.. note:: Make sure that ``client_body_temp_path`` points to a partition with 
+.. note:: Make sure that ``client_body_temp_path`` points to a partition with
    adequate space for your upload file size, and on the same partition as
-   the ``upload_tmp_dir`` or ``tempdirectory`` (see below). For optimal 
-   performance, place these on a separate hard drive that is dedicated to 
+   the ``upload_tmp_dir`` or ``tempdirectory`` (see below). For optimal
+   performance, place these on a separate hard drive that is dedicated to
    swap and temp storage.
-   
-If your site is behind a nginx frontend (for example a loadbalancer): 
+
+If your site is behind a nginx frontend (for example a loadbalancer):
 
 By default, downloads will be limited to 1GB due to ``proxy_buffering`` and ``proxy_max_temp_file_size`` on the frontend.
 
@@ -112,24 +114,24 @@ By default, downloads will be limited to 1GB due to ``proxy_buffering`` and ``pr
 Configuring PHP
 ---------------
 
-If you don't want to use the Nextcloud ``.htaccess`` or ``.user.ini`` file, you may 
-configure PHP instead. Make sure to comment out any lines ``.htaccess`` 
+If you don't want to use the Nextcloud ``.htaccess`` or ``.user.ini`` file, you may
+configure PHP instead. Make sure to comment out any lines ``.htaccess``
 pertaining to upload size, if you entered any.
 
-If you are running Nextcloud on a 32-bit system, any ``open_basedir`` directive 
+If you are running Nextcloud on a 32-bit system, any ``open_basedir`` directive
 in your ``php.ini`` file needs to be commented out.
 
-Set the following two parameters inside ``php.ini``, using your own desired 
+Set the following two parameters inside ``php.ini``, using your own desired
 file size values::
 
  upload_max_filesize = 16G
  post_max_size = 16G
- 
+
 Tell PHP which temp directory you want it to use::
- 
+
  upload_tmp_dir = /var/big_temp_file/
 
-**Output Buffering** must be turned off in ``.htaccess`` or ``.user.ini`` or ``php.ini``, or PHP 
+**Output Buffering** must be turned off in ``.htaccess`` or ``.user.ini`` or ``php.ini``, or PHP
 will return memory-related errors:
 
 * ``output_buffering = 0``
@@ -142,7 +144,7 @@ As an alternative to the ``upload_tmp_dir`` of PHP (e.g. if you don't have acces
 ``tempdirectory`` setting in your ``config.php`` (See :doc:`../configuration_server/config_sample_php_parameters`).
 
 If you have configured the ``session_lifetime`` setting in your ``config.php``
-(See :doc:`../configuration_server/config_sample_php_parameters`) file then 
+(See :doc:`../configuration_server/config_sample_php_parameters`) file then
 make sure it is not too
 low. This setting needs to be configured to at least the time (in seconds) that
 the longest upload will take. If unsure remove this completely from your
@@ -164,9 +166,11 @@ Default is 10485760 (10 MiB).
 Large file upload on object storage
 -----------------------------------
 
-`Chunked file uploads <https://docs.nextcloud.com/server/latest/developer_manual/client_apis/WebDAV/chunking.html>`_ 
+`Chunked file uploads <https://docs.nextcloud.com/server/latest/developer_manual/client_apis/WebDAV/chunking.html>`_
 do have a larger space consumption on the temporary folder when processing those uploads
 on object storage as the individual chunks get downloaded from the storage and will be assembled
 to the actual file on the Nextcloud servers temporary directory. It is recommended to increase
 the size of your temp directory accordingly and also ensure that request timeouts are high
 enough for PHP, webservers or any load balancers involved.
+
+.. TODO ON RELEASE: Update version number above on release
