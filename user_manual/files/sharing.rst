@@ -12,8 +12,9 @@ Nextcloud users can share files and folders. Possible targets are:
 * users or groups on federated Nextcloud servers
 
 .. note:: Some options may not be available due to administrative configuration.
-   See `administrator documentation <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/file_sharing_configuration.html>`__ for details.
+   See `administrator documentation <https://docs.nextcloud.com/server/25/admin_manual/configuration_files/file_sharing_configuration.html>`__ for details.
 
+.. TODO ON RELEASE: Update version number above on release
 
 Public link shares
 ------------------
@@ -49,7 +50,7 @@ When sharing with users, groups, circles or members of a Talk conversation, righ
 
 .. figure:: ../images/sharing_internal.png
 
-As a sharee, you can configure if you automatically want to accept all incoming shares and have them added to your root folder, or if you 
+As a sharee, you can configure if you automatically want to accept all incoming shares and have them added to your root folder, or if you
 want to be asked each time if you want to accept or decline the share.
 
 .. figure:: ../images/sharing_internal_acceptNotification.png
@@ -62,7 +63,7 @@ For adjusting the acceptance setting, go to **Settings** > **Personal** > **Shar
 Others with access
 ------------------
 
-In order to find out if a file or folder is accessible to others through sharing of a superior folder 
+In order to find out if a file or folder is accessible to others through sharing of a superior folder
 hierarchy level, click on **Others with access** in the sharing tab:
 
 .. figure:: ../images/sharing_others-with-access__collapsed.png
@@ -86,8 +87,8 @@ Click on the three dots to:
 Federated Shares
 ================
 
-Federation Sharing allows you to mount file shares from remote Nextcloud servers, in effect 
-creating your own cloud of Nextclouds. You can create direct share links with 
+Federation Sharing allows you to mount file shares from remote Nextcloud servers, in effect
+creating your own cloud of Nextclouds. You can create direct share links with
 users on other Nextcloud servers.
 
 Creating a new Federation Share
@@ -95,7 +96,7 @@ Creating a new Federation Share
 
 Federation sharing is enabled by default. Follow these steps to create a new share with other Nextcloud or ownCloud servers:
 
-Go to your ``Files`` page and click the Share icon on the file or directory 
+Go to your ``Files`` page and click the Share icon on the file or directory
 you want to share. In the sidebar enter the username and URL of the remote user
 in this form: ``<username>@<nc-server-url>``. In this example, that is
 ``bob@cloud.example.com``:

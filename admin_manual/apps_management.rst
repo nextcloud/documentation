@@ -23,14 +23,14 @@ To see which apps are enabled go to your Apps page.
 Those apps are supported and developed by Nextcloud GmbH directly and
 have an **Featured**-tag. See :doc:`installation/apps_supported` for a list of supported apps.
 
-.. note:: Your Nextcloud server needs to be able to communicate with 
+.. note:: Your Nextcloud server needs to be able to communicate with
           ``https://apps.nextcloud.com`` to list and download apps. Please make sure to whitelist this target in your firewall or proxy if necessary.
 
 .. note:: To get access to work-arounds, long-term-support, priority bug fixing
           and custom consulting for supported apps, contact our `sales team <https://nextcloud.com/enterprise/>`_.
 
 .. note:: If you would like to develop your own Nextcloud app, you can find out
-          more information in our `developer manual <https://docs.nextcloud.com/server/latest/go.php?to=developer-manual>`_.
+          more information in our `developer manual <https://docs.nextcloud.com/server/25/go.php?to=developer-manual>`_.
 .. TODO ON RELEASE: Update version number above on release
 
 All apps must be licensed under AGPLv3+ or any compatible license.
@@ -55,11 +55,11 @@ in the Application View field. Clicking the **Enable** button will enable the ap
 If the app is not part of the Nextcloud installation, it will be downloaded from
 the app store, installed and enabled.
 
-App updates will also be offered to you on this page. Simply click on the **Update** 
-button to update a specific app or use the **Update all** button on top of the page to 
+App updates will also be offered to you on this page. Simply click on the **Update**
+button to update a specific app or use the **Update all** button on top of the page to
 update all apps.
 
-.. note:: **Beta releases**: You can also install beta releases of apps directly from here by 
+.. note:: **Beta releases**: You can also install beta releases of apps directly from here by
           switching your Nextcloud to the beta channel in the admin overview.
 
 Using private API
@@ -124,6 +124,6 @@ To enable a self hosted apps store:
     "appstoreurl" => "https://my.appstore.instance/v1",
 
 
-By default the apps store is enabled and configured to use ``https://apps.nextcloud.com/api/v1`` as apps store url. Nextcloud will fetch ``apps.json`` and ``categories.json`` from there. To use the defaults again remove **appstoreenabled** and **appstoreurl** from the configuration. 
+By default the apps store is enabled and configured to use ``https://apps.nextcloud.com/api/v1`` as apps store url. Nextcloud will fetch ``apps.json`` and ``categories.json`` from there. To use the defaults again remove **appstoreenabled** and **appstoreurl** from the configuration.
 
 Example: If ``categories.json`` is available at ``https://apps.nextcloud.com/api/v1/categories.json`` the apps store url is ``https://apps.nextcloud.com/api/v1``.

@@ -19,5 +19,7 @@ Maintenance releases are scheduled in a 4 week cycle with one week before the re
 Critical changes
 ----------------
 
-You can find important documentation for app developers here: https://docs.nextcloud.com/server/latest/developer_manual/app_publishing_maintenance/app_upgrade_guide/index.html
+You can find important documentation for app developers here: https://docs.nextcloud.com/server/25/developer_manual/app_publishing_maintenance/app_upgrade_guide/index.html
 Each document lists a link to the breaking changes of the corresponding release.
+
+.. TODO ON RELEASE: Update version number above on release
