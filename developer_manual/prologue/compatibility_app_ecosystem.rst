@@ -19,6 +19,8 @@ There are three procedures in place to facilitate communication to app developer
 1. The definition of done of a pull request includes documentation.
 This means the development of your pull request cannot be considered done if you introduced changes that affect app developers that you did not document.
 
+.. TODO ON RELEASE: Change the link to the follow up issue
+
 2. A change that affects app developers, has to be reported and documented by the author of the pull request in the `Changes for developers and administrators issue <https://github.com/nextcloud/server/issues/34692>`_.
 The requirements for this documentation are:
 
