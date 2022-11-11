@@ -38,6 +38,9 @@ rst_epilog =  '.. |version| replace:: %s' % version
 # building the versions list
 version_start = 23		# THIS IS THE SUPPORTED VERSION NUMBER
 version_stable = 25		# INCREASE THIS NUMBER TO THE LATEST STABLE VERSION NUMBER
+
+# Also search for "TODO ON RELEASE" in the rst files
+
 def generateVersionsDocs(current_docs):
 	versions_doc = []
 	for v in range(version_start, version_stable + 1):
