@@ -30,7 +30,7 @@ For best performance, stability and functionality we have documented some recomm
 | Webserver        | - **Apache 2.4 with** ``mod_php`` **or** ``php-fpm`` (recommended)    |
 |                  | - nginx with ``php-fpm``                                              |
 +------------------+-----------------------------------------------------------------------+
-| PHP Runtime      | - 7.4                                                                 |
+| PHP Runtime      | - 7.4  (*deprecated*)                                                 |
 |                  | - 8.0                                                                 |
 |                  | - **8.1** (*recommended*)                                             |
 +------------------+-----------------------------------------------------------------------+
@@ -58,6 +58,29 @@ The following is currently required if you're running Nextcloud together with a 
 * "READ COMMITTED" transaction isolation level (See: :ref:`db-transaction-label`)
 * Disabled or BINLOG_FORMAT = ROW configured Binary Logging (See: https://dev.mysql.com/doc/refman/5.7/en/binary-log-formats.html)
 * For **Emoji (UTF8 4-byte) support** see :doc:`../configuration_database/mysql_4byte_support`
+
+Why we drop old PHP versions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Every year, a new PHP version is added and old PHP versions are deprecated. This also affects our documented recommended PHP version. 
+
+We try to support old PHP versions for as long as reasonably possible. However the list of security, performance, and bug fixes will only increase, some of those fixes might be considered critical and thus at some point the deprecation will be inevitable. 
+
+Thus it is recommended to keep your PHP version up to date.
+
+Advantages of upgrading PHP
+===========================
+
+- **Security**
+  PHP deprecates security fixes of old versions. Nextcloud cannot implement security fixes that come with new PHP versions as long as we support deprecated PHP versions, since the syntax that we are allowed to use must be the lowest one of the supported versions, thus the upstream packages of third parties break because they dropped this support. 
+
+- **Performance**
+  The language continuously improves over time which makes it possible to do more requests in significantly less time. 
+
+Long term support
+=================
+
+If you are running Nextcloud for an organisation-critical use case, you could consider upgrading your subscription to a premium subscription which comes with 5 years of long term support. This means you continue to receive maintenance releases for high and critical security issues, data loss fixes, and regressions within version over this extended period of time.
 
 Desktop client
 --------------
