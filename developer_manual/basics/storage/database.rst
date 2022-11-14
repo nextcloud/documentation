@@ -9,9 +9,9 @@ The basic way to run a database query is to use the database connection provided
 Inside your database layer class you can now start running queries like:
 
 .. code-block:: php
+    :caption: lib/Db/AuthorDAO.php
 
     <?php
-    // db/authordao.php
 
     namespace OCA\MyApp\Db;
 
@@ -128,9 +128,9 @@ To create a mapper, inherit from the mapper base class and call the parent const
 * **Optional**: Entity class name, defaults to \\OCA\\MyApp\\Db\\Author in the example below
 
 .. code-block:: php
+    :caption: lib/Db/AthorMapper.php
 
     <?php
-    // db/authormapper.php
 
     namespace OCA\MyApp\Db;
 
@@ -213,9 +213,10 @@ Entities are data objects that carry all the table's information for one row. Ev
 * **Property name**: phoneNumber
 
 .. code-block:: php
+    :caption: lib/Db/Author.php
 
     <?php
-    // db/author.php
+
     namespace OCA\MyApp\Db;
 
     use OCP\AppFramework\Db\Entity;
@@ -255,8 +256,10 @@ Since all attributes should be protected, getters and setters are automatically 
 
 .. code-block:: php
 
+    :caption: lib/Db/Author.php
+
     <?php
-    // db/author.php
+
     namespace OCA\MyApp\Db;
 
     use OCP\AppFramework\Db\Entity;
@@ -280,10 +283,10 @@ different columns because of backwards compatibility. To define a custom
 mapping, simply override the **columnToProperty** and **propertyToColumn** methods of the entity in question:
 
 .. code-block:: php
-
+    :caption: lib/Db/Author.php
 
     <?php
-    // db/author.php
+
     namespace OCA\MyApp\Db;
 
     use OCP\AppFramework\Db\Entity;
