@@ -60,3 +60,27 @@ When you install coolwsd package, the post-install script will look for addition
 
 .. seealso::
     https://sdk.collaboraonline.com/docs/installation/Fonts.html
+
+
+Secure view settings
+********************
+
+The secure view settings enables Nextcloud to embed watermarks on your office files. The watermark may be set according to different rules:
+
+- **Tags:** will watermark files for files containing the defined tags
+- **Groups:** will watermark files when opened by users belonging to the defined groups.
+- **All shares:** will watermark files accessed via a share.
+- **Read-only shares:** will watermark files if they are accessed via a read-only share.
+
+.. warning::
+    To enforce the confidentiality of your files it is crucial to restrict the ability to download the documents.
+
+    This includes ensuring that your `WOPI configuration <#wopi-settings>`_ is configured to only serve documents between Nextcloud and Collabora.
+
+
+Wopi settings
+*************
+
+It is highly recommended to restrict WOPI requests to the IP addresses of the Collabora servers that are expected to request files from the Nextcloud installation. This can be done by setting the ``Allow list for WOPI requests`` option from the Office admin settings.
+
+Similarly, it is advised to configure `Collabora's WOPI host configuration <https://sdk.collaboraonline.com/docs/installation/Configuration.html#multihost-configuration>`_ to only serve IPs from expected hosts.
