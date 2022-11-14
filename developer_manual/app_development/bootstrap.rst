@@ -88,7 +88,7 @@ The class **must** extend ``OCP\AppFramework\App`` and may optionally implement 
 
     }
     
-Note that the context's of the methods ``register`` and ``boot`` have different interfaces and thus have different capabilities appropriate for their stage.
+Note that the context objects of the methods ``register`` and ``boot`` have different interfaces and thus have different capabilities appropriate for their stage.
 
 Bootstrapping process
 ---------------------
@@ -115,8 +115,85 @@ The overall process is as follows:
 2) Nextcloud will load groups of certain apps early, e.g. filesystem or session apps, and other later. For that purpose, their optional
    :ref:`app-php` will be included. As ``app.php`` is deprecated, apps should try not to rely on this step.
 3) Nextcloud will query the app's ``Application`` class (again), no matter whether it implements ``IBootstrap`` or not.
-4) Nextcloud will invoke the ``boot`` method of every ``Application`` instance that implements ``IBootstrap``. At this stage
+4) Nextcloud will invoke the :ref:`boot <app-bootstrap-boot>` method of every ``Application`` instance that implements ``IBootstrap``. At this stage
    you may assume that all registrations via ``IBootstrap::register`` have completed.
+
+
+.. _app-bootstrap-boot:
+
+Booting an app
+^^^^^^^^^^^^^^
+
+Any code that should run once for every Nextcloud process goes into the ``boot`` method of an app's ``Application`` class. Use this mechanism carefully as it could have a negative effect on Nextcloud's overall performance.
+
+.. code-block:: php
+    :emphasize-lines: 11-15
+
+    <?php
+
+    class Application extends App implements IBootstrap {
+
+        public function __construct() {
+            parent::__construct('myapp');
+        }
+
+        public function register(IRegistrationContext $context): void {}
+
+        public function boot(IBootContext $context): void {
+            /** @var IFooManager $manager */
+            $manager = $context->getAppContainer()->query(IFooManager::class);
+            $manager->registerCustomFoo(MyFooImpl::class);
+        }
+
+    }
+
+The code above fetches a fictional *foo manager* to register an app class. The boot context object comes with a ``injectFn`` helper that eases dependency injection inside the ``boot`` method by injecting arguments of a callable:
+
+.. code-block:: php
+    :emphasize-lines: 12-14
+
+    <?php
+
+    class Application extends App implements IBootstrap {
+
+        public function __construct() {
+            parent::__construct('myapp');
+        }
+
+        public function register(IRegistrationContext $context): void {}
+
+        public function boot(IBootContext $context): void {
+            $context->injectFn(function(IFooManager $manager) {
+                $manager->registerCustomFoo(MyFooImpl::class);
+            });
+        }
+
+    }
+
+With the help of ``Closure::fromCallable`` you can also delegate to other methods that get their arguments injected:
+
+.. code-block:: php
+    :emphasize-lines: 12,15-17
+
+    <?php
+
+    class Application extends App implements IBootstrap {
+
+        public function __construct() {
+            parent::__construct('myapp');
+        }
+
+        public function register(IRegistrationContext $context): void {}
+
+        public function boot(IBootContext $context): void {
+            $context->injectFn(Closure::fromCallable([$this, 'registerFoo']));
+        }
+
+        protected function registerFoo(IFooManager $manager): void {
+            $manager->registerCustomFoo(MyFooImpl::class);
+        }
+
+    }
 
 Nextcloud 19 and older
 **********************
