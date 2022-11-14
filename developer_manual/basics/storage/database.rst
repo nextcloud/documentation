@@ -312,9 +312,10 @@ mapping, simply override the **columnToProperty** and **propertyToColumn** metho
 
     }
 
+.. _database-entity-slugs:
 
-Slugs
-^^^^^
+Slugs (deprecated)
+^^^^^^^^^^^^^^^^^^
 
 Slugs are used to identify resources in the URL by a string rather than integer id. Since the URL allows only certain values, the entity base class provides a slugify method for it:
 
@@ -325,6 +326,7 @@ Slugs are used to identify resources in the URL by a string rather than integer 
     $author->setName('Some*thing');
     $author->slugify('name');  // Some-thing
 
+.. note:: Entity slugs have been deprecated with the release of Nextcloud 24
 
 Supporting more databases
 -------------------------
