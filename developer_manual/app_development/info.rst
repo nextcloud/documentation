@@ -13,6 +13,7 @@ The info.xml is validated using an XML Schema which can be accessed `online <htt
 A minimum valid **info.xml** would look like this:
 
 .. code-block:: xml
+    :caption: appinfo/info.xml
 
     <?xml version="1.0"?>
     <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
@@ -34,6 +35,7 @@ A minimum valid **info.xml** would look like this:
 A full blown example would look like this (needs to be utf-8 encoded):
 
 .. code-block:: xml
+    :caption: appinfo/info.xml
 
     <?xml version="1.0"?>
     <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"

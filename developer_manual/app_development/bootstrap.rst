@@ -44,6 +44,7 @@ Nextcloud will try to autoload the class from the namespace ``\OCA\<App namespac
 The class **must** extend ``OCP\AppFramework\App`` and may optionally implement ``\OCP\AppFramework\Bootstrap\IBootstrap``:
 
 .. code-block:: php
+    :caption: lib/AppInfo/Application.php
 
     <?php
 
@@ -127,6 +128,7 @@ Booting an app
 Any code that should run once for every Nextcloud process goes into the ``boot`` method of an app's ``Application`` class. Use this mechanism carefully as it could have a negative effect on Nextcloud's overall performance.
 
 .. code-block:: php
+    :caption: lib/AppInfo/Application.php
     :emphasize-lines: 11-15
 
     <?php
@@ -150,6 +152,7 @@ Any code that should run once for every Nextcloud process goes into the ``boot``
 The code above fetches a fictional *foo manager* to register an app class. The boot context object comes with a ``injectFn`` helper that eases dependency injection inside the ``boot`` method by injecting arguments of a callable:
 
 .. code-block:: php
+    :caption: lib/AppInfo/Application.php
     :emphasize-lines: 12-14
 
     <?php
@@ -173,6 +176,7 @@ The code above fetches a fictional *foo manager* to register an app class. The b
 With the help of ``Closure::fromCallable`` you can also delegate to other methods that get their arguments injected:
 
 .. code-block:: php
+    :caption: lib/AppInfo/Application.php
     :emphasize-lines: 12,15-17
 
     <?php
@@ -215,6 +219,7 @@ To leverage the advantages of object-oriented programming, it's recommended to p
 class and query an instance like
 
 .. code-block:: php
+    :caption: appinfo/app.php
 
     <?php
 
