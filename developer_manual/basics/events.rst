@@ -669,7 +669,8 @@ tbd
 Hooks
 -----
 
-.. warning:: The hooks mechanism is deprecated. Use the `OCP event dispatcher`_ instead.
+.. deprecated:: 18
+    Use the `OCP event dispatcher`_ instead.
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
@@ -853,8 +854,9 @@ Filesystem scanner hooks available in scope **\\OC\\Files\\Utils\\Scanner**:
 
 
 Public emitter
---------------------
+--------------
 
-.. warning:: The public emitter mechanism is deprecated. Use the `OCP event dispatcher`_ instead.
+.. deprecated:: 18
+    Use the `OCP event dispatcher`_ instead.
 
 tbd
