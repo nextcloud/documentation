@@ -62,9 +62,9 @@ The following is currently required if you're running Nextcloud together with a 
 Why we drop old PHP versions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Every year, a new PHP version is added and old PHP versions are deprecated. This also affects our documented recommended PHP version. 
+Every year, a new PHP version is added and old PHP versions are deprecated. This also affects our documented recommended PHP version.
 
-We try to support old PHP versions for as long as reasonably possible. However the list of security, performance, and bug fixes will only increase, some of those fixes might be considered critical and thus at some point the deprecation will be inevitable. 
+We try to support old PHP versions for as long as reasonably possible. However the list of security, performance, and bug fixes will only increase, some of those fixes might be considered critical and thus at some point the deprecation will be inevitable.
 
 Thus it is recommended to keep your PHP version up to date.
 
@@ -72,10 +72,12 @@ Advantages of upgrading PHP
 ===========================
 
 - **Security**
-  PHP deprecates security fixes of old versions. Nextcloud cannot implement security fixes that come with new PHP versions as long as we support deprecated PHP versions, since the syntax that we are allowed to use must be the lowest one of the supported versions, thus the upstream packages of third parties break because they dropped this support. 
+
+  PHP deprecates security fixes of old versions. Nextcloud cannot implement security fixes that come with new PHP versions as long as we support deprecated PHP versions, since the syntax that we are allowed to use must be the lowest one of the supported versions, thus the upstream packages of third parties break because they dropped this support.
 
 - **Performance**
-  The language continuously improves over time which makes it possible to do more requests in significantly less time. 
+
+  The language continuously improves over time which makes it possible to do more requests in significantly less time.
 
 Long term support
 =================
