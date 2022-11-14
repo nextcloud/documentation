@@ -34,7 +34,9 @@ Events are usually evmitted *after* the event has happened. If it's emitted befo
 
 Thus `BeforeUserCreatedEvent` is emitted *before* the user data is written to the database.
 
-.. note:: Although you may chose to name your event classes differently, sticking to the convention will allow Nextcloud developers understand each other's apps more easily.
+.. note:: Although you may choose to name your event classes differently, sticking to the convention will allow Nextcloud developers understand each other's apps more easily.
+
+.. note:: For backwards compatibility with the Symfony class `GenericEvent <https://symfony.com/doc/current/components/event_dispatcher/generic_event.html>`_, Nextcloud also provides a ``\OCP\EventDispatcher\Event`` class. With the release of Nextcloud 22 this class has been deprecated. Named and typed event classes should be used instead.
 
 Writing events
 ``````````````
