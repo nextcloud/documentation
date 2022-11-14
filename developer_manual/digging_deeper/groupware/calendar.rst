@@ -7,6 +7,8 @@ On this page you can learn more about integrating with the Nextcloud calendar se
 Access calendars and events
 ---------------------------
 
+.. _calendar-search:
+
 Calendar objects
 ~~~~~~~~~~~~~~~~
 
@@ -50,6 +52,8 @@ In the following example you see a basic use case of the calendar query API wher
     }
 
 Study the interface ``\OCP\Calendar\ICalendarQuery`` to learn more about other query options.
+
+.. _calendar-access:
 
 Calendars
 ~~~~~~~~~
@@ -99,6 +103,8 @@ You can either query all calendars of the principal if you omit the second argum
 The returned objects implement ``\OCP\Calendar\ICalendar``. Study the interface methods to discover what data is available.
 
 .. note:: All calendars are by default only readable, therefore ``ICalendar`` does not offer methods for mutation. Some of the calendars are mutable, however, and they may further extend the interface ``\OCP\Calendar\ICreateFromString``.
+
+.. _calendar-providers:
 
 Calendar providers
 ------------------
