@@ -1630,10 +1630,7 @@ See https://redis.io/topics/encryption for more information.
 		]
 	],
 
-Connection details for a Redis Cluster
-
-Only for use with Redis Clustering, for Sentinel-based setups use the single
-server configuration above, and perform HA on the hostname.
+Connection details for a Redis Cluster.
 
 Redis Cluster support requires the php module phpredis in version 3.0.0 or
 higher.
