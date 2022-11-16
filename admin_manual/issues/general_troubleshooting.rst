@@ -30,7 +30,7 @@ configuration report with the :ref:`occ config command
 <config_commands_label>`, with passwords automatically obscured.
 
 .. _the Nextcloud Forums: https://help.nextcloud.com
-.. _FAQ page: https://help.nextcloud.com/c/faq
+.. _FAQ page: https://help.nextcloud.com/t/how-to-faq-wiki
 .. _bugtracker: https://github.com/nextcloud/server/issues
    https://docs.nextcloud.com/server/latest/developer_manual/prologue/bugtracker/index.html
 
