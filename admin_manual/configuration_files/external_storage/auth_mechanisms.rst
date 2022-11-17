@@ -33,7 +33,7 @@ setup of the mount point.
 The **Log-in credentials, save in session** mechanism uses the Nextcloud login
 credentials of the user to connect to the storage. These are not stored anywhere
 on the server, but rather in the user session, giving increased security.
-This method has some important drawbacks, since Nextcloud has no access to the storage 
+This method has some important drawbacks, since Nextcloud has no access to the storage
 credentials and therefore cannot perform any background tasks on the storage:
 
 * Sharing is disabled

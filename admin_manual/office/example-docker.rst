@@ -40,9 +40,7 @@ On a recent Ubuntu or Debian this should be possible using:
     apt-get install apache2
     a2enmod proxy proxy_wstunnel proxy_http ssl
 
-Afterward, configure one VirtualHost properly to proxy the traffic. For security reason we recommend to use a subdomain such as office.example.com instead of running on the same domain. An example config can be found below:
-
-.. code-block:: apache2
+Afterward, configure one VirtualHost properly to proxy the traffic. For security reason we recommend to use a subdomain such as office.example.com instead of running on the same domain. An example config can be found below::
 
     ########################################
     # Reverse proxy for Collabora Online
@@ -113,7 +111,7 @@ Update the docker image:
 List running docker containers:
     .. code-block:: bash
 
-        docker ps 
+        docker ps
 
 Stop and remove the Collabora Online container with the container id of the running one:
     .. code-block:: bash
