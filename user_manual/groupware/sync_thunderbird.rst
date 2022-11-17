@@ -3,7 +3,7 @@ Synchronizing with Thunderbird
 ==============================
 
 `Thunderbird <https://www.thunderbird.net>`_ is a feature-rich and mature mail client that can be turned into a full-fledged PIM. Since version 102, it supports address book synchronisation via CardDAV and automatic discovering calendars and address books available on the server.
- 
+
 
 Recommended method
 ------------------
@@ -33,7 +33,7 @@ Same thing here, if you lately want to add more calendar just redo the procedure
 
 
 Alternative: using the TbSync addon
--------------
+-----------------------------------
 
 For this method, you need to have two add-ons installed:
 
@@ -54,7 +54,7 @@ When they are installed, if you are on Windows, go to **Extras**/**Synchronisati
 Alternative: Using the CardBook add-on (Contacts only)
 ------------------------------------------------------
 `CardBook <https://addons.thunderbird.net/en/thunderbird/addon/cardbook/>`_ is an advanced alternative to Thunderbird's address book, which supports CardDAV. You can have TbSync and CardBook installed in parallel.
- 
+
 1. Click the CardBook icon in the upper right corner of Thunderbird:
 
 .. image:: ../images/cardbook_icon.png
