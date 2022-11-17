@@ -255,7 +255,7 @@ module installed to process these redirects. When running Nginx please refer to
 
 
 If your Nextcloud instance is installed in a subfolder called ``nextcloud`` and
-you're running Apache create or edit the :file:`.htaccess` file within the
+you're running Apache, create or edit the :file:`.htaccess` file within the
 document root of your Web server and add the following lines::
 
     <IfModule mod_rewrite.c>
