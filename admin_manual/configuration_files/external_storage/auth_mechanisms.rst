@@ -33,7 +33,7 @@ setup of the mount point.
 The **Log-in credentials, save in session** mechanism uses the Nextcloud login
 credentials of the user to connect to the storage. These are not stored anywhere
 on the server, but rather in the user session, giving increased security.
-This method has some important drawbacks, since Nextcloud has no access to the storage 
+This method has some important drawbacks, since Nextcloud has no access to the storage
 credentials and therefore cannot perform any background tasks on the storage:
 
 * Sharing is disabled
@@ -70,7 +70,7 @@ can be regenerated with a button in the GUI.
 After generating your keys, you need to copy your new public key to the
 destination server to ``.ssh/authorized_keys``.
 
-See :doc:`sftp.rst` for additional information on how to set up certificate based authentication on SFTP.
+See :doc:`./sftp` for additional information on how to set up certificate based authentication on SFTP.
 
 .. figure:: images/auth_rsa.png
    :alt: Form on admin page for generating RSA keys.
