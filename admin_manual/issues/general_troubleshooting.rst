@@ -179,7 +179,8 @@ these modules:
 * mod_security
 * mod_reqtimeout
 * mod_deflate
-* libapache2-mod-php*filter (use libapache2-mod-php7.4 instead)
+* libapache2-mod-php*filter (use libapache2-mod-php{VERSION} instead. Note: `have only module for one version enabled
+  <https://help.nextcloud.com/t/broken-nextcloud-after-ubuntu-lts-upgrade-to-php8-1/138355/8>`_)
 * mod_spdy together with libapache2-mod-php5 / mod_php (use fcgi or php-fpm
   instead)
 * mod_dav
