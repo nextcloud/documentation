@@ -368,7 +368,7 @@ Fair Use Policy
 
 Nextcloud is open source and you can host it for free on your own server or at a provider.
 
-Nextcloud recommends Using Nextcloud Enterprise for deploying instances with more than 500. With that size, issues like a broken server or a data leak become very serious.
+Nextcloud recommends Using Nextcloud Enterprise for deploying instances with more than 500 users. With that size, issues like a broken server or a data leak become very serious.
 
 If there is an issue with the server, 500 people can't work. A data leak would risk the data of many users. In short, the server should be considered mission-critical. We believe you and your users would have a better experience with Nextcloud Enterprise.
 
