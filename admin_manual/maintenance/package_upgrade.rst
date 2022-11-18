@@ -6,7 +6,7 @@ Upgrade quickstart
 ------------------
 
 One effective, if unofficial method for keeping Nextcloud current on Linux servers is by configuring 
-your system to use Nextcloud via a self contained "Snap" package, A technology allowing users to 
+your system to use Nextcloud via a self contained "Snap" package: a technology allowing users to 
 always have the latest version of an "app".
 
 That version from Canonical is quite restrictive. It is not aimed at developers or advanced users 
