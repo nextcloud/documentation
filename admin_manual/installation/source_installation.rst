@@ -484,12 +484,19 @@ See the `TrueNAS installation documentation <https://www.truenas.com/docs/core/s
 Installation via install script
 -------------------------------
 
-One of the easiest ways of installing is to use the Nextcloud VM scripts. It's basically just two steps:
+One of the easiest ways of installing is to use the Nextcloud VM or NextcloudPI scripts. It's basically just two steps:
 
 1. Download the latest `installation script <https://github.com/nextcloud/vm/blob/master/nextcloud_install_production.sh/>`_.
 2. Run the script with::
 
     sudo bash nextcloud_install_production.sh
+    
+or
+
+1. Download the latest `installation script <https://raw.githubusercontent.com/nextcloud/nextcloudpi/master/install.sh/>`_.
+2. Run the script with::
+
+    sudo bash install.sh
 
 A guided setup will follow and the only thing you have to do it to follow the on screen instructions, when given to you.
 
