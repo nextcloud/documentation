@@ -110,9 +110,7 @@ There are known bugs in older OpenSSL and NSS versions leading to misbehavior in
 combination with remote hosts using SNI. A technology used by most of the HTTPS
 websites. To ensure that Nextcloud will work properly you need to update OpenSSL
 to at least 1.0.2b or 1.0.1d. For NSS the patch version depends on your distribution
-and an heuristic is running the test which actually reproduces the bug. There
-are distributions such as RHEL/CentOS which have this backport still `pending 
-<https://bugzilla.redhat.com/show_bug.cgi?id=1241172>`_.
+and an heuristic is running the test which actually reproduces the bug.
 
 Your Web server is not set up properly to resolve /.well-known/caldav/ or /.well-known/carddav/
 -----------------------------------------------------------------------------------------------
