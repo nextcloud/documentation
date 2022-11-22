@@ -29,9 +29,9 @@ latest and supported version of a browser from this list:
    <https://browserslist.dev/?q=PjAuMjUlLCBub3Qgb3BfbWluaSBhbGwsIG5vdCBkZWFkLCBGaXJlZm94IEVTUg==>`_
 
 .. note:: If you want to use Nextcloud Talk you need to run Mozilla **Firefox** 52+
-   or Google **Chrome**/Chromium 49+ to have the full experience with video calls and 
+   or Google **Chrome**/Chromium 49+ to have the full experience with video calls and
    screensharing.
-   
+
 .. warning:: Microsoft **Internet Explorer** is **NOT** supported.
 
 Navigating the main user interface
@@ -69,9 +69,9 @@ The Nextcloud user interface contains the following fields and functions:
   enables you to create new files, new folders, or upload files.
 
 .. note:: You can also drag and drop files from your file manager into the
-   Files Application View to upload them to your instance. 
+   Files Application View to upload them to your instance.
 
-* **Search** field (6): Click on the Magnifier in the upper right corner 
+* **Search** field (6): Click on the Magnifier in the upper right corner
   to search for files and entries of the current app.
 
 * **Contacts Menu** (7): Gives you an overview about your contacts and users on
