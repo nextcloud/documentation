@@ -11,19 +11,13 @@ your Nextcloud server URL (e.g. cloud.example.com) and enter your username and p
 Web browser requirements
 ------------------------
 
-For the best experience with the Nextcloud web interface, we recommend that you use the 
-latest and supported version of a browser from this list:
+For the best experience with the Nextcloud web interface, we recommend that
+you use the latest and supported version of a browser from this list:
 
-.. No need to translate
-* Microsoft **Internet Explorer**
-.. No need to translate
+* Google **Chrome**/Chromium (Desktop and Android)
+* Mozilla **Firefox** (Desktop and Android)
+* Apple **Safari** (Desktop and iOS)
 * Microsoft **Edge**
-.. No need to translate
-* Mozilla **Firefox**
-.. No need to translate
-* Google **Chrome**/Chromium
-.. No need to translate
-* Apple **Safari**
 
 .. note:: Not all versions are supported. Nextcloud is tested and built to work with `these versions only.
    <https://browserslist.dev/?q=PjAuMjUlLCBub3Qgb3BfbWluaSBhbGwsIG5vdCBkZWFkLCBGaXJlZm94IEVTUg==>`_
