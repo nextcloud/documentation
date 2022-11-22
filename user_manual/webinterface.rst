@@ -27,7 +27,7 @@ you use the latest and supported version of a browser from this list:
 * Microsoft **Edge**
 
 .. note:: Not all versions are supported. Nextcloud is tested and built to work with `these versions only.
-   <https://browserslist.dev/?q=PjAuMjUlLCBub3Qgb3BfbWluaSBhbGwsIG5vdCBkZWFkLCBGaXJlZm94IEVTUg==>`
+   <https://browserslist.dev/?q=PjAuMjUlLCBub3Qgb3BfbWluaSBhbGwsIG5vdCBkZWFkLCBGaXJlZm94IEVTUg==>`_
 
 .. note:: If you want to use Nextcloud Talk you need to run Mozilla **Firefox** 52+
    or Google **Chrome**/Chromium 49+ to have the full experience with video calls and 
