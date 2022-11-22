@@ -25,11 +25,14 @@ latest and supported version of a browser from this list:
 .. No need to translate
 * Apple **Safari**
 
+.. note:: Not all versions are supported. Nextcloud is tested and built to work with `these versions only.
+   <https://browserslist.dev/?q=PjAuMjUlLCBub3Qgb3BfbWluaSBhbGwsIG5vdCBkZWFkLCBGaXJlZm94IEVTUg==>`
+
 .. note:: If you want to use Nextcloud Talk you need to run Mozilla **Firefox** 52+
    or Google **Chrome**/Chromium 49+ to have the full experience with video calls and 
-   screensharing. Google **Chrome**/Chromium requires a additional plugin for screensharing.
+   screensharing.
    
-.. note:: Microsoft **Internet Explorer** is **NOT** supported.
+.. warning:: Microsoft **Internet Explorer** is **NOT** supported.
 
 Navigating the main user interface
 ----------------------------------
