@@ -31,8 +31,7 @@ configuration report with the :ref:`occ config command
 
 .. _the Nextcloud Forums: https://help.nextcloud.com
 .. _FAQ page: https://help.nextcloud.com/t/how-to-faq-wiki
-.. _bugtracker: https://github.com/nextcloud/server/issues
-   https://docs.nextcloud.com/server/latest/developer_manual/prologue/bugtracker/index.html
+.. _bugtracker: https://docs.nextcloud.com/server/latest/developer_manual/prologue/bugtracker/index.html
 
 .. TODO ON RELEASE: Update version number above on release
 
