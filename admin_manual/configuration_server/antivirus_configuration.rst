@@ -171,7 +171,7 @@ back and change all of your logging to less verbose levels.
 
 
 Disabling background scan task
------------------
+------------------------------
 
 You can disable background scan with occ::
 
