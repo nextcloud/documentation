@@ -173,6 +173,6 @@ back and change all of your logging to less verbose levels.
 Disabling background scan task
 ------------------------------
 
-You can disable background scan with occ::
+You can disable background scan with occ to only scan files during upload.
 
     occ config:app:set files_antivirus av_background_scan --value="off"
