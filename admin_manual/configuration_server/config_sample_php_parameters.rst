@@ -2151,18 +2151,18 @@ Defaults to ``false``
 
 ::
 
-	'minimum.supported.desktop.version' => '2.0.0',
+	'minimum.supported.desktop.version' => '2.3.0',
 
 The minimum Nextcloud desktop client version that will be allowed to sync with
 this server instance. All connections made from earlier clients will be denied
 by the server. Defaults to the minimum officially supported Nextcloud desktop
-clientversion at the time of release of this server version.
+client version at the time of release of this server version.
 
 When changing this, note that older unsupported versions of the Nextcloud desktop
 client may not function as expected, and could lead to permanent data loss for
 clients or other unexpected results.
 
-Defaults to ``2.0.0``
+Defaults to ``2.3.0``
 
 ::
 
