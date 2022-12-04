@@ -222,7 +222,7 @@ See:
   (Describes problems with Finder on various Web servers)
 
 There is also a well maintained FAQ thread available at the `ownCloud Forums
-<https://forum.owncloud.org/viewtopic.php?f=17&t=7536>`_
+<https://central.owncloud.org/t/how-to-fix-caldav-carddav-webdav-problems/852>`_
 which contains various additional information about WebDAV problems.
 
 .. _service-discovery-label:
