@@ -266,7 +266,7 @@ the default site. Open a terminal and run::
           plan to make your Nextcloud server publicly accessible. Consider getting
           a certificate signed by a signing authority. Check with your domain name
           registrar or hosting service for good deals on commercial certificates.
-          Or use free `Let's Encrypt <https://letsencrypt.org/>`_ one.
+          Or use a free `Let's Encrypt <https://letsencrypt.org/>`_ ones.
  
 .. _installation_wizard_label:
 
