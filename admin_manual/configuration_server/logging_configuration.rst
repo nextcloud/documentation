@@ -31,6 +31,8 @@ All log information will be sent to PHP ``error_log()``.
 
     "log_type" => "errorlog",
 
+.. warning:: Until version Nextcloud 25 log entries were prefixed with ``[owncloud]``. From 26 onwards messages start with ``[nextcloud]``.
+
 file
 ~~~~
 
