@@ -21,12 +21,16 @@ Installation
 ------------
 
 **Ubuntu**
+
 $ sudo snap install nextcloud
 
 **All other distros**
-Go to https://docs.snapcraft.io/installing-snapd/6735
-Type the command to install snapd
-Install Nextcloud $ sudo snap install nextcloud
+
+(`be warned <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Why-Ubuntu-is-the-only-supported-distro/>`_)
+
+* Go to https://docs.snapcraft.io/installing-snapd/6735
+* Type the command to install snapd
+* Install Nextcloud ($ sudo snap install nextcloud)
 
 1st login
 ---------
