@@ -263,11 +263,11 @@ the default site. Open a terminal and run::
     service apache2 reload
 
 .. note:: Self-signed certificates have their drawbacks - especially when you
-          plan to make your Nextcloud server publicly accessible. You might
-          want to consider getting a certificate signed by a commercial signing
-          authority. Check with your domain name registrar or hosting service
-          for good deals on commercial certificates.
-
+          plan to make your Nextcloud server publicly accessible. Consider getting
+          a certificate signed by a signing authority. Check with your domain name
+          registrar or hosting service for good deals on commercial certificates.
+          Or use a free `Let's Encrypt <https://letsencrypt.org/>`_ ones.
+ 
 .. _installation_wizard_label:
 
 Installation wizard
