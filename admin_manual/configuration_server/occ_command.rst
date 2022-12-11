@@ -163,6 +163,9 @@ and ``encryption:list-modules``
 Enabling autocompletion
 -----------------------
 
+Method 1: Using an alias and standard built-in ``complete``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Two script files are used to enable autocompletion::
 
 * bash-add-alias.sh
@@ -201,6 +204,9 @@ offer available options, regardless of present working directory.
 * apps if, i.e. occ ``talk:command:list [tab][tab]`` is entered
 * file system entries if, i.e. ``occ files:scan --path [tab][tab]`` is entered
 
+
+Method 2: Using symfony
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note:: Command autocompletion currently only works if the user you use to execute the occ commands has a profile.
   ``www-data`` in most cases is ``nologon`` and therefor **cannot** use this feature.
