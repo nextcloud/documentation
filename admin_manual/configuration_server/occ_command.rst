@@ -191,11 +191,11 @@ have it persist across logins and reboots by optionally appending it to
 Next, the script will optionally run ``occ.bash``, which enables and handles
 the tab completions.
 
-Finally, the script will offer to copy the ``occ.bash`` to the system
-directory ``/etc/bash_completion.d/`` so it is automatically available for
-future sessions.
+Finally, the script will offer to copy the ``occ.bash`` to the user's
+completions directory ``~/.local/share/bash-completion/completions/`` so it is
+automatically available for future sessions.
 
-Afterwards running the alias and ``occ.bash``, ``occ [tab][tab]`` will
+Once the alias is installed and ``occ.bash`` sourced, ``occ [tab][tab]`` will
 offer available options, regardless of present working directory.
 
 ``occ.bash`` will attempt to offer completion options of:
