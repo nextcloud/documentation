@@ -203,7 +203,7 @@ offer available options, regardless of present working directory.
 * user_ids if, i.e. ``occ files:scan [tab][tab]`` is entered
 * apps if, i.e. occ ``talk:command:list [tab][tab]`` is entered
 * file system entries if, i.e. ``occ files:scan --path [tab][tab]`` is entered
-
+* file system entries if, i.e. ``occ config:import`` is entered
 
 Method 2: Using symfony
 ^^^^^^^^^^^^^^^^^^^^^^^
