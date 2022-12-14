@@ -224,7 +224,7 @@ Nextcloud will read existing session data at the beginning of the request lifecy
 
 Alternatively you can use the UseSession annotation to automatically open and close the session for you.
 
-In case the session may be read and written by concurrent requests of your application keeping the session open during your controller method execution may be required to ensure that the session is locked and no other request can write to the session at the same time. When reopening the session, the session data will also get updated with the latest changes from other requests. Using the annotation will keep the session lock during the whole time of the controller method execution.
+In case the session may be read and written by concurrent requests of your application, keeping the session open during your controller method execution may be required to ensure that the session is locked and no other request can write to the session at the same time. When reopening the session, the session data will also get updated with the latest changes from other requests. Using the annotation will keep the session lock for the whole duration of the controller method execution.
 
 For additional information on how session locking works in PHP see the artile about `PHP Session Locking: How To Prevent Sessions Blocking in PHP requests <https://ma.ttias.be/php-session-locking-prevent-sessions-blocking-in-requests/>`_.
 
