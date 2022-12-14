@@ -19,7 +19,7 @@ In our case we will create an admin section class in **<myapp>/lib/Sections/Note
     use OCP\IURLGenerator;
     use OCP\Settings\IIconSection;
 
-    class NotesAdmin extends IIconSection {
+    class NotesAdmin implements IIconSection {
         private IL10N $l;
         private IURLGenerator $urlGenerator;
 
@@ -59,7 +59,7 @@ in *<myapp>/lib/Settings/NotesAdmin.php**.
     use OCP\IL10N;
     use OCP\Settings\ISettings;
 
-    class NotesAdmin extends ISettings {
+    class NotesAdmin implements ISettings {
         private IL10N $l;
         private IConfig $config;
 
@@ -115,6 +115,8 @@ This is a feature that needs to be enabled for each admin setting class.
 To do so, the setting class needs to implement `IDelegatedSettings` instead of `ISettings`
 and implement two additional methods.
 
+.. TODO ON RELEASE: Update version number above on release
+
 .. code-block:: php
 
     <?php
@@ -125,7 +127,7 @@ and implement two additional methods.
     use OCP\IL10N;
     use OCP\Settings\IDelegatedSettings;
 
-    class NotesAdmin extends IDelegatedSettings {
+    class NotesAdmin implements IDelegatedSettings {
 
         ...
 

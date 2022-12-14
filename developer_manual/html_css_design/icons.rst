@@ -19,7 +19,7 @@ White icons only have a grey background on this documentation page for readabili
 Svg color api
 =============
 
-More informations about scss and this api: :ref:`scss mixins and functions <cssicons>`
+More information about scss and this api: :ref:`scss mixins and functions <cssicons>`
 
 You can request and color any svg icons used in nextcloud with this api.
 The server will directly change the colours of the ``circle``, ``rect`` and ``path`` elements in the svg you provide.

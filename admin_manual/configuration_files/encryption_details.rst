@@ -36,7 +36,7 @@ The recovery key is used to provide a restore mechanism in cases where the user 
 Key type: user key
 ------------------
 
-User key encryption needs to be explicitly activated by calling ``./occ encryption:disable-master-key``. In older versions of Nextcloud this had been enabled by default. 
+User key encryption needs to be explicitly activated by calling ``./occ encryption:disable-master-key``. In older versions of Nextcloud this had been enabled by default.
 With user key encryption enabled all users have their own user keys that are used to secure the files handled by Nextcloud. The user keys are protected by the user passwords. The advantage is that the server administrator is not able to decrypt user files without knowing any user password - unless the file is publicly shared or a recovery key is defined - but has the disadvantage that files are permanently lost if the users forget their user passwords - unless the files are (publicly) shared or a recovery key is defined.
 
 .. note:: This method cannot be used with SAML authentication, because Nextcloud does not get a hold of any credentials whatsoever and therefore cannot use any users' passwords for encryption.
@@ -346,9 +346,8 @@ Sources
 -------
 
 - `nextcloud-tools repository on GitHub <https://github.com/syseleven/nextcloud-tools>`_
-- `Nextcloud Encryption Configuration documentation <https://docs.nextcloud.com/server/stable/admin_manual/configuration_files/encryption_configuration.html>`_
+- `Nextcloud Encryption Configuration documentation <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html>`_
 - `Nextcloud Help response concering the usage of version information <https://help.nextcloud.com/t/allow-file-decryption-with-only-the-files-keys-and-passwords/436/12>`_
-- `Overview of ownCloud Encryption Model <https://owncloud.com/wp-content/uploads/2015/07/Overview_of_ownCloud_Encryption_Model_2.2.pdf>`_
 - `Sourcecode: Creation of the Message Authentication Code <https://github.com/nextcloud/server/blob/a374d8837d6de459500e619cf608e0721ea14574/apps/encryption/lib/Crypto/Crypt.php#L504>`_
 - `Sourcecode: Derivation of the Encryption Key <https://github.com/nextcloud/server/blob/a374d8837d6de459500e619cf608e0721ea14574/apps/encryption/lib/Crypto/Crypt.php#L346>`_
 - `Sourcecode: Encryption of the File <https://github.com/nextcloud/server/blob/a374d8837d6de459500e619cf608e0721ea14574/apps/encryption/lib/Crypto/Crypt.php#L234>`_
@@ -357,3 +356,5 @@ Sources
 - `Sourcecode: Generation of the File Key <https://github.com/nextcloud/server/blob/a374d8837d6de459500e619cf608e0721ea14574/apps/encryption/lib/Crypto/Crypt.php#L645>`_
 - `Sourcecode: Generation of the Initialization Vector <https://github.com/nextcloud/server/blob/a374d8837d6de459500e619cf608e0721ea14574/apps/encryption/lib/Crypto/Crypt.php#L634>`_
 - `Sourcecode: Generation of a Key Pair <https://github.com/nextcloud/server/blob/a374d8837d6de459500e619cf608e0721ea14574/apps/encryption/lib/Crypto/Crypt.php#L153>`_
+
+.. TODO ON RELEASE: Update version number above on release

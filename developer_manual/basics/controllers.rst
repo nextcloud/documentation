@@ -220,6 +220,14 @@ Reading and writing session variables
 
 To set, get or modify session variables, the ISession object has to be injected into the controller.
 
+Nextcloud will read existing session data at the beginning of the request lifecycle and close the session afterwards. This means that in order to write to the session, the session has to be opened first. This is done implicitly when calling the set method, but would close immediately afterwards. To prevent this, the session has to be explicitly opened by calling the reopen method.
+
+Alternatively you can use the ``@UseSession`` annotation to automatically open and close the session for you.
+
+In case the session may be read and written by concurrent requests of your application, keeping the session open during your controller method execution may be required to ensure that the session is locked and no other request can write to the session at the same time. When reopening the session, the session data will also get updated with the latest changes from other requests. Using the annotation will keep the session lock for the whole duration of the controller method execution.
+
+For additional information on how session locking works in PHP see the artile about `PHP Session Locking: How To Prevent Sessions Blocking in PHP requests <https://ma.ttias.be/php-session-locking-prevent-sessions-blocking-in-requests/>`_.
+
 Then session variables can be accessed like this:
 
 .. note:: The session is closed automatically for writing, unless you add the @UseSession annotation!
@@ -238,8 +246,8 @@ Then session variables can be accessed like this:
 
         private ISession $session;
 
-        public function __construct($AppName, IRequest $request, ISession $session) {
-            parent::__construct($AppName, $request);
+        public function __construct($appName, IRequest $request, ISession $session) {
+            parent::__construct($appName, $request);
             $this->session = $session;
         }
 
@@ -558,7 +566,7 @@ A file download can be triggered by returning a DownloadResponse:
 Creating custom responses
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If no premade Response fits the needed usecase, it is possible to extend the Response base class and custom Response. The only thing that needs to be implemented is the **render** method which returns the result as string.
+If no premade Response fits the needed use case, it is possible to extend the Response base class and custom Response. The only thing that needs to be implemented is the **render** method which returns the result as string.
 
 Creating a custom XMLResponse class could look like this:
 
@@ -716,7 +724,7 @@ In order to ease migration from OCS API routes to the App Framework, an addition
 
 The format parameter works out of the box, no intervention is required.
 
-In order to make routing work for OCS routes you need to add a seperate 'ocs' entry to the routing table of your app.
+In order to make routing work for OCS routes you need to add a separate 'ocs' entry to the routing table of your app.
 Inside these are normal routes.
 
 .. code-block:: php
@@ -770,6 +778,7 @@ By default every controller method enforces the maximum security, which is:
 
 * Ensure that the user is admin
 * Ensure that the user is logged in
+* Ensure that the user has passed the two-factor challenge, if applicable
 * Check the CSRF token
 
 Most of the time though it makes sense to also allow normal users to access the page and the PageController->index() method should not check the CSRF token because it has not yet been sent to the client and because of that can't work.
@@ -777,8 +786,9 @@ Most of the time though it makes sense to also allow normal users to access the 
 To turn off checks the following *Annotations* can be added before the controller:
 
 * **@NoAdminRequired**: Also users that are not admins can access the page
-* **@NoCSRFRequired**: Don't check the CSRF token (use this wisely since you might create a security hole; to understand what it does see `CSRF in the security section <../prologue/security.html#cross-site-request-forgery>`__)
 * **@PublicPage**: Everyone can access the page without having to log in
+* **@NoTwoFactorRequired**: A user can access the page before the two-factor challenge has been passed (use this wisely and only in two-factor auth apps, e.g. to allow setup during login)
+* **@NoCSRFRequired**: Don't check the CSRF token (use this wisely since you might create a security hole; to understand what it does see `CSRF in the security section <../prologue/security.html#cross-site-request-forgery>`__)
 
 A controller method that turns off all checks would look like this:
 

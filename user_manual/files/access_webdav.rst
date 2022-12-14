@@ -209,7 +209,9 @@ path of your certificate as in this example::
 Accessing files using macOS
 ---------------------------
 
-.. note:: The macOS Finder suffers from a `series of implementation problems <http://sabre.io/dav/clients/finder/>`_ and should only be used if the Nextcloud server runs on **Apache** and **mod_php**, or **Nginx 1.3.8+**. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like `Cyberduck <https://cyberduck.io/>`_ (see instructions `here <https://docs.nextcloud.com/server/stable/user_manual/files/access_webdav.html#accessing-files-using-cyberduck>`_) and `Filezilla <https://filezilla-project.org>`_. Commercial clients include `Mountain Duck <https://mountainduck.io/>`_, `Forklift <https://binarynights.com/>`_, `Transmit <https://panic.com/>`_, and `Commander One <https://mac.eltima.com/>`_.
+.. note:: The macOS Finder suffers from a `series of implementation problems <http://sabre.io/dav/clients/finder/>`_ and should only be used if the Nextcloud server runs on **Apache** and **mod_php**, or **Nginx 1.3.8+**. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like `Cyberduck <https://cyberduck.io/>`_ (see instructions `here <https://docs.nextcloud.com/server/latest/user_manual/files/access_webdav.html#accessing-files-using-cyberduck>`_) and `Filezilla <https://filezilla-project.org>`_. Commercial clients include `Mountain Duck <https://mountainduck.io/>`_, `Forklift <https://binarynights.com/>`_, `Transmit <https://panic.com/>`_, and `Commander One <https://mac.eltima.com/>`_.
+
+.. TODO ON RELEASE: Update version number above on release
 
 To access files through the macOS Finder:
 
@@ -232,14 +234,14 @@ Accessing files using Microsoft Windows
 ---------------------------------------
 
 If you use the native Windows implementation of WebDAV, you can map Nextcloud to a new
-drive using Windows Explorer. Mapping to a drive enables you to browse files stored on a 
+drive using Windows Explorer. Mapping to a drive enables you to browse files stored on a
 Nextcloud server the way you would files stored in a mapped network drive.
 
 Using this feature requires network connectivity. If you want to store your
 files offline, use the Desktop Client to sync all files on your
 Nextcloud to one or more directories of your local hard drive.
 
-.. note:: Windows 10 now defaults to allow Basic Authentication if HTTPS is 
+.. note:: Windows 10 now defaults to allow Basic Authentication if HTTPS is
     enabled prior to mapping your drive. On older versions of Windows,
     you must permit the use of Basic Authentication in the Windows
     Registry: launch ``regedit`` and navigate to
@@ -515,6 +517,39 @@ To get the properties of files in the root folder:
         </d:propstat>
       </d:response>
     </d:multistatus>
+
+
+
+
+Accessing files using WinSCP
+-------------------------------
+
+`WinSCP <https://winscp.net/eng/docs/introduction/>`_  is an open source free SFTP client, FTP client, WebDAV client, S3 client and SCP client for Windows. Its main function is file transfer between a local and a remote computer. Beyond this, WinSCP offers scripting and basic file manager functionality.
+
+You can `download <https://winscp.net/eng/downloads.php/>`_ the portable version of WinSCP and run it on Linux through `Wine <https://wiki.winehq.org/Main_Page/>`_.
+
+To run WinSCP on Linux, download wine through your distribution's package manager, then run it via: wine WinSCP.exe.
+
+To connect to Nextcloud:
+
+* Start WinSCP
+* Press 'Session' in the menu
+* Press the 'New Session' menu option
+* Set the 'File protocol' dropdown to WebDAV
+* Set the 'Encryption' dropdown to TSL/SSL Implicit encryption
+* Fill in the hostname field: example.com
+* Fill in the username field: NEXTCLOUDUSERNAME
+* Fill in the password field: NEXTCLOUDPASSWORD
+* Press the 'Advanced...' button
+* Navigate to 'Environment', 'Directories' on the left side
+* Fill in the 'Remote directory' field with the following: /nextcloud/remote.php/dav/files/NEXTCLOUDUSERNAME/
+* Press the 'OK' button
+* Press the 'Save' button
+* Select the desired options and press the 'OK' button
+* Press the 'Login' button to connect to Nextcloud
+
+Note: it is recommended to use an app password for the password if you use TOTP, as WinSCP does not understand TOTP in Nextcloud at the time of writing (2022-11-07).
+
 
 
 .. _KB2668751: https://web.archive.org/web/20211008025539/https://support.microsoft.com/en-us/topic/you-cannot-download-more-than-50-mb-or-upload-large-files-when-the-upload-takes-longer-than-30-minutes-using-web-client-in-windows-7-8709ae9d-e808-c5a0-95d0-9a7143c50b11

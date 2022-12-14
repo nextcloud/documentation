@@ -100,7 +100,7 @@ adjust your php.ini and file rights.
 Running unit tests for the Nextcloud core project
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The core project provides core unit tests using different database backends like sqlite, mysql, pgsql, oci (for Oracle).
-Every database to test needs to accesible either
+Every database to test needs to accessible either
 
 - natively, setup with
 

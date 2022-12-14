@@ -31,6 +31,8 @@ All log information will be sent to PHP ``error_log()``.
 
     "log_type" => "errorlog",
 
+.. warning:: Until version Nextcloud 25 log entries were prefixed with ``[owncloud]``. From 26 onwards messages start with ``[nextcloud]``.
+
 file
 ~~~~
 
@@ -158,6 +160,20 @@ Previously the logfile could be defined in the app config. This config is still 
 Find detailed documentation on auditable events for enterprises in our `customer portal <https://portal.nextcloud.com/article/using-the-audit-log-44.html>`_.
 
 .. _PHP date function: http://www.php.net/manual/en/function.date.php
+
+Workflow log
+------------
+
+By default, the workflow log is stored to `flow.log` in the data folder.
+
+The path of the workflow log can be set as follows:
+
+::
+
+	occ config:app:set workflowengine logfile --value=/var/log/nextcloud/flow.log
+
+Set the value to `/dev/null` to avoid storing the log.
+
 
 Temporary overrides
 -------------------

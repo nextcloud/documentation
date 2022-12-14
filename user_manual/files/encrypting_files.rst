@@ -8,7 +8,7 @@ encrypted on the server.
 Encryption is server-wide, so when it is enabled you cannot choose to keep your
 files unencrypted. You don't have to do anything special, as it uses your
 Nextcloud login as the password for your unique private encryption key. Just log
-in and out and manage and share your files as you normally do, and you can
+out and in and manage and share your files as you normally do, and you can
 still change your password whenever you want.
 
 Its main purpose is to encrypt files on remote storage services that are
@@ -37,6 +37,8 @@ The only way to disable encryption is to run the `"decrypt all"
 <https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/occ_command.html#encryption-label>`_
 script, which decrypts all files and disables encryption.
 
+.. TODO ON RELEASE: Update version number above on release
+
 Is it possible to disable encryption with the recovery key?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -53,6 +55,8 @@ If you don't have the users password or `file recovery key
 <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_,
 then there is no way to decrypt all files. What's more, running it on login
 would be dangerous, because you would most likely run into timeouts.
+
+.. TODO ON RELEASE: Update version number above on release
 
 Is it planned to move this to the next user login or a background job?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

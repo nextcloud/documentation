@@ -4,7 +4,7 @@
 Bootstrapping
 =============
 
-Every php process has a relatively short lifespan that lasts as long as the HTTP request or the invokation of the command
+Every php process has a relatively short lifespan that lasts as long as the HTTP request or the invocation of the command
 line program. At the beginning of this lifespan, Nextcloud initializes its services. At the same time, any additional apps
 might want to register their services to Nextcloud as well. This event is called the *bootstrapping* and this chapter
 shall shed some light on how to hook into this with an app.
@@ -44,6 +44,7 @@ Nextcloud will try to autoload the class from the namespace ``\OCA\<App namespac
 The class **must** extend ``OCP\AppFramework\App`` and may optionally implement ``\OCP\AppFramework\Bootstrap\IBootstrap``:
 
 .. code-block:: php
+    :caption: lib/AppInfo/Application.php
 
     <?php
 
@@ -88,7 +89,7 @@ The class **must** extend ``OCP\AppFramework\App`` and may optionally implement 
 
     }
     
-Note that the context's of the methods ``register`` and ``boot`` have different interfaces and thus have different capabilities appropriate for their stage.
+Note that the context objects of the methods ``register`` and ``boot`` have different interfaces and thus have different capabilities appropriate for their stage.
 
 Bootstrapping process
 ---------------------
@@ -101,29 +102,109 @@ Nextcloud 20 and later
 
 Nextcloud 20 is the first release with the interface ``\OCP\AppFramework\Bootstrap\IBootstrap``. This interface can be
 implemented by your app's ``Application`` class to signal that it wants to act on the bootstrapping stages. The major difference
-between this and the old process is that the boostrapping is not performed in sequence, but apps register and boot
+between this and the old process is that the bootstrapping is not performed in sequence, but apps register and boot
 interleaved. This should ensure that an app that ``boot``\s can rely on all other apps' registration to be finished.
 
 The overall process is as follows:
 
 1) In each installed and enabled app that has an ``Application`` class that also implements ``IBootstrap``, the ``register``
    method will be called. This method receives a context argument via which the app can prime the dependency injection
-   container and register other services lazily, e.g. by calling ``$context->registerService(...)``. The emphasis is on **lazyness**. At this very early stage of the
+   container and register other services lazily, e.g. by calling ``$context->registerService(...)``. The emphasis is on **laziness**. At this very early stage of the
    process lifetime, no other apps nor all of the server components are ready. Therefore the app **must not** try to use
    anything except the API provided by the context. That shall ensure that all apps can safely run their registration logic
    before any services are queried (instantiated) from the DI container or related code is run.
 2) Nextcloud will load groups of certain apps early, e.g. filesystem or session apps, and other later. For that purpose, their optional
    :ref:`app-php` will be included. As ``app.php`` is deprecated, apps should try not to rely on this step.
 3) Nextcloud will query the app's ``Application`` class (again), no matter whether it implements ``IBootstrap`` or not.
-4) Nextcloud will invoke the ``boot`` method of every ``Application`` instance that implements ``IBootstrap``. At this stage
+4) Nextcloud will invoke the :ref:`boot <app-bootstrap-boot>` method of every ``Application`` instance that implements ``IBootstrap``. At this stage
    you may assume that all registrations via ``IBootstrap::register`` have completed.
+
+
+.. _app-bootstrap-boot:
+
+Booting an app
+^^^^^^^^^^^^^^
+
+Any code that should run once for every Nextcloud process goes into the ``boot`` method of an app's ``Application`` class. Use this mechanism carefully as it could have a negative effect on Nextcloud's overall performance.
+
+.. code-block:: php
+    :caption: lib/AppInfo/Application.php
+    :emphasize-lines: 11-15
+
+    <?php
+
+    class Application extends App implements IBootstrap {
+
+        public function __construct() {
+            parent::__construct('myapp');
+        }
+
+        public function register(IRegistrationContext $context): void {}
+
+        public function boot(IBootContext $context): void {
+            /** @var IFooManager $manager */
+            $manager = $context->getAppContainer()->query(IFooManager::class);
+            $manager->registerCustomFoo(MyFooImpl::class);
+        }
+
+    }
+
+The code above fetches a fictional *foo manager* to register an app class. The boot context object comes with a ``injectFn`` helper that eases dependency injection inside the ``boot`` method by injecting arguments of a callable:
+
+.. code-block:: php
+    :caption: lib/AppInfo/Application.php
+    :emphasize-lines: 12-14
+
+    <?php
+
+    class Application extends App implements IBootstrap {
+
+        public function __construct() {
+            parent::__construct('myapp');
+        }
+
+        public function register(IRegistrationContext $context): void {}
+
+        public function boot(IBootContext $context): void {
+            $context->injectFn(function(IFooManager $manager) {
+                $manager->registerCustomFoo(MyFooImpl::class);
+            });
+        }
+
+    }
+
+With the help of ``Closure::fromCallable`` you can also delegate to other methods that get their arguments injected:
+
+.. code-block:: php
+    :caption: lib/AppInfo/Application.php
+    :emphasize-lines: 12,15-17
+
+    <?php
+
+    class Application extends App implements IBootstrap {
+
+        public function __construct() {
+            parent::__construct('myapp');
+        }
+
+        public function register(IRegistrationContext $context): void {}
+
+        public function boot(IBootContext $context): void {
+            $context->injectFn(Closure::fromCallable([$this, 'registerFoo']));
+        }
+
+        protected function registerFoo(IFooManager $manager): void {
+            $manager->registerCustomFoo(MyFooImpl::class);
+        }
+
+    }
 
 Nextcloud 19 and older
 **********************
 
 Nextcloud will load groups of certain apps early, like filesystem or session apps, and other later. For this their optional
 :ref:`app-php` will be included. The ``Application`` class is only queried for some requests, so there is no guarantee that
-its contstructor will be invoked.
+it's constructor will be invoked.
 
 
 .. _app-php:
@@ -138,6 +219,7 @@ To leverage the advantages of object-oriented programming, it's recommended to p
 class and query an instance like
 
 .. code-block:: php
+    :caption: appinfo/app.php
 
     <?php
 

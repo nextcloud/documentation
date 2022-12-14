@@ -41,3 +41,27 @@ the app ID.
     use function OCP\Log\logger;
 
     logger('calendar')->warning('look, no dependency injection');
+
+Admin audit logging
+-------------------
+
+If you want to log things less for system administration but for compliance reasons, e.g. who accessed which file,
+who changed the password of an item or made it public, the
+`admin audit log <https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/logging_configuration.html#admin-audit-log>`_
+is the correct place.
+
+.. TODO ON RELEASE: Update version number above on release
+
+You can easily add a log by simply emitting an ``OCP\Log\Audit\CriticalActionPerformedEvent`` event:
+
+.. code-block:: php
+
+    <?php
+
+    $dispatcher = \OCP\Server::get(\OCP\EventDispatcher\IEventDispatcher::class);
+
+    $event = new \OCP\Log\Audit\CriticalActionPerformedEvent(
+        'My critical action for app %s',
+        ['name' => 'My App ID']
+    );
+    $dispatcher->dispatchTyped($event);

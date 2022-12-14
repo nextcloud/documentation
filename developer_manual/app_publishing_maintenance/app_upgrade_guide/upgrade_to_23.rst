@@ -23,3 +23,10 @@ Deprecated APIs
 * ``\OCP\Calendar\IManager::getCalendars``: use :ref:`the new calendar API<calendar-access>`
 * ``\OCP\Calendar\IManager::clear``: there is no replacement
 
+Updated core libraries
+^^^^^^^^^^^^^^^^^^^^^^
+
+``doctrine/dbal``
+*****************
+
+The Doctrine Database Abstraction Layer (dbal) powers Nextcloud's database connection and query builder. In Nextcloud 23 this dependency was updated from 3.0 to 3.1. As a consequence the ``\OC\DB\QueryBuilder\QueryBuilder::getFirstResult`` method now returns ``0`` instead of ``null`` if ``\OC\DB\QueryBuilder\QueryBuilder::setFirstResult`` wasn't called.

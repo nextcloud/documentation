@@ -23,7 +23,7 @@ The route array contains the following parts:
 * **verb** (Optional, defaults to GET): The HTTP method that should be matched, (e.g. GET, POST, PUT, DELETE, HEAD, OPTIONS, PATCH)
 * **requirements** (Optional): lets you match and extract URLs that have slashes in them (see :ref:`matching-suburls`)
 * **postfix** (Optional): lets you define a route id postfix. Since each route name will be transformed to a route id (**page#method** -> **myapp.page.method**) and the route id can only exist once you can use the postfix option to alter the route id creation by adding a string to the route id, e.g., **'name' => 'page#method', 'postfix' => 'test'** will yield the route id **myapp.page.methodtest**. This makes it possible to add more than one route/URL for a controller method
-* **defaults** (Optional): If this setting is given, a default value will be assumed for each URL parameter which is not present. The default values are passed in as a key => value par array
+* **defaults** (Optional): If this setting is given, a default value will be assumed for each URL parameter which is not present. The default values are passed in as a key => value pair array
 
 Extracting values from the URL
 ------------------------------

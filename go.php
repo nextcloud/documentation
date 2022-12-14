@@ -36,6 +36,7 @@ $mapping = array(
     'admin-source_install'    => '/admin_manual/installation/source_installation.html',
     'admin-sse-legacy-format' => '/admin_manual/configuration_files/encryption_migration.html',
     'admin-sso'               => '/admin_manual/configuration_server/sso_configuration.html',
+    'admin-system-requirements' => '/admin_manual/installation/system_requirements.html',
     'admin-theming'           => '/admin_manual/configuration_server/theming.html',
     'admin-theming-icons'     => '/admin_manual/configuration_server/theming.html#theming-of-icons',
     'admin-transactional-locking' => '/admin_manual/configuration_files/files_locking_transactional.html',

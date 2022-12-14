@@ -104,7 +104,7 @@ use the **registerService** method on the container object:
        */
       $container->registerService(AuthorController::class, function(ContainerInterface $c): AuthorController {
         return new AuthorController(
-          $c->get('AppName'),
+          $c->get('appName'),
           $c->get(Request::class),
           $c->get(AuthorService::class)
         );
@@ -139,12 +139,12 @@ The container works in the following way:
 * The matched route queries **AuthorController** service from the container::
 
     return new AuthorController(
-      $c->get('AppName'),
+      $c->get('appName'),
       $c->get(Request::class),
       $c->get(AuthorService::class)
     );
 
-* The **AppName** is queried and returned from the base class
+* The **appName** is queried and returned from the base class
 * The **Request** is queried and returned from the server container
 * **AuthorService** is queried::
 
@@ -198,9 +198,9 @@ So basically the following is now possible:
       public MyTestClass $class;
       public string $appName;
 
-      public function __construct(MyTestClass $class, string $AppName) {
+      public function __construct(MyTestClass $class, string $appName) {
           $this->class = $class;
-          $this->appName = $AppName;
+          $this->appName = $appName;
       }
   }
 
@@ -213,7 +213,7 @@ So basically the following is now possible:
   $class2->appName === 'myname';  // true
   $class2 === $app->getContainer()->get(MyTestClass2::class);  // true
 
-.. note:: $AppName is resolved because the container registered a parameter under the key 'AppName' which will return the app id. The lookup is case sensitive so while $AppName will work correctly, using $appName as a constructor parameter will fail.
+.. note:: $appName is resolved because the container registered a parameter under the key 'appName' which will return the app id.
 
 How does it affect the request lifecycle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -252,8 +252,8 @@ The only thing that needs to be done to add a route and a controller method is n
   use OCP\IRequest;
 
   class PageController {
-      public function __construct($AppName, IRequest $request) {
-          parent::__construct($AppName, $request);
+      public function __construct($appName, IRequest $request) {
+          parent::__construct($appName, $request);
       }
 
       public function index() {
@@ -309,46 +309,54 @@ The following parameter names and type hints can be used to inject core services
 
 Parameters:
 
-* **AppName**: The app id
-* **WebRoot**: The path to the Nextcloud installation
-* **UserId**: The id of the current user
+* **appName**: The app id
+* **userId**: The id of the current user
+* **webRoot**: The path to the Nextcloud installation
+
+Aliases:
+
+* **AppName**: resolves to ``appName`` (deprecated)
+* **Request**: resolves to ``\OCP\IRequest``
+* **ServerContainer**: resolves to ``\OCP\IServerContainer``
+* **UserId**: resolves to ``userId`` (deprecated)
+* **WebRoot**: resolves to ``webRoot`` (deprecated)
 
 Types:
 
-* **OCP\\IAppConfig**
-* **OCP\\IAppManager**
-* **OCP\\IAvatarManager**
-* **OCP\\Activity\\IManager**
-* **OCP\\ICache**
-* **OCP\\ICacheFactory**
-* **OCP\\IConfig**
-* **OCP\\AppFramework\\Utility\\IControllerMethodReflector**
-* **OCP\\Contacts\\IManager**
-* **OCP\\IDateTimeZone**
-* **OCP\\IDBConnection**
-* **OCP\\Diagnostics\\IEventLogger**
-* **OCP\\Diagnostics\\IQueryLogger**
-* **OCP\\Files\\Config\\IMountProviderCollection**
-* **OCP\\Files\\IRootFolder**
-* **OCP\\IGroupManager**
-* **OCP\\IL10N**
-* **OCP\\ILogger**
-* **OCP\\BackgroundJob\\IJobList**
-* **OCP\\INavigationManager**
-* **OCP\\IPreview**
-* **OCP\\IRequest**
-* **OCP\\AppFramework\\Utility\\ITimeFactory**
-* **OCP\\ITagManager**
-* **OCP\\ITempManager**
-* **OCP\\Route\\IRouter**
-* **OCP\\ISearch**
-* **OCP\\ISearch**
-* **OCP\\Security\\ICrypto**
-* **OCP\\Security\\IHasher**
-* **OCP\\Security\\ISecureRandom**
-* **OCP\\IURLGenerator**
-* **OCP\\IUserManager**
-* **OCP\\IUserSession**
+* ``\OCP\IAppConfig``
+* ``\OCP\IAppManager``
+* ``\OCP\IAvatarManager``
+* ``\OCP\Activity\IManager``
+* ``\OCP\ICache``
+* ``\OCP\ICacheFactory``
+* ``\OCP\IConfig``
+* ``\OCP\AppFramework\Utility\IControllerMethodReflector``
+* ``\OCP\Contacts\IManager``
+* ``\OCP\IDateTimeZone``
+* ``\OCP\IDBConnection``
+* ``\OCP\Diagnostics\IEventLogger``
+* ``\OCP\Diagnostics\IQueryLogger``
+* ``\OCP\Files\Config\IMountProviderCollection``
+* ``\OCP\Files\IRootFolder``
+* ``\OCP\IGroupManager``
+* ``\OCP\IL10N``
+* ``\OCP\ILogger``
+* ``\OCP\BackgroundJob\IJobList``
+* ``\OCP\INavigationManager``
+* ``\OCP\IPreview``
+* ``\OCP\IRequest``
+* ``\OCP\AppFramework\Utility\ITimeFactory``
+* ``\OCP\ITagManager``
+* ``\OCP\ITempManager``
+* ``\OCP\Route\IRouter``
+* ``\OCP\ISearch``
+* ``\OCP\ISearch``
+* ``\OCP\Security\ICrypto``
+* ``\OCP\Security\IHasher``
+* ``\OCP\Security\ISecureRandom``
+* ``\OCP\IURLGenerator``
+* ``\OCP\IUserManager``
+* ``\OCP\IUserSession``
 
 How to enable it
 ^^^^^^^^^^^^^^^^
@@ -396,7 +404,7 @@ What not to inject:
 
 
 Accessing the container from anywhere
-------------------------------------
+-------------------------------------
 
 Sometimes it can be hard to inject some service inside legacy code, in these case
 you can use :code:`OCP\Server::get(MyService::class)`. This should only be used in

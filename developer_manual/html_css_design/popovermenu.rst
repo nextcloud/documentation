@@ -92,7 +92,7 @@ Technical details
 * The required **right** distance to the border (or padding, whatever you want to use) of the three-dot icon should be 14px (5 for menu margin and 6 for arrow position)
 * The ``span`` element **must** have the ``menuitem`` class.
 * The checkbox/radio must use the :ref:`nextcloud custom <checkboxes-and-radios>`
-* The form element is optionnal if you're using inputs.
+* The form element is optional if you're using inputs.
 * Supported inputs are all text based ones and buttons type ones
 
 .. image:: ../images/popover-position.png

@@ -1,0 +1,16 @@
+// For format details, see https://aka.ms/devcontainer.json.
+{
+	"name": "Nextcloud documentation DevContainer",
+	"context": "..",
+	"dockerFile": "Dockerfile",
+	"containerUser": "root",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"tht13.rst-vscode",
+				"tomoki1207.pdf"
+			]
+		}
+	},
+	"postCreateCommand": "python3 -m pip install -r requirements.txt && python3 -m pip install sphinx-autobuild && cd build && composer install --ignore-platform-reqs"
+}

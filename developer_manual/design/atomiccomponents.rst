@@ -73,7 +73,7 @@ Some commonly used actions in the action menu are favoriting, renaming, download
 It is important to keep the action menu simple and its length at a minimum. Too many entries in the action menu can lead to confusion and people not finding what they are looking for.
 
 .. image:: ../images/action-menu-icon.png
-   :alt: Action menu with a paperclipicon for attachments in Talk
+   :alt: Action menu with a paperclip icon for attachments in Talk
 
 In most cases the action menu is accessed through a 3-dot menu. In certain cases, it is better to use a specific icon instead of the generic 3-dot icon. For example in Talk a paperclip icon is used for accessing the action menu for attaching an item, and a heading icon is used in Text formatting bar for heading level selection.
 
@@ -238,7 +238,7 @@ Progress bars shows progress for a potentially lengthy process such as uploading
 
 The progress bar component is also sometimes used as a meter to visualize data as seen in the settings for Files to show the quota.
 
-`Progess bar Vue component <https://nextcloud-vue-components.netlify.app/#/Components/ProgressBar>`_.
+`Progress bar Vue component <https://nextcloud-vue-components.netlify.app/#/Components/ProgressBar>`_.
 
 .. _User bubbles:
 

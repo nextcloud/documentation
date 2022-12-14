@@ -51,6 +51,7 @@ or webroot you can use the **overwrite** parameters inside the :file:`config/con
 * :file:`overwriteprotocol` set the protocol of the proxy. You can choose between the two options **http** and **https**.
 * :file:`overwritewebroot` set the absolute web path of the proxy to the Nextcloud folder.
 * :file:`overwritecondaddr` overwrite the values dependent on the remote address. The value must be a **regular expression** of the IP addresses of the proxy. This is useful when you use a reverse SSL proxy only for https access and you want to use the automatic detection for http access.
+* :file:`overwrite.cli.url` the base URL for any URLs which are generated within Nextcloud using any kind of command line tools. For example, the value set here will be used by the notifications area.
 
 Leave the value empty or omit the parameter to keep the automatic detection.
 
@@ -158,6 +159,7 @@ you can set the following parameters inside the :file:`config/config.php`.
     'overwriteprotocol' => 'https',
     'overwritewebroot'  => '/domain.tld/nextcloud',
     'overwritecondaddr' => '^10\.0\.0\.1$',
+    'overwrite.cli.url' => 'https://domain.tld/,
   );
 
 .. note:: If you want to use the SSL proxy during installation you have to

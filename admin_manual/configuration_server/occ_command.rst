@@ -40,6 +40,7 @@ occ command Directory
 * :ref:`command_line_upgrade_label`
 * :ref:`two_factor_auth_label`
 * :ref:`disable_user_label`
+* :ref:`system_tags_commands_label`
 * `Debugging`_
 
 .. _http_user_label:
@@ -672,20 +673,31 @@ search path. If not using ``--quiet``, statistics will be shown at the end of
 the scan::
 
  sudo -u www-data php occ files:scan --help
-   Usage:
-   files:scan [-p|--path="..."] [-q|--quiet] [-v|vv|vvv --verbose] [--all]
-   [user_id1] ... [user_idN]
+ Description:
+   rescan filesystem
+
+ Usage:
+   files:scan [options] [--] [<user_id>...]
 
  Arguments:
-   user_id               will rescan all files of the given user(s)
+   user_id                  will rescan all files of the given user(s)
 
  Options:
-   --path                limit rescan to the user/path given
-   --all                 will rescan all files of all known users
-   --quiet               suppress any output
-   --verbose             files and directories being processed are shown
-                         additionally during scanning
-   --unscanned           scan only previously unscanned files
+       --output[=OUTPUT]    Output format (plain, json or json_pretty, default is plain) [default: "plain"]
+   -p, --path=PATH          limit rescan to this path, eg. --path="/alice/files/Music", the user_id is determined by the path and the user_id parameter and --all are ignored
+       --generate-metadata  Generate metadata for all scanned files
+       --all                will rescan all files of all known users
+       --unscanned          only scan files which are marked as not fully scanned
+       --shallow            do not scan folders recursively
+       --home-only          only scan the home storage, ignoring any mounted external storage or share
+   -h, --help               Display help for the given command. When no command is given display help for the list command
+   -q, --quiet              Do not output any message
+   -V, --version            Display this application version
+       --ansi|--no-ansi     Force (or disable --no-ansi) ANSI output
+   -n, --no-interaction     Do not ask any interactive question
+       --no-warnings        Skip global warnings, show command output only
+   -v|vv|vvv, --verbose     Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+
 
 Verbosity levels of ``-vv`` or ``-vvv`` are automatically reset to ``-v``
 
@@ -741,12 +753,34 @@ entries that have no matching entries in the storage table.
 Transfer
 ^^^^^^^^
 
+The command ``occ files:transfer-ownership`` can be used to transfer files from one user to another::
+
+ Usage:
+   files:transfer-ownership [options] [--] <source-user> <destination-user>
+
+ Arguments:
+   source-user                                                owner of files which shall be moved
+   destination-user                                           user who will be the new owner of the files
+
+ Options:
+       --path=PATH                                            selectively provide the path to transfer. For example --path="folder_name" [default: ""]
+       --move                                                 move data from source user to root directory of destination user, which must be empty
+       --transfer-incoming-shares[=TRANSFER-INCOMING-SHARES]  transfer incoming user file shares to destination user. Usage: --transfer-incoming-shares=1 (value required) [default: "2"]
+
 You may transfer all files and shares from one user to another. This is useful
 before removing a user::
 
  sudo -u www-data php occ files:transfer-ownership <source-user> <destination-user>
 
-It is also possible to transfer only one directory along with it's contents. This can be useful to restructure your organization or quotas. The ``--path`` argument is given as the path to the directory as seen from the source user::
+The transferred files will appear inside a new sub-directory in the destination user's home.
+
+If the destination user has no files at all (empty home), it is possible to also transfer all the source user's files by passing ``--move``::
+
+ sudo -u www-data php occ files:transfer-ownership --move <source-user> <destination-user>
+
+In this case no sub-directory is created and all files will appear directly in the root of the user's home.
+
+It is also possible to transfer only one directory along with its contents. This can be useful to restructure your organization or quotas. The ``--path`` argument is given as the path to the directory as seen from the source user::
 
  sudo -u www-data php occ files:transfer-ownership --path="path_to_dir" <source-user> <destination-user>
 
@@ -762,6 +796,8 @@ The command line option ``--transfer-incoming-shares`` overwrites the config.php
 
 Users may also transfer files or folders selectively by themselves.
 See `user documentation <https://docs.nextcloud.com/server/latest/user_manual/en/files/transfer_ownership.html>`_ for details.
+
+.. TODO ON RELEASE: Update version number above on release
 
 .. _occ_sharing_label:
 
@@ -1026,7 +1062,7 @@ Use these commands to manage server-wide SSL certificates or reset brute-force s
   security:certificates         list trusted certificates
   security:certificates:import  import trusted certificate
   security:certificates:remove  remove trusted certificate
-  
+
 Reset an IP::
 
  sudo -u www-data php occ security:bruteforce:reset [IP address]
@@ -1279,6 +1315,7 @@ when none are specified::
 
  versions
   versions:cleanup   Delete versions
+  versions:expire    Expires the users file versions
 
 This example deletes all versions for all users::
 
@@ -1490,6 +1527,43 @@ Use the following command to enable the user again::
  sudo -u www-data php occ user:enable <username>
 
 Note that once users are disabled, their connected browsers will be disconnected.
+
+
+.. _system_tags_commands_label:
+
+System Tags
+-----------
+
+List tags::
+
+  sudo -u www-data php occ tag:list
+
+Add a tag::
+
+  sudo -u www-data php occ tag:add <name> <access>
+
+Edit a tag::
+
+  sudo -u www-data php occ tag:edit --name <name> --access <access> <id>
+
+`--name` and `--access` are optional.
+
+Delete a tag::
+
+  sudo -u www-data php occ tag:delete <id>
+
+Access level
+
+========== ======== ==========
+Level      Visible¹ Assignable²
+========== ======== ==========
+public     Yes      Yes
+restricted Yes      No
+invisible  No       No
+========== ======== ==========
+
+| ¹ User can see the tag
+| ² User can assign the tag to a file
 
 .. _occ_debugging:
 

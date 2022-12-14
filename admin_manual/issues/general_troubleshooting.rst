@@ -30,9 +30,8 @@ configuration report with the :ref:`occ config command
 <config_commands_label>`, with passwords automatically obscured.
 
 .. _the Nextcloud Forums: https://help.nextcloud.com
-.. _FAQ page: https://help.nextcloud.com/c/faq
-.. _bugtracker: https://github.com/nextcloud/server/issues
-   https://docs.nextcloud.com/server/latest/developer_manual/prologue/bugtracker/index.html
+.. _FAQ page: https://help.nextcloud.com/t/how-to-faq-wiki
+.. _bugtracker: https://docs.nextcloud.com/server/latest/developer_manual/prologue/bugtracker/index.html
 
 .. TODO ON RELEASE: Update version number above on release
 
@@ -223,7 +222,7 @@ See:
   (Describes problems with Finder on various Web servers)
 
 There is also a well maintained FAQ thread available at the `ownCloud Forums
-<https://forum.owncloud.org/viewtopic.php?f=17&t=7536>`_
+<https://central.owncloud.org/t/how-to-fix-caldav-carddav-webdav-problems/852>`_
 which contains various additional information about WebDAV problems.
 
 .. _service-discovery-label:
@@ -255,7 +254,7 @@ module installed to process these redirects. When running Nginx please refer to
 
 
 If your Nextcloud instance is installed in a subfolder called ``nextcloud`` and
-you're running Apache create or edit the :file:`.htaccess` file within the
+you're running Apache, create or edit the :file:`.htaccess` file within the
 document root of your Web server and add the following lines::
 
     <IfModule mod_rewrite.c>
@@ -362,6 +361,21 @@ and return a "500 Internal Server Error". If the Nextcloud log contains an error
 
 Replace "userId" and the path accordingly.
 The command will do a test decryption for all files and automatically repair the ones with a signature error.
+
+Fair Use Policy
+---------------
+
+Nextcloud is open source and you can host it for free on your own server or at a provider.
+
+Nextcloud recommends Using Nextcloud Enterprise for deploying instances with more than 500 users. With that size, issues like a broken server or a data leak become very serious.
+
+If there is an issue with the server, 500 people can't work. A data leak would risk the data of many users. In short, the server should be considered mission-critical. We believe you and your users would have a better experience with Nextcloud Enterprise.
+
+Nextcloud Enterprise is pre-configured and optimised for the needs of professional organisations rather than home users. It comes with support, security and scaling benefits, compliance expertise, and access to our knowledge about running a successful Nextcloud, to get the best possible experience for users and admins. This also reduces the load on our home user forum http://help.nextcloud.com from issues unique to big deployments.
+
+Nextcloud provides some infrastructure components needed for Nextcloud servers to run reliably. This includes notification, our app store and more. To ensure these resources do not get overloaded by administrators who run Nextcloud for thousands of users without providing financial resources to Nextcloud in return, these components are limited and will not work for more than 500 users.
+
+We believe all organisations who run Nextcloud for hundreds of users should be officially supported. We know there can be financial restrictions for non-profit organisations and, as we want everybody to have a chance to get the most out of Nextcloud, we have special offers for NGOs, small schools and other non-profits. Please reach out to talk to us about what is possible through the `contact form on our site <https://nextcloud.com/contact/>`_ or ask your system administrator to reach out.
 
 Other issues
 ------------
