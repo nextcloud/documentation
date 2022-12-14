@@ -220,7 +220,7 @@ Reading and writing session variables
 
 To set, get or modify session variables, the ISession object has to be injected into the controller.
 
-Nextcloud will read existing session data at the beginning of the request lifecycle and close the session afterwards. This means that in order to write to the session, the session has to be opened first. This is done implicitly when calling the set method, but would close immidiately afterwards. To prevent this, the session has to be explicitly opened by calling the reopen method.
+Nextcloud will read existing session data at the beginning of the request lifecycle and close the session afterwards. This means that in order to write to the session, the session has to be opened first. This is done implicitly when calling the set method, but would close immediately afterwards. To prevent this, the session has to be explicitly opened by calling the reopen method.
 
 Alternatively you can use the ``@UseSession`` annotation to automatically open and close the session for you.
 
