@@ -30,7 +30,7 @@ Please notice that the Nextcloud preview system comes already with sensible
 defaults, and therefore it is usually unnecessary to adjust those configuration 
 values. 
 
-Buf deemed necessary, following changes has be made in ``config/config.php`` file. As a best practice, take a backup of this config file before making a lot of changes.
+But deemed necessary, following changes have to be made in ``config/config.php`` file. As a best practice, take a backup of this config file before making a lot of changes.
 
 Disabling previews:
 ^^^^^^^^^^^^^^^^^^^
