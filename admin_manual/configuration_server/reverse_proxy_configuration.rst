@@ -73,32 +73,42 @@ Thanks to `@ffried <https://github.com/ffried>`_ for apache2 example.
 Traefik 1
 ^^^^^^^^^
 
-Using docker tags:
+Using Docker labels:
 ::
 
   traefik.frontend.redirect.permanent: 'true'
-  traefik.frontend.redirect.regex: https://(.*)/.well-known/(card|cal)dav
-  traefik.frontend.redirect.replacement: https://$1/remote.php/dav/
+  traefik.frontend.redirect.regex: 'https://(.*)/.well-known/(?:card|cal)dav'
+  traefik.frontend.redirect.replacement: 'https://$$1/remote.php/dav'
 
 Using traefik.toml:
 ::
 
   [frontends.frontend1.redirect]
-    regex = "https://(.*)/.well-known/(card|cal)dav"
-    replacement = "https://$1/remote.php/dav/
+    regex = "https://(.*)/.well-known/(?:card|cal)dav"
+    replacement = "https://$1/remote.php/dav
     permanent = true
 
 Thanks to `@pauvos <https://github.com/pauvos>`_ and `@mrtumnus <https://github.com/mrtumnus>`_ for traefik examples.
 
 Traefik 2
 ^^^^^^^^^
+
+Using Docker labels:
+::
+
+  traefik.http.routers.nextcloud.middlewares: 'nextcloud_redirectregex'
+  traefik.http.middlewares.nextcloud_redirectregex.redirectregex.permanent: true
+  traefik.http.middlewares.nextcloud_redirectregex.redirectregex.regex: 'https://(.*)/.well-known/(?:card|cal)dav'
+  traefik.http.middlewares.nextcloud_redirectregex.redirectregex.replacement: 'https://$${1}/remote.php/dav'
+
+Using a TOML file:
 ::
 
   [http.middlewares]
     [http.middlewares.nextcloud-redirectregex.redirectRegex]
       permanent = true
-      regex = "https://(.*)/.well-known/(card|cal)dav"
-      replacement = "https://${1}/remote.php/dav/"
+      regex = "https://(.*)/.well-known/(?:card|cal)dav"
+      replacement = "https://${1}/remote.php/dav"
 
 HAProxy
 ^^^^^^^
