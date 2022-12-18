@@ -30,6 +30,8 @@ Please notice that the Nextcloud preview system comes already with sensible
 defaults, and therefore it is usually unnecessary to adjust those configuration 
 values. 
 
+But deemed necessary, following changes have to be made in ``config/config.php`` file. As a best practice, take a backup of this config file before making a lot of changes.
+
 Disabling previews:
 ^^^^^^^^^^^^^^^^^^^
 
@@ -39,7 +41,7 @@ Note that if you do this all previews in all apps are disabled, including
 the Gallery app, and will display generic icons instead of 
 thumbnails.
 
-Set the configuration option ``enable_previews`` in config.php to ``false``:
+Set the configuration option ``enable_previews`` to ``false``:
 
 ::
 
