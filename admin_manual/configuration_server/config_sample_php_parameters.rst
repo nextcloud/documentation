@@ -1355,7 +1355,7 @@ Defaults to ``50`` megabytes
 
 ::
 
-	'preview_max_memory' => 128,
+	'preview_max_memory' => 256,
 
 max memory for generating image previews with imagegd (default behavior)
 Reads the image dimensions from the header and assumes 32 bits per pixel.
@@ -1363,7 +1363,7 @@ Reads the image dimensions from the header and assumes 32 bits per pixel.
 If creating the image would allocate more memory, preview generation will
 be disabled and the default mimetype icon is shown. Set to -1 for no limit.
 
-Defaults to ``128`` megabytes
+Defaults to ``256`` megabytes
 
 ::
 
