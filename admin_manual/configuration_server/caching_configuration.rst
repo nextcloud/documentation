@@ -132,7 +132,6 @@ You might need to restart apache and redis for the changes to take effect::
 
  systemctl restart apache2
  systemctl restart redis-server
- systemctl restart redis
 
 Redis is very configurable; consult `the Redis documentation 
 <http://redis.io/documentation>`_ to learn more.
