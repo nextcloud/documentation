@@ -7,6 +7,7 @@ To connect your Amazon S3 buckets to Nextcloud, you will need:
 - S3 access key
 - S3 secret key
 - Bucket name
+- Region
 
 In the **Folder name** field enter a local folder name for your S3 mountpoint.
 If this does not exist it will be created.
@@ -20,8 +21,11 @@ highly-recommended.
 .. figure:: images/amazons3.png
    :alt:
 
-Optionally, you can override the hostname, port and region of your S3 server,
+Optionally, you can override the hostname, and port of your S3 server,
 which is required for non-Amazon servers such as Ceph Object Gateway.
+
+**Region** should be an [AWS Region Code](https://docs.aws.amazon.com/general/latest/gr/rande.html#region-names-codes).
+If no region is supplied, a new bucket will be created in the `eu-west-1` region.
 
 **Enable path style** is usually not required (and is, in fact, incompatible
 with newer Amazon datacenters), but can be used with non-Amazon servers where
