@@ -743,7 +743,7 @@ entries that have no matching entries in the storage table.
 Repair-Tree
 ^^^^^^^
 
-``files:repair`` try and repair malformed filesystem tree structures.
+``files:repair-tree`` try and repair malformed filesystem tree structures.
 If for any reason the path of an entry in the filecache doesn't match with
 it's expected path, based on the path of it's parent node, you end up with an
 entry in the filecache that exists in different places based on how the entry
