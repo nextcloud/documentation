@@ -752,7 +752,7 @@ Cleanup
 entries that have no matching entries in the storage table.
 
 Repair-Tree
-^^^^^^^
+^^^^^^^^^^^
 
 ``files:repair-tree`` try and repair malformed filesystem tree structures.
 If for any reason the path of an entry in the filecache doesn't match with
