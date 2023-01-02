@@ -31,7 +31,7 @@ them with the Enter key:
 
   CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
   CREATE DATABASE IF NOT EXISTS nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-  GRANT ALL PRIVILEGES ON nextcloud.* TO 'username'@'localhost';
+  GRANT ALL PRIVILEGES ON nextcloud.* TO 'username'@'localhost' WITH GRANT OPTION;
   FLUSH PRIVILEGES;
 
 You can quit the prompt by entering::
