@@ -48,7 +48,7 @@ Note::
 
 .. note::
 
-    This will also change the `ROW_FORMAT` to `COMPRESSED` for your tables, to make sure the used database storage size is not getting out of hand.
+    This will also change the `ROW_FORMAT` to `DYNAMIC` for your tables.
 
 7. Disable maintenance mode::
 
