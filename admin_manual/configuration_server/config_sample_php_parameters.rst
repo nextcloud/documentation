@@ -2293,9 +2293,7 @@ You may set this to an array containing a combination of
 - IPv4 addresses, e.g. `192.168.2.123`
 - IPv4 ranges in CIDR notation, e.g. `192.168.2.0/24`
 - IPv6 addresses, e.g. `fd9e:21a7:a92c:2323::1`
-
-_(CIDR notation for IPv6 is currently work in progress and thus not
-available yet)_
+- IPv6 ranges in CIDR notation, e.g. `2001:db8:85a3:8d3:1319:8a20::/95`
 
 When an incoming request's `REMOTE_ADDR` matches any of the IP addresses
 specified here, it is assumed to be a proxy instead of a client. Thus, the
