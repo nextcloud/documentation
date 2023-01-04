@@ -1083,17 +1083,18 @@ Remove a certificate::
 Trashbin
 --------
 
+::
+
+ trashbin
+  trashbin:cleanup  [--all-users] [--] [<user_id>...]  Remove deleted files
+  trashbin:restore  [--all-users] [--] [<user_id>...]  Restore deleted files
+
 .. note::
   This command is only available when the "Deleted files" app
   (``files_trashbin``) is enabled.
 
 The ``trashbin:cleanup  [--all-users] [--] [<user_id>...]`` command removes the deleted files of the specified
 users in a space-delimited list, or all users if --all-users is specified.
-
-::
-
- trashbin
-  trashbin:cleanup  [--all-users] [--] [<user_id>...]  Remove deleted files
 
 This example removes the deleted files of all users::
 
@@ -1111,6 +1112,17 @@ This example removes the deleted files of users molly and freda::
  sudo -u www-data php occ trashbin:cleanup molly freda
  Remove deleted files of   molly
  Remove deleted files of   freda
+
+The ``trashbin:restore  [--all-users] [--] [<user_id>...]`` command restores the deleted files of the specified
+users in a space-delimited list, or all users if --all-users is specified.
+
+This example restores the deleted files of all users::
+
+ sudo -u www-data php occ trashbin:restore --all-users
+
+This example restores the deleted files of users molly and freda::
+
+ sudo -u www-data php occ trashbin:restore molly freda
 
 .. _user_commands_label:
 
