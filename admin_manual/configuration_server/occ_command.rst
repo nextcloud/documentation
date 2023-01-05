@@ -664,6 +664,8 @@ File operations
                              sharing user holds the ownership of the respective files.
                              There is however an option to enable moving incoming shares.
 
+.. _occ_files_scan_label:
+
 Scan
 ^^^^
 
