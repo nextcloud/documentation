@@ -4,6 +4,18 @@ How to test ...
 
 This page should explain how to test given features in Nextcloud.
 
+Email sending
+-------------
+
+::
+
+    docker run -d -p 1025:1025 -p 8025:8025 mailhog/mailhog
+    occ config:system:set mail_smtpmode --value=smtp
+    occ config:system:set mail_smtphost --value=127.0.0.1
+    occ config:system:set mail_smtpport --value=1025 --type=integer
+
+Then after having Nextcloud send some emails, open http://127.0.0.1:8025 to view them.
+
 Redis
 -----
 
@@ -12,8 +24,8 @@ First you need to install the `phpredis extension <https://github.com/phpredis/p
 
    pecl install redis
 
-Cluster
--------
+Redis Cluster
+-------------
 
 For a local Redis cluster setup there are some docker script collected in `this repository <https://github.com/Grokzen/docker-redis-cluster>`_. It boils down to clone the repo and run `make up`. Then the redis cluster is available at ``localhost:7000``.
 
@@ -29,10 +41,56 @@ Following ``config.php`` can be used::
       'failover_mode' => \RedisCluster::FAILOVER_ERROR,
    ],
 
-SMB
----
+Primary object store with S3
+----------------------------
 
 ::
+
+    docker run -p 9000:9000 minio/minio server /data
+
+The edit ``config.php`` and add the following section::
+
+    'objectstore' =>
+        array (
+            'class' => 'OC\\Files\\ObjectStore\\S3',
+            'arguments' =>
+            array (
+                'bucket' => 'nextcloud-dev',
+                'key' => 'minioadmin',
+                'secret' => 'minioadmin',
+                'hostname' => 'localhost',
+                'port' => '9000',
+                'use_ssl' => false,
+                'use_path_style' => true,
+            ),
+        ),
+
+S3 external storage
+-------------------
+
+::
+
+    occ app:enable files_external
+
+    docker run -p 9000:9000 minio/minio server /data
+
+Then add an external storage in the web UI using the following configuration:
+
+- Authentication type: Access key
+- Access key: minioadmin
+- Secret key: minioadmin
+- Bucket: nextcloud-dev
+- Hostname: localhost
+- Port: 9000
+- Region: leave empty
+- Enable path style: yes
+
+SMB external storage
+--------------------
+
+::
+
+    occ app:enable files_external
 
     mkdir /tmp/samba
     docker run -it -p 139:139 -p 445:445 \
