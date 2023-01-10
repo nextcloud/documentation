@@ -43,7 +43,7 @@ For example, you can rename a column while copying all the content with 3 steps
 packed in 2 migrations.
 
 After creating migrations for your current database and installation routine,
-you need to in order to make use of migrations, is to delete the old `appinfo/database.xml`
+in order to make use of migrations, you need to delete the old `appinfo/database.xml`
 file. The Nextcloud updater logic only allows to use one or the other.
 But as soon as the `database.xml` file is gone, it will look for your migration
 files in the apps `lib/Migration` folder.
