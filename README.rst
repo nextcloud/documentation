@@ -134,6 +134,16 @@ Building PDF
 5. Install the dependencies `pip install -r requirements.txt`
 6. Now you can use `make ...` to build all the stuff - for example `make pdf` to build the PDF flavor of all manuals
 
+Using the VSCode DevContainer
+=============================
+
+This repository contains a full-featured `VSCode DevContainer <https://code.visualstudio.com/docs/devcontainers/containers>`_.
+You can use it in your local development environment or via `GitHub Codespaces <https://github.com/features/codespaces>`_.
+Just open the container an use one of the commands from above to build the project. For example ``make`` to build the full
+documentaion, ``make html`` to build the HTML documentaion or ``make pdf`` to build the PDF documentation. You can also use
+``make SPHINXBUILD=sphinx-autobuild html`` in combination with `port forwarding <https://code.visualstudio.com/docs/devcontainers/containers#_forwarding-or-publishing-a-port>`_
+to  watch file changes and automatically reload the html preview.
+
 Icons
 -----
 

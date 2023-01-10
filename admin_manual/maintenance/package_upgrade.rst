@@ -6,7 +6,7 @@ Upgrade quickstart
 ------------------
 
 One effective, if unofficial method for keeping Nextcloud current on Linux servers is by configuring 
-your system to use Nextcloud via a self contained "Snap" package, A technology allowing users to 
+your system to use Nextcloud via a self-contained "Snap" package: a technology allowing users to 
 always have the latest version of an "app".
 
 That version from Canonical is quite restrictive. It is not aimed at developers or advanced users 
@@ -21,12 +21,16 @@ Installation
 ------------
 
 **Ubuntu**
+
 $ sudo snap install nextcloud
 
 **All other distros**
-Go to https://docs.snapcraft.io/installing-snapd/6735
-Type the command to install snapd
-Install Nextcloud $ sudo snap install nextcloud
+
+(`be warned <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Why-Ubuntu-is-the-only-supported-distro/>`_)
+
+* Go to https://docs.snapcraft.io/installing-snapd/6735
+* Type the command to install snapd
+* Install Nextcloud ($ sudo snap install nextcloud)
 
 1st login
 ---------

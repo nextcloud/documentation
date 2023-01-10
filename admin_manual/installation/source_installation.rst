@@ -14,7 +14,7 @@ archive <https://nextcloud.com/install/>`_. This method is recommended to instal
 
 
 If you prefer a more automated installation of Nextcloud and there are no packages for your Linux distribution, you have the option to
-install the community `Snap Package <https://snapcraft.io/nextcloud>`_. This includes a full production-ready stack, will maintain your HTTPS certificates for you, and will automatically update as needed to stay secure. You can also use the `Nextcloud VM scripts <https://github.com/nextcloud/vm/>`_ to install directly on a clean Ubuntu Server. It will setup everything for you and include scripts for automated installation of apps like; Collabora, OnlyOffice, Talk and so on. Please note that those two options are not officially supported by Nextcloud GmbH.
+install the community `Snap Package <https://snapcraft.io/nextcloud>`_. This includes a full production-ready stack, will maintain your HTTPS certificates for you, and will automatically update as needed to stay secure. You can also use the `Nextcloud VM scripts <https://github.com/nextcloud/vm/>`_ to install directly on a clean Ubuntu Server or `NextcloudPi scripts <https://nextcloudpi.com/>`_ (similar project based on Debian). It will setup everything for you and include scripts for automated installation of apps like; Collabora, OnlyOffice, Talk and so on. Please note that those three options are not officially supported by Nextcloud GmbH.
 
 
 This installation guide is giving a general overview of required dependencies and their configuration. For a distribution specific setup guide have a look at the :doc:`./example_ubuntu` and :doc:`./example_centos`.
@@ -263,11 +263,11 @@ the default site. Open a terminal and run::
     service apache2 reload
 
 .. note:: Self-signed certificates have their drawbacks - especially when you
-          plan to make your Nextcloud server publicly accessible. You might
-          want to consider getting a certificate signed by a commercial signing
-          authority. Check with your domain name registrar or hosting service
-          for good deals on commercial certificates.
-
+          plan to make your Nextcloud server publicly accessible. Consider getting
+          a certificate signed by a signing authority. Check with your domain name
+          registrar or hosting service for good deals on commercial certificates.
+          Or use a free `Let's Encrypt <https://letsencrypt.org/>`_ ones.
+ 
 .. _installation_wizard_label:
 
 Installation wizard
@@ -492,12 +492,19 @@ See the `TrueNAS installation documentation <https://www.truenas.com/docs/core/s
 Installation via install script
 -------------------------------
 
-One of the easiest ways of installing is to use the Nextcloud VM scripts. It's basically just two steps:
+One of the easiest ways of installing is to use the Nextcloud VM or NextcloudPI scripts. It's basically just two steps:
 
 1. Download the latest `installation script <https://github.com/nextcloud/vm/blob/master/nextcloud_install_production.sh/>`_.
 2. Run the script with::
 
     sudo bash nextcloud_install_production.sh
+    
+or
+
+1. Download the latest `installation script <https://raw.githubusercontent.com/nextcloud/nextcloudpi/master/install.sh/>`_.
+2. Run the script with::
+
+    sudo bash install.sh
 
 A guided setup will follow and the only thing you have to do it to follow the on screen instructions, when given to you.
 

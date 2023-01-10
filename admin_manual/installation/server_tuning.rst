@@ -130,6 +130,9 @@ Previews
 It is possible to speed up preview generation using an
 external microservice: `Imaginary <https://github.com/h2non/imaginary>`_.
 
+We strongly recommend running our custom docker image that is more up to date than the official image.
+You can find the image at `docker.io/nextcloud/aio-imaginary:latest` for x64-architecture. For arm64-architecture, there is the `docker.io/nextcloud/aio-imaginary:latest-arm64` image.
+
 To do so, you will need to deploy the service and make sure that it is
 not accessible from outside of your servers. Then you can configure
 Nextcloud to use Imaginary by editing your `config.php`:
@@ -147,6 +150,9 @@ Nextcloud to use Imaginary by editing your `config.php`:
     ],
     'preview_imaginary_url' => 'http://<url of imaginary>',
 
+.. warning::
+
+   Make sure to start Imaginary with the `-return-size` command line parameter. Otherwise, there will be a minor performance impact. The flag requires a recent version of Imaginary (newer than v1.2.4) and is by default added to the `aio-imaginary` container.
 
 .. note::
 

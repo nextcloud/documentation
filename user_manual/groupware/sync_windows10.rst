@@ -24,7 +24,7 @@ Calendar
 
 Contacts
 --------
-1. In the bottom left of the Contacts View (in Nextcloud Contacts) look for a little impeller symbol that looks like this:
+1. In the bottom left of the Contacts View (in Nextcloud Contacts) look for a little (chain) link symbol that looks like this:
 
 .. image:: ../images/contacts_link.png
 

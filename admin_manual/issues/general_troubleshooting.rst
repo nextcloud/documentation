@@ -31,8 +31,7 @@ configuration report with the :ref:`occ config command
 
 .. _the Nextcloud Forums: https://help.nextcloud.com
 .. _FAQ page: https://help.nextcloud.com/t/how-to-faq-wiki
-.. _bugtracker: https://github.com/nextcloud/server/issues
-   https://docs.nextcloud.com/server/latest/developer_manual/prologue/bugtracker/index.html
+.. _bugtracker: https://docs.nextcloud.com/server/latest/developer_manual/prologue/bugtracker/index.html
 
 .. TODO ON RELEASE: Update version number above on release
 
@@ -223,7 +222,7 @@ See:
   (Describes problems with Finder on various Web servers)
 
 There is also a well maintained FAQ thread available at the `ownCloud Forums
-<https://forum.owncloud.org/viewtopic.php?f=17&t=7536>`_
+<https://central.owncloud.org/t/how-to-fix-caldav-carddav-webdav-problems/852>`_
 which contains various additional information about WebDAV problems.
 
 .. _service-discovery-label:
@@ -255,7 +254,7 @@ module installed to process these redirects. When running Nginx please refer to
 
 
 If your Nextcloud instance is installed in a subfolder called ``nextcloud`` and
-you're running Apache create or edit the :file:`.htaccess` file within the
+you're running Apache, create or edit the :file:`.htaccess` file within the
 document root of your Web server and add the following lines::
 
     <IfModule mod_rewrite.c>
@@ -295,6 +294,33 @@ Users' Federated Cloud IDs not updated after a domain name change
 
 | ``occ dav:sync-system-addressbook``
 | ``occ federation:sync-addressbooks``
+
+.. _trouble-file-encoding-ext-storages:
+
+Troubleshooting file encoding on external storages
+--------------------------------------------------
+
+When using external storage, it can happen that some files with special characters will not
+appear in the file listing, or they will appear and not be accessible.
+
+When this happens, please run the :ref:`files scanner<occ_files_scan_label>`, for example with::
+
+  sudo -u www-data php occ files:scan --all
+
+If the scanner tells about an encoding issue on the affected file, please enable Mac encoding compatibility in the :ref:`mount options<external_storage_mount_options_label>`
+and then :ref:`rescan the external storage<occ_files_scan_label>`.
+
+.. note::
+   This mode comes with a performance impact because Nextcloud will always try both encodings when detecting files
+   on external storages.
+
+   Mac computers are using the NFD Unicode Normalization for file names which is different than NFC, the one used
+   by other operating systems. Mac users might upload files directly to the external storage using NFD normalized
+   file names. When uploading through Nextcloud, file names will always be normalized to the NFC standard for consistency.
+
+   It is recommended to let Nextcloud use external storages exclusively to avoid such issues.
+
+   See also `technical explanation about NFC vs NFD normalizations <https://www.win.tue.nl/~aeb/linux/uc/nfc_vs_nfd.html>`_.
 
 Troubleshooting contacts & calendar
 -----------------------------------
