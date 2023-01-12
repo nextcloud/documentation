@@ -110,9 +110,9 @@ Building HTML
 =============
 
 1. Install `pipenv` - https://pipenv.readthedocs.io/en/latest/
-2. Create a Python environment (typically inside this repository): `pipenv --python 3.9`
+2. Create a Python environment (typically inside this repository): `pipenv --python 3.10`
 3. Change into the environment: `pipenv shell`
-4. Install the dependencies `pip install -r requirements.txt`
+4. Install the dependencies `pipenv install`
 5. Now you can use `make ...` to build all the stuff - for example `make html` to build the HTML flavor of all manuals
 
 To change into this environment you need to run `pipenv shell` to launch the shell and to exit you can use either `exit` or `Ctrl` + `D`.
