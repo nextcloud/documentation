@@ -15,7 +15,6 @@ jobs:
     - uses: ammaraskar/sphinx-action@master
       with:
         docs-folder: "user_manual/"
-        pre-build-command: pipenv install --system
         build-command: make html
     - name: Pack  the results in local tar file
       shell: bash
@@ -32,7 +31,6 @@ jobs:
     - uses: ammaraskar/sphinx-action@master
       with:
         docs-folder: "user_manual/"
-        pre-build-command: pipenv install --system
         build-command: make html-lang-en
   developer_manual:
     runs-on: ubuntu-latest
@@ -41,7 +39,6 @@ jobs:
     - uses: ammaraskar/sphinx-action@master
       with:
         docs-folder: "developer_manual/"
-        pre-build-command: pipenv install --system
         build-command: make html
     - name: Pack the results in local tar file
       shell: bash
@@ -58,7 +55,6 @@ jobs:
     - uses: ammaraskar/sphinx-action@master
       with:
         docs-folder: "admin_manual/"
-        pre-build-command: pipenv install --system
         build-command: make html
     - name: Pack the results in local tar file
       shell: bash
