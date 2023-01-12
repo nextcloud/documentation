@@ -13,6 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - run: |
+        curl https://pyenv.run | bash
         pip install pipenv pyenv
         pipenv install --dev --deploy
         pipenv requirements > requirements.txt
@@ -33,6 +34,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - run: |
+        curl https://pyenv.run | bash
         pip install pipenv pyenv
         pipenv install --dev --deploy
         pipenv requirements > requirements.txt
@@ -45,6 +47,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - run: |
+        curl https://pyenv.run | bash
         pip install pipenv pyenv
         pipenv install --dev --deploy
         pipenv requirements > requirements.txt
@@ -65,7 +68,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - run: |
-        pip install pipenv pyenv
+        curl https://pyenv.run | bash
+        pip install pipenv
         pipenv install --dev --deploy
         pipenv requirements > requirements.txt
     - uses: ammaraskar/sphinx-action@master
