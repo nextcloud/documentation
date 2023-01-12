@@ -12,10 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - run: |
+        pip install pipenv pyenv
+        pipenv install --dev --deploy
+        pipenv requirements > requirements.txt
     - uses: ammaraskar/sphinx-action@master
       with:
         docs-folder: "user_manual/"
-        pre-build-command: pipenv install --deploy
         build-command: make html
     - name: Pack  the results in local tar file
       shell: bash
@@ -29,19 +32,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - run: |
+        pip install pipenv pyenv
+        pipenv install --dev --deploy
+        pipenv requirements > requirements.txt
     - uses: ammaraskar/sphinx-action@master
       with:
         docs-folder: "user_manual/"
-        pre-build-command: pipenv install --deploy
         build-command: make html-lang-en
   developer_manual:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - run: |
+        pip install pipenv pyenv
+        pipenv install --dev --deploy
+        pipenv requirements > requirements.txt
     - uses: ammaraskar/sphinx-action@master
       with:
         docs-folder: "developer_manual/"
-        pre-build-command: pipenv install --deploy
         build-command: make html
     - name: Pack the results in local tar file
       shell: bash
@@ -55,10 +64,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - run: |
+        pip install pipenv pyenv
+        pipenv install --dev --deploy
+        pipenv requirements > requirements.txt
     - uses: ammaraskar/sphinx-action@master
       with:
         docs-folder: "admin_manual/"
-        pre-build-command: pipenv install --deploy
         build-command: make html
     - name: Pack the results in local tar file
       shell: bash
