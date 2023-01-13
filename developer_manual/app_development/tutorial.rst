@@ -293,11 +293,11 @@ To create the tables in the database, run the :ref:`migration  <migration_consol
         <description>My first Nextcloud app</description>
         <licence>AGPL</licence>
         <author>Your Name</author>
-        <version>0.0.2</version>
+        <version>1.0.0</version>
         <namespace>notestutorial</namespace>
-        <category>tool</category>
+        <category>office</category>
         <dependencies>
-            <owncloud min-version="8" />
+            <nextcloud min-version="25" max-version="25"/>
         </dependencies>
     </info>
 
@@ -939,6 +939,43 @@ To run the integration tests change into the **notestutorial** directory and run
     phpunit -c phpunit.integration.xml
 
 
+Building the frontend
+---------------------
+
+To create a modern webapp you need to write :doc:`JavaScript<../basics/front-end/js>`.
+You can use any JavaScript framework, but this tutorial focusses on a simple frontend using Vue.js.
+For a more detailed introduction to Vue.js please head over to the `official documentation <https://vuejs.org/v2/guide/>`_.
+
+The source files of our frontend will be stored in the **src/** directory.
+We use webpack for bundling the files and output of that will be stored in **js/notestutorial-main.js**.
+
+The template of our view will be very simple due to the fact that Vue.js is taking care of all frontend rendering.
+We only need to load the main script bundle by changing our :code:`PageController::index()` method:
+
+.. code-block:: php
+
+    public function index() {
+        OCP\Util::addScript('notestutorial', 'notestutorial-main');
+        return new TemplateResponse('notestutorial', 'main');
+    }
+
+And just add a div that will be replaced by our Vue app at runtime in the template:
+
+.. code-block:: php
+
+    <?php
+    <div id="content"></div>
+
+* `package.json <https://github.com/nextcloud/app-tutorial/blob/master/package.json>`_ Listing the dependencies of our frontend app
+* `webpack.common.js <https://github.com/nextcloud/app-tutorial/blob/master/webpack.common.js>`_ Webpack configuration for building the javascript code
+
+The frontend source code will consist of two files:
+
+* `main.js <https://github.com/nextcloud/app-tutorial/blob/master/src/main.js>`_ which is the main entry point of our javascript code that gets loaded when the page is opened
+* `App.vue <https://github.com/nextcloud/app-tutorial/blob/master/src/App.vue>`_ which is our one single file component that takes care of all logic inside of the Vue app. Our example app contains some additional comments to explain how the frontend is built.
+
+Congratulations! You've written your first Nextcloud app. You can now either try to further improve the tutorial notes app or start writing your own app.
+
 
 Adding a RESTful API (optional)
 -------------------------------
@@ -1080,29 +1117,3 @@ Since the **NoteApiController** is basically identical to the **NoteController**
         }
 
     }
-
-Building the frontend
----------------------
-
-To create a modern webapp you need to write :doc:`JavaScript<../basics/front-end/js>`. You can use any JavaScript framework, but this tutorial focusses on a simple frontend using Vue.js. For a more detailed introduction to Vue.js please head over to the `official documentation <https://vuejs.org/v2/guide/>`_.
-
-The source files of our frontend will be stored in the **src/** directory. We use webpack for bundling the files and output of that will be stored in **js/notestutorial.js**.
-
-The template of our view will be very simple due to the fact that Vue.js is taking care of all frontend rendering. We only need to load the main script bundle and add a div that will be replaced by our Vue app at runtime:
-
-.. code-block:: php
-
-    <?php
-    script('notestutorial', 'notestutorial');
-
-    <div id="content"></div>
-
-* `package.json <https://github.com/nextcloud/app-tutorial/blob/master/package.json>`_ Listing the dependencies of our frontend app
-* `webpack.common.js <https://github.com/nextcloud/app-tutorial/blob/master/webpack.common.js>`_ Webpack configuration for building the javascript code
-
-The frontend source code will consist of two files:
-
-* `main.js <https://github.com/nextcloud/app-tutorial/blob/master/src/main.js>`_ which is the main entry point of our javascript code that gets loaded when the page is opened
-* `App.vue <https://github.com/nextcloud/app-tutorial/blob/master/src/App.vue>`_ which is our one single file component that takes care of all logic inside of the Vue app. Our example app contains some additional comments to explain how the frontend is built.
-
-Congratulations! You've written your first Nextcloud app. You can now either try to further improve the tutorial notes app or start writing your own app.
