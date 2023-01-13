@@ -13,7 +13,7 @@ On this page you find information about the implemented `php standards recommend
 PSR-0: Autoloading
 ------------------
 
-This standard has been deprecated and will be removed from Nextcloud. Please see the :ref:`PSR-4 section<psr4>` instead.
+This standard has been deprecated and will be removed in Nextcloud 27. Please see the :ref:`PSR-4 section<psr4>` instead.
 
 .. _psr3:
 
