@@ -1117,3 +1117,91 @@ Since the **NoteApiController** is basically identical to the **NoteController**
         }
 
     }
+
+
+Adding a dashboard widget (optional)
+------------------------------------
+
+Optionally you can extend you app with a dashboard widget for showing a list of your notes
+directly on the dashboard.
+
+Lets start on the backend side by implementing the dashboard widget,
+therefor we create :code:`lib/Dashboard/NotesWidget.php` implementing :code:`OCP\Dashboard\IWidget`:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\NotesTutorial\Dashboard;
+
+    use OCA\NotesTutorial\AppInfo\Application;
+    use OCP\Dashboard\IWidget;
+    use OCP\IURLGenerator;
+
+    class NotesWidget implements IWidget {
+        private IURLGenerator $urlGenerator;
+
+        public function __construct(IURLGenerator $urlGenerator) {
+            $this->urlGenerator = $urlGenerator;
+        }
+
+        public function getId(): string {
+            return Application::APP_ID;
+        }
+
+        public function getTitle(): string {
+            return 'Notes';
+        }
+
+        public function getOrder(): int {
+            return 90;
+        }
+
+        public function getIconClass(): string {
+            return 'icon-rename';
+        }
+
+        public function getUrl(): ?string {
+            return $this->urlGenerator->getAbsoluteURL('/apps/notestutorial');
+        }
+
+        public function load(): void {
+            \OCP\Util::addScript('notestutorial', 'notestutorial-dashboard');
+        }
+    }
+
+This class contains all metadata required for the widget,
+most important is the :code:`load()` function which adds our front-end script
+to display the widget.
+
+Next we must register the widget within nextcloud by adding it to the register function of our application class in :code:`lib/AppInfo/Application.php`:
+
+.. code-block:: php
+
+    class Application extends App implements IBootstrap {
+        public const APP_ID = 'notestutorial';
+
+        public function __construct() {
+            parent::__construct(self::APP_ID);
+        }
+
+        public function register(IRegistrationContext $context): void {
+            $context->registerDashboardWidget(NotesWidget::class);
+        }
+
+        public function boot(IBootContext $context): void {
+            // This app does not require any boot code
+        }
+    }
+
+On the front-end side we need to add two new files:
+
+* `src/Widget.vue <https://github.com/nextcloud/app-tutorial/blob/master/src/Widget.vue>`_
+
+  * The widget itself built using the :code:`NcDashboardWidget` component from `@nextcloud/vue <../digging_deeper/javascript-apis>`_ package
+
+* `src/dashboard.js <https://github.com/nextcloud/app-tutorial/blob/master/src/dashboard.js>`_
+
+  * The entrypoint of our widget which is loaded by nextcloud
+
+Last but not least we need to add this new entrypoint to our webpack configuration so both entrypoints are build.
+You should now be able to see a list of your notes on your dashboard.
