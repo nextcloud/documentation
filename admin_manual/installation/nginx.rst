@@ -66,7 +66,7 @@ your nginx configuration to suppress them:
           access_log off;
         }
 
-JavaScript (.js) or CSS (.css) files not served properly
+JavaScript (.js) or CSS (.css) files not served properlycreate dependebot.yml
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A common issue with custom nginx configs is that JavaScript (.js)
