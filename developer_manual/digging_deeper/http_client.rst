@@ -24,6 +24,7 @@ HTTP client instances are built using the client service `factory <https://en.wi
         public function downloadNextcloudWebsite(): void {
             $client = $this->clientService->newClient();
             $response = $client->get('https://nextcloud.com');
+            $body = $response->getBody();
         }
     }
 
@@ -36,6 +37,7 @@ HEAD request
 
     $client = $this->clientService->newClient();
     $response = $client->head('https://nextcloud.com');
+    $body = $response->getBody();
 
 
 GET request
@@ -47,6 +49,7 @@ GET request
 
     $client = $this->clientService->newClient();
     $response = $client->get('https://nextcloud.com');
+    $body = $response->getBody();
 
 POST request
 ------------
@@ -68,7 +71,7 @@ POST request
             ],
         ])
     ]);
-    $pizza = json_decode($response, true);
+    $pizza = json_decode($response->getBody(), true);
 
 PUT request
 -----------
@@ -90,7 +93,7 @@ PUT request
             ],
         ])
     ]);
-    $pizza = json_decode($response, true);
+    $pizza = json_decode($response->getBody(), true);
 
 DELETE request
 --------------
@@ -129,6 +132,6 @@ Errors are signaled with exceptions. Catch PHP's base ``Exception``.
     $client = $this->clientService->newClient();
     try {
         $response = $client->options('https://nextcloud.com');
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
         // Handle the error
     }
