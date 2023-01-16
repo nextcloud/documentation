@@ -51,6 +51,34 @@ would turn into this by using Dependency Injection:
     }
   }
 
+Controller injection
+--------------------
+
+For controllers it's possible to also have dependencies injected into methods.
+
+.. code-block:: php
+  :caption: lib/Controller/ApiController.php
+  :emphasize-lines: 12-13, 16-17
+
+  <?php
+
+  namespace OCA\MyApp\Controller;
+
+  use OCP\IRequest;
+
+  class ApiController {
+      public function __construct($appName, IRequest $request) {
+          parent::__construct($appName, $request);
+      }
+
+      public function foo(FooService $service) {
+          $service->foo();
+      }
+
+      public function bar(BarService $service) {
+          $service->bar();
+      }
+  }
 
 Using a container
 -----------------
