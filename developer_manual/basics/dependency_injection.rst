@@ -22,7 +22,6 @@ new dependencies in your constructor or methods but pass them in. So this:
 
 .. code-block:: php
 
-  <?php
   use OCP\IDBConnection;
 
   // without dependency injection
@@ -37,8 +36,6 @@ new dependencies in your constructor or methods but pass them in. So this:
 would turn into this by using Dependency Injection:
 
 .. code-block:: php
-
-  <?php
 
   use OCP\IDBConnection;
 
