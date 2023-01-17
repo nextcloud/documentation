@@ -150,6 +150,27 @@ The class to be used is :code:`\\OC\\Files\\ObjectStore\\S3`
           will be made with http://bucket.hostname.domain/, but with path style enabled,
           requests are made with http://hostname.domain/bucket instead.
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Microsoft Azure Blob Storage
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Azure Blob Storage backend mounts a container on Microsoft's Azure Blob Storage into the
+virtual filesystem.
+
+The class to be used is :code:`\\OC\\Files\\ObjectStore\\Azure`
+
+::
+
+	'objectstore' => [
+		'class' => '\\OC\\Files\\ObjectStore\\Azure',
+		'arguments' => [
+			'container' => 'nextcloud',
+			'autocreate' => true,
+			'account_name' => 'account_name',
+			'account_key' => 'xxxxxxxxxx'
+		],
+	],
+
 ------------------------
 Multibucket Object Store
 ------------------------

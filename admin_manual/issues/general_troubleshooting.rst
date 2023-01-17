@@ -30,9 +30,8 @@ configuration report with the :ref:`occ config command
 <config_commands_label>`, with passwords automatically obscured.
 
 .. _the Nextcloud Forums: https://help.nextcloud.com
-.. _FAQ page: https://help.nextcloud.com/c/faq
-.. _bugtracker: https://github.com/nextcloud/server/issues
-   https://docs.nextcloud.com/server/latest/developer_manual/prologue/bugtracker/index.html
+.. _FAQ page: https://help.nextcloud.com/t/how-to-faq-wiki
+.. _bugtracker: https://docs.nextcloud.com/server/latest/developer_manual/prologue/bugtracker/index.html
 
 .. TODO ON RELEASE: Update version number above on release
 
@@ -223,7 +222,7 @@ See:
   (Describes problems with Finder on various Web servers)
 
 There is also a well maintained FAQ thread available at the `ownCloud Forums
-<https://forum.owncloud.org/viewtopic.php?f=17&t=7536>`_
+<https://central.owncloud.org/t/how-to-fix-caldav-carddav-webdav-problems/852>`_
 which contains various additional information about WebDAV problems.
 
 .. _service-discovery-label:
@@ -255,7 +254,7 @@ module installed to process these redirects. When running Nginx please refer to
 
 
 If your Nextcloud instance is installed in a subfolder called ``nextcloud`` and
-you're running Apache create or edit the :file:`.htaccess` file within the
+you're running Apache, create or edit the :file:`.htaccess` file within the
 document root of your Web server and add the following lines::
 
     <IfModule mod_rewrite.c>
@@ -295,6 +294,33 @@ Users' Federated Cloud IDs not updated after a domain name change
 
 | ``occ dav:sync-system-addressbook``
 | ``occ federation:sync-addressbooks``
+
+.. _trouble-file-encoding-ext-storages:
+
+Troubleshooting file encoding on external storages
+--------------------------------------------------
+
+When using external storage, it can happen that some files with special characters will not
+appear in the file listing, or they will appear and not be accessible.
+
+When this happens, please run the :ref:`files scanner<occ_files_scan_label>`, for example with::
+
+  sudo -u www-data php occ files:scan --all
+
+If the scanner tells about an encoding issue on the affected file, please enable Mac encoding compatibility in the :ref:`mount options<external_storage_mount_options_label>`
+and then :ref:`rescan the external storage<occ_files_scan_label>`.
+
+.. note::
+   This mode comes with a performance impact because Nextcloud will always try both encodings when detecting files
+   on external storages.
+
+   Mac computers are using the NFD Unicode Normalization for file names which is different than NFC, the one used
+   by other operating systems. Mac users might upload files directly to the external storage using NFD normalized
+   file names. When uploading through Nextcloud, file names will always be normalized to the NFC standard for consistency.
+
+   It is recommended to let Nextcloud use external storages exclusively to avoid such issues.
+
+   See also `technical explanation about NFC vs NFD normalizations <https://www.win.tue.nl/~aeb/linux/uc/nfc_vs_nfd.html>`_.
 
 Troubleshooting contacts & calendar
 -----------------------------------
@@ -348,27 +374,66 @@ For a safe moving of data directory, supported by Nextcloud, recommended actions
 .. warning
    Note, you may need to configure your webserver to support symlinks.
 
-Troubleshooting encryption
---------------------------
+Troubleshooting downloading or decrypting files
+-----------------------------------------------
 
-Problems when downloading or decrypting files
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Bad signature error
+^^^^^^^^^^^^^^^^^^^
 
 In some rare cases it can happen that encrypted files cannot be downloaded
 and return a "500 Internal Server Error". If the Nextcloud log contains an error about
-"Bad Signature", then the following command can be used to repair affected files:
+"Bad Signature", then the following command can be used to repair affected files::
 
-| ``occ encryption:fix-encrypted-version userId --path=/path/to/broken/file.txt``
+ occ encryption:fix-encrypted-version userId --path=/path/to/broken/file.txt
 
 Replace "userId" and the path accordingly.
 The command will do a test decryption for all files and automatically repair the ones with a signature error.
+
+.. _troubleshooting_encryption_key_not_found:
+
+Encryption key cannot be found
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If the logs contain an error stating that the encryption key cannot be found, you can manually search the data directory for a folder that has the same name as the file name.
+For example if a file "example.md" cannot be decrypted, run::
+
+    find path/to/datadir -name example.md -type d
+
+Then check the results located in the ``files_encryption`` folder.
+If the key folder is in the wrong location, you can move it to the correct folder and try again.
+
+The ``data/files_encryption`` folder contains encryption keys for group folders and system-wide external storages
+while ``data/$userid/files_encryption`` contains the keys for specific user storage files.
+
+.. note::
+
+   This can happen if encryption was disabled at some point but the :ref:`occ command for decrypt-all<occ_disable_encryption_label>` was not run, and
+   then someone moved the files to another location. Since encryption was disabled, the keys did not get moved.
+
+Encryption key cannot be found with external storage or group folders
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To resolve this issue, please run the following command::
+
+    sudo -u www-data php occ encryption:fix-key-location <user-id>
+
+This will attempt to recover keys that were not moved properly.
+
+If this doesn't resolve the problem, please refer to the section :ref:`Encryption key cannot be found<troubleshooting_encryption_key_not_found>` for a manual procedure.
+
+.. note::
+
+   There were two known issues where:
+
+   - moving files between an encrypted and non-encrypted storage like external storage or group folder `would not move the keys with the files <https://github.com/nextcloud/groupfolders/issues/1896>`_.
+   - putting files on system-wide external storage would store the keys in the `wrong location <https://github.com/nextcloud/server/pull/32690>`_.
 
 Fair Use Policy
 ---------------
 
 Nextcloud is open source and you can host it for free on your own server or at a provider.
 
-Nextcloud recommends Using Nextcloud Enterprise for deploying instances with more than 500. With that size, issues like a broken server or a data leak become very serious.
+Nextcloud recommends Using Nextcloud Enterprise for deploying instances with more than 500 users. With that size, issues like a broken server or a data leak become very serious.
 
 If there is an issue with the server, 500 people can't work. A data leak would risk the data of many users. In short, the server should be considered mission-critical. We believe you and your users would have a better experience with Nextcloud Enterprise.
 

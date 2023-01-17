@@ -84,6 +84,7 @@ Share a file/folder with a user/group or as public link.
 * POST Arguments: expireDate - (string) set a expire date for public link
   shares. This argument expects a well formatted date string, e.g. 'YYYY-MM-DD'
 * POST Arguments: note - (string) Adds a note for the share recipient.
+* POST Arguments: attributes - (string) URI-encoded serialized JSON string for :ref:`share attributes<Share attributes>`
 * Mandatory fields: shareType, path and shareWith for shareType 0 or 1.
 
 * Result: XML containing the share ID (int) of the newly created share
@@ -127,6 +128,7 @@ Update a given share. Only one value can be updated per request.
 * PUT Arguments: expireDate - (string) set a expire date for public link
   shares. This argument expects a well formatted date string, e.g. 'YYYY-MM-DD'
 * PUT Arguments: note - (string) Adds a note for the share recipient.
+* PUT Arguments: attributes - (string) serialized JSON string for :ref:`share attributes<Share attributes>`
 
 .. note:: Only one of the update parameters can be specified at once.
 
@@ -137,6 +139,29 @@ Statuscodes:
 * 403 - public upload disabled by the admin
 * 404 - couldn't update share
 
+.. _Share attributes:
+
+Share attributes
+^^^^^^^^^^^^^^^^
+
+Share attributes are used for more advanced flags like permissions.
+
+To remove the download permission from a share, use the following serialized string in the "attributes" parameter:
+
+.. code-block:: json
+
+    [
+        {"scope":"permissions","key":"download","enabled":false}
+    ]
+
+This will prevent users from downloading the files from the share.
+For specific file types like office files, it will still be possible to view the files using the appropriate viewer app,
+which itself will present the file in a way that downloading will not be allowed.
+
+By default when unset, the "download" attribute will be true and so the download permission will be granted.
+
+.. note:: There is currently only one share attribute "download" from the scope "permissions".
+   This attribute is only valid for user and group shares, not for public link shares.
 
 Federated Cloud Shares
 ----------------------

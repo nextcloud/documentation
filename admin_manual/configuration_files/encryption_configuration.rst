@@ -257,7 +257,19 @@ on systems where encryption has not already been enabled. It is not possible to
 disable it::
 
  occ encryption:enable-master-key
+
+Fix Bad signature errors::
+
+ occ encryption:fix-encrypted-versions --all
+ occ encryption:fix-encrypted-versions <userid>
+ occ encryption:fix-encrypted-versions <userid> -p <path>
+
+Fix key not found errors::
+
+ occ encryption:fix-key-location <userid>
  
+.. _occ_disable_encryption_label:
+
 Disabling encryption
 --------------------
 

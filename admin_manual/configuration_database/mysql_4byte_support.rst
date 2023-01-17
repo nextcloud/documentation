@@ -9,18 +9,30 @@ Enabling MySQL 4-byte support
 In order to use Emojis (textbased smilies) on your Nextcloud server with a MySQL database, the
 installation needs to be tweaked a bit.
 
-.. note::
+.. warning::
 
-    This manual only covers MySQL 8 or newer and MariaDB 10.3 or newer. If you use an older version, please check an older version of the documentation
+    This manual only covers MySQL 8 or newer and MariaDB 10.2 or newer.
+    If you use MariaDB 10.2, please check
+    `this older version <https://docs.nextcloud.com/server/20/admin_manual/configuration_database/mysql_4byte_support.html#mariadb-10-2-or-earlier>`_
+    of the documentation. If you use an older version of MySQL or MariaDB, please note that they are no longer supported
+    by the current Nextcloud version.
 
 1. Make sure the following InnoDB settings are set on your MySQL server::
 
     [mysqld]
     innodb_file_per_table=1
 
-Note::
+2. Restart the MySQL server in case you changed the configuration in step 1.
 
-    mysql> show variables like 'innodb_file_per_table';
+You can then verify that the change worked:
+
+.. code-block:: sql
+
+   SHOW VARIABLES LIKE 'innodb_file_per_table';
+
+The result should look like this::
+
+    mysql> SHOW VARIABLES LIKE 'innodb_file_per_table';
     +-----------------------+-------+
     | Variable_name         | Value |
     +-----------------------+-------+
@@ -28,13 +40,14 @@ Note::
     +-----------------------+-------+
     1 row in set (0.00 sec)
 
-2. Open a shell, change dir (adjust ``/var/www/nextcloud`` to your nextcloud location if needed), and put your nextcloud instance in maintenance mode, if it isn't already::
+3. Open a shell, change dir (adjust ``/var/www/nextcloud`` to your nextcloud location if needed), and put your nextcloud instance in maintenance mode, if it isn't already::
 
    $ cd /var/www/nextcloud
    $ sudo -u www-data php occ maintenance:mode --on
 
-3. Restart the MySQL server in case you changed the configuration in step 1.
-4. Change your databases character set and collation::
+4. Change your databases character set and collation:
+
+.. code-block:: sql
 
     ALTER DATABASE nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
@@ -48,7 +61,7 @@ Note::
 
 .. note::
 
-    This will also change the `ROW_FORMAT` to `COMPRESSED` for your tables, to make sure the used database storage size is not getting out of hand.
+    This will also change the `ROW_FORMAT` to `DYNAMIC` for your tables.
 
 7. Disable maintenance mode::
 

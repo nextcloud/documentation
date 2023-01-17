@@ -348,7 +348,6 @@ Sources
 - `nextcloud-tools repository on GitHub <https://github.com/syseleven/nextcloud-tools>`_
 - `Nextcloud Encryption Configuration documentation <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html>`_
 - `Nextcloud Help response concering the usage of version information <https://help.nextcloud.com/t/allow-file-decryption-with-only-the-files-keys-and-passwords/436/12>`_
-- `Overview of ownCloud Encryption Model <https://owncloud.com/wp-content/uploads/2015/07/Overview_of_ownCloud_Encryption_Model_2.2.pdf>`_
 - `Sourcecode: Creation of the Message Authentication Code <https://github.com/nextcloud/server/blob/a374d8837d6de459500e619cf608e0721ea14574/apps/encryption/lib/Crypto/Crypt.php#L504>`_
 - `Sourcecode: Derivation of the Encryption Key <https://github.com/nextcloud/server/blob/a374d8837d6de459500e619cf608e0721ea14574/apps/encryption/lib/Crypto/Crypt.php#L346>`_
 - `Sourcecode: Encryption of the File <https://github.com/nextcloud/server/blob/a374d8837d6de459500e619cf608e0721ea14574/apps/encryption/lib/Crypto/Crypt.php#L234>`_

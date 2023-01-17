@@ -51,6 +51,7 @@ or webroot you can use the **overwrite** parameters inside the :file:`config/con
 * :file:`overwriteprotocol` set the protocol of the proxy. You can choose between the two options **http** and **https**.
 * :file:`overwritewebroot` set the absolute web path of the proxy to the Nextcloud folder.
 * :file:`overwritecondaddr` overwrite the values dependent on the remote address. The value must be a **regular expression** of the IP addresses of the proxy. This is useful when you use a reverse SSL proxy only for https access and you want to use the automatic detection for http access.
+* :file:`overwrite.cli.url` the base URL for any URLs which are generated within Nextcloud using any kind of command line tools. For example, the value set here will be used by the notifications area.
 
 Leave the value empty or omit the parameter to keep the automatic detection.
 
@@ -73,32 +74,42 @@ Thanks to `@ffried <https://github.com/ffried>`_ for apache2 example.
 Traefik 1
 ^^^^^^^^^
 
-Using docker tags:
+Using Docker labels:
 ::
 
   traefik.frontend.redirect.permanent: 'true'
-  traefik.frontend.redirect.regex: https://(.*)/.well-known/(card|cal)dav
-  traefik.frontend.redirect.replacement: https://$1/remote.php/dav/
+  traefik.frontend.redirect.regex: 'https://(.*)/.well-known/(?:card|cal)dav'
+  traefik.frontend.redirect.replacement: 'https://$$1/remote.php/dav'
 
 Using traefik.toml:
 ::
 
   [frontends.frontend1.redirect]
-    regex = "https://(.*)/.well-known/(card|cal)dav"
-    replacement = "https://$1/remote.php/dav/
+    regex = "https://(.*)/.well-known/(?:card|cal)dav"
+    replacement = "https://$1/remote.php/dav
     permanent = true
 
 Thanks to `@pauvos <https://github.com/pauvos>`_ and `@mrtumnus <https://github.com/mrtumnus>`_ for traefik examples.
 
 Traefik 2
 ^^^^^^^^^
+
+Using Docker labels:
+::
+
+  traefik.http.routers.nextcloud.middlewares: 'nextcloud_redirectregex'
+  traefik.http.middlewares.nextcloud_redirectregex.redirectregex.permanent: true
+  traefik.http.middlewares.nextcloud_redirectregex.redirectregex.regex: 'https://(.*)/.well-known/(?:card|cal)dav'
+  traefik.http.middlewares.nextcloud_redirectregex.redirectregex.replacement: 'https://$${1}/remote.php/dav'
+
+Using a TOML file:
 ::
 
   [http.middlewares]
     [http.middlewares.nextcloud-redirectregex.redirectRegex]
       permanent = true
-      regex = "https://(.*)/.well-known/(card|cal)dav"
-      replacement = "https://${1}/remote.php/dav/"
+      regex = "https://(.*)/.well-known/(?:card|cal)dav"
+      replacement = "https://${1}/remote.php/dav"
 
 HAProxy
 ^^^^^^^
@@ -131,8 +142,8 @@ Caddy
 ::
 
     subdomain.example.com {
-        rewrite /.well-known/carddav /remote.php/dav
-        rewrite /.well-known/caldav /remote.php/dav
+        redir /.well-known/carddav /remote.php/dav 301
+        redir /.well-known/caldav /remote.php/dav 301
 
         reverse_proxy {$NEXTCLOUD_HOST:localhost}
     }
@@ -158,6 +169,7 @@ you can set the following parameters inside the :file:`config/config.php`.
     'overwriteprotocol' => 'https',
     'overwritewebroot'  => '/domain.tld/nextcloud',
     'overwritecondaddr' => '^10\.0\.0\.1$',
+    'overwrite.cli.url' => 'https://domain.tld/,
   );
 
 .. note:: If you want to use the SSL proxy during installation you have to
