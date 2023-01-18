@@ -357,7 +357,7 @@ does not match the actual data stored in the user's ``data/$userId/files`` direc
 .. note::
 
    Metadata, versions, trashbin and encryption keys are not counted in the used space above.
-   Please refer to the quota documentation for details.
+   Please refer to the `quota documentation <https://docs.nextcloud.com/server/latest/user_manual/en/files/quota.html>`_ for details.
 
 Running the following command can help fix the sizes and quota for a given user::
 
