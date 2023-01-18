@@ -655,9 +655,10 @@ File operations
 ``occ`` has three commands for managing files in Nextcloud::
 
  files
-  files:cleanup              cleanup filecache
-  files:scan                 rescan filesystem
-  files:scan-app-data        rescan the AppData folder
+  files:cleanup              Cleanup filecache
+  files:repair-tree          Try and repair malformed filesystem tree structures
+  files:scan                 Rescan filesystem
+  files:scan-app-data        Rescan the AppData folder
   files:transfer-ownership   All files' and folders' ownerships are moved to another
                              user. Outgoing shares are moved as well.
                              Incoming shares are not moved by default because the
@@ -738,6 +739,21 @@ Cleanup
 
 ``files:cleanup`` tidies up the server's file cache by deleting all file
 entries that have no matching entries in the storage table.
+
+Repair-Tree
+^^^^^^^^^^^
+
+``files:repair-tree`` try and repair malformed filesystem tree structures.
+If for any reason the path of an entry in the filecache doesn't match with
+it's expected path, based on the path of it's parent node, you end up with an
+entry in the filecache that exists in different places based on how the entry
+is generated. For example, if while listing folder ``/foo`` it contains a file
+``bar.txt``, but when trying to do anything with ``/foo/bar.txt`` the file
+doesn't exists.
+
+This command attempts to repair such entries by querying for entries where the path
+doesn't match the expected path based on it's parent path and filename and resets it's
+path to the expected one.
 
 Transfer
 ^^^^^^^^
