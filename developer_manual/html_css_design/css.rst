@@ -21,7 +21,7 @@ CSS variables
 App developers should use CSS4 variables so you get the values which Nextcloud defines. This way you can be sure that the theming and accessibility app can dynamically adjust the values.
 
 A list of available variables is listed in the server repository:
-https://github.com/nextcloud/server/blob/master/core/css/css-variables.scss
+https://github.com/nextcloud/server/blob/master/core/css/variables.scss
 
 
 ..  _cssicons:
