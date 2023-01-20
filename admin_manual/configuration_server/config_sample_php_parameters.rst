@@ -1385,6 +1385,14 @@ Defaults to ``''`` (empty string)
 
 ::
 
+	'preview_ffmpeg_path' => '/usr/bin/ffmpeg',
+
+custom path for ffmpeg binary
+
+Defaults to ``null`` and falls back to searching ``avconv`` and ``ffmpeg`` in the configured ``PATH`` environment
+
+::
+
 	'preview_imaginary_url' => 'http://previews_hpb:8088/',
 
 Set the URL of the Imaginary service to send image previews to.
