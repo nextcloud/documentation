@@ -10,7 +10,7 @@ The classloader is provided by Nextcloud and loads all your classes automaticall
 PSR-4 autoloading
 -----------------
 
-Nextcloud uses a PSR-4 autoloader. The namespace **\\OCA\\MyApp**
+Nextcloud uses a  :ref:`PSR-0 autoloader<psr4>`. The namespace **\\OCA\\MyApp**
 is mapped to :file:`/apps/myapp/lib/`. Afterwards normal PSR-4 rules apply, so
 a folder is a namespace section in the same casing and the class name matches
 the file name.
@@ -32,3 +32,26 @@ info.xml in the following way:
 
 A second PSR-4 root is available when running tests. **\\OCA\\MyApp\\Tests** is
 thereby mapped to :file:`/apps/myapp/tests/`.
+
+.. _app-custom-classloader:
+
+Replacing Nextcloud's autoloader
+--------------------------------
+
+Nextcloud's autoloader for apps is flexible and robust but not always the fastest. You can improve the loading speed of your app by shipping and optimizing a Composer class loader with the app.
+
+First of all, familiarize yourself with the `Composer autoloader optimization options <https://getcomposer.org/doc/articles/autoloader-optimization.md>`_ and how they work. (Authoritative) class maps are a good fit for Nextcloud apps.
+
+Once Composer is set up and class maps have been dumped, you can replace the generic Nextcloud class loader with the Composer class loader. This is done by placing a file at `composer/autoload.php`. If Nextcloud finds this file for an app, no generic class loader will be registered. The following contents will wire the file to Composer's generated ``autoloader.php`` file:
+
+.. code-block:: php
+  :caption: composer/autoload.php
+
+  <?php
+
+  declare(strict_types=1);
+
+  require_once __DIR__ . '/../vendor/autoload.php';
+
+
+.. note:: Make sure the auto loader is generated at release time and all files are included in the release tarball
