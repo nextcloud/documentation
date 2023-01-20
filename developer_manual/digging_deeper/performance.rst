@@ -8,6 +8,11 @@ This document introduces some common considerations and tips on improving perfor
 
 .. note::**Tips welcome**: More tips and ideas on performance are very welcome!
 
+PHP Performance
+---------------
+
+* Autoloader: Consider using an :ref:`optimized class loader<app-custom-classloader>`. The application code does not have to change for this optimization.
+
 Database performance
 --------------------
 
