@@ -28,7 +28,10 @@ If your app provides groupware-related settings, see if they make can be shown o
 Front-end changes
 -----------------
 
-tbd
+Removed APIs
+^^^^^^^^^^^^
+
+* :code:`OC.addTranslations` was deprecated since Nextcloud 17 and is now removed.
 
 Back-end changes
 ----------------
