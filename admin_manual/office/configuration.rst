@@ -11,6 +11,7 @@ Collabora Online Server
 URL (and port) of the Collabora Online server that provides the editing functionality as a WOPI client. Collabora Online should use the same protocol (http:// or https://) as the server installation. Naturally, https:// is recommended.
 
 Restrict usage to specific groups
+*********************************
 By default the app is enabled for all. When this setting is active, only members of specified groups can use Nextcloud Office.
 
 Restrict edit to specific groups
