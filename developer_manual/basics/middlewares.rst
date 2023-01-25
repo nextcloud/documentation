@@ -28,46 +28,80 @@ To generate your own middleware, simply inherit from the Middleware class and ov
       /**
        * this replaces "bad words" with "********" in the output
        */
-      public function beforeOutput($controller, $methodName, $output){
+      public function beforeOutput($controller, $methodName, $output): string {
           return str_replace('bad words', '********', $output);
       }
 
   }
 
-The middleware can be registered in the :doc:`dependency_injection` and added using the **registerMiddleware** method:
+The middleware can be registered in the app's ``Application`` class:
 
 .. code-block:: php
+    :caption: lib/AppInfo/Application.php
+    :emphasize-lines: 20
 
-  <?php
+    <?php
 
-  namespace OCA\MyApp\AppInfo;
+    declare(strict_types=1);
 
-  use \OCP\AppFramework\App;
+    namespace OCA\MyApp\AppInfo;
 
-  use \OCA\MyApp\Middleware\CensorMiddleware;
+    use OCA\MyApp\Middleware\CensorMiddleware;
+    use OCP\AppFramework\App;
+    use OCP\AppFramework\Bootstrap\IBootContext;
+    use OCP\AppFramework\Bootstrap\IBootstrap;
+    use OCP\AppFramework\Bootstrap\IRegistrationContext;
 
-  class MyApp extends App {
+    class Application extends App implements IBootstrap {
 
-      /**
-       * Define your dependencies in here
-       */
-      public function __construct(array $urlParams=array()){
-          parent::__construct('myapp', $urlParams);
-  
-          $container = $this->getContainer();
-  
-          /**
-           * Middleware
-           */
-          $container->registerService('CensorMiddleware', function($c){
-              return new CensorMiddleware();
-          });
-      
-          // executed in the order that it is registered
-          $container->registerMiddleware('CensorMiddleware');
-  
-      }
-  }
+        public function __construct() {
+            parent::__construct('myapp');
+        }
+
+        public function register(IRegistrationContext $context): void {
+            $context->registerMiddleware(CensorMiddleware::class);
+        }
+
+        public function boot(IBootContext $context): void {}
+
+    }
+
+Dependency Injection Container Registration
+-------------------------------------------
+
+.. deprecated:: 20
+
+Middlewares can also be added using the **registerMiddleware** method of the container:
+
+.. code-block:: php
+  :caption: lib/AppInfo/Application.php
+  :emphasize-lines: 14-17
+
+    <?php
+
+    declare(strict_types=1);
+
+    namespace OCA\MyApp\AppInfo;
+
+    use OCA\MyApp\Middleware\CensorMiddleware;
+    use OCP\AppFramework\App;
+    use OCP\AppFramework\Bootstrap\IBootContext;
+    use OCP\AppFramework\Bootstrap\IBootstrap;
+    use OCP\AppFramework\Bootstrap\IRegistrationContext;
+
+    class Application extends App implements IBootstrap {
+
+        public function __construct() {
+            parent::__construct('myapp');
+        }
+
+        public function register(IRegistrationContext $context): void {
+            $context->registerMiddleware(CensorMiddleware::class);
+        }
+
+        public function boot(IBootContext $context): void {}
+
+    }
 
 
 .. note::
@@ -101,47 +135,12 @@ Sometimes it is useful to conditionally execute code before or after a controlle
     /**
      * Add custom header if @MyHeader is used
      */
-    public function afterController($controller, $methodName, Response $response){
+    public function afterController($controller, $methodName, Response $response): Response {
         if($this->reflector->hasAnnotation('MyHeader')) {
             $response->addHeader('My-Header', 3);
         }
         return $response;
     }
-
-  }
-
-Now adjust the container to inject the reflector:
-
-.. code-block:: php
-
-  <?php
-
-  namespace OCA\MyApp\AppInfo;
-
-  use \OCP\AppFramework\App;
-
-  use \OCA\MyApp\Middleware\HeaderMiddleware;
-
-  class MyApp extends App {
-
-      /**
-       * Define your dependencies in here
-       */
-      public function __construct(array $urlParams=array()){
-          parent::__construct('myapp', $urlParams);
-  
-          $container = $this->getContainer();
-  
-          /**
-           * Middleware
-           */
-          $container->registerService('HeaderMiddleware', function($c){
-              return new HeaderMiddleware($c->query('ControllerMethodReflector'));
-          });
-
-          // executed in the order that it is registered
-          $container->registerMiddleware('HeaderMiddleware');
-      }
 
   }
 
