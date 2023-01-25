@@ -27,3 +27,16 @@ They appear on the user's Nextcloud Files page just like any other files.
 .. note:: Overwriting the files in ``core/skeleton`` is not recommended,
   because those changes will be overwritten on the next update of the Nextcloud
   server.
+
+
+Default file templates
+----------------------
+
+The default path for user templates is at ``/Templates`` (translated in the user's language).
+If you need to override this path for all users, you can set
+
+::
+
+  occ config:app:set core defaultTemplateDirectory --value="CustomPath"
+
+This will only apply to new users.
