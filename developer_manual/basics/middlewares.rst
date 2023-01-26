@@ -66,6 +66,43 @@ The middleware can be registered in the app's ``Application`` class:
 
     }
 
+Global Middlewares
+------------------
+
+.. versionadded:: 26
+
+Registered middlewares will only intercept requests of the same app by default. To make a middleware *global* and trigger for other apps' middlewares, add `true` as second argument of the ``registerMiddleware`` call:
+
+.. code-block:: php
+    :caption: lib/AppInfo/Application.php
+    :emphasize-lines: 20
+
+    <?php
+
+    declare(strict_types=1);
+
+    namespace OCA\MyApp\AppInfo;
+
+    use OCA\MyApp\Middleware\MonitoringMiddleware;
+    use OCP\AppFramework\App;
+    use OCP\AppFramework\Bootstrap\IBootContext;
+    use OCP\AppFramework\Bootstrap\IBootstrap;
+    use OCP\AppFramework\Bootstrap\IRegistrationContext;
+
+    class Application extends App implements IBootstrap {
+
+        public function __construct() {
+            parent::__construct('myapp');
+        }
+
+        public function register(IRegistrationContext $context): void {
+            $context->registerMiddleware(MonitoringMiddleware::class, true);
+        }
+
+        public function boot(IBootContext $context): void {}
+
+    }
+
 Dependency Injection Container Registration
 -------------------------------------------
 
