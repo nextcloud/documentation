@@ -33,6 +33,13 @@ tbd
 Back-end changes
 ----------------
 
+Migration from PHPDoc annotations to native PHP attributes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Nextcloud 26 supports PHP8.0 and later. This allows the migration from PHPDoc annotations to native attributes.
+
+* ``@UseSession`` should be replaced with ``#[UseSession]``. ``@UseSession`` will be removed in a future release. See :ref:`controller-use-session`.
+
 Planned removal of PSR-0 class loading
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
