@@ -97,7 +97,7 @@ with the container might feel familiar if you've worked with other php applicati
 before that also adhere to the convention.
 
 To add the app's classes simply open the :file:`lib/AppInfo/Application.php` and
-use the **registerService** method on the container object:
+use the **IRegistrationContext::registerService** method:
 
 .. code-block:: php
 
@@ -106,28 +106,34 @@ use the **registerService** method on the container object:
   namespace OCA\MyApp\AppInfo;
 
   use OCP\AppFramework\App;
+  use OCP\AppFramework\Bootstrap\IBootstrap;
+  use OCP\AppFramework\Bootstrap\IBootContext;
+  use OCP\AppFramework\Bootstrap\IRegistrationContext;
+  use OCP\IDBConnection;
 
   use OCA\MyApp\Controller\AuthorController;
   use OCA\MyApp\Service\AuthorService;
   use OCA\MyApp\Db\AuthorMapper;
-  use OCP\IDBConnection;
-  use OCP\IServerContainer;
   use Psr\Container\ContainerInterface;
 
-  class Application extends App {
+  class Application extends App implements IBootstrap {
+
+    public function __construct(array $urlParams = []){
+      parent::__construct('myapp', $urlParams);
+    }
+
+    public boot(IBootContext $context): void {
+      // ...
+    }
 
     /**
      * Define your dependencies in here
      */
-    public function __construct(array $urlParams = []){
-      parent::__construct('myapp', $urlParams);
-
-      $container = $this->getContainer();
-
+    public function register(IRegistrationContext $context): void {
       /**
        * Controllers
        */
-      $container->registerService(AuthorController::class, function(ContainerInterface $c): AuthorController {
+      $context->registerService(AuthorController::class, function(ContainerInterface $c): AuthorController {
         return new AuthorController(
           $c->get('appName'),
           $c->get(Request::class),
@@ -138,7 +144,7 @@ use the **registerService** method on the container object:
       /**
        * Services
        */
-      $container->registerService(AuthorService::class, function(ContainerInterface $c): AuthorService {
+      $context->registerService(AuthorService::class, function(ContainerInterface $c): AuthorService {
         return new AuthorService(
           $c->get(AuthorMapper::class)
         );
@@ -147,7 +153,7 @@ use the **registerService** method on the container object:
       /**
        * Mappers
        */
-      $container->registerService(AuthorMapper::class, function(ContainerInterface $c): AuthorMapper {
+      $context->registerService(AuthorMapper::class, function(ContainerInterface $c): AuthorMapper {
         return new AuthorMapper(
           $c->get(IDBConnection::class)
         );
@@ -303,26 +309,36 @@ Interfaces and primitive types can not be instantiated, so the container can not
   use OCA\MyApp\Db\AuthorMapper;
   use OCA\MyApp\Db\IAuthorMapper;
 
-  class Application extends \OCP\AppFramework\App {
+  use OCP\AppFramework\App;
+  use OCP\AppFramework\Bootstrap\IBootstrap;
+  use OCP\AppFramework\Bootstrap\IBootContext;
+  use OCP\AppFramework\Bootstrap\IRegistrationContext;
+  use Psr\Container\ContainerInterface;
+
+  class Application extends App implements IBootstrap {
+
+      public function __construct(array $urlParams = []){
+          parent::__construct('myapp', $urlParams);
+      }
+
+      public boot(IBootContext $context): void {
+          // ...
+      }
 
       /**
        * Define your dependencies in here
        */
-      public function __construct(array $urlParams = []){
-          parent::__construct('myapp', $urlParams);
-
-          $container = $this->getContainer();
-
+      public function register(IRegistrationContext $context): void {
           // AuthorMapper requires a location as string called $TableName
-          $container->registerParameter('TableName', 'my_app_table');
+          $context->registerParameter('TableName', 'my_app_table');
 
           // the interface is called IAuthorMapper and AuthorMapper implements it
-          $container->registerService(IAuthorMapper::class, function (ContainerInterface $c): AuthorMapper {
+          $context->registerService(IAuthorMapper::class, function (ContainerInterface $c): AuthorMapper {
               return $c->get(AuthorMapper::class);
           });
 
           // Less verbose alternative
-          $container->registerAlias(IAuthorMapper::class, AuthorMapper::class);
+          $context->registerServiceAlias(IAuthorMapper::class, AuthorMapper::class);
       }
 
   }
@@ -342,7 +358,7 @@ Aliases:
 
 * **AppName**: resolves to ``appName`` (deprecated)
 * **Request**: resolves to ``\OCP\IRequest``
-* **ServerContainer**: resolves to ``\OCP\IServerContainer``
+* **ServerContainer**: resolves to ``\OCP\IServerContainer`` (deprecated)
 * **UserId**: resolves to ``userId`` (deprecated)
 * **WebRoot**: resolves to ``webRoot`` (deprecated)
 
@@ -382,6 +398,7 @@ Types:
 * ``\OCP\IURLGenerator``
 * ``\OCP\IUserManager``
 * ``\OCP\IUserSession``
+* ``\Psr\Container\ContainerInterface``
 
 How to enable it
 ^^^^^^^^^^^^^^^^
