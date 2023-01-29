@@ -168,13 +168,13 @@ Method 1: Using an alias and standard built-in ``complete``
 
 Two script files are used to enable autocompletion::
 
-* bash-add-alias.sh
+* bash-tab-completion-occ.sh
 * occ.bash
 
-Run ``bash-add-alias.sh`` by sourcing the file, using one of these methods:
+Run ``bash-tab-completion-occ.sh`` by sourcing the file, using one of these methods:
 
-* ``source bash-add-alias.sh``
-* ``. bash-add-alias.sh``
+* ``source bash-tab-completion-occ.sh``
+* ``. bash-tab-completion-occ.sh``
 
 That script will generate an alias for ``occ`` in the form of::
 
