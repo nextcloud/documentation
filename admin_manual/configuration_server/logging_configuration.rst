@@ -43,7 +43,7 @@ been configured by the **datadirectory** parameter in :file:`config/config.php`.
 
 The desired date format can optionally be defined using the **logdateformat** parameter in :file:`config/config.php`.
 By default the `PHP date function`_ parameter ``c`` is used, and therefore the
-date/time is written in the format ``2013-01-10T15:20:25+02:00``. By using the
+date/time is written in the format ``2013-01-10T15:20:25+02:00``. This format complies to RFC3339 without time zone and with numeric time zone offset. The respective GO time format is ``2006-01-02T15:04:05+0700``. By using the
 date format in the example below, the date/time format will be written in the format
 ``January 10, 2013 15:20:25``.
 
