@@ -118,6 +118,8 @@ Everything.
 
 Now find your Antivirus Configuration panel on your Admin page.
 
+//TODO: adapt config screenshots and instructions according to updated version of the Antivirus App
+
 .. figure:: ../images/antivirus-config.png
 
 ClamAV runs in one of three modes:
