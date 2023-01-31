@@ -203,3 +203,39 @@ all files for that user in their corresponding bucket.
 
 You can find out more information about upscaling with object storage and Nextcloud in the
 `Nextcloud customer portal <https://portal.nextcloud.com/article/object-store-as-primary-storage-16.html>`_.
+
+
+------------------------
+SSE-C encryption support
+------------------------
+
+Nextcloud supports server side encryption, also known as `SSE-C <http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html>`, with compatible S3 bucket provider. The encryption and decryption happens on the S3 bucket side with a key provided by the Nextcloud server.
+
+The key can be specified with the :code:`sse_c_key` parameter which needs to be provided as a base64 encoded string with a maximum length of 32 bytes. A random key could be generated using the the following command:
+
+:: 
+	openssl rand 32 | base64
+
+
+The following example shows how to configure the S3 object store with SSE-C encryption support in the objectstore section of the Nextcloud config.php file:
+
+::
+
+	'objectstore' => [
+		array (
+			'class' => 'OC\\Files\\ObjectStore\\S3',
+			'arguments' =>
+			array (
+				'bucket' => 'nextcloud',
+				'key' => 'nextcloud',
+				'secret' => 'nextcloud',
+				'hostname' => 's3',
+				'port' => '443',
+				'use_ssl' => true,
+				'use_path_style' => true,
+				'autocreate' => true,
+				'verify_bucket_exists' => true,
+				'sse_c_key' => 'o9d3Q9tHcPMv6TIpH53MSXaUmY91YheZRwuIhwCFRSs=',
+			),
+		);
+	],
