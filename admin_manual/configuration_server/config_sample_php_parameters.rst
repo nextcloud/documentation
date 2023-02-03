@@ -570,8 +570,10 @@ Defaults to ``10`` seconds
 
 	'mail_smtpsecure' => '',
 
-This depends on ``mail_smtpmode``. Specify when you are using ``ssl`` for SSL/TLS or
-``tls`` for STARTTLS, or leave empty for no encryption.
+This depends on ``mail_smtpmode``. Specify ``ssl`` when you are using SSL/TLS. Any other value will be ignored.
+
+If the server advertises STARTTLS capabilities, they might be used, but they cannot be enforced by
+this config option.
 
 Defaults to ``''`` (empty string)
 
@@ -583,15 +585,6 @@ This depends on ``mail_smtpmode``. Change this to ``true`` if your mail
 server requires authentication.
 
 Defaults to ``false``
-
-::
-
-	'mail_smtpauthtype' => 'LOGIN',
-
-This depends on ``mail_smtpmode``. If SMTP authentication is required, choose
-the authentication type as ``LOGIN`` or ``PLAIN``.
-
-Defaults to ``LOGIN``
 
 ::
 
