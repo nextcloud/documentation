@@ -18,7 +18,7 @@ basic HTTP authentication header.
 Example
 ^^^^^^^
 
-:: 
+::
 
   $ curl -X POST https://admin:secret@example.com/ocs/v2.php/apps/user_ldap/api/v1/config -H "OCS-APIREQUEST: true"
 
@@ -54,7 +54,7 @@ Deletes a given LDAP configuration. Authentication is done by sending a basic HT
 Example
 ^^^^^^^
 
-:: 
+::
 
   $ curl -X DELETE ``https://admin:secret@example.com/ocs/v2.php/apps/user_ldap/api/v1/config/s02 -H "OCS-APIREQUEST: true"
 
@@ -89,7 +89,7 @@ Returns all keys and values of the specified LDAP configuration. Authentication 
 Example
 ^^^^^^^
 
-:: 
+::
 
   $ curl -X GET https://admin:secret@example.com/ocs/v2.php/apps/user_ldap/api/v1/config/s02?showPassword=1 -H "OCS-APIREQUEST: true"
 
@@ -178,7 +178,7 @@ Updates a configuration with the provided values. Authentication is done by send
 Example
 ^^^^^^^
 
-:: 
+::
 
   $ curl -X PUT https://admin:secret@example.com/ocs/v2.php/apps/user_ldap/api/v1/config/s01 -H "OCS-APIREQUEST: true" -d "configData[ldapHost]=ldap%3A%2F%2Fldap.server.tld &configData[ldapPort]=389"
 
@@ -314,5 +314,7 @@ Configuration keys
 | ldapDynamicGroupMemberURL     | rw   | no       | URL for dynamic groups                                                                                                |
 +-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
 | ldapDefaultPPolicyDN          | rw   | no       | PPolicy DN for password rules                                                                                         |
++-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
+| ldapConnectionTimeout         | rw   | no       | Set the ``LDAP_OPT_NETWORK_TIMEOUT`` connection options. Default to 15 sec.                                           |
 +-------------------------------+------+----------+-----------------------------------------------------------------------------------------------------------------------+
 
