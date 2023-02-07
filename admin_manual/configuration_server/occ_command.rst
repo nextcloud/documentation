@@ -792,6 +792,9 @@ before removing a user::
 
 The transferred files will appear inside a new sub-directory in the destination user's home.
 
+.. note::
+  The user's folder must exist in the data directory: the command ``occ files:transfer-ownership`` will only work after the ``destination-user`` has logged in for the first time. Their first login initializes the user's file system.
+
 If the destination user has no files at all (empty home), it is possible to also transfer all the source user's files by passing ``--move``::
 
  sudo -u www-data php occ files:transfer-ownership --move <source-user> <destination-user>
