@@ -793,7 +793,7 @@ before removing a user::
 The transferred files will appear inside a new sub-directory in the destination user's home.
 
 .. note::
-  The user's folder must exist in the data directory: the command ``occ files:transfer-ownership`` will only work after the ``destination-user`` has logged in for the first time. Their first login initializes the user's file system.
+  Unless server side encryption is enabled, **the command will init the <destination-user> file system** in Nextcloud versions **22.2.6, 23.0.3 and since 24**. When it is unable to create the user's folder in the data directory it will show the following error: ``unable to rename, destination directory is not writable``. Before 22.2.6 the command ``occ files:transfer-ownership`` would only work after the user has logged in for the first time. 
 
 If the destination user has no files at all (empty home), it is possible to also transfer all the source user's files by passing ``--move``::
 
