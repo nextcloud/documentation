@@ -39,7 +39,7 @@ See :doc:`source_installation` for minimum PHP-modules and additional software f
 
 CPU Architecture and OS
 ^^^^^^^^^^^^^^^^^^^^^^^
-A 64-bit CPU and 64-bit OS is required for Nextcloud 26 and higher.
+A 64-bit CPU, OS and PHP is required for Nextcloud to run well.
 
 Memory
 ^^^^^^
