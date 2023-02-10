@@ -103,16 +103,20 @@ on the survey_client solution.
             }
 
             /**
-             * @return string the section ID, e.g. 'sharing'
+             * The section ID, e.g. 'sharing'
+             *
+             * @return string 
              */
             public function getSection() {
                     return 'survey_client';
             }
 
             /**
-             * @return int whether the form should be rather on the top or bottom of
+             * Whether the form should be rather on the top or bottom of
              * the admin section. The forms are arranged in ascending order of the
              * priority values. It is required to return a value between 0 and 100.
+             *
+             * @return int
              */
             public function getPriority() {
                     return 50;
@@ -231,7 +235,7 @@ An example implementation of the IIconSection interface:
             }
 
             /**
-             * returns the ID of the section. It is supposed to be a lower case string
+             * Returns the ID of the section. It is supposed to be a lower case string
              *
              * @returns string
              */
@@ -240,7 +244,7 @@ An example implementation of the IIconSection interface:
             }
 
             /**
-             * returns the translated name as it should be displayed, e.g. 'LDAP / AD
+             * Returns the translated name as it should be displayed, e.g. 'LDAP / AD
              * integration'. Use the L10N service to translate it.
              *
              * @return string
@@ -250,16 +254,20 @@ An example implementation of the IIconSection interface:
             }
 
             /**
-             * @return int whether the form should be rather on the top or bottom of
+             * Whether the form should be rather on the top or bottom of
              * the settings navigation. The sections are arranged in ascending order of
              * the priority values. It is required to return a value between 0 and 99.
+             * 
+             * @return int 
              */
             public function getPriority() {
                     return 80;
             }
 
             /**
-             * @return The relative path to a an icon describing the section
+             * The relative path to a an icon describing the section
+             * 
+             * @return string 
              */
             public function getIcon() {
                     return $this->urlGenerator->imagePath('yourapp', 'icon.svg');
