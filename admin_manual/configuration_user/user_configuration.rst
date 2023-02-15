@@ -193,7 +193,8 @@ Hover your cursor over their name on the **Users** page until the "..."-menu ico
 appears at the far right. After clicking on it, you will see the **Disable** option.
 
 The user will not longer be able to access their Nextcloud until you enable them again.
-Keep in mind that the files, which were shared by this user will not longer be accessible.
+Also all external shares, via public link or email, will not be accessible.
+Internal shares will still be working, so that other users on Nextcloud can continue working.
 
 You will find all disabled users in the **disabled**-section on the left pane.
 Enabling users is as easy as disabling them. Just click on the "..."-menu, and
