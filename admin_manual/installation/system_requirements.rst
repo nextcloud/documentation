@@ -90,10 +90,9 @@ Desktop client
 We strongly recommend using the latest version of your operating system to get the full and most stable experience out
 of our clients.
 
-* **Windows** 8.1+
-* **macOS** Lion (10.7)+ (64-bit only)
-* **Linux** (CentOS 6.5+, Ubuntu 14.04+, Fedora 21+, openSUSE 13, SUSE Linux Enterprise 11 SP3+, Debian 8 (Jessie)+, Red Hat
-  Enterprise Linux 7)
+* **Windows** 10+
+* **macOS** Lion (10.14)+ (64-bits only)
+* **Linux** (64-bits only) Should run on any distribution newer than Ubuntu 18.04 with our official AppImage package
 
 Mobile apps
 -----------
