@@ -1069,7 +1069,7 @@ Trashbin
 ::
 
  trashbin
-  trashbin:cleanup  [--all-users] [--] [<user_id>...]  Remove deleted files
+  trashbin:cleanup  [--all-users] [--] [<user_id>...]  Permanently remove deleted files
   trashbin:restore  [--all-users] [--] [<user_id>...]  Restore deleted files
 
 .. note::
@@ -1079,7 +1079,7 @@ Trashbin
 The ``trashbin:cleanup  [--all-users] [--] [<user_id>...]`` command removes the deleted files of the specified
 users in a space-delimited list, or all users if --all-users is specified.
 
-This example removes the deleted files of all users::
+This example permanently removes the deleted files of all users::
 
   sudo -u www-data php occ trashbin:cleanup --all-users
   Remove all deleted files for all users
@@ -1090,7 +1090,7 @@ This example removes the deleted files of all users::
    rosa
    edward
 
-This example removes the deleted files of users molly and freda::
+This example permanently removes the deleted files of users molly and freda::
 
  sudo -u www-data php occ trashbin:cleanup molly freda
  Remove deleted files of   molly
@@ -1106,6 +1106,10 @@ This example restores the deleted files of all users::
 This example restores the deleted files of users molly and freda::
 
  sudo -u www-data php occ trashbin:restore molly freda
+ 
+.. note::
+  This command only restores Users deleted files.
+  If you're using Group Folders app, such files are not restored.
 
 .. _user_commands_label:
 
