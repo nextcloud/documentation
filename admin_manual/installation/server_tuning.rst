@@ -138,7 +138,7 @@ It is possible to speed up preview generation using an
 external microservice: `Imaginary <https://github.com/h2non/imaginary>`_.
 
 We strongly recommend running our custom docker image that is more up to date than the official image.
-You can find the image at `docker.io/nextcloud/aio-imaginary:latest` for x64-architecture. For arm64-architecture, there is the `docker.io/nextcloud/aio-imaginary:latest-arm64` image.
+You can find the image at `docker.io/nextcloud/aio-imaginary:latest`.
 
 To do so, you will need to deploy the service and make sure that it is
 not accessible from outside of your servers. Then you can configure
