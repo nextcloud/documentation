@@ -111,6 +111,19 @@ Using a TOML file:
       regex = "https://(.*)/.well-known/(?:card|cal)dav"
       replacement = "https://${1}/remote.php/dav"
 
+Using a CRD for kubernetes:
+::
+
+  apiVersion: traefik.containo.us/v1alpha1
+  kind: Middleware
+  metadata:
+    name: nextcloud-redirectregex
+  spec:
+    redirectRegex:
+      regex: "https://(.*)/.well-known/(card|cal)dav"
+      replacement: "https://${1}/remote.php/dav"
+      permanent: true
+
 HAProxy
 ^^^^^^^
 ::
