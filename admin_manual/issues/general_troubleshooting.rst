@@ -154,7 +154,7 @@ Web server and Nextcloud itself.
    Linux distros or operating systems they can differ.
 
 * The logfile of Apache2 is located in ``/var/log/apache2/error.log``.
-* The logfile of PHP can be configured in your ``/etc/php/7.4/apache2/php.ini``.
+* The logfile of PHP can be configured in your ``/etc/php/8.0/apache2/php.ini``.
   You need to set the directive ``log_errors`` to ``On`` and choose the path
   to store the logfile in the ``error_log`` directive. After those changes you
   need to restart your Web server.
@@ -178,7 +178,7 @@ these modules:
 * mod_security
 * mod_reqtimeout
 * mod_deflate
-* libapache2-mod-php*filter (use libapache2-mod-php7.4 instead)
+* libapache2-mod-php*filter (use libapache2-mod-php8.0 instead)
 * mod_spdy together with libapache2-mod-php5 / mod_php (use fcgi or php-fpm
   instead)
 * mod_dav
