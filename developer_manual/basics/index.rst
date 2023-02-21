@@ -16,4 +16,5 @@ Basic concepts
    logging
    setting
    storage/index
+   public_share_template
    testing
