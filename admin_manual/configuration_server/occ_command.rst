@@ -1130,8 +1130,6 @@ Remove a certificate::
 
  sudo -u www-data php occ security:certificates:remove [certificate name]
 
-.. _trashbin_label:
-
 Status
 ------
 
@@ -1160,6 +1158,9 @@ This information can also be formatted via JSON instead of plain text::
      "productname": "Nextcloud",
      "extendedSupport": false
  }
+
+Status return code
+^^^^^^^^^^^^^^^^^^
 
 And finally, the ``-e`` (for exit code) parameter can be used to check
 the state of the nextcloud installation via return code::
@@ -1192,6 +1193,8 @@ units.
 +-------------+--------------------------------------------------------+
 | 2           | ``php occ upgrade`` is required                        |
 +-------------+--------------------------------------------------------+
+
+.. _trashbin_label:
 
 Trashbin
 --------
