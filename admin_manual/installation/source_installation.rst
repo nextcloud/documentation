@@ -307,18 +307,18 @@ ini file. This can be the case, for example, for the ``date.timezone`` setting.
 **php.ini - used by the Web server:**
 ::
 
-    /etc/php/7.4/apache2/php.ini
+    /etc/php/8.0/apache2/php.ini
   or
-    /etc/php/7.4/fpm/php.ini
+    /etc/php/8.0/fpm/php.ini
   or ...
 
 **php.ini - used by the php-cli and so by Nextcloud CRON jobs:**
 ::
 
-    /etc/php/7.4/cli/php.ini
+    /etc/php/8.0/cli/php.ini
 
 .. note:: Path names have to be set in respect of the installed PHP
-          (>= 7.3 or 7.4) as applicable.
+          (8.0, 8.1 or 8.2) as applicable.
 
 .. _php_fpm_tips_label:
 
@@ -338,7 +338,7 @@ Here are some example root paths for these ini/config files:
 +-----------------------+-----------------------+
 | Debian/Ubuntu/Mint    | CentOS/Red Hat/Fedora |
 +-----------------------+-----------------------+
-| ``/etc/php/7.4/fpm/`` | ``/etc/php-fpm.d/``   |
+| ``/etc/php/8.0/fpm/`` | ``/etc/php-fpm.d/``   |
 +-----------------------+-----------------------+
 
 In both examples, the ini/config file is called ``www.conf``, and depending on
@@ -365,7 +365,7 @@ you must add them.
 
 Alternatively it is possible to use the environment variables of your system by modifying::
 
-    /etc/php/7.4/fpm/pool.d/www.conf
+    /etc/php/8.0/fpm/pool.d/www.conf
 
 and uncommenting the line::
 
