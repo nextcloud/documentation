@@ -41,6 +41,10 @@ CPU Architecture and OS
 ^^^^^^^^^^^^^^^^^^^^^^^
 A 64-bit CPU, OS and PHP is required for Nextcloud to run well.
 
+32-bit systems are supported, with the following known limitations:
+- Dates before Unix Epoch (1970-01-01) are not supported
+- Dates after 2038 are not supported
+
 Memory
 ^^^^^^
 
