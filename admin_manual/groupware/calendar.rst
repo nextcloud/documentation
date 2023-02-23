@@ -87,7 +87,7 @@ The default refresh rate is one week, unless the subscription itself tells other
 
 To set up a different default refresh rate, change the ``calendarSubscriptionRefreshRate`` option::
 
- php occ config:app:set dav calendarSubscriptionRefreshRate --value "P1D"
+ php occ config:app:set dav calendarSubscriptionRefreshRate --value "PT1D"
 
 Where the value is a `DateInterval <https://www.php.net/manual/dateinterval.construct.php>`_, for instance with the above command all of the Nextcloud instance's calendars would be refreshed every day.
 
