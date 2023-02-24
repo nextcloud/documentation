@@ -106,3 +106,16 @@ Default JPEG quality setting for preview images is '90'. Change this with:
 :: 
 
   occ config:app:set preview jpeg_quality --value="60"
+
+Maximum memory for image generation:
+^^^^^^^^^^^^^^^^^^^^^
+
+By default, image previews are generated with imagegd.
+If creating the image would allocate more memory than the limit, preview generation will
+be disabled and the default mimetype icon is shown.
+Default limit is 256 MB. Set to -1 for no limit.
+
+::
+
+  <?php
+    'preview_max_memory' => 256,
