@@ -1,5 +1,6 @@
 name: Generate catalog templates (POT) files fetched automatically by transifex
 on:
+  workflow_dispatch:
   push:
     branches:
     - master
@@ -12,11 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+
     - uses: ammaraskar/sphinx-action@master
       with:
         docs-folder: "user_manual/"
         pre-build-command: pip install -r requirements.txt
         build-command: make gettext
+
     - uses: peter-evans/create-pull-request@v4
       id: cpr
       with:
@@ -25,6 +28,7 @@ jobs:
         title: Updates catalog templates
         branch: update-l10n
         signoff: true
+
     - uses: pascalgn/automerge-action@v0.15.6
       if: steps.cpr.outputs.pull-request-operation == 'created'
       env:
@@ -33,6 +37,7 @@ jobs:
         MERGE_RETRIES: 10
         MERGE_RETRY_SLEEP: 60000
         PULL_REQUEST: ${{ github.event.inputs.pull-request-number }}
+
     - uses: hmarr/auto-approve-action@v2.2.1
       if: steps.cpr.outputs.pull-request-operation == 'created'
       with:
