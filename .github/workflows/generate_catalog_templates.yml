@@ -20,8 +20,9 @@ jobs:
     - uses: peter-evans/create-pull-request@v4
       id: cpr
       with:
-        commit-message: Updates catalog templates (POT files fetched automatically by transifex)
-        title: l10n
+        token: ${{ secrets.COMMAND_BOT_PAT }}
+        commit-message: "chore(l10n): Updates catalog templates (POT files fetched automatically by transifex)"
+        title: Updates catalog templates
         branch: update-l10n
         signoff: true
     - uses: pascalgn/automerge-action@v0.15.6
