@@ -6,7 +6,6 @@ on:
     branches:
       - master
       - stable*
-      - '!update-l10n'
 
 jobs:
   user_manual:
@@ -26,6 +25,7 @@ jobs:
       with:
         name: User manual.zip
         path: "/tmp/documentation.tar.gz"
+
   user_manual-en:
     runs-on: ubuntu-latest
     steps:
@@ -35,6 +35,7 @@ jobs:
         docs-folder: "user_manual/"
         pre-build-command: pip install -r requirements.txt
         build-command: make html-lang-en
+
   developer_manual:
     runs-on: ubuntu-latest
     steps:
@@ -52,6 +53,7 @@ jobs:
       with:
         name: Developer manual.zip
         path: "/tmp/documentation.tar.gz"
+
   admin_manual:
     runs-on: ubuntu-latest
     steps:
