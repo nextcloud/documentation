@@ -26,7 +26,7 @@ and **CardDAV** (Contacts) to your Nextcloud.
 
    **Username**: Your Nextcloud username or email
 
-   **Password**: Your generated app-password/token (`Learn more <https://docs.nextcloud.com/server/latest/user_manual/session_management.html#managing-devices>`_).
+   **Password**: Your generated app-password/token (:ref:`Learn more<managing_devices>`).
 
 .. TODO ON RELEASE: Update version number above on release
 
