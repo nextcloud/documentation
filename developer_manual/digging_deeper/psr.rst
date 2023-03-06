@@ -45,7 +45,17 @@ PSR-11: Container Interface
 
 The dependency injection container follows the `PSR-11`_ container interface, so you may type-hint ``\Psr\Container\ContainerInterface`` whenever you want an instance of a container and use ``has($id)`` to check for existence and ``get($id)`` to retrieve an instance of a service. See the :ref:`dependency injection docs <dependency-injection>` for details.
 
+.. _psr20:
+
+PSR-20: Clock
+-------------
+
+.. versionadded:: 27
+
+The ``\OCP\AppFramework\Utility\ITimeFactory`` class follows the `PSR-20`_ clock interface, so you may type-hint ``\PSR\Clock\ClockInterface`` and then use the ``now()`` method whenever you want to get the current time. You can also change the timezone for the to be returned ``\DateTimeImmutable`` instance, by getting a new ``ITimeFactory`` from ``ITimeFactory::withTimeZone()``.
+
 .. _`PSR-0`: https://www.php-fig.org/psr/psr-0/
 .. _`PSR-3`: https://www.php-fig.org/psr/psr-3/
 .. _`PSR-4`: https://www.php-fig.org/psr/psr-4/
 .. _`PSR-11`: https://www.php-fig.org/psr/psr-11/
+.. _`PSR-20`: https://www.php-fig.org/psr/psr-20/
