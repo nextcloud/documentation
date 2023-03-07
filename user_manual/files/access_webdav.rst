@@ -345,14 +345,14 @@ Now Cyberduck enables file access to the Nextcloud server.
 Accessing public shares over WebDAV
 -----------------------------------
 
-Nextcloud provides the possibility to access public shares over WebDAV.
+Nextcloud provides the possibility to access public shares anonymously over WebDAV.
 
 To access the public share, open::
 
   https://example.com/nextcloud/public.php/webdav
 
 in a WebDAV client, use the share token as username and the (optional) share password
-as password.
+as password. For example, with a share link https://example.com/s/kFy9Lek5sm928xP, ``kFy9Lek5sm928xP`` will be the username.
 
 .. note:: **Settings** → **Administration** → **Sharing** → **Allow users on this
    server to send shares to other servers**. This option also allows WebDAV access
