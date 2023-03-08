@@ -881,35 +881,69 @@ Nextcloud supports brute-force protection on an action basis. By default control
 
 The native brute-force protection will slow down requests if too many violations have been found. This slow down will be applied to all requests against a brute-force protected controller with the same action from the affected IP.
 
-To enable brute force protection the following *Annotation* can be added to the controller:
+To enable brute force protection the following *Attribute* can be added to the controller:
 
-* **@BruteForceProtection(action=string)**: "string" is the name of the action. Such as "login" or "reset". Brute-force attempts are on a per-action basis; this means if a violation for the "login" action is triggered, other actions such as "reset" or "foobar" are not affected.
+* ``#[BruteForceProtection(action: 'string')]``: "string" is the name of the action. Such as "login" or "reset". Brute-force attempts are on a per-action basis; this means if a violation for the "login" action is triggered, other actions such as "reset" or "foobar" are not affected.
 
-Then the **throttle()** method has to be called on the response in case of a violation. Doing so will increase the throttle counter and make following requests slower.
+.. note::
+
+    The attribute is only available in Nextcloud 27 or later. In older versions the ``@BruteForceProtection(action=string)`` annotation can be used, but that does not allow multiple assignments to a single controller method.
+
+Then the **throttle()** method has to be called on the response in case of a violation. Doing so will increase the throttle counter and make following requests slower, until a slowness of roughly 30 seconds is reached and the controller returns a ``429 Too Many Requests`` status is returned instead of avoid further requests.
 
 A controller method that would employ brute-force protection with an action of "foobar" would look as following:
 
 .. code-block:: php
+    :emphasize-lines: 11,18
 
     <?php
     namespace OCA\MyApp\Controller;
 
     use OCP\IRequest;
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Attribute\BruteForceProtection;
     use OCP\AppFramework\Http\TemplateResponse;
 
     class PageController extends Controller {
 
-        /**
-         * @BruteForceProtection(action=foobar)
-         */
-        public function rateLimitedForAll(): TemplateResponse {
+        #[BruteForceProtection(action: 'foobar')]
+        public function bruteforceProtected(): TemplateResponse {
             $templateResponse = new TemplateResponse(…);
             // In case of a violation increase the throttle counter
             // note that $this->auth->isSuccessful here is just an
             // example.
-            if(!$this->auth->isSuccessful()) {
+            if (!$this->auth->isSuccessful()) {
                  $templateResponse->throttle();
+            }
+            return $templateResponse;
+        }
+    }
+
+A controller can also have multiple factors to brute force against. In this case you can specify multiple attributes and then in the throttle you specify the action which was violated. This is especially useful when a secret, in the sample below token, could be guessed on multiple endpoints e.g. a share token on the API level, preview endpoint, frontend controller, etc. while another secret (password), is specific to this one controller method.
+
+.. code-block:: php
+    :emphasize-lines: 11-12,16,20
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\IRequest;
+    use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Attribute\BruteForceProtection;
+    use OCP\AppFramework\Http\TemplateResponse;
+
+    class PageController extends Controller {
+
+        #[BruteForceProtection(action: 'token')]
+        #[BruteForceProtection(action: 'password')]
+        public function getPasswordProtectedShare(string $token, string $password): TemplateResponse {
+            $templateResponse = new TemplateResponse(…);
+            if (!$this->shareManager->getByToken($token)) {
+                $templateResponse->throttle(['action' => 'token']);
+            }
+            // …
+            if (!$share->verifyPassword($password)) {
+                $templateResponse->throttle(['action' => 'password']);
             }
             return $templateResponse;
         }
