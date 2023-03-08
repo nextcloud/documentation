@@ -115,9 +115,9 @@ Building HTML
 4. Install the dependencies ``pip install -r requirements.txt``
 5. Now you can use ``make ...`` to build all the stuff - for example ``make html`` to build the HTML flavor of all manuals
 
-To change into this environment you need to run `pipenv shell` to launch the shell and to exit you can use either ``exit`` or ``Ctrl`` + ``D``.
+To change into this environment you need to run ``pipenv shell`` to launch the shell and to exit you can use either ``exit`` or ``Ctrl`` + ``D``.
 
-When editing the documentation installing `sphinx-autobuild` though pip can be helpful. This will watch file changes and automatically reload the html preview:
+When editing the documentation installing ``sphinx-autobuild`` though pip can be helpful. This will watch file changes and automatically reload the html preview:
 
 1. Install ``pip install sphinx-autobuild``
 2. Enter the documentation section ``cd user_manual``
