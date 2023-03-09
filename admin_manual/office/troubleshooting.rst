@@ -39,3 +39,11 @@ Issue: Collabora Online doesn't handle my 100 users.
 
 Issue: Collabora Online doesn't work with Encryption.
     Yes, this is currently unsupported.
+    
+Issue: Nextcloud Office could not connect to the built-in Collabora Online - Built-in CODE server. 
+    Please check if in /etc/hosts the entry
+    ```
+    127.0.0.1 www.yourdomain.com 
+    ```
+    is entered.
+    if the WOPI warning still appears under Settings/Administration/Office, enter the IP 127.0.0.1 under "Allow list for WOPI requests".
