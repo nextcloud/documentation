@@ -42,7 +42,7 @@ For public *file* shares, you may allow editing the file with one of Nextcloud's
 
 .. figure:: ../images/sharing_public_file.png
 
-.. note:: Password protection as well as file expiration are not propagated using Federated File Sharing in current Nextcloud releases. This has been adjusted in Nextcloud 22.
+.. note:: Password protection as well as file expiration are also propagated using Federated File Sharing since Nextcloud 22.
 
 Internal shares with users and groups
 -------------------------------------
