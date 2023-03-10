@@ -290,7 +290,7 @@ Public appointments can be discovered through the profile page of a Nextcloud us
 
 .. figure:: images/appointment_config_calendar_settings.png
 
-.. note:: Only slots that do not conflict with existing events in your conflict calendars will be shown to attendees.
+.. note:: Only slots that do not conflict with existing events in your calendars will be shown to attendees.
 
 The organizer of an appointment can specify at which times of the week it's generally possible to book a slot. This could be the working hours but also any other customized schedule.
 
