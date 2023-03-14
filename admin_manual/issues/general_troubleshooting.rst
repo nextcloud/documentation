@@ -348,20 +348,59 @@ For a safe moving of data directory, supported by Nextcloud, recommended actions
 .. warning
    Note, you may need to configure your webserver to support symlinks.
 
-Troubleshooting encryption
---------------------------
+Troubleshooting downloading or decrypting files
+-----------------------------------------------
 
-Problems when downloading or decrypting files
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Bad signature error
+^^^^^^^^^^^^^^^^^^^
 
 In some rare cases it can happen that encrypted files cannot be downloaded
 and return a "500 Internal Server Error". If the Nextcloud log contains an error about
-"Bad Signature", then the following command can be used to repair affected files:
+"Bad Signature", then the following command can be used to repair affected files::
 
-| ``occ encryption:fix-encrypted-version userId --path=/path/to/broken/file.txt``
+ occ encryption:fix-encrypted-version userId --path=/path/to/broken/file.txt
 
 Replace "userId" and the path accordingly.
 The command will do a test decryption for all files and automatically repair the ones with a signature error.
+
+.. _troubleshooting_encryption_key_not_found:
+
+Encryption key cannot be found
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If the logs contain an error stating that the encryption key cannot be found, you can manually search the data directory for a folder that has the same name as the file name.
+For example if a file "example.md" cannot be decrypted, run::
+
+    find path/to/datadir -name example.md -type d
+
+Then check the results located in the ``files_encryption`` folder.
+If the key folder is in the wrong location, you can move it to the correct folder and try again.
+
+The ``data/files_encryption`` folder contains encryption keys for group folders and system-wide external storages
+while ``data/$userid/files_encryption`` contains the keys for specific user storage files.
+
+.. note::
+
+   This can happen if encryption was disabled at some point but the :ref:`occ command for decrypt-all<occ_disable_encryption_label>` was not run, and
+   then someone moved the files to another location. Since encryption was disabled, the keys did not get moved.
+
+Encryption key cannot be found with external storage or group folders
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To resolve this issue, please run the following command::
+
+    sudo -u www-data php occ encryption:fix-key-location <user-id>
+
+This will attempt to recover keys that were not moved properly.
+
+If this doesn't resolve the problem, please refer to the section :ref:`Encryption key cannot be found<troubleshooting_encryption_key_not_found>` for a manual procedure.
+
+.. note::
+
+   There were two known issues where:
+
+   - moving files between an encrypted and non-encrypted storage like external storage or group folder `would not move the keys with the files <https://github.com/nextcloud/groupfolders/issues/1896>`_.
+   - putting files on system-wide external storage would store the keys in the `wrong location <https://github.com/nextcloud/server/pull/32690>`_.
 
 Other issues
 ------------
