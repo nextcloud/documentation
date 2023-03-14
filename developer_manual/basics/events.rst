@@ -378,6 +378,27 @@ This event is triggered right after the LDAP user backend is registered.
 
 This event is triggered whenever the viewer is loaded and extensions should be loaded.
 
+``\OCP\App\Events\AppEnableEvent``
+**********************************
+
+.. versionadded:: 27
+
+This event is triggered when an app is enabled.
+
+``\OCP\App\Events\AppUpdateEvent``
+**********************************
+
+.. versionadded:: 27
+
+This event is triggered when an app is updated.
+
+``\OCP\App\Events\AppDisableEvent``
+***********************************
+
+.. versionadded:: 27
+
+This event is triggered when an app is disabled.
+
 ``\OCP\AppFramework\Http\Events\BeforeTemplateRenderedEvent``
 *************************************************************
 
