@@ -197,8 +197,8 @@ These include:
 	- Instructs some browsers to not sniff the mimetype of files. This is used for example to prevent browsers from interpreting text files as JavaScript.
 - ``X-XSS-Protection: 1; mode=block``
 	- Instructs browsers to enable their browser side Cross-Site-Scripting filter.
-- ``X-Robots-Tag: none``
-	- Instructs search machines to not index these pages.
+- ``X-Robots-Tag: noindex, nofollow``
+	- Instructs search machines to not index these pages and not follow any links there.
 - ``X-Frame-Options: SAMEORIGIN``
 	- Prevents embedding of the Nextcloud instance within an iframe from other domains to prevent Clickjacking and other similar attacks.
 - ``Referrer-Policy: no-referrer``
