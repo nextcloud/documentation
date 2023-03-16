@@ -45,6 +45,11 @@ PSR-11: Container Interface
 
 The dependency injection container follows the `PSR-11`_ container interface, so you may type-hint ``\Psr\Container\ContainerInterface`` whenever you want an instance of a container and use ``has($id)`` to check for existence and ``get($id)`` to retrieve an instance of a service. See the :ref:`dependency injection docs <dependency-injection>` for details.
 
+.. versionchanged:: 22
+    Nextcloud ships version 1.1.1
+.. versionchanged:: 27
+    Nextcloud ships version 2.0.2
+
 .. _psr20:
 
 PSR-20: Clock
