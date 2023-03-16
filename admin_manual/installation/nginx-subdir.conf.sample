@@ -47,6 +47,15 @@ server {
     # could take several months.
     #add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload" always;
 
+    # Add .mjs as a file extension for javascript
+    # Either include it in the default mime.types list
+    # or include you can include that list explicitly and add the file extension
+    # only for Nextcloud like below:
+    include mime.types;
+    types {
+        application/javascript js mjs;
+    }
+
     location = /robots.txt {
         allow all;
         log_not_found off;
