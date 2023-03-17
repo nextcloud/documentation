@@ -106,6 +106,19 @@ For developers that want to ease the translation process, please read `this docu
 Building
 --------
 
+Nightly Automated Build Steps
+=============================
+
+1. **Fetch sources**
+2. ``git clone https://github.com/nextcloud/documentation.git``
+3. ``cd documentation``
+4. ``git checkout <branch name>``
+5. **Install**
+6. ``npm install svgexport -g --unsafe-perm=true``
+7. ``pip3 install -r requirements.txt``
+8. ``make all``
+
+
 Building HTML
 =============
 
