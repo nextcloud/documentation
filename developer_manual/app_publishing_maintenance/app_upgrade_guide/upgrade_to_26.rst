@@ -59,7 +59,7 @@ Nextcloud 26 supports PHP8.0 and later. This allows the migration from PHPDoc an
 Planned removal of PSR-0 class loading
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Nextcloud is still loading classes that follow the long deprecated and replaced :ref:`PSR-0 standard <psr0>`. Nextcloud 26 is the last version that register a generic PSR-0 class loader. From Nextcloud 27 on apps have to either change class file names to match PSR-4 or ship their own (composer) class loader for PSR-0 files or.
+Nextcloud is still loading classes that follow the long deprecated and replaced :ref:`PSR-0 standard <psr0>`. Nextcloud 26 is the last version that register a generic PSR-0 class loader. From Nextcloud 27 on apps have to either change class file names to match PSR-4 or ship their own (composer) class loader for PSR-0 files or. (`PR#36434 <https://github.com/nextcloud/server/pull/36434>`_ by `nickvergessen <https://github.com/nickvergessen>`_)
 
 Dependency Injection Parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -71,7 +71,7 @@ Changed APIs
 
 * ``OCP\Files\SimpleFS\ISimpleFile::getSize()`` may now return a float (to support sizes >2G on 32bit systems)
 * ``OCP\Files\SimpleFS\InMemoryFile::getSize()`` may now return a float (to support sizes >2G on 32bit systems)
-* It is not required anymore to call ``setParsedSubject`` and ``setParsedMessage`` on notifications and activity events when setRichSubject and setRichMessage are used a parsed version is computed automatically. (`PR#34807 <https://github.com/nextcloud/server/pull/34807>`_)
+* It is not required anymore to call ``setParsedSubject`` and ``setParsedMessage`` on notifications and activity events when setRichSubject and setRichMessage are used a parsed version is computed automatically. (`PR#34807 <https://github.com/nextcloud/server/pull/34807>`_ by `come-nc <https://github.com/come-nc>`_)
 * Moved ``ICreateFromString::handleIMipMessage(string $name, string $calendarData): void;`` to its own Interface ``IHandleImipMessage`` (`PR#34893 <https://github.com/nextcloud/server/pull/34893>`_ by `miaulalala <https://github.com/miaulalala>`_)
 * Signatures of methods of ``OCP\AppFramework\Db\Entity`` changed as follows (`ref <https://github.com/nextcloud/server/commit/e91457d9cd68182591038636155d415b5dee0ec4>`_):
     * ``public static function fromParams(array $params) -> public static function fromParams(array $params): static``
