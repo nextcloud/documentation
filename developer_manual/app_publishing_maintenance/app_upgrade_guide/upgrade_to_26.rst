@@ -58,7 +58,7 @@ Nextcloud 26 supports PHP8.0 and later. This allows the migration from PHPDoc an
 Planned removal of PSR-0 class loading
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Nextcloud is still loading classes that follow the long deprecated and replaced :ref:`PSR-0 standard <psr0>`. Nextcloud 26 is the last version that register a generic PSR-0 class loader. From Nextcloud 27 on apps have to either change class file names to match PSR-4 or ship their own (composer) class loader for PSR-0 files or. (`PR#36434 <https://github.com/nextcloud/server/pull/36434>`_ by `nickvergessen <https://github.com/nickvergessen>`_)
+Nextcloud is still loading classes that follow the long deprecated and replaced :ref:`PSR-0 standard <psr0>`. Nextcloud 26 is the last version that register a generic PSR-0 class loader. From Nextcloud 27 on apps have to either change class file names to match PSR-4 or ship their own (composer) class loader for PSR-0 files or. (`PR#36434 <https://github.com/nextcloud/server/pull/36114>`_ by `ChristophWurst <https://github.com/ChristophWurst>`_)
 
 Dependency Injection Parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -78,17 +78,18 @@ Changed APIs
     * ``protected function setter($name, $args) -> protected function setter(string $name, array $args): void``
     * ``protected function getter($name) -> protected function getter(string $name): mixed``
     * ``protected function markFieldUpdated($attribute) -> protected function markFieldUpdated(string $attribute): void``
-* Middlewares can be registered globally (see :ref:`global_middlewares`, `PR#36310 <https://github.com/nextcloud/server/pull/36310>`_)
+* Middlewares can be registered globally (see :ref:`global_middlewares`, `PR#36310 <https://github.com/nextcloud/server/pull/36310>`_ by `ChristophWurst <https://github.com/ChristophWurst>`_)
 
 Removed APIs
 ^^^^^^^^^^^^
 
-* ``OCP\BackgroundJob\IJobList::getAll`` method was removed (`PR#36073 <https://github.com/nextcloud/server/pull/36073>`_)
-* 3rdparty dependency ``php-ds/php-ds`` was removed (`PR#36198 <https://github.com/nextcloud/server/pull/36198>`_)
-* ``OCP\Contacts\IManager::getAddressBooks`` method was removed (`PR#34329 <https://github.com/nextcloud/server/pull/34329>`_)
-* ``OCP\Util`` loglevel constants were removed (`PR#34329 <https://github.com/nextcloud/server/pull/34329>`_)
-* 3rdparty dependency ``nikic/php-parser`` was removed (`PR#36393 <https://github.com/nextcloud/server/pull/36393>`_)
-
+* ``OCP\BackgroundJob\IJobList::getAll`` method was removed (`PR#36073 <https://github.com/nextcloud/server/pull/36073>`_ by `come-nc <https://github.com/come-nc>`_)
+* 3rdparty dependency ``php-ds/php-ds`` was removed (`PR#36198 <https://github.com/nextcloud/server/pull/36198>`_ by `kesselb <https://github.com/kesselb>`_)
+* ``OCP\Contacts\IManager::getAddressBooks`` method was removed (`PR#34329 <https://github.com/nextcloud/server/pull/34329>`_ by `come-nc <https://github.com/come-nc>`_)
+* ``OCP\Util`` loglevel constants were removed (`PR#34329 <https://github.com/nextcloud/server/pull/34329>`_ by `come-nc <https://github.com/come-nc>`_)
+* 3rdparty dependency ``nikic/php-parser`` was removed (`PR#36393 <https://github.com/nextcloud/server/pull/36393>`_ by `kesselb <https://github.com/kesselb>`_)
+* Deprecated ``OCP\AppFramework\Db\Mapper`` was removed. You can easily migrate to ``OCP\AppFramework\Db\QBMapper``, which is doing the same thing using the query builder instead of string based queries. (`PR#34490 <https://github.com/nextcloud/server/pull/34490>`_ by `rullzer <https://github.com/rullzer>`_)
+* Deprecated classes of ``OCP\Dashboard`` were removed (`PR#35966 <https://github.com/nextcloud/server/pull/35966>`_ by `juliushaertl <https://github.com/juliushaertl>`_)
 
 Added APIs
 ^^^^^^^^^^
@@ -101,11 +102,9 @@ Added APIs
 Deprecated
 ----------
 
-* Deprecated ``OCP\AppFramework\Db\Mapper`` was removed. You can easily migrate to ``OCP\AppFramework\Db\QBMapper``, which is doing the same thing using the query builder instead of string based queries. (`PR#34490 <https://github.com/nextcloud/server/pull/34490>`_ by `rullzer <https://github.com/rullzer>`_)
 * ``OCP\BackgroundJob\IJobList::getJobs`` method was deprecated (`PR#36073 <https://github.com/nextcloud/server/pull/36073>`_)
-* Controller action annotation ``@UseSession`` is deprecated. Use new ``UseSession`` attribute instead (`PR#36363 <https://github.com/nextcloud/server/pull/36363>`_)
-* Deprecated classes of ``OCP\Dashboard`` were removed (`PR#35966 <https://github.com/nextcloud/server/pull/35966>`_)
-* **Notifications jQuery event deprecated**: The ``OCA.Notification.Action`` event of the notifications app is deprecated in favor of a ``notifications:action:executed`` event-bus event with (`PR#728 <https://github.com/nextcloud/notifications/pull/728>`_)
+* Controller action annotation ``@UseSession`` is deprecated. Use new ``UseSession`` attribute instead (`PR#36363 <https://github.com/nextcloud/server/pull/36363>`_ by `ChristophWurst <https://github.com/ChristophWurst>`_)
+* **Notifications jQuery event deprecated**: The ``OCA.Notification.Action`` event of the notifications app is deprecated in favor of a ``notifications:action:executed`` event-bus event with (`PR#728 <https://github.com/nextcloud/notifications/pull/728>`_ by `nickvergessen <https://github.com/nickvergessen>`_)
 
 Changes for admins
 ------------------
