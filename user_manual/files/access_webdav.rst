@@ -414,32 +414,46 @@ Known problems and their solutions are documented in the KB2123563_ article.
 
 Problem
 ^^^^^^^
-Cannot map Nextcloud as a WebDAV drive in Windows using self-signed certificate.
+Cannot map Nextcloud as a WebDAV drive in Windows using a self-signed certificate.
 
 Solution
 ^^^^^^^^
 
-  #. Go to the your Nextcloud instance via your favorite Web browser.
-  #. Click through until you get to the certificate error in the browser status
-     line.
-  #. View the cert, then from the Details tab, select Copy to File.
-  #. Save to the desktop with an arbitrary name, for example ``myNextcloud.pem``.
-  #. Start, Run, MMC.
-  #. File, Add/Remove Snap-In.
-  #. Select Certificates, Click Add, My User Account, then Finish, then OK.
-  #. Dig down to Trust Root Certification Authorities, Certificates.
-  #. Right-Click Certificate, Select All Tasks, Import.
-  #. Select the Save Cert from the Desktop.
-  #. Select Place all Certificates in the following Store, Click Browse.
-  #. Check the Box that says Show Physical Stores, Expand out Trusted Root
-     Certification Authorities, and select Local Computer there, click OK,
-     Complete the Import.
-  #. Check the list to make sure it shows up. You will probably need to Refresh
-     before you see it. Exit MMC.
-  #. Open Browser, select Tools, Delete Browsing History.
-  #. Select all but In Private Filtering Data, complete.
-  #. Go to Internet Options, Content Tab, Clear SSL State.
-  #. Close browser, then re-open and test.
+#. Access to your Nextcloud instance via your favorite Web browser.
+#. Click through until you get to the certificate error in the browser status
+   line.
+#. View the certificate, then from the Details tab, select Copy to File.
+#. Save the file to your desktop with an arbitrary name, for example
+   ``myNextcloud.pem``.
+#. Go to Start menu > Run, type MMC, and click OK to open Microsoft Management
+   Console.
+#. Go to File > Add/Remove Snap-In.
+#. Select Certificates, Click Add, choose My User Account, then Finish, and
+   finally OK.
+#. Dig down to Trust Root Certification Authorities, Certificates.
+#. Right-Click Certificate, Select All Tasks, and Import.
+#. Select the saved certificate from the Desktop.
+#. Select Place all Certificates in the following Store, and click Browse.
+#. Check the Box that says Show Physical Stores, expand out Trusted Root
+   Certification Authorities, select Local Computer there, click OK, and
+   Complete the Import.
+#. Check the list to make sure the certificate shows up. You will probably
+   need to Refresh before you see it.
+#. Exit MMC.
+
+For Firefox users:
+
+#. Launch your browser, go to Application menu > History > Clear recent history...
+#. Select 'Everything' in the 'Time range to clear' dropdown menu
+#. Select 'Active Logins' check box
+#. Click the 'Clear now' button
+#. Close the browser, then re-open and test.
+
+For Chrome-based browsers (Chrome, Chromium, Microsoft Edge) users:
+
+#. Open Windows Control Panel, navigate down to Internet Options
+#. In the Content tab, click the Clear SSL State button.
+#. Close the browser, then re-open and test.
 
 Problem
 ^^^^^^^
