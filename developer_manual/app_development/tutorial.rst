@@ -4,7 +4,7 @@ Tutorial
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-**Warning: the tutorial on this page will be deprecated soon. We are working on a series of new tutorials. These tutorials take you through the steps of setting up your development environment to developing your first simple apps. You can find these new tutorials `here <https://cloud.nextcloud.com/s/iyNGp8ryWxc7Efa?path=%2F>` .**
+.. note:: The tutorial on this page will be deprecated soon. We are working on a series of new tutorials. These tutorials take you through the steps of setting up your development environment to developing your first simple apps. You can find these new tutorials `here <https://cloud.nextcloud.com/s/iyNGp8ryWxc7Efa?path=%2F>`_.
 
 
 This tutorial will outline how to create a very simple notes app. The finished app is available on `GitHub <https://github.com/nextcloud/app-tutorial#tutorial>`_.
