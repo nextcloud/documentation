@@ -190,6 +190,21 @@ Similar to attendees you can add rooms and resources to your events. The system 
 
 .. note:: Rooms and resources are not managed by Nextcloud itself and the Calendar app will not allow you to add or change a resource. Your Administrator has to install and possibly configure resource back ends before you can use them as a user.
 
+Add attachments to events
+~~~~~~~~~~~~~~~~~~~~~~~~~
+You can import attachments to your events either by uploading them or adding them from files 
+
+.. figure:: images/calendar_adding_attachments.png
+   :scale: 40%
+
+.. note:: Attachments can be added while creating new events or editing existent ones.
+   Newly uploaded files will be saved in files by default in the calendar folder in the root directory.
+
+You can change the attachment folder by going to ``Calendar settings`` in the bottom left corner and changing ``default attachments location``. 
+
+.. figure:: images/calendar_attachments_location.png
+   :scale: 60%
+
 Set up reminders
 ~~~~~~~~~~~~~~~~
 
