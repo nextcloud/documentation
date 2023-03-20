@@ -66,6 +66,8 @@ The middleware can be registered in the app's ``Application`` class:
 
     }
 
+.. _global_middlewares:
+
 Global Middlewares
 ------------------
 
