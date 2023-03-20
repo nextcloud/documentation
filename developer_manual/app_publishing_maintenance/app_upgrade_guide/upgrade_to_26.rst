@@ -2,7 +2,8 @@
 Upgrade to Nextcloud 26
 =======================
 
-.. note:: Critical changes were collected `on GitHub <https://github.com/nextcloud/server/issues/34692>`__. See the original ticket for links to the pull requests and tickets.
+.. note:: Critical changes were collected `on GitHub <https://github.com/nextcloud/server/issues/34692>`_.
+    See the original ticket for links to the pull requests and tickets.
 
 General
 -------
@@ -14,9 +15,9 @@ Make sure your ``appinfo/info.xml`` allows for Nextcloud 26.
 
 .. code-block:: xml
 
-	<dependencies>
-	  <nextcloud min-version="23" max-version="26" />
-	</dependencies>
+    <dependencies>
+        <nextcloud min-version="23" max-version="26" />
+    </dependencies>
 
 Personal settings section *Groupware* moved to *Availability*
 -------------------------------------------------------------

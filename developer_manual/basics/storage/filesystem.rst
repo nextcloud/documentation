@@ -24,7 +24,6 @@ Access to the filesystem is provided by the ``IRootFolder`` which can be injecte
 From the root folder you can either access a user's home folder or access a file or folder by its absolute path.
 
 .. code-block:: php
-    <?php
 
     use OCP\Files\IRootFolder;
     use OCP\IUserSession;
@@ -63,7 +62,6 @@ Writing to a file
 All methods return a Folder object on which files and folders can be accessed, or filesystem operations can be performed relatively to their root. For instance for writing to file:`nextcloud/data/myfile.txt` you should get the root folder and use:
 
 .. code-block:: php
-    <?php
 
     use OCP\Files\IRootFolder;
 
@@ -105,7 +103,6 @@ Reading from a file
 Files and folders can also be accessed by id, by calling the **getById** method on the folder.
 
 .. code-block:: php
-    <?php
 
     use OCP\Files\IRootFolder;
 
