@@ -226,7 +226,7 @@ Nextcloud will read existing session data at the beginning of the request lifecy
 Alternatively, you can use the ``#[UseSession]`` attribute to automatically open and close the session for you.
 
 .. code-block:: php
-    :emphasize-lines: 2,13
+    :emphasize-lines: 2,7
 
     use OCP\AppFramework\Controller;
     use OCP\AppFramework\Http\Attribute\UseSession;

@@ -105,7 +105,7 @@ Afterwards you'll be able to check the app with the following ``psalm.xml`` that
 
 
 You can put this process into a GitHub Action that is run for every pull request.
-Check our `simple github action <https://github.com/nextcloud/.github/blob/master/workflow-templates/psalm.yml>`_ from
+Check our `psalm github action <https://github.com/nextcloud/.github/blob/master/workflow-templates/psalm.yml>`_ from
 our `nextcloud template repository <https://github.com/nextcloud/.github>`_.
 
 If you want to support multiple versions of Nextcloud server with a single app version, checkout this slightly
