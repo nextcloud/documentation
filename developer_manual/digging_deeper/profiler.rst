@@ -49,13 +49,13 @@ the toolbar track the XHR requests created by the JavaScript frontend.
 You can hover on top of the toolbar information to show more detailed information and also
 click on the toolbar to show all the information collected.
 
-There is for the moment 4 views:
+There is for the moment 5 views:
 
 1. The general request and response view
 2. The database queries view
 3. The event view
 4. The LDAP queries view
-4. The cache view
+5. The cache view
 
 
 The General Request and Response View
