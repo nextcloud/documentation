@@ -6,7 +6,7 @@ App publishing and maintenance
    :maxdepth: 2
 
    release_process
-   code_signing
    publishing
+   code_signing
    release_automation
    app_upgrade_guide/index
