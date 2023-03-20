@@ -1,13 +1,12 @@
 .. _app-store-publishing:
 
-====================
-App store publishing
-====================
+=============================
+The Nextcloud app store rules
+=============================
 
 .. sectionauthor:: Jos Poortvliet <jospoortvliet@gmail.com>
 
-The Nextcloud app store
------------------------
+
 The Nextcloud app store is built into Nextcloud to allow you to get your apps to users as easily and safely as possible.
 The app store and the process of publishing apps aims to be:
 
@@ -17,11 +16,8 @@ The app store and the process of publishing apps aims to be:
 * fair
 * easy to maintain
 
-`Publishing App on the App Store <https://nextcloudappstore.readthedocs.io/en/latest/developer.html#publishing-apps-on-the-app-store>`_
----------------------------------------------------------------------------------------------------------------------------------------
-
 Losing a rating
-^^^^^^^^^^^^^^^
+---------------
 Apps can lose their rating when:
 
 * they are found to no longer satisfy the requirements
