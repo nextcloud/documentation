@@ -6,7 +6,12 @@
 Development environment
 =======================
 
-Please follow the steps on this page to set up your development environment.
+We have a tutorial available on setting up your development environment using docker. You can find the tutorial `here <https://cloud.nextcloud.com/s/iyNGp8ryWxc7Efa?path=%2F>`_. We recommend you to follow that tutorial. 
+
+This page describes how to set up your development environment without docker.
+
+
+Please follow the steps on this page to set up your development environment manually.
 
 Set up Web server and database
 ------------------------------
