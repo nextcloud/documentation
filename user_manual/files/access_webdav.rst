@@ -455,17 +455,6 @@ For Chrome-based browsers (Chrome, Chromium, Microsoft Edge) users:
 #. In the Content tab, click the Clear SSL State button.
 #. Close the browser, then re-open and test.
 
-Problem
-^^^^^^^
-
-You cannot download more than 50 MB or upload large files when the upload takes
-longer than 30 minutes using Web Client in Windows 7.
-
-Solution
-^^^^^^^^
-
-Workarounds are documented in the KB2668751_ article.
-
 
 Accessing files using cURL
 --------------------------
