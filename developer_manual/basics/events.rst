@@ -308,6 +308,13 @@ This event is triggered when a user updates a card in an address-book.
 
 This event is triggered during the setup of the SabreDAV server to allow the registration of additional authentication backends.
 
+``OCP\BeforeSabrePubliclyLoadedEvent``
+**************************************
+
+.. versionadded:: 26
+
+This event is triggered when accessing public webdav endpoints.
+
 ``\OCA\DAV\Events\SubscriptionCreatedEvent``
 ********************************************
 

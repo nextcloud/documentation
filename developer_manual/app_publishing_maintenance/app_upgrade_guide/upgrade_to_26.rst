@@ -105,13 +105,3 @@ Deprecated
 * ``OCP\BackgroundJob\IJobList::getJobs`` method was deprecated (`PR#36073 <https://github.com/nextcloud/server/pull/36073>`_)
 * Controller action annotation ``@UseSession`` is deprecated. Use new ``UseSession`` attribute instead (`PR#36363 <https://github.com/nextcloud/server/pull/36363>`_ by `ChristophWurst <https://github.com/ChristophWurst>`_)
 * **Notifications jQuery event deprecated**: The ``OCA.Notification.Action`` event of the notifications app is deprecated in favor of a ``notifications:action:executed`` event-bus event with (`PR#728 <https://github.com/nextcloud/notifications/pull/728>`_ by `nickvergessen <https://github.com/nickvergessen>`_)
-
-Changes for admins
-------------------
-
-* PHP 7.4 is not supported anymore. Please upgrade to PHP 8.0 or higher.
-* PHP 8.2 is now supported.
-* The recommended webserver configuration has changed to no longer include a default redirect to the login page
-    * For Apache this change will automatically come with the ``.htaccess`` file provided by the release
-    * for nginx administrators should ensure that their config is up to date with the `documentation <https://docs.nextcloud.com/server/latest/admin_manual/installation/nginx.html>`_
-        * The relevant lines to remove are ``error_page 403 /core/templates/403.php;`` and ``error_page 404 /core/templates/404.php;``
