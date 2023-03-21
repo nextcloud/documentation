@@ -348,6 +348,29 @@ For a safe moving of data directory, supported by Nextcloud, recommended actions
 .. warning
    Note, you may need to configure your webserver to support symlinks.
 
+Troubleshooting quota or size issues
+------------------------------------
+
+Sometimes it can happen that the used space reported in the web UI or with ``occ user:info $userId``
+does not match the actual data stored in the user's ``data/$userId/files`` directory.
+
+.. note::
+
+   Metadata, versions, trashbin and encryption keys are not counted in the used space above.
+   Please refer to the `quota documentation <https://docs.nextcloud.com/server/latest/user_manual/en/files/quota.html>`_ for details.
+
+Running the following command can help fix the sizes and quota for a given user::
+
+ sudo -u www-data php occ files:scan -vvv <user-id>
+
+If **encryption was enabled earlier on the instance and disabled later on**, it is likely that some
+size values in the database did not correctly get reset upon decrypting.
+You can run the following SQL query to reset those after **backing up the database**:
+
+.. code-block:: sql
+
+ UPDATE oc_filecache SET unencrypted_size=0 WHERE encrypted=0; 
+
 Troubleshooting downloading or decrypting files
 -----------------------------------------------
 
