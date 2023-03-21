@@ -59,6 +59,7 @@ This request returns the available metadata of a user. Admin users can see the i
 			</quota>
 			<email>user@foo.de</email>
 			<displayname>John Doe</displayname>
+			<display-name>John Doe</display-name>
 			<phone></phone>
 			<address></address>
 			<website>https://example.com</website>
