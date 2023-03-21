@@ -141,6 +141,7 @@ XML output
       <quota>0</quota>
       <email>frank@example.org</email>
       <displayname>Frank K.</displayname>
+      <display-name>Frank K.</display-name>
       <phone>0123 / 456 789</phone>
       <address>Foobar 12, 12345 Town</address>
       <website>https://nextcloud.com</website>
