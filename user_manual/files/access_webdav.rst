@@ -288,7 +288,7 @@ Mapping drives with Windows Explorer
 To map a drive using the Microsoft Windows Explorer:
 
 1. Open Windows Explorer on your MS Windows computer.
-2. Right-click on **Computer** entry and select **Map network drive…** from
+2. Right-click on **Computer** entry and select **Add network location…** from
    the drop-down menu.
 3. Choose a local network drive to which you want to map Nextcloud.
 4. Specify the address to your Nextcloud instance, followed by
