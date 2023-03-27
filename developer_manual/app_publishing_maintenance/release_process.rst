@@ -10,9 +10,9 @@ Release process
 Overview
 --------
 
-This page documents the overall process and tasks of releasing a Nextcloud app to the app store, as well as preparation and follow-up tasks.
+This page documents the overall process and tasks of releasing a Nextcloud app to the public, as well as preparation and follow-up tasks.
 
-Not all of the described steps will apply to all apps on the app store. Some require fewer steps, for others there is some additional work to do. Adjust the process accordingly.
+Not all of the described steps will apply to all apps. Some require fewer steps, for others there is some additional work to do. Adjust the process accordingly.
 
 
 Before the release
@@ -138,3 +138,45 @@ Prepare follow-up releases
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The target milestone was closed in the release preparation. Now it's time to create a new milestone for the next release(s).
+
+
+Shipped Apps
+------------
+
+The majority of apps is distributed via the Nextcloud app store. A few apps are bundled and shipped with Nextcloud. There are a few things to keep in mind for them.
+
+Git branch management
+~~~~~~~~~~~~~~~~~~~~~
+
+The release script simply git-clones app repositories. Repositories of shipped apps need branches to correspond to the branches in the `Nextcloud server repository <https://github.com/nextcloud/server>`_:
+
+* ``master`` branch is used to create the daily builds of Nextcloud
+* ``stable*`` branches are used to build stable releases, e.g. ``stable24`` for Nextcloud 24.x.y.
+
+Because apps are just cloned, it is not possible to have a build step for shipped apps. Shipped apps have to *vendor* all their release artifacts.
+
+Example:
+
+* App uses ``composer`` dependencies: commit all production dependencies in the ``vendor`` directory
+* App uses ``npm`` dependencies and front-end build tools: commit all front-end artifacts in the ``js`` directory
+
+Versioning
+~~~~~~~~~~
+
+Since every ``stable*`` branch targets only one major version of Nextcloud and drops the previous one, it's best to have one major version of the app per stable branch. See :ref:`app versioning <app-versioning>` for details.
+
+Example:
+
+* ``master``: Version 8.0.0, targeting Nextcloud 27
+* ``stable26``: Version 7.0.0, targeting Nextcloud 26
+* ``stable25``: Version 6.0.0, targeting Nextcloud 25
+
+Backported fixes increase the patch version on a stable branch. Backported features increase the minor version.
+
+
+Hybrid Distribution
+~~~~~~~~~~~~~~~~~~~
+
+In very rare situations apps can be shipped **and** distributed via the app store. In those cases it is important to ensure the shipped version is equal or higher than the app store version to prevent a downgrade during the update of Nextcloud.
+
+Hybrid distribution is not recommended.
