@@ -157,7 +157,7 @@ Default to ``oc_``
 Enable persistent connexions to the database.
 
 This setting uses the "persistent" option from doctrine dbal, which in turn
- uses the PDO::ATTR_PERSISTENT option from de pdo driver.
+uses the PDO::ATTR_PERSISTENT option from the pdo driver.
 
 ::
 
@@ -927,9 +927,10 @@ Defaults to ``https://updates.nextcloud.com/updater_server/``
 The channel that Nextcloud should use to look for updates
 
 Supported values:
-  - ``daily``
-  - ``beta``
-  - ``stable``
+
+- ``daily``
+- ``beta``
+- ``stable``
 
 ::
 
@@ -1202,10 +1203,11 @@ This section is for configuring the download links for Nextcloud clients, as
 seen in the first-run wizard and on Personal pages.
 
 Defaults to:
- - Desktop client: ``https://nextcloud.com/install/#install-clients``
- - Android client: ``https://play.google.com/store/apps/details?id=com.nextcloud.client``
- - iOS client: ``https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8``
- - iOS client app id: ``1125420102``
+
+- Desktop client: ``https://nextcloud.com/install/#install-clients``
+- Android client: ``https://play.google.com/store/apps/details?id=com.nextcloud.client``
+- iOS client: ``https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8``
+- iOS client app id: ``1125420102``
 
 Apps
 ----
