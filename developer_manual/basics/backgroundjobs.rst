@@ -1,3 +1,5 @@
+.. _app-backgroundjobs:
+
 ======================
 Background jobs (Cron)
 ======================
@@ -61,6 +63,8 @@ to pass on to the service to run the background job.
 
 The ``run`` function is the main thing you need to implement and where all the
 logic happens.
+
+.. _app-backgroundjobs-time-sensitivity:
 
 Heavy load and time insensitive
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
