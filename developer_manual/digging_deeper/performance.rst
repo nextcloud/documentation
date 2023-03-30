@@ -12,6 +12,7 @@ PHP Performance
 ---------------
 
 * Autoloader: Consider using an :ref:`optimized class loader<app-custom-classloader>`. The application code does not have to change for this optimization.
+* Heavy background jobs: Consider marking :ref:`background jobs <app-backgroundjobs>` as :ref:`time insensitive <app-backgroundjobs-time-sensitivity>` if they can be run at off-peak times with lower system load, e.g. at night.
 
 Database performance
 --------------------
