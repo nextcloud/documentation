@@ -260,9 +260,9 @@ disable it::
 
 Fix Bad signature errors::
 
- occ encryption:fix-encrypted-versions --all
- occ encryption:fix-encrypted-versions <userid>
- occ encryption:fix-encrypted-versions <userid> -p <path>
+ occ encryption:fix-encrypted-version --all
+ occ encryption:fix-encrypted-version <userid>
+ occ encryption:fix-encrypted-version <userid> -p <path>
 
 Fix key not found errors::
 
