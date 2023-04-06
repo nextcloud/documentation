@@ -35,21 +35,30 @@ Configuring an SMTP server
 You need the following information from your mail server administrator to
 connect Nextcloud to a remote SMTP server:
 
-* Encryption type: None, SSL/TLS, or STARTTLS
+.. warning:: There were changes to the 3rd party mailer library:
+    
+    STARTTLS cannot be enforced. It will be used automatically if the mail server supports it.
+    The encryption type should be set to 'None' in this case. 
+    See :ref:`here<TLSPeerVerification>` for an example on how to configure self signed certificates
+
+* Encryption type: None or SSL/TLS
 
 * The From address you want your outgoing Nextcloud mails to use
 
 * Whether authentication is required
 
-* Authentication method: None, Login, Plain, or NT LAN Manager
+* Authentication method (``Login`` is a placeholder): when authentication is required, the underlying mailer will try the following authentication methods in the order they're listed:
+
+    * CramMd5
+    * Login
+    * Plain
+    * XOAuth2
 
 * The server's IP address or fully-qualified domain name and the SMTP port
 
 * Login credentials (if required)
 
 .. note:: The ``overwrite.cli.url`` parameter from ``config.php`` will be used for the SMTP EHLO.
-
-.. figure:: ../images/smtp-config-smtp.png
 
 Your changes are saved immediately, and you can click the Send Email button to
 test your configuration. This sends a test message to the email address you
@@ -60,6 +69,7 @@ configured on your Personal page. The test message says::
   --
   Nextcloud
   a safe home for all your data
+
 
 Configuring Sendmail/qmail
 --------------------------
@@ -164,31 +174,18 @@ used:
 
 ::
 
-  "mail_smtpsecure"   => '',
+    "mail_smtpsecure"   => '',
 
-If the SMTP server only accepts secure connections you can choose between
-the following two variants:
+The connection will be upgraded automatically via STARTTLS if the SMTP server
+supports it.
 
-SSL
-^^^
-
-A secure connection will be initiated using the SMTPS protocol
-which uses the port 465/tcp:
+If required by the SMTP server, a secure SSL/TLS connection can be enforced
+via the SMTPS protocol which uses the port 465/tcp:
 
 ::
 
     "mail_smtphost"     => "smtp.server.dom:465",
     "mail_smtpsecure"   => 'ssl',
-
-TLS
-^^^
-A secure connection will be initiated using the STARTTLS protocol which
-uses the default port 25/tcp:
-
-::
-
-    "mail_smtphost"     => "smtp.server.dom",
-    "mail_smtpsecure"   => 'tls',
 
 And finally it is necessary to configure if the SMTP server requires
 authentication, if not, the default values can be taken as is.
@@ -200,22 +197,13 @@ authentication, if not, the default values can be taken as is.
     "mail_smtppassword" => "",
 
 If SMTP authentication is required you have to set the required username
-and password and can optionally choose between the authentication types
-**LOGIN** (default) or **PLAIN**.
+and password.
 
 ::
 
     "mail_smtpauth"     => true,
-    "mail_smtpauthtype" => "LOGIN",
     "mail_smtpname"     => "username",
     "mail_smtppassword" => "password",
-
-Advanced users can add additional stream options in ``config/config.php``,
-which maps directly to `Swift Mailer's <https://swiftmailer.symfony.com/>`_
-``streamOptions`` configuration parameter:
-::
-
-    "mail_smtpstreamoptions" => array(),
 
 Sendmail
 ^^^^^^^^
@@ -381,10 +369,11 @@ using the ``telnet`` command.
   221 smtp.domain.dom closing connection
   Connection closed by foreign host.
 
-**Question**: How can I send mail when using self-signed certificates if
-remote SMTP server do not have options to allow this on their side?
+.. _TLSPeerVerification:
 
-**Answer**: If you are having remote SMTP setup, you can try adding this
+**Question**: How can I send mail using self-signed certificates or use STARTTLS with self signed certificates?
+
+**Answer**: To disable peer verification or to use self signed certificates, add the following
 to your ``config/config.php``::
 
     "mail_smtpstreamoptions" => array(
@@ -394,6 +383,10 @@ to your ``config/config.php``::
             'verify_peer_name' => false
         )
     ),
+
+**Question**: All emails keep getting rejected even though only one email address is invalid.
+
+**Answer**: Partial sending, i. e. sending to all but the faulty email address is not possible.
 
 Enabling debug mode
 -------------------
