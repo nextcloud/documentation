@@ -60,6 +60,11 @@ If you increase the long_query_time to 100 and add log-queries-not-using-indexes
   slow_query_log_file = /var/log/mysql/mysql-slow.log
   long_query_time=100
 
+Cached data
+^^^^^^^^^^^
+
+Starting from Nextcloud 26, user and group display names now are cached. Use the ``IUserManager::getDisplayName`` or ``IGroupManager::getDisplayName`` functions to avoid roundtrips to the database.
+
 Measuring performance
 ^^^^^^^^^^^^^^^^^^^^^
 
