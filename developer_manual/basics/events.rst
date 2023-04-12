@@ -503,6 +503,11 @@ Deprecated in 20.0.0 - it can't be guaranteed that this event is triggered in al
 ``\OCP\Group\Events\GroupCreatedEvent``
 ***************************************
 
+.. versionadded:: 26
+
+``\OCP\Group\Events\GroupChangedEvent``
+***************************************
+
 .. versionadded:: 18
 
 ``\OCP\Group\Events\GroupDeletedEvent``
