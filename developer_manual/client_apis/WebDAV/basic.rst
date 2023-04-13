@@ -102,158 +102,81 @@ You can request additional properties by sending a request body with the :code:`
 
 The following properties are supported:
 
++-------------------------------+---------------------------------------------------+---------------------------------------------+
+|           Property            |                    Description                    |                   Example                   |
++===============================+===================================================+=============================================+
+| <d:getlastmodified />         | The latest modification time.                     | ``"Wed, 20 Jul 2022 05:12:23 GMT"``         |
++-------------------------------+---------------------------------------------------+---------------------------------------------+
+| <d:getetag />                 | The file's etag.                                  | ``"&quot;6436d084d4805&quot;"``             |
++-------------------------------+---------------------------------------------------+---------------------------------------------+
+| <d:getcontenttype />          | The mime type of the file.                        | ``"image/jpeg"``                            |
++-------------------------------+---------------------------------------------------+---------------------------------------------+
+| <d:resourcetype />            | Specifies the nature of the resource.             | ``<d:collection />`` for a folder           |
++-------------------------------+---------------------------------------------------+---------------------------------------------+
+| <d:getcontentlength />        | The size if it is a file.                         | ``3030237``                                 |
++-------------------------------+---------------------------------------------------+---------------------------------------------+
+| <oc:id />                     | | The fileid namespaced by the instance id.       |                                             |
+|                               | | Globally unique.                                |                                             |
++-------------------------------+---------------------------------------------------+---------------------------------------------+
+| <oc:fileid />                 | The unique id for the file within the instance.   |                                             |
++-------------------------------+---------------------------------------------------+---------------------------------------------+
+| <oc:permissions />            | The permissions that the user has over the file.  | ``true`` or ``false``                       |
++-------------------------------+---------------------------------------------------+---------------------------------------------+
+| <nc:mount-type />             | The type of mount.                                | | ``''`` = local                            |
+|                               |                                                   | | ``'shared'`` = received share             |
+|                               |                                                   | | ``'external'`` = external storage         |
+|                               |                                                   | | ``'external-session'`` = external storage |
++-------------------------------+---------------------------------------------------+---------------------------------------------+
+| <nc:is-encrypted />           | Whether the folder is end-to-end encrypted.       | | ``0`` for ``false``                       |
+| <nc:is-encrypted />           |                                                   | | ``1`` for ``true``                        |
++-------------------------------+---------------------------------------------------+---------------------------------------------+
+| <oc:favorite />               | The favorite state.                               | | ``0`` for not favourited                  |
+|                               |                                                   | | ``1`` for favourited                      |
++-------------------------------+---------------------------------------------------+---------------------------------------------+
+| <oc:comments-href />          | The DAV endpoint to fetch the comments.           |                                             |
++-------------------------------+---------------------------------------------------+---------------------------------------------+
+| <oc:comments-count />         | The number of comments.                           |                                             |
++-------------------------------+---------------------------------------------------+---------------------------------------------+
+| <oc:comments-unread />        | The number of unread comments.                    |                                             |
++-------------------------------+---------------------------------------------------+---------------------------------------------+
+| <oc:owner-id />               | The user id of the owner of a shared file.        |                                             |
++-------------------------------+---------------------------------------------------+---------------------------------------------+
+| <oc:owner-display-name />     | The display name of the owner of a shared file.   |                                             |
++-------------------------------+---------------------------------------------------+---------------------------------------------+
+| <oc:share-types />            | The list of type share.                           | | ``0`` = User                              |
+|                               |                                                   | | ``1`` = Group                             |
+|                               |                                                   | | ``3`` = Public link                       |
+|                               |                                                   | | ``4`` = Email                             |
+|                               |                                                   | | ``6`` = Federated cloud share             |
+|                               |                                                   | | ``7`` = Circle                            |
+|                               |                                                   | | ``10`` = Talk conversation                |
++-------------------------------+---------------------------------------------------+---------------------------------------------+
+| <ocs:share-permissions />     | The permissions that the user has over the share. | | ``4`` = Create                            |
+|                               |                                                   | | ``1`` = Read                              |
+|                               |                                                   | | ``2`` = Update                            |
+|                               |                                                   | | ``8`` = Delete                            |
+|                               |                                                   | | ``16`` = Share                            |
+|                               |                                                   | | ``31`` = All                              |
++-------------------------------+---------------------------------------------------+---------------------------------------------+
+| <oc:checksums />              |                                                   |                                             |
++-------------------------------+---------------------------------------------------+---------------------------------------------+
+| <nc:has-preview />            | Whether a preview of the file is available        | ``true`` or ``false``                       |
++-------------------------------+---------------------------------------------------+---------------------------------------------+
+| <oc:size />                   | | Unlike :code:`getcontentlength`,                |                                             |
+|                               | | this property also works                        |                                             |
+|                               | | for folders, reporting the size                 |                                             |
+|                               | | of everything in the folder.                    |                                             |
++-------------------------------+---------------------------------------------------+---------------------------------------------+
+| <nc:rich-workspace />         | This property is provided by the text app.        |                                             |
++-------------------------------+---------------------------------------------------+---------------------------------------------+
+| <nc:contained-folder-count /> | | The number of folders directly contained        |                                             |
+|                               | | in the folder (not recursively).                |                                             |
++-------------------------------+---------------------------------------------------+---------------------------------------------+
+| <nc:contained-file-count />   | | The number of files directly contained          |                                             |
+|                               | | in the folder (not recursively).                |                                             |
++-------------------------------+---------------------------------------------------+---------------------------------------------+
 
-getlastmodified
-^^^^^^^^^^^^^^^
-- Id: ``{DAV:}getlastmodified``
-- Property: ``<d:getlastmodified />``
-- Description: The latest modification time.
-- Example: ``"Wed, 20 Jul 2022 05:12:23 GMT"``
 
-getetag
-^^^^^^^
-- Id: ``{DAV:}getetag``
-- Property: ``<d:getetag />``
-- Description: The file's etag.
-- Example: ``"&quot;6436d084d4805&quot;"``
-
-getcontenttype
-^^^^^^^^^^^^^^
-- Id: ``{DAV:}getcontenttype``
-- Property: ``<d:getcontenttype />``
-- Description: The mime type of the file.
-- Example: ``"image/jpeg"``
-
-resourcetype
-^^^^^^^^^^^^
-- Id: ``{DAV:}resourcetype``
-- Property: ``<d:resourcetype />``
-- Description: Specifies the nature of the resource.
-- Example: ``<d:collection />`` for a folder
-
-getcontentlength
-^^^^^^^^^^^^^^^^
-- Id: ``{DAV:}getcontentlength``
-- Property: ``<d:getcontentlength />``
-- Description: The size if it is a file.
-- Example: ``3030237``
-
-id
-^^
-- Id: ``{http://owncloud.org/ns}id``
-- Property: ``<oc:id />``
-- Description: The fileid namespaced by the instance id, globally unique
-
-fileid
-^^^^^^
-- Id: ``{http://owncloud.org/ns}fileid``
-- Property: ``<oc:fileid />``
-- Description: The unique id for the file within the instance
-
-permissions
-^^^^^^^^^^^
-- Id: ``{http://owncloud.org/ns}permissions``
-- Property: ``<oc:permissions />``
-- Description: The permissions that the user has over the file. ``true`` or ``false``
-
-mount-type
-^^^^^^^^^^
-- Id: ``{http://nextcloud.org/ns}mount-type``
-- Property: ``<nc:mount-type />``
-- Description: The type of mount.
-- Example: ``''`` = local; ``'shared'`` = received share; ``'external'`` or ``'external-session'`` = external storage
-
-is-encrypted
-^^^^^^^^^^^^
-- Id: ``{http://nextcloud.org/ns}is-encrypted``
-- Property: ``<nc:is-encrypted />``
-- Description: Whether the file is end-to-end encrypted
-
-favorite
-^^^^^^^^
-- Id: ``{http://owncloud.org/ns}favorite``
-- Property: ``<oc:favorite />``
-- Description: The favorite state.
-- Example: ``0`` for not favourited, ``1`` for favourited
-
-comments-href
-^^^^^^^^^^^^^
-- Id: ``{http://owncloud.org/ns}comments-href``
-- Property: ``<oc:comments-href />``
-- Description: The DAV endpoint to fetch teh comments
-
-comments-count
-^^^^^^^^^^^^^^
-- Id: ``{http://owncloud.org/ns}comments-count``
-- Property: ``<oc:comments-count />``
-- Description: The number of comments
-
-comments-unread
-^^^^^^^^^^^^^^^
-- Id: ``{http://owncloud.org/ns}comments-unread``
-- Property: ``<oc:comments-unread />``
-- Description: The number of unread comments
-
-owner-id
-^^^^^^^^
-- Id: ``{http://owncloud.org/ns}owner-id``
-- Property: ``<oc:owner-id />``
-- Description: The user id of the owner of a shared file
-
-owner-display-name
-^^^^^^^^^^^^^^^^^^
-- Id: ``{http://owncloud.org/ns}owner-display-name``
-- Property: ``<oc:owner-display-name />``
-- Description: The display name of the owner of a shared file
-
-share-types
-^^^^^^^^^^^
-- Id: ``{http://owncloud.org/ns}share-types``
-- Property: ``<oc:share-types />``
-- Description: The list of type share.
-- Example: ``0`` = user; ``1`` = group; ``3`` = public link; ``4`` = email; ``6`` = federated cloud share; ``7`` = circle; ``10`` = Talk conversation
-
-share-permissions
-^^^^^^^^^^^^^^^^^
-- Id: ``{http://open-collaboration-services.org/ns}share-permissions``
-- Property: ``{http://open-collaboration-services.org/ns}share-permissions``
-- Description: The permissions that the user has over the share.
-- Example: Create = ``4``; Read = ``1``; Update = ``2``; Delete = ``8``; Share = ``16``; All = ``31``;
-
-checksums
-^^^^^^^^^
-- Id: ``{http://owncloud.org/ns}checksums``
-- Property: ``<oc:checksums />``
-- Description:
-has-preview
-^^^^^^^^^^^
-- Id: ``{http://nextcloud.org/ns}has-preview``
-- Property: ``<nc:has-preview />``
-- Description: Whether a preview of the file is available
-
-size
-^^^^
-- Id: ``{http://owncloud.org/ns}size``
-- Property: ``<oc:size />``
-- Description: Unlike :code:`getcontentlength`, this property also works for folders reporting the size of everything in the folder
-
-rich-workspace
-^^^^^^^^^^^^^^
-- Id: ``{http://nextcloud.org/ns}rich-workspace``
-- Property: ``<nc:rich-workspace />``
-- Description: This property is provided by the text app
-
-contained-folder-count
-^^^^^^^^^^^^^^^^^^^^^^
-- Id: ``{http://nextcloud.org/ns}contained-folder-count``
-- Property: ``<nc:contained-folder-count />``
-- Description: The number of folders directly contained in the folder (not recursively)
-
-contained-file-count
-^^^^^^^^^^^^^^^^^^^^
-- Id: ``{http://nextcloud.org/ns}contained-file-count``
-- Property: ``<nc:contained-file-count />``
-- Description: The number of files directly contained in the folder (not recursively)
 
 
 Listing folders (rfc4918_)
@@ -383,17 +306,41 @@ Request Headers
 
 You can set some special headers that Nextcloud will interpret.
 
-- ``X-OC-MTIME``: allow to specify a mtime. The response will contain the header ``X-OC-MTime: accepted`` if the mtime was accepted.
-- ``X-OC-CTIME``: allow to specify a creation time. The response will contain the header ``X-OC-CTime: accepted`` if the ctime was accepted.
-- ``OC-CHECKSUM``: allow to specify a checksum.
-- ``X-HASH``: allow to request the file's hash from the server. Possible values are ``md5``, ``sha1``, and ``sha256``. The server will return the hash in a header named either ``X-Hash-MD5``, ``X-Hash-SHA1``, or ``X-Hash-SHA256``.
-- ``OC-CHUNKED``: specify that the sent data is part of a chunk upload.
-- ``OC-Total-Length``: contains the total size of the file during a chunk upload. This allow the server to abort faster if the remaining user's quota is not enough.
++-----------------+-----------------------------------------------------------------+----------------------------------+
+|     Header      |                           Description                           |             Example              |
++=================+=================================================================+==================================+
+| X-OC-MTime      | | Allow to specify a mtime.                                     | ``1675789581``                   |
+|                 | | The response will contain the header ``X-OC-MTime: accepted`` |                                  |
+|                 | | if the mtime was accepted.                                    |                                  |
++-----------------+-----------------------------------------------------------------+----------------------------------+
+| X-OC-CTime      | | Allow to specify a creation time.                             | ``1675789581``                   |
+|                 | | The response will contain the header ``X-OC-CTime: accepted`` |                                  |
+|                 | | if the mtime was accepted.                                    |                                  |
++-----------------+-----------------------------------------------------------------+----------------------------------+
+| OC-Checksum     | Allow to specify a checksum.                                    |                                  |
++-----------------+-----------------------------------------------------------------+----------------------------------+
+| X-Hash          | | Allow to request the file's hash from the server.             | ``md5``, ``sha1``, or ``sha256`` |
+|                 | | The server will return the hash in a header named either:     |                                  |
+|                 | | ``X-Hash-MD5``, ``X-Hash-SHA1``, or ``X-Hash-SHA256``.        |                                  |
++-----------------+-----------------------------------------------------------------+----------------------------------+
+| OC-Chunked      | Specify that the sent data is part of a chunk upload.           | ``true``                         |
++-----------------+-----------------------------------------------------------------+----------------------------------+
+| OC-Total-Length | | Contains the total size of the file during a chunk upload.    | ``4052412``                      |
+|                 | | This allow the server to abort faster if the remaining        |                                  |
+|                 | | user's quota is not enough.                                   |                                  |
++-----------------+-----------------------------------------------------------------+----------------------------------+
 
 Response Headers
 ----------------
 
-Nextcloud will answer with
+Nextcloud will sometime answer with the following headers:
 
-- ``OC-Etag``: On creation, move and copy, the response contain the etag of the file.
-- ``OC-FileId``: On creation, move and copy, the response contain the fileid of the file. Format: ``<padded-id><instance-id>``. Example: ``"00000259oczn5x60nrdu"``
++-----------+------------------------------------------------+-----------------------------------------+
+|  Header   |                  Description                   |                 Example                 |
++===========+================================================+=========================================+
+| OC-Etag   | | On creation, move and copy,                  | ``"50ef2eba7b74aa84feff013efee2a5ef"``  |
+|           | | the response contain the etag of the file.   |                                         |
++-----------+------------------------------------------------+-----------------------------------------+
+| OC-FileId | | On creation, move and copy,                  | | Format: ``<padded-id><instance-id>``. |
+|           | | the response contain the fileid of the file. | | Example: ``00000259oczn5x60nrdu``     |
++-----------+------------------------------------------------+-----------------------------------------+
