@@ -149,7 +149,12 @@ The following properties are supported:
 |                               |                                                   | | ``4`` = Email                             |
 |                               |                                                   | | ``6`` = Federated cloud share             |
 |                               |                                                   | | ``7`` = Circle                            |
+|                               |                                                   | | ``8`` = Guest                             |
+|                               |                                                   | | ``9`` = Remote group                      |
+|                               |                                                   | | ``7`` = Circle                            |
 |                               |                                                   | | ``10`` = Talk conversation                |
+|                               |                                                   | | ``12`` = Deck                             |
+|                               |                                                   | | ``15`` = Science mesh                     |
 +-------------------------------+---------------------------------------------------+---------------------------------------------+
 | <ocs:share-permissions />     | The permissions that the user has over the share. | | ``4`` = Create                            |
 |                               |                                                   | | ``1`` = Read                              |
