@@ -100,7 +100,36 @@ You can request additional properties by sending a request body with the :code:`
 	  </d:prop>
 	</d:propfind>
 
-The following properties are supported:
+A note about namespaces
+^^^^^^^^^^^^^^^^^^^^^^^
+
+When building the body of your DAV request, you will request properties that are available under specific namespace.
+It is usual to declare shortcuts for those namespace in the ``d:propfind`` element of the body.
+
+Here is the list of available namespace:
+
+=========================================  ========
+                Namespace                  Shortcut
+=========================================  ========
+DAV:                                       d
+http://owncloud.org/ns                     oc
+http://nextcloud.org/ns                    nc
+http://open-collaboration-services.org/ns  ocs
+=========================================  ========
+
+And here is how it should look in the body of your DAV request:
+
+.. code-block:: xml
+
+	<?xml version="1.0"?>
+		<d:propfind
+			xmlns:d="DAV:"
+			xmlns:oc="http://owncloud.org/ns"
+			xmlns:nc="http://nextcloud.org/ns"
+			xmlns:ocs="http://open-collaboration-services.org/ns">
+
+Supported properties
+^^^^^^^^^^^^^^^^^^^^
 
 +-------------------------------+---------------------------------------------------+---------------------------------------------+
 |           Property            |                    Description                    |                   Example                   |
@@ -180,8 +209,6 @@ The following properties are supported:
 | <nc:contained-file-count />   | | The number of files directly contained          |                                             |
 |                               | | in the folder (not recursively).                |                                             |
 +-------------------------------+---------------------------------------------------+---------------------------------------------+
-
-
 
 
 Listing folders (rfc4918_)
