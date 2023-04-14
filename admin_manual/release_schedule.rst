@@ -19,7 +19,7 @@ Maintenance releases are scheduled in a 4 week cycle with one week before the re
 Critical changes
 ----------------
 
-* PHP 7.4 is not supported anymore. Please upgrade to PHP 8.0 or higher.
+* PHP 8.0 is now deprecated. Please upgrade to PHP 8.1 or higher.
 * PHP 8.2 is now supported.
 * The recommended webserver configuration has changed to no longer include a default redirect to the login page
     * For Apache this change will automatically come with the ``.htaccess`` file provided by the release
