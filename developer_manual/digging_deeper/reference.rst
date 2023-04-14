@@ -32,6 +32,13 @@ In summary, reference providers can be registered by apps to
     * use existing Unified Search providers
     * or optionally register custom picker components to have a specific user interface
 
+This documentation explains how to
+
+* Display link previews in your app
+* Use the Smart Picker in your app
+* Extend the reference system add preview support for more links
+* Extend the Smart Picker with your app's capabilities
+
 Display link previews
 ---------------------
 
@@ -131,25 +138,33 @@ will return an OCS response with that data:
 
 .. code-block:: json
 
-    "data": {
-      "references": {
-        "https://github.com": {
-          "richObjectType": "open-graph",
-          "richObject": {
-            "id": "https://github.com",
-            "name": "GitHub: Let’s build from here",
-            "description": "GitHub is where over 100 million developers shape the future of software, together. Contribute to the open source community, manage your Git repositories, review code like a pro, track bugs and fea...",
-            "thumb": "https://my.nextcloud.org/core/references/preview/3097fca9b1ec8942c4305e550ef1b50a",
-            "link": "https://github.com"
-          },
-          "openGraphObject": {
-            "id": "https://github.com",
-            "name": "GitHub: Let’s build from here",
-            "description": "GitHub is where over 100 million developers shape the future of software, together. Contribute to the open source community, manage your Git repositories, review code like a pro, track bugs and fea...",
-            "thumb": "https://my.nextcloud.org/core/references/preview/3097fca9b1ec8942c4305e550ef1b50a",
-            "link": "https://github.com"
-          },
-          "accessible": true
+    {
+      "ocs": {
+        "meta": {
+        "status": "ok",
+        "statuscode": 200,
+        "message": "OK"
+      },
+      "data": {
+        "references": {
+          "https://github.com": {
+            "richObjectType": "open-graph",
+            "richObject": {
+              "id": "https://github.com",
+              "name": "GitHub: Let’s build from here",
+              "description": "GitHub is where over 100 million developers shape the future of software, together. Contribute to the open source community, manage your Git repositories, review code like a pro, track bugs and fea...",
+              "thumb": "https://my.nextcloud.org/core/references/preview/3097fca9b1ec8942c4305e550ef1b50a",
+              "link": "https://github.com"
+            },
+            "openGraphObject": {
+              "id": "https://github.com",
+              "name": "GitHub: Let’s build from here",
+              "description": "GitHub is where over 100 million developers shape the future of software, together. Contribute to the open source community, manage your Git repositories, review code like a pro, track bugs and fea...",
+              "thumb": "https://my.nextcloud.org/core/references/preview/3097fca9b1ec8942c4305e550ef1b50a",
+              "link": "https://github.com"
+            },
+            "accessible": true
+          }
         }
       }
     }
@@ -205,6 +220,68 @@ For example, resolving ``https://www.themoviedb.org/movie/70981`` if the ``integ
       }
     }
 
+Use the Smart Picker in your app
+--------------------------------
+
+There are 3 ways to make the Smart Picker appear in your app:
+
+* use the ``NcRichContenteditable`` component
+* use the ``NcReferencePickerModal`` component
+* use the ``getLinkWithPicker`` helper function
+
+Just like for the link previews, you need to dispatch the ``OCP\Collaboration\Reference\RenderReferenceEvent`` event
+before loading the page in which you want to show the Smart Picker.
+
+NcRichContenteditable
+~~~~~~~~~~~~~~~~~~~~~
+
+The Smart Picker is integrated in the NcRichContenteditable Vue component. It is enabled by default
+but can be disabled by setting the ``linkAutocomplete`` prop to ``false``.
+
+The picker provider list opens when the user types the "/" character.
+The picker result then gets directly inserted in the content.
+
+`NcRichContenteditable component documentation <https://nextcloud-vue-components.netlify.app/#/Components/NcRichContenteditable>`_
+
+NcReferencePickerModal
+~~~~~~~~~~~~~~~~~~~~~~
+
+You display the Smart Picker by using the NcReferencePickerModal Vue component. It is available in the Nextcloud Vue library.
+
+.. code-block:: javascript
+
+    import { NcReferencePickerModal } from '@nextcloud/vue/dist/Components/NcRichText.js'
+
+Available props:
+
+* initialProvider (optional): If a reference provider object is passed, skip the provider selection and directly show this provider
+* focusOnCreate (optional, default: true): Focus on the main input element on creation
+* isInsideViewer (optional, default: false): Set this to true if NcReferencePickerModal is used inside the Viewer. This tells the Viewer to deal with the focus trap.
+
+getLinkWithPicker
+~~~~~~~~~~~~~~~~~
+
+To display the Smart Picker outside Vue, you can use the getLinkWithPicker helper function.
+It takes 2 parameters:
+
+* providerId (optional, default: null): The provider to select in the picker. If null, the provider selection is displayed first.
+* isInsideViewer (optional): This will be passed internally to NcReferencePickerModal as the isInsideViewer prop.
+
+This function returns a promise that resolves with the picker result. This promise is rejected if the user closes
+the Smart Picker.
+
+.. code-block:: javascript
+
+    import { getLinkWithPicker } from '@nextcloud/vue/dist/Components/NcRichText.js'
+
+    getLinkWithPicker(null, true)
+        .then(result => {
+            console.debug('Smart Picker result', result)
+        })
+        .catch(error => {
+            console.error('Smart Picker promise rejected', error)
+        })
+
 Register a reference provider
 -----------------------------
 
@@ -219,8 +296,8 @@ There are 2 ways to make your provider appear in the smart picker, in other word
 * Either your reference provider implements the ``OCP\Collaboration\Reference\ISearchableReferenceProvider`` interface and you declare a list of unified search providers that will be used by the Smart Picker
 * Or you don't implement this ``ISearchableReferenceProvider`` interface and make sure you register a custom picker component in the frontend. This is described later in this documentation.
 
-Link previews
--------------
+Extend link preview support
+---------------------------
 
 This section is focusing on the methods of the ``IReferenceProvider`` interface.
 
@@ -415,8 +492,8 @@ in a custom fashion:
     </script>
 
 
-The Smart Picker
-----------------
+Extend the Smart Picker
+-----------------------
 
 If you want your reference provider to appear in the Smart Picker to search/get links,
 it needs to be discoverable
