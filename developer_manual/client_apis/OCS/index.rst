@@ -12,3 +12,4 @@ OCS API
    ocs-status-api
    ocs-recommendations-api
    ocs-user-preferences-api
+   ocs-translation-api
