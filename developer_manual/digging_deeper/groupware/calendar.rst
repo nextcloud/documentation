@@ -182,6 +182,15 @@ Please be aware that there are some security considerations to take into account
 
     }
 
+Access through CalDAV
+~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 27
+
+As with the built-in calendars, calendars provided by ``ICalendarProvider`` can be accessed using CalDAV. Therefore, permissions of the ``ICalendar`` are automatically mapped to the DAV object.
+Write support is also supported. Please note that deleting entities is currently implemented by setting the entity to the canceled state and passing it to the ``createFromString`` method.
+
+
 Resources
 ---------
 
