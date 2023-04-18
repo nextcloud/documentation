@@ -4,8 +4,8 @@ Reference management
 
 The reference management system brings 2 features in Nextcloud:
 
-* The link previews (also called reference widgets)
-* The Smart Picker
+* :doc:`The link previews <./link_previews>` (also called reference widgets)
+* :doc:`The Smart Picker <./smart_picker>`
 
 Both those features are generic and need to be extended by the Nextcloud apps.
 
