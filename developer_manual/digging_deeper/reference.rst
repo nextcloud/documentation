@@ -52,7 +52,11 @@ For example, you can place this before returning your TemplateResponse in your c
 
     $this->eventDispatcher->dispatchTyped(new OCP\Collaboration\Reference\RenderReferenceEvent());
 
-This is done in Text and Talk if you need more examples.
+This is done in
+`Text <https://github.com/nextcloud/text/blob/8a17046aa440df841fe9182205d80ce937068c1a/lib/Listeners/LoadViewerListener.php#L52>`_
+and
+`Talk <https://github.com/nextcloud/spreed/blob/1f1acbd95943e6184e29de8044cd9d8e775ac7c5/lib/Controller/PageController.php#L280>`_
+if you need more examples.
 
 On the frontend side, there are 3 ways to display link previews (also named reference widgets):
 
@@ -219,6 +223,7 @@ For example, resolving ``https://www.themoviedb.org/movie/70981`` if the ``integ
         }
       }
     }
+
 
 Use the Smart Picker in your app
 --------------------------------
