@@ -83,6 +83,8 @@ Then add an external storage in the web UI using the following configuration:
 - Hostname: localhost
 - Port: 9000
 - Region: leave empty
+- Storage class: leave empty
+- Enable SSL: false
 - Enable path style: yes
 
 SMB external storage
