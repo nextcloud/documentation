@@ -115,7 +115,7 @@ Provider registration
 The provider class is registered via the :ref:`bootstrap mechanism<Bootstrapping>` of the ``Application`` class.
 
 .. code-block:: php
-
+    :emphasize-lines: 16
 
     <?php
 
