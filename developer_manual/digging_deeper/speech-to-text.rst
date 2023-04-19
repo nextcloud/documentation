@@ -23,7 +23,7 @@ Since ``scheduleFileTranscription`` does not block, you will need to listen to t
  * ``OCP\SpeechToText\Events\TranscriptionSuccessfulEvent`` This event class offers the ``getTranscript()`` method which returns the transcript as a string
  * ``OCP\SpeechToText\Events\TranscriptionFailedEvent`` This event class offers the ``getErrorMessage()`` method which returns the error message as a string
 
-Both classes provide the ``$appId` and ``$userId`` params that you initially passed to ``scheduleFileTranscription`` via ``getAppId()`` and ``getUserId()`` as well as ``getFileId()`` and ``getFile()`` to access the media file that was transcribed.
+Both classes provide the ``$appId`` and ``$userId`` params that you initially passed to ``scheduleFileTranscription`` via ``getAppId()`` and ``getUserId()`` as well as ``getFileId()`` and ``getFile()`` to access the media file that was transcribed.
 
 
 For example, in your ``lib/AppInfo/Application.php`` file:
