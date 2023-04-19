@@ -23,7 +23,7 @@ Listening to the transcription events
 Since ``scheduleFileTranscription`` does not block, you will need to listen to the following events in your app to obtain the transcript or be notified of any failure.
 
  * ``OCP\SpeechToText\Events\TranscriptionSuccessfulEvent`` This event class offers the ``getTranscript()`` method which returns the transcript as a string
- * ``OCP\SpeechToText\Events\TranscriptionFailedEvent`` This event class offers the ``getErrorMessage()`` method which returns the error message as a string
+ * ``OCP\SpeechToText\Events\TranscriptionFailedEvent`` This event class offers the ``getErrorMessage()`` method which returns the error message as a string (only in English and for debugging purposes, so don't show this to the user)
 
 Both classes provide the ``$appId`` and ``$userId`` params that you initially passed to ``scheduleFileTranscription`` via ``getAppId()`` and ``getUserId()`` as well as ``getFileId()`` and ``getFile()`` to access the media file that was transcribed.
 
