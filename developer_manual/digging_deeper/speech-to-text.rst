@@ -4,7 +4,9 @@
 Speech-To-Text
 ==============
 
-Nextcloud 27 offers a new **Speech-To-Text** API. The overall idea is that there is a central OCP API that apps can use to request transcriptions of audio or video files. To be technology agnostic any app can provide this Speech-To-Text functionality by registering a Speech-To-Text provider.
+.. versionadded:: 27
+
+Nextcloud offers a **Speech-To-Text** API. The overall idea is that there is a central OCP API that apps can use to request transcriptions of audio or video files. To be technology agnostic any app can provide this Speech-To-Text functionality by registering a Speech-To-Text provider.
 
 Consuming the Speech-To-Text API
 --------------------------------
