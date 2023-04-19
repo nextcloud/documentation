@@ -22,6 +22,7 @@ Digging deeper
    rest_apis
    search
    settings
+   speech-to-text
    talk
    two-factor-provider
    users
