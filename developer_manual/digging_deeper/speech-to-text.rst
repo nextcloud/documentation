@@ -87,7 +87,7 @@ A **Speech-To-Text provider** is a class that implements the interface ``OCP\Spe
     class Provider implements ISpeechToTextProvider {
 
         public function getName(): string {
-            return 'My awesome speech to text provider';
+            return $this->l->t('My awesome speech to text provider');
         }
 
         public function transcribeFile(File $file): string {
