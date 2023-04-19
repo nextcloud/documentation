@@ -4,48 +4,17 @@
 Migrations
 ==========
 
-In the past, apps had a `appinfo/database.xml`-file which holds their database schema
-for installation and update and was a functional method for installing apps which
-had some trouble with upgrading apps (e.g. apps were not able to rename columns
-without losing the data stored in the original column):
-
-.. code-block:: php
-
-   <?xml version="1.0" encoding="ISO-8859-1" ?>
-   <database>
-            <name>*dbname*</name>
-            <create>true</create>
-            <overwrite>false</overwrite>
-            <charset>utf8</charset>
-            <table>
-                    <name>*dbprefix*twofactor_backupcodes</name>
-                    <declaration>
-                          <field>
-                                  <name>id</name>
-                                  <type>integer</type>
-                                  <autoincrement>1</autoincrement>
-                                  <default>0</default>
-                                  <notnull>true</notnull>
-                                  <length>4</length>
-                          </field>
-    ...
-
-
-The limitations of this method will be bypassed with migrations. A migration can
-consist of 3 different methods:
+Migrations change the database schema and operate in three steps:
 
 * Pre schema changes
-* Actual schema changes
+* Schema changes
 * Post schema changes
 
 Apps can have multiple migrations, which allows a way more flexible updating process.
 For example, you can rename a column while copying all the content with 3 steps
 packed in 2 migrations.
 
-After creating migrations for your current database and installation routine,
-in order to make use of migrations, you need to delete the old `appinfo/database.xml`
-file. The Nextcloud updater logic only allows to use one or the other.
-But as soon as the `database.xml` file is gone, it will look for your migration
+The Nextcloud updater logic will look for your migration
 files in the apps `lib/Migration` folder.
 
 .. note:: While in theory you can run any code in the pre- and post-steps, we
