@@ -1,3 +1,5 @@
+.. _ocs-translation-api:
+
 ===================
 OCS Translation API
 ===================
