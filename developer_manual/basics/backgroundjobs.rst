@@ -88,6 +88,8 @@ are not that impacted by the heavy load of the background job.
 Configuring parallelism
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+.. versionadded:: 27
+
 With resource-heavy background jobs that run for longer than a few minutes, be they ``QueuedJob`` and ``TimedJob`` instances, you may want to restrict parallelism to prevent multiple such jobs from clogging up the server's resources. You can do this with the ``setAllowParallelRuns`` method of ``OCP\BackgroundJob\Job`` (``QueuedJob`` and ``TimedJob`` both inherit from this class, so they also have this available).
 
 .. code-block:: php
