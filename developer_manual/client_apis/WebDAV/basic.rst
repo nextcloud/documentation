@@ -378,8 +378,8 @@ You can set some special headers that Nextcloud will interpret.
 |                 | | The response will contain the header ``X-OC-CTime: accepted`` |                                          |
 |                 | | if the mtime was accepted.                                    |                                          |
 +-----------------+-----------------------------------------------------------------+------------------------------------------+
-| OC-Checksum     | | A list of space-separated checksum                            | ``md5:04c36b75222cd9fd47f2607333029106`` |
-|                 | | that will be stored in the DB.                                |                                          |
+| OC-Checksum     | | A checksum that will be stored in the DB.                     | ``md5:04c36b75222cd9fd47f2607333029106`` |
+|                 | | The server will not do any sort of  validation.               |                                          |
 +-----------------+-----------------------------------------------------------------+------------------------------------------+
 | X-Hash          | | Allow to request the file's hash from the server.             | ``md5``, ``sha1``, or ``sha256``         |
 |                 | | The server will return the hash in a header named either:     |                                          |
