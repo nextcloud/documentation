@@ -24,6 +24,7 @@ Digging deeper
    settings
    speech-to-text
    talk
+   translation
    two-factor-provider
    users
    dashboard
