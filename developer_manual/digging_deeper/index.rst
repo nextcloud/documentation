@@ -23,6 +23,7 @@ Digging deeper
    search
    settings
    talk
+   translation
    two-factor-provider
    users
    dashboard
