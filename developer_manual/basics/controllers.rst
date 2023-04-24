@@ -847,28 +847,35 @@ Nextcloud supports rate limiting on a controller method basis. By default contro
 
 The native rate limiting will return a 429 status code to clients when the limit is reached and a default Nextcloud error page. When implementing rate limiting in your application, you should thus consider handling error situations where a 429 is returned by Nextcloud.
 
-To enable rate limiting the following *Annotations* can be added to the controller:
+To enable rate limiting the following *Attributes* can be added to the controller:
 
-* **@UserRateThrottle(limit=int, period=int)**: The rate limiting that is applied to logged-in users. If not specified Nextcloud will fallback to AnonUserRateThrottle.
-* **@AnonRateThrottle(limit=int, period=int)**: The rate limiting that is applied to guests.
+* ``#[UserRateLimit(limit: int, period: int)]``: The rate limiting that is applied to logged-in users. If not specified Nextcloud will fallback to ``AnonRateLimit`` if available.
+* ``#[AnonRateLimit(limit: int, period: int)]``: The rate limiting that is applied to guests.
+
+.. note::
+
+    The attributes are only available in Nextcloud 27 or later. In older versions the ``@UserRateThrottle(limit=int, period=int)`` and ``@AnonRateThrottle(limit=int, period=int)`` annotation can be used. If both are present, the attribute will be considered first.
 
 A controller method that would allow five requests for logged-in users and one request for anonymous users within the last 100 seconds would look as following:
 
 .. code-block:: php
+    :emphasize-lines: 14-15
 
     <?php
     namespace OCA\MyApp\Controller;
 
     use OCP\IRequest;
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Attribute\AnonRateLimit;
+    use OCP\AppFramework\Http\Attribute\UserRateLimit;
 
     class PageController extends Controller {
 
         /**
          * @PublicPage
-         * @UserRateThrottle(limit=5, period=100)
-         * @AnonRateThrottle(limit=1, period=100)
          */
+        #[UserRateLimit(limit: 5, period: 100)]
+        #[AnonRateLimit(limit: 1, period: 100)]
         public function rateLimitedForAll() {
 
         }
