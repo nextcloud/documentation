@@ -889,9 +889,9 @@ To enable brute force protection the following *Attribute* can be added to the c
 
     The attribute is only available in Nextcloud 27 or later. In older versions the ``@BruteForceProtection(action=string)`` annotation can be used, but that does not allow multiple assignments to a single controller method.
 
-Then the **throttle()** method has to be called on the response in case of a violation. Doing so will increase the throttle counter and make following requests slower, until a slowness of roughly 30 seconds is reached and the controller returns a ``429 Too Many Requests`` status is returned instead of avoid further requests.
+Then the **throttle()** method has to be called on the response in case of a violation. Doing so will increase the throttle counter and make following requests slower, until a slowness of roughly 30 seconds is reached and the controller returns a ``429 Too Many Requests`` status without further validating or executing the request.
 
-A controller method that would employ brute-force protection with an action of "foobar" would look as following:
+A controller method that would implement brute-force protection with an action of "foobar" would look as following:
 
 .. code-block:: php
     :emphasize-lines: 11,18
