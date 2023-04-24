@@ -28,8 +28,6 @@ and **CardDAV** (Contacts) to your Nextcloud.
 
    **Password**: Your generated app-password/token (:ref:`Learn more<managing_devices>`).
 
-.. TODO ON RELEASE: Update version number above on release
-
    **Server Address**: URL of your Nextcloud server (e.g. ``https://cloud.example.com``)
 
 .. figure:: ./images/macos_3.png
