@@ -124,8 +124,8 @@ with migrations, which are only available if you are running your
 Nextcloud **in debug mode**:
 
 * `migrations:execute`: Executes a single migration version manually.
-  The version argument is the class name of the migration, while the 
-  postfix "Version" is skipped. For example if your migration was named
+  The version argument is the class name of the migration, without the 
+  "Version" prefix. For example if your migration was named
   `Version2404Date20220903071748` the version would be `2404Date20220903071748`.
 * `migrations:generate`:
   This is needed to create a new migration file. This takes 2 arguments,
