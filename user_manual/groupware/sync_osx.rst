@@ -28,13 +28,11 @@ and **CardDAV** (Contacts) to your Nextcloud.
 
    **Password**: Your generated app-password/token (:ref:`Learn more<managing_devices>`).
 
-.. TODO ON RELEASE: Update version number above on release
-
    **Server Address**: URL of your Nextcloud server (e.g. ``https://cloud.example.com``)
 
 .. figure:: ./images/macos_3.png
 
-5. Click on **Sign In**.
+1. Click on **Sign In**.
 
 For **CalDAV (Calendar)**: You can now select, with which applications you want
 to use this resource. In the most cases, this will be the "Calendar" application,
