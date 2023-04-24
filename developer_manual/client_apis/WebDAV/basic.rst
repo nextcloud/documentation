@@ -218,7 +218,7 @@ Supported properties
 +-------------------------------+--------------------------------------------------+-----------------------------------------------------------------------+
 | <nc:has-preview />            | Whether a preview of the file is available.      | ``true`` or ``false``                                                 |
 +-------------------------------+--------------------------------------------------+-----------------------------------------------------------------------+
-| <oc:size />                   | | Unlike ```getcontentlength``,                  |                                                                       |
+| <oc:size />                   | | Unlike ``getcontentlength``,                   |                                                                       |
 |                               | | this property also works                       |                                                                       |
 |                               | | for folders, reporting the size                |                                                                       |
 |                               | | of everything in the folder.                   |                                                                       |
