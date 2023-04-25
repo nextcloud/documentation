@@ -606,10 +606,7 @@ user::
 
  sudo -u www-data php occ encryption:decrypt freda
 
-Users must have enabled recovery keys on their Personal pages. You must first
-put your Nextcloud server into :ref:`maintenance
-mode <maintenance_commands_label>` to prevent any user activity until
-decryption is completed.
+Users must have enabled recovery keys on their Personal pages.
 
 Note that if you do not have master key/recovery key enabled, you can ONLY
 decrypt files per user, one user at a time and NOT when in maintenance mode.
