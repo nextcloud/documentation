@@ -732,16 +732,12 @@ In order to ease migration from OCS API routes to the App Framework, an addition
     namespace OCA\MyApp\Controller;
 
     use OCP\AppFramework\Http\DataResponse;
+    use OCP\AppFramework\Http\Attribute\NoAdminRequired;
     use OCP\AppFramework\OCSController;
 
     class ShareController extends OCSController {
 
-        /**
-         * @NoAdminRequired
-         * @NoCSRFRequired
-         * @PublicPage
-         * @CORS
-         */
+        #[NoAdminRequired]
         public function getShares(): DataResponse {
             return new DataResponse([
                 //Your data here
@@ -811,30 +807,38 @@ By default every controller method enforces the maximum security, which is:
 
 Most of the time though it makes sense to also allow normal users to access the page and the PageController->index() method should not check the CSRF token because it has not yet been sent to the client and because of that can't work.
 
-To turn off checks the following *Annotations* can be added before the controller:
+To turn off checks the following *Attributes* can be added before the controller:
 
-* **@NoAdminRequired**: Also users that are not admins can access the page
-* **@PublicPage**: Everyone can access the page without having to log in
-* **@NoTwoFactorRequired**: A user can access the page before the two-factor challenge has been passed (use this wisely and only in two-factor auth apps, e.g. to allow setup during login)
-* **@NoCSRFRequired**: Don't check the CSRF token (use this wisely since you might create a security hole; to understand what it does see `CSRF in the security section <../prologue/security.html#cross-site-request-forgery>`__)
+* ``#[NoAdminRequired]``: Also users that are not admins can access the page
+* ``#[PublicPage]``: Everyone can access the page without having to log in
+* ``#[NoTwoFactorRequired]``: A user can access the page before the two-factor challenge has been passed (use this wisely and only in two-factor auth apps, e.g. to allow setup during login)
+* ``#[NoCSRFRequired]``: Don't check the CSRF token (use this wisely since you might create a security hole; to understand what it does see `CSRF in the security section <../prologue/security.html#cross-site-request-forgery>`__)
+
+.. note::
+
+    The attributes are only available in Nextcloud 27 or later. In older versions annotations with the same names exist:
+
+    * ``@NoAdminRequired`` instead of ``#[NoAdminRequired]``
+    * ``@PublicPage``` instead of ``#[PublicPage]``
+    * ``@NoTwoFactorRequired``` instead of ``#[NoTwoFactorRequired]``
+    * ``@NoCSRFRequired``` instead of ``#[NoCSRFRequired]``
 
 A controller method that turns off all checks would look like this:
 
 .. code-block:: php
+    :emphasize-lines: 6-7,10-11
 
     <?php
     namespace OCA\MyApp\Controller;
 
     use OCP\IRequest;
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
+    use OCP\AppFramework\Http\Attribute\PublicPage;
 
     class PageController extends Controller {
-
-        /**
-         * @NoAdminRequired
-         * @NoCSRFRequired
-         * @PublicPage
-         */
+        #[NoCSRFRequired]
+        #[PublicPage]
         public function freeForAll() {
 
         }
@@ -896,7 +900,7 @@ To enable brute force protection the following *Attribute* can be added to the c
 
     The attribute is only available in Nextcloud 27 or later. In older versions the ``@BruteForceProtection(action=string)`` annotation can be used, but that does not allow multiple assignments to a single controller method.
 
-Then the **throttle()** method has to be called on the response in case of a violation. Doing so will increase the throttle counter and make following requests slower, until a slowness of roughly 30 seconds is reached and the controller returns a ``429 Too Many Requests`` status without further validating or executing the request.
+Then the **throttle()** method has to be called on the response in case of a violation. Doing so will increase the throttle counter and make following requests slower, until a slowness of roughly 30 seconds is reached and the controller returns a ``429 Too Many Requests`` status without further processing the request.
 
 A controller method that would implement brute-force protection with an action of "foobar" would look as following:
 

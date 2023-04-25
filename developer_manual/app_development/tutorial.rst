@@ -97,7 +97,7 @@ On the server side we need to register a callback that is executed once the requ
 
 This route calls the controller **OCA\\notestutorial\\PageController->index()** method which is defined in **notestutorial/lib/Controller/PageController.php**. The controller returns a :doc:`template <../basics/front-end/templates>`, in this case **notestutorial/templates/main.php**:
 
-.. note:: **@NoAdminRequired** and **@NoCSRFRequired** in the comments above the method turn off security checks, see `Authentication on Controllers <../basics/controllers.html#authentication>`__
+.. note:: The ``#[NoAdminRequired]`` and ``#[NoCSRFRequired]`` attributes on the methods turn off security checks, see `Authentication on Controllers <../basics/controllers.html#authentication>`__
 
 .. code-block:: php
 
@@ -105,6 +105,8 @@ This route calls the controller **OCA\\notestutorial\\PageController->index()** 
     namespace OCA\NotesTutorial\Controller;
 
     use OCP\IRequest;
+    use OCP\AppFramework\Http\Attribute\NoAdminRequired;
+    use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
     use OCP\AppFramework\Http\TemplateResponse;
     use OCP\AppFramework\Controller;
 
@@ -114,10 +116,8 @@ This route calls the controller **OCA\\notestutorial\\PageController->index()** 
             parent::__construct($appName, $request);
         }
 
-        /**
-         * @NoAdminRequired
-         * @NoCSRFRequired
-         */
+        #[NoAdminRequired]
+        #[NoCSRFRequired]
         public function index() {
             return new TemplateResponse('notestutorial', 'main');
         }
@@ -133,6 +133,7 @@ Since the route which returns the initial HTML has been taken care of, the contr
 
     use OCP\IRequest;
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Attribute\NoAdminRequired;
 
     class NoteController extends Controller {
 
@@ -140,55 +141,32 @@ Since the route which returns the initial HTML has been taken care of, the contr
             parent::__construct($appName, $request);
         }
 
-        /**
-         * @NoAdminRequired
-         */
+        #[NoAdminRequired]
         public function index() {
             // empty for now
         }
 
-        /**
-         * @NoAdminRequired
-         *
-         * @param int $id
-         */
+        #[NoAdminRequired]
         public function show(int $id) {
             // empty for now
         }
 
-        /**
-         * @NoAdminRequired
-         *
-         * @param string $title
-         * @param string $content
-         */
+        #[NoAdminRequired]
         public function create(string $title, string $content) {
             // empty for now
         }
 
-        /**
-         * @NoAdminRequired
-         *
-         * @param int $id
-         * @param string $title
-         * @param string $content
-         */
+        #[NoAdminRequired]
         public function update(int $id, string $title, string $content) {
             // empty for now
         }
 
-        /**
-         * @NoAdminRequired
-         *
-         * @param int $id
-         */
+        #[NoAdminRequired]
         public function destroy(int $id) {
             // empty for now
         }
 
     }
-
-.. note:: The parameters are extracted from the request body and the URL using the controller method's variable names. Since PHP does not support type hints for primitive types such as ints and booleans, we need to add them as annotations in the comments. In order to type cast a parameter to an int, add **@param int $parameterName**
 
 Now the controller methods need to be connected to the corresponding URLs in the **notestutorial/appinfo/routes.php** file:
 
@@ -225,8 +203,8 @@ Database
 
 Now that the routes are set up and connected the notes should be saved in the
 database. To do that first create a :doc:`database migration <../basics/storage/migrations>`
-by creating a file **notestutorial/lib/Migration/VersionXXYYZZDateYYYYMMDDHHSSAA.php**,
-so for example **notestutorial/lib/Migration/Version000000Date20181013124731.php**""
+by creating a file ``notestutorial/lib/Migration/VersionXYYYDateYYYYMMDDHHSSAA.php``,
+so for example version 1.4.3 goes with ``notestutorial/lib/Migration/Version1004Date20181013124731.php``
 
 .. code-block:: php
 
@@ -239,7 +217,7 @@ so for example **notestutorial/lib/Migration/Version000000Date20181013124731.php
       use OCP\Migration\SimpleMigrationStep;
       use OCP\Migration\IOutput;
 
-      class Version1400Date20181013124731 extends SimpleMigrationStep {
+      class Version1004Date20181013124731 extends SimpleMigrationStep {
 
         /**
         * @param IOutput $output
@@ -281,7 +259,7 @@ To create the tables in the database, run the :ref:`migration  <migration_consol
 
    php ./occ migrations:execute <appId> <versionNumber>
 
-   Example: sudo -u www-data php ./occ migrations:execute photos 000000Date20201002183800
+   Example: sudo -u www-data php ./occ migrations:execute notestutorial 1004Date20201002183800
 
 .. note:: To trigger the table creation/alteration when user updating the app, update the :doc:`version tag <info>` in **notestutorial/appinfo/info.xml** . migration will be executed when user reload page after app upgrade
 
@@ -400,6 +378,7 @@ You can pass in the mapper by adding it as a type hinted parameter. Nextcloud wi
 
     use OCP\IRequest;
     use OCP\AppFramework\Http;
+    use OCP\AppFramework\Http\Attribute\NoAdminRequired;
     use OCP\AppFramework\Http\DataResponse;
     use OCP\AppFramework\Controller;
 
@@ -417,18 +396,12 @@ You can pass in the mapper by adding it as a type hinted parameter. Nextcloud wi
             $this->userId = $userId;
         }
 
-        /**
-         * @NoAdminRequired
-         */
+        #[NoAdminRequired]
         public function index(): DataResponse {
             return new DataResponse($this->mapper->findAll($this->userId));
         }
 
-        /**
-         * @NoAdminRequired
-         *
-         * @param int $id
-         */
+        #[NoAdminRequired]
         public function show(int $id): DataResponse {
             try {
                 return new DataResponse($this->mapper->find($id, $this->userId));
@@ -437,12 +410,7 @@ You can pass in the mapper by adding it as a type hinted parameter. Nextcloud wi
             }
         }
 
-        /**
-         * @NoAdminRequired
-         *
-         * @param string $title
-         * @param string $content
-         */
+        #[NoAdminRequired]
         public function create(string $title, string $content): DataResponse {
             $note = new Note();
             $note->setTitle($title);
@@ -451,13 +419,7 @@ You can pass in the mapper by adding it as a type hinted parameter. Nextcloud wi
             return new DataResponse($this->mapper->insert($note));
         }
 
-        /**
-         * @NoAdminRequired
-         *
-         * @param int $id
-         * @param string $title
-         * @param string $content
-         */
+        #[NoAdminRequired]
         public function update(int $id, string $title, string $content): DataResponse {
             try {
                 $note = $this->mapper->find($id, $this->userId);
@@ -469,11 +431,7 @@ You can pass in the mapper by adding it as a type hinted parameter. Nextcloud wi
             return new DataResponse($this->mapper->update($note));
         }
 
-        /**
-         * @NoAdminRequired
-         *
-         * @param int $id
-         */
+        #[NoAdminRequired]
         public function destroy(int $id): DataResponse {
             try {
                 $note = $this->mapper->find($id, $this->userId);
@@ -645,6 +603,7 @@ Now we can wire up the trait and the service inside the **NoteController**:
     namespace OCA\NotesTutorial\Controller;
 
     use OCP\IRequest;
+    use OCP\AppFramework\Http\Attribute\NoAdminRequired;
     use OCP\AppFramework\Http\DataResponse;
     use OCP\AppFramework\Controller;
 
@@ -664,52 +623,31 @@ Now we can wire up the trait and the service inside the **NoteController**:
             $this->userId = $userId;
         }
 
-        /**
-         * @NoAdminRequired
-         */
+        #[NoAdminRequired]
         public function index(): DataResponse {
             return new DataResponse($this->service->findAll($this->userId));
         }
 
-        /**
-         * @NoAdminRequired
-         *
-         * @param int $id
-         */
+        #[NoAdminRequired]
         public function show(int $id): DataResponse {
             return $this->handleNotFound(function () use ($id) {
                 return $this->service->find($id, $this->userId);
             });
         }
 
-        /**
-         * @NoAdminRequired
-         *
-         * @param string $title
-         * @param string $content
-         */
+        #[NoAdminRequired]
         public function create(string $title, string $content) {
             return $this->service->create($title, $content, $this->userId);
         }
 
-        /**
-         * @NoAdminRequired
-         *
-         * @param int $id
-         * @param string $title
-         * @param string $content
-         */
+        #[NoAdminRequired]
         public function update(int $id, string $title, string $content): DataResponse {
             return $this->handleNotFound(function () use ($id, $title, $content): Note {
                 return $this->service->update($id, $title, $content, $this->userId);
             });
         }
 
-        /**
-         * @NoAdminRequired
-         *
-         * @param int $id
-         */
+        #[NoAdminRequired]
         public function destroy(int $id): DataResponse {
             return $this->handleNotFound(function () use ($id): Note {
                 return $this->service->delete($id, $this->userId);
@@ -958,6 +896,9 @@ With that in mind create a new controller in **notestutorial/lib/Controller/Note
     namespace OCA\NotesTutorial\Controller;
 
     use OCP\IRequest;
+    use OCP\AppFramework\Http\Attribute\CORS;
+    use OCP\AppFramework\Http\Attribute\NoAdminRequired;
+    use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
     use OCP\AppFramework\Http\DataResponse;
     use OCP\AppFramework\ApiController;
 
@@ -977,63 +918,42 @@ With that in mind create a new controller in **notestutorial/lib/Controller/Note
             $this->userId = $userId;
         }
 
-        /**
-         * @CORS
-         * @NoCSRFRequired
-         * @NoAdminRequired
-         */
+        #[CORS]
+        #[NoAdminRequired]
+        #[NoCSRFRequired]
         public function index() {
             return new DataResponse($this->service->findAll($this->userId));
         }
 
-        /**
-         * @CORS
-         * @NoCSRFRequired
-         * @NoAdminRequired
-         *
-         * @param int $id
-         */
-        public function show($id) {
+        #[CORS]
+        #[NoAdminRequired]
+        #[NoCSRFRequired]
+        public function show(int $id) {
             return $this->handleNotFound(function () use ($id) {
                 return $this->service->find($id, $this->userId);
             });
         }
 
-        /**
-         * @CORS
-         * @NoCSRFRequired
-         * @NoAdminRequired
-         *
-         * @param string $title
-         * @param string $content
-         */
-        public function create($title, $content) {
+        #[CORS]
+        #[NoAdminRequired]
+        #[NoCSRFRequired]
+        public function create(string $title, string $content) {
             return $this->service->create($title, $content, $this->userId);
         }
 
-        /**
-         * @CORS
-         * @NoCSRFRequired
-         * @NoAdminRequired
-         *
-         * @param int $id
-         * @param string $title
-         * @param string $content
-         */
-        public function update($id, $title, $content) {
+        #[CORS]
+        #[NoAdminRequired]
+        #[NoCSRFRequired]
+        public function update(int $id, string $title, string $content) {
             return $this->handleNotFound(function () use ($id, $title, $content) {
                 return $this->service->update($id, $title, $content, $this->userId);
             });
         }
 
-        /**
-         * @CORS
-         * @NoCSRFRequired
-         * @NoAdminRequired
-         *
-         * @param int $id
-         */
-        public function destroy($id) {
+        #[CORS]
+        #[NoAdminRequired]
+        #[NoCSRFRequired]
+        public function destroy(int $id) {
             return $this->handleNotFound(function () use ($id) {
                 return $this->service->delete($id, $this->userId);
             });
