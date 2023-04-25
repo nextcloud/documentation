@@ -85,6 +85,20 @@ or similar things, consider flagging it as time insensitive in the constructor.
 This allows the Nextcloud to delay the job until a given nightly time window so the users
 are not that impacted by the heavy load of the background job.
 
+Configuring parallelism
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. versionadded:: 27
+
+With resource-heavy background jobs that run for longer than a few minutes, be they ``QueuedJob`` and ``TimedJob`` instances, you may want to restrict parallelism to prevent multiple such jobs from clogging up the server's resources. You can do this with the ``setAllowParallelRuns`` method of ``OCP\BackgroundJob\Job`` (``QueuedJob`` and ``TimedJob`` both inherit from this class, so they also have this available).
+
+.. code-block:: php
+
+    <?php
+
+    // Only run one instance of this job at a time
+    $this->setAllowParallelRuns(false);
+
 Registering a background job
 ----------------------------
 
