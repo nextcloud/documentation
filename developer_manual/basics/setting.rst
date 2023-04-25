@@ -147,35 +147,51 @@ and implement two additional methods.
 
 Additionally, if your setting class needs to fetch data or send data to some admin-only
 controllers, you will need to mark the methods in the controller as accessible by the
-setting with annotations.
+setting with attribute.
+
+.. note::
+
+    The attribute is only available in Nextcloud 27 or later. In older versions the ``@AuthorizedAdminSetting(settings=OCA\NotesTutorial\Settings\NotesAdmin)`` annotation can be used.
 
 .. code-block:: php
+    :emphasize-lines: 8
 
     <?php
+    use OCP\AppFramework\Http\Attribute\AuthorizedAdminSetting;
     class NotesSettingsController extends Controller {
         /**
          * Save settings
-         * @PasswordConfirmationRequired
-         * @AuthorizedAdminSetting(settings=OCA\NotesTutorial\Settings\NotesAdmin)
          */
-         public function saveSettings($mySetting) {
-             ....
-         }
-         ...
+        #[PasswordConfirmationRequired]
+        #[AuthorizedAdminSetting(settings: 'OCA\NotesTutorial\Settings\NotesAdmin')]
+        public function saveSettings($mySetting) {
+            ....
+        }
+        ...
     }
 
 
-If you have several classes that implement `IDelegatedSettings` for a function. You must add them in the key "settings" and they must seperate with semi-colons.
+If you have several ``IDelegatedSettings`` classes that are needed for a function, simply add the annotation multiple times.
+them in the key "settings" and they must seperate with semi-colons.
+
+.. note::
+
+    If you use the deprecated annotation specify the classes separated by semicolons:
+
+    ``@AuthorizedAdminSetting(settings=OCA\NotesTutorial\Settings\NotesAdmin;OCA\NotesTutorial\Settings\NotesSubAdmin)``
 
 .. code-block:: php
+    :emphasize-lines: 8-9
 
     <?php
+    use OCP\AppFramework\Http\Attribute\AuthorizedAdminSetting;
     class NotesSettingsController extends Controller {
         /**
          * Save settings
-         * @PasswordConfirmationRequired
-         * @AuthorizedAdminSetting(settings=OCA\NotesTutorial\Settings\NotesAdmin;OCA\NotesTutorial\Settings\NotesSubAdmin)
          */
+        #[PasswordConfirmationRequired]
+        #[AuthorizedAdminSetting(settings: 'OCA\NotesTutorial\Settings\NotesAdmin')]
+        #[AuthorizedAdminSetting(settings: 'OCA\NotesTutorial\Settings\NotesSubAdmin')]
          public function saveSettings($mySetting) {
              ....
          }

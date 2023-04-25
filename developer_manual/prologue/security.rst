@@ -227,7 +227,7 @@ To prevent CSRF in an app, be sure to call the following method at the top of al
   <?php
   OCP\JSON::callCheck();
 
-If you are using the App Framework, every controller method is automatically checked for CSRF unless you explicitly exclude it by setting the @NoCSRFRequired annotation before the controller method, see :doc:`../basics/controllers`
+If you are using the App Framework, every controller method is automatically checked for CSRF unless you explicitly exclude it by setting the ``#[NoCSRFRequired]`` attribute or ``@NoCSRFRequired`` annotation before the controller method, see :doc:`../basics/controllers`
 
 Unvalidated redirects
 ---------------------
