@@ -23,7 +23,7 @@ Any changes made to the source code go into the default branch of a repository t
 
   # Switch to the default branch and update it
   git checkout main
-  git pull origin/main
+  git pull origin main
 
   # Create the new feature branch
   git checkout -b feature/foo-bar
@@ -56,7 +56,7 @@ More complex changes may require the developer to do the backport manually. This
 
   # Switch to the target branch and update it
   git checkout stable25
-  git pull origin/stable25
+  git pull origin stable25
 
   # Create the new backport branch
   git checkout -b fix/foo-stable25
