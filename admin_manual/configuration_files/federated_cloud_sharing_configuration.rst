@@ -63,7 +63,7 @@ A red light means the connection failed. The yellow light indicates a successful
 connection, with no user names exchanged. The green light indicates a successful 
 connection with user names exchanged. 
 
-The prerequisiste for a green status is that the trusted servers where maintained
+The prerequisiste for a green status is that the trusted servers were maintained
 in both interacting Nextcloud servers. 
 Additionally ``occ federation:sync-addressbooks`` must have been executed (part of 
 cron job list).
