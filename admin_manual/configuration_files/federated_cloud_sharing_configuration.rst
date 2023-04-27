@@ -58,9 +58,15 @@ share was created successfully** is enabled on your Admin page, servers will be
 automatically added to your trusted list when you create new Federation shares.
 
 You may also enter Nextcloud server URLs in the **Add Nextcloud Server** field. 
-The yellow light indicates a successful connection, with no user names 
-exchanged. The green light indicates a successful connection with user names 
-exchanged. A red light means the connection failed.
+
+A red light means the connection failed. The yellow light indicates a successful 
+connection, with no user names exchanged. The green light indicates a successful 
+connection with user names exchanged. 
+
+The prerequisiste for a green status is that the trusted servers where maintained
+in both interacting Nextcloud servers. 
+Additionally ``occ federation:sync-addressbooks`` must have been executed (part of 
+cron job list).
 
 .. figure:: images/federation-1.png
 
