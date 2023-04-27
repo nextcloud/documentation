@@ -30,6 +30,11 @@ Removed APIs
 Back-end changes
 ----------------
 
+Removal of PSR-0 class loader
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Nextcloud 27 no longer loads classes in the deprecated :ref:`PSR-0 naming standard<psr0>`. :ref:`Update the structure to PSR-4<app-psr4-autoloader>` or :ref:`ship a custom autoloader<app-custom-classloader>`.
+
 Added APIs
 ^^^^^^^^^^
 

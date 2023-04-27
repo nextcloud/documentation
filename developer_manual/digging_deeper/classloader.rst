@@ -7,6 +7,8 @@ Classloader
 
 The classloader is provided by Nextcloud and loads all your classes automatically. See :ref:`the composer section<app-composer>` if you want to include and autoload 3rd party libraries.
 
+.. _app-psr4-autoloader:
+
 PSR-4 autoloading
 -----------------
 
