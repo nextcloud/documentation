@@ -108,12 +108,24 @@ supporting this interoperable standard (RFC 5545) we made Nextcloud calendar
 compatible to Google Calendar, Apple iCloud and many other calendar-servers
 you can exchange your calendars with, including subscription links from calendar published on other Nextcloud instances, as described above.
 
-1. Click on ``+ New Subscription`` in the left sidebar.
-2. Type in or paste the link of the shared calendar you want to subscribe to.
+1. Click on ``+ New calendar`` in the left sidebar
+2. Click on ``+ New subscription from link (read-only)``
+3. Type in or paste the link of the shared calendar you want to subscribe to.
 
 Finished. Your calendar subscriptions will be updated regularly.
 
 .. note:: Subscriptions are refreshed every week by default. Your administrator may have changed this setting.
+
+Subscribe to a Holiday Calendar
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 4.4
+
+You can subscribe to a read-only holiday calendar provided by `Thunderbird <https://www.thunderbird.net/calendar/holidays/>`_.
+
+1. Click on ``+ New calendar`` in the left sidebar
+2. Click on ``+ Add holiday calendar``
+3. Find your country or region and click ``Subscribe``
 
 Managing Events
 ---------------
