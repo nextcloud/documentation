@@ -192,16 +192,11 @@ shell's profile (eg. ``~/.bash_profile`` or ``~/.zshrc``).
 Run commands in maintenance mode
 --------------------------------
 
-In maintenance mode, no apps are loaded [1]_.
+In maintenance mode, apps are not loaded [1]_, so commands from apps are unavailable. Commands integrated into Nextcloud server are available in maintenance mode.
 
-Commands provided by apps are not available.
+We discourage the use of maintenance mode unless the command explicitly prompts you to do so or unless the commands' documentation explicitly states that maintenance mode should be used.
 
-The commands, available in maintenance mode, are integrated in Nextcloud server.
-A command may use events to communicate with other apps. An app can only react to an event when loaded. 
-
-Example: The command `user:delete` deletes a user account. UserDeletedEvent is emitted. Calendar app implements an event listener to delete user data [2]_. In maintenance mode, the Calendar app is not loaded, and hence the user data not deleted.
-
-Consider running such commands with maintenance mode off.
+A command may use events to communicate with other apps. An app can only react to an event when loaded. Example: The command user:delete deletes a user account. UserDeletedEvent is emitted. Calendar app implements an event listener to delete user data [2]_. In maintenance mode, the Calendar app is not loaded, and hence the user data not deleted.
 
 .. [1] Exception: `The settings app is loaded <https://github.com/nextcloud/server/blob/75f17b60945e15effc3eea41393eef2b13937226/lib/base.php#L780>`_
 .. [2] `Calendar app event listener for UserDeletedEvent <https://github.com/nextcloud/calendar/blob/87e8586971a8676dc15a90f0cd969274678b7009/lib/Listener/UserDeletedListener.php>`_
@@ -1168,7 +1163,6 @@ This example restores the deleted files of users molly and freda::
 
 User commands
 -------------
-.. note:: Read :ref:`run_commands_in_maintenance_mode` if you intend to use a user command in maintenance mode.
 
 The ``user`` commands create and remove users, reset passwords, display a simple
 report showing how many users you have, and when a user was last logged in::
@@ -1298,8 +1292,6 @@ authentication servers such as LDAP::
 
 Group commands
 --------------
-
-.. note:: Read :ref:`run_commands_in_maintenance_mode` if you intend to use a group command in maintenance mode.
 
 The ``group`` commands create and remove groups, add and remove users in
 groups, display a list of all users in a group::
