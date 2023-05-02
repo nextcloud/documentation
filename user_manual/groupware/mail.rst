@@ -91,3 +91,14 @@ Edit tags
 1. Open action menu of an envelope
 2. Click *Edit tags*
 3. On the tags modal, set/unset tags
+
+
+Message actions
+---------------
+
+Unsubscribe from a mailing list
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 3.1
+
+Some mailing lists and newsletters allow to be unsubscribed easily. If the Mail app detects messages from such a sender, it will show an *Unsubscribe* button next to the sender information. Click and confirm to unsubscribe from the list.
