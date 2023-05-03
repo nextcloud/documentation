@@ -147,7 +147,7 @@ Supported properties
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
 | <d:resourcetype />            | Specifies the nature of the resource.           | ``<d:collection />`` for a folder                                        |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
-| <d:getcontentlength />        | The size if it is a file.                       | ``3030237``                                                              |
+| <d:getcontentlength />        | The size if it is a file in octets.             | ``3030237``                                                              |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
 | <d:getcontentlanguage />      | The language of the content.                    | ``en``                                                                   |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
@@ -166,12 +166,13 @@ Supported properties
 |                               | |                                               | |     ``<d:locktype><d:write /></d:locktype>``                           |
 |                               | |                                               | | ``</d:lockentry>``                                                     |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
-| <oc:id />                     | | The fileid namespaced by the instance id.     |                                                                          |
+| <oc:id />                     | | The fileid namespaced by the instance id.     | ``00000007oc9l3j5ur4db``                                                 |
 |                               | | Globally unique.                              |                                                                          |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
-| <oc:fileid />                 | The unique id for the file within the instance. |                                                                          |
+| <oc:fileid />                 | The unique id for the file within the instance. | ``7``                                                                    |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
-| <oc:downloadURL />            | The URL to download the file.                   |                                                                          |
+| <oc:downloadURL />            | | A URL to directly download the file from a    |                                                                          |
+|                               | | storage. No storeage implements that yet.     |                                                                          |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
 | <oc:permissions />            | | The permissions that the user has over the    | | ``S``: Shared                                                          |
 |                               | | file. The value is a string containing        | | ``R``: Shareable                                                       |
@@ -182,7 +183,7 @@ Supported properties
 |                               |                                                 | | ``W``: Updateable (file)                                               |
 |                               |                                                 | | ``CK``: Creatable                                                      |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
-| <nc:creation_time />          | Same as ``creationdate``, but as a timestamp.   | ``1675789581``                                                                    |
+| <nc:creation_time />          | Same as ``creationdate``, but as a timestamp.   | ``1675789581``                                                           |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
 | <nc:mount-type />             | The type of mount.                              | | ``''`` = local                                                         |
 |                               |                                                 | | ``'shared'`` = received share                                          |
@@ -198,15 +199,15 @@ Supported properties
 | <oc:favorite />               | The favorite state.                             | | ``0`` for not favourited                                               |
 |                               |                                                 | | ``1`` for favourited                                                   |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
-| <oc:comments-href />          | The DAV endpoint to fetch the comments.         |                                                                          |
+| <oc:comments-href />          | The DAV endpoint to fetch the comments.         | ``/remote.php/dav/comments/files/{fileId}``                              |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
-| <oc:comments-count />         | The number of comments.                         |                                                                          |
+| <oc:comments-count />         | The number of comments.                         | ``2``                                                                    |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
-| <oc:comments-unread />        | The number of unread comments.                  |                                                                          |
+| <oc:comments-unread />        | The number of unread comments.                  | ``0``                                                                    |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
-| <oc:owner-id />               | The user id of the owner of a shared file.      |                                                                          |
+| <oc:owner-id />               | The user id of the owner of a shared file.      | ``alice``                                                                |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
-| <oc:owner-display-name />     | The display name of the owner of a shared file. |                                                                          |
+| <oc:owner-display-name />     | The display name of the owner of a shared file. | ``Alice``                                                                |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
 | <oc:share-types />            | XML array of share types.                       | | ``<oc:share-type>{shareTypeId}</oc:share-type>``                       |
 |                               |                                                 | | ``0`` = User                                                           |
@@ -243,10 +244,9 @@ Supported properties
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
 | <nc:has-preview />            | Whether a preview of the file is available.     | ``true`` or ``false``                                                    |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
-| <oc:size />                   | | Unlike ``getcontentlength``,                  |                                                                          |
-|                               | | this property also works                      |                                                                          |
-|                               | | for folders, reporting the size               |                                                                          |
-|                               | | of everything in the folder.                  |                                                                          |
+| <oc:size />                   | | Unlike ``getcontentlength``, this property    | ``127815235``                                                            |
+|                               | | also works for folders, reporting the size of |                                                                          |
+|                               | | everything in the folder. Size is in octets.  |                                                                          |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
 | <oc:quota-used-bytes />       | Amount of bytes used in the folder.             | ``3950773``                                                              |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
@@ -284,7 +284,7 @@ Supported properties
 |                               |                                                 | |   ``<nc:acl-permissions>15</nc:acl-permissions>``                      |
 |                               |                                                 | | ``</nc:acl>``                                                          |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
-| <nc:inherited-acl-list>       | Array of ACL rules from the parents folders     |                                                                          |
+| <nc:inherited-acl-list>       | Array of ACL rules from the parents folders     | See <nc:acl-list>                                                        |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
 | <nc:group-folder-id>          | Numerical id of that group folder.              | ``1``                                                                    |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
