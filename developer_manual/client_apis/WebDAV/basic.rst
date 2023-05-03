@@ -182,7 +182,7 @@ Supported properties
 |                               |                                                 | | ``W``: Updateable (file)                                               |
 |                               |                                                 | | ``CK``: Creatable                                                      |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
-| <nc:creation_time />          | Same as ``creationdate``, but as a timestamp.   | ``0``                                                                    |
+| <nc:creation_time />          | Same as ``creationdate``, but as a timestamp.   | ``1675789581``                                                                    |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
 | <nc:mount-type />             | The type of mount.                              | | ``''`` = local                                                         |
 |                               |                                                 | | ``'shared'`` = received share                                          |
