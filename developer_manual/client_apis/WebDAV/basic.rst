@@ -58,7 +58,7 @@ Here is a JavaScript code sample to get you started:
 	const response = await client.getDirectoryContents(`/files/${getCurrentUser()?.uid}/folder`, {
 		details: true,
 		data: `<?xml version="1.0" encoding="UTF-8"?>
-			<d:propfind xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns">
+			<d:propfind xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns" xmlns:nc="http://nextcloud.org/ns">
 				<d:prop>
 					<d:getlastmodified/>
 					<d:getcontentlength/>
@@ -80,7 +80,7 @@ You can request additional properties by sending a request body with the :code:`
 .. code-block:: xml
 
 	<?xml version="1.0"?>
-	<d:propfind  xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns" xmlns:nc="http://nextcloud.org/ns">
+	<d:propfind xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns" xmlns:nc="http://nextcloud.org/ns">
 	  <d:prop>
 		<d:getlastmodified />
 		<d:getetag />
@@ -100,25 +100,25 @@ You can request additional properties by sending a request body with the :code:`
 	  </d:prop>
 	</d:propfind>
 
-A note about namespaces
-^^^^^^^^^^^^^^^^^^^^^^^
+A note about namespaces URI
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When building the body of your DAV request, you will request properties that are available under specific namespace.
-It is usual to declare shortcuts for those namespace in the ``d:propfind`` element of the body.
+When building the body of your DAV request, you will request properties that are available under specific namespace URI.
+It is usual to declare prefixes for those namespace in the ``d:propfind`` element of the body.
 
 Here is the list of available namespace:
 
-=========================================  ========
-                Namespace                  Shortcut
-=========================================  ========
+=========================================  ======
+                   URI                     Prefix
+=========================================  ======
 DAV:                                       d
 http://owncloud.org/ns                     oc
 http://nextcloud.org/ns                    nc
 http://open-collaboration-services.org/ns  ocs
 http://open-cloud-mesh.org/ns              ocm
-=========================================  ========
+=========================================  ======
 
-And here is how it should look in the body of your DAV request:
+And here is how it should look in your DAV request:
 
 .. code-block:: xml
 
@@ -129,18 +129,15 @@ And here is how it should look in the body of your DAV request:
 			xmlns:nc="http://nextcloud.org/ns"
 			xmlns:ocs="http://open-collaboration-services.org/ns">
 			xmlns:ocm="http://open-cloud-mesh.org/ns">
+		...
 
 Supported properties
 ^^^^^^^^^^^^^^^^^^^^
-
-
 
 +-------------------------------+--------------------------------------------------+--------------------------------------------------------------------------+
 |           Property            |                   Description                    |                                 Example                                  |
 +===============================+==================================================+==========================================================================+
 | <d:creationdate />            | The creation date of the node.                   | ``"1970-01-01T00:00:00+00:00"``                                          |
-+-------------------------------+--------------------------------------------------+--------------------------------------------------------------------------+
-| <nc:creation_time />          | Same as ``creationdate``, but as a timestamp.    | ``0``                                                                    |
 +-------------------------------+--------------------------------------------------+--------------------------------------------------------------------------+
 | <d:getlastmodified />         | The latest modification time.                    | ``"Wed, 20 Jul 2022 05:12:23 GMT"``                                      |
 +-------------------------------+--------------------------------------------------+--------------------------------------------------------------------------+
@@ -156,18 +153,18 @@ Supported properties
 +-------------------------------+--------------------------------------------------+--------------------------------------------------------------------------+
 | <d:displayname />             | A name suitable for presentation.                | ``File name``                                                            |
 +-------------------------------+--------------------------------------------------+--------------------------------------------------------------------------+
-| <d:lockdiscovery />           | Describes the active locks on a resource.        | | [ {                                                                    |
-|                               |                                                  | |      locktype: ``write``                                               |
-|                               |                                                  | |      lockscope: ``exclusive``                                          |
-|                               |                                                  | |      depth: ``0``                                                      |
-|                               |                                                  | |      owner: ``Jane Smith``                                             |
-|                               |                                                  | |      timeout: ``Infinite``                                             |
-|                               |                                                  | |      locktoken: { href: ``urn:uuid:f81de2ad-7f3d-a1b2-4f3c-`` }        |
-|                               |                                                  | |      lockroot: { href: ``http://www.example.com/container/`` }         |
-|                               |                                                  | | } ]                                                                    |
+| <d:lockdiscovery />           | | Dummy endpoint for class 2 WebDAV support.     | ``<d:lockdiscovery />``                                                  |
+|                               | | Should return the list of lock, but            |                                                                          |
+|                               | | always return an empty response.               |                                                                          |
 +-------------------------------+--------------------------------------------------+--------------------------------------------------------------------------+
-| <oc:supportedlock />          | | Provide the lock capabilities                  | [ { lockscope: ``exclusive``, locktype: ``write`` } ]                    |
-|                               | | supported by the resource.                     |                                                                          |
+| <d:supportedlock />           | | Dummy endpoint for class 2 WebDAV support.     | | ``<d:lockentry>``                                                      |
+|                               | | Always provide the same lock capabilities.     | |     ``<d:lockscope><d:exclusive /></d:lockscope>``                     |
+|                               | |                                                | |     ``<d:locktype><d:write /></d:locktype></d:lockentry>``             |
+|                               | |                                                | | ``</d:lockentry>``                                                     |
+|                               | |                                                | | ``<d:lockentry>``                                                      |
+|                               | |                                                | |     ``<d:lockscope><d:shared /></d:lockscope>``                        |
+|                               | |                                                | |     ``<d:locktype><d:write /></d:locktype>``                           |
+|                               | |                                                | | ``</d:lockentry>``                                                     |
 +-------------------------------+--------------------------------------------------+--------------------------------------------------------------------------+
 | <oc:id />                     | | The fileid namespaced by the instance id.      |                                                                          |
 |                               | | Globally unique.                               |                                                                          |
@@ -176,14 +173,16 @@ Supported properties
 +-------------------------------+--------------------------------------------------+--------------------------------------------------------------------------+
 | <oc:downloadURL />            | The URL to download the file.                    |                                                                          |
 +-------------------------------+--------------------------------------------------+--------------------------------------------------------------------------+
-| <oc:permissions />            | The permissions that the user has over the file. | | S: Shared                                                              |
-|                               |                                                  | | R: Shareable                                                           |
-|                               |                                                  | | M: Mounted                                                             |
-|                               |                                                  | | G: Readable                                                            |
-|                               |                                                  | | D: Deletable                                                           |
-|                               |                                                  | | NV: Updateable, Renameable, Moveable                                   |
-|                               |                                                  | | W: Updateable (file)                                                   |
-|                               |                                                  | | CK: Creatable                                                          |
+| <oc:permissions />            | | The permissions that the user has over the     | | ``S``: Shared                                                          |
+|                               | | file. The value is a string containing letters | | ``R``: Shareable                                                       |
+|                               | | for all available permissions.                 | | ``M``: Mounted                                                         |
+|                               |                                                  | | ``G``: Readable                                                        |
+|                               |                                                  | | ``D``: Deletable                                                       |
+|                               |                                                  | | ``NV``: Updateable, Renameable, Moveable                               |
+|                               |                                                  | | ``W``: Updateable (file)                                               |
+|                               |                                                  | | ``CK``: Creatable                                                      |
++-------------------------------+--------------------------------------------------+--------------------------------------------------------------------------+
+| <nc:creation_time />          | Same as ``creationdate``, but as a timestamp.    | ``0``                                                                    |
 +-------------------------------+--------------------------------------------------+--------------------------------------------------------------------------+
 | <nc:mount-type />             | The type of mount.                               | | ``''`` = local                                                         |
 |                               |                                                  | | ``'shared'`` = received share                                          |
@@ -194,7 +193,7 @@ Supported properties
 | <nc:is-encrypted />           | Whether the folder is end-to-end encrypted.      | | ``0`` for ``false``                                                    |
 |                               |                                                  | | ``1`` for ``true``                                                     |
 +-------------------------------+--------------------------------------------------+--------------------------------------------------------------------------+
-| <oc:tags />                   | List of user specified tags.                     |                                                                          |
+| <oc:tags />                   | List of user specified tags.                     | ``<oc:tag>test</oc:tag>``                                                |
 +-------------------------------+--------------------------------------------------+--------------------------------------------------------------------------+
 | <oc:favorite />               | The favorite state.                              | | ``0`` for not favourited                                               |
 |                               |                                                  | | ``1`` for favourited                                                   |
@@ -209,7 +208,8 @@ Supported properties
 +-------------------------------+--------------------------------------------------+--------------------------------------------------------------------------+
 | <oc:owner-display-name />     | The display name of the owner of a shared file.  |                                                                          |
 +-------------------------------+--------------------------------------------------+--------------------------------------------------------------------------+
-| <oc:share-types />            | The list of type share.                          | | ``0`` = User                                                           |
+| <oc:share-types />            | XML array of share types.                        | | ``<oc:share-type>{shareTypeId}</oc:share-type>``                       |
+|                               |                                                  | | ``0`` = User                                                           |
 |                               |                                                  | | ``1`` = Group                                                          |
 |                               |                                                  | | ``3`` = Public link                                                    |
 |                               |                                                  | | ``4`` = Email                                                          |
@@ -228,14 +228,18 @@ Supported properties
 |                               |                                                  | | ``16`` = Share                                                         |
 |                               |                                                  | | ``31`` = All                                                           |
 +-------------------------------+--------------------------------------------------+--------------------------------------------------------------------------+
-| <ocm:share-permissions />     | | The permissions that the                       | ``share``, ``read``, ``write``                                           |
-|                               | | user has over the share.                       |                                                                          |
+| <ocm:share-permissions />     | | The permissions that the user has              | ``['share', 'read', 'write']``                                           |
+|                               | | over the share as a JSON array.                |                                                                          |
 +-------------------------------+--------------------------------------------------+--------------------------------------------------------------------------+
-| <ocm:share-attributes />      | User set attributes.                             | ``[{ "scope" => <string>, "key" => <string>, "enabled" => <bool> }]``    |
+| <nc:share-attributes />       | User set attributes as a JSON array.             | ``[{ "scope" => <string>, "key" => <string>, "enabled" => <bool> }]``    |
 +-------------------------------+--------------------------------------------------+--------------------------------------------------------------------------+
-| <nc:sharees />                | The list of share recipient.                     | ``{ id, display-name, share type }``                                    |
+| <nc:sharees />                | The list of share recipient.                     | | ``<nc:sharee>``                                                        |
+|                               |                                                  | |     ``<nc:id>alice</nc:id>``                                           |
+|                               |                                                  | |     ``<nc:display-name>Alice</nc:display-name>``                       |
+|                               |                                                  | |     ``<nc:type>0</nc:type>``                                           |
+|                               |                                                  | | ``</nc:sharee>``                                                       |
 +-------------------------------+--------------------------------------------------+--------------------------------------------------------------------------+
-| <oc:checksums />              | A list of checksum.                              | ``md5:04c36b75222cd9fd47f2607333029106``                                 |
+| <oc:checksums />              | An array of checksums.                           | ``<oc:checksum>md5:04c36b75222cd9fd47f2607333029106</oc:checksum>``      |
 +-------------------------------+--------------------------------------------------+--------------------------------------------------------------------------+
 | <nc:has-preview />            | Whether a preview of the file is available.      | ``true`` or ``false``                                                    |
 +-------------------------------+--------------------------------------------------+--------------------------------------------------------------------------+
@@ -251,11 +255,11 @@ Supported properties
 |                               |                                                  | | ``-2`` Unknown free space.                                             |
 |                               |                                                  | | ``-3`` Unlimited free space.                                           |
 +-------------------------------+--------------------------------------------------+--------------------------------------------------------------------------+
-| <nc:rich-workspace-file />    | The workspace file.                              |                                                                          |
+| <nc:rich-workspace-file />    | The id of the workspace file.                    | `3456`                                                                   |
 +-------------------------------+--------------------------------------------------+--------------------------------------------------------------------------+
 | <nc:rich-workspace />         | The content of the workspace file.               |                                                                          |
 +-------------------------------+--------------------------------------------------+--------------------------------------------------------------------------+
-| <nc:upload_time />            | Date this file was uploaded.                     |                                                                          |
+| <nc:upload_time />            | Date this file was uploaded.                     | ``1675789581``                                                           |
 +-------------------------------+--------------------------------------------------+--------------------------------------------------------------------------+
 | <nc:note />                   | Share note.                                      |                                                                          |
 +-------------------------------+--------------------------------------------------+--------------------------------------------------------------------------+
