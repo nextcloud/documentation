@@ -172,7 +172,7 @@ Supported properties
 | <oc:fileid />                 | The unique id for the file within the instance. | ``7``                                                                    |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
 | <oc:downloadURL />            | | A URL to directly download the file from a    |                                                                          |
-|                               | | storage. No storeage implements that yet.     |                                                                          |
+|                               | | storage. No storage implements that yet.      |                                                                          |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
 | <oc:permissions />            | | The permissions that the user has over the    | | ``S``: Shared                                                          |
 |                               | | file. The value is a string containing        | | ``R``: Shareable                                                       |
