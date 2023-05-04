@@ -19,13 +19,6 @@ Add a new mail account
 
 .. figure:: images/new-mail-account.png
 
-
-Create/Write a new message
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-1. Click new message on the top left of your screen
-2. Start writing your message
-
 Scheduled messages
 ~~~~~~~~~~~~~~~~~~~
 1. Click new message button on top left of your screen
@@ -56,6 +49,29 @@ Your account settings such as:
 5. Trusted server ect
 
 Can be found in the action menu of a mail account. There you can edit, add or remove settings depending on your need.
+
+
+Compose messages
+----------------
+
+1. Click new message on the top left of your screen
+2. Start writing your message
+
+Minimize the composer modal
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   .. versionadded:: 3.2
+
+The composer modal can be minimized while writing a new message, editing an existing draft or editing a message from the outbox. Simply click the minimize button on the top right of the modal or click anywhere outside the modal.
+
+   .. figure:: images/mail-minimize-composer.png
+
+You can resume your minimized message by clicking anywhere on the indicator on the bottom right of your screen.
+
+   .. figure:: images/mail-composer-indicator.png
+
+Press the close button on the modal or the indicator in the bottom right corner to stop editing a message. A draft will be saved automatically into your draft mailbox.
+
 
 Mailbox actions
 ---------------
