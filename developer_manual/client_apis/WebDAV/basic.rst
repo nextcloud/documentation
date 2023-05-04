@@ -32,7 +32,7 @@ For example: you can perform a :code:`PROPFIND` request to find files in a folde
       --user username:password \
       --request PROPFIND \
       --data '<?xml version="1.0" encoding="UTF-8"?>
-        <d:propfind xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns">
+        <d:propfind xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns" xmlns:nc="http://nextcloud.org/ns">
           <d:prop>
             <d:getlastmodified/>
             <d:getcontentlength/>
@@ -229,7 +229,7 @@ Supported properties
 |                               |                                                 | | ``16`` = Share                                                         |
 |                               |                                                 | | ``31`` = All                                                           |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
-| <ocm:share-permissions />     | | The permissions that the user has             | ``['share', 'read', 'write']``                                           |
+| <ocm:share-permissions />     | | The permissions that the user has             | ``["share", "read", "write"]``                                           |
 |                               | | over the share as a JSON array.               |                                                                          |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------+
 | <nc:share-attributes />       | User set attributes as a JSON array.            | ``[{ "scope" => <string>, "key" => <string>, "enabled" => <bool> }]``    |
