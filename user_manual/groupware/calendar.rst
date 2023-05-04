@@ -1,3 +1,5 @@
+.. _calendar-app:
+
 ======================
 Using the Calendar app
 ======================
