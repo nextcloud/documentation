@@ -2,6 +2,8 @@
 App upgrade guide
 =================
 
+.. _app-upgrade-guide:
+
 Once you've created and published the first version of your app, you will want to keep it up to date with the latest Nextcloud features.
 
 These sub pages will cover the most important changes in Nextcloud, as well as some guides on how to upgrade existing apps.
