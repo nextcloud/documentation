@@ -102,6 +102,18 @@ Create an event for a certain message/thread directly via mail app
 2. Click *more actions*
 3. Click *create event*
 
+Create a task
+~~~~~~~~~~~~~
+
+.. versionadded:: 3.2
+
+Create an task for a certain message/thread directly via mail app
+1. Open action menu of an envelope
+2. Click *more actions*
+3. Click *create task*
+
+.. note:: Tasks are stored in supported calendars. If there is no compatible calendar you can create a new one with the :ref:`calendar app<calendar-app>`.
+
 Edit tags
 ~~~~~~~~~~
 1. Open action menu of an envelope
