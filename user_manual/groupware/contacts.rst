@@ -17,7 +17,8 @@ contact picture and manage your address books.
 Adding Contacts
 ---------------
 
-When you first access the Contacts app, an empty default address book becomes available:
+When you first access the Contacts app, the system address book containing all 
+users on the instance you are allowed to see, plus an empty default address book becomes available:
 
 .. figure:: ../images/contacts_empty.png
 
@@ -86,6 +87,9 @@ To edit or remove contact information:
 3. Make your modifications or click on the trash bin.
 
 Changes or removals that you made to any contact information are implemented immediately.
+
+Not all contacts will be editable for you. The system address book does not allow you to modify 
+someone elses data, only your own. Your own data can also be modified in the :doc:`user settings <../userpreferences>`.
 
 
 Contact Picture
