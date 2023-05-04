@@ -18,7 +18,7 @@ There are three procedures in place to facilitate communication to app developer
 
 1. The definition of **Done** of a pull request includes documentation.
 
-  This means the development of your pull request cannot be considered done, if you introduced changes (additions, removals or modifications) that affect app developers that you did not document.
+  This means the development of your pull request cannot be considered done if you introduced changes (additions, removals or modifications) that affect app developers that you did not document.
 
 2. A change that affects app developers, has to be reported and documented by the author of the pull request in the :ref:`App Upgrade guide <app-upgrade-guide>` section.
 
@@ -28,5 +28,3 @@ There are three procedures in place to facilitate communication to app developer
   - The steps should be explicitly written, so the documentation shall not rely upon links to external resources for the steps. While it is encouraged to add an external links as additional reference, it is a hard requirement that the documentation is readable and actionable without browsing to this link.
   - The change author's name should be added to the section so readers can reach out to the author if they have questions or if something is unclear.
   - Timeline: the documentation is required to be handed in when finalizing the pull request and should be merged timely close to the actual change.
-
-3. The documentation will then be copy-pasted into the forum for the first beta release.
