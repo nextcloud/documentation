@@ -50,6 +50,16 @@ Your account settings such as:
 
 Can be found in the action menu of a mail account. There you can edit, add or remove settings depending on your need.
 
+Account delegation
+~~~~~~~~~~~~~~~~~~
+
+The app allows account delegation so that one user can send emails from the address of another.
+
+1) The delegation has to be configured on the mail server by an admin
+2) Add the other email address as an alias for your own email account
+3) When sending an email, select the alias as sender
+
+.. warning:: The sent email might not be visible to the original account if it's stored in your personal *Sent* mailbox.
 
 Compose messages
 ----------------
