@@ -11,6 +11,8 @@ jobs:
   user_manual:
     runs-on: ubuntu-latest
     steps:
+    - name: Install cairo and pkg-config
+      run: apt-get install -y libcairo2-dev pkg-config python3-dev
     - uses: actions/checkout@v3
     - uses: ammaraskar/sphinx-action@master
       with:
