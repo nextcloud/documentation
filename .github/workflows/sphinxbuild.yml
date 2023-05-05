@@ -11,13 +11,11 @@ jobs:
   user_manual:
     runs-on: ubuntu-latest
     steps:
-    - name: Install cairo and pkg-config
-      run: sudo apt-get install -y libcairo2-dev pkg-config python3-dev
     - uses: actions/checkout@v3
     - uses: ammaraskar/sphinx-action@master
       with:
         docs-folder: "user_manual/"
-        pre-build-command: pip install -r requirements.txt
+        pre-build-command: "sudo apt-get install -y libcairo2-dev pkg-config python3-dev && pip install -r requirements.txt"
         build-command: make html
     - name: Pack  the results in local tar file
       shell: bash
