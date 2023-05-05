@@ -15,7 +15,7 @@ jobs:
     - uses: ammaraskar/sphinx-action@master
       with:
         docs-folder: "user_manual/"
-        pre-build-command: "sudo apt-get install -y libcairo2-dev pkg-config python3-dev && pip install -r requirements.txt"
+        pre-build-command: "apt-get install -y libcairo2-dev pkg-config python3-dev && pip install -r requirements.txt"
         build-command: make html
     - name: Pack  the results in local tar file
       shell: bash
