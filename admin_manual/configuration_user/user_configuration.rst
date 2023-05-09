@@ -58,6 +58,12 @@ User accounts have the following properties:
   cannot upload or sync data. You have the the option to include external
   storage in user quotas.
 
+*Manager*
+  Every user can have one organizational manager. The manager property goes into
+  the system address book card of the user and is used for the Contacts app's
+  organization chart, for example. Setting a manager does **not** change any
+  authorization level of the user or their manager.
+
 Creating a new user
 -------------------
 
