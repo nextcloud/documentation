@@ -24,12 +24,10 @@ is a few steps on the originating server.
    servers** and **Allow users on this server to receive shares from other 
    servers** are enabled. 
 
-3. Now go to the Federation 
-   section. By default, **Add server automatically once a federated share was 
-   created successfully** is checked. The Federation app supports creating a 
+3. Now go to the Federation section. The Federation app supports creating a
    list of trusted Nextcloud servers, which allows the trusted servers to 
    exchange user directories and auto-complete the names of external users when 
-   you create shares. If you do not want this enabled, then un-check it.
+   you create shares.
 
 .. figure:: images/federation-0.png
    
@@ -53,9 +51,7 @@ Configuring trusted Nextcloud servers
 
 You may create a list of trusted Nextcloud servers for Federation sharing. This 
 allows your linked Nextcloud servers to share user directories, and to auto-fill 
-user names in share dialogs. If **Add server automatically once a federated 
-share was created successfully** is enabled on your Admin page, servers will be 
-automatically added to your trusted list when you create new Federation shares.
+user names in share dialogs.
 
 You may also enter Nextcloud server URLs in the **Add Nextcloud Server** field. 
 
