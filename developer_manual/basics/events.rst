@@ -742,7 +742,7 @@ The hook logic should be in a separate class that is being registered in the `Ap
              */
             $container->registerService('UserHooks', function($c) {
                 return new UserHooks(
-                    $c->query('ServerContainer')->getUserManager()
+                    $c->get(\OCP\IUserManager::class)
                 );
             });
         }
@@ -804,7 +804,7 @@ The following hooks are available:
 Session
 ```````
 
-Injectable from the ServerContainer by calling the method **getUserSession()**.
+Injectable from the ServerContainer with the ``\OCP\IUserSession`` service.
 
 Hooks available in scope **\\OC\\User**:
 
@@ -822,7 +822,7 @@ Hooks available in scope **\\OC\\User**:
 UserManager
 ```````````
 
-Injectable from the ServerContainer by calling the method **getUserManager()**.
+Injectable from the ServerContainer with the ``\OCP\IUserManager`` service.
 
 Hooks available in scope **\\OC\\User**:
 
