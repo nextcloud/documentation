@@ -4,40 +4,29 @@ User management
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-Users can be managed using the UserManager which is injected from the ServerContainer:
+Users can be managed using the IUserManager service that can be :ref:`injected<dependency-injection>`.
 
 .. code-block:: php
+    :caption: lib/Service/UserService.php
+    :emphasize-lines: 8, 10-12
 
     <?php
-    namespace OCA\MyApp\AppInfo;
 
-    use \OCP\AppFramework\App;
+    namespace OCA\MyApp\Service;
 
-    use \OCA\MyApp\Service\UserService;
+    use OCP\IUserManager;
 
+    class UserService {
+        private IUserManager $userManager;
 
-    class Application extends App {
+        public function __construct(IUserManager $userManager){
+            $this->userManager = $userManager;
+        }
 
-        public function __construct(array $urlParams=array()){
-            parent::__construct('myapp', $urlParams);
-
-            $container = $this->getContainer();
-
-            /**
-             * Controllers
-             */
-            $container->registerService('UserService', function($c) {
-                return new UserService(
-                    $c->query('UserManager')
-                );
-            });
-
-            $container->registerService('UserManager', function($c) {
-                return $c->query('ServerContainer')->getUserManager();
-            });
+        public function createUser($userId, $password) {
+            return $this->userManager->create($userId, $password);
         }
     }
-
 
 
 Creating users
@@ -46,22 +35,23 @@ Creating users
 Creating a user is done by passing a username and password to the create method:
 
 .. code-block:: php
+    :caption: lib/Service/UserService.php
+    :emphasize-lines: 13
 
     <?php
+
     namespace OCA\MyApp\Service;
 
     class UserService {
+        private IUserManager $userManager;
 
-        private $userManager;
-
-        public function __construct($userManager){
+        public function __construct(IUserManager $userManager){
             $this->userManager = $userManager;
         }
 
         public function create($userId, $password) {
             return $this->userManager->create($userId, $password);
         }
-
     }
 
 Modifying users
@@ -75,15 +65,16 @@ Users can be modified by getting a user by the userId or by a search pattern. Th
 * Get their home directory
 
 .. code-block:: php
+    :emphasize-lines: 13
 
     <?php
     namespace OCA\MyApp\Service;
 
     class UserService {
 
-        private $userManager;
+        private IUserManager $userManager;
 
-        public function __construct($userManager){
+        public function __construct(IUserManager $userManager){
             $this->userManager = $userManager;
         }
 
@@ -108,68 +99,50 @@ Users can be modified by getting a user by the userId or by a search pattern. Th
 User session information
 ------------------------
 
-To login, logout or getting the currently logged in user, the UserSession has to be injected from the ServerContainer:
+To login, logout or getting the currently logged in user, the IUserSession service that can be :ref:`injected<dependency-injection>`.
 
 .. code-block:: php
+    :caption: lib/Service/UserService.php
 
     <?php
-    namespace OCA\MyApp\AppInfo;
 
-    use \OCP\AppFramework\App;
+    namespace OCA\MyApp\Service;
 
-    use \OCA\MyApp\Service\UserService;
+    use OCP\IUserSession;
 
+    class UserService {
+        private IUserSession $userSession;
 
-    class Application extends App {
-
-        public function __construct(array $urlParams=array()){
-            parent::__construct('myapp', $urlParams);
-
-            $container = $this->getContainer();
-
-            /**
-             * Controllers
-             */
-            $container->registerService('UserService', function($c) {
-                return new UserService(
-                    $c->query('UserSession')
-                );
-            });
-
-            $container->registerService('UserSession', function($c) {
-                return $c->query('ServerContainer')->getUserSession();
-            });
-
-            // currently logged in user, userId can be gotten by calling the
-            // getUID() method on it
-            $container->registerService('User', function($c) {
-                return $c->query('UserSession')->getUser();
-            });
+        public function __construct(IUserSession $userSession){
+            $this->userSession = $userSession;
         }
     }
 
 
-Then users can be logged in by using:
+Then users can be logged in and out by using:
 
 .. code-block:: php
+    :caption: lib/Service/UserService.php
+    :emphasize-lines: 15,19
 
     <?php
+
     namespace OCA\MyApp\Service;
 
+    use OCP\IUserSession;
+
     class UserService {
+        private IUserSession $userSession;
 
-        private $userSession;
-
-        public function __construct($userSession){
+        public function __construct(IUserSession $userSession){
             $this->userSession = $userSession;
         }
 
-        public function login($userId, $password) {
+        public function login(string $userId, string $password): void {
             return $this->userSession->login($userId, $password);
         }
 
-        public function logout() {
+        public function logout(): void {
             $this->userSession->logout();
         }
-
     }
