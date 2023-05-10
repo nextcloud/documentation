@@ -173,3 +173,82 @@ Then users can be logged in by using:
         }
 
     }
+
+User objects
+------------
+
+User objects can be acquired from the ``IUserManager::get`` method.
+
+.. code-block:: php
+    :caption: lib/Service/UserService.php
+    :emphasize-lines: 17
+
+    <?php
+
+    namespace OCA\MyApp\Service;
+
+    use OCP\IUser;
+    use OCP\IUserManager;
+
+    class UserService {
+        private IUserManager $userManager;
+
+        public function __construct(IUserManager $userManager) {
+            $this->userManager = $userManager;
+        }
+
+        public function foo(string $userId): void {
+            /** @var IUser|null $user */
+            $user = $this->userManager->get($userId);
+            if ($user !== null) {
+                // User exists
+            } else {
+                // The user does not exist
+            }
+        }
+    }
+
+User managers
+^^^^^^^^^^^^^
+
+.. versionadded:: 27
+
+Nextcloud users can be defined as managers of other users. This is an informational property and has no influence on authorization. A user manager is not to confuse with admins or sub admins.
+
+.. code-block:: php
+    :caption: lib/Service/UserService.php
+    :emphasize-lines: 22, 29-31
+
+    <?php
+
+    namespace OCA\MyApp\Service;
+
+    use OCP\IUser;
+    use OCP\IUserManager;
+
+    class UserService {
+        private IUserManager $userManager;
+
+        public function __construct(IUserManager $userManager) {
+            $this->userManager = $userManager;
+        }
+
+        public function updateUserManagers(string $userId): void {
+            /** @var IUser|null $user */
+            $user = $this->userManager->get('user123');
+            if ($user === null) {
+                throw \InvalidArgumentException("User $userId does not exist");
+            }
+
+            $managerUids = $user->getManagerUids();
+            // Turn UIDs into user objects
+            $managers = array_map(function(string $uid) {
+                return $this->userManager->get($uid);
+            }, $managerUids));
+            // Remove and managers that no longer exist as user
+            $existingManagers = array_filter($managers);
+            $user->setManagerUids(array_map(function(IUser $admin) {
+                return $user->getUID();
+            }, $existingManagers));
+        }
+    }
