@@ -1,3 +1,5 @@
+.. _file-sharing-configuration:
+
 ============
 File Sharing
 ============
