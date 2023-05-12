@@ -515,8 +515,14 @@ bernie::
 
  sudo -u www-data php occ dav:sync-birthday-calendar bernie
 
-``dav:sync-system-addressbook`` synchronizes all users to the system
-addressbook::
+
+.. _occ-dav-sync-system-address-book:
+
+Sync system address book
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+``dav:sync-system-addressbook`` synchronizes all users to the :ref:`system
+address book<system-address-book>`::
 
  sudo -u www-data php occ dav:sync-system-addressbook
 

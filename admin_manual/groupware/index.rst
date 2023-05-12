@@ -7,4 +7,5 @@ Groupware
     :maxdepth: 2
 
     calendar
+    contacts
     mail
