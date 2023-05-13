@@ -59,6 +59,13 @@ never use it.
 
 ::
 
+	'secret' => '',
+
+Secret used by Nextcloud for various purposes, e.g. to encrypt data. If you
+lose this string there will be data corruption.
+
+::
+
 	'trusted_domains' =>
 	   [
 	    'demo.example.org',
@@ -299,18 +306,6 @@ Defaults to ``false``
 
 ::
 
-	'defaultapp' => 'dashboard,files',
-
-Set the default app to open on login. Use the app names as they appear in the
-URL after clicking them in the Apps menu, such as documents, calendar, and
-gallery. You can use a comma-separated list of app names, so if the first
-app is not enabled for a user then Nextcloud will try the second one, and so
-on. If no enabled apps are found it defaults to the dashboard app.
-
-Defaults to ``dashboard,files``
-
-::
-
 	'knowledgebaseenabled' => true,
 
 ``true`` enables the Help menu item in the user menu (top right of the
@@ -322,6 +317,40 @@ Nextcloud Web interface). ``false`` removes the Help item.
 
 ``true`` allows users to change their display names (on their Personal
 pages), and ``false`` prevents them from changing their display names.
+
+::
+
+	'skeletondirectory' => '/path/to/nextcloud/core/skeleton',
+
+The directory where the skeleton files are located. These files will be
+copied to the data directory of new users. Leave empty to not copy any
+skeleton files.
+
+``{lang}`` can be used as a placeholder for the language of the user.
+If the directory does not exist, it falls back to non dialect (from ``de_DE``
+to ``de``). If that does not exist either, it falls back to ``default``
+
+Defaults to ``core/skeleton`` in the Nextcloud directory.
+
+::
+
+	'templatedirectory' => '/path/to/nextcloud/templates',
+
+The directory where the template files are located. These files will be
+copied to the template directory of new users. Leave empty to not copy any
+template files.
+
+``{lang}`` can be used as a placeholder for the language of the user.
+If the directory does not exist, it falls back to non dialect (from ``de_DE``
+to ``de``). If that does not exist either, it falls back to ``default``
+
+If this is not set creating a template directory will only happen if no custom
+``skeletondirectory`` is defined, otherwise the shipped templates will be used
+to create a template directory for the user.
+
+User session
+------------
+
 
 ::
 
@@ -454,36 +483,6 @@ admin wants to avoid users entering their credentials to the system if the SSO
 app is unavailable.
 
 This will show an error. But the direct login still works with adding ?direct=1
-
-::
-
-	'skeletondirectory' => '/path/to/nextcloud/core/skeleton',
-
-The directory where the skeleton files are located. These files will be
-copied to the data directory of new users. Leave empty to not copy any
-skeleton files.
-
-``{lang}`` can be used as a placeholder for the language of the user.
-If the directory does not exist, it falls back to non dialect (from ``de_DE``
-to ``de``). If that does not exist either, it falls back to ``default``
-
-Defaults to ``core/skeleton`` in the Nextcloud directory.
-
-::
-
-	'templatedirectory' => '/path/to/nextcloud/templates',
-
-The directory where the template files are located. These files will be
-copied to the template directory of new users. Leave empty to not copy any
-template files.
-
-``{lang}`` can be used as a placeholder for the language of the user.
-If the directory does not exist, it falls back to non dialect (from ``de_DE``
-to ``de``). If that does not exist either, it falls back to ``default``
-
-If this is not set creating a template directory will only happen if no custom
-``skeletondirectory`` is defined, otherwise the shipped templates will be used
-to create a template directory for the user.
 
 ::
 
@@ -1232,6 +1231,18 @@ Options for the Apps folder, Apps store, and App code checker.
 
 ::
 
+	'defaultapp' => 'dashboard,files',
+
+Set the default app to open on login. Use the app names as they appear in the
+URL after clicking them in the Apps menu, such as documents, calendar, and
+gallery. You can use a comma-separated list of app names, so if the first
+app is not enabled for a user then Nextcloud will try the second one, and so
+on. If no enabled apps are found it defaults to the dashboard app.
+
+Defaults to ``dashboard,files``
+
+::
+
 	'appstoreenabled' => true,
 
 When enabled, admins may install apps from the Nextcloud app store.
@@ -1545,6 +1556,16 @@ This is e.g. used for activity expiration, suspicious login training and update 
 A value of 1 e.g. will only run these background jobs between 01:00am UTC and 05:00am UTC.
 
 Defaults to ``100`` which disables the feature
+
+::
+
+	'ldap_log_file' => '',
+
+Log all LDAP requests into a file
+
+Warning: This heavily decreases the performance of the server and is only
+meant to debug/profile the LDAP interaction manually.
+Also, it might log sensitive data into a plain text file.
 
 SSL
 ---
@@ -2299,13 +2320,6 @@ Defaults to ``false``
 
 ::
 
-	'secret' => '',
-
-Secret used by Nextcloud for various purposes, e.g. to encrypt data. If you
-lose this string there will be data corruption.
-
-::
-
 	'trusted_proxies' => ['203.0.113.45', '198.51.100.128', '192.168.2.0/24'],
 
 List of trusted proxy servers
@@ -2540,16 +2554,6 @@ Log all redis requests into a file
 
 Warning: This heavily decreases the performance of the server and is only
 meant to debug/profile the redis interaction manually.
-Also, it might log sensitive data into a plain text file.
-
-::
-
-	'ldap_log_file' => '',
-
-Log all LDAP requests into a file
-
-Warning: This heavily decreases the performance of the server and is only
-meant to debug/profile the LDAP interaction manually.
 Also, it might log sensitive data into a plain text file.
 
 ::
