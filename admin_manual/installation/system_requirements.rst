@@ -22,7 +22,7 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - openSUSE Leap 15.4                                                  |
 |                  | - CentOS Stream                                                       |
 +------------------+-----------------------------------------------------------------------+
-| Database         | - **MySQL 8.0+ or MariaDB 10.3/10.4/10.5/10.6** (recommended)         |
+| Database         | - **MySQL 8.0+** or MariaDB 10.3/10.4/10.5/**10.6** (recommended)     |
 |                  | - Oracle Database 11g (*only as part of an enterprise subscription*)  |
 |                  | - PostgreSQL 10/11/12/13/14/15                                        |
 |                  | - SQLite (*only recommended for testing and minimal-instances*)       |
@@ -31,8 +31,8 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - nginx with ``php-fpm``                                              |
 +------------------+-----------------------------------------------------------------------+
 | PHP Runtime      | - 8.0 (*deprecated*)                                                  |
-|                  | - **8.1** (*recommended*)                                             |
-|                  | - 8.2                                                                 |
+|                  | - 8.1                                                                 |
+|                  | - **8.2** (*recommended*)                                             |
 +------------------+-----------------------------------------------------------------------+
 
 See :doc:`source_installation` for minimum PHP-modules and additional software for installing Nextcloud.
