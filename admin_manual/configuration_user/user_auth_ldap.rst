@@ -235,11 +235,12 @@ working connection. This provides controls to disable the current
 configuration,
 configure replica hosts, and various performance-enhancing options.
 
-The Advanced Settings are structured into three parts:
+The Advanced Settings are structured into four parts:
 
 * Connection Settings
 * Directory Settings
 * Special Attributes
+* User Profile Attributes
 
 Connection settings
 ^^^^^^^^^^^^^^^^^^^
@@ -465,6 +466,80 @@ In new Nextcloud installations the home folder rule is enforced. This means that
 In migrated Nextcloud installations the old behavior still applies, which is using the Nextcloud username as the home folder when an LDAP attribute is not set. You may change this enforcing the home folder rule with the ``occ`` command in Nextcloud, like this example on Ubuntu::
 
   sudo -u www-data php occ config:app:set user_ldap enforce_home_folder_naming_rule --value=1
+
+.. _LDAP_User_Profile_Attributes:
+
+User Profile attributes
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: ../images/ldap-advanced-4-attributes.png
+   :alt: User Profile Attributes.
+
+After configuring those attributes, the User Profile data will be overwritten with the according data from LDAP.  The checksum of data from LDAP will be stored in user settings ``user_ldap``, ``lastProfileChecksum`` and profile update is skipped as long as data from LDAP doesn't change.  If ``memcache.distributed`` is enabled in ``config.php`` the checksum will be cached and the checking will be skipped, as long as the cached value exists (expires after ``ldapCacheTTL`` seconds).
+
+Please be aware:
+  - The user can change the data in profile, but it will get overwritten if changed in LDAP
+  - The user can change the visibility scope in profile
+  - The default visibility can be adjusted with setting the ``account_manager.default_property_scope`` array in ``config.php``
+  - If multiple attribute values are present, only the first distributed value is used
+  - All user profile properties are limited to 2048 character
+  - Having misformatted data in LDAP will most probably leave you with empty user profile fields
+  - Setting the global ``profile.enabled => false`` on ``config.php`` skips the code
+
+By calling ``php occ ldap:check-user --update <uid>`` the users data from LDAP will be displayed and the profile gets updated. To get the correct ``<uid>`` value for any user you can use ``php occ user:list``.
+
+.. note:: After unsetting an attribute name here, the data won't be deleted from user profile. Setting an nonexisting attribute will empty the corresponding profile field.
+
+Phone Field:
+  The LDAP Attribute holding the phone number, to copy to the Profile Phone field.
+  The phone number has to be formatted in international syntax without delimiters (E.164).
+  Be sure to format phone numbers like ``+4966612345678``.
+
+  * Example: *telephoneNumber*
+  * Example: *mobile*
+
+.. note:: You should set your ``default_phone_region`` in ``config.php``.
+
+Website Field:
+  The LDAP attribute holding the website URI.
+  The URI must start with ``https://`` or ``http://`` others are currently not allowed in Nextcloud user profile.
+  If using ``labeledURI`` attributes the label (everything after first SPACE) gets removed.
+
+  * Example: *wWWHomePage*
+  * Example: *labeledURI*
+
+Address Field:
+  The LDAP attribute holding the users address. Named Location on user profile page.
+  Nextcloud wants a single line value like ``city, country`` or ``somewhere under the loving sun``.
+  Multi line postalAddress format will get reformatted, DOLLAR sign delimiter gets replaced with COMMA+SPACE.
+
+  * Example: *postalAddress*
+  * Example: *localityName*
+
+Twitter Field:
+  The LDAP attribute holding the Twitter account name.
+
+Fediverse Field:
+  The LDAP attribute holding the users Fediverse address.
+
+Organisation Field:
+  The LDAP attribute holding the Organisation name.
+
+  * Example: *company*
+  * Example: *o* or *organizationName*
+
+Role Field:
+  The LDAP attribute holding the organizational role, within the organisation or job title.
+
+  * Example: *title*
+
+Headline Field:
+  The LDAP attribute holding the users headline.
+
+Biography Field:
+  The LDAP attribute holding the users about i.e. short biography.
+  Multi line value with unix LF line ending.
+  Windows CRLF and Macintosh CR line endings will be replaced with unix LF line ending.
 
 Expert settings
 ---------------
