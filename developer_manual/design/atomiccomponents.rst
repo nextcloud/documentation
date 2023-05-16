@@ -255,19 +255,6 @@ When referring to a user inline in your app, a user bubble element can be used. 
 
 .. _Tooltips:
 
-Tooltips
---------
-
-.. image:: ../images/tooltip.png
-   :alt: Tooltip in Files
-
-
-Tooltips are small elements which appear on hover and contain information about the element. Although not necessary for every action or item on the screen, tooltips are great for providing extra information or when an element is too small for the text contained in it.
-
-Using many tooltips is not advised, and if your app does this, possibly consider instead using text labels for icons, reducing the number of actions, or if the info in the tooltip is needed at all. 
-
-`The tooltip Vue component can be found here as a directive <https://nextcloud-vue-components.netlify.app/#/Directives>`_.
-
 .. _Empty content:
 
 Empty content
