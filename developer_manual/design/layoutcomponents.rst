@@ -13,7 +13,7 @@ Navigation
 
 The left navigation provides a way for users to move around different sections of your app.
 
-`Vue component for the app navigation <https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/AppNavigation?id=appnavigation-1>`_.
+`Vue component for the app navigation <https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/NcAppNavigation?id=ncappnavigation-1>`_.
 
 The navigation consists of 4 main elements:
 
@@ -62,7 +62,7 @@ Top-level navigation entries ideally have a suitable icon left next to them. Opt
 
 A sublevel of navigation is possible, but can lead to entries being hard to discover. It is only advised if there is actually a hierarchy like for folders in Mail or News.
 
-`Navigation entries Vue component <https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/AppNavigation?id=appnavigationitem>`_.
+`Navigation entries Vue component <https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/NcAppNavigation?id=ncappnavigationitem>`_.
 
 New item element
 ^^^^^^^^^^^^^^^^
@@ -78,7 +78,7 @@ Users can easily create a new item with a suitable name by using the new item el
 * "Add mailbox" in Mail
 * "New calendar" in Calendar
 
-`New item Vue component <https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/AppNavigation?id=appnavigationnewitem>`_.
+`New item Vue component <https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/NcAppNavigation?id=ncappnavigationnewitem>`_.
 
 .. _Settings:
 
@@ -94,7 +94,7 @@ The user-specific settings for your app may be shown in a settings modal, which 
 You can also include a "Help" as an entry in the settings of your app and provide some simple information about your app and how to use it. Some apps like Talk and Mail also include keyboard shortcuts, if they are not disabled by the user.
 The global javascript function ``OCP.Accessibility.disableKeyboardShortcuts()`` can be used to check that.
 
-`Settings Vue component <https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/AppNavigation?id=appnavigationsettings>`_.
+`Settings Vue component <https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/NcAppNavigation?id=ncappnavigationsettings>`_.
 
 Also see: :ref:`Modal`
 
@@ -114,7 +114,7 @@ List items can be used to display a collection of elements from which one can be
 * an :ref:`Action menu` which has commonly used actions for that type of item
 * a counter bubble: Talk for example uses an unread messages counter
 
-`List item Vue component <https://nextcloud-vue-components.netlify.app/#/Components/List%20items>`_.
+`List item Vue component <https://nextcloud-vue-components.netlify.app/#/Components/NcListItems>`_.
 
 .. _Content:
 
@@ -151,7 +151,7 @@ Sidebar
 
 Details of a particular entry in your content, as well as some actions associated with it, are shown in the right sidebar. In apps where the sidebar is used, it only opens when required. The sidebar is never used in the 3-column layout (Navigation + list + content). It contains the main information and sometimes a preview of the selected item, as well as a maximum of 3 possible tabs.
 
-`Sidebar Vue component <https://nextcloud-vue-components.netlify.app/#/Components/App%20containers?id=appsidebar>`_.
+`Sidebar Vue component <https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/NcAppSidebar?id=ncappsidebar-1>`_.
 
 Commonly used tabs in the sidebar are:
 
