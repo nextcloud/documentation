@@ -151,7 +151,7 @@ you shouldn't need to change it.
 
 ::
 
-	'dbtableprefix' => '',
+	'dbtableprefix' => 'oc_',
 
 Prefix for the Nextcloud tables in the database.
 
