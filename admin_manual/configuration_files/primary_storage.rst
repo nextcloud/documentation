@@ -213,7 +213,8 @@ Nextcloud supports server side encryption, also known as `SSE-C <http://docs.aws
 
 The key can be specified with the :code:`sse_c_key` parameter which needs to be provided as a base64 encoded string with a maximum length of 32 bytes. A random key could be generated using the the following command:
 
-:: 
+::
+
 	openssl rand 32 | base64
 
 
