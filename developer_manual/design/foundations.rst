@@ -19,7 +19,10 @@ While this is the primary color associated with Nextcloud and can be used to dra
 .. note:: 
 	 The primary color can be customized by admins through theming, but the default experience will be Nextcloud blue. If the primary color is themed to something very light like a shade of yellow, the text or header icons will be inverted to dark automatically.
 
-
+* On web: ``var(--color-primary-element)``
+* Android: uses default Material Design colors
+* iOS: `systemFill <https://developer.apple.com/documentation/uikit/uicolor/3255070-systemfill>`_
+* Desktop: `default Qt guidelines <https://doc.qt.io/qt-5/qpalette.html#ColorRole-enum>`_
 
 Background color
 ^^^^^^^^^^^^^^^^
@@ -40,7 +43,7 @@ Nextcloud apps have a light and a dark theme, with appropriately chosen colors f
 * On web: ``var(--color-main-background)``
 * Android: uses default Material Design colors
 * iOS: `systemBackground <https://developer.apple.com/documentation/uikit/uicolor/3173140-systembackground>`_
-* Desktop: default Qt guidelines
+* Desktop: `default Qt guidelines <https://doc.qt.io/qt-5/qpalette.html#ColorRole-enum>`_
 
 Text color
 ^^^^^^^^^^
@@ -61,7 +64,7 @@ This is the main color for the text in light theme, and in dark theme.
 * On web: ``var(--color-main-text)``
 * Android: uses default Material Design color "high emphasis"
 * iOS: `label <https://developer.apple.com/documentation/uikit/uicolor/3173131-label>`_ (in UITextView, leave the default textColor)
-* Desktop: default Qt guidelines
+* Desktop: `default Qt guidelines <https://doc.qt.io/qt-5/qpalette.html#ColorRole-enum>`_
 
 .. list-table::
 
