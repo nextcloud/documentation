@@ -10,6 +10,7 @@ Digging deeper
    debugging
    classloader
    continuous_integration
+   circles
    flow
    http_client
    javascript-apis
