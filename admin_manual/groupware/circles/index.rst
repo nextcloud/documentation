@@ -13,4 +13,3 @@ Circles is a Nextcloud App that allow Nextcloud users to generate their own grou
     configuration
     federated_overview
     occ_commands
-    federated_advanced

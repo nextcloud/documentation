@@ -21,25 +21,25 @@ The user that created the Circle is the first and only Member and will have Owne
 
 - add/remove Members,
 - edit members' Levels,
-- change the settings of the Circle,
-- change its configuration
+- change the settings of the Circle (like name, description, or limit the number of members),
+- change its configuration (like making it (in-)visible, or allowing federation)
 
 .. _app_overview_type_circles:
 
 The configuration is done by enabling/disabling some flags that define the way other people view and join the Circle:
 
- - **Visible** (8): Visible to everyone, if not visible, people have to know its name to be able to find
+ - **Visible** (8): Visible to everyone, if not visible, people have to know the Circle's name to be able to find
    it.
 
  - **Open** (16): Circle is open, people can join it.
 
- - **Invite** (32): Adding a Member generate an invitation that needs to be accepted.
+ - **Invite** (32): Adding a Member generates an invitation that needs to be accepted.
 
  - **Request** (64): A request to join the Circle needs to be validated by a Moderator.
 
- - **Friend** (128): Members of the Circle can invite their friends.
+ - **Friend** (128): Members of the Circle can invite their colleagues.
 
- - **Password Protected** (256): a Password is required to join or request to join the Circle.
+ - **Password Protected** (256): A password is required to join or request to join the Circle.
 
  - **Federated** (8192): Circle is Federated. (cf. :doc:`federated_overview`)
 
@@ -54,7 +54,7 @@ Mixed, those flags can generate some interesting configurations:
  - **Request** + **Friend**: No one can join the Circle, but all members can request a moderator to accept
    new members.
 
- - **Friend** + **Invite**: No one can join the Circle, but all members can add new member. An invitation
+ - **Friend** + **Invite**: No one can join the Circle, but all members can add new members. An invitation
    will be generated.
 
  - **Friend** + **Invite** + **Request**: No one can join the Circle, but all members can request a moderator
