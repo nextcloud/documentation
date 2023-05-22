@@ -23,10 +23,10 @@ Critical changes
 * PHP 8.2 is now supported.
 * The recommended webserver configuration has changed to no longer include a default redirect to the login page
     * For Apache this change will automatically come with the ``.htaccess`` file provided by the release
-    * for nginx administrators should ensure that their config is up to date with the `documentation <https://docs.nextcloud.com/server/latest/admin_manual/installation/nginx.html>`_
+    * for nginx administrators should ensure that their config is up to date with the `documentation <https://docs.nextcloud.com/server/27/admin_manual/installation/nginx.html>`_
         * The relevant lines to remove are ``error_page 403 /core/templates/403.php;`` and ``error_page 404 /core/templates/404.php;``
 
-You can find important documentation for app developers here: https://docs.nextcloud.com/server/latest/developer_manual/app_publishing_maintenance/app_upgrade_guide/index.html
+You can find important documentation for app developers here: https://docs.nextcloud.com/server/27/developer_manual/app_publishing_maintenance/app_upgrade_guide/index.html
 Each document lists a link to the breaking changes of the corresponding release.
 
 .. TODO ON RELEASE: Update version number above on release

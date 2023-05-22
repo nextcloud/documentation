@@ -18,7 +18,7 @@ This can be done by following these steps:
 3. Enter your server URL, username and password. If you have enabled two
    factor authentification, you need to generate an app-password/token, because GNOME Online Accounts
    `doesn't support Nextcloud's webflow login yet <https://gitlab.gnome.org/GNOME/gnome-online-accounts/issues/81>`_
-   (`Learn more <https://docs.nextcloud.com/server/latest/user_manual/session_management.html#managing-devices>`_):
+   (`Learn more <https://docs.nextcloud.com/server/27/user_manual/session_management.html#managing-devices>`_):
 
 .. TODO ON RELEASE: Update version number above on release
 

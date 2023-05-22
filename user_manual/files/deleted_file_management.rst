@@ -56,6 +56,6 @@ Nextcloud will permanently delete those trashed files with the soonest expiratio
 until the space limit is met again.
 
 .. note:: Your administrator may have configured the trash bin retention period
-   to override the storage space management. See `admin documentation <https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#deleted-items-trash-bin>`_ for more details.
+   to override the storage space management. See `admin documentation <https://docs.nextcloud.com/server/27/admin_manual/configuration_server/config_sample_php_parameters.html#deleted-items-trash-bin>`_ for more details.
 
 .. TODO ON RELEASE: Update version number above on release

@@ -47,7 +47,7 @@ Admin audit logging
 
 If you want to log things less for system administration but for compliance reasons, e.g. who accessed which file,
 who changed the password of an item or made it public, the
-`admin audit log <https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/logging_configuration.html#admin-audit-log>`_
+`admin audit log <https://docs.nextcloud.com/server/27/admin_manual/configuration_server/logging_configuration.html#admin-audit-log>`_
 is the correct place.
 
 .. TODO ON RELEASE: Update version number above on release
