@@ -385,6 +385,8 @@ does not match the actual data stored in the user's ``data/$userId/files`` direc
    Metadata, versions, trashbin and encryption keys are not counted in the used space above.
    Please refer to the `quota documentation <https://docs.nextcloud.com/server/latest/user_manual/en/files/quota.html>`_ for details.
 
+.. TODO ON RELEASE: Update version number above on release
+
 Running the following command can help fix the sizes and quota for a given user::
 
  sudo -u www-data php occ files:scan -vvv <user-id>
