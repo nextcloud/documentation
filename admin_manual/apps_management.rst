@@ -30,7 +30,7 @@ have an **Featured**-tag. See :doc:`installation/apps_supported` for a list of s
           and custom consulting for supported apps, contact our `sales team <https://nextcloud.com/enterprise/>`_.
 
 .. note:: If you would like to develop your own Nextcloud app, you can find out
-          more information in our `developer manual <https://docs.nextcloud.com/server/latest/go.php?to=developer-manual>`_.
+          more information in our `developer manual <https://docs.nextcloud.com/server/27/go.php?to=developer-manual>`_.
 .. TODO ON RELEASE: Update version number above on release
 
 All apps must be licensed under AGPLv3+ or any compatible license.

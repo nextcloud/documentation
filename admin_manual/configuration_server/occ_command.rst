@@ -834,7 +834,7 @@ The command line option ``--transfer-incoming-shares`` overwrites the config.php
  sudo -u www-data php occ files:transfer-ownership --transfer-incoming-shares=0 <source-user> <destination-user>
 
 Users may also transfer files or folders selectively by themselves.
-See `user documentation <https://docs.nextcloud.com/server/latest/user_manual/en/files/transfer_ownership.html>`_ for details.
+See `user documentation <https://docs.nextcloud.com/server/27/user_manual/en/files/transfer_ownership.html>`_ for details.
 
 .. TODO ON RELEASE: Update version number above on release
 
@@ -905,7 +905,7 @@ Verify your app::
   sudo -u www-data php occ integrity:check-app --path=/pathto/app appname
 
 When it returns nothing, your app is signed correctly. When it returns a message then there is an error. See `Code Signing
-<https://docs.nextcloud.com/server/latest/developer_manual/app_publishing_maintenance/code_signing.html#how-to-get-your-app-signed>`_ in the Developer manual for more detailed information.
+<https://docs.nextcloud.com/server/27/developer_manual/app_publishing_maintenance/code_signing.html#how-to-get-your-app-signed>`_ in the Developer manual for more detailed information.
 
 .. TODO ON RELEASE: Update version number above on release
 

@@ -13,7 +13,7 @@ ownerships of those transferred files/folders will also be transferred.
 #. Click on *Transfer*.
 
 	.. note:: The username autocompletion or listing may be limited due to administrative visibility configuration.
-	   See `administrator documentation <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/file_sharing_configuration.html>`_ for details.
+	   See `administrator documentation <https://docs.nextcloud.com/server/27/admin_manual/configuration_files/file_sharing_configuration.html>`_ for details.
 
 .. TODO ON RELEASE: Update version number above on release
 
