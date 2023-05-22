@@ -112,6 +112,8 @@ to the following to re-allow file uploads:
 
 See `issue #8802 on nextcloud/server <https://github.com/nextcloud/server/issues/8802>` for more information.
 
+Other parameters besides the above are relevant to uploading large files (see :doc:`../configuration_files/big_file_upload_configuration`).
+
 Login loop without any clue in access.log, error.log, nor nextcloud.log
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
