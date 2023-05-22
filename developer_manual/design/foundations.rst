@@ -87,28 +87,33 @@ Status and indicators
 
 .. list-table::
 
-    * - .. figure:: ../images/colour-success.svg
+    * - .. figure:: ../images/color-info.svg
+
+           Info: #006AA3
+
+      - .. figure:: ../images/color-success.svg
 
            Success: #46BA61
 
-      - .. figure:: ../images/colour-error.svg
+      - .. figure:: ../images/color-error.svg
 
            Error: #E9322D
 
-      - .. figure:: ../images/colour-warning.svg
+      - .. figure:: ../images/color-warning.svg
 
            Warning: #ECA700
 
-Interface elements associated with a status like success, error, or warning may also be colored to communicate the action better.
+Interface elements associated with a status like info, success, error, or warning may also be colored to communicate the action better.
 
 While interface elements like buttons are colored differently depending on their action, the color of the text in that element is almost always either of the main text colors, that is light or dark.
 
 
 * On web:
 
-  * Success colour: ``var(--color-success)``
-  * Warning colour: ``var(--color-warning)``
-  * Error colour: ``var(--color-error)``
+  * Info color: ``var(--color-info)``
+  * Success color: ``var(--color-success)``
+  * Warning color: ``var(--color-warning)``
+  * Error color: ``var(--color-error)``
 
 * Android: Material Design guidelines
 * iOS: `Apple HIG colors <https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/>`_
