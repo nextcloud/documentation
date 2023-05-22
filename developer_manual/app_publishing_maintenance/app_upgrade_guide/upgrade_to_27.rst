@@ -25,8 +25,7 @@ Front-end changes
 Added APIs
 ^^^^^^^^^^
 
-* Files Router API https://github.com/nextcloud/server/pull/37824
-  Allows you to control the files router service and update views, querys or param without page reload
+* A new Files Router API allows you to control the files router service and update views, querys or param without page reload (`nextcloud/server#37824 <https://github.com/nextcloud/server/pull/37824>`_)
 
   .. code-block:: js
 
