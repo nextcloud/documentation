@@ -57,7 +57,7 @@ Added APIs
 Deprecated APIs
 ^^^^^^^^^^^^^^^
 
-* ``\OCP\AppFramework\Utility\ITimeFactory::getTime()`` and ``\OCP\AppFramework\Utility\ITimeFactory::getDateTime()`` were deprecated, because the interface is now a  is now a ``\PSR\Clock\ClockInterface`` following the `PSR-20standard <https://www.php-fig.org/psr/psr-20/#21-clockinterface>`_. (`nextcloud/server#35872 <https://github.com/nextcloud/server/pull/35872>`_)
+* ``\OCP\AppFramework\Utility\ITimeFactory::getTime()`` and ``\OCP\AppFramework\Utility\ITimeFactory::getDateTime()`` were deprecated, because the interface is now a ``\PSR\Clock\ClockInterface`` following the `PSR-20standard <https://www.php-fig.org/psr/psr-20/#21-clockinterface>`_. (`nextcloud/server#35872 <https://github.com/nextcloud/server/pull/35872>`_)
 * ``\OCP\GroupInterface::usersInGroup()`` is deprecated in favor of newly added ``\OCP\Group\Backend\ISearchableGroupBackend`` interface. (`nextcloud/server#32866 <https://github.com/nextcloud/server/pull/32866>`_)
 
 Removed APIs
