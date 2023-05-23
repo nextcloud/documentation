@@ -1424,6 +1424,12 @@ See https://github.com/h2non/imaginary
 
 ::
 
+	'preview_imaginary_key' => 'secret',
+
+If you want set a api key for imaginary.
+
+::
+
 	'enabledPreviewProviders' => [
 		'OC\Preview\PNG',
 		'OC\Preview\JPEG',
