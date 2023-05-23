@@ -25,13 +25,7 @@ Front-end changes
 Added APIs
 ^^^^^^^^^^
 
-* A new Files Router API allows you to control the files router service and update views, querys or param without page reload (`nextcloud/server#37824 <https://github.com/nextcloud/server/pull/37824>`_)
-
-  .. code-block:: js
-
-    // https://github.com/nextcloud/server/blob/master/apps/files/src/services/RouterService.ts
-    OCP.Files.Router.goTo('/trashbin?dir=/Unsplash.d1680193199')
-    OCP.Files.Router.goToRoute('fileslist', { view: 'files' }, { dir: '/Folders/Group folder' })
+* A new Files Router API allows you to control the files router service and update views, querys or param without page reload. See :ref:`FilesAPI`
 
 Back-end changes
 ----------------
