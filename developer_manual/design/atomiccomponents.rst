@@ -77,7 +77,7 @@ It is important to keep the action menu simple and its length at a minimum. Too 
 
 In most cases the action menu is accessed through a 3-dot menu. In certain cases, it is better to use a specific icon instead of the generic 3-dot icon. For example in Talk a paperclip icon is used for accessing the action menu for attaching an item, and a heading icon is used in Text formatting bar for heading level selection.
 
-`Action menu Vue component <https://nextcloud-vue-components.netlify.app/#/Components/Actions>`_.
+`Action menu Vue component <https://nextcloud-vue-components.netlify.app/#/Components/NcActions>`_.
 
 For Android and iOS, the action menu is generally opened as a bottom sheet.
 
@@ -113,7 +113,7 @@ Although not always necessary, it is generally a good idea to have a default ite
 
 Another variation of the dropdown allows the user to find their preferred option by typing it in, like in Mail where the "To" field in the composer allows you to type an email address, and as you type it shows a dropdown with the results matching the input. This kind of dropdown is useful for when there are many options and the user would already know what they are looking for. It can also be a good idea to allow new inputs if there are no matches.
 
-`Dropdown Vue component <https://nextcloud-vue-components.netlify.app/#/Components/Multiselect>`_.
+`Dropdown Vue component <https://nextcloud-vue-components.netlify.app/#/Components/NcSelect>`_.
 
 .. _Checkboxes and radio buttons:
 
@@ -132,7 +132,7 @@ Checkboxes and radio buttons are very common input methods. They are most common
 
 They should have a concise label, especially if they are inside an action menu. If more explanation is needed, you can also add a subline. 
 
-`Checkbox and radio button Vue components <https://nextcloud-vue-components.netlify.app/#/Components/CheckboxRadioSwitch>`_.
+`Checkbox and radio button Vue components <https://nextcloud-vue-components.netlify.app/#/Components/NcCheckboxRadioSwitch>`_.
 
 Pickers
 -------
@@ -149,7 +149,7 @@ Datetime picker
 
 A user can quickly select dates, times and date ranges using the datetime picker. Use good default dates relevant to the task at hand. For example, in the case of setting an expiration date, unless the server has something enforced as default, 1 week is a good default. 
 
-`Datetime picker Vue component <https://nextcloud-vue-components.netlify.app/#/Components/Pickers?id=datetimepicker>`_.
+`Datetime picker Vue component <https://nextcloud-vue-components.netlify.app/#/Components/NcPickers?id=ncdatetimepicker>`_.
 
 .. _Color picker:
 
@@ -163,9 +163,9 @@ Color picker
 
 For certain elements of your UI you might want to allow people to set colors. This can easily be achieved using a color picker with some predefined colors. Be cautious about using different colors in the UI. In most Nextcloud apps like Deck and Calendar, user defined colors for UI elements are used sparingly and shown as a circle next to the element they refer to. 
 
-`Color picker Vue component <https://nextcloud-vue-components.netlify.app/#/Components/Pickers?id=colorpicker>`_.
+`Color picker Vue component <https://nextcloud-vue-components.netlify.app/#/Components/NcPickers?id=nccolorpicker>`_.
 
-In addition to these 2 pickers, there is also the `emoji picker <https://nextcloud-vue-components.netlify.app/#/Components/Pickers?id=emojipicker>`_ and the `timezone picker <https://nextcloud-vue-components.netlify.app/#/Components/Pickers?id=timezonepicker>`_ which can be also be used in your app. 
+In addition to these 2 pickers, there is also the `emoji picker <https://nextcloud-vue-components.netlify.app/#/Components/NcPickers?id=ncemojipicker>`_ and the `timezone picker <https://nextcloud-vue-components.netlify.app/#/Components/NcPickers?id=nctimezonepicker>`_ which can be also be used in your app. 
 
 .. _Tags:
 
@@ -199,7 +199,7 @@ Examples of modals are:
 * Move or copy dialog in Files
 * the file picker in Mail and Talk
 
-`Modal Vue component <https://nextcloud-vue-components.netlify.app/#/Components/Modal>`_. 
+`Modal Vue component <https://nextcloud-vue-components.netlify.app/#/Components/NcModal>`_. 
 
 On Android and iOS, content which is in a modal would usually be shown as a full-screen overlay, like for example composing a new mail in `iOS Mail <https://developer.apple.com/documentation/messageui/mfmailcomposeviewcontroller>`_.
 
@@ -218,7 +218,7 @@ When using an avatar it is usually accompanied by the name of the user as well, 
 
 When multiple people are working on or are assigned to the same element, like in Text, Office, a Deck card, or in the Files list for sharing, they are shown as overlapped.
 
-`Avatar Vue component <https://nextcloud-vue-components.netlify.app/#/Components/Avatar>`_.
+`Avatar Vue component <https://nextcloud-vue-components.netlify.app/#/Components/NcAvatar>`_.
 
 
 .. _Progress bars and meters:
@@ -238,7 +238,7 @@ Progress bars shows progress for a potentially lengthy process such as uploading
 
 The progress bar component is also sometimes used as a meter to visualize data as seen in the settings for Files to show the quota.
 
-`Progress bar Vue component <https://nextcloud-vue-components.netlify.app/#/Components/ProgressBar>`_.
+`Progress bar Vue component <https://nextcloud-vue-components.netlify.app/#/Components/NcProgressBar>`_.
 
 .. _User bubbles:
 
@@ -251,7 +251,7 @@ User bubbles
 
 When referring to a user inline in your app, a user bubble element can be used. In Talk and Comments, user bubbles are used in the content when someone mentions a user. In Mail, it is used in the header for the recipients of the message. 
 
-`User bubble Vue component <https://nextcloud-vue-components.netlify.app/#/Components/UserBubble>`_.
+`User bubble Vue component <https://nextcloud-vue-components.netlify.app/#/Components/NcUserBubble>`_.
 
 .. _Tooltips:
 
@@ -268,7 +268,7 @@ The empty content state provides feedback that a view is empty, e.g. a new folde
 
 Make sure that empty content views only show when the view is really empty, and not while it is loading – otherwise people will be shocked as to where their data is gone. The wording on the empty content view should be friendly and helping people out of the situation, for example in the Bookmarks app.
 
-`Empty content component <https://nextcloud-vue-components.netlify.app/#/Components/EmptyContent>`_.
+`Empty content component <https://nextcloud-vue-components.netlify.app/#/Components/NcEmptyContent>`_.
 
 .. _Skeleton screens:
 
