@@ -259,6 +259,19 @@ User bubbles
 
 When referring to a user inline in your app, a user bubble element can be used. In Talk and Comments, user bubbles are used in the content when someone mentions a user. In Mail, it is used in the header for the recipients of the message. 
 
+.. _Counter bubbles:
+
+Counter bubbles
+------------
+
+`Counter bubble Vue component <https://nextcloud-vue-components.netlify.app/#/Components/NcCounterBubble>`_.
+`Penpot counter bubbles <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=7&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
+
+.. image:: ../images/talk-counter-bubble.png
+   :alt: Talk counter bubble
+
+In Talk, it is used for showing which chats are unread and if you or your group is mentioned. 
+
 .. _Empty content:
 
 Empty content
