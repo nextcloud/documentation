@@ -7,6 +7,7 @@ Buttons
 -------
 
 `Buttons Vue component <https://nextcloud-vue-components.netlify.app/#/Components/NcButton>`_.
+`Penpot buttons <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=0&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
 
 Buttons are used to initiate actions in your app. This may be a primary action, or it may be used to confirm an action in a dialog, or simply be used for any major action in your app.
 
@@ -44,6 +45,7 @@ Action menu
 -----------
 
 `Action menu Vue component <https://nextcloud-vue-components.netlify.app/#/Components/NcActions>`_.
+`Penpot action menu <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=4&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
 
 .. image:: ../images/action-menu.png
    :alt: Files action menu
@@ -88,6 +90,7 @@ Input fields
 ------------
 
 `Input field Vue component <https://nextcloud-vue-components.netlify.app/#/Components/NcFields?id=ncinputfield>`_.
+`Penpot text fields <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=2&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
 
 .. _Text input:
 
@@ -108,6 +111,7 @@ Dropdowns
 ^^^^^^^^^ 
 
 `Dropdown Vue component <https://nextcloud-vue-components.netlify.app/#/Components/NcSelect>`_.
+`Penpot dropdowns <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=1&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
 
 .. image:: ../images/dropdown-find-as-you-type.gif
    :alt: Dropdown menu in settings
@@ -124,6 +128,7 @@ Checkboxes and radio buttons
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 `Checkbox and radio button Vue components <https://nextcloud-vue-components.netlify.app/#/Components/NcCheckboxRadioSwitch>`_.
+`Penpot checkboxes and radio buttons <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=5&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
 
 .. image:: ../images/checkboxes-settings.png
    :alt: Checkbox in Talk settings
@@ -184,6 +189,7 @@ Modal
 -----
 
 `Modal Vue component <https://nextcloud-vue-components.netlify.app/#/Components/NcModal>`_. 
+`Penpot modals <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=12&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
 
 .. image:: ../images/deck-card-modal.png
    :alt: Deck card modal
@@ -210,6 +216,7 @@ Avatar
 ------
 
 `Avatar Vue component <https://nextcloud-vue-components.netlify.app/#/Components/NcAvatar>`_.
+`Penpot avatars <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=3&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
 
 .. image:: ../images/avatar-talk.gif
    :alt: Avatars in Talk
@@ -244,6 +251,7 @@ User bubbles
 ------------
 
 `User bubble Vue component <https://nextcloud-vue-components.netlify.app/#/Components/NcUserBubble>`_.
+`Penpot user bubbles <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=6&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
 
 .. image:: ../images/talk-user-bubble.png
    :alt: Talk user bubble
@@ -257,6 +265,7 @@ Empty content
 -------------
 
 `Empty content component <https://nextcloud-vue-components.netlify.app/#/Components/NcEmptyContent>`_.
+`Penpot empty content <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=10&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
 
 .. image:: ../images/empty-content.png
    :alt: Bookmarks empty content
