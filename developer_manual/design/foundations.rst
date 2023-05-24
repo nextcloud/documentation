@@ -4,8 +4,12 @@ Foundations
 
 There are several design elements that are common to all Nextcloud apps. If you are developing for a platform that has its own design specifications, for example Android, it would be a good idea to keep those in mind while designing your app.
 
+For web apps, there is the `Vue library <https://nextcloud-vue-components.netlify.app/>`_ and the `Penpot design kit <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=db3839da-807b-8052-8002-576401e9a376&section=interactions&index=0&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_.
+
 Color
 -----
+
+`Penpot colors <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab128f3ffe2&section=interactions&index=3&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
 
 Primary color
 ^^^^^^^^^^^^^
@@ -129,6 +133,8 @@ While interface elements like buttons are colored differently depending on their
 Typography
 ----------
 
+`Penpot typography <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab128f3ffe2&section=interactions&index=1&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
+
 To ensure compatibility with different platforms, Nextcloud apps always use the native system font.
 
 For legibility, make sure that the text in your content uses:
@@ -148,6 +154,8 @@ The text sizes for the different platforms are:
 
 Icons
 -----
+
+`Penpot icons <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab128f3ffe2&section=interactions&index=0&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
 
 .. image:: ../images/material-icons.png
    :alt: Material icons
