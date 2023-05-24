@@ -434,7 +434,7 @@ The ``myapp-reference.js`` file contains the widget registration:
 
 .. code-block:: javascript
 
-    import { registerWidget } from '@nextcloud/vue-richtext'
+    import { registerWidget } from '@nextcloud/vue/dist/Components/NcRichText.js'
     import Vue from 'vue'
     import MyCustomWidgetComponent from './MyCustomWidgetComponent.vue'
 
@@ -543,14 +543,14 @@ the Smart Picker will potentially by used in the frontend so you need to load th
 
 You can define your own picker user interface for your provider by registering a custom picker component.
 This can be done with the
-``registerCustomPickerElement`` function from ``@nextcloud/vue-richtext`` (>= 2.1.0-beta.5).
+``registerCustomPickerElement`` function from ``@nextcloud/vue/dist/Components/NcRichText.js``.
 This function takes 3 parameters:
 
 * The reference provider ID for which you register the custom picker component
 * The callback function to create and mount your component
 * The callback function to delete/destroy your component
 
-The creation callback must return a ``CustomPickerRenderResult`` object to which you have to give the DOM element
+The creation callback must return a ``NcCustomPickerRenderResult`` object to which you have to give the DOM element
 you just created and optionally an object (the Vue instance for example).
 This render result will be then be passed to the destroy callback to let you properly clean and delete your custom component.
 
@@ -558,7 +558,7 @@ To register a Vue component as a custom picker component:
 
 .. code-block:: javascript
 
-    import { registerCustomPickerElement, CustomPickerRenderResult } from '@nextcloud/vue-richtext'
+    import { registerCustomPickerElement, NcCustomPickerRenderResult } from '@nextcloud/vue/dist/Components/NcRichText.js'
     import Vue from 'vue'
     import MyCustomPickerElement from './MyCustomPickerElement.vue'
 
@@ -570,7 +570,7 @@ To register a Vue component as a custom picker component:
                 accessible,
             },
         }).$mount(el)
-        return new CustomPickerRenderResult(vueElement.$el, vueElement)
+        return new NcCustomPickerRenderResult(vueElement.$el, vueElement)
     }, (el, renderResult) => {
         // call the $destroy method on your custom element's Vue instance
         renderResult.object.$destroy()
@@ -582,8 +582,8 @@ To register anything else:
 
     import {
         registerCustomPickerElement,
-        CustomPickerRenderResult;
-    } from '@nextcloud/vue-richtext'
+        NcCustomPickerRenderResult,
+    } from '@nextcloud/vue/dist/Components/NcRichText.js'
 
     registerCustomPickerElement('REFERENCE_PROVIDER_ID', (el, { providerId, accessible }) => {
         const paragraph = document.createElement('p')
@@ -602,7 +602,7 @@ To register anything else:
             el.dispatchEvent(event)
         })
         el.append(button)
-        return new CustomPickerRenderResult(el)
+        return new NcCustomPickerRenderResult(el)
     }, (el, renderResult) => {
         renderResult.element.remove()
     })
