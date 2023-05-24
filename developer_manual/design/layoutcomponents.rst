@@ -8,7 +8,7 @@ Navigation
 
 `Vue component for the app navigation <https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/NcAppNavigation?id=ncappnavigation-1>`_.
 
-`Penpot Navigation Items <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=8&share-id=88d87192-d205-8007-8002-8d8d21a0dcca>`_
+`Penpot navigation items <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=8&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
 
 .. image:: ../images/contacts-navigation.png
    :alt: Contacts navigation
@@ -29,7 +29,7 @@ Main action button
 
 `Navigation AppNew Vue component <https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/NcAppNavigation?id=ncappnavigationnew>`_.
 
-`Penpot Buttons <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=0&share-id=88d87192-d205-8007-8002-8d8d21a0dcca>`_
+`Penpot buttons <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=0&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
 
 .. image:: ../images/mail-primary-action-button.png
    :alt: Mail primary action button.png
@@ -49,7 +49,7 @@ Navigation entries
 
 `Navigation entries Vue component <https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/NcAppNavigation?id=ncappnavigationitem>`_.
 
-`Penpot Navigation Items <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=8&share-id=88d87192-d205-8007-8002-8d8d21a0dcca>`_
+`Penpot navigation items <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=8&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
 
 https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=8&share-id=88d87192-d205-8007-8002-8d8d21a0dcca
 .. image:: ../images/mail-navigation-entries.png
@@ -95,7 +95,7 @@ Settings
 
 `Settings Vue component <https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/NcAppNavigation?id=ncappnavigationsettings>`_.
 
-`Penpot Modals <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=12&share-id=88d87192-d205-8007-8002-8d8d21a0dcca>`_
+`Penpot modals <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=12&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
 
 .. image:: ../images/talk-settings-modal.png
    :alt: Talk settings modal
@@ -115,7 +115,7 @@ List item
 
 `List item Vue component <https://nextcloud-vue-components.netlify.app/#/Components/NcListItems>`_.
 
-`Penpot List item <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=9&share-id=88d87192-d205-8007-8002-8d8d21a0dcca>`_
+`Penpot List item <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=9&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
 
 .. image:: ../images/list-item.gif
    :alt: Talk list
@@ -162,7 +162,7 @@ Sidebar
 
 `Sidebar Vue component <https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/NcAppSidebar?id=ncappsidebar-1>`_.
 
-`Penpot Sidebar <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=11&share-id=88d87192-d205-8007-8002-8d8d21a0dcca>`_
+`Penpot sidebar <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=11&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
 
 Details of a particular entry in your content, as well as some actions associated with it, are shown in the right sidebar. In apps where the sidebar is used, it only opens when required. The sidebar is never used in the 3-column layout (Navigation + list + content). It contains the main information and sometimes a preview of the selected item, as well as a maximum of 3 possible tabs.
 
@@ -174,7 +174,7 @@ Details
 
 `Sidebar Tabs Vue component <https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/NcAppSidebar?id=ncappsidebartabs>`_.
 
-`Penpot Sidebar <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=11&share-id=88d87192-d205-8007-8002-8d8d21a0dcca>`_
+`Penpot sidebar <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=11&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
 
 .. image:: ../images/sidebar-details.png
    :alt: Details tab in Calendar sidebar
