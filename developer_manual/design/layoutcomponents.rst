@@ -115,7 +115,7 @@ List item
 
 `List item Vue component <https://nextcloud-vue-components.netlify.app/#/Components/NcListItems>`_.
 
-`Penpot List item <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=9&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
+`Penpot list item <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=9&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
 
 .. image:: ../images/list-item.gif
    :alt: Talk list
