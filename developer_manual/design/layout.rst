@@ -11,6 +11,7 @@ While deciding how you want your app to look, there are a number of factors to c
 * Typical interface patterns in other similar apps in the market
 
 The `content Vue component <https://nextcloud-vue-components.netlify.app/#/Components/App%20containers?id=ncappcontent>`_ wraps your entire app. While the arrangement of components in your app is dependent on what your app does, most Nextcloud apps typically have 3 levels of hierarchy. Some commonly used layouts are:
+`Penpot empty template https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=2783d7ad-98f2-804a-8002-750c2585d4f1&section=interactions&index=5&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5`_
 
 * Navigation → content → sidebar (and a couple of variations of it, e.g. without the sidebar)
 * Navigation → list → content
@@ -18,7 +19,7 @@ The `content Vue component <https://nextcloud-vue-components.netlify.app/#/Compo
 Navigation → Content → Sidebar
 ------------------------------
 
-`Penpot Files Layout <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=2783d7ad-98f2-804a-8002-750c2585d4f1&section=interactions&index=3&share-id=11fde340-21f4-802e-8002-8eb4245e04b7>`_
+`Penpot Files layout <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=2783d7ad-98f2-804a-8002-750c2585d4f1&section=interactions&index=3&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
 
 .. image:: ../images/files-layout.png
    :alt: Files layout
@@ -47,7 +48,7 @@ Typically, a sidebar is used to show more information about an item. Sometimes t
 Special case: list in navigation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-`Penpot Talk Layout <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=2783d7ad-98f2-804a-8002-750c2585d4f1&section=interactions&index=0&share-id=11fde340-21f4-802e-8002-8eb4245e04b7>`_
+`Penpot Talk layout <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=2783d7ad-98f2-804a-8002-750c2585d4f1&section=interactions&index=0&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
 
 .. image:: ../images/talk-layout.png
    :alt: Talk layout
