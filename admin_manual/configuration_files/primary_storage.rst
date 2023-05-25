@@ -160,14 +160,15 @@ Minimum required parameters are:
 * :code:`secret`
 
 .. note:: You will *probably* need to specify additional parameters beyond these, unless the default 
-          values (see below) exactly match your situation.
+          values (see below) exactly match your situation. In particular, your :code:`region` (if Amazon 
+	  hosted) or :code:`hostname` (if non-Amazon hosted).
 
 Optional parameters most commonly needing adjustment (and their defaults values if left 
 unconfigured):
 
 * :code:`region` defaults to :code:`eu-west-1`
-* :code:`storageClass` defaults :code:`STANDARD`
-* :code:`hostname` defaults :code:`s3.REGION.amazonaws.com`
+* :code:`storageClass` defaults to :code:`STANDARD`
+* :code:`hostname` defaults to :code:`s3.REGION.amazonaws.com`
 * :code:`use_ssl` defaults to :code:`true`
 
 Optional parameters sometimes needing adjustment:
@@ -189,7 +190,7 @@ Optional parameters less commonly needing adjustment:
 **If you are using Amazon S3:** the :code:`region` parameter is required unless you're happy with 
 the default of :code:`eu-west-1`. There is no need to override the :code:`hostname` or :code:`port`. 
 And :code:`storageClass` only needs to be modified if you're using a different configuration at AWS. 
-Lastly, :code:`use_path_style` is is rarely required with Amazon, but some legacy Amazon datacenters 
+Lastly, :code:`use_path_style` is rarely required with Amazon, but some legacy Amazon datacenters 
 may require it.
 
 **If you using a non-Amazon hosted S3 store:** you will need to set the :code:`hostname` 
