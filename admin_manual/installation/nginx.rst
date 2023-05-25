@@ -110,7 +110,7 @@ to the following to re-allow file uploads:
 
     location ~ /\.(?!file).* {
 
-See `issue #8802 on nextcloud/server <https://github.com/nextcloud/server/issues/8802>` for more information.
+See `issue #8802 on nextcloud/server <https://github.com/nextcloud/server/issues/8802>`_ for more information.
 
 Login loop without any clue in access.log, error.log, nor nextcloud.log
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
