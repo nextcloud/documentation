@@ -6,7 +6,7 @@ Table of contents
     :maxdepth: 2
 
     index
-    release_notes
+    release_notes/index
     release_schedule
     installation/index
     configuration_server/index
