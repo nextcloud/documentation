@@ -6,6 +6,7 @@ System requirements
 -------------------
 
 * PHP8.2 is recommended over PHP8.1.
+* PHP8.0 is deprecated and will be removed in Nextcloud 28.
 
 Exposed system address book
 ---------------------------
