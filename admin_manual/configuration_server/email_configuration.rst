@@ -35,11 +35,10 @@ Configuring an SMTP server
 You need the following information from your mail server administrator to
 connect Nextcloud to a remote SMTP server:
 
-.. warning:: There were changes to the 3rd party mailer library:
+.. warning:: There were changes to the 3rd party mailer library in Nextcloud 26:
     
-    STARTTLS cannot be enforced. It will be used automatically if the mail server supports it.
-    The encryption type should be set to 'None' in this case. 
-    See :ref:`here<TLSPeerVerification>` for an example on how to configure self signed certificates
+    * STARTTLS cannot be enforced. It will be used automatically if the mail server supports it. The encryption type should be set to 'None' in this case. See :ref:`here<TLSPeerVerification>` for an example on how to configure self signed certificates.
+    * NTLM authentication for Microsoft Exchange is not supported by the new mailer library
 
 * Encryption type: None or SSL/TLS
 
