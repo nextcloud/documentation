@@ -147,7 +147,7 @@ For legibility, make sure that the text in your content uses:
 The text sizes for the different platforms are:
 
 
-* Web: 15px for main text and sublines, **20px bold** for headings
+* Web: 16px for main text and sublines, **20px bold** for headings
 * Android: 14sp for main text, 16sp for headings
 * iOS: values from `Dynamic Type Sizes, for size Large (Default) <https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/typography#dynamic-type-sizes>`_
 * Desktop: `default Qt guidelines <https://doc.qt.io/qt-5/qpalette.html#ColorRole-enum>`_
@@ -160,7 +160,7 @@ Icons
 .. image:: ../images/material-icons.png
    :alt: Material icons
 
-Icons can be used to communicate the intent of an action, or to provide visual interest to the screen. We use monochrome icons on all platforms: `Material Design icons (20 px default filled) <https://fonts.google.com/icons>`_ for web, Android, Windows and Linux, and `SF Symbols (default weight, scale and variant) <https://developer.apple.com/sf-symbols/>`_ for iOS and macOS.
+Icons can be used to communicate the intent of an action, or to provide visual interest to the screen. We use monochrome icons on all platforms: `Material Design icons (20 px default filled) <https://fonts.google.com/icons?icon.style=Filled&icon.set=Material+Icons>`_ for web, Android, Windows and Linux, and `SF Symbols (default weight, scale and variant) <https://developer.apple.com/sf-symbols/>`_ for iOS and macOS.
 
 This is except for the icon of the app itself, which can be a custom icon.
 
@@ -191,7 +191,9 @@ The wording and language in your app sets the tone and approachability of your a
 * Don’t write in ALL CAPS, as it is not as readable and comes off as shouting and aggressive. Also use Sentence case and not Capital Case, with the exception of product names like Nextcloud Talk, Nextcloud Hub, etc.
 * We are a community, so better write "We are happy to announce" instead of "I am happy to announce".
 * If your app content is empty, it can be helpful to add an engaging message. "Add or import your first bookmark!" is much nicer than "No bookmarks yet".
-* Try to avoid using "my" or "your" like in "My files" or "Your files", instead using "All files". For longer sentences where it cannot be avoided, use "your", never "my".
+* Try to avoid using "my" or "your" like in "My files" or "Your files", instead using "All files". For longer sentences where it cannot be avoided, use "your", never "my". 
+* Use gender neutral language. This `international guide to gender-inclusive writing <https://uxcontent.com/the-international-guide-to-gender-inclusive-writing/>`_ contains info and examples on gender neutral wording for different languages.
+* Use full names instead of only first names while addressing the person using your app.
 * For any "Delete" action, give context to what it will delete, like "Delete conversation" or "Delete user" so that it is clear specifically for this destructive action.
 * Keep language short and concise, and keep in mind that it should be easily translatable.
 * Make sure to spellcheck anything you write.
