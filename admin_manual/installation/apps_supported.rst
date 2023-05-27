@@ -9,11 +9,9 @@ All apps are licensed under ``AGPLv3``.
 Nextcloud Files
 ---------------
 
-* `Accessibility <https://github.com/nextcloud/accessibility>`_
 * `Activity <https://github.com/nextcloud/activity>`_
 * `Auditing / Logging <https://github.com/nextcloud/server/tree/master/apps/admin_audit>`_
 * `Antivirus for files <https://github.com/nextcloud/files_antivirus>`_
-* `AppOrder <https://github.com/juliushaertl/apporder>`_
 * `Brute-force settings <https://github.com/nextcloud/bruteforcesettings>`_
 * `Circles <https://github.com/nextcloud/circles>`_
 * `Collaborative Tags <https://github.com/nextcloud/server/tree/master/apps/systemtags>`_
@@ -48,9 +46,11 @@ Nextcloud Files
 * `Photos <https://github.com/nextcloud/photos>`_
 * `Provisioning API <https://github.com/nextcloud/server/tree/master/apps/provisioning_api>`_
 * `Recommendations <https://github.com/nextcloud/recommendations>`_
+* `Related Resources <https://github.com/nextcloud/related_resources/>`_
 * `Right click <https://github.com/nextcloud/files_rightclick>`_
 * `Share by mail <https://github.com/nextcloud/server/tree/master/apps/sharebymail>`_
 * `SharePoint Backend <https://github.com/nextcloud/sharepoint>`_
+* `Suspicious Login <https://github.com/nextcloud/suspicious_login>`_
 * `SSO & SAML authentication <https://github.com/nextcloud/user_saml>`_
 * Social sharing via:
     * `Diaspora <https://github.com/nextcloud/socialsharing/tree/master/socialsharing_diaspora>`_
@@ -65,7 +65,6 @@ Nextcloud Files
 * `Two factor U2F <https://github.com/nextcloud/twofactor_u2f>`_
 * `Update Notifications <https://github.com/nextcloud/server/tree/master/apps/updatenotification>`_
 * `Versions <https://github.com/nextcloud/server/tree/master/apps/files_versions>`_
-* `Video Player <https://github.com/nextcloud/files_videoplayer>`_
 * `WebDAV endpoint <https://github.com/nextcloud/server/tree/master/apps/dav>`_
 
 Nextcloud Groupware

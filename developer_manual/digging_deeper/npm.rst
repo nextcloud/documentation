@@ -1,3 +1,5 @@
+.. _app-npm:
+
 ===
 NPM
 ===
@@ -7,6 +9,8 @@ order to make the project setup easier for everybody, we recommend to follow the
 of typical scripts like ``build``, ``watch`` and ``test`` in the ``package.json`` file.
 
 You can find more info about this convention on blog posts like this `<https://www.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/>`_.
+
+.. _app-npm-build:
 
 npm build
 ---------
@@ -23,11 +27,11 @@ For apps that use webpack, this might look like this:
   {
     "name": "myapp",
     "scripts": {
-      "build": "NODE_ENV=production webpack --progress --hide-modules --config webpack.prod.js"
+      "build": "webpack --node-env production --progress --hide-modules --config webpack.prod.js"
     },
     "devDependencies": {
-      "webpack": "^4.26.1",
-      "webpack-cli": "^3.1.2",
+      "webpack": "^5.65.0",
+      "webpack-cli": "^4.9.1",
     }
   }
 
@@ -49,13 +53,13 @@ This command should be added to ``package.json`` as ``dev``  and ``watch`` scrip
   {
     "name": "myapp",
     "scripts": {
-      "build": "NODE_ENV=production webpack --progress --hide-modules --config webpack.prod.js",
-      "dev": "NODE_ENV=development webpack --progress --config webpack.dev.js",
-      "watch": "NODE_ENV=development webpack --progress --watch --config webpack.dev.js"
+      "build": "webpack --node-env production --progress --hide-modules --config webpack.prod.js",
+      "dev": "webpack --node-env development --progress --config webpack.dev.js",
+      "watch": "webpack --node-env development --progress --watch --config webpack.dev.js"
     },
     "devDependencies": {
-      "webpack": "^4.26.1",
-      "webpack-cli": "^3.1.2",
+      "webpack": "^5.65.0",
+      "webpack-cli": "^4.9.1",
     }
   }
 
@@ -81,22 +85,25 @@ npm run lint (optional)
 -----------------------
 
 Nextcloud apps that use linting tools for consistent code formatting typically add a ``lint`` script to their
-``package.json``:
+``package.json`` and install the appropriate `eslint config <https://www.npmjs.com/package/@nextcloud/eslint-config>`_:
 
 .. code-block:: json
 
   {
     "scripts": {
-      "lint": "eslint --ext .js,.vue src"
+      "lint": "eslint --ext .js,.vue src",
+      "lint:fix": "eslint --ext .js,.vue src --fix"
     }
   }
 
-If style linting is a separate script, ``stylelint`` shall be used as conventional script name:
+If style linting is a separate script, ``stylelint`` shall be used as conventional script name.
+You can find the standard nextcloud `stylelint config <https://www.npmjs.com/package/@nextcloud/stylelint-config>`_ on npm too.
 
 .. code-block:: json
 
   {
     "scripts": {
-      "stylelint": "stylelint src"
+      "stylelint": "stylelint src",
+      "stylelint:fix": "stylelint src --fix"
     }
   }

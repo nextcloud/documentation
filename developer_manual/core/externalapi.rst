@@ -81,7 +81,7 @@ Output from the application is wrapped inside a **data** element:
     <ocs>
      <meta>
       <status>ok</status>
-      <statuscode>100</statuscode>
+      <statuscode>200</statuscode>
       <message/>
      </meta>
      <data>
@@ -98,7 +98,7 @@ Output from the application is wrapped inside a **data** element:
       "ocs": {
         "meta": {
           "status": "ok",
-          "statuscode": 100,
+          "statuscode": 200,
           "message": null
         },
         "data": {
@@ -112,10 +112,10 @@ Statuscodes
 
 The statuscode can be any of the following numbers:
 
-* **100** - successful
+* **200** - successful
 * **996** - server error
-* **997** - not authorized
-* **998** - not found
+* **401** - not authorized
+* **404** - not found
 * **999** - unknown error
 
 Changing API and backwards compatibility

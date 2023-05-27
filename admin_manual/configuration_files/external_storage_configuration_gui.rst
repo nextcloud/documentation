@@ -19,6 +19,10 @@ The External storage support application is enabled on your Apps page.
 Storage configuration
 ---------------------
 
+To access the settings for configuring external storage mounts, click on your Profile icon
+in the top right and select settings from the dropdown.  On the left side under Administration
+select External Storage.
+
 To create a new external storage mount, select an available backend from the
 dropdown **Add storage**. Each backend has different required options, which 
 are configured in the configuration fields.
@@ -155,6 +159,6 @@ changed remotely (files changed without going through Nextcloud), especially
 when it's very deep in the folder hierarchy of the external storage.
 
 You might need to setup a cron job that runs ``sudo -u www-data php occ files:scan --all``
-(or replace "--all" with the user name, see also :doc:`../configuration_server/occ_command`)
+(or replace ``--all`` with the user name, see also :doc:`../configuration_server/occ_command`)
 to trigger a rescan of the user's files periodically (for example every 15 minutes), which includes
 the mounted external storage.

@@ -23,7 +23,7 @@ The route array contains the following parts:
 * **verb** (Optional, defaults to GET): The HTTP method that should be matched, (e.g. GET, POST, PUT, DELETE, HEAD, OPTIONS, PATCH)
 * **requirements** (Optional): lets you match and extract URLs that have slashes in them (see :ref:`matching-suburls`)
 * **postfix** (Optional): lets you define a route id postfix. Since each route name will be transformed to a route id (**page#method** -> **myapp.page.method**) and the route id can only exist once you can use the postfix option to alter the route id creation by adding a string to the route id, e.g., **'name' => 'page#method', 'postfix' => 'test'** will yield the route id **myapp.page.methodtest**. This makes it possible to add more than one route/URL for a controller method
-* **defaults** (Optional): If this setting is given, a default value will be assumed for each URL parameter which is not present. The default values are passed in as a key => value par array
+* **defaults** (Optional): If this setting is given, a default value will be assumed for each URL parameter which is not present. The default values are passed in as a key => value pair array
 
 Extracting values from the URL
 ------------------------------
@@ -37,15 +37,13 @@ It is possible to extract values from the URL to allow RESTful URL design. To ex
     // Request: GET /index.php/apps/myapp/authors/3
 
     // appinfo/routes.php
-    array('name' => 'author#show', 'url' => '/authors/{id}', 'verb' => 'GET'),
+    ['name' => 'author#show', 'url' => '/authors/{id}', 'verb' => 'GET'],
 
     // controller/authorcontroller.php
     class AuthorController {
-
-        public function show($id) {
+        public function show(string $id): Response {
             // $id is '3'
         }
-
     }
 
 The identifier used inside the route is being passed into controller method by reflecting the method parameters. So basically if you want to get the value **{id}** in your method, you need to add **$id** to your method parameters.
@@ -69,11 +67,9 @@ Sometimes it is needed to match more than one URL fragment. An example would be 
 
     // controller/authorapicontroller.php
     class AuthorApiController {
-
-        public function cors($path) {
+        public function cors(string $path): Response {
             // $path will be 'my/route'
         }
-
     }
 
 Default values for subURL
@@ -96,10 +92,8 @@ Apart from matching requirements, a subURL may also have a default value. Say yo
     ),
 
     // controller/postcontroller.php
-    class PostController
-    {
-        public function index($page = 1)
-        {
+    class PostController {
+        public function index(int $page = 1): Response {
             // $page will be 1
         }
     }
@@ -165,32 +159,31 @@ Sometimes it is useful to turn a route into a URL to make the code independent f
 
         private $urlGenerator;
 
-        public function __construct($appName, IRequest $request,
+        public function __construct(string $appName, IRequest $request,
                                     IURLGenerator $urlGenerator) {
             parent::__construct($appName, $request);
             $this->urlGenerator = $urlGenerator;
         }
 
         /**
-         * redirect to /apps/news/myapp/authors/3
+         * Redirects to /apps/news/myapp/authors/3
          */
-        public function redirect() {
+        public function redirect(): RedirectResponse {
             // route name: author_api#do_something
             // route url: /apps/news/myapp/authors/{id}
 
             // # needs to be replaced with a . due to limitations and prefixed
             // with your app id
             $route = 'myapp.author_api.do_something';
-            $parameters = array('id' => 3);
+            $parameters = ['id' => 3];
 
             $url = $this->urlGenerator->linkToRoute($route, $parameters);
 
             return new RedirectResponse($url);
         }
-
     }
 
-URLGenerator is case sensitive, so **appName** must match **exactly** the name you use in :doc:`configuration <../storage/configuration>`.
+URLGenerator is case sensitive, so **appName** must match **exactly** the name you use in :doc:`configuration <../basics/storage/configuration>`.
 If you use a CamelCase name as *myCamelCaseApp*,
 
 .. code-block:: php

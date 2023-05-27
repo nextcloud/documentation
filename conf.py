@@ -8,7 +8,7 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 sys.path.insert(0, os.path.abspath(dir_path + '/_ext'))
 now = datetime.datetime.now()
 
-extensions = []
+extensions = ['sphinx_rtd_theme']
 
 # General information about the project.
 copyright = str(now.year) + ' Nextcloud GmbH'
@@ -36,8 +36,11 @@ html_logo = "../_shared_assets/static/logo-white.png"
 rst_epilog =  '.. |version| replace:: %s' % version
 
 # building the versions list
-version_start = 19		# THIS IS THE SUPPORTED VERSION NUMBER
-version_stable = 21		# INCREASE THIS NUMBER TO THE LATEST STABLE VERSION NUMBER
+version_start = 25		# THIS IS THE SUPPORTED VERSION NUMBER
+version_stable = 27		# INCREASE THIS NUMBER TO THE LATEST STABLE VERSION NUMBER
+
+# Also search for "TODO ON RELEASE" in the rst files
+
 def generateVersionsDocs(current_docs):
 	versions_doc = []
 	for v in range(version_start, version_stable + 1):
@@ -46,7 +49,7 @@ def generateVersionsDocs(current_docs):
 	versions_doc.append(tuple(('stable', 'https://docs.nextcloud.com/server/%s/%s' % ('stable', current_docs))))
 	versions_doc.append(tuple(('latest', 'https://docs.nextcloud.com/server/%s/%s' % ('latest', current_docs))))
 	return versions_doc
-	
+
 if version.isdigit():
 	github_branch = 'stable%s' % version
 else:

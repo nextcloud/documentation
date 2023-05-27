@@ -13,7 +13,7 @@ General
 * New features are always developed in a branch and only merged to master once they are fully done.
 * Software should work. We only put features into master when they are complete. It's better to not have a feature instead of having one that works poorly.
 * It is best to start working based on an issue - create one if there is none. You describe what you want to do, ask feedback on the direction you take it and take it from there.
-* When you are finished, use the merge request function on GitHub to create a pull request. The other developers will look at it and give you feedback. You can signify that your PR is ready for review by adding the label "5 - ready for review" to it. You can also post your merge request to the mailing list to let people know. See `the code review page for more information <../prologue/bugtracker/codereviews.html>`_
+* When you are finished, use the merge request function on GitHub to create a pull request. The other developers will look at it and give you feedback. You can signify that your PR is ready for review by adding the label "3. to review" to it. See `the code review page for more information <../prologue/bugtracker/codereviews.html>`_
 * It is key to keep changes separate and small. The bigger and more hairy a PR grows, the harder it is to get it in. So split things up where you can in smaller changes - if you need a small improvement like a API addition for a big feature addition, get it in first rather than adding it to the big piece of work!
 * Decisions are made by consensus. We strive for making the best technical decisions and as nobody can know everything, we collaborate. That means a first negative comment might not be the final word, neither is positive feedback an immediate GO. Nextcloud is built out of modular pieces (apps) and maintainers have a strong influence. In case of disagreement we consult other seasoned contributors.
 
@@ -24,24 +24,30 @@ We assign labels to issues and pull requests to make it easy to find them and to
 
 The most important labels and their meaning:
 
-* #backport-request - the pull requests also needs to be applied to older Nextcloud versions
-* #bug - this issue is a bug
-* #enhancement - this issue is a feature request/idea for improvement of Nextcloud
-* #design - this needs help from the design team or is a design-related issue/pull request
-* #technical debt - this issue or PR is about `technical debt <https://en.wikipedia.org/wiki/Technical_debt>`_
-* #good first issue - these are issues which are relatively easy to solve and ideal for people who want to learn how to code in Nextcloud
-* #needs info - this issue needs further information from the reporter, see :doc:`../bugtracker/triaging`
-* #high #medium #low signify how important the bug is.
 * Tags showing the state of the issue or PR, numbered 0-4:
 
-  * 0\. Needs triage - ready to start development on this
-  * 1\. to develop - ready to start development on this
-  * 2\. developing - development in progress
-  * 3\. to review - ready for review
-  * 4\. to release - reviewed PR that awaits unfreeze of a branch to get merged
-* Feature tags: #feature: something. These tags indicate the features across apps and components which are impacted by the issue or which the PR is related to
+  * ``0. to triage`` - issue or feature request needs to get triaged and approved for development
+  * ``1. to develop`` - ready to start development on this
+  * ``2. developing`` - development in progress
+  * ``3. to review`` - ready for review
+  * ``4. to release`` - reviewed PR that awaits unfreeze of a branch to get merged or has pending CI jobs
+  * ``needs info`` - this issue needs further information from the reporter, see :doc:`../../prologue/bugtracker/triaging`. This tag is typically combined with ``0. to triage`` to signal a bug report is not confirmed yet or a feature request has not been approved.
 
-If you want a label not in the list above, please first discuss on the mailing list.
+* Tags showing the type of issue or PR
+
+  * ``bug`` - this issue is a bug
+  * ``enhancement`` - this issue is a feature request/idea for improvement of Nextcloud
+  * ``technical debt`` - this issue or PR is about `technical debt <https://en.wikipedia.org/wiki/Technical_debt>`_
+
+* Tags that classify an issue or PR
+
+  * ``high``, ``medium`` and ``low`` – signify how important the bug is.
+  * ``regression`` - something that worked in a previous release but is now not working as expected or missing.
+  * ``feature: *``, e.g. ``feature: dav`` – these tags group tickets of specific feature or subsystems.
+  * ``design`` - this needs help from the design team or is a design-related issue/pull request
+  * ``good first issue`` - these are issues which are relatively easy to solve and ideal for people who want to learn how to code in Nextcloud
+
+* ``backport-request`` - the pull requests also needs to be applied to older Nextcloud versions. This tag is typically assigned by automation.
 
 Coding
 ------
@@ -55,7 +61,6 @@ Coding
 * No global variables or functions
 * Unit tests
 * HTML should be HTML5 compliant
-* Check these `database performance tips <https://mailman.owncloud.org/pipermail/devel/2014-June/000262.html>`_
 * When you ``git pull``, always ``git pull --rebase`` to avoid generating extra commits like: *merged master into master*
 
 License headers
@@ -103,7 +108,7 @@ User interface
 PHP
 ---
 
-Starting with Nextcloud 19 there is a shared `PHP Coding Standards Fixer <https://github.com/FriendsOfPhp/PHP-CS-Fixer>`_ configuration you can use to automatically format your app's source code. For full details see the `repository on Github <https://github.com/nextcloud/coding-standard/>`_.
+Starting with Nextcloud 19 there is a shared `PHP Coding Standards Fixer <https://github.com/FriendsOfPhp/PHP-CS-Fixer>`_ configuration you can use to automatically format your app's source code. For full details see the `repository on GitHub <https://github.com/nextcloud/coding-standard/>`_.
 
 Always use::
 

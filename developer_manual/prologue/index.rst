@@ -8,6 +8,5 @@ Prologue
    code-of-conduct
    help_communication
    bugtracker/index
-   development_process
    security
-   performance
+   compatibility_app_ecosystem

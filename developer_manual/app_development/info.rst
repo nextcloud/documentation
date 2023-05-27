@@ -13,6 +13,7 @@ The info.xml is validated using an XML Schema which can be accessed `online <htt
 A minimum valid **info.xml** would look like this:
 
 .. code-block:: xml
+    :caption: appinfo/info.xml
 
     <?xml version="1.0"?>
     <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
@@ -34,6 +35,7 @@ A minimum valid **info.xml** would look like this:
 A full blown example would look like this (needs to be utf-8 encoded):
 
 .. code-block:: xml
+    :caption: appinfo/info.xml
 
     <?xml version="1.0"?>
     <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
@@ -169,10 +171,7 @@ description
 version
     * required
     * must be a `semantic version <http://semver.org/>`_ without build metadata, e.g. 9.0.1 or 9.1.0-alpha.1
-    * semantic version also means:
-
-        * when you add a new Nextcloud version as a supported version, you bump the minor version (second number)
-        * when you remove a Nextcloud version from the supported versions, you bump the major version (first number)
+    * :ref:`more info on app versioning <app-versioning>`
 
 licence
     * required
@@ -271,6 +270,9 @@ dependencies/nextcloud
     * if absent white-listed owncloud versions will be taken from the owncloud element (see below)
     * must contain a **min-version** attribute (maximum 3 digits separated by dots)
     * can contain a **max-version** attribute (maximum 3 digits separated by dots)
+	
+.. note:: Dependencies `dependencies/php`, `dependencies/database` and `dependencies/lib` are checked at installation time (not on update time), hence applications need to stick to the dependencies supported by a major version of Nextcloud the moment an app releases support for that version, i.e. app needs to support the same PHP version-range the supported Nextcloud version supports.
+	
 background-jobs/job
     * optional
     * must contain a php class which is run as background jobs

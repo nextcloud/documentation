@@ -3,7 +3,7 @@ Digging deeper
 ==============
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    api
    changelog
@@ -11,6 +11,7 @@ Digging deeper
    classloader
    continuous_integration
    flow
+   http_client
    javascript-apis
    npm
    notifications
@@ -21,8 +22,18 @@ Digging deeper
    rest_apis
    search
    settings
-   testing
+   speech-to-text
+   talk
+   translation
    two-factor-provider
    users
    dashboard
+   reference
+   projects
+   groupware/index
    web_host_metadata
+   status
+   security
+   profile
+   user_migration
+   profiler

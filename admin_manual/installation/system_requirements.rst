@@ -14,26 +14,37 @@ For best performance, stability and functionality we have documented some recomm
 +------------------+-----------------------------------------------------------------------+
 | Platform         | Options                                                               |
 +==================+=======================================================================+
-| Operating System | - **Ubuntu 20.04 LTS** (recommended)                                  |
+| Operating System | - **Ubuntu 22.04 LTS** (recommended)                                  |
+| (64-bit)         | - Ubuntu 20.04 LTS                                                    |
 |                  | - **Red Hat Enterprise Linux 8** (recommended)                        |
-|                  | - Debian 10 (Buster)                                                  |
+|                  | - Debian 11 (Bullseye)                                                |
 |                  | - SUSE Linux Enterprise Server 15                                     |
-|                  | - openSUSE Leap 42.1+                                                 |
-|                  | - CentOS 8                                                            |
+|                  | - openSUSE Leap 15.4                                                  |
+|                  | - CentOS Stream                                                       |
 +------------------+-----------------------------------------------------------------------+
-| Database         | - **MySQL 8.0+ or MariaDB 10.2+** (recommended)                       |
+| Database         | - **MySQL 8.0+** or MariaDB 10.3/10.4/10.5/**10.6** (recommended)     |
 |                  | - Oracle Database 11g (*only as part of an enterprise subscription*)  |
-|                  | - PostgreSQL 9.6/10/11/12/13                                          |
+|                  | - PostgreSQL 10/11/12/13/14/15                                        |
 |                  | - SQLite (*only recommended for testing and minimal-instances*)       |
 +------------------+-----------------------------------------------------------------------+
 | Webserver        | - **Apache 2.4 with** ``mod_php`` **or** ``php-fpm`` (recommended)    |
 |                  | - nginx with ``php-fpm``                                              |
 +------------------+-----------------------------------------------------------------------+
-| PHP Runtime      | - 7.3                                                                 |
-|                  | - **7.4** (*recommended*)                                             |
+| PHP Runtime      | - 8.0 (*deprecated*)                                                  |
+|                  | - 8.1                                                                 |
+|                  | - **8.2** (*recommended*)                                             |
 +------------------+-----------------------------------------------------------------------+
 
 See :doc:`source_installation` for minimum PHP-modules and additional software for installing Nextcloud.
+
+CPU Architecture and OS
+^^^^^^^^^^^^^^^^^^^^^^^
+A 64-bit CPU, OS and PHP is required for Nextcloud to run well.
+
+32-bit systems are supported, with the following known limitations:
+
+- Dates before Unix Epoch (1970-01-01) are not supported
+- Dates after 2038 are not supported
 
 Memory
 ^^^^^^
@@ -41,7 +52,7 @@ Memory
 Memory requirements for running a Nextcloud server are greatly variable,
 depending on the numbers of users, apps, files and volume of server activity.
 
-Nextcloud needs a minimum of **128MB** RAM, and we recommend a minimum of **512MB**.
+Nextcloud needs a minimum of **128MB** RAM per process, and we recommend a minimum of **512MB** RAM per process.
 
 Database requirements for MySQL / MariaDB
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -49,9 +60,34 @@ Database requirements for MySQL / MariaDB
 The following is currently required if you're running Nextcloud together with a MySQL / MariaDB database:
 
 * InnoDB storage engine (MyISAM is not supported)
-* "READ COMMITED" transaction isolation level (See: :ref:`db-transaction-label`)
+* "READ COMMITTED" transaction isolation level (See: :ref:`db-transaction-label`)
 * Disabled or BINLOG_FORMAT = ROW configured Binary Logging (See: https://dev.mysql.com/doc/refman/5.7/en/binary-log-formats.html)
 * For **Emoji (UTF8 4-byte) support** see :doc:`../configuration_database/mysql_4byte_support`
+
+Why we drop old PHP versions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Every year, a new PHP version is added and old PHP versions are deprecated. This also affects our documented recommended PHP version.
+
+We try to support old PHP versions for as long as reasonably possible. However the list of security, performance, and bug fixes will only increase, some of those fixes might be considered critical and thus at some point the deprecation will be inevitable.
+
+Thus it is recommended to keep your PHP version up to date.
+
+Advantages of upgrading PHP
+===========================
+
+- **Security**
+
+  PHP deprecates security fixes of old versions. Nextcloud cannot implement security fixes that come with new PHP versions as long as we support deprecated PHP versions, since the syntax that we are allowed to use must be the lowest one of the supported versions, thus the upstream packages of third parties break because they dropped this support.
+
+- **Performance**
+
+  The language continuously improves over time which makes it possible to do more requests in significantly less time.
+
+Long term support
+=================
+
+If you are running Nextcloud for an organisation-critical use case, you could consider upgrading your subscription to a premium subscription which comes with 5 years of long term support. This means you continue to receive maintenance releases for high and critical security issues, data loss fixes, and regressions within version over this extended period of time.
 
 Desktop client
 --------------
@@ -59,10 +95,9 @@ Desktop client
 We strongly recommend using the latest version of your operating system to get the full and most stable experience out
 of our clients.
 
-* **Windows** 7+
-* **macOS** Lion (10.7)+ (64-bit only)
-* **Linux** (CentOS 6.5+, Ubuntu 14.04+, Fedora 21+, openSUSE 13, SUSE Linux Enterprise 11 SP3+, Debian 8 (Jessie)+, Red Hat
-  Enterprise Linux 7)
+* **Windows** 10+
+* **macOS** Lion (10.14)+ (64-bits only)
+* **Linux** (64-bits only) Should run on any distribution newer than Ubuntu 18.04 with our official AppImage package
 
 Mobile apps
 -----------
@@ -70,10 +105,21 @@ Mobile apps
 We strongly recommend using the latest version of your mobile operating system to get the full and most stable experience out
 of our mobile apps.
 
-- **iOS** 11.x+
-- **Android** 4.x+
+Files App
+^^^^^^^^^
 
-.. note:: The separate Nextcloud Talk app requires iOS 10.x+ or Android 5.x+.
+- **iOS** 14.0+
+- **Android** 6.0+
+
+Talk App
+^^^^^^^^
+
+- **iOS** 14.0+
+- **Android** 6.0+
+- **Nextcloud Server** 14.0+
+- **Nextcloud Talk** 4.0+
+
+.. note:: When using Nextcloud Talk 12.0+ please update the Android Talk App to the newest version (or at least to v12.1).
 
 Web browser
 -----------
@@ -81,7 +127,6 @@ Web browser
 For the best experience with the Nextcloud web interface, we recommend that you use the latest and supported version
 of a browser from this list, or one based on those:
 
-- Microsoft **Internet Explorer 11** (latest version)
 - Microsoft **Edge**
 - Mozilla **Firefox**
 - Google **Chrome**/Chromium

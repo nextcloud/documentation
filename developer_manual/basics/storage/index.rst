@@ -6,7 +6,6 @@ Storage and database
    :maxdepth: 2
 
    migrations
-   schema
    database
    configuration
    filesystem

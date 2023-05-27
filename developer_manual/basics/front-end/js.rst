@@ -109,7 +109,7 @@ and a JS part (that fetches and parses the state).
 
 Providing the initial state with PHP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Providing state in PHP is done via the ``\OCP\IInitialStateService``. This service
+Providing state in PHP is done via the ``OCP\AppFramework\Services\IInitialState``. This service
 has two methods you can use to provide the initial state.
 
 * ``provideInitialState(string $appName, string $key, $data)``:
@@ -130,9 +130,42 @@ Obtaining the initial state in JavaScript
 To obtain the initial state in your JavaScript you have to only call one
 function
 
+- Vue way with `@nextcloud/initial-state <https://github.com/nextcloud/nextcloud-initial-state>`_:
+
+.. code-block:: js
+
+    import { loadState } from '@nextcloud/initial-state'
+
+    const val = loadState('myapp', 'user_preference')
+
+    // Provide a fallback value to return when the state is not found
+    const valWithFallback = loadState('myapp', 'user_preference', 'no_preference')
+
+- Legacy way:
+
 .. code-block:: js
 
     const state = OCP.InitialState.loadState('MyApp', 'MyState');
 
 Now state will contain the provided state which you can use as any variable. It
 is as simple as that.
+
+.. _basics_frontend_javascript_keyboard_shortcuts:
+
+
+Keyboard shortcuts
+------------------
+
+In case you want to improve your user experience with keyboard shortcuts, make sure
+to not overwrite browser, operating system and other Nextcloud wide shortcuts.
+Also there is an accessibility setting for users to opt-out of **any** keyboard shortcuts
+Nextcloud wide. You can check the setting with the following function which returns a boolean
+(available in Nextcloud 25 and later):
+
+.. code-block:: js
+
+    OCP.Accessibility.disableKeyboardShortcuts();
+
+If that is the case, no additional shortcuts shall be registered by any app. Only ``space``
+to toggle checkboxes and ``enter`` to submit the currently active buttons or links are okay,
+as any other shortcut might interfere with screenreaders and other accessibility tools.

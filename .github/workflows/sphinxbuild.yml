@@ -1,36 +1,69 @@
 name: "Pull Request Docs Check"
+
 on:
-- pull_request
-- push
+  pull_request:
+  push:
+    branches:
+      - master
+      - stable*
 
 jobs:
   user_manual:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - uses: ammaraskar/sphinx-action@master
+    - uses: actions/checkout@v3
+    - name: Install pip dependencies
+      run: pip install -r requirements.txt
+    - name: Build using Makefile
+      run: cd user_manual && make html
+    - name: Pack  the results in local tar file
+      shell: bash
+      run: tar czf /tmp/documentation.tar.gz -C user_manual/_build/html .
+    - name: Upload static documentation
+      uses: actions/upload-artifact@v3.1.2
       with:
-        docs-folder: "user_manual/"
-        pre-build-command: pip install -r requirements.txt
-        build-command: make html
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        name: User manual.zip
+        path: "/tmp/documentation.tar.gz"
+
+  user_manual-en:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install pip dependencies
+      run: pip install -r requirements.txt
+    - name: Build using Makefile
+      run: cd user_manual && make html-lang-en
+
   developer_manual:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - uses: ammaraskar/sphinx-action@master
+    - uses: actions/checkout@v3
+    - name: Install pip dependencies
+      run: pip install -r requirements.txt
+    - name: Build using Makefile
+      run: cd developer_manual && make html
+    - name: Pack the results in local tar file
+      shell: bash
+      run: tar czf /tmp/documentation.tar.gz -C developer_manual/_build/html/com .
+    - name: Upload static documentation
+      uses: actions/upload-artifact@v3.1.2
       with:
-        docs-folder: "developer_manual/"
-        pre-build-command: pip install -r requirements.txt
-        build-command: make html
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        name: Developer manual.zip
+        path: "/tmp/documentation.tar.gz"
+
   admin_manual:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - uses: ammaraskar/sphinx-action@master
+    - uses: actions/checkout@v3
+    - name: Install pip dependencies
+      run: pip install -r requirements.txt
+    - name: Build using Makefile
+      run: cd admin_manual && make html
+    - name: Pack the results in local tar file
+      shell: bash
+      run: tar czf /tmp/documentation.tar.gz -C admin_manual/_build/html/com .
+    - name: Upload static documentation
+      uses: actions/upload-artifact@v3.1.2
       with:
-        docs-folder: "admin_manual/"
-        pre-build-command: pip install -r requirements.txt
-        build-command: make html
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        name: Administration manual.zip
+        path: "/tmp/documentation.tar.gz"

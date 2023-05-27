@@ -92,8 +92,10 @@ Trusted domains
 All URLs used to access your Nextcloud server must be whitelisted in your 
 ``config.php`` file, under the ``trusted_domains`` setting. Users 
 are allowed to log into Nextcloud only when they point their browsers to a 
-URL that is listed in the ``trusted_domains`` setting. You may use IP addresses 
-and domain names. A typical configuration looks like this::
+URL that is listed in the ``trusted_domains`` setting. This is not a 
+list of allowed client-side domains or IP addresses. 
+You may use IP addresses and domain names. 
+A typical configuration looks like this::
 
  'trusted_domains' => 
    array (
@@ -102,6 +104,8 @@ and domain names. A typical configuration looks like this::
     2 => '192.168.1.50',
     3 => '[fe80::1:50]',
  ),
+
+Note: 
 
 The loopback address, ``127.0.0.1``, is automatically whitelisted, so as long 
 as you have access to the physical server you can always log in. In the event 

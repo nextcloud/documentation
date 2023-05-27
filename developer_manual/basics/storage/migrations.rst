@@ -4,48 +4,17 @@
 Migrations
 ==========
 
-In the past, apps had a `appinfo/database.xml`-file which holds their database schema
-for installation and update and was a functional method for installing apps which
-had some trouble with upgrading apps (e.g. apps were not able to rename columns
-without losing the data stored in the original column):
-
-.. code-block:: php
-
-   <?xml version="1.0" encoding="ISO-8859-1" ?>
-   <database>
-            <name>*dbname*</name>
-            <create>true</create>
-            <overwrite>false</overwrite>
-            <charset>utf8</charset>
-            <table>
-                    <name>*dbprefix*twofactor_backupcodes</name>
-                    <declaration>
-                          <field>
-                                  <name>id</name>
-                                  <type>integer</type>
-                                  <autoincrement>1</autoincrement>
-                                  <default>0</default>
-                                  <notnull>true</notnull>
-                                  <length>4</length>
-                          </field>
-    ...
-
-
-The limitations of this method will be bypassed with migrations. A migration can
-consist of 3 different methods:
+Migrations change the database schema and operate in three steps:
 
 * Pre schema changes
-* Actual schema changes
+* Schema changes
 * Post schema changes
 
 Apps can have multiple migrations, which allows a way more flexible updating process.
 For example, you can rename a column while copying all the content with 3 steps
 packed in 2 migrations.
 
-After creating migrations for your current database and installation routine,
-you need to in order to make use of migrations, is to delete the old `appinfo/database.xml`
-file. The Nextcloud updater logic only allows to use one or the other.
-But as soon as the `database.xml` file is gone, it will look for your migration
+The Nextcloud updater logic will look for your migration
 files in the apps `lib/Migration` folder.
 
 .. note:: While in theory you can run any code in the pre- and post-steps, we
@@ -70,7 +39,7 @@ With this step the new column gets created:
 .. code-block:: php
 
    public function changeSchema(IOutput $output, \Closure $schemaClosure, array $options) {
-		      /** @var Schema $schema */
+		      /** @var ISchemaWrapper $schema */
 		      $schema = $schemaClosure();
 
 		      $table = $schema->getTable('twofactor_backupcodes');
@@ -98,7 +67,7 @@ In this step the content gets copied from the old to the new column.
           $query = $this->db->getQueryBuilder();
           $query->update('twofactor_backupcodes')
                   ->set('user_id', 'uid');
-          $query->execute();
+          $query->executeStatement();
    }
 
 3. Migration 2: Schema change
@@ -109,7 +78,7 @@ With this the old column gets removed.
 .. code-block:: php
 
    public function changeSchema(IOutput $output, \Closure $schemaClosure, array $options) {
-          /** @var Schema $schema */
+          /** @var ISchemaWrapper $schema */
           $schema = $schemaClosure();
 
           $table = $schema->getTable('twofactor_backupcodes');
@@ -118,24 +87,32 @@ With this the old column gets removed.
           return $schema;
   }
 
-.. _migrate-database-xml:
+Construction of migration classes
+---------------------------------
 
-Migrate from database.xml
--------------------------
+All migration classes are constructed via :ref:`dependency-injection`. So if your migration
+steps need additional dependencies, these can be defined in the constructor of your migration 
+class. 
 
-To migrate your app from a `database.xml` file to migrations run:
+**Example:** If your migration needs to execute SQL statements, inject a `OCP\\IDBConnection`
+instance into your migration class like this:
 
-.. code-block:: bash
+.. code-block:: php
+        
+   class Version2404Date20220903071748 extends SimpleMigrationStep {
+ 
+      /** @var IDBConnection */
+      private $db;
 
-   php ./occ migrations:generate-from-schema <app_id> <version>
-
-This will create a new file under `lib/Migration` that results in the
-same database table(s) as your database.xml file.
-
-For version you should use your app versions. So if you app is at version
-1.2.3 use 010203.
-
-Don't forget to remove your `database.xml` file.
+      public function __construct(IDBConnection $db) {
+         $this->db = $db;
+      }
+      
+      public function postSchemaChange(IOutput $output, \Closure $schemaClosure, array $options) {
+         $query = $this->db->getQueryBuilder();
+         // execute some SQL ...
+      }
+   }
 
 .. _migration_console_command:
 
@@ -143,10 +120,13 @@ Console commands
 ----------------
 
 There are some console commands, which should help developers to create or deal
-with migrations, which are sometimes only available if you are running your
-Nextcloud in debug mode:
+with migrations, which are only available if you are running your
+Nextcloud **in debug mode**:
 
 * `migrations:execute`: Executes a single migration version manually.
+  The version argument is the class name of the migration, without the 
+  "Version" prefix. For example if your migration was named
+  `Version2404Date20220903071748` the version would be `2404Date20220903071748`.
 * `migrations:generate`:
   This is needed to create a new migration file. This takes 2 arguments,
   first one is the `appid`, the second one should be the `version`of your
@@ -156,6 +136,8 @@ Nextcloud in debug mode:
   in another branch. Since you can’t change this retroactive, we recommend to
   leave enough space in between and therefore map the numbers to 3 digits:
   `1.0.x => 1000`, `2.34.x => 2034`, etc.
-* `migrations:generate-from-schema`: Create a migration from the old `database.xml`.
 * `migrations:migrate`: Execute a migration to a specified or the latest available version.
 * `migrations:status`: View the status of a set of migrations.
+
+.. note:: After generating a migration, you might need to run `composer dump-autoload`
+   to be able to execute it.

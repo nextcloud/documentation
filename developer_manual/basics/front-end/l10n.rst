@@ -5,18 +5,12 @@ Translation
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>, Kristof Hamann
 
 Nextcloud provides mechanisms for internationalization (make an application translatable) and localization (add translations for specific languages). This section provides detailed instructions for both aspects.
-
-
-Make text translatable
-----------------------
-
 In order to make your app translatable (internationalization), you should use Nextcloud's methods for translating strings. They are available for both the server-side (PHP, Templates) as well as for the client-side (JavaScript).
 
-
 PHP
-^^^
+---
 
-If localized strings are used in the backend code, simply inject the``OCP\IL10N`` class into your service via type hinting it in the constructor. You will automatically get the language object containing the translations of your app:
+If localized strings are used in the backend code, simply inject the ``\OCP\IL10N`` class into your service via type hinting it in the constructor. You will automatically get the language object containing the translations of your app:
 
 
 .. code-block:: php
@@ -24,7 +18,7 @@ If localized strings are used in the backend code, simply inject the``OCP\IL10N`
     <?php
     namespace OCA\MyApp\Service;
 
-    use \OCP\IL10N;
+    use OCP\IL10N;
 
 
     class AuthorService {
@@ -76,13 +70,15 @@ Strings can then be translated in the following way:
     }
 
 Correct plurals
-"""""""""""""""
+^^^^^^^^^^^^^^^
 
 If you use a plural, you **must** also use the ``%n`` placeholder. The placeholder defines the plural and the word without the number preceding is wrong. If you don't know/have a number for your translation, e.g. because you don't know how many items are going to be selected, just use an undefined plural. They exist in every language and have one form. They do not follow the normal plural pattern.
 
 Example:
 
 .. code-block:: php
+
+    <?php
 
     // BAD: Plural without count
     $title = $l->n('Import calendar', 'Import calendars', $selectionLength)
@@ -91,9 +87,37 @@ Example:
     // BEST: Simple string with undefined plural
     $title = $l->t('Import calendars')
 
+Language of other users
+^^^^^^^^^^^^^^^^^^^^^^^
+
+If you need to get the language of another user, e.g. to send them an email or inside a background job, there are also
+the ``force_language`` and ``default_language`` configuration options to consider. To make this easier, the
+``OCP\L10N\IFactory`` class comes with a ``getUserLanguage`` method:
+
+.. code-block:: php
+
+    <?php
+
+    use OCP\L10N\IFactory;
+    class SendEmail {
+
+        /** @var IFactory */
+        private $l10nFactory;
+
+        public function __construct(IFactory $l10nFactory) {
+            $this->l10nFactory = $l10nFactory;
+        }
+
+        public function send(IUser $user): void {
+            $lang = $this->l10nFactory->getUserLanguage($user);
+            $l = $this->l10nFactory->get('myapp', $lang);
+
+            // …
+        }
+
 
 Templates
-^^^^^^^^^
+---------
 
 In every template the global variable **$l** can be used to translate the strings using its methods **t()** and **n()**:
 
@@ -108,7 +132,7 @@ For the right date format use ``<?php p($l->l('date', time()));?>``.
 
 
 JavaScript
-^^^^^^^^^^
+----------
 
 There are global functions **t()** and **n()** available for translating strings in javascript code. They differ a bit in terms of usage compared to php:
 
@@ -125,12 +149,12 @@ There are global functions **t()** and **n()** available for translating strings
 
 
 Important notes
-^^^^^^^^^^^^^^^
+---------------
 
 Please also look through the following steps to improve your strings and make them better translatable by others
 
 Improving your translations
-"""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You shall **never split** sentences and **never concatenate** two translations (e.g. "Enable" and "dark mode" can not be combined to "Enable dark mode", because languages might have to use different cases)! Translators lose the context and they have no chance to possibly re-arrange words/parts as needed.
 
@@ -169,10 +193,14 @@ But there is one last problem with this. In case the language has to turn things
 
 This allows translators to have the cloudlink before the browselink in case the language is e.g. right-to-left.
 
-Hints
-"""""
+.. _Hints:
+
+Provide context hints for translators
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In case some translation strings may be translated wrongly because they have multiple meanings, you can add hints which will be shown in the Transifex web-interface:
+
+**PHP**
 
 .. code-block:: php
 
@@ -185,18 +213,44 @@ In case some translation strings may be translated wrongly because they have mul
         </li>
     </ul>
 
+**Javascript**
 
+.. code-block:: javascript
 
+    // TRANSLATORS name that is appended to copied files with the same name, will be put in parenthesis and appened with a number if it is the second+ copy
+    var copyNameLocalized = t('files', 'copy');
 
+**Vue**
 
+Currently, commenting in Vue files is not possible.
+Vue files are not read via gettext and synchronized with Transifex.
+As a small help, the file in question as well as the line of code is written in the translation comment (``// TRANSLATORS``).
 
+**C++ (Qt)**
+
+.. code-block:: c++
+
+    //: Example text: "Progress of sync process. Shows the currently synced filename"
+    fileProgressString = tr("Syncing %1").arg(allFilenames);
+
+**Android Strings**
+
+.. code-block:: xml
+
+    <!-- TRANSLATORS List of deck boards -->
+    <string name="simple_boards">Boards</string>
+
+**iOS**
+
+.. code-block:: swift
+
+    /* The title on the navigation bar of the Scanning screen. */
+    "wescan.scanning.title"             = "Scanning";
 
 Adding translations
 -------------------
 
 Nextcloud's translation system is powered by `Transifex <https://www.transifex.com/nextcloud/>`_. To start translating sign up and enter a group. If your community app should be translated by the `Nextcloud community on Transifex <https://www.transifex.com/nextcloud/nextcloud/dashboard/>`_ just follow the setup section below.
-
-
 
 Translation tool
 ^^^^^^^^^^^^^^^^
@@ -218,17 +272,19 @@ Setup of the transifex sync
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To setup the transifex sync within the Nextcloud community you need to add first the
-transifex config to your app folder at :file:`.tx/config` (please replace **MYAPP** with your apps id)::
+transifex config to your app folder at :file:`.tx/config` (please replace **MYAPP** with your apps id):
+
+.. code-block:: ini
 
     [main]
-    host = https://www.transifex.com
-    lang_map = bg_BG: bg, cs_CZ: cs, fi_FI: fi, hu_HU: hu, nb_NO: nb, sk_SK: sk, th_TH: th, ja_JP: ja
+    host     = https://www.transifex.com
+    lang_map = th_TH: th, ja_JP: ja, bg_BG: bg, cs_CZ: cs, fi_FI: fi, hu_HU: hu, nb_NO: nb, sk_SK: sk
 
-    [nextcloud.MYAPP]
+    [o:nextcloud:p:nextcloud:r:MYAPP]
     file_filter = translationfiles/<lang>/MYAPP.po
     source_file = translationfiles/templates/MYAPP.pot
     source_lang = en
-    type = PO
+    type        = PO
 
 Then create a folder :file:`l10n` and a file :file:`l10n/.gitkeep` to create an
 empty folder which later holds the translations.
@@ -236,21 +292,42 @@ empty folder which later holds the translations.
 Add one more file called :file:`.l10nignore` in root of the repository and the files and folders to ignore for translations.
 Mostly used to ignore packed js files.
 
-Now the GitHub account `@nextcloud-bot <https://github.com/nextcloud-bot>`_ needs
-to get write access to your repository. It will run every night and only push
-commits to the master branch once there is an update to the translation. In general
-you should enable the `protected branches feature <https://help.github.com/articles/configuring-protected-branches/>`_
-at least for the master branch.
+Now the GitHub account `@nextcloud-bot <https://github.com/nextcloud-bot>`_ needs to get ``write`` access to your repository.
+You can invite it from your repository settings:
 
-For the sync job there is a `configuration file <https://github.com/nextcloud/docker-ci/blob/master/translations/config.json>`_
-available in our docker-ci repository. Adding there the repo owner and repo name
-to the section named **app** via pull request is enough. Once this change is in
-one member of the sysadmin team will deploy it to the sync server and the job
-will then run once a day.
+    ``https://github.com/<user-name>/<repo-name>/settings/access``
 
-If you need help then just `open a ticket with the request <https://github.com/nextcloud/docker-ci/issues/new>`_
+After sending the invitation, please `open a ticket using the "Request translations" template <https://github.com/nextcloud/docker-ci/issues/new/choose>`_.
+
+The bot will run every night and only push commits to the following branches branch once there is an update to the translation:
+
+* main
+* master
+* stableX (X being the recent 3 versions of Nextcloud Server)
+
+You can overwrite this list by creating a file ``.tx/backport`` in your repository with the following content::
+
+    develop stable
+
+That would sync the translations for the branches (``main`` and ``master`` are added automatically):
+
+* main
+* master
+* develop
+* stable
+
+
+.. note::
+
+    In general you should enable the
+    `protected branches feature <https://help.github.com/articles/configuring-protected-branches/>`_
+    for those branches. If you do that, you need to grant the
+    `@nextcloud-bot <https://github.com/nextcloud-bot>`_ ``admin`` permissions,
+    but that is only possible for repositories owned by organizations.
+    You can `create your own organization <https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/creating-a-new-organization-from-scratch>`_
+
+If you need help just `open a ticket with the request <https://github.com/nextcloud/docker-ci/issues/new/choose>`_
 and we can also guide you through the steps.
-
 
 Manual translation
 ^^^^^^^^^^^^^^^^^^

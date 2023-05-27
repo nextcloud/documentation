@@ -14,4 +14,7 @@ Basic concepts
    front-end/index
    backgroundjobs
    logging
+   setting
    storage/index
+   public_share_template
+   testing

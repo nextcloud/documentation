@@ -1,3 +1,5 @@
+.. _PSR:
+
 ===
 PSR
 ===
@@ -11,14 +13,21 @@ On this page you find information about the implemented `php standards recommend
 PSR-0: Autoloading
 ------------------
 
-This standard has been deprecated and will be removed from Nextcloud. Please see the :ref:`PSR-4 section<psr4>` instead.
+This standard has been deprecated and will be removed in Nextcloud 27. Please see the :ref:`PSR-4 section<psr4>` instead.
 
 .. _psr3:
 
 PSR-3: Logger Interface
 -----------------------
 
-As of Nextcloud 19, the dependency injection container can inject an instance of a ``\Psr\Log\LoggerInterface``. This is merely a wrapper of the existing (and strongly typed) ``\OCP\ILogger``. Apps may still use the Nextcloud logger, but the `PSR-3`_ implementation shall easy the integration of 3rd party libraries that require the `PSR-3`_ logger.
+.. versionadded:: 19
+
+The dependency injection container can inject an instance of a ``\Psr\Log\LoggerInterface``. This is merely a wrapper of the existing (and strongly typed) ``\OCP\ILogger``. Apps may still use the Nextcloud logger, but the `PSR-3`_ implementation shall easy the integration of 3rd party libraries that require the `PSR-3`_ logger.
+
+.. versionchanged:: 21
+    Nextcloud ships version 1.1.3
+.. versionchanged:: 23
+    Nextcloud ships version 1.1.4
 
 .. _psr4:
 
@@ -32,9 +41,26 @@ The `PSR-4` standard describes how class files should be named, so Nextcloud can
 PSR-11: Container Interface
 ---------------------------
 
-As of Nextcloud 20, the dependency injection container follows the `PSR-11`_ container interface, so you may start type-hinting ``\Psr\Container\ContainerInterface`` whenever you want an instance of a container and use ``has($id)`` to check for existance and ``get($id)`` to retrieve an instance of a service. See the :ref:`dependency injection docs <dependency-injection>` for details.
+.. versionadded:: 20
+
+The dependency injection container follows the `PSR-11`_ container interface, so you may type-hint ``\Psr\Container\ContainerInterface`` whenever you want an instance of a container and use ``has($id)`` to check for existence and ``get($id)`` to retrieve an instance of a service. See the :ref:`dependency injection docs <dependency-injection>` for details.
+
+.. versionchanged:: 22
+    Nextcloud ships version 1.1.1
+.. versionchanged:: 27
+    Nextcloud ships version 2.0.2
+
+.. _psr20:
+
+PSR-20: Clock
+-------------
+
+.. versionadded:: 27
+
+The ``\OCP\AppFramework\Utility\ITimeFactory`` class follows the `PSR-20`_ clock interface, so you may type-hint ``\PSR\Clock\ClockInterface`` and then use the ``now()`` method whenever you want to get the current time. You can also change the timezone for the to be returned ``\DateTimeImmutable`` instance, by getting a new ``ITimeFactory`` from ``ITimeFactory::withTimeZone()``.
 
 .. _`PSR-0`: https://www.php-fig.org/psr/psr-0/
 .. _`PSR-3`: https://www.php-fig.org/psr/psr-3/
 .. _`PSR-4`: https://www.php-fig.org/psr/psr-4/
 .. _`PSR-11`: https://www.php-fig.org/psr/psr-11/
+.. _`PSR-20`: https://www.php-fig.org/psr/psr-20/

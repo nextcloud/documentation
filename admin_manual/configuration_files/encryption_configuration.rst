@@ -257,20 +257,38 @@ on systems where encryption has not already been enabled. It is not possible to
 disable it::
 
  occ encryption:enable-master-key
+
+Fix Bad signature errors::
+
+ occ encryption:fix-encrypted-version --all
+ occ encryption:fix-encrypted-version <userid>
+ occ encryption:fix-encrypted-version <userid> -p <path>
+
+Fix key not found errors::
+
+ occ encryption:fix-key-location <userid>
  
+.. _occ_disable_encryption_label:
+
 Disabling encryption
 --------------------
 
 You may disable encryption only with ``occ``. Make sure you have backups of all 
-encryption keys, including users'. Put your Nextcloud server into 
-maintenance mode, and then disable your encryption module with this command::
+encryption keys, including users'.
+Disable your encryption module with this command::
 
- occ maintenance:mode --on
- occ encryption:disable
- 
-Take it out of maintenance mode when you are finished::
+ occ encryption:decrypt-all
 
- occ maintenance:mode --off
+It will put your server into maintenance mode and back.
+It also takes care of disabling encryption when all files have been decrypted.
+If the command is aborted some files have been decrypted and others are still encrypted.
+In this case the command will keep the encryption turned on
+and Nextcloud can handle this situation fine.
+You can proceed decrypting the remaining files by calling the command again
+once the problems that caused the abortion have been resolved.
+
+.. warning:: Disabling encryption without decrypting all the files will lead to decryption errors in the future as this state causes unpredictable behaviors.
+.. note:: The ``occ encryption:decrypt-all`` can take a lot of time. You can run one user at a time like so: ``occ encryption:decrypt-all <user-id>``.
 
 Files not encrypted
 -------------------

@@ -31,6 +31,8 @@ All log information will be sent to PHP ``error_log()``.
 
     "log_type" => "errorlog",
 
+.. warning:: Until version Nextcloud 25 log entries were prefixed with ``[owncloud]``. From 26 onwards messages start with ``[nextcloud]``.
+
 file
 ~~~~
 
@@ -60,6 +62,7 @@ All log information will be sent to your default syslog daemon.
 ::
 
     "log_type" => "syslog",
+    "syslog_tag" => "Nextcloud",
     "logfile" => "",
     "loglevel" => 3,
 
@@ -71,6 +74,7 @@ All log information will be sent to Systemd journal. Requires `php-systemd <http
 ::
 
     "log_type" => "systemd",
+    "syslog_tag" => "Nextcloud",
 
 Log fields explained
 --------------------
@@ -111,8 +115,6 @@ Example log entries
 Log field breakdown
 ~~~~~~~~~~~~~~~~~~~
 
-* **0**: DEBUG: All activity; the most detailed logging.
-
 * **reqId** (request id): any log lines related to a single request have the same value
 * **level**: logged incident's level, always 1 in audit.log
 * **time**: date and time (format and timezone can be configured in config.php)
@@ -121,8 +123,10 @@ Log field breakdown
 * **app**: affected app (always admin_audit in audit.log)
 * **method**: HTTP method, for example GET, POST, PROPFIND, etc.  – empty on occ calls
 * **url**: request path (if applicable – empty on occ calls)
-* **message**: event information
+* **message**: event information message
 * **userAgent**: user agent (if applicable – empty on occ calls)
+* **exception**: Full exception with trace (if applicable)
+* **data** additional structured data (if applicable)
 * **version**: Nextcloud version at the time of request
 
 Empty value are written as two dashes: "--".
@@ -130,7 +134,7 @@ Empty value are written as two dashes: "--".
 Admin audit log
 ---------------
 
-If ``loglevel`` in ``config.php`` is set to ``2`` or higher, audit logging needs to be triggered explicitly by adding the follwing setting to to ``config.php``:
+If ``loglevel`` in ``config.php`` is set to ``2`` or higher, audit logging needs to be triggered explicitly by adding the following setting to to ``config.php``:
 
 ::
 
@@ -139,12 +143,39 @@ If ``loglevel`` in ``config.php`` is set to ``2`` or higher, audit logging needs
 	],
 
 
-If required, the name and path of the audit log file can be customized by using the following command:
+Similar to the normal logging, the audit log can be written to any of the existing logging mechanism in :file:`config/config.php`:
 
 ::
 
-    occ config:app:set admin_audit logfile --value=/var/log/nextcloud/audit.log
+	"log_type_audit" => "syslog",
+	"syslog_tag_audit" => "Nextcloud",
+	"logfile_audit" => "",
+
+Previously the logfile could be defined in the app config. This config is still used when the system config is not provided:
+
+::
+
+	occ config:app:set admin_audit logfile --value=/var/log/nextcloud/audit.log
 
 Find detailed documentation on auditable events for enterprises in our `customer portal <https://portal.nextcloud.com/article/using-the-audit-log-44.html>`_.
 
 .. _PHP date function: http://www.php.net/manual/en/function.date.php
+
+Workflow log
+------------
+
+By default, the workflow log is stored to `flow.log` in the data folder.
+
+The path of the workflow log can be set as follows:
+
+::
+
+	occ config:app:set workflowengine logfile --value=/var/log/nextcloud/flow.log
+
+Set the value to `/dev/null` to avoid storing the log.
+
+
+Temporary overrides
+-------------------
+
+You can run override the config.php log level of ``occ`` commands with as :ref:`documented here<occ_debugging>`.

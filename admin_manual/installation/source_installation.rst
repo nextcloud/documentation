@@ -2,24 +2,32 @@
 Installation on Linux
 =====================
 
+There are multiple ways of installing Nextcloud depending on your preferences, requirements and goals.
+
+If you prefer an automated installation, you have the option to:
+
+* use the `official Nextcloud AIO Docker-based image <https://github.com/nextcloud/all-in-one#nextcloud-all-in-one>`_. Nextcloud AIO stands for Nextcloud All-in-One and provides easy deployment and maintenance with most features included in this one Nextcloud instance. It includes Office, a turnkey Backup solution, Imaginary (for previews of heic, heif, illustrator, pdf, svg, tiff and webp) and more.
+* use the `community Snap Package <https://snapcraft.io/nextcloud>`_. This includes a full production-ready stack, will maintain your HTTPS certificates for you, and will automatically update as needed to stay secure.
+* use the `community Nextcloud VM Appliance <https://github.com/nextcloud/vm/>`_ (aka Nextcloud Virtual Machine or NcVM). This helps you create a personal or corporate Nextcloud Server faster and easier. It can be used install directly on a clean Ubuntu Server or downloaded as a fully functioning VM.
+* use the `community NextcloudPi scripts <https://nextcloudpi.com/>`_ (based on Debian). It will setup everything for you and include scripts for automated installation of apps like: Collabora, OnlyOffice, Talk and so on.
+* use the `community Nextcloud Docker image <https://hub.docker.com/_/nextcloud/>`_. This image is designed to be used in a micro-service environment. There are two versions of the image you can choose from: the Apache one contains a full Nextcloud installation including an Apache web server. The second option is an FPM installation and runs a FastCGI process that serves your Nextcloud installation (you will need to supply your preferred web, database and other desired supplementary services).
+
+.. note:: Please note that the community options are not officially supported by Nextcloud GmbH.
+
 In case you prefer installing from the source tarball, you can setup Nextcloud
 from scratch using a classic LAMP stack (Linux, Apache, MySQL/MariaDB, PHP).
 This document provides a complete walk-through for installing Nextcloud on
 Ubuntu 18.04 LTS Server with Apache and MariaDB, using `the Nextcloud .tar
 archive <https://nextcloud.com/install/>`_. This method is recommended to install Nextcloud.
 
-.. note:: Admins of SELinux-enabled distributions such as CentOS, Fedora, and
-   Red Hat Enterprise Linux may need to set new rules to enable installing
-   Nextcloud. See :ref:`selinux_tips_label` for a suggested configuration.
-
-
-If you prefer a more automated installation of Nextcloud and there are no packages for your Linux distribution, you have the option to
-install the community `Snap Package <https://snapcraft.io/nextcloud>`_. This includes a full production-ready stack, will maintain your HTTPS certificates for you, and will automatically update as needed to stay secure. You can also use the `Nextcloud VM scripts <https://github.com/nextcloud/vm/>`_ to install directly on a clean Ubuntu Server. It will setup everything for you and include scripts for automated installation of apps like; Collabora, OnlyOffice, Talk and so on. Please note that those two options are not officially supported by Nextcloud GmbH.
-
-
 This installation guide is giving a general overview of required dependencies and their configuration. For a distribution specific setup guide have a look at the :doc:`./example_ubuntu` and :doc:`./example_centos`.
 
 .. _prerequisites_label:
+
+
+.. note:: Admins of SELinux-enabled distributions such as CentOS, Fedora, and
+   Red Hat Enterprise Linux may need to set new rules to enable installing
+   Nextcloud. See :ref:`selinux_tips_label` for a suggested configuration.
 
 Prerequisites for manual installation
 -------------------------------------
@@ -33,17 +41,18 @@ If you get a result, the module is present.
 
 Required:
 
-* PHP (7.3 or 7.4)
+* PHP (see :doc:`./system_requirements` for a list of supported versions)
 * PHP module ctype
 * PHP module curl
 * PHP module dom
+* PHP module fileinfo (included with PHP)
+* PHP module filter (only on Mageia and FreeBSD)
 * PHP module GD
 * PHP module hash (only on FreeBSD)
-* PHP module iconv
-* PHP module JSON
+* PHP module JSON (included with PHP >= 8.0)
 * PHP module libxml (Linux package libxml2 must be >=2.7.0)
 * PHP module mbstring
-* PHP module openssl
+* PHP module openssl (included with PHP >= 8.0)
 * PHP module posix
 * PHP module session
 * PHP module SimpleXML
@@ -60,7 +69,6 @@ Database connectors (pick the one for your database:)
 
 *Recommended* packages:
 
-* PHP module fileinfo (highly recommended, enhances file analysis performance)
 * PHP module bz2 (recommended, required for extraction of apps)
 * PHP module intl (increases language translation performance and fixes sorting
   of non-ASCII characters)
@@ -96,9 +104,17 @@ For preview generation (*optional*):
 * avconv or ffmpeg
 * OpenOffice or LibreOffice
 
+.. note::
+   If the preview generation of PDF files fails with a "not authorized" error message, you must adjust the imagick policy file.
+   See https://cromwell-intl.com/open-source/pdf-not-authorized.html
+
 For command line processing (*optional*):
 
 * PHP module pcntl (enables command interruption by pressing ``ctrl-c``)
+
+.. note::
+   You also need to ensure that pcntl_signal and pcntl_signal_dispatch are not disabled
+   in your php.ini file.
 
 For command line updater (*optional*):
 
@@ -220,7 +236,7 @@ in sharing links like ``https://example.org/nextcloud/index.php/s/Sv1b7krAUqmF8Q
 making URLs shorter and thus prettier.
 
 ``mod_env`` and ``mod_rewrite`` must be installed on your webserver and the :file:`.htaccess`
-must be writable by the HTTP user. Then you can set in the :file:`config.php` two variables::
+must be writable by the HTTP user. To enable ``mod_env`` and ``mod_rewrite``, run ``sudo a2enmod env`` and ``sudo a2enmod rewrite``. Then you can set in the :file:`config.php` two variables::
 
     'overwrite.cli.url' => 'https://example.org/nextcloud',
     'htaccess.RewriteBase' => '/nextcloud',
@@ -255,11 +271,11 @@ the default site. Open a terminal and run::
     service apache2 reload
 
 .. note:: Self-signed certificates have their drawbacks - especially when you
-          plan to make your Nextcloud server publicly accessible. You might
-          want to consider getting a certificate signed by a commercial signing
-          authority. Check with your domain name registrar or hosting service
-          for good deals on commercial certificates.
-
+          plan to make your Nextcloud server publicly accessible. Consider getting
+          a certificate signed by a signing authority. Check with your domain name
+          registrar or hosting service for good deals on commercial certificates.
+          Or use a free `Let's Encrypt <https://letsencrypt.org/>`_ ones.
+ 
 .. _installation_wizard_label:
 
 Installation wizard
@@ -299,18 +315,18 @@ ini file. This can be the case, for example, for the ``date.timezone`` setting.
 **php.ini - used by the Web server:**
 ::
 
-    /etc/php/7.4/apache2/php.ini
+    /etc/php/8.0/apache2/php.ini
   or
-    /etc/php/7.4/fpm/php.ini
+    /etc/php/8.0/fpm/php.ini
   or ...
 
 **php.ini - used by the php-cli and so by Nextcloud CRON jobs:**
 ::
 
-    /etc/php/7.4/cli/php.ini
+    /etc/php/8.0/cli/php.ini
 
 .. note:: Path names have to be set in respect of the installed PHP
-          (>= 7.3 or 7.4) as applicable.
+          (8.0, 8.1 or 8.2) as applicable.
 
 .. _php_fpm_tips_label:
 
@@ -330,7 +346,7 @@ Here are some example root paths for these ini/config files:
 +-----------------------+-----------------------+
 | Debian/Ubuntu/Mint    | CentOS/Red Hat/Fedora |
 +-----------------------+-----------------------+
-| ``/etc/php/7.4/fpm/`` | ``/etc/php-fpm.d/``   |
+| ``/etc/php/8.0/fpm/`` | ``/etc/php-fpm.d/``   |
 +-----------------------+-----------------------+
 
 In both examples, the ini/config file is called ``www.conf``, and depending on
@@ -357,7 +373,7 @@ you must add them.
 
 Alternatively it is possible to use the environment variables of your system by modifying::
 
-    /etc/php/7.4/fpm/pool.d/www.conf
+    /etc/php/8.0/fpm/pool.d/www.conf
 
 and uncommenting the line::
 
@@ -429,10 +445,10 @@ You can find all the available versions `here <https://shop.hanssonit.se/product
 
 For complete instructions and downloads see:
 
-- `Nextcloud VM (Github) <https://github.com/nextcloud/vm/>`_
+- `Nextcloud VM (GitHub) <https://github.com/nextcloud/vm/>`_
 - `Nextcloud VM (T&M Hansson IT) <https://www.hanssonit.se/nextcloud-vm/>`_
 
-.. note:: You can install the VM on several different operating systems as long as you can mount OVA, VMDK, or VHD/VHDX VM in your hypervisor. If you are using KVM then you need to install the VM from the scripts on Github. You can follow the `instructions in the README <https://github.com/nextcloud/vm#build-your-own-vm-or-install-on-a-vps>`_.
+.. note:: You can install the VM on several different operating systems as long as you can mount OVA, VMDK, or VHD/VHDX VM in your hypervisor. If you are using KVM then you need to install the VM from the scripts on GitHub. You can follow the `instructions in the README <https://github.com/nextcloud/vm#build-your-own-vm-or-install-on-a-vps>`_.
 
 .. _snaps_label:
 
@@ -476,16 +492,27 @@ redirected to the Nextcloud installer. Here a quick how-to:
    it becomes available through the web installer and the updater. This is done to
    spread the deployment of new major releases out over time.
 
+Installation on TrueNAS
+-----------------------
+
+See the `TrueNAS installation documentation <https://www.truenas.com/docs/core/solutions/integrations/nextcloud/>`_.
 
 Installation via install script
 -------------------------------
 
-One of the easiest ways of installing is to use the Nextcloud VM scripts. It's basically just two steps:
+One of the easiest ways of installing is to use the Nextcloud VM or NextcloudPI scripts. It's basically just two steps:
 
 1. Download the latest `installation script <https://github.com/nextcloud/vm/blob/master/nextcloud_install_production.sh/>`_.
 2. Run the script with::
 
     sudo bash nextcloud_install_production.sh
+    
+or
+
+1. Download the latest `installation script <https://raw.githubusercontent.com/nextcloud/nextcloudpi/master/install.sh/>`_.
+2. Run the script with::
+
+    sudo bash install.sh
 
 A guided setup will follow and the only thing you have to do it to follow the on screen instructions, when given to you.
 

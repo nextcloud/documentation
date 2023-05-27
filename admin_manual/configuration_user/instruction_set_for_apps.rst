@@ -2,8 +2,8 @@
 Instruction set for apps
 ========================
 
-Getlist of apps
----------------
+Get list of apps
+----------------
 
 Returns a list of apps installed on the Nextcloud server. Authentication is done 
 by sending a Basic HTTP Authorization 
@@ -94,6 +94,7 @@ XML output
       <author>Robin Appelman</author>
       <require>4.9</require>
       <shipped>true</shipped>
+      <active>true</active>
       <standalone></standalone>
       <default_enable></default_enable>
       <types>

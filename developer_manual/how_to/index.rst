@@ -4,6 +4,18 @@ How to test ...
 
 This page should explain how to test given features in Nextcloud.
 
+Email sending
+-------------
+
+::
+
+    docker run -d -p 1025:1025 -p 8025:8025 mailhog/mailhog
+    occ config:system:set mail_smtpmode --value=smtp
+    occ config:system:set mail_smtphost --value=127.0.0.1
+    occ config:system:set mail_smtpport --value=1025 --type=integer
+
+Then after having Nextcloud send some emails, open http://127.0.0.1:8025 to view them.
+
 Redis
 -----
 
@@ -12,8 +24,8 @@ First you need to install the `phpredis extension <https://github.com/phpredis/p
 
    pecl install redis
 
-Cluster
-~~~~~~~
+Redis Cluster
+-------------
 
 For a local Redis cluster setup there are some docker script collected in `this repository <https://github.com/Grokzen/docker-redis-cluster>`_. It boils down to clone the repo and run `make up`. Then the redis cluster is available at ``localhost:7000``.
 
@@ -29,10 +41,58 @@ Following ``config.php`` can be used::
       'failover_mode' => \RedisCluster::FAILOVER_ERROR,
    ],
 
-SMB
----
+Primary object store with S3
+----------------------------
 
 ::
+
+    docker run -p 9000:9000 minio/minio server /data
+
+The edit ``config.php`` and add the following section::
+
+    'objectstore' =>
+        array (
+            'class' => 'OC\\Files\\ObjectStore\\S3',
+            'arguments' =>
+            array (
+                'bucket' => 'nextcloud-dev',
+                'key' => 'minioadmin',
+                'secret' => 'minioadmin',
+                'hostname' => 'localhost',
+                'port' => '9000',
+                'use_ssl' => false,
+                'use_path_style' => true,
+            ),
+        ),
+
+S3 external storage
+-------------------
+
+::
+
+    occ app:enable files_external
+
+    docker run -p 9000:9000 minio/minio server /data
+
+Then add an external storage in the web UI using the following configuration:
+
+- Authentication type: Access key
+- Access key: minioadmin
+- Secret key: minioadmin
+- Bucket: nextcloud-dev
+- Hostname: localhost
+- Port: 9000
+- Region: leave empty
+- Storage class: leave empty
+- Enable SSL: false
+- Enable path style: yes
+
+SMB external storage
+--------------------
+
+::
+
+    occ app:enable files_external
 
     mkdir /tmp/samba
     docker run -it -p 139:139 -p 445:445 \
@@ -165,3 +225,38 @@ Test with Nextcloud
         - Secret key : secret (as above)
         - Document Editing Service address for internal requests from the server: https://localhost:4433/
         - Server address for internal requests from the Document Editing Service: http://192.168.1.95/nc16/ (needs to be real IP address, as localhost points to docker)
+
+WebAuthn without SSL
+--------------------
+
+`Chrome has the option to test WebAuthn with a fake device <https://developer.chrome.com/docs/devtools/webauthn/>`__. Browsers support WebAuthn on HTTPS protected sites and localhost domains. Unfortunately this is not supported by the used PHP library where the check for HTTPS needs to be commented for testing on non-HTTPS localhost development environments.
+
+::
+
+    diff --git a/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAssertionResponseValidator.php b/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAssertionResponseValidator.php
+    index 8400ba9c..49279cc7 100644
+    --- a/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAssertionResponseValidator.php
+    +++ b/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAssertionResponseValidator.php
+    @@ -152,7 +152,7 @@ class AuthenticatorAssertionResponseValidator
+                 Assertion::isArray($parsedRelyingPartyId, 'Invalid origin');
+                 if (!in_array($facetId, $securedRelyingPartyId, true)) {
+                     $scheme = $parsedRelyingPartyId['scheme'] ?? '';
+    -                Assertion::eq('https', $scheme, 'Invalid scheme. HTTPS required.');
+    +                #Assertion::eq('https', $scheme, 'Invalid scheme. HTTPS required.');
+                 }
+                 $clientDataRpId = $parsedRelyingPartyId['host'] ?? '';
+                 Assertion::notEmpty($clientDataRpId, 'Invalid origin rpId.');
+    diff --git a/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAttestationResponseValidator.php b/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAttestationResponseValidator.php
+    index f3e5a15d..3927bf23 100644
+    --- a/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAttestationResponseValidator.php
+    +++ b/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAttestationResponseValidator.php
+    @@ -150,7 +150,7 @@ class AuthenticatorAttestationResponseValidator
+     
+                 if (!in_array($facetId, $securedRelyingPartyId, true)) {
+                     $scheme = $parsedRelyingPartyId['scheme'] ?? '';
+    -                Assertion::eq('https', $scheme, 'Invalid scheme. HTTPS required.');
+    +                #Assertion::eq('https', $scheme, 'Invalid scheme. HTTPS required.');
+                 }
+     
+                 /* @see 7.1.6 */
+

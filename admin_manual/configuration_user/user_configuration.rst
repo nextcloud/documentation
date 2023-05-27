@@ -58,6 +58,12 @@ User accounts have the following properties:
   cannot upload or sync data. You have the the option to include external
   storage in user quotas.
 
+*Manager*
+  Every user can have one organizational manager. The manager property goes into
+  the system address book card of the user and is used for the Contacts app's
+  organization chart, for example. Setting a manager does **not** change any
+  authorization level of the user or their manager.
+
 Creating a new user
 -------------------
 
@@ -70,7 +76,7 @@ To create a user account:
 .. figure:: ../images/users-create.png
 
 Login names may contain letters (a-z, A-Z), numbers (0-9), dashes (-),
-underscores (_), periods (.) and at signs (@). After creating the user, you
+underscores (_), periods (.), spaces ( ) and at signs (@). After creating the user, you
 may fill in their **Full Name** if it is different than the login name, or
 leave it for the user to complete.
 
@@ -193,7 +199,8 @@ Hover your cursor over their name on the **Users** page until the "..."-menu ico
 appears at the far right. After clicking on it, you will see the **Disable** option.
 
 The user will not longer be able to access their Nextcloud until you enable them again.
-Keep in mind that the files, which were shared by this user will not longer be accessible.
+Also all external shares, via public link or email, will not be accessible.
+Internal shares will still be working, so that other users on Nextcloud can continue working.
 
 You will find all disabled users in the **disabled**-section on the left pane.
 Enabling users is as easy as disabling them. Just click on the "..."-menu, and
@@ -206,13 +213,13 @@ Deleting users
 
 Deleting a user is easy: hover your cursor over their name on the **Users** page
 until the "..."-menu icon appears at the far right. After clicking on it, you will
-see the **Delete** option. Clicking on it, delets a user with all their data immediately.
+see the **Delete** option. Clicking on it, deletes a user with all their data immediately.
 
 You'll see an undo button at the top of the page, which remains for some seconds.
 When the undo button is gone you cannot recover the deleted user.
 
 All of the files owned by the user are deleted as well, including all files they
-have shared. If you need to preserve the user's files and shares, you must first 
+have shared. If you need to preserve the user's files and shares, you must first
 download them from your Nextcloud Files page, which compresses them into a zip
 file, or use a sync client to copy them to your local computer. See
 :doc:`../configuration_files/file_sharing_configuration` to learn how to create

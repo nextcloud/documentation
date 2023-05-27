@@ -76,7 +76,7 @@ steps:
     a new update available. Go to the admin settings page and scroll to the
     section "Version". This section has a button to open the updater. This
     section as well as the update notification is only available if the update
-    notication app is enabled in the apps management.
+    notification app is enabled in the apps management.
 
 .. figure:: images/updater-1-update-available.png
 
@@ -159,6 +159,11 @@ Using the command line based updater
 
 The command line based updater works in the exact same way the web based
 updater works. The steps and checks are the very same.
+
+.. warning:: APCu is disabled by default on CLI which could cause issues with nextcloud's
+   command line based updater. Please make sure you set the ``apc.enable_cli`` to ``1`` on your ``php.ini``
+   config file or append ``--define apc.enable_cli=1`` to the command line based updater call
+   (like ``sudo -u www-data php --define apc.enable_cli=1 /var/www/nextcloud/updater/updater.phar``).
 
 The steps are basically the same as for the web based updater:
 

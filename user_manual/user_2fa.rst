@@ -94,3 +94,9 @@ just your password unless they also have support for two-factor authentication.
 To solve this, you should generate device specific passwords for them. See 
 :doc:`session_management` for more information on how to do this.
 
+
+Considerations
+--------------
+
+If you use WebAuthn to login to your Nextcloud be sure to not use the same token for 2FA. As this
+would mean you are again only using a single factor.

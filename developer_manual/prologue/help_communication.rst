@@ -9,15 +9,6 @@ Forums
 ------
 Communicate via our `forums <https://help.nextcloud.com>`_.
 
-IRC channels
-------------
-Chat with us on `IRC <http://www.irchelp.org/>`_. All channels are on **irc.freenode.net**:
-
-* Setup: **#nextcloud**
-* Development: **#nextcloud-dev**
-* Design: **#nextcloud-design**
-* Mobile: **#nextcloud-mobile**
-
 
 Maintainers
 -----------

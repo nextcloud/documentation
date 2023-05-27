@@ -4,7 +4,7 @@ Controllers
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-Controllers are used to connect :doc:`routes <routes>` with app logic. Think of it as callbacks that are executed once a request has come in. Controllers are defined inside the **lib/Controller/** directory.
+Controllers are used to connect :doc:`routes <routing>` with app logic. Think of it as callbacks that are executed once a request has come in. Controllers are defined inside the **lib/Controller/** directory.
 
 To create a controller, simply extend the Controller class and create a method that should be executed on a request:
 
@@ -15,13 +15,13 @@ To create a controller, simply extend the Controller class and create a method t
     namespace OCA\MyApp\Controller;
 
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Response;
 
     class AuthorController extends Controller {
 
-        public function index() {
+        public function index(): Response {
 
         }
-
     }
 
 
@@ -58,7 +58,7 @@ Getting request parameters
 
 Parameters can be passed in many ways:
 
-* Extracted from the URL using curly braces like **{key}** inside the URL (see :doc:`routes`)
+* Extracted from the URL using curly braces like **{key}** inside the URL (see :doc:`routing`)
 * Appended to the URL as a GET request (e.g. ?something=true)
 * application/x-www-form-urlencoded from a form or jQuery
 * application/json from a POST, PATCH or PUT request
@@ -71,12 +71,13 @@ All those parameters can easily be accessed by adding them to the controller met
     namespace OCA\MyApp\Controller;
 
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Response;
 
     class PageController extends Controller {
 
         // this method will be executed with the id and name parameter taken
         // from the request
-        public function doSomething($id, $name) {
+        public function doSomething(string $id, string $name): Response {
 
         }
 
@@ -90,13 +91,14 @@ It is also possible to set default parameter values by using PHP default method 
     namespace OCA\MyApp\Controller;
 
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Response;
 
     class PageController extends Controller {
 
         /**
          * @param int $id
          */
-        public function doSomething($id, $name='john', $job='author') {
+        public function doSomething(int $id, string $name='john', string $job='author'): Response {
             // GET ?id=3&job=killer
             // $id = 3
             // $name = 'john'
@@ -124,6 +126,7 @@ would be passed in as the string *'false'* which is not what one would expect. T
     namespace OCA\MyApp\Controller;
 
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Response;
 
     class PageController extends Controller {
 
@@ -132,7 +135,7 @@ would be passed in as the string *'false'* which is not what one would expect. T
          * @param bool $doMore
          * @param float $value
          */
-        public function doSomething($id, $doMore, $value) {
+        public function doSomething(int $id, bool $doMore, float $value): Response {
             // GET /index.php/apps/myapp?id=3&doMore=false&value=3.5
             // => $id = 3
             //    $doMore = false
@@ -171,10 +174,11 @@ It is possible to pass JSON using a POST, PUT or PATCH request. To do that the *
     namespace OCA\MyApp\Controller;
 
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Response;
 
     class PageController extends Controller {
 
-        public function create($name, $number, $publisher, $customFields) {
+        public function create(string $name, int $number, string $publisher, array $customFields): Response {
             // $name = 'test'
             // $number = 3
             // $publisher = true
@@ -194,11 +198,12 @@ Headers, files, cookies and environment variables can be accessed directly from 
     namespace OCA\MyApp\Controller;
 
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Response;
     use OCP\IRequest;
 
     class PageController extends Controller {
 
-        public function someMethod() {
+        public function someMethod(): Response {
             $type = $this->request->getHeader('Content-Type');  // $_SERVER['HTTP_CONTENT_TYPE']
             $cookie = $this->request->getCookie('myCookie');  // $_COOKIES['myCookie']
             $file = $this->request->getUploadedFile('myfile');  // $_FILES['myfile']
@@ -209,15 +214,53 @@ Headers, files, cookies and environment variables can be accessed directly from 
 
 Why should those values be accessed from the request object and not from the global array like $_FILES? Simple: `because it's bad practice <http://c2.com/cgi/wiki?GlobalVariablesAreBad>`_ and will make testing harder.
 
+.. _controller-use-session:
 
 Reading and writing session variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To set, get or modify session variables, the ISession object has to be injected into the controller.
 
+Nextcloud will read existing session data at the beginning of the request lifecycle and close the session afterwards. This means that in order to write to the session, the session has to be opened first. This is done implicitly when calling the set method, but would close immediately afterwards. To prevent this, the session has to be explicitly opened by calling the reopen method.
+
+Alternatively, you can use the ``#[UseSession]`` attribute to automatically open and close the session for you.
+
+.. code-block:: php
+    :emphasize-lines: 2,7
+
+    use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Attribute\UseSession;
+    use OCP\AppFramework\Http\Response;
+
+    class PageController extends Controller {
+
+        #[UseSession]
+        public function writeASessionVariable(): Response {
+            // ...
+        }
+
+    }
+
+.. note:: The ``#[UseSession]`` was added in Nextcloud 26 and requires PHP8.0 or later. If your app targets older releases and PHP7.x then use the deprecated ``@UseSession`` annotation.
+
+    .. code-block:: php
+        :emphasize-lines: 2
+
+        /**
+         * @UseSession
+         */
+        public function writeASessionVariable(): Response {
+            // ....
+        }
+
+
+In case the session may be read and written by concurrent requests of your application, keeping the session open during your controller method execution may be required to ensure that the session is locked and no other request can write to the session at the same time. When reopening the session, the session data will also get updated with the latest changes from other requests. Using the annotation will keep the session lock for the whole duration of the controller method execution.
+
+For additional information on how session locking works in PHP see the article about `PHP Session Locking: How To Prevent Sessions Blocking in PHP requests <https://ma.ttias.be/php-session-locking-prevent-sessions-blocking-in-requests/>`_.
+
 Then session variables can be accessed like this:
 
-.. note:: The session is closed automatically for writing, unless you add the @UseSession annotation!
+.. note:: The session is closed automatically for writing, unless you add the ``#[UseSession]`` attribute!
 
 .. code-block:: php
 
@@ -227,21 +270,20 @@ Then session variables can be accessed like this:
     use OCP\ISession;
     use OCP\IRequest;
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Attribute\UseSession;
+    use OCP\AppFramework\Http\Response;
 
     class PageController extends Controller {
 
-        private $session;
+        private ISession $session;
 
-        public function __construct($AppName, IRequest $request, ISession $session) {
-            parent::__construct($AppName, $request);
+        public function __construct($appName, IRequest $request, ISession $session) {
+            parent::__construct($appName, $request);
             $this->session = $session;
         }
 
-        /**
-         * The following annotation is only needed for writing session values
-         * @UseSession
-         */
-        public function writeASessionVariable() {
+        #[UseSession]
+        public function writeASessionVariable(): Response {
             // read a session variable
             $value = $this->session['value'];
 
@@ -274,7 +316,7 @@ Cookies can be set or modified directly on the response class:
          * Adds a cookie "foo" with value "bar" that expires after user closes the browser
          * Adds a cookie "bar" with value "foo" that expires 2015-01-01
          */
-        public function addCookie() {
+        public function addCookie(): TemplateResponse {
             $response = new TemplateResponse(...);
             $response->addCookie('foo', 'bar');
             $response->addCookie('bar', 'foo', new DateTime('2015-01-01 00:00'));
@@ -285,7 +327,7 @@ Cookies can be set or modified directly on the response class:
          * Invalidates the cookie "foo"
          * Invalidates the cookie "bar" and "bazinga"
          */
-        public function invalidateCookie() {
+        public function invalidateCookie(): TemplateResponse {
             $response = new TemplateResponse(...);
             $response->invalidateCookie('foo');
             $response->invalidateCookies(array('bar', 'bazinga'));
@@ -314,7 +356,7 @@ Returning JSON is simple, just pass an array to a JSONResponse:
 
     class PageController extends Controller {
 
-        public function returnJSON() {
+        public function returnJSON(): JSONResponse {
             $params = array('test' => 'hi');
             return new JSONResponse($params);
         }
@@ -332,7 +374,7 @@ Because returning JSON is such a common task, there's even a shorter way to do t
 
     class PageController extends Controller {
 
-        public function returnJSON() {
+        public function returnJSON(): array {
             return array('test' => 'hi');
         }
 
@@ -380,7 +422,7 @@ By default there is only a responder for JSON but more can be added easily:
 
     class PageController extends Controller {
 
-        public function returnHi() {
+        public function returnHi(): array {
 
             // XMLResponse has to be implemented
             $this->registerResponder('xml', function($value) {
@@ -415,7 +457,7 @@ Because returning values works fine in case of a success but not in case of fail
 
     class PageController extends Controller {
 
-        public function returnHi() {
+        public function returnHi(): DataResponse {
             try {
                 return new DataResponse(calculate_hi());
             } catch (\Exception $ex) {
@@ -429,7 +471,7 @@ Because returning values works fine in case of a success but not in case of fail
 Templates
 ^^^^^^^^^
 
-A :doc:`template <../view/templates>` can be rendered by returning a TemplateResponse. A TemplateResponse takes the following parameters:
+A :doc:`template <front-end/templates>` can be rendered by returning a TemplateResponse. A TemplateResponse takes the following parameters:
 
 * **appName**: tells the template engine in which app the template should be located
 * **templateName**: the name of the template inside the template/ folder without the .php extension
@@ -453,7 +495,7 @@ A :doc:`template <../view/templates>` can be rendered by returning a TemplateRes
 
     class PageController extends Controller {
 
-        public function index() {
+        public function index(): TemplateResponse {
             $templateName = 'main';  // will use templates/main.php
             $parameters = array('key' => 'hi');
             return new TemplateResponse($this->appName, $templateName, $parameters);
@@ -465,7 +507,7 @@ Public page templates
 ^^^^^^^^^^^^^^^^^^^^^
 
 For public pages, that are rendered to users who are not logged in to the
-Nextcloud instance, a :any:`PublicTemplateResponse <OCP\\AppFramework\\Http\\Template\\PublicTemplateResponse>` should be used, to load the
+Nextcloud instance, a ``OCP\\AppFramework\\Http\\Template\\PublicTemplateResponse`` should be used, to load the
 correct base template. It also allows adding an optional set of actions that
 will be shown in the top right corner of the public page.
 
@@ -481,11 +523,11 @@ will be shown in the top right corner of the public page.
 
     class PageController extends Controller {
 
-        public function index() {
+        public function index(): PublicTemplateResponse {
             $template = new PublicTemplateResponse($this->appName, 'main', []);
             $template->setHeaderTitle('Public page');
             $template->setHeaderDetails('some details');
-            $response->setHeaderActions([
+            $template->setHeaderActions([
                 new SimpleMenuAction('download', 'Label 1', 'icon-css-class1', 'link-url', 0),
                 new SimpleMenuAction('share', 'Label 2', 'icon-css-class2', 'link-url', 10),
             ]);
@@ -498,9 +540,9 @@ The header title and subtitle will be rendered in the header, next to the logo.
 The action with the highest priority (lowest number) will be used as the
 primary action, others will shown in the popover menu on demand.
 
-A :any:`SimpleMenuAction <OCP\\AppFramework\\Http\\Template\\SimpleMenuAction>` will be a link with an icon added to the menu. App
+A ``OCP\\AppFramework\\Http\\Template\\SimpleMenuAction`` will be a link with an icon added to the menu. App
 developers can implement their own types of menu renderings by adding a custom
-class implementing the :any:`IMenuAction <OCP\\AppFramework\\Http\\Template\\IMenuAction>` interface.
+class implementing the ``OCP\\AppFramework\\Http\\Template\\IMenuAction`` interface.
 
 
 
@@ -519,7 +561,7 @@ A redirect can be achieved by returning a RedirectResponse:
 
     class PageController extends Controller {
 
-        public function toGoogle() {
+        public function toGoogle(): RedirectResponse {
             return new RedirectResponse('https://google.com');
         }
 
@@ -540,7 +582,7 @@ A file download can be triggered by returning a DownloadResponse:
 
     class PageController extends Controller {
 
-        public function downloadXMLFile() {
+        public function downloadXMLFile(): DownloadResponse {
             $path = '/some/path/to/file.xml';
             $contentType = 'application/xml';
 
@@ -552,7 +594,7 @@ A file download can be triggered by returning a DownloadResponse:
 Creating custom responses
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If no premade Response fits the needed usecase, it is possible to extend the Response base class and custom Response. The only thing that needs to be implemented is the **render** method which returns the result as string.
+If no premade Response fits the needed use case, it is possible to extend the Response base class and custom Response. The only thing that needs to be implemented is the **render** method which returns the result as string.
 
 Creating a custom XMLResponse class could look like this:
 
@@ -565,14 +607,14 @@ Creating a custom XMLResponse class could look like this:
 
     class XMLResponse extends Response {
 
-        private $xml;
+        private array $xml;
 
         public function __construct(array $xml) {
             $this->addHeader('Content-Type', 'application/xml');
             $this->xml = $xml;
         }
 
-        public function render() {
+        public function render(): string {
             $root = new SimpleXMLElement('<root/>');
             array_walk_recursive($this->xml, array ($root, 'addChild'));
             return $xml->asXML();
@@ -679,7 +721,7 @@ The following policy for instance allows images, audio and videos from other dom
 OCS
 ^^^
 
-.. note:: This is purely for compatibility reasons. If you are planning to offer an external API, go for a :doc:`api` instead.
+.. note:: This is purely for compatibility reasons. If you are planning to offer an external API, go for a :doc:`../digging_deeper/rest_apis` instead.
 
 In order to ease migration from OCS API routes to the App Framework, an additional controller and response have been added. To migrate your API you can use the **OCP\\AppFramework\\OCSController** base class and return your data in the form of a DataResponse in the following way:
 
@@ -690,17 +732,13 @@ In order to ease migration from OCS API routes to the App Framework, an addition
     namespace OCA\MyApp\Controller;
 
     use OCP\AppFramework\Http\DataResponse;
+    use OCP\AppFramework\Http\Attribute\NoAdminRequired;
     use OCP\AppFramework\OCSController;
 
     class ShareController extends OCSController {
 
-        /**
-         * @NoAdminRequired
-         * @NoCSRFRequired
-         * @PublicPage
-         * @CORS
-         */
-        public function getShares() {
+        #[NoAdminRequired]
+        public function getShares(): DataResponse {
             return new DataResponse([
                 //Your data here
             ]);
@@ -710,7 +748,7 @@ In order to ease migration from OCS API routes to the App Framework, an addition
 
 The format parameter works out of the box, no intervention is required.
 
-In order to make routing work for OCS routes you need to add a seperate 'ocs' entry to the routing table of your app.
+In order to make routing work for OCS routes you need to add a separate 'ocs' entry to the routing table of your app.
 Inside these are normal routes.
 
 .. code-block:: php
@@ -755,7 +793,6 @@ Each response subclass has access to the **setStatus** method which lets you set
                 return new JSONResponse(array(), Http::STATUS_NOT_FOUND);
             }
         }
-
     }
 
 Authentication
@@ -765,37 +802,46 @@ By default every controller method enforces the maximum security, which is:
 
 * Ensure that the user is admin
 * Ensure that the user is logged in
+* Ensure that the user has passed the two-factor challenge, if applicable
 * Check the CSRF token
 
 Most of the time though it makes sense to also allow normal users to access the page and the PageController->index() method should not check the CSRF token because it has not yet been sent to the client and because of that can't work.
 
-To turn off checks the following *Annotations* can be added before the controller:
+To turn off checks the following *Attributes* can be added before the controller:
 
-* **@NoAdminRequired**: Also users that are not admins can access the page
-* **@NoCSRFRequired**: Don't check the CSRF token (use this wisely since you might create a security hole; to understand what it does see :doc:`../../general/security`)
-* **@PublicPage**: Everyone can access the page without having to log in
+* ``#[NoAdminRequired]``: Also users that are not admins can access the page
+* ``#[PublicPage]``: Everyone can access the page without having to log in
+* ``#[NoTwoFactorRequired]``: A user can access the page before the two-factor challenge has been passed (use this wisely and only in two-factor auth apps, e.g. to allow setup during login)
+* ``#[NoCSRFRequired]``: Don't check the CSRF token (use this wisely since you might create a security hole; to understand what it does see `CSRF in the security section <../prologue/security.html#cross-site-request-forgery>`__)
+
+.. note::
+
+    The attributes are only available in Nextcloud 27 or later. In older versions annotations with the same names exist:
+
+    * ``@NoAdminRequired`` instead of ``#[NoAdminRequired]``
+    * ``@PublicPage``` instead of ``#[PublicPage]``
+    * ``@NoTwoFactorRequired``` instead of ``#[NoTwoFactorRequired]``
+    * ``@NoCSRFRequired``` instead of ``#[NoCSRFRequired]``
 
 A controller method that turns off all checks would look like this:
 
 .. code-block:: php
+    :emphasize-lines: 6-7,10-11
 
     <?php
     namespace OCA\MyApp\Controller;
 
     use OCP\IRequest;
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
+    use OCP\AppFramework\Http\Attribute\PublicPage;
 
     class PageController extends Controller {
-
-        /**
-         * @NoAdminRequired
-         * @NoCSRFRequired
-         * @PublicPage
-         */
+        #[NoCSRFRequired]
+        #[PublicPage]
         public function freeForAll() {
 
         }
-
     }
 
 Rate limiting
@@ -805,28 +851,35 @@ Nextcloud supports rate limiting on a controller method basis. By default contro
 
 The native rate limiting will return a 429 status code to clients when the limit is reached and a default Nextcloud error page. When implementing rate limiting in your application, you should thus consider handling error situations where a 429 is returned by Nextcloud.
 
-To enable rate limiting the following *Annotations* can be added to the controller:
+To enable rate limiting the following *Attributes* can be added to the controller:
 
-* **@UserRateThrottle(limit=int, period=int)**: The rate limiting that is applied to logged-in users. If not specified Nextcloud will fallback to AnonUserRateThrottle.
-* **@AnonRateThrottle(limit=int, period=int)**: The rate limiting that is applied to guests.
+* ``#[UserRateLimit(limit: int, period: int)]``: The rate limiting that is applied to logged-in users. If not specified Nextcloud will fallback to ``AnonRateLimit`` if available.
+* ``#[AnonRateLimit(limit: int, period: int)]``: The rate limiting that is applied to guests.
+
+.. note::
+
+    The attributes are only available in Nextcloud 27 or later. In older versions the ``@UserRateThrottle(limit=int, period=int)`` and ``@AnonRateThrottle(limit=int, period=int)`` annotation can be used. If both are present, the attribute will be considered first.
 
 A controller method that would allow five requests for logged-in users and one request for anonymous users within the last 100 seconds would look as following:
 
 .. code-block:: php
+    :emphasize-lines: 14-15
 
     <?php
     namespace OCA\MyApp\Controller;
 
     use OCP\IRequest;
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Attribute\AnonRateLimit;
+    use OCP\AppFramework\Http\Attribute\UserRateLimit;
 
     class PageController extends Controller {
 
         /**
          * @PublicPage
-         * @UserRateThrottle(limit=5, period=100)
-         * @AnonRateThrottle(limit=1, period=100)
          */
+        #[UserRateLimit(limit: 5, period: 100)]
+        #[AnonRateLimit(limit: 1, period: 100)]
         public function rateLimitedForAll() {
 
         }
@@ -839,35 +892,69 @@ Nextcloud supports brute-force protection on an action basis. By default control
 
 The native brute-force protection will slow down requests if too many violations have been found. This slow down will be applied to all requests against a brute-force protected controller with the same action from the affected IP.
 
-To enable brute force protection the following *Annotation* can be added to the controller:
+To enable brute force protection the following *Attribute* can be added to the controller:
 
-* **@BruteForceProtection(action=string)**: "string" is the name of the action. Such as "login" or "reset". Brute-force attempts are on a per-action basis; this means if a violation for the "login" action is triggered, other actions such as "reset" or "foobar" are not affected.
+* ``#[BruteForceProtection(action: 'string')]``: "string" is the name of the action. Such as "login" or "reset". Brute-force attempts are on a per-action basis; this means if a violation for the "login" action is triggered, other actions such as "reset" or "foobar" are not affected.
 
-Then the **throttle()** method has to be called on the response in case of a violation. Doing so will increase the throttle counter and make following requests slower.
+.. note::
 
-A controller method that would employ brute-force protection with an action of "foobar" would look as following:
+    The attribute is only available in Nextcloud 27 or later. In older versions the ``@BruteForceProtection(action=string)`` annotation can be used, but that does not allow multiple assignments to a single controller method.
+
+Then the **throttle()** method has to be called on the response in case of a violation. Doing so will increase the throttle counter and make following requests slower, until a slowness of roughly 30 seconds is reached and the controller returns a ``429 Too Many Requests`` status without further processing the request.
+
+A controller method that would implement brute-force protection with an action of "foobar" would look as following:
 
 .. code-block:: php
+    :emphasize-lines: 11,18
 
     <?php
     namespace OCA\MyApp\Controller;
 
     use OCP\IRequest;
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Attribute\BruteForceProtection;
     use OCP\AppFramework\Http\TemplateResponse;
 
     class PageController extends Controller {
 
-        /**
-         * @BruteForceProtection(action=foobar)
-         */
-        public function rateLimitedForAll() {
+        #[BruteForceProtection(action: 'foobar')]
+        public function bruteforceProtected(): TemplateResponse {
             $templateResponse = new TemplateResponse(…);
             // In case of a violation increase the throttle counter
             // note that $this->auth->isSuccessful here is just an
             // example.
-            if(!$this->auth->isSuccessful()) {
+            if (!$this->auth->isSuccessful()) {
                  $templateResponse->throttle();
+            }
+            return $templateResponse;
+        }
+    }
+
+A controller can also have multiple factors to brute force against. In this case you can specify multiple attributes and then in the throttle you specify the action which was violated. This is especially useful when a secret, in the sample below token, could be guessed on multiple endpoints e.g. a share token on the API level, preview endpoint, frontend controller, etc. while another secret (password), is specific to this one controller method.
+
+.. code-block:: php
+    :emphasize-lines: 11-12,16,20
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\IRequest;
+    use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Attribute\BruteForceProtection;
+    use OCP\AppFramework\Http\TemplateResponse;
+
+    class PageController extends Controller {
+
+        #[BruteForceProtection(action: 'token')]
+        #[BruteForceProtection(action: 'password')]
+        public function getPasswordProtectedShare(string $token, string $password): TemplateResponse {
+            $templateResponse = new TemplateResponse(…);
+            if (!$this->shareManager->getByToken($token)) {
+                $templateResponse->throttle(['action' => 'token']);
+            }
+            // …
+            if (!$share->verifyPassword($password)) {
+                $templateResponse->throttle(['action' => 'password']);
             }
             return $templateResponse;
         }

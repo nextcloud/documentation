@@ -21,7 +21,7 @@ page to enter the password.
 A public page can also call other endpoints. These endpoints operate very similarly
 with the difference that if the user is not properly authenticated it will throw a 404.
 
-It is required that you have a parameter (probaby in your url) with the ``token``. As an example
+It is required that you have a parameter (probably in your url) with the ``token``. As an example
 your ``routes.php`` could look like:
 
 .. code-block:: php
@@ -46,6 +46,7 @@ As said the PublicShareController is a very basic controller. You need to implem
 
 	namespace OCA\Share_Test\Controller;
 
+	use OCP\AppFramework\Http\Attribute\PublicPage;
 	use OCP\AppFramework\PublicShareController;
 
 	class PublicAPIController extends PublicShareController {
@@ -73,8 +74,10 @@ As said the PublicShareController is a very basic controller. You need to implem
 		}
 
 		/**
-		 * Your normal controller function
+		 * Your normal controller function. The following annotation will allow guests
+		 * to open the page as well
 		 */
+		#[PublicPage]
 		public function get() {
 			// Work your magic
 		}
@@ -92,7 +95,7 @@ On some pages password authentication might be required (just like the when you
 share a file via public link with a password). In this case you need
 to extend a different provider.
 
-The AuthPublicShareController requiers in addition to the PublicShareController that
+The AuthPublicShareController requires in addition to the PublicShareController that
 you also implement the ``verifyPassword`` and ``showShare`` functions.
 
 .. code-block: php
@@ -102,6 +105,7 @@ you also implement the ``verifyPassword`` and ``showShare`` functions.
 	namespace OCA\Share_Test\Controller;
 
 	use OCP\AppFramework\AuthPublicShareController;
+	use OCP\AppFramework\Http\Attribute\PublicPage;
 
 	class PublicDisplayController extends AuthPublicShareController {
 		/**
@@ -139,8 +143,10 @@ you also implement the ``verifyPassword`` and ``showShare`` functions.
 		}
 
 		/**
-		 * Your normal controller function
+		 * Your normal controller function. The following annotation will allow guests
+		 * to open the page as well
 		 */
+		#[PublicPage]
 		public function get() {
 			// Work your magic
 		}
@@ -148,7 +154,7 @@ you also implement the ``verifyPassword`` and ``showShare`` functions.
 
 
 Additionally you can overwrite the ``showAuthenticate`` and ``showAuthFailed`` functions
-if you do now want to use the default authentication pages.
+if you do not want to use the default authentication pages.
 
 The ``authFailed`` and ``authSucceeded`` functions can be overwritten as well and are
 called depending on the if authentication passed or not. You can handle additional logging

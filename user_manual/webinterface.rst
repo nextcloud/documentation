@@ -11,23 +11,22 @@ your Nextcloud server URL (e.g. cloud.example.com) and enter your username and p
 Web browser requirements
 ------------------------
 
-For the best experience with the Nextcloud web interface, we recommend that you use the 
-latest and supported version of a browser from this list:
+For the best experience with the Nextcloud web interface, we recommend that
+you use the latest and supported version of a browser from this list:
 
-.. No need to translate
-* Microsoft **Internet Explorer**
-.. No need to translate
+* Google **Chrome**/Chromium (Desktop and Android)
+* Mozilla **Firefox** (Desktop and Android)
+* Apple **Safari** (Desktop and iOS)
 * Microsoft **Edge**
-.. No need to translate
-* Mozilla **Firefox**
-.. No need to translate
-* Google **Chrome**/Chromium
-.. No need to translate
-* Apple **Safari**
+
+.. note:: Not all versions are supported. Nextcloud is tested and built to work with `these versions only.
+   <https://browserslist.dev/?q=PjAuMjUlLCBub3Qgb3BfbWluaSBhbGwsIG5vdCBkZWFkLCBGaXJlZm94IEVTUg==>`_
 
 .. note:: If you want to use Nextcloud Talk you need to run Mozilla **Firefox** 52+
-   or Google **Chrome**/Chromium 49+ to have the full experience with video calls and 
-   screensharing. Google **Chrome**/Chromium requires a additional plugin for screensharing.
+   or Google **Chrome**/Chromium 49+ to have the full experience with video calls and
+   screensharing.
+
+.. warning:: Microsoft **Internet Explorer** is **NOT** supported.
 
 Navigating the main user interface
 ----------------------------------
@@ -37,19 +36,19 @@ By default, the Nextcloud Web interface opens to your Dashboard or Files page:
 .. figure:: images/files_page.png
      :scale: 75%
      :alt: The main Files view.
-     
-In Files you can add, remove, and share files, and make changes based on the access privileges
-set by you (if you are administering the server) or by your server administrator.
+
+In Files you can add, remove, and share files, and the server administrator
+can change access privileges.
 
 The Nextcloud user interface contains the following fields and functions:
 
 * **Apps Selection Menu** (1): Located in the upper left corner, you'll find all
   your apps which are available on your instance of Nextcloud. Clicking on an
-  apps icon will redirect you to the app.
+  app icon will redirect you to the app.
 
 * **Apps Information** field (2): Located in the left sidebar, this provides
   filters and tasks associated with your selected app. For example, when you
-  are using the Files apps you have a special set of filters for quickly
+  are using the Files app you have a special set of filters for quickly
   finding your files, such as files that have been shared with you, and files
   that you have shared with others. You'll see different items for other apps.
 
@@ -64,9 +63,9 @@ The Nextcloud user interface contains the following fields and functions:
   enables you to create new files, new folders, or upload files.
 
 .. note:: You can also drag and drop files from your file manager into the
-   Files Application View to upload them to your instance. 
+   Files Application View to upload them to your instance.
 
-* **Search** field (6): Click on the Magnifier in the upper right corner 
+* **Search** field (6): Click on the Magnifier in the upper right corner
   to search for files and entries of the current app.
 
 * **Contacts Menu** (7): Gives you an overview about your contacts and users on

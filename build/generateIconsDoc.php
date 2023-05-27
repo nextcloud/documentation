@@ -38,7 +38,7 @@ if (!command_exist('svgexport')) {
 }
 
 $sourceDirectory = __DIR__ . '/server';
-$destinationDirectory = __DIR__ . '/../developer_manual/design/';
+$destinationDirectory = __DIR__ . '/../developer_manual/html_css_design/';
 
 // Init scss compiler
 $scss = new Compiler();

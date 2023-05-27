@@ -17,4 +17,4 @@ Files & synchronization
    version_control
    projects
    transfer_ownership
-
+   federated_cloud_sharing 

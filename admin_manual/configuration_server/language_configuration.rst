@@ -34,7 +34,7 @@ If users shall be unable to change their language, but users have different lang
 this value can be set to ``true`` instead of a language code.
 
 .. note:: Please check `Transifex language codes
-   <https://www.transifex.com/explore/languages/>`_ for the list of valid language
+   <https://explore.transifex.com/languages/>`_ for the list of valid language
    codes.
 
 Default locale

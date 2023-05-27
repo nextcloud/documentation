@@ -150,11 +150,93 @@ The class to be used is :code:`\\OC\\Files\\ObjectStore\\S3`
           will be made with http://bucket.hostname.domain/, but with path style enabled,
           requests are made with http://hostname.domain/bucket instead.
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Microsoft Azure Blob Storage
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Azure Blob Storage backend mounts a container on Microsoft's Azure Blob Storage into the
+virtual filesystem.
+
+The class to be used is :code:`\\OC\\Files\\ObjectStore\\Azure`
+
+::
+
+	'objectstore' => [
+		'class' => '\\OC\\Files\\ObjectStore\\Azure',
+		'arguments' => [
+			'container' => 'nextcloud',
+			'autocreate' => true,
+			'account_name' => 'account_name',
+			'account_key' => 'xxxxxxxxxx'
+		],
+	],
+
 ------------------------
 Multibucket Object Store
 ------------------------
 
-It's possible to configure Nextcloud to distribute its data over multiple buckets
-for scalability purpose. You can find out more information about upscaling with
-object storage and Nextcloud in the
+It's possible to configure Nextcloud to distribute the data over multiple buckets
+for scalability purposes.
+
+To setup multiple buckets, use :code:`'objectstore_multibucket'` storage backend
+in :code:`config.php`:
+
+::
+
+	'objectstore_multibucket' => [
+		'class' => 'Object\\Storage\\Backend\\Class',
+		'arguments' => [
+			// optional, defaults to 64
+			'num_buckets' => 64,
+			// will be postfixed by an integer in the range from 0 to (num_nuckets-1)
+			'bucket' => 'nextcloud_',
+			...
+		],
+	],
+
+Multibucket object store backend maps every user to a range of buckets and saves
+all files for that user in their corresponding bucket.
+
+.. note:: While it is possible to change the number of buckets used by an existing Nextcloud
+          instance, the user-to-buckets mapping is only created once, so only newly created
+          users will be mapped to the updated range of buckets.
+
+You can find out more information about upscaling with object storage and Nextcloud in the
 `Nextcloud customer portal <https://portal.nextcloud.com/article/object-store-as-primary-storage-16.html>`_.
+
+
+------------------------
+SSE-C encryption support
+------------------------
+
+Nextcloud supports server side encryption, also known as `SSE-C <http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html>`_, with compatible S3 bucket provider. The encryption and decryption happens on the S3 bucket side with a key provided by the Nextcloud server.
+
+The key can be specified with the :code:`sse_c_key` parameter which needs to be provided as a base64 encoded string with a maximum length of 32 bytes. A random key could be generated using the the following command:
+
+::
+
+	openssl rand 32 | base64
+
+
+The following example shows how to configure the S3 object store with SSE-C encryption support in the objectstore section of the Nextcloud config.php file:
+
+::
+
+	'objectstore' => [
+		array (
+			'class' => 'OC\\Files\\ObjectStore\\S3',
+			'arguments' =>
+			array (
+				'bucket' => 'nextcloud',
+				'key' => 'nextcloud',
+				'secret' => 'nextcloud',
+				'hostname' => 's3',
+				'port' => '443',
+				'use_ssl' => true,
+				'use_path_style' => true,
+				'autocreate' => true,
+				'verify_bucket_exists' => true,
+				'sse_c_key' => 'o9d3Q9tHcPMv6TIpH53MSXaUmY91YheZRwuIhwCFRSs=',
+			),
+		);
+	],

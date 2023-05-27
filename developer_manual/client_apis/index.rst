@@ -7,12 +7,12 @@ Clients and Client APIs
 .. toctree::
     :maxdepth: 2
 
-    android_library/index
-    WebDAV/index
-    OCS/index
-    LoginFlow/index
-    RemoteWipe/index
-    ocs-share-api
-    ocs-sharee-api
+    general
     activity-api
-    
+    android_library/index
+    files
+    LoginFlow/index
+    OCS/index
+    RemoteWipe/index
+    WebDAV/index
+

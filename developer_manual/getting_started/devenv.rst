@@ -6,12 +6,17 @@
 Development environment
 =======================
 
-Please follow the steps on this page to set up your development environment.
+We have a tutorial available on setting up your development environment using docker. You can find the tutorial `here <https://cloud.nextcloud.com/s/iyNGp8ryWxc7Efa?path=%2F>`_. We recommend you to follow that tutorial. 
+
+This page describes how to set up your development environment without docker.
+
+
+Please follow the steps on this page to set up your development environment manually.
 
 Set up Web server and database
 ------------------------------
 
-First `set up your Web server and database <https://docs.nextcloud.org/server/stable/admin_manual/installation/index.html>`_ (**Section**: Manual Installation - Prerequisites).
+First `set up your Web server and database <https://docs.nextcloud.com/server/latest/admin_manual/installation/index.html>`_ (**Section**: Manual Installation - Prerequisites).
 
 .. TODO ON RELEASE: Update version number above on release
 
@@ -20,7 +25,7 @@ Get the source
 
 There are two ways to obtain Nextcloud sources:
 
-* Using the `stable version <https://docs.nextcloud.org/server/stable/admin_manual/#installation>`_
+* Using the `stable version <https://docs.nextcloud.com/server/latest/admin_manual/installation/index.html>`_
 * Using the development version from `GitHub`_ which will be explained below.
 
 .. TODO ON RELEASE: Update version number above on release

@@ -16,7 +16,7 @@ Thank you for helping Nextcloud by reporting bugs. Before submitting an issue, p
 * If the issue is with the Nextcloud desktop client, report it to the `Desktop repository`_
 * If the issue is with the Nextcloud Android client, report it to the `Android repository`_
 * If the issue is with the Nextcloud iOS client, report it to the `iOS repository`_
-* If the issue with with a Nextcloud app, report it to where that app is developed
+* If the issue is with a Nextcloud app, report it to where that app is developed. See `App Store`_ page for related links.
 * If the app is listed in our `main GitHub organization`_ report it to the correct sub
   repository
 
@@ -26,4 +26,5 @@ Thank you for helping Nextcloud by reporting bugs. Before submitting an issue, p
 .. _Desktop repository: https://github.com/nextcloud/desktop/issues
 .. _Android repository: https://github.com/nextcloud/android/issues
 .. _iOS repository: https://github.com/nextcloud/ios/issues
+.. _App Store: https://apps.nextcloud.com/
 .. _main GitHub organization: https://github.com/nextcloud

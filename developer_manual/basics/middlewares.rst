@@ -6,10 +6,10 @@ Middlewares
 
 Middleware is logic that is run before and after each request and is modelled after `Django's Middleware system <https://docs.djangoproject.com/en/dev/topics/http/middleware/>`_. It offers the following hooks:
 
-* **beforeController**: This is executed before a controller method is being executed. This allows you to plug additional checks or logic before that method, like for instance security checks
-* **afterException**: This is being run when either the beforeController method or the controller method itself is throwing an exception. The middleware is asked in reverse order to handle the exception and to return a response. If the middleware can't handle the exception, it throws the exception again
-* **afterController**: This is being run after a successful controller method call and allows the manipulation of a Response object. The middleware is run in reverse order
-* **beforeOutput**: This is being run after the response object has been rendered and allows the manipulation of the outputted text. The middleware is run in reverse order
+* ``beforeController``: This is executed before a controller method is being executed. This allows you to plug additional checks or logic before that method, like for instance security checks
+* ``afterException``: This is being run when either the beforeController method or the controller method itself is throwing an exception. The middleware is asked in reverse order to handle the exception and to return a response. If the middleware can't handle the exception, it throws the exception again
+* ``afterController``: This is being run after a successful controller method call and allows the manipulation of a Response object. The middleware is run in reverse order
+* ``beforeOutput``: This is being run after the response object has been rendered and allows the manipulation of the outputted text. The middleware is run in reverse order
 
 To generate your own middleware, simply inherit from the Middleware class and overwrite the methods that should be used.
 
@@ -28,44 +28,111 @@ To generate your own middleware, simply inherit from the Middleware class and ov
       /**
        * this replaces "bad words" with "********" in the output
        */
-      public function beforeOutput($controller, $methodName, $output){
+      public function beforeOutput($controller, $methodName, $output): string {
           return str_replace('bad words', '********', $output);
       }
 
   }
 
-The middleware can be registered in the :doc:`container` and added using the **registerMiddleware** method:
+The middleware can be registered in the app's ``Application`` class:
 
 .. code-block:: php
+    :caption: lib/AppInfo/Application.php
+    :emphasize-lines: 20
+
+    <?php
+
+    declare(strict_types=1);
+
+    namespace OCA\MyApp\AppInfo;
+
+    use OCA\MyApp\Middleware\CensorMiddleware;
+    use OCP\AppFramework\App;
+    use OCP\AppFramework\Bootstrap\IBootContext;
+    use OCP\AppFramework\Bootstrap\IBootstrap;
+    use OCP\AppFramework\Bootstrap\IRegistrationContext;
+
+    class Application extends App implements IBootstrap {
+
+        public function __construct() {
+            parent::__construct('myapp');
+        }
+
+        public function register(IRegistrationContext $context): void {
+            $context->registerMiddleware(CensorMiddleware::class);
+        }
+
+        public function boot(IBootContext $context): void {}
+
+    }
+
+.. _global_middlewares:
+
+Global Middlewares
+------------------
+
+.. versionadded:: 26
+
+Registered middlewares will only intercept requests of the same app by default. To make a middleware *global* and trigger for other apps' middlewares, add `true` as second argument of the ``registerMiddleware`` call:
+
+.. code-block:: php
+    :caption: lib/AppInfo/Application.php
+    :emphasize-lines: 20
+
+    <?php
+
+    declare(strict_types=1);
+
+    namespace OCA\MyApp\AppInfo;
+
+    use OCA\MyApp\Middleware\MonitoringMiddleware;
+    use OCP\AppFramework\App;
+    use OCP\AppFramework\Bootstrap\IBootContext;
+    use OCP\AppFramework\Bootstrap\IBootstrap;
+    use OCP\AppFramework\Bootstrap\IRegistrationContext;
+
+    class Application extends App implements IBootstrap {
+
+        public function __construct() {
+            parent::__construct('myapp');
+        }
+
+        public function register(IRegistrationContext $context): void {
+            $context->registerMiddleware(MonitoringMiddleware::class, true);
+        }
+
+        public function boot(IBootContext $context): void {}
+
+    }
+
+Dependency Injection Container Registration
+-------------------------------------------
+
+.. deprecated:: 20
+
+Middlewares can also be added using the **registerMiddleware** method of the container:
+
+.. code-block:: php
+  :caption: lib/AppInfo/Application.php
+  :emphasize-lines: 14-17
 
   <?php
 
   namespace OCA\MyApp\AppInfo;
 
-  use \OCP\AppFramework\App;
-
-  use \OCA\MyApp\Middleware\CensorMiddleware;
+  use OCP\AppFramework\App;
+  use OCP\IServerContainer;
+  use OCA\MyApp\Middleware\CensorMiddleware;
 
   class MyApp extends App {
 
-      /**
-       * Define your dependencies in here
-       */
-      public function __construct(array $urlParams=array()){
+      public function __construct(array $urlParams = []) {
           parent::__construct('myapp', $urlParams);
   
           $container = $this->getContainer();
-  
-          /**
-           * Middleware
-           */
-          $container->registerService('CensorMiddleware', function($c){
-              return new CensorMiddleware();
-          });
-      
+
           // executed in the order that it is registered
-          $container->registerMiddleware('CensorMiddleware');
-  
+          $container->registerMiddleware(CensorMiddleware::class);
       }
   }
 
@@ -86,9 +153,9 @@ Sometimes it is useful to conditionally execute code before or after a controlle
 
   namespace OCA\MyApp\Middleware;
 
-  use \OCP\AppFramework\Middleware;
-  use \OCP\AppFramework\Utility\IControllerMethodReflector;
-  use \OCP\AppFramework\Http\Response;
+  use OCP\AppFramework\Middleware;
+  use OCP\AppFramework\Utility\IControllerMethodReflector;
+  use OCP\AppFramework\Http\Response;
 
   class HeaderMiddleware extends Middleware {
 
@@ -101,48 +168,12 @@ Sometimes it is useful to conditionally execute code before or after a controlle
     /**
      * Add custom header if @MyHeader is used
      */
-    public function afterController($controller, $methodName, Response $response){
+    public function afterController($controller, $methodName, Response $response): Response {
         if($this->reflector->hasAnnotation('MyHeader')) {
             $response->addHeader('My-Header', 3);
         }
         return $response;
     }
-
-  }
-
-Now adjust the container to inject the reflector:
-
-.. code-block:: php
-
-  <?php
-
-  namespace OCA\MyApp\AppInfo;
-
-  use \OCP\AppFramework\App;
-
-  use \OCA\MyApp\Middleware\HeaderMiddleware;
-
-  class MyApp extends App {
-
-      /**
-       * Define your dependencies in here
-       */
-      public function __construct(array $urlParams=array()){
-          parent::__construct('myapp', $urlParams);
-  
-          $container = $this->getContainer();
-  
-          /**
-           * Middleware
-           */
-          $container->registerService('HeaderMiddleware', function($c){
-              return new HeaderMiddleware($c->query('ControllerMethodReflector'));
-          });
-
-          // executed in the order that it is registered
-          $container->registerMiddleware('HeaderMiddleware');
-      }
-
   }
 
 .. note:: An annotation always starts with an uppercase letter

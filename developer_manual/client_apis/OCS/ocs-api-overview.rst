@@ -25,7 +25,7 @@ User metadata
 
 Since: 11.0.2, 12.0.0
 
-This request returns the available metadata of a user. Admin users can see the information of all users, while a default user only can access it's own metadata.
+This request returns the available metadata of a user. Admin users can see the information of all users, while a default user only can access their own metadata.
 
 .. code::
 
@@ -59,6 +59,7 @@ This request returns the available metadata of a user. Admin users can see the i
 			</quota>
 			<email>user@foo.de</email>
 			<displayname>John Doe</displayname>
+			<display-name>John Doe</display-name>
 			<phone></phone>
 			<address></address>
 			<website>https://example.com</website>
@@ -218,12 +219,21 @@ An example curl command would be:
 
      curl -i -u master -X GET -H "OCS-APIRequest: true" 'https://my.nextcloud/ocs/v2.php/core/autocomplete/get?search=JOANNE%40EMAIL.ISP&itemType=%20&itemId=%20&shareTypes[]=8&limit=2'
 
-That would look for JOANNE@EMAIL.ISP as guest user. Maximum 2 results to be returned for a regular user, the shareTypes array would carry only "0".
-``itemType`` and ``itemId`` are left (set to a white space), essentially they are to give context about the use case, so sorters can do their work (like who 
-commented last). It can be an option for filtering on a later stage but you can also leave them out as per the below example.
+That would look for JOANNE@EMAIL.ISP as guest user. Maximum 2 results to be returned for a regular user, the
+shareTypes array would carry only "8". ``itemType`` and ``itemId`` are left out (set to a white space),
+essentially they are to give context about the use case, so sorters can do their work (like who commented last).
+It can be an option for filtering on a later stage but you can also leave them out as per the below example.
 
 .. code::
 
      curl -i -u master -X GET -H "OCS-APIRequest: true" 'https://my.nextcloud/ocs/v2.php/core/autocomplete/get?search=JOANNE%40EMAIL.ISP&shareTypes[]=8&limit=2'
 
-The shareType would default to regular users if you left it out), the limit defaults to 10.
+The shareType defaults to regular users if you left it out), the limit defaults to 10.
+
+Filtering the auto-complete results
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In case needed, you can also further filter the auto-complete results on the PHP side using the
+``OCP\Collaboration\AutoComplete\AutoCompleteEvent`` event. The event gives you access to the current
+result set, the item and share types and some more information that you can use to e.g. limit the autocomplete
+results to users that are actually in the current chat conversation.

@@ -8,6 +8,12 @@ This document introduces some common considerations and tips on improving perfor
 
 .. note::**Tips welcome**: More tips and ideas on performance are very welcome!
 
+PHP Performance
+---------------
+
+* Autoloader: Consider using an :ref:`optimized class loader<app-custom-classloader>`. The application code does not have to change for this optimization.
+* Heavy background jobs: Consider marking :ref:`background jobs <app-backgroundjobs>` as :ref:`time insensitive <app-backgroundjobs-time-sensitivity>` if they can be run at off-peak times with lower system load, e.g. at night.
+
 Database performance
 --------------------
 
@@ -54,14 +60,19 @@ If you increase the long_query_time to 100 and add log-queries-not-using-indexes
   slow_query_log_file = /var/log/mysql/mysql-slow.log
   long_query_time=100
 
+Cached data
+^^^^^^^^^^^
+
+Starting from Nextcloud 26, user and group display names now are cached. Use the ``IUserManager::getDisplayName`` or ``IGroupManager::getDisplayName`` functions to avoid roundtrips to the database.
+
 Measuring performance
 ^^^^^^^^^^^^^^^^^^^^^
 
-If you do bigger changes in the architecture or the database structure you should always double check the positive or negative performance impact. There are a `few nice small scripts <https://github.com/owncloud/administration/tree/master/performance-tests>`_ that can be used for this.
+If you do bigger changes in the architecture or the database structure you should always double check the positive or negative performance impact.
 
 The recommendation is to automatically do 10000 PROPFINDs or file uploads, measure the time and compare the time before and after the change.
 
 Getting help
 ------------
 
-If you need help with performance or other issues please ask on our `forums <https://help.nextcloud.com>`_ or on our IRC channel **#nextcloud-dev** on **irc.freenode.net**.
+If you need help with performance or other issues please ask on our `forums <https://help.nextcloud.com>`_.

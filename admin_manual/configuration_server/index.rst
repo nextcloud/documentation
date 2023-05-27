@@ -19,7 +19,10 @@ Nextcloud configuration
    reverse_proxy_configuration
    bruteforce_configuration
    automatic_configuration
+   text_configuration
    theming
    oauth2
+   admin_delegation_configuration
+   domain_change
 
 .. Intentional disabled antivirus_configuration

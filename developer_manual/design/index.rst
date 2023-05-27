@@ -1,13 +1,12 @@
-=================
-Design guidelines
-=================
+===========================
+Nextcloud design guidelines
+===========================
 
-.. toctree::
+.. toctree:: 
+		:maxdepth: 2
 
-   navigation
-   content
-   list
-   popovermenu
-   html
-   css
-   icons
+		introduction
+		foundations
+		layout
+		layoutcomponents
+		atomiccomponents

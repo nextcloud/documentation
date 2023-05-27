@@ -102,15 +102,66 @@ more processes to run in parallel to handle the requests.
 Enable PHP OPcache
 ------------------
 
-The `OPcache <https://php.net/manual/en/intro.opcache.php>`_ improves the performance of PHP applications by caching precompiled bytecode. We recommend at least the following settings:
+The `OPcache <https://php.net/manual/en/intro.opcache.php>`_ improves the performance of PHP applications by caching precompiled bytecode. The default OPcache settings are usually sufficient for Nextcloud code to be fully cached. If any cache size limit is reached by more than 90%, the admin panel will show a related warning. Nextcloud strictly requires code comments to be preserved in opcode, which is the default. But in case PHP settings are changed on your system, you may need set the following:
 
 .. code:: ini
 
-  opcache.enable = 1
-  opcache.interned_strings_buffer = 8
-  opcache.max_accelerated_files = 10000
-  opcache.memory_consumption = 128
   opcache.save_comments = 1
-  opcache.revalidate_freq = 1
 
-For more details check out the `official documentation <https://php.net/manual/en/opcache.configuration.php>`_ or `this blog post about some recommended settings <https://www.scalingphpbook.com/blog/2014/02/14/best-zend-opcache-settings.html>`_.
+By default, cached scripts are revalidated on access to ensure that changes on disk take effect after at most ``2`` seconds. Since Nextcloud handles cache revalidation internally when required, the revalidation frequency can be reduced or completely disabled to enhance performance. Note, however, that it affects manual changes to scripts, including ``config.php``. To check for changes at most every ``60`` seconds, use the following setting:
+
+.. code:: ini
+
+  opcache.revalidate_freq = 60
+
+To disable the revalidation completely:
+
+.. code:: ini
+
+  opcache.validate_timestamps = 0
+
+Any change to ``config.php`` will then require either restarting PHP, manually clearing the cache, or invalidating this particular script.
+
+For more details check out the `official documentation <https://php.net/manual/en/opcache.configuration.php>`_. To monitor OPcache usage, clear individual or all cache entries, `opcache-gui <https://github.com/amnuts/opcache-gui>`_ can be used.
+
+PHP 8.0 and above ship with a JIT compiler that can be enabled to benefit any CPU intensive apps you might be running. To enable a tracing JIT with all optimizations:
+
+.. code:: ini
+
+  opcache.jit = 1255
+  opcache.jit_buffer_size = 128M
+
+Previews
+--------
+
+It is possible to speed up preview generation using an
+external microservice: `Imaginary <https://github.com/h2non/imaginary>`_.
+
+We strongly recommend running our custom docker image that is more up to date than the official image.
+You can find the image at `docker.io/nextcloud/aio-imaginary:latest`.
+
+To do so, you will need to deploy the service and make sure that it is
+not accessible from outside of your servers. Then you can configure
+Nextcloud to use Imaginary by editing your `config.php`:
+
+.. code:: php
+
+    <?php
+    'enabledPreviewProviders' => [
+        'OC\Preview\MP3',
+        'OC\Preview\TXT',
+        'OC\Preview\MarkDown',
+        'OC\Preview\OpenDocument',
+        'OC\Preview\Krita',
+        'OC\Preview\Imaginary',
+    ],
+    'preview_imaginary_url' => 'http://<url of imaginary>',
+
+.. warning::
+
+   Make sure to start Imaginary with the `-return-size` command line parameter. Otherwise, there will be a minor performance impact. The flag requires a recent version of Imaginary (newer than v1.2.4) and is by default added to the `aio-imaginary` container.
+   Also make sure to add the capability `SYS_NICE` via `--cap-add=sys_nice` or `cap_add: - SYS_NICE` as it is required by imaginary to generate HEIC previews.
+
+.. note::
+
+    For large instance, you should follow `Imaginary's scalability recommandation <https://github.com/h2non/imaginary#scalability>`.

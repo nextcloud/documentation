@@ -58,6 +58,10 @@ based updater but on the command line.
 Prerequisites
 -------------
 
+.. seealso::
+
+   If you upgrade from a previous major version please see :ref:`critical changes<critical-changes>` first.
+
 You should always maintain :doc:`regular backups <backup>` and make a fresh
 backup before every upgrade.
 
@@ -117,3 +121,6 @@ Those include for example::
 
  $ sudo -u www-data php occ db:add-missing-columns
  $ sudo -u www-data php occ db:add-missing-indices
+ $ sudo -u www-data php occ db:add-missing-primary-keys
+
+You can use the ``--dry-run`` option to output the SQL queries instead of executing them.

@@ -48,9 +48,13 @@ On the final login the server will do a redirect to a url of the following forma
 
 	nc://login/server:<server>&user:<loginname>&password:<password>
 
-* server: The address of the server to connect to. The server may specify a protocol (http or https). If no protocol is specified the client will assume https.
-* loginname: The username that the client must use to login. **Note:** Keep in mind that this is the loginname and could be different from the username. For example the email address could be used to login but not for generating the webdav URL. You could fetch the actual username from the OCS API endpoint :code:`<server>/ocs/v1.php/cloud/user`.
-* password: The password that the client must use to login and store securely
+* ``server``: The address of the server to connect to. The server may specify a protocol (http or https). If no protocol is specified the client will assume https.
+* ``loginname``: The username that the client must use to login. **Note:** Keep in mind that this is the loginname and could be different from the username. For example the email address could be used to login but not for generating the webdav URL. You could fetch the actual username from the OCS API endpoint ``<server>/ocs/v1.php/cloud/user``.
+* ``password``: The password that the client must use to login and store securely
+
+.. note::
+
+	``loginname`` and ``password`` are encoded by PHP's `urlencode <https://www.php.net/manual/en/function.urlencode.php>`_, which differs from `RFC 3986 <http://www.faqs.org/rfcs/rfc3986.html>`_. You may need to replace plus signs :code:`'+'` with spaces :code:`' '` before decoding.
 
 This information will be used by the client to create a new account.
 After this the webview is destroyed including all the state the webview holds.
@@ -115,7 +119,7 @@ If a non 200 status code is returned the client should still proceed with removi
 Login flow v2
 -------------
 
-While the login flow works very nice in a lot of cases there are especially on dekstop application certain hurdles. Special proxy configuration, client side certificates and the likes can cause trouble. To solve this we have come up with a second login flow that uses the users default webbrowser to authenticate. Thus ensuring that if they can login via the web they can also login in the client.
+While the login flow works very nice in a lot of cases there are especially on desktop application certain hurdles. Special proxy configuration, client side certificates and the likes can cause trouble. To solve this we have come up with a second login flow that uses the users default webbrowser to authenticate. Thus ensuring that if they can login via the web they can also login in the client.
 
 To initiate a login do an anonymous POST request
 
@@ -143,6 +147,7 @@ The program should directly start polling the poll endpoint:
 
         curl -X POST https://cloud.example.com/login/v2/poll -d "token=mQUYQdffOSAMJYtm8pVpkOsVqXt5hglnuSpO5EMbgJMNEPFGaiDe8OUjvrJ2WcYcBSLgqynu9jaPFvZHMl83ybMvp6aDIDARjTFIBpRWod6p32fL9LIpIStvc6k8Wrs1"
 
+The token will be valid for 20 minutes.
 This will return a 404 until authentication is done. Once a 200 is returned it is another json object.
 
 .. code-block:: json
@@ -155,3 +160,12 @@ This will return a 404 until authentication is done. Once a 200 is returned it i
 
 Use the server and the provided credentials to connect.
 Note that the 200 will only be returned once.
+
+
+Troubleshooting
+---------------
+
+Login name vs. email login
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Nextcloud allows authentication with user's *login name*, which can be their UID, an email address and similar. The identifier used for the session in which the user generates the app password will be stored into the database record of the generated app password. Therefore the identifier used in the web session that authorizes a client must match the identifier used in the connecting client.

@@ -20,7 +20,7 @@ For example, to search for text files for the user 'test':
 
 .. code-block:: bash
 
-    curl -u username:password 'https://cloud.example.com/remote.php/dav/' -X SEARCH -u test:test -H "content-Type: text/xml" --data '<?xml version="1.0" encoding="UTF-8"?>
+    curl -u test:password 'https://cloud.example.com/remote.php/dav/' -X SEARCH -H "content-Type: text/xml" --data '<?xml version="1.0" encoding="UTF-8"?>
      <d:searchrequest xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns">
          <d:basicsearch>
              <d:select>
@@ -128,10 +128,12 @@ Search for all plain text files in the folder :code:`Documents`, sorted by size.
                 </d:like>
             </d:where>
             <d:orderby>
-                <d:prop>
-                    <oc:size/>
-                </d:prop>
-                <d:ascending/>
+                <d:order>
+                    <d:prop>
+                        <oc:size/>
+                    </d:prop>
+                    <d:ascending/>
+                </d:order>
             </d:orderby>
         </d:basicsearch>
     </d:searchrequest>
@@ -207,6 +209,78 @@ Get all png and jpg files over 10MB.
                             <d:literal>10000000</d:literal>
                         </d:gt>
                 </d:and>
+            </d:where>
+            <d:orderby/>
+        </d:basicsearch>
+    </d:searchrequest>
+    
+Search for all common files (no directories) and limit the result of the last 5 files with ordering, last modified
+
+.. code-block:: xml
+
+   <d:searchrequest xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns">
+       <d:basicsearch>
+           <d:select>
+               <d:prop>
+                   <oc:fileid/>
+                   <d:getcontenttype/>
+                   <d:getetag/>
+                   <oc:size/>
+                   <d:getlastmodified/>
+                   <d:resourcetype/>
+               </d:prop>
+           </d:select>
+           <d:from>
+               <d:scope>
+                   <d:href>/files/test</d:href>
+                   <d:depth>infinity</d:depth>
+               </d:scope>
+           </d:from>
+           <d:where>
+               <d:not>
+                   <d:is-collection/>
+               </d:not>
+           </d:where>
+           <d:orderby>
+              <d:order>
+                  <d:prop>
+                      <d:getlastmodified/>
+                  </d:prop>
+                  <d:descending/>
+               </d:order>
+           </d:orderby>
+           <d:limit>
+             <d:nresults>5</d:nresults>
+           </d:limit>
+      </d:basicsearch>
+  </d:searchrequest>
+
+Get all files last modified after a given date.
+
+.. code-block:: xml
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <d:searchrequest xmlns:d="DAV:">
+        <d:basicsearch>
+            <d:select>
+                <d:prop>
+                    <d:displayname/>
+                    <d:getlastmodified />
+                </d:prop>
+            </d:select>
+            <d:from>
+                <d:scope>
+                    <d:href>/files/test</d:href>
+                    <d:depth>infinity</d:depth>
+                </d:scope>
+            </d:from>
+            <d:where>
+                <d:gt>
+                    <d:prop>
+                        <d:getlastmodified/>
+                    </d:prop>
+                    <d:literal>2021-01-01T17:00:00Z</d:literal>
+                </d:gt>
             </d:where>
             <d:orderby/>
         </d:basicsearch>
