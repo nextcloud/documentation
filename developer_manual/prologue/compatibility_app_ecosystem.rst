@@ -28,3 +28,8 @@ There are three procedures in place to facilitate communication to app developer
   - The steps should be explicitly written, so the documentation shall not rely upon links to external resources for the steps. While it is encouraged to add an external links as additional reference, it is a hard requirement that the documentation is readable and actionable without browsing to this link.
   - The change author's name should be added to the section so readers can reach out to the author if they have questions or if something is unclear.
   - Timeline: the documentation is required to be handed in when finalizing the pull request and should be merged timely close to the actual change.
+  
+  
+Other documentation requirements
+--------------------------------
+A change that affects administrators who upgrade their Nextcloud should be documented in the release notes section of the admin documentation of that release.
