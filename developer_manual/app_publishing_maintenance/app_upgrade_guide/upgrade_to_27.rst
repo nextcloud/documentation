@@ -63,6 +63,7 @@ Behavioral changes
 ^^^^^^^^^^^^^^^^^^
 
 * ``\OCP\Files\Cache\CacheEntryRemovedEvent`` will now be dispatched for all files and folders inside the deleted node. (`nextcloud/server#34773 <https://github.com/nextcloud/server/pull/34773>`_)
+* ``\OCP\AppFramework\Db\IMapperException`` does now implement ``\Throwable``, previously either ``\OCP\AppFramework\Db\DoesNotExistException`` or ``\OCP\AppFramework\Db\MultipleObjectsReturnedException`` had to be caught explicitly. (`nextcloud/server#37324 <https://github.com/nextcloud/server/pull/37324>`_)
 
 Client APIs
 -----------
