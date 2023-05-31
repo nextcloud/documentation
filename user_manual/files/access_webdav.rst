@@ -50,9 +50,8 @@ Nextcloud or implement capabilities you consider important to your use case.
 
 Mobile clients that Nextcloud community members have reported using include:
 
-* FolderSync (Android)
-* WebDAV Navigator Lite (Android)
-* WebDAV Navigator (iPhone)
+* `FolderSync (Android) <https://foldersync.io/>`_
+* `WebDAV Navigator (iPhone) <https://apps.apple.com/us/app/webdav-navigator/id382551345>`_
 
 The URL to use when configuring third-party apps to connect to Nextcloud is a bit lengthier than the one for official clients::
 
@@ -568,7 +567,3 @@ To connect to Nextcloud:
 
 .. _KB2668751: https://web.archive.org/web/20211008025539/https://support.microsoft.com/en-us/topic/you-cannot-download-more-than-50-mb-or-upload-large-files-when-the-upload-takes-longer-than-30-minutes-using-web-client-in-windows-7-8709ae9d-e808-c5a0-95d0-9a7143c50b11
 .. _KB2123563: https://support.microsoft.com/kb/2123563
-.. _WebDAV Navigator: http://seanashton.net/webdav/
-.. _WebDAV (Android): https://play.google.com/store/apps/details?id=com.schimera.webdavnavlite
-.. _iPhones: https://itunes.apple.com/app/webdav-navigator/id382551345
-.. _BlackBerry devices: http://appworld.blackberry.com/webstore/content/46816
