@@ -38,6 +38,7 @@ Removed APIs
 ^^^^^^^^^^^^
 
 * ``\OC_Defaults::getLogoClaim``: There is no replacement.
+* ``\OCP\Util::writeLog``: inject the :ref:`psr3` logger or acquire an instance with ``\OCP\Log\logger``. See :ref:`logging`.
 
 Back-end changes
 ----------------
