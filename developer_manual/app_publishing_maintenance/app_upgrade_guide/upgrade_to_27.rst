@@ -46,6 +46,10 @@ Added APIs
 * New property ``$actionLabel`` has been added to the ``\OCP\Files\Template\TemplateFileCreator`` class with a respective setter ``TemplateFileCreator::setActionLabel`` and getter ``TemplateFileCreator::getActionLabel``.  (`nextcloud/server#37929 <https://github.com/nextcloud/server/pull/37929>`_ + `nextcloud/server#37955 <https://github.com/nextcloud/server/pull/37955>`_)
 * A new interface ``\OCP\Group\Backend\ISearchableGroupBackend`` was added for group backends supporting new method ``searchInGroup`` to search among a group users in an efficient way. (`nextcloud/server#32866 <https://github.com/nextcloud/server/pull/32866>`_)
 
+Changed APIs
+^^^^^^^^^^^^
+
+* ``\OCP\UserMigration\ISizeEstimationMigrator::getEstimatedExportSize()`` now returns ``int|float`` to support 32-bit systems. (`nextcloud/server#38104 <https://github.com/nextcloud/server/pull/38104>`_)
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
