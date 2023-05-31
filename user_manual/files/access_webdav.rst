@@ -3,12 +3,12 @@ Accessing Nextcloud files using WebDAV
 ======================================
 
 Nextcloud fully supports the WebDAV protocol, and you can connect and synchronize
-with your Nextcloud files over WebDAV. In this chapter you will learn how to
+with Nextcloud Files over WebDAV. In this chapter, you will learn how to
 connect Linux, macOS, Windows, and mobile devices to your Nextcloud server.
 
 WebDAV stands for Distributed Authoring and Versioning. It is an HTTP extension 
 that makes it easy to create, read, and edit files hosted on remote Web servers. With 
-a WebDAV client you can access your Nextcloud Files (including shares) on Linux, 
+a WebDAV, client you can access your Nextcloud Files (including shares) on Linux, 
 macOS and Windows in a similar way as any remote network share, and stay synchronized.
 
 Before we get into configuring WebDAV, let's take a quick look at the
@@ -61,19 +61,20 @@ The URL to use when configuring third-party apps to connect to Nextcloud is a bi
     https://cloud.example.com/nextcloud/remote.php/dav/files/USERNAME/ (if Nextcloud is installed in a subdirectory)
 
 .. note:: When using a third-party WebDAV client (including your operating system's 
-   built-in client), you should use an app password for login rather than your 
-   regular password. In addition improved security, it `increases performance significantly 
+   built-in client), you should use an application password for login rather than your 
+   regular password. In addition improved security, this `increases performance significantly 
    <https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151>_`. To 
-   configure an app password, log into the Nextcloud Web interface, click on the avatar 
+   configure an application password, log into the Nextcloud Web interface, click on the avatar 
    in the top right and choose *Personal settings*. Then choose *Security* in the left 
    sidebar and scroll to the very bottom. There you can create an app password (which can 
    also be revoked in the future without changing your main user password).
 
 .. note:: In the following examples, you should replace **example.com/nextcloud** with the
    URL of your Nextcloud server (omit the directory part if the installation is
-   in the root of your domain), and "USERNAME" with the username of the connecting user.
+   in the root of your domain), and **USERNAME** with the username of the connecting user.
 
    See the WebDAV URL (bottom left in settings) on your Nextcloud.
+
 
 Accessing files using Linux
 ---------------------------
@@ -97,11 +98,10 @@ share::
    of ``davs://``:
 
 .. image:: ../images/webdav_gnome3_nautilus.png
-   :alt: screenshot of configuring Nautilus file manager to use WebDAV
+   :alt: Screenshot of configuring Nautilus file manager to use WebDAV
 
-.. note:: The same method works for other file managers that use GVfs,
+.. note:: The same method works for other file managers that use GVFS,
 	  such as MATE's Caja and Cinnamon's Nepomuk.
-
 
 Accessing files with KDE and Dolphin file manager
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -112,28 +112,29 @@ the ``webdav://`` protocol::
     webdav://example.com/nextcloud/remote.php/dav/files/USERNAME/
 
 .. image:: ../images/webdav_dolphin.png
-   :alt: screenshot of configuring Dolphin file manager to use WebDAV
+   :alt: Screenshot of configuring Dolphin file manager to use WebDAV
 
 You can create a permanent link to your Nextcloud server:
 
-#. Open Dolphin and click "Network" in the left hand "Places" column.
+#. Open Dolphin and click "Network" in the left-hand "Places" column.
 #. Click on the icon labeled **Add a Network Folder**.
    The resulting dialog should appear with WebDAV already selected.
 #. If WebDAV is not selected, select it.
 #. Click **Next**.
 #. Enter the following settings:
 
-   * Name: The name you want to see in the **Places** bookmark, for example Nextcloud.
+   * Name: the name you want to see in the **Places** bookmark, for example, Nextcloud.
 
-   * User: The Nextcloud username you used to log in, for example admin.
+   * User: the Nextcloud username you used to log in, for example, admin.
 
-   * Server: The Nextcloud domain name, for example **example.com** (without
+   * Server: the Nextcloud domain name, for example, **example.com** (without
      **http://** before or directories afterwards).
    * Folder -- Enter the path ``nextcloud/remote.php/dav/files/USERNAME/``.
 #. (Optional) Check the "Create icon" checkbox for a bookmark to appear in the
    Places column.
 #. (Optional) Provide any special settings or an SSL certificate in the "Port &
    Encrypted" checkbox.
+
 
 Creating WebDAV mounts on the Linux command line
 ------------------------------------------------
@@ -143,36 +144,36 @@ prefer to access Nextcloud the same way as any other remote filesystem mount.
 The following example shows how to create a personal mount and have it mounted
 automatically every time you log in to your Linux computer.
 
-1. Install the ``davfs2`` WebDAV filesystem driver, which allows you to mount
+#. Install the ``davfs2`` WebDAV filesystem driver, which allows you to mount
    WebDAV shares just like any other remote filesystem. Use this command to
    install it on Debian/Ubuntu::
 
     apt-get install davfs2
 
-2. Use this command to install it on CentOS, Fedora, and openSUSE::
+#. Use this command to install it on CentOS, Fedora, and openSUSE::
 
     yum install davfs2
 
-3. Add yourself to the ``davfs2`` group::
+#. Add yourself to the ``davfs2`` group::
 
     usermod -aG davfs2 <username>
 
-3. Then create a ``nextcloud`` directory in your home directory for the
-   mountpoint, and ``.davfs2/`` for your personal configuration file::
+#. Then create a ``nextcloud`` directory in your home directory for the
+   mount point, and ``.davfs2/`` for your personal configuration file::
 
     mkdir ~/nextcloud
     mkdir ~/.davfs2
 
-4. Copy ``/etc/davfs2/secrets`` to ``~/.davfs2``::
+#. Copy ``/etc/davfs2/secrets`` to ``~/.davfs2``::
 
     cp  /etc/davfs2/secrets ~/.davfs2/secrets
 
-5. Set yourself as the owner and make the permissions read-write owner only::
+#. Set yourself as the owner and make the permissions read-write owner only::
 
     chown <linux_username>:<linux_username> ~/.davfs2/secrets
     chmod 600 ~/.davfs2/secrets
 
-6. Add your Nextcloud login credentials to the end of the ``secrets`` file,
+#. Add your Nextcloud login credentials to the end of the ``secrets`` file,
    using your Nextcloud server URL and your Nextcloud username and password::
 
     https://example.com/nextcloud/remote.php/dav/files/USERNAME/ <username> <password>
@@ -181,23 +182,23 @@ automatically every time you log in to your Linux computer.
     for example
     /home/user/nextcloud john 1234
 
-7. Add the mount information to ``/etc/fstab``::
+#. Add the mount information to ``/etc/fstab``::
 
     https://example.com/nextcloud/remote.php/dav/files/USERNAME/ /home/<linux_username>/nextcloud davfs user,rw,auto 0 0
 
-
-8. Then test that it mounts and authenticates by running the following
+#. Then test that it mounts and authenticates by running the following
    command. If you set it up correctly you won't need root permissions::
 
     mount ~/nextcloud
 
-9. You should also be able to unmount it::
+#. You should also be able to unmount it::
 
     umount ~/nextcloud
 
 Now every time you login to your Linux system your Nextcloud share should
 automatically mount via WebDAV in your ``~/nextcloud`` directory. If you prefer
 to mount it manually, change ``auto`` to ``noauto`` in ``/etc/fstab``.
+
 
 Known issues
 ------------
@@ -226,7 +227,8 @@ Copy ``mycertificate.pem`` to ``/etc/davfs2/certs/``. Then edit
 ``/etc/davfs2/davfs2.conf`` and uncomment the line ``servercert``. Now add the
 path of your certificate as in this example::
 
- servercert /etc/davfs2/certs/mycertificate.pem
+    servercert /etc/davfs2/certs/mycertificate.pem
+
 
 Accessing files using macOS
 ---------------------------
@@ -237,19 +239,19 @@ Accessing files using macOS
 
 To access files through the macOS Finder:
 
-1. From the Finder’s top menu bar, choose **Go > Connect to Server…**:
+#. From the Finder's top menu bar, choose **Go > Connect to Server…**:
 
-  .. image:: ../images/osx_webdav1.png
+   .. image:: ../images/osx_webdav1.png
      :alt: Screenshot of entering your Nextcloud server address on macOS
 
-2. When the **Connect to Server…** window opens, enter your Nextcloud server’s WebDAV address in the **Server Address:** field, i.e.::
+#. When the **Connect to Server…** window opens, enter your Nextcloud server's WebDAV address in the **Server Address:** field, i.e.::
 
     https://cloud.YOURDOMAIN.com/remote.php/dav/files/USERNAME/
 
-  .. image:: ../images/osx_webdav2.png
-     :alt: Screenshot: Enter Nextcloud server address in “Connect to Server…” dialog box
+   .. image:: ../images/osx_webdav2.png
+     :alt: Screenshot: Enter Nextcloud server address in "Connect to Server…" dialog box
 
-3. Click **Connect**. Your WebDAV server should appear on the Desktop as a shared disk drive.
+#. Click **Connect**. Your WebDAV server should appear on the Desktop as a shared disk drive.
 
 
 Accessing files using Microsoft Windows
@@ -257,22 +259,20 @@ Accessing files using Microsoft Windows
 
 If you use the native Windows implementation of WebDAV, you can map Nextcloud to a new
 drive using Windows Explorer. Mapping to a drive enables you to browse files stored on a
-Nextcloud server the way you would files stored in a mapped network drive.
+Nextcloud server the way you would browse files stored in a mapped network drive.
 
 Using this feature requires network connectivity. If you want to store your
 files offline, use the Desktop Client to sync all files on your
 Nextcloud to one or more directories of your local hard drive.
 
-.. note:: Windows 10 now defaults to allow Basic Authentication if HTTPS is
-    enabled prior to mapping your drive. On older versions of Windows,
-    you must permit the use of Basic Authentication in the Windows
-    Registry: launch ``regedit`` and navigate to
-    ``HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters``.
-    Create or edit the ``DWORD`` value ``BasicAuthLevel`` (Windows Vista, 7 and 8) or
-    ``UseBasicAuth`` (Windows XP and Windows Server 2003) and set its value data
-    to ``1`` for SSL connections. Value ``0`` means that Basic Authentication is disabled,
-    a value of ``2`` allows both SSL and non-SSL connections (not recommended).
-    Then exit Registry Editor, and restart the computer.
+.. note:: Windows 10 now defaults to allow Basic Authentication if HTTPS is enabled before mapping your drive.
+    
+    On older versions of Windows, you must permit the use of Basic Authentication in the Windows Registry:
+
+    * launch ``regedit`` and navigate to ``HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters``.
+    * Create or edit the ``BasicAuthLevel`` (Windows Vista, 7 and 8), or ``UseBasicAuth`` (Windows XP and Windows Server 2003), ``DWORD`` value and set its value data to ``1`` for SSL connections.
+      A value of ``0`` means that Basic Authentication is disabled, and a value of ``2`` allows both SSL and non-SSL connections (not recommended).
+    * Then exit Registry Editor, and restart the computer.
 
 Mapping drives with the command line
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -280,89 +280,86 @@ Mapping drives with the command line
 The following example shows how to map a drive using the command line. To map
 the drive:
 
-1. Open a command prompt in Windows.
-2. Enter the following line in the command prompt to map to the computer Z
+#. Open a command prompt in Windows.
+#. Enter the following line in the command prompt to map to the computer Z
    drive::
 
-    net use Z: https://<drive_path>/remote.php/dav/files/USERNAME/ /user:youruser
+    net use Z: https://<drive_path>/remote.php/dav/files/USERNAME/ /user:youruser yourpassword
+
+   with <drive_path> as the URL to your Nextcloud server.
+   For example::
+
+    net use Z: https://example.com/nextcloud/remote.php/dav/files/USERNAME/ /user:youruser yourpassword
+
+   The computer maps the files of your Nextcloud account to the drive letter Z.
+
+   .. note:: Though not recommended, you can also mount the Nextcloud server using HTTP, leaving the connection unencrypted.
+     
+     If you plan to use HTTP connections on devices while in a public place, we strongly recommend using a VPN tunnel to provide the necessary security.
+
+   An alternative command syntax is::
+
+    net use Z: \\example.com@ssl\nextcloud\remote.php\dav /user:youruser
     yourpassword
-
-  where <drive_path> is the URL to your Nextcloud server.
-
-For example: ``net use Z: https://example.com/nextcloud/remote.php/dav/files/USERNAME/
-/user:youruser yourpassword``
-
-  The computer maps the files of your Nextcloud account to the drive letter Z.
-
-.. note:: Though not recommended, you can also mount the Nextcloud server
-     using HTTP, leaving the connection unencrypted. If you plan to use HTTP
-     connections on devices while in a public place, we strongly recommend using a
-     VPN tunnel to provide the necessary security.
-
-An alternative command syntax is::
-
-  net use Z: \\example.com@ssl\nextcloud\remote.php\dav /user:youruser
-  yourpassword
 
 Mapping drives with Windows Explorer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To map a drive using the Microsoft Windows Explorer:
+To map a drive using Microsoft Windows Explorer:
 
-1. Open Windows Explorer on your MS Windows computer.
-2. Right-click on **Computer** entry and select **Map network drive…** from
+#. Open Windows Explorer on your MS Windows computer.
+#. Right-click on **Computer** entry and select **Map network drive…** from
    the drop-down menu.
-3. Choose a local network drive to which you want to map Nextcloud.
-4. Specify the address to your Nextcloud instance, followed by
+#. Choose a local network drive to which you want to map Nextcloud.
+#. Specify the address to your Nextcloud instance, followed by
    **/remote.php/dav/files/USERNAME/**.
 
-  For example::
+   For example::
 
     https://example.com/nextcloud/remote.php/dav/files/USERNAME/
 
-.. note:: For SSL protected servers, check **Reconnect at sign-in** to ensure
+   .. note:: For SSL-protected servers, check **Reconnect at sign-in** to ensure
      that the mapping is persistent upon subsequent reboots. If you want to
      connect to the Nextcloud server as a different user, check **Connect using
      different credentials**.
 
-.. figure:: ../images/explorer_webdav.png
-   :scale: 80%
-   :alt: screenshot of mapping WebDAV on Windows Explorer
+   .. figure:: ../images/explorer_webdav.png
+     :scale: 80%
+     :alt: Screenshot of mapping WebDAV on Windows Explorer
 
 5. Click the ``Finish`` button.
 
-  Windows Explorer maps the network drive, making your Nextcloud instance
-  available.
+Windows Explorer maps the network drive, making your Nextcloud instance available.
+
 
 Accessing files using Cyberduck
 -------------------------------
 
-`Cyberduck <https://cyberduck.io/>`_ is an open source FTP and SFTP,
-WebDAV, OpenStack Swift, and Amazon S3 browser designed for file transfers on
-macOS and Windows.
+`Cyberduck <https://cyberduck.io/>`_ is an open source FTP, SFTP, WebDAV, OpenStack Swift, and Amazon S3 browser designed for file transfers on macOS and Windows.
 
 .. note:: This example uses Cyberduck version 4.2.1.
 
 To use Cyberduck:
 
-1. Specify a server without any leading protocol information. For example:
+1. Specify a server without any leading protocol information.
 
-  ``example.com``
+   For example: ``example.com``
 
-2. Specify the appropriate port. The port you choose depends on whether or not
-   your Nextcloud server supports SSL. Cyberduck requires that you select a
-   different connection type if you plan to use SSL. For example:
+2. Specify the appropriate port.
 
-  80 (for WebDAV)
+   The port you choose depends on whether or not your Nextcloud server supports SSL. Cyberduck requires that you select a different connection type if you plan to use SSL.
 
-  443 (for WebDAV (HTTPS/SSL))
+   For example:
+    * ``80`` for unencrypted WebDAV
+    * ``443`` for secure WebDAV (HTTPS/SSL)
 
 3. Use the 'More Options' drop-down menu to add the rest of your WebDAV URL into
-   the 'Path' field. For example:
-
-  ``remote.php/dav/files/USERNAME/``
+   the 'Path' field.
+   
+   For example: ``remote.php/dav/files/USERNAME/``
 
 Now Cyberduck enables file access to the Nextcloud server.
+
 
 Accessing public shares over WebDAV
 -----------------------------------
@@ -373,13 +370,10 @@ To access the public share, open::
 
   https://example.com/nextcloud/public.php/webdav
 
-in a WebDAV client, use the share token as username and the (optional) share password
-as password. For example, with a share link https://example.com/s/kFy9Lek5sm928xP, ``kFy9Lek5sm928xP`` will be the username.
+in a WebDAV client, use the share token as username and the (optional) share password as the password. For example, with a share link https://example.com/s/kFy9Lek5sm928xP, ``kFy9Lek5sm928xP`` will be the username.
 
-.. note:: **Settings** → **Administration** → **Sharing** → **Allow users on this
-   server to send shares to other servers**. This option also allows WebDAV access
-   to public shares needs to be enabled in order to make this feature work,
-   except if cURL is being used (see below).
+.. note:: **Settings** → **Administration** → **Sharing** → **Allow users on this server to send shares to other servers**.
+  This option also allows WebDAV access to public shares and needs to be enabled to make this feature work, except if cURL is being used (see below).
 
 Known problems
 --------------
@@ -436,43 +430,46 @@ Known problems and their solutions are documented in the KB2123563_ article.
 
 Problem
 ^^^^^^^
-Cannot map Nextcloud as a WebDAV drive in Windows using self-signed certificate.
+Cannot map Nextcloud as a WebDAV drive in Windows using a self-signed certificate.
 
 Solution
 ^^^^^^^^
 
-  #. Go to the your Nextcloud instance via your favorite Web browser.
-  #. Click through until you get to the certificate error in the browser status
-     line.
-  #. View the cert, then from the Details tab, select Copy to File.
-  #. Save to the desktop with an arbitrary name, for example ``myNextcloud.pem``.
-  #. Start, Run, MMC.
-  #. File, Add/Remove Snap-In.
-  #. Select Certificates, Click Add, My User Account, then Finish, then OK.
-  #. Dig down to Trust Root Certification Authorities, Certificates.
-  #. Right-Click Certificate, Select All Tasks, Import.
-  #. Select the Save Cert from the Desktop.
-  #. Select Place all Certificates in the following Store, Click Browse.
-  #. Check the Box that says Show Physical Stores, Expand out Trusted Root
-     Certification Authorities, and select Local Computer there, click OK,
-     Complete the Import.
-  #. Check the list to make sure it shows up. You will probably need to Refresh
-     before you see it. Exit MMC.
-  #. Open Browser, select Tools, Delete Browsing History.
-  #. Select all but In Private Filtering Data, complete.
-  #. Go to Internet Options, Content Tab, Clear SSL State.
-  #. Close browser, then re-open and test.
+#. Access to your Nextcloud instance via your favorite Web browser.
+#. Click through until you get to the certificate error in the browser status
+   line.
+#. View the certificate, then from the Details tab, select Copy to File.
+#. Save the file to your desktop with an arbitrary name, for example
+   ``myNextcloud.pem``.
+#. Go to Start menu > Run, type MMC, and click OK to open Microsoft Management
+   Console.
+#. Go to File > Add/Remove Snap-In.
+#. Select Certificates, Click Add, choose My User Account, then Finish, and
+   finally OK.
+#. Dig down to Trust Root Certification Authorities, Certificates.
+#. Right-Click Certificate, Select All Tasks, and Import.
+#. Select the saved certificate from the Desktop.
+#. Select Place all Certificates in the following Store, and click Browse.
+#. Check the Box that says Show Physical Stores, expand out Trusted Root
+   Certification Authorities, select Local Computer there, click OK, and
+   Complete the Import.
+#. Check the list to make sure the certificate shows up. You will probably
+   need to Refresh before you see it.
+#. Exit MMC.
 
-Problem
-^^^^^^^
+For Firefox users:
 
-You cannot download more than 50 MB or upload large files when the upload takes
-longer than 30 minutes using Web Client in Windows 7.
+#. Launch your browser, go to Application menu > History > Clear recent history...
+#. Select 'Everything' in the 'Time range to clear' dropdown menu
+#. Select the 'Active Logins' check box
+#. Click the 'Clear now' button
+#. Close the browser, then re-open and test.
 
-Solution
-^^^^^^^^
+For Chrome-based browsers (Chrome, Chromium, Microsoft Edge) users:
 
-Workarounds are documented in the KB2668751_ article.
+#. Open Windows Control Panel, navigate down to Internet Options
+#. In the Content tab, click the Clear SSL State button.
+#. Close the browser, then re-open and test.
 
 
 Accessing files using cURL
@@ -480,10 +477,8 @@ Accessing files using cURL
 
 Since WebDAV is an extension of HTTP, cURL can be used to script file operations.
 
-.. note:: **Settings** → **Administration** → **Sharing** → **Allow users on this
-   server to send shares to other servers**. If this option is disabled the
-   option ``--header "X-Requested-With: XMLHttpRequest"`` needs to be passed to
-   cURL.
+.. note:: **Settings** → **Administration** → **Sharing** → **Allow users on this server to send shares to other servers**.
+  If this option is disabled, the option ``--header "X-Requested-With: XMLHttpRequest"`` needs to be passed to cURL.
 
 To create a folder with the current date as name:
 
@@ -541,16 +536,14 @@ To get the properties of files in the root folder:
     </d:multistatus>
 
 
-
-
 Accessing files using WinSCP
 -------------------------------
 
-`WinSCP <https://winscp.net/eng/docs/introduction/>`_  is an open source free SFTP client, FTP client, WebDAV client, S3 client and SCP client for Windows. Its main function is file transfer between a local and a remote computer. Beyond this, WinSCP offers scripting and basic file manager functionality.
+`WinSCP <https://winscp.net/eng/docs/introduction/>`_  is an open source free SFTP, FTP, WebDAV, S3, and SCP client for Windows. Its main function is file transfer between a local and a remote computer. Beyond this, WinSCP offers scripting and basic file management functionality.
 
 You can `download <https://winscp.net/eng/downloads.php/>`_ the portable version of WinSCP and run it on Linux through `Wine <https://wiki.winehq.org/Main_Page/>`_.
 
-To run WinSCP on Linux, download wine through your distribution's package manager, then run it via: wine WinSCP.exe.
+To run WinSCP on Linux, download wine through your distribution's package manager, then run it with the command: ``wine WinSCP.exe``.
 
 To connect to Nextcloud:
 
@@ -559,19 +552,18 @@ To connect to Nextcloud:
 * Press the 'New Session' menu option
 * Set the 'File protocol' dropdown to WebDAV
 * Set the 'Encryption' dropdown to TSL/SSL Implicit encryption
-* Fill in the hostname field: example.com
-* Fill in the username field: NEXTCLOUDUSERNAME
-* Fill in the password field: NEXTCLOUDPASSWORD
+* Fill in the hostname field: ``example.com``
+* Fill in the username field: ``NEXTCLOUDUSERNAME``
+* Fill in the password field: ``NEXTCLOUDPASSWORD``
 * Press the 'Advanced...' button
 * Navigate to 'Environment', 'Directories' on the left side
-* Fill in the 'Remote directory' field with the following: /nextcloud/remote.php/dav/files/NEXTCLOUDUSERNAME/
+* Fill in the 'Remote directory' field with the following: ``/nextcloud/remote.php/dav/files/NEXTCLOUDUSERNAME/``
 * Press the 'OK' button
 * Press the 'Save' button
 * Select the desired options and press the 'OK' button
 * Press the 'Login' button to connect to Nextcloud
 
-Note: it is recommended to use an app password for the password if you use TOTP, as WinSCP does not understand TOTP in Nextcloud at the time of writing (2022-11-07).
-
+.. note:: it is recommended to use an app password for the password if you use TOTP as WinSCP does not understand TOTP with Nextcloud at the time of writing (2022-11-07).
 
 
 .. _KB2668751: https://web.archive.org/web/20211008025539/https://support.microsoft.com/en-us/topic/you-cannot-download-more-than-50-mb-or-upload-large-files-when-the-upload-takes-longer-than-30-minutes-using-web-client-in-windows-7-8709ae9d-e808-c5a0-95d0-9a7143c50b11

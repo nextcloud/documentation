@@ -2,6 +2,10 @@
 Upgrade manually
 ================
 
+.. seealso::
+
+   If you upgrade from a previous major version please see :ref:`critical changes<critical-changes>` first.
+
 Always start by making a fresh backup and disabling all 3rd party apps.
 
 1. Back up your existing Nextcloud Server database, data directory, and 

@@ -58,6 +58,10 @@ based updater but on the command line.
 Prerequisites
 -------------
 
+.. seealso::
+
+   If you upgrade from a previous major version please see :ref:`critical changes<critical-changes>` first.
+
 You should always maintain :doc:`regular backups <backup>` and make a fresh
 backup before every upgrade.
 

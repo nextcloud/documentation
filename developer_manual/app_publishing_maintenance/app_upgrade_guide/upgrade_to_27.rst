@@ -25,13 +25,7 @@ Front-end changes
 Added APIs
 ^^^^^^^^^^
 
-* A new Files Router API allows you to control the files router service and update views, querys or param without page reload (`nextcloud/server#37824 <https://github.com/nextcloud/server/pull/37824>`_)
-
-  .. code-block:: js
-
-    // https://github.com/nextcloud/server/blob/master/apps/files/src/services/RouterService.ts
-    OCP.Files.Router.goTo('/trashbin?dir=/Unsplash.d1680193199')
-    OCP.Files.Router.goToRoute('fileslist', { view: 'files' }, { dir: '/Folders/Group folder' })
+* A new Files Router API allows you to control the files router service and update views, querys or param without page reload. See :ref:`FilesAPI`
 
 Back-end changes
 ----------------
@@ -52,6 +46,10 @@ Added APIs
 * New property ``$actionLabel`` has been added to the ``\OCP\Files\Template\TemplateFileCreator`` class with a respective setter ``TemplateFileCreator::setActionLabel`` and getter ``TemplateFileCreator::getActionLabel``.  (`nextcloud/server#37929 <https://github.com/nextcloud/server/pull/37929>`_ + `nextcloud/server#37955 <https://github.com/nextcloud/server/pull/37955>`_)
 * A new interface ``\OCP\Group\Backend\ISearchableGroupBackend`` was added for group backends supporting new method ``searchInGroup`` to search among a group users in an efficient way. (`nextcloud/server#32866 <https://github.com/nextcloud/server/pull/32866>`_)
 
+Changed APIs
+^^^^^^^^^^^^
+
+* ``\OCP\UserMigration\ISizeEstimationMigrator::getEstimatedExportSize()`` now returns ``int|float`` to support 32-bit systems. (`nextcloud/server#38104 <https://github.com/nextcloud/server/pull/38104>`_)
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
@@ -64,11 +62,18 @@ Removed APIs
 
 * Intermediate transition event classes ``\OCP\WorkflowEngine\IEntityCompat`` and ``\OCP\WorkflowEngine\IOperationCompat`` have been removed as advertised for 2023 (`nextcloud/server#37040 <https://github.com/nextcloud/server/pull/37040>`_)
 
+Changed APIs
+^^^^^^^^^^^^
+
+* ``\OCP\Files\FileInfo::getOwner`` documented return type is now nullable, to match what was already returned by the implementation (`nextcloud/server#36836 <https://github.com/nextcloud/server/pull/36836>`_)
+* ``\OCP\Files\File::fopen`` and ``\OCP\Files\SimpleFS\ISimpleFile::read`` documented return types are now nullable, to match what was already returned by the implementations (`nextcloud/server#36836 <https://github.com/nextcloud/server/pull/36836>`_)
+
 
 Behavioral changes
 ^^^^^^^^^^^^^^^^^^
 
 * ``\OCP\Files\Cache\CacheEntryRemovedEvent`` will now be dispatched for all files and folders inside the deleted node. (`nextcloud/server#34773 <https://github.com/nextcloud/server/pull/34773>`_)
+* ``\OCP\AppFramework\Db\IMapperException`` does now implement ``\Throwable``, previously either ``\OCP\AppFramework\Db\DoesNotExistException`` or ``\OCP\AppFramework\Db\MultipleObjectsReturnedException`` had to be caught explicitly. (`nextcloud/server#37324 <https://github.com/nextcloud/server/pull/37324>`_)
 
 Client APIs
 -----------
@@ -76,4 +81,5 @@ Client APIs
 Changed APIs
 ^^^^^^^^^^^^
 
+* HTTP request that do not pass the *lax and strict cookie check* return a HTTP status 412 consistently now. It was HTTP 412 and 503 before depending on the endpoint. (`nextcloud/server#37316 <https://github.com/nextcloud/server/pull/37316>`_)
 * The OCS translation API was extended to return the ``from`` language attribute so in case no from was given, clients can afterwards show in the UI which language was detected and used for translating. (`nextcloud/server#38003 <https://github.com/nextcloud/server/pull/38003>`_)

@@ -37,7 +37,8 @@ Deprecated APIs
 Removed APIs
 ^^^^^^^^^^^^
 
-* tbd
+* ``\OC_App::isEnabled``: inject ``\OCP\App\IAppManager`` and call ``\OCP\App\IAppManager::isEnabledForUser``.
+* ``\OC_Defaults::getLogoClaim``: There is no replacement.
 
 Back-end changes
 ----------------
