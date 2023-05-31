@@ -1,3 +1,5 @@
+.. _email-config:
+
 =====
 Email
 =====
@@ -28,6 +30,8 @@ Sendmail when your mail server is on the same machine as Nextcloud.
 .. note:: The Sendmail option refers to the Sendmail SMTP server and any
    drop-in Sendmail replacement such as Postfix, Exim, or Courier. All of
    these include a ``sendmail`` binary, and are freely-interchangeable.
+
+.. _email-smtp-config:
 
 Configuring an SMTP server
 --------------------------
