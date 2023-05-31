@@ -50,6 +50,9 @@ Changed APIs
 ^^^^^^^^^^^^
 
 * ``\OCP\UserMigration\ISizeEstimationMigrator::getEstimatedExportSize()`` now returns ``int|float`` to support 32-bit systems. (`nextcloud/server#38104 <https://github.com/nextcloud/server/pull/38104>`_)
+* ``\OCP\Files\FileInfo::getOwner`` documented return type is now nullable, to match what was already returned by the implementation (`nextcloud/server#36836 <https://github.com/nextcloud/server/pull/36836>`_)
+* ``\OCP\Files\File::fopen`` and ``\OCP\Files\SimpleFS\ISimpleFile::read`` documented return types are now nullable, to match what was already returned by the implementations (`nextcloud/server#36836 <https://github.com/nextcloud/server/pull/36836>`_)
+
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
@@ -61,13 +64,6 @@ Removed APIs
 ^^^^^^^^^^^^
 
 * Intermediate transition event classes ``\OCP\WorkflowEngine\IEntityCompat`` and ``\OCP\WorkflowEngine\IOperationCompat`` have been removed as advertised for 2023 (`nextcloud/server#37040 <https://github.com/nextcloud/server/pull/37040>`_)
-
-Changed APIs
-^^^^^^^^^^^^
-
-* ``\OCP\Files\FileInfo::getOwner`` documented return type is now nullable, to match what was already returned by the implementation (`nextcloud/server#36836 <https://github.com/nextcloud/server/pull/36836>`_)
-* ``\OCP\Files\File::fopen`` and ``\OCP\Files\SimpleFS\ISimpleFile::read`` documented return types are now nullable, to match what was already returned by the implementations (`nextcloud/server#36836 <https://github.com/nextcloud/server/pull/36836>`_)
-
 
 Behavioral changes
 ^^^^^^^^^^^^^^^^^^
