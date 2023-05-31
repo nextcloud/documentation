@@ -129,7 +129,7 @@ Log field breakdown
 * **data** additional structured data (if applicable)
 * **version**: Nextcloud version at the time of request
 
-Empty value are written as two dashes: "--".
+Empty value are written as two dashes: ``--``.
 
 Admin audit log
 ---------------
