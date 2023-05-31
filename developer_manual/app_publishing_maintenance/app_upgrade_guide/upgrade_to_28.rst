@@ -37,7 +37,7 @@ Deprecated APIs
 Removed APIs
 ^^^^^^^^^^^^
 
-* tbd
+* ``\OC_Defaults::getLogoClaim``: There is no replacement.
 
 Back-end changes
 ----------------
