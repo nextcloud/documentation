@@ -81,4 +81,5 @@ Client APIs
 Changed APIs
 ^^^^^^^^^^^^
 
+* HTTP request that do not pass the *lax and strict cookie check* return a HTTP status 412 consistently now. It was HTTP 412 and 503 before depending on the endpoint. (`nextcloud/server#37316 <https://github.com/nextcloud/server/pull/37316>`_)
 * The OCS translation API was extended to return the ``from`` language attribute so in case no from was given, clients can afterwards show in the UI which language was detected and used for translating. (`nextcloud/server#38003 <https://github.com/nextcloud/server/pull/38003>`_)
