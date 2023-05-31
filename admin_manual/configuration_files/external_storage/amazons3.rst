@@ -7,7 +7,8 @@ To connect an Amazon S3 (or compatible) bucket to Nextcloud you will need to kno
 - S3 bucket name
 - S3 access key ID
 - S3 secret access key
-- S3 region (if Amazon hosted) or hostname (if non-Amazon hosted)
+- S3 region (if Amazon hosted)
+- S3 hostname (if non-Amazon hosted)
 
 In the **Folder name** field enter a folder name to use as the local mountpoint for this
 external storage. If this does not exist it will be created.
