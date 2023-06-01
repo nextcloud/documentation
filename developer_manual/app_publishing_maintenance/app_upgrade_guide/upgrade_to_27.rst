@@ -52,7 +52,7 @@ Changed APIs
 * ``\OCP\UserMigration\ISizeEstimationMigrator::getEstimatedExportSize()`` now returns ``int|float`` to support 32-bit systems. (`nextcloud/server#38104 <https://github.com/nextcloud/server/pull/38104>`_)
 * ``\OCP\Files\FileInfo::getOwner`` documented return type is now nullable, to match what was already returned by the implementation (`nextcloud/server#36836 <https://github.com/nextcloud/server/pull/36836>`_)
 * ``\OCP\Files\File::fopen`` and ``\OCP\Files\SimpleFS\ISimpleFile::read`` documented return types are now nullable, to match what was already returned by the implementations (`nextcloud/server#36836 <https://github.com/nextcloud/server/pull/36836>`_)
-
+* ``\OCP\Files\File::getContent`` may now also throw a ``GenericFileException`` in cases where it would previously return false (while documented to always return a string, which should now be the case - `nextcloud/server#37943 <https://github.com/nextcloud/server/pull/37943>`_).
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
