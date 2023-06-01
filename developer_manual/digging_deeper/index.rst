@@ -10,6 +10,7 @@ Digging deeper
    debugging
    classloader
    continuous_integration
+   email
    flow
    http_client
    javascript-apis
