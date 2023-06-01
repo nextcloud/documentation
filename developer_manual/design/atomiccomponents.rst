@@ -59,7 +59,7 @@ The action menu contains commonly used actions associated with an item. Each ent
 * checkboxes to quickly toggle a state, like in Mail
 
 .. image:: ../images/action-menu-radio-button.gif
-   :alt: Radio button in action menu in Talk
+   :alt: Radio button in action menu in Files link sharing
 
 * radio buttons to select from a few options, like chat notifications in Talk
 
@@ -69,9 +69,9 @@ The action menu contains commonly used actions associated with an item. Each ent
 * new entry elements to quickly add items, like add a new mailbox in Mail
 
 .. image:: ../images/action-menu-second-level.gif
-   :alt: Second level of actions in action menu to set due date reminders in Deck
+   :alt: Second level of actions in action menu to configure custom permissions for link shares in Files
 
-* a second level of actions, like due date reminders in Deck
+* a second level of actions, like to configure custom permissions for link shares in Files
 
 Some commonly used actions in the action menu are favoriting, renaming, downloading and deleting. Delete should always be at the last position as to not be confused with other actions.
 
@@ -114,7 +114,7 @@ Dropdowns
 `Penpot dropdowns <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=1&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
 
 .. image:: ../images/dropdown-find-as-you-type.gif
-   :alt: Dropdown menu in settings
+   :alt: Dropdown menu in Files sharing
 
 Dropdowns allow the user to select one or more items from a list. Dropdowns can have predefined options from which the user can select one or more items, as seen in Contacts for selecting the type of a phone number. If there are not too many entries, you may also think about using a set of :ref:`checkboxes and radio buttons` instead.
 
