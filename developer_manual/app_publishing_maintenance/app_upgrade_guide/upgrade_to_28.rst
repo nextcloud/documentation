@@ -66,4 +66,5 @@ Removed APIs
 * ``\OC_App::getNavigation``: inject ``\OCP\App\IAppManager`` and call ``\OCP\App\IAppManager::getAll``.
 * ``\OC_App::getSettingsNavigation``: inject ``\OCP\App\IAppManager`` and call ``\OCP\App\IAppManager::getAll('settings')``.
 * ``\OC_App::isEnabled``: inject ``\OCP\App\IAppManager`` and call ``\OCP\App\IAppManager::isEnabledForUser``.
-* ``\OC_Defaults::getLogoClaim``: There is no replacement.
+* ``\OC_Defaults::getLogoClaim``: there is no replacement.
+* ``\OCP\Util::linkToPublic``: there is no replacement.
