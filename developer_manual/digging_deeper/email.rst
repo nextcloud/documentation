@@ -1,3 +1,5 @@
+.. _email:
+
 =====
 Email
 =====
@@ -25,6 +27,11 @@ The mailer is hidden behind the ``\OCP\Mail\IMailer`` interface that can be :ref
 
         public function notify(string $email): void {
             $message = $this->mailer->createMessage();
+            $message->setSubject("Hello from Nextcloud");
+            $message->setPlainBody("This is some text");
+            $message->setHtmlBody(
+                "<!doctype html><html><body>This is some <b>text</b></body></html>"
+            );
             $message->setTo([$email]);
             $this->mailer->send($message);
         }

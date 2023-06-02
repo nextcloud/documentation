@@ -45,7 +45,8 @@ Back-end changes
 Added APIs
 ^^^^^^^^^^
 
-* tbd
+* ``\OCP\Mail\IMessage::setSubject`` to set an email subject. See :ref:`email` for an example.
+* ``\OCP\Mail\IMessage::setHtmlBody`` and ``\OCP\Mail\IMessage::setPlainBody`` to set an email body See :ref:`email` for an example.
 
 Changed APIs
 ^^^^^^^^^^^^
