@@ -42,6 +42,11 @@ Removed APIs
 Back-end changes
 ----------------
 
+Development dependency hell
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Due to the popularity of CLI tools for development of Nextcloud apps, the likelihood of package conflicts has increased. It's highly recommended to see :ref:`app-composer-bin-tools` and migrate to composer bin directories.
+
 Added APIs
 ^^^^^^^^^^
 
