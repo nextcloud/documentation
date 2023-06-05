@@ -47,6 +47,7 @@ Added APIs
 
 * ``\OCP\Mail\IMessage::setSubject`` to set an email subject. See :ref:`email` for an example.
 * ``\OCP\Mail\IMessage::setHtmlBody`` and ``\OCP\Mail\IMessage::setPlainBody`` to set an email body See :ref:`email` for an example.
+* ``\OCP\IEventSourceFactory`` to create a ``OCP\IEventSource`` instance.
 
 Changed APIs
 ^^^^^^^^^^^^
@@ -68,3 +69,19 @@ Removed APIs
 * ``\OC_App::isEnabled``: inject ``\OCP\App\IAppManager`` and call ``\OCP\App\IAppManager::isEnabledForUser``.
 * ``\OC_Defaults::getLogoClaim``: there is no replacement.
 * ``\OCP\Util::linkToPublic``: there is no replacement.
+* ``\OC_Defaults::getLogoClaim``: There is no replacement.
+* ``\OC::$server->createEventSource()`` has been removed, use ``\OC::$server->get(\OCP\IEventSourceFactory::class)->create()`` instead. 
+
+The factory ``\OCP\IEventSourceFactory`` works only from Nextcloud 28. 
+For older versions use ``\OC::$server->createEventSource()``.
+
+If you want to support Nextcloud 27 and Nextcloud 28:
+
+.. code-block:: php
+
+	// @TODO: Remove method_exists when min-version="28"
+	if (method_exists(\OC::$server, 'createEventSource')) {
+		$eventSource = \OC::$server->createEventSource();
+	} else {
+		$eventSource = \OCP\Server::get(IEventSourceFactory::class)->create();
+	}
