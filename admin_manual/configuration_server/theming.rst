@@ -14,16 +14,21 @@ Modify the appearance of Nextcloud
 
 You can change the following parameters of the look and feel on your instance:
 
+.. figure:: ../configuration_server/images/theming1.png
+
 * Name (e.g. ACME Inc. Cloud)
-* Web Address (e.g. https://acme.inc/)
+* Web link (e.g. https://acme.inc/)
 * Slogan
 * Color: The color of header bar, checkboxes and folder icon
 * Logo: The logo will appear in the header and on the log in page. Default has 62/34 px.
-* Login image: The background image of the login page
+* Background and login image: The background image
+
+.. figure:: ../configuration_server/images/theming2.png
+
 * Additional legal links (Legal notice and Privacy policy link)
 * Custom header logo and favicon as alternative to auto-generation based on logo
-
-.. figure:: ../configuration_server/images/theming.png
+* Disable user theming: Although you can select and customize your instance, users can change their background and colors. If you want to enforce your customization, you can toggle this on.
+		
 
 Configure theming through CLI
 -----------------------------
@@ -34,8 +39,18 @@ The following values are available to be set through this:
 
 - name, url, imprintUrl, privacyUrl, slogan, color ``occ theming:config name "My Example Cloud"``
 - background, logo, favicon, logoheader ``occ theming:config logo /tmp/mylogo.png``
+- disable-user-theming (yes/no) ``occ theming:config disable-user-theming yes`` 
 
 .. note:: Images require to be read from a local file on the Nextcloud server
+
+Use a color instead of an image as background:
+
+::
+
+   occ theming:config color "#0082c9"
+   occ theming:config --reset background
+   occ config:app:set theming backgroundMime --value="backgroundColor"
+
 
 Theming of icons
 ----------------
