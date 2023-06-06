@@ -51,7 +51,6 @@ Navigation entries
 
 `Penpot navigation items <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=8&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_
 
-https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&section=interactions&index=8&share-id=88d87192-d205-8007-8002-8d8d21a0dcca
 .. image:: ../images/mail-navigation-entries.png
    :alt: Mail navigation entries
 
