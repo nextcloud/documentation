@@ -13,7 +13,7 @@ user-manual-html:
 	cd user_manual && make html
 	@echo "User manual build finished; HTML is updated"
 
-developer-manual-html: openapi-spec icons-docs
+developer-manual-html: openapi-spec # icons-docs
 	rm -rf developer_manual/_build/html/com
 	cd developer_manual && make html
 	@echo "Developer manual build finished; HTML is updated"
