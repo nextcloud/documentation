@@ -37,7 +37,7 @@ Deprecated APIs
 Removed APIs
 ^^^^^^^^^^^^
 
-* tbd
+* ``OC.loadScript`` and ``OC.loadStyle``: Use ``OCP.Loader`` instead
 
 Back-end changes
 ----------------
