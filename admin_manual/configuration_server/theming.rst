@@ -48,9 +48,7 @@ Use a color instead of an image as background:
 ::
 
    occ theming:config color "#0082c9"
-   occ theming:config --reset background
-   occ config:app:set theming backgroundMime --value="backgroundColor"
-
+   occ theming:config background backgroundColor
 
 Theming of icons
 ----------------
