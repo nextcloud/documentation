@@ -45,23 +45,31 @@ Added APIs
 * Added a new interface ``\OCP\BackgroundJob\IParallelAwareJob`` that ``\OCP\BackgroundJob\Job`` now implements. It can be used to allow specifying that multiple instances of a job should not be run at the same time. Also added ``\OCP\BackgroundJob\IJobList#hasReservedJob(?string $className = null)`` method to check the condition (`nextcloud/server#37835 <https://github.com/nextcloud/server/pull/37835>`_)
 * New property ``$actionLabel`` has been added to the ``\OCP\Files\Template\TemplateFileCreator`` class with a respective setter ``TemplateFileCreator::setActionLabel`` and getter ``TemplateFileCreator::getActionLabel``.  (`nextcloud/server#37929 <https://github.com/nextcloud/server/pull/37929>`_ + `nextcloud/server#37955 <https://github.com/nextcloud/server/pull/37955>`_)
 * A new interface ``\OCP\Group\Backend\ISearchableGroupBackend`` was added for group backends supporting new method ``searchInGroup`` to search among a group users in an efficient way. (`nextcloud/server#32866 <https://github.com/nextcloud/server/pull/32866>`_)
+* ``\OCP\App\IAppManager`` has the following new methods (`nextcloud/server#36591 <https://github.com/nextcloud/server/pull/36591>`_):
+   * ``loadApp(string $app): void`` Load an app, if not already loaded
+   * ``isAppLoaded(string $app): bool`` Check if an app is loaded
+   * ``loadApps(array $types = []): bool`` Loads all apps. If $types is set to non-empty array, only apps of those types will be loaded.
+   * ``isType(string $app, array $types): bool`` Check if an app is of a specific type
 
 Changed APIs
 ^^^^^^^^^^^^
 
 * ``\OCP\UserMigration\ISizeEstimationMigrator::getEstimatedExportSize()`` now returns ``int|float`` to support 32-bit systems. (`nextcloud/server#38104 <https://github.com/nextcloud/server/pull/38104>`_)
+* ``\OCP\Files\FileInfo::getOwner`` documented return type is now nullable, to match what was already returned by the implementation (`nextcloud/server#36836 <https://github.com/nextcloud/server/pull/36836>`_)
+* ``\OCP\Files\File::fopen`` and ``\OCP\Files\SimpleFS\ISimpleFile::read`` documented return types are now nullable, to match what was already returned by the implementations (`nextcloud/server#36836 <https://github.com/nextcloud/server/pull/36836>`_)
+* ``\OCP\Files\File::getContent`` may now also throw a ``GenericFileException`` in cases where it would previously return false (while documented to always return a string, which should now be the case - `nextcloud/server#37943 <https://github.com/nextcloud/server/pull/37943>`_).
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
 
 * ``\OCP\AppFramework\Utility\ITimeFactory::getTime()`` and ``\OCP\AppFramework\Utility\ITimeFactory::getDateTime()`` were deprecated, because the interface is now a ``\PSR\Clock\ClockInterface`` following the `PSR-20standard <https://www.php-fig.org/psr/psr-20/#21-clockinterface>`_. (`nextcloud/server#35872 <https://github.com/nextcloud/server/pull/35872>`_)
 * ``\OCP\GroupInterface::usersInGroup()`` is deprecated in favor of newly added ``\OCP\Group\Backend\ISearchableGroupBackend`` interface. (`nextcloud/server#32866 <https://github.com/nextcloud/server/pull/32866>`_)
+* In ``\OC_App``, the following methods are deprecated: ``isAppLoaded``, ``loadApp``, ``isType``. Use the new methods from ``\OCP\App\IAppManager`` instead (`nextcloud/server#36591 <https://github.com/nextcloud/server/pull/36591>`_).
 
 Removed APIs
 ^^^^^^^^^^^^
 
 * Intermediate transition event classes ``\OCP\WorkflowEngine\IEntityCompat`` and ``\OCP\WorkflowEngine\IOperationCompat`` have been removed as advertised for 2023 (`nextcloud/server#37040 <https://github.com/nextcloud/server/pull/37040>`_)
-
 
 Behavioral changes
 ^^^^^^^^^^^^^^^^^^
@@ -75,4 +83,5 @@ Client APIs
 Changed APIs
 ^^^^^^^^^^^^
 
+* HTTP request that do not pass the *lax and strict cookie check* return a HTTP status 412 consistently now. It was HTTP 412 and 503 before depending on the endpoint. (`nextcloud/server#37316 <https://github.com/nextcloud/server/pull/37316>`_)
 * The OCS translation API was extended to return the ``from`` language attribute so in case no from was given, clients can afterwards show in the UI which language was detected and used for translating. (`nextcloud/server#38003 <https://github.com/nextcloud/server/pull/38003>`_)
