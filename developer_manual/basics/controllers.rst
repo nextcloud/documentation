@@ -527,7 +527,7 @@ will be shown in the top right corner of the public page.
             $template = new PublicTemplateResponse($this->appName, 'main', []);
             $template->setHeaderTitle('Public page');
             $template->setHeaderDetails('some details');
-            $response->setHeaderActions([
+            $template->setHeaderActions([
                 new SimpleMenuAction('download', 'Label 1', 'icon-css-class1', 'link-url', 0),
                 new SimpleMenuAction('share', 'Label 2', 'icon-css-class2', 'link-url', 10),
             ]);
