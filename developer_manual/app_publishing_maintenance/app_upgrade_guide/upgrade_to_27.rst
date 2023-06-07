@@ -30,6 +30,11 @@ Added APIs
 Back-end changes
 ----------------
 
+Optimized class loader
+^^^^^^^^^^^^^^^^^^^^^^
+
+This documentation previously recommended using any composer class loader optimization in :ref:`app-custom-classloader`. Unfortunately authoritative class maps do not work with the upgrade process of Nextcloud apps. When app code is replaced during an app upgrade, the autoloader has to load *new* classes as well. Authoritative class loaders don't do that by design. Use the simple class map optimization only.
+
 Removal of PSR-0 class loader
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
