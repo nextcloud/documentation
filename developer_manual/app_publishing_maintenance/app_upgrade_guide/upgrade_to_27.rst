@@ -22,6 +22,11 @@ Make sure your ``appinfo/info.xml`` allows for Nextcloud 27.
 Front-end changes
 -----------------
 
+General
+^^^^^^^
+
+* With Nextcloud 27 you can also provide module javascript files with the ``.mjs`` file extension. For backwards compatibilty you can provide files with the same name but the ``.js`` file extension which will be loaded for Nextcloud versions before 27.
+
 Added APIs
 ^^^^^^^^^^
 
