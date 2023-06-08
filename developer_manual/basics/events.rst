@@ -425,6 +425,16 @@ Emitted when the authentication fails, but only if the login name can be associa
 
 .. versionadded:: 20
 
+``\OCP\Collaboration\Reference\RenderReferenceEvent``
+*****************************************************
+
+.. versionadded:: 25
+
+Event emitted when apps might render references like link previews or smart picker widgets.
+
+This can be used to inject scripts for extending that. Further details can be found in the 
+:ref:`Reference providers` deep dive.
+
 ``\OCP\Contacts\Events\ContactInteractedWithEvent``
 ***************************************************
 
