@@ -542,6 +542,13 @@ Deprecated in 20.0.0 - it can't be guaranteed that this event is triggered in al
 
 Emitted before a system mail is sent. It can be used to alter the message.
 
+``OCP\Preview\BeforePreviewFetchedEvent``
+*****************************************
+
+.. versionadded:: 26
+
+Emitted before a file preview is being fetched. It can be used to block preview rendering by throwing a ``OCP\Files\NotFoundException``.
+
 ``\OCP\Security\CSP\AddContentSecurityPolicyEvent``
 ***************************************************
 
