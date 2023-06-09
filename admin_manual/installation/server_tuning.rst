@@ -124,6 +124,13 @@ Any change to ``config.php`` will then require either restarting PHP, manually c
 
 For more details check out the `official documentation <https://php.net/manual/en/opcache.configuration.php>`_. To monitor OPcache usage, clear individual or all cache entries, `opcache-gui <https://github.com/amnuts/opcache-gui>`_ can be used.
 
+PHP 8.0 and above ship with a JIT compiler that can be enabled to benefit any CPU intensive apps you might be running. To enable a tracing JIT with all optimizations:
+
+.. code:: ini
+
+  opcache.jit = 1255
+  opcache.jit_buffer_size = 128M
+
 Previews
 --------
 
