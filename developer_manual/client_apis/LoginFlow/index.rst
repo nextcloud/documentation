@@ -25,7 +25,7 @@ This should be a one time webview. Which means:
 * Passwords should not be stored
 * No state should be preserved after the webview has terminated
 
-To have a good user experince please consider the following things:
+To have a good user experience please consider the following things:
 
 * set a proper :code:`ACCEPT_LANGUAGE` header
 * set a proper :code:`USER_AGENT` header
