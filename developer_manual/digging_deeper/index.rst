@@ -38,3 +38,4 @@ Digging deeper
    profile
    user_migration
    profiler
+   deadlock
