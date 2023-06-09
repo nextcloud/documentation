@@ -1,3 +1,5 @@
+.. _Reference providers:
+
 ===================
 Reference providers
 ===================
