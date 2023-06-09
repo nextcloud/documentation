@@ -11,21 +11,32 @@ By default, files are stored in :code:`nextcloud/data` or another directory conf
 in the :code:`config.php` of your Nextcloud instance. This data directory might
 still be used for compatibility reasons)
 
-------------
-Implications
-------------
+---------------------------------
+Differences from External Storage
+---------------------------------
 
-When using an object store as primary storage, Nextcloud assumes exclusive access
-over the bucket being used.
+When  an object store is used as Primary Storage, Nextcloud requires exclusive access
+over the bucket being used. All metadata (filenames, directory structures, etc) 
+is stored in Nextcloud and not in the object store. The metadata is only stored in the database and the 
+object store only holds the file content by unique identifier.
 
-Contrary to using an object store as external storage, when an object store is used
-as primary storage, no metadata (names, directory structures, etc) is stored in the
-object store. The metadata is only stored in the database and the object store only
-holds the file content by unique identifier.
+~~~~~~~~~~~~~~~~~~~~~~~~
+Performance Implications
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-Because of this primary object stores usually perform better than when using the same
-object store as external storage but it restricts being able to access the files from
-outside of Nextcloud.
+Because of this, object stores configured as Primary Storage usually perform better than 
+when using the same object store via the External Storage support application, but the downside 
+is being unable to access the files from outside of Nextcloud. This makes using an object store 
+as Primary Storage distinct from using using an object store via External Storage.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Data Backup and Recovery Implications
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+One impact of using an object store as Primary Storage is that your data backup strategy 
+needs to incorporate this. **Your data is longer stored on your Nextcloud server, but your 
+files are also no longer accessible by simply bypassing your Nextcloud server and accessing 
+your object store directly.**
 
 -------------
 Configuration
