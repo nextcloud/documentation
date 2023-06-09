@@ -23,6 +23,26 @@ reduce latency due to multiple abstraction layers.
 
 .. _caching:
 
+Log Levels
+----------
+
+Verify the ``loglevel`` in your ``config.php``. The default the log level is 
+set to ``2`` (WARN) in new installations. Sometimes this parameter is inadvertently 
+left at the DEBUG level (``0``) after a troubleshooting event. In some older installations this 
+parameter may also be something other than the default. Use ``0`` (DEBUG) 
+when you have a problem to diagnose, and then reset your log level to a 
+less-verbose level. DEBUG outputs a lot of information, and can affect your 
+server performance.
+
+Debug Mode
+----------
+
+Verify that ``debug`` is ``false`` in your ``config.php``. The default is ``false`` in new 
+installations (or when not specified). While similar to the DEBUG logging level, this option
+also disables various optimizations (to faciliate easier debugging) and generates additional 
+debug output both at the browser level and server-side. It should not be enabled in production 
+environments outside of isolated troubleshooting situations.
+
 Caching
 -------
 
