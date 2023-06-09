@@ -179,7 +179,7 @@ unconfigured):
 
 * :code:`region` defaults to :code:`eu-west-1`
 * :code:`storageClass` defaults to :code:`STANDARD`
-* :code:`hostname` defaults to :code:`s3.REGION.amazonaws.com`
+* :code:`hostname` defaults to :code:`s3.REGION.amazonaws.com` [Note: If using this parameter (non-Amazon), specify the generic S3 endpoint hostname, **not** the hostname that contains your bucket name]
 * :code:`use_ssl` defaults to :code:`true`
 
 Optional parameters sometimes needing adjustment:
