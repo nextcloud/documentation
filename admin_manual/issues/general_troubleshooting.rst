@@ -249,7 +249,8 @@ subfolder like ``nextcloud``, then ``https://example.com/nextcloud/remote.php/da
 For the first case the :file:`.htaccess` file shipped with Nextcloud should do
 this work for you when you're running Apache. You need to make sure that your
 Web server is using this file. Additionally, you need the mod_rewrite Apache
-module installed to process these redirects. When running Nginx please refer to
+module installed and ``AllowOverride All`` set in your :file:`apache2.conf`
+or vHost-file to process these redirects. When running Nginx please refer to
 :doc:`../installation/nginx`.
 
 
