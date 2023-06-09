@@ -60,6 +60,7 @@ Added APIs
    * ``isAppLoaded(string $app): bool`` Check if an app is loaded
    * ``loadApps(array $types = []): bool`` Loads all apps. If $types is set to non-empty array, only apps of those types will be loaded.
    * ``isType(string $app, array $types): bool`` Check if an app is of a specific type
+* New method ``atomicRetry()`` as been added to the ``\OCP\AppFramework\Db\TTransactional`` trait as a wrapper around atomic() to retry database operations after a retryable exception like database deadlocks occurred (`nextcloud/server#38030 <https://github.com/nextcloud/server/pull/38030>`_)
 
 Changed APIs
 ^^^^^^^^^^^^
