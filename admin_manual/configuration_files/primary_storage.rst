@@ -166,7 +166,7 @@ Non-Amazon hosted S3:
 
 Minimum required parameters are:
 
-* :code:`bucket`
+* :code:`bucket` [Note: Even if non-Amazon hosted, bucket names must meet AWS S3 naming requirements regardless of what your S3 provider/platform considers acceptable - i.e. no underscores]
 * :code:`key`
 * :code:`secret`
 
