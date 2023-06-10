@@ -259,13 +259,23 @@ document root of your Web server and add the following lines::
 
     <IfModule mod_rewrite.c>
       RewriteEngine on
-      RewriteRule ^/\.well-known/carddav /nextcloud/remote.php/dav [R=301,L]
-      RewriteRule ^/\.well-known/caldav /nextcloud/remote.php/dav [R=301,L]
-      RewriteRule ^/\.well-known/webfinger /nextcloud/index.php/.well-known/webfinger [R=301,L]
-      RewriteRule ^/\.well-known/nodeinfo /nextcloud/index.php/.well-known/nodeinfo [R=301,L]
+      RewriteRule ^\.well-known/carddav /nextcloud/remote.php/dav [R=301,L]
+      RewriteRule ^\.well-known/caldav /nextcloud/remote.php/dav [R=301,L]
+      RewriteRule ^\.well-known/webfinger /nextcloud/index.php/.well-known/webfinger [R=301,L]
+      RewriteRule ^\.well-known/nodeinfo /nextcloud/index.php/.well-known/nodeinfo [R=301,L]
     </IfModule>
 
 Make sure to change /nextcloud to the actual subfolder your Nextcloud instance is running in.
+
+.. note:: Note, that if you are putting the above configureation directly to
+   the apache configuration (generaly in ``/etc/apache2/sites-enabled/``),
+   you will need to prepend the first argument of each of the above
+   ``RewriteRule`` option with a forward slash ``/``, for example
+   ``^/\.well-known/carddav``.
+   This is because Apache already normalizes the values for the use in
+   ``.htaccess`` by dropping any number of leading slashes, but it does
+   not for the use in its main site configuration where the forward slash
+   is still present.
 
 If you are running NGINX, make sure ``location = /.well-known/carddav {`` and ``location = /.well-known/caldav {`` are properly configured as described in :doc:`../installation/nginx`, adapt to use a subfolder if necessary.
 
