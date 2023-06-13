@@ -2431,6 +2431,12 @@ Disable the web based updater
 
 ::
 
+	'upgrade.cli-upgrade-link' => '',
+
+Allows to modify the cli-upgrade link in order to link to a different documentation
+
+::
+
 	'debug' => false,
 
 Set this Nextcloud instance to debugging mode
