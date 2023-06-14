@@ -374,6 +374,12 @@ Defaults to ``60*60*24`` seconds (24 hours)
 
 ::
 
+	'davstorage.request_timeout' => 30,
+
+The timeout in seconds for requests to servers made by the DAV component (e.g., needed for federated shares).
+
+::
+
 	'session_relaxed_expiry' => false,
 
 `true` enabled a relaxed session timeout, where the session timeout would no longer be
