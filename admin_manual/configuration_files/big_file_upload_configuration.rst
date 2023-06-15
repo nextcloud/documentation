@@ -173,4 +173,10 @@ to the actual file on the Nextcloud servers temporary directory. It is recommend
 the size of your temp directory accordingly and also ensure that request timeouts are high
 enough for PHP, webservers or any load balancers involved.
 
+Federated Cloud Sharing
+-----------------------
+
+If you are using `Federated Cloud Sharing <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/federated_cloud_sharing_configuration.html>`_ and want to share large files, you can increase the timeout values for requests to the federated servers.
+Therefore, you can set ``davstorage.request_timeout`` in your ``config.php``. The default value is 30 seconds.
+
 .. TODO ON RELEASE: Update version number above on release
