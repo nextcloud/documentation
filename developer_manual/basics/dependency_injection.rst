@@ -448,8 +448,8 @@ What not to inject:
 Accessing the container from anywhere
 -------------------------------------
 
-Sometimes it can be hard to inject some service inside legacy code, in these case
-you can use :code:`OCP\Server::get(MyService::class)`. This should only be used in
+Sometimes it can be hard to inject some service inside legacy code, in these cases
+you can use :code:`OCP\Server::get(MyService::class)`. This should only be used as
 the last resort, as this makes your code more complicated to unit test and is
 considered an anti-pattern.
 
