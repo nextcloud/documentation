@@ -391,7 +391,6 @@ Types:
 * ``\OCP\ITempManager``
 * ``\OCP\Route\IRouter``
 * ``\OCP\ISearch``
-* ``\OCP\ISearch``
 * ``\OCP\Security\ICrypto``
 * ``\OCP\Security\IHasher``
 * ``\OCP\Security\ISecureRandom``
