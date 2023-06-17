@@ -23,7 +23,7 @@ The following steps will download the Collabora Online docker. Make sure to repl
 
     docker pull collabora/code
     docker run -t -d -p 127.0.0.1:9980:9980 \
-        -e 'domain=cloud\.example\.com' \
+        -e 'aliasgroup1=https://cloud.example.com:443' \
         --restart always \
         --cap-add MKNOD \
         collabora/code
