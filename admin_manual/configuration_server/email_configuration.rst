@@ -37,16 +37,16 @@ connect Nextcloud to a remote SMTP server:
 
 .. warning:: There were changes to the 3rd party mailer library in Nextcloud 26:
     
-    * STARTTLS cannot be enforced. It will be used automatically if the mail server supports it. The encryption type should be set to 'None' in this case. See :ref:`here<TLSPeerVerification>` for an example on how to configure self signed certificates.
+    * STARTTLS cannot be enforced. It will be used automatically if the mail server supports it. The encryption type should be set to 'None/STARTTLS' in this case. See :ref:`here<TLSPeerVerification>` for an example on how to configure self signed certificates.
     * NTLM authentication for Microsoft Exchange is not supported by the new mailer library
 
-* Encryption type: None or SSL/TLS
+* Encryption type: None/STARTTLS or SSL
 
 * The From address you want your outgoing Nextcloud mails to use
 
 * Whether authentication is required
 
-* Authentication method (``Login`` is a placeholder): when authentication is required, the underlying mailer will try the following authentication methods in the order they're listed:
+* Authentication: when authentication is required, the underlying mailer will try the following authentication methods in the order they're listed:
 
     * CramMd5
     * Login
