@@ -17,7 +17,7 @@ To install it the following dependencies are required:
 Install the Collabora Online server
 **************************************
 
-The following steps will download the Collabora Online docker. Make sure to replace "cloud.example.com" with the host that your own Nextcloud runs on. Also make sure to escape all dots with backslashes (`\`), since this string will be evaluated as a regular expression. (With earlier versions of the docker image dots needed to be escaped with two backslashes. This is no longer necessary for 21.11.3.6 and later versions of the docker image.) If you want to use the docker container with more than one Nextcloud, you'll need to use `domain=cloud\.nextcloud\.com\|second\.nextcloud\.com` instead. (All hosts are separated by `\|`.)
+The following steps will download the Collabora Online docker. Make sure to replace "cloud.example.com" with the host that your own Nextcloud runs on. Also make sure to escape all dots with backslashes (`\\`), since this string will be evaluated as a regular expression. (With earlier versions of the docker image dots needed to be escaped with two backslashes. This is no longer necessary for 21.11.3.6 and later versions of the docker image.) If you want to use the docker container with more than one Nextcloud, you'll need to use `domain=cloud\.nextcloud\.com\|second\.nextcloud\.com` instead. (All hosts are separated by `\|`.)
 
 .. code-block:: bash
 
