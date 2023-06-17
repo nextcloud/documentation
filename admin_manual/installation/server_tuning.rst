@@ -50,6 +50,14 @@ Caching improves performance by storing data, code, and other objects in memory.
 Memory cache configuration for the Nextcloud server must be installed and configured.
 See :doc:`../configuration_server/caching_configuration`.
 
+Compression
+-----------
+
+Enabling compression in your web server for plain filetypes like javascript, css and svg files
+improves the performance because less bytes need to be transferred to the clients. Only these 
+file types are necessary because all other plain filetypes are usually served by Nextcloud PHP
+code and compressed on the fly by it automatically if the client accepts gzip encoding.
+
 Using MariaDB/MySQL instead of SQLite
 -------------------------------------
 
