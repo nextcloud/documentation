@@ -128,19 +128,23 @@ The `OPcache <https://php.net/manual/en/intro.opcache.php>`_ improves the perfor
 
   opcache.save_comments = 1
 
-By default, cached scripts are revalidated on access to ensure that changes on disk take effect after at most ``2`` seconds. Since Nextcloud handles cache revalidation internally when required, the revalidation frequency can be reduced or completely disabled to enhance performance. Note, however, that it affects manual changes to scripts, including ``config.php``. To check for changes at most every ``60`` seconds, use the following setting:
+By default, cached scripts are revalidated on access to ensure that changes on disk take effect after at most ``2`` seconds. Since Nextcloud handles cache revalidation internally when required, the revalidation frequency can be reduced or completely disabled to enhance performance. Note, however, this will introduce a delay to - or completely prevent from taking effect - manual changes to scripts, including ``config.php``, and some CLI commands like ``occ maintenance:mode``. 
+
+To check for changes at most every ``60`` seconds, use the following setting:
 
 .. code:: ini
 
   opcache.revalidate_freq = 60
 
-To disable the revalidation completely:
+Any change to ``config.php`` or usage of ``occ maintenance:mode`` will then take up to 60 seconds before taking effect (or require manually restarting PHP, or manually clearing the cache, or invalidating this particular script).
+
+To disable the revalidation completely (an extreme setting, but acceptable in some environments):
 
 .. code:: ini
 
   opcache.validate_timestamps = 0
 
-Any change to ``config.php`` will then require either restarting PHP, manually clearing the cache, or invalidating this particular script.
+Any change to ``config.php`` or usage of ``occ maintenance:mode`` will then require restarting PHP (or manually clearing the cache, or invalidating this particular script).
 
 For more details check out the `official documentation <https://php.net/manual/en/opcache.configuration.php>`_. To monitor OPcache usage, clear individual or all cache entries, `opcache-gui <https://github.com/amnuts/opcache-gui>`_ can be used.
 
