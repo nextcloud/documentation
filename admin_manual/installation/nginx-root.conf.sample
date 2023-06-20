@@ -163,6 +163,10 @@ server {
         fastcgi_request_buffering off;
 
         fastcgi_max_temp_file_size 0;
+
+        # Horde, used by nextcloud mail app, needs $_SERVER['SERVER_NAME'] to generate Message-ID header
+        # See also: https://github.com/nextcloud/mail/issues/5764
+        fastcgi_param SERVER_NAME $host;
     }
 
     # Serve static files
