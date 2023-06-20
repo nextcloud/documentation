@@ -157,6 +157,11 @@ Previews
 It is possible to speed up preview generation using an
 external microservice: `Imaginary <https://github.com/h2non/imaginary>`_.
 
+.. warning::
+
+   Imaginary is currently incompatible with server-side-encryption. 
+   See https://github.com/nextcloud/server/issues/34262
+
 We strongly recommend running our custom docker image that is more up to date than the official image.
 You can find the image at `docker.io/nextcloud/aio-imaginary:latest`.
 
