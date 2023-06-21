@@ -37,7 +37,8 @@ Deprecated APIs
 Removed APIs
 ^^^^^^^^^^^^
 
-* ``OC.loadScript`` and ``OC.loadStyle``: Use ``OCP.Loader`` instead
+* ``OC.loadScript`` and ``OC.loadStyle``: Use ``OCP.Loader`` instead.
+* ``OC.appSettings``: There is no replacement.
 
 Back-end changes
 ----------------
