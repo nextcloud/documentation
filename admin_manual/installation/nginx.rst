@@ -23,6 +23,9 @@ NGINX configuration
   broken for page display and result in an invalid configuration files.
 - Some environments might need a ``cgi.fix_pathinfo`` set to ``1`` in their
   ``php.ini``.
+- If you are using nginx < 1.25.1, remove the :code:`http2` directive and add http2 to the following lines:
+| :code:`listen 443      ssl http2;`
+| :code:`listen [::]:443 ssl http2;`
 
 .. nginx_webroot_example:
 
