@@ -12,6 +12,16 @@ setting, and more.
 run it as your HTTP user** to ensure that the correct permissions are maintained
 on your Nextcloud files and directories.
 
+.. note:: 
+  Since APCu is disabled by default for the command-line mode of PHP, it can cause issues with Nextcloud’s ``occ`` command. Please make sure you set the ``apc.enable_cli`` parameter to ``1`` in your PHP CLI's ``php.ini`` configuration file or append ``--define apc.enable_cli=1`` each time you invoke ``occ`` - e.g.::
+
+    sudo -u www-data php --define apc.enable_cli=1 occ config:list system
+
+  If you fail to do this, you will receive output such as the following:: 
+
+    An unhandled exception has been thrown:
+    OCP\HintException: [0]: Memcache \OC\Memcache\APCu not available for local cache (Is the matching PHP module installed and enabled?)
+
 occ command Directory
 ---------------------
 
