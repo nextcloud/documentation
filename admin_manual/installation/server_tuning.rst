@@ -53,10 +53,8 @@ See :doc:`../configuration_server/caching_configuration`.
 Compression
 -----------
 
-Enabling compression in your web server for plain filetypes like javascript, css and svg files
-improves the performance because less bytes need to be transferred to the clients. Only these 
-file types are necessary because all other plain filetypes are usually served by Nextcloud PHP
-code and compressed on the fly by it automatically if the client accepts gzip encoding.
+Enabling compression in your web server for JavaScript, CSS, and SVG files improves the 
+performance because fewer bytes need to be transferred to the clients.
 
 Using MariaDB/MySQL instead of SQLite
 -------------------------------------
