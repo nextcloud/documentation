@@ -54,16 +54,20 @@ Added APIs
 * ``\OCP\Mail\IMessage::setSubject`` to set an email subject. See :ref:`email` for an example.
 * ``\OCP\Mail\IMessage::setHtmlBody`` and ``\OCP\Mail\IMessage::setPlainBody`` to set an email body See :ref:`email` for an example.
 * ``\OCP\IEventSourceFactory`` to create a ``OCP\IEventSource`` instance.
+* ``\OCP\Preview\BeforePreviewFetchedEvent::getCrop``
+* ``\OCP\Preview\BeforePreviewFetchedEvent::getHeight``
+* ``\OCP\Preview\BeforePreviewFetchedEvent::getMode``
+* ``\OCP\Preview\BeforePreviewFetchedEvent::getWidth``
 
 Changed APIs
 ^^^^^^^^^^^^
 
-* tbd
+* ``\OCP\Preview\BeforePreviewFetchedEvent`` now accepts: ``width, height, crop and mode`` as optional constructor arguments. 
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
 
-* tbd
+* ``\OCP\Preview\BeforePreviewFetchedEvent`` passing ``null`` for ``width, height, crop or mode`` is deprecated. Starting with Nextcloud 31 they are mandatory.
 
 Removed APIs
 ^^^^^^^^^^^^
