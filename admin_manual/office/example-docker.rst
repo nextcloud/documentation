@@ -17,13 +17,13 @@ To install it the following dependencies are required:
 Install the Collabora Online server
 **************************************
 
-The following steps will download the Collabora Online docker. Make sure to replace "cloud.example.com" with the host that your own Nextcloud runs on. Also make sure to escape all dots with double backslashes (`\\`), since this string will be evaluated as a regular expression (and your bash 'eats' the first backslash.) If you want to use the docker container with more than one Nextcloud, you'll need to use `domain=cloud\\.nextcloud\\.com\|second\\.nextcloud\\.com` instead. (All hosts are separated by `\|`.)
+The following steps will download the Collabora Online docker. Make sure to replace "cloud.example.com" with the host that your own Nextcloud runs on. If you want to use the docker container with more than one Nextcloud, you can add another `-e aliasgroup2=https://cloud2.example.com:443`.
 
 .. code-block:: bash
 
     docker pull collabora/code
     docker run -t -d -p 127.0.0.1:9980:9980 \
-        -e 'domain=cloud\\.example\\.com' \
+        -e 'aliasgroup1=https://cloud.example.com:443' \
         --restart always \
         --cap-add MKNOD \
         collabora/code
