@@ -37,6 +37,10 @@ These parameters are configured by the Nextcloud installer, and are required
 for your Nextcloud server to operate.
 
 
+instanceid
+^^^^^^^^^^
+
+
 ::
 
 	'instanceid' => '',
@@ -48,6 +52,10 @@ is created when you install Nextcloud.
 
 'instanceid' => 'd3c944a9a',
 
+passwordsalt
+^^^^^^^^^^^^
+
+
 ::
 
 	'passwordsalt' => '',
@@ -57,12 +65,20 @@ installer. (There are also per-user salts.) If you lose this salt you lose
 all your passwords. This example is for documentation only, and you should
 never use it.
 
+secret
+^^^^^^
+
+
 ::
 
 	'secret' => '',
 
 Secret used by Nextcloud for various purposes, e.g. to encrypt data. If you
 lose this string there will be data corruption.
+
+trusted_domains
+^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -88,6 +104,10 @@ You can specify:
 - the IP address with or without permitted port, e.g. [2001:db8::1]:8080
   Using TLS certificates where commonName=<IP address> is deprecated
 
+datadirectory
+^^^^^^^^^^^^^
+
+
 ::
 
 	'datadirectory' => '/var/www/nextcloud/data',
@@ -97,12 +117,20 @@ you use SQLite.
 
 Default to ``data/`` in the Nextcloud directory.
 
+version
+^^^^^^^
+
+
 ::
 
 	'version' => '',
 
 The current version number of your Nextcloud installation. This is set up
 during installation and update, so you shouldn't need to change it.
+
+dbtype
+^^^^^^
+
 
 ::
 
@@ -118,6 +146,10 @@ Available:
 
 Defaults to ``sqlite3``
 
+dbhost
+^^^^^^
+
+
 ::
 
 	'dbhost' => '',
@@ -127,12 +159,20 @@ Your host server name, for example ``localhost``, ``hostname``,
 ``hostname:####``; to specify a Unix socket use
 ``/path/to/directory/containing/socket`` e.g. ``/run/postgresql/``.
 
+dbname
+^^^^^^
+
+
 ::
 
 	'dbname' => 'nextcloud',
 
 The name of the Nextcloud database, which is set during installation. You
 should not need to change this.
+
+dbuser
+^^^^^^
+
 
 ::
 
@@ -142,12 +182,20 @@ The user that Nextcloud uses to write to the database. This must be unique
 across Nextcloud instances using the same SQL database. This is set up during
 installation, so you shouldn't need to change it.
 
+dbpassword
+^^^^^^^^^^
+
+
 ::
 
 	'dbpassword' => '',
 
 The password for the database user. This is set up during installation, so
 you shouldn't need to change it.
+
+dbtableprefix
+^^^^^^^^^^^^^
+
 
 ::
 
@@ -157,6 +205,10 @@ Prefix for the Nextcloud tables in the database.
 
 Default to ``oc_``
 
+dbpersistent
+^^^^^^^^^^^^
+
+
 ::
 
 	'dbpersistent' => '',
@@ -165,6 +217,10 @@ Enable persistent connexions to the database.
 
 This setting uses the "persistent" option from doctrine dbal, which in turn
 uses the PDO::ATTR_PERSISTENT option from the pdo driver.
+
+installed
+^^^^^^^^^
+
 
 ::
 
@@ -239,6 +295,10 @@ These optional parameters control some aspects of the user interface. Default
 values, where present, are shown.
 
 
+default_language
+^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'default_language' => 'en',
@@ -256,6 +316,10 @@ the user has chosen something different explicitly.
 
 Defaults to ``en``
 
+force_language
+^^^^^^^^^^^^^^
+
+
 ::
 
 	'force_language' => 'en',
@@ -267,6 +331,10 @@ different languages, this value can be set to ``true`` instead of a language
 code.
 
 Defaults to ``false``
+
+default_locale
+^^^^^^^^^^^^^^
+
 
 ::
 
@@ -281,6 +349,10 @@ login or shared items. User's locale preferences configured under "personal
 
 Defaults to ``en``
 
+default_phone_region
+^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'default_phone_region' => 'GB',
@@ -291,6 +363,10 @@ It is required to allow inserting phone numbers in the user profiles starting
 without the country code (e.g. +49 for Germany).
 
 No default value!
+
+force_locale
+^^^^^^^^^^^^
+
 
 ::
 
@@ -304,6 +380,10 @@ code.
 
 Defaults to ``false``
 
+knowledgebaseenabled
+^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'knowledgebaseenabled' => true,
@@ -311,12 +391,20 @@ Defaults to ``false``
 ``true`` enables the Help menu item in the user menu (top right of the
 Nextcloud Web interface). ``false`` removes the Help item.
 
+allow_user_to_change_display_name
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'allow_user_to_change_display_name' => true,
 
 ``true`` allows users to change their display names (on their Personal
 pages), and ``false`` prevents them from changing their display names.
+
+skeletondirectory
+^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -331,6 +419,10 @@ If the directory does not exist, it falls back to non dialect (from ``de_DE``
 to ``de``). If that does not exist either, it falls back to ``default``
 
 Defaults to ``core/skeleton`` in the Nextcloud directory.
+
+templatedirectory
+^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -352,6 +444,10 @@ User session
 ------------
 
 
+remember_login_cookie_lifetime
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'remember_login_cookie_lifetime' => 60*60*24*15,
@@ -360,6 +456,10 @@ Lifetime of the remember login cookie. This should be larger than the
 session_lifetime. If it is set to 0 remember me is disabled.
 
 Defaults to ``60*60*24*15`` seconds (15 days)
+
+session_lifetime
+^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -371,6 +471,20 @@ The maximum possible time is limited by the session.gc_maxlifetime php.ini setti
 which would overwrite this option if it is less than the value in the config.php
 
 Defaults to ``60*60*24`` seconds (24 hours)
+
+davstorage.request_timeout
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'davstorage.request_timeout' => 30,
+
+The timeout in seconds for requests to servers made by the DAV component (e.g., needed for federated shares).
+
+session_relaxed_expiry
+^^^^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -384,6 +498,10 @@ This may lead to sessions being available for longer than what session_lifetime 
 comes with performance benefits as sessions are no longer a locking operation for concurrent
 requests.
 
+session_keepalive
+^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'session_keepalive' => true,
@@ -393,6 +511,10 @@ Enable or disable session keep-alive when a user is logged in to the Web UI.
 Enabling this sends a "heartbeat" to the server to keep it from timing out.
 
 Defaults to ``true``
+
+auto_logout
+^^^^^^^^^^^
+
 
 ::
 
@@ -404,6 +526,10 @@ even if requests to the server might extend the session lifetime.
 
 Defaults to ``false``
 
+token_auth_enforced
+^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'token_auth_enforced' => false,
@@ -413,6 +539,10 @@ password for enhanced security. Users need to generate tokens in personal settin
 which can be used as passwords on their clients.
 
 Defaults to ``false``
+
+token_auth_activity_update
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -428,6 +558,10 @@ max value: 300
 
 Defaults to ``300``
 
+auth.bruteforce.protection.enabled
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'auth.bruteforce.protection.enabled' => true,
@@ -437,6 +571,10 @@ Whether the bruteforce protection shipped with Nextcloud should be enabled or no
 Disabling this is discouraged for security reasons.
 
 Defaults to ``true``
+
+ratelimit.protection.enabled
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -448,11 +586,19 @@ Disabling this is discouraged for security reasons.
 
 Defaults to ``true``
 
+auth.webauthn.enabled
+^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'auth.webauthn.enabled' => true,
 
 By default, WebAuthn is available, but it can be explicitly disabled by admins
+
+auth.storeCryptedPassword
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -474,6 +620,10 @@ WARNING: If disabled, password changes on the user back-end (e.g. on LDAP) no
 longer log connected clients out automatically. Users can still disconnect
 the clients by deleting the app token from the security settings.
 
+hide_login_form
+^^^^^^^^^^^^^^^
+
+
 ::
 
 	'hide_login_form' => false,
@@ -483,6 +633,10 @@ admin wants to avoid users entering their credentials to the system if the SSO
 app is unavailable.
 
 This will show an error. But the direct login still works with adding ?direct=1
+
+lost_password_link
+^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -494,6 +648,10 @@ user is redirected to, when clicking the "reset password" link after a failed
 login-attempt.
 
 In case you do not want to provide any link, replace the url with 'disabled'
+
+logo_url
+^^^^^^^^
+
 
 ::
 
@@ -510,6 +668,10 @@ These configure the email settings for Nextcloud notifications and password
 resets.
 
 
+mail_domain
+^^^^^^^^^^^
+
+
 ::
 
 	'mail_domain' => 'example.com',
@@ -517,6 +679,10 @@ resets.
 The return address that you want to appear on emails sent by the Nextcloud
 server, for example ``nc-admin@example.com``, substituting your own domain,
 of course.
+
+mail_from_address
+^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -527,6 +693,10 @@ FROM address that overrides the built-in ``sharing-noreply`` and
 
 Defaults to different from addresses depending on the feature.
 
+mail_smtpdebug
+^^^^^^^^^^^^^^
+
+
 ::
 
 	'mail_smtpdebug' => false,
@@ -534,6 +704,10 @@ Defaults to different from addresses depending on the feature.
 Enable SMTP class debugging.
 
 Defaults to ``false``
+
+mail_smtpmode
+^^^^^^^^^^^^^
+
 
 ::
 
@@ -551,6 +725,10 @@ on your Unix system.
 
 Defaults to ``smtp``
 
+mail_smtphost
+^^^^^^^^^^^^^
+
+
 ::
 
 	'mail_smtphost' => '127.0.0.1',
@@ -562,6 +740,10 @@ a colon, like this: ``127.0.0.1:24``.
 
 Defaults to ``127.0.0.1``
 
+mail_smtpport
+^^^^^^^^^^^^^
+
+
 ::
 
 	'mail_smtpport' => 25,
@@ -569,6 +751,10 @@ Defaults to ``127.0.0.1``
 This depends on ``mail_smtpmode``. Specify the port for sending mail.
 
 Defaults to ``25``
+
+mail_smtptimeout
+^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -579,6 +765,10 @@ seconds. You may need to increase this if you are running an anti-malware or
 spam scanner.
 
 Defaults to ``10`` seconds
+
+mail_smtpsecure
+^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -591,6 +781,10 @@ this config option.
 
 Defaults to ``''`` (empty string)
 
+mail_smtpauth
+^^^^^^^^^^^^^
+
+
 ::
 
 	'mail_smtpauth' => false,
@@ -599,6 +793,10 @@ This depends on ``mail_smtpmode``. Change this to ``true`` if your mail
 server requires authentication.
 
 Defaults to ``false``
+
+mail_smtpname
+^^^^^^^^^^^^^
+
 
 ::
 
@@ -609,6 +807,10 @@ the SMTP server.
 
 Defaults to ``''`` (empty string)
 
+mail_smtppassword
+^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'mail_smtppassword' => '',
@@ -617,6 +819,10 @@ This depends on ``mail_smtpauth``. Specify the password for authenticating to
 the SMTP server.
 
 Default to ``''`` (empty string)
+
+mail_template_class
+^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -627,12 +833,20 @@ options to modify the mail texts with the theming app is not enough.
 
 The class must extend  ``\OC\Mail\EMailTemplate``
 
+mail_send_plaintext_only
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'mail_send_plaintext_only' => false,
 
 Email will be sent by default with an HTML and a plain text body. This option
 allows to only send plain text emails.
+
+mail_smtpstreamoptions
+^^^^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -642,6 +856,10 @@ This depends on ``mail_smtpmode``. Array of additional streams options that
 will be passed to underlying Swift mailer implementation.
 
 Defaults to an empty array.
+
+mail_sendmailmode
+^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -661,6 +879,10 @@ Proxy Configurations
 --------------------
 
 
+overwritehost
+^^^^^^^^^^^^^
+
+
 ::
 
 	'overwritehost' => '',
@@ -669,6 +891,10 @@ The automatic hostname detection of Nextcloud can fail in certain reverse
 proxy and CLI/cron situations. This option allows you to manually override
 the automatic detection; for example ``www.example.com``, or specify the port
 ``www.example.com:8080``.
+
+overwriteprotocol
+^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -681,6 +907,10 @@ and the proxy handles the ``https`` calls, Nextcloud would not know that
 
 Valid values are ``http`` and ``https``.
 
+overwritewebroot
+^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'overwritewebroot' => '',
@@ -691,6 +921,10 @@ For example, if ``www.example.com/nextcloud`` is the URL pointing to the
 Nextcloud instance, the webroot is ``/nextcloud``. When proxies are in use,
 it may be difficult for Nextcloud to detect this parameter, resulting in
 invalid URLs.
+
+overwritecondaddr
+^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -703,6 +937,10 @@ addresses starting with ``10.0.0.`` and ending with 1 to 3:
 
 Defaults to ``''`` (empty string)
 
+overwrite.cli.url
+^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'overwrite.cli.url' => '',
@@ -713,6 +951,10 @@ occ). The value should contain the full base URL:
 ``https://www.example.com/nextcloud``
 
 Defaults to ``''`` (empty string)
+
+htaccess.RewriteBase
+^^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -742,6 +984,10 @@ following conditions are met Nextcloud URLs won't contain `index.php`:
 
 Defaults to ``''`` (empty string)
 
+htaccess.IgnoreFrontController
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'htaccess.IgnoreFrontController' => false,
@@ -753,6 +999,10 @@ Please check, if `mod_rewrite` is active and functional before setting this
 parameter, and you updated your .htaccess with `occ maintenance:update:htaccess`.
 Otherwise, your nextcloud installation might not be reachable anymore.
 For example, try accessing resources by leaving out `index.php` in the URL.
+
+proxy
+^^^^^
+
 
 ::
 
@@ -768,6 +1018,10 @@ is overwritten. Make sure to set ``proxyexclude`` accordingly if necessary.
 
 Defaults to ``''`` (empty string)
 
+proxyuserpwd
+^^^^^^^^^^^^
+
+
 ::
 
 	'proxyuserpwd' => '',
@@ -777,6 +1031,10 @@ The optional authentication for the proxy to use to connect to the internet.
 The format is: ``username:password``.
 
 Defaults to ``''`` (empty string)
+
+proxyexclude
+^^^^^^^^^^^^
+
 
 ::
 
@@ -791,6 +1049,10 @@ value with the global NO_PROXY option.
 
 Defaults to empty array.
 
+allow_local_remote_servers
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'allow_local_remote_servers' => true,
@@ -803,6 +1065,10 @@ Deleted Items (trash bin)
 -------------------------
 
 These parameters control the Deleted files app.
+
+
+trashbin_retention_obligation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 ::
@@ -862,6 +1128,10 @@ File versions
 These parameters control the Versions app.
 
 
+versions_retention_obligation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'versions_retention_obligation' => 'auto',
@@ -905,6 +1175,10 @@ Nextcloud performs several verification checks. There are two options,
 ``true`` and ``false``.
 
 
+appcodechecker
+^^^^^^^^^^^^^^
+
+
 ::
 
 	'appcodechecker' => true,
@@ -914,6 +1188,10 @@ proper public APIs. If this is set to true it will only allow to install or
 enable apps that pass this check.
 
 Defaults to ``false``
+
+updatechecker
+^^^^^^^^^^^^^
+
 
 ::
 
@@ -926,6 +1204,10 @@ available version based on those metrics.
 
 Defaults to ``true``
 
+updater.server.url
+^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'updater.server.url' => 'https://updates.nextcloud.com/updater_server/',
@@ -933,6 +1215,10 @@ Defaults to ``true``
 URL that Nextcloud should use to look for updates
 
 Defaults to ``https://updates.nextcloud.com/updater_server/``
+
+updater.release.channel
+^^^^^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -946,6 +1232,10 @@ Supported values:
 - ``beta``
 - ``stable``
 
+has_internet_connection
+^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'has_internet_connection' => true,
@@ -953,6 +1243,10 @@ Supported values:
 Is Nextcloud connected to the Internet or running in a closed network?
 
 Defaults to ``true``
+
+connectivity_check_domains
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -980,6 +1274,10 @@ Defaults to the following domains:
  - www.eff.org
  - www.edri.org
 
+check_for_working_wellknown_setup
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'check_for_working_wellknown_setup' => true,
@@ -989,6 +1287,10 @@ by attempting to make a request from JS to
 https://your-domain.com/.well-known/caldav/
 
 Defaults to ``true``
+
+check_for_working_htaccess
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -1003,6 +1305,10 @@ which verifies that it can't be accessed directly through the Web server.
 
 Defaults to ``true``
 
+check_data_directory_permissions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'check_data_directory_permissions' => true,
@@ -1015,6 +1321,10 @@ In regular cases, if issues with permissions are encountered they should be
 adjusted accordingly. Changing the flag is discouraged.
 
 Defaults to ``true``
+
+config_is_read_only
+^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -1032,6 +1342,10 @@ Defaults to ``false``
 
 Logging
 -------
+
+
+log_type
+^^^^^^^^
 
 
 ::
@@ -1052,6 +1366,10 @@ must be installed and active.
 
 Defaults to ``file``
 
+log_type_audit
+^^^^^^^^^^^^^^
+
+
 ::
 
 	'log_type_audit' => 'file',
@@ -1059,6 +1377,10 @@ Defaults to ``file``
 This parameter determines where the audit logs are sent. See ``log_type`` for more information.
 
 Defaults to ``file``
+
+logfile
+^^^^^^^
+
 
 ::
 
@@ -1069,6 +1391,10 @@ Name of the file to which the Nextcloud logs are written if parameter
 
 Defaults to ``[datadirectory]/nextcloud.log``
 
+logfile_audit
+^^^^^^^^^^^^^
+
+
 ::
 
 	'logfile_audit' => '/var/log/audit.log',
@@ -1078,6 +1404,10 @@ Name of the file to which the audit logs are written if parameter
 
 Defaults to ``[datadirectory]/audit.log``
 
+logfilemode
+^^^^^^^^^^^
+
+
 ::
 
 	'logfilemode' => 0640,
@@ -1085,6 +1415,10 @@ Defaults to ``[datadirectory]/audit.log``
 Log file mode for the Nextcloud logging type in octal notation.
 
 Defaults to 0640 (writeable by user, readable by group).
+
+loglevel
+^^^^^^^^
+
 
 ::
 
@@ -1095,6 +1429,10 @@ Warning, 3 = Error, and 4 = Fatal. The default value is Warning.
 
 Defaults to ``2``
 
+loglevel_frontend
+^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'loglevel_frontend' => 2,
@@ -1104,6 +1442,10 @@ for ``loglevel`` can be used. If not set it defaults to the value
 configured for ``loglevel`` or Warning if that is not set either.
 
 Defaults to ``2``
+
+syslog_tag
+^^^^^^^^^^
+
 
 ::
 
@@ -1116,6 +1458,10 @@ with a unique id. Only available if ``log_type`` is set to ``syslog`` or
 
 The default value is ``Nextcloud``.
 
+syslog_tag_audit
+^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'syslog_tag_audit' => 'Nextcloud',
@@ -1126,6 +1472,10 @@ with a unique id. Only available if ``log_type`` is set to ``syslog`` or
 ``systemd``.
 
 The default value is the value of ``syslog_tag``.
+
+log.condition
+^^^^^^^^^^^^^
+
 
 ::
 
@@ -1149,6 +1499,10 @@ Supported conditions:
 
 Defaults to an empty array.
 
+logdateformat
+^^^^^^^^^^^^^
+
+
 ::
 
 	'logdateformat' => 'F d, Y H:i:s',
@@ -1157,6 +1511,10 @@ This uses PHP.date formatting; see https://www.php.net/manual/en/function.date.p
 
 Defaults to ISO 8601 ``2005-08-15T15:52:01+00:00`` - see \DateTime::ATOM
 (https://www.php.net/manual/en/class.datetime.php#datetime.constants.atom)
+
+logtimezone
+^^^^^^^^^^^
+
 
 ::
 
@@ -1167,12 +1525,20 @@ https://www.php.net/manual/en/timezones.php
 
 Defaults to ``UTC``
 
+log_query
+^^^^^^^^^
+
+
 ::
 
 	'log_query' => false,
 
 Append all database queries and parameters to the log file. Use this only for
 debugging, as your logfile will become huge.
+
+log_rotate_size
+^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -1185,6 +1551,10 @@ old logfile reaches your limit. If a rotated log file is already present, it
 will be overwritten.
 
 Defaults to 100 MB
+
+profiler
+^^^^^^^^
+
 
 ::
 
@@ -1200,6 +1570,10 @@ Alternate Code Locations
 ------------------------
 
 Some Nextcloud code may be stored in alternate locations.
+
+
+customclient_desktop
+^^^^^^^^^^^^^^^^^^^^
 
 
 ::
@@ -1229,6 +1603,10 @@ Apps
 Options for the Apps folder, Apps store, and App code checker.
 
 
+defaultapp
+^^^^^^^^^^
+
+
 ::
 
 	'defaultapp' => 'dashboard,files',
@@ -1241,6 +1619,10 @@ on. If no enabled apps are found it defaults to the dashboard app.
 
 Defaults to ``dashboard,files``
 
+appstoreenabled
+^^^^^^^^^^^^^^^
+
+
 ::
 
 	'appstoreenabled' => true,
@@ -1248,6 +1630,10 @@ Defaults to ``dashboard,files``
 When enabled, admins may install apps from the Nextcloud app store.
 
 Defaults to ``true``
+
+appstoreurl
+^^^^^^^^^^^
+
 
 ::
 
@@ -1259,6 +1645,10 @@ Requires that at least one of the configured apps directories is writeable.
 
 Defaults to ``https://apps.nextcloud.com/api/v1``
 
+appsallowlist
+^^^^^^^^^^^^^
+
+
 ::
 
 	'appsallowlist' => [],
@@ -1266,6 +1656,10 @@ Defaults to ``https://apps.nextcloud.com/api/v1``
 Filters allowed installable apps from the appstore.
 
 Empty array will prevent all apps from the store to be found.
+
+apps_paths
+^^^^^^^^^^
+
 
 ::
 
@@ -1284,16 +1678,6 @@ file system path to the app folder. The key ``url`` defines the HTTP Web path
 to that folder, starting from the Nextcloud webroot. The key ``writable``
 indicates if a Web server can write files to that folder.
 
-::
-
-	'appcodechecker' => true,
-
-Checks an app before install whether it uses private APIs instead of the
-proper public APIs. If this is set to true it will only allow to install or
-enable apps that pass this check.
-
-Defaults to ``false``
-
 
 
 
@@ -1304,6 +1688,10 @@ Previews
 Nextcloud supports previews of image files, the covers of MP3 files, and text
 files. These options control enabling and disabling previews, and thumbnail
 size.
+
+
+enable_previews
+^^^^^^^^^^^^^^^
 
 
 ::
@@ -1321,6 +1709,10 @@ Valid values are ``true``, to enable previews, or
 
 Defaults to ``true``
 
+preview_concurrency_all
+^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'preview_concurrency_all' => 8,
@@ -1331,6 +1723,10 @@ been generated.
 
 This should be greater than 'preview_concurrency_new'.
 If unspecified, defaults to twice the value of 'preview_concurrency_new'.
+
+preview_concurrency_new
+^^^^^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -1344,6 +1740,10 @@ It's recommended to limit this to be no greater than the number of CPU cores.
 If unspecified, defaults to the number of CPU cores, or 4 if that cannot
 be determined.
 
+preview_max_x
+^^^^^^^^^^^^^
+
+
 ::
 
 	'preview_max_x' => 4096,
@@ -1353,6 +1753,10 @@ is no limit.
 
 Defaults to ``4096``
 
+preview_max_y
+^^^^^^^^^^^^^
+
+
 ::
 
 	'preview_max_y' => 4096,
@@ -1361,6 +1765,10 @@ The maximum height, in pixels, of a preview. A value of ``null`` means there
 is no limit.
 
 Defaults to ``4096``
+
+preview_max_filesize_image
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -1374,6 +1782,10 @@ Set to ``-1`` for no limit and try to generate image previews on all file sizes.
 
 Defaults to ``50`` megabytes
 
+preview_max_memory
+^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'preview_max_memory' => 256,
@@ -1386,6 +1798,10 @@ be disabled and the default mimetype icon is shown. Set to -1 for no limit.
 
 Defaults to ``256`` megabytes
 
+preview_libreoffice_path
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'preview_libreoffice_path' => '/usr/bin/libreoffice',
@@ -1393,6 +1809,10 @@ Defaults to ``256`` megabytes
 custom path for LibreOffice/OpenOffice binary
 
 Defaults to ``''`` (empty string)
+
+preview_office_cl_parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -1404,6 +1824,10 @@ Use this if LibreOffice/OpenOffice requires additional arguments.
 
 Defaults to ``''`` (empty string)
 
+preview_ffmpeg_path
+^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'preview_ffmpeg_path' => '/usr/bin/ffmpeg',
@@ -1411,6 +1835,10 @@ Defaults to ``''`` (empty string)
 custom path for ffmpeg binary
 
 Defaults to ``null`` and falls back to searching ``avconv`` and ``ffmpeg`` in the configured ``PATH`` environment
+
+preview_imaginary_url
+^^^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -1422,25 +1850,33 @@ Also requires the ``OC\Preview\Imaginary`` provider to be enabled.
 
 See https://github.com/h2non/imaginary
 
+preview_imaginary_key
+^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'preview_imaginary_key' => 'secret',
 
 If you want set a api key for imaginary.
 
+enabledPreviewProviders
+^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'enabledPreviewProviders' => [
-		'OC\Preview\PNG',
-		'OC\Preview\JPEG',
-		'OC\Preview\GIF',
 		'OC\Preview\BMP',
-		'OC\Preview\XBitmap',
-		'OC\Preview\MP3',
-		'OC\Preview\TXT',
-		'OC\Preview\MarkDown',
-		'OC\Preview\OpenDocument',
+		'OC\Preview\GIF',
+		'OC\Preview\JPEG',
 		'OC\Preview\Krita',
+		'OC\Preview\MarkDown',
+		'OC\Preview\MP3',
+		'OC\Preview\OpenDocument',
+		'OC\Preview\PNG',
+		'OC\Preview\TXT',
+		'OC\Preview\XBitmap',
 	],
 
 Only register providers that have been explicitly enabled
@@ -1448,8 +1884,9 @@ Only register providers that have been explicitly enabled
 The following providers are disabled by default due to performance or privacy
 concerns:
 
- - ``OC\Preview\Illustrator``
+ - ``OC\Preview\Font``
  - ``OC\Preview\HEIC``
+ - ``OC\Preview\Illustrator``
  - ``OC\Preview\Movie``
  - ``OC\Preview\MSOffice2003``
  - ``OC\Preview\MSOffice2007``
@@ -1460,7 +1897,6 @@ concerns:
  - ``OC\Preview\StarOffice``
  - ``OC\Preview\SVG``
  - ``OC\Preview\TIFF``
- - ``OC\Preview\Font``
 
 
 Defaults to the following providers:
@@ -1468,18 +1904,22 @@ Defaults to the following providers:
  - ``OC\Preview\BMP``
  - ``OC\Preview\GIF``
  - ``OC\Preview\JPEG``
+ - ``OC\Preview\Krita``
  - ``OC\Preview\MarkDown``
  - ``OC\Preview\MP3``
+ - ``OC\Preview\OpenDocument``
  - ``OC\Preview\PNG``
  - ``OC\Preview\TXT``
  - ``OC\Preview\XBitmap``
- - ``OC\Preview\OpenDocument``
- - ``OC\Preview\Krita``
 
 LDAP
 ----
 
 Global settings used by LDAP User and Group Backend
+
+
+ldapUserCleanupInterval
+^^^^^^^^^^^^^^^^^^^^^^^
 
 
 ::
@@ -1493,6 +1933,10 @@ minutes. Setting it to 0 disables the feature.
 See command line (occ) methods ``ldap:show-remnants`` and ``user:delete``
 
 Defaults to ``51`` minutes
+
+sort_groups_by_name
+^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -1508,6 +1952,10 @@ Comments
 Global settings for the Comments infrastructure
 
 
+comments.managerFactory
+^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'comments.managerFactory' => '\OC\Comments\ManagerFactory',
@@ -1517,6 +1965,10 @@ own or 3rdParty CommentsManager should be used that – for instance – uses th
 filesystem instead of the database to keep the comments.
 
 Defaults to ``\OC\Comments\ManagerFactory``
+
+systemtags.managerFactory
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -1535,6 +1987,10 @@ These options are for halting user activity when you are performing server
 maintenance.
 
 
+maintenance
+^^^^^^^^^^^
+
+
 ::
 
 	'maintenance' => false,
@@ -1547,6 +2003,10 @@ parameter to true. Please keep in mind that users who are already logged-in
 are kicked out of Nextcloud instantly.
 
 Defaults to ``false``
+
+maintenance_window_start
+^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -1563,6 +2023,10 @@ A value of 1 e.g. will only run these background jobs between 01:00am UTC and 05
 
 Defaults to ``100`` which disables the feature
 
+ldap_log_file
+^^^^^^^^^^^^^
+
+
 ::
 
 	'ldap_log_file' => '',
@@ -1575,6 +2039,10 @@ Also, it might log sensitive data into a plain text file.
 
 SSL
 ---
+
+
+openssl
+^^^^^^^
 
 
 ::
@@ -1605,6 +2073,10 @@ Advice on choosing between the various backends:
   For the local cache (you can configure two) take APCu.
 
 
+memcache.local
+^^^^^^^^^^^^^^
+
+
 ::
 
 	'memcache.local' => '\OC\Memcache\APCu',
@@ -1614,6 +2086,10 @@ Memory caching backend for locally stored data
 * Used for host-specific data, e.g. file paths
 
 Defaults to ``none``
+
+memcache.distributed
+^^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -1625,6 +2101,10 @@ Memory caching backend for distributed data
 * If unset, defaults to the value of memcache.local
 
 Defaults to ``none``
+
+redis
+^^^^^
+
 
 ::
 
@@ -1653,6 +2133,10 @@ for more information.
 
 We also support redis SSL/TLS encryption as of version 6.
 See https://redis.io/topics/encryption for more information.
+
+redis.cluster
+^^^^^^^^^^^^^
+
 
 ::
 
@@ -1696,6 +2180,10 @@ See https://redis.io/topics/cluster-spec for details about the Redis cluster
 Authentication works with phpredis version 4.2.1+. See
 https://github.com/phpredis/phpredis/commit/c5994f2a42b8a348af92d3acb4edff1328ad8ce1
 
+memcached_servers
+^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'memcached_servers' => [
@@ -1708,6 +2196,10 @@ https://github.com/phpredis/phpredis/commit/c5994f2a42b8a348af92d3acb4edff1328ad
 	],
 
 Server details for one or more memcached servers to use for memory caching.
+
+memcached_options
+^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -1734,6 +2226,10 @@ Server details for one or more memcached servers to use for memory caching.
 
 Connection options for memcached
 
+cache_path
+^^^^^^^^^^
+
+
 ::
 
 	'cache_path' => '',
@@ -1744,6 +2240,10 @@ Location of the cache folder, defaults to ``data/$user/cache`` where
 and ``$user`` is the user.
 
 Defaults to ``''`` (empty string)
+
+cache_chunk_gc_ttl
+^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -1758,6 +2258,10 @@ Defaults to ``60*60*24`` (1 day)
 
 Using Object Store with Nextcloud
 ---------------------------------
+
+
+objectstore
+^^^^^^^^^^^
 
 
 ::
@@ -1808,6 +2312,10 @@ to be fetched in addition to any requested file.
 
 One way to test is applying for a trystack account at http://trystack.org/
 
+objectstore
+^^^^^^^^^^^
+
+
 ::
 
 	'objectstore' => [
@@ -1839,6 +2347,10 @@ One way to test is applying for a trystack account at http://trystack.org/
 
 To use swift V3
 
+objectstore.multibucket.preview-distribution
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'objectstore.multibucket.preview-distribution' => false,
@@ -1863,6 +2375,10 @@ Sharing
 Global settings for Sharing
 
 
+sharing.managerFactory
+^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'sharing.managerFactory' => '\OC\Share20\ProviderFactory',
@@ -1873,6 +2389,10 @@ filesystem instead of the database to keep the share information.
 
 Defaults to ``\OC\Share20\ProviderFactory``
 
+sharing.enable_mail_link_password_expiration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'sharing.enable_mail_link_password_expiration' => false,
@@ -1882,11 +2402,19 @@ Enables expiration for link share passwords sent by email (sharebymail).
 The passwords will expire after the configured interval, the users can
 still request a new one in the public link page.
 
+sharing.mail_link_password_expiration_interval
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'sharing.mail_link_password_expiration_interval' => 3600,
 
 Expiration interval for passwords, in seconds.
+
+sharing.maxAutocompleteResults
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -1902,12 +2430,20 @@ configured here.
 
 Default is 25.
 
+sharing.minSearchStringLength
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'sharing.minSearchStringLength' => 0,
 
 Define the minimum length of the search string before we start auto-completion
 Default is no limit (value set to 0)
+
+sharing.enable_share_accept
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -1917,17 +2453,29 @@ Set to true to enable that internal shares need to be accepted by the users by d
 
 Users can change this for their account in their personal sharing settings
 
+sharing.force_share_accept
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'sharing.force_share_accept' => false,
 
 Set to true to enforce that internal shares need to be accepted
 
+sharing.allow_custom_share_folder
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'sharing.allow_custom_share_folder' => true,
 
 Set to ``false``, to prevent users from setting a custom share_folder
+
+share_folder
+^^^^^^^^^^^^
+
 
 ::
 
@@ -1939,17 +2487,29 @@ Changes to this value will only have effect on new shares.
 
 Defaults to ``/``
 
+sharing.enable_share_mail
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'sharing.enable_share_mail' => true,
 
 Set to ``false``, to stop sending a mail when users receive a share
 
+sharing.allow_disabled_password_enforcement_groups
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'sharing.allow_disabled_password_enforcement_groups' => false,
 
 Set to true to enable the feature to add exceptions for share password enforcement
+
+transferIncomingShares
+^^^^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -1965,6 +2525,10 @@ Hashing
 -------
 
 
+hashing_default_password
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'hashing_default_password' => false,
@@ -1978,6 +2542,10 @@ Nextcloud uses the Argon2 algorithm (with PHP >= 7.2) to create hashes by its
 own and exposes its configuration options as following. More information can
 be found at: https://www.php.net/manual/en/function.password-hash.php
 
+hashingThreads
+^^^^^^^^^^^^^^
+
+
 ::
 
 	'hashingThreads' => PASSWORD_ARGON2_DEFAULT_THREADS,
@@ -1988,6 +2556,10 @@ The value must be an integer, and the minimum value is 1. Rationally it does
 not help to provide a number higher than the available threads on the machine.
 Values that undershoot the minimum will be ignored in favor of the minimum.
 
+hashingMemoryCost
+^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'hashingMemoryCost' => PASSWORD_ARGON2_DEFAULT_MEMORY_COST,
@@ -1996,6 +2568,10 @@ The memory in KiB to be used by the algorithm for computing a hash. The value
 must be an integer, and the minimum value is 8 times the number of CPU threads.
 
 Values that undershoot the minimum will be ignored in favor of the minimum.
+
+hashingTimeCost
+^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -2006,6 +2582,10 @@ The number of iterations that are used by the algorithm for computing a hash.
 The value must be an integer, and the minimum value is 1. Values that
 undershoot the minimum will be ignored in favor of the minimum.
 
+hashingCost
+^^^^^^^^^^^
+
+
 ::
 
 	'hashingCost' => 10,
@@ -2015,6 +2595,10 @@ Using a higher value requires more time and CPU power to calculate the hashes
 
 All other configuration options
 -------------------------------
+
+
+dbdriveroptions
+^^^^^^^^^^^^^^^
 
 
 ::
@@ -2037,12 +2621,20 @@ database servers certificates CN does not match with the hostname used to connec
 The standard behavior here is different from the MySQL/MariaDB CLI client, which
 does not verify the server cert except --ssl-verify-server-cert is passed manually.
 
+sqlite.journal_mode
+^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'sqlite.journal_mode' => 'DELETE',
 
 sqlite3 journal mode can be specified using this configuration parameter -
 can be 'WAL' or 'DELETE' see for more details https://www.sqlite.org/wal.html
+
+mysql.utf8mb4
+^^^^^^^^^^^^^
+
 
 ::
 
@@ -2078,6 +2670,10 @@ https://mariadb.com/kb/en/mariadb/xtradbinnodb-server-system-variables/#innodb_l
 http://www.tocker.ca/2013/10/31/benchmarking-innodb-page-compression-performance.html
 http://mechanics.flite.com/blog/2014/07/29/using-innodb-large-prefix-to-avoid-error-1071/
 
+mysql.collation
+^^^^^^^^^^^^^^^
+
+
 ::
 
 	'mysql.collation' => null,
@@ -2096,6 +2692,10 @@ This option allows to override the automatic choice. Example:
 This setting has no effect on setup or creating tables. In those cases
 always utf8[mb4]_bin is being used. This setting is only taken into
 consideration in SQL queries that utilize LIKE comparison operators.
+
+supportedDatabases
+^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -2119,6 +2719,10 @@ Defaults to the following databases:
  - mysql (MySQL)
  - pgsql (PostgreSQL)
 
+tempdirectory
+^^^^^^^^^^^^^
+
+
 ::
 
 	'tempdirectory' => '/tmp/nextcloudtemp',
@@ -2133,6 +2737,10 @@ Additionally you have to make sure that your PHP configuration considers this a 
 tmp directory, by setting the TMP, TMPDIR, and TEMP variables to the required directories.
 On top of that you might be required to grant additional permissions in AppArmor or SELinux.
 
+updatedirectory
+^^^^^^^^^^^^^^^
+
+
 ::
 
 	'updatedirectory' => '',
@@ -2142,6 +2750,10 @@ where the default `datadirectory` is on network disk like NFS, or is otherwise
 restricted. Defaults to the value of `datadirectory` if unset.
 
 The Web server user must have write access to this directory.
+
+blacklisted_files
+^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -2154,6 +2766,10 @@ WARNING: USE THIS ONLY IF YOU KNOW WHAT YOU ARE DOING.
 
 Defaults to ``array('.htaccess')``
 
+theme
+^^^^^
+
+
 ::
 
 	'theme' => '',
@@ -2164,6 +2780,10 @@ The default location for themes is ``nextcloud/themes/``.
 
 Defaults to the theming app which is shipped since Nextcloud 9
 
+enforce_theme
+^^^^^^^^^^^^^
+
+
 ::
 
 	'enforce_theme' => '',
@@ -2172,6 +2792,10 @@ Enforce the user theme. This will disable the user theming settings
 This must be a valid ITheme ID.
 
 E.g. light, dark, highcontrast, dark-highcontrast...
+
+cipher
+^^^^^^
+
 
 ::
 
@@ -2185,6 +2809,10 @@ The default cipher for encrypting files. Currently supported are:
 
 Defaults to ``AES-256-CTR``
 
+encryption.use_legacy_base64_encoding
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'encryption.use_legacy_base64_encoding' => false,
@@ -2194,6 +2822,10 @@ binary format. The option affects only newly written files, existing encrypted f
 will not be touched and will remain readable whether they use the new format or not.
 
 Defaults to ``false``
+
+minimum.supported.desktop.version
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -2210,6 +2842,10 @@ clients or other unexpected results.
 
 Defaults to ``2.3.0``
 
+localstorage.allowsymlinks
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'localstorage.allowsymlinks' => false,
@@ -2220,6 +2856,10 @@ WARNING: Not recommended. This would make it possible for Nextcloud to access
 files outside the data directory and could be considered a security risk.
 
 Defaults to ``false``
+
+localstorage.umask
+^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -2235,6 +2875,10 @@ Most installs shall not modify this value.
 
 Defaults to ``0022``
 
+localstorage.unlink_on_truncate
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'localstorage.unlink_on_truncate' => false,
@@ -2244,6 +2888,10 @@ to overcome this limitation by removing the files before overwriting.
 
 Defaults to ``false``
 
+quota_include_external_storage
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'quota_include_external_storage' => false,
@@ -2252,6 +2900,10 @@ EXPERIMENTAL: option whether to include external storage in quota
 calculation, defaults to false.
 
 Defaults to ``false``
+
+external_storage.auth_availability_delay
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -2265,6 +2917,10 @@ unlikely.
 
 Defaults to ``1800`` (seconds)
 
+files_external_allow_create_new_local
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'files_external_allow_create_new_local' => true,
@@ -2277,6 +2933,10 @@ the following command:
 % php occ files_external:create /mountpoint local null::null -c datadir=/path/to/data
 
 Defaults to ``true``
+
+filesystem_check_changes
+^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -2295,6 +2955,10 @@ general use if outside changes might happen.
 
 Defaults to ``0``
 
+part_file_in_storage
+^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'part_file_in_storage' => true,
@@ -2306,6 +2970,10 @@ external storage setups that have limited rename capabilities.
 
 Defaults to ``true``
 
+mount_file
+^^^^^^^^^^
+
+
 ::
 
 	'mount_file' => '/var/www/nextcloud/data/mount.json',
@@ -2315,6 +2983,10 @@ in the Nextcloud directory.
 
 Defaults to ``data/mount.json`` in the Nextcloud directory.
 
+filesystem_cache_readonly
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'filesystem_cache_readonly' => false,
@@ -2323,6 +2995,10 @@ When ``true``, prevent Nextcloud from changing the cache due to changes in
 the filesystem for all storage.
 
 Defaults to ``false``
+
+trusted_proxies
+^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -2347,6 +3023,10 @@ So if you configure `trusted_proxies`, also consider setting
 
 Defaults to an empty array.
 
+forwarded_for_headers
+^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'forwarded_for_headers' => ['HTTP_X_FORWARDED', 'HTTP_FORWARDED_FOR'],
@@ -2360,6 +3040,10 @@ Nextcloud, bypassing access controls and making logs useless!
 
 Defaults to ``'HTTP_X_FORWARDED_FOR'``
 
+max_filesize_animated_gifs_public_sharing
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'max_filesize_animated_gifs_public_sharing' => 10,
@@ -2372,6 +3056,10 @@ Value represents the maximum filesize in megabytes. Set to ``-1`` for
 no limit.
 
 Defaults to ``10`` megabytes
+
+filelocking.enabled
+^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -2389,6 +3077,10 @@ shared files.
 
 Defaults to ``true``
 
+filelocking.ttl
+^^^^^^^^^^^^^^^
+
+
 ::
 
 	'filelocking.ttl' => 60*60,
@@ -2400,6 +3092,10 @@ Any lock older than this will be automatically cleaned up.
 Defaults to ``60*60`` seconds (1 hour) or the php
             max_execution_time, whichever is higher.
 
+memcache.locking
+^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'memcache.locking' => '\\OC\\Memcache\\Redis',
@@ -2410,6 +3106,10 @@ Because most memcache backends can clean values without warning using redis
 is highly recommended to *avoid data loss*.
 
 Defaults to ``none``
+
+filelocking.debug
+^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -2423,11 +3123,29 @@ to performance degradation and large log files on busy instance.
 Thus enabling this in production for longer periods of time is not recommended
 or should be used together with the ``log.condition`` setting.
 
+upgrade.disable-web
+^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'upgrade.disable-web' => false,
 
 Disable the web based updater
+
+upgrade.cli-upgrade-link
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'upgrade.cli-upgrade-link' => '',
+
+Allows to modify the cli-upgrade link in order to link to a different documentation
+
+debug
+^^^^^
+
 
 ::
 
@@ -2439,6 +3157,10 @@ Only enable this for local development and not in production environments
 This will disable the minifier and outputs some additional debug information
 
 Defaults to ``false``
+
+data-fingerprint
+^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -2456,6 +3178,10 @@ the user has resolved conflicts.
 
 Defaults to ``''`` (empty string)
 
+copied_sample_config
+^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'copied_sample_config' => true,
@@ -2466,11 +3192,19 @@ configuration. DO NOT ADD THIS SWITCH TO YOUR CONFIGURATION!
 If you, brave person, have read until here be aware that you should not
 modify *ANY* settings in this file without reading the documentation.
 
+lookup_server
+^^^^^^^^^^^^^
+
+
 ::
 
 	'lookup_server' => 'https://lookup.nextcloud.com',
 
 use a custom lookup server to publish user data
+
+gs.enabled
+^^^^^^^^^^
+
 
 ::
 
@@ -2478,12 +3212,20 @@ use a custom lookup server to publish user data
 
 set to true if the server is used in a setup based on Nextcloud's Global Scale architecture
 
+gs.federation
+^^^^^^^^^^^^^
+
+
 ::
 
 	'gs.federation' => 'internal',
 
 by default federation is only used internally in a Global Scale setup
 If you want to allow federation outside your environment set it to 'global'
+
+csrf.optout
+^^^^^^^^^^^
+
 
 ::
 
@@ -2499,6 +3241,10 @@ specifications. For those, have an opt-out.
 
 WARNING: only use this if you know what you are doing
 
+simpleSignUpLink.shown
+^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'simpleSignUpLink.shown' => true,
@@ -2507,6 +3253,10 @@ By default, there is on public pages a link shown that allows users to
 learn about the "simple sign up" - see https://nextcloud.com/signup/
 
 If this is set to "false" it will not show the link.
+
+login_form_autocomplete
+^^^^^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -2519,6 +3269,10 @@ Some companies require it to be disabled to comply with their security policy.
 
 Simply set this property to "false", if you want to turn this feature off.
 
+no_unsupported_browser_warning
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'no_unsupported_browser_warning' => false,
@@ -2529,6 +3283,10 @@ to offer some guidance to upgrade or switch and ensure a proper Nextcloud experi
 They can still bypass it after they have read the warning.
 
 Simply set this property to "true", if you want to turn this feature off.
+
+files_no_background_scan
+^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -2542,6 +3300,10 @@ scan to sync filesystem and database. Only users with unscanned files
 
 Defaults to ``false``
 
+query_log_file
+^^^^^^^^^^^^^^
+
+
 ::
 
 	'query_log_file' => '',
@@ -2551,6 +3313,10 @@ Log all queries into a file
 Warning: This heavily decreases the performance of the server and is only
 meant to debug/profile the query interaction manually.
 Also, it might log sensitive data into a plain text file.
+
+redis_log_file
+^^^^^^^^^^^^^^
+
 
 ::
 
@@ -2562,6 +3328,10 @@ Warning: This heavily decreases the performance of the server and is only
 meant to debug/profile the redis interaction manually.
 Also, it might log sensitive data into a plain text file.
 
+diagnostics.logging
+^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'diagnostics.logging' => true,
@@ -2572,6 +3342,10 @@ If enabled the timings of common execution steps will be logged to the
 Nextcloud log at debug level. log.condition is useful to enable this on
 production systems to only log under some conditions
 
+diagnostics.logging.threshold
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'diagnostics.logging.threshold' => 0,
@@ -2580,6 +3354,10 @@ Limit diagnostics event logging to events longer than the configured threshold i
 
 when set to 0 no diagnostics events will be logged
 
+profile.enabled
+^^^^^^^^^^^^^^^
+
+
 ::
 
 	'profile.enabled' => true,
@@ -2587,6 +3365,10 @@ when set to 0 no diagnostics events will be logged
 Enable profile globally
 
 Defaults to ``true``
+
+enable_file_metadata
+^^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -2599,6 +3381,10 @@ the future for the preview generation.
 
 Note that when enabled, this data will be stored in the database and might increase
 the database storage.
+
+account_manager.default_property_scope
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -2619,6 +3405,10 @@ instead of the local one:
 	  \OCP\Accounts\IAccountManager::PROPERTY_PHONE => \OCP\Accounts\IAccountManager::SCOPE_PRIVATE
 	]
 
+projects.enabled
+^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'projects.enabled' => false,
@@ -2628,6 +3418,10 @@ superseded by Related resources as of Nextcloud 25
 
 Defaults to ``false``
 
+bulkupload.enabled
+^^^^^^^^^^^^^^^^^^
+
+
 ::
 
 	'bulkupload.enabled' => true,
@@ -2635,6 +3429,10 @@ Defaults to ``false``
 Enable the bulk upload feature.
 
 Defaults to ``true``
+
+reference_opengraph
+^^^^^^^^^^^^^^^^^^^
+
 
 ::
 

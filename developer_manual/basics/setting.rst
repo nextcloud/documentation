@@ -110,7 +110,7 @@ The last missing part is to register both classes inside **<myapp>/appinfo/info.
    `<personal>` instead.
 
 Additionally since Nextcloud 23, groups can be granted authorization to access individual
-admin settings (`see admin docs <https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/admin_delegation_configuration>`_).
+admin settings (`see admin docs <https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/admin_delegation_configuration.html>`_).
 This is a feature that needs to be enabled for each admin setting class.
 To do so, the setting class needs to implement `IDelegatedSettings` instead of `ISettings`
 and implement two additional methods.

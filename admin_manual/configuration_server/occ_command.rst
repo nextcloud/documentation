@@ -161,6 +161,17 @@ This output option is available on all list and list-like commands:
 ``status``, ``check``, ``app:list``, ``config:list``, ``encryption:status``
 and ``encryption:list-modules``
 
+Environment variables
+^^^^^^^^^^^^^^^^^^^^^
+
+``sudo`` does not forward environment variables by default. Put the variables before the ``php`` command::
+
+  sudo -u www-data NC_debug=true php occ status
+
+Alternatively, you can ``export`` the variable or use the ``-E`` switch for ``sudo``::
+
+  NC_debug=true sudo -E -u www-data php occ status
+
 Enabling autocompletion
 -----------------------
 

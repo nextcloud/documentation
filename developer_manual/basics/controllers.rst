@@ -474,7 +474,7 @@ Templates
 A :doc:`template <front-end/templates>` can be rendered by returning a TemplateResponse. A TemplateResponse takes the following parameters:
 
 * **appName**: tells the template engine in which app the template should be located
-* **templateName**: the name of the template inside the template/ folder without the .php extension
+* **templateName**: the name of the template inside the templates/ folder without the .php extension
 * **parameters**: optional array parameters that are available in the template through $_, e.g.::
 
     array('key' => 'something')

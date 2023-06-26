@@ -4,55 +4,75 @@ Accessing Nextcloud files using WebDAV
 
 Nextcloud fully supports the WebDAV protocol, and you can connect and synchronize
 with Nextcloud Files over WebDAV. In this chapter, you will learn how to
-connect Linux, macOS, Windows, and mobile devices to your Nextcloud server via
-WebDAV. Before we get into configuring WebDAV, let's take a quick look at the
-recommended way of connecting client devices to your Nextcloud servers.
+connect Linux, macOS, Windows, and mobile devices to your Nextcloud server.
+
+WebDAV stands for Distributed Authoring and Versioning. It is an HTTP extension 
+that makes it easy to create, read, and edit files hosted on remote Web servers. With 
+a WebDAV, client you can access your Nextcloud Files (including shares) on Linux, 
+macOS and Windows in a similar way as any remote network share, and stay synchronized.
+
+Before we get into configuring WebDAV, let's take a quick look at the
+recommended way of connecting client devices to Nextcloud.
+
+Official Nextcloud desktop and mobile clients
+---------------------------------------------
+
+The recommended way to synchronize a computer with a Nextcloud server is by
+using the `official Nextcloud sync clients <https://nextcloud.com/install/#install-clients>`_. 
+You can configure the client to save files in any local directory and you can choose which
+directories on the Nextcloud server to sync with. The client displays the
+current connection status and logs all activity, so you always know which
+remote files have been downloaded to your PC and you can verify that files
+created and updated on your local PC are properly synchronized with the server.
+
+The recommended way to synchronize Android and Apple iOS devices is by using 
+the `official Nextcloud mobile apps <https://nextcloud.com/install/>`_.
+
+To connect the official Nextcloud apps to a Nextcloud server use the
+same URL you use to access Nextcloud from your web browser - e.g.::
+
+    https://cloud.example.com
+
+    https://cloud.example.com/nextcloud (if Nextcloud is installed in a subdirectory)
+
+Third-party WebDAV clients
+--------------------------
+
+If you prefer, you may also connect your computer to your Nextcloud server by
+using any third-party client that supports the WebDAV protocol (including what may be 
+built into your operating system).
+
+You can also use third-party WebDAV capable apps to connect your mobile 
+device to Nextcloud.
+
+When using third-party clients, keep in mind that they may not be optimized for use with
+Nextcloud or implement capabilities you consider important to your use case.
+
+Mobile clients that Nextcloud community members have reported using include:
+
+* `FolderSync (Android) <https://foldersync.io/>`_
+* `WebDAV Navigator (iPhone) <https://apps.apple.com/us/app/webdav-navigator/id382551345>`_
+
+The URL to use when configuring third-party apps to connect to Nextcloud is a bit lengthier than the one for official clients::
+
+    https://cloud.example.com/remote.php/dav/files/USERNAME/
+    
+    https://cloud.example.com/nextcloud/remote.php/dav/files/USERNAME/ (if Nextcloud is installed in a subdirectory)
+
+.. note:: When using a third-party WebDAV client (including your operating system's 
+   built-in client), you should use an application password for login rather than your 
+   regular password. In addition improved security, this `increases performance significantly 
+   <https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151>_`. To 
+   configure an application password, log into the Nextcloud Web interface, click on the avatar 
+   in the top right and choose *Personal settings*. Then choose *Security* in the left 
+   sidebar and scroll to the very bottom. There you can create an app password (which can 
+   also be revoked in the future without changing your main user password).
 
 .. note:: In the following examples, you should replace **example.com/nextcloud** with the
    URL of your Nextcloud server (omit the directory part if the installation is
    in the root of your domain), and **USERNAME** with the username of the connecting user.
 
    See the WebDAV URL (bottom left in settings) on your Nextcloud.
-
-.. note:: In the following examples, you must use an application password for login, which you can generate in your security settings.
-
-
-Nextcloud Desktop and mobile clients
-------------------------------------
-
-The recommended way to synchronize a desktop PC with a Nextcloud server is by
-using `Nextcloud/ownCloud sync clients <https://nextcloud.com/install/#install-clients>`_. You can configure the
-client to save files in any local directory and you can choose which
-directories on the Nextcloud server to sync with. The client displays the
-current connection status and logs all activity, so you always know which
-remote files have been downloaded to your PC and you can verify that files
-created and updated on your local PC are properly synchronized with the server.
-
-The recommended way to synchronize Nextcloud server with Android and
-Apple iOS devices is by using the `mobile apps
-<https://nextcloud.com/install/>`_.
-
-To connect your mobile app to a Nextcloud server use the
-base URL and folder only::
-
-    example.com/nextcloud
-
-In addition to the mobile apps provided by Nextcloud or ownCloud, you can use other apps to
-connect to Nextcloud from your mobile device using WebDAV. `WebDAV Navigator`_ is
-a good (proprietary) app for `Android devices`_ and `iPhones`_. The URL to use on these is::
-
-    example.com/nextcloud/remote.php/dav/files/USERNAME/
-
-
-WebDAV configuration
---------------------
-
-If you prefer, you may also connect your desktop PC to your Nextcloud server by
-using the WebDAV protocol rather than using a special client application. Web
-Distributed Authoring and Versioning (WebDAV) is a Hypertext Transfer Protocol
-(HTTP) extension that makes it easy to create, read, and edit files on Web
-servers. With WebDAV, you can access your Nextcloud shares on Linux, macOS and
-Windows in the same way as any remote network share, and stay synchronized.
 
 
 Accessing files using Linux
@@ -547,7 +567,3 @@ To connect to Nextcloud:
 
 .. _KB2668751: https://web.archive.org/web/20211008025539/https://support.microsoft.com/en-us/topic/you-cannot-download-more-than-50-mb-or-upload-large-files-when-the-upload-takes-longer-than-30-minutes-using-web-client-in-windows-7-8709ae9d-e808-c5a0-95d0-9a7143c50b11
 .. _KB2123563: https://support.microsoft.com/kb/2123563
-.. _WebDAV Navigator: http://seanashton.net/webdav/
-.. _Android devices: https://play.google.com/store/apps/details?id=com.schimera.webdavnavlite
-.. _iPhones: https://itunes.apple.com/app/webdav-navigator/id382551345
-.. _BlackBerry devices: http://appworld.blackberry.com/webstore/content/46816

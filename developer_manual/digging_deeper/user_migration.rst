@@ -60,8 +60,9 @@ whenever a user export or import begins.
      * Should be fast, favor performance over accuracy.
      *
      * @since 25.0.0
+     * @since 27.0.0 return value may overflow from int to float
      */
-    public function getEstimatedExportSize(IUser $user): int {
+    public function getEstimatedExportSize(IUser $user): int|float {
       $size = 100; // 100KiB for user data JSON
       return $size;
     }

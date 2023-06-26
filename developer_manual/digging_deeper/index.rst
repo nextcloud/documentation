@@ -10,6 +10,7 @@ Digging deeper
    debugging
    classloader
    continuous_integration
+   email
    flow
    http_client
    javascript-apis
@@ -37,3 +38,4 @@ Digging deeper
    profile
    user_migration
    profiler
+   deadlock
