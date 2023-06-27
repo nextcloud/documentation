@@ -405,6 +405,19 @@ service.
 Problem
 ^^^^^^^
 
+Adding a WebDAV drive on Windows via the above described steps does not display the correct size
+of in Nextcloud available space and instead shows the size of the C: drive with its available space.
+
+Answer
+^^^^^^
+
+Unfortunately is this a limitation of WebDAV itself, because it does not provide a way for the client 
+to get the available free space from the server. Windows automatically falls back to show the size of
+the C: drive with its available space instead. So unfortunately there is no real solution to this problem.
+
+Problem
+^^^^^^^
+
 Accessing your files from Microsoft Office via WebDAV fails.
 
 Solution
