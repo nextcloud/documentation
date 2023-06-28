@@ -62,7 +62,9 @@ Added APIs
 Changed APIs
 ^^^^^^^^^^^^
 
-* ``\OCP\Preview\BeforePreviewFetchedEvent`` now accepts: ``width, height, crop and mode`` as optional constructor arguments. 
+* ``\OCP\Preview\BeforePreviewFetchedEvent`` now accepts: ``width, height, crop and mode`` as optional constructor arguments.
+* Interface ``\OCP\Files\Folder`` got a new method: ``searchBySystemTag(string $tagName, string $userId, int $limit = 0, int $offset = 0)``.
+* ``OCP\SystemTag\ISystemTagManager::getTagsByIds()`` now optionally accepts `IUser` as second parameter, to only retrieve system tags visible to that user.
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
@@ -80,9 +82,9 @@ Removed APIs
 * ``\OC_Defaults::getLogoClaim``: there is no replacement.
 * ``\OCP\Util::linkToPublic``: there is no replacement.
 * ``\OC_Defaults::getLogoClaim``: There is no replacement.
-* ``\OC::$server->createEventSource()`` has been removed, use ``\OC::$server->get(\OCP\IEventSourceFactory::class)->create()`` instead. 
+* ``\OC::$server->createEventSource()`` has been removed, use ``\OC::$server->get(\OCP\IEventSourceFactory::class)->create()`` instead.
 
-The factory ``\OCP\IEventSourceFactory`` works only from Nextcloud 28. 
+The factory ``\OCP\IEventSourceFactory`` works only from Nextcloud 28.
 For older versions use ``\OC::$server->createEventSource()``.
 
 If you want to support Nextcloud 27 and Nextcloud 28:
