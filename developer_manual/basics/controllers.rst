@@ -717,6 +717,7 @@ The following policy for instance allows images, audio and videos from other dom
 
     }
 
+.. _ocscontroller:
 
 OCS
 ^^^
