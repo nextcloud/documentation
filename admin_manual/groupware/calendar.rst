@@ -115,13 +115,13 @@ Where the value is the number of seconds for the period. Setting the value to ``
 Resources and rooms
 -------------------
 
-The Nextcloud CalDAV back end support resources and rooms. Resources and room can be booked for appointments and the system will schedule them so they can only be used once at a time. Those resources and rooms have to be provided by an app that provides a back end for this.
+The Nextcloud CalDAV backend supports resources and rooms. Resources and rooms can be booked for appointments, and the system will schedule them so they can only be used once at a time. Those resources and rooms have to be provided by an app that provides a backend for this.
 
-Once a back end app is installed the app typically allows admins or even users to define the resources, but this is subject of the specific implementation.
+Once a backend app is installed, the app typically allows admins, or even users, to define the resources, but this is subject of the specific implementation.
 
-Nextcloud periodically queries all registered back ends. Therefore new and updated resources and rooms will show with a delay.
+Nextcloud periodically queries all registered backends, therefore new/updated resources and rooms will show with a delay.
 
-Known back ends
+Known backends
 ~~~~~~~~~~~~~~~
 
-* `Calendar Resource Management <https://github.com/nextcloud/calendar_resource_management>`_: database back end with CLI configuration for admins
+* `Calendar Resource Management <https://github.com/nextcloud/calendar_resource_management>`_: database backend with CLI configuration for admins
