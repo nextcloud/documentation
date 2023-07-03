@@ -234,7 +234,7 @@ Developers can follow the rich object formatting recommendations to provide gene
 The rich object type is not used to predict the data structure.
 We rather recommend to set rich object attributes respecting a strict format for some common use cases.
 
-More details can be found in `Provide generic data for clients <data-for-clients_>`__
+More details can be found in :ref:`data-for-clients`
 
 Use the Smart Picker in your app
 --------------------------------
@@ -380,8 +380,10 @@ and an example response:
 In this example, the "files" Smart Picker provider does not support any unified search provider
 but the "github-issue-pr" one supports 2 of them and the "openstreetmap-point" support one.
 
-Use the unified search API
+Use the Unified Search API
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`More details on the Unified Search <https://docs.nextcloud.com/server/stable/developer_manual/digging_deeper/search.html>`_
 
 Here is how to search using the Unified Search OCS API:
 
