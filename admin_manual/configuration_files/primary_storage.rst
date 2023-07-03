@@ -27,7 +27,7 @@ Performance Implications
 Because of this, object stores configured as Primary Storage usually perform better than 
 when using the same object store via the External Storage support application, but the downside 
 is being unable to access the files from outside of Nextcloud. This makes using an object store 
-as Primary Storage distinct from using using an object store via External Storage.
+as Primary Storage distinct from using an object store via External Storage.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Data Backup and Recovery Implications
