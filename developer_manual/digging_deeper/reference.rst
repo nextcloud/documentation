@@ -383,7 +383,7 @@ but the "github-issue-pr" one supports 2 of them and the "openstreetmap-point" s
 Use the Unified Search API
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-`More details on the Unified Search <https://docs.nextcloud.com/server/stable/developer_manual/digging_deeper/search.html>`_
+More details in the :ref:`Unified Search<unified-search>` documentation.
 
 Here is how to search using the Unified Search OCS API:
 
