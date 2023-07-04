@@ -226,6 +226,15 @@ For example, resolving ``https://www.themoviedb.org/movie/70981`` if the ``integ
       }
     }
 
+Render link previews in clients
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Clients can choose to support some rich objects types.
+Developers can follow the rich object formatting recommendations to provide generic information in some cases.
+The rich object type is not used to predict the data structure.
+We rather recommend to set rich object attributes respecting a strict format for some common use cases.
+
+More details can be found in :ref:`data-for-clients`
 
 Use the Smart Picker in your app
 --------------------------------
@@ -288,6 +297,163 @@ the Smart Picker.
         .catch(error => {
             console.error('Smart Picker promise rejected', error)
         })
+
+
+Use the Smart Picker in clients
+-------------------------------
+
+Clients can partially support the Smart Picker features.
+
+There are 2 types of Smart Picker providers:
+
+* The ones with a custom picker component
+* The ones that support one or multiple unified search providers
+
+As the custom picker components are web components, clients might not be able (or want) to render them.
+So we are mostly interested in the second type here: The ones using unified search providers.
+
+In Nextcloud's web UI, those providers are rendered with a
+`generic search Vue component <https://github.com/nextcloud/nextcloud-vue/blob/master/src/components/NcRichText/NcReferencePicker/NcSearch.vue>`_
+which shows a search input, lists the search result in a dropdown menu and directly submits the URL of the selected result.
+The search is done by directly querying the Unified Search OCS API. This is described later.
+
+To implement something similar to the Smart Picker in a client, it is required to know how to:
+
+* Get the provider list
+* Use the Unified Search OCS API
+* Update the providers last usage date
+
+Get the provider list
+~~~~~~~~~~~~~~~~~~~~~
+
+The list of Smart Picker providers can be obtained via an OCS endpoint.
+Each provider object contains the list of supported unified search providers.
+
+Here is the server endpoint to list the smart picker providers:
+
+.. code-block:: bash
+
+    curl -u USER:PASSWD -H "Accept: application/json" -H "ocs-apirequest: true" \
+        "https://my.nextcloud.org/ocs/v2.php/references/providers"
+
+and an example response:
+
+.. code-block:: json
+
+    {
+      "ocs": {
+    	"meta": {
+    	  "status": "ok",
+    	  "statuscode": 200,
+    	  "message": "OK"
+    	},
+    	"data": [
+    	  {
+    	    "id": "github-issue-pr",
+    	    "title": "GitHub issues, pull requests and comments",
+    	    "icon_url": "https://my.nextcloud.org/apps/integration_github/img/app-dark.svg",
+    	    "order": 10,
+    	    "search_providers_ids": [
+    	      "github-search-issues",
+    	      "github-search-repos"
+    	    ]
+    	  },
+    	  {
+    	    "id": "openstreetmap-point",
+    	    "title": "Map location (by OpenStreetMap)",
+    	    "icon_url": "https://my.nextcloud.org/apps/integration_openstreetmap/img/app-dark.svg",
+    	    "order": 10,
+    	    "search_providers_ids": [
+    	      "openstreetmap-search-location"
+    	    ]
+    	  },
+    	  {
+    	    "id": "files",
+    	    "title": "Files",
+    	    "icon_url": "https://my.nextcloud.org/apps/files/img/folder.svg",
+    	    "order": 0
+    	  }
+    	]
+      }
+    }
+
+In this example, the "files" Smart Picker provider does not support any unified search provider
+but the "github-issue-pr" one supports 2 of them and the "openstreetmap-point" support one.
+
+Use the Unified Search API
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+More details in the :ref:`Unified Search<unified-search>` documentation.
+
+Here is how to search using the Unified Search OCS API:
+
+.. code-block:: bash
+
+    curl -u USER:PASSWD -H "Accept: application/json" -H "ocs-apirequest: true" \
+        "https://my.nextcloud.org/ocs/v2.php/search/providers/PROVIDER_ID/search?term=QUERY&limit=LIMIT"
+
+    # with a cursor (paginated search)
+    curl -u USER:PASSWD -H "Accept: application/json" -H "ocs-apirequest: true" \
+        "https://my.nextcloud.org/ocs/v2.php/search/providers/PROVIDER_ID/search?term=QUERY&limit=LIMIT&cursor=CURSOR"
+
+    # search a github issue with the query "bug"
+    curl -u USER:PASSWD -H "Accept: application/json" -H "ocs-apirequest: true" \
+        "https://my.nextcloud.org/ocs/v2.php/search/providers/github-search-issues/search?term=bug&limit=2"
+
+Example response:
+
+.. code-block:: json
+
+    {
+      "ocs": {
+        "meta": {
+          "status": "ok",
+          "statuscode": 200,
+          "message": "OK"
+        },
+        "data": {
+          "name": "GitHub issues and pull requests",
+          "isPaginated": true,
+          "entries": [
+            {
+              "thumbnailUrl": "https://my.nextcloud.org/apps/integration_github/avatar/Daily-DAYO",
+              "title": " [bug] Change Trim bugs",
+              "subline": "⑁ DAYO_Android#409",
+              "resourceUrl": "https://github.com/Daily-DAYO/DAYO_Android/pull/409",
+              "icon": "",
+              "rounded": true,
+              "attributes": []
+            },
+            {
+              "thumbnailUrl": "https://my.nextcloud.org/apps/integration_github/avatar/walinejs",
+              "title": " [Bug]:  || [Bug]:",
+              "subline": "⦿ waline#2014",
+              "resourceUrl": "https://github.com/walinejs/waline/issues/2014",
+              "icon": "",
+              "rounded": true,
+              "attributes": []
+            }
+          ],
+          "cursor": 2
+        }
+      }
+    }
+
+
+Update a provider last usage date
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In Nextcloud's web UI, the order in which the providers are listed to the users depends on the last
+date they were used. The most recently used providers are displayed first.
+
+In a client, once a provider has been used, a request to this endpoint should be done:
+
+.. code-block:: bash
+
+    curl -u USER:PASSWD -H "Accept: application/json" -H "ocs-apirequest: true" -X PUT \
+        "https://my.nextcloud.org/ocs/v2.php/search/provider/PROVIDER_ID"
+
+A ``timestamp`` optional request parameter can be passed. The last usage date will be set to "now" by default.
 
 Register a reference provider
 -----------------------------
@@ -434,7 +600,7 @@ The ``myapp-reference.js`` file contains the widget registration:
 
 .. code-block:: javascript
 
-    import { registerWidget } from '@nextcloud/vue-richtext'
+    import { registerWidget } from '@nextcloud/vue/dist/Components/NcRichText.js'
     import Vue from 'vue'
     import MyCustomWidgetComponent from './MyCustomWidgetComponent.vue'
 
@@ -498,6 +664,72 @@ in a custom fashion:
     }
     </script>
 
+.. _data-for-clients:
+
+Provide generic data for clients
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In the web interface, the links that your app resolves are rendered with the OpenGraph widget
+or the custom reference widget you implemented. So you have complete freedom on which data format you put in your rich objects
+because you also control the web rendering implementation.
+
+But as the web UI components cannot be used by desktop or mobile clients, they have to specifically support some rich objects
+that are properly formatted.
+
+Here are some formatting suggestions for a few use cases. Use them if you want your resolved links to be rendered in clients.
+The idea is to add a generic attribute in your rich objects, regardless of the rich object type.
+
+Version control issue
+^^^^^^^^^^^^^^^^^^^^^
+
+Set the rich object's ``vcs_issue`` attribute to an object which contains those attributes:
+
+* ``id``: The issue ID (number)
+* ``url``: The issue page URL
+* ``title``: The issue title
+* ``comment_count``: The number of comments in the issue
+* ``state``: The issue state ('open' or 'closed')
+* ``labels``: An array of labels. A label is an object with those attributes:
+    * ``color``: Hexadecimal color code
+    * ``name``: The label name
+* ``created_at``: The creation timestamp
+* ``author``: The user ID or name of the issue creator
+
+Example implementation: `GitHub integration issue link preview <https://github.com/nextcloud/integration_github/blob/e6792ea0aadef4f5b8faaaaa163a0cf473d86157/lib/Reference/GithubIssuePrReferenceProvider.php#L135>`_
+
+Version control pull request
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Set the rich object's ``vcs_pull_request`` attribute to an object which contains the same attributes as in ``vcs_issue`` plus these ones:
+
+* ``merged``: Is it merged? (boolean)
+* ``draft``: Is it a draft? (boolean)
+
+Example implementation: `GitHub integration pull request link preview <https://github.com/nextcloud/integration_github/blob/e6792ea0aadef4f5b8faaaaa163a0cf473d86157/lib/Reference/GithubIssuePrReferenceProvider.php#L162>`_
+
+Version control issue or pull request comment
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Set the rich object's ``vcs_comment`` attribute to an object which contains those attributes:
+
+* ``url``: A direct link/permalink to the comment
+* ``body``: The comment content in plain text or markdown
+* ``author``: The user ID or name of the comment author
+* ``created_at``: The creation timestamp
+* ``updated_at``: The last edition timestamp
+
+``vcs_comment`` can be set in addition to ``vcs_issue`` or ``vcs_pull_request``.
+
+
+Images
+^^^^^^
+
+Set the rich object's ``image_TYPE`` attribute to ``true``. The clients will then know they can render this as an image
+using the reference title, description and image URL that you have set.
+
+Type can be ``gif``, ``jpeg``, ``png`` etc...
+
+Example implementation: `Giphy integration <https://github.com/nextcloud/integration_giphy/blob/6c07af9c99014599bd3582a26e4fd99678b275ef/lib/Reference/GiphyReferenceProvider.php#L114-L124>`_
 
 Extend the Smart Picker
 -----------------------
@@ -543,14 +775,14 @@ the Smart Picker will potentially by used in the frontend so you need to load th
 
 You can define your own picker user interface for your provider by registering a custom picker component.
 This can be done with the
-``registerCustomPickerElement`` function from ``@nextcloud/vue-richtext`` (>= 2.1.0-beta.5).
+``registerCustomPickerElement`` function from ``@nextcloud/vue/dist/Components/NcRichText.js``.
 This function takes 3 parameters:
 
 * The reference provider ID for which you register the custom picker component
 * The callback function to create and mount your component
 * The callback function to delete/destroy your component
 
-The creation callback must return a ``CustomPickerRenderResult`` object to which you have to give the DOM element
+The creation callback must return a ``NcCustomPickerRenderResult`` object to which you have to give the DOM element
 you just created and optionally an object (the Vue instance for example).
 This render result will be then be passed to the destroy callback to let you properly clean and delete your custom component.
 
@@ -558,7 +790,7 @@ To register a Vue component as a custom picker component:
 
 .. code-block:: javascript
 
-    import { registerCustomPickerElement, CustomPickerRenderResult } from '@nextcloud/vue-richtext'
+    import { registerCustomPickerElement, NcCustomPickerRenderResult } from '@nextcloud/vue/dist/Components/NcRichText.js'
     import Vue from 'vue'
     import MyCustomPickerElement from './MyCustomPickerElement.vue'
 
@@ -570,7 +802,7 @@ To register a Vue component as a custom picker component:
                 accessible,
             },
         }).$mount(el)
-        return new CustomPickerRenderResult(vueElement.$el, vueElement)
+        return new NcCustomPickerRenderResult(vueElement.$el, vueElement)
     }, (el, renderResult) => {
         // call the $destroy method on your custom element's Vue instance
         renderResult.object.$destroy()
@@ -582,8 +814,8 @@ To register anything else:
 
     import {
         registerCustomPickerElement,
-        CustomPickerRenderResult;
-    } from '@nextcloud/vue-richtext'
+        NcCustomPickerRenderResult,
+    } from '@nextcloud/vue/dist/Components/NcRichText.js'
 
     registerCustomPickerElement('REFERENCE_PROVIDER_ID', (el, { providerId, accessible }) => {
         const paragraph = document.createElement('p')
@@ -602,7 +834,7 @@ To register anything else:
             el.dispatchEvent(event)
         })
         el.append(button)
-        return new CustomPickerRenderResult(el)
+        return new NcCustomPickerRenderResult(el)
     }, (el, renderResult) => {
         renderResult.element.remove()
     })
