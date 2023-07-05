@@ -59,6 +59,23 @@ Development dependency hell
 
 Due to the popularity of CLI tools for development of Nextcloud apps, the likelihood of package conflicts has increased. It's highly recommended to see :ref:`app-composer-bin-tools` and migrate to composer bin directories.
 
+Updated core libraries
+^^^^^^^^^^^^^^^^^^^^^^
+
+If apps use only official public APIs of Nextcloud, the update of core libraries should have little to no effect on apps. However, there are some edge cases where an app still has a code dependency to a library shipped with Nextcloud, e.g. when those 3rdparty classes or functions are used, and therefore app developers are recommended to check their code for any incompatibility. Moreover it's recommended to check compatibility with sophisticated tools, as documented at the  :ref:`static analysis<app-static-analysis>` section.
+
+``doctrine/dbal``
+*****************
+
+The Doctrine Database Abstraction Layer powers Nextcloud's database connection and query builder. In Nextcloud 28, this dependency was updated from 3.3 to 3.7.
+
+Optimistically speaking, the database connection and the query builder should mostly work like in Nextcloud 27 or older.
+Some (minor) breaking changes were inevitable. Here's the summary:
+
+- When a query builder instance is using positional parameters ``->setValue('name', '?')`` ``setParameter(0, $name)``, all parameters need to be set again when executing the query multiple times, e.g. in a loop. It is recommended to switch to named parameters using ``createParameter()`` instead.
+
+The details of this change can also be seen in the `pull request on GitHub <https://github.com/nextcloud/server/pull/38556>`__ and in the upstream documentation `dbal 3.7.x upgrade document <https://github.com/doctrine/dbal/blob/3.7.x/UPGRADE.md>`__.
+
 Added APIs
 ^^^^^^^^^^
 
