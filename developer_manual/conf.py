@@ -29,7 +29,7 @@ from conf import *
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions += ['sphinx.ext.todo', 'rst2pdf.pdfbuilder', 'sphinx.ext.intersphinx', 'sphinxcontrib.phpdomain']
+extensions += ['sphinx.ext.todo', 'rst2pdf.pdfbuilder', 'sphinx.ext.intersphinx', 'sphinxcontrib.phpdomain', 'sphinx_toolbox.collapse']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['../_shared_assets/templates']
