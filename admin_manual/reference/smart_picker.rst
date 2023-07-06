@@ -11,7 +11,7 @@ The Smart Picker can be used in:
 
 * Text (and everywhere Text is used like Collectives pages, Deck card comments, Files comments...): by pressing the "/" key or using a top menu entry
 * Talk: by pressing the "/" key in the message composition input
-* Nextcloud Office: with a top menu entry
+* Nextcloud Office: with a top menu entry (*Insert* → *Pick Link* or *Smart Picker*, depending on Collabora version)
 * Mail: in the email composition area with a context menu entry
 
 Known Smart Picker providers
