@@ -259,13 +259,22 @@ document root of your Web server and add the following lines::
 
     <IfModule mod_rewrite.c>
       RewriteEngine on
-      RewriteRule ^/\.well-known/carddav /nextcloud/remote.php/dav [R=301,L]
-      RewriteRule ^/\.well-known/caldav /nextcloud/remote.php/dav [R=301,L]
-      RewriteRule ^/\.well-known/webfinger /nextcloud/index.php/.well-known/webfinger [R=301,L]
-      RewriteRule ^/\.well-known/nodeinfo /nextcloud/index.php/.well-known/nodeinfo [R=301,L]
+      RewriteRule ^\.well-known/carddav /nextcloud/remote.php/dav [R=301,L]
+      RewriteRule ^\.well-known/caldav /nextcloud/remote.php/dav [R=301,L]
+      RewriteRule ^\.well-known/webfinger /nextcloud/index.php/.well-known/webfinger [R=301,L]
+      RewriteRule ^\.well-known/nodeinfo /nextcloud/index.php/.well-known/nodeinfo [R=301,L]
     </IfModule>
 
 Make sure to change /nextcloud to the actual subfolder your Nextcloud instance is running in.
+
+.. note:: If you put the above directives directly into an Apache
+   configuration file (usually within ``/etc/apache2/``)
+   instead of ``.htaccess``, you need to prepend the first argument of
+   each ``RewriteRule`` option with a forward slash ``/``, for example
+   ``^/\.well-known/carddav``.
+   This is because Apache normalizes paths for the use in ``.htaccess``
+   files by dropping any number of leading slashes, but it does not
+   do so for the use in its main configuration files.
 
 If you are running NGINX, make sure ``location = /.well-known/carddav {`` and ``location = /.well-known/caldav {`` are properly configured as described in :doc:`../installation/nginx`, adapt to use a subfolder if necessary.
 
