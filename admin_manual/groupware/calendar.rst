@@ -122,6 +122,6 @@ Once a backend app is installed, the app typically allows admins, or even users,
 Nextcloud periodically queries all registered backends, therefore new/updated resources and rooms will show with a delay.
 
 Known backends
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
 
 * `Calendar Resource Management <https://github.com/nextcloud/calendar_resource_management>`_: database backend with CLI configuration for admins
