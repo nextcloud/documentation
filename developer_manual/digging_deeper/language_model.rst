@@ -14,7 +14,7 @@ Consuming the Language Model API
 To consume the  Language Model API, you will need to :ref:`inject<dependency-injection>` ``\OCP\LanguageModel\ILanguageModelManager``. This manager offers the following methods:
 
  * ``hasProviders()`` This method returns a boolean which indicates if any providers have been registered. If this is false you cannot use the LanguageModel feature.
- * ``getAvailableTasks()`` This method returns a list of class strings representing the tasks that are currently supported for prompting.
+ * ``getAvailableTaskClasses()`` This method returns a list of class strings representing the tasks that are currently supported for prompting.
  * ``getAvailableTaskTypes()`` This method returns a list of strings representing the tasks that are currently supported for prompting. These strings are exposed on the Task classes (see below) via the ``TYPE`` constants.
  * ``runTask(ILanguageModelTask $task)`` This method provides the actual prompt functionality. The language model task is defined using one of the available Task classes (see below). This method runs the prompt synchronously, so depending on the implementation it is uncertain how long it will take (between 3s - 10min).
  * ``scheduleTask(ILanguageModelTask $task)`` This method provides the actual prompt functionality. The language model task is defined using one of the available Task classes (see below). This method runs the prompt asynchronously in a background job.
