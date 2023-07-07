@@ -32,14 +32,13 @@ The following task types are available:
  * class: ``\OCP\LanguageModel\TopicsTask``, type: ``"topics"``: This task will generate a comma-separated list of topics for the passed input text.
  * class: ``\OCP\LanguageModel\SummaryTask``, type: ``"summarize"``: This task will summarize the passed input text.
 
-All Task classes implement ``OCP\LanguageModel\ILanguageModelTask``. To create a task you can write ``new <Task>(string $input, string $appId, ?string $userId)``. For example:
+All Task classes implement ``OCP\LanguageModel\ILanguageModelTask``. To create a task you can write ``new <Task>(string $input, string $appId, ?string $userId, string $identifier = '')``. For example:
 
 .. code-block:: php
 
     if (in_array(SummaryTask::TYPE, $languageModelManager->getAvailableTaskTypes()) {
-        $summaryTask = new SummaryTask($emailText, "my_app", $userId);
+        $summaryTask = new SummaryTask($emailText, "my_app", $userId, (string) $emailId);
         $languageModelManager->scheduleTask($summaryTask);
-        // store $summaryTask->getId() somewhere
     } else {
         // cannot use summarization
     }
@@ -52,6 +51,7 @@ All task objects have the following methods available:
  * ``getInput()`` This returns the input string.
  * ``getOutput()`` This method will return ``null`` unless the task is successful
  * ``getAppId()`` This returns the originating application ID of the task.
+ * ``getIdentifier()`` This returns the original scheduler-defined identifier for the task
  * ``getUserId()`` This returns the originating user ID of the task.
 
 Task statuses

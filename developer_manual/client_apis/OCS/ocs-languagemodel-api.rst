@@ -19,7 +19,7 @@ Get available task types
 .. versionadded:: 28
 
 * Method: ``GET``
-* Endpoint: ``/tasks``
+* Endpoint: ``/tasktypes``
 * Response:
     - Status code:
         + ``200 OK``
@@ -28,7 +28,7 @@ Get available task types
 +----------------------+--------+---------------------------------------------------------------------------------------------------------------+
 | field                | type   | Description                                                                                                   |
 +----------------------+--------+---------------------------------------------------------------------------------------------------------------+
-|``tasks``             | array  | The list of supported task types, all existing types are: ``"free_prompt", "headline", "topics", "summary"``  |
+|``types``             | array  | The list of supported task types, all existing types are: ``"free_prompt", "headline", "topics", "summary"``  |
 +----------------------+--------+---------------------------------------------------------------------------------------------------------------+
 
 Schedule a task
@@ -45,11 +45,13 @@ Schedule a task
 +-----------------+-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | field           | type        | Description                                                                                                                                                                  |
 +-----------------+-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|``text``         | string      | The input text for the task                                                                                                                                                  |
+|``input``         | string      | The input text for the task                                                                                                                                                  |
 +-----------------+-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |``type`` | string | One of the available task types returned above. |
 +-----------------+-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |``appId``   | string      | The id of the requesting app                                                                                                                                      |
++-----------------+-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|``identifier``   | string      | An app-defined identifier for the task                                                                                                                                      |
 +-----------------+-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 * Response:
@@ -66,6 +68,7 @@ Schedule a task
         + ``status`` - Only provided in case of ``200 OK``, the current task status, int, see backend API
         + ``userId`` - Only provided in case of ``200 OK``, the originating userId of the task, string
         + ``appId`` - Only provided in case of ``200 OK``, the originating appId of the task, string
+        + ``identifier`` - Only provided in case of ``200 OK``, the originating appId of the task, string
         + ``output`` - Only provided in case of ``200 OK``, the output from the model, string or null
         + ``message`` - Only provided when not ``200 OK``, an error message in the user's language, ready to be displayed
 
@@ -91,5 +94,6 @@ Fetch a task by ID
         + ``status`` - Only provided in case of ``200 OK``, the current task status, int, see backend API
         + ``userId`` - Only provided in case of ``200 OK``, the originating userId of the task, string
         + ``appId`` - Only provided in case of ``200 OK``, the originating appId of the task, string
+        + ``identifier`` - Only provided in case of ``200 OK``, the originating appId of the task, string
         + ``output`` - Only provided in case of ``200 OK``, the output from the model, string or null
         + ``message`` - Only provided when not ``200 OK``, an error message in the user's language, ready to be displayed
