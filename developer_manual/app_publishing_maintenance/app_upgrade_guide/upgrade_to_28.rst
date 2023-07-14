@@ -97,3 +97,15 @@ If you want to support Nextcloud 27 and Nextcloud 28:
 	} else {
 		$eventSource = \OCP\Server::get(IEventSourceFactory::class)->create();
 	}
+
+Deprecated events
+^^^^^^^^^^^^^^^^^
+
+* ``OCA\Files_Trashbin::moveToTrash`` was deprecated. Listen to the typed event ``OCA\Files_Trashbin\Events\MoveToTrashEvent`` instead
+
+Removed events
+^^^^^^^^^^^^^^
+
+* ``OCP\WorkflowEngine::registerChecks`` (deprecated since 17) was removed. Listen to the typed event ``OCP\WorkflowEngine\Events\RegisterChecksEvent`` instead
+* ``OCP\WorkflowEngine::registerEntities`` (deprecated since 17) was removed. Listen to the typed event ``OCP\WorkflowEngine\Events\RegisterEntitiesEvent`` instead
+* ``OCP\WorkflowEngine::registerOperations`` (deprecated since 17) was removed. Listen to the typed event ``OCP\WorkflowEngine\Events\RegisterOperationsEvent`` instead

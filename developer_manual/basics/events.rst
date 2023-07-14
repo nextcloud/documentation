@@ -30,7 +30,7 @@ The name should reflect the subject and the actions. Suffixing event classes wit
 
 For example, if a user is created, a `UserCreatedEvent` will be emitted.
 
-Events are usually evmitted *after* the event has happened. If it's emitted before, it should be prefixed with `Before`.
+Events are usually emitted *after* the event has happened. If it's emitted before, it should be prefixed with `Before`.
 
 Thus `BeforeUserCreatedEvent` is emitted *before* the user data is written to the database.
 
@@ -356,6 +356,13 @@ This event is triggered when the files app is rendered. It can be used to add ad
 .. versionadded:: 20
 
 Emitted before the rendering step of the public share page happens. The event holds a flag that specifies if it is the authentication page of a public share.
+
+``\OCA\Files_Trashbin\Events\MoveToTrashEvent``
+***********************************************
+
+.. versionadded:: 28
+
+Emitted after a file or folder is moved to the trashbin.
 
 ``\OCA\Settings\Events\BeforeTemplateRenderedEvent``
 ********************************************************
