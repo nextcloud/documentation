@@ -98,6 +98,11 @@ If you want to support Nextcloud 27 and Nextcloud 28:
 		$eventSource = \OCP\Server::get(IEventSourceFactory::class)->create();
 	}
 
+Added events
+^^^^^^^^^^^^
+
+* ``\OCP\DB\Events\AddMissingIndicesEvent`` to add missing indices to the database schema.
+
 Deprecated events
 ^^^^^^^^^^^^^^^^^
 

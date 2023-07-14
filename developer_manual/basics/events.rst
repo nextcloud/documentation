@@ -453,6 +453,17 @@ It is an event that allows apps to notify other components about an interaction 
 
 Emitters should add at least one identifier (uid, email, federated cloud ID) of the recipient of the interaction.
 
+``\OCP\DB\Events\AddMissingIndicesEvent``
+************************************************
+
+.. versionadded:: 28
+
+Event to allow apps to register information about missing database indices
+
+This event will be dispatched for checking on the admin settings and when running
+``occ db:add-missing-indices`` which will then create those indices or can be used
+to generate the SQL statements for manual execution.
+
 ``\OCP\DirectEditing\RegisterDirectEditorEvent``
 ************************************************
 
