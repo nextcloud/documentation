@@ -141,3 +141,20 @@ Nextcloud **in debug mode**:
 
 .. note:: After generating a migration, you might need to run `composer dump-autoload`
    to be able to execute it.
+
+Adding indices
+--------------
+
+Adding indices to existing tables can take long time, especially on large tables. Therefore it is recommended to not add the indices in the migration itself, but to indicate the index requirement to the server by adding a listener for the ``AddMissingIndicesEvent``. This way the migration can be executed in a separate step and do not block the upgrade process. For new installations the index should still be added to the migration that creates the table.
+
+.. code-block:: php
+
+   class AddMissingIndicesListener implements IEventListener {
+      public function handle(Event $event): void {
+         if (!$event instanceof AddMissingIndicesEvent) {
+            return;
+         }
+
+         $event->addMissingIndex('my_table', 'my_index', ['column_a', 'column_b']);
+      }
+   }
