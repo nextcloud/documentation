@@ -76,7 +76,24 @@ usually access them by pressing F12.
 PHP version and information
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You will need to know your PHP version and configurations. To do this, create a
+You will need to know the PHP version and configuration that is in-use on your 
+Nextcloud server. This will not necessarily be the same version and configuration as 
+can be reached from the command-line. The simplest way to gather this information is 
+by using what's commonly referenced as ``phpinfo()``.
+
+The most accurate - and easiest - way to access ``phpinfo`` is by checking it from 
+within Nextcloud itself. Of course, this requires that Nextcloud is functioning 
+enough that you can log in as an administrator and access the 
+**Administration settings -> System** menu. If so, you can enable the exposure of 
+``phpinfo`` data by toggling it on via ``occ``:
+
+``./occ config:app:set --value=yes serverinfo phpinfo``
+
+From then on a new button labeled **Show phpinfo** will be visible in the web 
+interface under **Administration settings -> System**. Clicking it will expose 
+just about everything you may want to know about your PHP environment.
+
+If accessing the Nextcloud web interface is not an option, you may create a
 plain-text file named **phpinfo.php** and place it in your Web root, for
 example ``/var/www/html/phpinfo.php``. (Your Web root may be in a different
 location; your Linux distribution documentation will tell you where.) This file
