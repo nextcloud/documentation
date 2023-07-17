@@ -8,22 +8,22 @@ Text Processing
 
 Nextcloud offers a **Text Processing** API. The overall idea is that there is a central OCP API that apps can use to prompt tasks to Large Language Models and similar text processing tools. To be technology agnostic any app can provide this functionality by registering Text Processing providers.
 
-Consuming the Language Model API
---------------------------------
+Consuming the Text Processing API
+---------------------------------
 
 To consume the  Language Model API, you will need to :ref:`inject<dependency-injection>` ``\OCP\TextProcessing\IManager``. This manager offers the following methods:
 
  * ``hasProviders()`` This method returns a boolean which indicates if any providers have been registered. If this is false you cannot use the TextProcessing feature.
  * ``getAvailableTaskTypes()`` This method returns a list of class strings representing the tasks that are currently supported.
- * ``runTask(Task $task)`` This method provides the actual prompt functionality. The language model task is defined using one of the available Task classes (see below). This method runs the prompt synchronously, so depending on the implementation it is uncertain how long it will take (between 3s - 10min).
- * ``scheduleTask(Task $task)`` This method provides the actual prompt functionality. The language model task is defined using one of the available Task classes (see below). This method runs the prompt asynchronously in a background job.
+ * ``runTask(Task $task)`` This method provides the actual prompt functionality. The task is defined using Task class. This method runs the task synchronously, so depending on the implementation it is uncertain how long it will take (between 3s - 10min).
+ * ``scheduleTask(Task $task)`` This method provides the actual prompt functionality. The task is defined using the Task class. This method runs the task asynchronously in a background job.
  * ``getTask(int $id)`` This method fetches a task specified by its id.
 
 
-If you would like to use the language model functionality in a client, there are also OCS endpoints available for this: :ref:`OCS Language Model API<ocs-textprocessing-api>`
+If you would like to use the text processing functionality in a client, there are also OCS endpoints available for this: :ref:`OCS Text Processing API<ocs-textprocessing-api>`
 
 Tasks types
-^^^^^^^^^^
+^^^^^^^^^^^
 The following task types are available:
 
  * ``\OCP\TextProcessing\FreePromptTaskType``: This task allows passing an arbitrary prompt to the language model.
@@ -32,7 +32,7 @@ The following task types are available:
  * ``\OCP\TextProcessing\SummaryTaskType``: This task will summarize the passed input text.
 
 Tasks
-^^^^
+^^^^^
 To create a task we use the ``\OCP\TextProcessing\Task`` class. Its constructor takes the following arguments: ``new \OCP\TextProcessing\Task(string $type, string $input, string $appId, ?string $userId, string $identifier = '')``. For example:
 
 .. code-block:: php
