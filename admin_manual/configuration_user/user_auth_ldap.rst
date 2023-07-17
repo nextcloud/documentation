@@ -436,16 +436,19 @@ Special attributes
 Quota Field:
   Nextcloud can read an LDAP attribute and set the user quota according to its
   value. Specify the attribute here, and it will return human-readable values,
-  e.g. "2 GB". Any quota set in LDAP overrides quotas set on the Nextcloud user
-  management page.
+  e.g. "2 GB".
 
   * Example: *NextcloudQuota*
 
+.. warning:: LDAP quota parameters override quota parameters set in the Nextcloud user management page.
+
 Quota Default:
-  Override Nextcloud default quota for LDAP users who do not have a quota set in
-  the Quota Field.
+  Specifies a default quota for LDAP users who do not have a quota set in
+  the above Quota Field.
 
   * Example: *15 GB*
+
+.. warning:: LDAP quota parameters override quota parameters set in the Nextcloud user management page.
 
 Email Field:
   Set the user's email from their LDAP attribute. Leave it empty for default
