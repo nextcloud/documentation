@@ -90,7 +90,7 @@ This package provides a modified version of `moment.js <https://momentjs.com/>`_
 ``@nextcloud/password-confirmation``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This package makes it possible to ask a user for confirmation on actions that have a `@PasswordConfirmationRequired` set on the controller method. Use it for critical actions. Documentation: https://nextcloud.github.io/nextcloud-password-confirmation/
+This package makes it possible to ask a user for confirmation on actions that have the ``#[PasswordConfirmationRequired]`` attribute or ``@PasswordConfirmationRequired`` annotation set on the controller method. Use it for critical actions. Documentation: https://nextcloud.github.io/nextcloud-password-confirmation/
 
 ``@nextcloud/paths``
 ^^^^^^^^^^^^^^^^^^^^

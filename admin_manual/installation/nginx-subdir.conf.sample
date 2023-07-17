@@ -39,21 +39,13 @@ server {
     # Prevent nginx HTTP Server Detection
     server_tokens off;
 
-    # HSTS settings
-    # WARNING: Only add the preload option once you read about
-    # the consequences in https://hstspreload.org/. This option
-    # will add the domain to a hardcoded list that is shipped
-    # in all major browsers and getting removed from this list
-    # could take several months.
-    #add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload" always;
-
     # Add .mjs as a file extension for javascript
     # Either include it in the default mime.types list
     # or include you can include that list explicitly and add the file extension
     # only for Nextcloud like below:
     include mime.types;
     types {
-        application/javascript js mjs;
+        text/javascript js mjs;
     }
 
     location = /robots.txt {
@@ -89,7 +81,7 @@ server {
         gzip_comp_level 4;
         gzip_min_length 256;
         gzip_proxied expired no-cache no-store private no_last_modified no_etag auth;
-        gzip_types application/atom+xml application/javascript application/json application/ld+json application/manifest+json application/rss+xml application/vnd.geo+json application/vnd.ms-fontobject application/wasm application/x-font-ttf application/x-web-app-manifest+json application/xhtml+xml application/xml font/opentype image/bmp image/svg+xml image/x-icon text/cache-manifest text/css text/plain text/vcard text/vnd.rim.location.xloc text/vtt text/x-component text/x-cross-domain-policy;
+        gzip_types application/atom+xml text/javascript application/javascript application/json application/ld+json application/manifest+json application/rss+xml application/vnd.geo+json application/vnd.ms-fontobject application/wasm application/x-font-ttf application/x-web-app-manifest+json application/xhtml+xml application/xml font/opentype image/bmp image/svg+xml image/x-icon text/cache-manifest text/css text/plain text/vcard text/vnd.rim.location.xloc text/vtt text/x-component text/x-cross-domain-policy;
 
         # Pagespeed is not supported by Nextcloud, so if your server is built
         # with the `ngx_pagespeed` module, uncomment this line to disable it.
@@ -99,6 +91,14 @@ server {
         # See https://blog.cloudflare.com/delivering-http-2-upload-speed-improvements/
         # for tunning hints
         client_body_buffer_size 512k;
+
+        # HSTS settings
+        # WARNING: Only add the preload option once you read about
+        # the consequences in https://hstspreload.org/. This option
+        # will add the domain to a hardcoded list that is shipped
+        # in all major browsers and getting removed from this list
+        # could take several months.
+        #add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;" always;
 
         # HTTP response headers borrowed from Nextcloud `.htaccess`
         add_header Referrer-Policy                   "no-referrer"       always;
@@ -163,7 +163,8 @@ server {
             fastcgi_max_temp_file_size 0;
         }
 
-        location ~ \.(?:css|js|svg|gif|png|jpg|ico|wasm|tflite|map)$ {
+        # Serve static files
+        location ~ \.(?:css|js|mjs|svg|gif|png|jpg|ico|wasm|tflite|map)$ {
             try_files $uri /nextcloud/index.php$request_uri;
             add_header Cache-Control "public, max-age=15778463, $asset_immutable";
             access_log off;     # Optional: Don't log access to assets

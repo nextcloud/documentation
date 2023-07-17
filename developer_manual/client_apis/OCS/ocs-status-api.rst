@@ -151,7 +151,24 @@ Fetch a specific user's status
         + ``200 OK``
         + ``404 Not Found`` If the user does not have a status set
 
-Files Sharing 
+Fetch a user's backup status
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In some scenarios the user's status can be overwritten automatically, e.g. by joining a call in Nextcloud Talk,
+or when the availability automation is enabled. In this case the userId can be prefixed with an `_` underscore,
+to get the original user status. When a user status is returned and the ``user_status`` > ``restore`` capability
+is available, the backup status should be added as an item in the predefined status list. Clicking that should then
+do an API call to `User status - Restore backup`_ should be done.
+
+* Required capability: ``user_status``
+* Method: ``GET``
+* Endpoint: ``/_{userId}``
+* Response:
+    - Status code:
+        + ``200 OK``
+        + ``404 Not Found`` If the user does not have a backup status set
+
+Files Sharing
 ^^^^^^^^^^^^^
 
 The user-status is also exposed via the following Files Sharing APIs:
@@ -163,3 +180,13 @@ The user-status is also exposed via the following Files Sharing APIs:
  * ``GET /ocs/v2.php/apps/files_sharing/api/v1/shares/{id}``
  * ``POST /ocs/v2.php/apps/files_sharing//api/v1/shares``
  * ``PUT /ocs/v2.php/apps/files_sharing/api/v1/shares/{id}``
+
+User status - Restore backup
+----------------------------
+
+* Required capability: ``user_status`` > ``restore``
+* Method: ``DELETE``
+* Endpoint: ``/revert/{messageId}``
+* Response:
+    - Status code:
+        + ``200 OK``

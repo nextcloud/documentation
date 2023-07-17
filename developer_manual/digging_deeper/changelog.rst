@@ -7,7 +7,9 @@ Changelog
 Deprecations
 ------------
 
-This is a deprecation roadmap which lists all current deprecation targets and will be updated from release to release. This lists the year when a specific method or class will be removed.
+Deprecations are now documented by Nextcloud major release, not time. See :ref:`app-upgrade-guide`.
+
+Below is the old deprecation roadmap which lists older deprecations by year.
 
 .. note:: Deprecations on interfaces also affect the implementing classes!
 

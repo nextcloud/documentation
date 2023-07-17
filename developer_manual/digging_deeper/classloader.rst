@@ -7,6 +7,8 @@ Classloader
 
 The classloader is provided by Nextcloud and loads all your classes automatically. See :ref:`the composer section<app-composer>` if you want to include and autoload 3rd party libraries.
 
+.. _app-psr4-autoloader:
+
 PSR-4 autoloading
 -----------------
 
@@ -40,7 +42,7 @@ Replacing Nextcloud's autoloader
 
 Nextcloud's autoloader for apps is flexible and robust but not always the fastest. You can improve the loading speed of your app by shipping and optimizing a Composer class loader with the app.
 
-First of all, familiarize yourself with the `Composer autoloader optimization options <https://getcomposer.org/doc/articles/autoloader-optimization.md>`_ and how they work. (Authoritative) class maps are a good fit for Nextcloud apps.
+First of all, familiarize yourself with the `Composer autoloader optimization options <https://getcomposer.org/doc/articles/autoloader-optimization.md>`_ and how they work. Only level 1 optimization is suited for Nextcloud because authoritative class maps break upgrade processes where code is replaced dynamically and APCu is not a required extension.
 
 Once Composer is set up and class maps have been dumped, you can replace the generic Nextcloud class loader with the Composer class loader. This is done by placing a file at `composer/autoload.php`. If Nextcloud finds this file for an app, no generic class loader will be registered. The following contents will wire the file to Composer's generated ``autoloader.php`` file:
 

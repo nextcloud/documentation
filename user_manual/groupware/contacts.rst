@@ -6,18 +6,19 @@ The Contacts app is not enabled by default in Nextcloud |version| and needs to
 be installed separately from our App Store.
 
 The Nextcloud Contacts app is similar to other mobile contact applications, but
-with more functionality. 
+with more functionality.
 Let's run through basic features that will help you maintain your address book
-in the application. 
+in the application.
 
-Below, you will learn how to add contacts, edit or remove contacts, upload a 
-contact picture and manage your address books. 
+Below, you will learn how to add contacts, edit or remove contacts, upload a
+contact picture and manage your address books.
 
 
 Adding Contacts
 ---------------
 
-When you first access the Contacts app, an empty default address book becomes available:
+When you first access the Contacts app, the system address book containing all 
+users on the instance you are allowed to see, plus an empty default address book becomes available:
 
 .. figure:: ../images/contacts_empty.png
 
@@ -25,7 +26,7 @@ When you first access the Contacts app, an empty default address book becomes av
 
 To add contacts into your address book, you can use one of the following methods:
 
-* Import contacts using a Virtual Contact File (VCF/vCard) file 
+* Import contacts using a Virtual Contact File (VCF/vCard) file
 * Add contacts manually
 
 The fastest way to add a contact is to use a Virtual Contact File
@@ -37,21 +38,22 @@ Importing Virtual Contacts
 
 To Import Contacts Using a VCF/vCard File:
 
-1. Find "Settings" at the bottom of the left sidebar, next to the gear button:
+1. On top left of the screen you have "Import contacts" button that is shown only when you don't have any contacts yet.
+2. Find "Settings" at the bottom of the left sidebar, next to the gear button:
 
-	.. figure:: ../images/contact_bottombar.png 
+	.. figure:: ../images/contact_bottombar.png
 		:alt: Contact settings gear button
-  
-2. Click the gear button. The Contacts app "Import" button will appear:
+
+3. Click the gear button. The Contacts app "Import" button will appear:
 
 	.. figure:: ../images/contact_uploadbutton.png
 		:alt: Contacts Upload Field
-  
+
 .. note:: The Contacts app only supports import of vCards version 3.0 and 4.0.
 
-3. Click the "Import" button and upload your VCF/vCard file. 
+4. Click the "Import" button and upload your VCF/vCard file.
 
-After the import is complete, you will see your new contact in your address book. 
+After the import is complete, you will see your new contact in your address book.
 
 
 Adding Contacts Manually
@@ -63,11 +65,14 @@ To Create a New Contact:
 
 1. Click the ``+ New contact`` button.
 
-   An empty new contact configuration opens in the Application View field:
-   
+   The Edit View configuration opens in the Application View field:
+
   .. figure:: ../images/contact_new.png
-  
-2. Specify the new contact information. Changes that you made are implemented immediately.
+
+2. Specify the new contact information then click Save.
+3. The View mode will be shown with the data you added
+
+.. figure:: ../images/contact_view_mode.png
 
 
 Edit or Remove Contact Information
@@ -82,6 +87,9 @@ To edit or remove contact information:
 3. Make your modifications or click on the trash bin.
 
 Changes or removals that you made to any contact information are implemented immediately.
+
+Not all contacts will be editable for you. The system address book does not allow you to modify 
+someone elses data, only your own. Your own data can also be modified in the :doc:`user settings <../userpreferences>`.
 
 
 Contact Picture

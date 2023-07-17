@@ -474,7 +474,7 @@ Templates
 A :doc:`template <front-end/templates>` can be rendered by returning a TemplateResponse. A TemplateResponse takes the following parameters:
 
 * **appName**: tells the template engine in which app the template should be located
-* **templateName**: the name of the template inside the template/ folder without the .php extension
+* **templateName**: the name of the template inside the templates/ folder without the .php extension
 * **parameters**: optional array parameters that are available in the template through $_, e.g.::
 
     array('key' => 'something')
@@ -527,7 +527,7 @@ will be shown in the top right corner of the public page.
             $template = new PublicTemplateResponse($this->appName, 'main', []);
             $template->setHeaderTitle('Public page');
             $template->setHeaderDetails('some details');
-            $response->setHeaderActions([
+            $template->setHeaderActions([
                 new SimpleMenuAction('download', 'Label 1', 'icon-css-class1', 'link-url', 0),
                 new SimpleMenuAction('share', 'Label 2', 'icon-css-class2', 'link-url', 10),
             ]);
@@ -732,16 +732,12 @@ In order to ease migration from OCS API routes to the App Framework, an addition
     namespace OCA\MyApp\Controller;
 
     use OCP\AppFramework\Http\DataResponse;
+    use OCP\AppFramework\Http\Attribute\NoAdminRequired;
     use OCP\AppFramework\OCSController;
 
     class ShareController extends OCSController {
 
-        /**
-         * @NoAdminRequired
-         * @NoCSRFRequired
-         * @PublicPage
-         * @CORS
-         */
+        #[NoAdminRequired]
         public function getShares(): DataResponse {
             return new DataResponse([
                 //Your data here
@@ -811,30 +807,38 @@ By default every controller method enforces the maximum security, which is:
 
 Most of the time though it makes sense to also allow normal users to access the page and the PageController->index() method should not check the CSRF token because it has not yet been sent to the client and because of that can't work.
 
-To turn off checks the following *Annotations* can be added before the controller:
+To turn off checks the following *Attributes* can be added before the controller:
 
-* **@NoAdminRequired**: Also users that are not admins can access the page
-* **@PublicPage**: Everyone can access the page without having to log in
-* **@NoTwoFactorRequired**: A user can access the page before the two-factor challenge has been passed (use this wisely and only in two-factor auth apps, e.g. to allow setup during login)
-* **@NoCSRFRequired**: Don't check the CSRF token (use this wisely since you might create a security hole; to understand what it does see `CSRF in the security section <../prologue/security.html#cross-site-request-forgery>`__)
+* ``#[NoAdminRequired]``: Also users that are not admins can access the page
+* ``#[PublicPage]``: Everyone can access the page without having to log in
+* ``#[NoTwoFactorRequired]``: A user can access the page before the two-factor challenge has been passed (use this wisely and only in two-factor auth apps, e.g. to allow setup during login)
+* ``#[NoCSRFRequired]``: Don't check the CSRF token (use this wisely since you might create a security hole; to understand what it does see `CSRF in the security section <../prologue/security.html#cross-site-request-forgery>`__)
+
+.. note::
+
+    The attributes are only available in Nextcloud 27 or later. In older versions annotations with the same names exist:
+
+    * ``@NoAdminRequired`` instead of ``#[NoAdminRequired]``
+    * ``@PublicPage``` instead of ``#[PublicPage]``
+    * ``@NoTwoFactorRequired``` instead of ``#[NoTwoFactorRequired]``
+    * ``@NoCSRFRequired``` instead of ``#[NoCSRFRequired]``
 
 A controller method that turns off all checks would look like this:
 
 .. code-block:: php
+    :emphasize-lines: 6-7,10-11
 
     <?php
     namespace OCA\MyApp\Controller;
 
     use OCP\IRequest;
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
+    use OCP\AppFramework\Http\Attribute\PublicPage;
 
     class PageController extends Controller {
-
-        /**
-         * @NoAdminRequired
-         * @NoCSRFRequired
-         * @PublicPage
-         */
+        #[NoCSRFRequired]
+        #[PublicPage]
         public function freeForAll() {
 
         }
@@ -847,28 +851,35 @@ Nextcloud supports rate limiting on a controller method basis. By default contro
 
 The native rate limiting will return a 429 status code to clients when the limit is reached and a default Nextcloud error page. When implementing rate limiting in your application, you should thus consider handling error situations where a 429 is returned by Nextcloud.
 
-To enable rate limiting the following *Annotations* can be added to the controller:
+To enable rate limiting the following *Attributes* can be added to the controller:
 
-* **@UserRateThrottle(limit=int, period=int)**: The rate limiting that is applied to logged-in users. If not specified Nextcloud will fallback to AnonUserRateThrottle.
-* **@AnonRateThrottle(limit=int, period=int)**: The rate limiting that is applied to guests.
+* ``#[UserRateLimit(limit: int, period: int)]``: The rate limiting that is applied to logged-in users. If not specified Nextcloud will fallback to ``AnonRateLimit`` if available.
+* ``#[AnonRateLimit(limit: int, period: int)]``: The rate limiting that is applied to guests.
+
+.. note::
+
+    The attributes are only available in Nextcloud 27 or later. In older versions the ``@UserRateThrottle(limit=int, period=int)`` and ``@AnonRateThrottle(limit=int, period=int)`` annotation can be used. If both are present, the attribute will be considered first.
 
 A controller method that would allow five requests for logged-in users and one request for anonymous users within the last 100 seconds would look as following:
 
 .. code-block:: php
+    :emphasize-lines: 14-15
 
     <?php
     namespace OCA\MyApp\Controller;
 
     use OCP\IRequest;
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Attribute\AnonRateLimit;
+    use OCP\AppFramework\Http\Attribute\UserRateLimit;
 
     class PageController extends Controller {
 
         /**
          * @PublicPage
-         * @UserRateThrottle(limit=5, period=100)
-         * @AnonRateThrottle(limit=1, period=100)
          */
+        #[UserRateLimit(limit: 5, period: 100)]
+        #[AnonRateLimit(limit: 1, period: 100)]
         public function rateLimitedForAll() {
 
         }
@@ -881,35 +892,69 @@ Nextcloud supports brute-force protection on an action basis. By default control
 
 The native brute-force protection will slow down requests if too many violations have been found. This slow down will be applied to all requests against a brute-force protected controller with the same action from the affected IP.
 
-To enable brute force protection the following *Annotation* can be added to the controller:
+To enable brute force protection the following *Attribute* can be added to the controller:
 
-* **@BruteForceProtection(action=string)**: "string" is the name of the action. Such as "login" or "reset". Brute-force attempts are on a per-action basis; this means if a violation for the "login" action is triggered, other actions such as "reset" or "foobar" are not affected.
+* ``#[BruteForceProtection(action: 'string')]``: "string" is the name of the action. Such as "login" or "reset". Brute-force attempts are on a per-action basis; this means if a violation for the "login" action is triggered, other actions such as "reset" or "foobar" are not affected.
 
-Then the **throttle()** method has to be called on the response in case of a violation. Doing so will increase the throttle counter and make following requests slower.
+.. note::
 
-A controller method that would employ brute-force protection with an action of "foobar" would look as following:
+    The attribute is only available in Nextcloud 27 or later. In older versions the ``@BruteForceProtection(action=string)`` annotation can be used, but that does not allow multiple assignments to a single controller method.
+
+Then the **throttle()** method has to be called on the response in case of a violation. Doing so will increase the throttle counter and make following requests slower, until a slowness of roughly 30 seconds is reached and the controller returns a ``429 Too Many Requests`` status without further processing the request.
+
+A controller method that would implement brute-force protection with an action of "foobar" would look as following:
 
 .. code-block:: php
+    :emphasize-lines: 11,18
 
     <?php
     namespace OCA\MyApp\Controller;
 
     use OCP\IRequest;
     use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Attribute\BruteForceProtection;
     use OCP\AppFramework\Http\TemplateResponse;
 
     class PageController extends Controller {
 
-        /**
-         * @BruteForceProtection(action=foobar)
-         */
-        public function rateLimitedForAll(): TemplateResponse {
+        #[BruteForceProtection(action: 'foobar')]
+        public function bruteforceProtected(): TemplateResponse {
             $templateResponse = new TemplateResponse(…);
             // In case of a violation increase the throttle counter
             // note that $this->auth->isSuccessful here is just an
             // example.
-            if(!$this->auth->isSuccessful()) {
+            if (!$this->auth->isSuccessful()) {
                  $templateResponse->throttle();
+            }
+            return $templateResponse;
+        }
+    }
+
+A controller can also have multiple factors to brute force against. In this case you can specify multiple attributes and then in the throttle you specify the action which was violated. This is especially useful when a secret, in the sample below token, could be guessed on multiple endpoints e.g. a share token on the API level, preview endpoint, frontend controller, etc. while another secret (password), is specific to this one controller method.
+
+.. code-block:: php
+    :emphasize-lines: 11-12,16,20
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\IRequest;
+    use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Attribute\BruteForceProtection;
+    use OCP\AppFramework\Http\TemplateResponse;
+
+    class PageController extends Controller {
+
+        #[BruteForceProtection(action: 'token')]
+        #[BruteForceProtection(action: 'password')]
+        public function getPasswordProtectedShare(string $token, string $password): TemplateResponse {
+            $templateResponse = new TemplateResponse(…);
+            if (!$this->shareManager->getByToken($token)) {
+                $templateResponse->throttle(['action' => 'token']);
+            }
+            // …
+            if (!$share->verifyPassword($password)) {
+                $templateResponse->throttle(['action' => 'password']);
             }
             return $templateResponse;
         }

@@ -416,3 +416,8 @@ The unified search is available via OCS, which means client application like the
     $entry->addAttribute("boardId", "567");
 
 .. note:: This method was added in Nextcloud 21. If your app also targets Nextcloud 20 you should either not use it or add a version check to invoke the method only conditionally.
+
+Privacy
+-------
+
+All search providers have to value privacy and prevent leaking of sensitive data by default. Therefore search terms must not be sent to third parties by default. If a search provider makes use of third party services, user consent has to be acquired, e.g. by an opt-in toggle in the user's personal settings.

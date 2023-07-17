@@ -16,6 +16,7 @@ occ command Directory
 ---------------------
 
 * :ref:`http_user_label`
+* :ref:`run_commands_in_maintenance_mode`
 * :ref:`apps_commands_label`
 * :ref:`background_jobs_selector_label`
 * :ref:`config_commands_label`
@@ -160,6 +161,17 @@ This output option is available on all list and list-like commands:
 ``status``, ``check``, ``app:list``, ``config:list``, ``encryption:status``
 and ``encryption:list-modules``
 
+Environment variables
+^^^^^^^^^^^^^^^^^^^^^
+
+``sudo`` does not forward environment variables by default. Put the variables before the ``php`` command::
+
+  sudo -u www-data NC_debug=true php occ status
+
+Alternatively, you can ``export`` the variable or use the ``-E`` switch for ``sudo``::
+
+  NC_debug=true sudo -E -u www-data php occ status
+
 Enabling autocompletion
 -----------------------
 
@@ -185,6 +197,20 @@ you need to specify ``--program occ`` after the ``--generate-hook``.
 
 If you want the completion to apply automatically for all new shell sessions, add the command to your
 shell's profile (eg. ``~/.bash_profile`` or ``~/.zshrc``).
+
+.. _run_commands_in_maintenance_mode:
+
+Run commands in maintenance mode
+--------------------------------
+
+In maintenance mode, apps are not loaded [1]_, so commands from apps are unavailable. Commands integrated into Nextcloud server are available in maintenance mode.
+
+We discourage the use of maintenance mode unless the command explicitly prompts you to do so or unless the commands' documentation explicitly states that maintenance mode should be used.
+
+A command may use events to communicate with other apps. An app can only react to an event when loaded. Example: The command user:delete deletes a user account. UserDeletedEvent is emitted. Calendar app implements an event listener to delete user data [2]_. In maintenance mode, the Calendar app is not loaded, and hence the user data not deleted.
+
+.. [1] Exception: `The settings app is loaded <https://github.com/nextcloud/server/blob/75f17b60945e15effc3eea41393eef2b13937226/lib/base.php#L780>`_
+.. [2] `Calendar app event listener for UserDeletedEvent <https://github.com/nextcloud/calendar/blob/87e8586971a8676dc15a90f0cd969274678b7009/lib/Listener/UserDeletedListener.php>`_
 
 .. _apps_commands_label:
 
@@ -500,8 +526,14 @@ bernie::
 
  sudo -u www-data php occ dav:sync-birthday-calendar bernie
 
-``dav:sync-system-addressbook`` synchronizes all users to the system
-addressbook::
+
+.. _occ-dav-sync-system-address-book:
+
+Sync system address book
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+``dav:sync-system-addressbook`` synchronizes all users to the :ref:`system
+address book<system-address-book>`::
 
  sudo -u www-data php occ dav:sync-system-addressbook
 
@@ -606,10 +638,7 @@ user::
 
  sudo -u www-data php occ encryption:decrypt freda
 
-Users must have enabled recovery keys on their Personal pages. You must first
-put your Nextcloud server into :ref:`maintenance
-mode <maintenance_commands_label>` to prevent any user activity until
-decryption is completed.
+Users must have enabled recovery keys on their Personal pages.
 
 Note that if you do not have master key/recovery key enabled, you can ONLY
 decrypt files per user, one user at a time and NOT when in maintenance mode.
@@ -1109,7 +1138,7 @@ Trashbin
 ::
 
  trashbin
-  trashbin:cleanup  [--all-users] [--] [<user_id>...]  Remove deleted files
+  trashbin:cleanup  [--all-users] [--] [<user_id>...]  Permanently remove deleted files
   trashbin:restore  [--all-users] [--] [<user_id>...]  Restore deleted files
 
 .. note::
@@ -1119,7 +1148,7 @@ Trashbin
 The ``trashbin:cleanup  [--all-users] [--] [<user_id>...]`` command removes the deleted files of the specified
 users in a space-delimited list, or all users if --all-users is specified.
 
-This example removes the deleted files of all users::
+This example permanently removes the deleted files of all users::
 
   sudo -u www-data php occ trashbin:cleanup --all-users
   Remove all deleted files for all users
@@ -1130,7 +1159,7 @@ This example removes the deleted files of all users::
    rosa
    edward
 
-This example removes the deleted files of users molly and freda::
+This example permanently removes the deleted files of users molly and freda::
 
  sudo -u www-data php occ trashbin:cleanup molly freda
  Remove deleted files of   molly
@@ -1146,6 +1175,10 @@ This example restores the deleted files of all users::
 This example restores the deleted files of users molly and freda::
 
  sudo -u www-data php occ trashbin:restore molly freda
+ 
+.. note::
+  This command only restores Users deleted files.
+  If you're using Group Folders app, such files are not restored.
 
 .. _user_commands_label:
 

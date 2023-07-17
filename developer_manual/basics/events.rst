@@ -30,7 +30,7 @@ The name should reflect the subject and the actions. Suffixing event classes wit
 
 For example, if a user is created, a `UserCreatedEvent` will be emitted.
 
-Events are usually evmitted *after* the event has happened. If it's emitted before, it should be prefixed with `Before`.
+Events are usually emitted *after* the event has happened. If it's emitted before, it should be prefixed with `Before`.
 
 Thus `BeforeUserCreatedEvent` is emitted *before* the user data is written to the database.
 
@@ -357,6 +357,13 @@ This event is triggered when the files app is rendered. It can be used to add ad
 
 Emitted before the rendering step of the public share page happens. The event holds a flag that specifies if it is the authentication page of a public share.
 
+``\OCA\Files_Trashbin\Events\MoveToTrashEvent``
+***********************************************
+
+.. versionadded:: 28
+
+Emitted after a file or folder is moved to the trashbin.
+
 ``\OCA\Settings\Events\BeforeTemplateRenderedEvent``
 ********************************************************
 
@@ -425,6 +432,16 @@ Emitted when the authentication fails, but only if the login name can be associa
 
 .. versionadded:: 20
 
+``\OCP\Collaboration\Reference\RenderReferenceEvent``
+*****************************************************
+
+.. versionadded:: 25
+
+Event emitted when apps might render references like link previews or smart picker widgets.
+
+This can be used to inject scripts for extending that. Further details can be found in the 
+:ref:`Reference providers` deep dive.
+
 ``\OCP\Contacts\Events\ContactInteractedWithEvent``
 ***************************************************
 
@@ -435,6 +452,17 @@ Event emitted by apps whenever there was an interaction with another user or con
 It is an event that allows apps to notify other components about an interaction between two users. This can be used to build better recommendations and suggestions in user interfaces.
 
 Emitters should add at least one identifier (uid, email, federated cloud ID) of the recipient of the interaction.
+
+``\OCP\DB\Events\AddMissingIndicesEvent``
+************************************************
+
+.. versionadded:: 28
+
+Event to allow apps to register information about missing database indices
+
+This event will be dispatched for checking on the admin settings and when running
+``occ db:add-missing-indices`` which will then create those indices or can be used
+to generate the SQL statements for manual execution.
 
 ``\OCP\DirectEditing\RegisterDirectEditorEvent``
 ************************************************
@@ -541,6 +569,13 @@ Deprecated in 20.0.0 - it can't be guaranteed that this event is triggered in al
 .. versionadded:: 19
 
 Emitted before a system mail is sent. It can be used to alter the message.
+
+``OCP\Preview\BeforePreviewFetchedEvent``
+*****************************************
+
+.. versionadded:: 26
+
+Emitted before a file preview is being fetched. It can be used to block preview rendering by throwing a ``OCP\Files\NotFoundException``.
 
 ``\OCP\Security\CSP\AddContentSecurityPolicyEvent``
 ***************************************************
@@ -742,7 +777,7 @@ The hook logic should be in a separate class that is being registered in the `Ap
              */
             $container->registerService('UserHooks', function($c) {
                 return new UserHooks(
-                    $c->query('ServerContainer')->getUserManager()
+                    $c->get(\OCP\IUserManager::class)
                 );
             });
         }
@@ -804,7 +839,7 @@ The following hooks are available:
 Session
 ```````
 
-Injectable from the ServerContainer by calling the method **getUserSession()**.
+Injectable from the ServerContainer with the ``\OCP\IUserSession`` service.
 
 Hooks available in scope **\\OC\\User**:
 
@@ -822,7 +857,7 @@ Hooks available in scope **\\OC\\User**:
 UserManager
 ```````````
 
-Injectable from the ServerContainer by calling the method **getUserManager()**.
+Injectable from the ServerContainer with the ``\OCP\IUserManager`` service.
 
 Hooks available in scope **\\OC\\User**:
 

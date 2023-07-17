@@ -28,6 +28,14 @@ Nextcloud must be upgraded step by step:
   * **You cannot skip major releases.** Please re-run the upgrade until you have reached the highest available (or applicable) release.
   * Example: 18.0.5 -> 18.0.11 -> 19.0.5 -> 20.0.2
 
+**Wait for background migrations to finish after major upgrades**. After upgrading to a new major version, some migrations are scheduled to run 
+as a background job. If you plan to upgrade directly to another major version (e.g. 24 -> 25 -> 26) you need to make sure these
+migrations were executed before starting the next upgrade. To do so you should run the ``cron.php`` file 2-3 times, for example::
+
+ $ sudo -u www-data php -f /var/www/nextcloud/cron.php
+
+For more information about background jobs see :doc:`../configuration_server/background_jobs_configuration`.
+
 **Upgrading is disruptive**. Your Nextcloud server will be put into maintenance
 mode, so your users will be locked out until the upgrade is completed. Large
 installations may take several hours to complete the upgrade. Nevertheless usual
@@ -57,6 +65,10 @@ based updater but on the command line.
 
 Prerequisites
 -------------
+
+.. seealso::
+
+   If you upgrade from a previous major version please see :ref:`critical changes<critical-changes>` first.
 
 You should always maintain :doc:`regular backups <backup>` and make a fresh
 backup before every upgrade.

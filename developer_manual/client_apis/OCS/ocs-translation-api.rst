@@ -1,3 +1,5 @@
+.. _ocs-translation-api:
+
 ===================
 OCS Translation API
 ===================
@@ -79,3 +81,4 @@ Translate a string
     - Data:
         + ``text`` - Only provided in case of ``200 OK``, the translated string
         + ``message`` - Only provided when not ``200 OK``, an error message in the user's language, ready to be displayed
+        + ``from`` - The from language that was provided or detected from the input (can also be null or missing, when an error happens while detecting the language)
