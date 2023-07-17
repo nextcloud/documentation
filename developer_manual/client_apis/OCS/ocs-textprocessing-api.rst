@@ -1,14 +1,14 @@
 .. _ocs-languagemodel-api:
 
 ======================
-OCS Language Model API
+OCS TextProcessing API
 ======================
 
-.. versionadded:: 28
+.. versionadded:: 27.1.0
 
-The OCS Language Model API allows you to prompt large language models implemented by apps using  :ref:`the backend Language Model API<llm>`.
+The OCS Text processing API allows you to run text processing tasks, like prompting large language models implemented by apps using  :ref:`the backend Text Processing API<text_processing>`.
 
-The base URL for all calls to this API is: *<nextcloud_base_url>/ocs/v2.php/languagemodel/*
+The base URL for all calls to this API is: *<nextcloud_base_url>/ocs/v2.php/textprocessing/*
 
 All calls to OCS endpoints require the ``OCS-APIRequest`` header to be set to ``true``.
 
@@ -16,7 +16,7 @@ All calls to OCS endpoints require the ``OCS-APIRequest`` header to be set to ``
 Get available task types
 ------------------------
 
-.. versionadded:: 28
+.. versionadded:: 27.1.0
 
 * Method: ``GET``
 * Endpoint: ``/tasktypes``
@@ -28,7 +28,19 @@ Get available task types
 +----------------------+--------+---------------------------------------------------------------------------------------------------------------+
 | field                | type   | Description                                                                                                   |
 +----------------------+--------+---------------------------------------------------------------------------------------------------------------+
-|``types``             | array  | The list of supported task types, all existing types are: ``"free_prompt", "headline", "topics", "summary"``  |
+|``types``             | array  | A list of supported task types. See below.                                                                    |
++----------------------+--------+---------------------------------------------------------------------------------------------------------------+
+
+Task type fields:
+
++----------------------+--------+---------------------------------------------------------------------------------------------------------------+
+| field                | type   | Description                                                                                                   |
++----------------------+--------+---------------------------------------------------------------------------------------------------------------+
+|``name``              | string | The name of the task type in the user's language                                                              |
++----------------------+--------+---------------------------------------------------------------------------------------------------------------+
+|``description``       | string | A description of the task type in the user's language                                                         |
++----------------------+--------+---------------------------------------------------------------------------------------------------------------+
+|``id``                | string | The id of this task type                                                                                      |
 +----------------------+--------+---------------------------------------------------------------------------------------------------------------+
 
 Schedule a task
@@ -47,7 +59,7 @@ Schedule a task
 +-----------------+-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |``input``         | string      | The input text for the task                                                                                                                                                  |
 +-----------------+-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|``type`` | string | One of the available task types returned above. |
+|``type`` | string | Id of this task's type. |
 +-----------------+-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |``appId``   | string      | The id of the requesting app                                                                                                                                      |
 +-----------------+-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
