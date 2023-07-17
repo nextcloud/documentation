@@ -26,7 +26,7 @@ Digging deeper
    speech-to-text
    talk
    translation
-   language_model
+   text_processing
    two-factor-provider
    users
    dashboard

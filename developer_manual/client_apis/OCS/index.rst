@@ -17,4 +17,4 @@ The old documentation is still kept as it provides some additional documentation
    ocs-recommendations-api
    ocs-user-preferences-api
    ocs-translation-api
-   ocs-languagemodel-api
+   ocs-textprocessing-api
