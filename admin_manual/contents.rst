@@ -17,6 +17,7 @@ Table of contents
     groupware/index
     office/index
     reference/index
+    ai/index
     configuration_database/index
     configuration_mimetypes/index
     maintenance/index
