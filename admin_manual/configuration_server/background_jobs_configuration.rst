@@ -4,7 +4,7 @@ Background jobs
 A system like Nextcloud sometimes requires tasks to be done on a regular basis
 without the need for user interaction or hindering Nextcloud performance. For
 that purpose, as a system administrator, you can define background jobs (for
-example, database clean-ups) which are executed without any need for the user
+example, database clean-ups) which are executed without any need for user
 interaction.
 
 These jobs are typically referred to as *cron jobs*.  Cron jobs are commands or
@@ -69,7 +69,7 @@ access your server using the Internet. For example::
   URL to call: http[s]://<domain-of-your-server>/nextcloud/cron.php
 
 .. warning:: Since WebCron is still executed via the web, the webserver in most cases limits the
-   resources on the execution. To avoid interrupting inside jobs only 1 job is executed
+   resources on the execution. To avoid interrupts inside jobs only 1 job is executed
    per call. When webcron is called once every 5 minutes this limits your instance to
    288 background jobs per day, which is only suitable for very small instances.
    For bigger instances, it is recommended to use ``cron``.
