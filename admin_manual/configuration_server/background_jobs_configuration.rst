@@ -27,9 +27,9 @@ Parameters
 
 In the ``config/config.php`` file you can specify this config.
 Some background jobs only run once a day. When an hour is defined (timezone is UTC)
-for this config, the background jobs which advertise themselves as not time sensitive
+for this config, the background jobs which advertise themselves as not time-sensitive
 will be delayed during the "working" hours and only run in the 4 hours after the given
-time. This is e.g. used for activity expiration, suspicious login training and update checks.
+time. This is e.g. used for activity expiration, suspicious login training, and update checks.
 
 A value of 1 e.g. will only run these background jobs between 01:00am UTC and 05:00am UTC.
 
@@ -48,7 +48,7 @@ AJAX
 The AJAX scheduling method is the default option. Unfortunately, however, it is
 also the least reliable. Each time a user visits the Nextcloud page, a single
 background job is executed. The advantage of this mechanism is that it does not
-require access to the system nor registration with a third party service. The
+require access to the system nor registration with a third-party service. The
 disadvantage of this mechanism, when compared to the Webcron service, is that it
 requires regular visits to the page for it to be triggered.
 
@@ -68,11 +68,11 @@ access your server using the Internet. For example::
 
   URL to call: http[s]://<domain-of-your-server>/nextcloud/cron.php
 
-.. warning:: Since WebCron is still executed via web, the webserver in most case limits the
-   resources on the execution. To avoid interrupts inside jobs only 1 jobs is executed
+.. warning:: Since WebCron is still executed via the web, the webserver in most cases limits the
+   resources on the execution. To avoid interrupts inside jobs only 1 job is executed
    per call. When webcron is called once every 5 minutes this limits your instance to
-   288 background jobs per day, which is only suitable for very small instance.
-   For bigger instances it is recommended to use ``cron``.
+   288 background jobs per day, which is only suitable for very small instances.
+   For bigger instances, it is recommended to use ``cron``.
 
 .. _system-cron-configuration-label:
 
@@ -149,7 +149,7 @@ Note that the **.service** unit file does not need an ``[Install]`` section. Ple
   [Install]
   WantedBy=timers.target
 
-The important parts in the timer-unit are ``OnBootSec`` and ``OnUnitActiveSec``. ``OnBootSec`` will start the timer 5 minutes after boot, otherwise you would have to start it manually after every boot. ``OnUnitActiveSec`` will set a 5 minute timer after the service-unit was last activated.
+The important parts in the timer-unit are ``OnBootSec`` and ``OnUnitActiveSec``. ``OnBootSec`` will start the timer 5 minutes after boot, otherwise, you would have to start it manually after every boot. ``OnUnitActiveSec`` will set a 5-minute timer after the service-unit was last activated.
 
 Now all that is left is to start and enable the timer by running this command::
 
