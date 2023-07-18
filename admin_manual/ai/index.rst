@@ -60,7 +60,7 @@ The rating has four levels:
  * Green 🟢
 
 It is based on points from these factors:
- * Is the software (both for inferencing and training) open source?
+ * Is the software (both for inferencing and training) under a free and open source license?
  * Is the trained model freely available for self-hosting?
  * Is the training data available and free to use?
 
