@@ -37,7 +37,7 @@ Features
 --------
 
 Some of our AI features are realized as generic APIs that any app can provide an implementation for by registering a provider. These are
-Machine translation, Speech-To-Text and Text processing
+Machine translation, Speech-To-Text and Text processing.
 
 Machine translation
 ^^^^^^^^^^^^^^^^^^^
