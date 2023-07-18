@@ -51,7 +51,7 @@ As you can see in the table above we have multiple apps offering Speech-To-Text 
 Ethical AI Rating
 -----------------
 
-Until Hub 3, we succeeded in offering features without reliance on proprietary blobs or third party servers. Yet, while there is a large community developing ethical, safe and privacy-respecting technologies, there are many other relevant technologies users might want to use. We want to provide users with these cutting-edge technologies – but also be transparent. For some use cases, ChatGPT might be a reasonable solution, while for other data, it is paramount to have a local, on-prem, open solution. To differentiate these, we developed an Ethical AI Rating.
+Until Hub 3, we succeeded in offering features without relying on proprietary blobs or third party services. Yet, while there is a large community developing ethical, safe and privacy-respecting technologies, there are many other relevant technologies users might want to use. We want to provide users with these cutting-edge technologies – but also be transparent. For some use cases, ChatGPT might be a reasonable solution, while for more private, professional or sensitive data, it is paramount to have a local, on-prem, open solution. To differentiate these, we developed an Ethical AI Rating.
 
 The rating has four levels:
  * Red 🔴
