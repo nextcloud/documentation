@@ -4,7 +4,7 @@ Settings
 
 .. sectionauthor:: Carl Schwan <carl@carlschwan.eu>
 
-Each Nextcloud applications can provide both personal and admin settings. For this
+Each Nextcloud application can provide both personal and admin settings. For this
 you will need to create a section implementing `IIconSection`. This section will be
 used in the setting sidebar to create a new entry.
 
@@ -46,7 +46,7 @@ In our case we will create an admin section class in **<myapp>/lib/Sections/Note
     }
 
 
-The next steps is to fill the new admin section with am admin setting. For that, we create a new class
+The next step is to fill the new admin section with am admin setting. For that, we create a new class
 in *<myapp>/lib/Settings/NotesAdmin.php**.
 
 .. code-block:: php
@@ -139,7 +139,7 @@ and implement two additional methods.
 
         public function getAuthorizedAppConfig(): array {
             return [
-                // Allow list of regex that the user can modify with this setting.
+                // Allow a list of regex that the user can modify with this setting.
                 'notes' => ['/notes_.*/', '/my_notes_setting/'],
             ];
         }
@@ -151,7 +151,7 @@ setting with attribute.
 
 .. note::
 
-    The attribute is only available in Nextcloud 27 or later. In older versions the ``@AuthorizedAdminSetting(settings=OCA\NotesTutorial\Settings\NotesAdmin)`` annotation can be used.
+    The attribute is only available in Nextcloud 27 or later. In older versions, the ``@AuthorizedAdminSetting(settings=OCA\NotesTutorial\Settings\NotesAdmin)`` annotation can be used.
 
 .. code-block:: php
     :emphasize-lines: 8
@@ -172,7 +172,7 @@ setting with attribute.
 
 
 If you have several ``IDelegatedSettings`` classes that are needed for a function, simply add the annotation multiple times.
-them in the key "settings" and they must seperate with semi-colons.
+them in the key "settings" and they must separate with semi-colons.
 
 .. note::
 
