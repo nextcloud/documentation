@@ -20,7 +20,7 @@ For the settings to show up, three things are necessary:
 2. A template
 3. The implementing class specified in the app's info.xml
 
-Below is an example for an implementor of the ISettings interface. It is based
+Below is an example of an implementor of the ISettings interface. It is based
 on the survey_client solution.
 
 .. code-block:: php
@@ -136,7 +136,7 @@ of their own (see below), and also register into sections of other apps.
 the more on top it will appear, and vice versa. The result depends on the
 priorities of other settings.
 
-Nextcloud will look for the templates in a template folder located in your apps
+Nextcloud will look for the templates in a template folder located in your app's
 root directory. It should always end on .php, in this case ``templates/admin.php``
 would be the final relative path.
 
@@ -191,8 +191,8 @@ would be the final relative path.
     </div>
 
 Then, the implementing class should be added to the info.xml. Settings will be
-registered upon install and update. When settings are added to an existing,
-installed and enabled app, it should be made sure that the version is
+registered upon installation and update. When settings are added to an existing,
+installed, and enabled app, it should be made sure that the version is
 increased so Nextcloud can register the class. It is only possible to register
 one ISettings implementor.
 
@@ -204,7 +204,7 @@ Section
 -------
 
 It is also possible that an app registers its own section. This should be done
-only if there is not fitting corresponding section and the apps settings form
+only if there is no fitting corresponding section and the app's settings form
 takes a lot of screen estate. Otherwise, register to "additional".
 
 Basically, it works the same way as with the settings form. There are only two
@@ -235,7 +235,7 @@ An example implementation of the IIconSection interface:
             }
 
             /**
-             * Returns the ID of the section. It is supposed to be a lower case string
+             * Returns the ID of the section. It is supposed to be a lowercase string
              *
              * @returns string
              */
@@ -265,7 +265,7 @@ An example implementation of the IIconSection interface:
             }
 
             /**
-             * The relative path to a an icon describing the section
+             * The relative path to an icon describing the section
              * 
              * @return string 
              */
@@ -275,13 +275,13 @@ An example implementation of the IIconSection interface:
 
     }
 
-Also the section must be registered in the app's info.xml.
+Also, the section must be registered in the app's info.xml.
 
 Registering Settings and Sections
 ---------------------------------
 
 As mentioned already both Settings and Sections should be registered in the info.xml of your app
-This is rather straight forward as you can see in the code snipplet below
+This is rather straightforward as you can see in the code snippet below
 
 .. code-block:: xml
 
