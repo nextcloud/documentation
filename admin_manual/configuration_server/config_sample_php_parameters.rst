@@ -1499,6 +1499,21 @@ Supported conditions:
 
 Defaults to an empty array.
 
+log.backtrace
+^^^^^^^^^^^^^
+
+
+::
+
+	'log.backtrace' => false,
+
+Enables logging a backtrace with each log line. Normally, only Exceptions
+are carrying backtrace information which are logged automatically. This
+switch turns them on for any log message. Enabling this option will lead
+to increased log data size.
+
+Defaults to ``false``.
+
 logdateformat
 ^^^^^^^^^^^^^
 
