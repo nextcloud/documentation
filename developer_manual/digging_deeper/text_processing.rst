@@ -110,7 +110,7 @@ The corresponding ``MyPromptResultListener`` class can look like:
                 // store $output somewhere
             }
 
-            if ($event instanceof TaskSuccessfulEvent) {
+            if ($event instanceof TaskFailedEvent) {
                 $error = $event->getErrorMessage()
                 $userId = $event->getTask()->getUserId()
                 // Notify relevant user about failure
