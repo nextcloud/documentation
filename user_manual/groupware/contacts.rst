@@ -122,8 +122,65 @@ to create new address books, simply by specifying an address books name:
 .. figure:: ../images/contact_manageaddressbook.png
 	:alt: Add address book in the contacts settings
 
-The Contacts settings is also where you can share, export and delete address
-books. You will find the CardDAV URLs there.
+The Contacts settings is also where you can share, export and delete addressbooks. You will find the CardDAV URLs there.
 
 See :doc:`index` for more details about syncing your address books
 with iOS, macOS, Thunderbird and other CardDAV clients.
+
+
+Circles
+-------
+
+Informal collaboration takes place within organizations: an event to organize for a few weeks, a short ideation session between members from differents entities, workshops, a place to joke around and support team building, or simply in very organic organizations where formal structure is kept to a minimum.
+
+For all these reasons, Nextcloud supports Circles, a feature embedded in the Contacts app, where every user is able to create its own circle, a user-defined aggregate of users. Circles can be used later on to share files and folders, added to Talk conversations, like a regular group.
+
+.. figure:: ../images/circle.png
+	:alt: Circle in the Contacts app left menu
+
+Create a circle
+~~~~~~~~~~~~~~~
+
+In the left menu, click on the + next to Circles.
+Set a circle name
+Landing on the circle configuration screen, you can:
+- add users to your circle
+- clicking on the three dot menu next to a user allow you to modify its role within the circle.
+
+Circle roles
+~~~~~~~~~~~~
+
+Circles support 4 types of roles:
+- Member
+- Moderator
+- Admin can configure circle options (+moderator permissions)
+- Owner
+
+**Member**  
+
+Member is the role with the lowest permissions. A member can only access the resources shared with the circle, and view the members of the circle.
+
+**Moderator**  
+
+In addition to member permissions, a moderator can invite, confirm invitations and manage members of the circle.
+
+**Admin**  
+
+In addition to moderator permissions, an admin can configure circle options.
+
+**Owner**  
+
+In addition to admin permissions, an owner can transfer the circle ownership to another member of the circle. There can be only one single owner per circle.
+
+Add members to a circle
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Users, groups, or other circles can be added as members to a circle.
+For a group or a circle, the role applies to all members of the group or circle.
+
+**Be careful when adding other circles as member, as doing this too much can have an heavy impact on the overall performance of the system.**
+
+Circle options
+~~~~~~~~~~~~~~
+
+Various self-explanatory options are available to configure a circle, to manage invites and membership, visibility of the circle, allowance of other circle membership and password protection.
