@@ -1,0 +1,334 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023 Nextcloud GmbH
+# This file is distributed under the same license as the Nextcloud latest User Manual package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Иван Пешић, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Nextcloud latest User Manual latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-01 16:07+0000\n"
+"PO-Revision-Date: 2019-11-07 20:29+0000\n"
+"Last-Translator: Иван Пешић, 2023\n"
+"Language-Team: Serbian (https://app.transifex.com/nextcloud/teams/64236/sr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sr\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: ../../files/encrypting_files.rst:3
+msgid "Encrypting your Nextcloud files on the server"
+msgstr "Шифровање ваших фајлова на Nextcloud серверу"
+
+#: ../../files/encrypting_files.rst:5
+msgid ""
+"Nextcloud includes a server side Encryption app, and when it is enabled by "
+"your Nextcloud administrator all of your Nextcloud data files are "
+"automatically encrypted on the server. Encryption is server-wide, so when it"
+" is enabled you cannot choose to keep your files unencrypted. You don't have"
+" to do anything special, as it uses your Nextcloud login as the password for"
+" your unique private encryption key. Just log out and in and manage and "
+"share your files as you normally do, and you can still change your password "
+"whenever you want."
+msgstr ""
+"Nextcloud поседује апликацију за шифровање на серверској страни, па када је "
+"ваш Nextcloud администратор укључи, сви ваши Nextcloud подаци се аутоматски "
+"шифрују на серверу. Шифровање важи за цео сервер, тако да када се укључи "
+"немате могућност избора да ваши фајлови остану нешифровани. Није потребно да"
+" урадите било шта посебно, јер апликација користи ваше Nextcloud име за "
+"пријаву као лозинку за ваш јединствени приватни кључ за шифровање. "
+"Једноставно се одјавите и поново пријавите и управљајте фајловима и делите "
+"их као што сте то и раније чинили, и још увек можете по вољи да промените "
+"своју лозинку."
+
+#: ../../files/encrypting_files.rst:14
+msgid ""
+"Its main purpose is to encrypt files on remote storage services that are "
+"connected to your Nextcloud server. This is an easy and seamless way to "
+"protect your files on remote storage. You can share your remote files "
+"through Nextcloud in the usual way, however you cannot share your encrypted "
+"files directly from the remote service you are using, because the encryption"
+" keys are stored on your Nextcloud server, and are never exposed to outside "
+"service providers."
+msgstr ""
+"Њена главна сврха је да шифрује фајлове на сервисима удаљених складишта које"
+" сте повезали са својим Nextcloud сервером. Ово је једноставан и беспрекоран"
+" начин за заштиту ваших фајлова на удаљеном складишту. Ваше удаљене фајлове "
+"можете да делите помоћу Nextcloud на уобичајен начин, међутим, шифроване "
+"фајлове не можете директно да делите са удаљеног сервиса који користите, јер"
+" су кључеви за шифровање смештени на вашем Nextcloud серверу и никад се не "
+"откривају спољним пружаоцима услуга."
+
+#: ../../files/encrypting_files.rst:22
+msgid ""
+"If your Nextcloud server is not connected to any remote storage services, "
+"then it is better to use some other form of encryption such as file-level or"
+" whole disk encryption. Because the keys are kept on your Nextcloud server, "
+"it is possible for your Nextcloud administrator to snoop in your files, and "
+"if the server is compromised the intruder may get access to your files. "
+"(Read `Encryption in Nextcloud <https://nextcloud.com/blog/encryption-in-"
+"nextcloud/>`_ to learn more.)"
+msgstr ""
+"Ако ваш Nextcloud сервер није повазан ни са једним сервисом удаљеног "
+"складишта, онда је боље да користите неки други облик шифровања као што је "
+"шифровање на нивоу фајла или шифровање комплетног диска. Пошто се кључеви "
+"чувају на вашем Nextcloud серверу, ваш Nextcloud администратор може да "
+"проњучка по вашим фајловима, а ако се сервер компромитује провалник може да "
+"добије приступ вашим фајловима. (Да бисте сазнали више, прочитајте "
+"`Шифровање у Nextcloud <https://nextcloud.com/blog/encryption-in-"
+"nextcloud/>`_.)"
+
+#: ../../files/encrypting_files.rst:31
+msgid "Encryption FAQ"
+msgstr "ЧПП у вези шифровања"
+
+#: ../../files/encrypting_files.rst:34
+msgid "How can encryption be disabled?"
+msgstr "Како може да се искључи шифровање?"
+
+#: ../../files/encrypting_files.rst:36
+msgid ""
+"The only way to disable encryption is to run the `\"decrypt all\" "
+"<https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/occ_command.html#encryption-"
+"label>`_ script, which decrypts all files and disables encryption."
+msgstr ""
+"Једини начин да се искључи шифровање је да се изврши скрипта `„decrypt all” "
+"<https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/occ_command.html#encryption-"
+"label>`_, која дешифрује све фајлове и искључује шифровање."
+
+#: ../../files/encrypting_files.rst:43
+msgid "Is it possible to disable encryption with the recovery key?"
+msgstr "Да ли је могуће да се искључи шифровање кључем за опоравак?"
+
+#: ../../files/encrypting_files.rst:45
+msgid ""
+"Yes, *if* every user uses the `file recovery key "
+"<https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-"
+"users-file-recovery-keys>`_, `\"decrypt all\" "
+"<https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/occ_command.html#encryption-"
+"label>`_ will use it to decrypt all files."
+msgstr ""
+"Да, *ако* сваки корисник употребљава `кључ за опоравак фајла "
+"<https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-"
+"users-file-recovery-keys>`_, `„decrypt all” "
+"<https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/occ_command.html#encryption-"
+"label>`_ скрипта ће га употребити да дешифрује све фајлове."
+
+#: ../../files/encrypting_files.rst:52
+msgid "Can encryption be disabled without the user's password?"
+msgstr "Да ли шифровање може да се искључи без лозинке корисника?"
+
+#: ../../files/encrypting_files.rst:54
+msgid ""
+"If you don't have the users password or `file recovery key "
+"<https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-"
+"users-file-recovery-keys>`_, then there is no way to decrypt all files. "
+"What's more, running it on login would be dangerous, because you would most "
+"likely run into timeouts."
+msgstr ""
+"Ако немате корисничке лозинке или `кључ за опоравак фајла "
+"<https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-"
+"users-file-recovery-keys>`_, не постоји начин да се дешифрују сви фајлови. "
+"Још горе, покретање приликом пријаве би било опасно, јер би највероватније "
+"дошло до истека времена."
+
+#: ../../files/encrypting_files.rst:62
+msgid "Is it planned to move this to the next user login or a background job?"
+msgstr ""
+"Да ли се планира да се ово премести на наредну пријаву корисника или у "
+"позадински посао?"
+
+#: ../../files/encrypting_files.rst:64
+msgid ""
+"If we did that, then we would need to store your login password in the "
+"database. This could be seen as a security issue, so nothing like that is "
+"planned."
+msgstr ""
+"Ако би то урадили, онда би вашу лозинку морали да сместимо у базу података. "
+"То може да се сматра за безбедносни пропуст, па се тако нешто не планира."
+
+#: ../../files/encrypting_files.rst:68
+msgid "Is group Sharing possible with the recovery key?"
+msgstr "Да ли је могуће групно дељење кључем за опоравак?"
+
+#: ../../files/encrypting_files.rst:70
+msgid ""
+"If you mean adding users to groups and make it magically work? No. This only"
+" works with the master key."
+msgstr ""
+"Ако мислите на додавање корисника у групе, па да неком чаролијом све "
+"функционише? Не. Ово функционише само са главним кључем."
+
+#: ../../files/encrypting_files.rst:74
+msgid "Using encryption"
+msgstr "Употреба шифровања"
+
+#: ../../files/encrypting_files.rst:76
+msgid ""
+"Nextcloud encryption is pretty much set it and forget it, but you have a few"
+" options you can use."
+msgstr ""
+"Nextcloud шифровање је углавном по принципу подеси и заборави, али постоји "
+"неколико опција које можете да користите."
+
+#: ../../files/encrypting_files.rst:79
+msgid ""
+"When your Nextcloud administrator enables encryption for the first time, you"
+" must log out and then log back in to create your encryption keys and "
+"encrypt your files. When encryption has been enabled on your Nextcloud "
+"server you will see a yellow banner on your Files page warning you to log "
+"out and then log back in:"
+msgstr ""
+"Када ваш Nextcloud администратор по први пут укључи шифровање, морате да се "
+"одјавите и поново пријавите да би се креирали ваши кључеви за шифровање и да"
+" се шифрују ваши фајлови. Када се на вашем Nextcloud серверу укључи "
+"шифровање, на страници Фајлови ћете видети жути банер који вас упозорава да "
+"се одјавите и поново пријавите:"
+
+#: ../../files/encrypting_files.rst:86
+msgid ""
+"When you log back in it takes a few minutes to work, depending on how many "
+"files you have, and then you are returned to your default Nextcloud page."
+msgstr ""
+"Када се поново пријавите, биће потребно неколико минута да се одради посао, "
+"у зависности од броја фајлова које имате, па се затим враћате на своју "
+"подрзумевану Nextcloud страницу."
+
+#: ../../files/encrypting_files.rst:92
+msgid ""
+"You must never lose your Nextcloud password, because you will lose access to"
+" your files. Though there is an optional recovery option that your Nextcloud"
+" administrator may enable; see the Recovery Key Password section (below) to "
+"learn about this."
+msgstr ""
+"Никада не смете да изгубите своју Nextcloud лозинку јер ћете у том случају "
+"да изгубите приступ својим фајловима. Мада постоји необавезна опција за "
+"опоравак коју Nextcloud администратор може да укључи; погледајте одељак "
+"Лозинка кључа за опоравак (испод) ако желите да сазнате више о овоме."
+
+#: ../../files/encrypting_files.rst:98
+msgid "Sharing encrypted files"
+msgstr "Дељење шифрованих фајлова"
+
+#: ../../files/encrypting_files.rst:100
+msgid ""
+"Only users who have private encryption keys have access to shared encrypted "
+"files and folders. Users who have not yet created their private encryption "
+"keys will not have access to encrypted shared files; they will see folders "
+"and filenames, but will not be able to open or download the files. They will"
+" see a yellow warning banner that says \"Encryption App is enabled but your "
+"keys are not initialized, please log-out and log-in again.\""
+msgstr ""
+"Приступ дељеним шифрованим фајловима и фолдерима имају само корисници који "
+"имају приватне кључеве за шифровање. Корисници који још увек нису креирали "
+"своје приватне кључеве за шифровање немају приступ шифрованим дељеним "
+"фајловима; они ће видети фолдере и имена фајлова, али неће моћи да их отворе"
+" или да преузму фајлове. Видеће жути банер упозорења који каже „Апликација "
+"за шифровање је укључена али ваши кључеви нису иницијализовани, молимо вас "
+"да се одјавите и поново пријавите.”"
+
+#: ../../files/encrypting_files.rst:107
+msgid ""
+"Share owners may need to re-share files after encryption is enabled; users "
+"trying to access the share will see a message advising them to ask the share"
+" owner to re-share the file with them. For individual shares, un-share and "
+"re-share the file. For group shares, share with any individuals who can't "
+"access the share. This updates the encryption, and then the share owner can "
+"remove the individual shares."
+msgstr ""
+"Власници дељења ће можда морати поново да поделе фајлове након уљкучивања "
+"шифровања; корисници који покушавају да приступе дељењу ће видети поруку "
+"која им саветује да се обрате власнику дељења и затраже од њега да фајл "
+"поново подели са њима. За појединачна дељења, укините дељење фајла па га "
+"поново поделите. За групна дељења, поделите са свим особама које не могу да "
+"приступе дељењу. Ово ажурира шифровање, па затим власник дељења може да "
+"уклони поједина дељења."
+
+#: ../../files/encrypting_files.rst:115
+msgid "Recovery key password"
+msgstr "Лозинка кључа опоравка"
+
+#: ../../files/encrypting_files.rst:117
+msgid ""
+"If your Nextcloud administrator has enabled the recovery key feature, you "
+"can choose to use this feature for your account. If you enable \"Password "
+"recovery\" the administrator can read your data with a special password. "
+"This feature enables the administrator to recover your files in the event "
+"you lose your Nextcloud password. If the recovery key is not enabled, then "
+"there is no way to restore your files if you lose your login password."
+msgstr ""
+"Ако је ваш Nextcloud администратор укључио могућност кључа за опоравак, онда"
+" можете да је користите за свој налог. Ако укључите „Опоравак лозинке” "
+"администратор може да прочита ваше податке помоћу специјалне лозинке. НА тај"
+" начин администратор има могучност да опорави ваше фајлове у случају да "
+"изгубите своју Nextcloud лозинку. Ако кључ за опоравак није укључен, онда не"
+" постоји начин да се ваши фајлови опораве у случају да изгубите своју "
+"лозинку за пријаву на систем."
+
+#: ../../files/encrypting_files.rst:127
+msgid "Files not encrypted"
+msgstr "Фајлови нису шифровани"
+
+#: ../../files/encrypting_files.rst:129
+msgid ""
+"Only the data in your files is encrypted, and not the filenames or folder "
+"structures. These files are never encrypted:"
+msgstr ""
+"Шифровани су само подаци у вашим фајловима, а не и имена фајлова или "
+"структура фолдера. Следећи фајлови се никада не шифрују:"
+
+#: ../../files/encrypting_files.rst:132
+msgid "Old files in the trash bin."
+msgstr "Стари фајлови у корпи за отпатке."
+
+#: ../../files/encrypting_files.rst:133
+msgid "Image thumbnails from the Gallery app."
+msgstr "Сличице слика из апликације Галерија."
+
+#: ../../files/encrypting_files.rst:134
+msgid "Previews from the Files app."
+msgstr "Прегледи из апликације Фајлови."
+
+#: ../../files/encrypting_files.rst:135
+msgid "The search index from the full text search app."
+msgstr "Индекс претраге из апликације за претрагу комплетног текста."
+
+#: ../../files/encrypting_files.rst:136
+msgid "Third-party app data"
+msgstr "Подаци апликација треће стране"
+
+#: ../../files/encrypting_files.rst:138
+msgid ""
+"Only those files that are shared with third-party storage providers can be "
+"encrypted, the rest of the files may not be encrypted."
+msgstr ""
+"Могу да се шифрују само они фајлови који се деле са пружаоцима услуге "
+"складиштења треће стране, остали фајлови не морају да се шифрују."
+
+#: ../../files/encrypting_files.rst:142
+msgid "Change private key password"
+msgstr "Промена лозинке приватног кључа"
+
+#: ../../files/encrypting_files.rst:144
+msgid ""
+"This option is only available if the encryption password has not been "
+"changed by the administrator, but only the log-in password. This can occur "
+"if your Nextcloud provider uses an external user back-end (for example, "
+"LDAP) and changed your login password using that back-end configuration. In "
+"this case, you can set your encryption password to your new login password "
+"by providing your old and new login password. The Encryption app works only "
+"if your login password and your encryption password are identical."
+msgstr ""
+"Ова опција је доступна само ако администратор није променио лозинку за "
+"шифровање, већ само лозинку за пријаву на систем. Ово може да се догоди ако "
+"ваш Nextcloud пружалац користи спољни кориснички позадински механизам (на "
+"пример, LDAP) и променио је вашу лозинку за пријаву користећи конфигурацију "
+"тог позадинског механизма. У том случају можете да поставите своју лозинку "
+"за шифровање на своју нову лозинку за пријаву на систем тако што наводите "
+"стару и нову лозинку за пријаву. Апликација за шифровање функционише само "
+"ако су ваша лозинка за пријаву и лозинка за шифровање идентичне."
