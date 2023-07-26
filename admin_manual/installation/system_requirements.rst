@@ -27,7 +27,8 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - PostgreSQL 10/11/12/13/14/15                                        |
 |                  | - SQLite (*only recommended for testing and minimal-instances*)       |
 +------------------+-----------------------------------------------------------------------+
-| Webserver        | - **Apache 2.4 with** ``mod_php`` **or** ``php-fpm`` (recommended)    |
+| Webserver        | - **Apache >= 2.4.54 with** ``mod_php`` **or** ``php-fpm``            |
+|                  |   (recommended)                                                       |
 |                  | - nginx with ``php-fpm``                                              |
 +------------------+-----------------------------------------------------------------------+
 | PHP Runtime      | - 8.0 (*deprecated*)                                                  |
