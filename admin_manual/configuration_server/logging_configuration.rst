@@ -151,7 +151,7 @@ If you wish to override this and log to syslog instead the following would be on
 Log level interaction
 ~~~~~~~~~~~~~~~~~~~~~
 
-If system ``loglevel`` in ``config.php`` is set to ``2`` or higher, audit logging needs to be triggered explicitly by adding the following setting to to ``config.php``:
+If system ``loglevel`` in ``config.php`` is set to ``2`` or higher, audit logging needs to be triggered explicitly by adding the following setting to ``config.php``:
 
 ::
 
