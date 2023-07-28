@@ -13,7 +13,6 @@ Overview
 The term "events" is a bit broad in Nextcloud and there are multiple ways of emitting them.
 
 * `OCP event dispatcher`_
-* `Symfony event dispatcher`_
 * `Hooks`_
 * `Public Emitter`_
 
@@ -301,6 +300,13 @@ This event is triggered when a user deletes a card in an address-book.
 
 This event is triggered when a user updates a card in an address-book.
 
+``OCA\DAV\Events\SabrePluginAddEvent``
+**************************************
+
+.. versionadded:: 28
+
+This event is triggered during the setup of the SabreDAV server to allow the registration of additional plugins.
+
 ``\OCA\DAV\Events\SabrePluginAuthInitEvent``
 ********************************************
 
@@ -308,8 +314,8 @@ This event is triggered when a user updates a card in an address-book.
 
 This event is triggered during the setup of the SabreDAV server to allow the registration of additional authentication backends.
 
-``OCP\BeforeSabrePubliclyLoadedEvent``
-**************************************
+``\OCP\BeforeSabrePubliclyLoadedEvent``
+***************************************
 
 .. versionadded:: 26
 
@@ -392,6 +398,13 @@ This event is triggered right after the LDAP user backend is registered.
 
 This event is triggered whenever the viewer is loaded and extensions should be loaded.
 
+``\OCP\Accounts\UserUpdatedEvent``
+**********************************
+
+.. versionadded:: 28
+
+This event is triggered when the account data of a user was updated.
+
 ``\OCP\App\Events\AppEnableEvent``
 **********************************
 
@@ -427,6 +440,31 @@ Emitted before the rendering step of each TemplateResponse. The event holds a fl
 
 Emitted when the authentication fails, but only if the login name can be associated with an existing user.
 
+``\OCP\Authentication\TwoFactorAuth\TwoFactorProviderChallengeFailed``
+**********************************************************************
+
+.. versionadded:: 28
+
+``\OCP\Authentication\TwoFactorAuth\TwoFactorProviderChallengePassed``
+**********************************************************************
+
+.. versionadded:: 28
+
+``\OCP\Authentication\TwoFactorAuth\TwoFactorProviderForUserRegistered``
+************************************************************************
+
+.. versionadded:: 28
+
+``\OCP\Authentication\TwoFactorAuth\TwoFactorProviderForUserUnregistered``
+**************************************************************************
+
+.. versionadded:: 28
+
+``\OCP\Authentication\TwoFactorAuth\TwoFactorProviderUserDeleted``
+******************************************************************
+
+.. versionadded:: 28
+
 ``\OCP\Authentication\TwoFactorAuth\TwoFactorProviderDisabled``
 ***************************************************************
 
@@ -439,8 +477,13 @@ Emitted when the authentication fails, but only if the login name can be associa
 
 Event emitted when apps might render references like link previews or smart picker widgets.
 
-This can be used to inject scripts for extending that. Further details can be found in the 
+This can be used to inject scripts for extending that. Further details can be found in the
 :ref:`Reference providers` deep dive.
+
+``\OCP\Comments\CommentsEntityEvent``
+*************************************
+
+.. versionadded:: 28
 
 ``\OCP\Contacts\Events\ContactInteractedWithEvent``
 ***************************************************
@@ -453,8 +496,19 @@ It is an event that allows apps to notify other components about an interaction 
 
 Emitters should add at least one identifier (uid, email, federated cloud ID) of the recipient of the interaction.
 
+``\OCP\DB\Events\AddMissingColumnsEvent``
+*****************************************
+
+.. versionadded:: 28
+
+Event to allow apps to register information about missing database columns
+
+This event will be dispatched for checking on the admin settings and when running
+``occ db:add-missing-columns`` which will then create those columns or can be used
+to generate the SQL statements for manual execution.
+
 ``\OCP\DB\Events\AddMissingIndicesEvent``
-************************************************
+*****************************************
 
 .. versionadded:: 28
 
@@ -462,6 +516,17 @@ Event to allow apps to register information about missing database indices
 
 This event will be dispatched for checking on the admin settings and when running
 ``occ db:add-missing-indices`` which will then create those indices or can be used
+to generate the SQL statements for manual execution.
+
+``\OCP\DB\Events\AddMissingPrimaryKeyEvent``
+********************************************
+
+.. versionadded:: 28
+
+Event to allow apps to register information about missing database primary keys
+
+This event will be dispatched for checking on the admin settings and when running
+``occ db:add-missing-primary-keys`` which will then create those indices or can be used
 to generate the SQL statements for manual execution.
 
 ``\OCP\DirectEditing\RegisterDirectEditorEvent``
@@ -501,10 +566,20 @@ Event to allow to register the direct editor.
 
 .. versionadded:: 18
 
+``\OCP\Files\Events\NodeAddedToFavorite``
+*****************************************
+
+.. versionadded:: 28
+
 ``\OCP\Files\Events\NodeRemovedFromCache``
 ******************************************
 
 .. versionadded:: 18
+
+``\OCP\Files\Events\NodeRemovedFromFavorite``
+*********************************************
+
+.. versionadded:: 28
 
 ``\OCP\Group\Events\BeforeGroupCreatedEvent``
 *********************************************
@@ -570,8 +645,8 @@ Deprecated in 20.0.0 - it can't be guaranteed that this event is triggered in al
 
 Emitted before a system mail is sent. It can be used to alter the message.
 
-``OCP\Preview\BeforePreviewFetchedEvent``
-*****************************************
+``\OCP\Preview\BeforePreviewFetchedEvent``
+******************************************
 
 .. versionadded:: 26
 
@@ -603,15 +678,45 @@ WARNING: Using this API incorrectly may make the instance more insecure. Do thin
 
 Event that allows to register a feature policy header to a request.
 
+``\OCP\Share\Events\BeforeShareCreatedEvent``
+*********************************************
+
+.. versionadded:: 28
+
+``\OCP\Share\Events\BeforeShareDeletedEvent``
+*********************************************
+
+.. versionadded:: 28
+
+``\OCP\Share\Events\ShareAcceptedEvent``
+****************************************
+
+.. versionadded:: 28
+
 ``\OCP\Share\Events\ShareCreatedEvent``
 ***************************************
 
 .. versionadded:: 18
 
+``\OCP\Share\Events\ShareDeletedEvent``
+***************************************
+
+.. versionadded:: 21
+
+``\OCP\Share\Events\ShareDeletedFromSelfEvent``
+***********************************************
+
+.. versionadded:: 28
+
 ``\OCP\Share\Events\VerifyMountPointEvent``
 *******************************************
 
 .. versionadded:: 19
+
+``\OCP\SystemTag\SystemTagsEntityEvent``
+****************************************
+
+.. versionadded:: 28
 
 ``\OCP\User\Events\BeforeUserLoggedInWithCookieEvent``
 ******************************************************
@@ -687,6 +792,11 @@ Emitted before a user is logged out.
 
 .. versionadded:: 18
 
+``\OCP\User\Events\UserFirstTimeLoggedInEvent``
+***********************************************
+
+.. versionadded:: 28
+
 ``\OCP\User\Events\UserLiveStatusEvent``
 ****************************************
 
@@ -725,14 +835,6 @@ Emitted when the workflow engine settings page is loaded.
 ***********************************************
 
 .. versionadded:: 18
-
-Symfony event dispatcher
-------------------------
-
-.. warning:: Using the Symfony event dispatcher mechanism is discouraged. Use the `OCP event dispatcher`_ abstraction instead.
-
-tbd
-
 
 Hooks
 -----
