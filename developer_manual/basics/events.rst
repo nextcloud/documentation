@@ -464,6 +464,20 @@ This event will be dispatched for checking on the admin settings and when runnin
 ``occ db:add-missing-indices`` which will then create those indices or can be used
 to generate the SQL statements for manual execution.
 
+``\OCP\DB\QueryBuilder\Events\BeforeQueryExecutedEvent``
+************************************************
+
+.. versionadded:: 28
+
+This event is triggered immediately before the execution of SQL statements. It provides access to the `\OC\DB\QueryBuilder\QueryBuilder` object and allows for the inspection and/or modification of the query.
+
+``\OCP\DB\QueryBuilder\Events\QueryExecutedEvent``
+************************************************
+
+.. versionadded:: 28
+
+This event is triggered immediately after the execution of SQL statements. It provides access to the `\OC\DB\QueryBuilder\QueryBuilder` object and allows for the inspection and/or modification of the result.
+
 ``\OCP\DirectEditing\RegisterDirectEditorEvent``
 ************************************************
 
