@@ -292,7 +292,12 @@ the drive:
 
    The computer maps the files of your Nextcloud account to the drive letter Z.
 
-   .. note:: Though not recommended, you can also mount the Nextcloud server using HTTP, leaving the connection unencrypted.
+.. note:: If you get the following error
+     ``System error 67 has occurred. The network name cannot be found.``,
+     open the **Services** app and make sure that the ``WebClient`` 
+     service is running and started automatically at startup.
+     
+.. note:: Though not recommended, you can also mount the Nextcloud server using HTTP, leaving the connection unencrypted.
      
      If you plan to use HTTP connections on devices while in a public place, we strongly recommend using a VPN tunnel to provide the necessary security.
 
