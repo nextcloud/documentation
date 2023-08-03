@@ -568,7 +568,7 @@ To connect to Nextcloud:
 * Press 'Session' in the menu
 * Press the 'New Session' menu option
 * Set the 'File protocol' dropdown to WebDAV
-* Set the 'Encryption' dropdown to TSL/SSL Implicit encryption
+* Set the 'Encryption' dropdown to TLS/SSL Implicit encryption
 * Fill in the hostname field: ``example.com``
 * Fill in the username field: ``NEXTCLOUDUSERNAME``
 * Fill in the password field: ``NEXTCLOUDPASSWORD``
