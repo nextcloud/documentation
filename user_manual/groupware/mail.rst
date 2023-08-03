@@ -46,7 +46,8 @@ Your account settings such as:
 2. Signature
 3. Default Folders
 4. Autoresponder
-5. Trusted server ect
+5. Trusted senders
+6. etc
 
 Can be found in the action menu of a mail account. There you can edit, add or remove settings depending on your need.
 
