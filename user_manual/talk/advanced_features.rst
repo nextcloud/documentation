@@ -103,7 +103,7 @@ From the sidebar header
 
 - **Start and stop the breakout rooms**: this will move all the users in the parent conversation to their respective breakout rooms.
 - **Broadcast a message to all the rooms**: this will send a message to all the rooms at the same time.
-- **Make changes to the assigned participants**: this will open the participants editor where you can change which participans are assigned to which breakout room. From this dialog it's also possible to delete the breakout rooms.
+- **Make changes to the assigned participants**: this will open the participants editor where you can change which participants are assigned to which breakout room. From this dialog it's also possible to delete the breakout rooms.
 
 .. image:: images/talk-breakout-rooms-sidebar-header.png
 
