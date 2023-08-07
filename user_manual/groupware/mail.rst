@@ -28,7 +28,7 @@ Scheduled messages
 .. figure:: images/scheduled-msg.png
 
 Priority inbox
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
 Priority inbox has 2 section *Important* and *Others*.
 Messages will automatically be marked as important based on which messages you interacted with or marked as important. In the beginning you might have to manually change the importance to teach the system, but it will improve over time.
 
@@ -39,7 +39,7 @@ All inboxes
 All messages from all the accounts you have logged in, will be shown here chronologically.
 
 Account settings
-~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
 Your account settings such as:
 
 1. Aliases
@@ -50,6 +50,21 @@ Your account settings such as:
 6. ..and more
 
 Can be found in the action menu of a mail account. There you can edit, add or remove settings depending on your need.
+
+Move messages to Junk folder
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   .. versionadded:: 3.4
+
+Mail can move a message to a different folder when it is marked as junk.
+
+1) Visit Account settings
+2) Go to Default folders
+3) Check that a folder is selected for the junk messages
+4) Go to Junk settings
+5) Click Move messages to Junk folder
+
+   .. figure:: images/mail_move-message-to-junk-folder.png
 
 Account delegation
 ~~~~~~~~~~~~~~~~~~
