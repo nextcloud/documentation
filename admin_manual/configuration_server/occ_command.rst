@@ -1130,6 +1130,70 @@ Remove a certificate::
 
  sudo -u www-data php occ security:certificates:remove [certificate name]
 
+Status
+------
+
+Use the status command to retrieve information about the current installation::
+
+ $ sudo -u www-data php occ status
+   - installed: true
+   - version: 25.0.2.3
+   - versionstring: 25.0.2
+   - edition:
+   - maintenance: false
+   - needsDbUpgrade: false
+   - productname: Nextcloud
+   - extendedSupport: false
+
+This information can also be formatted via JSON instead of plain text::
+
+ $ php occ status --output=json_pretty
+ {
+     "installed": true,
+     "version": "25.0.2.3",
+     "versionstring": "25.0.2",
+     "edition": "",
+     "maintenance": false,
+     "needsDbUpgrade": false,
+     "productname": "Nextcloud",
+     "extendedSupport": false
+ }
+
+Status return code
+^^^^^^^^^^^^^^^^^^
+
+And finally, the ``-e`` (for exit code) parameter can be used to check
+the state of the nextcloud installation via return code::
+
+ $ php occ status -e
+ $ echo $?
+ 0
+ $ php occ maintenance:mode --on
+ Maintenance mode enabled
+ $ php occ status -e
+ $ echo $?
+ 1
+ $ php occ maintenance:mode --off
+ Maintenance mode disabled
+ $ php occ status -e
+ $ echo $?
+ 0
+
+Note that by default there is no output when run with ``-e``. This is
+intentional, so it can be used in scripts, monitoring checks, and systemd
+units.
+
++-------------+--------------------------------------------------------+
+| Return code | Description                                            |
++=============+========================================================+
+| 0           | normal operation                                       |
++-------------+--------------------------------------------------------+
+| 1           | maintenance mode is enabled; the instance is currently |
+|             | unavailable to users.                                  |
++-------------+--------------------------------------------------------+
+| 2           | ``php occ upgrade`` is required                        |
++-------------+--------------------------------------------------------+
+
 .. _trashbin_label:
 
 Trashbin

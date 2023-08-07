@@ -127,10 +127,13 @@ This approach requires two files: **nextcloudcron.service** and **nextcloudcron.
 
   [Service]
   User=www-data
+  ExecCondition=php -f /var/www/nextcloud/occ status -e
   ExecStart=/usr/bin/php -f /var/www/nextcloud/cron.php
   KillMode=process
 
 Replace the user ``www-data`` with the user of your http server and ``/var/www/nextcloud/cron.php`` with the location of **cron.php** in your nextcloud directory.
+
+The `ExecCondition` checks that the nextcloud instance is operating normally before running the background job, and skips it if otherwise.
 
 The ``KillMode=process`` setting is necessary for external programs that are started by the cron job to keep running after the cron job has finished.
 
