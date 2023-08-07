@@ -10,6 +10,7 @@ The old documentation is still kept as it provides some additional documentation
 
 .. toctree::
 
+   ocs-openapi
    ocs-api-overview
    ocs-share-api
    ocs-sharee-api
