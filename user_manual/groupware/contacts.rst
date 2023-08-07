@@ -133,7 +133,7 @@ Circles
 
 Informal collaboration takes place within organizations: an event to organize for a few weeks, a short ideation session between members from differents entities, workshops, a place to joke around and support team building, or simply in very organic organizations where formal structure is kept to a minimum.
 
-For all these reasons, Nextcloud supports Circles, a feature embedded in the Contacts app, where every user is able to create its own circle, a user-defined aggregate of users. Circles can be used later on to share files and folders, added to Talk conversations, like a regular group.
+For all these reasons, Nextcloud supports Circles, a feature embedded in the Contacts app, where every user is able to create its own circle, a user-defined aggregate of accounts. Circles can be used later on to share files and folders, added to Talk conversations, like a regular group.
 
 .. figure:: ../images/circle.png
 	:alt: Circle in the Contacts app left menu
@@ -144,7 +144,7 @@ Create a circle
 In the left menu, click on the + next to Circles.
 Set a circle name
 Landing on the circle configuration screen, you can:
-- add users to your circle
+- add members to your circle
 - clicking on the three dot menu next to a user allow you to modify its role within the circle.
 
 Circle roles
@@ -175,10 +175,8 @@ In addition to admin permissions, an owner can transfer the circle ownership to 
 Add members to a circle
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Users, groups, or other circles can be added as members to a circle.
+Local accounts, groups, email addresses or other circles can be added as members to a circle.
 For a group or a circle, the role applies to all members of the group or circle.
-
-**Be careful when adding other circles as member, as doing this too much can have an heavy impact on the overall performance of the system.**
 
 Circle options
 ~~~~~~~~~~~~~~
