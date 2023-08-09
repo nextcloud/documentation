@@ -88,6 +88,15 @@ setting the ``enable_previews`` switch to ``false`` in ``config.php``. As an
 administrator you are also able to manage which preview providers are enabled by 
 modifying the ``enabledPreviewProviders`` option switch.
 
+Disable Debug Mode
+^^^^^^^^^^^^^^^^^^
+
+Verify that ``debug`` is ``false`` in your ``config.php``. The default is ``false`` 
+in new installations (or when not specified). It should not be enabled in production 
+environments or outside of targeted troubleshooting situations. When enabled, things 
+like server-wide WebDAV collection listings are permitted. It is intended for local 
+development and usage in controlled environments only.
+
 .. _use_https_label:
 
 Use HTTPS

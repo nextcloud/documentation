@@ -9,7 +9,8 @@ and seamlessly from within Nextcloud.
 Server-side encryption separates encryption of local and remote storage. 
 This allows you to encrypt remote storage, such as Dropbox and 
 Google, without having to also encrypt your home storage on your Nextcloud 
-server.
+server (en- or disable the checkbox "enabling encryption on your home 
+storage" in the **Server-side encryption** section of your Admin page.)
 
 .. note:: Nextcloud supports Authenticated Encryption for all
    newly encrypted files. See https://hackerone.com/reports/108082 for more 

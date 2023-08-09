@@ -2,24 +2,32 @@
 Installation on Linux
 =====================
 
+There are multiple ways of installing Nextcloud depending on your preferences, requirements and goals.
+
+If you prefer an automated installation, you have the option to:
+
+* use the `official Nextcloud AIO Docker-based image <https://github.com/nextcloud/all-in-one#nextcloud-all-in-one>`_. Nextcloud AIO stands for Nextcloud All-in-One and provides easy deployment and maintenance with most features included in this one Nextcloud instance. It includes Office, a turnkey Backup solution, Imaginary (for previews of heic, heif, illustrator, pdf, svg, tiff and webp) and more.
+* use the `community Snap Package <https://snapcraft.io/nextcloud>`_. This includes a full production-ready stack, will maintain your HTTPS certificates for you, and will automatically update as needed to stay secure.
+* use the `community Nextcloud VM Appliance <https://github.com/nextcloud/vm/>`_ (aka Nextcloud Virtual Machine or NcVM). This helps you create a personal or corporate Nextcloud Server faster and easier. It can be used install directly on a clean Ubuntu Server or downloaded as a fully functioning VM.
+* use the `community NextcloudPi scripts <https://nextcloudpi.com/>`_ (based on Debian). It will setup everything for you and include scripts for automated installation of apps like: Collabora, OnlyOffice, Talk and so on.
+* use the `community Nextcloud Docker image <https://hub.docker.com/_/nextcloud/>`_. This image is designed to be used in a micro-service environment. There are two versions of the image you can choose from: the Apache one contains a full Nextcloud installation including an Apache web server. The second option is an FPM installation and runs a FastCGI process that serves your Nextcloud installation (you will need to supply your preferred web, database and other desired supplementary services).
+
+.. note:: Please note that the community options are not officially supported by Nextcloud GmbH.
+
 In case you prefer installing from the source tarball, you can setup Nextcloud
 from scratch using a classic LAMP stack (Linux, Apache, MySQL/MariaDB, PHP).
 This document provides a complete walk-through for installing Nextcloud on
 Ubuntu 18.04 LTS Server with Apache and MariaDB, using `the Nextcloud .tar
 archive <https://nextcloud.com/install/>`_. This method is recommended to install Nextcloud.
 
-.. note:: Admins of SELinux-enabled distributions such as CentOS, Fedora, and
-   Red Hat Enterprise Linux may need to set new rules to enable installing
-   Nextcloud. See :ref:`selinux_tips_label` for a suggested configuration.
-
-
-If you prefer a more automated installation of Nextcloud and there are no packages for your Linux distribution, you have the option to
-install the community `Snap Package <https://snapcraft.io/nextcloud>`_. This includes a full production-ready stack, will maintain your HTTPS certificates for you, and will automatically update as needed to stay secure. You can also use the `Nextcloud VM scripts <https://github.com/nextcloud/vm/>`_ to install directly on a clean Ubuntu Server or `NextcloudPi scripts <https://nextcloudpi.com/>`_ (similar project based on Debian). It will setup everything for you and include scripts for automated installation of apps like; Collabora, OnlyOffice, Talk and so on. Please note that those three options are not officially supported by Nextcloud GmbH.
-
-
 This installation guide is giving a general overview of required dependencies and their configuration. For a distribution specific setup guide have a look at the :doc:`./example_ubuntu` and :doc:`./example_centos`.
 
 .. _prerequisites_label:
+
+
+.. note:: Admins of SELinux-enabled distributions such as CentOS, Fedora, and
+   Red Hat Enterprise Linux may need to set new rules to enable installing
+   Nextcloud. See :ref:`selinux_tips_label` for a suggested configuration.
 
 Prerequisites for manual installation
 -------------------------------------

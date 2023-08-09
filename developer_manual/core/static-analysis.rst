@@ -7,6 +7,8 @@ PHP static analysis
 
 In the server repository psalm is used for static analysis of the PHP code.
 
+.. _psalm-php-extensions:
+
 Required PHP extensions
 ^^^^^^^^^^^^^^^^^^^^^^^
 

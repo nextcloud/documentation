@@ -11,7 +11,7 @@ Brute force protection is enabled by default on Nextcloud.
 How it works
 ------------
 
-The brute force protection is easiest to see in action at the login page.
+The brute force protection is easiest to see in action on the login page.
 If you try to log in the first time with an invalid username and/or password you
 will not notice anything. But if you do this a few times you start to notice
 that the verification of the login is taking longer each time. This is the
@@ -20,7 +20,7 @@ brute force protection kicking in.
 The maximum delay is 25 seconds.
 
 After a successful login the attempts will be cleared. And once a user is
-properly authenticated they will not longer be hit by the delay.
+properly authenticated they will no longer be hit by the delay.
 
 
 Troubleshooting

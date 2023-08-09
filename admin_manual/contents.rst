@@ -6,7 +6,7 @@ Table of contents
     :maxdepth: 2
 
     index
-    release_notes
+    release_notes/index
     release_schedule
     installation/index
     configuration_server/index
@@ -17,6 +17,7 @@ Table of contents
     groupware/index
     office/index
     reference/index
+    ai/index
     configuration_database/index
     configuration_mimetypes/index
     maintenance/index

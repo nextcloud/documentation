@@ -161,6 +161,17 @@ This output option is available on all list and list-like commands:
 ``status``, ``check``, ``app:list``, ``config:list``, ``encryption:status``
 and ``encryption:list-modules``
 
+Environment variables
+^^^^^^^^^^^^^^^^^^^^^
+
+``sudo`` does not forward environment variables by default. Put the variables before the ``php`` command::
+
+  sudo -u www-data NC_debug=true php occ status
+
+Alternatively, you can ``export`` the variable or use the ``-E`` switch for ``sudo``::
+
+  NC_debug=true sudo -E -u www-data php occ status
+
 Enabling autocompletion
 -----------------------
 
@@ -1119,6 +1130,70 @@ Remove a certificate::
 
  sudo -u www-data php occ security:certificates:remove [certificate name]
 
+Status
+------
+
+Use the status command to retrieve information about the current installation::
+
+ $ sudo -u www-data php occ status
+   - installed: true
+   - version: 25.0.2.3
+   - versionstring: 25.0.2
+   - edition:
+   - maintenance: false
+   - needsDbUpgrade: false
+   - productname: Nextcloud
+   - extendedSupport: false
+
+This information can also be formatted via JSON instead of plain text::
+
+ $ php occ status --output=json_pretty
+ {
+     "installed": true,
+     "version": "25.0.2.3",
+     "versionstring": "25.0.2",
+     "edition": "",
+     "maintenance": false,
+     "needsDbUpgrade": false,
+     "productname": "Nextcloud",
+     "extendedSupport": false
+ }
+
+Status return code
+^^^^^^^^^^^^^^^^^^
+
+And finally, the ``-e`` (for exit code) parameter can be used to check
+the state of the nextcloud installation via return code::
+
+ $ php occ status -e
+ $ echo $?
+ 0
+ $ php occ maintenance:mode --on
+ Maintenance mode enabled
+ $ php occ status -e
+ $ echo $?
+ 1
+ $ php occ maintenance:mode --off
+ Maintenance mode disabled
+ $ php occ status -e
+ $ echo $?
+ 0
+
+Note that by default there is no output when run with ``-e``. This is
+intentional, so it can be used in scripts, monitoring checks, and systemd
+units.
+
++-------------+--------------------------------------------------------+
+| Return code | Description                                            |
++=============+========================================================+
+| 0           | normal operation                                       |
++-------------+--------------------------------------------------------+
+| 1           | maintenance mode is enabled; the instance is currently |
+|             | unavailable to users.                                  |
++-------------+--------------------------------------------------------+
+| 2           | ``php occ upgrade`` is required                        |
++-------------+--------------------------------------------------------+
+
 .. _trashbin_label:
 
 Trashbin
@@ -1127,7 +1202,7 @@ Trashbin
 ::
 
  trashbin
-  trashbin:cleanup  [--all-users] [--] [<user_id>...]  Remove deleted files
+  trashbin:cleanup  [--all-users] [--] [<user_id>...]  Permanently remove deleted files
   trashbin:restore  [--all-users] [--] [<user_id>...]  Restore deleted files
 
 .. note::
@@ -1137,7 +1212,7 @@ Trashbin
 The ``trashbin:cleanup  [--all-users] [--] [<user_id>...]`` command removes the deleted files of the specified
 users in a space-delimited list, or all users if --all-users is specified.
 
-This example removes the deleted files of all users::
+This example permanently removes the deleted files of all users::
 
   sudo -u www-data php occ trashbin:cleanup --all-users
   Remove all deleted files for all users
@@ -1148,7 +1223,7 @@ This example removes the deleted files of all users::
    rosa
    edward
 
-This example removes the deleted files of users molly and freda::
+This example permanently removes the deleted files of users molly and freda::
 
  sudo -u www-data php occ trashbin:cleanup molly freda
  Remove deleted files of   molly
@@ -1164,6 +1239,10 @@ This example restores the deleted files of all users::
 This example restores the deleted files of users molly and freda::
 
  sudo -u www-data php occ trashbin:restore molly freda
+ 
+.. note::
+  This command only restores Users deleted files.
+  If you're using Group Folders app, such files are not restored.
 
 .. _user_commands_label:
 

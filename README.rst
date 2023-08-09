@@ -122,20 +122,38 @@ Nightly Automated Build Steps
 Building HTML
 =============
 
+Using pipenv
+^^^^^^^^^^^^
+
 1. Install ``pipenv`` - https://pipenv.readthedocs.io/en/latest/
 2. Create a Python environment (typically inside this repository): ``pipenv --python 3.9``
 3. Change into the environment: ``pipenv shell``
 4. Install the dependencies ``pip install -r requirements.txt``
 5. Now you can use ``make ...`` to build all the stuff - for example ``make html`` to build the HTML flavor of all manuals
+   The build assets will be put into the individual documentation subdirectories like ``developer_manual/_build/html/com``
 
 To change into this environment you need to run ``pipenv shell`` to launch the shell and to exit you can use either ``exit`` or ``Ctrl`` + ``D``.
+
+Using venv
+^^^^^^^^^^
+
+1. Install ``python3-venv``
+2. Only once: Create a venv (typically inside this repository): ``python -m venv venv``
+3. Activate the environment (inside this repository): ``source venv/bin/activate``
+4. Install the dependencies ``pip install -r requirements.txt``
+5. Now you can use ``make ...`` to build all the stuff - for example ``make html`` to build the HTML flavor of all manuals
+   The build assets will be put into the individual documentation subdirectories like ``developer_manual/_build/html/com``
+
+Autobuilding
+^^^^^^^^^^^^
 
 When editing the documentation installing ``sphinx-autobuild`` though pip can be helpful. This will watch file changes and automatically reload the html preview:
 
 1. Install ``pip install sphinx-autobuild``
-2. Enter the documentation section ``cd user_manual``
-3. Watch for file changes ``make SPHINXBUILD=sphinx-autobuild html``
-4. Open http://127.0.0.1:8000 in the browser and start editing
+2. When building the developer documentation make sure to execute ``make openapi-spec`` in the repository root
+3. Enter the documentation section ``cd user_manual``
+4. Watch for file changes ``make SPHINXBUILD=sphinx-autobuild html``
+5. Open http://127.0.0.1:8000 in the browser and start editing
 
 Building PDF
 ============

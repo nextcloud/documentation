@@ -59,9 +59,8 @@ steps are required:
    `F-Droid <https://f-droid.org/packages/org.dmfs.tasks/>`__).
 3. Create a new account ("+" button).
 4. Select **Connection with URL and username**.
-   **Base URL:** URL of your Nextcloud instance (e.g. ``https://sub.example.com/remote.php/dav``) and 
-   **Contact Group Method:** as credentials.
-5. Choose the option ``Groups are per-contact categories``.
+   **Base URL:** URL of your Nextcloud instance (e.g. ``https://sub.example.com/remote.php/dav``) and your credentials.
+5. For the **Contact Group Method:** choose the option ``Groups are per-contact categories``.
 6. Click **Connect**.
 7. Select the data you want to sync.
 8. When requested, grant access permissions to DAVx⁵ for your

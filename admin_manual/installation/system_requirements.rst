@@ -17,7 +17,7 @@ For best performance, stability and functionality we have documented some recomm
 | Operating System | - **Ubuntu 22.04 LTS** (recommended)                                  |
 | (64-bit)         | - Ubuntu 20.04 LTS                                                    |
 |                  | - **Red Hat Enterprise Linux 8** (recommended)                        |
-|                  | - Debian 11 (Bullseye)                                                |
+|                  | - Debian 12 (Bookworm)                                                |
 |                  | - SUSE Linux Enterprise Server 15                                     |
 |                  | - openSUSE Leap 15.4                                                  |
 |                  | - CentOS Stream                                                       |
@@ -108,13 +108,13 @@ of our mobile apps.
 Files App
 ^^^^^^^^^
 
-- **iOS** 14.0+
+- **iOS** 15.0+
 - **Android** 6.0+
 
 Talk App
 ^^^^^^^^
 
-- **iOS** 14.0+
+- **iOS** 15.0+
 - **Android** 6.0+
 - **Nextcloud Server** 14.0+
 - **Nextcloud Talk** 4.0+

@@ -58,6 +58,10 @@ using Snappy Base 16.04 as it's currently unreleased.
 Upgrade tips
 ------------
 
+.. seealso::
+
+   If you upgrade from a previous major version please see :ref:`critical changes<critical-changes>` first.
+
 Upgrading Nextcloud from a Snap is just like upgrading any snap package.
 For example:
 
@@ -85,6 +89,10 @@ This example is for CentOS/RHEL/Fedora::
    
 Upgrading across skipped releases
 ---------------------------------
+
+.. seealso::
+
+   If you upgrade from a previous major version please see :ref:`critical changes<critical-changes>` first.
 
 It is best to update your Nextcloud installation with every new point release, 
 and to never skip any major releases. While this requirement is being worked on, 

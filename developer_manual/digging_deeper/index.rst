@@ -10,6 +10,7 @@ Digging deeper
    debugging
    classloader
    continuous_integration
+   email
    flow
    http_client
    javascript-apis
@@ -25,6 +26,7 @@ Digging deeper
    speech-to-text
    talk
    translation
+   text_processing
    two-factor-provider
    users
    dashboard
@@ -37,3 +39,4 @@ Digging deeper
    profile
    user_migration
    profiler
+   deadlock

@@ -2,11 +2,11 @@
 Theming
 =======
 
-With our theming feature you are able to customize the look and feel of your
+With our theming feature, you are able to customize the look and feel of your
 Nextcloud instance according to the corporate design of your organization by
-replacing Nextcloud logo and color with your own assets.
+replacing the Nextcloud logo and color with your own assets.
 
-The theming-app is enabled by default so the section should appear by default in
+The theming app is enabled by default so the section should appear by default in
 your admin-settings. If not, check in the apps management that this app is enabled.
 
 Modify the appearance of Nextcloud
@@ -14,16 +14,21 @@ Modify the appearance of Nextcloud
 
 You can change the following parameters of the look and feel on your instance:
 
-* Name (e.g. ACME Inc. Cloud)
-* Web Address (e.g. https://acme.inc/)
-* Slogan
-* Color: The color of header bar, checkboxes and folder icon
-* Logo: The logo will appear in the header and on the log in page. Default has 62/34 px.
-* Login image: The background image of the login page
-* Additional legal links (Legal notice and Privacy policy link)
-* Custom header logo and favicon as alternative to auto-generation based on logo
+.. figure:: ../configuration_server/images/theming1.png
 
-.. figure:: ../configuration_server/images/theming.png
+* Name (e.g. ACME Inc. Cloud)
+* Web link (e.g. https://acme.inc/)
+* Slogan
+* Color: The color of the header bar, checkboxes, and folder icon
+* Logo: The logo will appear in the header and on the login page. The default has 62/34 px.
+* Background and login image: The background image
+
+.. figure:: ../configuration_server/images/theming2.png
+
+* Additional legal links (Legal notice and Privacy policy link)
+* Custom header logo and favicon as an alternative to auto-generation based on logo
+* Disable user theming: Although you can select and customize your instance, users can change their backgrounds and colors. If you want to enforce your customization, you can toggle this on.
+		
 
 Configure theming through CLI
 -----------------------------
@@ -34,8 +39,16 @@ The following values are available to be set through this:
 
 - name, url, imprintUrl, privacyUrl, slogan, color ``occ theming:config name "My Example Cloud"``
 - background, logo, favicon, logoheader ``occ theming:config logo /tmp/mylogo.png``
+- disable-user-theming (yes/no) ``occ theming:config disable-user-theming yes`` 
 
 .. note:: Images require to be read from a local file on the Nextcloud server
+
+Use a color instead of an image as a background:
+
+::
+
+   occ theming:config color "#0082c9"
+   occ theming:config background backgroundColor
 
 Theming of icons
 ----------------
@@ -60,10 +73,10 @@ Branded clients
    users get up and running in no time. If you are interested in our advanced branding &
    support subscription, `contact our sales team <https://nextcloud.com/enterprise/>`_.
 
-The theming app supports to change the URLs to the mobile apps (Android & iOS) that
-is shown when the webinterface is opened on one of those devices. Then there was a
-header shown, that redirects the user to the app in the app store. By default
-this redirects to the Nextcloud apps. In some cases it is wanted that this
+The theming app supports changing the URLs to the mobile apps (Android & iOS) that
+are shown when the web interface is opened on one of those devices. Then there was a
+header shown, that redirects the user to the app in the app store. By default,
+this redirects to the Nextcloud apps. In some cases, it is wanted that this
 links to branded versions of those apps. In those cases the IDs and URLs can be
 set via the ``occ``-command::
 
