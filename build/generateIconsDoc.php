@@ -21,11 +21,6 @@
  *
  */
 
-include __DIR__ . '/vendor/autoload.php';
-
-use Leafo\ScssPhp\Compiler;
-use Leafo\ScssPhp\Formatter\Crunched;
-
 function command_exist($cmd) {
     $return = shell_exec(sprintf("which %s", escapeshellarg($cmd)));
     return !empty($return);
@@ -40,45 +35,17 @@ if (!command_exist('svgexport')) {
 $sourceDirectory = __DIR__ . '/server';
 $destinationDirectory = __DIR__ . '/../developer_manual/html_css_design/';
 
-// Init scss compiler
-$scss = new Compiler();
-$scss->setImportPaths([
-	__DIR__ . '/server/core/css'
-]);
-
-// Continue after throw
-$scss->setIgnoreErrors(true);
-$scss->setFormatter(Crunched::class);
-
-$compiledScss = $scss->compile(
-	'@import "variables.scss";' .
-	'@import "functions.scss";' .
-	// override the path generator function
-	'@function icon-color-path($icon, $dir, $color, $version: 1, $core: false) {
-		$color: remove-hash-from-color($color);
-		@if $core {
-			@return "/core/img/#{$dir}/#{$icon}";
-		} @else {
-			@return "/apps/#{$dir}/img/#{$icon}";
-		}
-	}'.
-	'@import "icons.scss";'
-);
-
 $icons = [];
-$lines = explode('}', $compiledScss);
-$reIcon = '/^\.(icon-[a-z-]+)/i';
-$reUrl = '/url\(\"([a-z0-9-.\/]+)/i';
+$lines = explode("\n", file_get_contents($sourceDirectory . '/dist/icons.txt'));
+$reIcon = '/^(icon-[a-z-]+)/i';
 
 print("\nParsing icons... \n");
 
 // get all icons and urls
 foreach($lines as $line) {
 	if (preg_match($reIcon, $line, $matches)) {
-		$icon = $matches[1];
-		if (preg_match($reUrl, $line, $matches)) {
-			$icons[$icon] = $matches[1];
-		}
+		[$icon, $path] = explode('#', $line);
+		$icons[$icon] = $path;
 	}
 }
 
@@ -89,6 +56,8 @@ print("\nFormating rst file and converting icons... \n");
 // format rst
 $rst = '';
 foreach($icons as $class => $icon) {
+	$icon = substr($icon, -strlen('.svg')) === '.svg' ? substr($icon, 0, -strlen('.svg')) : $icon;
+
 	/**
 	 * removing unwanted path and removing last slash
 	 * /core/img/actions/caret -> actions/caret
