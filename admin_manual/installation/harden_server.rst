@@ -242,7 +242,7 @@ your server setup those are possible connections:
 - www.nextcloud.com, www.startpage.com, www.eff.org, www.edri.org for checking the internet connection
 - cloud.nextcloud.com (https) for validating the enterprise subscription
 - apps.nextcloud.com (https) for available apps and their updates 
-   - github.com (https) for downloading Nextcloud standard apps
+- github.com (https) for downloading Nextcloud standard apps
 - updates.nextcloud.com (https) for Nextcloud updates
 - lookup.nextcloud.com (https) for updating and lookup in the federated sharing addressbook
 - push-notifications.nextcloud.com (https) for sending push notifications to mobile clients
