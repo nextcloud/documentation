@@ -18,7 +18,7 @@ You can add 3rd party php packages with `Composer`_. Composer will download the 
 Dependency hell
 ^^^^^^^^^^^^^^^
 
-Be careful with which packages you add to an app. PHP can not load two version of the same class twice, hence there can be conflicts between Nextcloud Server and an app or between two or more apps if they require the same package. So try to keep the number of production dependencies to a minimum and see :ref:`composer-bin-tools`.
+Be careful with which packages you add to an app. PHP can not load two version of the same class twice, hence there can be conflicts between Nextcloud Server and an app or between two or more apps if they require the same package. So try to keep the number of production dependencies to a minimum and see :ref:`app-composer-bin-tools`.
 
 Conflict example
 ****************

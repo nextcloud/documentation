@@ -13,7 +13,7 @@ user-manual-html:
 	cd user_manual && make html
 	@echo "User manual build finished; HTML is updated"
 
-developer-manual-html: openapi-spec # icons-docs
+developer-manual-html: openapi-spec
 	rm -rf developer_manual/_build/html/com
 	cd developer_manual && make html
 	@echo "Developer manual build finished; HTML is updated"
@@ -41,12 +41,5 @@ openapi-spec: get-server-sources
 		wget https://unpkg.com/@stoplight/elements@7.7.17/styles.min.css -O stoplight-elements.css
 
 
-icons-docs: clean-icons-docs get-server-sources
-	cd build && composer install && composer update
-	cd build && php generateIconsDoc.php
-
-clean: clean-icons-docs
+clean:
 	rm -r admin_manual/_build developer_manual/_build user_manual/_build user_manual_de_/_build
-
-clean-icons-docs:
-	rm -rf developer_manual/design/img/

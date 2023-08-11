@@ -90,9 +90,8 @@ If a modification time should be set, you can by adding it as header with date a
 
     curl -X MOVE -u roeland:pass
         --header 'Destination: https://server/remote.php/dav/files/roeland/dest/file.zip' \
-        --header 'X-OC-Mtime: 1547545326' \
-        --header 'Destination: https://server/remote.php/dav/files/roeland/dest/file.zip' \
-        --header 'X-OC-Mtime: 1547545326' \
+        --header 'X-OC-Mtime: 1547545326'
+
 Otherwise the current upload date will be used as modification date.
 
 The chunks and the upload folder will be deleted afterwards.
@@ -126,7 +125,9 @@ are uploaded to.
 Start by creating a folder with a unique name. You can list the current available
 folder but if you take a random UUID chances of collision are tiny.
 
-``curl -X MKCOL -u roeland:pass https://server/remote.php/dav/uploads/roeland/myapp-e1663913-4423-4efe-a9cd-26e7beeca3c0``
+.. code-block::
+
+    curl -X MKCOL -u roeland:pass https://server/remote.php/dav/uploads/roeland/myapp-e1663913-4423-4efe-a9cd-26e7beeca3c0
 
 Uploading chunks
 ^^^^^^^^^^^^^^^^
@@ -144,8 +145,10 @@ sorting always works.
 Where ``XXXXXXXXXXXXXXX`` is the start byte of the chunk (with leading zeros) and
 ``YYYYYYYYYYYYYYY`` is the end byte of the chunk with leading zeros.
 
-``curl -X PUT -u roeland:pass https://server/remote.php/dav/uploads/roeland/myapp-e1663913-4423-4efe-a9cd-26e7beeca3c0/000000000000000-000000010485759 --data-binary @chunk1``
-``curl -X PUT -u roeland:pass https://server/remote.php/dav/uploads/roeland/myapp-e1663913-4423-4efe-a9cd-26e7beeca3c0/000000010485760-000000015728640 --data-binary @chunk2``
+.. code-block::
+
+    curl -X PUT -u roeland:pass https://server/remote.php/dav/uploads/roeland/myapp-e1663913-4423-4efe-a9cd-26e7beeca3c0/000000000000000-000000010485759 --data-binary @chunk1
+    curl -X PUT -u roeland:pass https://server/remote.php/dav/uploads/roeland/myapp-e1663913-4423-4efe-a9cd-26e7beeca3c0/000000010485760-000000015728640 --data-binary @chunk2
 
 This will upload 2 chunks of a file. The first chunk is 10MB in size and the second
 chunk is 5MB in size.
@@ -155,12 +158,18 @@ Assembling the chunks
 
 Assembling the chunk on the server is a matter of initiating a move from the client.
 
-``curl -X MOVE -u roeland:pass --header 'Destination:https://server/remote.php/dav/files/roeland/dest/file.zip' https://server/remote.php/dav/uploads/roeland/myapp-e1663913-4423-4efe-a9cd-26e7beeca3c0/.file``
+.. code-block::
+
+    curl -X MOVE -u roeland:pass --header 'Destination:https://server/remote.php/dav/files/roeland/dest/file.zip' https://server/remote.php/dav/uploads/roeland/myapp-e1663913-4423-4efe-a9cd-26e7beeca3c0/.file
 
 The server will now assemble the chunks and move the final file to the folder ``dest/file.zip``.
 
 If a modification time should be set, you can by adding it as header with date as unixtime:
-``curl -X MOVE -u roeland:pass --header 'X-OC-Mtime:1547545326' --header 'Destination:https://server/remote.php/dav/files/roeland/dest/file.zip' https://server/remote.php/dav/uploads/roeland/myapp-e1663913-4423-4efe-a9cd-26e7beeca3c0/.file``"
+
+.. code-block::
+
+    curl -X MOVE -u roeland:pass --header 'X-OC-Mtime:1547545326' --header 'Destination:https://server/remote.php/dav/files/roeland/dest/file.zip' https://server/remote.php/dav/uploads/roeland/myapp-e1663913-4423-4efe-a9cd-26e7beeca3c0/.file
+
 Otherwise the current upload date will be used as modification date.
 
 The chunks and the upload folder will be deleted afterwards.
@@ -170,4 +179,6 @@ Aborting the upload
 
 If the upload has to be aborted this is a simple matter or deleting the upload folder.
 
-``curl -X DELETE -u roeland:pass https://server/remote.php/dav/uploads/roeland/myapp-e1663913-4423-4efe-a9cd-26e7beeca3c0/``
+.. code-block::
+
+    curl -X DELETE -u roeland:pass https://server/remote.php/dav/uploads/roeland/myapp-e1663913-4423-4efe-a9cd-26e7beeca3c0/

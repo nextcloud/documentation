@@ -52,7 +52,7 @@ html-release:
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html/release."
 
 html-com:
-	$(SPHINXBUILD) -b html -D html_theme='sphinx_rtd_theme' $(ALLSPHINXOPTS) $(BUILDDIR)/html/com
+	$(SPHINXBUILD) -W -b html -D html_theme='sphinx_rtd_theme' $(ALLSPHINXOPTS) $(BUILDDIR)/html/com
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html/com."
 
