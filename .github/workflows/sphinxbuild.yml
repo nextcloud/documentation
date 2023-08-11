@@ -40,6 +40,18 @@ jobs:
     - name: Build using Makefile
       run: cd user_manual && make html-lang-en
 
+  user_manual-pdf:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    - name: Install pip dependencies
+      run: pip install -r requirements.txt
+    - name: Build using Makefile
+      run: cd user_manual && make latexpdf
+
   developer_manual:
     runs-on: ubuntu-latest
     steps:
