@@ -58,7 +58,7 @@ add-lang-to-versions-template-%:
 html-all: $(foreach lang, $(LANGS), html-lang-$(lang))
 
 html-lang-%:    
-	$(SPHINXBUILD) -b html -D html_theme='sphinx_rtd_theme' -D language=$* $(ALLSPHINXOPTS) $(BUILDDIR)/html/$*
+	$(SPHINXBUILD) -W -b html -D html_theme='sphinx_rtd_theme' -D language=$* $(ALLSPHINXOPTS) $(BUILDDIR)/html/$*
 	@echo "Build finished for LANG=$*. The HTML pages are in $(BUILDDIR)/html/$*."
 
 merge-folders:
