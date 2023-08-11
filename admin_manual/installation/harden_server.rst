@@ -240,12 +240,15 @@ Some Nextcloud functionality requires connecting to remote servers. Depending on
 your server setup those are possible connections:
 
 - www.nextcloud.com, www.startpage.com, www.eff.org, www.edri.org for checking the internet connection
-- apps.nextcloud.com for the available apps
-- updates.nextcloud.com for Nextcloud updates
-- lookup.nextcloud.com For updating and lookup in the federated sharing addressbook
-- push-notifications.nextcloud.com for sending push notifications to mobile clients
-- surveyserver.nextcloud.com if the admin has agreed to share anonymized data
+- cloud.nextcloud.com (https) for validating the enterprise subscription
+- apps.nextcloud.com (https) for available apps and their updates 
+   - github.com (https) for downloading Nextcloud standard apps
+- updates.nextcloud.com (https) for Nextcloud updates
+- lookup.nextcloud.com (https) for updating and lookup in the federated sharing addressbook
+- push-notifications.nextcloud.com (https) for sending push notifications to mobile clients
+- surveyserver.nextcloud.com (https) if the admin has agreed to share anonymized data
 - Any remote Nextcloud server that is connected with federated sharing
+
 
 Setup fail2ban
 --------------
