@@ -249,7 +249,6 @@ your server setup those are possible connections:
 - surveyserver.nextcloud.com (https) if the admin has agreed to share anonymized data
 - Any remote Nextcloud server that is connected with federated sharing
 
-
 Setup fail2ban
 --------------
 
