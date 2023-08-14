@@ -18,9 +18,13 @@ You can create a direct, one-on-one chat by searching for the name of a user, a 
 
 .. image:: images/chat-with-one-user.png
 
-If you want to create a custom group conversation, click the ``plus`` button next to the search field. You can then pick a name for the conversation and select if the conversation should be open to external users and if other users on the server can see and join the conversation.
+If you want to create a custom group conversation, click the ``⋮`` button next to the filters button and then on ``create a new conversation``. 
 
-.. image:: images/creating-group-room.png
+.. image:: images/create-new-conversation.png
+
+You can then pick a name for the conversation and select if the conversation should be open to external users and if other users on the server can see and join the conversation.
+
+.. image:: images/creating-open-conversation.png
 
 In the second step, you get to add participants and finalize the creation of the conversation.
 
@@ -30,6 +34,28 @@ You can cancel the creation of a conversation by clicking outside the white menu
 
 .. image:: images/new-room.png
 
+View all open conversations
+-----------------------
+
+You can view all the conversations that you can join by accessing the conversations list through the ``⋮``  menu and clicking on ``Join open conversations.``
+
+.. image:: images/create-new-conversation.png
+
+.. image:: images/join-open-conversations.png
+    :width: 500px
+
+Filter your conversations
+-----------------------
+
+You can filter your conversations using the filter button located next to the search field. There are two options for filtering:
+1. Filter unread mentions: This option allows you to view group conversations with unread mentions or unread one-on-one conversations.
+2. Filter unread messages: This option allows you to view all unread messages in all joined conversations.
+
+.. image:: images/filters-menu.png
+
+You can then clear the filter from the filters menu.
+
+.. image:: images/clear-filter.png
 
 Sharing files in a chat
 -----------------------
@@ -83,7 +109,7 @@ Changing permissions of a user that joined a public conversation will also perma
 
 .. image:: images/participant-menu.png
 
-Moderators can configure the conversation. Select ``Conversation settings`` from the gear menu of the conversation on the top to access the settings.
+Moderators can configure the conversation. Select ``Conversation settings`` from the ``...`` menu of the conversation on the top to access the settings.
 
 .. image:: images/open-settings.png
 
@@ -104,7 +130,11 @@ You can hide your video (useful during a screen share) with the little arrow jus
 
 You can access your settings and choose a different webcam, microphone and other settings in the ``...`` menu in the top bar.
 
-.. image:: images/call-menu.png
+.. image:: images/media-settings.png
+
+.. image:: images/devices-settings.png
+
+You can access other settings in ``Conversation settings``.
 
 .. image:: images/talk-settings.png
 
