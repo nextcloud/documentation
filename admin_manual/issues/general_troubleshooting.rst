@@ -230,6 +230,7 @@ these modules:
 
 3. PHP
 
+* Tideways
 * eAccelerator
 
 .. _trouble-webdav-label:
