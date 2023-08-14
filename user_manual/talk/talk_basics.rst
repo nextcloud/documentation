@@ -25,10 +25,12 @@ If you want to create a custom group conversation, click the ``⋮`` button next
 You can then pick a name for the conversation and select if the conversation should be open to external users and if other users on the server can see and join the conversation.
 
 .. image:: images/creating-open-conversation.png
+    :width: 500px
 
 In the second step, you get to add participants and finalize the creation of the conversation.
 
 .. image:: images/add-participants.png
+    :width: 500px
 
 You can cancel the creation of a conversation by clicking outside the white menu area at any time.
 
@@ -37,9 +39,7 @@ You can cancel the creation of a conversation by clicking outside the white menu
 View all open conversations
 -----------------------
 
-You can view all the conversations that you can join by accessing the conversations list through the ``⋮``  menu and clicking on ``Join open conversations.``
-
-.. image:: images/create-new-conversation.png
+You can view all the conversations that you can join by accessing the conversations list through the ``⋮``  menu next to the filters button and clicking on ``Join open conversations.``
 
 .. image:: images/join-open-conversations.png
     :width: 500px
@@ -52,10 +52,12 @@ You can filter your conversations using the filter button located next to the se
 2. Filter unread messages: This option allows you to view all unread messages in all joined conversations.
 
 .. image:: images/filters-menu.png
+    :width: 250px
 
 You can then clear the filter from the filters menu.
 
 .. image:: images/clear-filter.png
+    :width: 250px
 
 Sharing files in a chat
 -----------------------
@@ -112,6 +114,7 @@ Changing permissions of a user that joined a public conversation will also perma
 Moderators can configure the conversation. Select ``Conversation settings`` from the ``...`` menu of the conversation on the top to access the settings.
 
 .. image:: images/open-settings.png
+    :width: 300px
 
 Here you can configure the description, guest access, if the conversation is visible to others on the server and more.
 
@@ -131,8 +134,10 @@ You can hide your video (useful during a screen share) with the little arrow jus
 You can access your settings and choose a different webcam, microphone and other settings in the ``...`` menu in the top bar.
 
 .. image:: images/media-settings.png
+    :width: 300px
 
 .. image:: images/devices-settings.png
+    :width: 450px
 
 You can access other settings in ``Conversation settings``.
 
