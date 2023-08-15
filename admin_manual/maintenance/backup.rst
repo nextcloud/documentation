@@ -46,7 +46,7 @@ MySQL/MariaDB
 MySQL or MariaDB, which is a drop-in MySQL replacement, is the recommended
 database engine. To backup MySQL/MariaDB::
 
-    mysqldump --single-transaction -h [server] -u [username] -p[password] [db_name] > nextcloud-sqlbkp_`date +"%Y%m%d"`.bak
+    mysqldump --single-transaction -h [server] -u [username] -p [password] [db_name] > nextcloud-sqlbkp_`date +"%Y%m%d"`.bak
 
 If you use enabled MySQL/MariaDB 4-byte support (:doc:`../configuration_database/mysql_4byte_support`, needed for emoji), you will need to add ``--default-character-set=utf8mb4`` like this::
 
