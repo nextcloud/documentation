@@ -296,6 +296,18 @@ To use ``occ`` see :doc:`command_line_installation`.
 
 To use the graphical Installation Wizard see :doc:`installation_wizard`.
 
+.. _background_jobs_label:
+
+Setting up background jobs
+--------------------------
+
+Nextcloud requires that some tasks are run regularly. These may include
+maintenance tasks to ensure optimal performance or time sensitive tasks like
+sending notifications.
+
+See :doc:`../configuration_server/background_jobs_configuration` for a detailed
+description and the benefits.
+
 .. _selinux_tips_label:
 
 SELinux configuration tips
