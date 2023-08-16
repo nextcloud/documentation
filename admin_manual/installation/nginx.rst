@@ -24,7 +24,7 @@ NGINX configuration
 - Some environments might need a ``cgi.fix_pathinfo`` set to ``1`` in their
   ``php.ini``.
 
-.. nginx_webroot_example:
+.. _nginx_webroot_example:
 
 Nextcloud in the webroot of NGINX
 ---------------------------------
@@ -36,7 +36,7 @@ webroot of your nginx installation. In this example it is
 .. literalinclude:: nginx-root.conf.sample
    :language: nginx
 
-.. nginx_subdir_example:
+.. _nginx_subdir_example:
 
 Nextcloud in a subdir of the NGINX webroot
 ------------------------------------------
@@ -59,7 +59,7 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
 Tips and tricks
 ---------------
 
-.. nginx_php_handler_tips:
+.. _nginx_php_handler_tips:
 
 PHP-Handler Configuration / Avoiding "502 Bad Gateway"
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

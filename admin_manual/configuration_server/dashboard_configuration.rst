@@ -5,7 +5,7 @@ Dashboard app
 The Nextcloud Dashboard is your starting point of the day, giving users an overview of your upcoming appointments, urgent emails, chat messages, incoming tickets, latest tweets and much more! Users can add the widgets they like and change the background to their liking.
 
 Enabling the dashboard app
--------------------------
+--------------------------
 
 The Dashboard App is shipped and enabled by default. If it is not enabled
 simply go to your Nextcloud Apps page to enable it.

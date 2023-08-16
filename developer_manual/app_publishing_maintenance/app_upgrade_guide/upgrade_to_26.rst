@@ -59,7 +59,7 @@ Nextcloud 26 supports PHP8.0 and later. This allows the migration from PHPDoc an
 Planned removal of PSR-0 class loading
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Nextcloud is still loading classes that follow the long deprecated and replaced :ref:`PSR-0 standard <psr0>`. Nextcloud 26 is the last version that register a generic PSR-0 class loader. From Nextcloud 27 on apps have to either change class file names to match PSR-4 or ship their own (composer) class loader for PSR-0 files or. (`PR#36434 <https://github.com/nextcloud/server/pull/36114>`_ by `ChristophWurst <https://github.com/ChristophWurst>`_)
+Nextcloud is still loading classes that follow the long deprecated and replaced :ref:`PSR-0 standard <psr0>`. Nextcloud 26 is the last version that register a generic PSR-0 class loader. From Nextcloud 27 on apps have to either change class file names to match PSR-4 or ship their own (composer) class loader for PSR-0 files or. (`PR#36114 <https://github.com/nextcloud/server/pull/36114>`_ by `ChristophWurst <https://github.com/ChristophWurst>`_)
 
 Dependency Injection Parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

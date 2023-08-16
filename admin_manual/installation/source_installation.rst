@@ -502,14 +502,14 @@ Installation via install script
 
 One of the easiest ways of installing is to use the Nextcloud VM or NextcloudPI scripts. It's basically just two steps:
 
-1. Download the latest `installation script <https://github.com/nextcloud/vm/blob/master/nextcloud_install_production.sh/>`_.
+1. Download the latest `VM installation script <https://github.com/nextcloud/vm/blob/master/nextcloud_install_production.sh/>`_.
 2. Run the script with::
 
     sudo bash nextcloud_install_production.sh
     
 or
 
-1. Download the latest `installation script <https://raw.githubusercontent.com/nextcloud/nextcloudpi/master/install.sh/>`_.
+1. Download the latest `PI installation script <https://raw.githubusercontent.com/nextcloud/nextcloudpi/master/install.sh/>`_.
 2. Run the script with::
 
     sudo bash install.sh

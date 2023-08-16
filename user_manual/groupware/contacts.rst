@@ -135,7 +135,7 @@ Informal collaboration takes place within organizations: an event to organize fo
 
 For all these reasons, Nextcloud supports Circles, a feature embedded in the Contacts app, where every user is able to create its own circle, a user-defined aggregate of accounts. Circles can be used later on to share files and folders, added to Talk conversations, like a regular group.
 
-.. figure:: ../images/circle.png
+.. figure:: ./images/circle.png
 	:alt: Circle in the Contacts app left menu
 
 Create a circle

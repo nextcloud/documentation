@@ -65,7 +65,7 @@ for how to configure those values correctly:
 
 Apache
 ^^^^^^
-* `LimitRequestBody <https://httpd.apache.org/docs/current/en/mod/core.html#limitrequestbody>`_
+* `LimitRequestBody <https://httpd.apache.org/docs/current/en/mod/core.html#limitrequestbody>`_ (In Apache HTTP Server <=2.4.53 this defaulted to unlimited, but now defaults to 1 GiB. The new default limits uploads from non-chunking clients to 1 GiB. If this is a concern in your environment, override the new default by either manually setting it to ``0`` or to a value similar to that used for your local environment's PHP ``upload_max_filesize / post_max_size / memory_limit`` parameters.)
 * `SSLRenegBufferSize <https://httpd.apache.org/docs/current/mod/mod_ssl.html#sslrenegbuffersize>`_
 * `Timeout <https://httpd.apache.org/docs/current/mod/core.html#timeout>`_
 

@@ -55,10 +55,14 @@ versions-template-all: $(foreach lang, $(LANGS), add-lang-to-versions-template-$
 add-lang-to-versions-template-%:
 	sed -i '/Here goes the Langs/i <dd><a href="/server/latest/user_manual/$*/">$*</a></dd>' ./_templates/versions.html
 
-html-all: $(foreach lang, $(LANGS), html-lang-$(lang))
+html-all: $(foreach lang, $(LANGS), html-allow-warnings-lang-$(lang))
+
+html-allow-warnings-lang-%:
+	$(SPHINXBUILD) -b html -D html_theme='sphinx_rtd_theme' -D language=$* $(ALLSPHINXOPTS) $(BUILDDIR)/html/$*
+	@echo "Build finished for LANG=$*. The HTML pages are in $(BUILDDIR)/html/$*."
 
 html-lang-%:    
-	$(SPHINXBUILD) -b html -D html_theme='sphinx_rtd_theme' -D language=$* $(ALLSPHINXOPTS) $(BUILDDIR)/html/$*
+	$(SPHINXBUILD) -W -b html -D html_theme='sphinx_rtd_theme' -D language=$* $(ALLSPHINXOPTS) $(BUILDDIR)/html/$*
 	@echo "Build finished for LANG=$*. The HTML pages are in $(BUILDDIR)/html/$*."
 
 merge-folders:

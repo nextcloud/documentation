@@ -24,7 +24,7 @@ Back-end changes
 ----------------
 
 Changed APIs
-************
+^^^^^^^^^^^^
 
 * ``AppFramework\Http\Request::getHeader`` always returns a string (and not null).
 * ``Security\ICrypto::decrypt`` only accepts strings.

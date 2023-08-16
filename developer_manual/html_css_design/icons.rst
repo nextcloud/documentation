@@ -10,18 +10,23 @@ Icons
 List of available icons
 =======================
 
-White icons only have a grey background on this documentation page for readability purposes.
+.. deprecated:: 25
 
- .. include:: icons.txt
+The icons available in the core/img/ folder of the server are deprecated. You can use them at own risk.
+Due to a change of the way the list is produced now on the server it can no longer be automatically turned into documentation.
 
-..  _svgcolorapi:
+Please use `Material design icons`_ instead.
 
+.. _svgcolorapi:
 
 Svg color api
 =============
 
+.. deprecated:: 25
+
 The svg API is not supported anymore due to performance reasons.
 
+Please use `Material design icons`_ instead.
 
 Material design icons
 =====================

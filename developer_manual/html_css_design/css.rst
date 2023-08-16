@@ -26,9 +26,10 @@ https://github.com/nextcloud/server/blob/master/core/css/variables.scss
 
 ..  _cssicons:
 
-
 SCSS icon mixins
 ================
+
+.. deprecated:: 25
 
 Some SCSS mixins and functions are employed to add and manage SVG icons.
 
