@@ -156,3 +156,14 @@ Unsubscribe from a mailing list
 .. versionadded:: 3.1
 
 Some mailing lists and newsletters allow to be unsubscribed easily. If the Mail app detects messages from such a sender, it will show an *Unsubscribe* button next to the sender information. Click and confirm to unsubscribe from the list.
+
+Snooze
+~~~~~~
+
+.. versionadded:: 3.4
+
+Snoozing a message or thread moves it into a dedicated mailbox until the selected snooze date is reached and the message or thread is moved back to the original mailbox.
+
+1. Open action menu of an envelope or thread
+2. Click *Snooze*
+3. Select how long the message or thread should be snoozed

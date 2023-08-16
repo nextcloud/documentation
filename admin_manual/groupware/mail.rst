@@ -12,6 +12,12 @@ In mailcow, for example, the setting is called *Also allowed to send as user*.
 .. warning:: Unless paired with shared *Sent* mailboxes or handled otherwise by the mail server, sent messages will be stored in the sender's personal *Sent* mailbox.
 
 
+Snooze and scheduled sending
+----------------------------
+
+.. note:: If AJAX is selected for cron job execution in the admin settings, the snooze feature and scheduled sending are deactivated because of unreliable execution.
+
+
 XOAUTH2 Authentication with Microsoft Azure AD
 ----------------------------------------------
 
