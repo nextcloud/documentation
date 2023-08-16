@@ -72,12 +72,15 @@ First, you can simply drag'n'drop them on the chat.
 Second, you can select a file from your Nextcloud Files or a file manager by choosing the little paperclip and selecting where you'd like to pick the file from.
 
 .. image:: images/share-files-in-chat.png
+   :width: 500px
 
 .. image:: images/share-files-in-chat-selection.png
+    :width: 450px
 
 You can add more files until you are done and decide to share the files.
 
 .. image:: images/talk-upload-files.png
+   :width: 500px
 
 All users will be able to click the files to view, edit or download them, irrespective of them having a user account. Users with an account will have the file automatically shared with them while external guest users will get them shared as a public link.
 
@@ -89,6 +92,7 @@ Inserting emoji
 You can add emoji using the picker on the left of the text input field.
 
 .. image:: images/emoji-picker.png
+   :width: 450px
 
 Replying to messages and more
 -----------------------------
@@ -96,10 +100,12 @@ Replying to messages and more
 You can reply to a message using the arrow that appears when you hover a message.
 
 .. image:: images/reply.png
+   :width: 450px
 
 In the ``...`` menu you can also choose to reply privately. This will open a one-on-one chat.
 
 .. image:: images/chat-message-menu.png
+   :width: 450px
 
 Here you can also create a direct link to the message or mark it unread so you will scroll back there next time you enter the chat. When it is a file, you can view the file in Files.
 
@@ -120,6 +126,7 @@ Moderators can configure the conversation. Select ``Conversation settings`` from
 Here you can configure the description, guest access, if the conversation is visible to others on the server and more.
 
 .. image:: images/chat-room-settings.png
+   :width: 450px
 
 Starting a call
 ---------------
@@ -137,16 +144,13 @@ You can access your settings and choose a different webcam, microphone and other
 .. image:: images/media-settings.png
     :width: 300px
 
-.. image:: images/devices-settings.png
-    :width: 450px
+.. image:: images/device-settings-before-call.png
+    :width: 300px
+
+or change the background 
 
 .. image:: images/background-settings-in-call.png
-    :width: 450px
-
-or before starting the call 
-
-.. image:: images/devices-settings-before-call.png
-    :width: 450px
+    :width: 300px
 
 You can change other settings in the ``Conversation settings`` dialog.
 
