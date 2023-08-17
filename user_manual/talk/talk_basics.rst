@@ -125,13 +125,18 @@ Moderators can configure the conversation. Select ``Conversation settings`` from
 
 Here you can configure the description, guest access, if the conversation is visible to others on the server and more.
 
-.. image:: images/chat-room-settings.png
+.. image:: images/conversation-settings-dialog.png
    :width: 450px
 
 Starting a call
 ---------------
 
-When you're in a conversation, you can start a call any time with the ``Start call`` button. Other participants will get notified and can join the call. If somebody else has started a call already, the button will change in a green ``Join call`` button.
+When you're in a conversation, you can start a call any time with the ``Start call`` button. Other participants will get notified and can join the call.
+
+.. image:: images/device-settings-before-call.png
+    :width: 300px
+
+If somebody else has started a call already, the button will change in a green ``Join call`` button.
 
 .. image:: images/join-call.png
 
@@ -144,15 +149,12 @@ You can access your settings and choose a different webcam, microphone and other
 .. image:: images/media-settings.png
     :width: 300px
 
-.. image:: images/device-settings-before-call.png
-    :width: 300px
-
 or change the background 
 
 .. image:: images/background-settings-in-call.png
     :width: 300px
 
-You can change other settings in the ``Conversation settings`` dialog.
+You can change other settings in the ``Talk settings`` dialog.
 
 .. image:: images/talk-settings.png
 
