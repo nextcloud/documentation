@@ -113,8 +113,8 @@ For command line processing (*optional*):
 * PHP module pcntl (enables command interruption by pressing ``ctrl-c``)
 
 .. note::
-   You also need to ensure that pcntl_signal and pcntl_signal_dispatch are not disabled
-   in your php.ini file.
+   You also need to ensure that ``pcntl_signal`` and ``pcntl_signal_dispatch`` are not disabled
+   in your php.ini by the ``disable_functions`` option.
 
 For command line updater (*optional*):
 
@@ -275,7 +275,7 @@ the default site. Open a terminal and run::
           a certificate signed by a signing authority. Check with your domain name
           registrar or hosting service for good deals on commercial certificates.
           Or use a free `Let's Encrypt <https://letsencrypt.org/>`_ ones.
- 
+
 .. _installation_wizard_label:
 
 Installation wizard
@@ -506,7 +506,7 @@ One of the easiest ways of installing is to use the Nextcloud VM or NextcloudPI 
 2. Run the script with::
 
     sudo bash nextcloud_install_production.sh
-    
+
 or
 
 1. Download the latest `PI installation script <https://raw.githubusercontent.com/nextcloud/nextcloudpi/master/install.sh/>`_.
