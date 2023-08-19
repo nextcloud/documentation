@@ -100,7 +100,7 @@ share::
    :alt: Screenshot of configuring Nautilus file manager to use WebDAV
 
 .. note:: The same method works for other file managers that use GVFS,
-	  such as MATE's Caja and Cinnamon's Nepomuk.
+	  such as MATE's Caja and Cinnamon's Nemo.
 
 Accessing files with KDE and Dolphin file manager
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
