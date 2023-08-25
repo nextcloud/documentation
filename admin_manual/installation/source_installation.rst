@@ -60,7 +60,7 @@ Required:
 * PHP module XMLWriter
 * PHP module zip
 * PHP module zlib
-* PHP module sodium(for password hashing)
+* PHP module sodium (for password hashing)
 
 Database connectors (pick the one for your database:)
 
