@@ -6,7 +6,7 @@ System requirements
 -------------------
 
 * PHP 8.2 is now supported, but 8.1 is recommended.
-* PHP7.4 is no longer supported.
+* PHP 7.4 is no longer supported.
 
 System email
 ------------

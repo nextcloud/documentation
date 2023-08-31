@@ -23,7 +23,7 @@ See the table below for a version map, where migrating is easily possible:
 .. note:: Since ownCloud does not and will not support PHP 8.0 or higher, you
           need to migrate from ownCloud 10.11.x to Nextcloud 25 and then
           further upgrade from there. We urge you to migrate to Nextcloud
-          since PHP versions prior PHP8 are end of life, see
+          since PHP versions prior PHP 8 are end of life, see
           `<https://www.php.net/supported-versions.php>`_.
 
 1. First download the correct version of Nextcloud from our `older releases page <https://nextcloud.com/changelog/>`_,

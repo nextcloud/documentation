@@ -39,20 +39,20 @@ Removed APIs
 Back-end changes
 ----------------
 
-PHP7.4
-^^^^^^
+PHP 7.4
+^^^^^^^
 
-In this release support for PHP7.4 was dropped. Make sure your app compatible with PHP8.0 or higher.
+In this release support for PHP 7.4 was dropped. Make sure your app compatible with PHP 8.0 or higher.
 
-PHP8.2
-^^^^^^
+PHP 8.2
+^^^^^^^
 
-In this release support for PHP8.2 was added. See release notes from PHP about new deprecations.
+In this release support for PHP 8.2 was added. See release notes from PHP about new deprecations.
 
 Migration from PHPDoc annotations to native PHP attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Nextcloud 26 supports PHP8.0 and later. This allows the migration from PHPDoc annotations to native attributes.
+Nextcloud 26 supports PHP 8.0 and later. This allows the migration from PHPDoc annotations to native attributes.
 
 * ``@UseSession`` should be replaced with ``#[UseSession]``. ``@UseSession`` will be removed in a future release. See :ref:`controller-use-session`.
 
