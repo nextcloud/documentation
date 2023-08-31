@@ -796,6 +796,10 @@ in batches from all users again. Beside that they are also refreshed during a
 login for this user or can be fetched manually via the occ command 
 ``occ ldap:check-user --update USERID`` where ``USERID`` is Nextcloud's user id.
 
+For groups, a cache of memberships is stored in the database to be able to trigger
+events when a membership is added or removed. This cache is updated by a background
+job, and can be force updated using ``occ ldap:check-group --update GROUPID``.
+
 Caching
 ^^^^^^^
 

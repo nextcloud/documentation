@@ -946,6 +946,7 @@ you can run the following LDAP commands with ``occ``::
 
  ldap
   ldap:check-user               checks whether a user exists on LDAP.
+  ldap:check-group              checks whether a group exists on LDAP.
   ldap:create-empty-config      creates an empty LDAP configuration
   ldap:delete-config            deletes an existing LDAP configuration
   ldap:search                   executes a user or group search
@@ -989,6 +990,11 @@ is not in one of the disabled connections, and exists on an active connection,
 use the ``--force`` option to force it to check all active LDAP connections::
 
  sudo -u www-data php occ ldap:check-user --force robert
+
+``ldap:check-group`` checks whether a group still exists in the LDAP directory.
+Use with ``--update`` to update the group membership cache on the Nextcloud side::
+
+ sudo -u www-data php occ ldap:check-group --update mygroup
 
 ``ldap:create-empty-config`` creates an empty LDAP configuration. The first
 one you create has ``configID`` ``s01``, and all subsequent configurations
