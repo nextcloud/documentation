@@ -73,3 +73,5 @@ edit_on_github_branch = 'master'
 
 # user starts in light mode
 default_dark_mode = False
+
+latex_engine = "xelatex"
