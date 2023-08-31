@@ -992,7 +992,7 @@ use the ``--force`` option to force it to check all active LDAP connections::
  sudo -u www-data php occ ldap:check-user --force robert
 
 ``ldap:check-group`` checks whether a group still exists in the LDAP directory.
-Use with ``--update`` to update group membership cache on Nextcloud side::
+Use with ``--update`` to update the group membership cache on the Nextcloud side::
 
  sudo -u www-data php occ ldap:check-group --update mygroup
 
