@@ -28,7 +28,7 @@ The following libraries are considered as deprecated from Nextcloud 16 on. If yo
 Back-end changes
 ----------------
 
-* Php7.0 support removed. Php7.1 or higher required.
+* PHP 7.0 support removed. PHP 7.1 or higher required.
 * PostgreSQL 9.5+ required.
 * Autoloading: In the past it was also possible to autoload PHP classes in apps by specify a list of classes and filenames in `appinfo/classpath.php`. This should not be used anymore and also isn't used by any app that is publicly available.
 

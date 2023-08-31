@@ -241,7 +241,7 @@ Alternatively, you can use the ``#[UseSession]`` attribute to automatically open
 
     }
 
-.. note:: The ``#[UseSession]`` was added in Nextcloud 26 and requires PHP8.0 or later. If your app targets older releases and PHP7.x then use the deprecated ``@UseSession`` annotation.
+.. note:: The ``#[UseSession]`` was added in Nextcloud 26 and requires PHP 8.0 or later. If your app targets older releases and PHP 7.x then use the deprecated ``@UseSession`` annotation.
 
     .. code-block:: php
         :emphasize-lines: 2
