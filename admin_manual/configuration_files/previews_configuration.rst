@@ -101,8 +101,40 @@ to 'null':
 JPEG quality setting:
 ^^^^^^^^^^^^^^^^^^^^^
 
-Default JPEG quality setting for preview images is '90'. Change this with:
+Default JPEG quality setting for preview images is '80'. Change this with:
 
 :: 
 
   occ config:app:set preview jpeg_quality --value="60"
+
+Imaginary:
+^^^^^^^^^^^^^^^^^^^^^
+
+If you want to enable imaginary, set the url.
+Also requires the ``OC\Preview\Imaginary`` provider to be enabled:
+
+::
+
+  <?php
+    'preview_imaginary_url' => 'url',
+
+If you want set the preview format for imaginary.  
+You can change between jpeg and webp, the default is jpeg:
+
+::
+
+  <?php
+    'preview_format' => 'webp',
+
+If you want set a api key for imaginary':
+
+::
+
+  <?php
+    'preview_imaginary_key' => 'secret',
+
+Default WebP quality setting for preview images is '80'. Change this with:
+
+::
+
+  occ config:app:set preview webp_quality --value="30"
