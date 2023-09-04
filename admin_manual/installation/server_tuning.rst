@@ -196,3 +196,27 @@ Nextcloud to use Imaginary by editing your `config.php`:
 .. note::
 
     For large instance, you should follow `Imaginary's scalability recommandation <https://github.com/h2non/imaginary#scalability>`.
+
+Settings:
+^^^^^^^^^^^^^^^^^^^^^
+
+If you want set the preview format for imaginary.  
+You can change between jpeg and webp, the default is jpeg:
+
+::
+
+  <?php
+    'preview_format' => 'webp',
+
+If you want set a api key for imaginary':
+
+::
+
+  <?php
+    'preview_imaginary_key' => 'secret',
+
+Default WebP quality setting for preview images is '80'. Change this with:
+
+::
+
+  occ config:app:set preview webp_quality --value="30"
