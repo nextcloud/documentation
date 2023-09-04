@@ -16,6 +16,12 @@ Nextcloud maintains a read-only address book containing contact information of a
 
 Disabled users are removed from this address book.
 
+You can disable access to the system address book by using the app config value ``system_addressbook_exposed``.
+
+Run ``occ config:app:set dav system_addressbook_exposed --value="no"`` to disable access to the system address book for all users. Please note that this does not influence :ref:`Federated sharing<label-direct-share-link>`.
+
+.. warning:: If clients have already connected to the CalDAV endpoint, the clients might experience sync issues after system address book access was disabled. This can often be remedied by chosing a different default address book on the client and forcing a resync.
+
 Privacy and User Property Scopes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
