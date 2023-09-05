@@ -170,6 +170,16 @@ When you are satisfied with how ClamAV is operating, you might want to go
 back and change all of your logging to less verbose levels.
 
 
+Configuring ICAP on Nextcloud
+-----------------------------
+
+Nextcloud offers the integration of antivirus protection based on the ICAP protocol.
+The settings are outlined here.
+Additional documentation is work in progress.
+
+.. figure:: ../images/antivirus-icap.png
+
+
 Disabling background scan task
 ------------------------------
 
