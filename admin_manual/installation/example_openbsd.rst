@@ -88,7 +88,11 @@ Create a virtualhost in ``/etc/httpd.conf`` and add the following content to it:
 	  }
 
 	  location "/.well-known/webfinger" {
-		  block return 301 "https://$SERVER_NAME/nextcloud/public.php?service=webfinger"
+		  block return 301 "https://$SERVER_NAME/nextcloud/index.php/$DOCUMENT_URI"
+	  }
+
+	  location "/.well-known/nodeinfo" {
+		  block return 301 "https://$SERVER_NAME/nextcloud/index.php/$DOCUMENT_URI"
 	  }
 
 	  location match "/nextcloud/oc[ms]%-provider/*" {
