@@ -198,7 +198,7 @@ Nextcloud to use Imaginary by editing your `config.php`:
     For large instance, you should follow `Imaginary's scalability recommandation <https://github.com/h2non/imaginary#scalability>`.
 
 Settings:
-^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^
 
 If you want set the preview format for imaginary.  
 You can change between jpeg and webp, the default is jpeg:
