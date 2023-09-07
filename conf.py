@@ -67,3 +67,5 @@ html_context = {
 
 edit_on_github_project = 'nextcloud/documentation'
 edit_on_github_branch = 'master'
+
+latex_engine = "xelatex"
