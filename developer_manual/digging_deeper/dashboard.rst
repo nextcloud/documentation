@@ -191,8 +191,26 @@ as plain JavaScript:
     })
 
 
-Dashboard API for clients
----------------------------------------
+Dashboard API
+-------------
+
+Render dashboard widgets using the API
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. versionadded:: 27.1
+
+Dashboard widgets can be rendered in the browser using the dashboard API. This allows to render
+widgets without any JavaScript and frontend code. This new method is beneficial for performance as
+the widgets are rendered from API data using a generic vue.js component provided by the Dashboard
+app.
+
+To render a widget using the new API, you need to implement the
+:ref:`OCP\\Dashboard\\IAPIWidgetV2<IAPIWidgetV2>` interface. Optionally, you may implement the
+:ref:`OCP\\Dashboard\\IReloadableWidget<IReloadableWidget>` interface to have the widget reload
+periodically.
+
+Providing widgets to clients
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To provide more information about your widget through the dashboard API for clients, you can implement
 those additional interfaces:
@@ -282,6 +300,8 @@ This interface contains an extra `getItems` method which returns an array of `OC
     }
 
 
+.. _WidgetItem:
+
 `OCP\\Dashboard\Model\\WidgetItem` contains the item information. Its constructor is:
 
 .. code-block:: php
@@ -298,6 +318,168 @@ This interface contains an extra `getItems` method which returns an array of `OC
 * link: A link to the target resource
 * iconUrl: URL to a square icon (svg or jpg/png of at least 44x44px)
 * sinceId: Item ID or timestamp. The client will then send the latest known sinceId in next dashboard API request.
+
+.. versionadded:: 27.1
+
+* overlayIconUrl: Small overlay icon to show in the bottom right corner of `iconUrl`. This is used
+  by the activity widget to show the activity type icon.
+
+.. _IAPIWidgetV2:
+
+The IAPIWidgetV2 interface
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you want to render a widget in the browser using this API you must implement the
+`OCP\\Dashboard\\IAPIWidgetV2` interface. The widget registration does not change compared to the
+old method. The type of a widget will be detected automatically during the registration. When
+migrating old, JavaScript based widgets the **load** method should be left empty.
+
+This interface adds a single method **getItemsV2** which returns
+`OCP\\Dashboard\\Model\\WidgetItems`.
+
+.. code-block:: php
+
+    /**
+     * @inheritDoc
+     */
+    public function getItemsV2(string $userId, ?string $since = null, int $limit = 7): WidgetItems {
+        return $this->myService->getWidgetItemsV2($userId, $since, $limit);
+    }
+
+`OCP\\Dashboard\Model\\WidgetItems` contains the all items and additional meta information to
+render the widget. Its constructor is:
+
+.. code-block:: php
+
+    public function __construct(
+        private array $items = [],
+        private string $emptyContentMessage = '',
+        private string $halfEmptyContentMessage = '',
+    )
+
+* items: An array of :ref:`OCP\\Dashboard\Model\\WidgetItem<WidgetItem>`.
+* emptyContentMessage: The message to show if no items are available.
+* halfEmptyContentMessage: An optional message to show above the item list. This is useful if there
+  are no important items but you still want to show some items to the user. Have a look at the
+  following example from the Talk app:
+
+.. figure:: ../images/talk-widget-half-empty-content.png
+   :width: 40%
+
+Here is a full example of a widget that implements the `OCP\\Dashboard\\IAPIWidgetV2` interface:
+
+.. code-block:: php
+
+    <?php
+
+    class MyWidget implements IButtonWidget, IIconWidget, IReloadableWidget {
+        public function __construct(
+            private IL10N $l10n,
+            private IURLGenerator $urlGenerator,
+        ) {
+        }
+
+        /**
+         * @inheritDoc
+         */
+        public function getId(): string {
+            return 'blazinglyfast';
+        }
+
+        /**
+         * @inheritDoc
+         */
+        public function getTitle(): string {
+            return $this->l10n->t('My blazingly fast widget');
+        }
+
+        /**
+         * @inheritDoc
+         */
+        public function getOrder(): int {
+            return 0;
+        }
+
+        /**
+         * @inheritDoc
+         */
+        public function getIconClass(): string {
+            return 'icon-class';
+        }
+
+        /**
+         * @inheritDoc
+         */
+        public function getIconUrl(): string {
+            return $this->urlGenerator->getAbsoluteURL(
+                $this->urlGenerator->imagePath('blazinglyfast', 'icon.svg')
+            );
+        }
+
+        /**
+         * @inheritDoc
+         */
+        public function getUrl(): ?string {
+            return $this->urlGenerator->linkToRouteAbsolute('blazinglyfast.view.index');
+        }
+
+        /**
+         * @inheritDoc
+         */
+        public function load(): void {
+            // No need to provide initial state or inject javascript code anymore
+        }
+
+        /**
+         * @inheritDoc
+         */
+        public function getItemsV2(string $userId, ?string $since = null, int $limit = 7): WidgetItems {
+            // TODO
+            $items = [/* fancy items */];
+            return new WidgetItems(
+                $items,
+                empty($items) ? $this->l10n->t('No items') : '',
+            );
+        }
+
+        /**
+         * @inheritDoc
+         */
+        public function getWidgetButtons(string $userId): array {
+            return [
+                new WidgetButton(
+                    WidgetButton::TYPE_MORE,
+                    $this->urlGenerator->linkToRouteAbsolute('blazinglyfast.view.index'),
+                    $this->l10n->t('More items'),
+                ),
+            ];
+        }
+
+        /**
+         * @inheritDoc
+         */
+        public function getReloadInterval(): int {
+            return 60;
+        }
+    }
+
+.. _IReloadableWidget:
+
+The IReloadableWidget interface
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The IReloadableWidget interface adds the **getReloadInterval** method to provide a periodic reload
+interval in seconds. New items will be requested from the OCS API after this interval to refresh
+the widget. Internally, the **getItemsV2** method will be called to get the new items.
+
+.. code-block:: php
+
+    public function getReloadInterval(): int {
+        // Reload data every minute
+        return 60;
+    }
+
+.. note:: This interface requires a widget to implement the `OCP\\Dashboard\\IAPIWidgetV2` interface and won't work with old widgets.
 
 Use the API
 ^^^^^^^^^^^
