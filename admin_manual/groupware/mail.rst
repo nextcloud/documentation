@@ -82,12 +82,16 @@ Congratulations! You are now able to use hosted Microsoft Outlook accounts in th
 
 .. figure:: images/azure_xoauth2/10.png
 
+Mailbox Share
+-------------
+Users can share mailboxes with each other. So far, there is no UI for users to change the ACL in the Mail app, but if you want to use it, you need to enable it on the IMAP sever and configure the shares there.
+
 Thread Summary
 --------------
-The mail app supports summarizing message threads that contain 3 or more messages. 
+The mail app supports summarizing message threads that contain 3 or more messages.
 
 .. warning:: `A text generation AI integration <https://apps.nextcloud.com/apps/integration_openai>`_ should be already in place to enable this feature.
 
 The feature is opt-in, it is disabled by default and can be enabled in mail adminstration settings.
 
-Adminstration settings > Groupware > Mail app > Enable thread summary
+Administration settings > Groupware > Mail app > Enable thread summary
