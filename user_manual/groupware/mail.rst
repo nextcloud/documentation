@@ -77,6 +77,23 @@ The app allows account delegation so that one user can send emails from the addr
 
 .. warning:: The sent email might not be visible to the original account if it's stored in your personal *Sent* mailbox.
 
+Automatic trash deletion
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 3.4
+
+The Mail app can automatically delete messages in the trash folder after a certain number of days.
+
+1) Visit Account settings
+2) Go to Automatic trash deletion
+3) Enter the number of days after which messages should be deleted
+
+Disable trash retention by leaving the field empty or setting it to 0.
+
+.. note::  Only mails deleted after enabling trash retention will be processed.
+
+.. figure:: images/mail_trash_retention_settings.png
+
 Compose messages
 ----------------
 
