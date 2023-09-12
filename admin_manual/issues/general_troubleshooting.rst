@@ -202,7 +202,7 @@ these modules:
 * mod_xsendfile / X-Sendfile (causing broken downloads if not configured
   correctly)
 
-2. NginX
+2. NGINX
 
 * ngx_pagespeed
 * HttpDavModule
@@ -250,40 +250,160 @@ Service discovery
 Some clients - especially on iOS/macOS - have problems finding the proper
 sync URL, even when explicitly configured to use it.
 
+However, there are also several techniques to allow clients to discover services provided by a server. One of these,
+which is addressed in this section, is the discovery through *well known* URLs. Further remedies are described extensively
+at the `Sabre DAV website <http://sabre.io/dav/service-discovery/>`_
+
+These *well known* URLs are located under the web root driectory  of your webserver, whether or not your nextcloud
+installation is installed in the roo or a subfolder of your web server:
+
+| ``https://example.com/.well-known/``
+|
+
+To check if these *well known* URLs are working correctly on your server, you can go to the ``Overview`` page of the
+``Administrative Settings`` of your Nextcloud installation, e.g. at ``https://example.com/settings/admin/overview``
+and see if there is any warning  shown under the ``Security & setup warnings`` section. Additionlly, the specific sections
+below show how to verify the correct configuration with from a linux command-line (see *Tip* boxes).
+
+.. _service-discovery-caldav-and-carddav-label:
+
+CalDAV and CardDAV
+^^^^^^^^^^^^^^^^^^
+
 If you want to use CalDAV or CardDAV clients or other clients that require service discovery
 together with Nextcloud it is important to have a correct working setup of the following
 URLs:
 
 | ``https://example.com/.well-known/carddav``
 | ``https://example.com/.well-known/caldav``
-|
 
-Those need to be redirecting your clients to the correct endpoints. If Nextcloud
-is running at the document root of your Web server the correct URL is
-``https://example.com/remote.php/dav`` for CardDAV and CalDAV and if running in a
-subfolder like ``nextcloud``, then ``https://example.com/nextcloud/remote.php/dav``.
+Those need to be redirecting your clients to the correct endpoints:
 
-For the first case the :file:`.htaccess` file shipped with Nextcloud should do
-this work for you when you're running Apache. You need to make sure that your
-Web server is using this file. Additionally, you need the mod_rewrite Apache
-module installed and ``AllowOverride All`` set in your :file:`apache2.conf`
-or vHost-file to process these redirects. When running Nginx please refer to
-:doc:`../installation/nginx`.
+- ``https://example.com/remote.php/dav`` if Nextcloud is running at the document root of your Web server, and
+- ``https://example.com/nextcloud/remote.php/dav`` if running in a subfolder like ``nextcloud``.
+
+.. Tip::
+   To check if your server is set up correctly, use the following command with your correct URL for ``YOUR_SERVER``:
+
+   **CalDAV** ::
+
+      YOUR_SERVER=https://example.com
+      SERVICE=caldav
+      curl -Sv --fail -o /dev/null --GET $YOUR_SERVER/.well-known/$SERVICE 2>&1 \
+       | grep -iE '^(> get|< (HTTP/|location))'
+
+   This should return an output similar to this::
+
+         > GET /.well-known/carddav HTTP/2
+         < HTTP/2 301
+         < location: https://example.com/remote.php/dav/
+
+   **CardDav** ::
+
+         YOUR_SERVER=https://example.com
+         SERVICE=carddav
+         curl -Sv --fail -o /dev/null --GET $YOUR_SERVER/.well-known/$SERVICE 2>&1 \
+          | grep -iE '^(> get|< (HTTP/|location))'
+
+   This should return an output similar to this::
+
+         > GET /.well-known/carddav HTTP/2
+         < HTTP/2 301
+         < location: https://example.com/remote.php/dav/
+
+.. _service-discovery-webfinger-and-nodeinfo-label:
+
+WEBFINGER and NODEINFO (and others)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Since version 21 of Nextcloud server, these two endpoints
+
+| ``https://example.com/.well-known/webfinger``
+| ``https://example.com/.well-known/nodeinfo``
+
+need to be redirected to the ``index.php`` like so:
+
+| ``https://example.com/index.php/.well-known/webfinger``
+| ``https://example.com/index.php/.well-known/nodeinfo``
+
+or, in case of using Nextcloud in a subfolder like ``nextcloud``:
+
+| ``https://example.com/nextcloud/index.php/.well-known/webfinger``
+| ``https://example.com/nextcloud/index.php/.well-known/nodeinfo``
+
+.. note::
+   For **versions older than v21** of Nextcloud, these URLs needed to be redirected to a different target.
+   Please consult the Admin Manual of the respective version.
+
+.. Tip::
+   To check if your server is set up correctly, use the following command with your correct URL for ``YOUR_SERVER``.
+
+   **Note:** The return code to the second ``GET`` could also be ``404``, rather than ``200``. Important is that the last line contains ``x-nextcloud-well-known: 1``
+
+   **WEBFINGER** ::
+
+      YOUR_SERVER=https://example.com
+      SERVICE=webfinger
+      curl -SLv --fail -o /dev/null --GET $YOUR_SERVER/.well-known/$SERVICE 2>&1 \
+       | grep -iE '^(> get|< (HTTP/|location|x-nextcloud-well-known))'
+
+   This should return an output similar to this::
+
+         > GET /.well-known/webfinger HTTP/2
+         < HTTP/2 302
+         < location: https://example.com/index.php/.well-known/webfinger
+         > GET /index.php/.well-known/webfinger HTTP/2
+         < HTTP/2 200
+         < x-nextcloud-well-known: 1
+
+   **NODEINFO** ::
+
+         YOUR_SERVER=https://example.com
+         SERVICE=nodeinfo
+         curl -SLv --fail -o /dev/null --GET $YOUR_SERVER/.well-known/$SERVICE 2>&1 \
+          | grep -iE '^(> get|< (HTTP/|location|x-nextcloud-well-known))'
+
+   This should return an output similar to this::
+
+         > GET /.well-known/nodeinfo HTTP/2
+         < HTTP/2 302
+         < location: https://example.com/index.php/.well-known/nodeinfo
+         > GET /index.php/.well-known/nodeinfo HTTP/2
+         < HTTP/2 200
+         < x-nextcloud-well-known: 1
 
 
-If your Nextcloud instance is installed in a subfolder called ``nextcloud`` and
-you're running Apache, create or edit the :file:`.htaccess` file within the
-document root of your Web server and add the following lines::
+.. _service-discovery-apache-configuration-label:
+
+Apache Web Server Configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The configuration differs depending on whether your Nextcloud instance is running in your Web server's root or in a subfolder.
+
+Running Nextcloud in the webroot folder
+"""""""""""""""""""""""""""""""""""""""
+- The :file:`.htaccess` file shipped with Nextcloud should do this work for you.
+- You need to make sure that your Web server is using this file.
+- Additionally, you need the mod_rewrite Apache
+   module installed and ``AllowOverride All`` set in your :file:`apache2.conf`
+   or vHost-file to process these redirects.
+
+
+Running Nextcloud in a subfolder called ``nextcloud``
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+- Create or edit the :file:`.htaccess` file within the document root of your Web server and add the following lines::
 
     <IfModule mod_rewrite.c>
       RewriteEngine on
-      RewriteRule ^\.well-known/carddav /nextcloud/remote.php/dav [R=301,L]
-      RewriteRule ^\.well-known/caldav /nextcloud/remote.php/dav [R=301,L]
-      RewriteRule ^\.well-known/webfinger /nextcloud/index.php/.well-known/webfinger [R=301,L]
-      RewriteRule ^\.well-known/nodeinfo /nextcloud/index.php/.well-known/nodeinfo [R=301,L]
+      RewriteRule ^/\.well-known/carddav /nextcloud/remote.php/dav [R=301,L]
+      RewriteRule ^/\.well-known/caldav /nextcloud/remote.php/dav [R=301,L]
+      RewriteRule ^/\.well-known/webfinger /nextcloud/index.php/.well-known/webfinger [R=301,L]
+      RewriteRule ^/\.well-known/nodeinfo /nextcloud/index.php/.well-known/nodeinfo [R=301,L]
     </IfModule>
 
-Make sure to change /nextcloud to the actual subfolder your Nextcloud instance is running in.
+- Make sure to change ``/nextcloud`` to the actual subfolder your Nextcloud instance is running in.
+
 
 .. note:: If you put the above directives directly into an Apache
    configuration file (usually within ``/etc/apache2/``)
@@ -294,7 +414,82 @@ Make sure to change /nextcloud to the actual subfolder your Nextcloud instance i
    files by dropping any number of leading slashes, but it does not
    do so for the use in its main configuration files.
 
-If you are running NGINX, make sure ``location = /.well-known/carddav {`` and ``location = /.well-known/caldav {`` are properly configured as described in :doc:`../installation/nginx`, adapt to use a subfolder if necessary.
+.. _service-discovery-default-well-known-configuration-label:
+
+Default handling of ``/.well-known/`` URLs by Nextcloud
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Since Nextcloud allows any app to register any service within the ``.well-known`` directory, you may want to redirect
+any request to this folder to Nextcloud.
+
+.. warning::
+   **Make sure you exclude** *well known* **services that are handled by other
+   applications,** e.g. you should *not* redirect ``/.well-known/acme-challenge`` or ``/.well-known/pki-validation/`` as they
+   are used for automated SSL certificate deployment.
+
+Also, make sure to add your ``/nextcloud/subfolder``, if your Nextcloud instance is not running in the webroot.
+
+::
+
+    <IfModule mod_rewrite.c>
+      RewriteEngine on
+      # the standard redirection rules for Nextcloud
+      RewriteRule ^/\.well-known/carddav /remote.php/dav [R=301,L]
+      RewriteRule ^/\.well-known/caldav /remote.php/dav [R=301,L]
+      RewriteRule ^/\.well-known/webfinger /index.php/.well-known/webfinger [R=301,L]
+      RewriteRule ^/\.well-known/nodeinfo /index.php/.well-known/nodeinfo [R=301,L]
+
+      # Redirect all other requests to /.well-known/ to index.php
+      # exclude /.well-known/acme-challenge/
+      RewriteCond "%{REQUEST_URI}" "!^/.well-known/acme-challenge/" [OR]
+      # exclude /.well-known/pki-validation/
+      RewriteCond "%{REQUEST_URI}" "!^/.well-known/pki-validation/" [OR]
+      # add additional excludes, as required by your server setup
+      # Use a temporary redirect here (302) in case an future service is handled outside of Nextcloud
+      RewriteRule ^/\.well-known/ /index.php/ [R=302,L]
+    </IfModule>
+
+
+.. Tip::
+   To check if your server is set up correctly, use the following command with your correct URL for ``YOUR_SERVER``:
+
+   **Any Service** ::
+
+      YOUR_SERVER=https://example.com
+      SERVICE=some-non-existing-service
+      curl -SLv --fail -o /dev/null --GET $YOUR_SERVER/.well-known/$SERVICE 2>&1 \
+       | grep -iE '^(> get|< (HTTP/|location|x-nextcloud-well-known))'
+
+   This should return an output similar to this::
+
+         > GET /.well-known/some-non-existing-service HTTP/2
+         < HTTP/2 302
+         < location: https://example.com/index.php/.well-known/some-non-existing-service
+         > GET /index.php/.well-known/some-non-existing-service HTTP/2
+         < HTTP/2 404
+         < x-nextcloud-well-known: 1
+
+   **Excluded Service** ::
+
+         YOUR_SERVER=https://example.com
+         SERVICE=acme-challenge/some-file
+         curl -SLv --fail -o /dev/null --GET $YOUR_SERVER/.well-known/$SERVICE 2>&1 \
+          | grep -iE '^(> get|< (HTTP/|location|x-nextcloud-well-known))'
+
+   This should return an output similar to this (note: no Location header is returned)::
+
+         > GET /.well-known/acme-challenge/some-file HTTP/2
+         < HTTP/2 404
+
+
+NGINX Web Server Configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Make sure ``location = /.well-known/carddav {`` and ``location = /.well-known/caldav {`` are properly configured as
+described in :ref:`NGINX configuration <nginx_webroot_example>`, adapt to use a :ref:`subfolder <nginx_subdir_example>` if necessary.
+
+Client Configuration
+^^^^^^^^^^^^^^^^^^^^
 
 Now change the URL in the client settings to just use:
 
@@ -303,9 +498,6 @@ Now change the URL in the client settings to just use:
 instead of e.g.
 
 ``https://example.com/nextcloud/remote.php/dav/principals/username``.
-
-There are also several techniques to remedy this, which are described extensively at
-the `Sabre DAV website <http://sabre.io/dav/service-discovery/>`_.
 
 Troubleshooting sharing
 -----------------------------------

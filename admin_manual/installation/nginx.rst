@@ -8,11 +8,11 @@ NGINX configuration
     Please note that webservers other than Apache 2.x are not officially supported.
 
 .. note::
-    This page covers example NGINX configurations to run a Nextcloud server.
+    This page covers example nginx configurations to run a Nextcloud server.
     These configurations examples were originally provided by `@josh4trunks <https://github.com/josh4trunks>`_
     and are exclusively community-maintained. (Thank you contributors!)
 
-- You need to insert the following code into **your Nginx configuration file**. Choose the appropriate example based on whether you are deploying :ref:`nginx_webroot_example` (i.e. :code:`https://cloud.example.com/`) or :ref:`nginx_subdir_example` (i.e. :code:`https://cloud.example.com/nextcloud`).
+- You need to insert the following code into **your nginx configuration file**. Choose the appropriate example based on whether you are deploying :ref:`nginx_webroot_example` (i.e. :code:`https://cloud.example.com/`) or :ref:`nginx_subdir_example` (i.e. :code:`https://cloud.example.com/nextcloud`).
 - Adjust the server directive under :code:`upstream php-handler` to match your PHP installation's configured FPM listener (a misconfiguration here will result in a :code:`502 Bad Gateway` - see :ref:`nginx_php_handler_tips` for details)
 - Adjust the existing :code:`server_name` directives found under *both* :code:`server` sections to your real hostname
 - Adjust :code:`root` to the webroot of your Nextcloud installation 
@@ -22,7 +22,7 @@ NGINX configuration
 - Be careful about line breaks if you copy the examples, as long lines may be
   broken for page display and result in an invalid configuration files.
 - Some environments might need a ``cgi.fix_pathinfo`` set to ``1`` in their
-  ``php.ini``.
+   ``php.ini``.
 
 .. _nginx_webroot_example:
 
@@ -74,9 +74,9 @@ Look for the line that is set to something like:
 or
 :code:`listen = 127.0.0.1:9000`
  
-If PHP FPM will be running on the same host as NGINX (it's probably a safe assumption it will be if you're unsure), it is recommended you use the UNIX socket (i.e. :code:`/var/run/php/php-fpm.sock`) rather than TCP (:code:`127.0.0.1:9000`) for maximum performance (though either will work as long as your NGINX and PHP FPM configurations match).
+If PHP FPM will be running on the same host as nginx (it's probably a safe assumption it will be if you're unsure), it is recommended you use the UNIX socket (i.e. :code:`/var/run/php/php-fpm.sock`) rather than TCP (:code:`127.0.0.1:9000`) for maximum performance (though either will work as long as your nginx and PHP FPM configurations match).
 
-After deciding how you'd prefer to connect NGINX with PHP FPM (and, if necessary, updating your local PHP FPM configuration and restarting FPM), set your NGINX configuration's :code:`upstream php-handler` :code:`server` to match your preference (Note: If using UNIX sockets, prepend :code:`unix:` in the NGINX configuration, but *not* in your PHP FPM :code:`www.conf`). 
+After deciding how you'd prefer to connect nginx with PHP FPM (and, if necessary, updating your local PHP FPM configuration and restarting FPM), set your nginx configuration's :code:`upstream php-handler` :code:`server` to match your preference (Note: If using UNIX sockets, prepend :code:`unix:` in the nginx configuration, but *not* in your PHP FPM :code:`www.conf`).
 
 Suppressing log messages
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -123,7 +123,7 @@ Upload of files greater than 10 MiB fails
 
 If you configure nginx (globally) to block all requests to (hidden) dot files,
 it may be not possible to upload files greater than 10 MiB using the webpage
-due to Nextclouds requirement to upload the file to an url ending with ``/.file``.
+due to Nextcloud's requirement to upload the file to an url ending with ``/.file``.
 
 You may require to change:
 
@@ -157,3 +157,23 @@ If you just see some correct requests in access log, but no login happens, you c
     chown nginx:nginx /var/lib/php/session/
     chown root:nginx /var/lib/php/wsdlcache/
     chown root:nginx /var/lib/php/opcache/
+
+Troubleshooting
+---------------
+
+Service Discovery (aka ``.well-known``)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Command line analysis:
+    To get an example ``curl`` command, check the :doc:`Troubleshooting Guide <../issues/general_troubleshooting>`
+    for tips on how to verify the correct redirection of ``/.well-known`` services by consulting the **Tip** boxes
+    provided in the respective sub-sections of it's :ref:`service-discovery-label` section.
+
+Custom 404 error page:
+    Please note, that using a custom error page for status code ``404`` (along the lines of ``error_page 404 = @error404;``)
+    prevents the http header ``x-nextcloud-well-known`` beeing returned from ``index.php``. As a result, the Overview page
+    in Administration Settings will show a warning, that the endpoints for
+    :ref:`webfinger and hostinfo <service-discovery-webfinger-and-nodeinfo-label>` are not correctly resolved,
+    although in fact they may well be. Please use the above mentioned **Command line analysis** and
+    :ref:`service-discovery-default-well-known-configuration-label` to verify if the header
+    is forwarded to the client correctly.
