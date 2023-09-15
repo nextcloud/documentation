@@ -396,10 +396,10 @@ Running Nextcloud in a subfolder called ``nextcloud``
 
     <IfModule mod_rewrite.c>
       RewriteEngine on
-      RewriteRule ^/\.well-known/carddav /nextcloud/remote.php/dav [R=301,L]
-      RewriteRule ^/\.well-known/caldav /nextcloud/remote.php/dav [R=301,L]
-      RewriteRule ^/\.well-known/webfinger /nextcloud/index.php/.well-known/webfinger [R=301,L]
-      RewriteRule ^/\.well-known/nodeinfo /nextcloud/index.php/.well-known/nodeinfo [R=301,L]
+      RewriteRule ^\.well-known/carddav /nextcloud/remote.php/dav [R=301,L]
+      RewriteRule ^\.well-known/caldav /nextcloud/remote.php/dav [R=301,L]
+      RewriteRule ^\.well-known/webfinger /nextcloud/index.php/.well-known/webfinger [R=301,L]
+      RewriteRule ^\.well-known/nodeinfo /nextcloud/index.php/.well-known/nodeinfo [R=301,L]
     </IfModule>
 
 - Make sure to change ``/nextcloud`` to the actual subfolder your Nextcloud instance is running in.
@@ -419,7 +419,7 @@ Running Nextcloud in a subfolder called ``nextcloud``
 Default handling of ``/.well-known/`` URLs by Nextcloud
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Since Nextcloud allows any app to register any service within the ``.well-known`` directory, you may want to redirect
+Since Nextcloud allows apps to register a service within the ``.well-known`` directory, you may want to redirect
 any request to this folder to Nextcloud.
 
 .. warning::
@@ -433,11 +433,13 @@ Also, make sure to add your ``/nextcloud/subfolder``, if your Nextcloud instance
 
     <IfModule mod_rewrite.c>
       RewriteEngine on
-      # the standard redirection rules for Nextcloud
-      RewriteRule ^/\.well-known/carddav /remote.php/dav [R=301,L]
-      RewriteRule ^/\.well-known/caldav /remote.php/dav [R=301,L]
-      RewriteRule ^/\.well-known/webfinger /index.php/.well-known/webfinger [R=301,L]
-      RewriteRule ^/\.well-known/nodeinfo /index.php/.well-known/nodeinfo [R=301,L]
+      # The standard redirection rules for Nextcloud; they should already in your .htaccess file and
+      # are here just for reference:
+      #
+      # RewriteRule ^\.well-known/carddav /remote.php/dav [R=301,L]
+      # RewriteRule ^\.well-known/caldav /remote.php/dav [R=301,L]
+      # RewriteRule ^\.well-known/webfinger /index.php/.well-known/webfinger [R=301,L]
+      # RewriteRule ^\.well-known/nodeinfo /index.php/.well-known/nodeinfo [R=301,L]
 
       # Redirect all other requests to /.well-known/ to index.php
       # exclude /.well-known/acme-challenge/
@@ -446,7 +448,7 @@ Also, make sure to add your ``/nextcloud/subfolder``, if your Nextcloud instance
       RewriteCond "%{REQUEST_URI}" "!^/.well-known/pki-validation/" [OR]
       # add additional excludes, as required by your server setup
       # Use a temporary redirect here (302) in case an future service is handled outside of Nextcloud
-      RewriteRule ^/\.well-known/ /index.php/ [R=302,L]
+      RewriteRule ^\.well-known/ /index.php/ [R=302,L]
     </IfModule>
 
 
