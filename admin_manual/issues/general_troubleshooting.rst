@@ -255,7 +255,7 @@ which is addressed in this section, is the discovery through *well known* URLs. 
 at the `Sabre DAV website <http://sabre.io/dav/service-discovery/>`_
 
 These *well known* URLs are located under the web root driectory  of your webserver, whether or not your nextcloud
-installation is installed in the roo or a subfolder of your web server:
+installation is installed in the root or a subfolder of your web server:
 
 | ``https://example.com/.well-known/``
 |
@@ -263,7 +263,7 @@ installation is installed in the roo or a subfolder of your web server:
 To check if these *well known* URLs are working correctly on your server, you can go to the ``Overview`` page of the
 ``Administrative Settings`` of your Nextcloud installation, e.g. at ``https://example.com/settings/admin/overview``
 and see if there is any warning  shown under the ``Security & setup warnings`` section. Additionlly, the specific sections
-below show how to verify the correct configuration with from a linux command-line (see *Tip* boxes).
+below show how to verify the correct configuration from a linux command-line (see *Tip* boxes).
 
 .. _service-discovery-caldav-and-carddav-label:
 
