@@ -1,8 +1,8 @@
 .. _coreindex:
 
-=================
-Core development
-=================
+==================
+Server development
+==================
 
 Please make sure you have set up a :ref:`devenv`.
 
