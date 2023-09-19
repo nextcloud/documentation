@@ -10,16 +10,16 @@ We are moving more and more toward using Vue.js in the front-end, starting with 
 .. code-block:: console
 
     # install dependencies
-    make dev-setup
+    npm install
 
     # build for development
-    make build-js
+    npm run dev
 
     # build for development and watch edits
-    make watch-js
+    npm run watch
 
     # build for production with minification
-    make build-js-production
+    npm run build
 
 
 Building styles
