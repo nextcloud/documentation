@@ -54,7 +54,7 @@ Check out the code
 
 The following commands are using **/var/www** as the Web server's directory and **www-data** as user name and group.
 
-After the development tool installation make the directory writable so you install the code as your regular user, and don't need root privileges::
+Make the directory writable so you can install the code as your regular user, and don't need root privileges::
 
   sudo chmod o+rw /var/www
 
