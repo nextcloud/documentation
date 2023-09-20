@@ -9,12 +9,12 @@ commonly called *opcache*, and data cache for your web server, commonly called
 "memcache".
 
 .. note:: If you do not install and enable a local memcache you will see a
-   warning on your Nextcloud admin page. **A memcache is not required and you
+   warning on your Nextcloud admin page. **A memcache is not required. You
    may safely ignore the warning if you prefer.** If you enable only a
    distributed cache (``memcache.distributed``) in your ``config.php`` and not
    a local cache (``memcache.local``) you will still see the cache warning.
 
-A **PHP opcache** stores compiled PHP scripts so they don't need to be re-compiled 
+A **PHP opcache** stores compiled PHP scripts, so they don't need to be re-compiled 
 every time they are called. PHP bundles the Zend OPcache in core since version 
 5.5, so you don't need to install an opcache manually.
 
@@ -25,7 +25,7 @@ needs. The supported caching backends are:
 * `APCu <https://pecl.php.net/package/APCu>`_, APCu 4.0.6 and up required.
    A local cache for systems.
 * `Redis <http://redis.io/>`_, PHP module 2.2.6 and up required.
-   For local and distributed caching as well as transactional file locking.
+   For local and distributed caching, as well as transactional file locking.
 * `Memcached <https://www.memcached.org/>`_
    For distributed caching.
    
@@ -89,7 +89,7 @@ Use APCu for local cache and either Redis cluster ...::
       [ 'server2.example.com', 11211 ],
    ],
 
-... for distrebuted and locking caches.
+... for distributed and locking caches.
 
 .. note:: If you run multiple web servers and enable a distributed cache in
     your ``config.php`` (``memcache.distributed``) or a file locking provider
@@ -133,11 +133,11 @@ The Redis PHP module must be version 2.2.6+. If you are running a Linux
 distribution that does not package the supported versions of this module, or 
 does not package Redis at all, see :ref:`install_redis_label`.
 
-On Debian/Ubuntu/Mint install ``redis-server`` and ``php-redis``. The installer
+On Debian/Ubuntu/Mint, install ``redis-server`` and ``php-redis``. The installer
 will automatically launch ``redis-server`` and configure it to launch at 
 startup.
 
-On CentOS and Fedora install ``redis`` and ``php-pecl-redis``. It will not 
+On CentOS and Fedora, install ``redis`` and ``php-pecl-redis``. It will not 
 start automatically, so you must use your service manager to start 
 ``redis``, and to launch it at boot as a daemon.
  
@@ -160,7 +160,7 @@ Additionally, you should use Redis for the distributed server cache::
 
   'memcache.distributed' => '\OC\Memcache\Redis',
 
-Further more, you could use Redis for the local cache like so, but it's not recommended (see warning below):: 
+Furthermore, you could use Redis for the local cache like so, but it's not recommended (see warning below):: 
 
   'memcache.local' => '\OC\Memcache\Redis',
 
@@ -169,7 +169,7 @@ Further more, you could use Redis for the local cache like so, but it's not reco
 When using Redis for any of the above cache settings, you also need to
 specify either the ``redis`` or ``redis.cluster`` configuration in ``config.php``.
 
-The following options are available to configure when using a single redis server (all but ``host`` and ``port`` are optional. For the latter two see next sections)::
+The following options are available to configure when using a single redis server (all but ``host`` and ``port`` are optional. For the latter two, see the next sections)::
 
    'memcache.locking' => '\OC\Memcache\Redis',
    'memcache.distributed' => '\OC\Memcache\Redis',
