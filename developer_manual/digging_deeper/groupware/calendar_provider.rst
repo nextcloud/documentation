@@ -163,7 +163,7 @@ The content type of the calendar entry must be provided as well.
     EOF;
     }
 
-The actual calendar entry can be obtained by the ``get`` method. This must for sure match the content type above. See the official documentation on vcal calendars on the possible format as well.
+The actual calendar entry can be obtained by the ``get`` method. This must for sure match the content type above. See the `official documentation <https://www.rfc-editor.org/rfc/rfc5545>`_ on vcal calendars on the possible format as well.
 
 .. code-block:: php
 
