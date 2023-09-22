@@ -96,7 +96,7 @@ settings and look the same in all the different email clients out there.
    showing HTML on the client (or removing the HTML part in the mail server).
 
 Modifying the look of emails beyond the theming app capabilities
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 You can overwrite templates by writing a class that implements the template interface
 (or extends it to not need to copy over everything). Easiest way is to then put this class into
@@ -144,7 +144,7 @@ If you prefer, you may set your mail server parameters in ``config/config.php``.
 The following examples are for SMTP, Sendmail, and Qmail.
 
 SMTP
-^^^^
+""""
 
 If you want to send email using a local or remote SMTP server it is necessary
 to enter the name or IP address of the server, optionally followed by a colon
@@ -209,7 +209,7 @@ and password.
     "mail_smtppassword" => "password",
 
 Sendmail
-^^^^^^^^
+""""""""
 
 If you want to use the well known Sendmail program to send email, it is
 necessary to have an installed and working email system on your \*nix server.
@@ -229,7 +229,7 @@ Nextcloud should be able to send email out of the box.
     "mail_smtppassword" => "",
 
 qmail
-^^^^^
+"""""
 
 If you want to use the qmail program to send email, it is necessary to have an
 installed and working qmail email system on your server. The qmail binary
@@ -270,9 +270,10 @@ the ``mail_smtpdebug`` parameter in ``config/config.php``.
    before, several **SMTP -> get_lines(): ...** messages appear on the screen.
    This is expected behavior and can be ignored.
 
-**Question**: Why is my web domain different from my mail domain?
+Why is my web domain different from my mail domain?
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 
-**Answer**: The default domain name used for the sender address is the hostname
+The default domain name used for the sender address is the hostname
 where your Nextcloud installation is served. If you have a different mail domain
 name you can override this behavior by setting the following configuration
 parameter:
@@ -286,9 +287,10 @@ reset email) having the domain part of the sender address appear as follows::
 
   no-reply@example.com
 
-**Question**: How can I find out if an SMTP server is reachable?
+How can I find out if an SMTP server is reachable?
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
-**Answer**: Use the ping command to check the server availability::
+Use the ping command to check the server availability::
 
   ping smtp.server.dom
 
@@ -299,10 +301,10 @@ reset email) having the domain part of the sender address appear as follows::
   time=3.64ms
 
 
-**Question**: How can I find out if the SMTP server is listening on a specific
-TCP port?
+How can I find out if the SMTP server is listening on a specific TCP port?
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-**Answer**: The best way to get mail server information is to ask your mail
+The best way to get mail server information is to ask your mail
 server admin. If you are the mail server admin, or need information in a
 hurry, you can use the ``netstat`` command. This example shows all active
 servers on your system, and the ports they are listening on. The SMTP server is
@@ -335,16 +337,16 @@ listening on localhost port 25.
 * 995/tcp/udp is encrypted pop3s
 
 
-**Question**: How can I determine if the SMTP server supports the SMTPS
-protocol?
+How can I determine if the SMTP server supports the SMTPS protocol?
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-**Answer**: A good indication that the SMTP server supports the SMTPS protocol
+A good indication that the SMTP server supports the SMTPS protocol
 is that it is listening on the `submissions` port **465**.
 
-**Question**: How can I determine what authorization and encryption protocols
-the mail server supports?
+How can I determine what authorization and encryption protocols the mail server supports?
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-**Answer**: SMTP servers usually announce the availability of STARTTLS
+SMTP servers usually announce the availability of STARTTLS
 immediately after a connection has been established. You can easily check this
 using the ``telnet`` command.
 
@@ -374,9 +376,10 @@ using the ``telnet`` command.
 
 .. _TLSPeerVerification:
 
-**Question**: How can I send mail using self-signed certificates or use STARTTLS with self signed certificates?
+How can I send mail using self-signed certificates or use STARTTLS with self signed certificates?
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-**Answer**: To disable peer verification or to use self signed certificates, add the following
+To disable peer verification or to use self signed certificates, add the following
 to your ``config/config.php``::
 
     "mail_smtpstreamoptions" => array(
@@ -387,9 +390,11 @@ to your ``config/config.php``::
         )
     ),
 
-**Question**: All emails keep getting rejected even though only one email address is invalid.
 
-**Answer**: Partial sending, i. e. sending to all but the faulty email address is not possible.
+All emails keep getting rejected even though only one email address is invalid.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Partial sending, i. e. sending to all but the faulty email address is not possible.
 
 Enabling debug mode
 -------------------
