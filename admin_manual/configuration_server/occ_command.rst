@@ -1202,8 +1202,8 @@ Trashbin
 ::
 
  trashbin
-  trashbin:cleanup  [--all-users] [--] [<user_id>...]  Remove deleted files
-  trashbin:restore  [--all-users] [--] [<user_id>...]  Restore deleted files
+  trashbin:cleanup  [--all-users] [--] [<user_id>...]  Permanently remove deleted files
+  trashbin:restore  [--all-users] [--scope[=SCOPE]] [--since[=SINCE]] [--until[=UNTIL]] [--dry-run] [--] [<user_id>...]  Restore deleted files according to the given filters
 
 .. note::
   This command is only available when the "Deleted files" app
@@ -1229,16 +1229,36 @@ This example removes the deleted files of users molly and freda::
  Remove deleted files of   molly
  Remove deleted files of   freda
 
-The ``trashbin:restore  [--all-users] [--] [<user_id>...]`` command restores the deleted files of the specified
+The ``trashbin:restore  [--all-users] [--scope[=SCOPE]] [--since[=SINCE]] [--until[=UNTIL]] [--dry-run] [--] [<user_id>...]`` command restores the deleted files of the specified
 users in a space-delimited list, or all users if --all-users is specified.
 
-This example restores the deleted files of all users::
+This example restores the deleted user-files of all users::
 
  sudo -u www-data php occ trashbin:restore --all-users
 
-This example restores the deleted files of users molly and freda::
+This example restores the deleted user-files of users molly and freda::
 
  sudo -u www-data php occ trashbin:restore molly freda
+
+The ``--scope`` option can be used to limit the restore to a specific scope.
+Possible values are "user", "groupfolders" or "all" [default: "user"].
+
+This example restores the deleted files of all groupfolders which are visible to the user freda::
+
+  sudo -u www-data php occ trashbin:restore --scope groupfolders freda
+
+The ``--since`` and ``--until`` options can be used to limit the restore to files deleted inside of the given time period.
+
+This example restores the locally deleted files and files of any groupfolders which are visible to the user
+freda. Additionally the files have to be deleted between ``01.08.2023 11:55:22`` and ``02.08.2023 01:33``::
+
+  sudo -u www-data php occ trashbin:restore --scope all --since "01.08.2023 11:55:22" --until "02.08.2023 01:33" freda
+
+The ``--dry-run`` option can be used to simulate the restore without actually restoring the files.
+ 
+.. note::
+  You can use the verbose options (``-v`` or ``-vv``) to get more information about 
+  the restore process and why some files might be skipped.
 
 .. _user_commands_label:
 
