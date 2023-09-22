@@ -7,6 +7,103 @@ Integration of custom calendar providers
 
 Nextcloud apps can register calendars in addition to the internal calendars of the Nextcloud CalDAV back end. Calendars are only loaded on demand, therefore a lazy provider mechanism is used.
 
+The access to the calendars is possible in two ways: the legacy way uses the classes of the DAV app directly to interact with Sabre. In order to simplify access, the Nextcloud team has started some effort to include the Sabre interface in an embedded interface in Nextcloud. However, there are a few shortcomings here that are not not yet finished.
+
+If you work on a new app and want to provide a calendar, check if the embedded code suits your requirements. If it does, it might be simpler to use it than to use the legacy Sabre interface.
+
+All snippets are prefixed by ``<?php`` to make you aware that this is still php code (and enable the code styling in this document). Of course, you do not need to repeat the opening tags.
+
+Registering the calendar with the Nextcloud API interface
+---------------------------------------------------------
+
+At the time of writing, the support by the Nextcloud calender to provide a custom app is limited. Read-only calendars are possible while writable calenders require a bit more work on your side.
+
+Read-only support
+~~~~~~~~~~~~~~~~~
+
+To provide calendar(s) you have to write a class that implements the ``OCP\Calendar\ICalendarProvider`` interface.
+
+.. code-block:: php
+
+    <?php
+
+    use OCP\Calendar\ICalendarProvider;
+
+    class CalendarProvider implements ICalendarProvider {
+
+        public function getCalendars(string $principalUri, array $calendarUris = []): array {
+            $calendars = [];
+            // TODO: Run app specific logic to find calendars that belong to
+            //       $principalUri and fill $calendars
+
+            // The provider can simple return an empty array if there is not
+            // a single calendar for the principal URI
+            if (empty($calendars)) {
+                return [];
+            }
+
+            // Return instances of \OCP\Calendar\ICalendar
+            return $calendars;
+        }
+    }
+
+This ``CalendarProvider`` class is then registered in the :ref:`register method of your Application class<Bootstrapping>` with ``$context->registerCalendarProvider(CalendarProvider::class);``.
+
+
+Write support
+~~~~~~~~~~~~~
+
+Calendars that only return `ICalendar` are implicitly read-only. If your app's calendars can be written to, you may implement the ``ICreateFromString`` interface. It will allow other apps to write calendar objects to the calendar by passing the raw iCalendar data as string.
+
+.. code-block:: php
+
+    <?php
+
+    use OCP\Calendar\ICreateFromString;
+
+    class CalendarReadWrite implements ICreateFromString {
+
+        // ... other methods from ICalendar still have to be implemented ...
+
+        public function createFromString(string $name, string $calendarData): void {
+            // Write data to your calendar representation
+        }
+
+    }
+
+Handling iMIP data 
+~~~~~~~~~~~~~~~~~~
+
+You may implement the ``IHandleIMipMessage`` interface to process iMIP data you receive in a client and want to pass on for processing to the backend. 
+
+Please be aware that there are some security considerations to take into account. You can find more infomation on these and the conditions that have to be fulfilled for iMIP data to be processed in the `RFC <https://www.rfc-editor.org/rfc/rfc6047>`_
+
+.. code-block:: php
+
+    <?php
+
+    use OCP\Calendar\IHandleIMipMessage;
+
+    class HandleIMipMessage implements IHandleIMipMessage {
+
+        public function handleIMipMessage(string $name, string $calendarData): void {
+            // Validation and write to your calendar representation
+        }
+
+    }
+
+Access through CalDAV
+~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 27
+
+As with the built-in calendars, calendars provided by ``ICalendarProvider`` can be accessed using CalDAV. Therefore, permissions of the ``ICalendar`` are automatically mapped to the DAV object.
+Write support is also supported. Please note that deleting entities is currently implemented by setting the entity to the canceled state and passing it to the ``createFromString`` method.
+
+
+Legacy access to the Sabre classes
+----------------------------------
+
 In order to allow an app to publish calendar entries, they have to interact with the Sabre WebDAV server integrated with the core. This dictates a well-defined structure for the app to use as an interface:
 
 There are classes and interfaces to connect with the WebDAV server. To combine the required interfaces, there are abstract classes prepared by the DAV app that centralizes these access requests. For an app to provide a custom calendar that means that in fact three classes need to be defined and all inherited methods need to be implemented:
@@ -20,8 +117,6 @@ There are classes and interfaces to connect with the WebDAV server. To combine t
 Please note that CalDAV bases on WebDAV. WebDAV is a standardized way to access files over a network connection. Thus, the same notions are applied when handling calendars (and contacts). A calendar is mapped to a folder while an event in a calendar is mapped to a (relative) file. Keeping this in mind will allow you to get the principles of the API faster.
 
 In the following sections, all these parts are considered separately. As there are quite some methods to be implemented, first the general structure of the classes are presented without implementing the abstract methods. Then, the methods are handled in groups to simplify reading.
-
-All snippets are prefixed by ``<?php`` to make you aware that this is still php code (and enable the code styling in this document). Of course, you do not need to repeat the opening tags.
 
 The calendar object class
 -------------------------
@@ -640,84 +735,3 @@ As a last step, you must register the calendar provider in your ``info.xml``. Wi
             <plugin>OCA\YourAppName\DAV\CalendarPlugin</plugin>
         </calendar-plugins>
     </sabre>
-
-Appendix: Registering the calendar with the PHP API interface
--------------------------------------------------------------
-
-Additionally to the registration in the DAV app, the core provides another way to register a calendar.
-
-.. note:: Currently, the PHP API is not used by the DAV app. Any registered calendar will not automatically show up in the calendar's view or the CalDAV list. This might change in the future, thus it might be a good idea to provide this interface as well.
-
-Read-only support
-~~~~~~~~~~~~~~~~~
-
-To provide calendar(s) you have to write a class that implements the ``OCP\Calendar\ICalendarProvider`` interface.
-
-.. code-block:: php
-
-    <?php
-
-    use OCP\Calendar\ICalendarProvider;
-
-    class CalendarProvider implements ICalendarProvider {
-
-        public function getCalendars(string $principalUri, array $calendarUris = []): array {
-            $calendars = [];
-            // TODO: Run app specific logic to find calendars that belong to
-            //       $principalUri and fill $calendars
-
-            // The provider can simple return an empty array if there is not
-            // a single calendar for the principal URI
-            if (empty($calendars)) {
-                return [];
-            }
-
-            // Return instances of \OCP\Calendar\ICalendar
-            return $calendars;
-        }
-    }
-
-This ``CalendarProvider`` class is then registered in the :ref:`register method of your Application class<Bootstrapping>` with ``$context->registerCalendarProvider(CalendarProvider::class);``.
-
-
-Write support
-~~~~~~~~~~~~~
-
-Calendars that only return `ICalendar` are implicitly read-only. If your app's calendars can be written to, you may implement the ``ICreateFromString`` interface. It will allow other apps to write calendar objects to the calendar by passing the raw iCalendar data as string.
-
-.. code-block:: php
-
-    <?php
-
-    use OCP\Calendar\ICreateFromString;
-
-    class CalendarReadWrite implements ICreateFromString {
-
-        // ... other methods from ICalendar still have to be implemented ...
-
-        public function createFromString(string $name, string $calendarData): void {
-            // Write data to your calendar representation
-        }
-
-    }
-
-Handling iMIP data 
-~~~~~~~~~~~~~~~~~~
-
-You may implement the ``IHandleIMipMessage`` interface to process iMIP data you receive in a client and want to pass on for processing to the backend. 
-
-Please be aware that there are some security considerations to take into account. You can find more infomation on these and the conditions that have to be fulfilled for iMIP data to be processed in the `RFC <https://www.rfc-editor.org/rfc/rfc6047>`_
-
-.. code-block:: php
-
-    <?php
-
-    use OCP\Calendar\IHandleIMipMessage;
-
-    class HandleIMipMessage implements IHandleIMipMessage {
-
-        public function handleIMipMessage(string $name, string $calendarData): void {
-            // Validation and write to your calendar representation
-        }
-
-    }
