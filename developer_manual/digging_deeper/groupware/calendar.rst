@@ -104,6 +104,13 @@ The returned objects implement ``\OCP\Calendar\ICalendar``. Study the interface 
 
 .. note:: All calendars are by default only readable, therefore ``ICalendar`` does not offer methods for mutation. Some of the calendars are mutable, however, and they may further extend the interface ``\OCP\Calendar\ICreateFromString``.
 
+Calendar providers
+-------------------
+
+The Nextcloud groupware integration provides access to internal calendars.
+It is, however, for third party apps possible to provide individual calenders.
+The section :ref:`Integration of custom calendar providers<calendar-providers>` describes on how to implement a provider within the Nextcloud server.
+
 Resources
 ---------
 
