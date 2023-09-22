@@ -17,7 +17,7 @@ There are classes and interfaces to connect with the WebDAV server. To combine t
 
 .. note:: Please be aware that this section uses the classes in ``\OCA\DAV`` which is by definition no public interface. Once there is a central solution presented, this should be updated.
 
-Please note that CalDAV bases on WebDAV. WebDAV is a standardized way to access files over a network connection. Thus, the same notions are applied when handling calendars (and contacts). A calendar is mapped to a folder while an event in a calendar is mapped to a (relative) file. Having thin in your ind will allow you to get the principles of the API faster.
+Please note that CalDAV bases on WebDAV. WebDAV is a standardized way to access files over a network connection. Thus, the same notions are applied when handling calendars (and contacts). A calendar is mapped to a folder while an event in a calendar is mapped to a (relative) file. Keeping this in mind will allow you to get the principles of the API faster.
 
 In the following sections, all these parts are considered separately. As there are quite some methods to be implemented, first the general structure of the classes are presented without implementing the abstract methods. Then, the methods are handled in groups to simplify reading.
 
@@ -26,7 +26,7 @@ All snippets are prefixed by ``<?php`` to make you aware that this is still php 
 The calendar object class
 -------------------------
 
-There need to be a class that represents a single entry in a calendar. The naming of said class can be arbitrary, it must however implement the interfaces ``\Sabre\CalDAV\ICalendarObject`` and ``\Sabre\CalDAV\IACL``. The basic structure looks like this:
+There needs to be a class that represents a single entry in a calendar. The naming of said class is arbitrary, it must however implement the interfaces ``\Sabre\CalDAV\ICalendarObject`` and ``\Sabre\CalDAV\IACL``. The basic structure looks like this:
 
 .. code-block:: php
 
@@ -173,9 +173,9 @@ The actual calendar entry can be obtained by the ``get`` method. This must for s
         throw new \Sabre\DAV\Exception\Forbidden('This calendar-object is read-only');
     }
 
-It is possible the client tries to update teh appointment with the ``put`` method.
+It is possible that the client tries to update the event with the ``put`` method.
 
-In this example, no update is considered. If you plan to allow for that, you are responsible to parse and store the appropriate data in whatever location.
+In this example, we consider the event read- only, so we throw an exception if a client tries to update it. If you are planning to allow clients to update events, you need to implement the parsing, validation and saving of data.
 
 Access restrictions -- IACL
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -233,9 +233,8 @@ Updating the ACLs could be handled with the ``setACL`` method. This example assu
 The calendar class
 ------------------
 
-As mentioned earlier, a single calendar needs to be represented as its own class. Similar to the calendar entity class, the naming is completely irrelevant. It essentially needs to extend the ``OCA\DAV\CalDAV\Integration\ExternalCalendar`` class.
+A single calendar needs to be represented as its own class. As with the calendar entity class, you can choose any name for your class. Extend the ``OCA\DAV\CalDAV\Integration\ExternalCalendar`` class:
 
-An incomplete skeleton of such a calendar class is presented here that will be filled in the following paragraphs piece by piece:
 
 .. code-block:: php
 
@@ -305,7 +304,7 @@ A fallback is to provide the value ``null`` as return value. This tells that the
 Entries in the calendar -- ICollection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The interface ``\Sabre\DAV\ICollection`` defines methods to access children of the current node. For calendars, the children are in fact the appointments stored within the calendar. Again, some methods are already covered, so here only the required methods are implemented.
+The interface ``\Sabre\DAV\ICollection`` defines methods to access children of the current node. For calendars, the children are in fact the events stored within the calendar. Again, some methods are already covered, so here only the required methods are implemented.
 
 All calendar entries do have a unique name. This is just a plain string. Typically these are named as ``.ics`` files.
 
@@ -318,7 +317,7 @@ All calendar entries do have a unique name. This is just a plain string. Typical
         // return "\"$etag\"";
     }
 
-This method is used to store new appointments to the calendar. One could return return an ETag of the calendar appointment as a string that contains double quotes as sketched in the comment.
+This method is used to store new events to the calendar. One could return return an ETag of the calendar event as a string that contains double quotes as sketched in the comment.
 
 .. code-block:: php
 
@@ -326,10 +325,11 @@ This method is used to store new appointments to the calendar. One could return 
     
     function childExists($name) {
         // Check if the value of $name represents a valid calendar entry name.
-        return $name === 'test.ics';
+        // You can check your backend(s) for the child
+        // then return a boolean
     }
 
-The ``childExists`` method checks if a certain element is present in the calendar. In this example we have only one event called ``test.ics``.
+The ``childExists`` method checks if a certain element is present in the calendar.
 
 .. code-block:: php
 
@@ -359,14 +359,14 @@ The method allows to request a specific entry and extract it from the calendar.
         return $children;
     }
 
-Finally, there is a class to fetch all appointments of a calendar.
+Finally, there is a class to fetch all events of a calendar.
 
 .. note:: For the sake of simplicity, here only a static array is used. One could however query a database or the file system for a variable number of entries in the calendar.
 
 Querying the calendar -- ICalendarObjectContainer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For calendar entries it makes little sense to query all and sort on the client the relevant ones. Instead, the client requests a certain set of objects (like the last 90 days) and the server will do the filtering. This can be achieved by the ``\Sabre\CalDAV\ICalendarObjectContainer`` interface.
+It would be very resource intensive to request all events of a calendar only to then discard most of them during filtering. Instead, the client requests a certain set of objects (like the last 90 days) and the server will do the filtering. This can be achieved by the ``\Sabre\CalDAV\ICalendarObjectContainer`` interface.
 
 .. code-block:: php
 
@@ -457,12 +457,12 @@ In this example, no updates of the ACL rules are allowed. Thus, an exception is 
         return null;
     }
 
-The supported privileges can be overwritten by implementing this method. When returning ``null`` the default by Sabre is used which is fine for many tasks. See also the documentation of Sabre on this.
+The supported privileges can be overwritten by implementing this method. When returning ``null``, the Sabre default is used which is fine for many tasks. Please also take a look at the [Sabre Documentation](https://sabre.io/dav/acl/) for more information.
 
 Properties of the external calendar -- IProperties
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Finally, there are some properties of a calendar to be specified. The CalDAV interface allows here for a rather generic interface. You will have to visit the details of the CalDAV standard on what properties make sense for you.
+You will be able to specify some calendar properties. The CalDAV interface allows for a rather generic interface. You will have to check the details of the CalDAV standard on what properties make sense for you.
 
 .. code-block:: php
 
@@ -477,7 +477,7 @@ Finally, there are some properties of a calendar to be specified. The CalDAV int
         ];
     }
 
-Here a basic stub of calendar properties are provided. It is a basic name, a color and the setting to allow both appointments (``VEVENT``) and tasks (``VTODO``) in the calendar.
+Here a basic stub of calendar properties are provided. It is a basic name, a color and the setting to allow both events (``VEVENT``) and tasks (``VTODO``) in the calendar.
 
 .. code-block:: php
 
@@ -530,13 +530,13 @@ The last class that needs to be implemented is the *plugin* class.
 
 The calendar plugin class needs to implement the interface ``\OCA\DAV\CalDAV\Integration\ICalendarProvider`` that defines some methods to query the list of calendars an app can provide.
 
-The method ``getAppId`` is mainly for accounting and returns the name of the app.
+The method ``getAppId`` returns the name of the app.
 
-The method ``fetchAllForCalendarHome`` returns a list of all calendars class instance that the app knows of. In this example only one calendar is registered. By adding further entries to the array, more calendars can be made available.
+The method ``fetchAllForCalendarHome`` returns a list of all `Calendars`  that the app knows of.
 
-Note the ``principalUri`` is passed by the caller while the ``calendarUri`` in the constructor of the calendar instance is just some (relative) uri (string) that identifies the calender uniquely. It can then be used in the calendar class to extract the appropriate entries that should be present in the calendar.
+Note  that the ``principalUri`` is passed by the caller, while the ``calendarUri`` in the constructor of the calendar instance is a (relative) uri (string) that identifies the calender uniquely. The uri can then be used in the calendar class to extract the appropriate entries that should be present in the calendar.
 
-Again, there is a function ``hasCalendarInCalendarHome`` that checks if a certain combination of ``principalUri`` and ``calendarUri`` are existing. Here, it is just hard-coded to exactly one calendar.
+The function ``hasCalendarInCalendarHome`` checks if a certain combination of ``principalUri`` and ``calendarUri`` exist. Here, it is just hard-coded to exactly one calendar, but in your own implementation you should do more stringent checks.
 
 Finally, there is a function to query for a single calendar instance using ``getCalendarInCalendarHome``. It returns a single calendar instance or ``null`` if no matching calendar is found.
 
@@ -597,7 +597,7 @@ This ``CalendarProvider`` class is then registered in the :ref:`register method 
 Write support
 ~~~~~~~~~~~~~
 
-Calendars that only return `ICalendar` are implicitly read-only. If your app's calendars can be written to, you may implement the ``ICreateFromString``. It will allow other apps to write calendar objects to the calendar by passing the raw iCalendar data as string.
+Calendars that only return `ICalendar` are implicitly read-only. If your app's calendars can be written to, you may implement the ``ICreateFromString`` interface. It will allow other apps to write calendar objects to the calendar by passing the raw iCalendar data as string.
 
 .. code-block:: php
 
