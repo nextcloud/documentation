@@ -97,9 +97,9 @@ adjust your php.ini and file rights.
   su -c "chmod a+rx data/"
   su -c "chmod a+w data/nextcloud.log"
 
-Running unit tests for the Nextcloud core project
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The core project provides core unit tests using different database backends like sqlite, mysql, pgsql, oci (for Oracle).
+Running unit tests for the Nextcloud server project
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The server project provides server unit tests using different database backends like sqlite, mysql, pgsql, oci (for Oracle).
 Every database to test needs to accessible either
 
 - natively, setup with
@@ -133,10 +133,10 @@ Further reading
 - https://www.youtube.com/watch?v=4E4672CS58Q&feature=bf_prev&list=PLBDAB2BA83BB6588E
 - Clean Code: A Handbook of Agile Software Craftsmanship (Robert C. Martin)
 
-JavaScript unit testing for core
---------------------------------
+JavaScript unit testing for server
+----------------------------------
 
-JavaScript Unit testing for **core** and **core apps** is done using the `Karma <http://karma-runner.github.io>`_ test runner with `Jasmine <https://jasmine.github.io/>`_.
+JavaScript Unit testing for **server** and **server apps** is done using the `Karma <http://karma-runner.github.io>`_ test runner with `Jasmine <https://jasmine.github.io/>`_.
 
 Installing Node JS
 ^^^^^^^^^^^^^^^^^^

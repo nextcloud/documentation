@@ -29,7 +29,7 @@ from conf import *
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions += ['sphinx.ext.todo', 'rst2pdf.pdfbuilder', 'sphinx.ext.intersphinx', 'sphinxcontrib.phpdomain', 'sphinx_toolbox.collapse']
+extensions += ['sphinx.ext.todo', 'rst2pdf.pdfbuilder', 'sphinx.ext.intersphinx', 'sphinxcontrib.phpdomain', 'sphinx_toolbox.collapse', 'sphinx_reredirects']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['../_shared_assets/templates']
@@ -313,4 +313,15 @@ html_context['theme_vcs_pageview_mode'] += current_docs
 
 highlight_options = {
   'php': {'startinline': True},
+}
+
+# Redirect old URLs
+# https://documatt.gitlab.io/sphinx-reredirects/usage.html
+redirects = {
+  "core/index": "../server",
+  "core/code-back-end": "../server/code-back-end.html",
+  "core/code-front-end": "../server/code-front-end.html",
+  "core/externalapi": "../server/externalapi.html",
+  "core/static-analysis": "../server/static-analysis.html",
+  "core/unit-testing": "../server/unit-testing.html"
 }
