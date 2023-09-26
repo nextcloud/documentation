@@ -58,6 +58,8 @@ Added APIs
 * ``\OCP\Preview\BeforePreviewFetchedEvent::getHeight``
 * ``\OCP\Preview\BeforePreviewFetchedEvent::getMode``
 * ``\OCP\Preview\BeforePreviewFetchedEvent::getWidth``
+* ``\OCP\IPhoneNumberUtil::convertToStandardFormat`` to convert input into an E164 formatted phone number. See :ref:`phonenumberutil` for an example.
+* ``\OCP\IPhoneNumberUtil::getCountryCodeForRegion`` to get the E164 country code for a given region. See :ref:`phonenumberutil` for an example.
 
 Changed APIs
 ^^^^^^^^^^^^
