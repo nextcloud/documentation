@@ -848,7 +848,7 @@ A controller method that turns off all checks would look like this:
 Rate limiting
 -------------
 
-Nextcloud supports rate limiting on a controller method basis. By default controller methods are not rate limited. Rate limiting should be used on expensive or security sensitive functions (e.g. password resets) to increase the overall security of your application.
+Nextcloud supports rate limiting on a controller method basis and in a :ref:`programmatic way<programmatic-rate-limiting>`. By default controller methods are not rate limited. Rate limiting should be used on expensive or security sensitive functions (e.g. password resets) to increase the overall security of your application.
 
 The native rate limiting will return a 429 status code to clients when the limit is reached and a default Nextcloud error page. When implementing rate limiting in your application, you should thus consider handling error situations where a 429 is returned by Nextcloud.
 
