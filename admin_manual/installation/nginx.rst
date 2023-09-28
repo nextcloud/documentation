@@ -123,7 +123,7 @@ Upload of files greater than 10 MiB fails
 
 If you configure nginx (globally) to block all requests to (hidden) dot files,
 it may be not possible to upload files greater than 10 MiB using the webpage
-due to Nextclouds requirement to upload the file to an url ending with ``/.file``.
+due to Nextclouds requirement to upload the file to a URL ending with ``/.file``.
 
 You may require to change:
 

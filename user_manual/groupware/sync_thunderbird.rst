@@ -83,7 +83,7 @@ The old method: Manually subscribing to calendars
 
 This method is only needed if you don't want to install TBSync.
 
-#. Go to your Nextcloud Calendar and click on the 3 dots menu for the calendar that you want to synchronize which will display an URL that looks something like this:
+#. Go to your Nextcloud Calendar and click on the 3 dots menu for the calendar that you want to synchronize which will display a URL that looks something like this:
 
    ``https://cloud.nextcloud.com/remote.php/dav/calendars/daniel/personal/``
 

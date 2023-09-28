@@ -431,7 +431,7 @@ This event is triggered when an app is disabled.
 
 .. versionadded:: 20
 
-Emitted before the rendering step of each TemplateResponse. The event holds a flag that specifies if an user is logged in.
+Emitted before the rendering step of each TemplateResponse. The event holds a flag that specifies if a user is logged in.
 
 ``\OCP\Authentication\Events\LoginFailedEvent``
 ***********************************************
