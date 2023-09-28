@@ -103,7 +103,7 @@ It may also be wise to choose a proper JavaScript framework like AngularJS which
 Clickjacking
 ------------
 
-`Clickjacking <https://en.wikipedia.org/wiki/Clickjacking>`_ tricks the user to click into an invisible iframe to perform an arbitrary action (e.g. delete an user account)
+`Clickjacking <https://en.wikipedia.org/wiki/Clickjacking>`_ tricks the user to click into an invisible iframe to perform an arbitrary action (e.g. delete a user account)
 
 To prevent such attacks Nextcloud sends the `X-Frame-Options` header to all template responses. Don't remove this header if you don't really need it!
 

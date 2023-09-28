@@ -181,7 +181,7 @@ This when the primary color is e.g. set to ``#000000`` the ``color-elemenet-dark
 Text and icons on these elements should use ``color-text``.
 
 
-The background value can either be an URL to the background image or a hex color value.
+The background value can either be a URL to the background image or a hex color value.
 
 Direct Download
 ---------------
