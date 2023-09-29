@@ -157,6 +157,13 @@ Supported properties
 |                               | | Should return the list of lock, but           |                                                                                      |
 |                               | | always return an empty response.              |                                                                                      |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
+| <d:quota-available-bytes />   | Amount of available bytes in the folder.        | | ``3950773``                                                                        |
+|                               |                                                 | | ``-1`` Uncomputed free space.                                                      |
+|                               |                                                 | | ``-2`` Unknown free space.                                                         |
+|                               |                                                 | | ``-3`` Unlimited free space.                                                       |
++-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
+| <d:quota-used-bytes />        | Amount of bytes used in the folder.             | ``3950773``                                                                          |
++-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <d:supportedlock />           | | Dummy endpoint for class 2 WebDAV support.    | | ``<d:lockentry>``                                                                  |
 |                               | | Always provide the same lock capabilities.    | |     ``<d:lockscope><d:exclusive /></d:lockscope>``                                 |
 |                               | |                                               | |     ``<d:locktype><d:write /></d:locktype></d:lockentry>``                         |
@@ -247,13 +254,6 @@ Supported properties
 | <oc:size />                   | | Unlike ``getcontentlength``, this property    | ``127815235``                                                                        |
 |                               | | also works for folders, reporting the size of |                                                                                      |
 |                               | | everything in the folder. Size is in bytes.   |                                                                                      |
-+-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <oc:quota-used-bytes />       | Amount of bytes used in the folder.             | ``3950773``                                                                          |
-+-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <oc:quota-available-bytes />  | Amount of available bytes in the folder.        | | ``3950773``                                                                        |
-|                               |                                                 | | ``-1`` Uncomputed free space.                                                      |
-|                               |                                                 | | ``-2`` Unknown free space.                                                         |
-|                               |                                                 | | ``-3`` Unlimited free space.                                                       |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:rich-workspace-file />    | The id of the workspace file.                   | `3456`                                                                               |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
