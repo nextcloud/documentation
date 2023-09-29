@@ -367,6 +367,14 @@ It makes sense to apply some general tips from the beginning, so you don't have 
     <?php
     $table->addUniqueIndex(['your', 'column', 'names', '...'], 'table_name_uniq_feature');
 
+Querying the database provider
+------------------------------
+
+If you would like to find out which database your app is runnning on, use the ``IDBConnection::getDatabaseProvider`` method.
+This can be helpful in cases where specific databases have their own
+requirements, such as Oracle limiting ``IN``- queries to 1000 expressions.
+
+
 Supporting more databases
 -------------------------
 
