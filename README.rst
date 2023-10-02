@@ -126,10 +126,9 @@ Using pipenv
 ^^^^^^^^^^^^
 
 1. Install ``pipenv`` - https://pipenv.readthedocs.io/en/latest/
-2. Create a Python environment (typically inside this repository): ``pipenv --python 3.9``
-3. Change into the environment: ``pipenv shell``
-4. Install the dependencies ``pip install -r requirements.txt``
-5. Now you can use ``make ...`` to build all the stuff - for example ``make html`` to build the HTML flavor of all manuals
+2. Change into the environment: ``pipenv shell``
+3. Install the dependencies ``pip install -r requirements.txt``
+4. Now you can use ``make ...`` to build all the stuff - for example ``make html`` to build the HTML flavor of all manuals
    The build assets will be put into the individual documentation subdirectories like ``developer_manual/_build/html/com``
 
 To change into this environment you need to run ``pipenv shell`` to launch the shell and to exit you can use either ``exit`` or ``Ctrl`` + ``D``.
