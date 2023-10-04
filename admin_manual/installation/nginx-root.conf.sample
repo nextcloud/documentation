@@ -186,6 +186,12 @@ server {
     location /remote {
         return 301 /remote.php$request_uri;
     }
+    # fix 405 error on posts that are passwd as pritty URL
+    error_page 405 =200 @post_static ;   #/index.php/$request_uri;
+    location @post_static {
+         proxy_pass https://$server_name/index.php/$request_uri ;
+         proxy_redirect off;
+    }
 
     location / {
         try_files $uri $uri/ /index.php$request_uri;
