@@ -35,9 +35,9 @@ Inside your database layer class you can now start running queries like:
                    $qb->expr()->eq('id', $qb->createNamedParameter($id, IQueryBuilder::PARAM_INT))
                );
 
-            $cursor = $qb->execute();
-            $row = $cursor->fetch();
-            $cursor->closeCursor();
+            $result = $qb->executeQuery();
+            $row = $result->fetchAssociative();
+            $result->closeCursor();
 
             return $row;
         }
@@ -183,9 +183,9 @@ To create a mapper, inherit from the mapper base class and call the parent const
                    $qb->expr()->eq('name', $qb->createNamedParameter($name, IQueryBuilder::PARAM_STR))
                );
 
-            $cursor = $qb->execute();
-            $row = $cursor->fetch();
-            $cursor->closeCursor();
+            $result = $qb->executeQuery();
+            $row = $result->fetchAssociative();
+            $result->closeCursor();
 
             return $row['count'];
         }
