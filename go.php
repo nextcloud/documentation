@@ -4,6 +4,7 @@
 ############## Adjust when editing docs ##################
 
 $mapping = array(
+    'admin'                   => '/admin_manual',
     'admin-2fa'               => '/admin_manual/configuration_user/two_factor-auth.html',
     'admin-antivirus-configuration'     => '/admin_manual/configuration_server/antivirus_configuration.html',
     'admin-background-jobs'   => '/admin_manual/configuration_server/background_jobs_configuration.html',
@@ -50,6 +51,7 @@ $mapping = array(
     'developer-manual'        => '/developer_manual',
     'developer-theming'       => '/developer_manual/core/theming.html',
 
+    'user'                    => '/user_manual',
     'user-2fa'                => '/user_manual/en/user_2fa.html',
     'user-encryption'         => '/user_manual/en/files/encrypting_files.html',
     'user-files'              => '/user_manual/en/files/index.html',
