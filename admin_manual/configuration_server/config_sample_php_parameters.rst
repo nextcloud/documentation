@@ -2797,6 +2797,22 @@ WARNING: USE THIS ONLY IF YOU KNOW WHAT YOU ARE DOING.
 
 Defaults to ``array('.htaccess')``
 
+forbidden_chars
+^^^^^^^^^^^^^^^
+
+
+::
+
+	'forbidden_chars' => [],
+
+Blacklist characters from being used in filenames. This is useful if you
+have a filesystem or OS which does not support certain characters like windows.
+
+Example for windows systems: ``array('?', '<', '>', ':', '*', '|', '"', chr(0), "\n", "\r")``
+see https://en.wikipedia.org/wiki/Comparison_of_file_systems#Limits
+
+Defaults to ``array()``
+
 theme
 ^^^^^
 
