@@ -14,8 +14,33 @@ We will update and document the new files app APIs and methods here.
 .. note:: Some external libraries offers in-depth technical documentation.
     Please have a look at the following:
 
-    * https://github.com/nextcloud/nextcloud-files (`documentation <https://nextcloud.github.io/nextcloud-files/>`__)
-    * https://github.com/nextcloud/nextcloud-upload
+    * https://github.com/nextcloud-libraries/nextcloud-event-bus (`documentation <https://nextcloud-libraries.github.io/nextcloud-event-bus>`__)
+    * https://github.com/nextcloud-libraries/nextcloud-files (`documentation <https://nextcloud-libraries.github.io/nextcloud-files>`__)
+    * https://github.com/nextcloud-libraries/nextcloud-upload (`documentation <https://nextcloud-libraries.github.io/nextcloud-upload>`__)
+
+
+Events
+^^^^^^
+
+To listen to files or folder changes or to trigger changes, you need to use
+the ``event-bus`` and use the following events:
+
+  * ``files:node:created``: the node has been created
+  * ``files:node:deleted``: the node has been deleted
+  * ``files:node:moved``: the node has been moved (and its data is already updated)
+  * ``files:node:updated``: the node data has been updated
+
+Example
+-------
+
+.. code-block:: ts
+
+  import type { Node } from '@nextcloud/files'
+  import { subscribe } from '@nextcloud/event-bus'
+
+  subscribe('files:node:created', (node: Node) => {
+    console.log('Node created', node)
+  })
 
 
 Router
