@@ -391,6 +391,18 @@ knowledgebaseenabled
 ``true`` enables the Help menu item in the user menu (top right of the
 Nextcloud Web interface). ``false`` removes the Help item.
 
+knowledgebase.embedded
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'knowledgebase.embedded' => false,
+
+``true`` embeds the documentation in an iframe inside Nextcloud.
+
+``false`` only shows buttons to the online documentation.
+
 allow_user_to_change_display_name
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
