@@ -86,6 +86,6 @@ Every external storage, which is using user specific authentication, is connecte
 Even if several users connect to the same folder, the files are regarded as separate files per user.
 Nextcloud can not recognize if two users access the very same file if they follow individual connections. 
 
-This has an influence on e.g. file locking as a locked individual file is not shown as locked to other users.
+This has an influence on e.g. file locking as a locked individual file is not shown as locked to other users or users cannot collaboratively edit documents.
 
 If collaborative working on external storage is required, the authentication "Global credentials" has to be used.
