@@ -57,7 +57,31 @@ Back-end changes
 PHP 8.3
 ^^^^^^^
 
-In this release support for PHP 8.3 was added. See release notes from PHP about new deprecations.
+In this release support for PHP 8.3 was added. Follow the steps below to make your app compatible.
+
+1. If ``appinfo/info.xml`` has a dependency specification for PHP, increase the ``max-version`` to 8.3.
+
+.. code-block:: xml
+
+  <dependencies>
+    <php min-version="8.0" max-version="8.3" />
+    <nextcloud min-version="26" max-version="28" />
+  </dependencies>
+
+
+2. If your app has a ``composer.json`` and the file contains the PHP restrictions from ``info.xml``, adjust it as well.
+
+.. code-block:: json
+
+  {
+    "require": {
+      "php": ">=8.0 <=8.3"
+    }
+  }
+
+3. If you have :ref:`continuous integration <app-ci>` set up, extend your test matrix with PHP 8.3 tests and linters.
+
+Information about code changes can be found on `php.net <https://www.php.net/migration83>`__ and `stitcher.io <https://stitcher.io/blog/new-in-php-83>`__.
 
 Development dependency hell
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
