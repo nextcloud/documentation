@@ -54,6 +54,11 @@ Removed APIs
 Back-end changes
 ----------------
 
+PHP 8.3
+^^^^^^^
+
+In this release support for PHP 8.3 was added. See release notes from PHP about new deprecations.
+
 Development dependency hell
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
