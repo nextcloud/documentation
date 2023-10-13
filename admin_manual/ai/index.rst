@@ -35,20 +35,6 @@ Overview of AI features
    "","`OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_","Red","No","No","No","No"
    "","`OpenAI and LocalAI integration (via LocalAI) <https://apps.nextcloud.com/apps/integration_openai>`_","Green","Yes","Yes","Yes","Yes"
 
-Features
---------
-
-Some of our AI features are realized as generic APIs that any app can provide an implementation for by registering a provider. These are
-Machine translation, Speech-To-Text and Text processing.
-
-Machine translation
-^^^^^^^^^^^^^^^^^^^
-As you can see in the table above we have multiple apps offering machine translation capabilities. Each app brings its own set of supported languages.
-In downstream apps like the Text app, users can use the translation functionality regardless of which app implements it behind the scenes.
-
-Speech-To-Text
-^^^^^^^^^^^^^^
-As you can see in the table above we have multiple apps offering Speech-To-Text capabilities. In downstream apps like the Talk app, users can use the transcription functionality regardless of which app implements it behind the scenes.
 
 Ethical AI Rating
 -----------------
@@ -69,3 +55,39 @@ It is based on points from these factors:
 If all of these points are met, we give a Green label. If none are met, it is Red. If 1 condition is met, it is Orange and if 2 conditions are met, Yellow.
 
 
+Features used by other apps
+---------------------------
+
+Some of our AI features are realized as generic APIs that any app can use and any app can provide an implementation for by registering a provider. So far, these are
+Machine translation, Speech-To-Text and Text processing.
+
+Machine translation
+^^^^^^^^^^^^^^^^^^^
+As you can see in the table above we have multiple apps offering machine translation capabilities. Each app brings its own set of supported languages.
+In downstream apps like the Text app, users can use the translation functionality regardless of which app implements it behind the scenes.
+
+Implementing apps
+~~~~~~~~~~~~~~~~~
+
+* *Text* for offering the translation menu
+* `Analytics <https://apps.nextcloud.com/apps/analytics>`_ for translating graph labels
+
+Speech-To-Text
+^^^^^^^^^^^^^^
+As you can see in the table above we have multiple apps offering Speech-To-Text capabilities. In downstream apps like the Talk app, users can use the transcription functionality regardless of which app implements it behind the scenes.
+
+Implementing apps
+~~~~~~~~~~~~~~~~~
+
+* `Speech-to-Text Helper <https://apps.nextcloud.com/apps/stt_helper>`_ for providing a Speech-To-Text smart picker
+* `Talk <https://apps.nextcloud.com/apps/spreed>`_ for transcribing calls (see `Nextcloud Talk docs <https://nextcloud-talk.readthedocs.io/en/latest/settings/#app-configuration>`_ for how to enable this)
+
+Text processing
+^^^^^^^^^^^^^^^
+As you can see in the table above we have multiple apps offering Text processing capabilities. In downstream apps like the Nextcloud Assistant app, users can use the text processing functionality regardless of which app implements it behind the scenes.
+
+Implementing apps
+~~~~~~~~~~~~~~~~~
+
+* `Assistant <https://apps.nextcloud.com/apps/assistant>`_ for various tasks
+* `Mail <https://apps.nextcloud.com/apps/mail>`_ for summarizing mail threads (see :ref:`the Nextcloud Mail docs<mail_thread_summary>` for how to enable this)
