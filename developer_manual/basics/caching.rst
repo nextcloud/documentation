@@ -59,6 +59,44 @@ The ``OCP\Cache\CappedMemoryCache`` class is an in-memory cache that can be used
         }
     }
 
+
+A cache instance can also be built by the cache factory. This approach allows mocking the injected factory for finer control during :ref:`unit testing<testing-php>`:
+
+.. code-block:: php
+    :caption: lib/Service/PictureService.php
+    :emphasize-lines: 15-19
+
+    <?php
+
+    namespace OCA\MyApp\Service;
+
+    use OCP\ICacheFactory;
+
+    class PictureService {
+        private ICacheFactory $cacheFactory;
+
+        public function __construct(ICacheFactory $cacheFactory){
+            $this->cacheFactory = $cacheFactory;
+        }
+
+        public function getPicture(string $url): void {
+            // Initialize the cache. The instance has to be remembered because
+            // each call to `createInMemory` returns a fresh, empty cache.
+            if ($this->cache === null) {
+                $this->cache = $this->cacheFactory->createInMemory(64);
+            }
+
+            if (isset($this->cache[$url])) {
+                return $this->cache[$url];
+            }
+
+            // Fetch picture and serialize result into $picture
+
+            $this->cache[$url] = $picture;
+            return $picture;
+        }
+    }
+
 Local cache
 -----------
 
