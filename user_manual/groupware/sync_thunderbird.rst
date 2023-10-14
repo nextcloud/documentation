@@ -48,7 +48,7 @@ When they are installed, go to **Extras**/**Synchronisation settings (TbSync)** 
 * In the next window, TbSync should have auto-discovered the CalDAV and CardDAV addresses. When it has, click **Finish**
 * Check the **Enable and synchronize this account** box. TbSync will now discover all address books and calendars your account has access to on the server
 * Check the box next to each calendar and address book you want to have synchronized, set how often you want them to be synchronized, and push the button **synchronize now**
-* After the first successful synchronization is complete, you can close the window.
+* After the first successful synchronisation is complete, you can close the window.
 
 Henceforth, TbSync will do the work for you. You are done with the basic configuration and can skip the next sections unless you need a more advanced address book.
 
@@ -73,7 +73,7 @@ Alternative: Using the CardBook add-on (Contacts only)
 
    .. image:: ../images/addressbook_name.png
 
-#. When you are finished, CardBook synchronizes your address books. You can always trigger a synchronization manually by clicking "Synchronize" in the top left corner of CardBook:
+#. When you are finished, CardBook synchronizes your address books. You can always trigger a synchronisation manually by clicking "Synchronize" in the top left corner of CardBook:
 
    .. image:: ../images/synchronize_cardbook.png
 
