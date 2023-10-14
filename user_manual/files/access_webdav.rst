@@ -455,20 +455,20 @@ Solution
 #. Access to your Nextcloud instance via your favorite Web browser.
 #. Click through until you get to the certificate error in the browser status
    line.
-#. View the certificate, then from the Details tab, select Copy to File.
+#. View the certificate, then from the Details tab, select 'Copy to File'.
 #. Save the file to your desktop with an arbitrary name, for example
    ``myNextcloud.pem``.
-#. Go to Start menu > Run, type MMC, and click OK to open Microsoft Management
+#. Go to Start menu > Run, type MMC, and click 'OK' to open Microsoft Management
    Console.
 #. Go to File > Add/Remove Snap-In.
-#. Select Certificates, Click Add, choose My User Account, then Finish, and
-   finally OK.
+#. Select Certificates, Click 'Add', choose 'My User Account', then 'Finish', and
+   finally 'OK'.
 #. Dig down to Trust Root Certification Authorities, Certificates.
 #. Right-Click Certificate, Select All Tasks, and Import.
 #. Select the saved certificate from the Desktop.
 #. Select Place all Certificates in the following Store, and click Browse.
 #. Check the Box that says Show Physical Stores, expand out Trusted Root
-   Certification Authorities, select Local Computer there, click OK, and
+   Certification Authorities, select Local Computer there, click 'OK', and
    Complete the Import.
 #. Check the list to make sure the certificate shows up. You will probably
    need to Refresh before you see it.
@@ -580,7 +580,7 @@ To connect to Nextcloud:
 * Select the desired options and press the 'OK' button
 * Press the 'Login' button to connect to Nextcloud
 
-.. note:: it is recommended to use an app password for the password if you use TOTP as WinSCP does not understand TOTP with Nextcloud at the time of writing (2022-11-07).
+.. note:: It is recommended to use an app password for the password if you use TOTP as WinSCP does not understand TOTP with Nextcloud at the time of writing (2022-11-07).
 
 
 .. _KB2668751: https://web.archive.org/web/20211008025539/https://support.microsoft.com/en-us/topic/you-cannot-download-more-than-50-mb-or-upload-large-files-when-the-upload-takes-longer-than-30-minutes-using-web-client-in-windows-7-8709ae9d-e808-c5a0-95d0-9a7143c50b11
