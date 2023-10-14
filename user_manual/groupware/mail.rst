@@ -141,6 +141,7 @@ Envelope actions
 Create an event
 ~~~~~~~~~~~~~~~~
 Create an event for a certain message/thread directly via mail app
+
 1. Open action menu of an envelope
 2. Click *more actions*
 3. Click *create event*
@@ -151,6 +152,7 @@ Create a task
 .. versionadded:: 3.2
 
 Create an task for a certain message/thread directly via mail app
+
 1. Open action menu of an envelope
 2. Click *more actions*
 3. Click *create task*
