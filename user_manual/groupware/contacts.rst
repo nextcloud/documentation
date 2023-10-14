@@ -72,7 +72,7 @@ To Create a New Contact:
 2. Specify the new contact information then click Save.
 3. The View mode will be shown with the data you added
 
-.. figure:: ../images/contact_view_mode.png
+  .. figure:: ../images/contact_view_mode.png
 
 
 Edit or Remove Contact Information
@@ -151,6 +151,7 @@ Circle roles
 ~~~~~~~~~~~~
 
 Circles support 4 types of roles:
+
 - Member
 - Moderator
 - Admin can configure circle options (+moderator permissions)
