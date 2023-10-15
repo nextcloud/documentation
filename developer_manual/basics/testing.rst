@@ -6,7 +6,7 @@ Testing
 
 All PHP classes can be tested with `PHPUnit <https://phpunit.de/>`_, JavaScript can be tested by using `Karma <http://karma-runner.github.io>`_.
 
-
+.. _testing-php:
 
 PHP
 ---
