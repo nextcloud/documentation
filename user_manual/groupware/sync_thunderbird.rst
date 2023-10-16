@@ -2,7 +2,7 @@
 Synchronizing with Thunderbird
 ==============================
 
-`Thunderbird <https://www.thunderbird.net>`_ is a feature-rich and mature mail client that can be turned into a full-fledged Personal Information Manager (PIM). Since version 102, it supports address book synchronisation via CardDAV and automatic discovery of calendars and address books available on the server.
+`Thunderbird <https://www.thunderbird.net>`_ is a feature-rich and mature mail client that can be turned into a full-fledged Personal Information Manager (PIM). Since version 102, it supports address book synchronization via CardDAV and automatic discovery of calendars and address books available on the server.
 
 
 Recommended method
@@ -40,7 +40,7 @@ For this method, you need to have two add-ons installed:
 #. `TbSync <https://addons.thunderbird.net/en/thunderbird/addon/tbsync/>`_.
 #. `TbSync provider for CalDAV and CardDAV <https://addons.thunderbird.net/en/thunderbird/addon/dav-4-tbsync/>`_.
 
-When they are installed, go to **Extras**/**Synchronisation settings (TbSync)** if you are on Windows, or **Edit/Synchronisation settings (TbSync)** if on Linux, then:
+When they are installed, go to **Extras**/**Synchronization settings (TbSync)** if you are on Windows, or **Edit/Synchronization settings (TbSync)** if on Linux, then:
 
 * In the account manager choose "**Add account** / **CalDAV / CardDAV account**"
 * In the next window, go with the default called **Automatic configuration** and click **next**
@@ -48,7 +48,7 @@ When they are installed, go to **Extras**/**Synchronisation settings (TbSync)** 
 * In the next window, TbSync should have auto-discovered the CalDAV and CardDAV addresses. When it has, click **Finish**
 * Check the **Enable and synchronize this account** box. TbSync will now discover all address books and calendars your account has access to on the server
 * Check the box next to each calendar and address book you want to have synchronized, set how often you want them to be synchronized, and push the button **synchronize now**
-* After the first successful synchronisation is complete, you can close the window.
+* After the first successful synchronization is complete, you can close the window.
 
 Henceforth, TbSync will do the work for you. You are done with the basic configuration and can skip the next sections unless you need a more advanced address book.
 
@@ -73,7 +73,7 @@ Alternative: Using the CardBook add-on (Contacts only)
 
    .. image:: ../images/addressbook_name.png
 
-#. When you are finished, CardBook synchronizes your address books. You can always trigger a synchronisation manually by clicking "Synchronize" in the top left corner of CardBook:
+#. When you are finished, CardBook synchronizes your address books. You can always trigger a synchronization manually by clicking "Synchronize" in the top left corner of CardBook:
 
    .. image:: ../images/synchronize_cardbook.png
 
