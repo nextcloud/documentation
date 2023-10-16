@@ -40,7 +40,7 @@ For this method, you need to have two add-ons installed:
 #. `TbSync <https://addons.thunderbird.net/en/thunderbird/addon/tbsync/>`_.
 #. `TbSync provider for CalDAV and CardDAV <https://addons.thunderbird.net/en/thunderbird/addon/dav-4-tbsync/>`_.
 
-When they are installed, go to **Extras**/**Synchronisation settings (TbSync)** if you are on Windows, or **Edit/Synchronisation settings (TbSync)** if on Linux, then:
+When they are installed, go to **Extras**/**Synchronization settings (TbSync)** if you are on Windows, or **Edit/Synchronization settings (TbSync)** if on Linux, then:
 
 * In the account manager choose "**Add account** / **CalDAV / CardDAV account**"
 * In the next window, go with the default called **Automatic configuration** and click **next**
@@ -73,7 +73,7 @@ Alternative: Using the CardBook add-on (Contacts only)
 
    .. image:: ../images/addressbook_name.png
 
-#. When you are finished, CardBook synchronizes your address books. You can always trigger a synchroniZation manually by clicking "Synchronize" in the top left corner of CardBook:
+#. When you are finished, CardBook synchronizes your address books. You can always trigger a synchronization manually by clicking "Synchronize" in the top left corner of CardBook:
 
    .. image:: ../images/synchronize_cardbook.png
 
