@@ -201,7 +201,15 @@ Supported properties
 | <nc:is-encrypted />           | Whether the folder is end-to-end encrypted.     | | ``0`` for ``false``                                                                |
 |                               |                                                 | | ``1`` for ``true``                                                                 |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <oc:tags />                   | List of user specified tags.                    | ``<oc:tag>test</oc:tag>``                                                            |
+| <nc:system-tags />            | | List of user specified tags.                  | | ``<nc:system-tag``                                                                 |
+|                               |                                                 | |     ``oc:can-assign="true"``                                                       |
+|                               |                                                 | |     ``oc:id="8"``                                                                  |
+|                               |                                                 | |     ``oc:user-assignable="true"``                                                  |
+|                               |                                                 | |     ``oc:user-visible="true"``                                                     |
+|                               |                                                 | |     ``oc:user-visible="true">``                                                    |
+|                               |                                                 | |     ``confidential``                                                               |
+|                               |                                                 | |     ``oc:user-visible="true">``                                                    |
+|                               |                                                 | | ``</nc:system-tag>``                                                               |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <oc:favorite />               | The favorite state.                             | | ``0`` for not favourited                                                           |
 |                               |                                                 | | ``1`` for favourited                                                               |
