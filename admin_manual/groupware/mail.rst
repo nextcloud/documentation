@@ -88,6 +88,9 @@ Users can share mailboxes with each other. So far, there is no UI for users to c
 
 Thread Summary
 --------------
+
+.. _mail_thread_summary:
+
 The mail app supports summarizing message threads that contain 3 or more messages.
 
 .. warning:: `A text generation AI integration <https://apps.nextcloud.com/apps/integration_openai>`_ should be already in place to enable this feature.
