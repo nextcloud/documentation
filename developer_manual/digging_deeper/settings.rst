@@ -294,3 +294,12 @@ This is rather straightforward as you can see in the code snippet below
     </settings>
     ...
 
+Administration privileges 
+-------------------------
+
+By default only members of the admin group can access and edit the admin settings. 
+It is sometimes needed to give some group of users access to a setting page while not giving them access to everything. 
+For this you can use the Admin right privilege settings.
+
+In the settings form, change the implementation from ``\OCP\Settings\ISettings``
+to ``\OCP\Settings\IDelegatedSettings``
