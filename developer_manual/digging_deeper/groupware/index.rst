@@ -7,3 +7,4 @@ Groupware integration
 
    calendar
    calendar_provider
+   contacts_menu
