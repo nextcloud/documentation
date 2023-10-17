@@ -96,11 +96,6 @@ Next, install the PHP modules needed for this install. Remember, because this is
     dnf install -y php php-cli php-gd php-mbstring php-intl php-pecl-apcu\
          php-mysqlnd php-opcache php-json php-zip
 
-It may also be useful to install the php-cli module, to ease future troubleshooting:
-
-::
-
-    dnf install php-cli
 
 Installing optional modules redis/imagick
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
