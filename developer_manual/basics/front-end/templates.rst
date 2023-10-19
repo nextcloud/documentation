@@ -49,6 +49,9 @@ The parent variables will also be available in the included templates, but shoul
 Including CSS and JavaScript
 ----------------------------
 
+.. warning:: This is deprecated, please use ``addScript`` and ``addStyle`` in your controller instead.
+   See :ref:`ApplicationJs` for more information.
+
 To include CSS or JavaScript use the **style** and **script** functions:
 
 .. code-block:: php
