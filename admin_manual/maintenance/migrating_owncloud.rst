@@ -15,13 +15,13 @@ See the table below for a version map, where migrating is easily possible:
 +-------------------+------------------------------+
 | ownCloud          | Nextcloud                    |
 +===================+==============================+
-| 10.11.x           | 25.0.x (but at least 25.0.2) |
+| 10.13.x           | 25.0.x (but at least 25.0.2) |
 +-------------------+------------------------------+
 | 10.0.5 or later   | 20.0.x (but at least 20.0.5) |
 +-------------------+------------------------------+
 
 .. note:: Since ownCloud does not and will not support PHP 8.0 or higher, you
-          need to migrate from ownCloud 10.11.x to Nextcloud 25 and then
+          need to migrate from ownCloud 10.13.x to Nextcloud 25 and then
           further upgrade from there. We urge you to migrate to Nextcloud
           since PHP versions prior PHP8 are end of life, see
           `<https://www.php.net/supported-versions.php>`_.
