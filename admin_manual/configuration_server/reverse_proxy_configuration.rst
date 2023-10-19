@@ -18,16 +18,14 @@ configured in :file:`config/config.php`
 
 Set the :file:`trusted_proxies` parameter as an array of:
 
-* IPv4 addresses, 
+* IPv4 addresses 
 * IPv4 ranges in CIDR notation
 * IPv6 addresses
+* IPv6 ranges in CIDR notation
 
 to define the servers Nextcloud should trust as proxies. This parameter
 provides protection against client spoofing, and you should secure those
 servers as you would your Nextcloud server.
-
-.. note:: CIDR notation for IPv6 is currently work in progress and thus not
-  available as of yet.
 
 A reverse proxy can define HTTP headers with the original client IP address,
 and Nextcloud can use those headers to retrieve that IP address. Nextcloud uses
