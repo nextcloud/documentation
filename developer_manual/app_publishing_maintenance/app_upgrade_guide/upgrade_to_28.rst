@@ -22,6 +22,13 @@ Front-end changes
 Added APIs
 ^^^^^^^^^^
 
+* The new Files initialising much faster than the old one, you will face some
+  race conditions if you register some custom properties loading your scripts
+  by using the ``Util::addScript`` method.
+  We recommend you use the new ``Util::addInitScript`` method instead, your script
+  will be loaded right after the common core scripts and right before the Files app.
+  See :ref:`ApplicationJs` for more information.
+
 * File actions: to register file actions, please use the dedicated API from https://npmjs.org/@nextcloud/files or
   https://nextcloud-libraries.github.io/nextcloud-files/functions/registerFileAction.html
 * New file menu: to register entries in the new file menu, please use the dedicated API from https://npmjs.org/@nextcloud/files or 

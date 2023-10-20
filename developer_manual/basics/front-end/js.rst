@@ -1,34 +1,94 @@
+.. _ApplicationJs:
+
 ==========
 JavaScript
 ==========
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-The JavaScript files reside in the **js/** folder and should be included in the template:
+The JavaScript files reside in the **js/** folder and should be included
+in the appropriate controller. There is two methods to inject your JavaScript files.
+
+  1. ``Util::addScript``
+  2. ``Util::addInitScript``
 
 .. code-block:: php
 
-  <?php
-  // add one file
-  script('myapp', 'script');  // adds js/script.js
+  /**
+   * Add a javascript file
+   *
+   * @param string $application Your application ID, e.g. 'your_app'
+   * @param string $file Your script name, e.g. 'main'
+   * @param string $afterAppId Optional, the script will be loaded after this app
+   * @param bool $prepend Optional, if true the script will be prepended to this app scripts list
+   */
+   public static function addScript(string $application, string $file = null, string $afterAppId = 'core', bool $prepend = false): void
 
-  // add multiple files in the same app
-  script('myapp', array('script', 'navigation'));  //  adds js/script.js js/navigation.js
+  /**
+   * Add a standalone init js file that is loaded for initialization.
+   * Be careful loading scripts using this method as they are loaded early
+   * and block the initial page rendering. They should not have dependencies
+   * on any other scripts than core-common and core-main.
+   *
+   * @param string $application Your application ID, e.g. 'your_app'
+   * @param string $file Your script name, e.g. 'main'
+   */
+   public static function addInitScript(string $application, string $file): void
 
-  // add vendor files (also allows the array syntax)
-  vendor_script('myapp', 'script');  //  adds vendor/script.js
+.. note:: If your script is only needed after a specific event, e.g. after the Files app is loaded,
+   you will have to register a Listener in your app ``Appinfo/Application.php``.
 
-If the script file is only needed when the file list is displayed, you should
-listen to the ``OCA\Files::loadAdditionalScripts`` event:
+Here is an example for the Files app (which emits the ``LoadAdditionalScriptsEvent``).
+For more informations about app bootstrapping, see the :ref:`application-php` section.
 
 .. code-block:: php
 
-  <?php
-  $eventDispatcher = \OC::$server->getEventDispatcher();
-  $eventDispatcher->addListener('OCA\Files::loadAdditionalScripts', function() {
-    script('myapp', 'script');  // adds js/script.js
-    vendor_script('myapp', 'script');  //  adds vendor/script.js
-  });
+  namespace OCA\YourApp\AppInfo;
+
+  use OCA\Files\Event\LoadAdditionalScriptsEvent;
+  use OCA\YourApp\Listener\LoadAdditionalListener;
+  use OCP\AppFramework\App;
+  use OCP\AppFramework\Bootstrap\IBootContext;
+  use OCP\AppFramework\Bootstrap\IBootstrap;
+  use OCP\AppFramework\Bootstrap\IRegistrationContext;
+
+  /**
+   * @package OCA\YourApp\AppInfo
+   */
+  class Application extends App implements IBackendProvider, IAuthMechanismProvider, IBootstrap {
+    public const APP_ID = 'your_app';
+
+    public function __construct(array $urlParams = []) {
+      parent::__construct(self::APP_ID, $urlParams);
+    }
+
+    public function register(IRegistrationContext $context): void {
+      $context->registerEventListener(LoadAdditionalScriptsEvent::class, LoadAdditionalListener::class);
+    }
+
+    public function boot(IBootContext $context): void {}
+
+.. code-block:: php
+
+  namespace OCA\YourApp\Listener;
+
+  use OCA\YourApp\AppInfo\Application;
+  use OCA\Files\Event\LoadAdditionalScriptsEvent;
+  use OCP\EventDispatcher\Event;
+  use OCP\EventDispatcher\IEventListener;
+  use OCP\Util;
+
+  class LoadAdditionalListener implements IEventListener {
+
+      public function handle(Event $event): void {
+          if (!($event instanceof LoadAdditionalScriptsEvent)) {
+              return;
+          }
+
+          Util::addInitScript(Application::APP_ID, 'init');
+          Util::addScript(Application::APP_ID, 'main', 'files');
+      }
+  }
 
 
 Sending the CSRF token
