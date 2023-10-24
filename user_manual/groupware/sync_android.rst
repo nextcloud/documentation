@@ -19,10 +19,6 @@ Files and notifications
    tap the QR scanner icon in the Nextcloud app, point your phone's
    camera towards the screen.
 
-.. note:: Using user name and password will not work if 2-Factor-Authentication
-   is enabed and will throw a generic "Unknown resource" error.
-   Use a dedicated App password instead.
-
 Contacts and Calendar
 ---------------------
 
@@ -74,6 +70,11 @@ steps are required:
    to be able to send calendar invitation). If your email address is
    registered in your Nextcloud preferences and you have set up your
    account using the Nextcloud mobile app, this all should be aready the case.
+
+
+.. note:: Using user name and password will not work if 2-Factor-Authentication
+   is enabed and will throw a generic "Unknown resource" error.
+   Use a dedicated App password instead.
 
 
 .. tip:: DAVx⁵ lists the calendar subscriptions made through the Nextcloud Calendar app, but you need to install the `ICSx⁵ (formerly known as ICSDroid) <https://icsx5.bitfire.at/>`__ app on your Android device, `from the Google Play Store <https://play.google.com/store/apps/details?id=at.bitfire.icsdroid>`__ or `from F-Droid <https://f-droid.org/packages/at.bitfire.icsdroid/>`__ to sync them.
