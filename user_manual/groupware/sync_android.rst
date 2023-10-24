@@ -19,6 +19,10 @@ Files and notifications
    tap the QR scanner icon in the Nextcloud app, point your phone's
    camera towards the screen.
 
+.. note:: Using user name and password will not work if 2-Factor-Authentication
+   is enabed and will throw a generic "Unknown resource" error.
+   Use a dedicated App password instead.
+
 Contacts and Calendar
 ---------------------
 
