@@ -62,10 +62,14 @@ Configure your sharing policy on your Admin page in the Sharing section.
   from creating any file shares in those groups. When you check this, you'll
   get a dropdown list of all your groups to choose from. Members of excluded
   groups can still receive shares, but not create any.
-* Check ``Allow username autocompletion in share dialog`` to enable
-  auto-completion of Nextcloud usernames.
-* Check ``Restrict username autocompletion to users within the same groups`` to limit
-  username autocompletion to users from within the same groups as the share owner.
+* Check ``Allow username autocompletion in share dialog and allow access to the system address book`` to enable
+  auto-completion of Nextcloud usernames and list the system address book as resource when syncing contacts with CardDAV.
+* Check ``Allow username autocompletion to users within the same groups and limit system address books to users in the same groups`` to limit
+  username autocompletion to users from within the same groups as the share owner. Also t* Check ``Allow username autocompletion to users within the same groups and limit system address books to users in the same groups`` to limit
+* Check ``Allow username autocompletion to users based on phone number integration`` to limit
+  username autocompletion to users when the share owner has synced their phone address book via the Nextcloud Talk mobile clients and it contained the phone number the user configured in their profile.
+* Check ``Allow autocompletion when entering the full name or email address (ignoring missing phonebook match and being in the same group)``
+  to show despite of the previous restrictions a user suggestion, when the complete display name or user id was typed.
 * Check ``Show disclaimer text on the public link upload page`` to set and show
   a disclaimer text on public links with hidden file lists.
 
