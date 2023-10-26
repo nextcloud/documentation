@@ -99,13 +99,13 @@ ini values
 
 The following ini settings should be adapted if needed for Nextcloud:
 
-* ``apc.enable_cli``: See :doc:`../configuration_server/caching_configuration`
-* ``disable_functions``: Avoid disabling functions unless you know exactly what you are doing
-* ``max_execution_time``: See :doc:`../configuration_files/big_file_upload_configuration`
-* ``memory_limit``: Should be at least 512MB. See also :doc:`../configuration_files/big_file_upload_configuration`
+* ``apc.enable_cli``: see :doc:`../configuration_server/caching_configuration`
+* ``disable_functions``: avoid disabling functions unless you know exactly what you are doing
+* ``max_execution_time``: see :doc:`../configuration_files/big_file_upload_configuration`
+* ``memory_limit``: should be at least 512MB. See also :doc:`../configuration_files/big_file_upload_configuration`
 * ``opcache.enable`` and friends: See :doc:`../configuration_server/caching_configuration` and :doc:`server_tuning`
-* ``open_basedir``: See :doc:`harden_server`
-* ``upload_tmp_dir``: See :doc:`../configuration_files/big_file_upload_configuration`
+* ``open_basedir``: see :doc:`harden_server`
+* ``upload_tmp_dir``: see :doc:`../configuration_files/big_file_upload_configuration`
 
 .. _php_ini_tips_label:
 
