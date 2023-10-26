@@ -7,6 +7,7 @@ Installation and server configuration
 
    system_requirements
    deployment_recommendations
+   php_configuration
    source_installation
    installation_wizard
    command_line_installation
