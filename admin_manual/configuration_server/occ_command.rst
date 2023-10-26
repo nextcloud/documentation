@@ -1650,23 +1650,20 @@ or to use in a bug report::
 
 Two-factor authentication
 -------------------------
-If a two-factor provider app is enabled, it is enabled for all users by default
-(though the provider can decide whether or not the user has to pass the challenge).
-In the case of a user losing access to the second factor (e.g. lost phone with
-two-factor SMS verification), the admin can try to disable the two-factor
-check for that user via the occ command::
+If a two-factor provider app is enabled, it is enabled for all users by default (though the provider can decide whether or not the user has to pass the challenge). In the case of a user losing access to the second factor (e.g. lost phone with two-factor SMS verification), the admin can try to disable the two-factor check for that user via the occ command:
 
- sudo -u www-data php occ twofactor:disable <uid> <provider_id>
+sudo -u www-data php occ twofactorauth:disable <uid> <provider_id>
 
 .. note:: This is not supported by all providers.
 
-To re-enable two-factor auth again use the following commmand::
+To re-enable two-factor auth again use the following command:
 
- sudo -u www-data php occ twofactor:enable <uid> <provider_id>
+sudo -u www-data php occ twofactorauth:enable <uid> <provider_id>
 
 .. note:: This is not supported by all providers.
 
 .. _disable_user_label:
+
 
 Disable users
 -------------
