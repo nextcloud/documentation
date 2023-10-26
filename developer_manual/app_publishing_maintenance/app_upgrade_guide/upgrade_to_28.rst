@@ -13,7 +13,7 @@ Make sure your ``appinfo/info.xml`` allows for Nextcloud 28.
 .. code-block:: xml
 
     <dependencies>
-        <nextcloud min-version="25" max-version="28" />
+        <nextcloud min-version="26" max-version="28" />
     </dependencies>
 
 Front-end changes
@@ -111,6 +111,20 @@ Some (minor) breaking changes were inevitable. Here's the summary:
 - When a query builder instance is using positional parameters ``->setValue('name', '?')`` ``setParameter(0, $name)``, all parameters need to be set again when executing the query multiple times, e.g. in a loop. It is recommended to switch to named parameters using ``createParameter()`` instead.
 
 The details of this change can also be seen in the `pull request on GitHub <https://github.com/nextcloud/server/pull/38556>`__ and in the upstream documentation `dbal 3.7.x upgrade document <https://github.com/doctrine/dbal/blob/3.7.x/UPGRADE.md>`__.
+
+``symfony/event-dispatcher``
+****************************
+
+Over the last 2 major versions the ``symfony/event-dispatcher`` package first deprecated and then removed the way Nextcloud
+server dispatched old events. This means the way we wrapped away symfony's ``\Symfony\Component\EventDispatcher\EventDispatcherInterface``
+as well as using the ``\Symfony\Component\EventDispatcher\GenericEvent`` could not be kept alive in a backwards compatible way.
+
+Therefore migrating from ``\Symfony\Component\EventDispatcher\EventDispatcherInterface``
+to ``\OCP\EventDispatcher\IEventDispatcher`` (exists since Nextcloud 17) is required to be compatible with Nextcloud 28.
+All code places that dispatched a ``\Symfony\Component\EventDispatcher\GenericEvent`` have been adjusted
+and have ``\OCP\EventDispatcher\Event`` based dedicated event now that is dispatched as a typed-event so all available parameters are documented.
+
+The details of this change can also be seen in the todo items that are linked from the `pull request on GitHub <https://github.com/nextcloud/server/pull/38546>`__.
 
 Added APIs
 ^^^^^^^^^^
