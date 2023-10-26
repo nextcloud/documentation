@@ -34,7 +34,7 @@ Required:
 * PHP module zip
 * PHP module zlib
 
-Database connectors (pick the one for your database:)
+Database connectors (pick the one for your database):
 
 * PHP module pdo_sqlite (>= 3, usually not recommended for performance reasons)
 * PHP module pdo_mysql (MySQL/MariaDB)
@@ -62,15 +62,15 @@ Recommended for specific apps (*optional*):
 * PHP module gmp (for SFTP storage)
 * PHP module exif (for image rotation in pictures app)
 
-For enhanced server performance (*optional*) select one of the following
-memcaches:
+For enhanced server performance (*optional*) select one or more of the following
+caches:
 
 * PHP module apcu (>= 4.0.6)
 * PHP module memcached
 * PHP module redis (>= 2.2.6, required for Transactional File Locking)
 
 See :doc:`../configuration_server/caching_configuration` to learn how to select
-and configure a memcache.
+and configure a cache.
 
 For preview generation (*optional*):
 
@@ -102,7 +102,7 @@ The following ini settings should be adapted if needed for Nextcloud:
 * ``apc.enable_cli``: See :doc:`../configuration_server/caching_configuration`
 * ``disable_functions``: Avoid disabling functions unless you know exactly what you are doing
 * ``max_execution_time``: See :doc:`../configuration_files/big_file_upload_configuration`
-* ``memory_limit``: Should at least 512MB. See also :doc:`../configuration_files/big_file_upload_configuration`
+* ``memory_limit``: Should be at least 512MB. See also :doc:`../configuration_files/big_file_upload_configuration`
 * ``opcache.enable`` and friends: See :doc:`../configuration_server/caching_configuration` and :doc:`server_tuning`
 * ``open_basedir``: See :doc:`harden_server`
 * ``upload_tmp_dir``: See :doc:`../configuration_files/big_file_upload_configuration`
@@ -114,6 +114,7 @@ php.ini configuration notes
 
 Keep in mind that changes to ``php.ini`` may have to be configured on more than one
 ini file. This can be the case, for example, for the ``date.timezone`` setting.
+You can search for a parameter with the following command: ``grep -r date.timezone /etc/php``.
 
 **php.ini - used by the Web server:**
 ::
