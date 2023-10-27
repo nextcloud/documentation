@@ -27,7 +27,8 @@ Overview of AI features
    "Speech-To-Text","`Whisper Speech-To-Text <https://apps.nextcloud.com/apps/stt_whisper>`_","Yellow","Yes","Yes - Whisper models by OpenAI","No","Yes"
    "","`OpenAI and LocalAI integration <https://apps.nextcloud.com/apps/integration_openai>`_","Yellow","Yes","Yes - Whisper models by OpenAI","No","No"
    "","`Replicate integration <https://apps.nextcloud.com/apps/integration_replicate>`_","Yellow","Yes","Yes - Whisper models by OpenAI","No","No"
-   "Image generation","`OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_","Red","No","No","No","No"
+   "Image generation","`Local Stable Diffusion <https://apps.nextcloud.com/apps/text2image_stablediffusion>`_","Yellow","Yes","Yes - StableDiffusion XL model by StabilityAI","No","Yes"
+   "","`OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_","Red","No","No","No","No"
    "","`OpenAI and LocalAI integration (via LocalAI) <https://apps.nextcloud.com/apps/integration_openai>`_","Yellow","Yes","Yes - StableDiffusion models by StabilityAI","No","Yes"
    "","`Replicate integration <https://apps.nextcloud.com/apps/integration_replicate>`_","Yellow","Yes","Yes - StableDiffusion models by StabilityAI","No","No"
    "Text generation","`Local large language model (via GPT4all Falcon) <https://apps.nextcloud.com/apps/llm>`_","Green","Yes","Yes","Yes","Yes"
@@ -91,3 +92,13 @@ Implementing apps
 
 * `Assistant <https://apps.nextcloud.com/apps/assistant>`_ for various tasks
 * `Mail <https://apps.nextcloud.com/apps/mail>`_ for summarizing mail threads (see :ref:`the Nextcloud Mail docs<mail_thread_summary>` for how to enable this)
+
+
+Image generation
+^^^^^^^^^^^^^^^^
+As you can see in the table above we have multiple apps offering Image generation capabilities. In downstream apps like the Text-to-Image helper app, users can use the image generation functionality regardless of which app implements it behind the scenes.
+
+Implementing apps
+~~~~~~~~~~~~~~~~~
+
+* `Text-to-Image Helper <https://apps.nextcloud.com/apps/stt_helper>`_ for providing a Text-to-Image smart picker
