@@ -49,7 +49,8 @@ Changed APIs
 Deprecated APIs
 ^^^^^^^^^^^^^^^
 
-* tbd
+* The CSS variables ``--color-text-light`` and  ``--color-text-lighter`` were made aliases of ``--color-main-text`` and ``--color-text-maxcontrast``
+  in `Nextcloud 20 <https://github.com/nextcloud/server/pull/21117>`_ and are now officially deprecated and will be removed in the near future.
 
 Removed APIs
 ^^^^^^^^^^^^
