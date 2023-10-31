@@ -31,7 +31,7 @@ Added APIs
 
 * File actions: to register file actions, please use the dedicated API from https://npmjs.org/@nextcloud/files or
   https://nextcloud-libraries.github.io/nextcloud-files/functions/registerFileAction.html
-* New file menu: to register entries in the new file menu, please use the dedicated API from https://npmjs.org/@nextcloud/files or 
+* New file menu: to register entries in the new file menu, please use the dedicated API from https://npmjs.org/@nextcloud/files or
   https://nextcloud-libraries.github.io/nextcloud-files/functions/addNewFileMenuEntry.html
 * Reminder from 27, to interact with the Files app router, use ``OCP.Files.Router``. See :ref:`FilesAPI`
 * To Interact with the Files app data, please use the following events. All of them have a `Node object <https://nextcloud-libraries.github.io/nextcloud-files/classes/Node.html>`_ as main parameter.
@@ -58,6 +58,7 @@ Removed APIs
 * ``OC.loadScript`` and ``OC.loadStyle``: Use ``OCP.Loader`` instead.
 * ``OC.appSettings``: There is no replacement.
 * ``OCA.Files``: Everything removed but Sidebar and Settings. See the Added API section for replacements.
+* ``OCP.Comments``: Removed comments loading.
 
 Back-end changes
 ----------------
