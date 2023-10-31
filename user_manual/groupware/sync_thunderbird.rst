@@ -8,26 +8,44 @@ Synchronizing with Thunderbird
 Recommended method
 ------------------
 
+Contacts
+~~~~~~~~
+
 Since Thunderbird 102, the CardDAV protocol is natively supported.
 
 To enable it:
 
-* On the address book view, click the down arrow near "**New Address Book**" and choose "**Add CardDAV Address Book**".
-* In the next window, type your **user name** and **URL of your server**.
-* The next window will ask for your username and password for this account.
-* The previous window will be refreshed and ask you which address books you wish to sync.
-* Choose and then click **Continue**.
+#. On the address book view, click the down arrow near "**New Address Book**" and choose "**Add CardDAV Address Book**".
+#. In the next window, type your **user name** and **URL of your server**.
+#. The next window will ask for your username and password for this account.
+#. The previous window will be refreshed and ask you which address books you wish to sync.
+#. Choose and then click **Continue**.
 
 If you later want to add a new address book, you can redo all of those steps and only the books not already synchronized will be suggested.
+
+
+Calendars
+~~~~~~~~~
 
 For calendars, the CalDAV protocol is also natively supported.
 
 To enable it:
 
-* Click on "**+**" near Agendas on the agendas page.
-* Choose "**On the network**" on the next window.
-* Type your "**user name**" and "**Url of the server**", then click on "Find Calendars".
-* Choose which agendas you want to add and click "**Subscribe**"
+#. Go to your Nextcloud Calendar and click on the |pencil| menu for the calendar that you want to synchronize.
+
+.. |pencil| image:: ../images/pencil.png
+
+#. Copy the "**Internal link**" URL, which will look something like this:
+
+   ``https://cloud.nextcloud.com/remote.php/dav/calendars/daniel/personal/``
+
+#. Go to the calendar view in Thunderbird and select the "**New Calendar...**" button at the bottom of the left side panel.
+#. Choose "**On the network**":
+
+   .. image:: ../images/new_calendar.png
+
+#. Type your "**Username**" and "**Location**" (URL copied above), then click on "**Find Calendars**".
+#. Choose which calendars you want to add and click "**Subscribe**"
 
 Same thing here, if you later want to add more calendars, just redo the procedure.
 
@@ -76,23 +94,3 @@ Alternative: Using the CardBook add-on (Contacts only)
 #. When you are finished, CardBook synchronizes your address books. You can always trigger a synchronization manually by clicking "Synchronize" in the top left corner of CardBook:
 
    .. image:: ../images/synchronize_cardbook.png
-
-
-The old method: Manually subscribing to calendars
--------------------------------------------------
-
-This method is only needed if you don't want to install TBSync.
-
-#. Go to your Nextcloud Calendar and click on the 3 dots menu for the calendar that you want to synchronize which will display a URL that looks something like this:
-
-   ``https://cloud.nextcloud.com/remote.php/dav/calendars/daniel/personal/``
-
-#. Go to the calendar view in Thunderbird and right-click in the calendar menu to the left (where the names of the calendars are) to add a **New Calendar**.
-
-#. Choose **On the Network**:
-
-   .. image:: ../images/new_calendar.png
-
-#. Choose **CalDAV** and fill in the missing information:
-
-   .. image:: ../images/CalDAV_calendar.png
