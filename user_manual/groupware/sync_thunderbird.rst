@@ -15,8 +15,8 @@ Since Thunderbird 102, the CardDAV protocol is natively supported.
 
 To enable it:
 
-#. On the address book view, click the down arrow near "**New Address Book**" and choose "**Add CardDAV Address Book**".
-#. In the next window, type your **user name** and **URL of your server**.
+#. On the address book view, click the down arrow near **New Address Book** and choose **Add CardDAV Address Book**.
+#. In the next window, type your **Username** and **Location**.
 #. The next window will ask for your username and password for this account.
 #. The previous window will be refreshed and ask you which address books you wish to sync.
 #. Choose and then click **Continue**.
@@ -32,23 +32,21 @@ For calendars, the CalDAV protocol is also natively supported.
 To enable it:
 
 #. Go to your Nextcloud Calendar and click on the |pencil| menu for the calendar that you want to synchronize.
-
-.. |pencil| image:: ../images/pencil.png
-
-#. Copy the "**Internal link**" URL, which will look something like this:
+#. Copy the **Internal link** URL, which will look something like this:
 
    ``https://cloud.nextcloud.com/remote.php/dav/calendars/daniel/personal/``
 
-#. Go to the calendar view in Thunderbird and select the "**New Calendar...**" button at the bottom of the left side panel.
-#. Choose "**On the network**":
+#. Go to the calendar view in Thunderbird and select the **New Calendar...** button at the bottom of the left side panel.
+#. Choose **On the network**:
 
    .. image:: ../images/new_calendar.png
 
-#. Type your "**Username**" and "**Location**" (URL copied above), then click on "**Find Calendars**".
-#. Choose which calendars you want to add and click "**Subscribe**"
+#. Type your **Username** and **Location** (URL copied above), then click on **Find Calendars**.
+#. Choose which calendars you want to add and click **Subscribe**
 
 Same thing here, if you later want to add more calendars, just redo the procedure.
 
+.. |pencil| image:: ../images/pencil.png
 
 Alternative: Using the TbSync addon
 -----------------------------------
@@ -60,13 +58,13 @@ For this method, you need to have two add-ons installed:
 
 When they are installed, go to **Extras**/**Synchronization settings (TbSync)** if you are on Windows, or **Edit/Synchronization settings (TbSync)** if on Linux, then:
 
-* In the account manager choose "**Add account** / **CalDAV / CardDAV account**"
-* In the next window, go with the default called **Automatic configuration** and click **next**
-* Enter an **account name** (which you can freely choose), a **user name**, a **password**, the **URL of your server**, and click **next**
-* In the next window, TbSync should have auto-discovered the CalDAV and CardDAV addresses. When it has, click **Finish**
-* Check the **Enable and synchronize this account** box. TbSync will now discover all address books and calendars your account has access to on the server
-* Check the box next to each calendar and address book you want to have synchronized, set how often you want them to be synchronized, and push the button **synchronize now**
-* After the first successful synchronization is complete, you can close the window.
+#. In the account manager choose **Add new account** > **CalDAV & CardDAV**
+#. In the next window, go with the default called **Automatic Configuration** and click **Next**
+#. Enter an **Account name** (which you can freely choose), a **User name**, a **Password**, the **Server URL**, and click **Next**
+#. In the next window, TbSync should have auto-discovered the CalDAV and CardDAV addresses. When it has, click **Finish**
+#. Check the **Enable and synchronize this account** box. TbSync will now discover all address books and calendars your account has access to on the server
+#. Check the box next to each calendar and address book you want to have synchronized, set how often you want them to be synchronized, and push the button **synchronize now**
+#. After the first successful synchronization is complete, you can close the window.
 
 Henceforth, TbSync will do the work for you. You are done with the basic configuration and can skip the next sections unless you need a more advanced address book.
 
