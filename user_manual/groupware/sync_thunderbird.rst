@@ -31,22 +31,15 @@ For calendars, the CalDAV protocol is also natively supported.
 
 To enable it:
 
-#. Go to your Nextcloud Calendar and click on the |pencil| menu for the calendar that you want to synchronize.
-#. Copy the **Internal link** URL, which will look something like this:
-
-   ``https://cloud.nextcloud.com/remote.php/dav/calendars/daniel/personal/``
-
 #. Go to the calendar view in Thunderbird and select the **New Calendar...** button at the bottom of the left side panel.
 #. Choose **On the network**:
 
    .. image:: ../images/new_calendar.png
 
-#. Type your **Username** and **Location** (URL copied above), then click on **Find Calendars**.
+#. Type your **Username** and **Location**, then click on **Find Calendars**.
 #. Choose which calendars you want to add and click **Subscribe**
 
 Same thing here, if you later want to add more calendars, just redo the procedure.
-
-.. |pencil| image:: ../images/pencil.png
 
 Alternative: Using the TbSync addon
 -----------------------------------
