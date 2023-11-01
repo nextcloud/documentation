@@ -36,6 +36,9 @@ Configuration
 First enable the ``LDAP user and group backend`` app on the Apps page in
 Nextcloud. Then go to your Admin page to configure it.
 
+.. warning:: By default, a new LDAP configuration is inactive. See :ref:`advanced_settings_label`
+   to make your configuration active or test it. Until you do so, LDAP authentication will fail.
+
 The LDAP configuration panel has four tabs. A correctly completed first tab
 ("Server") is mandatory to access the other tabs. A green indicator lights when
 the configuration is correct. Hover your cursor over the fields to see some
