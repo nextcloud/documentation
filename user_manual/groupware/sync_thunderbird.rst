@@ -8,15 +8,14 @@ Synchronizing with Thunderbird
 Recommended method
 ------------------
 
+Since Thunderbird 102, the CardDAV & CalDAV protocols are natively supported.
+
 Contacts
 ~~~~~~~~
 
-Since Thunderbird 102, the CardDAV protocol is natively supported.
-
-To enable it:
 
 #. On the address book view, click the down arrow near **New Address Book** and choose **Add CardDAV Address Book**.
-#. In the next window, type your **Username** and **Location**.
+#. In the next window, type your **Username** and **Location** (Server URL).
 #. The next window will ask for your username and password for this account.
 #. The previous window will be refreshed and ask you which address books you wish to sync.
 #. Choose and then click **Continue**.
@@ -27,16 +26,12 @@ If you later want to add a new address book, you can redo all of those steps and
 Calendars
 ~~~~~~~~~
 
-For calendars, the CalDAV protocol is also natively supported.
-
-To enable it:
-
 #. Go to the calendar view in Thunderbird and select the **New Calendar...** button at the bottom of the left side panel.
 #. Choose **On the network**:
 
    .. image:: ../images/new_calendar.png
 
-#. Type your **Username** and **Location**, then click on **Find Calendars**.
+#. Type your **Username** and **Location** (Server URL), then click on **Find Calendars**.
 #. Choose which calendars you want to add and click **Subscribe**
 
 Same thing here, if you later want to add more calendars, just redo the procedure.
