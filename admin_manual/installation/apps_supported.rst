@@ -47,7 +47,6 @@ Nextcloud Files
 * `Provisioning API <https://github.com/nextcloud/server/tree/master/apps/provisioning_api>`_
 * `Recommendations <https://github.com/nextcloud/recommendations>`_
 * `Related Resources <https://github.com/nextcloud/related_resources/>`_
-* `Right click <https://github.com/nextcloud/files_rightclick>`_
 * `Share by mail <https://github.com/nextcloud/server/tree/master/apps/sharebymail>`_
 * `SharePoint Backend <https://github.com/nextcloud/sharepoint>`_
 * `Suspicious Login <https://github.com/nextcloud/suspicious_login>`_
