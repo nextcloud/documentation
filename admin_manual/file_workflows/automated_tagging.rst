@@ -41,6 +41,12 @@ Available rules
 
 The available rules can be seen in the access control section: :ref:`available-rules-label`.
 
+.. note::
+
+    Please note that the rules do not apply when creating external storages and groupfolders.
+    The root folders of those need to be tagged manually with the desired initial tags.
+    Items created inside later on apply the rules as defined.
+
 Executing actions
 -----------------
 
