@@ -38,6 +38,7 @@ Nextcloud Files
 * `Guests <https://github.com/nextcloud/guests>`_
 * `LDAP user and group backend <https://github.com/nextcloud/server/tree/master/apps/user_ldap>`_
 * `Log Reader <https://github.com/nextcloud/logreader>`_
+* `Memories <https://github.com/pulsejet/memories>`_
 * `Monitoring <https://github.com/nextcloud/serverinfo>`_
 * `Nextcloud announcements <https://github.com/nextcloud/nextcloud_announcements>`_
 * `Notifications <https://github.com/nextcloud/notifications>`_
