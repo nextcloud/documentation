@@ -443,6 +443,26 @@ What not to inject:
 
 .. _`reflection`: https://www.php.net/manual/en/book.reflection.php
 
+Optional services
+-----------------
+
+.. versionadded:: 28
+
+If an injected dependency can't be found or build, an exception is thrown. This can be avoided by using the a nullable type notation for a dependency:
+
+.. code-block:: php
+  :emphasize-lines: 6
+
+  namespace OCA\MyApp\MyService;
+
+  use Some\Service;
+
+  class MyService {
+    public function __construct(private ?Service $service) {
+    }
+  }
+
+If ``\Some\Service`` exists and can be built, it will be injected. Else ``MyService`` will receive ``null``.
 
 Accessing the container from anywhere
 -------------------------------------
