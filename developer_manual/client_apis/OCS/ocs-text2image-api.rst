@@ -65,7 +65,7 @@ If possible the task will be executed while the request is processed on the serv
     - Data:
         + ``id`` - Only provided in case of ``200 OK``, the assigned task id, int
         + ``input`` - Only provided in case of ``200 OK``, the task input, string
-        + ``status`` - Only provided in case of ``200 OK``, the current task status, int, see backend API
+        + ``status`` - Only provided in case of ``200 OK``, the current task status, int, see :ref:`the backend Text-To-Image API<text2image_statuses>`
         + ``userId`` - Only provided in case of ``200 OK``, the originating userId of the task, string
         + ``appId`` - Only provided in case of ``200 OK``, the originating appId of the task, string
         + ``identifier`` - Only provided in case of ``200 OK``, the originating appId of the task, string
@@ -91,7 +91,7 @@ Fetch a task by ID
     - Data:
         + ``id`` - Only provided in case of ``200 OK``, the assigned task id, int
         + ``input`` - Only provided in case of ``200 OK``, the task input, string
-        + ``status`` - Only provided in case of ``200 OK``, the current task status, int, see backend API
+        + ``status`` - Only provided in case of ``200 OK``, the current task status, int, see :ref:`the backend Text-To-Image API<text2image_statuses>`
         + ``userId`` - Only provided in case of ``200 OK``, the originating userId of the task, string
         + ``appId`` - Only provided in case of ``200 OK``, the originating appId of the task, string
         + ``identifier`` - Only provided in case of ``200 OK``, the originating appId of the task, string
@@ -131,7 +131,7 @@ Delete a task
     - Data:
         + ``id`` - Only provided in case of ``200 OK``, the assigned task id, int
         + ``input`` - Only provided in case of ``200 OK``, the task input, string
-        + ``status`` - Only provided in case of ``200 OK``, the current task status, int, see backend API
+        + ``status`` - Only provided in case of ``200 OK``, the current task status, int, see :ref:`the backend Text-To-Image API<text2image_statuses>`
         + ``userId`` - Only provided in case of ``200 OK``, the originating userId of the task, string
         + ``appId`` - Only provided in case of ``200 OK``, the originating appId of the task, string
         + ``identifier`` - Only provided in case of ``200 OK``, the originating appId of the task, string
@@ -167,7 +167,7 @@ List tasks by App
         + Only provided in case of ``200 OK``, an array of objects:
             + ``id`` - the assigned task id, int
             + ``input`` - the task input, string
-            + ``status`` - the current task status, int, see backend API
+            + ``status`` - the current task status, int, see :ref:`the backend Text-To-Image API<text2image_statuses>`
             + ``userId`` - the originating userId of the task, string
             + ``appId`` - the originating appId of the task, string
             + ``identifier`` - the originating appId of the task, string

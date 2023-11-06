@@ -93,6 +93,8 @@ Of course, you might want to schedule the task in a background job **only** if i
 Task statuses
 ^^^^^^^^^^^^^
 
+.. _text2image_statuses:
+
 All tasks always have one of the below statuses:
 
 .. code-block:: php
